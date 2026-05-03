@@ -1,0 +1,23 @@
+{
+  "id": "kylox-visionary-inventor-corpus-m677",
+  "description": "M6 corpus — Kylox, Visionary Inventor; in-hand parse.",
+  "seed": 63930,
+  "cards": {
+    "Kylox, Visionary Inventor": "Name:Kylox, Visionary Inventor\nManaCost:5 U R\nTypes:Legendary Creature Lizard Artificer\nPT:4/4\nK:Menace\nK:Ward:2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, sacrifice any number of other creatures, then exile the top X cards of your library, where X is their total power. You may cast any number of instant and/or sorcery spells from among the exiled cards without paying their mana costs.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Creature.Other | RememberSacrificed$ True | Optional$ True | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | Imprint$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.IsImprinted+YouOwn | ValidZone$ Exile | ValidSA$ Instant,Sorcery | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ All | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:RememberedLKI$CardPower\nSVar:SacX:Count$Valid Creature.Other\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Instant|Sorcery\nOracle:Menace, ward {2}, haste\\nWhenever Kylox, Visionary Inventor attacks, sacrifice any number of other creatures, then exile the top X cards of your library, where X is their total power. You may cast any number of instant and/or sorcery spells from among the exiled cards without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kylox, Visionary Inventor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

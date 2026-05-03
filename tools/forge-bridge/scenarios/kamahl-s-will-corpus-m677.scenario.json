@@ -1,0 +1,23 @@
+{
+  "id": "kamahl-s-will-corpus-m677",
+  "description": "M6 corpus — Kamahl's Will; in-hand parse.",
+  "seed": 63450,
+  "cards": {
+    "Kamahl's Will": "Name:Kamahl's Will\nManaCost:3 G\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBAnimate,DBGangUp | AdditionalDescription$ . If you control a commander as you cast this spell, you may choose both.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select any number of target lands you control | TargetMin$ 0 | TargetMax$ MaxTargets | Power$ 1 | Toughness$ 1 | Types$ Elemental,Creature | Keywords$ Vigilance & Indestructible & Haste | SpellDescription$ Until end of turn, any number of target lands you control become 1/1 Elemental creatures with vigilance, indestructible, and haste. They're still lands.\nSVar:DBGangUp:DB$ Pump | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | SubAbility$ DBDmgEach | SpellDescription$ Choose target creature you don't control. Each creature you control deals damage equal to its power to that creature.\nSVar:DBDmgEach:DB$ EachDamage | DefinedDamagers$ Valid Creature.YouCtrl | Defined$ ParentTarget | NumDmg$ Count$CardPower\nSVar:Y:Count$Valid Card.IsCommander+YouCtrl\nSVar:MaxTargets:Count$Valid Land.YouCtrl\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both.\\n• Until end of turn, any number of target lands you control become 1/1 Elemental creatures with vigilance, indestructible, and haste. They're still lands.\\n• Choose target creature you don't control. Each creature you control deals damage equal to its power to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kamahl's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

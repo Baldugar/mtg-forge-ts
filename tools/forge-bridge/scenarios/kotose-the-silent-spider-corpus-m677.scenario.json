@@ -1,0 +1,23 @@
+{
+  "id": "kotose-the-silent-spider-corpus-m677",
+  "description": "M6 corpus — Kotose, the Silent Spider; in-hand parse.",
+  "seed": 63847,
+  "cards": {
+    "Kotose, the Silent Spider": "Name:Kotose, the Silent Spider\nManaCost:3 U B\nTypes:Legendary Creature Human Ninja\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target card other than a basic land card from an opponent's graveyard. Search that player's graveyard, hand, and library for any number of cards with the same name as that card and exile them. Then that player shuffles. For as long as you control NICKNAME, you may play one of the exiled cards, and you may spend mana as though it were mana of any color to cast it.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card.nonBasic+OppOwn | TgtPrompt$ Select target card other than a basic land in an opponent's graveyard | RememberChanged$ True | SubAbility$ ExileYard | StackDescription$ None\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInYard | Chooser$ You | Hidden$ True | RememberChanged$ True | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | RememberChanged$ True | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | RememberChanged$ True | SubAbility$ DBEffect | StackDescription$ None\nSVar:NumInYard:TargetedController$CardsInGraveyard\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInLib:TargetedController$CardsInLibrary\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Triggers$ TrigLandPlayed,TrigCast | Duration$ AsLongAsControl | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | MayPlayLimit$ 1 | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ For as long as you control EFFECTSOURCE, you may play one of the exiled cards, and you may spend mana as though it were mana of any color to cast it.\nSVar:TrigLandPlayed:Mode$ LandPlayed | ValidCard$ Land.IsRemembered | Static$ True | TriggerZones$ Command | Execute$ TrigRemoveSelf\nSVar:TrigCast:Mode$ SpellCast | ValidCard$ Card.IsRemembered | Static$ True | TriggerZones$ Command | Execute$ TrigRemoveSelf\nSVar:TrigRemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsToPlayVar:Check GE1\nSVar:Check:Count$ValidGraveyard Card.OppOwn\nOracle:When Kotose, the Silent Spider enters, exile target card other than a basic land card from an opponent's graveyard. Search that player's graveyard, hand, and library for any number of cards with the same name as that card and exile them. Then that player shuffles. For as long as you control Kotose, you may play one of the exiled cards, and you may spend mana as though it were mana of any color to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kotose, the Silent Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "steel-seraph-corpus-m677",
+  "description": "M6 corpus — Steel Seraph; in-hand parse.",
+  "seed": 70960,
+  "cards": {
+    "Steel Seraph": "Name:Steel Seraph\nManaCost:6\nTypes:Artifact Creature Angel\nPT:5/4\nK:Prototype:1 W W:3:3\nK:Flying\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gains your choice of flying, vigilance, or lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KWChoice$ Flying,Vigilance,Lifelink\nDeckHas:Ability$LifeGain\nDeckHints:Color$White\nOracle:Prototype {1}{W}{W} — 3/3 (You may cast this spell with different mana cost, color, and size. It keeps its abilities and types.)\\nFlying\\nAt the beginning of combat on your turn, target creature you control gains your choice of flying, vigilance, or lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steel Seraph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

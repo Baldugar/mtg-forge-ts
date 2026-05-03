@@ -1,0 +1,23 @@
+{
+  "id": "mystic-barrier-corpus-m677",
+  "description": "M6 corpus — Mystic Barrier; in-hand parse.",
+  "seed": 65657,
+  "cards": {
+    "Mystic Barrier": "Name:Mystic Barrier\nManaCost:4 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseDirection | TriggerDescription$ When CARDNAME enters or at the beginning of your upkeep, choose left or right.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChooseDirection | Secondary$ True | TriggerDescription$ When CARDNAME enters or at the beginning of your upkeep, choose left or right.\nSVar:TrigChooseDirection:DB$ ChooseDirection\nS:Mode$ CantAttack | DefenderNotNearestToYouInChosenDirection$ True | Description$ Each player may attack only the nearest opponent in the last chosen direction and planeswalkers controlled by that opponent.\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:When Mystic Barrier enters or at the beginning of your upkeep, choose left or right.\\nEach player may attack only the nearest opponent in the last chosen direction and planeswalkers controlled by that opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Barrier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

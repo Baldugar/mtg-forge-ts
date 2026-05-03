@@ -1,0 +1,23 @@
+{
+  "id": "sanguine-syphoner-corpus-m677",
+  "description": "M6 corpus — Sanguine Syphoner; in-hand parse.",
+  "seed": 68986,
+  "cards": {
+    "Sanguine Syphoner": "Name:Sanguine Syphoner\nManaCost:1 B\nTypes:Creature Vampire Warlock\nPT:1/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever this creature attacks, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanguine Syphoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

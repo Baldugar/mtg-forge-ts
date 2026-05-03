@@ -1,0 +1,23 @@
+{
+  "id": "shimmercreep-corpus-m677",
+  "description": "M6 corpus — Shimmercreep; in-hand parse.",
+  "seed": 69703,
+  "cards": {
+    "Shimmercreep": "Name:Shimmercreep\nManaCost:4 B\nTypes:Creature Elemental\nPT:3/5\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Vivid — When this creature enters, each opponent loses X life and you gain X life, where X is the number of colors among permanents you control.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nDeckHas:Ability$LifeGain\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nVivid — When this creature enters, each opponent loses X life and you gain X life, where X is the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shimmercreep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

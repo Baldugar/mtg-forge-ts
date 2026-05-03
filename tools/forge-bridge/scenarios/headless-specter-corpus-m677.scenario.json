@@ -1,0 +1,23 @@
+{
+  "id": "headless-specter-corpus-m677",
+  "description": "M6 corpus — Headless Specter; in-hand parse.",
+  "seed": 62150,
+  "cards": {
+    "Headless Specter": "Name:Headless Specter\nManaCost:1 B B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Hellbent$ True | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Hellbent Whenever CARDNAME deals combat damage to a player, if you have no cards in hand, that player discards a card at random.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ Random\nOracle:Flying\\nHellbent — Whenever Headless Specter deals combat damage to a player, if you have no cards in hand, that player discards a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Headless Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

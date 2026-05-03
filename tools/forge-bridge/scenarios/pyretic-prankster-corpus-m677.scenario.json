@@ -1,0 +1,23 @@
+{
+  "id": "pyretic-prankster-corpus-m677",
+  "description": "M6 corpus — Pyretic Prankster; in-hand parse.",
+  "seed": 67409,
+  "cards": {
+    "Pyretic Prankster": "Name:Pyretic Prankster\nManaCost:1 R\nTypes:Creature Devil\nPT:2/1\nA:AB$ SetState | Cost$ 3 BP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery. ({B/P} can be paid with either {B} or 2 life.)\nAlternateMode:DoubleFaced\nOracle:{3}{B/P}: Transform Pyretic Prankster. Activate only as a sorcery. ({B/P} can be paid with either {B} or 2 life.)\n\nALTERNATE\n\nName:Glistening Goremonger\nManaCost:no cost\nColors:black,red\nTypes:Creature Phyrexian Devil\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME dies, each opponent sacrifices an artifact or creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature,Artifact\nSVar:SacMe:2\nDeckHas:Ability$Sacrifice\nOracle:When Glistening Goremonger dies, each opponent sacrifices an artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyretic Prankster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

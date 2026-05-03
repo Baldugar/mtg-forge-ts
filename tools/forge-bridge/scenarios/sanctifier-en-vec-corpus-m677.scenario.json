@@ -1,0 +1,23 @@
+{
+  "id": "sanctifier-en-vec-corpus-m677",
+  "description": "M6 corpus — Sanctifier en-Vec; in-hand parse.",
+  "seed": 68936,
+  "cards": {
+    "Sanctifier en-Vec": "Name:Sanctifier en-Vec\nManaCost:W W\nTypes:Creature Human Cleric\nPT:2/2\nK:Protection from black\nK:Protection from red\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, exile all cards that are black or red from all graveyards.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.Black,Card.Red | Origin$ Graveyard | Destination$ Exile\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Graveyard | ValidLKI$ Card.Black,Card.Red | ReplaceWith$ Exile | Description$ If a black or red permanent, spell, or card not on the battlefield would be put into a graveyard, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nSVar:NonStackingEffect:True\nOracle:Protection from black and from red\\nWhen Sanctifier en-Vec enters, exile all cards that are black or red from all graveyards.\\nIf a black or red permanent, spell, or card not on the battlefield would be put into a graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctifier en-Vec"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

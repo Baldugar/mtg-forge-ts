@@ -1,0 +1,25 @@
+{
+  "id": "leyline-of-punishment-corpus-m677",
+  "description": "M6 corpus — Leyline of Punishment; ETB-on-bf.",
+  "seed": 64166,
+  "cards": {
+    "Leyline of Punishment": "Name:Leyline of Punishment\nManaCost:2 R R\nTypes:Enchantment\nK:MayEffectFromOpeningHand:FromHand\nSVar:FromHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SpellDescription$ If CARDNAME is in your opening hand, you may begin the game with it on the battlefield.\nS:Mode$ CantGainLife | ValidPlayer$ Player | Description$ Players can't gain life.\nS:Mode$ CantPreventDamage | Description$ Damage can't be prevented.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:If Leyline of Punishment is in your opening hand, you may begin the game with it on the battlefield.\\nPlayers can't gain life.\\nDamage can't be prevented.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leyline of Punishment"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

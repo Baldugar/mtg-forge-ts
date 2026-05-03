@@ -1,0 +1,23 @@
+{
+  "id": "griffin-dreamfinder-corpus-m677",
+  "description": "M6 corpus — Griffin Dreamfinder; in-hand parse.",
+  "seed": 61756,
+  "cards": {
+    "Griffin Dreamfinder": "Name:Griffin Dreamfinder\nManaCost:3 W W\nTypes:Creature Griffin\nPT:1/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target enchantment card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Enchantment.YouCtrl\nOracle:Flying\\nWhen Griffin Dreamfinder enters, return target enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Griffin Dreamfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

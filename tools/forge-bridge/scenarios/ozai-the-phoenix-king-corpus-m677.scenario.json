@@ -1,0 +1,25 @@
+{
+  "id": "ozai-the-phoenix-king-corpus-m677",
+  "description": "M6 corpus — Ozai, the Phoenix King; ETB-on-bf.",
+  "seed": 66535,
+  "cards": {
+    "Ozai, the Phoenix King": "Name:Ozai, the Phoenix King\nManaCost:2 B B R R\nTypes:Legendary Creature Human Noble\nPT:7/7\nK:Trample\nK:Firebending:4\nK:Haste\nR:Event$ LoseMana | ValidPlayer$ You | ReplacementResult$ Replaced | ReplaceWith$ ConvertMana | ActiveZones$ Battlefield | Description$ If you would lose unspent mana, that mana becomes red instead.\nSVar:ConvertMana:DB$ ReplaceMana | ReplaceType$ Red\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Flying & Indestructible | CheckSVar$ X | SVarCompare$ GE6 | Description$ NICKNAME has flying and indestructible as long as you have six or more unspent mana.\nSVar:X:Count$ManaPool:All\nOracle:Trample, firebending 4, haste\\nIf you would lose unspent mana, that mana becomes red instead.\\nOzai has flying and indestructible as long as you have six or more unspent mana.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ozai, the Phoenix King"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

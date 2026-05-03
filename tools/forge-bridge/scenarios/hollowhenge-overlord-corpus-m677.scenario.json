@@ -1,0 +1,23 @@
+{
+  "id": "hollowhenge-overlord-corpus-m677",
+  "description": "M6 corpus — Hollowhenge Overlord; in-hand parse.",
+  "seed": 62436,
+  "cards": {
+    "Hollowhenge Overlord": "Name:Hollowhenge Overlord\nManaCost:4 G G\nTypes:Creature Wolf\nPT:4/4\nK:Flash\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, for each creature you control that's a Wolf or a Werewolf, create a 2/2 green Wolf creature token.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_2_2_wolf\nSVar:X:Count$Valid Creature.Wolf+YouCtrl,Creature.Werewolf+YouCtrl\nSVar:BuffedBy:Wolf,Werewolf\nDeckHas:Ability$Token\nDeckHints:Type$Wolf|Werewolf\nOracle:Flash\\nAt the beginning of your upkeep, for each creature you control that's a Wolf or a Werewolf, create a 2/2 green Wolf creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollowhenge Overlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

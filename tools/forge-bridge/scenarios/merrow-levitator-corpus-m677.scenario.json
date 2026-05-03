@@ -1,0 +1,25 @@
+{
+  "id": "merrow-levitator-corpus-m677",
+  "description": "M6 corpus — Merrow Levitator; ETB-on-bf.",
+  "seed": 65037,
+  "cards": {
+    "Merrow Levitator": "Name:Merrow Levitator\nManaCost:3 U\nTypes:Creature Merfolk Wizard\nPT:2/3\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature | KW$ Flying | SpellDescription$ Target creature gains flying until end of turn.\nT:Mode$ SpellCast | ValidCard$ Card.Blue | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a blue spell, you may untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:{T}: Target creature gains flying until end of turn.\\nWhenever you cast a blue spell, you may untap Merrow Levitator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Merrow Levitator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

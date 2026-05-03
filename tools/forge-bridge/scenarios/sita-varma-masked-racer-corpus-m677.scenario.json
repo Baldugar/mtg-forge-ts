@@ -1,0 +1,25 @@
+{
+  "id": "sita-varma-masked-racer-corpus-m677",
+  "description": "M6 corpus — Sita Varma, Masked Racer; ETB-on-bf.",
+  "seed": 70005,
+  "cards": {
+    "Sita Varma, Masked Racer": "Name:Sita Varma, Masked Racer\nManaCost:G U\nTypes:Legendary Creature Human Rogue\nPT:2/3\nA:AB$ PutCounter | Cost$ X G G U | Defined$ Self | CounterType$ P1P1 | CounterNum$ X | Exhaust$ True | SubAbility$ DBAnimateAll | SpellDescription$ Put X +1/+1 counters on NICKNAME. Then you may have the base power and toughness of each other creature you control become equal to NICKNAME's power until end of turn. (Activate each exhaust ability only once.)\nSVar:DBAnimateAll:DB$ Animate | Power$ Y | Toughness$ Y | Defined$ Valid Creature.YouCtrl+Other | Optional$ True\nDeckHas:Ability$Counters\nSVar:X:Count$xPaid\nSVar:Y:Count$CardPower\nOracle:Exhaust — {X}{G}{G}{U}: Put X +1/+1 counters on Sita Varma. Then you may have the base power and toughness of each other creature you control become equal to Sita Varma's power until end of turn. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sita Varma, Masked Racer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

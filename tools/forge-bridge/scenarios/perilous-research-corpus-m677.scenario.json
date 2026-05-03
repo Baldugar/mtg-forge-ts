@@ -1,0 +1,23 @@
+{
+  "id": "perilous-research-corpus-m677",
+  "description": "M6 corpus — Perilous Research; in-hand parse.",
+  "seed": 66738,
+  "cards": {
+    "Perilous Research": "Name:Perilous Research\nManaCost:1 U\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBSac | SpellDescription$ Draw two cards, then sacrifice a permanent.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Permanent\nSVar:NeedsToPlay:Permanent.YouCtrl+HasSVar SacMe\nAI:RemoveDeck:Random\nOracle:Draw two cards, then sacrifice a permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perilous Research"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

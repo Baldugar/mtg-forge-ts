@@ -1,0 +1,23 @@
+{
+  "id": "mages-contest-corpus-m677",
+  "description": "M6 corpus — Mages' Contest; in-hand parse.",
+  "seed": 64580,
+  "cards": {
+    "Mages' Contest": "Name:Mages' Contest\nManaCost:1 R R\nTypes:Instant\nA:SP$ BidLife | TargetType$ Spell | ValidTgts$ Card | TgtZone$ Stack | OtherBidder$ TargetedController | StartBidding$ 1 | AILogic$ Min | AIBidMax$ 8 | BidSubAbility$ DBLoseLife | SpellDescription$ You and target spell's controller bid life. You start the bidding with a bid of 1. In turn order, each player may top the high bid. The bidding ends if the high bid stands. The high bidder loses life equal to the high bid. If you win the bidding, counter that spell.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X | SubAbility$ DBCounter\nSVar:DBCounter:DB$ Counter | Defined$ Targeted | ConditionPlayerDefined$ Remembered | ConditionPlayerContains$ You\nSVar:X:Count$ChosenNumber\nOracle:You and target spell's controller bid life. You start the bidding with a bid of 1. In turn order, each player may top the high bid. The bidding ends if the high bid stands. The high bidder loses life equal to the high bid. If you win the bidding, counter that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mages' Contest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

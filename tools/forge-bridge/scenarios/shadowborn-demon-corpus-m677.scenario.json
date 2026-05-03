@@ -1,0 +1,23 @@
+{
+  "id": "shadowborn-demon-corpus-m677",
+  "description": "M6 corpus — Shadowborn Demon; in-hand parse.",
+  "seed": 69565,
+  "cards": {
+    "Shadowborn Demon": "Name:Shadowborn Demon\nManaCost:3 B B\nTypes:Creature Demon\nPT:5/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target non-Demon creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonDemon | TgtPrompt$ Select target non-Demon creature\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl | PresentZone$ Graveyard | PresentCompare$ LT6 | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, if there are fewer than six creatures in your graveyard, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nOracle:Flying\\nWhen Shadowborn Demon enters, destroy target non-Demon creature.\\nAt the beginning of your upkeep, if there are fewer than six creature cards in your graveyard, sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadowborn Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

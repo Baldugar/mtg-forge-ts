@@ -1,0 +1,25 @@
+{
+  "id": "raucous-audience-corpus-m677",
+  "description": "M6 corpus — Raucous Audience; ETB-on-bf.",
+  "seed": 67740,
+  "cards": {
+    "Raucous Audience": "Name:Raucous Audience\nManaCost:1 G\nTypes:Creature Human Citizen\nPT:2/1\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Add {G}. If you control a creature with power 4 or greater, add {G}{G} instead.\nSVar:X:Count$Compare Y GE1.2.1\nSVar:Y:Count$Valid Creature.YouCtrl+powerGE4\nOracle:{T}: Add {G}. If you control a creature with power 4 or greater, add {G}{G} instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Raucous Audience"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

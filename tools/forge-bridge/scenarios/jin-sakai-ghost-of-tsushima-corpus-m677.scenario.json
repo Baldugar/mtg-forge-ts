@@ -1,0 +1,23 @@
+{
+  "id": "jin-sakai-ghost-of-tsushima-corpus-m677",
+  "description": "M6 corpus — Jin Sakai, Ghost of Tsushima; in-hand parse.",
+  "seed": 63309,
+  "cards": {
+    "Jin Sakai, Ghost of Tsushima": "Name:Jin Sakai, Ghost of Tsushima\nManaCost:1 W U B\nTypes:Legendary Creature Human Samurai\nPT:2/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Creature.YouCtrl | AttackedTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigCharm | ValidAttackersAmount$ EQ1 | TriggerDescription$ Whenever a creature you control attacks a player, if no other creatures are attacking that player, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Standoff,Ghost\nSVar:Standoff:DB$ Pump | Defined$ TriggeredAttackers | KW$ Double Strike | SpellDescription$ Standoff — It gains double strike until end of turn.\nSVar:Ghost:DB$ Effect | RememberObjects$ TriggeredAttackers | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SpellDescription$ Ghost — It can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:Whenever Jin Sakai deals combat damage to a player, draw a card.\\nWhenever a creature you control attacks a player, if no other creatures are attacking that player, choose one —\\n• Standoff — It gains double strike until end of turn.\\n• Ghost — It can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jin Sakai, Ghost of Tsushima"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "refibrillator-corpus-m677",
+  "description": "M6 corpus — Refibrillator; ETB-on-bf.",
+  "seed": 67941,
+  "cards": {
+    "Refibrillator": "Name:Refibrillator\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, return target creature card from your graveyard to your hand.\nSVar:TrigCrank:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl\nOracle:Whenever you crank Refibrillator, return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Refibrillator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

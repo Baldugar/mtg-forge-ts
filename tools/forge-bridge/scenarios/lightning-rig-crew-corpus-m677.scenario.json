@@ -1,0 +1,25 @@
+{
+  "id": "lightning-rig-crew-corpus-m677",
+  "description": "M6 corpus — Lightning-Rig Crew; ETB-on-bf.",
+  "seed": 64247,
+  "cards": {
+    "Lightning-Rig Crew": "Name:Lightning-Rig Crew\nManaCost:2 R\nTypes:Creature Goblin Pirate\nPT:0/5\nA:AB$ DealDamage | Cost$ T | Defined$ Player.Opponent | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to each opponent.\nT:Mode$ SpellCast | ValidCard$ Card.Pirate | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a Pirate spell, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:{T}: Lightning-Rig Crew deals 1 damage to each opponent.\\nWhenever you cast a Pirate spell, untap Lightning-Rig Crew.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lightning-Rig Crew"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "storm-the-citadel-corpus-m677",
+  "description": "M6 corpus — Storm the Citadel; in-hand parse.",
+  "seed": 71106,
+  "cards": {
+    "Storm the Citadel": "Name:Storm the Citadel\nManaCost:4 G\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBAnimateAll | SpellDescription$ Until end of turn, creatures you control get +2/+2 and gain \"Whenever this creature deals combat damage to a player or planeswalker, destroy target artifact or enchantment defending player controls.\"\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.YouCtrl | Triggers$ Trig\nSVar:Trig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | CombatDamage$ True | Execute$ Eff | TriggerDescription$ Whenever this creature deals combat damage to a player or planeswalker, destroy target artifact or enchantment defending player controls.\nSVar:Eff:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TargetsWithDefinedController$ TriggeredDefendingPlayer | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target artifact or enchantment defending player controls.\nSVar:PlayMain1:TRUE\nOracle:Until end of turn, creatures you control get +2/+2 and gain \"Whenever this creature deals combat damage to a player or planeswalker, destroy target artifact or enchantment defending player controls.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm the Citadel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

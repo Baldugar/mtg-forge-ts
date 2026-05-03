@@ -1,0 +1,23 @@
+{
+  "id": "rushing-tide-zubera-corpus-m677",
+  "description": "M6 corpus — Rushing-Tide Zubera; in-hand parse.",
+  "seed": 68672,
+  "cards": {
+    "Rushing-Tide Zubera": "Name:Rushing-Tide Zubera\nManaCost:2 U U\nTypes:Creature Zubera Spirit\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | CheckOnTriggeredCard$ X GE4 | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, if 4 or more damage was dealt to it this turn, draw three cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3\nSVar:X:Count$TotalDamageReceivedThisTurn\nOracle:When Rushing-Tide Zubera dies, if 4 or more damage was dealt to it this turn, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rushing-Tide Zubera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

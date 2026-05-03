@@ -1,0 +1,23 @@
+{
+  "id": "sigarda-s-splendor-corpus-m677",
+  "description": "M6 corpus — Sigarda's Splendor; in-hand parse.",
+  "seed": 69846,
+  "cards": {
+    "Sigarda's Splendor": "Name:Sigarda's Splendor\nManaCost:2 W W\nTypes:Enchantment\nK:ETBReplacement:Other:NoteNum\nSVar:NoteNum:DB$ StoreSVar | SVar$ NotedLife | Type$ CountSVar | Expression$ X | SpellDescription$ As CARDNAME enters, note your life total.\nSVar:NotedLife:Number$0\nSVar:X:Count$YourLifeTotal\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, draw a card if your life total is greater than or equal to the last noted life total for CARDNAME. Then note your life total.\nSVar:TrigDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ GENotedLife | NumCards$ 1 | SubAbility$ NoteNum\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a white spell, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:As Sigarda's Splendor enters, note your life total.\\nAt the beginning of your upkeep, draw a card if your life total is greater than or equal to the last noted life total for Sigarda's Splendor. Then note your life total.\\nWhenever you cast a white spell, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigarda's Splendor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

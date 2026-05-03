@@ -1,0 +1,23 @@
+{
+  "id": "jace-s-defeat-corpus-m677",
+  "description": "M6 corpus — Jace's Defeat; in-hand parse.",
+  "seed": 63202,
+  "cards": {
+    "Jace's Defeat": "Name:Jace's Defeat\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target blue spell | ValidTgts$ Card.Blue | SubAbility$ DBScry | SpellDescription$ Counter target blue spell. If it was a Jace planeswalker spell, scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | ConditionDefined$ Targeted | ConditionPresent$ Spell.Jace+Planeswalker\nAI:RemoveDeck:Random\nOracle:Counter target blue spell. If it was a Jace planeswalker spell, scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace's Defeat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "seifer-almasy-corpus-m677",
+  "description": "M6 corpus — Seifer Almasy; in-hand parse.",
+  "seed": 69389,
+  "cards": {
+    "Seifer Almasy": "Name:Seifer Almasy\nManaCost:3 R\nTypes:Legendary Creature Human Knight\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control attacks alone, it gains double strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Double Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigCast | OptionalDecider$ You | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may cast target instant or sorcery card with mana value 3 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.\nSVar:TrigCast:DB$ Play | ValidTgts$ Instant.YouOwn+cmcLE3,Sorcery.YouOwn+cmcLE3 | TgtZone$ Graveyard | TgtPrompt$ Select target instant or sorcery card with mana value 3 or less from your graveyard | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nOracle:Whenever a creature you control attacks alone, it gains double strike until end of turn.\\nFire Cross — Whenever Seifer Almasy deals combat damage to a player, you may cast target instant or sorcery card with mana value 3 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seifer Almasy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

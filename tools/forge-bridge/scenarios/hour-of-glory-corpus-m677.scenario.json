@@ -1,0 +1,23 @@
+{
+  "id": "hour-of-glory-corpus-m677",
+  "description": "M6 corpus — Hour of Glory; in-hand parse.",
+  "seed": 62534,
+  "cards": {
+    "Hour of Glory": "Name:Hour of Glory\nManaCost:3 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature | RememberLKI$ True | ForgetOtherTargets$ True | SubAbility$ DBChangeZone | SpellDescription$ Exile target creature. If that creature was a God, its controller reveals their hand and exiles all cards from it with the same name as that creature.\nSVar:DBChangeZone:DB$ ChangeZoneAll | Origin$ Hand | Destination$ Exile | ConditionDefined$ RememberedLKI | ConditionPresent$ God | DefinedPlayer$ RememberController | ChangeType$ Remembered.sameName | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target creature. If that creature was a God, its controller reveals their hand and exiles all cards from it with the same name as that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hour of Glory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

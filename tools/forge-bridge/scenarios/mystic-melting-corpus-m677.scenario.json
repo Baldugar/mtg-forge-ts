@@ -1,0 +1,23 @@
+{
+  "id": "mystic-melting-corpus-m677",
+  "description": "M6 corpus — Mystic Melting; in-hand parse.",
+  "seed": 65667,
+  "cards": {
+    "Mystic Melting": "Name:Mystic Melting\nManaCost:3 G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Destroy target artifact or enchantment.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Melting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "narset-enlightened-master-corpus-m677",
+  "description": "M6 corpus — Narset, Enlightened Master; in-hand parse.",
+  "seed": 65743,
+  "cards": {
+    "Narset, Enlightened Master": "Name:Narset, Enlightened Master\nManaCost:3 U R W\nTypes:Legendary Creature Human Monk\nPT:3/2\nK:First Strike\nK:Hexproof\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile the top four cards of your library. Until end of turn, you may cast noncreature cards exiled with CARDNAME this turn without paying their mana costs.\nSVar:TrigExile:DB$ Dig | DigNum$ 4 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | ForgetOnMoved$ Exile | StaticAbilities$ STMayPlay | SubAbility$ DBCleanup\nSVar:STMayPlay:Mode$ Continuous | AffectedZone$ Exile | Affected$ Card.IsRemembered+nonCreature+nonLand | MayPlay$ True | MayPlayWithoutManaCost$ True | Description$ You may cast noncreature cards exiled with EFFECTSOURCE this turn without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nOracle:First strike, hexproof\\nWhenever Narset, Enlightened Master attacks, exile the top four cards of your library. Until end of turn, you may cast noncreature spells from among those cards without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Narset, Enlightened Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "sandman-shifting-scoundrel-corpus-m677",
+  "description": "M6 corpus — Sandman, Shifting Scoundrel; ETB-on-bf.",
+  "seed": 68961,
+  "cards": {
+    "Sandman, Shifting Scoundrel": "Name:Sandman, Shifting Scoundrel\nVariant:UniversesWithin:FlavorName:The Scouring Stormsoul\nManaCost:1 G G\nTypes:Legendary Creature Sand Elemental Villain\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ NICKNAME's power and toughness are each equal to the number of lands you control.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nA:AB$ ChangeZone | Cost$ 3 G G | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | ValidTgts$ Land.YouOwn | TgtPrompt$ Select target land card in your graveyard | ThisDefinedAndTgts$ Self | Tapped$ True | SpellDescription$ Return this card and target land card from your graveyard to the battlefield tapped.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nOracle:Sandman's power and toughness are each equal to the number of lands you control.\\nSandman can't be blocked by creatures with power 2 or less.\\n{3}{G}{G}: Return this card and target land card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sandman, Shifting Scoundrel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

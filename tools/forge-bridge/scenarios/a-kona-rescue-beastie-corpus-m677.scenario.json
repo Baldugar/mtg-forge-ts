@@ -1,0 +1,23 @@
+{
+  "id": "a-kona-rescue-beastie-corpus-m677",
+  "description": "M6 corpus — A-Kona, Rescue Beastie; in-hand parse.",
+  "seed": 68755,
+  "cards": {
+    "A-Kona, Rescue Beastie": "Name:A-Kona, Rescue Beastie\nTypes:Legendary Creature Beast Survivor\nManaCost:4 G\nPT:4/3\nT:Mode$ Phase | Phase$ Main | PhaseCount$ 2 | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Survival — At the beginning of your second main phase, if CARDNAME is tapped, you may put a permanent card from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent.YouOwn\nOracle:Survival — At the beginning of your second main phase, if Kona, Rescue Beastie is tapped, you may put a permanent card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Kona, Rescue Beastie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

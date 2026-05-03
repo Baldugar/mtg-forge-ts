@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-fiora-corpus-m677",
+  "description": "M6 corpus — Invasion of Fiora; in-hand parse.",
+  "seed": 63061,
+  "cards": {
+    "Invasion of Fiora": "Name:Invasion of Fiora\nManaCost:4 B B\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DestroyLegend,DestroyNonLegend\nSVar:DestroyLegend:DB$ DestroyAll | ValidCards$ Creature.Legendary | SpellDescription$ Destroy all legendary creatures.\nSVar:DestroyNonLegend:DB$ DestroyAll | ValidCards$ Creature.nonLegendary | SpellDescription$ Destroy all nonlegendary creatures.\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Fiora enters, choose one or both —\\n• Destroy all legendary creatures.\\n• Destroy all nonlegendary creatures.\n\nALTERNATE\n\nName:Marchesa, Resolute Monarch\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Human Noble\nPT:3/6\nK:Menace\nK:Deathtouch\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever CARDNAME attacks, remove all counters from up to one target permanent.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | ValidTgts$ Permanent | TargetMin$ 0 | TargetMax$ 1 | CounterType$ All | CounterNum$ All\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ EQ0 | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, if you haven't been dealt combat damage since your last turn, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:HasAttackEffect:TRUE\nSVar:X:PlayerCountPropertyYou$BeenDealtCombatDamageSinceLastTurn\nOracle:Menace, deathtouch\\nWhenever Marchesa, Resolute Monarch attacks, remove all counters from up to one target permanent.\\nAt the beginning of your upkeep, if you haven't been dealt combat damage since your last turn, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Fiora"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

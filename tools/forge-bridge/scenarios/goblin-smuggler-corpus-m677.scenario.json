@@ -1,0 +1,25 @@
+{
+  "id": "goblin-smuggler-corpus-m677",
+  "description": "M6 corpus — Goblin Smuggler; ETB-on-bf.",
+  "seed": 61471,
+  "cards": {
+    "Goblin Smuggler": "Name:Goblin Smuggler\nManaCost:2 R\nTypes:Creature Goblin Rogue\nPT:2/2\nK:Haste\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature.Other+powerLE2 | TgtPrompt$ Select another target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Another target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nAI:RemoveDeck:Random\nOracle:Haste (This creature can attack and {T} as soon as it comes under your control.)\\n{T}: Another target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Smuggler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

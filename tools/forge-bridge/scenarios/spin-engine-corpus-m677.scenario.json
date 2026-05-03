@@ -1,0 +1,25 @@
+{
+  "id": "spin-engine-corpus-m677",
+  "description": "M6 corpus — Spin Engine; ETB-on-bf.",
+  "seed": 70663,
+  "cards": {
+    "Spin Engine": "Name:Spin Engine\nManaCost:3\nTypes:Artifact Creature Construct\nPT:3/1\nA:AB$ Effect | Cost$ R | ValidTgts$ Creature | TgtPrompt$ Select target creature that can't block this creature this turn | IsCurse$ True | RememberObjects$ ThisTargetedCard | ForgetOnMoved$ Battlefield | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | StackDescription$ {c:Targeted} can't block CARDNAME this turn. | SpellDescription$ Target creature can't block CARDNAME this turn.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.IsRemembered | Description$ {c:Remembered} can't block EFFECTSOURCE this turn.\nDeckNeeds:Color$Red\nOracle:{R}: Target creature can't block Spin Engine this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spin Engine"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "maddening-imp-corpus-m677",
+  "description": "M6 corpus — Maddening Imp; ETB-on-bf.",
+  "seed": 64563,
+  "cards": {
+    "Maddening Imp": "Name:Maddening Imp\nManaCost:2 B\nTypes:Creature Imp\nPT:1/1\nK:Flying\nA:AB$ Effect | Cost$ T | RememberObjects$ Valid Creature.ActivePlayerCtrl+nonWall | ActivationPhases$ Upkeep->Main1 | ActivationFirstCombat$ True | OpponentTurn$ True | StaticAbilities$ MustAttack | SubAbility$ DelTrig | StackDescription$ None | SpellDescription$ Non-Wall creatures the active player controls attack this turn if able. At the beginning of the next end step, destroy each of those creatures that didn't attack this turn. Activate only during an opponent's turn and only before combat.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ Non-Wall creatures the active player controls attack this turn if able.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigDestroy | RememberObjects$ Valid Creature.ActivePlayerCtrl+nonWall | TriggerDescription$ At the beginning of the next end step, destroy each of those creatures that didn't attack this turn.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.IsTriggerRemembered+!attackedThisTurn\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nSVar:NonCombatPriority:5\nOracle:Flying\\n{T}: Non-Wall creatures the active player controls attack this turn if able. At the beginning of the next end step, destroy each of those creatures that didn't attack this turn. Activate only during an opponent's turn and only before combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Maddening Imp"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

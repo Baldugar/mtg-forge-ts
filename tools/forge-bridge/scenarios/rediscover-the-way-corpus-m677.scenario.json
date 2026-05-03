@@ -1,0 +1,23 @@
+{
+  "id": "rediscover-the-way-corpus-m677",
+  "description": "M6 corpus — Rediscover the Way; in-hand parse.",
+  "seed": 67926,
+  "cards": {
+    "Rediscover the Way": "Name:Rediscover the Way\nManaCost:U R W\nTypes:Enchantment Saga\nK:Chapter:3:TrigDig,TrigDig,TrigEffect\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | Defined$ You | NoReveal$ True | SpellDescription$ Look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.\nSVar:TrigEffect:DB$ Effect | Triggers$ WayPump | SpellDescription$ Whenever you cast a noncreature spell this turn, target creature you control gains double strike until end of turn.\nSVar:WayPump:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPump | TriggerZones$ Command | TriggerDescription$ Whenever you cast a noncreature spell this turn, target creature you control gains double strike until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Double Strike\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.\\nIII — Whenever you cast a noncreature spell this turn, target creature you control gains double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rediscover the Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

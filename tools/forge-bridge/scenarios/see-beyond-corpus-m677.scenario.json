@@ -1,0 +1,23 @@
+{
+  "id": "see-beyond-corpus-m677",
+  "description": "M6 corpus — See Beyond; in-hand parse.",
+  "seed": 69356,
+  "cards": {
+    "See Beyond": "Name:See Beyond\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBShuffle | SpellDescription$ Draw two cards, then shuffle a card from your hand into your library.\nSVar:DBShuffle:DB$ ChangeZone | Origin$ Hand | Destination$ Library | Shuffle$ True | ChangeType$ Card.YouOwn | ChangeNum$ 1 | Mandatory$ True\nAI:RemoveDeck:All\nOracle:Draw two cards, then shuffle a card from your hand into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "See Beyond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

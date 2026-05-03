@@ -1,0 +1,23 @@
+{
+  "id": "leonin-squire-corpus-m677",
+  "description": "M6 corpus — Leonin Squire; in-hand parse.",
+  "seed": 64137,
+  "cards": {
+    "Leonin Squire": "Name:Leonin Squire\nManaCost:1 W\nTypes:Creature Cat Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target artifact card with mana value 1 or less from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.cmcLE1+YouCtrl\nOracle:When Leonin Squire enters, return target artifact card with mana value 1 or less from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonin Squire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "leyline-phantom-corpus-m677",
+  "description": "M6 corpus — Leyline Phantom; ETB-on-bf.",
+  "seed": 64172,
+  "cards": {
+    "Leyline Phantom": "Name:Leyline Phantom\nManaCost:4 U\nTypes:Creature Illusion\nPT:5/5\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME deals combat damage, return it to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nOracle:When Leyline Phantom deals combat damage, return it to its owner's hand. (Return it only if it survived combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leyline Phantom"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

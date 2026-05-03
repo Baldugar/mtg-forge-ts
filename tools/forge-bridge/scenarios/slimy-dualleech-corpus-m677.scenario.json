@@ -1,0 +1,23 @@
+{
+  "id": "slimy-dualleech-corpus-m677",
+  "description": "M6 corpus — Slimy Dualleech; in-hand parse.",
+  "seed": 70214,
+  "cards": {
+    "Slimy Dualleech": "Name:Slimy Dualleech\nManaCost:3 B\nTypes:Creature Leech\nPT:2/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control with power 2 or less gets +1/+0 and gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+powerLE2 | TgtPrompt$ Select target creature you control with power 2 or less | NumAtt$ +1 | KW$ Deathtouch\nOracle:At the beginning of combat on your turn, target creature you control with power 2 or less gets +1/+0 and gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slimy Dualleech"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-sailback-corpus-m677",
+  "description": "M6 corpus — Ravenous Sailback; in-hand parse.",
+  "seed": 67764,
+  "cards": {
+    "Ravenous Sailback": "Name:Ravenous Sailback\nManaCost:4 G\nTypes:Creature Dinosaur\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Haste,Destroy\nSVar:Haste:DB$ Pump | KW$ Haste | SpellDescription$ CARDNAME gains haste until end of turn.\nSVar:Destroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nOracle:When Ravenous Sailback enters, choose one —\\n• Ravenous Sailback gains haste until end of turn.\\n• Destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Sailback"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

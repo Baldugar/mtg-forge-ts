@@ -1,0 +1,23 @@
+{
+  "id": "smell-fear-corpus-m677",
+  "description": "M6 corpus — Smell Fear; in-hand parse.",
+  "seed": 70253,
+  "cards": {
+    "Smell Fear": "Name:Smell Fear\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Proliferate | SubAbility$ DBPump | SpellDescription$ Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) Target creature you control fights up to one target creature you don't control.\nSVar:DBPump:DB$ Pump | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ DBFight | StackDescription$ None | SpellDescription$ Target creature you control fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature you don't control\nOracle:Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\\nTarget creature you control fights up to one target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smell Fear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

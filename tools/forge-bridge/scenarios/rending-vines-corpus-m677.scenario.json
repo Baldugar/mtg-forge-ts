@@ -1,0 +1,23 @@
+{
+  "id": "rending-vines-corpus-m677",
+  "description": "M6 corpus — Rending Vines; in-hand parse.",
+  "seed": 68036,
+  "cards": {
+    "Rending Vines": "Name:Rending Vines\nManaCost:1 G G\nTypes:Instant Arcane\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | ConditionCheckSVar$ Y | ConditionSVarCompare$ LEX | AITgts$ Card.cmcLTX | SubAbility$ DBDraw | SpellDescription$ Destroy target artifact or enchantment if its mana value is less than or equal to the number of cards in your hand.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:Y:Targeted$CardManaCost\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:Destroy target artifact or enchantment if its mana value is less than or equal to the number of cards in your hand.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rending Vines"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

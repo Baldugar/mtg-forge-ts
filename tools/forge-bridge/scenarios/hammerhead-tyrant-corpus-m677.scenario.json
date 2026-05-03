@@ -1,0 +1,25 @@
+{
+  "id": "hammerhead-tyrant-corpus-m677",
+  "description": "M6 corpus — Hammerhead Tyrant; ETB-on-bf.",
+  "seed": 62012,
+  "cards": {
+    "Hammerhead Tyrant": "Name:Hammerhead Tyrant\nManaCost:4 U U\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ Whenever you cast a spell, return up to one target nonland permanent an opponent controls with mana value less than or equal to that spell's mana value to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Permanent.nonLand+OppCtrl+cmcLEX | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target permanent nonland permanent an opponent controls with mana value less than or equal to that spell's mana value | Origin$ Battlefield | Destination$ Hand\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Flying\\nWhenever you cast a spell, return up to one target nonland permanent an opponent controls with mana value less than or equal to that spell's mana value to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hammerhead Tyrant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

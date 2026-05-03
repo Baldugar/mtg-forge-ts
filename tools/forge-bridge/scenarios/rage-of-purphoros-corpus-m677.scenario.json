@@ -1,0 +1,23 @@
+{
+  "id": "rage-of-purphoros-corpus-m677",
+  "description": "M6 corpus — Rage of Purphoros; in-hand parse.",
+  "seed": 67553,
+  "cards": {
+    "Rage of Purphoros": "Name:Rage of Purphoros\nManaCost:4 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 4 | SubAbility$ DBPump | SpellDescription$ CARDNAME deals 4 damage to target creature. It can't be regenerated this turn. Scry 1.\nSVar:DBPump:DB$ Effect | RememberObjects$ ParentTarget | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | SubAbility$ DBScry | AILogic$ CantRegenerate\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nOracle:Rage of Purphoros deals 4 damage to target creature. It can't be regenerated this turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rage of Purphoros"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

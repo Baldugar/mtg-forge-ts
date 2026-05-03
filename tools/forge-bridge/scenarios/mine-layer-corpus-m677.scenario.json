@@ -1,0 +1,23 @@
+{
+  "id": "mine-layer-corpus-m677",
+  "description": "M6 corpus — Mine Layer; in-hand parse.",
+  "seed": 65190,
+  "cards": {
+    "Mine Layer": "Name:Mine Layer\nManaCost:3 R\nTypes:Creature Dwarf\nPT:1/1\nA:AB$ PutCounter | Cost$ 1 R T | ValidTgts$ Land | CounterType$ MINE | CounterNum$ 1 | IsCurse$ True | SpellDescription$ Put a mine counter on target land.\nT:Mode$ Taps | ValidCard$ Land.counters_GE1_MINE | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever a land with a mine counter on it becomes tapped, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigRemove | TriggerDescription$ When CARDNAME leaves the battlefield, remove all mine counters from all lands.\nSVar:TrigRemove:DB$ RemoveCounterAll | ValidCards$ Land | CounterType$ MINE | AllCounters$ True\nOracle:{1}{R}, {T}: Put a mine counter on target land.\\nWhenever a land with a mine counter on it becomes tapped, destroy it.\\nWhen Mine Layer leaves the battlefield, remove all mine counters from all lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mine Layer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "luminescent-rain-corpus-m677",
+  "description": "M6 corpus — Luminescent Rain; in-hand parse.",
+  "seed": 64490,
+  "cards": {
+    "Luminescent Rain": "Name:Luminescent Rain\nManaCost:2 G\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentComputerControls | SubAbility$ DBGainLife | SpellDescription$ Choose a creature type. You gain 2 life for each permanent you control of that type.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | StackDescription$ You gain 2 life for each permanent you control of that type.\nSVar:X:Count$Valid Permanent.ChosenType+YouCtrl/Times.2\nSVar:NeedsToPlay:Creature\nOracle:Choose a creature type. You gain 2 life for each permanent you control of that type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Luminescent Rain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

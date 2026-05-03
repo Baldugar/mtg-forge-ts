@@ -1,0 +1,23 @@
+{
+  "id": "riveteers-confluence-corpus-m677",
+  "description": "M6 corpus — Riveteers Confluence; in-hand parse.",
+  "seed": 68408,
+  "cards": {
+    "Riveteers Confluence": "Name:Riveteers Confluence\nManaCost:2 B R G\nTypes:Sorcery\nA:SP$ Charm | Choices$ Draw,Damage,PutLand | CharmNum$ 3 | CanRepeatModes$ True\nSVar:Draw:DB$ Draw | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:Damage:DB$ DamageAll | ValidCards$ Creature.YouDontCtrl,Planeswalker.YouDontCtrl | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to each creature and planeswalker you don't control.\nSVar:PutLand:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.YouCtrl | SpellDescription$ You may put a land card from your hand or graveyard onto the battlefield tapped.\nDeckHas:Ability$Graveyard\nOracle:Choose three. You may choose the same mode more than once.\\n• You draw a card and you lose 1 life.\\n• Riveteers Confluence deals 1 damage to each creature and planeswalker you don't control.\\n• You may put a land card from your hand or graveyard onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riveteers Confluence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

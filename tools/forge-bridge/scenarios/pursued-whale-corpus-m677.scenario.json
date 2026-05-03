@@ -1,0 +1,23 @@
+{
+  "id": "pursued-whale-corpus-m677",
+  "description": "M6 corpus — Pursued Whale; in-hand parse.",
+  "seed": 67387,
+  "cards": {
+    "Pursued Whale": "Name:Pursued Whale\nManaCost:5 U U\nTypes:Creature Whale\nPT:8/8\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, each opponent creates a 1/1 red Pirate creature token with \"This creature can't block\" and \"Creatures you control attack each combat if able.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_pirate_noblock_all_attack | TokenOwner$ Opponent\nSVar:PlayMain1:TRUE\nS:Mode$ RaiseCost | ValidTarget$ Card.Self | Activator$ Opponent | Type$ Spell | Amount$ 3 | Description$ Spells your opponents cast that target CARDNAME cost {3} more to cast.\nOracle:When Pursued Whale enters, each opponent creates a 1/1 red Pirate creature token with \"This creature can't block\" and \"Creatures you control attack each combat if able.\"\\nSpells your opponents cast that target Pursued Whale cost {3} more to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pursued Whale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

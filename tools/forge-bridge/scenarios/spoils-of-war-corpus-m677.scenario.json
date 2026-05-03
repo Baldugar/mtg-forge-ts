@@ -1,0 +1,23 @@
+{
+  "id": "spoils-of-war-corpus-m677",
+  "description": "M6 corpus — Spoils of War; in-hand parse.",
+  "seed": 70760,
+  "cards": {
+    "Spoils of War": "Name:Spoils of War\nManaCost:X B\nTypes:Sorcery\nText:X is the number of artifact and/or creature cards in an opponent's graveyard as you cast this spell.\nA:SP$ PutCounter | AnnounceType$ Opponent | ValidTgts$ Creature | TgtPrompt$ Select target creature to distribute counters to | CounterType$ P1P1 | CounterNum$ X | TargetMin$ 0 | TargetMax$ X | DividedAsYouChoose$ X | SpellDescription$ Distribute X +1/+1 counters among any number of target creatures.\nSVar:X:Count$LastStateGraveyardWithFallback Creature.ChosenCtrl,Artifact.ChosenCtrl\nAI:RemoveDeck:All\nOracle:X is the number of artifact and/or creature cards in an opponent's graveyard as you cast this spell.\\nDistribute X +1/+1 counters among any number of target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spoils of War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

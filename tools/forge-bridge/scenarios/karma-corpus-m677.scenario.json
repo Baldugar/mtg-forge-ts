@@ -1,0 +1,23 @@
+{
+  "id": "karma-corpus-m677",
+  "description": "M6 corpus — Karma; in-hand parse.",
+  "seed": 63489,
+  "cards": {
+    "Karma": "Name:Karma\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each player's upkeep, CARDNAME deals damage to that player equal to the number of Swamps they control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$Valid Swamp.ActivePlayerCtrl\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:CountOpps GTCountMe\nSVar:CountOpps:Count$Valid Swamp.OppCtrl/LimitMax.5\nSVar:CountMe:Count$Valid Swamp.YouCtrl\nOracle:At the beginning of each player's upkeep, Karma deals damage to that player equal to the number of Swamps they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

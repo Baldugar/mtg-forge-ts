@@ -1,0 +1,23 @@
+{
+  "id": "ribbons-of-night-corpus-m677",
+  "description": "M6 corpus — Ribbons of Night; in-hand parse.",
+  "seed": 68240,
+  "cards": {
+    "Ribbons of Night": "Name:Ribbons of Night\nManaCost:4 B\nTypes:Sorcery\nA:SP$ DealDamage | NumDmg$ 4 | ValidTgts$ Creature | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 4 damage to target creature and you gain 4 life. If {U} was spent to cast this spell, draw a card.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionManaSpent$ U\nSVar:ManaNeededToAvoidNegativeEffect:blue\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:Ribbons of Night deals 4 damage to target creature and you gain 4 life. If {U} was spent to cast this spell, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ribbons of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

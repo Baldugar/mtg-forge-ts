@@ -1,0 +1,23 @@
+{
+  "id": "sting-the-glinting-dagger-corpus-m677",
+  "description": "M6 corpus — Sting, the Glinting Dagger; in-hand parse.",
+  "seed": 70999,
+  "cards": {
+    "Sting, the Glinting Dagger": "Name:Sting, the Glinting Dagger\nManaCost:2\nTypes:Legendary Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Haste | Description$ Equipped creature gets +1/+1 and has haste.\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of each combat, untap equipped creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Equipped\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ First Strike | IsPresent$ Creature.EquippedBy+blockingValid Goblin,Creature.EquippedBy+blockingValid Orc,Goblin.blockingValid Creature.EquippedBy,Orc.blockingValid Creature.EquippedBy | Description$ Equipped creature has first strike as long as it's blocking or blocked by a Goblin or Orc.\nOracle:Equipped creature gets +1/+1 and has haste.\\nAt the beginning of each combat, untap equipped creature.\\nEquipped creature has first strike as long as it's blocking or blocked by a Goblin or Orc.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sting, the Glinting Dagger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

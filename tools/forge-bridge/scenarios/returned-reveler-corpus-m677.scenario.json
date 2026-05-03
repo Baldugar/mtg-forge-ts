@@ -1,0 +1,23 @@
+{
+  "id": "returned-reveler-corpus-m677",
+  "description": "M6 corpus — Returned Reveler; in-hand parse.",
+  "seed": 68166,
+  "cards": {
+    "Returned Reveler": "Name:Returned Reveler\nManaCost:1 B\nTypes:Creature Zombie Satyr\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME dies, each player mills three cards.\nSVar:TrigMill:DB$ Mill | Defined$ Player | NumCards$ 3\nOracle:When Returned Reveler dies, each player mills three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Returned Reveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

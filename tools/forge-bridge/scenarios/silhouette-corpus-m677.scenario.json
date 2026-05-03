@@ -1,0 +1,23 @@
+{
+  "id": "silhouette-corpus-m677",
+  "description": "M6 corpus — Silhouette; in-hand parse.",
+  "seed": 69889,
+  "cards": {
+    "Silhouette": "Name:Silhouette\nManaCost:1 U\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ReplacementEffects$ RPrevent | StackDescription$ SpellDescription | SpellDescription$ Choose target creature. If a spell or ability that targets that creature would cause a source to deal damage to that creature this turn, prevent that damage.\nSVar:RPrevent:Event$ DamageDone | ValidCause$ SpellAbility.IsTargeting Remembered | ValidTarget$ Card.IsRemembered | Prevent$ True | Description$ If a spell or ability that targets that creature would cause a source to deal damage to that creature this turn, prevent that damage.\nOracle:Choose target creature. If a spell or ability that targets that creature would cause a source to deal damage to that creature this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silhouette"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

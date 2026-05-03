@@ -1,0 +1,23 @@
+{
+  "id": "paradise-plume-corpus-m677",
+  "description": "M6 corpus — Paradise Plume; in-hand parse.",
+  "seed": 66601,
+  "cards": {
+    "Paradise Plume": "Name:Paradise Plume\nManaCost:4\nTypes:Artifact\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInComputerDeck\nT:Mode$ SpellCast | ValidCard$ Card.ChosenColor | OptionalDecider$ You | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a spell of the chosen color, you may gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nOracle:As Paradise Plume enters, choose a color.\\nWhenever a player casts a spell of the chosen color, you may gain 1 life.\\n{T}: Add one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paradise Plume"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "iname-death-aspect-corpus-m677",
+  "description": "M6 corpus — Iname, Death Aspect; in-hand parse.",
+  "seed": 62841,
+  "cards": {
+    "Iname, Death Aspect": "Name:Iname, Death Aspect\nManaCost:4 B B\nTypes:Legendary Creature Spirit\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for any number of Spirit cards, put them into your graveyard, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | ChangeType$ Spirit.YouCtrl | Origin$ Library | Destination$ Graveyard | ChangeNum$ X | ShuffleNonMandatory$ True\nSVar:X:Count$ValidLibrary Spirit.YouCtrl\nAI:RemoveDeck:All\nOracle:When Iname, Death Aspect enters, you may search your library for any number of Spirit cards, put them into your graveyard, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iname, Death Aspect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kagemaro-s-clutch-corpus-m677",
+  "description": "M6 corpus — Kagemaro's Clutch; in-hand parse.",
+  "seed": 63427,
+  "cards": {
+    "Kagemaro's Clutch": "Name:Kagemaro's Clutch\nManaCost:3 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -X | AddToughness$ -X | Description$ Enchanted creature gets -X/-X, where X is the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature gets -X/-X, where X is the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kagemaro's Clutch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

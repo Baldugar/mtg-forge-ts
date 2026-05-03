@@ -1,0 +1,23 @@
+{
+  "id": "manor-gate-corpus-m677",
+  "description": "M6 corpus — Manor Gate; in-hand parse.",
+  "seed": 64726,
+  "cards": {
+    "Manor Gate": "Name:Manor Gate\nManaCost:no cost\nTypes:Land Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | Exclude$ green | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color other than green.\nA:AB$ Mana | Cost$ T | Produced$ Combo G Chosen | SpellDescription$ Add {G} or one mana of the chosen color.\nDeckHints:Type$Gate\nOracle:Manor Gate enters tapped.\\nAs Manor Gate enters, choose a color other than green.\\n{T}: Add {G} or one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manor Gate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

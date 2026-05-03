@@ -1,0 +1,23 @@
+{
+  "id": "pyromancer-s-swath-corpus-m677",
+  "description": "M6 corpus — Pyromancer's Swath; in-hand parse.",
+  "seed": 67419,
+  "cards": {
+    "Pyromancer's Swath": "Name:Pyromancer's Swath\nManaCost:2 R\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Instant.YouCtrl,Sorcery.YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus2 | Description$ If an instant or sorcery source you control would deal damage to a permanent or player, it deals that much damage plus 2 to that permanent or player instead.\nSVar:DmgPlus2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.2\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of each end step, discard your hand.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand\nAI:RemoveDeck:Random\nOracle:If an instant or sorcery source you control would deal damage to a permanent or player, it deals that much damage plus 2 to that permanent or player instead.\\nAt the beginning of each end step, discard your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyromancer's Swath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

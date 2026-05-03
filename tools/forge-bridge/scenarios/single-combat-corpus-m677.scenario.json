@@ -1,0 +1,23 @@
+{
+  "id": "single-combat-corpus-m677",
+  "description": "M6 corpus — Single Combat; in-hand parse.",
+  "seed": 69968,
+  "cards": {
+    "Single Combat": "Name:Single Combat\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ Player | Choices$ Creature,Planeswalker | ControlledByPlayer$ Chooser | ChoiceTitle$ Choose a creature or planeswalker to keep | Mandatory$ True | Reveal$ True | SubAbility$ SacAllOthers | StackDescription$ SpellDescription | SpellDescription$ Each player chooses a creature or planeswalker they control, then sacrifices the rest. Players can't cast creature or planeswalker spells until the end of your next turn.\nSVar:SacAllOthers:DB$ SacrificeAll | ValidCards$ Creature.nonChosenCard,Planeswalker.nonChosenCard | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STCantBeCast | Duration$ UntilTheEndOfYourNextTurn\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Creature,Planeswalker | Description$ Players can't cast creature or planeswalker spells.\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Each player chooses a creature or planeswalker they control, then sacrifices the rest. Players can't cast creature or planeswalker spells until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Single Combat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

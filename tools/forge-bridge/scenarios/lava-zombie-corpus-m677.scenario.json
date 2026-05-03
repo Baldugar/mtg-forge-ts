@@ -1,0 +1,23 @@
+{
+  "id": "lava-zombie-corpus-m677",
+  "description": "M6 corpus — Lava Zombie; in-hand parse.",
+  "seed": 64028,
+  "cards": {
+    "Lava Zombie": "Name:Lava Zombie\nManaCost:1 B R\nTypes:Creature Zombie\nPT:4/3\nA:AB$ Pump | Cost$ 2 | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a black or red creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Black+YouCtrl,Creature.Red+YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.Black+cmcLE3+YouCtrl,Creature.Red+cmcLE3+YouCtrl\nOracle:When Lava Zombie enters, return a black or red creature you control to its owner's hand.\\n{2}: Lava Zombie gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lava Zombie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

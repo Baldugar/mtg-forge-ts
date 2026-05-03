@@ -1,0 +1,23 @@
+{
+  "id": "noggle-bridgebreaker-corpus-m677",
+  "description": "M6 corpus — Noggle Bridgebreaker; in-hand parse.",
+  "seed": 66041,
+  "cards": {
+    "Noggle Bridgebreaker": "Name:Noggle Bridgebreaker\nManaCost:2 UR UR\nTypes:Creature Noggle Rogue\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return a land you control to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Land.YouCtrl | SpellDescription$ Return a land you control to its owner's hand.\nOracle:When Noggle Bridgebreaker enters, return a land you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noggle Bridgebreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

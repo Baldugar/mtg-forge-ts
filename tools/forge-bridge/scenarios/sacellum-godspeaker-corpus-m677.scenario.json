@@ -1,0 +1,25 @@
+{
+  "id": "sacellum-godspeaker-corpus-m677",
+  "description": "M6 corpus — Sacellum Godspeaker; ETB-on-bf.",
+  "seed": 68834,
+  "cards": {
+    "Sacellum Godspeaker": "Name:Sacellum Godspeaker\nManaCost:2 G\nTypes:Creature Elf Druid\nPT:2/2\nA:AB$ Reveal | Cost$ T | RevealValid$ Creature.powerGE5+YouCtrl | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBSpeakerMana | SpellDescription$ Reveal any number of creature cards with power 5 or greater from your hand. Add {G} for each card revealed this way.\nSVar:DBSpeakerMana:DB$ Mana | Produced$ G | Amount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:{T}: Reveal any number of creature cards with power 5 or greater from your hand. Add {G} for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sacellum Godspeaker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

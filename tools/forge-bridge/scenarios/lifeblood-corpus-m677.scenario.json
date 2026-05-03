@@ -1,0 +1,25 @@
+{
+  "id": "lifeblood-corpus-m677",
+  "description": "M6 corpus — Lifeblood; ETB-on-bf.",
+  "seed": 64207,
+  "cards": {
+    "Lifeblood": "Name:Lifeblood\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ Taps | ValidCard$ Mountain.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a Mountain an opponent controls becomes tapped, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | Defined$ You\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nOracle:Whenever a Mountain an opponent controls becomes tapped, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lifeblood"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

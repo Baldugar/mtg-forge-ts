@@ -1,0 +1,23 @@
+{
+  "id": "matsu-tribe-birdstalker-corpus-m677",
+  "description": "M6 corpus — Matsu-Tribe Birdstalker; in-hand parse.",
+  "seed": 64889,
+  "cards": {
+    "Matsu-Tribe Birdstalker": "Name:Matsu-Tribe Birdstalker\nManaCost:2 G G\nTypes:Creature Snake Warrior Archer\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nA:AB$ Pump | Cost$ G | KW$ Reach | Defined$ Self | SpellDescription$ CARDNAME gains reach until end of turn. (It can block creatures with flying.)\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Matsu-Tribe Birdstalker deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\\n{G}: Matsu-Tribe Birdstalker gains reach until end of turn. (It can block creatures with flying.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Matsu-Tribe Birdstalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

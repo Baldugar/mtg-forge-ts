@@ -1,0 +1,25 @@
+{
+  "id": "halving-season-corpus-m677",
+  "description": "M6 corpus — Halving Season; ETB-on-bf.",
+  "seed": 61999,
+  "cards": {
+    "Halving Season": "Name:Halving Season\nManaCost:4 B\nTypes:Enchantment\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidToken$ Card.OppCtrl | ReplaceWith$ HalveToken | EffectOnly$ True | Description$ If an opponent would create one or more tokens, they create half that many of each of those kinds of tokens instead, rounded down.\nSVar:HalveToken:DB$ ReplaceToken | Type$ Amount | Amount$ HalfDown\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidSource$ Opponent | ValidObject$ Permanent.inZoneBattlefield,Player | ReplaceWith$ HalfCounters | Description$ If an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.\nSVar:HalfCounters:DB$ ReplaceCounter | ValidSource$ Opponent | Amount$ Y\nSVar:Y:ReplaceCount$CounterNum/HalfDown\nOracle:If an opponent would create one or more tokens, they create half that many of each of those kinds of tokens instead, rounded down.\\nIf an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Halving Season"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "omnath-locus-of-creation-corpus-m677",
+  "description": "M6 corpus — Omnath, Locus of Creation; in-hand parse.",
+  "seed": 66291,
+  "cards": {
+    "Omnath, Locus of Creation": "Name:Omnath, Locus of Creation\nManaCost:R G W U\nTypes:Legendary Creature Elemental\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ DBGainLife | TriggerDescription$ Landfall — Whenever a land you control enters, you gain 4 life if this is the first time this ability has resolved this turn. If it's the second time, add {R}{G}{W}{U}. If it's the third time, NICKNAME deals 4 damage to each opponent and each planeswalker you don't control.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4 | ConditionCheckSVar$ LandfallAmount | ConditionSVarCompare$ EQ1 | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ R G W U | ConditionCheckSVar$ LandfallAmount | ConditionSVarCompare$ EQ2 | SubAbility$ DBDamageAll\nSVar:DBDamageAll:DB$ DamageAll | ValidPlayers$ Opponent | ValidCards$ Planeswalker.YouDontCtrl | NumDmg$ 4 | ConditionCheckSVar$ LandfallAmount | ConditionSVarCompare$ EQ3\nSVar:LandfallAmount:Count$ResolvedThisTurn\nSVar:BuffedBy:Land\nDeckHas:Ability$LifeGain\nOracle:When Omnath, Locus of Creation enters, draw a card.\\nLandfall — Whenever a land you control enters, you gain 4 life if this is the first time this ability has resolved this turn. If it's the second time, add {R}{G}{W}{U}. If it's the third time, Omnath deals 4 damage to each opponent and each planeswalker you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omnath, Locus of Creation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

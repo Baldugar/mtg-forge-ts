@@ -1,0 +1,23 @@
+{
+  "id": "recruit-instructor-corpus-m677",
+  "description": "M6 corpus — Recruit Instructor; in-hand parse.",
+  "seed": 67905,
+  "cards": {
+    "Recruit Instructor": "Name:Recruit Instructor\nManaCost:R W\nTypes:Creature Mouse Warrior\nPT:1/1\nT:Mode$ AttackersDeclared | ValidAttackers$ Card.Self | Execute$ TrigDraft | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, draft a card from CARDNAME's spellbook.\nSVar:TrigDraft:DB$ Draft | Spellbook$ Angelfire Ignition,Barge In,Become Brutes,Boon of Safety,Cheeky House-Mouse,Crumb and Get It,Defiant Strike,Embercleave,Feather of Flight,Mabel's Mettle,Might of the Meek,Moment of Heroism,Unleash Fury,War Squeak\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.YouCtrl | TriggerZones$ Battlefield | FirstTime$ True | Execute$ TrigToken | TriggerDescription$ Valiant — Whenever CARDNAME becomes the target of a spell or ability you control for the first time each turn, create a 1/1 white Mouse creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_mouse | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nOracle:Whenever this creature attacks, draft a card from Recruit Instructor's spellbook.\\nValiant — Whenever Recruit Instructor becomes the target of a spell or ability you control for the first time each turn, create a 1/1 white Mouse creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recruit Instructor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

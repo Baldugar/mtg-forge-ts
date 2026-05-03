@@ -1,0 +1,23 @@
+{
+  "id": "heliod-s-pilgrim-corpus-m677",
+  "description": "M6 corpus — Heliod's Pilgrim; in-hand parse.",
+  "seed": 62227,
+  "cards": {
+    "Heliod's Pilgrim": "Name:Heliod's Pilgrim\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an Aura card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Aura | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Type$Aura\nOracle:When Heliod's Pilgrim enters, you may search your library for an Aura card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heliod's Pilgrim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

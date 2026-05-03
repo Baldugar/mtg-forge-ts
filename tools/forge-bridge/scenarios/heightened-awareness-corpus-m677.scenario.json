@@ -1,0 +1,23 @@
+{
+  "id": "heightened-awareness-corpus-m677",
+  "description": "M6 corpus — Heightened Awareness; in-hand parse.",
+  "seed": 62217,
+  "cards": {
+    "Heightened Awareness": "Name:Heightened Awareness\nManaCost:3 U U\nTypes:Enchantment\nK:ETBReplacement:Other:TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | SpellDescription$ As CARDNAME enters, discard your hand.\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your draw step, draw an additional card.\nSVar:TrigDraw:DB$ Draw\nSVar:NeedsToPlayVar:Y LE2\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:As Heightened Awareness enters, discard your hand.\\nAt the beginning of your draw step, draw an additional card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heightened Awareness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

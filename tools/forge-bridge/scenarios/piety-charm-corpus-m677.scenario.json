@@ -1,0 +1,23 @@
+{
+  "id": "piety-charm-corpus-m677",
+  "description": "M6 corpus — Piety Charm; in-hand parse.",
+  "seed": 66888,
+  "cards": {
+    "Piety Charm": "Name:Piety Charm\nManaCost:W\nTypes:Instant\nA:SP$ Charm | Choices$ DetroyAura,PumpSoldier,PumpVigilance\nSVar:DetroyAura:DB$ Destroy | ValidTgts$ Aura.AttachedTo Creature | TgtPrompt$ Select target Aura attached to a creature | SpellDescription$ Destroy target Aura attached to a creature.\nSVar:PumpSoldier:DB$ Pump | NumAtt$ +2 | NumDef$ +2 | ValidTgts$ Creature.Soldier | TgtPrompt$ Select target Soldier creature | SpellDescription$ Target Soldier creature gets +2/+2 until end of turn.\nSVar:PumpVigilance:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance | SpellDescription$ Creatures you control gain vigilance until end of turn.\nAI:RemoveDeck:Random\nDeckHints:Type$Soldier\nOracle:Choose one —\\n• Destroy target Aura attached to a creature.\\n• Target Soldier creature gets +2/+2 until end of turn.\\n• Creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Piety Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

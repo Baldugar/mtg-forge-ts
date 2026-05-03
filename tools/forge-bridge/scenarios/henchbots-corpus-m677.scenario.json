@@ -1,0 +1,23 @@
+{
+  "id": "henchbots-corpus-m677",
+  "description": "M6 corpus — Henchbots; in-hand parse.",
+  "seed": 62256,
+  "cards": {
+    "Henchbots": "Name:Henchbots\nManaCost:4\nTypes:Artifact Creature Robot\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature enters, exile target tapped creature an opponent controls until this creature leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.tapped+OppCtrl | TgtPrompt$ Select target tapped creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When this creature enters, exile target tapped creature an opponent controls until this creature leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Henchbots"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

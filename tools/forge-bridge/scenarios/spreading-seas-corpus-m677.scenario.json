@@ -1,0 +1,23 @@
+{
+  "id": "spreading-seas-corpus-m677",
+  "description": "M6 corpus — Spreading Seas; in-hand parse.",
+  "seed": 70781,
+  "cards": {
+    "Spreading Seas": "Name:Spreading Seas\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:ChangeType\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddType$ Island | RemoveLandTypes$ True | Description$ Enchanted land is an Island.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant land\\nWhen Spreading Seas enters, draw a card.\\nEnchanted land is an Island.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spreading Seas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

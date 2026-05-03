@@ -1,0 +1,23 @@
+{
+  "id": "notorious-throng-corpus-m677",
+  "description": "M6 corpus — Notorious Throng; in-hand parse.",
+  "seed": 66074,
+  "cards": {
+    "Notorious Throng": "Name:Notorious Throng\nManaCost:3 U\nTypes:Kindred Sorcery Rogue\nK:Prowl:5 U\nA:SP$ Token | TokenAmount$ X | TokenScript$ b_1_1_faerie_rogue_flying | TokenOwner$ You | SubAbility$ DBTakeTurn | SpellDescription$ Create X 1/1 black Faerie Rogue creature tokens with flying, where X is the damage dealt to your opponents this turn. If CARDNAME's prowl cost was paid, take an extra turn after this one.\nSVar:DBTakeTurn:DB$ AddTurn | NumTurns$ 1 | ConditionDefined$ Self | ConditionPresent$ Card.prowled\nSVar:X:Count$BloodthirstAmount\nDeckNeeds:Type$Rogue\nOracle:Prowl {5}{U} (You may cast this for its prowl cost if you dealt combat damage to a player this turn with a Rogue.)\\nCreate X 1/1 black Faerie Rogue creature tokens with flying, where X is the damage dealt to your opponents this turn. If this spell's prowl cost was paid, take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Notorious Throng"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

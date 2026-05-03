@@ -1,0 +1,23 @@
+{
+  "id": "provoke-the-trolls-corpus-m677",
+  "description": "M6 corpus — Provoke the Trolls; in-hand parse.",
+  "seed": 67295,
+  "cards": {
+    "Provoke the Trolls": "Name:Provoke the Trolls\nManaCost:3 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | RememberDamaged$ True | SubAbility$ DBPump | SpellDescription$ CARDNAME deals 3 damage to any target. If a creature is dealt damage this way, it gets +5/+0 until end of turn. | StackDescription$ SpellDescription\nSVar:DBPump:DB$ Pump | Defined$ Remembered.Creature | NumAtt$ +5 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Provoke the Trolls deals 3 damage to any target. If a creature is dealt damage this way, it gets +5/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Provoke the Trolls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quicksilver-fisher-corpus-m677",
+  "description": "M6 corpus — Quicksilver Fisher; in-hand parse.",
+  "seed": 67479,
+  "cards": {
+    "Quicksilver Fisher": "Name:Quicksilver Fisher\nManaCost:3 U U\nTypes:Creature Phyrexian Drake\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:Flying\\nWhen Quicksilver Fisher enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quicksilver Fisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

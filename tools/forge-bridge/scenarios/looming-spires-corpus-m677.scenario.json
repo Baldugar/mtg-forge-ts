@@ -1,0 +1,23 @@
+{
+  "id": "looming-spires-corpus-m677",
+  "description": "M6 corpus — Looming Spires; in-hand parse.",
+  "seed": 64383,
+  "cards": {
+    "Looming Spires": "Name:Looming Spires\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +1/+1 and gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ First Strike\nSVar:PlayMain1:TRUE\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nOracle:Looming Spires enters tapped.\\nWhen Looming Spires enters, target creature gets +1/+1 and gains first strike until end of turn.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Looming Spires"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

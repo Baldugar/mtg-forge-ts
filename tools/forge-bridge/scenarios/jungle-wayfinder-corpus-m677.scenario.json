@@ -1,0 +1,23 @@
+{
+  "id": "jungle-wayfinder-corpus-m677",
+  "description": "M6 corpus — Jungle Wayfinder; in-hand parse.",
+  "seed": 63388,
+  "cards": {
+    "Jungle Wayfinder": "Name:Jungle Wayfinder\nManaCost:2 G\nTypes:Creature Elf Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, each player may search their library for a basic land card, reveal it, put it into their hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Optional$ True | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | DefinedPlayer$ Player | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Jungle Wayfinder enters, each player may search their library for a basic land card, reveal it, put it into their hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jungle Wayfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

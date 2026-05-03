@@ -1,0 +1,23 @@
+{
+  "id": "phantom-centaur-corpus-m677",
+  "description": "M6 corpus — Phantom Centaur; in-hand parse.",
+  "seed": 66802,
+  "cards": {
+    "Phantom Centaur": "Name:Phantom Centaur\nManaCost:2 G G\nTypes:Creature Centaur Spirit\nPT:2/0\nK:Protection from black\nK:etbCounter:P1P1:3\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. Remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Protection from black\\nPhantom Centaur enters with three +1/+1 counters on it.\\nIf damage would be dealt to Phantom Centaur, prevent that damage. Remove a +1/+1 counter from Phantom Centaur.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantom Centaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

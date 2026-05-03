@@ -1,0 +1,25 @@
+{
+  "id": "isolated-watchtower-corpus-m677",
+  "description": "M6 corpus — Isolated Watchtower; ETB-on-bf.",
+  "seed": 63161,
+  "cards": {
+    "Isolated Watchtower": "Name:Isolated Watchtower\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Scry | Cost$ 2 T | ScryNum$ 1 | SubAbility$ DBReveal | CheckSVar$ X | SVarCompare$ GEY | StackDescription$ REP Scry_{p:You} scries & you may_they may & your_their & put_{p:You} puts & . Activate only if an opponent controls at least two more lands than you._. | SpellDescription$ Scry 1, then you may reveal the top card of your library. If a basic land card is revealed this way, put it onto the battlefield tapped. Activate only if an opponent controls at least two more lands than you.\nSVar:DBReveal:DB$ Dig | DigNum$ 1 | RevealOptional$ True | RememberRevealed$ True | ChangeValid$ Land.Basic+IsRemembered | ChangeNum$ All | DestinationZone$ Battlefield | Tapped$ True | DestinationZone2$ Library | LibraryPosition2$ 0 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountOpponents$HighestValid Land.YouCtrl\nSVar:Y:Count$Valid Land.YouCtrl/Plus.2\nOracle:{T}: Add {C}.\\n{2}, {T}: Scry 1, then you may reveal the top card of your library. If a basic land card is revealed this way, put it onto the battlefield tapped. Activate only if an opponent controls at least two more lands than you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Isolated Watchtower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

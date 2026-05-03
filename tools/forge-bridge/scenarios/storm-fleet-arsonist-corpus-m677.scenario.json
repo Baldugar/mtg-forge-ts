@@ -1,0 +1,23 @@
+{
+  "id": "storm-fleet-arsonist-corpus-m677",
+  "description": "M6 corpus — Storm Fleet Arsonist; in-hand parse.",
+  "seed": 71087,
+  "cards": {
+    "Storm Fleet Arsonist": "Name:Storm Fleet Arsonist\nManaCost:4 R\nTypes:Creature Orc Pirate\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigSacPerm | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, target opponent sacrifices a permanent.\nSVar:RaidTest:Count$AttackersDeclared\nSVar:TrigSacPerm:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Permanent | SpellDescription$ Target opponent sacrifices a permanent.\nOracle:Raid — When Storm Fleet Arsonist enters, if you attacked this turn, target opponent sacrifices a permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm Fleet Arsonist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

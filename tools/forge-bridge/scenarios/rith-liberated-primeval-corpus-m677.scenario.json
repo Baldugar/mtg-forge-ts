@@ -1,0 +1,23 @@
+{
+  "id": "rith-liberated-primeval-corpus-m677",
+  "description": "M6 corpus — Rith, Liberated Primeval; in-hand parse.",
+  "seed": 68371,
+  "cards": {
+    "Rith, Liberated Primeval": "Name:Rith, Liberated Primeval\nManaCost:2 R G W\nTypes:Legendary Creature Dragon\nPT:5/5\nK:Flying\nK:Ward:2\nS:Mode$ Continuous | Affected$ Dragon.Other+YouCtrl | AddKeyword$ Ward:2 | Description$ Other Dragons you control have ward {2}.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ DragonCheck | TriggerZones$ Battlefield | Execute$ DBDragon | TriggerDescription$ At the beginning of your end step, if a creature or planeswalker an opponent controlled was dealt excess damage this turn, create a 4/4 red Dragon creature token with flying.\nSVar:DBDragon:DB$ Token | TokenScript$ r_4_4_dragon_flying\nSVar:DragonCheck:Count$NumDamageThisTurn Card Creature.OppCtrl+wasDealtExcessDamageThisTurn,Planeswalker.OppCtrl+wasDealtExcessDamageThisTurn\nDeckHas:Ability$Token\nDeckHints:Type$Dragon\nOracle:Flying, ward {2}\\nOther dragons you control have ward {2}.\\nAt the beginning of your end step, if a creature or planeswalker an opponent controlled was dealt excess damage this turn, create a 4/4 red Dragon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rith, Liberated Primeval"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

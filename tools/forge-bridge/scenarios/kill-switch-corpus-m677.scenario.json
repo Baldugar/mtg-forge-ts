@@ -1,0 +1,25 @@
+{
+  "id": "kill-switch-corpus-m677",
+  "description": "M6 corpus — Kill Switch; ETB-on-bf.",
+  "seed": 63634,
+  "cards": {
+    "Kill Switch": "Name:Kill Switch\nManaCost:3\nTypes:Artifact\nA:AB$ TapAll | Cost$ 2 T | ValidCards$ Artifact.StrictlyOther | SubAbility$ DBEffect | SpellDescription$ Tap all other artifacts. They don't untap during their controllers' untap steps for as long as CARDNAME remains tapped. | StackDescription$ SpellDescription\nSVar:DBEffect:DB$ Effect | IsCurse$ True | ReplacementEffects$ DontUntap | Duration$ UntilUntaps | RememberObjects$ Valid Artifact.Other | ForgetOnMoved$ Battlefield\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ They don't untap during their controllers' untap steps for as long as EFFECTSOURCE remains tapped.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:{2}, {T}: Tap all other artifacts. They don't untap during their controllers' untap steps for as long as Kill Switch remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kill Switch"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

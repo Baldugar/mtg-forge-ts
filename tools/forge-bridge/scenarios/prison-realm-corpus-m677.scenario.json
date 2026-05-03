@@ -1,0 +1,23 @@
+{
+  "id": "prison-realm-corpus-m677",
+  "description": "M6 corpus — Prison Realm; in-hand parse.",
+  "seed": 67231,
+  "cards": {
+    "Prison Realm": "Name:Prison Realm\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature or planeswalker an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nOracle:When Prison Realm enters, exile target creature or planeswalker an opponent controls until Prison Realm leaves the battlefield.\\nWhen Prison Realm enters, scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prison Realm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

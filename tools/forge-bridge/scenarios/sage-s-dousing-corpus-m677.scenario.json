@@ -1,0 +1,23 @@
+{
+  "id": "sage-s-dousing-corpus-m677",
+  "description": "M6 corpus — Sage's Dousing; in-hand parse.",
+  "seed": 68870,
+  "cards": {
+    "Sage's Dousing": "Name:Sage's Dousing\nManaCost:2 U\nTypes:Kindred Instant Wizard\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ 3 | SubAbility$ DBDraw | SpellDescription$ Counter target spell unless its controller pays {3}. If you control a Wizard, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Wizard.YouCtrl | ConditionCompare$ GE1 | ConditionDescription$ If you control a Wizard,\nAI:RemoveDeck:Random\nDeckNeeds:Type$Wizard\nOracle:Counter target spell unless its controller pays {3}. If you control a Wizard, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage's Dousing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

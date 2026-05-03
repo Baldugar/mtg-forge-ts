@@ -1,0 +1,23 @@
+{
+  "id": "a-elderfang-ritualist-corpus-m677",
+  "description": "M6 corpus — A-Elderfang Ritualist; in-hand parse.",
+  "seed": 68726,
+  "cards": {
+    "A-Elderfang Ritualist": "Name:A-Elderfang Ritualist\nManaCost:1 B\nTypes:Creature Elf Cleric\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may exile it. If you do, return another target Elf or Tyvar card from your graveyard to your hand.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Elf.Other+YouOwn,Tyvar.Other+YouOwn | TgtPrompt$ Select another target Elf or Tyvar card from your graveyard\nSVar:SacMe:2\nDeckHas:Ability$Graveyard\nDeckHints:Type$Tyvar\nDeckNeeds:Type$Elf\nOracle:When Elderfang Ritualist dies, you may exile it. If you do, return another target Elf or Tyvar card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Elderfang Ritualist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

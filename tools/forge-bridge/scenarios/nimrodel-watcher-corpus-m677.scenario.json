@@ -1,0 +1,25 @@
+{
+  "id": "nimrodel-watcher-corpus-m677",
+  "description": "M6 corpus — Nimrodel Watcher; ETB-on-bf.",
+  "seed": 65988,
+  "cards": {
+    "Nimrodel Watcher": "Name:Nimrodel Watcher\nManaCost:1 U\nTypes:Creature Elf Scout\nPT:2/1\nT:Mode$ Scry | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | ActivationLimit$ 1 | TriggerDescription$ Whenever you scry, CARDNAME gets +1/+0 until end of turn and can't be blocked this turn. This ability triggers only once each turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nDeckHas:Ability$Counters\nOracle:Whenever you scry, Nimrodel Watcher gets +1/+0 until end of turn and can't be blocked this turn. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nimrodel Watcher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

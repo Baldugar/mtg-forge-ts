@@ -1,0 +1,23 @@
+{
+  "id": "spire-phantasm-corpus-m677",
+  "description": "M6 corpus — Spire Phantasm; in-hand parse.",
+  "seed": 70694,
+  "cards": {
+    "Spire Phantasm": "Name:Spire Phantasm\nManaCost:2 U U\nTypes:Creature Gargoyle Illusion\nPT:3/2\nDraft:Reveal CARDNAME as you draft it.\nDraft:The next time a player drafts a card from this booster pack, guess that card's name. Then that player reveals the drafted card.\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+NotedGuessPhantasm | Execute$ DrawACard | TriggerDescription$ When CARDNAME enters, if you guessed correctly for a card named Spire Phantasm, draw a card.\nSVar:DrawACard:DB$ Draw | Amount$ 1\nOracle:Reveal Spire Phantasm as you draft it. The next time a player drafts a card from this booster pack, guess that card's name. Then that player reveals the drafted card.\\nFlying\\nWhen Spire Phantasm enters, if you guessed correctly for a card named Spire Phantasm, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spire Phantasm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "molder-corpus-m677",
+  "description": "M6 corpus — Molder; in-hand parse.",
+  "seed": 65380,
+  "cards": {
+    "Molder": "Name:Molder\nManaCost:X G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact.cmcEQX,Enchantment.cmcEQX | TgtPrompt$ Select target artifact or enchantment | NoRegen$ True | SubAbility$ DBGainLife | SpellDescription$ Destroy target artifact or enchantment with mana value X. It can't be regenerated. You gain X life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$xPaid\nOracle:Destroy target artifact or enchantment with mana value X. It can't be regenerated. You gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

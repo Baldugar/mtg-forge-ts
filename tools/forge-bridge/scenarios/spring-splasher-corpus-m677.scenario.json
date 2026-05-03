@@ -1,0 +1,23 @@
+{
+  "id": "spring-splasher-corpus-m677",
+  "description": "M6 corpus — Spring Splasher; in-hand parse.",
+  "seed": 70785,
+  "cards": {
+    "Spring Splasher": "Name:Spring Splasher\nManaCost:1 U\nTypes:Creature Frog Beast\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target creature defending player controls gets -3/-0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls | NumAtt$ -3 | IsCurse$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Spring Splasher attacks, target creature defending player controls gets -3/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spring Splasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

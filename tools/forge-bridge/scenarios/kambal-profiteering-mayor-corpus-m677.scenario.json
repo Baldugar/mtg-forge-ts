@@ -1,0 +1,23 @@
+{
+  "id": "kambal-profiteering-mayor-corpus-m677",
+  "description": "M6 corpus — Kambal, Profiteering Mayor; in-hand parse.",
+  "seed": 63452,
+  "cards": {
+    "Kambal, Profiteering Mayor": "Name:Kambal, Profiteering Mayor\nManaCost:1 W B\nTypes:Legendary Creature Human Advisor\nPT:2/4\nT:Mode$ ChangesZoneAll | ValidCards$ Card.token+OppCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigCopy | TriggerDescription$ Whenever one or more tokens enter under your opponents' control, for each of them, create a tapped token that's a copy of it. This ability triggers only once each turn.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ TriggeredCards | TokenTapped$ True\nT:Mode$ ChangesZoneAll | ValidCards$ Card.token+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever one or more tokens you control enter, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nDeckHas:Ability$Token|LifeGain\nOracle:Whenever one or more tokens enter under your opponents' control, for each of them, create a tapped token that's a copy of it. This ability triggers only once each turn.\\nWhenever one or more tokens you control enter, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kambal, Profiteering Mayor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

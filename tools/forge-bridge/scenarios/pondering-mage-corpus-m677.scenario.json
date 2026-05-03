@@ -1,0 +1,23 @@
+{
+  "id": "pondering-mage-corpus-m677",
+  "description": "M6 corpus — Pondering Mage; in-hand parse.",
+  "seed": 67055,
+  "cards": {
+    "Pondering Mage": "Name:Pondering Mage\nManaCost:3 U U\nTypes:Creature Human Wizard\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRearrange | TriggerDescription$ When CARDNAME enters, look at the top three cards of your library, then put them back in any order. You may shuffle. Draw a card.\nSVar:TrigRearrange:DB$ RearrangeTopOfLibrary | Defined$ You | NumCards$ 3 | MayShuffle$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nOracle:When Pondering Mage enters, look at the top three cards of your library, then put them back in any order. You may shuffle. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pondering Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

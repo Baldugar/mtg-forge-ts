@@ -1,0 +1,23 @@
+{
+  "id": "a-knockout-blow-corpus-m677",
+  "description": "M6 corpus — A-Knockout Blow; in-hand parse.",
+  "seed": 68754,
+  "cards": {
+    "A-Knockout Blow": "Name:A-Knockout Blow\nManaCost:2 W\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | ValidTarget$ Creature.Red | EffectZone$ All | Description$ This spell costs {2} less to cast if it targets a red creature.\nA:SP$ Destroy | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | SubAbility$ DBGainLife | SpellDescription$ Destroy target tapped creature. You gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | Defined$ You\nDeckHas:Ability$LifeGain\nOracle:This spell costs {2} less to cast if it targets a red creature.\\nDestroy target tapped creature. You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Knockout Blow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mistform-mask-corpus-m677",
+  "description": "M6 corpus — Mistform Mask; in-hand parse.",
+  "seed": 65300,
+  "cards": {
+    "Mistform Mask": "Name:Mistform Mask\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nA:AB$ ChooseType | Cost$ 1 | Type$ Creature | AILogic$ MostProminentComputerControls | SubAbility$ DBAnimate | SpellDescription$ Enchanted creature becomes the creature type of your choice until end of turn.\nSVar:DBAnimate:DB$ Animate | Defined$ Enchanted | Types$ ChosenType | RemoveCreatureTypes$ True\nSVar:NonStackingAttachEffect:True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Enchant creature\\n{1}: Enchanted creature becomes the creature type of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistform Mask"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

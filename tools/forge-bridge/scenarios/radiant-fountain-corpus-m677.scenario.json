@@ -1,0 +1,23 @@
+{
+  "id": "radiant-fountain-corpus-m677",
+  "description": "M6 corpus — Radiant Fountain; in-hand parse.",
+  "seed": 67527,
+  "cards": {
+    "Radiant Fountain": "Name:Radiant Fountain\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nOracle:When Radiant Fountain enters, you gain 2 life.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radiant Fountain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

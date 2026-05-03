@@ -1,0 +1,23 @@
+{
+  "id": "mechanical-mobster-corpus-m677",
+  "description": "M6 corpus — Mechanical Mobster; in-hand parse.",
+  "seed": 64927,
+  "cards": {
+    "Mechanical Mobster": "Name:Mechanical Mobster\nVariant:UniversesWithin:FlavorName:Data Scrubber\nManaCost:3\nTypes:Artifact Creature Human Robot Villain\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, exile up to one target card from a graveyard. Target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBConnive | TgtPrompt$ Select up to one target card in a graveyard\nSVar:DBConnive:DB$ Connive | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nOracle:When this creature enters, exile up to one target card from a graveyard. Target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mechanical Mobster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

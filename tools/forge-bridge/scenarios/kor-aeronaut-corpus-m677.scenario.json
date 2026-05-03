@@ -1,0 +1,23 @@
+{
+  "id": "kor-aeronaut-corpus-m677",
+  "description": "M6 corpus — Kor Aeronaut; in-hand parse.",
+  "seed": 63821,
+  "cards": {
+    "Kor Aeronaut": "Name:Kor Aeronaut\nManaCost:W W\nTypes:Creature Kor Soldier\nPT:2/2\nK:Flying\nK:Kicker:1 W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, target creature gains flying until end of turn.\nSVar:TrigKicker:DB$ Pump | ValidTgts$ Creature | KW$ Flying\nSVar:PlayMain1:True\nSVar:NeedsToPlayKicked:Creature.YouCtrl\nOracle:Kicker {1}{W} (You may pay an additional {1}{W} as you cast this spell.)\\nFlying\\nWhen Kor Aeronaut enters, if it was kicked, target creature gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Aeronaut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

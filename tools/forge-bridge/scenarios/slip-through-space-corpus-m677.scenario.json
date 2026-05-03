@@ -1,0 +1,23 @@
+{
+  "id": "slip-through-space-corpus-m677",
+  "description": "M6 corpus — Slip Through Space; in-hand parse.",
+  "seed": 70222,
+  "cards": {
+    "Slip Through Space": "Name:Slip Through Space\nManaCost:U\nTypes:Sorcery\nK:Devoid\nA:SP$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SubAbility$ DBDraw | SpellDescription$ Target creature can't be blocked this turn. Draw a card.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBDraw:DB$ Draw\nOracle:Devoid (This card has no color.)\\nTarget creature can't be blocked this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slip Through Space"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "last-laugh-corpus-m677",
+  "description": "M6 corpus — Last Laugh; in-hand parse.",
+  "seed": 64006,
+  "cards": {
+    "Last Laugh": "Name:Last Laugh\nManaCost:2 B B\nTypes:Enchantment\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Creature | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When there are no creatures on the battlefield, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.Other | TriggerZones$ Battlefield | Execute$ TrigDamageAll | TriggerDescription$ Whenever a permanent other than CARDNAME is put into a graveyard from the battlefield, CARDNAME deals 1 damage to each creature and each player.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | ValidDescription$ each creature and each player. | NumDmg$ 1\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature\nOracle:Whenever a permanent other than Last Laugh is put into a graveyard from the battlefield, Last Laugh deals 1 damage to each creature and each player.\\nWhen no creatures are on the battlefield, sacrifice Last Laugh.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last Laugh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

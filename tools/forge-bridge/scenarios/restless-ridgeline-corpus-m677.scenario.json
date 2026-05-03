@@ -1,0 +1,23 @@
+{
+  "id": "restless-ridgeline-corpus-m677",
+  "description": "M6 corpus — Restless Ridgeline; in-hand parse.",
+  "seed": 68121,
+  "cards": {
+    "Restless Ridgeline": "Name:Restless Ridgeline\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nA:AB$ Animate | Cost$ 2 R G | Defined$ Self | Power$ 3 | Toughness$ 4 | Types$ Creature,Dinosaur | Colors$ Red,Green | OverwriteColors$ True | SpellDescription$ CARDNAME becomes a 3/4 red and green Dinosaur creature until end of turn. It's still a land.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target attacking creature gets +2/+0 until end of turn. Untap that creature.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature | NumAtt$ +2 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nSVar:HasAttackEffect:TRUE\nDeckHas:Type$Dinosaur & Color$Red|Green\nOracle:Restless Ridgeline enters tapped.\\n{T}: Add {R} or {G}.\\n{2}{R}{G}: Restless Ridgeline becomes a 3/4 red and green Dinosaur creature until end of turn. It's still a land.\\nWhenever Restless Ridgeline attacks, another target attacking creature gets +2/+0 until end of turn. Untap that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restless Ridgeline"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

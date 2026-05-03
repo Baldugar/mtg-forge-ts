@@ -1,0 +1,23 @@
+{
+  "id": "scapeshift-corpus-m677",
+  "description": "M6 corpus — Scapeshift; in-hand parse.",
+  "seed": 69104,
+  "cards": {
+    "Scapeshift": "Name:Scapeshift\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Land | RememberSacrificed$ True | Optional$ True | SubAbility$ DBShift | SpellDescription$ Sacrifice any number of lands. Search your library for up to that many land cards, put them onto the battlefield tapped, then shuffle.\nSVar:DBShift:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ ShiftX | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Land.YouCtrl\nSVar:ShiftX:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Sacrifice any number of lands. Search your library for up to that many land cards, put them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scapeshift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

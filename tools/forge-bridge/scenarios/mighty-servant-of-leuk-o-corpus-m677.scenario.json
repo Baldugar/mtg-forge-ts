@@ -1,0 +1,23 @@
+{
+  "id": "mighty-servant-of-leuk-o-corpus-m677",
+  "description": "M6 corpus — Mighty Servant of Leuk-o; in-hand parse.",
+  "seed": 65116,
+  "cards": {
+    "Mighty Servant of Leuk-o": "Name:Mighty Servant of Leuk-o\nManaCost:3\nTypes:Artifact Vehicle\nPT:6/6\nK:Trample\nK:Ward:Discard<1/Card>\nT:Mode$ BecomesCrewed | ValidCard$ Card.Self | FirstTimeCrewed$ True | ValidCrewAmount$ 2 | Execute$ DBAnimate | TriggerDescription$ Whenever CARDNAME becomes crewed for the first time each turn, if it was crewed by exactly two creatures, it gains \"Whenever this creature deals combat damage to a player, draw two cards\" until end of turn.\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Duration$ UntilEndOfTurn | Triggers$ TrigCDPlayer | StackDescription$ None\nSVar:TrigCDPlayer:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ DBDraw | CombatDamage$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage to a player, draw two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nK:Crew:4\nDeckHas:Ability$Discard\nOracle:Trample\\nWard — Discard a card.\\nWhenever Mighty Servant of Leuk-o becomes crewed for the first time each turn, if it was crewed by exactly two creatures, it gains \"Whenever this creature deals combat damage to a player, draw two cards\" until end of turn.\\nCrew 4\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mighty Servant of Leuk-o"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

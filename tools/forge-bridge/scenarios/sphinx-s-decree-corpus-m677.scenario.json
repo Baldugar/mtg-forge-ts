@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-s-decree-corpus-m677",
+  "description": "M6 corpus — Sphinx's Decree; in-hand parse.",
+  "seed": 70624,
+  "cards": {
+    "Sphinx's Decree": "Name:Sphinx's Decree\nManaCost:1 W\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player.Opponent | NextTurnForEachPlayer$ True | RepeatSubAbility$ DBEffect | SpellDescription$ Each opponent can't cast instant or sorcery spells during that player's next turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STCantBeCast | EffectOwner$ Remembered\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Instant,Sorcery | Caster$ You | Description$ You can't cast instant or sorcery spells.\nAI:RemoveDeck:All\nOracle:Each opponent can't cast instant or sorcery spells during that player's next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx's Decree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

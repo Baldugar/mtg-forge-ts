@@ -1,0 +1,23 @@
+{
+  "id": "pillar-tombs-of-aku-corpus-m677",
+  "description": "M6 corpus — Pillar Tombs of Aku; in-hand parse.",
+  "seed": 66904,
+  "cards": {
+    "Pillar Tombs of Aku": "Name:Pillar Tombs of Aku\nManaCost:2 B B\nTypes:World Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player may sacrifice a creature. If that player doesn't, they lose 5 life and you sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature | Defined$ TriggeredPlayer | RememberSacrificed$ True | Optional$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 5 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBSacSelf\nSVar:DBSacSelf:DB$ Sacrifice | SacValid$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:At the beginning of each player's upkeep, that player may sacrifice a creature. If that player doesn't, they lose 5 life and you sacrifice Pillar Tombs of Aku.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pillar Tombs of Aku"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "mistveil-plains-corpus-m677",
+  "description": "M6 corpus — Mistveil Plains; ETB-on-bf.",
+  "seed": 65322,
+  "cards": {
+    "Mistveil Plains": "Name:Mistveil Plains\nManaCost:no cost\nTypes:Land Plains\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ W T | IsPresent$ Permanent.White+YouCtrl | PresentCompare$ GE2 | ValidTgts$ Card.YouOwn | TgtPrompt$ Select target card in your graveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put target card from your graveyard on the bottom of your library. Activate only if you control two or more white permanents.\nDeckHas:Ability$Graveyard\nOracle:({T}: Add {W}.)\\nMistveil Plains enters tapped.\\n{W}, {T}: Put target card from your graveyard on the bottom of your library. Activate only if you control two or more white permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mistveil Plains"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

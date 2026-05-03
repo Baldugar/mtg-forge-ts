@@ -1,0 +1,23 @@
+{
+  "id": "skola-grovedancer-corpus-m677",
+  "description": "M6 corpus — Skola Grovedancer; in-hand parse.",
+  "seed": 70058,
+  "cards": {
+    "Skola Grovedancer": "Name:Skola Grovedancer\nManaCost:1 G\nTypes:Enchantment Creature Satyr Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Land.!token+YouOwn | TriggerZones$ Battlefield | Execute$ DBGainLife | TriggerDescription$ Whenever a land card is put into your graveyard from anywhere, you gain 1 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Mill | Cost$ 2 G | Defined$ You | NumCards$ 1 | SpellDescription$ Mill a card.\nDeckHas:Ability$LifeGain|Graveyard\nOracle:Whenever a land card is put into your graveyard from anywhere, you gain 1 life.\\n{2}{G}: Mill a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skola Grovedancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

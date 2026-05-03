@@ -1,0 +1,23 @@
+{
+  "id": "primeval-herald-corpus-m677",
+  "description": "M6 corpus — Primeval Herald; in-hand parse.",
+  "seed": 67195,
+  "cards": {
+    "Primeval Herald": "Name:Primeval Herald\nManaCost:3 G\nTypes:Creature Elf Scout\nPT:3/1\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME enters or attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nSVar:HasAttackEffect:TRUE\nOracle:Trample\\nWhenever Primeval Herald enters or attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primeval Herald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

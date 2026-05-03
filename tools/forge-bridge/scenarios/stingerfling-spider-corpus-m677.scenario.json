@@ -1,0 +1,23 @@
+{
+  "id": "stingerfling-spider-corpus-m677",
+  "description": "M6 corpus — Stingerfling Spider; in-hand parse.",
+  "seed": 71001,
+  "cards": {
+    "Stingerfling Spider": "Name:Stingerfling Spider\nManaCost:4 G\nTypes:Creature Spider\nPT:2/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target creature with flying.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying.\nK:Reach\nOracle:Reach\\nWhen Stingerfling Spider enters, you may destroy target creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stingerfling Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

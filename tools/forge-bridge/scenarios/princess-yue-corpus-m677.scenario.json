@@ -1,0 +1,23 @@
+{
+  "id": "princess-yue-corpus-m677",
+  "description": "M6 corpus — Princess Yue; in-hand parse.",
+  "seed": 67209,
+  "cards": {
+    "Princess Yue": "Name:Princess Yue\nManaCost:2 U\nTypes:Legendary Creature Human Noble Ally\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+Creature+nonLand | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, if she was a nonland creature, return this card to the battlefield tapped under your control. She's a land named Moon. She gains \"{T}: Add {C}.\" (She's still legendary.)\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Tapped$ True | RememberChanged$ True | StaticEffect$ Animate | SubAbility$ DBAnimate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Land | RemoveCardTypes$ True | SetName$ Moon\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Duration$ Permanent | Abilities$ ABMana | SubAbility$ DBCleanup\nSVar:ABMana:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Scry | Cost$ T | ScryNum$ 2 | SpellDescription$ Scry 2.\nOracle:When Princess Yue dies, if she was a nonland creature, return this card to the battlefield tapped under your control. She's a land named Moon. She gains \"{T}: Add {C}.\" (She's still legendary.)\\n{T}: Scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Princess Yue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

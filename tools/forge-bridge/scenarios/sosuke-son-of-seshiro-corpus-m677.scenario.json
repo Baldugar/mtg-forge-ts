@@ -1,0 +1,23 @@
+{
+  "id": "sosuke-son-of-seshiro-corpus-m677",
+  "description": "M6 corpus — Sosuke, Son of Seshiro; in-hand parse.",
+  "seed": 70433,
+  "cards": {
+    "Sosuke, Son of Seshiro": "Name:Sosuke, Son of Seshiro\nManaCost:2 G G\nTypes:Legendary Creature Snake Warrior\nPT:3/4\nS:Mode$ Continuous | Affected$ Creature.Snake+Other+YouCtrl | AddPower$ 1 | Description$ Other Snake creatures you control get +1/+0.\nT:Mode$ DamageDone | ValidSource$ Warrior.YouCtrl | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ DelTrig | TriggerDescription$ Whenever a Warrior you control deals combat damage to a creature, destroy that creature at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredTargetLKICopy | TriggerDescription$ Destroy damaged creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nDeckHints:Type$Snake|Warrior\nOracle:Other Snake creatures you control get +1/+0.\\nWhenever a Warrior you control deals combat damage to a creature, destroy that creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sosuke, Son of Seshiro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

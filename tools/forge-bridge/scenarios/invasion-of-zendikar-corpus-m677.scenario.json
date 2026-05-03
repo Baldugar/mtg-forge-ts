@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-zendikar-corpus-m677",
+  "description": "M6 corpus — Invasion of Zendikar; in-hand parse.",
+  "seed": 63075,
+  "cards": {
+    "Invasion of Zendikar": "Name:Invasion of Zendikar\nManaCost:3 G\nTypes:Battle Siege\nDefense:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 2\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Zendikar enters, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\n\nALTERNATE\n\nName:Awakened Skyclave\nManaCost:no cost\nColors:green\nTypes:Creature Elemental\nPT:4/4\nK:Vigilance\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Self | AddType$ Land | Description$ As long as CARDNAME is on the battlefield, it's a land in addition to its other types.\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Vigilance, haste\\nAs long as Awakened Skyclave is on the battlefield, it's a land in addition to its other types.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Zendikar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

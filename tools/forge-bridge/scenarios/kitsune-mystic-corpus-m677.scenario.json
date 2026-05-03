@@ -1,0 +1,23 @@
+{
+  "id": "kitsune-mystic-corpus-m677",
+  "description": "M6 corpus — Kitsune Mystic; in-hand parse.",
+  "seed": 63723,
+  "cards": {
+    "Kitsune Mystic": "Name:Kitsune Mystic\nManaCost:3 W\nTypes:Creature Fox Wizard\nPT:2/3\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Aura.Attached | PresentCompare$ GE2 | Execute$ TrigFlip | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, if CARDNAME is enchanted by two or more Auras, flip it.\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nAI:RemoveDeck:Random\nDeckNeeds:Type$Aura\nSVar:EnchantMe:Multiple\nAlternateMode:Flip\nOracle:At the beginning of the end step, if Kitsune Mystic is enchanted by two or more Auras, flip it.\n\nALTERNATE\n\nName:Autumn-Tail, Kitsune Sage\nManaCost:3 W\nTypes:Legendary Creature Fox Wizard\nPT:4/5\nA:AB$ Attach | Cost$ 1 | ValidTgts$ Aura.AttachedTo Creature | TgtPrompt$ Select target Aura attached to a creature | Object$ Targeted | Choices$ Creature | Move$ True | StackDescription$ SpellDescription | SpellDescription$ Attach target Aura attached to a creature to another creature.\nAI:RemoveDeck:All\nOracle:{1}: Attach target Aura attached to a creature to another creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitsune Mystic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

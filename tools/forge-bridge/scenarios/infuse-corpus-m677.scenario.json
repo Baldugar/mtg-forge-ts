@@ -1,0 +1,23 @@
+{
+  "id": "infuse-corpus-m677",
+  "description": "M6 corpus — Infuse; in-hand parse.",
+  "seed": 62934,
+  "cards": {
+    "Infuse": "Name:Infuse\nManaCost:2 U\nTypes:Instant\nA:SP$ Untap | TgtPrompt$ Choose target artifact, creature or land | ValidTgts$ Artifact,Creature,Land | SpellDescription$ Untap target artifact, creature or land. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Untap target artifact, creature, or land.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infuse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

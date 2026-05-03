@@ -1,0 +1,23 @@
+{
+  "id": "once-upon-a-time-corpus-m677",
+  "description": "M6 corpus — Once Upon a Time; in-hand parse.",
+  "seed": 66304,
+  "cards": {
+    "Once Upon a Time": "Name:Once Upon a Time\nManaCost:1 G\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell | ValidCard$ Card.Self | ValidPlayer$ You | Cost$ 0 | EffectZone$ All | CheckSVar$ X | SVarCompare$ EQ0 | Description$ If this spell is the first spell you've cast this game, you may cast it without paying its mana cost.\nSVar:X:Count$YouCastThisGame\nA:SP$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Card.Creature,Card.Land | ChangeValidDesc$ creature or land | RestRandomOrder$ True | SpellDescription$ Look at the top five cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nOracle:If this spell is the first spell you've cast this game, you may cast it without paying its mana cost.\\nLook at the top five cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Once Upon a Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

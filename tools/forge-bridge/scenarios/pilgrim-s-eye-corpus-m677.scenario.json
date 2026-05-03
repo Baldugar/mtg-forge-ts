@@ -1,0 +1,23 @@
+{
+  "id": "pilgrim-s-eye-corpus-m677",
+  "description": "M6 corpus — Pilgrim's Eye; in-hand parse.",
+  "seed": 66896,
+  "cards": {
+    "Pilgrim's Eye": "Name:Pilgrim's Eye\nManaCost:3\nTypes:Artifact Creature Thopter\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:Flying\\nWhen Pilgrim's Eye enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pilgrim's Eye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

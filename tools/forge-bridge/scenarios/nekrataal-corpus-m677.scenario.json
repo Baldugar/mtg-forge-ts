@@ -1,0 +1,23 @@
+{
+  "id": "nekrataal-corpus-m677",
+  "description": "M6 corpus — Nekrataal; in-hand parse.",
+  "seed": 65828,
+  "cards": {
+    "Nekrataal": "Name:Nekrataal\nManaCost:2 B B\nTypes:Creature Human Assassin\nPT:2/1\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonartifact, nonblack creature. That creature can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonArtifact+nonBlack | NoRegen$ True | TgtPrompt$ Select target nonartifact, nonblack creature\nSVar:PlayMain1:TRUE\nOracle:First strike\\nWhen Nekrataal enters, destroy target nonartifact, nonblack creature. That creature can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nekrataal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

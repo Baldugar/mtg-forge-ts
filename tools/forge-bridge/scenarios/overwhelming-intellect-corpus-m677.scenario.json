@@ -1,0 +1,23 @@
+{
+  "id": "overwhelming-intellect-corpus-m677",
+  "description": "M6 corpus — Overwhelming Intellect; in-hand parse.",
+  "seed": 66514,
+  "cards": {
+    "Overwhelming Intellect": "Name:Overwhelming Intellect\nManaCost:4 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target creature spell | ValidTgts$ Creature | SubAbility$ DBDraw | RememberCounteredCMC$ True | SpellDescription$ Counter target creature spell. Draw cards equal to that spell's mana value.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nOracle:Counter target creature spell. Draw cards equal to that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overwhelming Intellect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grenzo-crooked-jailer-corpus-m677",
+  "description": "M6 corpus — Grenzo, Crooked Jailer; in-hand parse.",
+  "seed": 61744,
+  "cards": {
+    "Grenzo, Crooked Jailer": "Name:Grenzo, Crooked Jailer\nManaCost:4 B R\nTypes:Legendary Creature Goblin Rogue\nPT:6/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigHeist | TriggerDescription$ When NICKNAME enters and at the beginning of your upkeep, heist target opponent's library.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigHeist | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When NICKNAME enters and at the beginning of your upkeep, heist target opponent's library.\nSVar:TrigHeist:DB$ Heist | ValidTgts$ Opponent\nS:Mode$ Continuous | MayPlay$ True | MayPlayAltManaCost$ 0 | MayPlayLimit$ 1 | MayPlayDontGrantZonePermissions$ True | Affected$ Card.YouDontOwn+cmcLE3 | AffectedZone$ Hand,Graveyard,Library,Exile,Command | Description$ Once each turn, you may pay {0} rather than pay the mana cost for a spell you cast that you don't own with mana value 3 or less.\nOracle:When Grenzo enters and at the beginning of your upkeep, heist target opponent's library.\\nOnce each turn, you may pay {0} rather than pay the mana cost for a spell you cast that you don't own with mana value 3 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grenzo, Crooked Jailer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ox-drover-corpus-m677",
+  "description": "M6 corpus — Ox Drover; in-hand parse.",
+  "seed": 66528,
+  "cards": {
+    "Ox Drover": "Name:Ox Drover\nManaCost:3 W\nTypes:Creature Human Peasant\nPT:4/4\nK:Vigilance\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.Ox | Description$ CARDNAME can't be blocked by Oxen.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, target opponent creates a 2/4 white Ox creature token and you draw a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Secondary$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, target opponent creates a 2/4 white Ox creature token and you draw a card.\nSVar:TrigToken:DB$ Token | ValidTgts$ Opponent | TokenOwner$ Targeted | TokenScript$ w_2_4_ox | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nOracle:Vigilance\\nOx Drover can't be blocked by Oxen.\\nWhenever Ox Drover enters or attacks, target opponent creates a 2/4 white Ox creature token and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ox Drover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

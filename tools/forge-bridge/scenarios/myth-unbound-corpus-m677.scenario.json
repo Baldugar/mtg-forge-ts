@@ -1,0 +1,23 @@
+{
+  "id": "myth-unbound-corpus-m677",
+  "description": "M6 corpus — Myth Unbound; in-hand parse.",
+  "seed": 65688,
+  "cards": {
+    "Myth Unbound": "Name:Myth Unbound\nManaCost:2 G\nTypes:Enchantment\nS:Mode$ ReduceCost | ValidCard$ Card.IsCommander+YouOwn | Type$ Spell | Amount$ AffectedX | Description$ Your commander costs {1} less to cast for each time it's been cast from the command zone this game.\nT:Mode$ ChangesZone | ValidCard$ Card.IsCommander+YouOwn | Origin$ Any | Destination$ Command | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever your commander is put into the command zone from anywhere, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:AffectedX:Count$CommanderCastFromCommandZone\nAI:RemoveDeck:Random\nOracle:Your commander costs {1} less to cast for each time it's been cast from the command zone this game.\\nWhenever your commander is put into the command zone from anywhere, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myth Unbound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

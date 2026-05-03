@@ -1,0 +1,23 @@
+{
+  "id": "remember-the-fallen-corpus-m677",
+  "description": "M6 corpus — Remember the Fallen; in-hand parse.",
+  "seed": 68023,
+  "cards": {
+    "Remember the Fallen": "Name:Remember the Fallen\nManaCost:2 W\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ ChangeCreature,ChangeArtifact\nSVar:ChangeCreature:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return target creature card from your graveyard to your hand.\nSVar:ChangeArtifact:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact card in your graveyard | ValidTgts$ Artifact.YouCtrl | SpellDescription$ Return target artifact card from your graveyard to your hand.\nOracle:Choose one or both —\\n• Return target creature card from your graveyard to your hand.\\n• Return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Remember the Fallen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

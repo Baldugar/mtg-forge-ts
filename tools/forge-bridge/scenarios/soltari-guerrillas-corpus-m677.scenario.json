@@ -1,0 +1,25 @@
+{
+  "id": "soltari-guerrillas-corpus-m677",
+  "description": "M6 corpus — Soltari Guerrillas; ETB-on-bf.",
+  "seed": 70377,
+  "cards": {
+    "Soltari Guerrillas": "Name:Soltari Guerrillas\nManaCost:2 R W\nTypes:Creature Soltari Soldier\nPT:3/2\nK:Shadow\nA:AB$ Effect | Cost$ 0 | ReplacementEffects$ EventGuerrillasDamageDone | ValidTgts$ Creature | RememberObjects$ Targeted | ImprintCards$ Self | SpellDescription$ The next time CARDNAME would deal combat damage to an opponent this turn, it deals that damage to target creature instead.\nSVar:EventGuerrillasDamageDone:Event$ DamageDone | ValidSource$ Card.IsImprinted | ValidTarget$ Opponent | ReplaceWith$ DamageGuerrillasCreature | IsCombat$ True | Description$ The next time EFFECTSOURCE would deal combat damage to an opponent this turn, it deals that damage to target creature instead.\nSVar:DamageGuerrillasCreature:DB$ DealDamage | CombatDamage$ True | NumDmg$ GuerrillasX | Defined$ Remembered | DamageSource$ Imprinted\nSVar:GuerrillasX:ReplaceCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\n{0}: The next time Soltari Guerrillas would deal combat damage to an opponent this turn, it deals that damage to target creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soltari Guerrillas"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

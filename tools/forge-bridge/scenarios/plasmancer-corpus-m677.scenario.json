@@ -1,0 +1,23 @@
+{
+  "id": "plasmancer-corpus-m677",
+  "description": "M6 corpus — Plasmancer; in-hand parse.",
+  "seed": 66993,
+  "cards": {
+    "Plasmancer": "Name:Plasmancer\nManaCost:2 B B\nTypes:Artifact Creature Necron Wizard\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Dynastic Advisor — When CARDNAME enters, search your library for a basic Swamp card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Swamp.Basic\nOracle:Flying\\nDynastic Advisor — When Plasmancer enters, search your library for a basic Swamp card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plasmancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

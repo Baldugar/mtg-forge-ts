@@ -1,0 +1,23 @@
+{
+  "id": "hurl-through-hell-corpus-m677",
+  "description": "M6 corpus — Hurl Through Hell; in-hand parse.",
+  "seed": 62635,
+  "cards": {
+    "Hurl Through Hell": "Name:Hurl Through Hell\nManaCost:2 B R\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile target creature. Until the end of your next turn, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | Affected$ Card.nonLand+IsRemembered | AffectedZone$ Exile | MayPlay$ True | MayPlayIgnoreColor$ True | Description$ You may cast the exiled card and you may spend mana as though it were mana of any color to cast that spell.\nOracle:Exile target creature. Until the end of your next turn, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hurl Through Hell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

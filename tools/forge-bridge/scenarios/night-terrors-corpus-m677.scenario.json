@@ -1,0 +1,23 @@
+{
+  "id": "night-terrors-corpus-m677",
+  "description": "M6 corpus — Night Terrors; in-hand parse.",
+  "seed": 65923,
+  "cards": {
+    "Night Terrors": "Name:Night Terrors\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RevealHand | Defined$ Targeted | ValidTgts$ Player | IsCurse$ True | SubAbility$ ExileCard | StackDescription$ SpellDescription | SpellDescription$ Target player reveals their hand.\nSVar:ExileCard:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | Mandatory$ True | StackDescription$ {p:You} chooses a nonland card from it. Exile that card. | SpellDescription$ You choose a nonland card from it. Exile that card.\nOracle:Target player reveals their hand. You choose a nonland card from it. Exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Night Terrors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

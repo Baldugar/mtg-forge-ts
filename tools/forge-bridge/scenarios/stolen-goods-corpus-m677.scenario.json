@@ -1,0 +1,23 @@
+{
+  "id": "stolen-goods-corpus-m677",
+  "description": "M6 corpus — Stolen Goods; in-hand parse.",
+  "seed": 71032,
+  "cards": {
+    "Stolen Goods": "Name:Stolen Goods\nManaCost:3 U\nTypes:Sorcery\nA:SP$ DigUntil | ValidTgts$ Opponent | Valid$ Card.nonLand | ValidDescription$ nonland | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | IsCurse$ True | SubAbility$ DBEffect | SpellDescription$ Target opponent exiles cards from the top of their library until they exile a nonland card. Until end of turn, you may cast that card without paying its mana cost.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ StolenGoodsPlay | ForgetOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:StolenGoodsPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ Until end of turn, you may cast this card without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target opponent exiles cards from the top of their library until they exile a nonland card. Until end of turn, you may cast that card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stolen Goods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

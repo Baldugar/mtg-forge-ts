@@ -1,0 +1,25 @@
+{
+  "id": "nykthos-paragon-corpus-m677",
+  "description": "M6 corpus — Nykthos Paragon; ETB-on-bf.",
+  "seed": 66115,
+  "cards": {
+    "Nykthos Paragon": "Name:Nykthos Paragon\nManaCost:4 W W\nTypes:Enchantment Creature Human Soldier\nPT:4/6\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | ResolvedLimit$ 1 | OptionalDecider$ You | TriggerDescription$ Whenever you gain life, you may put that many +1/+1 counters on each creature you control. Do this only once each turn.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggerCount$LifeAmount\nDeckHas:Ability$Counters\nDeckNeeds:Ability$LifeGain\nOracle:Whenever you gain life, you may put that many +1/+1 counters on each creature you control. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nykthos Paragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "neglected-heirloom-corpus-m677",
+  "description": "M6 corpus — Neglected Heirloom; in-hand parse.",
+  "seed": 65822,
+  "cards": {
+    "Neglected Heirloom": "Name:Neglected Heirloom\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ Transformed | ValidCard$ Creature.EquippedBy | Execute$ TrigTransform | TriggerDescription$ When equipped creature transforms, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nK:Equip:1\nAlternateMode:DoubleFaced\nOracle:Equipped creature gets +1/+1.\\nWhen equipped creature transforms, transform Neglected Heirloom.\\nEquip {1}\n\nALTERNATE\n\nName:Ashmouth Blade\nManaCost:no cost\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 3 | AddKeyword$ First Strike | Description$ Equipped creature gets +3/+3 and has first strike.\nK:Equip:3\nOracle:Equipped creature gets +3/+3 and has first strike.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neglected Heirloom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

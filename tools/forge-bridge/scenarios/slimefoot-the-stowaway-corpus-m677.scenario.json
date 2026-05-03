@@ -1,0 +1,23 @@
+{
+  "id": "slimefoot-the-stowaway-corpus-m677",
+  "description": "M6 corpus — Slimefoot, the Stowaway; in-hand parse.",
+  "seed": 70212,
+  "cards": {
+    "Slimefoot, the Stowaway": "Name:Slimefoot, the Stowaway\nManaCost:1 B G\nTypes:Legendary Creature Fungus\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Saproling.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever a Saproling you control dies, CARDNAME deals 1 damage to each opponent and you gain 1 life.\nSVar:TrigDealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Token | Cost$ 4 | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nDeckHas:Ability$Token\nOracle:Whenever a Saproling you control dies, Slimefoot, the Stowaway deals 1 damage to each opponent and you gain 1 life.\\n{4}: Create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slimefoot, the Stowaway"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

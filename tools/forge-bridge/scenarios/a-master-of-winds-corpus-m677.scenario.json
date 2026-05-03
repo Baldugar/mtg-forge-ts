@@ -1,0 +1,23 @@
+{
+  "id": "a-master-of-winds-corpus-m677",
+  "description": "M6 corpus — A-Master of Winds; in-hand parse.",
+  "seed": 68763,
+  "cards": {
+    "A-Master of Winds": "Name:A-Master of Winds\nManaCost:2 U U\nTypes:Creature Sphinx Wizard\nPT:1/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw two cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery,Wizard | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChoose | TriggerDescription$ Whenever you cast an instant, sorcery, or Wizard spell, you may have CARDNAME's base power and toughness become 5/1 or 1/5 until end of turn.\nSVar:TrigChoose:DB$ GenericChoice | Defined$ You | Choices$ Animate51,Animate15\nSVar:Animate51:DB$ Animate | Defined$ Self | Power$ 5 | Toughness$ 1 | SpellDescription$ CARDNAME's base power and toughness become 5/1 until end of turn.\nSVar:Animate15:DB$ Animate | Defined$ Self | Power$ 1 | Toughness$ 5 | SpellDescription$ CARDNAME's base power and toughness become 1/5 until end of turn.\nSVar:BuffedBy:Instant,Sorcery,Wizard\nDeckNeeds:Type$Instant|Sorcery|Wizard\nOracle:Flying\\nWhen Master of Winds enters, draw two cards, then discard a card.\\nWhenever you cast an instant, sorcery, or Wizard spell, you may have Master of Winds's base power and toughness become 5/1 or 1/5 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Master of Winds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

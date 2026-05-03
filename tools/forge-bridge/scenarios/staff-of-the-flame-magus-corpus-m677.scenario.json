@@ -1,0 +1,23 @@
+{
+  "id": "staff-of-the-flame-magus-corpus-m677",
+  "description": "M6 corpus — Staff of the Flame Magus; in-hand parse.",
+  "seed": 70847,
+  "cards": {
+    "Staff of the Flame Magus": "Name:Staff of the Flame Magus\nManaCost:3\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a red spell or a Mountain you control enters, you gain 1 life.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Mountain.YouCtrl | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a red spell or a Mountain you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red\nOracle:Whenever you cast a red spell or a Mountain you control enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Staff of the Flame Magus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spirit-mirror-corpus-m677",
+  "description": "M6 corpus — Spirit Mirror; in-hand parse.",
+  "seed": 70702,
+  "cards": {
+    "Spirit Mirror": "Name:Spirit Mirror\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Reflection.token | PresentCompare$ EQ0 | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, if there are no Reflection tokens on the battlefield, create a 2/2 white Reflection creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_reflection | TokenOwner$ You\nA:AB$ Destroy | Cost$ 0 | ValidTgts$ Reflection | TgtPrompt$ Select target Reflection | AILogic$ Pactivator | SpellDescription$ Destroy target Reflection.\nOracle:At the beginning of your upkeep, if there are no Reflection tokens on the battlefield, create a 2/2 white Reflection creature token.\\n{0}: Destroy target Reflection.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit Mirror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sanctum-gargoyle-corpus-m677",
+  "description": "M6 corpus — Sanctum Gargoyle; in-hand parse.",
+  "seed": 68943,
+  "cards": {
+    "Sanctum Gargoyle": "Name:Sanctum Gargoyle\nManaCost:3 W\nTypes:Artifact Creature Gargoyle\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target artifact card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.YouCtrl\nOracle:Flying\\nWhen Sanctum Gargoyle enters, you may return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctum Gargoyle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

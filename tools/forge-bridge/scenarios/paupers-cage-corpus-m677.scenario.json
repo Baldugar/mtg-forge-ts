@@ -1,0 +1,23 @@
+{
+  "id": "paupers-cage-corpus-m677",
+  "description": "M6 corpus — Paupers' Cage; in-hand parse.",
+  "seed": 66679,
+  "cards": {
+    "Paupers' Cage": "Name:Paupers' Cage\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | IsPresent$ Card.ActivePlayerCtrl | PresentZone$ Hand | PresentCompare$ LE2 | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nOracle:At the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, Paupers' Cage deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paupers' Cage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

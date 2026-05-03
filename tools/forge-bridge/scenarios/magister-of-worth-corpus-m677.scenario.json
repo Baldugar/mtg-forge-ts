@@ -1,0 +1,23 @@
+{
+  "id": "magister-of-worth-corpus-m677",
+  "description": "M6 corpus — Magister of Worth; in-hand parse.",
+  "seed": 64589,
+  "cards": {
+    "Magister of Worth": "Name:Magister of Worth\nManaCost:4 W B\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigVote | TriggerDescription$ Will of the Council — When CARDNAME enters, starting with you, each player votes for grace or condemnation. If grace gets more votes, each player returns each creature card from their graveyard to the battlefield. If condemnation gets more votes or the vote is tied, destroy all creatures other than CARDNAME.\nSVar:TrigVote:DB$ Vote | Defined$ Player | Choices$ DBZombify,DBDestroy | VoteTiedAbility$ DBDestroy | AILogic$ GraceOrCondemnation\nSVar:DBZombify:DB$ ChangeZoneAll | ChangeType$ Creature | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Grace\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.Other | SpellDescription$ Condemnation\nAI:RemoveDeck:Random\nOracle:Flying\\nWill of the council — When Magister of Worth enters, starting with you, each player votes for grace or condemnation. If grace gets more votes, each player returns each creature card from their graveyard to the battlefield. If condemnation gets more votes or the vote is tied, destroy all creatures other than Magister of Worth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magister of Worth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

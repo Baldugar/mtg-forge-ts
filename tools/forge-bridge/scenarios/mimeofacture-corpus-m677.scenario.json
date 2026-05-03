@@ -1,0 +1,23 @@
+{
+  "id": "mimeofacture-corpus-m677",
+  "description": "M6 corpus — Mimeofacture; in-hand parse.",
+  "seed": 65134,
+  "cards": {
+    "Mimeofacture": "Name:Mimeofacture\nManaCost:3 U\nTypes:Sorcery\nK:Replicate:3 U\nA:SP$ Pump | ValidTgts$ Permanent.OppCtrl | TgtPrompt$ Choose target permanent an opponent controls | IsCurse$ True | StackDescription$ None | SubAbility$ DBChangeZone | SpellDescription$ Choose target permanent an opponent controls. Search that player's library for a card with the same name and put it onto the battlefield under your control. Then that player shuffles.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | DefinedPlayer$ TargetedController | Chooser$ You | ChangeType$ Targeted.sameName | ChangeNum$ 1 | GainControl$ True | Shuffle$ True\nOracle:Replicate {3}{U} (When you cast this spell, copy it for each time you paid its replicate cost. You may choose new targets for the copies.)\\nChoose target permanent an opponent controls. Search that player's library for a card with the same name and put it onto the battlefield under your control. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mimeofacture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

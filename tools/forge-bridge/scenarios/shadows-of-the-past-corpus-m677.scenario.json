@@ -1,0 +1,23 @@
+{
+  "id": "shadows-of-the-past-corpus-m677",
+  "description": "M6 corpus — Shadows of the Past; in-hand parse.",
+  "seed": 69570,
+  "cards": {
+    "Shadows of the Past": "Name:Shadows of the Past\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever a creature dies, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ LoseLife | Cost$ 4 B | Defined$ Player.Opponent | LifeAmount$ 2 | IsPresent$ Creature.YouOwn | PresentZone$ Graveyard | PresentCompare$ GE4 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 2 life and you gain 2 life. Activate only if there are four or more creature cards in your graveyard.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:Whenever a creature dies, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\\n{4}{B}: Each opponent loses 2 life and you gain 2 life. Activate only if there are four or more creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadows of the Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

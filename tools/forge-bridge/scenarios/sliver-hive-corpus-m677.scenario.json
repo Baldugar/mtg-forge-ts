@@ -1,0 +1,25 @@
+{
+  "id": "sliver-hive-corpus-m677",
+  "description": "M6 corpus — Sliver Hive; ETB-on-bf.",
+  "seed": 70235,
+  "cards": {
+    "Sliver Hive": "Name:Sliver Hive\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | RestrictValid$ Spell.Sliver | SpellDescription$ Add one mana of any color. Spend this mana only to cast a Sliver spell.\nA:AB$ Token | Cost$ 5 T | IsPresent$ Sliver.YouCtrl | TokenScript$ c_1_1_sliver | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Sliver creature token. Activate only if you control a Sliver.\nSVar:BuffedBy:Sliver\nDeckHints:Type$Sliver\nDeckHas:Ability$Mana.Colorless|Token\nOracle:{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a Sliver spell.\\n{5}, {T}: Create a 1/1 colorless Sliver creature token. Activate only if you control a Sliver.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sliver Hive"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

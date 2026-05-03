@@ -1,0 +1,23 @@
+{
+  "id": "riptide-gearhulk-corpus-m677",
+  "description": "M6 corpus — Riptide Gearhulk; in-hand parse.",
+  "seed": 68324,
+  "cards": {
+    "Riptide Gearhulk": "Name:Riptide Gearhulk\nManaCost:1 W W U U\nTypes:Artifact Creature Construct\nPT:2/5\nK:Double Strike\nK:Prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ReturnOneEach | TriggerDescription$ When this creature enters, for each opponent, put up to one target nonland permanent that player controls into its owner's library third from the top.\nSVar:ReturnOneEach:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 2 | ValidTgts$ Permanent.nonLand+OppCtrl | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | TgtPrompt$ Select up to one target nonland permanent each opponent controls\nSVar:OneEach:PlayerCountOpponents$Amount\nOracle:Double strike\\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhen this creature enters, for each opponent, put up to one target nonland permanent that player controls into its owner's library third from the top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Gearhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

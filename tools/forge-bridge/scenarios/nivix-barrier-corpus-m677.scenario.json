@@ -1,0 +1,23 @@
+{
+  "id": "nivix-barrier-corpus-m677",
+  "description": "M6 corpus — Nivix Barrier; in-hand parse.",
+  "seed": 66015,
+  "cards": {
+    "Nivix Barrier": "Name:Nivix Barrier\nManaCost:3 U\nTypes:Creature Illusion Wall\nPT:0/4\nK:Flash\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpCurse | TriggerDescription$ When CARDNAME enters, target attacking creature gets -4/-0 until end of turn.\nSVar:TrigPumpCurse:DB$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | IsCurse$ True | NumAtt$ -4\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nDefender (This creature can't attack.)\\nWhen Nivix Barrier enters, target attacking creature gets -4/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nivix Barrier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

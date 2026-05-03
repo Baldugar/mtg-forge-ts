@@ -1,0 +1,23 @@
+{
+  "id": "spectral-bears-corpus-m677",
+  "description": "M6 corpus — Spectral Bears; in-hand parse.",
+  "seed": 70547,
+  "cards": {
+    "Spectral Bears": "Name:Spectral Bears\nManaCost:1 G\nTypes:Creature Bear Spirit\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ StayTapped | IsPresent$ Permanent.Black+!token+DefenderCtrl | PresentCompare$ EQ0 | TriggerDescription$ Whenever CARDNAME attacks, if defending player controls no black nontoken permanents, it doesn't untap during your next untap step.\nSVar:StayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:Whenever Spectral Bears attacks, if defending player controls no black nontoken permanents, it doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spectral Bears"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

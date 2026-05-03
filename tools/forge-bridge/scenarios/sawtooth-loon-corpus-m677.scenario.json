@@ -1,0 +1,23 @@
+{
+  "id": "sawtooth-loon-corpus-m677",
+  "description": "M6 corpus — Sawtooth Loon; in-hand parse.",
+  "seed": 69077,
+  "cards": {
+    "Sawtooth Loon": "Name:Sawtooth Loon\nManaCost:2 W U\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a white or blue creature you control to its owner's hand.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw two cards, then put two cards from your hand on the bottom of your library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.White+YouCtrl,Creature.Blue+YouCtrl\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeNum$ 2 | Mandatory$ True\n# TODO: The AI is bad with the \"put two cards on the bottom of your library\" thing, it'll put its best cards there because it thinks that it's as good as putting them on top.\nAI:RemoveDeck:All\nOracle:Flying\\nWhen Sawtooth Loon enters, return a white or blue creature you control to its owner's hand.\\nWhen Sawtooth Loon enters, draw two cards, then put two cards from your hand on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sawtooth Loon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

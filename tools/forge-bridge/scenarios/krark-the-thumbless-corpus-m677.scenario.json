@@ -1,0 +1,25 @@
+{
+  "id": "krark-the-thumbless-corpus-m677",
+  "description": "M6 corpus — Krark, the Thumbless; ETB-on-bf.",
+  "seed": 63867,
+  "cards": {
+    "Krark, the Thumbless": "Name:Krark, the Thumbless\nManaCost:1 R\nTypes:Legendary Creature Goblin Wizard\nPT:2/2\nK:Partner\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ Whenever you cast an instant or sorcery spell, flip a coin. If you lose the flip, return that spell to its owner's hand. If you win the flip, copy that spell, and you may choose new targets for the copy.\nSVar:TrigFlip:DB$ FlipACoin | WinSubAbility$ DBCopy | LoseSubAbility$ DBBounce\nSVar:DBBounce:DB$ ChangeZone | Defined$ TriggeredSpellAbility | Origin$ Stack | Destination$ Hand\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | MayChooseTarget$ True\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell, flip a coin. If you lose the flip, return that spell to its owner's hand. If you win the flip, copy that spell, and you may choose new targets for the copy.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Krark, the Thumbless"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

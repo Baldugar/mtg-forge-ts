@@ -1,0 +1,23 @@
+{
+  "id": "sin-prodder-corpus-m677",
+  "description": "M6 corpus — Sin Prodder; in-hand parse.",
+  "seed": 69959,
+  "cards": {
+    "Sin Prodder": "Name:Sin Prodder\nManaCost:2 R\nTypes:Creature Devil\nPT:3/2\nK:Menace\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPeek | TriggerDescription$ At the beginning of your upkeep, reveal the top card of your library. Any opponent may have you put that card into your graveyard. If a player does, CARDNAME deals damage to that player equal to that card's mana value. Otherwise, put that card into your hand.\nSVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Card | ImprintRevealed$ True | SubAbility$ DBProd\nSVar:DBProd:DB$ GenericChoice | Defined$ Opponent | TempRemember$ Chooser | Choices$ DBGraveAndDamage,DoNothing | ChoicePrompt$ Have them put the card into their graveyard? | ConditionDefined$ Imprinted | ConditionPresent$ Card | ConditionCompare$ EQ1 | AILogic$ SinProdder | SubAbility$ DBPutIntoHand\nSVar:DoNothing:DB$ Cleanup | SpellDescription$ No\nSVar:DBGraveAndDamage:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | Defined$ Imprinted | SubAbility$ DBDamage | SpellDescription$ Yes (take damage)\nSVar:DBDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ X | SubAbility$ DBCleanup\nSVar:X:Imprinted$CardManaCost\nSVar:DBPutIntoHand:DB$ Dig | DigNum$ 1 | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Hand | SubAbility$ DBCleanup | ConditionDefined$ Imprinted | ConditionPresent$ Card | ConditionCompare$ EQ1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Menace\\nAt the beginning of your upkeep, reveal the top card of your library. Any opponent may have you put that card into your graveyard. If a player does, Sin Prodder deals damage to that player equal to that card's mana value. Otherwise, put that card into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sin Prodder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

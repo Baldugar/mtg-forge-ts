@@ -1,0 +1,23 @@
+{
+  "id": "sarcomancy-corpus-m677",
+  "description": "M6 corpus — Sarcomancy; in-hand parse.",
+  "seed": 69010,
+  "cards": {
+    "Sarcomancy": "Name:Sarcomancy\nManaCost:B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Zombie | PresentCompare$ EQ0 | Execute$ TrigNoZombies | TriggerDescription$ At the beginning of your upkeep, if there are no Zombies on the battlefield, CARDNAME deals 1 damage to you.\nSVar:TrigNoZombies:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nSVar:BuffedBy:Zombie\nSVar:SacMe:5\nOracle:When Sarcomancy enters, create a 2/2 black Zombie creature token.\\nAt the beginning of your upkeep, if there are no Zombies on the battlefield, Sarcomancy deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarcomancy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

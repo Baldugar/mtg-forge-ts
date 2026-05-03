@@ -1,0 +1,23 @@
+{
+  "id": "organ-hoarder-corpus-m677",
+  "description": "M6 corpus — Organ Hoarder; in-hand parse.",
+  "seed": 66418,
+  "cards": {
+    "Organ Hoarder": "Name:Organ Hoarder\nManaCost:3 U\nTypes:Creature Zombie\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top three cards of your library, then put one of them into your hand and the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | DestinationZone2$ Graveyard\nOracle:When Organ Hoarder enters, look at the top three cards of your library, then put one of them into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Organ Hoarder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

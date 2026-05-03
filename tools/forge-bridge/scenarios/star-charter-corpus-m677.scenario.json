@@ -1,0 +1,23 @@
+{
+  "id": "star-charter-corpus-m677",
+  "description": "M6 corpus — Star Charter; in-hand parse.",
+  "seed": 70884,
+  "cards": {
+    "Star Charter": "Name:Star Charter\nManaCost:3 W\nTypes:Creature Bat Cleric\nPT:3/1\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigDig | TriggerDescription$ At the beginning of your end step, if you gained or lost life this turn, look at the top four cards of your library. You may reveal a creature card with power 3 or less from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Creature.powerLE3 | RestRandomOrder$ True\nSVar:X:Count$LifeYouGainedThisTurn/Plus.Y\nSVar:Y:PlayerCountPropertyYou$LifeLostThisTurn\nOracle:Flying\\nAt the beginning of your end step, if you gained or lost life this turn, look at the top four cards of your library. You may reveal a creature card with power 3 or less from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Star Charter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

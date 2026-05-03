@@ -1,0 +1,23 @@
+{
+  "id": "military-discipline-corpus-m677",
+  "description": "M6 corpus — Military Discipline; in-hand parse.",
+  "seed": 65127,
+  "cards": {
+    "Military Discipline": "Name:Military Discipline\nManaCost:W\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, enchanted creature gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Enchanted | KW$ First Strike\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | Description$ Enchanted creature gets +1/+0.\nSVar:PlayMain1:TRUE\nOracle:Flash\\nEnchant creature\\nWhen Military Discipline enters, enchanted creature gains first strike until end of turn.\\nEnchanted creature gets +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Military Discipline"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

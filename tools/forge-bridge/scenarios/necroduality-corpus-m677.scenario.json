@@ -1,0 +1,23 @@
+{
+  "id": "necroduality-corpus-m677",
+  "description": "M6 corpus — Necroduality; in-hand parse.",
+  "seed": 65791,
+  "cards": {
+    "Necroduality": "Name:Necroduality\nManaCost:3 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Zombie.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever a nontoken Zombie you control enters, create a token that's a copy of that creature.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nDeckNeeds:Type$Zombie\nOracle:Whenever a nontoken Zombie you control enters, create a token that's a copy of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necroduality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "revival-experiment-corpus-m677",
+  "description": "M6 corpus — Revival Experiment; in-hand parse.",
+  "seed": 68193,
+  "cards": {
+    "Revival Experiment": "Name:Revival Experiment\nManaCost:4 B G\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ You | Choices$ Card.Permanent+YouOwn | ChoiceZone$ Graveyard | ChooseEach$ Artifact & Battle & Creature & Enchantment & Land & Planeswalker | ControlledByPlayer$ Chooser | MinAmount$ 0 | Amount$ 1 | Reveal$ True | RememberChosen$ True | SubAbility$ DBReturn | StackDescription$ REP return_{p:You} returns & from your_from their & You lose_{p:You} loses & Exile_{p:You} exiles | SpellDescription$ For each permanent type, return up to one card of that type from your graveyard to the battlefield. You lose 3 life for each card returned this way. Exile CARDNAME.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Remembered | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBLoseLife | StackDescription$ None\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | SubAbility$ DBExile | StackDescription$ None\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:X:Remembered$Amount/Times.3\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill|Discard\nOracle:For each permanent type, return up to one card of that type from your graveyard to the battlefield. You lose 3 life for each card returned this way. Exile Revival Experiment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revival Experiment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

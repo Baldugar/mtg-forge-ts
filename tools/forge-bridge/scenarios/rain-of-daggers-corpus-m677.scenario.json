@@ -1,0 +1,23 @@
+{
+  "id": "rain-of-daggers-corpus-m677",
+  "description": "M6 corpus — Rain of Daggers; in-hand parse.",
+  "seed": 67585,
+  "cards": {
+    "Rain of Daggers": "Name:Rain of Daggers\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | ValidTgts$ Opponent | RememberDestroyed$ True | SubAbility$ DBLoseLife | SpellDescription$ Destroy all creatures target opponent controls. You lose 2 life for each creature destroyed this way.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nSVar:X:Remembered$Amount/Twice\nAI:RemoveDeck:All\nOracle:Destroy all creatures target opponent controls. You lose 2 life for each creature destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rain of Daggers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

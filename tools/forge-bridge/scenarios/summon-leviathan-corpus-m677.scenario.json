@@ -1,0 +1,23 @@
+{
+  "id": "summon-leviathan-corpus-m677",
+  "description": "M6 corpus — Summon: Leviathan; in-hand parse.",
+  "seed": 71312,
+  "cards": {
+    "Summon: Leviathan": "Name:Summon: Leviathan\nManaCost:4 U U\nTypes:Enchantment Creature Saga Leviathan\nPT:6/6\nK:Chapter:3:DBBounce,DBDraw,DBDraw\nK:Ward:2\nSVar:DBBounce:DB$ ChangeZoneAll | ChangeType$ Creature.nonKraken+nonLeviathan+nonMerfolk+nonOctopus+nonSerpent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return each creature that isn't a Kraken, Leviathan, Merfolk, Octopus, or Serpent to its owner's hand.\nSVar:DBDraw:DB$ Effect | Triggers$ AttackTrig | SpellDescription$ Until end of turn, whenever a Kraken, Leviathan, Merfolk, Octopus, or Serpent attacks, draw a card.\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Kraken,Card.Leviathan,Card.Merfolk,Card.Octopus,Card.Serpent | Execute$ TrigDraw | TriggerDescription$ Until end of turn, whenever a Kraken, Leviathan, Merfolk, Octopus, or Serpent attacks, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHints:Type$Kraken|Leviathan|Merfolk|Octopus|Serpent\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Return each creature that isn't a Kraken, Leviathan, Merfolk, Octopus, or Serpent to its owner's hand.\\nII, III — Until end of turn, whenever a Kraken, Leviathan, Merfolk, Octopus, or Serpent attacks, draw a card.\\nWard {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Leviathan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

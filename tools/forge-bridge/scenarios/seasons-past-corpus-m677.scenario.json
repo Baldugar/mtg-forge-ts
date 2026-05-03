@@ -1,0 +1,23 @@
+{
+  "id": "seasons-past-corpus-m677",
+  "description": "M6 corpus — Seasons Past; in-hand parse.",
+  "seed": 69325,
+  "cards": {
+    "Seasons Past": "Name:Seasons Past\nManaCost:4 G G\nTypes:Sorcery\nA:SP$ ChangeZone | ChangeType$ Card.YouOwn | Hidden$ True | Origin$ Graveyard | Destination$ Hand | DifferentCMC$ True | ChangeNum$ X | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ Return any number of cards with different mana values from your graveyard to your hand. Put CARDNAME on the bottom of its owner's library.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Library | LibraryPosition$ -1\nSVar:X:Count$ValidGraveyard Card.YouOwn\nAI:RemoveDeck:Random\nOracle:Return any number of cards with different mana values from your graveyard to your hand. Put Seasons Past on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seasons Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

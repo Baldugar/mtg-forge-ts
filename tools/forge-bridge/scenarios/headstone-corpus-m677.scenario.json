@@ -1,0 +1,23 @@
+{
+  "id": "headstone-corpus-m677",
+  "description": "M6 corpus — Headstone; in-hand parse.",
+  "seed": 62154,
+  "cards": {
+    "Headstone": "Name:Headstone\nManaCost:1 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SpellDescription$ Exile target card from a graveyard. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Exile target card from a graveyard.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Headstone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ignorant-bliss-corpus-m677",
+  "description": "M6 corpus — Ignorant Bliss; in-hand parse.",
+  "seed": 62731,
+  "cards": {
+    "Ignorant Bliss": "Name:Ignorant Bliss\nManaCost:1 R\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Card.YouCtrl | Origin$ Hand | Destination$ Exile | ExileFaceDown$ True | RememberChanged$ True | SubAbility$ DelayedReturn | SpellDescription$ Exile all cards from your hand face down. At the beginning of the next end step, return those cards to your hand, then draw a card.\nSVar:DelayedReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ ReturnAll | RememberObjects$ RememberedLKI | TriggerDescription$ Return exiled cards to your hand, then draw a card. | SubAbility$ DBCleanup\nSVar:ReturnAll:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ DelayTriggerRememberedLKI | SubAbility$ YouDraw\nSVar:YouDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile all cards from your hand face down. At the beginning of the next end step, return those cards to your hand, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ignorant Bliss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

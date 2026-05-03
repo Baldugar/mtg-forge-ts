@@ -1,0 +1,23 @@
+{
+  "id": "lupine-harbingers-corpus-m677",
+  "description": "M6 corpus — Lupine Harbingers; in-hand parse.",
+  "seed": 64506,
+  "cards": {
+    "Lupine Harbingers": "Name:Lupine Harbingers\nManaCost:3 G\nTypes:Creature Wolf\nPT:4/4\nK:Trample\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Exile | Execute$ TrigNoteNum | Static$ True\nSVar:TrigNoteNum:DB$ Pump | NoteNumber$ X\nSVar:X:Count$YourTurns\nK:etbCounter:P1P1:Z:CheckSVar$ WasForetold:CARDNAME enters with X +1/+1 counters on it, where X is the number of turns you've begun since it was foretold.\nSVar:Z:SVar$X/Minus.Y\nSVar:Y:Count$NotedNumber\nSVar:WasForetold:Count$Foretold.1.0\nK:Foretell:4 G G\nOracle:Trample, haste\\nLupine Harbingers enters with X +1/+1 counters on it, where X is the number of turns you've begun since it was foretold.\\nForetell {4}{G}{G}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lupine Harbingers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

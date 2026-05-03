@@ -1,0 +1,25 @@
+{
+  "id": "ichor-aberration-corpus-m677",
+  "description": "M6 corpus — Ichor Aberration; ETB-on-bf.",
+  "seed": 62705,
+  "cards": {
+    "Ichor Aberration": "Name:Ichor Aberration\nManaCost:1 U B\nTypes:Creature Phyrexian Horror\nPT:3/3\nK:Flying\nK:Defender\nS:Mode$ CanAttackDefender | ValidCard$ Card.Self+powerGE7 | Description$ As long as CARDNAME's power is 7 or greater, it can attack as though it didn't have defender.\nT:Mode$ Proliferate | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self | PresentZone$ Battlefield | Execute$ TrigPerpetualBuff | TriggerDescription$ Whenever you proliferate, if CARDNAME is in your graveyard or on the battlefield, CARDNAME perpetually gets +1/+1. You may cast it from your graveyard this turn.\nT:Mode$ Proliferate | ValidPlayer$ You | TriggerZones$ Battlefield | TriggerZones$ Graveyard | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | Secondary$ True | Execute$ TrigPerpetualBuff | TriggerDescription$ Whenever you proliferate, if CARDNAME is in your graveyard or on the battlefield, CARDNAME perpetually gets +1/+1. You may cast it from your graveyard this turn.\nSVar:TrigPerpetualBuff:DB$ Pump | PumpZone$ Battlefield,Graveyard | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual | SubAbility$ ReanimateSelf\nSVar:ReanimateSelf:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Self\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Graveyard | Description$ You may cast EFFECTSOURCE from your graveyard this turn.\nDeckHints:Ability$Proliferate\nDeckHas:Ability$Graveyard\nOracle:Flying, defender\\nAs long as Ichor Aberration's power is 7 or greater, it can attack as though it didn't have defender.\\nWhenever you proliferate, if Ichor Aberration is in your graveyard or on the battlefield, Ichor Aberration perpetually gets +1/+1. You may cast it from your graveyard this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ichor Aberration"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

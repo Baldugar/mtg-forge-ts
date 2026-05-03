@@ -1,0 +1,25 @@
+{
+  "id": "nivix-cyclops-corpus-m677",
+  "description": "M6 corpus — Nivix Cyclops; ETB-on-bf.",
+  "seed": 66016,
+  "cards": {
+    "Nivix Cyclops": "Name:Nivix Cyclops\nManaCost:1 U R\nTypes:Creature Cyclops\nPT:1/4\nK:Defender\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME gets +3/+0 until end of turn and can attack this turn as though it didn't have defender.\nSVar:TrigPump:DB$ Pump | NumAtt$ +3 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ CanAttack | Duration$ UntilHostLeavesPlayOrEOT\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE can attack this turn as though it didn't have defender.\nSVar:BuffedBy:Instant,Sorcery\nDeckHints:Type$Instant|Sorcery\nOracle:Defender\\nWhenever you cast an instant or sorcery spell, Nivix Cyclops gets +3/+0 until end of turn and can attack this turn as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nivix Cyclops"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

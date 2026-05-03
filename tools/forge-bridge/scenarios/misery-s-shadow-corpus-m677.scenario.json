@@ -1,0 +1,25 @@
+{
+  "id": "misery-s-shadow-corpus-m677",
+  "description": "M6 corpus — Misery's Shadow; ETB-on-bf.",
+  "seed": 65271,
+  "cards": {
+    "Misery's Shadow": "Name:Misery's Shadow\nManaCost:1 B\nTypes:Creature Shade\nPT:2/2\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Card.Creature+OppCtrl | ReplaceWith$ Exile | Description$ If a creature an opponent controls would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nA:AB$ Pump | Cost$ 1 | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ CARDNAME gets +1/+1 until end of turn.\nOracle:If a creature an opponent controls would die, exile it instead.\\n{1}: Misery's Shadow gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Misery's Shadow"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

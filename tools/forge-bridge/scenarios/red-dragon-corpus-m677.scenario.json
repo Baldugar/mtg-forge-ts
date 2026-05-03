@@ -1,0 +1,23 @@
+{
+  "id": "red-dragon-corpus-m677",
+  "description": "M6 corpus — Red Dragon; in-hand parse.",
+  "seed": 67913,
+  "cards": {
+    "Red Dragon": "Name:Red Dragon\nManaCost:4 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Fire Breath — When CARDNAME enters, it deals 4 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | NumDmg$ 4 | Defined$ Player.Opponent\nOracle:Flying\\nFire Breath — When Red Dragon enters, it deals 4 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Red Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

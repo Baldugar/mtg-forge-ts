@@ -1,0 +1,23 @@
+{
+  "id": "pious-interdiction-corpus-m677",
+  "description": "M6 corpus — Pious Interdiction; in-hand parse.",
+  "seed": 66916,
+  "cards": {
+    "Pious Interdiction": "Name:Pious Interdiction\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nOracle:Enchant creature\\nWhen Pious Interdiction enters, you gain 2 life.\\nEnchanted creature can't attack or block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pious Interdiction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

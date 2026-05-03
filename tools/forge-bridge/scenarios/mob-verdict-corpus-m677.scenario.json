@@ -1,0 +1,23 @@
+{
+  "id": "mob-verdict-corpus-m677",
+  "description": "M6 corpus — Mob Verdict; in-hand parse.",
+  "seed": 65347,
+  "cards": {
+    "Mob Verdict": "Name:Mob Verdict\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ Vote | Defined$ Player | Secret$ True | VotePlayer$ Other | StoreVoteNum$ True | SubAbility$ DBRepeatOpp | StackDescription$ SpellDescription | SpellDescription$ Secret council — Each player secretly votes for another player, then those votes are revealed. For each vote an opponent received, CARDNAME deals 2 damage to that player and each creature that player controls. For each vote you received, draw a card.\nSVar:DBRepeatOpp:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBDamage | AmountFromVotes$ True | SubAbility$ DBRepeatYou\nSVar:DBDamage:DB$ DamageAll | NumDmg$ SVar$Votes/Times.2 | ValidCards$ Creature.RememberedPlayerCtrl | ValidPlayers$ Remembered\nSVar:DBRepeatYou:DB$ RepeatEach | RepeatPlayers$ You | RepeatSubAbility$ DBDraw | AmountFromVotes$ True\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ Votes\nOracle:Secret council — Each player secretly votes for another player, then those votes are revealed. For each vote an opponent received, Mob Verdict deals 2 damage to that player and each creature that player controls. For each vote you received, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mob Verdict"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

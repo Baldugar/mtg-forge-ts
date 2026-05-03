@@ -1,0 +1,23 @@
+{
+  "id": "march-of-souls-corpus-m677",
+  "description": "M6 corpus — March of Souls; in-hand parse.",
+  "seed": 64768,
+  "cards": {
+    "March of Souls": "Name:March of Souls\nManaCost:4 W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | NoRegen$ True | SubAbility$ DBRepeat | SpellDescription$ Destroy all creatures.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBToken | SubAbility$ DBCleanup | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_spirit_flying | TokenOwner$ Player.IsRemembered | SpellDescription$ They can't be regenerated. For each creature destroyed this way, its controller creates a 1/1 white Spirit creature token with flying.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$Valid Card.RememberedPlayerCtrl\nDeckHas:Ability$Token\nOracle:Destroy all creatures. They can't be regenerated. For each creature destroyed this way, its controller creates a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "March of Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

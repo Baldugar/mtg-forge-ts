@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-dreadnought-corpus-m677",
+  "description": "M6 corpus — Phyrexian Dreadnought; in-hand parse.",
+  "seed": 66845,
+  "cards": {
+    "Phyrexian Dreadnought": "Name:Phyrexian Dreadnought\nManaCost:1\nTypes:Artifact Creature Phyrexian Dreadnought\nPT:12/12\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ChooseCreatures | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice any number of creatures with total power 12 or greater.\nSVar:ChooseCreatures:DB$ ChooseCard | Defined$ You | Amount$ X | MinAmount$ 0 | Choices$ Creature.YouCtrl | ChoiceTitle$ Sacrifice any number of creatures with total power 12 or greater. | ChoiceZone$ Battlefield | Reveal$ True | RememberChosen$ True | SubAbility$ SacrificeSelf\nSVar:SacrificeSelf:DB$ Sacrifice | ConditionCheckSVar$ TotalPower | ConditionSVarCompare$ LT12 | SubAbility$ SacrificeCreatures\nSVar:SacrificeCreatures:DB$ SacrificeAll | Defined$ Remembered | ConditionCheckSVar$ TotalPower | ConditionSVarCompare$ GE12 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TotalPower:Remembered$CardPower\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:NeedsToPlayVar:Y GE12\nSVar:Y:Count$Valid Creature.YouCtrl+!namedPhyrexian Dreadnought$CardPower\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:Trample\\nWhen Phyrexian Dreadnought enters, sacrifice it unless you sacrifice any number of creatures with total power 12 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Dreadnought"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

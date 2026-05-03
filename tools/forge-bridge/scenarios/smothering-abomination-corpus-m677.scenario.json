@@ -1,0 +1,23 @@
+{
+  "id": "smothering-abomination-corpus-m677",
+  "description": "M6 corpus — Smothering Abomination; in-hand parse.",
+  "seed": 70275,
+  "cards": {
+    "Smothering Abomination": "Name:Smothering Abomination\nManaCost:2 B B\nTypes:Creature Eldrazi\nPT:4/3\nK:Devoid\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nT:Mode$ Sacrificed | ValidCard$ Creature.YouCtrl | Execute$ TrigDrawCard | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a creature, draw a card.\nSVar:TrigDrawCard:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.YouCtrl\nOracle:Devoid (This card has no color.)\\nFlying\\nAt the beginning of your upkeep, sacrifice a creature.\\nWhenever you sacrifice a creature, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smothering Abomination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

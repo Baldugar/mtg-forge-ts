@@ -1,0 +1,25 @@
+{
+  "id": "scrying-glass-corpus-m677",
+  "description": "M6 corpus — Scrying Glass; ETB-on-bf.",
+  "seed": 69245,
+  "cards": {
+    "Scrying Glass": "Name:Scrying Glass\nManaCost:2\nTypes:Artifact\nA:AB$ ChooseNumber | Cost$ 3 T | Min$ 1 | SubAbility$ DBScryingGlassChooseColor | SpellDescription$ Choose a number greater than 0 and a color. Target opponent reveals their hand. If that opponent reveals exactly the chosen number of cards of the chosen color, you draw a card.\nSVar:DBScryingGlassChooseColor:DB$ ChooseColor | SubAbility$ DBScryingGlassRevealHand\nSVar:DBScryingGlassRevealHand:DB$ RevealHand | RememberRevealed$ True | ValidTgts$ Opponent | SubAbility$ DBScryingGlassDraw\nSVar:DBScryingGlassDraw:DB$ Draw | ConditionCheckSVar$ ScryingGlassX | ConditionSVarCompare$ EQScryingGlassY | SubAbility$ DBScryingGlassCleanup\nSVar:DBScryingGlassCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:ScryingGlassX:Remembered$Valid Card.ChosenColor\nSVar:ScryingGlassY:Count$ChosenNumber\nAI:RemoveDeck:All\nOracle:{3}, {T}: Choose a number greater than 0 and a color. Target opponent reveals their hand. If that opponent reveals exactly the chosen number of cards of the chosen color, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scrying Glass"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

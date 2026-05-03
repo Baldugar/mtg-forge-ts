@@ -1,0 +1,23 @@
+{
+  "id": "spellbound-dragon-corpus-m677",
+  "description": "M6 corpus — Spellbound Dragon; in-hand parse.",
+  "seed": 70581,
+  "cards": {
+    "Spellbound Dragon": "Name:Spellbound Dragon\nManaCost:3 U R\nTypes:Creature Dragon\nPT:3/5\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, draw a card, then discard a card. CARDNAME gets +X/+0 until end of turn, where X is the discarded card's mana value.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | NumAtt$ +X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Flying\\nWhenever Spellbound Dragon attacks, draw a card, then discard a card. Spellbound Dragon gets +X/+0 until end of turn, where X is the discarded card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellbound Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

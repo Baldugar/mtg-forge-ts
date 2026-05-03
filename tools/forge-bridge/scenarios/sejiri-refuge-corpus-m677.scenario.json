@@ -1,0 +1,23 @@
+{
+  "id": "sejiri-refuge-corpus-m677",
+  "description": "M6 corpus — Sejiri Refuge; in-hand parse.",
+  "seed": 69407,
+  "cards": {
+    "Sejiri Refuge": "Name:Sejiri Refuge\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nDeckHas:Ability$LifeGain\nOracle:Sejiri Refuge enters tapped.\\nWhen Sejiri Refuge enters, you gain 1 life.\\n{T}: Add {W} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sejiri Refuge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "inferno-elemental-corpus-m677",
+  "description": "M6 corpus — Inferno Elemental; ETB-on-bf.",
+  "seed": 62912,
+  "cards": {
+    "Inferno Elemental": "Name:Inferno Elemental\nManaCost:4 R R\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigDealDamageAttack | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 3 damage to that creature.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigDealDamageBlock | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 3 damage to that creature.\nSVar:TrigDealDamageAttack:DB$ DealDamage | Defined$ TriggeredAttackerLKICopy | NumDmg$ 3\nSVar:TrigDealDamageBlock:DB$ DealDamage | Defined$ TriggeredBlockerLKICopy | NumDmg$ 3\nOracle:Whenever Inferno Elemental blocks or becomes blocked by a creature, Inferno Elemental deals 3 damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Inferno Elemental"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

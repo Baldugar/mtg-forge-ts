@@ -1,0 +1,23 @@
+{
+  "id": "make-an-example-corpus-m677",
+  "description": "M6 corpus — Make an Example; in-hand parse.",
+  "seed": 64636,
+  "cards": {
+    "Make an Example": "Name:Make an Example\nManaCost:3 B\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBTwoPiles | SubAbility$ DBSac | SpellDescription$ Each opponent separates the creatures they control into two piles. For each opponent, you choose one of their piles.\nSVar:DBTwoPiles:DB$ TwoPiles | Defined$ Remembered | Separator$ Remembered | Chooser$ You | RememberChosen$ True | ValidCards$ Creature.RememberedPlayerCtrl | Zone$ Battlefield\nSVar:DBSac:DB$ SacrificeAll | Defined$ Remembered | SubAbility$ DBCleanup | StackDescription$ Each opponent sacrifices the creatures in their chosen pile. | SpellDescription$ Each opponent sacrifices the creatures in their chosen pile. (Piles can be empty.)\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Each opponent separates the creatures they control into two piles. For each opponent, you choose one of their piles. Each opponent sacrifices the creatures in their chosen pile. (Piles can be empty.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Make an Example"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

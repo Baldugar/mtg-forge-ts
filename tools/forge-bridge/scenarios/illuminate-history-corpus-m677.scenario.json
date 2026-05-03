@@ -1,0 +1,23 @@
+{
+  "id": "illuminate-history-corpus-m677",
+  "description": "M6 corpus — Illuminate History; in-hand parse.",
+  "seed": 62744,
+  "cards": {
+    "Illuminate History": "Name:Illuminate History\nManaCost:2 R R\nTypes:Sorcery Lesson\nA:SP$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | AILogic$ DiscardUncastableAndExcess | StackDescription$ SpellDescription | SpellDescription$ Discard any number of cards, then draw that many cards. Then if there are seven or more cards in your graveyard, create a 3/2 red and white Spirit creature token.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Y | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | ConditionCheckSVar$ X | ConditionSVarCompare$ GE7 | TokenScript$ rw_3_2_spirit | TokenOwner$ You\nSVar:X:Count$ValidGraveyard Card.YouOwn\nSVar:Y:Count$RememberedSize\nDeckHas:Ability$Discard|Token\nDeckHints:Ability$Graveyard\nOracle:Discard any number of cards, then draw that many cards. Then if there are seven or more cards in your graveyard, create a 3/2 red and white Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illuminate History"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

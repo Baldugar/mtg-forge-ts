@@ -1,0 +1,23 @@
+{
+  "id": "sage-s-reverie-corpus-m677",
+  "description": "M6 corpus — Sage's Reverie; in-hand parse.",
+  "seed": 68873,
+  "cards": {
+    "Sage's Reverie": "Name:Sage's Reverie\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each aura you control that's attached to a creature.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | Description$ Enchanted creature gets +1/+1 for each aura you control that's attached to a creature.\nSVar:X:Count$Valid Aura.YouCtrl+AttachedTo Creature\nSVar:BuffedBy:Aura\nOracle:Enchant creature\\nWhen Sage's Reverie enters, draw a card for each Aura you control that's attached to a creature.\\nEnchanted creature gets +1/+1 for each Aura you control that's attached to a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage's Reverie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

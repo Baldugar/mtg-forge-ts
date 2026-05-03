@@ -1,0 +1,23 @@
+{
+  "id": "harvest-wurm-corpus-m677",
+  "description": "M6 corpus — Harvest Wurm; in-hand parse.",
+  "seed": 62088,
+  "cards": {
+    "Harvest Wurm": "Name:Harvest Wurm\nManaCost:1 G\nTypes:Creature Wurm\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return a basic land card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Hidden$ True | ChangeType$ Land.Basic+YouOwn | RememberChanged$ True | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SubAbility$ DBCleanup | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:Count$ValidGraveyard Land.Basic+YouOwn\nOracle:When Harvest Wurm enters, sacrifice it unless you return a basic land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harvest Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

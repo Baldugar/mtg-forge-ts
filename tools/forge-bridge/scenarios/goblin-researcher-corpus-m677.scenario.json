@@ -1,0 +1,23 @@
+{
+  "id": "goblin-researcher-corpus-m677",
+  "description": "M6 corpus — Goblin Researcher; in-hand parse.",
+  "seed": 61456,
+  "cards": {
+    "Goblin Researcher": "Name:Goblin Researcher\nManaCost:3 R\nTypes:Creature Goblin Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile the top card of your library. During any turn you attacked with CARDNAME, you may play that card.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile | Duration$ UntilHostLeavesPlay\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | CheckSVar$ X | Description$ During any turn you attacked with EFFECTSOURCE, you may play that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CreaturesAttackedThisTurn Creature.EffectSource\nOracle:When Goblin Researcher enters, exile the top card of your library. During any turn you attacked with Goblin Researcher, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Researcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "mechanized-warfare-corpus-m677",
+  "description": "M6 corpus — Mechanized Warfare; ETB-on-bf.",
+  "seed": 64930,
+  "cards": {
+    "Mechanized Warfare": "Name:Mechanized Warfare\nManaCost:1 R R\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.RedSource+YouCtrl,Artifact.YouCtrl | ValidTarget$ Player.Opponent,Permanent.OppCtrl | ReplaceWith$ DmgPlus2 | Description$ If a red or artifact source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 1 instead.\nSVar:DmgPlus2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.1\nSVar:PlayMain1:TRUE\nDeckHints:Type$Artifact\nOracle:If a red or artifact source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 1 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mechanized Warfare"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

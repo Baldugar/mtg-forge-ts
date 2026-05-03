@@ -1,0 +1,23 @@
+{
+  "id": "leave-corpus-m677",
+  "description": "M6 corpus — Leave; in-hand parse.",
+  "seed": 64081,
+  "cards": {
+    "Leave": "Name:Leave\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Select target permanent you own | TargetMin$ 0 | TargetMax$ X | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return any number of target permanents you own to your hand.\nSVar:X:Count$Valid Permanent.YouOwn\nAlternateMode:Split\nOracle:Return any number of target permanents you own to your hand.\n\nALTERNATE\n\nName:Chance\nManaCost:3 R\nTypes:Sorcery\nK:Aftermath\nA:SP$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Discard any number of cards, then draw that many cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nDiscard any number of cards, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

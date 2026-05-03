@@ -1,0 +1,23 @@
+{
+  "id": "stronghold-rats-corpus-m677",
+  "description": "M6 corpus — Stronghold Rats; in-hand parse.",
+  "seed": 71213,
+  "cards": {
+    "Stronghold Rats": "Name:Stronghold Rats\nManaCost:2 B\nTypes:Creature Rat\nPT:2/1\nK:Shadow\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, each player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:Random\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever Stronghold Rats deals combat damage to a player, each player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stronghold Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

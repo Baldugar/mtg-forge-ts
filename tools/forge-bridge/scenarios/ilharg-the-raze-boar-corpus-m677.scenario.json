@@ -1,0 +1,23 @@
+{
+  "id": "ilharg-the-raze-boar-corpus-m677",
+  "description": "M6 corpus — Ilharg, the Raze-Boar; in-hand parse.",
+  "seed": 62737,
+  "cards": {
+    "Ilharg, the Raze-Boar": "Name:Ilharg, the Raze-Boar\nManaCost:3 R R\nTypes:Legendary Creature Boar God\nPT:6/6\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may put a creature card from your hand onto the battlefield tapped and attacking. Return that creature to your hand at the beginning of the next end step.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouCtrl | Tapped$ True | Attacking$ True | AtEOT$ Hand\nSVar:HasAttackEffect:TRUE\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Card.Self | Execute$ TriReturn | OptionalDecider$ You | TriggerDescription$ When CARDNAME dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\nSVar:TriReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Destination$ Library | LibraryPosition$ 2\nOracle:Trample\\nWhenever Ilharg, the Raze-Boar attacks, you may put a creature card from your hand onto the battlefield tapped and attacking. Return that creature to your hand at the beginning of the next end step.\\nWhen Ilharg, the Raze-Boar dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ilharg, the Raze-Boar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

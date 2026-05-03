@@ -1,0 +1,23 @@
+{
+  "id": "imp-s-mischief-corpus-m677",
+  "description": "M6 corpus — Imp's Mischief; in-hand parse.",
+  "seed": 62832,
+  "cards": {
+    "Imp's Mischief": "Name:Imp's Mischief\nManaCost:1 B\nTypes:Instant\nA:SP$ ChangeTargets | TargetType$ Spell.singleTarget | ValidTgts$ Card | TgtPrompt$ Select target spell with a single target | SubAbility$ DBLoseLife | SpellDescription$ Change the target of target spell with a single target. You lose life equal to that spell's mana value.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:All\nOracle:Change the target of target spell with a single target. You lose life equal to that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imp's Mischief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

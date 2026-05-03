@@ -1,0 +1,23 @@
+{
+  "id": "search-for-glory-corpus-m677",
+  "description": "M6 corpus — Search for Glory; in-hand parse.",
+  "seed": 69296,
+  "cards": {
+    "Search for Glory": "Name:Search for Glory\nManaCost:2 W\nTypes:Snow Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Permanent.Snow,Legendary,Saga | ChangeNum$ 1 | SubAbility$ DBGainLife | SpellDescription$ Search your library for a snow permanent card, a legendary card, or a Saga card, reveal it, put it into your hand, then shuffle. You gain 1 life for each {S} spent to cast this spell.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$CastTotalManaSpent Snow\nSVar:AIPreference:ManaFrom$Snow\nAI:RemoveDeck:Random\nDeckHints:Type$Legendary\nOracle:Search your library for a snow permanent card, a legendary card, or a Saga card, reveal it, put it into your hand, then shuffle. You gain 1 life for each {S} spent to cast this spell. ({S} is mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Search for Glory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

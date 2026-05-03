@@ -1,0 +1,23 @@
+{
+  "id": "raven-clan-war-axe-corpus-m677",
+  "description": "M6 corpus — Raven Clan War-Axe; in-hand parse.",
+  "seed": 67749,
+  "cards": {
+    "Raven Clan War-Axe": "Name:Raven Clan War-Axe\nManaCost:1 R W\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library and/or graveyard for a card named Eivor, Battle-Ready, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedEivor; Battle-Ready | Optional$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Trample | Description$ Equipped creature gets +2/+0 and has trample.\nK:Equip:2\nDeckHints:Name$Eivor, Battle-Ready\nOracle:When Raven Clan War-Axe enters, you may search your library and/or graveyard for a card named Eivor, Battle-Ready, reveal it, and put it into your hand. If you search your library this way, shuffle.\\nEquipped creature gets +2/+0 and has trample.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raven Clan War-Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stonehide-ancient-corpus-m677",
+  "description": "M6 corpus — Stonehide Ancient; in-hand parse.",
+  "seed": 71061,
+  "cards": {
+    "Stonehide Ancient": "Name:Stonehide Ancient\nManaCost:3 G U R\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, return all non-Dragon creatures to their owners' hands.\nSVar:TrigChange:DB$ ChangeZoneAll | ChangeType$ Creature.nonDragon | Origin$ Battlefield | Destination$ Hand\nAlternateMode:Omen\nOracle:Flying, vigilance\\nWhen this creature enters, return all non-Dragon creatures to their owners' hands.\n\nALTERNATE\n\nName:Warning Tremor\nManaCost:2 R\nTypes:Sorcery Omen\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBEffect | SpellDescription$ CARDNAME deals 2 damage to any target.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ ReduceCost | ForgetOnCast$ Dragon.YouCtrl | Duration$ Permanent | SpellDescription$ The next Dragon spell you cast costs {2} less to cast.\nSVar:ReduceCost:Mode$ ReduceCost | Type$ Spell | Activator$ You | ValidCard$ Dragon | Amount$ 2 | Description$ The next Dragon spell you cast costs {2} less to cast.\nOracle:Warning Tremor deals 2 damage to any target.\\nThe next Dragon spell you cast costs {2} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stonehide Ancient"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sins-of-the-past-corpus-m677",
+  "description": "M6 corpus — Sins of the Past; in-hand parse.",
+  "seed": 69980,
+  "cards": {
+    "Sins of the Past": "Name:Sins of the Past\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ Effect | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TgtZone$ Graveyard | TgtPrompt$ Select target instant or sorcery card | RememberObjects$ Targeted | StaticAbilities$ Play | SubAbility$ DBEffect | ExileOnMoved$ Graveyard | SpellDescription$ Until end of turn, you may cast target instant or sorcery card from your graveyard without paying its mana cost. If that card would be put into your graveyard this turn, exile it instead. Exile CARDNAME.\nSVar:Play:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered | AffectedZone$ Graveyard | Description$ You may play remembered card.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Stack | ReplacementEffects$ ReplaceGraveyard | SubAbility$ DBChange\nSVar:ReplaceGraveyard:Event$ Moved | ValidCard$ Card.IsRemembered | Origin$ Stack | Destination$ Graveyard | ReplaceWith$ MoveExile | Description$ If that card would be put into your graveyard this turn, exile it instead.\nSVar:MoveExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Stack | Destination$ Exile\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Until end of turn, you may cast target instant or sorcery card from your graveyard without paying its mana cost. If that spell would be put into your graveyard this turn, exile it instead. Exile Sins of the Past.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sins of the Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

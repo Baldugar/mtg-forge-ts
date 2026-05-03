@@ -1,0 +1,23 @@
+{
+  "id": "shield-wall-sentinel-corpus-m677",
+  "description": "M6 corpus — Shield-Wall Sentinel; in-hand parse.",
+  "seed": 69684,
+  "cards": {
+    "Shield-Wall Sentinel": "Name:Shield-Wall Sentinel\nManaCost:4\nTypes:Artifact Creature Golem\nPT:1/3\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | OptionalDecider$ You | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSearch | TriggerDescription$ When CARDNAME enters, you may search your library for a creature card with defender, reveal it, put it into your hand, then shuffle.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.withDefender | ChangeNum$ 1\nDeckNeeds:Keyword$Defender\nOracle:Defender\\nWhen Shield-Wall Sentinel enters, you may search your library for a creature card with defender, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shield-Wall Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

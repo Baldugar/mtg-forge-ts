@@ -1,0 +1,25 @@
+{
+  "id": "hexing-squelcher-corpus-m677",
+  "description": "M6 corpus — Hexing Squelcher; ETB-on-bf.",
+  "seed": 62325,
+  "cards": {
+    "Hexing Squelcher": "Name:Hexing Squelcher\nManaCost:1 R\nTypes:Creature Goblin Sorcerer\nPT:2/2\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nK:Ward:PayLife<2>\nR:Event$ Counter | ValidSA$ Spell.YouCtrl | Layer$ CantHappen | ActiveZones$ Battlefield | Description$ Spells you control can't be countered.\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Ward:PayLife<2> | Description$ Other creatures you control have \"Ward—Pay 2 life.\"\nSVar:PlayMain1:TRUE\nOracle:This spell can't be countered.\\nWard—Pay 2 life.\\nSpells you control can't be countered.\\nOther creatures you control have \"Ward—Pay 2 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hexing Squelcher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

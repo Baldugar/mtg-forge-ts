@@ -1,0 +1,23 @@
+{
+  "id": "okiba-reckoner-raid-corpus-m677",
+  "description": "M6 corpus — Okiba Reckoner Raid; in-hand parse.",
+  "seed": 66258,
+  "cards": {
+    "Okiba Reckoner Raid": "Name:Okiba Reckoner Raid\nManaCost:B\nTypes:Enchantment Saga\nK:Chapter:3:DBDrain,DBDrain,DBTransform\nSVar:DBDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 1 life and you gain 1 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Each opponent loses 1 life and you gain 1 life.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Nezumi Road Captain\nManaCost:no cost\nColors:black\nTypes:Enchantment Creature Rat Rogue\nPT:2/2\nK:Menace\nS:Mode$ Continuous | Affected$ Vehicle.YouCtrl | AddKeyword$ Menace | Description$ Vehicles you control have menace. (They can't be blocked except by two or more creatures.)\nDeckHints:Type$Vehicle\nOracle:Menace\\nVehicles you control have menace. (They can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Okiba Reckoner Raid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

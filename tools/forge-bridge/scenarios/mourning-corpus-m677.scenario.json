@@ -1,0 +1,23 @@
+{
+  "id": "mourning-corpus-m677",
+  "description": "M6 corpus — Mourning; in-hand parse.",
+  "seed": 65553,
+  "cards": {
+    "Mourning": "Name:Mourning\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -2 | Description$ Enchanted creature gets -2/-0.\nA:AB$ ChangeZone | Cost$ B | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature gets -2/-0.\\n{B}: Return Mourning to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mourning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

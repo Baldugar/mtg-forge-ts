@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-lorwyn-corpus-m677",
+  "description": "M6 corpus — Invasion of Lorwyn; in-hand parse.",
+  "seed": 63067,
+  "cards": {
+    "Invasion of Lorwyn": "Name:Invasion of Lorwyn\nManaCost:4 B G\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target non-Elf creature an opponent controls with power X or less, where X is the number of lands you control.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonElf+OppCtrl+powerLEX | TgtPrompt$ Select target non-Elf creature an opponent controls with power X or less, where X is the number of lands you control\nSVar:X:Count$Valid Land.YouCtrl\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Lorwyn enters, destroy target non-Elf creature an opponent controls with power X or less, where X is the number of lands you control.\n\nALTERNATE\n\nName:Winnowing Forces\nManaCost:no cost\nColors:black,green\nTypes:Creature Elf Warrior\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nOracle:Winnowing Forces's power and toughness are each equal to the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Lorwyn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

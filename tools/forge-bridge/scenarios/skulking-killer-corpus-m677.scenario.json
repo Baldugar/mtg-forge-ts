@@ -1,0 +1,23 @@
+{
+  "id": "skulking-killer-corpus-m677",
+  "description": "M6 corpus — Skulking Killer; in-hand parse.",
+  "seed": 70067,
+  "cards": {
+    "Skulking Killer": "Name:Skulking Killer\nManaCost:3 B\nTypes:Creature Vampire Assassin\nPT:4/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -2/-2 until end of turn if that opponent controls no other creatures.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | NumDef$ -2 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1\nSVar:X:Count$Valid Creature.ControlledBy TargetedController\nAI:RemoveDeck:Random\nOracle:When Skulking Killer enters, target creature an opponent controls gets -2/-2 until end of turn if that opponent controls no other creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skulking Killer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

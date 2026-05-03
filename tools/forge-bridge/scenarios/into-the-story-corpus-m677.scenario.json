@@ -1,0 +1,23 @@
+{
+  "id": "into-the-story-corpus-m677",
+  "description": "M6 corpus — Into the Story; in-hand parse.",
+  "seed": 63040,
+  "cards": {
+    "Into the Story": "Name:Into the Story\nManaCost:5 U U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 3 | EffectZone$ All | CheckSVar$ X | SVarCompare$ GE7 | Description$ CARDNAME costs {3} less to cast if an opponent has seven or more cards in their graveyard.\nSVar:X:PlayerCountOpponents$HighestCardsInGraveyard\nA:SP$ Draw | NumCards$ 4 | SpellDescription$ Draw four cards.\nOracle:This spell costs {3} less to cast if an opponent has seven or more cards in their graveyard.\\nDraw four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Into the Story"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

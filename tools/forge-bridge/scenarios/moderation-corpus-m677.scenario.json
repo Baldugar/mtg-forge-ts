@@ -1,0 +1,25 @@
+{
+  "id": "moderation-corpus-m677",
+  "description": "M6 corpus — Moderation; ETB-on-bf.",
+  "seed": 65360,
+  "cards": {
+    "Moderation": "Name:Moderation\nManaCost:1 W U\nTypes:Enchantment\nS:Mode$ CantBeCast | ValidCard$ Card | Caster$ You | NumLimitEachTurn$ 1 | Description$ You can't cast more than one spell each turn.\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:You can't cast more than one spell each turn.\\nWhenever you cast a spell, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Moderation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

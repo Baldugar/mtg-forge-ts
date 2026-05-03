@@ -1,0 +1,23 @@
+{
+  "id": "haazda-marshal-corpus-m677",
+  "description": "M6 corpus — Haazda Marshal; in-hand parse.",
+  "seed": 61946,
+  "cards": {
+    "Haazda Marshal": "Name:Haazda Marshal\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | PresentCompare$ GE2 | NoResolvingCheck$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME and at least two other creatures attack, create a 1/1 white Soldier creature token with lifelink.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier_lifelink\nDeckHas:Ability$Token|LifeGain\nOracle:Whenever Haazda Marshal and at least two other creatures attack, create a 1/1 white Soldier creature token with lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haazda Marshal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

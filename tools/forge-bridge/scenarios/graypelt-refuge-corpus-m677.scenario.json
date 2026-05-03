@@ -1,0 +1,23 @@
+{
+  "id": "graypelt-refuge-corpus-m677",
+  "description": "M6 corpus — Graypelt Refuge; in-hand parse.",
+  "seed": 61690,
+  "cards": {
+    "Graypelt Refuge": "Name:Graypelt Refuge\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo G W | SpellDescription$ Add {G} or {W}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Graypelt Refuge enters tapped.\\nWhen Graypelt Refuge enters, you gain 1 life.\\n{T}: Add {G} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graypelt Refuge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

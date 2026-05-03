@@ -1,0 +1,23 @@
+{
+  "id": "poppet-stitcher-corpus-m677",
+  "description": "M6 corpus — Poppet Stitcher; in-hand parse.",
+  "seed": 67060,
+  "cards": {
+    "Poppet Stitcher": "Name:Poppet Stitcher\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an instant or sorcery spell, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.)\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie_decayed | TokenOwner$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Creature.token+YouCtrl | PresentCompare$ GE3 | TriggerZones$ Battlefield | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, if you control three or more creature tokens, you may transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Token\nDeckNeeds:Type$Instant|Sorcery\nAlternateMode:DoubleFaced\nOracle:Whenever you cast an instant or sorcery spell, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.)\\nAt the beginning of your upkeep, if you control three or more creature tokens, you may transform Poppet Sticher.\n\nALTERNATE\n\nName:Poppet Factory\nManaCost:no cost\nColors:blue\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | SetPower$ 3 | SetToughness$ 3 | RemoveAllAbilities$ True | Description$ Creature tokens you control lose all abilities and have base power and toughness 3/3.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Creature tokens you control lose all abilities and have base power and toughness 3/3.\\nAt the beginning of your upkeep, you may transform Poppet Factory.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Poppet Stitcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

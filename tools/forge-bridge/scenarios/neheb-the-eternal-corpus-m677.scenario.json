@@ -1,0 +1,23 @@
+{
+  "id": "neheb-the-eternal-corpus-m677",
+  "description": "M6 corpus — Neheb, the Eternal; in-hand parse.",
+  "seed": 65824,
+  "cards": {
+    "Neheb, the Eternal": "Name:Neheb, the Eternal\nManaCost:3 R R\nTypes:Legendary Creature Zombie Minotaur Warrior\nPT:4/6\nK:Afflict:3\nT:Mode$ Phase | Phase$ Main2 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ At the beginning of each of your postcombat main phases, add {R} for each 1 life your opponents have lost this turn.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ X\nSVar:X:Count$LifeOppsLostThisTurn\nSVar:PlayMain1:TRUE\nOracle:Afflict 3 (Whenever this creature becomes blocked, defending player loses 3 life.)\\nAt the beginning of each of your postcombat main phases, add {R} for each 1 life your opponents have lost this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neheb, the Eternal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

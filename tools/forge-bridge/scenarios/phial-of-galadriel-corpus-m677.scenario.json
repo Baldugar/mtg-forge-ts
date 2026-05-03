@@ -1,0 +1,25 @@
+{
+  "id": "phial-of-galadriel-corpus-m677",
+  "description": "M6 corpus — Phial of Galadriel; ETB-on-bf.",
+  "seed": 66824,
+  "cards": {
+    "Phial of Galadriel": "Name:Phial of Galadriel\nManaCost:3\nTypes:Legendary Artifact\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | Hellbent$ True | ReplaceWith$ DrawTwo | Description$ If you would draw a card while you have no cards in hand, draw two cards instead.\nSVar:DrawTwo:DB$ Draw | NumCards$ 2\nR:Event$ GainLife | ActiveZones$ Battlefield | CheckSVar$ Y | SVarCompare$ LE5 | ValidPlayer$ You | ReplaceWith$ GainDouble | AILogic$ DoubleLife | Description$ If you would gain life while you have 5 or less life, you gain twice that much life instead.\nSVar:GainDouble:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nSVar:X:ReplaceCount$LifeGained/Twice\nSVar:Y:Count$YourLifeTotal\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$LifeGain\nOracle:If you would draw a card while you have no cards in hand, draw two cards instead.\\nIf you would gain life while you have 5 or less life, you gain twice that much life instead.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Phial of Galadriel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

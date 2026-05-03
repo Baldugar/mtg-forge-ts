@@ -1,0 +1,23 @@
+{
+  "id": "rending-volley-corpus-m677",
+  "description": "M6 corpus — Rending Volley; in-hand parse.",
+  "seed": 68037,
+  "cards": {
+    "Rending Volley": "Name:Rending Volley\nManaCost:R\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ DealDamage | ValidTgts$ Creature.White,Creature.Blue | NumDmg$ 4 | TgtPrompt$ Select target white or blue creature. | SpellDescription$ CARDNAME deals 4 damage to target white or blue creature.\nAI:RemoveDeck:Random\nOracle:This spell can't be countered.\\nRending Volley deals 4 damage to target white or blue creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rending Volley"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "strongarm-thug-corpus-m677",
+  "description": "M6 corpus — Strongarm Thug; in-hand parse.",
+  "seed": 71206,
+  "cards": {
+    "Strongarm Thug": "Name:Strongarm Thug\nManaCost:2 B\nTypes:Creature Human Mercenary\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target Mercenary card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Mercenary.YouCtrl\nAI:RemoveDeck:Random\nOracle:When Strongarm Thug enters, you may return target Mercenary card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strongarm Thug"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

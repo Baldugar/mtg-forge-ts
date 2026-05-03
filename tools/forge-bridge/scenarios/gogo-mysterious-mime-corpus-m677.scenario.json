@@ -1,0 +1,23 @@
+{
+  "id": "gogo-mysterious-mime-corpus-m677",
+  "description": "M6 corpus — Gogo, Mysterious Mime; in-hand parse.",
+  "seed": 61512,
+  "cards": {
+    "Gogo, Mysterious Mime": "Name:Gogo, Mysterious Mime\nManaCost:3 R\nTypes:Legendary Creature Wizard\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigClone | TriggerDescription$ At the beginning of combat on your turn, you may have NICKNAME become a copy of another target creature you control until end of turn, except its name is Gogo, Mysterious Mime. If you do, NICKNAME and that creature each get +2/+0 and gain haste until end of turn and attack this turn if able.\nSVar:TrigClone:DB$ Clone | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NewName$ Gogo, Mysterious Mime | AILogic$ CloneBestCreature | Duration$ UntilEndOfTurn | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted & Self | NumAtt$ +2 | KW$ Haste | ConditionPresent$ Card.Self | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MustAttack | ForgetOnMoved$ Battlefield | RememberObjects$ Targeted & Self | ConditionPresent$ Card.Self\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.IsRemembered | Description$ This creature attacks this turn if able.\nSVar:PlayMain1:TRUE\nOracle:At the beginning of combat on your turn, you may have Gogo become a copy of another target creature you control until end of turn, except its name is Gogo, Mysterious Mime. If you do, Gogo and that creature each get +2/+0 and gain haste until end of turn and attack this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gogo, Mysterious Mime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

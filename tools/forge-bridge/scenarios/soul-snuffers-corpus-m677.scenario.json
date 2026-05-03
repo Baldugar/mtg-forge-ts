@@ -1,0 +1,23 @@
+{
+  "id": "soul-snuffers-corpus-m677",
+  "description": "M6 corpus — Soul Snuffers; in-hand parse.",
+  "seed": 70463,
+  "cards": {
+    "Soul Snuffers": "Name:Soul Snuffers\nManaCost:2 B B\nTypes:Creature Elemental Shaman\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ When CARDNAME enters, put a -1/-1 counter on each creature.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nAI:RemoveDeck:Random\nOracle:When Soul Snuffers enters, put a -1/-1 counter on each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Snuffers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

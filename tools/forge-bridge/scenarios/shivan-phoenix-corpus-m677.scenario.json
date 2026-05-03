@@ -1,0 +1,23 @@
+{
+  "id": "shivan-phoenix-corpus-m677",
+  "description": "M6 corpus — Shivan Phoenix; in-hand parse.",
+  "seed": 69734,
+  "cards": {
+    "Shivan Phoenix": "Name:Shivan Phoenix\nManaCost:4 R R\nTypes:Creature Phoenix\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nOracle:Flying\\nWhen Shivan Phoenix dies, return Shivan Phoenix to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shivan Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

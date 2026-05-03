@@ -1,0 +1,23 @@
+{
+  "id": "jacob-hauken-inspector-corpus-m677",
+  "description": "M6 corpus — Jacob Hauken, Inspector; in-hand parse.",
+  "seed": 63214,
+  "cards": {
+    "Jacob Hauken, Inspector": "Name:Jacob Hauken, Inspector\nManaCost:1 U\nTypes:Legendary Creature Human Advisor\nPT:0/2\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SubAbility$ DBExile | StackDescription$ {p:You} draws a card, | SpellDescription$ Draw a card,\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | ExileFaceDown$ True | WithMayLook$ True | Mandatory$ True | SubAbility$ DBTransform | StackDescription$ then exiles a card from their hand face down. | SpellDescription$ then exile a card from your hand face down. You may look at that card for as long as it remains exiled.\nSVar:DBTransform:DB$ SetState | UnlessCost$ 4 U U | UnlessSwitched$ True | UnlessPayer$ You | Defined$ Self | Mode$ Transform | StackDescription$ SpellDescription | SpellDescription$ You may pay {4}{U}{U}. If you do, transform CARDNAME.\nAlternateMode:DoubleFaced\nOracle:{T}: Draw a card, then exile a card from your hand face down. You may look at that card for as long as it remains exiled. You may pay {4}{U}{U}. If you do, transform Jacob Hauken, Inspector.\n\nALTERNATE\n\nName:Hauken's Insight\nManaCost:no cost\nColors:blue\nTypes:Legendary Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top card of your library face down. You may look at that card for as long as it remains exiled.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Card.ExiledWithSource | AffectedZone$ Exile | MayPlay$ True | MayPlayLimit$ 1 | MayPlayWithoutManaCost$ True | Description$ Once during each of your turns, you may play a land or cast a spell from among the cards exiled with this permanent without paying its mana cost.\nOracle:At the beginning of your upkeep, exile the top card of your library face down. You may look at that card for as long as it remains exiled.\\nOnce during each of your turns, you may play a land or cast a spell from among the cards exiled with this permanent without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jacob Hauken, Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

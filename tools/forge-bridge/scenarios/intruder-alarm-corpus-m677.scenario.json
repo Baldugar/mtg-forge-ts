@@ -1,0 +1,23 @@
+{
+  "id": "intruder-alarm-corpus-m677",
+  "description": "M6 corpus — Intruder Alarm; in-hand parse.",
+  "seed": 63051,
+  "cards": {
+    "Intruder Alarm": "Name:Intruder Alarm\nManaCost:2 U\nTypes:Enchantment\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Creatures don't untap during their controllers' untap steps.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigUntapAll | TriggerDescription$ Whenever a creature enters, untap all creatures.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature | SpellDescription$ untap all creatures.\nAI:RemoveDeck:Random\nOracle:Creatures don't untap during their controllers' untap steps.\\nWhenever a creature enters, untap all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intruder Alarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

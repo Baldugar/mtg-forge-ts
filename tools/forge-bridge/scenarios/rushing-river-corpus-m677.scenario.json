@@ -1,0 +1,23 @@
+{
+  "id": "rushing-river-corpus-m677",
+  "description": "M6 corpus — Rushing River; in-hand parse.",
+  "seed": 68671,
+  "cards": {
+    "Rushing River": "Name:Rushing River\nManaCost:2 U\nTypes:Instant\nK:Kicker:Sac<1/Land>\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | TargetMin$ X | TargetMax$ X | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target nonland permanent to its owner's hand. If this spell was kicked, return another target nonland permanent to its owner's hand.\nSVar:X:Count$Kicked.2.1\nSVar:NeedsToPlayKickedVar:Z GE2\nSVar:Z:Count$Valid Permanent.nonLand+OppCtrl\nOracle:Kicker—Sacrifice a land. (You may sacrifice a land in addition to any other costs as you cast this spell.)\\nReturn target nonland permanent to its owner's hand. If this spell was kicked, return another target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rushing River"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

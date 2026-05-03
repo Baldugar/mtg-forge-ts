@@ -1,0 +1,25 @@
+{
+  "id": "mana-flare-corpus-m677",
+  "description": "M6 corpus — Mana Flare; ETB-on-bf.",
+  "seed": 64684,
+  "cards": {
+    "Mana Flare": "Name:Mana Flare\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever a player taps a land for mana, that player adds one mana of any type that land produced.\nSVar:TrigMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ TriggeredActivator\nOracle:Whenever a player taps a land for mana, that player adds one mana of any type that land produced.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mana Flare"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

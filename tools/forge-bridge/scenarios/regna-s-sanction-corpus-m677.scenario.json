@@ -1,0 +1,23 @@
+{
+  "id": "regna-s-sanction-corpus-m677",
+  "description": "M6 corpus — Regna's Sanction; in-hand parse.",
+  "seed": 67970,
+  "cards": {
+    "Regna's Sanction": "Name:Regna's Sanction\nManaCost:3 W\nTypes:Sorcery\nA:SP$ AssignGroup | Defined$ Player | Choices$ FriendRepeat,FoeRepeat | AILogic$ FriendOrFoe | SpellDescription$ For each player, choose friend or foe. Each friend puts a +1/+1 counter on each creature they control. Each foe chooses one untapped creature they control, then taps the rest.\nSVar:FriendRepeat:DB$ PutCounterAll | ValidCards$ Creature.RememberedPlayerCtrl | CounterType$ P1P1 | CounterNum$ 1 | Placer$ Controller | SpellDescription$ Each friend puts a +1/+1 counter on each creature they control.\nSVar:FoeRepeat:DB$ ChooseCard | Defined$ Remembered | Choices$ Creature.untapped | ControlledByPlayer$ Chooser | Amount$ 1 | ChoiceTitle$ Choose one creature to keep untapped | Mandatory$ True | Reveal$ True | SubAbility$ DBTapAll | SpellDescription$ Each foe chooses one untapped creature they control, then taps the rest.\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.nonChosenCard+RememberedPlayerCtrl | TapperController$ True\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:SVar$Z1/Plus.Z2\nSVar:Z1:Count$Valid Creature.YourTeamCtrl\nSVar:Z2:Count$Valid Creature.OppCtrl+untapped\nOracle:For each player, choose friend or foe. Each friend puts a +1/+1 counter on each creature they control. Each foe chooses one untapped creature they control, then taps the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Regna's Sanction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

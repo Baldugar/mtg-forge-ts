@@ -1,0 +1,25 @@
+{
+  "id": "planeswalker-s-mirth-corpus-m677",
+  "description": "M6 corpus — Planeswalker's Mirth; ETB-on-bf.",
+  "seed": 66984,
+  "cards": {
+    "Planeswalker's Mirth": "Name:Planeswalker's Mirth\nManaCost:2 W\nTypes:Enchantment\nA:AB$ Reveal | Cost$ 3 W | Random$ True | RememberRevealed$ True | ValidTgts$ Opponent | SubAbility$ DBGain | SpellDescription$ Target opponent reveals a card at random from their hand. You gain life equal to that card's mana value.\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nSVar:NonStackingEffect:True\nOracle:{3}{W}: Target opponent reveals a card at random from their hand. You gain life equal to that card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Planeswalker's Mirth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

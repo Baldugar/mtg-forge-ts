@@ -1,0 +1,23 @@
+{
+  "id": "leeching-sliver-corpus-m677",
+  "description": "M6 corpus — Leeching Sliver; in-hand parse.",
+  "seed": 64091,
+  "cards": {
+    "Leeching Sliver": "Name:Leeching Sliver\nManaCost:1 B\nTypes:Creature Sliver\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Sliver.YouCtrl | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Sliver you control attacks, defending player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 1\nS:Mode$ Continuous | Affected$ Sliver.YouCtrl | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nSVar:PlayMain1:TRUE\nOracle:Whenever a Sliver you control attacks, defending player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leeching Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

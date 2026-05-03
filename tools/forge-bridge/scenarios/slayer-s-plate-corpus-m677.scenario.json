@@ -1,0 +1,23 @@
+{
+  "id": "slayer-s-plate-corpus-m677",
+  "description": "M6 corpus — Slayer's Plate; in-hand parse.",
+  "seed": 70189,
+  "cards": {
+    "Slayer's Plate": "Name:Slayer's Plate\nManaCost:3\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 4 | AddToughness$ 2 | Description$ Equipped creature gets +4/+2.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy+Human | Execute$ TrigToken | TriggerDescription$ Whenever equipped creature dies, if it was a Human, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nK:Equip:3\nDeckHints:Type$Human\nDeckHas:Ability$Token\nOracle:Equipped creature gets +4/+2.\\nWhenever equipped creature dies, if it was a Human, create a 1/1 white Spirit creature token with flying.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slayer's Plate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quash-corpus-m677",
+  "description": "M6 corpus — Quash; in-hand parse.",
+  "seed": 67449,
+  "cards": {
+    "Quash": "Name:Quash\nManaCost:2 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Instant,Sorcery | SubAbility$ ExileYard | SpellDescription$ Counter target instant or sorcery spell. Search its controller's graveyard, hand, and library for all cards with the same name as that spell and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ TargetedController | ChangeType$ TargetedCard.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInLib:TargetedController$CardsInLibrary\nOracle:Counter target instant or sorcery spell. Search its controller's graveyard, hand, and library for all cards with the same name as that spell and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

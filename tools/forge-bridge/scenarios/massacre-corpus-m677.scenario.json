@@ -1,0 +1,23 @@
+{
+  "id": "massacre-corpus-m677",
+  "description": "M6 corpus — Massacre; in-hand parse.",
+  "seed": 64855,
+  "cards": {
+    "Massacre": "Name:Massacre\nManaCost:2 B B\nTypes:Sorcery\nS:Mode$ AlternativeCost | ValidSA$ Spell | ValidCard$ Card.Self | ValidPlayer$ You | Cost$ 0 | EffectZone$ All | CheckSVar$ X | CheckSecondSVar$ Y | Description$ If an opponent controls a Plains and you control a Swamp, you may cast this spell without paying its mana cost.\nSVar:X:Count$Valid Plains.OppCtrl\nSVar:Y:Count$Valid Swamp.YouCtrl\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ All creatures get -2/-2 until end of turn.\nOracle:If an opponent controls a Plains and you control a Swamp, you may cast this spell without paying its mana cost.\\nAll creatures get -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Massacre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

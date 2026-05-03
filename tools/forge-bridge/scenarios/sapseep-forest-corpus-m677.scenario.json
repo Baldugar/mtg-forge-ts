@@ -1,0 +1,25 @@
+{
+  "id": "sapseep-forest-corpus-m677",
+  "description": "M6 corpus — Sapseep Forest; ETB-on-bf.",
+  "seed": 69008,
+  "cards": {
+    "Sapseep Forest": "Name:Sapseep Forest\nManaCost:no cost\nTypes:Land Forest\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ GainLife | Cost$ G T | LifeAmount$ 1 | IsPresent$ Permanent.Green+YouCtrl | PresentCompare$ GE2 | SpellDescription$ You gain 1 life. Activate only if you control two or more green permanents.\nOracle:({T}: Add {G}.)\\nSapseep Forest enters tapped.\\n{G}, {T}: You gain 1 life. Activate only if you control two or more green permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sapseep Forest"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

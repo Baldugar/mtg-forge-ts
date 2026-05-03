@@ -1,0 +1,25 @@
+{
+  "id": "record-store-corpus-m677",
+  "description": "M6 corpus — Record Store; ETB-on-bf.",
+  "seed": 67902,
+  "cards": {
+    "Record Store": "Name:Record Store\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, look at the top X cards of your library, where X is the number of artifacts you control. Put one of those cards into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigCrank:DB$ Dig | DigNum$ X | RestRandomOrder$ True\nSVar:X:Count$Valid Artifact.YouCtrl\nOracle:Whenever you crank Record Store, look at the top X cards of your library, where X is the number of artifacts you control. Put one of those cards into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Record Store"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

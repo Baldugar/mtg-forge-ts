@@ -1,0 +1,23 @@
+{
+  "id": "paleontologist-s-pick-axe-corpus-m677",
+  "description": "M6 corpus — Paleontologist's Pick-Axe; in-hand parse.",
+  "seed": 66578,
+  "cards": {
+    "Paleontologist's Pick-Axe": "Name:Paleontologist's Pick-Axe\nManaCost:2\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature attacks, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nK:Equip:1\nK:Craft:5 XMin1 ExileCtrlOrGrave<X/Creature.Other>\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard|Discard\nAlternateMode:DoubleFaced\nOracle:Whenever equipped creature attacks, draw a card, then discard a card.\\nEquip {1}\\nCraft with one or more creatures {5} ({5}, Exile this artifact, Exile one or more creatures you control and/or creature cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Dinosaur Headdress\nManaCost:no cost\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nR:Event$ Attached | ValidCard$ Card.Self | ValidTarget$ Creature | ReplaceWith$ ChooseCard | ActiveZones$ Battlefield | Description$ As CARDNAME becomes attached to a creature, choose an exiled creature card used to craft CARDNAME.\nSVar:ChooseCard:DB$ ChooseCard | Mandatory$ True | DefinedCards$ ExiledWith | ChoiceZone$ Exile\nT:Mode$ Attached | ValidSource$ Card.Self | Static$ True | Execute$ DBClone | TriggerDescription$ Equipped creature is a copy of the last chosen card.\nSVar:DBClone:DB$ Clone | Defined$ ChosenCard | CloneTarget$ Equipped | Duration$ UntilUnattached\nK:Equip:2\nOracle:When Dinosaur Headdress enters, attach it to target creature you control.\\nAs Dinosaur Headdress becomes attached to a creature, choose an exiled creature card used to craft Dinosaur Headdress.\\nEquipped creature is a copy of the last chosen card.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paleontologist's Pick-Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

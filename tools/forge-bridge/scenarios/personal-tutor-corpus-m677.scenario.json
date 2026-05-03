@@ -1,0 +1,23 @@
+{
+  "id": "personal-tutor-corpus-m677",
+  "description": "M6 corpus — Personal Tutor; in-hand parse.",
+  "seed": 66757,
+  "cards": {
+    "Personal Tutor": "Name:Personal Tutor\nManaCost:U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Sorcery | ChangeNum$ 1 | SpellDescription$ Search your library for a sorcery card, reveal it, then shuffle and put that card on top.\n# TODO: The AI will currently search for the most expensive valid card in the library. This can be used to the AI's advantage with careful deck design (which is why this card only works in properly designed AI decks). Consider improving tutoring logic with priorities.\nAI:RemoveDeck:Random\nOracle:Search your library for a sorcery card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Personal Tutor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

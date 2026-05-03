@@ -1,0 +1,23 @@
+{
+  "id": "owlbear-shepherd-corpus-m677",
+  "description": "M6 corpus — Owlbear Shepherd; in-hand parse.",
+  "seed": 66526,
+  "cards": {
+    "Owlbear Shepherd": "Name:Owlbear Shepherd\nManaCost:2 G\nTypes:Creature Goblin Druid\nPT:1/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE8 | TriggerDescription$ At the beginning of your end step, if creatures you control have total power 8 or greater, draw a card.\nSVar:X:Count$Valid Creature.YouCtrl$CardPower\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:At the beginning of your end step, if creatures you control have total power 8 or greater, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Owlbear Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

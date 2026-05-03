@@ -1,0 +1,23 @@
+{
+  "id": "mystic-snake-corpus-m677",
+  "description": "M6 corpus — Mystic Snake; in-hand parse.",
+  "seed": 65679,
+  "cards": {
+    "Mystic Snake": "Name:Mystic Snake\nManaCost:1 G U U\nTypes:Creature Snake\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters, counter target spell.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell\nOracle:Flash\\nWhen Mystic Snake enters, counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Snake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

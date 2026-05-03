@@ -1,0 +1,25 @@
+{
+  "id": "gustcloak-sentinel-corpus-m677",
+  "description": "M6 corpus — Gustcloak Sentinel; ETB-on-bf.",
+  "seed": 61924,
+  "cards": {
+    "Gustcloak Sentinel": "Name:Gustcloak Sentinel\nManaCost:2 W W\nTypes:Creature Human Soldier\nPT:3/3\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigUntapRemove | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME becomes blocked, you may untap it and remove it from combat.\nSVar:TrigUntapRemove:DB$ Untap | SubAbility$ DBRemoveCombat\nSVar:DBRemoveCombat:DB$ RemoveFromCombat\nOracle:Whenever Gustcloak Sentinel becomes blocked, you may untap it and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gustcloak Sentinel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

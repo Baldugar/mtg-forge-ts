@@ -1,0 +1,23 @@
+{
+  "id": "parasitic-bond-corpus-m677",
+  "description": "M6 corpus — Parasitic Bond; in-hand parse.",
+  "seed": 66620,
+  "cards": {
+    "Parasitic Bond": "Name:Parasitic Bond\nManaCost:3 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nOracle:Enchant creature\\nAt the beginning of the upkeep of enchanted creature's controller, Parasitic Bond deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parasitic Bond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soulgorger-orgg-corpus-m677",
+  "description": "M6 corpus — Soulgorger Orgg; in-hand parse.",
+  "seed": 70475,
+  "cards": {
+    "Soulgorger Orgg": "Name:Soulgorger Orgg\nManaCost:3 R R\nTypes:Creature Nightmare Orgg\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, you lose all but 1 life.\nSVar:TrigLoseLife:DB$ StoreSVar | SVar$ LifePaidOnETB | Type$ Calculate | Expression$ LifeAllButOne | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ LifePaidOnETB\nSVar:LifePaidOnETB:Number$0\nSVar:LifeAllButOne:Count$YourLifeTotal/Minus.1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME leaves the battlefield, you gain life equal to the life you lost when it entered.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ LifePaidOnETB\nAI:RemoveDeck:All\nOracle:Trample\\nWhen Soulgorger Orgg enters, you lose all but 1 life.\\nWhen Soulgorger Orgg leaves the battlefield, you gain life equal to the life you lost when it entered.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulgorger Orgg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "a-phantom-carriage-corpus-m677",
+  "description": "M6 corpus — A-Phantom Carriage; in-hand parse.",
+  "seed": 68780,
+  "cards": {
+    "A-Phantom Carriage": "Name:A-Phantom Carriage\nManaCost:2 U U\nTypes:Creature Spirit\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ PhantomSearch | TriggerDescription$ When CARDNAME enters, you may search your library for a card with flashback or disturb, put it into your graveyard, then shuffle.\nSVar:PhantomSearch:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeNum$ 1 | ChangeType$ Card.withFlashback+YouOwn,Card.withDisturb+YouOwn\nOracle:Flying\\nWhen Phantom Carriage enters, you may search your library for a card with flashback or disturb, put it into your graveyard, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Phantom Carriage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

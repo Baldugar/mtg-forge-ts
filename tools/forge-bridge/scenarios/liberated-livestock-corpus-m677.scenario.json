@@ -1,0 +1,23 @@
+{
+  "id": "liberated-livestock-corpus-m677",
+  "description": "M6 corpus — Liberated Livestock; in-hand parse.",
+  "seed": 64179,
+  "cards": {
+    "Liberated Livestock": "Name:Liberated Livestock\nManaCost:5 W\nTypes:Creature Cat Bird Ox\nPT:4/6\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 white Cat creature token with lifelink, a 1/1 white Bird creature token with flying, and a 2/4 white Ox creature token. For each of those tokens, you may put an Aura card from your hand and/or graveyard onto the battlefield attached to it.\nSVar:TrigToken:DB$ Token | RememberTokens$ True | TokenScript$ w_1_1_cat_lifelink,w_1_1_bird_flying,w_2_4_ox | TokenOwner$ You | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ RepeatEach | UseImprinted$ True | DefinedCards$ DirectRemembered | RepeatSubAbility$ DBChangeZone | SubAbility$ DBCleanup\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Battlefield | ChangeType$ Aura.YouCtrl+!IsRemembered | DefinedPlayer$ You | AttachedTo$ Imprinted | Optional$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacMe:4\nDeckHas:Ability$Token\nDeckNeeds:Type$Aura\nOracle:When Liberated Livestock dies, create a 1/1 white Cat creature token with lifelink, a 1/1 white Bird creature token with flying, and a 2/4 white Ox creature token. For each of those tokens, you may put an Aura card from your hand and/or graveyard onto the battlefield attached to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liberated Livestock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

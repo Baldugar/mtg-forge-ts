@@ -1,0 +1,23 @@
+{
+  "id": "relic-axe-corpus-m677",
+  "description": "M6 corpus — Relic Axe; in-hand parse.",
+  "seed": 68005,
+  "cards": {
+    "Relic Axe": "Name:Relic Axe\nManaCost:2\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | AITgts$ Warrior | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ 1 | Description$ Equipped creature gets +1/+1. If it's a Warrior, it gets +2/+1 instead.\nSVar:X:Count$Compare Y GE1.2.1\nSVar:Y:Targeted$Valid Warrior\nSVar:Y:Count$Valid Warrior.AttachedBy\nK:Equip:2\nSVar:NeedsToPlay:Creature.YouCtrl\nDeckHints:Type$Warrior\nOracle:When Relic Axe enters, attach it to target creature you control.\\nEquipped creature gets +1/+1. If it's a Warrior, it gets +2/+1 instead.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relic Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

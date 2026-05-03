@@ -1,0 +1,23 @@
+{
+  "id": "kogla-the-titan-ape-corpus-m677",
+  "description": "M6 corpus — Kogla, the Titan Ape; in-hand parse.",
+  "seed": 63802,
+  "cards": {
+    "Kogla, the Titan Ape": "Name:Kogla, the Titan Ape\nManaCost:3 G G G\nTypes:Legendary Creature Ape\nPT:7/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, it fights up to one target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Whenever NICKNAME attacks, destroy target artifact or enchantment defending player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredDefendingPlayer,Enchantment.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target artifact or enchantment defending player controls\nA:AB$ ChangeZone | Cost$ 1 G | ValidTgts$ Human.YouCtrl | TgtPrompt$ Choose target Human you control | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBPump | SpellDescription$ Return target Human you control to its owner's hand. NICKNAME gains indestructible until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Indestructible\nSVar:HasAttackEffect:TRUE\nOracle:When Kogla, the Titan Ape enters, it fights up to one target creature you don't control.\\nWhenever Kogla attacks, destroy target artifact or enchantment defending player controls.\\n{1}{G}: Return target Human you control to its owner's hand. Kogla gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kogla, the Titan Ape"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

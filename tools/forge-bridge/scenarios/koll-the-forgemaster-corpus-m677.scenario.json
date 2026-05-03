@@ -1,0 +1,23 @@
+{
+  "id": "koll-the-forgemaster-corpus-m677",
+  "description": "M6 corpus — Koll, the Forgemaster; in-hand parse.",
+  "seed": 63809,
+  "cards": {
+    "Koll, the Forgemaster": "Name:Koll, the Forgemaster\nManaCost:R W\nTypes:Legendary Creature Dwarf Warrior\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+!token+enchanted+YouCtrl,Creature.Other+!token+equipped+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever another nontoken creature you control dies, if it was enchanted or equipped, return it to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nS:Mode$ Continuous | Affected$ Creature.token+enchanted+YouCtrl,Creature.token+equipped+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creature tokens you control that are enchanted or equipped get +1/+1.\nDeckHints:Ability$Token\nOracle:Whenever another nontoken creature you control dies, if it was enchanted or equipped, return it to its owner's hand.\\nCreature tokens you control that are enchanted or equipped get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Koll, the Forgemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

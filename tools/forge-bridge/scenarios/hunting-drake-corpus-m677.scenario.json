@@ -1,0 +1,23 @@
+{
+  "id": "hunting-drake-corpus-m677",
+  "description": "M6 corpus — Hunting Drake; in-hand parse.",
+  "seed": 62627,
+  "cards": {
+    "Hunting Drake": "Name:Hunting Drake\nManaCost:4 U\nTypes:Creature Drake\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put target red or green creature on top of its owner's library.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.Red,Creature.Green | TgtPrompt$ Select target red or green creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Hunting Drake enters, put target red or green creature on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunting Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

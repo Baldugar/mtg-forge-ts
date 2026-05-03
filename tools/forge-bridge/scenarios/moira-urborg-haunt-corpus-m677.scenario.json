@@ -1,0 +1,23 @@
+{
+  "id": "moira-urborg-haunt-corpus-m677",
+  "description": "M6 corpus — Moira, Urborg Haunt; in-hand parse.",
+  "seed": 65378,
+  "cards": {
+    "Moira, Urborg Haunt": "Name:Moira, Urborg Haunt\nManaCost:2 B\nTypes:Legendary Creature Spirit Wizard\nPT:3/2\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, return to the battlefield target creature card in your graveyard that was put there from the battlefield this turn.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeNum$ 1 | ValidTgts$ Creature.YouOwn+ThisTurnEnteredFrom_Battlefield\nDeckHas:Ability$Graveyard\nOracle:Menace\\nWhenever Moira, Urborg Haunt deals combat damage to a player, return to the battlefield target creature card in your graveyard that was put there from the battlefield this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moira, Urborg Haunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

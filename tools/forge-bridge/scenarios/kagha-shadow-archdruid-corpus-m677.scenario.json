@@ -1,0 +1,23 @@
+{
+  "id": "kagha-shadow-archdruid-corpus-m677",
+  "description": "M6 corpus — Kagha, Shadow Archdruid; in-hand parse.",
+  "seed": 63428,
+  "cards": {
+    "Kagha, Shadow Archdruid": "Name:Kagha, Shadow Archdruid\nManaCost:2 B G\nTypes:Legendary Creature Elf Druid\nPT:1/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gains deathtouch until end of turn. Mill two cards. (Put the top two cards of your library into your graveyard.)\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Deathtouch | SubAbility$ TrigMill\nSVar:TrigMill:DB$ Mill | NumCards$ 2\nS:Mode$ Continuous | Affected$ Land.YouOwn+ThisTurnEnteredFrom_Library,Permanent.YouOwn+ThisTurnEnteredFrom_Library | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ Once during each of your turns, you may play a land or cast a permanent spell from among cards in your graveyard that were put there from your library this turn.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Mill|Graveyard\nOracle:Whenever Kagha, Shadow Archdruid attacks, it gains deathtouch until end of turn. Mill two cards. (Put the top two cards of your library into your graveyard.)\\nOnce during each of your turns, you may play a land or cast a permanent spell from among cards in your graveyard that were put there from your library this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kagha, Shadow Archdruid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

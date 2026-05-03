@@ -1,0 +1,23 @@
+{
+  "id": "invasive-surgery-corpus-m677",
+  "description": "M6 corpus — Invasive Surgery; in-hand parse.",
+  "seed": 63081,
+  "cards": {
+    "Invasive Surgery": "Name:Invasive Surgery\nManaCost:U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Sorcery | SubAbility$ ExileYard | SpellDescription$ Counter target sorcery spell. Delirium — If there are four or more card types amongst cards in your graveyard, search the graveyard, hand, and library of that spell's controller for cards with the same name as that spell, exile those cards, then that player shuffles their library.\nSVar:ExileYard:DB$ ChangeZone | Condition$ Delirium | Origin$ Graveyard | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInYard | Chooser$ You | Hidden$ True | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Condition$ Delirium | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Condition$ Delirium | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None\nSVar:NumInLib:TargetedController$CardsInLibrary\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInYard:TargetedController$CardsInGraveyard\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Counter target sorcery spell.\\nDelirium — If there are four or more card types among cards in your graveyard, search the graveyard, hand, and library of that spell's controller for any number of cards with the same name as that spell, exile those cards, then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasive Surgery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

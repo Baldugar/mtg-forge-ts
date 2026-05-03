@@ -1,0 +1,25 @@
+{
+  "id": "rysorian-badger-corpus-m677",
+  "description": "M6 corpus — Rysorian Badger; ETB-on-bf.",
+  "seed": 68696,
+  "cards": {
+    "Rysorian Badger": "Name:Rysorian Badger\nManaCost:2 G\nTypes:Creature Badger\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may exile up to two target creature cards from defending player's graveyard. If you do, you gain 1 life for each card exiled this way and CARDNAME assigns no combat damage this turn.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.DefenderCtrl | RememberChanged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT | SubAbility$ DBCleanup\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:X:Remembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever Rysorian Badger attacks and isn't blocked, you may exile up to two target creature cards from defending player's graveyard. If you do, you gain 1 life for each card exiled this way and Rysorian Badger assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rysorian Badger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

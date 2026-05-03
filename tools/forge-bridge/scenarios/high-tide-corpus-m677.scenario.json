@@ -1,0 +1,23 @@
+{
+  "id": "high-tide-corpus-m677",
+  "description": "M6 corpus — High Tide; in-hand parse.",
+  "seed": 62365,
+  "cards": {
+    "High Tide": "Name:High Tide\nManaCost:U\nTypes:Instant\nA:SP$ Effect | Triggers$ IslandTrigger | SpellDescription$ Until end of turn, whenever a player taps an Island for mana, that player adds an additional {U}.\nSVar:IslandTrigger:Mode$ TapsForMana | ValidCard$ Island | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever a player taps an Island for mana, that player adds an additional {U}.\nSVar:TrigMana:DB$ Mana | Produced$ U | Amount$ 1 | Defined$ TriggeredActivator\nAI:RemoveDeck:All\nOracle:Until end of turn, whenever a player taps an Island for mana, that player adds an additional {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "High Tide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

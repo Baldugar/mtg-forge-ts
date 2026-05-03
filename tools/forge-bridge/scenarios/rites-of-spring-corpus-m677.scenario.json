@@ -1,0 +1,23 @@
+{
+  "id": "rites-of-spring-corpus-m677",
+  "description": "M6 corpus — Rites of Spring; in-hand parse.",
+  "seed": 68370,
+  "cards": {
+    "Rites of Spring": "Name:Rites of Spring\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Discard | Defined$ You | AnyNumber$ True | Mode$ TgtChoose | Optional$ True | RememberDiscarded$ True | SubAbility$ DBChangeZone | SpellDescription$ Discard any number of cards. Search your library for up to that many basic land cards, reveal them, put them into your hand, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Discard any number of cards. Search your library for up to that many basic land cards, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rites of Spring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

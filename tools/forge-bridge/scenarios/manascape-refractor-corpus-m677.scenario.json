@@ -1,0 +1,25 @@
+{
+  "id": "manascape-refractor-corpus-m677",
+  "description": "M6 corpus — Manascape Refractor; ETB-on-bf.",
+  "seed": 64706,
+  "cards": {
+    "Manascape Refractor": "Name:Manascape Refractor\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nS:Mode$ ManaConvert | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Activated | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to pay the activation costs of CARDNAME's abilities.\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | GainsAbilitiesOf$ Land | Description$ CARDNAME has all activated abilities of all lands on the battlefield.\nAI:RemoveDeck:All\nOracle:Manascape Refractor enters tapped.\\nManascape Refractor has all activated abilities of all lands on the battlefield.\\nYou may spend mana as though it were mana of any color to pay the activation costs of Manascape Refractor's abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Manascape Refractor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

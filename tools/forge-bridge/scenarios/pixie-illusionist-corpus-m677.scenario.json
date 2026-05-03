@@ -1,0 +1,23 @@
+{
+  "id": "pixie-illusionist-corpus-m677",
+  "description": "M6 corpus — Pixie Illusionist; in-hand parse.",
+  "seed": 66947,
+  "cards": {
+    "Pixie Illusionist": "Name:Pixie Illusionist\nManaCost:U\nTypes:Creature Faerie Wizard\nPT:1/1\nK:Kicker:3 G\nK:etbCounter:P1P1:2:CheckSVar$ WasKicked:If CARDNAME was kicked, it enters with two +1/+1 counters on it.\nK:Flying\nA:AB$ ChooseType | Cost$ T | Defined$ You | Type$ Basic Land | SubAbility$ DBAnimate | SpellDescription$ Target land you control becomes the basic land type of your choice until end of turn.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | Types$ ChosenType | RemoveLandTypes$ True\nSVar:WasKicked:Count$Kicked.1.0\nDeckHas:Ability$Counters\nDeckHints:Color$Green\nOracle:Kicker {3}{G} (You may pay an additional {3}{G} as you cast this spell.)\\nFlying\\nIf Pixie Illusionist was kicked, it enters with two +1/+1 counters on it.\\n{T}: Target land you control becomes the basic land type of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pixie Illusionist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

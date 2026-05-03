@@ -1,0 +1,25 @@
+{
+  "id": "hero-of-precinct-one-corpus-m677",
+  "description": "M6 corpus — Hero of Precinct One; ETB-on-bf.",
+  "seed": 62294,
+  "cards": {
+    "Hero of Precinct One": "Name:Hero of Precinct One\nManaCost:1 W\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored spell, create a 1/1 white Human creature token.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ w_1_1_human\nSVar:BuffedBy:Card.MultiColor\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Whenever you cast a multicolored spell, create a 1/1 white Human creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hero of Precinct One"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

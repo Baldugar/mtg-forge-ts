@@ -1,0 +1,25 @@
+{
+  "id": "radagast-wizard-of-wilds-corpus-m677",
+  "description": "M6 corpus — Radagast, Wizard of Wilds; ETB-on-bf.",
+  "seed": 67516,
+  "cards": {
+    "Radagast, Wizard of Wilds": "Name:Radagast, Wizard of Wilds\nManaCost:2 G U\nTypes:Legendary Creature Avatar Wizard\nPT:3/5\nK:Ward:1\nS:Mode$ Continuous | Affected$ Beast.YouCtrl,Bird.YouCtrl | AddKeyword$ Ward:1 | Description$ Beasts and Birds you control have ward {1}.\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE5 | ValidActivatingPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell with mana value 5 or greater, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ BeastToken,BirdToken\nSVar:BeastToken:DB$ Token | TokenScript$ g_3_3_beast | SpellDescription$ Create a 3/3 green Beast creature token.\nSVar:BirdToken:DB$ Token | TokenScript$ u_2_2_bird_flying | SpellDescription$ Create a 2/2 blue Bird creature token with flying.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token & Type$Bird|Beast\nDeckHints:Type$Bird|Beast\nOracle:Ward {1}\\nBeasts and Birds you control have ward {1}.\\nWhenever you cast a spell with mana value 5 or greater, choose one —\\n• Create a 3/3 green Beast creature token.\\n• Create a 2/2 blue Bird creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Radagast, Wizard of Wilds"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

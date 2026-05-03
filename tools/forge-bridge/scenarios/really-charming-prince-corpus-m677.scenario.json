@@ -1,0 +1,23 @@
+{
+  "id": "really-charming-prince-corpus-m677",
+  "description": "M6 corpus — Really Charming Prince; in-hand parse.",
+  "seed": 67830,
+  "cards": {
+    "Really Charming Prince": "Name:Really Charming Prince\nManaCost:1 U\nTypes:Creature Faerie Noble\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters the battlefield, choose one of the following four cards at random: Piracy Charm, Sapphire Charm, Trickery Charm, and Vision Charm. You may create a copy of the chosen card and cast that copy without paying its mana cost.\nSVar:TrigChoose:DB$ NameCard | AtRandom$ True | ChooseFromList$ Piracy Charm,Sapphire Charm,Trickery Charm,Vision Charm | SubAbility$ DBCast | StackDescription$ SpellDescription\nSVar:DBCast:DB$ Play | WithoutManaCost$ True | CopyFromChosenName$ True | Optional$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearNamedCard$ True\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Really Charming Prince enters the battlefield, choose one of the following four cards at random: Piracy Charm, Sapphire Charm, Trickery Charm, and Vision Charm. You may create a copy of the chosen card and cast that copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Really Charming Prince"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

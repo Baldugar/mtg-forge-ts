@@ -1,0 +1,23 @@
+{
+  "id": "keldon-firebombers-corpus-m677",
+  "description": "M6 corpus — Keldon Firebombers; in-hand parse.",
+  "seed": 63581,
+  "cards": {
+    "Keldon Firebombers": "Name:Keldon Firebombers\nManaCost:3 R R\nTypes:Creature Human Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseThree | TriggerDescription$ When CARDNAME enters, each player sacrifices all lands they control except for three.\nSVar:TrigChooseThree:DB$ ChooseCard | Defined$ Player | Choices$ Land | ControlledByPlayer$ Chooser | Amount$ 3 | ChoiceTitle$ Choose three lands to keep | Mandatory$ True | Reveal$ True | SubAbility$ DBAllOthers\nSVar:DBAllOthers:DB$ SacrificeAll | ValidCards$ Land.nonChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHas:Ability$Sacrifice\nOracle:When Keldon Firebombers enters, each player sacrifices all lands they control except for three.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Firebombers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

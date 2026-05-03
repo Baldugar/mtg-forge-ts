@@ -1,0 +1,23 @@
+{
+  "id": "soulsworn-spirit-corpus-m677",
+  "description": "M6 corpus — Soulsworn Spirit; in-hand parse.",
+  "seed": 70492,
+  "cards": {
+    "Soulsworn Spirit": "Name:Soulsworn Spirit\nManaCost:3 U\nTypes:Creature Spirit\nPT:2/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ Detain | TriggerDescription$ When CARDNAME enters, detain target creature an opponent controls. (Until your next turn, that creature can't attack or block and its activated abilities can't be activated.)\nSVar:Detain:DB$ Detain | ValidTgts$ Creature.OppCtrl | ValidTgtsDesc$ creature an opponent controls\nSVar:PlayMain1:TRUE\nOracle:Soulsworn Spirit can't be blocked.\\nWhen Soulsworn Spirit enters, detain target creature an opponent controls. (Until your next turn, that creature can't attack or block and its activated abilities can't be activated.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulsworn Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

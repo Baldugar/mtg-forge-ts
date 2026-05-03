@@ -1,0 +1,25 @@
+{
+  "id": "lair-of-the-hydra-corpus-m677",
+  "description": "M6 corpus — Lair of the Hydra; ETB-on-bf.",
+  "seed": 63964,
+  "cards": {
+    "Lair of the Hydra": "Name:Lair of the Hydra\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ If you control two or more other lands, CARDNAME enters tapped.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Animate | Cost$ X G XMin1 | Defined$ Self | Power$ X | Toughness$ X | Types$ Creature,Hydra | Colors$ Green | OverwriteColors$ True | SpellDescription$ Until end of turn, CARDNAME becomes an X/X green Hydra creature. It's still a land. X can't be 0.\nSVar:X:Count$xPaid\nOracle:If you control two or more other lands, Lair of the Hydra enters tapped.\\n{T}: Add {G}.\\n{X}{G}: Until end of turn, Lair of the Hydra becomes an X/X green Hydra creature. It's still a land. X can't be 0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lair of the Hydra"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

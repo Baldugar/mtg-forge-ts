@@ -1,0 +1,25 @@
+{
+  "id": "oblivion-sower-corpus-m677",
+  "description": "M6 corpus — Oblivion Sower; ETB-on-bf.",
+  "seed": 66177,
+  "cards": {
+    "Oblivion Sower": "Name:Oblivion Sower\nManaCost:6\nTypes:Creature Eldrazi\nPT:5/8\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When you cast this spell, target opponent exiles the top four cards of their library, then you may put any number of land cards that player owns from exile onto the battlefield under your control.\nSVar:TrigExile:DB$ Dig | DigNum$ 4 | ChangeNum$ All | DestinationZone$ Exile | ValidTgts$ Opponent | SubAbility$ DBSower | TgtPrompt$ Choose target opponent\nSVar:DBSower:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Hidden$ True | ChangeType$ Land.TargetedPlayerOwn | GainControl$ True | ChangeNum$ X\nSVar:X:Count$ValidExile Land.TargetedPlayerOwn\nOracle:When you cast this spell, target opponent exiles the top four cards of their library, then you may put any number of land cards that player owns from exile onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oblivion Sower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

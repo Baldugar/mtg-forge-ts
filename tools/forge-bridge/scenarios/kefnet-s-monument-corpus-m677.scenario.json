@@ -1,0 +1,25 @@
+{
+  "id": "kefnet-s-monument-corpus-m677",
+  "description": "M6 corpus — Kefnet's Monument; ETB-on-bf.",
+  "seed": 63578,
+  "cards": {
+    "Kefnet's Monument": "Name:Kefnet's Monument\nManaCost:3\nTypes:Legendary Artifact\nS:Mode$ ReduceCost | ValidCard$ Creature.Blue | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Blue creature spells you cast cost {1} less to cast.\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, target creature an opponent controls doesn't untap during its controller's next untap step.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nDeckNeeds:Color$Blue\nOracle:Blue creature spells you cast cost {1} less to cast.\\nWhenever you cast a creature spell, target creature an opponent controls doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kefnet's Monument"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

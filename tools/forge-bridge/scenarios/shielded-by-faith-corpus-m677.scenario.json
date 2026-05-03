@@ -1,0 +1,23 @@
+{
+  "id": "shielded-by-faith-corpus-m677",
+  "description": "M6 corpus — Shielded by Faith; in-hand parse.",
+  "seed": 69685,
+  "cards": {
+    "Shielded by Faith": "Name:Shielded by Faith\nManaCost:1 W W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Indestructible | Description$ Enchanted creature has indestructible.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ Whenever a creature enters, you may attach CARDNAME to that creature.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature has indestructible.\\nWhenever a creature enters, you may attach Shielded by Faith to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shielded by Faith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

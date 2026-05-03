@@ -1,0 +1,23 @@
+{
+  "id": "shrill-howler-corpus-m677",
+  "description": "M6 corpus — Shrill Howler; in-hand parse.",
+  "seed": 69789,
+  "cards": {
+    "Shrill Howler": "Name:Shrill Howler\nManaCost:2 G\nTypes:Creature Werewolf Horror\nPT:3/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLTX | Description$ Creatures with power less than CARDNAME's power can't block it.\nSVar:X:Count$CardPower\nA:AB$ SetState | Cost$ 5 G | Defined$ Self | Mode$ Transform | SpellDescription$ Transform CARDNAME.\nDeckHas:Ability$Token\nDeckHints:Type$Eldrazi|Horror\nAlternateMode:DoubleFaced\nOracle:Creatures with power less than Shrill Howler's power can't block it.\\n{5}{G}: Transform Shrill Howler.\n\nALTERNATE\n\nName:Howling Chorus\nManaCost:no cost\nTypes:Creature Eldrazi Werewolf\nPT:3/5\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLTX | Description$ Creatures with power less than CARDNAME's power can't block it.\nSVar:X:Count$CardPower\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a 3/2 colorless Eldrazi Horror creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_3_2_eldrazi_horror | TokenOwner$ You\nOracle:Creatures with power less than Howling Chorus's power can't block it.\\nWhenever Howling Chorus deals combat damage to a player, create a 3/2 colorless Eldrazi Horror creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrill Howler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

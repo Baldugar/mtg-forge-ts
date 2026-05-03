@@ -1,0 +1,23 @@
+{
+  "id": "gwaihir-greatest-of-the-eagles-corpus-m677",
+  "description": "M6 corpus — Gwaihir, Greatest of the Eagles; in-hand parse.",
+  "seed": 61938,
+  "cards": {
+    "Gwaihir, Greatest of the Eagles": "Name:Gwaihir, Greatest of the Eagles\nManaCost:4 W\nTypes:Legendary Creature Bird Noble\nPT:5/5\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME attacks, target attacking creature gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | KW$ Flying\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ LifeGained | SVarCompare$ GE3 | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, if you gained 3 or more life this turn, create a 3/3 white Bird creature token with flying and \"Whenever this creature attacks, target attacking creature gains flying until end of turn.\"\nSVar:TrigToken:DB$ Token | TokenScript$ w_3_3_bird_flying_attacks\nSVar:LifeGained:Count$LifeYouGainedThisTurn\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever Gwaihir attacks, target attacking creature gains flying until end of turn.\\nAt the beginning of each end step, if you gained 3 or more life this turn, create a 3/3 white Bird creature token with flying and \"Whenever this creature attacks, target attacking creature gains flying until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gwaihir, Greatest of the Eagles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

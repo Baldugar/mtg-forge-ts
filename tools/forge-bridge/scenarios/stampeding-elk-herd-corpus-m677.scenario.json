@@ -1,0 +1,23 @@
+{
+  "id": "stampeding-elk-herd-corpus-m677",
+  "description": "M6 corpus — Stampeding Elk Herd; in-hand parse.",
+  "seed": 70871,
+  "cards": {
+    "Stampeding Elk Herd": "Name:Stampeding Elk Herd\nManaCost:3 G G\nTypes:Creature Elk\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE8 | Execute$ TrigFormidable | TriggerDescription$ Formidable — Whenever CARDNAME attacks, if creatures you control have total power 8 or greater, creatures you control gain trample until end of turn.\nSVar:TrigFormidable:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample\nSVar:X:Count$Valid Creature.YouCtrl$CardPower\nOracle:Formidable — Whenever Stampeding Elk Herd attacks, if creatures you control have total power 8 or greater, creatures you control gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stampeding Elk Herd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

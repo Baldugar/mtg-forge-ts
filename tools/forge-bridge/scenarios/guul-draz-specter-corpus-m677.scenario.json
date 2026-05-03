@@ -1,0 +1,23 @@
+{
+  "id": "guul-draz-specter-corpus-m677",
+  "description": "M6 corpus — Guul Draz Specter; in-hand parse.",
+  "seed": 61934,
+  "cards": {
+    "Guul Draz Specter": "Name:Guul Draz Specter\nManaCost:2 B B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 3 | AddToughness$ 3 | CheckSVar$ X | SVarCompare$ EQ0 | Description$ CARDNAME gets +3/+3 as long as an opponent has no cards in hand.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nSVar:X:PlayerCountOpponents$LowestCardsInHand\nOracle:Flying\\nGuul Draz Specter gets +3/+3 as long as an opponent has no cards in hand.\\nWhenever Guul Draz Specter deals combat damage to a player, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guul Draz Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

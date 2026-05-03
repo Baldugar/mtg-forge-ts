@@ -1,0 +1,23 @@
+{
+  "id": "skullpiercer-gnat-corpus-m677",
+  "description": "M6 corpus — Skullpiercer Gnat; in-hand parse.",
+  "seed": 70079,
+  "cards": {
+    "Skullpiercer Gnat": "Name:Skullpiercer Gnat\nManaCost:G U\nTypes:Creature Phyrexian Insect\nPT:1/1\nK:Flying\nK:Toxic:1\nT:Mode$ DamageDone | ValidSource$ Card.Self | CombatDamage$ True | ValidTarget$ Player | Execute$ TrigRandom | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, a random nonland card in that player's hand perpetually gains \"When you cast this spell, you get a poison counter.\"\nSVar:TrigRandom:DB$ ChooseCard | Choices$ Card.nonLand+OwnedBy TriggeredTarget | ChoiceZone$ Hand | AtRandom$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Triggers$ CastSpellGetPoison | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:CastSpellGetPoison:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigPoison | TriggerDescription$ When you cast this spell, you get a poison counter.\nSVar:TrigPoison:DB$ Poison | Num$ 1\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHints:Ability$Counters|Proliferate\nOracle:Flying\\nToxic 1\\nWhenever Skullpiercer Gnat deals combat damage to a player, a random nonland card in that player's hand perpetually gains \"When you cast this spell, you get a poison counter.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullpiercer Gnat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

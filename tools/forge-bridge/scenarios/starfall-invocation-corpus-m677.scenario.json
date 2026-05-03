@@ -1,0 +1,23 @@
+{
+  "id": "starfall-invocation-corpus-m677",
+  "description": "M6 corpus — Starfall Invocation; in-hand parse.",
+  "seed": 70890,
+  "cards": {
+    "Starfall Invocation": "Name:Starfall Invocation\nManaCost:3 W W\nTypes:Sorcery\nK:Gift\nSVar:GiftAbility:DB$ Draw | Defined$ Promised | GiftDescription$ a card\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBReturn | SpellDescription$ Destroy all creatures. If the gift was promised, return a creature card put into your graveyard this way to the battlefield under your control.\nSVar:DBReturn:DB$ ChangeZone | ConditionZone$ Stack | ConditionPresent$ Card.Self+PromisedGift | ConditionCompare$ EQ1 | ChangeType$ Creature.!token+IsRemembered+YouOwn | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)\\nDestroy all creatures. If the gift was promised, return a creature card put into your graveyard this way to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starfall Invocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

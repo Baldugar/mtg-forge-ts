@@ -1,0 +1,23 @@
+{
+  "id": "shoreline-looter-corpus-m677",
+  "description": "M6 corpus — Shoreline Looter; in-hand parse.",
+  "seed": 69753,
+  "cards": {
+    "Shoreline Looter": "Name:Shoreline Looter\nManaCost:1 U\nTypes:Creature Rat Rogue\nPT:1/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Threshold — Whenever CARDNAME deals combat damage to a player, draw a card. Then discard a card unless there are seven or more cards in your graveyard.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | ConditionCheckSVar$ X | ConditionSVarCompare$ LE6\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Shoreline Looter can't be blocked.\\nThreshold — Whenever Shoreline Looter deals combat damage to a player, draw a card. Then discard a card unless there are seven or more cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shoreline Looter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

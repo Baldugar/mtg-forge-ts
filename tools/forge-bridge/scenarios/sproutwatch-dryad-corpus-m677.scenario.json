@@ -1,0 +1,23 @@
+{
+  "id": "sproutwatch-dryad-corpus-m677",
+  "description": "M6 corpus — Sproutwatch Dryad; in-hand parse.",
+  "seed": 70797,
+  "cards": {
+    "Sproutwatch Dryad": "Name:Sproutwatch Dryad\nManaCost:1 G G\nTypes:Creature Dryad\nPT:2/3\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of each combat, CARDNAME gains flying until end of turn if a creature you control or a card in your hand has flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Card.Self | KW$ First Strike & Flying & Deathtouch & Double Strike & Haste & Hexproof & Indestructible & Lifelink & Menace & Reach & Trample & Vigilance | SharedKeywordsZone$ Hand,Battlefield | SharedRestrictions$ Creature.YouCtrl\nDeckHas:Ability$LifeGain\nOracle:At the beginning of each combat, Sproutwatch Dryad gains flying until end of turn if a creature you control or a card in your hand has flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sproutwatch Dryad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

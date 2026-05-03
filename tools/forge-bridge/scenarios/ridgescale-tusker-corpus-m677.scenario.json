@@ -1,0 +1,23 @@
+{
+  "id": "ridgescale-tusker-corpus-m677",
+  "description": "M6 corpus — Ridgescale Tusker; in-hand parse.",
+  "seed": 68256,
+  "cards": {
+    "Ridgescale Tusker": "Name:Ridgescale Tusker\nManaCost:3 G G\nTypes:Creature Pangolin Beast\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.StrictlyOther+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Ridgescale Tusker enters, put a +1/+1 counter on each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ridgescale Tusker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

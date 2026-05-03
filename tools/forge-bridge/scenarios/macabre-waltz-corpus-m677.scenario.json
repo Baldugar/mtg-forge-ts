@@ -1,0 +1,23 @@
+{
+  "id": "macabre-waltz-corpus-m677",
+  "description": "M6 corpus — Macabre Waltz; in-hand parse.",
+  "seed": 64548,
+  "cards": {
+    "Macabre Waltz": "Name:Macabre Waltz\nManaCost:1 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return up to two target creature cards from your graveyard to your hand, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Discard\nOracle:Return up to two target creature cards from your graveyard to your hand, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Macabre Waltz"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

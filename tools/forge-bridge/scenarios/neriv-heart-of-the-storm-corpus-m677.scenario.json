@@ -1,0 +1,25 @@
+{
+  "id": "neriv-heart-of-the-storm-corpus-m677",
+  "description": "M6 corpus — Neriv, Heart of the Storm; ETB-on-bf.",
+  "seed": 65842,
+  "cards": {
+    "Neriv, Heart of the Storm": "Name:Neriv, Heart of the Storm\nManaCost:1 R W B\nTypes:Legendary Creature Spirit Dragon\nPT:4/5\nK:Flying\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Creature.YouCtrl+ThisTurnEntered | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ If a creature you control that entered this turn would deal damage, it deals twice that much damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nOracle:Flying\\nIf a creature you control that entered this turn would deal damage, it deals twice that much damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Neriv, Heart of the Storm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pack-s-disdain-corpus-m677",
+  "description": "M6 corpus — Pack's Disdain; in-hand parse.",
+  "seed": 66544,
+  "cards": {
+    "Pack's Disdain": "Name:Pack's Disdain\nManaCost:1 B\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBPump | SpellDescription$ Choose a creature type. Target creature gets -1/-1 until end of turn for each permanent of the chosen type you control.\nSVar:DBPump:DB$ Pump | NumAtt$ -X | NumDef$ -X | ValidTgts$ Creature\nSVar:X:Count$Valid Permanent.ChosenType+YouCtrl\nAI:RemoveDeck:All\nOracle:Choose a creature type. Target creature gets -1/-1 until end of turn for each permanent of the chosen type you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pack's Disdain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

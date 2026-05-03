@@ -1,0 +1,23 @@
+{
+  "id": "immortal-phoenix-corpus-m677",
+  "description": "M6 corpus — Immortal Phoenix; in-hand parse.",
+  "seed": 62786,
+  "cards": {
+    "Immortal Phoenix": "Name:Immortal Phoenix\nManaCost:4 R R\nTypes:Creature Phoenix\nPT:5/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, return it to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Immortal Phoenix dies, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Immortal Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grotag-night-runner-corpus-m677",
+  "description": "M6 corpus — Grotag Night-Runner; in-hand parse.",
+  "seed": 61812,
+  "cards": {
+    "Grotag Night-Runner": "Name:Grotag Night-Runner\nManaCost:2 R\nTypes:Creature Goblin Rogue\nPT:2/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile the top card of your library. You may play that card this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever Grotag Night-Runner deals combat damage to a player, exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grotag Night-Runner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

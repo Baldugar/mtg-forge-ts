@@ -1,0 +1,23 @@
+{
+  "id": "sunspire-gatekeepers-corpus-m677",
+  "description": "M6 corpus — Sunspire Gatekeepers; in-hand parse.",
+  "seed": 71386,
+  "cards": {
+    "Sunspire Gatekeepers": "Name:Sunspire Gatekeepers\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Gate.YouCtrl | PresentCompare$ GE2 | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if you control two or more Gates, create a 2/2 white Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You\nDeckHas:Ability$Token\nDeckHints:Type$Gate\nOracle:When Sunspire Gatekeepers enters, if you control two or more Gates, create a 2/2 white Knight creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunspire Gatekeepers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

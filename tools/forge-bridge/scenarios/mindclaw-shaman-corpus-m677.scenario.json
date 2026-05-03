@@ -1,0 +1,23 @@
+{
+  "id": "mindclaw-shaman-corpus-m677",
+  "description": "M6 corpus — Mindclaw Shaman; in-hand parse.",
+  "seed": 65165,
+  "cards": {
+    "Mindclaw Shaman": "Name:Mindclaw Shaman\nManaCost:4 R\nTypes:Creature Lizard Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand. You may cast an instant or sorcery spell from among those cards without paying its mana cost.\nSVar:TrigReveal:DB$ RevealHand | ValidTgts$ Opponent | SubAbility$ TrigPlay\nSVar:TrigPlay:DB$ Play | Valid$ Card.TargetedPlayerCtrl | ValidSA$ Instant,Sorcery | ValidZone$ Hand | WithoutManaCost$ True | Optional$ True\nOracle:When Mindclaw Shaman enters, target opponent reveals their hand. You may cast an instant or sorcery spell from among those cards without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindclaw Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "manaplasm-corpus-m677",
+  "description": "M6 corpus — Manaplasm; ETB-on-bf.",
+  "seed": 64705,
+  "cards": {
+    "Manaplasm": "Name:Manaplasm\nManaCost:2 G\nTypes:Creature Ooze\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a spell, CARDNAME gets +X/+X until end of turn, where X is that spell's mana value.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:BuffedBy:Card\nOracle:Whenever you cast a spell, Manaplasm gets +X/+X until end of turn, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Manaplasm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

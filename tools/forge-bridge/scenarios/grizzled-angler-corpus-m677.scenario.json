@@ -1,0 +1,23 @@
+{
+  "id": "grizzled-angler-corpus-m677",
+  "description": "M6 corpus — Grizzled Angler; in-hand parse.",
+  "seed": 61800,
+  "cards": {
+    "Grizzled Angler": "Name:Grizzled Angler\nManaCost:2 U\nTypes:Creature Human\nPT:2/3\nA:AB$ Mill | Cost$ T | Defined$ You | NumCards$ 2 | SubAbility$ DBTransform | SpellDescription$ Mill two cards. Then if there is a colorless creature card in your graveyard, transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:X:Count$ValidGraveyard Creature.YouOwn+Colorless\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Delirium & Color$Colorless\nAlternateMode:DoubleFaced\nOracle:{T}: Mill two cards. Then if there is a colorless creature card in your graveyard, transform Grizzled Angler.\n\nALTERNATE\n\nName:Grisly Anglerfish\nManaCost:no cost\nTypes:Creature Eldrazi Fish\nPT:4/5\nA:AB$ Effect | Cost$ 6 | StaticAbilities$ MustAttack | SpellDescription$ Creatures your opponents control attack this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.OppCtrl | Description$ Creatures your opponents control attack this turn if able.\nOracle:{6}: Creatures your opponents control attack this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grizzled Angler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

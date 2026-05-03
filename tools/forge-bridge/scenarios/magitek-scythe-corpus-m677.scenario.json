@@ -1,0 +1,23 @@
+{
+  "id": "magitek-scythe-corpus-m677",
+  "description": "M6 corpus — Magitek Scythe; in-hand parse.",
+  "seed": 64594,
+  "cards": {
+    "Magitek Scythe": "Name:Magitek Scythe\nManaCost:4\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ A Test of Your Reflexes! — When this Equipment enters, you may attach it to target creature you control. If you do, that creature gains first strike until end of turn and must be blocked this turn if able.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberAttached$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | KW$ First Strike & HIDDEN CARDNAME must be blocked if able. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Equipped creature gets +2/+1.\nK:Equip:2\nOracle:A Test of Your Reflexes! — When this Equipment enters, you may attach it to target creature you control. If you do, that creature gains first strike until end of turn and must be blocked this turn if able.\\nEquipped creature gets +2/+1.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magitek Scythe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

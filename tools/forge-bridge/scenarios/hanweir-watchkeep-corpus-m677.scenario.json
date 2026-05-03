@@ -1,0 +1,23 @@
+{
+  "id": "hanweir-watchkeep-corpus-m677",
+  "description": "M6 corpus — Hanweir Watchkeep; in-hand parse.",
+  "seed": 62032,
+  "cards": {
+    "Hanweir Watchkeep": "Name:Hanweir Watchkeep\nManaCost:2 R\nTypes:Creature Human Warrior Werewolf\nPT:1/5\nK:Defender\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Defender\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Hanweir Watchkeep.\n\nALTERNATE\n\nName:Bane of Hanweir\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:5/5\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Bane of Hanweir attacks each combat if able.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Bane of Hanweir.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hanweir Watchkeep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soul-swindler-corpus-m677",
+  "description": "M6 corpus — Soul Swindler; in-hand parse.",
+  "seed": 70466,
+  "cards": {
+    "Soul Swindler": "Name:Soul Swindler\nManaCost:4 B\nTypes:Creature Demon Employee\nPT:5/3\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | CheckSVar$ X | Description$ As long as you've visited an Attraction this turn, CARDNAME has indestructible. (Damage and effects that say \"destroy\" don't destroy it.)\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigOpenAttraction | TriggerDescription$ When CARDNAME enters the battlefield, open an Attraction.\nSVar:TrigOpenAttraction:DB$ OpenAttraction\nSVar:X:PlayerCountPropertyYou$AttractionsVisitedThisTurn\nOracle:As long as you've visited an Attraction this turn, Soul Swindler has indestructible. (Damage and effects that say \"destroy\" don't destroy it.)\\nWhen Soul Swindler enters the battlefield, open an Attraction. (Put the top card of your Attraction deck onto the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Swindler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

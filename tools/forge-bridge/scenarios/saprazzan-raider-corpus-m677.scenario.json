@@ -1,0 +1,25 @@
+{
+  "id": "saprazzan-raider-corpus-m677",
+  "description": "M6 corpus — Saprazzan Raider; ETB-on-bf.",
+  "seed": 69004,
+  "cards": {
+    "Saprazzan Raider": "Name:Saprazzan Raider\nManaCost:2 U\nTypes:Creature Merfolk\nPT:1/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME becomes blocked, return it to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nOracle:When Saprazzan Raider becomes blocked, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Saprazzan Raider"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

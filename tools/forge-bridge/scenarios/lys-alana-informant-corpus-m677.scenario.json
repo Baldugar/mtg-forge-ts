@@ -1,0 +1,23 @@
+{
+  "id": "lys-alana-informant-corpus-m677",
+  "description": "M6 corpus — Lys Alana Informant; in-hand parse.",
+  "seed": 64540,
+  "cards": {
+    "Lys Alana Informant": "Name:Lys Alana Informant\nManaCost:1 G\nTypes:Creature Elf Scout\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When this creature enters or dies, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSurveil | Secondary$ True | TriggerDescription$ When this creature enters or dies, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$Surveil|Graveyard\nOracle:When this creature enters or dies, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lys Alana Informant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "phyrexian-censor-corpus-m677",
+  "description": "M6 corpus — Phyrexian Censor; ETB-on-bf.",
+  "seed": 66841,
+  "cards": {
+    "Phyrexian Censor": "Name:Phyrexian Censor\nManaCost:2 W\nTypes:Creature Phyrexian Wizard\nPT:3/3\nS:Mode$ CantBeCast | ValidCard$ Card.nonPhyrexian | Caster$ Player | NumLimitEachTurn$ 1 | Description$ Each player can't cast more than one non-Phyrexian spell each turn.\nR:Event$ Moved | ValidCard$ Creature.nonPhyrexian | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Non-Phyrexian creatures enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nOracle:Each player can't cast more than one non-Phyrexian spell each turn.\\nNon-Phyrexian creatures enter tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Phyrexian Censor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

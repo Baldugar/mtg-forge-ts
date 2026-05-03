@@ -1,0 +1,23 @@
+{
+  "id": "ruin-grinder-corpus-m677",
+  "description": "M6 corpus — Ruin Grinder; in-hand parse.",
+  "seed": 68588,
+  "cards": {
+    "Ruin Grinder": "Name:Ruin Grinder\nManaCost:5 R\nTypes:Artifact Creature Construct\nPT:7/4\nK:Menace\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, each player may discard their hand and draw seven cards.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | Defined$ Player | Optional$ True | RememberDiscardingPlayers$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ 7 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:TypeCycling:Mountain:2\nDeckHas:Ability$Discard\nOracle:Menace\\nWhen Ruin Grinder dies, each player may discard their hand and draw seven cards.\\nMountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruin Grinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

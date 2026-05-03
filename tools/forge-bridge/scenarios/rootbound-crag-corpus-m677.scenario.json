@@ -1,0 +1,25 @@
+{
+  "id": "rootbound-crag-corpus-m677",
+  "description": "M6 corpus — Rootbound Crag; ETB-on-bf.",
+  "seed": 68510,
+  "cards": {
+    "Rootbound Crag": "Name:Rootbound Crag\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Mountain or a Forest.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Mountain.YouCtrl,Forest.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nOracle:Rootbound Crag enters tapped unless you control a Mountain or a Forest.\\n{T}: Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rootbound Crag"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

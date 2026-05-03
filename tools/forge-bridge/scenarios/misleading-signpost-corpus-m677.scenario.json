@@ -1,0 +1,23 @@
+{
+  "id": "misleading-signpost-corpus-m677",
+  "description": "M6 corpus — Misleading Signpost; in-hand parse.",
+  "seed": 65282,
+  "cards": {
+    "Misleading Signpost": "Name:Misleading Signpost\nManaCost:2 U\nTypes:Artifact\nK:Flash\nT:Mode$ ChangesZone | Phase$ Declare Attackers | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeAttacker | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters during the declare attackers step, you may reselect which player or permanent target attacking creature is attacking. (It can't attack its controller or their permanents.)\nSVar:TrigChangeAttacker:DB$ ChangeCombatants | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Attacking$ True\nAI:RemoveDeck:All\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nOracle:Flash\\nWhen Misleading Signpost enters during the declare attackers step, you may reselect which player or permanent target attacking creature is attacking. (It can't attack its controller or their permanents.)\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Misleading Signpost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

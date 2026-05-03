@@ -1,0 +1,23 @@
+{
+  "id": "mayael-s-aria-corpus-m677",
+  "description": "M6 corpus — Mayael's Aria; in-hand parse.",
+  "seed": 64908,
+  "cards": {
+    "Mayael's Aria": "Name:Mayael's Aria\nManaCost:R G W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on each creature you control if you control a creature with power 5 or greater. Then you gain 10 life if you control a creature with power 10 or greater. Then you win the game if you control a creature with power 20 or greater.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | ConditionPresent$ Creature.YouCtrl+powerGE5 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 10 | Defined$ You | ConditionPresent$ Creature.YouCtrl+powerGE10 | SubAbility$ DBWinGame\nSVar:DBWinGame:DB$ WinsGame | Defined$ You | ConditionPresent$ Creature.YouCtrl+powerGE20\nOracle:At the beginning of your upkeep, put a +1/+1 counter on each creature you control if you control a creature with power 5 or greater. Then you gain 10 life if you control a creature with power 10 or greater. Then you win the game if you control a creature with power 20 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mayael's Aria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

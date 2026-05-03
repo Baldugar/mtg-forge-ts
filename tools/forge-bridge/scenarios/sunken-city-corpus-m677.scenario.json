@@ -1,0 +1,23 @@
+{
+  "id": "sunken-city-corpus-m677",
+  "description": "M6 corpus — Sunken City; in-hand parse.",
+  "seed": 71364,
+  "cards": {
+    "Sunken City": "Name:Sunken City\nManaCost:U U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {U}{U}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ U U\nS:Mode$ Continuous | Affected$ Creature.Blue | AddPower$ 1 | AddToughness$ 1 | Description$ Blue creatures get +1/+1.\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.Blue+YouCtrl\nOracle:At the beginning of your upkeep, sacrifice Sunken City unless you pay {U}{U}.\\nBlue creatures get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunken City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "spectator-seating-corpus-m677",
+  "description": "M6 corpus — Spectator Seating; ETB-on-bf.",
+  "seed": 70541,
+  "cards": {
+    "Spectator Seating": "Name:Spectator Seating\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you have two or more opponents.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ ETBCheckSVar2 | ConditionSVarCompare$ LT2\nSVar:ETBCheckSVar2:PlayerCountOpponents$Amount\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nOracle:Spectator Seating enters tapped unless you have two or more opponents.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spectator Seating"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

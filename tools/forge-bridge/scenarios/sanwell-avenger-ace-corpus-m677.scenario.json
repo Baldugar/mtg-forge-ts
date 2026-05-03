@@ -1,0 +1,25 @@
+{
+  "id": "sanwell-avenger-ace-corpus-m677",
+  "description": "M6 corpus — Sanwell, Avenger Ace; ETB-on-bf.",
+  "seed": 68989,
+  "cards": {
+    "Sanwell, Avenger Ace": "Name:Sanwell, Avenger Ace\nManaCost:1 W\nTypes:Legendary Creature Human Pilot\nPT:3/1\nR:Event$ DamageDone | Prevent$ True | ValidTarget$ Creature.Self | IsPresent$ Artifact.Creature+YouCtrl+attacking | Description$ As long as an artifact creature you control is attacking, prevent all damage that would be dealt to CARDNAME.\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ DBExileTopCard | TriggerDescription$ Whenever NICKNAME becomes tapped, exile the top six cards of your library. You may cast a Vehicle or artifact creature spell from among them. Then put the rest on the bottom of your library in a random order.\nSVar:DBExileTopCard:DB$ Dig | Defined$ You | DigNum$ 6 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Vehicle.IsRemembered,Artifact.Creature+IsRemembered | ValidSA$ Spell | ValidZone$ Exile | Controller$ You | Optional$ True | Amount$ 1 | SubAbility$ PutRestBackBottomLibrary\nSVar:PutRestBackBottomLibrary:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Exile | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:As long as an artifact creature you control is attacking, prevent all damage that would be dealt to Sanwell, Avenger Ace.\\nWhenever Sanwell becomes tapped, exile the top six cards of your library. You may cast a Vehicle or artifact creature spell from among them. Then put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sanwell, Avenger Ace"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scalpelexis-corpus-m677",
+  "description": "M6 corpus — Scalpelexis; in-hand parse.",
+  "seed": 69100,
+  "cards": {
+    "Scalpelexis": "Name:Scalpelexis\nManaCost:4 U\nTypes:Creature Beast\nPT:1/5\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player exiles the top four cards of their library. If two or more of those cards have the same name, repeat this process.\nSVar:TrigExile:DB$ Repeat | RepeatSubAbility$ DBExileCleanup | RepeatCheckSVar$ X | RepeatSVarCompare$ LTY | SubAbility$ DBCleanup\nSVar:DBExileCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 4 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$DifferentCardNames\nSVar:Y:Count$RememberedSize\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhenever Scalpelexis deals combat damage to a player, that player exiles the top four cards of their library. If two or more of those cards have the same name, repeat this process.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scalpelexis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

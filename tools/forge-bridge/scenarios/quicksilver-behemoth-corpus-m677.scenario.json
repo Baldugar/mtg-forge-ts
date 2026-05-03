@@ -1,0 +1,23 @@
+{
+  "id": "quicksilver-behemoth-corpus-m677",
+  "description": "M6 corpus — Quicksilver Behemoth; in-hand parse.",
+  "seed": 67475,
+  "cards": {
+    "Quicksilver Behemoth": "Name:Quicksilver Behemoth\nManaCost:6 U\nTypes:Creature Beast\nPT:4/5\nK:Affinity:Artifact\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelayedTrig | TriggerDescription$ When CARDNAME attacks or blocks, return it to its owner's hand at end of combat. (Return it only if it's on the battlefield.)\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelayedTrig | Secondary$ True | TriggerDescription$ When CARDNAME attacks or blocks, return it to its owner's hand at end of combat. (Return it only if it's on the battlefield.)\nSVar:DelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigReturn | TriggerDescription$ Return CARDNAME to its owner's hand at end of combat. (Return it only if it's on the battlefield.)\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nWhen Quicksilver Behemoth attacks or blocks, return it to its owner's hand at end of combat. (Return it only if it's on the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quicksilver Behemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

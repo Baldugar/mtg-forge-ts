@@ -1,0 +1,25 @@
+{
+  "id": "prairie-stream-corpus-m677",
+  "description": "M6 corpus — Prairie Stream; ETB-on-bf.",
+  "seed": 67105,
+  "cards": {
+    "Prairie Stream": "Name:Prairie Stream\nManaCost:no cost\nTypes:Land Plains Island\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {W} or {U}.)\\nPrairie Stream enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Prairie Stream"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

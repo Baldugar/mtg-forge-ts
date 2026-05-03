@@ -1,0 +1,23 @@
+{
+  "id": "lone-revenant-corpus-m677",
+  "description": "M6 corpus — Lone Revenant; in-hand parse.",
+  "seed": 64363,
+  "cards": {
+    "Lone Revenant": "Name:Lone Revenant\nManaCost:3 U U\nTypes:Creature Spirit\nPT:4/4\nK:Hexproof\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | IsPresent$ Creature.Other+YouCtrl | PresentCompare$ EQ0 | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, if you control no other creatures, look at the top four cards of your library. Put one of them into your hand and the others on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | NoReveal$ True\nOracle:Hexproof (This creature can't be the target of spells or abilities your opponents control.)\\nWhenever Lone Revenant deals combat damage to a player, if you control no other creatures, look at the top four cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lone Revenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

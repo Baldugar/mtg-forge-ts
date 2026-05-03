@@ -1,0 +1,23 @@
+{
+  "id": "resounding-silence-corpus-m677",
+  "description": "M6 corpus — Resounding Silence; in-hand parse.",
+  "seed": 68108,
+  "cards": {
+    "Resounding Silence": "Name:Resounding Silence\nManaCost:3 W\nTypes:Instant\nK:Cycling:5 G W U\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target attacking creature.\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When you cycle CARDNAME, exile up to two target attacking creatures.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | TargetMin$ 0 | TargetMax$ 2 | Origin$ Battlefield | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Exile target attacking creature.\\nCycling {5}{G}{W}{U} ({5}{G}{W}{U}, Discard this card: Draw a card.)\\nWhen you cycle Resounding Silence, exile up to two target attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resounding Silence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

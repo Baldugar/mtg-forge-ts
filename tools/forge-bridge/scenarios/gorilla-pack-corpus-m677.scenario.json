@@ -1,0 +1,23 @@
+{
+  "id": "gorilla-pack-corpus-m677",
+  "description": "M6 corpus — Gorilla Pack; in-hand parse.",
+  "seed": 61580,
+  "cards": {
+    "Gorilla Pack": "Name:Gorilla Pack\nManaCost:2 G\nTypes:Creature Ape\nPT:3/3\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsForest | Description$ CARDNAME can't attack unless defending player controls a Forest.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Forest.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Forests, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Forest.YouCtrl\nOracle:Gorilla Pack can't attack unless defending player controls a Forest.\\nWhen you control no Forests, sacrifice Gorilla Pack.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gorilla Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

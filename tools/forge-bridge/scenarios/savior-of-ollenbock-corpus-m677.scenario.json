@@ -1,0 +1,23 @@
+{
+  "id": "savior-of-ollenbock-corpus-m677",
+  "description": "M6 corpus — Savior of Ollenbock; in-hand parse.",
+  "seed": 69069,
+  "cards": {
+    "Savior of Ollenbock": "Name:Savior of Ollenbock\nManaCost:1 W W\nTypes:Creature Human Soldier\nPT:1/2\nK:Training\nT:Mode$ Trains | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME trains, exile up to one other target creature from the battlefield or creature card from a graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield,Graveyard | Destination$ Exile | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature from the battlefield or creature card from a graveyard | TargetMin$ 0 | TargetMax$ 1 | TgtZone$ Battlefield,Graveyard | AILogic$ SaviorOfOllenbock\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME leaves the battlefield, put the exiled cards onto the battlefield under their owners' control.\nSVar:TrigChange:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield\nDeckHas:Ability$Counters\nOracle:Training (Whenever this creature attacks with another creature with greater power, put a +1/+1 counter on this creature.)\\nWhenever Savior of Ollenbock trains, exile up to one other target creature from the battlefield or creature card from a graveyard.\\nWhen Savior of Ollenbock leaves the battlefield, put the exiled cards onto the battlefield under their owners' control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savior of Ollenbock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

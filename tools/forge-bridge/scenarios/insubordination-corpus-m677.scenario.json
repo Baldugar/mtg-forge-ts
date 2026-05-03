@@ -1,0 +1,23 @@
+{
+  "id": "insubordination-corpus-m677",
+  "description": "M6 corpus — Insubordination; in-hand parse.",
+  "seed": 63016,
+  "cards": {
+    "Insubordination": "Name:Insubordination\nManaCost:B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the end step of enchanted creature's controller, CARDNAME deals 2 damage to that player unless that creature attacked this turn.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2 | ConditionPresent$ Card.EnchantedBy+!attackedThisTurn\nOracle:Enchant creature\\nAt the beginning of the end step of enchanted creature's controller, Insubordination deals 2 damage to that player unless that creature attacked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insubordination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

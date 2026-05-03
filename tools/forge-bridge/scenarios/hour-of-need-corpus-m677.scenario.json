@@ -1,0 +1,23 @@
+{
+  "id": "hour-of-need-corpus-m677",
+  "description": "M6 corpus — Hour of Need; in-hand parse.",
+  "seed": 62535,
+  "cards": {
+    "Hour of Need": "Name:Hour of Need\nManaCost:2 U\nTypes:Instant\nK:Strive:1 U\nA:SP$ ChangeZone | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ X | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | SubAbility$ DBRepeat | SpellDescription$ Exile any number of target creatures. For each creature exiled this way, its controller creates a 4/4 blue Sphinx creature token with flying.\nSVar:DBRepeat:DB$ RepeatEach | DefinedCards$ DirectRemembered | UseImprinted$ True | RepeatSubAbility$ DBToken | SubAbility$ DBCleanup | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | TokenScript$ u_4_4_sphinx_flying | TokenOwner$ ImprintedController\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Creature\nAI:RemoveDeck:All\nOracle:Strive — This spell costs {1}{U} more to cast for each target beyond the first.\\nExile any number of target creatures. For each creature exiled this way, its controller creates a 4/4 blue Sphinx creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hour of Need"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

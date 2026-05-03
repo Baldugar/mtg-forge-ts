@@ -1,0 +1,23 @@
+{
+  "id": "pearl-lake-warden-corpus-m677",
+  "description": "M6 corpus — Pearl Lake Warden; in-hand parse.",
+  "seed": 66693,
+  "cards": {
+    "Pearl Lake Warden": "Name:Pearl Lake Warden\nManaCost:3 U\nTypes:Creature Dragon\nPT:4/5\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self+TopLibrary | AffectedZone$ Library | EffectZone$ All | MayPlay$ True | MayLookAt$ You | Description$ As long as this card is the top card of your library, you may look at it any time and you may cast it.\nAlternateMode:Omen\nOracle:As long as this card is the top card of your library, you may look at it any time and you may cast it.\\nFlying\n\nALTERNATE\n\nName:Nesting Instinct\nManaCost:2 G\nTypes:Sorcery Omen\nA:SP$ Seek | Type$ Land | RememberFound$ True | SubAbility$ DBPut | SpellDescription$ Seek a land card and put it onto the battlefield.\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Seek a land card and put it onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pearl Lake Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

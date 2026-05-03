@@ -1,0 +1,23 @@
+{
+  "id": "ironclad-slayer-corpus-m677",
+  "description": "M6 corpus — Ironclad Slayer; in-hand parse.",
+  "seed": 63133,
+  "cards": {
+    "Ironclad Slayer": "Name:Ironclad Slayer\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target Aura or Equipment card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Aura+YouCtrl,Card.Equipment+YouCtrl\nOracle:When Ironclad Slayer enters, you may return target Aura or Equipment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ironclad Slayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

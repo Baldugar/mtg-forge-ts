@@ -1,0 +1,23 @@
+{
+  "id": "kjeldoran-frostbeast-corpus-m677",
+  "description": "M6 corpus — Kjeldoran Frostbeast; in-hand parse.",
+  "seed": 63730,
+  "cards": {
+    "Kjeldoran Frostbeast": "Name:Kjeldoran Frostbeast\nManaCost:3 G W\nTypes:Creature Elemental Beast\nPT:2/4\nT:Mode$ Phase | Phase$ EndCombat | TriggerZones$ Battlefield | ValidPlayer$ Player | Execute$ TrigDestroy | TriggerDescription$ At end of combat, destroy all creatures blocking or blocked by CARDNAME.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.blockingSource,Creature.blockedBySource\nOracle:At end of combat, destroy all creatures blocking or blocked by Kjeldoran Frostbeast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kjeldoran Frostbeast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sunfrill-imitator-corpus-m677",
+  "description": "M6 corpus — Sunfrill Imitator; in-hand parse.",
+  "seed": 71354,
+  "cards": {
+    "Sunfrill Imitator": "Name:Sunfrill Imitator\nManaCost:2 G\nTypes:Creature Dinosaur\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigClone | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may have it become a copy of another target Dinosaur you control, except its name is Sunfrill Imitator and it has this ability.\nSVar:TrigClone:DB$ Clone | NewName$ Sunfrill Imitator | CloneTarget$ Self | ValidTgts$ Creature.Dinosaur+Other+YouCtrl | TgtPrompt$ Select another target Dinosaur you control | GainThisAbility$ True | AILogic$ CloneBestCreature\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Dinosaur\nOracle:Whenever Sunfrill Imitator attacks, you may have it become a copy of another target Dinosaur you control, except its name is Sunfrill Imitator and it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunfrill Imitator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "naked-singularity-corpus-m677",
+  "description": "M6 corpus — Naked Singularity; ETB-on-bf.",
+  "seed": 65717,
+  "cards": {
+    "Naked Singularity": "Name:Naked Singularity\nManaCost:5\nTypes:Artifact\nText:If tapped for mana, Plains produce {R}, Islands produce {G}, Swamps produce {W}, Mountains produce {U}, and Forests produce {B} instead of any other type.\nK:Cumulative upkeep:3\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Plains | ReplaceWith$ ProduceR | Secondary$ True | Description$ If tapped for mana, Plains produce R.\nSVar:ProduceR:DB$ ReplaceMana | ReplaceType$ R\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Island | ReplaceWith$ ProduceG | Secondary$ True | Description$ If tapped for mana, Islands produce G.\nSVar:ProduceG:DB$ ReplaceMana | ReplaceType$ G\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Swamp | ReplaceWith$ ProduceW | Secondary$ True | Description$ If tapped for mana, Swamps produce W.\nSVar:ProduceW:DB$ ReplaceMana | ReplaceType$ W\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Mountain | ReplaceWith$ ProduceU | Secondary$ True | Description$ If tapped for mana, Mountains produce U.\nSVar:ProduceU:DB$ ReplaceMana | ReplaceType$ U\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Forest | ReplaceWith$ ProduceB | Secondary$ True | Description$ If tapped for mana, Forests produce B.\nSVar:ProduceB:DB$ ReplaceMana | ReplaceType$ B\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Cumulative upkeep {3} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nIf tapped for mana, Plains produce {R}, Islands produce {G}, Swamps produce {W}, Mountains produce {U}, and Forests produce {B} instead of any other type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Naked Singularity"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

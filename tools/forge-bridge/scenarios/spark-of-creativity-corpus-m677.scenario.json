@@ -1,0 +1,23 @@
+{
+  "id": "spark-of-creativity-corpus-m677",
+  "description": "M6 corpus — Spark of Creativity; in-hand parse.",
+  "seed": 70511,
+  "cards": {
+    "Spark of Creativity": "Name:Spark of Creativity\nManaCost:R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | AILogic$ Damage | IsCurse$ True | SubAbility$ DBExile | StackDescription$ SpellDescription | SpellDescription$ Choose target creature. Exile the top card of your library. You may have CARDNAME deal damage to that creature equal to the exiled card's mana value. If you don't, you may play that card until end of turn.\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | Reveal$ True | SubAbility$ DBChoice\nSVar:DBChoice:DB$ GenericChoice | Defined$ You | Choices$ SparkDamage,SparkPlay | SubAbility$ DBCleanup | AILogic$ CreativitySpark\nSVar:SparkDamage:DB$ DealDamage | Defined$ ParentTarget | NumDmg$ X | SpellDescription$ CARDNAME deals damage to target creature.\nSVar:SparkPlay:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ExileOnMoved$ Exile | SpellDescription$ You may play exiled card until end of turn.\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:All\nOracle:Choose target creature. Exile the top card of your library. You may have Spark of Creativity deal damage to that creature equal to the exiled card's mana value. If you don't, you may play that card until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spark of Creativity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

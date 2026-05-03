@@ -1,0 +1,23 @@
+{
+  "id": "misers-cage-corpus-m677",
+  "description": "M6 corpus — Misers' Cage; in-hand parse.",
+  "seed": 65270,
+  "cards": {
+    "Misers' Cage": "Name:Misers' Cage\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | IsPresent$ Card.ActivePlayerCtrl | PresentZone$ Hand | PresentCompare$ GE5 | Execute$ TrigDamageOpp | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has five or more cards in hand, CARDNAME deals 2 damage to that player.\nSVar:TrigDamageOpp:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nOracle:At the beginning of each opponent's upkeep, if that player has five or more cards in hand, Misers' Cage deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Misers' Cage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

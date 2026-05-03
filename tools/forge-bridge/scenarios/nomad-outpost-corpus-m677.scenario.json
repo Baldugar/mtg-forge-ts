@@ -1,0 +1,25 @@
+{
+  "id": "nomad-outpost-corpus-m677",
+  "description": "M6 corpus — Nomad Outpost; ETB-on-bf.",
+  "seed": 66047,
+  "cards": {
+    "Nomad Outpost": "Name:Nomad Outpost\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo R W B | SpellDescription$ Add {R}, {W}, or {B}.\nOracle:Nomad Outpost enters tapped.\\n{T}: Add {R}, {W}, or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nomad Outpost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "hero-of-the-games-corpus-m677",
+  "description": "M6 corpus — Hero of the Games; ETB-on-bf.",
+  "seed": 62296,
+  "cards": {
+    "Hero of the Games": "Name:Hero of the Games\nManaCost:2 R\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ SpellCast | TargetsValid$ Card.Self | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever you cast a spell that targets CARDNAME, creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nSVar:BuffedBy:Card\nOracle:Whenever you cast a spell that targets Hero of the Games, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hero of the Games"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

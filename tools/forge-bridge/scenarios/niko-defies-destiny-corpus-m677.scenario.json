@@ -1,0 +1,23 @@
+{
+  "id": "niko-defies-destiny-corpus-m677",
+  "description": "M6 corpus — Niko Defies Destiny; in-hand parse.",
+  "seed": 65963,
+  "cards": {
+    "Niko Defies Destiny": "Name:Niko Defies Destiny\nManaCost:1 W U\nTypes:Enchantment Saga\nK:Chapter:3:DBGainLife,DBMana,DBChangeZone\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SpellDescription$ You gain 2 life for each foretold card you own in exile.\nSVar:X:Count$ValidExile Card.foretold+YouOwn/Times.2\nSVar:DBMana:DB$ Mana | Produced$ W U | RestrictValid$ Static.Foretelling,Spell.withForetell | SpellDescription$ Add {W}{U}. Spend this mana only to foretell cards or cast spells that have foretell.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.YouOwn+withForetell | SpellDescription$ Return target card with foretell from your graveyard to your hand.\nDeckHas:Ability$Graveyard|LifeGain\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — You gain 2 life for each foretold card you own in exile.\\nII — Add {W}{U}. Spend this mana only to foretell cards or cast spells that have foretell.\\nIII — Return target card with foretell from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niko Defies Destiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

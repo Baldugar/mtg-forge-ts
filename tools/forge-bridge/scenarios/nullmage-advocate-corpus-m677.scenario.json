@@ -1,0 +1,25 @@
+{
+  "id": "nullmage-advocate-corpus-m677",
+  "description": "M6 corpus — Nullmage Advocate; ETB-on-bf.",
+  "seed": 66106,
+  "cards": {
+    "Nullmage Advocate": "Name:Nullmage Advocate\nManaCost:2 G\nTypes:Creature Insect Druid\nPT:2/3\nA:AB$ ChangeZone | Cost$ T | ValidTgts$ Card.OppOwn | TargetMin$ 2 | TargetMax$ 2 | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBDestroy | SpellDescription$ Return two target cards from an opponent's graveyard to their hand. Destroy target artifact or enchantment.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment\nAI:RemoveDeck:All\nOracle:{T}: Return two target cards from an opponent's graveyard to their hand. Destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nullmage Advocate"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

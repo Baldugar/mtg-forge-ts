@@ -1,0 +1,23 @@
+{
+  "id": "master-of-predicaments-corpus-m677",
+  "description": "M6 corpus — Master of Predicaments; in-hand parse.",
+  "seed": 64867,
+  "cards": {
+    "Master of Predicaments": "Name:Master of Predicaments\nManaCost:3 U U\nTypes:Creature Sphinx\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGuess | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, choose a card in your hand. That player guesses whether the card's mana value is greater than 4. If the player guessed wrong, you may cast the card without paying its mana cost.\nSVar:TrigGuess:DB$ ChooseCard | ChoiceZone$ Hand | Defined$ You | Choices$ Card.YouOwn | AILogic$ RandomNonLand | SubAbility$ DBGuess\nSVar:DBGuess:DB$ GenericChoice | Defined$ TriggeredTarget | Choices$ GuessGreaterThanFour,GuessNotGreaterThanFour | AILogic$ Random | ShowChoice$ True | Guess$ True\nSVar:GuessGreaterThanFour:DB$ Play | Controller$ You | Defined$ ChosenCard | Optional$ True | WithoutManaCost$ True | ConditionDefined$ ChosenCard | ConditionPresent$ Card.cmcLE4+nonLand | ConditionCompare$ GE1 | SpellDescription$ That card's mana value is greater than 4\nSVar:GuessNotGreaterThanFour:DB$ Play | Controller$ You | Defined$ ChosenCard | Optional$ True | WithoutManaCost$ True | ValidSA$ Spell | ConditionDefined$ ChosenCard | ConditionPresent$ Card.cmcGT4+nonLand | ConditionCompare$ GE1 | SpellDescription$ That card's mana value is not greater than 4\nOracle:Flying\\nWhenever Master of Predicaments deals combat damage to a player, choose a card in your hand. That player guesses whether the card's mana value is greater than 4. If the player guessed wrong, you may cast the card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master of Predicaments"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

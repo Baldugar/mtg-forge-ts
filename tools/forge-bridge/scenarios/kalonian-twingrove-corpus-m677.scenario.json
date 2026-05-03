@@ -1,0 +1,23 @@
+{
+  "id": "kalonian-twingrove-corpus-m677",
+  "description": "M6 corpus — Kalonian Twingrove; in-hand parse.",
+  "seed": 63442,
+  "cards": {
+    "Kalonian Twingrove": "Name:Kalonian Twingrove\nManaCost:5 G\nTypes:Creature Treefolk Warrior\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of Forests you control.\nSVar:X:Count$Valid Forest.YouCtrl\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a green Treefolk Warrior creature token with \"This creature's power and toughness are each equal to the number of Forests you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ g_x_x_treefolk_warrior_total_forests\nSVar:BuffedBy:Forest\nSVar:NeedsToPlayVar:X GE3\nOracle:Kalonian Twingrove's power and toughness are each equal to the number of Forests you control.\\nWhen Kalonian Twingrove enters, create a green Treefolk Warrior creature token with \"This creature's power and toughness are each equal to the number of Forests you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kalonian Twingrove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

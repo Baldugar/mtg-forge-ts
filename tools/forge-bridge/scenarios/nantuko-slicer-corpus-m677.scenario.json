@@ -1,0 +1,23 @@
+{
+  "id": "nantuko-slicer-corpus-m677",
+  "description": "M6 corpus — Nantuko Slicer; in-hand parse.",
+  "seed": 65732,
+  "cards": {
+    "Nantuko Slicer": "Name:Nantuko Slicer\nManaCost:2 G G\nTypes:Creature Insect\nPT:3/2\nK:Kicker:B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target card from your graveyard to your hand. If this spell was kicked, conjure a duplicate of target card in an opponent's graveyard into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.YouOwn | TgtPrompt$ Select target card in your graveyard | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | TgtPrompt$ Select target card in an opponent's graveyard | ValidTgts$ Card.OppOwn | TargetMin$ Y | TargetMax$ Y | TgtZone$ Graveyard | DefinedName$ ThisTargetedCard | Zone$ Hand | RememberMade$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast this spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$Kicked.1.0\nDeckHas:Ability$Graveyard\nOracle:Kicker{B}\\nWhen Nantuko Slicer enters, return target card from your graveyard to your hand. If this spell was kicked, conjure a duplicate of target card in an opponent's graveyard into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nantuko Slicer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

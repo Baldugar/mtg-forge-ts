@@ -1,0 +1,23 @@
+{
+  "id": "magus-of-the-abyss-corpus-m677",
+  "description": "M6 corpus — Magus of the Abyss; in-hand parse.",
+  "seed": 64613,
+  "cards": {
+    "Magus of the Abyss": "Name:Magus of the Abyss\nManaCost:3 B\nTypes:Creature Human Wizard\nPT:4/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, destroy target nonartifact creature that player controls of their choice. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonArtifact+ControlledBy TriggeredPlayer | TgtPrompt$ Choose target nonartifact creature | NoRegen$ True | TargetingPlayer$ TriggeredPlayer\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, destroy target nonartifact creature that player controls of their choice. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magus of the Abyss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

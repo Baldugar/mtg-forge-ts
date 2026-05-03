@@ -1,0 +1,23 @@
+{
+  "id": "mnemonic-wall-corpus-m677",
+  "description": "M6 corpus — Mnemonic Wall; in-hand parse.",
+  "seed": 65338,
+  "cards": {
+    "Mnemonic Wall": "Name:Mnemonic Wall\nManaCost:4 U\nTypes:Creature Wall\nPT:0/4\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl\nDeckHints:Type$Instant|Sorcery\nOracle:Defender\\nWhen Mnemonic Wall enters, you may return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mnemonic Wall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

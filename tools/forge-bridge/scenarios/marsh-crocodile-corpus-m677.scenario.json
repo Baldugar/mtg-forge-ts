@@ -1,0 +1,23 @@
+{
+  "id": "marsh-crocodile-corpus-m677",
+  "description": "M6 corpus — Marsh Crocodile; in-hand parse.",
+  "seed": 64813,
+  "cards": {
+    "Marsh Crocodile": "Name:Marsh Crocodile\nManaCost:2 U B\nTypes:Creature Crocodile\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a blue or black creature you control to its owner's hand.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each player discards a card.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Black+YouCtrl,Creature.Blue+YouCtrl | AILogic$ NeverBounceItself\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose\nSVar:NeedsToPlay:Creature.Black+YouCtrl+cmcLE3,Creature.Blue+YouCtrl+cmcLE3\nOracle:When Marsh Crocodile enters, return a blue or black creature you control to its owner's hand.\\nWhen Marsh Crocodile enters, each player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marsh Crocodile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oltec-cloud-guard-corpus-m677",
+  "description": "M6 corpus — Oltec Cloud Guard; in-hand parse.",
+  "seed": 66276,
+  "cards": {
+    "Oltec Cloud Guard": "Name:Oltec Cloud Guard\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 colorless Gnome artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_gnome\nDeckHas:Ability$Token & Type$Gnome|Artifact\nOracle:Flying\\nWhen Oltec Cloud Guard enters, create a 1/1 colorless Gnome artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oltec Cloud Guard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

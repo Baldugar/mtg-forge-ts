@@ -1,0 +1,23 @@
+{
+  "id": "halfdane-corpus-m677",
+  "description": "M6 corpus — Halfdane; in-hand parse.",
+  "seed": 61975,
+  "cards": {
+    "Halfdane": "Name:Halfdane\nManaCost:1 W U B\nTypes:Legendary Creature Shapeshifter\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ At the beginning of your upkeep, change CARDNAME's base power and toughness to the power and toughness of target creature other than CARDNAME until the end of your next upkeep.\nSVar:TrigAnimate:DB$ Pump | ValidTgts$ Creature.Other | TgtPrompt$ Select target creature other than this creature | AILogic$ HighestPower | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Power$ X | Toughness$ Y | Duration$ UntilTheEndOfYourNextUpkeep\nSVar:X:Targeted$CardPower\nSVar:Y:Targeted$CardToughness\nOracle:At the beginning of your upkeep, change Halfdane's base power and toughness to the power and toughness of target creature other than Halfdane until the end of your next upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halfdane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

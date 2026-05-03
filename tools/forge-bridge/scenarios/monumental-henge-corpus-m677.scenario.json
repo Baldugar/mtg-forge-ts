@@ -1,0 +1,25 @@
+{
+  "id": "monumental-henge-corpus-m677",
+  "description": "M6 corpus — Monumental Henge; ETB-on-bf.",
+  "seed": 65449,
+  "cards": {
+    "Monumental Henge": "Name:Monumental Henge\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Plains.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Plains.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Dig | Cost$ 2 W W T | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Card.Historic | RestRandomOrder$ True | SpellDescription$ Look at the top five cards of your library. You may reveal a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random order. (Artifacts, legendaries, and Sagas are historic.)\nOracle:Monumental Henge enters tapped unless you control a Plains.\\n{T}: Add {W}.\\n{2}{W}{W}, {T}: Look at the top five cards of your library. You may reveal a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random order. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Monumental Henge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

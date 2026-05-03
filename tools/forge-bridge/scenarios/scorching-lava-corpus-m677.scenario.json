@@ -1,0 +1,23 @@
+{
+  "id": "scorching-lava-corpus-m677",
+  "description": "M6 corpus — Scorching Lava; in-hand parse.",
+  "seed": 69170,
+  "cards": {
+    "Scorching Lava": "Name:Scorching Lava\nManaCost:1 R\nTypes:Instant\nK:Kicker:R\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | ReplaceDyingDefined$ ThisTargetedCard.Creature | ReplaceDyingCondition$ Kicked | SubAbility$ KickingLava | SpellDescription$ CARDNAME deals 2 damage to any target. If this spell was kicked, that creature can't be regenerated this turn and if it would die this turn, exile it instead.\nSVar:KickingLava:DB$ Effect | RememberObjects$ ParentTarget | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | ConditionDefined$ ParentTarget | ConditionPresent$ Creature | Condition$ Kicked | StackDescription$ None | AILogic$ CantRegenerate\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nScorching Lava deals 2 damage to any target. If this spell was kicked, that creature can't be regenerated this turn and if it would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scorching Lava"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

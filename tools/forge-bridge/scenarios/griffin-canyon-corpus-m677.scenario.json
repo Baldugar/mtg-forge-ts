@@ -1,0 +1,25 @@
+{
+  "id": "griffin-canyon-corpus-m677",
+  "description": "M6 corpus — Griffin Canyon; ETB-on-bf.",
+  "seed": 61755,
+  "cards": {
+    "Griffin Canyon": "Name:Griffin Canyon\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Untap | Cost$ T | ValidTgts$ Griffin | TgtPrompt$ Select target Griffin | SubAbility$ DBPump | SpellDescription$ Untap target Griffin. If it's a creature, it gets +1/+1 until end of turn.\nSVar:DBPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Defined$ Targeted\nAI:RemoveDeck:Random\nOracle:{T}: Add {C}.\\n{T}: Untap target Griffin. If it's a creature, it gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Griffin Canyon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

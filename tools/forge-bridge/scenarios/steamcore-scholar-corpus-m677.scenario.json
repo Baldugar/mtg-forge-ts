@@ -1,0 +1,23 @@
+{
+  "id": "steamcore-scholar-corpus-m677",
+  "description": "M6 corpus — Steamcore Scholar; in-hand parse.",
+  "seed": 70947,
+  "cards": {
+    "Steamcore Scholar": "Name:Steamcore Scholar\nManaCost:2 U\nTypes:Creature Weird Detective\nPT:2/2\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw two cards. Then discard two cards unless you discard an instant or sorcery card or a creature card with flying.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose | UnlessType$ Creature.withFlying,Instant,Sorcery\nDeckHas:Ability$Discard\nDeckHints:Type$Instant|Sorcery\nOracle:Flying, vigilance\\nWhen Steamcore Scholar enters, draw two cards. Then discard two cards unless you discard an instant or sorcery card or a creature card with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steamcore Scholar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

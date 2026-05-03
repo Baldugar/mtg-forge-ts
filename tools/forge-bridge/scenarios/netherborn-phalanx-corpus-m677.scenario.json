@@ -1,0 +1,23 @@
+{
+  "id": "netherborn-phalanx-corpus-m677",
+  "description": "M6 corpus — Netherborn Phalanx; in-hand parse.",
+  "seed": 65859,
+  "cards": {
+    "Netherborn Phalanx": "Name:Netherborn Phalanx\nManaCost:5 B\nTypes:Creature Horror\nPT:2/4\nK:Transmute:1 B B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEachOpp | TriggerDescription$ When CARDNAME enters, each opponent loses 1 life for each creature they control.\nSVar:TrigEachOpp:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ TrigLoseLife\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl\nOracle:When Netherborn Phalanx enters, each opponent loses 1 life for each creature they control.\\nTransmute {1}{B}{B} ({1}{B}{B}, Discard this card: Search your library for a card with the same mana value as this card, reveal it, put it into your hand, then shuffle. Transmute only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Netherborn Phalanx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

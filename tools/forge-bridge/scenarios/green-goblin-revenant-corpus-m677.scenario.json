@@ -1,0 +1,23 @@
+{
+  "id": "green-goblin-revenant-corpus-m677",
+  "description": "M6 corpus — Green Goblin, Revenant; in-hand parse.",
+  "seed": 61725,
+  "cards": {
+    "Green Goblin, Revenant": "Name:Green Goblin, Revenant\nVariant:UniversesWithin:FlavorName:Nu and Sumi, Career Criminals\nManaCost:3 B R\nTypes:Legendary Creature Goblin Human Villain\nPT:3/3\nK:Flying\nK:Deathtouch\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever NICKNAME attacks, discard a card. Then draw a card for each card you've discarded this turn.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | StackDescription$ None\nSVar:X:PlayerCountPropertyYou$CardsDiscardedThisTurn\nDeckHas:Ability$Discard\nDeckHints:Ability$Discard\nOracle:Flying, deathtouch\\nWhenever Green Goblin attacks, discard a card. Then draw a card for each card you've discarded this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Green Goblin, Revenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

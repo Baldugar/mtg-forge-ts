@@ -1,0 +1,23 @@
+{
+  "id": "nessian-wanderer-corpus-m677",
+  "description": "M6 corpus — Nessian Wanderer; in-hand parse.",
+  "seed": 65847,
+  "cards": {
+    "Nessian Wanderer": "Name:Nessian Wanderer\nManaCost:1 G\nTypes:Creature Satyr Scout\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Constellation — Whenever an enchantment you control enters, look at the top three cards of your library. You may reveal a land card from among them and put that card into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Land | ForceRevealToController$ True | DestinationZone$ Hand | RestRandomOrder$ True\nDeckNeeds:Type$Enchantment\nOracle:Constellation — Whenever an enchantment you control enters, look at the top three cards of your library. You may reveal a land card from among them and put that card into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nessian Wanderer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

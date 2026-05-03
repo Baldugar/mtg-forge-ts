@@ -1,0 +1,23 @@
+{
+  "id": "stampeding-wildebeests-corpus-m677",
+  "description": "M6 corpus — Stampeding Wildebeests; in-hand parse.",
+  "seed": 70876,
+  "cards": {
+    "Stampeding Wildebeests": "Name:Stampeding Wildebeests\nManaCost:2 G G\nTypes:Creature Antelope Beast\nPT:5/4\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ At the beginning of your upkeep, return a green creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ChangeType$ Creature.Green+YouCtrl | ChangeNum$ 1 | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.Green+YouCtrl\nAI:RemoveDeck:Random\nOracle:Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\\nAt the beginning of your upkeep, return a green creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stampeding Wildebeests"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

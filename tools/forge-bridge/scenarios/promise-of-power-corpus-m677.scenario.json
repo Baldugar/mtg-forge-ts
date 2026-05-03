@@ -1,0 +1,23 @@
+{
+  "id": "promise-of-power-corpus-m677",
+  "description": "M6 corpus — Promise of Power; in-hand parse.",
+  "seed": 67262,
+  "cards": {
+    "Promise of Power": "Name:Promise of Power\nManaCost:2 B B B\nTypes:Sorcery\nK:Entwine:4\nA:SP$ Charm | Choices$ DBDraw,DBToken\nSVar:DBDraw:DB$ Draw | NumCards$ 5 | SpellDescription$ You draw five cards and you lose 5 life. | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 5\nSVar:DBToken:DB$ Token | TokenScript$ b_x_x_demon_flying | TokenPower$ X | TokenToughness$ X | SpellDescription$ Create an X/X black Demon creature token with flying, where X is the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nDeckHas:Ability$Token & Type$Demon\nOracle:Choose one —\\n• You draw five cards and you lose 5 life.\\n• Create an X/X black Demon creature token with flying, where X is the number of cards in your hand.\\nEntwine {4} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Promise of Power"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

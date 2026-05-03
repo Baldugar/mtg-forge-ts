@@ -1,0 +1,23 @@
+{
+  "id": "great-intelligence-s-plan-corpus-m677",
+  "description": "M6 corpus — Great Intelligence's Plan; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Great Intelligence's Plan": "Name:Great Intelligence's Plan\nManaCost:4 U B\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 3 | Defined$ You | SubAbility$ DBDiscardOrFreeCast | SpellDescription$ Draw three cards. Then target opponent faces a villainous choice — They discard three cards, or you may cast a spell from your hand without paying its mana cost.\nSVar:DBDiscardOrFreeCast:DB$ VillainousChoice | Choices$ Discard,FreeCast | ValidTgts$ Opponent | StackDescription$ Then target opponent faces a villainous choice — They discard three cards, or you may cast a spell from your hand without paying its mana cost.\nSVar:Discard:DB$ Discard | Defined$ Targeted | NumCards$ 3 | Mode$ TgtChoose | SpellDescription$ Targeted opponent discards three cards.\nSVar:FreeCast:DB$ Play | Valid$ Card.YouCtrl | ValidSA$ Spell | ValidZone$ Hand | WithoutManaCost$ True | Optional$ True | SpellDescription$ You may cast a spell from your hand without paying its mana cost.\nOracle:Draw three cards. Then target opponent faces a villainous choice — They discard three cards, or you may cast a spell from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Great Intelligence's Plan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

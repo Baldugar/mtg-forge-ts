@@ -1,0 +1,23 @@
+{
+  "id": "rogue-s-gloves-corpus-m677",
+  "description": "M6 corpus — Rogue's Gloves; in-hand parse.",
+  "seed": 68467,
+  "cards": {
+    "Rogue's Gloves": "Name:Rogue's Gloves\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Whenever equipped creature deals combat damage to a player, you may draw a card.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rogue's Gloves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

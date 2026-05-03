@@ -1,0 +1,25 @@
+{
+  "id": "a-vega-the-watcher-corpus-m677",
+  "description": "M6 corpus — A-Vega, the Watcher; ETB-on-bf.",
+  "seed": 68815,
+  "cards": {
+    "A-Vega, the Watcher": "Name:A-Vega, the Watcher\nManaCost:1 W U\nTypes:Legendary Creature Bird Spirit\nPT:2/2\nK:Flying\nK:Ward:2\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you cast a spell from anywhere other than your hand, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Flying\\nWard {2}\\nWhenever you cast a spell from anywhere other than your hand, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "A-Vega, the Watcher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

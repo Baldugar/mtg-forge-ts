@@ -1,0 +1,23 @@
+{
+  "id": "road-of-return-corpus-m677",
+  "description": "M6 corpus — Road of Return; in-hand parse.",
+  "seed": 68414,
+  "cards": {
+    "Road of Return": "Name:Road of Return\nManaCost:G G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBReturn,DBChangeZone\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouCtrl | SpellDescription$ Return target permanent card from your graveyard to your hand.\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Card.IsCommander+YouOwn | SelectPrompt$ Select a commander | ChangeNum$ 1 | Mandatory$ True | Origin$ Command | Destination$ Hand | Hidden$ True | StackDescription$ SpellDescription | SpellDescription$ Put your commander into your hand from the command zone.\nK:Entwine:2\nOracle:Choose one —\\n• Return target permanent card from your graveyard to your hand.\\n• Put your commander into your hand from the command zone.\\nEntwine {2} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Road of Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

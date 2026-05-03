@@ -1,0 +1,23 @@
+{
+  "id": "mind-spike-corpus-m677",
+  "description": "M6 corpus — Mind Spike; in-hand parse.",
+  "seed": 65158,
+  "cards": {
+    "Mind Spike": "Name:Mind Spike\nManaCost:B\nTypes:Sorcery\nA:SP$ Reveal | ValidTgts$ Opponent | RevealAllValid$ Card.nonLand+nonCreature+TargetedPlayerCtrl | RememberRevealed$ True | SubAbility$ DBDiscard | StackDescription$ SpellDescription | SpellDescription$ Target opponent reveals each noncreature, nonland card in their hand. You choose a card revealed this way. That player discards that card. You lose 2 life. If they didn't reveal a card this way, you draw a card.\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | Mode$ YouChoose | NumCards$ 1 | DiscardValid$ Card.nonLand+nonCreature | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0\nOracle:Target opponent reveals each noncreature, nonland card in their hand. You choose a card revealed this way. That player discards that card. You lose 2 life. If they didn't reveal a card this way, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Spike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

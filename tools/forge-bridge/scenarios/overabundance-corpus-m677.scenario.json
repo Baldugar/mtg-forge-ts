@@ -1,0 +1,25 @@
+{
+  "id": "overabundance-corpus-m677",
+  "description": "M6 corpus — Overabundance; ETB-on-bf.",
+  "seed": 66486,
+  "cards": {
+    "Overabundance": "Name:Overabundance\nManaCost:1 R G\nTypes:Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land | Execute$ TrigDmg | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever a player taps a land for mana, that player adds one mana of any type that land produced, and CARDNAME deals 1 damage to the player.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 1 | SubAbility$ DBMana\nSVar:DBMana:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ TriggeredActivator\nAI:RemoveDeck:Random\nOracle:Whenever a player taps a land for mana, that player adds one mana of any type that land produced, and Overabundance deals 1 damage to the player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Overabundance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

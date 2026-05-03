@@ -1,0 +1,23 @@
+{
+  "id": "protean-hulk-corpus-m677",
+  "description": "M6 corpus — Protean Hulk; in-hand parse.",
+  "seed": 67277,
+  "cards": {
+    "Protean Hulk": "Name:Protean Hulk\nManaCost:5 G G\nTypes:Creature Beast\nPT:6/6\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, search your library for any number of creature cards with total mana value 6 or less, put them onto the battlefield, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeNum$ X | WithTotalCMC$ 6 | ChangeType$ Creature.YouCtrl\nSVar:X:Count$ValidLibrary Creature.YouCtrl\nSVar:SacMe:4\nOracle:When Protean Hulk dies, search your library for any number of creature cards with total mana value 6 or less, put them onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protean Hulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

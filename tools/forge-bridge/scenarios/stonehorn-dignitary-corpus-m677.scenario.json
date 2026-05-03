@@ -1,0 +1,23 @@
+{
+  "id": "stonehorn-dignitary-corpus-m677",
+  "description": "M6 corpus — Stonehorn Dignitary; in-hand parse.",
+  "seed": 71064,
+  "cards": {
+    "Stonehorn Dignitary": "Name:Stonehorn Dignitary\nManaCost:3 W\nTypes:Creature Rhino Soldier\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSkipCombat | TriggerDescription$ When CARDNAME enters, target opponent skips their next combat phase.\nSVar:TrigSkipCombat:DB$ SkipPhase | ValidTgts$ Opponent | Phase$ BeginCombat | IsCurse$ True\nOracle:When Stonehorn Dignitary enters, target opponent skips their next combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stonehorn Dignitary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

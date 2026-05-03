@@ -1,0 +1,23 @@
+{
+  "id": "kragma-warcaller-corpus-m677",
+  "description": "M6 corpus — Kragma Warcaller; in-hand parse.",
+  "seed": 63858,
+  "cards": {
+    "Kragma Warcaller": "Name:Kragma Warcaller\nManaCost:3 B R\nTypes:Creature Minotaur Warrior\nPT:2/3\nS:Mode$ Continuous | Affected$ Creature.Minotaur+YouCtrl | AddKeyword$ Haste | Description$ Minotaur creatures you control have haste.\nT:Mode$ Attacks | ValidCard$ Minotaur.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a Minotaur you control attacks, it gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +2\nSVar:BuffedBy:Minotaur\nSVar:PlayMain1:TRUE\nOracle:Minotaur creatures you control have haste.\\nWhenever a Minotaur you control attacks, it gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kragma Warcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

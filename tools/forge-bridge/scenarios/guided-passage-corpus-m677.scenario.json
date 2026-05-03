@@ -1,0 +1,23 @@
+{
+  "id": "guided-passage-corpus-m677",
+  "description": "M6 corpus — Guided Passage; in-hand parse.",
+  "seed": 61891,
+  "cards": {
+    "Guided Passage": "Name:Guided Passage\nManaCost:G U R\nTypes:Sorcery\nA:SP$ PeekAndReveal | PeekAmount$ X | NoPeek$ True | SubAbility$ DBCreature | SpellDescription$ Reveal the cards in your library. An opponent chooses from among them a creature card, a land card, and a noncreature, nonland card. You put the chosen cards into your hand. Then shuffle.\nSVar:DBCreature:DB$ ChangeZone | ChangeType$ EACH Creature.YouOwn & Land.YouOwn & Card.nonCreature+nonLand+YouOwn | Mandatory$ True | Chooser$ Opponent | Origin$ Library | Destination$ Hand | Shuffle$ True\nSVar:X:Count$ValidLibrary Card.YouOwn\nOracle:Reveal the cards in your library. An opponent chooses from among them a creature card, a land card, and a noncreature, nonland card. You put the chosen cards into your hand. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guided Passage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

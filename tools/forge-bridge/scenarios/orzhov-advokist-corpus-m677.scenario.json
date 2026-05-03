@@ -1,0 +1,23 @@
+{
+  "id": "orzhov-advokist-corpus-m677",
+  "description": "M6 corpus — Orzhov Advokist; in-hand parse.",
+  "seed": 66442,
+  "cards": {
+    "Orzhov Advokist": "Name:Orzhov Advokist\nManaCost:2 W\nTypes:Creature Human Advisor\nPT:1/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of your upkeep, each player may put two +1/+1 counters on a creature they control. If a player does, creatures that player controls can't attack you or planeswalkers you control until your next turn.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ Player | Amount$ 1 | MinAmount$ 0 | Choices$ Creature | ControlledByPlayer$ Chooser | AILogic$ OrzhovAdvokist | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounterAll | Placer$ Controller | ValidCards$ Creature.ChosenCard | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ ChosenCardController | StaticAbilities$ STCantAttack | Duration$ UntilYourNextTurn | SubAbility$ DBClearChosen\nSVar:DBClearChosen:DB$ Cleanup | ClearChosenCard$ True\nSVar:STCantAttack:Mode$ CantAttack | ValidCard$ Creature.RememberedPlayerCtrl | Target$ You,Planeswalker.YouCtrl | Description$ Creatures that player controls can't attack you or planeswalkers you control until your next turn.\nOracle:At the beginning of your upkeep, each player may put two +1/+1 counters on a creature they control. If a player does, creatures that player controls can't attack you or planeswalkers you control until your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orzhov Advokist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

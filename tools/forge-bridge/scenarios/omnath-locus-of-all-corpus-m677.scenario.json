@@ -1,0 +1,23 @@
+{
+  "id": "omnath-locus-of-all-corpus-m677",
+  "description": "M6 corpus — Omnath, Locus of All; in-hand parse.",
+  "seed": 66290,
+  "cards": {
+    "Omnath, Locus of All": "Name:Omnath, Locus of All\nManaCost:W U BP R G\nTypes:Legendary Creature Phyrexian Elemental\nPT:4/4\nR:Event$ LoseMana | ValidPlayer$ You | ReplacementResult$ Replaced | ReplaceWith$ ConvertMana | ActiveZones$ Battlefield | Description$ If you would lose unspent mana, that mana becomes black instead.\nSVar:ConvertMana:DB$ ReplaceMana | ReplaceType$ Black\nT:Mode$ Phase | ValidPlayer$ You | Phase$ Main1 | TriggerZones$ Battlefield | Execute$ TrigPeek | TriggerDescription$ At the beginning of your first main phase, look at the top card of your library. You may reveal that card if it has three or more colored mana symbols in its mana cost. If you do, add three mana in any combination of its colors and put it into your hand. If you don't reveal it, put it into your hand.\nSVar:TrigPeek:DB$ PeekAndReveal | Defined$ You | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBReveal\nSVar:DBReveal:DB$ PeekAndReveal | Defined$ You | NoPeek$ True | RevealOptional$ True | ImprintRevealed$ True | ConditionCheckSVar$ ColorAmount | ConditionSVarCompare$ GE3 | SubAbility$ DBMana\nSVar:DBMana:DB$ ManaReflected | Produced$ Combo | ReflectProperty$ Is | ColorOrType$ Color | Amount$ 3 | Valid$ Defined.Imprinted | ConditionDefined$ Imprinted | ConditionPresent$ Card | SubAbility$ DBMove\nSVar:DBMove:DB$ ChangeZone | Origin$ Library | Destination$ Hand | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:ColorAmount:Remembered$ChromaSource\nOracle:If you would lose unspent mana, that mana becomes black instead.\\nAt the beginning of your first main phase, look at the top card of your library. You may reveal that card if it has three or more colored mana symbols in its mana cost. If you do, add three mana in any combination of its colors and put it into your hand. If you don't reveal it, put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omnath, Locus of All"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

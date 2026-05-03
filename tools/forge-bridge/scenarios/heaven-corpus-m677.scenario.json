@@ -1,0 +1,23 @@
+{
+  "id": "heaven-corpus-m677",
+  "description": "M6 corpus — Heaven; in-hand parse.",
+  "seed": 62190,
+  "cards": {
+    "Heaven": "Name:Heaven\nManaCost:X G\nTypes:Instant\nA:SP$ DamageAll | ValidCards$ Creature.withFlying | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to each creature with flying.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nAlternateMode:Split\nOracle:Heaven deals X damage to each creature with flying.\n\nALTERNATE\n\nName:Earth\nManaCost:X R R\nTypes:Sorcery\nK:Aftermath\nA:SP$ DamageAll | ValidCards$ Creature.withoutFlying | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to each creature without flying.\nSVar:X:Count$xPaid\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nEarth deals X damage to each creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heaven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

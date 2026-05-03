@@ -1,0 +1,23 @@
+{
+  "id": "spell-snuff-corpus-m677",
+  "description": "M6 corpus — Spell Snuff; in-hand parse.",
+  "seed": 70575,
+  "cards": {
+    "Spell Snuff": "Name:Spell Snuff\nManaCost:1 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBDraw | SpellDescription$ Counter target spell. Fateful hour — If you have 5 or less life, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ FatefulHour | ConditionSVarCompare$ LE5\nSVar:FatefulHour:Count$YourLifeTotal\nOracle:Counter target spell.\\nFateful hour — If you have 5 or less life, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spell Snuff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

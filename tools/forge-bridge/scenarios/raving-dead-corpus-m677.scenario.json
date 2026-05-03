@@ -1,0 +1,23 @@
+{
+  "id": "raving-dead-corpus-m677",
+  "description": "M6 corpus — Raving Dead; in-hand parse.",
+  "seed": 67770,
+  "cards": {
+    "Raving Dead": "Name:Raving Dead\nManaCost:4 B\nTypes:Creature Zombie\nPT:2/6\nK:Deathtouch\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, choose an opponent at random. CARDNAME attacks that player this combat if able.\nSVar:TrigChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | Random$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Effect | StaticAbilities$ AttackChosen | Duration$ UntilEndOfCombat\nSVar:AttackChosen:Mode$ MustAttack | ValidCreature$ Card.EffectSource | MustAttack$ ChosenPlayer | Description$ EFFECTSOURCE attacks that player this combat if able.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLifeOpp | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player loses half their life, rounded down.\nSVar:TrigLoseLifeOpp:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ RavingXOpp\nSVar:RavingXOpp:TriggeredTarget$LifeTotal/HalfDown\nSVar:MustBeBlocked:True\nOracle:Deathtouch\\nAt the beginning of combat on your turn, choose an opponent at random. Raving Dead attacks that player this combat if able.\\nWhenever Raving Dead deals combat damage to a player, that player loses half their life, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raving Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

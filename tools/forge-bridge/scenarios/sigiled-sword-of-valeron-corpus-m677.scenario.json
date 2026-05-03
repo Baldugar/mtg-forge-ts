@@ -1,0 +1,23 @@
+{
+  "id": "sigiled-sword-of-valeron-corpus-m677",
+  "description": "M6 corpus — Sigiled Sword of Valeron; in-hand parse.",
+  "seed": 69862,
+  "cards": {
+    "Sigiled Sword of Valeron": "Name:Sigiled Sword of Valeron\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Vigilance | AddType$ Knight | Description$ Equipped creature gets +2/+0, has vigilance, and is a Knight in addition to its other types.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigToken | TriggerDescription$ Whenever equipped creature attacks, create a 2/2 white Knight creature token with vigilance that's attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You | TokenAttacking$ True\nDeckHas:Ability$Token\nOracle:Equipped creature gets +2/+0, has vigilance, and is a Knight in addition to its other types.\\nWhenever equipped creature attacks, create a 2/2 white Knight creature token with vigilance that's attacking.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigiled Sword of Valeron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

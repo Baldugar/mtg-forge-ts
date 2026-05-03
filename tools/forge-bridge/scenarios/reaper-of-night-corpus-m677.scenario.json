@@ -1,0 +1,23 @@
+{
+  "id": "reaper-of-night-corpus-m677",
+  "description": "M6 corpus — Reaper of Night; in-hand parse.",
+  "seed": 67846,
+  "cards": {
+    "Reaper of Night": "Name:Reaper of Night\nManaCost:5 B B\nTypes:Creature Specter\nPT:4/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | IsPresent$ Card.DefenderCtrl | PresentZone$ Hand | PresentCompare$ LE2 | TriggerDescription$ Whenever CARDNAME attacks, if defending player has two or fewer cards in hand, it gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying\nAlternateMode:Adventure\nOracle:Whenever Reaper of Night attacks, if defending player has two or fewer cards in hand, it gains flying until end of turn.\n\nALTERNATE\n\nName:Harvest Fear\nManaCost:3 B\nTypes:Sorcery Adventure\nA:SP$ Discard | ValidTgts$ Opponent | NumCards$ 2 | Mode$ TgtChoose | SpellDescription$ Target opponent discards two cards. (Then exile this card. You may cast the creature later from exile.)\nOracle:Target opponent discards two cards. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reaper of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

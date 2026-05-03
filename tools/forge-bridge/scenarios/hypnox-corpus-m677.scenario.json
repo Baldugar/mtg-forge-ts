@@ -1,0 +1,23 @@
+{
+  "id": "hypnox-corpus-m677",
+  "description": "M6 corpus — Hypnox; in-hand parse.",
+  "seed": 62670,
+  "cards": {
+    "Hypnox": "Name:Hypnox\nManaCost:8 B B B\nTypes:Creature Nightmare Horror\nPT:8/8\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, exile all cards from target opponent's hand.\nSVar:TrigExile:DB$ ChangeZoneAll | ValidTgts$ Opponent | ChangeType$ Card.TargetedPlayerCtrl | Origin$ Hand | Destination$ Exile | RememberChanged$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled cards to their owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Hypnox enters, if you cast it from your hand, exile all cards from target opponent's hand.\\nWhen Hypnox leaves the battlefield, return the exiled cards to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hypnox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

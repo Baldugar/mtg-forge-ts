@@ -1,0 +1,23 @@
+{
+  "id": "nether-spirit-corpus-m677",
+  "description": "M6 corpus — Nether Spirit; in-hand parse.",
+  "seed": 65858,
+  "cards": {
+    "Nether Spirit": "Name:Nether Spirit\nManaCost:1 B B\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Graveyard | IsPresent$ Creature.YouOwn | PresentZone$ Graveyard | PresentCompare$ EQ1 | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is the only creature card in your graveyard, you may return CARDNAME to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nOracle:At the beginning of your upkeep, if Nether Spirit is the only creature card in your graveyard, you may return Nether Spirit to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nether Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

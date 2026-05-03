@@ -1,0 +1,23 @@
+{
+  "id": "scourgemark-corpus-m677",
+  "description": "M6 corpus — Scourgemark; in-hand parse.",
+  "seed": 69202,
+  "cards": {
+    "Scourgemark": "Name:Scourgemark\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | Description$ Enchanted creature gets +1/+0.\nOracle:Enchant creature\\nWhen Scourgemark enters, draw a card.\\nEnchanted creature gets +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourgemark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "inniaz-the-gale-force-corpus-m677",
+  "description": "M6 corpus — Inniaz, the Gale Force; ETB-on-bf.",
+  "seed": 62964,
+  "cards": {
+    "Inniaz, the Gale Force": "Name:Inniaz, the Gale Force\nManaCost:3 U U\nTypes:Legendary Creature Djinn\nPT:4/4\nK:Flying\nA:AB$ PumpAll | Cost$ 2 WU | ValidCards$ Creature.attacking+withFlying | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Attacking creatures with flying get +1/+1 until end of turn.\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | ValidAttackers$ Creature.withFlying | ValidAttackersAmount$ GE3 | Execute$ TrigGainControl | TriggerZones$ Battlefield | TriggerDescription$ Whenever three or more creatures you control with flying attack, each player gains control of a nonland permanent of your choice controlled by the player to their right.\nSVar:TrigGainControl:DB$ GainControlVariant | AllValid$ Permanent.nonLand | ChangeController$ ChooseFromPlayerToTheirRight\nSVar:PlayMain1:TRUE\nDeckHints:Keyword$Flying\nOracle:Flying\\n{2}{W/U}: Attacking creatures with flying get +1/+1 until end of turn. ({W/U} can be paid with either {W} or {U}.)\\nWhenever three or more creatures you control with flying attack, each player gains control of a nonland permanent of your choice controlled by the player to their right.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Inniaz, the Gale Force"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

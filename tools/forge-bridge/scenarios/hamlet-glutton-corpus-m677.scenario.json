@@ -1,0 +1,23 @@
+{
+  "id": "hamlet-glutton-corpus-m677",
+  "description": "M6 corpus — Hamlet Glutton; in-hand parse.",
+  "seed": 62004,
+  "cards": {
+    "Hamlet Glutton": "Name:Hamlet Glutton\nManaCost:5 G G\nTypes:Creature Giant\nPT:6/6\nK:Bargain\nK:Trample\nS:Mode$ ReduceCost | ValidSpell$ Spell.Bargain | Type$ Spell | ValidCard$ Card.Self | Amount$ 2 | EffectZone$ All | Description$ This spell costs {2} less to cast if it's bargained.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nDeckHas:Ability$Sacrifice|LifeGain\nDeckHints:Ability$Token & Type$Enchantment|Artifact\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nThis spell costs {2} less to cast if it's bargained.\\nTrample\\nWhen Hamlet Glutton enters, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hamlet Glutton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

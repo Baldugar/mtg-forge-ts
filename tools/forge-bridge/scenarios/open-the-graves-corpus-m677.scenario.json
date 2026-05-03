@@ -1,0 +1,23 @@
+{
+  "id": "open-the-graves-corpus-m677",
+  "description": "M6 corpus — Open the Graves; in-hand parse.",
+  "seed": 66348,
+  "cards": {
+    "Open the Graves": "Name:Open the Graves\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control dies, create a 2/2 black zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Whenever a nontoken creature you control dies, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Open the Graves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

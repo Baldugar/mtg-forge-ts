@@ -1,0 +1,23 @@
+{
+  "id": "skyclave-pick-axe-corpus-m677",
+  "description": "M6 corpus — Skyclave Pick-Axe; in-hand parse.",
+  "seed": 70104,
+  "cards": {
+    "Skyclave Pick-Axe": "Name:Skyclave Pick-Axe\nManaCost:G\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — Whenever a land you control enters, equipped creature gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Equipped | NumAtt$ +2 | NumDef$ +2\nK:Equip:2 G\nSVar:NeedsToPlay:Creature.YouCtrl\nSVar:BuffedBy:Land\nOracle:When Skyclave Pick-Axe enters, attach it to target creature you control.\\nLandfall — Whenever a land you control enters, equipped creature gets +2/+2 until end of turn.\\nEquip {2}{G}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyclave Pick-Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

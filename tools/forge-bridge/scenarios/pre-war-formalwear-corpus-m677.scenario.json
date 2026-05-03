@@ -1,0 +1,23 @@
+{
+  "id": "pre-war-formalwear-corpus-m677",
+  "description": "M6 corpus — Pre-War Formalwear; in-hand parse.",
+  "seed": 67112,
+  "cards": {
+    "Pre-War Formalwear": "Name:Pre-War Formalwear\nManaCost:2 W\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return target creature card with mana value 3 or less from your graveyard to the battlefield and attach CARDNAME to it.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card with mana value 3 or less in your graveyard | ValidTgts$ Creature.cmcLE3+YouOwn | RememberChanged$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Vigilance | Description$ Equipped creature gets +2/+2 and has vigilance.\nK:Equip:3\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill\nOracle:When Pre-War Formalwear enters, return target creature card with mana value 3 or less from your graveyard to the battlefield and attach Pre-War Formalwear to it.\\nEquipped creature gets +2/+2 and has vigilance.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pre-War Formalwear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

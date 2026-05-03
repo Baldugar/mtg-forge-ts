@@ -1,0 +1,23 @@
+{
+  "id": "imodane-s-recruiter-corpus-m677",
+  "description": "M6 corpus — Imodane's Recruiter; in-hand parse.",
+  "seed": 62789,
+  "cards": {
+    "Imodane's Recruiter": "Name:Imodane's Recruiter\nManaCost:2 R\nTypes:Creature Human Knight\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+0 and gain haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | KW$ Haste\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token & Type$Knight\nAlternateMode:Adventure\nOracle:When Imodane's Recruiter enters, creatures you control get +1/+0 and gain haste until end of turn.\n\nALTERNATE\n\nName:Train Troops\nManaCost:4 W\nTypes:Sorcery Adventure\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ w_2_2_knight_vigilance | SpellDescription$ Create two 2/2 white Knight creature tokens with vigilance. (Then exile this card. You may cast the creature later from exile.)\nOracle:Create two 2/2 white Knight creature tokens with vigilance. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imodane's Recruiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

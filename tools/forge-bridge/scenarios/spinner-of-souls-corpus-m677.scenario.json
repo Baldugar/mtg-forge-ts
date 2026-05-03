@@ -1,0 +1,23 @@
+{
+  "id": "spinner-of-souls-corpus-m677",
+  "description": "M6 corpus — Spinner of Souls; in-hand parse.",
+  "seed": 70680,
+  "cards": {
+    "Spinner of Souls": "Name:Spinner of Souls\nManaCost:2 G\nTypes:Creature Spider Spirit\nPT:4/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouCtrl+Other | Execute$ TrigDigUntil | OptionalDecider$ You | TriggerDescription$ Whenever another nontoken creature you control dies, you may reveal cards from the top of your library until you reveal a creature card. Put that card into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Creature | ValidDescription$ creature that shares a creature type | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nOracle:Reach\\nWhenever another nontoken creature you control dies, you may reveal cards from the top of your library until you reveal a creature card. Put that card into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spinner of Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

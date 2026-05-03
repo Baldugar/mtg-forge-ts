@@ -1,0 +1,23 @@
+{
+  "id": "loyal-unicorn-corpus-m677",
+  "description": "M6 corpus — Loyal Unicorn; in-hand parse.",
+  "seed": 64463,
+  "cards": {
+    "Loyal Unicorn": "Name:Loyal Unicorn\nManaCost:3 W\nTypes:Creature Unicorn\nPT:3/4\nK:Vigilance\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | TriggerZones$ Battlefield | Execute$ PreventEffect | TriggerDescription$ Lieutenant — At the beginning of combat on your turn, if you control your commander, prevent all combat damage that would be dealt to creatures you control this turn. Other creatures you control gain vigilance until end of turn.\nSVar:PreventEffect:DB$ Effect | ReplacementEffects$ RPrevent | SubAbility$ DBPumpAll\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | ValidTarget$ Creature.YouCtrl | Description$ Prevent all combat damage that would be dealt to creatures you control this turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | KW$ Vigilance\nSVar:BuffedBy:Card.IsCommander\nAI:RemoveDeck:Random\nOracle:Vigilance\\nLieutenant — At the beginning of combat on your turn, if you control your commander, prevent all combat damage that would be dealt to creatures you control this turn. Other creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loyal Unicorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "pit-automaton-corpus-m677",
+  "description": "M6 corpus — Pit Automaton; ETB-on-bf.",
+  "seed": 66933,
+  "cards": {
+    "Pit Automaton": "Name:Pit Automaton\nManaCost:2\nTypes:Artifact Creature Construct\nPT:0/4\nK:Defender\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | RestrictValid$ Activated | SpellDescription$ Add {C}{C}. Spend this mana only to activate abilities.\nA:AB$ DelayedTrigger | Cost$ 2 T | AILogic$ SpellCopy | Mode$ AbilityCast | ValidSA$ Activated.Exhaust+!ManaAbility | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ EffTrigCopy | SpellDescription$ When you next activate an exhaust ability that isn't a mana ability this turn, copy it. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:Defender\\n{T}: Add {C}{C}. Spend this mana only to activate abilities.\\n{2}, {T}: When you next activate an exhaust ability that isn't a mana ability this turn, copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pit Automaton"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

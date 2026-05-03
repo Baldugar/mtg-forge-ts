@@ -1,0 +1,25 @@
+{
+  "id": "razor-demon-corpus-m677",
+  "description": "M6 corpus — Razor Demon; ETB-on-bf.",
+  "seed": 67791,
+  "cards": {
+    "Razor Demon": "Name:Razor Demon\nManaCost:1 B B\nTypes:Creature Demon\nPT:7/7\nK:Flying\nK:Ward:Discard<1/Card>\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigChooseTgt | TriggerDescription$ When you cast this spell, target opponent drafts a card from CARDNAME's spellbook. They may cast that card without paying its mana cost.\nSVar:TrigChooseTgt:DB$ Pump | ValidTgts$ Opponent | IsCurse$ True | SubAbility$ DBDraft\nSVar:DBDraft:DB$ Draft | Defined$ Targeted | Spellbook$ Demonic Bargain,Ever After,Demonic Pact | RememberDrafted$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Controller$ Targeted | Defined$ Remembered | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When you cast this spell, target opponent drafts a card from Razor Demon's spellbook. They may cast that card without paying its mana cost.\\nFlying\\nWard-Discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Razor Demon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

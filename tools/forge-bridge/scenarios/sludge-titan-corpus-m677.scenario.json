@@ -1,0 +1,23 @@
+{
+  "id": "sludge-titan-corpus-m677",
+  "description": "M6 corpus — Sludge Titan; in-hand parse.",
+  "seed": 70239,
+  "cards": {
+    "Sludge Titan": "Name:Sludge Titan\nManaCost:4 BG BG\nTypes:Creature Zombie Giant\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME enters or attacks, mill five cards. You may put a creature card and/or a land card from among them into your hand.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, mill five cards. You may put a creature card and/or a land card from among them into your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 5 | Defined$ You | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ EACH Creature.YouOwn+IsRemembered & Land.YouOwn+IsRemembered | Optional$ True | SelectPrompt$ You may select a creature card and/or a land card. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Mill\nOracle:Trample\\nWhenever Sludge Titan enters or attacks, mill five cards. You may put a creature card and/or a land card from among them into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sludge Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

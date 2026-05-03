@@ -1,0 +1,23 @@
+{
+  "id": "mogis-s-marauder-corpus-m677",
+  "description": "M6 corpus — Mogis's Marauder; in-hand parse.",
+  "seed": 65376,
+  "cards": {
+    "Mogis's Marauder": "Name:Mogis's Marauder\nManaCost:2 B\nTypes:Creature Human Berserker\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, up to X target creatures each gain intimidate and haste until end of turn, where X is your devotion to black.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ X | KW$ Intimidate & Haste | TgtPrompt$ Select target creature\nSVar:X:Count$Devotion.Black\nSVar:PlayMain1:ALWAYS\nOracle:When Mogis's Marauder enters, up to X target creatures each gain intimidate and haste until end of turn, where X is your devotion to black. (A creature with intimidate can't be blocked except by artifact creatures and/or creatures that share a color with it. Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mogis's Marauder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lava-burst-corpus-m677",
+  "description": "M6 corpus — Lava Burst; in-hand parse.",
+  "seed": 64020,
+  "cards": {
+    "Lava Burst": "Name:Lava Burst\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ EQ0 | SubAbility$ CreatureDmg | SpellDescription$ CARDNAME deals X damage to any target. If CARDNAME would deal damage to a creature, that damage can't be prevented or dealt instead to another permanent or player.\nSVar:CreatureDmg:DB$ DealDamage | Defined$ Targeted | NumDmg$ X | NoPrevention$ True | NoRedirection$ True | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ EQ1 | StackDescription$ If CARDNAME would deal damage to a creature, that damage can't be prevented or dealt instead to another permanent or player.\nSVar:X:Count$xPaid\nOracle:Lava Burst deals X damage to any target. If Lava Burst would deal damage to a creature, that damage can't be prevented or dealt instead to another permanent or player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lava Burst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

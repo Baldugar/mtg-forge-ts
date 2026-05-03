@@ -1,0 +1,23 @@
+{
+  "id": "insatiable-appetite-corpus-m677",
+  "description": "M6 corpus — Insatiable Appetite; in-hand parse.",
+  "seed": 62977,
+  "cards": {
+    "Insatiable Appetite": "Name:Insatiable Appetite\nManaCost:1 G\nTypes:Instant\nA:SP$ Sacrifice | SacValid$ Food | Optional$ True | RememberSacrificed$ True | SubAbility$ DBPump | SpellDescription$ You may sacrifice a Food. If you do, target creature gets +5/+5 until end of turn. Otherwise, that creature gets +3/+3 until end of turn.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Compare Y GE1.5.3\nSVar:Y:Remembered$Amount\nDeckHints:Ability$Food\nOracle:You may sacrifice a Food. If you do, target creature gets +5/+5 until end of turn. Otherwise, that creature gets +3/+3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insatiable Appetite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

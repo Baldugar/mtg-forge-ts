@@ -1,0 +1,23 @@
+{
+  "id": "stone-haven-pilgrim-corpus-m677",
+  "description": "M6 corpus — Stone Haven Pilgrim; in-hand parse.",
+  "seed": 71045,
+  "cards": {
+    "Stone Haven Pilgrim": "Name:Stone Haven Pilgrim\nManaCost:1 W\nTypes:Creature Kor Cleric\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | IsPresent$ Artifact.YouCtrl,Enchantment.YouCtrl | TriggerDescription$ Whenever CARDNAME attacks, if you control an artifact or enchantment, CARDNAME gets +1/+1 and gains lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | KW$ Lifelink\nSVar:BuffedBy:Artifact,Enchantment\nDeckHints:Type$Artifact|Enchantment\nOracle:Whenever Stone Haven Pilgrim attacks, if you control an artifact or enchantment, Stone Haven Pilgrim gets +1/+1 and gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stone Haven Pilgrim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

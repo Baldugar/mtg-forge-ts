@@ -1,0 +1,23 @@
+{
+  "id": "patron-of-the-valiant-corpus-m677",
+  "description": "M6 corpus — Patron of the Valiant; in-hand parse.",
+  "seed": 66675,
+  "cards": {
+    "Patron of the Valiant": "Name:Patron of the Valiant\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each creature you control with a +1/+1 counter on it.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+counters_GE1_P1P1 | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nWhen Patron of the Valiant enters, put a +1/+1 counter on each creature you control with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patron of the Valiant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ponyback-brigade-corpus-m677",
+  "description": "M6 corpus — Ponyback Brigade; in-hand parse.",
+  "seed": 67058,
+  "cards": {
+    "Ponyback Brigade": "Name:Ponyback Brigade\nManaCost:3 R W B\nTypes:Creature Goblin Warrior\nPT:2/2\nK:Morph:2 R W B\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME enters or is turned face up, create three 1/1 red Goblin creature tokens.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or is turned face up, create three 1/1 red Goblin creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ r_1_1_goblin | TokenOwner$ You\nOracle:When Ponyback Brigade enters or is turned face up, create three 1/1 red Goblin creature tokens.\\nMorph {2}{R}{W}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ponyback Brigade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

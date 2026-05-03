@@ -1,0 +1,23 @@
+{
+  "id": "havoc-festival-corpus-m677",
+  "description": "M6 corpus — Havoc Festival; in-hand parse.",
+  "seed": 62125,
+  "cards": {
+    "Havoc Festival": "Name:Havoc Festival\nManaCost:4 B R\nTypes:Enchantment\nS:Mode$ CantGainLife | ValidPlayer$ Player | Description$ Players can't gain life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of each player's upkeep, that player loses half their life, rounded up.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ HavocX\nSVar:HavocX:TriggeredPlayer$LifeTotal/HalfUp\nAI:RemoveDeck:Random\nOracle:Players can't gain life.\\nAt the beginning of each player's upkeep, that player loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Havoc Festival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

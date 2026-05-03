@@ -1,0 +1,23 @@
+{
+  "id": "savage-punch-corpus-m677",
+  "description": "M6 corpus — Savage Punch; in-hand parse.",
+  "seed": 69053,
+  "cards": {
+    "Savage Punch": "Name:Savage Punch\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | ConditionPresent$ Creature.YouCtrl+powerGE4 | ConditionCompare$ GE1 | NumAtt$ +2 | NumDef$ +2 | StackDescription$ None | SubAbility$ DBFight | SpellDescription$ Target creature you control fights target creature you don't control. Ferocious — The creature you control gets +2/+2 until end of turn before it fights if you control a creature with power 4 or greater.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nOracle:Target creature you control fights target creature you don't control.\\nFerocious — The creature you control gets +2/+2 until end of turn before it fights if you control a creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savage Punch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

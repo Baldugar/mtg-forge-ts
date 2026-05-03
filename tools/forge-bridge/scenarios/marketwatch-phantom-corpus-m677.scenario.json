@@ -1,0 +1,23 @@
+{
+  "id": "marketwatch-phantom-corpus-m677",
+  "description": "M6 corpus — Marketwatch Phantom; in-hand parse.",
+  "seed": 64803,
+  "cards": {
+    "Marketwatch Phantom": "Name:Marketwatch Phantom\nManaCost:1 W\nTypes:Creature Spirit Detective\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerLE2+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another creature you control with power 2 or less enters, CARDNAME gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying\nSVar:BuffedBy:Creature.powerLE2\nOracle:Whenever another creature you control with power 2 or less enters, Marketwatch Phantom gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marketwatch Phantom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

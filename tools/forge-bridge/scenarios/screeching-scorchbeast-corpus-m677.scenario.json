@@ -1,0 +1,23 @@
+{
+  "id": "screeching-scorchbeast-corpus-m677",
+  "description": "M6 corpus — Screeching Scorchbeast; in-hand parse.",
+  "seed": 69231,
+  "cards": {
+    "Screeching Scorchbeast": "Name:Screeching Scorchbeast\nManaCost:4 B B\nTypes:Creature Bat Mutant\nPT:5/5\nK:Flying\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRadiation | TriggerDescription$ Whenever CARDNAME attacks, each player gets two rad counters.\nSVar:TrigRadiation:DB$ Radiation | Defined$ Player | Num$ 2\nT:Mode$ MilledAll | ValidPlayer$ Player | ValidCard$ Card.nonLand | TriggerZones$ Battlefield | Execute$ TrigToken | ResolvedLimit$ 1 | OptionalDecider$ You | TriggerDescription$ Whenever one or more nonland cards are milled, you may create that many 2/2 black Zombie Mutant creature tokens. Do this only once each turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ TriggerCount$Amount | TokenScript$ b_2_2_zombie_mutant | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Zombie\nDeckHints:Ability$Mill\nOracle:Flying, menace\\nWhenever Screeching Scorchbeast attacks, each player gets two rad counters.\\nWhenever one or more nonland cards are milled, you may create that many 2/2 black Zombie Mutant creature tokens. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Screeching Scorchbeast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "robber-of-the-rich-corpus-m677",
+  "description": "M6 corpus — Robber of the Rich; in-hand parse.",
+  "seed": 68433,
+  "cards": {
+    "Robber of the Rich": "Name:Robber of the Rich\nManaCost:1 R\nTypes:Creature Human Archer Rogue\nPT:2/2\nK:Reach\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | CheckSVar$ X | SVarCompare$ GTY | TriggerDescription$ Whenever CARDNAME attacks, if defending player has more cards in hand than you, exile the top card of their library. During any turn you attacked with a Rogue, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredDefendingPlayer | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile | Duration$ Permanent\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | CheckSVar$ Z | Description$ During any turn you attacked with a Rogue, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.DefenderCtrl\nSVar:Y:Count$ValidHand Card.YouOwn\nSVar:Z:Count$CreaturesAttackedThisTurn Creature.Rogue\nOracle:Reach, haste\\nWhenever Robber of the Rich attacks, if defending player has more cards in hand than you, exile the top card of their library. During any turn you attacked with a Rogue, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Robber of the Rich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

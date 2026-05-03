@@ -85,9 +85,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     const isSaga = /\bSaga\b/.test(t);
     const isVehicle = /\bVehicle\b/.test(t);
     const isBattle = /\bBattle\b/.test(t);
-    const hasEtbCounter = lines.some(
-      (l) => l.startsWith("K:etbCounter") || l.startsWith("K:ETBReplacement"),
-    );
+    const hasEtbCounter = lines.some((l) => l.startsWith("K:etbCounter") || l.startsWith("K:ETBReplacement"));
     // M6.73 — additional filters surfaced by 100-card pilot:
     //   - DFC/MDFC/Transform cards (AlternateMode:) often have face-specific
     //     timing the setup path doesn't replicate cleanly.
@@ -124,8 +122,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       (l) =>
         // ANY <Foo/...> pattern in a Cost$ field — sacrifice, tap, exile,
         // discard, addCounter, behold, choose, etc.
-        /Cost\$[^|]*\b\w+</.test(l) ||
-        /ManaCost:.*<[^>]*\/[^>]*>/.test(l),
+        /Cost\$[^|]*\b\w+</.test(l) || /ManaCost:.*<[^>]*\/[^>]*>/.test(l),
     );
     // Cards that reference AI-only Count$ selectors we don't yet support.
     const usesUnsupportedCount = lines.some(
@@ -142,19 +139,15 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       const m = /Execute\$\s+(\w+)/.exec(line);
       if (!m) return false;
       const svarName = m[1];
-      return lines.some(
-        (l2) => l2.startsWith(`SVar:${svarName}:AB$`),
-      );
+      return lines.some((l2) => l2.startsWith(`SVar:${svarName}:AB$`));
     });
     // Mana cost or Cost$ uses Avatar mechanics (Waterbend<N>, Earthbend<N>,
     // Airbend<N>, Firebend<N>) which embed alt-cost in the mana cost slot.
-    const usesAvatarMechanics = lines.some(
-      (l) => /(?:ManaCost:|Cost\$).*\b(?:Waterbend|Earthbend|Airbend|Firebend)</.test(l),
+    const usesAvatarMechanics = lines.some((l) =>
+      /(?:ManaCost:|Cost\$).*\b(?:Waterbend|Earthbend|Airbend|Firebend)</.test(l),
     );
     // SVar with literal "Any" used as numeric — TS evaluator throws.
-    const hasAnyAsNumber = lines.some(
-      (l) => /^SVar:[^:]+:.*\bAny\b/.test(l) && !l.includes("Any.YouCtrl"),
-    );
+    const hasAnyAsNumber = lines.some((l) => /^SVar:[^:]+:.*\bAny\b/.test(l) && !l.includes("Any.YouCtrl"));
     // Tokens that don't follow the standard `<color>_<P>_<T>_<subtype>...`
     // naming (e.g. "sword", "beau", "c_a_lander_sac_search") — synthesize
     // fallback can't infer their PT/subtype so we skip the cards using them.
@@ -167,14 +160,14 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     const usesUnsupportedSVar = lines.some(
       (l) =>
         l.startsWith("SVar:") &&
-        /\b(PlayerCountPlayers|TriggeredCard|TriggeredAttacker|TriggeredBlocker|TriggeredSourceSA|TriggeredCardController)\b/.test(l),
+        /\b(PlayerCountPlayers|TriggeredCard|TriggeredAttacker|TriggeredBlocker|TriggeredSourceSA|TriggeredCardController)\b/.test(
+          l,
+        ),
     );
     // S:Mode$ Continuous with AddTrigger$/AddSVar$ — conditionally adds a
     // trigger to the card. Resolution differs between engines because the
     // bridge AI may activate the granted trigger immediately.
-    const addsConditionalTrigger = lines.some(
-      (l) => l.startsWith("S:") && /\bAddTrigger\$/.test(l),
-    );
+    const addsConditionalTrigger = lines.some((l) => l.startsWith("S:") && /\bAddTrigger\$/.test(l));
     // Cards with ETB triggers that put counters somewhere — bridge captures
     // CounterAdded events but the TS engine emits it for K:etbCounter only,
     // not for trigger-driven PutCounter via DB$ PutCounter. Until parity
@@ -250,6 +243,16 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
         l.startsWith("K:Bolster") ||
         l.startsWith("K:Manifest") ||
         l.startsWith("K:Megamorph") ||
+        l.startsWith("K:Tribute") ||
+        l.startsWith("K:Improvise") ||
+        l.startsWith("K:Convoke") ||
+        l.startsWith("K:Delve") ||
+        l.startsWith("K:Encore") ||
+        l.startsWith("K:Casualty") ||
+        l.startsWith("K:Buyback") ||
+        l.startsWith("K:Spree") ||
+        l.startsWith("K:Warp") ||
+        l.startsWith("K:Plot") ||
         /\bDB\$ Venture\b/.test(l) ||
         l.startsWith("K:Venture"),
     );
@@ -328,29 +331,26 @@ for (const card of uncovered) {
   // ETB-on-bf scenario surfaces fan-out + counter divergences both engines
   // are still aligning. Pure-vanilla permanents (no Card.Self ETB trigger)
   // still go to ETB.
-  const hasAnyEtbTrigger = card.script
-    .split("\n")
-    .some(
-      (l) =>
-        l.startsWith("T:") &&
-        // Any ChangesZone-to-Battlefield trigger (self or other-card),
-        // ChangesZoneAll (when other cards enter), Mode$ Always (state-
-        // based passive trigger), Eerie (TriggerZones$ Graveyard variants),
-        // or any FullyUnlock / Exploited / DamageDone trigger surfaces
-        // engine-divergent fan-out paths in the simple ETB scenario.
-        ((l.includes("ChangesZone") && l.includes("Battlefield")) ||
-          l.includes("Mode$ Always") ||
-          l.includes("Mode$ FullyUnlock") ||
-          l.includes("Mode$ Exploited") ||
-          l.includes("Mode$ DamageDone") ||
-          l.includes("Mode$ BecomesTarget") ||
-          l.includes("Mode$ Attacks") ||
-          l.includes("Mode$ Phase") ||
-          l.includes("Mode$ ChangesZoneAll")),
-    );
+  const hasAnyEtbTrigger = card.script.split("\n").some(
+    (l) =>
+      l.startsWith("T:") &&
+      // Any ChangesZone-to-Battlefield trigger (self or other-card),
+      // ChangesZoneAll (when other cards enter), Mode$ Always (state-
+      // based passive trigger), Eerie (TriggerZones$ Graveyard variants),
+      // or any FullyUnlock / Exploited / DamageDone trigger surfaces
+      // engine-divergent fan-out paths in the simple ETB scenario.
+      ((l.includes("ChangesZone") && l.includes("Battlefield")) ||
+        l.includes("Mode$ Always") ||
+        l.includes("Mode$ FullyUnlock") ||
+        l.includes("Mode$ Exploited") ||
+        l.includes("Mode$ DamageDone") ||
+        l.includes("Mode$ BecomesTarget") ||
+        l.includes("Mode$ Attacks") ||
+        l.includes("Mode$ Phase") ||
+        l.includes("Mode$ ChangesZoneAll")),
+  );
   const isPermanent =
-    !card.inHandOnly && !hasAnyEtbTrigger &&
-    /\b(Creature|Artifact|Enchantment|Land|Planeswalker)\b/.test(t);
+    !card.inHandOnly && !hasAnyEtbTrigger && /\b(Creature|Artifact|Enchantment|Land|Planeswalker)\b/.test(t);
   const id = `${slug(card.name)}-corpus-${wave}`;
   const desc = `M6 corpus — ${card.name}; ${isPermanent ? "ETB-on-bf" : "in-hand parse"}.`;
   const nameJson = JSON.stringify(card.name);

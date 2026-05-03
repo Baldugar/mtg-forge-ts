@@ -1,0 +1,23 @@
+{
+  "id": "hylderblade-corpus-m677",
+  "description": "M6 corpus — Hylderblade; in-hand parse.",
+  "seed": 62660,
+  "cards": {
+    "Hylderblade": "Name:Hylderblade\nManaCost:B\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 1 | Description$ Equipped creature gets +3/+1.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigAttach | TriggerDescription$ Void — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, attach this Equipment to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nK:Equip:4\nSVar:X:Count$Void.1.0\nOracle:Equipped creature gets +3/+1.\\nVoid — At the beginning of your end step, if a nonland permanent left the battlefield this turn or a spell was warped this turn, attach this Equipment to target creature you control.\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hylderblade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

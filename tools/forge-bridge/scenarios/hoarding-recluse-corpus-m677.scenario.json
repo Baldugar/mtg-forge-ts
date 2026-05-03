@@ -1,0 +1,23 @@
+{
+  "id": "hoarding-recluse-corpus-m677",
+  "description": "M6 corpus — Hoarding Recluse; in-hand parse.",
+  "seed": 62417,
+  "cards": {
+    "Hoarding Recluse": "Name:Hoarding Recluse\nManaCost:3 G\nTypes:Creature Spider\nPT:2/3\nK:Reach\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, put up to one other target card from a graveyard on the bottom of its owner's library.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | ValidTgts$ Card.Other | TargetMin$ 0 | TargetMax$ 1\nDeckHas:Ability$Graveyard\nOracle:Reach, deathtouch\\nWhen Hoarding Recluse dies, put up to one other target card from a graveyard on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoarding Recluse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

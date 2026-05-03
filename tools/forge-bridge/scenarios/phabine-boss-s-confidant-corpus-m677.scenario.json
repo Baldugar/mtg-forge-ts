@@ -1,0 +1,23 @@
+{
+  "id": "phabine-boss-s-confidant-corpus-m677",
+  "description": "M6 corpus — Phabine, Boss's Confidant; in-hand parse.",
+  "seed": 66784,
+  "cards": {
+    "Phabine, Boss's Confidant": "Name:Phabine, Boss's Confidant\nManaCost:3 R G W\nTypes:Legendary Creature Cat Advisor\nPT:3/6\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddKeyword$ Haste | Description$ Creature tokens you control have haste.\nSVar:PlayMain1:TRUE\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReveal | TriggerDescription$ Parley — At the beginning of combat on your turn, each player reveals the top card of their library. For each land card revealed this way, you create a 1/1 green and white Citizen creature token. Then creatures you control get +1/+1 until end of turn for each nonland card revealed this way. Then each player draws a card.\nSVar:TrigReveal:DB$ PeekAndReveal | Defined$ Player | RememberRevealed$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ gw_1_1_citizen | TokenAmount$ X | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +Y | NumDef$ +Y | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Land\nSVar:Y:Remembered$Valid Card.nonLand\nDeckHas:Ability$Token & Type$Citizen\nDeckHints:Ability$Token\nOracle:Creature tokens you control have haste.\\nParley — At the beginning of combat on your turn, each player reveals the top card of their library. For each land card revealed this way, you create a 1/1 green and white Citizen creature token. Then creatures you control get +1/+1 until end of turn for each nonland card revealed this way. Then each player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phabine, Boss's Confidant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

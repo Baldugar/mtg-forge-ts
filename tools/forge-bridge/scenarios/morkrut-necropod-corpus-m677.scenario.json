@@ -1,0 +1,23 @@
+{
+  "id": "morkrut-necropod-corpus-m677",
+  "description": "M6 corpus — Morkrut Necropod; in-hand parse.",
+  "seed": 65506,
+  "cards": {
+    "Morkrut Necropod": "Name:Morkrut Necropod\nManaCost:5 B\nTypes:Creature Slug Horror\nPT:7/7\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice another creature or land.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigSac | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice another creature or land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature.Other,Land.Other\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhenever Morkrut Necropod attacks or blocks, sacrifice another creature or land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morkrut Necropod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

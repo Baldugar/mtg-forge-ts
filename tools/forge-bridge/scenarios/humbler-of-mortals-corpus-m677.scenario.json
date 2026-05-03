@@ -1,0 +1,23 @@
+{
+  "id": "humbler-of-mortals-corpus-m677",
+  "description": "M6 corpus — Humbler of Mortals; in-hand parse.",
+  "seed": 62591,
+  "cards": {
+    "Humbler of Mortals": "Name:Humbler of Mortals\nManaCost:4 G G\nTypes:Enchantment Creature Elemental\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigPump | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, creatures you control gain trample until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample | SpellDescription$ Creatures you control gain trample until end of turn.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Humbler of Mortals or another enchantment you control enters, creatures you control gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Humbler of Mortals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

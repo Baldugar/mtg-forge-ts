@@ -1,0 +1,23 @@
+{
+  "id": "nemesis-trap-corpus-m677",
+  "description": "M6 corpus — Nemesis Trap; in-hand parse.",
+  "seed": 65835,
+  "cards": {
+    "Nemesis Trap": "Name:Nemesis Trap\nManaCost:4 B B\nTypes:Instant Trap\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ B B | IsPresent$ Creature.White+attacking | Description$ If a white creature is attacking, you may pay {B}{B} rather than pay this spell's mana cost.\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | SubAbility$ NemesisToken | SpellDescription$ Exile target attacking creature. Create a token that's a copy of that creature. Exile it at the beginning of the next end step.\nSVar:NemesisToken:DB$ CopyPermanent | Defined$ DirectRemembered | AtEOT$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:If a white creature is attacking, you may pay {B}{B} rather than pay this spell's mana cost.\\nExile target attacking creature. Create a token that's a copy of that creature. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nemesis Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

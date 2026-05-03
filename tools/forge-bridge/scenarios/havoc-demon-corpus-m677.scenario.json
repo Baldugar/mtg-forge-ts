@@ -1,0 +1,23 @@
+{
+  "id": "havoc-demon-corpus-m677",
+  "description": "M6 corpus — Havoc Demon; in-hand parse.",
+  "seed": 62123,
+  "cards": {
+    "Havoc Demon": "Name:Havoc Demon\nManaCost:5 B B\nTypes:Creature Demon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME dies, all creatures get -5/-5 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -5 | NumDef$ -5\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Havoc Demon dies, all creatures get -5/-5 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Havoc Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "march-of-the-drowned-corpus-m677",
+  "description": "M6 corpus — March of the Drowned; in-hand parse.",
+  "seed": 64770,
+  "cards": {
+    "March of the Drowned": "Name:March of the Drowned\nManaCost:B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBChangeZone1,DBChangeZone2\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return target creature card from your graveyard to your hand.\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | TgtPrompt$ Select two target Pirate cards in your graveyard | ValidTgts$ Pirate.YouOwn | TargetMin$ 2 | TargetMax$ 2 | SpellDescription$ Return two target Pirate cards from your graveyard to your hand.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Return target creature card from your graveyard to your hand.\\n• Return two target Pirate cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "March of the Drowned"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "a-scout-the-wilderness-corpus-m677",
+  "description": "M6 corpus — A-Scout the Wilderness; in-hand parse.",
+  "seed": 68794,
+  "cards": {
+    "A-Scout the Wilderness": "Name:A-Scout the Wilderness\nManaCost:2 G\nTypes:Sorcery\nK:Kicker:W\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SubAbility$ DBToken | SpellDescription$ Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. If this spell was kicked, create two 1/1 white Soldier creature tokens.\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_soldier | Condition$ Kicked\nDeckHints:Color$White\nDeckHas:Ability$Token & Type$Soldier\nOracle:Kicker {W}\\nSearch your library for a basic land card, put it onto the battlefield tapped, then shuffle. If this spell was kicked, create two 1/1 white Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Scout the Wilderness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

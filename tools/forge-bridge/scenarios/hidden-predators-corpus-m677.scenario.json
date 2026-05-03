@@ -1,0 +1,23 @@
+{
+  "id": "hidden-predators-corpus-m677",
+  "description": "M6 corpus — Hidden Predators; in-hand parse.",
+  "seed": 62340,
+  "cards": {
+    "Hidden Predators": "Name:Hidden Predators\nManaCost:G\nTypes:Enchantment\nT:Mode$ Always | IsPresent$ Creature.powerGE4+OppCtrl | TriggerZones$ Battlefield | Execute$ TrigLurkingJackalsAnimate | IsPresent2$ Card.Self+Enchantment | ResolvingCheck$ IsPresent2 | TriggerDescription$ When an opponent controls a creature with power 4 or greater, if CARDNAME is an enchantment, CARDNAME becomes a 4/4 Beast creature.\nSVar:TrigLurkingJackalsAnimate:DB$ Animate | Types$ Creature,Beast | Power$ 4 | Toughness$ 4 | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nOracle:When an opponent controls a creature with power 4 or greater, if Hidden Predators is an enchantment, Hidden Predators becomes a 4/4 Beast creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hidden Predators"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

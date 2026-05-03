@@ -1,0 +1,23 @@
+{
+  "id": "nascent-metamorph-corpus-m677",
+  "description": "M6 corpus — Nascent Metamorph; in-hand parse.",
+  "seed": 65749,
+  "cards": {
+    "Nascent Metamorph": "Name:Nascent Metamorph\nManaCost:1 U\nTypes:Creature Shapeshifter\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Whenever CARDNAME attacks or blocks, target opponent reveals cards from the top of their library until they reveal a creature card. CARDNAME becomes a copy of that card until end of turn. Then that player puts all cards revealed this way on the bottom of their library in a random order.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigDigUntil | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, target opponent reveals cards from the top of their library until they reveal a creature card. CARDNAME becomes a copy of that card until end of turn. Then that player puts all cards revealed this way on the bottom of their library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Reveal$ True | ValidTgts$ Opponent | IsCurse$ True | Valid$ Creature | ValidDescription$ creature card | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RememberFound$ True | RevealRandomOrder$ True | SubAbility$ DBClone\nSVar:DBClone:DB$ Clone | Defined$ Remembered | CloneTarget$ Self | Duration$ UntilEndOfTurn\nOracle:Whenever Nascent Metamorph attacks or blocks, target opponent reveals cards from the top of their library until they reveal a creature card. Nascent Metamorph becomes a copy of that card until end of turn. Then that player puts all cards revealed this way on the bottom of their library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nascent Metamorph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

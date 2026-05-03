@@ -1,0 +1,23 @@
+{
+  "id": "looter-il-kor-corpus-m677",
+  "description": "M6 corpus — Looter il-Kor; in-hand parse.",
+  "seed": 64388,
+  "cards": {
+    "Looter il-Kor": "Name:Looter il-Kor\nManaCost:1 U\nTypes:Creature Kor Rogue\nPT:1/1\nK:Shadow\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever Looter il-Kor deals damage to an opponent, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Looter il-Kor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

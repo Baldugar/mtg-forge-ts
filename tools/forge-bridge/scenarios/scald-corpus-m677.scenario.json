@@ -1,0 +1,25 @@
+{
+  "id": "scald-corpus-m677",
+  "description": "M6 corpus — Scald; ETB-on-bf.",
+  "seed": 69081,
+  "cards": {
+    "Scald": "Name:Scald\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ TapsForMana | ValidCard$ Island | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever a player taps an Island for mana, CARDNAME deals 1 damage to that player.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a player taps an Island for mana, Scald deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scald"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

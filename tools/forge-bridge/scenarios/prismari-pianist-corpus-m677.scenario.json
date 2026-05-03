@@ -1,0 +1,25 @@
+{
+  "id": "prismari-pianist-corpus-m677",
+  "description": "M6 corpus — Prismari Pianist; ETB-on-bf.",
+  "seed": 67215,
+  "cards": {
+    "Prismari Pianist": "Name:Prismari Pianist\nManaCost:1 R R\nTypes:Creature Djinn Bard\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an instant or sorcery spell, create a 1/1 blue and red Elemental creature token. If that spell's mana value is 5 or greater, create three of those tokens instead.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ ur_1_1_elemental\nSVar:BuffedBy:Instant,Sorcery\nSVar:X:Count$Compare Y GE5.3.1\nSVar:Y:TriggeredSpellAbility$CardManaCostLKI\nDeckHints:Type$Instant|Sorcery\nDeckHas:Ability$Token\nOracle:Whenever you cast an instant or sorcery spell, create a 1/1 blue and red Elemental creature token. If that spell's mana value is 5 or greater, create three of those tokens instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Prismari Pianist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "quagnoth-corpus-m677",
+  "description": "M6 corpus — Quagnoth; ETB-on-bf.",
+  "seed": 67435,
+  "cards": {
+    "Quagnoth": "Name:Quagnoth\nManaCost:5 G\nTypes:Creature Beast\nPT:4/5\nK:Split second\nK:Shroud\nT:Mode$ Discarded | ValidCard$ Card.Self | ValidCause$ SpellAbility.OppCtrl | Execute$ TrigReturn | TriggerDescription$ When a spell or ability an opponent controls causes you to discard CARDNAME, return it to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand\nSVar:DiscardMeByOpp:1\nOracle:Split second (As long as this spell is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)\\nShroud (This creature can't be the target of spells or abilities.)\\nWhen a spell or ability an opponent controls causes you to discard Quagnoth, return it to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Quagnoth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

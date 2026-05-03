@@ -1,0 +1,23 @@
+{
+  "id": "merchant-ship-corpus-m677",
+  "description": "M6 corpus — Merchant Ship; in-hand parse.",
+  "seed": 64999,
+  "cards": {
+    "Merchant Ship": "Name:Merchant Ship\nManaCost:U\nTypes:Creature Human\nPT:0/2\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:Merchant Ship can't attack unless defending player controls an Island.\\nWhenever Merchant Ship attacks and isn't blocked, you gain 2 life.\\nWhen you control no Islands, sacrifice Merchant Ship.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merchant Ship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "somberwald-alpha-corpus-m677",
+  "description": "M6 corpus — Somberwald Alpha; ETB-on-bf.",
+  "seed": 70385,
+  "cards": {
+    "Somberwald Alpha": "Name:Somberwald Alpha\nManaCost:3 G\nTypes:Creature Wolf\nPT:3/2\nT:Mode$ AttackerBlocked | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control becomes blocked, it gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +1 | NumDef$ +1\nA:AB$ Pump | Cost$ 1 G | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Trample | SpellDescription$ Target creature you control gains trample until end of turn.\nOracle:Whenever a creature you control becomes blocked, it gets +1/+1 until end of turn.\\n{1}{G}: Target creature you control gains trample until end of turn. (It can deal excess combat damage to the player or planeswalker it's attacking.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Somberwald Alpha"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

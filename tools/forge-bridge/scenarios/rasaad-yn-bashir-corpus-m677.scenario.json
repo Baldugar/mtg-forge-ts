@@ -1,0 +1,23 @@
+{
+  "id": "rasaad-yn-bashir-corpus-m677",
+  "description": "M6 corpus — Rasaad yn Bashir; in-hand parse.",
+  "seed": 67721,
+  "cards": {
+    "Rasaad yn Bashir": "Name:Rasaad yn Bashir\nManaCost:2 W\nTypes:Legendary Creature Human Monk\nPT:0/3\nS:Mode$ CombatDamageToughness | ValidCard$ Creature.YouCtrl | Description$ Each creature you control assigns combat damage equal to its toughness rather than its power.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDoubleToughness | CheckDefinedPlayer$ You.hasInitiative | TriggerDescription$ Whenever CARDNAME attacks, if you have the initiative, double the toughness of each creature you control until end of turn.\nSVar:TrigDoubleToughness:DB$ Pump | Defined$ Valid Creature.YouCtrl | NumDef$ Double\nK:Choose a Background\nSVar:HasAttackEffect:TRUE\nOracle:Each creature you control assigns combat damage equal to its toughness rather than its power.\\nWhenever Rasaad yn Bashir attacks, if you have the initiative, double the toughness of each creature you control until end of turn.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rasaad yn Bashir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

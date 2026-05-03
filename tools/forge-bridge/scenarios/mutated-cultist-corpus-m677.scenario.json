@@ -1,0 +1,25 @@
+{
+  "id": "mutated-cultist-corpus-m677",
+  "description": "M6 corpus — Mutated Cultist; ETB-on-bf.",
+  "seed": 65617,
+  "cards": {
+    "Mutated Cultist": "Name:Mutated Cultist\nManaCost:2 B\nTypes:Creature Eldrazi Horror\nPT:1/3\nK:Devoid\nK:Deathtouch\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigRemove | TriggerDescription$ When you cast this spell, remove all counters from up to one target permanent or opponent. The next spell you cast this turn costs {1} less to cast for each counter removed this way.\nSVar:TrigRemove:DB$ RemoveCounter | ValidTgts$ Permanent,Opponent | TargetMin$ 0 | TargetMax$ 1 | Defined$ Targeted | CounterType$ All | TgtPrompt$ Select up to one target permanent or opponent | CounterNum$ All | RememberAmount$ True | SubAbility$ DBEffect\nSVar:X:Count$RememberedNumber\nSVar:DBEffect:DB$ Effect | StaticAbilities$ ReduceCost | ForgetOnCast$ Card.YouCtrl | SetChosenNumber$ X | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:ReduceCost:Mode$ ReduceCost | Type$ Spell | Activator$ You | Amount$ Count$ChosenNumber | Description$ The next spell you cast this turn costs {1} less to cast for each counter removed this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Devoid\\nWhen you cast this spell, remove all counters from up to one target permanent or opponent. The next spell you cast this turn costs {1} less to cast for each counter removed this way.\\nDeathtouch\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mutated Cultist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

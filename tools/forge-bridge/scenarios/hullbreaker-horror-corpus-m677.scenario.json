@@ -1,0 +1,25 @@
+{
+  "id": "hullbreaker-horror-corpus-m677",
+  "description": "M6 corpus — Hullbreaker Horror; ETB-on-bf.",
+  "seed": 62583,
+  "cards": {
+    "Hullbreaker Horror": "Name:Hullbreaker Horror\nManaCost:5 U U\nTypes:Creature Kraken Horror\nPT:7/8\nK:Flash\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ ControlReturn,ControlBounce | MinCharmNum$ 0\nSVar:ControlReturn:DB$ ChangeZone | ValidTgts$ Card.YouDontCtrl | TargetType$ Spell | TgtPrompt$ Select target spell you don't control | TgtZone$ Stack | Origin$ Stack | Destination$ Hand | SpellDescription$ Return target spell you don't control to its owner's hand.\nSVar:ControlBounce:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | TgtZone$ Battlefield | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target nonland permanent to its owner's hand.\nOracle:Flash\\nThis spell can't be countered.\\nWhenever you cast a spell, choose up to one —\\n• Return target spell you don't control to its owner's hand.\\n• Return target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hullbreaker Horror"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "sunbird-s-invocation-corpus-m677",
+  "description": "M6 corpus — Sunbird's Invocation; ETB-on-bf.",
+  "seed": 71335,
+  "cards": {
+    "Sunbird's Invocation": "Name:Sunbird's Invocation\nManaCost:5 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever you cast a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value X or less from among cards revealed this way without paying its mana cost. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ PeekAndReveal | Defined$ You | PeekAmount$ X | RememberRevealed$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | ValidZone$ Library | Valid$ Card.nonLand+IsRemembered | ValidSA$ Spell.cmcLEX | WithoutManaCost$ True | Optional$ True | Amount$ 1 | ShowCards$ Card.IsRemembered | ForgetPlayed$ True | SubAbility$ DBRestRandomOrder\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Whenever you cast a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value X or less from among cards revealed this way without paying its mana cost. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sunbird's Invocation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

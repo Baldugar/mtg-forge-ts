@@ -1,0 +1,23 @@
+{
+  "id": "servo-schematic-corpus-m677",
+  "description": "M6 corpus — Servo Schematic; in-hand parse.",
+  "seed": 69511,
+  "cards": {
+    "Servo Schematic": "Name:Servo Schematic\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, create a 1/1 colorless Servo artifact creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, create a 1/1 colorless Servo artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_servo | TokenOwner$ You\nSVar:SacMe:5\nOracle:When Servo Schematic enters or is put into a graveyard from the battlefield, create a 1/1 colorless Servo artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Servo Schematic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

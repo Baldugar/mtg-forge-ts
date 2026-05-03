@@ -1,0 +1,23 @@
+{
+  "id": "infesting-radroach-corpus-m677",
+  "description": "M6 corpus — Infesting Radroach; in-hand parse.",
+  "seed": 62922,
+  "cards": {
+    "Infesting Radroach": "Name:Infesting Radroach\nManaCost:2 B\nTypes:Creature Insect Mutant\nPT:2/2\nK:Flying\nS:Mode$ CantBlock | ValidCard$ Creature.Self | Description$ CARDNAME can't block.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigRadiation | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, they get that many rad counters.\nSVar:TrigRadiation:DB$ Radiation | Defined$ TriggeredTarget | Num$ X\nSVar:X:TriggerCount$DamageAmount\nT:Mode$ Milled | ValidPlayer$ Opponent | OptionalDecider$ You | ValidCard$ Card.nonLand | TriggerZones$ Graveyard | Execute$ TrigReturn | PresentZone$ Graveyard | IsPresent$ Card.StrictlySelf | TriggerDescription$ Whenever an opponent mills a nonland card, if CARDNAME is in your graveyard, you may return it to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand\nOracle:Flying\\nInfesting Radroach can't block.\\nWhenever Infesting Radroach deals combat damage to a player, they get that many rad counters.\\nWhenever an opponent mills a nonland card, if Infesting Radroach is in your graveyard, you may return it to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infesting Radroach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

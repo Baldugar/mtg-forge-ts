@@ -1,0 +1,23 @@
+{
+  "id": "sea-serpent-corpus-m677",
+  "description": "M6 corpus — Sea Serpent; in-hand parse.",
+  "seed": 69275,
+  "cards": {
+    "Sea Serpent": "Name:Sea Serpent\nManaCost:5 U\nTypes:Creature Serpent\nPT:5/5\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:Sea Serpent can't attack unless defending player controls an Island.\\nWhen you control no Islands, sacrifice Sea Serpent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sea Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

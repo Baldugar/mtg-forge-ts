@@ -1,0 +1,23 @@
+{
+  "id": "shipwreck-dowser-corpus-m677",
+  "description": "M6 corpus — Shipwreck Dowser; in-hand parse.",
+  "seed": 69720,
+  "cards": {
+    "Shipwreck Dowser": "Name:Shipwreck Dowser\nManaCost:3 U U\nTypes:Creature Merfolk Wizard\nPT:3/3\nK:Prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhen Shipwreck Dowser enters, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shipwreck Dowser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

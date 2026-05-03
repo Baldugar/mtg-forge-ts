@@ -1,0 +1,23 @@
+{
+  "id": "mire-triton-corpus-m677",
+  "description": "M6 corpus — Mire Triton; in-hand parse.",
+  "seed": 65222,
+  "cards": {
+    "Mire Triton": "Name:Mire Triton\nManaCost:1 B\nTypes:Creature Zombie Merfolk\nPT:2/1\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill two cards and you gain 2 life.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBLifeGain\nSVar:DBLifeGain:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$Graveyard|LifeGain\nOracle:Deathtouch\\nWhen Mire Triton enters, mill two cards and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mire Triton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

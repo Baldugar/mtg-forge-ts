@@ -1,0 +1,23 @@
+{
+  "id": "rampaging-classmate-corpus-m677",
+  "description": "M6 corpus — Rampaging Classmate; in-hand parse.",
+  "seed": 67667,
+  "cards": {
+    "Rampaging Classmate": "Name:Rampaging Classmate\nManaCost:2 R\nTypes:Creature Lizard Berserker\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks, it gets +1/+0 until end of turn for each other attacking creature.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.attacking+Other\nSVar:HasAttackEffect:TRUE\nOracle:Whenever this creature attacks, it gets +1/+0 until end of turn for each other attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampaging Classmate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

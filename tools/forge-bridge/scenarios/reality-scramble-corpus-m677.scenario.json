@@ -1,0 +1,23 @@
+{
+  "id": "reality-scramble-corpus-m677",
+  "description": "M6 corpus — Reality Scramble; in-hand parse.",
+  "seed": 67825,
+  "cards": {
+    "Reality Scramble": "Name:Reality Scramble\nManaCost:2 R R\nTypes:Sorcery\nK:Retrace\nA:SP$ ChangeZone | ValidTgts$ Permanent.YouOwn | Origin$ Battlefield | Destination$ Library | LibraryPosition$ -1 | RememberLKI$ True | SubAbility$ DBRevealUntilShare | SpellDescription$ Put target permanent you own on the bottom of your library. Reveal cards from the top of your library until you reveal a card that shares a card type with that permanent. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\nSVar:DBRevealUntilShare:DB$ DigUntil | Valid$ Card.sharesCardTypeWith RememberedLKI | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Put target permanent you own on the bottom of your library. Reveal cards from the top of your library until you reveal a card that shares a card type with that permanent. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\\nRetrace (You may cast this card from your graveyard by discarding a land card in addition to paying its other costs.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reality Scramble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

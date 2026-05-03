@@ -1,0 +1,23 @@
+{
+  "id": "rotfeaster-maggot-corpus-m677",
+  "description": "M6 corpus — Rotfeaster Maggot; in-hand parse.",
+  "seed": 68537,
+  "cards": {
+    "Rotfeaster Maggot": "Name:Rotfeaster Maggot\nManaCost:4 B\nTypes:Creature Insect\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, exile target creature card from a graveyard. You gain life equal to that card's toughness.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target creature card in a graveyard | ValidTgts$ Creature | RememberLKI$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nOracle:When Rotfeaster Maggot enters, exile target creature card from a graveyard. You gain life equal to that card's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rotfeaster Maggot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

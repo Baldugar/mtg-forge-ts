@@ -1,0 +1,23 @@
+{
+  "id": "lava-hounds-corpus-m677",
+  "description": "M6 corpus — Lava Hounds; in-hand parse.",
+  "seed": 64024,
+  "cards": {
+    "Lava Hounds": "Name:Lava Hounds\nManaCost:2 R R\nTypes:Creature Dog\nPT:4/4\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 4 damage to you.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 4\nOracle:Haste\\nWhen Lava Hounds enters, it deals 4 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lava Hounds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

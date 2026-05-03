@@ -1,0 +1,23 @@
+{
+  "id": "salvaging-station-corpus-m677",
+  "description": "M6 corpus — Salvaging Station; in-hand parse.",
+  "seed": 68913,
+  "cards": {
+    "Salvaging Station": "Name:Salvaging Station\nManaCost:6\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Artifact.nonCreature+cmcLE1+YouCtrl | TgtPrompt$ Select target noncreature artifact card with mana value 1 or less from your graveyard | SpellDescription$ Return target noncreature artifact card with mana value 1 or less from your graveyard to the battlefield.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | Execute$ TrigUntap | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature dies, you may untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:Random\nOracle:{T}: Return target noncreature artifact card with mana value 1 or less from your graveyard to the battlefield.\\nWhenever a creature dies, you may untap Salvaging Station.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Salvaging Station"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

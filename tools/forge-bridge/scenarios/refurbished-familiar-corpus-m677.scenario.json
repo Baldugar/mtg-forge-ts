@@ -1,0 +1,23 @@
+{
+  "id": "refurbished-familiar-corpus-m677",
+  "description": "M6 corpus — Refurbished Familiar; in-hand parse.",
+  "seed": 67955,
+  "cards": {
+    "Refurbished Familiar": "Name:Refurbished Familiar\nManaCost:3 B\nTypes:Artifact Creature Zombie Rat\nPT:2/1\nK:Affinity:Artifact\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card. For each opponent who can't, you draw a card.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | Defined$ Opponent | NumCards$ 1 | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountOpponents$Amount/Minus.Remembered$Amount\nDeckHas:Ability$Discard\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nFlying\\nWhen Refurbished Familiar enters, each opponent discards a card. For each opponent who can't, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Refurbished Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

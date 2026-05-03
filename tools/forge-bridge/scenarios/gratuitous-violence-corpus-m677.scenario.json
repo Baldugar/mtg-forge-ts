@@ -1,0 +1,25 @@
+{
+  "id": "gratuitous-violence-corpus-m677",
+  "description": "M6 corpus — Gratuitous Violence; ETB-on-bf.",
+  "seed": 61643,
+  "cards": {
+    "Gratuitous Violence": "Name:Gratuitous Violence\nManaCost:2 R R R\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Creature.YouCtrl+inZoneBattlefield | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nOracle:If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gratuitous Violence"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

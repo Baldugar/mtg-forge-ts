@@ -1,0 +1,23 @@
+{
+  "id": "stunning-reversal-corpus-m677",
+  "description": "M6 corpus — Stunning Reversal; in-hand parse.",
+  "seed": 71234,
+  "cards": {
+    "Stunning Reversal": "Name:Stunning Reversal\nManaCost:3 B\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ LoseReplace | SubAbility$ DBExile | SpellDescription$ The next time you would lose the game this turn, instead draw seven cards and your life total becomes 1. Exile CARDNAME.\nSVar:LoseReplace:Event$ GameLoss | ActiveZones$ Command | ValidPlayer$ You | ReplaceWith$ DrawSeven | Description$ The next time you would lose the game this turn, instead draw seven cards and your life total becomes 1.\nSVar:DrawSeven:DB$ Draw | NumCards$ 7 | SubAbility$ DBSetLife\nSVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ 1 | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Stack | Destination$ Exile\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:The next time you would lose the game this turn, instead draw seven cards and your life total becomes 1.\\nExile Stunning Reversal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stunning Reversal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

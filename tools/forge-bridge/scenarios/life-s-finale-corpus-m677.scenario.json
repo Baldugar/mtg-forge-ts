@@ -1,0 +1,23 @@
+{
+  "id": "life-s-finale-corpus-m677",
+  "description": "M6 corpus — Life's Finale; in-hand parse.",
+  "seed": 64218,
+  "cards": {
+    "Life's Finale": "Name:Life's Finale\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | SubAbility$ DBSearch | SpellDescription$ Destroy all creatures, then search target opponent's library for up to three creature cards and put them into their graveyard. Then that player shuffles.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ValidTgts$ Opponent | ChangeType$ Creature | ChangeNum$ 3 | IsCurse$ True\nOracle:Destroy all creatures, then search target opponent's library for up to three creature cards and put them into their graveyard. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Life's Finale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

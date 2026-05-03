@@ -1,0 +1,23 @@
+{
+  "id": "moonhold-corpus-m677",
+  "description": "M6 corpus — Moonhold; in-hand parse.",
+  "seed": 65463,
+  "cards": {
+    "Moonhold": "Name:Moonhold\nManaCost:2 RW\nTypes:Instant\nA:SP$ Effect | Name$ Moonhold's Effect — No Lands | ValidTgts$ Player | IsCurse$ True | StaticAbilities$ STCantPlayLand | EffectOwner$ Targeted | AILogic$ BeginningOfOppTurn | ConditionManaSpent$ R | SubAbility$ WPaid | SpellDescription$ Target player can't play lands this turn if {R} was spent to cast this spell and can't cast creature spells this turn if {W} was spent to cast this spell. (Do both if {R}{W} was spent.)\nSVar:WPaid:DB$ Effect | Name$ Moonhold's Effect — No Creatures | IsCurse$ True | StaticAbilities$ STCantPlayCreats | EffectOwner$ Targeted | AILogic$ BeginningOfOppTurn | ConditionManaSpent$ W\nSVar:STCantPlayLand:Mode$ CantPlayLand | Player$ You | Description$ You can't play lands this turn.\nSVar:STCantPlayCreats:Mode$ CantBeCast | ValidCard$ Creature | Caster$ You | Description$ You can't cast creature spells this turn.\nOracle:Target player can't play lands this turn if {R} was spent to cast this spell and can't cast creature spells this turn if {W} was spent to cast this spell. (Do both if {R}{W} was spent.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonhold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

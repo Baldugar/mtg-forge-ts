@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-kaladesh-corpus-m677",
+  "description": "M6 corpus — Invasion of Kaladesh; in-hand parse.",
+  "seed": 63064,
+  "cards": {
+    "Invasion of Kaladesh": "Name:Invasion of Kaladesh\nManaCost:U R\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 colorless Thopter artifact creature token with flying.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ c_1_1_a_thopter_flying\nDeckHas:Ability$Token & Type$Thopter\nDeckHints:Type$Artifact\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Kaladesh enters, create a 1/1 colorless Thopter artifact creature token with flying.\n\nALTERNATE\n\nName:Aetherwing, Golden-Scale Flagship\nManaCost:no cost\nColors:blue,red\nTypes:Legendary Artifact Vehicle\nPT:*/4\nK:Flying\nK:Crew:1\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of artifacts you control.\nSVar:X:Count$Valid Artifact.YouCtrl\nOracle:Flying\\nAetherwing, Golden-Scale Flagship's power is equal to the number of artifacts you control.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Kaladesh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

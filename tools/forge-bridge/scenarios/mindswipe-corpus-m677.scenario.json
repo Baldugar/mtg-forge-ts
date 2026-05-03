@@ -1,0 +1,23 @@
+{
+  "id": "mindswipe-corpus-m677",
+  "description": "M6 corpus — Mindswipe; in-hand parse.",
+  "seed": 65184,
+  "cards": {
+    "Mindswipe": "Name:Mindswipe\nManaCost:X U R\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ X | SubAbility$ DBBurn | SpellDescription$ Counter target spell unless its controller pays {X}. CARDNAME deals X damage to that spell's controller.\nSVar:DBBurn:DB$ DealDamage | NumDmg$ X | Defined$ TargetedController\nSVar:X:Count$xPaid\nOracle:Counter target spell unless its controller pays {X}. Mindswipe deals X damage to that spell's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindswipe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "suffer-the-past-corpus-m677",
+  "description": "M6 corpus — Suffer the Past; in-hand parse.",
+  "seed": 71271,
+  "cards": {
+    "Suffer the Past": "Name:Suffer the Past\nManaCost:X B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBExileTargets | SpellDescription$ Exile X target cards from target player's graveyard. For each card exiled this way, that player loses 1 life and you gain 1 life. | StackDescription$ None\nSVar:DBExileTargets:DB$ ChangeZone | TargetMin$ X | TargetMax$ X | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetsWithDefinedController$ ParentTarget | TgtPrompt$ Select target card targeted player owns | RememberChanged$ True | SubAbility$ DBSyphonLife\nSVar:DBSyphonLife:DB$ LoseLife | Defined$ Targeted | LifeAmount$ Y | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Exile X target cards from target player's graveyard. For each card exiled this way, that player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suffer the Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

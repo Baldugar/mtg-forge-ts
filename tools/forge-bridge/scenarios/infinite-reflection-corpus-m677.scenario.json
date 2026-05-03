@@ -1,0 +1,23 @@
+{
+  "id": "infinite-reflection-corpus-m677",
+  "description": "M6 corpus — Infinite Reflection; in-hand parse.",
+  "seed": 62928,
+  "cards": {
+    "Infinite Reflection": "Name:Infinite Reflection\nManaCost:5 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:HighestEvaluation\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self+AttachedTo Card | Execute$ RememberInitialAttach | Static$ True\nSVar:RememberInitialAttach:DB$ Pump | RememberObjects$ Valid Card.AttachedBy\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self+AttachedTo Card | Execute$ TrigClone | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME enters attached to a creature, each other nontoken creature you control becomes a copy of that creature.\nSVar:TrigClone:DB$ Clone | Defined$ Remembered | CloneTarget$ Valid Creature.!token+YouCtrl+!IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:ETBReplacement:Copy:Reflections:Mandatory:Battlefield:Creature.!token+YouCtrl\nSVar:Reflections:DB$ Clone | Defined$ Enchanted | CloneTarget$ ReplacedCard | SpellDescription$ Nontoken creatures you control enter as a copy of enchanted creature.\nOracle:Enchant creature\\nWhen Infinite Reflection enters attached to a creature, each other nontoken creature you control becomes a copy of that creature.\\nNontoken creatures you control enter as a copy of enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infinite Reflection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mutable-explorer-corpus-m677",
+  "description": "M6 corpus — Mutable Explorer; in-hand parse.",
+  "seed": 65611,
+  "cards": {
+    "Mutable Explorer": "Name:Mutable Explorer\nManaCost:2 G\nTypes:Creature Shapeshifter\nPT:1/1\nK:Changeling\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a tapped Mutavault token. (It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land.\")\nSVar:TrigToken:DB$ CopyPermanent | DefinedName$ Mutavault | TokenTapped$ True\nDeckHas:Ability$Token & Type$Land\nOracle:Changeling (This card is every creature type.)\\nWhen this creature enters, create a tapped Mutavault token. (It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mutable Explorer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

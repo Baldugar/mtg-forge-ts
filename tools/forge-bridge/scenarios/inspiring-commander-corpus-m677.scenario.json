@@ -1,0 +1,23 @@
+{
+  "id": "inspiring-commander-corpus-m677",
+  "description": "M6 corpus — Inspiring Commander; in-hand parse.",
+  "seed": 63000,
+  "cards": {
+    "Inspiring Commander": "Name:Inspiring Commander\nManaCost:4 W W\nTypes:Creature Human Soldier\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerLE2+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Whenever another creature you control with power 2 or less enters, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inspiring Commander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

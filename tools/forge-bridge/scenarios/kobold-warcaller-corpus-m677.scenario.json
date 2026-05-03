@@ -1,0 +1,25 @@
+{
+  "id": "kobold-warcaller-corpus-m677",
+  "description": "M6 corpus — Kobold Warcaller; ETB-on-bf.",
+  "seed": 63794,
+  "cards": {
+    "Kobold Warcaller": "Name:Kobold Warcaller\nManaCost:R\nTypes:Creature Kobold\nPT:1/1\nA:AB$ ChooseCard | Cost$ T | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceTitle$ Choose a creature card in your hand | ChoiceDesc$ creature | SubAbility$ DBPump | SpellDescription$ Choose a creature card in your hand.\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Haste | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains haste.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:Random\nOracle:{T}: Choose a creature card in your hand. It perpetually gains haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kobold Warcaller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

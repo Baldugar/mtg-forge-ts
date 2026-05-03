@@ -1,0 +1,23 @@
+{
+  "id": "kuja-genome-sorcerer-corpus-m677",
+  "description": "M6 corpus — Kuja, Genome Sorcerer; in-hand parse.",
+  "seed": 63909,
+  "cards": {
+    "Kuja, Genome Sorcerer": "Name:Kuja, Genome Sorcerer\nManaCost:2 B R\nTypes:Legendary Creature Human Mutant Wizard\nPT:3/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a tapped 0/1 black Wizard creature token with \"Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.\" Then if you control four or more Wizards, transform Kuja.\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ b_0_1_wizard_snipe | TokenOwner$ You | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionPresent$ Card.Wizard+YouCtrl | ConditionCompare$ GE4 | Mode$ Transform\nDeckHints:Type$Wizard\nAlternateMode:DoubleFaced\nOracle:At the beginning of your end step, create a tapped 0/1 black Wizard creature token with \"Whenever you cast a noncreature spell, this token deals 1 damage to each opponent.\" Then if you control four or more Wizards, transform Kuja.\n\nALTERNATE\n\nName:Trance Kuja, Fate Defied\nManaCost:no cost\nColors:black,red\nTypes:Legendary Creature Avatar Wizard\nPT:4/6\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Wizard.YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ Flare Star — If a Wizard you control would deal damage to a permanent or player, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nOracle:Flare Star — If a Wizard you control would deal damage to a permanent or player, it deals double that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kuja, Genome Sorcerer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

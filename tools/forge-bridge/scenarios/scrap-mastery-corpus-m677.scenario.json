@@ -1,0 +1,23 @@
+{
+  "id": "scrap-mastery-corpus-m677",
+  "description": "M6 corpus — Scrap Mastery; in-hand parse.",
+  "seed": 69213,
+  "cards": {
+    "Scrap Mastery": "Name:Scrap Mastery\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Artifact | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBSacrifice | SpellDescription$ Each player exiles all artifact cards from their graveyard, then sacrifices all artifacts they control, then puts all cards they exiled this way onto the battlefield.\nSVar:DBSacrifice:DB$ SacrificeAll | ValidCards$ Artifact | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Each player exiles all artifact cards from their graveyard, then sacrifices all artifacts they control, then puts all cards they exiled this way onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrap Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

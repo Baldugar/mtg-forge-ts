@@ -1,0 +1,23 @@
+{
+  "id": "halo-charged-skaab-corpus-m677",
+  "description": "M6 corpus — Halo-Charged Skaab; in-hand parse.",
+  "seed": 61994,
+  "cards": {
+    "Halo-Charged Skaab": "Name:Halo-Charged Skaab\nManaCost:4 U\nTypes:Creature Zombie\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, each player mills two cards. Then you may put an instant, sorcery, or battle card from your graveyard on top of your library. (To mill two cards, a player puts the top two cards of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ Player | NumCards$ 2 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Instant.YouOwn,Sorcery.YouOwn,Battle.YouOwn | Origin$ Graveyard | Destination$ Library | Hidden$ True\nDeckHas:Ability$Graveyard|Mill\nDeckHints:Type$Instant|Sorcery|Battle\nDeckNeeds:Type$Artifact\nOracle:When Halo-Charged Skaab enters, each player mills two cards. Then you may put an instant, sorcery, or battle card from your graveyard on top of your library. (To mill two cards, a player puts the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halo-Charged Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

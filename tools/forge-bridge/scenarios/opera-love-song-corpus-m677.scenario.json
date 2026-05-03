@@ -1,0 +1,23 @@
+{
+  "id": "opera-love-song-corpus-m677",
+  "description": "M6 corpus — Opera Love Song; in-hand parse.",
+  "seed": 66351,
+  "cards": {
+    "Opera Love Song": "Name:Opera Love Song\nManaCost:1 R\nTypes:Instant\nA:SP$ Charm | Choices$ DBExile,DBPump\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top two cards of your library. You may play those cards until your next end step.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilYourNextEndStep\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play those cards until your next end step.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select one or two target creatures | TargetMin$ 1 | TargetMax$ 2 | NumAtt$ +2 | SpellDescription$ One or two target creatures each get +2/+0 until end of turn.\nOracle:Choose one —\\n• Exile the top two cards of your library. You may play those cards until your next end step.\\n• One or two target creatures each get +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Opera Love Song"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

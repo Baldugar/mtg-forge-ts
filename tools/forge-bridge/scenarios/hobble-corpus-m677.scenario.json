@@ -1,0 +1,23 @@
+{
+  "id": "hobble-corpus-m677",
+  "description": "M6 corpus — Hobble; in-hand parse.",
+  "seed": 62419,
+  "cards": {
+    "Hobble": "Name:Hobble\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack.\nS:Mode$ CantBlock | ValidCard$ Creature.EnchantedBy+Black | Description$ Enchanted creature can't block if it's black.\nOracle:Enchant creature\\nWhen Hobble enters, draw a card.\\nEnchanted creature can't attack.\\nEnchanted creature can't block if it's black.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hobble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

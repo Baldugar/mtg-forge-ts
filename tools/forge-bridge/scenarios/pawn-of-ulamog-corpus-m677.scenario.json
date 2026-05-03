@@ -1,0 +1,23 @@
+{
+  "id": "pawn-of-ulamog-corpus-m677",
+  "description": "M6 corpus — Pawn of Ulamog; in-hand parse.",
+  "seed": 66681,
+  "cards": {
+    "Pawn of Ulamog": "Name:Pawn of Ulamog\nManaCost:1 B B\nTypes:Creature Vampire Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+!token+YouCtrl,Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another nontoken creature you control dies, you may create a 0/1 colorless Eldrazi Spawn creature token. It has \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You\nDeckHints:Type$Eldrazi\nDeckHas:Ability$Mana.Colorless|Token\nOracle:Whenever Pawn of Ulamog or another nontoken creature you control dies, you may create a 0/1 colorless Eldrazi Spawn creature token. It has \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pawn of Ulamog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

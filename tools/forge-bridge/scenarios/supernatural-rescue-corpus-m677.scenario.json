@@ -1,0 +1,23 @@
+{
+  "id": "supernatural-rescue-corpus-m677",
+  "description": "M6 corpus — Supernatural Rescue; in-hand parse.",
+  "seed": 71397,
+  "cards": {
+    "Supernatural Rescue": "Name:Supernatural Rescue\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nS:Mode$ Continuous | CharacteristicDefining$ True | AddKeyword$ Flash | IsPresent$ Spirit.YouCtrl | Description$ This spell has flash as long as you control a Spirit.\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When you cast this spell, tap up to two target creatures you don't control.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures you don't control | ValidTgts$ Creature.YouDontCtrl\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 2 | Description$ Enchanted creature gets +1/+2.\nOracle:This spell has flash as long as you control a Spirit.\\nWhen you cast this spell, tap up to two target creatures you don't control.\\nEnchant creature\\nEnchanted creature gets +1/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Supernatural Rescue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

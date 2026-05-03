@@ -1,0 +1,23 @@
+{
+  "id": "grim-reaper-s-sprint-corpus-m677",
+  "description": "M6 corpus — Grim Reaper's Sprint; in-hand parse.",
+  "seed": 61776,
+  "cards": {
+    "Grim Reaper's Sprint": "Name:Grim Reaper's Sprint\nManaCost:4 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 3 | EffectZone$ All | CheckSVar$ X | Description$ Morbid — This spell costs {3} less to cast if a creature died this turn.\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap each creature you control. If it's your main phase, there is an additional combat phase after this phase.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | ConditionPhases$ Main1,Main2 | ConditionPlayerTurn$ True\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Haste | Description$ Enchanted creature gets +2/+2 and has haste.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Sacrifice\nOracle:Morbid — This spell costs {3} less to cast if a creature died this turn.\\nEnchant creature\\nWhen Grim Reaper's Sprint enters, untap each creature you control. If it's your main phase, there is an additional combat phase after this phase.\\nEnchanted creature gets +2/+2 and has haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Reaper's Sprint"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

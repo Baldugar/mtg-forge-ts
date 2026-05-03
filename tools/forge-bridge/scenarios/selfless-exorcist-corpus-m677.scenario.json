@@ -1,0 +1,25 @@
+{
+  "id": "selfless-exorcist-corpus-m677",
+  "description": "M6 corpus — Selfless Exorcist; ETB-on-bf.",
+  "seed": 69427,
+  "cards": {
+    "Selfless Exorcist": "Name:Selfless Exorcist\nManaCost:3 W W\nTypes:Creature Human Cleric\nPT:3/4\nA:AB$ ChangeZone | Cost$ T | ValidTgts$ Creature | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBDealDamage | SpellDescription$ Exile target creature card from a graveyard. That card deals damage equal to its power to CARDNAME.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ Self | NumDmg$ X | DamageSource$ Targeted\nSVar:X:Targeted$CardPower\nAI:RemoveDeck:All\nOracle:{T}: Exile target creature card from a graveyard. That card deals damage equal to its power to Selfless Exorcist.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Selfless Exorcist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ironclaw-curse-corpus-m677",
+  "description": "M6 corpus — Ironclaw Curse; in-hand parse.",
+  "seed": 63135,
+  "cards": {
+    "Ironclaw Curse": "Name:Ironclaw Curse\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddToughness$ -1 | Description$ Enchanted creature gets -0/-1 and can't block creatures with power equal to or greater than the enchanted creature's toughness.\nS:Mode$ CantBlockBy | ValidAttackerRelative$ Creature.powerGEIronclawX | ValidBlocker$ Creature.EnchantedBy | Secondary$ True | Description$ Enchanted creature can't block creatures with power equal to or greater than the enchanted creature's toughness.\nSVar:IronclawX:Count$CardToughness\nOracle:Enchant creature\\nEnchanted creature gets -0/-1.\\nEnchanted creature can't block creatures with power equal to or greater than the enchanted creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ironclaw Curse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

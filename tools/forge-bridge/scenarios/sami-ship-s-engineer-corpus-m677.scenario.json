@@ -1,0 +1,23 @@
+{
+  "id": "sami-ship-s-engineer-corpus-m677",
+  "description": "M6 corpus — Sami, Ship's Engineer; in-hand parse.",
+  "seed": 68916,
+  "cards": {
+    "Sami, Ship's Engineer": "Name:Sami, Ship's Engineer\nManaCost:2 R W\nTypes:Legendary Creature Human Artificer\nPT:2/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Creature.YouCtrl+tapped | PresentCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you control two or more tapped creatures, create a tapped 2/2 colorless Robot artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_2_2_a_robot | TokenTapped$ True\nDeckHas:Ability$Token & Type$Robot\nOracle:At the beginning of your end step, if you control two or more tapped creatures, create a tapped 2/2 colorless Robot artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sami, Ship's Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

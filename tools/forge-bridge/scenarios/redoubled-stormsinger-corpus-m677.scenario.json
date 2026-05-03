@@ -1,0 +1,23 @@
+{
+  "id": "redoubled-stormsinger-corpus-m677",
+  "description": "M6 corpus — Redoubled Stormsinger; in-hand parse.",
+  "seed": 67927,
+  "cards": {
+    "Redoubled Stormsinger": "Name:Redoubled Stormsinger\nManaCost:2 R\nTypes:Creature Orc Wizard\nPT:3/3\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCopyPermanent | TriggerDescription$ Whenever this creature attacks, for each creature token you control that entered this turn, create a tapped and attacking token that's a copy of that token. At the beginning of the next end step, sacrifice those tokens.\nSVar:TrigCopyPermanent:DB$ CopyPermanent | Defined$ Valid Creature.token+YouCtrl+ThisTurnEntered | TokenTapped$ True | TokenAttacking$ True | AtEOT$ Sacrifice\nOracle:First strike\\nWhenever this creature attacks, for each creature token you control that entered this turn, create a tapped and attacking token that's a copy of that token. At the beginning of the next end step, sacrifice those tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Redoubled Stormsinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

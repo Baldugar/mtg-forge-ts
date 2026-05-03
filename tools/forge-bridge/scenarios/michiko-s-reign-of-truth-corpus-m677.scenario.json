@@ -1,0 +1,23 @@
+{
+  "id": "michiko-s-reign-of-truth-corpus-m677",
+  "description": "M6 corpus — Michiko's Reign of Truth; in-hand parse.",
+  "seed": 65083,
+  "cards": {
+    "Michiko's Reign of Truth": "Name:Michiko's Reign of Truth\nManaCost:1 W\nTypes:Enchantment Saga\nK:Chapter:3:DBPump,DBPump,DBTransform\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X | AILogic$ Pump | SpellDescription$ Target creature gets +1/+1 until end of turn for each artifact and/or enchantment you control.\nSVar:X:Count$Valid Artifact.YouCtrl,Enchantment.YouCtrl\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsToPlay:Creature.YouCtrl\nDeckNeeds:Type$Artifact|Enchantment\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Target creature gets +1/+1 until end of turn for each artifact and/or enchantment you control.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Portrait of Michiko\nManaCost:no cost\nColors:white\nTypes:Enchantment Creature Human Noble\nPT:0/0\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each artifact and/or enchantment you control.\nSVar:X:Count$Valid Artifact.YouCtrl,Enchantment.YouCtrl\nOracle:Portrait of Michiko gets +1/+1 for each artifact and/or enchantment you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Michiko's Reign of Truth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

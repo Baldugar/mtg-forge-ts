@@ -1,0 +1,23 @@
+{
+  "id": "putrefying-rotboar-corpus-m677",
+  "description": "M6 corpus — Putrefying Rotboar; in-hand parse.",
+  "seed": 67394,
+  "cards": {
+    "Putrefying Rotboar": "Name:Putrefying Rotboar\nManaCost:2 B B\nTypes:Creature Elemental Boar\nPT:4/5\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Boar.YouCtrl | Execute$ TrigAnimateAll | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Boar you control attacks, each nonland card in defending player's hand perpetually gains \"When you cast this spell, you lose 1 life.\"\nSVar:TrigAnimateAll:DB$ AnimateAll | Duration$ Perpetual | ValidCards$ Card.nonLand+OwnedBy TriggeredDefendingPlayer | Zone$ Hand | Triggers$ CastSpellLoseLife\nSVar:CastSpellLoseLife:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When you cast this spell, you lose 1 life.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1\nOracle:Lifelink\\nWhenever a Boar you control attacks, each nonland card in defending player's hand perpetually gains \"When you cast this spell, you lose 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Putrefying Rotboar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

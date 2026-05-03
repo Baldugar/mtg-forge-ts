@@ -1,0 +1,25 @@
+{
+  "id": "likeness-looter-corpus-m677",
+  "description": "M6 corpus — Likeness Looter; ETB-on-bf.",
+  "seed": 64263,
+  "cards": {
+    "Likeness Looter": "Name:Likeness Looter\nManaCost:U B\nTypes:Creature Faerie Shapeshifter\nPT:1/1\nK:Flying\nA:AB$ Draw | Cost$ T | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nA:AB$ Clone | Cost$ X | ValidTgts$ Creature.YouOwn+cmcEQX | TgtZone$ Graveyard | TgtPrompt$ Select target creature card in your graveyard | SorcerySpeed$ True | GainThisAbility$ True | AddKeywords$ Flying | SpellDescription$ CARDNAME becomes a copy of target creature card in your graveyard with mana value X, except it has flying and this ability. Activate only as a sorcery.\nSVar:X:Count$xPaid\nDeckHas:Ability$Discard\nDeckHints:Ability$Graveyard\nOracle:Flying\\n{T}: Draw a card, then discard a card.\\n{X}: Likeness Looter becomes a copy of target creature card in your graveyard with mana value X, except it has flying and this ability. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Likeness Looter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "knightly-valor-corpus-m677",
+  "description": "M6 corpus — Knightly Valor; in-hand parse.",
+  "seed": 63778,
+  "cards": {
+    "Knightly Valor": "Name:Knightly Valor\nManaCost:4 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Vigilance | Description$ Enchanted creature gets +2/+2 and has vigilance.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white Knight creature token with vigilance. (Attacking doesn't cause it to tap.)\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Enchant creature\\nWhen Knightly Valor enters, create a 2/2 white Knight creature token with vigilance. (Attacking doesn't cause it to tap.)\\nEnchanted creature gets +2/+2 and has vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knightly Valor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

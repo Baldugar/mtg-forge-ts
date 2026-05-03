@@ -1,0 +1,23 @@
+{
+  "id": "ironsoul-enforcer-corpus-m677",
+  "description": "M6 corpus — Ironsoul Enforcer; in-hand parse.",
+  "seed": 63141,
+  "cards": {
+    "Ironsoul Enforcer": "Name:Ironsoul Enforcer\nManaCost:4 W\nTypes:Artifact Creature Human Samurai\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self,Card.IsCommander+YouCtrl | Alone$ True | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or a commander you control attacks alone, return target artifact card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact card in your graveyard | Origin$ Graveyard | Destination$ Battlefield\nDeckHints:Type$Artifact\nDeckHas:Ability$Graveyard\nOracle:Whenever Ironsoul Enforcer or a commander you control attacks alone, return target artifact card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ironsoul Enforcer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

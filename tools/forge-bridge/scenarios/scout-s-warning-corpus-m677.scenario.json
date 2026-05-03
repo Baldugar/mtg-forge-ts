@@ -1,0 +1,23 @@
+{
+  "id": "scout-s-warning-corpus-m677",
+  "description": "M6 corpus — Scout's Warning; in-hand parse.",
+  "seed": 69209,
+  "cards": {
+    "Scout's Warning": "Name:Scout's Warning\nManaCost:W\nTypes:Instant\nA:SP$ Effect | StaticAbilities$ ScoutFlash | Triggers$ SpellCastTrig,LandPlayedTrig | SubAbility$ DBDraw | SpellDescription$ The next creature card you play this turn can be played as though it had flash.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:ScoutFlash:Mode$ CastWithFlash | ValidCard$ Creature | Caster$ You\nSVar:SpellCastTrig:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ WarningGiven | Static$ True | TriggerDescription$ The next creature card you play this turn can be played as though it had flash.\nSVar:LandPlayedTrig:Mode$ LandPlayed | ValidCard$ Creature.YouCtrl | Execute$ WarningGiven | Static$ True | TriggerDescription$ The next creature card you play this turn can be played as though it had flash.\nSVar:WarningGiven:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:The next creature card you play this turn can be played as though it had flash.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scout's Warning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

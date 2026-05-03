@@ -1,0 +1,23 @@
+{
+  "id": "neighborhood-guardian-corpus-m677",
+  "description": "M6 corpus — Neighborhood Guardian; in-hand parse.",
+  "seed": 65826,
+  "cards": {
+    "Neighborhood Guardian": "Name:Neighborhood Guardian\nManaCost:1 W\nTypes:Creature Unicorn\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerLE2+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another creature you control with power 2 or less enters, target creature you control gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1\nOracle:Whenever another creature you control with power 2 or less enters, target creature you control gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neighborhood Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

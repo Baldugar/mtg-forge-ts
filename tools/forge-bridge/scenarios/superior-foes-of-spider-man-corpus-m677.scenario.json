@@ -1,0 +1,23 @@
+{
+  "id": "superior-foes-of-spider-man-corpus-m677",
+  "description": "M6 corpus — Superior Foes of Spider-Man; in-hand parse.",
+  "seed": 71396,
+  "cards": {
+    "Superior Foes of Spider-Man": "Name:Superior Foes of Spider-Man\nVariant:UniversesWithin:FlavorName:Restless Razorkin\nManaCost:2 R\nTypes:Creature Human Rogue Villain\nPT:3/3\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE4 | ValidActivatingPlayer$ You | OptionalDecider$ You | Execute$ ExileSelf | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell with mana value 4 or greater, you may exile the top card of your library. If you do, you may play that card until you exile another card with this creature.\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Imprinted | Origin$ Command | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | AILogic$ ExileAndPlayUntilEOT\n# AILogic tag not quite right?\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ Play | Duration$ Permanent | ForgetOnMoved$ Exile | ImprintOnHost$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup2 | Static$ True\nSVar:DBCleanup2:DB$ Cleanup | ClearImprinted$ True\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card until you exile another card with CARDNAME.\nOracle:Whenever you cast a spell with mana value 4 or greater, you may exile the top card of your library. If you do, you may play that card until you exile another card with this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Superior Foes of Spider-Man"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

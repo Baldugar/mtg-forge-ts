@@ -1,0 +1,23 @@
+{
+  "id": "infectious-bloodlust-corpus-m677",
+  "description": "M6 corpus — Infectious Bloodlust; in-hand parse.",
+  "seed": 62896,
+  "cards": {
+    "Infectious Bloodlust": "Name:Infectious Bloodlust\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 1 | AddKeyword$ Haste | Description$ Enchanted creature gets +2/+1, has haste, and attacks each combat if able.\nS:Mode$ MustAttack | ValidCreature$ Creature.EnchantedBy | Secondary$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When enchanted creature dies, you may search your library for a card named Infectious Bloodlust, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedInfectious Bloodlust | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Name$Infectious Bloodlust\nOracle:Enchant creature\\nEnchanted creature gets +2/+1, has haste, and attacks each combat if able.\\nWhen enchanted creature dies, you may search your library for a card named Infectious Bloodlust, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infectious Bloodlust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

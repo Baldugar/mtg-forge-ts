@@ -1,0 +1,23 @@
+{
+  "id": "settlement-blacksmith-corpus-m677",
+  "description": "M6 corpus — Settlement Blacksmith; in-hand parse.",
+  "seed": 69525,
+  "cards": {
+    "Settlement Blacksmith": "Name:Settlement Blacksmith\nManaCost:2 W\nTypes:Creature Human Artificer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Equipment.YouCtrl | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if you control an Equipment, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nOracle:When Settlement Blacksmith enters, if you control an Equipment, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Settlement Blacksmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

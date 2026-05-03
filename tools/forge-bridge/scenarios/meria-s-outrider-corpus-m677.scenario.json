@@ -1,0 +1,23 @@
+{
+  "id": "meria-s-outrider-corpus-m677",
+  "description": "M6 corpus — Meria's Outrider; in-hand parse.",
+  "seed": 65032,
+  "cards": {
+    "Meria's Outrider": "Name:Meria's Outrider\nManaCost:4 R\nTypes:Creature Elf Archer\nPT:4/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Domain — When CARDNAME enters, it deals damage to each opponent equal to the number of basic land types among lands you control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nSVar:X:Count$Domain\nAI:RemoveDeck:Random\nOracle:Reach\\nDomain — When Meria's Outrider enters, it deals damage to each opponent equal to the number of basic land types among lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meria's Outrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

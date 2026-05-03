@@ -1,0 +1,23 @@
+{
+  "id": "hoverguard-sweepers-corpus-m677",
+  "description": "M6 corpus — Hoverguard Sweepers; in-hand parse.",
+  "seed": 62543,
+  "cards": {
+    "Hoverguard Sweepers": "Name:Hoverguard Sweepers\nManaCost:6 U U\nTypes:Creature Drone\nPT:5/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return up to two target creatures to their owners' hands.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2\nOracle:Flying\\nWhen Hoverguard Sweepers enters, you may return up to two target creatures to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoverguard Sweepers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

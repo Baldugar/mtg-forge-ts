@@ -1,0 +1,23 @@
+{
+  "id": "shamanic-revelation-corpus-m677",
+  "description": "M6 corpus — Shamanic Revelation; in-hand parse.",
+  "seed": 69590,
+  "cards": {
+    "Shamanic Revelation": "Name:Shamanic Revelation\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | SubAbility$ DBGainLife | SpellDescription$ Draw a card for each creature you control. Ferocious — You gain 4 life for each creature you control with power 4 or greater.\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y\nSVar:Y:Count$Valid Creature.YouCtrl+powerGE4/Times.4\nOracle:Draw a card for each creature you control.\\nFerocious — You gain 4 life for each creature you control with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shamanic Revelation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

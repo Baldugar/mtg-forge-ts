@@ -1,0 +1,23 @@
+{
+  "id": "guild-feud-corpus-m677",
+  "description": "M6 corpus — Guild Feud; in-hand parse.",
+  "seed": 61900,
+  "cards": {
+    "Guild Feud": "Name:Guild Feud\nManaCost:5 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ OppPick | TriggerDescription$ At the beginning of your upkeep, target opponent reveals the top three cards of their library, may put a creature card from among them onto the battlefield, then puts the rest into their graveyard. You do the same with the top three cards of your library. If two creatures are put onto the battlefield this way, those creatures fight each other.\nSVar:OppPick:DB$ Dig | ValidTgts$ Opponent | DigNum$ 3 | Reveal$ True | ChangeNum$ 1 | ChangeValid$ Creature | DestinationZone$ Battlefield | DestinationZone2$ Graveyard | Choser$ Targeted | Optional$ True | RememberChanged$ True | SubAbility$ YouPick\nSVar:YouPick:DB$ Dig | Defined$ You | DigNum$ 3 | Reveal$ True | ChangeNum$ 1 | ChangeValid$ Creature | DestinationZone$ Battlefield | DestinationZone2$ Graveyard | Optional$ True | RememberChanged$ True | SubAbility$ PicksFight\nSVar:PicksFight:DB$ Fight | Defined$ Remembered | SubAbility$ DBCleanup | ConditionCheckSVar$ NumFighters | ConditionSVarCompare$ EQ2 | StackDescription$ If two creatures are put onto the battlefield this way, those creatures fight each other.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumFighters:Remembered$Amount\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, target opponent reveals the top three cards of their library, may put a creature card from among them onto the battlefield, then puts the rest into their graveyard. You do the same with the top three cards of your library. If two creatures are put onto the battlefield this way, those creatures fight each other.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guild Feud"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

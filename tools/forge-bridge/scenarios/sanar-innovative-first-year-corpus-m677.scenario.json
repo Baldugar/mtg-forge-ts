@@ -1,0 +1,23 @@
+{
+  "id": "sanar-innovative-first-year-corpus-m677",
+  "description": "M6 corpus — Sanar, Innovative First-Year; in-hand parse.",
+  "seed": 68934,
+  "cards": {
+    "Sanar, Innovative First-Year": "Name:Sanar, Innovative First-Year\nManaCost:2 UR UR\nTypes:Legendary Creature Goblin Sorcerer\nPT:2/4\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDigUntil | TriggerDescription$ Vivid — At the beginning of your first main phase, reveal cards from the top of your library until you reveal X nonland cards, where X is the number of colors among permanents you control. For each of those colors, you may exile a card of that color from among the revealed cards. Then shuffle. You may cast the exiled cards this turn.\nSVar:TrigDigUntil:DB$ DigUntil | Amount$ X | Valid$ Card.nonLand | ValidDescription$ nonland card | RevealedDestination$ Library | RememberRevealed$ True | SubAbility$ DBExileW\nSVar:DBExileW:DB$ ChangeZone | ChooseFromDefined$ Remembered.White | Origin$ Library | Destination$ Exile | ConditionCheckSVar$ HaveW | Imprint$ True | LockInText$ True | SubAbility$ DBExileU\nSVar:DBExileU:DB$ ChangeZone | ChooseFromDefined$ Remembered.Blue | Origin$ Library | Destination$ Exile | ConditionCheckSVar$ HaveU | Imprint$ True | LockInText$ True | SubAbility$ DBExileB\nSVar:DBExileB:DB$ ChangeZone | ChooseFromDefined$ Remembered.Black | Origin$ Library | Destination$ Exile | ConditionCheckSVar$ HaveB | Imprint$ True | LockInText$ True | SubAbility$ DBExileR\nSVar:DBExileR:DB$ ChangeZone | ChooseFromDefined$ Remembered.Red | Origin$ Library | Destination$ Exile | ConditionCheckSVar$ HaveR | Imprint$ True | LockInText$ True | SubAbility$ DBExileG\nSVar:DBExileG:DB$ ChangeZone | ChooseFromDefined$ Remembered.Green | Origin$ Library | Destination$ Exile | ConditionCheckSVar$ HaveG | Imprint$ True | LockInText$ True | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Imprinted | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.nonLand+IsRemembered | AffectedZone$ Exile | Description$ You may cast the exiled cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nSVar:HaveW:Count$Valid Permanent.White+YouCtrl\nSVar:HaveU:Count$Valid Permanent.Blue+YouCtrl\nSVar:HaveB:Count$Valid Permanent.Black+YouCtrl\nSVar:HaveR:Count$Valid Permanent.Red+YouCtrl\nSVar:HaveG:Count$Valid Permanent.Green+YouCtrl\nOracle:Vivid — At the beginning of your first main phase, reveal cards from the top of your library until you reveal X nonland cards, where X is the number of colors among permanents you control. For each of those colors, you may exile a card of that color from among the revealed cards. Then shuffle. You may cast the exiled cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanar, Innovative First-Year"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

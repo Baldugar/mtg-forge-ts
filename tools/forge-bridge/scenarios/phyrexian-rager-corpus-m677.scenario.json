@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-rager-corpus-m677",
+  "description": "M6 corpus — Phyrexian Rager; in-hand parse.",
+  "seed": 66863,
+  "cards": {
+    "Phyrexian Rager": "Name:Phyrexian Rager\nManaCost:2 B\nTypes:Creature Phyrexian Horror\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:When Phyrexian Rager enters, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Rager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

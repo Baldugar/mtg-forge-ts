@@ -1,0 +1,23 @@
+{
+  "id": "malicious-eclipse-corpus-m677",
+  "description": "M6 corpus — Malicious Eclipse; in-hand parse.",
+  "seed": 64668,
+  "cards": {
+    "Malicious Eclipse": "Name:Malicious Eclipse\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ PumpAll | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | ValidCards$ Creature | SubAbility$ DBEffect | SpellDescription$ All creatures get -2/-2 until end of turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ DeathRep | SpellDescription$ If a creature an opponent controls would die this turn, exile it instead.\nSVar:DeathRep:Event$ Moved | ValidLKI$ Creature.OppCtrl | Origin$ Battlefield | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If a creature an opponent controls would die this turn, exile it instead.\nSVar:Exile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nOracle:All creatures get -2/-2 until end of turn. If a creature an opponent controls would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malicious Eclipse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

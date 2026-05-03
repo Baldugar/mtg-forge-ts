@@ -1,0 +1,25 @@
+{
+  "id": "initiates-of-the-ebon-hand-corpus-m677",
+  "description": "M6 corpus — Initiates of the Ebon Hand; ETB-on-bf.",
+  "seed": 62945,
+  "cards": {
+    "Initiates of the Ebon Hand": "Name:Initiates of the Ebon Hand\nManaCost:B\nTypes:Creature Cleric\nPT:1/1\nA:AB$ Mana | Cost$ 1 | Produced$ B | SubAbility$ DBPump | SpellDescription$ Add {B}. If this ability has been activated four or more times this turn, sacrifice CARDNAME at the beginning of the next end step.\nSVar:DBPump:DB$ Pump | Defined$ Self | AtEOT$ Sacrifice | ConditionActivationLimit$ GE4\nAI:RemoveDeck:All\nOracle:{1}: Add {B}. If this ability has been activated four or more times this turn, sacrifice Initiates of the Ebon Hand at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Initiates of the Ebon Hand"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

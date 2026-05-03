@@ -1,0 +1,23 @@
+{
+  "id": "a-baleful-beholder-corpus-m677",
+  "description": "M6 corpus — A-Baleful Beholder; in-hand parse.",
+  "seed": 68703,
+  "cards": {
+    "A-Baleful Beholder": "Name:A-Baleful Beholder\nManaCost:4 B B\nTypes:Creature Beholder\nPT:7/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBSacrifice,DBPumpAll\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ Opponent | SacValid$ Enchantment | SpellDescription$ Antimagic Cone — Each opponent sacrifices an enchantment.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Menace | SpellDescription$ Fear Ray — Creatures you control gain menace until end of turn.\nOracle:When Baleful Beholder enters, choose one —\\n• Antimagic Cone — Each opponent sacrifices an enchantment.\\n• Fear Ray — Creatures you control gain menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Baleful Beholder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

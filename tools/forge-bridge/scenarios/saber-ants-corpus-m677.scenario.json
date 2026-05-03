@@ -1,0 +1,23 @@
+{
+  "id": "saber-ants-corpus-m677",
+  "description": "M6 corpus — Saber Ants; in-hand parse.",
+  "seed": 68821,
+  "cards": {
+    "Saber Ants": "Name:Saber Ants\nManaCost:3 G\nTypes:Creature Insect\nPT:2/3\nT:Mode$ DamageDoneOnce | Execute$ TrigToken | ValidTarget$ Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME is dealt damage, you may create that many 1/1 green Insect creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_insect | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Saber Ants is dealt damage, you may create that many 1/1 green Insect creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saber Ants"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

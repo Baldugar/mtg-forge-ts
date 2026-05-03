@@ -1,0 +1,23 @@
+{
+  "id": "incriminating-impetus-corpus-m677",
+  "description": "M6 corpus — Incriminating Impetus; in-hand parse.",
+  "seed": 62860,
+  "cards": {
+    "Incriminating Impetus": "Name:Incriminating Impetus\nManaCost:2 BR\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ When CARDNAME enters, suspect enchanted creature. (It has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | Defined$ Enchanted | Attributes$ Suspected\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Goad$ True | Description$ Enchanted creature gets +2/+2 and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\nOracle:Enchant creature\\nWhen Incriminating Impetus enters, suspect enchanted creature. (It has menace and can't block.)\\nEnchanted creature gets +2/+2 and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incriminating Impetus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

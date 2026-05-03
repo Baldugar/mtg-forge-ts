@@ -1,0 +1,23 @@
+{
+  "id": "stinging-study-corpus-m677",
+  "description": "M6 corpus — Stinging Study; in-hand parse.",
+  "seed": 71008,
+  "cards": {
+    "Stinging Study": "Name:Stinging Study\nManaCost:4 B\nTypes:Instant\nA:SP$ ChooseCard | Choices$ Card.IsCommander+YouOwn | ChoiceZone$ Command,Battlefield | Mandatory$ True | ChoiceTitle$ Choose a commander you own | SubAbility$ DBDraw | SpellDescription$ You draw X cards and you lose X life, where X is the mana value of a commander you own on the battlefield or in the command zone.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nSVar:X:ChosenCard$CardManaCost\nAI:RemoveDeck:NonCommander\nOracle:You draw X cards and you lose X life, where X is the mana value of a commander you own on the battlefield or in the command zone.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stinging Study"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

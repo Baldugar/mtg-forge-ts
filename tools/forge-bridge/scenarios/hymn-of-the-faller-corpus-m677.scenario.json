@@ -1,0 +1,23 @@
+{
+  "id": "hymn-of-the-faller-corpus-m677",
+  "description": "M6 corpus — Hymn of the Faller; in-hand parse.",
+  "seed": 62662,
+  "cards": {
+    "Hymn of the Faller": "Name:Hymn of the Faller\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Surveil | Amount$ 1 | SubAbility$ DBDraw | SpellDescription$ Surveil 1, then you draw a card and lose 1 life. (To surveil 1, look at the top card of your library. You may put it into your graveyard.) Void — If a nonland permanent left the battlefield this turn or a spell was warped this turn, draw another card.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBVoidDraw\nSVar:DBVoidDraw:DB$ Draw | ConditionCheckSVar$ X\nSVar:X:Count$Void.1.0\nDeckHas:Ability$Surveil|Graveyard\nOracle:Surveil 1, then you draw a card and lose 1 life. (To surveil 1, look at the top card of your library. You may put it into your graveyard.)\\nVoid — If a nonland permanent left the battlefield this turn or a spell was warped this turn, draw another card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hymn of the Faller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

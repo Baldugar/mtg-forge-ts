@@ -1,0 +1,23 @@
+{
+  "id": "revitalizing-repast-corpus-m677",
+  "description": "M6 corpus — Revitalizing Repast; in-hand parse.",
+  "seed": 68192,
+  "cards": {
+    "Revitalizing Repast": "Name:Revitalizing Repast\nManaCost:BG\nTypes:Instant\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on target creature.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Indestructible | SpellDescription$ It gains indestructible until end of turn.\nDeckHas:Ability$Counters\nAlternateMode:Modal\nOracle:Put a +1/+1 counter on target creature. It gains indestructible until end of turn.\n\nALTERNATE\n\nName:Old-Growth Grove\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo B G | SpellDescription$ Add {B} or {G}.\nOracle:Old-Growth Grove enters tapped.\\n{T}: Add {B} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revitalizing Repast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

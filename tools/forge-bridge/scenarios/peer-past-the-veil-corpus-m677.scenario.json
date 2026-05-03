@@ -1,0 +1,23 @@
+{
+  "id": "peer-past-the-veil-corpus-m677",
+  "description": "M6 corpus — Peer Past the Veil; in-hand parse.",
+  "seed": 66703,
+  "cards": {
+    "Peer Past the Veil": "Name:Peer Past the Veil\nManaCost:2 R G\nTypes:Instant\nA:SP$ Discard | Mode$ Hand | SubAbility$ DBDraw | SpellDescription$ Discard your hand. Then draw X cards, where X is the number of card types among cards in your graveyard.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$ValidGraveyard Card.YouOwn$CardTypes\nOracle:Discard your hand. Then draw X cards, where X is the number of card types among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peer Past the Veil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

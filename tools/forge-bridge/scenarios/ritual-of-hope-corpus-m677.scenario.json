@@ -1,0 +1,23 @@
+{
+  "id": "ritual-of-hope-corpus-m677",
+  "description": "M6 corpus — Ritual of Hope; in-hand parse.",
+  "seed": 68374,
+  "cards": {
+    "Ritual of Hope": "Name:Ritual of Hope\nManaCost:1 W\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +X | NumDef$ +1 | StackDescription$ SpellDescription | SpellDescription$ Creatures you control get +1/+1 until end of turn. Coven — If you control three or more creatures with different powers, creatures you control get +2/+1 until end of turn instead.\nSVar:X:Count$Compare Y GE3.2.1\nSVar:Y:Count$Valid Creature.YouCtrl$DifferentCardPower\nOracle:Creatures you control get +1/+1 until end of turn.\\nCoven — If you control three or more creatures with different powers, creatures you control get +2/+1 until end of turn instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ritual of Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

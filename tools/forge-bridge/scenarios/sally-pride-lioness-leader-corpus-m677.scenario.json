@@ -1,0 +1,23 @@
+{
+  "id": "sally-pride-lioness-leader-corpus-m677",
+  "description": "M6 corpus — Sally Pride, Lioness Leader; in-hand parse.",
+  "seed": 68900,
+  "cards": {
+    "Sally Pride, Lioness Leader": "Name:Sally Pride, Lioness Leader\nManaCost:3 W W\nTypes:Legendary Creature Cat Mutant Rebel\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBToken | TriggerDescription$ When NICKNAME enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ r_2_2_mutant | TokenOwner$ You\nSVar:X:Count$Valid Creature.YouCtrl+!token\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever NICKNAME attacks, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters|Token\nOracle:When Sally Pride enters, create X 2/2 red Mutant creature tokens, where X is the number of nontoken creatures you control.\\nWhenever Sally Pride attacks, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sally Pride, Lioness Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

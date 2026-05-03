@@ -1,0 +1,23 @@
+{
+  "id": "moldgraf-monstrosity-corpus-m677",
+  "description": "M6 corpus — Moldgraf Monstrosity; in-hand parse.",
+  "seed": 65387,
+  "cards": {
+    "Moldgraf Monstrosity": "Name:Moldgraf Monstrosity\nManaCost:4 G G G\nTypes:Creature Insect\nPT:8/8\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, exile it, then return two creature cards at random from your graveyard to the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Creature.YouCtrl | ChangeNum$ 2 | Hidden$ True | Origin$ Graveyard | AtRandom$ True | Destination$ Battlefield\nOracle:Trample\\nWhen Moldgraf Monstrosity dies, exile it, then return two creature cards at random from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moldgraf Monstrosity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "manabarbs-corpus-m677",
+  "description": "M6 corpus — Manabarbs; ETB-on-bf.",
+  "seed": 64698,
+  "cards": {
+    "Manabarbs": "Name:Manabarbs\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a player taps a land for mana, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a player taps a land for mana, Manabarbs deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Manabarbs"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

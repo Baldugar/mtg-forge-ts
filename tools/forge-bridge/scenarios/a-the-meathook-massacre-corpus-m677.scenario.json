@@ -1,0 +1,23 @@
+{
+  "id": "a-the-meathook-massacre-corpus-m677",
+  "description": "M6 corpus — A-The Meathook Massacre; in-hand parse.",
+  "seed": 68810,
+  "cards": {
+    "A-The Meathook Massacre": "Name:A-The Meathook Massacre\nManaCost:X B B\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, each creature gets -X/-X until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature you control dies, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1\nSVar:X:Count$xPaid\nDeckHints:Ability$Graveyard|Sacrifice\nOracle:When The Meathook Massacre enters, each creature gets -X/-X until end of turn.\\nWhenever a creature you control dies, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-The Meathook Massacre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "saved-by-the-shell-corpus-m677",
+  "description": "M6 corpus — Saved by the Shell; in-hand parse.",
+  "seed": 69066,
+  "cards": {
+    "Saved by the Shell": "Name:Saved by the Shell\nManaCost:1 G\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Turtle.YouCtrl | Description$ This spell costs {1} less to cast if you control a Turtle.\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on target creature you control. It gains trample, hexproof, and indestructible until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Trample & Hexproof & Indestructible\nDeckHas:Ability$Counters\nDeckHints:Type$Turtle\nOracle:This spell costs {1} less to cast if you control a Turtle.\\nPut a +1/+1 counter on target creature you control. It gains trample, hexproof, and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saved by the Shell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

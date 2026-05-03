@@ -1,0 +1,23 @@
+{
+  "id": "sawhorn-nemesis-corpus-m677",
+  "description": "M6 corpus — Sawhorn Nemesis; in-hand parse.",
+  "seed": 69076,
+  "cards": {
+    "Sawhorn Nemesis": "Name:Sawhorn Nemesis\nManaCost:3 R\nTypes:Creature Dinosaur\nPT:2/4\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose a player.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card,Emblem | ValidTarget$ Permanent.ChosenCtrl,Player.Chosen | ReplaceWith$ DmgTwice | Description$ If a source would deal damage to the chosen player or a permanent they control, it deals double the damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nOracle:As Sawhorn Nemesis enters, choose a player.\\nIf a source would deal damage to the chosen player or a permanent they control, it deals double the damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sawhorn Nemesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

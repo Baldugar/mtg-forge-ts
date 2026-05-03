@@ -1,0 +1,23 @@
+{
+  "id": "jacked-rabbit-corpus-m677",
+  "description": "M6 corpus — Jacked Rabbit; in-hand parse.",
+  "seed": 63212,
+  "cards": {
+    "Jacked Rabbit": "Name:Jacked Rabbit\nManaCost:X 1 W\nTypes:Creature Rabbit Warrior\nPT:1/2\nK:Ravenous\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, create a number of 1/1 white Rabbit creature tokens equal to CARDNAME's power.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_rabbit | TokenOwner$ You | TokenAmount$ Y\nSVar:X:Count$xPaid\nSVar:Y:Count$CardPower\nDeckHas:Ability$Counters|Token\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nWhenever Jacked Rabbit attacks, create a number of 1/1 white Rabbit creature tokens equal to Jacked Rabbit's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jacked Rabbit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

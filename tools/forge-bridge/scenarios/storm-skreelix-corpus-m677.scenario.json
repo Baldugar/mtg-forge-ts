@@ -1,0 +1,25 @@
+{
+  "id": "storm-skreelix-corpus-m677",
+  "description": "M6 corpus — Storm Skreelix; ETB-on-bf.",
+  "seed": 71103,
+  "cards": {
+    "Storm Skreelix": "Name:Storm Skreelix\nManaCost:3 U R\nTypes:Creature Drake Horror\nPT:2/4\nK:Flying\nS:Mode$ ReduceCost | ValidCard$ Instant,Sorcery | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Instant and sorcery spells you cast cost {1} less to cast.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | ValidCard$ Card.Self | NumAtt$ +2\nDeckHints:Type$Instant|Sorcery\nOracle:Flying\\nInstant and sorcery spells you cast cost {1} less to cast.\\nWhenever you cast an instant or sorcery spell, Storm Skreelix gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Storm Skreelix"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

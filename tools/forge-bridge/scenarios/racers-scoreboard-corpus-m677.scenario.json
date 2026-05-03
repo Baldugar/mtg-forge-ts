@@ -1,0 +1,23 @@
+{
+  "id": "racers-scoreboard-corpus-m677",
+  "description": "M6 corpus — Racers' Scoreboard; in-hand parse.",
+  "seed": 67512,
+  "cards": {
+    "Racers' Scoreboard": "Name:Racers' Scoreboard\nManaCost:4\nTypes:Artifact\nK:Start your engines\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this artifact enters, draw two cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddStaticAbility$ MaxSpeedStatic | Description$ Max speed — Spells you cast cost {1} less to cast.\nSVar:MaxSpeedStatic:Mode$ ReduceCost | Secondary$ True | ValidCard$ Card | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Max speed — Spells you cast cost {1} less to cast.\nDeckHas:Ability$Discard\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nWhen this artifact enters, draw two cards, then discard a card.\\nMax speed — Spells you cast cost {1} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Racers' Scoreboard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

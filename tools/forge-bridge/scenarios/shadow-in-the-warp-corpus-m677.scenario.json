@@ -1,0 +1,25 @@
+{
+  "id": "shadow-in-the-warp-corpus-m677",
+  "description": "M6 corpus — Shadow in the Warp; ETB-on-bf.",
+  "seed": 69546,
+  "cards": {
+    "Shadow in the Warp": "Name:Shadow in the Warp\nManaCost:1 R G\nTypes:Enchantment\nS:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Card.Creature | Activator$ You | Type$ Spell | OnlyFirstSpell$ True | Amount$ 2 | Description$ The first creature spell you cast each turn costs {2} less to cast.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Player.Opponent | ActivatorThisTurnCast$ EQ1 | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts their first noncreature spell each turn, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredActivator\nOracle:The first creature spell you cast each turn costs {2} less to cast.\\nWhenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shadow in the Warp"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

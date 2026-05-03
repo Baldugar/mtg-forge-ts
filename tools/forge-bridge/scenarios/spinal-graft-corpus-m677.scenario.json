@@ -1,0 +1,23 @@
+{
+  "id": "spinal-graft-corpus-m677",
+  "description": "M6 corpus — Spinal Graft; in-hand parse.",
+  "seed": 70665,
+  "cards": {
+    "Spinal Graft": "Name:Spinal Graft\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3.\nT:Mode$ BecomesTarget | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When enchanted creature becomes the target of a spell or ability, destroy that creature. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy | NoRegen$ True\nOracle:Enchant creature\\nEnchanted creature gets +3/+3.\\nWhen enchanted creature becomes the target of a spell or ability, destroy that creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spinal Graft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

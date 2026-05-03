@@ -1,0 +1,25 @@
+{
+  "id": "hydra-broodmaster-corpus-m677",
+  "description": "M6 corpus — Hydra Broodmaster; ETB-on-bf.",
+  "seed": 62650,
+  "cards": {
+    "Hydra Broodmaster": "Name:Hydra Broodmaster\nManaCost:4 G G\nTypes:Creature Hydra\nPT:7/7\nA:AB$ PutCounter | Cost$ X X G | Monstrosity$ X\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME becomes monstrous, create X X/X green Hydra creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ MonstrosityX | TokenScript$ g_x_x_hydra | TokenOwner$ You | TokenPower$ MonstrosityX | TokenToughness$ MonstrosityX\nSVar:X:Count$xPaid\nSVar:MonstrosityX:TriggerCount$Amount\nDeckHas:Ability$Counters|Token\nOracle:{X}{X}{G}: Monstrosity X. (If this creature isn't monstrous, put X +1/+1 counters on it and it becomes monstrous.)\\nWhen Hydra Broodmaster becomes monstrous, create X X/X green Hydra creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hydra Broodmaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

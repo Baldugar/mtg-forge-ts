@@ -1,0 +1,25 @@
+{
+  "id": "nivix-guildmage-corpus-m677",
+  "description": "M6 corpus — Nivix Guildmage; ETB-on-bf.",
+  "seed": 66017,
+  "cards": {
+    "Nivix Guildmage": "Name:Nivix Guildmage\nManaCost:U R\nTypes:Creature Human Wizard\nPT:2/2\nA:AB$ Draw | Cost$ 1 U R | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nA:AB$ CopySpellAbility | Cost$ 2 U R | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TargetType$ Spell | AILogic$ Once | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell you control. You may choose new targets for the copy.\nDeckHints:Type$Instant|Sorcery\nOracle:{1}{U}{R}: Draw a card, then discard a card.\\n{2}{U}{R}: Copy target instant or sorcery spell you control. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nivix Guildmage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pretender-s-claim-corpus-m677",
+  "description": "M6 corpus — Pretender's Claim; in-hand parse.",
+  "seed": 67149,
+  "cards": {
+    "Pretender's Claim": "Name:Pretender's Claim\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ AttackerBlocked | ValidCard$ Card.AttachedBy | Execute$ TrigTapAll | TriggerDescription$ Whenever enchanted creature becomes blocked, tap all lands defending player controls.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Land.ControlledBy TriggeredDefendingPlayer\nOracle:Enchant creature\\nWhenever enchanted creature becomes blocked, tap all lands defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pretender's Claim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

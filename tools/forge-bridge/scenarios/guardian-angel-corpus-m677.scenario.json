@@ -1,0 +1,23 @@
+{
+  "id": "guardian-angel-corpus-m677",
+  "description": "M6 corpus — Guardian Angel; in-hand parse.",
+  "seed": 61867,
+  "cards": {
+    "Guardian Angel": "Name:Guardian Angel\nManaCost:X W\nTypes:Instant\nA:SP$ PreventDamage | ValidTgts$ Any | Amount$ X | SubAbility$ GuardianEffect | SpellDescription$ Prevent the next X damage that would be dealt to any target this turn. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn.\nSVar:GuardianEffect:DB$ Effect | Abilities$ ABProtect | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield\nSVar:ABProtect:AB$ PreventDamage | ActivationZone$ Command | Cost$ 1 | InstantSpeed$ True | Defined$ Remembered | Amount$ 1 | SpellDescription$ You may pay 1 any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn.\nAI:RemoveDeck:All\nSVar:X:Count$xPaid\nOracle:Prevent the next X damage that would be dealt to any target this turn. Until end of turn, you may pay {1} any time you could cast an instant. If you do, prevent the next 1 damage that would be dealt to that permanent or player this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rofellos-s-gift-corpus-m677",
+  "description": "M6 corpus — Rofellos's Gift; in-hand parse.",
+  "seed": 68463,
+  "cards": {
+    "Rofellos's Gift": "Name:Rofellos's Gift\nManaCost:G\nTypes:Sorcery\nA:SP$ Reveal | RevealValid$ Card.Green+YouCtrl | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBChangeZone | SpellDescription$ Reveal any number of green cards in your hand. Return an enchantment card from your graveyard to your hand for each card revealed this way.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Card.Enchantment+YouOwn | ChangeNum$ X | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Reveal any number of green cards in your hand. Return an enchantment card from your graveyard to your hand for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rofellos's Gift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

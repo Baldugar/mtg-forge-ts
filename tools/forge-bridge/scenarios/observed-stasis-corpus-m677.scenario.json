@@ -1,0 +1,23 @@
+{
+  "id": "observed-stasis-corpus-m677",
+  "description": "M6 corpus — Observed Stasis; in-hand parse.",
+  "seed": 66187,
+  "cards": {
+    "Observed Stasis": "Name:Observed Stasis\nManaCost:3 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature.OppCtrl:creature an opponent controls\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRemoveFromCombat | TriggerDescription$ When this Aura enters, remove enchanted creature from combat. Then draw a card for each tapped creature its controller controls.\nSVar:TrigRemoveFromCombat:DB$ RemoveFromCombat | Defined$ Enchanted | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | RemoveAllAbilities$ True | Description$ Enchanted creature loses all abilities and can't attack or block.\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Secondary$ True | Description$ Enchanted creature loses all abilities and can't attack or block.\nSVar:X:Count$Valid Creature.tapped+ControlledBy Player.EnchantedController\nOracle:Flash\\nEnchant creature an opponent controls\\nWhen this Aura enters, remove enchanted creature from combat. Then draw a card for each tapped creature its controller controls.\\nEnchanted creature loses all abilities and can't attack or block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Observed Stasis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

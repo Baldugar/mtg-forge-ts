@@ -1,0 +1,23 @@
+{
+  "id": "silverclad-ferocidons-corpus-m677",
+  "description": "M6 corpus — Silverclad Ferocidons; in-hand parse.",
+  "seed": 69922,
+  "cards": {
+    "Silverclad Ferocidons": "Name:Silverclad Ferocidons\nManaCost:5 R R\nTypes:Creature Dinosaur\nPT:8/5\nT:Mode$ DamageDoneOnce | Execute$ TrigSac | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, each opponent sacrifices a permanent.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Permanent | Defined$ Player.Opponent\nSVar:HasCombatEffect:TRUE\nOracle:Enrage — Whenever Silverclad Ferocidons is dealt damage, each opponent sacrifices a permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silverclad Ferocidons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

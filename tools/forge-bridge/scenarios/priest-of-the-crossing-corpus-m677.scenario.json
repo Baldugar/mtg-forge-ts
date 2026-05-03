@@ -1,0 +1,23 @@
+{
+  "id": "priest-of-the-crossing-corpus-m677",
+  "description": "M6 corpus — Priest of the Crossing; in-hand parse.",
+  "seed": 67172,
+  "cards": {
+    "Priest of the Crossing": "Name:Priest of the Crossing\nManaCost:3 W\nTypes:Creature Zombie Bird Cleric\nPT:3/3\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ At the beginning of each end step, put X +1/+1 counters on each creature you control, where X is the number of creatures that died under your control this turn.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouCtrl\nOracle:Flying\\nAt the beginning of each end step, put X +1/+1 counters on each creature you control, where X is the number of creatures that died under your control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Priest of the Crossing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

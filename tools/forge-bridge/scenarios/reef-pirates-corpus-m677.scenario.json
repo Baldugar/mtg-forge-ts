@@ -1,0 +1,23 @@
+{
+  "id": "reef-pirates-corpus-m677",
+  "description": "M6 corpus — Reef Pirates; in-hand parse.",
+  "seed": 67936,
+  "cards": {
+    "Reef Pirates": "Name:Reef Pirates\nManaCost:1 U U\nTypes:Creature Zombie Pirate\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, that player mills a card.\nSVar:TrigMill:DB$ Mill | NumCards$ 1 | Defined$ TriggeredTarget\nOracle:Whenever Reef Pirates deals damage to an opponent, that player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reef Pirates"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

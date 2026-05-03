@@ -1,0 +1,23 @@
+{
+  "id": "south-pole-voyager-corpus-m677",
+  "description": "M6 corpus — South Pole Voyager; in-hand parse.",
+  "seed": 70494,
+  "cards": {
+    "South Pole Voyager": "Name:South Pole Voyager\nManaCost:1 W\nTypes:Creature Human Scout Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigGainLife | TriggerDescription$ Whenever this creature or another Ally you control enters, you gain 1 life. If this is the second time this ability has resolved this turn, you draw a card.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2\nSVar:Resolved:Count$ResolvedThisTurn\nSVar:BuffedBy:Ally\nOracle:Whenever this creature or another Ally you control enters, you gain 1 life. If this is the second time this ability has resolved this turn, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "South Pole Voyager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

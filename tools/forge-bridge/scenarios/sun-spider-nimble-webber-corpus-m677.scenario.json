@@ -1,0 +1,23 @@
+{
+  "id": "sun-spider-nimble-webber-corpus-m677",
+  "description": "M6 corpus — Sun-Spider, Nimble Webber; in-hand parse.",
+  "seed": 71329,
+  "cards": {
+    "Sun-Spider, Nimble Webber": "Name:Sun-Spider, Nimble Webber\nVariant:UniversesWithin:FlavorName:Cirina Bargainspinner\nManaCost:3 WU\nTypes:Legendary Creature Spider Human Hero\nPT:3/2\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Flying | Condition$ PlayerTurn | Description$ During your turn, NICKNAME has flying.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When NICKNAME enters, search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Aura,Equipment | ChangeNum$ 1\nDeckHints:Type$Aura|Equipment\nOracle:During your turn, Sun-Spider has flying.\\nWhen Sun-Spider enters, search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sun-Spider, Nimble Webber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

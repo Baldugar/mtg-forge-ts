@@ -1,0 +1,23 @@
+{
+  "id": "mausoleum-turnkey-corpus-m677",
+  "description": "M6 corpus — Mausoleum Turnkey; in-hand parse.",
+  "seed": 64896,
+  "cards": {
+    "Mausoleum Turnkey": "Name:Mausoleum Turnkey\nManaCost:3 B\nTypes:Creature Ogre Rogue\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature card of an opponent's choice from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn | TargetingPlayer$ Opponent\nOracle:When Mausoleum Turnkey enters, return target creature card of an opponent's choice from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mausoleum Turnkey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

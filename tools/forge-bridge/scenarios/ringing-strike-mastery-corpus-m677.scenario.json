@@ -1,0 +1,23 @@
+{
+  "id": "ringing-strike-mastery-corpus-m677",
+  "description": "M6 corpus — Ringing Strike Mastery; in-hand parse.",
+  "seed": 68303,
+  "cards": {
+    "Ringing Strike Mastery": "Name:Ringing Strike Mastery\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ Untap | Description$ Enchanted creature has \"{5}: Untap this creature.\"\nSVar:Untap:AB$ Untap | Cost$ 5 | Defined$ Self | SpellDescription$ Untap this creature.\nOracle:Enchant creature\\nWhen this Aura enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\nEnchanted creature has \"{5}: Untap this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ringing Strike Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

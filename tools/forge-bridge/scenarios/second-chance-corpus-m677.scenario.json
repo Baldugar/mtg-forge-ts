@@ -1,0 +1,23 @@
+{
+  "id": "second-chance-corpus-m677",
+  "description": "M6 corpus — Second Chance; in-hand parse.",
+  "seed": 69329,
+  "cards": {
+    "Second Chance": "Name:Second Chance\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | LifeTotal$ You | LifeAmount$ LE5 | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, if you have 5 or less life, sacrifice CARDNAME and take an extra turn after this one.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBAddTurn\nSVar:DBAddTurn:DB$ AddTurn | Defined$ You | NumTurns$ 1\nOracle:At the beginning of your upkeep, if you have 5 or less life, sacrifice Second Chance and take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Second Chance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

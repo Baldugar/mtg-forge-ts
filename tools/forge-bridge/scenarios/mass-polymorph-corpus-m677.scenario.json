@@ -1,0 +1,23 @@
+{
+  "id": "mass-polymorph-corpus-m677",
+  "description": "M6 corpus — Mass Polymorph; in-hand parse.",
+  "seed": 64853,
+  "cards": {
+    "Mass Polymorph": "Name:Mass Polymorph\nManaCost:5 U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Creature.YouCtrl | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBMassReveal | SpellDescription$ Exile all creatures you control, then reveal cards from the top of your library until you reveal that many creature cards. Put all creature cards revealed this way onto the battlefield, then shuffle the rest of the revealed cards into your library.\nSVar:DBMassReveal:DB$ DigUntil | Amount$ MassX | Valid$ Creature.YouOwn | ValidDescription$ creature | RevealedDestination$ Library | RevealedLibraryPosition$ 0 | FoundDestination$ Battlefield | SubAbility$ DBMassCleanup | Shuffle$ True\nSVar:DBMassCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBMassShuffle\nSVar:DBMassShuffle:DB$ Shuffle\nSVar:MassX:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Exile all creatures you control, then reveal cards from the top of your library until you reveal that many creature cards. Put all creature cards revealed this way onto the battlefield, then shuffle the rest of the revealed cards into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mass Polymorph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scoria-wurm-corpus-m677",
+  "description": "M6 corpus — Scoria Wurm; in-hand parse.",
+  "seed": 69178,
+  "cards": {
+    "Scoria Wurm": "Name:Scoria Wurm\nManaCost:4 R\nTypes:Creature Wurm\nPT:7/7\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlipACoin | TriggerDescription$ At the beginning of your upkeep, flip a coin. If you lose the flip, return CARDNAME to its owner's hand.\nSVar:TrigFlipACoin:DB$ FlipACoin | LoseSubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nOracle:At the beginning of your upkeep, flip a coin. If you lose the flip, return Scoria Wurm to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scoria Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

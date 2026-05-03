@@ -1,0 +1,23 @@
+{
+  "id": "mandate-of-abaddon-corpus-m677",
+  "description": "M6 corpus — Mandate of Abaddon; in-hand parse.",
+  "seed": 64707,
+  "cards": {
+    "Mandate of Abaddon": "Name:Mandate of Abaddon\nManaCost:3 B\nTypes:Sorcery\nA:SP$ ChooseCard | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ DBDestroyAll | SpellDescription$ Choose target creature you control. Destroy all creatures with power less than that creature's power.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.powerLTX\nSVar:X:Targeted$CardPower\nOracle:Choose target creature you control. Destroy all creatures with power less than that creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mandate of Abaddon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oteclan-landmark-corpus-m677",
+  "description": "M6 corpus — Oteclan Landmark; in-hand parse.",
+  "seed": 66457,
+  "cards": {
+    "Oteclan Landmark": "Name:Oteclan Landmark\nManaCost:W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nK:Craft:2 W ExileCtrlOrGrave<1/Artifact.Other>\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:When Oteclan Landmark enters, scry 2.\\nCraft with artifact {2}{W} ({2}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Oteclan Levitator\nManaCost:no cost\nColors:white\nTypes:Artifact Creature Golem\nPT:1/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target attacking creature without flying gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking+withoutFlying | TgtPrompt$ Select target attacking creature without flying | KW$ Flying\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Oteclan Levitator attacks, target attacking creature without flying gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oteclan Landmark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

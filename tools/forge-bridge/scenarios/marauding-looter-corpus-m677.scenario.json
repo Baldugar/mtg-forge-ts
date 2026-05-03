@@ -1,0 +1,23 @@
+{
+  "id": "marauding-looter-corpus-m677",
+  "description": "M6 corpus — Marauding Looter; in-hand parse.",
+  "seed": 64754,
+  "cards": {
+    "Marauding Looter": "Name:Marauding Looter\nManaCost:2 U R\nTypes:Creature Human Pirate\nPT:4/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ RaidTest | OptionalDecider$ You | Execute$ TrigLoot | TriggerDescription$ Raid — At the beginning of your end step, if you attacked this turn, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — At the beginning of your end step, if you attacked this turn, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marauding Looter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "shanid-sleepers-scourge-corpus-m677",
+  "description": "M6 corpus — Shanid, Sleepers' Scourge; ETB-on-bf.",
+  "seed": 69599,
+  "cards": {
+    "Shanid, Sleepers' Scourge": "Name:Shanid, Sleepers' Scourge\nManaCost:1 R W B\nTypes:Legendary Creature Human Knight\nPT:2/4\nK:Menace\nS:Mode$ Continuous | Affected$ Creature.Legendary+Other+YouCtrl | AddKeyword$ Menace | Description$ Other legendary creatures you control have menace.\nT:Mode$ LandPlayed | ValidCard$ Land.Legendary+YouCtrl | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you play a legendary land or cast a legendary spell, you draw a card and you lose 1 life.\nT:Mode$ SpellCast | ValidCard$ Card.Legendary+YouCtrl | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever you play a legendary land or cast a legendary spell, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nSVar:BuffedBy:Legendary\nDeckNeeds:Type$Legendary\nOracle:Menace\\nOther legendary creatures you control have menace.\\nWhenever you play a legendary land or cast a legendary spell, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shanid, Sleepers' Scourge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sevinne-s-reclamation-corpus-m677",
+  "description": "M6 corpus — Sevinne's Reclamation; in-hand parse.",
+  "seed": 69532,
+  "cards": {
+    "Sevinne's Reclamation": "Name:Sevinne's Reclamation\nManaCost:2 W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target permanent card with mana value 3 or less from your graveyard | ValidTgts$ Permanent.cmcLE3+YouCtrl | SubAbility$ DBCopy | SpellDescription$ Return target permanent card with mana value 3 or less from your graveyard to the battlefield. If this spell was cast from a graveyard, you may copy this spell and may choose a new target for the copy.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Parent | Optional$ True | MayChooseTarget$ True | ConditionDefined$ Self | ConditionPresent$ Card.wasCastFromGraveyard\nAI:RemoveDeck:Random\nK:Flashback:4 W\nOracle:Return target permanent card with mana value 3 or less from your graveyard to the battlefield. If this spell was cast from a graveyard, you may copy this spell and may choose a new target for the copy.\\nFlashback {4}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sevinne's Reclamation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

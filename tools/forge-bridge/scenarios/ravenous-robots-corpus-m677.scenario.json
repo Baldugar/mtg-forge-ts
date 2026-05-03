@@ -1,0 +1,25 @@
+{
+  "id": "ravenous-robots-corpus-m677",
+  "description": "M6 corpus — Ravenous Robots; ETB-on-bf.",
+  "seed": 67763,
+  "cards": {
+    "Ravenous Robots": "Name:Ravenous Robots\nManaCost:1 R\nTypes:Artifact Creature Robot\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an artifact spell, create a 1/1 colorless Robot artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_robot | TokenOwner$ You\nA:AB$ PumpAll | Cost$ R T | ValidCards$ Creature.token+YouCtrl | KW$ Haste | SpellDescription$ Creature tokens you control gain haste until end of turn.\nSVar:BuffedBy:Artifact\nDeckHas:Ability$Token\nDeckHints:Type$Artifact\nOracle:Whenever you cast an artifact spell, create a 1/1 colorless Robot artifact creature token.\\n{R}, {T}: Creature tokens you control gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ravenous Robots"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "raise-the-palisade-corpus-m677",
+  "description": "M6 corpus — Raise the Palisade; in-hand parse.",
+  "seed": 67600,
+  "cards": {
+    "Raise the Palisade": "Name:Raise the Palisade\nManaCost:4 U\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBReturnAll | AILogic$ MostProminentComputerControls | SpellDescription$ Choose a creature type. Return all creatures that aren't of the chosen type to their owners' hands.\nSVar:DBReturnAll:DB$ ChangeZoneAll | ChangeType$ Creature.IsNotChosenType | Origin$ Battlefield | Destination$ Hand\nOracle:Choose a creature type. Return all creatures that aren't of the chosen type to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raise the Palisade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

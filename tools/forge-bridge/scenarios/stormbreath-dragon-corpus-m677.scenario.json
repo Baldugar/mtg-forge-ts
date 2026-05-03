@@ -1,0 +1,25 @@
+{
+  "id": "stormbreath-dragon-corpus-m677",
+  "description": "M6 corpus — Stormbreath Dragon; ETB-on-bf.",
+  "seed": 71111,
+  "cards": {
+    "Stormbreath Dragon": "Name:Stormbreath Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Haste\nK:Protection from white\nA:AB$ PutCounter | Cost$ 5 R R | Monstrosity$ 3\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ When CARDNAME becomes monstrous, it deals damage to each opponent equal to the number of cards in that player's hand.\nSVar:TrigDmg:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBDmg | DamageMap$ True\nSVar:DBDmg:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ X\nSVar:X:Count$ValidHand Card.RememberedPlayerCtrl\nDeckHas:Ability$Counters\nOracle:Flying, haste, protection from white\\n{5}{R}{R}: Monstrosity 3. (If this creature isn't monstrous, put three +1/+1 counters on it and it becomes monstrous.)\\nWhen Stormbreath Dragon becomes monstrous, it deals damage to each opponent equal to the number of cards in that player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stormbreath Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "migrating-ketradon-corpus-m677",
+  "description": "M6 corpus — Migrating Ketradon; in-hand parse.",
+  "seed": 65117,
+  "cards": {
+    "Migrating Ketradon": "Name:Migrating Ketradon\nManaCost:4 G G\nTypes:Creature Dinosaur\nPT:6/6\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this creature enters, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 4\nK:Cycling:2\nOracle:Reach\\nWhen this creature enters, you gain 4 life.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Migrating Ketradon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "raze-to-the-ground-corpus-m677",
+  "description": "M6 corpus — Raze to the Ground; in-hand parse.",
+  "seed": 67787,
+  "cards": {
+    "Raze to the Ground": "Name:Raze to the Ground\nManaCost:2 R\nTypes:Sorcery\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ Destroy | ValidTgts$ Artifact | SubAbility$ DBDraw | SpellDescription$ Destroy target artifact. If its mana value was 1 or less, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ LE1\nSVar:X:Targeted$CardManaCost\nOracle:This spell can't be countered.\\nDestroy target artifact. If its mana value was 1 or less, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raze to the Ground"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

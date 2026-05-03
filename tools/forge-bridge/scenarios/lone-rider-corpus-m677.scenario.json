@@ -1,0 +1,23 @@
+{
+  "id": "lone-rider-corpus-m677",
+  "description": "M6 corpus — Lone Rider; in-hand parse.",
+  "seed": 64364,
+  "cards": {
+    "Lone Rider": "Name:Lone Rider\nManaCost:1 W\nTypes:Creature Human Knight\nPT:1/1\nK:First Strike\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ YouLifeGained | SVarCompare$ GE3 | Execute$ TrigTransform | TriggerDescription$ At the beginning of the end step, if you gained 3 or more life this turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:YouLifeGained:Count$LifeYouGainedThisTurn\nAlternateMode:DoubleFaced\nOracle:First strike, lifelink\\nAt the beginning of the end step, if you gained 3 or more life this turn, transform Lone Rider.\n\nALTERNATE\n\nName:It That Rides as One\nManaCost:no cost\nTypes:Creature Eldrazi Horror\nPT:4/4\nK:First Strike\nK:Trample\nK:Lifelink\nOracle:First strike, trample, lifelink\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lone Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

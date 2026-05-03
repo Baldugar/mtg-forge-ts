@@ -1,0 +1,23 @@
+{
+  "id": "spry-and-mighty-corpus-m677",
+  "description": "M6 corpus — Spry and Mighty; in-hand parse.",
+  "seed": 70798,
+  "cards": {
+    "Spry and Mighty": "Name:Spry and Mighty\nManaCost:4 G\nTypes:Sorcery\nA:SP$ ChooseCard | Choices$ Creature.YouCtrl | ChoiceZone$ Battlefield | SubAbility$ DBDraw | Amount$ 2 | SpellDescription$ Choose two creatures you control. You draw X cards and the chosen creatures get +X/+X and gain trample until end of turn, where X is the difference between the chosen creatures' powers.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ChosenCard | NumAtt$ +X | NumDef$ +X | KW$ Trample\nSVar:X:Count$Valid Creature.ChosenCard$GreatestCardPower/Minus.Y\nSVar:Y:Count$Valid Creature.ChosenCard$LeastCardPower\nOracle:Choose two creatures you control. You draw X cards and the chosen creatures get +X/+X and gain trample until end of turn, where X is the difference between the chosen creatures' powers.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spry and Mighty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

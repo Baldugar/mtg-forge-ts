@@ -1,0 +1,25 @@
+{
+  "id": "holy-justiciar-corpus-m677",
+  "description": "M6 corpus — Holy Justiciar; ETB-on-bf.",
+  "seed": 62442,
+  "cards": {
+    "Holy Justiciar": "Name:Holy Justiciar\nManaCost:3 W\nTypes:Creature Human Cleric\nPT:2/1\nA:AB$ Tap | Cost$ 2 W T | ValidTgts$ Creature | SubAbility$ DBExile | SpellDescription$ Tap target creature. If that creature is a Zombie, exile it.\nSVar:DBExile:DB$ ChangeZone | ConditionDefined$ Targeted | ConditionPresent$ Creature.Zombie | ConditionCompare$ EQ1 | Defined$ Targeted | Origin$ Battlefield | Destination$ Exile | ConditionDescription$ If that creature is a Zombie,\nAI:RemoveDeck:All\nOracle:{2}{W}, {T}: Tap target creature. If that creature is a Zombie, exile it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Holy Justiciar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

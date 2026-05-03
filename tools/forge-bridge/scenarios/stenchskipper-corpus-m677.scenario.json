@@ -1,0 +1,23 @@
+{
+  "id": "stenchskipper-corpus-m677",
+  "description": "M6 corpus — Stenchskipper; in-hand parse.",
+  "seed": 70977,
+  "cards": {
+    "Stenchskipper": "Name:Stenchskipper\nManaCost:3 B\nTypes:Creature Elemental\nPT:6/5\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Goblin.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, if you control no Goblins, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Goblin.YouCtrl\nOracle:Flying\\nAt the beginning of the end step, if you control no Goblins, sacrifice Stenchskipper.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stenchskipper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

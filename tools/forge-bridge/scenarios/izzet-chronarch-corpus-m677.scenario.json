@@ -1,0 +1,23 @@
+{
+  "id": "izzet-chronarch-corpus-m677",
+  "description": "M6 corpus — Izzet Chronarch; in-hand parse.",
+  "seed": 63194,
+  "cards": {
+    "Izzet Chronarch": "Name:Izzet Chronarch\nManaCost:3 U R\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl\nOracle:When Izzet Chronarch enters, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Izzet Chronarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

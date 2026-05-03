@@ -1,0 +1,23 @@
+{
+  "id": "rune-of-mortality-corpus-m677",
+  "description": "M6 corpus — Rune of Mortality; in-hand parse.",
+  "seed": 68627,
+  "cards": {
+    "Rune of Mortality": "Name:Rune of Mortality\nManaCost:1 B\nTypes:Enchantment Aura Rune\nK:Enchant:Permanent\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Deathtouch | Description$ As long as enchanted permanent is a creature, it has deathtouch.\nS:Mode$ Continuous | Affected$ Equipment.EnchantedBy | AddStaticAbility$ RuneMortalityST | Description$ As long as enchanted permanent is an Equipment, it has \"Equipped creature has deathtouch.\"\nSVar:RuneMortalityST:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Deathtouch | Description$ Equipped creature has deathtouch.\nOracle:Enchant permanent\\nWhen Rune of Mortality enters, draw a card.\\nAs long as enchanted permanent is a creature, it has deathtouch.\\nAs long as enchanted permanent is an Equipment, it has \"Equipped creature has deathtouch.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rune of Mortality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

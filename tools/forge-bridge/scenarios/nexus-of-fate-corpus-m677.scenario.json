@@ -1,0 +1,23 @@
+{
+  "id": "nexus-of-fate-corpus-m677",
+  "description": "M6 corpus — Nexus of Fate; in-hand parse.",
+  "seed": 65891,
+  "cards": {
+    "Nexus of Fate": "Name:Nexus of Fate\nManaCost:5 U U\nTypes:Instant\nA:SP$ AddTurn | NumTurns$ 1 | SpellDescription$ Take an extra turn after this one.\nR:Event$ Moved | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ DBShuffle | Description$ If CARDNAME would be put into a graveyard from anywhere, reveal CARDNAME and shuffle it into its owner's library instead.\nSVar:DBShuffle:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | Defined$ ReplacedCard | Reveal$ True | Shuffle$ True\nOracle:Take an extra turn after this one.\\nIf Nexus of Fate would be put into a graveyard from anywhere, reveal Nexus of Fate and shuffle it into its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nexus of Fate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reigning-victor-corpus-m677",
+  "description": "M6 corpus — Reigning Victor; in-hand parse.",
+  "seed": 67975,
+  "cards": {
+    "Reigning Victor": "Name:Reigning Victor\nManaCost:2R 2W 2B\nTypes:Creature Orc Warrior\nPT:3/3\nK:Mobilize:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, target creature gets +1/+0 and gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | KW$ Indestructible\nSVar:PlayMain1:TRUE\nOracle:Mobilize 1 (Whenever this creature attacks, create a tapped and attacking 1/1 red Warrior creature token. Sacrifice it at the beginning of the next end step.)\\nWhen this creature enters, target creature gets +1/+0 and gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reigning Victor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

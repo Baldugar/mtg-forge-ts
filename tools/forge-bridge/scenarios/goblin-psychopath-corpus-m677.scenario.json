@@ -1,0 +1,23 @@
+{
+  "id": "goblin-psychopath-corpus-m677",
+  "description": "M6 corpus — Goblin Psychopath; in-hand parse.",
+  "seed": 61451,
+  "cards": {
+    "Goblin Psychopath": "Name:Goblin Psychopath\nManaCost:3 R\nTypes:Creature Goblin Mutant\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ CoinFlip | TriggerDescription$ Whenever CARDNAME attacks or blocks, flip a coin. If you lose the flip, the next time it would deal combat damage this turn, it deals that damage to you instead.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ CoinFlip | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, flip a coin. If you lose the flip, the next time it would deal combat damage this turn, it deals that damage to you instead.\nSVar:CoinFlip:DB$ FlipACoin | LoseSubAbility$ CreateEffect\nSVar:CreateEffect:DB$ Effect | ReplacementEffects$ EventDamageDone\nSVar:EventDamageDone:Event$ DamageDone | ValidSource$ Card.EffectSource | DamageTarget$ You | ReplaceWith$ DamageYou | IsCombat$ True | Description$ The next time EFFECTSOURCE would deal combat damage this turn, it deals that damage to you instead.\nSVar:DamageYou:DB$ ReplaceEffect | VarName$ Affected | VarValue$ You | VarType$ Player | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:PsychoX:ReplaceCount$DamageAmount\nAI:RemoveDeck:Random\nOracle:Whenever Goblin Psychopath attacks or blocks, flip a coin. If you lose the flip, the next time it would deal combat damage this turn, it deals that damage to you instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Psychopath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

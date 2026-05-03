@@ -1,0 +1,23 @@
+{
+  "id": "super-state-corpus-m677",
+  "description": "M6 corpus — Super State; in-hand parse.",
+  "seed": 71395,
+  "cards": {
+    "Super State": "Name:Super State\nManaCost:7\nTypes:Legendary Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | SetPower$ 9 | SetToughness$ 9 | AddKeyword$ Flying & First Strike & Trample & Haste | Description$ Enchanted creature has base power and toughness 9/9 and has flying, first strike, trample, and haste.\nT:Mode$ DamageDone | ValidSource$ Creature.EnchantedBy | ValidTarget$ Opponent | CombatDamage$ True | Execute$ TrigDmg | TriggerDescription$ Whenever enchanted creature deals combat damage to an opponent, it deals that much damage to each other opponent.\nSVar:TrigDmg:DB$ DamageAll | ValidPlayers$ OppNonTriggeredTarget | DamageSource$ TriggeredSource | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Enchant creature you control\\nEnchanted creature has base power and toughness 9/9 and has flying, first strike, trample, and haste.\\nWhenever enchanted creature deals combat damage to an opponent, it deals that much damage to each other opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Super State"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

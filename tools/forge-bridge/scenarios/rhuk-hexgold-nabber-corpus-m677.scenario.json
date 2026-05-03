@@ -1,0 +1,23 @@
+{
+  "id": "rhuk-hexgold-nabber-corpus-m677",
+  "description": "M6 corpus — Rhuk, Hexgold Nabber; in-hand parse.",
+  "seed": 68223,
+  "cards": {
+    "Rhuk, Hexgold Nabber": "Name:Rhuk, Hexgold Nabber\nManaCost:2 R\nTypes:Legendary Creature Goblin Rebel\nPT:2/2\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Creature.equipped+YouCtrl+Other | Execute$ TrigAttackAttach | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever an equipped creature you control other than CARDNAME attacks or dies, you may attach all Equipment attached to that creature to NICKNAME.\nT:Mode$ ChangesZone | ValidCard$ Creature.equipped+YouCtrl+Other | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigAttach | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever an equipped creature you control other than CARDNAME attacks or dies, you may attach all Equipment attached to that creature to NICKNAME.\nSVar:TrigAttackAttach:DB$ Attach | Object$ AttachedTo TriggeredAttackerLKICopy.Equipment | Defined$ Self\nSVar:TrigAttach:DB$ Attach | Object$ AttachedTo TriggeredCardLKICopy.Equipment | Defined$ Self\nDeckNeeds:Type$Equipment\nOracle:Trample, haste\\nWhenever an equipped creature you control other than Rhuk, Hexgold Nabber attacks or dies, you may attach all Equipment attached to that creature to Rhuk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rhuk, Hexgold Nabber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

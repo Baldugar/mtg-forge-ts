@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-ghouls-corpus-m677",
+  "description": "M6 corpus — Oath of Ghouls; in-hand parse.",
+  "seed": 66153,
+  "cards": {
+    "Oath of Ghouls": "Name:Oath of Ghouls\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | Execute$ TrigOathofGhouls | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player chooses target player whose graveyard has fewer creature cards in it than their graveyard does and is their opponent. The first player may return a creature card from their graveyard to their hand.\nSVar:TrigOathofGhouls:DB$ Pump | TargetingPlayer$ TriggeredPlayer | ValidTgts$ Player.OpponentToActive+hasFewerCreaturesInYardThanActive | TgtPrompt$ Choose target opponent whose graveyard has fewer creature cards in it than you | IsCurse$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | DefinedPlayer$ TriggeredPlayer | Chooser$ TriggeredPlayer | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature.ActivePlayerCtrl | ChangeNum$ 1 | Optional$ True | Hidden$ True\nSVar:NeedsToPlayVar:Z LEY\nSVar:Z:Count$ValidGraveyard Creature.YouDontCtrl\nSVar:Y:Count$ValidGraveyard Creature.YouCtrl\nOracle:At the beginning of each player's upkeep, that player chooses target player whose graveyard has fewer creature cards in it than their graveyard does and is their opponent. The first player may return a creature card from their graveyard to their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Ghouls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

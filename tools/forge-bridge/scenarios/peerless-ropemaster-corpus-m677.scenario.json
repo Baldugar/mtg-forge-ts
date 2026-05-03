@@ -1,0 +1,23 @@
+{
+  "id": "peerless-ropemaster-corpus-m677",
+  "description": "M6 corpus — Peerless Ropemaster; in-hand parse.",
+  "seed": 66706,
+  "cards": {
+    "Peerless Ropemaster": "Name:Peerless Ropemaster\nManaCost:4 U\nTypes:Creature Human Rogue\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to one target tapped creature to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.tapped | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Choose up to one target tapped creature\nOracle:When Peerless Ropemaster enters, return up to one target tapped creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peerless Ropemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

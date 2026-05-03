@@ -1,0 +1,23 @@
+{
+  "id": "lumbering-lightshield-corpus-m677",
+  "description": "M6 corpus — Lumbering Lightshield; in-hand parse.",
+  "seed": 64479,
+  "cards": {
+    "Lumbering Lightshield": "Name:Lumbering Lightshield\nManaCost:1 W\nTypes:Creature Illusion\nPT:1/4\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals a nonland card at random from their hand. It perpetually gains \"This spell costs {1} more to cast.\"\nSVar:TrigReveal:DB$ Reveal | Random$ True | RevealValid$ Card.nonLand | RememberRevealed$ True | ValidTgts$ Opponent | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ PerpetualRaiseCost | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:PerpetualRaiseCost:Mode$ RaiseCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} more to cast.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Lumbering Lightshield enters, target opponent reveals a nonland card at random from their hand. It perpetually gains \"This spell costs {1} more to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lumbering Lightshield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

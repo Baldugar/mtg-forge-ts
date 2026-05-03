@@ -1,0 +1,25 @@
+{
+  "id": "model-of-unity-corpus-m677",
+  "description": "M6 corpus — Model of Unity; ETB-on-bf.",
+  "seed": 65359,
+  "cards": {
+    "Model of Unity": "Name:Model of Unity\nManaCost:3\nTypes:Artifact\nT:Mode$ Vote | TriggerZones$ Battlefield | Execute$ TrigScry | List$ OppVotedSame | TriggerDescription$ Whenever players finish voting, you and each opponent who voted for a choice you voted for may scry 2.\nSVar:TrigScry:DB$ Scry | Defined$ TriggeredOpponentVotedSame & You | ScryNum$ 2 | Optional$ True\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Whenever players finish voting, you and each opponent who voted for a choice you voted for may scry 2.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Model of Unity"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

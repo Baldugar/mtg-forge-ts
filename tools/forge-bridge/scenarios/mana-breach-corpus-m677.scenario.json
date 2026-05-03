@@ -1,0 +1,25 @@
+{
+  "id": "mana-breach-corpus-m677",
+  "description": "M6 corpus — Mana Breach; ETB-on-bf.",
+  "seed": 64679,
+  "cards": {
+    "Mana Breach": "Name:Mana Breach\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ Whenever a player casts a spell, that player returns a land they control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeNum$ 1 | ChangeType$ Land | Mandatory$ True | DefinedPlayer$ TriggeredActivator | Chooser$ TriggeredActivator | Hidden$ True\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a spell, that player returns a land they control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mana Breach"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

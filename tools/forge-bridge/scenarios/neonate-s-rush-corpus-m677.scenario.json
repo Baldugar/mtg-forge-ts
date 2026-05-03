@@ -1,0 +1,23 @@
+{
+  "id": "neonate-s-rush-corpus-m677",
+  "description": "M6 corpus — Neonate's Rush; in-hand parse.",
+  "seed": 65836,
+  "cards": {
+    "Neonate's Rush": "Name:Neonate's Rush\nManaCost:2 R\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Vampire.YouCtrl | Description$ This spell costs {1} less to cast if you control a Vampire.\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 1 | DamageMap$ True | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 1 damage to target creature and 1 damage to its controller. Draw a card.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:BuffedBy:Vampire\nDeckHints:Type$Vampire\nOracle:This spell costs {1} less to cast if you control a Vampire.\\nNeonate's Rush deals 1 damage to target creature and 1 damage to its controller. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neonate's Rush"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

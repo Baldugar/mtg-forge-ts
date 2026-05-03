@@ -1,0 +1,23 @@
+{
+  "id": "legion-angel-corpus-m677",
+  "description": "M6 corpus — Legion Angel; in-hand parse.",
+  "seed": 64098,
+  "cards": {
+    "Legion Angel": "Name:Legion Angel\nManaCost:2 W W\nTypes:Creature Angel Warrior\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may reveal a card you own named Legion Angel from outside the game and put it into your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Sideboard | Destination$ Hand | Reveal$ True | ChangeType$ Card.YouOwn+namedLegion Angel | ChangeNum$ 1\nOracle:Flying\\nWhen Legion Angel enters, you may reveal a card you own named Legion Angel from outside the game and put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

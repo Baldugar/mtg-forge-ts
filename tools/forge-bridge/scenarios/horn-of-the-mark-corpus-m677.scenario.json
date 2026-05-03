@@ -1,0 +1,25 @@
+{
+  "id": "horn-of-the-mark-corpus-m677",
+  "description": "M6 corpus — Horn of the Mark; ETB-on-bf.",
+  "seed": 62496,
+  "cards": {
+    "Horn of the Mark": "Name:Horn of the Mark\nManaCost:2\nTypes:Legendary Artifact\nT:Mode$ AttackersDeclaredOneTarget | Execute$ TrigReveal | AttackedTarget$ Player | ValidAttackers$ Creature.YouCtrl | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever two or more creatures you control attack a player, look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigReveal:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature | ForceRevealToController$ True | DestinationZone$ Hand | RestRandomOrder$ True\nSVar:PlayMain1:TRUE\nOracle:Whenever two or more creatures you control attack a player, look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Horn of the Mark"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sentinel-of-lost-lore-corpus-m677",
+  "description": "M6 corpus — Sentinel of Lost Lore; in-hand parse.",
+  "seed": 69446,
+  "cards": {
+    "Sentinel of Lost Lore": "Name:Sentinel of Lost Lore\nManaCost:1 G G\nTypes:Creature Elf Knight\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ 3 | Choices$ DBChangeZone,DBChangeZoneBis,DBExileGrave\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Card.AdventureCard+YouOwn | TgtPrompt$ Select target card you own in exile that has an Adventure | Origin$ Exile | Destination$ Hand | SpellDescription$ Return target card you own in exile that has an Adventure to your hand.\nSVar:DBChangeZoneBis:DB$ ChangeZone | ValidTgts$ Card.AdventureCard+YouDontOwn | TgtPrompt$ Select target card you don't own in exile that has an Adventure | Origin$ Exile | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put target card you don't own in exile that has an Adventure on the bottom of its owner's library.\nSVar:DBExileGrave:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | SpellDescription$ Exile target player's graveyard.\nDeckHas:Ability$Graveyard\nDeckHints:Type$Adventure\nOracle:When Sentinel of Lost Lore enters, choose one or more —\\n• Return target card you own in exile that has an Adventure to your hand.\\n• Put target card you don't own in exile that has an Adventure on the bottom of its owner's library.\\n• Exile target player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sentinel of Lost Lore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

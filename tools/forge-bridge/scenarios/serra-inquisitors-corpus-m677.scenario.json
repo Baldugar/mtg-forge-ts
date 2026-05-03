@@ -1,0 +1,25 @@
+{
+  "id": "serra-inquisitors-corpus-m677",
+  "description": "M6 corpus — Serra Inquisitors; ETB-on-bf.",
+  "seed": 69493,
+  "cards": {
+    "Serra Inquisitors": "Name:Serra Inquisitors\nManaCost:4 W\nTypes:Creature Human Cleric\nPT:3/3\nT:Mode$ Blocks | ValidCard$ Card.Self | ValidBlocked$ Creature.Black | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by one or more black creatures, CARDNAME gets +2/+0 until end of turn.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | ValidBlocker$ Creature.Black | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by one or more black creatures, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nOracle:Whenever Serra Inquisitors blocks or becomes blocked by one or more black creatures, Serra Inquisitors gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Serra Inquisitors"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

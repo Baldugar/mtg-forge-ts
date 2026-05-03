@@ -1,0 +1,23 @@
+{
+  "id": "pyrophobia-corpus-m677",
+  "description": "M6 corpus — Pyrophobia; in-hand parse.",
+  "seed": 67421,
+  "cards": {
+    "Pyrophobia": "Name:Pyrophobia\nManaCost:1 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | SubAbility$ CantBlockEffect | SpellDescription$ CARDNAME deals 3 damage to target creature. Cowards can't block this turn.\nSVar:CantBlockEffect:DB$ Effect | StaticAbilities$ KWPump | AILogic$ Evasion | SpellDescription$ Cowards can't block this turn.\nSVar:KWPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.Coward | AddHiddenKeyword$ CARDNAME can't block. | Description$ Cowards can't block this turn.\nSVar:PlayMain1:TRUE\nOracle:Pyrophobia deals 3 damage to target creature. Cowards can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyrophobia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "gwafa-hazid-profiteer-corpus-m677",
+  "description": "M6 corpus — Gwafa Hazid, Profiteer; ETB-on-bf.",
+  "seed": 61937,
+  "cards": {
+    "Gwafa Hazid, Profiteer": "Name:Gwafa Hazid, Profiteer\nManaCost:1 W U\nTypes:Legendary Creature Human Rogue\nPT:2/2\nA:AB$ PutCounter | Cost$ W U T | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control. | CounterType$ BRIBERY | CounterNum$ 1 | SubAbility$ DBDraw | SpellDescription$ Put a bribery counter on target creature you don't control. Its controller draws a card.\nSVar:DBDraw:DB$ Draw | Defined$ TargetedController | NumCards$ 1\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.counters_GE1_BRIBERY | Description$ Creatures with bribery counters on them can't attack or block.\nOracle:{W}{U}, {T}: Put a bribery counter on target creature you don't control. Its controller draws a card.\\nCreatures with bribery counters on them can't attack or block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gwafa Hazid, Profiteer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

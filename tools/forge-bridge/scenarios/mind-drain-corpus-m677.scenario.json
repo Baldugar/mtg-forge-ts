@@ -1,0 +1,23 @@
+{
+  "id": "mind-drain-corpus-m677",
+  "description": "M6 corpus — Mind Drain; in-hand parse.",
+  "seed": 65147,
+  "cards": {
+    "Mind Drain": "Name:Mind Drain\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Opponent | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBMill | SpellDescription$ Target opponent discards two cards, mills a card, and loses 1 life. You gain 1 life. (To mill a card, a player puts the top card of their library into their graveyard.)\nSVar:DBMill:DB$ Mill | Defined$ Targeted | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Mill|LifeGain\nOracle:Target opponent discards two cards, mills a card, and loses 1 life. You gain 1 life. (To mill a card, a player puts the top card of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Drain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kitesail-cleric-corpus-m677",
+  "description": "M6 corpus — Kitesail Cleric; in-hand parse.",
+  "seed": 63701,
+  "cards": {
+    "Kitesail Cleric": "Name:Kitesail Cleric\nManaCost:W\nTypes:Creature Kor Cleric\nPT:1/1\nK:Kicker:2 W\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, if it was kicked, tap up to two target creatures.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures | ValidTgts$ Creature\nSVar:NeedsToPlayKickedVar:Z GE2\nSVar:Z:Count$Valid Creature.OppCtrl\nOracle:Kicker {2}{W} (You may pay an additional {2}{W} as you cast this spell.)\\nFlying\\nWhen Kitesail Cleric enters, if it was kicked, tap up to two target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitesail Cleric"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

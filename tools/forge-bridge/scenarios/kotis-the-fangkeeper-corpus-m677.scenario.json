@@ -1,0 +1,23 @@
+{
+  "id": "kotis-the-fangkeeper-corpus-m677",
+  "description": "M6 corpus — Kotis, the Fangkeeper; in-hand parse.",
+  "seed": 63845,
+  "cards": {
+    "Kotis, the Fangkeeper": "Name:Kotis, the Fangkeeper\nManaCost:1 B G U\nTypes:Legendary Creature Zombie Warrior\nPT:2/1\nK:Indestructible\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, exile the top X cards of their library, where X is the amount of damage dealt. You may cast any number of spells with mana value X or less from among them without paying their mana costs.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+IsRemembered+cmcLEX | ValidSA$ Spell | ValidZone$ Exile | WithoutManaCost$ True | Amount$ All | Controller$ You | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Indestructible\\nWhenever Kotis deals combat damage to a player, exile the top X cards of their library, where X is the amount of damage dealt. You may cast any number of spells with mana value X or less from among them without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kotis, the Fangkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

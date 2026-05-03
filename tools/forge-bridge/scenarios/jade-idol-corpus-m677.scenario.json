@@ -1,0 +1,25 @@
+{
+  "id": "jade-idol-corpus-m677",
+  "description": "M6 corpus — Jade Idol; ETB-on-bf.",
+  "seed": 63221,
+  "cards": {
+    "Jade Idol": "Name:Jade Idol\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, CARDNAME becomes a 4/4 Spirit artifact creature until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 4 | Toughness$ 4 | Types$ Creature,Artifact,Spirit | RemoveCreatureTypes$ True\nSVar:BuffedBy:Arcane,Spirit\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, Jade Idol becomes a 4/4 Spirit artifact creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jade Idol"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

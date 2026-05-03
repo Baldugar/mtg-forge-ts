@@ -1,0 +1,25 @@
+{
+  "id": "pangosaur-corpus-m677",
+  "description": "M6 corpus — Pangosaur; ETB-on-bf.",
+  "seed": 66591,
+  "cards": {
+    "Pangosaur": "Name:Pangosaur\nManaCost:2 G G\nTypes:Creature Dinosaur\nPT:6/6\nT:Mode$ LandPlayed | ValidCard$ Land | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ Whenever a player plays a land, return CARDNAME to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nAI:RemoveDeck:All\nOracle:Whenever a player plays a land, return Pangosaur to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pangosaur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

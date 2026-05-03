@@ -1,0 +1,23 @@
+{
+  "id": "highcliff-felidar-corpus-m677",
+  "description": "M6 corpus — Highcliff Felidar; in-hand parse.",
+  "seed": 62368,
+  "cards": {
+    "Highcliff Felidar": "Name:Highcliff Felidar\nManaCost:5 W W\nTypes:Creature Cat Beast\nPT:5/5\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBRepeat | TriggerDescription$ When CARDNAME enters, for each opponent, choose a creature with the greatest power among creatures that player controls. Destroy those creatures.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChooseCard | SubAbility$ DBDestroy\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ You | Choices$ Creature.greatestPowerControlledByRemembered | Mandatory$ True | RememberChosen$ True\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:Vigilance\\nWhen Highcliff Felidar enters, for each opponent, choose a creature with the greatest power among creatures that player controls. Destroy those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Highcliff Felidar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

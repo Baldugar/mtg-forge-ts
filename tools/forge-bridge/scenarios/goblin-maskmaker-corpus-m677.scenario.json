@@ -1,0 +1,23 @@
+{
+  "id": "goblin-maskmaker-corpus-m677",
+  "description": "M6 corpus — Goblin Maskmaker; in-hand parse.",
+  "seed": 61440,
+  "cards": {
+    "Goblin Maskmaker": "Name:Goblin Maskmaker\nManaCost:R\nTypes:Creature Goblin Citizen\nPT:1/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ Whenever CARDNAME attacks, face-down spells you cast this turn cost {1} less to cast.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ ReduceCost\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.faceDown | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Face-down spells you cast this turn cost {1} less to cast.\nSVar:HasAttackEffect:TRUE\nDeckHints:Keyword$Morph|Megamorph|Disguise\nOracle:Whenever Goblin Maskmaker attacks, face-down spells you cast this turn cost {1} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Maskmaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

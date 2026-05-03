@@ -1,0 +1,23 @@
+{
+  "id": "a-krydle-of-baldur-s-gate-corpus-m677",
+  "description": "M6 corpus — A-Krydle of Baldur's Gate; in-hand parse.",
+  "seed": 68756,
+  "cards": {
+    "A-Krydle of Baldur's Gate": "Name:A-Krydle of Baldur's Gate\nManaCost:U B\nTypes:Legendary Creature Human Elf Rogue\nPT:1/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player loses 1 life and mills a card, then you gain 1 life and scry 1.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ 1 | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ TriggeredTarget | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigUnblockable | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target creature can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | StaticAbilities$ Unblockable | TgtPrompt$ Select target creature\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain|Mill\nOracle:Whenever Krydle of Baldur's Gate deals combat damage to a player, that player loses 1 life and mills a card, then you gain 1 life and scry 1.\\nWhenever you attack, target creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Krydle of Baldur's Gate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

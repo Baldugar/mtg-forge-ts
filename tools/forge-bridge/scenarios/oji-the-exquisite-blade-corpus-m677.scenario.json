@@ -1,0 +1,23 @@
+{
+  "id": "oji-the-exquisite-blade-corpus-m677",
+  "description": "M6 corpus — Oji, the Exquisite Blade; in-hand parse.",
+  "seed": 66247,
+  "cards": {
+    "Oji, the Exquisite Blade": "Name:Oji, the Exquisite Blade\nManaCost:2 W U\nTypes:Legendary Creature Human Monk\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life and scry 2.\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, exile up to one target creature you control, then return it to the battlefield under its owner's control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | ValidTgts$ Creature.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature you control | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nOracle:When Oji, the Exquisite Blade enters, you gain 2 life and scry 2.\\nWhenever you cast your second spell each turn, exile up to one target creature you control, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oji, the Exquisite Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

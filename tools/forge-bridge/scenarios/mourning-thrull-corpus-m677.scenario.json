@@ -1,0 +1,25 @@
+{
+  "id": "mourning-thrull-corpus-m677",
+  "description": "M6 corpus — Mourning Thrull; ETB-on-bf.",
+  "seed": 65554,
+  "cards": {
+    "Mourning Thrull": "Name:Mourning Thrull\nManaCost:1 WB\nTypes:Creature Thrull\nPT:1/1\nK:Flying\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:({W/B} can be paid with either {W} or {B}.)\\nFlying\\nWhenever Mourning Thrull deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mourning Thrull"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

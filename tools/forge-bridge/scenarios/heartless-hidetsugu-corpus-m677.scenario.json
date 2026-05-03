@@ -1,0 +1,25 @@
+{
+  "id": "heartless-hidetsugu-corpus-m677",
+  "description": "M6 corpus — Heartless Hidetsugu; ETB-on-bf.",
+  "seed": 62175,
+  "cards": {
+    "Heartless Hidetsugu": "Name:Heartless Hidetsugu\nManaCost:3 R R\nTypes:Legendary Creature Ogre Shaman\nPT:4/3\nA:AB$ RepeatEach | Cost$ T | RepeatPlayers$ Player | RepeatSubAbility$ DBDealDamage | DamageMap$ True | SpellDescription$ CARDNAME deals damage to each player equal to half that player's life total, rounded down.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ HeartlessX\nSVar:HeartlessX:PlayerCountRemembered$LifeTotal/HalfDown\nAI:RemoveDeck:Random\nOracle:{T}: Heartless Hidetsugu deals damage to each player equal to half that player's life total, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Heartless Hidetsugu"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

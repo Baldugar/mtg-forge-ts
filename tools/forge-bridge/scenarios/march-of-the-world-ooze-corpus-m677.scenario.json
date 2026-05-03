@@ -1,0 +1,25 @@
+{
+  "id": "march-of-the-world-ooze-corpus-m677",
+  "description": "M6 corpus — March of the World Ooze; ETB-on-bf.",
+  "seed": 64773,
+  "cards": {
+    "March of the World Ooze": "Name:March of the World Ooze\nManaCost:3 G G G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AffectedZone$ Battlefield | SetPower$ 6 | SetToughness$ 6 | AddType$ Ooze | Description$ Creatures you control have base power and toughness 6/6 and are Oozes in addition to their other creature types.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent.NonActive | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an opponent casts a spell, if it's not their turn, you create a 3/3 green Elephant creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_elephant\nOracle:Creatures you control have base power and toughness 6/6 and are Oozes in addition to their other creature types.\\nWhenever an opponent casts a spell, if it's not their turn, you create a 3/3 green Elephant creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "March of the World Ooze"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

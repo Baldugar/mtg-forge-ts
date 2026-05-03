@@ -1,0 +1,23 @@
+{
+  "id": "riveteers-charm-corpus-m677",
+  "description": "M6 corpus — Riveteers Charm; in-hand parse.",
+  "seed": 68407,
+  "cards": {
+    "Riveteers Charm": "Name:Riveteers Charm\nManaCost:B R G\nTypes:Instant\nA:SP$ Charm | Choices$ DBSac,DBExilePlay,DBExileGrave\nSVar:DBSac:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature.cmcEQX,Planeswalker.cmcEQX | SacMessage$ creature or planeswalker they control with the highest mana value among creatures and planeswalkers they control | SpellDescription$ Target opponent sacrifices a creature or planeswalker they control with the highest mana value among creatures and planeswalkers they control.\nSVar:X:Count$Valid Creature.TargetedPlayerCtrl,Planeswalker.TargetedPlayerCtrl$GreatestCardManaCost\nSVar:DBExilePlay:DB$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. Until your next end step, you may play those cards.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilYourNextEndStep\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until your next end step, you may play those cards.\nSVar:DBExileGrave:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | SpellDescription$ Exile target player's graveyard.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nOracle:Choose one —\\n• Target opponent sacrifices a creature or planeswalker they control with the highest mana value among creatures and planeswalkers they control.\\n• Exile the top three cards of your library. Until your next end step, you may play those cards.\\n• Exile target player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riveteers Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

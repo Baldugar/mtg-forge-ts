@@ -1,0 +1,23 @@
+{
+  "id": "stinging-hivemaster-corpus-m677",
+  "description": "M6 corpus — Stinging Hivemaster; in-hand parse.",
+  "seed": 71004,
+  "cards": {
+    "Stinging Hivemaster": "Name:Stinging Hivemaster\nManaCost:2 B\nTypes:Creature Phyrexian Warlock\nPT:3/2\nK:Toxic:1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 colorless Phyrexian Mite artifact creature token with toxic 1 and \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_phyrexian_mite_toxic_noblock\nDeckHas:Ability$Token & Type$Artifact|Mite\nOracle:Toxic 1 (Players dealt combat damage by this creature also get a poison counter.)\\nWhen Stinging Hivemaster dies, create a 1/1 colorless Phyrexian Mite artifact creature token with toxic 1 and \"This creature can't block.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stinging Hivemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

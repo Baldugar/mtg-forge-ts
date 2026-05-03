@@ -1,0 +1,23 @@
+{
+  "id": "strategic-betrayal-corpus-m677",
+  "description": "M6 corpus — Strategic Betrayal; in-hand parse.",
+  "seed": 71152,
+  "cards": {
+    "Strategic Betrayal": "Name:Strategic Betrayal\nManaCost:1 B\nTypes:Sorcery\nA:SP$ ChooseCard | ValidTgts$ Opponent | Mandatory$ True | Choices$ Creature.TargetedPlayerCtrl | SubAbility$ DBChangeZoneAll | SpellDescription$ Target opponent exiles a creature they control and their graveyard.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Battlefield,Graveyard | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.ChosenCard,Card.TargetedPlayerOwn+inZoneGraveyard\nOracle:Target opponent exiles a creature they control and their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strategic Betrayal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

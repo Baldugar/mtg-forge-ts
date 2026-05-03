@@ -1,0 +1,23 @@
+{
+  "id": "scavenged-weaponry-corpus-m677",
+  "description": "M6 corpus — Scavenged Weaponry; in-hand parse.",
+  "seed": 69126,
+  "cards": {
+    "Scavenged Weaponry": "Name:Scavenged Weaponry\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant creature\\nWhen Scavenged Weaponry enters, draw a card.\\nEnchanted creature gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scavenged Weaponry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

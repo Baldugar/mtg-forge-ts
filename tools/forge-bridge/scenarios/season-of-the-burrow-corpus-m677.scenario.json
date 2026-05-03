@@ -1,0 +1,23 @@
+{
+  "id": "season-of-the-burrow-corpus-m677",
+  "description": "M6 corpus — Season of the Burrow; in-hand parse.",
+  "seed": 69317,
+  "cards": {
+    "Season of the Burrow": "Name:Season of the Burrow\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBToken,DBExile,DBReanimate | CharmNum$ 5 | MinCharmNum$ 0 | CanRepeatModes$ True | Pawprint$ 5\nSVar:DBToken:DB$ Token | Pawprint$ 1 | TokenScript$ w_1_1_rabbit | SpellDescription$ Create a 1/1 white Rabbit creature token.\nSVar:DBExile:DB$ ChangeZone | Pawprint$ 2 | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand | RememberLKI$ True | SubAbility$ DBDraw | SpellDescription$ Exile target nonland permanent. Its controller draws a card.\nSVar:DBDraw:DB$ Draw | Defined$ RememberedController | NumCards$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBReanimate:DB$ ChangeZone | Pawprint$ 3 | ValidTgts$ Permanent.YouCtrl+cmcLE3 | TgtPrompt$ Select target permanent card with mana value 3 or less in your graveyard | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ Indestructible | SpellDescription$ Return target permanent card with mana value 3 or less from your graveyard to the battlefield with an indestructible counter on it.\nDeckHas:Ability$Graveyard|Counters|Token\nOracle:Choose up to five {P} worth of modes. You may choose the same mode more than once.\\n{P} — Create a 1/1 white Rabbit creature token.\\n{P}{P} — Exile target nonland permanent. Its controller draws a card.\\n{P}{P}{P} — Return target permanent card with mana value 3 or less from your graveyard to the battlefield with an indestructible counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Season of the Burrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stampeding-serow-corpus-m677",
+  "description": "M6 corpus — Stampeding Serow; in-hand parse.",
+  "seed": 70875,
+  "cards": {
+    "Stampeding Serow": "Name:Stampeding Serow\nManaCost:2 G G\nTypes:Creature Antelope Beast\nPT:5/4\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, return a green creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Creature.Green+YouCtrl | ChangeNum$ 1 | Mandatory$ True | Hidden$ True\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.Green+YouCtrl\nAI:RemoveDeck:Random\nOracle:Trample\\nAt the beginning of your upkeep, return a green creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stampeding Serow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

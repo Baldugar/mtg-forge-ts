@@ -1,0 +1,23 @@
+{
+  "id": "mind-whip-corpus-m677",
+  "description": "M6 corpus — Mind Whip; in-hand parse.",
+  "seed": 65161,
+  "cards": {
+    "Mind Whip": "Name:Mind Whip\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player may pay {3}. If they don't, CARDNAME deals 2 damage to that player and you tap that creature.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2 | UnlessCost$ 3 | UnlessPayer$ TriggeredPlayer | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Enchanted\nOracle:Enchant creature\\nAt the beginning of the upkeep of enchanted creature's controller, that player may pay {3}. If they don't, Mind Whip deals 2 damage to that player and you tap that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Whip"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

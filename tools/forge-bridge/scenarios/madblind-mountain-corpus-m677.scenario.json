@@ -1,0 +1,25 @@
+{
+  "id": "madblind-mountain-corpus-m677",
+  "description": "M6 corpus — Madblind Mountain; ETB-on-bf.",
+  "seed": 64560,
+  "cards": {
+    "Madblind Mountain": "Name:Madblind Mountain\nManaCost:no cost\nTypes:Land Mountain\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Shuffle | Cost$ R T | Defined$ You | IsPresent$ Permanent.Red+YouCtrl | PresentCompare$ GE2 | SpellDescription$ Shuffle your library. Activate only if you control two or more red permanents.\nAI:RemoveDeck:All\nOracle:({T}: Add {R}.)\\nMadblind Mountain enters tapped.\\n{R}, {T}: Shuffle your library. Activate only if you control two or more red permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Madblind Mountain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

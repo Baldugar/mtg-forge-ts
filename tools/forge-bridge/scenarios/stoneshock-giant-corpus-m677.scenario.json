@@ -1,0 +1,25 @@
+{
+  "id": "stoneshock-giant-corpus-m677",
+  "description": "M6 corpus — Stoneshock Giant; ETB-on-bf.",
+  "seed": 71066,
+  "cards": {
+    "Stoneshock Giant": "Name:Stoneshock Giant\nManaCost:3 R R\nTypes:Creature Giant\nPT:5/4\nA:AB$ PutCounter | Cost$ 6 R R | Monstrosity$ 3\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME becomes monstrous, creatures without flying your opponents control can't block this turn.\nSVar:TrigPump:DB$ Effect | StaticAbilities$ KWPump\nSVar:KWPump:Mode$ Continuous | Affected$ Creature.withoutFlying+OppCtrl | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures without flying your opponents control can't block this turn.\nDeckHas:Ability$Counters\nOracle:{6}{R}{R}: Monstrosity 3. (If this creature isn't monstrous, put three +1/+1 counters on it and it becomes monstrous.)\\nWhen Stoneshock Giant becomes monstrous, creatures without flying your opponents control can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stoneshock Giant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

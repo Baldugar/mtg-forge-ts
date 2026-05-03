@@ -1,0 +1,23 @@
+{
+  "id": "road-rage-corpus-m677",
+  "description": "M6 corpus — Road Rage; in-hand parse.",
+  "seed": 68415,
+  "cards": {
+    "Road Rage": "Name:Road Rage\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker. | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target creature or planeswalker, where X is 2 plus the number of Mounts and Vehicles you control.\nSVar:X:Count$Valid Mount.YouCtrl,Vehicle.YouCtrl/Plus.2\nOracle:Road Rage deals X damage to target creature or planeswalker, where X is 2 plus the number of Mounts and Vehicles you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Road Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

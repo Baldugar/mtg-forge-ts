@@ -1,0 +1,25 @@
+{
+  "id": "magebane-lizard-corpus-m677",
+  "description": "M6 corpus — Magebane Lizard; ETB-on-bf.",
+  "seed": 64577,
+  "cards": {
+    "Magebane Lizard": "Name:Magebane Lizard\nManaCost:1 R\nTypes:Creature Lizard\nPT:1/4\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ Whenever a player casts a noncreature spell, CARDNAME deals damage to that player equal to the number of noncreature spells they've cast this turn.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ X\nSVar:X:Count$ThisTurnCast_Card.nonCreature+ControlledBy TriggeredActivator\nOracle:Whenever a player casts a noncreature spell, Magebane Lizard deals damage to that player equal to the number of noncreature spells they've cast this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Magebane Lizard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

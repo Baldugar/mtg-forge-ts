@@ -1,0 +1,23 @@
+{
+  "id": "skull-raid-corpus-m677",
+  "description": "M6 corpus — Skull Raid; in-hand parse.",
+  "seed": 70073,
+  "cards": {
+    "Skull Raid": "Name:Skull Raid\nManaCost:3 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Player.Opponent | Mode$ TgtChoose | NumCards$ 2 | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Target opponent discards two cards. If fewer than two cards were discarded this way, you draw cards equal to the difference.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Number$2/Minus.Y\nSVar:Y:Count$RememberedSize\nK:Foretell:1 B\nOracle:Target opponent discards two cards. If fewer than two cards were discarded this way, you draw cards equal to the difference.\\nForetell {1}{B} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skull Raid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

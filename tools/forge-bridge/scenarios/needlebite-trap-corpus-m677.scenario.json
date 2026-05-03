@@ -1,0 +1,23 @@
+{
+  "id": "needlebite-trap-corpus-m677",
+  "description": "M6 corpus — Needlebite Trap; in-hand parse.",
+  "seed": 65812,
+  "cards": {
+    "Needlebite Trap": "Name:Needlebite Trap\nManaCost:5 B B\nTypes:Instant Trap\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ B | CheckSVar$ OppLifeGained | Description$ If an opponent gained life this turn, you may pay {B} rather than pay this spell's mana cost.\nSVar:OppLifeGained:PlayerCountOpponents$LifeGainedThisTurn\nA:SP$ LoseLife | ValidTgts$ Player | LifeAmount$ 5 | SubAbility$ DBGainLife | SpellDescription$ Target player loses 5 life and you gain 5 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 5\nOracle:If an opponent gained life this turn, you may pay {B} rather than pay this spell's mana cost.\\nTarget player loses 5 life and you gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Needlebite Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

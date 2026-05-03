@@ -1,0 +1,23 @@
+{
+  "id": "sisterhood-of-karn-corpus-m677",
+  "description": "M6 corpus — Sisterhood of Karn; in-hand parse.",
+  "seed": 70002,
+  "cards": {
+    "Sisterhood of Karn": "Name:Sisterhood of Karn\nManaCost:1 G\nTypes:Creature Cleric\nPT:0/0\nK:etbCounter:P1P1:1\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDouble | TriggerDescription$ Paradox — Whenever you cast a spell from anywhere other than your hand, double the number of +1/+1 counters on CARDNAME.\nSVar:TrigDouble:DB$ MultiplyCounter | Defined$ Self | CounterType$ P1P1\nDeckHas:Ability$Counters\nOracle:Sisterhood of Karn enters with a +1/+1 counter on it.\\nParadox — Whenever you cast a spell from anywhere other than your hand, double the number of +1/+1 counters on Sisterhood of Karn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sisterhood of Karn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

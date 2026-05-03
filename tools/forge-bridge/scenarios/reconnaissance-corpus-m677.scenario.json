@@ -1,0 +1,25 @@
+{
+  "id": "reconnaissance-corpus-m677",
+  "description": "M6 corpus — Reconnaissance; ETB-on-bf.",
+  "seed": 67898,
+  "cards": {
+    "Reconnaissance": "Name:Reconnaissance\nManaCost:W\nTypes:Enchantment\nA:AB$ RemoveFromCombat | Cost$ 0 | ValidTgts$ Creature.attacking+YouCtrl | TgtPrompt$ Select target attacking creature you control. | SubAbility$ DBUntap | SpellDescription$ Remove target attacking creature you control from combat and untap it.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:{0}: Remove target attacking creature you control from combat and untap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Reconnaissance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

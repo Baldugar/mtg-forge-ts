@@ -1,0 +1,25 @@
+{
+  "id": "hidden-hideout-corpus-m677",
+  "description": "M6 corpus — Hidden Hideout; ETB-on-bf.",
+  "seed": 62338,
+  "cards": {
+    "Hidden Hideout": "Name:Hidden Hideout\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo ColorIdentity | SpellDescription$ Add one mana of any color in your commander's color identity.\nA:AB$ Pump | Cost$ 2 T | ValidTgts$ Creature.YouCtrl+HasCounters | TgtPrompt$ Select target creature you control | KW$ Lifelink | SpellDescription$ Target creature you control with a counter on it gains lifelink until end of turn.\nAI:RemoveDeck:NonCommander\nOracle:This land enters tapped.\\n{T}: Add one mana of any color in your commander's color identity.\\n{2}, {T}: Target creature you control with a counter on it gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hidden Hideout"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

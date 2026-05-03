@@ -1,0 +1,23 @@
+{
+  "id": "mister-negative-corpus-m677",
+  "description": "M6 corpus — Mister Negative; in-hand parse.",
+  "seed": 65294,
+  "cards": {
+    "Mister Negative": "Name:Mister Negative\nVariant:UniversesWithin:FlavorName:Withar, Cocoon Keeper\nManaCost:5 W B\nTypes:Legendary Creature Human Villain\nPT:5/5\nK:Vigilance\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExchangeLife | OptionalDecider$ You | TriggerDescription$ Darkforce Inversion — When CARDNAME enters, you may exchange life totals with target opponent. If you lost life this way, draw that many cards.\nSVar:TrigExchangeLife:DB$ ExchangeLife | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to exchange life totals with | RememberOwnLoss$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nOracle:Vigilance, lifelink\\nDarkforce Inversion — When Mister Negative enters, you may exchange life totals with target opponent. If you lost life this way, draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mister Negative"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

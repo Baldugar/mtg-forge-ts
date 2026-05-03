@@ -1,0 +1,23 @@
+{
+  "id": "nightshade-schemers-corpus-m677",
+  "description": "M6 corpus — Nightshade Schemers; in-hand parse.",
+  "seed": 65950,
+  "cards": {
+    "Nightshade Schemers": "Name:Nightshade Schemers\nManaCost:4 B\nTypes:Creature Faerie Wizard\nPT:3/2\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigKinship | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Kinship — At the beginning of your upkeep, you may look at the top card of your library. If it shares a creature type with CARDNAME, you may reveal it. If you do, each opponent loses 2 life.\nSVar:TrigKinship:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Card.sharesCreatureTypeWith | RevealOptional$ True | RememberRevealed$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Flying\\nKinship — At the beginning of your upkeep, you may look at the top card of your library. If it shares a creature type with Nightshade Schemers, you may reveal it. If you do, each opponent loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nightshade Schemers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

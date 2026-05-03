@@ -1,0 +1,23 @@
+{
+  "id": "ground-seal-corpus-m677",
+  "description": "M6 corpus — Ground Seal; in-hand parse.",
+  "seed": 61818,
+  "cards": {
+    "Ground Seal": "Name:Ground Seal\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ CantTarget | AffectedZone$ Graveyard | Description$ Cards in graveyards can't be the targets of spells or abilities.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:When Ground Seal enters, draw a card.\\nCards in graveyards can't be the targets of spells or abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ground Seal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

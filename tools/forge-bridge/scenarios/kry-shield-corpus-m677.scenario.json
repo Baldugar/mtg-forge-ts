@@ -1,0 +1,25 @@
+{
+  "id": "kry-shield-corpus-m677",
+  "description": "M6 corpus — Kry Shield; ETB-on-bf.",
+  "seed": 63907,
+  "cards": {
+    "Kry Shield": "Name:Kry Shield\nManaCost:2\nTypes:Artifact\nA:AB$ Pump | Cost$ 2 T | KW$ Prevent all damage that would be dealt by CARDNAME. | TgtPrompt$ Select target creature you control | ValidTgts$ Creature.YouCtrl | SubAbility$ DBPump | SpellDescription$ Prevent all damage that would be dealt this turn by target creature you control. That creature gets +0/+X until end of turn, where X is its mana value.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | NumDef$ +X\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:All\nOracle:{2}, {T}: Prevent all damage that would be dealt this turn by target creature you control. That creature gets +0/+X until end of turn, where X is its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kry Shield"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

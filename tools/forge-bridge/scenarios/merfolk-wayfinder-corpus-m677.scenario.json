@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-wayfinder-corpus-m677",
+  "description": "M6 corpus — Merfolk Wayfinder; in-hand parse.",
+  "seed": 65031,
+  "cards": {
+    "Merfolk Wayfinder": "Name:Merfolk Wayfinder\nManaCost:2 U\nTypes:Creature Merfolk Scout\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top three cards of your library. Put all Island cards revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ All | ChangeValid$ Island\nOracle:Flying\\nWhen Merfolk Wayfinder enters, reveal the top three cards of your library. Put all Island cards revealed this way into your hand and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Wayfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

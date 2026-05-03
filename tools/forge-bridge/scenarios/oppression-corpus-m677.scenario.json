@@ -1,0 +1,25 @@
+{
+  "id": "oppression-corpus-m677",
+  "description": "M6 corpus — Oppression; ETB-on-bf.",
+  "seed": 66358,
+  "cards": {
+    "Oppression": "Name:Oppression\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever a player casts a spell, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredActivator | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a spell, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oppression"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

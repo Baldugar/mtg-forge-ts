@@ -1,0 +1,23 @@
+{
+  "id": "gravedig-corpus-m677",
+  "description": "M6 corpus — Gravedig; in-hand parse.",
+  "seed": 61665,
+  "cards": {
+    "Gravedig": "Name:Gravedig\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBToken,DBChangeZone | Defined$ You\nSVar:DBToken:DB$ Token | ValidTgts$ Player | TokenScript$ b_2_2_zombie | TokenOwner$ TargetedPlayer | StackDescription$ SpellDescription | SpellDescription$ Target player creates a 2/2 black Zombie creature token.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature in your graveyard | SpellDescription$ Return target creature card from your graveyard to your hand.\nK:Entwine:2\nDeckHas:Ability$Token|Graveyard & Type$Zombie\nOracle:Choose one —\\n• Target player creates a 2/2 black Zombie creature token.\\n• Return target creature card from your graveyard to your hand.\\nEntwine {2} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravedig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "psychic-miasma-corpus-m677",
+  "description": "M6 corpus — Psychic Miasma; in-hand parse.",
+  "seed": 67317,
+  "cards": {
+    "Psychic Miasma": "Name:Psychic Miasma\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Player | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBChangeZone | SpellDescription$ Target player discards a card. If a land card is discarded this way, return CARDNAME to its owner's hand.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Hand | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target player discards a card. If a land card is discarded this way, return Psychic Miasma to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Miasma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

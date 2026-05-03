@@ -1,0 +1,23 @@
+{
+  "id": "infectious-rage-corpus-m677",
+  "description": "M6 corpus — Infectious Rage; in-hand parse.",
+  "seed": 62899,
+  "cards": {
+    "Infectious Rage": "Name:Infectious Rage\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ -1 | Description$ Enchanted creature gets +2/-1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EnchantedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted creature dies, choose a creature at random CARDNAME can enchant. Return CARDNAME to the battlefield attached to that creature.\nSVar:TrigChangeZone:DB$ ChooseCard | AtRandom$ True | Choices$ Creature.CanBeEnchantedBy | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | AttachedTo$ ChosenCard | GainControl$ True\nOracle:Enchant creature\\nEnchanted creature gets +2/-1.\\nWhen enchanted creature dies, choose a creature at random Infectious Rage can enchant. Return Infectious Rage to the battlefield attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infectious Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

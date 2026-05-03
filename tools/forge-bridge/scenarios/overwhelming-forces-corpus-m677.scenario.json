@@ -1,0 +1,23 @@
+{
+  "id": "overwhelming-forces-corpus-m677",
+  "description": "M6 corpus — Overwhelming Forces; in-hand parse.",
+  "seed": 66512,
+  "cards": {
+    "Overwhelming Forces": "Name:Overwhelming Forces\nManaCost:6 B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | ValidTgts$ Opponent | RememberDestroyed$ True | SubAbility$ DBDrawCard | SpellDescription$ Destroy all creatures target opponent controls. Draw a card for each creature destroyed this way.\nSVar:DBDrawCard:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Destroy all creatures target opponent controls. Draw a card for each creature destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overwhelming Forces"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stomp-and-howl-corpus-m677",
+  "description": "M6 corpus — Stomp and Howl; in-hand parse.",
+  "seed": 71036,
+  "cards": {
+    "Stomp and Howl": "Name:Stomp and Howl\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Artifact | AILogic$ Destroy | IsCurse$ True | SubAbility$ DestroyEnch | SpellDescription$ Destroy target artifact and target enchantment. | StackDescription$ None\nSVar:DestroyEnch:DB$ Pump | ValidTgts$ Enchantment | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nOracle:Destroy target artifact and target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stomp and Howl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

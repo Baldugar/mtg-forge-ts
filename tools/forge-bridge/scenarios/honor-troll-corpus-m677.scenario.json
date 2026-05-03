@@ -1,0 +1,25 @@
+{
+  "id": "honor-troll-corpus-m677",
+  "description": "M6 corpus — Honor Troll; ETB-on-bf.",
+  "seed": 62465,
+  "cards": {
+    "Honor Troll": "Name:Honor Troll\nManaCost:2 G\nTypes:Creature Troll Druid\nPT:2/3\nK:Vigilance\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GainLife | AILogic$ DoubleLife | Description$ If you would gain life, you gain that much life plus 1 instead.\nSVar:GainLife:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nSVar:X:ReplaceCount$LifeGained/Plus.1\nSVar:PlayMain1:True\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 1 | CheckSVar$ Y | SVarCompare$ GE25 | Description$ CARDNAME gets +2/+1 as long as you have 25 or more life.\nSVar:Y:Count$YourLifeTotal\nDeckHints:Ability$LifeGain\nOracle:Vigilance\\nIf you would gain life, you gain that much life plus 1 instead.\\nHonor Troll gets +2/+1 as long as you have 25 or more life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Honor Troll"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

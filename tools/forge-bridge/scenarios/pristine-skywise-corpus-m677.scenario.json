@@ -1,0 +1,25 @@
+{
+  "id": "pristine-skywise-corpus-m677",
+  "description": "M6 corpus — Pristine Skywise; ETB-on-bf.",
+  "seed": 67235,
+  "cards": {
+    "Pristine Skywise": "Name:Pristine Skywise\nManaCost:4 W U\nTypes:Creature Dragon\nPT:6/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a noncreature spell, untap CARDNAME. It gains protection from the color of your choice until end of turn.\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ DBProtection\nSVar:DBProtection:DB$ Protection | Defined$ Self | Gains$ Choice | Choices$ AnyColor\nSVar:BuffedBy:Card.nonLand+nonCreature\nOracle:Flying\\nWhenever you cast a noncreature spell, untap Pristine Skywise. It gains protection from the color of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pristine Skywise"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

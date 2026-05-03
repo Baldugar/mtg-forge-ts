@@ -1,0 +1,23 @@
+{
+  "id": "reins-of-the-vinesteed-corpus-m677",
+  "description": "M6 corpus — Reins of the Vinesteed; in-hand parse.",
+  "seed": 67978,
+  "cards": {
+    "Reins of the Vinesteed": "Name:Reins of the Vinesteed\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | OptionalDecider$ You | Execute$ DBReturn | TriggerDescription$ When enchanted creature dies, you may return CARDNAME from your graveyard to the battlefield attached to a creature that shares a creature type with that creature.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | AttachedTo$ Creature.sharesCreatureTypeWith TriggeredCardLKICopy | AILogic$ Pump\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature gets +2/+2.\\nWhen enchanted creature dies, you may return Reins of the Vinesteed from your graveyard to the battlefield attached to a creature that shares a creature type with that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reins of the Vinesteed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

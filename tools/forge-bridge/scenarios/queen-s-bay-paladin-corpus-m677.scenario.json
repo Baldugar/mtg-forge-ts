@@ -1,0 +1,23 @@
+{
+  "id": "queen-s-bay-paladin-corpus-m677",
+  "description": "M6 corpus — Queen's Bay Paladin; in-hand parse.",
+  "seed": 67456,
+  "cards": {
+    "Queen's Bay Paladin": "Name:Queen's Bay Paladin\nManaCost:3 B B\nTypes:Creature Vampire Knight\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Whenever CARDNAME enters or attacks, return up to one target Vampire card from your graveyard to the battlefield with a finality counter on it. You lose life equal to its mana value. (If a creature with a finality counter on it would die, exile it instead.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, return up to one target Vampire card from your graveyard to the battlefield with a finality counter on it. You lose life equal to its mana value. (If a creature with a finality counter on it would die, exile it instead.)\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Vampire.YouOwn | WithCountersType$ FINALITY | WithCountersAmount$ 1 | TgtPrompt$ Select target Vampire in your graveyard | RememberChanged$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nSVar:HasAttackEffect:TRUE\nDeckNeeds:Type$Vampire\nDeckHints:Ability$Graveyard|Mill\nOracle:Whenever Queen's Bay Paladin enters or attacks, return up to one target Vampire card from your graveyard to the battlefield with a finality counter on it. You lose life equal to its mana value. (If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Queen's Bay Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

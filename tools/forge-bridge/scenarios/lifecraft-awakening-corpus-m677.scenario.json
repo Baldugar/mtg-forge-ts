@@ -1,0 +1,23 @@
+{
+  "id": "lifecraft-awakening-corpus-m677",
+  "description": "M6 corpus — Lifecraft Awakening; in-hand parse.",
+  "seed": 64208,
+  "cards": {
+    "Lifecraft Awakening": "Name:Lifecraft Awakening\nManaCost:X G\nTypes:Instant\nA:SP$ PutCounter | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact you control | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBAnimate | SpellDescription$ Put X +1/+1 counters on target artifact you control. If it isn't a creature or Vehicle, it becomes a 0/0 Construct artifact creature.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted.nonCreature+nonVehicle | Power$ 0 | Toughness$ 0 | Types$ Artifact,Creature,Construct | Duration$ Permanent\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Put X +1/+1 counters on target artifact you control. If it isn't a creature or Vehicle, it becomes a 0/0 Construct artifact creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lifecraft Awakening"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

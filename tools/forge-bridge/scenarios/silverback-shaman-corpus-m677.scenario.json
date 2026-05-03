@@ -1,0 +1,23 @@
+{
+  "id": "silverback-shaman-corpus-m677",
+  "description": "M6 corpus — Silverback Shaman; in-hand parse.",
+  "seed": 69919,
+  "cards": {
+    "Silverback Shaman": "Name:Silverback Shaman\nManaCost:3 G G\nTypes:Creature Ape Shaman\nPT:5/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nSVar:SacMe:1\nOracle:Trample\\nWhen Silverback Shaman dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silverback Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

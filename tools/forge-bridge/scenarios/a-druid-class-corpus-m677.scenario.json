@@ -1,0 +1,23 @@
+{
+  "id": "a-druid-class-corpus-m677",
+  "description": "M6 corpus — A-Druid Class; in-hand parse.",
+  "seed": 68722,
+  "cards": {
+    "A-Druid Class": "Name:A-Druid Class\nManaCost:1 G\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Landfall — Whenever a land you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nK:Class:2:2 G:AddStaticAbility$ SLandPlay\nSVar:SLandPlay:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Secondary$ True | Description$ You may play an additional land on each of your turns.\nK:Class:3:2 G:AddTrigger$ TriggerClassLevel\nSVar:TriggerClassLevel:Mode$ ClassLevelGained | ClassLevel$ 3 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigAnimateLand | Secondary$ True | TriggerDescription$ When this Class becomes level 3, target land you control becomes a creature with haste and \"This creature's power and toughness are each equal to the number of lands you control.\" It's still a land.\nSVar:TrigAnimateLand:DB$ Animate | ValidTgts$ Land.YouCtrl | Types$ Creature | Duration$ Permanent | Keywords$ Haste | staticAbilities$ StLandPT\nSVar:StLandPT:Mode$ Continuous | EffectZone$ All | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ This creature's power and toughness are each equal to the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nDeckHas:Ability$LifeGain\nOracle:(Gain the next level as a sorcery to add its ability.)\\nLandfall — Whenever a land you control enters, you gain 1 life.\\n{2}{G}: Level 2\\nYou may play an additional land on each of your turns.\\n{2}{G}: Level 3\\nWhen this Class becomes level 3, target land you control becomes a creature with haste and \"This creature's power and toughness are each equal to the number of lands you control.\" It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Druid Class"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

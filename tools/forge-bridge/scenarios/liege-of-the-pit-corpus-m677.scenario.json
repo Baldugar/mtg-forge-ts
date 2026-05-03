@@ -1,0 +1,23 @@
+{
+  "id": "liege-of-the-pit-corpus-m677",
+  "description": "M6 corpus — Liege of the Pit; in-hand parse.",
+  "seed": 64195,
+  "cards": {
+    "Liege of the Pit": "Name:Liege of the Pit\nManaCost:5 B B B\nTypes:Creature Demon\nPT:7/7\nK:Flying\nK:Trample\nK:Morph:B B B B\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature other than CARDNAME. If you can't, CARDNAME deals 7 damage to you.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature.Other | SubAbility$ DBDamage | RememberSacrificed$ True\nSVar:DBDamage:DB$ DealDamage | Defined$ You | NumDmg$ 7 | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nOracle:Flying, trample\\nAt the beginning of your upkeep, sacrifice a creature other than Liege of the Pit. If you can't, Liege of the Pit deals 7 damage to you.\\nMorph {B}{B}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liege of the Pit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "nephalia-smuggler-corpus-m677",
+  "description": "M6 corpus — Nephalia Smuggler; ETB-on-bf.",
+  "seed": 65840,
+  "cards": {
+    "Nephalia Smuggler": "Name:Nephalia Smuggler\nManaCost:U\nTypes:Creature Human Rogue\nPT:1/1\nA:AB$ ChangeZone | Cost$ 3 U T | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | Origin$ Battlefield | Destination$ Exile | SubAbility$ SmuggleIn | RememberTargets$ True | SpellDescription$ Exile another target creature you control, then return that card to the battlefield under your control.\nSVar:SmuggleIn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{3}{U}, {T}: Exile another target creature you control, then return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nephalia Smuggler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "now-for-wrath-now-for-ruin-corpus-m677",
+  "description": "M6 corpus — Now for Wrath, Now for Ruin!; in-hand parse.",
+  "seed": 66082,
+  "cards": {
+    "Now for Wrath, Now for Ruin!": "Name:Now for Wrath, Now for Ruin!\nManaCost:3 W\nTypes:Sorcery\nA:SP$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpAll | SpellDescription$ Put a +1/+1 counter on each creature you control. They gain vigilance until end of turn. The Ring tempts you.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance | SubAbility$ TrigTempt\nSVar:TrigTempt:DB$ RingTemptsYou\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on each creature you control. They gain vigilance until end of turn. The Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Now for Wrath, Now for Ruin!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

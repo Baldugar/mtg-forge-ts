@@ -1,0 +1,25 @@
+{
+  "id": "island-sanctuary-corpus-m677",
+  "description": "M6 corpus — Island Sanctuary; ETB-on-bf.",
+  "seed": 63158,
+  "cards": {
+    "Island Sanctuary": "Name:Island Sanctuary\nManaCost:1 W\nTypes:Enchantment\nR:Event$ Draw | ActiveZones$ Battlefield | ActivePhases$ Draw | PlayerTurn$ True | ValidPlayer$ You | Optional$ True | ReplaceWith$ SanctuaryEffect | Description$ If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can't be attacked except by creatures with flying and/or islandwalk.\nSVar:SanctuaryEffect:DB$ Effect | StaticAbilities$ IslandRetreat | Duration$ UntilYourNextTurn\nSVar:IslandRetreat:Mode$ CantAttack | ValidCard$ Creature.withoutFlying+!hasKeywordLandwalk:Island | Target$ You | Description$ Creatures without flying and/or islandwalk can't attack you.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:If you would draw a card during your draw step, instead you may skip that draw. If you do, until your next turn, you can't be attacked except by creatures with flying and/or islandwalk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Island Sanctuary"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

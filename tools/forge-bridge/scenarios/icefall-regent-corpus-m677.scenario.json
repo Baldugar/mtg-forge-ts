@@ -1,0 +1,23 @@
+{
+  "id": "icefall-regent-corpus-m677",
+  "description": "M6 corpus — Icefall Regent; in-hand parse.",
+  "seed": 62694,
+  "cards": {
+    "Icefall Regent": "Name:Icefall Regent\nManaCost:3 U U\nTypes:Creature Dragon\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls. That creature doesn't untap for as long as you control CARDNAME.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | ReplacementEffects$ DontUntap | Duration$ AsLongAsControl\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ That creature doesn't untap during its controller's untap step for as long as you control EFFECTSOURCE.\nS:Mode$ RaiseCost | ValidTarget$ Card.Self | Activator$ Opponent | Type$ Spell | Amount$ 2 | Description$ Spells your opponents cast that target CARDNAME cost {2} more to cast.\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Icefall Regent enters, tap target creature an opponent controls. That creature doesn't untap during its controller's untap step for as long as you control Icefall Regent.\\nSpells your opponents cast that target Icefall Regent cost {2} more to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icefall Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

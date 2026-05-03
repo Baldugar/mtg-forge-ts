@@ -1,0 +1,23 @@
+{
+  "id": "sudden-demise-corpus-m677",
+  "description": "M6 corpus — Sudden Demise; in-hand parse.",
+  "seed": 71258,
+  "cards": {
+    "Sudden Demise": "Name:Sudden Demise\nManaCost:X R\nTypes:Sorcery\nA:SP$ ChooseColor | AILogic$ MostProminentHumanCreatures | SubAbility$ DBDmg | SpellDescription$ Choose a color. CARDNAME deals X damage to each creature of the chosen color.\nSVar:DBDmg:DB$ DamageAll | NumDmg$ X | ValidCards$ Creature.ChosenColor | ValidDescription$ each creature of the chosen color.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Choose a color. Sudden Demise deals X damage to each creature of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sudden Demise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

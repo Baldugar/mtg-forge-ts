@@ -1,0 +1,23 @@
+{
+  "id": "goblin-pyromancer-corpus-m677",
+  "description": "M6 corpus — Goblin Pyromancer; in-hand parse.",
+  "seed": 61452,
+  "cards": {
+    "Goblin Pyromancer": "Name:Goblin Pyromancer\nManaCost:3 R\nTypes:Creature Goblin Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, Goblin creatures get +3/+0 until end of turn.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ At the beginning of the end step, destroy all Goblins.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.Goblin | NumAtt$ +3\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.Goblin\nAI:RemoveDeck:Random\nOracle:When Goblin Pyromancer enters, Goblin creatures get +3/+0 until end of turn.\\nAt the beginning of the end step, destroy all Goblins.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Pyromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

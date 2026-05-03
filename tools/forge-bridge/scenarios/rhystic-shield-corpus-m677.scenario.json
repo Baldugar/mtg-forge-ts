@@ -1,0 +1,23 @@
+{
+  "id": "rhystic-shield-corpus-m677",
+  "description": "M6 corpus — Rhystic Shield; in-hand parse.",
+  "seed": 68231,
+  "cards": {
+    "Rhystic Shield": "Name:Rhystic Shield\nManaCost:1 W\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumDef$ +1 | SubAbility$ DBPumpAll | SpellDescription$ Creatures you control get +0/+1 until end of turn. They get an additional +0/+2 until end of turn unless any player pays {2}.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumDef$ +2 | UnlessCost$ 2 | UnlessPayer$ Player\nAI:RemoveDeck:All\nOracle:Creatures you control get +0/+1 until end of turn. They get an additional +0/+2 until end of turn unless any player pays {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rhystic Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

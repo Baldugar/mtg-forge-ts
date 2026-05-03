@@ -1,0 +1,23 @@
+{
+  "id": "moonring-mirror-corpus-m677",
+  "description": "M6 corpus — Moonring Mirror; in-hand parse.",
+  "seed": 65472,
+  "cards": {
+    "Moonring Mirror": "Name:Moonring Mirror\nManaCost:5\nTypes:Artifact\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you draw a card, exile the top card of your library face down.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ You | DestinationZone$ Exile | ExileFaceDown$ True\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChangeHandExile | TriggerDescription$ At the beginning of your upkeep, you may exile all cards from your hand face down. If you do, put all other cards you own exiled with CARDNAME into your hand.\nSVar:TrigChangeHandExile:DB$ ChangeZoneAll | Origin$ Hand | Destination$ Exile | ExileFaceDown$ True | ChangeType$ Card.YouCtrl | Imprint$ True | SubAbility$ ChangeBack\nSVar:ChangeBack:DB$ ChangeZoneAll | ChangeType$ Card.!IsImprinted+ExiledWithSource+YouOwn | Origin$ Exile | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nAI:RemoveDeck:All\nOracle:Whenever you draw a card, exile the top card of your library face down.\\nAt the beginning of your upkeep, you may exile all cards from your hand face down. If you do, put all other cards you own exiled with Moonring Mirror into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonring Mirror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

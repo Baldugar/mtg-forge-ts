@@ -1,0 +1,23 @@
+{
+  "id": "soulstealer-axe-corpus-m677",
+  "description": "M6 corpus — Soulstealer Axe; in-hand parse.",
+  "seed": 70489,
+  "cards": {
+    "Soulstealer Axe": "Name:Soulstealer Axe\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Trample | Description$ Equipped creature has trample.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSeek | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, seek a card with mana value equal to that damage.\nSVar:TrigSeek:DB$ Seek | Type$ Card.cmcEQX\nSVar:X:TriggerCount$DamageAmount\nK:Equip:2\nOracle:Equipped creature has trample.\\nWhenever equipped creature deals combat damage to a player, seek a card with mana value equal to that damage.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulstealer Axe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

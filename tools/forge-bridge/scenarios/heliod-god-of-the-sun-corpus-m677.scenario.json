@@ -1,0 +1,25 @@
+{
+  "id": "heliod-god-of-the-sun-corpus-m677",
+  "description": "M6 corpus — Heliod, God of the Sun; ETB-on-bf.",
+  "seed": 62225,
+  "cards": {
+    "Heliod, God of the Sun": "Name:Heliod, God of the Sun\nManaCost:3 W\nTypes:Legendary Enchantment Creature God\nPT:5/6\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT5 | Description$ As long as your devotion to white is less than 5, NICKNAME isn't a creature. (Each {W} in the mana costs of permanents you control counts towards your devotion to white.)\nSVar:X:Count$Devotion.White\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Vigilance | Description$ Other creatures you control have vigilance.\nA:AB$ Token | Cost$ 2 W W | TokenScript$ w_2_1_e_cleric | TokenOwner$ You | SpellDescription$ Create a 2/1 white Cleric enchantment creature token.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Permanent.White\nOracle:Indestructible\\nAs long as your devotion to white is less than five, Heliod isn't a creature. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)\\nOther creatures you control have vigilance.\\n{2}{W}{W}: Create a 2/1 white Cleric enchantment creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Heliod, God of the Sun"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

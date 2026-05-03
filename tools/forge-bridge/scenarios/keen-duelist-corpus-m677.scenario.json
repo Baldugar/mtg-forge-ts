@@ -1,0 +1,23 @@
+{
+  "id": "keen-duelist-corpus-m677",
+  "description": "M6 corpus — Keen Duelist; in-hand parse.",
+  "seed": 63549,
+  "cards": {
+    "Keen Duelist": "Name:Keen Duelist\nManaCost:1 B\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigReveal | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you and target opponent each reveal the top card of your library. You each lose life equal to the mana value of the card revealed by the other player. You each put the card you revealed into your hand.\nSVar:TrigReveal:DB$ PeekAndReveal | NoPeek$ True | ValidTgts$ Opponent | Defined$ TargetedAndYou | RememberRevealed$ True | SubAbility$ DBRepeatEach\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ TargetedAndYou | RepeatSubAbility$ DBLoseLife | SubAbility$ DBChangeZoneAll\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidLibrary Card.IsRemembered+!RememberedPlayerCtrl$CardManaCost\nOracle:At the beginning of your upkeep, you and target opponent each reveal the top card of your library. You each lose life equal to the mana value of the card revealed by the other player. You each put the card you revealed into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keen Duelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

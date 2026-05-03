@@ -1,0 +1,23 @@
+{
+  "id": "hour-of-promise-corpus-m677",
+  "description": "M6 corpus — Hour of Promise; in-hand parse.",
+  "seed": 62536,
+  "cards": {
+    "Hour of Promise": "Name:Hour of Promise\nManaCost:4 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land | ChangeNum$ 2 | SubAbility$ DBToken | SpellDescription$ Search your library for up to two land cards, put them onto the battlefield tapped, then shuffle. Then if you control three or more Deserts, create two 2/2 black Zombie creature tokens.\nSVar:DBToken:DB$ Token | ConditionPresent$ Desert.YouCtrl | ConditionCompare$ GE3 | TokenAmount$ 2 | TokenScript$ b_2_2_zombie | TokenOwner$ You\nDeckHints:Type$Desert\nOracle:Search your library for up to two land cards, put them onto the battlefield tapped, then shuffle. Then if you control three or more Deserts, create two 2/2 black Zombie creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hour of Promise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

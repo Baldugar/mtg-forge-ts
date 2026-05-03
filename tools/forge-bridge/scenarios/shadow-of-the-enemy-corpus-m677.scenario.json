@@ -1,0 +1,23 @@
+{
+  "id": "shadow-of-the-enemy-corpus-m677",
+  "description": "M6 corpus — Shadow of the Enemy; in-hand parse.",
+  "seed": 69551,
+  "cards": {
+    "Shadow of the Enemy": "Name:Shadow of the Enemy\nManaCost:3 B B B\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Creature | RememberChanged$ True | SubAbility$ DBMayPlay | SpellDescription$ Exile all creature cards from target player's graveyard. You may cast spells from among those cards for as long as they remain exiled, and mana of any type can be spent to cast them.\nSVar:DBMayPlay:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ MayPlay | SubAbility$ DBCleanup | Duration$ Permanent | ForgetOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast spells from among those cards for as long as they remain exiled, and mana of any type can be spent to cast them.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:Exile all creature cards from target player's graveyard. You may cast spells from among those cards for as long as they remain exiled, and mana of any type can be spent to cast them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadow of the Enemy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

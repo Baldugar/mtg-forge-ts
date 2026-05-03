@@ -1,0 +1,23 @@
+{
+  "id": "sever-soul-corpus-m677",
+  "description": "M6 corpus — Sever Soul; in-hand parse.",
+  "seed": 69527,
+  "cards": {
+    "Sever Soul": "Name:Sever Soul\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | NoRegen$ True | SubAbility$ DBGainLife | SpellDescription$ Destroy target nonblack creature. It can't be regenerated. You gain life equal to its toughness.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardToughness\nOracle:Destroy target nonblack creature. It can't be regenerated. You gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sever Soul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

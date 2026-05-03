@@ -1,0 +1,23 @@
+{
+  "id": "order-of-yawgmoth-corpus-m677",
+  "description": "M6 corpus — Order of Yawgmoth; in-hand parse.",
+  "seed": 66406,
+  "cards": {
+    "Order of Yawgmoth": "Name:Order of Yawgmoth\nManaCost:2 B B\nTypes:Creature Phyrexian Zombie Knight\nPT:2/2\nK:Fear\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nWhenever Order of Yawgmoth deals damage to a player, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Order of Yawgmoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

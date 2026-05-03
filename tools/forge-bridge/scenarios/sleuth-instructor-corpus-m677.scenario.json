@@ -1,0 +1,25 @@
+{
+  "id": "sleuth-instructor-corpus-m677",
+  "description": "M6 corpus — Sleuth Instructor; ETB-on-bf.",
+  "seed": 70204,
+  "cards": {
+    "Sleuth Instructor": "Name:Sleuth Instructor\nManaCost:1 W\nTypes:Creature Elephant Detective\nPT:3/2\nK:Disguise:1 W\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigSeek | TriggerZones$ Battlefield | GameActivationLimit$ 1 | TriggerDescription$ Whenever CARDNAME or another creature you control is turned face up, seek a non-Elephant creature card with mana value 3 or less and cloak it. This ability triggers only once.\nSVar:TrigSeek:DB$ Seek | Type$ Creature.nonElephant+cmcLE3 | RememberFound$ True | SubAbility$ DBCloak\nSVar:DBCloak:DB$ Cloak | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Keyword$Morph|Megamorph|Disguise\nOracle:Disguise {1}{W}\\nWhenever Sleuth Instructor or another permanent you control is turned face up, seek a non-Elephant creature card with mana value 3 or less and cloak it. This ability triggers only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sleuth Instructor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

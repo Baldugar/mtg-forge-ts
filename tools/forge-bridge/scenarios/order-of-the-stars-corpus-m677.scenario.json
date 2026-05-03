@@ -1,0 +1,23 @@
+{
+  "id": "order-of-the-stars-corpus-m677",
+  "description": "M6 corpus — Order of the Stars; in-hand parse.",
+  "seed": 66403,
+  "cards": {
+    "Order of the Stars": "Name:Order of the Stars\nManaCost:W\nTypes:Creature Human Cleric\nPT:0/1\nK:Defender\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInHumanDeck\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Card.ChosenColor:chosenColor | Description$ CARDNAME has protection from the chosen color.\nOracle:Defender (This creature can't attack.)\\nAs Order of the Stars enters, choose a color.\\nOrder of the Stars has protection from the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Order of the Stars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

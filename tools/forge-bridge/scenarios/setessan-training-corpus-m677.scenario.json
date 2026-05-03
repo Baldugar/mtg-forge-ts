@@ -1,0 +1,23 @@
+{
+  "id": "setessan-training-corpus-m677",
+  "description": "M6 corpus — Setessan Training; in-hand parse.",
+  "seed": 69519,
+  "cards": {
+    "Setessan Training": "Name:Setessan Training\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddKeyword$ Trample | Description$ Enchanted creature gets +1/+0 and has trample. (It can deal excess combat damage to the player or planeswalker it's attacking.)\nOracle:Enchant creature you control\\nWhen Setessan Training enters, draw a card.\\nEnchanted creature gets +1/+0 and has trample. (It can deal excess combat damage to the player or planeswalker it's attacking.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Setessan Training"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

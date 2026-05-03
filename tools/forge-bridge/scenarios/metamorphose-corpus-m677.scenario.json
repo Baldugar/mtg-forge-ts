@@ -1,0 +1,23 @@
+{
+  "id": "metamorphose-corpus-m677",
+  "description": "M6 corpus — Metamorphose; in-hand parse.",
+  "seed": 65058,
+  "cards": {
+    "Metamorphose": "Name:Metamorphose\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SubAbility$ DBChange | SpellDescription$ Put target permanent an opponent controls on top of its owner's library. That opponent may put an artifact, creature, enchantment, or land card from their hand onto the battlefield.\nSVar:DBChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact,Creature,Enchantment,Land | DefinedPlayer$ TargetedController | ChangeNum$ 1\nAI:RemoveDeck:All\nOracle:Put target permanent an opponent controls on top of its owner's library. That opponent may put an artifact, creature, enchantment, or land card from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Metamorphose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

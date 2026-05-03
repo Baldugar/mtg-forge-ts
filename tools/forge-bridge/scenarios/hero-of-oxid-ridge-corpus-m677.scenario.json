@@ -1,0 +1,23 @@
+{
+  "id": "hero-of-oxid-ridge-corpus-m677",
+  "description": "M6 corpus — Hero of Oxid Ridge; in-hand parse.",
+  "seed": 62293,
+  "cards": {
+    "Hero of Oxid Ridge": "Name:Hero of Oxid Ridge\nManaCost:2 R R\nTypes:Creature Human Knight\nPT:4/2\nK:Haste\nK:Battle cry\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ When CARDNAME attacks, creatures with power 1 or less can't block this turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ KWPump\nSVar:KWPump:Mode$ Continuous | Affected$ Creature.powerLE1 | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures with power 1 or less can't block this turn.\nOracle:Haste\\nBattle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\\nWhenever Hero of Oxid Ridge attacks, creatures with power 1 or less can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hero of Oxid Ridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

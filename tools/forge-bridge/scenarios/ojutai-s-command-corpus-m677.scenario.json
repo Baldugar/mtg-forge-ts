@@ -1,0 +1,23 @@
+{
+  "id": "ojutai-s-command-corpus-m677",
+  "description": "M6 corpus — Ojutai's Command; in-hand parse.",
+  "seed": 66252,
+  "cards": {
+    "Ojutai's Command": "Name:Ojutai's Command\nManaCost:2 W U\nTypes:Instant\nA:SP$ Charm | Choices$ DBReturn,DBGainLife,DBCounter,DBDraw | CharmNum$ 2\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE2 | TgtPrompt$ Select target creature card with mana value 2 or less | SpellDescription$ Return target creature card with mana value 2 or less from your graveyard to the battlefield.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Creature | SpellDescription$ Counter target creature spell.\nSVar:DBDraw:DB$ Draw | Defined$ You | AILogic$ Good | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:Choose two —\\n• Return target creature card with mana value 2 or less from your graveyard to the battlefield.\\n• You gain 4 life.\\n• Counter target creature spell.\\n• Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ojutai's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

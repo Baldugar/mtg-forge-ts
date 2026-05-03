@@ -1,0 +1,25 @@
+{
+  "id": "hive-mind-corpus-m677",
+  "description": "M6 corpus — Hive Mind; ETB-on-bf.",
+  "seed": 62409,
+  "cards": {
+    "Hive Mind": "Name:Hive Mind\nManaCost:5 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ Player | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts an instant or sorcery spell, each other player copies that spell. Each of those players may choose new targets for their copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ NonTriggeredCardController | MayChooseTarget$ True\nAI:RemoveDeck:Random\nOracle:Whenever a player casts an instant or sorcery spell, each other player copies that spell. Each of those players may choose new targets for their copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hive Mind"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hoarding-dragon-corpus-m677",
+  "description": "M6 corpus — Hoarding Dragon; in-hand parse.",
+  "seed": 62416,
+  "cards": {
+    "Hoarding Dragon": "Name:Hoarding Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an artifact card, exile it, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Artifact | ChangeNum$ 1 | RememberChanged$ True | ShuffleNonMandatory$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may put the exiled card into its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand\nOracle:Flying\\nWhen Hoarding Dragon enters, you may search your library for an artifact card, exile it, then shuffle.\\nWhen Hoarding Dragon dies, you may put the exiled card into its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoarding Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

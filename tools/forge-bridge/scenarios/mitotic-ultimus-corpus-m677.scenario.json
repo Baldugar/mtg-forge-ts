@@ -1,0 +1,23 @@
+{
+  "id": "mitotic-ultimus-corpus-m677",
+  "description": "M6 corpus — Mitotic Ultimus; in-hand parse.",
+  "seed": 65328,
+  "cards": {
+    "Mitotic Ultimus": "Name:Mitotic Ultimus\nManaCost:7 G G\nTypes:Legendary Creature Ooze Giant\nPT:8/8\nK:Trample\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the greatest power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME dies, conjure two cards named Mitotic Slime onto the battlefield.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Mitotic Slime | Amount$ 2 | Zone$ Battlefield\nDeckHas:Ability$Token\nOracle:This spell costs {X} less to cast, where X is the greatest power among creatures you control.\\nTrample\\nWhen Mitotic Ultimus dies, conjure two cards named Mitotic Slime onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mitotic Ultimus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

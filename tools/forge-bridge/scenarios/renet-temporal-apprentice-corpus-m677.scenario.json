@@ -1,0 +1,23 @@
+{
+  "id": "renet-temporal-apprentice-corpus-m677",
+  "description": "M6 corpus — Renet, Temporal Apprentice; in-hand parse.",
+  "seed": 68051,
+  "cards": {
+    "Renet, Temporal Apprentice": "Name:Renet, Temporal Apprentice\nManaCost:3 U U\nTypes:Legendary Creature Human Wizard\nPT:4/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When NICKNAME enters, return each other nonland permanent that entered this turn to its owner's hand.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Hand | ChangeType$ Permanent.Other+nonLand+ThisTurnEntered\nOracle:Flash\\nWhen Renet enters, return each other nonland permanent that entered this turn to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renet, Temporal Apprentice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

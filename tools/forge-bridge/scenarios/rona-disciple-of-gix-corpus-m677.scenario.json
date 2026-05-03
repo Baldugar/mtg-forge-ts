@@ -1,0 +1,23 @@
+{
+  "id": "rona-disciple-of-gix-corpus-m677",
+  "description": "M6 corpus — Rona, Disciple of Gix; in-hand parse.",
+  "seed": 68487,
+  "cards": {
+    "Rona, Disciple of Gix": "Name:Rona, Disciple of Gix\nManaCost:1 U B\nTypes:Legendary Creature Human Artificer\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ HistoricExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile target historic card from your graveyard. (Artifacts, legendaries, and Sagas are historic.)\nSVar:HistoricExile:DB$ ChangeZone | ValidTgts$ Card.Historic+YouOwn | TgtPrompt$ Select target historic card from your graveyard | Origin$ Graveyard | Destination$ Exile\nS:Mode$ Continuous | MayPlay$ True | Affected$ Card.nonLand+ExiledWithSource | AffectedZone$ Exile | Description$ You may cast spells from among cards exiled with NICKNAME.\nA:AB$ Dig | Cost$ 4 T | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | SpellDescription$ Exile the top card of your library.\nOracle:When Rona, Disciple of Gix enters, you may exile target historic card from your graveyard. (Artifacts, legendaries, and Sagas are historic.)\\nYou may cast spells from among cards exiled with Rona.\\n{4}, {T}: Exile the top card of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rona, Disciple of Gix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

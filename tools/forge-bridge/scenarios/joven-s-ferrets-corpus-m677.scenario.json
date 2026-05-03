@@ -1,0 +1,23 @@
+{
+  "id": "joven-s-ferrets-corpus-m677",
+  "description": "M6 corpus — Joven's Ferrets; in-hand parse.",
+  "seed": 63358,
+  "cards": {
+    "Joven's Ferrets": "Name:Joven's Ferrets\nManaCost:G\nTypes:Creature Ferret\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +0/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumDef$ +2\nT:Mode$ Phase | Phase$ EndCombat | TriggerZones$ Battlefield | Execute$ TrigTapAll | TriggerDescription$ At end of combat, tap all creatures that blocked CARDNAME this turn. They don't untap during their controller's next untap step.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Creature.blockedValidThisTurn Card.StrictlySelf | SubAbility$ TrigPump2\nSVar:TrigPump2:DB$ PumpAll | ValidCards$ Creature.blockedValidThisTurn Card.StrictlySelf | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nOracle:Whenever Joven's Ferrets attacks, it gets +0/+2 until end of turn.\\nAt end of combat, tap all creatures that blocked Joven's Ferrets this turn. They don't untap during their controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Joven's Ferrets"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

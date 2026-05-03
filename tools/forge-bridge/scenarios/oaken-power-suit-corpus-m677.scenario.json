@@ -1,0 +1,25 @@
+{
+  "id": "oaken-power-suit-corpus-m677",
+  "description": "M6 corpus — Oaken Power Suit; ETB-on-bf.",
+  "seed": 66139,
+  "cards": {
+    "Oaken Power Suit": "Name:Oaken Power Suit\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, target creature gets +X/+X until end of turn, where X is the greatest power among creatures you control.\nSVar:TrigCrank:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nOracle:Whenever you crank Oaken Power Suit, target creature gets +X/+X until end of turn, where X is the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oaken Power Suit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "shipwreck-marsh-corpus-m677",
+  "description": "M6 corpus — Shipwreck Marsh; ETB-on-bf.",
+  "seed": 69721,
+  "cards": {
+    "Shipwreck Marsh": "Name:Shipwreck Marsh\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ LT2\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | SpellDescription$ Add {U} or {B}.\nOracle:Shipwreck Marsh enters tapped unless you control two or more other lands.\\n{T}: Add {U} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shipwreck Marsh"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sphere-of-annihilation-corpus-m677",
+  "description": "M6 corpus — Sphere of Annihilation; in-hand parse.",
+  "seed": 70601,
+  "cards": {
+    "Sphere of Annihilation": "Name:Sphere of Annihilation\nManaCost:X B\nTypes:Artifact\nK:etbCounter:VOID:X\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigExileSelf | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, exile CARDNAME, all creatures and planeswalkers with mana value less than or equal to the number of void counters on it, and all creature and planeswalker cards in graveyards with mana value less than or equal to the number of void counters on it.\nSVar:TrigExileSelf:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self | SubAbility$ DBExileAll\nSVar:DBExileAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Creature.cmcLEY,Planeswalker.cmcLEY | SubAbility$ DBExileAllGraveyard\nSVar:DBExileAllGraveyard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Creature.cmcLEY,Planeswalker.cmcLEY\nSVar:X:Count$xPaid\nSVar:Y:Count$CardCounters.VOID\nDeckHas:Ability$Counters\nOracle:Sphere of Annihilation enters with X void counters on it.\\nAt the beginning of your upkeep, exile Sphere of Annihilation, all creatures and planeswalkers with mana value less than or equal to the number of void counters on it, and all creature and planeswalker cards in graveyards with mana value less than or equal to the number of void counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphere of Annihilation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

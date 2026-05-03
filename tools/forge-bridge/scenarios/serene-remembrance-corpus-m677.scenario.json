@@ -1,0 +1,23 @@
+{
+  "id": "serene-remembrance-corpus-m677",
+  "description": "M6 corpus — Serene Remembrance; in-hand parse.",
+  "seed": 69471,
+  "cards": {
+    "Serene Remembrance": "Name:Serene Remembrance\nManaCost:G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Stack | Destination$ Library | Shuffle$ False | RememberChanged$ True | Defined$ Self | SubAbility$ DBShuffleGrave | SpellDescription$ Shuffle CARDNAME and up to three target cards from a single graveyard into their owners' libraries.\nSVar:DBShuffleGrave:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | TargetsWithSameController$ True | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card.Other | Origin$ Graveyard | Destination$ Library | Shuffle$ False | RememberChanged$ True | SubAbility$ DBShuffleChanged\nSVar:DBShuffleChanged:DB$ Shuffle | Defined$ RememberedOwner | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Shuffle Serene Remembrance and up to three target cards from a single graveyard into their owners' libraries.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serene Remembrance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

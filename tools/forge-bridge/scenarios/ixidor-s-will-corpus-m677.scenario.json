@@ -1,0 +1,23 @@
+{
+  "id": "ixidor-s-will-corpus-m677",
+  "description": "M6 corpus — Ixidor's Will; in-hand parse.",
+  "seed": 63190,
+  "cards": {
+    "Ixidor's Will": "Name:Ixidor's Will\nManaCost:2 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ Y | SpellDescription$ Counter target spell unless its controller pays {2} for each Wizard on the battlefield.\nSVar:Y:Count$Valid Wizard.YouCtrl/Twice\nAI:RemoveDeck:Random\nOracle:Counter target spell unless its controller pays {2} for each Wizard on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ixidor's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spellweaver-duo-corpus-m677",
+  "description": "M6 corpus — Spellweaver Duo; in-hand parse.",
+  "seed": 70597,
+  "cards": {
+    "Spellweaver Duo": "Name:Spellweaver Duo\nManaCost:6 U\nTypes:Creature Human Wizard\nPT:4/4\nK:Assist\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target tapped creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | Origin$ Battlefield | Destination$ Hand\nOracle:Assist (Another player can pay up to {6} of this spell's cost.)\\nWhen Spellweaver Duo enters, you may return target tapped creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellweaver Duo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "razor-pendulum-corpus-m677",
+  "description": "M6 corpus — Razor Pendulum; in-hand parse.",
+  "seed": 67794,
+  "cards": {
+    "Razor Pendulum": "Name:Razor Pendulum\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDamage | LifeTotal$ ActivePlayer | LifeAmount$ LE5 | TriggerDescription$ At the beginning of each player's end step, if that player has 5 or less life, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nAI:RemoveDeck:All\nOracle:At the beginning of each player's end step, if that player has 5 or less life, Razor Pendulum deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razor Pendulum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

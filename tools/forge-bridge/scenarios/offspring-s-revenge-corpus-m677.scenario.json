@@ -1,0 +1,23 @@
+{
+  "id": "offspring-s-revenge-corpus-m677",
+  "description": "M6 corpus — Offspring's Revenge; in-hand parse.",
+  "seed": 66222,
+  "cards": {
+    "Offspring's Revenge": "Name:Offspring's Revenge\nManaCost:2 R W B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of combat on your turn, exile target red, white, or black creature card from your graveyard. Create a token that's a copy of that card, except it's 1/1. It gains haste until your next turn.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.Red+YouCtrl,Creature.White+YouCtrl,Creature.Black+YouCtrl | TgtPrompt$ Select target red, white, or black creature card in your graveyard | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | SetPower$ 1 | SetToughness$ 1 | PumpKeywords$ Haste | PumpDuration$ UntilYourNextTurn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:At the beginning of combat on your turn, exile target red, white, or black creature card from your graveyard. Create a token that's a copy of that card, except it's 1/1. It gains haste until your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Offspring's Revenge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

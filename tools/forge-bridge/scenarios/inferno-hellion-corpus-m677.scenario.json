@@ -1,0 +1,23 @@
+{
+  "id": "inferno-hellion-corpus-m677",
+  "description": "M6 corpus — Inferno Hellion; in-hand parse.",
+  "seed": 62913,
+  "cards": {
+    "Inferno Hellion": "Name:Inferno Hellion\nManaCost:3 R\nTypes:Creature Hellion\nPT:7/3\nK:Trample\nT:Mode$ Phase | TriggerZones$ Battlefield | Phase$ End of Turn | IsPresent$ Card.Self+attackedThisTurn,Card.Self+blockedThisTurn | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of each end step, if CARDNAME attacked or blocked this turn, its owner shuffles it into their library.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Library | Shuffle$ True\nOracle:Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\\nAt the beginning of each end step, if Inferno Hellion attacked or blocked this turn, its owner shuffles it into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inferno Hellion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

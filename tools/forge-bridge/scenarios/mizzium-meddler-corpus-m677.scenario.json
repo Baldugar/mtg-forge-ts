@@ -1,0 +1,23 @@
+{
+  "id": "mizzium-meddler-corpus-m677",
+  "description": "M6 corpus — Mizzium Meddler; in-hand parse.",
+  "seed": 65329,
+  "cards": {
+    "Mizzium Meddler": "Name:Mizzium Meddler\nManaCost:2 U\nTypes:Creature Vedalken Wizard\nPT:1/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may change a target of target spell or ability to CARDNAME.\nSVar:TrigChange:DB$ ChangeTargets | TargetType$ Spell,Activated,Triggered | ValidTgts$ Card,Emblem | DefinedMagnet$ Self | ChangeSingleTarget$ True\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Mizzium Meddler enters, you may change a target of target spell or ability to Mizzium Meddler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mizzium Meddler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

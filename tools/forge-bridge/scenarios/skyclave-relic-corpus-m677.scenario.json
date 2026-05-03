@@ -1,0 +1,23 @@
+{
+  "id": "skyclave-relic-corpus-m677",
+  "description": "M6 corpus — Skyclave Relic; in-hand parse.",
+  "seed": 70105,
+  "cards": {
+    "Skyclave Relic": "Name:Skyclave Relic\nManaCost:3\nTypes:Artifact\nK:Kicker:3\nK:Indestructible\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigCopyPermanent | TriggerDescription$ When CARDNAME enters, if it was kicked, create two tapped tokens that are copies of CARDNAME.\nSVar:TrigCopyPermanent:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | NumCopies$ 2 | TokenTapped$ True\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$Token\nOracle:Kicker {3}\\nIndestructible\\nWhen Skyclave Relic enters, if it was kicked, create two tapped tokens that are copies of Skyclave Relic.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyclave Relic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nimblewright-schematic-corpus-m677",
+  "description": "M6 corpus — Nimblewright Schematic; in-hand parse.",
+  "seed": 65981,
+  "cards": {
+    "Nimblewright Schematic": "Name:Nimblewright Schematic\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, create a 1/1 colorless Construct artifact creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Secondary$ True | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or is put into a graveyard from the battlefield, create a 1/1 colorless Construct artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_construct | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:When Nimblewright Schematic enters or is put into a graveyard from the battlefield, create a 1/1 colorless Construct artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nimblewright Schematic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

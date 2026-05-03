@@ -1,0 +1,23 @@
+{
+  "id": "ivory-tower-corpus-m677",
+  "description": "M6 corpus — Ivory Tower; in-hand parse.",
+  "seed": 63178,
+  "cards": {
+    "Ivory Tower": "Name:Ivory Tower\nManaCost:1\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, you gain X life, where X is the number of cards in your hand minus 4.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ValidHand Card.YouOwn/Minus.4\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your upkeep, you gain X life, where X is the number of cards in your hand minus 4.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ivory Tower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kratos-god-of-war-corpus-m677",
+  "description": "M6 corpus — Kratos, God of War; in-hand parse.",
+  "seed": 63868,
+  "cards": {
+    "Kratos, God of War": "Name:Kratos, God of War\nManaCost:R R R\nTypes:Legendary Creature God Warrior\nPT:2/3\nK:Double Strike\nS:Mode$ Continuous | Affected$ Creature | AddKeyword$ Haste | Description$ All creatures have haste.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each player's end step, NICKNAME deals damage to that player equal to the number of creatures that player controls that didn't attack this turn.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$Valid Creature.!attackedThisTurn+ActivePlayerCtrl\nOracle:Double strike\\nAll creatures have haste.\\nAt the beginning of each player's end step, Kratos deals damage to that player equal to the number of creatures that player controls that didn't attack this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kratos, God of War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

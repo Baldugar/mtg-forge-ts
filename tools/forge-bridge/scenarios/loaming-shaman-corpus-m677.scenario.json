@@ -1,0 +1,23 @@
+{
+  "id": "loaming-shaman-corpus-m677",
+  "description": "M6 corpus — Loaming Shaman; in-hand parse.",
+  "seed": 64345,
+  "cards": {
+    "Loaming Shaman": "Name:Loaming Shaman\nManaCost:2 G\nTypes:Creature Centaur Shaman\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target player shuffles any number of target cards from their graveyard into their library.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ X | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | Shuffle$ True | ValidTgts$ Card\nSVar:X:Count$ValidGraveyard Card.OwnedBy TargetedPlayer\nOracle:When Loaming Shaman enters, target player shuffles any number of target cards from their graveyard into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loaming Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

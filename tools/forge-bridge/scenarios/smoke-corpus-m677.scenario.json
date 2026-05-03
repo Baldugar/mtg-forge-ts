@@ -1,0 +1,25 @@
+{
+  "id": "smoke-corpus-m677",
+  "description": "M6 corpus — Smoke; ETB-on-bf.",
+  "seed": 70264,
+  "cards": {
+    "Smoke": "Name:Smoke\nManaCost:R R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Player | AddKeyword$ UntapAdjust:Creature:1 | Description$ Players can't untap more than one creature during their untap steps.\nSVar:NonStackingEffect:True\nDeckHints:Type$Planeswalker|Artifact|Enchantment\nSVar:NeedsToPlayVar:CountOpps GTCountMe\nSVar:CountOpps:Count$Valid Creature.OppCtrl/LimitMax.5\nSVar:CountMe:Count$Valid Creature.YouCtrl\nAI:RemoveDeck:Random\nOracle:Players can't untap more than one creature during their untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Smoke"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

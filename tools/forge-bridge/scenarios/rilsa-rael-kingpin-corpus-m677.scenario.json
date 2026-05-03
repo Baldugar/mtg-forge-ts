@@ -1,0 +1,23 @@
+{
+  "id": "rilsa-rael-kingpin-corpus-m677",
+  "description": "M6 corpus — Rilsa Rael, Kingpin; in-hand parse.",
+  "seed": 68284,
+  "cards": {
+    "Rilsa Rael, Kingpin": "Name:Rilsa Rael, Kingpin\nManaCost:3 U B\nTypes:Legendary Creature Human Rogue\nPT:2/5\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target attacking creature gains deathtouch until end of turn. If you've completed a dungeon, that creature also gets +5/+0 and gains first strike and menace until end of turn.\nSVar:TrigPump:DB$ Pump | KW$ Deathtouch | TgtPrompt$ Select target attacking creature | ValidTgts$ Creature.attacking | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ConditionCheckSVar$ X | NumAtt$ +5 | KW$ First Strike & Menace | Defined$ Targeted\nSVar:X:DungeonsCompleted$Amount\nOracle:Deathtouch\\nWhen Rilsa Rael, Kingpin enters, you take the initiative.\\nWhenever you attack, target attacking creature gains deathtouch until end of turn. If you've completed a dungeon, that creature also gets +5/+0 and gains first strike and menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rilsa Rael, Kingpin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

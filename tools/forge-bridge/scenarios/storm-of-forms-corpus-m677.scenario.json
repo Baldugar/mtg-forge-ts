@@ -1,0 +1,23 @@
+{
+  "id": "storm-of-forms-corpus-m677",
+  "description": "M6 corpus — Storm of Forms; in-hand parse.",
+  "seed": 71095,
+  "cards": {
+    "Storm of Forms": "Name:Storm of Forms\nManaCost:3 U\nTypes:Instant\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it for each kind of counter among permanents you control. You may choose new targets for the copies.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$DifferentCounterKinds_Permanent.YouCtrl\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SpellDescription$ Return target nonland permanent to its owner's hand.\nDeckHints:Ability$Counters\nOracle:When you cast this spell, copy it for each kind of counter among permanents you control. You may choose new targets for the copies.\\nReturn target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm of Forms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

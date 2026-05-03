@@ -1,0 +1,23 @@
+{
+  "id": "plague-fiend-corpus-m677",
+  "description": "M6 corpus — Plague Fiend; in-hand parse.",
+  "seed": 66954,
+  "cards": {
+    "Plague Fiend": "Name:Plague Fiend\nManaCost:1 B\nTypes:Creature Insect\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, destroy that creature unless its controller pays {2}.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy | UnlessCost$ 2 | UnlessPayer$ TriggeredTargetController\nOracle:Whenever Plague Fiend deals combat damage to a creature, destroy that creature unless its controller pays {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Fiend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

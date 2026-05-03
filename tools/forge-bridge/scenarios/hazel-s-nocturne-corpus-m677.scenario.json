@@ -1,0 +1,23 @@
+{
+  "id": "hazel-s-nocturne-corpus-m677",
+  "description": "M6 corpus — Hazel's Nocturne; in-hand parse.",
+  "seed": 62136,
+  "cards": {
+    "Hazel's Nocturne": "Name:Hazel's Nocturne\nManaCost:3 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SubAbility$ DBDrain | SpellDescription$ Return up to two target creature cards from your graveyard to your hand. Each opponent loses 2 life and you gain 2 life.\nSVar:DBDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Return up to two target creature cards from your graveyard to your hand. Each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hazel's Nocturne"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

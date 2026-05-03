@@ -1,0 +1,23 @@
+{
+  "id": "mantle-of-the-wolf-corpus-m677",
+  "description": "M6 corpus — Mantle of the Wolf; in-hand parse.",
+  "seed": 64738,
+  "cards": {
+    "Mantle of the Wolf": "Name:Mantle of the Wolf\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 4 | AddToughness$ 4 | Description$ Enchanted creature gets +4/+4.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, create two 2/2 green Wolf creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_2_2_wolf | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Enchant creature\\nEnchanted creature gets +4/+4.\\nWhen Mantle of the Wolf is put into a graveyard from the battlefield, create two 2/2 green Wolf creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mantle of the Wolf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

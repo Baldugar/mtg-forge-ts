@@ -1,0 +1,23 @@
+{
+  "id": "puresteel-angel-corpus-m677",
+  "description": "M6 corpus — Puresteel Angel; in-hand parse.",
+  "seed": 67374,
+  "cards": {
+    "Puresteel Angel": "Name:Puresteel Angel\nManaCost:8\nTypes:Artifact Creature Angel\nPT:4/4\nK:Flying\nK:Indestructible\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile all artifacts that aren't colorless.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Artifact.nonColorless | Origin$ Battlefield | Destination$ Exile\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigEmblem | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you get an emblem with \"If you would lose the game, instead your life total becomes 20, shuffle your graveyard into your library, you lose all poison counters, and you lose this emblem.\"\nSVar:TrigEmblem:DB$ Effect | Name$ Emblem — Puresteel Angel | ReplacementEffects$ LoseReplace | Duration$ Permanent\nSVar:LoseReplace:Event$ GameLoss | ActiveZones$ Command | ValidPlayer$ You | ReplaceWith$ DBSetLife | Description$ The next time you would lose the game, instead your life total becomes 20, shuffle your graveyard into your library, you lose all poison counters, and you lose this emblem.\nSVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ 20 | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ ChangeZoneAll | Defined$ You | ChangeType$ Card | Origin$ Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBPoison\nSVar:DBPoison:DB$ RemoveCounter | Defined$ You | CounterType$ POISON | CounterNum$ All | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Flying, indestructible\\nWhen Puresteel Angel enters, exile all artifacts that aren't colorless.\\nWhenever Puresteel Angel deals combat damage to a player, you get an emblem with \"If you would lose the game, instead your life total becomes 20, shuffle your graveyard into your library, you lose all poison counters, and you lose this emblem.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Puresteel Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

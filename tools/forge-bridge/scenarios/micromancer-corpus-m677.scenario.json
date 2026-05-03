@@ -1,0 +1,23 @@
+{
+  "id": "micromancer-corpus-m677",
+  "description": "M6 corpus — Micromancer; in-hand parse.",
+  "seed": 65084,
+  "cards": {
+    "Micromancer": "Name:Micromancer\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an instant or sorcery card with mana value 1, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Instant.cmcEQ1,Sorcery.cmcEQ1 | ChangeNum$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Type$Instant|Sorcery\nOracle:When Micromancer enters, you may search your library for an instant or sorcery card with mana value 1, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Micromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

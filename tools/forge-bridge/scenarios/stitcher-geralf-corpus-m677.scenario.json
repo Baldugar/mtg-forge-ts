@@ -1,0 +1,25 @@
+{
+  "id": "stitcher-geralf-corpus-m677",
+  "description": "M6 corpus — Stitcher Geralf; ETB-on-bf.",
+  "seed": 71018,
+  "cards": {
+    "Stitcher Geralf": "Name:Stitcher Geralf\nManaCost:3 U U\nTypes:Legendary Creature Human Wizard\nPT:3/4\nA:AB$ Mill | Cost$ 2 U T | Defined$ Player | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBExile | SpellDescription$ Each player mills three cards. Exile up to two creature cards put into graveyards this way. Create an X/X blue Zombie creature token, where X is the total power of the cards exiled this way.\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Creature.IsRemembered | Hidden$ True | ChangeNum$ 2 | ForgetOtherRemembered$ True | RememberLKI$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ u_x_x_zombie | TokenOwner$ You | TokenPower$ X | TokenToughness$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardPower\nDeckHas:Ability$Token\nOracle:{2}{U}, {T}: Each player mills three cards. Exile up to two creature cards put into graveyards this way. Create an X/X blue Zombie creature token, where X is the total power of the cards exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stitcher Geralf"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

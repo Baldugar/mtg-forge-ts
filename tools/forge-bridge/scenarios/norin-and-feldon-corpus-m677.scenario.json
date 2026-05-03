@@ -1,0 +1,25 @@
+{
+  "id": "norin-and-feldon-corpus-m677",
+  "description": "M6 corpus — Norin and Feldon; ETB-on-bf.",
+  "seed": 66053,
+  "cards": {
+    "Norin and Feldon": "Name:Norin and Feldon\nManaCost:1 R\nTypes:Legendary Creature Human Warrior Artificer\nPT:2/2\nA:AB$ CopyPermanent | Cost$ 2 R T | SorcerySpeed$ True | TgtZone$ Graveyard | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature card in your graveyard | AddTypes$ Artifact | PumpKeywords$ Haste | AddSVars$ NorinExile | AddTriggers$ Norin1,Norin2 | SpellDescription$ Create a token that's a copy of target creature card in your graveyard, except it's an artifact in addition to its other types, gains haste, and has \"Whenever a player casts a spell or a creature attacks, exile this token.\" Activate only as a sorcery.\nSVar:Norin1:Mode$ SpellCast | ValidCard$ Card | Execute$ NorinExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a spell or a creature attacks, exile this token.\nSVar:Norin2:Mode$ Attacks | ValidCard$ Creature | Execute$ NorinExile | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever a player casts a spell or a creature attacks, exile this token.\nSVar:NorinExile:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile\nOracle:{2}{R}, {T}: Create a token that's a copy of target creature card in your graveyard, except it's an artifact in addition to its other types, gains haste, and has \"Whenever a player casts a spell or a creature attacks, exile this token.\" Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Norin and Feldon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

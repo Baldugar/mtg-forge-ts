@@ -1,0 +1,25 @@
+{
+  "id": "keeper-of-tresserhorn-corpus-m677",
+  "description": "M6 corpus — Keeper of Tresserhorn; ETB-on-bf.",
+  "seed": 63572,
+  "cards": {
+    "Keeper of Tresserhorn": "Name:Keeper of Tresserhorn\nManaCost:5 B\nTypes:Creature Avatar\nPT:6/6\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBNoCombatDamage | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, it assigns no combat damage this turn and defending player loses 2 life.\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT | SubAbility$ DBLose\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:DBLose:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 2\nOracle:Whenever Keeper of Tresserhorn attacks and isn't blocked, it assigns no combat damage this turn and defending player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Keeper of Tresserhorn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

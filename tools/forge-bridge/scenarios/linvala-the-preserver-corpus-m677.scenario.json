@@ -1,0 +1,23 @@
+{
+  "id": "linvala-the-preserver-corpus-m677",
+  "description": "M6 corpus — Linvala, the Preserver; in-hand parse.",
+  "seed": 64290,
+  "cards": {
+    "Linvala, the Preserver": "Name:Linvala, the Preserver\nManaCost:4 W W\nTypes:Legendary Creature Angel\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | CheckSVar$ X | SVarCompare$ GTZ | TriggerDescription$ When CARDNAME enters, if an opponent has more life than you, you gain 5 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | CheckSVar$ W | SVarCompare$ GTY | TriggerDescription$ When CARDNAME enters, if an opponent controls more creatures than you, create a 3/3 white Angel creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_3_3_angel_flying | TokenOwner$ You\nSVar:X:PlayerCountOpponents$HighestLifeTotal\nSVar:Y:Count$Valid Creature.YouCtrl\nSVar:Z:Count$YourLifeTotal\nSVar:W:PlayerCountOpponents$HighestValid Creature.YouCtrl\nOracle:Flying\\nWhen Linvala, the Preserver enters, if an opponent has more life than you, you gain 5 life.\\nWhen Linvala enters, if an opponent controls more creatures than you, create a 3/3 white Angel creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Linvala, the Preserver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

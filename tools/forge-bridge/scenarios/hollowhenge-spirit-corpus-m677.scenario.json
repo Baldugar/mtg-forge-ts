@@ -1,0 +1,23 @@
+{
+  "id": "hollowhenge-spirit-corpus-m677",
+  "description": "M6 corpus — Hollowhenge Spirit; in-hand parse.",
+  "seed": 62438,
+  "cards": {
+    "Hollowhenge Spirit": "Name:Hollowhenge Spirit\nManaCost:3 W\nTypes:Creature Spirit\nPT:2/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRemove | TriggerDescription$ When CARDNAME enters, remove target attacking or blocking creature from combat.\nSVar:TrigRemove:DB$ RemoveFromCombat | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature\nAI:RemoveDeck:All\nSVar:AmbushAI:True\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nFlying\\nWhen Hollowhenge Spirit enters, remove target attacking or blocking creature from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollowhenge Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

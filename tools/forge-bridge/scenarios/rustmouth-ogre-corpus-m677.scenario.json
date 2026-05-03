@@ -1,0 +1,23 @@
+{
+  "id": "rustmouth-ogre-corpus-m677",
+  "description": "M6 corpus — Rustmouth Ogre; in-hand parse.",
+  "seed": 68683,
+  "cards": {
+    "Rustmouth Ogre": "Name:Rustmouth Ogre\nManaCost:4 R R\nTypes:Creature Ogre\nPT:5/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may destroy target artifact that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact damaged player controls\nOracle:Whenever Rustmouth Ogre deals combat damage to a player, you may destroy target artifact that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rustmouth Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

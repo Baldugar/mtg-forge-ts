@@ -1,0 +1,23 @@
+{
+  "id": "hint-of-insanity-corpus-m677",
+  "description": "M6 corpus — Hint of Insanity; in-hand parse.",
+  "seed": 62387,
+  "cards": {
+    "Hint of Insanity": "Name:Hint of Insanity\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Player | IsCurse$ True | RememberRevealed$ True | RememberTargets$ True | SubAbility$ DBRepeat | StackDescription$ SpellDescription | SpellDescription$ Target player reveals their hand. That player discards all nonland cards with the same name as another card in their hand.\nSVar:DBRepeat:DB$ RepeatEach | RepeatCards$ Card.IsRemembered+nonLand | Zone$ Hand | RepeatSubAbility$ DBDiscard | UseImprinted$ True | SubAbility$ DBCleanup\nSVar:DBDiscard:DB$ Discard | Mode$ Defined | Defined$ Remembered | DefinedCards$ ValidHand Card.sharesNameWith Imprinted+RememberedPlayerCtrl+!IsImprinted\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Target player reveals their hand. That player discards all nonland cards with the same name as another card in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hint of Insanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

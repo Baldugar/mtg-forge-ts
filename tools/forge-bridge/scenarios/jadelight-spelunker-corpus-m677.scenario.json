@@ -1,0 +1,23 @@
+{
+  "id": "jadelight-spelunker-corpus-m677",
+  "description": "M6 corpus — Jadelight Spelunker; in-hand parse.",
+  "seed": 63231,
+  "cards": {
+    "Jadelight Spelunker": "Name:Jadelight Spelunker\nManaCost:X G\nTypes:Creature Merfolk Scout\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExplore | TriggerDescription$ When CARDNAME enters, it explores X times. (To have it explore, reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\nSVar:TrigExplore:DB$ Explore | Num$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:When Jadelight Spelunker enters, it explores X times. (To have it explore, reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jadelight Spelunker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "scepter-of-empires-corpus-m677",
+  "description": "M6 corpus — Scepter of Empires; ETB-on-bf.",
+  "seed": 69136,
+  "cards": {
+    "Scepter of Empires": "Name:Scepter of Empires\nManaCost:3\nTypes:Artifact\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X | SpellDescription$ CARDNAME deals 1 damage to target player or planeswalker. It deals 3 damage instead if you control artifacts named Crown of Empires and Throne of Empires.\nSVar:X:Count$Compare AllM12Empires GT0.3.1\nSVar:AllM12Empires:SVar$Z/Times.Y\nSVar:Z:Count$Valid Artifact.namedCrown of Empires+YouCtrl\nSVar:Y:Count$Valid Artifact.namedThrone of Empires+YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Name$Throne of Empires|Crown of Empires\nOracle:{T}: Scepter of Empires deals 1 damage to target player or planeswalker. It deals 3 damage instead if you control artifacts named Crown of Empires and Throne of Empires.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scepter of Empires"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

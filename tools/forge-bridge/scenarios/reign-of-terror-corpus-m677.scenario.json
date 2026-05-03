@@ -1,0 +1,23 @@
+{
+  "id": "reign-of-terror-corpus-m677",
+  "description": "M6 corpus — Reign of Terror; in-hand parse.",
+  "seed": 67973,
+  "cards": {
+    "Reign of Terror": "Name:Reign of Terror\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ GenericChoice | Choices$ DestroyWhite,DestroyGreen | Defined$ You | StackDescription$ SpellDescription | SpellDescription$ Destroy all white or green creatures. They can't be regenerated. You lose 2 life for each creature that died this way.\nSVar:DestroyWhite:DB$ DestroyAll | ValidCards$ Creature.White | NoRegen$ True | RememberDestroyed$ True | SubAbility$ DBLoseLife | SpellDescription$ Destroy all white creatures.\nSVar:DestroyGreen:DB$ DestroyAll | ValidCards$ Creature.Green | NoRegen$ True | RememberDestroyed$ True | SubAbility$ DBLoseLife | SpellDescription$ Destroy all green creatures.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize/Twice\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Destroy all green creatures or all white creatures. They can't be regenerated. You lose 2 life for each creature that died this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reign of Terror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

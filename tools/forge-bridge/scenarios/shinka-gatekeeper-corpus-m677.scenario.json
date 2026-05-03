@@ -1,0 +1,23 @@
+{
+  "id": "shinka-gatekeeper-corpus-m677",
+  "description": "M6 corpus — Shinka Gatekeeper; in-hand parse.",
+  "seed": 69716,
+  "cards": {
+    "Shinka Gatekeeper": "Name:Shinka Gatekeeper\nManaCost:2 R\nTypes:Creature Ogre Warrior\nPT:3/2\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, it deals that much damage to you.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | Defined$ You\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever Shinka Gatekeeper is dealt damage, it deals that much damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shinka Gatekeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

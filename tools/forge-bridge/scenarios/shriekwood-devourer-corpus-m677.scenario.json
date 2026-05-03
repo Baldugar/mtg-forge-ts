@@ -1,0 +1,25 @@
+{
+  "id": "shriekwood-devourer-corpus-m677",
+  "description": "M6 corpus — Shriekwood Devourer; ETB-on-bf.",
+  "seed": 69787,
+  "cards": {
+    "Shriekwood Devourer": "Name:Shriekwood Devourer\nManaCost:5 G G\nTypes:Creature Treefolk\nPT:7/5\nK:Trample\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you attack with one or more creatures, untap up to X lands, where X is the greatest power among those creatures.\nSVar:TrigUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ X\nSVar:X:TriggerObjectsAttackers$GreatestCardPower\nOracle:Trample\\nWhenever you attack with one or more creatures, untap up to X lands, where X is the greatest power among those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shriekwood Devourer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

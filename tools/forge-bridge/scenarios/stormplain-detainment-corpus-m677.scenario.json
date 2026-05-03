@@ -1,0 +1,23 @@
+{
+  "id": "stormplain-detainment-corpus-m677",
+  "description": "M6 corpus — Stormplain Detainment; in-hand parse.",
+  "seed": 71125,
+  "cards": {
+    "Stormplain Detainment": "Name:Stormplain Detainment\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormplain Detainment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

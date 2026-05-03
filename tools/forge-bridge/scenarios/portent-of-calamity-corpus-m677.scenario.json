@@ -1,0 +1,23 @@
+{
+  "id": "portent-of-calamity-corpus-m677",
+  "description": "M6 corpus — Portent of Calamity; in-hand parse.",
+  "seed": 67074,
+  "cards": {
+    "Portent of Calamity": "Name:Portent of Calamity\nManaCost:X U\nTypes:Sorcery\nA:SP$ PeekAndReveal | PeekAmount$ X | Reveal$ True | ImprintRevealed$ True | SubAbility$ DBRepeatTypes | SpellDescription$ Reveal the top X cards of your library. For each card type, you may exile a card of that type from among them. Put the rest into your graveyard. You may cast a spell from among the exiled cards without paying its mana cost if you exiled four or more cards this way. Then put the rest of the exiled cards into your hand.\nSVar:DBRepeatTypes:DB$ RepeatEach | RepeatTypesFrom$ ValidLibrary Card.IsImprinted | RepeatSubAbility$ ChooseCard | SubAbility$ DBChangeZone\nSVar:ChooseCard:DB$ ChooseCard | Choices$ Card.ChosenType+YouOwn+IsImprinted | ChoiceZone$ Library | RememberChosen$ True\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Exile | Defined$ Remembered | SubAbility$ DBGraveyard\nSVar:DBGraveyard:DB$ ChangeZoneAll | Origin$ Library | Destination$ Graveyard | ChangeType$ Card.IsImprinted+!IsRemembered | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | ValidSA$ Spell | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE4 | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ 1 | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$xPaid\nSVar:Y:Count$ValidExile Card.IsRemembered\nOracle:Reveal the top X cards of your library. For each card type, you may exile a card of that type from among them. Put the rest into your graveyard. You may cast a spell from among the exiled cards without paying its mana cost if you exiled four or more cards this way. Then put the rest of the exiled cards into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Portent of Calamity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

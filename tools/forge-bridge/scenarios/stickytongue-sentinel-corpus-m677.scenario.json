@@ -1,0 +1,23 @@
+{
+  "id": "stickytongue-sentinel-corpus-m677",
+  "description": "M6 corpus — Stickytongue Sentinel; in-hand parse.",
+  "seed": 70995,
+  "cards": {
+    "Stickytongue Sentinel": "Name:Stickytongue Sentinel\nManaCost:2 G\nTypes:Creature Frog Warrior\nPT:3/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to one other target permanent you control to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.Other+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to one other target permanent you control\nOracle:Reach\\nWhen Stickytongue Sentinel enters, return up to one other target permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stickytongue Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

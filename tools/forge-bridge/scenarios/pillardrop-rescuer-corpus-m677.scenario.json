@@ -1,0 +1,23 @@
+{
+  "id": "pillardrop-rescuer-corpus-m677",
+  "description": "M6 corpus — Pillardrop Rescuer; in-hand parse.",
+  "seed": 66905,
+  "cards": {
+    "Pillardrop Rescuer": "Name:Pillardrop Rescuer\nManaCost:4 W\nTypes:Creature Spirit Cleric\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature card with mana value 3 or less from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl+cmcLE3 | TgtPrompt$ Select target creature card with mana value 3 or less\nOracle:Flying\\nWhen Pillardrop Rescuer enters, return target creature card with mana value 3 or less from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pillardrop Rescuer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

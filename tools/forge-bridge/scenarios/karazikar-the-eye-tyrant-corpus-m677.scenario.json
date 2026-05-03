@@ -1,0 +1,25 @@
+{
+  "id": "karazikar-the-eye-tyrant-corpus-m677",
+  "description": "M6 corpus — Karazikar, the Eye Tyrant; ETB-on-bf.",
+  "seed": 63478,
+  "cards": {
+    "Karazikar, the Eye Tyrant": "Name:Karazikar, the Eye Tyrant\nManaCost:3 B R\nTypes:Legendary Creature Beholder\nPT:5/5\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Creature.YouCtrl | AttackedTarget$ Player | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack a player, tap target creature that player controls and goad it. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature that player controls | TargetsWithDefinedController$ TriggeredAttackedTarget | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ Targeted\nT:Mode$ AttackersDeclaredOneTarget | AttackingPlayer$ Player.Opponent | AttackedTarget$ Opponent | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent attacks another one of your opponents, you and the attacking player each draw a card and lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredAttackingPlayer & You | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredAttackingPlayer & You | LifeAmount$ 1\nOracle:Whenever you attack a player, tap target creature that player controls and goad it. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\\nWhenever an opponent attacks another one of your opponents, you and the attacking player each draw a card and lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Karazikar, the Eye Tyrant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

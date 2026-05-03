@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-s-return-corpus-m677",
+  "description": "M6 corpus — Rakdos's Return; in-hand parse.",
+  "seed": 67622,
+  "cards": {
+    "Rakdos's Return": "Name:Rakdos's Return\nManaCost:X B R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ X | SubAbility$ DBDiscardOpp | SpellDescription$ CARDNAME deals X damage to target opponent or planeswalker. That player or that planeswalker's controller discards X cards.\nSVar:DBDiscardOpp:DB$ Discard | Defined$ TargetedOrController | NumCards$ X | Mode$ TgtChoose\nSVar:X:Count$xPaid\nOracle:Rakdos's Return deals X damage to target opponent or planeswalker. That player or that planeswalker's controller discards X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos's Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

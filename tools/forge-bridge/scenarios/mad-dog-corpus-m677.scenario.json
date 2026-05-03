@@ -1,0 +1,23 @@
+{
+  "id": "mad-dog-corpus-m677",
+  "description": "M6 corpus — Mad Dog; in-hand parse.",
+  "seed": 64557,
+  "cards": {
+    "Mad Dog": "Name:Mad Dog\nManaCost:1 R\nTypes:Creature Dog\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if CARDNAME didn't attack or come under your control this turn, sacrifice it.\nSVar:TrigSacrifice:DB$ Sacrifice | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0\nSVar:Y:Count$ThisTurnEntered_Battlefield_Card.Self\nSVar:Z:Count$Valid Card.Self+attackedThisTurn\nSVar:X:SVar$Y/Plus.Z\nSVar:MustAttack:True\nOracle:At the beginning of your end step, if Mad Dog didn't attack or come under your control this turn, sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mad Dog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sewer-nemesis-corpus-m677",
+  "description": "M6 corpus — Sewer Nemesis; in-hand parse.",
+  "seed": 69534,
+  "cards": {
+    "Sewer Nemesis": "Name:Sewer Nemesis\nManaCost:3 B\nTypes:Creature Horror\nPT:*/*\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose a player.\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in the chosen player's graveyard.\nSVar:X:Count$ValidGraveyard Card.ChosenCtrl\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player.Chosen | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever the chosen player casts a spell, that player mills a card.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredActivator | NumCards$ 1\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:Count$ValidGraveyard Card.OppCtrl\nOracle:As Sewer Nemesis enters, choose a player.\\nSewer Nemesis's power and toughness are each equal to the number of cards in the chosen player's graveyard.\\nWhenever the chosen player casts a spell, that player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sewer Nemesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "path-of-the-schemer-corpus-m677",
+  "description": "M6 corpus — Path of the Schemer; in-hand parse.",
+  "seed": 66655,
+  "cards": {
+    "Path of the Schemer": "Name:Path of the Schemer\nManaCost:4 B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 2 | Defined$ Player | SubAbility$ DBChangeZone | SpellDescription$ Each player mills two cards.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | Mandatory$ True | GainControl$ True | StaticEffect$ Animate | SubAbility$ DBSpace | SelectPrompt$ Select a creature card in a graveyard | Hidden$ True | StackDescription$ SpellDescription | SpellDescription$ Then you put a creature card from a graveyard onto the battlefield under your control. It's an artifact in addition to its other types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Artifact\nSVar:DBSpace:DB$ BlankLine | SubAbility$ DBVote | SpellDescription$ ,,,,,,\nSVar:DBVote:DB$ Vote | Defined$ Player | Choices$ DBPlaneswalk,DBChaos | VoteTiedAbility$ DBChaos | StackDescription$ SpellDescription | SpellDescription$ Will of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\nSVar:DBPlaneswalk:DB$ Planeswalk | SpellDescription$ Planeswalk\nSVar:DBChaos:DB$ ChaosEnsues | SpellDescription$ Chaos\nDeckHas:Ability$Mill|Graveyard\nOracle:Each player mills two cards. Then you put a creature card from a graveyard onto the battlefield under your control. It's an artifact in addition to its other types.\\nWill of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path of the Schemer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

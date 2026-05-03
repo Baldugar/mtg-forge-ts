@@ -1,0 +1,25 @@
+{
+  "id": "mindcrank-corpus-m677",
+  "description": "M6 corpus — Mindcrank; ETB-on-bf.",
+  "seed": 65166,
+  "cards": {
+    "Mindcrank": "Name:Mindcrank\nManaCost:2\nTypes:Artifact\nT:Mode$ LifeLost | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever an opponent loses life, that player mills that many cards. (Damage dealt by sources without infect causes loss of life.)\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredPlayer | NumCards$ X\nSVar:X:TriggerCount$LifeAmount\nAI:RemoveDeck:Random\nSVar:PlayMain1:TRUE\nOracle:Whenever an opponent loses life, that player mills that many cards. (Damage dealt by sources without infect causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mindcrank"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

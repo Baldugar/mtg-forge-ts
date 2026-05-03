@@ -1,0 +1,23 @@
+{
+  "id": "reject-imperfection-corpus-m677",
+  "description": "M6 corpus — Reject Imperfection; in-hand parse.",
+  "seed": 67984,
+  "cards": {
+    "Reject Imperfection": "Name:Reject Imperfection\nManaCost:1 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | SubAbility$ DBProliferate | SpellDescription$ Counter target spell. If that spell's mana value was 3 or less, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nSVar:DBProliferate:DB$ Proliferate | ConditionCheckSVar$ X | ConditionSVarCompare$ LE3\nSVar:X:SpellTargeted$CardManaCostLKI\nAI:RemoveDeck:All\nOracle:Counter target spell. If that spell's mana value was 3 or less, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reject Imperfection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

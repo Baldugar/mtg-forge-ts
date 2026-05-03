@@ -1,0 +1,23 @@
+{
+  "id": "rooting-moloch-corpus-m677",
+  "description": "M6 corpus — Rooting Moloch; in-hand parse.",
+  "seed": 68514,
+  "cards": {
+    "Rooting Moloch": "Name:Rooting Moloch\nManaCost:4 R\nTypes:Creature Lizard\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, exile target card with a cycling ability from your graveyard. Until the end of your next turn, you may play that card.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card.YouOwn+withCycling,Card.YouOwn+withTypeCycling | TgtPrompt$ Select target card with a cycling ability from your graveyard | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | ForgetOnMoved$ Exile | StaticAbilities$ Play | Duration$ UntilTheEndOfYourNextTurn\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play this card.\nK:Cycling:2\nOracle:When Rooting Moloch enters, exile target card with a cycling ability from your graveyard. Until the end of your next turn, you may play that card.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rooting Moloch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

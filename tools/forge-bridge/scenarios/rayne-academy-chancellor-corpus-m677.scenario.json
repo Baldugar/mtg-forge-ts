@@ -1,0 +1,23 @@
+{
+  "id": "rayne-academy-chancellor-corpus-m677",
+  "description": "M6 corpus — Rayne, Academy Chancellor; in-hand parse.",
+  "seed": 67784,
+  "cards": {
+    "Rayne, Academy Chancellor": "Name:Rayne, Academy Chancellor\nManaCost:2 U\nTypes:Legendary Creature Human Wizard\nPT:1/1\nT:Mode$ BecomesTarget | ValidTarget$ You,Permanent.YouCtrl+inZoneBattlefield | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever you or a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card. You may draw an additional card if CARDNAME is enchanted.\nSVar:TrigDraw:DB$ Draw | SubAbility$ TrigAddDraw | SpellDescription$ Draw a card.\nSVar:TrigAddDraw:DB$ Draw | ConditionPresent$ Card.Self+enchanted | ConditionCompare$ GE1 | OptionalDecider$ You | SpellDescription$ Draw an additional card if CARDNAME is enchanted.\nSVar:EnchantMe:Once\nOracle:Whenever you or a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card. You may draw an additional card if Rayne, Academy Chancellor is enchanted.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rayne, Academy Chancellor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

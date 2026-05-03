@@ -1,0 +1,23 @@
+{
+  "id": "shefet-archfiend-corpus-m677",
+  "description": "M6 corpus — Shefet Archfiend; in-hand parse.",
+  "seed": 69646,
+  "cards": {
+    "Shefet Archfiend": "Name:Shefet Archfiend\nManaCost:5 B B\nTypes:Creature Demon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When this creature enters, all other creatures get -2/-2 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ -2 | NumDef$ -2 | ValidCards$ Creature.StrictlyOther | IsCurse$ True\nK:Cycling:2\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Discard\nOracle:Flying\\nWhen this creature enters, all other creatures get -2/-2 until end of turn.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shefet Archfiend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "naomi-pillar-of-order-corpus-m677",
+  "description": "M6 corpus — Naomi, Pillar of Order; in-hand parse.",
+  "seed": 65735,
+  "cards": {
+    "Naomi, Pillar of Order": "Name:Naomi, Pillar of Order\nManaCost:3 W B\nTypes:Legendary Creature Human Advisor\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Artifact.YouCtrl | IsPresent2$ Enchantment.YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, if you control an artifact and an enchantment, create a 2/2 white Samurai creature token with vigilance.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | IsPresent$ Artifact.YouCtrl | IsPresent2$ Enchantment.YouCtrl | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, if you control an artifact and an enchantment, create a 2/2 white Samurai creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_samurai_vigilance\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Samurai\nDeckHints:Type$Artifact|Enchantment\nOracle:Whenever Naomi, Pillar of Order enters or attacks, if you control an artifact and an enchantment, create a 2/2 white Samurai creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naomi, Pillar of Order"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mizzium-tank-corpus-m677",
+  "description": "M6 corpus — Mizzium Tank; in-hand parse.",
+  "seed": 65331,
+  "cards": {
+    "Mizzium Tank": "Name:Mizzium Tank\nManaCost:1 R R\nTypes:Artifact Vehicle\nPT:3/2\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever you cast a noncreature spell, CARDNAME becomes an artifact creature and gets +1/+1 until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Types$ Creature,Artifact | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Defined$ Self\nSVar:BuffedBy:Card.nonCreature+nonLand\nK:Crew:1\nOracle:Trample\\nWhenever you cast a noncreature spell, Mizzium Tank becomes an artifact creature and gets +1/+1 until end of turn.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mizzium Tank"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

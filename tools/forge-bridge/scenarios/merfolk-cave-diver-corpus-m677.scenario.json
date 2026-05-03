@@ -1,0 +1,25 @@
+{
+  "id": "merfolk-cave-diver-corpus-m677",
+  "description": "M6 corpus — Merfolk Cave-Diver; ETB-on-bf.",
+  "seed": 65012,
+  "cards": {
+    "Merfolk Cave-Diver": "Name:Merfolk Cave-Diver\nManaCost:2 U\nTypes:Creature Merfolk Scout\nPT:2/4\nT:Mode$ Explores | Execute$ TrigPump | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control explores, CARDNAME gets +1/+0 until end of turn and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:Whenever a creature you control explores, Merfolk Cave-Diver gets +1/+0 until end of turn and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Merfolk Cave-Diver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

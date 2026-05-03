@@ -1,0 +1,23 @@
+{
+  "id": "a-tanazir-quandrix-corpus-m677",
+  "description": "M6 corpus — A-Tanazir Quandrix; in-hand parse.",
+  "seed": 68808,
+  "cards": {
+    "A-Tanazir Quandrix": "Name:A-Tanazir Quandrix\nManaCost:3 G U\nTypes:Legendary Creature Elder Dragon\nPT:5/5\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDouble | TriggerDescription$ When CARDNAME enters, double the number of +1/+1 counters on target creature you control.\nSVar:TrigDouble:DB$ MultiplyCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigAnimateAll | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may have the base power and toughness of other creatures you control become equal to CARDNAME's power and toughness until end of turn.\nSVar:TrigAnimateAll:DB$ AnimateAll | Power$ X | Toughness$ Y | ValidCards$ Creature.YouCtrl+Other\nSVar:X:Count$CardPower\nSVar:Y:Count$CardToughness\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Flying, trample\\nWhen Tanazir Quandrix enters, double the number of +1/+1 counters on target creature you control.\\nWhenever Tanazir Quandrix attacks, you may have the base power and toughness of other creatures you control become equal to Tanazir Quandrix's power and toughness until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Tanazir Quandrix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

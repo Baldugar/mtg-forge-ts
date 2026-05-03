@@ -1,0 +1,25 @@
+{
+  "id": "private-eye-corpus-m677",
+  "description": "M6 corpus — Private Eye; ETB-on-bf.",
+  "seed": 67237,
+  "cards": {
+    "Private Eye": "Name:Private Eye\nManaCost:1 W U\nTypes:Creature Homunculus Detective\nPT:3/3\nS:Mode$ Continuous | Affected$ Detective.YouCtrl+Other | AddToughness$ 1 | AddPower$ 1 | Description$ Other Detectives you control get +1/+1.\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigUnblockable | TriggerDescription$ Whenever you draw your second card each turn, target Detective can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Card.Detective | TgtPrompt$ Select target Detective | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHints:Type$Detective\nOracle:Other Detectives you control get +1/+1.\\nWhenever you draw your second card each turn, target Detective can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Private Eye"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

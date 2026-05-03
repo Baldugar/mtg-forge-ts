@@ -1,0 +1,23 @@
+{
+  "id": "return-of-the-nightstalkers-corpus-m677",
+  "description": "M6 corpus — Return of the Nightstalkers; in-hand parse.",
+  "seed": 68155,
+  "cards": {
+    "Return of the Nightstalkers": "Name:Return of the Nightstalkers\nManaCost:5 B B\nTypes:Sorcery\nA:SP$ ChangeZoneAll | SubAbility$ DBDestroy | ChangeType$ Permanent.Nightstalker+YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return all Nightstalker permanent cards from your graveyard to the battlefield. Then destroy all Swamps you control.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Swamp.YouCtrl\nAI:RemoveDeck:Random\nOracle:Return all Nightstalker permanent cards from your graveyard to the battlefield. Then destroy all Swamps you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Return of the Nightstalkers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

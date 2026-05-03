@@ -1,0 +1,23 @@
+{
+  "id": "steward-of-the-harvest-corpus-m677",
+  "description": "M6 corpus — Steward of the Harvest; in-hand parse.",
+  "seed": 70992,
+  "cards": {
+    "Steward of the Harvest": "Name:Steward of the Harvest\nManaCost:3 G\nTypes:Creature Human Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature enters, exile up to three target land cards from your graveyard.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | ValidTgts$ Land.YouOwn | TgtPrompt$ Select up to three target land cards from your graveyad | Origin$ Graveyard | Destination$ Exile\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | EffectZone$ Battlefield | GainsAbilitiesOf$ Land.ExiledWithSource | GainsAbilitiesOfZones$ Exile | Description$ Creatures you control have all activated abilities of all land cards exiled with this creature.\nDeckHas:Ability$Graveyard\nOracle:When this creature enters, exile up to three target land cards from your graveyard.\\nCreatures you control have all activated abilities of all land cards exiled with this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steward of the Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

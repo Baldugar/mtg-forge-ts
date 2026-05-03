@@ -1,0 +1,23 @@
+{
+  "id": "hellcarver-demon-corpus-m677",
+  "description": "M6 corpus — Hellcarver Demon; in-hand parse.",
+  "seed": 62234,
+  "cards": {
+    "Hellcarver Demon": "Name:Hellcarver Demon\nManaCost:3 B B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, sacrifice all other permanents you control and discard your hand. Exile the top six cards of your library. You may cast any number of spells from among cards exiled this way without paying their mana costs.\nSVar:TrigSacrifice:DB$ SacrificeAll | ValidCards$ Permanent.YouCtrl+StrictlyOther | SubAbility$ DBDiscardHand\nSVar:DBDiscardHand:DB$ Discard | Mode$ Hand | Defined$ You | SubAbility$ DBExileSix\nSVar:DBExileSix:DB$ Dig | DestinationZone$ Exile | RememberChanged$ True | DigNum$ 6 | ChangeNum$ All | SubAbility$ DBPlayThem\nSVar:DBPlayThem:DB$ Play | Valid$ Card.IsRemembered+nonLand | ValidZone$ Exile | ValidSA$ Spell | Controller$ You | WithoutManaCost$ True | Amount$ All | Optional$ True | SubAbility$ DBHellCleanup\nSVar:DBHellCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Hellcarver Demon deals combat damage to a player, sacrifice all other permanents you control and discard your hand. Exile the top six cards of your library. You may cast any number of spells from among cards exiled this way without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellcarver Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

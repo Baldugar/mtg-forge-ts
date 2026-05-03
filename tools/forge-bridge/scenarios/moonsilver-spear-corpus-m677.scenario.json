@@ -1,0 +1,23 @@
+{
+  "id": "moonsilver-spear-corpus-m677",
+  "description": "M6 corpus — Moonsilver Spear; in-hand parse.",
+  "seed": 65477,
+  "cards": {
+    "Moonsilver Spear": "Name:Moonsilver Spear\nManaCost:4\nTypes:Artifact Equipment\nK:Equip:4\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ First Strike | AddSVar$ AE | Description$ Equipped creature has first strike.\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigAngelToken | TriggerDescription$ Whenever equipped creature attacks, create a 4/4 white Angel token with flying.\nSVar:TrigAngelToken:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenOwner$ You\nOracle:Equipped creature has first strike.\\nWhenever equipped creature attacks, create a 4/4 white Angel creature token with flying.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonsilver Spear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

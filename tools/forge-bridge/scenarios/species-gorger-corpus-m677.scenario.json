@@ -1,0 +1,23 @@
+{
+  "id": "species-gorger-corpus-m677",
+  "description": "M6 corpus — Species Gorger; in-hand parse.",
+  "seed": 70535,
+  "cards": {
+    "Species Gorger": "Name:Species Gorger\nManaCost:3 G U\nTypes:Creature Frog Beast\nPT:6/6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, return a creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Creature.YouCtrl\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.YouCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, return a creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Species Gorger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

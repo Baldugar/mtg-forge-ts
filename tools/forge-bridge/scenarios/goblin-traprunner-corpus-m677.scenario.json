@@ -1,0 +1,23 @@
+{
+  "id": "goblin-traprunner-corpus-m677",
+  "description": "M6 corpus — Goblin Traprunner; in-hand parse.",
+  "seed": 61485,
+  "cards": {
+    "Goblin Traprunner": "Name:Goblin Traprunner\nManaCost:3 R\nTypes:Creature Goblin\nPT:4/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigFlipCoins | TriggerDescription$ Whenever CARDNAME attacks, flip three coins. For each flip you win, create a 1/1 red Goblin creature token that's tapped and attacking.\nSVar:TrigFlipCoins:DB$ FlipACoin | Amount$ 3 | WinSubAbility$ DBToken | RememberNumber$ Wins\nSVar:DBToken:DB$ Token | TokenOwner$ You | TokenAmount$ Wins | TokenScript$ r_1_1_goblin | TokenTapped$ True | TokenAttacking$ True\nDeckHas:Ability$Token\nOracle:Whenever Goblin Traprunner attacks, flip three coins. For each flip you win, create a 1/1 red Goblin creature token that's tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Traprunner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kor-celebrant-corpus-m677",
+  "description": "M6 corpus — Kor Celebrant; in-hand parse.",
+  "seed": 63826,
+  "cards": {
+    "Kor Celebrant": "Name:Kor Celebrant\nManaCost:2 W\nTypes:Creature Kor Cleric\nPT:1/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Other+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another creature you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Whenever Kor Celebrant or another creature you control enters, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Celebrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

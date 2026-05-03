@@ -1,0 +1,23 @@
+{
+  "id": "redemption-choir-corpus-m677",
+  "description": "M6 corpus — Redemption Choir; in-hand parse.",
+  "seed": 67923,
+  "cards": {
+    "Redemption Choir": "Name:Redemption Choir\nManaCost:2 W W\nTypes:Creature Vampire Cleric\nPT:3/3\nK:Lifelink\nT:Mode$ ChangesZone | CheckSVar$ X | SVarCompare$ GE3 | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Coven — Whenever CARDNAME enters or attacks, if you control three or more creatures with different powers, return target permanent card with mana value 3 or less from your graveyard to the battlefield.\nT:Mode$ Attacks | CheckSVar$ X | SVarCompare$ GE3 | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Coven — Whenever CARDNAME enters or attacks, if you control three or more creatures with different powers, return target permanent card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.YouOwn+cmcLE3\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain|Graveyard\nDeckHints:Ability$Graveyard|Mill\nOracle:Lifelink\\nCoven — Whenever Redemption Choir enters or attacks, if you control three or more creatures with different powers, return target permanent card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Redemption Choir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

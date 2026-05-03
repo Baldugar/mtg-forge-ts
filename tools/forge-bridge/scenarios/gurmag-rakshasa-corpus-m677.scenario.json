@@ -1,0 +1,23 @@
+{
+  "id": "gurmag-rakshasa-corpus-m677",
+  "description": "M6 corpus — Gurmag Rakshasa; in-hand parse.",
+  "seed": 61916,
+  "cards": {
+    "Gurmag Rakshasa": "Name:Gurmag Rakshasa\nManaCost:4 B B\nTypes:Creature Demon\nPT:5/5\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, target creature an opponent controls gets -2/-2 until end of turn and target creature you control gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +2 | NumDef$ +2\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen this creature enters, target creature an opponent controls gets -2/-2 until end of turn and target creature you control gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gurmag Rakshasa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

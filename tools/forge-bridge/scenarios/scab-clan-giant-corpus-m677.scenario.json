@@ -1,0 +1,23 @@
+{
+  "id": "scab-clan-giant-corpus-m677",
+  "description": "M6 corpus — Scab-Clan Giant; in-hand parse.",
+  "seed": 69079,
+  "cards": {
+    "Scab-Clan Giant": "Name:Scab-Clan Giant\nManaCost:4 R G\nTypes:Creature Giant Warrior\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, it fights target creature an opponent controls chosen at random.\nSVar:TrigFight:DB$ Fight | Defined$ Self | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | TargetsAtRandom$ True\nAI:RemoveDeck:All\nOracle:When Scab-Clan Giant enters, it fights target creature an opponent controls chosen at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scab-Clan Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

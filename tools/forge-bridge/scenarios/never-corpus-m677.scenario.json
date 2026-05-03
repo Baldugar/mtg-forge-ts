@@ -1,0 +1,23 @@
+{
+  "id": "never-corpus-m677",
+  "description": "M6 corpus — Never; in-hand parse.",
+  "seed": 65879,
+  "cards": {
+    "Never": "Name:Never\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SpellDescription$ Destroy target creature or planeswalker.\nAlternateMode:Split\nOracle:Destroy target creature or planeswalker.\n\nALTERNATE\n\nName:Return\nManaCost:3 B\nTypes:Sorcery\nK:Aftermath\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SubAbility$ DBToken | SpellDescription$ Exile target card from a graveyard. Create a 2/2 black Zombie creature token.\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nExile target card from a graveyard. Create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Never"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

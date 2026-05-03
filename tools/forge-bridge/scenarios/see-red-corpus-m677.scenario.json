@@ -1,0 +1,23 @@
+{
+  "id": "see-red-corpus-m677",
+  "description": "M6 corpus — See Red; in-hand parse.",
+  "seed": 69358,
+  "cards": {
+    "See Red": "Name:See Red\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddPower$ 2 | AddToughness$ 1 | AddKeyword$ First Strike | Description$ Enchanted creature gets +2/+1 and has first strike.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of your end step, if you didn't attack with a creature this turn, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nSVar:X:Count$AttackersDeclared\nOracle:Enchant creature\\nEnchanted creature gets +2/+1 and has first strike.\\nAt the beginning of your end step, if you didn't attack with a creature this turn, sacrifice See Red.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "See Red"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

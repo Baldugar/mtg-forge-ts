@@ -1,0 +1,23 @@
+{
+  "id": "renegade-rallier-corpus-m677",
+  "description": "M6 corpus — Renegade Rallier; in-hand parse.",
+  "seed": 68044,
+  "cards": {
+    "Renegade Rallier": "Name:Renegade Rallier\nManaCost:1 G W\nTypes:Creature Human Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | Revolt$ True | TriggerDescription$ Revolt — When CARDNAME enters, if a permanent you controlled left the battlefield this turn, return target permanent card with mana value 2 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.YouOwn+cmcLE2 | TgtPrompt$ Select target permanent card with mana value 2 or less in your graveyard\nOracle:Revolt — When Renegade Rallier enters, if a permanent you controlled left the battlefield this turn, return target permanent card with mana value 2 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renegade Rallier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

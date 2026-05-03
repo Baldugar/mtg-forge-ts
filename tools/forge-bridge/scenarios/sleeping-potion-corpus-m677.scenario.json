@@ -1,0 +1,23 @@
+{
+  "id": "sleeping-potion-corpus-m677",
+  "description": "M6 corpus — Sleeping Potion; in-hand parse.",
+  "seed": 70201,
+  "cards": {
+    "Sleeping Potion": "Name:Sleeping Potion\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nT:Mode$ BecomesTarget | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When enchanted creature becomes the target of a spell or ability, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nOracle:Enchant creature\\nWhen Sleeping Potion enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\nWhen enchanted creature becomes the target of a spell or ability, sacrifice Sleeping Potion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sleeping Potion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

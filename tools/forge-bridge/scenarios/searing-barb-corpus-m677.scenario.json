@@ -1,0 +1,23 @@
+{
+  "id": "searing-barb-corpus-m677",
+  "description": "M6 corpus — Searing Barb; in-hand parse.",
+  "seed": 69302,
+  "cards": {
+    "Searing Barb": "Name:Searing Barb\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBCantBlock | SpellDescription$ CARDNAME deals 2 damage to any target.\nSVar:DBCantBlock:DB$ Pump | Defined$ Targeted.Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SubAbility$ DBIncubate | StackDescription$ SpellDescription | SpellDescription$ If it's a creature, it can't block this turn.\nSVar:DBIncubate:DB$ Incubate | Amount$ 1 | SpellDescription$ Incubate 1. (Create an Incubator token with a +1/+1 counter on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nDeckHas:Ability$Token|Counters & Type$Artifact|Incubator|Phyrexian\nOracle:Searing Barb deals 2 damage to any target. If it's a creature, it can't block this turn. Incubate 1. (Create an Incubator token with a +1/+1 counter on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Searing Barb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

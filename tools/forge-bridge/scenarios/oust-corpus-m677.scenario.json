@@ -1,0 +1,23 @@
+{
+  "id": "oust-corpus-m677",
+  "description": "M6 corpus — Oust; in-hand parse.",
+  "seed": 66466,
+  "cards": {
+    "Oust": "Name:Oust\nManaCost:W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Library | ValidTgts$ Creature | LibraryPosition$ 1 | SubAbility$ DBGainLife | SpellDescription$ Put target creature into its owner's library second from the top. Its controller gains 3 life.\n# LibraryPosition is zero indexed. So 1 is second from the top\nSVar:DBGainLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ 3\nOracle:Put target creature into its owner's library second from the top. Its controller gains 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

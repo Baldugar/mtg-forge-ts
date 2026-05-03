@@ -1,0 +1,25 @@
+{
+  "id": "serpent-of-the-pass-corpus-m677",
+  "description": "M6 corpus — Serpent of the Pass; ETB-on-bf.",
+  "seed": 69479,
+  "cards": {
+    "Serpent of the Pass": "Name:Serpent of the Pass\nManaCost:5 U U\nTypes:Creature Serpent\nPT:6/5\nS:Mode$ CastWithFlash | ValidCard$ Card.Self | ValidSA$ Spell | EffectZone$ All | Caster$ You | IsPresent$ Lesson.YouOwn | PresentZone$ Graveyard | PresentCompare$ GE3 | Description$ If there are three or more Lesson cards in your graveyard, you may cast this spell as though it had flash.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each noncreature, nonland card in your graveyard.\nSVar:X:Count$ValidGraveyard Card.nonCreature+nonLand+YouOwn\nOracle:If there are three or more Lesson cards in your graveyard, you may cast this spell as though it had flash.\\nThis spell costs {1} less to cast for each noncreature, nonland card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Serpent of the Pass"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

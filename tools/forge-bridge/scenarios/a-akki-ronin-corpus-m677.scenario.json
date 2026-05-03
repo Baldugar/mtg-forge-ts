@@ -1,0 +1,23 @@
+{
+  "id": "a-akki-ronin-corpus-m677",
+  "description": "M6 corpus — A-Akki Ronin; in-hand parse.",
+  "seed": 68698,
+  "cards": {
+    "A-Akki Ronin": "Name:A-Akki Ronin\nManaCost:R\nTypes:Creature Goblin Samurai\nPT:1/2\nT:Mode$ Attacks | ValidCard$ Samurai.YouCtrl,Warrior.YouCtrl | Alone$ True | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Samurai or Warrior you control attacks alone, you may put a card from your hand on the bottom of your library. If you do, draw a card.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Samurai|Warrior\nOracle:Whenever a Samurai or Warrior you control attacks alone, you may put a card from your hand on the bottom of your library. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Akki Ronin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

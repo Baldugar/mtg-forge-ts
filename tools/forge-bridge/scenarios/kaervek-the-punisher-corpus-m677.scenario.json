@@ -1,0 +1,25 @@
+{
+  "id": "kaervek-the-punisher-corpus-m677",
+  "description": "M6 corpus — Kaervek, the Punisher; ETB-on-bf.",
+  "seed": 63422,
+  "cards": {
+    "Kaervek, the Punisher": "Name:Kaervek, the Punisher\nManaCost:1 B B\nTypes:Legendary Creature Human Warlock\nPT:3/3\nT:Mode$ CommitCrime | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you commit a crime, exile up to one target black card from your graveyard and copy it. You may cast the copy. If you do, you lose 2 life. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime. Copies of permanent spells become tokens.)\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Card.Black+YouOwn | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select up to one target black card from your graveyard | Imprint$ True | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | Valid$ Card.IsImprinted | ValidZone$ Exile | CopyCard$ True | ValidSA$ Spell | Optional$ True | RememberPlayed$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill|Graveyard\nOracle:Whenever you commit a crime, exile up to one target black card from your graveyard and copy it. You may cast the copy. If you do, you lose 2 life. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime. Copies of permanent spells become tokens.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kaervek, the Punisher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

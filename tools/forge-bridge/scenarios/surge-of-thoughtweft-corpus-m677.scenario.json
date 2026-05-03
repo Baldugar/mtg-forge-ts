@@ -1,0 +1,23 @@
+{
+  "id": "surge-of-thoughtweft-corpus-m677",
+  "description": "M6 corpus — Surge of Thoughtweft; in-hand parse.",
+  "seed": 71418,
+  "cards": {
+    "Surge of Thoughtweft": "Name:Surge of Thoughtweft\nManaCost:1 W\nTypes:Kindred Instant Kithkin\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBDraw | SpellDescription$ Creatures you control get +1/+1 until end of turn. If you control a Kithkin, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Kithkin.YouCtrl | ConditionCompare$ GE1 | ConditionDescription$ If you control a Kithkin,\nAI:RemoveDeck:Random\nOracle:Creatures you control get +1/+1 until end of turn. If you control a Kithkin, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surge of Thoughtweft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

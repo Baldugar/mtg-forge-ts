@@ -1,0 +1,23 @@
+{
+  "id": "reaper-king-corpus-m677",
+  "description": "M6 corpus — Reaper King; in-hand parse.",
+  "seed": 67845,
+  "cards": {
+    "Reaper King": "Name:Reaper King\nManaCost:2W 2U 2B 2R 2G\nTypes:Legendary Artifact Creature Scarecrow\nPT:6/6\nS:Mode$ Continuous | Affected$ Creature.Scarecrow+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Scarecrow creatures you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Scarecrow.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever another Scarecrow you control enters, destroy target permanent.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:({2/W} can be paid with any two mana or with {W}. This card's mana value is 10.)\\nOther Scarecrow creatures you control get +1/+1.\\nWhenever another Scarecrow you control enters, destroy target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reaper King"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

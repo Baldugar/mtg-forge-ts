@@ -1,0 +1,23 @@
+{
+  "id": "ondu-cleric-corpus-m677",
+  "description": "M6 corpus — Ondu Cleric; in-hand parse.",
+  "seed": 66306,
+  "cards": {
+    "Ondu Cleric": "Name:Ondu Cleric\nManaCost:1 W\nTypes:Creature Kor Cleric Ally\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may gain life equal to the number of Allies you control.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Ally.YouCtrl\nSVar:BuffedBy:Ally\nAI:RemoveDeck:Random\nOracle:Whenever Ondu Cleric or another Ally you control enters, you may gain life equal to the number of Allies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ondu Cleric"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

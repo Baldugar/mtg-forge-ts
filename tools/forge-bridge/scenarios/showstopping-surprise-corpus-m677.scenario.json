@@ -1,0 +1,23 @@
+{
+  "id": "showstopping-surprise-corpus-m677",
+  "description": "M6 corpus — Showstopping Surprise; in-hand parse.",
+  "seed": 69769,
+  "cards": {
+    "Showstopping Surprise": "Name:Showstopping Surprise\nManaCost:3 R R\nTypes:Instant\nA:SP$ SetState | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | Mode$ TurnFaceUp | SubAbility$ IgnitionDamage | StackDescription$ None | SpellDescription$ Choose target creature you control. Turn it face up if it's face down. Then it deals damage equal to its power to each other creature.\nSVar:IgnitionDamage:DB$ DamageAll | ValidCards$ Creature.NotDefinedTargeted | NumDmg$ X | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ EQ1 | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Choose target creature you control. Turn it face up if it's face down. Then it deals damage equal to its power to each other creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Showstopping Surprise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

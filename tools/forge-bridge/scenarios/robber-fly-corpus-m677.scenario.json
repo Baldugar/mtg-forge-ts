@@ -1,0 +1,25 @@
+{
+  "id": "robber-fly-corpus-m677",
+  "description": "M6 corpus — Robber Fly; ETB-on-bf.",
+  "seed": 68432,
+  "cards": {
+    "Robber Fly": "Name:Robber Fly\nManaCost:2 R\nTypes:Creature Insect\nPT:1/1\nK:Flying\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME becomes blocked, defending player discards all the cards in their hand, then draws that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredDefendingPlayer | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ TriggeredDefendingPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Flying\\nWhenever Robber Fly becomes blocked, defending player discards all the cards in their hand, then draws that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Robber Fly"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

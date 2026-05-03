@@ -1,0 +1,23 @@
+{
+  "id": "night-market-corpus-m677",
+  "description": "M6 corpus — Night Market; in-hand parse.",
+  "seed": 65915,
+  "cards": {
+    "Night Market": "Name:Night Market\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As this land enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nK:Cycling:3\nOracle:This land enters tapped. As it enters, choose a color.\\n{T}: Add one mana of the chosen color.\\nCycling {3} ({3}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Night Market"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

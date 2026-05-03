@@ -1,0 +1,25 @@
+{
+  "id": "nightsky-mimic-corpus-m677",
+  "description": "M6 corpus — Nightsky Mimic; ETB-on-bf.",
+  "seed": 65953,
+  "cards": {
+    "Nightsky Mimic": "Name:Nightsky Mimic\nManaCost:1 WB\nTypes:Creature Shapeshifter\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Card.White+Black | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever you cast a spell that's both white and black, CARDNAME has base power and toughness 4/4 until end of turn and gains flying until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 4 | Toughness$ 4 | Keywords$ Flying\nSVar:BuffedBy:Card.Black+White\nOracle:Whenever you cast a spell that's both white and black, Nightsky Mimic has base power and toughness 4/4 until end of turn and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nightsky Mimic"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

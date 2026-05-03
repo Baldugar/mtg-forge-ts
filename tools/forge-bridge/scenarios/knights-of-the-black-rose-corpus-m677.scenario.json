@@ -1,0 +1,23 @@
+{
+  "id": "knights-of-the-black-rose-corpus-m677",
+  "description": "M6 corpus — Knights of the Black Rose; in-hand parse.",
+  "seed": 63779,
+  "cards": {
+    "Knights of the Black Rose": "Name:Knights of the Black Rose\nManaCost:3 W B\nTypes:Creature Human Knight\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ BecomeMonarch | ValidPlayer$ Opponent | BeginTurn$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever an opponent becomes the monarch, if you were the monarch as the turn began, that player loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:When Knights of the Black Rose enters, you become the monarch.\\nWhenever an opponent becomes the monarch, if you were the monarch as the turn began, that player loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knights of the Black Rose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

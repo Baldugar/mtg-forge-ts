@@ -1,0 +1,23 @@
+{
+  "id": "rainveil-rejuvenator-corpus-m677",
+  "description": "M6 corpus — Rainveil Rejuvenator; in-hand parse.",
+  "seed": 67598,
+  "cards": {
+    "Rainveil Rejuvenator": "Name:Rainveil Rejuvenator\nManaCost:3 G\nTypes:Creature Elephant Druid\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this creature enters, you may mill three cards. (You may put the top three cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | Optional$ True\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Add an amount of {G} equal to CARDNAME's power.\nSVar:X:Count$CardPower\nOracle:When this creature enters, you may mill three cards. (You may put the top three cards of your library into your graveyard.)\\n{T}: Add an amount of {G} equal to this creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rainveil Rejuvenator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

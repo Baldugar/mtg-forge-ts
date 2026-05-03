@@ -1,0 +1,23 @@
+{
+  "id": "militia-bugler-corpus-m677",
+  "description": "M6 corpus — Militia Bugler; in-hand parse.",
+  "seed": 65129,
+  "cards": {
+    "Militia Bugler": "Name:Militia Bugler\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/3\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a creature card with power 2 or less from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | Optional$ True | ForceRevealToController$ True | ChangeNum$ 1 | ChangeValid$ Creature.powerLE2 | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nWhen Militia Bugler enters, look at the top four cards of your library. You may reveal a creature card with power 2 or less from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Militia Bugler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

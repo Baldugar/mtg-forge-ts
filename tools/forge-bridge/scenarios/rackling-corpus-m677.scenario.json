@@ -1,0 +1,23 @@
+{
+  "id": "rackling-corpus-m677",
+  "description": "M6 corpus — Rackling; in-hand parse.",
+  "seed": 67514,
+  "cards": {
+    "Rackling": "Name:Rackling\nManaCost:4\nTypes:Artifact Creature Phyrexian Construct\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.Opponent | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each opponent's upkeep, CARDNAME deals X damage to that player, where X is 3 minus the number of cards in their hand.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:TriggeredPlayer$CardsInHand/NMinus.3\nOracle:At the beginning of each opponent's upkeep, Rackling deals X damage to that player, where X is 3 minus the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rackling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

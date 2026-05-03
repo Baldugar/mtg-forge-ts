@@ -1,0 +1,23 @@
+{
+  "id": "mirko-vosk-mind-drinker-corpus-m677",
+  "description": "M6 corpus — Mirko Vosk, Mind Drinker; in-hand parse.",
+  "seed": 65225,
+  "cards": {
+    "Mirko Vosk, Mind Drinker": "Name:Mirko Vosk, Mind Drinker\nManaCost:3 U B\nTypes:Legendary Creature Vampire\nPT:2/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player reveals cards from the top of their library until they reveal four land cards, then puts those cards into their graveyard.\nSVar:TrigDig:DB$ DigUntil | Defined$ TriggeredTarget | Amount$ 4 | Valid$ Land | ValidDescription$ land | RevealedDestination$ Graveyard\nOracle:Flying\\nWhenever Mirko Vosk, Mind Drinker deals combat damage to a player, that player reveals cards from the top of their library until they reveal four land cards, then puts those cards into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirko Vosk, Mind Drinker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

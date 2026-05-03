@@ -1,0 +1,23 @@
+{
+  "id": "sacred-rites-corpus-m677",
+  "description": "M6 corpus — Sacred Rites; in-hand parse.",
+  "seed": 68844,
+  "cards": {
+    "Sacred Rites": "Name:Sacred Rites\nManaCost:W\nTypes:Instant\nA:SP$ Discard | Defined$ You | AnyNumber$ True | Mode$ TgtChoose | Optional$ True | RememberDiscarded$ True | SubAbility$ DBPumpAll | SpellDescription$ Discard any number of cards. Creatures you control get +0/+1 until end of turn for each card discarded this way.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumDef$ +X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Discard any number of cards. Creatures you control get +0/+1 until end of turn for each card discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sacred Rites"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

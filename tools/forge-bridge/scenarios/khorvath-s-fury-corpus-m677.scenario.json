@@ -1,0 +1,23 @@
+{
+  "id": "khorvath-s-fury-corpus-m677",
+  "description": "M6 corpus — Khorvath's Fury; in-hand parse.",
+  "seed": 63628,
+  "cards": {
+    "Khorvath's Fury": "Name:Khorvath's Fury\nManaCost:4 R\nTypes:Sorcery\nA:SP$ AssignGroup | Defined$ Player | Choices$ FriendRepeat,FoeRepeat | AILogic$ FriendOrFoe | SpellDescription$ For each player, choose friend or foe. Each friend discards all cards from their hand, then draws that many cards plus one. CARDNAME deals damage to each foe equal to the number of cards in their hand.\nSVar:FriendRepeat:DB$ RepeatEach | RepeatPlayers$ Remembered | ClearRememberedBeforeLoop$ True | RepeatSubAbility$ DBDiscard | StackDescription$ SpellDescription | SpellDescription$ Each friend discards all cards from their hand, then draws that many cards plus one.\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ DBCleanup\nSVar:FoeRepeat:DB$ RepeatEach | RepeatPlayers$ Remembered | ClearRememberedBeforeLoop$ True | RepeatSubAbility$ DBDmg | DamageMap$ True | StackDescription$ SpellDescription | SpellDescription$ CARDNAME deals damage to each foe equal to the number of cards in their hand.\nSVar:DBDmg:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ Y\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount/Plus.1\nSVar:Y:Count$ValidHand Card.RememberedPlayerCtrl\nSVar:NeedsToPlayVar:Z GE4\nSVar:Z:Count$ValidHand Card.OppOwn\nOracle:For each player, choose friend or foe. Each friend discards all cards from their hand, then draws that many cards plus one. Khorvath's Fury deals damage to each foe equal to the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Khorvath's Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

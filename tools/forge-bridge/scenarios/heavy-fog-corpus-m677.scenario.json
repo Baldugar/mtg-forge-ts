@@ -1,0 +1,23 @@
+{
+  "id": "heavy-fog-corpus-m677",
+  "description": "M6 corpus — Heavy Fog; in-hand parse.",
+  "seed": 62195,
+  "cards": {
+    "Heavy Fog": "Name:Heavy Fog\nManaCost:1 G\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent | AILogic$ Fog | CheckSVar$ X | ActivationPhases$ Declare Attackers | SpellDescription$ Cast this spell only during the declare attackers step and only if you've been attacked this step. Prevent all damage that would be dealt to you this turn by attacking creatures.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ You | ValidSource$ Creature.attacking | Description$ Prevent all damage that would be dealt to you this turn by attacking creatures.\nSVar:X:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nPrevent all damage that would be dealt to you this turn by attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heavy Fog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

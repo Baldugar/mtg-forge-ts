@@ -1,0 +1,23 @@
+{
+  "id": "orc-sureshot-corpus-m677",
+  "description": "M6 corpus — Orc Sureshot; in-hand parse.",
+  "seed": 66378,
+  "cards": {
+    "Orc Sureshot": "Name:Orc Sureshot\nManaCost:3 B\nTypes:Creature Orc Archer\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another creature you control enters, target creature an opponent controls gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nSVar:BuffedBy:Creature\nOracle:Whenever another creature you control enters, target creature an opponent controls gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orc Sureshot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

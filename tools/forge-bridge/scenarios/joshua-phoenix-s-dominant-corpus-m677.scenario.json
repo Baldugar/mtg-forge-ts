@@ -1,0 +1,23 @@
+{
+  "id": "joshua-phoenix-s-dominant-corpus-m677",
+  "description": "M6 corpus — Joshua, Phoenix's Dominant; in-hand parse.",
+  "seed": 63346,
+  "cards": {
+    "Joshua, Phoenix's Dominant": "Name:Joshua, Phoenix's Dominant\nManaCost:1 R W\nTypes:Legendary Creature Human Noble Wizard\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When NICKNAME enters, discard up to two cards, then draw that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ ChangeZone | Cost$ 3 R W T | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile NICKNAME, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | SubAbility$ DBCleanup\nAlternateMode:DoubleFaced\nSVar:X:Remembered$Amount\nDeckHas:Ability$Discard\nOracle:When Joshua enters, discard up to two cards, then draw that many cards.\\n{3}{R}{W}, {T}: Exile Joshua, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\n\nALTERNATE\n\nName:Phoenix, Warden of Fire\nManaCost:no cost\nColors:red,white\nTypes:Legendary Enchantment Creature Saga Phoenix\nPT:4/4\nK:Chapter:3:DBRisingFlames,DBRisingFlames,DBFlamesOfRebirth\nSVar:DBRisingFlames:DB$ DealDamage | NumDmg$ 2 | Defined$ Player.Opponent | SpellDescription$ Rising Flames — NICKNAME deals 2 damage to each opponent.\nSVar:DBFlamesOfRebirth:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Creature.YouOwn | MaxTotalTargetCMC$ 6 | SubAbility$ DBExile | TgtPrompt$ Select any number of creature cards with total mana value 6 or less | SpellDescription$ Return any number of target creature cards with total mana value 6 or less from your graveyard to the battlefield. Exile NICKNAME, then return it to the battlefield (front face up).\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | RememberChanged$ True\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Flying\nK:Lifelink\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Rising Flames — Phoenix deals 2 damage to each opponent.\\nIII — Flames of Rebirth — Return any number of target creature cards with total mana value 6 or less from your graveyard to the battlefield. Exile Phoenix, then return it to the battlefield (front face up).\\nFlying, lifelink\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Joshua, Phoenix's Dominant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

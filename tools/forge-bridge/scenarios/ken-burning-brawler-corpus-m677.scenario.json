@@ -1,0 +1,25 @@
+{
+  "id": "ken-burning-brawler-corpus-m677",
+  "description": "M6 corpus — Ken, Burning Brawler; ETB-on-bf.",
+  "seed": 63600,
+  "cards": {
+    "Ken, Burning Brawler": "Name:Ken, Burning Brawler\nVariant:UniversesWithin:FlavorName:Aisha of Sparks and Smoke\nManaCost:1 R R\nTypes:Legendary Creature Human Warrior\nPT:4/2\nK:Prowess\nA:AB$ Pump | Cost$ RW | Defined$ Self | KW$ First Strike | SpellDescription$ NICKNAME gains first strike until end of turn.\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Card.Self | Execute$ TrigCast | OptionalDecider$ You | TriggerDescription$ Shoryuken — When NICKNAME deals combat damage, you may cast a sorcery spell from your hand with mana value less than or equal to that damage without paying its mana cost.\nSVar:TrigCast:DB$ Play | Valid$ Sorcery.YouOwn+cmcLEX | ValidSA$ Spell | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Optional$ True\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Sorcery\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\n{R/W}: Ken gains first strike until end of turn.\\nShoryuken — Whenever Ken deals combat damage, you may cast a sorcery spell from your hand with mana value less than or equal to that damage without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ken, Burning Brawler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rionya-fire-dancer-corpus-m677",
+  "description": "M6 corpus — Rionya, Fire Dancer; in-hand parse.",
+  "seed": 68308,
+  "cards": {
+    "Rionya, Fire Dancer": "Name:Rionya, Fire Dancer\nManaCost:3 R R\nTypes:Legendary Creature Human Wizard\nPT:3/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, create X tokens that are copies of another target creature you control, where X is one plus the number of instant and sorcery spells you've cast this turn. They gain haste. Exile them at the beginning of the next end step.\nSVar:TrigCopy:DB$ CopyPermanent | NumCopies$ X | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | PumpKeywords$ Haste | AtEOT$ Exile\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl/Plus.1\nDeckHas:Ability$Token\nDeckNeeds:Type$Instant|Sorcery\nOracle:At the beginning of combat on your turn, create X tokens that are copies of another target creature you control, where X is one plus the number of instant and sorcery spells you've cast this turn. They gain haste. Exile them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rionya, Fire Dancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lagonna-band-storyteller-corpus-m677",
+  "description": "M6 corpus — Lagonna-Band Storyteller; in-hand parse.",
+  "seed": 63961,
+  "cards": {
+    "Lagonna-Band Storyteller": "Name:Lagonna-Band Storyteller\nManaCost:3 W\nTypes:Creature Centaur Advisor\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put target enchantment card from your graveyard on top of your library. If you do, you gain life equal to its mana value.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Enchantment.YouOwn | TgtPrompt$ Choose target enchantment from your graveyard | RememberChanged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nDeckHas:Ability$LifeGain\nDeckNeeds:Type$Enchantment\nOracle:When Lagonna-Band Storyteller enters, you may put target enchantment card from your graveyard on top of your library. If you do, you gain life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lagonna-Band Storyteller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

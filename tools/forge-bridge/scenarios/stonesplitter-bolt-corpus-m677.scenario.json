@@ -1,0 +1,23 @@
+{
+  "id": "stonesplitter-bolt-corpus-m677",
+  "description": "M6 corpus — Stonesplitter Bolt; in-hand parse.",
+  "seed": 71068,
+  "cards": {
+    "Stonesplitter Bolt": "Name:Stonesplitter Bolt\nManaCost:X R\nTypes:Instant\nK:Bargain\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ Z | SpellDescription$ CARDNAME deals X damage to target creature or planeswalker. If this spell was bargained, it deals twice X damage to that permanent instead.\nSVar:Y:Count$Bargained.2.1\nSVar:Z:SVar$X/Times.Y\nSVar:X:Count$xPaid\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact|Enchantment & Ability$Token\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nStonesplitter Bolt deals X damage to target creature or planeswalker. If this spell was bargained, it deals twice X damage to that permanent instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stonesplitter Bolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

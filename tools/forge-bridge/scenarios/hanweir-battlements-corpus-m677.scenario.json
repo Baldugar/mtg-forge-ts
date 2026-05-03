@@ -1,0 +1,23 @@
+{
+  "id": "hanweir-battlements-corpus-m677",
+  "description": "M6 corpus — Hanweir Battlements; in-hand parse.",
+  "seed": 62029,
+  "cards": {
+    "Hanweir Battlements": "Name:Hanweir Battlements\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Pump | Cost$ R T | ValidTgts$ Creature | KW$ Haste | SpellDescription$ Target creature gains haste until end of turn.\nA:AB$ Meld | Cost$ 3 R R T | ConditionPresent$ Card.Self+YouCtrl+YouOwn | ConditionCheckSVar$ X | Name$ Hanweir, the Writhing Township | Primary$ Hanweir Battlements | Secondary$ Hanweir Garrison | SpellDescription$ If you both own and control CARDNAME and a creature named Hanweir Garrison, exile them, then meld them into Hanweir, the Writhing Township.\nSVar:X:Count$Valid Creature.YouCtrl+YouOwn+namedHanweir Garrison\nDeckHints:Name$Hanweir Garrison & Type$Eldrazi|Horror\nDeckHas:Ability$Mana.Colorless|Token\nMeldPair:Hanweir Garrison\nAlternateMode:Meld\nOracle:{T}: Add {C}.\\n{R}, {T}: Target creature gains haste until end of turn.\\n{3}{R}{R}, {T}: If you both own and control Hanweir Battlements and a creature named Hanweir Garrison, exile them, then meld them into Hanweir, the Writhing Township.\n\nALTERNATE\n\nName:Hanweir, the Writhing Township\nManaCost:no cost\nTypes:Legendary Creature Eldrazi Ooze\nPT:7/4\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create two 3/2 colorless Eldrazi Horror creature tokens that are tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_3_2_eldrazi_horror | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nOracle:Trample, haste\\nWhenever Hanweir, the Writhing Township attacks, create two 3/2 colorless Eldrazi Horror creature tokens that are tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hanweir Battlements"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

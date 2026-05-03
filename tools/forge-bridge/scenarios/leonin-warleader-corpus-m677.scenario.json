@@ -1,0 +1,23 @@
+{
+  "id": "leonin-warleader-corpus-m677",
+  "description": "M6 corpus — Leonin Warleader; in-hand parse.",
+  "seed": 64140,
+  "cards": {
+    "Leonin Warleader": "Name:Leonin Warleader\nManaCost:2 W W\nTypes:Creature Cat Soldier\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create two 1/1 white Cat creature tokens with lifelink that are tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_cat_lifelink | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Whenever Leonin Warleader attacks, create two 1/1 white Cat creature tokens with lifelink that are tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonin Warleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

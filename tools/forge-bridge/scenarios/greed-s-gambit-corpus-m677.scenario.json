@@ -1,0 +1,23 @@
+{
+  "id": "greed-s-gambit-corpus-m677",
+  "description": "M6 corpus — Greed's Gambit; in-hand parse.",
+  "seed": 61722,
+  "cards": {
+    "Greed's Gambit": "Name:Greed's Gambit\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw three cards, gain 6 life, and create three 2/1 black Bat creature tokens with flying.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 6 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ 3 | TokenScript$ b_2_1_bat_flying | TokenOwner$ You\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of your end step, you discard a card, lose 2 life, and sacrifice a creature.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | SacValid$ Creature\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDiscardThree | TriggerDescription$ When CARDNAME leaves the battlefield, you discard three cards, lose 6 life, and sacrifice three creatures.\nSVar:TrigDiscardThree:DB$ Discard | NumCards$ 3 | Mode$ TgtChoose | SubAbility$ DBLoseLifeThree\nSVar:DBLoseLifeThree:DB$ LoseLife | Defined$ You | LifeAmount$ 6 | SubAbility$ DBSacrificeThree\nSVar:DBSacrificeThree:DB$ Sacrifice | SacValid$ Creature | SacMessage$ three creatures | Amount$ 3\nDeckHas:Ability$LifeGain|Token|Sacrifice & Type$Bat\nDeckHints:Ability$Discard\nOracle:When Greed's Gambit enters, you draw three cards, gain 6 life, and create three 2/1 black Bat creature tokens with flying.\\nAt the beginning of your end step, you discard a card, lose 2 life, and sacrifice a creature.\\nWhen Greed's Gambit leaves the battlefield, you discard three cards, lose 6 life, and sacrifice three creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greed's Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

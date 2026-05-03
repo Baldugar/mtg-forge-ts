@@ -1,0 +1,23 @@
+{
+  "id": "mogg-salvage-corpus-m677",
+  "description": "M6 corpus — Mogg Salvage; in-hand parse.",
+  "seed": 65370,
+  "cards": {
+    "Mogg Salvage": "Name:Mogg Salvage\nManaCost:2 R\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell | ValidCard$ Card.Self | ValidPlayer$ You | Cost$ 0 | EffectZone$ All | CheckSVar$ X | CheckSecondSVar$ Y | Description$ If an opponent controls an Island and you control a Mountain, you may cast this spell without paying its mana cost.\nSVar:X:Count$Valid Island.OppCtrl\nSVar:Y:Count$Valid Mountain.YouCtrl\nA:SP$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nOracle:If an opponent controls an Island and you control a Mountain, you may cast this spell without paying its mana cost.\\nDestroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mogg Salvage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

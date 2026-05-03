@@ -1,0 +1,23 @@
+{
+  "id": "scrutiny-of-the-guildpact-corpus-m677",
+  "description": "M6 corpus — Scrutiny of the Guildpact; in-hand parse.",
+  "seed": 69243,
+  "cards": {
+    "Scrutiny of the Guildpact": "Name:Scrutiny of the Guildpact\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, you may choose a creature card in your hand. If you do, that card perpetually incorporates {W} and gains \"When you cast this spell, create a 2/2 white and blue Detective creature token.\"\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceTitle$ You may choose a creature card in your hand | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Incorporate$ W | Triggers$ SpellCastTrig | Duration$ Perpetual\nSVar:SpellCastTrig:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When you cast this spell, create a 2/2 white and blue Detective creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ wu_2_2_detective\nS:Mode$ Continuous | Affected$ Creature.MultiColor+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Multicolored creatures you control get +1/+1.\nDeckHints:Type$Detective\nDeckHas:Ability$Token & Type$Detective & Color$Blue\nOracle:When Scrutiny of the Guildpact enters, you may choose a creature card in your hand. If you do, that card perpetually incorporates {W} and gains \"When you cast this spell, create a 2/2 white and blue Detective creature token.\"\\nMulticolored creatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrutiny of the Guildpact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

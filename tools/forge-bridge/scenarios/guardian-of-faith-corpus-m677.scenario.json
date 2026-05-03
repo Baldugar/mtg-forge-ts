@@ -1,0 +1,23 @@
+{
+  "id": "guardian-of-faith-corpus-m677",
+  "description": "M6 corpus — Guardian of Faith; in-hand parse.",
+  "seed": 61873,
+  "cards": {
+    "Guardian of Faith": "Name:Guardian of Faith\nManaCost:1 W W\nTypes:Creature Spirit Knight\nPT:3/2\nK:Flash\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPhaseOut | TriggerDescription$ When CARDNAME enters, any number of other target creatures you control phase out. (Treat them and anything attached to them as though they don't exist until their controller's next turn.)\nSVar:TrigPhaseOut:DB$ Phases | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select any number of other target creatures you control | TargetMin$ 0 | TargetMax$ MaxTgts\nSVar:MaxTgts:Count$Valid Creature.Other+YouCtrl\nOracle:Flash\\nVigilance\\nWhen Guardian of Faith enters, any number of other target creatures you control phase out. (Treat them and anything attached to them as though they don't exist until their controller's next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian of Faith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

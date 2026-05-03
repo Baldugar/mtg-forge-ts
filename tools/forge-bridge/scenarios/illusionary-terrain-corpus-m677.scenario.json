@@ -1,0 +1,23 @@
+{
+  "id": "illusionary-terrain-corpus-m677",
+  "description": "M6 corpus — Illusionary Terrain; in-hand parse.",
+  "seed": 62757,
+  "cards": {
+    "Illusionary Terrain": "Name:Illusionary Terrain\nManaCost:U U\nTypes:Enchantment\nK:Cumulative upkeep:2\nK:ETBReplacement:Other:ChooseType1\nSVar:ChooseType1:DB$ ChooseType | Defined$ You | Type$ Basic Land | SubAbility$ ChooseType2 | SpellDescription$ As CARDNAME enters, choose two basic land types.\nSVar:ChooseType2:DB$ ChooseType | Defined$ You | Type$ Basic Land | ChooseType2$ True\nS:Mode$ Continuous | Affected$ Land.Basic+ChosenType | AddType$ ChosenType2 | RemoveLandTypes$ True | Description$ Basic lands of the first chosen type are the second chosen type.\nAI:RemoveDeck:All\nOracle:Cumulative upkeep {2} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAs Illusionary Terrain enters, choose two basic land types.\\nBasic lands of the first chosen type are the second chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illusionary Terrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

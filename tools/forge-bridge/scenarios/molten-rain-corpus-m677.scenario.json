@@ -1,0 +1,23 @@
+{
+  "id": "molten-rain-corpus-m677",
+  "description": "M6 corpus — Molten Rain; in-hand parse.",
+  "seed": 65403,
+  "cards": {
+    "Molten Rain": "Name:Molten Rain\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Land | SubAbility$ DBDamage | SpellDescription$ Destroy target land. If that land was nonbasic, CARDNAME deals 2 damage to the land's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 2 | ConditionDefined$ Targeted | ConditionPresent$ Land.Basic | ConditionCompare$ EQ0 | ConditionDescription$ If that land is nonbasic,\nOracle:Destroy target land. If that land was nonbasic, Molten Rain deals 2 damage to the land's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Rain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

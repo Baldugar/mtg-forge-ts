@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-karsus-corpus-m677",
+  "description": "M6 corpus — Invasion of Karsus; in-hand parse.",
+  "seed": 63065,
+  "cards": {
+    "Invasion of Karsus": "Name:Invasion of Karsus\nManaCost:2 R R\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 3 damage to each creature and each planeswalker.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature,Planeswalker | NumDmg$ 3\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Karsus enters, it deals 3 damage to each creature and each planeswalker.\n\nALTERNATE\n\nName:Refraction Elemental\nManaCost:no cost\nColors:red\nTypes:Creature Elemental\nPT:4/4\nK:Ward:PayLife<2>\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerDescription$ Whenever you cast a spell, CARDNAME deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 2\nDeckHints:Type$Instant|Sorcery\nOracle:Ward—Pay 2 life.\\nWhenever you cast a spell, Refraction Elemental deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Karsus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

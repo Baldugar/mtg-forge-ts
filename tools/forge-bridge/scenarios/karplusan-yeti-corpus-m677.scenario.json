@@ -1,0 +1,25 @@
+{
+  "id": "karplusan-yeti-corpus-m677",
+  "description": "M6 corpus — Karplusan Yeti; ETB-on-bf.",
+  "seed": 63499,
+  "cards": {
+    "Karplusan Yeti": "Name:Karplusan Yeti\nManaCost:3 R R\nTypes:Creature Yeti\nPT:3/3\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DamageThis | SpellDescription$ CARDNAME deals damage equal to its power to target creature. That creature deals damage equal to its power to CARDNAME.\nSVar:DamageThis:DB$ DealDamage | Defined$ Self | DamageSource$ Targeted | NumDmg$ Y\nSVar:X:Count$CardPower\nSVar:Y:Targeted$CardPower\nOracle:{T}: Karplusan Yeti deals damage equal to its power to target creature. That creature deals damage equal to its power to Karplusan Yeti.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Karplusan Yeti"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

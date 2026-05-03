@@ -1,0 +1,23 @@
+{
+  "id": "order-of-succession-corpus-m677",
+  "description": "M6 corpus — Order of Succession; in-hand parse.",
+  "seed": 66399,
+  "cards": {
+    "Order of Succession": "Name:Order of Succession\nManaCost:3 U\nTypes:Sorcery\nA:SP$ ChooseDirection | SubAbility$ DBGainControl | AILogic$ GainControl | SpellDescription$ Choose left or right. Starting with you and proceeding in the chosen direction, each player chooses a creature controlled by the next player in that direction. Each player gains control of the creature they chose.\nSVar:DBGainControl:DB$ GainControlVariant | AllValid$ Creature | ChangeController$ ChooseNextPlayerInChosenDirection\nAI:RemoveDeck:All\nOracle:Choose left or right. Starting with you and proceeding in the chosen direction, each player chooses a creature controlled by the next player in that direction. Each player gains control of the creature they chose.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Order of Succession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

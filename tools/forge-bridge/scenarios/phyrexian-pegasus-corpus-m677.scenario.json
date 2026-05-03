@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-pegasus-corpus-m677",
+  "description": "M6 corpus — Phyrexian Pegasus; in-hand parse.",
+  "seed": 66861,
+  "cards": {
+    "Phyrexian Pegasus": "Name:Phyrexian Pegasus\nManaCost:2 W\nTypes:Creature Phyrexian Pegasus\nPT:2/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target attacking creature without flying gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+attacking+withoutFlying | TgtPrompt$ Select another target attacking creature without flying | KW$ Flying\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Phyrexian Pegasus attacks, another target attacking creature without flying gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Pegasus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

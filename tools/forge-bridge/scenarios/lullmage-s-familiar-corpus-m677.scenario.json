@@ -1,0 +1,25 @@
+{
+  "id": "lullmage-s-familiar-corpus-m677",
+  "description": "M6 corpus — Lullmage's Familiar; ETB-on-bf.",
+  "seed": 64475,
+  "cards": {
+    "Lullmage's Familiar": "Name:Lullmage's Familiar\nManaCost:1 G U\nTypes:Creature Beast\nPT:2/4\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SpellDescription$ Add {G} or {U}.\nT:Mode$ SpellCast | ValidCard$ Card.kicked | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a kicked spell, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:BuffedBy:Card.withKicker,Card.withMultikicker\nDeckHas:Ability$LifeGain\nOracle:{T}: Add {G} or {U}.\\nWhenever you cast a kicked spell, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lullmage's Familiar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

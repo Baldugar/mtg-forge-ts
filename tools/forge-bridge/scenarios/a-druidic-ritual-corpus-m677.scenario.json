@@ -1,0 +1,23 @@
+{
+  "id": "a-druidic-ritual-corpus-m677",
+  "description": "M6 corpus — A-Druidic Ritual; in-hand parse.",
+  "seed": 68723,
+  "cards": {
+    "A-Druidic Ritual": "Name:A-Druidic Ritual\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 3 | Optional$ True | SubAbility$ DBReturn | SpellDescription$ You may mill three cards.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Hidden$ True | ChangeNum$ 2 | ChangeType$ Creature.YouOwn,Land.YouOwn | ChangeTypeDesc$ creature and/or land cards they own | SelectPrompt$ Select up to two creature and/or land cards from your graveyard to return to your hand | SpellDescription$ Then return up to two creature and/or land cards from your graveyard to your hand.\nDeckHas:Ability$Mill|Graveyard\nOracle:You may mill three cards. Then return up to two creature and/or land cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Druidic Ritual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kor-sanctifiers-corpus-m677",
+  "description": "M6 corpus — Kor Sanctifiers; in-hand parse.",
+  "seed": 63834,
+  "cards": {
+    "Kor Sanctifiers": "Name:Kor Sanctifiers\nManaCost:2 W\nTypes:Creature Kor Cleric\nPT:2/3\nK:Kicker:W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, destroy target artifact or enchantment.\nSVar:TrigKicker:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment.\nSVar:NeedsToPlayKickedVar:Z GE1\nSVar:Z:Count$Valid Artifact.OppCtrl/Plus.Z1\nSVar:Z1:Count$Valid Enchantment.OppCtrl\nOracle:Kicker {W} (You may pay an additional {W} as you cast this spell.)\\nWhen Kor Sanctifiers enters, if it was kicked, destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Sanctifiers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

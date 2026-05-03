@@ -1,0 +1,23 @@
+{
+  "id": "nature-s-will-corpus-m677",
+  "description": "M6 corpus — Nature's Will; in-hand parse.",
+  "seed": 65773,
+  "cards": {
+    "Nature's Will": "Name:Nature's Will\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ DBTapAll | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, tap all lands that player controls and untap all lands you control.\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Land.ControlledBy TriggeredTarget | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Land.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Whenever one or more creatures you control deal combat damage to a player, tap all lands that player controls and untap all lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "infernal-caretaker-corpus-m677",
+  "description": "M6 corpus — Infernal Caretaker; ETB-on-bf.",
+  "seed": 62900,
+  "cards": {
+    "Infernal Caretaker": "Name:Infernal Caretaker\nManaCost:3 B\nTypes:Creature Human Cleric\nPT:2/2\nK:Morph:3 B\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, return all Zombie cards from all graveyards to their owners' hands.\nSVar:TrigChange:DB$ ChangeZoneAll | ChangeType$ Zombie | Origin$ Graveyard | Destination$ Hand\nAI:RemoveDeck:Random\nOracle:Morph {3}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Infernal Caretaker is turned face up, return all Zombie cards from all graveyards to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Infernal Caretaker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "seraphic-greatsword-corpus-m677",
+  "description": "M6 corpus — Seraphic Greatsword; in-hand parse.",
+  "seed": 69463,
+  "cards": {
+    "Seraphic Greatsword": "Name:Seraphic Greatsword\nManaCost:1 W\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Equipped creature gets +2/+2.\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Attacked$ Player.withMostLife | Execute$ TrigToken | TriggerDescription$ Whenever equipped creature attacks the player with the most life or tied for most life, create a 4/4 white Angel creature token with flying that's tapped and attacking that player.\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_angel_flying | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ TriggeredDefender\nSVar:HasAttackEffect:TRUE\nK:Equip:4\nDeckHas:Ability$Token\nOracle:Equipped creature gets +2/+2.\\nWhenever equipped creature attacks the player with the most life or tied for most life, create a 4/4 white Angel creature token with flying that's tapped and attacking that player.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seraphic Greatsword"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

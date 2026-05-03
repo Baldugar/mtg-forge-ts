@@ -1,0 +1,25 @@
+{
+  "id": "jaded-analyst-corpus-m677",
+  "description": "M6 corpus — Jaded Analyst; ETB-on-bf.",
+  "seed": 63227,
+  "cards": {
+    "Jaded Analyst": "Name:Jaded Analyst\nManaCost:1 U\nTypes:Creature Human Detective\nPT:3/2\nK:Defender\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigDebuff | TriggerDescription$ Whenever you draw your second card each turn, CARDNAME loses defender and gains vigilance until end of turn.\nSVar:TrigDebuff:DB$ Debuff | Keywords$ Defender | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | KW$ Vigilance\nAI:RemoveDeck:Random\nOracle:Defender\\nWhenever you draw your second card each turn, Jaded Analyst loses defender and gains vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jaded Analyst"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

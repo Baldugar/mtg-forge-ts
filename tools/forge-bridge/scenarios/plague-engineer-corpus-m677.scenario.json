@@ -1,0 +1,23 @@
+{
+  "id": "plague-engineer-corpus-m677",
+  "description": "M6 corpus — Plague Engineer; in-hand parse.",
+  "seed": 66953,
+  "cards": {
+    "Plague Engineer": "Name:Plague Engineer\nManaCost:2 B\nTypes:Creature Phyrexian Carrier\nPT:2/2\nK:Deathtouch\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentOppControls | SpellDescription$ As CARDNAME enters, choose a creature type. | StackDescription$ SpellDescription\nAI:RemoveDeck:Random\nS:Mode$ Continuous | Affected$ Creature.ChosenType+OppCtrl | AddPower$ -1 | AddToughness$ -1 | Description$ Creatures of the chosen type your opponents control get -1/-1.\nSVar:PlayMain1:TRUE\nOracle:Deathtouch\\nAs Plague Engineer enters, choose a creature type.\\nCreatures of the chosen type your opponents control get -1/-1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

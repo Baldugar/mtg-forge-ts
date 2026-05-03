@@ -1,0 +1,23 @@
+{
+  "id": "shield-mare-corpus-m677",
+  "description": "M6 corpus — Shield Mare; in-hand parse.",
+  "seed": 69675,
+  "cards": {
+    "Shield Mare": "Name:Shield Mare\nManaCost:1 W W\nTypes:Creature Horse\nPT:2/3\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.Red | Description$ CARDNAME can't be blocked by red creatures.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBGainLife | TriggerDescription$ When CARDNAME enters or becomes the target of a spell or ability an opponent controls, you gain 3 life.\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ DBGainLife | Secondary$ True | TriggerDescription$ When CARDNAME enters or becomes the target of a spell or ability an opponent controls, you gain 3 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nOracle:Shield Mare can't be blocked by red creatures.\\nWhen Shield Mare enters or becomes the target of a spell or ability an opponent controls, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shield Mare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

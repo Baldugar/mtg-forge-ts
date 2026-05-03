@@ -1,0 +1,23 @@
+{
+  "id": "nessian-game-warden-corpus-m677",
+  "description": "M6 corpus — Nessian Game Warden; in-hand parse.",
+  "seed": 65846,
+  "cards": {
+    "Nessian Game Warden": "Name:Nessian Game Warden\nManaCost:3 G G\nTypes:Creature Beast\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top X cards of your library, where X is the number of forests you control. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature\nSVar:X:Count$Valid Forest.YouCtrl\nOracle:When Nessian Game Warden enters, look at the top X cards of your library, where X is the number of Forests you control. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nessian Game Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

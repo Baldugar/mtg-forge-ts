@@ -1,0 +1,25 @@
+{
+  "id": "hidden-gibbons-corpus-m677",
+  "description": "M6 corpus — Hidden Gibbons; ETB-on-bf.",
+  "seed": 62333,
+  "cards": {
+    "Hidden Gibbons": "Name:Hidden Gibbons\nManaCost:G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | IsPresent$ Card.Self+Enchantment | Execute$ TrigAnimate | TriggerDescription$ When an opponent casts an instant spell, if CARDNAME is an enchantment, CARDNAME becomes a 4/4 Ape creature.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 4 | Toughness$ 4 | Types$ Creature,Ape | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nDeckHas:Type$Ape\nOracle:When an opponent casts an instant spell, if Hidden Gibbons is an enchantment, Hidden Gibbons becomes a 4/4 Ape creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hidden Gibbons"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

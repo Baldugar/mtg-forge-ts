@@ -1,0 +1,23 @@
+{
+  "id": "sensor-splicer-corpus-m677",
+  "description": "M6 corpus — Sensor Splicer; in-hand parse.",
+  "seed": 69443,
+  "cards": {
+    "Sensor Splicer": "Name:Sensor Splicer\nManaCost:4 W\nTypes:Creature Phyrexian Artificer\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_3_3_a_phyrexian_golem | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.Golem+YouCtrl | AddKeyword$ Vigilance | Description$ Golem creatures you control have vigilance.\nOracle:When Sensor Splicer enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\\nGolem creatures you control have vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sensor Splicer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

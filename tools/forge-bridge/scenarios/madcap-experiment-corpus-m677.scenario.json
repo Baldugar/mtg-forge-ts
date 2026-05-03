@@ -1,0 +1,23 @@
+{
+  "id": "madcap-experiment-corpus-m677",
+  "description": "M6 corpus — Madcap Experiment; in-hand parse.",
+  "seed": 64561,
+  "cards": {
+    "Madcap Experiment": "Name:Madcap Experiment\nManaCost:3 R\nTypes:Sorcery\nA:SP$ DigUntil | Valid$ Artifact | ValidDescription$ artifact | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | RememberRevealed$ True | SubAbility$ DBDealDamage | SpellDescription$ Reveal cards from the top of your library until you reveal an artifact card. Put that card onto the battlefield and the rest on the bottom of your library in a random order. CARDNAME deals damage to you equal to the number of cards revealed this way.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact\nOracle:Reveal cards from the top of your library until you reveal an artifact card. Put that card onto the battlefield and the rest on the bottom of your library in a random order. Madcap Experiment deals damage to you equal to the number of cards revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Madcap Experiment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

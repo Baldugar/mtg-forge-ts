@@ -1,0 +1,23 @@
+{
+  "id": "soul-echo-corpus-m677",
+  "description": "M6 corpus — Soul Echo; in-hand parse.",
+  "seed": 70440,
+  "cards": {
+    "Soul Echo": "Name:Soul Echo\nManaCost:X W W\nTypes:Enchantment\nK:etbCounter:ECHO:X\nSVar:X:Count$xPaid\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ValidLoseReason$ LifeReachedZero | Layer$ CantHappen | Description$ You don't lose the game for having 0 or less life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME if there are no echo counters on it. Otherwise, target opponent may choose that for each 1 damage that would be dealt to you until your next upkeep, you remove an echo counter from CARDNAME instead.\nSVar:TrigSac:DB$ Sacrifice | ConditionPresent$ Card.Self+counters_EQ0_ECHO | SubAbility$ TrigChoose\nSVar:TrigChoose:DB$ GenericChoice | AILogic$ SoulEcho | ConditionPresent$ Card.Self+counters_GT0_ECHO | ValidTgts$ Opponent | Choices$ RemoveCounters,DealDamage\nSVar:DealDamage:DB$ Pump | Defined$ You | SpellDescription$ Damage will be applied to this player's life as usual.\nSVar:RemoveCounters:DB$ Effect | ReplacementEffects$ Damage | ExileOnMoved$ Exile | Duration$ UntilYourNextUpkeep | SpellDescription$ For each 1 damage that would be dealt to this player until their next upkeep, they remove an echo counter from CARDNAME instead.\nSVar:Damage:Event$ DamageDone | ValidTarget$ You | ReplaceWith$ Counters | Description$ For each 1 damage that would be dealt to you until your next upkeep, you remove an echo counter from EFFECTSOURCE instead.\nSVar:Counters:DB$ RemoveCounter | Defined$ EffectSource | CounterType$ ECHO | CounterNum$ Y\nSVar:Y:ReplaceCount$DamageAmount\nDeckHas:Ability$Counters\nOracle:Soul Echo enters with X echo counters on it.\\nYou don't lose the game for having 0 or less life.\\nAt the beginning of your upkeep, sacrifice Soul Echo if there are no echo counters on it. Otherwise, target opponent may choose that for each 1 damage that would be dealt to you until your next upkeep, you remove an echo counter from Soul Echo instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Echo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

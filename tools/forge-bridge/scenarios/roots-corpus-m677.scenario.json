@@ -1,0 +1,23 @@
+{
+  "id": "roots-corpus-m677",
+  "description": "M6 corpus — Roots; in-hand parse.",
+  "seed": 68518,
+  "cards": {
+    "Roots": "Name:Roots\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Creature.withoutFlying:creature without flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nOracle:Enchant creature without flying\\nWhen Roots enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roots"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

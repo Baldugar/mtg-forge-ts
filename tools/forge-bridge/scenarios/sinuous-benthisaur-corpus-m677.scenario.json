@@ -1,0 +1,23 @@
+{
+  "id": "sinuous-benthisaur-corpus-m677",
+  "description": "M6 corpus — Sinuous Benthisaur; in-hand parse.",
+  "seed": 69981,
+  "cards": {
+    "Sinuous Benthisaur": "Name:Sinuous Benthisaur\nManaCost:5 U\nTypes:Creature Dinosaur\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top X cards of your library, where X is the number of Caves you control plus the number of Cave cards in your graveyard. Put two of those cards into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 2 | RestRandomOrder$ True\nSVar:X:Count$ValidBattlefield,Graveyard Cave.YouCtrl\nSVar:NeedsToPlayVar:X GE2\nDeckNeeds:Type$Cave\nOracle:When Sinuous Benthisaur enters, look at the top X cards of your library, where X is the number of Caves you control plus the number of Cave cards in your graveyard. Put two of those cards into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sinuous Benthisaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

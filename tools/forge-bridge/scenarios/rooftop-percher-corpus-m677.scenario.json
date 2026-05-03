@@ -1,0 +1,23 @@
+{
+  "id": "rooftop-percher-corpus-m677",
+  "description": "M6 corpus — Rooftop Percher; in-hand parse.",
+  "seed": 68499,
+  "cards": {
+    "Rooftop Percher": "Name:Rooftop Percher\nManaCost:5\nTypes:Creature Shapeshifter\nPT:3/3\nK:Changeling\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, exile up to two target cards from graveyards. You gain 3 life.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target cards in graveyards to exile | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nDeckHas:Ability$LifeGain\nOracle:Changeling (This card is every creature type.)\\nFlying\\nWhen this creature enters, exile up to two target cards from graveyards. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rooftop Percher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

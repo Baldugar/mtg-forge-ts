@@ -1,0 +1,23 @@
+{
+  "id": "staunch-crewmate-corpus-m677",
+  "description": "M6 corpus — Staunch Crewmate; in-hand parse.",
+  "seed": 70923,
+  "cards": {
+    "Staunch Crewmate": "Name:Staunch Crewmate\nManaCost:1 U\nTypes:Creature Human Pirate\nPT:2/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal an artifact or Pirate card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Pirate,Artifact | RestRandomOrder$ True\nDeckHints:Type$Pirate|Artifact\nOracle:When Staunch Crewmate enters, look at the top four cards of your library. You may reveal an artifact or Pirate card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Staunch Crewmate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

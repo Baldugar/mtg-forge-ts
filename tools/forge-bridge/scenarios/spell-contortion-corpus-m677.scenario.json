@@ -1,0 +1,23 @@
+{
+  "id": "spell-contortion-corpus-m677",
+  "description": "M6 corpus — Spell Contortion; in-hand parse.",
+  "seed": 70570,
+  "cards": {
+    "Spell Contortion": "Name:Spell Contortion\nManaCost:2 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ 2 | SubAbility$ DBDraw | SpellDescription$ Counter target spell unless its controller pays {2}. Draw a card for each time CARDNAME was kicked.\nK:Multikicker:1 U\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$TimesKicked\nAI:RemoveDeck:All\nOracle:Multikicker {1}{U} (You may pay an additional {1}{U} any number of times as you cast this spell.)\\nCounter target spell unless its controller pays {2}. Draw a card for each time Spell Contortion was kicked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spell Contortion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

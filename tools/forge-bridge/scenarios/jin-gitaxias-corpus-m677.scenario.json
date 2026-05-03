@@ -1,0 +1,23 @@
+{
+  "id": "jin-gitaxias-corpus-m677",
+  "description": "M6 corpus — Jin-Gitaxias; in-hand parse.",
+  "seed": 63308,
+  "cards": {
+    "Jin-Gitaxias": "Name:Jin-Gitaxias\nManaCost:3 U U\nTypes:Legendary Creature Phyrexian Praetor\nPT:5/5\nK:Ward:2\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature+cmcGE3 | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ DBDraw | TriggerDescription$ Whenever you cast a noncreature spell with mana value 3 or greater, draw a card.\nSVar:DBDraw:DB$ Draw\nA:AB$ ChangeZone | Cost$ 3 U | CheckSVar$ X | SVarCompare$ GE7 | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile CARDNAME, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery and only if you have seven or more cards in hand.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | ForgetOtherRemembered$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.YouOwn\nDeckHints:Type$Phyrexian\nSVar:BuffedBy:Card.nonCreature+cmcGE3\nAlternateMode:DoubleFaced\nOracle:Ward {2}\\nWhenever you cast a noncreature spell with mana value 3 or greater, draw a card.\\n{3}{U}: Exile Jin-Gitaxias, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery and only if you have seven or more cards in hand.\n\nALTERNATE\n\nName:The Great Synthesis\nManaCost:no cost\nColors:blue\nTypes:Enchantment Saga\nK:Chapter:3:DBDraw,DBBounceAll,DBCastAll\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBEffect | SpellDescription$ Draw cards equal to the number of cards in your hand. You have no maximum hand size for as long as you control CARDNAME.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STHandSize | Duration$ AsLongAsControl\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nSVar:DBBounceAll:DB$ ChangeZoneAll | ChangeType$ Creature.nonPhyrexian | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return all non-Phyrexian creatures to their owners' hands.\nSVar:DBCastAll:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell | ValidZone$ Hand | WithoutManaCost$ True | Amount$ All | Controller$ You | Optional$ True | SubAbility$ DBExileSelf | Ultimate$ True | SpellDescription$ You may cast any number of spells from your hand without paying their mana costs. Exile CARDNAME, then return it to the battlefield.\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturnSelf | RememberChanged$ True\nSVar:DBReturnSelf:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:(As this saga enters and after your draw step, add a lore counter.)\\nI — Draw cards equal to the number of cards in your hand. You have no maximum hand size for as long as you control The Great Synthesis.\\nII — Return all non-Phyrexian creatures to their owners' hands.\\nIII — You may cast any number of spells from your hand without paying their mana cost. Exile The Great Synthesis, then return it to the battlefield (front face up).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jin-Gitaxias"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

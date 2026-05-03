@@ -1,0 +1,23 @@
+{
+  "id": "kaya-s-guile-corpus-m677",
+  "description": "M6 corpus — Kaya's Guile; in-hand parse.",
+  "seed": 63532,
+  "cards": {
+    "Kaya's Guile": "Name:Kaya's Guile\nManaCost:1 W B\nTypes:Instant\nK:Entwine:3\nA:SP$ Charm | Choices$ DBSac,DBExile,DBSpirit,DBGain | CharmNum$ 2\nSVar:DBSac:DB$ Sacrifice | Defined$ Player.Opponent | SacValid$ Creature | SpellDescription$ Each opponent sacrifices a creature.\nSVar:DBExile:DB$ ChangeZoneAll | ChangeType$ Card.OppOwn | Origin$ Graveyard | Destination$ Exile | SpellDescription$ Exile all cards from each opponent's graveyard.\nSVar:DBSpirit:DB$ Token | TokenScript$ wb_1_1_spirit_flying | TokenOwner$ You | SpellDescription$ Create a 1/1 white and black Spirit creature token with flying.\nSVar:DBGain:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nDeckHas:Ability$Token|LifeGain\nOracle:Choose two —\\n• Each opponent sacrifices a creature.\\n• Exile all cards from each opponent's graveyard.\\n• Create a 1/1 white and black Spirit creature token with flying.\\n• You gain 4 life.\\nEntwine {3} (Choose all if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaya's Guile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

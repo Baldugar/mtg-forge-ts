@@ -1,0 +1,23 @@
+{
+  "id": "krang-master-mind-corpus-m677",
+  "description": "M6 corpus — Krang, Master Mind; in-hand parse.",
+  "seed": 63863,
+  "cards": {
+    "Krang, Master Mind": "Name:Krang, Master Mind\nManaCost:6 U U\nTypes:Legendary Artifact Creature Utrom Warrior\nPT:1/4\nK:Affinity:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ LT4 | Execute$ TrigDraw | TriggerDescription$ When NICKNAME enters, if you have fewer than four cards in hand, draw cards equal to the difference.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ Y\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ Z | Description$ NICKNAME gets +1/+0 for each other artifact you control.\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:Number$4/Minus.X\nSVar:Z:Count$Valid Artifact.Other+YouCtrl\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nWhen Krang enters, if you have fewer than four cards in hand, draw cards equal to the difference.\\nKrang gets +1/+0 for each other artifact you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krang, Master Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

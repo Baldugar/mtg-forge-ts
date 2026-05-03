@@ -1,0 +1,23 @@
+{
+  "id": "invert-the-skies-corpus-m677",
+  "description": "M6 corpus — Invert the Skies; in-hand parse.",
+  "seed": 63088,
+  "cards": {
+    "Invert the Skies": "Name:Invert the Skies\nManaCost:3 GU\nTypes:Instant\nA:SP$ AnimateAll | ValidCards$ Creature.OppCtrl | RemoveKeywords$ Flying | ConditionManaSpent$ G | SubAbility$ UPaid | SpellDescription$ Creatures your opponents control lose flying until end of turn if {G} was spent to cast this spell, and creatures you control gain flying until end of turn if {U} was spent to cast this spell. (Do both if {G}{U} was spent.)\nSVar:UPaid:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Flying | ConditionManaSpent$ U\nAI:RemoveDeck:All\nOracle:Creatures your opponents control lose flying until end of turn if {G} was spent to cast this spell, and creatures you control gain flying until end of turn if {U} was spent to cast this spell. (Do both if {G}{U} was spent.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invert the Skies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

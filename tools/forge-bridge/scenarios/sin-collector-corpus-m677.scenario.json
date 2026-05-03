@@ -1,0 +1,23 @@
+{
+  "id": "sin-collector-corpus-m677",
+  "description": "M6 corpus — Sin Collector; in-hand parse.",
+  "seed": 69958,
+  "cards": {
+    "Sin Collector": "Name:Sin Collector\nManaCost:1 W B\nTypes:Creature Human Cleric\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand. You choose an instant or sorcery card from it and exile that card.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Instant,Sorcery | ChangeNum$ 1 | IsCurse$ True\nOracle:When Sin Collector enters, target opponent reveals their hand. You choose an instant or sorcery card from it and exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sin Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

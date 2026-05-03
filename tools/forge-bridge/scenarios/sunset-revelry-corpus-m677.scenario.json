@@ -1,0 +1,23 @@
+{
+  "id": "sunset-revelry-corpus-m677",
+  "description": "M6 corpus — Sunset Revelry; in-hand parse.",
+  "seed": 71383,
+  "cards": {
+    "Sunset Revelry": "Name:Sunset Revelry\nManaCost:1 W\nTypes:Sorcery\nA:SP$ GainLife | Defined$ You | LifeAmount$ 4 | ConditionCheckSVar$ LifeThem | ConditionSVarCompare$ GTLifeYou | SubAbility$ DBToken | StackDescription$ SpellDescription | SpellDescription$ If an opponent has more life than you, you gain 4 life.\nSVar:LifeThem:PlayerCountOpponents$HighestLifeTotal\nSVar:LifeYou:Count$YourLifeTotal\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_human | ConditionCheckSVar$ CreaturesThem | ConditionSVarCompare$ GTCreaturesYou | SubAbility$ DBDraw | SpellDescription$ If an opponent controls more creatures than you, create two 1/1 white Human creature tokens.\nSVar:CreaturesThem:PlayerCountOpponents$HighestValid Creature.YouCtrl\nSVar:CreaturesYou:Count$Valid Creature.YouCtrl\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ CardsThem | ConditionSVarCompare$ GTCardsYou | StackDescription$ SpellDescription | SpellDescription$ If an opponent has more cards in hand than you, draw a card.\nSVar:CardsThem:PlayerCountOpponents$HighestCardsInHand\nSVar:CardsYou:Count$CardsInYourHand\nDeckHas:Ability$LifeGain|Token\nOracle:If an opponent has more life than you, you gain 4 life.\\nIf an opponent controls more creatures than you, create two 1/1 white Human creature tokens.\\nIf an opponent has more cards in hand than you, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunset Revelry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

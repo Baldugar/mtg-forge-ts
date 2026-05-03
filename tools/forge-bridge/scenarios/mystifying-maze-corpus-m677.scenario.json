@@ -1,0 +1,25 @@
+{
+  "id": "mystifying-maze-corpus-m677",
+  "description": "M6 corpus — Mystifying Maze; ETB-on-bf.",
+  "seed": 65687,
+  "cards": {
+    "Mystifying Maze": "Name:Mystifying Maze\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ChangeZone | Cost$ 4 T | ValidTgts$ Creature.attacking+OppCtrl | TgtPrompt$ Select target attacking creature an opponent controls | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | SpellDescription$ Exile target attacking creature an opponent controls. At the beginning of the next end step, return it to the battlefield tapped under its owner's control.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ RememberedLKI | TriggerDescription$ Return exiled card to the battlefield. | SubAbility$ DBCleanup\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI | Tapped$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{T}: Add {C}.\\n{4}, {T}: Exile target attacking creature an opponent controls. At the beginning of the next end step, return it to the battlefield tapped under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mystifying Maze"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

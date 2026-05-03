@@ -1,0 +1,23 @@
+{
+  "id": "heartless-conscription-corpus-m677",
+  "description": "M6 corpus — Heartless Conscription; in-hand parse.",
+  "seed": 62174,
+  "cards": {
+    "Heartless Conscription": "Name:Heartless Conscription\nManaCost:6 B B\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Creature | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile all creatures. For each card exiled this way, you may play that card for as long as it remains exiled, and mana of any type can be spent to cast that spell. Exile CARDNAME.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBChange | ForgetOnMoved$ Exile | Duration$ Permanent\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the cards exiled with EFFECTSOURCE for as long as they remain exiled, and mana of any type can be spent to cast those spells.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile all creatures. For each card exiled this way, you may play that card for as long as it remains exiled, and mana of any type can be spent to cast that spell. Exile CARDNAME.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heartless Conscription"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

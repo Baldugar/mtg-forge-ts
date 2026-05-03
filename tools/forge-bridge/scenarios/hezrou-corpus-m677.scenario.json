@@ -1,0 +1,23 @@
+{
+  "id": "hezrou-corpus-m677",
+  "description": "M6 corpus — Hezrou; in-hand parse.",
+  "seed": 62327,
+  "cards": {
+    "Hezrou": "Name:Hezrou\nManaCost:5 B B\nTypes:Creature Frog Demon\nPT:6/6\nT:Mode$ AttackerBlockedOnce | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever one or more creatures you control become blocked, each blocking creature gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.blocking\nAlternateMode:Adventure\nOracle:Whenever one or more creatures you control become blocked, each blocking creature gets -1/-1 until end of turn.\n\nALTERNATE\n\nName:Demonic Stench\nManaCost:B\nTypes:Instant Adventure\nA:SP$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.blockedThisTurn | SpellDescription$ Each creature that blocked this turn gets -1/-1 until end of turn.\nOracle:Each creature that blocked this turn gets -1/-1 until end of turn. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hezrou"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "melee-corpus-m677",
+  "description": "M6 corpus — Melee; in-hand parse.",
+  "seed": 64945,
+  "cards": {
+    "Melee": "Name:Melee\nManaCost:4 R\nTypes:Instant\nA:SP$ Effect | StaticAbilities$ DeclareCombatants | Triggers$ TrigAttack | Duration$ UntilEndOfCombat | PlayerTurn$ True | ActivationPhases$ BeginCombat->Declare Attackers | SpellDescription$ Cast this spell only during your turn and only during combat before blockers are declared. You choose which creatures block this combat and how those creatures block. Whenever a creature attacks and isn't blocked this combat, untap it and remove it from combat.\nSVar:DeclareCombatants:Mode$ Continuous | Affected$ Player | DeclaresBlockers$ You | Description$ You choose which creatures block this combat and how those creatures block.\nSVar:TrigAttack:Mode$ AttackerUnblocked | ValidCard$ Creature | Execute$ TrigUntap | TriggerZones$ Command | TriggerDescription$ Whenever a creature attacks and isn't blocked this combat, untap it and remove it from combat.\nSVar:TrigUntap:DB$ Untap | Defined$ TriggeredAttackerLKICopy | SubAbility$ RemCombat\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ TriggeredAttackerLKICopy\nAI:RemoveDeck:All\nOracle:Cast this spell only during your turn and only during combat before blockers are declared.\\nYou choose which creatures block this combat and how those creatures block.\\nWhenever a creature attacks and isn't blocked this combat, untap it and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Melee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "strength-of-the-harvest-corpus-m677",
+  "description": "M6 corpus — Strength of the Harvest; in-hand parse.",
+  "seed": 71181,
+  "cards": {
+    "Strength of the Harvest": "Name:Strength of the Harvest\nManaCost:2 GW\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | Description$ Enchanted creature gets +1/+1 for each creature and/or enchantment you control.\nSVar:X:Count$Valid Creature.YouCtrl,Enchantment.YouCtrl\nSVar:BuffedBy:Enchantment\nDeckHints:Type$Enchantment\nAlternateMode:Modal\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 for each creature and/or enchantment you control.\n\nALTERNATE\n\nName:Haven of the Harvest\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo G W | SpellDescription$ Add {G} or {W}.\nOracle:Haven of the Harvest enters tapped.\\n{T}: Add {G} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strength of the Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

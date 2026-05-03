@@ -1,0 +1,23 @@
+{
+  "id": "kraul-foragers-corpus-m677",
+  "description": "M6 corpus — Kraul Foragers; in-hand parse.",
+  "seed": 63869,
+  "cards": {
+    "Kraul Foragers": "Name:Kraul Foragers\nManaCost:4 G\nTypes:Creature Insect Scout\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ Undergrowth — When CARDNAME enters, you gain 1 life for each creature card in your graveyard.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Undergrowth — When Kraul Foragers enters, you gain 1 life for each creature card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kraul Foragers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

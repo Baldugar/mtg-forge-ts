@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-mindbreaker-corpus-m677",
+  "description": "M6 corpus — Sphinx Mindbreaker; in-hand parse.",
+  "seed": 70610,
+  "cards": {
+    "Sphinx Mindbreaker": "Name:Sphinx Mindbreaker\nManaCost:5 U U\nTypes:Creature Sphinx\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBMill | TriggerDescription$ When CARDNAME enters, each opponent mills ten cards.\nSVar:DBMill:DB$ Mill | Defined$ Player.Opponent | NumCards$ 10\nOracle:Flying\\nWhen Sphinx Mindbreaker enters, each opponent mills ten cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx Mindbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

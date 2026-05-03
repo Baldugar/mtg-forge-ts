@@ -1,0 +1,23 @@
+{
+  "id": "kellan-s-lightblades-corpus-m677",
+  "description": "M6 corpus — Kellan's Lightblades; in-hand parse.",
+  "seed": 63592,
+  "cards": {
+    "Kellan's Lightblades": "Name:Kellan's Lightblades\nManaCost:1 W\nTypes:Instant\nK:Bargain\nA:SP$ DealDamage | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ 3 | SubAbility$ DBDestroy | ConditionCheckSVar$ Bargain | ConditionSVarCompare$ EQ0 | SpellDescription$ CARDNAME deals 3 damage to target attacking or blocking creature. If this spell was bargained, destroy that creature instead.\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted | ConditionCheckSVar$ Bargain | ConditionDescription$ If this spell was bargained,\nSVar:Bargain:Count$Bargained.1.0\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Token & Type$Enchantment|Artifact\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nKellan's Lightblades deals 3 damage to target attacking or blocking creature. If this spell was bargained, destroy that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kellan's Lightblades"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

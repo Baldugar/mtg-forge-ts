@@ -1,0 +1,23 @@
+{
+  "id": "harbinger-of-night-corpus-m677",
+  "description": "M6 corpus — Harbinger of Night; in-hand parse.",
+  "seed": 62041,
+  "cards": {
+    "Harbinger of Night": "Name:Harbinger of Night\nManaCost:2 B B\nTypes:Creature Spirit\nPT:2/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ At the beginning of your upkeep, put a -1/-1 counter on each creature.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:At the beginning of your upkeep, put a -1/-1 counter on each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harbinger of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

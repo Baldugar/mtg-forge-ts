@@ -1,0 +1,23 @@
+{
+  "id": "shreds-of-sanity-corpus-m677",
+  "description": "M6 corpus — Shreds of Sanity; in-hand parse.",
+  "seed": 69776,
+  "cards": {
+    "Shreds of Sanity": "Name:Shreds of Sanity\nManaCost:2 R\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose target instant card in your graveyard | ValidTgts$ Instant.YouCtrl | SpellDescription$ Return up to one target instant card and up to one target sorcery card from your graveyard to your hand, then discard a card. Exile CARDNAME. | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Sorcery.YouCtrl | TgtPrompt$ Select target sorcery card in your graveyard | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nDeckHints:Ability$Graveyard\nDeckHas:Ability$Discard\nOracle:Return up to one target instant card and up to one target sorcery card from your graveyard to your hand, then discard a card. Exile Shreds of Sanity.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shreds of Sanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

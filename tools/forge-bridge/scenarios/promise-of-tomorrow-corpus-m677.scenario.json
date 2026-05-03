@@ -1,0 +1,23 @@
+{
+  "id": "promise-of-tomorrow-corpus-m677",
+  "description": "M6 corpus — Promise of Tomorrow; in-hand parse.",
+  "seed": 67263,
+  "cards": {
+    "Promise of Tomorrow": "Name:Promise of Tomorrow\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever a creature you control dies, exile it.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of each end step, if you control no creatures, sacrifice CARDNAME and return all cards exiled with it to the battlefield under your control.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Battlefield | ChangeType$ Card.ExiledWithSource\nOracle:Whenever a creature you control dies, exile it.\\nAt the beginning of each end step, if you control no creatures, sacrifice Promise of Tomorrow and return all cards exiled with it to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Promise of Tomorrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

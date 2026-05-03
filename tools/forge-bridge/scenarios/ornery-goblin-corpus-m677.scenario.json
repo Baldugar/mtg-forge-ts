@@ -1,0 +1,25 @@
+{
+  "id": "ornery-goblin-corpus-m677",
+  "description": "M6 corpus — Ornery Goblin; ETB-on-bf.",
+  "seed": 66429,
+  "cards": {
+    "Ornery Goblin": "Name:Ornery Goblin\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:2/1\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigDamageAttacker | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 1 damage to that creature.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigDamageBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 1 damage to that creature.\nSVar:TrigDamageAttacker:DB$ DealDamage | Defined$ TriggeredAttackerLKICopy | NumDmg$ 1\nSVar:TrigDamageBlocker:DB$ DealDamage | Defined$ TriggeredBlockerLKICopy | NumDmg$ 1\nOracle:Whenever Ornery Goblin blocks or becomes blocked by a creature, Ornery Goblin deals 1 damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ornery Goblin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

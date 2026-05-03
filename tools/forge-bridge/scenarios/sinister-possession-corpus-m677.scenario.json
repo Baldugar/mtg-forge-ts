@@ -1,0 +1,23 @@
+{
+  "id": "sinister-possession-corpus-m677",
+  "description": "M6 corpus — Sinister Possession; in-hand parse.",
+  "seed": 69972,
+  "cards": {
+    "Sinister Possession": "Name:Sinister Possession\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigLoseLifeAttack | TriggerDescription$ Whenever enchanted creature attacks or blocks, its controller loses 2 life.\nT:Mode$ Blocks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigLoseLifeBlock | Secondary$ True | TriggerDescription$ Whenever enchanted creature attacks or blocks, its controller loses 2 life.\nSVar:TrigLoseLifeAttack:DB$ LoseLife | Defined$ TriggeredAttackerController | LifeAmount$ 2\nSVar:TrigLoseLifeBlock:DB$ LoseLife | Defined$ TriggeredBlockerController | LifeAmount$ 2\nOracle:Enchant creature\\nWhenever enchanted creature attacks or blocks, its controller loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sinister Possession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "mirkwood-trapper-corpus-m677",
+  "description": "M6 corpus — Mirkwood Trapper; ETB-on-bf.",
+  "seed": 65230,
+  "cards": {
+    "Mirkwood Trapper": "Name:Mirkwood Trapper\nManaCost:1 G U\nTypes:Creature Elf Scout\nPT:1/4\nT:Mode$ AttackersDeclared | AttackedTarget$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a player attacks you, target attacking creature gets -2/-0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking | NumAtt$ -2 | IsCurse$ True\nT:Mode$ AttackersDeclared | Execute$ TrigChoose | IsPresent$ Creature.attackingYou | PresentCompare$ EQ0 | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player attacks, if they aren't attacking you, that player chooses an attacking creature. It gets +2/+0 until end of turn.\nSVar:TrigChoose:DB$ ChooseCard | Chooser$ TriggeredAttackingPlayer | Choices$ Creature.attacking | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ChosenCard | NumAtt$ +2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Whenever a player attacks you, target attacking creature gets -2/-0 until end of turn.\\nWhenever a player attacks, if they aren't attacking you, that player chooses an attacking creature. It gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mirkwood Trapper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "molderhulk-corpus-m677",
+  "description": "M6 corpus — Molderhulk; in-hand parse.",
+  "seed": 65383,
+  "cards": {
+    "Molderhulk": "Name:Molderhulk\nManaCost:7 B G\nTypes:Creature Fungus Zombie\nPT:6/6\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ Undergrowth — This spell costs {1} less to cast for each creature card in your graveyard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target land card from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land card from your graveyard\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Undergrowth — This spell costs {1} less to cast for each creature card in your graveyard.\\nWhen Molderhulk enters, return target land card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molderhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

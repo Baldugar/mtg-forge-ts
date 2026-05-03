@@ -1,0 +1,23 @@
+{
+  "id": "kindle-the-carnage-corpus-m677",
+  "description": "M6 corpus — Kindle the Carnage; in-hand parse.",
+  "seed": 63653,
+  "cards": {
+    "Kindle the Carnage": "Name:Kindle the Carnage\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ Repeat | RepeatSubAbility$ DBDiscard | RepeatOptional$ True | StackDescription$ SpellDescription | SpellDescription$ Discard a card at random. If you do, CARDNAME deals damage equal to that card's mana value to each creature. You may repeat this process any number of times.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ Random | RememberDiscarded$ True | SubAbility$ DBDmgAll\nSVar:DBDmgAll:DB$ DamageAll | ValidCards$ Creature | NumDmg$ X | ConditionCheckSVar$ Y | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Discard a card at random. If you do, Kindle the Carnage deals damage equal to that card's mana value to each creature. You may repeat this process any number of times.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kindle the Carnage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

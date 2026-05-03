@@ -1,0 +1,23 @@
+{
+  "id": "hallow-corpus-m677",
+  "description": "M6 corpus — Hallow; in-hand parse.",
+  "seed": 61986,
+  "cards": {
+    "Hallow": "Name:Hallow\nManaCost:W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Card | TargetType$ Spell | TgtZone$ Stack | TgtPrompt$ Select target spell to prevent damage from | ReplacementEffects$ PreventDmg | Triggers$ TargetMoved | RememberObjects$ TargetedSource | SpellDescription$ Prevent all damage target spell would deal this turn. You gain life equal to the damage prevented this way.\nSVar:PreventDmg:Event$ DamageDone | ValidSource$ Card.IsRemembered | ReplaceWith$ GainLifeYou | PreventionEffect$ True | Description$ Prevent all damage that would be dealt by targeted spell this turn. You gain life equal to the damage prevented this way.\nSVar:GainLifeYou:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:ReplaceCount$DamageAmount\nSVar:TargetMoved:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | ExcludedDestinations$ Battlefield | Execute$ ExileEffect | Static$ True\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Prevent all damage target spell would deal this turn. You gain life equal to the damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hallow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "manhole-missile-corpus-m677",
+  "description": "M6 corpus — Manhole Missile; in-hand parse.",
+  "seed": 64718,
+  "cards": {
+    "Manhole Missile": "Name:Manhole Missile\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | SubAbility$ DBBottom | SpellDescription$ CARDNAME deals 3 damage to target creature. You may put a card from your hand on the bottom of your library. If you do, draw a card.\nSVar:DBBottom:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Manhole Missile deals 3 damage to target creature. You may put a card from your hand on the bottom of your library. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manhole Missile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

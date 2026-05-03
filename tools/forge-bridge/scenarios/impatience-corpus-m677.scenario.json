@@ -1,0 +1,23 @@
+{
+  "id": "impatience-corpus-m677",
+  "description": "M6 corpus — Impatience; in-hand parse.",
+  "seed": 62796,
+  "cards": {
+    "Impatience": "Name:Impatience\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ TrigCast | SVarCompare$ EQ0 | Execute$ ImpatientDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's end step, if that player didn't cast a spell this turn, CARDNAME deals 2 damage to that player.\nSVar:ImpatientDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nSVar:TrigCast:Count$ThisTurnCast_Card.ActivePlayerCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's end step, if that player didn't cast a spell this turn, Impatience deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impatience"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

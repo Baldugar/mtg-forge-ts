@@ -1,0 +1,25 @@
+{
+  "id": "magmakin-artillerist-corpus-m677",
+  "description": "M6 corpus — Magmakin Artillerist; ETB-on-bf.",
+  "seed": 64600,
+  "cards": {
+    "Magmakin Artillerist": "Name:Magmakin Artillerist\nManaCost:2 R\nTypes:Creature Elemental Pirate\nPT:1/4\nT:Mode$ DiscardedAll | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage1 | TriggerDescription$ Whenever you discard one or more cards, this creature deals that much damage to each opponent.\nSVar:TrigDealDamage1:DB$ DealDamage | NumDmg$ X | Defined$ Opponent\nK:Cycling:1 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDealDamage2 | TriggerDescription$ When you cycle this card, it deals 1 damage to each opponent.\nSVar:TrigDealDamage2:DB$ DealDamage | NumDmg$ 1 | Defined$ Opponent\nSVar:X:TriggerCount$Amount\nOracle:Whenever you discard one or more cards, this creature deals that much damage to each opponent.\\nCycling {1}{R} ({1}{R}, Discard this card: Draw a card.)\\nWhen you cycle this card, it deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Magmakin Artillerist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

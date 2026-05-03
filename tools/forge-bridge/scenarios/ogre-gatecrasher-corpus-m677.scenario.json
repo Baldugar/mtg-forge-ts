@@ -1,0 +1,23 @@
+{
+  "id": "ogre-gatecrasher-corpus-m677",
+  "description": "M6 corpus — Ogre Gatecrasher; in-hand parse.",
+  "seed": 66230,
+  "cards": {
+    "Ogre Gatecrasher": "Name:Ogre Gatecrasher\nManaCost:3 R\nTypes:Creature Ogre Rogue\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature with defender.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.withDefender | TgtPrompt$ Select target creature with defender.\nOracle:When Ogre Gatecrasher enters, destroy target creature with defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Gatecrasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

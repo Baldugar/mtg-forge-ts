@@ -1,0 +1,23 @@
+{
+  "id": "mawloc-corpus-m677",
+  "description": "M6 corpus — Mawloc; in-hand parse.",
+  "seed": 64902,
+  "cards": {
+    "Mawloc": "Name:Mawloc\nManaCost:X R G\nTypes:Creature Tyranid\nPT:2/2\nK:Ravenous\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ Terror from the Deep — When CARDNAME enters, it fights up to one target creature an opponent controls. If that creature would die this turn, exile it instead.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select up to one target creature an opponent controls | TargetMin$ 0 | TargetMax$ 1 | ReplaceDyingDefined$ Targeted\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nTerror from the Deep — When Mawloc enters, it fights up to one target creature an opponent controls. If that creature would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mawloc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

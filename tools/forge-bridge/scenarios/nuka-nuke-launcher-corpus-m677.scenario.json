@@ -1,0 +1,23 @@
+{
+  "id": "nuka-nuke-launcher-corpus-m677",
+  "description": "M6 corpus — Nuka-Nuke Launcher; in-hand parse.",
+  "seed": 66098,
+  "cards": {
+    "Nuka-Nuke Launcher": "Name:Nuka-Nuke Launcher\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddKeyword$ Intimidate | Description$ Equipped creature gets +3/+0 and has intimidate. (It can't be blocked except by artifact creatures and/or creatures that share a color with it.)\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigEffect | TriggerDescription$ Whenever equipped creature attacks, until the end of defending player's next turn, that player gets two rad counters whenever they cast a spell.\nSVar:TrigEffect:DB$ Effect | Duration$ UntilTheEndOfYourNextTurn | Triggers$ CastTrig | EffectOwner$ TriggeredDefendingPlayer\nSVar:CastTrig:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigRadiation | TriggerDescription$ When you cast a spell, you get two rad counters.\nSVar:TrigRadiation:DB$ Radiation | Defined$ You | Num$ 2\nK:Equip:3\nOracle:Equipped creature gets +3/+0 and has intimidate. (It can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nWhenever equipped creature attacks, until the end of defending player's next turn, that player gets two rad counters whenever they cast a spell.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nuka-Nuke Launcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

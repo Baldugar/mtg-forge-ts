@@ -1,0 +1,23 @@
+{
+  "id": "oasis-of-renewal-corpus-m677",
+  "description": "M6 corpus — Oasis of Renewal; in-hand parse.",
+  "seed": 66150,
+  "cards": {
+    "Oasis of Renewal": "Name:Oasis of Renewal\nManaCost:B G U\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | ActivationLimit$ 1 | Execute$ TrigSeekLand | TriggerDescription$ When CARDNAME enters and whenever a land card leaves your graveyard, seek a land card. This ability triggers only once each turn.\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Any | ValidCard$ Card.Land+YouOwn | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigSeekLand | Secondary$ True | TriggerDescription$ When CARDNAME enters and whenever a land card leaves your graveyard, seek a land card. This ability triggers only once each turn.\nSVar:TrigSeekLand:DB$ Seek | Type$ Card.Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | ActivationLimit$ 1 | Execute$ TrigSeekNonLand | TriggerDescription$ When CARDNAME enters and whenever a nonland card leaves your graveyard, seek a nonland card. This ability triggers only once each turn.\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Any | ValidCard$ Card.nonLand+YouOwn | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigSeekNonLand | Secondary$ True | TriggerDescription$ When CARDNAME enters and whenever a nonland card leaves your graveyard, seek a nonland card. This ability triggers only once each turn.\nSVar:TrigSeekNonLand:DB$ Seek | Type$ Card.nonLand\nOracle:When Oasis of Renewal enters and whenever a land card leaves your graveyard, seek a land card. This ability triggers only once each turn.\\nWhen Oasis of Renewal enters and whenever a nonland card leaves your graveyard, seek a nonland card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oasis of Renewal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

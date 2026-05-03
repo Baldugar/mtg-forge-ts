@@ -1,0 +1,23 @@
+{
+  "id": "heiko-yamazaki-the-general-corpus-m677",
+  "description": "M6 corpus — Heiko Yamazaki, the General; in-hand parse.",
+  "seed": 62218,
+  "cards": {
+    "Heiko Yamazaki, the General": "Name:Heiko Yamazaki, the General\nManaCost:3 R\nTypes:Legendary Creature Human Samurai\nPT:3/3\nK:Trample\nT:Mode$ Attacks | ValidCard$ Samurai.YouCtrl,Warrior.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever a Samurai or Warrior you control attacks alone, you may cast target artifact card from your graveyard this turn.\nSVar:TrigEffect:DB$ Effect | ValidTgts$ Artifact.YouOwn | TgtZone$ Graveyard | TgtPrompt$ Select target artifact card | RememberObjects$ Targeted | StaticAbilities$ Play | ExileOnMoved$ Graveyard\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Graveyard | Description$ You may play this card from your graveyard this turn.\nDeckHints:Type$Samurai|Warrior|Artifact\nDeckHas:Ability$Graveyard\nOracle:Trample\\nWhenever a Samurai or Warrior you control attacks alone, you may cast target artifact card from your graveyard this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heiko Yamazaki, the General"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

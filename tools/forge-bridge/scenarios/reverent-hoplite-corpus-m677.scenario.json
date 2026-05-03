@@ -1,0 +1,23 @@
+{
+  "id": "reverent-hoplite-corpus-m677",
+  "description": "M6 corpus — Reverent Hoplite; in-hand parse.",
+  "seed": 68185,
+  "cards": {
+    "Reverent Hoplite": "Name:Reverent Hoplite\nManaCost:4 W\nTypes:Creature Human Soldier\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 1/1 white Human Soldier creature tokens equal to your devotion to white.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nSVar:X:Count$Devotion.White\nDeckHas:Ability$Token\nOracle:When Reverent Hoplite enters, create a number of 1/1 white Human Soldier creature tokens equal to your devotion to white. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reverent Hoplite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

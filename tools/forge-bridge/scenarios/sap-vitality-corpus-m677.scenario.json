@@ -1,0 +1,23 @@
+{
+  "id": "sap-vitality-corpus-m677",
+  "description": "M6 corpus — Sap Vitality; in-hand parse.",
+  "seed": 68991,
+  "cards": {
+    "Sap Vitality": "Name:Sap Vitality\nManaCost:B B\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 3 | SubAbility$ DBChooseCard | SpellDescription$ CARDNAME deals 3 damage to target creature or planeswalker.\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn | ChoiceTitle$ Choose a creature card in your hand | ChoiceDesc$ creature | Mandatory$ True | SubAbility$ DBEffect | SpellDescription$ Choose a creature card in your hand.\nSVar:DBEffect:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | NumAtt$ +3 | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gets +3/+0.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Sap Vitality deals 3 damage to target creature or planeswalker. Choose a creature card in your hand. It perpetually gets +3/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sap Vitality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

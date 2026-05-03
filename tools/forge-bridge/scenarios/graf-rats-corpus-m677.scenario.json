@@ -1,0 +1,23 @@
+{
+  "id": "graf-rats-corpus-m677",
+  "description": "M6 corpus — Graf Rats; in-hand parse.",
+  "seed": 61606,
+  "cards": {
+    "Graf Rats": "Name:Graf Rats\nManaCost:1 B\nTypes:Creature Rat\nPT:2/1\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+YouCtrl+YouOwn | IsPresent2$ Creature.YouCtrl+YouOwn+namedMidnight Scavengers | Execute$ Meld | TriggerDescription$ At the beginning of combat on your turn, if you both own and control CARDNAME and a creature named Midnight Scavengers, exile them, then meld them into Chittering Host.\nSVar:Meld:DB$ Meld | Name$ Chittering Host | Primary$ Graf Rats | Secondary$ Midnight Scavengers\nDeckHints:Name$Midnight Scavengers\nMeldPair:Midnight Scavengers\nAlternateMode:Meld\nOracle:At the beginning of combat on your turn, if you both own and control Graf Rats and a creature named Midnight Scavengers, exile them, then meld them into Chittering Host.\n\nALTERNATE\n\nName:Chittering Host\nManaCost:no cost\nTypes:Creature Eldrazi Horror\nPT:5/6\nK:Haste\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, other creatures you control get +1/+0 and menace until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+StrictlyOther | NumAtt$ +1 | KW$ Menace\nOracle:Haste\\nMenace (This creature can't be blocked except by two or more creatures.)\\nWhen Chittering Host enters, other creatures you control get +1/+0 and gain menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graf Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

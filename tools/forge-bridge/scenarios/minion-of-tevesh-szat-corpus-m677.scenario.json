@@ -1,0 +1,23 @@
+{
+  "id": "minion-of-tevesh-szat-corpus-m677",
+  "description": "M6 corpus — Minion of Tevesh Szat; in-hand parse.",
+  "seed": 65198,
+  "cards": {
+    "Minion of Tevesh Szat": "Name:Minion of Tevesh Szat\nManaCost:4 B B B\nTypes:Creature Demon Minion\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 2 damage to you unless you pay {B}{B}.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ 2 | UnlessPayer$ You | UnlessCost$ B B\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ -2 | SpellDescription$ Target creature gets +3/-2 until end of turn.\nOracle:At the beginning of your upkeep, Minion of Tevesh Szat deals 2 damage to you unless you pay {B}{B}.\\n{T}: Target creature gets +3/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minion of Tevesh Szat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

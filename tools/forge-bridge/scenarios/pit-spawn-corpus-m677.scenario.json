@@ -1,0 +1,23 @@
+{
+  "id": "pit-spawn-corpus-m677",
+  "description": "M6 corpus — Pit Spawn; in-hand parse.",
+  "seed": 66940,
+  "cards": {
+    "Pit Spawn": "Name:Pit Spawn\nManaCost:4 B B B\nTypes:Creature Demon\nPT:6/4\nK:First Strike\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {B}{B}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ B B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME deals damage to a creature, exile that creature.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredTargetLKICopy | Origin$ Battlefield | Destination$ Exile\nOracle:First strike\\nAt the beginning of your upkeep, sacrifice Pit Spawn unless you pay {B}{B}.\\nWhenever Pit Spawn deals damage to a creature, exile that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pit Spawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

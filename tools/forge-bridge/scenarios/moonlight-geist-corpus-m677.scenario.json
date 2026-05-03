@@ -1,0 +1,25 @@
+{
+  "id": "moonlight-geist-corpus-m677",
+  "description": "M6 corpus — Moonlight Geist; ETB-on-bf.",
+  "seed": 65465,
+  "cards": {
+    "Moonlight Geist": "Name:Moonlight Geist\nManaCost:2 W\nTypes:Creature Spirit\nPT:2/1\nK:Flying\nA:AB$ Effect | Cost$ 3 W | ReplacementEffects$ RPrevent1,RPrevent2 | ExileOnMoved$ Battlefield | Duration$ UntilHostLeavesPlayOrEOT | SpellDescription$ Prevent all combat damage that would be dealt to and dealt by CARDNAME this turn.\nSVar:RPrevent1:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.EffectSource | Description$ Prevent all combat damage that would be dealt to and dealt by EFFECTSOURCE this turn.\nSVar:RPrevent2:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidTarget$ Card.EffectSource | Description$ Prevent all combat damage that would be dealt to and dealt by EFFECTSOURCE this turn.\nAI:RemoveDeck:All\nOracle:Flying\\n{3}{W}: Prevent all combat damage that would be dealt to and dealt by Moonlight Geist this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Moonlight Geist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

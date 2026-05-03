@@ -1,0 +1,25 @@
+{
+  "id": "seachrome-coast-corpus-m677",
+  "description": "M6 corpus — Seachrome Coast; ETB-on-bf.",
+  "seed": 69280,
+  "cards": {
+    "Seachrome Coast": "Name:Seachrome Coast\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or fewer other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT2\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nOracle:Seachrome Coast enters tapped unless you control two or fewer other lands.\\n{T}: Add {W} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Seachrome Coast"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

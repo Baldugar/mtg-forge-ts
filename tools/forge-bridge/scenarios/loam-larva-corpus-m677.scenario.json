@@ -1,0 +1,23 @@
+{
+  "id": "loam-larva-corpus-m677",
+  "description": "M6 corpus — Loam Larva; in-hand parse.",
+  "seed": 64342,
+  "cards": {
+    "Loam Larva": "Name:Loam Larva\nManaCost:1 G\nTypes:Creature Insect\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:When Loam Larva enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loam Larva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

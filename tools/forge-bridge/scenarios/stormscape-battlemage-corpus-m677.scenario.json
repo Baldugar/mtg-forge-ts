@@ -1,0 +1,23 @@
+{
+  "id": "stormscape-battlemage-corpus-m677",
+  "description": "M6 corpus — Stormscape Battlemage; in-hand parse.",
+  "seed": 71131,
+  "cards": {
+    "Stormscape Battlemage": "Name:Stormscape Battlemage\nManaCost:2 U\nTypes:Creature Metathran Wizard\nPT:2/2\nK:Kicker:W:2 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked 1 | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked with its {W} kicker, you gain 3 life.\nSVar:TrigKicker:DB$ GainLife | Defined$ You | LifeAmount$ 3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked 2 | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, if it was kicked with its {2}{B} kicker, destroy target nonblack creature. That creature can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack | NoRegen$ True | TgtPrompt$ Select target nonblack creature.\nSVar:PlayMain1:TRUE\nDeckHints:Color$White|Black\nOracle:Kicker {W} and/or {2}{B} (You may pay an additional {W} and/or {2}{B} as you cast this spell.)\\nWhen Stormscape Battlemage enters, if it was kicked with its {W} kicker, you gain 3 life.\\nWhen Stormscape Battlemage enters, if it was kicked with its {2}{B} kicker, destroy target nonblack creature. That creature can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormscape Battlemage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

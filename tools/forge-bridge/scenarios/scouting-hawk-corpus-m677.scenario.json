@@ -1,0 +1,23 @@
+{
+  "id": "scouting-hawk-corpus-m677",
+  "description": "M6 corpus — Scouting Hawk; in-hand parse.",
+  "seed": 69207,
+  "cards": {
+    "Scouting Hawk": "Name:Scouting Hawk\nManaCost:2 W\nTypes:Creature Bird\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | CheckSVar$ Y | SVarCompare$ GTX | TriggerDescription$ Keen Sight — When CARDNAME enters, if an opponent controls more lands than you, search your library for a basic Plains card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Plains.Basic | ChangeNum$ 1\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:PlayerCountOpponents$HighestValid Land.YouCtrl\nOracle:Flying\\nKeen Sight — When Scouting Hawk enters, if an opponent controls more lands than you, search your library for a basic Plains card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scouting Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

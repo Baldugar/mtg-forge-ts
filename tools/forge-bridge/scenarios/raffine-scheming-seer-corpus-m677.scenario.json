@@ -1,0 +1,25 @@
+{
+  "id": "raffine-scheming-seer-corpus-m677",
+  "description": "M6 corpus — Raffine, Scheming Seer; ETB-on-bf.",
+  "seed": 67544,
+  "cards": {
+    "Raffine, Scheming Seer": "Name:Raffine, Scheming Seer\nManaCost:W U B\nTypes:Legendary Creature Sphinx Demon\nPT:1/4\nK:Flying\nK:Ward:1\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigConnive | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target attacking creature connives X, where X is the number of attacking creatures. (Draw X cards, then discard X cards. Put a +1/+1 counter on that creature for each nonland card discarded this way.)\nSVar:TrigConnive:DB$ Connive | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | ConniveNum$ X\nSVar:X:Count$Valid Creature.attacking\nDeckHas:Ability$Discard|Counters\nOracle:Flying, ward {1}\\nWhenever you attack, target attacking creature connives X, where X is the number of attacking creatures. (Draw X cards, then discard X cards. Put a +1/+1 counter on that creature for each nonland card discarded this way.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Raffine, Scheming Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

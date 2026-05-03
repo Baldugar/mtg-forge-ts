@@ -1,0 +1,23 @@
+{
+  "id": "heavenly-blademaster-corpus-m677",
+  "description": "M6 corpus — Heavenly Blademaster; in-hand parse.",
+  "seed": 62191,
+  "cards": {
+    "Heavenly Blademaster": "Name:Heavenly Blademaster\nManaCost:5 W\nTypes:Creature Angel\nPT:3/6\nK:Flying\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBAttach | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may attach any number of Auras and Equipment you control to it.\nSVar:DBAttach:DB$ Attach | Object$ Valid Aura.YouCtrl,Equipment.YouCtrl | Optional$ True\nAI:RemoveDeck:Random\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddPower$ X | AddToughness$ X | Description$ Other creatures you control get +1/+1 for each Aura and Equipment attached to CARDNAME.\nSVar:X:Count$Valid Equipment.Attached,Aura.Attached\nSVar:EnchantMe:Multiple\nOracle:Flying, double strike\\nWhen Heavenly Blademaster enters, you may attach any number of Auras and Equipment you control to it.\\nOther creatures you control get +1/+1 for each Aura and Equipment attached to Heavenly Blademaster.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heavenly Blademaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

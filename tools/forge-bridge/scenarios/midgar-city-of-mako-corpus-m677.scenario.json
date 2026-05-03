@@ -1,0 +1,23 @@
+{
+  "id": "midgar-city-of-mako-corpus-m677",
+  "description": "M6 corpus — Midgar, City of Mako; in-hand parse.",
+  "seed": 65085,
+  "cards": {
+    "Midgar, City of Mako": "Name:Midgar, City of Mako\nManaCost:no cost\nTypes:Land Town\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nAlternateMode:Adventure\nOracle:This land enters tapped.\\n{T}: Add {B}.\n\nALTERNATE\n\nName:Reactor Raid\nManaCost:2 B\nTypes:Sorcery Adventure\nA:SP$ Sacrifice | Defined$ You | SacValid$ Artifact,Creature | Optional$ True | RememberSacrificed$ True | SubAbility$ DBDraw | SpellDescription$ You may sacrifice an artifact or creature. If you do, draw two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | ConditionDescription$ If they do, | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:You may sacrifice an artifact or creature. If you do, draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midgar, City of Mako"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

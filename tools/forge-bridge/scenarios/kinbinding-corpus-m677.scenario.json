@@ -1,0 +1,23 @@
+{
+  "id": "kinbinding-corpus-m677",
+  "description": "M6 corpus — Kinbinding; in-hand parse.",
+  "seed": 63650,
+  "cards": {
+    "Kinbinding": "Name:Kinbinding\nManaCost:3 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ X | AddToughness$ X | Description$ Creatures you control get +X/+X, where X is the number of creatures that entered the battlefield under your control this turn.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, create a 1/1 green and white Kithkin creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ gw_1_1_kithkin\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Creatures you control get +X/+X, where X is the number of creatures that entered the battlefield under your control this turn.\\nAt the beginning of combat on your turn, create a 1/1 green and white Kithkin creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kinbinding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

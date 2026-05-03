@@ -1,0 +1,25 @@
+{
+  "id": "homarid-warrior-corpus-m677",
+  "description": "M6 corpus — Homarid Warrior; ETB-on-bf.",
+  "seed": 62447,
+  "cards": {
+    "Homarid Warrior": "Name:Homarid Warrior\nManaCost:4 U\nTypes:Creature Homarid Warrior\nPT:3/3\nA:AB$ Pump | Cost$ U | Defined$ Self | KW$ Shroud | SubAbility$ DBStayTapped | SpellDescription$ CARDNAME gains shroud until end of turn and doesn't untap during your next untap step. Tap CARDNAME. (A permanent with shroud can't be the target of spells or abilities.)\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap | SubAbility$ DBTap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nSVar:DBTap:DB$ Tap | Defined$ Self\nOracle:{U}: Homarid Warrior gains shroud until end of turn and doesn't untap during your next untap step. Tap Homarid Warrior. (A creature with shroud can't be the target of spells or abilities.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Homarid Warrior"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

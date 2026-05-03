@@ -1,0 +1,23 @@
+{
+  "id": "nantuko-shaman-corpus-m677",
+  "description": "M6 corpus — Nantuko Shaman; in-hand parse.",
+  "seed": 65731,
+  "cards": {
+    "Nantuko Shaman": "Name:Nantuko Shaman\nManaCost:2 G\nTypes:Creature Insect Shaman\nPT:3/2\nK:Suspend:1:2 G G\nT:Mode$ ChangesZone | ValidCard$ Card.Self | IsPresent$ Land.tapped+YouCtrl | PresentCompare$ EQ0 | Origin$ Any | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if you control no tapped lands, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:When Nantuko Shaman enters, if you control no tapped lands, draw a card.\\nSuspend 1—{2}{G}{G} (Rather than cast this card from your hand, you may pay {2}{G}{G} and exile it with a time counter on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nantuko Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

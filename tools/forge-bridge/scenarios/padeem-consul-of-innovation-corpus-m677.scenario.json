@@ -1,0 +1,23 @@
+{
+  "id": "padeem-consul-of-innovation-corpus-m677",
+  "description": "M6 corpus — Padeem, Consul of Innovation; in-hand parse.",
+  "seed": 66548,
+  "cards": {
+    "Padeem, Consul of Innovation": "Name:Padeem, Consul of Innovation\nManaCost:3 U\nTypes:Legendary Creature Vedalken Artificer\nPT:1/4\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | AddKeyword$ Hexproof | Description$ Artifacts you control have hexproof.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, if you control the artifact with the highest mana value or tied for the highest mana value, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:X:Count$Valid Artifact.greatestCMC_Artifact+YouCtrl\nOracle:Artifacts you control have hexproof.\\nAt the beginning of your upkeep, if you control the artifact with the highest mana value or tied for the highest mana value, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Padeem, Consul of Innovation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "song-of-blood-corpus-m677",
+  "description": "M6 corpus — Song of Blood; in-hand parse.",
+  "seed": 70395,
+  "cards": {
+    "Song of Blood": "Name:Song of Blood\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 4 | Defined$ You | RememberMilled$ True | SubAbility$ DBEffect | SpellDescription$ Mill four cards. Whenever a creature attacks this turn, it gets +1/+0 until end of turn for each creature card put into your graveyard this way.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigAttacks | RememberObjects$ Remembered\nSVar:TrigAttacks:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Execute$ Pump | TriggerDescription$ Whenever a creature attacks this turn, it gets +1/+0 until end of turn for each creature card put into your graveyard this way.\nSVar:Pump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X\nSVar:X:Remembered$Valid Creature\nAI:RemoveDeck:All\nOracle:Mill four cards. Whenever a creature attacks this turn, it gets +1/+0 until end of turn for each creature card put into your graveyard this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Song of Blood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

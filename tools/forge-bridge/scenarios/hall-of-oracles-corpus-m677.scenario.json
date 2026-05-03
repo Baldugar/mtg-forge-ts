@@ -1,0 +1,25 @@
+{
+  "id": "hall-of-oracles-corpus-m677",
+  "description": "M6 corpus — Hall of Oracles; ETB-on-bf.",
+  "seed": 61983,
+  "cards": {
+    "Hall of Oracles": "Name:Hall of Oracles\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nA:AB$ PutCounter | Cost$ T | CounterType$ P1P1 | ValidTgts$ Creature | SorcerySpeed$ True | CheckSVar$ X | SpellDescription$ Put a +1/+1 counter on target creature. Activate only as a sorcery and only if you've cast an instant or sorcery spell this turn.\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl\nDeckHints:Type$Instant|Sorcery\nDeckHas:Ability$Counters\nOracle:{T}: Add {C}.\\n{1}, {T}: Add one mana of any color.\\n{T}: Put a +1/+1 counter on target creature. Activate only as a sorcery and only if you've cast an instant or sorcery spell this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hall of Oracles"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "haytham-kenway-corpus-m677",
+  "description": "M6 corpus — Haytham Kenway; in-hand parse.",
+  "seed": 62129,
+  "cards": {
+    "Haytham Kenway": "Name:Haytham Kenway\nManaCost:2 W U\nTypes:Legendary Creature Human Knight\nPT:3/3\nK:Protection:Assassin\nS:Mode$ Continuous | Affected$ Knight.YouCtrl+Other | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Protection:Assassin | Description$ Other Knights you control get +2/+2 and have protection from Assassins.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile up to one target creature that player controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | TgtPrompt$ Select up to one target creature each opponent controls | Duration$ UntilHostLeavesPlay\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nDeckHints:Type$Knight\nOracle:Protection from Assassins\\nOther Knights you control get +2/+2 and have protection from Assassins.\\nWhen Haytham Kenway enters, for each opponent, exile up to one target creature that player controls until Haytham Kenway leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haytham Kenway"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

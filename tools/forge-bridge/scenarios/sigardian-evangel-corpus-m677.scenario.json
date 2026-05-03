@@ -1,0 +1,23 @@
+{
+  "id": "sigardian-evangel-corpus-m677",
+  "description": "M6 corpus — Sigardian Evangel; in-hand parse.",
+  "seed": 69849,
+  "cards": {
+    "Sigardian Evangel": "Name:Sigardian Evangel\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:3/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card named Sigardian Evangel into your hand. Discard that card at the beginning of the next end step.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Sigardian Evangel | Zone$ Hand | RememberMade$ True | SubAbility$ DBDelayTrig\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigDiscard | RememberObjects$ Remembered | SubAbility$ DBCleanup | TriggerDescription$ Discard that card at the beginning of the next end step.\nSVar:TrigDiscard:DB$ Discard | Mode$ Defined | DefinedCards$ DelayTriggerRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target permanent you don't control.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Permanent.YouDontCtrl | TgtPrompt$ Select target permanent you don't control\nDeckHas:Ability$Discard\nOracle:When Sigardian Evangel enters, conjure a card named Sigardian Evangel into your hand. Discard that card at the beginning of the next end step.\\nWhen Sigardian Evangel enters, tap target permanent you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigardian Evangel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

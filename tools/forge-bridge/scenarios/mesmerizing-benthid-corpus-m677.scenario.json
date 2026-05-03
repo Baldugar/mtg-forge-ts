@@ -1,0 +1,23 @@
+{
+  "id": "mesmerizing-benthid-corpus-m677",
+  "description": "M6 corpus — Mesmerizing Benthid; in-hand parse.",
+  "seed": 65048,
+  "cards": {
+    "Mesmerizing Benthid": "Name:Mesmerizing Benthid\nManaCost:3 U U\nTypes:Creature Octopus\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 0/2 blue Illusion creature tokens with \"Whenever this creature blocks a creature, that creature doesn't untap during its controller's next untap step.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ u_0_2_illusion_mesmerize | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Hexproof | IsPresent$ Illusion.YouCtrl | Description$ CARDNAME has hexproof as long as you control an Illusion.\nSVar:BuffedBy:Illusion\nDeckHas:Ability$Token\nDeckHints:Type$Illusion\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:When Mesmerizing Benthid enters, create two 0/2 blue Illusion creature tokens with \"Whenever this creature blocks a creature, that creature doesn't untap during its controller's next untap step.\"\\nMesmerizing Benthid has hexproof as long as you control an Illusion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mesmerizing Benthid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

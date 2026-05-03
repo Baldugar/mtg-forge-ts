@@ -1,0 +1,23 @@
+{
+  "id": "shared-fate-corpus-m677",
+  "description": "M6 corpus — Shared Fate; in-hand parse.",
+  "seed": 69616,
+  "cards": {
+    "Shared Fate": "Name:Shared Fate\nManaCost:4 U\nTypes:Enchantment\nR:Event$ Draw | ReplaceWith$ DBChooseOpp | ActiveZones$ Battlefield | Description$ If a player would draw a card, that player exiles the top card of one of their opponents' libraries face down instead.\nSVar:DBChooseOpp:DB$ ChoosePlayer | Defined$ ReplacedPlayer | ChoiceTitle$ Choose an opponent whose top library card to exile | Choices$ Player.OpponentOf ReplacedPlayer | AILogic$ Curse | SubAbility$ DBExile | DontNotify$ True\nSVar:DBExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | Defined$ Player.Chosen | DefinedExiler$ ReplacedPlayer\nS:Mode$ Continuous | MayPlayPlayer$ Exiler | MayLookAt$ True | MayPlay$ True | Affected$ Card.ExiledWithSource | AffectedZone$ Exile | Description$ Each player may look at cards they exiled with CARDNAME, and they may play lands and cast spells from among those cards.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:If a player would draw a card, that player exiles the top card of one of their opponents' libraries face down instead.\\nEach player may look at cards they exiled with Shared Fate, and they may play lands and cast spells from among those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shared Fate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

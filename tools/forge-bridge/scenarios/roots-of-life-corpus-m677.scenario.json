@@ -1,0 +1,23 @@
+{
+  "id": "roots-of-life-corpus-m677",
+  "description": "M6 corpus — Roots of Life; in-hand parse.",
+  "seed": 68519,
+  "cards": {
+    "Roots of Life": "Name:Roots of Life\nManaCost:1 G G\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseLT\nSVar:ChooseLT:DB$ ChooseType | Defined$ You | Type$ Basic Land | InvalidTypes$ Mountain,Forest,Plains | AILogic$ MostProminentOppControls | SpellDescription$ As CARDNAME enters, choose Island or Swamp.\nT:Mode$ Taps | ValidCard$ Land.ChosenType+OppCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | OptionalDecider$ You | TriggerDescription$ Whenever a land of the chosen type an opponent controls becomes tapped, you may gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nAI:RemoveDeck:Random\nOracle:As Roots of Life enters, choose Island or Swamp.\\nWhenever a land of the chosen type an opponent controls becomes tapped, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roots of Life"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

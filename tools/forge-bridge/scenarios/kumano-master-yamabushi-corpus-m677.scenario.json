@@ -1,0 +1,25 @@
+{
+  "id": "kumano-master-yamabushi-corpus-m677",
+  "description": "M6 corpus — Kumano, Master Yamabushi; ETB-on-bf.",
+  "seed": 63915,
+  "cards": {
+    "Kumano, Master Yamabushi": "Name:Kumano, Master Yamabushi\nManaCost:3 R R\nTypes:Legendary Creature Human Shaman\nPT:4/4\nA:AB$ DealDamage | Cost$ 1 R | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nR:Event$ Moved | ValidLKI$ Creature.DamagedBy | Destination$ Graveyard | ReplaceWith$ DBExile | ActiveZones$ Battlefield | Description$ If a creature dealt damage by NICKNAME this turn would die, exile it instead.\nSVar:DBExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nOracle:{1}{R}: Kumano, Master Yamabushi deals 1 damage to any target.\\nIf a creature dealt damage by Kumano this turn would die, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kumano, Master Yamabushi"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

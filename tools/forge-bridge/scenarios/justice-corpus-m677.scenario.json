@@ -1,0 +1,23 @@
+{
+  "id": "justice-corpus-m677",
+  "description": "M6 corpus — Justice; in-hand parse.",
+  "seed": 63404,
+  "cards": {
+    "Justice": "Name:Justice\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {W}{W}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ W W\nT:Mode$ DamageDealtOnce | ValidSource$ Instant.Red,Sorcery.Red,Creature.Red+inZoneBattlefield | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a red creature or spell deals damage, CARDNAME deals that much damage to that creature's or spell's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredSourceController | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, sacrifice Justice unless you pay {W}{W}.\\nWhenever a red creature or spell deals damage, Justice deals that much damage to that creature's or spell's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Justice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "silkwrap-corpus-m677",
+  "description": "M6 corpus — Silkwrap; in-hand parse.",
+  "seed": 69899,
+  "cards": {
+    "Silkwrap": "Name:Silkwrap\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature with mana value 3 or less an opponent controls until CARDNAME leaves the battlefield. (That creature returns under its owner's control.)\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.cmcLE3+OppCtrl | TgtPrompt$ Select target creature with mana value 3 or less an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.cmcLE3+OppCtrl\nOracle:When Silkwrap enters, exile target creature with mana value 3 or less an opponent controls until Silkwrap leaves the battlefield. (That creature returns under its owner's control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silkwrap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

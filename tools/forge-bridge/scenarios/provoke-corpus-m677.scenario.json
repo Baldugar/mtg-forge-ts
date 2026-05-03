@@ -1,0 +1,23 @@
+{
+  "id": "provoke-corpus-m677",
+  "description": "M6 corpus — Provoke; in-hand parse.",
+  "seed": 67294,
+  "cards": {
+    "Provoke": "Name:Provoke\nManaCost:1 G\nTypes:Instant\nA:SP$ Untap | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | IsCurse$ True | SubAbility$ DBEffect | SpellDescription$ Untap target creature you don't control.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MustBlock | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SubAbility$ DBDraw | SpellDescription$ That creature blocks this turn if able.\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ This creature blocks this turn if able.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nAI:RemoveDeck:All\nOracle:Untap target creature you don't control. That creature blocks this turn if able.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Provoke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

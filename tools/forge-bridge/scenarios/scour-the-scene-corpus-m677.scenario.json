@@ -1,0 +1,23 @@
+{
+  "id": "scour-the-scene-corpus-m677",
+  "description": "M6 corpus — Scour the Scene; in-hand parse.",
+  "seed": 69192,
+  "cards": {
+    "Scour the Scene": "Name:Scour the Scene\nManaCost:W U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white and blue Detective creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ wu_2_2_detective\nT:Mode$ Sacrificed | ValidCard$ Artifact | ValidPlayer$ You | Execute$ TrigChooseCard | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice an artifact, choose a creature card in your hand or a creature you control. It perpetually gets +1/+0.\nSVar:TrigChooseCard:DB$ ChooseCard | ChoiceZone$ Hand,Battlefield | ChoiceTitle$ Choose a creature card in your hand or a creature you control | Mandatory$ True | Choices$ Creature.YouCtrl | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand,Battlefield | Defined$ ChosenCard | NumAtt$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHas:Ability$Token & Type$Detective\nDeckHints:Type$Artifact\nOracle:When Scour the Scene enters, create a 2/2 white and blue Detective creature token.\\nWhenever you sacrifice an artifact, choose a creature card in your hand or a creature you control. It perpetually gets +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scour the Scene"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

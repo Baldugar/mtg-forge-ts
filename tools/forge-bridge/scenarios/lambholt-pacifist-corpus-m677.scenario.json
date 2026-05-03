@@ -1,0 +1,23 @@
+{
+  "id": "lambholt-pacifist-corpus-m677",
+  "description": "M6 corpus — Lambholt Pacifist; in-hand parse.",
+  "seed": 63969,
+  "cards": {
+    "Lambholt Pacifist": "Name:Lambholt Pacifist\nManaCost:1 G\nTypes:Creature Human Shaman Werewolf\nPT:3/3\nS:Mode$ CantAttack | ValidCard$ Card.Self | IsPresent$ Creature.YouCtrl+powerGE4 | PresentCompare$ EQ0 | Description$ CARDNAME can't attack unless you control a creature with power 4 or greater.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Lambholt Pacifist can't attack unless you control a creature with power 4 or greater.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Lambholt Pacifist.\n\nALTERNATE\n\nName:Lambholt Butcher\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:At the beginning of each upkeep, if a player cast two or more spells last turn, transform Lambholt Butcher.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lambholt Pacifist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

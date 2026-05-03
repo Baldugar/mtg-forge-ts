@@ -1,0 +1,23 @@
+{
+  "id": "shadow-of-the-second-sun-corpus-m677",
+  "description": "M6 corpus — Shadow of the Second Sun; in-hand parse.",
+  "seed": 69554,
+  "cards": {
+    "Shadow of the Second Sun": "Name:Shadow of the Second Sun\nManaCost:4 U U\nTypes:Enchantment Aura\nK:Enchant:Player\nT:Mode$ Phase | Phase$ Main2 | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigAddPhase | TriggerDescription$ At the beginning of each of enchanted player's postcombat main phases, there is an additional beginning phase after this phase. (The end step happens after the added untap, upkeep, and draw steps.)\nSVar:TrigAddPhase:DB$ AddPhase | ExtraPhase$ Beginning\nAI:RemoveDeck:Random\nOracle:Enchant player\\nAt the beginning of each of enchanted player's postcombat main phases, there is an additional beginning phase after this phase. (The end step happens after the added untap, upkeep, and draw steps.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadow of the Second Sun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

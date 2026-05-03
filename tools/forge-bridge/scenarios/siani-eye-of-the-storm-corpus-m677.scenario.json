@@ -1,0 +1,23 @@
+{
+  "id": "siani-eye-of-the-storm-corpus-m677",
+  "description": "M6 corpus — Siani, Eye of the Storm; in-hand parse.",
+  "seed": 69812,
+  "cards": {
+    "Siani, Eye of the Storm": "Name:Siani, Eye of the Storm\nManaCost:3 U\nTypes:Legendary Creature Djinn Monk\nPT:3/2\nK:Flying\nK:Partner\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ Whenever CARDNAME attacks, scry X, where X is the number of attacking creatures with flying.\nSVar:TrigScry:DB$ Scry | ScryNum$ X\nSVar:X:Count$Valid Creature.attacking+withFlying\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Siani, Eye of the Storm attacks, scry X, where X is the number of attacking creatures with flying.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siani, Eye of the Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

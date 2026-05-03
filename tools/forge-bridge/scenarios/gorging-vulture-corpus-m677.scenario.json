@@ -1,0 +1,23 @@
+{
+  "id": "gorging-vulture-corpus-m677",
+  "description": "M6 corpus — Gorging Vulture; in-hand parse.",
+  "seed": 61574,
+  "cards": {
+    "Gorging Vulture": "Name:Gorging Vulture\nManaCost:2 B\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill four cards. You gain 1 life for each creature card milled this way. (To mill a card, put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You | RememberMilled$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.Creature\nDeckHas:Ability$Graveyard|LifeGain\nOracle:Flying\\nWhen Gorging Vulture enters, mill four cards. You gain 1 life for each creature card milled this way. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gorging Vulture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "kami-of-whispered-hopes-corpus-m677",
+  "description": "M6 corpus — Kami of Whispered Hopes; ETB-on-bf.",
+  "seed": 63465,
+  "cards": {
+    "Kami of Whispered Hopes": "Name:Kami of Whispered Hopes\nManaCost:2 G\nTypes:Creature Spirit\nPT:1/1\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl+inZoneBattlefield | ValidCounterType$ P1P1 | ReplaceWith$ AddOneMoreCounters | Description$ If one or more +1/+1 counters would be put on a permanent you control, that many plus one +1/+1 counters are put on that permanent instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ValidCounterType$ P1P1 | ChooseCounter$ True | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Plus.1\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ Y | SpellDescription$ Add X mana of any one color, where X is CARDNAME's power.\nSVar:Y:Count$CardPower\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:If one or more +1/+1 counters would be put on a permanent you control, that many plus one +1/+1 counters are put on that permanent instead.\\n{T}: Add X mana of any one color, where X is Kami of Whispered Hopes's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kami of Whispered Hopes"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

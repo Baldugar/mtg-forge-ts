@@ -1,0 +1,25 @@
+{
+  "id": "rune-of-protection-blue-corpus-m677",
+  "description": "M6 corpus — Rune of Protection: Blue; ETB-on-bf.",
+  "seed": 68630,
+  "cards": {
+    "Rune of Protection: Blue": "Name:Rune of Protection: Blue\nManaCost:1 W\nTypes:Enchantment\nA:AB$ ChooseSource | Cost$ W | Choices$ Card.BlueSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a blue source of your choice would deal damage to you this turn, prevent that damage.\nK:Cycling:2\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict+BlueSource | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen blue source deals damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:All\nOracle:{W}: The next time a blue source of your choice would deal damage to you this turn, prevent that damage.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rune of Protection: Blue"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

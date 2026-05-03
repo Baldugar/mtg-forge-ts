@@ -1,0 +1,23 @@
+{
+  "id": "public-execution-corpus-m677",
+  "description": "M6 corpus — Public Execution; in-hand parse.",
+  "seed": 67338,
+  "cards": {
+    "Public Execution": "Name:Public Execution\nManaCost:5 B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | RememberLKI$ True | AlwaysRemember$ True | SubAbility$ WeakenOther | SpellDescription$ Destroy target creature an opponent controls. Each other creature that player controls gets -2/-0 until end of turn.\nSVar:WeakenOther:DB$ PumpAll | ValidCards$ Creature.ControlledBy RememberedController+!IsRemembered | NumAtt$ -2 | IsCurse$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target creature an opponent controls. Each other creature that player controls gets -2/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Public Execution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

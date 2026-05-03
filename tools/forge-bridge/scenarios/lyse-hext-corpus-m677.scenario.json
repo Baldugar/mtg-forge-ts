@@ -1,0 +1,25 @@
+{
+  "id": "lyse-hext-corpus-m677",
+  "description": "M6 corpus — Lyse Hext; ETB-on-bf.",
+  "seed": 64541,
+  "cards": {
+    "Lyse Hext": "Name:Lyse Hext\nManaCost:1 W U\nTypes:Legendary Creature Human Rebel Monk\nPT:2/2\nK:Prowess\nS:Mode$ ReduceCost | ValidCard$ Card.nonCreature | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Noncreature spells you cast cost {1} less to cast.\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Double Strike | CheckSVar$ X | SVarCompare$ GE2 | Description$ As long as you've cast two or more noncreature spells this turn, CARDNAME has double strike.\nSVar:X:Count$ThisTurnCast_Card.nonCreature+YouCtrl\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nNoncreature spells you cast cost {1} less to cast.\\nAs long as you've cast two or more noncreature spells this turn, Lyse Hext has double strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lyse Hext"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

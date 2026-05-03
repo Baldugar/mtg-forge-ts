@@ -1,0 +1,23 @@
+{
+  "id": "stormkeld-curator-corpus-m677",
+  "description": "M6 corpus — Stormkeld Curator; in-hand parse.",
+  "seed": 71123,
+  "cards": {
+    "Stormkeld Curator": "Name:Stormkeld Curator\nManaCost:4 W W\nTypes:Creature Giant\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAurify | TriggerDescription$ When CARDNAME enters, you may put any number of Aura cards from your graveyard and/or hand onto the battlefield attached to it.\nSVar:TrigAurify:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Battlefield | ChangeType$ Aura.CanEnchantSource+YouOwn | AttachedTo$ Self | ChangeNum$ CountAuras | Optional$ True | Hidden$ True\nSVar:CountAuras:Count$ValidHand,Graveyard Aura.CanEnchantSource+YouOwn\nDeckHints:Type$Aura\nDeckHas:Type$Aura|Enchantment & Ability$Graveyard\nAlternateMode:Adventure\nOracle:When Stormkeld Curator enters, you may put any number of Aura cards from your graveyard and/or hand onto the battlefield attached to it.\n\nALTERNATE\n\nName:Giant Secrets\nManaCost:X U U\nTypes:Instant Adventure\nA:SP$ MakeCard | SpellbookAmount$ X | Conjure$ True | AtRandom$ True | Spellbook$ Aether Tunnel,All That Glitters,Celestial Mantle,Curator's Ward,Curiosity,Ethereal Armor,Face of Divinity,Knightly Valor,Metamorphic Alteration,On Serra's Wings,Rousing Read,Staggering Insight,Take Flight | Zone$ Hand | SpellDescription$ Conjure X random cards from CARDNAME's spellbook into your hand.\nSVar:X:Count$xPaid\nOracle:Conjure X random cards from Giant Secrets's spellbook into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormkeld Curator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

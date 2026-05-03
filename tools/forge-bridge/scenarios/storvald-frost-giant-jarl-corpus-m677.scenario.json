@@ -1,0 +1,23 @@
+{
+  "id": "storvald-frost-giant-jarl-corpus-m677",
+  "description": "M6 corpus — Storvald, Frost Giant Jarl; in-hand parse.",
+  "seed": 71139,
+  "cards": {
+    "Storvald, Frost Giant Jarl": "Name:Storvald, Frost Giant Jarl\nManaCost:4 G W U\nTypes:Legendary Creature Giant\nPT:7/7\nK:Ward:3\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Ward:3 | Description$ Other creatures you control have ward {3}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever NICKNAME enters or attacks, ABILITY\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCharm | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBAnimate7,DBAnimate1\nSVar:DBAnimate7:DB$ Animate | ValidTgts$ Creature | Power$ 7 | Toughness$ 7 | SpellDescription$ Target creature has base power and toughness 7/7 until end of turn.\nSVar:DBAnimate1:DB$ Animate | ValidTgts$ Creature | Power$ 1 | Toughness$ 1 | SpellDescription$ Target creature has base power and toughness 1/1 until end of turn.\nOracle:Ward {3}\\nOther creatures you control have ward {3}.\\nWhenever Storvald enters or attacks, choose one or both —\\n• Target creature has base power and toughness 7/7 until end of turn.\\n• Target creature has base power and toughness 1/1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storvald, Frost Giant Jarl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "surtland-elementalist-corpus-m677",
+  "description": "M6 corpus — Surtland Elementalist; in-hand parse.",
+  "seed": 71435,
+  "cards": {
+    "Surtland Elementalist": "Name:Surtland Elementalist\nManaCost:5 U U\nTypes:Creature Giant Wizard\nPT:8/8\nK:AlternateAdditionalCost:Reveal<1/Giant/Giant>:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerDescription$ Whenever CARDNAME attacks, you may cast an instant or sorcery spell from your hand without paying its mana cost.\nSVar:TrigPlay:DB$ Play | ValidZone$ Hand | Valid$ Card | ValidSA$ Instant.YouOwn,Sorcery.YouOwn | Controller$ You | WithoutManaCost$ True | Optional$ True\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Instant|Sorcery|Giant\nOracle:As an additional cost to cast this spell, reveal a Giant card from your hand or pay {2}.\\nWhenever Surtland Elementalist attacks, you may cast an instant or sorcery spell from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surtland Elementalist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

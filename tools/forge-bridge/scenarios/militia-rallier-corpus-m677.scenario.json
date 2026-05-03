@@ -1,0 +1,23 @@
+{
+  "id": "militia-rallier-corpus-m677",
+  "description": "M6 corpus — Militia Rallier; in-hand parse.",
+  "seed": 65130,
+  "cards": {
+    "Militia Rallier": "Name:Militia Rallier\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/3\nK:CARDNAME can't attack alone.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME attacks, untap target creature.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nSVar:HasAttackEffect:TRUE\nOracle:Militia Rallier can't attack alone.\\nWhenever Militia Rallier attacks, untap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Militia Rallier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

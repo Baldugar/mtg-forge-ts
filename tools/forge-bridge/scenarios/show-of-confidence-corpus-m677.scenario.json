@@ -1,0 +1,23 @@
+{
+  "id": "show-of-confidence-corpus-m677",
+  "description": "M6 corpus — Show of Confidence; in-hand parse.",
+  "seed": 69765,
+  "cards": {
+    "Show of Confidence": "Name:Show of Confidence\nManaCost:1 W\nTypes:Instant\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it for each other instant and sorcery spell you've cast this turn. You may choose new targets for the copies.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl+!CastSaSource,Sorcery.YouCtrl\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on target creature.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Vigilance\nDeckHas:Ability$Counters\nOracle:When you cast this spell, copy it for each other instant and sorcery spell you've cast this turn. You may choose new targets for the copies.\\nPut a +1/+1 counter on target creature. It gains vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Show of Confidence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "a-raiyuu-storm-s-edge-corpus-m677",
+  "description": "M6 corpus — A-Raiyuu, Storm's Edge; in-hand parse.",
+  "seed": 68788,
+  "cards": {
+    "A-Raiyuu, Storm's Edge": "Name:A-Raiyuu, Storm's Edge\nManaCost:2 R W\nTypes:Legendary Creature Human Samurai\nPT:4/4\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Samurai.YouCtrl,Warrior.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever a Samurai or Warrior you control attacks alone, untap it. If it's the first combat phase of the turn, there is an additional combat phase after this phase.\nSVar:TrigUntap:DB$ Untap | Defined$ TriggeredAttackerLKICopy | SubAbility$ DBAddPhase\nSVar:DBAddPhase:DB$ AddPhase | ExtraPhase$ Combat | ConditionFirstCombat$ True | AfterPhase$ EndCombat\nDeckHints:Type$Samurai|Warrior\nOracle:First strike\\nWhenever a Samurai or Warrior you control attacks alone, untap it. If it's the first combat phase of the turn, there is an additional combat phase after this phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Raiyuu, Storm's Edge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

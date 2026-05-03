@@ -1,0 +1,23 @@
+{
+  "id": "recall-corpus-m677",
+  "description": "M6 corpus — Recall; in-hand parse.",
+  "seed": 67869,
+  "cards": {
+    "Recall": "Name:Recall\nManaCost:X X U\nTypes:Sorcery\nA:SP$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ X | RememberDiscarded$ True | SubAbility$ DBChangeZone | SpellDescription$ Discard X cards, then return a card from your graveyard to your hand for each card discarded this way. Exile CARDNAME.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Card.YouOwn | ChangeNum$ Y | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nDeckHas:Ability$Discard|Graveyard\nDeckHints:Ability$Mill|Graveyard\nOracle:Discard X cards, then return a card from your graveyard to your hand for each card discarded this way. Exile Recall.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "mischievous-chimera-corpus-m677",
+  "description": "M6 corpus — Mischievous Chimera; ETB-on-bf.",
+  "seed": 65264,
+  "cards": {
+    "Mischievous Chimera": "Name:Mischievous Chimera\nManaCost:U R\nTypes:Enchantment Creature Chimera\nPT:2/2\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ1 | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigDmg | TriggerDescription$ Whenever you cast your first spell during each opponent's turn, CARDNAME deals 1 damage to each opponent. Scry 1.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nOracle:Flying\\nWhenever you cast your first spell during each opponent's turn, Mischievous Chimera deals 1 damage to each opponent. Scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mischievous Chimera"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

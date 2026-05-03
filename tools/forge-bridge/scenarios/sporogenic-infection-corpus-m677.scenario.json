@@ -1,0 +1,23 @@
+{
+  "id": "sporogenic-infection-corpus-m677",
+  "description": "M6 corpus — Sporogenic Infection; in-hand parse.",
+  "seed": 70772,
+  "cards": {
+    "Sporogenic Infection": "Name:Sporogenic Infection\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ When CARDNAME enters, target player sacrifices a creature other than enchanted creature.\nSVar:TrigSacrifice:DB$ Sacrifice | ValidTgts$ Player | SacValid$ Creature.!EnchantedBy | SacMessage$ creature other than enchanted creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ MortalDestroy\nSVar:MortalDestroy:SVar:DestroyWhenDamaged:True\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature.EnchantedBy | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ When enchanted creature is dealt damage, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nWhen Sporogenic Infection enters, target player sacrifices a creature other than enchanted creature.\\nWhen enchanted creature is dealt damage, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sporogenic Infection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

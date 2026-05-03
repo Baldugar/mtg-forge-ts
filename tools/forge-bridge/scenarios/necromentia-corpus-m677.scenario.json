@@ -1,0 +1,23 @@
+{
+  "id": "necromentia-corpus-m677",
+  "description": "M6 corpus — Necromentia; in-hand parse.",
+  "seed": 65804,
+  "cards": {
+    "Necromentia": "Name:Necromentia\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonBasic | ValidDescription$ card other than a basic land | SubAbility$ ExileYard | StackDescription$ SpellDescription | SpellDescription$ Choose a card name other than a basic land card name. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. That player shuffles, then creates a 2/2 black Zombie creature token for each card exiled from their hand this way.\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player.Opponent | ChangeType$ Card.NamedCard | Chooser$ You | ChangeNum$ NumInYard | Hidden$ True | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInHand | Chooser$ You | RememberChanged$ True | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ DBToken | StackDescription$ None\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_zombie | TokenOwner$ Targeted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInYard:TargetedPlayer$CardsInGraveyard\nSVar:X:Remembered$Amount\nOracle:Choose a card name other than a basic land card name. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. That player shuffles, then creates a 2/2 black Zombie creature token for each card exiled from their hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromentia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

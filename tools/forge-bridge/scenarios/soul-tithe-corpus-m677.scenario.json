@@ -1,0 +1,23 @@
+{
+  "id": "soul-tithe-corpus-m677",
+  "description": "M6 corpus — Soul Tithe; in-hand parse.",
+  "seed": 70467,
+  "cards": {
+    "Soul Tithe": "Name:Soul Tithe\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Permanent.nonLand:nonland permanent\nSVar:AttachAITgts:Card.cmcGE2\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of the upkeep of enchanted permanent's controller, that player sacrifices it unless they pay {X}, where X is its mana value.\nSVar:TrigSac:DB$ SacrificeAll | Defined$ Enchanted | UnlessCost$ X | UnlessPayer$ EnchantedController\nSVar:X:Enchanted$CardManaCost\nOracle:Enchant nonland permanent\\nAt the beginning of the upkeep of enchanted permanent's controller, that player sacrifices it unless they pay {X}, where X is its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Tithe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necrogen-rotpriest-corpus-m677",
+  "description": "M6 corpus — Necrogen Rotpriest; in-hand parse.",
+  "seed": 65794,
+  "cards": {
+    "Necrogen Rotpriest": "Name:Necrogen Rotpriest\nManaCost:2 B G\nTypes:Creature Phyrexian Zombie Cleric\nPT:1/5\nK:Toxic:2\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+withToxic | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPoison | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control with toxic deals combat damage to a player, that player gets an additional poison counter.\nSVar:TrigPoison:DB$ Poison | Defined$ TriggeredTarget | Num$ 1\nA:AB$ Pump | Cost$ 1 B G | ValidTgts$ Creature.YouCtrl+withToxic | TgtPrompt$ Select target creature you control with toxic | KW$ Deathtouch | SpellDescription$ Target creature you control with toxic gains deathtouch until end of turn.\nOracle:Toxic 2 (Players dealt combat damage by this creature also get two poison counters.)\\nWhenever a creature you control with toxic deals combat damage to a player, that player gets an additional poison counter.\\n{1}{B}{G}: Target creature you control with toxic gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrogen Rotpriest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

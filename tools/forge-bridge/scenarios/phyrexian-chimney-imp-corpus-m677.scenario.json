@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-chimney-imp-corpus-m677",
+  "description": "M6 corpus — Phyrexian Chimney Imp; in-hand parse.",
+  "seed": 66842,
+  "cards": {
+    "Phyrexian Chimney Imp": "Name:Phyrexian Chimney Imp\nManaCost:4 BP\nTypes:Creature Phyrexian Imp\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, target opponent puts two cards from their hand on top of their library in any order.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Card | ChangeNum$ 2 | Mandatory$ True | Reorder$ True | IsCurse$ True\nOracle:Flying\\nWhen Phyrexian Chimney Imp dies, target opponent puts two cards from their hand on top of their library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Chimney Imp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

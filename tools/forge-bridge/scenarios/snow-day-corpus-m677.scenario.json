@@ -1,0 +1,23 @@
+{
+  "id": "snow-day-corpus-m677",
+  "description": "M6 corpus — Snow Day; in-hand parse.",
+  "seed": 70307,
+  "cards": {
+    "Snow Day": "Name:Snow Day\nManaCost:4 U U\nTypes:Instant\nA:SP$ Tap | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose up to two target creatures | ValidTgts$ Creature | SubAbility$ TrigPump | StackDescription$ SpellDescription | SpellDescription$ Tap up to two target creatures. Those creatures don't untap during their controller's next untap step.\nSVar:TrigPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | SubAbility$ Draw | StackDescription$ None\nSVar:Draw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ Discard\nSVar:Discard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Tap up to two target creatures. Those creatures don't untap during their controller's next untap step.\\nDraw two cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snow Day"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

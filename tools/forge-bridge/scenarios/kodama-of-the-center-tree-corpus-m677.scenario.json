@@ -1,0 +1,25 @@
+{
+  "id": "kodama-of-the-center-tree-corpus-m677",
+  "description": "M6 corpus — Kodama of the Center Tree; ETB-on-bf.",
+  "seed": 63796,
+  "cards": {
+    "Kodama of the Center Tree": "Name:Kodama of the Center Tree\nManaCost:4 G\nTypes:Legendary Creature Spirit\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of Spirits you control.\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Soulshift:N | CalcKeywordN$ X | Description$ CARDNAME has soulshift X, where X is the number of Spirits you control.\nSVar:X:Count$Valid Spirit.YouCtrl\nSVar:BuffedBy:Spirit\nSVar:NoZeroToughnessAI:True\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit\nOracle:Kodama of the Center Tree's power and toughness are each equal to the number of Spirits you control.\\nKodama of the Center Tree has soulshift X, where X is the number of Spirits you control. (When this creature dies, you may return target Spirit card with mana value X or less from your graveyard to your hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kodama of the Center Tree"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

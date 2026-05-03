@@ -1,0 +1,25 @@
+{
+  "id": "spurnmage-advocate-corpus-m677",
+  "description": "M6 corpus — Spurnmage Advocate; ETB-on-bf.",
+  "seed": 70800,
+  "cards": {
+    "Spurnmage Advocate": "Name:Spurnmage Advocate\nManaCost:W\nTypes:Creature Human Nomad\nPT:1/1\nA:AB$ ChangeZone | Cost$ T | ValidTgts$ Card.OppOwn | TargetMin$ 2 | TargetMax$ 2 | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBDestroy | SpellDescription$ Return two target cards from an opponent's graveyard to their hand. Destroy target attacking creature.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature\nOracle:{T}: Return two target cards from an opponent's graveyard to their hand. Destroy target attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spurnmage Advocate"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

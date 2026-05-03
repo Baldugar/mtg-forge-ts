@@ -1,0 +1,23 @@
+{
+  "id": "quicksmith-spy-corpus-m677",
+  "description": "M6 corpus — Quicksmith Spy; in-hand parse.",
+  "seed": 67485,
+  "cards": {
+    "Quicksmith Spy": "Name:Quicksmith Spy\nManaCost:3 U\nTypes:Creature Human Artificer\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, target artifact you control gains \"{T}: Draw a card\" for as long as you control CARDNAME.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact you control | Abilities$ ABDraw | Duration$ AsLongAsControl\nSVar:ABDraw:AB$ Draw | Cost$ T | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:PlayMain1:TRUE\nOracle:When Quicksmith Spy enters, target artifact you control gains \"{T}: Draw a card\" for as long as you control Quicksmith Spy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quicksmith Spy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

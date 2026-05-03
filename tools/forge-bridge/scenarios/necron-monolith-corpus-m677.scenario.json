@@ -1,0 +1,23 @@
+{
+  "id": "necron-monolith-corpus-m677",
+  "description": "M6 corpus — Necron Monolith; in-hand parse.",
+  "seed": 65805,
+  "cards": {
+    "Necron Monolith": "Name:Necron Monolith\nManaCost:7\nTypes:Artifact Vehicle\nPT:7/7\nK:Flying\nK:Indestructible\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Eternity Gate — Whenever CARDNAME attacks, mill three cards. For each creature card milled this way, create a 2/2 black Necron Warrior artifact creature token.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_a_necron_warrior | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:4\nSVar:X:Remembered$Valid Creature\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Mill|Token & Type$Necron|Warrior\nOracle:Flying, indestructible\\nEternity Gate — Whenever Necron Monolith attacks, mill three cards. For each creature card milled this way, create a 2/2 black Necron Warrior artifact creature token.\\nCrew 4 (Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necron Monolith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

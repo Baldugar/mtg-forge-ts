@@ -1,0 +1,23 @@
+{
+  "id": "spreading-plague-corpus-m677",
+  "description": "M6 corpus — Spreading Plague; in-hand parse.",
+  "seed": 70779,
+  "cards": {
+    "Spreading Plague": "Name:Spreading Plague\nManaCost:4 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature enters, destroy all other creatures that share a color with it. They can't be regenerated.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Triggered.SharesColorWith+Creature+Other | NoRegen$ True\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Whenever a creature enters, destroy all other creatures that share a color with it. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spreading Plague"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

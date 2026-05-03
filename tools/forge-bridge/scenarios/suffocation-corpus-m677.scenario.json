@@ -1,0 +1,23 @@
+{
+  "id": "suffocation-corpus-m677",
+  "description": "M6 corpus — Suffocation; in-hand parse.",
+  "seed": 71273,
+  "cards": {
+    "Suffocation": "Name:Suffocation\nManaCost:1 U\nTypes:Instant\nText:Cast this spell only if you were dealt damage this turn by a red instant or sorcery spell.\nT:Mode$ DamageDone | ValidSource$ Sorcery.Red,Instant.Red | ValidTarget$ You | Execute$ TrigClearRem | Static$ True\nSVar:TrigClearRem:DB$ Cleanup | ClearRemembered$ True | SubAbility$ TrigRemember\nSVar:TrigRemember:DB$ Pump | RememberObjects$ TriggeredSourceController\nT:Mode$ Phase | Phase$ Cleanup | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ Cleanup | ClearRemembered$ True\nA:SP$ DealDamage | Defined$ Remembered | NumDmg$ 4 | CheckSVar$ X | SVarCompare$ EQ1 | SubAbility$ DelTrigSlowtrip | SpellDescription$ CARDNAME deals 4 damage to the controller of the last red instant or sorcery spell that dealt damage to you this turn. Draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nSVar:X:Count$RememberedSize\nAI:RemoveDeck:Random\nOracle:Cast this spell only if you were dealt damage this turn by a red instant or sorcery spell.\\nSuffocation deals 4 damage to the controller of the last red instant or sorcery spell that dealt damage to you this turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suffocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

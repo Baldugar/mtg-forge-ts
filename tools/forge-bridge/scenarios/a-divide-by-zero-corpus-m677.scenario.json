@@ -1,0 +1,23 @@
+{
+  "id": "a-divide-by-zero-corpus-m677",
+  "description": "M6 corpus — A-Divide by Zero; in-hand parse.",
+  "seed": 68718,
+  "cards": {
+    "A-Divide by Zero": "Name:A-Divide by Zero\nManaCost:2 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.cmcGE1,Card.inZoneStack+cmcGE1 | TgtZone$ Stack,Battlefield | Origin$ Battlefield,Stack | Destination$ Hand | SubAbility$ DBLearn | SpellDescription$ Return target spell or permanent with mana value 1 or greater to its owner's hand. If its mana value was 4 or less, learn.\nSVar:DBLearn:DB$ Learn | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcLE4 | ConditionCompare$ EQ1\nOracle:Return target spell or permanent with mana value 1 or greater to its owner's hand. If its mana value was 4 or less, learn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Divide by Zero"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

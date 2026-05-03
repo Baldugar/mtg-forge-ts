@@ -1,0 +1,25 @@
+{
+  "id": "kozilek-s-pathfinder-corpus-m677",
+  "description": "M6 corpus — Kozilek's Pathfinder; ETB-on-bf.",
+  "seed": 63852,
+  "cards": {
+    "Kozilek's Pathfinder": "Name:Kozilek's Pathfinder\nManaCost:6\nTypes:Creature Eldrazi\nPT:5/5\nA:AB$ Effect | Cost$ C | ValidTgts$ Creature | TgtPrompt$ Select target creature that can't block this creature this turn | IsCurse$ True | RememberObjects$ ThisTargetedCard | ForgetOnMoved$ Battlefield | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | StackDescription$ {c:Targeted} can't block CARDNAME this turn. | SpellDescription$ Target creature can't block CARDNAME this turn.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.IsRemembered | Description$ {c:Remembered} can't block EFFECTSOURCE this turn.\nDeckHints:Ability$Mana.Colorless\nOracle:{C}: Target creature can't block Kozilek's Pathfinder this turn. ({C} represents colorless mana.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kozilek's Pathfinder"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

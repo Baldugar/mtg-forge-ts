@@ -1,0 +1,23 @@
+{
+  "id": "perish-the-thought-corpus-m677",
+  "description": "M6 corpus — Perish the Thought; in-hand parse.",
+  "seed": 66746,
+  "cards": {
+    "Perish the Thought": "Name:Perish the Thought\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RevealHand | Defined$ Targeted | ValidTgts$ Opponent | SubAbility$ ShuffleCardToLib | StackDescription$ SpellDescription | SpellDescription$ Target opponent reveals their hand.\nSVar:ShuffleCardToLib:DB$ ChangeZone | Origin$ Hand | Destination$ Library | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card | ChangeNum$ 1 | IsCurse$ True | Shuffle$ True | Mandatory$ True | AlreadyRevealed$ True | StackDescription$ SpellDescription | SpellDescription$ You choose a card from it. That player shuffles that card into their library.\nOracle:Target opponent reveals their hand. You choose a card from it. That player shuffles that card into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perish the Thought"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

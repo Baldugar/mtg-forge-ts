@@ -1,0 +1,23 @@
+{
+  "id": "lumbering-worldwagon-corpus-m677",
+  "description": "M6 corpus — Lumbering Worldwagon; in-hand parse.",
+  "seed": 64481,
+  "cards": {
+    "Lumbering Worldwagon": "Name:Lumbering Worldwagon\nManaCost:2 G\nTypes:Artifact Vehicle\nPT:*/4\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ This Vehicle's power is equal to the number of lands you control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ Whenever this Vehicle enters or attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever this Vehicle enters or attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nK:Crew:4\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nOracle:This Vehicle's power is equal to the number of lands you control.\\nWhenever this Vehicle enters or attacks, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\\nCrew 4\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lumbering Worldwagon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

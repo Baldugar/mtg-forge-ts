@@ -1,0 +1,23 @@
+{
+  "id": "meldweb-curator-corpus-m677",
+  "description": "M6 corpus — Meldweb Curator; in-hand parse.",
+  "seed": 64944,
+  "cards": {
+    "Meldweb Curator": "Name:Meldweb Curator\nManaCost:3 U\nTypes:Creature Phyrexian Wizard\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLibrary | TriggerDescription$ When CARDNAME enters, put up to one target instant or sorcery card from your graveyard on top of your library.\nSVar:TrigLibrary:DB$ ChangeZone | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtZone$ Graveyard | TgtPrompt$ Choose up to one target instant or sorcery card in your graveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 0\nDeckHas:Ability$Graveyard\nOracle:When Meldweb Curator enters, put up to one target instant or sorcery card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meldweb Curator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

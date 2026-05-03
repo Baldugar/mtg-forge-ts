@@ -1,0 +1,23 @@
+{
+  "id": "lord-of-the-pit-corpus-m677",
+  "description": "M6 corpus — Lord of the Pit; in-hand parse.",
+  "seed": 64398,
+  "cards": {
+    "Lord of the Pit": "Name:Lord of the Pit\nManaCost:4 B B B\nTypes:Creature Demon\nPT:7/7\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature other than CARDNAME. If you can't, CARDNAME deals 7 damage to you.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature.Other | SubAbility$ DBDamage | RememberSacrificed$ True\nSVar:DBDamage:DB$ DealDamage | Defined$ You | NumDmg$ 7 | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlay:Creature.YouCtrl\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Sacrifice|Token\nOracle:Flying, trample\\nAt the beginning of your upkeep, sacrifice a creature other than Lord of the Pit. If you can't, Lord of the Pit deals 7 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lord of the Pit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

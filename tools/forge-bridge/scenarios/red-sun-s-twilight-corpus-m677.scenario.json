@@ -1,0 +1,23 @@
+{
+  "id": "red-sun-s-twilight-corpus-m677",
+  "description": "M6 corpus — Red Sun's Twilight; in-hand parse.",
+  "seed": 67916,
+  "cards": {
+    "Red Sun's Twilight": "Name:Red Sun's Twilight\nManaCost:X R R\nTypes:Sorcery\nA:SP$ Destroy | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Artifact | TgtPrompt$ Select X target artifacts | RememberDestroyed$ True | SubAbility$ DBCopy | SpellDescription$ Destroy up to X target artifacts.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | ConditionCheckSVar$ X | ConditionSVarCompare$ GE5 | PumpKeywords$ Haste | SubAbility$ DBCleanup | AtEOT$ Exile | SpellDescription$ If X is 5 or more, for each artifact destroyed this way, create a token that's a copy of it. Those tokens gain haste. Exile them at the beginning of the next end step.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:Destroy up to X target artifacts. If X is 5 or more, for each artifact destroyed this way, create a token that's a copy of it. Those tokens gain haste. Exile them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Red Sun's Twilight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

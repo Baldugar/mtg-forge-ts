@@ -1,0 +1,23 @@
+{
+  "id": "sowing-salt-corpus-m677",
+  "description": "M6 corpus — Sowing Salt; in-hand parse.",
+  "seed": 70502,
+  "cards": {
+    "Sowing Salt": "Name:Sowing Salt\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land | RememberLKI$ True | ForgetOtherTargets$ True | SubAbility$ ExileYard | SpellDescription$ Exile target nonbasic land. Search its controller's graveyard, hand, and library for all cards with the same name as that land and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ RememberedController | ChangeType$ Remembered.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ RememberedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ RememberedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:NumInHand:PlayerCountRememberedController$CardsInHand\nSVar:NumInLib:PlayerCountRememberedController$CardsInLibrary\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target nonbasic land. Search its controller's graveyard, hand, and library for all cards with the same name as that land and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sowing Salt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

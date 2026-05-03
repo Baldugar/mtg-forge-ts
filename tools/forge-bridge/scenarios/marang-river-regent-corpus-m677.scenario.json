@@ -1,0 +1,23 @@
+{
+  "id": "marang-river-regent-corpus-m677",
+  "description": "M6 corpus — Marang River Regent; in-hand parse.",
+  "seed": 64747,
+  "cards": {
+    "Marang River Regent": "Name:Marang River Regent\nManaCost:4 U U\nTypes:Creature Dragon\nPT:6/7\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this creature enters, return up to two other target nonland permanents to their owners' hands.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.Other+nonLand | TargetMin$ 0 | TargetMax$ 2 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to two other target nonland permanents\nAlternateMode:Omen\nOracle:Flying\\nWhen this creature enters, return up to two other target nonland permanents to their owners' hands.\n\nALTERNATE\n\nName:Coil and Catch\nManaCost:3 U\nTypes:Instant Omen\nA:SP$ Draw | NumCards$ 3 | SubAbility$ DBDiscard | SpellDescription$ Draw three cards, then discard a card. (Then shuffle this card into its owner's library.)\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Draw three cards, then discard a card. (Then shuffle this card into its owner's library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marang River Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

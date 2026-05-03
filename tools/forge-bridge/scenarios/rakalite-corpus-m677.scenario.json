@@ -1,0 +1,25 @@
+{
+  "id": "rakalite-corpus-m677",
+  "description": "M6 corpus — Rakalite; ETB-on-bf.",
+  "seed": 67606,
+  "cards": {
+    "Rakalite": "Name:Rakalite\nManaCost:6\nTypes:Artifact\nA:AB$ PreventDamage | Cost$ 2 | ValidTgts$ Any | Amount$ 1 | SubAbility$ DBReturn | SpellDescription$ Prevent the next 1 damage that would be dealt to any target this turn. Return CARDNAME to its owner's hand at the beginning of the next end step.\nSVar:DBReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | TriggerDescription$ Return CARDNAME to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:All\nOracle:{2}: Prevent the next 1 damage that would be dealt to any target this turn. Return Rakalite to its owner's hand at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rakalite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

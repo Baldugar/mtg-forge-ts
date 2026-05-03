@@ -1,0 +1,23 @@
+{
+  "id": "nuclear-fallout-corpus-m677",
+  "description": "M6 corpus — Nuclear Fallout; in-hand parse.",
+  "seed": 66096,
+  "cards": {
+    "Nuclear Fallout": "Name:Nuclear Fallout\nManaCost:X B B\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -Y | NumDef$ -Y | SubAbility$ DBRadiation | SpellDescription$ Each creature gets twice -X/-X until end of turn.\nSVar:DBRadiation:DB$ Radiation | Defined$ Player | Num$ X | SpellDescription$ Each player gets X rad counters.\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Twice\nOracle:Each creature gets twice -X/-X until end of turn. Each player gets X rad counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nuclear Fallout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prehistoric-pet-corpus-m677",
+  "description": "M6 corpus — Prehistoric Pet; ETB-on-bf.",
+  "seed": 67137,
+  "cards": {
+    "Prehistoric Pet": "Name:Prehistoric Pet\nManaCost:W\nTypes:Creature Dinosaur Ninja\nPT:1/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerGTX | Description$ This creature can't be blocked by creatures with greater power.\nA:AB$ ChangeZone | Cost$ 1 W T | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | Origin$ Battlefield | Destination$ Hand | PlayerTurn$ True | SpellDescription$ Return another target creature you control to its owner's hand. Activate only during your turn.\nSVar:X:Count$CardPower\nOracle:This creature can't be blocked by creatures with greater power.\\n{1}{W}, {T}: Return another target creature you control to its owner's hand. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Prehistoric Pet"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

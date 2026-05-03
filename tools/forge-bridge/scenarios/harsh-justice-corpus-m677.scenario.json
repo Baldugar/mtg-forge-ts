@@ -1,0 +1,23 @@
+{
+  "id": "harsh-justice-corpus-m677",
+  "description": "M6 corpus — Harsh Justice; in-hand parse.",
+  "seed": 62079,
+  "cards": {
+    "Harsh Justice": "Name:Harsh Justice\nManaCost:2 W\nTypes:Instant\nA:SP$ Effect | Triggers$ TrigDamage | AILogic$ Fog | CheckSVar$ Y | ActivationPhases$ Declare Attackers | SpellDescription$ Cast this spell only during the declare attackers step and only if you've been attacked this step. This turn, whenever an attacking creature deals combat damage to you, it deals that much damage to its controller.\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Creature.attacking | ValidTarget$ You | Execute$ TrigDealDamage | CombatDamage$ True | TriggerDescription$ This turn, whenever an attacking creature deals combat damage to you, it deals that much damage to its controller.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredSourceController | NumDmg$ X | DamageSource$ TriggeredSource\nSVar:X:TriggerCount$DamageAmount\nSVar:Y:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nAI:RemoveDeck:All\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nThis turn, whenever an attacking creature deals combat damage to you, it deals that much damage to its controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harsh Justice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

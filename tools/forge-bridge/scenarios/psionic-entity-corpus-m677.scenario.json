@@ -1,0 +1,25 @@
+{
+  "id": "psionic-entity-corpus-m677",
+  "description": "M6 corpus — Psionic Entity; ETB-on-bf.",
+  "seed": 67308,
+  "cards": {
+    "Psionic Entity": "Name:Psionic Entity\nManaCost:4 U\nTypes:Creature Illusion\nPT:2/2\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 2 | DamageMap$ True | SubAbility$ DB1 | SpellDescription$ CARDNAME deals 2 damage to any target and 3 damage to itself.\nSVar:DB1:DB$ DealDamage | NumDmg$ 3 | Defined$ Self | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nAI:RemoveDeck:All\nOracle:{T}: Psionic Entity deals 2 damage to any target and 3 damage to itself.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Psionic Entity"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

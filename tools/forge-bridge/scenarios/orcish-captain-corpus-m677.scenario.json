@@ -1,0 +1,25 @@
+{
+  "id": "orcish-captain-corpus-m677",
+  "description": "M6 corpus — Orcish Captain; ETB-on-bf.",
+  "seed": 66383,
+  "cards": {
+    "Orcish Captain": "Name:Orcish Captain\nManaCost:R\nTypes:Creature Orc Warrior\nPT:1/1\nA:AB$ FlipACoin | Cost$ 1 | ValidTgts$ Creature.Orc | TgtPrompt$ Select target Orc creature | WinSubAbility$ DBPumpPlus | LoseSubAbility$ DBPumpMinus | AILogic$ KillOrcs | SpellDescription$ Flip a coin. If you win the flip, target Orc creature gets +2/+0 until end of turn. If you lose the flip, it gets -0/-2 until end of turn.\nSVar:DBPumpPlus:DB$ Pump | Defined$ Targeted | NumAtt$ +2\nSVar:DBPumpMinus:DB$ Pump | Defined$ Targeted | NumDef$ -2\nOracle:{1}: Flip a coin. If you win the flip, target Orc creature gets +2/+0 until end of turn. If you lose the flip, it gets -0/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Orcish Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

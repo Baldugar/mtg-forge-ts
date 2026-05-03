@@ -1,0 +1,25 @@
+{
+  "id": "nullhide-ferox-corpus-m677",
+  "description": "M6 corpus — Nullhide Ferox; ETB-on-bf.",
+  "seed": 66104,
+  "cards": {
+    "Nullhide Ferox": "Name:Nullhide Ferox\nManaCost:2 G G\nTypes:Creature Beast\nPT:6/6\nK:Hexproof\nS:Mode$ CantBeCast | ValidCard$ Card.nonCreature | Caster$ You | Description$ You can't cast noncreature spells.\nA:AB$ Animate | Cost$ 2 | Defined$ Self | RemoveAllAbilities$ True | Activator$ Player | AILogic$ Curse | SpellDescription$ CARDNAME loses all abilities until end of turn. Any player may activate this ability.\nR:Event$ Moved | ActiveZones$ Hand | ValidCard$ Card.Self | ValidCause$ SpellAbility.OppCtrl | Discard$ True | EffectOnly$ True | ReplaceWith$ SurpriseETB | Description$ If a spell or ability an opponent controls causes you to discard CARDNAME, put it onto the battlefield instead of putting it into your graveyard.\nSVar:SurpriseETB:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Hand | Destination$ Battlefield\nSVar:DiscardMeByOpp:2\nOracle:Hexproof\\nYou can't cast noncreature spells.\\n{2}: Nullhide Ferox loses all abilities until end of turn. Any player may activate this ability.\\nIf a spell or ability an opponent controls causes you to discard Nullhide Ferox, put it onto the battlefield instead of putting it into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nullhide Ferox"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jace-s-ruse-corpus-m677",
+  "description": "M6 corpus — Jace's Ruse; in-hand parse.",
+  "seed": 63205,
+  "cards": {
+    "Jace's Ruse": "Name:Jace's Ruse\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBSearch | SpellDescription$ Return up to two target creatures to their owner's hand. You may search your library and/or graveyard for a card named Jace, Arcane Strategist, reveal it, and put it into your hand. If you search your library this way, shuffle it.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedJace; Arcane Strategist | ChangeNum$ 1 | Optional$ True\nDeckHints:Name$Jace, Arcane Strategist\nOracle:Return up to two target creatures to their owner's hand. You may search your library and/or graveyard for a card named Jace, Arcane Strategist, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace's Ruse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

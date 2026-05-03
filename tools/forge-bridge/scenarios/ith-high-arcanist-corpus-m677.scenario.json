@@ -1,0 +1,25 @@
+{
+  "id": "ith-high-arcanist-corpus-m677",
+  "description": "M6 corpus — Ith, High Arcanist; ETB-on-bf.",
+  "seed": 63172,
+  "cards": {
+    "Ith, High Arcanist": "Name:Ith, High Arcanist\nManaCost:5 W U\nTypes:Legendary Creature Human Wizard\nPT:3/5\nK:Vigilance\nA:AB$ Untap | Cost$ T | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | SubAbility$ DBPump | SpellDescription$ Untap target attacking creature. Prevent all combat damage that would be dealt to and dealt by that creature this turn.\nSVar:DBPump:DB$ Effect | ReplacementEffects$ RPrevent1,RPrevent2 | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:RPrevent1:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by that creature this turn.\nSVar:RPrevent2:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by that creature this turn. | Secondary$ True\nK:Suspend:4:W U\nAI:RemoveDeck:All\nOracle:Vigilance\\n{T}: Untap target attacking creature. Prevent all combat damage that would be dealt to and dealt by that creature this turn.\\nSuspend 4—{W}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ith, High Arcanist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

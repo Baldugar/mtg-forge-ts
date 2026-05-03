@@ -1,0 +1,23 @@
+{
+  "id": "silken-strength-corpus-m677",
+  "description": "M6 corpus — Silken Strength; in-hand parse.",
+  "seed": 69893,
+  "cards": {
+    "Silken Strength": "Name:Silken Strength\nManaCost:1 G\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature,Vehicle:creature or Vehicle\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When this Aura enters, untap enchanted permanent.\nSVar:TrigUntap:DB$ Untap | Defined$ Enchanted\nS:Mode$ Continuous | Affected$ Permanent.EnchantedBy | AddPower$ 1 | AddToughness$ 2 | AddKeyword$ Reach | Description$ Enchanted permanent gets +1/+2 and has reach.\nOracle:Flash\\nEnchant creature or Vehicle\\nWhen this Aura enters, untap enchanted permanent.\\nEnchanted permanent gets +1/+2 and has reach.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silken Strength"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

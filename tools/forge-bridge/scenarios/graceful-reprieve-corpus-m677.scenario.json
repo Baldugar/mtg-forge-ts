@@ -1,0 +1,23 @@
+{
+  "id": "graceful-reprieve-corpus-m677",
+  "description": "M6 corpus — Graceful Reprieve; in-hand parse.",
+  "seed": 61602,
+  "cards": {
+    "Graceful Reprieve": "Name:Graceful Reprieve\nManaCost:1 W\nTypes:Instant\nA:SP$ DelayedTrigger | ValidTgts$ Creature | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigChangeZone | StackDescription$ When {c:Targeted} dies this turn, return that card to the battlefield under its owner's control. | SpellDescription$ When target creature dies this turn, return that card to the battlefield under its owner's control.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ DelayTriggerRemembered | Origin$ Graveyard | Destination$ Battlefield\nOracle:When target creature dies this turn, return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graceful Reprieve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

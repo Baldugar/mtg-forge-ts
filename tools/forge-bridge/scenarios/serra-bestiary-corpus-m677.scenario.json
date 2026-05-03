@@ -1,0 +1,23 @@
+{
+  "id": "serra-bestiary-corpus-m677",
+  "description": "M6 corpus — Serra Bestiary; in-hand parse.",
+  "seed": 69491,
+  "cards": {
+    "Serra Bestiary": "Name:Serra Bestiary\nManaCost:W W\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {W}{W}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ W W\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Creature.EnchantedBy | ValidSA$ Activated.hasTapCost | Description$ Enchanted creature can't attack or block, and its activated abilities with {T} in their costs can't be activated.\nOracle:Enchant creature\\nAt the beginning of your upkeep, sacrifice Serra Bestiary unless you pay {W}{W}.\\nEnchanted creature can't attack or block, and its activated abilities with {T} in their costs can't be activated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serra Bestiary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

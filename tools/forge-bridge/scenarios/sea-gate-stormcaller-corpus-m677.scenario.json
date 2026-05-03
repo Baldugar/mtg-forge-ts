@@ -1,0 +1,23 @@
+{
+  "id": "sea-gate-stormcaller-corpus-m677",
+  "description": "M6 corpus — Sea Gate Stormcaller; in-hand parse.",
+  "seed": 69266,
+  "cards": {
+    "Sea Gate Stormcaller": "Name:Sea Gate Stormcaller\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Kicker:4 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, copy the next instant or sorcery spell with mana value 2 or less you cast this turn when you cast it. You may choose new targets for the copy.\nSVar:TrigEffect:DB$ DelayedTrigger | AILogic$ SpellCopy | Mode$ SpellCast | ValidCard$ Instant.cmcLE2,Sorcery.cmcLE2 | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ TrigCopy | TriggerDescription$ Copy the next instant or sorcery spell with mana value 2 or less you cast this turn when you cast it. You may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$Kicked.2.1\nSVar:PlayMain1:TRUE\nDeckNeeds:Type$Instant|Sorcery\nOracle:Kicker {4}{U}\\nWhen Sea Gate Stormcaller enters, copy the next instant or sorcery spell with mana value 2 or less you cast this turn when you cast it. If Sea Gate Stormcaller was kicked, copy that spell twice instead. You may choose new targets for the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sea Gate Stormcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

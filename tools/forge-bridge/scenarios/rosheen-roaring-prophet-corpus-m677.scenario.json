@@ -1,0 +1,23 @@
+{
+  "id": "rosheen-roaring-prophet-corpus-m677",
+  "description": "M6 corpus — Rosheen, Roaring Prophet; in-hand parse.",
+  "seed": 68532,
+  "cards": {
+    "Rosheen, Roaring Prophet": "Name:Rosheen, Roaring Prophet\nManaCost:2 R G\nTypes:Legendary Creature Giant Shaman\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill six cards. You may put a card with X in its mana cost from among them into your hand.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 6 | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Card.IsRemembered+hasXCost | SelectPrompt$ You may put a card with X in its mana cost from among them into your hand | SubAbility$ DBCleanup\nA:AB$ Reveal | Cost$ T | RevealValid$ Card.hasXCost+YouCtrl | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBMana | SpellDescription$ Reveal any number of cards with X in their mana cost in your hand. Add {C}{C} for each card revealed this way. Spend this mana only on costs that contain X.\nSVar:DBMana:DB$ Mana | Produced$ C | Amount$ MetalWorkerX | RestrictValid$ CostContainsX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MetalWorkerX:Remembered$Amount/Twice\nDeckHas:Ability$Mill\nOracle:When Rosheen, Roaring Prophet enters, mill six cards. You may put a card with X in its mana cost from among them into your hand.\\n{T}: Reveal any number of cards with X in their mana cost in your hand. Add {C}{C} for each card revealed this way. Spend this mana only on costs that contain X.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rosheen, Roaring Prophet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

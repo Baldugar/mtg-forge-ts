@@ -1,0 +1,23 @@
+{
+  "id": "stern-proctor-corpus-m677",
+  "description": "M6 corpus — Stern Proctor; in-hand parse.",
+  "seed": 70990,
+  "cards": {
+    "Stern Proctor": "Name:Stern Proctor\nManaCost:U U\nTypes:Creature Human Wizard\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target artifact or enchantment to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | Origin$ Battlefield | Destination$ Hand\nOracle:When Stern Proctor enters, return target artifact or enchantment to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stern Proctor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

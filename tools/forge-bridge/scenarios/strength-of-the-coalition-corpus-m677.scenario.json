@@ -1,0 +1,23 @@
+{
+  "id": "strength-of-the-coalition-corpus-m677",
+  "description": "M6 corpus — Strength of the Coalition; in-hand parse.",
+  "seed": 71180,
+  "cards": {
+    "Strength of the Coalition": "Name:Strength of the Coalition\nManaCost:G\nTypes:Instant\nK:Kicker:2 W\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBCounter | TgtPrompt$ Select target creature you control | SpellDescription$ Target creature you control gets +2/+2 until end of turn. If this spell was kicked, put a +1/+1 counter on each creature you control.\nSVar:DBCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | Condition$ Kicked\nDeckHas:Ability$Counters\nDeckHints:Color$White\nOracle:Kicker {2}{W} (You may pay an additional {2}{W} as you cast this spell.)\\nTarget creature you control gets +2/+2 until end of turn. If this spell was kicked, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strength of the Coalition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

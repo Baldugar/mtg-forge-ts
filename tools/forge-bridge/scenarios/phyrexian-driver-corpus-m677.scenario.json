@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-driver-corpus-m677",
+  "description": "M6 corpus — Phyrexian Driver; in-hand parse.",
+  "seed": 66846,
+  "cards": {
+    "Phyrexian Driver": "Name:Phyrexian Driver\nManaCost:2 B\nTypes:Creature Phyrexian Zombie Mercenary\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, other Mercenary creatures get +1/+1 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.Mercenary+StrictlyOther | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When Phyrexian Driver enters, other Mercenary creatures get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Driver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

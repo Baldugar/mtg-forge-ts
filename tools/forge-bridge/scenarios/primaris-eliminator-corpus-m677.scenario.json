@@ -1,0 +1,23 @@
+{
+  "id": "primaris-eliminator-corpus-m677",
+  "description": "M6 corpus — Primaris Eliminator; in-hand parse.",
+  "seed": 67193,
+  "cards": {
+    "Primaris Eliminator": "Name:Primaris Eliminator\nManaCost:4 B\nTypes:Creature Astartes Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDestroy,DBDebuff\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature | SpellDescription$ Executioner Round — Destroy target creature.\nSVar:DBDebuff:DB$ PumpAll | ValidTgts$ Player | ValidCards$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ Hyperfang Round — Creatures target player controls get -2/-2 until end of turn.\nOracle:When Primaris Eliminator enters, choose one —\\n• Executioner Round — Destroy target creature.\\n• Hyperfang Round — Creatures target player controls get -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primaris Eliminator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

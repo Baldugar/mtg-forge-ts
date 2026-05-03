@@ -1,0 +1,23 @@
+{
+  "id": "staff-of-eden-vault-s-key-corpus-m677",
+  "description": "M6 corpus — Staff of Eden, Vault's Key; in-hand parse.",
+  "seed": 70843,
+  "cards": {
+    "Staff of Eden, Vault's Key": "Name:Staff of Eden, Vault's Key\nManaCost:6\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put target legendary permanent card not named Staff of Eden, Vault's Key from a graveyard onto the battlefield under your control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.Legendary+!namedStaff of Eden; Vault's Key | GainControl$ True | ChangeNum$ 1 | Mandatory$ True | TgtPrompt$ Choose target legendary permanent card not named Staff of Eden, Vault's Key in a graveyard\nA:AB$ Draw | Cost$ T | NumCards$ Count$Valid Permanent.YouCtrl+YouDontOwn | SpellDescription$ Draw a card for each permanent you control but don't own.\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:When Staff of Eden, Vault's Key enters, put target legendary permanent card not named Staff of Eden, Vault's Key from a graveyard onto the battlefield under your control.\\n{T}: Draw a card for each permanent you control but don't own.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Staff of Eden, Vault's Key"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

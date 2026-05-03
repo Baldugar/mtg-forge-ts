@@ -1,0 +1,23 @@
+{
+  "id": "jungle-hollow-corpus-m677",
+  "description": "M6 corpus — Jungle Hollow; in-hand parse.",
+  "seed": 63384,
+  "cards": {
+    "Jungle Hollow": "Name:Jungle Hollow\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo B G | SpellDescription$ Add {B} or {G}.\nDeckHas:Ability$LifeGain\nOracle:Jungle Hollow enters tapped.\\nWhen Jungle Hollow enters, you gain 1 life.\\n{T}: Add {B} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jungle Hollow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

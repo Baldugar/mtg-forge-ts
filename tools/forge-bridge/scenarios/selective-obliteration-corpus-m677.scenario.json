@@ -1,0 +1,23 @@
+{
+  "id": "selective-obliteration-corpus-m677",
+  "description": "M6 corpus — Selective Obliteration; in-hand parse.",
+  "seed": 69414,
+  "cards": {
+    "Selective Obliteration": "Name:Selective Obliteration\nManaCost:3 C C\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChooseColor | SubAbility$ ExileAll | SpellDescription$ Each player chooses a color.\nSVar:DBChooseColor:DB$ ChooseColor | Defined$ Remembered | AILogic$ MostProminentComputerControls | SubAbility$ FilterForExile\nSVar:FilterForExile:DB$ Pump | RememberObjects$ Valid Permanent.RememberedPlayerCtrl+MonoColor+ChosenColor\nSVar:ExileAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Card.nonColorless+!IsRemembered | SubAbility$ DBCleanup | SpellDescription$ Then exile each permanent unless it's colorless or it's only the color its controller chose.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Each player chooses a color. Then exile each permanent unless it's colorless or it's only the color its controller chose.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selective Obliteration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

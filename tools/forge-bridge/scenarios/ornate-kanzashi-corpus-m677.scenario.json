@@ -1,0 +1,25 @@
+{
+  "id": "ornate-kanzashi-corpus-m677",
+  "description": "M6 corpus — Ornate Kanzashi; ETB-on-bf.",
+  "seed": 66427,
+  "cards": {
+    "Ornate Kanzashi": "Name:Ornate Kanzashi\nManaCost:5\nTypes:Artifact\nA:AB$ Dig | Cost$ 2 T | ValidTgts$ Opponent | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Target opponent exiles the top card of their library. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | Duration$ EndOfTurn | RememberObjects$ Remembered | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play a card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{2}, {T}: Target opponent exiles the top card of their library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ornate Kanzashi"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

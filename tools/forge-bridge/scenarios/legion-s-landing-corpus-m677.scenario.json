@@ -1,0 +1,23 @@
+{
+  "id": "legion-s-landing-corpus-m677",
+  "description": "M6 corpus — Legion's Landing; in-hand parse.",
+  "seed": 64109,
+  "cards": {
+    "Legion's Landing": "Name:Legion's Landing\nManaCost:W\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 white Vampire creature token with lifelink.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_vampire_lifelink | TokenOwner$ You\nT:Mode$ AttackersDeclared | Execute$ DBTransform | ValidAttackers$ Creature | ValidAttackersAmount$ GE3 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ When you attack with three or more creatures, transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:When Legion's Landing enters, create a 1/1 white Vampire creature token with lifelink.\\nWhen you attack with three or more creatures, transform Legion's Landing.\n\nALTERNATE\n\nName:Adanto, the First Fort\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ W | Amount$ 1 | SpellDescription$ Add {W}.\nA:AB$ Token | Cost$ 2 W T | TokenScript$ w_1_1_vampire_lifelink | TokenOwner$ You | SpellDescription$ Create a 1/1 white Vampire creature token with lifelink.\nOracle:(Transforms from Legion's Landing.)\\n{T}: Add {W}.\\n{2}{W}, {T}: Create a 1/1 white Vampire creature token with lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion's Landing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "rock-jockey-corpus-m677",
+  "description": "M6 corpus — Rock Jockey; ETB-on-bf.",
+  "seed": 68447,
+  "cards": {
+    "Rock Jockey": "Name:Rock Jockey\nManaCost:2 R\nTypes:Creature Goblin\nPT:3/3\nS:Mode$ CantBeCast | Caster$ You | ValidCard$ Card.Self | CheckSVar$ XJockey | EffectZone$ All | Description$ You can't cast this spell if you've played a land this turn.\nS:Mode$ CantPlayLand | Player$ You | CheckSVar$ RockyX | Description$ You can't play lands if you've cast CARDNAME this turn.\nSVar:XJockey:PlayerCountPropertyYou$LandsPlayed\nSVar:RockyX:Count$ThisTurnCast_Card.Self\nOracle:You can't cast this spell if you've played a land this turn.\\nYou can't play lands if you've cast Rock Jockey this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rock Jockey"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

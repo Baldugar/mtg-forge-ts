@@ -1,0 +1,23 @@
+{
+  "id": "planar-collapse-corpus-m677",
+  "description": "M6 corpus — Planar Collapse; in-hand parse.",
+  "seed": 66970,
+  "cards": {
+    "Planar Collapse": "Name:Planar Collapse\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature | PresentCompare$ GE4 | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, if there are four or more creatures on the battlefield, sacrifice CARDNAME and destroy all creatures. They can't be regenerated.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Self | SubAbility$ DBDestroyAll\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature | NoRegen$ True\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:At the beginning of your upkeep, if there are four or more creatures on the battlefield, sacrifice Planar Collapse and destroy all creatures. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planar Collapse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rocket-powered-goblin-glider-corpus-m677",
+  "description": "M6 corpus — Rocket-Powered Goblin Glider; in-hand parse.",
+  "seed": 68454,
+  "cards": {
+    "Rocket-Powered Goblin Glider": "Name:Rocket-Powered Goblin Glider\nVariant:UniversesWithin:FlavorName:Stitcher's Wings\nManaCost:3\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+wasCastFromYourGraveyard | Execute$ TrigAttach | TriggerDescription$ When this Equipment enters, if it was cast from your graveyard, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Flying & Haste | Description$ Equipped creature gets +2/+0 and has flying and haste.\nK:Equip:2\nK:Mayhem:2\nOracle:When this Equipment enters, if it was cast from your graveyard, attach it to target creature you control.\\nEquipped creature gets +2/+0 and has flying and haste.\\nEquip {2}\\nMayhem {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rocket-Powered Goblin Glider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "halimar-depths-corpus-m677",
+  "description": "M6 corpus — Halimar Depths; in-hand parse.",
+  "seed": 61976,
+  "cards": {
+    "Halimar Depths": "Name:Halimar Depths\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRearrange | TriggerDescription$ When CARDNAME enters, look at the top three cards of your library, then put them back in any order.\nSVar:TrigRearrange:DB$ RearrangeTopOfLibrary | Defined$ You | NumCards$ 3\nOracle:Halimar Depths enters tapped.\\nWhen Halimar Depths enters, look at the top three cards of your library, then put them back in any order.\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halimar Depths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

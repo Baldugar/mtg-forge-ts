@@ -1,0 +1,23 @@
+{
+  "id": "storrev-devkarin-lich-corpus-m677",
+  "description": "M6 corpus — Storrev, Devkarin Lich; in-hand parse.",
+  "seed": 71138,
+  "cards": {
+    "Storrev, Devkarin Lich": "Name:Storrev, Devkarin Lich\nManaCost:1 B B G\nTypes:Legendary Creature Zombie Elf Wizard\nPT:5/4\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | Static$ True | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ CleanupAndRemember\nSVar:CleanupAndRemember:DB$ Cleanup | ClearRemembered$ True | SubAbility$ RememberTargets\nSVar:RememberTargets:DB$ PumpAll | PumpZone$ Graveyard | ValidCards$ Creature.YouOwn,Planeswalker.YouOwn | RememberPumped$ True\nT:Mode$ Phase | Phase$ EndCombat | Static$ True | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ JustCleanup\nSVar:JustCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | CombatDamage$ True | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or planeswalker, return to your hand target creature or planeswalker card in your graveyard that wasn't put there this combat.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.IsRemembered,Planeswalker.IsRemembered\nOracle:Trample\\nWhenever Storrev, Devkarin Lich deals combat damage to a player or planeswalker, return to your hand target creature or planeswalker card in your graveyard that wasn't put there this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storrev, Devkarin Lich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

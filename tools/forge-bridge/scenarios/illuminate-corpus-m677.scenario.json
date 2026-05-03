@@ -1,0 +1,23 @@
+{
+  "id": "illuminate-corpus-m677",
+  "description": "M6 corpus — Illuminate; in-hand parse.",
+  "seed": 62743,
+  "cards": {
+    "Illuminate": "Name:Illuminate\nManaCost:X R\nTypes:Sorcery\nK:Kicker:2 R:3 U\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DmgController | SpellDescription$ CARDNAME deals X damage to target creature.\nSVar:DmgController:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X | SubAbility$ DrawYou | Condition$ Kicked 1 | SpellDescription$ If CARDNAME was kicked with its {2}{R} kicker, it deals X damage to that creature's controller.\nSVar:DrawYou:DB$ Draw | NumCards$ X | Defined$ You | Condition$ Kicked 2 | SpellDescription$ If CARDNAME was kicked with its {3}{U} kicker, you draw X cards.\nSVar:X:Count$xPaid\nDeckHints:Color$Blue\nOracle:Kicker {2}{R} and/or {3}{U} (You may pay an additional {2}{R} and/or {3}{U} as you cast this spell.)\\nIlluminate deals X damage to target creature. If this spell was kicked with its {2}{R} kicker, it deals X damage to that creature's controller. If this spell was kicked with its {3}{U} kicker, you draw X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illuminate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

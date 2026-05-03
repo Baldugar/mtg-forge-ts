@@ -1,0 +1,23 @@
+{
+  "id": "leaf-crowned-elder-corpus-m677",
+  "description": "M6 corpus — Leaf-Crowned Elder; in-hand parse.",
+  "seed": 64062,
+  "cards": {
+    "Leaf-Crowned Elder": "Name:Leaf-Crowned Elder\nManaCost:2 G G\nTypes:Creature Treefolk Shaman\nPT:3/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigKinship | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Kinship — At the beginning of your upkeep, you may look at the top card of your library. If it shares a creature type with CARDNAME, you may reveal it. If you do, you may play that card without paying its mana cost.\nSVar:TrigKinship:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Card.sharesCreatureTypeWith | RevealOptional$ True | RememberRevealed$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ TopOfLibrary | WithoutManaCost$ True | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Kinship — At the beginning of your upkeep, you may look at the top card of your library. If it shares a creature type with Leaf-Crowned Elder, you may reveal it. If you do, you may play that card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leaf-Crowned Elder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

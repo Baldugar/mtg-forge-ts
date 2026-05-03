@@ -1,0 +1,23 @@
+{
+  "id": "saskia-the-unyielding-corpus-m677",
+  "description": "M6 corpus — Saskia the Unyielding; in-hand parse.",
+  "seed": 69030,
+  "cards": {
+    "Saskia the Unyielding": "Name:Saskia the Unyielding\nManaCost:B R G W\nTypes:Legendary Creature Human Soldier\nPT:3/4\nK:Vigilance\nK:Haste\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose a player.\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever a creature you control deals combat damage to a player, it deals that much damage to the chosen player.\nSVar:TrigDealDamage:DB$ DealDamage | DamageSource$ TriggeredSource | NumDmg$ X | Defined$ ChosenPlayer\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Vigilance, haste\\nAs Saskia the Unyielding enters, choose a player.\\nWhenever a creature you control deals combat damage to a player, it deals that much damage to the chosen player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saskia the Unyielding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "misstep-corpus-m677",
+  "description": "M6 corpus — Misstep; in-hand parse.",
+  "seed": 65285,
+  "cards": {
+    "Misstep": "Name:Misstep\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Effect | ValidTgts$ Player | StaticAbilities$ DontUntap | Triggers$ RemoveEffect | Duration$ Permanent | RememberObjects$ Targeted | SpellDescription$ Creatures target player controls don't untap during that player's next untap step.\nSVar:DontUntap:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.RememberedPlayerCtrl | AddHiddenKeyword$ This card doesn't untap during your next untap step. | Description$ Creatures target player controls don't untap during their next untap step.\nSVar:RemoveEffect:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player.IsRemembered | TriggerZones$ Command | Static$ True | Execute$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Creatures target player controls don't untap during that player's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Misstep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

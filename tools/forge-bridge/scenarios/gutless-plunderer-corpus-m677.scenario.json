@@ -1,0 +1,23 @@
+{
+  "id": "gutless-plunderer-corpus-m677",
+  "description": "M6 corpus — Gutless Plunderer; in-hand parse.",
+  "seed": 61927,
+  "cards": {
+    "Gutless Plunderer": "Name:Gutless Plunderer\nManaCost:2 B\nTypes:Creature Skeleton Pirate\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigDig | TriggerDescription$ Raid — When this creature enters, if you attacked this turn, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone2$ Graveyard | DestinationZone$ Library | LibraryPosition$ 0 | Optional$ True\nDeckHas:Ability$Graveyard\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\\nRaid — When this creature enters, if you attacked this turn, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gutless Plunderer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

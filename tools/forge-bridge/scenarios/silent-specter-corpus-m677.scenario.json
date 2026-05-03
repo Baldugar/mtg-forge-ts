@@ -1,0 +1,23 @@
+{
+  "id": "silent-specter-corpus-m677",
+  "description": "M6 corpus — Silent Specter; in-hand parse.",
+  "seed": 69884,
+  "cards": {
+    "Silent Specter": "Name:Silent Specter\nManaCost:4 B B\nTypes:Creature Specter\nPT:4/4\nK:Flying\nK:Morph:3 B B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards two cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 2 | Mode$ TgtChoose\nOracle:Flying\\nWhenever Silent Specter deals combat damage to a player, that player discards two cards.\\nMorph {3}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silent Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

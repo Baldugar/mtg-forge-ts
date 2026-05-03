@@ -1,0 +1,23 @@
+{
+  "id": "skullcage-corpus-m677",
+  "description": "M6 corpus — Skullcage; in-hand parse.",
+  "seed": 70076,
+  "cards": {
+    "Skullcage": "Name:Skullcage\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, CARDNAME deals 2 damage to that player unless they have exactly three or exactly four cards in hand.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer | ConditionCheckSVar$ X | ConditionSVarCompare$ LT3 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer | ConditionCheckSVar$ X | ConditionSVarCompare$ GT4\nSVar:X:TriggeredPlayer$CardsInHand\nOracle:At the beginning of each opponent's upkeep, Skullcage deals 2 damage to that player unless they have exactly three or exactly four cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullcage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

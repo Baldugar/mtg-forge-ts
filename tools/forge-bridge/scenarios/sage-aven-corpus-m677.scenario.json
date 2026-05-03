@@ -1,0 +1,23 @@
+{
+  "id": "sage-aven-corpus-m677",
+  "description": "M6 corpus — Sage Aven; in-hand parse.",
+  "seed": 68859,
+  "cards": {
+    "Sage Aven": "Name:Sage Aven\nManaCost:3 U\nTypes:Creature Bird Wizard\nPT:1/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRearrange | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library, then put them back in any order.\nSVar:TrigRearrange:DB$ RearrangeTopOfLibrary | Defined$ You | NumCards$ 4\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Sage Aven enters, look at the top four cards of your library, then put them back in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage Aven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

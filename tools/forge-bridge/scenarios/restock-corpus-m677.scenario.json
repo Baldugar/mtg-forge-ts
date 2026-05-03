@@ -1,0 +1,23 @@
+{
+  "id": "restock-corpus-m677",
+  "description": "M6 corpus — Restock; in-hand parse.",
+  "seed": 68124,
+  "cards": {
+    "Restock": "Name:Restock\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 2 | TargetMax$ 2 | TgtPrompt$ Choose target card in your graveyard | ValidTgts$ Card.YouCtrl | SubAbility$ DBChange | SpellDescription$ Return two target cards from your graveyard to your hand. Exile CARDNAME.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nOracle:Return two target cards from your graveyard to your hand. Exile Restock.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

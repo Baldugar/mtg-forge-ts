@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-segovia-corpus-m677",
+  "description": "M6 corpus — Invasion of Segovia; in-hand parse.",
+  "seed": 63070,
+  "cards": {
+    "Invasion of Segovia": "Name:Invasion of Segovia\nManaCost:2 U\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 blue Kraken creature tokens with trample.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ u_1_1_kraken_trample\nDeckHas:Ability$Token & Type$Kraken\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Segovia enters, create two 1/1 blue Kraken creature tokens with trample.\n\nALTERNATE\n\nName:Caetus, Sea Tyrant of Segovia\nManaCost:no cost\nColors:blue\nTypes:Legendary Creature Serpent\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.nonCreature+YouCtrl+wasCast | AffectedZone$ Stack | AddKeyword$ Convoke | Description$ Noncreature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a noncreature spell pays for 1 or one mana of that creature's color.)\nT:Mode$ Phase | Phase$ End of Turn | Execute$ TrigUntap | ValidPlayer$ You | TriggerDescription$ At the beginning of your end step, untap up to four target creatures.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature.YouCtrl | TargetMin$ 0 | TargetMax$ 4 | TgtPrompt$ Select up to four creatures you control to untap\nOracle:Noncreature spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting a noncreature spell pays for 1 or one mana of that creature's color.)\\nAt the beginning of your end step, untap up to four target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Segovia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

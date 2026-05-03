@@ -1,0 +1,25 @@
+{
+  "id": "sodden-verdure-corpus-m677",
+  "description": "M6 corpus — Sodden Verdure; ETB-on-bf.",
+  "seed": 70329,
+  "cards": {
+    "Sodden Verdure": "Name:Sodden Verdure\nManaCost:no cost\nTypes:Land Forest Island\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {G} or {U}.)\\nThis land enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sodden Verdure"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

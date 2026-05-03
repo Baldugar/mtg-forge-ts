@@ -1,0 +1,23 @@
+{
+  "id": "quenchable-fire-corpus-m677",
+  "description": "M6 corpus — Quenchable Fire; in-hand parse.",
+  "seed": 67460,
+  "cards": {
+    "Quenchable Fire": "Name:Quenchable Fire\nManaCost:3 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 3 | SubAbility$ DBEffect | SpellDescription$ CARDNAME deals 3 damage to target player or planeswalker.\nSVar:DBEffect:DB$ Effect | OneOff$ True | Duration$ Permanent | Abilities$ PayUp | Triggers$ DamageTrig | RememberObjects$ Targeted | SpellDescription$ It deals an additional 3 damage to that player or planeswalker at the beginning of your next upkeep step unless that player or that planeswalker's controller pays {U} before that step.\nSVar:PayUp:ST$ ChangeZone | Activator$ Player.IsRememberedOrController | ActivationZone$ Command | Cost$ U | Defined$ Self | Origin$ Command | Destination$ Exile | ActivationZone$ Command | AILogic$ Always | SpellDescription$ Pay {U} to avoid another 3 damage.\nSVar:DamageTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDamage | OneOff$ True | StackDescription$ None | TriggerDescription$ It deals an additional 3 damage to that player or planeswalker at the beginning of your next upkeep step unless that player or that planeswalker's controller pays {U} before that step.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ 3\nOracle:Quenchable Fire deals 3 damage to target player or planeswalker. It deals an additional 3 damage to that player or planeswalker at the beginning of your next upkeep step unless that player or that planeswalker's controller pays {U} before that step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quenchable Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

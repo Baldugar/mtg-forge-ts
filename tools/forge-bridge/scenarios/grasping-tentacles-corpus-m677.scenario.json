@@ -1,0 +1,23 @@
+{
+  "id": "grasping-tentacles-corpus-m677",
+  "description": "M6 corpus — Grasping Tentacles; in-hand parse.",
+  "seed": 61639,
+  "cards": {
+    "Grasping Tentacles": "Name:Grasping Tentacles\nManaCost:1 U B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 8 | ValidTgts$ Opponent | SubAbility$ DBChangeZone | SpellDescription$ Target opponent mills eight cards. You may put an artifact card from that player's graveyard onto the battlefield under your control.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | ChangeType$ Artifact.OwnedBy TargetedPlayer | ChangeNum$ 1 | ChangeTypeDesc$ artifact card | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True\nOracle:Target opponent mills eight cards. You may put an artifact card from that player's graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grasping Tentacles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

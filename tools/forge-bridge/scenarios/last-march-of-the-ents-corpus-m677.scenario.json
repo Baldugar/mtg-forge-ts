@@ -1,0 +1,23 @@
+{
+  "id": "last-march-of-the-ents-corpus-m677",
+  "description": "M6 corpus — Last March of the Ents; in-hand parse.",
+  "seed": 64007,
+  "cards": {
+    "Last March of the Ents": "Name:Last March of the Ents\nManaCost:6 G G\nTypes:Sorcery\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ Draw | Defined$ You | NumCards$ X | SubAbility$ CheatBattlefield | SpellDescription$ Draw cards equal to the greatest toughness among creatures you control, then put any number of creature cards from your hand onto the battlefield.\nSVar:CheatBattlefield:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ Y | StackDescription$ {p:You} puts any number of creature cards from their hand onto the battlefield.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardToughness\nSVar:Y:Count$ValidHand Creature.YouCtrl\nDeckHints:Type$Wall|Plant|Treefolk\nOracle:This spell can't be countered.\\nDraw cards equal to the greatest toughness among creatures you control, then put any number of creature cards from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last March of the Ents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

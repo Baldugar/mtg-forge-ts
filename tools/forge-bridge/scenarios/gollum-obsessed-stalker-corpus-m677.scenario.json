@@ -1,0 +1,23 @@
+{
+  "id": "gollum-obsessed-stalker-corpus-m677",
+  "description": "M6 corpus — Gollum, Obsessed Stalker; in-hand parse.",
+  "seed": 61563,
+  "cards": {
+    "Gollum, Obsessed Stalker": "Name:Gollum, Obsessed Stalker\nManaCost:1 B\nTypes:Legendary Creature Halfling Horror\nPT:1/1\nK:Skulk\nT:Mode$ DamageDone | CombatDamage$ True | ValidSource$ Card.namedGollum; Obsessed Stalker | ValidTarget$ Player | Static$ True | Execute$ NoteDamaged\nSVar:NoteDamaged:DB$ Effect | Name$ Damaged by Gollum, Obsessed Stalker | Duration$ Permanent | EffectOwner$ TriggeredTarget | Unique$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, each opponent dealt combat damage this game by a creature named Gollum, Obsessed Stalker loses life equal to the amount of life you gained this turn.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ Opponent.HasCardsInCommand_Effect.namedDamaged by Gollum; Obsessed Stalker_GE1\nSVar:X:Count$LifeYouGainedThisTurn\nDeckNeeds:Ability$LifeGain\nOracle:Skulk (This creature can't be blocked by creatures with greater power.)\\nAt the beginning of your end step, each opponent dealt combat damage this game by a creature named Gollum, Obsessed Stalker loses life equal to the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gollum, Obsessed Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

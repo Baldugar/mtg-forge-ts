@@ -1,0 +1,23 @@
+{
+  "id": "reach-of-branches-corpus-m677",
+  "description": "M6 corpus — Reach of Branches; in-hand parse.",
+  "seed": 67814,
+  "cards": {
+    "Reach of Branches": "Name:Reach of Branches\nManaCost:4 G\nTypes:Kindred Instant Treefolk\nA:SP$ Token | TokenScript$ g_2_5_treefolk_shaman | TokenOwner$ You | SpellDescription$ Create a 2/5 green Treefolk Shaman creature token.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Forest.YouCtrl | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever a Forest you control enters, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nOracle:Create a 2/5 green Treefolk Shaman creature token.\\nWhenever a Forest you control enters, you may return Reach of Branches from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reach of Branches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spiteful-shadows-corpus-m677",
+  "description": "M6 corpus — Spiteful Shadows; in-hand parse.",
+  "seed": 70727,
+  "cards": {
+    "Spiteful Shadows": "Name:Spiteful Shadows\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever enchanted creature is dealt damage, it deals that much damage to its controller.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredTargetController | NumDmg$ X | DamageSource$ TriggeredTarget\nSVar:X:TriggerCount$DamageAmount\nOracle:Enchant creature\\nWhenever enchanted creature is dealt damage, it deals that much damage to its controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiteful Shadows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

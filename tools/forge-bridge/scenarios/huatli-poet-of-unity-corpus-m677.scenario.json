@@ -1,0 +1,23 @@
+{
+  "id": "huatli-poet-of-unity-corpus-m677",
+  "description": "M6 corpus — Huatli, Poet of Unity; in-hand parse.",
+  "seed": 62567,
+  "cards": {
+    "Huatli, Poet of Unity": "Name:Huatli, Poet of Unity\nManaCost:2 G\nTypes:Legendary Creature Human Warrior Bard\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nA:AB$ ChangeZone | Cost$ 3 RW RW | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile NICKNAME, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Dinosaur\nDeckHints:Type$Dinosaur\nAlternateMode:DoubleFaced\nOracle:When Huatli, Poet of Unity enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\\n{3}{R/W}{R/W}: Exile Huatli, then return her to the battlefield transformed under her owner's control. Activate only as a sorcery.\n\nALTERNATE\n\nName:Roar of the Fifth People\nManaCost:no cost\nColors:white,red,green\nTypes:Enchantment Saga\nK:Chapter:4:DBToken,DBMana,DBSearch,DBPumpAll\nSVar:DBToken:DB$ Token | TokenOwner$ You | TokenScript$ g_3_3_dinosaur | TokenAmount$ 2 | SpellDescription$ Create two 3/3 green Dinosaur creature tokens.\nSVar:DBMana:DB$ Animate | Defined$ Self | staticAbilities$ Static | Duration$ Permanent | SpellDescription$ CARDNAME gains \"Creatures you control have '{T}: Add {R}, {G}, or {W}.'\"\nSVar:Static:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Creature.YouCtrl | AddAbility$ Mana | Description$ Creatures you control have '{T}: Add {R}, {G}, or {W}.\nSVar:Mana:AB$ Mana | Cost$ T | Produced$ Combo R G W | Amount$ 1 | SpellDescription$ Add {R}, {G}, or {W}.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Dinosaur | ChangeNum$ 1 | SpellDescription$ Search your library for a Dinosaur card, reveal it, put it into your hand, then shuffle.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Dinosaur.YouCtrl | KW$ Trample & Double Strike | SpellDescription$ Dinosaurs you control gain double strike and trample until end of turn.\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI — Create two 3/3 green Dinosaur creature tokens.\\nII — Roar of the Fifth People gains \"Creatures you control have '{T}: Add {R}, {G}, or {W}.'\"\\nIII — Search your library for a Dinosaur card, reveal it, put it into your hand, then shuffle.\\nIV — Dinosaurs you control gain double strike and trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Huatli, Poet of Unity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

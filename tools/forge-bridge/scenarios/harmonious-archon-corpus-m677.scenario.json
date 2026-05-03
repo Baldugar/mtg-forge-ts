@@ -1,0 +1,23 @@
+{
+  "id": "harmonious-archon-corpus-m677",
+  "description": "M6 corpus — Harmonious Archon; in-hand parse.",
+  "seed": 62060,
+  "cards": {
+    "Harmonious Archon": "Name:Harmonious Archon\nManaCost:4 W W\nTypes:Creature Archon\nPT:4/5\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.nonArchon | SetPower$ 3 | SetToughness$ 3 | Description$ Non-Archon creatures have base power and toughness 3/3.\nAI:RemoveDeck:Random\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 white Human creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_human | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Flying\\nNon-Archon creatures have base power and toughness 3/3.\\nWhen Harmonious Archon enters, create two 1/1 white Human creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harmonious Archon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hraesvelgr-of-the-first-brood-corpus-m677",
+  "description": "M6 corpus — Hraesvelgr of the First Brood; in-hand parse.",
+  "seed": 62564,
+  "cards": {
+    "Hraesvelgr of the First Brood": "Name:Hraesvelgr of the First Brood\nManaCost:4 U\nTypes:Legendary Creature Elder Dragon\nPT:5/5\nK:Flying\nK:Vigilance\nK:Ward:2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Shiva's Aid — When NICKNAME enters and whenever you cast a noncreature spell, target creature gets +1/+0 until end of turn and can't be blocked this turn.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Shiva's Aid — When NICKNAME enters and whenever you cast a noncreature spell, target creature gets +1/+0 until end of turn and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHas:Ability$Token\nOracle:Flying, vigilance, ward {2}\\nShiva's Aid — When Hraesvelgr enters and whenever you cast a noncreature spell, target creature gets +1/+0 until end of turn and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hraesvelgr of the First Brood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

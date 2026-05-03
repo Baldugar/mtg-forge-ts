@@ -1,0 +1,23 @@
+{
+  "id": "red-xiii-proud-warrior-corpus-m677",
+  "description": "M6 corpus — Red XIII, Proud Warrior; in-hand parse.",
+  "seed": 67919,
+  "cards": {
+    "Red XIII, Proud Warrior": "Name:Red XIII, Proud Warrior\nManaCost:1 R G\nTypes:Legendary Creature Beast Warrior\nPT:3/3\nK:Vigilance\nK:Trample\nS:Mode$ Continuous | Affected$ Creature.Other+modified+YouCtrl | AddKeyword$ Vigilance & Trample | Description$ Other modified creatures you control have vigilance and trample. (Equipment, Auras you control, and counters are modifications.)\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Cosmo Memory — When NICKNAME enters, return target Aura or Equipment card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Aura.YouCtrl,Equipment.YouCtrl | TgtPrompt$ Select target Aura or Equipment card in your graveyard\nOracle:Vigilance, trample\\nOther modified creatures you control have vigilance and trample. (Equipment, Auras you control, and counters are modifications.)\\nCosmo Memory — When Red XIII enters, return target Aura or Equipment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Red XIII, Proud Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

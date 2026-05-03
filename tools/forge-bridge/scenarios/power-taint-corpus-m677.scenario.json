@@ -1,0 +1,23 @@
+{
+  "id": "power-taint-corpus-m677",
+  "description": "M6 corpus — Power Taint; in-hand parse.",
+  "seed": 67092,
+  "cards": {
+    "Power Taint": "Name:Power Taint\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Enchantment\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the upkeep of enchanted enchantment's controller, that player loses 2 life unless they pay {2}.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2 | UnlessCost$ 2 | UnlessPayer$ EnchantedController\nK:Cycling:2\nOracle:Enchant enchantment\\nAt the beginning of the upkeep of enchanted enchantment's controller, that player loses 2 life unless they pay {2}.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Taint"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

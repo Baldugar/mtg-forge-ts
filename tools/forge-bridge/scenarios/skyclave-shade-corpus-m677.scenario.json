@@ -1,0 +1,23 @@
+{
+  "id": "skyclave-shade-corpus-m677",
+  "description": "M6 corpus — Skyclave Shade; in-hand parse.",
+  "seed": 70107,
+  "cards": {
+    "Skyclave Shade": "Name:Skyclave Shade\nManaCost:1 B\nTypes:Creature Shade\nPT:3/1\nK:Kicker:2 B\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nK:etbCounter:P1P1:2:CheckSVar$ WasKicked:If CARDNAME was kicked, it enters with two +1/+1 counters on it.\nSVar:WasKicked:Count$Kicked.1.0\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Graveyard | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | PlayerTurn$ True | Execute$ TrigEffect | TriggerDescription$ Landfall — Whenever a land you control enters, if CARDNAME is in your graveyard and it's your turn, you may cast it from your graveyard this turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Self | ForgetOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Graveyard | Description$ You may cast EFFECTSOURCE from your graveyard this turn.\nDeckHas:Ability$Counters\nOracle:Kicker {2}{B}\\nSkyclave Shade can't block.\\nIf Skyclave Shade was kicked, it enters with two +1/+1 counters on it.\\nLandfall — Whenever a land you control enters, if Skyclave Shade is in your graveyard and it's your turn, you may cast it from your graveyard this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyclave Shade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

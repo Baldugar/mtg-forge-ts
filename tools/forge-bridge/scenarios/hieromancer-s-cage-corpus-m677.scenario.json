@@ -1,0 +1,23 @@
+{
+  "id": "hieromancer-s-cage-corpus-m677",
+  "description": "M6 corpus — Hieromancer's Cage; in-hand parse.",
+  "seed": 62351,
+  "cards": {
+    "Hieromancer's Cage": "Name:Hieromancer's Cage\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When Hieromancer's Cage enters, exile target nonland permanent an opponent controls until Hieromancer's Cage leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hieromancer's Cage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

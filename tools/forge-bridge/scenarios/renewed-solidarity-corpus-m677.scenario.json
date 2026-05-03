@@ -1,0 +1,23 @@
+{
+  "id": "renewed-solidarity-corpus-m677",
+  "description": "M6 corpus — Renewed Solidarity; in-hand parse.",
+  "seed": 68052,
+  "cards": {
+    "Renewed Solidarity": "Name:Renewed Solidarity\nManaCost:2 W\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As this enchantment enters, choose a creature type. | AILogic$ MostProminentInComputerDeck\nS:Mode$ Continuous | Affected$ Creature.ChosenType+YouCtrl | AddPower$ 1 | Description$ Creatures you control of the chosen type get +1/+0.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ At the beginning of your end step, for each token you control of the chosen type that entered this turn, create a token that's a copy of it.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Valid Permanent.token+YouCtrl+ChosenType+ThisTurnEntered\nAI:RemoveDeck:Random\nSVar:PlayMain1:TRUE\nOracle:As this enchantment enters, choose a creature type.\\nCreatures you control of the chosen type get +1/+0.\\nAt the beginning of your end step, for each token you control of the chosen type that entered this turn, create a token that's a copy of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renewed Solidarity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

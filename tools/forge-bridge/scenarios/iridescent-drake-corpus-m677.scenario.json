@@ -1,0 +1,23 @@
+{
+  "id": "iridescent-drake-corpus-m677",
+  "description": "M6 corpus — Iridescent Drake; in-hand parse.",
+  "seed": 63111,
+  "cards": {
+    "Iridescent Drake": "Name:Iridescent Drake\nManaCost:3 U\nTypes:Creature Drake\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put target Aura card from a graveyard onto the battlefield under your control attached to CARDNAME.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Aura | AttachedTo$ Self | GainControl$ True\nOracle:Flying\\nWhen Iridescent Drake enters, put target Aura card from a graveyard onto the battlefield under your control attached to Iridescent Drake.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iridescent Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

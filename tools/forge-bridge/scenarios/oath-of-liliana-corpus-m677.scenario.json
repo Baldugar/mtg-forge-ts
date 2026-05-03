@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-liliana-corpus-m677",
+  "description": "M6 corpus — Oath of Liliana; in-hand parse.",
+  "seed": 66156,
+  "cards": {
+    "Oath of Liliana": "Name:Oath of Liliana\nManaCost:2 B\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each opponent sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, if a planeswalker entered the battlefield under your control this turn, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Battlefield_Planeswalker.YouCtrl\nOracle:When Oath of Liliana enters, each opponent sacrifices a creature.\\nAt the beginning of each end step, if a planeswalker entered the battlefield under your control this turn, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Liliana"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "graveborn-muse-corpus-m677",
+  "description": "M6 corpus — Graveborn Muse; in-hand parse.",
+  "seed": 61663,
+  "cards": {
+    "Graveborn Muse": "Name:Graveborn Muse\nManaCost:2 B B\nTypes:Creature Zombie Spirit\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, you draw X cards and you lose X life, where X is the number of Zombies you control.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Zombie.YouCtrl\nOracle:At the beginning of your upkeep, you draw X cards and you lose X life, where X is the number of Zombies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graveborn Muse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

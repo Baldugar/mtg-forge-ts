@@ -1,0 +1,23 @@
+{
+  "id": "kookus-corpus-m677",
+  "description": "M6 corpus — Kookus; in-hand parse.",
+  "seed": 63819,
+  "cards": {
+    "Kookus": "Name:Kookus\nManaCost:3 R R\nTypes:Creature Djinn\nPT:3/5\nK:Trample\nA:AB$ Pump | Cost$ R | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+namedKeeper of Kookus | PresentCompare$ EQ0 | Execute$ TrigNoKeeper | TriggerDescription$ At the beginning of your upkeep, if you don't control a creature named Keeper of Kookus, CARDNAME deals 3 damage to you and attacks this turn if able.\nSVar:TrigNoKeeper:DB$ DealDamage | NumDmg$ 3 | Defined$ You | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MustAttack | ExileOnMoved$ Battlefield | RememberObjects$ Self\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.IsRemembered | Description$ This creature attacks this turn if able.\nAI:RemoveDeck:Random\nDeckNeeds:Name$Keeper of Kookus\nOracle:Trample\\nAt the beginning of your upkeep, if you don't control a creature named Keeper of Kookus, Kookus deals 3 damage to you and attacks this turn if able.\\n{R}: Kookus gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kookus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

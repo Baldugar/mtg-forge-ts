@@ -1,0 +1,25 @@
+{
+  "id": "kalitas-bloodchief-of-ghet-corpus-m677",
+  "description": "M6 corpus — Kalitas, Bloodchief of Ghet; ETB-on-bf.",
+  "seed": 63438,
+  "cards": {
+    "Kalitas, Bloodchief of Ghet": "Name:Kalitas, Bloodchief of Ghet\nManaCost:5 B B\nTypes:Legendary Creature Vampire Warrior\nPT:5/5\nA:AB$ Destroy | Cost$ B B B T | ValidTgts$ Creature | SubAbility$ DBToken | RememberLKI$ True | SpellDescription$ Destroy target creature. If that creature dies this way, create a black Vampire creature token. Its power is equal to that creature's power and its toughness is equal to that creature's toughness.\nSVar:DBToken:DB$ Token | TokenScript$ b_x_x_vampire | TokenOwner$ You | TokenPower$ dX | TokenToughness$ dY | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:dX:RememberedLKI$CardPower\nSVar:dY:RememberedLKI$CardToughness\nOracle:{B}{B}{B}, {T}: Destroy target creature. If that creature dies this way, create a black Vampire creature token. Its power is equal to that creature's power and its toughness is equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kalitas, Bloodchief of Ghet"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

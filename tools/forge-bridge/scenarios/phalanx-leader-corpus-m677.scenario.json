@@ -1,0 +1,25 @@
+{
+  "id": "phalanx-leader-corpus-m677",
+  "description": "M6 corpus — Phalanx Leader; ETB-on-bf.",
+  "seed": 66787,
+  "cards": {
+    "Phalanx Leader": "Name:Phalanx Leader\nManaCost:W W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, put a +1/+1 counter on each creature you control.\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:Heroic — Whenever you cast a spell that targets Phalanx Leader, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Phalanx Leader"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

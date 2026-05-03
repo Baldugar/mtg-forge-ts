@@ -1,0 +1,23 @@
+{
+  "id": "rapid-fire-corpus-m677",
+  "description": "M6 corpus — Rapid Fire; in-hand parse.",
+  "seed": 67715,
+  "cards": {
+    "Rapid Fire": "Name:Rapid Fire\nManaCost:3 W\nTypes:Instant\nText:Cast this spell only before blockers are declared.\nA:SP$ Pump | ValidTgts$ Creature | KW$ First Strike | ActivationPhases$ Upkeep->Declare Attackers | ActivationFirstCombat$ True | SubAbility$ DBPump | SpellDescription$ Target creature gains first strike until end of turn. If it doesn't have rampage, that creature gains rampage 2 until end of turn. (Whenever the creature becomes blocked, it gets +2/+2 until end of turn for each creature blocking it beyond the first.)\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Rampage:2 | ConditionDefined$ Targeted | ConditionPresent$ Creature.withoutRampage\nAI:RemoveDeck:All\nDeckHas:Keyword$First Strike|Rampage\nOracle:Cast this spell only before blockers are declared.\\nTarget creature gains first strike until end of turn. If it doesn't have rampage, that creature gains rampage 2 until end of turn. (Whenever the creature becomes blocked, it gets +2/+2 until end of turn for each creature blocking it beyond the first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rapid Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

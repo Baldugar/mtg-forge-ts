@@ -1,0 +1,25 @@
+{
+  "id": "mine-worker-corpus-m677",
+  "description": "M6 corpus — Mine Worker; ETB-on-bf.",
+  "seed": 65193,
+  "cards": {
+    "Mine Worker": "Name:Mine Worker\nManaCost:2\nTypes:Artifact Creature Assembly-Worker\nPT:2/1\nA:AB$ GainLife | Cost$ T | LifeAmount$ X | SpellDescription$ You gain 1 life. If you control creatures named Power Plant Worker and Tower Worker, you gain 3 life instead. | StackDescription$ SpellDescription\nSVar:X:Count$Compare TronCheck GT0.3.1\nSVar:TronCheck:SVar$Z/Times.Y\nSVar:Z:Count$Valid Creature.YouCtrl+namedTower Worker\nSVar:Y:Count$Valid Creature.YouCtrl+namedPower Plant Worker\nDeckHas:Ability$LifeGain\nDeckNeeds:Name$Power Plant Worker|Tower Worker\nOracle:{T}: You gain 1 life. If you control creatures named Power Plant Worker and Tower Worker, you gain 3 life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mine Worker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

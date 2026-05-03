@@ -1,0 +1,25 @@
+{
+  "id": "silent-assassin-corpus-m677",
+  "description": "M6 corpus — Silent Assassin; ETB-on-bf.",
+  "seed": 69874,
+  "cards": {
+    "Silent Assassin": "Name:Silent Assassin\nManaCost:B B\nTypes:Creature Human Mercenary Assassin\nPT:2/1\nA:AB$ Effect | Cost$ 3 B | ValidTgts$ Creature.blocking | Name$ Silent Assassin's Effect — Tracking... | TgtPrompt$ Select target blocking creature | IsCurse$ True | RememberObjects$ Targeted | Triggers$ DelTrig | SpellDescription$ Destroy target blocking creature at end of combat.\nSVar:DelTrig:Mode$ Phase | Phase$ EndCombat | Execute$ TrigDestroy | TriggerDescription$ Destroy the blocking creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Remembered | SpellDescription$ Destroy the blocking creature.\nAI:RemoveDeck:All\nOracle:{3}{B}: Destroy target blocking creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Silent Assassin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

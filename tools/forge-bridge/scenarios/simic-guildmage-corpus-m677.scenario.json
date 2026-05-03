@@ -1,0 +1,25 @@
+{
+  "id": "simic-guildmage-corpus-m677",
+  "description": "M6 corpus — Simic Guildmage; ETB-on-bf.",
+  "seed": 69949,
+  "cards": {
+    "Simic Guildmage": "Name:Simic Guildmage\nManaCost:GU GU\nTypes:Creature Elf Wizard\nPT:2/2\nA:AB$ MoveCounter | Cost$ 1 G | ValidTgts$ Creature | TargetMin$ 2 | TargetMax$ 2 | TgtPrompt$ Select target creatures to move +1/+1 counters | TargetsWithSameController$ True | CounterType$ P1P1 | CounterNum$ 1 | StackDescription$ SpellDescription | SpellDescription$ Move a +1/+1 counter from target creature onto another target creature with the same controller.\nA:AB$ Attach | Cost$ 1 U | ValidTgts$ Aura.AttachedTo Permanent | TgtPrompt$ Select target aura to move | Object$ Targeted | Choices$ Permanent.sharesControllerWith AttachedBy Targeted | Move$ True | StackDescription$ SpellDescription | SpellDescription$ Attach target Aura attached to a permanent to another permanent with the same controller.\nAI:RemoveDeck:All\nOracle:({G/U} can be paid with either {G} or {U}.)\\n{1}{G}: Move a +1/+1 counter from target creature onto another target creature with the same controller.\\n{1}{U}: Attach target Aura attached to a permanent to another permanent with the same controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Simic Guildmage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

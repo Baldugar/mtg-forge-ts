@@ -1,0 +1,23 @@
+{
+  "id": "perimeter-sergeant-corpus-m677",
+  "description": "M6 corpus — Perimeter Sergeant; in-hand parse.",
+  "seed": 66744,
+  "cards": {
+    "Perimeter Sergeant": "Name:Perimeter Sergeant\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME attacks, other Humans you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Human.StrictlyOther+YouCtrl | NumAtt$ +1\nDeckHints:Type$Human\nOracle:Whenever Perimeter Sergeant attacks, other Humans you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perimeter Sergeant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

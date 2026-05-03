@@ -1,0 +1,23 @@
+{
+  "id": "kessig-forgemaster-corpus-m677",
+  "description": "M6 corpus — Kessig Forgemaster; in-hand parse.",
+  "seed": 63610,
+  "cards": {
+    "Kessig Forgemaster": "Name:Kessig Forgemaster\nManaCost:1 R\nTypes:Creature Human Shaman Werewolf\nPT:2/1\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigDamageAttacker | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 1 damage to that creature.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigDamageBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 1 damage to that creature.\nSVar:TrigDamageAttacker:DB$ DealDamage | Defined$ TriggeredAttackerLKICopy | NumDmg$ 1\nSVar:TrigDamageBlocker:DB$ DealDamage | Defined$ TriggeredBlockerLKICopy | NumDmg$ 1\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Whenever Kessig Forgemaster blocks or becomes blocked by a creature, Kessig Forgemaster deals 1 damage to that creature.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Kessig Forgemaster.\n\nALTERNATE\n\nName:Flameheart Werewolf\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:3/2\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigDamageAttacker | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 2 damage to that creature.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigDamageBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 2 damage to that creature.\nSVar:TrigDamageAttacker:DB$ DealDamage | Defined$ TriggeredAttackerLKICopy | NumDmg$ 2\nSVar:TrigDamageBlocker:DB$ DealDamage | Defined$ TriggeredBlockerLKICopy | NumDmg$ 2\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Whenever Flameheart Werewolf blocks or becomes blocked by a creature, Flameheart Werewolf deals 2 damage to that creature.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Flameheart Werewolf.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kessig Forgemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

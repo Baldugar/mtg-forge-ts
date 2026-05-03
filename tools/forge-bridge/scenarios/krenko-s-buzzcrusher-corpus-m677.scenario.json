@@ -1,0 +1,23 @@
+{
+  "id": "krenko-s-buzzcrusher-corpus-m677",
+  "description": "M6 corpus — Krenko's Buzzcrusher; in-hand parse.",
+  "seed": 63878,
+  "cards": {
+    "Krenko's Buzzcrusher": "Name:Krenko's Buzzcrusher\nManaCost:2 R R\nTypes:Artifact Creature Insect Thopter\nPT:4/4\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBForEach | TriggerDescription$ When CARDNAME enters, for each player, destroy up to one nonbasic land that player controls. For each land destroyed this way, its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:DBForEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChoose | SubAbility$ DBDestroy\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Battlefield | Amount$ 1 | Choices$ Land.nonBasic+RememberedPlayerCtrl | Optional$ True | ImprintChosen$ True | ChoiceTitle$ Choose up to one nonbasic land this player controls\nSVar:DBDestroy:DB$ Destroy | Defined$ Imprinted | RememberDestroyed$ True | SubAbility$ DBSearch\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | DefinedPlayer$ RememberedController | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Flying, trample\\nWhen Krenko's Buzzcrusher enters, for each player, destroy up to one nonbasic land that player controls. For each land destroyed this way, its controller may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krenko's Buzzcrusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

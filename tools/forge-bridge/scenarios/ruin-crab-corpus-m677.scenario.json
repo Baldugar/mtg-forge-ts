@@ -1,0 +1,23 @@
+{
+  "id": "ruin-crab-corpus-m677",
+  "description": "M6 corpus — Ruin Crab; in-hand parse.",
+  "seed": 68586,
+  "cards": {
+    "Ruin Crab": "Name:Ruin Crab\nManaCost:U\nTypes:Creature Crab\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Landfall — Whenever a land you control enters, each opponent mills three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ Player.Opponent\nOracle:Landfall — Whenever a land you control enters, each opponent mills three cards. (To mill a card, a player puts the top card of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruin Crab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

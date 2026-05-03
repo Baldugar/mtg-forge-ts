@@ -1,0 +1,23 @@
+{
+  "id": "marina-vendrell-s-grimoire-corpus-m677",
+  "description": "M6 corpus — Marina Vendrell's Grimoire; in-hand parse.",
+  "seed": 64790,
+  "cards": {
+    "Marina Vendrell's Grimoire": "Name:Marina Vendrell's Grimoire\nManaCost:5 U\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+wasCastByYou | Execute$ TrigDraw1 | TriggerDescription$ When CARDNAME enters, if you cast it, draw five cards.\nSVar:TrigDraw1:DB$ Draw | NumCards$ 5\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size and don't lose the game for having 0 or less life.\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ValidLoseReason$ LifeReachedZero | Layer$ CantHappen | Secondary$ True | Description$ You have no maximum hand size and don't lose the game for having 0 or less life.\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw2 | TriggerDescription$ Whenever you gain life, draw that many cards.\nSVar:TrigDraw2:DB$ Draw | Defined$ You | NumCards$ X\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever you lose life, discard that many cards. Then if you have no cards in hand, you lose the game.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ X | Mode$ TgtChoose | SubAbility$ DBLosesGame\nSVar:DBLosesGame:DB$ LosesGame | Defined$ You | ConditionCheckSVar$ Y | ConditionSVarCompare$ EQ0\nSVar:X:TriggerCount$LifeAmount\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:When Marine Vendrell's Grimoire enters, if you cast it, draw five cards.\\nYou have no maximum hand size and don't lose the game for having 0 or less life.\\nWhenever you gain life, draw that many cards.\\nWhenever you lose life, discard that many cards. Then if you have no cards in hand, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marina Vendrell's Grimoire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hope-estheim-corpus-m677",
+  "description": "M6 corpus — Hope Estheim; in-hand parse.",
+  "seed": 62481,
+  "cards": {
+    "Hope Estheim": "Name:Hope Estheim\nManaCost:W U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your end step, each opponent mills X cards, where X is the amount of life you gained this turn.\nSVar:TrigMill:DB$ Mill | Defined$ Opponent | NumCards$ X\nSVar:X:Count$LifeYouGainedThisTurn\nOracle:Lifelink\\nAt the beginning of your end step, each opponent mills X cards, where X is the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hope Estheim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

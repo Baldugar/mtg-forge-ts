@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-rebirth-corpus-m677",
+  "description": "M6 corpus — Phyrexian Rebirth; in-hand parse.",
+  "seed": 66865,
+  "cards": {
+    "Phyrexian Rebirth": "Name:Phyrexian Rebirth\nManaCost:4 W W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBToken | SpellDescription$ Destroy all creatures, then create an X/X colorless Phyrexian Horror artifact creature token, where X is the number of creatures destroyed this way.\nSVar:DBToken:DB$ Token | TokenScript$ c_x_x_a_phyrexian_horror | TokenOwner$ You | TokenPower$ X | TokenToughness$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Destroy all creatures, then create an X/X colorless Phyrexian Horror artifact creature token, where X is the number of creatures destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Rebirth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

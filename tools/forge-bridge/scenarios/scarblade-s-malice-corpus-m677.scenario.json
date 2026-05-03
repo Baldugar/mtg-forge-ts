@@ -1,0 +1,23 @@
+{
+  "id": "scarblade-s-malice-corpus-m677",
+  "description": "M6 corpus — Scarblade's Malice; in-hand parse.",
+  "seed": 69108,
+  "cards": {
+    "Scarblade's Malice": "Name:Scarblade's Malice\nManaCost:B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Deathtouch & Lifelink | SubAbility$ DBDelayedTrigger | SpellDescription$ Target creature you control gains deathtouch and lifelink until end of turn.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ DBToken | SpellDescription$ When that creature dies this turn, create a 2/2 black and green Elf creature token.\nSVar:DBToken:DB$ Token | TokenScript$ bg_2_2_elf\nDeckHas:Ability$Token\nOracle:Target creature you control gains deathtouch and lifelink until end of turn. When that creature dies this turn, create a 2/2 black and green Elf creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scarblade's Malice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

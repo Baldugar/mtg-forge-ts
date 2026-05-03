@@ -1,0 +1,23 @@
+{
+  "id": "response-corpus-m677",
+  "description": "M6 corpus — Response; in-hand parse.",
+  "seed": 68114,
+  "cards": {
+    "Response": "Name:Response\nManaCost:RW RW\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ 5 | SpellDescription$ CARDNAME deals 5 damage to target attacking or blocking creature.\nAlternateMode:Split\nOracle:Response deals 5 damage to target attacking or blocking creature.\n\nALTERNATE\n\nName:Resurgence\nManaCost:3 R W\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ First Strike & Vigilance | SubAbility$ DBAddCombat | SpellDescription$ Creatures you control gain first strike and vigilance until end of turn. After this main phase, there is an additional combat phase followed by an additional main phase.\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | FollowedBy$ Main2 | ConditionPhases$ Main1,Main2\nOracle:Creatures you control gain first strike and vigilance until end of turn. After this main phase, there is an additional combat phase followed by an additional main phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Response"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

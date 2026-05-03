@@ -1,0 +1,23 @@
+{
+  "id": "raving-oni-slave-corpus-m677",
+  "description": "M6 corpus — Raving Oni-Slave; in-hand parse.",
+  "seed": 67771,
+  "cards": {
+    "Raving Oni-Slave": "Name:Raving Oni-Slave\nManaCost:1 B\nTypes:Creature Ogre Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters or leaves the battlefield, you lose 3 life if you don't control a Demon.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ When CARDNAME enters or leaves the battlefield, you lose 3 life if you don't control a Demon.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 3 | ConditionPresent$ Demon.YouCtrl | ConditionCompare$ EQ0\nAI:RemoveDeck:Random\nOracle:When Raving Oni-Slave enters or leaves the battlefield, you lose 3 life if you don't control a Demon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raving Oni-Slave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

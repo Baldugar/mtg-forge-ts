@@ -1,0 +1,23 @@
+{
+  "id": "spoils-of-the-vault-corpus-m677",
+  "description": "M6 corpus — Spoils of the Vault; in-hand parse.",
+  "seed": 70758,
+  "cards": {
+    "Spoils of the Vault": "Name:Spoils of the Vault\nManaCost:B\nTypes:Instant\nA:SP$ NameCard | Defined$ You | SubAbility$ DBDigUntil | SpellDescription$ Choose a card name. Reveal cards from the top of your library until you reveal a card with that name, then put that card into your hand. Exile all other cards revealed this way, and you lose 1 life for each of the exiled cards.\nSVar:DBDigUntil:DB$ DigUntil | Valid$ Card.NamedCard | FoundDestination$ Hand | RevealedDestination$ Exile | ValidDescription$ named card | RememberRevealed$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose a card name. Reveal cards from the top of your library until you reveal a card with that name, then put that card into your hand. Exile all other cards revealed this way, and you lose 1 life for each of the exiled cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spoils of the Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "headsplitter-corpus-m677",
+  "description": "M6 corpus — Headsplitter; in-hand parse.",
+  "seed": 62153,
+  "cards": {
+    "Headsplitter": "Name:Headsplitter\nManaCost:1 R\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 black Assassin creature token with menace, then attach CARDNAME to it.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_assassin_menace | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | Description$ Equipped creature gets +1/+0.\nK:Equip:2\nOracle:When Headsplitter enters, create a 1/1 black Assassin creature token with menace, then attach Headsplitter to it.\\nEquipped creature gets +1/+0.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Headsplitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rise-of-the-eldrazi-corpus-m677",
+  "description": "M6 corpus — Rise of the Eldrazi; in-hand parse.",
+  "seed": 68340,
+  "cards": {
+    "Rise of the Eldrazi": "Name:Rise of the Eldrazi\nManaCost:9 C C C\nTypes:Sorcery\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ Destroy | ValidTgts$ Permanent | SubAbility$ DBDraw | SpellDescription$ Destroy target permanent.\nSVar:DBDraw:DB$ Draw | NumCards$ 4 | ValidTgts$ Player | SubAbility$ DBExtraTurn | SpellDescription$ Target player draws four cards.\nSVar:DBExtraTurn:DB$ AddTurn | Defined$ You | NumTurns$ 1 | SubAbility$ DBChange | SpellDescription$ Take an extra turn after this one.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SpellDescription$ Exile CARDNAME.\nOracle:This spell can't be countered.\\nDestroy target permanent. Target player draws four cards. Take an extra turn after this one.\\nExile Rise of the Eldrazi.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rise of the Eldrazi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

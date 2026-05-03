@@ -1,0 +1,23 @@
+{
+  "id": "grizzled-outcasts-corpus-m677",
+  "description": "M6 corpus — Grizzled Outcasts; in-hand parse.",
+  "seed": 61803,
+  "cards": {
+    "Grizzled Outcasts": "Name:Grizzled Outcasts\nManaCost:4 G\nTypes:Creature Human Werewolf\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Grizzled Outcasts.\n\nALTERNATE\n\nName:Krallenhorde Wantons\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:7/7\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:At the beginning of each upkeep, if a player cast two or more spells last turn, transform Krallenhorde Wantons.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grizzled Outcasts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

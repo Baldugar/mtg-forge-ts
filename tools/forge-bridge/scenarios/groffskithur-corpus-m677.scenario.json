@@ -1,0 +1,25 @@
+{
+  "id": "groffskithur-corpus-m677",
+  "description": "M6 corpus — Groffskithur; ETB-on-bf.",
+  "seed": 61808,
+  "cards": {
+    "Groffskithur": "Name:Groffskithur\nManaCost:5 G\nTypes:Creature Beast\nPT:3/3\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ When CARDNAME becomes blocked, you may return target card named Groffskithur from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidCard$ Card.namedGroffskithur | ChangeNum$ 1\nDeckHints:Name$Groffskithur\nOracle:Whenever Groffskithur becomes blocked, you may return target card named Groffskithur from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Groffskithur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

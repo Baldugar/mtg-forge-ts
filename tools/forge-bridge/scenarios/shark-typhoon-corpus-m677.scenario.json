@@ -1,0 +1,25 @@
+{
+  "id": "shark-typhoon-corpus-m677",
+  "description": "M6 corpus — Shark Typhoon; ETB-on-bf.",
+  "seed": 69622,
+  "cards": {
+    "Shark Typhoon": "Name:Shark Typhoon\nManaCost:5 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, create an X/X blue Shark creature token with flying, where X is that spell's mana value.\nSVar:TrigToken:DB$ Token | TokenScript$ u_x_x_shark_flying | TokenOwner$ You | TokenPower$ Y | TokenToughness$ Y\nSVar:Y:TriggeredSpellAbility$CardManaCostLKI\nK:Cycling:X 1 U\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigToken2 | TriggerDescription$ When you cycle CARDNAME, create an X/X blue Shark creature token with flying.\nSVar:TrigToken2:DB$ Token | TokenScript$ u_x_x_shark_flying | TokenOwner$ You | TokenPower$ X | TokenToughness$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:Whenever you cast a noncreature spell, create an X/X blue Shark creature token with flying, where X is that spell's mana value.\\nCycling {X}{1}{U} ({X}{1}{U}, Discard this card: Draw a card.)\\nWhen you cycle Shark Typhoon, create an X/X blue Shark creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shark Typhoon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

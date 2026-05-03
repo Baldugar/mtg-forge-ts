@@ -1,0 +1,23 @@
+{
+  "id": "karfell-kennel-master-corpus-m677",
+  "description": "M6 corpus — Karfell Kennel-Master; in-hand parse.",
+  "seed": 63481,
+  "cards": {
+    "Karfell Kennel-Master": "Name:Karfell Kennel-Master\nManaCost:4 B\nTypes:Creature Zombie Berserker\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBPump | TriggerDescription$ When CARDNAME enters, up to two target creatures each get +1/+0 and gain indestructible until end of turn.\nSVar:DBPump:DB$ Pump | TargetMin$ 0 | TargetMax$ 2 | NumAtt$ +1 | KW$ Indestructible | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures.\nOracle:When Karfell Kennel-Master enters, up to two target creatures each get +1/+0 and gain indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy them.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karfell Kennel-Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

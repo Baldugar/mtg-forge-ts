@@ -1,0 +1,23 @@
+{
+  "id": "mercadia-s-downfall-corpus-m677",
+  "description": "M6 corpus — Mercadia's Downfall; in-hand parse.",
+  "seed": 64992,
+  "cards": {
+    "Mercadia's Downfall": "Name:Mercadia's Downfall\nManaCost:2 R\nTypes:Instant\nA:SP$ RepeatEach | RepeatCards$ Creature.attacking | RepeatSubAbility$ DBPump | SpellDescription$ Each attacking creature gets +1/+0 until end of turn for each nonbasic land defending player controls.\nSVar:DBPump:DB$ Pump | Defined$ Remembered | NumAtt$ +X\nSVar:X:Count$Valid Land.nonBasic+DefenderCtrlForRemembered\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Each attacking creature gets +1/+0 until end of turn for each nonbasic land defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mercadia's Downfall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "prophetic-prism-corpus-m677",
+  "description": "M6 corpus — Prophetic Prism; in-hand parse.",
+  "seed": 67274,
+  "cards": {
+    "Prophetic Prism": "Name:Prophetic Prism\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Mana | Cost$ 1 T | Produced$ Any | SpellDescription$ Add one mana of any color.\nAI:RemoveDeck:All\nOracle:When Prophetic Prism enters, draw a card.\\n{1}, {T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prophetic Prism"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

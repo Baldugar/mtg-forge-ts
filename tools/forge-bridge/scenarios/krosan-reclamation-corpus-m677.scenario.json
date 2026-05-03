@@ -1,0 +1,23 @@
+{
+  "id": "krosan-reclamation-corpus-m677",
+  "description": "M6 corpus — Krosan Reclamation; in-hand parse.",
+  "seed": 63892,
+  "cards": {
+    "Krosan Reclamation": "Name:Krosan Reclamation\nManaCost:1 G\nTypes:Instant\nK:Flashback:1 G\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True | SpellDescription$ Target player shuffles up to two target cards from their graveyard into their library.\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 2 | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | Shuffle$ True | ValidTgts$ Card\nAI:RemoveDeck:All\nOracle:Target player shuffles up to two target cards from their graveyard into their library.\\nFlashback {1}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krosan Reclamation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

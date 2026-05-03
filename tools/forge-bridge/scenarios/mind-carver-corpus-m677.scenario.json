@@ -1,0 +1,23 @@
+{
+  "id": "mind-carver-corpus-m677",
+  "description": "M6 corpus — Mind Carver; in-hand parse.",
+  "seed": 65145,
+  "cards": {
+    "Mind Carver": "Name:Mind Carver\nManaCost:B\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nSVar:NeedsToPlay:Creature.YouCtrl\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ Y | Description$ Equipped creature gets +1/+0. It gets +3/+1 instead as long as an opponent has eight or more cards in their graveyard.\nSVar:X:Count$Compare Z GE8.3.1\nSVar:Y:Count$Compare Z GE8.1.0\nSVar:Z:PlayerCountOpponents$HighestCardsInGraveyard\nK:Equip:2 B\nOracle:When Mind Carver enters, attach it to target creature you control.\\nEquipped creature gets +1/+0. It gets +3/+1 instead as long as an opponent has eight or more cards in their graveyard.\\nEquip {2}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Carver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

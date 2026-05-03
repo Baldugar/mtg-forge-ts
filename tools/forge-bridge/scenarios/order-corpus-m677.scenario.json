@@ -1,0 +1,23 @@
+{
+  "id": "order-corpus-m677",
+  "description": "M6 corpus — Order; in-hand parse.",
+  "seed": 66396,
+  "cards": {
+    "Order": "Name:Order\nManaCost:3 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target attacking creature.\nAlternateMode:Split\nOracle:Exile target attacking creature.\n\nALTERNATE\n\nName:Chaos\nManaCost:2 R\nTypes:Instant\nA:SP$ Effect | StaticAbilities$ KWPump | AILogic$ Evasion | SpellDescription$ Creatures can't block this turn.\nSVar:KWPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures can't block this turn.\nOracle:Creatures can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Order"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

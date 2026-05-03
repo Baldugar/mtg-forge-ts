@@ -1,0 +1,23 @@
+{
+  "id": "indulging-patrician-corpus-m677",
+  "description": "M6 corpus — Indulging Patrician; in-hand parse.",
+  "seed": 62886,
+  "cards": {
+    "Indulging Patrician": "Name:Indulging Patrician\nManaCost:1 W B\nTypes:Creature Vampire Noble\nPT:1/4\nK:Flying\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ LifeGained | SVarCompare$ GE3 | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, if you gained 3 or more life this turn, each opponent loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3\nSVar:LifeGained:Count$LifeYouGainedThisTurn\nDeckHints:Ability$LifeGain\nOracle:Flying\\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\\nAt the beginning of your end step, if you gained 3 or more life this turn, each opponent loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Indulging Patrician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

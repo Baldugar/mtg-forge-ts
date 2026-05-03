@@ -1,0 +1,25 @@
+{
+  "id": "jasmine-seer-corpus-m677",
+  "description": "M6 corpus — Jasmine Seer; ETB-on-bf.",
+  "seed": 63250,
+  "cards": {
+    "Jasmine Seer": "Name:Jasmine Seer\nManaCost:3 W\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ Reveal | Cost$ 2 W T | Defined$ You | RevealValid$ Card.White | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBJasmineLife | SpellDescription$ Reveal any number of white cards in your hand. You gain 2 life for each card revealed this way.\nSVar:DBJasmineLife:DB$ GainLife | LifeAmount$ JasmineX | SubAbility$ DBJasmineCleanup\nSVar:JasmineX:Remembered$Amount/Twice\nSVar:DBJasmineCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{2}{W}, {T}: Reveal any number of white cards in your hand. You gain 2 life for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jasmine Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

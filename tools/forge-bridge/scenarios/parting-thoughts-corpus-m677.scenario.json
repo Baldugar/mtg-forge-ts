@@ -1,0 +1,23 @@
+{
+  "id": "parting-thoughts-corpus-m677",
+  "description": "M6 corpus — Parting Thoughts; in-hand parse.",
+  "seed": 66635,
+  "cards": {
+    "Parting Thoughts": "Name:Parting Thoughts\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature | RememberDestroyed$ True | SpellDescription$ Destroy target creature. You draw X cards and you lose X life, where X is the number of counters on that creature. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardCounters.ALL\nOracle:Destroy target creature. You draw X cards and you lose X life, where X is the number of counters on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parting Thoughts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "razing-snidd-corpus-m677",
+  "description": "M6 corpus — Razing Snidd; in-hand parse.",
+  "seed": 67789,
+  "cards": {
+    "Razing Snidd": "Name:Razing Snidd\nManaCost:4 B R\nTypes:Creature Beast\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a black or red creature you control to its owner's hand.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each player sacrifices a land.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Black+YouCtrl,Creature.Red+YouCtrl | AILogic$ NeverBounceItself\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player | SacValid$ Land\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature.Black+cmcLE3+YouCtrl,Creature.Red+cmcLE3+YouCtrl\nOracle:When Razing Snidd enters, return a black or red creature you control to its owner's hand.\\nWhen Razing Snidd enters, each player sacrifices a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razing Snidd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rite-of-renewal-corpus-m677",
+  "description": "M6 corpus — Rite of Renewal; in-hand parse.",
+  "seed": 68361,
+  "cards": {
+    "Rite of Renewal": "Name:Rite of Renewal\nManaCost:3 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose up to two target permanent cards in your graveyard | ValidTgts$ Permanent.YouOwn | SubAbility$ DBPump | SpellDescription$ Return up to two target permanent cards from your graveyard to your hand. Target player shuffles up to four target cards from their graveyard into their library. Exile CARDNAME.\nSVar:DBPump:DB$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 4 | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | Shuffle$ True | TgtPrompt$ Select up to four target cards in targeted player's graveyard | ValidTgts$ Card | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nDeckHas:Ability$Graveyard\nOracle:Return up to two target permanent cards from your graveyard to your hand. Target player shuffles up to four target cards from their graveyard into their library. Exile Rite of Renewal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rite of Renewal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

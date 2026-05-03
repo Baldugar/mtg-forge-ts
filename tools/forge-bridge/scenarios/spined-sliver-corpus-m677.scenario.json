@@ -1,0 +1,25 @@
+{
+  "id": "spined-sliver-corpus-m677",
+  "description": "M6 corpus — Spined Sliver; ETB-on-bf.",
+  "seed": 70674,
+  "cards": {
+    "Spined Sliver": "Name:Spined Sliver\nManaCost:R G\nTypes:Creature Sliver\nPT:2/2\nT:Mode$ AttackerBlocked | ValidCard$ Sliver | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a Sliver becomes blocked, that Sliver gets +1/+1 until end of turn for each creature blocking it.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.blockingTriggeredAttacker\nSVar:PlayMain1:TRUE\nOracle:Whenever a Sliver becomes blocked, that Sliver gets +1/+1 until end of turn for each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spined Sliver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

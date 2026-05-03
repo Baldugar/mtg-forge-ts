@@ -1,0 +1,25 @@
+{
+  "id": "ice-cave-corpus-m677",
+  "description": "M6 corpus — Ice Cave; ETB-on-bf.",
+  "seed": 62684,
+  "cards": {
+    "Ice Cave": "Name:Ice Cave\nManaCost:3 U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever a player casts a spell, any other player may pay that spell's mana cost. If a player does, counter the spell. (Mana cost includes color.)\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | UnlessCost$ DefinedSACost_TriggeredSpellAbility | UnlessPayer$ NonTriggeredCardController | UnlessSwitched$ True\nOracle:Whenever a player casts a spell, any other player may pay that spell's mana cost. If a player does, counter the spell. (Mana cost includes color.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ice Cave"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

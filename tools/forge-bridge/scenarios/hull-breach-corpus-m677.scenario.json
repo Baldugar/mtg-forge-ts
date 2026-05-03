@@ -1,0 +1,23 @@
+{
+  "id": "hull-breach-corpus-m677",
+  "description": "M6 corpus — Hull Breach; in-hand parse.",
+  "seed": 62582,
+  "cards": {
+    "Hull Breach": "Name:Hull Breach\nManaCost:R G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDestroy1,DBDestroy2,DBDestroy3\nSVar:DBDestroy1:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBDestroy2:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBDestroy3:DB$ Pump | ValidTgts$ Artifact | AILogic$ Destroy | IsCurse$ True | SubAbility$ DestroyEnch | SpellDescription$ Destroy target artifact and target enchantment. | StackDescription$ None\nSVar:DestroyEnch:DB$ Pump | ValidTgts$ Enchantment | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Destroy target artifact.\\n• Destroy target enchantment.\\n• Destroy target artifact and target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hull Breach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

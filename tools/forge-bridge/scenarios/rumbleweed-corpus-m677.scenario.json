@@ -1,0 +1,23 @@
+{
+  "id": "rumbleweed-corpus-m677",
+  "description": "M6 corpus — Rumbleweed; in-hand parse.",
+  "seed": 68605,
+  "cards": {
+    "Rumbleweed": "Name:Rumbleweed\nManaCost:10 G\nTypes:Creature Plant Elemental\nPT:8/8\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each land card in your graveyard.\nSVar:X:Count$ValidGraveyard Land.YouOwn\nK:Vigilance\nK:Reach\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, other creatures you control get +3/+3 and gain trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +3 | NumDef$ +3 | KW$ Trample\nOracle:This spell costs {1} less to cast for each land card in your graveyard.\\nVigilance, reach, trample\\nWhen Rumbleweed enters, other creatures you control get +3/+3 and gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rumbleweed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

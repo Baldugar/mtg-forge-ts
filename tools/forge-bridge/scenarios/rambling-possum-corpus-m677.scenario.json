@@ -1,0 +1,23 @@
+{
+  "id": "rambling-possum-corpus-m677",
+  "description": "M6 corpus — Rambling Possum; in-hand parse.",
+  "seed": 67654,
+  "cards": {
+    "Rambling Possum": "Name:Rambling Possum\nManaCost:2 G\nTypes:Creature Possum Mount\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks while saddled, it gains +1/+2 until end of turn. Then you may return any number of creatures that saddled it this turn to their owner's hand.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +2 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Creature.SaddledThisTurn | ChangeNum$ Count$Valid Creature.SaddledThisTurn | Hidden$ True\nK:Saddle:1\nOracle:Whenever Rambling Possum attacks while saddled, it gains +1/+2 until end of turn. Then you may return any number of creatures that saddled it this turn to their owner's hand.\\nSaddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rambling Possum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

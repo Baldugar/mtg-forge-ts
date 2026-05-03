@@ -1,0 +1,23 @@
+{
+  "id": "pheres-band-brawler-corpus-m677",
+  "description": "M6 corpus — Pheres-Band Brawler; in-hand parse.",
+  "seed": 66821,
+  "cards": {
+    "Pheres-Band Brawler": "Name:Pheres-Band Brawler\nManaCost:4 G G\nTypes:Creature Centaur Warrior\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, it fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nSVar:PlayMain1:TRUE\nOracle:When Pheres-Band Brawler enters, it fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pheres-Band Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

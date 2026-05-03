@@ -1,0 +1,23 @@
+{
+  "id": "junkyo-bell-corpus-m677",
+  "description": "M6 corpus — Junkyo Bell; in-hand parse.",
+  "seed": 63398,
+  "cards": {
+    "Junkyo Bell": "Name:Junkyo Bell\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may have target creature you control get +X/+X until end of turn, where X is the number of creatures you control. If you do, sacrifice that creature at the beginning of the next end step.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X | NumDef$ +X | AtEOT$ Sacrifice\nSVar:X:Count$Valid Creature.YouCtrl\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may have target creature you control get +X/+X until end of turn, where X is the number of creatures you control. If you do, sacrifice that creature at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Junkyo Bell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

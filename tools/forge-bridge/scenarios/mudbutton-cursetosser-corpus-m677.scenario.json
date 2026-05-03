@@ -1,0 +1,23 @@
+{
+  "id": "mudbutton-cursetosser-corpus-m677",
+  "description": "M6 corpus — Mudbutton Cursetosser; in-hand parse.",
+  "seed": 65575,
+  "cards": {
+    "Mudbutton Cursetosser": "Name:Mudbutton Cursetosser\nManaCost:B\nTypes:Creature Goblin Warlock\nPT:2/1\nK:AlternateAdditionalCost:Behold<1/Goblin>:2\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this creature dies, destroy target creature an opponent controls with power 2 or less.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl+powerLE2 | TgtPrompt$ Select target creature an opponent controls with power 2 or less\nDeckHints:Type$Goblin\nOracle:As an additional cost to cast this spell, behold a Goblin or pay {2}. (To behold a Goblin, choose a Goblin you control or reveal a Goblin card from your hand.)\\nThis creature can't block.\\nWhen this creature dies, destroy target creature an opponent controls with power 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mudbutton Cursetosser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

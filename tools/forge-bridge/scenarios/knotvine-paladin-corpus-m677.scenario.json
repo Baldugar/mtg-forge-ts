@@ -1,0 +1,23 @@
+{
+  "id": "knotvine-paladin-corpus-m677",
+  "description": "M6 corpus — Knotvine Paladin; in-hand parse.",
+  "seed": 63785,
+  "cards": {
+    "Knotvine Paladin": "Name:Knotvine Paladin\nManaCost:G W\nTypes:Creature Human Knight\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+1 until end of turn for each untapped creature you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.untapped+YouCtrl\nOracle:Whenever Knotvine Paladin attacks, it gets +1/+1 until end of turn for each untapped creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knotvine Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "guidelight-pathmaker-corpus-m677",
+  "description": "M6 corpus — Guidelight Pathmaker; in-hand parse.",
+  "seed": 61895,
+  "cards": {
+    "Guidelight Pathmaker": "Name:Guidelight Pathmaker\nManaCost:4 W U\nTypes:Artifact Vehicle\nPT:6/5\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When this Vehicle enters, you may search your library for an artifact card and reveal it. Put it onto the battlefield if its mana value is 2 or less. Otherwise, put it into your hand. Then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Artifact | ChangeNum$ 1 | Reveal$ True | Shuffle$ False | RememberChanged$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Battlefield | ConditionDefined$ Remembered | ConditionPresent$ Card.cmcLE2 | ForgetChanged$ True | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:2\nOracle:Vigilance\\nWhen this Vehicle enters, you may search your library for an artifact card and reveal it. Put it onto the battlefield if its mana value is 2 or less. Otherwise, put it into your hand. Then shuffle.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guidelight Pathmaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

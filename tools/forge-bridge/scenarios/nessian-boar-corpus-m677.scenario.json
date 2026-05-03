@@ -1,0 +1,25 @@
+{
+  "id": "nessian-boar-corpus-m677",
+  "description": "M6 corpus — Nessian Boar; ETB-on-bf.",
+  "seed": 65844,
+  "cards": {
+    "Nessian Boar": "Name:Nessian Boar\nManaCost:3 G G\nTypes:Creature Boar\nPT:10/6\nK:All creatures able to block CARDNAME do so.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, that creature's controller draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredBlockerController | NumCards$ 1\nOracle:All creatures able to block Nessian Boar do so.\\nWhenever Nessian Boar becomes blocked by a creature, that creature's controller draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nessian Boar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

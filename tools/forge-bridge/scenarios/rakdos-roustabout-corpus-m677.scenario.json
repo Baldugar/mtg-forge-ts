@@ -1,0 +1,25 @@
+{
+  "id": "rakdos-roustabout-corpus-m677",
+  "description": "M6 corpus — Rakdos Roustabout; ETB-on-bf.",
+  "seed": 67616,
+  "cards": {
+    "Rakdos Roustabout": "Name:Rakdos Roustabout\nManaCost:1 B R\nTypes:Creature Ogre Warrior\nPT:3/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME becomes blocked, it deals 1 damage to the player or planeswalker it's attacking.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | NumDmg$ 1\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Rakdos Roustabout becomes blocked, it deals 1 damage to the player or planeswalker it's attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rakdos Roustabout"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "norn-s-choirmaster-corpus-m677",
+  "description": "M6 corpus — Norn's Choirmaster; in-hand parse.",
+  "seed": 66058,
+  "cards": {
+    "Norn's Choirmaster": "Name:Norn's Choirmaster\nManaCost:3 W W\nTypes:Creature Phyrexian Angel\nPT:5/4\nK:Flying\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.IsCommander+YouOwn | Execute$ TrigProliferate | TriggerDescription$ Whenever your commander enters or attacks, proliferate (Choose any number of permanents and/or players, then give each another counter kind of each kind they already have.)\nT:Mode$ Attacks | ValidCard$ Card.IsCommander+YouOwn | TriggerZones$ Battlefield | Execute$ TrigProliferate | Secondary$ True | TriggerDescription$ Whenever your commander enters or attacks, proliferate (Choose any number of permanents and/or players, then give each another counter kind of each kind they already have.)\nSVar:TrigProliferate:DB$ Proliferate\nSVar:HasAttackEffect:TRUE\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Proliferate\nDeckHints:Ability$Counters|Planeswalker\nOracle:Flying, first strike\\nWhenever a commander you control enters or attacks, proliferate. (Choose any number of permanents and/or players, then give each another counter kind of each kind they already have.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norn's Choirmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

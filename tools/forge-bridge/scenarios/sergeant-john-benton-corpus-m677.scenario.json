@@ -1,0 +1,23 @@
+{
+  "id": "sergeant-john-benton-corpus-m677",
+  "description": "M6 corpus — Sergeant John Benton; in-hand parse.",
+  "seed": 69475,
+  "cards": {
+    "Sergeant John Benton": "Name:Sergeant John Benton\nManaCost:1 G W\nTypes:Legendary Creature Human Soldier\nPT:2/4\nK:Trample\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Share Intelligence — Whenever CARDNAME deals combat damage to a player, you and that player each draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You & TriggeredTarget | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Trample, haste\\nShare Intelligence — Whenever Sergeant John Benton deals combat damage to a player, you and that player each draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sergeant John Benton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

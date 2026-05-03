@@ -1,0 +1,23 @@
+{
+  "id": "overlord-of-the-floodpits-corpus-m677",
+  "description": "M6 corpus — Overlord of the Floodpits; in-hand parse.",
+  "seed": 66500,
+  "cards": {
+    "Overlord of the Floodpits": "Name:Overlord of the Floodpits\nManaCost:3 U U\nTypes:Enchantment Creature Avatar Horror\nPT:5/3\nK:Impending:4:1 U U\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, draw two cards, then discard a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Secondary$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, draw two cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Impending 4—{1}{U}{U} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)\\nFlying\\nWhenever Overlord of the Floodpits enters or attacks, draw two cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overlord of the Floodpits"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

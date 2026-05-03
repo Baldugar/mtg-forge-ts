@@ -1,0 +1,23 @@
+{
+  "id": "riverwise-augur-corpus-m677",
+  "description": "M6 corpus — Riverwise Augur; in-hand parse.",
+  "seed": 68406,
+  "cards": {
+    "Riverwise Augur": "Name:Riverwise Augur\nManaCost:3 U\nTypes:Creature Merfolk Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards, then put two cards from your hand on top of your library in any order.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeNum$ 2 | Mandatory$ True\nOracle:When Riverwise Augur enters, draw three cards, then put two cards from your hand on top of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riverwise Augur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

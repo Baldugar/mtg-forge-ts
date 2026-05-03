@@ -1,0 +1,23 @@
+{
+  "id": "meteor-golem-corpus-m677",
+  "description": "M6 corpus — Meteor Golem; in-hand parse.",
+  "seed": 65068,
+  "cards": {
+    "Meteor Golem": "Name:Meteor Golem\nManaCost:7\nTypes:Artifact Creature Golem\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonland permanent an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.OppCtrl+nonland | TgtPrompt$ Select target nonland permanent an opponent controls\nOracle:When Meteor Golem enters, destroy target nonland permanent an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meteor Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

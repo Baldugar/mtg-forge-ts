@@ -1,0 +1,23 @@
+{
+  "id": "mine-mine-mine-corpus-m677",
+  "description": "M6 corpus — Mine, Mine, Mine!; in-hand parse.",
+  "seed": 65191,
+  "cards": {
+    "Mine, Mine, Mine!": "Name:Mine, Mine, Mine!\nManaCost:4 G G\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, each player puts their library into their hand.\nSVar:TrigChangeZone:DB$ ChangeZoneAll | ChangeType$ Card | Origin$ Library | Destination$ Hand\nS:Mode$ Continuous | Affected$ Player | SetMaxHandSize$ Unlimited | Description$ Players have no maximum hand size and don't lose the game for drawing from an empty library.\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ Player | ValidLoseReason$ Milled | Layer$ CantHappen | Secondary$ True | Description$ Players don't lose the game for drawing from an empty library.\nS:Mode$ CantBeCast | ValidCard$ Card | Caster$ Player | NumLimitEachTurn$ 1 | Description$ Each player can't cast more than one spell each turn.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Execute$ TrigShuffleBack | TriggerDescription$ When CARDNAME leaves the battlefield, each player shuffles their hand and graveyard into their library.\nSVar:TrigShuffleBack:DB$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | Random$ True\nOracle:When Mine, Mine, Mine! enters, each player puts their library into their hand.\\nPlayers have no maximum hand size and don't lose the game for drawing from an empty library.\\nEach player can't cast more than one spell each turn.\\nWhen Mine, Mine, Mine! leaves the battlefield, each player shuffles their hand and graveyard into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mine, Mine, Mine!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

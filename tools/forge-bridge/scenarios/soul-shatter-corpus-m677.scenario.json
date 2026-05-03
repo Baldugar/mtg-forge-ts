@@ -1,0 +1,23 @@
+{
+  "id": "soul-shatter-corpus-m677",
+  "description": "M6 corpus — Soul Shatter; in-hand parse.",
+  "seed": 70461,
+  "cards": {
+    "Soul Shatter": "Name:Soul Shatter\nManaCost:2 B\nTypes:Instant\nA:SP$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChoose | SubAbility$ DBSac | StackDescription$ Each opponent | SpellDescription$ Each opponent sacrifices a creature or planeswalker with the highest mana value among creatures and planeswalkers they control.\nSVar:DBChoose:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Creature.RememberedPlayerCtrl+cmcEQX,Planeswalker.RememberedPlayerCtrl+cmcEQX | ChoiceTitle$ Choose a creature or planeswalker with the highest mana value to sacrifice | Mandatory$ True | Reveal$ True | RememberChosen$ True\nSVar:DBSac:DB$ SacrificeAll | ValidCards$ Card.IsRemembered | SubAbility$ DBCleanup | StackDescription$ sacrifices a creature or planeswalker with the highest mana value among creatures and planeswalkers they control.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl,Planeswalker.RememberedPlayerCtrl$GreatestCardManaCost\nOracle:Each opponent sacrifices a creature or planeswalker with the highest mana value among creatures and planeswalkers they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Shatter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

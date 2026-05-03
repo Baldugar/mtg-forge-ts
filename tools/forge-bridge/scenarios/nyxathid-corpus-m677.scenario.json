@@ -1,0 +1,23 @@
+{
+  "id": "nyxathid-corpus-m677",
+  "description": "M6 corpus — Nyxathid; in-hand parse.",
+  "seed": 66129,
+  "cards": {
+    "Nyxathid": "Name:Nyxathid\nManaCost:1 B B\nTypes:Creature Elemental\nPT:7/7\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose an opponent.\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ -X | AddToughness$ -X | Description$ CARDNAME gets -1/-1 for each card in the chosen player's hand.\nSVar:X:Count$ValidHand Card.ChosenCtrl\nSVar:NeedsToPlayVar:Z GE1\nSVar:Z:PlayerCountOpponents$HasPropertyHasCardsInHand_Card_LE5\nOracle:As Nyxathid enters, choose an opponent.\\nNyxathid gets -1/-1 for each card in the chosen player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nyxathid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

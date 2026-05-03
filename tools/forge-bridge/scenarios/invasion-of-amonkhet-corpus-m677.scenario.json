@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-amonkhet-corpus-m677",
+  "description": "M6 corpus — Invasion of Amonkhet; in-hand parse.",
+  "seed": 63057,
+  "cards": {
+    "Invasion of Amonkhet": "Name:Invasion of Amonkhet\nManaCost:1 U B\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, each player mills three cards, then each opponent discards a card and you draw a card. (To mill three cards, a player puts the top three cards of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ Player | NumCards$ 3 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Mill\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Amonkhet enters, each player mills three cards, then each opponent discards a card and you draw a card. (To mill three cards, a player puts the top three cards of their library into their graveyard.)\n\nALTERNATE\n\nName:Lazotep Convert\nManaCost:no cost\nColors:blue,black\nTypes:Creature Zombie\nPT:4/4\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature | ChoiceZone$ Graveyard | SetPower$ 4 | SetToughness$ 4 | AddColors$ Black | AddTypes$ Zombie | SpellDescription$ You may have CARDNAME enter as a copy of any creature card in a graveyard, except it's a 4/4 black Zombie in addition to its other types.\nOracle:You may have Lazotep Convert enter as a copy of any creature card in a graveyard, except it's a 4/4 black Zombie in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Amonkhet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

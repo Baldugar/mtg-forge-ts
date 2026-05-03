@@ -1,0 +1,23 @@
+{
+  "id": "laboratory-drudge-corpus-m677",
+  "description": "M6 corpus — Laboratory Drudge; in-hand parse.",
+  "seed": 63943,
+  "cards": {
+    "Laboratory Drudge": "Name:Laboratory Drudge\nManaCost:3 U\nTypes:Creature Zombie Horror\nPT:3/4\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ NumCast | Execute$ TrigDraw | TriggerDescription$ At the beginning of each end step, draw a card if you've cast a spell from a graveyard or activated an ability of a card in a graveyard this turn.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:NumCast:Count$ThisTurnCast_Card.YouCtrl+wasCastFromGraveyard/Plus.NumAct\nSVar:NumAct:Count$ThisTurnActivated_Activated.YouCtrl+inZoneGraveyard\nDeckHas:Ability$Graveyard\nOracle:At the beginning of each end step, draw a card if you've cast a spell from a graveyard or activated an ability of a card in a graveyard this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Laboratory Drudge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "paralyze-corpus-m677",
+  "description": "M6 corpus — Paralyze; in-hand parse.",
+  "seed": 66612,
+  "cards": {
+    "Paralyze": "Name:Paralyze\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player may pay {4}. If the player does, untap the creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Enchanted | UnlessCost$ 4 | UnlessPayer$ EnchantedController | UnlessSwitched$ True\nOracle:Enchant creature\\nWhen Paralyze enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\nAt the beginning of the upkeep of enchanted creature's controller, that player may pay {4}. If the player does, untap the creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paralyze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

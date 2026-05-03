@@ -1,0 +1,23 @@
+{
+  "id": "lifeline-corpus-m677",
+  "description": "M6 corpus — Lifeline; in-hand parse.",
+  "seed": 64216,
+  "cards": {
+    "Lifeline": "Name:Lifeline\nManaCost:5\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Creature | Origin$ Battlefield | Destination$ Graveyard | IsPresent$ Creature | Execute$ TrigLifelineDelay | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature dies, if another creature is on the battlefield, return the first card to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigLifelineDelay:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | Execute$ TrigLifelineReturn | TriggerDescription$ Return that creature to the battlefield. | RememberObjects$ TriggeredNewCardLKICopy\nSVar:TrigLifelineReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Battlefield\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Whenever a creature dies, if another creature is on the battlefield, return the first card to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lifeline"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

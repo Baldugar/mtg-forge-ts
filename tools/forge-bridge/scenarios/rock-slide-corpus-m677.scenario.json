@@ -1,0 +1,23 @@
+{
+  "id": "rock-slide-corpus-m677",
+  "description": "M6 corpus — Rock Slide; in-hand parse.",
+  "seed": 68449,
+  "cards": {
+    "Rock Slide": "Name:Rock Slide\nManaCost:X R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.attacking+withoutFlying,Creature.blocking+withoutFlying | TgtPrompt$ Select target attacking or blocking creature to distribute damage to | NumDmg$ X | TargetMin$ 0 | TargetMax$ MaxTgts | DividedAsYouChoose$ X | SpellDescription$ CARDNAME deals X damage divided as you choose among any number of target attacking or blocking creatures without flying.\nSVar:MaxTgts:Count$Valid Creature.attacking+withoutFlying,Creature.blocking+withoutFlying\nSVar:X:Count$xPaid\nOracle:Rock Slide deals X damage divided as you choose among any number of target attacking or blocking creatures without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rock Slide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

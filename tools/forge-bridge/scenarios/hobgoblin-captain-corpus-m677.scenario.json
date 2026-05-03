@@ -1,0 +1,23 @@
+{
+  "id": "hobgoblin-captain-corpus-m677",
+  "description": "M6 corpus — Hobgoblin Captain; in-hand parse.",
+  "seed": 62422,
+  "cards": {
+    "Hobgoblin Captain": "Name:Hobgoblin Captain\nManaCost:1 R\nTypes:Creature Goblin Barbarian\nPT:3/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Pack tactics — Whenever CARDNAME attacks, if you attacked with creatures with total power 6 or greater this combat, CARDNAME gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ First Strike\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nOracle:Pack tactics — Whenever Hobgoblin Captain attacks, if you attacked with creatures with total power 6 or greater this combat, Hobgoblin Captain gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hobgoblin Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

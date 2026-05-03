@@ -1,0 +1,23 @@
+{
+  "id": "lush-portico-corpus-m677",
+  "description": "M6 corpus — Lush Portico; in-hand parse.",
+  "seed": 64524,
+  "cards": {
+    "Lush Portico": "Name:Lush Portico\nManaCost:no cost\nTypes:Land Forest Plains\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$Surveil|Graveyard\nDeckHints:Ability$Graveyard\nOracle:({T}: Add {G} or {W}.)\\nLush Portico enters tapped.\\nWhen Lush Portico enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lush Portico"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

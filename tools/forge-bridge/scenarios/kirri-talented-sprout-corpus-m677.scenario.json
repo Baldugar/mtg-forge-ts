@@ -1,0 +1,23 @@
+{
+  "id": "kirri-talented-sprout-corpus-m677",
+  "description": "M6 corpus — Kirri, Talented Sprout; in-hand parse.",
+  "seed": 63690,
+  "cards": {
+    "Kirri, Talented Sprout": "Name:Kirri, Talented Sprout\nManaCost:1 R G W\nTypes:Legendary Creature Plant Druid\nPT:0/3\nS:Mode$ Continuous | Affected$ Plant.Other+YouCtrl,Treefolk.Other+YouCtrl | AddPower$ 2 | Description$ Other Plants and Treefolk you control get +2/+0.\nT:Mode$ Phase | Phase$ Main2 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of each of your postcombat main phases, return target Plant, Treefolk, or land card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Plant.YouOwn,Treefolk.YouOwn,Land.YouOwn | TgtPrompt$ Select target Plant, Treefolk, or land card from your graveyard\nDeckNeeds:Ability$Graveyard & Type$Plant|Treefolk\nOracle:Other Plants and Treefolk you control get +2/+0.\\nAt the beginning of each of your postcombat main phases, return target Plant, Treefolk, or land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kirri, Talented Sprout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

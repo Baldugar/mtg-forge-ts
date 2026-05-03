@@ -1,0 +1,25 @@
+{
+  "id": "hand-of-the-praetors-corpus-m677",
+  "description": "M6 corpus — Hand of the Praetors; ETB-on-bf.",
+  "seed": 62022,
+  "cards": {
+    "Hand of the Praetors": "Name:Hand of the Praetors\nManaCost:3 B\nTypes:Creature Phyrexian Zombie\nPT:3/2\nK:Infect\nS:Mode$ Continuous | Affected$ Creature.withInfect+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other creatures you control with infect get +1/+1.\nT:Mode$ SpellCast | ValidCard$ Card.withInfect | ValidActivatingPlayer$ You | Execute$ TrigPoison | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell with infect, target player gets a poison counter.\nSVar:TrigPoison:DB$ Poison | ValidTgts$ Player | Num$ 1\nSVar:BuffedBy:Card.withInfect\nSVar:PlayMain1:TRUE\nOracle:Infect (This creature deals damage to creatures in the form of -1/-1 counters and to players in the form of poison counters.)\\nOther creatures you control with infect get +1/+1.\\nWhenever you cast a creature spell with infect, target player gets a poison counter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hand of the Praetors"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

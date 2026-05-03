@@ -1,0 +1,23 @@
+{
+  "id": "razia-s-purification-corpus-m677",
+  "description": "M6 corpus — Razia's Purification; in-hand parse.",
+  "seed": 67788,
+  "cards": {
+    "Razia's Purification": "Name:Razia's Purification\nManaCost:4 R W\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ Player | Choices$ Permanent | ControlledByPlayer$ Chooser | Amount$ 3 | ChoiceTitle$ Choose three permanents to keep | Mandatory$ True | Reveal$ True | SubAbility$ DBSac | StackDescription$ SpellDescription | SpellDescription$ Each player chooses three permanents they control, then sacrifices the rest.\nSVar:DBSac:DB$ SacrificeAll | ValidCards$ Permanent.nonChosenCard\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Each player chooses three permanents they control, then sacrifices the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razia's Purification"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

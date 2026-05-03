@@ -1,0 +1,23 @@
+{
+  "id": "growth-charm-corpus-m677",
+  "description": "M6 corpus — Growth Charm; in-hand parse.",
+  "seed": 61835,
+  "cards": {
+    "Growth Charm": "Name:Growth Charm\nManaCost:1 G G\nTypes:Instant\nA:SP$ Charm | Choices$ DBRamp,DBGiant,DBRegrow | Defined$ You\nSVar:DBRamp:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | ChangeNum$ 1 | SpellDescription$ Search your library for a basic land card and put that card onto the battlefield tapped. Then shuffle.\nSVar:DBGiant:DB$ Pump | Cost$ G | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | SpellDescription$ Target creature gets +3/+3 until end of turn.\nSVar:DBRegrow:DB$ ChangeZone | Cost$ 1 G | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target card in your graveyard | ValidTgts$ Card.YouCtrl | SpellDescription$ Return target card from your graveyard to your hand.\nOracle:Choose one —\\n• Rampant Growth\\n• Giant Growth\\n• Regrowth\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Growth Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

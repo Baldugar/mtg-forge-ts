@@ -1,0 +1,23 @@
+{
+  "id": "resolute-rejection-corpus-m677",
+  "description": "M6 corpus — Resolute Rejection; in-hand parse.",
+  "seed": 68104,
+  "cards": {
+    "Resolute Rejection": "Name:Resolute Rejection\nManaCost:1 W\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | RemoveAllAbilities$ True | Duration$ Perpetual | SubAbility$ DBDealDamage | StackDescription$ REP Target creature_{c:Targeted} | SpellDescription$ Target tapped creature perpetually loses all abilities, then CARDNAME deals 4 damage to it.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ 4 | Defined$ Targeted | StackDescription$ SpellDescription\nK:Cycling:2\nDeckHas:Ability$Discard\nOracle:Target tapped creature perpetually loses all abilities, then Resolute Rejection deals 4 damage to it.\\nCycling {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resolute Rejection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "noxious-grasp-corpus-m677",
+  "description": "M6 corpus — Noxious Grasp; in-hand parse.",
+  "seed": 66090,
+  "cards": {
+    "Noxious Grasp": "Name:Noxious Grasp\nManaCost:1 B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.White,Planeswalker.White,Creature.Green,Planeswalker.Green | TgtPrompt$ Select target creature or planeswalker that's green or white | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature or planeswalker that's green or white. You gain 1 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nOracle:Destroy target creature or planeswalker that's green or white. You gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noxious Grasp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

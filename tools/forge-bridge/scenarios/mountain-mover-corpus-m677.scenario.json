@@ -1,0 +1,23 @@
+{
+  "id": "mountain-mover-corpus-m677",
+  "description": "M6 corpus — Mountain Mover; in-hand parse.",
+  "seed": 65545,
+  "cards": {
+    "Mountain Mover": "Name:Mountain Mover\nManaCost:2 R\nTypes:Artifact Vehicle\nPT:5/3\nK:Flying\nK:Haste\nK:Crew:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ LiftMountain | TriggerDescription$ Whenever CARDNAME enters or attacks, put a Mountain card from outside the game underneath it.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ LiftMountain | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, put a Mountain card from outside the game underneath it.\nSVar:LiftMountain:DB$ ChangeZone | Reveal$ True | Origin$ Sideboard | Destination$ Exile | ChangeType$ Card.Mountain+YouOwn | ChangeTypeDesc$ Mountain card they own | ChangeNum$ 1 | Hidden$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DropMountain | TriggerDescription$ When CARDNAME leaves the battlefield, put all cards underneath it onto the battlefield.\nSVar:DropMountain:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Battlefield | GainControl$ True\nText:(Developer's note: For clarity, the first triggered ability has you choosing a Mountain card you own from your sideboard, reveal it and then put it in exile. The second triggered ability puts all cards exiled with this permanent onto the battlefield under the control of this permanent's controller.)\nOracle:Flying, haste\\nWhenever Mountain Mover enters or attacks, put a Mountain card from outside the game underneath it.\\nWhen Mountain Mover leaves the battlefield, put all cards underneath it onto the battlefield.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mountain Mover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

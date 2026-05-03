@@ -1,0 +1,23 @@
+{
+  "id": "lurking-jackals-corpus-m677",
+  "description": "M6 corpus — Lurking Jackals; in-hand parse.",
+  "seed": 64518,
+  "cards": {
+    "Lurking Jackals": "Name:Lurking Jackals\nManaCost:B\nTypes:Enchantment\nT:Mode$ Always | CheckSVar$ OpponentSmallest | SVarCompare$ LE10 | TriggerZones$ Battlefield | Execute$ TrigLurkingJackalsAnimate | IsPresent$ Card.Self+Enchantment | ResolvingCheck$ IsPresent | TriggerDescription$ When an opponent has 10 or less life, if CARDNAME is an enchantment, CARDNAME becomes a 3/2 Jackal creature.\nSVar:TrigLurkingJackalsAnimate:DB$ Animate | Types$ Creature,Jackal | Power$ 3 | Toughness$ 2 | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nSVar:OpponentSmallest:PlayerCountOpponents$LowestLifeTotal\nOracle:When an opponent has 10 or less life, if Lurking Jackals is an enchantment, it becomes a 3/2 Jackal creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lurking Jackals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "roiling-waters-corpus-m677",
+  "description": "M6 corpus — Roiling Waters; in-hand parse.",
+  "seed": 68475,
+  "cards": {
+    "Roiling Waters": "Name:Roiling Waters\nManaCost:5 U U\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return up to two target creatures your opponents control to their owners' hands. Target player draws two cards.\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | NumCards$ 2\nOracle:Return up to two target creatures your opponents control to their owners' hands. Target player draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roiling Waters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

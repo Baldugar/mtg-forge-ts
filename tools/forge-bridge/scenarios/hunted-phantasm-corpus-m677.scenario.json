@@ -1,0 +1,23 @@
+{
+  "id": "hunted-phantasm-corpus-m677",
+  "description": "M6 corpus — Hunted Phantasm; in-hand parse.",
+  "seed": 62617,
+  "cards": {
+    "Hunted Phantasm": "Name:Hunted Phantasm\nManaCost:1 U U\nTypes:Creature Spirit\nPT:4/6\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, target opponent creates five 1/1 red Goblin creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 5 | TokenScript$ r_1_1_goblin | ValidTgts$ Opponent | TokenOwner$ Targeted\nOracle:Hunted Phantasm can't be blocked.\\nWhen Hunted Phantasm enters, target opponent creates five 1/1 red Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Phantasm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

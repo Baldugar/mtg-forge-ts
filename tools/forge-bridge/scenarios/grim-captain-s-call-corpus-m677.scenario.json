@@ -1,0 +1,23 @@
+{
+  "id": "grim-captain-s-call-corpus-m677",
+  "description": "M6 corpus — Grim Captain's Call; in-hand parse.",
+  "seed": 61764,
+  "cards": {
+    "Grim Captain's Call": "Name:Grim Captain's Call\nManaCost:2 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | ChangeType$ Pirate.YouCtrl | ChangeNum$ 1 | Hidden$ True | SubAbility$ DBChangeZoneVampire | SpellDescription$ Return a Pirate card from your graveyard to your hand, then do the same for Vampire, Dinosaur, and Merfolk. | StackDescription$ SpellDescription\nSVar:DBChangeZoneVampire:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | ChangeType$ Vampire.YouCtrl | ChangeNum$ 1 | Hidden$ True | SubAbility$ DBChangeZoneDinosaur\nSVar:DBChangeZoneDinosaur:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | ChangeType$ Dinosaur.YouCtrl | ChangeNum$ 1 | Hidden$ True | SubAbility$ DBChangeZoneMerfolk\nSVar:DBChangeZoneMerfolk:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | ChangeType$ Merfolk.YouCtrl | ChangeNum$ 1 | Hidden$ True\nOracle:Return a Pirate card from your graveyard to your hand, then do the same for Vampire, Dinosaur, and Merfolk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Captain's Call"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

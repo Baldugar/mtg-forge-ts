@@ -1,0 +1,25 @@
+{
+  "id": "pyromancer-s-gauntlet-corpus-m677",
+  "description": "M6 corpus — Pyromancer's Gauntlet; ETB-on-bf.",
+  "seed": 67417,
+  "cards": {
+    "Pyromancer's Gauntlet": "Name:Pyromancer's Gauntlet\nManaCost:5\nTypes:Artifact\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Instant.YouCtrl+Red,Sorcery.YouCtrl+Red,Planeswalker.YouCtrl+Red | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus2 | Description$ If a red instant or sorcery spell you control or a red planeswalker you control would deal damage to a permanent or player, it deals that much damage plus 2 to that permanent or player instead.\nSVar:DmgPlus2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.2\nAI:RemoveDeck:Random\nOracle:If a red instant or sorcery spell you control or a red planeswalker you control would deal damage to a permanent or player, it deals that much damage plus 2 to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pyromancer's Gauntlet"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

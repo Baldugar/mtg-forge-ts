@@ -1,0 +1,23 @@
+{
+  "id": "sanctum-prelate-corpus-m677",
+  "description": "M6 corpus — Sanctum Prelate; in-hand parse.",
+  "seed": 68949,
+  "cards": {
+    "Sanctum Prelate": "Name:Sanctum Prelate\nManaCost:1 W W\nTypes:Creature Human Cleric\nPT:2/2\nK:ETBReplacement:Other:ChooseNumber\nSVar:ChooseNumber:DB$ ChooseNumber | Defined$ You | SpellDescription$ As CARDNAME enters, choose a number.\nS:Mode$ CantBeCast | ValidCard$ Card.nonCreature+cmcEQChosen | Description$ Noncreature spells with mana value equal to the chosen number can't be cast.\nAI:RemoveDeck:All\nOracle:As Sanctum Prelate enters, choose a number.\\nNoncreature spells with mana value equal to the chosen number can't be cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctum Prelate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

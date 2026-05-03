@@ -1,0 +1,23 @@
+{
+  "id": "pearl-collector-corpus-m677",
+  "description": "M6 corpus — Pearl Collector; in-hand parse.",
+  "seed": 66690,
+  "cards": {
+    "Pearl Collector": "Name:Pearl Collector\nManaCost:2 B\nTypes:Creature Human Warlock\nPT:3/3\nK:Deathtouch\nK:Lifelink\nT:Mode$ Phase | Phase$ Main2 | CheckSVar$ YouLifeGained | SVarCompare$ GE4 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigConjure | GameActivationLimit$ 1 | TriggerDescription$ At the beginning of your postcombat main phase, if you gained 4 or more life this turn, conjure a card named Mox Pearl into your hand. This ability triggers only once.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Mox Pearl | Zone$ Hand\nA:AB$ Pump | Cost$ 2 W | KW$ Lifelink | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | Duration$ Perpetual | SpellDescription$ Another target creature perpetually gains lifelink.\nSVar:YouLifeGained:Count$LifeYouGainedThisTurn\nDeckHas:Type$Artifact & Ability$LifeGain\nDeckHints:Ability$LifeGain\nOracle:Deathtouch, Lifelink\\nAt the beginning of your postcombat main phase, if you gained 4 or more life this turn, conjure a card named Mox Pearl into your hand. This ability triggers only once.\\n{2}{W}: Another target creature perpetually gains lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pearl Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

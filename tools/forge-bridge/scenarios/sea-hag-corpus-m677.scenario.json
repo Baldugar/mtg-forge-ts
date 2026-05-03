@@ -1,0 +1,23 @@
+{
+  "id": "sea-hag-corpus-m677",
+  "description": "M6 corpus — Sea Hag; in-hand parse.",
+  "seed": 69269,
+  "cards": {
+    "Sea Hag": "Name:Sea Hag\nManaCost:4 U\nTypes:Creature Hag\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures your opponents control get -4/-0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -4 | IsCurse$ True\nAlternateMode:Adventure\nOracle:When Sea Hag enters, creatures your opponents control get -4/-0 until end of turn.\n\nALTERNATE\n\nName:Aquatic Ingress\nManaCost:2 U\nTypes:Instant Adventure\nA:SP$ Pump | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | NumAtt$ +1 | SubAbility$ DBUnblockable | StackDescription$ SpellDescription | SpellDescription$ Up to two target creatures each get +1/+0 until end of turn and can't be blocked this turn.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ These creatures can't be blocked this turn.\nSVar:PlayMain1:TRUE\nOracle:Up to two target creatures each get +1/+0 until end of turn and can't be blocked this turn. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sea Hag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

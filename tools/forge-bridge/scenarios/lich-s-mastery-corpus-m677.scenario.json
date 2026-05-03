@@ -1,0 +1,23 @@
+{
+  "id": "lich-s-mastery-corpus-m677",
+  "description": "M6 corpus — Lich's Mastery; in-hand parse.",
+  "seed": 64188,
+  "cards": {
+    "Lich's Mastery": "Name:Lich's Mastery\nManaCost:3 B B B\nTypes:Legendary Enchantment\nK:Hexproof\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | Layer$ CantHappen | Description$ You can't lose the game.\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you gain life, draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TriggerCount$LifeAmount\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you lose life, for each 1 life you lost, exile a permanent you control or a card from your hand or graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield,Hand,Graveyard | Destination$ Exile | ChangeType$ Card.YouCtrl | ChangeNum$ X | Mandatory$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigLose | TriggerDescription$ When CARDNAME leaves the battlefield, you lose the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nOracle:Hexproof\\nYou can't lose the game.\\nWhenever you gain life, draw that many cards.\\nWhenever you lose life, for each 1 life you lost, exile a permanent you control or a card from your hand or graveyard.\\nWhen Lich's Mastery leaves the battlefield, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lich's Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

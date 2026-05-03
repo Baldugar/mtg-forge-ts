@@ -1,0 +1,23 @@
+{
+  "id": "nexus-of-becoming-corpus-m677",
+  "description": "M6 corpus — Nexus of Becoming; in-hand parse.",
+  "seed": 65890,
+  "cards": {
+    "Nexus of Becoming": "Name:Nexus of Becoming\nManaCost:6\nTypes:Artifact\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of combat on your turn, draw a card. Then you may exile an artifact or creature card from your hand. If you do, create a token that's a copy of the exiled card, except it's a 3/3 Golem artifact creature in addition to its other types.\nSVar:TrigDraw:DB$ Draw | Defined$ You | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Hidden$ True | RememberChanged$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Creature.YouCtrl,Artifact.YouCtrl | ChangeNum$ 1 | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | SetPower$ 3 | SetToughness$ 3 | AddTypes$ Golem & Artifact & Creature | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:At the beginning of combat on your turn, draw a card. Then you may exile an artifact or creature card from your hand. If you do, create a token that's a copy of the exiled card, except it's a 3/3 Golem artifact creature in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nexus of Becoming"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

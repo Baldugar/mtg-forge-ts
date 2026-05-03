@@ -1,0 +1,23 @@
+{
+  "id": "sabotender-corpus-m677",
+  "description": "M6 corpus — Sabotender; in-hand parse.",
+  "seed": 68831,
+  "cards": {
+    "Sabotender": "Name:Sabotender\nManaCost:1 R\nTypes:Creature Plant\nPT:2/1\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Landfall — Whenever a land you control enters, this creature deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nOracle:Reach\\nLandfall — Whenever a land you control enters, this creature deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sabotender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

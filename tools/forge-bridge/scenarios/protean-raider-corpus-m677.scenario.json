@@ -1,0 +1,25 @@
+{
+  "id": "protean-raider-corpus-m677",
+  "description": "M6 corpus — Protean Raider; ETB-on-bf.",
+  "seed": 67278,
+  "cards": {
+    "Protean Raider": "Name:Protean Raider\nManaCost:1 U R\nTypes:Creature Shapeshifter Pirate\nPT:2/2\nR:Event$ Moved | Destination$ Battlefield | ValidCard$ Card.Self | Layer$ Copy | ReplacementResult$ Updated | Optional$ True | ReplaceWith$ DBCopy | CheckSVar$ RaidTest | Description$ Raid — If you attacked this turn, you may have CARDNAME enter as a copy of any creature on the battlefield.\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other | SpellDescription$ Raid — If you attacked this turn, you may have CARDNAME enter as a copy of any creature on the battlefield.\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — If you attacked this turn, you may have Protean Raider enter as a copy of any creature on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Protean Raider"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

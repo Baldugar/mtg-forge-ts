@@ -1,0 +1,23 @@
+{
+  "id": "storm-force-of-nature-corpus-m677",
+  "description": "M6 corpus — Storm, Force of Nature; in-hand parse.",
+  "seed": 71090,
+  "cards": {
+    "Storm, Force of Nature": "Name:Storm, Force of Nature\nManaCost:1 G U R\nTypes:Legendary Creature Mutant Hero\nPT:3/4\nK:Flying\nK:Vigilance\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigEffect | CombatDamage$ True | TriggerDescription$ Ceaseless Tempest — Whenever NICKNAME deals combat damage to a player, the next instant or sorcery spell you cast this turn has storm. (When you cast it, copy it for each spell cast before it this turn. You may choose new targets for the copies.)\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ GrantStorm | ForgetOnCast$ Instant.YouCtrl,Sorcery.YouCtrl\nSVar:GrantStorm:Mode$ Continuous | Affected$ Instant.YouCtrl,Sorcery.YouCtrl | AffectedZone$ Stack | AddKeyword$ Storm | Description$ The next instant or sorcery spell you cast this turn has storm. (When you cast it, copy it for each spell cast before it this turn. You may choose new targets for the copies.)\nOracle:Flying, vigilance\\nCeaseless Tempest — Whenever Storm deals combat damage to a player, the next instant or sorcery spell you cast this turn has storm. (When you cast it, copy it for each spell cast before it this turn. You may choose new targets for the copies.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm, Force of Nature"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

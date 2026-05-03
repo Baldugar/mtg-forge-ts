@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-kylem-corpus-m677",
+  "description": "M6 corpus — Invasion of Kylem; in-hand parse.",
+  "seed": 63066,
+  "cards": {
+    "Invasion of Kylem": "Name:Invasion of Kylem\nManaCost:2 R W\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, up to two target creatures each get +2/+0 and gain vigilance and haste until end of turn.\nSVar:TrigSearch:DB$ Pump | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | NumAtt$ +2 | KW$ Vigilance & Haste\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Kylem enters, up to two target creatures each get +2/+0 and gain vigilance and haste until end of turn.\n\nALTERNATE\n\nName:Valor's Reach Tag Team\nManaCost:no cost\nColors:red,white\nTypes:Sorcery\nA:SP$ Token | TokenScript$ rw_3_2_warrior_symbiotic_attack | TokenAmount$ 2 | TokenOwner$ You | SpellDescription$ Create two 3/2 red and white Warrior creature tokens with \"Whenever this creature and at least one other creature token attack, put a +1/+1 counter on this creature.\"\nDeckHas:Ability$Token & Type$Warrior\nOracle:Create two 3/2 red and white Warrior creature tokens with \"Whenever this creature and at least one other creature token attack, put a +1/+1 counter on this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Kylem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

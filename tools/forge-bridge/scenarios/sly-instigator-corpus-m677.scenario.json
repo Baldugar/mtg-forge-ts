@@ -1,0 +1,25 @@
+{
+  "id": "sly-instigator-corpus-m677",
+  "description": "M6 corpus — Sly Instigator; ETB-on-bf.",
+  "seed": 70247,
+  "cards": {
+    "Sly Instigator": "Name:Sly Instigator\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:2/4\nA:AB$ Effect | Cost$ U T | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | Duration$ UntilYourNextTurn | SubAbility$ DBGoad | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked until your next turn.\nSVar:DBGoad:DB$ Goad | Defined$ Targeted | SpellDescription$ Goad that creature. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nAI:RemoveDeck:Random\nOracle:{U}, {T}: Until your next turn, target creature an opponent controls can't be blocked. Goad that creature. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sly Instigator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

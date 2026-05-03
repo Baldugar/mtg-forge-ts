@@ -1,0 +1,23 @@
+{
+  "id": "roiling-dragonstorm-corpus-m677",
+  "description": "M6 corpus — Roiling Dragonstorm; in-hand parse.",
+  "seed": 68471,
+  "cards": {
+    "Roiling Dragonstorm": "Name:Roiling Dragonstorm\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enchantment enters, draw two cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Dragon.YouCtrl | Execute$ TrigReturn | TriggerDescription$ When a Dragon you control enters, return this enchantment to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nDeckHints:Type$Dragon\nOracle:When this enchantment enters, draw two cards, then discard a card.\\nWhen a Dragon you control enters, return this enchantment to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roiling Dragonstorm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

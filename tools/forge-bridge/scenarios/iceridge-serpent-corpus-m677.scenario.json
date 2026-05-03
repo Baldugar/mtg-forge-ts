@@ -1,0 +1,23 @@
+{
+  "id": "iceridge-serpent-corpus-m677",
+  "description": "M6 corpus — Iceridge Serpent; in-hand parse.",
+  "seed": 62699,
+  "cards": {
+    "Iceridge Serpent": "Name:Iceridge Serpent\nManaCost:4 U\nTypes:Creature Serpent\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, return target creature an opponent controls to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Hand\nOracle:When this creature enters, return target creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iceridge Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

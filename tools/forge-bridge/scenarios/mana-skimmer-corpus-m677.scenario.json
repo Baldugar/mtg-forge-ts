@@ -1,0 +1,23 @@
+{
+  "id": "mana-skimmer-corpus-m677",
+  "description": "M6 corpus — Mana Skimmer; in-hand parse.",
+  "seed": 64695,
+  "cards": {
+    "Mana Skimmer": "Name:Mana Skimmer\nManaCost:3 B\nTypes:Creature Leech\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TapTarget | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to a player, tap target land that player controls. That land doesn't untap during its controller's next untap step.\nSVar:TapTarget:DB$ Tap | ValidTgts$ Land | TargetsWithDefinedController$ TriggeredTarget | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nOracle:Flying\\nWhenever Mana Skimmer deals damage to a player, tap target land that player controls. That land doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Skimmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

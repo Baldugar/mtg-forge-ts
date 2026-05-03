@@ -1,0 +1,23 @@
+{
+  "id": "perilous-predicament-corpus-m677",
+  "description": "M6 corpus — Perilous Predicament; in-hand parse.",
+  "seed": 66737,
+  "cards": {
+    "Perilous Predicament": "Name:Perilous Predicament\nManaCost:4 B\nTypes:Instant\nA:SP$ Sacrifice | Defined$ Opponent | SacValid$ Creature.Artifact & Creature.nonArtifact | AILogic$ WorstCard | Mandatory$ True | SacEachValid$ True | SpellDescription$ Each opponent sacrifices an artifact creature and a nonartifact creature.\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:SVar$Z1/Plus.Z2\nSVar:Z1:Count$Valid Creature.nonArtifact+OppCtrl/LimitMax.1\nSVar:Z2:Count$Valid Creature.Artifact+OppCtrl/LimitMax.1\nDeckHas:Ability$Sacrifice\nOracle:Each opponent sacrifices an artifact creature and a nonartifact creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perilous Predicament"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

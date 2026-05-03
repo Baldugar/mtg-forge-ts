@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-chupacabra-corpus-m677",
+  "description": "M6 corpus — Ravenous Chupacabra; in-hand parse.",
+  "seed": 67757,
+  "cards": {
+    "Ravenous Chupacabra": "Name:Ravenous Chupacabra\nManaCost:2 B B\nTypes:Creature Beast Horror\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls.\nSVar:PlayMain1:TRUE\nOracle:When Ravenous Chupacabra enters, destroy target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Chupacabra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

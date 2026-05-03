@@ -1,0 +1,23 @@
+{
+  "id": "mu-yanling-wind-rider-corpus-m677",
+  "description": "M6 corpus — Mu Yanling, Wind Rider; in-hand parse.",
+  "seed": 65569,
+  "cards": {
+    "Mu Yanling, Wind Rider": "Name:Mu Yanling, Wind Rider\nManaCost:2 U U\nTypes:Legendary Creature Human Wizard Pilot\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a 3/2 colorless Vehicle artifact token with crew 1.\nSVar:TrigToken:DB$ Token | TokenScript$ c_3_2_a_vehicle_crew_1 | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Vehicle.YouCtrl | AddKeyword$ Flying | Description$ Vehicles you control have flying.\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl+withFlying | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ TrigDraw | TriggerDescription$ Whenever one or more creatures you control with flying deal combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:When this creature enters, create a 3/2 colorless Vehicle artifact token with crew 1.\\nVehicles you control have flying.\\nWhenever one or more creatures you control with flying deal combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mu Yanling, Wind Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

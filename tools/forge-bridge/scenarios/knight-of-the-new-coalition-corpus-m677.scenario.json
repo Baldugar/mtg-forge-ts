@@ -1,0 +1,23 @@
+{
+  "id": "knight-of-the-new-coalition-corpus-m677",
+  "description": "M6 corpus — Knight of the New Coalition; in-hand parse.",
+  "seed": 63767,
+  "cards": {
+    "Knight of the New Coalition": "Name:Knight of the New Coalition\nManaCost:3 W\nTypes:Creature Human Knight\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white and blue Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ wu_2_2_knight_vigilance\nDeckHas:Color$Blue & Ability$Token\nOracle:When Knight of the New Coalition enters, create a 2/2 white and blue Knight creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knight of the New Coalition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "manic-vandal-corpus-m677",
+  "description": "M6 corpus — Manic Vandal; in-hand parse.",
+  "seed": 64721,
+  "cards": {
+    "Manic Vandal": "Name:Manic Vandal\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target artifact.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact\nOracle:When Manic Vandal enters, destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manic Vandal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

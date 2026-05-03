@@ -1,0 +1,25 @@
+{
+  "id": "skycat-sovereign-corpus-m677",
+  "description": "M6 corpus — Skycat Sovereign; ETB-on-bf.",
+  "seed": 70099,
+  "cards": {
+    "Skycat Sovereign": "Name:Skycat Sovereign\nManaCost:W U\nTypes:Creature Elemental Cat\nPT:1/1\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each other creature you control with flying.\nSVar:X:Count$Valid Creature.Other+YouCtrl+withFlying\nSVar:BuffedBy:Creature.withFlying\nA:AB$ Token | Cost$ 2 W U | TokenScript$ w_1_1_cat_bird_flying | TokenOwner$ You | SpellDescription$ Create a 1/1 white Cat Bird creature token with flying.\nDeckHas:Ability$Token\nOracle:Flying\\nSkycat Sovereign gets +1/+1 for each other creature you control with flying.\\n{2}{W}{U}: Create a 1/1 white Cat Bird creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Skycat Sovereign"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

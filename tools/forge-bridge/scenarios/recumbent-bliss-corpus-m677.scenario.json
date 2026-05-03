@@ -1,0 +1,23 @@
+{
+  "id": "recumbent-bliss-corpus-m677",
+  "description": "M6 corpus — Recumbent Bliss; in-hand parse.",
+  "seed": 67907,
+  "cards": {
+    "Recumbent Bliss": "Name:Recumbent Bliss\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, you may gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\nAt the beginning of your upkeep, you may gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recumbent Bliss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

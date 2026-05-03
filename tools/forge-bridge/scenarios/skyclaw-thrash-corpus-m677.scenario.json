@@ -1,0 +1,23 @@
+{
+  "id": "skyclaw-thrash-corpus-m677",
+  "description": "M6 corpus — Skyclaw Thrash; in-hand parse.",
+  "seed": 70109,
+  "cards": {
+    "Skyclaw Thrash": "Name:Skyclaw Thrash\nManaCost:3 U R\nTypes:Artifact Creature Lizard Warrior\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ FlipCoin | TriggerDescription$ Whenever CARDNAME attacks, flip a coin. If you win the flip, CARDNAME gets +1/+1 and gains flying until end of turn.\nSVar:FlipCoin:DB$ FlipACoin | WinSubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | KW$ Flying\nOracle:Whenever Skyclaw Thrash attacks, flip a coin. If you win the flip, Skyclaw Thrash gets +1/+1 and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyclaw Thrash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

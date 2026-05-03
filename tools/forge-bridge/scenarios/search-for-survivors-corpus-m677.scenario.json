@@ -1,0 +1,23 @@
+{
+  "id": "search-for-survivors-corpus-m677",
+  "description": "M6 corpus — Search for Survivors; in-hand parse.",
+  "seed": 69297,
+  "cards": {
+    "Search for Survivors": "Name:Search for Survivors\nManaCost:2 R\nTypes:Sorcery\nA:SP$ ReorderZone | Zone$ Graveyard | Defined$ You | Random$ True | SubAbility$ DBChoosePlayer | SpellDescription$ Reorder your graveyard at random. An opponent chooses a card at random in your graveyard. If it's a creature card, put it onto the battlefield. Otherwise, exile it.\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | Defined$ ChosenPlayer | Choices$ Card.YouOwn | ChoiceZone$ Graveyard | AtRandom$ True | Amount$ 1 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ConditionDefined$ ChosenCard | ConditionPresent$ Card.Creature | ConditionCompare$ GE1 | Defined$ ChosenCard | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ConditionDefined$ ChosenCard | ConditionPresent$ Card.Creature | ConditionCompare$ EQ0 | Defined$ ChosenCard\nSVar:X:Count$ValidGraveyard Creature.YouCtrl\nSVar:NeedsToPlayVar:X GE2\nAI:RemoveDeck:All\nOracle:Reorder your graveyard at random. An opponent chooses a card at random in your graveyard. If it's a creature card, put it onto the battlefield. Otherwise, exile it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Search for Survivors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

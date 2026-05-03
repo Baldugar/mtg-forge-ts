@@ -1,0 +1,23 @@
+{
+  "id": "string-of-disappearances-corpus-m677",
+  "description": "M6 corpus — String of Disappearances; in-hand parse.",
+  "seed": 71190,
+  "cards": {
+    "String of Disappearances": "Name:String of Disappearances\nManaCost:U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBCopy | SpellDescription$ Return target creature to its owner's hand. Then that creature's controller may pay {U}{U}. If the player does, they may copy this spell and may choose a new target for that copy.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Parent | Controller$ TargetedController | UnlessPayer$ TargetedController | UnlessCost$ U U | UnlessSwitched$ True | ConditionDefined$ Targeted | ConditionPresent$ Permanent | ConditionCompare$ GE1 | StackDescription$ None | MayChooseTarget$ True\nOracle:Return target creature to its owner's hand. Then that creature's controller may pay {U}{U}. If the player does, they may copy this spell and may choose a new target for that copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "String of Disappearances"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

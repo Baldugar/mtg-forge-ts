@@ -1,0 +1,23 @@
+{
+  "id": "kithkin-mourncaller-corpus-m677",
+  "description": "M6 corpus — Kithkin Mourncaller; in-hand parse.",
+  "seed": 63710,
+  "cards": {
+    "Kithkin Mourncaller": "Name:Kithkin Mourncaller\nManaCost:2 G\nTypes:Creature Kithkin Scout\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Kithkin+YouOwn+attacking,Creature.Elf+YouOwn+attacking | Execute$ TrigDraw | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever an attacking Kithkin or Elf is put into your graveyard from the battlefield, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever an attacking Kithkin or Elf is put into your graveyard from the battlefield, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kithkin Mourncaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

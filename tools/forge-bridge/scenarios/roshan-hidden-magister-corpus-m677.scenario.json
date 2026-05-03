@@ -1,0 +1,25 @@
+{
+  "id": "roshan-hidden-magister-corpus-m677",
+  "description": "M6 corpus — Roshan, Hidden Magister; ETB-on-bf.",
+  "seed": 68531,
+  "cards": {
+    "Roshan, Hidden Magister": "Name:Roshan, Hidden Magister\nManaCost:3 B\nTypes:Legendary Creature Human Assassin\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+Other | AffectedZone$ All | AddType$ Assassin | Description$ Other creatures you control are Assassins in addition to their other types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\nS:Mode$ Continuous | Affected$ Creature.faceDown+YouCtrl | AddKeyword$ Menace | Description$ Face-down creatures you control have menace.\nT:Mode$ TurnFaceUp | ValidCard$ Permanent.YouCtrl | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever a permanent you control is turned face up, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:Other creatures you control are Assassins in addition to their other types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\\nFace-down creatures you control have menace.\\nWhenever a permanent you control is turned face up, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Roshan, Hidden Magister"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

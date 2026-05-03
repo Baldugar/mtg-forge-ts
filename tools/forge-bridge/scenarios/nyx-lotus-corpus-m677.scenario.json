@@ -1,0 +1,25 @@
+{
+  "id": "nyx-lotus-corpus-m677",
+  "description": "M6 corpus — Nyx Lotus; ETB-on-bf.",
+  "seed": 66128,
+  "cards": {
+    "Nyx Lotus": "Name:Nyx Lotus\nManaCost:4\nTypes:Legendary Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChooseColor | Cost$ T | AILogic$ MostProminentComputerControls | AINoRecursiveCheck$ True | SubAbility$ DBMana | SpellDescription$ Choose a color. Add an amount of mana of that color equal to your devotion to that color.\nSVar:DBMana:DB$ Mana | Produced$ Chosen | Amount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenColor$ True\nSVar:X:Count$Devotion.Chosen\nOracle:Nyx Lotus enters tapped.\\n{T}: Choose a color. Add an amount of mana of that color equal to your devotion to that color. (Your devotion to a color is the number of mana symbols of that color in the mana costs of permanents you control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nyx Lotus"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

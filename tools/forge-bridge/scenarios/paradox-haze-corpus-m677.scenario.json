@@ -1,0 +1,23 @@
+{
+  "id": "paradox-haze-corpus-m677",
+  "description": "M6 corpus — Paradox Haze; in-hand parse.",
+  "seed": 66602,
+  "cards": {
+    "Paradox Haze": "Name:Paradox Haze\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Player\nT:Mode$ Phase | FirstUpkeep$ True | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ AddUpkeep | TriggerDescription$ At the beginning of enchanted player's first upkeep each turn, that player gets an additional upkeep step after this step.\nSVar:AddUpkeep:DB$ AddPhase | ExtraPhase$ Upkeep\nAI:RemoveDeck:Random\nOracle:Enchant player\\nAt the beginning of enchanted player's first upkeep each turn, that player gets an additional upkeep step after this step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paradox Haze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

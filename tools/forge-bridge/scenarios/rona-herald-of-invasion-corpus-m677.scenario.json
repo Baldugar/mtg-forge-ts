@@ -1,0 +1,23 @@
+{
+  "id": "rona-herald-of-invasion-corpus-m677",
+  "description": "M6 corpus — Rona, Herald of Invasion; in-hand parse.",
+  "seed": 68488,
+  "cards": {
+    "Rona, Herald of Invasion": "Name:Rona, Herald of Invasion\nManaCost:1 U\nTypes:Legendary Creature Human Wizard\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Card.Legendary | ValidActivatingPlayer$ You | Execute$ TrigUntap | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a legendary spell, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nA:AB$ SetState | Cost$ 5 BP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform NICKNAME. Activate only as a sorcery. ({B/P} can be paid with either {B} or 2 life.)\nSVar:BuffedBy:Card.Legendary\nDeckHas:Ability$Discard|Graveyard\nAlternateMode:DoubleFaced\nOracle:Whenever you cast a legendary spell, untap Rona, Herald of Invasion.\\n{T}: Draw a card, then discard a card.\\n{5}{B/P}: Transform Rona. Activate only as a sorcery. ({B/P} can be paid with either {B} or 2 life.)\n\nALTERNATE\n\nName:Rona, Tolarian Obliterator\nManaCost:no cost\nColors:blue,black\nTypes:Legendary Creature Phyrexian Wizard\nPT:5/5\nK:Trample\nT:Mode$ DamageDone | ValidTarget$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever a source deals damage to CARDNAME, that source's controller exiles a card from their hand at random. If it's a land card, you may put it onto the battlefield under your control. Otherwise, you may cast it without paying its mana cost.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TriggeredSourceController | Mandatory$ True | ChangeType$ Card | Hidden$ True | AtRandom$ True | RememberChanged$ True | SubAbility$ DBRonaLand\nSVar:DBRonaLand:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | ChangeType$ Land.IsRemembered | Hidden$ True | Optional$ True | GainControl$ True | SubAbility$ DBRonaPlay\nSVar:DBRonaPlay:DB$ Play | ValidZone$ Exile | Controller$ You | Valid$ Card.IsRemembered | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBRonaCleanup\nSVar:DBRonaCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasCombatEffect:TRUE\nOracle:Trample\\nWhenever a source deals damage to Rona, Tolarian Obliterator, that source's controller exiles a card from their hand at random. If it's a land card, you may put it onto the battlefield under your control. Otherwise, you may cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rona, Herald of Invasion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

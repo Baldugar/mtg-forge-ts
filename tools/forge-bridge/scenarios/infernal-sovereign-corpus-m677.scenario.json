@@ -1,0 +1,25 @@
+{
+  "id": "infernal-sovereign-corpus-m677",
+  "description": "M6 corpus — Infernal Sovereign; ETB-on-bf.",
+  "seed": 62908,
+  "cards": {
+    "Infernal Sovereign": "Name:Infernal Sovereign\nManaCost:4 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nK:Trample\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you play a land or cast a spell, you draw a card and you lose 1 life.\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever you play a land or cast a spell, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nAI:RemoveDeck:Random\nOracle:Flying, trample\\nSkip your draw step.\\nWhenever you play a land or cast a spell, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Infernal Sovereign"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

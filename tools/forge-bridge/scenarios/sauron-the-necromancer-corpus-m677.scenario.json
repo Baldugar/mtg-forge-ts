@@ -1,0 +1,23 @@
+{
+  "id": "sauron-the-necromancer-corpus-m677",
+  "description": "M6 corpus — Sauron, the Necromancer; in-hand parse.",
+  "seed": 69041,
+  "cards": {
+    "Sauron, the Necromancer": "Name:Sauron, the Necromancer\nManaCost:3 B B\nTypes:Legendary Creature Avatar Horror\nPT:4/4\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile target creature card from your graveyard. Create a tapped and attacking token that's a copy of that card, except it's a 3/3 black Wraith with menace. At the beginning of the next end step, exile that token unless NICKNAME is your Ring-bearer.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select target creature card in your graveyard | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | TokenTapped$ True | TokenAttacking$ True | SetPower$ 3 | SetToughness$ 3 | SetColor$ Black | AtEOT$ Exile | AtEOTCondition$ Y | SetCreatureTypes$ Wraith | AddKeywords$ Menace | AtEOTDesc$ At the beginning of the next end step, exile that token unless NICKNAME is your Ring-bearer. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$Compare X EQ0.1.0\nSVar:X:Count$Valid Card.Self+IsRingbearer\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard|Token & Type$Wraith\nDeckHints:Ability$Mill|Discard\nOracle:Menace\\nWhenever Sauron, the Necromancer attacks, exile target creature card from your graveyard. Create a tapped and attacking token that's a copy of that card, except it's a 3/3 black Wraith with menace. At the beginning of the next end step, exile that token unless Sauron is your Ring-bearer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sauron, the Necromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

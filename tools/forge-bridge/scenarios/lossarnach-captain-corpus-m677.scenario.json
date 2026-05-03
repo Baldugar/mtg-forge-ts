@@ -1,0 +1,23 @@
+{
+  "id": "lossarnach-captain-corpus-m677",
+  "description": "M6 corpus — Lossarnach Captain; in-hand parse.",
+  "seed": 64413,
+  "cards": {
+    "Lossarnach Captain": "Name:Lossarnach Captain\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:3/1\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.YouCtrl+Other+Human | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME or another Human you control enters, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nSVar:BuffedBy:Creature\nSVar:PlayMain1:TRUE\nDeckHints:Type$Human\nDeckHas:Ability$Token\nOracle:First strike\\nWhenever Lossarnach Captain or another Human you control enters, tap target creature an opponent controls.\\nAt the beginning of your upkeep, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lossarnach Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "raise-the-draugr-corpus-m677",
+  "description": "M6 corpus — Raise the Draugr; in-hand parse.",
+  "seed": 67599,
+  "cards": {
+    "Raise the Draugr": "Name:Raise the Draugr\nManaCost:1 B\nTypes:Instant\nA:SP$ Charm | Choices$ DBChangeZone1,DBChangeZone2\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouOwn | AILogic$ NoSameCreatureType | SpellDescription$ Return target creature card from your graveyard to your hand.\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | TargetsWithSameCreatureType$ True | TargetMin$ 2 | TargetMax$ 2 | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select two target creature cards that share a creature type in your graveyard | SpellDescription$ Return two target creature cards that share a creature type from your graveyard to your hand.\nOracle:Choose one —\\n• Return target creature card from your graveyard to your hand.\\n• Return two target creature cards that share a creature type from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raise the Draugr"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

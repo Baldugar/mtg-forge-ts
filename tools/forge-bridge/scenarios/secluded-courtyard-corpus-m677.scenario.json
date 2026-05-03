@@ -1,0 +1,23 @@
+{
+  "id": "secluded-courtyard-corpus-m677",
+  "description": "M6 corpus — Secluded Courtyard; in-hand parse.",
+  "seed": 69328,
+  "cards": {
+    "Secluded Courtyard": "Name:Secluded Courtyard\nManaCost:no cost\nTypes:Land\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentInComputerDeck\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Creature+ChosenType,Activated.Creature+ChosenType | SpellDescription$ Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type or activate an ability of a creature or creature card of the chosen type.\nOracle:As Secluded Courtyard enters, choose a creature type.\\n{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type or activate an ability of a creature or creature card of the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Secluded Courtyard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

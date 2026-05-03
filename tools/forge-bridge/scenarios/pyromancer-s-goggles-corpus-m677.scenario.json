@@ -1,0 +1,25 @@
+{
+  "id": "pyromancer-s-goggles-corpus-m677",
+  "description": "M6 corpus — Pyromancer's Goggles; ETB-on-bf.",
+  "seed": 67418,
+  "cards": {
+    "Pyromancer's Goggles": "Name:Pyromancer's Goggles\nManaCost:5\nTypes:Legendary Artifact\nA:AB$ Mana | Cost$ T | Produced$ R | TriggersWhenSpent$ TrigCopy | SpellDescription$ Add {R}. When that mana is spent to cast a red instant or sorcery spell, copy that spell and you may choose new targets for the copy.\nSVar:TrigCopy:Mode$ SpellCast | ValidCard$ Instant.Red,Sorcery.Red | Execute$ TrigCopyMain | TriggerDescription$ When that mana is spent to cast a red instant or sorcery spell, copy that spell and you may choose new targets for the copy.\nSVar:TrigCopyMain:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:{T}: Add {R}. When that mana is spent to cast a red instant or sorcery spell, copy that spell and you may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pyromancer's Goggles"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

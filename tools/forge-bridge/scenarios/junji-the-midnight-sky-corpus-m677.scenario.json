@@ -1,0 +1,23 @@
+{
+  "id": "junji-the-midnight-sky-corpus-m677",
+  "description": "M6 corpus — Junji, the Midnight Sky; in-hand parse.",
+  "seed": 63394,
+  "cards": {
+    "Junji, the Midnight Sky": "Name:Junji, the Midnight Sky\nManaCost:3 B B\nTypes:Legendary Creature Dragon Spirit\nPT:5/5\nK:Flying\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerController$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DiscardTwo,ReviveCreature\nSVar:DiscardTwo:DB$ Discard | Defined$ Opponent | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBLoseLife | SpellDescription$ Each opponent discards two cards and loses 2 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Opponent\nSVar:ReviveCreature:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target non-Dragon creature card in a graveyard | ValidTgts$ Creature.nonDragon | ChangeNum$ 1 | SubAbility$ DBReviveLife | SpellDescription$ Put target non-Dragon creature card from a graveyard onto the battlefield under your control. You lose 2 life.\nSVar:DBReviveLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$Discard|Graveyard\nOracle:Flying, menace\\nWhen Junji, the Midnight Sky dies, choose one —\\n• Each opponent discards two cards and loses 2 life.\\n• Put target non-Dragon creature card from a graveyard onto the battlefield under your control. You lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Junji, the Midnight Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

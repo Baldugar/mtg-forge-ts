@@ -1,0 +1,23 @@
+{
+  "id": "salvage-scuttler-corpus-m677",
+  "description": "M6 corpus — Salvage Scuttler; in-hand parse.",
+  "seed": 68909,
+  "cards": {
+    "Salvage Scuttler": "Name:Salvage Scuttler\nManaCost:4 U\nTypes:Creature Crab\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, return an artifact you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Artifact.YouCtrl\nAI:RemoveDeck:Random\nOracle:Whenever Salvage Scuttler attacks, return an artifact you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Salvage Scuttler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

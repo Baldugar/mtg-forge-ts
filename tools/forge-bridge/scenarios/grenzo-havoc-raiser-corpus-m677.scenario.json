@@ -1,0 +1,23 @@
+{
+  "id": "grenzo-havoc-raiser-corpus-m677",
+  "description": "M6 corpus — Grenzo, Havoc Raiser; in-hand parse.",
+  "seed": 61746,
+  "cards": {
+    "Grenzo, Havoc Raiser": "Name:Grenzo, Havoc Raiser\nManaCost:R R\nTypes:Legendary Creature Goblin Rogue\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage to a player, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBGoad,DBExile\nSVar:DBGoad:DB$ Goad | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select target creature damaged player controls | SpellDescription$ Goad target creature that player controls.\nSVar:DBExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of that player's library. Until end of turn, you may cast that card and you may spend mana as though it were mana of any color to cast it.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ Until end of turn, you may cast that card and you may spend mana as though it were mana of any color to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever a creature you control deals combat damage to a player, choose one —\\n• Goad target creature that player controls.\\n• Exile the top card of that player's library. Until end of turn, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grenzo, Havoc Raiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

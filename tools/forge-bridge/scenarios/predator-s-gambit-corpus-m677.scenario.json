@@ -1,0 +1,23 @@
+{
+  "id": "predator-s-gambit-corpus-m677",
+  "description": "M6 corpus — Predator's Gambit; in-hand parse.",
+  "seed": 67121,
+  "cards": {
+    "Predator's Gambit": "Name:Predator's Gambit\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Enchanted creature gets +2/+1.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Intimidate | CheckSVar$ X | SVarCompare$ EQ1 | Description$ If enchanted creature's controller controls no other creatures, it has intimidate.\nSVar:X:Count$EnchantedControllerCreatures\nOracle:Enchant creature\\nEnchanted creature gets +2/+1.\\nEnchanted creature has intimidate as long as its controller controls no other creatures. (It can't be blocked except by artifact creatures and/or creatures that share a color with it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predator's Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

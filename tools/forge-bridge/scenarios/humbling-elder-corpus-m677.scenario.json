@@ -1,0 +1,23 @@
+{
+  "id": "humbling-elder-corpus-m677",
+  "description": "M6 corpus — Humbling Elder; in-hand parse.",
+  "seed": 62592,
+  "cards": {
+    "Humbling Elder": "Name:Humbling Elder\nManaCost:U\nTypes:Creature Human Monk\nPT:1/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, target creature an opponent controls gets -2/-0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls. | NumAtt$ -2 | IsCurse$ True\nSVar:PlayMain1:TRUE\nOracle:Flash\\nWhen this creature enters, target creature an opponent controls gets -2/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Humbling Elder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soulcipher-board-corpus-m677",
+  "description": "M6 corpus — Soulcipher Board; in-hand parse.",
+  "seed": 70474,
+  "cards": {
+    "Soulcipher Board": "Name:Soulcipher Board\nManaCost:1 U\nTypes:Artifact\nK:etbCounter:OMEN:3\nA:AB$ Dig | Cost$ 1 U T | DigNum$ 2 | DestinationZone$ Graveyard | NoReveal$ True | LibraryPosition2$ 0 | StackDescription$ {p:You} looks at the top two cards of their library, and puts one of them into their graveyard. | SpellDescription$ Look at the top two cards of your library. Put one of them into your graveyard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Creature+!token+YouOwn | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever a creature card is put into your graveyard from anywhere, remove an omen counter from CARDNAME. Then if it has no omen counters on it, transform it.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ OMEN | CounterNum$ 1 | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | ConditionPresent$ Card.Self+counters_EQ0_OMEN | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Counters|Graveyard|Discard\nAlternateMode:DoubleFaced\nOracle:Soulcipher Board enters with three omen counters on it.\\n{1}{U}, {T}: Look at the top two cards of your library. Put one of them into your graveyard.\\nWhenever a creature card is put into your graveyard from anywhere, remove an omen counter from Soulcipher Board. Then if it has no omen counters on it, transform it.\n\nALTERNATE\n\nName:Cipherbound Spirit\nManaCost:no cost\nColors:blue\nTypes:Creature Spirit\nPT:3/2\nK:Flying\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.withoutFlying | ValidBlocker$ Creature.Self | Description$ CARDNAME can block only creatures with flying.\nA:AB$ Draw | Cost$ 3 U | NumCards$ 2 | SubAbility$ DBDiscard | StackDescription$ {p:You} draws two cards, | SpellDescription$ Draw two cards, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | StackDescription$ then discards a card.\nOracle:Flying\\nCipherbound Spirit can block only creatures with flying.\\n{3}{U}: Draw two cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soulcipher Board"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

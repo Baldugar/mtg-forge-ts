@@ -1,0 +1,23 @@
+{
+  "id": "liability-corpus-m677",
+  "description": "M6 corpus — Liability; in-hand parse.",
+  "seed": 64175,
+  "cards": {
+    "Liability": "Name:Liability\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.!token | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a nontoken permanent is put into a player's graveyard from the battlefield, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardOwner | LifeAmount$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a nontoken permanent is put into a player's graveyard from the battlefield, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liability"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

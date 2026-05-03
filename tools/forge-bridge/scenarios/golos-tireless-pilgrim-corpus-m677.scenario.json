@@ -1,0 +1,23 @@
+{
+  "id": "golos-tireless-pilgrim-corpus-m677",
+  "description": "M6 corpus — Golos, Tireless Pilgrim; in-hand parse.",
+  "seed": 61564,
+  "cards": {
+    "Golos, Tireless Pilgrim": "Name:Golos, Tireless Pilgrim\nManaCost:5\nTypes:Legendary Artifact Creature Scout\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land | ChangeNum$ 1 | ShuffleNonMandatory$ True\nA:AB$ Dig | Cost$ 2 W U B R G | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. You may play them this turn without paying their mana costs.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffPlay | EffectOwner$ You | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:EffPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play them this turn without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Golos, Tireless Pilgrim enters, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle.\\n{2}{W}{U}{B}{R}{G}: Exile the top three cards of your library. You may play them this turn without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golos, Tireless Pilgrim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

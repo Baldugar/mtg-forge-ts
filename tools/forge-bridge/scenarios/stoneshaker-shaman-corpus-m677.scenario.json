@@ -1,0 +1,23 @@
+{
+  "id": "stoneshaker-shaman-corpus-m677",
+  "description": "M6 corpus — Stoneshaker Shaman; in-hand parse.",
+  "seed": 71065,
+  "cards": {
+    "Stoneshaker Shaman": "Name:Stoneshaker Shaman\nManaCost:2 R\nTypes:Creature Human Shaman\nPT:1/1\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's end step, that player sacrifices an untapped land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land.untapped | Defined$ TriggeredPlayer | SpellDescription$ Sacrifice an untapped land.\nS:Mode$ Continuous | Affected$ Land | AddSVar$ AITap\nSVar:AITap:SVar:AITapDown:True\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's end step, that player sacrifices an untapped land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stoneshaker Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shoreline-salvager-corpus-m677",
+  "description": "M6 corpus — Shoreline Salvager; in-hand parse.",
+  "seed": 69756,
+  "cards": {
+    "Shoreline Salvager": "Name:Shoreline Salvager\nManaCost:3 B\nTypes:Creature Surrakar\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | IsPresent$ Island.YouCtrl | CombatDamage$ True | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, if you control an Island, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHints:Color$Blue\nOracle:Whenever Shoreline Salvager deals combat damage to a player, if you control an Island, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shoreline Salvager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

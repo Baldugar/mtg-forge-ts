@@ -1,0 +1,23 @@
+{
+  "id": "rally-the-ranks-corpus-m677",
+  "description": "M6 corpus — Rally the Ranks; in-hand parse.",
+  "seed": 67645,
+  "cards": {
+    "Rally the Ranks": "Name:Rally the Ranks\nManaCost:1 W\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentInComputerDeck\nS:Mode$ Continuous | Affected$ Creature.ChosenType+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control of the chosen type get +1/+1.\nAI:RemoveDeck:Random\nSVar:PlayMain1:TRUE\nSVar:AIPreference:SacCost$Creature.ChosenType+Other\nOracle:As Rally the Ranks enters, choose a creature type.\\nCreatures you control of the chosen type get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rally the Ranks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

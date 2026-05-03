@@ -1,0 +1,23 @@
+{
+  "id": "loyal-warhound-corpus-m677",
+  "description": "M6 corpus — Loyal Warhound; in-hand parse.",
+  "seed": 64464,
+  "cards": {
+    "Loyal Warhound": "Name:Loyal Warhound\nManaCost:1 W\nTypes:Creature Dog\nPT:3/1\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | CheckSVar$ Y | SVarCompare$ GTX | TriggerDescription$ When CARDNAME enters, if an opponent controls more lands than you, search your library for a basic Plains card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Plains.Basic | ChangeNum$ 1\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:PlayerCountOpponents$HighestValid Land.YouCtrl\nOracle:Vigilance\\nWhen Loyal Warhound enters, if an opponent controls more lands than you, search your library for a basic Plains card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loyal Warhound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shahrazad-corpus-m677",
+  "description": "M6 corpus — Shahrazad; in-hand parse.",
+  "seed": 69579,
+  "cards": {
+    "Shahrazad": "Name:Shahrazad\nManaCost:W W\nTypes:Sorcery\nA:SP$ Subgame | RememberPlayers$ NotWin | SubAbility$ DBRepeatEachPlayer | SpellDescription$ Players play a Magic subgame, using their libraries as their decks. Each player who doesn't win the subgame loses half their life, rounded up. | StackDescription$ SpellDescription\nSVar:DBRepeatEachPlayer:DB$ RepeatEach | RepeatPlayers$ Remembered | ClearRememberedBeforeLoop$ True | RepeatSubAbility$ DBLoseLife | SpellDescription$ Each player who doesn't win the subgame loses half their life, rounded up. | StackDescription$ SpellDescription\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ Player.IsRemembered\nSVar:X:PlayerCountRemembered$LifeTotal/HalfUp\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Players play a Magic subgame, using their libraries as their decks. Each player who doesn't win the subgame loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shahrazad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

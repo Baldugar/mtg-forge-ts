@@ -1,0 +1,23 @@
+{
+  "id": "reckless-ringleader-corpus-m677",
+  "description": "M6 corpus — Reckless Ringleader; in-hand parse.",
+  "seed": 67886,
+  "cards": {
+    "Reckless Ringleader": "Name:Reckless Ringleader\nManaCost:R\nTypes:Creature Goblin Rogue\nPT:1/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose a creature card in your hand. It perpetually gains haste.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn | ChoiceTitle$ Choose a creature card in your hand | Mandatory$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Haste | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Haste\\nWhen Reckless Ringleader enters, choose a creature card in your hand. It perpetually gains haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckless Ringleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

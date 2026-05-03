@@ -1,0 +1,23 @@
+{
+  "id": "supply-runners-corpus-m677",
+  "description": "M6 corpus — Supply Runners; in-hand parse.",
+  "seed": 71401,
+  "cards": {
+    "Supply Runners": "Name:Supply Runners\nManaCost:4 W\nTypes:Creature Dog\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.StrictlyOther+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:When Supply Runners enters, put a +1/+1 counter on each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Supply Runners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

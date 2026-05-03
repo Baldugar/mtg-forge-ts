@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-of-foresight-corpus-m677",
+  "description": "M6 corpus — Sphinx of Foresight; in-hand parse.",
+  "seed": 70613,
+  "cards": {
+    "Sphinx of Foresight": "Name:Sphinx of Foresight\nManaCost:2 U U\nTypes:Creature Sphinx\nPT:4/4\nK:MayEffectFromOpeningHand:RevealCard\nSVar:RevealCard:DB$ Reveal | RevealDefined$ Self | SubAbility$ ScryOnUpkeep | SpellDescription$ You may reveal this card from your opening hand. If you do, scry 3 at the beginning of your first upkeep.\nSVar:ScryOnUpkeep:DB$ Effect | Triggers$ TrigOpenScry | Duration$ Permanent\nSVar:TrigOpenScry:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | OneOff$ True | Execute$ DBScry | TriggerDescription$ If you do, scry 3 at the beginning of your first upkeep.\nSVar:DBScry:DB$ Scry | ScryNum$ 3\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ At the beginning of your upkeep, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nOracle:You may reveal this card from your opening hand. If you do, scry 3 at the beginning of your first upkeep.\\nFlying\\nAt the beginning of your upkeep, scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx of Foresight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

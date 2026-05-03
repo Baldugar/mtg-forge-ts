@@ -1,0 +1,23 @@
+{
+  "id": "havengul-skaab-corpus-m677",
+  "description": "M6 corpus — Havengul Skaab; in-hand parse.",
+  "seed": 62120,
+  "cards": {
+    "Havengul Skaab": "Name:Havengul Skaab\nManaCost:5 U\nTypes:Creature Zombie Horror\nPT:4/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, return another creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Other+YouCtrl\nAI:RemoveDeck:Random\nOracle:Whenever Havengul Skaab attacks, return another creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Havengul Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

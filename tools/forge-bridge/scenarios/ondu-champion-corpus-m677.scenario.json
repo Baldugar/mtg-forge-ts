@@ -1,0 +1,23 @@
+{
+  "id": "ondu-champion-corpus-m677",
+  "description": "M6 corpus — Ondu Champion; in-hand parse.",
+  "seed": 66305,
+  "cards": {
+    "Ondu Champion": "Name:Ondu Champion\nManaCost:2 R R\nTypes:Creature Minotaur Warrior Ally\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control gain trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Ondu Champion or another Ally you control enters, creatures you control gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ondu Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

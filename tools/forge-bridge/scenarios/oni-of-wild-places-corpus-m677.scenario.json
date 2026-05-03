@@ -1,0 +1,23 @@
+{
+  "id": "oni-of-wild-places-corpus-m677",
+  "description": "M6 corpus — Oni of Wild Places; in-hand parse.",
+  "seed": 66323,
+  "cards": {
+    "Oni of Wild Places": "Name:Oni of Wild Places\nManaCost:5 R\nTypes:Creature Demon Spirit\nPT:6/5\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, return a red creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Creature.Red+YouCtrl\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.Red+YouCtrl\nAI:RemoveDeck:Random\nOracle:Haste\\nAt the beginning of your upkeep, return a red creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oni of Wild Places"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

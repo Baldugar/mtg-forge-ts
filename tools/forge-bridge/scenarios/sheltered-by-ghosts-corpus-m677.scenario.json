@@ -1,0 +1,23 @@
+{
+  "id": "sheltered-by-ghosts-corpus-m677",
+  "description": "M6 corpus — Sheltered by Ghosts; in-hand parse.",
+  "seed": 69653,
+  "cards": {
+    "Sheltered by Ghosts": "Name:Sheltered by Ghosts\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddKeyword$ Lifelink & Ward:2 | Description$ Enchanted creature gets +1/+0 and has lifelink and ward {2}.\nOracle:Enchant creature you control\\nWhen Sheltered by Ghosts enters, exile target nonland permanent an opponent controls until Sheltered by Ghosts leaves the battlefield.\\nEnchanted creature gets +1/+0 and has lifelink and ward {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheltered by Ghosts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

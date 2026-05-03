@@ -1,0 +1,23 @@
+{
+  "id": "predatory-rampage-corpus-m677",
+  "description": "M6 corpus — Predatory Rampage; in-hand parse.",
+  "seed": 67130,
+  "cards": {
+    "Predatory Rampage": "Name:Predatory Rampage\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +3 | NumDef$ +3 | SubAbility$ OppBlock | SpellDescription$ Creatures you control get +3/+3 until end of turn. Each creature your opponents control blocks this turn if able.\nSVar:OppBlock:DB$ Effect | StaticAbilities$ STBlock\nSVar:STBlock:Mode$ MustBlock | ValidCreature$ Creature.OppCtrl | Description$ Each creature your opponents control blocks this turn if able.\nOracle:Creatures you control get +3/+3 until end of turn. Each creature your opponents control blocks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predatory Rampage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

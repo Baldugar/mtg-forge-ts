@@ -1,0 +1,25 @@
+{
+  "id": "siren-of-the-silent-song-corpus-m677",
+  "description": "M6 corpus — Siren of the Silent Song; ETB-on-bf.",
+  "seed": 69991,
+  "cards": {
+    "Siren of the Silent Song": "Name:Siren of the Silent Song\nManaCost:1 U B\nTypes:Creature Zombie Siren\nPT:2/1\nK:Flying\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Inspired — Whenever CARDNAME becomes untapped, each opponent discards a card, then each opponent mills a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ Player.Opponent | NumCards$ 1\nOracle:Flying\\nInspired — Whenever Siren of the Silent Song becomes untapped, each opponent discards a card, then each opponent mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Siren of the Silent Song"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

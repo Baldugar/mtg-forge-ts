@@ -1,0 +1,25 @@
+{
+  "id": "sand-squid-corpus-m677",
+  "description": "M6 corpus — Sand Squid; ETB-on-bf.",
+  "seed": 68954,
+  "cards": {
+    "Sand Squid": "Name:Sand Squid\nManaCost:3 U\nTypes:Creature Squid Beast\nPT:2/2\nK:Landwalk:Island\nK:You may choose not to untap CARDNAME during your untap step.\nA:AB$ Tap | Cost$ T | ValidTgts$ Creature | SubAbility$ DBEffect | SpellDescription$ Tap target creature. That creature doesn't untap during its controller's untap step for as long as CARDNAME remains tapped. | StackDescription$ SpellDescription\nSVar:DBEffect:DB$ Effect | IsCurse$ True | ReplacementEffects$ DontUntap | Duration$ UntilUntaps | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ It doesn't untap during its controller's untap step for as long as EFFECTSOURCE remains tapped.\nAI:RemoveDeck:All\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nYou may choose not to untap Sand Squid during your untap step.\\n{T}: Tap target creature. That creature doesn't untap during its controller's untap step for as long as Sand Squid remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sand Squid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

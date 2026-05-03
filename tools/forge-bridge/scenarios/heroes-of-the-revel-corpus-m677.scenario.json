@@ -1,0 +1,23 @@
+{
+  "id": "heroes-of-the-revel-corpus-m677",
+  "description": "M6 corpus — Heroes of the Revel; in-hand parse.",
+  "seed": 62302,
+  "cards": {
+    "Heroes of the Revel": "Name:Heroes of the Revel\nManaCost:4 R\nTypes:Creature Satyr Soldier\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 red Satyr creature token with \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_satyr_noblock | TokenOwner$ You\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a spell that targets CARDNAME, creatures you control get +1/+0 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nDeckHas:Ability$Token\nOracle:When Heroes of the Revel enters, create a 1/1 red Satyr creature token with \"This creature can't block.\"\\nWhenever you cast a spell that targets Heroes of the Revel, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heroes of the Revel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

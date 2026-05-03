@@ -1,0 +1,23 @@
+{
+  "id": "order-of-the-mirror-corpus-m677",
+  "description": "M6 corpus — Order of the Mirror; in-hand parse.",
+  "seed": 66401,
+  "cards": {
+    "Order of the Mirror": "Name:Order of the Mirror\nManaCost:1 U\nTypes:Creature Human Knight\nPT:2/1\nA:AB$ SetState | Cost$ 3 WP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery. ({W/P} can be paid with either {W} or 2 life.)\nAlternateMode:DoubleFaced\nOracle:{3}{W/P}: Transform Order of the Mirror. Activate only as a sorcery. ({W/P} can be paid with either {W} or 2 life.)\n\nALTERNATE\n\nName:Order of the Alabaster Host\nManaCost:no cost\nColors:white,blue\nTypes:Creature Phyrexian Knight\nPT:3/3\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, that creature gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredBlockerLKICopy | NumAtt$ -1 | NumDef$ -1\nOracle:Whenever Order of the Alabaster Host becomes blocked by a creature, that creature gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Order of the Mirror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

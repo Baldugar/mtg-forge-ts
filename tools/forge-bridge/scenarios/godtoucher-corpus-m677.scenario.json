@@ -1,0 +1,25 @@
+{
+  "id": "godtoucher-corpus-m677",
+  "description": "M6 corpus — Godtoucher; ETB-on-bf.",
+  "seed": 61509,
+  "cards": {
+    "Godtoucher": "Name:Godtoucher\nManaCost:3 G\nTypes:Creature Elf Cleric\nPT:2/2\nA:AB$ Effect | Cost$ 1 W T | ValidTgts$ Creature.powerGE5 | TgtPrompt$ Select target creature with power 5 or greater | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all damage that would be dealt to target creature with power 5 or greater this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all damage that would be dealt to that creature this turn.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{1}{W}, {T}: Prevent all damage that would be dealt to target creature with power 5 or greater this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Godtoucher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

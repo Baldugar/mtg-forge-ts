@@ -1,0 +1,23 @@
+{
+  "id": "song-of-seasons-corpus-m677",
+  "description": "M6 corpus — Song of Seasons; in-hand parse.",
+  "seed": 70398,
+  "cards": {
+    "Song of Seasons": "Name:Song of Seasons\nManaCost:1 R G\nTypes:Sorcery\nA:SP$ Seek | Types$ Mountain,Forest,Land.nonMountain+nonForest | RememberFound$ True | SubAbility$ DBChangeZone1\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land.IsRemembered | ChangeNum$ 1 | Mandatory$ True | SelectPrompt$ Select a card to put onto the battlefield | SubAbility$ DBChangeZone2 | StackDescription$ None\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Hand | Destination$ Graveyard | ChangeType$ Land.IsRemembered | ChangeNum$ 1 | Mandatory$ True | SelectPrompt$ Select a card to put onto the graveyard | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Seek a Mountain card, a Forest card, and a non-Mountain, non-Forest land card. Put one of them onto the battlefield and put one of them into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Song of Seasons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

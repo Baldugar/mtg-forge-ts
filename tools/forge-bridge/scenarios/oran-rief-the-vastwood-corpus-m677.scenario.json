@@ -1,0 +1,25 @@
+{
+  "id": "oran-rief-the-vastwood-corpus-m677",
+  "description": "M6 corpus — Oran-Rief, the Vastwood; ETB-on-bf.",
+  "seed": 66371,
+  "cards": {
+    "Oran-Rief, the Vastwood": "Name:Oran-Rief, the Vastwood\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ PutCounterAll | Cost$ T | ValidCards$ Creature.Green+ThisTurnEntered | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each green creature that entered this turn.\nDeckHas:Ability$Counters\nOracle:Oran-Rief, the Vastwood enters tapped.\\n{T}: Add {G}.\\n{T}: Put a +1/+1 counter on each green creature that entered this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oran-Rief, the Vastwood"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

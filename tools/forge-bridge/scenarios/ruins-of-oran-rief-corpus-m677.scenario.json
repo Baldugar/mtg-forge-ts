@@ -1,0 +1,25 @@
+{
+  "id": "ruins-of-oran-rief-corpus-m677",
+  "description": "M6 corpus — Ruins of Oran-Rief; ETB-on-bf.",
+  "seed": 68599,
+  "cards": {
+    "Ruins of Oran-Rief": "Name:Ruins of Oran-Rief\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ PutCounter | Cost$ T | ValidTgts$ Creature.Colorless+ThisTurnEntered | TgtPrompt$ Select target colorless creature that entered this turn | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on target colorless creature that entered this turn.\nDeckHas:Ability$Mana.Colorless\nDeckHints:Color$Colorless & Keyword$Devoid\nOracle:Ruins of Oran-Rief enters tapped.\\n{T}: Add {C}. ({C} represents colorless mana.)\\n{T}: Put a +1/+1 counter on target colorless creature that entered this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ruins of Oran-Rief"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

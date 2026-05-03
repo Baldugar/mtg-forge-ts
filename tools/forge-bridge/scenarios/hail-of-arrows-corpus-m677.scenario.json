@@ -1,0 +1,23 @@
+{
+  "id": "hail-of-arrows-corpus-m677",
+  "description": "M6 corpus — Hail of Arrows; in-hand parse.",
+  "seed": 61964,
+  "cards": {
+    "Hail of Arrows": "Name:Hail of Arrows\nManaCost:X W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature to distribute damage to | NumDmg$ X | TargetMin$ 0 | TargetMax$ MaxTgts | DividedAsYouChoose$ X | SpellDescription$ CARDNAME deals X damage divided as you choose among any number of target attacking creatures.\nSVar:MaxTgts:Count$Valid Creature.attacking\nSVar:X:Count$xPaid\nOracle:Hail of Arrows deals X damage divided as you choose among any number of target attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hail of Arrows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

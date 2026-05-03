@@ -1,0 +1,23 @@
+{
+  "id": "nut-collector-corpus-m677",
+  "description": "M6 corpus — Nut Collector; in-hand parse.",
+  "seed": 66114,
+  "cards": {
+    "Nut Collector": "Name:Nut Collector\nManaCost:5 G\nTypes:Creature Human Druid\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, you may create a 1/1 green Squirrel creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_squirrel | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.Squirrel | AddPower$ 2 | AddToughness$ 2 | Condition$ Threshold | Description$ Threshold — Squirrel creatures get +2/+2 as long as there are seven or more cards in your graveyard.\nOracle:At the beginning of your upkeep, you may create a 1/1 green Squirrel creature token.\\nThreshold — Squirrel creatures get +2/+2 as long as there are seven or more cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nut Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

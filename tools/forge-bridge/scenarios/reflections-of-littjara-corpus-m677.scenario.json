@@ -1,0 +1,23 @@
+{
+  "id": "reflections-of-littjara-corpus-m677",
+  "description": "M6 corpus — Reflections of Littjara; in-hand parse.",
+  "seed": 67946,
+  "cards": {
+    "Reflections of Littjara": "Name:Reflections of Littjara\nManaCost:4 U\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerDeckNonToken | SpellDescription$ As CARDNAME enters, choose a creature type. | StackDescription$ SpellDescription\nT:Mode$ SpellCast | ValidCard$ Card.ChosenType | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever you cast a spell of the chosen type, copy that spell. (A copy of a permanent spell becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | MayChooseTarget$ True\nDeckHas:Ability$Token\nOracle:As Reflections of Littjara enters, choose a creature type.\\nWhenever you cast a spell of the chosen type, copy that spell. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reflections of Littjara"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

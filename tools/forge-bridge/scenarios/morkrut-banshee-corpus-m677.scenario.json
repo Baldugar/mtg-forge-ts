@@ -1,0 +1,23 @@
+{
+  "id": "morkrut-banshee-corpus-m677",
+  "description": "M6 corpus — Morkrut Banshee; in-hand parse.",
+  "seed": 65504,
+  "cards": {
+    "Morkrut Banshee": "Name:Morkrut Banshee\nManaCost:3 B B\nTypes:Creature Spirit\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ Morbid | Execute$ TrigPump | TriggerDescription$ Morbid — When CARDNAME enters, if a creature died this turn, target creature gets -4/-4 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | IsCurse$ True | NumAtt$ -4 | NumDef$ -4\nSVar:Morbid:Count$Morbid.1.0\nOracle:Morbid — When Morkrut Banshee enters, if a creature died this turn, target creature gets -4/-4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morkrut Banshee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

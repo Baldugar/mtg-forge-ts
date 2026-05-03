@@ -1,0 +1,23 @@
+{
+  "id": "orochi-ranger-corpus-m677",
+  "description": "M6 corpus — Orochi Ranger; in-hand parse.",
+  "seed": 66435,
+  "cards": {
+    "Orochi Ranger": "Name:Orochi Ranger\nManaCost:1 G\nTypes:Creature Snake Warrior Ranger\nPT:2/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Orochi Ranger deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orochi Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

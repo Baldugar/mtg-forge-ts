@@ -1,0 +1,23 @@
+{
+  "id": "ruthless-negotiation-corpus-m677",
+  "description": "M6 corpus — Ruthless Negotiation; in-hand parse.",
+  "seed": 68691,
+  "cards": {
+    "Ruthless Negotiation": "Name:Ruthless Negotiation\nManaCost:B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Card | ChangeNum$ 1 | IsCurse$ True | Mandatory$ True | StackDescription$ SpellDescription | SubAbility$ DBDraw | SpellDescription$ Target opponent exiles a card from their hand. If this spell was cast from a graveyard, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Self | ConditionPresent$ Card.wasCastFromGraveyard | ConditionCompare$ EQ1\nK:Flashback:4 B\nOracle:Target opponent exiles a card from their hand. If this spell was cast from a graveyard, draw a card.\\nFlashback {4}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruthless Negotiation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

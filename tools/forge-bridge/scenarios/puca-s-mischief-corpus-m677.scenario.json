@@ -1,0 +1,23 @@
+{
+  "id": "puca-s-mischief-corpus-m677",
+  "description": "M6 corpus — Puca's Mischief; in-hand parse.",
+  "seed": 67340,
+  "cards": {
+    "Puca's Mischief": "Name:Puca's Mischief\nManaCost:3 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigExchange | TriggerDescription$ At the beginning of your upkeep, you may exchange control of target nonland permanent you control and target nonland permanent an opponent controls with an equal or lesser mana value.\nSVar:TrigExchange:DB$ Pump | ValidTgts$ Permanent.YouCtrl+nonLand | TgtPrompt$ Select target nonland permanent you control | SubAbility$ DBExchange\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Permanent.OppCtrl+nonLand | TgtPrompt$ Select target nonland permanent an opponent controls with less or equal mana value | TargetsWithRelatedProperty$ LECMC\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may exchange control of target nonland permanent you control and target nonland permanent an opponent controls with an equal or lesser mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Puca's Mischief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

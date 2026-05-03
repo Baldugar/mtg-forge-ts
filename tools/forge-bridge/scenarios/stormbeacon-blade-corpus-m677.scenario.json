@@ -1,0 +1,23 @@
+{
+  "id": "stormbeacon-blade-corpus-m677",
+  "description": "M6 corpus — Stormbeacon Blade; in-hand parse.",
+  "seed": 71110,
+  "cards": {
+    "Stormbeacon Blade": "Name:Stormbeacon Blade\nManaCost:1 W\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | Description$ Equipped creature gets +3/+0.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature attacks, draw a card if you control three or more attacking creatures.\nSVar:TrigDraw:DB$ Draw | Defined$ You | ConditionPresent$ Creature.attacking+YouCtrl | ConditionCompare$ GE3\nK:Equip:2\nOracle:Equipped creature gets +3/+0.\\nWhenever equipped creature attacks, draw a card if you control three or more attacking creatures.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormbeacon Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

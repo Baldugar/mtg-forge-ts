@@ -1,0 +1,23 @@
+{
+  "id": "riddlemaster-sphinx-corpus-m677",
+  "description": "M6 corpus — Riddlemaster Sphinx; in-hand parse.",
+  "seed": 68247,
+  "cards": {
+    "Riddlemaster Sphinx": "Name:Riddlemaster Sphinx\nManaCost:4 U U\nTypes:Creature Sphinx\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigBounce | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target creature an opponent controls to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select target creature an opponent controls\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Riddlemaster Sphinx enters, you may return target creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riddlemaster Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

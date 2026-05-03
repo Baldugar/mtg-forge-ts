@@ -1,0 +1,25 @@
+{
+  "id": "mistform-wakecaster-corpus-m677",
+  "description": "M6 corpus — Mistform Wakecaster; ETB-on-bf.",
+  "seed": 65308,
+  "cards": {
+    "Mistform Wakecaster": "Name:Mistform Wakecaster\nManaCost:4 U\nTypes:Creature Illusion\nPT:2/3\nK:Flying\nA:AB$ ChooseType | Cost$ 1 | Type$ Creature | Defined$ You | SubAbility$ DBAnimate | SpellDescription$ CARDNAME becomes the creature type of your choice until end of turn.\nSVar:DBAnimate:DB$ Animate | Types$ ChosenType | RemoveCreatureTypes$ True\nA:AB$ ChooseType | Cost$ 2 U U T | Type$ Creature | Defined$ You | SubAbility$ DBAnimateAll | SpellDescription$ Choose a creature type. Each creature you control becomes that type until end of turn.\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.YouCtrl | Types$ ChosenType | RemoveCreatureTypes$ True\nAI:RemoveDeck:All\nOracle:Flying\\n{1}: Mistform Wakecaster becomes the creature type of your choice until end of turn.\\n{2}{U}{U}, {T}: Choose a creature type. Each creature you control becomes that type until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mistform Wakecaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

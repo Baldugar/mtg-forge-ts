@@ -1,0 +1,23 @@
+{
+  "id": "orphans-of-the-wheat-corpus-m677",
+  "description": "M6 corpus — Orphans of the Wheat; in-hand parse.",
+  "seed": 66438,
+  "cards": {
+    "Orphans of the Wheat": "Name:Orphans of the Wheat\nManaCost:1 W\nTypes:Creature Human\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may tap any number of untapped creatures you control. CARDNAME gets +1/+1 until end of turn for each creature tapped this way.\nSVar:TrigTap:DB$ Tap | CardChoices$ Creature.YouCtrl+untapped | AnyNumber$ True | ChoiceAmount$ Count$Valid Creature.YouCtrl+untapped | RememberTapped$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | NumAtt$ +X | NumDef$ +X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Whenever Orphans of the Wheat attacks, you may tap any number of untapped creatures you control. Orphans of the Wheat gets +1/+1 until end of turn for each creature tapped this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orphans of the Wheat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "guardian-of-the-ages-corpus-m677",
+  "description": "M6 corpus — Guardian of the Ages; in-hand parse.",
+  "seed": 61877,
+  "cards": {
+    "Guardian of the Ages": "Name:Guardian of the Ages\nManaCost:7\nTypes:Artifact Creature Golem\nPT:7/7\nK:Defender\nT:Mode$ Attacks | ValidCard$ Creature | Attacked$ You,Planeswalker.YouCtrl | IsPresent$ Card.Self+withDefender | TriggerZones$ Battlefield | Execute$ DBAnimate | TriggerDescription$ Whenever a creature attacks you or a planeswalker you control, if CARDNAME has defender, it loses defender and gains trample.\nSVar:DBAnimate:DB$ Animate | Keywords$ Trample | RemoveKeywords$ Defender | Duration$ Permanent\nOracle:Defender (This creature can't attack.)\\nWhen a creature attacks you or a planeswalker you control, if Guardian of the Ages has defender, it loses defender and gains trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian of the Ages"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

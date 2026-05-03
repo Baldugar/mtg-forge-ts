@@ -1,0 +1,23 @@
+{
+  "id": "impetuous-devils-corpus-m677",
+  "description": "M6 corpus — Impetuous Devils; in-hand parse.",
+  "seed": 62814,
+  "cards": {
+    "Impetuous Devils": "Name:Impetuous Devils\nManaCost:2 R R\nTypes:Creature Devil\nPT:6/1\nK:Haste\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigProvoke | TriggerDescription$ When CARDNAME attacks, up to one target creature defending player controls blocks it this combat if able.\nSVar:TrigProvoke:DB$ MustBlock | Duration$ UntilEndOfCombat | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.DefenderCtrl | TgtPrompt$ Select up to one target creature defending player controls\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nSVar:EndOfTurnLeavePlay:True\nSVar:PlayMain1:TRUE\nOracle:Trample, haste\\nWhen Impetuous Devils attacks, up to one target creature defending player controls blocks it this combat if able.\\nAt the beginning of the end step, sacrifice Impetuous Devils.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impetuous Devils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

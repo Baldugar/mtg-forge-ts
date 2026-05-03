@@ -1,0 +1,25 @@
+{
+  "id": "ink-treader-nephilim-corpus-m677",
+  "description": "M6 corpus — Ink-Treader Nephilim; ETB-on-bf.",
+  "seed": 62949,
+  "cards": {
+    "Ink-Treader Nephilim": "Name:Ink-Treader Nephilim\nManaCost:R G W U\nTypes:Creature Nephilim\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ Player | IsSingleTarget$ True | TargetsValid$ Card.Self | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts an instant or sorcery spell, if that spell targets only CARDNAME, copy the spell for each other creature that spell could target. Each copy targets a different one of those creatures.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ You | CopyForEachCanTarget$ Creature\nOracle:Whenever a player casts an instant or sorcery spell, if that spell targets only Ink-Treader Nephilim, copy the spell for each other creature that spell could target. Each copy targets a different one of those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ink-Treader Nephilim"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

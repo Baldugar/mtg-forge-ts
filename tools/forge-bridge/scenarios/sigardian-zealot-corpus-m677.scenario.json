@@ -1,0 +1,23 @@
+{
+  "id": "sigardian-zealot-corpus-m677",
+  "description": "M6 corpus — Sigardian Zealot; in-hand parse.",
+  "seed": 69853,
+  "cards": {
+    "Sigardian Zealot": "Name:Sigardian Zealot\nManaCost:4 G\nTypes:Creature Human Cleric\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of combat on your turn, choose any number of creatures with different powers. Each of them gets +X/+X and gains vigilance until end of turn, where X is CARDNAME's power.\nSVar:TrigChoose:DB$ ChooseCard | MinAmount$ 0 | Amount$ Max | Choices$ Creature | WithDifferentPowers$ True | AILogic$ OwnCard | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ChosenCard | NumAtt$ +X | NumDef$ +X | KW$ Vigilance | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:Max:Count$Valid Creature$DifferentCardPower\nSVar:X:Count$CardPower\nOracle:At the beginning of combat on your turn, choose any number of creatures with different powers. Each of them gets +X/+X and gains vigilance until end of turn, where X is Sigardian Zealot's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigardian Zealot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

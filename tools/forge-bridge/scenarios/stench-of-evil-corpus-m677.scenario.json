@@ -1,0 +1,23 @@
+{
+  "id": "stench-of-evil-corpus-m677",
+  "description": "M6 corpus — Stench of Evil; in-hand parse.",
+  "seed": 70976,
+  "cards": {
+    "Stench of Evil": "Name:Stench of Evil\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Plains | RememberDestroyed$ True | SubAbility$ DBPay | SpellDescription$ Destroy all Plains. For each land destroyed this way, CARDNAME deals 1 damage to that land's controller unless they pay {2}.\nSVar:DBPay:DB$ RepeatEach | DefinedCards$ DirectRemembered | UseImprinted$ True | RepeatSubAbility$ DBDmg | SubAbility$ DBCleanup | DamageMap$ True\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 1 | Defined$ ImprintedController | UnlessCost$ 2 | UnlessPayer$ ImprintedController | ShowCurrentCard$ Imprinted\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Destroy all Plains. For each land destroyed this way, Stench of Evil deals 1 damage to that land's controller unless they pay {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stench of Evil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

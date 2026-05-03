@@ -1,0 +1,23 @@
+{
+  "id": "mortality-spear-corpus-m677",
+  "description": "M6 corpus — Mortality Spear; in-hand parse.",
+  "seed": 65516,
+  "cards": {
+    "Mortality Spear": "Name:Mortality Spear\nManaCost:2 B G\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | CheckSVar$ X | Description$ CARDNAME costs {2} less to cast if you gained life this turn.\nSVar:X:Count$LifeYouGainedThisTurn\nA:SP$ Destroy | ValidTgts$ Permanent.nonland | TgtPrompt$ Select target nonland permanent | SpellDescription$ Destroy target nonland permanent.\nOracle:This spell costs {2} less to cast if you gained life this turn.\\nDestroy target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mortality Spear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

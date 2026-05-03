@@ -1,0 +1,23 @@
+{
+  "id": "planar-chaos-corpus-m677",
+  "description": "M6 corpus — Planar Chaos; in-hand parse.",
+  "seed": 66968,
+  "cards": {
+    "Planar Chaos": "Name:Planar Chaos\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigFlipUpkeep | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, flip a coin. If you lose the flip, sacrifice CARDNAME.\nSVar:TrigFlipUpkeep:DB$ FlipACoin | LoseSubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice\nT:Mode$ SpellCast | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigFlipYouCast | TriggerDescription$ Whenever a player casts a spell, that player flips a coin. If they lose the flip, counter that spell.\nSVar:TrigFlipYouCast:DB$ FlipACoin | LoseSubAbility$ DBCounter | Flipper$ TriggeredActivator\nSVar:DBCounter:DB$ Counter | Defined$ TriggeredSpellAbility\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, flip a coin. If you lose the flip, sacrifice Planar Chaos.\\nWhenever a player casts a spell, that player flips a coin. If they lose the flip, counter that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planar Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

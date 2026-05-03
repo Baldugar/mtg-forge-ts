@@ -1,0 +1,23 @@
+{
+  "id": "professor-hojo-corpus-m677",
+  "description": "M6 corpus — Professor Hojo; in-hand parse.",
+  "seed": 67251,
+  "cards": {
+    "Professor Hojo": "Name:Professor Hojo\nManaCost:1 G\nTypes:Legendary Creature Human Scientist\nPT:2/2\nS:Mode$ ReduceCost | ValidCard$ Card | ValidSpell$ Activated.YouCtrl | ValidTarget$ Creature.YouCtrl+inZoneBattlefield | Type$ Ability | Activator$ You.Active | Amount$ 2 | CheckSVar$ X | SVarCompare$ LE1 | Description$ The first activated ability you activate during your turn that targets a creature you control costs {2} less to activate.\nSVar:X:Count$ThisTurnActivated_Activated.YouCtrl+IsTargeting Valid Creature.YouCtrl~inZoneBattlefield\nT:Mode$ BecomesTargetOnce | ValidTarget$ Creature.YouCtrl+inZoneBattlefield | ValidSource$ Activated | TriggerZones$ Battlefield | Execute$ TrigDraw | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more creatures you control become the target of an activated ability, draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:The first activated ability you activate during your turn that targets a creature you control costs {2} less to activate.\\nWhenever one or more creatures you control become the target of an activated ability, draw a card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Professor Hojo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

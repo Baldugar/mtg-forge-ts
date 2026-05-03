@@ -1,0 +1,23 @@
+{
+  "id": "starfield-of-nyx-corpus-m677",
+  "description": "M6 corpus — Starfield of Nyx; in-hand parse.",
+  "seed": 70891,
+  "cards": {
+    "Starfield of Nyx": "Name:Starfield of Nyx\nManaCost:4 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, you may return target enchantment card from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeNum$ 1 | TgtPrompt$ Select target enchantment card in your graveyard | ValidTgts$ Enchantment.YouOwn\nS:Mode$ Continuous | IsPresent$ Enchantment.YouCtrl | PresentCompare$ GE5 | Affected$ Enchantment.YouCtrl+nonAura+Other | SetPower$ AffectedX | SetToughness$ AffectedX | AddType$ Creature | Description$ As long as you control five or more enchantments, each other non-Aura enchantment you control is a creature in addition to its other types and has base power and base toughness each equal to its mana value.\nSVar:AffectedX:Count$CardManaCost\nSVar:BuffedBy:Enchantment\nSVar:PlayMain1:ALWAYS\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, you may return target enchantment card from your graveyard to the battlefield.\\nAs long as you control five or more enchantments, each other non-Aura enchantment you control is a creature in addition to its other types and has base power and base toughness each equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starfield of Nyx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

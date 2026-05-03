@@ -1,0 +1,25 @@
+{
+  "id": "gond-gate-corpus-m677",
+  "description": "M6 corpus — Gond Gate; ETB-on-bf.",
+  "seed": 61567,
+  "cards": {
+    "Gond Gate": "Name:Gond Gate\nManaCost:no cost\nTypes:Land Gate\nR:Event$ Moved | ValidCard$ Gate.YouCtrl | Destination$ Battlefield | ReplaceWith$ ETBUntapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Gates you control enter untapped.\nSVar:ETBUntapped:DB$ Untap | ETB$ True | Defined$ ReplacedCard\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1 | SpellDescription$ Add {C}.\nA:AB$ ManaReflected | Cost$ T | ColorOrType$ Color | Valid$ Gate.YouCtrl | ReflectProperty$ Produce | SpellDescription$ Add one mana of any color that a Gate you control could produce.\nDeckNeeds:Type$Gate\nOracle:Gates you control enter untapped.\\n{T}: Add {C}.\\n{T}: Add one mana of any color that a Gate you control could produce.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gond Gate"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

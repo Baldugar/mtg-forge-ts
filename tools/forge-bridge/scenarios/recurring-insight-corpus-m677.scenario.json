@@ -1,0 +1,23 @@
+{
+  "id": "recurring-insight-corpus-m677",
+  "description": "M6 corpus — Recurring Insight; in-hand parse.",
+  "seed": 67909,
+  "cards": {
+    "Recurring Insight": "Name:Recurring Insight\nManaCost:4 U U\nTypes:Sorcery\nK:Rebound\nA:SP$ Pump | ValidTgts$ Opponent | SubAbility$ DBDraw | StackDescription$ None | SpellDescription$ Draw cards equal to the number of cards in target opponent's hand.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TargetedPlayer$CardsInHand\nAI:RemoveDeck:All\nOracle:Draw cards equal to the number of cards in target opponent's hand.\\nRebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recurring Insight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "monstrous-war-leech-corpus-m677",
+  "description": "M6 corpus — Monstrous War-Leech; in-hand parse.",
+  "seed": 65446,
+  "cards": {
+    "Monstrous War-Leech": "Name:Monstrous War-Leech\nManaCost:3 B\nTypes:Creature Leech Horror\nPT:*/*\nK:Kicker:U\nK:ETBReplacement:Other:TrigMill\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You | ConditionDefined$ Self | ConditionPresent$ Card.kicked | SpellDescription$ As CARDNAME enters, if it was kicked, mill four cards. (To mill a card, put the top card of your library into your graveyard.)\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the highest mana value among cards in your graveyard.\nSVar:X:Count$ValidGraveyard Card.YouOwn$GreatestCardManaCost\nSVar:NoZeroToughnessAI:True\nDeckHas:Ability$Graveyard|Mill\nDeckHints:Color$Blue\nOracle:Kicker {U} (You may pay an additional {U} as you cast this spell.)\\nAs Monstrous War-Leech enters, if it was kicked, mill four cards. (To mill a card, put the top card of your library into your graveyard.)\\nMonstrous War-Leech's power and toughness are each equal to the highest mana value among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monstrous War-Leech"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

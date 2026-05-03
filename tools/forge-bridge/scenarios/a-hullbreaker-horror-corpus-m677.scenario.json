@@ -1,0 +1,25 @@
+{
+  "id": "a-hullbreaker-horror-corpus-m677",
+  "description": "M6 corpus — A-Hullbreaker Horror; ETB-on-bf.",
+  "seed": 68747,
+  "cards": {
+    "A-Hullbreaker Horror": "Name:A-Hullbreaker Horror\nManaCost:5 U U\nTypes:Creature Kraken Horror\nPT:7/8\nK:Flash\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ ControlReturn,ControlBounce | MinCharmNum$ 0 | CharmNum$ 1\nSVar:ControlReturn:DB$ ChangeZone | ValidTgts$ Card.YouDontCtrl | TgtPrompt$ Select target spell you don't control | TgtZone$ Stack | Origin$ Stack | Destination$ Hand | SpellDescription$ Return target spell you don't control to its owner's hand.\nSVar:ControlBounce:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | TgtZone$ Battlefield | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target nonland permanent to its owner's hand.\nOracle:Flash\\nWhenever you cast a spell, choose up to one —\\n• Return target spell you don't control to its owner's hand.\\n• Return target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "A-Hullbreaker Horror"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

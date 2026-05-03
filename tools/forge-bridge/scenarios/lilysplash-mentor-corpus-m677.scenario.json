@@ -1,0 +1,25 @@
+{
+  "id": "lilysplash-mentor-corpus-m677",
+  "description": "M6 corpus — Lilysplash Mentor; ETB-on-bf.",
+  "seed": 64277,
+  "cards": {
+    "Lilysplash Mentor": "Name:Lilysplash Mentor\nManaCost:2 G U\nTypes:Creature Frog Druid\nPT:4/4\nK:Reach\nA:AB$ ChangeZone | Cost$ 1 G U | ValidTgts$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select another target creature you control | RememberChanged$ True | SorcerySpeed$ True | SubAbility$ DBReturn | SpellDescription$ Exile another target creature you control, then return it to the battlefield under its owner's control with a +1/+1 counter on it. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | WithCountersType$ P1P1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Reach\\n{1}{G}{U}: Exile another target creature you control, then return it to the battlefield under its owner's control with a +1/+1 counter on it. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lilysplash Mentor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "incisor-glider-corpus-m677",
+  "description": "M6 corpus — Incisor Glider; in-hand parse.",
+  "seed": 62847,
+  "cards": {
+    "Incisor Glider": "Name:Incisor Glider\nManaCost:1 W\nTypes:Artifact Creature Phyrexian Construct\nPT:1/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAttack | CheckSVar$ X | SVarCompare$ GE3 | TriggerDescription$ Corrupted — Whenever CARDNAME attacks, if an opponent has three or more poison counters, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAttack:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nSVar:HasAttackEffect:TRUE\nDeckHints:Keyword$Infect|Toxic & Ability$Proliferate\nOracle:Flying\\nCorrupted — Whenever Incisor Glider attacks, if an opponent has three or more poison counters, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incisor Glider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

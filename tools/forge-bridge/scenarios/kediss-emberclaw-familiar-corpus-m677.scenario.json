@@ -1,0 +1,23 @@
+{
+  "id": "kediss-emberclaw-familiar-corpus-m677",
+  "description": "M6 corpus — Kediss, Emberclaw Familiar; in-hand parse.",
+  "seed": 63548,
+  "cards": {
+    "Kediss, Emberclaw Familiar": "Name:Kediss, Emberclaw Familiar\nManaCost:1 R\nTypes:Legendary Creature Elemental Lizard\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Creature.IsCommander+YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSlug | TriggerZones$ Battlefield | TriggerDescription$ Whenever a commander you control deals combat damage to an opponent, it deals that much damage to each other opponent.\nSVar:TrigSlug:DB$ DamageAll | ValidPlayers$ OppNonTriggeredTarget | NumDmg$ X | DamageSource$ TriggeredSource\nSVar:X:TriggerCount$DamageAmount\nK:Partner\nSVar:BuffedBy:Card.IsCommander\nAI:RemoveDeck:NonCommander\nOracle:Whenever a commander you control deals combat damage to an opponent, it deals that much damage to each other opponent.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kediss, Emberclaw Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

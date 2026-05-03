@@ -1,0 +1,23 @@
+{
+  "id": "settle-beyond-reality-corpus-m677",
+  "description": "M6 corpus — Settle Beyond Reality; in-hand parse.",
+  "seed": 69523,
+  "cards": {
+    "Settle Beyond Reality": "Name:Settle Beyond Reality\nManaCost:4 W\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBExile,DBFlicker\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | SpellDescription$ Exile target creature you don't control.\nSVar:DBFlicker:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature you control | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile target creature you control, then return it to the battlefield under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Choose one or both —\\n• Exile target creature you don't control.\\n• Exile target creature you control, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Settle Beyond Reality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

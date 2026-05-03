@@ -1,0 +1,23 @@
+{
+  "id": "open-into-wonder-corpus-m677",
+  "description": "M6 corpus — Open into Wonder; in-hand parse.",
+  "seed": 66345,
+  "cards": {
+    "Open into Wonder": "Name:Open into Wonder\nManaCost:X U U\nTypes:Sorcery\nA:SP$ Effect | ValidTgts$ Creature | TargetMin$ X | TargetMax$ X | TgtPrompt$ Select X target creatures | AILogic$ Pump | RememberObjects$ Targeted | StaticAbilities$ Unblockable | SubAbility$ DBAnimate | StackDescription$ X target creatures [{c:Targeted}] can't be blocked this turn. | SpellDescription$ X target creatures can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ These creatures can't be blocked this turn.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Triggers$ OpenIntoWonderTrigger | StackDescription$ SpellDescription | SpellDescription$ Until end of turn, those creatures gain \"Whenever this creature deals combat damage to a player, draw a card.\"\nSVar:OpenIntoWonderTrigger:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ OpenIntoWonderDraw | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, draw a card.\nSVar:OpenIntoWonderDraw:DB$ Draw\nSVar:X:Count$xPaid\nOracle:X target creatures can't be blocked this turn. Until end of turn, those creatures gain \"Whenever this creature deals combat damage to a player, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Open into Wonder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

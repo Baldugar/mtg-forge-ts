@@ -1,0 +1,23 @@
+{
+  "id": "natural-emergence-corpus-m677",
+  "description": "M6 corpus — Natural Emergence; in-hand parse.",
+  "seed": 65757,
+  "cards": {
+    "Natural Emergence": "Name:Natural Emergence\nManaCost:2 R G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, return a red or green enchantment you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | ChangeType$ Enchantment.YouCtrl+Red,Enchantment.YouCtrl+Green | ChangeNum$ 1 | Mandatory$ True | AILogic$ NeverBounceItself\nS:Mode$ Continuous | Affected$ Land.YouCtrl | SetPower$ 2 | SetToughness$ 2 | AddType$ Creature | AddKeyword$ First Strike | Description$ Lands you control are 2/2 creatures with first strike. They're still lands.\nSVar:NeedsToPlay:Enchantment.Red+YouCtrl,Enchantment.Green+YouCtrl\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nDeckNeeds:Type$Enchantment\nOracle:When Natural Emergence enters, return a red or green enchantment you control to its owner's hand.\\nLands you control are 2/2 creatures with first strike. They're still lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Natural Emergence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

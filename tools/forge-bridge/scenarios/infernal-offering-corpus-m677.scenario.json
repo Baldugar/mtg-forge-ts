@@ -1,0 +1,23 @@
+{
+  "id": "infernal-offering-corpus-m677",
+  "description": "M6 corpus — Infernal Offering; in-hand parse.",
+  "seed": 62906,
+  "cards": {
+    "Infernal Offering": "Name:Infernal Offering\nManaCost:4 B\nTypes:Sorcery\nA:SP$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | SubAbility$ DBSac | SpellDescription$ Choose an opponent. You and that player each sacrifice a creature. Each player who sacrificed a creature this way draws two cards. Choose an opponent. Return a creature card from your graveyard to the battlefield, then that player returns a creature card from their graveyard to the battlefield.\nSVar:DBSac:DB$ Sacrifice | Defined$ .Chosen,You | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ .Chosen,You | RepeatSubAbility$ DBDraw | SubAbility$ DBChoose\nSVar:DBDraw:DB$ Draw | Defined$ Player.IsRemembered | NumCards$ 2 | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:X:RememberedLKI$Valid Creature.RememberedPlayerCtrl\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | SubAbility$ DBReturnYou\nSVar:DBReturnYou:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.YouCtrl | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | SubAbility$ DBReturnOpp\nSVar:DBReturnOpp:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.ChosenCtrl | DefinedPlayer$ ChosenPlayer | Chooser$ ChosenPlayer | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose an opponent. You and that player each sacrifice a creature. Each player who sacrificed a creature this way draws two cards.\\nChoose an opponent. Return a creature card from your graveyard to the battlefield, then that player returns a creature card from their graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infernal Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

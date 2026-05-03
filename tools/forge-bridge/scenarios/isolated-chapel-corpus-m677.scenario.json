@@ -1,0 +1,25 @@
+{
+  "id": "isolated-chapel-corpus-m677",
+  "description": "M6 corpus — Isolated Chapel; ETB-on-bf.",
+  "seed": 63160,
+  "cards": {
+    "Isolated Chapel": "Name:Isolated Chapel\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Plains or a Swamp.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Plains.YouCtrl,Swamp.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SpellDescription$ Add {W} or {B}.\nOracle:Isolated Chapel enters tapped unless you control a Plains or a Swamp.\\n{T}: Add {W} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Isolated Chapel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

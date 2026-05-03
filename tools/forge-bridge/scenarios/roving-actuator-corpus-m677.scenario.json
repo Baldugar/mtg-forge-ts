@@ -1,0 +1,23 @@
+{
+  "id": "roving-actuator-corpus-m677",
+  "description": "M6 corpus — Roving Actuator; in-hand parse.",
+  "seed": 68557,
+  "cards": {
+    "Roving Actuator": "Name:Roving Actuator\nManaCost:3 R\nTypes:Artifact Creature Robot\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | CheckSVar$ X | TriggerDescription$ Void — When this creature enters, if a nonland permanent left the battlefield this turn or a spell was warped this turn, exile up to one target instant or sorcery card with mana value 2 or less from your graveyard. Copy it. You may cast the copy without paying its mana cost.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose up to one target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouOwn+cmcLE2,Sorcery.YouOwn+cmcLE2 | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | Optional$ True | CopyCard$ True | WithoutManaCost$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Void.1.0\nOracle:Void — When this creature enters, if a nonland permanent left the battlefield this turn or a spell was warped this turn, exile up to one target instant or sorcery card with mana value 2 or less from your graveyard. Copy it. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roving Actuator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

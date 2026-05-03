@@ -1,0 +1,23 @@
+{
+  "id": "seshiro-the-anointed-corpus-m677",
+  "description": "M6 corpus — Seshiro the Anointed; in-hand parse.",
+  "seed": 69512,
+  "cards": {
+    "Seshiro the Anointed": "Name:Seshiro the Anointed\nManaCost:4 G G\nTypes:Legendary Creature Snake Monk\nPT:3/4\nS:Mode$ Continuous | Affected$ Creature.Snake+Other+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Other Snake creatures you control get +2/+2.\nT:Mode$ DamageDone | ValidSource$ Snake.YouCtrl | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDraw | TriggerDescription$ Whenever a Snake you control deals combat damage to a player, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHints:Type$Snake\nOracle:Other Snake creatures you control get +2/+2.\\nWhenever a Snake you control deals combat damage to a player, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seshiro the Anointed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

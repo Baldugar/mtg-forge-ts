@@ -1,0 +1,25 @@
+{
+  "id": "interplanar-beacon-corpus-m677",
+  "description": "M6 corpus — Interplanar Beacon; ETB-on-bf.",
+  "seed": 63026,
+  "cards": {
+    "Interplanar Beacon": "Name:Interplanar Beacon\nManaCost:no cost\nTypes:Land\nT:Mode$ SpellCast | ValidCard$ Planeswalker | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a planeswalker spell, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Combo AnyDifferent | Amount$ 2 | RestrictValid$ Spell.Planeswalker | SpellDescription$ Add two mana of different colors. Spend this mana only to cast planeswalker spells.\nAI:RemoveDeck:All\nOracle:Whenever you cast a planeswalker spell, you gain 1 life.\\n{T}: Add {C}.\\n{1}, {T}: Add two mana of different colors. Spend this mana only to cast planeswalker spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Interplanar Beacon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

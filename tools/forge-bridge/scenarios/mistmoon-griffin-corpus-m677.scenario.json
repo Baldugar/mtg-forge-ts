@@ -1,0 +1,23 @@
+{
+  "id": "mistmoon-griffin-corpus-m677",
+  "description": "M6 corpus — Mistmoon Griffin; in-hand parse.",
+  "seed": 65317,
+  "cards": {
+    "Mistmoon Griffin": "Name:Mistmoon Griffin\nManaCost:3 W\nTypes:Creature Griffin\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExileMe | TriggerDescription$ When CARDNAME dies, exile CARDNAME, then return the top creature card of your graveyard to the battlefield.\nSVar:TrigExileMe:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBReturnCreature\nSVar:DBReturnCreature:DB$ ChangeZoneAll | ChangeType$ Creature.YouOwn+TopGraveyardCreature | Origin$ Graveyard | Destination$ Battlefield\nSVar:NeedsOrderedGraveyard:TRUE\nOracle:Flying\\nWhen Mistmoon Griffin dies, exile Mistmoon Griffin, then return the top creature card of your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistmoon Griffin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

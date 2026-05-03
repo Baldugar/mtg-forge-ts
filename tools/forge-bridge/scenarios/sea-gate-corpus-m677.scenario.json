@@ -1,0 +1,23 @@
+{
+  "id": "sea-gate-corpus-m677",
+  "description": "M6 corpus — Sea Gate; in-hand parse.",
+  "seed": 69262,
+  "cards": {
+    "Sea Gate": "Name:Sea Gate\nManaCost:no cost\nTypes:Land Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | Exclude$ blue | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color other than blue.\nA:AB$ Mana | Cost$ T | Produced$ Combo U Chosen | SpellDescription$ Add {U} or one mana of the chosen color.\nOracle:Sea Gate enters tapped.\\nAs Sea Gate enters, choose a color other than blue.\\n{T}: Add {U} or one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sea Gate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

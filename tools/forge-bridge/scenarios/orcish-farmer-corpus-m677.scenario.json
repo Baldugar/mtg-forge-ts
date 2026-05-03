@@ -1,0 +1,25 @@
+{
+  "id": "orcish-farmer-corpus-m677",
+  "description": "M6 corpus — Orcish Farmer; ETB-on-bf.",
+  "seed": 66386,
+  "cards": {
+    "Orcish Farmer": "Name:Orcish Farmer\nManaCost:1 R R\nTypes:Creature Orc\nPT:2/2\nA:AB$ Effect | Cost$ T | ValidTgts$ Land | Duration$ Permanent | ExileOnMoved$ Battlefield | RememberObjects$ Targeted | StaticAbilities$ Animate | Triggers$ ExileEff\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Swamp | RemoveLandTypes$ True | Description$ Target land becomes a Swamp until its controller's next untap step.\nSVar:ExileEff:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player.controlsCard.IsRemembered | Execute$ Exile | Static$ True\nSVar:Exile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:{T}: Target land becomes a Swamp until its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Orcish Farmer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

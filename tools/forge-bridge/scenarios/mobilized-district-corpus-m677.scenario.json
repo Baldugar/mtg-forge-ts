@@ -1,0 +1,25 @@
+{
+  "id": "mobilized-district-corpus-m677",
+  "description": "M6 corpus — Mobilized District; ETB-on-bf.",
+  "seed": 65353,
+  "cards": {
+    "Mobilized District": "Name:Mobilized District\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Animate | Cost$ 4 | Defined$ Self | Power$ 3 | Toughness$ 3 | Types$ Creature,Citizen | Keywords$ Vigilance | ReduceCost$ X | SpellDescription$ CARDNAME becomes a 3/3 Citizen creature with vigilance until end of turn. It's still a land. This ability costs {1} less to activate for each legendary creature and planeswalker you control.\nSVar:X:Count$Valid Creature.Legendary+YouCtrl,Planeswalker.Legendary+YouCtrl\nSVar:BuffedBy:Creature.Legendary,Planeswalker.Legendary\nAI:RemoveDeck:Random\nOracle:{T}: Add {C}.\\n{4}: Mobilized District becomes a 3/3 Citizen creature with vigilance until end of turn. It's still a land. This ability costs {1} less to activate for each legendary creature and planeswalker you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mobilized District"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

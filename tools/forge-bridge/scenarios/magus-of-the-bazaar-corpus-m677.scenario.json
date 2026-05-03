@@ -1,0 +1,25 @@
+{
+  "id": "magus-of-the-bazaar-corpus-m677",
+  "description": "M6 corpus — Magus of the Bazaar; ETB-on-bf.",
+  "seed": 64615,
+  "cards": {
+    "Magus of the Bazaar": "Name:Magus of the Bazaar\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:0/1\nA:AB$ Draw | Cost$ T | NumCards$ 2 | SpellDescription$ Draw two cards, then discard three cards. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 3 | Mode$ TgtChoose\nAI:RemoveDeck:All\nOracle:{T}: Draw two cards, then discard three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Magus of the Bazaar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

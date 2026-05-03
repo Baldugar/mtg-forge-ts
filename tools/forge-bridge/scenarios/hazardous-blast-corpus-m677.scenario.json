@@ -1,0 +1,23 @@
+{
+  "id": "hazardous-blast-corpus-m677",
+  "description": "M6 corpus — Hazardous Blast; in-hand parse.",
+  "seed": 62131,
+  "cards": {
+    "Hazardous Blast": "Name:Hazardous Blast\nManaCost:3 R\nTypes:Sorcery\nA:SP$ DamageAll | ValidCards$ Creature.OppCtrl | NumDmg$ 1 | SubAbility$ OppCantBlock | SpellDescription$ CARDNAME deals 1 damage to each creature your opponents control. Creatures your opponents control can't block this turn.\nSVar:OppCantBlock:DB$ Effect | StaticAbilities$ KWPump | SpellDescription$ Creatures your opponents control can't block this turn.\nSVar:KWPump:Mode$ CantBlock | ValidCard$ Creature.OppCtrl | Description$ Creatures your opponents control can't block this turn.\nOracle:Hazardous Blast deals 1 damage to each creature your opponents control. Creatures your opponents control can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hazardous Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

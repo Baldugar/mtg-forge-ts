@@ -1,0 +1,23 @@
+{
+  "id": "nylea-s-huntmaster-corpus-m677",
+  "description": "M6 corpus — Nylea's Huntmaster; in-hand parse.",
+  "seed": 66121,
+  "cards": {
+    "Nylea's Huntmaster": "Name:Nylea's Huntmaster\nManaCost:3 G\nTypes:Creature Centaur Shaman\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature you control gets +X/+0 until end of turn, where X is your devotion to green. (Each {G} in the mana costs of permanents you control counts toward your devotion to green.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X\nSVar:X:Count$Devotion.Green\nOracle:When Nylea's Huntmaster enters, target creature you control gets +X/+0 until end of turn, where X is your devotion to green. (Each {G} in the mana costs of permanents you control counts toward your devotion to green.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nylea's Huntmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

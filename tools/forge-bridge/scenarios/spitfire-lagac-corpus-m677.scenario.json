@@ -1,0 +1,23 @@
+{
+  "id": "spitfire-lagac-corpus-m677",
+  "description": "M6 corpus — Spitfire Lagac; in-hand parse.",
+  "seed": 70730,
+  "cards": {
+    "Spitfire Lagac": "Name:Spitfire Lagac\nManaCost:3 R\nTypes:Creature Lizard\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Landfall — Whenever a land you control enters, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nOracle:Landfall — Whenever a land you control enters, Spitfire Lagac deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spitfire Lagac"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rugged-highlands-corpus-m677",
+  "description": "M6 corpus — Rugged Highlands; in-hand parse.",
+  "seed": 68582,
+  "cards": {
+    "Rugged Highlands": "Name:Rugged Highlands\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nDeckHas:Ability$LifeGain\nOracle:Rugged Highlands enters tapped.\\nWhen Rugged Highlands enters, you gain 1 life.\\n{T}: Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rugged Highlands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

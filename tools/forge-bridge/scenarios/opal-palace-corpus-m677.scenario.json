@@ -1,0 +1,25 @@
+{
+  "id": "opal-palace-corpus-m677",
+  "description": "M6 corpus — Opal Palace; ETB-on-bf.",
+  "seed": 66340,
+  "cards": {
+    "Opal Palace": "Name:Opal Palace\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Combo ColorIdentity | AddsCounters$ Card.YouOwn+IsCommander_P1P1_ManaAddsCounterNum | SpellDescription$ Add one mana of any color in your commander's color identity. If you spend this mana to cast your commander, it enters with a number of additional +1/+1 counters on it equal to the number of times it's been cast from the command zone this game.\nSVar:ManaAddsCounterNum:Count$CommanderCastFromCommandZone\nAI:RemoveDeck:NonCommander\nOracle:{T}: Add {C}.\\n{1}, {T}: Add one mana of any color in your commander's color identity. If you spend this mana to cast your commander, it enters with a number of additional +1/+1 counters on it equal to the number of times it's been cast from the command zone this game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Opal Palace"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

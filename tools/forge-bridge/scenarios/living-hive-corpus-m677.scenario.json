@@ -1,0 +1,23 @@
+{
+  "id": "living-hive-corpus-m677",
+  "description": "M6 corpus — Living Hive; in-hand parse.",
+  "seed": 64308,
+  "cards": {
+    "Living Hive": "Name:Living Hive\nManaCost:6 G G\nTypes:Creature Elemental Insect\nPT:6/6\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigToken | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create that many 1/1 green Insect creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_insect | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nOracle:Trample\\nWhenever Living Hive deals combat damage to a player, create that many 1/1 green Insect creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Living Hive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

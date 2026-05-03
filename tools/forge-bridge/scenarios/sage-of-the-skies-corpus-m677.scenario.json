@@ -1,0 +1,25 @@
+{
+  "id": "sage-of-the-skies-corpus-m677",
+  "description": "M6 corpus — Sage of the Skies; ETB-on-bf.",
+  "seed": 68867,
+  "cards": {
+    "Sage of the Skies": "Name:Sage of the Skies\nManaCost:2 W\nTypes:Creature Human Monk\nPT:2/3\nK:Flying\nK:Lifelink\nT:Mode$ SpellCast | CheckSVar$ X | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, if you've cast another spell this turn, copy this spell. (The copy becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility\nSVar:X:Count$ThisTurnCast_Card.YouCtrl+!CastSaSource\nOracle:When you cast this spell, if you've cast another spell this turn, copy this spell. (The copy becomes a token.)\\nFlying, lifelink\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sage of the Skies"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

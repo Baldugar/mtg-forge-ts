@@ -1,0 +1,23 @@
+{
+  "id": "lost-legacy-corpus-m677",
+  "description": "M6 corpus — Lost Legacy; in-hand parse.",
+  "seed": 64420,
+  "cards": {
+    "Lost Legacy": "Name:Lost Legacy\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonLand+nonArtifact | ValidDescription$ nonartifact, nonland | SubAbility$ ExileHand | SpellDescription$ Choose a nonartifact, nonland card name. Search target player's graveyard, hand, and library for any number of cards with that name and exile them. That player shuffles, then draws a card for each card exiled from their hand this way. | StackDescription$ SpellDescription\nSVar:ExileHand:DB$ ChangeZone | ValidTgts$ Player | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Card.NamedCard | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | RememberChanged$ True | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Card.NamedCard | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ ExileYard | StackDescription$ None\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Card.NamedCard | ChangeNum$ NumInYard | Chooser$ You | Hidden$ True | SubAbility$ Draw | StackDescription$ None\nSVar:Draw:DB$ Draw | Defined$ TargetedPlayer | NumCards$ X | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInYard:TargetedPlayer$CardsInGraveyard\nAI:RemoveDeck:All\nOracle:Choose a nonartifact, nonland card name. Search target player's graveyard, hand, and library for any number of cards with that name and exile them. That player shuffles, then draws a card for each card exiled from their hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lost Legacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

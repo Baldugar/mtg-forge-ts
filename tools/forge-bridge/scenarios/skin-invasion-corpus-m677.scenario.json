@@ -1,0 +1,23 @@
+{
+  "id": "skin-invasion-corpus-m677",
+  "description": "M6 corpus — Skin Invasion; in-hand parse.",
+  "seed": 70035,
+  "cards": {
+    "Skin Invasion": "Name:Skin Invasion\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ MustAttack | ValidCreature$ Creature.EnchantedBy | Description$ Enchanted creature attacks each combat if able.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EnchantedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted creature dies, return CARDNAME to the battlefield transformed under your control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Transformed$ True | GainControl$ True | Defined$ Self\nAlternateMode:DoubleFaced\nOracle:Enchant creature\\nEnchanted creature attacks each combat if able.\\nWhen enchanted creature dies, return Skin Invasion to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Skin Shedder\nManaCost:no cost\nColors:red\nTypes:Creature Insect Horror\nPT:3/4\nOracle:\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skin Invasion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

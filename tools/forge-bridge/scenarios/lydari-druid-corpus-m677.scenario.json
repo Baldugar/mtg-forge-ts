@@ -1,0 +1,23 @@
+{
+  "id": "lydari-druid-corpus-m677",
+  "description": "M6 corpus — Lydari Druid; in-hand parse.",
+  "seed": 64530,
+  "cards": {
+    "Lydari Druid": "Name:Lydari Druid\nManaCost:2 G\nTypes:Creature Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ When CARDNAME enters, for each land on the battlefield, choose a basic land type at random. Those lands become the land types chosen this way. (This effect lasts indefinitely.)\nSVar:TrigRepeat:DB$ RepeatEach | RepeatCards$ Land | RepeatSubAbility$ DBChooseLT | SubAbility$ DBCleanup\nSVar:DBChooseLT:DB$ ChooseType | Defined$ You | AtRandom$ True | Type$ Basic Land | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Types$ ChosenType | RemoveLandTypes$ True | Duration$ Permanent\nSVar:DBCleanup:DB$ Cleanup | ClearChosenType$ True\nOracle:When Lydari Druid enters, for each land on the battlefield, choose a basic land type at random. Those lands become the land types chosen this way. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lydari Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "silverquill-command-corpus-m677",
+  "description": "M6 corpus — Silverquill Command; in-hand parse.",
+  "seed": 69935,
+  "cards": {
+    "Silverquill Command": "Name:Silverquill Command\nManaCost:2 W B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBPump,DBReturn,DBDraw,SacCreature | CharmNum$ 2\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | KW$ Flying | SpellDescription$ Target creature gets +3/+3 and gains flying until end of turn.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Card.Creature+cmcLE2+YouOwn | TgtPrompt$ Select target creature card with mana value 2 or less | SpellDescription$ Return target creature card with mana value 2 or less from your graveyard to the battlefield.\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | NumCards$ 1 | SubAbility$ DBLoseLife | SpellDescription$ Target player draws a card and loses 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1 | Defined$ ParentTarget\nSVar:SacCreature:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature | SpellDescription$ Target opponent sacrifices a creature.\nOracle:Choose two —\\n• Target creature gets +3/+3 and gains flying until end of turn.\\n• Return target creature card with mana value 2 or less from your graveyard to the battlefield.\\n• Target player draws a card and loses 1 life.\\n• Target opponent sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silverquill Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

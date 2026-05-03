@@ -1,0 +1,23 @@
+{
+  "id": "mind-ravel-corpus-m677",
+  "description": "M6 corpus — Mind Ravel; in-hand parse.",
+  "seed": 65154,
+  "cards": {
+    "Mind Ravel": "Name:Mind Ravel\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DelTrigSlowtrip | SpellDescription$ Target player discards a card. Draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Target player discards a card.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Ravel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

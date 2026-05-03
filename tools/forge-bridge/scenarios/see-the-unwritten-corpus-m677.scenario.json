@@ -1,0 +1,23 @@
+{
+  "id": "see-the-unwritten-corpus-m677",
+  "description": "M6 corpus — See the Unwritten; in-hand parse.",
+  "seed": 69360,
+  "cards": {
+    "See the Unwritten": "Name:See the Unwritten\nManaCost:4 G G\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 8 | Reveal$ True | ChangeNum$ X | ChangeValid$ Creature | Optional$ True | DestinationZone$ Battlefield | DestinationZone2$ Graveyard | SpellDescription$ Reveal the top eight cards of your library. You may put a creature card from among them onto the battlefield. Put the rest into your graveyard. Ferocious — If you control a creature with power 4 or greater, you may put two creature cards onto the battlefield instead of one.\nSVar:X:Count$Compare Y GE1.2.1\nSVar:Y:Count$Valid Creature.YouCtrl+powerGE4\nOracle:Reveal the top eight cards of your library. You may put a creature card from among them onto the battlefield. Put the rest into your graveyard.\\nFerocious — If you control a creature with power 4 or greater, you may put two creature cards onto the battlefield instead of one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "See the Unwritten"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

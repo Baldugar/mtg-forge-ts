@@ -1,0 +1,23 @@
+{
+  "id": "invoke-despair-corpus-m677",
+  "description": "M6 corpus — Invoke Despair; in-hand parse.",
+  "seed": 63099,
+  "cards": {
+    "Invoke Despair": "Name:Invoke Despair\nManaCost:1 B B B B\nTypes:Sorcery\nA:SP$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBLoseLifeC | StackDescription$ REP Target opponent_{p:Targeted} | SpellDescription$ Target opponent sacrifices a creature.\nSVar:DBLoseLifeC:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 2 | SubAbility$ DBDrawC | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | StackDescription$ REP you draw_{p:You} draws | SpellDescription$ If they can't, they lose 2 life and you draw a card.\nSVar:DBDrawC:DB$ Draw | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanC | StackDescription$ None\nSVar:DBCleanC:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBSacrificeE\nSVar:DBSacrificeE:DB$ Sacrifice | Defined$ Targeted | SacValid$ Enchantment | RememberSacrificed$ True | SubAbility$ DBLoseLifeE | StackDescription$ SpellDescription | SpellDescription$ Then repeat this process for an enchantment and a planeswalker.\nSVar:DBLoseLifeE:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 2 | SubAbility$ DBDrawE | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | StackDescription$ None\nSVar:DBDrawE:DB$ Draw | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanE | StackDescription$ None\nSVar:DBCleanE:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBSacrificeP\nSVar:DBSacrificeP:DB$ Sacrifice | Defined$ Targeted | SacValid$ Planeswalker | RememberSacrificed$ True | SubAbility$ DBLoseLifeP | StackDescription$ None\nSVar:DBLoseLifeP:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 2 | SubAbility$ DBDrawP | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | StackDescription$ None\nSVar:DBDrawP:DB$ Draw | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanP | StackDescription$ None\nSVar:DBCleanP:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Target opponent sacrifices a creature. If they can't, they lose 2 life and you draw a card. Then repeat this process for an enchantment and a planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invoke Despair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

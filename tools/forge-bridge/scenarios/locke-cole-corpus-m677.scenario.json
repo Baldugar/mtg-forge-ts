@@ -1,0 +1,23 @@
+{
+  "id": "locke-cole-corpus-m677",
+  "description": "M6 corpus — Locke Cole; in-hand parse.",
+  "seed": 64351,
+  "cards": {
+    "Locke Cole": "Name:Locke Cole\nManaCost:1 U B\nTypes:Legendary Creature Human Rogue\nPT:2/3\nK:Deathtouch\nK:Lifelink\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:Deathtouch, lifelink\\nWhenever Locke Cole deals combat damage to a player, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Locke Cole"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

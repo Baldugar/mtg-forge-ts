@@ -1,0 +1,23 @@
+{
+  "id": "instigator-gang-corpus-m677",
+  "description": "M6 corpus — Instigator Gang; in-hand parse.",
+  "seed": 63012,
+  "cards": {
+    "Instigator Gang": "Name:Instigator Gang\nManaCost:3 R\nTypes:Creature Human Werewolf\nPT:2/3\nS:Mode$ Continuous | Affected$ Creature.attacking+YouCtrl | AddPower$ 1 | Description$ Attacking creatures you control get +1/+0.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Attacking creatures you control get +1/+0.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Instigator Gang.\n\nALTERNATE\n\nName:Wildblood Pack\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:5/5\nK:Trample\nS:Mode$ Continuous | Affected$ Creature.attacking+YouCtrl | AddPower$ 3 | Description$ Attacking creatures you control get +3/+0.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Trample\\nAttacking creatures you control get +3/+0.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Wildblood Pack.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Instigator Gang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

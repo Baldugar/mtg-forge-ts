@@ -1,0 +1,23 @@
+{
+  "id": "karvanista-loyal-lupari-corpus-m677",
+  "description": "M6 corpus — Karvanista, Loyal Lupari; in-hand parse.",
+  "seed": 63502,
+  "cards": {
+    "Karvanista, Loyal Lupari": "Name:Karvanista, Loyal Lupari\nManaCost:4 G\nTypes:Legendary Creature Alien Dog Soldier\nPT:5/5\nK:Vigilance\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever NICKNAME attacks, put a +1/+1 counter on each Human you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.Human+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Type$Human\nDeckHints:Ability$Counters\nSVar:HasAttackEffect:TRUE\nAlternateMode:Adventure\nOracle:Vigilance, trample, haste\\nWhenever Karvanista attacks, put a +1/+1 counter on each Human you control.\n\nALTERNATE\n\nName:Lupari Shield\nManaCost:1 G\nTypes:Sorcery Adventure\nA:SP$ PumpAll | ValidCards$ Human.YouCtrl | KW$ Indestructible | Duration$ UntilYourNextTurn | SpellDescription$ Humans you control gain indestructible until your next turn. (Then exile this card. You may cast the creature later from exile.)\nSVar:PlayMain1:TRUE\nOracle:Humans you control gain indestructible until your next turn. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karvanista, Loyal Lupari"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

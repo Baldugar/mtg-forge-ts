@@ -1,0 +1,25 @@
+{
+  "id": "nemesis-phoenix-corpus-m677",
+  "description": "M6 corpus — Nemesis Phoenix; ETB-on-bf.",
+  "seed": 65834,
+  "cards": {
+    "Nemesis Phoenix": "Name:Nemesis Phoenix\nManaCost:3 R R\nTypes:Creature Phoenix\nPT:4/2\nK:Flying\nA:AB$ ChangeZone | Cost$ 2 R | ActivationZone$ Graveyard | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Attacking$ True | ActivationPhases$ Declare Attackers | CheckSVar$ X | SVarCompare$ GE2 | SpellDescription$ Return CARDNAME from your graveyard to the battlefield tapped and attacking. Activate only during the declare attackers step and only if you're attacking two or more opponents.\nSVar:X:PlayerCountPropertyYou$OpponentsAttackedThisCombat\nSVar:SacMe:1\nSVar:DiscardMe:1\nAI:RemoveDeck:Random\nDeckHas:Ability$Graveyard\nDeckHints:Keyword$Encore|Myriad\nOracle:Flying\\n{2}{R}: Return Nemesis Phoenix from your graveyard to the battlefield tapped and attacking. Activate only during the declare attackers step and only if you're attacking two or more opponents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nemesis Phoenix"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

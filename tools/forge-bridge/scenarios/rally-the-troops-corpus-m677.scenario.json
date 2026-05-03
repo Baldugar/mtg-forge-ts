@@ -1,0 +1,23 @@
+{
+  "id": "rally-the-troops-corpus-m677",
+  "description": "M6 corpus — Rally the Troops; in-hand parse.",
+  "seed": 67647,
+  "cards": {
+    "Rally the Troops": "Name:Rally the Troops\nManaCost:W\nTypes:Instant\nA:SP$ UntapAll | ValidCards$ Creature.YouCtrl | CheckSVar$ X | ActivationPhases$ Declare Attackers | SpellDescription$ Cast this spell only during the declare attackers step and only if you've been attacked this step. Untap all creatures you control.\nSVar:X:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nAI:RemoveDeck:All\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nUntap all creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rally the Troops"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

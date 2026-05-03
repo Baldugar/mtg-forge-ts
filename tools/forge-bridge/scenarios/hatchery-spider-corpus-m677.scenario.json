@@ -1,0 +1,25 @@
+{
+  "id": "hatchery-spider-corpus-m677",
+  "description": "M6 corpus — Hatchery Spider; ETB-on-bf.",
+  "seed": 62098,
+  "cards": {
+    "Hatchery Spider": "Name:Hatchery Spider\nManaCost:5 G G\nTypes:Creature Spider\nPT:5/7\nK:Reach\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Undergrowth — When you cast this spell, reveal the top X cards of your library, where X is the number of creature cards in your graveyard. You may put a green permanent card with mana value X or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | Reveal$ True | ChangeNum$ 1 | ChangeValid$ Permanent.Green+cmcLEX | DestinationZone$ Battlefield | AILogic$ AtOppEOT | Optional$ True | RestRandomOrder$ True\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Reach\\nUndergrowth — When you cast this spell, reveal the top X cards of your library, where X is the number of creature cards in your graveyard. You may put a green permanent card with mana value X or less from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hatchery Spider"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

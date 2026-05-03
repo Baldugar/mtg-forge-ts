@@ -1,0 +1,23 @@
+{
+  "id": "scalestorm-summoner-corpus-m677",
+  "description": "M6 corpus — Scalestorm Summoner; in-hand parse.",
+  "seed": 69099,
+  "cards": {
+    "Scalestorm Summoner": "Name:Scalestorm Summoner\nManaCost:2 R\nTypes:Creature Human Warlock\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 3/1 red Dinosaur creature token if you control a creature with power 4 or greater.\nSVar:TrigToken:DB$ Token | TokenScript$ r_3_1_dinosaur | ConditionPresent$ Creature.YouCtrl+powerGE4\nSVar:BuffedBy:Creature.powerGE4\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Dinosaur\nOracle:Whenever Scalestorm Summoner attacks, create a 3/1 red Dinosaur creature token if you control a creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scalestorm Summoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

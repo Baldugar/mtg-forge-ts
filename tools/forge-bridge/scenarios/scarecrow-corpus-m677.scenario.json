@@ -1,0 +1,25 @@
+{
+  "id": "scarecrow-corpus-m677",
+  "description": "M6 corpus — Scarecrow; ETB-on-bf.",
+  "seed": 69110,
+  "cards": {
+    "Scarecrow": "Name:Scarecrow\nManaCost:5\nTypes:Artifact Creature Scarecrow\nPT:2/2\nA:AB$ Effect | Cost$ 6 T | ReplacementEffects$ RPrevent | SpellDescription$ Prevent all damage that would be dealt to you this turn by creatures with flying.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ You | ValidSource$ Creature.withFlying+inZoneBattlefield | Description$ Prevent all damage that would be dealt to you this turn by creatures with flying.\nAI:RemoveDeck:All\nOracle:{6}, {T}: Prevent all damage that would be dealt to you this turn by creatures with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scarecrow"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

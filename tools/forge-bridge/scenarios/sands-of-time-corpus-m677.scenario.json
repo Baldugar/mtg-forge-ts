@@ -1,0 +1,23 @@
+{
+  "id": "sands-of-time-corpus-m677",
+  "description": "M6 corpus — Sands of Time; in-hand parse.",
+  "seed": 68964,
+  "cards": {
+    "Sands of Time": "Name:Sands of Time\nManaCost:4\nTypes:Artifact\nR:Event$ BeginPhase | ActiveZones$ Battlefield | Phase$ Untap | Skip$ True | Description$ Each player skips their untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigSands | TriggerDescription$ At the beginning of each player's upkeep, that player simultaneously untaps each tapped artifact, creature, and land they control and taps each untapped artifact, creature, and land they control.\nSVar:TrigSands:DB$ UntapAll | Defined$ TriggeredPlayer | ValidCards$ Artifact.tapped,Creature.tapped,Land.tapped | RememberUntapped$ True | SubAbility$ DBTap\nSVar:DBTap:DB$ TapAll | Defined$ TriggeredPlayer | ValidCards$ Artifact.untapped+!IsRemembered,Creature.untapped+!IsRemembered,Land.untapped+!IsRemembered | TapperController$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Each player skips their untap step.\\nAt the beginning of each player's upkeep, that player simultaneously untaps each tapped artifact, creature, and land they control and taps each untapped artifact, creature, and land they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sands of Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

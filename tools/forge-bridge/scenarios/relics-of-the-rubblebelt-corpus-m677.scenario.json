@@ -1,0 +1,23 @@
+{
+  "id": "relics-of-the-rubblebelt-corpus-m677",
+  "description": "M6 corpus — Relics of the Rubblebelt; in-hand parse.",
+  "seed": 68014,
+  "cards": {
+    "Relics of the Rubblebelt": "Name:Relics of the Rubblebelt\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Draft | DraftNum$ 2 | Spellbook$ Azorius Signet,Boros Signet,Dimir Signet,Golgari Signet,Gruul Signet,Izzet Signet,Orzhov Signet,Rakdos Signet | RememberDrafted$ True | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ Draft a card from CARDNAME's spellbook twice, then put one of those cards onto the battlefield tapped.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Card.IsRemembered+YouOwn | SelectPrompt$ Select a card to put onto the battlefield tapped | Mandatory$ True | Tapped$ True | StackDescription$ None\nOracle:Draft a card from Relics of the Rubblebelt's spellbook twice, then put one of those cards onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relics of the Rubblebelt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

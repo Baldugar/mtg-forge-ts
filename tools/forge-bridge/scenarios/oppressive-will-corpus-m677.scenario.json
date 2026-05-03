@@ -1,0 +1,23 @@
+{
+  "id": "oppressive-will-corpus-m677",
+  "description": "M6 corpus — Oppressive Will; in-hand parse.",
+  "seed": 66360,
+  "cards": {
+    "Oppressive Will": "Name:Oppressive Will\nManaCost:2 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ Y | SpellDescription$ Counter target spell unless its controller pays {1} for each card in your hand.\nSVar:Y:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Counter target spell unless its controller pays {1} for each card in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oppressive Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

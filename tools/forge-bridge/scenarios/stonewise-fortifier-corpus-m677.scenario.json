@@ -1,0 +1,25 @@
+{
+  "id": "stonewise-fortifier-corpus-m677",
+  "description": "M6 corpus — Stonewise Fortifier; ETB-on-bf.",
+  "seed": 71069,
+  "cards": {
+    "Stonewise Fortifier": "Name:Stonewise Fortifier\nManaCost:1 W\nTypes:Creature Human Wizard\nPT:2/2\nA:AB$ Effect | Cost$ 4 W | ValidTgts$ Creature | RememberObjects$ Targeted | ImprintCards$ Self | ForgetOnMoved$ Battlefield | ReplacementEffects$ RPrevent | Duration$ UntilHostLeavesPlayOrEOT | SpellDescription$ Prevent all damage that would be dealt to CARDNAME by target creature this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Card.IsImprinted | ValidSource$ Creature.IsRemembered | Description$ Prevent all damage that would be dealt to EFFECTSOURCE by target creature this turn.\nAI:RemoveDeck:All\nOracle:{4}{W}: Prevent all damage that would be dealt to Stonewise Fortifier by target creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stonewise Fortifier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

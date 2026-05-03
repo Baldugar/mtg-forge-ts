@@ -1,0 +1,23 @@
+{
+  "id": "kadena-slinking-sorcerer-corpus-m677",
+  "description": "M6 corpus — Kadena, Slinking Sorcerer; in-hand parse.",
+  "seed": 63421,
+  "cards": {
+    "Kadena, Slinking Sorcerer": "Name:Kadena, Slinking Sorcerer\nManaCost:1 B G U\nTypes:Legendary Creature Snake Wizard Sorcerer\nPT:3/3\nS:Mode$ ReduceCost | ValidCard$ Creature.faceDown | Type$ Spell | OnlyFirstSpell$ True | Activator$ You | Amount$ 3 | Description$ The first face-down creature spell you cast each turn costs {3} less to cast.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.faceDown+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a face-down creature you control enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nDeckNeeds:Keyword$Morph\nOracle:The first face-down creature spell you cast each turn costs {3} less to cast.\\nWhenever a face-down creature you control enters, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kadena, Slinking Sorcerer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

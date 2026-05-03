@@ -1,0 +1,23 @@
+{
+  "id": "mystical-teachings-corpus-m677",
+  "description": "M6 corpus — Mystical Teachings; in-hand parse.",
+  "seed": 65685,
+  "cards": {
+    "Mystical Teachings": "Name:Mystical Teachings\nManaCost:3 U\nTypes:Instant\nK:Flashback:5 B\nA:SP$ ChangeZone | ChangeType$ Instant,Card.hasKeywordFlash | ChangeNum$ 1 | Origin$ Library | Destination$ Hand | Shuffle$ True | SpellDescription$ Search your library for an instant card or a card with flash, reveal it, put it into your hand, then shuffle.\n# TODO: The AI will currently search for the most expensive valid card in the library. This can be used to the AI's advantage with careful deck design (which is why this card only works in properly designed AI decks). Consider improving tutoring logic with priorities.\nAI:RemoveDeck:Random\nOracle:Search your library for an instant card or a card with flash, reveal it, put it into your hand, then shuffle.\\nFlashback {5}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystical Teachings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

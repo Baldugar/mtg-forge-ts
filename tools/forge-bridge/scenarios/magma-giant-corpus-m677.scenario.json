@@ -1,0 +1,23 @@
+{
+  "id": "magma-giant-corpus-m677",
+  "description": "M6 corpus — Magma Giant; in-hand parse.",
+  "seed": 64596,
+  "cards": {
+    "Magma Giant": "Name:Magma Giant\nManaCost:5 R R\nTypes:Creature Giant\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME enters, it deals 2 damage to each creature and each player.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ 2 | ValidDescription$ each creature and each player.\nAI:RemoveDeck:All\nOracle:When Magma Giant enters, it deals 2 damage to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magma Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

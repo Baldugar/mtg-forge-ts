@@ -1,0 +1,23 @@
+{
+  "id": "harness-infinity-corpus-m677",
+  "description": "M6 corpus — Harness Infinity; in-hand parse.",
+  "seed": 62065,
+  "cards": {
+    "Harness Infinity": "Name:Harness Infinity\nManaCost:1 B B B G G G\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Card.YouCtrl | Origin$ Hand | Destination$ Graveyard | RememberChanged$ True | SubAbility$ DBChangeZoneAll | SpellDescription$ Exchange your hand and graveyard.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl+!IsRemembered | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SubAbility$ DBCleanup | SpellDescription$ Exile CARDNAME.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exchange your hand and graveyard.\\nExile Harness Infinity.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harness Infinity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

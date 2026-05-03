@@ -1,0 +1,23 @@
+{
+  "id": "remembrance-corpus-m677",
+  "description": "M6 corpus — Remembrance; in-hand parse.",
+  "seed": 68024,
+  "cards": {
+    "Remembrance": "Name:Remembrance\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ Whenever a nontoken creature you control dies, you may search your library for a card with the same name as that creature, reveal it, put it into your hand, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Triggered.sameName | ShuffleNonMandatory$ True\nOracle:Whenever a nontoken creature you control dies, you may search your library for a card with the same name as that creature, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Remembrance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

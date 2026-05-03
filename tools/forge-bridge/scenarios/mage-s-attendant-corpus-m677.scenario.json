@@ -1,0 +1,23 @@
+{
+  "id": "mage-s-attendant-corpus-m677",
+  "description": "M6 corpus — Mage's Attendant; in-hand parse.",
+  "seed": 64579,
+  "cards": {
+    "Mage's Attendant": "Name:Mage's Attendant\nManaCost:2 W\nTypes:Creature Cat Rogue\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 blue Wizard creature token with \"{1}, Sacrifice this creature: Counter target noncreature spell unless its controller pays {1}.\"\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_wizard_countersac\nDeckHas:Ability$Token|Sacrifice & Type$Wizard\nOracle:When Mage's Attendant enters, create a 1/1 blue Wizard creature token with \"{1}, Sacrifice this creature: Counter target noncreature spell unless its controller pays {1}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mage's Attendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

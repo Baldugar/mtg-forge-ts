@@ -1,0 +1,25 @@
+{
+  "id": "stoic-champion-corpus-m677",
+  "description": "M6 corpus — Stoic Champion; ETB-on-bf.",
+  "seed": 71026,
+  "cards": {
+    "Stoic Champion": "Name:Stoic Champion\nManaCost:W W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ Cycled | ValidCard$ Card | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player cycles a card, CARDNAME gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +2\nAI:RemoveDeck:Random\nOracle:Whenever a player cycles a card, Stoic Champion gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stoic Champion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

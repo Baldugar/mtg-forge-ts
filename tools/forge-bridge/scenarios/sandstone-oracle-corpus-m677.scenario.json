@@ -1,0 +1,23 @@
+{
+  "id": "sandstone-oracle-corpus-m677",
+  "description": "M6 corpus — Sandstone Oracle; in-hand parse.",
+  "seed": 68970,
+  "cards": {
+    "Sandstone Oracle": "Name:Sandstone Oracle\nManaCost:7\nTypes:Artifact Creature Sphinx\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseOpp | TriggerDescription$ When CARDNAME enters, choose an opponent. If that player has more cards in hand than you, draw cards equal to the difference.\nSVar:TrigChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ MostCardsInHand | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:Y:Count$ValidHand Card.YouOwn\nSVar:X:Count$ValidHand Card.ChosenCtrl/Minus.Y\nOracle:Flying\\nWhen Sandstone Oracle enters, choose an opponent. If that player has more cards in hand than you, draw cards equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sandstone Oracle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

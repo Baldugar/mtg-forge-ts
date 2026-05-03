@@ -1,0 +1,23 @@
+{
+  "id": "portent-corpus-m677",
+  "description": "M6 corpus — Portent; in-hand parse.",
+  "seed": 67073,
+  "cards": {
+    "Portent": "Name:Portent\nManaCost:U\nTypes:Sorcery\nA:SP$ RearrangeTopOfLibrary | ValidTgts$ Player | NumCards$ 3 | MayShuffle$ True | SubAbility$ DelTrigSlowtrip | SpellDescription$ Look at the top three cards of target player's library, then put them back in any order. You may have that player shuffle. Draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Look at the top three cards of target player's library, then put them back in any order. You may have that player shuffle.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Portent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

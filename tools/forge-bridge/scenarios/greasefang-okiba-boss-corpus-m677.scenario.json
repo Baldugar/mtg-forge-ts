@@ -1,0 +1,23 @@
+{
+  "id": "greasefang-okiba-boss-corpus-m677",
+  "description": "M6 corpus — Greasefang, Okiba Boss; in-hand parse.",
+  "seed": 61696,
+  "cards": {
+    "Greasefang, Okiba Boss": "Name:Greasefang, Okiba Boss\nManaCost:1 W B\nTypes:Legendary Creature Rat Pilot\nPT:4/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of combat on your turn, return target Vehicle card from your graveyard to the battlefield. It gains haste. Return it to its owner's hand at the beginning of your next end step.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target Vehicle card in your graveyard | ValidTgts$ Vehicle.YouOwn | SubAbility$ Animate | RememberChanged$ True | AtEOT$ Hand\nSVar:Animate:DB$ Animate | Keywords$ Haste | Defined$ Remembered | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Vehicle\nOracle:At the beginning of combat on your turn, return target Vehicle card from your graveyard to the battlefield. It gains haste. Return it to its owner's hand at the beginning of your next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greasefang, Okiba Boss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

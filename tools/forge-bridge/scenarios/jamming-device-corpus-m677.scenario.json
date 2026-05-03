@@ -1,0 +1,25 @@
+{
+  "id": "jamming-device-corpus-m677",
+  "description": "M6 corpus — Jamming Device; ETB-on-bf.",
+  "seed": 63239,
+  "cards": {
+    "Jamming Device": "Name:Jamming Device\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, creatures target player controls get -1/-1 until end of turn.\nSVar:TrigCrank:DB$ PumpAll | ValidTgts$ Player | ValidCards$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nOracle:Whenever you crank Jamming Device, creatures target player controls get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jamming Device"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

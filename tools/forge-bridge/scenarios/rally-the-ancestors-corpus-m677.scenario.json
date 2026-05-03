@@ -1,0 +1,23 @@
+{
+  "id": "rally-the-ancestors-corpus-m677",
+  "description": "M6 corpus — Rally the Ancestors; in-hand parse.",
+  "seed": 67639,
+  "cards": {
+    "Rally the Ancestors": "Name:Rally the Ancestors\nManaCost:X W W\nTypes:Instant\nA:SP$ ChangeZoneAll | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.YouOwn+cmcLEX | AtEOT$ YourExileUpkeep | SubAbility$ ExileSelf | SpellDescription$ Return each creature card with mana value X or less from your graveyard to the battlefield. Exile those creatures at the beginning of your next upkeep. Exile CARDNAME.\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Return each creature card with mana value X or less from your graveyard to the battlefield. Exile those creatures at the beginning of your next upkeep. Exile Rally the Ancestors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rally the Ancestors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

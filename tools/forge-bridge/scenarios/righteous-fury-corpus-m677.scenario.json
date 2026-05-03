@@ -1,0 +1,23 @@
+{
+  "id": "righteous-fury-corpus-m677",
+  "description": "M6 corpus — Righteous Fury; in-hand parse.",
+  "seed": 68276,
+  "cards": {
+    "Righteous Fury": "Name:Righteous Fury\nManaCost:4 W W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature.tapped | RememberDestroyed$ True | SubAbility$ DBGainLife | SpellDescription$ Destroy all tapped creatures. You gain 2 life for each creature destroyed this way.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Remembered$Amount/Twice\nOracle:Destroy all tapped creatures. You gain 2 life for each creature destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Righteous Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

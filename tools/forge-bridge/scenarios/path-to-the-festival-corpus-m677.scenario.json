@@ -1,0 +1,23 @@
+{
+  "id": "path-to-the-festival-corpus-m677",
+  "description": "M6 corpus — Path to the Festival; in-hand parse.",
+  "seed": 66656,
+  "cards": {
+    "Path to the Festival": "Name:Path to the Festival\nManaCost:2 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | RememberChanged$ True | SubAbility$ DBScry | StackDescription$ SpellDescription | SpellDescription$ Search your library for a basic land card, put it onto the battlefield tapped, then shuffle. Then if there are three or more basic land types among lands you control, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\nSVar:DBScry:DB$ Scry | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3 | ScryNum$ 1\nSVar:X:PlayerCountPropertyYou$DomainPlayer\nK:Flashback:4 G\nDeckHas:Ability$Graveyard\nOracle:Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle. Then if there are three or more basic land types among lands you control, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\\nFlashback {4}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path to the Festival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

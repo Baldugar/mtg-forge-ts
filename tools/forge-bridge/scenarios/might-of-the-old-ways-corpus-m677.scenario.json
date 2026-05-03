@@ -1,0 +1,23 @@
+{
+  "id": "might-of-the-old-ways-corpus-m677",
+  "description": "M6 corpus — Might of the Old Ways; in-hand parse.",
+  "seed": 65110,
+  "cards": {
+    "Might of the Old Ways": "Name:Might of the Old Ways\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBDraw | SpellDescription$ Target creature gets +2/+2 until end of turn.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3 | StackDescription$ SpellDescription | SpellDescription$ Coven — Then if you control three or more creatures with different powers, draw a card.\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nOracle:Target creature gets +2/+2 until end of turn.\\nCoven — Then if you control three or more creatures with different powers, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Might of the Old Ways"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

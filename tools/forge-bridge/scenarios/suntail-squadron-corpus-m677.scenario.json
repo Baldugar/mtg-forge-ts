@@ -1,0 +1,23 @@
+{
+  "id": "suntail-squadron-corpus-m677",
+  "description": "M6 corpus — Suntail Squadron; in-hand parse.",
+  "seed": 71390,
+  "cards": {
+    "Suntail Squadron": "Name:Suntail Squadron\nManaCost:2 W W\nTypes:Instant\nA:SP$ MakeCard | Conjure$ True | Name$ Suntail Hawk | Zone$ Hand | SubAbility$ DBRepeat | StackDescription$ Conjure a card named Suntail Hawk into your hand. | SpellDescription$ Conjure a card named Suntail Hawk into your hand. If you have fewer than 7 cards in hand, repeat this process.\nSVar:DBRepeat:DB$ Repeat | RepeatSubAbility$ DBConjure | RepeatCheckSVar$ X | RepeatSVarCompare$ LT7 | StackDescription$ If you have fewer than 7 cards in hand, repeat this process.\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Name$ Suntail Hawk | Zone$ Hand\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:Conjure a card named Suntail Hawk into your hand. If you have fewer than 7 cards in hand, repeat this process.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suntail Squadron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

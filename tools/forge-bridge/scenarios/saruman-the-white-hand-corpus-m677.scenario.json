@@ -1,0 +1,25 @@
+{
+  "id": "saruman-the-white-hand-corpus-m677",
+  "description": "M6 corpus — Saruman, the White Hand; ETB-on-bf.",
+  "seed": 69027,
+  "cards": {
+    "Saruman, the White Hand": "Name:Saruman, the White Hand\nManaCost:1 U B R\nTypes:Legendary Creature Avatar Wizard\nPT:2/5\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigAmass | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, amass Orcs X, where X is that spell's mana value. (Put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:TrigAmass:DB$ Amass | Type$ Orc | Num$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nS:Mode$ Continuous | Affected$ Goblin.YouCtrl,Orc.YouCtrl | AddKeyword$ Ward:2 | Description$ Goblins and Orcs you control have ward {2}.\nDeckHas:Ability$Token|Counters & Type$Orc|Army\nDeckHints:Type$Goblin|Orc\nOracle:Whenever you cast a noncreature spell, amass Orcs X, where X is that spell's mana value. (Put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\\nGoblins and Orcs you control have ward {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Saruman, the White Hand"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

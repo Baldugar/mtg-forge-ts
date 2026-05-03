@@ -1,0 +1,25 @@
+{
+  "id": "myr-reservoir-corpus-m677",
+  "description": "M6 corpus — Myr Reservoir; ETB-on-bf.",
+  "seed": 65643,
+  "cards": {
+    "Myr Reservoir": "Name:Myr Reservoir\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | RestrictValid$ Spell.Myr,Activated.Myr+inZoneBattlefield | SpellDescription$ Add {C}{C}. Spend this mana only to cast Myr spells or activate abilities of Myr.\nA:AB$ ChangeZone | Cost$ 3 T | TgtPrompt$ Choose target Myr card in your graveyard | ValidTgts$ Card.Myr+YouCtrl | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return target Myr card from your graveyard to your hand.\nAI:RemoveDeck:Random\nOracle:{T}: Add {C}{C}. Spend this mana only to cast Myr spells or activate abilities of Myr.\\n{3}, {T}: Return target Myr card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Myr Reservoir"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

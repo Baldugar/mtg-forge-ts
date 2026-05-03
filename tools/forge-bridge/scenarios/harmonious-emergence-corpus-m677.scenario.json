@@ -1,0 +1,23 @@
+{
+  "id": "harmonious-emergence-corpus-m677",
+  "description": "M6 corpus — Harmonious Emergence; in-hand parse.",
+  "seed": 62061,
+  "cards": {
+    "Harmonious Emergence": "Name:Harmonious Emergence\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Land.YouCtrl:Land you control\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddType$ Creature & Spirit | SetColor$ Green | SetPower$ 4 | SetToughness$ 5 | AddKeyword$ Vigilance & Haste | Description$ Enchanted land is a 4/5 green Spirit creature with vigilance and haste. It's still a land.\nR:Event$ Destroy | ValidCard$ Card.EnchantedBy | ReplaceWith$ HarmoniousEgress | Description$ If enchanted land would be destroyed, instead sacrifice CARDNAME and that land gains indestructible until end of turn.\nSVar:HarmoniousEgress:DB$ Sacrifice | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Enchanted | KW$ Indestructible\nDeckHas:Ability$Sacrifice & Type$Spirit\nOracle:Enchant land you control\\nEnchanted land is a 4/5 green Spirit creature with vigilance and haste. It's still a land.\\nIf enchanted land would be destroyed, instead sacrifice Harmonious Emergence and that land gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harmonious Emergence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

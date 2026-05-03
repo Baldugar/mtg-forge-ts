@@ -1,0 +1,23 @@
+{
+  "id": "preacher-of-the-schism-corpus-m677",
+  "description": "M6 corpus — Preacher of the Schism; in-hand parse.",
+  "seed": 67113,
+  "cards": {
+    "Preacher of the Schism": "Name:Preacher of the Schism\nManaCost:2 B\nTypes:Creature Vampire Cleric\nPT:2/4\nK:Deathtouch\nT:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player.withMostLife | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks the player with the most life or tied for most life, create a 1/1 white Vampire creature token with lifelink.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_vampire_lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | NoResolvingCheck$ True | CheckDefinedPlayer$ You.withMostLife | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks while you have the most life or are tied for most life, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Deathtouch\\nWhenever Preacher of the Schism attacks the player with the most life or tied for most life, create a 1/1 white Vampire creature token with lifelink.\\nWhenever Preacher of the Schism attacks while you have the most life or are tied for most life, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Preacher of the Schism"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

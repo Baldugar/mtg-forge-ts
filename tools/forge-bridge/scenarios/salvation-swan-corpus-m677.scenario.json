@@ -1,0 +1,23 @@
+{
+  "id": "salvation-swan-corpus-m677",
+  "description": "M6 corpus — Salvation Swan; in-hand parse.",
+  "seed": 68915,
+  "cards": {
+    "Salvation Swan": "Name:Salvation Swan\nManaCost:3 W\nTypes:Creature Bird Cleric\nPT:3/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Bird.Other+YouCtrl | Execute$ TrigBlink | TriggerDescription$ Whenever CARDNAME or another Bird you control enters, exile up to one target creature you control without flying. Return it to the battlefield under its owner's control with a flying counter on it at the beginning of the next end step.\nSVar:TrigBlink:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.YouCtrl+withoutFlying | TgtPrompt$ Select up to one target creature you control without flying | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ RememberedLKI | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup | TriggerDescription$ Return the exiled card to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI | WithCountersType$ Flying\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flash\\nFlying\\nWhenever Salvation Swan or another Bird you control enters, exile up to one target creature you control without flying. Return it to the battlefield under its owner's control with a flying counter on it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Salvation Swan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

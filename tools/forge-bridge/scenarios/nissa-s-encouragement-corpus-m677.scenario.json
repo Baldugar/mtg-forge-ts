@@ -1,0 +1,23 @@
+{
+  "id": "nissa-s-encouragement-corpus-m677",
+  "description": "M6 corpus — Nissa's Encouragement; in-hand parse.",
+  "seed": 66002,
+  "cards": {
+    "Nissa's Encouragement": "Name:Nissa's Encouragement\nManaCost:4 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library,Graveyard | Destination$ Hand | ChangeType$ Card.namedForest | ChangeNum$ 1 | Shuffle$ False | SubAbility$ DBSearch1 | SpellDescription$ Search your library and graveyard for a card named Forest, a card named Brambleweft Behemoth, and a card named Nissa, Genesis Mage. Reveal those cards, put them into your hand, then shuffle.\nSVar:DBSearch1:DB$ ChangeZone | Origin$ Library,Graveyard | Destination$ Hand | ChangeType$ Card.namedBrambleweft Behemoth | ChangeNum$ 1 | SubAbility$ DBSearch2\nSVar:DBSearch2:DB$ ChangeZone | Origin$ Library,Graveyard | Destination$ Hand | ChangeType$ Card.namedNissa; Genesis Mage | ChangeNum$ 1\nDeckNeeds:Name$Forest|Brambleweft Behemoth|Nissa, Genesis Mage\nOracle:Search your library and graveyard for a card named Forest, a card named Brambleweft Behemoth, and a card named Nissa, Genesis Mage. Reveal those cards, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa's Encouragement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

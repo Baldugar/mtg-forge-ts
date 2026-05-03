@@ -1,0 +1,23 @@
+{
+  "id": "monk-idealist-corpus-m677",
+  "description": "M6 corpus — Monk Idealist; in-hand parse.",
+  "seed": 65429,
+  "cards": {
+    "Monk Idealist": "Name:Monk Idealist\nManaCost:2 W\nTypes:Creature Human Monk Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target enchantment card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Enchantment.YouCtrl\nOracle:When Monk Idealist enters, return target enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monk Idealist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

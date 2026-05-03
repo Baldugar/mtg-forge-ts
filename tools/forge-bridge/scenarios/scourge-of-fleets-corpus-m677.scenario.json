@@ -1,0 +1,23 @@
+{
+  "id": "scourge-of-fleets-corpus-m677",
+  "description": "M6 corpus — Scourge of Fleets; in-hand parse.",
+  "seed": 69194,
+  "cards": {
+    "Scourge of Fleets": "Name:Scourge of Fleets\nManaCost:5 U U\nTypes:Creature Kraken\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, return each creature your opponents control with toughness X or less to its owner's hand, where X is the number of Islands you control.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Hand | ChangeType$ Creature.toughnessLEX+OppCtrl\nSVar:X:Count$Valid Island.YouCtrl\nOracle:When Scourge of Fleets enters, return each creature your opponents control with toughness X or less to its owner's hand, where X is the number of Islands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourge of Fleets"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

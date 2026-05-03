@@ -1,0 +1,23 @@
+{
+  "id": "ivory-crane-netsuke-corpus-m677",
+  "description": "M6 corpus — Ivory Crane Netsuke; in-hand parse.",
+  "seed": 63174,
+  "cards": {
+    "Ivory Crane Netsuke": "Name:Ivory Crane Netsuke\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.YouCtrl | PresentZone$ Hand | PresentCompare$ GT6 | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if you have seven or more cards in hand, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, if you have seven or more cards in hand, you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ivory Crane Netsuke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

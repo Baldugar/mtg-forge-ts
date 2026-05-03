@@ -1,0 +1,23 @@
+{
+  "id": "reliquary-monk-corpus-m677",
+  "description": "M6 corpus — Reliquary Monk; in-hand parse.",
+  "seed": 68016,
+  "cards": {
+    "Reliquary Monk": "Name:Reliquary Monk\nManaCost:2 W\nTypes:Creature Human Monk Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME dies, destroy target artifact or enchantment.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment\nOracle:When Reliquary Monk dies, destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reliquary Monk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

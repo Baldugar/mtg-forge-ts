@@ -1,0 +1,23 @@
+{
+  "id": "herald-of-vengeance-corpus-m677",
+  "description": "M6 corpus — Herald of Vengeance; in-hand parse.",
+  "seed": 62276,
+  "cards": {
+    "Herald of Vengeance": "Name:Herald of Vengeance\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, destroy each permanent you don't control that has the same name as a permanent that dealt damage to you last turn.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Permanent.YouDontCtrl+sharesNameWith Remembered\nT:Mode$ DamageDone | ValidSource$ Permanent | ValidTarget$ You | Static$ True | Execute$ TrigRemember\nSVar:TrigRemember:DB$ Pump | ImprintCards$ TriggeredSource\nT:Mode$ Phase | Phase$ Cleanup | Static$ True | Execute$ TrigForget\nSVar:TrigForget:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBImprint\nSVar:DBImprint:DB$ Pump | RememberObjects$ Imprinted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nOracle:Flying\\nWhen Herald of Vengeance enters, destroy each permanent you don't control that has the same name as a permanent that dealt damage to you last turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Herald of Vengeance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

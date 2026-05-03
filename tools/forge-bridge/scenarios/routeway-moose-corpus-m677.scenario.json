@@ -1,0 +1,23 @@
+{
+  "id": "routeway-moose-corpus-m677",
+  "description": "M6 corpus — Routeway Moose; in-hand parse.",
+  "seed": 68555,
+  "cards": {
+    "Routeway Moose": "Name:Routeway Moose\nManaCost:1 G\nTypes:Creature Elk Mount\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigSeek | TriggerDescription$ Whenever this creature attacks while saddled, seek a land card and put it onto the battlefield tapped.\nSVar:TrigSeek:DB$ Seek | Type$ Land | RememberFound$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Saddle:2\nOracle:Whenever this creature attacks while saddled, seek a land card and put it onto the battlefield tapped.\\nSaddle 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Routeway Moose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

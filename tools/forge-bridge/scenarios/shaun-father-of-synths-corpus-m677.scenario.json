@@ -1,0 +1,23 @@
+{
+  "id": "shaun-father-of-synths-corpus-m677",
+  "description": "M6 corpus — Shaun, Father of Synths; in-hand parse.",
+  "seed": 69644,
+  "cards": {
+    "Shaun, Father of Synths": "Name:Shaun, Father of Synths\nManaCost:3 U R\nTypes:Legendary Creature Human Scientist\nPT:3/4\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.YouCtrl | OptionalDecider$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, you may create a tapped and attacking token that's a copy of target attacking legendary creature you control other than NICKNAME, except it's not legendary and it's a Synth artifact creature in addition to its other types.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Creature.attacking+Other+Legendary+YouCtrl | TgtPrompt$ Select target attacking legendary creature you control other than NICKNAME | NonLegendary$ True | AddTypes$ Artifact & Creature & Synth | TokenTapped$ True | TokenAttacking$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When NICKNAME leaves the battlefield, exile all Synth tokens you control.\nSVar:TrigExile:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Synth.YouCtrl+token\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Synth\nDeckHints:Type$Legendary\nOracle:Whenever you attack, you may create a tapped and attacking token that's a copy of target attacking legendary creature you control other than Shaun, except it's not legendary and it's a Synth artifact creature in addition to its other types.\\nWhen Shaun leaves the battlefield, exile all Synth tokens you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shaun, Father of Synths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

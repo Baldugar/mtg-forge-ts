@@ -1,0 +1,23 @@
+{
+  "id": "oroku-saki-shredder-rising-corpus-m677",
+  "description": "M6 corpus — Oroku Saki, Shredder Rising; in-hand parse.",
+  "seed": 66437,
+  "cards": {
+    "Oroku Saki, Shredder Rising": "Name:Oroku Saki, Shredder Rising\nManaCost:2 B\nTypes:Legendary Creature Human Ninja\nPT:3/1\nK:Sneak:1 B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, you draw a card and lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:Sneak {1}{B} (You may cast this spell for {1}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)\\nWhenever Oroku Saki deals combat damage to a player, you draw a card and lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oroku Saki, Shredder Rising"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

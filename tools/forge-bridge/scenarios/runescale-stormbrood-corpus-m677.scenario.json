@@ -1,0 +1,23 @@
+{
+  "id": "runescale-stormbrood-corpus-m677",
+  "description": "M6 corpus — Runescale Stormbrood; in-hand parse.",
+  "seed": 68652,
+  "cards": {
+    "Runescale Stormbrood": "Name:Runescale Stormbrood\nManaCost:3 R\nTypes:Creature Dragon\nPT:2/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature,Dragon | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nAlternateMode:Omen\nOracle:Flying\\nWhenever you cast a noncreature spell or a Dragon spell, this creature gets +2/+0 until end of turn.\n\nALTERNATE\n\nName:Chilling Screech\nManaCost:1 U\nTypes:Instant Omen\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell with mana value 2 or less | ValidTgts$ Card.cmcLE2 | SpellDescription$ Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)\nOracle:Counter target spell with mana value 2 or less. (Then shuffle this card into its owner's library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runescale Stormbrood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

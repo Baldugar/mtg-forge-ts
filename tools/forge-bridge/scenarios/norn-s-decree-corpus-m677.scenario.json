@@ -1,0 +1,23 @@
+{
+  "id": "norn-s-decree-corpus-m677",
+  "description": "M6 corpus — Norn's Decree; in-hand parse.",
+  "seed": 66059,
+  "cards": {
+    "Norn's Decree": "Name:Norn's Decree\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.OppCtrl | ValidTarget$ You | Execute$ TrigPoison | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures an opponent controls deal combat damage to you, that player gets a poison counter.\nSVar:TrigPoison:DB$ Poison | Defined$ TriggeredAttackingPlayer | Num$ 1\nT:Mode$ AttackersDeclared | Execute$ TrigDraw | TriggerZones$ Battlefield | AttackedTarget$ Player.IsPoisoned | TriggerDescription$ Whenever a player attacks, if one or more players being attacked are poisoned, the attacking player draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredAttackingPlayer\nDeckHints:Ability$Proliferate & Keyword$Infect|Toxic\nOracle:Whenever one or more creatures an opponent controls deal combat damage to you, that player gets a poison counter.\\nWhenever a player attacks, if one or more players being attacked are poisoned, the attacking player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norn's Decree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

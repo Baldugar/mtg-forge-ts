@@ -1,0 +1,23 @@
+{
+  "id": "spawnbroker-corpus-m677",
+  "description": "M6 corpus — Spawnbroker; in-hand parse.",
+  "seed": 70525,
+  "cards": {
+    "Spawnbroker": "Name:Spawnbroker\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigExchange | TriggerDescription$ When CARDNAME enters, you may exchange control of target creature you control and target creature with power less than or equal to that creature's power an opponent controls.\nSVar:TrigExchange:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBExchange\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls with less or equal power | TargetsWithRelatedProperty$ LEPower\nAI:RemoveDeck:All\nOracle:When Spawnbroker enters, you may exchange control of target creature you control and target creature with power less than or equal to that creature's power an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawnbroker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

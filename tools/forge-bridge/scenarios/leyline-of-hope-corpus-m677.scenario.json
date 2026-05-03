@@ -1,0 +1,25 @@
+{
+  "id": "leyline-of-hope-corpus-m677",
+  "description": "M6 corpus — Leyline of Hope; ETB-on-bf.",
+  "seed": 64163,
+  "cards": {
+    "Leyline of Hope": "Name:Leyline of Hope\nManaCost:2 W W\nTypes:Enchantment\nK:MayEffectFromOpeningHand:FromHand\nSVar:FromHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SpellDescription$ If CARDNAME is in your opening hand, you may begin the game with it on the battlefield.\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GainLife | AILogic$ DoubleLife | Description$ If you would gain life, you gain that much life plus 1 instead.\nSVar:GainLife:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 2 | AddToughness$ 2 | CheckSVar$ Y | SVarCompare$ GEZ | Description$ As long as you have at least 7 life more than your starting life total, creatures you control get +2/+2.\nSVar:X:ReplaceCount$LifeGained/Plus.1\nSVar:Y:Count$YourLifeTotal\nSVar:Z:Count$YourStartingLife/Plus.7\nSVar:PlayMain1:True\nDeckHints:Ability$LifeGain\nOracle:If Leyline of Hope is in your opening hand, you may begin the game with it on the battlefield.\\nIf you would gain life, you gain that much life plus 1 instead.\\nAs long as you have at least 7 life more than your starting life total, creatures you control get +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leyline of Hope"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

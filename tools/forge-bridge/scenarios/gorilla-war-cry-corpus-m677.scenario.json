@@ -1,0 +1,23 @@
+{
+  "id": "gorilla-war-cry-corpus-m677",
+  "description": "M6 corpus — Gorilla War Cry; in-hand parse.",
+  "seed": 61584,
+  "cards": {
+    "Gorilla War Cry": "Name:Gorilla War Cry\nManaCost:1 R\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature | KW$ Menace | ActivationPhases$ BeginCombat->Declare Attackers | SubAbility$ DelTrigSlowtrip | SpellDescription$ All creatures gain menace until end of turn.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Cast this spell only during combat before blockers are declared.\\nAll creatures gain menace until end of turn. (They can't be blocked except by two or more creatures.)\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gorilla War Cry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

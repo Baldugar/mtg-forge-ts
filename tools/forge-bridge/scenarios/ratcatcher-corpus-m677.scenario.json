@@ -1,0 +1,23 @@
+{
+  "id": "ratcatcher-corpus-m677",
+  "description": "M6 corpus — Ratcatcher; in-hand parse.",
+  "seed": 67728,
+  "cards": {
+    "Ratcatcher": "Name:Ratcatcher\nManaCost:4 B B\nTypes:Creature Ogre Rogue\nPT:4/4\nK:Fear\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, you may search your library for a Rat card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Rat | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nAt the beginning of your upkeep, you may search your library for a Rat card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ratcatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

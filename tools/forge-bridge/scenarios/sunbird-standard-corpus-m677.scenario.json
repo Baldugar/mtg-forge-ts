@@ -1,0 +1,23 @@
+{
+  "id": "sunbird-standard-corpus-m677",
+  "description": "M6 corpus — Sunbird Standard; in-hand parse.",
+  "seed": 71334,
+  "cards": {
+    "Sunbird Standard": "Name:Sunbird Standard\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nK:Craft:5 XMin1 ExileCtrlOrGrave<X/Permanent.Other/permanent>\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:{T}: Add one mana of any color.\\nCraft with one or more {5} ({5}, Exile this artifact, Exile one or more other permanents you control and/or cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Sunbird Effigy\nManaCost:no cost\nTypes:Artifact Creature Bird Construct\nPT:*/*\nK:Flying\nK:Vigilance\nK:Haste\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of colors among the exiled cards used to craft it.\nSVar:X:ExiledWith$Colors\nA:AB$ Mana | Cost$ T | Produced$ Special EachColorAmong_ExiledWith | SpellDescription$ For each color among the exiled cards used to craft CARDNAME, add one mana of that color.\nOracle:Flying, vigilance, haste\\nSunbird Effigy's power and toughness are each equal to the number of colors among the exiled cards used to craft it.\\n{T}: For each color among the exiled cards used to craft Sunbird Effigy, add one mana of that color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunbird Standard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

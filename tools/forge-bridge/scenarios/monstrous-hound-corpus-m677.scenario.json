@@ -1,0 +1,25 @@
+{
+  "id": "monstrous-hound-corpus-m677",
+  "description": "M6 corpus — Monstrous Hound; ETB-on-bf.",
+  "seed": 65442,
+  "cards": {
+    "Monstrous Hound": "Name:Monstrous Hound\nManaCost:3 R\nTypes:Creature Dog\nPT:4/4\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ hasFewerLandsInPlayThanYou | Description$ CARDNAME can't attack unless you control more lands than defending player.\nS:Mode$ CantBlock | ValidCard$ Card.Self | Condition$ NotPlayerTurn | CheckSVar$ Y | SVarCompare$ GEX | Description$ CARDNAME can't block unless you control more lands than attacking player.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:Count$Valid Land.ActivePlayerCtrl\nSVar:BuffedBy:Land\nOracle:Monstrous Hound can't attack unless you control more lands than defending player.\\nMonstrous Hound can't block unless you control more lands than attacking player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Monstrous Hound"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

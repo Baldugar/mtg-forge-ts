@@ -1,0 +1,23 @@
+{
+  "id": "prayer-of-binding-corpus-m677",
+  "description": "M6 corpus — Prayer of Binding; in-hand parse.",
+  "seed": 67111,
+  "cards": {
+    "Prayer of Binding": "Name:Prayer of Binding\nManaCost:3 W\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield. You gain 2 life.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nSVar:OblivionRing:TRUE\nOracle:Flash\\nWhen Prayer of Binding enters, exile up to one target nonland permanent an opponent controls until Prayer of Binding leaves the battlefield. You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prayer of Binding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

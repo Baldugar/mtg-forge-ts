@@ -1,0 +1,23 @@
+{
+  "id": "questing-beast-corpus-m677",
+  "description": "M6 corpus — Questing Beast; in-hand parse.",
+  "seed": 67461,
+  "cards": {
+    "Questing Beast": "Name:Questing Beast\nManaCost:2 G G\nTypes:Legendary Creature Beast\nPT:4/4\nK:Vigilance\nK:Deathtouch\nK:Haste\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nS:Mode$ CantPreventDamage | IsCombat$ True | ValidSource$ Creature.YouCtrl | Description$ Combat damage that would be dealt by creatures you control can't be prevented.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ MoreDamage | TriggerDescription$ Whenever CARDNAME deals combat damage to an opponent, it deals that much damage to target planeswalker that player controls.\nSVar:MoreDamage:DB$ DealDamage | ValidTgts$ Planeswalker.ControlledBy TriggeredTarget | TgtPrompt$ Select target planeswalker that player controls | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Vigilance, deathtouch, haste\\nQuesting Beast can't be blocked by creatures with power 2 or less.\\nCombat damage that would be dealt by creatures you control can't be prevented.\\nWhenever Questing Beast deals combat damage to an opponent, it deals that much damage to target planeswalker that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Questing Beast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

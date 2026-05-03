@@ -1,0 +1,23 @@
+{
+  "id": "raised-by-wolves-corpus-m677",
+  "description": "M6 corpus — Raised by Wolves; in-hand parse.",
+  "seed": 67603,
+  "cards": {
+    "Raised by Wolves": "Name:Raised by Wolves\nManaCost:3 G G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 2/2 green Wolf creature tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenOwner$ You | TokenAmount$ 2\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | Description$ Enchanted creature gets +1/+1 for each Wolf you control.\nSVar:X:Count$Valid Card.Wolf+YouCtrl\nSVar:BuffedBy:Wolf\nOracle:Enchant creature\\nWhen Raised by Wolves enters, create two 2/2 green Wolf creature tokens.\\nEnchanted creature gets +1/+1 for each Wolf you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raised by Wolves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

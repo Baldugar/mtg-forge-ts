@@ -1,0 +1,23 @@
+{
+  "id": "prismatic-undercurrents-corpus-m677",
+  "description": "M6 corpus — Prismatic Undercurrents; in-hand parse.",
+  "seed": 67226,
+  "cards": {
+    "Prismatic Undercurrents": "Name:Prismatic Undercurrents\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ Vivid — When this enchantment enters, search your library for up to X basic land cards, where X is the number of colors among permanents you control. Reveal those cards, put them into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeNum$ X\nS:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land on each of your turns.\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Vivid — When this enchantment enters, search your library for up to X basic land cards, where X is the number of colors among permanents you control. Reveal those cards, put them into your hand, then shuffle.\\nYou may play an additional land on each of your turns.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prismatic Undercurrents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

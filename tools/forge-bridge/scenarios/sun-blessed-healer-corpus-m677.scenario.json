@@ -1,0 +1,23 @@
+{
+  "id": "sun-blessed-healer-corpus-m677",
+  "description": "M6 corpus — Sun-Blessed Healer; in-hand parse.",
+  "seed": 71322,
+  "cards": {
+    "Sun-Blessed Healer": "Name:Sun-Blessed Healer\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:3/1\nK:Kicker:1 W\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigChange | TriggerDescription$ When this creature enters, if it was kicked, return target nonland permanent card with mana value 2 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.YouOwn+nonLand+cmcLE2 | TgtPrompt$ Select target nonland permanent card with mana value 2 or less in your graveyard\nDeckHints:Ability$Graveyard\nOracle:Kicker {1}{W} (You may pay an additional {1}{W} as you cast this spell.)\\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\\nWhen this creature enters, if it was kicked, return target nonland permanent card with mana value 2 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sun-Blessed Healer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

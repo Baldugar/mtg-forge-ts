@@ -1,0 +1,23 @@
+{
+  "id": "radiant-performer-corpus-m677",
+  "description": "M6 corpus — Radiant Performer; in-hand parse.",
+  "seed": 67531,
+  "cards": {
+    "Radiant Performer": "Name:Radiant Performer\nManaCost:3 R R\nTypes:Creature Human Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigRadiate | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, choose target spell or ability that targets only a single permanent or player. Copy that spell or ability for each other permanent or player the spell or ability could target. Each copy targets a different one of those permanents and players.\nSVar:TrigRadiate:DB$ CopySpellAbility | ValidTgts$ Card | TgtPrompt$ Select target spell or ability that targets a single permanent or player | TargetType$ SpellAbility.numTargets EQ1 | TargetValidTargeting$ Permanent.inRealZoneBattlefield,Player | Controller$ You | CopyForEachCanTarget$ Permanent.inRealZoneBattlefield,Player | SpellDescription$ Choose target spell or ability that targets only a single permanent or player. Copy that spell for each other permanent or player the spell could target. Each copy targets a different one of those permanents and players.\nOracle:Flash\\nWhen Radiant Performer enters, if you cast it from your hand, choose target spell or ability that targets only a single permanent or player. Copy that spell or ability for each other permanent or player the spell or ability could target. Each copy targets a different one of those permanents and players.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radiant Performer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

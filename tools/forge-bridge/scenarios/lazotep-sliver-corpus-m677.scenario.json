@@ -1,0 +1,23 @@
+{
+  "id": "lazotep-sliver-corpus-m677",
+  "description": "M6 corpus — Lazotep Sliver; in-hand parse.",
+  "seed": 64053,
+  "cards": {
+    "Lazotep Sliver": "Name:Lazotep Sliver\nManaCost:3 B\nTypes:Creature Zombie Sliver\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.Sliver+YouCtrl | AddKeyword$ Afflict:2 | Description$ Sliver creatures you control have afflict 2. (Whenever a creature with afflict 2 becomes blocked, defending player loses 2 life.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Sliver.!token+YouCtrl | Execute$ TrigAmass | TriggerDescription$ Whenever a nontoken Sliver you control dies, amass Slivers 2. (Put two +1/+1 counters on an Army you control. It's also a Sliver. If you don't control an Army, create a 0/0 black Sliver Army creature token first.)\nSVar:TrigAmass:DB$ Amass | Type$ Sliver | Num$ 2\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Sliver\nDeckHas:Ability$Token|Counters & Type$Army\nDeckHints:Type$Sliver\nOracle:Sliver creatures you control have afflict 2. (Whenever a creature with afflict 2 becomes blocked, defending player loses 2 life.)\\nWhenever a nontoken Sliver you control dies, amass Slivers 2. (Put two +1/+1 counters on an Army you control. It's also a Sliver. If you don't control an Army, create a 0/0 black Sliver Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lazotep Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

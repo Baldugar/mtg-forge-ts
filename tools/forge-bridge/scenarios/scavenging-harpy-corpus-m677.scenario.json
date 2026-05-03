@@ -1,0 +1,23 @@
+{
+  "id": "scavenging-harpy-corpus-m677",
+  "description": "M6 corpus — Scavenging Harpy; in-hand parse.",
+  "seed": 69128,
+  "cards": {
+    "Scavenging Harpy": "Name:Scavenging Harpy\nManaCost:2 B\nTypes:Creature Harpy\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target card from an opponent's graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in an opponent's graveyard | ValidTgts$ Card.OppOwn\nOracle:Flying\\nWhen Scavenging Harpy enters, exile target card from an opponent's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scavenging Harpy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

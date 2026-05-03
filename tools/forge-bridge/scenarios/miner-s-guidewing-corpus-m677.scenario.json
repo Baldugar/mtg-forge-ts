@@ -1,0 +1,23 @@
+{
+  "id": "miner-s-guidewing-corpus-m677",
+  "description": "M6 corpus — Miner's Guidewing; in-hand parse.",
+  "seed": 65196,
+  "cards": {
+    "Miner's Guidewing": "Name:Miner's Guidewing\nManaCost:W\nTypes:Creature Bird\nPT:1/1\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExplore | TriggerDescription$ When CARDNAME dies, target creature you control explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\nSVar:TrigExplore:DB$ Explore | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nDeckHas:Ability$Counters\nOracle:Flying, vigilance\\nWhen Miner's Guidewing dies, target creature you control explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miner's Guidewing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

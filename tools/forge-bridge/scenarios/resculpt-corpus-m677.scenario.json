@@ -1,0 +1,23 @@
+{
+  "id": "resculpt-corpus-m677",
+  "description": "M6 corpus — Resculpt; in-hand parse.",
+  "seed": 68091,
+  "cards": {
+    "Resculpt": "Name:Resculpt\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature,Artifact | TgtPrompt$ Select target artifact or creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBToken | AILogic$ Pongify | SpellDescription$ Exile target artifact or creature. Its controller creates a 4/4 blue and red Elemental creature token.\nSVar:DBToken:DB$ Token | TokenScript$ ur_4_4_elemental | TokenOwner$ TargetedController\nDeckHas:Ability$Token\nOracle:Exile target artifact or creature. Its controller creates a 4/4 blue and red Elemental creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resculpt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

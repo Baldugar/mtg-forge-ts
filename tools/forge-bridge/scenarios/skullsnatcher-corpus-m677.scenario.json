@@ -1,0 +1,23 @@
+{
+  "id": "skullsnatcher-corpus-m677",
+  "description": "M6 corpus — Skullsnatcher; in-hand parse.",
+  "seed": 70081,
+  "cards": {
+    "Skullsnatcher": "Name:Skullsnatcher\nManaCost:1 B\nTypes:Creature Rat Ninja\nPT:2/1\nK:Ninjutsu:B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile up to two target cards from that player's graveyard.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Card | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select up to two target cards in that player's graveyard | TargetMin$ 0 | TargetMax$ 2 | Origin$ Graveyard | Destination$ Exile | IsCurse$ True\nOracle:Ninjutsu {B} ({B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)\\nWhenever Skullsnatcher deals combat damage to a player, exile up to two target cards from that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullsnatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

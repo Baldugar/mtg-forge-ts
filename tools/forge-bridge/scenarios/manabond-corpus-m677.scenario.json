@@ -1,0 +1,23 @@
+{
+  "id": "manabond-corpus-m677",
+  "description": "M6 corpus — Manabond; in-hand parse.",
+  "seed": 64699,
+  "cards": {
+    "Manabond": "Name:Manabond\nManaCost:G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChangeAll | TriggerDescription$ At the beginning of your end step, you may reveal your hand and put all land cards from it onto the battlefield. If you do, discard your hand.\nSVar:TrigChangeAll:DB$ ChangeZoneAll | ChangeType$ Land.YouCtrl | Origin$ Hand | Destination$ Battlefield | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ Hand\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:At the beginning of your end step, you may reveal your hand and put all land cards from it onto the battlefield. If you do, discard your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manabond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

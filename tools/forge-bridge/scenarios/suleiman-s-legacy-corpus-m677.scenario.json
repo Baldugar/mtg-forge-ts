@@ -1,0 +1,23 @@
+{
+  "id": "suleiman-s-legacy-corpus-m677",
+  "description": "M6 corpus — Suleiman's Legacy; in-hand parse.",
+  "seed": 71280,
+  "cards": {
+    "Suleiman's Legacy": "Name:Suleiman's Legacy\nManaCost:R W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, destroy all Djinns and Efreets. They can't be regenerated.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Djinn,Efreet | NoRegen$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Djinn,Efreet | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever a Djinn or Efreet enters, destroy it. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy | NoRegen$ True\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:When Suleiman's Legacy enters, destroy all Djinns and Efreets. They can't be regenerated.\\nWhenever a Djinn or Efreet enters, destroy it. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suleiman's Legacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shredder-shadow-master-corpus-m677",
+  "description": "M6 corpus — Shredder, Shadow Master; in-hand parse.",
+  "seed": 69771,
+  "cards": {
+    "Shredder, Shadow Master": "Name:Shredder, Shadow Master\nManaCost:3 B B\nTypes:Legendary Creature Human Ninja\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Attacked$ Player | Execute$ TrigCopy | TriggerDescription$ Whenever NICKNAME attacks a player, for each other opponent, create a token that's a copy of NICKNAME tapped and attacking that player, except it isn't legendary. Sacrifice those tokens at end of combat.\nSVar:TrigCopy:DB$ RepeatEach | RepeatPlayers$ OppNonTriggeredDefender | RepeatSubAbility$ DBCopy | ChangeZoneTable$ True | SubAbility$ DelTrig\nSVar:DBCopy:DB$ CopyPermanent | Defined$ TriggeredAttackerLKICopy | TokenAttacking$ Remembered | TokenTapped$ True | ImprintTokens$ True | NonLegendary$ True\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | Execute$ TrigSac | RememberObjects$ ImprintedLKI | TriggerDescription$ Sacrifice those tokens at end of combat. | SubAbility$ DBCleanup\nSVar:TrigSac:DB$ SacrificeAll | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLifeOpp | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, that player loses half their life, rounded up.\nSVar:TrigLoseLifeOpp:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ X\nSVar:X:TriggeredTarget$LifeTotal/HalfUp\nOracle:Whenever Shredder attacks a player, for each other opponent, create a token that's a copy of Shredder tapped and attacking that player, except it isn't legendary. Sacrifice those tokens at end of combat.\\nWhenever Shredder deals combat damage to a player, that player loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shredder, Shadow Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mark-of-the-oni-corpus-m677",
+  "description": "M6 corpus — Mark of the Oni; in-hand parse.",
+  "seed": 64799,
+  "cards": {
+    "Mark of the Oni": "Name:Mark of the Oni\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Demon.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, if you control no Demons, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Demon.YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Type$Demon\nOracle:Enchant creature\\nYou control enchanted creature.\\nAt the beginning of the end step, if you control no Demons, sacrifice Mark of the Oni.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mark of the Oni"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

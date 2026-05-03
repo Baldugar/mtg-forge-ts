@@ -1,0 +1,23 @@
+{
+  "id": "ruin-rat-corpus-m677",
+  "description": "M6 corpus — Ruin Rat; in-hand parse.",
+  "seed": 68592,
+  "cards": {
+    "Ruin Rat": "Name:Ruin Rat\nManaCost:1 B\nTypes:Creature Rat\nPT:1/1\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, exile target card from an opponent's graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in an opponent's graveyard | ValidTgts$ Card.OppOwn\nOracle:Deathtouch\\nWhen Ruin Rat dies, exile target card from an opponent's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruin Rat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

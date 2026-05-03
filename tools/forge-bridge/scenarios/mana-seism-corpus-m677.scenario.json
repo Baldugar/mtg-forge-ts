@@ -1,0 +1,23 @@
+{
+  "id": "mana-seism-corpus-m677",
+  "description": "M6 corpus — Mana Seism; in-hand parse.",
+  "seed": 64692,
+  "cards": {
+    "Mana Seism": "Name:Mana Seism\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Land | RememberSacrificed$ True | Optional$ True | SubAbility$ DBMana | SpellDescription$ Sacrifice any number of lands, then add that much {C}.\nSVar:DBMana:DB$ Mana | Produced$ C | Amount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Land.YouCtrl\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Sacrifice any number of lands, then add that much {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Seism"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

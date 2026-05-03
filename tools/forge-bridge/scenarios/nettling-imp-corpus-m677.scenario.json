@@ -1,0 +1,25 @@
+{
+  "id": "nettling-imp-corpus-m677",
+  "description": "M6 corpus — Nettling Imp; ETB-on-bf.",
+  "seed": 65865,
+  "cards": {
+    "Nettling Imp": "Name:Nettling Imp\nManaCost:2 B\nTypes:Creature Imp\nPT:1/1\nA:AB$ Animate | Cost$ T | ValidTgts$ Creature.nonWall+ActivePlayerCtrl+!firstTurnControlled | TgtPrompt$ Select target non-Wall creature the active player has controlled continuously since the beginning of the turn | ActivationPhases$ Upkeep->BeginCombat | ActivationFirstCombat$ True | OpponentTurn$ True | staticAbilities$ MustAttack | SubAbility$ DestroyPacifist | SpellDescription$ Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn't attack this turn. Activate only during an opponent's turn, before attackers are declared.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ This creature attacks this turn if able.\nSVar:DestroyPacifist:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | RememberObjects$ ParentTarget | Execute$ TrigDestroy | TriggerDescription$ At the beginning of the next end step, destroy that creature if it didn't attack this turn.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRemembered | ConditionDefined$ DelayTriggerRemembered | ConditionPresent$ Creature.!attackedThisTurn | ConditionCompare$ GE1\nAI:RemoveDeck:All\nOracle:{T}: Choose target non-Wall creature the active player has controlled continuously since the beginning of the turn. That creature attacks this turn if able. Destroy it at the beginning of the next end step if it didn't attack this turn. Activate only during an opponent's turn, before attackers are declared.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nettling Imp"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

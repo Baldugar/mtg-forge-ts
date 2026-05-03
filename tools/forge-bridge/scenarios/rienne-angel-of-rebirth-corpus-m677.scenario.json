@@ -1,0 +1,23 @@
+{
+  "id": "rienne-angel-of-rebirth-corpus-m677",
+  "description": "M6 corpus — Rienne, Angel of Rebirth; in-hand parse.",
+  "seed": 68261,
+  "cards": {
+    "Rienne, Angel of Rebirth": "Name:Rienne, Angel of Rebirth\nManaCost:2 R G W\nTypes:Legendary Creature Angel\nPT:5/4\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.MultiColor+Other+YouCtrl | AddPower$ 1 | Description$ Other multicolored creatures you control get +1/+0.\nSVar:PlayMain1:TRUE\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.MultiColor+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ DelayedTrig | TriggerDescription$ Whenever another multicolored creature you control dies, return it to its owner's hand at the beginning of the next end step.\nSVar:DelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ TriggeredNewCardLKICopy | TriggerDescription$ Return it to its owner's hand at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Hand\nOracle:Flying\\nOther multicolored creatures you control get +1/+0.\\nWhenever another multicolored creature you control dies, return it to its owner's hand at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rienne, Angel of Rebirth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

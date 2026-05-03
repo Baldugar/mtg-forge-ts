@@ -1,0 +1,25 @@
+{
+  "id": "narci-fable-singer-corpus-m677",
+  "description": "M6 corpus — Narci, Fable Singer; ETB-on-bf.",
+  "seed": 65736,
+  "cards": {
+    "Narci, Fable Singer": "Name:Narci, Fable Singer\nManaCost:1 W B G\nTypes:Legendary Creature Human Bard\nPT:3/3\nK:Lifelink\nT:Mode$ Sacrificed | ValidCard$ Enchantment.YouCtrl | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice an enchantment, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ AbilityResolves | ValidSource$ Saga.YouCtrl | ValidSpellAbility$ Triggered.LastChapter | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever the final chapter ability of a Saga you control resolves, each opponent loses X life and you gain X life, where X is that Saga's mana value.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggeredSpellAbility$CardManaCost\nDeckHas:Ability$LifeGain\nDeckHints:Type$Enchantment|Saga & Ability$Sacrifice\nOracle:Lifelink\\nWhenever you sacrifice an enchantment, draw a card.\\nWhenever the final chapter ability of a Saga you control resolves, each opponent loses X life and you gain X life, where X is that Saga's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Narci, Fable Singer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

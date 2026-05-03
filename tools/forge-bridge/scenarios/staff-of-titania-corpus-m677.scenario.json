@@ -1,0 +1,23 @@
+{
+  "id": "staff-of-titania-corpus-m677",
+  "description": "M6 corpus — Staff of Titania; in-hand parse.",
+  "seed": 70851,
+  "cards": {
+    "Staff of Titania": "Name:Staff of Titania\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ AE | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +X/+X, where X is the number of Forests you control.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigToken | TriggerDescription$ Whenever equipped creature attacks, create a 1/1 green Forest Dryad land creature token. (It's affected by summoning sickness.)\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_forest_dryad\nK:Equip:3\nSVar:AE:SVar:HasAttackEffect:TRUE\nSVar:X:Count$Valid Forest.YouCtrl\nDeckHas:Ability$Token & Type$Dryad\nOracle:Equipped creature gets +X/+X, where X is the number of Forests you control. Whenever equipped creature attacks, create a 1/1 green Forest Dryad land creature token. (It's affected by summoning sickness.)\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Staff of Titania"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

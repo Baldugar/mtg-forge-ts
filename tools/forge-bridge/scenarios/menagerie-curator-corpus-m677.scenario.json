@@ -1,0 +1,25 @@
+{
+  "id": "menagerie-curator-corpus-m677",
+  "description": "M6 corpus — Menagerie Curator; ETB-on-bf.",
+  "seed": 64973,
+  "cards": {
+    "Menagerie Curator": "Name:Menagerie Curator\nManaCost:1 G\nTypes:Creature Human Citizen\nPT:1/3\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | RestrictValid$ Spell.Creature | SpellDescription$ Add one mana of any color. Spend this mana only to cast creature spells.\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidCard$ Card.Creature+!sharesCreatureTypeWith ValidLibrary Creature.YouOwn | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerDescription$ Whenever you cast a creature spell that doesn't share a creature type with a creature type in your library, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:{T}: Add one mana of any color. Spend this mana only to cast a creature spell.\\nWhenever you cast a creature spell that doesn't share a creature type with a creature card in your library, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Menagerie Curator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "nim-mongoose-corpus-m677",
+  "description": "M6 corpus — Nim Mongoose; ETB-on-bf.",
+  "seed": 65969,
+  "cards": {
+    "Nim Mongoose": "Name:Nim Mongoose\nManaCost:B\nTypes:Creature Zombie Mongoose\nPT:2/1\nK:Shroud\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters the battlefield tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Condition$ Threshold | Description$ Threshold — CARDNAME gets +1/+0 for each artifact you control as long as there are seven or more cards in your graveyard.\nSVar:X:Count$Valid Artifact.YouCtrl\nSVar:BuffedBy:Artifact\nOracle:Shroud\\nNim Mongoose enters the battlefield tapped.\\nThreshold — Nim Mongoose gets +1/+0 for each artifact you control as long as there are seven or more cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nim Mongoose"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

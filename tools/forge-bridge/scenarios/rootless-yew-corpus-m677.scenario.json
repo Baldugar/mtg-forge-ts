@@ -1,0 +1,23 @@
+{
+  "id": "rootless-yew-corpus-m677",
+  "description": "M6 corpus — Rootless Yew; in-hand parse.",
+  "seed": 68515,
+  "cards": {
+    "Rootless Yew": "Name:Rootless Yew\nManaCost:3 G G\nTypes:Creature Treefolk\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, search your library for a creature card with power or toughness 6 or greater, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.powerGE6,Creature.toughnessGE6 | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Rootless Yew dies, search your library for a creature card with power or toughness 6 or greater, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rootless Yew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

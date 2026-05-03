@@ -1,0 +1,23 @@
+{
+  "id": "skyway-robber-corpus-m677",
+  "description": "M6 corpus — Skyway Robber; in-hand parse.",
+  "seed": 70162,
+  "cards": {
+    "Skyway Robber": "Name:Skyway Robber\nManaCost:3 U\nTypes:Creature Bird Rogue\nPT:3/3\nK:Flying\nK:Escape:3 U ExileFromGrave<5/Card.Other/other>\nK:ETBReplacement:Other:DBAnimate:Mandatory::Card.Self+escaped\nSVar:DBAnimate:DB$ Animate | Triggers$ DamageTrig | Duration$ Permanent | SpellDescription$ CARDNAME escapes with \"Whenever CARDNAME deals combat damage to a player, you may cast an artifact, instant, or sorcery spell from among cards exiled with CARDNAME without paying its mana cost.\"\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCast | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may cast an artifact, instant, or sorcery spell from among cards exiled with CARDNAME without paying its mana cost.\nSVar:TrigCast:DB$ Play | ValidZone$ Exile | Valid$ Artifact.ExiledWithSource,Instant.ExiledWithSource,Sorcery.ExiledWithSource | ValidSA$ Spell | Controller$ You | WithoutManaCost$ True | Amount$ 1 | Optional$ True\nDeckHas:Ability$Graveyard\nDeckHints:Type$Artifact|Instant|Sorcery\nOracle:Flying\\nEscape—{3}{U}, Exile five other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\\nSkyway Robber escapes with \"Whenever Skyway Robber deals combat damage to a player, you may cast an artifact, instant, or sorcery spell from among cards exiled with Skyway Robber without paying its mana cost.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyway Robber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

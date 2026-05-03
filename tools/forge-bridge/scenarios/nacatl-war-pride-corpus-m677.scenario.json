@@ -1,0 +1,23 @@
+{
+  "id": "nacatl-war-pride-corpus-m677",
+  "description": "M6 corpus — Nacatl War-Pride; in-hand parse.",
+  "seed": 65699,
+  "cards": {
+    "Nacatl War-Pride": "Name:Nacatl War-Pride\nManaCost:3 G G G\nTypes:Creature Cat Warrior\nPT:3/3\nK:CARDNAME must be blocked by exactly one creature if able.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCopyPermanent | TriggerDescription$ Whenever CARDNAME attacks, create X tokens that are copies of CARDNAME and that are tapped and attacking, where X is the number of creatures defending player controls. Exile the tokens at the beginning of the next end step.\nSVar:TrigCopyPermanent:DB$ CopyPermanent | Defined$ TriggeredAttackerLKICopy | NumCopies$ X | TokenTapped$ True | TokenAttacking$ True | AtEOT$ Exile\nSVar:X:Count$Valid Creature.DefenderCtrl\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Nacatl War-Pride must be blocked by exactly one creature if able.\\nWhenever Nacatl War-Pride attacks, create X tokens that are copies of Nacatl War-Pride and that are tapped and attacking, where X is the number of creatures defending player controls. Exile the tokens at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nacatl War-Pride"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

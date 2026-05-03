@@ -1,0 +1,25 @@
+{
+  "id": "sacred-prey-corpus-m677",
+  "description": "M6 corpus — Sacred Prey; ETB-on-bf.",
+  "seed": 68843,
+  "cards": {
+    "Sacred Prey": "Name:Sacred Prey\nManaCost:G\nTypes:Creature Horse\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigGain | TriggerDescription$ Whenever CARDNAME becomes blocked, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Sacred Prey becomes blocked, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sacred Prey"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

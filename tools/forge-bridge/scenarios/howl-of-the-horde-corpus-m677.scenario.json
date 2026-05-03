@@ -1,0 +1,23 @@
+{
+  "id": "howl-of-the-horde-corpus-m677",
+  "description": "M6 corpus — Howl of the Horde; in-hand parse.",
+  "seed": 62549,
+  "cards": {
+    "Howl of the Horde": "Name:Howl of the Horde\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SubAbility$ DBEffect | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy that spell.\nSVar:DBEffect:DB$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | ConditionCheckSVar$ RaidTest | SpellDescription$ Raid — If you attacked this turn, when you cast your next instant or sorcery spell this turn, copy that spell an additional time. You may choose new targets for the copy.\nSVar:RaidTest:Count$AttackersDeclared\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:AIPriorityModifier:9\nDeckNeeds:Type$Instant|Sorcery\nOracle:When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\\nRaid — If you attacked this turn, when you cast your next instant or sorcery spell this turn, copy that spell an additional time. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Howl of the Horde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

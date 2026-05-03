@@ -1,0 +1,23 @@
+{
+  "id": "planetary-annihilation-corpus-m677",
+  "description": "M6 corpus — Planetary Annihilation; in-hand parse.",
+  "seed": 66988,
+  "cards": {
+    "Planetary Annihilation": "Name:Planetary Annihilation\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ Player | Choices$ Land | ControlledByPlayer$ Chooser | Amount$ 6 | ChoiceTitle$ Choose six lands to keep | Mandatory$ True | Reveal$ True | SubAbility$ DBSac | StackDescription$ SpellDescription | SpellDescription$ Each player chooses six lands they control, then sacrifices the rest. CARDNAME deals 6 damage to each creature.\nSVar:DBSac:DB$ SacrificeAll | ValidCards$ Land.nonChosenCard | SubAbility$ DBDamageAll\nSVar:DBDamageAll:DB$ DamageAll | ValidCards$ Creature | NumDmg$ 6 | ValidDescription$ each creature.\nDeckHas:Ability$Sacrifice\nOracle:Each player chooses six lands they control, then sacrifices the rest. Planetary Annihilation deals 6 damage to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planetary Annihilation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

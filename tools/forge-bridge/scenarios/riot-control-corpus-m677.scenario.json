@@ -1,0 +1,23 @@
+{
+  "id": "riot-control-corpus-m677",
+  "description": "M6 corpus — Riot Control; in-hand parse.",
+  "seed": 68309,
+  "cards": {
+    "Riot Control": "Name:Riot Control\nManaCost:2 W\nTypes:Instant\nA:SP$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBEffect | SpellDescription$ You gain 1 life for each creature your opponents control. Prevent all damage that would be dealt to you this turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ You | Description$ Prevent all damage that would be dealt to you this turn.\nSVar:X:Count$Valid Creature.OppCtrl\nAI:RemoveDeck:All\nOracle:You gain 1 life for each creature your opponents control. Prevent all damage that would be dealt to you this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riot Control"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

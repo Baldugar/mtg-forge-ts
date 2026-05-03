@@ -1,0 +1,25 @@
+{
+  "id": "hardened-bonds-corpus-m677",
+  "description": "M6 corpus — Hardened Bonds; ETB-on-bf.",
+  "seed": 62051,
+  "cards": {
+    "Hardened Bonds": "Name:Hardened Bonds\nManaCost:G\nTypes:Enchantment\nDeckNeeds:Ability$Counters\nT:Mode$ CounterAdded | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ TrigSeek | ActivationLimit$ 1 | TriggerDescription$ Whenever a +1/+1 counter is put on a creature you control, seek a creature card. That card perpetually gets +1/+1. This ability triggers only once each turn.\nSVar:TrigSeek:DB$ Seek | Type$ Card.Creature | RememberFound$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever a +1/+1 counter is put on a creature you control, seek a creature card. That card perpetually gets +1/+1. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hardened Bonds"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rubblebelt-rioters-corpus-m677",
+  "description": "M6 corpus — Rubblebelt Rioters; in-hand parse.",
+  "seed": 68574,
+  "cards": {
+    "Rubblebelt Rioters": "Name:Rubblebelt Rioters\nManaCost:1 R G\nTypes:Creature Human Berserker\nPT:0/4\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the greatest power among creatures you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nOracle:Haste\\nWhenever Rubblebelt Rioters attacks, it gets +X/+0 until end of turn, where X is the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rubblebelt Rioters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

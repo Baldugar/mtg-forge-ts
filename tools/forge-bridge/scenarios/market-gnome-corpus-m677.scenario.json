@@ -1,0 +1,23 @@
+{
+  "id": "market-gnome-corpus-m677",
+  "description": "M6 corpus — Market Gnome; in-hand parse.",
+  "seed": 64802,
+  "cards": {
+    "Market Gnome": "Name:Market Gnome\nManaCost:W\nTypes:Artifact Creature Gnome\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain 1 life and draw a card.\nT:Mode$ Exiled | Origin$ Battlefield | WhileKeyword$ Ability.Craft | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME is exiled from the battlefield while you're activating a craft ability, you gain 1 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:SacMe:2\nDeckHas:Ability$LifeGain\nOracle:When Market Gnome dies, you gain 1 life and draw a card.\\nWhen Market Gnome is exiled from the battlefield while you're activating a craft ability, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Market Gnome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

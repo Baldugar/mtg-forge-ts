@@ -1,0 +1,23 @@
+{
+  "id": "shove-aside-corpus-m677",
+  "description": "M6 corpus — Shove Aside; in-hand parse.",
+  "seed": 69763,
+  "cards": {
+    "Shove Aside": "Name:Shove Aside\nManaCost:R\nTypes:Sorcery\nS:Mode$ CastWithFlash | ValidCard$ Card.Self | ValidSA$ Spell | Caster$ You | CheckSVar$ X | EffectZone$ All | Description$ If you aren't the starting player, you may cast CARDNAME as though it had flash.\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target creature or planeswalker.\nSVar:X:Count$StartingPlayer.0.1\nOracle:If you aren't the starting player, you may cast Shove Aside as though it had flash.\\nShove Aside deals 3 damage to target creature or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shove Aside"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

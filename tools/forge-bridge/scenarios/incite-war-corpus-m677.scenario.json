@@ -1,0 +1,23 @@
+{
+  "id": "incite-war-corpus-m677",
+  "description": "M6 corpus — Incite War; in-hand parse.",
+  "seed": 62853,
+  "cards": {
+    "Incite War": "Name:Incite War\nManaCost:2 R\nTypes:Instant\nK:Entwine:2\nA:SP$ Charm | Choices$ DBEffect,DBPumpAll\nSVar:DBEffect:DB$ Effect | ValidTgts$ Player | StaticAbilities$ MustAttack | RememberObjects$ Targeted | SpellDescription$ Creatures target player controls attack this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.RememberedPlayerCtrl | Description$ Creatures target player controls attack this turn if able.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ First Strike | SpellDescription$ Creatures you control gain first strike until end of turn.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Creatures target player controls attack this turn if able.\\n• Creatures you control gain first strike until end of turn.\\nEntwine {2} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incite War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

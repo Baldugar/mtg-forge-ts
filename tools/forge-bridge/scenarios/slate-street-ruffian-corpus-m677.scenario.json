@@ -1,0 +1,25 @@
+{
+  "id": "slate-street-ruffian-corpus-m677",
+  "description": "M6 corpus — Slate Street Ruffian; ETB-on-bf.",
+  "seed": 70177,
+  "cards": {
+    "Slate Street Ruffian": "Name:Slate Street Ruffian\nManaCost:2 B\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME becomes blocked, defending player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredDefendingPlayer | NumCards$ 1 | Mode$ TgtChoose\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Slate Street Ruffian becomes blocked, defending player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Slate Street Ruffian"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

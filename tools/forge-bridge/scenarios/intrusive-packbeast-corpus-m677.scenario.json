@@ -1,0 +1,23 @@
+{
+  "id": "intrusive-packbeast-corpus-m677",
+  "description": "M6 corpus — Intrusive Packbeast; in-hand parse.",
+  "seed": 63052,
+  "cards": {
+    "Intrusive Packbeast": "Name:Intrusive Packbeast\nManaCost:4 W\nTypes:Creature Beast\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap up to two target creatures your opponents control.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature your opponent controls\nSVar:PlayMain1:TRUE\nOracle:Vigilance\\nWhen Intrusive Packbeast enters, tap up to two target creatures your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intrusive Packbeast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

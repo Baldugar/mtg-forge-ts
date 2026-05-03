@@ -1,0 +1,25 @@
+{
+  "id": "merfolk-sovereign-corpus-m677",
+  "description": "M6 corpus — Merfolk Sovereign; ETB-on-bf.",
+  "seed": 65025,
+  "cards": {
+    "Merfolk Sovereign": "Name:Merfolk Sovereign\nManaCost:1 U U\nTypes:Creature Merfolk Noble\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.Merfolk+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Merfolk creatures you control get +1/+1.\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature.Merfolk | TgtPrompt$ Select target Merfolk creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target Merfolk creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Merfolk\nOracle:Other Merfolk creatures you control get +1/+1.\\n{T}: Target Merfolk creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Merfolk Sovereign"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

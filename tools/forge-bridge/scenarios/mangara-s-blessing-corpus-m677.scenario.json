@@ -1,0 +1,23 @@
+{
+  "id": "mangara-s-blessing-corpus-m677",
+  "description": "M6 corpus — Mangara's Blessing; in-hand parse.",
+  "seed": 64714,
+  "cards": {
+    "Mangara's Blessing": "Name:Mangara's Blessing\nManaCost:2 W\nTypes:Instant\nA:SP$ GainLife | Defined$ You | LifeAmount$ 5 | SpellDescription$ You gain 5 life.\nT:Mode$ Discarded | ValidCard$ Card.Self | ValidCause$ SpellAbility.OppCtrl | Execute$ TrigGainLife | TriggerDescription$ When a spell or ability an opponent controls causes you to discard CARDNAME, you gain 2 life, and you return CARDNAME from your graveyard to your hand at the beginning of the next end step.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DelayReturn\nSVar:DelayReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | TriggerDescription$ Return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nSVar:DiscardMeByOpp:3\nOracle:You gain 5 life.\\nWhen a spell or ability an opponent controls causes you to discard Mangara's Blessing, you gain 2 life, and you return Mangara's Blessing from your graveyard to your hand at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mangara's Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

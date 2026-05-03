@@ -1,0 +1,23 @@
+{
+  "id": "pianna-nomad-captain-corpus-m677",
+  "description": "M6 corpus — Pianna, Nomad Captain; in-hand parse.",
+  "seed": 66879,
+  "cards": {
+    "Pianna, Nomad Captain": "Name:Pianna, Nomad Captain\nManaCost:1 W W\nTypes:Legendary Creature Human Nomad\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, attacking creatures get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking | NumAtt$ +1 | NumDef$ +1\nOracle:Whenever Pianna, Nomad Captain attacks, attacking creatures get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pianna, Nomad Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

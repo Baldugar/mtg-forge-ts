@@ -1,0 +1,23 @@
+{
+  "id": "hunting-cheetah-corpus-m677",
+  "description": "M6 corpus — Hunting Cheetah; in-hand parse.",
+  "seed": 62626,
+  "cards": {
+    "Hunting Cheetah": "Name:Hunting Cheetah\nManaCost:2 G\nTypes:Creature Cat\nPT:2/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | OptionalDecider$ You | Execute$ TrigSearch | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, you may search your library for a Forest card, reveal that card, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Forest | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Whenever Hunting Cheetah deals damage to an opponent, you may search your library for a Forest card, reveal that card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunting Cheetah"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

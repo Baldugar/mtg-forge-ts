@@ -1,0 +1,25 @@
+{
+  "id": "krosan-tusker-corpus-m677",
+  "description": "M6 corpus — Krosan Tusker; ETB-on-bf.",
+  "seed": 63894,
+  "cards": {
+    "Krosan Tusker": "Name:Krosan Tusker\nManaCost:5 G G\nTypes:Creature Boar Beast\nPT:6/5\nK:Cycling:2 G\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may search your library for a basic land card, reveal that card, put it into your hand, then shuffle. (Do this before you draw.)\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:Cycling {2}{G} ({2}{G}, Discard this card: Draw a card.)\\nWhen you cycle Krosan Tusker, you may search your library for a basic land card, reveal that card, put it into your hand, then shuffle. (Do this before you draw.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Krosan Tusker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

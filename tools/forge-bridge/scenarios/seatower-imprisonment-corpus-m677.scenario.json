@@ -1,0 +1,23 @@
+{
+  "id": "seatower-imprisonment-corpus-m677",
+  "description": "M6 corpus — Seatower Imprisonment; in-hand parse.",
+  "seed": 69327,
+  "cards": {
+    "Seatower Imprisonment": "Name:Seatower Imprisonment\nManaCost:2 W W\nTypes:Enchantment Aura\nK:Enchant:Creature.YouDontCtrl,Planeswalker.YouDontCtrl:creature or planeswalker you don't control\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card named Soldiers of the Watch onto the battlefield.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Soldiers of the Watch | Zone$ Battlefield\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Card.EnchantedBy | Description$ Enchanted permanent can't attack or block and its activated abilities can't be activated.\nOracle:Enchant creature or planeswalker you don't control\\nWhen Seatower Imprisonment enters, conjure a card named Soldiers of the Watch onto the battlefield.\\nEnchanted permanent can't attack or block and its activated abilities can't be activated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seatower Imprisonment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

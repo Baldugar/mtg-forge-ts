@@ -1,0 +1,23 @@
+{
+  "id": "josu-vess-lich-knight-corpus-m677",
+  "description": "M6 corpus — Josu Vess, Lich Knight; in-hand parse.",
+  "seed": 63347,
+  "cards": {
+    "Josu Vess, Lich Knight": "Name:Josu Vess, Lich Knight\nManaCost:2 B B\nTypes:Legendary Creature Zombie Knight\nPT:4/5\nK:Kicker:5 B\nK:Menace\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if it was kicked, create eight 2/2 black Zombie Knight creature tokens with menace.\nSVar:TrigToken:DB$ Token | TokenAmount$ 8 | TokenScript$ b_2_2_zombie_knight_menace | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Kicker {5}{B} (You may pay an additional {5}{B} as you cast this spell.)\\nMenace\\nWhen Josu Vess, Lich Knight enters, if it was kicked, create eight 2/2 black Zombie Knight creature tokens with menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Josu Vess, Lich Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

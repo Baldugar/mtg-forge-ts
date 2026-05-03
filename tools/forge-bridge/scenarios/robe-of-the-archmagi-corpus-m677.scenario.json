@@ -1,0 +1,23 @@
+{
+  "id": "robe-of-the-archmagi-corpus-m677",
+  "description": "M6 corpus — Robe of the Archmagi; in-hand parse.",
+  "seed": 68436,
+  "cards": {
+    "Robe of the Archmagi": "Name:Robe of the Archmagi\nManaCost:2 U\nTypes:Artifact Equipment\nK:Equip:1:Creature.YouCtrl+Shaman,Creature.YouCtrl+Warlock,Creature.YouCtrl+Wizard:Shaman, Warlock, or Wizard\nK:Equip:4\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature deals combat damage to a player, draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Shaman|Warlock|Wizard\nOracle:Whenever equipped creature deals combat damage to a player, draw that many cards.\\nEquip {4}\\nEquip Shaman, Warlock, or Wizard {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Robe of the Archmagi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

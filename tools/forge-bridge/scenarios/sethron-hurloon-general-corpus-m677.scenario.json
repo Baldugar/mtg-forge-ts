@@ -1,0 +1,23 @@
+{
+  "id": "sethron-hurloon-general-corpus-m677",
+  "description": "M6 corpus — Sethron, Hurloon General; in-hand parse.",
+  "seed": 69520,
+  "cards": {
+    "Sethron, Hurloon General": "Name:Sethron, Hurloon General\nManaCost:3 R R\nTypes:Legendary Creature Minotaur Warrior\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self,Minotaur.!token+Other+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another nontoken Minotaur you control enters, create a 2/3 red Minotaur creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_3_minotaur\nA:AB$ PumpAll | Cost$ 2 BR | ValidCards$ Minotaur.YouCtrl | NumAtt$ +1 | KW$ Menace & Haste | SpellDescription$ Minotaurs you control get +1/+0 and gain menace and haste until end of turn.\nSVar:PlayMain1:TRUE\nDeckNeeds:Type$Minotaur\nOracle:Whenever Sethron, Hurloon General or another nontoken Minotaur you control enters, create a 2/3 red Minotaur creature token.\\n{2}{B/R}: Minotaurs you control get +1/+0 and gain menace and haste until end of turn. ({B/R} can be paid with either {B} or {R}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sethron, Hurloon General"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "replicating-terror-corpus-m677",
+  "description": "M6 corpus — Replicating Terror; in-hand parse.",
+  "seed": 68072,
+  "cards": {
+    "Replicating Terror": "Name:Replicating Terror\nManaCost:1 B\nTypes:Instant\nA:SP$ Sacrifice | Defined$ Opponent | SacValid$ Creature.!token | RememberSacrificed$ True | SacMessage$ nontoken creature | SubAbility$ DBConjure | SpellDescription$ Each opponent sacrifices a nontoken creature. For each creature sacrificed this way, conjure a duplicate of it into your graveyard.\nSVar:DBConjure:DB$ MakeCard | DefinedName$ Remembered | Conjure$ True | Zone$ Graveyard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Each opponent sacrifices a nontoken creature. For each creature sacrificed this way, conjure a duplicate of it into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Replicating Terror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

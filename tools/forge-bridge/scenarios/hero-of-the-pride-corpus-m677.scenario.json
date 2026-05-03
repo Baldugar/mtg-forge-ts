@@ -1,0 +1,25 @@
+{
+  "id": "hero-of-the-pride-corpus-m677",
+  "description": "M6 corpus — Hero of the Pride; ETB-on-bf.",
+  "seed": 62298,
+  "cards": {
+    "Hero of the Pride": "Name:Hero of the Pride\nManaCost:1 W\nTypes:Creature Cat Soldier\nPT:2/2\nT:Mode$ SpellCast | TargetsValid$ Card.Self | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever you cast a spell that targets CARDNAME, creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nOracle:Whenever you cast a spell that targets Hero of the Pride, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hero of the Pride"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

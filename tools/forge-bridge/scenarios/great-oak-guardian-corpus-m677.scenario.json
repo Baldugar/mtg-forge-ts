@@ -1,0 +1,23 @@
+{
+  "id": "great-oak-guardian-corpus-m677",
+  "description": "M6 corpus — Great Oak Guardian; in-hand parse.",
+  "seed": 61705,
+  "cards": {
+    "Great Oak Guardian": "Name:Great Oak Guardian\nManaCost:5 G\nTypes:Creature Treefolk\nPT:4/5\nK:Flash\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures target player controls get +2/+2 until end of turn. Untap them.\nSVar:TrigPumpAll:DB$ PumpAll | ValidTgts$ Player | ValidCards$ Creature | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.TargetedPlayerCtrl\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nReach\\nWhen Great Oak Guardian enters, creatures target player controls get +2/+2 until end of turn. Untap them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Great Oak Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

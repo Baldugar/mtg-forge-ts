@@ -1,0 +1,23 @@
+{
+  "id": "one-ring-to-rule-them-all-corpus-m677",
+  "description": "M6 corpus — One Ring to Rule Them All; in-hand parse.",
+  "seed": 66314,
+  "cards": {
+    "One Ring to Rule Them All": "Name:One Ring to Rule Them All\nManaCost:2 B B\nTypes:Enchantment Saga\nK:Chapter:3:DBTempt,DBDestroy,DBEachOpp\nSVar:DBTempt:DB$ RingTemptsYou | SubAbility$ DBMill | SpellDescription$ The Ring tempts you, then each player mills cards equal to your Ring-bearer's power.\nSVar:DBMill:DB$ Mill | NumCards$ X | Defined$ Player\nSVar:X:Count$Valid Creature.YouCtrl+IsRingbearer$CardPower\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.nonLegendary | SpellDescription$ Destroy all nonlegendary creatures.\nSVar:DBEachOpp:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ TrigLoseLife | SpellDescription$ Each opponent loses 1 life for each creature card in that player's graveyard.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ Y\nSVar:Y:Count$ValidGraveyard Creature.RememberedPlayerCtrl\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — The Ring tempts you, then each player mills cards equal to your Ring-bearer's power.\\nII — Destroy all nonlegendary creatures.\\nIII — Each opponent loses 1 life for each creature card in that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "One Ring to Rule Them All"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

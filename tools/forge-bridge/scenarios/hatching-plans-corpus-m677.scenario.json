@@ -1,0 +1,23 @@
+{
+  "id": "hatching-plans-corpus-m677",
+  "description": "M6 corpus — Hatching Plans; in-hand parse.",
+  "seed": 62099,
+  "cards": {
+    "Hatching Plans": "Name:Hatching Plans\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw three cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3\nSVar:SacMe:5\nAI:RemoveDeck:Random\nOracle:When Hatching Plans is put into a graveyard from the battlefield, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hatching Plans"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

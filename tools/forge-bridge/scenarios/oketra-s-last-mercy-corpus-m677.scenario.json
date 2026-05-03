@@ -1,0 +1,23 @@
+{
+  "id": "oketra-s-last-mercy-corpus-m677",
+  "description": "M6 corpus — Oketra's Last Mercy; in-hand parse.",
+  "seed": 66255,
+  "cards": {
+    "Oketra's Last Mercy": "Name:Oketra's Last Mercy\nManaCost:1 W W\nTypes:Sorcery\nA:SP$ SetLife | Defined$ You | LifeAmount$ X | SubAbility$ DBNoUntap | SpellDescription$ Your life total becomes equal to your starting life total.\nSVar:DBNoUntap:DB$ Effect | ReplacementEffects$ DontUntap | Duration$ UntilTheEndOfYourNextUntap | SpellDescription$ Lands you control don't untap during your next untap step.\nSVar:DontUntap:Event$ Untap | ValidCard$ Land.YouCtrl | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ Lands you control don't untap during your next untap step.\nSVar:X:Count$YourStartingLife\nOracle:Your life total becomes equal to your starting life total. Lands you control don't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oketra's Last Mercy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

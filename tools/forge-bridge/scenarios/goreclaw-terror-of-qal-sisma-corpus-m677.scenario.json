@@ -1,0 +1,23 @@
+{
+  "id": "goreclaw-terror-of-qal-sisma-corpus-m677",
+  "description": "M6 corpus — Goreclaw, Terror of Qal Sisma; in-hand parse.",
+  "seed": 61573,
+  "cards": {
+    "Goreclaw, Terror of Qal Sisma": "Name:Goreclaw, Terror of Qal Sisma\nManaCost:3 G\nTypes:Legendary Creature Bear\nPT:4/3\nS:Mode$ ReduceCost | ValidCard$ Creature.powerGE4 | Type$ Spell | Activator$ You | Amount$ 2 | Description$ Creature spells you cast with power 4 or greater cost {2} less to cast.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, each creature you control with power 4 or greater gets +1/+1 and gains trample until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl+powerGE4 | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nOracle:Creature spells you cast with power 4 or greater cost {2} less to cast.\\nWhenever Goreclaw, Terror of Qal Sisma attacks, each creature you control with power 4 or greater gets +1/+1 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goreclaw, Terror of Qal Sisma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

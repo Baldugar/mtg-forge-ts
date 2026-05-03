@@ -1,0 +1,23 @@
+{
+  "id": "keldon-strike-team-corpus-m677",
+  "description": "M6 corpus — Keldon Strike Team; in-hand parse.",
+  "seed": 63586,
+  "cards": {
+    "Keldon Strike Team": "Name:Keldon Strike Team\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:3/1\nK:Kicker:1 W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if it was kicked, create two 1/1 white Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_soldier | TokenOwner$ You\nS:Mode$ Continuous | IsPresent$ Card.Self+ThisTurnEntered | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ As long as CARDNAME entered this turn, creatures you control have haste.\nSVar:PlayMain1:TRUE\nDeckHints:Color$White\nDeckHas:Ability$Token\nOracle:Kicker {1}{W} (You may pay an additional {1}{W} as you cast this spell.)\\nWhen Keldon Strike Team enters, if it was kicked, create two 1/1 white Soldier creature tokens.\\nAs long as Keldon Strike Team entered this turn, creatures you control have haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Strike Team"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

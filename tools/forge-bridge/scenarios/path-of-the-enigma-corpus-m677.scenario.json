@@ -1,0 +1,23 @@
+{
+  "id": "path-of-the-enigma-corpus-m677",
+  "description": "M6 corpus — Path of the Enigma; in-hand parse.",
+  "seed": 66652,
+  "cards": {
+    "Path of the Enigma": "Name:Path of the Enigma\nManaCost:4 U\nTypes:Sorcery\nA:SP$ Draw | ValidTgts$ Player | NumCards$ 4 | SubAbility$ DBSpace | SpellDescription$ Target player draws four cards.\nSVar:DBSpace:DB$ BlankLine | SubAbility$ DBVote | SpellDescription$ ,,,,,,\nSVar:DBVote:DB$ Vote | Defined$ Player | Choices$ DBPlaneswalk,DBChaos | VoteTiedAbility$ DBChaos | StackDescription$ SpellDescription | SpellDescription$ Will of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\nSVar:DBPlaneswalk:DB$ Planeswalk | SpellDescription$ Planeswalk\nSVar:DBChaos:DB$ ChaosEnsues | SpellDescription$ Chaos\nOracle:Target player draws four cards.\\nWill of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path of the Enigma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

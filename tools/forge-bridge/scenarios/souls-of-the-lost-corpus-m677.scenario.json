@@ -1,0 +1,25 @@
+{
+  "id": "souls-of-the-lost-corpus-m677",
+  "description": "M6 corpus — Souls of the Lost; ETB-on-bf.",
+  "seed": 70486,
+  "cards": {
+    "Souls of the Lost": "Name:Souls of the Lost\nManaCost:1 B\nTypes:Creature Spirit\nPT:*/*+1\nK:AlternateAdditionalCost:Discard<1/Card>:Sac<1/Permanent>\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE3\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ Y | Description$ Fathomless descent — CARDNAME's power is equal to the number of permanent cards in your graveyard and its toughness is equal to that number plus 1.\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nSVar:Y:Count$ValidGraveyard Permanent.YouOwn/Plus.1\nDeckHas:Ability$Sacrifice|Discard\nDeckHints:Ability$Graveyard|Mill|Discard\nOracle:As an additional cost to cast this spell, discard a card or sacrifice a permanent.\\nFathomless descent — Souls of the Lost's power is equal to the number of permanent cards in your graveyard and its toughness is equal to that number plus 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Souls of the Lost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

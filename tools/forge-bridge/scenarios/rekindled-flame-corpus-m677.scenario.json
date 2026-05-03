@@ -1,0 +1,23 @@
+{
+  "id": "rekindled-flame-corpus-m677",
+  "description": "M6 corpus — Rekindled Flame; in-hand parse.",
+  "seed": 67989,
+  "cards": {
+    "Rekindled Flame": "Name:Rekindled Flame\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to any target.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | CheckSVar$ OppHand | SVarCompare$ EQ0 | OptionalDecider$ You | Execute$ TrigReturn | TriggerZones$ Graveyard | TriggerDescription$ At the beginning of your upkeep, if an opponent has no cards in hand, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nSVar:OppHand:PlayerCountOpponents$LowestCardsInHand\nOracle:Rekindled Flame deals 4 damage to any target.\\nAt the beginning of your upkeep, if an opponent has no cards in hand, you may return Rekindled Flame from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rekindled Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gutwrencher-oni-corpus-m677",
+  "description": "M6 corpus — Gutwrencher Oni; in-hand parse.",
+  "seed": 61932,
+  "cards": {
+    "Gutwrencher Oni": "Name:Gutwrencher Oni\nManaCost:3 B B\nTypes:Creature Demon Spirit\nPT:5/4\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, discard a card if you don't control an Ogre.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | ConditionPresent$ Ogre.YouCtrl | ConditionCompare$ EQ0\nSVar:NeedsToPlay:Ogre.YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Type$Ogre\nOracle:Trample\\nAt the beginning of your upkeep, discard a card if you don't control an Ogre.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gutwrencher Oni"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

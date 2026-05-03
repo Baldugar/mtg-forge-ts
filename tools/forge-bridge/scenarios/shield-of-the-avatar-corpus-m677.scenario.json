@@ -1,0 +1,25 @@
+{
+  "id": "shield-of-the-avatar-corpus-m677",
+  "description": "M6 corpus — Shield of the Avatar; ETB-on-bf.",
+  "seed": 69679,
+  "cards": {
+    "Shield of the Avatar": "Name:Shield of the Avatar\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:2\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Creature.EquippedBy | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ If a source would deal damage to equipped creature, prevent X of that damage, where X is the number of creatures you control.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ X\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:BuffedBy:Creature\nOracle:If a source would deal damage to equipped creature, prevent X of that damage, where X is the number of creatures you control.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shield of the Avatar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

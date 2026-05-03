@@ -1,0 +1,23 @@
+{
+  "id": "hunted-horror-corpus-m677",
+  "description": "M6 corpus — Hunted Horror; in-hand parse.",
+  "seed": 62615,
+  "cards": {
+    "Hunted Horror": "Name:Hunted Horror\nManaCost:B B\nTypes:Creature Horror\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, target opponent creates two 3/3 green Centaur creature tokens with protection from black.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_3_3_centaur_pro_black | ValidTgts$ Opponent | TokenOwner$ Targeted\nOracle:Trample\\nWhen Hunted Horror enters, target opponent creates two 3/3 green Centaur creature tokens with protection from black.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Horror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

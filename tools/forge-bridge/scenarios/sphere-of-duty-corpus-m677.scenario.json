@@ -1,0 +1,25 @@
+{
+  "id": "sphere-of-duty-corpus-m677",
+  "description": "M6 corpus — Sphere of Duty; ETB-on-bf.",
+  "seed": 70602,
+  "cards": {
+    "Sphere of Duty": "Name:Sphere of Duty\nManaCost:3 W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.GreenSource | ValidTarget$ You | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ If a green source would deal damage to you, prevent 2 of that damage.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ 2\nAI:RemoveDeck:Random\nOracle:If a green source would deal damage to you, prevent 2 of that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sphere of Duty"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

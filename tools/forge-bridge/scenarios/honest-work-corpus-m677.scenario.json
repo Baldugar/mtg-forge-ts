@@ -1,0 +1,23 @@
+{
+  "id": "honest-work-corpus-m677",
+  "description": "M6 corpus — Honest Work; in-hand parse.",
+  "seed": 62460,
+  "cards": {
+    "Honest Work": "Name:Honest Work\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature.OppCtrl:creature an opponent controls\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted creature and remove all counters from it.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ DBRemoveCounter\nSVar:DBRemoveCounter:DB$ RemoveCounter | Defined$ Enchanted | CounterType$ All | CounterNum$ All\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | RemoveAllAbilities$ True | AddType$ Citizen | RemoveCreatureTypes$ True | SetPower$ 1 | SetToughness$ 1 | AddAbility$ Mana | SetName$ Humble Merchant | Description$ Enchanted creature loses all abilities and is a Citizen with base power and toughness 1/1 and \"{T}: Add {C}\" named Humble Merchant. (It loses all other creature types and names.)\nSVar:Mana:AB$ Mana | Cost$ T | Produced$ C | Amount$ 1 | SpellDescription$ Add {C}.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature an opponent controls\\nWhen this Aura enters, tap enchanted creature and remove all counters from it.\\nEnchanted creature loses all abilities and is a Citizen with base power and toughness 1/1 and \"{T}: Add {C}\" named Humble Merchant. (It loses all other creature types and names.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Honest Work"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

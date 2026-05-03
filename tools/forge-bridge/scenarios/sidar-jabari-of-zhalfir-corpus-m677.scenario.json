@@ -1,0 +1,23 @@
+{
+  "id": "sidar-jabari-of-zhalfir-corpus-m677",
+  "description": "M6 corpus — Sidar Jabari of Zhalfir; in-hand parse.",
+  "seed": 69821,
+  "cards": {
+    "Sidar Jabari of Zhalfir": "Name:Sidar Jabari of Zhalfir\nManaCost:1 W U B\nTypes:Legendary Creature Human Knight\nPT:4/3\nT:Mode$ AttackersDeclared | ValidAttackers$ Card.Knight+YouCtrl | TriggerZones$ Command | PresentZone$ Command | IsPresent$ Card.StrictlySelf | Execute$ TrigLoot | TriggerDescription$ Eminence — Whenever you attack with one or more Knights, if CARDNAME is in the command zone or on the battlefield, draw a card, then discard a card.\nT:Mode$ AttackersDeclared | ValidAttackers$ Card.Knight+YouCtrl | TriggerZones$ Battlefield | PresentZone$ Battlefield | IsPresent$ Card.StrictlySelf | Execute$ TrigLoot | Secondary$ True | TriggerDescription$ Eminence — Whenever you attack with one or more Knights, if CARDNAME is in the command zone or on the battlefield, draw a card, then discard a card.\nSVar:TrigLoot:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nK:Flying\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, return target Knight creature card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target Knight creature card in your graveyard | ChangeNum$ 1 | ValidTgts$ Creature.YouOwn+Knight\nSVar:BuffedBy:Knight\nDeckHas:Ability$Discard|Graveyard\nDeckHints:Type$Knight\nOracle:Eminence — Whenever you attack with one or more Knights, if Sidar Jabari of Zhalfir is in the command zone or on the battlefield, draw a card, then discard a card.\\nFlying, first strike\\nWhenever Sidar Jabari deals combat damage to a player, return target Knight creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sidar Jabari of Zhalfir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

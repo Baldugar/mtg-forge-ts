@@ -1,0 +1,23 @@
+{
+  "id": "lavakin-brawler-corpus-m677",
+  "description": "M6 corpus — Lavakin Brawler; in-hand parse.",
+  "seed": 64033,
+  "cards": {
+    "Lavakin Brawler": "Name:Lavakin Brawler\nManaCost:3 R\nTypes:Creature Elemental Warrior\nPT:2/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+0 until end of turn for each Elemental you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Elemental.YouCtrl\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Lavakin Brawler attacks, it gets +1/+0 until end of turn for each Elemental you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lavakin Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

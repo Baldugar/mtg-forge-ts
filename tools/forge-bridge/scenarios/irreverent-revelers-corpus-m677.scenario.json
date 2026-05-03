@@ -1,0 +1,23 @@
+{
+  "id": "irreverent-revelers-corpus-m677",
+  "description": "M6 corpus — Irreverent Revelers; in-hand parse.",
+  "seed": 63148,
+  "cards": {
+    "Irreverent Revelers": "Name:Irreverent Revelers\nManaCost:2 R\nTypes:Creature Satyr\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDestroy,DBHaste\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBHaste:DB$ Pump | Defined$ Self | KW$ Haste | SpellDescription$ CARDNAME gains haste until end of turn.\nOracle:When Irreverent Revelers enters, choose one —\\n• Destroy target artifact.\\n• Irreverent Revelers gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Irreverent Revelers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

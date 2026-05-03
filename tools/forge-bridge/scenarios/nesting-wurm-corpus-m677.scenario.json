@@ -1,0 +1,23 @@
+{
+  "id": "nesting-wurm-corpus-m677",
+  "description": "M6 corpus — Nesting Wurm; in-hand parse.",
+  "seed": 65854,
+  "cards": {
+    "Nesting Wurm": "Name:Nesting Wurm\nManaCost:4 G G\nTypes:Creature Wurm\nPT:4/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for up to three cards named Nesting Wurm, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedNesting Wurm | ChangeNum$ 3 | ShuffleNonMandatory$ True\nDeckHints:Name$Nesting Wurm\nOracle:Trample\\nWhen Nesting Wurm enters, you may search your library for up to three cards named Nesting Wurm, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nesting Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "leonardo-leader-in-blue-corpus-m677",
+  "description": "M6 corpus — Leonardo, Leader in Blue; in-hand parse.",
+  "seed": 64117,
+  "cards": {
+    "Leonardo, Leader in Blue": "Name:Leonardo, Leader in Blue\nManaCost:W\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:2/1\nK:Sneak:3 W W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+sneaked | Execute$ TrigPumpAll | TriggerDescription$ When Leonardo enters, if his sneak cost was paid, creatures you control get +2/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2\nA:AB$ Pump | Cost$ 1 W | Defined$ Self | KW$ First Strike | SpellDescription$ NICKNAME gains first strike until end of turn.\nOracle:Sneak {3}{W}{W} (You may cast this spell for {3}{W}{W} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)\\nWhen Leonardo enters, if his sneak cost was paid, creatures you control get +2/+0 until end of turn.\\n{1}{W}: Leonardo gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonardo, Leader in Blue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

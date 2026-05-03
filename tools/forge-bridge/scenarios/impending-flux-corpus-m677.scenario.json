@@ -1,0 +1,23 @@
+{
+  "id": "impending-flux-corpus-m677",
+  "description": "M6 corpus — Impending Flux; in-hand parse.",
+  "seed": 62800,
+  "cards": {
+    "Impending Flux": "Name:Impending Flux\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DamageAll | NumDmg$ X | ValidPlayers$ Opponent | ValidCards$ Creature.OppCtrl | ValidDescription$ each opponent and each creature they control | SpellDescription$ Paradox — CARDNAME deals X damage to each opponent and each creature they control, where X is 1 plus the number of spells you've cast from anywhere other than your hand this turn.\nSVar:X:Count$ThisTurnCast_Card.YouCtrl+!wasCastFromYourHand/Plus.1\nK:Foretell:1 R R\nOracle:Paradox — Impending Flux deals X damage to each opponent and each creature they control, where X is 1 plus the number of spells you've cast from anywhere other than your hand this turn.\\nForetell {1}{R}{R} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impending Flux"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

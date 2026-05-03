@@ -1,0 +1,23 @@
+{
+  "id": "marshdrinker-giant-corpus-m677",
+  "description": "M6 corpus — Marshdrinker Giant; in-hand parse.",
+  "seed": 64823,
+  "cards": {
+    "Marshdrinker Giant": "Name:Marshdrinker Giant\nManaCost:3 G G\nTypes:Creature Giant Warrior\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target Island or Swamp an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land.Island+OppCtrl,Land.Swamp+OppCtrl | TgtPrompt$ Select target Island or Swamp an opponent controls\nOracle:When Marshdrinker Giant enters, destroy target Island or Swamp an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marshdrinker Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

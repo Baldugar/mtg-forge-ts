@@ -1,0 +1,23 @@
+{
+  "id": "lizard-connors-s-curse-corpus-m677",
+  "description": "M6 corpus — Lizard, Connors's Curse; in-hand parse.",
+  "seed": 64320,
+  "cards": {
+    "Lizard, Connors's Curse": "Name:Lizard, Connors's Curse\nVariant:UniversesWithin:FlavorName:King of the Coldblood Curse\nManaCost:2 G G\nTypes:Legendary Creature Lizard Villain\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ Lizard Formula — When CARDNAME enters, up to one other target creature loses all abilities and becomes a green Lizard creature with base power and toughness 4/4.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | TargetMin$ 0 | TargetMax$ 1 | Power$ 4 | Toughness$ 4 | RemoveAllAbilities$ True | Colors$ Green | Types$ Lizard,Creature | OverwriteColors$ True | RemoveCreatureTypes$ True | RemoveCardTypes$ True | Duration$ Permanent\nOracle:Trample\\nLizard Formula — When Lizard, Connors's Curse enters, up to one other target creature loses all abilities and becomes a green Lizard creature with base power and toughness 4/4.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lizard, Connors's Curse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

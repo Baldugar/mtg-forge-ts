@@ -1,0 +1,23 @@
+{
+  "id": "golgari-findbroker-corpus-m677",
+  "description": "M6 corpus — Golgari Findbroker; in-hand parse.",
+  "seed": 61549,
+  "cards": {
+    "Golgari Findbroker": "Name:Golgari Findbroker\nManaCost:B B G G\nTypes:Creature Elf Shaman\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return target permanent card from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouCtrl\nOracle:When Golgari Findbroker enters, return target permanent card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golgari Findbroker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

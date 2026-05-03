@@ -1,0 +1,23 @@
+{
+  "id": "reluctant-dounguard-corpus-m677",
+  "description": "M6 corpus — Reluctant Dounguard; in-hand parse.",
+  "seed": 68020,
+  "cards": {
+    "Reluctant Dounguard": "Name:Reluctant Dounguard\nManaCost:2 W\nTypes:Creature Kithkin Soldier\nPT:4/4\nK:etbCounter:M1M1:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE1_M1M1 | NoResolvingCheck$ True | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever another creature you control enters while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nOracle:This creature enters with two -1/-1 counters on it.\\nWhenever another creature you control enters while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reluctant Dounguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

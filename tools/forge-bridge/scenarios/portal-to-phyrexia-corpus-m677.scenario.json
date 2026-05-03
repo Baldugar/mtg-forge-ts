@@ -1,0 +1,23 @@
+{
+  "id": "portal-to-phyrexia-corpus-m677",
+  "description": "M6 corpus — Portal to Phyrexia; in-hand parse.",
+  "seed": 67072,
+  "cards": {
+    "Portal to Phyrexia": "Name:Portal to Phyrexia\nManaCost:9\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each opponent sacrifices three creatures.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature | Amount$ 3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, put target creature card from a graveyard onto the battlefield under your control. It's a Phyrexian in addition to its other types.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature | GainControl$ True | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Phyrexian\nDeckHas:Ability$Sacrifice|Graveyard\nDeckHints:Keyword$Mill|Dredge & Type$Phyrexian\nOracle:When Portal to Phyrexia enters, each opponent sacrifices three creatures.\\nAt the beginning of your upkeep, put target creature card from a graveyard onto the battlefield under your control. It's a Phyrexian in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Portal to Phyrexia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

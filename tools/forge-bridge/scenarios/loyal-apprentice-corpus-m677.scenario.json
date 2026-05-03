@@ -1,0 +1,23 @@
+{
+  "id": "loyal-apprentice-corpus-m677",
+  "description": "M6 corpus — Loyal Apprentice; in-hand parse.",
+  "seed": 64453,
+  "cards": {
+    "Loyal Apprentice": "Name:Loyal Apprentice\nManaCost:1 R\nTypes:Creature Human Artificer\nPT:2/1\nK:Haste\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Lieutenant — At the beginning of combat on your turn, if you control your commander, create a 1/1 colorless Thopter artifact creature token with flying. That token gains haste until end of turn.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You | PumpKeywords$ Haste | PumpDuration$ EOT\nDeckHas:Ability$Token\nDeckHints:Ability$Token\nOracle:Haste\\nLieutenant — At the beginning of combat on your turn, if you control your commander, create a 1/1 colorless Thopter artifact creature token with flying. That token gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loyal Apprentice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

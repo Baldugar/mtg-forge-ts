@@ -1,0 +1,23 @@
+{
+  "id": "lightning-blow-corpus-m677",
+  "description": "M6 corpus — Lightning Blow; in-hand parse.",
+  "seed": 64239,
+  "cards": {
+    "Lightning Blow": "Name:Lightning Blow\nManaCost:1 W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | KW$ First Strike | SpellDescription$ Target creature gains first strike until end of turn. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Target creature gains first strike until end of turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Blow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

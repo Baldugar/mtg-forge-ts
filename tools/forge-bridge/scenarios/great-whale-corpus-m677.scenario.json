@@ -1,0 +1,23 @@
+{
+  "id": "great-whale-corpus-m677",
+  "description": "M6 corpus — Great Whale; in-hand parse.",
+  "seed": 61709,
+  "cards": {
+    "Great Whale": "Name:Great Whale\nManaCost:5 U U\nTypes:Creature Whale\nPT:5/5\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap up to seven lands.\nSVar:TrigUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ 7\nSVar:FreeSpellAI:True\nOracle:When Great Whale enters, untap up to seven lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Great Whale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

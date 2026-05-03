@@ -1,0 +1,23 @@
+{
+  "id": "myr-custodian-corpus-m677",
+  "description": "M6 corpus — Myr Custodian; in-hand parse.",
+  "seed": 65634,
+  "cards": {
+    "Myr Custodian": "Name:Myr Custodian\nManaCost:3\nTypes:Artifact Creature Myr\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2. Then each opponent may scry 1. (To scry X, that player looks at the top X cards of their library, then put any number of them on the bottom and the rest on top in any order.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 2 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1 | Defined$ Opponent | Optional$ True\nOracle:When Myr Custodian enters, scry 2. Then each opponent may scry 1. (To scry X, that player looks at the top X cards of their library, then put any number of them on the bottom and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Custodian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

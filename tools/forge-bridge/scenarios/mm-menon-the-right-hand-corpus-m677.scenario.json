@@ -1,0 +1,25 @@
+{
+  "id": "mm-menon-the-right-hand-corpus-m677",
+  "description": "M6 corpus — Mm'menon, the Right Hand; ETB-on-bf.",
+  "seed": 65334,
+  "cards": {
+    "Mm'menon, the Right Hand": "Name:Mm'menon, the Right Hand\nManaCost:3 U U\nTypes:Legendary Creature Jellyfish Advisor\nPT:3/4\nK:Flying\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Artifact.TopLibrary+YouCtrl+nonLand | AffectedZone$ Library | MayPlay$ True | Description$ You may cast artifact spells from the top of your library.\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | AddAbility$ AnyMana | Description$ Artifacts you control have \"{T}: Add {U}. Spend this mana only to cast a spell from anywhere other than your hand.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ U | Amount$ 1 | RestrictValid$ Spell.!wasCastFromYourHand | SpellDescription$ Add {U}. Spend this mana only to cast a spell from anywhere other than your hand.\nOracle:Flying\\nYou may look at the top card of your library any time.\\nYou may cast artifact spells from the top of your library.\\nArtifacts you control have \"{T}: Add {U}. Spend this mana only to cast a spell from anywhere other than your hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mm'menon, the Right Hand"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

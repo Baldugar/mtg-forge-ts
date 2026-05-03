@@ -1,0 +1,25 @@
+{
+  "id": "moonstone-harbinger-corpus-m677",
+  "description": "M6 corpus — Moonstone Harbinger; ETB-on-bf.",
+  "seed": 65479,
+  "cards": {
+    "Moonstone Harbinger": "Name:Moonstone Harbinger\nManaCost:2 B\nTypes:Creature Bat Warrior\nPT:1/3\nK:Flying\nK:Deathtouch\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | ActivationLimit$ 1 | PlayerTurn$ True | TriggerDescription$ Whenever you gain or lose life during your turn, Bats you control get +1/+0 and gain deathtouch until end of turn. This ability triggers only once each turn.\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | ActivationLimit$ 1 | PlayerTurn$ True | Secondary$ True | TriggerDescription$ Whenever you gain or lose life during your turn, Bats you control get +1/+0 and gain deathtouch until end of turn. This ability triggers only once each turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Bat.YouCtrl | KW$ Deathtouch | NumAtt$ +1\nSVar:PlayMain1:TRUE\nDeckHints:Type$Bat\nOracle:Flying, deathtouch\\nWhenever you gain or lose life during your turn, Bats you control get +1/+0 and gain deathtouch until end of turn. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Moonstone Harbinger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

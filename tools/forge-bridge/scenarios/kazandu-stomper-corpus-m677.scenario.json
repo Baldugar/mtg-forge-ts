@@ -1,0 +1,23 @@
+{
+  "id": "kazandu-stomper-corpus-m677",
+  "description": "M6 corpus — Kazandu Stomper; in-hand parse.",
+  "seed": 63541,
+  "cards": {
+    "Kazandu Stomper": "Name:Kazandu Stomper\nManaCost:5 G\nTypes:Creature Beast\nPT:6/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return up to two lands you control to their owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | PrimaryPrompt$ Choose up to two lands you control | ChangeNum$ 2 | ChangeType$ Land.YouCtrl | Origin$ Battlefield | Destination$ Hand | Hidden$ True\nOracle:Trample\\nWhen Kazandu Stomper enters, return up to two lands you control to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kazandu Stomper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

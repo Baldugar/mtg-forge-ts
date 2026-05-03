@@ -1,0 +1,23 @@
+{
+  "id": "slumbering-keepguard-corpus-m677",
+  "description": "M6 corpus — Slumbering Keepguard; in-hand parse.",
+  "seed": 70244,
+  "cards": {
+    "Slumbering Keepguard": "Name:Slumbering Keepguard\nManaCost:W\nTypes:Creature Human Knight\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever an enchantment you control enters, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ Pump | Cost$ 2 W | NumAtt$ +X | NumDef$ +X | AILogic$ Pump | SpellDescription$ CARDNAME gets +1/+1 until end of turn for each enchantment you control.\nSVar:X:Count$Valid Enchantment.YouCtrl\nDeckHints:Type$Enchantment\nOracle:Whenever an enchantment you control enters, scry 1.\\n{2}{W}: Slumbering Keepguard gets +1/+1 until end of turn for each enchantment you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slumbering Keepguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "rabid-elephant-corpus-m677",
+  "description": "M6 corpus — Rabid Elephant; ETB-on-bf.",
+  "seed": 67506,
+  "cards": {
+    "Rabid Elephant": "Name:Rabid Elephant\nManaCost:4 G\nTypes:Creature Elephant\nPT:3/4\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME becomes blocked, it gets +2/+2 until end of turn for each creature blocking it.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.blockingTriggeredAttacker/Times.2\nOracle:Whenever Rabid Elephant becomes blocked, it gets +2/+2 until end of turn for each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rabid Elephant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

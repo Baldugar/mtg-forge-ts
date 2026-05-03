@@ -1,0 +1,23 @@
+{
+  "id": "mass-of-mysteries-corpus-m677",
+  "description": "M6 corpus — Mass of Mysteries; in-hand parse.",
+  "seed": 64852,
+  "cards": {
+    "Mass of Mysteries": "Name:Mass of Mysteries\nManaCost:W U B R G\nTypes:Legendary Creature Elemental\nPT:5/5\nK:First Strike\nK:Vigilance\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, another target Elemental you control gains myriad until end of turn. (Whenever it attacks, for each opponent other than defending player, you may create a token copy that's tapped and attacking that player or a planeswalker they control. Exile the tokens at end of combat.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Elemental.Other+YouCtrl | TgtPrompt$ Select another target Elemental you control | KW$ Myriad\nSVar:PlayMain1:TRUE\nDeckHints:Type$Elemental\nOracle:First strike, vigilance, trample\\nAt the beginning of combat on your turn, another target Elemental you control gains myriad until end of turn. (Whenever it attacks, for each opponent other than defending player, you may create a token copy that's tapped and attacking that player or a planeswalker they control. Exile the tokens at end of combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mass of Mysteries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

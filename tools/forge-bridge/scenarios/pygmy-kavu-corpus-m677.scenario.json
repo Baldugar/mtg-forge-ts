@@ -1,0 +1,23 @@
+{
+  "id": "pygmy-kavu-corpus-m677",
+  "description": "M6 corpus — Pygmy Kavu; in-hand parse.",
+  "seed": 67400,
+  "cards": {
+    "Pygmy Kavu": "Name:Pygmy Kavu\nManaCost:3 G\nTypes:Creature Kavu\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each black creature your opponents control.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$Valid Creature.Black+OppCtrl\nAI:RemoveDeck:Random\nOracle:When Pygmy Kavu enters, draw a card for each black creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pygmy Kavu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "rejuvenating-springs-corpus-m677",
+  "description": "M6 corpus — Rejuvenating Springs; ETB-on-bf.",
+  "seed": 67987,
+  "cards": {
+    "Rejuvenating Springs": "Name:Rejuvenating Springs\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you have two or more opponents.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ ETBCheckSVar2 | ConditionSVarCompare$ LT2\nSVar:ETBCheckSVar2:PlayerCountOpponents$Amount\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SpellDescription$ Add {G} or {U}.\nOracle:Rejuvenating Springs enters tapped unless you have two or more opponents.\\n{T}: Add {G} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rejuvenating Springs"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "over-the-top-corpus-m677",
+  "description": "M6 corpus — Over the Top; in-hand parse.",
+  "seed": 66485,
+  "cards": {
+    "Over the Top": "Name:Over the Top\nManaCost:5 R R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ Reveal | SubAbility$ Battlefield | SpellDescription$ Each player reveals a number of cards from the top of their library equal to the number of nonland permanents they control, puts all permanent cards they revealed this way onto the battlefield, and puts the rest into their graveyard.\nSVar:Reveal:DB$ PeekAndReveal | Defined$ RememberedPlayer | NoPeek$ True | PeekAmount$ X | RememberRevealed$ True\nSVar:Battlefield:DB$ ChangeZoneAll | ChangeType$ Permanent.IsRemembered | Origin$ Library | Destination$ Battlefield | ForgetChanged$ True | SubAbility$ Graveyard\nSVar:Graveyard:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Graveyard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Permanent.nonLand+RememberedPlayerCtrl\nAI:RemoveDeck:Random\nDeckHints:Ability$Graveyard\nOracle:Each player reveals a number of cards from the top of their library equal to the number of nonland permanents they control, puts all permanent cards they revealed this way onto the battlefield, and puts the rest into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Over the Top"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

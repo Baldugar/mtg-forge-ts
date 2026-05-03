@@ -1,0 +1,23 @@
+{
+  "id": "midnight-arsonist-corpus-m677",
+  "description": "M6 corpus — Midnight Arsonist; in-hand parse.",
+  "seed": 65086,
+  "cards": {
+    "Midnight Arsonist": "Name:Midnight Arsonist\nManaCost:3 R\nTypes:Creature Vampire\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy up to X target artifacts without mana abilities, where X is the number of Vampires you control.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Artifact.!hasManaAbility | TgtPrompt$ Select up to X target artifacts without mana abilities\nSVar:X:Count$Valid Vampire.YouCtrl\nSVar:BuffedBy:Vampire\nAI:RemoveDeck:Random\nDeckHints:Type$Vampire\nOracle:When Midnight Arsonist enters, destroy up to X target artifacts without mana abilities, where X is the number of Vampires you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Arsonist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

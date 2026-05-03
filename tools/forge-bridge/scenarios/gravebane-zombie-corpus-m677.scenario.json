@@ -1,0 +1,25 @@
+{
+  "id": "gravebane-zombie-corpus-m677",
+  "description": "M6 corpus — Gravebane Zombie; ETB-on-bf.",
+  "seed": 61660,
+  "cards": {
+    "Gravebane Zombie": "Name:Gravebane Zombie\nManaCost:3 B\nTypes:Creature Zombie\nPT:3/2\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ ToLibrary | Description$ If CARDNAME would die, put CARDNAME on top of its owner's library instead.\nSVar:ToLibrary:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | Defined$ ReplacedCard\nOracle:If Gravebane Zombie would die, put Gravebane Zombie on top of its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gravebane Zombie"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

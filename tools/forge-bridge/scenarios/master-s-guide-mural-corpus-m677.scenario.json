@@ -1,0 +1,23 @@
+{
+  "id": "master-s-guide-mural-corpus-m677",
+  "description": "M6 corpus — Master's Guide-Mural; in-hand parse.",
+  "seed": 64882,
+  "cards": {
+    "Master's Guide-Mural": "Name:Master's Guide-Mural\nManaCost:3 W U\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 4/4 white and blue Golem artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ wu_4_4_a_golem\nK:Craft:4 W W U ExileCtrlOrGrave<1/Artifact.Other>\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard|Token & Type$Golem\nAlternateMode:DoubleFaced\nOracle:When Master's Guide-Mural enters, create a 4/4 white and blue Golem artifact creature token.\\nCraft with artifact {4}{W}{W}{U} ({4}{W}{W}{U}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Master's Manufactory\nManaCost:no cost\nColors:white,blue\nTypes:Artifact\nA:AB$ Token | Cost$ T | TokenScript$ wu_4_4_a_golem | CheckSVar$ Count$ThisTurnEntered_Battlefield_Card.Self+YouCtrl,Artifact.YouCtrl+Other | SpellDescription$ Create a 4/4 white and blue Golem artifact creature token. Activate only if CARDNAME or another artifact entered the battlefield under your control this turn.\nOracle:{T}: Create a 4/4 white and blue Golem artifact creature token. Activate only if Master's Manufactory or another artifact entered the battlefield under your control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master's Guide-Mural"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

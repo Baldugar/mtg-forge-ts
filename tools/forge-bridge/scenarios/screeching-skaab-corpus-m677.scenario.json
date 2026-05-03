@@ -1,0 +1,23 @@
+{
+  "id": "screeching-skaab-corpus-m677",
+  "description": "M6 corpus — Screeching Skaab; in-hand parse.",
+  "seed": 69233,
+  "cards": {
+    "Screeching Skaab": "Name:Screeching Skaab\nManaCost:1 U\nTypes:Creature Zombie\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nDeckHas:Ability$Graveyard\nOracle:When Screeching Skaab enters, mill two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Screeching Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

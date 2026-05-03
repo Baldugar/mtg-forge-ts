@@ -1,0 +1,25 @@
+{
+  "id": "sulfuric-vapors-corpus-m677",
+  "description": "M6 corpus — Sulfuric Vapors; ETB-on-bf.",
+  "seed": 71283,
+  "cards": {
+    "Sulfuric Vapors": "Name:Sulfuric Vapors\nManaCost:3 R\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Spell.Red | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus1 | Description$ If a red spell would deal damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.\nSVar:DmgPlus1:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.1\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:If a red spell would deal damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sulfuric Vapors"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

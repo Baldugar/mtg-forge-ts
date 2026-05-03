@@ -1,0 +1,25 @@
+{
+  "id": "runesword-corpus-m677",
+  "description": "M6 corpus — Runesword; ETB-on-bf.",
+  "seed": 68653,
+  "cards": {
+    "Runesword": "Name:Runesword\nManaCost:6\nTypes:Artifact\nA:AB$ Pump | Cost$ 3 T | NumAtt$ +2 | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | SubAbility$ RuneDelay | SpellDescription$ Target attacking creature gets +2/+0 until end of turn. When that creature leaves the battlefield this turn, sacrifice CARDNAME. If the creature deals damage to a creature this turn, the creature dealt damage can't be regenerated this turn. If a creature dealt damage by the targeted creature would die this turn, exile that creature instead.\nSVar:RuneDelay:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | Origin$ Battlefield | ValidCard$ Card.IsTriggerRemembered | ThisTurn$ True | SubAbility$ RuneswordEffect | Execute$ RuneswordSac | TriggerDescription$ When the targeted creature leaves the battlefield this turn, sacrifice CARDNAME.\nSVar:RuneswordSac:DB$ SacrificeAll | Defined$ Self\nSVar:RuneswordEffect:DB$ Effect | ReplacementEffects$ RuneswordRep | StaticAbilities$ NoRegen | RememberObjects$ Targeted | AILogic$ CantRegenerate\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Creature.DamagedBy Remembered | Description$ If the creature deals damage to a creature this turn, the creature dealt damage can't be regenerated this turn.\nSVar:RuneswordRep:Event$ Moved | ValidLKI$ Creature.DamagedBy Remembered | Destination$ Graveyard | ReplaceWith$ RuneswordExile | Description$ If a creature dealt damage by the targeted creature would die this turn, exile that creature instead.\nSVar:RuneswordExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nDeckHas:Ability$Sacrifice\nOracle:{3}, {T}: Target attacking creature gets +2/+0 until end of turn. When that creature leaves the battlefield this turn, sacrifice Runesword. If the creature deals damage to a creature this turn, the creature dealt damage can't be regenerated this turn. If a creature dealt damage by the targeted creature would die this turn, exile that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Runesword"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

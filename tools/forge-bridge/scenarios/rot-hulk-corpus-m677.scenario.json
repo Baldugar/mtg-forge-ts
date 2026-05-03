@@ -1,0 +1,23 @@
+{
+  "id": "rot-hulk-corpus-m677",
+  "description": "M6 corpus — Rot Hulk; in-hand parse.",
+  "seed": 68534,
+  "cards": {
+    "Rot Hulk": "Name:Rot Hulk\nManaCost:5 B B\nTypes:Creature Zombie\nPT:5/5\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to X target Zombie cards from your graveyard to the battlefield, where X is the number of opponents you have.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Card.Zombie+YouCtrl | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Select target Zombie card | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return up to X target Zombie cards from your graveyard to the battlefield, where X is the number of opponents you have.\nSVar:X:PlayerCountOpponents$Amount\nOracle:Menace\\nWhen Rot Hulk enters, return up to X target Zombie cards from your graveyard to the battlefield, where X is the number of opponents you have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rot Hulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

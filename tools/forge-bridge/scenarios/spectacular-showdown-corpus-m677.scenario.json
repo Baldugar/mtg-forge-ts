@@ -1,0 +1,23 @@
+{
+  "id": "spectacular-showdown-corpus-m677",
+  "description": "M6 corpus — Spectacular Showdown; in-hand parse.",
+  "seed": 70540,
+  "cards": {
+    "Spectacular Showdown": "Name:Spectacular Showdown\nManaCost:1 R\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ Double Strike | RememberPut$ True | SubAbility$ DBGoad | SpellDescription$ Put a double strike counter on target creature, then goad each creature that had a double strike counter put on it this way. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\nSVar:DBGoad:DB$ Goad | Defined$ Remembered | DefinedDesc$ each creature that had a double strike counter put on it this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Overload:4 R R R\nDeckHas:Ability$Counters\nOracle:Put a double strike counter on target creature, then goad each creature that had a double strike counter put on it this way. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\\nOverload {4}{R}{R}{R} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spectacular Showdown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

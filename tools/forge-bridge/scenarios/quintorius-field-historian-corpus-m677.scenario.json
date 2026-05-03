@@ -1,0 +1,23 @@
+{
+  "id": "quintorius-field-historian-corpus-m677",
+  "description": "M6 corpus — Quintorius, Field Historian; in-hand parse.",
+  "seed": 67493,
+  "cards": {
+    "Quintorius, Field Historian": "Name:Quintorius, Field Historian\nManaCost:3 R W\nTypes:Legendary Creature Elephant Cleric\nPT:2/4\nS:Mode$ Continuous | Affected$ Spirit.YouCtrl | AddPower$ 1 | Description$ Spirits you control get +1/+0.\nT:Mode$ ChangesZoneAll | ValidCards$ Card.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more cards leave your graveyard, create a 3/2 red and white Spirit creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ rw_3_2_spirit\nDeckHas:Ability$Graveyard|Token\nDeckHints:Type$Spirit\nOracle:Spirits you control get +1/+0.\\nWhenever one or more cards leave your graveyard, create a 3/2 red and white Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quintorius, Field Historian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

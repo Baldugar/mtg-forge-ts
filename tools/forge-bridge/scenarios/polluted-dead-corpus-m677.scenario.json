@@ -1,0 +1,23 @@
+{
+  "id": "polluted-dead-corpus-m677",
+  "description": "M6 corpus — Polluted Dead; in-hand parse.",
+  "seed": 67042,
+  "cards": {
+    "Polluted Dead": "Name:Polluted Dead\nManaCost:4 B\nTypes:Creature Zombie\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, destroy target land.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land | TgtPrompt$ Select target land\nOracle:When Polluted Dead dies, destroy target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Polluted Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

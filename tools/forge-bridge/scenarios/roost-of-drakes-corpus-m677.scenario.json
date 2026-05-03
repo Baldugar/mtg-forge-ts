@@ -1,0 +1,23 @@
+{
+  "id": "roost-of-drakes-corpus-m677",
+  "description": "M6 corpus — Roost of Drakes; in-hand parse.",
+  "seed": 68502,
+  "cards": {
+    "Roost of Drakes": "Name:Roost of Drakes\nManaCost:U\nTypes:Enchantment\nK:Kicker:2 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if it was kicked, create a 2/2 blue Drake creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ u_2_2_drake_flying | TokenOwner$ You\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl+kicked | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a kicked spell, create a 2/2 blue Drake creature token with flying.\nDeckHas:Ability$Token\nOracle:Kicker {2}{U} (You may pay an additional {2}{U} as you cast this spell.)\\nWhen Roost of Drakes enters, if it was kicked, create a 2/2 blue Drake creature token with flying.\\nWhenever you cast a kicked spell, create a 2/2 blue Drake creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roost of Drakes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

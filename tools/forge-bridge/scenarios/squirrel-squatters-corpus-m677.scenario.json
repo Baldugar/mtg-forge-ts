@@ -1,0 +1,23 @@
+{
+  "id": "squirrel-squatters-corpus-m677",
+  "description": "M6 corpus — Squirrel Squatters; in-hand parse.",
+  "seed": 70834,
+  "cards": {
+    "Squirrel Squatters": "Name:Squirrel Squatters\nManaCost:3 G G\nTypes:Creature Squirrel\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigOpenAttraction | TriggerDescription$ When CARDNAME enters, open an Attraction.\nSVar:TrigOpenAttraction:DB$ OpenAttraction\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 green Squirrel creature token that's tapped and attacking for each Attraction you've visited this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_squirrel | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:X:PlayerCountPropertyYou$AttractionsVisitedThisTurn\nSVar:HasAttackEffect:TRUE\nOracle:When Squirrel Squatters enters, open an Attraction. (Put the top card of your Attraction deck onto the battlefield.)\\nWhenever Squirrel Squatters attacks, create a 1/1 green Squirrel creature token that's tapped and attacking for each Attraction you've visited this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Squirrel Squatters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mirkwood-spider-corpus-m677",
+  "description": "M6 corpus — Mirkwood Spider; in-hand parse.",
+  "seed": 65229,
+  "cards": {
+    "Mirkwood Spider": "Name:Mirkwood Spider\nManaCost:G\nTypes:Creature Spider\nPT:1/1\nK:Deathtouch\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target legendary creature you control gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Legendary+YouCtrl | TgtPrompt$ Select target legendary creature you control | KW$ Deathtouch\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Creature & Type$Legendary\nOracle:Deathtouch\\nWhenever Mirkwood Spider attacks, target legendary creature you control gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirkwood Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

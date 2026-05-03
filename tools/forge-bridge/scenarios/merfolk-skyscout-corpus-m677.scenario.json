@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-skyscout-corpus-m677",
+  "description": "M6 corpus — Merfolk Skyscout; in-hand parse.",
+  "seed": 65024,
+  "cards": {
+    "Merfolk Skyscout": "Name:Merfolk Skyscout\nManaCost:2 U U\nTypes:Creature Merfolk Scout\nPT:2/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME attacks or blocks, untap target permanent.\nT:Mode$ Blocks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, untap target permanent.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Permanent\nSVar:HasBlockEffect:TRUE\nOracle:Flying\\nWhenever Merfolk Skyscout attacks or blocks, untap target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Skyscout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

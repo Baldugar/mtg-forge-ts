@@ -1,0 +1,23 @@
+{
+  "id": "perilous-iteration-corpus-m677",
+  "description": "M6 corpus — Perilous Iteration; in-hand parse.",
+  "seed": 66736,
+  "cards": {
+    "Perilous Iteration": "Name:Perilous Iteration\nManaCost:R G\nTypes:Sorcery\nA:SP$ Seek | Types$ Card.YouOwn+cmcLE2,Card.YouOwn+cmcGE3 | RememberFound$ True | SubAbility$ DBDelay | SpellDescription$ Seek a card with mana value 2 or less and a card with mana value 3 or greater. Discard those cards at the beginning of your next turn's end step.\nSVar:DBDelay:DB$ DelayedTrigger | DelayedTriggerDefinedPlayer$ You | Mode$ Phase | Phase$ End of Turn | Execute$ TrigDiscard | RememberObjects$ Remembered | TriggerDescription$ Discard those cards at the beginning of your next turn's end step.\nSVar:TrigDiscard:DB$ Discard | Mode$ Defined | DefinedCards$ DelayTriggerRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Seek a card with mana value 2 or less and a card with mana value 3 or greater. Discard those cards at the beginning of your next turn's end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perilous Iteration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

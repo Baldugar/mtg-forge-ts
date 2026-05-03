@@ -1,0 +1,23 @@
+{
+  "id": "leaf-leap-guide-corpus-m677",
+  "description": "M6 corpus — Leaf-Leap Guide; in-hand parse.",
+  "seed": 64065,
+  "cards": {
+    "Leaf-Leap Guide": "Name:Leaf-Leap Guide\nManaCost:G U\nTypes:Creature Frog Scout\nPT:1/1\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another creature you control enters, CARDNAME and that creature perpetually get +1/+1.\nSVar:TrigPump:DB$ Pump | Defined$ Self & TriggeredCardLKICopy | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nA:AB$ ChangeZone | Cost$ 1 T | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return another target creature you control to its owner's hand.\nOracle:Vigilance\\nWhenever another creature you control enters, Leaf-Leap Guide and that creature perpetually get +1/+1.\\n{1}, {T}: Return another target creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leaf-Leap Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

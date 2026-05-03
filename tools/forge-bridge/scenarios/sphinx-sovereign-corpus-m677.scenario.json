@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-sovereign-corpus-m677",
+  "description": "M6 corpus — Sphinx Sovereign; in-hand parse.",
+  "seed": 70622,
+  "cards": {
+    "Sphinx Sovereign": "Name:Sphinx Sovereign\nManaCost:4 W U U B\nTypes:Artifact Creature Sphinx\nPT:6/6\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, you gain 3 life if CARDNAME is untapped. Otherwise, each opponent loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3 | SubAbility$ DBGainLife | ConditionDefined$ Self | ConditionPresent$ Card.tapped\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | ConditionDefined$ Self | ConditionPresent$ Card.tapped | ConditionCompare$ EQ0\nOracle:Flying\\nAt the beginning of your end step, you gain 3 life if Sphinx Sovereign is untapped. Otherwise, each opponent loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx Sovereign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

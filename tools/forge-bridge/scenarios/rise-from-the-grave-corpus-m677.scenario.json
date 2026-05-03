@@ -1,0 +1,23 @@
+{
+  "id": "rise-from-the-grave-corpus-m677",
+  "description": "M6 corpus — Rise from the Grave; in-hand parse.",
+  "seed": 68332,
+  "cards": {
+    "Rise from the Grave": "Name:Rise from the Grave\nManaCost:4 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target creature card in a graveyard | ValidTgts$ Creature | StaticEffect$ Animate | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control. That creature is a black Zombie in addition to its other colors and types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Zombie | AddColor$ Black\nOracle:Put target creature card from a graveyard onto the battlefield under your control. That creature is a black Zombie in addition to its other colors and types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rise from the Grave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

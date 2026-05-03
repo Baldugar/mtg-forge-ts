@@ -1,0 +1,23 @@
+{
+  "id": "sight-of-the-scalelords-corpus-m677",
+  "description": "M6 corpus — Sight of the Scalelords; in-hand parse.",
+  "seed": 69855,
+  "cards": {
+    "Sight of the Scalelords": "Name:Sight of the Scalelords\nManaCost:4 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, creatures you control with toughness 4 or greater get +2/+2 and gain vigilance until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl+toughnessGE4 | KW$ Vigilance | NumAtt$ +2 | NumDef$ +2\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:At the beginning of combat on your turn, creatures you control with toughness 4 or greater get +2/+2 and gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sight of the Scalelords"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

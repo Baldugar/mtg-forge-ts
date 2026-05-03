@@ -1,0 +1,23 @@
+{
+  "id": "oblivion-s-hunger-corpus-m677",
+  "description": "M6 corpus — Oblivion's Hunger; in-hand parse.",
+  "seed": 66179,
+  "cards": {
+    "Oblivion's Hunger": "Name:Oblivion's Hunger\nManaCost:1 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Indestructible | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Target creature you control gains indestructible until end of turn. Draw a card if that creature has a +1/+1 counter on it. (Damage and effects that say \"destroy\" don't destroy the creature.)\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Targeted | ConditionPresent$ Card.counters_GE1_P1P1 | StackDescription$ None\nOracle:Target creature you control gains indestructible until end of turn. Draw a card if that creature has a +1/+1 counter on it. (Damage and effects that say \"destroy\" don't destroy the creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oblivion's Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

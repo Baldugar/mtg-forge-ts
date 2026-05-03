@@ -1,0 +1,23 @@
+{
+  "id": "jill-shiva-s-dominant-corpus-m677",
+  "description": "M6 corpus — Jill, Shiva's Dominant; in-hand parse.",
+  "seed": 63307,
+  "cards": {
+    "Jill, Shiva's Dominant": "Name:Jill, Shiva's Dominant\nManaCost:2 U\nTypes:Legendary Creature Human Noble Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When NICKNAME enters, return up to one other target nonland permanent to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand+Other | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to one other target nonland permanent\nA:AB$ ChangeZone | Cost$ 3 U U T | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile NICKNAME, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | ForgetOtherRemembered$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:When Jill enters, return up to one other target nonland permanent to its owner's hand.\\n{3}{U}{U}, {T}: Exile Jill, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\n\nALTERNATE\n\nName:Shiva, Warden of Ice\nManaCost:no cost\nColors:blue\nTypes:Legendary Enchantment Creature Saga Elemental\nPT:4/5\nK:Chapter:3:DBEffect,DBEffect,DBTapAll\nSVar:DBEffect:DB$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ Mesmerize — {c:Targeted} can't be blocked this turn. | SpellDescription$ Mesmerize — Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Land.OppCtrl | SubAbility$ DBExileSelf | SpellDescription$ Cold Snap — Tap all lands your opponents control. Exile NICKNAME, then return it to the battlefield (front face up).\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturnSelf | RememberChanged$ True\nSVar:DBReturnSelf:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Mesmerize — Target creature can't be blocked this turn.\\nIII — Cold Snap — Tap all lands your opponents control. Exile Shiva, then return it to the battlefield (front face up).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jill, Shiva's Dominant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

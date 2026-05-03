@@ -1,0 +1,23 @@
+{
+  "id": "predatory-nightstalker-corpus-m677",
+  "description": "M6 corpus — Predatory Nightstalker; in-hand parse.",
+  "seed": 67129,
+  "cards": {
+    "Predatory Nightstalker": "Name:Predatory Nightstalker\nManaCost:3 B B\nTypes:Creature Nightstalker\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may have target opponent sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature\nSVar:PlayMain1:TRUE\nOracle:When Predatory Nightstalker enters, you may have target opponent sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predatory Nightstalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

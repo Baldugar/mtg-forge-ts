@@ -1,0 +1,23 @@
+{
+  "id": "soul-charmer-corpus-m677",
+  "description": "M6 corpus — Soul Charmer; in-hand parse.",
+  "seed": 70437,
+  "cards": {
+    "Soul Charmer": "Name:Soul Charmer\nManaCost:2 W\nTypes:Creature Human Rebel\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, you gain 2 life unless that creature's controller pays {2}.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | UnlessCost$ 2 | UnlessPayer$ TriggeredTargetController\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Soul Charmer deals combat damage to a creature, you gain 2 life unless that creature's controller pays {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Charmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

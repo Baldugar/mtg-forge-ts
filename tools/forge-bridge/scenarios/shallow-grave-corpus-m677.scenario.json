@@ -1,0 +1,23 @@
+{
+  "id": "shallow-grave-corpus-m677",
+  "description": "M6 corpus — Shallow Grave; in-hand parse.",
+  "seed": 69586,
+  "cards": {
+    "Shallow Grave": "Name:Shallow Grave\nManaCost:1 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.TopGraveyardCreature+YouCtrl | Hidden$ True | Mandatory$ True | RememberChanged$ True | SubAbility$ DBPump | SpellDescription$ Return the top creature card of your graveyard to the battlefield. That creature gains haste until end of turn. Exile it at the beginning of the next end step.\nSVar:DBPump:DB$ Animate | Keywords$ Haste | Defined$ Remembered | AtEOT$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsOrderedGraveyard:TRUE\nOracle:Return the top creature card of your graveyard to the battlefield. That creature gains haste until end of turn. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shallow Grave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

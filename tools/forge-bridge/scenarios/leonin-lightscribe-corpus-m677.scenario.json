@@ -1,0 +1,25 @@
+{
+  "id": "leonin-lightscribe-corpus-m677",
+  "description": "M6 corpus — Leonin Lightscribe; ETB-on-bf.",
+  "seed": 64129,
+  "cards": {
+    "Leonin Lightscribe": "Name:Leonin Lightscribe\nManaCost:1 W\nTypes:Creature Cat Cleric\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, creatures you control get +1/+1 until end of turn.\nT:Mode$ SpellCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | Secondary$ True | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nDeckNeeds:Type$Instant|Sorcery\nOracle:Magecraft — Whenever you cast or copy an instant or sorcery spell, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leonin Lightscribe"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

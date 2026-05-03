@@ -1,0 +1,23 @@
+{
+  "id": "night-clubber-corpus-m677",
+  "description": "M6 corpus — Night Clubber; in-hand parse.",
+  "seed": 65913,
+  "cards": {
+    "Night Clubber": "Name:Night Clubber\nManaCost:1 B B\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures your opponents control get -1/-1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.OppCtrl | IsCurse$ True\nK:Blitz:2 B\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Sacrifice\nOracle:When Night Clubber enters, creatures your opponents control get -1/-1 until end of turn.\\nBlitz {2}{B} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Night Clubber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

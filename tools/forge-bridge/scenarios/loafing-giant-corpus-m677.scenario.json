@@ -1,0 +1,23 @@
+{
+  "id": "loafing-giant-corpus-m677",
+  "description": "M6 corpus — Loafing Giant; in-hand parse.",
+  "seed": 64340,
+  "cards": {
+    "Loafing Giant": "Name:Loafing Giant\nManaCost:4 R\nTypes:Creature Giant\nPT:4/6\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks, mill a card. If a land card was milled this way, prevent all combat damage CARDNAME would deal this turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, mill a card. If a land card was milled this way, prevent all combat damage CARDNAME would deal this turn.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 1 | RememberMilled$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Self | ExileOnMoved$ Battlefield | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage EFFECTSOURCE would deal this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever Loafing Giant attacks or blocks, mill a card. If a land card was milled this way, prevent all combat damage Loafing Giant would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loafing Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

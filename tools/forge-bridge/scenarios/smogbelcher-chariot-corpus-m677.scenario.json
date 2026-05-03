@@ -1,0 +1,23 @@
+{
+  "id": "smogbelcher-chariot-corpus-m677",
+  "description": "M6 corpus — Smogbelcher Chariot; in-hand parse.",
+  "seed": 70262,
+  "cards": {
+    "Smogbelcher Chariot": "Name:Smogbelcher Chariot\nManaCost:2 B\nTypes:Artifact Vehicle\nPT:3/3\nK:Menace\nK:Deathtouch\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target creature that crewed it this turn perpetually gains your choice of menace, deathtouch, or lifelink.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Card.CrewedThisTurn | TgtPrompt$ Select target creature that crewed it this turn | KWChoice$ Menace,Deathtouch,Lifelink | Duration$ Perpetual\nK:Crew:3\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nOracle:Menace, deathtouch, lifelink\\nWhenever Smogbelcher Chariot attacks, target creature that crewed it this turn perpetually gains your choice of menace, deathtouch, or lifelink.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smogbelcher Chariot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

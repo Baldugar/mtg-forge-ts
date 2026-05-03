@@ -1,0 +1,23 @@
+{
+  "id": "harsh-judgment-corpus-m677",
+  "description": "M6 corpus — Harsh Judgment; in-hand parse.",
+  "seed": 62078,
+  "cards": {
+    "Harsh Judgment": "Name:Harsh Judgment\nManaCost:2 W W\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInHumanDeck | SpellDescription$ As CARDNAME enters, choose a color.\nR:Event$ DamageDone | ValidTarget$ You | ActiveZones$ Battlefield | ValidSource$ Instant.ChosenColor,Sorcery.ChosenColor | DamageTarget$ ReplacedSourceController | ReplaceWith$ HarshDmg | Description$ If an instant or sorcery spell of the chosen color would deal damage to you, it deals that damage to its controller instead.\nSVar:HarshDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ ReplacedSourceController | VarType$ Player\nAI:RemoveDeck:Random\nOracle:As Harsh Judgment enters, choose a color.\\nIf an instant or sorcery spell of the chosen color would deal damage to you, it deals that damage to its controller instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harsh Judgment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

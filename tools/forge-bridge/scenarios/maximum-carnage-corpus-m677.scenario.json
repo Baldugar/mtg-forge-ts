@@ -1,0 +1,23 @@
+{
+  "id": "maximum-carnage-corpus-m677",
+  "description": "M6 corpus — Maximum Carnage; in-hand parse.",
+  "seed": 64905,
+  "cards": {
+    "Maximum Carnage": "Name:Maximum Carnage\nVariant:UniversesWithin:FlavorName:Lavabrink Repels the Magmaloth\nManaCost:4 R\nTypes:Enchantment Saga\nK:Chapter:3:DBEffect,DBMana,DBDamage\nSVar:DBEffect:DB$ Effect | Duration$ UntilYourNextTurn | StaticAbilities$ MustAttack1,MustAttack2 | SpellDescription$ Until your next turn, each creature attacks each combat if able and attacks a player other than you if able.\nSVar:MustAttack1:Mode$ MustAttack | ValidCreature$ Creature | Description$ Until your next turn, each creature attacks each combat if able and attacks a player other than you if able.\nSVar:MustAttack2:Mode$ MustAttack | ValidCreature$ Creature | MustAttack$ Player.Other | Secondary$ True | Description$ Until your next turn, each creature attacks each combat if able and attacks a player other than you if able.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ 3 | SpellDescription$ Add {R}{R}{R}.\nSVar:DBDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 5 | SpellDescription$ This Saga deals 5 damage to each opponent.\nOracle:(As this Saga enters step and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Until your next turn, each creature attacks each combat if able and attacks a player other than you if able.\\nII — Add {R}{R}{R}.\\nIII — This Saga deals 5 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maximum Carnage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

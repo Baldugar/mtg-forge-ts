@@ -1,0 +1,25 @@
+{
+  "id": "mogg-assassin-corpus-m677",
+  "description": "M6 corpus — Mogg Assassin; ETB-on-bf.",
+  "seed": 65363,
+  "cards": {
+    "Mogg Assassin": "Name:Mogg Assassin\nManaCost:2 R\nTypes:Creature Goblin Assassin\nPT:2/1\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | RememberObjects$ ThisTargetedCard | IsCurse$ True | SubAbility$ DBPump | StackDescription$ {p:You} chooses {c:ThisTargetedCard}, | SpellDescription$ You choose target creature an opponent controls, and that opponent chooses target creature. Flip a coin. If you win the flip, destroy the creature you chose. If you lose the flip, destroy the creature your opponent chose.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | TargetingPlayer$ ParentTargetedController | IsCurse$ True | ImprintCards$ ThisTargetedCard | SubAbility$ DBFlip | StackDescription$ and {p:ParentTargetedController} chooses {c:ThisTargetedCard}. {p:You} flips a coin. If {p:You} wins the flip, they destroy {c:ParentTarget}. If {p:You} loses the flip, they destroy {c:ThisTargetedCard}.\nSVar:DBFlip:DB$ FlipACoin | WinSubAbility$ DestroyRemembered | LoseSubAbility$ DestroyImprinted | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DestroyRemembered:DB$ Destroy | Defined$ Remembered\nSVar:DestroyImprinted:DB$ Destroy | Defined$ Imprinted\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:{T}: You choose target creature an opponent controls, and that opponent chooses target creature. Flip a coin. If you win the flip, destroy the creature you chose. If you lose the flip, destroy the creature your opponent chose.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mogg Assassin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

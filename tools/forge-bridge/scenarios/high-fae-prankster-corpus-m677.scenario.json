@@ -1,0 +1,23 @@
+{
+  "id": "high-fae-prankster-corpus-m677",
+  "description": "M6 corpus — High Fae Prankster; in-hand parse.",
+  "seed": 62354,
+  "cards": {
+    "High Fae Prankster": "Name:High Fae Prankster\nManaCost:2 U B\nTypes:Creature Faerie Rogue\nPT:1/4\nK:Flying\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 0 | Choices$ Exchange,Switch\nSVar:Exchange:DB$ ExchangePower | ValidTgts$ Creature | TargetMin$ 2 | TargetMax$ 2 | TargetUnique$ True | BasePower$ True | Duration$ Perpetual | SpellDescription$ Perpetually exchange target creature's base power with another target creature's base power.\nSVar:Switch:DB$ Animate | Duration$ Perpetual | Power$ 4 | Toughness$ 1 | SpellDescription$ CARDNAME perpetually has base power and toughness 4/1.\nSVar:NeedsToPlay:Creature.OppCtrl+powerGE4\nOracle:Flying, deathtouch\\nWhen High Fae Prankster enters, choose up to one —\\n• Perpetually exchange target creature's base power with another target creature's base power.\\n• High Fae Prankster perpetually has base power and toughness 4/1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "High Fae Prankster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

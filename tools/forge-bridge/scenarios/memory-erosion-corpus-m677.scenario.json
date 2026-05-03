@@ -1,0 +1,25 @@
+{
+  "id": "memory-erosion-corpus-m677",
+  "description": "M6 corpus — Memory Erosion; ETB-on-bf.",
+  "seed": 64965,
+  "cards": {
+    "Memory Erosion": "Name:Memory Erosion\nManaCost:1 U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever an opponent casts a spell, that player mills two cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredActivator | NumCards$ 2\nOracle:Whenever an opponent casts a spell, that player mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Memory Erosion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

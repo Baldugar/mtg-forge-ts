@@ -1,0 +1,23 @@
+{
+  "id": "saprazzan-bailiff-corpus-m677",
+  "description": "M6 corpus — Saprazzan Bailiff; in-hand parse.",
+  "seed": 68999,
+  "cards": {
+    "Saprazzan Bailiff": "Name:Saprazzan Bailiff\nManaCost:3 U U\nTypes:Creature Merfolk\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile all artifact and enchantment cards from all graveyards.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return all artifact and enchantment cards from all graveyards to their owners' hands.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Artifact,Enchantment | Origin$ Graveyard | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Artifact,Enchantment | Origin$ Graveyard | Destination$ Hand\nAI:RemoveDeck:Random\nOracle:When Saprazzan Bailiff enters, exile all artifact and enchantment cards from all graveyards.\\nWhen Saprazzan Bailiff leaves the battlefield, return all artifact and enchantment cards from all graveyards to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saprazzan Bailiff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

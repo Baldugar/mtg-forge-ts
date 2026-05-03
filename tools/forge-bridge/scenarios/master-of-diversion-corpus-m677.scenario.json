@@ -1,0 +1,23 @@
+{
+  "id": "master-of-diversion-corpus-m677",
+  "description": "M6 corpus — Master of Diversion; in-hand parse.",
+  "seed": 64864,
+  "cards": {
+    "Master of Diversion": "Name:Master of Diversion\nManaCost:2 W\nTypes:Creature Human Scout\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, tap target creature defending player controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls\nOracle:Whenever Master of Diversion attacks, tap target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master of Diversion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

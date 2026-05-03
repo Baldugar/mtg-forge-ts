@@ -1,0 +1,23 @@
+{
+  "id": "hellrider-corpus-m677",
+  "description": "M6 corpus — Hellrider; in-hand parse.",
+  "seed": 62245,
+  "cards": {
+    "Hellrider": "Name:Hellrider\nManaCost:2 R R\nTypes:Creature Devil\nPT:3/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control attacks, CARDNAME deals 1 damage to the player or planeswalker it's attacking.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | NumDmg$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Haste\\nWhenever a creature you control attacks, Hellrider deals 1 damage to the player or planeswalker it's attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

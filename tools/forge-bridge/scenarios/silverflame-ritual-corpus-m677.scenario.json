@@ -1,0 +1,23 @@
+{
+  "id": "silverflame-ritual-corpus-m677",
+  "description": "M6 corpus — Silverflame Ritual; in-hand parse.",
+  "seed": 69925,
+  "cards": {
+    "Silverflame Ritual": "Name:Silverflame Ritual\nManaCost:3 W\nTypes:Sorcery\nA:SP$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpAll | AIManaPref$ W | SpellDescription$ Put a +1/+1 counter on each creature you control. Adamant — If at least three white mana was spent to cast this spell, creatures you control gain vigilance until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance | ConditionCheckSVar$ X\nSVar:X:Count$Adamant.White.1.0\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on each creature you control.\\nAdamant — If at least three white mana was spent to cast this spell, creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silverflame Ritual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

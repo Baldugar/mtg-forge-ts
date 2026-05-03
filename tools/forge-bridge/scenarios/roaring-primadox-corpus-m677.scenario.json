@@ -1,0 +1,23 @@
+{
+  "id": "roaring-primadox-corpus-m677",
+  "description": "M6 corpus — Roaring Primadox; in-hand parse.",
+  "seed": 68428,
+  "cards": {
+    "Roaring Primadox": "Name:Roaring Primadox\nManaCost:3 G\nTypes:Creature Beast\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ At the beginning of your upkeep, return a creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouCtrl | ChangeNum$ 1\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature.YouCtrl\nOracle:At the beginning of your upkeep, return a creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roaring Primadox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

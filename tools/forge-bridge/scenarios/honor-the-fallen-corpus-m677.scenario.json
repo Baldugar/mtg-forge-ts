@@ -1,0 +1,23 @@
+{
+  "id": "honor-the-fallen-corpus-m677",
+  "description": "M6 corpus — Honor the Fallen; in-hand parse.",
+  "seed": 62464,
+  "cards": {
+    "Honor the Fallen": "Name:Honor the Fallen\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Creature | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBGainLife | SpellDescription$ Exile all creature cards from all graveyards. You gain 1 life for each card exiled this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$ValidGraveyard Creature\nOracle:Exile all creature cards from all graveyards. You gain 1 life for each card exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Honor the Fallen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

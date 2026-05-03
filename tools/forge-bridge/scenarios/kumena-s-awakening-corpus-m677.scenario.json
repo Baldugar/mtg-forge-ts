@@ -1,0 +1,23 @@
+{
+  "id": "kumena-s-awakening-corpus-m677",
+  "description": "M6 corpus — Kumena's Awakening; in-hand parse.",
+  "seed": 63918,
+  "cards": {
+    "Kumena's Awakening": "Name:Kumena's Awakening\nManaCost:2 U U\nTypes:Enchantment\nK:Ascend\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, each player draws a card. If you have the city's blessing, instead only you draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ Player | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1\nSVar:X:Count$Blessing.1.0\nOracle:Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nAt the beginning of your upkeep, each player draws a card. If you have the city's blessing, instead only you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kumena's Awakening"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

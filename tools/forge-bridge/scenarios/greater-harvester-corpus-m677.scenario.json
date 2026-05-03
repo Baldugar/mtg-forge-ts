@@ -1,0 +1,23 @@
+{
+  "id": "greater-harvester-corpus-m677",
+  "description": "M6 corpus — Greater Harvester; in-hand parse.",
+  "seed": 61715,
+  "cards": {
+    "Greater Harvester": "Name:Greater Harvester\nManaCost:2 B B B\nTypes:Creature Horror\nPT:5/6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSacYou | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice a permanent.\nSVar:TrigSacYou:DB$ Sacrifice | SacValid$ Permanent | Defined$ You\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSacOpp | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player sacrifices two permanents.\nSVar:TrigSacOpp:DB$ Sacrifice | SacValid$ Permanent | Amount$ 2 | Defined$ TriggeredTarget\nSVar:MustBeBlocked:True\nOracle:At the beginning of your upkeep, sacrifice a permanent.\\nWhenever Greater Harvester deals combat damage to a player, that player sacrifices two permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greater Harvester"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

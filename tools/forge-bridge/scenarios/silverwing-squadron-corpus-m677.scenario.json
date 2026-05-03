@@ -1,0 +1,23 @@
+{
+  "id": "silverwing-squadron-corpus-m677",
+  "description": "M6 corpus — Silverwing Squadron; in-hand parse.",
+  "seed": 69942,
+  "cards": {
+    "Silverwing Squadron": "Name:Silverwing Squadron\nManaCost:5 W\nTypes:Creature Human Knight\nPT:*/*\nK:Flying\nK:Vigilance\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:BuffedBy:Creature\nSVar:NoZeroToughnessAI:True\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a number of 2/2 white Knight creature tokens with vigilance equal to the number of opponents you have.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenAmount$ Y | TokenScript$ w_2_2_knight_vigilance\nSVar:Y:PlayerCountOpponents$Amount\nDeckHas:Ability$Token\nOracle:Flying, vigilance\\nSilverwing Squadron's power and toughness are each equal to the number of creatures you control.\\nWhenever Silverwing Squadron attacks, create a number of 2/2 white Knight creature tokens with vigilance equal to the number of opponents you have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silverwing Squadron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

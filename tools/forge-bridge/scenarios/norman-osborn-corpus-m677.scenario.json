@@ -1,0 +1,23 @@
+{
+  "id": "norman-osborn-corpus-m677",
+  "description": "M6 corpus — Norman Osborn; in-hand parse.",
+  "seed": 66056,
+  "cards": {
+    "Norman Osborn": "Name:Norman Osborn\nVariant:UniversesWithin:FlavorName:Goben, Gene-Splice Savant\nManaCost:1 U\nTypes:Legendary Creature Human Scientist Villain\nPT:1/1\nAlternateMode:Modal\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigConnive | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, he connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\nSVar:TrigConnive:DB$ Connive\nA:AB$ SetState | Cost$ 1 U B R | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery.\nOracle:Norman Osborn can't be blocked.\\nWhenever Norman Osborn deals combat damage to a player, he connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\\n{1}{U}{B}{R}: Transform Norman Osborn. Activate only as a sorcery.\n\nALTERNATE\n\nName:Green Goblin\nVariant:UniversesWithin:FlavorName:Fleem, Goben's Creation\nManaCost:1 U B R\nTypes:Legendary Creature Goblin Human Villain\nPT:3/3\nK:Flying\nK:Menace\nS:Mode$ ReduceCost | ValidCard$ Card.wasCastFromYourGraveyard | Type$ Spell | Activator$ You | Amount$ 2 | Description$ Spells you cast from your graveyard cost {2} less to cast.\nS:Mode$ Continuous | Affected$ Card.YouOwn+nonLand | AffectedZone$ Graveyard | AddKeyword$ Mayhem:CardManaCost | Description$ Goblin Formula — Each nonland card in your graveyard has mayhem. The mayhem cost is equal to its mana cost. (You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)\nOracle:Flying, menace\\nSpells you cast from your graveyard cost {2} less to cast.\\nGoblin Formula — Each nonland card in your graveyard has mayhem. The mayhem cost is equal to its mana cost. (You may cast a card from your graveyard for its mayhem cost if you discarded it this turn. Timing rules still apply.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norman Osborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

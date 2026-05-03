@@ -1,0 +1,23 @@
+{
+  "id": "sunpearl-kirin-corpus-m677",
+  "description": "M6 corpus — Sunpearl Kirin; in-hand parse.",
+  "seed": 71373,
+  "cards": {
+    "Sunpearl Kirin": "Name:Sunpearl Kirin\nManaCost:1 W\nTypes:Creature Kirin\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, return up to one other target nonland permanent you control to its owner's hand. If it was a token, draw a card.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.nonLand+YouCtrl+Other | RememberChanged$ True | SubAbility$ DBDraw | TgtPrompt$ Select up to one other target nonland permanent you control\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card.token | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flash\\nFlying\\nWhen this creature enters, return up to one other target nonland permanent you control to its owner's hand. If it was a token, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunpearl Kirin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

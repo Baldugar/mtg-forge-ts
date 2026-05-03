@@ -1,0 +1,23 @@
+{
+  "id": "prophet-of-the-scarab-corpus-m677",
+  "description": "M6 corpus — Prophet of the Scarab; in-hand parse.",
+  "seed": 67271,
+  "cards": {
+    "Prophet of the Scarab": "Name:Prophet of the Scarab\nManaCost:4 U\nTypes:Creature Zombie Wizard\nPT:3/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, draw cards equal to the number of Zombies you control or the number of Zombie cards in your graveyard, whichever is greater.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$Valid Zombie.YouCtrl/LimitMin.Y\nSVar:Y:Count$ValidGraveyard Zombie.YouOwn\nOracle:Vigilance\\nWhen this creature enters, draw cards equal to the number of Zombies you control or the number of Zombie cards in your graveyard, whichever is greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prophet of the Scarab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lightning-surge-corpus-m677",
+  "description": "M6 corpus — Lightning Surge; in-hand parse.",
+  "seed": 64253,
+  "cards": {
+    "Lightning Surge": "Name:Lightning Surge\nManaCost:3 R R\nTypes:Sorcery\nK:Flashback:5 R R\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | SubAbility$ DBDamage | ConditionCheckSVar$ X | ConditionSVarCompare$ LT7 | SpellDescription$ CARDNAME deals 4 damage to any target.\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ 6 | NoPrevention$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GE7 | SpellDescription$ Threshold — If there are seven or more cards in your graveyard, instead CARDNAME deals 6 damage to that permanent or player and the damage can't be prevented.\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Lightning Surge deals 4 damage to any target.\\nThreshold — If there are seven or more cards in your graveyard, instead Lightning Surge deals 6 damage to that permanent or player and the damage can't be prevented.\\nFlashback {5}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Surge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "house-cartographer-corpus-m677",
+  "description": "M6 corpus — House Cartographer; in-hand parse.",
+  "seed": 62538,
+  "cards": {
+    "House Cartographer": "Name:House Cartographer\nTypes:Creature Human Scout Survivor\nManaCost:1 G\nPT:2/2\nT:Mode$ Phase | Phase$ Main | PhaseCount$ 2 | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerZones$ Battlefield | Execute$ TrigDigUntil | TriggerDescription$ Survival — At the beginning of your second main phase, if CARDNAME is tapped, reveal cards from the top of your library until you reveal a land card. Put that card into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Card.Land | ValidDescription$ land | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | FoundDestination$ Hand\nOracle:Survival — At the beginning of your second main phase, if House Cartographer is tapped, reveal cards from the top of your library until you reveal a land card. Put that card into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "House Cartographer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

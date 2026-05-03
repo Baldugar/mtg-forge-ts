@@ -1,0 +1,23 @@
+{
+  "id": "hildibrand-manderville-corpus-m677",
+  "description": "M6 corpus — Hildibrand Manderville; in-hand parse.",
+  "seed": 62379,
+  "cards": {
+    "Hildibrand Manderville": "Name:Hildibrand Manderville\nManaCost:1 W\nTypes:Legendary Creature Human Detective\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creature tokens you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME dies, you may cast it from your graveyard as an Adventure until the end of your next turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Graveyard | RememberObjects$ Self | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+Adventure | AffectedZone$ Graveyard | Description$ You may cast EFFECTSOURCE from your graveyard as an Adventure until the end of your next turn.\nDeckHas:Ability$Graveyard\nAlternateMode:Adventure\nOracle:Creature tokens you control get +1/+1.\\nWhen Hildibrand Manderville dies, you may cast it from your graveyard as an Adventure until the end of your next turn.\n\nALTERNATE\n\nName:Gentleman's Rise\nManaCost:2 B\nTypes:Instant Adventure\nA:SP$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | SpellDescription$ Create a 2/2 black Zombie creature token. (Then exile this card. You may cast the creature later from exile.)\nOracle:Create a 2/2 black Zombie creature token. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hildibrand Manderville"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

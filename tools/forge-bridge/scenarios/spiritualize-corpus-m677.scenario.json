@@ -1,0 +1,23 @@
+{
+  "id": "spiritualize-corpus-m677",
+  "description": "M6 corpus — Spiritualize; in-hand parse.",
+  "seed": 70721,
+  "cards": {
+    "Spiritualize": "Name:Spiritualize\nManaCost:2 W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature | Triggers$ TrigDamage | RememberObjects$ Targeted | SubAbility$ DBDraw | SpellDescription$ Until end of turn, whenever target creature deals damage, you gain that much life. Draw a card.\nSVar:TrigDamage:Mode$ DamageDoneOnce | ValidSource$ Creature.IsRemembered | Execute$ TrigGainLife | TriggerDescription$ Whenever this creature deals damage, you gain that much life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X | Defined$ You\nSVar:DBDraw:DB$ Draw\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Until end of turn, whenever target creature deals damage, you gain that much life.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiritualize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

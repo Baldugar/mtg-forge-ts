@@ -1,0 +1,23 @@
+{
+  "id": "grievous-wound-corpus-m677",
+  "description": "M6 corpus — Grievous Wound; in-hand parse.",
+  "seed": 61753,
+  "cards": {
+    "Grievous Wound": "Name:Grievous Wound\nManaCost:3 B B\nTypes:Enchantment Aura\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nS:Mode$ CantGainLife | ValidPlayer$ Player.EnchantedBy | Description$ Enchanted player can't gain life.\nT:Mode$ DamageDoneOnce | Execute$ TrigLoseLife | ValidTarget$ Player.EnchantedBy | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player is dealt damage, they lose half their life, rounded up.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ X\nSVar:X:TriggeredTarget$LifeTotal/HalfUp\nOracle:Enchant player\\nEnchanted player can't gain life.\\nWhenever enchanted player is dealt damage, they lose half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grievous Wound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

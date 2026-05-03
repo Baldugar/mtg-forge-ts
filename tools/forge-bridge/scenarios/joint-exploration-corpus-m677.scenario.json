@@ -1,0 +1,23 @@
+{
+  "id": "joint-exploration-corpus-m677",
+  "description": "M6 corpus — Joint Exploration; in-hand parse.",
+  "seed": 63327,
+  "cards": {
+    "Joint Exploration": "Name:Joint Exploration\nManaCost:1 U\nTypes:Instant\nK:Kicker:G\nA:SP$ Scry | ScryNum$ 2 | SubAbility$ DBDraw | SpellDescription$ Scry 2, then draw a card.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Condition$ Kicked | Origin$ Hand | Destination$ Battlefield | Optional$ You | ChangeType$ Land | ChangeNum$ 1 | SpellDescription$ If this spell was kicked, you may put a land card from your hand onto the battlefield.\nDeckHints:Color$Green\nOracle:Kicker {G} (You may pay an additional {G} as you cast this spell.)\\nScry 2, then draw a card. If this spell was kicked, you may put a land card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Joint Exploration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

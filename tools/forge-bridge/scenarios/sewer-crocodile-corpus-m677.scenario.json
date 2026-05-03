@@ -1,0 +1,25 @@
+{
+  "id": "sewer-crocodile-corpus-m677",
+  "description": "M6 corpus — Sewer Crocodile; ETB-on-bf.",
+  "seed": 69533,
+  "cards": {
+    "Sewer Crocodile": "Name:Sewer Crocodile\nManaCost:5 U\nTypes:Creature Crocodile\nPT:4/6\nA:AB$ Effect | Cost$ 3 U | RememberObjects$ Self | ReduceCost$ X | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | StackDescription$ CARDNAME can't be blocked this turn. | SpellDescription$ CARDNAME can't be blocked this turn. This ability costs {3} less to activate if there are five or more mana values among cards in your graveyard.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nSVar:X:Count$Compare Y GE5.3.0\nSVar:Y:Count$ValidGraveyard Card.YouOwn$DifferentCardManaCost\nOracle:{3}{U}: Sewer Crocodile can't be blocked this turn. This ability costs {3} less to activate if there are five or more mana values among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sewer Crocodile"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

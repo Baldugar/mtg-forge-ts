@@ -1,0 +1,23 @@
+{
+  "id": "heirloom-blade-corpus-m677",
+  "description": "M6 corpus — Heirloom Blade; in-hand parse.",
+  "seed": 62222,
+  "cards": {
+    "Heirloom Blade": "Name:Heirloom Blade\nManaCost:3\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 1 | Description$ Equipped creature gets +3/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigDigUntil | OptionalDecider$ You | TriggerDescription$ Whenever equipped creature dies, you may reveal cards from the top of your library until you reveal a creature card that shares a creature type with it. Put that card into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Creature.sharesCreatureTypeWith TriggeredCardLKICopy | ValidDescription$ creature that shares a creature type | FoundDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nK:Equip:1\nOracle:Equipped creature gets +3/+1.\\nWhenever equipped creature dies, you may reveal cards from the top of your library until you reveal a creature card that shares a creature type with it. Put that card into your hand and the rest on the bottom of your library in a random order.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heirloom Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

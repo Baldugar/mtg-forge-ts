@@ -1,0 +1,23 @@
+{
+  "id": "mysterious-confluence-corpus-m677",
+  "description": "M6 corpus — Mysterious Confluence; in-hand parse.",
+  "seed": 65653,
+  "cards": {
+    "Mysterious Confluence": "Name:Mysterious Confluence\nManaCost:5\nTypes:Instant\nA:SP$ NameCard | AtRandom$ True | ChooseFromList$ Righteous Confluence,Mystic Confluence,Wretched Confluence,Fiery Confluence,Verdant Confluence,Brokers Confluence,Cabaretti Confluence,Maestros Confluence,Obscura Confluence,Riveteers Confluence | SubAbility$ DBCast | StackDescription$ SpellDescription | SpellDescription$ Choose a card at random from among Righteous Confluence, Mystic Confluence, Wretched Confluence, Fiery Confluence, Verdant Confluence, Brokers Confluence, Cabaretti Confluence, Maestros Confluence, Obscura Confluence, and Riveteers Confluence. Create a copy of that card. You may cast the copy without paying its mana cost.\nSVar:DBCast:DB$ Play | WithoutManaCost$ True | CopyFromChosenName$ True | Optional$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearNamedCard$ True\nOracle:Choose a card at random from among Righteous Confluence, Mystic Confluence, Wretched Confluence, Fiery Confluence, Verdant Confluence, Brokers Confluence, Cabaretti Confluence, Maestros Confluence, Obscura Confluence, and Riveteers Confluence. Create a copy of that card. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mysterious Confluence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

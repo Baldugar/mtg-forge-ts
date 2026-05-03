@@ -1,0 +1,25 @@
+{
+  "id": "mirrorwood-treefolk-corpus-m677",
+  "description": "M6 corpus — Mirrorwood Treefolk; ETB-on-bf.",
+  "seed": 65261,
+  "cards": {
+    "Mirrorwood Treefolk": "Name:Mirrorwood Treefolk\nManaCost:3 G\nTypes:Creature Treefolk\nPT:2/4\nA:AB$ Effect | Cost$ 2 R W | ValidTgts$ Any | TgtPrompt$ Select any target to redirect the damage to | ReplacementEffects$ SelflessDamage | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ The next time damage would be dealt to CARDNAME this turn, that damage is dealt to any target instead.\nSVar:SelflessDamage:Event$ DamageDone | ValidTarget$ Creature.EffectSource | ReplaceWith$ SelflessDmg | DamageTarget$ Remembered | Description$ The next time damage would be dealt to EFFECTSOURCE this turn, that damage is dealt to any target instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ GameEntity | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:{2}{R}{W}: The next time damage would be dealt to Mirrorwood Treefolk this turn, that damage is dealt to any target instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mirrorwood Treefolk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

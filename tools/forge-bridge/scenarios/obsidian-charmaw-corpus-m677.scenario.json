@@ -1,0 +1,23 @@
+{
+  "id": "obsidian-charmaw-corpus-m677",
+  "description": "M6 corpus — Obsidian Charmaw; in-hand parse.",
+  "seed": 66194,
+  "cards": {
+    "Obsidian Charmaw": "Name:Obsidian Charmaw\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each land your opponents control that could produce {C}.\nSVar:X:Count$Valid Land.OppCtrl+canProduceManaColor Colorless\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonbasic land an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land.nonBasic+OppCtrl | TgtPrompt$ Select target nonbasic land an opponent controls\nOracle:This spell costs {1} less to cast for each land your opponents control that could produce {C}.\\nFlying\\nWhen Obsidian Charmaw enters, destroy target nonbasic land an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obsidian Charmaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

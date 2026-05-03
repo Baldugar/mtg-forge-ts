@@ -1,0 +1,23 @@
+{
+  "id": "mystical-tether-corpus-m677",
+  "description": "M6 corpus — Mystical Tether; in-hand parse.",
+  "seed": 65686,
+  "cards": {
+    "Mystical Tether": "Name:Mystical Tether\nManaCost:2 W\nTypes:Enchantment\nK:MayFlashCost:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target artifact or creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Select target artifact or creature an opponent controls | Duration$ UntilHostLeavesPlay\nOracle:You may cast Mystical Tether as though it had flash if you pay {2} more to cast it.\\nWhen Mystical Tether enters, exile target artifact or creature an opponent controls until Mystical Tether leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystical Tether"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

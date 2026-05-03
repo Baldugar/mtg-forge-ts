@@ -1,0 +1,23 @@
+{
+  "id": "goblin-sharpshooter-corpus-m677",
+  "description": "M6 corpus — Goblin Sharpshooter; in-hand parse.",
+  "seed": 61465,
+  "cards": {
+    "Goblin Sharpshooter": "Name:Goblin Sharpshooter\nManaCost:2 R\nTypes:Creature Goblin\nPT:1/1\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever a creature dies, untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ This creature deals 1 damage to any target.\nSVar:NonCombatPriority:1\nOracle:This creature doesn't untap during your untap step.\\nWhenever a creature dies, untap this creature.\\n{T}: This creature deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Sharpshooter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "shefet-monitor-corpus-m677",
+  "description": "M6 corpus — Shefet Monitor; ETB-on-bf.",
+  "seed": 69647,
+  "cards": {
+    "Shefet Monitor": "Name:Shefet Monitor\nManaCost:5 G\nTypes:Creature Lizard\nPT:6/5\nK:Cycling:3 G\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may search your library for a basic land card or a Desert card, put it onto the battlefield, then shuffle. (Do this before you draw.)\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic,Desert | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Cycling {3}{G} ({3}{G}, Discard this card: Draw a card.)\\nWhen you cycle Shefet Monitor, you may search your library for a basic land card or a Desert card, put it onto the battlefield, then shuffle. (Do this before you draw.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shefet Monitor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

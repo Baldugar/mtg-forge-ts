@@ -1,0 +1,25 @@
+{
+  "id": "leechridden-swamp-corpus-m677",
+  "description": "M6 corpus — Leechridden Swamp; ETB-on-bf.",
+  "seed": 64092,
+  "cards": {
+    "Leechridden Swamp": "Name:Leechridden Swamp\nManaCost:no cost\nTypes:Land Swamp\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ LoseLife | Cost$ B T | IsPresent$ Permanent.Black+YouCtrl | PresentCompare$ GE2 | Defined$ Player.Opponent | LifeAmount$ 1 | SpellDescription$ Each opponent loses 1 life. Activate only if you control two or more black permanents.\nOracle:({T}: Add {B}.)\\nLeechridden Swamp enters tapped.\\n{B}, {T}: Each opponent loses 1 life. Activate only if you control two or more black permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leechridden Swamp"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

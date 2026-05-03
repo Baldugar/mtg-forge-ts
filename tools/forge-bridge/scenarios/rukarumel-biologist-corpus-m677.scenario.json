@@ -1,0 +1,23 @@
+{
+  "id": "rukarumel-biologist-corpus-m677",
+  "description": "M6 corpus — Rukarumel, Biologist; in-hand parse.",
+  "seed": 68601,
+  "cards": {
+    "Rukarumel, Biologist": "Name:Rukarumel, Biologist\nManaCost:W U B R G\nTypes:Legendary Creature Human Wizard\nPT:3/3\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentInComputerDeck\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+!token,Sliver.YouCtrl | AffectedZone$ All | AddType$ ChosenType | Description$ Slivers you control and nontoken creatures you control are the chosen type in addition to their other creature types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\nA:AB$ Token | Cost$ 3 T | TokenScript$ c_1_1_sliver | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Sliver creature token.\nSVar:HasAttackEffect:TRUE\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Sliver\nDeckNeeds:Type$Sliver\nOracle:As Rukarumel, Biologist enters, choose a creature type.\\nSlivers you control and nontoken creatures you control are the chosen type in addition to their other creature types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\\n{3}, {T}: Create a 1/1 colorless Sliver creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rukarumel, Biologist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

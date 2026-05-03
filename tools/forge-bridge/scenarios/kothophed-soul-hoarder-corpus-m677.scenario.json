@@ -1,0 +1,23 @@
+{
+  "id": "kothophed-soul-hoarder-corpus-m677",
+  "description": "M6 corpus — Kothophed, Soul Hoarder; in-hand parse.",
+  "seed": 63843,
+  "cards": {
+    "Kothophed, Soul Hoarder": "Name:Kothophed, Soul Hoarder\nManaCost:4 B B\nTypes:Legendary Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.YouDontOwn | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a permanent owned by another player is put into a graveyard from the battlefield, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:Flying\\nWhenever a permanent owned by another player is put into a graveyard from the battlefield, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kothophed, Soul Hoarder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

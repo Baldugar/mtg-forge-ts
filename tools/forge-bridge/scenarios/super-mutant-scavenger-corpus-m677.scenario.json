@@ -1,0 +1,23 @@
+{
+  "id": "super-mutant-scavenger-corpus-m677",
+  "description": "M6 corpus — Super Mutant Scavenger; in-hand parse.",
+  "seed": 71393,
+  "cards": {
+    "Super Mutant Scavenger": "Name:Super Mutant Scavenger\nManaCost:4 G\nTypes:Creature Mutant Warrior\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters or dies, return up to one target Aura or Equipment card from your graveyard to your hand.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, return up to one target Aura or Equipment card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Aura.YouOwn,Equipment.YouOwn | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose up to one target Aura or Equipment card in your graveyard\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Aura|Equipment\nOracle:Trample\\nWhen Super Mutant Scavenger enters or dies, return up to one target Aura or Equipment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Super Mutant Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

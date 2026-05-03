@@ -1,0 +1,23 @@
+{
+  "id": "skitterbeam-battalion-corpus-m677",
+  "description": "M6 corpus — Skitterbeam Battalion; in-hand parse.",
+  "seed": 70044,
+  "cards": {
+    "Skitterbeam Battalion": "Name:Skitterbeam Battalion\nManaCost:9\nTypes:Artifact Creature Construct\nPT:4/4\nK:Trample\nK:Haste\nK:Prototype:3 R R:2:2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self+wasCastByYou | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME enters, if you cast it, create two tokens that are copies of it.\nSVar:TrigToken:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | NumCopies$ 2\nDeckHas:Ability$Token\nDeckHints:Color$Red\nOracle:Prototype {3}{R}{R} — 2/2 (You may cast this spell with different mana cost, color, and size. It keeps its abilities and types.)\\nTrample, haste\\nWhen Skitterbeam Battalion enters, if you cast it, create two tokens that are copies of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skitterbeam Battalion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

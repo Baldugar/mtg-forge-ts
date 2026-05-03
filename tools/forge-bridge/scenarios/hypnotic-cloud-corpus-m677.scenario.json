@@ -1,0 +1,23 @@
+{
+  "id": "hypnotic-cloud-corpus-m677",
+  "description": "M6 corpus — Hypnotic Cloud; in-hand parse.",
+  "seed": 62666,
+  "cards": {
+    "Hypnotic Cloud": "Name:Hypnotic Cloud\nManaCost:1 B\nTypes:Sorcery\nK:Kicker:4\nA:SP$ Discard | NumCards$ X | ValidTgts$ Player | Mode$ TgtChoose | SpellDescription$ Target player discards a card. If this spell was kicked, that player discards three cards instead.\nSVar:X:Count$Kicked.3.1\nSVar:NeedsToPlayKickedVar:Z GE2\nSVar:Z:Count$ValidHand Card.OppOwn\nOracle:Kicker {4} (You may pay an additional {4} as you cast this spell.)\\nTarget player discards a card. If this spell was kicked, that player discards three cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hypnotic Cloud"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

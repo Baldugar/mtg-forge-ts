@@ -1,0 +1,23 @@
+{
+  "id": "reach-for-the-sky-corpus-m677",
+  "description": "M6 corpus — Reach for the Sky; in-hand parse.",
+  "seed": 67813,
+  "cards": {
+    "Reach for the Sky": "Name:Reach for the Sky\nManaCost:3 G\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 2 | AddKeyword$ Reach | Description$ Enchanted creature gets +3/+2 and has reach.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:SacMe:2\nOracle:Flash\\nEnchant creature\\nEnchanted creature gets +3/+2 and has reach.\\nWhen Reach for the Sky is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reach for the Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "presence-of-the-master-corpus-m677",
+  "description": "M6 corpus — Presence of the Master; ETB-on-bf.",
+  "seed": 67144,
+  "cards": {
+    "Presence of the Master": "Name:Presence of the Master\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Enchantment | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever a player casts an enchantment spell, counter it.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility\nSVar:AICurseEffect:CounterEnchantment\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Whenever a player casts an enchantment spell, counter it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Presence of the Master"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

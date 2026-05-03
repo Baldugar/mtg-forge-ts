@@ -1,0 +1,23 @@
+{
+  "id": "kashi-tribe-warriors-corpus-m677",
+  "description": "M6 corpus — Kashi-Tribe Warriors; in-hand parse.",
+  "seed": 63506,
+  "cards": {
+    "Kashi-Tribe Warriors": "Name:Kashi-Tribe Warriors\nManaCost:3 G G\nTypes:Creature Snake Warrior\nPT:2/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Kashi-Tribe Warriors deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kashi-Tribe Warriors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

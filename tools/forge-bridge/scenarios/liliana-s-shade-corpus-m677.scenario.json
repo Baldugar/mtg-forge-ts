@@ -1,0 +1,23 @@
+{
+  "id": "liliana-s-shade-corpus-m677",
+  "description": "M6 corpus — Liliana's Shade; in-hand parse.",
+  "seed": 64271,
+  "cards": {
+    "Liliana's Shade": "Name:Liliana's Shade\nManaCost:2 B B\nTypes:Creature Shade\nPT:1/1\nA:AB$ Pump | Cost$ B | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ CARDNAME gets +1/+1 until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Swamp card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Swamp | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Liliana's Shade enters, you may search your library for a Swamp card, reveal it, put it into your hand, then shuffle.\\n{B}: Liliana's Shade gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana's Shade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

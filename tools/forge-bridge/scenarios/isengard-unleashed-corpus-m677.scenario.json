@@ -1,0 +1,23 @@
+{
+  "id": "isengard-unleashed-corpus-m677",
+  "description": "M6 corpus — Isengard Unleashed; in-hand parse.",
+  "seed": 63152,
+  "cards": {
+    "Isengard Unleashed": "Name:Isengard Unleashed\nManaCost:2 R R R\nTypes:Sorcery\nA:SP$ Effect | ReplacementEffects$ DamageEvent | StaticAbilities$ STCantPrevent | SpellDescription$ Damage can't be prevented this turn. If a source you control would deal damage this turn to an opponent or a permanent an opponent controls, it deals triple that damage instead.\nSVar:STCantPrevent:Mode$ CantPreventDamage | Description$ Damage can't be prevented this turn.\nSVar:DamageEvent:Event$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Permanent.OppCtrl,Opponent | ReplaceWith$ DmgTrice | Description$ If a source you control would deal damage this turn to an opponent or a permanent an opponent controls, it deals triple that damage instead.\nSVar:DmgTrice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Thrice\nSVar:PlayMain1:TRUE\nK:Flashback:4 R R R\nOracle:Damage can't be prevented this turn. If a source you control would deal damage this turn to an opponent or a permanent an opponent controls, it deals triple that damage instead.\\nFlashback {4}{R}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Isengard Unleashed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "moraug-fury-of-akoum-corpus-m677",
+  "description": "M6 corpus — Moraug, Fury of Akoum; in-hand parse.",
+  "seed": 65489,
+  "cards": {
+    "Moraug, Fury of Akoum": "Name:Moraug, Fury of Akoum\nManaCost:4 R R\nTypes:Legendary Creature Minotaur Warrior\nPT:6/6\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ AffectedX | Description$ Each creature you control gets +1/+0 for each time it has attacked this turn.\nSVar:AffectedX:Count$CardNumAttacksThisTurn\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | AILogic$ SafeToHold | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | PlayerTurn$ True | Phase$ Main1,Main2 | Execute$ TrigAddPhase | TriggerDescription$ Landfall — Whenever a land you control enters, if it's your main phase, there's an additional combat phase after this phase. At the beginning of that combat, untap all creatures you control.\nSVar:TrigAddPhase:DB$ AddPhase | ExtraPhase$ Combat | ConditionPhases$ Main1,Main2 | ExtraPhaseDelayedTrigger$ DelTrigUntap | ExtraPhaseDelayedTriggerExcute$ TrigUntapAll\nSVar:DelTrigUntap:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerDescription$ At the beginning of that combat, untap all creatures you control.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nOracle:Each creature you control gets +1/+0 for each time it has attacked this turn.\\nLandfall — Whenever a land you control enters, if it's your main phase, there's an additional combat phase after this phase. At the beginning of that combat, untap all creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moraug, Fury of Akoum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mongrel-pack-corpus-m677",
+  "description": "M6 corpus — Mongrel Pack; in-hand parse.",
+  "seed": 65426,
+  "cards": {
+    "Mongrel Pack": "Name:Mongrel Pack\nManaCost:3 G\nTypes:Creature Dog\nPT:4/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Phase$ BeginCombat->EndCombat | TriggerDescription$ When CARDNAME dies during combat, create four 1/1 green Dog creature tokens.\nSVar:TrigToken:DB$ Token | ActivationPhases$ BeginCombat->EndCombat | TokenAmount$ 4 | TokenScript$ g_1_1_dog | TokenOwner$ You\nOracle:When Mongrel Pack dies during combat, create four 1/1 green Dog creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mongrel Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

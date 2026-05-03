@@ -1,0 +1,23 @@
+{
+  "id": "protean-thaumaturge-corpus-m677",
+  "description": "M6 corpus — Protean Thaumaturge; in-hand parse.",
+  "seed": 67279,
+  "cards": {
+    "Protean Thaumaturge": "Name:Protean Thaumaturge\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigProteanCopy | TriggerDescription$ Constellation — Whenever an enchantment you control enters, you may have CARDNAME become a copy of another target creature, except it has this ability.\nSVar:TrigProteanCopy:DB$ Clone | ValidTgts$ Creature.Other | TgtPrompt$ Select target creature to copy | Optional$ True | GainThisAbility$ True | AddSVars$ TrigProteanCopy | AILogic$ CloneBestCreature\nDeckNeeds:Type$Enchantment\nOracle:Constellation — Whenever an enchantment you control enters, you may have Protean Thaumaturge become a copy of another target creature, except it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protean Thaumaturge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

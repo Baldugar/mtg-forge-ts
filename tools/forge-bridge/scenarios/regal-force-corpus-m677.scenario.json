@@ -1,0 +1,23 @@
+{
+  "id": "regal-force-corpus-m677",
+  "description": "M6 corpus — Regal Force; in-hand parse.",
+  "seed": 67961,
+  "cards": {
+    "Regal Force": "Name:Regal Force\nManaCost:4 G G G\nTypes:Creature Elemental\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each green creature you control.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$Valid Creature.Green+YouCtrl\nOracle:When Regal Force enters, draw a card for each green creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Regal Force"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

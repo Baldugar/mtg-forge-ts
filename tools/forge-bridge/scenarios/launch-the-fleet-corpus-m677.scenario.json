@@ -1,0 +1,23 @@
+{
+  "id": "launch-the-fleet-corpus-m677",
+  "description": "M6 corpus — Launch the Fleet; in-hand parse.",
+  "seed": 64018,
+  "cards": {
+    "Launch the Fleet": "Name:Launch the Fleet\nManaCost:W\nTypes:Sorcery\nK:Strive:1\nA:SP$ Animate | TargetMin$ 0 | TargetMax$ MaxTargets | AILogic$ Attacking | ValidTgts$ Creature | Triggers$ AttackTrigger | SpellDescription$ Until end of turn, any number of target creatures each gain \"Whenever this creature attacks, create a 1/1 white Soldier creature token that's tapped and attacking.\"\nSVar:AttackTrigger:Mode$ Attacks | ValidCard$ Card.Self | Execute$ LaunchTokenAttacking | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 white Soldier creature token that's tapped and attacking.\nSVar:LaunchTokenAttacking:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You | TokenAttacking$ True | TokenTapped$ True\nSVar:MaxTargets:Count$Valid Creature\nOracle:Strive — This spell costs {1} more to cast for each target beyond the first.\\nUntil end of turn, any number of target creatures each gain \"Whenever this creature attacks, create a 1/1 white Soldier creature token that's tapped and attacking.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Launch the Fleet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "psionic-ritual-corpus-m677",
+  "description": "M6 corpus — Psionic Ritual; in-hand parse.",
+  "seed": 67309,
+  "cards": {
+    "Psionic Ritual": "Name:Psionic Ritual\nManaCost:4 U U\nTypes:Sorcery\nK:Replicate:tapXType<1/Horror>\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target instant or sorcery card in your graveyard | ValidTgts$ Instant,Sorcery | RememberChanged$ True | SubAbility$ DBCopy | SpellDescription$ Exile target instant or sorcery card from a graveyard and copy it. You may cast the copy without paying its mana cost. Exile CARDNAME.\nSVar:DBCopy:DB$ Play | Defined$ Remembered | Amount$ All | CopyCard$ True | WithoutManaCost$ True | Optional$ True | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | Defined$ Self | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Graveyard\nDeckHints:Type$Instant|Sorcery\nDeckNeeds:Type$Horror\nOracle:Replicate—Tap an untapped Horror you control. (When you cast this spell, copy it for each time you paid its replicate cost. You may choose new targets for the copies.)\\nExile target instant or sorcery card from a graveyard and copy it. You may cast the copy without paying its mana cost.\\nExile Psionic Ritual.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psionic Ritual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sabertooth-cobra-corpus-m677",
+  "description": "M6 corpus — Sabertooth Cobra; in-hand parse.",
+  "seed": 68825,
+  "cards": {
+    "Sabertooth Cobra": "Name:Sabertooth Cobra\nManaCost:2 G\nTypes:Creature Snake\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ PoisonTarget | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to a player, that player gets a poison counter. The player gets another poison counter at the beginning of their next upkeep unless they pay {2} before that step. (A player with ten or more poison counters loses the game.)\nSVar:PoisonTarget:DB$ Poison | Num$ 1 | Defined$ TriggeredTarget | SubAbility$ CobraEffect\nSVar:CobraEffect:DB$ Effect | Abilities$ PayUp | Duration$ Permanent | Triggers$ PoisonTrig | RememberObjects$ TriggeredTarget\nSVar:PayUp:ST$ ChangeZone | Activator$ Player.IsRemembered | ActivationZone$ Command | Cost$ 2 | Defined$ Self | Origin$ Command | Destination$ Exile | AILogic$ Always | SpellDescription$ Pay {2} to avoid another poison counter.\nSVar:PoisonTrig:Mode$ Phase | OneOff$ True | Phase$ Upkeep | ValidPlayer$ Player.IsRemembered | TriggerZones$ Command | Execute$ Bleed | TriggerDescription$ The player gets another poison counter at the beginning of their next upkeep unless they pay {2} before that step.\nSVar:Bleed:DB$ Poison | Num$ 1 | Defined$ Remembered\nOracle:Whenever Sabertooth Cobra deals damage to a player, that player gets a poison counter. The player gets another poison counter at the beginning of their next upkeep unless they pay {2} before that step. (A player with ten or more poison counters loses the game.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sabertooth Cobra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

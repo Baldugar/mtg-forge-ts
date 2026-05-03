@@ -1,0 +1,23 @@
+{
+  "id": "pain-s-reward-corpus-m677",
+  "description": "M6 corpus — Pain's Reward; in-hand parse.",
+  "seed": 66557,
+  "cards": {
+    "Pain's Reward": "Name:Pain's Reward\nManaCost:2 B\nTypes:Sorcery\nA:SP$ BidLife | StartBidding$ Any | AILogic$ Min | AIBidMax$ 10 | BidSubAbility$ DBLoseLife | SpellDescription$ Each player may bid life. You start the bidding with a bid of any number. In turn order, each player may top the high bid. The bidding ends if the high bid stands. The high bidder loses life equal to the high bid and draws four cards.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ 4\nSVar:X:Count$ChosenNumber\nOracle:Each player may bid life. You start the bidding with a bid of any number. In turn order, each player may top the high bid. The bidding ends if the high bid stands. The high bidder loses life equal to the high bid and draws four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pain's Reward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

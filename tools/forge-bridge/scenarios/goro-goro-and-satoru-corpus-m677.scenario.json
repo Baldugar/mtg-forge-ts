@@ -1,0 +1,23 @@
+{
+  "id": "goro-goro-and-satoru-corpus-m677",
+  "description": "M6 corpus — Goro-Goro and Satoru; in-hand parse.",
+  "seed": 61590,
+  "cards": {
+    "Goro-Goro and Satoru": "Name:Goro-Goro and Satoru\nManaCost:U B R\nTypes:Legendary Creature Goblin Human\nPT:3/4\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl+ThisTurnEntered | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more creatures you control that entered this turn deal combat damage to a player, create a 5/5 red Dragon Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ r_5_5_dragon_spirit_flying\nA:AB$ PumpAll | Cost$ 1 R | ValidCards$ Creature.YouCtrl | KW$ Haste | SpellDescription$ Creatures you control gain haste until end of turn.\nDeckHas:Ability$Token & Type$Dragon|Spirit\nDeckHints:Type$Equipment|Aura & Ability$Counters\nOracle:Whenever one or more creatures you control that entered this turn deal combat damage to a player, create a 5/5 red Dragon Spirit creature token with flying.\\n{1}{R}: Creatures you control gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goro-Goro and Satoru"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

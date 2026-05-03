@@ -1,0 +1,25 @@
+{
+  "id": "spider-verse-corpus-m677",
+  "description": "M6 corpus — Spider-Verse; ETB-on-bf.",
+  "seed": 70647,
+  "cards": {
+    "Spider-Verse": "Name:Spider-Verse\nVariant:UniversesWithin:FlavorName:Arachnomania\nManaCost:3 R R\nTypes:Enchantment\nS:Mode$ IgnoreLegendRule | ValidCard$ Spider.YouCtrl | Description$ The \"legend rule\" doesn't apply to Spiders you control.\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopySpell | ResolvedLimit$ 1 | OptionalDecider$ You | TriggerDescription$ Whenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains haste. Do this only once each turn.\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | RememberNewCard$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Permanent | Keywords$ Haste | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:The \"legend rule\" doesn't apply to Spiders you control.\\nWhenever you cast a spell from anywhere other than your hand, you may copy it. If you do, you may choose new targets for the copy. If the copy is a permanent spell, it gains haste. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spider-Verse"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

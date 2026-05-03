@@ -1,0 +1,23 @@
+{
+  "id": "nylea-s-presence-corpus-m677",
+  "description": "M6 corpus — Nylea's Presence; in-hand parse.",
+  "seed": 66123,
+  "cards": {
+    "Nylea's Presence": "Name:Nylea's Presence\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddType$ AllBasicLandType | Description$ Enchanted land is every basic land type in addition to its other types.\nOracle:Enchant land\\nWhen Nylea's Presence enters, draw a card.\\nEnchanted land is every basic land type in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nylea's Presence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

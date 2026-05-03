@@ -1,0 +1,23 @@
+{
+  "id": "heron-s-grace-champion-corpus-m677",
+  "description": "M6 corpus — Heron's Grace Champion; in-hand parse.",
+  "seed": 62310,
+  "cards": {
+    "Heron's Grace Champion": "Name:Heron's Grace Champion\nManaCost:2 G W\nTypes:Creature Human Knight\nPT:3/3\nK:Flash\nK:Lifelink\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, other Humans you control get +1/+1 and gain lifelink until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.Human+StrictlyOther+YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Lifelink\nDeckHints:Type$Human\nOracle:Flash\\nLifelink\\nWhen Heron's Grace Champion enters, other Humans you control get +1/+1 and gain lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heron's Grace Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

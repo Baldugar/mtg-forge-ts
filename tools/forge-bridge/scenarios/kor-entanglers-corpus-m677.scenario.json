@@ -1,0 +1,23 @@
+{
+  "id": "kor-entanglers-corpus-m677",
+  "description": "M6 corpus — Kor Entanglers; in-hand parse.",
+  "seed": 63828,
+  "cards": {
+    "Kor Entanglers": "Name:Kor Entanglers\nManaCost:4 W\nTypes:Creature Kor Soldier Ally\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigTap | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Kor Entanglers or another Ally you control enters, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Entanglers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

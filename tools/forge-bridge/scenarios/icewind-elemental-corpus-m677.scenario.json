@@ -1,0 +1,23 @@
+{
+  "id": "icewind-elemental-corpus-m677",
+  "description": "M6 corpus — Icewind Elemental; in-hand parse.",
+  "seed": 62701,
+  "cards": {
+    "Icewind Elemental": "Name:Icewind Elemental\nManaCost:4 U\nTypes:Creature Elemental\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying\\nWhen this creature enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icewind Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

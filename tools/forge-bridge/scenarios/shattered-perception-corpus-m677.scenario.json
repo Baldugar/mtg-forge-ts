@@ -1,0 +1,23 @@
+{
+  "id": "shattered-perception-corpus-m677",
+  "description": "M6 corpus — Shattered Perception; in-hand parse.",
+  "seed": 69634,
+  "cards": {
+    "Shattered Perception": "Name:Shattered Perception\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Discard | Defined$ You | RememberDiscarded$ True | Mode$ Hand | SubAbility$ DBDraw | SpellDescription$ Discard all the cards in your hand, then draw that many cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nK:Flashback:5 R\nAI:RemoveDeck:All\nOracle:Discard all the cards in your hand, then draw that many cards.\\nFlashback {5}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shattered Perception"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

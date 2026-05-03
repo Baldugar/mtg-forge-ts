@@ -1,0 +1,25 @@
+{
+  "id": "hazardroot-herbalist-corpus-m677",
+  "description": "M6 corpus — Hazardroot Herbalist; ETB-on-bf.",
+  "seed": 62133,
+  "cards": {
+    "Hazardroot Herbalist": "Name:Hazardroot Herbalist\nManaCost:2 G\nTypes:Creature Rabbit Druid\nPT:1/4\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target creature you control gets +1/+0 until end of turn. If that creature is a token, it also gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Permanent.token | KW$ Deathtouch\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Token\nOracle:Whenever you attack, target creature you control gets +1/+0 until end of turn. If that creature is a token, it also gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hazardroot Herbalist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

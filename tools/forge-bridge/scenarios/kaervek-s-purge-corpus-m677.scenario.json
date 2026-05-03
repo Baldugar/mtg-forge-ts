@@ -1,0 +1,23 @@
+{
+  "id": "kaervek-s-purge-corpus-m677",
+  "description": "M6 corpus — Kaervek's Purge; in-hand parse.",
+  "seed": 63425,
+  "cards": {
+    "Kaervek's Purge": "Name:Kaervek's Purge\nManaCost:X B R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature.cmcEQX | TgtPrompt$ Select target creature with mana value X | RememberLKI$ True | SubAbility$ DBDamage | SpellDescription$ Destroy target creature with mana value X. If that creature dies this way, CARDNAME deals damage equal to the creature's power to the creature's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ RememberedController | NumDmg$ Z | ConditionCheckSVar$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Amount\nSVar:Z:RememberedLKI$CardPower\nOracle:Destroy target creature with mana value X. If that creature dies this way, Kaervek's Purge deals damage equal to the creature's power to the creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaervek's Purge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

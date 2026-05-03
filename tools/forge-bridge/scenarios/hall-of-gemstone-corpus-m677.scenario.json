@@ -1,0 +1,23 @@
+{
+  "id": "hall-of-gemstone-corpus-m677",
+  "description": "M6 corpus — Hall of Gemstone; in-hand parse.",
+  "seed": 61980,
+  "cards": {
+    "Hall of Gemstone": "Name:Hall of Gemstone\nManaCost:1 G G\nTypes:World Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player chooses a color. Until end of turn, lands tapped for mana produce mana of the chosen color instead of any other color.\nSVar:TrigChoose:DB$ ChooseColor | Defined$ TriggeredPlayer | AILogic$ MostProminentInActivePlayerHand | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ ReplaceChosen\nSVar:ReplaceChosen:Event$ ProduceMana | ActiveZones$ Command | ValidCard$ Land | ReplaceWith$ ProduceChosen | Description$ Lands tapped for mana produce mana of the chosen color instead of any other color.\nSVar:ProduceChosen:DB$ ReplaceMana | ReplaceColor$ Chosen\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player chooses a color. Until end of turn, lands tapped for mana produce mana of the chosen color instead of any other color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hall of Gemstone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shisato-whispering-hunter-corpus-m677",
+  "description": "M6 corpus — Shisato, Whispering Hunter; in-hand parse.",
+  "seed": 69726,
+  "cards": {
+    "Shisato, Whispering Hunter": "Name:Shisato, Whispering Hunter\nManaCost:3 G\nTypes:Legendary Creature Snake Warrior\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a Snake.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Snake\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSkipPhase | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player skips their next untap step.\nSVar:TrigSkipPhase:DB$ SkipPhase | Defined$ TriggeredTarget | Step$ Untap\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.Snake+YouCtrl+cmcLE2\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckNeeds:Type$Snake\nOracle:At the beginning of your upkeep, sacrifice a Snake.\\nWhenever Shisato, Whispering Hunter deals combat damage to a player, that player skips their next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shisato, Whispering Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

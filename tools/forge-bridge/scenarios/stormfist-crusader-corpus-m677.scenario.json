@@ -1,0 +1,23 @@
+{
+  "id": "stormfist-crusader-corpus-m677",
+  "description": "M6 corpus — Stormfist Crusader; in-hand parse.",
+  "seed": 71120,
+  "cards": {
+    "Stormfist Crusader": "Name:Stormfist Crusader\nManaCost:B R\nTypes:Creature Human Knight\nPT:2/2\nK:Menace\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, each player draws a card and loses 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ Player | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player | LifeAmount$ 1\nOracle:Menace\\nAt the beginning of your upkeep, each player draws a card and loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormfist Crusader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

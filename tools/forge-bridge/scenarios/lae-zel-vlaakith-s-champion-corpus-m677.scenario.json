@@ -1,0 +1,25 @@
+{
+  "id": "lae-zel-vlaakith-s-champion-corpus-m677",
+  "description": "M6 corpus — Lae'zel, Vlaakith's Champion; ETB-on-bf.",
+  "seed": 63957,
+  "cards": {
+    "Lae'zel, Vlaakith's Champion": "Name:Lae'zel, Vlaakith's Champion\nManaCost:2 W\nTypes:Legendary Creature Gith Warrior\nPT:3/3\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidSource$ You | ValidObject$ Creature.YouCtrl+inZoneBattlefield,Planeswalker.YouCtrl+inZoneBattlefield,You | ReplaceWith$ AddOneMoreCounters | Description$ If you would put one or more counters on a creature or planeswalker you control or on yourself, put that many plus one of each of those kinds of counters on that permanent or player instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ChooseCounter$ True | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Plus.1\nK:Choose a Background\nDeckNeeds:Ability$Counters\nOracle:If you would put one or more counters on a creature or planeswalker you control or on yourself, put that many plus one of each of those kinds of counters on that permanent or player instead.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lae'zel, Vlaakith's Champion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

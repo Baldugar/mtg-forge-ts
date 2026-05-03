@@ -1,0 +1,23 @@
+{
+  "id": "kemba-s-outfitter-corpus-m677",
+  "description": "M6 corpus — Kemba's Outfitter; in-hand parse.",
+  "seed": 63598,
+  "cards": {
+    "Kemba's Outfitter": "Name:Kemba's Outfitter\nManaCost:W\nTypes:Creature Cat Artificer\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ ReduceHand,ReduceBattlefield\nSVar:ReduceHand:DB$ ChooseCard | Mandatory$ True | ChoiceZone$ Hand | Choices$ Equipment.YouOwn | ChoiceTitle$ Choose an equipment card in your hand | SubAbility$ DBPump | SpellDescription$ Choose an equipment card in your hand. It perpetually gains equip {1}.\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Equip:1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:ReduceBattlefield:DB$ Pump | ValidTgts$ Equipment.YouCtrl | TgtPrompt$ Select target equipment you control | Duration$ Perpetual | KW$ Equip:1 | SpellDescription$ Target Equipment you control perpetually gains equip {1}.\nDeckNeeds:Type$Equipment\nOracle:When Kemba's Outfitter enters, choose one —\\n• Choose an equipment card in your hand. It perpetually gains equip {1}.\\n• Target Equipment you control perpetually gains equip {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kemba's Outfitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

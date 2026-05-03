@@ -1,0 +1,23 @@
+{
+  "id": "loran-disciple-of-history-corpus-m677",
+  "description": "M6 corpus — Loran, Disciple of History; in-hand parse.",
+  "seed": 64390,
+  "cards": {
+    "Loran, Disciple of History": "Name:Loran, Disciple of History\nManaCost:3 W\nTypes:Legendary Creature Human Artificer\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Other+Legendary+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever CARDNAME or another legendary creature you control enters, return target artifact card from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact card in your graveyard | ValidTgts$ Artifact.YouCtrl\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Artifact\nOracle:Whenever Loran, Disciple of History or another legendary creature you control enters, return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loran, Disciple of History"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

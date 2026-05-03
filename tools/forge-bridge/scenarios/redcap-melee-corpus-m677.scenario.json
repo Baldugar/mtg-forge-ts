@@ -1,0 +1,23 @@
+{
+  "id": "redcap-melee-corpus-m677",
+  "description": "M6 corpus — Redcap Melee; in-hand parse.",
+  "seed": 67920,
+  "cards": {
+    "Redcap Melee": "Name:Redcap Melee\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 4 | RememberDamaged$ True | SubAbility$ DBSac | SpellDescription$ CARDNAME deals 4 damage to target creature or planeswalker. If a nonred permanent is dealt damage this way, you sacrifice a land.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Land | Defined$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.nonRed | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Redcap Melee deals 4 damage to target creature or planeswalker. If a nonred permanent is dealt damage this way, you sacrifice a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Redcap Melee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

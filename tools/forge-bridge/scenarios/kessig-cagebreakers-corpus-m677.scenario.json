@@ -1,0 +1,23 @@
+{
+  "id": "kessig-cagebreakers-corpus-m677",
+  "description": "M6 corpus — Kessig Cagebreakers; in-hand parse.",
+  "seed": 63607,
+  "cards": {
+    "Kessig Cagebreakers": "Name:Kessig Cagebreakers\nManaCost:4 G\nTypes:Creature Human Rogue\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 2/2 green Wolf creature token that's tapped and attacking for each creature card in your graveyard.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_2_2_wolf | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Kessig Cagebreakers attacks, create a 2/2 green Wolf creature token that's tapped and attacking for each creature card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kessig Cagebreakers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

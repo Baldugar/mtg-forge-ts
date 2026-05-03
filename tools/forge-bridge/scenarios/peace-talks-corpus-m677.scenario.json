@@ -1,0 +1,23 @@
+{
+  "id": "peace-talks-corpus-m677",
+  "description": "M6 corpus — Peace Talks; in-hand parse.",
+  "seed": 66685,
+  "cards": {
+    "Peace Talks": "Name:Peace Talks\nManaCost:1 W\nTypes:Sorcery\nA:SP$ Effect | AILogic$ PeaceTalks | Stackable$ False | StaticAbilities$ STCantAttack,STCantTarget,STCantTargetPlayer | Duration$ ThisTurnAndNextTurn | SpellDescription$ This turn and next turn, creatures can't attack, and players and permanents can't be the targets of spells or activated abilities.\nSVar:STCantAttack:Mode$ CantAttack | ValidCard$ Creature | Description$ Creatures can't attack.\nSVar:STCantTarget:Mode$ CantTarget | ValidTarget$ Card.Permanent,Player | ValidSA$ Spell,Activated | Description$ Players and Permanents can't be the targets of spells or activated abilities.\nOracle:This turn and next turn, creatures can't attack, and players and permanents can't be the targets of spells or activated abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peace Talks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

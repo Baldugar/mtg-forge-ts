@@ -1,0 +1,23 @@
+{
+  "id": "kemba-kha-regent-corpus-m677",
+  "description": "M6 corpus — Kemba, Kha Regent; in-hand parse.",
+  "seed": 63596,
+  "cards": {
+    "Kemba, Kha Regent": "Name:Kemba, Kha Regent\nManaCost:1 W W\nTypes:Legendary Creature Cat Cleric\nPT:2/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 2/2 white Cat creature token for each Equipment attached to CARDNAME.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_cat | TokenAmount$ X | TokenOwner$ You\nSVar:X:Count$Valid Equipment.Attached\nSVar:EquipMe:Multiple\nOracle:At the beginning of your upkeep, create a 2/2 white Cat creature token for each Equipment attached to Kemba, Kha Regent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kemba, Kha Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

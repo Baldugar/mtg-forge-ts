@@ -1,0 +1,23 @@
+{
+  "id": "goblin-war-cry-corpus-m677",
+  "description": "M6 corpus — Goblin War Cry; in-hand parse.",
+  "seed": 61487,
+  "cards": {
+    "Goblin War Cry": "Name:Goblin War Cry\nManaCost:2 R\nTypes:Sorcery\nA:SP$ ChooseCard | ValidTgts$ Opponent | Mandatory$ True | Choices$ Creature.TargetedPlayerCtrl | SubAbility$ DBPumpAll | AILogic$ BestBlocker | SpellDescription$ Target opponent chooses a creature they control. Other creatures they control can't block this turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.nonChosenCard+TargetedPlayerCtrl | KW$ HIDDEN CARDNAME can't block.\nAI:RemoveDeck:All\nOracle:Target opponent chooses a creature they control. Other creatures they control can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin War Cry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

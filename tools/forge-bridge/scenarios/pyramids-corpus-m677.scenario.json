@@ -1,0 +1,25 @@
+{
+  "id": "pyramids-corpus-m677",
+  "description": "M6 corpus — Pyramids; ETB-on-bf.",
+  "seed": 67405,
+  "cards": {
+    "Pyramids": "Name:Pyramids\nManaCost:6\nTypes:Artifact\nA:AB$ Charm | Cost$ 2 | Choices$ DBDestroy,DBProtect | Defined$ You\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Aura.AttachedTo Land | TgtPrompt$ Select target Aura attached to a land | SpellDescription$ Destroy target Aura attached to a land.\nSVar:DBProtect:DB$ Effect | ValidTgts$ Land | ReplacementEffects$ DBRemove | ForgetOnMoved$ Battlefield | RememberObjects$ Targeted | SpellDescription$ The next time target land would be destroyed this turn, remove all damage marked on it instead.\nSVar:DBRemove:Event$ Destroy | ValidCard$ Land.IsRemembered | ReplaceWith$ RemoveDamage | Description$ The next time target land would be destroyed this turn, remove all damage marked on it instead.\nSVar:RemoveDamage:DB$ DealDamage | Defined$ ReplacedCard | Remove$ All | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:{2}: Choose one —\\n• Destroy target Aura attached to a land.\\n• The next time target land would be destroyed this turn, remove all damage marked on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pyramids"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

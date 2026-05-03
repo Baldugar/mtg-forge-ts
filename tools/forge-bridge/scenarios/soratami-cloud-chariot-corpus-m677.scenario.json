@@ -1,0 +1,25 @@
+{
+  "id": "soratami-cloud-chariot-corpus-m677",
+  "description": "M6 corpus — Soratami Cloud Chariot; ETB-on-bf.",
+  "seed": 70420,
+  "cards": {
+    "Soratami Cloud Chariot": "Name:Soratami Cloud Chariot\nManaCost:5\nTypes:Artifact\nA:AB$ Pump | Cost$ 2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Flying | SpellDescription$ Target creature you control gains flying until end of turn.\nA:AB$ Effect | Cost$ 2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | ReplacementEffects$ RPrevent1,RPrevent2 | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all combat damage that would be dealt to and dealt by target creature you control this turn.\nSVar:RPrevent1:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by target creature you control this turn.\nSVar:RPrevent2:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by target creature you control this turn. | Secondary$ True\nAI:RemoveDeck:All\nOracle:{2}: Target creature you control gains flying until end of turn.\\n{2}: Prevent all combat damage that would be dealt to and dealt by target creature you control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soratami Cloud Chariot"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

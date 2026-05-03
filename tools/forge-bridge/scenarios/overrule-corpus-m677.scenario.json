@@ -1,0 +1,23 @@
+{
+  "id": "overrule-corpus-m677",
+  "description": "M6 corpus — Overrule; in-hand parse.",
+  "seed": 66505,
+  "cards": {
+    "Overrule": "Name:Overrule\nManaCost:X W U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ X | SubAbility$ DBGainLife | SpellDescription$ Counter target spell unless its controller pays {X}. You gain X life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$xPaid\nOracle:Counter target spell unless its controller pays {X}. You gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overrule"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

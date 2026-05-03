@@ -1,0 +1,23 @@
+{
+  "id": "song-of-creation-corpus-m677",
+  "description": "M6 corpus — Song of Creation; in-hand parse.",
+  "seed": 70396,
+  "cards": {
+    "Song of Creation": "Name:Song of Creation\nManaCost:1 G U R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land on each of your turns.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you cast a spell, draw two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of your end step, discard your hand.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | Defined$ You\nOracle:You may play an additional land on each of your turns.\\nWhenever you cast a spell, draw two cards.\\nAt the beginning of your end step, discard your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Song of Creation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

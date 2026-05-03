@@ -1,0 +1,25 @@
+{
+  "id": "labyrinth-raptor-corpus-m677",
+  "description": "M6 corpus — Labyrinth Raptor; ETB-on-bf.",
+  "seed": 63948,
+  "cards": {
+    "Labyrinth Raptor": "Name:Labyrinth Raptor\nManaCost:B R\nTypes:Creature Nightmare Dinosaur\nPT:2/2\nK:Menace\nT:Mode$ AttackerBlocked | ValidCard$ Creature.YouCtrl+withMenace | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever a creature you control with menace becomes blocked, defending player sacrifices a creature blocking it.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredDefendingPlayer | SacValid$ Creature.blockingTriggeredAttacker | Amount$ 1\nA:AB$ PumpAll | Cost$ B R | ValidCards$ Creature.YouCtrl+withMenace | NumAtt$ +1 | SpellDescription$ Creatures you control with menace get +1/+0 until end of turn.\nSVar:PlayMain1:TRUE\nOracle:Menace\\nWhenever a creature you control with menace becomes blocked, defending player sacrifices a creature blocking it.\\n{B}{R}: Creatures you control with menace get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Labyrinth Raptor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

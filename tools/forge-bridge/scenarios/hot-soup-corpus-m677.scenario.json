@@ -1,0 +1,23 @@
+{
+  "id": "hot-soup-corpus-m677",
+  "description": "M6 corpus — Hot Soup; in-hand parse.",
+  "seed": 62526,
+  "cards": {
+    "Hot Soup": "Name:Hot Soup\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EquippedBy | Description$ Equipped creature can't be blocked.\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ HotSoupDestroy\nSVar:HotSoupDestroy:SVar:DestroyWhenDamaged:True\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature.EquippedBy | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ When equipped creature is dealt damage, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:NonStackingAttachEffect:True\nOracle:Equipped creature can't be blocked.\\nWhenever equipped creature is dealt damage, destroy it.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hot Soup"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

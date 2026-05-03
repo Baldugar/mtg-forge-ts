@@ -1,0 +1,23 @@
+{
+  "id": "sarpadian-empires-vol-vii-corpus-m677",
+  "description": "M6 corpus — Sarpadian Empires, Vol. VII; in-hand parse.",
+  "seed": 69023,
+  "cards": {
+    "Sarpadian Empires, Vol. VII": "Name:Sarpadian Empires, Vol. VII\nManaCost:3\nTypes:Artifact\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInGame | SpellDescription$ As CARDNAME enters, choose white Citizen, blue Camarid, black Thrull, red Goblin, or green Saproling.\n# Went for MostProminentInGame logic to give the AI a possible out for situations where it might be locked down based on its colors\nA:AB$ Token | Cost$ 3 T | TokenScript$ w_1_1_citizen | TokenOwner$ You | ConditionChosenColor$ white | SubAbility$ ChoseBlue | SpellDescription$ Create a 1/1 creature token of the chosen color and type.\nSVar:ChoseBlue:DB$ Token | TokenScript$ u_1_1_camarid | TokenOwner$ You | ConditionChosenColor$ blue | SubAbility$ ChoseBlack\nSVar:ChoseBlack:DB$ Token | TokenScript$ b_1_1_thrull | TokenOwner$ You | ConditionChosenColor$ black | SubAbility$ ChoseRed\nSVar:ChoseRed:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | ConditionChosenColor$ red | SubAbility$ ChoseGreen\nSVar:ChoseGreen:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You | ConditionChosenColor$ green\nOracle:As Sarpadian Empires, Vol. VII enters, choose white Citizen, blue Camarid, black Thrull, red Goblin, or green Saproling.\\n{3}, {T}: Create a 1/1 creature token of the chosen color and type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarpadian Empires, Vol. VII"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

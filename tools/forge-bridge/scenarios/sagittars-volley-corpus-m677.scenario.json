@@ -1,0 +1,23 @@
+{
+  "id": "sagittars-volley-corpus-m677",
+  "description": "M6 corpus — Sagittars' Volley; in-hand parse.",
+  "seed": 68875,
+  "cards": {
+    "Sagittars' Volley": "Name:Sagittars' Volley\nManaCost:2 G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | SubAbility$ DBDamageAll | SpellDescription$ Destroy target creature with flying. CARDNAME deals 1 damage to each creature with flying your opponents control.\nSVar:DBDamageAll:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.withFlying+OppCtrl\nOracle:Destroy target creature with flying. Sagittars' Volley deals 1 damage to each creature with flying your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sagittars' Volley"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

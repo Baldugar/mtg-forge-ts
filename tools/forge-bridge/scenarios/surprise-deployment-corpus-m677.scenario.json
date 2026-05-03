@@ -1,0 +1,23 @@
+{
+  "id": "surprise-deployment-corpus-m677",
+  "description": "M6 corpus — Surprise Deployment; in-hand parse.",
+  "seed": 71428,
+  "cards": {
+    "Surprise Deployment": "Name:Surprise Deployment\nManaCost:3 W\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Optional$ You | ChangeType$ Creature.nonWhite | ChangeNum$ 1 | RememberChanged$ True | ActivationPhases$ BeginCombat->EndCombat | AILogic$ SurpriseBlock | SubAbility$ DelTrig | SpellDescription$ Cast this spell only during combat. You may put a nonwhite creature card from your hand onto the battlefield. At the beginning of the next end step, return that creature to your hand. (Return it only if it's on the battlefield.)\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigBounce | RememberObjects$ RememberedLKI | TriggerDescription$ At the beginning of the next end step, return that creature to your hand. | AILogic$ Always | SubAbility$ DBCleanup\nSVar:TrigBounce:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Battlefield | Destination$ Hand\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Cast this spell only during combat.\\nYou may put a nonwhite creature card from your hand onto the battlefield. At the beginning of the next end step, return that creature to your hand. (Return it only if it's on the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surprise Deployment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

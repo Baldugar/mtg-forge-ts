@@ -1,0 +1,25 @@
+{
+  "id": "incubation-druid-corpus-m677",
+  "description": "M6 corpus — Incubation Druid; ETB-on-bf.",
+  "seed": 62861,
+  "cards": {
+    "Incubation Druid": "Name:Incubation Druid\nManaCost:1 G\nTypes:Creature Elf Druid\nPT:0/2\nA:AB$ PutCounter | Cost$ 3 G G | Adapt$ 3\nA:AB$ ManaReflected | Cost$ T | ColorOrType$ Type | Valid$ Land.YouCtrl | Amount$ IncubationAmount | ReflectProperty$ Produce | SpellDescription$ Add one mana of any type that a land you control could produce. If CARDNAME has a +1/+1 counter on it, add three mana of that type instead.\nSVar:Y:Count$Valid Card.Self+counters_GE1_P1P1\nSVar:IncubationAmount:Count$Compare Y GE1.3.1\nDeckHas:Ability$Counters\nOracle:{T}: Add one mana of any type that a land you control could produce. If Incubation Druid has a +1/+1 counter on it, add three mana of that type instead.\\n{3}{G}{G}: Adapt 3. (If this creature has no +1/+1 counters on it, put three +1/+1 counters on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Incubation Druid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kinetic-augur-corpus-m677",
+  "description": "M6 corpus — Kinetic Augur; in-hand parse.",
+  "seed": 63665,
+  "cards": {
+    "Kinetic Augur": "Name:Kinetic Augur\nManaCost:3 R\nTypes:Creature Human Shaman\nPT:*/4\nK:Trample\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of instant and sorcery cards in your graveyard.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nDeckHints:Type$Instant|Sorcery\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard up to two cards, then draw that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nDeckHas:Ability$Discard\nOracle:Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\\nKinetic Augur's power is equal to the number of instant and sorcery cards in your graveyard.\\nWhen Kinetic Augur enters, discard up to two cards, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kinetic Augur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "sokrates-athenian-teacher-corpus-m677",
+  "description": "M6 corpus — Sokrates, Athenian Teacher; ETB-on-bf.",
+  "seed": 70342,
+  "cards": {
+    "Sokrates, Athenian Teacher": "Name:Sokrates, Athenian Teacher\nManaCost:1 W U\nTypes:Legendary Creature Human Advisor\nPT:0/4\nK:Defender\nS:Mode$ Continuous | Affected$ Card.Self+untapped | AddKeyword$ Hexproof | Description$ CARDNAME has hexproof as long as it's untapped.\nA:AB$ Animate | Cost$ T | ValidTgts$ Creature | PrecostDesc$ Sokratic Dialogue | Replacements$ RPrevent | SpellDescription$ Until end of turn, target creature gains \"If this creature would deal combat damage to a player, prevent that damage. This creature's controller and that player each draw half that many cards, rounded down.\"\nSVar:RPrevent:Event$ DamageDone | ValidTarget$ Player | Prevent$ True | IsCombat$ True | ValidSource$ Card.Self | ReplaceWith$ Draw | Description$ If this creature would deal combat damage to a player, prevent that damage. This creature's controller and that player each draw half that many cards, rounded down.\nSVar:Draw:DB$ Draw | Defined$ CardController & ReplacedTarget | NumCards$ X\nSVar:X:ReplaceCount$DamageAmount/HalfDown\nAI:RemoveDeck:All\nOracle:Defender\\nSokrates, Athenian Teacher has hexproof as long as it's untapped.\\nSokratic Dialogue — {T}: Until end of turn, target creature gains \"If this creature would deal combat damage to a player, prevent that damage. This creature's controller and that player each draw half that many cards, rounded down.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sokrates, Athenian Teacher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

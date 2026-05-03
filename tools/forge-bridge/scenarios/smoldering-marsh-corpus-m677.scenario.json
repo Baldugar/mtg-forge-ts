@@ -1,0 +1,25 @@
+{
+  "id": "smoldering-marsh-corpus-m677",
+  "description": "M6 corpus — Smoldering Marsh; ETB-on-bf.",
+  "seed": 70271,
+  "cards": {
+    "Smoldering Marsh": "Name:Smoldering Marsh\nManaCost:no cost\nTypes:Land Swamp Mountain\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {B} or {R}.)\\nSmoldering Marsh enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Smoldering Marsh"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

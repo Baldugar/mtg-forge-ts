@@ -1,0 +1,23 @@
+{
+  "id": "pol-jamaar-illusionist-corpus-m677",
+  "description": "M6 corpus — Pol Jamaar, Illusionist; in-hand parse.",
+  "seed": 67034,
+  "cards": {
+    "Pol Jamaar, Illusionist": "Name:Pol Jamaar, Illusionist\nManaCost:4 U U\nTypes:Legendary Creature Human Illusion Wizard\nPT:4/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseType | TriggerDescription$ When CARDNAME enters, choose a creature type. Draw a card for each creature you control of that type.\nSVar:TrigChooseType:DB$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBDraw | AILogic$ MostProminentComputerControls\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Creature.ChosenType+YouCtrl\nOracle:Flying\\nWhen Pol Jamaar, Illusionist enters, choose a creature type. Draw a card for each creature you control of that type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pol Jamaar, Illusionist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

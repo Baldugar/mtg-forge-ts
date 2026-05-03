@@ -1,0 +1,23 @@
+{
+  "id": "hand-that-feeds-corpus-m677",
+  "description": "M6 corpus — Hand That Feeds; in-hand parse.",
+  "seed": 62024,
+  "cards": {
+    "Hand That Feeds": "Name:Hand That Feeds\nManaCost:1 R\nTypes:Creature Mutant\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Delirium$ True | Execute$ TrigPump | NoResolvingCheck$ True | TriggerDescription$ Delirium — Whenever CARDNAME attacks while there are four or more card types among cards in your graveyard, it gets +2/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | KW$ Menace\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Delirium — Whenever Hand That Feeds attacks while there are four or more card types among cards in your graveyard, it gets +2/+0 and gains menace until end of turn. (It can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hand That Feeds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

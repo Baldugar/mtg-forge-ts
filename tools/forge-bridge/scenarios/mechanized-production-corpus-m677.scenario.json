@@ -1,0 +1,23 @@
+{
+  "id": "mechanized-production-corpus-m677",
+  "description": "M6 corpus — Mechanized Production; in-hand parse.",
+  "seed": 64929,
+  "cards": {
+    "Mechanized Production": "Name:Mechanized Production\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Artifact.YouCtrl:artifact you control\nSVar:AttachAILogic:Pump\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopyPermanent | TriggerDescription$ At the beginning of your upkeep, create a token that's a copy of enchanted artifact. Then if you control eight or more artifacts with the same name as one another, you win the game.\nSVar:TrigCopyPermanent:DB$ CopyPermanent | Defined$ Enchanted | SubAbility$ DBWin\nSVar:DBWin:DB$ WinsGame | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GE8\nSVar:X:Count$MostCardName Artifact.YouCtrl\nOracle:Enchant artifact you control\\nAt the beginning of your upkeep, create a token that's a copy of enchanted artifact. Then if you control eight or more artifacts with the same name as one another, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mechanized Production"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

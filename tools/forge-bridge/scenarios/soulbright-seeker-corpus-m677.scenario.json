@@ -1,0 +1,25 @@
+{
+  "id": "soulbright-seeker-corpus-m677",
+  "description": "M6 corpus — Soulbright Seeker; ETB-on-bf.",
+  "seed": 70472,
+  "cards": {
+    "Soulbright Seeker": "Name:Soulbright Seeker\nManaCost:R\nTypes:Creature Elemental Sorcerer\nPT:2/1\nK:AlternateAdditionalCost:Behold<1/Elemental>:2\nA:AB$ Pump | Cost$ R | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Trample | SubAbility$ DBMana | SpellDescription$ Target creature you control gains trample until end of turn. If this is the third time this ability has resolved this turn, add {R}{R}{R}{R}.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ 4 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ3\nSVar:X:Count$ResolvedThisTurn\nDeckHints:Type$Elemental\nOracle:As an additional cost to cast this spell, behold an Elemental or pay {2}. (To behold an Elemental, choose an Elemental you control or reveal an Elemental card from your hand.)\\n{R}: Target creature you control gains trample until end of turn. If this is the third time this ability has resolved this turn, add {R}{R}{R}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soulbright Seeker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

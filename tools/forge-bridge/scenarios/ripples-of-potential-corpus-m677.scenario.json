@@ -1,0 +1,23 @@
+{
+  "id": "ripples-of-potential-corpus-m677",
+  "description": "M6 corpus — Ripples of Potential; in-hand parse.",
+  "seed": 68318,
+  "cards": {
+    "Ripples of Potential": "Name:Ripples of Potential\nManaCost:1 U\nTypes:Instant\nA:SP$ Proliferate | SubAbility$ DBPhaseOut | RememberPut$ True | SpellDescription$ Proliferate, then choose any number of permanents you control that had a counter put on them this way. Those permanents phase out. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there. Treat phased-out permanents and anything attached to them as though they don't exist until their controller's next turn.)\nSVar:DBPhaseOut:DB$ Phases | Defined$ Valid Permanent.IsRemembered+YouCtrl | AnyNumber$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Ability$Counters\nOracle:Proliferate, then choose any number of permanents you control that had a counter put on them this way. Those permanents phase out. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there. Treat phased-out permanents and anything attached to them as though they don't exist until their controller's next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ripples of Potential"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kozilek-s-command-corpus-m677",
+  "description": "M6 corpus — Kozilek's Command; in-hand parse.",
+  "seed": 63851,
+  "cards": {
+    "Kozilek's Command": "Name:Kozilek's Command\nManaCost:X C C\nTypes:Kindred Instant Eldrazi\nA:SP$ Charm | Choices$ DBToken,DBScry,DBExile,DBExileGraveyard | CharmNum$ 2 | Announce$ X\nSVar:DBToken:DB$ Token | ValidTgts$ Player | TokenAmount$ X | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ TargetedPlayer | StackDescription$ SpellDescription | SpellDescription$ Target player creates X 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\nSVar:DBScry:DB$ Scry | ScryNum$ X | ValidTgts$ Player | SubAbility$ DBDraw | SpellDescription$ Target player scries X, then draws a card.\nSVar:DBDraw:DB$ Draw | Defined$ ParentTarget\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Creature.cmcLEX | TgtPrompt$ Choose target creature with mana value X or less | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature with mana value X or less.\nSVar:DBExileGraveyard:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ X | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SpellDescription$ Exile up to X target cards from graveyards.\nSVar:X:Count$xPaid\nOracle:Choose two —\\n• Target player creates X 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\\n• Target player scries X, then draws a card.\\n• Exile target creature with mana value X or less.\\n• Exile up to X target cards from graveyards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kozilek's Command"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

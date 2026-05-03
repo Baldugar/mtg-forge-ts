@@ -1,0 +1,23 @@
+{
+  "id": "river-sneak-corpus-m677",
+  "description": "M6 corpus — River Sneak; in-hand parse.",
+  "seed": 68397,
+  "cards": {
+    "River Sneak": "Name:River Sneak\nManaCost:1 U\nTypes:Creature Merfolk Warrior\nPT:1/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Merfolk.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another Merfolk you control enters, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nSVar:BuffedBy:Merfolk\nOracle:River Sneak can't be blocked.\\nWhenever another Merfolk you control enters, River Sneak gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "River Sneak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

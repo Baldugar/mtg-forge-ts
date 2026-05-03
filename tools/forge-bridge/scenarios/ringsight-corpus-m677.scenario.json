@@ -1,0 +1,23 @@
+{
+  "id": "ringsight-corpus-m677",
+  "description": "M6 corpus — Ringsight; in-hand parse.",
+  "seed": 68304,
+  "cards": {
+    "Ringsight": "Name:Ringsight\nManaCost:1 U B\nTypes:Sorcery\nA:SP$ RingTemptsYou | SubAbility$ TrigSearch | SpellDescription$ The Ring tempts you. Search your library for a card that shares a color with a legendary creature you control, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.SharesColorWith Valid Creature.Legendary+YouCtrl\nOracle:The Ring tempts you. Search your library for a card that shares a color with a legendary creature you control, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ringsight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

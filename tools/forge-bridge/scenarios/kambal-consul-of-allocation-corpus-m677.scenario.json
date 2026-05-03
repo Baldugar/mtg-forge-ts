@@ -1,0 +1,25 @@
+{
+  "id": "kambal-consul-of-allocation-corpus-m677",
+  "description": "M6 corpus — Kambal, Consul of Allocation; ETB-on-bf.",
+  "seed": 63451,
+  "cards": {
+    "Kambal, Consul of Allocation": "Name:Kambal, Consul of Allocation\nManaCost:1 W B\nTypes:Legendary Creature Human Advisor\nPT:2/3\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kambal, Consul of Allocation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

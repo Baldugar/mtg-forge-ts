@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-boon-corpus-m677",
+  "description": "M6 corpus — Phyrexian Boon; in-hand parse.",
+  "seed": 66839,
+  "cards": {
+    "Phyrexian Boon": "Name:Phyrexian Boon\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:SpecificCard\nSVar:AttachAIValid:Card.Black\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Black | AddPower$ 2 | AddToughness$ 1 | Description$ Enchanted creature gets +2/+1 as long as it's black. Otherwise, it gets -1/-2.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+nonBlack | AddPower$ -1 | AddToughness$ -2 | Secondary$ True\nOracle:Enchant creature\\nEnchanted creature gets +2/+1 as long as it's black. Otherwise, it gets -1/-2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Boon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jem-lightfoote-sky-explorer-corpus-m677",
+  "description": "M6 corpus — Jem Lightfoote, Sky Explorer; in-hand parse.",
+  "seed": 63268,
+  "cards": {
+    "Jem Lightfoote, Sky Explorer": "Name:Jem Lightfoote, Sky Explorer\nManaCost:2 W U\nTypes:Legendary Creature Human Scout\nPT:3/3\nK:Flying\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ LT1 | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if you haven't cast a spell from your hand this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:X:Count$ThisTurnCast_Card.wasCastFromYourHandByYou\nOracle:Flying, vigilance\\nAt the beginning of your end step, if you haven't cast a spell from your hand this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jem Lightfoote, Sky Explorer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

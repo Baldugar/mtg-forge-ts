@@ -1,0 +1,23 @@
+{
+  "id": "pull-from-the-deep-corpus-m677",
+  "description": "M6 corpus — Pull from the Deep; in-hand parse.",
+  "seed": 67344,
+  "cards": {
+    "Pull from the Deep": "Name:Pull from the Deep\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Instant.YouOwn | TgtPrompt$ Select target instant card in your graveyard | SubAbility$ DBReturn | SpellDescription$ Return up to one target instant card and up to one target sorcery card from your graveyard to your hand. Exile CARDNAME.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Sorcery.YouOwn | TgtPrompt$ Select target sorcery card in your graveyard | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Stack | Destination$ Exile\nOracle:Return up to one target instant card and up to one target sorcery card from your graveyard to your hand. Exile Pull from the Deep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pull from the Deep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

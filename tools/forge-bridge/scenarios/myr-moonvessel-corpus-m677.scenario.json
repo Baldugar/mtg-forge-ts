@@ -1,0 +1,23 @@
+{
+  "id": "myr-moonvessel-corpus-m677",
+  "description": "M6 corpus — Myr Moonvessel; in-hand parse.",
+  "seed": 65640,
+  "cards": {
+    "Myr Moonvessel": "Name:Myr Moonvessel\nManaCost:1\nTypes:Artifact Creature Myr\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigAddMana | TriggerDescription$ When CARDNAME dies, add {C}.\nSVar:TrigAddMana:DB$ Mana | Produced$ C\nOracle:When Myr Moonvessel dies, add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Moonvessel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

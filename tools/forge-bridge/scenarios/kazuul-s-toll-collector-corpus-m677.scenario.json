@@ -1,0 +1,25 @@
+{
+  "id": "kazuul-s-toll-collector-corpus-m677",
+  "description": "M6 corpus — Kazuul's Toll Collector; ETB-on-bf.",
+  "seed": 63545,
+  "cards": {
+    "Kazuul's Toll Collector": "Name:Kazuul's Toll Collector\nManaCost:2 R\nTypes:Creature Ogre Warrior\nPT:3/2\nA:AB$ Pump | Cost$ 0 | ValidTgts$ Equipment.YouCtrl | AITgts$ Equipment.YouCtrl+!equipping | TgtPrompt$ Select target Equipment you control | SubAbility$ KazuulAttach | SorcerySpeed$ True | StackDescription$ None | SpellDescription$ Attach target Equipment you control to CARDNAME.\nSVar:KazuulAttach:DB$ Attach | Object$ ParentTarget | Defined$ Self\nAI:RemoveDeck:All\nOracle:{0}: Attach target Equipment you control to Kazuul's Toll Collector. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kazuul's Toll Collector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

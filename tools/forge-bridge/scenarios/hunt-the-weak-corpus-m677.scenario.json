@@ -1,0 +1,23 @@
+{
+  "id": "hunt-the-weak-corpus-m677",
+  "description": "M6 corpus — Hunt the Weak; in-hand parse.",
+  "seed": 62610,
+  "cards": {
+    "Hunt the Weak": "Name:Hunt the Weak\nManaCost:3 G\nTypes:Sorcery\nA:SP$ PutCounter | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to put a +1/+1 counter | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBFight | SpellDescription$ Put a +1/+1 counter on target creature you control. Then that creature fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | AILogic$ Always | TgtPrompt$ Select target creature you don't control\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on target creature you control. Then that creature fights target creature you don't control. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunt the Weak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

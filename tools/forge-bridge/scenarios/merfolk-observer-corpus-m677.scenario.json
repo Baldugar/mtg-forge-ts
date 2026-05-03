@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-observer-corpus-m677",
+  "description": "M6 corpus — Merfolk Observer; in-hand parse.",
+  "seed": 65018,
+  "cards": {
+    "Merfolk Observer": "Name:Merfolk Observer\nManaCost:1 U\nTypes:Creature Merfolk Rogue\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When CARDNAME enters, look at the top card of target player's library.\nSVar:TrigPeek:DB$ RearrangeTopOfLibrary | ValidTgts$ Player | NumCards$ 1 | SpellDescription$ Look at the top card of target player's library.\nOracle:When Merfolk Observer enters, look at the top card of target player's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Observer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

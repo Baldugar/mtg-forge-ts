@@ -1,0 +1,25 @@
+{
+  "id": "magma-sliver-corpus-m677",
+  "description": "M6 corpus — Magma Sliver; ETB-on-bf.",
+  "seed": 64599,
+  "cards": {
+    "Magma Sliver": "Name:Magma Sliver\nManaCost:3 R\nTypes:Creature Sliver\nPT:3/3\nS:Mode$ Continuous | Affected$ Sliver | AddAbility$ ABMagma | Description$ All Slivers have \"{T}: Target Sliver creature gets +X/+0 until end of turn, where X is the number of Slivers on the battlefield.\"\nSVar:ABMagma:AB$ Pump | Cost$ T | ValidTgts$ Creature.Sliver | TgtPrompt$ Select target Sliver creature | NumAtt$ +SliversOnFieldX | SpellDescription$ Target Sliver creature gets +X/+0 until end of turn, where X is the number of Slivers on the battlefield.\nSVar:SliversOnFieldX:Count$Valid Sliver\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Sliver\nOracle:All Slivers have \"{T}: Target Sliver creature gets +X/+0 until end of turn, where X is the number of Slivers on the battlefield.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Magma Sliver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "joraga-warcaller-corpus-m677",
+  "description": "M6 corpus — Joraga Warcaller; in-hand parse.",
+  "seed": 63342,
+  "cards": {
+    "Joraga Warcaller": "Name:Joraga Warcaller\nManaCost:G\nTypes:Creature Elf Warrior\nPT:1/1\nK:Multikicker:1 G\nK:etbCounter:P1P1:XKicked:no Condition:CARDNAME enters with a +1/+1 counter on it for each time it was kicked.\nS:Mode$ Continuous | Affected$ Creature.Elf+Other+YouCtrl | AddPower$ X | AddToughness$ X | Description$ Other Elf creatures you control get +1/+1 for each +1/+1 counter on CARDNAME.\nSVar:X:Count$CardCounters.P1P1\nSVar:XKicked:Count$TimesKicked\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckNeeds:Type$Elf\nOracle:Multikicker {1}{G} (You may pay an additional {1}{G} any number of times as you cast this spell.)\\nJoraga Warcaller enters with a +1/+1 counter on it for each time it was kicked.\\nOther Elf creatures you control get +1/+1 for each +1/+1 counter on Joraga Warcaller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Joraga Warcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

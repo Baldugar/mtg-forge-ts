@@ -1,0 +1,23 @@
+{
+  "id": "murasa-sproutling-corpus-m677",
+  "description": "M6 corpus — Murasa Sproutling; in-hand parse.",
+  "seed": 65595,
+  "cards": {
+    "Murasa Sproutling": "Name:Murasa Sproutling\nManaCost:2 G\nTypes:Creature Plant Elemental\nPT:3/3\nK:Kicker:1 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if it was kicked, return target card with a kicker ability from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose target card with a kicker ability | ValidTgts$ Card.withKicker+YouOwn,Card.withMultikicker+YouOwn\nDeckHas:Ability$Graveyard\nOracle:Kicker {1}{G} (You may pay an additional {1}{G} as you cast this spell.)\\nWhen Murasa Sproutling enters, if it was kicked, return target card with a kicker ability from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murasa Sproutling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

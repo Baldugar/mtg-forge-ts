@@ -1,0 +1,23 @@
+{
+  "id": "rats-feast-corpus-m677",
+  "description": "M6 corpus — Rats' Feast; in-hand parse.",
+  "seed": 67734,
+  "cards": {
+    "Rats' Feast": "Name:Rats' Feast\nManaCost:X B\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ X | TargetMax$ X | TargetsWithSameController$ True | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose X target cards in a single graveyard | ValidTgts$ Card | StackDescription$ Exile {c:Targeted}. | SpellDescription$ Exile X target cards from a single graveyard.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Exile X target cards from a single graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rats' Feast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

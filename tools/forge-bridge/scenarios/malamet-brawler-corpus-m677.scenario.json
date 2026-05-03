@@ -1,0 +1,23 @@
+{
+  "id": "malamet-brawler-corpus-m677",
+  "description": "M6 corpus — Malamet Brawler; in-hand parse.",
+  "seed": 64655,
+  "cards": {
+    "Malamet Brawler": "Name:Malamet Brawler\nManaCost:1 G\nTypes:Creature Cat Warrior\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target attacking creature gains trample until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | KW$ Trample\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Malamet Brawler attacks, target attacking creature gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malamet Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

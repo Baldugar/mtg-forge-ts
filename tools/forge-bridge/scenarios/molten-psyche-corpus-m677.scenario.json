@@ -1,0 +1,23 @@
+{
+  "id": "molten-psyche-corpus-m677",
+  "description": "M6 corpus — Molten Psyche; in-hand parse.",
+  "seed": 65402,
+  "cards": {
+    "Molten Psyche": "Name:Molten Psyche\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ ShuffleHand | SpellDescription$ Each player shuffles the cards from their hand into their library, then draws that many cards. Metalcraft — If you control three or more artifacts, CARDNAME deals damage to each opponent equal to the number of cards that player has drawn this turn.\nSVar:ShuffleHand:DB$ ChangeZoneAll | Defined$ Player.IsRemembered | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | RememberChanged$ True | Shuffle$ True | SubAbility$ PsychoDraw\nSVar:PsychoDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ MindFlame\nSVar:MindFlame:DB$ DealDamage | Defined$ Player.Opponent+IsRemembered | NumDmg$ Y | ConditionPresent$ Artifact.YouCtrl | ConditionCompare$ GE3 | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:Y:PlayerCountRemembered$CardsDrawn\nSVar:NeedsToPlayVar:Z LE2\nSVar:Z:Count$ValidHand Card.YouOwn\nOracle:Each player shuffles the cards from their hand into their library, then draws that many cards.\\nMetalcraft — If you control three or more artifacts, Molten Psyche deals damage to each opponent equal to the number of cards that player has drawn this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Psyche"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

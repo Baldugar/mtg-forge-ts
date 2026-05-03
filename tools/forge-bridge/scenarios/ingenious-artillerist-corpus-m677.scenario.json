@@ -1,0 +1,23 @@
+{
+  "id": "ingenious-artillerist-corpus-m677",
+  "description": "M6 corpus — Ingenious Artillerist; in-hand parse.",
+  "seed": 62938,
+  "cards": {
+    "Ingenious Artillerist": "Name:Ingenious Artillerist\nManaCost:2 R\nTypes:Creature Human Artificer\nPT:3/1\nT:Mode$ ChangesZoneAll | ValidCards$ Artifact.YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever one or more artifacts you control enter, CARDNAME deals that much damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nSVar:X:TriggerCount$Amount\nDeckNeeds:Type$Artifact\nOracle:Whenever one or more artifacts you control enter, Ingenious Artillerist deals that much damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ingenious Artillerist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

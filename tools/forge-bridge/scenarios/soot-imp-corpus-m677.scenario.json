@@ -1,0 +1,25 @@
+{
+  "id": "soot-imp-corpus-m677",
+  "description": "M6 corpus — Soot Imp; ETB-on-bf.",
+  "seed": 70412,
+  "cards": {
+    "Soot Imp": "Name:Soot Imp\nManaCost:1 B B\nTypes:Creature Imp\nPT:1/2\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonBlack | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a player casts a nonblack spell, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 1\nAI:RemoveDeck:Random\nOracle:Flying\\nWhenever a player casts a nonblack spell, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soot Imp"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

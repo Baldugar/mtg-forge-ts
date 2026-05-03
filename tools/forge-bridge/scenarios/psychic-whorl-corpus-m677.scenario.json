@@ -1,0 +1,23 @@
+{
+  "id": "psychic-whorl-corpus-m677",
+  "description": "M6 corpus — Psychic Whorl; in-hand parse.",
+  "seed": 67330,
+  "cards": {
+    "Psychic Whorl": "Name:Psychic Whorl\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Player | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBSurveil | SpellDescription$ Target player discards two cards. Then if you control a Rat, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:DBSurveil:DB$ Surveil | Amount$ 2 | ConditionPresent$ Rat.YouCtrl | ConditionCompare$ GE1\nDeckHas:Ability$Discard\nOracle:Target player discards two cards. Then if you control a Rat, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Whorl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

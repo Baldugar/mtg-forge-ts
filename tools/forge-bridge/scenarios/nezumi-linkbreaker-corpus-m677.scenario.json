@@ -1,0 +1,23 @@
+{
+  "id": "nezumi-linkbreaker-corpus-m677",
+  "description": "M6 corpus — Nezumi Linkbreaker; in-hand parse.",
+  "seed": 65900,
+  "cards": {
+    "Nezumi Linkbreaker": "Name:Nezumi Linkbreaker\nManaCost:B\nTypes:Creature Rat Warlock\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_mercenary_tappump | TokenOwner$ You\nDeckHas:Ability$Token|Graveyard & Type$Mercenary\nOracle:When Nezumi Linkbreaker dies, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nezumi Linkbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

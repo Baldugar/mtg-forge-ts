@@ -1,0 +1,23 @@
+{
+  "id": "resolute-strike-corpus-m677",
+  "description": "M6 corpus — Resolute Strike; in-hand parse.",
+  "seed": 68106,
+  "cards": {
+    "Resolute Strike": "Name:Resolute Strike\nManaCost:W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | AILogic$ Pump | SubAbility$ DBAttach | SpellDescription$ Target creature gets +2/+2 until end of turn. If it's a Warrior, you may attach an Equipment you control to it.\nSVar:DBAttach:DB$ Attach | ConditionDefined$ ParentTarget | ConditionPresent$ Warrior | ConditionCompare$ EQ1 | Choices$ Equipment.YouCtrl | ChoiceTitle$ Choose an Equipment you control | Optional$ True | Defined$ ParentTarget | StackDescription$ If it's a Warrior, you may attach an Equipment you control to it.\nDeckHints:Type$Warrior|Equipment\nOracle:Target creature gets +2/+2 until end of turn. If it's a Warrior, you may attach an Equipment you control to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resolute Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

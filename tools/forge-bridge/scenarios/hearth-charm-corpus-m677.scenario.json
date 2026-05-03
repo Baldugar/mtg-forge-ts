@@ -1,0 +1,23 @@
+{
+  "id": "hearth-charm-corpus-m677",
+  "description": "M6 corpus — Hearth Charm; in-hand parse.",
+  "seed": 62170,
+  "cards": {
+    "Hearth Charm": "Name:Hearth Charm\nManaCost:R\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroy,DBPumpAll,DBUnblockable\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.Artifact | TgtPrompt$ Select target artifact creature | SpellDescription$ Destroy target artifact creature.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking | NumAtt$ +1 | SpellDescription$ Attacking creatures get +1/+0 until end of turn.\nSVar:DBUnblockable:DB$ Effect | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:Choose one —\\n• Destroy target artifact creature.\\n• Attacking creatures get +1/+0 until end of turn.\\n• Target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hearth Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

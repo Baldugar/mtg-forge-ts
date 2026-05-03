@@ -1,0 +1,23 @@
+{
+  "id": "picnic-ruiner-corpus-m677",
+  "description": "M6 corpus — Picnic Ruiner; in-hand parse.",
+  "seed": 66883,
+  "cards": {
+    "Picnic Ruiner": "Name:Picnic Ruiner\nManaCost:1 R\nTypes:Creature Goblin Rogue\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Creature.YouCtrl+powerGE4 | NoResolvingCheck$ True | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks while you control a creature with power 4 or greater, CARDNAME gains double strike until end of turn.\nSVar:TrigPump:DB$ Pump | KW$ Double Strike\nDeckHas:Ability$Counters\nSVar:HasAttackEffect:TRUE\nAlternateMode:Adventure\nOracle:Whenever Picnic Ruiner attacks while you control a creature with power 4 or greater, Picnic Ruiner gains double strike until end of turn.\n\nALTERNATE\n\nName:Stolen Goodies\nManaCost:3 G\nTypes:Sorcery Adventure\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select any number of target creatures you control to distribute counters to | CounterType$ P1P1 | CounterNum$ 3 | TargetMin$ 0 | TargetMax$ 3 | DividedAsYouChoose$ 3 | SpellDescription$ Distribute three +1/+1 counters among any number of target creatures you control.\nSVar:PlayMain1:TRUE\nOracle:Distribute three +1/+1 counters among any number of target creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Picnic Ruiner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

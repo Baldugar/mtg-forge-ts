@@ -1,0 +1,23 @@
+{
+  "id": "summon-undead-corpus-m677",
+  "description": "M6 corpus — Summon Undead; in-hand parse.",
+  "seed": 71315,
+  "cards": {
+    "Summon Undead": "Name:Summon Undead\nManaCost:4 B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 3 | Defined$ You | Optional$ True | SubAbility$ DBChangeZone | SpellDescription$ You may mill three cards. Then return a creature card from your graveyard to the battlefield. (To mill a card, put the top card of your library into your graveyard.)\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.YouOwn | ChangeTypeDesc$ creature | ChangeNum$ 1 | Hidden$ True | Mandatory$ True\nOracle:You may mill three cards. Then return a creature card from your graveyard to the battlefield. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon Undead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "release-to-the-wind-corpus-m677",
+  "description": "M6 corpus — Release to the Wind; in-hand parse.",
+  "seed": 67996,
+  "cards": {
+    "Release to the Wind": "Name:Release to the Wind\nManaCost:2 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | SubAbility$ DBEffect | Destination$ Exile | SpellDescription$ Exile target nonland permanent. For as long as that card remains exiled, its owner may cast it without paying its mana cost.\nSVar:DBEffect:DB$ Effect | RememberObjects$ ParentTarget | EffectOwner$ TargetedOwner | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ For as long as that card remains exiled, its owner may cast it without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target nonland permanent. For as long as that card remains exiled, its owner may cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Release to the Wind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

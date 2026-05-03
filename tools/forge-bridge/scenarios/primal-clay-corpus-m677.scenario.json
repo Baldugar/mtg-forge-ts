@@ -1,0 +1,25 @@
+{
+  "id": "primal-clay-corpus-m677",
+  "description": "M6 corpus — Primal Clay; ETB-on-bf.",
+  "seed": 67178,
+  "cards": {
+    "Primal Clay": "Name:Primal Clay\nManaCost:4\nTypes:Artifact Creature Shapeshifter\nPT:*/*\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | Layer$ Copy | ReplacementResult$ Updated | ReplaceWith$ MoldChoice | Description$ As CARDNAME enters, it becomes your choice of a 3/3 artifact creature, a 2/2 artifact creature with flying, or a 1/6 Wall artifact creature with defender in addition to its other types.\nSVar:MoldChoice:DB$ GenericChoice | Defined$ You | Choices$ GroundMold,AirMold,WallMold\nSVar:GroundMold:DB$ Clone | Defined$ Self | SetPower$ 3 | SetToughness$ 3 | SpellDescription$ CARDNAME is 3/3.\nSVar:AirMold:DB$ Clone | Defined$ Self | SetPower$ 2 | SetToughness$ 2 | AddKeywords$ Flying | SpellDescription$ CARDNAME is 2/2 with flying.\nSVar:WallMold:DB$ Clone | Defined$ Self | SetPower$ 1 | SetToughness$ 6 | AddTypes$ Wall | AddKeywords$ Defender | SpellDescription$ CARDNAME is 1/6 with defender and is a Wall in addition to its other types.\nAI:RemoveDeck:Random\nDeckHas:Keyword$Defender|Flying & Type$Wall\nOracle:As Primal Clay enters, it becomes your choice of a 3/3 artifact creature, a 2/2 artifact creature with flying, or a 1/6 Wall artifact creature with defender in addition to its other types. (A creature with defender can't attack.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Primal Clay"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

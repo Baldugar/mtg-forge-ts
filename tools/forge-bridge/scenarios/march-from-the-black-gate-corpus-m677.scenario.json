@@ -1,0 +1,23 @@
+{
+  "id": "march-from-the-black-gate-corpus-m677",
+  "description": "M6 corpus — March from the Black Gate; in-hand parse.",
+  "seed": 64764,
+  "cards": {
+    "March from the Black Gate": "Name:March from the Black Gate\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAmass | TriggerDescription$ When CARDNAME enters and whenever an Army you control attacks, amass Orcs 1. (Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nT:Mode$ Attacks | ValidCard$ Army.YouCtrl | Execute$ TrigAmass | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When CARDNAME enters and whenever an Army you control attacks, amass Orcs 1. (Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:TrigAmass:DB$ Amass | Type$ Orc | Num$ 1\nDeckHas:Ability$Token|Counters & Type$Orc|Army\nOracle:When March from the Black Gate enters and whenever an Army you control attacks, amass Orcs 1. (Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "March from the Black Gate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

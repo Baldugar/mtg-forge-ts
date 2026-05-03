@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-bloodstock-corpus-m677",
+  "description": "M6 corpus — Phyrexian Bloodstock; in-hand parse.",
+  "seed": 66838,
+  "cards": {
+    "Phyrexian Bloodstock": "Name:Phyrexian Bloodstock\nManaCost:4 B\nTypes:Creature Phyrexian Zombie\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME leaves the battlefield, destroy target white creature. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.White | NoRegen$ True | TgtPrompt$ Select target white creature.\nAI:RemoveDeck:Random\nOracle:When Phyrexian Bloodstock leaves the battlefield, destroy target white creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Bloodstock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

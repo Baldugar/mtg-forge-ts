@@ -1,0 +1,23 @@
+{
+  "id": "minds-aglow-corpus-m677",
+  "description": "M6 corpus — Minds Aglow; in-hand parse.",
+  "seed": 65175,
+  "cards": {
+    "Minds Aglow": "Name:Minds Aglow\nManaCost:U\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | StartingWith$ You | RepeatSubAbility$ DBPay | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Join forces — Starting with you, each player may pay any amount of mana. Each player draws X cards, where X is the total amount of mana paid this way.\nSVar:DBPay:DB$ ChooseNumber | Defined$ Player.IsRemembered | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | SubAbility$ DBStore\nSVar:DBStore:DB$ StoreSVar | SVar$ JoinForcesAmount | Type$ CountSVar | Expression$ JoinForcesAmount/Plus.Y | UnlessCost$ Y | UnlessPayer$ Player.IsRemembered | UnlessSwitched$ True\nSVar:DBDraw:DB$ Draw | Defined$ Player | NumCards$ JoinForcesAmount | SubAbility$ DBReset | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ JoinForcesAmount | Type$ Number | Expression$ 0\nSVar:Y:Count$ChosenNumber\nSVar:JoinForcesAmount:Number$0\nAI:RemoveDeck:All\nOracle:Join forces — Starting with you, each player may pay any amount of mana. Each player draws X cards, where X is the total amount of mana paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minds Aglow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

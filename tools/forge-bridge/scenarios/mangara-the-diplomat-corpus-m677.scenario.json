@@ -1,0 +1,25 @@
+{
+  "id": "mangara-the-diplomat-corpus-m677",
+  "description": "M6 corpus — Mangara, the Diplomat; ETB-on-bf.",
+  "seed": 64713,
+  "cards": {
+    "Mangara, the Diplomat": "Name:Mangara, the Diplomat\nManaCost:3 W\nTypes:Legendary Creature Human Cleric\nPT:2/4\nK:Lifelink\nT:Mode$ AttackersDeclared | AttackingPlayer$ Player.Opponent | CheckSVar$ X | SVarCompare$ GE2 | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent attacks with creatures, if two or more of those creatures are attacking you and/or planeswalkers you control, draw a card.\nSVar:X:Count$ValidAll Creature.attackingYouOrYourPWLKI\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ SpellCast | ValidActivatingPlayer$ Opponent | ActivatorThisTurnCast$ EQ2 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an opponent casts their second spell each turn, draw a card.\nOracle:Lifelink\\nWhenever an opponent attacks with creatures, if two or more of those creatures are attacking you and/or planeswalkers you control, draw a card.\\nWhenever an opponent casts their second spell each turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mangara, the Diplomat"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

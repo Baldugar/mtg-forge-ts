@@ -1,0 +1,23 @@
+{
+  "id": "sejiri-steppe-corpus-m677",
+  "description": "M6 corpus — Sejiri Steppe; in-hand parse.",
+  "seed": 69409,
+  "cards": {
+    "Sejiri Steppe": "Name:Sejiri Steppe\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigProtect | TriggerDescription$ When CARDNAME enters, target creature you control gains protection from the color of your choice until end of turn.\nSVar:TrigProtect:DB$ Protection | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Gains$ Choice | Choices$ AnyColor\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:Sejiri Steppe enters tapped.\\nWhen Sejiri Steppe enters, target creature you control gains protection from the color of your choice until end of turn.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sejiri Steppe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

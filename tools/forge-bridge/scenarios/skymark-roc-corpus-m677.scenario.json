@@ -1,0 +1,23 @@
+{
+  "id": "skymark-roc-corpus-m677",
+  "description": "M6 corpus — Skymark Roc; in-hand parse.",
+  "seed": 70127,
+  "cards": {
+    "Skymark Roc": "Name:Skymark Roc\nManaCost:2 W U\nTypes:Creature Bird\nPT:3/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME attacks, you may return target creature defending player controls with toughness 2 or less to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Creature.toughnessLE2+ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Choose creature defending player controls with toughness 2 or less | Origin$ Battlefield | Destination$ Hand\nOracle:Flying\\nWhenever Skymark Roc attacks, you may return target creature defending player controls with toughness 2 or less to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skymark Roc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

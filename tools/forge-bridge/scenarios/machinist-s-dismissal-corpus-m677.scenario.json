@@ -1,0 +1,23 @@
+{
+  "id": "machinist-s-dismissal-corpus-m677",
+  "description": "M6 corpus — Machinist's Dismissal; in-hand parse.",
+  "seed": 64555,
+  "cards": {
+    "Machinist's Dismissal": "Name:Machinist's Dismissal\nManaCost:4 U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each artifact you control and each artifact card in your hand.\nSVar:X:Count$ValidBattlefield,Hand Artifact.YouCtrl\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target noncreature spell | ValidTgts$ Card.nonCreature | SpellDescription$ Counter target noncreature spell.\nOracle:This spell costs {1} less to cast for each artifact you control and each artifact card in your hand.\\nCounter target noncreature spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Machinist's Dismissal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

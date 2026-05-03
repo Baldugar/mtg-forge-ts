@@ -1,0 +1,23 @@
+{
+  "id": "leadership-vacuum-corpus-m677",
+  "description": "M6 corpus — Leadership Vacuum; in-hand parse.",
+  "seed": 64060,
+  "cards": {
+    "Leadership Vacuum": "Name:Leadership Vacuum\nManaCost:2 U\nTypes:Instant\nA:SP$ ChangeZoneAll | ValidTgts$ Player | Origin$ Battlefield | Destination$ Command | ChangeType$ Permanent.IsCommander+TargetedPlayerCtrl | SubAbility$ DBDraw | SpellDescription$ Target player returns each commander they control from the battlefield to the command zone. Draw a card.\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:Random\nOracle:Target player returns each commander they control from the battlefield to the command zone.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leadership Vacuum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

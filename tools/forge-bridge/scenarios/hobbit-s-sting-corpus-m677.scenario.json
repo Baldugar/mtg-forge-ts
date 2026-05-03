@@ -1,0 +1,23 @@
+{
+  "id": "hobbit-s-sting-corpus-m677",
+  "description": "M6 corpus — Hobbit's Sting; in-hand parse.",
+  "seed": 62418,
+  "cards": {
+    "Hobbit's Sting": "Name:Hobbit's Sting\nManaCost:1 W\nTypes:Instant\nA:SP$ DealDamage | NumDmg$ X | ValidTgts$ Creature | SpellDescription$ CARDNAME deals X damage to target creature, where X is the number of creatures you control plus the number of Foods you control.\nSVar:X:Count$Valid Creature.YouCtrl/Plus.Y\nSVar:Y:Count$Valid Food.YouCtrl\nAI:RemoveDeck:All\nDeckHints:Type$Food\nOracle:Hobbit's Sting deals X damage to target creature, where X is the number of creatures you control plus the number of Foods you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hobbit's Sting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

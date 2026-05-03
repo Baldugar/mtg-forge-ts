@@ -1,0 +1,23 @@
+{
+  "id": "mise-corpus-m677",
+  "description": "M6 corpus — Mise; in-hand parse.",
+  "seed": 65269,
+  "cards": {
+    "Mise": "Name:Mise\nManaCost:U\nTypes:Instant\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonLand | ValidDescription$ nonland | SubAbility$ DBReveal | SpellDescription$ Choose a nonland card name,\nSVar:DBReveal:DB$ PeekAndReveal | RememberRevealed$ True | SubAbility$ DBDraw | SpellDescription$ then reveal the top card of your library.\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ GE1 | SubAbility$ DBCleanup | SpellDescription$ If that card has the chosen name, you draw three cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Choose a nonland card name, then reveal the top card of your library. If that card has the chosen name, you draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

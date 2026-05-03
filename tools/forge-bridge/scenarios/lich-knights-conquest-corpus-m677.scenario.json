@@ -1,0 +1,23 @@
+{
+  "id": "lich-knights-conquest-corpus-m677",
+  "description": "M6 corpus — Lich-Knights' Conquest; in-hand parse.",
+  "seed": 64185,
+  "cards": {
+    "Lich-Knights' Conquest": "Name:Lich-Knights' Conquest\nManaCost:4 B\nTypes:Sorcery\nA:SP$ Sacrifice | Amount$ SacX | Optional$ True | SacValid$ Enchantment,Artifact,Card.token | RememberSacrificed$ True | SubAbility$ ReturnGrave | SpellDescription$ Sacrifice any number of artifacts, enchantments, and/or tokens. Return that many creature cards from your graveyard to the battlefield.\nSVar:ReturnGrave:DB$ ChangeZone | ChangeType$ Creature.YouOwn | Origin$ Graveyard | Mandatory$ True | Destination$ Battlefield | ChangeNum$ ReturnX | Hidden$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Enchantment.YouCtrl,Artifact.YouCtrl,Card.token+YouCtrl\nSVar:ReturnX:Remembered$Amount\nDeckHas:Ability$Graveyard|Sacrifice\nDeckHints:Ability$Graveyard|Token & Type$Artifact|Enchantment\nOracle:Sacrifice any number of artifacts, enchantments, and/or tokens. Return that many creature cards from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lich-Knights' Conquest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

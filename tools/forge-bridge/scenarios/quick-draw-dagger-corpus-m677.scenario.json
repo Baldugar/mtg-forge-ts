@@ -1,0 +1,23 @@
+{
+  "id": "quick-draw-dagger-corpus-m677",
+  "description": "M6 corpus — Quick-Draw Dagger; in-hand parse.",
+  "seed": 67463,
+  "cards": {
+    "Quick-Draw Dagger": "Name:Quick-Draw Dagger\nManaCost:3\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control. That creature gains first strike until end of turn.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ First Strike\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nK:Equip:1\nOracle:Flash\\nWhen Quick-Draw Dagger enters, attach it to target creature you control. That creature gains first strike until end of turn.\\nEquipped creature gets +1/+1.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quick-Draw Dagger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "planar-incision-corpus-m677",
+  "description": "M6 corpus — Planar Incision; in-hand parse.",
+  "seed": 66975,
+  "cards": {
+    "Planar Incision": "Name:Planar Incision\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Artifact,Creature | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target artifact or creature | RememberTargets$ True | SubAbility$ DBReturn | SpellDescription$ Exile target artifact or creature, then return it to the battlefield under its owner's control with a +1/+1 counter on it. | StackDescription$ Exile {c:Targeted}, then return it to the battlefield under its owner's control with a +1/+1 counter on it.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | WithCountersType$ P1P1 | WithCountersAmount$ 1 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Exile target artifact or creature, then return it to the battlefield under its owner's control with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planar Incision"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

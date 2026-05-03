@@ -1,0 +1,23 @@
+{
+  "id": "rhythmic-water-vortex-corpus-m677",
+  "description": "M6 corpus — Rhythmic Water Vortex; in-hand parse.",
+  "seed": 68235,
+  "cards": {
+    "Rhythmic Water Vortex": "Name:Rhythmic Water Vortex\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBSearch | SpellDescription$ Return up to two target creatures to their owner's hand.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedMu Yanling | SpellDescription$ Search your library and/or graveyard for a card named Mu Yanling, reveal it, and put it into your hand. If you searched your library this way, shuffle.\nDeckNeeds:Name$Mu Yanling\nOracle:Return up to two target creatures to their owner's hand.\\nSearch your library and/or graveyard for a card named Mu Yanling, reveal it, and put it into your hand. If you searched your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rhythmic Water Vortex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-trickster-corpus-m677",
+  "description": "M6 corpus — Merfolk Trickster; in-hand parse.",
+  "seed": 65029,
+  "cards": {
+    "Merfolk Trickster": "Name:Merfolk Trickster\nManaCost:U U\nTypes:Creature Merfolk Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls. It loses all abilities until end of turn.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | SubAbility$ DBAnimate | TgtPrompt$ Select target creature\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | RemoveAllAbilities$ True | IsCurse$ True\nOracle:Flash\\nWhen Merfolk Trickster enters, tap target creature an opponent controls. It loses all abilities until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Trickster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

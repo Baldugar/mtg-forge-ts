@@ -1,0 +1,23 @@
+{
+  "id": "slay-corpus-m677",
+  "description": "M6 corpus — Slay; in-hand parse.",
+  "seed": 70186,
+  "cards": {
+    "Slay": "Name:Slay\nManaCost:2 B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.Green | TgtPrompt$ Select target green creature | NoRegen$ True | SpellDescription$ Destroy target green creature. It can't be regenerated. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nAI:RemoveDeck:Random\nOracle:Destroy target green creature. It can't be regenerated.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

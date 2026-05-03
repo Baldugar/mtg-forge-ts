@@ -1,0 +1,23 @@
+{
+  "id": "realmwalker-corpus-m677",
+  "description": "M6 corpus — Realmwalker; in-hand parse.",
+  "seed": 67836,
+  "cards": {
+    "Realmwalker": "Name:Realmwalker\nManaCost:2 G\nTypes:Creature Shapeshifter\nPT:2/3\nK:Changeling\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerDeckNonToken | SpellDescription$ As CARDNAME enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Creature.ChosenType+TopLibrary+YouCtrl+nonLand | AffectedZone$ Library | MayPlay$ True | Description$ You may cast creature spells of the chosen type from the top of your library.\nOracle:Changeling (This card is every creature type.)\\nAs Realmwalker enters, choose a creature type.\\nYou may look at the top card of your library any time.\\nYou may cast creature spells of the chosen type from the top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Realmwalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

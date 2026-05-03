@@ -1,0 +1,23 @@
+{
+  "id": "overwhelming-remorse-corpus-m677",
+  "description": "M6 corpus — Overwhelming Remorse; in-hand parse.",
+  "seed": 66515,
+  "cards": {
+    "Overwhelming Remorse": "Name:Overwhelming Remorse\nManaCost:4 B\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature card in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature or planeswalker | ValidTgts$ Creature,Planeswalker | SpellDescription$ Exile target creature or planeswalker.\nDeckHints:Ability$Graveyard|Mill\nOracle:This spell costs {1} less to cast for each creature card in your graveyard.\\nExile target creature or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overwhelming Remorse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

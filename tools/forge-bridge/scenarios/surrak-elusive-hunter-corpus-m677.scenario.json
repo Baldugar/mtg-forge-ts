@@ -1,0 +1,23 @@
+{
+  "id": "surrak-elusive-hunter-corpus-m677",
+  "description": "M6 corpus — Surrak, Elusive Hunter; in-hand parse.",
+  "seed": 71430,
+  "cards": {
+    "Surrak, Elusive Hunter": "Name:Surrak, Elusive Hunter\nManaCost:2 G\nTypes:Legendary Creature Human Warrior\nPT:4/3\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nK:Trample\nT:Mode$ BecomesTarget | ValidTarget$ Creature.YouCtrl+inZoneBattlefield,Spell.Creature+YouCtrl | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control or a creature spell you control becomes the target of a spell or ability an opponent controls, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:This spell can't be countered.\\nTrample\\nWhenever a creature you control or a creature spell you control becomes the target of a spell or ability an opponent controls, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surrak, Elusive Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

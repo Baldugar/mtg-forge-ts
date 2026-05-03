@@ -1,0 +1,23 @@
+{
+  "id": "lim-d-l-s-paladin-corpus-m677",
+  "description": "M6 corpus — Lim-Dûl's Paladin; in-hand parse.",
+  "seed": 64281,
+  "cards": {
+    "Lim-Dûl's Paladin": "Name:Lim-Dûl's Paladin\nManaCost:2 B R\nTypes:Creature Human Knight\nPT:0/3\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may discard a card. If you don't, sacrifice CARDNAME and draw a card.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | Optional$ True | RememberDiscarded$ True | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | ValidBlocker$ Creature | TriggerZones$ Battlefield | Execute$ TrigBlockedPump | TriggerDescription$ Whenever CARDNAME becomes blocked, CARDNAME gets +6/+3 until end of turn.\nSVar:TrigBlockedPump:DB$ Pump | Defined$ Self | NumAtt$ +6 | NumDef$ +3\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ DBNoCombatDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, it assigns no combat damage this turn and defending player loses 4 life.\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT | SubAbility$ DBLoseLife\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 4\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Trample\\nAt the beginning of your upkeep, you may discard a card. If you don't, sacrifice Lim-Dûl's Paladin and draw a card.\\nWhenever Lim-Dûl's Paladin becomes blocked, it gets +6/+3 until end of turn.\\nWhenever Lim-Dûl's Paladin attacks and isn't blocked, it assigns no combat damage this turn and defending player loses 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lim-Dûl's Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

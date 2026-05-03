@@ -1,0 +1,25 @@
+{
+  "id": "spitting-slug-corpus-m677",
+  "description": "M6 corpus — Spitting Slug; ETB-on-bf.",
+  "seed": 70736,
+  "cards": {
+    "Spitting Slug": "Name:Spitting Slug\nManaCost:1 G G\nTypes:Creature Slug\nPT:2/4\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ PumpSelf | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, you may pay {1}{G}. If you do, CARDNAME gains first strike until end of turn. Otherwise, each creature blocking or blocked by CARDNAME gains first strike until end of turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ PumpSelf | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, you may pay {1}{G}. If you do, CARDNAME gains first strike until end of turn. Otherwise, each creature blocking or blocked by CARDNAME gains first strike until end of turn.\nSVar:PumpSelf:DB$ Pump | Defined$ Self | KW$ First Strike | UnlessCost$ 1 G | UnlessPayer$ You | UnlessSwitched$ True | UnlessResolveSubs$ WhenNotPaid | SubAbility$ PumpOthers\nSVar:PumpOthers:DB$ PumpAll | ValidCards$ Creature.blockingSource,Creature.blockedBySource | KW$ First Strike\nAI:RemoveDeck:All\nDeckHas:Keyword$First Strike\nOracle:Whenever Spitting Slug blocks or becomes blocked, you may pay {1}{G}. If you do, Spitting Slug gains first strike until end of turn. Otherwise, each creature blocking or blocked by Spitting Slug gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spitting Slug"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

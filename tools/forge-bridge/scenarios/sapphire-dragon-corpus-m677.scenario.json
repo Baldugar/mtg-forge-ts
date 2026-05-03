@@ -1,0 +1,23 @@
+{
+  "id": "sapphire-dragon-corpus-m677",
+  "description": "M6 corpus — Sapphire Dragon; in-hand parse.",
+  "seed": 68995,
+  "cards": {
+    "Sapphire Dragon": "Name:Sapphire Dragon\nManaCost:5 U U\nTypes:Creature Dragon\nPT:5/6\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ Whenever CARDNAME attacks or blocks, scry 2.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigScry | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nAlternateMode:Adventure\nOracle:Flying\\nWhenever Sapphire Dragon attacks or blocks, scry 2.\n\nALTERNATE\n\nName:Psionic Pulse\nManaCost:2 U\nTypes:Instant Adventure\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card.nonCreature | TgtPrompt$ Select target noncreature spell | SpellDescription$ Counter target noncreature spell. (Then exile this card. You may cast the creature later from exile.)\nOracle:Counter target noncreature spell. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sapphire Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

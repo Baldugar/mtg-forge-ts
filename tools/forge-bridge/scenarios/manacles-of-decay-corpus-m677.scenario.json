@@ -1,0 +1,23 @@
+{
+  "id": "manacles-of-decay-corpus-m677",
+  "description": "M6 corpus — Manacles of Decay; in-hand parse.",
+  "seed": 64700,
+  "cards": {
+    "Manacles of Decay": "Name:Manacles of Decay\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack.\nA:AB$ Pump | Cost$ B | Defined$ Enchanted | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ Enchanted creature gets -1/-1 until end of turn.\nA:AB$ Pump | Cost$ R | Defined$ Enchanted | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SpellDescription$ Enchanted creature can't block this turn.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature can't attack.\\n{B}: Enchanted creature gets -1/-1 until end of turn.\\n{R}: Enchanted creature can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manacles of Decay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

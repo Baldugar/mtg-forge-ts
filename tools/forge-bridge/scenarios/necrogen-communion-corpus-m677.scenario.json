@@ -1,0 +1,23 @@
+{
+  "id": "necrogen-communion-corpus-m677",
+  "description": "M6 corpus — Necrogen Communion; in-hand parse.",
+  "seed": 65792,
+  "cards": {
+    "Necrogen Communion": "Name:Necrogen Communion\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAITgts:Card.!token\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Toxic:2 | Description$ Enchanted creature has toxic 2. (Players dealt combat damage by it also get two poison counters.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigReturn | TriggerDescription$ When enchanted creature dies, return that card to the battlefield under your control.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Destination$ Battlefield | GainControl$ True\nSVar:PlayMain1:TRUE\nOracle:Enchant creature you control\\nEnchanted creature has toxic 2. (Players dealt combat damage by it also get two poison counters.)\\nWhen enchanted creature dies, return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrogen Communion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

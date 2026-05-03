@@ -1,0 +1,23 @@
+{
+  "id": "nether-shadow-corpus-m677",
+  "description": "M6 corpus — Nether Shadow; in-hand parse.",
+  "seed": 65857,
+  "cards": {
+    "Nether Shadow": "Name:Nether Shadow\nManaCost:B B\nTypes:Creature Spirit\nPT:1/1\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Graveyard | IsPresent$ Creature.YouOwn+Above | PresentZone$ Graveyard | PresentCompare$ GE3 | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard with three or more creature cards above it, you may put CARDNAME onto the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:DiscardMe:2\nSVar:SacMe:2\nSVar:NeedsOrderedGraveyard:TRUE\nDeckHas:Ability$Graveyard\nOracle:Haste\\nAt the beginning of your upkeep, if Nether Shadow is in your graveyard with three or more creature cards above it, you may put Nether Shadow onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nether Shadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "legion-s-end-corpus-m677",
+  "description": "M6 corpus — Legion's End; in-hand parse.",
+  "seed": 64107,
+  "cards": {
+    "Legion's End": "Name:Legion's End\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.OppCtrl+cmcLE2 | TgtPrompt$ Select target creature an opponent controls with mana value 2 or less | SubAbility$ DBExileAll | StackDescription$ SpellDescription | SpellDescription$ Exile target creature an opponent controls with mana value 2 or less and all other creatures that player controls with the same name as that creature. Then that player reveals their hand and exiles all cards with that name from their hand and graveyard.\nSVar:DBExileAll:DB$ ChangeZoneAll | Defined$ TargetedController | ChangeType$ TargetedCard.Self,Creature.NotDefinedTargeted+sharesNameWith Targeted | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBChangeZoneAll | StackDescription$ None\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Defined$ TargetedController | ChangeType$ Targeted.sameName | Origin$ Graveyard,Hand | Destination$ Exile | StackDescription$ None\nOracle:Exile target creature an opponent controls with mana value 2 or less and all other creatures that player controls with the same name as that creature. Then that player reveals their hand and exiles all cards with that name from their hand and graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion's End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

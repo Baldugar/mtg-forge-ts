@@ -1,0 +1,23 @@
+{
+  "id": "kaalia-of-the-vast-corpus-m677",
+  "description": "M6 corpus — Kaalia of the Vast; in-hand parse.",
+  "seed": 63414,
+  "cards": {
+    "Kaalia of the Vast": "Name:Kaalia of the Vast\nManaCost:1 R W B\nTypes:Legendary Creature Human Cleric\nPT:2/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Opponent | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks an opponent, you may put an Angel, Demon, or Dragon creature card from your hand onto the battlefield tapped and attacking that opponent.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.Angel+YouCtrl,Creature.Demon+YouCtrl,Creature.Dragon+YouCtrl | Tapped$ True | Attacking$ TriggeredDefender\nOracle:Flying\\nWhenever Kaalia of the Vast attacks an opponent, you may put an Angel, Demon, or Dragon creature card from your hand onto the battlefield tapped and attacking that opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaalia of the Vast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

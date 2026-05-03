@@ -1,0 +1,25 @@
+{
+  "id": "a-kargan-intimidator-corpus-m677",
+  "description": "M6 corpus — A-Kargan Intimidator; ETB-on-bf.",
+  "seed": 68752,
+  "cards": {
+    "A-Kargan Intimidator": "Name:A-Kargan Intimidator\nManaCost:1 R\nTypes:Creature Human Warrior\nPT:3/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Warrior | ValidBlocker$ Creature.Coward | Description$ Cowards can't block Warriors.\nA:AB$ Charm | Cost$ 1 | Choices$ Pump,Coward | ChoiceRestriction$ ThisTurn | CharmNum$ 1\nSVar:Pump:DB$ Pump | ValidTgts$ Warrior | TgtPrompt$ Select target Warrior | NumAtt$ +1 | NumDef$ +1 | KW$ Trample | SpellDescription$ Target Warrior gets +1/+1 and gains trample until end of turn.\nSVar:Coward:DB$ Animate | ValidTgts$ Creature | Types$ Coward | RemoveCreatureTypes$ True | SpellDescription$ Target creature becomes a Coward until end of turn.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Warrior\nOracle:Cowards can't block Warriors.\\n{1}: Choose one that hasn't been chosen this turn —\\n• Target Warrior gets +1/+1 and gains trample until end of turn.\\n• Target creature becomes a Coward until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "A-Kargan Intimidator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

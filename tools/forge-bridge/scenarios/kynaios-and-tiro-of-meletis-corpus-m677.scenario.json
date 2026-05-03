@@ -1,0 +1,23 @@
+{
+  "id": "kynaios-and-tiro-of-meletis-corpus-m677",
+  "description": "M6 corpus — Kynaios and Tiro of Meletis; in-hand parse.",
+  "seed": 63931,
+  "cards": {
+    "Kynaios and Tiro of Meletis": "Name:Kynaios and Tiro of Meletis\nManaCost:R G W U\nTypes:Legendary Creature Human Soldier\nPT:2/8\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, draw a card. Each player may put a land card from their hand onto the battlefield, then each opponent who didn't draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ EachPlayLand\nSVar:EachPlayLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | DefinedPlayer$ Player | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DrawAbstainers\nSVar:DrawAbstainers:DB$ Draw | Defined$ OppNonRememberedOwner | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:At the beginning of your end step, draw a card. Each player may put a land card from their hand onto the battlefield, then each opponent who didn't draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kynaios and Tiro of Meletis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

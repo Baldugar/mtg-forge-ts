@@ -1,0 +1,25 @@
+{
+  "id": "oathsworn-vampire-corpus-m677",
+  "description": "M6 corpus — Oathsworn Vampire; ETB-on-bf.",
+  "seed": 66163,
+  "cards": {
+    "Oathsworn Vampire": "Name:Oathsworn Vampire\nManaCost:1 B\nTypes:Creature Vampire Knight\nPT:2/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nS:Mode$ Continuous | Affected$ Card.Self | AffectedZone$ Graveyard | EffectZone$ Graveyard | MayPlay$ True | CheckSVar$ X | Description$ You may cast CARDNAME from your graveyard if you gained life this turn.\nSVar:X:Count$LifeYouGainedThisTurn\nSVar:SacMe:3\nSVar:DiscardMe:3\nOracle:Oathsworn Vampire enters tapped.\\nYou may cast Oathsworn Vampire from your graveyard if you gained life this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oathsworn Vampire"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

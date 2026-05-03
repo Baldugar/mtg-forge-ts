@@ -1,0 +1,23 @@
+{
+  "id": "lightning-army-of-one-corpus-m677",
+  "description": "M6 corpus — Lightning, Army of One; in-hand parse.",
+  "seed": 64235,
+  "cards": {
+    "Lightning, Army of One": "Name:Lightning, Army of One\nManaCost:1 R W\nTypes:Legendary Creature Human Soldier\nPT:3/2\nK:First Strike\nK:Trample\nK:Lifelink\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigEffect | CombatDamage$ True | TriggerDescription$ Stagger — Whenever NICKNAME deals combat damage to a player, until your next turn, if a source would deal damage to that player or a permanent that player controls, it deals double that damage instead.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ Stagger | RememberObjects$ TriggeredTarget | Duration$ UntilYourNextTurn\nSVar:Stagger:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card,Emblem | ValidTarget$ Player.IsRemembered,Permanent.ControlledBy Player.IsRemembered | ReplaceWith$ DmgTwice | Description$ Until your next turn, if a source would deal damage to that player or a permanent that player controls, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ StaggerX\nSVar:StaggerX:ReplaceCount$DamageAmount/Twice\nOracle:First strike, trample, lifelink\\nStagger — Whenever Lightning deals combat damage to a player, until your next turn, if a source would deal damage to that player or a permanent that player controls, it deals double that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning, Army of One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

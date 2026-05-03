@@ -1,0 +1,23 @@
+{
+  "id": "spiders-man-heroic-horde-corpus-m677",
+  "description": "M6 corpus — Spiders-Man, Heroic Horde; in-hand parse.",
+  "seed": 70649,
+  "cards": {
+    "Spiders-Man, Heroic Horde": "Name:Spiders-Man, Heroic Horde\nVariant:UniversesWithin:FlavorName:The Clutter Cluster\nManaCost:1 G\nTypes:Legendary Creature Spider Hero\nPT:2/3\nK:Web-slinging:4 G G\nT:Mode$ ChangesZone | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.Self+wasCast+webSlinged | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, if they were cast using web-slinging, you gain 3 life and create two 2/1 green Spider creature tokens with reach.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_2_1_spider_reach | TokenOwner$ You\nOracle:Web-slinging {4}{G}{G} (You may cast this spell for {4}{G}{G} if you also return a tapped creature you control to its owner's hand.)\\nWhen Spiders-Man enters, if they were cast using web-slinging, you gain 3 life and create two 2/1 green Spider creature tokens with reach.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiders-Man, Heroic Horde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

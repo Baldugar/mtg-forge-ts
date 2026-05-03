@@ -1,0 +1,23 @@
+{
+  "id": "pact-of-the-serpent-corpus-m677",
+  "description": "M6 corpus — Pact of the Serpent; in-hand parse.",
+  "seed": 66545,
+  "cards": {
+    "Pact of the Serpent": "Name:Pact of the Serpent\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Choose a creature type. Target player draws X cards and loses X life, where X is the number of creatures they control of the chosen type.\nSVar:DBDraw:DB$ Draw | ValidTgts$ Player | NumCards$ X | SubAbility$ DBLoseLife | StackDescription$ None\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Targeted | LifeAmount$ X | StackDescription$ None\nSVar:X:TargetedPlayer$Valid Creature.YouCtrl+ChosenType\nAI:RemoveDeck:All\nOracle:Choose a creature type. Target player draws X cards and loses X life, where X is the number of creatures they control of the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pact of the Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

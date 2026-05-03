@@ -1,0 +1,25 @@
+{
+  "id": "mistform-stalker-corpus-m677",
+  "description": "M6 corpus — Mistform Stalker; ETB-on-bf.",
+  "seed": 65306,
+  "cards": {
+    "Mistform Stalker": "Name:Mistform Stalker\nManaCost:1 U\nTypes:Creature Illusion\nPT:1/1\nA:AB$ ChooseType | Cost$ 1 | Defined$ You | Type$ Creature | SubAbility$ DBAnimate | SpellDescription$ CARDNAME becomes the creature type of your choice until end of turn.\nSVar:DBAnimate:DB$ Animate | Types$ ChosenType | RemoveCreatureTypes$ True\nA:AB$ Pump | Cost$ 2 U U | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | KW$ Flying | SpellDescription$ CARDNAME gets +2/+2 and gains flying until end of turn.\nAI:RemoveDeck:All\nOracle:{1}: Mistform Stalker becomes the creature type of your choice until end of turn.\\n{2}{U}{U}: Mistform Stalker gets +2/+2 and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mistform Stalker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

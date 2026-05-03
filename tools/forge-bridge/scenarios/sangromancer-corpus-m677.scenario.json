@@ -1,0 +1,23 @@
+{
+  "id": "sangromancer-corpus-m677",
+  "description": "M6 corpus — Sangromancer; in-hand parse.",
+  "seed": 68979,
+  "cards": {
+    "Sangromancer": "Name:Sangromancer\nManaCost:2 B B\nTypes:Creature Vampire Shaman\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | OptionalDecider$ You | TriggerDescription$ Whenever a creature an opponent controls dies, you may gain 3 life.\nT:Mode$ Discarded | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigGainLife | OptionalDecider$ You | TriggerDescription$ Whenever an opponent discards a card, you may gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3 | Defined$ You\nOracle:Flying\\nWhenever a creature an opponent controls dies, you may gain 3 life.\\nWhenever an opponent discards a card, you may gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sangromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

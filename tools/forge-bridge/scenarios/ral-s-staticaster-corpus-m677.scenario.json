@@ -1,0 +1,23 @@
+{
+  "id": "ral-s-staticaster-corpus-m677",
+  "description": "M6 corpus — Ral's Staticaster; in-hand parse.",
+  "seed": 67653,
+  "cards": {
+    "Ral's Staticaster": "Name:Ral's Staticaster\nManaCost:2 U R\nTypes:Creature Lizard Wizard\nPT:3/3\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | IsPresent$ Planeswalker.Ral+YouCtrl | TriggerDescription$ Whenever CARDNAME attacks, if you control a Ral planeswalker, CARDNAME gets +1/+0 for each card in your hand until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +X\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:BuffedBy:Ral\nDeckNeeds:Type$Ral\nOracle:Trample (This creature can deal excess combat damage to the player or planeswalker it's attacking.)\\nWhenever Ral's Staticaster attacks, if you control a Ral planeswalker, Ral's Staticaster gets +1/+0 for each card in your hand until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ral's Staticaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

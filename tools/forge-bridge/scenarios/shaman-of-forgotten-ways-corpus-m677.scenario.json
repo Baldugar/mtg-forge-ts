@@ -1,0 +1,25 @@
+{
+  "id": "shaman-of-forgotten-ways-corpus-m677",
+  "description": "M6 corpus — Shaman of Forgotten Ways; ETB-on-bf.",
+  "seed": 69588,
+  "cards": {
+    "Shaman of Forgotten Ways": "Name:Shaman of Forgotten Ways\nManaCost:2 G\nTypes:Creature Human Shaman\nPT:2/3\nA:AB$ Mana | Cost$ T | Produced$ Combo Any | Amount$ 2 | RestrictValid$ Spell.Creature | SpellDescription$ Add two mana in any combination of colors. Spend this mana only to cast creature spells.\nA:AB$ RepeatEach | Cost$ 9 G G T | PrecostDesc$ Formidable — | CheckSVar$ FormidableTest | SVarCompare$ GE8 | RepeatPlayers$ Player | RepeatSubAbility$ DBSetLife | SpellDescription$ Each player's life total becomes the number of creatures they control. Activate only if creatures you control have total power 8 or greater.\nSVar:FormidableTest:Count$Valid Creature.YouCtrl$CardPower\nSVar:DBSetLife:DB$ SetLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl\nOracle:{T}: Add two mana in any combination of colors. Spend this mana only to cast creature spells.\\nFormidable — {9}{G}{G}, {T}: Each player's life total becomes the number of creatures they control. Activate only if creatures you control have total power 8 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shaman of Forgotten Ways"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

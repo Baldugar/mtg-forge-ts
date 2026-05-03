@@ -1,0 +1,23 @@
+{
+  "id": "necromantic-thirst-corpus-m677",
+  "description": "M6 corpus — Necromantic Thirst; in-hand parse.",
+  "seed": 65803,
+  "cards": {
+    "Necromantic Thirst": "Name:Necromantic Thirst\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.powerGE1\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReturn | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever enchanted creature deals combat damage to a player, you may return target creature card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl\nOracle:Enchant creature\\nWhenever enchanted creature deals combat damage to a player, you may return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromantic Thirst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

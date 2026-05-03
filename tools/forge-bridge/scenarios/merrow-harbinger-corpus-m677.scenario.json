@@ -1,0 +1,23 @@
+{
+  "id": "merrow-harbinger-corpus-m677",
+  "description": "M6 corpus — Merrow Harbinger; in-hand parse.",
+  "seed": 65036,
+  "cards": {
+    "Merrow Harbinger": "Name:Merrow Harbinger\nManaCost:3 U\nTypes:Creature Merfolk Wizard\nPT:2/3\nK:Landwalk:Island\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Merfolk card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Merfolk | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nWhen Merrow Harbinger enters, you may search your library for a Merfolk card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merrow Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

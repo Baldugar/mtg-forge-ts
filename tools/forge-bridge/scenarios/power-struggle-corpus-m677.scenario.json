@@ -1,0 +1,23 @@
+{
+  "id": "power-struggle-corpus-m677",
+  "description": "M6 corpus — Power Struggle; in-hand parse.",
+  "seed": 67090,
+  "cards": {
+    "Power Struggle": "Name:Power Struggle\nManaCost:2 U U U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerController$ TriggeredPlayer | TriggerDescription$ At the beginning of each player's upkeep, that player exchanges control of random target artifact, creature or land he or she controls, for control of random target permanent of the same type that a random opponent controls.\nSVar:TrigPump:DB$ Pump | TargetsWithDefinedController$ TriggeredPlayer | ValidTgts$ Artifact,Creature,Land | TargetsAtRandom$ True | AILogic$ PowerStruggle | SubAbility$ DBExchangeControl\nSVar:DBExchangeControl:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Artifact,Creature,Land | TargetsWithDefinedController$ Player.OpponentOf TriggeredPlayer | TargetsWithSharedCardType$ ParentTarget | TargetsAtRandom$ True | AILogic$ PowerStruggle\nOracle:At the beginning of each player's upkeep, that player exchanges control of random target artifact, creature or land he or she controls, for control of random target permanent of the same type that a random opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Struggle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

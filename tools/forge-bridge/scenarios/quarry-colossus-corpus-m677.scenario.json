@@ -1,0 +1,23 @@
+{
+  "id": "quarry-colossus-corpus-m677",
+  "description": "M6 corpus — Quarry Colossus; in-hand parse.",
+  "seed": 67445,
+  "cards": {
+    "Quarry Colossus": "Name:Quarry Colossus\nManaCost:5 W W\nTypes:Creature Giant\nPT:5/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put target creature into its owner's library just beneath the top X cards of that library, where X is the number of Plains you control.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ X | SpellDescription$ Put target nonland permanent into its owner's library just beneath the top X cards of that library.\nSVar:X:Count$Valid Plains.YouCtrl\nOracle:When Quarry Colossus enters, put target creature into its owner's library just beneath the top X cards of that library, where X is the number of Plains you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quarry Colossus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

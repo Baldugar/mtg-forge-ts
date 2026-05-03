@@ -1,0 +1,23 @@
+{
+  "id": "nebelgast-intruder-corpus-m677",
+  "description": "M6 corpus — Nebelgast Intruder; in-hand parse.",
+  "seed": 65786,
+  "cards": {
+    "Nebelgast Intruder": "Name:Nebelgast Intruder\nManaCost:2 U\nTypes:Creature Spirit\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBPump | TriggerDescription$ When CARDNAME enters, up to one target creature an opponent controls gets -2/-0 until end of turn.\nSVar:DBPump:DB$ Pump | NumAtt$ -2 | IsCurse$ True | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature opponent controls\nOracle:Flash\\nFlying\\nWhen Nebelgast Intruder enters, up to one target creature an opponent controls gets -2/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nebelgast Intruder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

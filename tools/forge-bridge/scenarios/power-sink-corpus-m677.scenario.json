@@ -1,0 +1,23 @@
+{
+  "id": "power-sink-corpus-m677",
+  "description": "M6 corpus — Power Sink; in-hand parse.",
+  "seed": 67089,
+  "cards": {
+    "Power Sink": "Name:Power Sink\nManaCost:X U\nTypes:Instant\nA:SP$ Counter | UnlessCost$ X | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ TapLands | UnlessResolveSubs$ WhenNotPaid | SpellDescription$ Counter target spell unless its controller pays {X}. If that player doesn't, they tap all lands with mana abilities they control and lose all unspent mana. | StackDescription$ Countering [{s:Targeted}] unless {p:TargetedController} pays X.\nSVar:TapLands:DB$ TapAll | ValidCards$ Land.hasManaAbility | Defined$ TargetedController | TapperController$ True | SubAbility$ ManaLose | StackDescription$ If {p:TargetedController} doesn't, that player taps all lands with mana abilities they control and\nSVar:ManaLose:DB$ DrainMana | Defined$ TargetedController\nSVar:X:Count$xPaid\nOracle:Counter target spell unless its controller pays {X}. If that player doesn't, they tap all lands with mana abilities they control and lose all unspent mana.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Sink"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

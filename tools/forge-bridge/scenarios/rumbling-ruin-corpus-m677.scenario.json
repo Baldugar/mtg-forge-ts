@@ -1,0 +1,23 @@
+{
+  "id": "rumbling-ruin-corpus-m677",
+  "description": "M6 corpus — Rumbling Ruin; in-hand parse.",
+  "seed": 68608,
+  "cards": {
+    "Rumbling Ruin": "Name:Rumbling Ruin\nManaCost:5 R\nTypes:Creature Elemental\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, count the number of +1/+1 counters on creatures you control. Creatures your opponents control with power less than or equal to that number can't block this turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ KWPump | SetChosenNumber$ Y | SpellDescription$ Creatures your opponents control with power less than or equal to that number can't block this turn.\nSVar:KWPump:Mode$ CantBlock | ValidCard$ Creature.OppCtrl+powerLEX | Description$ Creatures your opponents control with power less than or equal to that number can't block this turn.\nSVar:X:Count$ChosenNumber\nSVar:Y:Count$Valid Creature.YouCtrl$CardCounters.P1P1\nOracle:When Rumbling Ruin enters, count the number of +1/+1 counters on creatures you control. Creatures your opponents control with power less than or equal to that number can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rumbling Ruin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

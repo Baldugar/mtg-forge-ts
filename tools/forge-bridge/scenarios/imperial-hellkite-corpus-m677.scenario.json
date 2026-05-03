@@ -1,0 +1,25 @@
+{
+  "id": "imperial-hellkite-corpus-m677",
+  "description": "M6 corpus — Imperial Hellkite; ETB-on-bf.",
+  "seed": 62805,
+  "cards": {
+    "Imperial Hellkite": "Name:Imperial Hellkite\nManaCost:5 R R\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nK:Morph:6 R R\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, you may search your library for a Dragon card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Dragon | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Flying\\nMorph {6}{R}{R} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Imperial Hellkite is turned face up, you may search your library for a Dragon card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Imperial Hellkite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

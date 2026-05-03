@@ -1,0 +1,23 @@
+{
+  "id": "high-fae-negotiator-corpus-m677",
+  "description": "M6 corpus — High Fae Negotiator; in-hand parse.",
+  "seed": 62353,
+  "cards": {
+    "High Fae Negotiator": "Name:High Fae Negotiator\nManaCost:3 B B\nTypes:Creature Faerie Warlock\nPT:3/5\nK:Bargain\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+bargained | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, if it was bargained, each opponent loses 3 life and you gain 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 3 | Defined$ Opponent | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nDeckHas:Ability$Sacrifice|LifeGain\nDeckHints:Type$Enchantment|Artifact & Ability$Token\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nFlying\\nWhen High Fae Negotiator enters, if it was bargained, each opponent loses 3 life and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "High Fae Negotiator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

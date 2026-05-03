@@ -1,0 +1,23 @@
+{
+  "id": "hunt-down-corpus-m677",
+  "description": "M6 corpus — Hunt Down; in-hand parse.",
+  "seed": 62607,
+  "cards": {
+    "Hunt Down": "Name:Hunt Down\nManaCost:G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | TgtPrompt$ Select target creature to attack | StackDescription$ None | SubAbility$ DBMustBlock | SpellDescription$ Target creature blocks target creature this turn if able.\nSVar:DBMustBlock:DB$ MustBlock | DefinedAttacker$ ParentTarget | ValidTgts$ Creature | TgtPrompt$ Select target creature to block\nAI:RemoveDeck:All\nOracle:Target creature blocks target creature this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunt Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

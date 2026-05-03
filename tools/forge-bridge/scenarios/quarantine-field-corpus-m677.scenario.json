@@ -1,0 +1,23 @@
+{
+  "id": "quarantine-field-corpus-m677",
+  "description": "M6 corpus — Quarantine Field; in-hand parse.",
+  "seed": 67443,
+  "cards": {
+    "Quarantine Field": "Name:Quarantine Field\nManaCost:X X W W\nTypes:Enchantment\nK:etbCounter:ISOLATION:X\nSVar:X:Count$xPaid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, for each isolation counter on it, exile up to one target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TargetMin$ 0 | TargetMax$ Y | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:Y:Count$CardCounters.ISOLATION\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:Quarantine Field enters with X isolation counters on it.\\nWhen Quarantine Field enters, for each isolation counter on it, exile up to one target nonland permanent an opponent controls until Quarantine Field leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quarantine Field"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

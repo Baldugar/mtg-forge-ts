@@ -1,0 +1,23 @@
+{
+  "id": "liesa-forgotten-archangel-corpus-m677",
+  "description": "M6 corpus — Liesa, Forgotten Archangel; in-hand parse.",
+  "seed": 64197,
+  "cards": {
+    "Liesa, Forgotten Archangel": "Name:Liesa, Forgotten Archangel\nManaCost:2 W W B\nTypes:Legendary Creature Angel\nPT:4/5\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+!token+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ DelTrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever another nontoken creature you control dies, return that card to its owner's hand at the beginning of the next end step.\nSVar:DelTrigReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ DBReturn | RememberObjects$ TriggeredNewCardLKICopy | TriggerDescription$ Return that card to its owner's hand at the beginning of the next end step.\nSVar:DBReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Hand\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.OppCtrl | ReplaceWith$ Exile | Description$ If a creature an opponent controls would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ReplacedCard\nDeckHas:Ability$LifeGain\nOracle:Flying, lifelink\\nWhenever another nontoken creature you control dies, return that card to its owner's hand at the beginning of the next end step.\\nIf a creature an opponent controls would die, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liesa, Forgotten Archangel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

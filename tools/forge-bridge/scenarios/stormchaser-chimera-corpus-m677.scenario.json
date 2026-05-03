@@ -1,0 +1,25 @@
+{
+  "id": "stormchaser-chimera-corpus-m677",
+  "description": "M6 corpus — Stormchaser Chimera; ETB-on-bf.",
+  "seed": 71115,
+  "cards": {
+    "Stormchaser Chimera": "Name:Stormchaser Chimera\nManaCost:2 U R\nTypes:Creature Chimera\nPT:2/3\nK:Flying\nA:AB$ Scry | Cost$ 2 U R | ScryNum$ 1 | SubAbility$ DBReveal | SpellDescription$ Scry 1, then reveal the top card of your library. CARDNAME gets +X/+0 until end of turn, where X is that card's mana value.\nSVar:DBReveal:DB$ PeekAndReveal | PeekAmount$ 1 | NoPeek$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | NumAtt$ +X\nSVar:X:Count$TopOfLibraryCMC\nOracle:Flying\\n{2}{U}{R}: Scry 1, then reveal the top card of your library. Stormchaser Chimera gets +X/+0 until end of turn, where X is that card's mana value. (To scry 1, look at the top card of your library, then you may put that card on the bottom of your library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stormchaser Chimera"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

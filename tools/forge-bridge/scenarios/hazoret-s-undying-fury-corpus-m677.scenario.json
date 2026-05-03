@@ -1,0 +1,23 @@
+{
+  "id": "hazoret-s-undying-fury-corpus-m677",
+  "description": "M6 corpus — Hazoret's Undying Fury; in-hand parse.",
+  "seed": 62142,
+  "cards": {
+    "Hazoret's Undying Fury": "Name:Hazoret's Undying Fury\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ Shuffle | Defined$ You | SubAbility$ DBExile | SpellDescription$ Shuffle your library, then exile the top four cards. You may cast any number of spells with mana value 5 or less from among them without paying their mana costs. Lands you control don't untap during your next untap step.\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 4 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+IsRemembered+YouOwn+cmcLE5 | ValidZone$ Exile | ValidSA$ Spell | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ All | SubAbility$ DBNoUntap\nSVar:DBNoUntap:DB$ Effect | ReplacementEffects$ DontUntap | Duration$ UntilTheEndOfYourNextUntap | SubAbility$ DBCleanup\nSVar:DontUntap:Event$ Untap | ValidCard$ Land.YouCtrl | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ Lands you control don't untap during your next untap step.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Shuffle your library, then exile the top four cards. You may cast any number of spells with mana value 5 or less from among them without paying their mana costs. Lands you control don't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hazoret's Undying Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "imperial-recovery-unit-corpus-m677",
+  "description": "M6 corpus — Imperial Recovery Unit; in-hand parse.",
+  "seed": 62809,
+  "cards": {
+    "Imperial Recovery Unit": "Name:Imperial Recovery Unit\nManaCost:2 W\nTypes:Artifact Vehicle\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBChangeZone | TriggerDescription$ Whenever CARDNAME attacks, return target creature or Vehicle card with mana value 2 or less from your graveyard to your hand.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn+cmcLE2,Vehicle.YouOwn+cmcLE2 | TgtPrompt$ Choose a creature or Vehicle card with mana value 2 or less\nK:Crew:2\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard\nDeckHints:Type$Creature|Vehicle\nOracle:Whenever Imperial Recovery Unit attacks, return target creature or Vehicle card with mana value 2 or less from your graveyard to your hand.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imperial Recovery Unit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-pyrulea-corpus-m677",
+  "description": "M6 corpus — Invasion of Pyrulea; in-hand parse.",
+  "seed": 63068,
+  "cards": {
+    "Invasion of Pyrulea": "Name:Invasion of Pyrulea\nManaCost:G U\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 3, then reveal the top card of your library. If it's a land or double-faced card, draw a card.\nSVar:TrigScry:DB$ Scry | ScryNum$ 3 | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Library | LibraryPosition$ 0 | LibraryPosition2$ 0 | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Land,Card.DoubleFaced | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Pyrulea enters, scry 3, then reveal the top card of your library. If it's a land or double-faced card, draw a card.\n\nALTERNATE\n\nName:Gargantuan Slabhorn\nManaCost:no cost\nColors:blue,green\nTypes:Creature Beast\nPT:4/4\nK:Trample\nK:Ward:2\nS:Mode$ Continuous | Affected$ Permanent.Transformed+Other+YouCtrl | AddKeyword$ Trample & Ward:2 | Description$ Other transformed permanents you control have trample and ward {2}.\nOracle:Trample, ward {2}\\nOther transformed permanents you control have trample and ward {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Pyrulea"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

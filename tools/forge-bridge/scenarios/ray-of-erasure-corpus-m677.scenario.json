@@ -1,0 +1,23 @@
+{
+  "id": "ray-of-erasure-corpus-m677",
+  "description": "M6 corpus — Ray of Erasure; in-hand parse.",
+  "seed": 67779,
+  "cards": {
+    "Ray of Erasure": "Name:Ray of Erasure\nManaCost:U\nTypes:Instant\nA:SP$ Mill | NumCards$ 1 | ValidTgts$ Player | SpellDescription$ Target player mills a card. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Target player mills a card.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ray of Erasure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

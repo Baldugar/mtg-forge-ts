@@ -1,0 +1,23 @@
+{
+  "id": "path-of-the-ghosthunter-corpus-m677",
+  "description": "M6 corpus — Path of the Ghosthunter; in-hand parse.",
+  "seed": 66653,
+  "cards": {
+    "Path of the Ghosthunter": "Name:Path of the Ghosthunter\nManaCost:X 1 W\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ X | TokenScript$ w_1_1_spirit_flying | SubAbility$ DBSpace | SpellDescription$ Create X 1/1 white Spirit creature tokens with flying.\nSVar:DBSpace:DB$ BlankLine | SubAbility$ DBVote | SpellDescription$ ,,,,,,\nSVar:DBVote:DB$ Vote | Defined$ Player | Choices$ DBPlaneswalk,DBChaos | VoteTiedAbility$ DBChaos | StackDescription$ SpellDescription | SpellDescription$ Will of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\nSVar:DBPlaneswalk:DB$ Planeswalk | SpellDescription$ Planeswalk\nSVar:DBChaos:DB$ ChaosEnsues | SpellDescription$ Chaos\nSVar:X:Count$xPaid\nDeckHas:Ability$Token & Type$Spirit\nOracle:Create X 1/1 white Spirit creature tokens with flying.\\nWill of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path of the Ghosthunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

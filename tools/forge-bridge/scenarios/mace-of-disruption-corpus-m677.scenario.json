@@ -1,0 +1,23 @@
+{
+  "id": "mace-of-disruption-corpus-m677",
+  "description": "M6 corpus — Mace of Disruption; in-hand parse.",
+  "seed": 64550,
+  "cards": {
+    "Mace of Disruption": "Name:Mace of Disruption\nManaCost:1 W\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddToughness$ 2 | AddKeyword$ Protection:Demon & Protection:Devil | Description$ Equipped creature gets +0/+2 and has protection from Demons and from Devils.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigEffect | TriggerDescription$ Whenever equipped creature attacks, it perpetually gets +1/+0 if it has the same name as another creature you control or a creature card in your graveyard.\nSVar:TrigEffect:DB$ Pump | ConditionCheckSVar$ X | Defined$ Equipped | NumAtt$ +1 | Duration$ Perpetual\nK:Equip:1\nSVar:X:Count$Valid Creature.!EquippedBy+YouCtrl+sharesNameWith Equipped/Plus.Y\nSVar:Y:Count$ValidGraveyard Creature.YouOwn+sharesNameWith Equipped\nOracle:Equipped creature gets +0/+2 and has protection from Demons and from Devils. Whenever equipped creature attacks, it perpetually gets +1/+0 if it has the same name as another creature you control or a creature card in your graveyard.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mace of Disruption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

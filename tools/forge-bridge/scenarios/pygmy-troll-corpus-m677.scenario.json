@@ -1,0 +1,25 @@
+{
+  "id": "pygmy-troll-corpus-m677",
+  "description": "M6 corpus — Pygmy Troll; ETB-on-bf.",
+  "seed": 67403,
+  "cards": {
+    "Pygmy Troll": "Name:Pygmy Troll\nManaCost:1 G\nTypes:Creature Troll\nPT:1/1\nA:AB$ Regenerate | Cost$ G | SpellDescription$ Regenerate CARDNAME.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | TriggerZones$ Battlefield | Execute$ TrigBlockedPump | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigBlockedPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nOracle:Whenever Pygmy Troll becomes blocked by a creature, Pygmy Troll gets +1/+1 until end of turn.\\n{G}: Regenerate Pygmy Troll.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pygmy Troll"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

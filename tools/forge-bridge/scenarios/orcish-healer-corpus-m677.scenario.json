@@ -1,0 +1,25 @@
+{
+  "id": "orcish-healer-corpus-m677",
+  "description": "M6 corpus — Orcish Healer; ETB-on-bf.",
+  "seed": 66387,
+  "cards": {
+    "Orcish Healer": "Name:Orcish Healer\nManaCost:R R\nTypes:Creature Orc Cleric\nPT:1/1\nA:AB$ Effect | Cost$ R R T | ValidTgts$ Creature | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | AILogic$ CantRegenerate | SpellDescription$ Target creature can't be regenerated this turn.\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nA:AB$ Regenerate | Cost$ B B R T | ValidTgts$ Creature.Black,Creature.Green | TgtPrompt$ Select target black or green creature | SpellDescription$ Regenerate target black or green creature.\nA:AB$ Regenerate | Cost$ R G G T | ValidTgts$ Creature.Black,Creature.Green | TgtPrompt$ Select target black or green creature | SpellDescription$ Regenerate target black or green creature.\nAI:RemoveDeck:Random\nDeckNeeds:Color$Green|Black\nOracle:{R}{R}, {T}: Target creature can't be regenerated this turn.\\n{B}{B}{R}, {T}: Regenerate target black or green creature.\\n{R}{G}{G}, {T}: Regenerate target black or green creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Orcish Healer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

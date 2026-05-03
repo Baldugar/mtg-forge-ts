@@ -1,0 +1,25 @@
+{
+  "id": "rimescale-dragon-corpus-m677",
+  "description": "M6 corpus — Rimescale Dragon; ETB-on-bf.",
+  "seed": 68293,
+  "cards": {
+    "Rimescale Dragon": "Name:Rimescale Dragon\nManaCost:5 R R\nTypes:Snow Creature Dragon\nPT:5/5\nK:Flying\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.counters_GE1_ICE | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Creatures with ice counters on them don't untap during their controllers' untap steps.\nA:AB$ PutCounter | Cost$ 2 S | ValidTgts$ Creature | IsCurse$ True | CounterType$ ICE | CounterNum$ 1 | SubAbility$ DBTap | SpellDescription$ Put an ice counter on target creature. Tap that creature.\nSVar:DBTap:DB$ Tap | Defined$ Targeted\nAI:RemoveDeck:Random\nOracle:Flying\\n{2}{S}: Tap target creature and put an ice counter on it. ({S} can be paid with one mana from a snow source.)\\nCreatures with ice counters on them don't untap during their controllers' untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rimescale Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

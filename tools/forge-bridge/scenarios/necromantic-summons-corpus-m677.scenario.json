@@ -1,0 +1,23 @@
+{
+  "id": "necromantic-summons-corpus-m677",
+  "description": "M6 corpus — Necromantic Summons; in-hand parse.",
+  "seed": 65802,
+  "cards": {
+    "Necromantic Summons": "Name:Necromantic Summons\nManaCost:4 B\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select target creature card in a graveyard | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ P1P1 | WithCountersAmount$ Y | GainControl$ True | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, that creature enters with two additional +1/+1 counters on it.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:Y:Count$Compare X GE2.2.0\nOracle:Put target creature card from a graveyard onto the battlefield under your control.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, that creature enters with two additional +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromantic Summons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "phantom-nishoba-corpus-m677",
+  "description": "M6 corpus — Phantom Nishoba; in-hand parse.",
+  "seed": 66808,
+  "cards": {
+    "Phantom Nishoba": "Name:Phantom Nishoba\nManaCost:5 G W\nTypes:Creature Cat Beast Spirit\nPT:0/0\nK:etbCounter:P1P1:7\nK:Trample\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. Remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasCombatEffect:TRUE\nOracle:Trample\\nPhantom Nishoba enters with seven +1/+1 counters on it.\\nWhenever Phantom Nishoba deals damage, you gain that much life.\\nIf damage would be dealt to Phantom Nishoba, prevent that damage. Remove a +1/+1 counter from Phantom Nishoba.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantom Nishoba"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

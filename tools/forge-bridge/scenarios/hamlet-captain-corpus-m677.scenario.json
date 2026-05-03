@@ -1,0 +1,23 @@
+{
+  "id": "hamlet-captain-corpus-m677",
+  "description": "M6 corpus — Hamlet Captain; in-hand parse.",
+  "seed": 62003,
+  "cards": {
+    "Hamlet Captain": "Name:Hamlet Captain\nManaCost:1 G\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME attacks or blocks, other Humans you control get +1/+1 until end of turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPumpAll | Secondary$ True | TriggerDescription$ When CARDNAME attacks or blocks, other Human creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+Human+YouCtrl | NumAtt$ +1 | NumDef$ +1\nDeckHints:Type$Human\nOracle:Whenever Hamlet Captain attacks or blocks, other Humans you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hamlet Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

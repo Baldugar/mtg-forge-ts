@@ -1,0 +1,23 @@
+{
+  "id": "quakefoot-cyclops-corpus-m677",
+  "description": "M6 corpus — Quakefoot Cyclops; in-hand parse.",
+  "seed": 67437,
+  "cards": {
+    "Quakefoot Cyclops": "Name:Quakefoot Cyclops\nManaCost:4 R\nTypes:Creature Cyclops\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, up to two target creatures can't block this turn.\nSVar:TrigPump:DB$ Pump | TargetMin$ 0 | TargetMax$ 2 | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | ValidTgts$ Creature | TgtPrompt$ Select target creature\nK:Cycling:1 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigCanNotBlock | TriggerDescription$ When you cycle CARDNAME, target creature can't block this turn.\nSVar:TrigCanNotBlock:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True\nSVar:PlayMain1:TRUE\nOracle:When Quakefoot Cyclops enters, up to two target creatures can't block this turn.\\nCycling {1}{R} ({1}{R}, Discard this card: Draw a card.)\\nWhen you cycle Quakefoot Cyclops, target creature can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quakefoot Cyclops"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

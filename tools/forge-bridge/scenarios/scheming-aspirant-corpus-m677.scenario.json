@@ -1,0 +1,25 @@
+{
+  "id": "scheming-aspirant-corpus-m677",
+  "description": "M6 corpus — Scheming Aspirant; ETB-on-bf.",
+  "seed": 69141,
+  "cards": {
+    "Scheming Aspirant": "Name:Scheming Aspirant\nManaCost:1 B\nTypes:Creature Phyrexian Advisor\nPT:1/3\nT:Mode$ Proliferate | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ LoseGain | TriggerDescription$ Whenever you proliferate, each opponent loses 2 life and you gain 2 life.\nSVar:LoseGain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 2 | SubAbility$ DBGain2\nSVar:DBGain2:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nDeckNeeds:Ability$Proliferate\nOracle:Whenever you proliferate, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scheming Aspirant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

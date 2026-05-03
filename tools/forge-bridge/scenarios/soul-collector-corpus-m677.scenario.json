@@ -1,0 +1,23 @@
+{
+  "id": "soul-collector-corpus-m677",
+  "description": "M6 corpus — Soul Collector; in-hand parse.",
+  "seed": 70438,
+  "cards": {
+    "Soul Collector": "Name:Soul Collector\nManaCost:3 B B\nTypes:Creature Vampire\nPT:3/4\nK:Flying\nK:Morph:B B B\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | Execute$ TrigBounce | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, return that card to the battlefield under your control.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Flying\\nWhenever a creature dealt damage by Soul Collector this turn dies, return that card to the battlefield under your control.\\nMorph {B}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

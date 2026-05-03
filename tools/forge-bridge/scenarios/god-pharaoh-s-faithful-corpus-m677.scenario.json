@@ -1,0 +1,25 @@
+{
+  "id": "god-pharaoh-s-faithful-corpus-m677",
+  "description": "M6 corpus — God-Pharaoh's Faithful; ETB-on-bf.",
+  "seed": 61499,
+  "cards": {
+    "God-Pharaoh's Faithful": "Name:God-Pharaoh's Faithful\nManaCost:W\nTypes:Creature Human Wizard\nPT:0/4\nT:Mode$ SpellCast | ValidCard$ Card.Blue,Card.Red,Card.Black | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a blue, black, or red spell, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue|Black|Red\nOracle:Whenever you cast a blue, black, or red spell, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "God-Pharaoh's Faithful"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

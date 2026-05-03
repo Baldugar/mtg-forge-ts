@@ -1,0 +1,23 @@
+{
+  "id": "pick-your-poison-corpus-m677",
+  "description": "M6 corpus — Pick Your Poison; in-hand parse.",
+  "seed": 66881,
+  "cards": {
+    "Pick Your Poison": "Name:Pick Your Poison\nManaCost:G\nTypes:Sorcery\nA:SP$ Charm | Choices$ SacArtifact,SacEnchantment,SacFlier\nSVar:SacArtifact:DB$ Sacrifice | Defined$ Opponent | SacValid$ Artifact | Amount$ 1 | SpellDescription$ Each opponent sacrifices an artifact.\nSVar:SacEnchantment:DB$ Sacrifice | Defined$ Opponent | SacValid$ Enchantment | Amount$ 1 | SpellDescription$ Each opponent sacrifices an enchantment.\nSVar:SacFlier:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature.withFlying | SacMessage$ creature with flying | Amount$ 1 | SpellDescription$ Each opponent sacrifices a creature with flying.\nDeckHas:Ability$Sacrifice\nOracle:Choose one —\\n• Each opponent sacrifices an artifact.\\n• Each opponent sacrifices an enchantment.\\n• Each opponent sacrifices a creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pick Your Poison"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

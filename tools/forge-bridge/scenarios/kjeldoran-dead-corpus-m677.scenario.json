@@ -1,0 +1,23 @@
+{
+  "id": "kjeldoran-dead-corpus-m677",
+  "description": "M6 corpus — Kjeldoran Dead; in-hand parse.",
+  "seed": 63728,
+  "cards": {
+    "Kjeldoran Dead": "Name:Kjeldoran Dead\nManaCost:B\nTypes:Creature Skeleton\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature | AILogic$ ExceptSelf\nA:AB$ Regenerate | Cost$ B | SpellDescription$ Regenerate CARDNAME.\nSVar:NeedsToPlay:Creature.YouCtrl+token+powerLE3+toughnessLE3,Creature.YouCtrl+!token+powerLE2+toughnessLE3\nOracle:When Kjeldoran Dead enters, sacrifice a creature.\\n{B}: Regenerate Kjeldoran Dead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kjeldoran Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

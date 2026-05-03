@@ -1,0 +1,23 @@
+{
+  "id": "nezumi-graverobber-corpus-m677",
+  "description": "M6 corpus — Nezumi Graverobber; in-hand parse.",
+  "seed": 65898,
+  "cards": {
+    "Nezumi Graverobber": "Name:Nezumi Graverobber\nManaCost:1 B\nTypes:Creature Rat Rogue\nPT:2/1\nA:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card.OppOwn | TgtPrompt$ Select target card in an opponent's graveyard | SubAbility$ DBFlip | SpellDescription$ Exile target card from an opponent's graveyard. If no cards are in that graveyard, flip CARDNAME.\nSVar:DBFlip:DB$ SetState | Defined$ Self | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | Mode$ Flip\nSVar:X:Count$ValidGraveyard Card.OwnedBy TargetedController\nAlternateMode:Flip\nOracle:{1}{B}: Exile target card from an opponent's graveyard. If no cards are in that graveyard, flip Nezumi Graverobber.\n\nALTERNATE\n\nName:Nighteyes the Desecrator\nManaCost:1 B\nColors:black\nTypes:Legendary Creature Rat Wizard\nPT:4/2\nA:AB$ ChangeZone | Cost$ 4 B | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ValidTgts$ Creature | TgtPrompt$ Select target creature card in a graveyard | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control.\nOracle:{4}{B}: Put target creature card from a graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nezumi Graverobber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ray-of-frost-corpus-m677",
+  "description": "M6 corpus — Ray of Frost; in-hand parse.",
+  "seed": 67780,
+  "cards": {
+    "Ray of Frost": "Name:Ray of Frost\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | IsPresent$ Creature.EnchantedBy+Red | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, if enchanted creature is red, tap it.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Red | RemoveAllAbilities$ True | Description$ As long as enchanted creature is red, it loses all abilities.\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nOracle:Flash\\nEnchant creature\\nWhen Ray of Frost enters, if enchanted creature is red, tap it.\\nAs long as enchanted creature is red, it loses all abilities.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ray of Frost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

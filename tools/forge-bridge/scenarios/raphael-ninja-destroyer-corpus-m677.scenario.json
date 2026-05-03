@@ -1,0 +1,23 @@
+{
+  "id": "raphael-ninja-destroyer-corpus-m677",
+  "description": "M6 corpus — Raphael, Ninja Destroyer; in-hand parse.",
+  "seed": 67709,
+  "cards": {
+    "Raphael, Ninja Destroyer": "Name:Raphael, Ninja Destroyer\nManaCost:2 R R\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:4/4\nK:CARDNAME must be blocked if able.\nT:Mode$ DamageDoneOnce | Execute$ TrigMana | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever NICKNAME is dealt damage, add that much {R}. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ X | PersistentMana$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Raphael must be blocked if able.\\nEnrage — Whenever Raphael is dealt damage, add that much {R}. Until end of turn, you don't lose this mana as steps and phases end.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raphael, Ninja Destroyer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

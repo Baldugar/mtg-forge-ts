@@ -1,0 +1,23 @@
+{
+  "id": "nav-squad-commandos-corpus-m677",
+  "description": "M6 corpus — Nav Squad Commandos; in-hand parse.",
+  "seed": 65775,
+  "cards": {
+    "Nav Squad Commandos": "Name:Nav Squad Commandos\nManaCost:4 W\nTypes:Creature Human Soldier\nPT:3/5\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigBattalionPump | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, CARDNAME gets +1/+1 until end of turn. Untap it.\nSVar:TrigBattalionPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Self\nOracle:Battalion — Whenever Nav Squad Commandos and at least two other creatures attack, Nav Squad Commandos gets +1/+1 until end of turn. Untap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nav Squad Commandos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

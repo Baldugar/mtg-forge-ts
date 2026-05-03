@@ -1,0 +1,23 @@
+{
+  "id": "power-leak-corpus-m677",
+  "description": "M6 corpus — Power Leak; in-hand parse.",
+  "seed": 67087,
+  "cards": {
+    "Power Leak": "Name:Power Leak\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Enchantment\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | Execute$ DBPay | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the upkeep of enchanted enchantment's controller, that player may pay any amount of mana. CARDNAME deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.Self | ReplaceWith$ DBReplace | PreventionEffect$ True | Secondary$ True\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ PaidAmount\nSVar:DBPay:DB$ ChooseNumber | Defined$ EnchantedController | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | AILogic$ PowerLeakMaxMana.2 | SubAbility$ DBStore\nSVar:DBStore:DB$ StoreSVar | SVar$ PaidAmount | Type$ CountSVar | Expression$ Y | UnlessCost$ Y | UnlessPayer$ EnchantedController | UnlessSwitched$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ EnchantedController | NumDmg$ 2 | SubAbility$ DBReset | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ PaidAmount | Type$ Number | Expression$ 0\nSVar:Y:Count$ChosenNumber\nSVar:PaidAmount:Number$0\nOracle:Enchant enchantment\\nAt the beginning of the upkeep of enchanted enchantment's controller, that player may pay any amount of mana. Power Leak deals 2 damage to that player. Prevent X of that damage, where X is the amount of mana that player paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Leak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "resolute-archangel-corpus-m677",
+  "description": "M6 corpus — Resolute Archangel; in-hand parse.",
+  "seed": 68101,
+  "cards": {
+    "Resolute Archangel": "Name:Resolute Archangel\nManaCost:5 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSetLife | CheckSVar$ X | SVarCompare$ LTY | TriggerDescription$ When CARDNAME enters, if your life total is lower than your starting life total, it becomes equal to your starting life total.\nSVar:TrigSetLife:DB$ SetLife | Defined$ You | LifeAmount$ Y\nSVar:X:Count$YourLifeTotal\nSVar:Y:Count$YourStartingLife\nSVar:NeedsToPlayVar:X LTY\nOracle:Flying\\nWhen Resolute Archangel enters, if your life total is less than your starting life total, it becomes equal to your starting life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resolute Archangel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

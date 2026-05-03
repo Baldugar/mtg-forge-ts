@@ -1,0 +1,25 @@
+{
+  "id": "orcish-artillery-corpus-m677",
+  "description": "M6 corpus — Orcish Artillery; ETB-on-bf.",
+  "seed": 66380,
+  "cards": {
+    "Orcish Artillery": "Name:Orcish Artillery\nManaCost:1 R R\nTypes:Creature Orc Warrior\nPT:1/3\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 2 | DamageMap$ True | AILogic$ SelfDamage | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 2 damage to any target and 3 damage to you.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 3 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:SelfDamageAmount:3\nOracle:{T}: Orcish Artillery deals 2 damage to any target and 3 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Orcish Artillery"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

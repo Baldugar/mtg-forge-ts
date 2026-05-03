@@ -1,0 +1,23 @@
+{
+  "id": "helix-pinnacle-corpus-m677",
+  "description": "M6 corpus — Helix Pinnacle; in-hand parse.",
+  "seed": 62232,
+  "cards": {
+    "Helix Pinnacle": "Name:Helix Pinnacle\nManaCost:G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE100_TOWER | Execute$ TrigWinGame | TriggerDescription$ At the beginning of your upkeep, if there are 100 or more tower counters on CARDNAME, you win the game.\nSVar:TrigWinGame:DB$ WinsGame | Defined$ You\nK:Shroud\nA:AB$ PutCounter | Cost$ X | CounterType$ TOWER | CounterNum$ X | SpellDescription$ Put a tower counter on CARDNAME.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nOracle:Shroud (This enchantment can't be the target of spells or abilities.)\\n{X}: Put X tower counters on Helix Pinnacle.\\nAt the beginning of your upkeep, if there are 100 or more tower counters on Helix Pinnacle, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Helix Pinnacle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "graveyard-dig-corpus-m677",
+  "description": "M6 corpus — Graveyard Dig; in-hand parse.",
+  "seed": 61678,
+  "cards": {
+    "Graveyard Dig": "Name:Graveyard Dig\nManaCost:1 BG\nTypes:Sorcery\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ 2 BG BG | Description$ You may cast this spell for {2}{B/G}{B/G}. If you do, ignore the bracketed text.\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Choose up to two target black or green creature cards in your graveyard | ValidTgts$ Creature.YouCtrl+Black,Creature.YouCtrl+Green | SubAbility$ DBReturnAnyTwo | StackDescription$ SpellDescription | SpellDescription$ Return up to two target [black or green] creature cards from your graveyard to your hand.\nSVar:DBReturnAnyTwo:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ Y | TgtPrompt$ Choose up to two target creature cards in your graveyard | ValidTgts$ Creature.YouCtrl | StackDescription$ None\nSVar:X:Count$AltCost.0.2\nSVar:Y:Count$AltCost.2.0\nOracle:Return up to two target [black or green] creature cards from your graveyard to your hand.\\nYou may cast this spell for {2}{B/G}{B/G}. If you do, ignore the bracketed text.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graveyard Dig"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

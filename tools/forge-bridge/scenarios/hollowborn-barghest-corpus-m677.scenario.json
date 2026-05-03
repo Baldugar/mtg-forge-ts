@@ -1,0 +1,23 @@
+{
+  "id": "hollowborn-barghest-corpus-m677",
+  "description": "M6 corpus — Hollowborn Barghest; in-hand parse.",
+  "seed": 62434,
+  "cards": {
+    "Hollowborn Barghest": "Name:Hollowborn Barghest\nManaCost:5 B B\nTypes:Creature Demon Dog\nPT:7/6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.YouCtrl | PresentCompare$ EQ0 | PresentZone$ Hand | Execute$ TrigLoseLifeEachOpp | TriggerDescription$ At the beginning of your upkeep, if you have no cards in hand, each opponent loses 2 life.\nSVar:TrigLoseLifeEachOpp:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | IsPresent$ Card.ActivePlayerCtrl | PresentCompare$ EQ0 | PresentZone$ Hand | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has no cards in hand, they lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2\nOracle:At the beginning of your upkeep, if you have no cards in hand, each opponent loses 2 life.\\nAt the beginning of each opponent's upkeep, if that player has no cards in hand, they lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollowborn Barghest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

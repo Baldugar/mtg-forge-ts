@@ -1,0 +1,25 @@
+{
+  "id": "sparksmith-corpus-m677",
+  "description": "M6 corpus — Sparksmith; ETB-on-bf.",
+  "seed": 70517,
+  "cards": {
+    "Sparksmith": "Name:Sparksmith\nManaCost:1 R\nTypes:Creature Goblin\nPT:1/1\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals X damage to target creature and X damage to you, where X is the number of Goblins on the battlefield.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ X\nSVar:X:Count$Valid Goblin\nAI:RemoveDeck:Random\nOracle:{T}: Sparksmith deals X damage to target creature and X damage to you, where X is the number of Goblins on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sparksmith"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rank-and-file-corpus-m677",
+  "description": "M6 corpus — Rank and File; in-hand parse.",
+  "seed": 67699,
+  "cards": {
+    "Rank and File": "Name:Rank and File\nManaCost:2 B B\nTypes:Creature Zombie\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, green creatures get -1/-1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.Green | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:When Rank and File enters, green creatures get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rank and File"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "norin-swift-survivalist-corpus-m677",
+  "description": "M6 corpus — Norin, Swift Survivalist; ETB-on-bf.",
+  "seed": 66054,
+  "cards": {
+    "Norin, Swift Survivalist": "Name:Norin, Swift Survivalist\nManaCost:R\nTypes:Legendary Creature Human Coward\nPT:2/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ AttackerBlocked | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever a creature you control becomes blocked, you may exile it. You may play that card from exile this turn.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ TriggeredAttackerLKICopy | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card from exile this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Norin, Swift Survivalist can't block.\\nWhenever a creature you control becomes blocked, you may exile it. You may play that card from exile this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Norin, Swift Survivalist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

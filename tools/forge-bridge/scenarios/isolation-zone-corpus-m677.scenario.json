@@ -1,0 +1,23 @@
+{
+  "id": "isolation-zone-corpus-m677",
+  "description": "M6 corpus — Isolation Zone; in-hand parse.",
+  "seed": 63163,
+  "cards": {
+    "Isolation Zone": "Name:Isolation Zone\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature or enchantment an opponent controls until CARDNAME leaves the battlefield. (That permanent returns under its owner's control.)\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target creature or enchantment an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When Isolation Zone enters, exile target creature or enchantment an opponent controls until Isolation Zone leaves the battlefield. (That permanent returns under its owner's control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Isolation Zone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

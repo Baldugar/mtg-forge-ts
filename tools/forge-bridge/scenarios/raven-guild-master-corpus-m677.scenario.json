@@ -1,0 +1,23 @@
+{
+  "id": "raven-guild-master-corpus-m677",
+  "description": "M6 corpus — Raven Guild Master; in-hand parse.",
+  "seed": 67751,
+  "cards": {
+    "Raven Guild Master": "Name:Raven Guild Master\nManaCost:1 U U\nTypes:Creature Human Wizard Mutant\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player exiles the top ten cards of their library.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 10 | ChangeNum$ All | DestinationZone$ Exile\nK:Morph:2 U U\nOracle:Whenever Raven Guild Master deals combat damage to a player, that player exiles the top ten cards of their library.\\nMorph {2}{U}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raven Guild Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

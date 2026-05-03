@@ -1,0 +1,23 @@
+{
+  "id": "sower-of-discord-corpus-m677",
+  "description": "M6 corpus — Sower of Discord; in-hand parse.",
+  "seed": 70500,
+  "cards": {
+    "Sower of Discord": "Name:Sower of Discord\nManaCost:4 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player | AILogic$ Curse | RememberChosen$ True | SubAbility$ ChoosePTwo | SpellDescription$ As CARDNAME enters, choose two players.\nSVar:ChoosePTwo:DB$ ChoosePlayer | Defined$ You | Choices$ NonChosenPlayer | AILogic$ Curse\nT:Mode$ DamageDoneOnce | ActiveZones$ Battlefield | ValidTarget$ Player.Chosen | Execute$ TrigLoseLifeRemembered | TriggerDescription$ Whenever damage is dealt to one of the chosen players, the other chosen player also loses that much life.\nT:Mode$ DamageDoneOnce | ActiveZones$ Battlefield | ValidTarget$ Player.IsRemembered | Execute$ TrigLoseLifeChosen | Secondary$ True | TriggerDescription$ Whenever damage is dealt to one of the chosen players, the other chosen player also loses that much life.\nSVar:TrigLoseLifeRemembered:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:TrigLoseLifeChosen:DB$ LoseLife | Defined$ Player.Chosen | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nAs Sower of Discord enters, choose two players.\\nWhenever damage is dealt to one of the chosen players, the other chosen player also loses that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sower of Discord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

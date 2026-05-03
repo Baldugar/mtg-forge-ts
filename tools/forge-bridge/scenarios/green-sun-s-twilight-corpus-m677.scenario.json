@@ -1,0 +1,23 @@
+{
+  "id": "green-sun-s-twilight-corpus-m677",
+  "description": "M6 corpus — Green Sun's Twilight; in-hand parse.",
+  "seed": 61728,
+  "cards": {
+    "Green Sun's Twilight": "Name:Green Sun's Twilight\nManaCost:X G\nTypes:Sorcery\nA:SP$ DigMultiple | DigNum$ SVar$X/Plus.1 | Reveal$ True | ChangeValid$ Creature,Land | ChangeLater$ True | RememberChanged$ True | ImprintRest$ True | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ Reveal the top X plus one cards of your library. Choose a creature card and/or a land card from among them.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | DestinationAlternative$ Battlefield | DestAltSVar$ X | DestAltSVarCompare$ GE5 | SubAbility$ RestBottom | StackDescription$ SpellDescription | SpellDescription$ Put those cards into your hand and the rest on the bottom of your library in a random order. If X is 5 or more, instead put the chosen cards onto the battlefield or into your hand and the rest on the bottom of your library in a random order.\nSVar:RestBottom:DB$ ChangeZone | Defined$ Imprinted | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | NoShuffle$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$xPaid\nOracle:Reveal the top X plus one cards of your library. Choose a creature card and/or a land card from among them. Put those cards into your hand and the rest on the bottom of your library in a random order. If X is 5 or more, instead put the chosen cards onto the battlefield or into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Green Sun's Twilight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

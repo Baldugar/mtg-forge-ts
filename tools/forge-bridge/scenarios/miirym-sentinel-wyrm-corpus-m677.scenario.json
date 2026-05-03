@@ -1,0 +1,23 @@
+{
+  "id": "miirym-sentinel-wyrm-corpus-m677",
+  "description": "M6 corpus — Miirym, Sentinel Wyrm; in-hand parse.",
+  "seed": 65119,
+  "cards": {
+    "Miirym, Sentinel Wyrm": "Name:Miirym, Sentinel Wyrm\nManaCost:3 G U R\nTypes:Legendary Creature Dragon Spirit\nPT:6/6\nK:Flying\nK:Ward:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Dragon.YouCtrl+!token+Other | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever another nontoken Dragon you control enters, create a token that's a copy of it, except the token isn't legendary if that Dragon is legendary.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | NonLegendary$ True\nDeckHas:Ability$Token\nDeckNeeds:Type$Dragon\nOracle:Flying, ward {2}\\nWhenever another nontoken Dragon you control enters, create a token that's a copy of it, except the token isn't legendary if that Dragon is legendary.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miirym, Sentinel Wyrm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

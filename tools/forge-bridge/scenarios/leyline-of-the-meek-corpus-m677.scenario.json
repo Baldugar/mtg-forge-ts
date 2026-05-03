@@ -1,0 +1,25 @@
+{
+  "id": "leyline-of-the-meek-corpus-m677",
+  "description": "M6 corpus — Leyline of the Meek; ETB-on-bf.",
+  "seed": 64170,
+  "cards": {
+    "Leyline of the Meek": "Name:Leyline of the Meek\nManaCost:2 W W\nTypes:Enchantment\nK:MayEffectFromOpeningHand:FromHand\nSVar:FromHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SpellDescription$ If CARDNAME is in your opening hand, you may begin the game with it on the battlefield.\nS:Mode$ Continuous | Affected$ Creature.token | AddPower$ 1 | AddToughness$ 1 | Description$ Creature tokens get +1/+1.\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:If Leyline of the Meek is in your opening hand, you may begin the game with it on the battlefield.\\nCreature tokens get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leyline of the Meek"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "inspiring-call-corpus-m677",
+  "description": "M6 corpus — Inspiring Call; in-hand parse.",
+  "seed": 62997,
+  "cards": {
+    "Inspiring Call": "Name:Inspiring Call\nManaCost:2 G\nTypes:Instant\nA:SP$ Draw | NumCards$ X | SubAbility$ DBPumpAll | SpellDescription$ Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn.\nSVar:X:Count$Valid Creature.YouCtrl+counters_GE1_P1P1\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+counters_GE1_P1P1 | KW$ Indestructible\nAI:RemoveDeck:Random\nDeckNeeds:Ability$Counters\nOracle:Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inspiring Call"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

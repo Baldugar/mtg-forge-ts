@@ -1,0 +1,23 @@
+{
+  "id": "obeka-splitter-of-seconds-corpus-m677",
+  "description": "M6 corpus — Obeka, Splitter of Seconds; in-hand parse.",
+  "seed": 66166,
+  "cards": {
+    "Obeka, Splitter of Seconds": "Name:Obeka, Splitter of Seconds\nManaCost:1 U B R\nTypes:Legendary Creature Ogre Warlock\nPT:2/5\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigAddPhase | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you get that many additional upkeep steps after this phase.\nSVar:TrigAddPhase:DB$ AddPhase | ConditionPlayerTurn$ True | NumPhases$ TriggerCount$DamageAmount | ExtraPhase$ Upkeep | AfterPhase$ EndCombat\nOracle:Menace\\nWhenever Obeka, Splitter of Seconds deals combat damage to a player, you get that many additional upkeep steps after this phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obeka, Splitter of Seconds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

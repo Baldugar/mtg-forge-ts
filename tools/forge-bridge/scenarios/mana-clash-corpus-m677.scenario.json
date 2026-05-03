@@ -1,0 +1,23 @@
+{
+  "id": "mana-clash-corpus-m677",
+  "description": "M6 corpus — Mana Clash; in-hand parse.",
+  "seed": 64682,
+  "cards": {
+    "Mana Clash": "Name:Mana Clash\nManaCost:R\nTypes:Sorcery\nA:SP$ Repeat | ValidTgts$ Opponent | RepeatCheckSVar$ RepeatCheck | RepeatSVarCompare$ GT0 | RepeatSubAbility$ ResetCheck | StackDescription$ SpellDescription | SpellDescription$ You and target opponent each flip a coin. CARDNAME deals 1 damage to each player whose coin comes up tails. Repeat this process until both players' coins come up heads on the same flip.\nSVar:ResetCheck:DB$ StoreSVar | SVar$ RepeatCheck | Type$ Number | Expression$ 0 | SubAbility$ RepeatClash\nSVar:RepeatClash:DB$ RepeatEach | RepeatPlayers$ TargetedAndYou | RepeatSubAbility$ FlipClash | SubAbility$ ClashDamage\nSVar:FlipClash:DB$ FlipACoin | Flipper$ Remembered | NoCall$ True | TailsSubAbility$ ClashTails | RememberResult$ True\nSVar:ClashTails:DB$ StoreSVar | SVar$ RepeatCheck | Type$ CountSVar | Expression$ RepeatCheck/Plus.1\nSVar:ClashDamage:DB$ DamageAll | ValidPlayers$ FlippedTails | NumDmg$ 1 | SubAbility$ ResetFlips\nSVar:ResetFlips:DB$ Cleanup | ClearCoinFlips$ True\nSVar:RepeatCheck:Number$ 0\nAI:RemoveDeck:All\nOracle:You and target opponent each flip a coin. Mana Clash deals 1 damage to each player whose coin comes up tails. Repeat this process until both players' coins come up heads on the same flip.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Clash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

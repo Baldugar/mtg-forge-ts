@@ -1,0 +1,23 @@
+{
+  "id": "liliana-s-reaver-corpus-m677",
+  "description": "M6 corpus — Liliana's Reaver; in-hand parse.",
+  "seed": 64269,
+  "cards": {
+    "Liliana's Reaver": "Name:Liliana's Reaver\nManaCost:2 B B\nTypes:Creature Zombie\nPT:4/3\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card and you create a tapped 2/2 black Zombie creature token.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ MakeToken\nSVar:MakeToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenTapped$ True\nOracle:Deathtouch\\nWhenever Liliana's Reaver deals combat damage to a player, that player discards a card and you create a tapped 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana's Reaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

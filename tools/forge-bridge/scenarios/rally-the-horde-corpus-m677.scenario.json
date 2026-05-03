@@ -1,0 +1,23 @@
+{
+  "id": "rally-the-horde-corpus-m677",
+  "description": "M6 corpus — Rally the Horde; in-hand parse.",
+  "seed": 67642,
+  "cards": {
+    "Rally the Horde": "Name:Rally the Horde\nManaCost:5 R\nTypes:Sorcery\nA:SP$ Repeat | RepeatSubAbility$ DBExileThree | RepeatCheckSVar$ X | RepeatSVarCompare$ EQ0 | SubAbility$ DBToken | StackDescription$ SpellDescription | SpellDescription$ Exile the top card of your library. Exile the top card of your library. Exile the top card of your library. If the last card exiled isn't a land card, repeat this process. Create a 1/1 red Warrior creature token for each nonland card exiled this way.\nSVar:DBExileThree:DB$ Cleanup | ClearImprinted$ True | SubAbility$ DBExile1\nSVar:DBExile1:DB$ Dig | RememberChanged$ True | DestinationZone$ Exile | DigNum$ 1 | ChangeNum$ All | SubAbility$ DBExile2\nSVar:DBExile2:DB$ Dig | RememberChanged$ True | DestinationZone$ Exile | DigNum$ 1 | ChangeNum$ All | SubAbility$ DBExile3\nSVar:DBExile3:DB$ Dig | RememberChanged$ True | DestinationZone$ Exile | DigNum$ 1 | ChangeNum$ All | Imprint$ True\nSVar:X:Count$ValidExile Land.IsImprinted\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ r_1_1_warrior | TokenOwner$ You | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:Y:Count$ValidExile Card.IsRemembered+nonLand\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Exile the top card of your library. Exile the top card of your library. Exile the top card of your library. If the last card exiled isn't a land card, repeat this process. Create a 1/1 red Warrior creature token for each nonland card exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rally the Horde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

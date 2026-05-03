@@ -1,0 +1,23 @@
+{
+  "id": "mouse-trapper-corpus-m677",
+  "description": "M6 corpus — Mouse Trapper; in-hand parse.",
+  "seed": 65556,
+  "cards": {
+    "Mouse Trapper": "Name:Mouse Trapper\nManaCost:2 W\nTypes:Creature Mouse Soldier\nPT:3/2\nK:Flash\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.YouCtrl | TriggerZones$ Battlefield | Valiant$ True | Execute$ TrigTap | TriggerDescription$ Valiant — Whenever CARDNAME becomes the target of a spell or ability you control for the first time each turn, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nOracle:Flash\\nValiant — Whenever Mouse Trapper becomes the target of a spell or ability you control for the first time each turn, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mouse Trapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

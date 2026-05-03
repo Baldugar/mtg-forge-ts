@@ -1,0 +1,23 @@
+{
+  "id": "soul-strike-technique-corpus-m677",
+  "description": "M6 corpus — Soul-Strike Technique; in-hand parse.",
+  "seed": 70464,
+  "cards": {
+    "Soul-Strike Technique": "Name:Soul-Strike Technique\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance | Description$ Enchanted creature gets +1/+1 and has vigilance.\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigManifest | TriggerDescription$ When enchanted creature dies, manifest the top card of your library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigManifest:DB$ Manifest\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 and has vigilance.\\nWhen enchanted creature dies, manifest the top card of your library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul-Strike Technique"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

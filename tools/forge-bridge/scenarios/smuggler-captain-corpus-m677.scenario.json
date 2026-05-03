@@ -1,0 +1,23 @@
+{
+  "id": "smuggler-captain-corpus-m677",
+  "description": "M6 corpus — Smuggler Captain; in-hand parse.",
+  "seed": 70276,
+  "cards": {
+    "Smuggler Captain": "Name:Smuggler Captain\nManaCost:3 B\nTypes:Creature Human Pirate\nPT:2/2\nDraft:Draft CARDNAME face up.\nDraft:As you draft a card, you may reveal it, note its name, then turn CARDNAME face down.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, you may search your library for a card with a name you noted for cards named Smuggler Captain, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.YouOwn+NotedNameSmugglerCaptain | Optional$ True\nOracle:Draft CARDNAME face up.\\nAs you draft a card, you may reveal it, note its name, then turn CARDNAME face down.\\nWhen Smuggler Captain enters, you may search your library for a card with a name you noted for cards named Smuggler Captain, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smuggler Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

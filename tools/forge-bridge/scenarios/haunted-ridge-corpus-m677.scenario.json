@@ -1,0 +1,25 @@
+{
+  "id": "haunted-ridge-corpus-m677",
+  "description": "M6 corpus — Haunted Ridge; ETB-on-bf.",
+  "seed": 62112,
+  "cards": {
+    "Haunted Ridge": "Name:Haunted Ridge\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ LT2\nOracle:Haunted Ridge enters tapped unless you control two or more other lands.\\n{T}: Add {B} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Haunted Ridge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

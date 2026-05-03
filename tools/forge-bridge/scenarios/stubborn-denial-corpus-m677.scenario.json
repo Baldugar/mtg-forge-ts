@@ -1,0 +1,23 @@
+{
+  "id": "stubborn-denial-corpus-m677",
+  "description": "M6 corpus — Stubborn Denial; in-hand parse.",
+  "seed": 71223,
+  "cards": {
+    "Stubborn Denial": "Name:Stubborn Denial\nManaCost:U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target noncreature spell | ValidTgts$ Card.nonCreature | UnlessCost$ 1 | ConditionPresent$ Creature.YouCtrl+powerGE4 | ConditionCompare$ EQ0 | StackDescription$ SpellDescription | SubAbility$ DBCounter | SpellDescription$ Counter target noncreature spell unless its controller pays {1}. Ferocious — If you control a creature with power 4 or greater, counter that spell instead.\nSVar:DBCounter:DB$ Counter | Defined$ Targeted | ConditionPresent$ Creature.YouCtrl+powerGE4 | ConditionCompare$ GE1 | StackDescription$ None\nOracle:Counter target noncreature spell unless its controller pays {1}.\\nFerocious — If you control a creature with power 4 or greater, counter that spell instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stubborn Denial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

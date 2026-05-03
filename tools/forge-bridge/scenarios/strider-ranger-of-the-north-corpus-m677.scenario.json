@@ -1,0 +1,23 @@
+{
+  "id": "strider-ranger-of-the-north-corpus-m677",
+  "description": "M6 corpus — Strider, Ranger of the North; in-hand parse.",
+  "seed": 71188,
+  "cards": {
+    "Strider, Ranger of the North": "Name:Strider, Ranger of the North\nManaCost:2 R G\nTypes:Legendary Creature Human Ranger\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — Whenever a land you control enters, target creature gets +1/+1 until end of turn. Then if that creature has power 4 or greater, it gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBFerocious\nSVar:DBFerocious:DB$ Pump | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Creature.powerGE4 | KW$ First Strike\nOracle:Landfall — Whenever a land you control enters, target creature gets +1/+1 until end of turn. Then if that creature has power 4 or greater, it gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strider, Ranger of the North"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

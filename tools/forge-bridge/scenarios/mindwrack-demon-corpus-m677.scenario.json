@@ -1,0 +1,23 @@
+{
+  "id": "mindwrack-demon-corpus-m677",
+  "description": "M6 corpus — Mindwrack Demon; in-hand parse.",
+  "seed": 65186,
+  "cards": {
+    "Mindwrack Demon": "Name:Mindwrack Demon\nManaCost:2 B B\nTypes:Creature Demon\nPT:4/5\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ Delirium — At the beginning of your upkeep, you lose 4 life unless there are four or more card types among cards in your graveyard.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Delirium.0.4\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Flying, trample\\nWhen Mindwrack Demon enters, mill four cards.\\nDelirium — At the beginning of your upkeep, you lose 4 life unless there are four or more card types among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindwrack Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

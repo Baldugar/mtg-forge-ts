@@ -1,0 +1,23 @@
+{
+  "id": "sleep-magic-corpus-m677",
+  "description": "M6 corpus — Sleep Magic; in-hand parse.",
+  "seed": 70195,
+  "cards": {
+    "Sleep Magic": "Name:Sleep Magic\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When enchanted creature is dealt damage, sacrifice this Aura.\nSVar:TrigSac:DB$ Sacrifice\nOracle:Enchant creature\\nWhen this Aura enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\nWhen enchanted creature is dealt damage, sacrifice this Aura.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sleep Magic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

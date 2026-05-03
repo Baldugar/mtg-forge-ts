@@ -1,0 +1,23 @@
+{
+  "id": "life-cloud-corpus-m677",
+  "description": "M6 corpus — Life Cloud; in-hand parse.",
+  "seed": 64200,
+  "cards": {
+    "Life Cloud": "Name:Life Cloud\nManaCost:X W W W\nTypes:Sorcery\nA:SP$ GainLife | Defined$ Player | LifeAmount$ X | SubAbility$ DBDraw | SpellDescription$ Each player gains X life, draws X cards, returns X creatures from their graveyard to the battlefield, then returns X lands from their graveyard to the battlefield.\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ Player | SubAbility$ DBRepeatCreature\nSVar:DBRepeatCreature:DB$ RepeatEach | RepeatSubAbility$ DBReturnCreature | RepeatPlayers$ Player | SubAbility$ DBRepeatLand\nSVar:DBReturnCreature:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.RememberedPlayerCtrl | DefinedPlayer$ Player.IsRemembered | Chooser$ Player.IsRemembered | ChangeNum$ X | Hidden$ True | Mandatory$ True\nSVar:DBRepeatLand:DB$ RepeatEach | RepeatSubAbility$ DBReturnLand | RepeatPlayers$ Player\nSVar:DBReturnLand:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Land.RememberedPlayerCtrl | DefinedPlayer$ Player.IsRemembered | Chooser$ Player.IsRemembered | ChangeNum$ X | Hidden$ True | Mandatory$ True\nSVar:X:Count$xPaid\nOracle:Each player gains X life, draws X cards, returns X creatures from their graveyard to the battlefield, then returns X lands from their graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Life Cloud"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

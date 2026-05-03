@@ -1,0 +1,25 @@
+{
+  "id": "grasping-giant-corpus-m677",
+  "description": "M6 corpus — Grasping Giant; ETB-on-bf.",
+  "seed": 61637,
+  "cards": {
+    "Grasping Giant": "Name:Grasping Giant\nManaCost:5 W\nTypes:Creature Giant\nPT:5/7\nK:Vigilance\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, exile that creature until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredBlockerLKICopy | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay\nOracle:Vigilance\\nWhenever Grasping Giant becomes blocked by a creature, exile that creature until Grasping Giant leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grasping Giant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

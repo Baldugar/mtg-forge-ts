@@ -1,0 +1,23 @@
+{
+  "id": "specimen-collector-corpus-m677",
+  "description": "M6 corpus — Specimen Collector; in-hand parse.",
+  "seed": 70537,
+  "cards": {
+    "Specimen Collector": "Name:Specimen Collector\nManaCost:4 U\nTypes:Creature Vedalken Wizard\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 green Squirrel creature token and a 0/3 blue Crab creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_squirrel,u_0_3_crab | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When CARDNAME dies, create a token that's a copy of target token you control.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Permanent.token+YouCtrl | TgtPrompt$ Select target token you control\nDeckHas:Ability$Token\nOracle:When Specimen Collector enters, create a 1/1 green Squirrel creature token and a 0/3 blue Crab creature token.\\nWhen Specimen Collector dies, create a token that's a copy of target token you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Specimen Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

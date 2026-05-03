@@ -1,0 +1,25 @@
+{
+  "id": "stern-judge-corpus-m677",
+  "description": "M6 corpus — Stern Judge; ETB-on-bf.",
+  "seed": 70988,
+  "cards": {
+    "Stern Judge": "Name:Stern Judge\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:2/2\nA:AB$ RepeatEach | Cost$ T | RepeatPlayers$ Player | RepeatSubAbility$ DBLoseLife | AILogic$ AllPlayerLoseLife | SpellDescription$ Each player loses 1 life for each Swamp they control.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Swamp.RememberedPlayerCtrl\nAI:RemoveDeck:Random\nOracle:{T}: Each player loses 1 life for each Swamp they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stern Judge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "graveyard-trespasser-corpus-m677",
+  "description": "M6 corpus — Graveyard Trespasser; in-hand parse.",
+  "seed": 61681,
+  "cards": {
+    "Graveyard Trespasser": "Name:Graveyard Trespasser\nManaCost:2 B\nTypes:Creature Human Werewolf\nPT:3/3\nK:Ward:Discard<1/Card>\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one target card from a graveyard. If a creature card was exiled this way, each opponent loses 1 life and you gain 1 life.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one target card from a graveyard. If a creature card was exiled this way, each opponent loses 1 life and you gain 1 life.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Card | TgtPrompt$ Select up to one target card from a graveyard | RememberChanged$ True | SubAbility$ DBDrain\nSVar:DBDrain:DB$ LoseLife | ConditionDefined$ Remembered | ConditionPresent$ Creature | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | ConditionDefined$ Remembered | ConditionPresent$ Creature | Defined$ You | LifeAmount$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Daybound\nDeckHas:Ability$Graveyard|LifeGain\nAlternateMode:DoubleFaced\nOracle:Ward—Discard a card.\\nWhenever Graveyard Trespasser enters or attacks, exile up to one target card from a graveyard. If a creature card was exiled this way, each opponent loses 1 life and you gain 1 life.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Graveyard Glutton\nManaCost:no cost\nColors:black\nTypes:Creature Werewolf\nPT:4/4\nK:Ward:Discard<1/Card>\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileN | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to two target cards from graveyards. For each creature card exiled this way, each opponent loses 1 life and you gain 1 life.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExileN | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to two target cards from graveyards. For each creature card exiled this way, each opponent loses 1 life and you gain 1 life.\nSVar:TrigExileN:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Card | TgtPrompt$ Select up to two target cards from graveyards | RememberChanged$ True | SubAbility$ DBDrainN\nSVar:DBDrainN:DB$ LoseLife | ConditionDefined$ Remembered | ConditionPresent$ Creature | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLifeN\nSVar:DBGainLifeN:DB$ GainLife | ConditionDefined$ Remembered | ConditionPresent$ Creature | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanupN\nSVar:X:Remembered$Valid Creature\nSVar:DBCleanupN:DB$ Cleanup | ClearRemembered$ True\nK:Nightbound\nOracle:Ward—Discard a card.\\nWhenever Graveyard Glutton enters or attacks, exile up to two target cards from graveyards. For each creature card exiled this way, each opponent loses 1 life and you gain 1 life.\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graveyard Trespasser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

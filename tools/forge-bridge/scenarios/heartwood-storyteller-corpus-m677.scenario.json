@@ -1,0 +1,25 @@
+{
+  "id": "heartwood-storyteller-corpus-m677",
+  "description": "M6 corpus — Heartwood Storyteller; ETB-on-bf.",
+  "seed": 62183,
+  "cards": {
+    "Heartwood Storyteller": "Name:Heartwood Storyteller\nManaCost:1 G G\nTypes:Creature Treefolk\nPT:2/3\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Player | Execute$ TrigDraw | TriggerDescription$ Whenever a player casts a noncreature spell, each of that player's opponents may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardOpponent | NumCards$ 1 | OptionalDecider$ True\nOracle:Whenever a player casts a noncreature spell, each of that player's opponents may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Heartwood Storyteller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

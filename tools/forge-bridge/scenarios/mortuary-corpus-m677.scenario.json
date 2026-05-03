@@ -1,0 +1,23 @@
+{
+  "id": "mortuary-corpus-m677",
+  "description": "M6 corpus — Mortuary; in-hand parse.",
+  "seed": 65522,
+  "cards": {
+    "Mortuary": "Name:Mortuary\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouOwn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a creature is put into your graveyard from the battlefield, put that card on top of your library.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | LibraryPosition$ 0 | Destination$ Library\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Whenever a creature is put into your graveyard from the battlefield, put that card on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mortuary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

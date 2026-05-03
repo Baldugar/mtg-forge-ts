@@ -1,0 +1,25 @@
+{
+  "id": "ozolith-the-shattered-spire-corpus-m677",
+  "description": "M6 corpus — Ozolith, the Shattered Spire; ETB-on-bf.",
+  "seed": 66537,
+  "cards": {
+    "Ozolith, the Shattered Spire": "Name:Ozolith, the Shattered Spire\nManaCost:1 G\nTypes:Legendary Artifact\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+inZoneBattlefield,Artifact.YouCtrl+inZoneBattlefield | ValidCounterType$ P1P1 | ReplaceWith$ AddOneMoreCounters | Description$ If one or more +1/+1 counters would be put on an artifact or creature you control, that many plus one +1/+1 counters are put on it instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ValidCounterType$ P1P1 | ChooseCounter$ True | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Plus.1\nA:AB$ PutCounter | Cost$ 1 G T | ValidTgts$ Creature.YouCtrl,Artifact.YouCtrl | TgtPrompt$ Select target artifact or creature you control | CounterType$ P1P1 | CounterNum$ 1 | SorcerySpeed$ True | SpellDescription$ Put a +1/+1 counter on target artifact or creature you control. Activate only as a sorcery.\nK:Cycling:2\nDeckHas:Ability$Counters|Discard\nDeckHints:Ability$Counters\nOracle:If one or more +1/+1 counters would be put on an artifact or creature you control, that many plus one +1/+1 counters are put on it instead.\\n{1}{G}, {T}: Put a +1/+1 counter on target artifact or creature you control. Activate only as a sorcery.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ozolith, the Shattered Spire"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

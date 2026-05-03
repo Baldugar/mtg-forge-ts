@@ -1,0 +1,23 @@
+{
+  "id": "sanguine-indulgence-corpus-m677",
+  "description": "M6 corpus — Sanguine Indulgence; in-hand parse.",
+  "seed": 68983,
+  "cards": {
+    "Sanguine Indulgence": "Name:Sanguine Indulgence\nManaCost:3 B\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 3 | EffectZone$ All | CheckSVar$ X | SVarCompare$ GE3 | Description$ CARDNAME costs {3} less to cast if you've gained 3 or more life this turn.\nSVar:X:Count$LifeYouGainedThisTurn\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return up to two target creature cards from your graveyard to your hand.\nDeckHints:Ability$LifeGain\nOracle:This spell costs {3} less to cast if you've gained 3 or more life this turn.\\nReturn up to two target creature cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanguine Indulgence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

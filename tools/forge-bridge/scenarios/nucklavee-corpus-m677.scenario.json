@@ -1,0 +1,23 @@
+{
+  "id": "nucklavee-corpus-m677",
+  "description": "M6 corpus — Nucklavee; in-hand parse.",
+  "seed": 66095,
+  "cards": {
+    "Nucklavee": "Name:Nucklavee\nManaCost:4 UR UR\nTypes:Creature Beast\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneRed | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target red sorcery card from your graveyard to your hand.\nSVar:TrigChangeZoneRed:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Sorcery.Red+YouCtrl\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneBlue | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target blue instant card from your graveyard to your hand.\nSVar:TrigChangeZoneBlue:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.Blue+YouCtrl\nOracle:When Nucklavee enters, you may return target red sorcery card from your graveyard to your hand.\\nWhen Nucklavee enters, you may return target blue instant card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nucklavee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

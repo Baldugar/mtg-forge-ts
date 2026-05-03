@@ -1,0 +1,23 @@
+{
+  "id": "prying-questions-corpus-m677",
+  "description": "M6 corpus — Prying Questions; in-hand parse.",
+  "seed": 67304,
+  "cards": {
+    "Prying Questions": "Name:Prying Questions\nManaCost:2 B\nTypes:Sorcery\nA:SP$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 3 | SubAbility$ DBChangeZone | SpellDescription$ Target opponent loses 3 life and puts a card from their hand on top of their library.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | DefinedPlayer$ ParentTarget | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | IsCurse$ True\nOracle:Target opponent loses 3 life and puts a card from their hand on top of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prying Questions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

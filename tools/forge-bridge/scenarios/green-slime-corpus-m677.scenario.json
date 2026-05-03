@@ -1,0 +1,23 @@
+{
+  "id": "green-slime-corpus-m677",
+  "description": "M6 corpus — Green Slime; in-hand parse.",
+  "seed": 61727,
+  "cards": {
+    "Green Slime": "Name:Green Slime\nManaCost:2 G\nTypes:Creature Ooze\nPT:2/2\nK:Flash\nK:Foretell:G\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigCounterAbility | TriggerDescription$ When CARDNAME enters, counter target activated or triggered ability from an artifact or enchantment source. If a permanent's ability is countered this way, destroy that permanent.\nSVar:TrigCounterAbility:DB$ Counter | TargetType$ Activated,Triggered | TgtPrompt$ Select target activated or triggered ability from an artifact or enchantment source | ValidTgts$ Artifact,Enchantment | DestroyPermanent$ True\nAI:RemoveDeck:Random\nOracle:Flash\\nWhen Green Slime enters, counter target activated or triggered ability from an artifact or enchantment source. If a permanent's ability is countered this way, destroy that permanent.\\nFortell {G}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Green Slime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

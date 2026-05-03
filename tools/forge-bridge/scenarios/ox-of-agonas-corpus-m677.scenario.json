@@ -1,0 +1,23 @@
+{
+  "id": "ox-of-agonas-corpus-m677",
+  "description": "M6 corpus — Ox of Agonas; in-hand parse.",
+  "seed": 66529,
+  "cards": {
+    "Ox of Agonas": "Name:Ox of Agonas\nManaCost:3 R R\nTypes:Creature Ox\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDiscard | TriggerDescription$ When CARDNAME enters, discard your hand, then draw three cards.\nSVar:DBDiscard:DB$ Discard | Mode$ Hand | Defined$ You | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 3\nK:Escape:R R ExileFromGrave<8/Card.Other/other>\nK:etbCounter:P1P1:1:ValidCard$ Card.Self+escaped:CARDNAME escapes with a +1/+1 counter on it.\nSVar:AIPreference:SacCost$Card.YouOwn+Other+inZoneGraveyard\nDeckHas:Ability$Counters\nOracle:When Ox of Agonas enters, discard your hand, then draw three cards.\\nEscape—{R}{R}, Exile eight other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\\nOx of Agonas escapes with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ox of Agonas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

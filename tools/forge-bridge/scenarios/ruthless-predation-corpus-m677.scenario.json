@@ -1,0 +1,23 @@
+{
+  "id": "ruthless-predation-corpus-m677",
+  "description": "M6 corpus — Ruthless Predation; in-hand parse.",
+  "seed": 68692,
+  "cards": {
+    "Ruthless Predation": "Name:Ruthless Predation\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ Fight | TgtPrompt$ Select target creature you control | SubAbility$ DBFight | NumAtt$ +1 | NumDef$ +2 | SpellDescription$ Target creature you control gets +1/+2 until end of turn. It fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nOracle:Target creature you control gets +1/+2 until end of turn. It fights target creature you don't control. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruthless Predation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

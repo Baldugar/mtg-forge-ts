@@ -1,0 +1,25 @@
+{
+  "id": "greater-realm-of-preservation-corpus-m677",
+  "description": "M6 corpus — Greater Realm of Preservation; ETB-on-bf.",
+  "seed": 61717,
+  "cards": {
+    "Greater Realm of Preservation": "Name:Greater Realm of Preservation\nManaCost:1 W\nTypes:Enchantment\nA:AB$ ChooseSource | Cost$ 1 W | Choices$ Card.BlackSource,Card.RedSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a black or red source of your choice would deal damage to you this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict+BlackSource,Card.ChosenCardStrict+RedSource | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen black or red source deals damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:Random\nOracle:{1}{W}: The next time a black or red source of your choice would deal damage to you this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Greater Realm of Preservation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

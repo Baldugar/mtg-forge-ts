@@ -1,0 +1,23 @@
+{
+  "id": "happily-ever-after-corpus-m677",
+  "description": "M6 corpus — Happily Ever After; in-hand parse.",
+  "seed": 62035,
+  "cards": {
+    "Happily Ever After": "Name:Happily Ever After\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, each player gains 5 life and draws a card.\nSVar:TrigGainLife:DB$ GainLife | Defined$ Player | LifeAmount$ 5 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player | NumCards$ 1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Z | SVarCompare$ EQ11 | LifeTotal$ You | LifeAmount$ GEW | Execute$ TrigWin | TriggerDescription$ At the beginning of your upkeep, if there are five colors among permanents you control, there are six or more card types among permanents you control and/or cards in your graveyard, and your life total is greater than or equal to your starting life total, you win the game.\nSVar:TrigWin:DB$ WinsGame | Defined$ You\nSVar:X:Count$Valid Permanent.YouCtrl$Colors/LimitMax.5\nSVar:Y:Count$ValidBattlefield,Graveyard Card.YouCtrl$CardTypes/LimitMax.6\nSVar:Z:SVar$X/Plus.Y\nSVar:W:Count$YourStartingLife\nDeckHas:Ability$LifeGain\nOracle:When Happily Ever After enters, each player gains 5 life and draws a card.\\nAt the beginning of your upkeep, if there are five colors among permanents you control, there are six or more card types among permanents you control and/or cards in your graveyard, and your life total is greater than or equal to your starting life total, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Happily Ever After"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

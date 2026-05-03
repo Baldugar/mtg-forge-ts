@@ -1,0 +1,23 @@
+{
+  "id": "mindstorm-crown-corpus-m677",
+  "description": "M6 corpus — Mindstorm Crown; in-hand parse.",
+  "seed": 65183,
+  "cards": {
+    "Mindstorm Crown": "Name:Mindstorm Crown\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, draw a card if you had no cards in hand at the beginning of this turn. If you had a card in hand, CARDNAME deals 1 damage to you.\nSVar:TrigDraw:DB$ Draw | Defined$ You.!CardsInHandAtBeginningOfTurn | NumCards$ 1 | SubAbility$ DBPain\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You.CardsInHandAtBeginningOfTurn\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, draw a card if you had no cards in hand at the beginning of this turn. If you had a card in hand, Mindstorm Crown deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindstorm Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

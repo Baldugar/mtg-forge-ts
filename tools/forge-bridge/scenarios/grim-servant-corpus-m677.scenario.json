@@ -1,0 +1,23 @@
+{
+  "id": "grim-servant-corpus-m677",
+  "description": "M6 corpus — Grim Servant; in-hand parse.",
+  "seed": 61779,
+  "cards": {
+    "Grim Servant": "Name:Grim Servant\nManaCost:3 B\nTypes:Creature Zombie Warlock\nPT:3/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for a card with mana value less than or equal to your devotion to black, reveal it, put it into your hand, then shuffle. You lose 3 life. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.cmcLEX | ChangeNum$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 3\nSVar:X:Count$Devotion.Black\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill\nOracle:Menace\\nWhen Grim Servant enters, search your library for a card with mana value less than or equal to your devotion to black, reveal it, put it into your hand, then shuffle. You lose 3 life. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Servant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

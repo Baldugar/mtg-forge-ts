@@ -1,0 +1,23 @@
+{
+  "id": "oscorp-industries-corpus-m677",
+  "description": "M6 corpus — Oscorp Industries; in-hand parse.",
+  "seed": 66451,
+  "cards": {
+    "Oscorp Industries": "Name:Oscorp Industries\nVariant:UniversesWithin:FlavorName:Exclusive Nightclub\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When this land enters from a graveyard, you lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nA:AB$ Mana | Cost$ T | Produced$ Combo U B R | SpellDescription$ Add {U}, {B}, or {R}.\nK:Mayhem\nOracle:This land enters tapped.\\nWhen this land enters from a graveyard, you lose 2 life.\\n{T}: Add {U}, {B}, or {R}.\\nMayhem (You may play this card from your graveyard if you discarded it this turn. Timing rules still apply.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oscorp Industries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

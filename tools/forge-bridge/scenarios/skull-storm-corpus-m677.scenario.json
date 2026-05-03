@@ -1,0 +1,23 @@
+{
+  "id": "skull-storm-corpus-m677",
+  "description": "M6 corpus — Skull Storm; in-hand parse.",
+  "seed": 70075,
+  "cards": {
+    "Skull Storm": "Name:Skull Storm\nManaCost:7 B B\nTypes:Sorcery\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it for each time you've cast your commander from the command zone this game.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X\nSVar:X:Count$TotalCommanderCastFromCommandZone\nA:SP$ Sacrifice | Defined$ Opponent | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBRepeatEach\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ OppNonRememberedController | RepeatSubAbility$ DBLoseLife | SubAbility$ DBCleanup\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ PlayerCountRemembered$LifeTotal/HalfUp\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When you cast this spell, copy it for each time you've cast your commander from the command zone this game.\\nEach opponent sacrifices a creature. Each opponent who can't loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skull Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

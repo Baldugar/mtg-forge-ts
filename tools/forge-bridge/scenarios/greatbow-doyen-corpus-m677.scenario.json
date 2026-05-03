@@ -1,0 +1,23 @@
+{
+  "id": "greatbow-doyen-corpus-m677",
+  "description": "M6 corpus — Greatbow Doyen; in-hand parse.",
+  "seed": 61711,
+  "cards": {
+    "Greatbow Doyen": "Name:Greatbow Doyen\nManaCost:4 G\nTypes:Creature Elf Archer\nPT:2/4\nS:Mode$ Continuous | Affected$ Creature.Archer+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Archer creatures you control get +1/+1.\nT:Mode$ DamageDone | ValidSource$ Archer.YouCtrl+inZoneBattlefield | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever an Archer you control deals damage to a creature, that Archer deals that much damage to that creature's controller.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredTargetController | DamageSource$ TriggeredSource | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Other Archer creatures you control get +1/+1.\\nWhenever an Archer you control deals damage to a creature, that Archer deals that much damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greatbow Doyen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

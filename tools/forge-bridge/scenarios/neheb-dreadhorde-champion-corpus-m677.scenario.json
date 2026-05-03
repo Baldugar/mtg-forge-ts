@@ -1,0 +1,23 @@
+{
+  "id": "neheb-dreadhorde-champion-corpus-m677",
+  "description": "M6 corpus — Neheb, Dreadhorde Champion; in-hand parse.",
+  "seed": 65823,
+  "cards": {
+    "Neheb, Dreadhorde Champion": "Name:Neheb, Dreadhorde Champion\nManaCost:2 R R\nTypes:Legendary Creature Zombie Minotaur Warrior\nPT:5/4\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | Execute$ TrigDiscard | CombatDamage$ True | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or planeswalker, you may discard any number of cards. If you do, draw that many cards and add that many {R}. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:TrigDiscard:DB$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ X | PersistentMana$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Trample\\nWhenever Neheb, Dreadhorde Champion deals combat damage to a player or planeswalker, you may discard any number of cards. If you do, draw that many cards and add that much {R}. Until end of turn, you don't lose this mana as steps and phases end.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neheb, Dreadhorde Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

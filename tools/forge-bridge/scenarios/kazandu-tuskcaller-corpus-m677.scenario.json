@@ -1,0 +1,25 @@
+{
+  "id": "kazandu-tuskcaller-corpus-m677",
+  "description": "M6 corpus — Kazandu Tuskcaller; ETB-on-bf.",
+  "seed": 63542,
+  "cards": {
+    "Kazandu Tuskcaller": "Name:Kazandu Tuskcaller\nManaCost:1 G\nTypes:Creature Human Shaman\nPT:1/1\nK:Level up:1 G\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 1 | SetToughness$ 1 | AddAbility$ TokenLow | IsPresent$ Card.Self+counters_GE2_LEVEL+counters_LE5_LEVEL | Description$ LEVEL 2-5 1/1 {T}: Create a 3/3 green Elephant creature token.\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 1 | SetToughness$ 1 | AddAbility$ TokenHigh | IsPresent$ Card.Self+counters_GE6_LEVEL | Description$ LEVEL 6+ 1/1 {T}: Create two 3/3 green Elephant creature tokens.\nSVar:TokenLow:AB$ Token | Cost$ T | TokenScript$ g_3_3_elephant | Secondary$ True | SpellDescription$ Create a 3/3 green Elephant creature token.\nSVar:TokenHigh:AB$ Token | Cost$ T | TokenAmount$ 2 | TokenScript$ g_3_3_elephant | Secondary$ True | SpellDescription$ Create two 3/3 green Elephant creature tokens.\nOracle:Level up {1}{G} ({1}{G}: Put a level counter on this. Level up only as a sorcery.)\\nLEVEL 2-5\\n1/1\\n{T}: Create a 3/3 green Elephant creature token.\\nLEVEL 6+\\n1/1\\n{T}: Create two 3/3 green Elephant creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kazandu Tuskcaller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

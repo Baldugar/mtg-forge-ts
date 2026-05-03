@@ -1,0 +1,23 @@
+{
+  "id": "lofty-denial-corpus-m677",
+  "description": "M6 corpus — Lofty Denial; in-hand parse.",
+  "seed": 64361,
+  "cards": {
+    "Lofty Denial": "Name:Lofty Denial\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ Z | SpellDescription$ Counter target spell unless its controller pays {1}. If you control a creature with flying, counter that spell unless its controller pays {4} instead.\nSVar:Y:Count$Valid Creature.YouCtrl+withFlying\nSVar:Z:Count$Compare Y GE1.4.1\nDeckHints:Keyword$Flying\nOracle:Counter target spell unless its controller pays {1}. If you control a creature with flying, counter that spell unless its controller pays {4} instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lofty Denial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

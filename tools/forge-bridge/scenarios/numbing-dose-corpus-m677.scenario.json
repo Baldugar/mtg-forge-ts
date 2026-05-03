@@ -1,0 +1,23 @@
+{
+  "id": "numbing-dose-corpus-m677",
+  "description": "M6 corpus — Numbing Dose; in-hand parse.",
+  "seed": 66110,
+  "cards": {
+    "Numbing Dose": "Name:Numbing Dose\nManaCost:3 U U\nTypes:Enchantment Aura\nK:Enchant:Artifact,Creature:artifact or creature\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted permanent doesn't untap during its controller's untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of the upkeep of enchanted permanent's controller, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 1\nOracle:Enchant artifact or creature\\nEnchanted permanent doesn't untap during its controller's untap step.\\nAt the beginning of the upkeep of enchanted permanent's controller, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Numbing Dose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

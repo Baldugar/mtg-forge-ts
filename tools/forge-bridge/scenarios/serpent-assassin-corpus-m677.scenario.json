@@ -1,0 +1,23 @@
+{
+  "id": "serpent-assassin-corpus-m677",
+  "description": "M6 corpus — Serpent Assassin; in-hand parse.",
+  "seed": 69476,
+  "cards": {
+    "Serpent Assassin": "Name:Serpent Assassin\nManaCost:3 B B\nTypes:Creature Snake Assassin\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target nonblack creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature.\nOracle:When Serpent Assassin enters, you may destroy target nonblack creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serpent Assassin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

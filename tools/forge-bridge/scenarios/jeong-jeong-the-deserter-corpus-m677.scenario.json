@@ -1,0 +1,25 @@
+{
+  "id": "jeong-jeong-the-deserter-corpus-m677",
+  "description": "M6 corpus — Jeong Jeong, the Deserter; ETB-on-bf.",
+  "seed": 63273,
+  "cards": {
+    "Jeong Jeong, the Deserter": "Name:Jeong Jeong, the Deserter\nManaCost:2 R\nTypes:Legendary Creature Human Rebel Ally\nPT:2/3\nK:Firebending:1\nA:AB$ PutCounter | Cost$ 3 | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | Exhaust$ True | SubAbility$ DBTrigger | SpellDescription$ Put a +1/+1 counter on NICKNAME. When you next cast a Lesson spell this turn, copy it and you may choose new targets for the copy. (Activate each exhaust ability only once.)\nSVar:DBTrigger:DB$ DelayedTrigger | Mode$ SpellCast | ValidCard$ Lesson | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ EffTrigCopy | TriggerDescription$ When you next cast a Lesson spell this turn, copy it and you may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nDeckHints:Type$Lesson\nOracle:Firebending 1 (Whenever this creature attacks, add {R}. This mana lasts until end of combat.)\\nExhaust — {3}: Put a +1/+1 counter on Jeong Jeong. When you next cast a Lesson spell this turn, copy it and you may choose new targets for the copy. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jeong Jeong, the Deserter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

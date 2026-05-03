@@ -1,0 +1,25 @@
+{
+  "id": "lumengrid-augur-corpus-m677",
+  "description": "M6 corpus — Lumengrid Augur; ETB-on-bf.",
+  "seed": 64483,
+  "cards": {
+    "Lumengrid Augur": "Name:Lumengrid Augur\nManaCost:3 U\nTypes:Creature Vedalken Wizard\nPT:2/2\nA:AB$ Draw | Cost$ 1 T | NumCards$ 1 | ValidTgts$ Player | SubAbility$ DBDiscard | SpellDescription$ Target player draws a card, then discards a card. If that player discards an artifact card this way, untap CARDNAME.\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card.Artifact | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{1}, {T}: Target player draws a card, then discards a card. If that player discards an artifact card this way, untap Lumengrid Augur.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lumengrid Augur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soltari-visionary-corpus-m677",
+  "description": "M6 corpus — Soltari Visionary; in-hand parse.",
+  "seed": 70382,
+  "cards": {
+    "Soltari Visionary": "Name:Soltari Visionary\nManaCost:1 W W\nTypes:Creature Soltari Cleric\nPT:2/2\nK:Shadow\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to a player, destroy target enchantment that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Enchantment | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select target enchantment that player controls.\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever Soltari Visionary deals damage to a player, destroy target enchantment that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soltari Visionary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

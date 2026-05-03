@@ -1,0 +1,23 @@
+{
+  "id": "nowhere-to-run-corpus-m677",
+  "description": "M6 corpus — Nowhere to Run; in-hand parse.",
+  "seed": 66083,
+  "cards": {
+    "Nowhere to Run": "Name:Nowhere to Run\nManaCost:1 B\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -3/-3 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True\nS:Mode$ IgnoreHexproof | ValidEntity$ Creature.OppCtrl | Description$ Creatures your opponents control can be the targets of spells and abilities as though they didn't have hexproof. Ward abilities of those creatures don't trigger.\nS:Mode$ DisableTriggers | Secondary$ True | ValidTrigger$ Triggered.Ward | ValidCard$ Creature.OppCtrl+inZoneBattlefield | Description$ Creatures your opponents control can be the targets of spells and abilities as though they didn't have hexproof. Ward abilities of those creatures don't trigger.\nOracle:Flash\\nWhen Nowhere to Run enters, target creature an opponent controls gets -3/-3 until end of turn.\\nCreatures your opponents control can be the targets of spells and abilities as though they didn't have hexproof. Ward abilities of those creatures don't trigger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nowhere to Run"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

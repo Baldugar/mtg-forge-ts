@@ -1,0 +1,23 @@
+{
+  "id": "leech-medic-corpus-m677",
+  "description": "M6 corpus — Leech Medic; in-hand parse.",
+  "seed": 64087,
+  "cards": {
+    "Leech Medic": "Name:Leech Medic\nManaCost:3 W\nTypes:Creature Leech Cleric\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters the battlefield, create a Leeches token card and put it into your hand.\nSVar:TrigConjure:DB$ MakeCard | Name$ Leeches | TokenCard$ True | Zone$ Hand\nOracle:When Leech Medic enters the battlefield, create a Leeches token card and put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leech Medic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

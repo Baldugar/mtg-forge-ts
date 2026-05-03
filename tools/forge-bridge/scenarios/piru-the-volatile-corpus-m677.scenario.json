@@ -1,0 +1,23 @@
+{
+  "id": "piru-the-volatile-corpus-m677",
+  "description": "M6 corpus — Piru, the Volatile; in-hand parse.",
+  "seed": 66929,
+  "cards": {
+    "Piru, the Volatile": "Name:Piru, the Volatile\nManaCost:2 R R W W B B\nTypes:Legendary Creature Elder Dragon\nPT:7/7\nK:Flying\nK:Lifelink\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {R}{W}{B}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ R W B\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME dies, it deals 7 damage to each nonlegendary creature.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature.nonLegendary | NumDmg$ 7 | ValidDescription$ each nonlegendary creature.\nOracle:Flying, lifelink\\nAt the beginning of your upkeep, sacrifice Piru, the Volatile unless you pay {R}{W}{B}.\\nWhen Piru dies, it deals 7 damage to each nonlegendary creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Piru, the Volatile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

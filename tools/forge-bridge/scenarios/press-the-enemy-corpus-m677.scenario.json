@@ -1,0 +1,23 @@
+{
+  "id": "press-the-enemy-corpus-m677",
+  "description": "M6 corpus — Press the Enemy; in-hand parse.",
+  "seed": 67147,
+  "cards": {
+    "Press the Enemy": "Name:Press the Enemy\nManaCost:2 U U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand+OppCtrl,Card.inZoneStack+OppCtrl | TgtZone$ Stack,Battlefield | Origin$ Battlefield,Stack | Destination$ Hand | SubAbility$ DBMayPlay | SpellDescription$ Return target spell or nonland permanent an opponent controls to its owner's hand.\nSVar:DBMayPlay:DB$ Play | Valid$ Card.YouOwn | ValidZone$ Hand | ValidSA$ Instant.cmcLEZ,Sorcery.cmcLEZ | WithoutManaCost$ True | Optional$ True | SpellDescription$ You may cast an instant or sorcery spell with equal or lesser mana value from your hand without paying its mana cost.\nSVar:X:SpellTargeted$CardManaCostLKI\nSVar:Y:Targeted$CardManaCostLKI\nSVar:Z:SVar$X/Plus.Y\nDeckHints:Type$Sorcery|Instant\nOracle:Return target spell or nonland permanent an opponent controls to its owner's hand. You may cast an instant or sorcery spell with equal or lesser mana value from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Press the Enemy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mark-of-fury-corpus-m677",
+  "description": "M6 corpus — Mark of Fury; in-hand parse.",
+  "seed": 64798,
+  "cards": {
+    "Mark of Fury": "Name:Mark of Fury\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Haste | Description$ Enchanted creature has haste.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, return CARDNAME to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nOracle:Enchant creature\\nEnchanted creature has haste.\\nAt the beginning of the end step, return Mark of Fury to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mark of Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

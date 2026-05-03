@@ -1,0 +1,23 @@
+{
+  "id": "kuon-ogre-ascendant-corpus-m677",
+  "description": "M6 corpus — Kuon, Ogre Ascendant; in-hand parse.",
+  "seed": 63921,
+  "cards": {
+    "Kuon, Ogre Ascendant": "Name:Kuon, Ogre Ascendant\nManaCost:B B B\nTypes:Legendary Creature Ogre Monk\nPT:2/4\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigFlip | TriggerDescription$ At the beginning of the end step, if three or more creatures died this turn, flip CARDNAME.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nAlternateMode:Flip\nOracle:At the beginning of the end step, if three or more creatures died this turn, flip Kuon, Ogre Ascendant.\n\nALTERNATE\n\nName:Kuon's Essence\nManaCost:B B B\nColors:black\nTypes:Legendary Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredPlayer | SacValid$ Creature\nOracle:At the beginning of each player's upkeep, that player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kuon, Ogre Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

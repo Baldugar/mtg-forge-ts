@@ -1,0 +1,23 @@
+{
+  "id": "high-priest-of-penance-corpus-m677",
+  "description": "M6 corpus — High Priest of Penance; in-hand parse.",
+  "seed": 62358,
+  "cards": {
+    "High Priest of Penance": "Name:High Priest of Penance\nManaCost:W B\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | OptionalDecider$ You | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME is dealt damage, you may destroy target nonland permanent.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent\nSVar:HasCombatEffect:TRUE\nOracle:Whenever High Priest of Penance is dealt damage, you may destroy target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "High Priest of Penance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "orim-s-chant-corpus-m677",
+  "description": "M6 corpus — Orim's Chant; in-hand parse.",
+  "seed": 66422,
+  "cards": {
+    "Orim's Chant": "Name:Orim's Chant\nManaCost:W\nTypes:Instant\nK:Kicker:W\nA:SP$ Effect | Name$ Orim's Chant's Effect — No Spells | IsCurse$ True | StaticAbilities$ CantBeCast | ValidTgts$ Player | RememberObjects$ Targeted | SubAbility$ CantAttackWhenKicked | AILogic$ BeginningOfOppTurn | SpellDescription$ Target player can't cast spells this turn.\nSVar:CantAttackWhenKicked:DB$ Effect | Name$ Orim's Chant's Effect — No Attacking | IsCurse$ True | StaticAbilities$ CantAttack | Condition$ Kicked | SpellDescription$ If this spell was kicked, creatures can't attack this turn.\nSVar:CantBeCast:Mode$ CantBeCast | ValidCard$ Card | Caster$ Player.IsRemembered | Description$ Target player can't cast spells this turn.\nSVar:CantAttack:Mode$ CantAttack | ValidCard$ Creature | Description$ Creatures can't attack this turn.\nSVar:NeedsToPlayKicked:Creature.OppCtrl\nOracle:Kicker {W} (You may pay an additional {W} as you cast this spell.)\\nTarget player can't cast spells this turn. If this spell was kicked, creatures can't attack this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orim's Chant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

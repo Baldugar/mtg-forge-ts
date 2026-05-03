@@ -1,0 +1,23 @@
+{
+  "id": "shapeshifter-corpus-m677",
+  "description": "M6 corpus — Shapeshifter; in-hand parse.",
+  "seed": 69609,
+  "cards": {
+    "Shapeshifter": "Name:Shapeshifter\nManaCost:6\nTypes:Artifact Creature Shapeshifter\nPT:*/7-*\nK:ETBReplacement:Other:ChooseNumber\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ ChooseNumber | TriggerDescription$ At the beginning of your upkeep, you may choose a number between 0 and 7.\nSVar:ChooseNumber:DB$ ChooseNumber | Defined$ You | Min$ 0 | Max$ 7 | AILogic$ Min | SpellDescription$ As CARDNAME enters, choose a number between 0 and 7.\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ Y | Description$ CARDNAME's power is equal to the last chosen number and its toughness is equal to 7 minus that number.\nSVar:X:Count$ChosenNumber\nSVar:Y:Number$7/Minus.X\nAI:RemoveDeck:All\nOracle:As Shapeshifter enters, choose a number between 0 and 7.\\nAt the beginning of your upkeep, you may choose a number between 0 and 7.\\nShapeshifter's power is equal to the last chosen number and its toughness is equal to 7 minus that number.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shapeshifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

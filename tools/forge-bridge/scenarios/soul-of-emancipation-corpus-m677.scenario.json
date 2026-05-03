@@ -1,0 +1,23 @@
+{
+  "id": "soul-of-emancipation-corpus-m677",
+  "description": "M6 corpus — Soul of Emancipation; in-hand parse.",
+  "seed": 70447,
+  "cards": {
+    "Soul of Emancipation": "Name:Soul of Emancipation\nManaCost:4 G W U\nTypes:Creature Avatar\nPT:5/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy up to three other target nonland permanents. For each of those permanents, its controller creates a 3/3 white Angel creature token with flying.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 3 | ValidTgts$ Permanent.nonLand | TgtPrompt$ Choose up to three nonland permanents | RememberTargets$ True | SubAbility$ MakeTokens\nSVar:MakeTokens:DB$ RepeatEach | RepeatSubAbility$ DBToken | DefinedCards$ Remembered | UseImprinted$ True | ChangeZoneTable$ True | SubAbility$ DBCleanup\nSVar:DBToken:DB$ Token | TokenScript$ w_3_3_angel_flying | TokenOwner$ ImprintedController\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Angel\nOracle:When Soul of Emancipation enters, destroy up to three other target nonland permanents. For each of those permanents, its controller creates a 3/3 white Angel creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul of Emancipation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

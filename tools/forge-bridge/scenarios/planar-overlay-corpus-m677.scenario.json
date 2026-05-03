@@ -1,0 +1,23 @@
+{
+  "id": "planar-overlay-corpus-m677",
+  "description": "M6 corpus — Planar Overlay; in-hand parse.",
+  "seed": 66977,
+  "cards": {
+    "Planar Overlay": "Name:Planar Overlay\nManaCost:2 U\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ Player | EachBasicType$ True | ControlledByPlayer$ Chooser | SubAbility$ DBChangeZone | SpellDescription$ Each player chooses a land they control of each basic land type. Return those lands to their owners' hands.\nSVar:DBChangeZone:DB$ ChangeZoneAll | ChangeType$ Card.ChosenCard | Origin$ Battlefield | Destination$ Hand | StackDescription$ None\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Each player chooses a land they control of each basic land type. Return those lands to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planar Overlay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

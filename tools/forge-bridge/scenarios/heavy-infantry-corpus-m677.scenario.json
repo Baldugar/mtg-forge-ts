@@ -1,0 +1,23 @@
+{
+  "id": "heavy-infantry-corpus-m677",
+  "description": "M6 corpus — Heavy Infantry; in-hand parse.",
+  "seed": 62196,
+  "cards": {
+    "Heavy Infantry": "Name:Heavy Infantry\nManaCost:4 W\nTypes:Creature Human Soldier\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nSVar:PlayMain1:TRUE\nOracle:When Heavy Infantry enters, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heavy Infantry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

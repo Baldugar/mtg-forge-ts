@@ -1,0 +1,23 @@
+{
+  "id": "shatterskull-charger-corpus-m677",
+  "description": "M6 corpus — Shatterskull Charger; in-hand parse.",
+  "seed": 69639,
+  "cards": {
+    "Shatterskull Charger": "Name:Shatterskull Charger\nManaCost:1 R R\nTypes:Creature Giant Warrior\nPT:4/3\nK:Kicker:2\nK:Trample\nK:Haste\nK:etbCounter:P1P1:1:CheckSVar$ WasKicked:If CARDNAME was kicked, it enters with a +1/+1 counter on it.\nSVar:WasKicked:Count$Kicked.1.0\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigReturn | IsPresent$ Card.Self+counters_EQ0_P1P1 | TriggerDescription$ At the beginning of your end step, return CARDNAME to its owner's hand unless it has a +1/+1 counter on it.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Kicker {2}\\nTrample, haste\\nIf Shatterskull Charger was kicked, it enters with a +1/+1 counter on it.\\nAt the beginning of your end step, if Shatterskull Charger doesn't have a +1/+1 counter on it, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shatterskull Charger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

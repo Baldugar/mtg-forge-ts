@@ -1,0 +1,25 @@
+{
+  "id": "mole-worms-corpus-m677",
+  "description": "M6 corpus — Mole Worms; ETB-on-bf.",
+  "seed": 65390,
+  "cards": {
+    "Mole Worms": "Name:Mole Worms\nManaCost:2 B\nTypes:Creature Worm\nPT:1/1\nK:You may choose not to untap CARDNAME during your untap step.\nA:AB$ Tap | Cost$ T | ValidTgts$ Land | SubAbility$ DBEffect | SpellDescription$ Tap target land. It doesn't untap during its controller's untap step for as long as CARDNAME remains tapped. | StackDescription$ SpellDescription\nSVar:DBEffect:DB$ Effect | IsCurse$ True | ReplacementEffects$ DontUntap | Duration$ UntilUntaps | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ It doesn't untap during its controller's untap step for as long as EFFECTSOURCE remains tapped.\nOracle:You may choose not to untap Mole Worms during your untap step.\\n{T}: Tap target land. It doesn't untap during its controller's untap step for as long as Mole Worms remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mole Worms"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

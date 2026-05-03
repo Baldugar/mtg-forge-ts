@@ -1,0 +1,23 @@
+{
+  "id": "grim-guardian-corpus-m677",
+  "description": "M6 corpus — Grim Guardian; in-hand parse.",
+  "seed": 61771,
+  "cards": {
+    "Grim Guardian": "Name:Grim Guardian\nManaCost:2 B\nTypes:Enchantment Creature Zombie\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigDrain | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, each opponent loses 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Constellation — Whenever Grim Guardian or another enchantment you control enters, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lifestream-s-blessing-corpus-m677",
+  "description": "M6 corpus — Lifestream's Blessing; in-hand parse.",
+  "seed": 64220,
+  "cards": {
+    "Lifestream's Blessing": "Name:Lifestream's Blessing\nManaCost:4 G G\nTypes:Instant\nK:Foretell:4 G\nA:SP$ Draw | NumCards$ X | SubAbility$ DBGainLife | SpellDescription$ Draw X cards, where X is the greatest power among creatures you controlled as you cast this spell. If this spell was cast from exile, you gain twice X life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y | Defined$ You\nSVar:X:Count$LastStateBattlefieldWithFallback Creature.YouCtrl$GreatestCardPower\nSVar:Y:SVar$X/Times.Z\nSVar:Z:Count$wasCastFromExile.2.0\nOracle:Draw X cards, where X is the greatest power among creatures you controlled as you cast this spell. If this spell was cast from exile, you gain twice X life.\\nForetell {4}{G} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lifestream's Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

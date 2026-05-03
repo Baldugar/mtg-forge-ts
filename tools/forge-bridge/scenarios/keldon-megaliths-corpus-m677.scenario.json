@@ -1,0 +1,25 @@
+{
+  "id": "keldon-megaliths-corpus-m677",
+  "description": "M6 corpus — Keldon Megaliths; ETB-on-bf.",
+  "seed": 63585,
+  "cards": {
+    "Keldon Megaliths": "Name:Keldon Megaliths\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ DealDamage | Cost$ 1 R T | ValidTgts$ Any | NumDmg$ 1 | Activation$ Hellbent | PrecostDesc$ Hellbent — | SpellDescription$ CARDNAME deals 1 damage to any target. Activate only if you have no cards in hand.\nOracle:Keldon Megaliths enters tapped.\\n{T}: Add {R}.\\nHellbent — {1}{R}, {T}: Keldon Megaliths deals 1 damage to any target. Activate only if you have no cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Keldon Megaliths"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

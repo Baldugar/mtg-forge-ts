@@ -1,0 +1,23 @@
+{
+  "id": "a-harald-king-of-skemfar-corpus-m677",
+  "description": "M6 corpus — A-Harald, King of Skemfar; in-hand parse.",
+  "seed": 68743,
+  "cards": {
+    "A-Harald, King of Skemfar": "Name:A-Harald, King of Skemfar\nManaCost:1 B G\nTypes:Legendary Creature Elf Warrior\nPT:3/2\nK:Menace\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top seven cards of your library. You may reveal an Elf, Warrior, or Tyvar card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 7 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Elf,Warrior,Tyvar | RestRandomOrder$ True\nDeckHints:Type$Elf|Tyvar\nOracle:Menace\\nWhen Harald, King of Skemfar enters, look at the top seven cards of your library. You may reveal an Elf, Warrior, or Tyvar card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Harald, King of Skemfar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

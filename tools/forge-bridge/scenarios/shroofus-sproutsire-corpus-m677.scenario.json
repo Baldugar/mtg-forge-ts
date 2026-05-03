@@ -1,0 +1,23 @@
+{
+  "id": "shroofus-sproutsire-corpus-m677",
+  "description": "M6 corpus — Shroofus Sproutsire; in-hand parse.",
+  "seed": 69795,
+  "cards": {
+    "Shroofus Sproutsire": "Name:Shroofus Sproutsire\nManaCost:2 G\nTypes:Legendary Creature Saproling\nPT:1/1\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Saproling.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever a Saproling you control deals combat damage to a player, create that many 1/1 green Saproling creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:PlayMain1:TRUE\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Saproling\nDeckHas:Ability$Token\nOracle:Trample\\nWhenever a Saproling you control deals combat damage to a player, create that many 1/1 green Saproling creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shroofus Sproutsire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

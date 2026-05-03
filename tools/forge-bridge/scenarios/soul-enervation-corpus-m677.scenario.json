@@ -1,0 +1,23 @@
+{
+  "id": "soul-enervation-corpus-m677",
+  "description": "M6 corpus — Soul Enervation; in-hand parse.",
+  "seed": 70441,
+  "cards": {
+    "Soul Enervation": "Name:Soul Enervation\nManaCost:3 B\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets -4/-4 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -4 | NumDef$ -4 | IsCurse$ True\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ LoseGain | TriggerDescription$ Whenever one or more creature cards leave your graveyard, each opponent loses 1 life and you gain 1 life.\nSVar:LoseGain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nDeckHints:Ability$Graveyard\nOracle:Flash\\nWhen Soul Enervation enters, target creature gets -4/-4 until end of turn.\\nWhenever one or more creature cards leave your graveyard, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Enervation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-of-enlightenment-corpus-m677",
+  "description": "M6 corpus — Sphinx of Enlightenment; in-hand parse.",
+  "seed": 70612,
+  "cards": {
+    "Sphinx of Enlightenment": "Name:Sphinx of Enlightenment\nManaCost:4 U U\nTypes:Creature Sphinx\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, target opponent draws a card and you draw three cards.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDraw | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | Defined$ You | StackDescription$ None\nOracle:Flying\\nWhen Sphinx of Enlightenment enters, target opponent draws a card and you draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx of Enlightenment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "permafrost-trap-corpus-m677",
+  "description": "M6 corpus — Permafrost Trap; in-hand parse.",
+  "seed": 66747,
+  "cards": {
+    "Permafrost Trap": "Name:Permafrost Trap\nManaCost:2 U U\nTypes:Instant Trap\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ U | CheckSVar$ GreenCreats | Description$ If an opponent had a green creature enter the battlefield under their control this turn, you may pay {U} rather than pay this spell's mana cost.\nA:SP$ Tap | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | SubAbility$ DBPump | SpellDescription$ Tap up to two target creatures. Those creatures don't untap during their controller's next untap step.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | StackDescription$ {c:Targeted} don't untap during {p:TargetedController}'s next untap step.\nSVar:GreenCreats:Count$ThisTurnEntered_Battlefield_Creature.Green+OppCtrl\nOracle:If an opponent had a green creature enter the battlefield under their control this turn, you may pay {U} rather than pay this spell's mana cost.\\nTap up to two target creatures. Those creatures don't untap during their controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Permafrost Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

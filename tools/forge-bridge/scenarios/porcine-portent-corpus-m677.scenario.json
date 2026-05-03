@@ -1,0 +1,23 @@
+{
+  "id": "porcine-portent-corpus-m677",
+  "description": "M6 corpus — Porcine Portent; in-hand parse.",
+  "seed": 67063,
+  "cards": {
+    "Porcine Portent": "Name:Porcine Portent\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card of your choice from the Three Pigs spellbook onto the battlefield.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Spellbook$ First Little Pig,Second Little Pig,Third Little Pig | Zone$ Battlefield\nS:Mode$ Continuous | Affected$ Boar.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Boars you control get +1/+1.\nDeckHints:Type$Boar\nDeckHas:Ability$LifeGain\nAlternateMode:Adventure\nOracle:When Porcine Portent enters, conjure a card of your choice from the Three Pigs spellbook onto the battlefield.\\nBoars you control get +1/+1.\n\nALTERNATE\n\nName:Lend a Ham\nManaCost:2 B\nTypes:Instant Adventure\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBGainLife | SpellDescription$ Exile target creature. You gain 1 life for each Boar you control.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Boar.YouCtrl\nOracle:Exile target creature. You gain 1 life for each Boar you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Porcine Portent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

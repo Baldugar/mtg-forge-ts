@@ -1,0 +1,23 @@
+{
+  "id": "grozoth-corpus-m677",
+  "description": "M6 corpus — Grozoth; in-hand parse.",
+  "seed": 61839,
+  "cards": {
+    "Grozoth": "Name:Grozoth\nManaCost:6 U U U\nTypes:Creature Leviathan\nPT:9/9\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for any number of cards that have mana value 9, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.cmcEQ9 | ChangeNum$ X | ShuffleNonMandatory$ True\nA:AB$ Debuff | Cost$ 4 | Keywords$ Defender | Defined$ Self | SpellDescription$ CARDNAME loses defender until end of turn.\nK:Transmute:1 U U\nSVar:X:Count$ValidLibrary Card.YouOwn+cmcEQ9\nAI:RemoveDeck:Random\nOracle:Defender (This creature can't attack.)\\nWhen Grozoth enters, you may search your library for any number of cards that have mana value 9, reveal them, put them into your hand, then shuffle.\\n{4}: Grozoth loses defender until end of turn.\\nTransmute {1}{U}{U} ({1}{U}{U}, Discard this card: Search your library for a card with the same mana value as this card, reveal it, put it into your hand, then shuffle. Transmute only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grozoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

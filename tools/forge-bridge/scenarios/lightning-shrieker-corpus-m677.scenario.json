@@ -1,0 +1,23 @@
+{
+  "id": "lightning-shrieker-corpus-m677",
+  "description": "M6 corpus — Lightning Shrieker; in-hand parse.",
+  "seed": 64250,
+  "cards": {
+    "Lightning Shrieker": "Name:Lightning Shrieker\nManaCost:4 R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nK:Trample\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of the end step, CARDNAME's owner shuffles it into their library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | Shuffle$ True | Defined$ Self\nSVar:EndOfTurnLeavePlay:True\nOracle:Flying, trample, haste\\nAt the beginning of the end step, Lightning Shrieker's owner shuffles it into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Shrieker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

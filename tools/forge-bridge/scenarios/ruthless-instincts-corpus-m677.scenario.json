@@ -1,0 +1,23 @@
+{
+  "id": "ruthless-instincts-corpus-m677",
+  "description": "M6 corpus — Ruthless Instincts; in-hand parse.",
+  "seed": 68689,
+  "cards": {
+    "Ruthless Instincts": "Name:Ruthless Instincts\nManaCost:2 G\nTypes:Instant\nA:SP$ Charm | Choices$ DBPump1,DBPump2\nSVar:DBPump1:DB$ Pump | ValidTgts$ Creature.!attacking | TgtPrompt$ Select target nonattacking creature | KW$ Reach & Deathtouch | SubAbility$ DBUntap | SpellDescription$ Target nonattacking creature gains reach and deathtouch until end of turn. Untap it.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nSVar:DBPump2:DB$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | NumAtt$ +2 | NumDef$ +2 | KW$ Trample | SpellDescription$ Target attacking creature gets +2/+2 and gains trample until end of turn.\nOracle:Choose one —\\n• Target nonattacking creature gains reach and deathtouch until end of turn. Untap it.\\n• Target attacking creature gets +2/+2 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruthless Instincts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

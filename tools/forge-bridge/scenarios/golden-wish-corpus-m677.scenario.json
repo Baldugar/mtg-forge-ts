@@ -1,0 +1,23 @@
+{
+  "id": "golden-wish-corpus-m677",
+  "description": "M6 corpus — Golden Wish; in-hand parse.",
+  "seed": 61530,
+  "cards": {
+    "Golden Wish": "Name:Golden Wish\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Sideboard | Destination$ Hand | ChangeType$ Artifact.YouOwn,Enchantment.YouOwn | ChangeTypeDesc$ artifact or enchantment they own | ChangeNum$ 1 | SubAbility$ DBChange | Hidden$ True | Reveal$ True | SpellDescription$ You may reveal an artifact or enchantment card you own from outside the game and put it into your hand. Exile CARDNAME.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nAI:RemoveDeck:Random\nOracle:You may reveal an artifact or enchantment card you own from outside the game and put it into your hand. Exile Golden Wish.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golden Wish"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

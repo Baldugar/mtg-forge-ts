@@ -1,0 +1,23 @@
+{
+  "id": "howling-banshee-corpus-m677",
+  "description": "M6 corpus — Howling Banshee; in-hand parse.",
+  "seed": 62553,
+  "cards": {
+    "Howling Banshee": "Name:Howling Banshee\nManaCost:2 B B\nTypes:Creature Spirit\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each player loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player | LifeAmount$ 3\nOracle:Flying\\nWhen Howling Banshee enters, each player loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Howling Banshee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

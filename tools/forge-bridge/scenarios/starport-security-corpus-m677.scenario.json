@@ -1,0 +1,25 @@
+{
+  "id": "starport-security-corpus-m677",
+  "description": "M6 corpus — Starport Security; ETB-on-bf.",
+  "seed": 70906,
+  "cards": {
+    "Starport Security": "Name:Starport Security\nManaCost:W\nTypes:Artifact Creature Robot Soldier\nPT:1/1\nA:AB$ Tap | Cost$ 3 W T | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | ReduceCost$ X | SpellDescription$ Tap another target creature. This ability costs {2} less to activate if you control a creature with a +1/+1 counter on it.\nSVar:X:Count$Compare Y GE1.2.0\nSVar:Y:Count$Valid Creature.YouCtrl+counters_GE1_P1P1\nOracle:{3}{W}, {T}: Tap another target creature. This ability costs {2} less to activate if you control a creature with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Starport Security"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

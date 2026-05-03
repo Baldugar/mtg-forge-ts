@@ -1,0 +1,23 @@
+{
+  "id": "spider-man-miles-morales-corpus-m677",
+  "description": "M6 corpus — Spider-Man, Miles Morales; in-hand parse.",
+  "seed": 70636,
+  "cards": {
+    "Spider-Man, Miles Morales": "Name:Spider-Man, Miles Morales\nManaCost:4 G G\nTypes:Legendary Creature Spider Human Hero\nPT:5/5\nK:Vigilance\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever NICKNAME enters or attacks, put a +1/+1 counter on each other creature you control. Those creatures gain trample until end of turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, put a +1/+1 counter on each other creature you control. Those creatures gain trample until end of turn.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+StrictlyOther | KW$ Trample\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Vigilance, trample (Attacking doesn't cause this creature to tap. He can deal excess combat damage to the player he's attacking.)\\nWhenever Spider-Man enters or attacks, put a +1/+1 counter on each other creature you control. Those creatures gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Man, Miles Morales"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

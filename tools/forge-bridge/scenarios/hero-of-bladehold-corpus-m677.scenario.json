@@ -1,0 +1,23 @@
+{
+  "id": "hero-of-bladehold-corpus-m677",
+  "description": "M6 corpus — Hero of Bladehold; in-hand parse.",
+  "seed": 62291,
+  "cards": {
+    "Hero of Bladehold": "Name:Hero of Bladehold\nManaCost:2 W W\nTypes:Creature Human Knight\nPT:3/4\nK:Battle cry\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create two 1/1 white Soldier creature tokens that are tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_soldier | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:HasAttackEffect:TRUE\nOracle:Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)\\nWhenever Hero of Bladehold attacks, create two 1/1 white Soldier creature tokens that are tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hero of Bladehold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

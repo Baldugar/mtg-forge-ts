@@ -1,0 +1,23 @@
+{
+  "id": "skyship-buccaneer-corpus-m677",
+  "description": "M6 corpus — Skyship Buccaneer; in-hand parse.",
+  "seed": 70136,
+  "cards": {
+    "Skyship Buccaneer": "Name:Skyship Buccaneer\nManaCost:3 U U\nTypes:Creature Human Pirate\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigDraw | TriggerDescription$ Raid — When this creature enters, if you attacked this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Flying\\nRaid — When this creature enters, if you attacked this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyship Buccaneer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

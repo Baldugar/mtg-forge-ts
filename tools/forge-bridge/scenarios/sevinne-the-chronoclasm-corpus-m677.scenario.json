@@ -1,0 +1,25 @@
+{
+  "id": "sevinne-the-chronoclasm-corpus-m677",
+  "description": "M6 corpus — Sevinne, the Chronoclasm; ETB-on-bf.",
+  "seed": 69531,
+  "cards": {
+    "Sevinne, the Chronoclasm": "Name:Sevinne, the Chronoclasm\nManaCost:2 U R W\nTypes:Legendary Creature Human Wizard\nPT:2/2\nK:Prevent all damage that would be dealt to CARDNAME.\nT:Mode$ SpellCast | ValidCard$ Instant.YouCtrl+wasCastFromYourGraveyard,Sorcery.YouCtrl+wasCastFromYourGraveyard | ActivatorThisTurnCast$ EQ1 | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your first instant or sorcery spell from your graveyard each turn, copy that spell. You may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:AIPriorityModifier:9\nOracle:Prevent all damage that would be dealt to Sevinne, the Chronoclasm.\\nWhenever you cast your first instant or sorcery spell from your graveyard each turn, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sevinne, the Chronoclasm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

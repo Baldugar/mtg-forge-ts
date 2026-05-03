@@ -1,0 +1,25 @@
+{
+  "id": "otter-penguin-corpus-m677",
+  "description": "M6 corpus — Otter-Penguin; ETB-on-bf.",
+  "seed": 66463,
+  "cards": {
+    "Otter-Penguin": "Name:Otter-Penguin\nManaCost:1 U\nTypes:Creature Otter Bird\nPT:2/1\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you draw your second card each turn, this creature gets +1/+2 until end of turn and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +2 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:Whenever you draw your second card each turn, this creature gets +1/+2 until end of turn and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Otter-Penguin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

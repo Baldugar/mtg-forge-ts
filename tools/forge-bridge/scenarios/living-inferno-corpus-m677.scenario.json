@@ -1,0 +1,25 @@
+{
+  "id": "living-inferno-corpus-m677",
+  "description": "M6 corpus — Living Inferno; ETB-on-bf.",
+  "seed": 64309,
+  "cards": {
+    "Living Inferno": "Name:Living Inferno\nManaCost:6 R R\nTypes:Creature Elemental\nPT:8/5\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | TgtPrompt$ Select any number of target creatures | NumDmg$ Count$CardPower | TargetMin$ 0 | TargetMax$ Count$CardPower | DividedAsYouChoose$ Count$CardPower | SubAbility$ Retribution | SpellDescription$ CARDNAME deals damage equal to its power divided as you choose among any number of target creatures.\nSVar:Retribution:DB$ EachDamage | DefinedDamagers$ ParentTarget | NumDmg$ Count$CardPower | Defined$ Self | StackDescription$ SpellDescription | SpellDescription$ Each of those creatures deals damage equal to its power to CARDNAME.\nAI:RemoveDeck:Random\nOracle:{T}: Living Inferno deals damage equal to its power divided as you choose among any number of target creatures. Each of those creatures deals damage equal to its power to Living Inferno.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Living Inferno"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

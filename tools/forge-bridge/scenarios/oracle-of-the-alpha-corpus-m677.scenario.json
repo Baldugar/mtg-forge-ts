@@ -1,0 +1,23 @@
+{
+  "id": "oracle-of-the-alpha-corpus-m677",
+  "description": "M6 corpus — Oracle of the Alpha; in-hand parse.",
+  "seed": 66365,
+  "cards": {
+    "Oracle of the Alpha": "Name:Oracle of the Alpha\nManaCost:2 U\nTypes:Creature Bird Wizard\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure the Power Nine into your library, then shuffle.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Names$ Ancestral Recall,Black Lotus,Mox Emerald,Mox Jet,Mox Pearl,Mox Ruby,Mox Sapphire,Time Walk,Timetwister | Zone$ Library\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBScry | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, scry 1.\nSVar:DBScry:DB$ Scry\nSVar:HasAttackEffect:TRUE\nDeckHas:Type$Artifact|Instant|Sorcery & Ability$Sacrifice\nOracle:Flying\\nWhen Oracle of the Alpha enters, conjure the Power Nine into your library, then shuffle.\\nWhenever Oracle of the Alpha attacks, scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oracle of the Alpha"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

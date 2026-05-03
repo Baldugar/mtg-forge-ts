@@ -1,0 +1,23 @@
+{
+  "id": "slumbering-cerberus-corpus-m677",
+  "description": "M6 corpus — Slumbering Cerberus; in-hand parse.",
+  "seed": 70243,
+  "cards": {
+    "Slumbering Cerberus": "Name:Slumbering Cerberus\nManaCost:1 R\nTypes:Creature Dog\nPT:4/2\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Morbid — At the beginning of each end step, if a creature died this turn, untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nOracle:This creature doesn't untap during your untap step.\\nMorbid — At the beginning of each end step, if a creature died this turn, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slumbering Cerberus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

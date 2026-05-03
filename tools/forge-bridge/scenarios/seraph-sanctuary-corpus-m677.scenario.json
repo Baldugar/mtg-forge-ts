@@ -1,0 +1,23 @@
+{
+  "id": "seraph-sanctuary-corpus-m677",
+  "description": "M6 corpus — Seraph Sanctuary; in-hand parse.",
+  "seed": 69462,
+  "cards": {
+    "Seraph Sanctuary": "Name:Seraph Sanctuary\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ HavenLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Angel.YouCtrl | TriggerZones$ Battlefield | Execute$ HavenLife | TriggerDescription$ Whenever an Angel you control enters, you gain 1 life.\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nSVar:HavenLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:When Seraph Sanctuary enters, you gain 1 life.\\nWhenever an Angel you control enters, you gain 1 life.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seraph Sanctuary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

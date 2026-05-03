@@ -1,0 +1,23 @@
+{
+  "id": "keymaster-rogue-corpus-m677",
+  "description": "M6 corpus — Keymaster Rogue; in-hand parse.",
+  "seed": 63618,
+  "cards": {
+    "Keymaster Rogue": "Name:Keymaster Rogue\nManaCost:3 U\nTypes:Creature Human Rogue\nPT:3/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE4\nOracle:Keymaster Rogue can't be blocked.\\nWhen Keymaster Rogue enters, return a creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keymaster Rogue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

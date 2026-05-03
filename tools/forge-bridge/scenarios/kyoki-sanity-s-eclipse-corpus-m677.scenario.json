@@ -1,0 +1,25 @@
+{
+  "id": "kyoki-sanity-s-eclipse-corpus-m677",
+  "description": "M6 corpus — Kyoki, Sanity's Eclipse; ETB-on-bf.",
+  "seed": 63933,
+  "cards": {
+    "Kyoki, Sanity's Eclipse": "Name:Kyoki, Sanity's Eclipse\nManaCost:4 B B\nTypes:Legendary Creature Demon Spirit\nPT:6/4\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, target opponent exiles a card from their hand.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ValidTgts$ Opponent | Chooser$ Targeted | ChangeNum$ 1 | Mandatory$ True\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, target opponent exiles a card from their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kyoki, Sanity's Eclipse"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

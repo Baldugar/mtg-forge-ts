@@ -1,0 +1,23 @@
+{
+  "id": "predatory-sludge-corpus-m677",
+  "description": "M6 corpus — Predatory Sludge; in-hand parse.",
+  "seed": 67132,
+  "cards": {
+    "Predatory Sludge": "Name:Predatory Sludge\nManaCost:2 B\nTypes:Creature Ooze\nPT:3/3\nK:Menace\nK:ETBReplacement:Other:ChooseC\nSVar:ChooseC:DB$ ChooseCard | Defined$ You | Choices$ Permanent.YouDontCtrl | AILogic$ AtLeast1 | Mandatory$ True | SubAbility$ DBDelayTrig | SpellDescription$ As CARDNAME enters, choose a permanent you don't control. When the chosen permanent is put into a graveyard from the battlefield, conjure a card named Predatory Sludge into your hand.\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ ChosenCard | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigConjure | TriggerDescription$ When the chosen permanent is put into a graveyard from the battlefield, conjure a card named Predatory Sludge into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Predatory Sludge | Zone$ Hand\nOracle:Menace\\nAs Predatory Sludge enters, choose a permanent you don't control. When the chosen permanent is put into a graveyard from the battlefield, conjure a card named Predatory Sludge into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predatory Sludge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

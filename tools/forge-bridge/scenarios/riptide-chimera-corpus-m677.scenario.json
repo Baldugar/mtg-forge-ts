@@ -1,0 +1,23 @@
+{
+  "id": "riptide-chimera-corpus-m677",
+  "description": "M6 corpus — Riptide Chimera; in-hand parse.",
+  "seed": 68322,
+  "cards": {
+    "Riptide Chimera": "Name:Riptide Chimera\nManaCost:2 U\nTypes:Enchantment Creature Chimera\nPT:3/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, return an enchantment you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Enchantment.YouCtrl\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Enchantment.YouCtrl\nOracle:Flying\\nAt the beginning of your upkeep, return an enchantment you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Chimera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

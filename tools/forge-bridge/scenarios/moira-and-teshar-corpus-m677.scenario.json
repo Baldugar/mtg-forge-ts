@@ -1,0 +1,25 @@
+{
+  "id": "moira-and-teshar-corpus-m677",
+  "description": "M6 corpus — Moira and Teshar; ETB-on-bf.",
+  "seed": 65377,
+  "cards": {
+    "Moira and Teshar": "Name:Moira and Teshar\nManaCost:3 W B\nTypes:Legendary Creature Phyrexian Spirit Bird\nPT:4/5\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.Historic | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever you cast a historic spell, return target nonland permanent card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step. If it would leave the battlefield, exile it instead of putting it anywhere else. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.YouCtrl+nonLand | TgtPrompt$ Select target nonland permanent card in your graveyard | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | KW$ Haste | LeaveBattlefield$ Exile | Defined$ Targeted | Duration$ Permanent | AtEOT$ Exile\nDeckHints:Type$Artifact|Legendary|Saga\nOracle:Flying\\nWhenever you cast a historic spell, return target nonland permanent card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step. If it would leave the battlefield, exile it instead of putting it anywhere else. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Moira and Teshar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "phyrexian-slayer-corpus-m677",
+  "description": "M6 corpus — Phyrexian Slayer; ETB-on-bf.",
+  "seed": 66867,
+  "cards": {
+    "Phyrexian Slayer": "Name:Phyrexian Slayer\nManaCost:3 B\nTypes:Creature Phyrexian Minion\nPT:2/2\nK:Flying\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.White | Execute$ TrigDestroyBlocker | TriggerDescription$ Whenever CARDNAME becomes blocked by a white creature, destroy that creature. It can't be regenerated.\nSVar:TrigDestroyBlocker:DB$ Destroy | Defined$ TriggeredBlockerLKICopy | NoRegen$ True\nAI:RemoveDeck:Random\nOracle:Flying\\nWhenever Phyrexian Slayer becomes blocked by a white creature, destroy that creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Phyrexian Slayer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

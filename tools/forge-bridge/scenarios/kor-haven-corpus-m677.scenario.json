@@ -1,0 +1,25 @@
+{
+  "id": "kor-haven-corpus-m677",
+  "description": "M6 corpus — Kor Haven; ETB-on-bf.",
+  "seed": 63831,
+  "cards": {
+    "Kor Haven": "Name:Kor Haven\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Effect | Cost$ 1 W T | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | SpellDescription$ Prevent all combat damage that would be dealt by target attacking creature this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by target attacking creature this turn.\nDeckNeeds:Color$White\nOracle:{T}: Add {C}.\\n{1}{W}, {T}: Prevent all combat damage that would be dealt by target attacking creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kor Haven"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

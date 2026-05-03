@@ -1,0 +1,23 @@
+{
+  "id": "manglehorn-corpus-m677",
+  "description": "M6 corpus — Manglehorn; in-hand parse.",
+  "seed": 64717,
+  "cards": {
+    "Manglehorn": "Name:Manglehorn\nManaCost:2 G\nTypes:Creature Beast\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target artifact.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact | TgtPrompt$ Choose target artifact\nR:Event$ Moved | ValidCard$ Artifact.OppCtrl | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Artifacts your opponents control enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nSVar:PlayMain1:TRUE\nOracle:When Manglehorn enters, you may destroy target artifact.\\nArtifacts your opponents control enter tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manglehorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "a-monster-manual-corpus-m677",
+  "description": "M6 corpus — A-Monster Manual; in-hand parse.",
+  "seed": 68768,
+  "cards": {
+    "A-Monster Manual": "Name:A-Monster Manual\nManaCost:3 G\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 1 G T | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | SorcerySpeed$ True | SpellDescription$ You may put a creature card from your hand onto the battlefield. Activate only as a sorcery.\nAlternateMode:Adventure\nOracle:{1}{G}, {T}: You may put a creature card from your hand onto the battlefield. Activate only as a sorcery.\n\nALTERNATE\n\nName:A-Zoological Study\nManaCost:2 G\nTypes:Sorcery Adventure\nA:SP$ Mill | NumCards$ 5 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill five cards, then return a creature card milled this way to your hand.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.IsRemembered | ChangeTypeDesc$ creature cards milled this way | ChangeNum$ 1 | SelectPrompt$ Choose a creature card milled this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill|Graveyard\nOracle:Mill five cards, then return a creature card milled this way to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Monster Manual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

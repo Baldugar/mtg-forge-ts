@@ -1,0 +1,23 @@
+{
+  "id": "pick-the-brain-corpus-m677",
+  "description": "M6 corpus — Pick the Brain; in-hand parse.",
+  "seed": 66880,
+  "cards": {
+    "Pick the Brain": "Name:Pick the Brain\nManaCost:2 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | IsCurse$ True | Mandatory$ True | RememberChanged$ True | SubAbility$ ExileYard | SpellDescription$ Target opponent reveals their hand. You choose a nonland card from it and exile that card. Delirium — If there are four or more card types among cards in your graveyard, search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card, exile those cards, then that player shuffles.\nSVar:ExileYard:DB$ ChangeZone | Condition$ Delirium | Origin$ Graveyard | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Remembered.sameName | ChangeNum$ NumInYard | Chooser$ You | Hidden$ True | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Condition$ Delirium | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Condition$ Delirium | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInYard:TargetedPlayer$CardsInGraveyard\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Target opponent reveals their hand. You choose a nonland card from it and exile that card.\\nDelirium — If there are four or more card types among cards in your graveyard, search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card, exile those cards, then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pick the Brain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

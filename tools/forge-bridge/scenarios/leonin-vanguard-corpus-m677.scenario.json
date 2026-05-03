@@ -1,0 +1,23 @@
+{
+  "id": "leonin-vanguard-corpus-m677",
+  "description": "M6 corpus — Leonin Vanguard; in-hand parse.",
+  "seed": 64139,
+  "cards": {
+    "Leonin Vanguard": "Name:Leonin Vanguard\nManaCost:W\nTypes:Creature Cat Soldier\nPT:1/1\nT:Mode$ Phase | TriggerZones$ Battlefield | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | IsPresent$ Creature.YouCtrl | PresentCompare$ GE3 | TriggerDescription$ At the beginning of combat on your turn, if you control three or more creatures, CARDNAME gets +1/+1 until end of turn and you gain 1 life.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:At the beginning of combat on your turn, if you control three or more creatures, Leonin Vanguard gets +1/+1 until end of turn and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonin Vanguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "steel-of-the-godhead-corpus-m677",
+  "description": "M6 corpus — Steel of the Godhead; in-hand parse.",
+  "seed": 70956,
+  "cards": {
+    "Steel of the Godhead": "Name:Steel of the Godhead\nManaCost:2 WU\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.White,Card.Blue\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+White | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Lifelink | Description$ As long as enchanted creature is white, it gets +1/+1 and has lifelink.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Blue | AddPower$ 1 | AddToughness$ 1 | Description$ As long as enchanted creature is blue, it gets +1/+1 and can't be blocked.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy+Blue\nDeckHas:Ability$LifeGain\nOracle:Enchant creature\\nAs long as enchanted creature is white, it gets +1/+1 and has lifelink. (Damage dealt by the creature also causes its controller to gain that much life.)\\nAs long as enchanted creature is blue, it gets +1/+1 and can't be blocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steel of the Godhead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

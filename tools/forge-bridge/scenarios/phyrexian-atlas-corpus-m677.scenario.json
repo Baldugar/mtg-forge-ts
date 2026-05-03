@@ -1,0 +1,25 @@
+{
+  "id": "phyrexian-atlas-corpus-m677",
+  "description": "M6 corpus — Phyrexian Atlas; ETB-on-bf.",
+  "seed": 66835,
+  "cards": {
+    "Phyrexian Atlas": "Name:Phyrexian Atlas\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Corrupted — Whenever CARDNAME becomes tapped, each opponent with three or more poison counters loses 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent+IsCorrupted | LifeAmount$ 1\nDeckHints:Keyword$Infect|Toxic\nOracle:{T}: Add one mana of any color.\\nCorrupted — Whenever Phyrexian Atlas becomes tapped, each opponent with three or more poison counters loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Phyrexian Atlas"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

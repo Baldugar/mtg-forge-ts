@@ -1,0 +1,23 @@
+{
+  "id": "outcaster-greenblade-corpus-m677",
+  "description": "M6 corpus — Outcaster Greenblade; in-hand parse.",
+  "seed": 66470,
+  "cards": {
+    "Outcaster Greenblade": "Name:Outcaster Greenblade\nManaCost:2 G\nTypes:Creature Human Mercenary\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic,Desert | ChangeNum$ 1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each Desert you control.\nSVar:X:Count$Valid Desert.YouCtrl\nDeckHints:Type$Desert\nOracle:When Outcaster Greenblade enters, search your library for a basic land card or a Desert card, reveal it, put it into your hand, then shuffle.\\nOutcaster Greenblade gets +1/+1 for each Desert you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Outcaster Greenblade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

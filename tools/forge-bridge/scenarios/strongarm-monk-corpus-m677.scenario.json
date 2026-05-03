@@ -1,0 +1,25 @@
+{
+  "id": "strongarm-monk-corpus-m677",
+  "description": "M6 corpus — Strongarm Monk; ETB-on-bf.",
+  "seed": 71204,
+  "cards": {
+    "Strongarm Monk": "Name:Strongarm Monk\nManaCost:4 W\nTypes:Creature Human Monk\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever you cast a noncreature spell, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:Whenever you cast a noncreature spell, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Strongarm Monk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

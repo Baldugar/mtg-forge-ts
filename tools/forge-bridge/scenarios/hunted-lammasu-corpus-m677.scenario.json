@@ -1,0 +1,23 @@
+{
+  "id": "hunted-lammasu-corpus-m677",
+  "description": "M6 corpus — Hunted Lammasu; in-hand parse.",
+  "seed": 62616,
+  "cards": {
+    "Hunted Lammasu": "Name:Hunted Lammasu\nManaCost:2 W W\nTypes:Creature Lammasu\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, target opponent creates a 4/4 black Horror creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_4_4_horror | ValidTgts$ Opponent | TokenOwner$ Targeted\nOracle:Flying\\nWhen Hunted Lammasu enters, target opponent creates a 4/4 black Horror creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Lammasu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

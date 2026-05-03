@@ -1,0 +1,23 @@
+{
+  "id": "storm-of-memories-corpus-m677",
+  "description": "M6 corpus — Storm of Memories; in-hand parse.",
+  "seed": 71096,
+  "cards": {
+    "Storm of Memories": "Name:Storm of Memories\nManaCost:2 R R R\nTypes:Sorcery\nK:Storm\nA:SP$ ChangeZone | DefinedPlayer$ You | Destination$ Exile | ChangeNum$ 1 | ChangeType$ Instant.YouOwn+cmcLE3,Sorcery.YouOwn+cmcLE3 | AtRandom$ True | Origin$ Graveyard | Hidden$ True | Mandatory$ True | RememberChanged$ True | SubAbility$ DBPlay | SpellDescription$ Exile an instant or sorcery card with mana value 3 or less from your graveyard at random. You may cast it without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Storm (When you cast this spell, copy it for each spell cast before it this turn.)\\nExile an instant or sorcery card with mana value 3 or less from your graveyard at random. You may cast it without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm of Memories"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

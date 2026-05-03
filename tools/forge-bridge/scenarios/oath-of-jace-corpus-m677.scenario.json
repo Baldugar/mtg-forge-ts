@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-jace-corpus-m677",
+  "description": "M6 corpus — Oath of Jace; in-hand parse.",
+  "seed": 66154,
+  "cards": {
+    "Oath of Jace": "Name:Oath of Jace\nManaCost:2 U\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards, then discard two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ At the beginning of your upkeep, scry X, where X is the number of planeswalkers you control.\nSVar:TrigScry:DB$ Scry | ScryNum$ X\nSVar:X:Count$Valid Planeswalker.YouCtrl\nOracle:When Oath of Jace enters, draw three cards, then discard two cards.\\nAt the beginning of your upkeep, scry X, where X is the number of planeswalkers you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Jace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

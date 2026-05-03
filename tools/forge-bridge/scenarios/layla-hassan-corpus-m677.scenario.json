@@ -1,0 +1,23 @@
+{
+  "id": "layla-hassan-corpus-m677",
+  "description": "M6 corpus — Layla Hassan; in-hand parse.",
+  "seed": 64047,
+  "cards": {
+    "Layla Hassan": "Name:Layla Hassan\nManaCost:3 W\nTypes:Legendary Creature Human Assassin\nPT:3/4\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters and whenever one or more Assassins you control deal combat damage to a player, return target historic card from your graveyard to your hand.\nT:Mode$ DamageDoneOnce | ValidSource$ Assassin.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigChangeZone | Secondary$ True | TriggerDescription$ When CARDNAME enters and whenever one or more Assassins you control deal combat damage to a player, return target historic card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Historic+YouCtrl | TgtPrompt$ Select target historic card\nOracle:First strike\\nWhen Layla Hassan enters and whenever one or more Assassins you control deal combat damage to a player, return target historic card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Layla Hassan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

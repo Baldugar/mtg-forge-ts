@@ -1,0 +1,25 @@
+{
+  "id": "reveka-wizard-savant-corpus-m677",
+  "description": "M6 corpus — Reveka, Wizard Savant; ETB-on-bf.",
+  "seed": 68170,
+  "cards": {
+    "Reveka, Wizard Savant": "Name:Reveka, Wizard Savant\nManaCost:2 U U\nTypes:Legendary Creature Dwarf Wizard\nPT:0/1\nA:AB$ DealDamage | Cost$ T | NumDmg$ 2 | ValidTgts$ Any | TgtPrompt$ Select target creature or player | SubAbility$ DBStayTapped | SpellDescription$ CARDNAME deals 2 damage to any target and doesn't untap during your next untap step.\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{T}: Reveka, Wizard Savant deals 2 damage to any target and doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Reveka, Wizard Savant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mirkwood-channeler-corpus-m677",
+  "description": "M6 corpus — Mirkwood Channeler; in-hand parse.",
+  "seed": 65227,
+  "cards": {
+    "Mirkwood Channeler": "Name:Mirkwood Channeler\nManaCost:3 G\nTypes:Creature Elf Druid\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target Elf you control gains trample and gets +X/+X until end of turn, where X is the number of Forests you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Elf.YouCtrl | TgtPrompt$ Select target Elf you control | NumAtt$ +X | NumDef$ +X | KW$ Trample\nSVar:X:Count$Valid Forest.YouCtrl\nSVar:BuffedBy:Forest\nDeckHints:Type$Elf\nOracle:At the beginning of combat on your turn, target Elf you control gains trample and gets +X/+X until end of turn, where X is the number of Forests you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirkwood Channeler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

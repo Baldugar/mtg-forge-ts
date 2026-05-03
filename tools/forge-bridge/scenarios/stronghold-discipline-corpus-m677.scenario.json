@@ -1,0 +1,23 @@
+{
+  "id": "stronghold-discipline-corpus-m677",
+  "description": "M6 corpus — Stronghold Discipline; in-hand parse.",
+  "seed": 71210,
+  "cards": {
+    "Stronghold Discipline": "Name:Stronghold Discipline\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBLoseLife | AILogic$ AllPlayerLoseLife | SpellDescription$ Each player loses 1 life for each creature they control.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl\nAI:RemoveDeck:Random\nOracle:Each player loses 1 life for each creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stronghold Discipline"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

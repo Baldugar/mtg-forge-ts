@@ -1,0 +1,23 @@
+{
+  "id": "sea-legs-corpus-m677",
+  "description": "M6 corpus — Sea Legs; in-hand parse.",
+  "seed": 69271,
+  "cards": {
+    "Sea Legs": "Name:Sea Legs\nManaCost:U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:SpecificCard\nSVar:AttachAIValid:Pirate\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Pirate | AddToughness$ 2 | Description$ Enchanted creature gets +0/+2 as long as it's a Pirate. Otherwise, it gets -2/-0.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+nonPirate | AddPower$ -2\nDeckNeeds:Type$Pirate\nOracle:Flash\\nEnchant creature\\nEnchanted creature gets +0/+2 as long as it's a Pirate. Otherwise, it gets -2/-0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sea Legs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

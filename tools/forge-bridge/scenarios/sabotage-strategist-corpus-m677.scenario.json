@@ -1,0 +1,25 @@
+{
+  "id": "sabotage-strategist-corpus-m677",
+  "description": "M6 corpus — Sabotage Strategist; ETB-on-bf.",
+  "seed": 68830,
+  "cards": {
+    "Sabotage Strategist": "Name:Sabotage Strategist\nManaCost:2 U U\nTypes:Creature Vedalken Ranger\nPT:2/2\nK:Flying\nK:Vigilance\nT:Mode$ AttackersDeclared | AttackedTarget$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever one or more creatures attack you, those creatures get -1/-0 until end of turn.\nSVar:TrigPumpAll:DB$ Pump | Defined$ TriggeredAttackers | NumAtt$ -1 | IsCurse$ True\nA:AB$ PutCounter | Cost$ 5 U U | Defined$ Self | CounterType$ P1P1 | CounterNum$ 3 | Exhaust$ True | SpellDescription$ Put three +1/+1 counters on this creature. (Activate each exhaust ability only once.)\nOracle:Flying, vigilance\\nWhenever one or more creatures attack you, those creatures get -1/-0 until end of turn.\\nExhaust — {5}{U}{U}: Put three +1/+1 counters on this creature. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sabotage Strategist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

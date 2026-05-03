@@ -1,0 +1,23 @@
+{
+  "id": "retro-mutation-corpus-m677",
+  "description": "M6 corpus — Retro-Mutation; in-hand parse.",
+  "seed": 68151,
+  "cards": {
+    "Retro-Mutation": "Name:Retro-Mutation\nManaCost:2 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature is a Turtle with base power and toughness 0/1. It can't attack and loses all abilities. (It also loses all other creature types.)\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | SetPower$ 0 | SetToughness$ 1 | AddType$ Turtle | RemoveCreatureTypes$ True | RemoveAllAbilities$ True | Secondary$ True | Description$ Enchanted creature is a Turtle with base power and toughness 0/1. It can't attack and loses all abilities. (It also loses all other creature types.)\nOracle:Flash\\nEnchant creature\\nEnchanted creature is a Turtle with base power and toughness 0/1. It can't attack and loses all abilities. (It also loses all other creature types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retro-Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "powerstone-minefield-corpus-m677",
+  "description": "M6 corpus — Powerstone Minefield; in-hand parse.",
+  "seed": 67096,
+  "cards": {
+    "Powerstone Minefield": "Name:Powerstone Minefield\nManaCost:2 R W\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature attacks or blocks, CARDNAME deals 2 damage to it.\nT:Mode$ Blocks | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage2 | Secondary$ True | TriggerDescription$ Whenever a creature attacks or blocks, CARDNAME deals 2 damage to it.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredAttackerLKICopy | NumDmg$ 2\nSVar:TrigDamage2:DB$ DealDamage | Defined$ TriggeredBlockerLKICopy | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever a creature attacks or blocks, Powerstone Minefield deals 2 damage to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Powerstone Minefield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

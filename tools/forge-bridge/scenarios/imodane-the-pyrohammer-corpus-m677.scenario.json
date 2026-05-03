@@ -1,0 +1,23 @@
+{
+  "id": "imodane-the-pyrohammer-corpus-m677",
+  "description": "M6 corpus — Imodane, the Pyrohammer; in-hand parse.",
+  "seed": 62788,
+  "cards": {
+    "Imodane, the Pyrohammer": "Name:Imodane, the Pyrohammer\nManaCost:2 R R\nTypes:Legendary Creature Human Knight\nPT:4/4\nT:Mode$ DamageDone | ValidSource$ Instant.YouCtrl,Sorcery.YouCtrl | ValidTarget$ Creature | ValidCause$ Spell.numTargets EQ1 | TargetRelativeToCause$ Creature.targetedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an instant or sorcery spell you control that targets only a single creature deals damage to that creature, NICKNAME deals that much damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | Defined$ Opponent\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever an instant or sorcery spell you control that targets only a single creature deals damage to that creature, Imodane deals that much damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imodane, the Pyrohammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lictor-corpus-m677",
+  "description": "M6 corpus — Lictor; in-hand parse.",
+  "seed": 64191,
+  "cards": {
+    "Lictor": "Name:Lictor\nManaCost:3 G\nTypes:Creature Tyranid\nPT:3/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | CheckSVar$ X | TriggerDescription$ Pheromone Trail — When CARDNAME enters, if a creature entered the battlefield under an opponent's control this turn, create a 3/3 green Tyranid Warrior creature token with trample.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_tyranid_warrior_trample\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.OppCtrl\nDeckHas:Ability$Token & Type$Warrior\nOracle:Flash\\nPheromone Trail — When Lictor enters, if a creature entered the battlefield under an opponent's control this turn, create a 3/3 green Tyranid Warrior creature token with trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lictor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

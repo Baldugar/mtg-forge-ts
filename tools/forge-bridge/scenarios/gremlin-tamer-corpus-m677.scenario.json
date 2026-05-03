@@ -1,0 +1,23 @@
+{
+  "id": "gremlin-tamer-corpus-m677",
+  "description": "M6 corpus — Gremlin Tamer; in-hand parse.",
+  "seed": 61742,
+  "cards": {
+    "Gremlin Tamer": "Name:Gremlin Tamer\nManaCost:W U\nTypes:Creature Human Scout\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, create a 1/1 red Gremlin creature token.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, create a 1/1 red Gremlin creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_gremlin | TokenOwner$ You\nDeckHas:Ability$Token\nDeckNeeds:Type$Enchantment\nOracle:Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, create a 1/1 red Gremlin creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gremlin Tamer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hearth-elemental-corpus-m677",
+  "description": "M6 corpus — Hearth Elemental; in-hand parse.",
+  "seed": 62171,
+  "cards": {
+    "Hearth Elemental": "Name:Hearth Elemental\nManaCost:5 R\nTypes:Creature Elemental\nPT:4/5\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the number of cards in your graveyard that are instant cards, sorcery cards, and/or have an Adventure.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn,Card.AdventureCard+YouOwn\nDeckHints:Ability$Graveyard|Mill & Type$Adventure\nDeckHas:Ability$Discard\nAlternateMode:Adventure\nOracle:This spell costs {X} less to cast, where X is the number of cards in your graveyard that are instant cards, sorcery cards, and/or have an Adventure.\n\nALTERNATE\n\nName:Stoke Genius\nManaCost:1 R\nTypes:Sorcery Adventure\nA:SP$ Discard | Mode$ Hand | Defined$ You | SubAbility$ DBDraw | SpellDescription$ Discard your hand, then draw two cards. (Then exile this card. You may cast the creature later from exile.)\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2\nOracle:Discard your hand, then draw two cards. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hearth Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

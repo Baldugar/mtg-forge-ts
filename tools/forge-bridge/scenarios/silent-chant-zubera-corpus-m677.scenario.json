@@ -1,0 +1,23 @@
+{
+  "id": "silent-chant-zubera-corpus-m677",
+  "description": "M6 corpus — Silent-Chant Zubera; in-hand parse.",
+  "seed": 69877,
+  "cards": {
+    "Silent-Chant Zubera": "Name:Silent-Chant Zubera\nManaCost:1 W\nTypes:Creature Zubera Spirit\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain 2 life for each Zubera that died this turn.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Card.Zubera/Twice\nDeckHints:Type$Zubera\nOracle:When Silent-Chant Zubera dies, you gain 2 life for each Zubera that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silent-Chant Zubera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

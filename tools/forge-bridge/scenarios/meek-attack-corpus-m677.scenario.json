@@ -1,0 +1,25 @@
+{
+  "id": "meek-attack-corpus-m677",
+  "description": "M6 corpus — Meek Attack; ETB-on-bf.",
+  "seed": 64936,
+  "cards": {
+    "Meek Attack": "Name:Meek Attack\nManaCost:2 R\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ 1 R | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouCtrl+totalPT_LE5 | SubAbility$ DBPump | RememberChanged$ True | AILogic$ BeforeCombat | SpellDescription$ You may put a creature card with total power and toughness 5 or less from your hand onto the battlefield. That creature gains haste. At the beginning of the next end step, sacrifice that creature.\nSVar:DBPump:DB$ Animate | Keywords$ Haste | Defined$ Remembered | Duration$ Permanent | AtEOT$ Sacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nSVar:PlayMain1:ALWAYS\nOracle:{1}{R}: You may put a creature card with total power and toughness 5 or less from your hand onto the battlefield. That creature gains haste. At the beginning of the next end step, sacrifice that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Meek Attack"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

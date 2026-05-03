@@ -1,0 +1,25 @@
+{
+  "id": "heart-of-yavimaya-corpus-m677",
+  "description": "M6 corpus — Heart of Yavimaya; ETB-on-bf.",
+  "seed": 62166,
+  "cards": {
+    "Heart of Yavimaya": "Name:Heart of Yavimaya\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Target creature gets +1/+1 until end of turn.\nR:Event$ Moved | Destination$ Battlefield | ValidCard$ Card.Self | ReplaceWith$ PayBeforeETB | Description$ If CARDNAME would enter, sacrifice a Forest instead. If you do, put CARDNAME onto the battlefield. If you don't, put it into its owner's graveyard.\nSVar:PayBeforeETB:DB$ Sacrifice | SacValid$ Forest | Defined$ You | RememberSacrificed$ True | SubAbility$ MoveToGraveyard\nSVar:MoveToGraveyard:DB$ ChangeZone | Origin$ All | Destination$ Graveyard | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ MoveToBattlefield\nSVar:MoveToBattlefield:DB$ ChangeZone | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlay:Forest.YouCtrl\nOracle:If Heart of Yavimaya would enter, sacrifice a Forest instead. If you do, put Heart of Yavimaya onto the battlefield. If you don't, put it into its owner's graveyard.\\n{T}: Add {G}.\\n{T}: Target creature gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Heart of Yavimaya"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

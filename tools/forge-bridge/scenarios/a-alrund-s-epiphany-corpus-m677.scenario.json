@@ -1,0 +1,23 @@
+{
+  "id": "a-alrund-s-epiphany-corpus-m677",
+  "description": "M6 corpus — A-Alrund's Epiphany; in-hand parse.",
+  "seed": 68700,
+  "cards": {
+    "A-Alrund's Epiphany": "Name:A-Alrund's Epiphany\nManaCost:5 U U\nTypes:Sorcery\nA:SP$ AddTurn | NumTurns$ 1 | SubAbility$ DBToken | StackDescription$ None | SpellDescription$ Take an extra turn after this one. If this spell was foretold, create two 1/1 blue Bird creature tokens with flying. Exile CARDNAME.\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ u_1_1_bird_flying | TokenOwner$ You | Condition$ Foretold | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nK:Foretell:5 U U\nDeckHas:Ability$Token\nOracle:Take an extra turn after this one. If this spell was foretold, create two 1/1 blue Bird creature tokens with flying. Exile Alrund's Epiphany.\\nForetell {5}{U}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Alrund's Epiphany"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

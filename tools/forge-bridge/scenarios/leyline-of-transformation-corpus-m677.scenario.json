@@ -1,0 +1,23 @@
+{
+  "id": "leyline-of-transformation-corpus-m677",
+  "description": "M6 corpus — Leyline of Transformation; in-hand parse.",
+  "seed": 64171,
+  "cards": {
+    "Leyline of Transformation": "Name:Leyline of Transformation\nManaCost:2 U U\nTypes:Enchantment\nK:MayEffectFromOpeningHand:FromHand\nSVar:FromHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SpellDescription$ If CARDNAME is in your opening hand, you may begin the game with it on the battlefield.\nK:ETBReplacement:Other:DBChooseCreatureType\nSVar:DBChooseCreatureType:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AffectedZone$ All | AddType$ ChosenType | Description$ Creatures you control are the chosen type in addition to their other types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\nOracle:If Leyline of Transformation is in your opening hand, you may begin the game with it on the battlefield.\\nAs Leyline of Transformation enters, choose a creature type.\\nCreatures you control are the chosen type in addition to their other types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leyline of Transformation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

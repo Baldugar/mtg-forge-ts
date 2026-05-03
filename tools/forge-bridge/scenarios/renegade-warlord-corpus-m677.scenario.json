@@ -1,0 +1,23 @@
+{
+  "id": "renegade-warlord-corpus-m677",
+  "description": "M6 corpus — Renegade Warlord; in-hand parse.",
+  "seed": 68048,
+  "cards": {
+    "Renegade Warlord": "Name:Renegade Warlord\nManaCost:4 R\nTypes:Creature Human Soldier\nPT:3/3\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigBattleCry | TriggerDescription$ Whenever CARDNAME attacks, each other attacking creature gets +1/+0 until end of turn.\nSVar:TrigBattleCry:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +1\nOracle:First strike\\nWhenever Renegade Warlord attacks, each other attacking creature gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renegade Warlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

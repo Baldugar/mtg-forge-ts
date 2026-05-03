@@ -1,0 +1,23 @@
+{
+  "id": "ogre-slumlord-corpus-m677",
+  "description": "M6 corpus — Ogre Slumlord; in-hand parse.",
+  "seed": 66240,
+  "cards": {
+    "Ogre Slumlord": "Name:Ogre Slumlord\nManaCost:3 B B\nTypes:Creature Ogre Rogue\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+Other | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever another nontoken creature dies, you may create a 1/1 black Rat creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.Rat+YouCtrl | AddKeyword$ Deathtouch | Description$ Rats you control have deathtouch.\nDeckHas:Ability$Token\nOracle:Whenever another nontoken creature dies, you may create a 1/1 black Rat creature token.\\nRats you control have deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Slumlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

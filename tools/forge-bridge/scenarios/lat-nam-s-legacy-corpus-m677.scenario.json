@@ -1,0 +1,23 @@
+{
+  "id": "lat-nam-s-legacy-corpus-m677",
+  "description": "M6 corpus — Lat-Nam's Legacy; in-hand parse.",
+  "seed": 64009,
+  "cards": {
+    "Lat-Nam's Legacy": "Name:Lat-Nam's Legacy\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Library | Shuffle$ True | ChangeType$ Card | RememberChanged$ True | SubAbility$ DelTrigSlowtrip | SpellDescription$ Shuffle a card from your hand into your library. If you do, draw two cards at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw two cards.\nSVar:DrawSlowtrip:DB$ Draw | NumCards$ 2 | Defined$ You\nOracle:Shuffle a card from your hand into your library. If you do, draw two cards at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lat-Nam's Legacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

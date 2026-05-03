@@ -1,0 +1,23 @@
+{
+  "id": "moon-girl-and-devil-dinosaur-corpus-m677",
+  "description": "M6 corpus — Moon Girl and Devil Dinosaur; in-hand parse.",
+  "seed": 65454,
+  "cards": {
+    "Moon Girl and Devil Dinosaur": "Name:Moon Girl and Devil Dinosaur\nManaCost:1 G U\nTypes:Legendary Creature Human Dinosaur Hero\nPT:2/2\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever you draw your second card each turn, until end of turn, CARDNAME's base power and toughness become 6/6 and they gain trample.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 6 | Toughness$ 6 | Keywords$ Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | ActivationLimit$ 1 | TriggerDescription$ Whenever an artifact you control enters, draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw\nDeckHints:Type$Artifact\nOracle:Whenever you draw your second card each turn, until end of turn, Moon Girl and Devil Dinosaur's base power and toughness become 6/6 and they gain trample.\\nWhenever an artifact you control enters, draw a card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moon Girl and Devil Dinosaur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "inexorable-blob-corpus-m677",
+  "description": "M6 corpus — Inexorable Blob; in-hand parse.",
+  "seed": 62891,
+  "cards": {
+    "Inexorable Blob": "Name:Inexorable Blob\nManaCost:2 G\nTypes:Creature Ooze\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Delirium$ True | TriggerDescription$ Delirium — Whenever CARDNAME attacks, if there are four or more card types among cards in your graveyard, create a 3/3 green Ooze creature token that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_ooze | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Delirium — Whenever Inexorable Blob attacks, if there are four or more card types among cards in your graveyard, create a 3/3 green Ooze creature token that's tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inexorable Blob"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

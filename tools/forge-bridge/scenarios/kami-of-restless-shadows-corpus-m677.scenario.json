@@ -1,0 +1,23 @@
+{
+  "id": "kami-of-restless-shadows-corpus-m677",
+  "description": "M6 corpus — Kami of Restless Shadows; in-hand parse.",
+  "seed": 63458,
+  "cards": {
+    "Kami of Restless Shadows": "Name:Kami of Restless Shadows\nManaCost:4 B\nTypes:Creature Spirit\nPT:3/3\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ RaiseScoundrel,HauntedHarvest\nSVar:RaiseScoundrel:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.Ninja+YouOwn,Creature.Rogue+YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target Ninja or Rogue creature card from your graveyard | SpellDescription$ Return up to one target Ninja or Rogue creature card from your graveyard to your hand.\nSVar:HauntedHarvest:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature card from your graveyard | SpellDescription$ Put target creature card from your graveyard on top of your library.\nDeckHas:Ability$Graveyard\nDeckHints:Type$Ninja|Rogue\nOracle:When Kami of Restless Shadows enters, choose one —\\n• Return up to one target Ninja or Rogue creature card from your graveyard to your hand.\\n• Put target creature card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kami of Restless Shadows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "skyclave-sentinel-corpus-m677",
+  "description": "M6 corpus — Skyclave Sentinel; in-hand parse.",
+  "seed": 70106,
+  "cards": {
+    "Skyclave Sentinel": "Name:Skyclave Sentinel\nManaCost:3\nTypes:Artifact Creature Gargoyle\nPT:2/3\nK:Kicker:4\nK:Flying\nK:Defender\nK:etbCounter:P1P1:2:CheckSVar$ WasKicked:If CARDNAME was kicked, it enters with two +1/+1 counters on it.\nS:Mode$ CanAttackDefender | ValidCard$ Card.Self+counters_GE1_P1P1 | Description$ As long as CARDNAME has a +1/+1 counter on it, it can attack as though it didn't have defender.\nSVar:WasKicked:Count$Kicked.1.0\nDeckHas:Ability$Counters\nOracle:Kicker {4} (You may pay an additional {4} as you cast this spell.)\\nFlying, defender\\nIf Skyclave Sentinel was kicked, it enters with two +1/+1 counters on it.\\nAs long as Skyclave Sentinel has a +1/+1 counter on it, it can attack as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyclave Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

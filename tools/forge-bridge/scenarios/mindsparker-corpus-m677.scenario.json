@@ -1,0 +1,25 @@
+{
+  "id": "mindsparker-corpus-m677",
+  "description": "M6 corpus — Mindsparker; ETB-on-bf.",
+  "seed": 65179,
+  "cards": {
+    "Mindsparker": "Name:Mindsparker\nManaCost:1 R R\nTypes:Creature Elemental\nPT:3/2\nK:First Strike\nT:Mode$ SpellCast | ValidCard$ Instant.Blue,Instant.White,Sorcery.Blue,Sorcery.White | ValidActivatingPlayer$ Player.Opponent | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts a white or blue instant or sorcery spell, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 2\nOracle:First strike (This creature deals combat damage before creatures without first strike.)\\nWhenever an opponent casts a white or blue instant or sorcery spell, Mindsparker deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mindsparker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

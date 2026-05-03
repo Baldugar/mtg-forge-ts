@@ -1,0 +1,25 @@
+{
+  "id": "nalfeshnee-corpus-m677",
+  "description": "M6 corpus — Nalfeshnee; ETB-on-bf.",
+  "seed": 65720,
+  "cards": {
+    "Nalfeshnee": "Name:Nalfeshnee\nManaCost:5 R\nTypes:Creature Beast Demon\nPT:4/6\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from exile, copy it. You may choose new targets for the copy. If it's a permanent spell, the copy gains haste and \"At the beginning of the end step, sacrifice this permanent.\" (A copy of a permanent spell becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True | RememberNewCard$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | ConditionDefined$ Remembered | ConditionPresent$ Permanent | Defined$ Remembered | Keywords$ Haste | Triggers$ EOTSac | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:EOTSac:Mode$ Phase | Phase$ End of Turn | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, sacrifice this permanent.\nSVar:TrigSac:DB$ Sacrifice\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Sacrifice\nDeckHints:Type$Adventure & Keyword$Foretell\nOracle:Flying\\nWhenever you cast a spell from exile, copy it. You may choose new targets for the copy. If it's a permanent spell, the copy gains haste and \"At the beginning of the end step, sacrifice this permanent.\" (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nalfeshnee"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

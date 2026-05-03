@@ -1,0 +1,23 @@
+{
+  "id": "mr-foxglove-corpus-m677",
+  "description": "M6 corpus — Mr. Foxglove; in-hand parse.",
+  "seed": 65564,
+  "cards": {
+    "Mr. Foxglove": "Name:Mr. Foxglove\nManaCost:2 G W U\nTypes:Legendary Creature Fox Rogue\nPT:3/5\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, draw cards equal to the number of cards in defending player's hand minus the number of cards in your hand. If you didn't draw cards this way, you may put a creature card from your hand onto the battlefield.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X | RememberDrawn$ AllReplaced | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredDefendingPlayer$CardsInHand/Minus.Y\nSVar:Y:Count$ValidHand Card.YouOwn\nSVar:HasAttackEffect:TRUE\nOracle:Lifelink\\nWhenever Mr. Foxglove attacks, draw cards equal to the number of cards in defending player's hand minus the number of cards in your hand. If you didn't draw cards this way, you may put a creature card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mr. Foxglove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

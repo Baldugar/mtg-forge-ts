@@ -1,0 +1,23 @@
+{
+  "id": "primal-might-corpus-m677",
+  "description": "M6 corpus — Primal Might; in-hand parse.",
+  "seed": 67184,
+  "cards": {
+    "Primal Might": "Name:Primal Might\nManaCost:X G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X | NumDef$ +X | SubAbility$ DBFight | SpellDescription$ Target creature you control gets +X/+X until end of turn. Then it fights up to one target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature you don't control\nSVar:X:Count$xPaid\nSVar:PlayMain1:TRUE\nOracle:Target creature you control gets +X/+X until end of turn. Then it fights up to one target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Might"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

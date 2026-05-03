@@ -1,0 +1,25 @@
+{
+  "id": "kozilek-s-unsealing-corpus-m677",
+  "description": "M6 corpus — Kozilek's Unsealing; ETB-on-bf.",
+  "seed": 63856,
+  "cards": {
+    "Kozilek's Unsealing": "Name:Kozilek's Unsealing\nManaCost:2 U\nTypes:Enchantment\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Creature.cmcEQ4,Creature.cmcEQ5,Creature.cmcEQ6 | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell with mana value 4, 5, or 6, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You\nT:Mode$ SpellCast | ValidCard$ Creature.cmcGE7 | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell with mana value 7 or greater, draw three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3\nOracle:Devoid (This card has no color.)\\nWhenever you cast a creature spell with mana value 4, 5, or 6, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\\nWhenever you cast a creature spell with mana value 7 or greater, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kozilek's Unsealing"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

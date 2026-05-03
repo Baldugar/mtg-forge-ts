@@ -1,0 +1,23 @@
+{
+  "id": "spire-mangler-corpus-m677",
+  "description": "M6 corpus — Spire Mangler; in-hand parse.",
+  "seed": 70690,
+  "cards": {
+    "Spire Mangler": "Name:Spire Mangler\nManaCost:2 B\nTypes:Creature Insect\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature you control with flying gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+withFlying | TgtPrompt$ Select target creature with flying you control | NumAtt$ +2\nSVar:PlayMain1:TRUE\nOracle:Flash\\nFlying\\nWhen Spire Mangler enters, target creature you control with flying gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spire Mangler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

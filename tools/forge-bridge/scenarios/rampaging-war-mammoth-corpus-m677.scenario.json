@@ -1,0 +1,25 @@
+{
+  "id": "rampaging-war-mammoth-corpus-m677",
+  "description": "M6 corpus — Rampaging War Mammoth; ETB-on-bf.",
+  "seed": 67675,
+  "cards": {
+    "Rampaging War Mammoth": "Name:Rampaging War Mammoth\nManaCost:5 R R\nTypes:Creature Elephant\nPT:9/7\nK:Trample\nK:Cycling:X 2 R\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When you cycle CARDNAME, destroy up to X target artifacts.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact | TgtPrompt$ Select up to X target artifacts | TargetMin$ 0 | TargetMax$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Discard\nOracle:Trample\\nCycling {X}{2}{R} ({X}{2}{R}, Discard this card: Draw a card.)\\nWhen you cycle Rampaging War Mammoth, destroy up to X target artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rampaging War Mammoth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

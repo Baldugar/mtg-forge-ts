@@ -1,0 +1,23 @@
+{
+  "id": "primal-order-corpus-m677",
+  "description": "M6 corpus — Primal Order; in-hand parse.",
+  "seed": 67185,
+  "cards": {
+    "Primal Order": "Name:Primal Order\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each player's upkeep, CARDNAME deals damage to that player equal to the number of nonbasic lands they control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$Valid Land.nonBasic+ActivePlayerCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, Primal Order deals damage to that player equal to the number of nonbasic lands they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Order"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

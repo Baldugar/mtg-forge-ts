@@ -1,0 +1,23 @@
+{
+  "id": "noosegraf-mob-corpus-m677",
+  "description": "M6 corpus — Noosegraf Mob; in-hand parse.",
+  "seed": 66051,
+  "cards": {
+    "Noosegraf Mob": "Name:Noosegraf Mob\nManaCost:4 B B\nTypes:Creature Zombie\nPT:0/0\nK:etbCounter:P1P1:5\nT:Mode$ SpellCast | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever a player casts a spell, remove a +1/+1 counter from CARDNAME. If you do, create a 2/2 black Zombie creature token.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | CounterType$ P1P1 | CounterNum$ 1 | RememberRemoved$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | ConditionCheckSVar$ CounterX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:CounterX:Count$RememberedSize\nOracle:Noosegraf Mob enters with five +1/+1 counters on it.\\nWhenever a player casts a spell, remove a +1/+1 counter from Noosegraf Mob. If you do, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noosegraf Mob"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

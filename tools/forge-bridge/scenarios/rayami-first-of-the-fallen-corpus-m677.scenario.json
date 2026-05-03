@@ -1,0 +1,25 @@
+{
+  "id": "rayami-first-of-the-fallen-corpus-m677",
+  "description": "M6 corpus — Rayami, First of the Fallen; ETB-on-bf.",
+  "seed": 67783,
+  "cards": {
+    "Rayami, First of the Fallen": "Name:Rayami, First of the Fallen\nManaCost:1 B G U\nTypes:Legendary Creature Vampire\nPT:5/4\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.!token | ReplaceWith$ Exile | Description$ If a nontoken creature would die, exile that card with a blood counter on it instead.\nSVar:Exile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile | WithCountersType$ BLOOD | WithCountersAmount$ 1\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Card.Self | SharedKeywordsZone$ Exile | SharedRestrictions$ Creature.counters_GE1_BLOOD | AddKeyword$ Flying & First Strike & Double Strike & Deathtouch & Haste & Hexproof & Indestructible & Lifelink & Menace & Protection & Reach & Trample & Vigilance | Description$ As long as an exiled creature card with a blood counter on it has flying, CARDNAME has flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, protection, reach, trample, and vigilance.\nOracle:If a nontoken creature would die, exile that card with a blood counter on it instead.\\nAs long as an exiled creature card with a blood counter on it has flying, Rayami, First of the Fallen has flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, protection, reach, trample, and vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rayami, First of the Fallen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

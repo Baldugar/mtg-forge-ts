@@ -1,0 +1,23 @@
+{
+  "id": "platypus-bear-corpus-m677",
+  "description": "M6 corpus — Platypus-Bear; in-hand parse.",
+  "seed": 67006,
+  "cards": {
+    "Platypus-Bear": "Name:Platypus-Bear\nManaCost:1 GU\nTypes:Creature Platypus Bear\nPT:2/3\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this creature enters, mill two cards. (Put the top two cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 2\nS:Mode$ CanAttackDefender | ValidCard$ Card.Self | IsPresent$ Lesson.YouOwn | PresentZone$ Graveyard | Description$ As long as there is a Lesson card in your graveyard, this creature can attack as though it didn't have defender.\nDeckHas:Ability$Mill|Graveyard\nDeckHints:Type$Lesson\nOracle:Defender\\nWhen this creature enters, mill two cards. (Put the top two cards of your library into your graveyard.)\\nAs long as there is a Lesson card in your graveyard, this creature can attack as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Platypus-Bear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

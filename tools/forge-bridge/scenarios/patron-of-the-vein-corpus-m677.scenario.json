@@ -1,0 +1,23 @@
+{
+  "id": "patron-of-the-vein-corpus-m677",
+  "description": "M6 corpus — Patron of the Vein; in-hand parse.",
+  "seed": 66676,
+  "cards": {
+    "Patron of the Vein": "Name:Patron of the Vein\nManaCost:4 B B\nTypes:Creature Vampire Shaman\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever a creature an opponent controls dies, exile it and put a +1/+1 counter on each Vampire you control.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBPutCounterAll\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Vampire.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nDeckHints:Type$Vampire\nOracle:Flying\\nWhen Patron of the Vein enters, destroy target creature an opponent controls.\\nWhenever a creature an opponent controls dies, exile it and put a +1/+1 counter on each Vampire you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patron of the Vein"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

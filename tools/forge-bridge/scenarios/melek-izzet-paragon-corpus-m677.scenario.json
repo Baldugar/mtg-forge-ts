@@ -1,0 +1,25 @@
+{
+  "id": "melek-izzet-paragon-corpus-m677",
+  "description": "M6 corpus — Melek, Izzet Paragon; ETB-on-bf.",
+  "seed": 64946,
+  "cards": {
+    "Melek, Izzet Paragon": "Name:Melek, Izzet Paragon\nManaCost:4 U R\nTypes:Legendary Creature Weird Wizard\nPT:2/4\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ Player | Description$ Play with the top card of your library revealed.\nS:Mode$ Continuous | Affected$ Instant.TopLibrary+YouCtrl,Sorcery.TopLibrary+YouCtrl | AffectedZone$ Library | EffectZone$ Battlefield | MayPlay$ True | Description$ You may cast instant and sorcery spells from the top of your library.\nT:Mode$ SpellCast | ValidCard$ Instant.wasCastFromYourLibrary,Sorcery.wasCastFromYourLibrary | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell from your library, copy it. You may choose new targets for this copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nDeckNeeds:Type$Instant|Sorcery\nOracle:Play with the top card of your library revealed.\\nYou may cast instant and sorcery spells from the top of your library.\\nWhenever you cast an instant or sorcery spell from your library, copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Melek, Izzet Paragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

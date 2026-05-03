@@ -1,0 +1,23 @@
+{
+  "id": "polluted-cistern-corpus-m677",
+  "description": "M6 corpus — Polluted Cistern; in-hand parse.",
+  "seed": 67041,
+  "cards": {
+    "Polluted Cistern": "Name:Polluted Cistern\nManaCost:1 B\nTypes:Enchantment Room\nT:Mode$ ChangesZoneAll | ValidCards$ Card.YouOwn | Origin$ Library | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever one or more cards are put into your graveyard from your library, each opponent loses 1 life for each card type among those cards.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X\nSVar:X:TriggerObjectsCards$CardTypes\nAlternateMode:Split\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhenever one or more cards are put into your graveyard from your library, each opponent loses 1 life for each card type among those cards.\n\nALTERNATE\n\nName:Dim Oubliette\nManaCost:4 B\nTypes:Enchantment Room\nT:Mode$ UnlockDoor | ValidPlayer$ You | ValidCard$ Card.Self | ThisDoor$ True | Execute$ TrigMill | TriggerDescription$ When you unlock this door, mill three cards, then return a creature card from your graveyard to the battlefield.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 3 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | ChangeType$ Creature.YouOwn | Mandatory$ True | Origin$ Graveyard | Destination$ Battlefield | Hidden$ True | ChangeNum$ 1\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhen you unlock this door, mill three cards, then return a creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Polluted Cistern"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reroute-corpus-m677",
+  "description": "M6 corpus — Reroute; in-hand parse.",
+  "seed": 68085,
+  "cards": {
+    "Reroute": "Name:Reroute\nManaCost:1 R\nTypes:Instant\nA:SP$ ChangeTargets | TargetType$ Activated.singleTarget | ValidTgts$ Card | TgtPrompt$ Select target activated ability with a single target | SubAbility$ DBDraw | SpellDescription$ Change the target of target activated ability with a single target. (Mana abilities can't be targeted.) Draw a card.\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:All\nOracle:Change the target of target activated ability with a single target. (Mana abilities can't be targeted.)\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reroute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

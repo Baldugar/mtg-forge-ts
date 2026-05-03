@@ -1,0 +1,25 @@
+{
+  "id": "karador-ghost-chieftain-corpus-m677",
+  "description": "M6 corpus — Karador, Ghost Chieftain; ETB-on-bf.",
+  "seed": 63472,
+  "cards": {
+    "Karador, Ghost Chieftain": "Name:Karador, Ghost Chieftain\nManaCost:5 W B G\nTypes:Legendary Creature Centaur Spirit\nPT:3/4\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature card in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouCtrl\nS:Mode$ Continuous | Affected$ Creature.nonLand+YouCtrl | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ During each of your turns, you may cast a creature spell from your graveyard.\nOracle:This spell costs {1} less to cast for each creature card in your graveyard.\\nDuring each of your turns, you may cast a creature spell from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Karador, Ghost Chieftain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

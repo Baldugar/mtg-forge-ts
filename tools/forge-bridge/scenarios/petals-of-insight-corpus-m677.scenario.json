@@ -1,0 +1,23 @@
+{
+  "id": "petals-of-insight-corpus-m677",
+  "description": "M6 corpus — Petals of Insight; in-hand parse.",
+  "seed": 66774,
+  "cards": {
+    "Petals of Insight": "Name:Petals of Insight\nManaCost:4 U\nTypes:Sorcery Arcane\nA:SP$ PeekAndReveal | PeekAmount$ 3 | NoReveal$ True | SubAbility$ DBPetalChoose | SpellDescription$ Look at the top three cards of your library. You may put those cards on the bottom of your library in any order. If you do, return CARDNAME to its owner's hand. Otherwise, draw three cards.\nSVar:DBPetalChoose:DB$ GenericChoice | Choices$ ReturnPetals,DrawCards | Defined$ You\nSVar:ReturnPetals:DB$ Dig | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Library | LibraryPosition$ -1 | SubAbility$ DBChangeZone | SpellDescription$ You may put those cards on the bottom of your library in any order. If you do, return CARDNAME to its owner's hand.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Stack | Destination$ Hand | Defined$ Parent\nSVar:DrawCards:DB$ Draw | NumCards$ 3 | SpellDescription$ Otherwise, draw three cards.\nAI:RemoveDeck:All\nOracle:Look at the top three cards of your library. You may put those cards on the bottom of your library in any order. If you do, return Petals of Insight to its owner's hand. Otherwise, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Petals of Insight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

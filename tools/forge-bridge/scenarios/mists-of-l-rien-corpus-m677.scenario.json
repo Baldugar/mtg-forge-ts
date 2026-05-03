@@ -1,0 +1,23 @@
+{
+  "id": "mists-of-l-rien-corpus-m677",
+  "description": "M6 corpus — Mists of Lórien; in-hand parse.",
+  "seed": 65320,
+  "cards": {
+    "Mists of Lórien": "Name:Mists of Lórien\nManaCost:2 U\nTypes:Sorcery\nK:Replicate:U\nA:SP$ Pump | ValidTgts$ Permanent.nonLand | StackDescription$ REP target nonland permanent_{c:Targeted} | TgtPrompt$ Select target nonland permanent | SubAbility$ DBChangeZoneAll | SpellDescription$ Return target nonland permanent and each other nonland permanent with the same mana value as that permanent to their owners' hands.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Hand | ChangeType$ TargetedCard.Self,Permanent.nonLand+NotDefinedTargeted+cmcEQX\nSVar:X:Targeted$CardManaCost\nOracle:Replicate {U} (When you cast this spell, copy it for each time you paid its replicate cost. You may choose new targets for the copies.)\\nReturn target nonland permanent and each other nonland permanent with the same mana value as that permanent to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mists of Lórien"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

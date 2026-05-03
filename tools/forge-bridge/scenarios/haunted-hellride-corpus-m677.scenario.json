@@ -1,0 +1,23 @@
+{
+  "id": "haunted-hellride-corpus-m677",
+  "description": "M6 corpus — Haunted Hellride; in-hand parse.",
+  "seed": 62108,
+  "cards": {
+    "Haunted Hellride": "Name:Haunted Hellride\nManaCost:1 U B\nTypes:Artifact Vehicle\nPT:3/3\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target creature you control gets +1/+0 and gains deathtouch until end of turn. Untap it.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | KW$ Deathtouch | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nK:Crew:1\nSVar:PlayMain1:TRUE\nOracle:Whenever you attack, target creature you control gets +1/+0 and gains deathtouch until end of turn. Untap it.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haunted Hellride"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

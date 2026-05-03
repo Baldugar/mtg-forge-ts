@@ -1,0 +1,23 @@
+{
+  "id": "scholar-of-combustion-corpus-m677",
+  "description": "M6 corpus — Scholar of Combustion; in-hand parse.",
+  "seed": 69145,
+  "cards": {
+    "Scholar of Combustion": "Name:Scholar of Combustion\nManaCost:3 R\nTypes:Creature Human Wizard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, exile up to one target instant or sorcery card from your graveyard. You may cast that card until the end of your next turn. (You still pay its costs. Timing rules still apply.)\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target instant or sorcery card in your graveyard. | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast that card until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Instant|Sorcery\nOracle:When Scholar of Combustion enters, exile up to one target instant or sorcery card from your graveyard. You may cast that card until the end of your next turn. (You still pay its costs. Timing rules still apply.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scholar of Combustion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

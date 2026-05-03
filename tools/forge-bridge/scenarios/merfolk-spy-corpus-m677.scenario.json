@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-spy-corpus-m677",
+  "description": "M6 corpus — Merfolk Spy; in-hand parse.",
+  "seed": 65026,
+  "cards": {
+    "Merfolk Spy": "Name:Merfolk Spy\nManaCost:U\nTypes:Creature Merfolk Rogue\nPT:1/1\nK:Landwalk:Island\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReveal | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player reveals a card at random from their hand.\nSVar:TrigReveal:DB$ Reveal | Random$ True | Defined$ TriggeredTarget\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nWhenever Merfolk Spy deals combat damage to a player, that player reveals a card at random from their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Spy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

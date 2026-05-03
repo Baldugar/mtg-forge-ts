@@ -1,0 +1,23 @@
+{
+  "id": "lord-of-tresserhorn-corpus-m677",
+  "description": "M6 corpus — Lord of Tresserhorn; in-hand parse.",
+  "seed": 64401,
+  "cards": {
+    "Lord of Tresserhorn": "Name:Lord of Tresserhorn\nManaCost:1 U B R\nTypes:Legendary Creature Zombie\nPT:10/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLose | AILogic$ BadETB | TriggerDescription$ When CARDNAME enters, you lose 2 life, you sacrifice two creatures, and target opponent draws two cards.\nA:AB$ Regenerate | Cost$ B | SpellDescription$ Regenerate CARDNAME.\nSVar:TrigLose:DB$ LoseLife | LifeAmount$ 2 | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | Amount$ 2 | SacValid$ Creature | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ValidTgts$ Opponent | NumCards$ 2\nAI:RemoveDeck:Random\nOracle:When Lord of Tresserhorn enters, you lose 2 life, you sacrifice two creatures, and target opponent draws two cards.\\n{B}: Regenerate Lord of Tresserhorn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lord of Tresserhorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

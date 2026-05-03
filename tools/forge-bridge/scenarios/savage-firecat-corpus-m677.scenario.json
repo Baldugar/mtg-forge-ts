@@ -1,0 +1,23 @@
+{
+  "id": "savage-firecat-corpus-m677",
+  "description": "M6 corpus — Savage Firecat; in-hand parse.",
+  "seed": 69047,
+  "cards": {
+    "Savage Firecat": "Name:Savage Firecat\nManaCost:3 R R\nTypes:Creature Elemental Cat\nPT:0/0\nK:etbCounter:P1P1:7\nK:Trample\nT:Mode$ TapsForMana | ValidCard$ Land | Activator$ You | Execute$ TrigRemoveCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you tap a land for mana, remove a +1/+1 counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nAI:RemoveDeck:All\nOracle:Trample\\nSavage Firecat enters with seven +1/+1 counters on it.\\nWhenever you tap a land for mana, remove a +1/+1 counter from Savage Firecat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savage Firecat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

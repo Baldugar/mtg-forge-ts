@@ -1,0 +1,23 @@
+{
+  "id": "ochre-jelly-corpus-m677",
+  "description": "M6 corpus — Ochre Jelly; in-hand parse.",
+  "seed": 66207,
+  "cards": {
+    "Ochre Jelly": "Name:Ochre Jelly\nManaCost:X G\nTypes:Creature Ooze\nPT:0/0\nK:Trample\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+counters_GE2_P1P1 | TriggerZones$ Battlefield | Execute$ TrigDelayTrigger | TriggerDescription$ Split — When CARDNAME dies, if it had two or more +1/+1 counters on it, create a token that's a copy of it at the beginning of the next end step. The token enters with half that many +1/+1 counters on it, rounded down.\nSVar:TrigDelayTrigger:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | RememberObjects$ TriggeredCardLKICopy | Execute$ TrigCopy | TriggerDescription$ Create a token that's a copy of it at the beginning of the next end step. That token enters with half that many +1/+1 counters on it, rounded down.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ DelayTriggerRememberedLKI | WithCountersType$ P1P1 | WithCountersAmount$ Y\nSVar:Y:TriggerRemembered$CardCounters.P1P1/HalfDown\nDeckHas:Ability$Counters|Token\nOracle:Trample\\nOchre Jelly enters with X +1/+1 counters on it.\\nSplit — When Ochre Jelly dies, if it had two or more +1/+1 counters on it, create a token that's a copy of it at the beginning of the next end step. The token enters with half that many +1/+1 counters on it, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ochre Jelly"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

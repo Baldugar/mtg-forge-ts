@@ -1,0 +1,23 @@
+{
+  "id": "paladin-elizabeth-taggerdy-corpus-m677",
+  "description": "M6 corpus — Paladin Elizabeth Taggerdy; in-hand parse.",
+  "seed": 66565,
+  "cards": {
+    "Paladin Elizabeth Taggerdy": "Name:Paladin Elizabeth Taggerdy\nManaCost:1 R W\nTypes:Legendary Creature Human Knight\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigDraw | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, draw a card, then you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is CARDNAME's power.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Creature.YouCtrl+cmcLEX | Origin$ Hand | Tapped$ True | Attacking$ True | Destination$ Battlefield | TgtPrompt$ Select target creature card in your hand with mana value less or equal to this creatures power\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nOracle:Battalion — Whenever Paladin Elizabeth Taggerdy and at least two other creatures attack, draw a card, then you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is Paladin Elizabeth Taggerdy's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paladin Elizabeth Taggerdy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

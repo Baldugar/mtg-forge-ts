@@ -1,0 +1,23 @@
+{
+  "id": "a-hobbling-zombie-corpus-m677",
+  "description": "M6 corpus — A-Hobbling Zombie; in-hand parse.",
+  "seed": 68746,
+  "cards": {
+    "A-Hobbling Zombie": "Name:A-Hobbling Zombie\nManaCost:1 B\nTypes:Creature Zombie\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 2/2 black Zombie creature with decayed.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie_decayed\nDeckHas:Ability$Token\nOracle:Deathtouch\\nWhen Hobbling Zombie dies, create a 2/2 black Zombie creature with decayed.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Hobbling Zombie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

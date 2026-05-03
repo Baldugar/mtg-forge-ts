@@ -1,0 +1,23 @@
+{
+  "id": "gruul-scrapper-corpus-m677",
+  "description": "M6 corpus — Gruul Scrapper; in-hand parse.",
+  "seed": 61852,
+  "cards": {
+    "Gruul Scrapper": "Name:Gruul Scrapper\nManaCost:3 G\nTypes:Creature Human Berserker\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | ManaSpent$ R | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, if {R} was spent to cast it, it gains haste until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Haste\nSVar:ManaNeededToAvoidNegativeEffect:red\nSVar:PlayMain1:ALWAYS\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red\nOracle:When Gruul Scrapper enters, if {R} was spent to cast it, it gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gruul Scrapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

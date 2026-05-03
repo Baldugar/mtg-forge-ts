@@ -1,0 +1,23 @@
+{
+  "id": "phantom-nomad-corpus-m677",
+  "description": "M6 corpus — Phantom Nomad; in-hand parse.",
+  "seed": 66809,
+  "cards": {
+    "Phantom Nomad": "Name:Phantom Nomad\nManaCost:1 W\nTypes:Creature Spirit Nomad\nPT:0/0\nK:etbCounter:P1P1:2\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. Remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Phantom Nomad enters with two +1/+1 counters on it.\\nIf damage would be dealt to Phantom Nomad, prevent that damage. Remove a +1/+1 counter from Phantom Nomad.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantom Nomad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

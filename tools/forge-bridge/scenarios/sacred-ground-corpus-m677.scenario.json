@@ -1,0 +1,23 @@
+{
+  "id": "sacred-ground-corpus-m677",
+  "description": "M6 corpus — Sacred Ground; in-hand parse.",
+  "seed": 68839,
+  "cards": {
+    "Sacred Ground": "Name:Sacred Ground\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Land.YouOwn | ValidCause$ SpellAbility.OppCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever a spell or ability an opponent controls causes a land to be put into your graveyard from the battlefield, return that card to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield\nAI:RemoveDeck:Random\nOracle:Whenever a spell or ability an opponent controls causes a land to be put into your graveyard from the battlefield, return that card to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sacred Ground"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

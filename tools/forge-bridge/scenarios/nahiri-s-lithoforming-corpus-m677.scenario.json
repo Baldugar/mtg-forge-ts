@@ -1,0 +1,23 @@
+{
+  "id": "nahiri-s-lithoforming-corpus-m677",
+  "description": "M6 corpus — Nahiri's Lithoforming; in-hand parse.",
+  "seed": 65710,
+  "cards": {
+    "Nahiri's Lithoforming": "Name:Nahiri's Lithoforming\nManaCost:X R R\nTypes:Sorcery\nA:SP$ Sacrifice | SacValid$ Land | Amount$ X | RememberSacrificed$ True | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Sacrifice X lands. For each land sacrificed this way, draw a card. You may play X additional lands this turn. Lands you control enter tapped this turn.\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBEffect | StackDescription$ None\nSVar:DBEffect:DB$ Effect | SetChosenNumber$ X | StaticAbilities$ PlayMoreLand | ReplacementEffects$ LandETB | SubAbility$ DBCleanup\nSVar:PlayMoreLand:Mode$ Continuous | Affected$ You | AdjustLandPlays$ Z | Description$ You may play X additional lands this turn.\nSVar:LandETB:Event$ Moved | ValidCard$ Land.YouCtrl | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ Lands you control enter tapped this turn.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Count$RememberedSize\nSVar:Z:Count$ChosenNumber\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Sacrifice X lands. For each land sacrificed this way, draw a card. You may play X additional lands this turn. Lands you control enter tapped this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nahiri's Lithoforming"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

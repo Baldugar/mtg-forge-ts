@@ -1,0 +1,23 @@
+{
+  "id": "slip-on-the-ring-corpus-m677",
+  "description": "M6 corpus — Slip On the Ring; in-hand parse.",
+  "seed": 70220,
+  "cards": {
+    "Slip On the Ring": "Name:Slip On the Ring\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.YouOwn | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature you own | RememberTargets$ True | SubAbility$ DBReturn | SpellDescription$ Exile target creature you own, then return it to the battlefield under your control. The Ring tempts you.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ TrigTempt\nSVar:TrigTempt:DB$ RingTemptsYou\nOracle:Exile target creature you own, then return it to the battlefield under your control. The Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slip On the Ring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sidequest-card-collection-corpus-m677",
+  "description": "M6 corpus — Sidequest: Card Collection; in-hand parse.",
+  "seed": 69823,
+  "cards": {
+    "Sidequest: Card Collection": "Name:Sidequest: Card Collection\nManaCost:3 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enchantment enters, draw three cards, then discard two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose | Defined$ You\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | SVarCompare$ GE8 | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your end step, if eight or more cards are in your graveyard, transform this enchantment.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:X:Count$ValidGraveyard Card.YouOwn\nAlternateMode:DoubleFaced\nOracle:When this enchantment enters, draw three cards, then discard two cards.\\nAt the beginning of your end step, if eight or more cards are in your graveyard, transform this enchantment.\n\nALTERNATE\n\nName:Magicked Card\nManaCost:no cost\nColors:blue\nTypes:Artifact Vehicle\nPT:4/4\nK:Flying\nK:Crew:1\nOracle:Flying\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sidequest: Card Collection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

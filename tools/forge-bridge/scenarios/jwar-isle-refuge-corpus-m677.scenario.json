@@ -1,0 +1,23 @@
+{
+  "id": "jwar-isle-refuge-corpus-m677",
+  "description": "M6 corpus — Jwar Isle Refuge; in-hand parse.",
+  "seed": 63410,
+  "cards": {
+    "Jwar Isle Refuge": "Name:Jwar Isle Refuge\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | SpellDescription$ Add {U} or {B}.\nDeckHas:Ability$LifeGain\nOracle:Jwar Isle Refuge enters tapped.\\nWhen Jwar Isle Refuge enters, you gain 1 life.\\n{T}: Add {U} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jwar Isle Refuge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

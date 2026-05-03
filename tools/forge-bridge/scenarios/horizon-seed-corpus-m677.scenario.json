@@ -1,0 +1,25 @@
+{
+  "id": "horizon-seed-corpus-m677",
+  "description": "M6 corpus — Horizon Seed; ETB-on-bf.",
+  "seed": 62490,
+  "cards": {
+    "Horizon Seed": "Name:Horizon Seed\nManaCost:4 W\nTypes:Creature Spirit\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRegenerate | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, regenerate target creature.\nSVar:TrigRegenerate:DB$ Regenerate | ValidTgts$ Creature | TgtPrompt$ Select target creature\nSVar:BuffedBy:Spirit,Arcane\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, regenerate target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Horizon Seed"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

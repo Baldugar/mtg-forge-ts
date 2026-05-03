@@ -1,0 +1,23 @@
+{
+  "id": "rabaroo-troop-corpus-m677",
+  "description": "M6 corpus — Rabaroo Troop; in-hand parse.",
+  "seed": 67502,
+  "cards": {
+    "Rabaroo Troop": "Name:Rabaroo Troop\nManaCost:3 W W\nTypes:Creature Rabbit Kangaroo\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigFlying | TriggerDescription$ Landfall — Whenever a land you control enters, this creature gains flying until end of turn and you gain 1 life.\nSVar:TrigFlying:DB$ Pump | Defined$ Self | KW$ Flying | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nK:TypeCycling:Plains:2\nOracle:Landfall — Whenever a land you control enters, this creature gains flying until end of turn and you gain 1 life.\\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rabaroo Troop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

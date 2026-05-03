@@ -1,0 +1,25 @@
+{
+  "id": "katilda-and-lier-corpus-m677",
+  "description": "M6 corpus — Katilda and Lier; ETB-on-bf.",
+  "seed": 63517,
+  "cards": {
+    "Katilda and Lier": "Name:Katilda and Lier\nManaCost:G W U\nTypes:Legendary Creature Human\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Human | ValidActivatingPlayer$ You | Execute$ TrigFlashback | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Human spell, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)\nSVar:TrigFlashback:DB$ Pump | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TgtZone$ Graveyard | TgtPrompt$ Select target instant or sorcery card in your graveyard | KW$ Flashback | PumpZone$ Graveyard | AILogic$ ReplaySpell\nDeckHas:Ability$Graveyard & Keyword$Flashback\nDeckHints:Ability$Graveyard|Mill & Type$Instant|Sorcery\nDeckNeeds:Type$Human\nOracle:Whenever you cast a Human spell, target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Katilda and Lier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

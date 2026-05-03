@@ -1,0 +1,23 @@
+{
+  "id": "stitcher-s-supplier-corpus-m677",
+  "description": "M6 corpus — Stitcher's Supplier; in-hand parse.",
+  "seed": 71021,
+  "cards": {
+    "Stitcher's Supplier": "Name:Stitcher's Supplier\nManaCost:B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters or dies, mill three cards.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Secondary$ True | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters or dies, mill three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You\nDeckHas:Ability$Graveyard\nOracle:When Stitcher's Supplier enters or dies, mill three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stitcher's Supplier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "harbinger-of-the-tides-corpus-m677",
+  "description": "M6 corpus — Harbinger of the Tides; in-hand parse.",
+  "seed": 62044,
+  "cards": {
+    "Harbinger of the Tides": "Name:Harbinger of the Tides\nManaCost:U U\nTypes:Creature Merfolk Wizard\nPT:2/2\nK:MayFlashCost:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target tapped creature an opponent controls to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl+tapped | TgtPrompt$ Select target tapped creature an opponent controls | Origin$ Battlefield | Destination$ Hand\nOracle:You may cast Harbinger of the Tides as though it had flash if you pay {2} more to cast it. (You may cast it any time you could cast an instant.)\\nWhen Harbinger of the Tides enters, you may return target tapped creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harbinger of the Tides"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

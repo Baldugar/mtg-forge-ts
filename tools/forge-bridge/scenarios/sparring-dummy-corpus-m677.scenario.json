@@ -1,0 +1,25 @@
+{
+  "id": "sparring-dummy-corpus-m677",
+  "description": "M6 corpus — Sparring Dummy; ETB-on-bf.",
+  "seed": 70519,
+  "cards": {
+    "Sparring Dummy": "Name:Sparring Dummy\nManaCost:1 G\nTypes:Artifact Creature Scarecrow\nPT:1/3\nK:Defender\nA:AB$ Mill | Cost$ T | NumCards$ 1 | Defined$ You | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill a card. You may put a land card milled this way into your hand. You gain 2 life if a Lesson card is milled this way. (To mill a card, put the top card of your library into your graveyard.)\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Land.IsRemembered | SelectPrompt$ You may select an instant or sorcery card | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | ConditionDefined$ Remembered | ConditionPresent$ Lesson | LifeAmount$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Defender\\n{T}: Mill a card. You may put a land card milled this way into your hand. You gain 2 life if a Lesson card is milled this way. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sparring Dummy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

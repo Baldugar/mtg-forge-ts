@@ -1,0 +1,23 @@
+{
+  "id": "shyft-corpus-m677",
+  "description": "M6 corpus — Shyft; in-hand parse.",
+  "seed": 69811,
+  "cards": {
+    "Shyft": "Name:Shyft\nManaCost:4 U\nTypes:Creature Shapeshifter\nPT:4/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigColor | TriggerDescription$ At the beginning of your upkeep, you may have CARDNAME become the color or colors of your choice. (This effect lasts indefinitely.)\nSVar:TrigColor:DB$ ChooseColor | Defined$ You | OrColors$ True | SubAbility$ Animate\nSVar:Animate:DB$ Animate | Defined$ Self | Colors$ ChosenColor | OverwriteColors$ True | Duration$ Permanent\nOracle:At the beginning of your upkeep, you may have Shyft become the color or colors of your choice. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shyft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

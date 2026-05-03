@@ -1,0 +1,25 @@
+{
+  "id": "skyshroud-forest-corpus-m677",
+  "description": "M6 corpus — Skyshroud Forest; ETB-on-bf.",
+  "seed": 70145,
+  "cards": {
+    "Skyshroud Forest": "Name:Skyshroud Forest\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SubAbility$ DBPain | SpellDescription$ Add {G} or {U}. CARDNAME deals 1 damage to you.\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nOracle:Skyshroud Forest enters tapped.\\n{T}: Add {C}.\\n{T}: Add {G} or {U}. Skyshroud Forest deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Skyshroud Forest"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "minas-tirith-corpus-m677",
+  "description": "M6 corpus — Minas Tirith; ETB-on-bf.",
+  "seed": 65141,
+  "cards": {
+    "Minas Tirith": "Name:Minas Tirith\nManaCost:no cost\nTypes:Legendary Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a legendary creature.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Creature.Legendary+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Draw | Cost$ 1 W T | CheckSVar$ RaidTest | SVarCompare$ GE2 | SpellDescription$ Draw a card. Activate only if you attacked with two or more creatures this turn.\nSVar:RaidTest:Count$AttackersDeclared\nDeckHints:Type$Legendary\nOracle:Minas Tirith enters tapped unless you control a legendary creature.\\n{T}: Add {W}.\\n{1}{W}, {T}: Draw a card. Activate only if you attacked with two or more creatures this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Minas Tirith"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

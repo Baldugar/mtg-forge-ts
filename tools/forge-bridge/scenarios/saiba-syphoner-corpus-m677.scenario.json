@@ -1,0 +1,23 @@
+{
+  "id": "saiba-syphoner-corpus-m677",
+  "description": "M6 corpus — Saiba Syphoner; in-hand parse.",
+  "seed": 68883,
+  "cards": {
+    "Saiba Syphoner": "Name:Saiba Syphoner\nManaCost:2 U U\nTypes:Creature Human Ninja\nPT:2/2\nK:Flash\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | IsPresent$ Instant.YouOwn,Sorcery.YouOwn | PresentZone$ Hand | PresentCompare$ EQ0 | Description$ This spell costs {2} less to cast if there are no instant or sorcery cards in your hand.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn\nR:Event$ Moved | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would die, shuffle it into your library instead.\nSVar:Exile:DB$ ChangeZone | Destination$ Library | Shuffle$ True | Defined$ ReplacedCard\nOracle:Flash\\nThis spell costs {2} less to cast if there are no instant or sorcery cards in your hand.\\nWhen Saiba Syphoner enters, return target instant or sorcery card from your graveyard to your hand.\\nIf Saiba Syphoner would die, shuffle it into your library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saiba Syphoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

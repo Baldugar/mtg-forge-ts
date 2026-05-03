@@ -1,0 +1,23 @@
+{
+  "id": "serra-s-boon-corpus-m677",
+  "description": "M6 corpus — Serra's Boon; in-hand parse.",
+  "seed": 69498,
+  "cards": {
+    "Serra's Boon": "Name:Serra's Boon\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:SpecificCard\nSVar:AttachAIValid:Card.White\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+White | AddPower$ 1 | AddToughness$ 2 | Description$ Enchanted creature gets +1/+2 as long as it's white.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+nonWhite | AddPower$ -2 | AddToughness$ -1 | Description$ Otherwise, it gets -2/-1.\nOracle:Enchant creature\\nEnchanted creature gets +1/+2 as long as it's white. Otherwise, it gets -2/-1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serra's Boon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

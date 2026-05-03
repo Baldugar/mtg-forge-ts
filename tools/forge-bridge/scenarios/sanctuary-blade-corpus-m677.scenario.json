@@ -1,0 +1,25 @@
+{
+  "id": "sanctuary-blade-corpus-m677",
+  "description": "M6 corpus — Sanctuary Blade; ETB-on-bf.",
+  "seed": 68939,
+  "cards": {
+    "Sanctuary Blade": "Name:Sanctuary Blade\nManaCost:2\nTypes:Artifact Equipment\nR:Event$ Attached | ValidCard$ Card.Self | ValidTarget$ Creature | ReplaceWith$ ChooseColor | ActiveZones$ Battlefield | Description$ As CARDNAME becomes attached to a creature, choose a color.\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Protection:Card.ChosenColor:chosenColor | Description$ Equipped creature gets +2/+0 and has protection from the last chosen color.\nK:Equip:3\nOracle:As Sanctuary Blade becomes attached to a creature, choose a color.\\nEquipped creature gets +2/+0 and has protection from the last chosen color.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sanctuary Blade"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

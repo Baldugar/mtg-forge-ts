@@ -1,0 +1,23 @@
+{
+  "id": "runed-crown-corpus-m677",
+  "description": "M6 corpus — Runed Crown; in-hand parse.",
+  "seed": 68645,
+  "cards": {
+    "Runed Crown": "Name:Runed Crown\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library, hand and/or graveyard for a Rune card and put it onto the battlefield attached to CARDNAME. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Hidden$ True | Origin$ Library | OriginAlternative$ Graveyard,Hand | Destination$ Battlefield | ChangeType$ Rune.YouOwn | AttachedTo$ Self | ShuffleNonMandatory$ True | Optional$ True\nAI:RemoveDeck:Random\nDeckNeeds:Type$Rune\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nOracle:When Runed Crown enters, you may search your library, hand, and/or graveyard for a Rune card and put it onto the battlefield attached to Runed Crown. If you search your library this way, shuffle.\\nEquipped creature gets +1/+1.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runed Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

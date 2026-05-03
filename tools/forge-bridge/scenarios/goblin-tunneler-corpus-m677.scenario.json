@@ -1,0 +1,25 @@
+{
+  "id": "goblin-tunneler-corpus-m677",
+  "description": "M6 corpus — Goblin Tunneler; ETB-on-bf.",
+  "seed": 61486,
+  "cards": {
+    "Goblin Tunneler": "Name:Goblin Tunneler\nManaCost:1 R\nTypes:Creature Goblin Rogue\nPT:1/1\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{T}: Target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Tunneler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

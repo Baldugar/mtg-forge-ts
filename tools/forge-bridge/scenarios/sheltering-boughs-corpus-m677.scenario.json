@@ -1,0 +1,23 @@
+{
+  "id": "sheltering-boughs-corpus-m677",
+  "description": "M6 corpus — Sheltering Boughs; in-hand parse.",
+  "seed": 69657,
+  "cards": {
+    "Sheltering Boughs": "Name:Sheltering Boughs\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 3 | Description$ Enchanted creature gets +1/+3.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant creature\\nWhen Sheltering Boughs enters, draw a card.\\nEnchanted creature gets +1/+3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheltering Boughs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

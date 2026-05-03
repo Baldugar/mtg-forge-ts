@@ -1,0 +1,25 @@
+{
+  "id": "oracle-s-attendants-corpus-m677",
+  "description": "M6 corpus — Oracle's Attendants; ETB-on-bf.",
+  "seed": 66367,
+  "cards": {
+    "Oracle's Attendants": "Name:Oracle's Attendants\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:1/5\nA:AB$ ChooseSource | Cost$ T | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ All damage that would be dealt to target creature this turn by a source of your choice is dealt to CARDNAME instead.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Creature | TgtPrompt$ Select target creature to redirect the damage from | ReplacementEffects$ SelflessDamage | Duration$ UntilHostLeavesPlayOrEOT | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:SelflessDamage:Event$ DamageDone | ValidTarget$ Creature.IsRemembered | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ SelflessDmg | DamageTarget$ EffectSource | Description$ The next time a source of your choice would deal damage to target creature this turn, that damage is dealt to EFFECTSOURCE instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ EffectSource | VarType$ Card\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:All\nOracle:{T}: All damage that would be dealt to target creature this turn by a source of your choice is dealt to Oracle's Attendants instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oracle's Attendants"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

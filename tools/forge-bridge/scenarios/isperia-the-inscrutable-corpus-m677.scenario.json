@@ -1,0 +1,23 @@
+{
+  "id": "isperia-the-inscrutable-corpus-m677",
+  "description": "M6 corpus — Isperia the Inscrutable; in-hand parse.",
+  "seed": 63165,
+  "cards": {
+    "Isperia the Inscrutable": "Name:Isperia the Inscrutable\nManaCost:1 W W U U\nTypes:Legendary Creature Sphinx\nPT:3/6\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigNameCard | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, choose a card name. That player reveals their hand. If a card with the chosen name is revealed this way, search your library for a creature card with flying, reveal it, put it into your hand, then shuffle.\nSVar:TrigNameCard:DB$ NameCard | Defined$ You | AILogic$ MostProminentInHumanDeck | SubAbility$ DBRevealHand\nSVar:DBRevealHand:DB$ RevealHand | Defined$ TriggeredTarget | RememberRevealed$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.withFlying+YouCtrl | ChangeNum$ 1 | Shuffle$ True | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Isperia the Inscrutable deals combat damage to a player, choose a card name. That player reveals their hand. If a card with the chosen name is revealed this way, search your library for a creature card with flying, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Isperia the Inscrutable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

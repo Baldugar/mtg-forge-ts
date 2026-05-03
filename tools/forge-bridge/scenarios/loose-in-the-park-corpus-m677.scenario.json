@@ -1,0 +1,23 @@
+{
+  "id": "loose-in-the-park-corpus-m677",
+  "description": "M6 corpus — Loose in the Park; in-hand parse.",
+  "seed": 64384,
+  "cards": {
+    "Loose in the Park": "Name:Loose in the Park\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ FreeCard | TriggerDescription$ When CARDNAME enters, draw a card, then draft a card from CARDNAME's spellbook and exile it.\nSVar:FreeCard:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ TrigDraft\nSVar:TrigDraft:DB$ Draft | TriggerZones$ Battlefield | Spellbook$ Bristling Boar,Enraged Ceratok,Exuberant Wolfbear,Gaea's Protector,Master Symmetrist,Ornery Dilophosaur,Overgrown Armasaur,Predatory Wurm,Prized Unicorn,Sabertooth Mauler,Spike-Tailed Ceratops,Spore Crawler,Thrashing Brontodon,Wardscale Crocodile,World Shaper | RememberDrafted$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Clone | Cost$ 3 | Defined$ ExiledWith | CloneTarget$ Enchanted | PumpKeywords$ Haste | AddTypes$ Land | Duration$ UntilEndOfTurn | SpellDescription$ Enchanted land becomes a copy of the exiled card until end of turn and gains haste. It's still a land.\nSVar:NonStackingAttachEffect:True\nDeckHas:Type$Boar|Rhino|Wolf|Bear|Elemental|Warrior|Rhino|Druid|Dinosaur|Wurm|Unicorn|Cat|Fungus|Crocodile|Merfolk|Shaman|Saproling & Ability$Mill|Graveyard|Sacrifice|Counters|Token\nDeckHints:Type$Human|Garruk\nOracle:Enchant land\\nWhen Loose in the Park enters, draw a card, then draft a card from Loose in the Park's spellbook and exile it.\\n{3}: Enchanted land becomes a copy of the exiled card until end of turn and gains haste. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loose in the Park"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

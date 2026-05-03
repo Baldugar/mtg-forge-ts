@@ -1,0 +1,23 @@
+{
+  "id": "narcolepsy-corpus-m677",
+  "description": "M6 corpus — Narcolepsy; in-hand parse.",
+  "seed": 65737,
+  "cards": {
+    "Narcolepsy": "Name:Narcolepsy\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | IsPresent$ Creature.AttachedBy+untapped | PresentCompare$ EQ1 | IsCurse$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ At the beginning of each upkeep, if enchanted creature is untapped, tap it.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nAt the beginning of each upkeep, if enchanted creature is untapped, tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Narcolepsy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pore-over-the-pages-corpus-m677",
+  "description": "M6 corpus — Pore Over the Pages; in-hand parse.",
+  "seed": 67064,
+  "cards": {
+    "Pore Over the Pages": "Name:Pore Over the Pages\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 3 | SubAbility$ DBUntap | SpellDescription$ Draw three cards, untap up to two lands, then discard a card.\nSVar:DBUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:Draw three cards, untap up to two lands, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pore Over the Pages"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

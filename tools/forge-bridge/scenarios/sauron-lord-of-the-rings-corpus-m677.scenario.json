@@ -1,0 +1,23 @@
+{
+  "id": "sauron-lord-of-the-rings-corpus-m677",
+  "description": "M6 corpus — Sauron, Lord of the Rings; in-hand parse.",
+  "seed": 69040,
+  "cards": {
+    "Sauron, Lord of the Rings": "Name:Sauron, Lord of the Rings\nManaCost:5 U B R\nTypes:Legendary Creature Avatar Horror\nPT:9/9\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigAmass | TriggerDescription$ When you cast this spell, amass Orcs 5, mill five cards, then return a creature card from your graveyard to the battlefield.\nSVar:TrigAmass:DB$ Amass | Type$ Orc | Num$ 5 | SubAbility$ TrigMill\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 5 | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Mandatory$ True | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | Hidden$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.OppCtrl+IsCommander | TriggerZones$ Battlefield | Execute$ TrigTempt | TriggerDescription$ Whenever a commander an opponent controls dies, the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nDeckHas:Ability$Token|Graveyard\nOracle:When you cast this spell, amass Orcs 5, mill five cards, then return a creature card from your graveyard to the battlefield.\\nTrample\\nWhenever a commander an opponent controls dies, the Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sauron, Lord of the Rings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

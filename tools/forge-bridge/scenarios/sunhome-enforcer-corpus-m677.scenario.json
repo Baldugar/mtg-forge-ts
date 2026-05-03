@@ -1,0 +1,25 @@
+{
+  "id": "sunhome-enforcer-corpus-m677",
+  "description": "M6 corpus — Sunhome Enforcer; ETB-on-bf.",
+  "seed": 71360,
+  "cards": {
+    "Sunhome Enforcer": "Name:Sunhome Enforcer\nManaCost:2 R W\nTypes:Creature Giant Soldier\nPT:2/4\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nA:AB$ Pump | Cost$ 1 R | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Sunhome Enforcer deals combat damage, you gain that much life.\\n{1}{R}: Sunhome Enforcer gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sunhome Enforcer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

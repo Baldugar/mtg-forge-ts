@@ -1,0 +1,23 @@
+{
+  "id": "so-tiny-corpus-m677",
+  "description": "M6 corpus — So Tiny; in-hand parse.",
+  "seed": 70319,
+  "cards": {
+    "So Tiny": "Name:So Tiny\nManaCost:U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -X | Description$ Enchanted creature gets -2/-0. It gets -6/-0 instead as long as its controller has seven or more cards in their graveyard.\nSVar:X:Count$Compare Y GE7.6.2\nSVar:Y:Count$ValidGraveyard Card.EnchantedControllerCtrl\nOracle:Flash\\nEnchant creature\\nEnchanted creature gets -2/-0. It gets -6/-0 instead as long as its controller has seven or more cards in their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "So Tiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

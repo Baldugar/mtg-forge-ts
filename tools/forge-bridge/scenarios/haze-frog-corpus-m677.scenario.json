@@ -1,0 +1,23 @@
+{
+  "id": "haze-frog-corpus-m677",
+  "description": "M6 corpus — Haze Frog; in-hand parse.",
+  "seed": 62134,
+  "cards": {
+    "Haze Frog": "Name:Haze Frog\nManaCost:3 G G\nTypes:Creature Frog\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, prevent all combat damage that other creatures would deal this turn.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Self\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | ValidSource$ Creature.!IsRemembered | Description$ Prevent all combat damage that other creatures would deal this turn.\nSVar:AmbushAI:True\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Haze Frog enters, prevent all combat damage that other creatures would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haze Frog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

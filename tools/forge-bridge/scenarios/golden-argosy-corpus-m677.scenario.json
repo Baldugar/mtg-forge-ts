@@ -1,0 +1,23 @@
+{
+  "id": "golden-argosy-corpus-m677",
+  "description": "M6 corpus — Golden Argosy; in-hand parse.",
+  "seed": 61521,
+  "cards": {
+    "Golden Argosy": "Name:Golden Argosy\nManaCost:4\nTypes:Legendary Artifact Vehicle\nPT:3/6\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigFlicker | TriggerDescription$ Whenever CARDNAME attacks, exile each creature that crewed it this turn. Return them to the battlefield tapped under their owner's control at the beginning of the next end step.\nSVar:TrigFlicker:DB$ ChangeZoneAll | ChangeType$ Creature.CrewedThisTurn | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | TriggerDescription$ Return them to the battlefield tapped under their owner's control at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRemembered | Tapped$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Golden Argosy attacks, exile each creature that crewed it this turn. Return them to the battlefield tapped under their owner's control at the beginning of the next end step.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golden Argosy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

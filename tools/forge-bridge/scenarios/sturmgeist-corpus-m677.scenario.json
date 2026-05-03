@@ -1,0 +1,23 @@
+{
+  "id": "sturmgeist-corpus-m677",
+  "description": "M6 corpus — Sturmgeist; in-hand parse.",
+  "seed": 71241,
+  "cards": {
+    "Sturmgeist": "Name:Sturmgeist\nManaCost:3 U U\nTypes:Creature Spirit\nPT:*/*\nK:Flying\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:NeedsToPlayVar:X GE2\nOracle:Flying\\nSturmgeist's power and toughness are each equal to the number of cards in your hand.\\nWhenever Sturmgeist deals combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sturmgeist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

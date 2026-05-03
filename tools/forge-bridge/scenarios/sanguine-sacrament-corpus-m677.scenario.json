@@ -1,0 +1,23 @@
+{
+  "id": "sanguine-sacrament-corpus-m677",
+  "description": "M6 corpus — Sanguine Sacrament; in-hand parse.",
+  "seed": 68984,
+  "cards": {
+    "Sanguine Sacrament": "Name:Sanguine Sacrament\nManaCost:X W W\nTypes:Instant\nA:SP$ GainLife | LifeAmount$ XX | Defined$ You | SubAbility$ DBPutOnBottom | SpellDescription$ You gain twice X life. Put CARDNAME on the bottom of its owner's library.\nSVar:DBPutOnBottom:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Library | LibraryPosition$ -1\nSVar:X:Count$xPaid\nSVar:XX:SVar$X/Twice\nOracle:You gain twice X life. Put Sanguine Sacrament on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanguine Sacrament"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

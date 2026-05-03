@@ -1,0 +1,23 @@
+{
+  "id": "midnight-scavengers-corpus-m677",
+  "description": "M6 corpus — Midnight Scavengers; in-hand parse.",
+  "seed": 65098,
+  "cards": {
+    "Midnight Scavengers": "Name:Midnight Scavengers\nManaCost:4 B\nTypes:Creature Human Rogue\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target creature card with mana value 3 or less from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl+cmcLE3 | TgtPrompt$ Select target creature card with mana value 3 or less\nDeckHints:Name$Graf Rats\nMeldPair:Graf Rats\nAlternateMode:Meld\nOracle:When Midnight Scavengers enters, you may return target creature card with mana value 3 or less from your graveyard to your hand.\\n(Melds with Graf Rats.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Scavengers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

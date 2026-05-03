@@ -1,0 +1,23 @@
+{
+  "id": "simulacrum-synthesizer-corpus-m677",
+  "description": "M6 corpus — Simulacrum Synthesizer; in-hand parse.",
+  "seed": 69957,
+  "cards": {
+    "Simulacrum Synthesizer": "Name:Simulacrum Synthesizer\nManaCost:2 U\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl+cmcGE3+Other | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever another artifact you control with mana value 3 or greater enters, create a 0/0 colorless Construct artifact creature token with \"This creature gets +1/+1 for each artifact you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_0_a_construct_total_artifacts\nDeckHas:Ability$Token & Type$Golem\nDeckHints:Type$Artifact\nOracle:When Simulacrum Synthesizer enters, scry 2.\\nWhenever another artifact you control with mana value 3 or greater enters, create a 0/0 colorless Construct artifact creature token with \"This creature gets +1/+1 for each artifact you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Simulacrum Synthesizer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

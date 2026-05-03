@@ -1,0 +1,23 @@
+{
+  "id": "gulf-squid-corpus-m677",
+  "description": "M6 corpus — Gulf Squid; in-hand parse.",
+  "seed": 61912,
+  "cards": {
+    "Gulf Squid": "Name:Gulf Squid\nManaCost:3 U\nTypes:Creature Squid Beast\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, tap all lands target player controls.\nSVar:TrigTapAll:DB$ TapAll | ValidTgts$ Player | ValidCards$ Land\nSVar:PlayMain1:TRUE\nOracle:When Gulf Squid enters, tap all lands target player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gulf Squid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

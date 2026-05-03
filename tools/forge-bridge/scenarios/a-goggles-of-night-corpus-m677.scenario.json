@@ -1,0 +1,23 @@
+{
+  "id": "a-goggles-of-night-corpus-m677",
+  "description": "M6 corpus — A-Goggles of Night; in-hand parse.",
+  "seed": 68738,
+  "cards": {
+    "A-Goggles of Night": "Name:A-Goggles of Night\nManaCost:1 U\nTypes:Artifact Equipment\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ DBScry | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, scry 1, then draw a card.\nSVar:DBScry:DB$ Scry | ScryNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nK:Equip:1\nOracle:Whenever equipped creature deals combat damage to a player, scry 1, then draw a card.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Goggles of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

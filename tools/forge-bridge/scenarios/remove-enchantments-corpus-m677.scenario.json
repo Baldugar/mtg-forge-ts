@@ -1,0 +1,23 @@
+{
+  "id": "remove-enchantments-corpus-m677",
+  "description": "M6 corpus — Remove Enchantments; in-hand parse.",
+  "seed": 68029,
+  "cards": {
+    "Remove Enchantments": "Name:Remove Enchantments\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Card.Enchantment+YouCtrl+YouOwn,Card.Aura+YouOwn+AttachedTo Permanent.YouCtrl,Card.Aura+YouOwn+AttachedTo Creature.attacking+OppCtrl | UseAllOriginZones$ True | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDestroyEnchantments | SpellDescription$ Return to your hand all enchantments you both own and control, all Auras you own attached to permanents you control, and all Auras you own attached to attacking creatures your opponents control. Then destroy all other enchantments you control, all other Auras attached to permanents you control, and all other Auras attached to attacking creatures your opponents control.\nSVar:DBDestroyEnchantments:DB$ DestroyAll | ValidCards$ Card.Enchantment+YouCtrl,Card.Aura+AttachedTo Permanent.YouCtrl,Card.Aura+AttachedTo Creature.attacking+OppCtrl\nAI:RemoveDeck:Random\nOracle:Return to your hand all enchantments you both own and control, all Auras you own attached to permanents you control, and all Auras you own attached to attacking creatures your opponents control. Then destroy all other enchantments you control, all other Auras attached to permanents you control, and all other Auras attached to attacking creatures your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Remove Enchantments"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

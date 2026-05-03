@@ -1,0 +1,23 @@
+{
+  "id": "soul-manipulation-corpus-m677",
+  "description": "M6 corpus — Soul Manipulation; in-hand parse.",
+  "seed": 70445,
+  "cards": {
+    "Soul Manipulation": "Name:Soul Manipulation\nManaCost:1 U B\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBCounter,DBChangeZone\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | TgtPrompt$ Select target creature spell | ValidTgts$ Creature | SpellDescription$ Counter target creature spell.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return target creature card from your graveyard to your hand.\nOracle:Choose one or both —\\n• Counter target creature spell.\\n• Return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Manipulation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

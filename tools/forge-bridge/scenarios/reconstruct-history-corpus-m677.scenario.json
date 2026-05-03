@@ -1,0 +1,23 @@
+{
+  "id": "reconstruct-history-corpus-m677",
+  "description": "M6 corpus — Reconstruct History; in-hand parse.",
+  "seed": 67900,
+  "cards": {
+    "Reconstruct History": "Name:Reconstruct History\nManaCost:2 R W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Artifact+YouOwn | TgtPrompt$ Select up to one target artifact card in your graveyard | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ Enchantment | StackDescription$ SpellDescription | SpellDescription$ Return up to one target artifact card, up to one target enchantment card, up to one target instant card, up to one target sorcery card, and up to one target planeswalker card from your graveyard to your hand. Exile CARDNAME.\nSVar:Enchantment:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Enchantment+YouOwn | TgtPrompt$ Select up to one target enchantment card in your graveyard | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ Instant\nSVar:Instant:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Instant+YouOwn | TgtPrompt$ Select up to one target instant card in your graveyard | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ Sorcery\nSVar:Sorcery:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Sorcery+YouOwn | TgtPrompt$ Select up to one target sorcery card in your graveyard | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ Planeswalker\nSVar:Planeswalker:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.Planeswalker+YouOwn | TgtPrompt$ Select up to one target planeswalker card in your graveyard | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nDeckHas:Ability$Graveyard\nDeckHints:Type$Artifact|Enchantment|Instant|Sorcery|Planeswalker\nOracle:Return up to one target artifact card, up to one target enchantment card, up to one target instant card, up to one target sorcery card, and up to one target planeswalker card from your graveyard to your hand.\\nExile Reconstruct History.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reconstruct History"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

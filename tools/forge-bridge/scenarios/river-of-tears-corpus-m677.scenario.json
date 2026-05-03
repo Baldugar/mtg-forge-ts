@@ -1,0 +1,25 @@
+{
+  "id": "river-of-tears-corpus-m677",
+  "description": "M6 corpus — River of Tears; ETB-on-bf.",
+  "seed": 68395,
+  "cards": {
+    "River of Tears": "Name:River of Tears\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ U | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ ManaB | SpellDescription$ Add {U}. If you played a land this turn, add {B} instead.\nSVar:ManaB:DB$ Mana | Produced$ B | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:X:PlayerCountPropertyYou$LandsPlayed\nAI:RemoveDeck:Random\nDeckHints:Color$Blue|Black\nOracle:{T}: Add {U}. If you played a land this turn, add {B} instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "River of Tears"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

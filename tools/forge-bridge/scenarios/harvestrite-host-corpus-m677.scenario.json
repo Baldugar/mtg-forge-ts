@@ -1,0 +1,23 @@
+{
+  "id": "harvestrite-host-corpus-m677",
+  "description": "M6 corpus — Harvestrite Host; in-hand parse.",
+  "seed": 62092,
+  "cards": {
+    "Harvestrite Host": "Name:Harvestrite Host\nManaCost:2 W\nTypes:Creature Rabbit Citizen\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Rabbit.Other+YouCtrl | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME or another Rabbit you control enters, target creature you control gets +1/+0 until end of turn. Then draw a card if this is the second time this ability has resolved this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2\nSVar:Resolved:Count$ResolvedThisTurn\nSVar:PlayMain1:TRUE\nDeckHints:Type$Rabbit\nOracle:Whenever Harvestrite Host or another Rabbit you control enters, target creature you control gets +1/+0 until end of turn. Then draw a card if this is the second time this ability has resolved this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harvestrite Host"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

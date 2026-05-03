@@ -1,0 +1,23 @@
+{
+  "id": "kor-cartographer-corpus-m677",
+  "description": "M6 corpus — Kor Cartographer; in-hand parse.",
+  "seed": 63824,
+  "cards": {
+    "Kor Cartographer": "Name:Kor Cartographer\nManaCost:3 W\nTypes:Creature Kor Scout\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a plains card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Card.Plains | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Kor Cartographer enters, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Cartographer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

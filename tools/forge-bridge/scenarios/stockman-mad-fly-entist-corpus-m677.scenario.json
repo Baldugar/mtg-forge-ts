@@ -1,0 +1,23 @@
+{
+  "id": "stockman-mad-fly-entist-corpus-m677",
+  "description": "M6 corpus — Stockman, Mad Fly-entist; in-hand parse.",
+  "seed": 71023,
+  "cards": {
+    "Stockman, Mad Fly-entist": "Name:Stockman, Mad Fly-entist\nManaCost:4 U\nTypes:Legendary Creature Insect Mutant Scientist\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When NICKNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nK:TypeCycling:Island:2\nDeckHas:Ability$Discard\nOracle:Flying\\nWhen Stockman enters, draw a card, then discard a card.\\nIslandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stockman, Mad Fly-entist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

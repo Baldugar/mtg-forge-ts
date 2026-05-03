@@ -1,0 +1,23 @@
+{
+  "id": "stingblade-assassin-corpus-m677",
+  "description": "M6 corpus — Stingblade Assassin; in-hand parse.",
+  "seed": 71000,
+  "cards": {
+    "Stingblade Assassin": "Name:Stingblade Assassin\nManaCost:3 B\nTypes:Creature Faerie Assassin\nPT:3/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TailSpikes | TriggerDescription$ Tail Spikes — When CARDNAME enters, destroy target creature an opponent controls that was dealt damage this turn.\nSVar:TailSpikes:DB$ Destroy | ValidTgts$ Creature.wasDealtDamageThisTurn+OppCtrl | TgtPrompt$ Select target creature an opponent controls that was dealt damage this turn\nOracle:Flash\\nFlying\\nWhen Stingblade Assassin enters, destroy target creature an opponent controls that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stingblade Assassin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

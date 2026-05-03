@@ -1,0 +1,25 @@
+{
+  "id": "nova-pentacle-corpus-m677",
+  "description": "M6 corpus — Nova Pentacle; ETB-on-bf.",
+  "seed": 66076,
+  "cards": {
+    "Nova Pentacle": "Name:Nova Pentacle\nManaCost:4\nTypes:Artifact\nA:AB$ ChooseSource | Cost$ 3 T | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, that damage is dealt to target creature of an opponent's choice instead.\nSVar:DBEffect:DB$ Effect | TargetingPlayer$ Player.Opponent | ValidTgts$ Creature | TgtPrompt$ Select target creature to redirect the damage to | ReplacementEffects$ SelflessDamage | ExileOnMoved$ Battlefield | RememberObjects$ Targeted | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:SelflessDamage:Event$ DamageDone | ValidTarget$ You | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ SelflessDmg | DamageTarget$ Remembered | Description$ The next time a source of your choice would deal damage to you this turn, that damage is dealt to target creature of an opponent's choice instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{3}, {T}: The next time a source of your choice would deal damage to you this turn, that damage is dealt to target creature of an opponent's choice instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nova Pentacle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

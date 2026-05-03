@@ -1,0 +1,25 @@
+{
+  "id": "niblis-of-frost-corpus-m677",
+  "description": "M6 corpus — Niblis of Frost; ETB-on-bf.",
+  "seed": 65909,
+  "cards": {
+    "Niblis of Frost": "Name:Niblis of Frost\nManaCost:2 U U\nTypes:Creature Spirit\nPT:3/3\nK:Flying\nK:Prowess\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever you cast an instant or sorcery spell, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:BuffedBy:Instant,Sorcery\nOracle:Flying\\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhenever you cast an instant or sorcery spell, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Niblis of Frost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

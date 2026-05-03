@@ -1,0 +1,23 @@
+{
+  "id": "summon-titan-corpus-m677",
+  "description": "M6 corpus — Summon: Titan; in-hand parse.",
+  "seed": 71314,
+  "cards": {
+    "Summon: Titan": "Name:Summon: Titan\nManaCost:3 G G\nTypes:Enchantment Creature Saga Giant\nPT:7/7\nK:Chapter:3:DBMill,DBChangeZoneAll,DBPump\nSVar:DBMill:DB$ Mill | Defined$ You | NumCards$ 5 | SpellDescription$ Mill five cards.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Land.YouOwn | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | SpellDescription$ Return all land cards from your graveyard to the battlefield tapped.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +X | NumDef$ +X | KW$ Trample | SpellDescription$ Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.\nK:Reach\nK:Trample\nSVar:X:Count$Valid Land.YouCtrl\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Mill five cards.\\nII — Return all land cards from your graveyard to the battlefield tapped.\\nIII — Until end of turn, another target creature you control gains trample and gets +X/+X, where X is the number of lands you control.\\nReach, trample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

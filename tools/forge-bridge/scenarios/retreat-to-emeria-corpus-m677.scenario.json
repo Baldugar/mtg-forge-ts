@@ -1,0 +1,23 @@
+{
+  "id": "retreat-to-emeria-corpus-m677",
+  "description": "M6 corpus — Retreat to Emeria; in-hand parse.",
+  "seed": 68144,
+  "cards": {
+    "Retreat to Emeria": "Name:Retreat to Emeria\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigCharm | TriggerDescription$ Landfall — Whenever a land you control enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBPumpAll\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_kor_ally | TokenOwner$ You | SpellDescription$ Create a 1/1 white Kor Ally creature token.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Creatures you control get +1/+1 until end of turn.\nDeckHints:Type$Ally\nDeckHas:Ability$Token\nOracle:Landfall — Whenever a land you control enters, choose one —\\n• Create a 1/1 white Kor Ally creature token.\\n• Creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retreat to Emeria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

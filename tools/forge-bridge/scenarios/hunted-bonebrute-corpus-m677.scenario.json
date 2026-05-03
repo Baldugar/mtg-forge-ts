@@ -1,0 +1,23 @@
+{
+  "id": "hunted-bonebrute-corpus-m677",
+  "description": "M6 corpus — Hunted Bonebrute; in-hand parse.",
+  "seed": 62611,
+  "cards": {
+    "Hunted Bonebrute": "Name:Hunted Bonebrute\nManaCost:2 B\nTypes:Creature Skeleton Beast\nPT:6/2\nK:Menace\nK:Disguise:1 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, target opponent creates two 1/1 white Dog creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_dog | ValidTgts$ Opponent | TokenOwner$ Targeted\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each opponent loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 3\nDeckHas:Ability$Token & Type$Dog\nOracle:Menace\\nWhen Hunted Bonebrute enters, target opponent creates two 1/1 white Dog creature tokens.\\nWhen Hunted Bonebrute dies, each opponent loses 3 life.\\nDisguise {1}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Bonebrute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

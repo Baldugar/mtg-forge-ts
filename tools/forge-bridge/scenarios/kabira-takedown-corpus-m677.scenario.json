@@ -1,0 +1,23 @@
+{
+  "id": "kabira-takedown-corpus-m677",
+  "description": "M6 corpus — Kabira Takedown; in-hand parse.",
+  "seed": 63418,
+  "cards": {
+    "Kabira Takedown": "Name:Kabira Takedown\nManaCost:1 W\nTypes:Instant\nA:SP$ DealDamage | NumDmg$ X | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SpellDescription$ CARDNAME deals damage equal to the number of creatures you control to target creature or planeswalker.\nSVar:X:Count$Valid Creature.YouCtrl\nAlternateMode:Modal\nOracle:Kabira Takedown deals damage equal to the number of creatures you control to target creature or planeswalker.\n\nALTERNATE\n\nName:Kabira Plateau\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:Kabira Plateau enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kabira Takedown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

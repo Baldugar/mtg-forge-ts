@@ -1,0 +1,23 @@
+{
+  "id": "solitary-defiance-corpus-m677",
+  "description": "M6 corpus — Solitary Defiance; in-hand parse.",
+  "seed": 70368,
+  "cards": {
+    "Solitary Defiance": "Name:Solitary Defiance\nManaCost:2 U\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Vigilance & Ward:2 | IsPresent$ Creature.YouCtrl | PresentCompare$ EQ1 | Description$ As long as you control exactly one creature, that creature has vigilance and ward {2}.\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSeek | Alone$ True | TriggerDescription$ Whenever a creature you control attacks alone, seek two nonland cards, then discard a card.\nSVar:TrigSeek:DB$ Seek | Num$ 2 | Type$ Card.nonLand | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:As long as you control exactly one creature, that creature has vigilance and ward {2}.\\nWhenever a creature you control attacks alone, seek two nonland cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solitary Defiance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

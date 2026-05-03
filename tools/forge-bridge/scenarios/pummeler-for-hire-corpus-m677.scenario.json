@@ -1,0 +1,23 @@
+{
+  "id": "pummeler-for-hire-corpus-m677",
+  "description": "M6 corpus — Pummeler for Hire; in-hand parse.",
+  "seed": 67356,
+  "cards": {
+    "Pummeler for Hire": "Name:Pummeler for Hire\nManaCost:4 G\nTypes:Creature Giant Mercenary\nPT:4/4\nK:Vigilance\nK:Reach\nK:Ward:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this creature enters, you gain X life, where X is the greatest power among Giants you control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Giant.YouCtrl$GreatestCardPower\nDeckHints:Type$Giant\nOracle:Vigilance, reach\\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\\nWhen this creature enters, you gain X life, where X is the greatest power among Giants you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pummeler for Hire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

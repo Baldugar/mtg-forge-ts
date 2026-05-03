@@ -1,0 +1,23 @@
+{
+  "id": "splitskin-doll-corpus-m677",
+  "description": "M6 corpus — Splitskin Doll; in-hand parse.",
+  "seed": 70754,
+  "cards": {
+    "Splitskin Doll": "Name:Splitskin Doll\nManaCost:1 W\nTypes:Artifact Creature Toy\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card. Then discard a card unless you control another creature with power 2 or less.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | ConditionPresent$ Creature.Other+YouCtrl+powerLE2 | ConditionCompare$ EQ0\nOracle:When Splitskin Doll enters, draw a card. Then discard a card unless you control another creature with power 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splitskin Doll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

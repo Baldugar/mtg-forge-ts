@@ -1,0 +1,23 @@
+{
+  "id": "maccready-lamplight-mayor-corpus-m677",
+  "description": "M6 corpus — MacCready, Lamplight Mayor; in-hand parse.",
+  "seed": 64549,
+  "cards": {
+    "MacCready, Lamplight Mayor": "Name:MacCready, Lamplight Mayor\nManaCost:W B\nTypes:Legendary Creature Human Advisor\nPT:1/3\nT:Mode$ Attacks | ValidCard$ Creature.powerLE2+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control with power 2 or less attacks, it gains skulk until end of turn. (It can't be blocked by creatures with greater power.)\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Skulk\nT:Mode$ Attacks | ValidCard$ Creature.powerGE4 | Attacked$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature with power 4 or greater attacks you, its controller loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredAttackerController | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever a creature you control with power 2 or less attacks, it gains skulk until end of turn. (It can't be blocked by creatures with greater power.)\\nWhenever a creature with power 4 or greater attacks you, its controller loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "MacCready, Lamplight Mayor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

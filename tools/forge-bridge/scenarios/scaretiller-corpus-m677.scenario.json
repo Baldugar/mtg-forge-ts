@@ -1,0 +1,25 @@
+{
+  "id": "scaretiller-corpus-m677",
+  "description": "M6 corpus — Scaretiller; ETB-on-bf.",
+  "seed": 69112,
+  "cards": {
+    "Scaretiller": "Name:Scaretiller\nManaCost:4\nTypes:Artifact Creature Scarecrow\nPT:1/4\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever CARDNAME becomes tapped, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBLand,DBLand2\nSVar:DBLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.YouCtrl | SpellDescription$ You may put a land card from your hand onto the battlefield tapped.\nSVar:DBLand2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land card from your graveyard | Tapped$ True | SpellDescription$ Return target land card from your graveyard to the battlefield tapped.\nOracle:Whenever Scaretiller becomes tapped, choose one —\\n• You may put a land card from your hand onto the battlefield tapped.\\n• Return target land card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scaretiller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

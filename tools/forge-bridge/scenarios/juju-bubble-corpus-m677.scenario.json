@@ -1,0 +1,25 @@
+{
+  "id": "juju-bubble-corpus-m677",
+  "description": "M6 corpus — Juju Bubble; ETB-on-bf.",
+  "seed": 63371,
+  "cards": {
+    "Juju Bubble": "Name:Juju Bubble\nManaCost:1\nTypes:Artifact\nK:Cumulative upkeep:1\nA:AB$ GainLife | Cost$ 2 | Defined$ You | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When you play a card, sacrifice CARDNAME.\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSac | Secondary$ True | TriggerDescription$ When you play a card, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nWhen you play a card, sacrifice Juju Bubble.\\n{2}: You gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Juju Bubble"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

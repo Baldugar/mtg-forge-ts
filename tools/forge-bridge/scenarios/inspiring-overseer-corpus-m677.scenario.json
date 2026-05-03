@@ -1,0 +1,23 @@
+{
+  "id": "inspiring-overseer-corpus-m677",
+  "description": "M6 corpus — Inspiring Overseer; in-hand parse.",
+  "seed": 63002,
+  "cards": {
+    "Inspiring Overseer": "Name:Inspiring Overseer\nManaCost:2 W\nTypes:Creature Angel Cleric\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigLife | TriggerDescription$ When CARDNAME enters, you gain 1 life and draw a card.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Inspiring Overseer enters, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inspiring Overseer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

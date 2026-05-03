@@ -1,0 +1,23 @@
+{
+  "id": "run-for-your-life-corpus-m677",
+  "description": "M6 corpus — Run for Your Life; in-hand parse.",
+  "seed": 68618,
+  "cards": {
+    "Run for Your Life": "Name:Run for Your Life\nManaCost:U R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | KW$ Haste | TargetMin$ 1 | TargetMax$ 2 | SubAbility$ DBEffect | TgtPrompt$ Select one or two target creatures | SpellDescription$ One or two target creatures each gain haste until end of turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ KWPump | RememberObjects$ Targeted | SpellDescription$ They can't be blocked this turn except by creatures with haste.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.IsRemembered | ValidBlocker$ Creature.withoutHaste | Description$ These creatures can't be blocked this turn except by creatures with haste.\nK:Escape:2 U R ExileFromGrave<4/Card.Other/other>\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard|Mill\nOracle:One or two target creatures each gain haste until end of turn. They can't be blocked this turn except by creatures with haste.\\nEscape—{2}{U}{R}, Exile four other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Run for Your Life"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

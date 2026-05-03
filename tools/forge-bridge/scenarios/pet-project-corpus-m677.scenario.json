@@ -1,0 +1,25 @@
+{
+  "id": "pet-project-corpus-m677",
+  "description": "M6 corpus — Pet Project; ETB-on-bf.",
+  "seed": 66773,
+  "cards": {
+    "Pet Project": "Name:Pet Project\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, put target creature card from an opponent's graveyard onto the battlefield under your control.\nSVar:TrigCrank:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target creature card in an opponent's graveyard | ValidTgts$ Creature.OppCtrl\nOracle:Whenever you crank Pet Project, put target creature card from an opponent's graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pet Project"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

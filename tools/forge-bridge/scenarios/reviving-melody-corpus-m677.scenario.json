@@ -1,0 +1,23 @@
+{
+  "id": "reviving-melody-corpus-m677",
+  "description": "M6 corpus — Reviving Melody; in-hand parse.",
+  "seed": 68196,
+  "cards": {
+    "Reviving Melody": "Name:Reviving Melody\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ ChangeCreature,ChangeEnchantment\nSVar:ChangeCreature:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return target creature card from your graveyard to your hand.\nSVar:ChangeEnchantment:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact card in your graveyard | ValidTgts$ Enchantment.YouCtrl | SpellDescription$ Return target enchantment card from your graveyard to your hand.\nOracle:Choose one or both —\\n• Return target creature card from your graveyard to your hand.\\n• Return target enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reviving Melody"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

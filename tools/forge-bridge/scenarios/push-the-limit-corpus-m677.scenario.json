@@ -1,0 +1,23 @@
+{
+  "id": "push-the-limit-corpus-m677",
+  "description": "M6 corpus — Push the Limit; in-hand parse.",
+  "seed": 67390,
+  "cards": {
+    "Push the Limit": "Name:Push the Limit\nManaCost:5 R R\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Mount.YouOwn,Vehicle.YouOwn | AtEOT$ Sacrifice | SubAbility$ DBAnimateAll | SpellDescription$ Return all Mount and Vehicle cards from your graveyard to the battlefield. Sacrifice them at the beginning of the next end step. Vehicles you control become artifact creatures until end of turn. Creatures you control gain haste until end of turn.\nSVar:DBAnimateAll:DB$ AnimateAll | Types$ Artifact,Creature | ValidCards$ Vehicle.YouCtrl | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Haste\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Discard|Sacrifice\nDeckNeeds:Type$Mount|Vehicle\nOracle:Return all Mount and Vehicle cards from your graveyard to the battlefield. Sacrifice them at the beginning of the next end step.\\nVehicles you control become artifact creatures until end of turn. Creatures you control gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Push the Limit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

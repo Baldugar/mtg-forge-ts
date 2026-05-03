@@ -1,0 +1,23 @@
+{
+  "id": "quag-feast-corpus-m677",
+  "description": "M6 corpus — Quag Feast; in-hand parse.",
+  "seed": 67431,
+  "cards": {
+    "Quag Feast": "Name:Quag Feast\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 2 | SubAbility$ DBDestroy | SpellDescription$ Choose target creature, planeswalker, or Vehicle. Mill two cards, then destroy the chosen permanent if its mana value is less than or equal to the number of cards in your graveyard.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature,Planeswalker,Vehicle | TgtPrompt$ Select target creature, planeswalker, or Vehicle | ConditionCheckSVar$ Y | ConditionSVarCompare$ LEX\nSVar:Y:Targeted$CardManaCost\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Choose target creature, planeswalker, or Vehicle. Mill two cards, then destroy the chosen permanent if its mana value is less than or equal to the number of cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quag Feast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gossip-s-talent-corpus-m677",
+  "description": "M6 corpus — Gossip's Talent; in-hand parse.",
+  "seed": 61593,
+  "cards": {
+    "Gossip's Talent": "Name:Gossip's Talent\nManaCost:1 U\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ Whenever a creature you control enters, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nK:Class:2:1 U:AddTrigger$ TriggerAttack\nSVar:TriggerAttack:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target attacking creature with power 3 or less can't be blocked this turn.\nSVar:TrigPump:DB$ Effect | RememberObjects$ Targeted | ValidTgts$ Creature.attacking+powerLE3 | TgtPrompt$ Select target attacking creature with power 3 or less | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nK:Class:3:3 U:AddTrigger$ TriggerDamage\nSVar:TriggerDamage:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever a creature you control deals combat damage to a player, you may exile it, then return it to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ TriggeredSourceLKICopy | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Surveil|Graveyard\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhenever a creature you control enters, surveil 1.\\n{1}{U}: Level 2\\nWhenever you attack, target attacking creature with power 3 or less can't be blocked this turn.\\n{3}{U}: Level 3\\nWhenever a creature you control deals combat damage to a player, you may exile it, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gossip's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kamahl-s-sledge-corpus-m677",
+  "description": "M6 corpus — Kamahl's Sledge; in-hand parse.",
+  "seed": 63448,
+  "cards": {
+    "Kamahl's Sledge": "Name:Kamahl's Sledge\nManaCost:5 R R\nTypes:Sorcery\nA:SP$ DealDamage | NumDmg$ 4 | ValidTgts$ Creature | SubAbility$ DBDamage | DamageMap$ True | SpellDescription$ CARDNAME deals 4 damage to target creature. Threshold — If there are seven or more cards in your graveyard, instead CARDNAME deals 4 damage to that creature and 4 damage to that creature's controller.\nSVar:DBDamage:DB$ DealDamage | NumDmg$ 4 | Condition$ Threshold | Defined$ TargetedController | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Kamahl's Sledge deals 4 damage to target creature.\\nThreshold — If there are seven or more cards in your graveyard, instead Kamahl's Sledge deals 4 damage to that creature and 4 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kamahl's Sledge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

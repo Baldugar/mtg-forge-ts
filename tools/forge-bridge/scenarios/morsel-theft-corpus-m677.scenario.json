@@ -1,0 +1,23 @@
+{
+  "id": "morsel-theft-corpus-m677",
+  "description": "M6 corpus — Morsel Theft; in-hand parse.",
+  "seed": 65513,
+  "cards": {
+    "Morsel Theft": "Name:Morsel Theft\nManaCost:2 B B\nTypes:Kindred Sorcery Rogue\nK:Prowl:1 B\nA:SP$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 3 | SubAbility$ DBGainLife | SpellDescription$ Target player loses 3 life and you gain 3 life. If CARDNAME's prowl cost was paid, draw a card.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Self | ConditionPresent$ Card.prowled\nDeckNeeds:Type$Rogue\nOracle:Prowl {1}{B} (You may cast this for its prowl cost if you dealt combat damage to a player this turn with a Rogue.)\\nTarget player loses 3 life and you gain 3 life. If this spell's prowl cost was paid, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morsel Theft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

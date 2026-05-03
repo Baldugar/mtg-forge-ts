@@ -1,0 +1,23 @@
+{
+  "id": "mesmeric-fiend-corpus-m677",
+  "description": "M6 corpus — Mesmeric Fiend; in-hand parse.",
+  "seed": 65047,
+  "cards": {
+    "Mesmeric Fiend": "Name:Mesmeric Fiend\nManaCost:1 B\nTypes:Creature Nightmare Horror\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMesmericExile | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand and you choose a nonland card from it. Exile that card.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigMesmericBounce | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to its owner's hand.\nSVar:TrigMesmericExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | IsCurse$ True | RememberChanged$ True\nSVar:TrigMesmericBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Remembered | SubAbility$ DBMesmericCleanup\nSVar:DBMesmericCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Mesmeric Fiend enters, target opponent reveals their hand and you choose a nonland card from it. Exile that card.\\nWhen Mesmeric Fiend leaves the battlefield, return the exiled card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mesmeric Fiend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

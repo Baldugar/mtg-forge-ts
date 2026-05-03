@@ -1,0 +1,23 @@
+{
+  "id": "reiver-demon-corpus-m677",
+  "description": "M6 corpus — Reiver Demon; in-hand parse.",
+  "seed": 67982,
+  "cards": {
+    "Reiver Demon": "Name:Reiver Demon\nManaCost:4 B B B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, destroy all nonartifact, nonblack creatures. They can't be regenerated.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonArtifact+nonBlack | NoRegen$ True\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Reiver Demon enters, if you cast it from your hand, destroy all nonartifact, nonblack creatures. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reiver Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

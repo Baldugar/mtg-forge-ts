@@ -1,0 +1,23 @@
+{
+  "id": "marsh-casualties-corpus-m677",
+  "description": "M6 corpus — Marsh Casualties; in-hand parse.",
+  "seed": 64812,
+  "cards": {
+    "Marsh Casualties": "Name:Marsh Casualties\nManaCost:B B\nTypes:Sorcery\nK:Kicker:3\nA:SP$ PumpAll | ValidTgts$ Player | ValidCards$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SpellDescription$ Creatures target player controls get -1/-1 until end of turn. If this spell was kicked, those creatures get -2/-2 until end of turn instead.\nSVar:X:Count$Kicked.2.1\nSVar:NeedsToPlayKicked:Creature.OppCtrl+toughnessEQ2\nOracle:Kicker {3} (You may pay an additional {3} as you cast this spell.)\\nCreatures target player controls get -1/-1 until end of turn. If this spell was kicked, those creatures get -2/-2 until end of turn instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marsh Casualties"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

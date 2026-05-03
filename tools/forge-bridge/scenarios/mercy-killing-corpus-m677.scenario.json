@@ -1,0 +1,23 @@
+{
+  "id": "mercy-killing-corpus-m677",
+  "description": "M6 corpus — Mercy Killing; in-hand parse.",
+  "seed": 65009,
+  "cards": {
+    "Mercy Killing": "Name:Mercy Killing\nManaCost:2 GW\nTypes:Instant\nA:SP$ SacrificeAll | Defined$ Targeted | ValidTgts$ Creature | SubAbility$ DBToken | SpellDescription$ Target creature's controller sacrifices it, then creates X 1/1 green and white Elf Warrior creature tokens, where X is that creature's power.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ gw_1_1_elf_warrior | TokenOwner$ TargetedController\nSVar:X:Targeted$CardPower\nOracle:Target creature's controller sacrifices it, then creates X 1/1 green and white Elf Warrior creature tokens, where X is that creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mercy Killing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

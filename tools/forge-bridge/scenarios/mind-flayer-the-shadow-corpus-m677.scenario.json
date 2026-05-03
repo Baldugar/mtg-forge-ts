@@ -1,0 +1,23 @@
+{
+  "id": "mind-flayer-the-shadow-corpus-m677",
+  "description": "M6 corpus — Mind Flayer, the Shadow; in-hand parse.",
+  "seed": 65149,
+  "cards": {
+    "Mind Flayer, the Shadow": "Name:Mind Flayer, the Shadow\nVariant:UniversesWithin:FlavorName:Arvinox, the Mind Flail\nManaCost:4 B B B\nTypes:Legendary Enchantment Creature Horror\nPT:9/9\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | IsPresent$ Permanent.YouCtrl+YouDontOwn | PresentCompare$ LT3 | Description$ CARDNAME isn't a creature unless you control three or more permanents you don't own.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, exile the bottom card of each opponent's library face down. For as long as those cards remain exiled, you may look at them, you may cast permanent spells from among them, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:TrigExile:DB$ ChangeZoneAll | Defined$ Opponent | ChangeType$ Card.BottomLibrary | Origin$ Library | Destination$ Exile | ExileFaceDown$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STLook,STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STLook:Mode$ Continuous | MayLookAt$ You | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ For as long as those cards remain exiled, you may look at them, you may cast permanent spells from among them, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered+Permanent+nonLand | AffectedZone$ Exile | Secondary$ True | Description$ For as long as those cards remain exiled, you may look at them, you may cast permanent spells from among them, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Mind Flayer, the Shadow isn't a creature unless you control three or more permanents you don't own.\\nAt the beginning of your end step, exile the bottom card of each opponent's library face down. For as long as those cards remain exiled, you may look at them, you may cast permanent spells from among them, and you may spend mana as though it were mana of any color to cast those spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Flayer, the Shadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

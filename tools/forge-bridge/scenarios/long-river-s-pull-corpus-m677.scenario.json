@@ -1,0 +1,23 @@
+{
+  "id": "long-river-s-pull-corpus-m677",
+  "description": "M6 corpus — Long River's Pull; in-hand parse.",
+  "seed": 64373,
+  "cards": {
+    "Long River's Pull": "Name:Long River's Pull\nManaCost:U U\nTypes:Instant\nK:Gift\nSVar:GiftAbility:DB$ Draw | Defined$ Promised | GiftDescription$ a card\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target creature spell | ValidTgts$ Creature | TargetMin$ X | TargetMax$ X | SubAbility$ DBCounter | SpellDescription$ Counter target creature spell. If the gift was promised, instead counter target spell.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | TargetMin$ Y | TargetMax$ Y | AITgts$ !Creature\nSVar:X:Count$PromisedGift.0.1\nSVar:Y:Count$PromisedGift.1.0\nOracle:Gift a card (You may promise an opponent a gift as you cast this spell. If you do, they draw a card before its other effects.)\\nCounter target creature spell. If the gift was promised, instead counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Long River's Pull"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

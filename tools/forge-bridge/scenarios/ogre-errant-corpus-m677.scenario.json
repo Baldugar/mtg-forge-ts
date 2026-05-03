@@ -1,0 +1,23 @@
+{
+  "id": "ogre-errant-corpus-m677",
+  "description": "M6 corpus — Ogre Errant; in-hand parse.",
+  "seed": 66229,
+  "cards": {
+    "Ogre Errant": "Name:Ogre Errant\nManaCost:3 R\nTypes:Creature Ogre Knight\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target attacking Knight gains menace until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Knight.Other+attacking | TgtPrompt$ Select another target attacking creature | KW$ Menace\nDeckHints:Type$Knight\nOracle:Whenever Ogre Errant attacks, another target attacking Knight gains menace until end of turn. (It can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Errant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "peer-into-the-abyss-corpus-m677",
+  "description": "M6 corpus — Peer into the Abyss; in-hand parse.",
+  "seed": 66702,
+  "cards": {
+    "Peer into the Abyss": "Name:Peer into the Abyss\nManaCost:4 B B B\nTypes:Sorcery\nA:SP$ Draw | ValidTgts$ Player | NumCards$ X | SubAbility$ DBLoseLife | SpellDescription$ Target player draws cards equal to half the number of cards in their library and loses half their life. Round up each time.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ Y | Defined$ Targeted\nSVar:X:TargetedPlayer$CardsInLibrary/HalfUp\nSVar:Y:TargetedPlayer$LifeTotal/HalfUp\nOracle:Target player draws cards equal to half the number of cards in their library and loses half their life. Round up each time.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peer into the Abyss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

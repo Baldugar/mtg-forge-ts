@@ -1,0 +1,23 @@
+{
+  "id": "narset-s-reversal-corpus-m677",
+  "description": "M6 corpus — Narset's Reversal; in-hand parse.",
+  "seed": 65745,
+  "cards": {
+    "Narset's Reversal": "Name:Narset's Reversal\nManaCost:U U\nTypes:Instant\nA:SP$ CopySpellAbility | ValidTgts$ Instant,Sorcery | TargetType$ Spell | SubAbility$ DBReturn | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell, then return it to its owner's hand. You may choose new targets for the copy.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Targeted | Origin$ Stack | Destination$ Hand\nOracle:Copy target instant or sorcery spell, then return it to its owner's hand. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Narset's Reversal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

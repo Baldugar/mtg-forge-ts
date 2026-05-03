@@ -1,0 +1,25 @@
+{
+  "id": "harnesser-of-storms-corpus-m677",
+  "description": "M6 corpus — Harnesser of Storms; ETB-on-bf.",
+  "seed": 62067,
+  "cards": {
+    "Harnesser of Storms": "Name:Harnesser of Storms\nManaCost:2 R\nTypes:Creature Otter Wizard\nPT:1/4\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature,Otter | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | ActivationLimit$ 1 | TriggerDescription$ Whenever you cast a noncreature or Otter spell, you may exile the top card of your library. Until end of turn, you may play that card. This ability triggers only once each turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever you cast a noncreature or Otter spell, you may exile the top card of your library. Until end of turn, you may play that card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Harnesser of Storms"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

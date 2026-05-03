@@ -1,0 +1,23 @@
+{
+  "id": "slash-reptile-rampager-corpus-m677",
+  "description": "M6 corpus — Slash, Reptile Rampager; in-hand parse.",
+  "seed": 70174,
+  "cards": {
+    "Slash, Reptile Rampager": "Name:Slash, Reptile Rampager\nManaCost:3 R R\nTypes:Legendary Creature Mutant Berserker Turtle\nPT:7/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Alliance — Whenever another creature you control enters, NICKNAME deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME attacks, create a 2/2 red Mutant token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_mutant | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Alliance — Whenever another creature you control enters, Slash deals 2 damage to each opponent.\\nWhenever Slash attacks, create a 2/2 red Mutant token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slash, Reptile Rampager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

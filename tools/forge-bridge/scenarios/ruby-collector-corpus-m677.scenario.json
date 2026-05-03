@@ -1,0 +1,25 @@
+{
+  "id": "ruby-collector-corpus-m677",
+  "description": "M6 corpus — Ruby Collector; ETB-on-bf.",
+  "seed": 68576,
+  "cards": {
+    "Ruby Collector": "Name:Ruby Collector\nManaCost:W\nTypes:Creature Human Detective\nPT:1/1\nT:Mode$ AttackersDeclared | Execute$ TrigConjure | ValidAttackers$ Creature | ValidAttackersAmount$ GE3 | GameActivationLimit$ 1 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ When you attack with three or more creatures, conjure a card named Mox Ruby into your hand. This ability triggers only once.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Mox Ruby | Zone$ Hand\nA:AB$ PumpAll | Cost$ 1 R | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | SpellDescription$ Creatures you control get +1/+0 until end of turn.\nDeckHas:Type$Artifact\nOracle:When you attack with three or more creatures, conjure a card named Mox Ruby into your hand. This ability triggers only once.\\n{1}{R}: Creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ruby Collector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

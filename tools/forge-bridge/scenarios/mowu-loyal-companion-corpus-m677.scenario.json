@@ -1,0 +1,25 @@
+{
+  "id": "mowu-loyal-companion-corpus-m677",
+  "description": "M6 corpus — Mowu, Loyal Companion; ETB-on-bf.",
+  "seed": 65561,
+  "cards": {
+    "Mowu, Loyal Companion": "Name:Mowu, Loyal Companion\nManaCost:3 G\nTypes:Legendary Creature Dog\nPT:3/3\nK:Trample\nK:Vigilance\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Card.Self | ValidCounterType$ P1P1 | ReplaceWith$ AddOneMoreCounters | Description$ If one or more +1/+1 counters would be put on CARDNAME, that many plus one +1/+1 counters are put on it instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ValidCounterType$ P1P1 | ChooseCounter$ True | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Plus.1\nAI:RemoveDeck:Random\nDeckNeeds:Ability$Counters\nOracle:Vigilance, trample\\nIf one or more +1/+1 counters would be put on Mowu, Loyal Companion, that many plus one +1/+1 counters are put on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mowu, Loyal Companion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

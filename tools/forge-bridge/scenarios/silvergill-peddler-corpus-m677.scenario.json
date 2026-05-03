@@ -1,0 +1,25 @@
+{
+  "id": "silvergill-peddler-corpus-m677",
+  "description": "M6 corpus — Silvergill Peddler; ETB-on-bf.",
+  "seed": 69931,
+  "cards": {
+    "Silvergill Peddler": "Name:Silvergill Peddler\nManaCost:2 U\nTypes:Creature Merfolk Citizen\nPT:2/3\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature becomes tapped, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:Whenever this creature becomes tapped, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Silvergill Peddler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

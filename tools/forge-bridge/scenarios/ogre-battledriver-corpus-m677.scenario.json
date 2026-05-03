@@ -1,0 +1,23 @@
+{
+  "id": "ogre-battledriver-corpus-m677",
+  "description": "M6 corpus — Ogre Battledriver; in-hand parse.",
+  "seed": 66225,
+  "cards": {
+    "Ogre Battledriver": "Name:Ogre Battledriver\nManaCost:2 R R\nTypes:Creature Ogre Warrior\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever another creature you control enters, that creature gets +2/+0 and haste until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCardLKICopy | NumAtt$ +2 | KW$ Haste\nSVar:BuffedBy:Creature\nOracle:Whenever another creature you control enters, that creature gets +2/+0 and gains haste until end of turn. (It can attack and {T} this turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Battledriver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

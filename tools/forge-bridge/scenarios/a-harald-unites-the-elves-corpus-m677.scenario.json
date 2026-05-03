@@ -1,0 +1,23 @@
+{
+  "id": "a-harald-unites-the-elves-corpus-m677",
+  "description": "M6 corpus — A-Harald Unites the Elves; in-hand parse.",
+  "seed": 68744,
+  "cards": {
+    "A-Harald Unites the Elves": "Name:A-Harald Unites the Elves\nManaCost:2 B G\nTypes:Enchantment Saga\nK:Chapter:3:DBMill,DBPutCounterAll,DBEffect\nSVar:DBMill:DB$ Mill | NumCards$ 5 | Defined$ You | SubAbility$ DBChangeZone | SpellDescription$ Mill five cards. You may put an Elf card or Tyvar card from your graveyard onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | ChangeType$ Elf.YouOwn,Tyvar.YouOwn | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Battlefield\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.Elf+YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each Elf you control.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigAttack | SpellDescription$ Whenever an Elf you control attacks this turn, target creature an opponent controls gets -1/-1 until end of turn.\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Creature.Elf+YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever an Elf you control attacks this turn, target creature an opponent controls gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nDeckHints:Type$Elf|Tyvar\nDeckHas:Ability$Counters\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Mill five cards. You may put an Elf or Tyvar card from your graveyard onto the battlefield.\\nII — Put a +1/+1 counter on each Elf you control.\\nIII — Whenever an Elf you control attacks this turn, target creature an opponent controls gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Harald Unites the Elves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

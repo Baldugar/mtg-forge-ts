@@ -1,0 +1,23 @@
+{
+  "id": "orcish-cannonade-corpus-m677",
+  "description": "M6 corpus — Orcish Cannonade; in-hand parse.",
+  "seed": 66381,
+  "cards": {
+    "Orcish Cannonade": "Name:Orcish Cannonade\nManaCost:1 R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | DamageMap$ True | AILogic$ SelfDamage | SubAbility$ DB1 | SpellDescription$ CARDNAME deals 2 damage to any target and 3 damage to you. Draw a card.\nSVar:DB1:DB$ DealDamage | NumDmg$ 3 | Defined$ You | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve | SubAbility$ DB2\nSVar:DB2:DB$ Draw\nSVar:SelfDamageAmount:3\nAI:RemoveDeck:Random\nOracle:Orcish Cannonade deals 2 damage to any target and 3 damage to you.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orcish Cannonade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

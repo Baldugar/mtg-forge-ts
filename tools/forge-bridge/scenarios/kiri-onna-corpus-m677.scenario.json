@@ -1,0 +1,23 @@
+{
+  "id": "kiri-onna-corpus-m677",
+  "description": "M6 corpus — Kiri-Onna; in-hand parse.",
+  "seed": 63689,
+  "cards": {
+    "Kiri-Onna": "Name:Kiri-Onna\nManaCost:4 U\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturnOther | TriggerDescription$ When CARDNAME enters, return target creature to its owner's hand.\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturnThis | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may return CARDNAME to its owner's hand.\nSVar:TrigReturnOther:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nSVar:TrigReturnThis:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature.OppCtrl\nOracle:When Kiri-Onna enters, return target creature to its owner's hand.\\nWhenever you cast a Spirit or Arcane spell, you may return Kiri-Onna to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kiri-Onna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

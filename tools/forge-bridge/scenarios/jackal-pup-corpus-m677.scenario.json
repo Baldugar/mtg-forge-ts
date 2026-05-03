@@ -1,0 +1,23 @@
+{
+  "id": "jackal-pup-corpus-m677",
+  "description": "M6 corpus — Jackal Pup; in-hand parse.",
+  "seed": 63210,
+  "cards": {
+    "Jackal Pup": "Name:Jackal Pup\nManaCost:R\nTypes:Creature Jackal\nPT:2/1\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, it deals that much damage to you.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | Defined$ You\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever Jackal Pup is dealt damage, it deals that much damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jackal Pup"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

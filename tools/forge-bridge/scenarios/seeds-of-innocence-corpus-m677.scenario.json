@@ -1,0 +1,23 @@
+{
+  "id": "seeds-of-innocence-corpus-m677",
+  "description": "M6 corpus — Seeds of Innocence; in-hand parse.",
+  "seed": 69368,
+  "cards": {
+    "Seeds of Innocence": "Name:Seeds of Innocence\nManaCost:1 G G\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Artifact | RememberDestroyed$ True | NoRegen$ True | SubAbility$ DBRepeat | SpellDescription$ Destroy all artifacts. They can't be regenerated. The controller of each of those artifacts gains life equal to its mana value.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBGainLife | SubAbility$ DBCleanup\nSVar:DBGainLife:DB$ GainLife | Defined$ Player.IsRemembered | LifeAmount$ X\nSVar:X:RememberedLKI$Valid Card.RememberedPlayerCtrl$CardManaCost\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Destroy all artifacts. They can't be regenerated. The controller of each of those artifacts gains life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seeds of Innocence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

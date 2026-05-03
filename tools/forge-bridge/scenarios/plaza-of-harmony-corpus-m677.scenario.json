@@ -1,0 +1,23 @@
+{
+  "id": "plaza-of-harmony-corpus-m677",
+  "description": "M6 corpus — Plaza of Harmony; in-hand parse.",
+  "seed": 67012,
+  "cards": {
+    "Plaza of Harmony": "Name:Plaza of Harmony\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Gate.YouCtrl | PresentCompare$ GE2 | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, if you control two or more Gates, gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ManaReflected | Cost$ T | ColorOrType$ Type | Valid$ Gate.YouCtrl | ReflectProperty$ Produce | SpellDescription$ Add one mana of any type that a Gate you control could produce.\nDeckHints:Type$Gate\nDeckHas:Ability$LifeGain\nOracle:When Plaza of Harmony enters, if you control two or more Gates, you gain 3 life.\\n{T}: Add {C}.\\n{T}: Add one mana of any type that a Gate you control could produce.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plaza of Harmony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

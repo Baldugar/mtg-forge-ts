@@ -1,0 +1,23 @@
+{
+  "id": "ohran-viper-corpus-m677",
+  "description": "M6 corpus — Ohran Viper; in-hand parse.",
+  "seed": 66244,
+  "cards": {
+    "Ohran Viper": "Name:Ohran Viper\nManaCost:1 G G\nTypes:Snow Creature Snake\nPT:1/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ DelTrig | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, destroy that creature at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredTargetLKICopy | TriggerDescription$ Destroy damaged creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Whenever Ohran Viper deals combat damage to a creature, destroy that creature at end of combat.\\nWhenever Ohran Viper deals combat damage to a player, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ohran Viper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

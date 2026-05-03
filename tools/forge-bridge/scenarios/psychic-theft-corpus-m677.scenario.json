@@ -1,0 +1,23 @@
+{
+  "id": "psychic-theft-corpus-m677",
+  "description": "M6 corpus — Psychic Theft; in-hand parse.",
+  "seed": 67326,
+  "cards": {
+    "Psychic Theft": "Name:Psychic Theft\nManaCost:1 U\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Player | Origin$ Hand | Destination$ Exile | ChangeType$ Instant,Sorcery | Mandatory$ True | IsCurse$ True | Chooser$ You | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ TheftEffect | SpellDescription$ Target player reveals their hand. You choose an instant or sorcery card from it and exile that card. | StackDescription$ SpellDescription\nSVar:TheftEffect:DB$ Effect | StaticAbilities$ STThieving | Duration$ Permanent | RememberObjects$ Remembered | ExileOnMoved$ Exile | SubAbility$ DBDelayedTrigger | SpellDescription$ You may cast that card for as long as it remains exiled.\nSVar:STThieving:Mode$ Continuous | Affected$ Card.IsRemembered+nonLand | MayPlay$ True | AffectedZone$ Exile | Description$ You may cast that card for as long as it remains exiled.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | IsPresent$ Card.IsTriggerRemembered | PresentZone$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup | SpellDescription$ At the beginning of the next end step, if you haven't cast the card, return it to its owner's hand.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Hand\nAI:RemoveDeck:All\nOracle:Target player reveals their hand. You choose an instant or sorcery card from it and exile that card. You may cast that card for as long as it remains exiled. At the beginning of the next end step, if you haven't cast the card, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Theft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

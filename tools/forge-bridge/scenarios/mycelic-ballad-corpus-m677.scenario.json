@@ -1,0 +1,23 @@
+{
+  "id": "mycelic-ballad-corpus-m677",
+  "description": "M6 corpus — Mycelic Ballad; in-hand parse.",
+  "seed": 65625,
+  "cards": {
+    "Mycelic Ballad": "Name:Mycelic Ballad\nManaCost:3 B\nTypes:Sorcery Chorus\nK:Starting intensity:2\nA:SP$ Sacrifice | Amount$ X | SacValid$ Creature | Defined$ Player | SubAbility$ DBGainLife | SpellDescription$ Each player sacrifices X creatures and you gain X life, where X is this spell's intensity.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBIntensify\nSVar:DBIntensify:DB$ Intensify | AllDefined$ Card.YouOwn+Chorus | DefinedDesc$ all Chorus cards you own | SpellDescription$ All Chorus cards you own intensify by 1.\nSVar:X:Count$Intensity\nDeckHas:Ability$LifeGain\nDeckHints:Type$Chorus\nOracle:Starting intensity 2\\nEach player sacrifices X creatures and you gain X life, where X is this spell's intensity.\\nAll Chorus cards you own intensify by 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mycelic Ballad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

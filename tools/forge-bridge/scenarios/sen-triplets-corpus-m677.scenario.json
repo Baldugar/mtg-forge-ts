@@ -1,0 +1,23 @@
+{
+  "id": "sen-triplets-corpus-m677",
+  "description": "M6 corpus — Sen Triplets; in-hand parse.",
+  "seed": 69434,
+  "cards": {
+    "Sen Triplets": "Name:Sen Triplets\nManaCost:2 W U B\nTypes:Legendary Artifact Creature Human Wizard\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ SenEffect | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, choose target opponent. This turn, that player can't cast spells or activate abilities and plays with their hand revealed. You may play lands and cast spells from that player's hand this turn.\nSVar:SenEffect:DB$ Effect | ValidTgts$ Opponent | StaticAbilities$ STCantBeCast,STCantBeActivated,STHandRevealed,STCanPlay | RememberObjects$ Targeted | AILogic$ Always\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Card | Caster$ Player.IsRemembered | Description$ This turn, the targeted player can't cast spells or activate abilities and plays with their hand revealed.\nSVar:STCantBeActivated:Mode$ CantBeActivated | ValidCard$ Card | Activator$ Player.IsRemembered\nSVar:STHandRevealed:Mode$ Continuous | AffectedZone$ Hand | Affected$ Card.RememberedPlayerOwn | MayLookAt$ Player\nSVar:STCanPlay:Mode$ Continuous | Affected$ Card.RememberedPlayerCtrl | AffectedZone$ Hand | MayPlay$ True | Description$ You may play cards from that player's hand this turn.\nOracle:At the beginning of your upkeep, choose target opponent. This turn, that player can't cast spells or activate abilities and plays with their hand revealed. You may play lands and cast spells from that player's hand this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sen Triplets"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

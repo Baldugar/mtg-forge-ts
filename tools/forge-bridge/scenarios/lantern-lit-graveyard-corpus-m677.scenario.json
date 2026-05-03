@@ -1,0 +1,25 @@
+{
+  "id": "lantern-lit-graveyard-corpus-m677",
+  "description": "M6 corpus — Lantern-Lit Graveyard; ETB-on-bf.",
+  "seed": 63981,
+  "cards": {
+    "Lantern-Lit Graveyard": "Name:Lantern-Lit Graveyard\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SubAbility$ DBStayTapped | SpellDescription$ Add {B} or {R}. CARDNAME doesn't untap during your next untap step.\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{T}: Add {C}.\\n{T}: Add {B} or {R}. Lantern-Lit Graveyard doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lantern-Lit Graveyard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

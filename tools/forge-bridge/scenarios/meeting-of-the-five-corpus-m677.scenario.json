@@ -1,0 +1,23 @@
+{
+  "id": "meeting-of-the-five-corpus-m677",
+  "description": "M6 corpus — Meeting of the Five; in-hand parse.",
+  "seed": 64938,
+  "cards": {
+    "Meeting of the Five": "Name:Meeting of the Five\nManaCost:3 W U B R G\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 10 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top ten cards of your library.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ForgetOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup | SpellDescription$ You may cast spells with exactly three colors from among them this turn.\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered+numColorsEQ3 | MayPlay$ True | AffectedZone$ Exile | Description$ You may cast spells with exactly three colors from among them this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ W W U U B B R R G G | RestrictValid$ Spell.numColorsEQ3 | SpellDescription$ Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Spend this mana only to cast spells with exactly three colors.\nAI:RemoveDeck:Random\nOracle:Exile the top ten cards of your library. You may cast spells with exactly three colors from among them this turn. Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Spend this mana only to cast spells with exactly three colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meeting of the Five"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

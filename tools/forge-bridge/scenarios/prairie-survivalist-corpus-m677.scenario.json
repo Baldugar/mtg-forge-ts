@@ -1,0 +1,23 @@
+{
+  "id": "prairie-survivalist-corpus-m677",
+  "description": "M6 corpus — Prairie Survivalist; in-hand parse.",
+  "seed": 67106,
+  "cards": {
+    "Prairie Survivalist": "Name:Prairie Survivalist\nManaCost:1 W\nTypes:Creature Human Scout\nPT:0/1\nK:Flying\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control perpetually gets +1/+0. Then choose a creature card in your hand. It perpetually gets +1/+0.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | Duration$ Perpetual | SubAbility$ DBChooseCard\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn | ChoiceTitle$ Choose a creature card in your hand | ChoiceDesc$ creature | Mandatory$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | NumAtt$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gets +1/+0.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Flying\\nAt the beginning of combat on your turn, target creature you control perpetually gets +1/+0. Then choose a creature card in your hand. It perpetually gets +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prairie Survivalist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

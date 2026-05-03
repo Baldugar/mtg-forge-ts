@@ -1,0 +1,23 @@
+{
+  "id": "stonecloaker-corpus-m677",
+  "description": "M6 corpus — Stonecloaker; in-hand parse.",
+  "seed": 71054,
+  "cards": {
+    "Stonecloaker": "Name:Stonecloaker\nManaCost:2 W\nTypes:Creature Gargoyle\nPT:3/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouCtrl | ChangeNum$ 1 | AILogic$ NeverBounceItself\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange2 | TriggerDescription$ When CARDNAME enters, exile target card from a graveyard.\nSVar:TrigChange2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TgtPrompt$ Select target card from any graveyard\nSVar:NeedsToPlay:Creature.YouCtrl+!token\nOracle:Flash\\nFlying\\nWhen Stonecloaker enters, return a creature you control to its owner's hand.\\nWhen Stonecloaker enters, exile target card from a graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stonecloaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

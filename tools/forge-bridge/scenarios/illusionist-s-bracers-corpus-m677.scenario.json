@@ -1,0 +1,25 @@
+{
+  "id": "illusionist-s-bracers-corpus-m677",
+  "description": "M6 corpus — Illusionist's Bracers; ETB-on-bf.",
+  "seed": 62759,
+  "cards": {
+    "Illusionist's Bracers": "Name:Illusionist's Bracers\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:3\nT:Mode$ AbilityCast | ValidCard$ Creature.EquippedBy+inRealZoneBattlefield | ValidSA$ SpellAbility.!ManaAbility | TriggerZones$ Battlefield | Execute$ TrigCopyAbility | OptionalDecider$ You | TriggerDescription$ Whenever an ability of equipped creature is activated, if it isn't a mana ability, copy that ability. You may choose new targets for the copy.\nSVar:TrigCopyAbility:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:Whenever an ability of equipped creature is activated, if it isn't a mana ability, copy that ability. You may choose new targets for the copy.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Illusionist's Bracers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

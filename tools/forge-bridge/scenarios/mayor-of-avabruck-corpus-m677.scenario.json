@@ -1,0 +1,23 @@
+{
+  "id": "mayor-of-avabruck-corpus-m677",
+  "description": "M6 corpus — Mayor of Avabruck; in-hand parse.",
+  "seed": 64910,
+  "cards": {
+    "Mayor of Avabruck": "Name:Mayor of Avabruck\nManaCost:1 G\nTypes:Creature Human Advisor Werewolf\nPT:1/1\nS:Mode$ Continuous | Affected$ Creature.Human+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Human creatures you control get +1/+1.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Other Human creatures you control get +1/+1.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Mayor of Avabruck.\n\nALTERNATE\n\nName:Howlpack Alpha\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Werewolf+Other+YouCtrl,Creature.Wolf+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Each other creature you control that's a Werewolf or a Wolf gets +1/+1.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 2/2 green Wolf creature token.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenOwner$ You\nOracle:Each other creature you control that's a Werewolf or a Wolf gets +1/+1.\\nAt the beginning of your end step, create a 2/2 green Wolf creature token.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Howlpack Alpha.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mayor of Avabruck"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

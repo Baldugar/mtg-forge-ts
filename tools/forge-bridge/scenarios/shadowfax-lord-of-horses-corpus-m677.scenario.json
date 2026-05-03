@@ -1,0 +1,23 @@
+{
+  "id": "shadowfax-lord-of-horses-corpus-m677",
+  "description": "M6 corpus — Shadowfax, Lord of Horses; in-hand parse.",
+  "seed": 69566,
+  "cards": {
+    "Shadowfax, Lord of Horses": "Name:Shadowfax, Lord of Horses\nManaCost:3 R W\nTypes:Legendary Creature Horse\nPT:4/4\nS:Mode$ Continuous | Affected$ Horse.YouCtrl | AddKeyword$ Haste | Description$ Horses you control have haste. (They can attack and {T} as soon as they come under your control.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may put a creature card with lesser power from your hand onto the battlefield tapped and attacking.\nSVar:TrigChangeZone:DB$ ChangeZone | ChangeType$ Creature.YouCtrl+powerLTX | Origin$ Hand | Tapped$ True | Attacking$ True | Destination$ Battlefield | TgtPrompt$ Select target creature card with lesser power than NICKNAME in your hand\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nSVar:PlayMain1:TRUE\nDeckHints:Type$Horse\nOracle:Horses you control have haste. (They can attack and {T} as soon as they come under your control.)\\nWhenever Shadowfax, Lord of Horses attacks, you may put a creature card with lesser power from your hand onto the battlefield tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadowfax, Lord of Horses"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

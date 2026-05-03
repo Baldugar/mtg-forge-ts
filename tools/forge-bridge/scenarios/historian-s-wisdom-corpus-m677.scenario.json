@@ -1,0 +1,23 @@
+{
+  "id": "historian-s-wisdom-corpus-m677",
+  "description": "M6 corpus — Historian's Wisdom; in-hand parse.",
+  "seed": 62405,
+  "cards": {
+    "Historian's Wisdom": "Name:Historian's Wisdom\nManaCost:2 G\nTypes:Enchantment Aura\nK:Enchant:Artifact,Creature:artifact or creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Permanent.EnchantedBy+greatestPower | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if enchanted permanent is a creature with the greatest power among creatures on the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 1 | Description$ As long as enchanted permanent is a creature, it gets +2/+1.\nDeckHints:Type$Artifact|Vehicle\nOracle:Enchant artifact or creature\\nWhen Historian's Wisdom enters, if enchanted permanent is a creature with the greatest power among creatures on the battlefield, draw a card.\\nAs long as enchanted permanent is a creature, it gets +2/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Historian's Wisdom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

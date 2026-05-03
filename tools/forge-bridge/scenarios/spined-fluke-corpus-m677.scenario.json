@@ -1,0 +1,23 @@
+{
+  "id": "spined-fluke-corpus-m677",
+  "description": "M6 corpus — Spined Fluke; in-hand parse.",
+  "seed": 70671,
+  "cards": {
+    "Spined Fluke": "Name:Spined Fluke\nManaCost:2 B\nTypes:Creature Worm Horror\nPT:5/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nA:AB$ Regenerate | Cost$ B | SpellDescription$ Regenerate CARDNAME.\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE3\nOracle:When Spined Fluke enters, sacrifice a creature.\\n{B}: Regenerate Spined Fluke.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spined Fluke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

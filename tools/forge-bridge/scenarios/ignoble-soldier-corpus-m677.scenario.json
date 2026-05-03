@@ -1,0 +1,25 @@
+{
+  "id": "ignoble-soldier-corpus-m677",
+  "description": "M6 corpus — Ignoble Soldier; ETB-on-bf.",
+  "seed": 62730,
+  "cards": {
+    "Ignoble Soldier": "Name:Ignoble Soldier\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigNoDamage | TriggerDescription$ Whenever CARDNAME becomes blocked, prevent all combat damage that would be dealt by it this turn.\nSVar:TrigNoDamage:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ TriggeredAttackerLKICopy | ExileOnMoved$ Battlefield\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by it this turn.\nSVar:MustBeBlocked:True\nOracle:Whenever Ignoble Soldier becomes blocked, prevent all combat damage that would be dealt by it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ignoble Soldier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

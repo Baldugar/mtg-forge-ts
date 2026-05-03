@@ -1,0 +1,23 @@
+{
+  "id": "noble-benefactor-corpus-m677",
+  "description": "M6 corpus — Noble Benefactor; in-hand parse.",
+  "seed": 66026,
+  "cards": {
+    "Noble Benefactor": "Name:Noble Benefactor\nManaCost:2 U\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, each player may search their library for a card and put that card into their hand. Then each player who searched their library this way shuffles.\nSVar:TrigChangeZone:DB$ ChangeZone | Optional$ True | DefinedPlayer$ Player | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Noble Benefactor dies, each player may search their library for a card and put that card into their hand. Then each player who searched their library this way shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noble Benefactor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "silverglade-elemental-corpus-m677",
+  "description": "M6 corpus — Silverglade Elemental; in-hand parse.",
+  "seed": 69932,
+  "cards": {
+    "Silverglade Elemental": "Name:Silverglade Elemental\nManaCost:4 G\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a Forest card, put that card onto the battlefield, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Forest | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Silverglade Elemental enters, you may search your library for a Forest card, put that card onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silverglade Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

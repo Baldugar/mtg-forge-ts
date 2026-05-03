@@ -1,0 +1,23 @@
+{
+  "id": "pippin-s-bravery-corpus-m677",
+  "description": "M6 corpus — Pippin's Bravery; in-hand parse.",
+  "seed": 66921,
+  "cards": {
+    "Pippin's Bravery": "Name:Pippin's Bravery\nManaCost:G\nTypes:Instant\nA:SP$ Sacrifice | SacValid$ Food | Optional$ True | RememberSacrificed$ True | SubAbility$ DBPump | SpellDescription$ You may sacrifice a Food. If you do, target creature gets +4/+4 until end of turn. Otherwise, that creature gets +2/+2 until end of turn.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Compare Y GE1.4.2\nSVar:Y:Remembered$Amount\nDeckHints:Type$Food\nDeckHas:Ability$Sacrifice\nOracle:You may sacrifice a Food. If you do, target creature gets +4/+4 until end of turn. Otherwise, that creature gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pippin's Bravery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

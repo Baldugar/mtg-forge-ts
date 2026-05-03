@@ -1,0 +1,23 @@
+{
+  "id": "ishgard-the-holy-see-corpus-m677",
+  "description": "M6 corpus — Ishgard, the Holy See; in-hand parse.",
+  "seed": 63153,
+  "cards": {
+    "Ishgard, the Holy See": "Name:Ishgard, the Holy See\nManaCost:no cost\nTypes:Land Town\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nAlternateMode:Adventure\nOracle:This land enters tapped.\\n{T}: Add {W}.\n\nALTERNATE\n\nName:Faith & Grief\nManaCost:3 W W\nTypes:Sorcery Adventure\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target artifact or enchantment card in your graveyard | ValidTgts$ Artifact.YouOwn,Enchantment.YouOwn | SpellDescription$ Return up to two target artifact and/or enchantment cards from your graveyard to your hand. (Then exile this card. You may play the land later from exile.)\nOracle:Return up to two target artifact and/or enchantment cards from your graveyard to your hand. (Then exile this card. You may play the land later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ishgard, the Holy See"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

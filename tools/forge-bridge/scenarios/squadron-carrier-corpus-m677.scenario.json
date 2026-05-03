@@ -1,0 +1,25 @@
+{
+  "id": "squadron-carrier-corpus-m677",
+  "description": "M6 corpus — Squadron Carrier; ETB-on-bf.",
+  "seed": 70806,
+  "cards": {
+    "Squadron Carrier": "Name:Squadron Carrier\nManaCost:2 W\nTypes:Artifact Spacecraft\nPT:4/4\nK:Station:10\nS:Mode$ Continuous | Affected$ Spacecraft.YouCtrl | AddAbility$ ABConjureExh | Description$ Spacecraft you control have \"Exhaust — {W}: Conjure a card named Starfighter Pilot onto the battlefield.\"\nSVar:ABConjureExh:AB$ MakeCard | Cost$ W | Conjure$ True | Name$ Starfighter Pilot | Zone$ Battlefield | Exhaust$ True | SpellDescription$ Conjure a card named Starfighter Pilot onto the battlefield.\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE10_CHARGE | AddType$ Creature | AddStaticAbility$ CarrierStatic | Description$ STATION 10+ Creatures you control have flying.\nSVar:CarrierStatic:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Flying | Description$ Creatures you control have flying.\nOracle:Spacecraft you control have \"Exhaust — {W}: Conjure a card named Starfighter Pilot onto the battlefield.\"\\nStation\\nSTATION 10+\\nCreatures you control have flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Squadron Carrier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

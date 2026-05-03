@@ -1,0 +1,23 @@
+{
+  "id": "slum-reaper-corpus-m677",
+  "description": "M6 corpus — Slum Reaper; in-hand parse.",
+  "seed": 70242,
+  "cards": {
+    "Slum Reaper": "Name:Slum Reaper\nManaCost:3 B\nTypes:Creature Horror\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each player sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature\nSVar:NeedsToPlay:Creature.OppCtrl+cmcGE5,Creature.token+YouCtrl+powerLE2,Creature.YouCtrl+cmcEQ0,Creature.YouCtrl+cmcEQ1\nOracle:When Slum Reaper enters, each player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slum Reaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

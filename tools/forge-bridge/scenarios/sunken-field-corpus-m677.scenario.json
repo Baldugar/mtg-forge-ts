@@ -1,0 +1,23 @@
+{
+  "id": "sunken-field-corpus-m677",
+  "description": "M6 corpus — Sunken Field; in-hand parse.",
+  "seed": 71365,
+  "cards": {
+    "Sunken Field": "Name:Sunken Field\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ Counter | Description$ Enchanted land has \"{T}: Counter target spell unless its controller pays {1}.\"\nSVar:Counter:AB$ Counter | Cost$ T | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ 1 | UnlessPayer$ TargetedController | SpellDescription$ Counter target spell unless its controller pays {1}.\nOracle:Enchant land\\nEnchanted land has \"{T}: Counter target spell unless its controller pays {1}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunken Field"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

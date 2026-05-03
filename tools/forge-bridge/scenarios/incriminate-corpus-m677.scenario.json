@@ -1,0 +1,23 @@
+{
+  "id": "incriminate-corpus-m677",
+  "description": "M6 corpus — Incriminate; in-hand parse.",
+  "seed": 62859,
+  "cards": {
+    "Incriminate": "Name:Incriminate\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | TgtPrompt$ Choose two target creatures controlled by the same player | TargetMin$ 2 | TargetMax$ 2 | TargetUnique$ True | TargetsWithSameController$ True | IsCurse$ True | SubAbility$ DBChooseSac | StackDescription$ SpellDescription | SpellDescription$ Choose two target creatures controlled by the same player. That player sacrifices one of them.\nSVar:DBChooseSac:DB$ ChooseCard | DefinedCards$ Targeted | Defined$ TargetedController | ChoiceTitle$ Choose one to sacrifice | SubAbility$ DBSac | StackDescription$ None | AILogic$ WorstCard\nSVar:DBSac:DB$ SacrificeAll | Defined$ ChosenCard | StackDescription$ None\nDeckHas:Ability$Sacrifice\nOracle:Choose two target creatures controlled by the same player. That player sacrifices one of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incriminate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

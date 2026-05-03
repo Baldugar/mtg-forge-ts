@@ -1,0 +1,25 @@
+{
+  "id": "lavinia-azorius-renegade-corpus-m677",
+  "description": "M6 corpus — Lavinia, Azorius Renegade; ETB-on-bf.",
+  "seed": 64037,
+  "cards": {
+    "Lavinia, Azorius Renegade": "Name:Lavinia, Azorius Renegade\nManaCost:W U\nTypes:Legendary Creature Human Soldier\nPT:2/2\nS:Mode$ CantBeCast | ValidCard$ Card.nonCreature+nonLand | Caster$ Opponent | cmcGT$ Land | Description$ Each opponent can't cast noncreature spells with mana value greater than the number of lands that player controls.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigCounter | ValidSA$ Spell.ManaSpent EQ0 | TriggerDescription$ Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility\nAI:RemoveDeck:Random\nOracle:Each opponent can't cast noncreature spells with mana value greater than the number of lands that player controls.\\nWhenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lavinia, Azorius Renegade"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

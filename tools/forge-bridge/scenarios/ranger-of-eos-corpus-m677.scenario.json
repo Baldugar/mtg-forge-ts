@@ -1,0 +1,23 @@
+{
+  "id": "ranger-of-eos-corpus-m677",
+  "description": "M6 corpus — Ranger of Eos; in-hand parse.",
+  "seed": 67691,
+  "cards": {
+    "Ranger of Eos": "Name:Ranger of Eos\nManaCost:3 W\nTypes:Creature Human Soldier Ranger\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for up to two creature cards with mana value 1 or less, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.cmcLE1 | ChangeNum$ 2 | ShuffleNonMandatory$ True\nOracle:When Ranger of Eos enters, you may search your library for up to two creature cards with mana value 1 or less, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ranger of Eos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

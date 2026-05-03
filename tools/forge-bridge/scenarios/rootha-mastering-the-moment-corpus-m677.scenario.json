@@ -1,0 +1,23 @@
+{
+  "id": "rootha-mastering-the-moment-corpus-m677",
+  "description": "M6 corpus — Rootha, Mastering the Moment; in-hand parse.",
+  "seed": 68513,
+  "cards": {
+    "Rootha, Mastering the Moment": "Name:Rootha, Mastering the Moment\nManaCost:2 U R\nTypes:Legendary Creature Orc Sorcerer\nPT:3/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | CheckSVar$ X | TriggerDescription$ At the beginning of combat on your turn, if you've cast an instant or sorcery spell this turn, create an X/X blue and red Elemental creature token with flying and haste, where X is the greatest mana value among instant and sorcery spells you've cast this turn.\nSVar:TrigToken:DB$ Token | TokenScript$ ur_x_x_elemental_flying_haste | TokenOwner$ You | TokenPower$ Y | TokenToughness$ Y\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl\nSVar:Y:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl$GreatestCardManaCost\nSVar:PlayMain1:TRUE\nOracle:At the beginning of combat on your turn, if you've cast an instant or sorcery spell this turn, create an X/X blue and red Elemental creature token with flying and haste, where X is the greatest mana value among instant and sorcery spells you've cast this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rootha, Mastering the Moment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

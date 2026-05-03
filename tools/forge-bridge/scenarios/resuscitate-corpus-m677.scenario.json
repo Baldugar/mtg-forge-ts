@@ -1,0 +1,23 @@
+{
+  "id": "resuscitate-corpus-m677",
+  "description": "M6 corpus — Resuscitate; in-hand parse.",
+  "seed": 68135,
+  "cards": {
+    "Resuscitate": "Name:Resuscitate\nManaCost:1 G\nTypes:Instant\nA:SP$ AnimateAll | ValidCards$ Creature.YouCtrl | Abilities$ ABRegen | SpellDescription$ Until end of turn, creatures you control gain \"{1}: Regenerate this creature.\"\nSVar:ABRegen:AB$ Regenerate | Cost$ 1 | SpellDescription$ Regenerate this creature.\nAI:RemoveDeck:All\nOracle:Until end of turn, creatures you control gain \"{1}: Regenerate this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resuscitate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

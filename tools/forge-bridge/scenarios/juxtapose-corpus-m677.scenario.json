@@ -1,0 +1,23 @@
+{
+  "id": "juxtapose-corpus-m677",
+  "description": "M6 corpus — Juxtapose; in-hand parse.",
+  "seed": 63408,
+  "cards": {
+    "Juxtapose": "Name:Juxtapose\nManaCost:3 U\nTypes:Sorcery\nA:SP$ ChooseCard | ValidTgts$ Player | Choices$ Creature.cmcEQY | TargetControls$ True | Mandatory$ True | AILogic$ WorstCard | RememberChosen$ True | SubAbility$ DBChooseCreatureYou | SpellDescription$ You and target player exchange control of the creature you each control with the highest mana value. Then exchange control of artifacts the same way. If two or more permanents a player controls are tied for highest, their controller chooses one of them.\nSVar:DBChooseCreatureYou:DB$ ChooseCard | Choices$ Creature.YouCtrl+cmcEQX | Mandatory$ True | RememberChosen$ True | SubAbility$ DBExchangeCreature\nSVar:DBExchangeCreature:DB$ ExchangeControl | Defined$ Remembered | SubAbility$ DBCleanCreature\nSVar:DBCleanCreature:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBChooseArtifactYou\nSVar:DBChooseArtifactYou:DB$ ChooseCard | Choices$ Artifact.YouCtrl+cmcEQZ | Mandatory$ True | RememberChosen$ True | SubAbility$ DBChooseArtifactOpp\nSVar:DBChooseArtifactOpp:DB$ ChooseCard | Defined$ ParentTarget | Choices$ Artifact.cmcEQW | TargetControls$ True | Mandatory$ True | AILogic$ WorstCard | RememberChosen$ True | SubAbility$ DBExchangeArtifact\nSVar:DBExchangeArtifact:DB$ ExchangeControl | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardManaCost\nSVar:Y:Count$Valid Creature.TargetedPlayerCtrl$GreatestCardManaCost\nSVar:Z:Count$Valid Artifact.YouCtrl$GreatestCardManaCost\nSVar:W:Count$Valid Artifact.TargetedPlayerCtrl$GreatestCardManaCost\nAI:RemoveDeck:All\nOracle:You and target player exchange control of the creature you each control with the highest mana value. Then exchange control of artifacts the same way. If two or more permanents a player controls are tied for highest, their controller chooses one of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Juxtapose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

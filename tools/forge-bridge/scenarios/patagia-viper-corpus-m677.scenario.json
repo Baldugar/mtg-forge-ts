@@ -1,0 +1,23 @@
+{
+  "id": "patagia-viper-corpus-m677",
+  "description": "M6 corpus — Patagia Viper; in-hand parse.",
+  "seed": 66640,
+  "cards": {
+    "Patagia Viper": "Name:Patagia Viper\nManaCost:3 G\nTypes:Creature Snake\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 green and blue Snake creature tokens.\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | ManaNotSpent$ U | TriggerDescription$ When CARDNAME enters, sacrifice it unless {U} was spent to cast it.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ gu_1_1_snake | TokenOwner$ You\nSVar:TrigSac:DB$ Sacrifice\nSVar:ManaNeededToAvoidNegativeEffect:blue\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:Flying\\nWhen Patagia Viper enters, create two 1/1 green and blue Snake creature tokens.\\nWhen Patagia Viper enters, sacrifice it unless {U} was spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patagia Viper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

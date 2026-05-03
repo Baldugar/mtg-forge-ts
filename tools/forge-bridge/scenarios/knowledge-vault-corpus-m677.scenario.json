@@ -1,0 +1,23 @@
+{
+  "id": "knowledge-vault-corpus-m677",
+  "description": "M6 corpus — Knowledge Vault; in-hand parse.",
+  "seed": 63789,
+  "cards": {
+    "Knowledge Vault": "Name:Knowledge Vault\nManaCost:4\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 2 T | Defined$ TopOfLibrary | Origin$ Library | Destination$ Exile | ExileFaceDown$ True | RememberChanged$ True | SpellDescription$ Exile the top card of your library face down.\nA:AB$ SacrificeAll | Cost$ 0 | Defined$ Self | ImprintSacrificed$ True | SubAbility$ DBDiscardHand | SpellDescription$ Sacrifice CARDNAME. If you do, discard your hand, then put all cards exiled with CARDNAME into their owner's hand.\nSVar:DBDiscardHand:DB$ Discard | Mode$ Hand | SubAbility$ DBChangeZoneAll | ConditionDefined$ Imprinted | ConditionPresent$ Card\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Remembered | Origin$ Exile | Destination$ Hand | ConditionDefined$ Imprinted | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Hidden$ True | Execute$ TrigGraveyard | TriggerDescription$ When CARDNAME leaves the battlefield, put all cards exiled with CARDNAME into their owner's graveyard.\nSVar:TrigGraveyard:DB$ ChangeZoneAll | ChangeType$ Remembered | Origin$ Exile | Destination$ Graveyard\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice|Graveyard\nOracle:{2}, {T}: Exile the top card of your library face down.\\n{0}: Sacrifice Knowledge Vault. If you do, discard your hand, then put all cards exiled with Knowledge Vault into their owner's hand.\\nWhen Knowledge Vault leaves the battlefield, put all cards exiled with Knowledge Vault into their owner's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knowledge Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

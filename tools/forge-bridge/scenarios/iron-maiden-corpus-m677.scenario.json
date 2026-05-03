@@ -1,0 +1,23 @@
+{
+  "id": "iron-maiden-corpus-m677",
+  "description": "M6 corpus — Iron Maiden; in-hand parse.",
+  "seed": 63126,
+  "cards": {
+    "Iron Maiden": "Name:Iron Maiden\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each opponent's upkeep, CARDNAME deals X damage to that player, where X is the number of cards in their hand minus 4.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:TriggeredPlayer$CardsInHand/Minus.4\nOracle:At the beginning of each opponent's upkeep, Iron Maiden deals X damage to that player, where X is the number of cards in their hand minus 4.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iron Maiden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

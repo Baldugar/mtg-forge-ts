@@ -1,0 +1,23 @@
+{
+  "id": "sail-into-the-west-corpus-m677",
+  "description": "M6 corpus — Sail into the West; in-hand parse.",
+  "seed": 68885,
+  "cards": {
+    "Sail into the West": "Name:Sail into the West\nManaCost:2 G U\nTypes:Instant\nA:SP$ Vote | Defined$ Player | Choices$ DBChangeZone,DBWheel | VoteTiedAbility$ DBWheel | StackDescription$ REP you, each player votes_{p:You}, {p:Player} each vote & each player returns_{p:Player} each return & each player may_{p:Player} may each | SpellDescription$ Will of the council — Starting with you, each player votes for return or embark. If return gets more votes, each player returns up to two cards from their graveyard to their hand, then you exile CARDNAME. If embark gets more votes or the vote is tied, each player may discard their hand and draw seven cards.\nSVar:DBChangeZone:DB$ ChangeZone | DefinedPlayer$ Player | Origin$ Graveyard | Destination$ Hand | ChangeNum$ 2 | Hidden$ True | SubAbility$ ExileSelf | SpellDescription$ If return gets more votes, each player returns up to two cards from their graveyard to their hand, then you exile CARDNAME.\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:DBWheel:DB$ Discard | Mode$ Hand | Defined$ Player | Optional$ True | RememberDiscardingPlayers$ True | SubAbility$ DBDraw | SpellDescription$ If embark gets more votes or the vote is tied, each player may discard their hand and draw seven cards.\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ 7 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard|Graveyard\nOracle:Will of the council — Starting with you, each player votes for return or embark. If return gets more votes, each player returns up to two cards from their graveyard to their hand, then you exile Sail into the West. If embark gets more votes or the vote is tied, each player may discard their hand and draw seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sail into the West"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "repercussion-corpus-m677",
+  "description": "M6 corpus — Repercussion; in-hand parse.",
+  "seed": 68070,
+  "cards": {
+    "Repercussion": "Name:Repercussion\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature is dealt damage, CARDNAME deals that much damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredTargetController | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:Random\nOracle:Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Repercussion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

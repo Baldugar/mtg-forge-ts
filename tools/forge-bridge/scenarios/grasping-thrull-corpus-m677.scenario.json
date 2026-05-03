@@ -1,0 +1,23 @@
+{
+  "id": "grasping-thrull-corpus-m677",
+  "description": "M6 corpus — Grasping Thrull; in-hand parse.",
+  "seed": 61640,
+  "cards": {
+    "Grasping Thrull": "Name:Grasping Thrull\nManaCost:3 W B\nTypes:Creature Thrull\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to each opponent and you gain 2 life.\nSVar:TrigDealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:Flying\\nWhen Grasping Thrull enters, it deals 2 damage to each opponent and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grasping Thrull"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

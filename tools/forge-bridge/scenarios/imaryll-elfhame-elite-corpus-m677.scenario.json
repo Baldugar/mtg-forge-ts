@@ -1,0 +1,23 @@
+{
+  "id": "imaryll-elfhame-elite-corpus-m677",
+  "description": "M6 corpus — Imaryll, Elfhame Elite; in-hand parse.",
+  "seed": 62775,
+  "cards": {
+    "Imaryll, Elfhame Elite": "Name:Imaryll, Elfhame Elite\nManaCost:2 G G\nTypes:Legendary Creature Elf Warrior\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+X until end of turn, where X is the number of other Elves you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Elf.YouCtrl+Other\nSVar:HasAttackEffect:TRUE\nS:Mode$ AssignCombatDamageAsUnblocked | ValidCard$ Card.Self | Optional$ True | Description$ You may have NICKNAME assign its combat damage as though it weren't blocked.\nDeckNeeds:Type$Elf\nOracle:Whenever Imaryll, Elfhame Elite attacks, it gets +X/+X until end of turn, where X is the number of other Elves you control.\\nYou may have Imaryll assign its combat damage as though it weren't blocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imaryll, Elfhame Elite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

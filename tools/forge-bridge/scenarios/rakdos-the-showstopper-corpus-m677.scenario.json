@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-the-showstopper-corpus-m677",
+  "description": "M6 corpus — Rakdos, the Showstopper; in-hand parse.",
+  "seed": 67620,
+  "cards": {
+    "Rakdos, the Showstopper": "Name:Rakdos, the Showstopper\nManaCost:4 B R\nTypes:Legendary Creature Demon\nPT:6/6\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFlip | TriggerDescription$ When CARDNAME enters, flip a coin for each creature that isn't a Demon, Devil, or Imp. Destroy each creature whose coin comes up tails.\nSVar:TrigFlip:DB$ RepeatEach | RepeatCards$ Creature.nonDemon+nonDevil+nonImp | Zone$ Battlefield | UseImprinted$ True | RepeatSubAbility$ DBFlip | SubAbility$ DBDestroy\nSVar:DBFlip:DB$ FlipACoin | NoCall$ True | TailsSubAbility$ DBRememberCreature\nSVar:DBRememberCreature:DB$ Pump | Defined$ Imprinted | RememberObjects$ Imprinted\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying, trample\\nWhen Rakdos, the Showstopper enters, flip a coin for each creature that isn't a Demon, Devil, or Imp. Destroy each creature whose coin comes up tails.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos, the Showstopper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

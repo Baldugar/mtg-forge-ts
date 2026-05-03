@@ -1,0 +1,23 @@
+{
+  "id": "owlbear-cub-corpus-m677",
+  "description": "M6 corpus — Owlbear Cub; in-hand parse.",
+  "seed": 66525,
+  "cards": {
+    "Owlbear Cub": "Name:Owlbear Cub\nManaCost:2 G\nTypes:Creature Bird Bear\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player.controlsLand_GE8 | Execute$ TrigDig | TriggerDescription$ Mama's Coming — Whenever CARDNAME attacks a player who controls eight or more lands, look at the top eight cards of your library. You may put a creature card from among them onto the battlefield tapped and attacking that player. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 8 | ChangeNum$ 1 | Optional$ True | Reveal$ True | ChangeValid$ Creature | DestinationZone$ Battlefield | Tapped$ True | Attacking$ DefendingPlayer | RestRandomOrder$ True\nOracle:Mama's Coming — Whenever Owlbear Cub attacks a player who controls eight or more lands, look at the top eight cards of your library. You may put a creature card from among them onto the battlefield tapped and attacking that player. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Owlbear Cub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

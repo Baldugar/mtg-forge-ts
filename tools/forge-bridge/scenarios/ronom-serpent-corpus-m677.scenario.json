@@ -1,0 +1,23 @@
+{
+  "id": "ronom-serpent-corpus-m677",
+  "description": "M6 corpus — Ronom Serpent; in-hand parse.",
+  "seed": 68495,
+  "cards": {
+    "Ronom Serpent": "Name:Ronom Serpent\nManaCost:5 U\nTypes:Snow Creature Serpent\nPT:5/6\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsLand.Snow | Description$ CARDNAME can't attack unless defending player controls a snow land.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Land.Snow+YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no snow lands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Land.Snow+YouCtrl\nAI:RemoveDeck:Random\nOracle:Ronom Serpent can't attack unless defending player controls a snow land.\\nWhen you control no snow lands, sacrifice Ronom Serpent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ronom Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

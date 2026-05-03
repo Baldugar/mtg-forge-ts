@@ -1,0 +1,23 @@
+{
+  "id": "god-pharaoh-s-statue-corpus-m677",
+  "description": "M6 corpus — God-Pharaoh's Statue; in-hand parse.",
+  "seed": 61500,
+  "cards": {
+    "God-Pharaoh's Statue": "Name:God-Pharaoh's Statue\nManaCost:6\nTypes:Legendary Artifact\nS:Mode$ RaiseCost | Activator$ Opponent | Type$ Spell | Amount$ 2 | Description$ Spells your opponents cast cost {2} more to cast.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Spells your opponents cast cost {2} more to cast.\\nAt the beginning of your end step, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "God-Pharaoh's Statue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "orvar-the-all-form-corpus-m677",
+  "description": "M6 corpus — Orvar, the All-Form; ETB-on-bf.",
+  "seed": 66441,
+  "cards": {
+    "Orvar, the All-Form": "Name:Orvar, the All-Form\nManaCost:3 U\nTypes:Legendary Creature Shapeshifter\nPT:3/3\nK:Changeling\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | TargetsValid$ Permanent.YouCtrl+Other+inZoneBattlefield | Execute$ TrigCopyTarget | TriggerDescription$ Whenever you cast an instant or sorcery spell, if it targets one or more other permanents you control, create a token that's a copy of one of those permanents.\nSVar:TrigCopyTarget:DB$ CopyPermanent | Defined$ TriggeredSpellAbilityTargets | Choices$ Permanent.YouCtrl+Other | ConditionDefined$ TriggeredSpellAbility | ConditionPresent$ Spell.IsTargeting Valid Permanent.YouCtrl~Other\nT:Mode$ Discarded | ValidCard$ Card.Self | ValidCause$ SpellAbility.OppCtrl | Execute$ TrigTokenCopy | TriggerDescription$ When a spell or ability an opponent controls causes you to discard this card, create a token that's a copy of target permanent.\nSVar:TrigTokenCopy:DB$ CopyPermanent | ValidTgts$ Permanent\nSVar:DiscardMeByOpp:1\nDeckHas:Ability$Token\nDeckHints:Type$Instant|Sorcery\nOracle:Changeling\\nWhenever you cast an instant or sorcery spell, if it targets one or more other permanents you control, create a token that's a copy of one of those permanents.\\nWhen a spell or ability an opponent controls causes you to discard this card, create a token that's a copy of target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Orvar, the All-Form"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

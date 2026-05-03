@@ -1,0 +1,23 @@
+{
+  "id": "goblin-war-strike-corpus-m677",
+  "description": "M6 corpus — Goblin War Strike; in-hand parse.",
+  "seed": 61491,
+  "cards": {
+    "Goblin War Strike": "Name:Goblin War Strike\nManaCost:R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X | SpellDescription$ CARDNAME deals damage to target player or planeswalker equal to the number of Goblins you control.\nSVar:X:Count$Valid Goblin.YouCtrl\nAI:RemoveDeck:Random\nOracle:Goblin War Strike deals damage to target player or planeswalker equal to the number of Goblins you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin War Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

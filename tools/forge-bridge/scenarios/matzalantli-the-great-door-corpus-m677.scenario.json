@@ -1,0 +1,23 @@
+{
+  "id": "matzalantli-the-great-door-corpus-m677",
+  "description": "M6 corpus — Matzalantli, the Great Door; in-hand parse.",
+  "seed": 64892,
+  "cards": {
+    "Matzalantli, the Great Door": "Name:Matzalantli, the Great Door\nManaCost:3\nTypes:Legendary Artifact\nA:AB$ Draw | Cost$ T | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nA:AB$ SetState | Cost$ 4 T | Defined$ Self | Mode$ Transform | CheckSVar$ X | SVarCompare$ GE4 | SpellDescription$ Transform CARDNAME. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.)\nSVar:X:Count$ValidGraveyard Card.YouOwn$CardTypesPermanent\nDeckHas:Ability$Discard\nDeckHints:Ability$Graveyard|Mill|Dredge\nAlternateMode:DoubleFaced\nOracle:{T}: Draw a card, then discard a card.\\n{4}, {T}: Transform Matzalantli, the Great Door. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.)\n\nALTERNATE\n\nName:The Core\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | SpellDescription$ Add X mana of any one color, where X is the number of permanent cards in your graveyard.\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nOracle:(Transforms from Matzalantli.)\\nFathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Matzalantli, the Great Door"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

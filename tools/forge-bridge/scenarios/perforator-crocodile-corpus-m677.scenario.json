@@ -1,0 +1,23 @@
+{
+  "id": "perforator-crocodile-corpus-m677",
+  "description": "M6 corpus — Perforator Crocodile; in-hand parse.",
+  "seed": 66735,
+  "cards": {
+    "Perforator Crocodile": "Name:Perforator Crocodile\nManaCost:3 B B B\nTypes:Creature Crocodile\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, for each creature your opponents control, conjure a card named Stab Wound onto the battlefield attached to that creature.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Stab Wound | AttachedTo$ Creature.OppCtrl\nK:Cycling:1 B\nOracle:When Perforator Crocodile enters, for each creature your opponents control, conjure a card named Stab Wound onto the battlefield attached to that creature.\\nCycling {1}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perforator Crocodile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

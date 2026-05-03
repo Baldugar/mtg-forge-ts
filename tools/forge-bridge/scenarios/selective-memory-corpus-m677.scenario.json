@@ -1,0 +1,23 @@
+{
+  "id": "selective-memory-corpus-m677",
+  "description": "M6 corpus — Selective Memory; in-hand parse.",
+  "seed": 69413,
+  "cards": {
+    "Selective Memory": "Name:Selective Memory\nManaCost:3 U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Card.nonLand | ChangeNum$ XFetch | SpellDescription$ Search your library for any number of nonland cards, exile them, then shuffle.\nSVar:XFetch:Count$ValidLibrary Card.nonLand+YouOwn\nAI:RemoveDeck:Random\nOracle:Search your library for any number of nonland cards, exile them, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selective Memory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "muse-vessel-corpus-m677",
+  "description": "M6 corpus — Muse Vessel; ETB-on-bf.",
+  "seed": 65606,
+  "cards": {
+    "Muse Vessel": "Name:Muse Vessel\nManaCost:4\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 3 T | ValidTgts$ Player | SorcerySpeed$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | Chooser$ Targeted | Hidden$ True | IsCurse$ True | Mandatory$ True | SpellDescription$ Target player exiles a card from their hand. Activate only as a sorcery.\nA:AB$ ChooseCard | Cost$ 1 | ChoiceZone$ Exile | Choices$ Card.ExiledWithSource | Amount$ 1 | ChoiceTitle$ Choose a card exiled with Muse Vessel | SubAbility$ DBEffect | AILogic$ Never | SpellDescription$ Choose a card exiled with CARDNAME. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | Duration$ EndOfTurn | StaticAbilities$ STPlay | RememberObjects$ ChosenCard | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{3}, {T}: Target player exiles a card from their hand. Activate only as a sorcery.\\n{1}: Choose a card exiled with Muse Vessel. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Muse Vessel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hei-bai-forest-guardian-corpus-m677",
+  "description": "M6 corpus — Hei Bai, Forest Guardian; in-hand parse.",
+  "seed": 62214,
+  "cards": {
+    "Hei Bai, Forest Guardian": "Name:Hei Bai, Forest Guardian\nManaCost:3 G\nTypes:Legendary Creature Bear Spirit\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ When NICKNAME enters, reveal cards from the top of your library until you reveal a Shrine card. You may put that card onto the battlefield. Then shuffle.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Shrine | FoundDestination$ Battlefield | OptionalFoundMove$ True | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | Shuffle$ True\nA:AB$ Token | Cost$ W U B R G T | TokenAmount$ X | TokenScript$ c_1_1_spirit_spiritshadow | TokenOwner$ You | SpellDescription$ For each legendary enchantment you control, create a 1/1 colorless Spirit creature token with \"This token can't block or be blocked by non-Spirit creatures.\"\nSVar:X:Count$Valid Enchantment.Legendary+YouCtrl\nDeckHints:Type$Shrine\nOracle:When Hei Bai enters, reveal cards from the top of your library until you reveal a Shrine card. You may put that card onto the battlefield. Then shuffle.\\n{W}{U}{B}{R}{G}, {T}: For each legendary enchantment you control, create a 1/1 colorless Spirit creature token with \"This token can't block or be blocked by non-Spirit creatures.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hei Bai, Forest Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

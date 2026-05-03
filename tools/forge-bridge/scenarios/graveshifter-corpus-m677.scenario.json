@@ -1,0 +1,23 @@
+{
+  "id": "graveshifter-corpus-m677",
+  "description": "M6 corpus — Graveshifter; in-hand parse.",
+  "seed": 61674,
+  "cards": {
+    "Graveshifter": "Name:Graveshifter\nManaCost:3 B\nTypes:Creature Shapeshifter\nPT:2/2\nK:Changeling\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target creature card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl\nOracle:Changeling (This card is every creature type.)\\nWhen Graveshifter enters, you may return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graveshifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

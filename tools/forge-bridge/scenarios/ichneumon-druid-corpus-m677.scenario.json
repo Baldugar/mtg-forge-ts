@@ -1,0 +1,25 @@
+{
+  "id": "ichneumon-druid-corpus-m677",
+  "description": "M6 corpus — Ichneumon Druid; ETB-on-bf.",
+  "seed": 62704,
+  "cards": {
+    "Ichneumon Druid": "Name:Ichneumon Druid\nManaCost:1 G G\nTypes:Creature Human Druid\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Instant | ValidActivatingPlayer$ Player.Opponent | ActivatorThisTurnCast$ GT1 | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever an opponent casts an instant spell other than the first instant spell that player casts each turn, CARDNAME deals 4 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 4\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts an instant spell other than the first instant spell that player casts each turn, Ichneumon Druid deals 4 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ichneumon Druid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

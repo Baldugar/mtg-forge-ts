@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-xerex-corpus-m677",
+  "description": "M6 corpus — Invasion of Xerex; in-hand parse.",
+  "seed": 63074,
+  "cards": {
+    "Invasion of Xerex": "Name:Invasion of Xerex\nManaCost:2 W U\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to one target creature to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | Origin$ Battlefield | Destination$ Hand\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Xerex enters, return up to one target creature to its owner's hand.\n\nALTERNATE\n\nName:Vertex Paladin\nManaCost:no cost\nColors:white,blue\nTypes:Creature Angel Knight\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nK:Flying\nOracle:Flying\\nVertex Paladin's power and toughness are each equal to the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Xerex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scent-of-jasmine-corpus-m677",
+  "description": "M6 corpus — Scent of Jasmine; in-hand parse.",
+  "seed": 69132,
+  "cards": {
+    "Scent of Jasmine": "Name:Scent of Jasmine\nManaCost:W\nTypes:Instant\nA:SP$ Reveal | Defined$ You | RevealValid$ Card.White | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBScentOfJasmineLife | SpellDescription$ Reveal any number of white cards in your hand. You gain 2 life for each card revealed this way.\nSVar:DBScentOfJasmineLife:DB$ GainLife | LifeAmount$ ScentOfJasmineX | SubAbility$ DBScentOfJasmineCleanup\nSVar:ScentOfJasmineX:Remembered$Amount/Twice\nSVar:DBScentOfJasmineCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Reveal any number of white cards in your hand. You gain 2 life for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scent of Jasmine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

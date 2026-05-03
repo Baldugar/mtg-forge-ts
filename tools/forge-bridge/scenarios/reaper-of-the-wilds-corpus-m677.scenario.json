@@ -1,0 +1,23 @@
+{
+  "id": "reaper-of-the-wilds-corpus-m677",
+  "description": "M6 corpus — Reaper of the Wilds; in-hand parse.",
+  "seed": 67848,
+  "cards": {
+    "Reaper of the Wilds": "Name:Reaper of the Wilds\nManaCost:2 B G\nTypes:Creature Gorgon\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever another creature dies, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ Pump | Cost$ B | KW$ Deathtouch | Defined$ Self | SpellDescription$ CARDNAME gains deathtouch until end of turn.\nA:AB$ Pump | Cost$ 1 G | KW$ Hexproof | Defined$ Self | SpellDescription$ CARDNAME gains hexproof until end of turn.\nOracle:Whenever another creature dies, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\\n{B}: Reaper of the Wilds gains deathtouch until end of turn.\\n{1}{G}: Reaper of the Wilds gains hexproof until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reaper of the Wilds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "polukranos-reborn-corpus-m677",
+  "description": "M6 corpus — Polukranos Reborn; in-hand parse.",
+  "seed": 67047,
+  "cards": {
+    "Polukranos Reborn": "Name:Polukranos Reborn\nManaCost:G G G\nTypes:Legendary Creature Hydra\nPT:4/5\nK:Reach\nA:AB$ SetState | Cost$ 6 WP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery. ({W/P} can be paid with either {W} or 2 life.)\nDeckHints:Color$White\nAlternateMode:DoubleFaced\nOracle:Reach\\n{6}{W/P}: Transform Polukranos Reborn. Activate only as a sorcery. ({W/P} can be paid with either {W} or 2 life.)\n\nALTERNATE\n\nName:Polukranos, Engine of Ruin\nManaCost:no cost\nColors:white,green\nTypes:Legendary Creature Phyrexian Hydra\nPT:6/6\nK:Reach\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Hydra.Other+!token+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another nontoken Hydra you control dies, create a 3/3 green and white Phyrexian Hydra creature token with reach and a 3/3 green and white Phyrexian Hydra creature token with lifelink.\nSVar:TrigToken:DB$ Token | TokenScript$ gw_3_3_phyrexian_hydra_reach,gw_3_3_phyrexian_hydra_lifelink\nDeckHas:Ability$Token|LifeGain\nDeckHints:Type$Hydra\nOracle:Reach, lifelink\\nWhenever Polukranos, Engine of Ruin or another nontoken Hydra you control dies, create a 3/3 green and white Phyrexian Hydra creature token with reach and a 3/3 green and white Phyrexian Hydra creature token with lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Polukranos Reborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

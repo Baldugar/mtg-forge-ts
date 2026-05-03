@@ -1,0 +1,25 @@
+{
+  "id": "soulbright-flamekin-corpus-m677",
+  "description": "M6 corpus — Soulbright Flamekin; ETB-on-bf.",
+  "seed": 70471,
+  "cards": {
+    "Soulbright Flamekin": "Name:Soulbright Flamekin\nManaCost:1 R\nTypes:Creature Elemental Shaman\nPT:2/1\nA:AB$ Pump | Cost$ 2 | ValidTgts$ Creature | KW$ Trample | SubAbility$ SoulbrightMana | SpellDescription$ Target creature gains trample until end of turn. If this is the third time this ability has resolved this turn, you may add {R}{R}{R}{R}{R}{R}{R}{R}.\nSVar:SoulbrightMana:DB$ Mana | Produced$ R R R R R R R R | ConditionCheckSVar$ SoulbrightNum | ConditionSVarCompare$ EQ3 | Optional$ True\nSVar:SoulbrightNum:Count$ResolvedThisTurn\nAI:RemoveDeck:All\nOracle:{2}: Target creature gains trample until end of turn. If this is the third time this ability has resolved this turn, you may add {R}{R}{R}{R}{R}{R}{R}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soulbright Flamekin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "screeching-drake-corpus-m677",
+  "description": "M6 corpus — Screeching Drake; in-hand parse.",
+  "seed": 69227,
+  "cards": {
+    "Screeching Drake": "Name:Screeching Drake\nManaCost:3 U\nTypes:Creature Drake\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying\\nWhen Screeching Drake enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Screeching Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

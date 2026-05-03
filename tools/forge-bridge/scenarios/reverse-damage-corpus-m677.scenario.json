@@ -1,0 +1,23 @@
+{
+  "id": "reverse-damage-corpus-m677",
+  "description": "M6 corpus — Reverse Damage; in-hand parse.",
+  "seed": 68187,
+  "cards": {
+    "Reverse Damage": "Name:Reverse Damage\nManaCost:1 W W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ GainLifeInstead | PreventionEffect$ True | Description$ The next time the chosen source deals damage to you, prevent that damage. You gain life equal to the damage prevented this way.\nSVar:GainLifeInstead:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nDeckHas:Ability$LifeGain\nOracle:The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reverse Damage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

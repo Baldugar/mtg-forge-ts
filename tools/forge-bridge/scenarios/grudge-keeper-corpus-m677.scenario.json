@@ -1,0 +1,25 @@
+{
+  "id": "grudge-keeper-corpus-m677",
+  "description": "M6 corpus — Grudge Keeper; ETB-on-bf.",
+  "seed": 61840,
+  "cards": {
+    "Grudge Keeper": "Name:Grudge Keeper\nManaCost:1 B\nTypes:Creature Zombie Wizard\nPT:2/1\nT:Mode$ Vote | TriggerZones$ Battlefield | Execute$ TrigLoseLife | List$ OppVotedDiff | TriggerDescription$ Whenever players finish voting, each opponent who voted for a choice you didn't vote for loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredOpponentVotedDiff | LifeAmount$ 2\nOracle:Whenever players finish voting, each opponent who voted for a choice you didn't vote for loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grudge Keeper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

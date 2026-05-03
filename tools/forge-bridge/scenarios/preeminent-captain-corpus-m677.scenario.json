@@ -1,0 +1,23 @@
+{
+  "id": "preeminent-captain-corpus-m677",
+  "description": "M6 corpus — Preeminent Captain; in-hand parse.",
+  "seed": 67134,
+  "cards": {
+    "Preeminent Captain": "Name:Preeminent Captain\nManaCost:2 W\nTypes:Creature Kithkin Soldier\nPT:2/2\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may put a Soldier creature card from your hand onto the battlefield tapped and attacking.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.Soldier+YouCtrl | Tapped$ True | Attacking$ True | SpellDescription$ You may put a Soldier creature card from your hand onto the battlefield tapped and attacking.\nOracle:First strike (This creature deals combat damage before creatures without first strike.)\\nWhenever Preeminent Captain attacks, you may put a Soldier creature card from your hand onto the battlefield tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Preeminent Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

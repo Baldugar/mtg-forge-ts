@@ -1,0 +1,23 @@
+{
+  "id": "rafter-demon-corpus-m677",
+  "description": "M6 corpus — Rafter Demon; in-hand parse.",
+  "seed": 67548,
+  "cards": {
+    "Rafter Demon": "Name:Rafter Demon\nManaCost:2 B R\nTypes:Creature Demon\nPT:4/2\nK:Spectacle:3 B R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+spectacle | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, if its spectacle cost was paid, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose\nOracle:Spectacle {3}{B}{R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\\nWhen Rafter Demon enters, if its spectacle cost was paid, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rafter Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

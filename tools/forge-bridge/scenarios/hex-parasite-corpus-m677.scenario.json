@@ -1,0 +1,25 @@
+{
+  "id": "hex-parasite-corpus-m677",
+  "description": "M6 corpus — Hex Parasite; ETB-on-bf.",
+  "seed": 62321,
+  "cards": {
+    "Hex Parasite": "Name:Hex Parasite\nManaCost:1\nTypes:Artifact Creature Phyrexian Insect\nPT:1/1\nA:AB$ RemoveCounter | Cost$ X BP | ValidTgts$ Permanent | CounterType$ Any | CounterNum$ X | RememberRemoved$ True | SubAbility$ DBPump | SpellDescription$ Remove up to X counters from target permanent. For each counter removed this way, CARDNAME gets +1/+0 until end of turn.\nSVar:DBPump:DB$ Pump | NumAtt$ +Y | Defined$ Self | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Count$RememberedSize\nAI:RemoveDeck:All\nOracle:{X}{B/P}: Remove up to X counters from target permanent. For each counter removed this way, Hex Parasite gets +1/+0 until end of turn. ({B/P} can be paid with either {B} or 2 life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hex Parasite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

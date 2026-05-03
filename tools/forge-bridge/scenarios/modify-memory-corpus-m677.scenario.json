@@ -1,0 +1,23 @@
+{
+  "id": "modify-memory-corpus-m677",
+  "description": "M6 corpus — Modify Memory; in-hand parse.",
+  "seed": 65361,
+  "cards": {
+    "Modify Memory": "Name:Modify Memory\nManaCost:4 U\nTypes:Sorcery\nA:SP$ ExchangeControl | ValidTgts$ Creature | TargetMin$ 2 | TargetMax$ 2 | TargetsWithDifferentControllers$ True | RememberExchanged$ True | SubAbility$ DBDraw | SpellDescription$ Exchange control of two target creatures controlled by different players.\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Creature.YouDontCtrl | ConditionCompare$ EQ2 | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ If you control neither creature, draw three cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exchange control of two target creatures controlled by different players. If you control neither creature, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Modify Memory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

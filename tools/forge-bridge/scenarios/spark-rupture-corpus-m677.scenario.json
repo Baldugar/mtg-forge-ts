@@ -1,0 +1,23 @@
+{
+  "id": "spark-rupture-corpus-m677",
+  "description": "M6 corpus — Spark Rupture; in-hand parse.",
+  "seed": 70512,
+  "cards": {
+    "Spark Rupture": "Name:Spark Rupture\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ Continuous | Affected$ Planeswalker.counters_GE1_LOYALTY | AddType$ Creature | RemoveCardTypes$ True | RemoveAllAbilities$ True | SetPower$ AffectedX | SetToughness$ AffectedX | Description$ Each planeswalker with one or more loyalty counters on it loses all abilities and is a creature with power and toughness each equal to the number of loyalty counters on it.\nSVar:AffectedX:Count$CardCounters.LOYALTY\nSVar:NonStackingEffect:True\nOracle:When Spark Rupture enters, draw a card.\\nEach planeswalker with one or more loyalty counters on it loses all abilities and is a creature with power and toughness each equal to the number of loyalty counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spark Rupture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

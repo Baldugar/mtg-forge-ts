@@ -1,0 +1,23 @@
+{
+  "id": "ragged-recluse-corpus-m677",
+  "description": "M6 corpus — Ragged Recluse; in-hand parse.",
+  "seed": 67562,
+  "cards": {
+    "Ragged Recluse": "Name:Ragged Recluse\nManaCost:1 B\nTypes:Creature Human Peasant\nPT:2/1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ CardsDiscarded | Execute$ TrigTransform | TriggerDescription$ At the beginning of your end step, if you discarded a card this turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:CardsDiscarded:PlayerCountPropertyYou$CardsDiscardedThisTurn\nDeckHints:Ability$Discard\nAlternateMode:DoubleFaced\nOracle:At the beginning of your end step, if you discarded a card this turn, transform Ragged Recluse.\n\nALTERNATE\n\nName:Odious Witch\nManaCost:no cost\nColors:black\nTypes:Creature Human Warlock\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME attacks, defending player loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever Odious Witch attacks, defending player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ragged Recluse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

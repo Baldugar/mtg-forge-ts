@@ -1,0 +1,23 @@
+{
+  "id": "skyclave-aerialist-corpus-m677",
+  "description": "M6 corpus — Skyclave Aerialist; in-hand parse.",
+  "seed": 70100,
+  "cards": {
+    "Skyclave Aerialist": "Name:Skyclave Aerialist\nManaCost:1 U\nTypes:Creature Merfolk Scout\nPT:2/1\nK:Flying\nA:AB$ SetState | Cost$ 4 GP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery. ({G/P} can be paid with either {G} or 2 life.)\nAlternateMode:DoubleFaced\nOracle:{4}{G/P}: Transform Skyclave Aerialist. Activate only as a sorcery. ({G/P} can be paid with either {G} or 2 life.)\n\nALTERNATE\n\nName:Skyclave Invader\nManaCost:no cost\nColors:green,blue\nTypes:Creature Phyrexian Merfolk Scout\nPT:2/4\nK:Flying\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When this creature transforms into CARDNAME, look at the top card of your library. If it's a land card, you may put it onto the battlefield. If you don't put the card onto the battlefield, put it into your hand.\nSVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 1 | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Optional$ True | ForgetChanged$ True | Origin$ Library | Destination$ Battlefield | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Land | ConditionCompare$ GE1 | SubAbility$ DBHand\nSVar:DBHand:DB$ ChangeZone | Origin$ Library | Destination$ Hand | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhen this creature transforms into Skyclave Invader, look at the top card of your library. If it's a land card, you may put it onto the battlefield. If you don't put the card onto the battlefield, put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyclave Aerialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

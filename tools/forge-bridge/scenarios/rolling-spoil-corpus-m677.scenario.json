@@ -1,0 +1,23 @@
+{
+  "id": "rolling-spoil-corpus-m677",
+  "description": "M6 corpus — Rolling Spoil; in-hand parse.",
+  "seed": 68483,
+  "cards": {
+    "Rolling Spoil": "Name:Rolling Spoil\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Land | SubAbility$ PumpAll | SpellDescription$ Destroy target land. If {B} was spent to cast this spell, all creatures get -1/-1 until end of turn.\nSVar:PumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -1 | NumDef$ -1 | ConditionManaSpent$ B | IsCurse$ True\nSVar:ManaNeededToAvoidNegativeEffect:black\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:Destroy target land. If {B} was spent to cast this spell, all creatures get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rolling Spoil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

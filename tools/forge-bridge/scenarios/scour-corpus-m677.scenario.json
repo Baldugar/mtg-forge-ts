@@ -1,0 +1,23 @@
+{
+  "id": "scour-corpus-m677",
+  "description": "M6 corpus — Scour; in-hand parse.",
+  "seed": 69186,
+  "cards": {
+    "Scour": "Name:Scour\nManaCost:2 W W\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Enchantment | RememberLKI$ True | ForgetOtherTargets$ True | SubAbility$ ExileYard | SpellDescription$ Exile target enchantment. Search its controller's graveyard, hand, and library for all cards with the same name as that enchantment and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ TargetedController | ChangeType$ Remembered.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInLib:TargetedController$CardsInLibrary\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target enchantment. Search its controller's graveyard, hand, and library for all cards with the same name as that enchantment and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scour"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

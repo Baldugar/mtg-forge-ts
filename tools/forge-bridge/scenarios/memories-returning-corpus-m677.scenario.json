@@ -1,0 +1,23 @@
+{
+  "id": "memories-returning-corpus-m677",
+  "description": "M6 corpus — Memories Returning; in-hand parse.",
+  "seed": 64961,
+  "cards": {
+    "Memories Returning": "Name:Memories Returning\nManaCost:2 U U\nTypes:Sorcery\nK:Flashback:7 U U\nA:SP$ Dig | DigNum$ 5 | Reveal$ True | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition2$ 0 | SkipReorder$ True | SubAbility$ DBOppDigOne | StackDescription$ SpellDescription | SpellDescription$ Reveal the top five cards of your library. Put one of them into your hand. Then choose an opponent. They put one on the bottom of your library. Then you put one into your hand. Then they put one on the bottom of your library. Put the other into your hand.\nSVar:DBOppDigOne:DB$ Dig | DigNum$ 4 | Reveal$ True | Choser$ Opponent | SetChosenPlayer$ True | DestinationZone$ Library | LibraryPosition$ -1 | LibraryPosition2$ 0 | SkipReorder$ True | SubAbility$ DBYouDigTwo | StackDescription$ None\nSVar:DBYouDigTwo:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition2$ 0 | SkipReorder$ True | SubAbility$ DBOppDigTwo | StackDescription$ None\nSVar:DBOppDigTwo:DB$ Dig | DigNum$ 2 | Reveal$ True | Choser$ ChosenPlayer | DestinationZone$ Library | LibraryPosition$ -1 | DestinationZone2$ Hand | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nOracle:Reveal the top five cards of your library. Put one of them into your hand. Then choose an opponent. They put one on the bottom of your library. Then you put one into your hand. Then they put one on the bottom of your library. Put the other into your hand.\\nFlashback {7}{U}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memories Returning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

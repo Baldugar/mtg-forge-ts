@@ -1,0 +1,25 @@
+{
+  "id": "inspiring-leader-corpus-m677",
+  "description": "M6 corpus — Inspiring Leader; ETB-on-bf.",
+  "seed": 63001,
+  "cards": {
+    "Inspiring Leader": "Name:Inspiring Leader\nManaCost:2 W\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddStaticAbility$ BuffTokens | Description$ Commander creatures you own have \"Creature tokens you control get +2/+2.\"\nSVar:BuffTokens:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Creature tokens you control get +2/+2.\nAI:RemoveDeck:NonCommander\nDeckNeeds:Ability$Token\nOracle:Commander creatures you own have \"Creature tokens you control get +2/+2.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Inspiring Leader"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

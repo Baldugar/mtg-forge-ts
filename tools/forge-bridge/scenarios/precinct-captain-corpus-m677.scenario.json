@@ -1,0 +1,23 @@
+{
+  "id": "precinct-captain-corpus-m677",
+  "description": "M6 corpus — Precinct Captain; in-hand parse.",
+  "seed": 67114,
+  "cards": {
+    "Precinct Captain": "Name:Precinct Captain\nManaCost:W W\nTypes:Creature Human Soldier\nPT:2/2\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:First strike\\nWhenever Precinct Captain deals combat damage to a player, create a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Precinct Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

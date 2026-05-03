@@ -1,0 +1,25 @@
+{
+  "id": "spirit-of-resistance-corpus-m677",
+  "description": "M6 corpus — Spirit of Resistance; ETB-on-bf.",
+  "seed": 70704,
+  "cards": {
+    "Spirit of Resistance": "Name:Spirit of Resistance\nManaCost:2 W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | Prevent$ True | CheckSVar$ X | SVarCompare$ EQ5 | Description$ As long as you control a permanent of each color, prevent all damage that would be dealt to you.\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:As long as you control a permanent of each color, prevent all damage that would be dealt to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spirit of Resistance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

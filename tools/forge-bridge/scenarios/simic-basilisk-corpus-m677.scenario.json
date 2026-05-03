@@ -1,0 +1,25 @@
+{
+  "id": "simic-basilisk-corpus-m677",
+  "description": "M6 corpus — Simic Basilisk; ETB-on-bf.",
+  "seed": 69945,
+  "cards": {
+    "Simic Basilisk": "Name:Simic Basilisk\nManaCost:4 G G\nTypes:Creature Basilisk Mutant\nPT:0/0\nK:Graft:3\nA:AB$ Animate | Cost$ 1 G | ValidTgts$ Creature.counters_GE1_P1P1 | TgtPrompt$ Select target creature with a +1/+1 counter on it | Triggers$ DestroyTrigger | SpellDescription$ Until end of turn, target creature with a +1/+1 counter on it gains \"Whenever this creature deals combat damage to a creature, destroy that creature at end of combat.\"\nSVar:DestroyTrigger:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ DelTrigSimic | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, destroy that creature at end of combat.\nSVar:DelTrigSimic:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroySimic | RememberObjects$ TriggeredTargetLKICopy | TriggerDescription$ Destroy damaged creature at end of combat.\nSVar:TrigDestroySimic:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nSVar:AIGraftPreference:DontMoveCounterIfLethal\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:Graft 3 (This creature enters with three +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)\\n{1}{G}: Until end of turn, target creature with a +1/+1 counter on it gains \"Whenever this creature deals combat damage to a creature, destroy that creature at end of combat.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Simic Basilisk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reaper-from-the-abyss-corpus-m677",
+  "description": "M6 corpus — Reaper from the Abyss; in-hand parse.",
+  "seed": 67844,
+  "cards": {
+    "Reaper from the Abyss": "Name:Reaper from the Abyss\nManaCost:3 B B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ Morbid | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Morbid — At the beginning of each end step, if a creature died this turn, destroy target non-Demon creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonDemon | TgtPrompt$ Select target non-Demon creature\nSVar:Morbid:Count$Morbid.1.0\nOracle:Flying\\nMorbid — At the beginning of each end step, if a creature died this turn, destroy target non-Demon creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reaper from the Abyss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

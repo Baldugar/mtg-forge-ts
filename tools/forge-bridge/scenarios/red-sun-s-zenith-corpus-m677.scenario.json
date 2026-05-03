@@ -1,0 +1,23 @@
+{
+  "id": "red-sun-s-zenith-corpus-m677",
+  "description": "M6 corpus — Red Sun's Zenith; in-hand parse.",
+  "seed": 67917,
+  "cards": {
+    "Red Sun's Zenith": "Name:Red Sun's Zenith\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | RememberDamaged$ True | ReplaceDyingDefined$ Remembered.Creature | SubAbility$ DBCleanup | SpellDescription$ CARDNAME deals X damage to any target. If a creature dealt damage this way would die this turn, exile it instead. Shuffle CARDNAME into its owner's library.\nSVar:X:Count$xPaid\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Library | Shuffle$ True | StackDescription$ Shuffle CARDNAME into {p:You}'s library.\nOracle:Red Sun's Zenith deals X damage to any target. If a creature dealt damage this way would die this turn, exile it instead. Shuffle Red Sun's Zenith into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Red Sun's Zenith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

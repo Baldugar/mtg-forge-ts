@@ -1,0 +1,23 @@
+{
+  "id": "rivalry-corpus-m677",
+  "description": "M6 corpus — Rivalry; in-hand parse.",
+  "seed": 68381,
+  "cards": {
+    "Rivalry": "Name:Rivalry\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ RivalDamage | CheckSVar$ ActiveLands | SVarCompare$ GTRivalLands | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, if that player controls more lands than each other player, CARDNAME deals 2 damage to them.\nSVar:RivalDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredPlayer\nSVar:ActiveLands:Count$Valid Land.ActivePlayerCtrl\nSVar:RivalLands:PlayerCountNonActive$HighestValid Land.YouCtrl\nOracle:At the beginning of each player's upkeep, if that player controls more lands than each other player, Rivalry deals 2 damage to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rivalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

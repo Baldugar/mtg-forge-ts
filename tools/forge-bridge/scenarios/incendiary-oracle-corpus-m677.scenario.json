@@ -1,0 +1,25 @@
+{
+  "id": "incendiary-oracle-corpus-m677",
+  "description": "M6 corpus — Incendiary Oracle; ETB-on-bf.",
+  "seed": 62846,
+  "cards": {
+    "Incendiary Oracle": "Name:Incendiary Oracle\nManaCost:1 R\nTypes:Creature Human Shaman\nPT:2/2\nA:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nR:Event$ Moved | ValidLKI$ Creature.DamagedBy | Destination$ Graveyard | ReplaceWith$ DBExile | ActiveZones$ Battlefield | Description$ If a creature dealt damage by CARDNAME this turn would die, exile it instead.\nSVar:DBExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nOracle:{1}{R}: Incendiary Oracle gets +1/+0 until end of turn.\\nIf a creature dealt damage by Incendiary Oracle this turn would die, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Incendiary Oracle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "subjugator-angel-corpus-m677",
+  "description": "M6 corpus — Subjugator Angel; in-hand parse.",
+  "seed": 71246,
+  "cards": {
+    "Subjugator Angel": "Name:Subjugator Angel\nManaCost:4 W W\nTypes:Creature Angel\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, tap all creatures your opponents control.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Creature.OppCtrl\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Subjugator Angel enters, tap all creatures your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Subjugator Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

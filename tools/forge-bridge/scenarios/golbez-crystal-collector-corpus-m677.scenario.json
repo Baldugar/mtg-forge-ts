@@ -1,0 +1,23 @@
+{
+  "id": "golbez-crystal-collector-corpus-m677",
+  "description": "M6 corpus — Golbez, Crystal Collector; in-hand parse.",
+  "seed": 61515,
+  "cards": {
+    "Golbez, Crystal Collector": "Name:Golbez, Crystal Collector\nManaCost:U B\nTypes:Legendary Creature Human Wizard\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ Whenever an artifact you control enters, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE4 | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, if you control four or more artifacts, return target creature card from your graveyard to your hand. Then if you control eight or more artifacts, each opponent loses life equal to that card's power.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature card in your graveyard | RememberChanged$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | ConditionCheckSVar$ X | ConditionSVarCompare$ GE8 | LifeAmount$ Remembered$CardPower | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Artifact.YouCtrl\nOracle:Whenever an artifact you control enters, surveil 1.\\nAt the beginning of your end step, if you control four or more artifacts, return target creature card from your graveyard to your hand. Then if you control eight or more artifacts, each opponent loses life equal to that card's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golbez, Crystal Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

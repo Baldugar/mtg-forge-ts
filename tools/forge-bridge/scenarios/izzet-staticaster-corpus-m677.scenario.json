@@ -1,0 +1,25 @@
+{
+  "id": "izzet-staticaster-corpus-m677",
+  "description": "M6 corpus — Izzet Staticaster; ETB-on-bf.",
+  "seed": 63200,
+  "cards": {
+    "Izzet Staticaster": "Name:Izzet Staticaster\nManaCost:1 U R\nTypes:Creature Human Wizard\nPT:0/3\nK:Flash\nK:Haste\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature | NumDmg$ 1 | DamageMap$ True | SubAbility$ DamageSame | SpellDescription$ CARDNAME deals 1 damage to target creature and each other creature with the same name as that creature.\nSVar:DamageSame:DB$ DamageAll | ValidCards$ Targeted.sameName+Other | ValidDescription$ each other creature with the same name as that creature. | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nHaste\\n{T}: Izzet Staticaster deals 1 damage to target creature and each other creature with the same name as that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Izzet Staticaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

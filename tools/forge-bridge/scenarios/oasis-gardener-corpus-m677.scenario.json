@@ -1,0 +1,23 @@
+{
+  "id": "oasis-gardener-corpus-m677",
+  "description": "M6 corpus — Oasis Gardener; in-hand parse.",
+  "seed": 66149,
+  "cards": {
+    "Oasis Gardener": "Name:Oasis Gardener\nManaCost:3\nTypes:Artifact Creature Scarecrow\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$LifeGain\nOracle:When Oasis Gardener enters, you gain 2 life.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oasis Gardener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

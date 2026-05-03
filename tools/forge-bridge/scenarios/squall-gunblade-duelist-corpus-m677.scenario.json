@@ -1,0 +1,23 @@
+{
+  "id": "squall-gunblade-duelist-corpus-m677",
+  "description": "M6 corpus — Squall, Gunblade Duelist; in-hand parse.",
+  "seed": 70810,
+  "cards": {
+    "Squall, Gunblade Duelist": "Name:Squall, Gunblade Duelist\nManaCost:R W B\nTypes:Legendary Creature Human Mercenary\nPT:3/2\nK:First Strike\nK:ETBReplacement:Other:ChooseNumber\nSVar:ChooseNumber:DB$ ChooseNumber | Defined$ You | SpellDescription$ As NICKNAME enters, choose a number.\nT:Mode$ AttackersDeclaredOneTarget | AttackedTarget$ Opponent | ValidAttackers$ Creature.powerEQChosen,Creature.toughnessEQChosen | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever one or more creatures attack one of your opponents, if any of those creatures have power or toughness equal to the chosen number, NICKNAME deals damage equal to its power to defending player.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredAttackedTarget | NumDmg$ X | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE1\nSVar:X:Count$CardPower\nSVar:Y:Count$Valid Creature.TriggeredAttackers+powerEQChosen,Creature.TriggeredAttackers+toughnessEQChosen\nOracle:First strike\\nAs Squall enters, choose a number.\\nWhenever one or more creatures attack one of your opponents, if any of those creatures have power or toughness equal to the chosen number, Squall deals damage equal to its power to defending player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Squall, Gunblade Duelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

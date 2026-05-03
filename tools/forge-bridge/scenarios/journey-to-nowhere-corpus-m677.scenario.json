@@ -1,0 +1,23 @@
+{
+  "id": "journey-to-nowhere-corpus-m677",
+  "description": "M6 corpus — Journey to Nowhere; in-hand parse.",
+  "seed": 63351,
+  "cards": {
+    "Journey to Nowhere": "Name:Journey to Nowhere\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 1 | ValidTgts$ Creature | RememberTargets$ True | ForgetOtherTargets$ True | Origin$ Battlefield | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nOracle:When Journey to Nowhere enters, exile target creature.\\nWhen Journey to Nowhere leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Journey to Nowhere"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

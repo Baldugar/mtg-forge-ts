@@ -1,0 +1,23 @@
+{
+  "id": "kinsbaile-skirmisher-corpus-m677",
+  "description": "M6 corpus — Kinsbaile Skirmisher; in-hand parse.",
+  "seed": 63682,
+  "cards": {
+    "Kinsbaile Skirmisher": "Name:Kinsbaile Skirmisher\nManaCost:1 W\nTypes:Creature Kithkin Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When Kinsbaile Skirmisher enters, target creature gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kinsbaile Skirmisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

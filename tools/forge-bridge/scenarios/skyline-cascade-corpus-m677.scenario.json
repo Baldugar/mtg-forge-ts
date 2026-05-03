@@ -1,0 +1,23 @@
+{
+  "id": "skyline-cascade-corpus-m677",
+  "description": "M6 corpus — Skyline Cascade; in-hand parse.",
+  "seed": 70122,
+  "cards": {
+    "Skyline Cascade": "Name:Skyline Cascade\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls doesn't untap during its controller's next untap step.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nOracle:Skyline Cascade enters tapped.\\nWhen Skyline Cascade enters, target creature an opponent controls doesn't untap during its controller's next untap step.\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyline Cascade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

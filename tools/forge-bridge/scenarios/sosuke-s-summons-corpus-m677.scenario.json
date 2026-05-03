@@ -1,0 +1,23 @@
+{
+  "id": "sosuke-s-summons-corpus-m677",
+  "description": "M6 corpus — Sosuke's Summons; in-hand parse.",
+  "seed": 70434,
+  "cards": {
+    "Sosuke's Summons": "Name:Sosuke's Summons\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ g_1_1_snake | TokenOwner$ You | SpellDescription$ Create two 1/1 green Snake creature tokens.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Snake+!token+YouCtrl | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ Whenever a nontoken Snake you control enters, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand\nDeckHints:Type$Snake\nOracle:Create two 1/1 green Snake creature tokens.\\nWhenever a nontoken Snake you control enters, you may return Sosuke's Summons from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sosuke's Summons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

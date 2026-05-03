@@ -1,0 +1,23 @@
+{
+  "id": "mightstone-s-animation-corpus-m677",
+  "description": "M6 corpus — Mightstone's Animation; in-hand parse.",
+  "seed": 65114,
+  "cards": {
+    "Mightstone's Animation": "Name:Mightstone's Animation\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAITgts:Card.nonCreature\nSVar:AttachAILogic:Animate\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nS:Mode$ Continuous | Affected$ Artifact.EnchantedBy | SetPower$ 4 | SetToughness$ 4 | AddType$ Creature | Description$ Enchanted artifact is a creature with base power and toughness 4/4 in addition to its other types.\nDeckNeeds:Type$Artifact\nOracle:Enchant artifact\\nWhen Mightstone's Animation enters, draw a card.\\nEnchanted artifact is a creature with base power and toughness 4/4 in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mightstone's Animation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

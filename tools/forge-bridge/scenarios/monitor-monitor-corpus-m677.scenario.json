@@ -1,0 +1,23 @@
+{
+  "id": "monitor-monitor-corpus-m677",
+  "description": "M6 corpus — Monitor Monitor; in-hand parse.",
+  "seed": 65427,
+  "cards": {
+    "Monitor Monitor": "Name:Monitor Monitor\nManaCost:2 U U\nTypes:Creature Human Employee\nPT:2/5\n# The reroll effect does not work with planar dice currently\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigOpenAttraction | TriggerDescription$ When CARDNAME enters the battlefield, open an Attraction.\nSVar:TrigOpenAttraction:DB$ OpenAttraction\nT:Mode$ TurnBegin | Execute$ ResetTurnCount | Static$ True\nSVar:ResetTurnCount:DB$ StoreSVar | SVar$ ModsThisTurn | Type$ Number | Expression$ 0\nK:Once each turn, you may pay {1} to reroll one or more dice you rolled.\nSVar:RollModificationsLimit:1\nSVar:ModsThisTurn:Number$0\nSVar:RollRerollCost:1\nAI:RemoveDeck:All\nOracle:When this creature enters, open an Attraction. (Put the top card of your Attraction deck onto the battlefield.)\\nOnce each turn, you may pay {1} to reroll one or more dice you rolled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monitor Monitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

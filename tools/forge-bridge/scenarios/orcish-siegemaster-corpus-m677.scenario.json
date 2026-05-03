@@ -1,0 +1,23 @@
+{
+  "id": "orcish-siegemaster-corpus-m677",
+  "description": "M6 corpus — Orcish Siegemaster; in-hand parse.",
+  "seed": 66392,
+  "cards": {
+    "Orcish Siegemaster": "Name:Orcish Siegemaster\nManaCost:2 R\nTypes:Creature Orc Soldier\nPT:0/5\nK:Trample\nS:Mode$ Continuous | Affected$ Goblin.YouCtrl+Other,Orc.YouCtrl+Other | AddKeyword$ Trample | Description$ Other Orcs and Goblins you control have trample.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the greatest power among creatures you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Goblin|Orc\nOracle:Trample\\nOther Orcs and Goblins you control have trample.\\nWhenever Orcish Siegemaster attacks, it gets +X/+0 until end of turn, where X is the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orcish Siegemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

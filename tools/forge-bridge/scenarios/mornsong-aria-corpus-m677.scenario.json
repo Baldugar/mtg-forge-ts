@@ -1,0 +1,23 @@
+{
+  "id": "mornsong-aria-corpus-m677",
+  "description": "M6 corpus — Mornsong Aria; in-hand parse.",
+  "seed": 65509,
+  "cards": {
+    "Mornsong Aria": "Name:Mornsong Aria\nManaCost:1 B B\nTypes:Legendary Enchantment\nS:Mode$ CantDraw | Description$ Players can't draw cards or gain life.\nS:Mode$ CantGainLife | Secondary$ True | Description$ Players can't draw cards or gain life.\nT:Mode$ Phase | Phase$ Draw | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of each player's draw step, that player loses 3 life, searches their library for a card, puts it into their hand, then shuffles.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 3 | SubAbility$ DBTutor\nSVar:DBTutor:DB$ ChangeZone | DefinedPlayer$ TriggeredPlayer | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True\nOracle:Players can't draw cards or gain life.\\nAt the beginning of each player's draw step, that player loses 3 life, searches their library for a card, puts it into their hand, then shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mornsong Aria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

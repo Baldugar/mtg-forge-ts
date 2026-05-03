@@ -1,0 +1,23 @@
+{
+  "id": "sultai-charm-corpus-m677",
+  "description": "M6 corpus — Sultai Charm; in-hand parse.",
+  "seed": 71288,
+  "cards": {
+    "Sultai Charm": "Name:Sultai Charm\nManaCost:B G U\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroyCreature,DBDestroyArtEnc,DBDraw\nSVar:DBDestroyCreature:DB$ Destroy | ValidTgts$ Creature.MonoColor | TgtPrompt$ Choose target monocolored creature. | SpellDescription$ Destroy target monocolored creature.\nSVar:DBDestroyArtEnc:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Choose target artifact or enchantment. | SpellDescription$ Destroy target artifact or enchantment.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard | SpellDescription$ Draw two cards, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Choose one —\\n• Destroy target monocolored creature.\\n• Destroy target artifact or enchantment.\\n• Draw two cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sultai Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

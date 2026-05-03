@@ -1,0 +1,23 @@
+{
+  "id": "hagra-crocodile-corpus-m677",
+  "description": "M6 corpus — Hagra Crocodile; in-hand parse.",
+  "seed": 61961,
+  "cards": {
+    "Hagra Crocodile": "Name:Hagra Crocodile\nManaCost:3 B\nTypes:Creature Crocodile\nPT:3/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — Whenever a land you control enters, CARDNAME gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +2\nSVar:BuffedBy:Land\nOracle:Hagra Crocodile can't block.\\nLandfall — Whenever a land you control enters, Hagra Crocodile gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hagra Crocodile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

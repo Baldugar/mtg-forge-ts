@@ -1,0 +1,23 @@
+{
+  "id": "kor-bladewhirl-corpus-m677",
+  "description": "M6 corpus — Kor Bladewhirl; in-hand parse.",
+  "seed": 63823,
+  "cards": {
+    "Kor Bladewhirl": "Name:Kor Bladewhirl\nManaCost:1 W\nTypes:Creature Kor Soldier Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control gain first strike until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ First Strike\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Kor Bladewhirl or another Ally you control enters, creatures you control gain first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Bladewhirl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

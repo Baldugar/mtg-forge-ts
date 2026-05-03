@@ -1,0 +1,23 @@
+{
+  "id": "kairi-the-swirling-sky-corpus-m677",
+  "description": "M6 corpus — Kairi, the Swirling Sky; in-hand parse.",
+  "seed": 63431,
+  "cards": {
+    "Kairi, the Swirling Sky": "Name:Kairi, the Swirling Sky\nManaCost:4 U U\nTypes:Legendary Creature Dragon Spirit\nPT:6/6\nK:Flying\nK:Ward:3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME dies, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Return,Mill\nSVar:Return:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ X | MaxTotalTargetCMC$ 6 | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select any number of target nonland permanents with total mana value 6 or less | SpellDescription$ Return any number of target nonland permanents with total mana value 6 or less to their owners' hands.\nSVar:X:Count$Valid Permanent.nonLand\nSVar:Mill:DB$ Mill | NumCards$ 6 | Defined$ You | SubAbility$ DBReturn | SpellDescription$ Mill six cards, then return up to two instant and/or sorcery cards from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeNum$ 2 | ChangeType$ Instant.YouOwn,Sorcery.YouOwn | SelectPrompt$ Select up to two instant and/or sorcery cards from your graveyard to return to your hand | Hidden$ True\nDeckHas:Ability$Mill|Graveyard\nDeckHints:Type$Instant|Sorcery\nOracle:Flying, ward {3}\\nWhen Kairi, the Swirling Sky dies, choose one —\\n• Return any number of target nonland permanents with total mana value 6 or less to their owners' hands.\\n• Mill six cards, then return up to two instant and/or sorcery cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kairi, the Swirling Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rambunctious-mutt-corpus-m677",
+  "description": "M6 corpus — Rambunctious Mutt; in-hand parse.",
+  "seed": 67655,
+  "cards": {
+    "Rambunctious Mutt": "Name:Rambunctious Mutt\nManaCost:3 W W\nTypes:Creature Dog\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target artifact or enchantment an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact or enchantment an opponent controls.\nOracle:When Rambunctious Mutt enters, destroy target artifact or enchantment an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rambunctious Mutt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

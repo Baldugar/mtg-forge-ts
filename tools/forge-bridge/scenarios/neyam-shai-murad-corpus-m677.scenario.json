@@ -1,0 +1,23 @@
+{
+  "id": "neyam-shai-murad-corpus-m677",
+  "description": "M6 corpus — Neyam Shai Murad; in-hand parse.",
+  "seed": 65894,
+  "cards": {
+    "Neyam Shai Murad": "Name:Neyam Shai Murad\nManaCost:2 W B\nTypes:Legendary Creature Human Rogue\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Rogue Trader — Whenever CARDNAME deals combat damage to a player, you may have that player return target permanent card from their graveyard to their hand. If you do, that player chooses a permanent card in your graveyard, then you put it onto the battlefield under your control.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target permanent in their graveyard | ValidTgts$ Permanent.OwnedBy TriggeredTarget | AILogic$ WorstCard | RememberChanged$ True | SubAbility$ DBChooseCard\nSVar:DBChooseCard:DB$ ChooseCard | ConditionDefined$ Remembered | ConditionPresent$ Card | Defined$ TriggeredTarget | Mandatory$ True | Choices$ Permanent.YouOwn | AILogic$ WorstCard | ChoiceZone$ Graveyard | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nDeckHas:Ability$Graveyard\nOracle:Rogue Trader — Whenever Neyam Shai Murad deals combat damage to a player, you may have that player return target permanent card from their graveyard to their hand. If you do, that player chooses a permanent card in your graveyard, then you put it onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neyam Shai Murad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

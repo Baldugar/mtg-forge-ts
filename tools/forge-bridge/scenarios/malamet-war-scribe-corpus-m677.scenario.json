@@ -1,0 +1,23 @@
+{
+  "id": "malamet-war-scribe-corpus-m677",
+  "description": "M6 corpus — Malamet War Scribe; in-hand parse.",
+  "seed": 64657,
+  "cards": {
+    "Malamet War Scribe": "Name:Malamet War Scribe\nManaCost:3 W W\nTypes:Creature Cat Warrior\nPT:4/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +2/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +1\nOracle:When Malamet War Scribe enters, creatures you control get +2/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malamet War Scribe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

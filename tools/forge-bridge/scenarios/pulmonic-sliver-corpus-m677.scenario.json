@@ -1,0 +1,25 @@
+{
+  "id": "pulmonic-sliver-corpus-m677",
+  "description": "M6 corpus — Pulmonic Sliver; ETB-on-bf.",
+  "seed": 67348,
+  "cards": {
+    "Pulmonic Sliver": "Name:Pulmonic Sliver\nManaCost:3 W W\nTypes:Creature Sliver\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.Sliver | AddKeyword$ Flying | Description$ All Sliver creatures have flying.\nS:Mode$ Continuous | Affected$ Card.Sliver | AddReplacementEffect$ PulmonicMoveToLibrary | Description$ All Slivers have \"If this permanent would be put into a graveyard, you may put it on top of its owner's library instead.\"\nSVar:PulmonicMoveToLibrary:Event$ Moved | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ PulmonicRep | Optional$ True | Description$ If CARDNAME would die, you may put it on the top of its owner's library instead.\nSVar:PulmonicRep:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | LibraryPosition$ 0 | Defined$ ReplacedCard\nSVar:PlayMain1:TRUE\nOracle:All Sliver creatures have flying.\\nAll Slivers have \"If this permanent would be put into a graveyard, you may put it on top of its owner's library instead.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pulmonic Sliver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "maddening-wind-corpus-m677",
+  "description": "M6 corpus — Maddening Wind; in-hand parse.",
+  "seed": 64564,
+  "cards": {
+    "Maddening Wind": "Name:Maddening Wind\nManaCost:2 G\nTypes:Enchantment Aura\nK:Cumulative upkeep:G\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nOracle:Enchant creature\\nCumulative upkeep {G} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAt the beginning of the upkeep of enchanted creature's controller, Maddening Wind deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maddening Wind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

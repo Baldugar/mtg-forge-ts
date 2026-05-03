@@ -1,0 +1,23 @@
+{
+  "id": "raphael-s-technique-corpus-m677",
+  "description": "M6 corpus — Raphael's Technique; in-hand parse.",
+  "seed": 67712,
+  "cards": {
+    "Raphael's Technique": "Name:Raphael's Technique\nManaCost:4 R R\nTypes:Instant\nK:Sneak:2 R\nA:SP$ Discard | Mode$ Hand | Defined$ Player | Optional$ True | RememberDiscardingPlayers$ True | SubAbility$ DBDraw | SpellDescription$ Each player may discard their hand and draw seven cards.\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ 7 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Sneak {2}{R} (You may cast this spell for {2}{R} if you also return an unblocked attacker you control to hand during the declare blockers step.)\\nEach player may discard their hand and draw seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raphael's Technique"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

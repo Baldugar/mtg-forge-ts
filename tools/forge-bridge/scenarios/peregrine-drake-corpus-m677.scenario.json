@@ -1,0 +1,23 @@
+{
+  "id": "peregrine-drake-corpus-m677",
+  "description": "M6 corpus — Peregrine Drake; in-hand parse.",
+  "seed": 66729,
+  "cards": {
+    "Peregrine Drake": "Name:Peregrine Drake\nManaCost:4 U\nTypes:Creature Drake\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap up to five lands.\nSVar:TrigUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ 5\nSVar:FreeSpellAI:True\nOracle:Flying\\nWhen Peregrine Drake enters, untap up to five lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peregrine Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

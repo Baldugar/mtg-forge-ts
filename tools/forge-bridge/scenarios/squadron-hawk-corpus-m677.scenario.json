@@ -1,0 +1,23 @@
+{
+  "id": "squadron-hawk-corpus-m677",
+  "description": "M6 corpus — Squadron Hawk; in-hand parse.",
+  "seed": 70807,
+  "cards": {
+    "Squadron Hawk": "Name:Squadron Hawk\nManaCost:1 W\nTypes:Creature Bird\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for up to three cards named Squadron Hawk, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedSquadron Hawk | ChangeNum$ 3 | ShuffleNonMandatory$ True\nDeckHints:Name$Squadron Hawk\nOracle:Flying\\nWhen Squadron Hawk enters, you may search your library for up to three cards named Squadron Hawk, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Squadron Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

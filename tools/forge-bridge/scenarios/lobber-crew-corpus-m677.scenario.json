@@ -1,0 +1,25 @@
+{
+  "id": "lobber-crew-corpus-m677",
+  "description": "M6 corpus — Lobber Crew; ETB-on-bf.",
+  "seed": 64348,
+  "cards": {
+    "Lobber Crew": "Name:Lobber Crew\nManaCost:2 R\nTypes:Creature Goblin Warrior\nPT:0/4\nK:Defender\nA:AB$ DealDamage | Cost$ T | NumDmg$ 1 | Defined$ Player.Opponent | SpellDescription$ CARDNAME deals 1 damage to each opponent.\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a multicolored spell, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:Defender\\n{T}: Lobber Crew deals 1 damage to each opponent.\\nWhenever you cast a multicolored spell, untap Lobber Crew.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lobber Crew"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

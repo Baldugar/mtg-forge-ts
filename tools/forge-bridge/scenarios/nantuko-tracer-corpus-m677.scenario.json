@@ -1,0 +1,23 @@
+{
+  "id": "nantuko-tracer-corpus-m677",
+  "description": "M6 corpus — Nantuko Tracer; in-hand parse.",
+  "seed": 65733,
+  "cards": {
+    "Nantuko Tracer": "Name:Nantuko Tracer\nManaCost:1 G\nTypes:Creature Insect Druid\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put target card from a graveyard on the bottom of its owner's library.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Card | TgtPrompt$ Select target card in a graveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1\nOracle:When Nantuko Tracer enters, you may put target card from a graveyard on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nantuko Tracer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

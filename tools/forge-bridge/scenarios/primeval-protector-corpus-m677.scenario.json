@@ -1,0 +1,23 @@
+{
+  "id": "primeval-protector-corpus-m677",
+  "description": "M6 corpus — Primeval Protector; in-hand parse.",
+  "seed": 67197,
+  "cards": {
+    "Primeval Protector": "Name:Primeval Protector\nManaCost:10 G\nTypes:Creature Avatar\nPT:10/10\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature your opponents control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$Valid Creature.OppCtrl\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:This spell costs {1} less to cast for each creature your opponents control.\\nWhen Primeval Protector enters, put a +1/+1 counter on each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primeval Protector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

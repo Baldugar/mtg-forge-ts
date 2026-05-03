@@ -1,0 +1,23 @@
+{
+  "id": "lumbering-battlement-corpus-m677",
+  "description": "M6 corpus — Lumbering Battlement; in-hand parse.",
+  "seed": 64477,
+  "cards": {
+    "Lumbering Battlement": "Name:Lumbering Battlement\nManaCost:4 W\nTypes:Creature Beast\nPT:4/5\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile any number of other nontoken creatures you control until it leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Hidden$ True | ChangeType$ Creature.!token+Other+YouCtrl | ChangeNum$ MaxTgts | SelectPrompt$ Choose any number of other nontoken creatures you control | Duration$ UntilHostLeavesPlay\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +2/+2 for each card exiled with it.\nSVar:X:Count$ValidExile Card.ExiledWithSource/Times.2\nSVar:MaxTgts:Count$Valid Creature.!token+Other+YouCtrl\nAI:RemoveDeck:Random\nOracle:Vigilance\\nWhen Lumbering Battlement enters, exile any number of other nontoken creatures you control until it leaves the battlefield.\\nLumbering Battlement gets +2/+2 for each card exiled with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lumbering Battlement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

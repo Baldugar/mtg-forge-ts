@@ -1,0 +1,23 @@
+{
+  "id": "revenant-patriarch-corpus-m677",
+  "description": "M6 corpus — Revenant Patriarch; in-hand parse.",
+  "seed": 68176,
+  "cards": {
+    "Revenant Patriarch": "Name:Revenant Patriarch\nManaCost:4 B\nTypes:Creature Spirit\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ RevenantSkipCombat | TriggerDescription$ When CARDNAME enters, if {W} was spent to cast it, target player skips their next combat phase.\nSVar:RevenantSkipCombat:DB$ SkipPhase | ValidTgts$ Player | ConditionManaSpent$ W | Phase$ BeginCombat | IsCurse$ True\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nSVar:ManaNeededToAvoidNegativeEffect:white\nAI:RemoveDeck:Random\nDeckNeeds:Color$White\nOracle:When Revenant Patriarch enters, if {W} was spent to cast it, target player skips their next combat phase.\\nRevenant Patriarch can't block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revenant Patriarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

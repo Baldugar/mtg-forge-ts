@@ -1,0 +1,23 @@
+{
+  "id": "reckless-crew-corpus-m677",
+  "description": "M6 corpus — Reckless Crew; in-hand parse.",
+  "seed": 67876,
+  "cards": {
+    "Reckless Crew": "Name:Reckless Crew\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ X | TokenScript$ r_2_1_dwarf_berserker | TokenOwner$ You | SubAbility$ DBRepeat | RememberTokens$ True | SpellDescription$ Create X 2/1 red Dwarf Berserker creature tokens, where X is the number of Vehicles you control plus the number of Equipment you control. For each of those tokens, you may attach an Equipment you control to it.\nSVar:X:Count$Valid Vehicle.YouCtrl,Equipment.YouCtrl\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ ArmToken | DefinedCards$ RememberedCard | ClearRemembered$ True | StackDescription$ None\nSVar:ArmToken:DB$ Attach | Choices$ Equipment.YouCtrl | Defined$ Remembered | Optional$ True | StackDescription$ None\nDeckHas:Ability$Token\nDeckHints:Type$Equipment|Vehicle\nOracle:Create X 2/1 red Dwarf Berserker creature tokens, where X is the number of Vehicles you control plus the number of Equipment you control. For each of those tokens, you may attach an Equipment you control to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckless Crew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "prison-term-corpus-m677",
+  "description": "M6 corpus — Prison Term; in-hand parse.",
+  "seed": 67233,
+  "cards": {
+    "Prison Term": "Name:Prison Term\nManaCost:1 W W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block and its activated abilities can't be activated.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ Whenever a creature an opponent controls enters, you may attach CARDNAME to that creature.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nOracle:Enchant creature\\nEnchanted creature can't attack or block, and its activated abilities can't be activated.\\nWhenever a creature an opponent controls enters, you may attach Prison Term to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prison Term"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

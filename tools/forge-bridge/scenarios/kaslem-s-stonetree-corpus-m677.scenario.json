@@ -1,0 +1,23 @@
+{
+  "id": "kaslem-s-stonetree-corpus-m677",
+  "description": "M6 corpus — Kaslem's Stonetree; in-hand parse.",
+  "seed": 63508,
+  "cards": {
+    "Kaslem's Stonetree": "Name:Kaslem's Stonetree\nManaCost:2 G\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top six cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ 1 | ChangeValid$ Card.Land | Optional$ True | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | Tapped$ True\nK:Craft:5 G ExileCtrlOrGrave<1/Cave.Other>\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Discard|Mill|Sacrifice & Type$Cave\nAlternateMode:DoubleFaced\nOracle:When Kaslem's Stonetree enters, look at the top six cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom in a random order.\\nCraft with Cave {5}{G} ({5}{G}, Exile this artifact, Exile a Cave you control or a Cave card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Kaslem's Strider\nManaCost:no cost\nColors:green\nTypes:Artifact Creature Golem\nPT:5/5\nOracle:\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaslem's Stonetree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

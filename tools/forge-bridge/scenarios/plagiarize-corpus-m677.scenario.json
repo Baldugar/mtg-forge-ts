@@ -1,0 +1,23 @@
+{
+  "id": "plagiarize-corpus-m677",
+  "description": "M6 corpus — Plagiarize; in-hand parse.",
+  "seed": 66949,
+  "cards": {
+    "Plagiarize": "Name:Plagiarize\nManaCost:3 U\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ EventDraw | RememberObjects$ Targeted | ValidTgts$ Player | IsCurse$ True | SpellDescription$ Until end of turn, if target player would draw a card, instead that player skips that draw and you draw a card.\nSVar:EventDraw:Event$ Draw | ValidPlayer$ Player.IsRemembered | ReplaceWith$ ABDraw | Description$ If the targeted player would draw a card, that player skips that draw and you draw a card.\nSVar:ABDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ You draw a card.\nAI:RemoveDeck:All\nOracle:Until end of turn, if target player would draw a card, instead that player skips that draw and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plagiarize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

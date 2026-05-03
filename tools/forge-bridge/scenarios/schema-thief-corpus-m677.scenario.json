@@ -1,0 +1,23 @@
+{
+  "id": "schema-thief-corpus-m677",
+  "description": "M6 corpus — Schema Thief; in-hand parse.",
+  "seed": 69140,
+  "cards": {
+    "Schema Thief": "Name:Schema Thief\nManaCost:3 U\nTypes:Creature Vedalken Rogue Artificer\nPT:3/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a token that's a copy of target artifact that player controls.\nSVar:TrigToken:DB$ CopyPermanent | ValidTgts$ Artifact.ControlledBy TriggeredTarget | Defined$ Targeted\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever Schema Thief deals combat damage to a player, create a token that's a copy of target artifact that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Schema Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

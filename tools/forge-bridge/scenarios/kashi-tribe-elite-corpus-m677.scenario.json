@@ -1,0 +1,23 @@
+{
+  "id": "kashi-tribe-elite-corpus-m677",
+  "description": "M6 corpus — Kashi-Tribe Elite; in-hand parse.",
+  "seed": 63504,
+  "cards": {
+    "Kashi-Tribe Elite": "Name:Kashi-Tribe Elite\nManaCost:1 G G\nTypes:Creature Snake Warrior\nPT:2/3\nS:Mode$ Continuous | Affected$ Snake.Legendary+YouCtrl | AddKeyword$ Shroud | Description$ Legendary Snakes you control have shroud. (They can't be the targets of spells or abilities.)\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nSVar:HasCombatEffect:TRUE\nOracle:Legendary Snakes you control have shroud. (They can't be the targets of spells or abilities.)\\nWhenever Kashi-Tribe Elite deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kashi-Tribe Elite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

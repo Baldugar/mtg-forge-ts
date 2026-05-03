@@ -1,0 +1,23 @@
+{
+  "id": "spikeshell-harrier-corpus-m677",
+  "description": "M6 corpus — Spikeshell Harrier; in-hand parse.",
+  "seed": 70659,
+  "cards": {
+    "Spikeshell Harrier": "Name:Spikeshell Harrier\nManaCost:4 U\nTypes:Artifact Creature Robot Turtle\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, return target creature or Vehicle an opponent controls to its owner's hand. If that opponent's speed is greater than each other player's speed, reduce that player's speed by 1. This effect can't reduce their speed below 1.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl,Vehicle.OppCtrl | TgtPrompt$ Select target creature or Vehicle an opponent controls | Origin$ Battlefield | Destination$ Hand | SubAbility$ DecreaseSpeed\nSVar:DecreaseSpeed:DB$ ChangeSpeed | Mode$ Decrease | Defined$ TargetedController | ConditionCheckSVar$ TargetedController$Speed | ConditionSVarCompare$ GTPlayerCountDefinedNonTargetedController$HighestSpeed\nOracle:When this creature enters, return target creature or Vehicle an opponent controls to its owner's hand. If that opponent's speed is greater than each other player's speed, reduce that player's speed by 1. This effect can't reduce their speed below 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spikeshell Harrier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

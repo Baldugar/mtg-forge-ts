@@ -1,0 +1,23 @@
+{
+  "id": "retraced-image-corpus-m677",
+  "description": "M6 corpus — Retraced Image; in-hand parse.",
+  "seed": 68140,
+  "cards": {
+    "Retraced Image": "Name:Retraced Image\nManaCost:U\nTypes:Sorcery\nA:SP$ Reveal | RememberRevealed$ True | SubAbility$ DBChangeZone | SpellDescription$ Reveal a card in your hand, then put that card onto the battlefield if it has the same name as a permanent.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Hand | Destination$ Battlefield | ConditionDefined$ Remembered | ConditionPresent$ Card.sharesNameWith Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Reveal a card in your hand, then put that card onto the battlefield if it has the same name as a permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retraced Image"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

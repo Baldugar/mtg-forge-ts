@@ -1,0 +1,23 @@
+{
+  "id": "malfunction-corpus-m677",
+  "description": "M6 corpus — Malfunction; in-hand parse.",
+  "seed": 64665,
+  "cards": {
+    "Malfunction": "Name:Malfunction\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Artifact,Creature:artifact or creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted permanent.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Permanent.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted permanent doesn't untap during its controller's untap step.\nOracle:Enchant artifact or creature\\nWhen Malfunction enters, tap enchanted permanent.\\nEnchanted permanent doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malfunction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

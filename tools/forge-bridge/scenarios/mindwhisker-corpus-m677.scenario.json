@@ -1,0 +1,23 @@
+{
+  "id": "mindwhisker-corpus-m677",
+  "description": "M6 corpus — Mindwhisker; in-hand parse.",
+  "seed": 65185,
+  "cards": {
+    "Mindwhisker": "Name:Mindwhisker\nManaCost:2 U\nTypes:Creature Rat Wizard\nPT:3/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nS:Mode$ Continuous | Affected$ Creature.OppCtrl | Condition$ Threshold | AddPower$ -1 | Description$ Threshold — As long as there are seven or more cards in your graveyard, creatures your opponents control get -1/-0.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Graveyard|Surveil\nDeckHints:Ability$Graveyard\nOracle:At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\\nThreshold — As long as there are seven or more cards in your graveyard, creatures your opponents control get -1/-0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindwhisker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

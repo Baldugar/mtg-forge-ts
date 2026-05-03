@@ -1,0 +1,23 @@
+{
+  "id": "soltari-champion-corpus-m677",
+  "description": "M6 corpus — Soltari Champion; in-hand parse.",
+  "seed": 70373,
+  "cards": {
+    "Soltari Champion": "Name:Soltari Champion\nManaCost:2 W\nTypes:Creature Soltari Soldier\nPT:2/2\nK:Shadow\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, other creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +1 | NumDef$ +1\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever Soltari Champion attacks, other creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soltari Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

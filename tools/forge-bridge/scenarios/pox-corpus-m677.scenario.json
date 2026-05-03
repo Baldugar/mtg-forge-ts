@@ -1,0 +1,23 @@
+{
+  "id": "pox-corpus-m677",
+  "description": "M6 corpus — Pox; in-hand parse.",
+  "seed": 67098,
+  "cards": {
+    "Pox": "Name:Pox\nManaCost:B B B\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBLoseLife | AILifeThreshold$ 1 | SpellDescription$ Each player loses a third of their life, then discards a third of the cards in their hand, then sacrifices a third of the creatures they control, then sacrifices a third of the lands they control. Round up each time.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ A | Defined$ Player.IsRemembered | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ C | Defined$ Player.IsRemembered | Mode$ TgtChoose | SubAbility$ DBCreature\nSVar:DBCreature:DB$ Sacrifice | SacValid$ Creature | Amount$ E | Defined$ Player.IsRemembered | SubAbility$ DBLand\nSVar:DBLand:DB$ Sacrifice | SacValid$ Land | Amount$ G | Defined$ Player.IsRemembered\nSVar:A:PlayerCountRemembered$LifeTotal/ThirdUp\nSVar:C:PlayerCountRemembered$CardsInHand/ThirdUp\nSVar:E:PlayerCountRemembered$Valid Creature.RememberedPlayerCtrl/ThirdUp\nSVar:G:PlayerCountRemembered$Valid Land.RememberedPlayerCtrl/ThirdUp\nAI:RemoveDeck:Random\nOracle:Each player loses a third of their life, then discards a third of the cards in their hand, then sacrifices a third of the creatures they control, then sacrifices a third of the lands they control. Round up each time.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

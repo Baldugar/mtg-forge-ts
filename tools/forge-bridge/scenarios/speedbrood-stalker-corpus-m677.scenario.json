@@ -1,0 +1,23 @@
+{
+  "id": "speedbrood-stalker-corpus-m677",
+  "description": "M6 corpus — Speedbrood Stalker; in-hand parse.",
+  "seed": 70567,
+  "cards": {
+    "Speedbrood Stalker": "Name:Speedbrood Stalker\nManaCost:3 B B\nTypes:Creature Insect Assassin\nPT:3/4\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters choose target opponent. Secretly choose a creature or planeswalker that player controls. That player sacrifices a creature or planeswalker of their choice, then sacrifices the chosen permanent.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Opponent | SubAbility$ DBChooseCard\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ You | Choices$ Creature.ControlledBy TargetedPlayer,Planeswalker.ControlledBy TargetedPlayer | Secretly$ True | Amount$ 1 | Mandatory$ True | ChoiceTitle$ Secretly choose a creature or planeswalker targeted player controls | SubAbility$ DBSac1\nSVar:DBSac1:DB$ Sacrifice | Defined$ Targeted | SacValid$ Creature,Planeswalker | SubAbility$ DBSac2\nSVar:DBSac2:DB$ Sacrifice | Defined$ Targeted | SacValid$ Permanent.ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Flying, Lifelink\\nWhen this creature enters choose target opponent. Secretly choose a creature or planeswalker that player controls. That player sacrifices a creature or planeswalker of their choice, then sacrifices the chosen permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Speedbrood Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

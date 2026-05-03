@@ -1,0 +1,23 @@
+{
+  "id": "hellspur-posse-boss-corpus-m677",
+  "description": "M6 corpus — Hellspur Posse Boss; in-hand parse.",
+  "seed": 62247,
+  "cards": {
+    "Hellspur Posse Boss": "Name:Hellspur Posse Boss\nManaCost:2 R R\nTypes:Creature Lizard Rogue\nPT:2/4\nS:Mode$ Continuous | Affected$ Card.Outlaw+YouCtrl+Other | AddKeyword$ Haste | Description$ Other outlaws you control have haste. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 red Mercenary creature tokens with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_mercenary_tappump | TokenOwner$ You\nDeckHints:Type$Mercenary|Assassin|Pirate|Rogue|Warlock\nDeckHas:Ability$Token\nOracle:Other outlaws you control have haste. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\\nWhen Hellspur Posse Boss enters, create two 1/1 red Mercenary creature tokens with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellspur Posse Boss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

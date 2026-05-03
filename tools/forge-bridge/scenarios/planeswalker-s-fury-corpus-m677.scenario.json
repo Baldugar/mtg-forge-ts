@@ -1,0 +1,25 @@
+{
+  "id": "planeswalker-s-fury-corpus-m677",
+  "description": "M6 corpus — Planeswalker's Fury; ETB-on-bf.",
+  "seed": 66983,
+  "cards": {
+    "Planeswalker's Fury": "Name:Planeswalker's Fury\nManaCost:2 R\nTypes:Enchantment\nA:AB$ Reveal | Cost$ 3 R | Random$ True | RememberRevealed$ True | ValidTgts$ Opponent | SorcerySpeed$ True | SubAbility$ DBDamage | SpellDescription$ Target opponent reveals a card at random from their hand. CARDNAME deals damage equal to that card's mana value to that player. Activate only as a sorcery.\nSVar:DBDamage:DB$ DealDamage | Defined$ ParentTarget | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:{3}{R}: Target opponent reveals a card at random from their hand. Planeswalker's Fury deals damage equal to that card's mana value to that player. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Planeswalker's Fury"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

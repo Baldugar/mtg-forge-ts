@@ -1,0 +1,23 @@
+{
+  "id": "person-of-interest-corpus-m677",
+  "description": "M6 corpus — Person of Interest; in-hand parse.",
+  "seed": 66754,
+  "cards": {
+    "Person of Interest": "Name:Person of Interest\nManaCost:3 R\nTypes:Creature Human Rogue\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ When CARDNAME enters, suspect it. Create a 2/2 white and blue Detective creature token. (A suspected creature has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | Defined$ Self | Attributes$ Suspected | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ wu_2_2_detective\nDeckHas:Ability$Token & Type$Detective & Color$Blue|White\nOracle:When Person of Interest enters, suspect it. Create a 2/2 white and blue Detective creature token. (A suspected creature has menace and can't block.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Person of Interest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

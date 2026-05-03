@@ -1,0 +1,23 @@
+{
+  "id": "incubation-corpus-m677",
+  "description": "M6 corpus — Incubation; in-hand parse.",
+  "seed": 62862,
+  "cards": {
+    "Incubation": "Name:Incubation\nManaCost:GU\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Card.Creature | RestRandomOrder$ True | SpellDescription$ Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nAlternateMode:Split\nOracle:Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n\nALTERNATE\n\nName:Incongruity\nManaCost:1 G U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBToken | SpellDescription$ Exile target creature. That creature's controller creates a 3/3 green Frog Lizard creature token.\nSVar:DBToken:DB$ Token | TokenOwner$ TargetedController | TokenScript$ g_3_3_frog_lizard\nOracle:Exile target creature. That creature's controller creates a 3/3 green Frog Lizard creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incubation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

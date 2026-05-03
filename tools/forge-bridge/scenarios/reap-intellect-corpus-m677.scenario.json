@@ -1,0 +1,23 @@
+{
+  "id": "reap-intellect-corpus-m677",
+  "description": "M6 corpus — Reap Intellect; in-hand parse.",
+  "seed": 67840,
+  "cards": {
+    "Reap Intellect": "Name:Reap Intellect\nManaCost:X 2 U B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ X | IsCurse$ True | RememberChanged$ True | SubAbility$ DBRepeat | SpellDescription$ Target opponent reveals their hand. You choose up to X nonland cards from among them. Search that player's library, hand and graveyard for cards with the same name as those cards and exile them. Then, that player shuffles their library.\nSVar:DBRepeat:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Card.IsRemembered | Zone$ Exile | RepeatSubAbility$ ExileYard | SubAbility$ DBCleanup\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Card.sharesNameWith Imprinted | ChangeNum$ NumInYard | Chooser$ You | Hidden$ True | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Card.sharesNameWith Imprinted | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedPlayer | ChangeType$ Card.sharesNameWith Imprinted | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInYard:TargetedPlayer$CardsInGraveyard\nSVar:X:Count$xPaid\nOracle:Target opponent reveals their hand. You choose up to X nonland cards from it and exile them. For each card exiled this way, search that player's graveyard, hand, and library for any number of cards with the same name as that card and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reap Intellect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

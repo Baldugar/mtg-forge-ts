@@ -1,0 +1,23 @@
+{
+  "id": "guildless-commons-corpus-m677",
+  "description": "M6 corpus — Guildless Commons; in-hand parse.",
+  "seed": 61902,
+  "cards": {
+    "Guildless Commons": "Name:Guildless Commons\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return a land you control to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Land.YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Land.Basic+YouCtrl\nOracle:Guildless Commons enters tapped.\\nWhen Guildless Commons enters, return a land you control to its owner's hand.\\n{T}: Add {C}{C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guildless Commons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

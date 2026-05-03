@@ -1,0 +1,25 @@
+{
+  "id": "mauh-r-uruk-hai-captain-corpus-m677",
+  "description": "M6 corpus — Mauhúr, Uruk-hai Captain; ETB-on-bf.",
+  "seed": 64893,
+  "cards": {
+    "Mauhúr, Uruk-hai Captain": "Name:Mauhúr, Uruk-hai Captain\nManaCost:B R\nTypes:Legendary Creature Orc Soldier\nPT:2/2\nK:Menace\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Orc.YouCtrl+inZoneBattlefield,Army.YouCtrl+inZoneBattlefield,Goblin.YouCtrl+inZoneBattlefield | ValidCounterType$ P1P1 | ReplaceWith$ AddOneMoreCounters | Description$ If one or more +1/+1 counters would be put on an Army, Goblin, or Orc you control, that many plus one +1/+1 counters are put on it instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ValidCounterType$ P1P1 | ChooseCounter$ True | Amount$ Y\nSVar:Y:ReplaceCount$CounterNum/Plus.1\nDeckHas:Ability$Counters\nDeckHints:Type$Army|Orc|Goblin\nOracle:Menace\\nIf one or more +1/+1 counters would be put on an Army, Goblin, or Orc you control, that many plus one +1/+1 counters are put on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mauhúr, Uruk-hai Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

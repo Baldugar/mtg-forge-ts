@@ -1,0 +1,23 @@
+{
+  "id": "punish-ignorance-corpus-m677",
+  "description": "M6 corpus — Punish Ignorance; in-hand parse.",
+  "seed": 67360,
+  "cards": {
+    "Punish Ignorance": "Name:Punish Ignorance\nManaCost:W U U B\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBDrain | SpellDescription$ Counter target spell. Its controller loses 3 life and you gain 3 life.\nSVar:DBDrain:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ 3 | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 3\nOracle:Counter target spell. Its controller loses 3 life and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Punish Ignorance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

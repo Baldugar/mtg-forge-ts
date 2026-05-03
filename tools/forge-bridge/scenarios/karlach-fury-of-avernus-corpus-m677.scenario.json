@@ -1,0 +1,25 @@
+{
+  "id": "karlach-fury-of-avernus-corpus-m677",
+  "description": "M6 corpus — Karlach, Fury of Avernus; ETB-on-bf.",
+  "seed": 63487,
+  "cards": {
+    "Karlach, Fury of Avernus": "Name:Karlach, Fury of Avernus\nManaCost:4 R\nTypes:Legendary Creature Tiefling Barbarian\nPT:5/4\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | FirstCombat$ True | TriggerDescription$ Whenever you attack, if it's the first combat phase of the turn, untap all attacking creatures. They gain first strike until end of turn. After this phase, there is an additional combat phase.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.attacking | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking | KW$ First Strike | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nK:Choose a Background\nOracle:Whenever you attack, if it's the first combat phase of the turn, untap all attacking creatures. They gain first strike until end of turn. After this phase, there is an additional combat phase.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Karlach, Fury of Avernus"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

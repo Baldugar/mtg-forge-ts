@@ -1,0 +1,25 @@
+{
+  "id": "hinterland-harbor-corpus-m677",
+  "description": "M6 corpus — Hinterland Harbor; ETB-on-bf.",
+  "seed": 62389,
+  "cards": {
+    "Hinterland Harbor": "Name:Hinterland Harbor\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Forest or an Island.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Forest.YouCtrl,Island.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SpellDescription$ Add {G} or {U}.\nOracle:Hinterland Harbor enters tapped unless you control a Forest or an Island.\\n{T}: Add {G} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hinterland Harbor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

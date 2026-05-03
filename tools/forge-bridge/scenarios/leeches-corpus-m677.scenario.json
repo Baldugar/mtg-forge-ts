@@ -1,0 +1,23 @@
+{
+  "id": "leeches-corpus-m677",
+  "description": "M6 corpus — Leeches; in-hand parse.",
+  "seed": 64088,
+  "cards": {
+    "Leeches": "Name:Leeches\nManaCost:1 W W\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player | NumDmg$ X | SubAbility$ Unpoison | SpellDescription$ Target player loses all poison counters. CARDNAME deals that much damage to that player.\nSVar:Unpoison:DB$ Poison | Defined$ ParentTarget | Num$ -X\nSVar:X:TargetedPlayer$Counters.Poison\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Target player loses all poison counters. Leeches deals that much damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leeches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

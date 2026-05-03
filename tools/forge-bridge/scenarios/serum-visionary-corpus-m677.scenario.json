@@ -1,0 +1,23 @@
+{
+  "id": "serum-visionary-corpus-m677",
+  "description": "M6 corpus — Serum Visionary; in-hand parse.",
+  "seed": 69507,
+  "cards": {
+    "Serum Visionary": "Name:Serum Visionary\nManaCost:2 U\nTypes:Creature Vedalken Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then scry 2.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nOracle:When Serum Visionary enters, draw a card, then scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serum Visionary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "rin-and-seri-inseparable-corpus-m677",
+  "description": "M6 corpus — Rin and Seri, Inseparable; ETB-on-bf.",
+  "seed": 68300,
+  "cards": {
+    "Rin and Seri, Inseparable": "Name:Rin and Seri, Inseparable\nManaCost:1 R G W\nTypes:Legendary Creature Dog Cat\nPT:4/4\nT:Mode$ SpellCast | ValidCard$ Dog | ValidActivatingPlayer$ You | Execute$ TrigCatToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Dog spell, create a 1/1 green Cat creature token.\nSVar:TrigCatToken:DB$ Token | TokenScript$ g_1_1_cat | TokenOwner$ You\nT:Mode$ SpellCast | ValidCard$ Cat | ValidActivatingPlayer$ You | Execute$ TrigDogToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Cat spell, create a 1/1 white Dog creature token.\nSVar:TrigDogToken:DB$ Token | TokenScript$ w_1_1_dog | TokenOwner$ You\nA:AB$ DealDamage | Cost$ R G W T | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals damage to any target equal to the number of Dogs you control. You gain life equal to the number of Cats you control.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y | Defined$ You\nSVar:X:Count$Valid Dog.YouCtrl\nSVar:Y:Count$Valid Cat.YouCtrl\nDeckHints:Type$Dog|Cat\nOracle:Whenever you cast a Dog spell, create a 1/1 green Cat creature token.\\nWhenever you cast a Cat spell, create a 1/1 white Dog creature token.\\n{R}{G}{W}, {T}: Rin and Seri, Inseparable deals damage to any target equal to the number of Dogs you control. You gain life equal to the number of Cats you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rin and Seri, Inseparable"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rishkar-s-expertise-corpus-m677",
+  "description": "M6 corpus — Rishkar's Expertise; in-hand parse.",
+  "seed": 68354,
+  "cards": {
+    "Rishkar's Expertise": "Name:Rishkar's Expertise\nManaCost:4 G G\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | SubAbility$ DBPlay | SpellDescription$ Draw cards equal to the greatest power among creatures you control. You may cast a spell with mana value 5 or less from your hand without paying its mana cost.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell.cmcLE5 | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True\nOracle:Draw cards equal to the greatest power among creatures you control.\\nYou may cast a spell with mana value 5 or less from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rishkar's Expertise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

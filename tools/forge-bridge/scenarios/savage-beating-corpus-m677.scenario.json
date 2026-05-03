@@ -1,0 +1,23 @@
+{
+  "id": "savage-beating-corpus-m677",
+  "description": "M6 corpus — Savage Beating; in-hand parse.",
+  "seed": 69045,
+  "cards": {
+    "Savage Beating": "Name:Savage Beating\nManaCost:3 R R\nTypes:Instant\nText:Cast this spell only during your turn and only during combat.\nK:Entwine:1 R\nA:SP$ Charm | Choices$ DBPump,DBUntapAll | PlayerTurn$ True | ActivationPhases$ BeginCombat->EndCombat\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Double Strike | SpellDescription$ Creatures you control gain double strike until end of turn.\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ DBAddCombat | SpellDescription$ Untap all creatures you control. After this phase, there is an additional combat phase.\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nAI:RemoveDeck:All\nOracle:Cast this spell only during your turn and only during combat.\\nChoose one —\\n• Creatures you control gain double strike until end of turn.\\n• Untap all creatures you control. After this phase, there is an additional combat phase.\\nEntwine {1}{R} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savage Beating"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

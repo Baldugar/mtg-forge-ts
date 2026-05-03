@@ -1,0 +1,23 @@
+{
+  "id": "predatory-advantage-corpus-m677",
+  "description": "M6 corpus — Predatory Advantage; in-hand parse.",
+  "seed": 67126,
+  "cards": {
+    "Predatory Advantage": "Name:Predatory Advantage\nManaCost:3 R G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Opponent | CheckSVar$ X | SVarCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each opponent's end step, if that player didn't cast a creature spell this turn, create a 2/2 green Lizard creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_lizard | TokenOwner$ You\nSVar:X:Count$ThisTurnCast_Creature.ActivePlayerCtrl\nOracle:At the beginning of each opponent's end step, if that player didn't cast a creature spell this turn, create a 2/2 green Lizard creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Predatory Advantage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "psychic-surgery-corpus-m677",
+  "description": "M6 corpus — Psychic Surgery; ETB-on-bf.",
+  "seed": 67325,
+  "cards": {
+    "Psychic Surgery": "Name:Psychic Surgery\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ Shuffled | ValidPlayer$ Opponent | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDig | TriggerDescription$ Whenever an opponent shuffles their library, you may look at the top two cards of that library. You may exile one of those cards. Then put the rest on top of that library in any order.\nSVar:TrigDig:DB$ Dig | Defined$ TriggeredPlayer | DigNum$ 2 | ChangeNum$ 1 | Optional$ True | DestinationZone$ Exile | LibraryPosition2$ 0\nAI:RemoveDeck:All\nOracle:Whenever an opponent shuffles their library, you may look at the top two cards of that library. You may exile one of those cards. Then put the rest on top of that library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Psychic Surgery"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

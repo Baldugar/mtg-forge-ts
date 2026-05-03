@@ -1,0 +1,23 @@
+{
+  "id": "psychic-rebuttal-corpus-m677",
+  "description": "M6 corpus — Psychic Rebuttal; in-hand parse.",
+  "seed": 67322,
+  "cards": {
+    "Psychic Rebuttal": "Name:Psychic Rebuttal\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TargetValidTargeting$ You | TgtPrompt$ Select target spell that targets you | ValidTgts$ Instant,Sorcery | RememberCountered$ True | SubAbility$ DBCopy | SpellDescription$ Counter target instant or sorcery spell that targets you.Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, you may copy the spell countered this way. You may choose new targets for the copy.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Remembered | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2 | MayChooseTarget$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Counter target instant or sorcery spell that targets you.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, you may copy the spell countered this way. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Rebuttal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

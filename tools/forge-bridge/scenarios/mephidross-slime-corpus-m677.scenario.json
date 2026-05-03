@@ -1,0 +1,23 @@
+{
+  "id": "mephidross-slime-corpus-m677",
+  "description": "M6 corpus — Mephidross Slime; in-hand parse.",
+  "seed": 64987,
+  "cards": {
+    "Mephidross Slime": "Name:Mephidross Slime\nManaCost:1 B G\nTypes:Creature Phyrexian Ooze\nPT:3/3\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigConjure | TriggerDescription$ Whenever CARDNAME dies, conjure a card named Mephidross Slime into your graveyard. Perpetually double the power and toughness of CARDNAME and that card, then shuffle them into their owner's library.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Mephidross Slime | Amount$ 1 | Zone$ Graveyard | RememberMade$ True | SubAbility$ DBRemember\nSVar:DBRemember:DB$ Pump | RememberObjects$ TriggeredCardLKICopy | SubAbility$ DBDouble\nSVar:DBDouble:DB$ Pump | PumpZone$ Graveyard | Defined$ Remembered | NumAtt$ Double | NumDef$ Double | Duration$ Perpetual | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ ChangeZone | Origin$ Graveyard | Shuffle$ True | Destination$ Library | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Trample\\nWhenever Mephidross Slime dies, conjure a card named Mephidross Slime into your graveyard. Perpetually double the power and toughness of Mephidross Slime and that card, then shuffle them into their owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mephidross Slime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

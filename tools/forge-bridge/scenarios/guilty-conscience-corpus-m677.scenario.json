@@ -1,0 +1,23 @@
+{
+  "id": "guilty-conscience-corpus-m677",
+  "description": "M6 corpus — Guilty Conscience; in-hand parse.",
+  "seed": 61910,
+  "cards": {
+    "Guilty Conscience": "Name:Guilty Conscience\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:SpecificCard\nT:Mode$ DamageDealtOnce | ValidSource$ Card.AttachedBy | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals damage, CARDNAME deals that much damage to that creature.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredSourceLKICopy | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Enchant creature\\nWhenever enchanted creature deals damage, Guilty Conscience deals that much damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guilty Conscience"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

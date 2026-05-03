@@ -1,0 +1,23 @@
+{
+  "id": "snowblind-corpus-m677",
+  "description": "M6 corpus — Snowblind; in-hand parse.",
+  "seed": 70312,
+  "cards": {
+    "Snowblind": "Name:Snowblind\nManaCost:3 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Card.AttachedBy | CheckSVar$ CheckAttacking | AddPower$ -AttackingX | AddToughness$ -AttackingY | Description$ Enchanted creature gets -X/-Y. If that creature is attacking, X is the number of snow lands defending player controls. Otherwise, X is the number of snow lands its controller controls. Y is equal to X or to enchanted creature's toughness minus 1, whichever is smaller.\nS:Mode$ Continuous | Affected$ Card.AttachedBy | CheckSVar$ CheckAttacking | SVarCompare$ EQ0 | AddPower$ -NotAttackingX | AddToughness$ -NotAttackingY\nSVar:CheckAttacking:Count$Valid Card.AttachedBy+attacking\nSVar:AttackingX:Count$Valid Land.DefenderCtrl+Snow\nSVar:NotAttackingX:Count$Valid Land.Snow+EnchantedControllerCtrl\nSVar:EnchantedY:Enchanted$CardToughness/Minus.1\nSVar:EnchantedDef:SVar$EnchantedY\nSVar:AttackingY:SVar$EnchantedDef/LimitMax.AttackingX\nSVar:NotAttackingY:SVar$EnchantedDef/LimitMax.NotAttackingX\nAI:RemoveDeck:Random\nDeckNeeds:Type$Snow\nOracle:Enchant creature\\nEnchanted creature gets -X/-Y. If that creature is attacking, X is the number of snow lands defending player controls. Otherwise, X is the number of snow lands its controller controls. Y is equal to X or to enchanted creature's toughness minus 1, whichever is smaller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snowblind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

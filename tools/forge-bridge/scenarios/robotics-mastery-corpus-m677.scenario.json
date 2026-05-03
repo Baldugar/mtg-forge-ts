@@ -1,0 +1,23 @@
+{
+  "id": "robotics-mastery-corpus-m677",
+  "description": "M6 corpus — Robotics Mastery; in-hand parse.",
+  "seed": 68438,
+  "cards": {
+    "Robotics Mastery": "Name:Robotics Mastery\nManaCost:4 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Aura enters, create two 1/1 colorless Robot artifact creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_a_robot_flying | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2.\nSVar:AttachAILogic:Pump\nOracle:Flash\\nEnchant creature\\nWhen this Aura enters, create two 1/1 colorless Robot artifact creature tokens with flying.\\nEnchanted creature gets +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Robotics Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kami-of-industry-corpus-m677",
+  "description": "M6 corpus — Kami of Industry; in-hand parse.",
+  "seed": 63454,
+  "cards": {
+    "Kami of Industry": "Name:Kami of Industry\nManaCost:4 R\nTypes:Creature Spirit\nPT:3/6\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return target artifact card with mana value 3 or less from your graveyard to the battlefield. It gains haste. Sacrifice it at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Artifact.YouCtrl+cmcLE3 | TgtPrompt$ Select target artifact card with mana value 3 or less in your graveyard | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Keywords$ Haste | Defined$ Targeted | Duration$ Permanent | AtEOT$ Sacrifice\nDeckHints:Type$Artifact\nOracle:When Kami of Industry enters, return target artifact card with mana value 3 or less from your graveyard to the battlefield. It gains haste. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kami of Industry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

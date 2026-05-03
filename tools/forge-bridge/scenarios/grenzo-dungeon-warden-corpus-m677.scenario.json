@@ -1,0 +1,23 @@
+{
+  "id": "grenzo-dungeon-warden-corpus-m677",
+  "description": "M6 corpus — Grenzo, Dungeon Warden; in-hand parse.",
+  "seed": 61745,
+  "cards": {
+    "Grenzo, Dungeon Warden": "Name:Grenzo, Dungeon Warden\nManaCost:X B R\nTypes:Legendary Creature Goblin Rogue\nPT:2/2\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nA:AB$ ChangeZone | Cost$ 2 | Defined$ BottomOfLibrary | Origin$ Library | Destination$ Graveyard | RememberChanged$ True | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ Put the bottom card of your library into your graveyard. If it's a creature card with power less than or equal to NICKNAME's power, put it onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | Hidden$ True | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature+powerLEY | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$CardPower\nAI:RemoveDeck:All\nOracle:Grenzo, Dungeon Warden enters with X +1/+1 counters on it.\\n{2}: Put the bottom card of your library into your graveyard. If it's a creature card with power less than or equal to Grenzo's power, put it onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grenzo, Dungeon Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

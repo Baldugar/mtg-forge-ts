@@ -1,0 +1,23 @@
+{
+  "id": "naru-meha-master-wizard-corpus-m677",
+  "description": "M6 corpus — Naru Meha, Master Wizard; in-hand parse.",
+  "seed": 65747,
+  "cards": {
+    "Naru Meha, Master Wizard": "Name:Naru Meha, Master Wizard\nManaCost:2 U U\nTypes:Legendary Creature Human Wizard\nPT:3/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When CARDNAME enters, copy target instant or sorcery spell you control. You may choose new targets for that copy.\nSVar:TrigCopy:DB$ CopySpellAbility | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TgtPrompt$ Select target instant or sorcery spell you control | TargetType$ Spell | MayChooseTarget$ True\nS:Mode$ Continuous | Affected$ Wizard.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Wizards you control get +1/+1.\nDeckHints:Type$Wizard\nOracle:Flash\\nWhen Naru Meha, Master Wizard enters, copy target instant or sorcery spell you control. You may choose new targets for the copy.\\nOther Wizards you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naru Meha, Master Wizard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

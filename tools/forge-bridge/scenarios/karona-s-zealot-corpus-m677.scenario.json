@@ -1,0 +1,25 @@
+{
+  "id": "karona-s-zealot-corpus-m677",
+  "description": "M6 corpus — Karona's Zealot; ETB-on-bf.",
+  "seed": 63495,
+  "cards": {
+    "Karona's Zealot": "Name:Karona's Zealot\nManaCost:4 W\nTypes:Creature Human Cleric\nPT:2/5\nK:Morph:3 W W\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ KaronaEffect | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, all damage that would be dealt to it this turn is dealt to target creature instead.\nSVar:KaronaEffect:DB$ Effect | ValidTgts$ Creature | TgtPrompt$ Select target creature to redirect the damage to | ReplacementEffects$ ZealotDamage | Duration$ UntilHostLeavesPlayOrEOT | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:ZealotDamage:Event$ DamageDone | ValidTarget$ Creature.EffectSource | ReplaceWith$ MirrorStrikeDmg | DamageTarget$ Remembered | Description$ All damage that would be dealt to EFFECTSOURCE this turn is dealt to target creature instead.\nSVar:MirrorStrikeDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card\nAI:RemoveDeck:All\nOracle:Morph {3}{W}{W} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Karona's Zealot is turned face up, all damage that would be dealt to it this turn is dealt to target creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Karona's Zealot"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

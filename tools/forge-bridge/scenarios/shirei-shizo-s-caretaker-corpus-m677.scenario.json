@@ -1,0 +1,23 @@
+{
+  "id": "shirei-shizo-s-caretaker-corpus-m677",
+  "description": "M6 corpus — Shirei, Shizo's Caretaker; in-hand parse.",
+  "seed": 69725,
+  "cards": {
+    "Shirei, Shizo's Caretaker": "Name:Shirei, Shizo's Caretaker\nManaCost:4 B\nTypes:Legendary Creature Spirit\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | ValidCard$ Creature.powerLE1+YouOwn | OptionalDecider$ You | Execute$ DelTrig | TriggerDescription$ Whenever a creature with power 1 or less is put into your graveyard from the battlefield, you may return that card to the battlefield at the beginning of the next end step if CARDNAME is still on the battlefield.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | Execute$ TrigReturn | IsPresent$ Card.StrictlySelf | PresentZone$ Battlefield | RememberObjects$ TriggeredNewCardLKICopy | TriggerDescription$ Return creature to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+powerLE1+YouOwn | AddSVar$ Sac\nSVar:Sac:SVar:SacMe:3\nOracle:Whenever a creature with power 1 or less is put into your graveyard from the battlefield, you may return that card to the battlefield at the beginning of the next end step if Shirei, Shizo's Caretaker is still on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shirei, Shizo's Caretaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

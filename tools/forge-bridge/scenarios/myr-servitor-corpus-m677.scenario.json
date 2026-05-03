@@ -1,0 +1,23 @@
+{
+  "id": "myr-servitor-corpus-m677",
+  "description": "M6 corpus — Myr Servitor; in-hand parse.",
+  "seed": 65644,
+  "cards": {
+    "Myr Servitor": "Name:Myr Servitor\nManaCost:1\nTypes:Artifact Creature Myr\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self | PresentZone$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is on the battlefield, each player returns all cards named Myr Servitor from their graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.namedMyr Servitor | Origin$ Graveyard | Destination$ Battlefield\nDeckHints:Name$Myr Servitor\nOracle:At the beginning of your upkeep, if Myr Servitor is on the battlefield, each player returns all cards named Myr Servitor from their graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Servitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

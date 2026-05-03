@@ -1,0 +1,23 @@
+{
+  "id": "puca-s-eye-corpus-m677",
+  "description": "M6 corpus — Puca's Eye; in-hand parse.",
+  "seed": 67339,
+  "cards": {
+    "Puca's Eye": "Name:Puca's Eye\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this artifact enters, draw a card, then choose a color. This artifact becomes the chosen color.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBChooseColor\nSVar:DBChooseColor:DB$ ChooseColor | Defined$ You | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Colors$ ChosenColor | OverwriteColors$ True | Duration$ Permanent\nA:AB$ Draw | Cost$ 3 T | NumCards$ 1 | CheckSVar$ X | SVarCompare$ EQ5 | SpellDescription$ Draw a card. Activate only if there are five colors among permanents you control.\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:When this artifact enters, draw a card, then choose a color. This artifact becomes the chosen color.\\n{3}, {T}: Draw a card. Activate only if there are five colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Puca's Eye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

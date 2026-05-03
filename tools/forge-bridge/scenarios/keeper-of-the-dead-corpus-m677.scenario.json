@@ -1,0 +1,25 @@
+{
+  "id": "keeper-of-the-dead-corpus-m677",
+  "description": "M6 corpus — Keeper of the Dead; ETB-on-bf.",
+  "seed": 63567,
+  "cards": {
+    "Keeper of the Dead": "Name:Keeper of the Dead\nManaCost:B B\nTypes:Creature Human Wizard\nPT:1/2\nA:AB$ Pump | Cost$ B T | ValidTgts$ Opponent | ValidAfterStack$ Ability.IsTargeting Player.HasCardsInGraveyard_Creature_LEY | TgtPrompt$ Choose target opponent with at least two fewer creature cards in their graveyard than you | SubAbility$ DeadKeepersDestroy | StackDescription$ None | SpellDescription$ Choose target opponent who had at least two fewer creature cards in their graveyard than you did as you activated this ability. Destroy target nonblack creature that player controls.\nSVar:DeadKeepersDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack+TargetedPlayerCtrl | TgtPrompt$ Select target nonblack creature targeted player controls\nSVar:Y:Count$ValidGraveyard Creature.YouOwn/Minus.2\nOracle:{B}, {T}: Choose target opponent who had at least two fewer creature cards in their graveyard than you did as you activated this ability. Destroy target nonblack creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Keeper of the Dead"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

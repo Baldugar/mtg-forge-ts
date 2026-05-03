@@ -1,0 +1,23 @@
+{
+  "id": "lady-of-laughter-corpus-m677",
+  "description": "M6 corpus — Lady of Laughter; in-hand parse.",
+  "seed": 63952,
+  "cards": {
+    "Lady of Laughter": "Name:Lady of Laughter\nManaCost:3 W W\nTypes:Creature Faerie Noble\nPT:4/5\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Celebration | SVarCompare$ GE2 | Execute$ TrigDraw | TriggerDescription$ Celebration — At the beginning of your end step, if two or more nonland permanents entered the battlefield under your control this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:Celebration:Count$ThisTurnEntered_Battlefield_Permanent.nonLand+YouCtrl\nOracle:Flying\\nCelebration — At the beginning of your end step, if two or more nonland permanents entered the battlefield under your control this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lady of Laughter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

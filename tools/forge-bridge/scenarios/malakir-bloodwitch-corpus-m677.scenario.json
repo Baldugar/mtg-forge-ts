@@ -1,0 +1,23 @@
+{
+  "id": "malakir-bloodwitch-corpus-m677",
+  "description": "M6 corpus — Malakir Bloodwitch; in-hand parse.",
+  "seed": 64652,
+  "cards": {
+    "Malakir Bloodwitch": "Name:Malakir Bloodwitch\nManaCost:3 B B\nTypes:Creature Vampire Shaman\nPT:4/4\nK:Flying\nK:Protection from white\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nSVar:X:Count$Valid Vampire.YouCtrl\nAI:RemoveDeck:Random\nOracle:Flying, protection from white\\nWhen Malakir Bloodwitch enters, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malakir Bloodwitch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

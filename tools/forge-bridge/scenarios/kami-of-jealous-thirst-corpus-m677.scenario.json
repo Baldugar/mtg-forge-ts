@@ -1,0 +1,25 @@
+{
+  "id": "kami-of-jealous-thirst-corpus-m677",
+  "description": "M6 corpus — Kami of Jealous Thirst; ETB-on-bf.",
+  "seed": 63455,
+  "cards": {
+    "Kami of Jealous Thirst": "Name:Kami of Jealous Thirst\nManaCost:2 B\nTypes:Creature Spirit\nPT:1/3\nK:Deathtouch\nA:AB$ LoseLife | Cost$ 4 B | LifeAmount$ 2 | Defined$ Opponent | ReduceCost$ 4 B | ReduceAmount$ X | ActivationLimit$ 1 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 2 life and you gain 2 life. This ability costs {4}{B} less to activate if you've drawn three or more cards this turn. Activate only once each turn.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nSVar:X:Count$Compare Y GE3.1.0\nSVar:Y:Count$YouDrewThisTurn\nDeckHas:Ability$LifeGain\nOracle:Deathtouch\\n{4}{B}: Each opponent loses 2 life and you gain 2 life. This ability costs {4}{B} less to activate if you've drawn three or more cards this turn. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kami of Jealous Thirst"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

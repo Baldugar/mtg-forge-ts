@@ -1,0 +1,23 @@
+{
+  "id": "rock-hydra-corpus-m677",
+  "description": "M6 corpus — Rock Hydra; in-hand parse.",
+  "seed": 68446,
+  "cards": {
+    "Rock Hydra": "Name:Rock Hydra\nManaCost:X R R\nTypes:Creature Hydra\nPT:0/0\nK:etbCounter:P1P1:X\nA:AB$ PreventDamage | Cost$ R | Defined$ Self | Amount$ 1 | SpellDescription$ Prevent the next 1 damage that would be dealt to CARDNAME this turn.\nA:AB$ PutCounter | Cost$ R R R | ActivationPhases$ Upkeep | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME. Activate only during your upkeep.\nR:Event$ DamageDone | ValidTarget$ Card.Self | ActiveZones$ Battlefield | ReplaceWith$ ReplaceDamage | PreventionEffect$ True | AlwaysReplace$ True | Description$ For each 1 damage that would be dealt to CARDNAME, if it has a +1/+1 counter on it, remove a +1/+1 counter from it and prevent that 1 damage.\nSVar:ReplaceDamage:DB$ ReplaceDamage | Amount$ Z | SubAbility$ RemoveCtrsRepl\nSVar:RemoveCtrsRepl:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ NumDmg\nSVar:NumDmg:ReplaceCount$DamageAmount\nSVar:X:Count$xPaid\nSVar:Y:Count$CardCounters.P1P1\nSVar:Z:SVar$NumDmg/LimitMax.Y\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Rock Hydra enters with X +1/+1 counters on it.\\nFor each 1 damage that would be dealt to Rock Hydra, if it has a +1/+1 counter on it, remove a +1/+1 counter from it and prevent that 1 damage.\\n{R}: Prevent the next 1 damage that would be dealt to Rock Hydra this turn.\\n{R}{R}{R}: Put a +1/+1 counter on Rock Hydra. Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rock Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

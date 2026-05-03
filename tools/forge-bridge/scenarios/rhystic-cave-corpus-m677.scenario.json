@@ -1,0 +1,25 @@
+{
+  "id": "rhystic-cave-corpus-m677",
+  "description": "M6 corpus — Rhystic Cave; ETB-on-bf.",
+  "seed": 68226,
+  "cards": {
+    "Rhystic Cave": "Name:Rhystic Cave\nManaCost:no cost\nTypes:Land\nA:AB$ ChooseColor | Cost$ T | AILogic$ MostProminentInComputerDeck | SubAbility$ DBMana | InstantSpeed$ True | SpellDescription$ Choose a color. Add one mana of that color unless any player pays {1}. Activate only as an instant.\nSVar:DBMana:DB$ Mana | Produced$ Chosen | UnlessCost$ 1 | UnlessPayer$ Player | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenColor$ True\nAI:RemoveDeck:All\nOracle:{T}: Choose a color. Add one mana of that color unless any player pays {1}. Activate only as an instant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rhystic Cave"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

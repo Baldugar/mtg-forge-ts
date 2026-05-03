@@ -1,0 +1,25 @@
+{
+  "id": "noble-purpose-corpus-m677",
+  "description": "M6 corpus — Noble Purpose; ETB-on-bf.",
+  "seed": 66029,
+  "cards": {
+    "Noble Purpose": "Name:Noble Purpose\nManaCost:3 W W\nTypes:Enchantment\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever a creature you control deals combat damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Noble Purpose"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

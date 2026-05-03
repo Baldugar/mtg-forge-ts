@@ -1,0 +1,23 @@
+{
+  "id": "odric-master-tactician-corpus-m677",
+  "description": "M6 corpus — Odric, Master Tactician; in-hand parse.",
+  "seed": 66215,
+  "cards": {
+    "Odric, Master Tactician": "Name:Odric, Master Tactician\nManaCost:2 W W\nTypes:Legendary Creature Human Soldier\nPT:3/4\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | PresentCompare$ GE3 | NoResolvingCheck$ True | Execute$ TrigOdricEffect | TriggerDescription$ Whenever CARDNAME and at least three other creatures attack, you choose which creatures block this combat and how those creatures block.\nSVar:TrigOdricEffect:DB$ Effect | StaticAbilities$ DeclareCombatants | Duration$ UntilEndOfCombat\nSVar:DeclareCombatants:Mode$ Continuous | Affected$ Player | DeclaresBlockers$ You | Description$ You choose which creatures block this combat and how those creatures block.\nAI:RemoveDeck:All\nOracle:First strike (This creature deals combat damage before creatures without first strike.)\\nWhenever Odric, Master Tactician and at least three other creatures attack, you choose which creatures block this combat and how those creatures block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Odric, Master Tactician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

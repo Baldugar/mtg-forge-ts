@@ -1,0 +1,23 @@
+{
+  "id": "scent-of-ivy-corpus-m677",
+  "description": "M6 corpus — Scent of Ivy; in-hand parse.",
+  "seed": 69131,
+  "cards": {
+    "Scent of Ivy": "Name:Scent of Ivy\nManaCost:G\nTypes:Instant\nA:SP$ Reveal | Defined$ You | RevealValid$ Card.Green | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBScentOfIvyPump | SpellDescription$ Reveal any number of green cards in your hand. Target creature gets +X/+X until end of turn, where X is the number of cards revealed this way.\nSVar:DBScentOfIvyPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +ScentOfIvyX | NumDef$ +ScentOfIvyX | SubAbility$ DBScentOfIvyCleanup\nSVar:ScentOfIvyX:Remembered$Amount\nSVar:DBScentOfIvyCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Reveal any number of green cards in your hand. Target creature gets +X/+X until end of turn, where X is the number of cards revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scent of Ivy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

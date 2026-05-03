@@ -1,0 +1,23 @@
+{
+  "id": "hooded-blightfang-corpus-m677",
+  "description": "M6 corpus — Hooded Blightfang; in-hand parse.",
+  "seed": 62468,
+  "cards": {
+    "Hooded Blightfang": "Name:Hooded Blightfang\nManaCost:2 B\nTypes:Creature Snake\nPT:1/4\nK:Deathtouch\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+withDeathtouch | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature you control with deathtouch attacks, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+withDeathtouch | ValidTarget$ Planeswalker | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever a creature you control with deathtouch deals damage to a planeswalker, destroy that planeswalker.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain\nDeckHints:Keyword$Deathtouch\nOracle:Deathtouch\\nWhenever a creature you control with deathtouch attacks, each opponent loses 1 life and you gain 1 life.\\nWhenever a creature you control with deathtouch deals damage to a planeswalker, destroy that planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hooded Blightfang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

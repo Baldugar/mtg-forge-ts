@@ -1,0 +1,23 @@
+{
+  "id": "mishra-eminent-one-corpus-m677",
+  "description": "M6 corpus — Mishra, Eminent One; in-hand parse.",
+  "seed": 65276,
+  "cards": {
+    "Mishra, Eminent One": "Name:Mishra, Eminent One\nManaCost:2 U B R\nTypes:Legendary Creature Human Artificer\nPT:5/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ At the beginning of combat on your turn, create a token that's a copy of target noncreature artifact you control, except its name is Mishra's Warform and it's a 4/4 Construct artifact creature in addition to its other types. It gains haste until end of turn. Sacrifice it at the beginning of the next end step.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Artifact.nonCreature+YouCtrl | TgtPrompt$ Select target noncreature artifact you control | AddTypes$ Creature & Construct | PumpKeywords$ Haste | PumpDuration$ EOT | AtEOT$ Sacrifice | NewName$ Mishra's Warform | SetPower$ 4 | SetToughness$ 4\nSVar:PlayMain1:TRUE\nDeckHas:Type$Construct & Ability$Sacrifice|Token\nDeckHints:Type$Artifact\nOracle:At the beginning of combat on your turn, create a token that's a copy of target noncreature artifact you control, except its name is Mishra's Warform and it's a 4/4 Construct artifact creature in addition to its other types. It gains haste until end of turn. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mishra, Eminent One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

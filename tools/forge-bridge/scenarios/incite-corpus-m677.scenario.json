@@ -1,0 +1,23 @@
+{
+  "id": "incite-corpus-m677",
+  "description": "M6 corpus — Incite; in-hand parse.",
+  "seed": 62849,
+  "cards": {
+    "Incite": "Name:Incite\nManaCost:R\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature | Colors$ Red | OverwriteColors$ True | SpellDescription$ Target creature becomes red until end of turn and attacks this turn if able.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MustAttack | ExileOnMoved$ Battlefield | RememberObjects$ Targeted\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.IsRemembered | Description$ This creature attacks this turn if able.\nAI:RemoveDeck:All\nOracle:Target creature becomes red until end of turn and attacks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Incite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

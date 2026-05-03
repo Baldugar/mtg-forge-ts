@@ -1,0 +1,23 @@
+{
+  "id": "ol-rin-s-searing-light-corpus-m677",
+  "description": "M6 corpus — Olórin's Searing Light; in-hand parse.",
+  "seed": 66274,
+  "cards": {
+    "Olórin's Searing Light": "Name:Olórin's Searing Light\nManaCost:2 R W\nTypes:Instant\nA:SP$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChooseCard | SubAbility$ DBExile | SpellDescription$ Each opponent exiles a creature with the greatest power among creatures that player controls. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, CARDNAME deals damage to each opponent equal to the power of the creature they exiled.\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Creature.greatestPowerControlledByRemembered | ChoiceTitle$ Choose a creature you control with the greatest power | Mandatory$ True | RememberChosen$ True\nSVar:DBExile:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Battlefield | Destination$ Exile | SubAbility$ RepeatBis | StackDescription$ Each opponent exiles a creature with the greatest power among creatures that player controls.\nSVar:RepeatBis:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | DamageMap$ True | RepeatSubAbility$ DBDamage | ConditionZone$ Graveyard | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionCompare$ GE2 | SubAbility$ DBCleanup\nSVar:DBDamage:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$Valid Card.RememberedPlayerCtrl$CardPower\nDeckHints:Ability$Graveyard|Mill\nOracle:Each opponent exiles a creature with the greatest power among creatures that player controls.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, Olórin's Searing Light deals damage to each opponent equal to the power of the creature they exiled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Olórin's Searing Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

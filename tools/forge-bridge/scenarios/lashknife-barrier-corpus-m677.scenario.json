@@ -1,0 +1,23 @@
+{
+  "id": "lashknife-barrier-corpus-m677",
+  "description": "M6 corpus — Lashknife Barrier; in-hand parse.",
+  "seed": 63997,
+  "cards": {
+    "Lashknife Barrier": "Name:Lashknife Barrier\nManaCost:2 W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Creature.YouCtrl | ReplaceWith$ DmgMinus1 | Description$ If a source would deal damage to a creature you control, it deals that much damage minus 1 to that creature instead.\nSVar:DmgMinus1:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Minus.1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:PlayMain1:TRUE\nOracle:When Lashknife Barrier enters, draw a card.\\nIf a source would deal damage to a creature you control, it deals that much damage minus 1 to that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lashknife Barrier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

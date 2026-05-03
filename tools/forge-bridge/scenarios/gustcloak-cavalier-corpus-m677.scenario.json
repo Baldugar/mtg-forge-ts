@@ -1,0 +1,23 @@
+{
+  "id": "gustcloak-cavalier-corpus-m677",
+  "description": "M6 corpus — Gustcloak Cavalier; in-hand parse.",
+  "seed": 61920,
+  "cards": {
+    "Gustcloak Cavalier": "Name:Gustcloak Cavalier\nManaCost:3 W W\nTypes:Creature Human Knight\nPT:2/2\nK:Flanking\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME attacks, you may tap target creature.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME becomes blocked, you may untap it and remove it from combat.\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ RemCombat\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ Self\nOracle:Flanking (Whenever a creature without flanking blocks this creature, the blocking creature gets -1/-1 until end of turn.)\\nWhenever Gustcloak Cavalier attacks, you may tap target creature.\\nWhenever Gustcloak Cavalier becomes blocked, you may untap Gustcloak Cavalier and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gustcloak Cavalier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

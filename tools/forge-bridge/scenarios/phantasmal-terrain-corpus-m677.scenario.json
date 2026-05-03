@@ -1,0 +1,23 @@
+{
+  "id": "phantasmal-terrain-corpus-m677",
+  "description": "M6 corpus — Phantasmal Terrain; in-hand parse.",
+  "seed": 66798,
+  "cards": {
+    "Phantasmal Terrain": "Name:Phantasmal Terrain\nManaCost:U U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:ChangeType\nK:ETBReplacement:Other:DBChooseBasic\nSVar:DBChooseBasic:DB$ ChooseType | Type$ Basic Land | SpellDescription$ As CARDNAME enters, choose a basic land type.\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddType$ ChosenType | RemoveLandTypes$ True | Description$ Enchanted land is the chosen type.\nAI:RemoveDeck:All\nOracle:Enchant land\\nAs Phantasmal Terrain enters, choose a basic land type.\\nEnchanted land is the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantasmal Terrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

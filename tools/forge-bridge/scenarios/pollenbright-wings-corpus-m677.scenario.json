@@ -1,0 +1,23 @@
+{
+  "id": "pollenbright-wings-corpus-m677",
+  "description": "M6 corpus — Pollenbright Wings; in-hand parse.",
+  "seed": 67040,
+  "cards": {
+    "Pollenbright Wings": "Name:Pollenbright Wings\nManaCost:4 G W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.powerGE1\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | Description$ Enchanted creature has flying.\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever enchanted creature deals combat damage to a player, create that many 1/1 green Saproling creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Token\nOracle:Enchant creature\\nEnchanted creature has flying.\\nWhenever enchanted creature deals combat damage to a player, create that many 1/1 green Saproling creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pollenbright Wings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

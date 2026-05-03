@@ -1,0 +1,23 @@
+{
+  "id": "graven-abomination-corpus-m677",
+  "description": "M6 corpus — Graven Abomination; in-hand parse.",
+  "seed": 61669,
+  "cards": {
+    "Graven Abomination": "Name:Graven Abomination\nManaCost:3\nTypes:Artifact Creature Horror\nPT:3/1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks, exile target card from defending player's graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in defending player's graveyard | ValidTgts$ Card | TargetsWithDefinedController$ TriggeredDefendingPlayer\nOracle:Whenever Graven Abomination attacks, exile target card from defending player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graven Abomination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

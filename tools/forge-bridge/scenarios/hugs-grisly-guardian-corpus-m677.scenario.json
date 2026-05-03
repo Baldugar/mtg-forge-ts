@@ -1,0 +1,23 @@
+{
+  "id": "hugs-grisly-guardian-corpus-m677",
+  "description": "M6 corpus — Hugs, Grisly Guardian; in-hand parse.",
+  "seed": 62573,
+  "cards": {
+    "Hugs, Grisly Guardian": "Name:Hugs, Grisly Guardian\nManaCost:X R R G G\nTypes:Legendary Creature Badger Warrior\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile the top X cards of your library. Until the end of your next turn, you may play those cards.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play the exiled cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land on each of your turns.\nSVar:PlayMain1:ALWAYS\nSVar:X:Count$xPaid\nOracle:Trample\\nWhen Hugs, Grisly Guardian enters, exile the top X cards of your library. Until the end of your next turn, you may play those cards.\\nYou may play an additional land on each of your turns.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hugs, Grisly Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

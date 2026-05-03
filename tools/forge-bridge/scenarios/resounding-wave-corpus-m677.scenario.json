@@ -1,0 +1,23 @@
+{
+  "id": "resounding-wave-corpus-m677",
+  "description": "M6 corpus — Resounding Wave; in-hand parse.",
+  "seed": 68109,
+  "cards": {
+    "Resounding Wave": "Name:Resounding Wave\nManaCost:2 U\nTypes:Instant\nK:Cycling:5 W U B\nA:SP$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target permanent to its owner's hand.\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ When you cycle CARDNAME, return up to two target permanents to their owners' hands.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Permanent | TargetMin$ 0 | TargetMax$ 2 | Origin$ Battlefield | Destination$ Hand\nOracle:Return target permanent to its owner's hand.\\nCycling {5}{W}{U}{B} ({5}{W}{U}{B}, Discard this card: Draw a card.)\\nWhen you cycle Resounding Wave, return two target permanents to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resounding Wave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

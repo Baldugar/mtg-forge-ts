@@ -1,0 +1,23 @@
+{
+  "id": "haakon-stromgald-scourge-corpus-m677",
+  "description": "M6 corpus — Haakon, Stromgald Scourge; in-hand parse.",
+  "seed": 61945,
+  "cards": {
+    "Haakon, Stromgald Scourge": "Name:Haakon, Stromgald Scourge\nManaCost:1 B B\nTypes:Legendary Creature Zombie Knight\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Graveyard | EffectZone$ Graveyard\nS:Mode$ CantBeCast | ValidCard$ Card.Self | Origin$ Exile,Hand,Library,Command | EffectZone$ Graveyard,Hand,Library,Command,Stack | Description$ You may cast CARDNAME from your graveyard, but not from anywhere else.\nS:Mode$ Continuous | Affected$ Knight.YouCtrl | ValidAfterStack$ Spell.Knight | MayPlay$ True | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ As long as NICKNAME is on the battlefield, you may cast Knight spells from your graveyard.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLose | TriggerDescription$ When NICKNAME dies, you lose 2 life.\nSVar:TrigLose:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nAI:RemoveDeck:Random\nSVar:DiscardMe:5\nOracle:You may cast Haakon, Stromgald Scourge from your graveyard, but not from anywhere else.\\nAs long as Haakon is on the battlefield, you may cast Knight spells from your graveyard.\\nWhen Haakon dies, you lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haakon, Stromgald Scourge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

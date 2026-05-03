@@ -1,0 +1,23 @@
+{
+  "id": "park-heights-pegasus-corpus-m677",
+  "description": "M6 corpus — Park Heights Pegasus; in-hand parse.",
+  "seed": 66630,
+  "cards": {
+    "Park Heights Pegasus": "Name:Park Heights Pegasus\nManaCost:G W\nTypes:Creature Pegasus\nPT:2/1\nK:Flying\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | CheckSVar$ X | SVarCompare$ GE2 | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card if you had two or more creatures enter the battlefield under your control this turn.\nSVar:TrigDraw:DB$ Draw\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.YouCtrl\nOracle:Flying, trample\\nWhenever Park Heights Pegasus deals combat damage to a player, draw a card if you had two or more creatures enter the battlefield under your control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Park Heights Pegasus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "palisade-giant-corpus-m677",
+  "description": "M6 corpus — Palisade Giant; ETB-on-bf.",
+  "seed": 66582,
+  "cards": {
+    "Palisade Giant": "Name:Palisade Giant\nManaCost:4 W W\nTypes:Creature Giant Soldier\nPT:2/7\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You,Permanent.Other+YouCtrl | DamageTarget$ Self | ReplaceWith$ DmgMe | Description$ All damage that would be dealt to you and other permanents you control is dealt to CARDNAME instead.\nSVar:DmgMe:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Self | VarType$ Card\nOracle:All damage that would be dealt to you and other permanents you control is dealt to Palisade Giant instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Palisade Giant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

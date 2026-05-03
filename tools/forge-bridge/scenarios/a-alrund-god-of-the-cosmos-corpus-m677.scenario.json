@@ -1,0 +1,23 @@
+{
+  "id": "a-alrund-god-of-the-cosmos-corpus-m677",
+  "description": "M6 corpus — A-Alrund, God of the Cosmos; in-hand parse.",
+  "seed": 68699,
+  "cards": {
+    "A-Alrund, God of the Cosmos": "Name:A-Alrund, God of the Cosmos\nManaCost:3 U U\nTypes:Legendary Creature God\nPT:1/1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ Z | AddToughness$ Z | Description$ NICKNAME gets +1/+1 for each card in your hand and each foretold card you own in exile.\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:Count$ValidExile Card.foretold+YouOwn\nSVar:Z:SVar$X/Plus.Y\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChooseCardType | TriggerDescription$ At the beginning of your end step, choose a card type, then reveal the top three cards of your library. Put all cards of the chosen type revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:TrigChooseCardType:DB$ ChooseType | Defined$ You | Type$ Card | SubAbility$ DBDig\nSVar:DBDig:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card.ChosenType | DestinationZone2$ Library | LibraryPosition$ -1\nAI:RemoveDeck:All\nDeckHints:Keyword$Foretell\nAlternateMode:Modal\nOracle:Alrund gets +1/+1 for each card in your hand and each foretold card you own in exile.\\nAt the beginning of your end step, choose a card type, then reveal the top three cards of your library. Put all cards of the chosen type revealed this way into your hand and the rest on the bottom of your library in any order.\n\nALTERNATE\n\nName:A-Hakka, Whispering Raven\nManaCost:1 U\nTypes:Legendary Creature Bird\nPT:3/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReturn | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, return it to its owner's hand, then scry 2.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nOracle:Flying\\nWhenever Hakka, Whispering Raven deals combat damage to a player, return it to its owner's hand, then scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Alrund, God of the Cosmos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

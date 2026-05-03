@@ -1,0 +1,23 @@
+{
+  "id": "sundering-stroke-corpus-m677",
+  "description": "M6 corpus — Sundering Stroke; in-hand parse.",
+  "seed": 71348,
+  "cards": {
+    "Sundering Stroke": "Name:Sundering Stroke\nManaCost:6 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select any target to distribute damage to | NumDmg$ 7 | TargetMin$ 1 | TargetMax$ 3 | DividedAsYouChoose$ 7 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBDmgAll | StackDescription$ SpellDescription | SpellDescription$ CARDNAME deals 7 damage divided as you choose among one, two, or three targets. If at least seven red mana was spent to cast this spell, instead CARDNAME deals 7 damage to each of those permanents and/or players.\nSVar:DBDmgAll:DB$ DealDamage | Defined$ Targeted | NumDmg$ 7 | ConditionCheckSVar$ X | StackDescription$ None\nSVar:X:Count$Adamant_7.Red.1.0\nOracle:Sundering Stroke deals 7 damage divided as you choose among one, two, or three targets. If at least seven red mana was spent to cast this spell, instead Sundering Stroke deals 7 damage to each of those permanents and/or players.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sundering Stroke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "naktamun-shines-again-corpus-m677",
+  "description": "M6 corpus — Naktamun Shines Again; in-hand parse.",
+  "seed": 65718,
+  "cards": {
+    "Naktamun Shines Again": "Name:Naktamun Shines Again\nManaCost:2 W\nTypes:Enchantment Saga\nK:Chapter:3:TrigPumpP1,TrigSeek,TrigPumpFly\nSVar:TrigPumpP1:DB$ PumpAll | ValidCards$ Creature.YouOwn+!token+cmcLE2 | PumpZone$ All | Duration$ Perpetual | NumAtt$ +1 | SpellDescription$ All creature cards you own with mana value 2 or less perpetually get +1/+0.\nSVar:TrigSeek:DB$ Seek | Type$ Creature.cmcLE2 | RememberFound$ True | SubAbility$ DBPut | SpellDescription$ Seek a creature with mana value 2 or less and put it onto the battlefield.\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered\nSVar:TrigPumpFly:DB$ PumpAll | ValidCards$ Creature.YouCtrl+cmcLE2 | KW$ Flying | SpellDescription$ Creatures you control with mana value 2 or less gain flying until end of turn.\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — All creature cards you own with mana value 2 or less perpetually get +1/+0.\\nII — Seek a creature with mana value 2 or less and put it onto the battlefield.\\nIII — Creatures you control with mana value 2 or less gain flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naktamun Shines Again"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

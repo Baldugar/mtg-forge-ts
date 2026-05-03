@@ -1,0 +1,23 @@
+{
+  "id": "heartstabber-mosquito-corpus-m677",
+  "description": "M6 corpus — Heartstabber Mosquito; in-hand parse.",
+  "seed": 62178,
+  "cards": {
+    "Heartstabber Mosquito": "Name:Heartstabber Mosquito\nManaCost:3 B\nTypes:Creature Insect\nPT:2/2\nK:Flying\nK:Kicker:2 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, destroy target creature.\nSVar:TrigKicker:DB$ Destroy | ValidTgts$ Creature\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlayKicked:Creature.OppCtrl\nOracle:Kicker {2}{B} (You may pay an additional {2}{B} as you cast this spell.)\\nFlying\\nWhen Heartstabber Mosquito enters, if it was kicked, destroy target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heartstabber Mosquito"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

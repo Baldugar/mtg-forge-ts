@@ -1,0 +1,23 @@
+{
+  "id": "nimble-larcenist-corpus-m677",
+  "description": "M6 corpus — Nimble Larcenist; in-hand parse.",
+  "seed": 65975,
+  "cards": {
+    "Nimble Larcenist": "Name:Nimble Larcenist\nManaCost:W U B\nTypes:Creature Bird Rogue\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand. You choose an artifact, instant, or sorcery card from it and exile that card.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Artifact,Instant,Sorcery | ChangeNum$ 1 | IsCurse$ True\nOracle:Flying\\nWhen Nimble Larcenist enters, target opponent reveals their hand. You choose an artifact, instant, or sorcery card from it and exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nimble Larcenist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

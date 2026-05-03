@@ -1,0 +1,23 @@
+{
+  "id": "skyscanner-corpus-m677",
+  "description": "M6 corpus — Skyscanner; in-hand parse.",
+  "seed": 70133,
+  "cards": {
+    "Skyscanner": "Name:Skyscanner\nManaCost:3\nTypes:Artifact Creature Thopter\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Flying\\nWhen Skyscanner enters, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyscanner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

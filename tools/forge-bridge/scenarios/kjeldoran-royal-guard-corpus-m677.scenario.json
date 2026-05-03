@@ -1,0 +1,25 @@
+{
+  "id": "kjeldoran-royal-guard-corpus-m677",
+  "description": "M6 corpus — Kjeldoran Royal Guard; ETB-on-bf.",
+  "seed": 63738,
+  "cards": {
+    "Kjeldoran Royal Guard": "Name:Kjeldoran Royal Guard\nManaCost:3 W W\nTypes:Creature Human Soldier\nPT:2/5\nA:AB$ Effect | Cost$ T | ReplacementEffects$ DamageEvent | AILogic$ Fog | SpellDescription$ All combat damage that would be dealt to you by unblocked creatures this turn is dealt to CARDNAME instead.\nSVar:DamageEvent:Event$ DamageDone | ValidSource$ Creature.unblocked | ValidTarget$ You | ReplaceWith$ DmgSelf | IsCombat$ True | DamageTarget$ EffectSource | Description$ All combat damage that would be dealt to you by unblocked creatures this turn is dealt to EFFECTSOURCE instead.\nSVar:DmgSelf:DB$ ReplaceEffect | VarName$ Affected | VarValue$ EffectSource | VarType$ Card\nOracle:{T}: All combat damage that would be dealt to you by unblocked creatures this turn is dealt to Kjeldoran Royal Guard instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kjeldoran Royal Guard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mythos-of-snapdax-corpus-m677",
+  "description": "M6 corpus — Mythos of Snapdax; in-hand parse.",
+  "seed": 65692,
+  "cards": {
+    "Mythos of Snapdax": "Name:Mythos of Snapdax\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ RepeatEach | ConditionManaSpent$ B R | RepeatPlayers$ Player | RepeatSubAbility$ YouChoose | SubAbility$ AllChoose | SpellDescription$ Each player chooses an artifact, a creature, an enchantment, and a planeswalker from among the nonland permanents they control, then sacrifices the rest. If {B}{R} was spent to cast this spell, you choose the permanents for each player instead.\nSVar:YouChoose:DB$ ChooseCard | Defined$ You | Choices$ Permanent.nonLand | ChooseEach$ Artifact & Creature & Enchantment & Planeswalker | ControlledByPlayer$ Remembered | Reveal$ True | RememberChosen$ True | Mandatory$ True\nSVar:AllChoose:DB$ ChooseCard | ConditionManaNotSpent$ B R | Defined$ Player | Choices$ Permanent.nonLand | ChooseEach$ Artifact & Creature & Enchantment & Planeswalker | ControlledByPlayer$ Chooser | Reveal$ True | Mandatory$ True | RememberChosen$ True | SubAbility$ SacAllOthers\nSVar:SacAllOthers:DB$ SacrificeAll | ValidCards$ Permanent.nonLand+!IsRemembered | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Each player chooses an artifact, a creature, an enchantment, and a planeswalker from among the nonland permanents they control, then sacrifices the rest. If {B}{R} was spent to cast this spell, you choose the permanents for each player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mythos of Snapdax"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

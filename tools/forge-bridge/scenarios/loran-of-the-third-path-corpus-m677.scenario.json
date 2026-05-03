@@ -1,0 +1,23 @@
+{
+  "id": "loran-of-the-third-path-corpus-m677",
+  "description": "M6 corpus — Loran of the Third Path; in-hand parse.",
+  "seed": 64391,
+  "cards": {
+    "Loran of the Third Path": "Name:Loran of the Third Path\nManaCost:2 W\nTypes:Legendary Creature Human Artificer\nPT:2/1\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy up to one target artifact or enchantment.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select up to one target artifact or enchantment\nA:AB$ Draw | Cost$ T | ValidTgts$ Opponent | Defined$ TargetedAndYou | NumCards$ 1 | SpellDescription$ You and target opponent each draw a card.\nAI:RemoveDeck:Random\nOracle:Vigilance\\nWhen Loran of the Third Path enters, destroy up to one target artifact or enchantment.\\n{T}: You and target opponent each draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loran of the Third Path"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

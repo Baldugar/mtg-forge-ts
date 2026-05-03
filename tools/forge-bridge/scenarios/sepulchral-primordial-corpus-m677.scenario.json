@@ -1,0 +1,23 @@
+{
+  "id": "sepulchral-primordial-corpus-m677",
+  "description": "M6 corpus — Sepulchral Primordial; in-hand parse.",
+  "seed": 69456,
+  "cards": {
+    "Sepulchral Primordial": "Name:Sepulchral Primordial\nManaCost:5 B B\nTypes:Creature Avatar\nPT:5/4\nK:Intimidate\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ReturnOneEach | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, for each opponent, you may put up to one target creature card from that player's graveyard onto the battlefield under your control.\nSVar:ReturnOneEach:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ValidTgts$ Creature.OppCtrl | TgtZone$ Graveyard | TgtPrompt$ Choose target creature card in each opponent's graveyard | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True\nSVar:OneEach:PlayerCountOpponents$Amount\nOracle:Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nWhen Sepulchral Primordial enters, for each opponent, you may put up to one target creature card from that player's graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sepulchral Primordial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

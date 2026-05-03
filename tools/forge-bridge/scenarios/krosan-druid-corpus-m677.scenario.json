@@ -1,0 +1,23 @@
+{
+  "id": "krosan-druid-corpus-m677",
+  "description": "M6 corpus — Krosan Druid; in-hand parse.",
+  "seed": 63890,
+  "cards": {
+    "Krosan Druid": "Name:Krosan Druid\nManaCost:2 G\nTypes:Creature Centaur Druid\nPT:2/3\nK:Kicker:4 G\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, if it was kicked, you gain 10 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 10\nOracle:Kicker {4}{G} (You may pay an additional {4}{G} as you cast this spell.)\\nWhen Krosan Druid enters, if it was kicked, you gain 10 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krosan Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

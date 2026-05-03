@@ -1,0 +1,23 @@
+{
+  "id": "spelltwine-corpus-m677",
+  "description": "M6 corpus — Spelltwine; in-hand parse.",
+  "seed": 70596,
+  "cards": {
+    "Spelltwine": "Name:Spelltwine\nManaCost:5 U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | RememberChanged$ True | SubAbility$ TgtOpp | SpellDescription$ Exile target instant or sorcery card from your graveyard and target instant or sorcery from your opponent's graveyard. Copy those cards. Cast the copies if able without paying their mana cost.\nSVar:TgtOpp:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target instant or sorcery card in your opponent's graveyard | ValidTgts$ Instant.OppOwn,Sorcery.OppOwn | RememberChanged$ True | SubAbility$ CopyYou\nSVar:CopyYou:DB$ Play | Defined$ Remembered | Amount$ All | CopyCard$ True | WithoutManaCost$ True | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | Defined$ Self | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile target instant or sorcery card from your graveyard and target instant or sorcery card from an opponent's graveyard. Copy those cards. Cast the copies if able without paying their mana costs. Exile Spelltwine.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spelltwine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

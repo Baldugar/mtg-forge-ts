@@ -1,0 +1,23 @@
+{
+  "id": "memory-leak-corpus-m677",
+  "description": "M6 corpus — Memory Leak; in-hand parse.",
+  "seed": 64968,
+  "cards": {
+    "Memory Leak": "Name:Memory Leak\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | SubAbility$ DBExile | SpellDescription$ Target opponent reveals their hand.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | Mandatory$ True | StackDescription$ {p:You} chooses a nonland card from {p:Targeted}'s graveyard or hand and exiles it. | SpellDescription$ You choose a nonland card from that player's graveyard or hand and exile it.\nK:Cycling:1\nDeckHas:Ability$Discard\nOracle:Target opponent reveals their hand. You choose a nonland card from that player's graveyard or hand and exile it.\\nCycling {1} ({1}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memory Leak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

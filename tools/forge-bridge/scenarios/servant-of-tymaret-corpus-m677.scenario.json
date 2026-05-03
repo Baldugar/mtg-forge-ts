@@ -1,0 +1,25 @@
+{
+  "id": "servant-of-tymaret-corpus-m677",
+  "description": "M6 corpus — Servant of Tymaret; ETB-on-bf.",
+  "seed": 69508,
+  "cards": {
+    "Servant of Tymaret": "Name:Servant of Tymaret\nManaCost:2 B\nTypes:Creature Zombie\nPT:1/3\nA:AB$ Regenerate | Cost$ 2 B | SpellDescription$ Regenerate CARDNAME.\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Inspired — Whenever CARDNAME becomes untapped, each opponent loses 1 life. You gain life equal to the life lost this way.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nOracle:Inspired — Whenever Servant of Tymaret becomes untapped, each opponent loses 1 life. You gain life equal to the life lost this way.\\n{2}{B}: Regenerate Servant of Tymaret.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Servant of Tymaret"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

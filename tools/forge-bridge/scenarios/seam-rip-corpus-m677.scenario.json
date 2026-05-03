@@ -1,0 +1,23 @@
+{
+  "id": "seam-rip-corpus-m677",
+  "description": "M6 corpus — Seam Rip; in-hand parse.",
+  "seed": 69291,
+  "cards": {
+    "Seam Rip": "Name:Seam Rip\nManaCost:W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this enchantment enters, exile target nonland permanent an opponent controls with mana value 2 or less until this enchantment leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl+cmcLE2 | TgtPrompt$ Select target nonland permanent an opponent controls with mana value 2 or less | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When this enchantment enters, exile target nonland permanent an opponent controls with mana value 2 or less until this enchantment leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seam Rip"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

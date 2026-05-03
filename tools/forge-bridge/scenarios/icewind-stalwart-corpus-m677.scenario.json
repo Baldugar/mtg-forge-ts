@@ -1,0 +1,23 @@
+{
+  "id": "icewind-stalwart-corpus-m677",
+  "description": "M6 corpus — Icewind Stalwart; in-hand parse.",
+  "seed": 62702,
+  "cards": {
+    "Icewind Stalwart": "Name:Icewind Stalwart\nManaCost:3 W\nTypes:Creature Tiefling Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Protection Fighting Style — When CARDNAME enters, exile up to one target non-Warrior creature you control, then return it to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | ValidTgts$ Creature.nonWarrior+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target non-Warrior creature you control | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Protection Fighting Style — When Icewind Stalwart enters, exile up to one target non-Warrior creature you control, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icewind Stalwart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

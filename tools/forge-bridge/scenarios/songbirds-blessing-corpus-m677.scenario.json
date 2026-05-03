@@ -1,0 +1,23 @@
+{
+  "id": "songbirds-blessing-corpus-m677",
+  "description": "M6 corpus — Songbirds' Blessing; in-hand parse.",
+  "seed": 70404,
+  "cards": {
+    "Songbirds' Blessing": "Name:Songbirds' Blessing\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigDigUntil | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature attacks, reveal cards from the top of your library until you reveal an Aura card. You may put that card onto the battlefield. If you don't, put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Aura | FoundDestination$ Battlefield | OptionalFoundMove$ True | OptionalNoDestination$ Hand | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Enchant creature\\nWhenever enchanted creature attacks, reveal cards from the top of your library until you reveal an Aura card. You may put that card onto the battlefield. If you don't, put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Songbirds' Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

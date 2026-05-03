@@ -1,0 +1,23 @@
+{
+  "id": "ruthless-winnower-corpus-m677",
+  "description": "M6 corpus — Ruthless Winnower; in-hand parse.",
+  "seed": 68693,
+  "cards": {
+    "Ruthless Winnower": "Name:Ruthless Winnower\nManaCost:3 B B\nTypes:Creature Elf Rogue\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player sacrifices a non-Elf creature.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature.nonElf | Defined$ TriggeredPlayer\nAI:RemoveDeck:Random\nDeckHints:Type$Elf\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of each player's upkeep, that player sacrifices a non-Elf creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruthless Winnower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

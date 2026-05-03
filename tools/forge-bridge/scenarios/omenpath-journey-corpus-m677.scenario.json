@@ -1,0 +1,23 @@
+{
+  "id": "omenpath-journey-corpus-m677",
+  "description": "M6 corpus — Omenpath Journey; in-hand parse.",
+  "seed": 66283,
+  "cards": {
+    "Omenpath Journey": "Name:Omenpath Journey\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for up to five land cards that have different names, exile them, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | ChangeType$ Land.YouOwn | DifferentNames$ True | ChangeNum$ 5 | Origin$ Library | Destination$ Exile\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeBattlefield | TriggerDescription$ At the beginning of your end step, choose a card at random exiled with CARDNAME and put it onto the battlefield tapped.\nSVar:TrigChangeBattlefield:DB$ ChangeZone | Hidden$ True | Origin$ Exile | Destination$ Battlefield | Tapped$ True | AtRandom$ True | ChangeType$ Card.ExiledWithSource\nOracle:When Omenpath Journey enters, search your library for up to five land cards that have different names, exile them, then shuffle.\\nAt the beginning of your end step, choose a card at random exiled with Omenpath Journey and put it onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omenpath Journey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

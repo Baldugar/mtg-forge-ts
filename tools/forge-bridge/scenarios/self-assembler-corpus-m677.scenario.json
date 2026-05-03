@@ -1,0 +1,23 @@
+{
+  "id": "self-assembler-corpus-m677",
+  "description": "M6 corpus — Self-Assembler; in-hand parse.",
+  "seed": 69424,
+  "cards": {
+    "Self-Assembler": "Name:Self-Assembler\nManaCost:5\nTypes:Artifact Creature Assembly-Worker\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an Assembly-Worker creature card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.Assembly-Worker | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Type$Assembly-Worker\nOracle:When Self-Assembler enters, you may search your library for an Assembly-Worker creature card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Self-Assembler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

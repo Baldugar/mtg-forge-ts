@@ -1,0 +1,25 @@
+{
+  "id": "mirror-mad-phantasm-corpus-m677",
+  "description": "M6 corpus — Mirror-Mad Phantasm; ETB-on-bf.",
+  "seed": 65244,
+  "cards": {
+    "Mirror-Mad Phantasm": "Name:Mirror-Mad Phantasm\nManaCost:3 U U\nTypes:Creature Spirit\nPT:5/1\nK:Flying\nA:AB$ ChangeZone | Cost$ 1 U | Defined$ Self | Origin$ Battlefield | Destination$ Library | Shuffle$ True | RememberChanged$ True | SubAbility$ DBDig | SpellDescription$ CARDNAME's owner shuffles it into their library. If that player does, they reveal cards from the top of that library until a card named Mirror-Mad Phantasm is revealed. That player puts that card onto the battlefield and all other cards revealed this way into their graveyard.\nSVar:DBDig:DB$ DigUntil | ConditionCheckSVar$ X | Valid$ Card.namedMirror-Mad Phantasm | ValidDescription$ Mirror-Mad Phantasm | FoundDestination$ Battlefield | RevealedDestination$ Graveyard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHints:Name$Mirror-Mad Phantasm\nOracle:Flying\\n{1}{U}: Mirror-Mad Phantasm's owner shuffles it into their library. If that player does, they reveal cards from the top of that library until a card named Mirror-Mad Phantasm is revealed. The player puts that card onto the battlefield and all other cards revealed this way into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mirror-Mad Phantasm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

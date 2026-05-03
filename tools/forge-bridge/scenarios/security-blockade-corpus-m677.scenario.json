@@ -1,0 +1,23 @@
+{
+  "id": "security-blockade-corpus-m677",
+  "description": "M6 corpus — Security Blockade; in-hand parse.",
+  "seed": 69347,
+  "cards": {
+    "Security Blockade": "Name:Security Blockade\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddAbility$ PreventDamage | Description$ Enchanted land has \"{T}: Prevent the next 1 damage that would be dealt to you this turn.\"\nSVar:PreventDamage:AB$ PreventDamage | Cost$ T | Defined$ You | Amount$ 1 | SpellDescription$ Prevent the next 1 damage that would be dealt to you this turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You\nSVar:NonStackingAttachEffect:True\nDeckHas:Ability$Token\nOracle:Enchant land\\nWhen Security Blockade enters, create a 2/2 white Knight creature token with vigilance.\\nEnchanted land has \"{T}: Prevent the next 1 damage that would be dealt to you this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Security Blockade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

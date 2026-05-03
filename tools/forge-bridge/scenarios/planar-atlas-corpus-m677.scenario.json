@@ -1,0 +1,23 @@
+{
+  "id": "planar-atlas-corpus-m677",
+  "description": "M6 corpus — Planar Atlas; in-hand parse.",
+  "seed": 66965,
+  "cards": {
+    "Planar Atlas": "Name:Planar Atlas\nManaCost:2\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may look at the top four cards of your library. If you do, reveal up to one land card from among them, then put that card on top of your library and the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | Optional$ True | ChangeNum$ 1 | ForceRevealToController$ True | ChangeValid$ Land | DestinationZone$ Library | LibraryPosition$ 0 | RestRandomOrder$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nOracle:Planar Atlas enters tapped.\\nWhen Planar Atlas enters, you may look at the top four cards of your library. If you do, reveal up to one land card from among them, then put that card on top of your library and the rest on the bottom of your library in a random order.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planar Atlas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

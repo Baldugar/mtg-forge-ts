@@ -1,0 +1,23 @@
+{
+  "id": "lava-storm-corpus-m677",
+  "description": "M6 corpus — Lava Storm; in-hand parse.",
+  "seed": 64027,
+  "cards": {
+    "Lava Storm": "Name:Lava Storm\nManaCost:3 R R\nTypes:Instant\nA:SP$ GenericChoice | Choices$ DBDmgAttackers,DBDmgBlockers | Defined$ You | AILogic$ BestOption | StackDescription$ SpellDescription | SpellDescription$ CARDNAME deals 2 damage to each attacking creature or CARDNAME deals 2 damage to each blocking creature.\nSVar:DBDmgAttackers:DB$ DamageAll | ValidCards$ Creature.attacking | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to each attacking creature.\nSVar:DBDmgBlockers:DB$ DamageAll | ValidCards$ Creature.blocking | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to each blocking creature.\nOracle:Lava Storm deals 2 damage to each attacking creature or Lava Storm deals 2 damage to each blocking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lava Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

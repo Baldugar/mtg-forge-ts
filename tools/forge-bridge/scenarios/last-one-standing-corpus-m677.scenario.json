@@ -1,0 +1,23 @@
+{
+  "id": "last-one-standing-corpus-m677",
+  "description": "M6 corpus — Last One Standing; in-hand parse.",
+  "seed": 64008,
+  "cards": {
+    "Last One Standing": "Name:Last One Standing\nManaCost:1 B R\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ You | Amount$ 1 | Choices$ Creature | AtRandom$ True | SubAbility$ DBDestroyAll | SpellDescription$ Choose a creature at random, then destroy the rest.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonChosenCard\nOracle:Choose a creature at random, then destroy the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last One Standing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

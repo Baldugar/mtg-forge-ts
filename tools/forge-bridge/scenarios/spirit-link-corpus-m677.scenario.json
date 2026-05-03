@@ -1,0 +1,23 @@
+{
+  "id": "spirit-link-corpus-m677",
+  "description": "M6 corpus — Spirit Link; in-hand parse.",
+  "seed": 70701,
+  "cards": {
+    "Spirit Link": "Name:Spirit Link\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDealtOnce | ValidSource$ Card.AttachedBy | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:LikeLifeLink:True\nDeckHas:Ability$LifeGain\nOracle:Enchant creature (Target a creature as you cast this. This card enters attached to that creature.)\\nWhenever enchanted creature deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit Link"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

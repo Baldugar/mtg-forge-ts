@@ -1,0 +1,23 @@
+{
+  "id": "lydia-frye-corpus-m677",
+  "description": "M6 corpus — Lydia Frye; in-hand parse.",
+  "seed": 64532,
+  "cards": {
+    "Lydia Frye": "Name:Lydia Frye\nManaCost:2 UB\nTypes:Legendary Creature Human Assassin\nPT:3/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerGE3 | Description$ CARDNAME can't be blocked by creatures with power 3 or greater.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your end step, surveil X, where X is the number of tapped Assassins you control. (Look at the top X cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ X\nSVar:X:Count$Valid Assassin.YouCtrl+tapped\nOracle:Lydia Frye can't be blocked by creatures with power 3 or greater.\\nAt the beginning of your end step, surveil X, where X is the number of tapped Assassins you control. (Look at the top X cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lydia Frye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

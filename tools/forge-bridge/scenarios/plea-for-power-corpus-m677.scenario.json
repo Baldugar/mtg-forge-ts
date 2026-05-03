@@ -1,0 +1,23 @@
+{
+  "id": "plea-for-power-corpus-m677",
+  "description": "M6 corpus — Plea for Power; in-hand parse.",
+  "seed": 67014,
+  "cards": {
+    "Plea for Power": "Name:Plea for Power\nManaCost:3 U\nTypes:Sorcery\nA:SP$ Vote | Defined$ Player | Choices$ DBAddTurn,DBDrawThree | VoteTiedAbility$ DBDrawThree | AILogic$ Always | SpellDescription$ Will of the Council — Starting with you, each player votes for time or knowledge. If time gets more votes, take an extra turn after this one. If knowledge gets more votes or the vote is tied, draw three cards.\nSVar:DBAddTurn:DB$ AddTurn | NumTurns$ 1 | Defined$ You | SpellDescription$ Time\nSVar:DBDrawThree:DB$ Draw | Defined$ You | NumCards$ 3 | SpellDescription$ Knowledge\nSVar:NeedsToPlayVar:Z LE6\nSVar:Z:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:Random\nOracle:Will of the council — Starting with you, each player votes for time or knowledge. If time gets more votes, take an extra turn after this one. If knowledge gets more votes or the vote is tied, draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plea for Power"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

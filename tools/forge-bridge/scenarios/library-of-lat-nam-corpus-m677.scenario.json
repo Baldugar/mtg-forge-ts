@@ -1,0 +1,23 @@
+{
+  "id": "library-of-lat-nam-corpus-m677",
+  "description": "M6 corpus — Library of Lat-Nam; in-hand parse.",
+  "seed": 64182,
+  "cards": {
+    "Library of Lat-Nam": "Name:Library of Lat-Nam\nManaCost:4 U\nTypes:Sorcery\nA:SP$ Charm | Chooser$ Opponent | Choices$ DelTrigSlowDraw,Tutor\nSVar:DelTrigSlowDraw:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowThree | SpellDescription$ You draw three cards at the beginning of the next turn's upkeep.\nSVar:DrawSlowThree:DB$ Draw | NumCards$ 3 | Defined$ You\nSVar:Tutor:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | SpellDescription$ You search your library for a card, put that card into your hand, then shuffle.\nOracle:An opponent chooses one —\\n• You draw three cards at the beginning of the next turn's upkeep.\\n• You search your library for a card, put that card into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Library of Lat-Nam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

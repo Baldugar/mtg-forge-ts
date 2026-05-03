@@ -1,0 +1,23 @@
+{
+  "id": "sejiri-shelter-corpus-m677",
+  "description": "M6 corpus — Sejiri Shelter; in-hand parse.",
+  "seed": 69408,
+  "cards": {
+    "Sejiri Shelter": "Name:Sejiri Shelter\nManaCost:1 W\nTypes:Instant\nA:SP$ Protection | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Gains$ Choice | Choices$ AnyColor | SpellDescription$ Target creature you control gains protection from the color of your choice until end of turn.\nAlternateMode:Modal\nOracle:Target creature you control gains protection from the color of your choice until end of turn.\n\nALTERNATE\n\nName:Sejiri Glacier\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:Sejiri Glacier enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sejiri Shelter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

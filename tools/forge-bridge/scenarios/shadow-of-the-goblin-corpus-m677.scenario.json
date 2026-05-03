@@ -1,0 +1,23 @@
+{
+  "id": "shadow-of-the-goblin-corpus-m677",
+  "description": "M6 corpus — Shadow of the Goblin; in-hand parse.",
+  "seed": 69552,
+  "cards": {
+    "Shadow of the Goblin": "Name:Shadow of the Goblin\nVariant:UniversesWithin:FlavorName:Quint's Insight\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Unreliable Visions — At the beginning of your first main phase, discard a card. If you do, draw a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl | Origin$ Ante,Command,Exile,Graveyard,Library | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Undying Vengeance — Whenever you play a land or cast a spell from anywhere other than your hand, this enchantment deals 1 damage to each opponent.\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl+YouDontOwn | Origin$ Hand | Execute$ TrigDamage | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Undying Vengeance — Whenever you play a land or cast a spell from anywhere other than your hand, this enchantment deals 1 damage to each opponent.\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Undying Vengeance — Whenever you play a land or cast a spell from anywhere other than your hand, this enchantment deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nOracle:Unreliable Visions — At the beginning of your first main phase, discard a card. If you do, draw a card.\\nUndying Vengeance — Whenever you play a land or cast a spell from anywhere other than your hand, this enchantment deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadow of the Goblin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

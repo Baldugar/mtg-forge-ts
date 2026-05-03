@@ -1,0 +1,23 @@
+{
+  "id": "a-manticore-corpus-m677",
+  "description": "M6 corpus — A-Manticore; in-hand parse.",
+  "seed": 68762,
+  "cards": {
+    "A-Manticore": "Name:A-Manticore\nManaCost:3 B\nTypes:Creature Manticore\nPT:3/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TailSpikes | TriggerDescription$ Tail Spikes — When CARDNAME enters, destroy target creature an opponent controls that was dealt damage this turn.\nSVar:TailSpikes:DB$ Destroy | ValidTgts$ Creature.wasDealtDamageThisTurn+OppCtrl | TgtPrompt$ Select target creature an opponent controls that was dealt damage this turn\nOracle:Flash\\nFlying\\nTail Spikes — When Manticore enters, destroy target creature an opponent controls that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Manticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

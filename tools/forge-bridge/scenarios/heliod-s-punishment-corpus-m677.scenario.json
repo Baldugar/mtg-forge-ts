@@ -1,0 +1,23 @@
+{
+  "id": "heliod-s-punishment-corpus-m677",
+  "description": "M6 corpus — Heliod's Punishment; in-hand parse.",
+  "seed": 62228,
+  "cards": {
+    "Heliod's Punishment": "Name:Heliod's Punishment\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:etbCounter:TASK:4\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | RemoveAllAbilities$ True | AddAbility$ ABRemoveCounter | AddSVar$ DBHeliodsPunishment | Description$ It loses all abilities and has \"{T}: Remove a task counter from CARDNAME. Then if it has no task counters on it, destroy CARDNAME.\"\nSVar:ABRemoveCounter:AB$ RemoveCounter | Cost$ T | CounterType$ TASK | CounterNum$ 1 | Defined$ OriginalHost | StackDescription$ Remove a task counter from {c:OriginalHost}. Then if it has no task counters on it, destroy {c:OriginalHost}. | SpellDescription$ Remove a task counter from ORIGINALHOST. Then if it has no task counters on it, destroy ORIGINALHOST. | SubAbility$ DBHeliodsPunishment\nSVar:DBHeliodsPunishment:DB$ Destroy | Defined$ OriginalHost | ConditionDefined$ OriginalHost | ConditionPresent$ Card.counters_EQ0_TASK | StackDescription$ None\nDeckHas:Ability$Counters\nOracle:Enchant creature\\nHeliod's Punishment enters with four task counters on it.\\nEnchanted creature can't attack or block. It loses all abilities and has \"{T}: Remove a task counter from Heliod's Punishment. Then if it has no task counters on it, destroy Heliod's Punishment.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heliod's Punishment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

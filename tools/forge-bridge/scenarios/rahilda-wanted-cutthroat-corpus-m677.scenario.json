@@ -1,0 +1,23 @@
+{
+  "id": "rahilda-wanted-cutthroat-corpus-m677",
+  "description": "M6 corpus — Rahilda, Wanted Cutthroat; in-hand parse.",
+  "seed": 67579,
+  "cards": {
+    "Rahilda, Wanted Cutthroat": "Name:Rahilda, Wanted Cutthroat\nManaCost:1 R\nTypes:Legendary Creature Human Werewolf\nPT:2/2\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigExile | CombatDamage$ True | TriggerDescription$ When CARDNAME deals combat damage to a player, exile a nonland card from their library at random. During any turn you attacked with a Wolf or Werewolf, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TriggeredTarget | ChangeType$ Card.nonLand | ChangeNum$ 1 | Hidden$ True | AtRandom$ True | NoShuffle$ True | Mandatory$ True | NoLooking$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile | Duration$ Permanent\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | CheckSVar$ X | Description$ During any turn you attacked with a Wolf or Werewolf, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CreaturesAttackedThisTurn Creature.Wolf+YouCtrl,Creature.Werewolf+YouCtrl\nK:Daybound\nDeckHints:Type$Wolf|Werewolf\nAlternateMode:DoubleFaced\nOracle:First strike\\nWhen Rahilda, Wanted Cutthroat deals combat damage to a player, exile a nonland card from their library at random. During any turn you attacked with a Wolf or Werewolf, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\\nDaybound\n\nALTERNATE\n\nName:Rahilda, Feral Outlaw\nManaCost:no cost\nColors:red\nTypes:Legendary Creature Werewolf\nPT:2/2\nK:Double Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigExile | CombatDamage$ True | TriggerDescription$ When CARDNAME deals combat damage to a player, exile a nonland card from their library at random. During any turn you attacked with a Wolf or Werewolf, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TriggeredTarget | ChangeType$ Card.nonLand | ChangeNum$ 1 | Hidden$ True | AtRandom$ True | NoShuffle$ True | Mandatory$ True | NoLooking$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile | Duration$ Permanent\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | CheckSVar$ X | Description$ During any turn you attacked with a Wolf or Werewolf, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CreaturesAttackedThisTurn Creature.Wolf+YouCtrl,Creature.Werewolf+YouCtrl\nK:Nightbound\nOracle:Double strike\\nWhen Rahilda, Feral Outlaw deals combat damage to a player, exile a nonland card from their library at random. During any turn you attacked with a Wolf or Werewolf, you may cast that card and you may spend mana as though it were mana of any color to cast that spell.\\nNightbound\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rahilda, Wanted Cutthroat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

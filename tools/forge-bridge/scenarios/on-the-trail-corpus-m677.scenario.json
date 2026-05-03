@@ -1,0 +1,25 @@
+{
+  "id": "on-the-trail-corpus-m677",
+  "description": "M6 corpus — On the Trail; ETB-on-bf.",
+  "seed": 66297,
+  "cards": {
+    "On the Trail": "Name:On the Trail\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigDropLand | TriggerDescription$ Whenever you draw your second card each turn, you may put a land card from your hand onto the battlefield tapped.\nSVar:TrigDropLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Optional$ True | Tapped$ True\nOracle:Whenever you draw your second card each turn, you may put a land card from your hand onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "On the Trail"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

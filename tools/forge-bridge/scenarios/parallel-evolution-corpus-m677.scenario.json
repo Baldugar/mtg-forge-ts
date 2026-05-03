@@ -1,0 +1,23 @@
+{
+  "id": "parallel-evolution-corpus-m677",
+  "description": "M6 corpus — Parallel Evolution; in-hand parse.",
+  "seed": 66611,
+  "cards": {
+    "Parallel Evolution": "Name:Parallel Evolution\nManaCost:3 G G\nTypes:Sorcery\nK:Flashback:4 G G G\nA:SP$ RepeatEach | RepeatSubAbility$ DBClone | RepeatCards$ Creature.token | AILogic$ CloneAllTokens | ChangeZoneTable$ True | SpellDescription$ For each creature token on the battlefield, its controller creates a token that's a copy of that creature.\nSVar:DBClone:DB$ CopyPermanent | Defined$ Remembered | Controller$ RememberedController\nAI:RemoveDeck:Random\nOracle:For each creature token on the battlefield, its controller creates a token that's a copy of that creature.\\nFlashback {4}{G}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parallel Evolution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

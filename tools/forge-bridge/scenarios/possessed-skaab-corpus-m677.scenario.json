@@ -1,0 +1,23 @@
+{
+  "id": "possessed-skaab-corpus-m677",
+  "description": "M6 corpus — Possessed Skaab; in-hand parse.",
+  "seed": 67080,
+  "cards": {
+    "Possessed Skaab": "Name:Possessed Skaab\nManaCost:3 U B\nTypes:Creature Zombie\nPT:3/2\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ Exile | Description$ If CARDNAME would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ReplacedCard\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target instant, sorcery, or creature card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl,Creature.YouCtrl\nOracle:When Possessed Skaab enters, return target instant, sorcery, or creature card from your graveyard to your hand.\\nIf Possessed Skaab would die, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Possessed Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

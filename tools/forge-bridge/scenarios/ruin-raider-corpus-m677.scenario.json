@@ -1,0 +1,23 @@
+{
+  "id": "ruin-raider-corpus-m677",
+  "description": "M6 corpus — Ruin Raider; in-hand parse.",
+  "seed": 68591,
+  "cards": {
+    "Ruin Raider": "Name:Ruin Raider\nManaCost:2 B\nTypes:Creature Orc Pirate\nPT:3/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigDig | TriggerDescription$ Raid — At the beginning of your end step, if you attacked this turn, reveal the top card of your library and put that card into your hand. You lose life equal to the card's mana value.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Hand | RememberChanged$ True | SubAbility$ DBLose\nSVar:DBLose:DB$ LoseLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — At the beginning of your end step, if you attacked this turn, reveal the top card of your library and put that card into your hand. You lose life equal to the card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruin Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

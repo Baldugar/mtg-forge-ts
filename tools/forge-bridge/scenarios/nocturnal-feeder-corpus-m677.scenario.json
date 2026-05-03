@@ -1,0 +1,23 @@
+{
+  "id": "nocturnal-feeder-corpus-m677",
+  "description": "M6 corpus — Nocturnal Feeder; in-hand parse.",
+  "seed": 66036,
+  "cards": {
+    "Nocturnal Feeder": "Name:Nocturnal Feeder\nManaCost:2 B\nTypes:Creature Vampire Rogue\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each opponent loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Nocturnal Feeder dies, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nocturnal Feeder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

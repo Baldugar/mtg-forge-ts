@@ -1,0 +1,23 @@
+{
+  "id": "relive-the-past-corpus-m677",
+  "description": "M6 corpus — Relive the Past; in-hand parse.",
+  "seed": 68018,
+  "cards": {
+    "Relive the Past": "Name:Relive the Past\nManaCost:5 G W\nTypes:Sorcery\nA:SP$ Pump | TgtZone$ Graveyard | ValidTgts$ Artifact.YouOwn | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBLand | TgtPrompt$ Select up to one target artifact from your graveyard | SpellDescription$ Return up to one target artifact card, up to one target land card, and up to one target non-Aura enchantment card from your graveyard to the battlefield. They are 5/5 Elemental creatures in addition to their other types.\nSVar:DBLand:DB$ Pump | TgtZone$ Graveyard | ValidTgts$ Land.YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target land from your graveyard | SubAbility$ DBEnchantment\nSVar:DBEnchantment:DB$ Pump | TgtZone$ Graveyard | SubAbility$ DBChangeZoneAll | ValidTgts$ Enchantment.nonAura+YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target non-aura enchantment from your graveyard\nSVar:DBChangeZoneAll:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Targeted | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Creature & Elemental | SetPower$ 5 | SetToughness$ 5\nDeckHas:Ability$Graveyard & Type$Elemental\nDeckHints:Ability$Graveyard|Mill & Type$Enchantment|Artifact\nOracle:Return up to one target artifact card, up to one target land card, and up to one target non-Aura enchantment card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relive the Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

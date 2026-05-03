@@ -1,0 +1,23 @@
+{
+  "id": "inga-rune-eyes-corpus-m677",
+  "description": "M6 corpus — Inga Rune-Eyes; in-hand parse.",
+  "seed": 62937,
+  "cards": {
+    "Inga Rune-Eyes": "Name:Inga Rune-Eyes\nManaCost:3 U\nTypes:Legendary Creature Human Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 3. (To scry 3, look at the top three cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw three cards if three or more creatures died this turn.\nSVar:TrigScry:DB$ Scry | ScryNum$ 3\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nSVar:TrigDraw:DB$ Draw | NumCards$ 3\nOracle:When Inga Rune-Eyes enters, scry 3.\\nWhen Inga Rune-Eyes dies, draw three cards if three or more creatures died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inga Rune-Eyes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

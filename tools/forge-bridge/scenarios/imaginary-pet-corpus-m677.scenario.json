@@ -1,0 +1,23 @@
+{
+  "id": "imaginary-pet-corpus-m677",
+  "description": "M6 corpus — Imaginary Pet; in-hand parse.",
+  "seed": 62773,
+  "cards": {
+    "Imaginary Pet": "Name:Imaginary Pet\nManaCost:1 U\nTypes:Creature Illusion\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card | PresentZone$ Hand | PresentPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if you have a card in hand, return CARDNAME to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nSVar:NeedsToPlayVar:Y LE1\nSVar:Y:Count$CardsInYourHand\nOracle:At the beginning of your upkeep, if you have a card in hand, return Imaginary Pet to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imaginary Pet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

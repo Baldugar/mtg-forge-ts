@@ -1,0 +1,23 @@
+{
+  "id": "steelfin-whale-corpus-m677",
+  "description": "M6 corpus — Steelfin Whale; in-hand parse.",
+  "seed": 70965,
+  "cards": {
+    "Steelfin Whale": "Name:Steelfin Whale\nManaCost:5 U\nTypes:Creature Whale\nPT:3/4\nK:Affinity:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | IsPresent$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever an artifact you control enters, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nWhenever an artifact you control enters, untap Steelfin Whale.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steelfin Whale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "public-enemy-corpus-m677",
+  "description": "M6 corpus — Public Enemy; in-hand parse.",
+  "seed": 67337,
+  "cards": {
+    "Public Enemy": "Name:Public Enemy\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ MustAttack | ValidCreature$ Creature | MustAttack$ EnchantedController | Description$ All creatures attack enchanted creature's controller each combat if able.\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | TriggerDescription$ When enchanted creature dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Enchant creature\\nAll creatures attack enchanted creature's controller each combat if able.\\nWhen enchanted creature dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Public Enemy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

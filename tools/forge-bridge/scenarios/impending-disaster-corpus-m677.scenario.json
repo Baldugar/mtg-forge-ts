@@ -1,0 +1,23 @@
+{
+  "id": "impending-disaster-corpus-m677",
+  "description": "M6 corpus — Impending Disaster; in-hand parse.",
+  "seed": 62799,
+  "cards": {
+    "Impending Disaster": "Name:Impending Disaster\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | IsPresent$ Land | PresentCompare$ GE7 | TriggerDescription$ At the beginning of your upkeep, if there are seven or more lands on the battlefield, sacrifice CARDNAME and destroy all lands.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBDestroyAll\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Land\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, if there are seven or more lands on the battlefield, sacrifice Impending Disaster and destroy all lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impending Disaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

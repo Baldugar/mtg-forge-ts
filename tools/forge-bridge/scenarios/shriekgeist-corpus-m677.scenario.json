@@ -1,0 +1,23 @@
+{
+  "id": "shriekgeist-corpus-m677",
+  "description": "M6 corpus — Shriekgeist; in-hand parse.",
+  "seed": 69782,
+  "cards": {
+    "Shriekgeist": "Name:Shriekgeist\nManaCost:1 U\nTypes:Creature Spirit\nPT:1/1\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player mills two cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ 2\nOracle:Flying\\nWhenever Shriekgeist deals combat damage to a player, that player mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shriekgeist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

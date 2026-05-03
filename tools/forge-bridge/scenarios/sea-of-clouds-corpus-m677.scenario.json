@@ -1,0 +1,25 @@
+{
+  "id": "sea-of-clouds-corpus-m677",
+  "description": "M6 corpus — Sea of Clouds; ETB-on-bf.",
+  "seed": 69273,
+  "cards": {
+    "Sea of Clouds": "Name:Sea of Clouds\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you have two or more opponents.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ ETBCheckSVar2 | ConditionSVarCompare$ LT2\nSVar:ETBCheckSVar2:PlayerCountOpponents$Amount\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nOracle:Sea of Clouds enters tapped unless you have two or more opponents.\\n{T}: Add {W} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sea of Clouds"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

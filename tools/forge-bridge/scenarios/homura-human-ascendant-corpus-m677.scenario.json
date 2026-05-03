@@ -1,0 +1,23 @@
+{
+  "id": "homura-human-ascendant-corpus-m677",
+  "description": "M6 corpus — Homura, Human Ascendant; in-hand parse.",
+  "seed": 62454,
+  "cards": {
+    "Homura, Human Ascendant": "Name:Homura, Human Ascendant\nManaCost:4 R R\nTypes:Legendary Creature Human Monk\nPT:4/4\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, return it to the battlefield flipped.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | RememberChanged$ True | SubAbility$ TrigFlip\nSVar:TrigFlip:DB$ SetState | Defined$ Remembered | Mode$ Flip | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:Flip\nOracle:Homura, Human Ascendant can't block.\\nWhen Homura dies, return it to the battlefield flipped.\n\nALTERNATE\n\nName:Homura's Essence\nManaCost:4 R R\nColors:red\nTypes:Legendary Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Flying | AddAbility$ ABPump | Description$ Creatures you control get +2/+2 and have flying and \"{R}: This creature gets +1/+0 until end of turn.\"\nSVar:ABPump:AB$ Pump | Cost$ R | Defined$ Self | NumAtt$ +1 | SpellDescription$ This creature gets +1/+0 until end of turn.\nOracle:Creatures you control get +2/+2 and have flying and \"{R}: This creature gets +1/+0 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Homura, Human Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

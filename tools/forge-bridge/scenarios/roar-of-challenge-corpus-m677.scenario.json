@@ -1,0 +1,23 @@
+{
+  "id": "roar-of-challenge-corpus-m677",
+  "description": "M6 corpus — Roar of Challenge; in-hand parse.",
+  "seed": 68422,
+  "cards": {
+    "Roar of Challenge": "Name:Roar of Challenge\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | KW$ HIDDEN All creatures able to block CARDNAME do so. | SubAbility$ DBPump | SpellDescription$ All creatures able to block target creature this turn do so. Ferocious — That creature gains indestructible until end of turn if you control a creature with power 4 or greater.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Indestructible | ConditionPresent$ Creature.YouCtrl+powerGE4 | ConditionCompare$ GE1 | ConditionDescription$ If you control a creature with power 4 or greater.\nAI:RemoveDeck:All\nOracle:All creatures able to block target creature this turn do so.\\nFerocious — That creature gains indestructible until end of turn if you control a creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roar of Challenge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

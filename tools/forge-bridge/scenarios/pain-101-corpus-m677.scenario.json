@@ -1,0 +1,23 @@
+{
+  "id": "pain-101-corpus-m677",
+  "description": "M6 corpus — Pain 101; in-hand parse.",
+  "seed": 66549,
+  "cards": {
+    "Pain 101": "Name:Pain 101\nManaCost:1 B\nTypes:Instant\nA:SP$ Animate | Keywords$ Deathtouch | Triggers$ DiesTrigger | ValidTgts$ Creature | StackDescription$ REP target creature_{c:Targeted} | SpellDescription$ Until end of turn, target creature gains deathtouch and \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\nSVar:DiesTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Until end of turn, target creature gains deathtouch and \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pain 101"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

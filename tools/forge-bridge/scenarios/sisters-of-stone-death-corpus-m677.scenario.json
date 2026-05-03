@@ -1,0 +1,25 @@
+{
+  "id": "sisters-of-stone-death-corpus-m677",
+  "description": "M6 corpus — Sisters of Stone Death; ETB-on-bf.",
+  "seed": 70003,
+  "cards": {
+    "Sisters of Stone Death": "Name:Sisters of Stone Death\nManaCost:4 B B G G\nTypes:Legendary Creature Gorgon\nPT:7/5\nA:AB$ MustBlock | Cost$ G | ValidTgts$ Creature | SpellDescription$ Target creature blocks CARDNAME this turn if able.\nA:AB$ ChangeZone | Cost$ B G | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.blockingSource,Creature.blockedBySource | TgtPrompt$ Select target creature blocking CARDNAME | SpellDescription$ Exile target creature blocking or blocked by CARDNAME.\nA:AB$ ChangeZone | Cost$ 2 B | Origin$ Exile | Destination$ Battlefield | ChangeType$ Creature.ExiledWithSource | Hidden$ True | Mandatory$ True | ChangeNum$ 1 | GainControl$ True | SpellDescription$ Put a creature card exiled with CARDNAME onto the battlefield under your control.\nOracle:{G}: Target creature blocks Sisters of Stone Death this turn if able.\\n{B}{G}: Exile target creature blocking or blocked by Sisters of Stone Death.\\n{2}{B}: Put a creature card exiled with Sisters of Stone Death onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sisters of Stone Death"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

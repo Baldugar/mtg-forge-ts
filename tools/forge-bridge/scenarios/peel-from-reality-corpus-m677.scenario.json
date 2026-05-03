@@ -1,0 +1,23 @@
+{
+  "id": "peel-from-reality-corpus-m677",
+  "description": "M6 corpus — Peel from Reality; in-hand parse.",
+  "seed": 66701,
+  "cards": {
+    "Peel from Reality": "Name:Peel from Reality\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBBounce | SpellDescription$ Return target creature you control and target creature you don't control to their owner's hands.\nSVar:DBBounce:DB$ ChangeZone | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:All\nOracle:Return target creature you control and target creature you don't control to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peel from Reality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

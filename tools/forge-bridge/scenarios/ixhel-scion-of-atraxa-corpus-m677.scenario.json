@@ -1,0 +1,23 @@
+{
+  "id": "ixhel-scion-of-atraxa-corpus-m677",
+  "description": "M6 corpus — Ixhel, Scion of Atraxa; in-hand parse.",
+  "seed": 63188,
+  "cards": {
+    "Ixhel, Scion of Atraxa": "Name:Ixhel, Scion of Atraxa\nManaCost:1 W B G\nTypes:Legendary Creature Phyrexian Angel\nPT:2/5\nK:Flying\nK:Vigilance\nK:Toxic:2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Corrupted — At the beginning of your end step, each opponent who has three or more poison counters exiles the top card of their library face down. You may look at and play those cards for as long as they remain exiled, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ Opponent.IsCorrupted | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STLookPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STLookPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at and play that card for as long as it remains exiled, and you may spend mana as though it were mana of any color to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Keyword$Toxic|Poisonous|Infect\nOracle:Flying, vigilance, toxic 2\\nCorrupted — At the beginning of your end step, each opponent who has three or more poison counters exiles the top card of their library face down. You may look at and play those cards for as long as they remain exiled, and you may spend mana as though it were mana of any color to cast those spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ixhel, Scion of Atraxa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

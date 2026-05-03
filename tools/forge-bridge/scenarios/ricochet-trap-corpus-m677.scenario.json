@@ -1,0 +1,23 @@
+{
+  "id": "ricochet-trap-corpus-m677",
+  "description": "M6 corpus — Ricochet Trap; in-hand parse.",
+  "seed": 68244,
+  "cards": {
+    "Ricochet Trap": "Name:Ricochet Trap\nManaCost:3 R\nTypes:Instant Trap\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ R | CheckSVar$ X | StackDescription$ Description | Description$ If an opponent cast a blue spell this turn, you may pay {R} rather than pay this spell's mana cost.\nA:SP$ ChangeTargets | TargetType$ Spell.singleTarget | ValidTgts$ Card | TgtPrompt$ Select target spell with a single target | StackDescription$ SpellDescription | SpellDescription$ Change the target of target spell with a single target.\nSVar:X:Count$ThisTurnCast_Card.Blue+OppCtrl\nOracle:If an opponent cast a blue spell this turn, you may pay {R} rather than pay this spell's mana cost.\\nChange the target of target spell with a single target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ricochet Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

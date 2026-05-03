@@ -1,0 +1,25 @@
+{
+  "id": "reflecting-mirror-corpus-m677",
+  "description": "M6 corpus — Reflecting Mirror; ETB-on-bf.",
+  "seed": 67943,
+  "cards": {
+    "Reflecting Mirror": "Name:Reflecting Mirror\nManaCost:4\nTypes:Artifact\nA:AB$ ChangeTargets | Cost$ X T | TargetType$ Spell.singleTarget+IsTargeting You | ValidTgts$ Card | TgtPrompt$ Select target spell with a single target targeting you | TargetRestriction$ Player | SpellDescription$ Change the target of target spell with a single target if that target is you. The new target must be a player. X is twice the mana value of that spell.\nAI:RemoveDeck:All\nSVar:X:Targeted$CardManaCost/Twice\nOracle:{X}, {T}: Change the target of target spell with a single target if that target is you. The new target must be a player. X is twice the mana value of that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Reflecting Mirror"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

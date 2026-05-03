@@ -1,0 +1,25 @@
+{
+  "id": "redshift-rocketeer-chief-corpus-m677",
+  "description": "M6 corpus — Redshift, Rocketeer Chief; ETB-on-bf.",
+  "seed": 67929,
+  "cards": {
+    "Redshift, Rocketeer Chief": "Name:Redshift, Rocketeer Chief\nManaCost:R G\nTypes:Legendary Creature Goblin Pilot\nPT:2/3\nK:Vigilance\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | RestrictValid$ Activated | SpellDescription$ Add X mana of any one color, where X is NICKNAME's power. Spend this mana only to activate abilities.\nA:AB$ ChangeZone | Cost$ 10 R G | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent | ChangeNum$ Y | Exhaust$ True | SpellDescription$ Put any number of permanent cards from your hand onto the battlefield. (Activate each exhaust ability only once.)\nSVar:X:Count$CardPower\nSVar:Y:Count$ValidHand Permanent.YouOwn\nOracle:Vigilance\\n{T}: Add X mana of any one color, where X is Redshift's power. Spend this mana only to activate abilities.\\nExhaust — {10}{R}{G}: Put any number of permanent cards from your hand onto the battlefield. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Redshift, Rocketeer Chief"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

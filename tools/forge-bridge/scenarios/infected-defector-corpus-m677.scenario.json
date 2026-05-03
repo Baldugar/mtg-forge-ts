@@ -1,0 +1,23 @@
+{
+  "id": "infected-defector-corpus-m677",
+  "description": "M6 corpus — Infected Defector; in-hand parse.",
+  "seed": 62894,
+  "cards": {
+    "Infected Defector": "Name:Infected Defector\nManaCost:4 W\nTypes:Creature Phyrexian Knight\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigIncubate | TriggerDescription$ When CARDNAME dies, incubate 3. (Create an Incubator token with three +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigIncubate:DB$ Incubate | Amount$ 3\nDeckHas:Ability$Token|Counters|Graveyard & Type$Incubator|Artifact\nOracle:When Infected Defector dies, incubate 3. (Create an Incubator token with three +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infected Defector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

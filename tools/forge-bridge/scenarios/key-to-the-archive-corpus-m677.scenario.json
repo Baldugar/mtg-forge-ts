@@ -1,0 +1,23 @@
+{
+  "id": "key-to-the-archive-corpus-m677",
+  "description": "M6 corpus — Key to the Archive; in-hand parse.",
+  "seed": 63617,
+  "cards": {
+    "Key to the Archive": "Name:Key to the Archive\nManaCost:4\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraft | TriggerDescription$ When CARDNAME enters, draft a card from CARDNAME's spellbook, then discard a card.\nSVar:TrigDraft:DB$ Draft | Spellbook$ Approach of the Second Sun,Day of Judgment,Time Warp,Counterspell,Demonic Tutor,Doom Blade,Lightning Bolt,Claim the Firstborn,Krosan Grip,Regrowth,Despark,Electrolyze,Growth Spiral,Lightning Helix,Putrefy | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nA:AB$ Mana | Cost$ T | Produced$ Combo Any | Amount$ 2 | SpellDescription$ Add two mana in any combination of colors.\nOracle:Key to the Archive enters tapped.\\nWhen Key to the Archive enters, draft a card from Key to the Archive's spellbook, then discard a card.\\n{T}: Add two mana in any combination of colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Key to the Archive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

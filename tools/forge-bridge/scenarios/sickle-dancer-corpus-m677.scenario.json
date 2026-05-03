@@ -1,0 +1,23 @@
+{
+  "id": "sickle-dancer-corpus-m677",
+  "description": "M6 corpus — Sickle Dancer; in-hand parse.",
+  "seed": 69819,
+  "cards": {
+    "Sickle Dancer": "Name:Sickle Dancer\nManaCost:2 B\nTypes:Creature Human Warrior\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Warrior.Other+YourTeamCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, if your team controls another Warrior, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Defined$ Self\nSVar:BuffedBy:Warrior\nOracle:Whenever Sickle Dancer attacks, if your team controls another Warrior, Sickle Dancer gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sickle Dancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

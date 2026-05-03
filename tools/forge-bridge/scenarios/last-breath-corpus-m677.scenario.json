@@ -1,0 +1,23 @@
+{
+  "id": "last-breath-corpus-m677",
+  "description": "M6 corpus — Last Breath; in-hand parse.",
+  "seed": 64001,
+  "cards": {
+    "Last Breath": "Name:Last Breath\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature with power 2 or less. Its controller gains 4 life. | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ 4\nOracle:Exile target creature with power 2 or less. Its controller gains 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Last Breath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

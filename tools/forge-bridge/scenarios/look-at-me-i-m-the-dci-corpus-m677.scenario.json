@@ -1,0 +1,23 @@
+{
+  "id": "look-at-me-i-m-the-dci-corpus-m677",
+  "description": "M6 corpus — Look at Me, I'm the DCI; in-hand parse.",
+  "seed": 64378,
+  "cards": {
+    "Look at Me, I'm the DCI": "Name:Look at Me, I'm the DCI\nManaCost:5 W W\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonBasic | SelectPrompt$ Choose a card other than a basic land card to ban | SubAbility$ DBRemove | AILogic$ MostProminentInHumanDeck | StackDescription$ None | SpellDescription$ Ban a card other than a basic land card for the rest of the match. (All cards with that name in any zone or sideboard are removed from the match.)\nSVar:DBRemove:DB$ RemoveFromMatch | RemoveType$ Card.NamedCard | IncludeSideboard$ True | StackDescription$ Ban a card other than a basic land card for the rest of the match. (All cards with that name in any zone or sideboard are removed from the match.)\nOracle:Ban a card other than a basic land card for the rest of the match. (All cards with that name in any zone or sideboard are removed from the match.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Look at Me, I'm the DCI"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

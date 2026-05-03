@@ -1,0 +1,23 @@
+{
+  "id": "shapeshifter-s-marrow-corpus-m677",
+  "description": "M6 corpus — Shapeshifter's Marrow; in-hand parse.",
+  "seed": 69610,
+  "cards": {
+    "Shapeshifter's Marrow": "Name:Shapeshifter's Marrow\nManaCost:2 U U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, that player reveals the top card of their library. If it's a creature card, the player puts the card into their graveyard and CARDNAME becomes a copy of that card. (If it does, it loses this ability.)\nSVar:TrigDig:DB$ Dig | Defined$ TriggeredPlayer | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature | RememberChanged$ True | DestinationZone$ Graveyard | DestinationZone2$ Library | LibraryPosition2$ 0 | SubAbility$ DBCopy\nSVar:DBCopy:DB$ Clone | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:At the beginning of each opponent's upkeep, that player reveals the top card of their library. If it's a creature card, the player puts the card into their graveyard and Shapeshifter's Marrow becomes a copy of that card. (If it does, it loses this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shapeshifter's Marrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

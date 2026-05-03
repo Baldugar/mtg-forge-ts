@@ -1,0 +1,23 @@
+{
+  "id": "kapsho-kitefins-corpus-m677",
+  "description": "M6 corpus — Kapsho Kitefins; in-hand parse.",
+  "seed": 63471,
+  "cards": {
+    "Kapsho Kitefins": "Name:Kapsho Kitefins\nManaCost:4 U U\nTypes:Creature Fish\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.YouCtrl+Other | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME or another creature you control enters, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nSVar:BuffedBy:Creature\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhenever Kapsho Kitefins or another creature you control enters, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kapsho Kitefins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rending-flame-corpus-m677",
+  "description": "M6 corpus — Rending Flame; in-hand parse.",
+  "seed": 68035,
+  "cards": {
+    "Rending Flame": "Name:Rending Flame\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | AITgts$ Spirit.OppCtrl | NumDmg$ 5 | SubAbility$ DBDamagePlayer | SpellDescription$ CARDNAME deals 5 damage to target creature or player. If that permanent is a Spirit, CARDNAME also deals 2 damage to that permanent's controller.\nSVar:DBDamagePlayer:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 2 | ConditionDefined$ Targeted | ConditionPresent$ Spirit | StackDescription$ If that permanent is a Spirit, CARDNAME also deals 2 damage to that permanent's controller.\nOracle:Rending Flame deals 5 damage to target creature or planeswalker. If that permanent is a Spirit, Rending Flame also deals 2 damage to that permanent's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rending Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

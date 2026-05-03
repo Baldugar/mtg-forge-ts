@@ -1,0 +1,23 @@
+{
+  "id": "muse-vortex-corpus-m677",
+  "description": "M6 corpus — Muse Vortex; in-hand parse.",
+  "seed": 65607,
+  "cards": {
+    "Muse Vortex": "Name:Muse Vortex\nManaCost:X U U\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay | StackDescription$ SpellDescription | SpellDescription$ Exile the top X cards of your library. You may cast an instant or sorcery spell with mana value X or less from among them without paying its mana cost. Then put the exiled instant and sorcery cards that weren't cast this way into your hand and the rest on the bottom of your library in a random order.\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered+YouOwn | ValidSA$ Instant.cmcLEX,Sorcery.cmcLEX | ValidZone$ Exile | Controller$ You | WithoutManaCost$ True | Optional$ True | ForgetPlayed$ True | Amount$ 1 | SubAbility$ DBHand | StackDescription$ None\nSVar:DBHand:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Hand | ChangeType$ Instant.IsRemembered+YouOwn,Sorcery.IsRemembered+YouOwn | ForgetChanged$ True | SubAbility$ DBLibrary\nSVar:DBLibrary:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Library | ChangeType$ Card.IsRemembered+YouOwn | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckNeeds:Type$Instant|Sorcery\nOracle:Exile the top X cards of your library. You may cast an instant or sorcery spell with mana value X or less from among them without paying its mana cost. Then put the exiled instant and sorcery cards that weren't cast this way into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Muse Vortex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

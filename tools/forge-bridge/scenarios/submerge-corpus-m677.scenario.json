@@ -1,0 +1,23 @@
+{
+  "id": "submerge-corpus-m677",
+  "description": "M6 corpus — Submerge; in-hand parse.",
+  "seed": 71248,
+  "cards": {
+    "Submerge": "Name:Submerge\nManaCost:4 U\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell | ValidCard$ Card.Self | ValidPlayer$ You | Cost$ 0 | EffectZone$ All | CheckSVar$ X | CheckSecondSVar$ Y | Description$ If an opponent controls a Forest and you control an Island, you may cast this spell without paying its mana cost.\nSVar:X:Count$Valid Forest.OppCtrl\nSVar:Y:Count$Valid Island.YouCtrl\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Put target creature on top of its owner's library.\nOracle:If an opponent controls a Forest and you control an Island, you may cast this spell without paying its mana cost.\\nPut target creature on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Submerge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

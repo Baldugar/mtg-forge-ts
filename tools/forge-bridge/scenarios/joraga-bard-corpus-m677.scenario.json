@@ -1,0 +1,23 @@
+{
+  "id": "joraga-bard-corpus-m677",
+  "description": "M6 corpus — Joraga Bard; in-hand parse.",
+  "seed": 63339,
+  "cards": {
+    "Joraga Bard": "Name:Joraga Bard\nManaCost:3 G\nTypes:Creature Elf Rogue Bard Ally\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may have Ally creatures you control gain vigilance until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Ally.YouCtrl | KW$ Vigilance\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nAI:RemoveDeck:Random\nOracle:Whenever Joraga Bard or another Ally you control enters, you may have Ally creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Joraga Bard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

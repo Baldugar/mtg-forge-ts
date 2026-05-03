@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-carnarium-corpus-m677",
+  "description": "M6 corpus — Rakdos Carnarium; in-hand parse.",
+  "seed": 67608,
+  "cards": {
+    "Rakdos Carnarium": "Name:Rakdos Carnarium\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ B R | SpellDescription$ Add {B}{R}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return a land you control to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Land.YouCtrl | AILogic$ NeverBounceItself | SpellDescription$ Return a land you control to its owner's hand.\nSVar:NeedsToPlay:Land.Basic+YouCtrl\nOracle:Rakdos Carnarium enters tapped.\\nWhen Rakdos Carnarium enters, return a land you control to its owner's hand.\\n{T}: Add {B}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos Carnarium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

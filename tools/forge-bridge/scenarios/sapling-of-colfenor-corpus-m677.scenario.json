@@ -1,0 +1,23 @@
+{
+  "id": "sapling-of-colfenor-corpus-m677",
+  "description": "M6 corpus — Sapling of Colfenor; in-hand parse.",
+  "seed": 68992,
+  "cards": {
+    "Sapling of Colfenor": "Name:Sapling of Colfenor\nManaCost:3 BG BG\nTypes:Legendary Creature Treefolk Shaman\nPT:2/5\nK:Indestructible\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME attacks, reveal the top card of your library. If it's a creature card, you gain life equal to that card's toughness, lose life equal to its power, then put it into your hand.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature | DestinationZone$ Hand | RememberChanged$ True | DestinationZone2$ Library | LibraryPosition2$ 0 | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | LifeAmount$ Y | SubAbility$ DBLose\nSVar:DBLose:DB$ LoseLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$CardToughness\nSVar:X:Remembered$CardPower\nOracle:Indestructible\\nWhenever Sapling of Colfenor attacks, reveal the top card of your library. If it's a creature card, you gain life equal to that card's toughness, lose life equal to its power, then put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sapling of Colfenor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

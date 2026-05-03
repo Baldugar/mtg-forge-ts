@@ -1,0 +1,25 @@
+{
+  "id": "sabertooth-alley-cat-corpus-m677",
+  "description": "M6 corpus — Sabertooth Alley Cat; ETB-on-bf.",
+  "seed": 68824,
+  "cards": {
+    "Sabertooth Alley Cat": "Name:Sabertooth Alley Cat\nManaCost:1 R R\nTypes:Creature Cat\nPT:2/1\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nA:AB$ Effect | Cost$ 1 R | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | SpellDescription$ Creatures without defender can't block CARDNAME this turn.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.withoutDefender | Description$ Creatures without defender can't block EFFECTSOURCE this turn.\nOracle:Sabertooth Alley Cat attacks each combat if able.\\n{1}{R}: Creatures without defender can't block Sabertooth Alley Cat this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sabertooth Alley Cat"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

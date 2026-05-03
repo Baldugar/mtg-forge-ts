@@ -1,0 +1,23 @@
+{
+  "id": "jaddi-lifestrider-corpus-m677",
+  "description": "M6 corpus — Jaddi Lifestrider; in-hand parse.",
+  "seed": 63217,
+  "cards": {
+    "Jaddi Lifestrider": "Name:Jaddi Lifestrider\nManaCost:4 G\nTypes:Creature Elemental\nPT:2/8\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigJaddiLifestriderTap | TriggerDescription$ When CARDNAME enters, you may tap any number of untapped creatures you control. You gain 2 life for each creature tapped this way.\nSVar:TrigJaddiLifestriderTap:DB$ Tap | CardChoices$ Creature.YouCtrl+untapped | AnyNumber$ True | ChoiceAmount$ Count$Valid Creature.YouCtrl+untapped | RememberTapped$ True | SubAbility$ DBJaddiLifestriderGainLife\nSVar:DBJaddiLifestriderGainLife:DB$ GainLife | LifeAmount$ JaddiLifestriderZ | SubAbility$ DBJaddiLifestriderCleanup\nSVar:DBJaddiLifestriderCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:JaddiLifestriderY:Remembered$Amount\nSVar:JaddiLifestriderZ:SVar$JaddiLifestriderY/Times.2\nOracle:When Jaddi Lifestrider enters, you may tap any number of untapped creatures you control. You gain 2 life for each creature tapped this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaddi Lifestrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "keldon-flamesage-corpus-m677",
+  "description": "M6 corpus — Keldon Flamesage; in-hand parse.",
+  "seed": 63582,
+  "cards": {
+    "Keldon Flamesage": "Name:Keldon Flamesage\nManaCost:2 R\nTypes:Creature Human Shaman\nPT:2/3\nK:Enlist\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME attacks, look at the top X cards of your library, where X is CARDNAME's power. You may exile an instant or sorcery card with mana value X or less from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | ChangeValid$ Instant.cmcLEX,Sorcery.cmcLEX | DestinationZone$ Exile | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | RememberChanged$ True | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nSVar:X:Count$CardPower\nDeckHints:Type$Sorcery|Instant\nOracle:Enlist\\nWhenever Keldon Flamesage attacks, look at the top X cards of your library, where X is Keldon Flamesage's power. You may exile an instant or sorcery card with mana value X or less from among them. Put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Flamesage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

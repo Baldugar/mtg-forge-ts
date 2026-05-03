@@ -1,0 +1,25 @@
+{
+  "id": "sphere-of-grace-corpus-m677",
+  "description": "M6 corpus — Sphere of Grace; ETB-on-bf.",
+  "seed": 70603,
+  "cards": {
+    "Sphere of Grace": "Name:Sphere of Grace\nManaCost:3 W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.BlackSource | ValidTarget$ You | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ If a black source would deal damage to you, prevent 2 of that damage.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ 2\nAI:RemoveDeck:Random\nOracle:If a black source would deal damage to you, prevent 2 of that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sphere of Grace"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

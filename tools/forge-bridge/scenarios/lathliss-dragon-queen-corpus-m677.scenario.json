@@ -1,0 +1,23 @@
+{
+  "id": "lathliss-dragon-queen-corpus-m677",
+  "description": "M6 corpus — Lathliss, Dragon Queen; in-hand parse.",
+  "seed": 64012,
+  "cards": {
+    "Lathliss, Dragon Queen": "Name:Lathliss, Dragon Queen\nManaCost:4 R R\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | TriggerZones$ Battlefield | ValidCard$ Dragon.YouCtrl+!token+Other | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ r_5_5_dragon_flying\nA:AB$ PumpAll | Cost$ 1 R | ValidCards$ Dragon.YouCtrl | NumAtt$ +1 | SpellDescription$ Dragons you control get +1/+0 until end of turn.\nDeckHints:Type$Dragon\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying.\\n{1}{R}: Dragons you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lathliss, Dragon Queen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

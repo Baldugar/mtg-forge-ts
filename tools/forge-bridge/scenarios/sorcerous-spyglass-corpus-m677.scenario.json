@@ -1,0 +1,23 @@
+{
+  "id": "sorcerous-spyglass-corpus-m677",
+  "description": "M6 corpus — Sorcerous Spyglass; in-hand parse.",
+  "seed": 70428,
+  "cards": {
+    "Sorcerous Spyglass": "Name:Sorcerous Spyglass\nManaCost:2\nTypes:Artifact\nK:ETBReplacement:Other:ChoosePlayer\nSVar:ChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to look at their hand | SubAbility$ DBLook | SpellDescription$ As CARDNAME enters, look at an opponent's hand, then choose any card name.\nSVar:DBLook:DB$ RevealHand | Defined$ ChosenPlayer | Look$ True | SubAbility$ DBNameCard\nSVar:DBNameCard:DB$ NameCard | Defined$ You | AILogic$ SorcerousSpyglass | SubAbility$ DBClear\nSVar:DBClear:DB$ Cleanup | ClearChosenPlayer$ True\nS:Mode$ CantBeActivated | ValidCard$ Card.NamedCard | ValidSA$ Activated.!ManaAbility | Description$ Activated abilities of sources with the chosen name can't be activated unless they're mana abilities.\nOracle:As Sorcerous Spyglass enters, look at an opponent's hand, then choose any card name.\\nActivated abilities of sources with the chosen name can't be activated unless they're mana abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sorcerous Spyglass"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

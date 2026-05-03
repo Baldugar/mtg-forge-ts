@@ -1,0 +1,23 @@
+{
+  "id": "roaming-throne-corpus-m677",
+  "description": "M6 corpus — Roaming Throne; in-hand parse.",
+  "seed": 68421,
+  "cards": {
+    "Roaming Throne": "Name:Roaming Throne\nManaCost:4\nTypes:Artifact Creature Golem\nPT:4/4\nK:Ward:2\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Card.Self | AddType$ ChosenType | Description$ CARDNAME is the chosen type in addition to its other types.\nS:Mode$ Panharmonicon | ValidCard$ Creature.Other+YouCtrl+ChosenType | Description$ If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.\nOracle:Ward {2}\\nAs Roaming Throne enters, choose a creature type.\\nRoaming Throne is the chosen type in addition to its other types.\\nIf a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roaming Throne"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

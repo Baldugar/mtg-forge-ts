@@ -1,0 +1,23 @@
+{
+  "id": "megatherium-corpus-m677",
+  "description": "M6 corpus — Megatherium; in-hand parse.",
+  "seed": 64940,
+  "cards": {
+    "Megatherium": "Name:Megatherium\nManaCost:2 G\nTypes:Creature Beast\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you pay {1} for each card in your hand.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ Y | UnlessPayer$ You\nSVar:Y:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Trample\\nWhen Megatherium enters, sacrifice it unless you pay {1} for each card in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Megatherium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

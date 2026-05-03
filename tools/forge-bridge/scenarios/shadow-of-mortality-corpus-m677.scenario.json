@@ -1,0 +1,25 @@
+{
+  "id": "shadow-of-mortality-corpus-m677",
+  "description": "M6 corpus — Shadow of Mortality; ETB-on-bf.",
+  "seed": 69550,
+  "cards": {
+    "Shadow of Mortality": "Name:Shadow of Mortality\nManaCost:13 B B\nTypes:Creature Avatar\nPT:7/7\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | CheckSVar$ Y | SVarCompare$ LTZ | Amount$ X | EffectZone$ All | Description$ If your life total is less than your starting life total, this spell costs {X} less to cast, where X is the difference.\nSVar:X:SVar$Z/Minus.Y\nSVar:Y:Count$YourLifeTotal\nSVar:Z:Count$YourStartingLife\nOracle:If your life total is less than your starting life total, this spell costs {X} less to cast, where X is the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shadow of Mortality"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

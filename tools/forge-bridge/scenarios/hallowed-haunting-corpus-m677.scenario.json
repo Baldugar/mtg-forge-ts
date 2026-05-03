@@ -1,0 +1,25 @@
+{
+  "id": "hallowed-haunting-corpus-m677",
+  "description": "M6 corpus — Hallowed Haunting; ETB-on-bf.",
+  "seed": 61989,
+  "cards": {
+    "Hallowed Haunting": "Name:Hallowed Haunting\nManaCost:2 W W\nTypes:Enchantment\nS:Mode$ Continuous | IsPresent$ Enchantment.YouCtrl | PresentCompare$ GE7 | Affected$ Creature.YouCtrl | AddKeyword$ Flying & Vigilance | Description$ As long as you control seven or more enchantments, creatures you control have flying and vigilance.\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an enchantment spell, create a white Spirit Cleric creature token with \"This creature's power and toughness are each equal to the number of Spirits you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ w_x_x_spirit_cleric_total_spirits\nDeckNeeds:Type$Enchantment\nDeckHints:Type$Spirit\nDeckHas:Ability$Token\nOracle:As long as you control seven or more enchantments, creatures you control have flying and vigilance.\\nWhenever you cast an enchantment spell, create a white Spirit Cleric creature token with \"This creature's power and toughness are each equal to the number of Spirits you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hallowed Haunting"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

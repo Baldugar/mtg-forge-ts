@@ -1,0 +1,23 @@
+{
+  "id": "hallowed-spiritkeeper-corpus-m677",
+  "description": "M6 corpus — Hallowed Spiritkeeper; in-hand parse.",
+  "seed": 61992,
+  "cards": {
+    "Hallowed Spiritkeeper": "Name:Hallowed Spiritkeeper\nManaCost:1 W W\nTypes:Creature Avatar\nPT:3/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create X 1/1 white Spirit creature tokens with flying, where X is the number of creature cards in your graveyard.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHas:Ability$Token\nOracle:Vigilance\\nWhen Hallowed Spiritkeeper dies, create X 1/1 white Spirit creature tokens with flying, where X is the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hallowed Spiritkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

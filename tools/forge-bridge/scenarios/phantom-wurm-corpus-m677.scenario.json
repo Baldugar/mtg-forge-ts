@@ -1,0 +1,23 @@
+{
+  "id": "phantom-wurm-corpus-m677",
+  "description": "M6 corpus — Phantom Wurm; in-hand parse.",
+  "seed": 66814,
+  "cards": {
+    "Phantom Wurm": "Name:Phantom Wurm\nManaCost:4 G G\nTypes:Creature Wurm Spirit\nPT:2/0\nK:etbCounter:P1P1:4\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. Remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Phantom Wurm enters with four +1/+1 counters on it.\\nIf damage would be dealt to Phantom Wurm, prevent that damage. Remove a +1/+1 counter from Phantom Wurm.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantom Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

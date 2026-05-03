@@ -1,0 +1,25 @@
+{
+  "id": "kjeldoran-gargoyle-corpus-m677",
+  "description": "M6 corpus — Kjeldoran Gargoyle; ETB-on-bf.",
+  "seed": 63731,
+  "cards": {
+    "Kjeldoran Gargoyle": "Name:Kjeldoran Gargoyle\nManaCost:5 W\nTypes:Creature Gargoyle\nPT:3/3\nK:Flying\nK:First Strike\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Flying, first strike\\nWhenever Kjeldoran Gargoyle deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kjeldoran Gargoyle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

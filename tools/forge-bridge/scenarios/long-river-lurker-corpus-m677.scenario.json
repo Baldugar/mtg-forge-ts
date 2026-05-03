@@ -1,0 +1,23 @@
+{
+  "id": "long-river-lurker-corpus-m677",
+  "description": "M6 corpus — Long River Lurker; in-hand parse.",
+  "seed": 64372,
+  "cards": {
+    "Long River Lurker": "Name:Long River Lurker\nManaCost:2 U\nTypes:Creature Frog Scout\nPT:2/3\nK:Ward:1\nS:Mode$ Continuous | Affected$ Frog.YouCtrl+Other | AddKeyword$ Ward:1 | Description$ Other Frogs you control have ward {1}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUnblockable | TriggerDescription$ When CARDNAME enters, target creature you control can't be blocked this turn. Whenever that creature deals combat damage this turn, you may exile it. If you do, return it to the battlefield under its owner's control.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | Triggers$ TrigDamage\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:TrigDamage:Mode$ DamageDealtOnce | ValidSource$ Creature.IsRemembered | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Whenever this creature deals combat damage this turn, you may exile it. If you do, return it to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | Defined$ Remembered | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Ward {1}\\nOther Frogs you control have ward {1}.\\nWhen Long River Lurker enters, target creature you control can't be blocked this turn. Whenever that creature deals combat damage this turn, you may exile it. If you do, return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Long River Lurker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

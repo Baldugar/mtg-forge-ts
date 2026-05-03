@@ -1,0 +1,23 @@
+{
+  "id": "liliana-s-mastery-corpus-m677",
+  "description": "M6 corpus — Liliana's Mastery; in-hand parse.",
+  "seed": 64268,
+  "cards": {
+    "Liliana's Mastery": "Name:Liliana's Mastery\nManaCost:3 B B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Zombie.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Zombies you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 2/2 black Zombie creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_2_2_zombie | TokenOwner$ You\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Zombie\nDeckHints:Type$Zombie\nOracle:Zombies you control get +1/+1.\\nWhen Liliana's Mastery enters, create two 2/2 black Zombie creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana's Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

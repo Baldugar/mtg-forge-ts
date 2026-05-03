@@ -1,0 +1,23 @@
+{
+  "id": "memory-s-journey-corpus-m677",
+  "description": "M6 corpus — Memory's Journey; in-hand parse.",
+  "seed": 64972,
+  "cards": {
+    "Memory's Journey": "Name:Memory's Journey\nManaCost:1 U\nTypes:Instant\nK:Flashback:G\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True | SpellDescription$ Target player shuffles up to three target cards from their graveyard into their library.\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | Shuffle$ True | ValidTgts$ Card\nAI:RemoveDeck:All\nOracle:Target player shuffles up to three target cards from their graveyard into their library.\\nFlashback {G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memory's Journey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

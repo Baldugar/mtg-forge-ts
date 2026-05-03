@@ -1,0 +1,23 @@
+{
+  "id": "metamorphic-alteration-corpus-m677",
+  "description": "M6 corpus — Metamorphic Alteration; in-hand parse.",
+  "seed": 65056,
+  "cards": {
+    "Metamorphic Alteration": "Name:Metamorphic Alteration\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:ETBReplacement:Other:ChooseCreature\nSVar:ChooseCreature:DB$ ChooseCard | Defined$ You | Mandatory$ True | Choices$ Creature.Other | SpellDescription$ As CARDNAME enters, choose a creature.\nT:Mode$ Attached | ValidSource$ Card.Self | Static$ True | Execute$ DBClone | TriggerDescription$ Enchanted creature is a copy of the chosen creature.\nSVar:DBClone:DB$ Clone | Defined$ ChosenCard | CloneTarget$ Enchanted | Duration$ UntilUnattached\nOracle:Enchant creature\\nAs Metamorphic Alteration enters, choose a creature.\\nEnchanted creature is a copy of the chosen creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Metamorphic Alteration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

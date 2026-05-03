@@ -1,0 +1,23 @@
+{
+  "id": "return-to-action-corpus-m677",
+  "description": "M6 corpus — Return to Action; in-hand parse.",
+  "seed": 68158,
+  "cards": {
+    "Return to Action": "Name:Return to Action\nManaCost:1 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +1 | KW$ Lifelink | SubAbility$ DBAnimate | StackDescription$ Until end of turn, {c:Targeted} gets +1/+0 and gains lifelink and \"When this creature dies, return it to the battlefield tapped under its owner's control.\" | SpellDescription$ Until end of turn, target creature gets +1/+0 and gains lifelink and \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\nSVar:DBAnimate:DB$ Animate | Triggers$ DiesTrig | Defined$ ParentTarget | StackDescription$ None\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy\nDeckHas:Ability$LifeGain\nOracle:Until end of turn, target creature gets +1/+0 and gains lifelink and \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Return to Action"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

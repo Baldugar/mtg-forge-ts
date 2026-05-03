@@ -1,0 +1,25 @@
+{
+  "id": "sunken-hollow-corpus-m677",
+  "description": "M6 corpus — Sunken Hollow; ETB-on-bf.",
+  "seed": 71366,
+  "cards": {
+    "Sunken Hollow": "Name:Sunken Hollow\nManaCost:no cost\nTypes:Land Island Swamp\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {U} or {B}.)\\nSunken Hollow enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sunken Hollow"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

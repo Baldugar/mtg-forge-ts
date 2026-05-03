@@ -1,0 +1,25 @@
+{
+  "id": "jeweled-bird-corpus-m677",
+  "description": "M6 corpus — Jeweled Bird; ETB-on-bf.",
+  "seed": 63291,
+  "cards": {
+    "Jeweled Bird": "Name:Jeweled Bird\nManaCost:1\nTypes:Artifact\nK:Remove CARDNAME from your deck before playing if you're not playing for ante.\nA:AB$ ChangeZone | Cost$ T | Defined$ Self | Origin$ Battlefield | Destination$ Ante | RememberChanged$ True | SubAbility$ DBUnAnte | SpellDescription$ Ante CARDNAME. If you do, put all other cards you own from the ante into your graveyard, then draw a card.\nSVar:DBUnAnte:DB$ ChangeZoneAll | ConditionCheckSVar$ Y | ConditionSVarCompare$ GT0 | Origin$ Ante | Destination$ Graveyard | ChangeType$ Card.YouOwn+Other | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ Y | ConditionSVarCompare$ GT0 | Defined$ You | NumCards$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Remove Jeweled Bird from your deck before playing if you're not playing for ante.\\n{T}: Ante Jeweled Bird. If you do, put all other cards you own from the ante into your graveyard, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jeweled Bird"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

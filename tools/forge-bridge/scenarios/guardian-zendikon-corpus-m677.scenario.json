@@ -1,0 +1,23 @@
+{
+  "id": "guardian-zendikon-corpus-m677",
+  "description": "M6 corpus — Guardian Zendikon; in-hand parse.",
+  "seed": 61884,
+  "cards": {
+    "Guardian Zendikon": "Name:Guardian Zendikon\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddType$ Creature & Wall | SetColor$ White | SetPower$ 2 | SetToughness$ 6 | AddKeyword$ Defender | Description$ Enchanted land is a 2/6 white Wall creature with defender. It's still a land.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted land dies, return that card to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nOracle:Enchant land\\nEnchanted land is a 2/6 white Wall creature with defender. It's still a land.\\nWhen enchanted land dies, return that card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian Zendikon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

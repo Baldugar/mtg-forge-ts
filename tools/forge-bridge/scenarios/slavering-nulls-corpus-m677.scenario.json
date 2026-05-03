@@ -1,0 +1,23 @@
+{
+  "id": "slavering-nulls-corpus-m677",
+  "description": "M6 corpus — Slavering Nulls; in-hand parse.",
+  "seed": 70185,
+  "cards": {
+    "Slavering Nulls": "Name:Slavering Nulls\nManaCost:1 R\nTypes:Creature Goblin Zombie\nPT:2/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | IsPresent$ Swamp.YouCtrl | CombatDamage$ True | Execute$ TrigDiscard | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, if you control a Swamp, you may have that player discard a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nDeckHints:Color$Black\nOracle:Whenever Slavering Nulls deals combat damage to a player, if you control a Swamp, you may have that player discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slavering Nulls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

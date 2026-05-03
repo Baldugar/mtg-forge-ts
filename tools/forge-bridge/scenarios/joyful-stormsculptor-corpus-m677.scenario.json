@@ -1,0 +1,23 @@
+{
+  "id": "joyful-stormsculptor-corpus-m677",
+  "description": "M6 corpus — Joyful Stormsculptor; in-hand parse.",
+  "seed": 63361,
+  "cards": {
+    "Joyful Stormsculptor": "Name:Joyful Stormsculptor\nManaCost:3 U R\nTypes:Creature Human Shaman\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 blue and red Elemental creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ ur_1_1_elemental\nT:Mode$ SpellCast | ValidCard$ Card.withConvoke | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell that has convoke, CARDNAME deals 1 damage to each opponent and each battle they protect.\nSVar:TrigDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | ValidCards$ Battle.OppProtect | NumDmg$ 1\nDeckHas:Ability$Token & Type$Elemental\nDeckHints:Keyword$Convoke\nOracle:When Joyful Stormsculptor enters, create two 1/1 blue and red Elemental creature tokens.\\nWhenever you cast a spell that has convoke, Joyful Stormsculptor deals 1 damage to each opponent and each battle they protect.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Joyful Stormsculptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

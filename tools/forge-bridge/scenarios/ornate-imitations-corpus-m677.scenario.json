@@ -1,0 +1,23 @@
+{
+  "id": "ornate-imitations-corpus-m677",
+  "description": "M6 corpus — Ornate Imitations; in-hand parse.",
+  "seed": 66426,
+  "cards": {
+    "Ornate Imitations": "Name:Ornate Imitations\nManaCost:X G U\nTypes:Sorcery\nA:SP$ Repeat | Cost$ XMin1 X G U | RepeatSubAbility$ DBNameCard | MaxRepeat$ X | StackDescription$ REP . X can't be 0._. | SpellDescription$ For each number between 1 and X, conjure a duplicate of a random creature card with that mana value onto the battlefield. X can't be 0.\nSVar:DBNameCard:DB$ NameCard | AtRandom$ True | ValidCards$ Creature.cmcEQM | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Name$ ChosenName | Conjure$ True | Zone$ Battlefield | SubAbility$ DBClearNamed\nSVar:DBClearNamed:DB$ Cleanup | ClearNamedCard$ True | SubAbility$ DBStore\nSVar:DBStore:DB$ StoreSVar | SVar$ M | Type$ CountSVar | Expression$ M/Plus.1\nSVar:M:Number$1\nSVar:X:Count$xPaid\nOracle:For each number between 1 and X, conjure a duplicate of a random creature card with that mana value onto the battlefield. X can't be 0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ornate Imitations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

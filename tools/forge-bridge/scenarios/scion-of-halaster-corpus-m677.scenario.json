@@ -1,0 +1,25 @@
+{
+  "id": "scion-of-halaster-corpus-m677",
+  "description": "M6 corpus — Scion of Halaster; ETB-on-bf.",
+  "seed": 69156,
+  "cards": {
+    "Scion of Halaster": "Name:Scion of Halaster\nManaCost:1 B\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddReplacementEffect$ Draw | Description$ Commander creatures you own have \"The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\"\nSVar:Draw:Event$ Draw | ValidPlayer$ You | ReplaceWith$ DBDig | CheckSVar$ X | SVarCompare$ EQ0 | Description$ The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\nSVar:DBDig:DB$ Dig | DigNum$ 2 | DestinationZone$ Graveyard | NoReveal$ True | LibraryPosition2$ 0 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:X:Count$YouDrewThisTurn\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Graveyard\nOracle:Commander creatures you own have \"The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scion of Halaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

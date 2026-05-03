@@ -1,0 +1,23 @@
+{
+  "id": "on-thin-ice-corpus-m677",
+  "description": "M6 corpus — On Thin Ice; in-hand parse.",
+  "seed": 66298,
+  "cards": {
+    "On Thin Ice": "Name:On Thin Ice\nManaCost:W\nTypes:Snow Enchantment Aura\nK:Enchant:Land.Snow+YouCtrl:snow land you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.OppCtrl\nDeckHints:Type$Snow\nOracle:Enchant snow land you control\\nWhen On Thin Ice enters, exile target creature an opponent controls until On Thin Ice leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "On Thin Ice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

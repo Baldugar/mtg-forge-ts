@@ -1,0 +1,23 @@
+{
+  "id": "portal-manipulator-corpus-m677",
+  "description": "M6 corpus — Portal Manipulator; in-hand parse.",
+  "seed": 67070,
+  "cards": {
+    "Portal Manipulator": "Name:Portal Manipulator\nManaCost:2 WU WU\nTypes:Creature Human Wizard\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | Phase$ Declare Attackers | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoosePlayer | TriggerDescription$ When CARDNAME enters during the declare attackers step, choose target player and any number of target attacking creatures their opponents control. Those creatures are now attacking that player.\nSVar:TrigChoosePlayer:DB$ Pump | ValidTgts$ Player | SubAbility$ DBChooseAttackers\nSVar:DBChooseAttackers:DB$ ChangeCombatants | ValidTgts$ Creature.attacking | TargetsWithDefinedController$ Player.OpponentOf ParentTarget | TargetMin$ 0 | TargetMax$ MaxTargets | TgtPrompt$ Select any number of target attacking creatures controlled by target player's opponents | Attacking$ TargetedPlayer\nSVar:MaxTargets:Count$Valid Creature.attacking+ControlledBy Player.OpponentOf ParentTarget\nOracle:Flash\\nWhen Portal Manipulator enters during the declare attackers step, choose target player and any number of target attacking creatures their opponents control. Those creatures are now attacking that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Portal Manipulator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

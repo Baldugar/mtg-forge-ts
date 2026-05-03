@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-dominaria-corpus-m677",
+  "description": "M6 corpus — Invasion of Dominaria; in-hand parse.",
+  "seed": 63060,
+  "cards": {
+    "Invasion of Dominaria": "Name:Invasion of Dominaria\nManaCost:2 W\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 4 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 4 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Dominaria enters, you gain 4 life and draw a card.\n\nALTERNATE\n\nName:Serra Faithkeeper\nManaCost:no cost\nColors:white\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Dominaria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

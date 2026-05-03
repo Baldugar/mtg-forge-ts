@@ -1,0 +1,23 @@
+{
+  "id": "pactdoll-terror-corpus-m677",
+  "description": "M6 corpus — Pactdoll Terror; in-hand parse.",
+  "seed": 66547,
+  "cards": {
+    "Pactdoll Terror": "Name:Pactdoll Terror\nManaCost:3 B\nTypes:Artifact Creature Toy\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Artifact.Other+YouCtrl | Destination$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature or another artifact you control enters, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:BuffedBy:Artifact\nDeckNeeds:Type$Artifact\nOracle:Whenever this creature or another artifact you control enters, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pactdoll Terror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

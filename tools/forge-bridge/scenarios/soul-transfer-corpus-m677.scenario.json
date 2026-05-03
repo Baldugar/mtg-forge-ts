@@ -1,0 +1,23 @@
+{
+  "id": "soul-transfer-corpus-m677",
+  "description": "M6 corpus — Soul Transfer; in-hand parse.",
+  "seed": 70468,
+  "cards": {
+    "Soul Transfer": "Name:Soul Transfer\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare B GE2.2.1 | Choices$ Exile,Return | AdditionalDescription$ . If you control an artifact and an enchantment as you cast this spell, you may choose both.\nSVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature or planeswalker | ValidTgts$ Creature,Planeswalker | SpellDescription$ Exile target creature or planeswalker.\nSVar:Return:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn,Planeswalker.YouOwn | TgtPrompt$ Select target creature or planeswalker | SpellDescription$ Return target creature or planeswalker card from your graveyard to your hand.\nSVar:B:SVar$A/Plus.E\nSVar:A:Count$Valid Artifact.YouCtrl/LimitMax.1\nSVar:E:Count$Valid Enchantment.YouCtrl/LimitMax.1\nOracle:Choose one. If you control an artifact and an enchantment as you cast this spell, you may choose both.\\n• Exile target creature or planeswalker.\\n• Return target creature or planeswalker card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Transfer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

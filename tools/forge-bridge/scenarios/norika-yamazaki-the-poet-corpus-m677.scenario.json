@@ -1,0 +1,23 @@
+{
+  "id": "norika-yamazaki-the-poet-corpus-m677",
+  "description": "M6 corpus — Norika Yamazaki, the Poet; in-hand parse.",
+  "seed": 66052,
+  "cards": {
+    "Norika Yamazaki, the Poet": "Name:Norika Yamazaki, the Poet\nManaCost:2 W\nTypes:Legendary Creature Human Samurai\nPT:3/2\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Samurai.YouCtrl,Warrior.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever a Samurai or Warrior you control attacks alone, you may cast target enchantment card from your graveyard this turn.\nSVar:TrigEffect:DB$ Effect | TgtZone$ Graveyard | ValidTgts$ Enchantment.YouOwn | TgtPrompt$ Choose target enchantment in your graveyard | RememberObjects$ Targeted | StaticAbilities$ Play | ExileOnMoved$ Graveyard\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Graveyard | Description$ You may play this card from your graveyard this turn.\nDeckHints:Type$Samurai|Warrior|Enchantment\nDeckHas:Ability$Graveyard\nOracle:Vigilance\\nWhenever a Samurai or Warrior you control attacks alone, you may cast target enchantment card from your graveyard this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norika Yamazaki, the Poet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

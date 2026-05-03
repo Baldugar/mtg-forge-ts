@@ -1,0 +1,23 @@
+{
+  "id": "mezzio-mugger-corpus-m677",
+  "description": "M6 corpus — Mezzio Mugger; in-hand parse.",
+  "seed": 65077,
+  "cards": {
+    "Mezzio Mugger": "Name:Mezzio Mugger\nManaCost:4 R\nTypes:Creature Lizard Rogue\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile the top card of each player's library. You may play those cards this turn, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ Player | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffPlay | EffectOwner$ You | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:EffPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play those cards this turn, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Blitz:2 R\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Whenever Mezzio Mugger attacks, exile the top card of each player's library. You may play those cards this turn, and you may spend mana as though it were mana of any color to cast those spells.\\nBlitz {2}{R} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mezzio Mugger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

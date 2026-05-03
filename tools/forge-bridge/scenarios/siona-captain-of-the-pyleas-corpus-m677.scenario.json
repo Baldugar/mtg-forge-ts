@@ -1,0 +1,23 @@
+{
+  "id": "siona-captain-of-the-pyleas-corpus-m677",
+  "description": "M6 corpus — Siona, Captain of the Pyleas; in-hand parse.",
+  "seed": 69983,
+  "cards": {
+    "Siona, Captain of the Pyleas": "Name:Siona, Captain of the Pyleas\nManaCost:1 G W\nTypes:Legendary Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top seven cards of your library. You may reveal an Aura card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 7 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Aura | RestRandomOrder$ True | Reveal$ True\nT:Mode$ Attached | ValidSource$ Aura.YouCtrl | ValidTarget$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an Aura you control becomes attached to a creature you control, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nDeckHints:Type$Aura\nDeckHas:Ability$Token\nOracle:When Siona, Captain of the Pyleas enters, look at the top seven cards of your library. You may reveal an Aura card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\\nWhenever an Aura you control becomes attached to a creature you control, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siona, Captain of the Pyleas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

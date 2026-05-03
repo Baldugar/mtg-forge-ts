@@ -1,0 +1,23 @@
+{
+  "id": "spine-of-ish-sah-corpus-m677",
+  "description": "M6 corpus — Spine of Ish Sah; in-hand parse.",
+  "seed": 70668,
+  "cards": {
+    "Spine of Ish Sah": "Name:Spine of Ish Sah\nManaCost:7\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target permanent.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:4\nSVar:PlayMain1:TRUE\nOracle:When Spine of Ish Sah enters, destroy target permanent.\\nWhen Spine of Ish Sah is put into a graveyard from the battlefield, return Spine of Ish Sah to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spine of Ish Sah"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

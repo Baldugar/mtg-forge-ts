@@ -1,0 +1,23 @@
+{
+  "id": "jorn-god-of-winter-corpus-m677",
+  "description": "M6 corpus — Jorn, God of Winter; in-hand parse.",
+  "seed": 63344,
+  "cards": {
+    "Jorn, God of Winter": "Name:Jorn, God of Winter\nManaCost:2 G\nTypes:Legendary Snow Creature God\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntapAllSnow | TriggerDescription$ Whenever NICKNAME attacks, untap each snow permanent you control.\nSVar:TrigUntapAllSnow:DB$ UntapAll | ValidCards$ Permanent.Snow+YouCtrl\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Snow\nAlternateMode:Modal\nOracle:Whenever Jorn attacks, untap each snow permanent you control.\n\nALTERNATE\n\nName:Kaldring, the Rimestaff\nManaCost:1 U B\nTypes:Legendary Snow Artifact\nA:AB$ Effect | Cost$ T | TgtZone$ Graveyard | ValidTgts$ Permanent.Snow+YouCtrl | TgtPrompt$ Choose target snow permanent card in your graveyard | StaticAbilities$ STPlay | ReplacementEffects$ ETBCreat | RememberObjects$ Targeted | ForgetOnMoved$ Graveyard,Stack | ForgetOnCast$ False | SpellDescription$ You may play target snow permanent card from your graveyard this turn. If you do, it enters tapped.\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Graveyard | Description$ You may play target snow permanent card from your graveyard this turn.\nSVar:ETBCreat:Event$ Moved | ValidCard$ Card.IsRemembered | ValidCause$ SpellAbility.MayPlaySource | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ If you do, it enters tapped.\nSVar:DBTap:DB$ Tap | Defined$ ReplacedCard | ETB$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:{T}: You may play target snow permanent card from your graveyard this turn. If you do, it enters tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jorn, God of Winter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

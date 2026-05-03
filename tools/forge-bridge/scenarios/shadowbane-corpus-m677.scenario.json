@@ -1,0 +1,23 @@
+{
+  "id": "shadowbane-corpus-m677",
+  "description": "M6 corpus — Shadowbane; in-hand parse.",
+  "seed": 69562,
+  "cards": {
+    "Shadowbane": "Name:Shadowbane\nManaCost:1 W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ The next time a source of your choice would deal damage to you and/or creatures you control this turn, prevent that damage. If damage from a black source is prevented this way, you gain that much life.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RepDmg | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1\nSVar:RepDmg:Event$ DamageDone | ValidTarget$ You,Creature.YouCtrl | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ GainLifeYou | PreventionEffect$ True | Description$ The next time a source of your choice would deal damage to you and/or creatures you control this turn, prevent that damage. If damage from a black source is prevented this way, you gain that much life.\nSVar:GainLifeYou:DB$ GainLife | Defined$ You | LifeAmount$ X | ConditionCheckSVar$ Y | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nSVar:Y:ReplacedSource$Valid Card.BlackSource\nDeckHas:Ability$LifeGain\nOracle:The next time a source of your choice would deal damage to you and/or creatures you control this turn, prevent that damage. If damage from a black source is prevented this way, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadowbane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

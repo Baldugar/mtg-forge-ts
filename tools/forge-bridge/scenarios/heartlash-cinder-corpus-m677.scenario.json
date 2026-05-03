@@ -1,0 +1,23 @@
+{
+  "id": "heartlash-cinder-corpus-m677",
+  "description": "M6 corpus — Heartlash Cinder; in-hand parse.",
+  "seed": 62173,
+  "cards": {
+    "Heartlash Cinder": "Name:Heartlash Cinder\nManaCost:1 R\nTypes:Creature Elemental Warrior\nPT:1/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Chroma — When CARDNAME enters, it gets +X/+0 until end of turn, where X is the number of red mana symbols in the mana costs of permanents you control.\nSVar:TrigPump:DB$ Pump | NumAtt$ +X | Defined$ Self\nSVar:X:Count$Chroma.Red\nOracle:Haste\\nChroma — When Heartlash Cinder enters, it gets +X/+0 until end of turn, where X is the number of red mana symbols in the mana costs of permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heartlash Cinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

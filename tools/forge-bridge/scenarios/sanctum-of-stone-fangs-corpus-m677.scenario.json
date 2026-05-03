@@ -1,0 +1,23 @@
+{
+  "id": "sanctum-of-stone-fangs-corpus-m677",
+  "description": "M6 corpus — Sanctum of Stone Fangs; in-hand parse.",
+  "seed": 68946,
+  "cards": {
+    "Sanctum of Stone Fangs": "Name:Sanctum of Stone Fangs\nManaCost:1 B\nTypes:Legendary Enchantment Shrine\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of your first main phase, each opponent loses X life and you gain X life, where X is the number of Shrines you control.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHints:Type$Shrine\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your first main phase, each opponent loses X life and you gain X life, where X is the number of Shrines you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctum of Stone Fangs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

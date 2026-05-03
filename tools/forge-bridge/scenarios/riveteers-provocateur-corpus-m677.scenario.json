@@ -1,0 +1,23 @@
+{
+  "id": "riveteers-provocateur-corpus-m677",
+  "description": "M6 corpus — Riveteers Provocateur; in-hand parse.",
+  "seed": 68411,
+  "cards": {
+    "Riveteers Provocateur": "Name:Riveteers Provocateur\nManaCost:B R\nTypes:Creature Lizard Warrior\nPT:3/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose a creature card in your hand without blitz. It perpetually gains blitz. The blitz cost is equal to its mana cost.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.withoutBlitz+YouOwn | ChoiceTitle$ Choose a creature card in your hand without blitz | Mandatory$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Blitz:CardManaCost:Spell.Creature | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nK:Blitz:B R\nDeckHas:Ability$Sacrifice\nOracle:Menace\\nWhen Riveteers Provocateur enters, choose a creature card in your hand without blitz. It perpetually gains blitz. The blitz cost is equal to its mana cost.\\nBlitz {B}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riveteers Provocateur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

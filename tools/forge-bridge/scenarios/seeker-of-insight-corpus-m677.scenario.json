@@ -1,0 +1,25 @@
+{
+  "id": "seeker-of-insight-corpus-m677",
+  "description": "M6 corpus — Seeker of Insight; ETB-on-bf.",
+  "seed": 69376,
+  "cards": {
+    "Seeker of Insight": "Name:Seeker of Insight\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/3\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SubAbility$ DBDiscard | CheckSVar$ CastTest | SpellDescription$ Draw a card, then discard a card. Activate only if you've cast a noncreature spell this turn.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nSVar:CastTest:Count$ThisTurnCast_Card.YouCtrl+nonCreature\nOracle:{T}: Draw a card, then discard a card. Activate only if you've cast a noncreature spell this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Seeker of Insight"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

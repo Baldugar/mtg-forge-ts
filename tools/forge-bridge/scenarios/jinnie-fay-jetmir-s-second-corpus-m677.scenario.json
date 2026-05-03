@@ -1,0 +1,25 @@
+{
+  "id": "jinnie-fay-jetmir-s-second-corpus-m677",
+  "description": "M6 corpus — Jinnie Fay, Jetmir's Second; ETB-on-bf.",
+  "seed": 63310,
+  "cards": {
+    "Jinnie Fay, Jetmir's Second": "Name:Jinnie Fay, Jetmir's Second\nManaCost:RG G GW\nTypes:Legendary Creature Elf Druid\nPT:3/3\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GenericChoice | Optional$ True | Description$ If you would create one or more tokens, you may instead create that many 2/2 green Cat creature tokens with haste or that many 3/1 green Dog creature tokens with vigilance.\nSVar:GenericChoice:DB$ GenericChoice | Choices$ Cat,Dog\nSVar:Cat:DB$ ReplaceToken | Type$ ReplaceToken | TokenScript$ g_2_2_cat_haste | SpellDescription$ Create that many 2/2 green Cat creature tokens with haste.\nSVar:Dog:DB$ ReplaceToken | Type$ ReplaceToken | TokenScript$ g_3_1_dog_vigilance | SpellDescription$ Create that many 3/1 green Dog creature tokens with vigilance.\nAI:RemoveDeck:Random\nDeckHas:Type$Cat|Dog\nDeckNeeds:Ability$Token\nOracle:If you would create one or more tokens, you may instead create that many 2/2 green Cat creature tokens with haste or that many 3/1 green Dog creature tokens with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jinnie Fay, Jetmir's Second"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kabira-crossroads-corpus-m677",
+  "description": "M6 corpus — Kabira Crossroads; in-hand parse.",
+  "seed": 63416,
+  "cards": {
+    "Kabira Crossroads": "Name:Kabira Crossroads\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nOracle:Kabira Crossroads enters tapped.\\nWhen Kabira Crossroads enters, you gain 2 life.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kabira Crossroads"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

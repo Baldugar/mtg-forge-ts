@@ -1,0 +1,23 @@
+{
+  "id": "ryusei-the-falling-star-corpus-m677",
+  "description": "M6 corpus — Ryusei, the Falling Star; in-hand parse.",
+  "seed": 68697,
+  "cards": {
+    "Ryusei, the Falling Star": "Name:Ryusei, the Falling Star\nManaCost:5 R\nTypes:Legendary Creature Dragon Spirit\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME dies, it deals 5 damage to each creature without flying.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature.withoutFlying | NumDmg$ 5 | ValidDescription$ each creature without flying.\nOracle:Flying\\nWhen Ryusei, the Falling Star dies, it deals 5 damage to each creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ryusei, the Falling Star"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

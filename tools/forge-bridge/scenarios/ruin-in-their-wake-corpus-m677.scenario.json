@@ -1,0 +1,23 @@
+{
+  "id": "ruin-in-their-wake-corpus-m677",
+  "description": "M6 corpus — Ruin in Their Wake; in-hand parse.",
+  "seed": 68589,
+  "cards": {
+    "Ruin in Their Wake": "Name:Ruin in Their Wake\nManaCost:1 G\nTypes:Sorcery\nK:Devoid\nA:SP$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Reveal$ True | Shuffle$ False | RememberChanged$ True | SubAbility$ DBChangeZone | SpellDescription$ Search your library for a basic land card and reveal it. You may put that card onto the battlefield tapped if you control a land named Wastes. Otherwise, put that card into your hand. Then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Battlefield | Tapped$ True | ConditionPresent$ Land.namedWastes+YouCtrl | ForgetChanged$ True | Optional$ True | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Name$Wastes\nOracle:Devoid (This card has no color.)\\nSearch your library for a basic land card and reveal it. You may put that card onto the battlefield tapped if you control a land named Wastes. Otherwise, put that card into your hand. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruin in Their Wake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

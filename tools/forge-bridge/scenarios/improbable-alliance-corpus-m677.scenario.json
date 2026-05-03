@@ -1,0 +1,25 @@
+{
+  "id": "improbable-alliance-corpus-m677",
+  "description": "M6 corpus — Improbable Alliance; ETB-on-bf.",
+  "seed": 62827,
+  "cards": {
+    "Improbable Alliance": "Name:Improbable Alliance\nManaCost:U R\nTypes:Enchantment\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you draw your second card each turn, create a 1/1 blue Faerie creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_faerie_flying | TokenOwner$ You\nA:AB$ Draw | Cost$ 4 U R | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:All\nDeckHas:Ability$Token\nOracle:Whenever you draw your second card each turn, create a 1/1 blue Faerie creature token with flying.\\n{4}{U}{R}: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Improbable Alliance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

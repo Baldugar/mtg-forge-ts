@@ -1,0 +1,23 @@
+{
+  "id": "minions-murmurs-corpus-m677",
+  "description": "M6 corpus — Minions' Murmurs; in-hand parse.",
+  "seed": 65200,
+  "cards": {
+    "Minions' Murmurs": "Name:Minions' Murmurs\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | SpellDescription$ You draw X cards and you lose X life, where X is the number of creatures you control. | SubAbility$ DB1\nSVar:DB1:DB$ LoseLife | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl\nAI:RemoveDeck:All\nOracle:You draw X cards and you lose X life, where X is the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minions' Murmurs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "steelclad-spirit-corpus-m677",
+  "description": "M6 corpus — Steelclad Spirit; in-hand parse.",
+  "seed": 70963,
+  "cards": {
+    "Steelclad Spirit": "Name:Steelclad Spirit\nManaCost:1 U\nTypes:Creature Spirit\nPT:3/3\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever an enchantment you control enters, CARDNAME can attack this turn as though it didn't have defender.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ CanAttack | Duration$ UntilHostLeavesPlayOrEOT\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE can attack this turn as though it didn't have defender.\nSVar:BuffedBy:Enchantment\nDeckHints:Type$Enchantment\nOracle:Defender\\nWhenever an enchantment you control enters, Steelclad Spirit can attack this turn as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steelclad Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "haunted-angel-corpus-m677",
+  "description": "M6 corpus — Haunted Angel; in-hand parse.",
+  "seed": 62104,
+  "cards": {
+    "Haunted Angel": "Name:Haunted Angel\nManaCost:2 W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, exile CARDNAME and each other player creates a 3/3 black Angel creature token with flying.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredNewCardLKICopy | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_angel_flying | TokenOwner$ Player.Other\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Haunted Angel dies, exile Haunted Angel and each other player creates a 3/3 black Angel creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haunted Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

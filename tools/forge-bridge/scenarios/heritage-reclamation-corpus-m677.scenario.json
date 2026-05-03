@@ -1,0 +1,23 @@
+{
+  "id": "heritage-reclamation-corpus-m677",
+  "description": "M6 corpus — Heritage Reclamation; in-hand parse.",
+  "seed": 62285,
+  "cards": {
+    "Heritage Reclamation": "Name:Heritage Reclamation\nManaCost:1 G\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroyArtifact,DBDestroyEnchantment,DBExile\nSVar:DBDestroyArtifact:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBDestroyEnchantment:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TgtPrompt$ Select target card from a graveyard. | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBDraw | SpellDescription$ Exile up to one target card from a graveyard. Draw a card.\nSVar:DBDraw:DB$ Draw\nOracle:Choose one —\\n• Destroy target artifact.\\n• Destroy target enchantment.\\n• Exile up to one target card from a graveyard. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heritage Reclamation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

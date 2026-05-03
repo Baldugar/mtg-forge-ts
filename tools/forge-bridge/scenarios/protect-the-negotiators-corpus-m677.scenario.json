@@ -1,0 +1,23 @@
+{
+  "id": "protect-the-negotiators-corpus-m677",
+  "description": "M6 corpus — Protect the Negotiators; in-hand parse.",
+  "seed": 67282,
+  "cards": {
+    "Protect the Negotiators": "Name:Protect the Negotiators\nManaCost:1 U\nTypes:Instant\nK:Kicker:W\nA:SP$ Token | Condition$ Kicked | TokenScript$ w_1_1_soldier | SubAbility$ DBCounter | SpellDescription$ If this spell was kicked, create a 1/1 white Soldier creature token. Counter target spell unless its controller pays {1} for each creature you control.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ Y | SpellDescription$ Counter target spell unless its controller pays {1} for each creature you control.\nSVar:Y:Count$Valid Creature.YouCtrl\nSVar:BuffedBy:Creature\nDeckHas:Ability$Token\nDeckHints:Color$White\nOracle:Kicker {W} (You may pay an additional {W} as you cast this spell.)\\nIf this spell was kicked, create a 1/1 white Soldier creature token.\\nCounter target spell unless its controller pays {1} for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protect the Negotiators"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "raging-swordtooth-corpus-m677",
+  "description": "M6 corpus — Raging Swordtooth; in-hand parse.",
+  "seed": 67577,
+  "cards": {
+    "Raging Swordtooth": "Name:Raging Swordtooth\nManaCost:3 R G\nTypes:Creature Dinosaur\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each other creature.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.StrictlyOther | NumDmg$ 1 | ValidDescription$ each other creature.\nOracle:Trample\\nWhen Raging Swordtooth enters, it deals 1 damage to each other creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raging Swordtooth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

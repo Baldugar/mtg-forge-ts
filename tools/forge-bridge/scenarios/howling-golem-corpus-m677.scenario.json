@@ -1,0 +1,23 @@
+{
+  "id": "howling-golem-corpus-m677",
+  "description": "M6 corpus — Howling Golem; in-hand parse.",
+  "seed": 62558,
+  "cards": {
+    "Howling Golem": "Name:Howling Golem\nManaCost:3\nTypes:Artifact Creature Golem\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks, each player draws a card.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks, each player draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ Player | NumCards$ 1 | SpellDescription$ Each player draws a card.\nOracle:Whenever Howling Golem attacks or blocks, each player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Howling Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

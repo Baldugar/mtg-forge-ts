@@ -1,0 +1,23 @@
+{
+  "id": "splinter-leo-father-son-corpus-m677",
+  "description": "M6 corpus — Splinter & Leo, Father & Son; in-hand parse.",
+  "seed": 70745,
+  "cards": {
+    "Splinter & Leo, Father & Son": "Name:Splinter & Leo, Father & Son\nManaCost:2 W\nTypes:Legendary Creature Mutant Ninja Rat Turtle\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When NICKNAME enter, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBToken,DBPutCounterAll | AdditionalDescription$ . Each mode must target a different player.\nSVar:DBToken:DB$ Token | ValidTgts$ Player | TokenOwner$ ThisTargetedPlayer | TokenScript$ r_2_2_mutant | SpellDescription$ Target player creates a 2/2 red Mutant creature token.\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidTgts$ Player | TargetUnique$ True | ValidCards$ Creature.Other | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each other creature target player controls.\nOracle:When Splinter & Leo enter, choose one or both. Each mode must target a different player.\\n• Target player creates a 2/2 red Mutant creature token.\\n• Put a +1/+1 counter on each other creature target player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splinter & Leo, Father & Son"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

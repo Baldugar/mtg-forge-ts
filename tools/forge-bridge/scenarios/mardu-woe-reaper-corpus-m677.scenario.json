@@ -1,0 +1,23 @@
+{
+  "id": "mardu-woe-reaper-corpus-m677",
+  "description": "M6 corpus — Mardu Woe-Reaper; in-hand parse.",
+  "seed": 64787,
+  "cards": {
+    "Mardu Woe-Reaper": "Name:Mardu Woe-Reaper\nManaCost:W\nTypes:Creature Human Warrior\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Warrior.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME or another Warrior you control enters, you may exile target creature card from a graveyard. If you do, you gain 1 life.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select target creature card | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Warrior\nDeckHints:Ability$Graveyard & Type$Warrior\nOracle:Whenever Mardu Woe-Reaper or another Warrior you control enters, you may exile target creature card from a graveyard. If you do, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mardu Woe-Reaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

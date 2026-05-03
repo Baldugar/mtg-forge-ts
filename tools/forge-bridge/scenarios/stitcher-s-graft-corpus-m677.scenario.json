@@ -1,0 +1,23 @@
+{
+  "id": "stitcher-s-graft-corpus-m677",
+  "description": "M6 corpus — Stitcher's Graft; in-hand parse.",
+  "seed": 71020,
+  "cards": {
+    "Stitcher's Graft": "Name:Stitcher's Graft\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Equipped creature gets +3/+3.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ StayTapped | TriggerDescription$ Whenever equipped creature attacks, it doesn't untap during its controller's next untap step.\nSVar:StayTapped:DB$ Pump | KW$ HIDDEN This card doesn't untap during your next untap step. | Defined$ TriggeredAttackerLKICopy | Duration$ Permanent\nT:Mode$ Unattach | ValidAttachment$ Card.Self | ValidObject$ Permanent | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME becomes unattached from a permanent, sacrifice that permanent.\nSVar:TrigSac:DB$ SacrificeAll | Defined$ TriggeredObjectLKICopy | Controller$ You\nK:Equip:2\nOracle:Equipped creature gets +3/+3.\\nWhenever equipped creature attacks, it doesn't untap during its controller's next untap step.\\nWhenever Stitcher's Graft becomes unattached from a permanent, sacrifice that permanent.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stitcher's Graft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "surrakar-banisher-corpus-m677",
+  "description": "M6 corpus — Surrakar Banisher; in-hand parse.",
+  "seed": 71432,
+  "cards": {
+    "Surrakar Banisher": "Name:Surrakar Banisher\nManaCost:4 U\nTypes:Creature Surrakar\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target tapped creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | Origin$ Battlefield | Destination$ Hand\nOracle:When Surrakar Banisher enters, you may return target tapped creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surrakar Banisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

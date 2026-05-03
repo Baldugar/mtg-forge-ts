@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-innistrad-corpus-m677",
+  "description": "M6 corpus — Invasion of Innistrad; in-hand parse.",
+  "seed": 63062,
+  "cards": {
+    "Invasion of Innistrad": "Name:Invasion of Innistrad\nManaCost:2 B B\nTypes:Battle Siege\nDefense:5\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -13/-13 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -13 | NumDef$ -13\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nFlash\\nWhen Invasion of Innistrad enters, target creature an opponent controls gets -13/-13 until end of turn.\n\nALTERNATE\n\nName:Deluge of the Dead\nManaCost:no cost\nColors:black\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 2/2 black Zombie creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_2_2_zombie\nA:AB$ ChangeZone | Cost$ 2 B | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SubAbility$ DBToken | SpellDescription$ Exile target card from a graveyard.\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SpellDescription$ If it was a creature card, create a 2/2 black Zombie creature token.\nDeckHas:Ability$Counters|Token|Graveyard & Type$Zombie\nOracle:When Deluge of the Dead enters, create two 2/2 black Zombie creature tokens.\\n{2}{B}: Exile target card from a graveyard. If it was a creature card, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Innistrad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

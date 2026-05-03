@@ -1,0 +1,23 @@
+{
+  "id": "kyodai-soul-of-kamigawa-corpus-m677",
+  "description": "M6 corpus — Kyodai, Soul of Kamigawa; in-hand parse.",
+  "seed": 63932,
+  "cards": {
+    "Kyodai, Soul of Kamigawa": "Name:Kyodai, Soul of Kamigawa\nManaCost:3 W\nTypes:Legendary Creature Dragon Spirit\nPT:3/3\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, another target permanent gains indestructible for as long as you control NICKNAME.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Permanent.Other | TgtPrompt$ Select another target permanent | KW$ Indestructible | Duration$ AsLongAsControl\nA:AB$ Pump | Cost$ W U B R G | NumAtt$ +5 | NumDef$ +5 | SpellDescription$ NICKNAME gets +5/+5 until end of turn.\nSVar:PlayMain1:TRUE\nOracle:Flash\\nFlying\\nWhen Kyodai, Soul of Kamigawa enters, another target permanent gains indestructible for as long as you control Kyodai.\\n{W}{U}{B}{R}{G}: Kyodai gets +5/+5 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kyodai, Soul of Kamigawa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

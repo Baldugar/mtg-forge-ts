@@ -1,0 +1,25 @@
+{
+  "id": "rune-of-protection-green-corpus-m677",
+  "description": "M6 corpus — Rune of Protection: Green; ETB-on-bf.",
+  "seed": 68631,
+  "cards": {
+    "Rune of Protection: Green": "Name:Rune of Protection: Green\nManaCost:1 W\nTypes:Enchantment\nA:AB$ ChooseSource | Cost$ W | Choices$ Card.GreenSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a green source of your choice would deal damage to you this turn, prevent that damage.\nK:Cycling:2\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict+GreenSource | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen green source deals damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:All\nOracle:{W}: The next time a green source of your choice would deal damage to you this turn, prevent that damage.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rune of Protection: Green"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

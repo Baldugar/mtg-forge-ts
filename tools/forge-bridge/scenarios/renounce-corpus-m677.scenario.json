@@ -1,0 +1,23 @@
+{
+  "id": "renounce-corpus-m677",
+  "description": "M6 corpus — Renounce; in-hand parse.",
+  "seed": 68056,
+  "cards": {
+    "Renounce": "Name:Renounce\nManaCost:1 W\nTypes:Instant\nA:SP$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Permanent | RememberSacrificed$ True | Optional$ True | SubAbility$ DBGainLife | SpellDescription$ Sacrifice any number of permanents. You gain 2 life for each permanent sacrificed this way.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ LifeX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Permanent.YouCtrl\nSVar:LifeX:Remembered$Amount/Twice\nAI:RemoveDeck:All\nOracle:Sacrifice any number of permanents. You gain 2 life for each permanent sacrificed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renounce"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

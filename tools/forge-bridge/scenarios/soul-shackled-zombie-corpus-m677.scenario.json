@@ -1,0 +1,23 @@
+{
+  "id": "soul-shackled-zombie-corpus-m677",
+  "description": "M6 corpus — Soul-Shackled Zombie; in-hand parse.",
+  "seed": 70460,
+  "cards": {
+    "Soul-Shackled Zombie": "Name:Soul-Shackled Zombie\nManaCost:3 B\nTypes:Creature Zombie\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, exile up to two target cards from a single graveyard. If at least one creature card was exiled this way, each opponent loses 2 life and you gain 2 life.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetMin$ 0 | TargetMax$ 2 | TargetsWithSameController$ True | TgtPrompt$ Select target card in a graveyard to exile | RememberChanged$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nOracle:When this creature enters, exile up to two target cards from a single graveyard. If at least one creature card was exiled this way, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul-Shackled Zombie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

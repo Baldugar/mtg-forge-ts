@@ -1,0 +1,23 @@
+{
+  "id": "season-of-loss-corpus-m677",
+  "description": "M6 corpus — Season of Loss; in-hand parse.",
+  "seed": 69315,
+  "cards": {
+    "Season of Loss": "Name:Season of Loss\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBSacrifice,DBDraw,DBLoseLife | CharmNum$ 5 | MinCharmNum$ 0 | CanRepeatModes$ True | Pawprint$ 5\nSVar:DBSacrifice:DB$ Sacrifice | Pawprint$ 1 | Defined$ Player | SacValid$ Creature | SpellDescription$ Each player sacrifices a creature.\nSVar:DBDraw:DB$ Draw | Pawprint$ 2 | Defined$ You | NumCards$ Y | SpellDescription$ Draw a card for each creature you controlled that died this turn.\nSVar:Y:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouCtrl\nSVar:DBLoseLife:DB$ LoseLife | Pawprint$ 3 | Defined$ Player.Opponent | LifeAmount$ X | SpellDescription$ Each opponent loses X life, where X is the number of creature cards in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Choose up to five {P} worth of modes. You may choose the same mode more than once.\\n{P} — Each player sacrifices a creature.\\n{P}{P} — Draw a card for each creature you controlled that died this turn.\\n{P}{P}{P} — Each opponent loses X life, where X is the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Season of Loss"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

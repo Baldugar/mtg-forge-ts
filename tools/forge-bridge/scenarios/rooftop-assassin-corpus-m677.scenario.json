@@ -1,0 +1,23 @@
+{
+  "id": "rooftop-assassin-corpus-m677",
+  "description": "M6 corpus — Rooftop Assassin; in-hand parse.",
+  "seed": 68497,
+  "cards": {
+    "Rooftop Assassin": "Name:Rooftop Assassin\nManaCost:3 B\nTypes:Creature Vampire Assassin\nPT:2/2\nK:Flash\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature an opponent controls that was dealt damage this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.wasDealtDamageThisTurn+OppCtrl | TgtPrompt$ Select target creature an opponent controls that was dealt damage this turn\nOracle:Flash\\nFlying, lifelink\\nWhen Rooftop Assassin enters, destroy target creature an opponent controls that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rooftop Assassin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

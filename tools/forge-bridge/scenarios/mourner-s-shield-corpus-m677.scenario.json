@@ -1,0 +1,23 @@
+{
+  "id": "mourner-s-shield-corpus-m677",
+  "description": "M6 corpus — Mourner's Shield; in-hand parse.",
+  "seed": 65550,
+  "cards": {
+    "Mourner's Shield": "Name:Mourner's Shield\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Imprint — When CARDNAME enters, you may exile target card from a graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | Imprint$ True\nA:AB$ ChooseSource | Cost$ 2 T | Choices$ Card.SharesColorWith Imprinted | ChoiceTitle$ Choose a source that shares a color with the exiled card | RememberChosen$ True | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ Prevent all damage that would be dealt this turn by a source of your choice that shares a color with the exiled card.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidSource$ Card.IsRemembered | Description$ Prevent all damage that would be dealt by a source of your choice that shares a color with the exiled card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Card.Self | Destination$ Any | Execute$ DBCleanImprinted | Static$ True\nSVar:DBCleanImprinted:DB$ Cleanup | ClearImprinted$ True\nOracle:Imprint — When Mourner's Shield enters, you may exile target card from a graveyard.\\n{2}, {T}: Prevent all damage that would be dealt this turn by a source of your choice that shares a color with the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mourner's Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

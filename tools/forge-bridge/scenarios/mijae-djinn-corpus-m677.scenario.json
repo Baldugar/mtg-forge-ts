@@ -1,0 +1,23 @@
+{
+  "id": "mijae-djinn-corpus-m677",
+  "description": "M6 corpus — Mijae Djinn; in-hand parse.",
+  "seed": 65120,
+  "cards": {
+    "Mijae Djinn": "Name:Mijae Djinn\nManaCost:R R R\nTypes:Creature Djinn\nPT:6/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ FlipCoin | TriggerDescription$ Whenever CARDNAME attacks, flip a coin. If you lose the flip, remove CARDNAME from combat and tap it.\nSVar:FlipCoin:DB$ FlipACoin | LoseSubAbility$ DBRemoveFromCombat\nSVar:DBRemoveFromCombat:DB$ RemoveFromCombat | Defined$ Self | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Self\nOracle:Whenever Mijae Djinn attacks, flip a coin. If you lose the flip, remove Mijae Djinn from combat and tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mijae Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "songstitcher-corpus-m677",
+  "description": "M6 corpus — Songstitcher; ETB-on-bf.",
+  "seed": 70407,
+  "cards": {
+    "Songstitcher": "Name:Songstitcher\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nA:AB$ Effect | Cost$ 1 W | ValidTgts$ Creature.attacking+withFlying | TgtPrompt$ Select target attacking creature with flying | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all combat damage that would be dealt this turn by target attacking creature with flying.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt this turn by target attacking creature with flying.\nOracle:{1}{W}: Prevent all combat damage that would be dealt this turn by target attacking creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Songstitcher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

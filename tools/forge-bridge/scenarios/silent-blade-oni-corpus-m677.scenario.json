@@ -1,0 +1,23 @@
+{
+  "id": "silent-blade-oni-corpus-m677",
+  "description": "M6 corpus — Silent-Blade Oni; in-hand parse.",
+  "seed": 69876,
+  "cards": {
+    "Silent-Blade Oni": "Name:Silent-Blade Oni\nManaCost:3 U U B B\nTypes:Creature Demon Ninja\nPT:6/5\nK:Ninjutsu:4 U B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReveal | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, look at that player's hand. You may cast a spell from among those cards without paying its mana cost.\nSVar:TrigReveal:DB$ RevealHand | Defined$ TriggeredTarget | Look$ True | SubAbility$ TrigPlay\nSVar:TrigPlay:DB$ Play | Valid$ Card.nonLand+OwnedBy TriggeredTarget | ValidZone$ Hand | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True\nOracle:Ninjutsu {4}{U}{B} ({4}{U}{B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)\\nWhenever Silent-Blade Oni deals combat damage to a player, look at that player's hand. You may cast a spell from among those cards without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silent-Blade Oni"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

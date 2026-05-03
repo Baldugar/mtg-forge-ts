@@ -1,0 +1,23 @@
+{
+  "id": "lesser-gargadon-corpus-m677",
+  "description": "M6 corpus — Lesser Gargadon; in-hand parse.",
+  "seed": 64147,
+  "cards": {
+    "Lesser Gargadon": "Name:Lesser Gargadon\nManaCost:2 R R\nTypes:Creature Beast\nPT:6/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice a land.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigSac | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice a land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land\nOracle:Whenever Lesser Gargadon attacks or blocks, sacrifice a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lesser Gargadon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "myrel-shield-of-argive-corpus-m677",
+  "description": "M6 corpus — Myrel, Shield of Argive; in-hand parse.",
+  "seed": 65647,
+  "cards": {
+    "Myrel, Shield of Argive": "Name:Myrel, Shield of Argive\nManaCost:3 W\nTypes:Legendary Creature Human Soldier\nPT:3/4\nS:Mode$ CantBeCast | ValidCard$ Card | Condition$ PlayerTurn | Caster$ Opponent | Description$ During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.\nS:Mode$ CantBeActivated | ValidCard$ Artifact,Creature,Enchantment | AffectedZone$ Battlefield | Condition$ PlayerTurn | Activator$ Opponent\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create X 1/1 colorless Soldier artifact creature tokens, where X is the number of Soldiers you control.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_1_1_a_soldier\nSVar:X:Count$Valid Soldier.YouCtrl\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Artifact\nDeckHints:Type$Soldier\nOracle:During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.\\nWhenever Myrel, Shield of Argive attacks, create X 1/1 colorless Soldier artifact creature tokens, where X is the number of Soldiers you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myrel, Shield of Argive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sunder-the-gateway-corpus-m677",
+  "description": "M6 corpus — Sunder the Gateway; in-hand parse.",
+  "seed": 71344,
+  "cards": {
+    "Sunder the Gateway": "Name:Sunder the Gateway\nManaCost:1 W\nTypes:Sorcery\nA:SP$ Charm | Choices$ Destroy,Incubate\nSVar:Destroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl+!token,Enchantment.OppCtrl+!token | SubAbility$ DBIncubate | TgtPrompt$ Select target nontoken artifact or enchantment an opponent controls | StackDescription$ Destroy {c:Targeted}. | SpellDescription$ Destroy target nontoken artifact or enchantment an opponent controls. Incubate 2. (Create an Incubator token with two +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:DBIncubate:DB$ Incubate | Amount$ 2\nSVar:Incubate:DB$ Incubate | Amount$ 2 | SubAbility$ DBTransform | StackDescription$ SpellDescription | SpellDescription$ Incubate 2, then transform an Incubator token you control.\nSVar:DBTransform:DB$ SetState | Choices$ Incubator.token+YouCtrl | ChoiceTitle$ Choose an Incubator token you control | Mandatory$ True | Mode$ Transform | StackDescription$ None\nDeckHas:Ability$Counters|Token & Type$Incubator|Artifact|Phyrexian\nOracle:Choose one —\\n• Destroy target nontoken artifact or enchantment an opponent controls. Incubate 2. (Create an Incubator token with two +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\\n• Incubate 2, then transform an Incubator token you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunder the Gateway"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

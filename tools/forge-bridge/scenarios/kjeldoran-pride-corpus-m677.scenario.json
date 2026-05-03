@@ -1,0 +1,23 @@
+{
+  "id": "kjeldoran-pride-corpus-m677",
+  "description": "M6 corpus — Kjeldoran Pride; in-hand parse.",
+  "seed": 63737,
+  "cards": {
+    "Kjeldoran Pride": "Name:Kjeldoran Pride\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 2 | Description$ Enchanted creature gets +1/+2.\nA:AB$ Attach | Cost$ 2 U | ValidTgts$ Creature.!EnchantedBy | TgtPrompt$ Select target creature other than enchanted creature | AILogic$ Pump | SpellDescription$ Attach CARDNAME to target creature other than enchanted creature.\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature gets +1/+2.\\n{2}{U}: Attach Kjeldoran Pride to target creature other than enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kjeldoran Pride"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

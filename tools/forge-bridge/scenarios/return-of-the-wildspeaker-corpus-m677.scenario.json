@@ -1,0 +1,23 @@
+{
+  "id": "return-of-the-wildspeaker-corpus-m677",
+  "description": "M6 corpus — Return of the Wildspeaker; in-hand parse.",
+  "seed": 68156,
+  "cards": {
+    "Return of the Wildspeaker": "Name:Return of the Wildspeaker\nManaCost:4 G\nTypes:Instant\nA:SP$ Charm | Choices$ DBDraw,DBPumpAll\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SpellDescription$ Draw cards equal to the greatest power among non-Human creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl+nonHuman$GreatestCardPower\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+nonHuman | NumAtt$ +3 | NumDef$ +3 | SpellDescription$ Non-Human creatures you control get +3/+3 until end of turn.\nOracle:Choose one —\\n• Draw cards equal to the greatest power among non-Human creatures you control.\\n• Non-Human creatures you control get +3/+3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Return of the Wildspeaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

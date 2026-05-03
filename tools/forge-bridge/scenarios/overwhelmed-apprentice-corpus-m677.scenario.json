@@ -1,0 +1,23 @@
+{
+  "id": "overwhelmed-apprentice-corpus-m677",
+  "description": "M6 corpus — Overwhelmed Apprentice; in-hand parse.",
+  "seed": 66511,
+  "cards": {
+    "Overwhelmed Apprentice": "Name:Overwhelmed Apprentice\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, each opponent mills two cards. Then you scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\nSVar:TrigMill:DB$ Mill | Defined$ Player.Opponent | NumCards$ 2 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nOracle:When Overwhelmed Apprentice enters, each opponent mills two cards. Then you scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overwhelmed Apprentice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

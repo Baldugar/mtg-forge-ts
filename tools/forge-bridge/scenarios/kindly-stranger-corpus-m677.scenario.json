@@ -1,0 +1,23 @@
+{
+  "id": "kindly-stranger-corpus-m677",
+  "description": "M6 corpus — Kindly Stranger; in-hand parse.",
+  "seed": 63659,
+  "cards": {
+    "Kindly Stranger": "Name:Kindly Stranger\nManaCost:2 B\nTypes:Creature Human\nPT:2/3\nA:AB$ SetState | Cost$ 2 B | Defined$ Self | Mode$ Transform | Activation$ Delirium | PrecostDesc$ Delirium — | SpellDescription$ Transform CARDNAME. Activate only if there are four or more card types among cards in your graveyard.\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nAlternateMode:DoubleFaced\nOracle:Delirium — {2}{B}: Transform Kindly Stranger. Activate only if there are four or more card types among cards in your graveyard.\n\nALTERNATE\n\nName:Demon-Possessed Witch\nManaCost:no cost\nColors:black\nTypes:Creature Human Shaman\nPT:4/3\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When this creature transforms into CARDNAME, you may destroy target creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature\nOracle:When this creature transforms into Demon-Possessed Witch, you may destroy target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kindly Stranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

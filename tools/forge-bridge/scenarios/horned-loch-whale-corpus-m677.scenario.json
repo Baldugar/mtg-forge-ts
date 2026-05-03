@@ -1,0 +1,23 @@
+{
+  "id": "horned-loch-whale-corpus-m677",
+  "description": "M6 corpus — Horned Loch-Whale; in-hand parse.",
+  "seed": 62502,
+  "cards": {
+    "Horned Loch-Whale": "Name:Horned Loch-Whale\nManaCost:4 U U\nTypes:Creature Whale\nPT:6/6\nK:Flash\nK:Ward:2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless it's your turn.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPlayerTurn$ False\nAlternateMode:Adventure\nOracle:Flash\\nWard {2}\\nHorned Loch-Whale enters tapped unless it's your turn.\n\nALTERNATE\n\nName:Lagoon Breach\nManaCost:1 U\nTypes:Instant Adventure\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking+YouDontCtrl | TgtPrompt$ Select target attacking creature you don't control | AlternativeDecider$ TargetedOwner | Origin$ Battlefield | Destination$ Library | DestinationAlternative$ Library | LibraryPositionAlternative$ -1 | StackDescription$ {p:TargetedOwner} puts {c:Targeted} on the top or bottom of their library. | SpellDescription$ The owner of target attacking creature you don't control puts it on the top or bottom of their library.\nOracle:The owner of target attacking creature you don't control puts it on the top or bottom of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Horned Loch-Whale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

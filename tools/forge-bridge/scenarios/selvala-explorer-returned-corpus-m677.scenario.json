@@ -1,0 +1,25 @@
+{
+  "id": "selvala-explorer-returned-corpus-m677",
+  "description": "M6 corpus — Selvala, Explorer Returned; ETB-on-bf.",
+  "seed": 69431,
+  "cards": {
+    "Selvala, Explorer Returned": "Name:Selvala, Explorer Returned\nManaCost:1 G W\nTypes:Legendary Creature Elf Scout\nPT:2/4\nA:AB$ PeekAndReveal | Cost$ T | PrecostDesc$ Parley — | Defined$ Player | RememberRevealed$ True | SubAbility$ DBMana | SpellDescription$ Each player reveals the top card of their library. For each nonland card revealed this way, add {G} and you gain 1 life. Then each player draws a card.\nSVar:DBMana:DB$ Mana | Produced$ G | Amount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.nonLand\nAI:RemoveDeck:All\nDeckHas:Ability$LifeGain\nOracle:Parley — {T}: Each player reveals the top card of their library. For each nonland card revealed this way, add {G} and you gain 1 life. Then each player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Selvala, Explorer Returned"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

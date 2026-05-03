@@ -1,0 +1,23 @@
+{
+  "id": "serum-raker-corpus-m677",
+  "description": "M6 corpus — Serum Raker; in-hand parse.",
+  "seed": 69505,
+  "cards": {
+    "Serum Raker": "Name:Serum Raker\nManaCost:2 U U\nTypes:Creature Phyrexian Drake\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, each player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | Mode$ TgtChoose\nOracle:Flying\\nWhen Serum Raker dies, each player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serum Raker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

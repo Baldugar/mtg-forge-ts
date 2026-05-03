@@ -1,0 +1,25 @@
+{
+  "id": "knight-of-dawn-s-light-corpus-m677",
+  "description": "M6 corpus — Knight of Dawn's Light; ETB-on-bf.",
+  "seed": 63750,
+  "cards": {
+    "Knight of Dawn's Light": "Name:Knight of Dawn's Light\nManaCost:1 W\nTypes:Creature Human Knight\nPT:2/2\nK:First Strike\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GainLife | AILogic$ DoubleLife | Description$ If you would gain life, you gain that much life plus 1 instead.\nSVar:GainLife:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nSVar:X:ReplaceCount$LifeGained/Plus.1\nA:AB$ Pump | Cost$ 1 W | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ CARDNAME gets +1/+1 until end of turn.\nDeckHints:Ability$LifeGain\nOracle:First strike\\nIf you would gain life, you gain that much life plus 1 instead.\\n{1}{W}: Knight of Dawn's Light gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Knight of Dawn's Light"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

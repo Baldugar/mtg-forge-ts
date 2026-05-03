@@ -1,0 +1,23 @@
+{
+  "id": "ogre-savant-corpus-m677",
+  "description": "M6 corpus — Ogre Savant; in-hand parse.",
+  "seed": 66237,
+  "cards": {
+    "Ogre Savant": "Name:Ogre Savant\nManaCost:4 R\nTypes:Creature Ogre Wizard\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, if {U} was spent to cast it, return target creature to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature | ConditionManaSpent$ U\nSVar:ManaNeededToAvoidNegativeEffect:blue\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:When Ogre Savant enters, if {U} was spent to cast it, return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Savant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

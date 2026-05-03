@@ -1,0 +1,23 @@
+{
+  "id": "rainbow-knights-corpus-m677",
+  "description": "M6 corpus — Rainbow Knights; in-hand parse.",
+  "seed": 67597,
+  "cards": {
+    "Rainbow Knights": "Name:Rainbow Knights\nManaCost:W W\nTypes:Creature Human Knight\nPT:2/1\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Random$ True | SpellDescription$ As CARDNAME enters, it gains protection from a color chosen at random. (This effect lasts indefinitely.)\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Protection:Card.ChosenColor:chosenColor | Secondary$ True\nA:AB$ Pump | Cost$ 1 | KW$ First Strike | SpellDescription$ CARDNAME gains first strike until end of turn.\nA:AB$ Pump | Cost$ W W | NumAtt$ +X | StackDescription$ SpellDescription | SpellDescription$ CARDNAME gets +X/+0 until end of turn, where X is a number chosen randomly from 0 to 2.\nSVar:X:Count$Random.0.2\nOracle:As Rainbow Knights enters, it gains protection from a color chosen at random. (This effect lasts indefinitely.)\\n{1}: Rainbow Knights gains first strike until end of turn.\\n{W}{W}: Rainbow Knights gets +X/+0 until end of turn, where X is a number chosen randomly from 0 to 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rainbow Knights"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

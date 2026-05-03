@@ -1,0 +1,23 @@
+{
+  "id": "loyal-guardian-corpus-m677",
+  "description": "M6 corpus — Loyal Guardian; in-hand parse.",
+  "seed": 64457,
+  "cards": {
+    "Loyal Guardian": "Name:Loyal Guardian\nManaCost:4 G\nTypes:Creature Rhino\nPT:4/4\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | Execute$ TrigPutCounter | TriggerDescription$ Lieutenant — At the beginning of combat on your turn, if you control your commander, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Ability$IsCommander\nOracle:Trample\\nLieutenant — At the beginning of combat on your turn, if you control your commander, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loyal Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

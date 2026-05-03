@@ -1,0 +1,23 @@
+{
+  "id": "search-for-dagger-corpus-m677",
+  "description": "M6 corpus — Search for Dagger; in-hand parse.",
+  "seed": 69295,
+  "cards": {
+    "Search for Dagger": "Name:Search for Dagger\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.IsCommander+YouOwn | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever your commander enters or attacks, look at the top six cards of your library. You may reveal a legendary creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nT:Mode$ Attacks | ValidCard$ Card.IsCommander+YouOwn | Execute$ TrigDig | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever your commander enters or attacks, look at the top six cards of your library. You may reveal a legendary creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Creature.Legendary | RestRandomOrder$ True\nOracle:Whenever your commander enters or attacks, look at the top six cards of your library. You may reveal a legendary creature card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Search for Dagger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

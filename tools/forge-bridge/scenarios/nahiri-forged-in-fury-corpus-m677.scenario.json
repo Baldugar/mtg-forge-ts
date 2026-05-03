@@ -1,0 +1,23 @@
+{
+  "id": "nahiri-forged-in-fury-corpus-m677",
+  "description": "M6 corpus — Nahiri, Forged in Fury; in-hand parse.",
+  "seed": 65708,
+  "cards": {
+    "Nahiri, Forged in Fury": "Name:Nahiri, Forged in Fury\nManaCost:4 R W\nTypes:Legendary Creature Kor Artificer\nPT:5/4\nK:Affinity:Equipment\nT:Mode$ Attacks | ValidCard$ Creature.equipped+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever an equipped creature you control attacks, exile the top card of your library. You may play that card this turn. You may cast Equipment spells this way without paying their mana costs.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay,STPlay2 | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:STPlay2:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Equipment.IsRemembered | ValidAfterStack$ Spell.Equipment | AffectedZone$ Exile | Description$ You may cast Equipment spells this way without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Equipment\nOracle:Affinity for Equipment (This spell costs {1} less to cast for each Equipment you control.)\\nWhenever an equipped creature you control attacks, exile the top card of your library. You may play that card this turn. You may cast Equipment spells this way without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nahiri, Forged in Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

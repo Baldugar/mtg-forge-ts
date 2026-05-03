@@ -1,0 +1,23 @@
+{
+  "id": "rydia-s-return-corpus-m677",
+  "description": "M6 corpus — Rydia's Return; in-hand parse.",
+  "seed": 68695,
+  "cards": {
+    "Rydia's Return": "Name:Rydia's Return\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBPumpAll,DBChangeZone\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +3 | NumDef$ +3 | SpellDescription$ Creatures you control get +3/+3 until end of turn.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target permanent card in your graveyard | ValidTgts$ Permanent.YouOwn | SpellDescription$ Return up to two target permanent cards from your graveyard to your hand.\nOracle:Choose one —\\n• Creatures you control get +3/+3 until end of turn.\\n• Return up to two target permanent cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rydia's Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

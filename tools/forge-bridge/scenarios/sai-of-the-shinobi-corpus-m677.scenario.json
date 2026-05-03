@@ -1,0 +1,23 @@
+{
+  "id": "sai-of-the-shinobi-corpus-m677",
+  "description": "M6 corpus — Sai of the Shinobi; in-hand parse.",
+  "seed": 68882,
+  "cards": {
+    "Sai of the Shinobi": "Name:Sai of the Shinobi\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ Whenever a creature you control enters, you may attach CARDNAME to it.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nOracle:Equipped creature gets +1/+1.\\nWhenever a creature you control enters, you may attach Sai of the Shinobi to it.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sai of the Shinobi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

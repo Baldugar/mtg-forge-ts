@@ -1,0 +1,23 @@
+{
+  "id": "overbeing-of-myth-corpus-m677",
+  "description": "M6 corpus — Overbeing of Myth; in-hand parse.",
+  "seed": 66487,
+  "cards": {
+    "Overbeing of Myth": "Name:Overbeing of Myth\nManaCost:GU GU GU GU GU\nTypes:Creature Spirit Avatar\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:NeedsToPlayVar:X GE3\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your draw step, draw an additional card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nOracle:Overbeing of Myth's power and toughness are each equal to the number of cards in your hand.\\nAt the beginning of your draw step, draw an additional card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overbeing of Myth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

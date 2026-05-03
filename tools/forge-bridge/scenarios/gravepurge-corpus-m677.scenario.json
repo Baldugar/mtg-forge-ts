@@ -1,0 +1,23 @@
+{
+  "id": "gravepurge-corpus-m677",
+  "description": "M6 corpus — Gravepurge; in-hand parse.",
+  "seed": 61672,
+  "cards": {
+    "Gravepurge": "Name:Gravepurge\nManaCost:2 B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Library | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SubAbility$ DBDraw | SpellDescription$ Put any number of target creature cards from your graveyard on top of your library.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nAI:RemoveDeck:All\nOracle:Put any number of target creature cards from your graveyard on top of your library.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravepurge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

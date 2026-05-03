@@ -1,0 +1,23 @@
+{
+  "id": "leyline-binding-corpus-m677",
+  "description": "M6 corpus — Leyline Binding; in-hand parse.",
+  "seed": 64160,
+  "cards": {
+    "Leyline Binding": "Name:Leyline Binding\nManaCost:5 W\nTypes:Enchantment\nK:Flash\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ Domain — This spell costs {1} less to cast for each basic land type among lands you control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 1 | IsCurse$ True | Duration$ UntilHostLeavesPlay | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Choose target nonland permanent an opponent controls | Origin$ Battlefield | Destination$ Exile\nSVar:X:Count$Domain\nSVar:OblivionRing:TRUE\nAI:RemoveDeck:Random\nOracle:Flash\\nDomain — This spell costs {1} less to cast for each basic land type among lands you control.\\nWhen Leyline Binding enters, exile target nonland permanent an opponent controls until Leyline Binding leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leyline Binding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

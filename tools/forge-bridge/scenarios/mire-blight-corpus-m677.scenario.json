@@ -1,0 +1,23 @@
+{
+  "id": "mire-blight-corpus-m677",
+  "description": "M6 corpus — Mire Blight; in-hand parse.",
+  "seed": 65218,
+  "cards": {
+    "Mire Blight": "Name:Mire Blight\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ MireDestroy\nSVar:MireDestroy:SVar:DestroyWhenDamaged:True\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature.EnchantedBy | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ When enchanted creature is dealt damage, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nWhen enchanted creature is dealt damage, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mire Blight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

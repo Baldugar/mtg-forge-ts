@@ -1,0 +1,23 @@
+{
+  "id": "spinnerette-arachnobat-corpus-m677",
+  "description": "M6 corpus — Spinnerette, Arachnobat; in-hand parse.",
+  "seed": 70682,
+  "cards": {
+    "Spinnerette, Arachnobat": "Name:Spinnerette, Arachnobat\nManaCost:3 B G\nTypes:Legendary Creature Spider Performer\nPT:2/4\nK:Reach\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Menace | AddPower$ 2 | CheckSVar$ X | SVarCompare$ GE3 | Description$ As long as you control three or more Attractions, NICKNAME gets +2/+0 and has menace.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigOpenAttraction | TriggerDescription$ When CARDNAME enters the battlefield, open an Attraction.\nSVar:TrigOpenAttraction:DB$ OpenAttraction\nSVar:X:Count$Valid Attraction.YouCtrl\nOracle:Reach\\nWhen Spinnerette, Arachnobat enters the battlefield, open an Attraction.\\nAs long as you control three or more Attractions, Spinnerette gets +2/+0 and has menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spinnerette, Arachnobat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

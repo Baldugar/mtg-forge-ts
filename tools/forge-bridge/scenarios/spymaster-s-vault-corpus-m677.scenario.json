@@ -1,0 +1,25 @@
+{
+  "id": "spymaster-s-vault-corpus-m677",
+  "description": "M6 corpus — Spymaster's Vault; ETB-on-bf.",
+  "seed": 70803,
+  "cards": {
+    "Spymaster's Vault": "Name:Spymaster's Vault\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Swamp.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Swamp.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ Connive | Cost$ B T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | ConniveNum$ X | SpellDescription$ Target creature you control connives X, where X is the number of creatures that died this turn.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nOracle:Spymaster's Vault enters tapped unless you control a Swamp.\\n{T}: Add {B}.\\n{B}, {T}: Target creature you control connives X, where X is the number of creatures that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spymaster's Vault"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

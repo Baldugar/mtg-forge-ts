@@ -1,0 +1,25 @@
+{
+  "id": "perimeter-captain-corpus-m677",
+  "description": "M6 corpus — Perimeter Captain; ETB-on-bf.",
+  "seed": 66741,
+  "cards": {
+    "Perimeter Captain": "Name:Perimeter Captain\nManaCost:W\nTypes:Creature Human Soldier\nPT:0/4\nK:Defender\nT:Mode$ Blocks | ValidCard$ Creature.YouCtrl+withDefender | TriggerZones$ Battlefield | Execute$ TrigGainLife | OptionalDecider$ You | TriggerDescription$ Whenever a creature you control with defender blocks, you may gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:HasBlockEffect:TRUE\nOracle:Defender\\nWhenever a creature you control with defender blocks, you may gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Perimeter Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

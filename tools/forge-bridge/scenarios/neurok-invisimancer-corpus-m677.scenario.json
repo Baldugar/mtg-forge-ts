@@ -1,0 +1,23 @@
+{
+  "id": "neurok-invisimancer-corpus-m677",
+  "description": "M6 corpus — Neurok Invisimancer; in-hand parse.",
+  "seed": 65871,
+  "cards": {
+    "Neurok Invisimancer": "Name:Neurok Invisimancer\nManaCost:1 U U\nTypes:Creature Human Wizard\nPT:2/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUnblockable | TriggerDescription$ When CARDNAME enters, target creature can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:PlayMain1:TRUE\nOracle:Neurok Invisimancer can't be blocked.\\nWhen Neurok Invisimancer enters, target creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neurok Invisimancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "holga-relentless-rager-corpus-m677",
+  "description": "M6 corpus — Holga, Relentless Rager; in-hand parse.",
+  "seed": 62431,
+  "cards": {
+    "Holga, Relentless Rager": "Name:Holga, Relentless Rager\nVariant:UniversesWithin:FlavorName:Jurin, Leading the Charge\nManaCost:4 R R\nTypes:Legendary Creature Human Barbarian\nPT:4/6\nK:Haste\nK:CARDNAME must be blocked if able.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME attacks, each creature you control attacking a player gets +1/+0 until end of turn for each creature that player controls.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatCards$ Creature.attacking Player | RepeatSubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | NumAtt$ +X\nSVar:X:Count$Valid Creature.DefenderCtrlForRemembered\nSVar:HasAttackEffect:TRUE\nOracle:Haste\\nHolga, Relentless Rager must be blocked if able.\\nWhenever Holga attacks, each creature you control attacking a player gets +1/+0 until end of turn for each creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Holga, Relentless Rager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

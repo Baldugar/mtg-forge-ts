@@ -1,0 +1,23 @@
+{
+  "id": "inspiring-bard-corpus-m677",
+  "description": "M6 corpus — Inspiring Bard; in-hand parse.",
+  "seed": 62996,
+  "cards": {
+    "Inspiring Bard": "Name:Inspiring Bard\nManaCost:3 G\nTypes:Creature Elf Bard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ BardicInspiration,SongofRest\nSVar:BardicInspiration:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Bardic Inspiration — Target creature gets +2/+2 until end of turn.\nSVar:SongofRest:DB$ GainLife | LifeAmount$ 3 | SpellDescription$ Song of Rest — You gain 3 life.\nDeckHas:Ability$LifeGain\nOracle:When Inspiring Bard enters, choose one —\\n• Bardic Inspiration — Target creature gets +2/+2 until end of turn.\\n• Song of Rest — You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inspiring Bard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

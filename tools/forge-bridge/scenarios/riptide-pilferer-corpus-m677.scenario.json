@@ -1,0 +1,23 @@
+{
+  "id": "riptide-pilferer-corpus-m677",
+  "description": "M6 corpus — Riptide Pilferer; in-hand parse.",
+  "seed": 68327,
+  "cards": {
+    "Riptide Pilferer": "Name:Riptide Pilferer\nManaCost:1 U\nTypes:Creature Merfolk Rogue\nPT:1/1\nK:Morph:U\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:Whenever Riptide Pilferer deals combat damage to a player, that player discards a card.\\nMorph {U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Pilferer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

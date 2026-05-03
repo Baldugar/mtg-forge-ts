@@ -1,0 +1,23 @@
+{
+  "id": "mogg-infestation-corpus-m677",
+  "description": "M6 corpus — Mogg Infestation; in-hand parse.",
+  "seed": 65368,
+  "cards": {
+    "Mogg Infestation": "Name:Mogg Infestation\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ DestroyAll | ValidTgts$ Player | ValidCards$ Creature | ValidDescription$ all creatures targeted player controls | RememberDestroyed$ True | SubAbility$ DBTokenInfestation | SpellDescription$ Destroy all creatures target player controls. For each creature that died this way, that player creates two 1/1 red Goblin creature tokens.\nSVar:DBTokenInfestation:DB$ Token | TokenAmount$ X | TokenScript$ r_1_1_goblin | TokenOwner$ Targeted\nSVar:X:Remembered$Amount/Twice\nOracle:Destroy all creatures target player controls. For each creature that died this way, that player creates two 1/1 red Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mogg Infestation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

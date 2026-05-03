@@ -1,0 +1,23 @@
+{
+  "id": "shoreline-scout-corpus-m677",
+  "description": "M6 corpus — Shoreline Scout; in-hand parse.",
+  "seed": 69757,
+  "cards": {
+    "Shoreline Scout": "Name:Shoreline Scout\nManaCost:U\nTypes:Creature Merfolk Scout\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile a Merfolk card or a land card from your hand. If you do, conjure a Tropical Island card into your hand.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | Hidden$ True | ChangeType$ Card.Merfolk,Card.Land | SelectPrompt$ Choose a Merfolk card or a land card | SubAbility$ DBConjure | RememberChanged$ True\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | Name$ Tropical Island | Zone$ Hand\nS:Mode$ Continuous | CheckSVar$ X | Affected$ Card.Self | AddPower$ 1 | Description$ As long as another Merfolk or an Island entered the battlefield under your control this turn, CARDNAME gets +1/+0.\nSVar:X:Count$Valid Merfolk.Other+ThisTurnEntered+EnteredUnder You/Plus.Y\nSVar:Y:Count$Valid Island.ThisTurnEntered+EnteredUnder You\nDeckHints:Type$Merfolk\nOracle:When Shoreline Scout enters, you may exile a Merfolk card or a land card from your hand. If you do, conjure a Tropical Island card into your hand.\\nAs long as another Merfolk or an Island entered the battlefield under your control this turn, Shoreline Scout gets +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shoreline Scout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

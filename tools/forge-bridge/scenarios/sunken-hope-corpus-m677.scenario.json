@@ -1,0 +1,23 @@
+{
+  "id": "sunken-hope-corpus-m677",
+  "description": "M6 corpus — Sunken Hope; in-hand parse.",
+  "seed": 71367,
+  "cards": {
+    "Sunken Hope": "Name:Sunken Hope\nManaCost:3 U U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigChangeZoneYou | TriggerDescription$ At the beginning of each player's upkeep, that player returns a creature they control to its owner's hand.\nSVar:TrigChangeZoneYou:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature | DefinedPlayer$ TriggeredPlayer | ChangeNum$ 1\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player returns a creature they control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunken Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

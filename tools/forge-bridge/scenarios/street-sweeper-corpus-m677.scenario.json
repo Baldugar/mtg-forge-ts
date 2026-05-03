@@ -1,0 +1,23 @@
+{
+  "id": "street-sweeper-corpus-m677",
+  "description": "M6 corpus — Street Sweeper; in-hand parse.",
+  "seed": 71170,
+  "cards": {
+    "Street Sweeper": "Name:Street Sweeper\nManaCost:6\nTypes:Artifact Creature Construct\nPT:4/6\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ Whenever CARDNAME attacks, destroy all Auras attached to target land.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Card.Aura+AttachedTo Targeted | ValidTgts$ Land | TgtPrompt$ Select target land\nAI:RemoveDeck:All\nOracle:Whenever Street Sweeper attacks, destroy all Auras attached to target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Street Sweeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

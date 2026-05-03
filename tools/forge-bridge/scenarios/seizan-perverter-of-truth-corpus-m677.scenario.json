@@ -1,0 +1,23 @@
+{
+  "id": "seizan-perverter-of-truth-corpus-m677",
+  "description": "M6 corpus — Seizan, Perverter of Truth; in-hand parse.",
+  "seed": 69399,
+  "cards": {
+    "Seizan, Perverter of Truth": "Name:Seizan, Perverter of Truth\nManaCost:3 B B\nTypes:Legendary Creature Demon Spirit\nPT:6/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of each player's upkeep, that player loses 2 life and draws two cards.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ TriggeredPlayer | NumCards$ 2\nOracle:At the beginning of each player's upkeep, that player loses 2 life and draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seizan, Perverter of Truth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

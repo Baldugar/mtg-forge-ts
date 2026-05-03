@@ -1,0 +1,25 @@
+{
+  "id": "hidden-ancients-corpus-m677",
+  "description": "M6 corpus — Hidden Ancients; ETB-on-bf.",
+  "seed": 62330,
+  "cards": {
+    "Hidden Ancients": "Name:Hidden Ancients\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | IsPresent$ Card.Self+Enchantment | Execute$ TrigAnimate | TriggerDescription$ When an opponent casts an enchantment spell, if CARDNAME is an enchantment, CARDNAME becomes a 5/5 Treefolk creature.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 5 | Toughness$ 5 | Types$ Creature,Treefolk | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nOracle:When an opponent casts an enchantment spell, if Hidden Ancients is an enchantment, Hidden Ancients becomes a 5/5 Treefolk creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hidden Ancients"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

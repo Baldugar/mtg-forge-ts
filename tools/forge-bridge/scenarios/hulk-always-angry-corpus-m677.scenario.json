@@ -1,0 +1,23 @@
+{
+  "id": "hulk-always-angry-corpus-m677",
+  "description": "M6 corpus — Hulk, Always Angry; in-hand parse.",
+  "seed": 62574,
+  "cards": {
+    "Hulk, Always Angry": "Name:Hulk, Always Angry\nManaCost:5 R R\nTypes:Legendary Creature Gamma Berserker Hero\nPT:9/9\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ When NICKNAME enters, destroy all artifacts.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Artifact\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ NICKNAME attacks each combat if able.\nOracle:Trample\\nWhen Hulk enters, destroy all artifacts.\\nHulk attacks each combat if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hulk, Always Angry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

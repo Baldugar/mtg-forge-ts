@@ -1,0 +1,23 @@
+{
+  "id": "izzet-polarizer-corpus-m677",
+  "description": "M6 corpus — Izzet Polarizer; in-hand parse.",
+  "seed": 63198,
+  "cards": {
+    "Izzet Polarizer": "Name:Izzet Polarizer\nManaCost:U R\nTypes:Creature Lizard Wizard\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME dies, conjure a card named Ionize or a card named Electrolyze into your hand. (Your choice is not revealed to other players.)\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Choices$ Ionize,Electrolyze | Zone$ Hand\nOracle:When Izzet Polarizer dies, conjure a card named Ionize or a card named Electrolyze into your hand. (Your choice is not revealed to other players.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Izzet Polarizer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

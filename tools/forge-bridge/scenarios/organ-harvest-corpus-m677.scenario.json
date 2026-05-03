@@ -1,0 +1,23 @@
+{
+  "id": "organ-harvest-corpus-m677",
+  "description": "M6 corpus — Organ Harvest; in-hand parse.",
+  "seed": 66417,
+  "cards": {
+    "Organ Harvest": "Name:Organ Harvest\nManaCost:B\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatSubAbility$ DBSac | RepeatPlayers$ NonOpponent | ChangeZoneTable$ True | SpellDescription$ Your team may sacrifice any number of creatures. For each creature sacrificed this way, you add {B}{B}.\nSVar:DBSac:DB$ Sacrifice | Defined$ Remembered | Amount$ SacX | SacValid$ Creature | RememberSacrificed$ True | Optional$ True | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ B | Amount$ ManaX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Creature\nSVar:ManaX:Remembered$Amount/Twice\nOracle:Your team may sacrifice any number of creatures. For each creature sacrificed this way, you add {B}{B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Organ Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

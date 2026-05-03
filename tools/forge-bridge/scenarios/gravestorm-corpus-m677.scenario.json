@@ -1,0 +1,23 @@
+{
+  "id": "gravestorm-corpus-m677",
+  "description": "M6 corpus — Gravestorm; in-hand parse.",
+  "seed": 61675,
+  "cards": {
+    "Gravestorm": "Name:Gravestorm\nManaCost:B B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, target opponent may exile a card from their graveyard. If that player doesn't, you may draw a card.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Opponent | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.TargetedPlayerCtrl | ChangeNum$ 1 | Hidden$ True | Chooser$ Targeted | RememberChanged$ True | Optional$ Targeted | IsCurse$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | OptionalDecider$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:At the beginning of your upkeep, target opponent may exile a card from their graveyard. If that player doesn't, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravestorm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

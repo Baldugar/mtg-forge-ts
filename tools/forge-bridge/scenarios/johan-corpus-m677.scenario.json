@@ -1,0 +1,23 @@
+{
+  "id": "johan-corpus-m677",
+  "description": "M6 corpus — Johan; in-hand parse.",
+  "seed": 63316,
+  "cards": {
+    "Johan": "Name:Johan\nManaCost:3 R G W\nTypes:Legendary Creature Human Wizard\nPT:5/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigCantAttack | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of combat on your turn, you may have CARDNAME gain \"CARDNAME can't attack\" until end of combat. If you do, attacking doesn't cause creatures you control to tap this combat if CARDNAME is untapped.\nSVar:TrigCantAttack:DB$ Pump | Defined$ Self | KW$ CARDNAME can't attack. | Duration$ UntilEndOfCombat | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STVigilance | Duration$ UntilEndOfCombat\nSVar:STVigilance:Mode$ AttackVigilance | ValidCard$ Creature.YouCtrl | IsPresent$ Card.EffectSource+untapped | Description$ Attacking doesn't cause creatures you control to tap this combat if EFFECTSOURCE is untapped.\nAI:RemoveDeck:All\nOracle:At the beginning of combat on your turn, you may have Johan gain \"Johan can't attack\" until end of combat. If you do, attacking doesn't cause creatures you control to tap this combat if Johan is untapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Johan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

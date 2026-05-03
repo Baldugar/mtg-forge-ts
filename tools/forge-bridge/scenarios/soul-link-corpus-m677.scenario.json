@@ -1,0 +1,23 @@
+{
+  "id": "soul-link-corpus-m677",
+  "description": "M6 corpus — Soul Link; in-hand parse.",
+  "seed": 70444,
+  "cards": {
+    "Soul Link": "Name:Soul Link\nManaCost:1 W B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDealtOnce | ValidSource$ Card.AttachedBy | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals damage, you gain that much life.\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.AttachedBy | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature is dealt damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Enchant creature\\nWhenever enchanted creature deals damage, you gain that much life.\\nWhenever enchanted creature is dealt damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Link"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

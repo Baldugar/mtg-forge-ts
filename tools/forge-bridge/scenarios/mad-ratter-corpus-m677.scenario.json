@@ -1,0 +1,25 @@
+{
+  "id": "mad-ratter-corpus-m677",
+  "description": "M6 corpus — Mad Ratter; ETB-on-bf.",
+  "seed": 64558,
+  "cards": {
+    "Mad Ratter": "Name:Mad Ratter\nManaCost:3 R\nTypes:Creature Goblin\nPT:1/2\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you draw your second card each turn, create two 1/1 black Rat creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_1_1_rat | TokenOwner$ You\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:Whenever you draw your second card each turn, create two 1/1 black Rat creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mad Ratter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

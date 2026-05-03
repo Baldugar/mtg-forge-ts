@@ -1,0 +1,25 @@
+{
+  "id": "hidden-herd-corpus-m677",
+  "description": "M6 corpus — Hidden Herd; ETB-on-bf.",
+  "seed": 62337,
+  "cards": {
+    "Hidden Herd": "Name:Hidden Herd\nManaCost:G\nTypes:Enchantment\nT:Mode$ LandPlayed | ValidCard$ Land.nonBasic+OppCtrl | TriggerZones$ Battlefield | IsPresent$ Card.Self+Enchantment | Execute$ TrigAnimate | TriggerDescription$ When an opponent plays a nonbasic land, if CARDNAME is an enchantment, CARDNAME becomes a 3/3 Beast creature.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 3 | Toughness$ 3 | Types$ Creature,Beast | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nOracle:When an opponent plays a nonbasic land, if Hidden Herd is an enchantment, Hidden Herd becomes a 3/3 Beast creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hidden Herd"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grollub-corpus-m677",
+  "description": "M6 corpus — Grollub; in-hand parse.",
+  "seed": 61809,
+  "cards": {
+    "Grollub": "Name:Grollub\nManaCost:2 B\nTypes:Creature Beast\nPT:3/3\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, each opponent gains that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ Player.Opponent | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:Random\nOracle:Whenever Grollub is dealt damage, each opponent gains that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grollub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

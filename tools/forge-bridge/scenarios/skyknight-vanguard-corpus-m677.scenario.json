@@ -1,0 +1,23 @@
+{
+  "id": "skyknight-vanguard-corpus-m677",
+  "description": "M6 corpus — Skyknight Vanguard; in-hand parse.",
+  "seed": 70120,
+  "cards": {
+    "Skyknight Vanguard": "Name:Skyknight Vanguard\nManaCost:R W\nTypes:Creature Human Knight\nPT:1/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 white Soldier creature token that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever Skyknight Vanguard attacks, create a 1/1 white Soldier creature token that's tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyknight Vanguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

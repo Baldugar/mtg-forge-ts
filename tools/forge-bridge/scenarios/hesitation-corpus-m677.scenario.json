@@ -1,0 +1,25 @@
+{
+  "id": "hesitation-corpus-m677",
+  "description": "M6 corpus — Hesitation; ETB-on-bf.",
+  "seed": 62316,
+  "cards": {
+    "Hesitation": "Name:Hesitation\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ When a player casts a spell, sacrifice CARDNAME and counter that spell.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:When a player casts a spell, sacrifice Hesitation and counter that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hesitation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

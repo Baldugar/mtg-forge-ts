@@ -1,0 +1,23 @@
+{
+  "id": "illumination-corpus-m677",
+  "description": "M6 corpus — Illumination; in-hand parse.",
+  "seed": 62746,
+  "cards": {
+    "Illumination": "Name:Illumination\nManaCost:W W\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target artifact or enchantment spell | ValidTgts$ Artifact,Enchantment | SubAbility$ DBGainLife | SpellDescription$ Counter target artifact or enchantment spell.\nSVar:DBGainLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X | SpellDescription$ Its controller gains life equal to its mana value.\nSVar:X:Targeted$CardManaCost\nOracle:Counter target artifact or enchantment spell. Its controller gains life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illumination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

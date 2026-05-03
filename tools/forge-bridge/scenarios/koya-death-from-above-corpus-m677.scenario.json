@@ -1,0 +1,23 @@
+{
+  "id": "koya-death-from-above-corpus-m677",
+  "description": "M6 corpus — Koya, Death from Above; in-hand parse.",
+  "seed": 63848,
+  "cards": {
+    "Koya, Death from Above": "Name:Koya, Death from Above\nManaCost:2 W\nTypes:Legendary Creature Mutant Ninja Bird\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When NICKNAME enters, exile up to one other target creature. At the beginning of the next end step, you may pay {3}{B}. If you don't, return that card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | Mandatory$ True | ValidTgtsDesc$ another creature | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | TriggerDescription$ At the beginning of the next end step, you may pay {3}{B}. If you don't, return that card to the battlefield under its owner's control. | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI | UnlessCost$ 3 B | UnlessPayer$ You\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhen Koya enters, exile up to one other target creature. At the beginning of the next end step, you may pay {3}{B}. If you don't, return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Koya, Death from Above"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

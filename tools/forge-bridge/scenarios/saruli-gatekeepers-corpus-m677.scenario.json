@@ -1,0 +1,23 @@
+{
+  "id": "saruli-gatekeepers-corpus-m677",
+  "description": "M6 corpus — Saruli Gatekeepers; in-hand parse.",
+  "seed": 69025,
+  "cards": {
+    "Saruli Gatekeepers": "Name:Saruli Gatekeepers\nManaCost:3 G\nTypes:Creature Elf Warrior\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Gate.YouCtrl | PresentCompare$ GE2 | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, if you control two or more Gates, gain 7 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 7\nDeckHints:Type$Gate\nOracle:When Saruli Gatekeepers enters, if you control two or more Gates, you gain 7 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saruli Gatekeepers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pelakka-predation-corpus-m677",
+  "description": "M6 corpus — Pelakka Predation; in-hand parse.",
+  "seed": 66711,
+  "cards": {
+    "Pelakka Predation": "Name:Pelakka Predation\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | RememberRevealed$ True | SubAbility$ DBChoose | StackDescription$ {p:Targeted} reveals their hand. | SpellDescription$ Target opponent reveals their hand. You choose a card from it with mana value 3 or greater. That player discards that card.\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.cmcGE3+IsRemembered | ChoiceTitle$ You may choose a card with mana value 3 or greater | MinAmount$ 0 | Amount$ 1 | SubAbility$ DBDiscard | StackDescription$ {p:You} may choose a card from it with mana value 3 or greater.\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | Mode$ TgtChoose | DiscardValid$ Card.ChosenCard | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBCleanup | StackDescription$ {p:Targeted} discards that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nAlternateMode:Modal\nOracle:Target opponent reveals their hand. You choose a card from it with mana value 3 or greater. That player discards that card.\n\nALTERNATE\n\nName:Pelakka Caverns\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nOracle:Pelakka Caverns enters tapped.\\n{T}: Add {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pelakka Predation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

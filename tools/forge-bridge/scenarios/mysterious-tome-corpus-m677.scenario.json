@@ -1,0 +1,23 @@
+{
+  "id": "mysterious-tome-corpus-m677",
+  "description": "M6 corpus — Mysterious Tome; in-hand parse.",
+  "seed": 65655,
+  "cards": {
+    "Mysterious Tome": "Name:Mysterious Tome\nManaCost:2 U\nTypes:Artifact\nA:AB$ Draw | Cost$ 2 T | NumCards$ 1 | SubAbility$ DBTransform | SpellDescription$ Draw a card. Transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:{2}, {T}: Draw a card. Transform Mysterious Tome.\n\nALTERNATE\n\nName:Chilling Chronicle\nManaCost:no cost\nColors:blue\nTypes:Artifact\nA:AB$ Tap | Cost$ 1 T | ValidTgts$ Permanent.nonland | TgtPrompt$ Select target nonland permanent | SubAbility$ DBTransform1 | SpellDescription$ Tap target nonland permanent. Transform CARDNAME.\nSVar:DBTransform1:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:{1}, {T}: Tap target nonland permanent. Transform Chilling Chronicle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mysterious Tome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kindred-discovery-corpus-m677",
+  "description": "M6 corpus — Kindred Discovery; in-hand parse.",
+  "seed": 63663,
+  "cards": {
+    "Kindred Discovery": "Name:Kindred Discovery\nManaCost:3 U U\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a creature type.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.ChosenType+YouCtrl | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control of the chosen type enters or attacks, draw a card.\nT:Mode$ Attacks | ValidCard$ Creature.ChosenType+YouCtrl | Execute$ TrigDraw | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever a creature you control of the chosen type enters or attacks, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:As Kindred Discovery enters, choose a creature type.\\nWhenever a creature you control of the chosen type enters or attacks, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kindred Discovery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

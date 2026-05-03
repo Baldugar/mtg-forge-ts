@@ -1,0 +1,23 @@
+{
+  "id": "lost-in-the-woods-corpus-m677",
+  "description": "M6 corpus — Lost in the Woods; in-hand parse.",
+  "seed": 64419,
+  "cards": {
+    "Lost in the Woods": "Name:Lost in the Woods\nManaCost:3 G G\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature | Attacked$ You,Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever a creature attacks you or a planeswalker you control, reveal the top card of your library. If it's a Forest card, remove that creature from combat. Then put the revealed card on the bottom of your library.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Library | LibraryPosition$ -1 | LibraryPosition2$ -1 | RememberChanged$ True | SubAbility$ DBRemoveCombat\nSVar:DBRemoveCombat:DB$ RemoveFromCombat | Defined$ TriggeredAttackerLKICopy | ConditionCheckSVar$ IsForest | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:IsForest:Remembered$Valid Forest\nOracle:Whenever a creature attacks you or a planeswalker you control, reveal the top card of your library. If it's a Forest card, remove that creature from combat. Then put the revealed card on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lost in the Woods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

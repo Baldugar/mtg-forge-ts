@@ -1,0 +1,23 @@
+{
+  "id": "old-growth-dryads-corpus-m677",
+  "description": "M6 corpus — Old-Growth Dryads; in-hand parse.",
+  "seed": 66265,
+  "cards": {
+    "Old-Growth Dryads": "Name:Old-Growth Dryads\nManaCost:G\nTypes:Creature Dryad\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, each opponent may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Optional$ True | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | DefinedPlayer$ Player.Opponent | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Old-Growth Dryads enters, each opponent may search their library for a basic land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Old-Growth Dryads"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

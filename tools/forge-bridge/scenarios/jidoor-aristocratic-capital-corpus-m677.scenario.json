@@ -1,0 +1,23 @@
+{
+  "id": "jidoor-aristocratic-capital-corpus-m677",
+  "description": "M6 corpus — Jidoor, Aristocratic Capital; in-hand parse.",
+  "seed": 63305,
+  "cards": {
+    "Jidoor, Aristocratic Capital": "Name:Jidoor, Aristocratic Capital\nManaCost:no cost\nTypes:Land Town\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nAlternateMode:Adventure\nOracle:This land enters tapped.\\n{T}: Add {U}.\n\nALTERNATE\n\nName:Overture\nManaCost:4 U U\nTypes:Sorcery Adventure\nA:SP$ Mill | ValidTgts$ Opponent | NumCards$ X | SpellDescription$ Target player mills half their library, rounded down.\nSVar:X:TargetedPlayer$CardsInLibrary/HalfDown\nOracle:Target opponent mills half their library, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jidoor, Aristocratic Capital"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

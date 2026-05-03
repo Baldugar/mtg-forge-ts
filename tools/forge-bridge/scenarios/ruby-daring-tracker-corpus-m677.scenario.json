@@ -1,0 +1,23 @@
+{
+  "id": "ruby-daring-tracker-corpus-m677",
+  "description": "M6 corpus — Ruby, Daring Tracker; in-hand parse.",
+  "seed": 68577,
+  "cards": {
+    "Ruby, Daring Tracker": "Name:Ruby, Daring Tracker\nManaCost:R G\nTypes:Legendary Creature Human Scout\nPT:1/2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Creature.YouCtrl+powerGE4 | NoResolvingCheck$ True | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks while you control a creature with power 4 or greater, NICKNAME gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +2\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nSVar:HasAttackEffect:TRUE\nOracle:Haste\\nWhenever Ruby, Daring Tracker attacks while you control a creature with power 4 or greater, Ruby gets +2/+2 until end of turn.\\n{T}: Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruby, Daring Tracker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

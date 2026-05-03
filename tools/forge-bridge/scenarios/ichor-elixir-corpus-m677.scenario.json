@@ -1,0 +1,25 @@
+{
+  "id": "ichor-elixir-corpus-m677",
+  "description": "M6 corpus — Ichor Elixir; ETB-on-bf.",
+  "seed": 62706,
+  "cards": {
+    "Ichor Elixir": "Name:Ichor Elixir\nManaCost:4\nTypes:Artifact\nR:Event$ RollPlanarDice | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ PlusRoll | Description$ If you would roll one or more planar dice, instead roll that many planar dice plus one and ignore one.\nSVar:PlusRoll:DB$ ReplaceEffect | VarName$ Number | VarValue$ ReplaceCount$Number/Plus.1 | SubAbility$ IgnoreRoll\nSVar:IgnoreRoll:DB$ ReplaceEffect | VarName$ Ignore | VarValue$ ReplaceCount$Ignore/Plus.1\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nOracle:If you would roll one or more planar dice, instead roll that many planar dice plus one and ignore one.\\n{T}: Add {C}{C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ichor Elixir"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

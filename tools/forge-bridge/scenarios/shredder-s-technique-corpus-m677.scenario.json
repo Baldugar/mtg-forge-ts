@@ -1,0 +1,23 @@
+{
+  "id": "shredder-s-technique-corpus-m677",
+  "description": "M6 corpus — Shredder's Technique; in-hand parse.",
+  "seed": 69774,
+  "cards": {
+    "Shredder's Technique": "Name:Shredder's Technique\nManaCost:2 B\nTypes:Sorcery\nK:Sneak:B\nA:SP$ Destroy | ValidTgts$ Creature,Enchantment | TgtPrompt$ Select target creature or enchantment | RememberDestroyed$ True | SubAbility$ DBLoseLife | SpellDescription$ Destroy target creature or enchantment. If an enchantment was destroyed this way, you lose 2 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | ConditionDefined$ RememberedLKI | ConditionPresent$ Enchantment | ConditionCompare$ GE1 | ConditionDescription$ an enchantment, | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Sneak {B} (You may cast this spell for {B} if you also return an unblocked attacker you control to hand during the declare blockers step.)\\nDestroy target creature or enchantment. If an enchantment was destroyed this way, you lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shredder's Technique"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

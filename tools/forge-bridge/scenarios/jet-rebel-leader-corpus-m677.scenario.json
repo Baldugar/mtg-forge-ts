@@ -1,0 +1,23 @@
+{
+  "id": "jet-rebel-leader-corpus-m677",
+  "description": "M6 corpus — Jet, Rebel Leader; in-hand parse.",
+  "seed": 63288,
+  "cards": {
+    "Jet, Rebel Leader": "Name:Jet, Rebel Leader\nManaCost:3 W\nTypes:Legendary Creature Human Rebel Ally\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Whenever NICKNAME attacks, look at the top five cards of your library. You may put a creature card with mana value 3 or less from among them onto the battlefield tapped and attacking. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Creature.cmcLE3 | DestinationZone$ Battlefield | Tapped$ True | Attacking$ True | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | Optional$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Jet attacks, look at the top five cards of your library. You may put a creature card with mana value 3 or less from among them onto the battlefield tapped and attacking. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jet, Rebel Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

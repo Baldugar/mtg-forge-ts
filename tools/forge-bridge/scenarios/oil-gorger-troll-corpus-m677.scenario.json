@@ -1,0 +1,23 @@
+{
+  "id": "oil-gorger-troll-corpus-m677",
+  "description": "M6 corpus — Oil-Gorger Troll; in-hand parse.",
+  "seed": 66246,
+  "cards": {
+    "Oil-Gorger Troll": "Name:Oil-Gorger Troll\nManaCost:3 G G\nTypes:Creature Phyrexian Troll Warrior\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Permanent.YouCtrl+counters_GE1_OIL | SpellDescription$ Then if you control a permanent with an oil counter on it, draw a card.\nDeckHas:Ability$LifeGain\nDeckHints:Ability$Counters\nOracle:When Oil-Gorger Troll enters, you gain 3 life. Then if you control a permanent with an oil counter on it, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oil-Gorger Troll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

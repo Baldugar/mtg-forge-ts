@@ -1,0 +1,23 @@
+{
+  "id": "sagu-wildling-corpus-m677",
+  "description": "M6 corpus — Sagu Wildling; in-hand parse.",
+  "seed": 68878,
+  "cards": {
+    "Sagu Wildling": "Name:Sagu Wildling\nManaCost:4 G\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this creature enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nAlternateMode:Omen\nOracle:Flying\\nWhen this creature enters, you gain 3 life.\n\nALTERNATE\n\nName:Roost Seek\nManaCost:G\nTypes:Sorcery Omen\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SpellDescription$ Search your library for a basic land card, reveal it, put it into your hand, then shuffle. (Also shuffle this card.)\nOracle:Search your library for a basic land card, reveal it, put it into your hand, then shuffle. (Also shuffle this card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sagu Wildling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

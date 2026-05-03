@@ -1,0 +1,23 @@
+{
+  "id": "howling-wolf-corpus-m677",
+  "description": "M6 corpus — Howling Wolf; in-hand parse.",
+  "seed": 62560,
+  "cards": {
+    "Howling Wolf": "Name:Howling Wolf\nManaCost:2 G G\nTypes:Creature Wolf\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for up to three cards named Howling Wolf, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedHowling Wolf | ChangeNum$ 3 | ShuffleNonMandatory$ True\nDeckHints:Name$Howling Wolf\nOracle:When Howling Wolf enters, you may search your library for up to three cards named Howling Wolf, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Howling Wolf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

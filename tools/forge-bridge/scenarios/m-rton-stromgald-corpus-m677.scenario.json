@@ -1,0 +1,23 @@
+{
+  "id": "m-rton-stromgald-corpus-m677",
+  "description": "M6 corpus — Márton Stromgald; in-hand parse.",
+  "seed": 64828,
+  "cards": {
+    "Márton Stromgald": "Name:Márton Stromgald\nManaCost:2 R R\nTypes:Legendary Creature Human Knight\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAttack | TriggerDescription$ Whenever CARDNAME attacks, other attacking creatures get +1/+1 until end of turn for each attacking creature other than CARDNAME.\nSVar:TrigPumpAttack:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.attacking+Other\nT:Mode$ Blocks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpBlock | TriggerDescription$ Whenever CARDNAME blocks, other blocking creatures get +1/+1 until end of turn for each blocking creature other than CARDNAME.\nSVar:TrigPumpBlock:DB$ PumpAll | ValidCards$ Creature.blocking+Other | NumAtt$ +Y | NumDef$ +Y\nSVar:Y:Count$Valid Creature.blocking+Other\nOracle:Whenever Márton Stromgald attacks, other attacking creatures get +1/+1 until end of turn for each attacking creature other than Márton Stromgald.\\nWhenever Márton Stromgald blocks, other blocking creatures get +1/+1 until end of turn for each blocking creature other than Márton Stromgald.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Márton Stromgald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

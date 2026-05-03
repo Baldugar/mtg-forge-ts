@@ -1,0 +1,25 @@
+{
+  "id": "mindmoil-corpus-m677",
+  "description": "M6 corpus — Mindmoil; ETB-on-bf.",
+  "seed": 65174,
+  "cards": {
+    "Mindmoil": "Name:Mindmoil\nManaCost:4 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, put the cards in your hand on the bottom of your library in any order, then draw that many cards.\nSVar:TrigChangeZone:DB$ ChangeZoneAll | Origin$ Hand | Destination$ Library | ChangeType$ Card.YouOwn | RememberChanged$ True | LibraryPosition$ -1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ RemTossed | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:RemTossed:Remembered$Amount\nOracle:Whenever you cast a spell, put the cards in your hand on the bottom of your library in any order, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mindmoil"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

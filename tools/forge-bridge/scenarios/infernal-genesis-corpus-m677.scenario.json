@@ -1,0 +1,23 @@
+{
+  "id": "infernal-genesis-corpus-m677",
+  "description": "M6 corpus — Infernal Genesis; in-hand parse.",
+  "seed": 62903,
+  "cards": {
+    "Infernal Genesis": "Name:Infernal Genesis\nManaCost:4 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of each player's upkeep, that player mills a card. Then they create X 1/1 black Minion creature tokens, where X is the milled card's mana value.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredPlayer | NumCards$ 1 | RememberMilled$ True | SubAbility$ TrigToken\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_1_1_minion | TokenOwner$ TriggeredPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:At the beginning of each player's upkeep, that player mills a card. Then they create X 1/1 black Minion creature tokens, where X is the milled card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infernal Genesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

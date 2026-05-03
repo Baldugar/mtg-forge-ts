@@ -1,0 +1,23 @@
+{
+  "id": "icy-prison-corpus-m677",
+  "description": "M6 corpus — Icy Prison; in-hand parse.",
+  "seed": 62714,
+  "cards": {
+    "Icy Prison": "Name:Icy Prison\nManaCost:U U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ ExiledWith\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless any player pays {3}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ 3 | UnlessPayer$ Player\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlayVar:Y GE3\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:When Icy Prison enters, exile target creature.\\nAt the beginning of your upkeep, sacrifice Icy Prison unless any player pays {3}.\\nWhen Icy Prison leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icy Prison"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "overload-corpus-m677",
+  "description": "M6 corpus — Overload; in-hand parse.",
+  "seed": 66498,
+  "cards": {
+    "Overload": "Name:Overload\nManaCost:R\nTypes:Instant\nK:Kicker:2\nA:SP$ Destroy | ValidTgts$ Artifact | AITgts$ Artifact.cmcLEX | TgtPrompt$ Select target artifact with mana value 2 or less (5 or less if kicked) | ConditionCheckSVar$ Y | ConditionSVarCompare$ LEX | SpellDescription$ Destroy target artifact if its mana value is 2 or less. If this spell was kicked, destroy that artifact if its mana value is 5 or less instead.\nSVar:X:Count$Kicked.5.2\nSVar:Y:Targeted$CardManaCost\nOracle:Kicker {2} (You may pay an additional {2} as you cast this spell.)\\nDestroy target artifact if its mana value is 2 or less. If this spell was kicked, destroy that artifact if its mana value is 5 or less instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overload"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

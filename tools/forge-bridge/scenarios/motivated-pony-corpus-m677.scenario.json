@@ -1,0 +1,23 @@
+{
+  "id": "motivated-pony-corpus-m677",
+  "description": "M6 corpus — Motivated Pony; in-hand parse.",
+  "seed": 65541,
+  "cards": {
+    "Motivated Pony": "Name:Motivated Pony\nManaCost:4 G\nTypes:Creature Horse\nPT:3/3\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, attacking creatures get +1/+1 until end of turn. If a Food entered under your control this turn, untap those creatures and they get an additional +2/+2 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.attacking | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.attacking | ConditionCheckSVar$ Food | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.attacking | NumAtt$ +2 | ConditionCheckSVar$ Food | NumDef$ +2\nSVar:Food:Count$ThisTurnEntered_Battlefield_Food.YouCtrl\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Food\nOracle:Whenever Motivated Pony attacks, attacking creatures get +1/+1 until end of turn. If a Food entered under your control this turn, untap those creatures and they get an additional +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Motivated Pony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

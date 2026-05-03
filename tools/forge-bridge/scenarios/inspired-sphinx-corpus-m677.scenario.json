@@ -1,0 +1,23 @@
+{
+  "id": "inspired-sphinx-corpus-m677",
+  "description": "M6 corpus — Inspired Sphinx; in-hand parse.",
+  "seed": 62994,
+  "cards": {
+    "Inspired Sphinx": "Name:Inspired Sphinx\nManaCost:5 U U\nTypes:Creature Sphinx\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw cards equal to the number of opponents you have.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nA:AB$ Token | Cost$ 3 U | TokenOwner$ You | TokenScript$ c_1_1_a_thopter_flying | SpellDescription$ Create a 1/1 colorless Thopter artifact creature token with flying.\nSVar:X:PlayerCountOpponents$Amount\nOracle:Flying\\nWhen Inspired Sphinx enters, draw cards equal to the number of opponents you have.\\n{3}{U}: Create a 1/1 colorless Thopter artifact creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inspired Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

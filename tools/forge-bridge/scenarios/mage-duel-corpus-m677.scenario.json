@@ -1,0 +1,23 @@
+{
+  "id": "mage-duel-corpus-m677",
+  "description": "M6 corpus — Mage Duel; in-hand parse.",
+  "seed": 64572,
+  "cards": {
+    "Mage Duel": "Name:Mage Duel\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ Fight | TgtPrompt$ Select target creature you control | SubAbility$ DBFight | NumAtt$ +1 | NumDef$ +2 | SpellDescription$ Target creature you control gets +1/+2 until end of turn. It fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nS:Mode$ ReduceCost | ValidCard$ Card.Self | EffectZone$ All | Type$ Spell | Amount$ 2 | CheckSVar$ X | Description$ This spell costs {2} less to cast if you've cast another instant or sorcery spell this turn.\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl\nDeckHints:Type$Instant|Sorcery\nOracle:This spell costs {2} less to cast if you've cast another instant or sorcery spell this turn.\\nTarget creature you control gets +1/+2 until end of turn. Then it fights target creature you don't control. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mage Duel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "jungle-wurm-corpus-m677",
+  "description": "M6 corpus — Jungle Wurm; ETB-on-bf.",
+  "seed": 63390,
+  "cards": {
+    "Jungle Wurm": "Name:Jungle Wurm\nManaCost:3 G G\nTypes:Creature Wurm\nPT:5/5\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME becomes blocked, it gets -1/-1 until end of turn for each creature blocking it beyond the first.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ -X | NumDef$ -X\nSVar:X:Count$Valid Creature.blockingTriggeredAttacker/Minus.1\nOracle:Whenever Jungle Wurm becomes blocked, it gets -1/-1 until end of turn for each creature blocking it beyond the first.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jungle Wurm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

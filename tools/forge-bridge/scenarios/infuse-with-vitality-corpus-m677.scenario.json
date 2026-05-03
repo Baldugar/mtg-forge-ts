@@ -1,0 +1,23 @@
+{
+  "id": "infuse-with-vitality-corpus-m677",
+  "description": "M6 corpus — Infuse with Vitality; in-hand parse.",
+  "seed": 62936,
+  "cards": {
+    "Infuse with Vitality": "Name:Infuse with Vitality\nManaCost:B G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | KW$ Deathtouch | StackDescription$ Until end of turn, {c:Targeted} gains deathtouch and \"When this creature dies, return it to the battlefield tapped under its owner's control.\" | SpellDescription$ Until end of turn, target creature gains deathtouch and \"When this creature dies, return it to the battlefield tapped under its owner's control.\" | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Triggers$ DiesTrigger | Defined$ ParentTarget | SubAbility$ DBGainLife | StackDescription$ None\nSVar:DiesTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Until end of turn, target creature gains deathtouch and \"When this creature dies, return it to the battlefield tapped under its owner's control.\"\\nYou gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infuse with Vitality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "healer-of-the-glade-corpus-m677",
+  "description": "M6 corpus — Healer of the Glade; in-hand parse.",
+  "seed": 62159,
+  "cards": {
+    "Healer of the Glade": "Name:Healer of the Glade\nManaCost:G\nTypes:Creature Elemental\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nDeckHas:Ability$LifeGain\nOracle:When Healer of the Glade enters, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Healer of the Glade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nashi-illusion-gadgeteer-corpus-m677",
+  "description": "M6 corpus — Nashi, Illusion Gadgeteer; in-hand parse.",
+  "seed": 65750,
+  "cards": {
+    "Nashi, Illusion Gadgeteer": "Name:Nashi, Illusion Gadgeteer\nManaCost:1 B G U\nTypes:Legendary Creature Rat Rogue\nPT:4/4\nK:Flash\nK:Menace\nK:Ward:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When NICKNAME enters, secretly choose a card in your graveyard and conjure a duplicate of it into your hand. If the duplicate isn't a land card, it perpetually gains flash.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Graveyard | Choices$ Card.YouOwn | Secretly$ True | Amount$ 1 | ChoiceTitle$ Secretly choose a creature in your graveyard | SubAbility$ DBConjure | Mandatory$ True\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | DefinedName$ ChosenCard | Zone$ Hand | RememberMade$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | PumpZone$ Hand | KW$ Flash | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:Flash\\nMenace, Ward {2}\\nWhen Nashi enters, secretly choose a card in your graveyard and conjure a duplicate of it into your hand. If the duplicate isn't a land card, it perpetually gains flash.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nashi, Illusion Gadgeteer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

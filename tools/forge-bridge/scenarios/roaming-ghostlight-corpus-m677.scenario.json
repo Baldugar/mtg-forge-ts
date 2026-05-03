@@ -1,0 +1,23 @@
+{
+  "id": "roaming-ghostlight-corpus-m677",
+  "description": "M6 corpus — Roaming Ghostlight; in-hand parse.",
+  "seed": 68420,
+  "cards": {
+    "Roaming Ghostlight": "Name:Roaming Ghostlight\nManaCost:3 U U\nTypes:Creature Spirit\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return up to one target non-Spirit creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.nonSpirit | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target non-Spirit creature | Origin$ Battlefield | Destination$ Hand\nOracle:Flying\\nWhen Roaming Ghostlight enters, return up to one target non-Spirit creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roaming Ghostlight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

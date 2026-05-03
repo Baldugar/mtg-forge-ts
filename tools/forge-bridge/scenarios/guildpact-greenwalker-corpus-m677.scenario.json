@@ -1,0 +1,23 @@
+{
+  "id": "guildpact-greenwalker-corpus-m677",
+  "description": "M6 corpus — Guildpact Greenwalker; in-hand parse.",
+  "seed": 61904,
+  "cards": {
+    "Guildpact Greenwalker": "Name:Guildpact Greenwalker\nManaCost:2 G\nTypes:Creature Plant Rhino\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, you may choose a creature card in your hand. If you do, that card perpetually incorporates {1}{G} and gets +4/+4.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceTitle$ You may choose a creature card in your hand | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Incorporate$ 1 G | Duration$ Perpetual | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | Duration$ Perpetual | NumAtt$ +4 | NumDef$ +4 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nS:Mode$ Continuous | Affected$ Creature.MultiColor+YouCtrl | AddKeyword$ Ward:2 | Description$ Multicolored creatures you control have ward {2}.\nOracle:When Guildpact Greenwalker enters, you may choose a creature card in your hand. If you do, that card perpetually incorporates {1}{G} and gets +4/+4.\\nMulticolored creatures you control have ward {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guildpact Greenwalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

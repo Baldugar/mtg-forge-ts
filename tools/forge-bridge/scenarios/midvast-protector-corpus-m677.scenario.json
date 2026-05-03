@@ -1,0 +1,23 @@
+{
+  "id": "midvast-protector-corpus-m677",
+  "description": "M6 corpus — Midvast Protector; in-hand parse.",
+  "seed": 65100,
+  "cards": {
+    "Midvast Protector": "Name:Midvast Protector\nManaCost:3 W\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigProtect | TriggerDescription$ When CARDNAME enters, target creature you control gains protection from the color of your choice until end of turn.\nSVar:TrigProtect:DB$ Protection | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Gains$ Choice | Choices$ AnyColor | AILogic$ MostProminentHumanCreatures\nSVar:PlayMain1:TRUE\nOracle:When Midvast Protector enters, target creature you control gains protection from the color of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midvast Protector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

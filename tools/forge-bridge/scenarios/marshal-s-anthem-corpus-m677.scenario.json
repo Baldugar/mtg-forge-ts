@@ -1,0 +1,23 @@
+{
+  "id": "marshal-s-anthem-corpus-m677",
+  "description": "M6 corpus — Marshal's Anthem; in-hand parse.",
+  "seed": 64822,
+  "cards": {
+    "Marshal's Anthem": "Name:Marshal's Anthem\nManaCost:2 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nK:Multikicker:1 W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to X target creature cards from your graveyard to the battlefield, where X is the number of times CARDNAME was kicked.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature card from your graveyard.\nSVar:X:Count$TimesKicked\n# TODO: The AI maximizes payment, even if it can't return anything from the graveyard. Otherwise the card is played just fine.\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Multikicker {1}{W} (You may pay an additional {1}{W} any number of times as you cast this spell.)\\nCreatures you control get +1/+1.\\nWhen Marshal's Anthem enters, return up to X target creature cards from your graveyard to the battlefield, where X is the number of times Marshal's Anthem was kicked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marshal's Anthem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

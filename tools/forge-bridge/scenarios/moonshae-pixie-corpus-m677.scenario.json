@@ -1,0 +1,23 @@
+{
+  "id": "moonshae-pixie-corpus-m677",
+  "description": "M6 corpus — Moonshae Pixie; in-hand parse.",
+  "seed": 65475,
+  "cards": {
+    "Moonshae Pixie": "Name:Moonshae Pixie\nManaCost:3 U\nTypes:Creature Faerie\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw cards equal to the number of opponents who were dealt combat damage this turn.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nSVar:X:PlayerCountOpponents$HasPropertywasDealtCombatDamageThisTurn\nAlternateMode:Adventure\nOracle:Flying\\nWhen Moonshae Pixie enters, draw cards equal to the number of opponents who were dealt combat damage this turn.\n\nALTERNATE\n\nName:Pixie Dust\nManaCost:1 U\nTypes:Instant Adventure\nA:SP$ Pump | TargetMin$ 0 | TargetMax$ 3 | KW$ Flying | ValidTgts$ Creature | TgtPrompt$ Select up to three target creatures | SpellDescription$ Up to three target creatures gain flying until end of turn.\nSVar:PlayMain1:TRUE\nOracle:Up to three target creatures gain flying until end of turn. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonshae Pixie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

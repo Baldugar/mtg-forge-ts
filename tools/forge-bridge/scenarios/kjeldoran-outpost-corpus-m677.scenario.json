@@ -1,0 +1,25 @@
+{
+  "id": "kjeldoran-outpost-corpus-m677",
+  "description": "M6 corpus — Kjeldoran Outpost; ETB-on-bf.",
+  "seed": 63734,
+  "cards": {
+    "Kjeldoran Outpost": "Name:Kjeldoran Outpost\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Token | Cost$ 1 W T | TokenScript$ w_1_1_soldier | TokenOwner$ You | SpellDescription$ Create a 1/1 white Soldier creature token.\nR:Event$ Moved | Destination$ Battlefield | ValidCard$ Card.Self | ReplaceWith$ PayBeforeETB | Description$ If CARDNAME would enter, sacrifice a Plains instead. If you do, put CARDNAME onto the battlefield. If you don't, put it into its owner's graveyard.\nSVar:PayBeforeETB:DB$ Sacrifice | SacValid$ Plains | Defined$ You | RememberSacrificed$ True | SubAbility$ MoveToGraveyard\nSVar:MoveToGraveyard:DB$ ChangeZone | Origin$ All | Destination$ Graveyard | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ MoveToBattlefield\nSVar:MoveToBattlefield:DB$ ChangeZone | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlay:Plains.YouCtrl\nOracle:If Kjeldoran Outpost would enter, sacrifice a Plains instead. If you do, put Kjeldoran Outpost onto the battlefield. If you don't, put it into its owner's graveyard.\\n{T}: Add {W}.\\n{1}{W}, {T}: Create a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kjeldoran Outpost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "owl-familiar-corpus-m677",
+  "description": "M6 corpus — Owl Familiar; in-hand parse.",
+  "seed": 66523,
+  "cards": {
+    "Owl Familiar": "Name:Owl Familiar\nManaCost:1 U\nTypes:Creature Bird\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying\\nWhen Owl Familiar enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Owl Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

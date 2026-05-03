@@ -1,0 +1,23 @@
+{
+  "id": "stone-haven-outfitter-corpus-m677",
+  "description": "M6 corpus — Stone Haven Outfitter; in-hand parse.",
+  "seed": 71044,
+  "cards": {
+    "Stone Haven Outfitter": "Name:Stone Haven Outfitter\nManaCost:1 W\nTypes:Creature Kor Artificer Ally\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+equipped | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creatures you control get +1/+1.\nT:Mode$ ChangesZone | ValidCard$ Creature.YouCtrl+equipped | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever an equipped creature you control dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:PlayMain1:TRUE\nOracle:Equipped creatures you control get +1/+1.\\nWhenever an equipped creature you control dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stone Haven Outfitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

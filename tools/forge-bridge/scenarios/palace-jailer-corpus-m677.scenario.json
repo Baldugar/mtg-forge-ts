@@ -1,0 +1,23 @@
+{
+  "id": "palace-jailer-corpus-m677",
+  "description": "M6 corpus — Palace Jailer; in-hand parse.",
+  "seed": 66563,
+  "cards": {
+    "Palace Jailer": "Name:Palace Jailer\nManaCost:2 W W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until an opponent becomes the monarch.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ ComeBack | RememberObjects$ You & Targeted | Duration$ Permanent | EffectOwner$ TargetedOwner | ForgetOnMoved$ Exile\nSVar:ComeBack:Mode$ BecomeMonarch | ValidPlayer$ Player.OpponentOf Remembered | Execute$ TrigReturn | TriggerZones$ Command | Static$ True | TriggerDescription$ That creature is exiled until an opponent becomes the monarch.\nSVar:TrigReturn:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Battlefield | ChangeType$ Card.IsRemembered | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nSVar:PlayMain1:TRUE\nOracle:When Palace Jailer enters, you become the monarch.\\nWhen Palace Jailer enters, exile target creature an opponent controls until an opponent becomes the monarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Palace Jailer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hero-of-the-dunes-corpus-m677",
+  "description": "M6 corpus — Hero of the Dunes; in-hand parse.",
+  "seed": 62295,
+  "cards": {
+    "Hero of the Dunes": "Name:Hero of the Dunes\nManaCost:3 W B\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return target artifact or creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLE3,Artifact.YouOwn+cmcLE3 | TgtPrompt$ Select target artifact or creature with mana value 3 or less\nS:Mode$ Continuous | Affected$ Creature.cmcLE3+YouCtrl | AddPower$ 1 | Description$ Creatures you control with mana value 3 or less get +1/+0.\nDeckHas:Ability$Graveyard\nDeckHints:Type$Artifact\nOracle:When Hero of the Dunes enters, return target artifact or creature card with mana value 3 or less from your graveyard to the battlefield.\\nCreatures you control with mana value 3 or less get +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hero of the Dunes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

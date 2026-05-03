@@ -1,0 +1,25 @@
+{
+  "id": "heat-of-battle-corpus-m677",
+  "description": "M6 corpus — Heat of Battle; ETB-on-bf.",
+  "seed": 62185,
+  "cards": {
+    "Heat of Battle": "Name:Heat of Battle\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Blocks | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature blocks, CARDNAME deals 1 damage to that creature's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredBlockerController | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a creature blocks, Heat of Battle deals 1 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Heat of Battle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

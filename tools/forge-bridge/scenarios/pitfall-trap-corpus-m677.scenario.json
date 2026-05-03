@@ -1,0 +1,23 @@
+{
+  "id": "pitfall-trap-corpus-m677",
+  "description": "M6 corpus — Pitfall Trap; in-hand parse.",
+  "seed": 66941,
+  "cards": {
+    "Pitfall Trap": "Name:Pitfall Trap\nManaCost:2 W\nTypes:Instant Trap\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ W | IsPresent$ Creature.attacking | PresentCompare$ EQ1 | Description$ If exactly one creature is attacking, you may pay {W} rather than pay this spell's mana cost.\nA:SP$ Destroy | ValidTgts$ Creature.attacking+withoutFlying | TgtPrompt$ Select target attacking creature without flying | SpellDescription$ Destroy target attacking creature without flying.\nOracle:If exactly one creature is attacking, you may pay {W} rather than pay this spell's mana cost.\\nDestroy target attacking creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pitfall Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

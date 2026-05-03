@@ -1,0 +1,23 @@
+{
+  "id": "lava-runner-corpus-m677",
+  "description": "M6 corpus — Lava Runner; in-hand parse.",
+  "seed": 64025,
+  "cards": {
+    "Lava Runner": "Name:Lava Runner\nManaCost:1 R R\nTypes:Creature Lizard\nPT:2/2\nK:Haste\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME becomes the target of a spell or ability, that spell or ability's controller sacrifices a land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land | ChangeNum$ 1 | Defined$ TriggeredSourceController\nSVar:Targeting:Counter\nOracle:Haste\\nWhenever Lava Runner becomes the target of a spell or ability, that spell or ability's controller sacrifices a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lava Runner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

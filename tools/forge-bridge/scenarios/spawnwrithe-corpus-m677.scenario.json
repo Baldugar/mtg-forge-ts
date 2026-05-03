@@ -1,0 +1,23 @@
+{
+  "id": "spawnwrithe-corpus-m677",
+  "description": "M6 corpus — Spawnwrithe; in-hand parse.",
+  "seed": 70529,
+  "cards": {
+    "Spawnwrithe": "Name:Spawnwrithe\nManaCost:2 G\nTypes:Creature Elemental\nPT:2/2\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create a token that's a copy of CARDNAME.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Self\nOracle:Trample\\nWhenever Spawnwrithe deals combat damage to a player, create a token that's a copy of Spawnwrithe.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawnwrithe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "one-thousand-lashes-corpus-m677",
+  "description": "M6 corpus — One Thousand Lashes; in-hand parse.",
+  "seed": 66315,
+  "cards": {
+    "One Thousand Lashes": "Name:One Thousand Lashes\nManaCost:2 W B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block and its activated abilities can't be activated.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 1\nOracle:Enchant creature\\nEnchanted creature can't attack or block, and its activated abilities can't be activated.\\nAt the beginning of the upkeep of enchanted creature's controller, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "One Thousand Lashes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

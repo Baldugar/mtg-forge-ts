@@ -1,0 +1,23 @@
+{
+  "id": "mysterious-limousine-corpus-m677",
+  "description": "M6 corpus — Mysterious Limousine; in-hand parse.",
+  "seed": 65654,
+  "cards": {
+    "Mysterious Limousine": "Name:Mysterious Limousine\nManaCost:3 W W\nTypes:Artifact Vehicle\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one other target creature until CARDNAME leaves the battlefield. If a creature is put into exile this way, return each other card exiled with CARDNAME to the battlefield under its owner's control.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one other target creature until CARDNAME leaves the battlefield. If a creature is put into exile this way, return each other card exiled with CARDNAME to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | TargetMin$ 0 | TargetMax$ 1 | Duration$ UntilHostLeavesPlay | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Battlefield | ConditionDefined$ Remembered | ConditionPresent$ Card | ChangeType$ Card.ExiledWithSource+!IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:2\nOracle:Whenever Mysterious Limousine enters or attacks, exile up to one other target creature until Mysterious Limousine leaves the battlefield. If a creature is put into exile this way, return each other card exiled with Mysterious Limousine to the battlefield under its owner's control.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mysterious Limousine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pack-hunt-corpus-m677",
+  "description": "M6 corpus — Pack Hunt; in-hand parse.",
+  "seed": 66541,
+  "cards": {
+    "Pack Hunt": "Name:Pack Hunt\nManaCost:3 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | StackDescription$ None | SubAbility$ DBChangeZone | SpellDescription$ Search your library for up to three cards with the same name as target creature, reveal them, put them into your hand, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Targeted.sameName | ChangeNum$ 3 | StackDescription$ Search your library for up to three cards with the same name as target creature, reveal them, put them into your hand, then shuffle.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Search your library for up to three cards with the same name as target creature, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pack Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

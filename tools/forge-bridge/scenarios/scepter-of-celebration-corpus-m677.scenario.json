@@ -1,0 +1,23 @@
+{
+  "id": "scepter-of-celebration-corpus-m677",
+  "description": "M6 corpus — Scepter of Celebration; in-hand parse.",
+  "seed": 69134,
+  "cards": {
+    "Scepter of Celebration": "Name:Scepter of Celebration\nManaCost:2 G\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Trample | Description$ Equipped creature gets +2/+0 and has trample.\nT:Mode$ DamageDone | ValidSource$ Card.EquippedBy | Execute$ TrigToken | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, create that many 1/1 green and white Citizen creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ gw_1_1_citizen\nSVar:X:TriggerCount$DamageAmount\nK:Equip:3\nDeckHas:Ability$Token & Type$Citizen\nOracle:Equipped creature gets +2/+0 and has trample.\\nWhenever equipped creature deals combat damage to a player, create that many 1/1 green and white Citizen creature tokens.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scepter of Celebration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

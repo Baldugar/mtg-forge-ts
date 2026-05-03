@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-tolvada-corpus-m677",
+  "description": "M6 corpus — Invasion of Tolvada; in-hand parse.",
+  "seed": 63073,
+  "cards": {
+    "Invasion of Tolvada": "Name:Invasion of Tolvada\nManaCost:3 W B\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target nonbattle permanent card from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.nonBattle+YouCtrl | TgtPrompt$ Select target nonbattle permanent card in your graveyard\nDeckHas:Ability$Graveyard|Token & Type$Spirit\nDeckHints:Ability$Graveyard|Mill|Token|LifeGain\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Tolvada enters, return target nonbattle permanent card from your graveyard to the battlefield.\n\nALTERNATE\n\nName:The Broken Sky\nManaCost:no cost\nColors:white,black\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddPower$ 1 | AddKeyword$ Lifelink | Description$ Creature tokens you control get +1/+0 and have lifelink.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 1/1 white and black Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ wb_1_1_spirit_flying\nOracle:Creature tokens you control get +1/+0 and have lifelink.\\nAt the beginning of your end step, create a 1/1 white and black Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Tolvada"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

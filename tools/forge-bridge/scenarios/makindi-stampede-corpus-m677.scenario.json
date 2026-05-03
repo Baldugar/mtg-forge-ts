@@ -1,0 +1,23 @@
+{
+  "id": "makindi-stampede-corpus-m677",
+  "description": "M6 corpus — Makindi Stampede; in-hand parse.",
+  "seed": 64649,
+  "cards": {
+    "Makindi Stampede": "Name:Makindi Stampede\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Creatures you control get +2/+2 until end of turn.\nAlternateMode:Modal\nOracle:Creatures you control get +2/+2 until end of turn.\n\nALTERNATE\n\nName:Makindi Mesas\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:Makindi Mesas enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Makindi Stampede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "mishra-artificer-prodigy-corpus-m677",
+  "description": "M6 corpus — Mishra, Artificer Prodigy; ETB-on-bf.",
+  "seed": 65275,
+  "cards": {
+    "Mishra, Artificer Prodigy": "Name:Mishra, Artificer Prodigy\nManaCost:1 U B R\nTypes:Legendary Creature Human Artificer\nPT:4/4\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChangeZone | TriggerDescription$ Whenever you cast an artifact spell, you may search your graveyard, hand, and/or library for a card with the same name as that spell and put it onto the battlefield. If you search your library this way, shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Library | OriginAlternative$ Graveyard,Hand | Destination$ Battlefield | ChangeType$ Triggered.YouOwn+sameName | ShuffleNonMandatory$ True\nOracle:Whenever you cast an artifact spell, you may search your graveyard, hand, and/or library for a card with the same name as that spell and put it onto the battlefield. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mishra, Artificer Prodigy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

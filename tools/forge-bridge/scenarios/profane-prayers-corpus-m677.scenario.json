@@ -1,0 +1,23 @@
+{
+  "id": "profane-prayers-corpus-m677",
+  "description": "M6 corpus — Profane Prayers; in-hand parse.",
+  "seed": 67248,
+  "cards": {
+    "Profane Prayers": "Name:Profane Prayers\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals X damage to any target and you gain X life, where X is the number of Clerics on the battlefield.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Cleric\nAI:RemoveDeck:Random\nOracle:Profane Prayers deals X damage to any target and you gain X life, where X is the number of Clerics on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Profane Prayers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

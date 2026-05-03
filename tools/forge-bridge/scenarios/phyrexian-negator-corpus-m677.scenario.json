@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-negator-corpus-m677",
+  "description": "M6 corpus — Phyrexian Negator; in-hand parse.",
+  "seed": 66859,
+  "cards": {
+    "Phyrexian Negator": "Name:Phyrexian Negator\nManaCost:2 B\nTypes:Creature Phyrexian Horror\nPT:5/5\nK:Trample\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, sacrifice that many permanents.\nSVar:TrigSac:DB$ Sacrifice | Amount$ X | SacValid$ Permanent\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Trample\\nWhenever Phyrexian Negator is dealt damage, sacrifice that many permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Negator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

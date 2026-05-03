@@ -1,0 +1,23 @@
+{
+  "id": "silhana-wayfinder-corpus-m677",
+  "description": "M6 corpus — Silhana Wayfinder; in-hand parse.",
+  "seed": 69888,
+  "cards": {
+    "Silhana Wayfinder": "Name:Silhana Wayfinder\nManaCost:1 G\nTypes:Creature Elf Scout\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a creature or land card from among them and put it on top of your library. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature,Land | ForceRevealToController$ True | DestinationZone$ Library | LibraryPosition$ 0 | RestRandomOrder$ True\nOracle:When Silhana Wayfinder enters, look at the top four cards of your library. You may reveal a creature or land card from among them and put it on top of your library. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silhana Wayfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

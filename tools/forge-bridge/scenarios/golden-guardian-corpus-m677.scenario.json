@@ -1,0 +1,23 @@
+{
+  "id": "golden-guardian-corpus-m677",
+  "description": "M6 corpus — Golden Guardian; in-hand parse.",
+  "seed": 61524,
+  "cards": {
+    "Golden Guardian": "Name:Golden Guardian\nManaCost:4\nTypes:Artifact Creature Golem\nPT:4/4\nK:Defender\nA:AB$ Fight | Cost$ 2 | Defined$ Self | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | SubAbility$ DBDelayedTrigger | StackDescription$ CARDNAME fights {c:Targeted}. | SpellDescription$ CARDNAME fights another target creature you control.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Self | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigChangeZone | SpellDescription$ When CARDNAME dies this turn, return it to the battlefield transformed under your control.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ DelayTriggerRemembered | Origin$ Graveyard | Destination$ Battlefield | Transformed$ True | GainControl$ True\nAlternateMode:DoubleFaced\nOracle:Defender\\n{2}: Golden Guardian fights another target creature you control. When Golden Guardian dies this turn, return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Gold-Forge Garrison\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nA:AB$ Token | Cost$ 4 T | TokenScript$ c_4_4_a_golem | SpellDescription$ Create a 4/4 colorless Golem artifact creature token.\nDeckHas:Ability$Token\nOracle:(Transforms from Golden Guardian.)\\n{T}: Add two mana of any one color.\\n{4}, {T}: Create a 4/4 colorless Golem artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golden Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ivy-gleeful-spellthief-corpus-m677",
+  "description": "M6 corpus — Ivy, Gleeful Spellthief; ETB-on-bf.",
+  "seed": 63182,
+  "cards": {
+    "Ivy, Gleeful Spellthief": "Name:Ivy, Gleeful Spellthief\nManaCost:G U\nTypes:Legendary Creature Faerie Rogue\nPT:2/1\nK:Flying\nT:Mode$ SpellCast | TriggerZones$ Battlefield | IsSingleTarget$ True | TargetsValid$ Creature.Other+inZoneBattlefield | Execute$ TrigCopyTarget | OptionalDecider$ You | TriggerDescription$ Whenever a player casts a spell that targets only a single creature other than CARDNAME, you may copy that spell. The copy targets NICKNAME. (A copy of an Aura spell becomes a token.)\nSVar:TrigCopyTarget:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | DefinedTarget$ Self\nOracle:Flying\\nWhenever a player casts a spell that targets only a single creature other than Ivy, Gleeful Spellthief, you may copy that spell. The copy targets Ivy. (A copy of an Aura spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ivy, Gleeful Spellthief"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

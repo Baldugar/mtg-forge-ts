@@ -1,0 +1,25 @@
+{
+  "id": "psychogenic-probe-corpus-m677",
+  "description": "M6 corpus — Psychogenic Probe; ETB-on-bf.",
+  "seed": 67331,
+  "cards": {
+    "Psychogenic Probe": "Name:Psychogenic Probe\nManaCost:2\nTypes:Artifact\nT:Mode$ Shuffled | ValidPlayer$ Player | ShuffleFromEffect$ True | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a spell or ability causes a player to shuffle their library, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever a spell or ability causes a player to shuffle their library, Psychogenic Probe deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Psychogenic Probe"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

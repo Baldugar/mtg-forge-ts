@@ -1,0 +1,23 @@
+{
+  "id": "resolute-blademaster-corpus-m677",
+  "description": "M6 corpus — Resolute Blademaster; in-hand parse.",
+  "seed": 68102,
+  "cards": {
+    "Resolute Blademaster": "Name:Resolute Blademaster\nManaCost:3 R W\nTypes:Creature Human Soldier Ally\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control gain double strike until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Double Strike\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Resolute Blademaster or another Ally you control enters, creatures you control gain double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resolute Blademaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

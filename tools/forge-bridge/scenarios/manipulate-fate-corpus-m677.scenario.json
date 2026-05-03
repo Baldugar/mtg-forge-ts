@@ -1,0 +1,23 @@
+{
+  "id": "manipulate-fate-corpus-m677",
+  "description": "M6 corpus — Manipulate Fate; in-hand parse.",
+  "seed": 64723,
+  "cards": {
+    "Manipulate Fate": "Name:Manipulate Fate\nManaCost:1 U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Card | ChangeNum$ 3 | Mandatory$ True | SpellDescription$ Search your library for three cards, exile them, then shuffle. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nAI:RemoveDeck:All\nOracle:Search your library for three cards, exile them, then shuffle.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manipulate Fate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

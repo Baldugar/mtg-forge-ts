@@ -1,0 +1,23 @@
+{
+  "id": "priest-of-ancient-lore-corpus-m677",
+  "description": "M6 corpus — Priest of Ancient Lore; in-hand parse.",
+  "seed": 67168,
+  "cards": {
+    "Priest of Ancient Lore": "Name:Priest of Ancient Lore\nManaCost:2 W\nTypes:Creature Dwarf Cleric\nPT:2/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigLife | TriggerDescription$ When CARDNAME enters, you gain 1 life and draw a card.\nSVar:TrigLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$LifeGain\nOracle:When Priest of Ancient Lore enters, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Priest of Ancient Lore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

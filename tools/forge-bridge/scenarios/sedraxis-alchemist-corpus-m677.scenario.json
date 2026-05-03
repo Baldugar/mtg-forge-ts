@@ -1,0 +1,23 @@
+{
+  "id": "sedraxis-alchemist-corpus-m677",
+  "description": "M6 corpus — Sedraxis Alchemist; in-hand parse.",
+  "seed": 69354,
+  "cards": {
+    "Sedraxis Alchemist": "Name:Sedraxis Alchemist\nManaCost:2 B\nTypes:Creature Zombie Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Permanent.Blue+YouCtrl | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, if you control a blue permanent, return target nonland permanent to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nDeckHints:Color$Blue\nDeckNeeds:Color$Blue\nOracle:When Sedraxis Alchemist enters, if you control a blue permanent, return target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sedraxis Alchemist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "obsessive-astronomer-corpus-m677",
+  "description": "M6 corpus — Obsessive Astronomer; ETB-on-bf.",
+  "seed": 66188,
+  "cards": {
+    "Obsessive Astronomer": "Name:Obsessive Astronomer\nManaCost:1 R\nTypes:Creature Human Wizard\nPT:2/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever day becomes night or night becomes day, discard up to two cards, then draw that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nDeckHas:Ability$Discard\nOracle:If it's neither day nor night, it becomes day as Obsessive Astronomer enters.\\nWhenever day becomes night or night becomes day, discard up to two cards, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Obsessive Astronomer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "juvenile-mist-dragon-corpus-m677",
+  "description": "M6 corpus — Juvenile Mist Dragon; in-hand parse.",
+  "seed": 63407,
+  "cards": {
+    "Juvenile Mist Dragon": "Name:Juvenile Mist Dragon\nManaCost:3 U U\nTypes:Creature Dragon\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Confounding Clouds — When CARDNAME enters, for each opponent, tap up to one target creature that player controls. Each of those creatures doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose one target creature that each opponent controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:PlayMain1:TRUE\nOracle:Flying\\nConfounding Clouds — When Juvenile Mist Dragon enters, for each opponent, tap up to one target creature that player controls. Each of those creatures doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Juvenile Mist Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

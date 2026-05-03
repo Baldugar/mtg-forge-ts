@@ -1,0 +1,23 @@
+{
+  "id": "living-lightning-corpus-m677",
+  "description": "M6 corpus — Living Lightning; in-hand parse.",
+  "seed": 64311,
+  "cards": {
+    "Living Lightning": "Name:Living Lightning\nManaCost:3 R\nTypes:Creature Elemental Shaman\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TgtPrompt$ Select target instant or sorcery\nDeckHints:Type$Instant|Sorcery\nOracle:When Living Lightning dies, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Living Lightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

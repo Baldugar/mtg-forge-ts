@@ -1,0 +1,25 @@
+{
+  "id": "sonic-screwdriver-corpus-m677",
+  "description": "M6 corpus — Sonic Screwdriver; ETB-on-bf.",
+  "seed": 70409,
+  "cards": {
+    "Sonic Screwdriver": "Name:Sonic Screwdriver\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Untap | Cost$ 1 T | ValidTgts$ Artifact.Other | TgtPrompt$ Select another target artifact | SpellDescription$ Untap another target artifact.\nA:AB$ Scry | Cost$ 2 T | ScryNum$ 1 | SpellDescription$ Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\nA:AB$ Effect | Cost$ 3 T | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn | SpellDescription$ Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{T}: Add one mana of any color.\\n{1}, {T}: Untap another target artifact.\\n{2}, {T}: Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\\n{3}, {T}: Target creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sonic Screwdriver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stunning-strike-corpus-m677",
+  "description": "M6 corpus — Stunning Strike; in-hand parse.",
+  "seed": 71235,
+  "cards": {
+    "Stunning Strike": "Name:Stunning Strike\nManaCost:2 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature and remove it from combat.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ RemCombat\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ Enchanted\nS:Mode$ Continuous | Affected$ Creature.nonlegendary+EnchantedBy | AddHiddenKeyword$ This card doesn't untap during your next untap step. | Description$ As long as enchanted creature isn't legendary, it doesn't untap during its controller's untap step.\nDeckHints:Type$Creature\nOracle:Flash\\nEnchant creature\\nWhen Stunning Strike enters, tap enchanted creature and remove it from combat.\\nAs long as enchanted creature isn't legendary, it doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stunning Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

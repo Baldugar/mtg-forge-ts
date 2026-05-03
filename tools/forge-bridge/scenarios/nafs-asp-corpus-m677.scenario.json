@@ -1,0 +1,23 @@
+{
+  "id": "nafs-asp-corpus-m677",
+  "description": "M6 corpus — Nafs Asp; in-hand parse.",
+  "seed": 65702,
+  "cards": {
+    "Nafs Asp": "Name:Nafs Asp\nManaCost:G\nTypes:Creature Snake\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ NafsEffect | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to a player, that player loses 1 life at the beginning of their next draw step unless they pay {1} before that draw step.\nSVar:NafsEffect:DB$ Effect | RememberObjects$ TriggeredTarget | Duration$ Permanent | Triggers$ DrawTrig | Abilities$ PayUp\nSVar:DrawTrig:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player.IsRemembered | TriggerZones$ Command | OneOff$ True | Execute$ Bleed | TriggerDescription$ That player loses 1 life at the beginning of their next draw step unless they pay {1} before that step.\nSVar:Bleed:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ 1\nSVar:PayUp:ST$ ChangeZone | Cost$ 1 | Defined$ Self | Origin$ Command | Destination$ Exile | ActivationZone$ Command | Activator$ Player.IsRemembered | AILogic$ Always | SpellDescription$ Pay {1} to avoid losing another 1 life.\nOracle:Whenever Nafs Asp deals damage to a player, that player loses 1 life at the beginning of their next draw step unless they pay {1} before that draw step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nafs Asp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jedit-ojanen-of-efrava-corpus-m677",
+  "description": "M6 corpus — Jedit Ojanen of Efrava; in-hand parse.",
+  "seed": 63263,
+  "cards": {
+    "Jedit Ojanen of Efrava": "Name:Jedit Ojanen of Efrava\nManaCost:3 G G G\nTypes:Legendary Creature Cat Warrior\nPT:5/5\nK:Landwalk:Forest\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks or blocks, create a 2/2 green Cat Warrior creature token with forestwalk.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, create a 2/2 green Cat Warrior creature token with forestwalk.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ g_2_2_cat_warrior_forestwalk\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nOracle:Forestwalk (This creature can't be blocked as long as defending player controls a Forest.)\\nWhenever Jedit Ojanen of Efrava attacks or blocks, create a 2/2 green Cat Warrior creature token with forestwalk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jedit Ojanen of Efrava"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

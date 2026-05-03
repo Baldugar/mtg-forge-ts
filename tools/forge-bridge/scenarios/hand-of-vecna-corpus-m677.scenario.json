@@ -1,0 +1,23 @@
+{
+  "id": "hand-of-vecna-corpus-m677",
+  "description": "M6 corpus — Hand of Vecna; in-hand parse.",
+  "seed": 62023,
+  "cards": {
+    "Hand of Vecna": "Name:Hand of Vecna\nManaCost:3\nTypes:Legendary Artifact Equipment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, equipped creature or a creature you control named Vecna gets +X/+X until end of turn, where X is the number of cards in your hand.\nSVar:TrigChoose:DB$ ChooseCard | Choices$ Creature.EquippedBy,Creature.YouCtrl+namedVecna | Mandatory$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ChosenCard | NumAtt$ +X | NumDef$ +X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nK:Equip:PayLife<X/1 life for each card in your hand>\nK:Equip:2\nSVar:X:Count$CardsInYourHand\nDeckHints:Name$Eye of Vecna|The Book of Vile Darkness\nOracle:At the beginning of combat on your turn, equipped creature or a creature you control named Vecna gets +X/+X until end of turn, where X is the number of cards in your hand.\\nEquip—Pay 1 life for each card in your hand.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hand of Vecna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

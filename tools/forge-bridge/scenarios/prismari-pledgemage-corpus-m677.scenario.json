@@ -1,0 +1,25 @@
+{
+  "id": "prismari-pledgemage-corpus-m677",
+  "description": "M6 corpus — Prismari Pledgemage; ETB-on-bf.",
+  "seed": 67216,
+  "cards": {
+    "Prismari Pledgemage": "Name:Prismari Pledgemage\nManaCost:UR UR\nTypes:Creature Orc Wizard\nPT:3/3\nK:Defender\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, CARDNAME can attack this turn as though it didn't have defender.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ CanAttack | Duration$ UntilHostLeavesPlayOrEOT\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE can attack this turn as though it didn't have defender.\nOracle:Defender\\nMagecraft — Whenever you cast or copy an instant or sorcery spell, Prismari Pledgemage can attack this turn as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Prismari Pledgemage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

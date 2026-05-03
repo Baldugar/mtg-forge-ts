@@ -1,0 +1,23 @@
+{
+  "id": "nadier-s-nightblade-corpus-m677",
+  "description": "M6 corpus — Nadier's Nightblade; in-hand parse.",
+  "seed": 65700,
+  "cards": {
+    "Nadier's Nightblade": "Name:Nadier's Nightblade\nManaCost:2 B\nTypes:Creature Elf Warrior\nPT:1/3\nT:Mode$ ChangesZone | ValidCard$ Card.token+YouCtrl | Origin$ Battlefield | Destination$ Any | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever a token you control leaves the battlefield, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nDeckNeeds:Ability$Token\nOracle:Whenever a token you control leaves the battlefield, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nadier's Nightblade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

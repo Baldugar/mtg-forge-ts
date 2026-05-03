@@ -1,0 +1,23 @@
+{
+  "id": "stream-of-consciousness-corpus-m677",
+  "description": "M6 corpus — Stream of Consciousness; in-hand parse.",
+  "seed": 71162,
+  "cards": {
+    "Stream of Consciousness": "Name:Stream of Consciousness\nManaCost:1 U\nTypes:Instant Arcane\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True | SpellDescription$ Target player shuffles up to four target cards from their graveyard into their library.\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 4 | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | Shuffle$ True | TgtPrompt$ Select up to four target cards in targeted player's graveyard | ValidTgts$ Card\nAI:RemoveDeck:All\nOracle:Target player shuffles up to four target cards from their graveyard into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stream of Consciousness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

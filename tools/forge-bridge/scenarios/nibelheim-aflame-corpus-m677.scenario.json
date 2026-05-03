@@ -1,0 +1,23 @@
+{
+  "id": "nibelheim-aflame-corpus-m677",
+  "description": "M6 corpus — Nibelheim Aflame; in-hand parse.",
+  "seed": 65907,
+  "cards": {
+    "Nibelheim Aflame": "Name:Nibelheim Aflame\nManaCost:2 R R\nTypes:Sorcery\nK:Flashback:5 R R\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ IgnitionDamage | StackDescription$ SpellDescription | SpellDescription$ Choose target creature you control. It deals damage equal to its power to each other creature. If this spell was cast from a graveyard, discard your hand and draw four cards.\nSVar:IgnitionDamage:DB$ DamageAll | ValidCards$ Creature.NotDefinedTargeted | DamageSource$ ParentTarget | NumDmg$ X | SubAbility$ DBDiscard | StackDescription$ None\nSVar:DBDiscard:DB$ Discard | Mode$ Hand | ConditionCheckSVar$ Y | SubAbility$ DBDraw | StackDescription$ None\nSVar:DBDraw:DB$ Draw | NumCards$ 4 | ConditionCheckSVar$ Y | StackDescription$ None\nSVar:X:ParentTargeted$CardPower\nSVar:Y:Count$wasCastFromGraveyard.1.0\nOracle:Choose target creature you control. It deals damage equal to its power to each other creature. If this spell was cast from a graveyard, discard your hand and draw four cards.\\nFlashback {5}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nibelheim Aflame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

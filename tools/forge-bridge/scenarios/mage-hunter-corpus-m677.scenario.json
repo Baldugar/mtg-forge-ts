@@ -1,0 +1,25 @@
+{
+  "id": "mage-hunter-corpus-m677",
+  "description": "M6 corpus — Mage Hunter; ETB-on-bf.",
+  "seed": 64573,
+  "cards": {
+    "Mage Hunter": "Name:Mage Hunter\nManaCost:3 B\nTypes:Creature Horror\nPT:3/4\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever an opponent casts or copies an instant or sorcery spell, they lose 1 life.\nT:Mode$ SpellCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDrain | Secondary$ True | TriggerDescription$ Whenever an opponent casts or copies an instant or sorcery spell, they lose 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 1\nOracle:Whenever an opponent casts or copies an instant or sorcery spell, they lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mage Hunter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

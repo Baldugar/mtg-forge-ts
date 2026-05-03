@@ -1,0 +1,23 @@
+{
+  "id": "hydro-man-fluid-felon-corpus-m677",
+  "description": "M6 corpus — Hydro-Man, Fluid Felon; in-hand parse.",
+  "seed": 62652,
+  "cards": {
+    "Hydro-Man, Fluid Felon": "Name:Hydro-Man, Fluid Felon\nVariant:UniversesWithin:FlavorName:Belion, the Parched\nManaCost:U U\nTypes:Legendary Creature Elemental Villain\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Blue | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+Creature | Execute$ TrigPump | TriggerDescription$ Whenever you cast a blue spell, if NICKNAME is a creature, he gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Defined$ Self\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your end step, untap NICKNAME. Until your next turn, he becomes a land and gains \"{T}: Add {U}.\" (He's not a creature during that time.)\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Types$ Land | RemoveCardTypes$ True | Abilities$ DBMana | Duration$ UntilYourNextTurn\nSVar:DBMana:AB$ Mana | Cost$ T | Produced$ U | Amount$ 1 | SpellDescription$ Add {U}.\nOracle:Whenever you cast a blue spell, if Hydro-Man is a creature, he gets +1/+1 until end of turn.\\nAt the beginning of your end step, untap Hydro-Man. Until your next turn, he becomes a land and gains \"{T}: Add {U}.\" (He's not a creature during that time.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hydro-Man, Fluid Felon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

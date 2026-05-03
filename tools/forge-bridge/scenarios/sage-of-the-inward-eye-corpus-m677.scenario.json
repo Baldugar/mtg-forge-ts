@@ -1,0 +1,25 @@
+{
+  "id": "sage-of-the-inward-eye-corpus-m677",
+  "description": "M6 corpus — Sage of the Inward Eye; ETB-on-bf.",
+  "seed": 68866,
+  "cards": {
+    "Sage of the Inward Eye": "Name:Sage of the Inward Eye\nManaCost:2 U R W\nTypes:Creature Djinn Wizard\nPT:3/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a noncreature spell, creatures you control gain lifelink until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Lifelink\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:Flying\\nWhenever you cast a noncreature spell, creatures you control gain lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sage of the Inward Eye"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

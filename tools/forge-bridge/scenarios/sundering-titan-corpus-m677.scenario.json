@@ -1,0 +1,23 @@
+{
+  "id": "sundering-titan-corpus-m677",
+  "description": "M6 corpus — Sundering Titan; in-hand parse.",
+  "seed": 71349,
+  "cards": {
+    "Sundering Titan": "Name:Sundering Titan\nManaCost:8\nTypes:Artifact Creature Golem\nPT:7/10\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters or leaves the battlefield, choose a land of each basic land type, then destroy those lands.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigChoose | Secondary$ True | TriggerDescription$ When CARDNAME enters or leaves the battlefield, choose a land of each basic land type, then destroy those lands.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ You | Choices$ Land | EachBasicType$ True | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Card.ChosenCard | SpellDescription$ Destroy all chosen lands.\nOracle:When Sundering Titan enters or leaves the battlefield, choose a land of each basic land type, then destroy those lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sundering Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

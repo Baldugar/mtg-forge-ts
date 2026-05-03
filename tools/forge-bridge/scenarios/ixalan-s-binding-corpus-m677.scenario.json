@@ -1,0 +1,23 @@
+{
+  "id": "ixalan-s-binding-corpus-m677",
+  "description": "M6 corpus — Ixalan's Binding; in-hand parse.",
+  "seed": 63185,
+  "cards": {
+    "Ixalan's Binding": "Name:Ixalan's Binding\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nS:Mode$ CantBeCast | ValidCard$ Card.sharesNameWith ExiledWith | Caster$ Opponent | Description$ Your opponents can't cast spells with the same name as the exiled card.\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When Ixalan's Binding enters, exile target nonland permanent an opponent controls until Ixalan's Binding leaves the battlefield.\\nYour opponents can't cast spells with the same name as the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ixalan's Binding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

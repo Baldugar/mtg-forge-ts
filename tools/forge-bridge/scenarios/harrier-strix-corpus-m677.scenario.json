@@ -1,0 +1,23 @@
+{
+  "id": "harrier-strix-corpus-m677",
+  "description": "M6 corpus — Harrier Strix; in-hand parse.",
+  "seed": 62075,
+  "cards": {
+    "Harrier Strix": "Name:Harrier Strix\nManaCost:U\nTypes:Creature Bird\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target permanent.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Permanent\nA:AB$ Draw | Cost$ 2 U | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:Flying\\nWhen Harrier Strix enters, tap target permanent.\\n{2}{U}: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harrier Strix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

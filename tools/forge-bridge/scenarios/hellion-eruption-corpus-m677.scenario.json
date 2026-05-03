@@ -1,0 +1,23 @@
+{
+  "id": "hellion-eruption-corpus-m677",
+  "description": "M6 corpus — Hellion Eruption; in-hand parse.",
+  "seed": 62238,
+  "cards": {
+    "Hellion Eruption": "Name:Hellion Eruption\nManaCost:5 R\nTypes:Sorcery\nA:SP$ SacrificeAll | ValidCards$ Creature.YouCtrl | RememberSacrificed$ True | SubAbility$ DBToken | AILogic$ HellionEruption | SpellDescription$ Sacrifice all creatures you control, then create that many 4/4 red Hellion creature tokens.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ r_4_4_hellion | TokenOwner$ You\nSVar:X:Remembered$Amount\nOracle:Sacrifice all creatures you control, then create that many 4/4 red Hellion creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellion Eruption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

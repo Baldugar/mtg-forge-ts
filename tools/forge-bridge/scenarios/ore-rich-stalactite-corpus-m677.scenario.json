@@ -1,0 +1,23 @@
+{
+  "id": "ore-rich-stalactite-corpus-m677",
+  "description": "M6 corpus — Ore-Rich Stalactite; in-hand parse.",
+  "seed": 66412,
+  "cards": {
+    "Ore-Rich Stalactite": "Name:Ore-Rich Stalactite\nManaCost:1 R\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ R | RestrictValid$ Spell.Instant,Spell.Sorcery | SpellDescription$ Add {R}. Spend this mana only to cast an instant or sorcery spell.\nK:Craft:3 R R XMin4 ExileFromGrave<X/Instant.Red+Other;Sorcery.Red+Other/red instant and/or sorcery cards>\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckNeeds:Type$Instant|Sorcery\nAlternateMode:DoubleFaced\nOracle:{T}: Add {R}. Spend this mana only to cast an instant or sorcery spell.\\nCraft with four or more red instant and/or sorcery cards {3}{R}{R} ({3}{R}{R}, Exile this artifact, Exile the four or more from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Cosmium Catalyst\nManaCost:no cost\nColors:red\nTypes:Artifact\nA:AB$ ChooseCard | Cost$ 1 R T | DefinedCards$ ExiledWith | ChoiceZone$ Exile | AtRandom$ True | SubAbility$ DBPlay | StackDescription$ SpellDescription | SpellDescription$ Choose an exiled card used to craft CARDNAME at random.\nSVar:DBPlay:DB$ Play | Defined$ ChosenCard | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ You may cast that card without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{1}{R}, {T}: Choose an exiled card used to craft Cosmium Catalyst at random. You may cast that card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ore-Rich Stalactite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "greener-pastures-corpus-m677",
+  "description": "M6 corpus — Greener Pastures; in-hand parse.",
+  "seed": 61733,
+  "cards": {
+    "Greener Pastures": "Name:Greener Pastures\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigToken | CheckSVar$ ActiveLands | SVarCompare$ GTHighestOpp | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, if that player controls more lands than each other player, the player creates a 1/1 green Saproling creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ TriggeredPlayer\nSVar:ActiveLands:Count$Valid Land.ActivePlayerCtrl\nSVar:HighestOpp:PlayerCountNonActive$HighestValid Land.YouCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, if that player controls more lands than each other player, the player creates a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greener Pastures"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

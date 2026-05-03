@@ -1,0 +1,23 @@
+{
+  "id": "specter-s-shriek-corpus-m677",
+  "description": "M6 corpus — Specter's Shriek; in-hand parse.",
+  "seed": 70543,
+  "cards": {
+    "Specter's Shriek": "Name:Specter's Shriek\nManaCost:B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | RememberRevealed$ True | SubAbility$ DBChoose | StackDescription$ SpellDescription | SpellDescription$ Target opponent reveals their hand. You may choose a nonland card from it. If you do, that player exiles that card. If a nonblack card is exiled this way, exile a card from your hand.\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.nonLand+IsRemembered | ChoiceTitle$ Select a nonland card | SubAbility$ DBExile | MinAmount$ 0 | StackDescription$ None\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | Defined$ ChosenCard | Mandatory$ True | SubAbility$ DBExile2\nSVar:DBExile2:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ConditionDefined$ ChosenCard | ConditionPresent$ Card.nonBlack | ConditionCompare$ GE1 | Mandatory$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nAI:RemoveDeck:All\nOracle:Target opponent reveals their hand. You may choose a nonland card from it. If you do, that player exiles that card. If a nonblack card is exiled this way, exile a card from your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Specter's Shriek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

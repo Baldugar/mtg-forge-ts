@@ -1,0 +1,23 @@
+{
+  "id": "locthwain-lancer-corpus-m677",
+  "description": "M6 corpus — Locthwain Lancer; in-hand parse.",
+  "seed": 64355,
+  "cards": {
+    "Locthwain Lancer": "Name:Locthwain Lancer\nManaCost:4 B\nTypes:Creature Human Knight\nPT:5/5\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Knight.!token+YouCtrl | Execute$ TrigLoseLife | TriggerDescription$ Whenever a nontoken Knight you control dies, each opponent loses 1 life and you draw a card.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHints:Type$Knight\nOracle:Menace\\nWhenever a nontoken Knight you control dies, each opponent loses 1 life and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Locthwain Lancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

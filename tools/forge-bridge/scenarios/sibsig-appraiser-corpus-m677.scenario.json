@@ -1,0 +1,23 @@
+{
+  "id": "sibsig-appraiser-corpus-m677",
+  "description": "M6 corpus — Sibsig Appraiser; in-hand parse.",
+  "seed": 69814,
+  "cards": {
+    "Sibsig Appraiser": "Name:Sibsig Appraiser\nManaCost:2 U\nTypes:Creature Zombie Advisor\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When this creature enters, look at the top two cards of your library. Put one of them into your hand and the other into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 2 | ChangeNum$ 1 | DestinationZone2$ Graveyard | NoReveal$ True\nOracle:When this creature enters, look at the top two cards of your library. Put one of them into your hand and the other into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sibsig Appraiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

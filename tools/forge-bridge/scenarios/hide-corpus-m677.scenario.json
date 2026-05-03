@@ -1,0 +1,23 @@
+{
+  "id": "hide-corpus-m677",
+  "description": "M6 corpus — Hide; in-hand parse.",
+  "seed": 62345,
+  "cards": {
+    "Hide": "Name:Hide\nManaCost:R W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | Origin$ Battlefield | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put target artifact or enchantment on the bottom of its owner's library.\nAlternateMode:Split\nOracle:Put target artifact or enchantment on the bottom of its owner's library.\n\nALTERNATE\n\nName:Seek\nManaCost:W B\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Opponent | Origin$ Library | DefinedPlayer$ Targeted | Chooser$ You | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | RememberChanged$ True | IsCurse$ True | AILogic$ BestCard | SubAbility$ DBGainLife | StackDescription$ SpellDescription | SpellDescription$ Search target opponent's library for a card and exile it. You gain life equal to its mana value. Then that player shuffles.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Search target opponent's library for a card and exile it. You gain life equal to its mana value. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

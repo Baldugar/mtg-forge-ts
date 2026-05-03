@@ -1,0 +1,23 @@
+{
+  "id": "seraphic-steed-corpus-m677",
+  "description": "M6 corpus — Seraphic Steed; in-hand parse.",
+  "seed": 69464,
+  "cards": {
+    "Seraphic Steed": "Name:Seraphic Steed\nManaCost:G W\nTypes:Creature Unicorn Mount\nPT:2/2\nK:First Strike\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks while saddled, create a 3/3 white Angel creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_3_3_angel_flying\nK:Saddle:4\nDeckHas:Ability$LifeGain|Token & Type$Angel\nOracle:First strike, lifelink\\nWhenever Seraphic Steed attacks while saddled, create a 3/3 white Angel creature token with flying.\\nSaddle 4 (Tap any number of other creatures you control with total power 4 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seraphic Steed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

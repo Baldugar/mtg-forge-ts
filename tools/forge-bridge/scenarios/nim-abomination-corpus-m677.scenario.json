@@ -1,0 +1,23 @@
+{
+  "id": "nim-abomination-corpus-m677",
+  "description": "M6 corpus — Nim Abomination; in-hand parse.",
+  "seed": 65965,
+  "cards": {
+    "Nim Abomination": "Name:Nim Abomination\nManaCost:2 B\nTypes:Creature Zombie\nPT:3/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | PresentDefined$ Self | IsPresent$ Card.untapped | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, if CARDNAME is untapped, you lose 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 3\nOracle:At the beginning of your end step, if Nim Abomination is untapped, you lose 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nim Abomination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

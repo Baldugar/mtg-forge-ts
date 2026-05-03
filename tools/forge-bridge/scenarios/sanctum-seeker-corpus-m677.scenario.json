@@ -1,0 +1,23 @@
+{
+  "id": "sanctum-seeker-corpus-m677",
+  "description": "M6 corpus — Sanctum Seeker; in-hand parse.",
+  "seed": 68950,
+  "cards": {
+    "Sanctum Seeker": "Name:Sanctum Seeker\nManaCost:2 B B\nTypes:Creature Vampire Knight\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Creature.Vampire+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a Vampire you control attacks, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever a Vampire you control attacks, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctum Seeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

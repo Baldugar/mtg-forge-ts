@@ -1,0 +1,23 @@
+{
+  "id": "ignite-the-future-corpus-m677",
+  "description": "M6 corpus — Ignite the Future; in-hand parse.",
+  "seed": 62729,
+  "cards": {
+    "Ignite the Future": "Name:Ignite the Future\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. Until the end of your next turn, you may play those cards. If this spell was cast from a graveyard, you may play cards this way without paying their mana costs.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBEffect2\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBEffect2:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play2 | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | ConditionDefined$ Self | ConditionPresent$ Card.wasCastFromGraveyard | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:Play2:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Flashback:7 R\nOracle:Exile the top three cards of your library. Until the end of your next turn, you may play those cards. If this spell was cast from a graveyard, you may play cards this way without paying their mana costs.\\nFlashback {7}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ignite the Future"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

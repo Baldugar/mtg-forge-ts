@@ -1,0 +1,23 @@
+{
+  "id": "a-tatyova-steward-of-tides-corpus-m677",
+  "description": "M6 corpus — A-Tatyova, Steward of Tides; in-hand parse.",
+  "seed": 68809,
+  "cards": {
+    "A-Tatyova, Steward of Tides": "Name:A-Tatyova, Steward of Tides\nManaCost:G G U\nTypes:Legendary Creature Merfolk Druid\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.Land+YouCtrl | AddKeyword$ Flying | Description$ Land creatures you control have flying.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | IsPresent$ Land.YouCtrl | PresentCompare$ GE7 | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever a land you control enters, if you control seven or more lands, up to one target land you control becomes a 4/4 Elemental creature with haste. It's still a land.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Land.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | Duration$ Permanent | TgtPrompt$ Select up to one target land you control | Power$ 4 | Toughness$ 4 | Types$ Elemental,Creature | Keywords$ Haste\nSVar:BuffedBy:Land\nDeckHints:Type$Land\nOracle:Land creatures you control have flying.\\nWhenever a land you control enters, if you control seven or more lands, up to one target land you control becomes a 4/4 Elemental creature with haste. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Tatyova, Steward of Tides"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

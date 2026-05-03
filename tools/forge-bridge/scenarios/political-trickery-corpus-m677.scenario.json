@@ -1,0 +1,23 @@
+{
+  "id": "political-trickery-corpus-m677",
+  "description": "M6 corpus — Political Trickery; in-hand parse.",
+  "seed": 67037,
+  "cards": {
+    "Political Trickery": "Name:Political Trickery\nManaCost:2 U\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Land.YouCtrl | TgtPrompt$ Choose target land you control | SubAbility$ DBExchange | SpellDescription$ Exchange control of target land you control and target land an opponent controls. (This effect lasts indefinitely.)\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Land.OppCtrl | TgtPrompt$ Choose target land an opponent controls\nAI:RemoveDeck:All\nOracle:Exchange control of target land you control and target land an opponent controls. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Political Trickery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rumble-arena-corpus-m677",
+  "description": "M6 corpus — Rumble Arena; in-hand parse.",
+  "seed": 68604,
+  "cards": {
+    "Rumble Arena": "Name:Rumble Arena\nManaCost:no cost\nTypes:Land\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When this land enters, scry 1. (Look at the top card of your library. You may put it on the bottom.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$Mana.Colorless\nOracle:Vigilance\\nWhen this land enters, scry 1. (Look at the top card of your library. You may put it on the bottom.)\\n{T}: Add {C}.\\n{1}, {T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rumble Arena"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

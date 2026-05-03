@@ -1,0 +1,23 @@
+{
+  "id": "settle-the-wilds-corpus-m677",
+  "description": "M6 corpus — Settle the Wilds; in-hand parse.",
+  "seed": 69524,
+  "cards": {
+    "Settle the Wilds": "Name:Settle the Wilds\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Seek | Type$ Card.Land+Basic | SubAbility$ DBPut | RememberFound$ True | StackDescription$ REP Seek_{p:You} seeks | SpellDescription$ Seek a basic land card and put it onto the battlefield tapped.\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | Tapped$ True | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBSeek\nSVar:DBSeek:DB$ Seek | Type$ Card.Permanent+cmcEQX | StackDescription$ REP seek_{p:You} seeks & you_they | SpellDescription$ Then seek a permanent card with mana value equal to the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nOracle:Seek a basic land card and put it onto the battlefield tapped. Then seek a permanent card with mana value equal to the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Settle the Wilds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

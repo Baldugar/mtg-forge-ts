@@ -1,0 +1,23 @@
+{
+  "id": "javelin-of-lightning-corpus-m677",
+  "description": "M6 corpus — Javelin of Lightning; in-hand parse.",
+  "seed": 63251,
+  "cards": {
+    "Javelin of Lightning": "Name:Javelin of Lightning\nManaCost:1 R\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nSVar:NeedsToPlay:Creature.YouCtrl\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ First Strike | Condition$ PlayerTurn | Description$ During your turn, equipped creature gets +2/+0 and has first strike.\nK:Equip:4\nOracle:Flash\\nWhen Javelin of Lightning enters, attach it to target creature you control.\\nDuring your turn, equipped creature gets +2/+0 and has first strike.\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Javelin of Lightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

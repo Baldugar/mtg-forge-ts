@@ -1,0 +1,25 @@
+{
+  "id": "sages-of-the-anima-corpus-m677",
+  "description": "M6 corpus — Sages of the Anima; ETB-on-bf.",
+  "seed": 68872,
+  "cards": {
+    "Sages of the Anima": "Name:Sages of the Anima\nManaCost:3 G U\nTypes:Creature Elf Wizard\nPT:3/4\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Dig | Description$ If you would draw a card, instead reveal the top three cards of your library. Put all creature cards revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:Dig:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature\nAI:RemoveDeck:Random\nOracle:If you would draw a card, instead reveal the top three cards of your library. Put all creature cards revealed this way into your hand and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sages of the Anima"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "leovold-emissary-of-trest-corpus-m677",
+  "description": "M6 corpus — Leovold, Emissary of Trest; in-hand parse.",
+  "seed": 64144,
+  "cards": {
+    "Leovold, Emissary of Trest": "Name:Leovold, Emissary of Trest\nManaCost:B G U\nTypes:Legendary Creature Elf Advisor\nPT:3/3\nS:Mode$ CantDraw | ValidPlayer$ Opponent | DrawLimit$ 1 | Description$ Each opponent can't draw more than one card each turn.\nT:Mode$ BecomesTarget | ValidTarget$ You,Permanent.YouCtrl+inZoneBattlefield | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever you or a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card.\nSVar:TrigDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:Each opponent can't draw more than one card each turn.\\nWhenever you or a permanent you control becomes the target of a spell or ability an opponent controls, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leovold, Emissary of Trest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

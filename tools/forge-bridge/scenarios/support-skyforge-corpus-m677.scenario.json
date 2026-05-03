@@ -1,0 +1,23 @@
+{
+  "id": "support-skyforge-corpus-m677",
+  "description": "M6 corpus — Support Skyforge; in-hand parse.",
+  "seed": 71402,
+  "cards": {
+    "Support Skyforge": "Name:Support Skyforge\nManaCost:3 W U\nTypes:Artifact Vehicle\nPT:4/4\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Vehicle enters, create four 1/1 colorless Servo artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 4 | TokenScript$ c_1_1_a_servo\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraft | TriggerDescription$ Whenever this Vehicle attacks, draft a card from CARDNAME's spellbook. That card perpetually becomes an artifact creature.\nSVar:TrigDraft:DB$ Draft | Spellbook$ Air Response Unit,Skysovereign; Consul Flagship,Sky Skiff,High-Speed Hoverbike,Heart of Kiran,Aethersphere Harvester,Hulldrifter,Smuggler's Copter | RememberDrafted$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Types$ Creature,Artifact | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:4\nOracle:Flying, vigilance\\nWhen this Vehicle enters, create four 1/1 colorless Servo artifact creature tokens.\\nWhenever this Vehicle attacks, draft a card from Support Skyforge's spellbook. That card perpetually becomes an artifact creature.\\nCrew 4\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Support Skyforge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mitotic-slime-corpus-m677",
+  "description": "M6 corpus — Mitotic Slime; in-hand parse.",
+  "seed": 65327,
+  "cards": {
+    "Mitotic Slime": "Name:Mitotic Slime\nManaCost:4 G\nTypes:Creature Ooze\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigTokenSenior | TriggerDescription$ When CARDNAME dies, create two 2/2 green Ooze creature tokens. They have \"When this creature dies, create two 1/1 green Ooze creature tokens.\"\nSVar:TrigTokenSenior:DB$ Token | TokenScript$ g_2_2_ooze_mitotic | TokenOwner$ You | TokenAmount$ 2\nOracle:When Mitotic Slime dies, create two 2/2 green Ooze creature tokens. They have \"When this creature dies, create two 1/1 green Ooze creature tokens.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mitotic Slime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

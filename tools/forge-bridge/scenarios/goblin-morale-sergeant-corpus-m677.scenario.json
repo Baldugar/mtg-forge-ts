@@ -1,0 +1,25 @@
+{
+  "id": "goblin-morale-sergeant-corpus-m677",
+  "description": "M6 corpus — Goblin Morale Sergeant; ETB-on-bf.",
+  "seed": 61442,
+  "cards": {
+    "Goblin Morale Sergeant": "Name:Goblin Morale Sergeant\nManaCost:1 R\nTypes:Creature Goblin Soldier\nPT:2/1\nK:Haste\nK:Enlist\nT:Mode$ Enlisted | ValidCard$ Card.Self | ValidEnlisted$ Creature.!token | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigConjure | TriggerDescription$ Whenever CARDNAME enlists a nontoken creature, you may conjure a duplicate of that creature into the top five cards of your library at random. The duplicate perpetually gets +1/+0 and gains haste.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | DefinedName$ TriggeredEnlisted | Zone$ Library | LibraryPosition$ Count$Random.0.4 | RememberMade$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | PumpZone$ Library | KW$ Haste | NumAtt$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Haste\\nEnlist\\nWhenever Goblin Morale Sergeant enlists a nontoken creature, you may conjure a duplicate of that creature into the top five cards of your library at random. The duplicate perpetually gets +1/+0 and gains haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Morale Sergeant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

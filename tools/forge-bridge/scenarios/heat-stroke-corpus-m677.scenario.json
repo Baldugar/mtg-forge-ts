@@ -1,0 +1,23 @@
+{
+  "id": "heat-stroke-corpus-m677",
+  "description": "M6 corpus — Heat Stroke; in-hand parse.",
+  "seed": 62188,
+  "cards": {
+    "Heat Stroke": "Name:Heat Stroke\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ EndCombat | TriggerZones$ Battlefield | ValidPlayer$ Player | Execute$ TrigDestroy | TriggerDescription$ At end of combat, destroy each creature that blocked or was blocked this turn.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.blockedByThisTurn,Creature.blockedThisTurn\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:At end of combat, destroy each creature that blocked or was blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heat Stroke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "minion-s-return-corpus-m677",
+  "description": "M6 corpus — Minion's Return; in-hand parse.",
+  "seed": 65201,
+  "cards": {
+    "Minion's Return": "Name:Minion's Return\nManaCost:2 B\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAITgts:Card.!token\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChange | TriggerDescription$ When enchanted creature dies, return that card to the battlefield under your control.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Flash\\nEnchant creature\\nWhen enchanted creature dies, return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minion's Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

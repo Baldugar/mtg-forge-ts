@@ -1,0 +1,23 @@
+{
+  "id": "pass-the-torch-corpus-m677",
+  "description": "M6 corpus — Pass the Torch; in-hand parse.",
+  "seed": 66636,
+  "cards": {
+    "Pass the Torch": "Name:Pass the Torch\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBChoose | SpellDescription$ CARDNAME deals 2 damage to any target.\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn | ChoiceDesc$ creature | Mandatory$ True | SubAbility$ DBAnimate | SpellDescription$ Choose a creature card in your hand.\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Triggers$ DamageTrig | Duration$ Perpetual | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"Whenever this creature deals combat damage to a player, you may cast target card named Pass the Torch from your graveyard without paying its mana cost. If you do, this creature perpetually loses this ability\".\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigPlay | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may cast target card named Pass the Torch from your graveyard without paying its mana cost. If you do, this creature perpetually loses this ability.\nSVar:TrigPlay:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Card.namedPass the Torch+YouOwn | TgtPrompt$ Select target card named Pass the Torch in your graveyard | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | RememberPlayed$ True | AILogic$ ReplaySpell | SubAbility$ DBLosePerpAbility\nSVar:DBLosePerpAbility:DB$ LosePerpetual | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Pass the Torch deals 2 damage to any target. Choose a creature card in your hand. It perpetually gains \"Whenever this creature deals combat damage to a player, you may cast target card named Pass the Torch from your graveyard without paying its mana cost. If you do, this creature perpetually loses this ability\".\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pass the Torch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

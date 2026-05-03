@@ -1,0 +1,23 @@
+{
+  "id": "plague-spores-corpus-m677",
+  "description": "M6 corpus — Plague Spores; in-hand parse.",
+  "seed": 66959,
+  "cards": {
+    "Plague Spores": "Name:Plague Spores\nManaCost:4 B R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBLand | SpellDescription$ Destroy target nonblack creature and target land. They can't be regenerated. | StackDescription$ None\nSVar:DBLand:DB$ Pump | ValidTgts$ Land | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted | NoRegen$ True\nOracle:Destroy target nonblack creature and target land. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Spores"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

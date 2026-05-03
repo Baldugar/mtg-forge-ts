@@ -1,0 +1,23 @@
+{
+  "id": "monastery-raid-corpus-m677",
+  "description": "M6 corpus — Monastery Raid; in-hand parse.",
+  "seed": 65424,
+  "cards": {
+    "Monastery Raid": "Name:Monastery Raid\nManaCost:2 R\nTypes:Sorcery\nK:Freerunning:X R\nA:SP$ Dig | Defined$ You | DigNum$ Y | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBMayPlay | SpellDescription$ Exile the top two cards of your library. If this spell's freerunning cost was paid, exile the top X cards of your library instead. You may play the exiled cards until the end of your next turn.\nSVar:DBMayPlay:DB$ Effect | StaticAbilities$ STCommuned | Duration$ UntilTheEndOfYourNextTurn | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STCommuned:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ You may play the exiled cards until the end of your next turn.\nSVar:Y:Count$Freerunning.X.2\nSVar:X:Count$xPaid\nOracle:Freerunning {X}{R} (You may cast this spell for its freerunning cost if you dealt combat damage to a player this turn with an Assassin or commander.)\\nExile the top two cards of your library. If this spell's freerunning cost was paid, exile the top X cards of your library instead. You may play the exiled cards until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monastery Raid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

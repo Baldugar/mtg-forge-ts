@@ -1,0 +1,23 @@
+{
+  "id": "ossification-corpus-m677",
+  "description": "M6 corpus — Ossification; in-hand parse.",
+  "seed": 66453,
+  "cards": {
+    "Ossification": "Name:Ossification\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Land.YouCtrl+Basic:basic land you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature or planeswalker an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.OppCtrl\nOracle:Enchant basic land you control\\nWhen Ossification enters, exile target creature or planeswalker an opponent controls until Ossification leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ossification"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

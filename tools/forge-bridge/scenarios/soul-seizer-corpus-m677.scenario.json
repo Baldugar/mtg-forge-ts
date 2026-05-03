@@ -1,0 +1,23 @@
+{
+  "id": "soul-seizer-corpus-m677",
+  "description": "M6 corpus — Soul Seizer; in-hand parse.",
+  "seed": 70459,
+  "cards": {
+    "Soul Seizer": "Name:Soul Seizer\nManaCost:3 U U\nTypes:Creature Spirit\nPT:1/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigTransform | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may transform it. If you do, attach it to target creature that player controls.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform | RememberChanged$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | ValidTgts$ Creature.ControlledBy TriggeredTarget | TgtPrompt$ Select target creature that damaged player controls | AILogic$ GainControl | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:Flying\\nWhen Soul Seizer deals combat damage to a player, you may transform it. If you do, attach it to target creature that player controls.\n\nALTERNATE\n\nName:Ghastly Haunting\nManaCost:no cost\nColors:blue\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nAI:RemoveDeck:All\nOracle:Enchant creature\\nYou control enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Seizer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

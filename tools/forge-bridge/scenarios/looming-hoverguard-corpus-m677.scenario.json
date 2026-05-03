@@ -1,0 +1,23 @@
+{
+  "id": "looming-hoverguard-corpus-m677",
+  "description": "M6 corpus — Looming Hoverguard; in-hand parse.",
+  "seed": 64381,
+  "cards": {
+    "Looming Hoverguard": "Name:Looming Hoverguard\nManaCost:4 U U\nTypes:Creature Drone\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put target artifact on top of its owner's library.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0\nOracle:Flying\\nWhen Looming Hoverguard enters, put target artifact on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Looming Hoverguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

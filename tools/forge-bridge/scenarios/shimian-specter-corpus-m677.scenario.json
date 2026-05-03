@@ -1,0 +1,23 @@
+{
+  "id": "shimian-specter-corpus-m677",
+  "description": "M6 corpus — Shimian Specter; in-hand parse.",
+  "seed": 69699,
+  "cards": {
+    "Shimian Specter": "Name:Shimian Specter\nManaCost:2 B B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReveal | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player reveals their hand. You choose a nonland card from it. Search that player's graveyard, hand, and library for all cards with the same name as that card and exile them. Then that player shuffles.\nSVar:TrigReveal:DB$ RevealHand | Defined$ TriggeredTarget | RememberRevealedPlayer$ True | SubAbility$ ChooseCard\nSVar:ChooseCard:DB$ ChooseCard | Choices$ Card.nonLand+RememberedPlayerCtrl+inZoneHand | ChoiceZone$ Hand | SubAbility$ ExileYard | RememberChosen$ True | ForgetOtherTargets$ True\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredTarget | ChangeType$ Remembered.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TriggeredTarget | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TriggeredTarget | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:NumInHand:TriggeredTarget$CardsInHand\nSVar:NumInLib:TriggeredTarget$CardsInLibrary\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Shimian Specter deals combat damage to a player, that player reveals their hand. You choose a nonland card from it. Search that player's graveyard, hand, and library for all cards with the same name as that card and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shimian Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

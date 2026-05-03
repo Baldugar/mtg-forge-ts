@@ -1,0 +1,23 @@
+{
+  "id": "lord-skitter-sewer-king-corpus-m677",
+  "description": "M6 corpus — Lord Skitter, Sewer King; in-hand parse.",
+  "seed": 64402,
+  "cards": {
+    "Lord Skitter, Sewer King": "Name:Lord Skitter, Sewer King\nManaCost:2 B\nTypes:Legendary Creature Rat Noble\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Rat.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigExileN | TriggerDescription$ Whenever another Rat you control enters, exile up to one target card from an opponent's graveyard.\nSVar:TrigExileN:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Card.OppOwn | TgtPrompt$ Select up to one target card from an opponent's graveyard\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of combat on your turn, create a 1/1 black Rat creature token with \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat_noblock\nDeckHas:Ability$Token|Graveyard\nOracle:Whenever another Rat you control enters, exile up to one target card from an opponent's graveyard.\\nAt the beginning of combat on your turn, create a 1/1 black Rat creature token with \"This creature can't block.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lord Skitter, Sewer King"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

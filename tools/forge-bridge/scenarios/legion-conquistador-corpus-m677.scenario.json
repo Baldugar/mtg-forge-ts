@@ -1,0 +1,23 @@
+{
+  "id": "legion-conquistador-corpus-m677",
+  "description": "M6 corpus — Legion Conquistador; in-hand parse.",
+  "seed": 64099,
+  "cards": {
+    "Legion Conquistador": "Name:Legion Conquistador\nManaCost:2 W\nTypes:Creature Vampire Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for any number of cards named Legion Conquistador, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedLegion Conquistador | ChangeNum$ X | ShuffleNonMandatory$ True\nSVar:X:Count$ValidLibrary Card.YouOwn+namedLegion Conquistador\nOracle:When Legion Conquistador enters, you may search your library for any number of cards named Legion Conquistador, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion Conquistador"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

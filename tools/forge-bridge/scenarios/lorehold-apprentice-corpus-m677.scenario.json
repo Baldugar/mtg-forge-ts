@@ -1,0 +1,25 @@
+{
+  "id": "lorehold-apprentice-corpus-m677",
+  "description": "M6 corpus — Lorehold Apprentice; ETB-on-bf.",
+  "seed": 64405,
+  "cards": {
+    "Lorehold Apprentice": "Name:Lorehold Apprentice\nManaCost:R W\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, until end of turn, Spirit creatures you control gain \"{T}: This creature deals 1 damage to each opponent.\"\nSVar:TrigPumpAll:DB$ AnimateAll | ValidCards$ Creature.Spirit+YouCtrl | Abilities$ Sizzle\nSVar:Sizzle:AB$ DealDamage | Cost$ T | Defined$ Opponent | NumDmg$ 1 | SpellDescription$ This creature deals 1 damage to each opponent.\nDeckHints:Type$Instant|Sorcery\nOracle:Magecraft — Whenever you cast or copy an instant or sorcery spell, until end of turn, Spirit creatures you control gain \"{T}: This creature deals 1 damage to each opponent.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lorehold Apprentice"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

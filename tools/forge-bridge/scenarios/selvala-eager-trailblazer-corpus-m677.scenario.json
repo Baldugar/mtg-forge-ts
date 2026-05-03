@@ -1,0 +1,25 @@
+{
+  "id": "selvala-eager-trailblazer-corpus-m677",
+  "description": "M6 corpus — Selvala, Eager Trailblazer; ETB-on-bf.",
+  "seed": 69430,
+  "cards": {
+    "Selvala, Eager Trailblazer": "Name:Selvala, Eager Trailblazer\nManaCost:2 G W\nTypes:Legendary Creature Elf Scout\nPT:4/5\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_mercenary_tappump | TokenOwner$ You\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | SpellDescription$ Choose a color. Add one mana of that color for each different power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nDeckHas:Ability$Token & Type$Mercenary & Color$Red\nOracle:Vigilance\\nWhenever you cast a creature spell, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\\n{T}: Choose a color. Add one mana of that color for each different power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Selvala, Eager Trailblazer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

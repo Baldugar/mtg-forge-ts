@@ -1,0 +1,23 @@
+{
+  "id": "outrageous-robbery-corpus-m677",
+  "description": "M6 corpus — Outrageous Robbery; in-hand parse.",
+  "seed": 66479,
+  "cards": {
+    "Outrageous Robbery": "Name:Outrageous Robbery\nManaCost:X B B\nTypes:Instant\nA:SP$ Dig | ValidTgts$ Opponent | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Target opponent exiles the top X cards of their library face down. You may look at and play those cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any type to cast it.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STLookPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STLookPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at and play those cards for as long as they remain exiled, and you may spend mana as though it were mana of any type to cast spells this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Target opponent exiles the top X cards of their library face down. You may look at and play those cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any type to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Outrageous Robbery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

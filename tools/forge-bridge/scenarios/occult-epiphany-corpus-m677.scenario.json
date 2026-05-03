@@ -1,0 +1,23 @@
+{
+  "id": "occult-epiphany-corpus-m677",
+  "description": "M6 corpus — Occult Epiphany; in-hand parse.",
+  "seed": 66203,
+  "cards": {
+    "Occult Epiphany": "Name:Occult Epiphany\nManaCost:X U\nTypes:Instant\nA:SP$ Draw | NumCards$ X | SubAbility$ DBDiscard | SpellDescription$ Draw X cards,\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ X | RememberDiscarded$ True | SubAbility$ DBToken | SpellDescription$ then discard X cards.\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenAmount$ Y | SubAbility$ DBCleanup | SpellDescription$ Create a 1/1 white Spirit creature token with flying for each card type among cards discarded this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$CardTypes\nDeckHas:Ability$Discard|Token & Type$Spirit\nOracle:Draw X cards, then discard X cards. Create a 1/1 white Spirit creature token with flying for each card type among cards discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Occult Epiphany"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

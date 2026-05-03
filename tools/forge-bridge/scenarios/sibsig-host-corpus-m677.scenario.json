@@ -1,0 +1,23 @@
+{
+  "id": "sibsig-host-corpus-m677",
+  "description": "M6 corpus — Sibsig Host; in-hand parse.",
+  "seed": 69815,
+  "cards": {
+    "Sibsig Host": "Name:Sibsig Host\nManaCost:4 B\nTypes:Creature Zombie\nPT:2/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, each player mills three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ Player\nDeckHas:Ability$Mill\nOracle:When Sibsig Host enters, each player mills three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sibsig Host"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

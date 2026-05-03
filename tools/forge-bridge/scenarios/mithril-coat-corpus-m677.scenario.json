@@ -1,0 +1,23 @@
+{
+  "id": "mithril-coat-corpus-m677",
+  "description": "M6 corpus — Mithril Coat; in-hand parse.",
+  "seed": 65325,
+  "cards": {
+    "Mithril Coat": "Name:Mithril Coat\nManaCost:3\nTypes:Legendary Artifact Equipment\nK:Flash\nK:Indestructible\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target legendary creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl+Legendary | TgtPrompt$ Select target legendary creature you control.\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Indestructible | Description$ Equipped creature has indestructible.\nDeckHints:Type$Legendary & Type$Creature\nK:Equip:3\nOracle:Flash\\nIndestructible\\nWhen Mithril Coat enters, attach it to target legendary creature you control.\\nEquipped creature has indestructible.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mithril Coat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

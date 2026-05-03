@@ -1,0 +1,25 @@
+{
+  "id": "mtenda-griffin-corpus-m677",
+  "description": "M6 corpus — Mtenda Griffin; ETB-on-bf.",
+  "seed": 65566,
+  "cards": {
+    "Mtenda Griffin": "Name:Mtenda Griffin\nManaCost:3 W\nTypes:Creature Griffin\nPT:2/2\nK:Flying\nA:AB$ ChangeZone | Cost$ W T | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBBounce | ActivationPhases$ Upkeep | PlayerTurn$ True | SpellDescription$ Return CARDNAME to its owner's hand and return target Griffin card from your graveyard to your hand. Activate only during your upkeep.\nSVar:DBBounce:DB$ ChangeZone | ValidTgts$ Griffin.YouCtrl | TgtPrompt$ Select target Griffin from your graveyard | Origin$ Graveyard | Destination$ Hand\nOracle:Flying\\n{W}, {T}: Return Mtenda Griffin to its owner's hand and return target Griffin card from your graveyard to your hand. Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mtenda Griffin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hixus-prison-warden-corpus-m677",
+  "description": "M6 corpus — Hixus, Prison Warden; in-hand parse.",
+  "seed": 62413,
+  "cards": {
+    "Hixus, Prison Warden": "Name:Hixus, Prison Warden\nManaCost:3 W W\nTypes:Legendary Creature Human Soldier\nPT:4/4\nK:Flash\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ You | CombatDamage$ True | IsPresent$ Card.Self+ThisTurnEntered | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature deals combat damage to you, if CARDNAME entered this turn, exile that creature until NICKNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ TriggeredSourceLKICopy | Duration$ UntilHostLeavesPlay\nSVar:AmbushAI:BlockOnly\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhenever a creature deals combat damage to you, if Hixus, Prison Warden entered this turn, exile that creature until Hixus leaves the battlefield. (That creature returns under its owner's control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hixus, Prison Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

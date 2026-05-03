@@ -1,0 +1,23 @@
+{
+  "id": "savage-smash-corpus-m677",
+  "description": "M6 corpus — Savage Smash; in-hand parse.",
+  "seed": 69055,
+  "cards": {
+    "Savage Smash": "Name:Savage Smash\nManaCost:1 R G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ Fight | TgtPrompt$ Select target creature you control | SubAbility$ DBFight | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Target creature you control gets +2/+2 until end of turn. It fights target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nOracle:Target creature you control gets +2/+2 until end of turn. It fights target creature you don't control. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savage Smash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "roon-of-the-hidden-realm-corpus-m677",
+  "description": "M6 corpus — Roon of the Hidden Realm; ETB-on-bf.",
+  "seed": 68501,
+  "cards": {
+    "Roon of the Hidden Realm": "Name:Roon of the Hidden Realm\nManaCost:2 G W U\nTypes:Legendary Creature Rhino Soldier\nPT:4/4\nK:Vigilance\nK:Trample\nA:AB$ ChangeZone | Cost$ 2 T | ValidTgts$ Creature.Other | Mandatory$ True | TgtPrompt$ Select another target creature | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | SpellDescription$ Exile another target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | RememberObjects$ RememberedLKI | TriggerDescription$ Return exiled creature to the battlefield. | SubAbility$ DBCleanup\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Vigilance, trample\\n{2}, {T}: Exile another target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Roon of the Hidden Realm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

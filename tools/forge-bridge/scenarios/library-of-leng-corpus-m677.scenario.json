@@ -1,0 +1,25 @@
+{
+  "id": "library-of-leng-corpus-m677",
+  "description": "M6 corpus — Library of Leng; ETB-on-bf.",
+  "seed": 64183,
+  "cards": {
+    "Library of Leng": "Name:Library of Leng\nManaCost:1\nTypes:Artifact\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nR:Event$ Moved | ActiveZones$ Battlefield | ValidCard$ Card.YouCtrl | Discard$ True | EffectOnly$ True | ReplaceWith$ DiscardToLibrary | Optional$ True | Description$ If an effect causes you to discard a card, discard it, but you may put it on top of your library instead of into your graveyard.\nSVar:DiscardToLibrary:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | Defined$ ReplacedCard\nSVar:NonStackingEffect:True\nOracle:You have no maximum hand size.\\nIf an effect causes you to discard a card, discard it, but you may put it on top of your library instead of into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Library of Leng"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

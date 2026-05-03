@@ -1,0 +1,23 @@
+{
+  "id": "pit-of-offerings-corpus-m677",
+  "description": "M6 corpus — Pit of Offerings; in-hand parse.",
+  "seed": 66937,
+  "cards": {
+    "Pit of Offerings": "Name:Pit of Offerings\nManaCost:no cost\nTypes:Land Cave\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile up to three target cards from graveyards.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | ValidTgts$ Card | TgtPrompt$ Select up to three target cards from graveyards | Origin$ Graveyard | Destination$ Exile\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ManaReflected | Cost$ T | Valid$ Defined.ExiledWith | ColorOrType$ Color | ReflectProperty$ Is | SpellDescription$ Add one mana of any of the exiled cards' colors.\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Discard|Mill|Sacrifice\nOracle:Pit of Offerings enters tapped.\\nWhen Pit of Offerings enters, exile up to three target cards from graveyards.\\n{T}: Add {C}.\\n{T}: Add one mana of any of the exiled cards' colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pit of Offerings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

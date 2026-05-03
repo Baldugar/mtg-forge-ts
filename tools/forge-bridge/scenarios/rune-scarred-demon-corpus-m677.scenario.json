@@ -1,0 +1,23 @@
+{
+  "id": "rune-scarred-demon-corpus-m677",
+  "description": "M6 corpus — Rune-Scarred Demon; in-hand parse.",
+  "seed": 68637,
+  "cards": {
+    "Rune-Scarred Demon": "Name:Rune-Scarred Demon\nManaCost:5 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a card, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True\nOracle:Flying\\nWhen Rune-Scarred Demon enters, search your library for a card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rune-Scarred Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

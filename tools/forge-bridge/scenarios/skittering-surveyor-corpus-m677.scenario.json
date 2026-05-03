@@ -1,0 +1,23 @@
+{
+  "id": "skittering-surveyor-corpus-m677",
+  "description": "M6 corpus — Skittering Surveyor; in-hand parse.",
+  "seed": 70053,
+  "cards": {
+    "Skittering Surveyor": "Name:Skittering Surveyor\nManaCost:3\nTypes:Artifact Creature Construct\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:When Skittering Surveyor enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skittering Surveyor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

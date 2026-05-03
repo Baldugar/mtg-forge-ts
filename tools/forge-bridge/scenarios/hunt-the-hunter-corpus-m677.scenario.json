@@ -1,0 +1,23 @@
+{
+  "id": "hunt-the-hunter-corpus-m677",
+  "description": "M6 corpus — Hunt the Hunter; in-hand parse.",
+  "seed": 62609,
+  "cards": {
+    "Hunt the Hunter": "Name:Hunt the Hunter\nManaCost:G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl+Green | AILogic$ Fight | TgtPrompt$ Select target green creature you control | SubAbility$ DBFight | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Target green creature you control gets +2/+2 until end of turn. It fights target green creature an opponent controls.\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.OppCtrl+Green | TgtPrompt$ Select target green creature an opponent controls\nOracle:Target green creature you control gets +2/+2 until end of turn. It fights target green creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunt the Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

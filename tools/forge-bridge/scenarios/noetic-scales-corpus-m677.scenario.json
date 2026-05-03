@@ -1,0 +1,23 @@
+{
+  "id": "noetic-scales-corpus-m677",
+  "description": "M6 corpus — Noetic Scales; in-hand parse.",
+  "seed": 66038,
+  "cards": {
+    "Noetic Scales": "Name:Noetic Scales\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ At the beginning of each player's upkeep, return to its owner's hand each creature that player controls with power greater than the number of cards in their hand.\nSVar:TrigBounce:DB$ ChangeZoneAll | ChangeType$ Creature.ActivePlayerCtrl+powerGTX | Origin$ Battlefield | Destination$ Hand\nSVar:X:Count$ValidHand Card.ActivePlayerCtrl\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:At the beginning of each player's upkeep, return to its owner's hand each creature that player controls with power greater than the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noetic Scales"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

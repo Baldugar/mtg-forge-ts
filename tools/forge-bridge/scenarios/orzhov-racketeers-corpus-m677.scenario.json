@@ -1,0 +1,23 @@
+{
+  "id": "orzhov-racketeers-corpus-m677",
+  "description": "M6 corpus — Orzhov Racketeers; in-hand parse.",
+  "seed": 66448,
+  "cards": {
+    "Orzhov Racketeers": "Name:Orzhov Racketeers\nManaCost:4 B\nTypes:Creature Human Rogue\nPT:3/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nK:Afterlife:2\nDeckHas:Ability$Token\nOracle:Whenever Orzhov Racketeers deals combat damage to a player, that player discards a card.\\nAfterlife 2 (When this creature dies, create two 1/1 white and black Spirit creature tokens with flying.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orzhov Racketeers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

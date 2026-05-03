@@ -1,0 +1,25 @@
+{
+  "id": "surge-engine-corpus-m677",
+  "description": "M6 corpus — Surge Engine; ETB-on-bf.",
+  "seed": 71413,
+  "cards": {
+    "Surge Engine": "Name:Surge Engine\nManaCost:2\nTypes:Artifact Creature Construct\nPT:3/2\nK:Defender\nA:AB$ Animate | Cost$ U | staticAbilities$ Unblockable | RemoveKeywords$ Defender | Duration$ Permanent | SpellDescription$ CARDNAME loses defender and gains \"This creature can't be blocked.\"\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ This creature can't be blocked.\nA:AB$ Animate | Cost$ 2 U | IsPresent$ Card.Self+!withDefender | Duration$ Permanent | Colors$ Blue | OverwriteColors$ True | Power$ 5 | Toughness$ 4 | SpellDescription$ CARDNAME becomes blue and has base power and toughness 5/4. Activate only if CARDNAME doesn't have defender.\nA:AB$ Draw | Cost$ 4 U U | NumCards$ 3 | IsPresent$ Card.Self+Blue | GameActivationLimit$ 1 | SpellDescription$ Draw three cards. Activate only if CARDNAME is blue and only once.\nDeckHas:Color$Blue\nOracle:Defender\\n{U}: Surge Engine loses defender and gains \"This creature can't be blocked.\"\\n{2}{U}: Surge Engine becomes blue and has base power and toughness 5/4. Activate only if Surge Engine doesn't have defender.\\n{4}{U}{U}: Draw three cards. Activate only if Surge Engine is blue and only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Surge Engine"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sakiko-mother-of-summer-corpus-m677",
+  "description": "M6 corpus — Sakiko, Mother of Summer; in-hand parse.",
+  "seed": 68894,
+  "cards": {
+    "Sakiko, Mother of Summer": "Name:Sakiko, Mother of Summer\nManaCost:4 G G\nTypes:Legendary Creature Snake Shaman\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ SakuraManaSingle | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage to a player, add that much {G}. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:SakuraManaSingle:DB$ Mana | Produced$ G | Amount$ SakuraX | PersistentMana$ True\nSVar:SakuraX:TriggerCount$DamageAmount\nOracle:Whenever a creature you control deals combat damage to a player, add that much {G}. Until end of turn, you don't lose this mana as steps and phases end.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sakiko, Mother of Summer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hammers-of-moradin-corpus-m677",
+  "description": "M6 corpus — Hammers of Moradin; in-hand parse.",
+  "seed": 62014,
+  "cards": {
+    "Hammers of Moradin": "Name:Hammers of Moradin\nManaCost:2 W\nTypes:Creature Dwarf Cleric\nPT:3/3\nK:Myriad\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TapOneEach | TriggerDescription$ Whenever CARDNAME attacks, for each opponent, tap up to one target creature that player controls.\nSVar:TapOneEach:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose one target creature that each opponent controls | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True\nSVar:OneEach:PlayerCountOpponents$Amount\nSVar:HasAttackEffect:TRUE\nOracle:Myriad\\nWhenever Hammers of Moradin attacks, for each opponent, tap up to one target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hammers of Moradin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

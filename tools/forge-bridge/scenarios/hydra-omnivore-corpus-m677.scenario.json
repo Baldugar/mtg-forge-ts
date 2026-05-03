@@ -1,0 +1,23 @@
+{
+  "id": "hydra-omnivore-corpus-m677",
+  "description": "M6 corpus — Hydra Omnivore; in-hand parse.",
+  "seed": 62651,
+  "cards": {
+    "Hydra Omnivore": "Name:Hydra Omnivore\nManaCost:4 G G\nTypes:Creature Hydra\nPT:8/8\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | Execute$ TrigDmg | TriggerDescription$ Whenever CARDNAME deals combat damage to an opponent, it deals that much damage to each other opponent.\nSVar:TrigDmg:DB$ DamageAll | ValidPlayers$ OppNonTriggeredTarget | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever Hydra Omnivore deals combat damage to an opponent, it deals that much damage to each other opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hydra Omnivore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

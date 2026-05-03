@@ -1,0 +1,23 @@
+{
+  "id": "setessan-tactics-corpus-m677",
+  "description": "M6 corpus — Setessan Tactics; in-hand parse.",
+  "seed": 69518,
+  "cards": {
+    "Setessan Tactics": "Name:Setessan Tactics\nManaCost:1 G\nTypes:Instant\nK:Strive:G\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | TargetMin$ 0 | TargetMax$ MaxTargets | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, any number of target creatures each get +1/+1 and gain \"{T}: This creature fights another target creature.\"\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Abilities$ SetessanFight\nSVar:SetessanFight:AB$ Fight | Cost$ T | Defined$ Self | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | SpellDescription$ CARDNAME fights another target creature.\nSVar:MaxTargets:Count$Valid Creature\nAI:RemoveDeck:All\nOracle:Strive — This spell costs {G} more to cast for each target beyond the first.\\nUntil end of turn, any number of target creatures each get +1/+1 and gain \"{T}: This creature fights another target creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Setessan Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

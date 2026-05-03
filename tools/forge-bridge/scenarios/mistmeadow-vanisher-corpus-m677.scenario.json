@@ -1,0 +1,25 @@
+{
+  "id": "mistmeadow-vanisher-corpus-m677",
+  "description": "M6 corpus — Mistmeadow Vanisher; ETB-on-bf.",
+  "seed": 65315,
+  "cards": {
+    "Mistmeadow Vanisher": "Name:Mistmeadow Vanisher\nManaCost:2 WU\nTypes:Creature Kithkin Wizard\nPT:3/2\nT:Mode$ Taps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME becomes tapped, exile up to one target nonland, nontoken permanent. Return that card to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Permanent.nonLand+!token | TargetMin$ 0 | TargetMax$ 1 | Mandatory$ True | TgtPrompt$ Select up to one target nonland, nontoken permanent | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | TriggerDescription$ Return exiled permanent to the battlefield. | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever Mistmeadow Vanisher becomes tapped, exile up to one target nonland, nontoken permanent. Return that card to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mistmeadow Vanisher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

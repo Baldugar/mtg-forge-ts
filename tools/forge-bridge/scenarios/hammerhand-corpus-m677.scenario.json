@@ -1,0 +1,23 @@
+{
+  "id": "hammerhand-corpus-m677",
+  "description": "M6 corpus — Hammerhand; in-hand parse.",
+  "seed": 62010,
+  "cards": {
+    "Hammerhand": "Name:Hammerhand\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature can't block this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't block.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Haste | Description$ Enchanted creature gets +1/+1 and has haste. (It can attack and {T} no matter when it came under your control.)\nSVar:PlayMain1:TRUE\nOracle:Enchant creature\\nWhen Hammerhand enters, target creature can't block this turn.\\nEnchanted creature gets +1/+1 and has haste. (It can attack and {T} no matter when it came under your control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hammerhand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

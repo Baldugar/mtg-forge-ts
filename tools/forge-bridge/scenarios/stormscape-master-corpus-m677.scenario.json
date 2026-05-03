@@ -1,0 +1,25 @@
+{
+  "id": "stormscape-master-corpus-m677",
+  "description": "M6 corpus — Stormscape Master; ETB-on-bf.",
+  "seed": 71133,
+  "cards": {
+    "Stormscape Master": "Name:Stormscape Master\nManaCost:2 U U\nTypes:Creature Human Wizard\nPT:2/2\nA:AB$ Protection | Cost$ W W T | ValidTgts$ Creature | Gains$ Choice | Choices$ AnyColor | SpellDescription$ Target creature gains protection from the color of your choice until end of turn.\nA:AB$ LoseLife | Cost$ B B T | ValidTgts$ Player | LifeAmount$ 2 | SubAbility$ DBGainLife | SpellDescription$ Target player loses 2 life and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black|White\nOracle:{W}{W}, {T}: Target creature gains protection from the color of your choice until end of turn.\\n{B}{B}, {T}: Target player loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stormscape Master"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

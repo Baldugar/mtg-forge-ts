@@ -1,0 +1,23 @@
+{
+  "id": "moonshadow-corpus-m677",
+  "description": "M6 corpus — Moonshadow; in-hand parse.",
+  "seed": 65474,
+  "cards": {
+    "Moonshadow": "Name:Moonshadow\nManaCost:B\nTypes:Creature Elemental\nPT:7/7\nK:Menace\nK:etbCounter:M1M1:6\nT:Mode$ ChangesZoneAll | ValidCards$ Permanent.YouOwn+!token | Origin$ Any | Destination$ Graveyard | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE1_M1M1 | NoResolvingCheck$ True | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever one or more permanent cards are put into your graveyard from anywhere while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nOracle:Menace\\nThis creature enters with six -1/-1 counters on it.\\nWhenever one or more permanent cards are put into your graveyard from anywhere while this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonshadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "search-party-captain-corpus-m677",
+  "description": "M6 corpus — Search Party Captain; in-hand parse.",
+  "seed": 69298,
+  "cards": {
+    "Search Party Captain": "Name:Search Party Captain\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/2\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature you attacked with this turn.\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nSVar:X:Count$AttackersDeclared\nOracle:This spell costs {1} less to cast for each creature you attacked with this turn.\\nWhen Search Party Captain enters, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Search Party Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

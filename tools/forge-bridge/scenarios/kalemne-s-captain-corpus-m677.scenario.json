@@ -1,0 +1,25 @@
+{
+  "id": "kalemne-s-captain-corpus-m677",
+  "description": "M6 corpus — Kalemne's Captain; ETB-on-bf.",
+  "seed": 63437,
+  "cards": {
+    "Kalemne's Captain": "Name:Kalemne's Captain\nManaCost:3 W W\nTypes:Creature Giant Soldier\nPT:5/5\nK:Vigilance\nA:AB$ PutCounter | Cost$ 5 W W | Monstrosity$ 3\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ ExileAll | TriggerDescription$ When CARDNAME becomes monstrous, exile all artifacts and enchantments.\nSVar:ExileAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Artifact,Enchantment\nDeckHas:Ability$Counters\nOracle:Vigilance\\n{5}{W}{W}: Monstrosity 3. (If this creature isn't monstrous, put three +1/+1 counters on it and it becomes monstrous.)\\nWhen Kalemne's Captain becomes monstrous, exile all artifacts and enchantments.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kalemne's Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

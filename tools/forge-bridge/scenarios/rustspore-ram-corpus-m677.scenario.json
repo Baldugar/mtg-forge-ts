@@ -1,0 +1,23 @@
+{
+  "id": "rustspore-ram-corpus-m677",
+  "description": "M6 corpus — Rustspore Ram; in-hand parse.",
+  "seed": 68684,
+  "cards": {
+    "Rustspore Ram": "Name:Rustspore Ram\nManaCost:4\nTypes:Artifact Creature Sheep\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target Equipment.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Equipment | TgtPrompt$ Select target Equipment.\nOracle:When Rustspore Ram enters, destroy target Equipment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rustspore Ram"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

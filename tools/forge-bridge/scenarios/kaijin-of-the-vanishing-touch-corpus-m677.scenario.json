@@ -1,0 +1,25 @@
+{
+  "id": "kaijin-of-the-vanishing-touch-corpus-m677",
+  "description": "M6 corpus — Kaijin of the Vanishing Touch; ETB-on-bf.",
+  "seed": 63430,
+  "cards": {
+    "Kaijin of the Vanishing Touch": "Name:Kaijin of the Vanishing Touch\nManaCost:1 U\nTypes:Creature Spirit\nPT:0/3\nK:Defender\nT:Mode$ AttackerBlocked | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ DelayedTrig | TriggerDescription$ Whenever CARDNAME blocks a creature, return that creature to its owner's hand at end of combat.\nSVar:DelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigBounce | RememberObjects$ TriggeredAttackerLKICopy | TriggerDescription$ Return blocked creature to its owner's hand at end of combat.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ DelayTriggerRememberedLKI\nSVar:HasBlockEffect:TRUE\nOracle:Defender (This creature can't attack.)\\nWhenever Kaijin of the Vanishing Touch blocks a creature, return that creature to its owner's hand at end of combat. (Return it only if it's on the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kaijin of the Vanishing Touch"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

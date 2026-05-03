@@ -1,0 +1,23 @@
+{
+  "id": "nightmare-shepherd-corpus-m677",
+  "description": "M6 corpus — Nightmare Shepherd; in-hand parse.",
+  "seed": 65937,
+  "cards": {
+    "Nightmare Shepherd": "Name:Nightmare Shepherd\nManaCost:2 B B\nTypes:Enchantment Creature Demon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever another nontoken creature you control dies, you may exile it. If you do, create a token that's a copy of that creature, except it's 1/1 and it's Nightmare in addition to its other types.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | SetPower$ 1 | SetToughness$ 1 | AddTypes$ Nightmare | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever another nontoken creature you control dies, you may exile it. If you do, create a token that's a copy of that creature, except it's 1/1 and it's a Nightmare in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nightmare Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

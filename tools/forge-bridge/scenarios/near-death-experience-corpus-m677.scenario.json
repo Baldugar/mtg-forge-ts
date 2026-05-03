@@ -1,0 +1,23 @@
+{
+  "id": "near-death-experience-corpus-m677",
+  "description": "M6 corpus — Near-Death Experience; in-hand parse.",
+  "seed": 65782,
+  "cards": {
+    "Near-Death Experience": "Name:Near-Death Experience\nManaCost:2 W W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | LifeTotal$ You | LifeAmount$ EQ1 | TriggerZones$ Battlefield | Execute$ TrigWin | TriggerDescription$ At the beginning of your upkeep, if you have exactly 1 life, you win the game.\nSVar:TrigWin:DB$ WinsGame | Defined$ You\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, if you have exactly 1 life, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Near-Death Experience"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

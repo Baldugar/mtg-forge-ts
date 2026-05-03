@@ -1,0 +1,23 @@
+{
+  "id": "stab-wound-corpus-m677",
+  "description": "M6 corpus — Stab Wound; in-hand parse.",
+  "seed": 70839,
+  "cards": {
+    "Stab Wound": "Name:Stab Wound\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -2 | AddToughness$ -2 | Description$ Enchanted creature gets -2/-2.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2\nOracle:Enchant creature\\nEnchanted creature gets -2/-2.\\nAt the beginning of the upkeep of enchanted creature's controller, that player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stab Wound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "serum-snare-corpus-m677",
+  "description": "M6 corpus — Serum Snare; in-hand parse.",
+  "seed": 69506,
+  "cards": {
+    "Serum Snare": "Name:Serum Snare\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SubAbility$ DBProliferate | SpellDescription$ Return target nonland permanent to its owner's hand. If that permanent had mana value 3 or less, proliferate.\nSVar:DBProliferate:DB$ Proliferate | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcLE3\nDeckHas:Ability$Proliferate\nDeckNeeds:Ability$Counters\nOracle:Return target nonland permanent to its owner's hand. If that permanent had mana value 3 or less, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serum Snare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

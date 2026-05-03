@@ -1,0 +1,23 @@
+{
+  "id": "skeleton-crew-corpus-m677",
+  "description": "M6 corpus — Skeleton Crew; in-hand parse.",
+  "seed": 70026,
+  "cards": {
+    "Skeleton Crew": "Name:Skeleton Crew\nManaCost:3 B\nTypes:Creature Skeleton Pirate\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+Skeleton+Other,Creature.YouCtrl+Pirate+Other | AddPower$ 1 | AddToughness$ 1 | Description$ Each other creature you control that's a Skeleton or Pirate gets +1/+1.\nT:Mode$ ChangesZoneAll | Origin$ Graveyard | Destination$ Any | ValidCards$ Creature.YouOwn | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creature cards leave your graveyard, create a 2/2 black Skeleton Pirate creature token. (This ability triggers only from the battlefield.)\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_skeleton_pirate | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ 5 B | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | Tapped$ True | SpellDescription$ Return CARDNAME from your graveyard to the battlefield tapped.\nSVar:DiscardMe:1\nSVar:SacMe:1\nDeckHints:Type$Pirate|Skeleton\nDeckHas:Ability$Token|Graveyard\nOracle:Each other creature you control that's a Skeleton or Pirate gets +1/+1.\\nWhenever one or more creature cards leave your graveyard, create a 2/2 black Skeleton Pirate creature token. (This ability triggers only from the battlefield.)\\n{5}{B}: Return Skeleton Crew from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skeleton Crew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

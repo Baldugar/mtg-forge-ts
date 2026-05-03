@@ -1,0 +1,23 @@
+{
+  "id": "mirozel-corpus-m677",
+  "description": "M6 corpus — Mirozel; in-hand parse.",
+  "seed": 65231,
+  "cards": {
+    "Mirozel": "Name:Mirozel\nManaCost:3 U\nTypes:Creature Illusion\nPT:2/3\nK:Flying\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ When CARDNAME becomes the target of a spell or ability, return CARDNAME to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:All\nOracle:Flying\\nWhen Mirozel becomes the target of a spell or ability, return Mirozel to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirozel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shroudstomper-corpus-m677",
+  "description": "M6 corpus — Shroudstomper; in-hand parse.",
+  "seed": 69799,
+  "cards": {
+    "Shroudstomper": "Name:Shroudstomper\nManaCost:3 W W B B\nTypes:Creature Elemental\nPT:5/5\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:HasAttackEffect:TRUE\nOracle:Deathtouch\\nWhenever Shroudstomper enters or attacks, each opponent loses 2 life. You gain 2 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shroudstomper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

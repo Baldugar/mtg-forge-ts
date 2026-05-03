@@ -1,0 +1,23 @@
+{
+  "id": "a-split-the-spoils-corpus-m677",
+  "description": "M6 corpus — A-Split the Spoils; in-hand parse.",
+  "seed": 68803,
+  "cards": {
+    "A-Split the Spoils": "Name:A-Split the Spoils\nManaCost:1 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Permanent.YouOwn | TargetMin$ 0 | TargetMax$ 5 | TgtPrompt$ Select up to five target permanent cards from your graveyard | SubAbility$ DBTwoPiles | StackDescription$ {p:You} exiles {c:ThisTargetedCard} from their graveyard | SpellDescription$ Exile up to five target permanent cards from your graveyard\nSVar:DBTwoPiles:DB$ TwoPiles | Chooser$ Opponent | DefinedCards$ Targeted | Separator$ You | ChosenPile$ DBHand | UnchosenPile$ DBGrave | AILogic$ Worst | StackDescription$ REP separate_separates & Put that_{p:You} puts that & pile into your_pile into their & other into your_other into their | SpellDescription$ and separate them into two piles. An opponent chooses one of those piles. Put that pile into your hand and the other into your graveyard. (Piles can be empty.)\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Graveyard\nDeckHas:Ability$Graveyard\nOracle:Exile up to five target permanent cards from your graveyard and separate them into two piles. An opponent chooses one of those piles. Put that pile into your hand and the other into your graveyard. (Piles can be empty.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Split the Spoils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "harnessed-snubhorn-corpus-m677",
+  "description": "M6 corpus — Harnessed Snubhorn; in-hand parse.",
+  "seed": 62066,
+  "cards": {
+    "Harnessed Snubhorn": "Name:Harnessed Snubhorn\nManaCost:3 W\nTypes:Creature Dinosaur\nPT:2/5\nK:Vigilance\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigReturn | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, return target artifact or enchantment card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Artifact.YouOwn,Enchantment.YouOwn | TgtPrompt$ Select target artifact or enchantment card from your graveyard | Origin$ Graveyard | Destination$ Battlefield\nDeckHas:Ability$Graveyard\nDeckHints:Type$Artifact|Enchantment\nOracle:Whenever Harnessed Snubhorn deals combat damage to a player, return target artifact or enchantment card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harnessed Snubhorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

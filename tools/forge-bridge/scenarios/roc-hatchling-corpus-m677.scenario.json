@@ -1,0 +1,23 @@
+{
+  "id": "roc-hatchling-corpus-m677",
+  "description": "M6 corpus — Roc Hatchling; in-hand parse.",
+  "seed": 68440,
+  "cards": {
+    "Roc Hatchling": "Name:Roc Hatchling\nManaCost:R\nTypes:Creature Bird\nPT:0/1\nK:etbCounter:SHELL:4\nS:Mode$ Continuous | Affected$ Card.Self+counters_EQ0_SHELL | AddPower$ 3 | AddToughness$ 2 | AddKeyword$ Flying | Description$ As long as CARDNAME has no shell counters on it, it gets +3/+2 and has flying.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ At the beginning of your upkeep, remove a shell counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ SHELL | CounterNum$ 1\nOracle:Roc Hatchling enters with four shell counters on it.\\nAt the beginning of your upkeep, remove a shell counter from Roc Hatchling.\\nAs long as Roc Hatchling has no shell counters on it, it gets +3/+2 and has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roc Hatchling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

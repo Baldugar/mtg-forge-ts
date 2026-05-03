@@ -1,0 +1,23 @@
+{
+  "id": "peerless-samurai-corpus-m677",
+  "description": "M6 corpus — Peerless Samurai; in-hand parse.",
+  "seed": 66707,
+  "cards": {
+    "Peerless Samurai": "Name:Peerless Samurai\nManaCost:2 R\nTypes:Creature Human Samurai\nPT:2/3\nK:Menace\nT:Mode$ Attacks | ValidCard$ Samurai.YouCtrl,Warrior.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever a Samurai or Warrior you control attacks alone, the next spell you cast this turn costs {1} less to cast.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ ReduceCost | ForgetOnCast$ Card.YouCtrl\nSVar:ReduceCost:Mode$ ReduceCost | Type$ Spell | Activator$ You | Amount$ 1 | Description$ The next spell you cast this turn costs {1} less to cast.\nDeckHints:Type$Samurai|Warrior\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhenever a Samurai or Warrior you control attacks alone, the next spell you cast this turn costs {1} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peerless Samurai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

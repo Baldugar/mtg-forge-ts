@@ -1,0 +1,23 @@
+{
+  "id": "raph-mikey-troublemakers-corpus-m677",
+  "description": "M6 corpus — Raph & Mikey, Troublemakers; in-hand parse.",
+  "seed": 67706,
+  "cards": {
+    "Raph & Mikey, Troublemakers": "Name:Raph & Mikey, Troublemakers\nManaCost:5 RG RG\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:7/7\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Creature | ValidDescription$ Creature | FoundDestination$ Battlefield | Tapped$ True | Attacking$ True | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nOracle:Trample, haste\\nWhenever Raph & Mikey attack, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raph & Mikey, Troublemakers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

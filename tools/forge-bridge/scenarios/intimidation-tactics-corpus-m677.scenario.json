@@ -1,0 +1,23 @@
+{
+  "id": "intimidation-tactics-corpus-m677",
+  "description": "M6 corpus — Intimidation Tactics; in-hand parse.",
+  "seed": 63032,
+  "cards": {
+    "Intimidation Tactics": "Name:Intimidation Tactics\nManaCost:B\nTypes:Sorcery\nA:SP$ RevealHand | Defined$ Targeted | ValidTgts$ Opponent | SubAbility$ ExileCard | StackDescription$ SpellDescription | SpellDescription$ Target opponent reveals their hand. You choose an artifact or creature card from it. Exile that card.\nSVar:ExileCard:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Artifact,Creature | IsCurse$ True | Mandatory$ True | AlreadyRevealed$ True\nK:Cycling:3\nOracle:Target opponent reveals their hand. You choose an artifact or creature card from it. Exile that card.\\nCycling {3} ({3}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intimidation Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lurking-deadeye-corpus-m677",
+  "description": "M6 corpus — Lurking Deadeye; in-hand parse.",
+  "seed": 64515,
+  "cards": {
+    "Lurking Deadeye": "Name:Lurking Deadeye\nManaCost:3 B\nTypes:Creature Human Assassin\nPT:4/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature that was dealt damage this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.wasDealtDamageThisTurn | TgtPrompt$ Select target creature that was dealt damage this turn\nOracle:Flash\\nWhen Lurking Deadeye enters, destroy target creature that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lurking Deadeye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

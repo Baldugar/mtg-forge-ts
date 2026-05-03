@@ -1,0 +1,25 @@
+{
+  "id": "inner-flame-igniter-corpus-m677",
+  "description": "M6 corpus — Inner-Flame Igniter; ETB-on-bf.",
+  "seed": 62961,
+  "cards": {
+    "Inner-Flame Igniter": "Name:Inner-Flame Igniter\nManaCost:2 R\nTypes:Creature Elemental Warrior\nPT:2/2\nA:AB$ PumpAll | Cost$ 2 R | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | SubAbility$ InnerHeatStrike | StackDescription$ SpellDescription | SpellDescription$ Creatures you control get +1/+0 until end of turn. If this is the third time this ability has resolved this turn, creatures you control gain first strike until end of turn.\nSVar:InnerHeatStrike:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ First Strike | ConditionCheckSVar$ InnerFlameStrength | ConditionSVarCompare$ EQ3 | StackDescription$ None\nSVar:InnerFlameStrength:Count$ResolvedThisTurn\nOracle:{2}{R}: Creatures you control get +1/+0 until end of turn. If this is the third time this ability has resolved this turn, creatures you control gain first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Inner-Flame Igniter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

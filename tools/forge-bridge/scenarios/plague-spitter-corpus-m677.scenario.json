@@ -1,0 +1,23 @@
+{
+  "id": "plague-spitter-corpus-m677",
+  "description": "M6 corpus — Plague Spitter; in-hand parse.",
+  "seed": 66958,
+  "cards": {
+    "Plague Spitter": "Name:Plague Spitter\nManaCost:2 B\nTypes:Creature Phyrexian Horror\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamageAll | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to each creature and each player.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME dies, CARDNAME deals 1 damage to each creature and each player.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ 1 | ValidDescription$ each creature and each player.\nOracle:At the beginning of your upkeep, Plague Spitter deals 1 damage to each creature and each player.\\nWhen Plague Spitter dies, Plague Spitter deals 1 damage to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Spitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

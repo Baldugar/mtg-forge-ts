@@ -1,0 +1,25 @@
+{
+  "id": "kessig-flamebreather-corpus-m677",
+  "description": "M6 corpus — Kessig Flamebreather; ETB-on-bf.",
+  "seed": 63609,
+  "cards": {
+    "Kessig Flamebreather": "Name:Kessig Flamebreather\nManaCost:1 R\nTypes:Creature Human Shaman\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nSVar:BuffedBy:Card.nonLand+nonCreature\nOracle:Whenever you cast a noncreature spell, Kessig Flamebreather deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kessig Flamebreather"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

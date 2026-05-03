@@ -1,0 +1,23 @@
+{
+  "id": "inventor-s-goggles-corpus-m677",
+  "description": "M6 corpus — Inventor's Goggles; in-hand parse.",
+  "seed": 63083,
+  "cards": {
+    "Inventor's Goggles": "Name:Inventor's Goggles\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 2 | Description$ Equipped creature gets +1/+2.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.Artificer+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ Whenever an Artificer you control enters, you may attach CARDNAME to it.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nK:Equip:2\nOracle:Equipped creature gets +1/+2.\\nWhenever an Artificer you control enters, you may attach Inventor's Goggles to it.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inventor's Goggles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

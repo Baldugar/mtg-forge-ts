@@ -1,0 +1,23 @@
+{
+  "id": "light-of-judgment-corpus-m677",
+  "description": "M6 corpus — Light of Judgment; in-hand parse.",
+  "seed": 64226,
+  "cards": {
+    "Light of Judgment": "Name:Light of Judgment\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 6 | SubAbility$ DBChoose | SpellDescription$ CARDNAME deals 6 damage to target creature. Destroy up to one Equipment attached to that creature.\nSVar:DBChoose:DB$ ChooseCard | Defined$ You | MinAmount$ 0 | Amount$ 1 | Choices$ Equipment.AttachedTo Targeted | ChoiceTitle$ Choose an Equipment attached to the targeted creature | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ ChosenCard\nOracle:Light of Judgment deals 6 damage to target creature. Destroy up to one Equipment attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Light of Judgment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

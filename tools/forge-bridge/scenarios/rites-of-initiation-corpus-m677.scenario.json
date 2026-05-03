@@ -1,0 +1,23 @@
+{
+  "id": "rites-of-initiation-corpus-m677",
+  "description": "M6 corpus — Rites of Initiation; in-hand parse.",
+  "seed": 68367,
+  "cards": {
+    "Rites of Initiation": "Name:Rites of Initiation\nManaCost:R\nTypes:Instant\nA:SP$ ChooseNumber | Defined$ You | Min$ 0 | Max$ MaxChoice | ListTitle$ Discard how many cards? | SubAbility$ DBDiscard | SpellDescription$ Discard any number of cards at random. Creatures you control get +1/+0 until end of turn for each card discarded this way.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ ChosenInitiation | Mode$ Random | RememberDiscarded$ True | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MaxChoice:Count$ValidHand Card.YouOwn\nSVar:ChosenInitiation:Count$ChosenNumber\nSVar:Y:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Discard any number of cards at random. Creatures you control get +1/+0 until end of turn for each card discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rites of Initiation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

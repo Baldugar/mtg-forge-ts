@@ -1,0 +1,23 @@
+{
+  "id": "spirit-of-malevolence-corpus-m677",
+  "description": "M6 corpus — Spirit of Malevolence; in-hand parse.",
+  "seed": 70703,
+  "cards": {
+    "Spirit of Malevolence": "Name:Spirit of Malevolence\nManaCost:1 B\nTypes:Creature Spirit\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:When Spirit of Malevolence dies, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit of Malevolence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

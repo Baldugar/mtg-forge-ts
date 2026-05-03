@@ -1,0 +1,23 @@
+{
+  "id": "noxious-gearhulk-corpus-m677",
+  "description": "M6 corpus — Noxious Gearhulk; in-hand parse.",
+  "seed": 66088,
+  "cards": {
+    "Noxious Gearhulk": "Name:Noxious Gearhulk\nManaCost:4 B B\nTypes:Artifact Creature Construct\nPT:5/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy another target creature. If a creature is destroyed this way, you gain life equal to its toughness.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | RememberLKI$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nDeckHas:Ability$LifeGain\nOracle:Menace\\nWhen Noxious Gearhulk enters, you may destroy another target creature. If a creature is destroyed this way, you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noxious Gearhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

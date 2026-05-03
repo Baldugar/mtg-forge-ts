@@ -1,0 +1,25 @@
+{
+  "id": "mirror-box-corpus-m677",
+  "description": "M6 corpus — Mirror Box; ETB-on-bf.",
+  "seed": 65240,
+  "cards": {
+    "Mirror Box": "Name:Mirror Box\nManaCost:3\nTypes:Artifact\nS:Mode$ IgnoreLegendRule | ValidCard$ Permanent.YouCtrl | Description$ The \"legend rule\" doesn't apply to permanents you control.\nS:Mode$ Continuous | Affected$ Creature.Legendary+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Each legendary creature you control gets +1/+1.\nS:Mode$ Continuous | Affected$ Creature.!token+YouCtrl | AddPower$ AffectedX | AddToughness$ AffectedX | Description$ Each nontoken creature you control gets +1/+1 for each other creature you control with the same name as that creature.\nSVar:AffectedX:Count$Valid Creature.Other+sharesNameWith+YouCtrl\nOracle:The \"legend rule\" doesn't apply to permanents you control.\\nEach legendary creature you control gets +1/+1.\\nEach nontoken creature you control gets +1/+1 for each other creature you control with the same name as that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mirror Box"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "perfect-intimidation-corpus-m677",
+  "description": "M6 corpus — Perfect Intimidation; in-hand parse.",
+  "seed": 66734,
+  "cards": {
+    "Perfect Intimidation": "Name:Perfect Intimidation\nManaCost:3 B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBChangeZone,DBRemoveCounter | MinCharmNum$ 1 | CharmNum$ 2 | Defined$ You\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Card | ChangeNum$ 2 | IsCurse$ True | Mandatory$ True | SpellDescription$ Target opponent exiles two cards from their hand.\nSVar:DBRemoveCounter:DB$ RemoveCounter | ValidTgts$ Creature | CounterType$ All | CounterNum$ All | SpellDescription$ Remove all counters from target creature.\nOracle:Choose one or both —\\n• Target opponent exiles two cards from their hand.\\n• Remove all counters from target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perfect Intimidation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

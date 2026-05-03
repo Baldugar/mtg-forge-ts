@@ -1,0 +1,23 @@
+{
+  "id": "scourge-of-numai-corpus-m677",
+  "description": "M6 corpus — Scourge of Numai; in-hand parse.",
+  "seed": 69197,
+  "cards": {
+    "Scourge of Numai": "Name:Scourge of Numai\nManaCost:3 B\nTypes:Creature Demon Spirit\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you lose 2 life if you don't control an Ogre.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2 | ConditionPresent$ Ogre.YouCtrl | ConditionCompare$ EQ0\nAI:RemoveDeck:Random\nDeckHints:Type$Ogre\nOracle:At the beginning of your upkeep, you lose 2 life if you don't control an Ogre.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourge of Numai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

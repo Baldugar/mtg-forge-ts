@@ -1,0 +1,23 @@
+{
+  "id": "helitrooper-corpus-m677",
+  "description": "M6 corpus — Helitrooper; in-hand parse.",
+  "seed": 62230,
+  "cards": {
+    "Helitrooper": "Name:Helitrooper\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:1/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks, another target attacking creature gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+attacking | TgtPrompt$ Select another target attacking creature | KW$ Flying\nS:Mode$ ReduceCost | ValidTarget$ Card.Self | ValidSpell$ Activated.Equip | Activator$ You | Amount$ 2 | Description$ Equip abilities you activate that target this creature cost {2} less to activate.\nOracle:Flying\\nWhenever this creature attacks, another target attacking creature gains flying until end of turn.\\nEquip abilities you activate that target this creature cost {2} less to activate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Helitrooper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

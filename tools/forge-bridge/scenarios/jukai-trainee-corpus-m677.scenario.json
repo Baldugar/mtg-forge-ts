@@ -1,0 +1,25 @@
+{
+  "id": "jukai-trainee-corpus-m677",
+  "description": "M6 corpus — Jukai Trainee; ETB-on-bf.",
+  "seed": 63375,
+  "cards": {
+    "Jukai Trainee": "Name:Jukai Trainee\nManaCost:1 G\nTypes:Creature Human Samurai\nPT:2/2\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets +1/+1 until end of turn.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nOracle:Whenever Jukai Trainee blocks or becomes blocked, it gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Jukai Trainee"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

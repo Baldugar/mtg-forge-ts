@@ -1,0 +1,25 @@
+{
+  "id": "mantle-of-tides-corpus-m677",
+  "description": "M6 corpus — Mantle of Tides; ETB-on-bf.",
+  "seed": 64739,
+  "cards": {
+    "Mantle of Tides": "Name:Mantle of Tides\nManaCost:U\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 2 | Description$ Equipped creature gets +1/+2.\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigAttach | TriggerDescription$ Whenever you draw your second card each turn, attach CARDNAME to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nSVar:PlayMain1:TRUE\nK:Equip:3\nOracle:Equipped creature gets +1/+2.\\nWhenever you draw your second card each turn, attach Mantle of Tides to target creature you control.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mantle of Tides"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

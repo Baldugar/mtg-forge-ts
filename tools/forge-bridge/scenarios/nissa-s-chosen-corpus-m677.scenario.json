@@ -1,0 +1,25 @@
+{
+  "id": "nissa-s-chosen-corpus-m677",
+  "description": "M6 corpus — Nissa's Chosen; ETB-on-bf.",
+  "seed": 66000,
+  "cards": {
+    "Nissa's Chosen": "Name:Nissa's Chosen\nManaCost:G G\nTypes:Creature Elf Warrior\nPT:2/3\nR:Event$ Moved | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ NissaChosenRep | Description$ If CARDNAME would die, put it on the bottom of its owner's library instead.\nSVar:NissaChosenRep:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | LibraryPosition$ -1 | Defined$ ReplacedCard\nOracle:If Nissa's Chosen would die, put it on the bottom of its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nissa's Chosen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

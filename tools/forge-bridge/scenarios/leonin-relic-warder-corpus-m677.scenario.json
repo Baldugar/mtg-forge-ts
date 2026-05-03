@@ -1,0 +1,23 @@
+{
+  "id": "leonin-relic-warder-corpus-m677",
+  "description": "M6 corpus — Leonin Relic-Warder; in-hand parse.",
+  "seed": 64131,
+  "cards": {
+    "Leonin Relic-Warder": "Name:Leonin Relic-Warder\nManaCost:W W\nTypes:Creature Cat Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile target artifact or enchantment.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | IsCurse$ True | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | RememberTargets$ True | ForgetOtherTargets$ True | Origin$ Battlefield | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nOracle:When Leonin Relic-Warder enters, you may exile target artifact or enchantment.\\nWhen Leonin Relic-Warder leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonin Relic-Warder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

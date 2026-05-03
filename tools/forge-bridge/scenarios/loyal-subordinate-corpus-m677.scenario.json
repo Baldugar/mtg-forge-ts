@@ -1,0 +1,23 @@
+{
+  "id": "loyal-subordinate-corpus-m677",
+  "description": "M6 corpus — Loyal Subordinate; in-hand parse.",
+  "seed": 64462,
+  "cards": {
+    "Loyal Subordinate": "Name:Loyal Subordinate\nManaCost:2 B\nTypes:Creature Zombie\nPT:3/1\nK:Menace\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | Execute$ TrigLoseLife | TriggerDescription$ Lieutenant — At the beginning of combat on your turn, if you control your commander, each opponent loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3\nOracle:Menace\\nLieutenant — At the beginning of combat on your turn, if you control your commander, each opponent loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loyal Subordinate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

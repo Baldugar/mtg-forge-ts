@@ -1,0 +1,23 @@
+{
+  "id": "noxious-toad-corpus-m677",
+  "description": "M6 corpus — Noxious Toad; in-hand parse.",
+  "seed": 66093,
+  "cards": {
+    "Noxious Toad": "Name:Noxious Toad\nManaCost:2 B\nTypes:Creature Frog\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose\nSVar:SacMe:1\nOracle:When Noxious Toad dies, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noxious Toad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "motion-sickness-corpus-m677",
+  "description": "M6 corpus — Motion Sickness; in-hand parse.",
+  "seed": 65540,
+  "cards": {
+    "Motion Sickness": "Name:Motion Sickness\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters the battlefield, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nT:Mode$ VisitAttraction | TriggerZones$ Battlefield | ValidCard$ Attraction.YouCtrl | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigAttach | TriggerDescription$ Whenever you visit an Attraction, you may attach CARDNAME to target tapped creature.\nSVar:TrigAttach:DB$ Attach | Object$ Self | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature\nOracle:Enchant creature\\nWhen Motion Sickness enters the battlefield, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\nWhenever you visit an Attraction, you may attach Motion Sickness to target tapped creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Motion Sickness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

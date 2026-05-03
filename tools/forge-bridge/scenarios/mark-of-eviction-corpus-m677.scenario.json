@@ -1,0 +1,23 @@
+{
+  "id": "mark-of-eviction-corpus-m677",
+  "description": "M6 corpus — Mark of Eviction; in-hand parse.",
+  "seed": 64797,
+  "cards": {
+    "Mark of Eviction": "Name:Mark of Eviction\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRem | TriggerDescription$ At the beginning of your upkeep, return enchanted creature and all Auras attached to that creature to their owners' hands.\nSVar:TrigRem:DB$ ChangeZoneAll | ChangeType$ Card.EnchantedBy,Aura.AttachedTo Card.EnchantedBy | Origin$ Battlefield | Destination$ Hand\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nAt the beginning of your upkeep, return enchanted creature and all Auras attached to that creature to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mark of Eviction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

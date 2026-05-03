@@ -1,0 +1,23 @@
+{
+  "id": "paroxysm-corpus-m677",
+  "description": "M6 corpus — Paroxysm; in-hand parse.",
+  "seed": 66632,
+  "cards": {
+    "Paroxysm": "Name:Paroxysm\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | Execute$ TriggeredParoxysm | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player reveals the top card of their library. If that card is a land card, destroy that creature. Otherwise, it gets +3/+3 until end of turn.\nSVar:TriggeredParoxysm:DB$ PeekAndReveal | Defined$ TriggeredPlayer | NoPeek$ True | RememberRevealed$ True | SubAbility$ DestructiveParoxysm\nSVar:DestructiveParoxysm:DB$ Destroy | Defined$ Enchanted | ConditionDefined$ Remembered | ConditionPresent$ Card.Land | ConditionCompare$ EQ1 | SubAbility$ BeserkParoxysm\nSVar:BeserkParoxysm:DB$ Pump | Defined$ Enchanted | NumAtt$ +3 | NumDef$ +3 | ConditionDefined$ Remembered | ConditionPresent$ Card.Land | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Enchant creature\\nAt the beginning of the upkeep of enchanted creature's controller, that player reveals the top card of their library. If that card is a land card, destroy that creature. Otherwise, it gets +3/+3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paroxysm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

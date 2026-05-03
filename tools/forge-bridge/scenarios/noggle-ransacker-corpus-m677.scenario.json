@@ -1,0 +1,23 @@
+{
+  "id": "noggle-ransacker-corpus-m677",
+  "description": "M6 corpus — Noggle Ransacker; in-hand parse.",
+  "seed": 66042,
+  "cards": {
+    "Noggle Ransacker": "Name:Noggle Ransacker\nManaCost:2 UR\nTypes:Creature Noggle Rogue\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, each player draws two cards, then discards a card at random.\nSVar:TrigDraw:DB$ Draw | Defined$ Player | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Player | Mode$ Random | NumCards$ 1\nOracle:When Noggle Ransacker enters, each player draws two cards, then discards a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noggle Ransacker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

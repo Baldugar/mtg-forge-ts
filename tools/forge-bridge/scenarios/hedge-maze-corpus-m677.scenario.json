@@ -1,0 +1,23 @@
+{
+  "id": "hedge-maze-corpus-m677",
+  "description": "M6 corpus — Hedge Maze; in-hand parse.",
+  "seed": 62200,
+  "cards": {
+    "Hedge Maze": "Name:Hedge Maze\nManaCost:no cost\nTypes:Land Forest Island\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$Surveil|Graveyard\nDeckHints:Ability$Graveyard\nOracle:({T}: Add {G} or {U}.)\\nHedge Maze enters tapped.\\nWhen Hedge Maze enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hedge Maze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

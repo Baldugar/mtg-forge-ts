@@ -1,0 +1,23 @@
+{
+  "id": "spirit-of-the-aldergard-corpus-m677",
+  "description": "M6 corpus — Spirit of the Aldergard; in-hand parse.",
+  "seed": 70705,
+  "cards": {
+    "Spirit of the Aldergard": "Name:Spirit of the Aldergard\nManaCost:3 G\nTypes:Snow Creature Bear Spirit\nPT:0/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a snow land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Snow | ChangeNum$ 1 | ShuffleNonMandatory$ True\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +1/+0 for each other snow permanent you control.\nSVar:X:Count$Valid Permanent.Snow+Other+YouCtrl\nSVar:BuffedBy:Permanent.Snow\nDeckNeeds:Type$Snow\nOracle:When Spirit of the Aldergard enters, search your library for a snow land card, reveal it, put it into your hand, then shuffle.\\nSpirit of the Aldergard gets +1/+0 for each other snow permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit of the Aldergard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

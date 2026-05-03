@@ -1,0 +1,23 @@
+{
+  "id": "mardu-warshrieker-corpus-m677",
+  "description": "M6 corpus — Mardu Warshrieker; in-hand parse.",
+  "seed": 64786,
+  "cards": {
+    "Mardu Warshrieker": "Name:Mardu Warshrieker\nManaCost:3 R\nTypes:Creature Orc Shaman\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ ABMana | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, add {R}{W}{B}.\nSVar:RaidTest:Count$AttackersDeclared\nSVar:ABMana:DB$ Mana | Produced$ R W B\nOracle:Raid — When Mardu Warshrieker enters, if you attacked this turn, add {R}{W}{B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mardu Warshrieker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

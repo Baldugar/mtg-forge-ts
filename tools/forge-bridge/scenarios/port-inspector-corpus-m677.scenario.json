@@ -1,0 +1,25 @@
+{
+  "id": "port-inspector-corpus-m677",
+  "description": "M6 corpus — Port Inspector; ETB-on-bf.",
+  "seed": 67066,
+  "cards": {
+    "Port Inspector": "Name:Port Inspector\nManaCost:1 U\nTypes:Creature Human\nPT:1/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ Whenever CARDNAME becomes blocked, you may look at defending player's hand.\nSVar:TrigPeek:DB$ RevealHand | Defined$ TriggeredDefendingPlayer | Look$ True\nOracle:Whenever Port Inspector becomes blocked, you may look at defending player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Port Inspector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

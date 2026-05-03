@@ -1,0 +1,23 @@
+{
+  "id": "path-of-the-pyromancer-corpus-m677",
+  "description": "M6 corpus — Path of the Pyromancer; in-hand parse.",
+  "seed": 66654,
+  "cards": {
+    "Path of the Pyromancer": "Name:Path of the Pyromancer\nManaCost:4 R\nTypes:Sorcery\nA:SP$ Discard | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBMana | SpellDescription$ Discard all the cards in your hand.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ X | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Add {R} for each card discarded this way,\nSVar:DBDraw:DB$ Draw | NumCards$ SVar$X/Plus.1 | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ then draw that many cards plus one.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBSpace\nSVar:X:Remembered$Amount\nSVar:DBSpace:DB$ BlankLine | SubAbility$ DBVote | SpellDescription$ ,,,,,,\nSVar:DBVote:DB$ Vote | Defined$ Player | Choices$ DBPlaneswalk,DBChaos | VoteTiedAbility$ DBChaos | StackDescription$ SpellDescription | SpellDescription$ Will of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\nSVar:DBPlaneswalk:DB$ Planeswalk | SpellDescription$ Planeswalk\nSVar:DBChaos:DB$ ChaosEnsues | SpellDescription$ Chaos\nDeckHas:Ability$Discard\nOracle:Discard all the cards in your hand. Add {R} for each card discarded this way, then draw that many cards plus one.\\nWill of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path of the Pyromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

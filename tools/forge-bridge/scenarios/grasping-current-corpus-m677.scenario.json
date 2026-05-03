@@ -1,0 +1,23 @@
+{
+  "id": "grasping-current-corpus-m677",
+  "description": "M6 corpus — Grasping Current; in-hand parse.",
+  "seed": 61636,
+  "cards": {
+    "Grasping Current": "Name:Grasping Current\nManaCost:4 U\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBSearch | SpellDescription$ Return up to two target creatures to their owner's hand.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedJace; Ingenious Mind-Mage | ChangeNum$ 1 | SpellDescription$ Search your library and/or graveyard for a card named Jace, Ingenious Mind-Mage, reveal it, and put it into your hand. If you searched your library this way, shuffle.\nDeckHints:Name$Jace, Ingenious Mind-Mage\nOracle:Return up to two target creatures to their owner's hand.\\nSearch your library and/or graveyard for a card named Jace, Ingenious Mind-Mage, reveal it, and put it into your hand. If you searched your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grasping Current"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "horn-of-plenty-corpus-m677",
+  "description": "M6 corpus — Horn of Plenty; ETB-on-bf.",
+  "seed": 62495,
+  "cards": {
+    "Horn of Plenty": "Name:Horn of Plenty\nManaCost:6\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ DelayedTrigEff | TriggerDescription$ Whenever a player casts a spell, they may pay {1}. If the player does, they draw a card at the beginning of the next end step.\nSVar:DelayedTrigEff:DB$ Effect | Duration$ Permanent | Triggers$ EOTTrig | RememberObjects$ TriggeredActivator | UnlessCost$ 1 | UnlessPayer$ TriggeredActivator | UnlessSwitched$ True\nSVar:EOTTrig:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Command | Execute$ TrigDraw | OneOff$ True | TriggerDescription$ Draw a card at the beginning of the next end step.\nSVar:TrigDraw:DB$ Draw | Defined$ Player.IsRemembered | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a spell, they may pay {1}. If the player does, they draw a card at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Horn of Plenty"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

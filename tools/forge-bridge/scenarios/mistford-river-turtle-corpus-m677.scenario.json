@@ -1,0 +1,23 @@
+{
+  "id": "mistford-river-turtle-corpus-m677",
+  "description": "M6 corpus — Mistford River Turtle; in-hand parse.",
+  "seed": 65298,
+  "cards": {
+    "Mistford River Turtle": "Name:Mistford River Turtle\nManaCost:3 U\nTypes:Creature Turtle\nPT:1/5\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target attacking non-Human creature can't be blocked this turn.\nSVar:TrigPump:DB$ Effect | ValidTgts$ Creature.nonHuman+Other+attacking | TgtPrompt$ Select another target attacking non-Human creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:Whenever Mistford River Turtle attacks, another target attacking non-Human creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistford River Turtle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

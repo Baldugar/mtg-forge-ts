@@ -1,0 +1,23 @@
+{
+  "id": "ogre-chitterlord-corpus-m677",
+  "description": "M6 corpus — Ogre Chitterlord; in-hand parse.",
+  "seed": 66227,
+  "cards": {
+    "Ogre Chitterlord": "Name:Ogre Chitterlord\nManaCost:4 R R\nTypes:Creature Ogre Warrior\nPT:6/5\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create two 1/1 black Rat creature tokens with \"This creature can't block.\" Then if you control five or more Rats, each Rat you control gets +2/+0 until end of turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, create two 1/1 black Rat creature tokens with \"This creature can't block.\" Then if you control five or more Rats, each Rat you control gets +2/+0 until end of turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_1_1_rat_noblock | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Rat.YouCtrl | NumAtt$ +2 | ConditionPresent$ Rat.YouCtrl | ConditionCompare$ GE5\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Rat\nDeckHints:Type$Rat\nOracle:Menace\\nWhenever Ogre Chitterlord enters or attacks, create two 1/1 black Rat creature tokens with \"This creature can't block.\" Then if you control five or more Rats, each Rat you control gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Chitterlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

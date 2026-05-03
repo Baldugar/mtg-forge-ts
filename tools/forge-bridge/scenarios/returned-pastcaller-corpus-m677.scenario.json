@@ -1,0 +1,23 @@
+{
+  "id": "returned-pastcaller-corpus-m677",
+  "description": "M6 corpus — Returned Pastcaller; in-hand parse.",
+  "seed": 68164,
+  "cards": {
+    "Returned Pastcaller": "Name:Returned Pastcaller\nManaCost:3 R RW W\nTypes:Creature Spirit Cleric\nPT:4/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target Spirit, instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn,Spirit.YouOwn | TgtPrompt$ Select target Spirit, instant or sorcery card in your graveyard\nDeckHints:Type$Spirit\nOracle:Flying\\nWhen Returned Pastcaller enters, return target Spirit, instant, or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Returned Pastcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

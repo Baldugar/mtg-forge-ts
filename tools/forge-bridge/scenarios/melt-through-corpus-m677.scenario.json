@@ -1,0 +1,23 @@
+{
+  "id": "melt-through-corpus-m677",
+  "description": "M6 corpus — Melt Through; in-hand parse.",
+  "seed": 64953,
+  "cards": {
+    "Melt Through": "Name:Melt Through\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBAnimate | SpellDescription$ CARDNAME deals 2 damage to any target.\nSVar:DBAnimate:DB$ Animate | ConditionDefined$ Targeted | ConditionPresent$ Creature | Defined$ Targeted | staticAbilities$ PerpetualEffect | Duration$ Perpetual | StackDescription$ SpellDescription | SpellDescription$ If it's a creature, it perpetually gains \"As long as this creature is on the battlefield, damage isn't removed from it during cleanup steps.\"\nSVar:PerpetualEffect:Mode$ NoCleanupDamage | ValidCard$ Card.Self+inZoneBattlefield | Description$ As long as this creature is on the battlefield, damage isn't removed from it during cleanup steps.\nOracle:Melt Through deals 2 damage to any target. If it's a creature, it perpetually gains \"As long as this creature is on the battlefield, damage isn't removed from it during cleanup steps.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Melt Through"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shimmering-mirage-corpus-m677",
+  "description": "M6 corpus — Shimmering Mirage; in-hand parse.",
+  "seed": 69708,
+  "cards": {
+    "Shimmering Mirage": "Name:Shimmering Mirage\nManaCost:1 U\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Basic Land | SubAbility$ DBAnimate | SpellDescription$ Target land becomes the basic land type of your choice until end of turn. Draw a card.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Land | Types$ ChosenType | RemoveLandTypes$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:All\nOracle:Target land becomes the basic land type of your choice until end of turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shimmering Mirage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

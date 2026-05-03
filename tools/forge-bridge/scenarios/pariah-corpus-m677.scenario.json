@@ -1,0 +1,23 @@
+{
+  "id": "pariah-corpus-m677",
+  "description": "M6 corpus — Pariah; in-hand parse.",
+  "seed": 66628,
+  "cards": {
+    "Pariah": "Name:Pariah\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ DmgEnchanted | DamageTarget$ Enchanted | Description$ All damage that would be dealt to you is dealt to enchanted creature instead.\nSVar:DmgEnchanted:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Enchanted | VarType$ Card\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nAll damage that would be dealt to you is dealt to enchanted creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pariah"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

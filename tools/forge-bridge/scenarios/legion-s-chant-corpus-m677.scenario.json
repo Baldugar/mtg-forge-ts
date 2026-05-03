@@ -1,0 +1,23 @@
+{
+  "id": "legion-s-chant-corpus-m677",
+  "description": "M6 corpus — Legion's Chant; in-hand parse.",
+  "seed": 64106,
+  "cards": {
+    "Legion's Chant": "Name:Legion's Chant\nManaCost:2 W\nTypes:Sorcery Chorus\nK:Starting intensity:3\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | WithTotalCMC$ X | ChangeNum$ Y | Hidden$ True | AnyNumber$ True | ChangeType$ Creature.YouOwn | SubAbility$ DBIntensify | SpellDescription$ Return any number of creature cards with total mana value X or less from your graveyard to the battlefield, where X is CARDNAME's Intensity.\nSVar:DBIntensify:DB$ Intensify | AllDefined$ Card.YouOwn+Chorus | DefinedDesc$ all Chorus cards you own | SpellDescription$ All Chorus cards you own intensify by 1.\nSVar:Y:Count$ValidGraveyard Creature.YouOwn\nSVar:X:Count$Intensity\nDeckHints:Type$Chorus & Ability$Graveyard|Mill|Discard\nDeckHas:Ability$Graveyard\nOracle:Starting intensity 3\\nReturn any number of creature cards with total mana value X or less from your graveyard to the battlefield, where X is Legion's Chant's intensity.\\nAll Chorus cards you own intensify by 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion's Chant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

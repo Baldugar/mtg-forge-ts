@@ -1,0 +1,25 @@
+{
+  "id": "nightscape-master-corpus-m677",
+  "description": "M6 corpus — Nightscape Master; ETB-on-bf.",
+  "seed": 65947,
+  "cards": {
+    "Nightscape Master": "Name:Nightscape Master\nManaCost:2 B B\nTypes:Creature Zombie Wizard\nPT:2/2\nA:AB$ ChangeZone | Cost$ U U T | ValidTgts$ Creature | TgtPrompt$ Select target creature to bounce | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature to its owner's hand.\nA:AB$ DealDamage | Cost$ R R T | ValidTgts$ Creature | TgtPrompt$ Select target creature to deal 2 damage to | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to target creature.\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red|Blue\nOracle:{U}{U}, {T}: Return target creature to its owner's hand.\\n{R}{R}, {T}: Nightscape Master deals 2 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nightscape Master"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

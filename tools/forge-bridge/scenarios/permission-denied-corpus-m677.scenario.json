@@ -1,0 +1,23 @@
+{
+  "id": "permission-denied-corpus-m677",
+  "description": "M6 corpus — Permission Denied; in-hand parse.",
+  "seed": 66749,
+  "cards": {
+    "Permission Denied": "Name:Permission Denied\nManaCost:W U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target noncreature spell | ValidTgts$ Card.nonCreature | SubAbility$ DBEffect | SpellDescription$ Counter target noncreature spell.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ CantBeCast | SpellDescription$ Your opponents can't cast noncreature spells this turn.\nSVar:CantBeCast:Mode$ CantBeCast | ValidCard$ Card.nonCreature | Caster$ Opponent | Description$ Your opponents can't cast noncreature spells this turn.\nOracle:Counter target noncreature spell. Your opponents can't cast noncreature spells this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Permission Denied"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ogre-painbringer-corpus-m677",
+  "description": "M6 corpus — Ogre Painbringer; in-hand parse.",
+  "seed": 66234,
+  "cards": {
+    "Ogre Painbringer": "Name:Ogre Painbringer\nManaCost:3 R R\nTypes:Creature Ogre\nPT:7/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg | TriggerDescription$ When CARDNAME enters, it deals 3 damage to each player.\nSVar:TrigDmg:DB$ DamageAll | NumDmg$ 3 | ValidPlayers$ Player | ValidDescription$ each player. | SpellDescription$ CARDNAME deals 3 damage to each player.\nOracle:When Ogre Painbringer enters, it deals 3 damage to each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Painbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

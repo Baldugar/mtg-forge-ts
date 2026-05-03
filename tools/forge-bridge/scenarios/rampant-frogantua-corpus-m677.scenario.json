@@ -1,0 +1,23 @@
+{
+  "id": "rampant-frogantua-corpus-m677",
+  "description": "M6 corpus — Rampant Frogantua; in-hand parse.",
+  "seed": 67678,
+  "cards": {
+    "Rampant Frogantua": "Name:Rampant Frogantua\nManaCost:2 G\nTypes:Creature Frog\nPT:3/3\nK:Trample\nS:Mode$ Continuous | AddPower$ X | AddToughness$ X | Affected$ Card.Self | Description$ CARDNAME gets +10/+10 for each player who has lost the game.\nSVar:X:PlayerCountHasLost$Amount/Times.10\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may mill that many cards. Put any number of land cards from among them onto the battlefield tapped.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ Y | RememberMilled$ True | Optional$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Battlefield | ChangeType$ Land.IsRemembered | Tapped$ True | Hidden$ True | ChangeNum$ Z | AnyNumber$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:TriggerCount$DamageAmount\nSVar:Z:Count$ValidGraveyard Land.YouOwn+IsRemembered\nDeckHas:Ability$Mill\nOracle:Trample\\nRampant Frogantua gets +10/+10 for each player who has lost the game.\\nWhenever Rampant Frogantua deals combat damage to a player, you may mill that many cards. Put any number of land cards from among them onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampant Frogantua"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

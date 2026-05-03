@@ -1,0 +1,25 @@
+{
+  "id": "inspired-sprite-corpus-m677",
+  "description": "M6 corpus — Inspired Sprite; ETB-on-bf.",
+  "seed": 62995,
+  "cards": {
+    "Inspired Sprite": "Name:Inspired Sprite\nManaCost:3 U\nTypes:Creature Faerie Wizard\nPT:2/2\nK:Flash\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Wizard | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a Wizard spell, you may untap CARDNAME.\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:All\nOracle:Flash\\nFlying\\nWhenever you cast a Wizard spell, you may untap Inspired Sprite.\\n{T}: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Inspired Sprite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

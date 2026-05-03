@@ -1,0 +1,23 @@
+{
+  "id": "rampage-of-the-clans-corpus-m677",
+  "description": "M6 corpus — Rampage of the Clans; in-hand parse.",
+  "seed": 67664,
+  "cards": {
+    "Rampage of the Clans": "Name:Rampage of the Clans\nManaCost:3 G\nTypes:Instant\nA:SP$ DestroyAll | ValidCards$ Artifact,Enchantment | RememberDestroyed$ True | SubAbility$ DBRepeat | SpellDescription$ Destroy all artifacts and enchantments. For each permanent destroyed this way, its controller creates a 3/3 green Centaur creature token.\nSVar:DBRepeat:DB$ RepeatEach | UseImprinted$ True | DefinedCards$ DirectRemembered | RepeatSubAbility$ DBToken | SubAbility$ DBCleanup | ChangeZoneTable$ True\nSVar:DBToken:DB$ Token | TokenOwner$ ImprintedController | TokenScript$ g_3_3_centaur\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ true\nOracle:Destroy all artifacts and enchantments. For each permanent destroyed this way, its controller creates a 3/3 green Centaur creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampage of the Clans"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

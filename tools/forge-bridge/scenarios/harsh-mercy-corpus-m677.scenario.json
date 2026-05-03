@@ -1,0 +1,23 @@
+{
+  "id": "harsh-mercy-corpus-m677",
+  "description": "M6 corpus — Harsh Mercy; in-hand parse.",
+  "seed": 62081,
+  "cards": {
+    "Harsh Mercy": "Name:Harsh Mercy\nManaCost:2 W\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChooseType | SubAbility$ DBDestroyAll | StackDescription$ SpellDescription | SpellDescription$ Each player chooses a creature type. Destroy all creatures that aren't of a type chosen this way. They can't be regenerated.\nSVar:DBChooseType:DB$ ChooseType | Defined$ Player.IsRemembered | Type$ Creature | AILogic$ MostProminentComputerControls | SubAbility$ DBRemember\nSVar:DBRemember:DB$ PumpAll | ValidCards$ Creature.ChosenType | RememberPumped$ True\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.!IsRemembered | NoRegen$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Each player chooses a creature type. Destroy all creatures that aren't of a type chosen this way. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harsh Mercy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "psychic-paper-corpus-m677",
+  "description": "M6 corpus — Psychic Paper; ETB-on-bf.",
+  "seed": 67318,
+  "cards": {
+    "Psychic Paper": "Name:Psychic Paper\nManaCost:2\nTypes:Artifact Equipment\nR:Event$ Attached | ValidCard$ Card.Self | ValidTarget$ Creature | ReplaceWith$ ChooseName | ActiveZones$ Battlefield | Description$ As CARDNAME becomes attached to a creature, choose a creature card name and a creature type.\nSVar:ChooseName:DB$ NameCard | Defined$ You | ValidCards$ Creature | ValidDescription$ creature card | SubAbility$ ChooseCT | SpellDescription$ Choose a creature card name.\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ Choose a creature type.\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Ward:1 | SetName$ ChosenName | RemoveCreatureTypes$ True | AddType$ ChosenType | Description$ Equipped creature has ward {1}, it can't be blocked, and its name and creature type are the last chosen name and creature type.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EquippedBy\nK:Equip:2\nOracle:As Psychic Paper becomes attached to a creature, choose a creature card name and a creature type.\\nEquipped creature has ward {1}, it can't be blocked, and its name and creature type are the last chosen name and creature type.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Psychic Paper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

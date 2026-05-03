@@ -1,0 +1,23 @@
+{
+  "id": "sporeweb-weaver-corpus-m677",
+  "description": "M6 corpus — Sporeweb Weaver; in-hand parse.",
+  "seed": 70770,
+  "cards": {
+    "Sporeweb Weaver": "Name:Sporeweb Weaver\nManaCost:2 G\nTypes:Creature Spider\nPT:1/4\nK:Reach\nK:Hexproof:Card.Blue:blue\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, you gain 1 life and create a 1/1 green Saproling creature token.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:HasCombatEffect:TRUE\nDeckHas:Ability$Token|LifeGain\nOracle:Reach, hexproof from blue\\nWhenever Sporeweb Weaver is dealt damage, you gain 1 life and create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sporeweb Weaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

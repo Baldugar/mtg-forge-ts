@@ -1,0 +1,23 @@
+{
+  "id": "pyknite-corpus-m677",
+  "description": "M6 corpus — Pyknite; in-hand parse.",
+  "seed": 67404,
+  "cards": {
+    "Pyknite": "Name:Pyknite\nManaCost:2 G\nTypes:Creature Ouphe\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DelTrigSlowtrip | TriggerDescription$ When CARDNAME enters, draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:When Pyknite enters, draw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyknite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

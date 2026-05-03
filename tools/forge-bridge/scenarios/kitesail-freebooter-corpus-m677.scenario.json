@@ -1,0 +1,23 @@
+{
+  "id": "kitesail-freebooter-corpus-m677",
+  "description": "M6 corpus — Kitesail Freebooter; in-hand parse.",
+  "seed": 63703,
+  "cards": {
+    "Kitesail Freebooter": "Name:Kitesail Freebooter\nManaCost:1 B\nTypes:Creature Human Pirate\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand. You choose a noncreature, nonland card from it. Exile that card until CARDNAME leaves the battlefield.\nSVar:TrigReveal:DB$ RevealHand | Defined$ Targeted | ValidTgts$ Opponent | SubAbility$ ExileCard\nSVar:ExileCard:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonCreature+nonLand | ChangeNum$ 1 | IsCurse$ True | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Kitesail Freebooter enters, target opponent reveals their hand. You choose a noncreature, nonland card from it. Exile that card until Kitesail Freebooter leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitesail Freebooter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

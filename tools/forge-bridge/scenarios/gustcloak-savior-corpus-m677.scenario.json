@@ -1,0 +1,25 @@
+{
+  "id": "gustcloak-savior-corpus-m677",
+  "description": "M6 corpus — Gustcloak Savior; ETB-on-bf.",
+  "seed": 61923,
+  "cards": {
+    "Gustcloak Savior": "Name:Gustcloak Savior\nManaCost:4 W\nTypes:Creature Bird Soldier\nPT:3/4\nK:Flying\nT:Mode$ AttackerBlocked | ValidCard$ Creature.YouCtrl | Execute$ TrigUntapRemove | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever a creature you control becomes blocked, you may untap that creature and remove it from combat.\nSVar:TrigUntapRemove:DB$ Untap | Defined$ TriggeredAttackerLKICopy | SubAbility$ DBRemoveCombat\nSVar:DBRemoveCombat:DB$ RemoveFromCombat | Defined$ TriggeredAttackerLKICopy\nOracle:Flying\\nWhenever a creature you control becomes blocked, you may untap that creature and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gustcloak Savior"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

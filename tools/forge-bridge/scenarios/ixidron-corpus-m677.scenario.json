@@ -1,0 +1,23 @@
+{
+  "id": "ixidron-corpus-m677",
+  "description": "M6 corpus — Ixidron; in-hand parse.",
+  "seed": 63191,
+  "cards": {
+    "Ixidron": "Name:Ixidron\nManaCost:3 U U\nTypes:Creature Illusion\nPT:*/*\nK:ETBReplacement:Other:TrigTurnFaceDown\nSVar:TrigTurnFaceDown:DB$ SetState | Defined$ Valid Creature.!token+Other+faceUp | Mode$ TurnFaceDown | SpellDescription$ As CARDNAME enters, turn all other nontoken creatures face down. (They're 2/2 creatures.)\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of face-down creatures on the battlefield.\nSVar:X:Count$Valid Creature.faceDown\nSVar:NeedsToPlay:Creature.OppCtrl+!token\nSVar:NoZeroToughnessAI:True\nOracle:As Ixidron enters, turn all other nontoken creatures face down. (They're 2/2 creatures.)\\nIxidron's power and toughness are each equal to the number of face-down creatures on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ixidron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "suki-courageous-rescuer-corpus-m677",
+  "description": "M6 corpus — Suki, Courageous Rescuer; in-hand parse.",
+  "seed": 71276,
+  "cards": {
+    "Suki, Courageous Rescuer": "Name:Suki, Courageous Rescuer\nManaCost:1 W W\nTypes:Legendary Creature Human Warrior Ally\nPT:2/4\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddPower$ 1 | Description$ Other creatures you control get +1/+0.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Permanent.YouCtrl+Other | TriggerZones$ Battlefield | PlayerTurn$ True | Execute$ TrigToken | ActivationLimit$ 1 | TriggerDescription$ Whenever another permanent you control leaves the battlefield during your turn, create a 1/1 while Ally creature token. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_ally\nOracle:Other creatures you control get +1/+0.\\nWhenever another permanent you control leaves the battlefield during your turn, create a 1/1 white Ally creature token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suki, Courageous Rescuer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

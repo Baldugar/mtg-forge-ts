@@ -1,0 +1,23 @@
+{
+  "id": "naya-soulbeast-corpus-m677",
+  "description": "M6 corpus — Naya Soulbeast; in-hand parse.",
+  "seed": 65779,
+  "cards": {
+    "Naya Soulbeast": "Name:Naya Soulbeast\nManaCost:6 G G\nTypes:Creature Beast\nPT:0/0\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When you cast this spell, each player reveals the top card of their library.\nSVar:TrigReveal:DB$ PeekAndReveal | Defined$ Player | RememberRevealed$ True\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with X +1/+1 counters on it, where X is the total mana value of all cards revealed this way.\nSVar:X:Remembered$CardManaCost\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Trample\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:When you cast this spell, each player reveals the top card of their library. Naya Soulbeast enters with X +1/+1 counters on it, where X is the total mana value of all cards revealed this way.\\nTrample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Naya Soulbeast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kefka-dancing-mad-corpus-m677",
+  "description": "M6 corpus — Kefka, Dancing Mad; in-hand parse.",
+  "seed": 63576,
+  "cards": {
+    "Kefka, Dancing Mad": "Name:Kefka, Dancing Mad\nManaCost:5 B R\nTypes:Legendary Creature Human Wizard\nPT:6/6\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | Condition$ PlayerTurn | Description$ During your turn, NICKNAME has indestructible.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigRepeat | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, exile a card at random from each opponent's graveyard. You may cast any number of spells from among cards exiled this way without paying their mana costs. Then each player who owns a spell you cast this way loses life equal to its mana value.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChooseCard | SubAbility$ DBExile\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ You | Choices$ Card.ControlledBy Remembered | ChoiceZone$ Graveyard | Mandatory$ True | AtRandom$ True | RememberChosen$ True\nSVar:DBExile:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.IsRemembered | RememberChanged$ True | SubAbility$ DBPlayThem\nSVar:DBPlayThem:DB$ Play | Valid$ Card.IsRemembered+nonLand | ValidZone$ Exile | ValidSA$ Spell | Controller$ You | WithoutManaCost$ True | Amount$ All | ImprintPlayed$ True | Optional$ True | SubAbility$ DBRepeatTwo\nSVar:DBRepeatTwo:DB$ RepeatEach | RepeatPlayers$ ImprintedOwner | RepeatSubAbility$ DBLoseLife | SubAbility$ DBCleanup\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True | ClearImprinted$ True\nSVar:X:Count$ValidAll Card.IsImprinted+OwnedBy Remembered$CardManaCost\nOracle:During your turn, Kefka has indestructible.\\nAt the beginning of your end step, exile a card at random from each opponent's graveyard. You may cast any number of spells from among cards exiled this way without paying their mana costs. Then each player who owns a spell you cast this way loses life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kefka, Dancing Mad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

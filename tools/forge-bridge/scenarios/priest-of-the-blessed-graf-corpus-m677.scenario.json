@@ -1,0 +1,23 @@
+{
+  "id": "priest-of-the-blessed-graf-corpus-m677",
+  "description": "M6 corpus — Priest of the Blessed Graf; in-hand parse.",
+  "seed": 67171,
+  "cards": {
+    "Priest of the Blessed Graf": "Name:Priest of the Blessed Graf\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:1/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBToken | TriggerDescription$ At the beginning of your end step, create X 1/1 white Spirit creature tokens with flying, where X is the number of opponents who control more lands than you.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:X:PlayerCountOpponents$HasPropertywithMoreLandsThanYou\nDeckHas:Ability$Token & Type$Spirit\nOracle:At the beginning of your end step, create X 1/1 white Spirit creature tokens with flying, where X is the number of opponents who control more lands than you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Priest of the Blessed Graf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

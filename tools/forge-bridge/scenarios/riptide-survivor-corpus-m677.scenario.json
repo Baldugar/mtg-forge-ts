@@ -1,0 +1,25 @@
+{
+  "id": "riptide-survivor-corpus-m677",
+  "description": "M6 corpus — Riptide Survivor; ETB-on-bf.",
+  "seed": 68328,
+  "cards": {
+    "Riptide Survivor": "Name:Riptide Survivor\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Morph:1 U U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, discard two cards, then draw three cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 3\nAI:RemoveDeck:Random\nOracle:Morph {1}{U}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Riptide Survivor is turned face up, discard two cards, then draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Riptide Survivor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

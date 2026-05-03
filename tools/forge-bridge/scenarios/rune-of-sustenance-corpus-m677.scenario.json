@@ -1,0 +1,23 @@
+{
+  "id": "rune-of-sustenance-corpus-m677",
+  "description": "M6 corpus — Rune of Sustenance; in-hand parse.",
+  "seed": 68636,
+  "cards": {
+    "Rune of Sustenance": "Name:Rune of Sustenance\nManaCost:1 W\nTypes:Enchantment Aura Rune\nK:Enchant:Permanent\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Lifelink | Description$ As long as enchanted permanent is a creature, it has lifelink.\nS:Mode$ Continuous | Affected$ Equipment.EnchantedBy | AddStaticAbility$ RuneSustenanceST | Description$ As long as enchanted permanent is an Equipment, it has \"Equipped creature has lifelink.\"\nSVar:RuneSustenanceST:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Lifelink | Description$ Equipped creature has lifelink.\nOracle:Enchant permanent\\nWhen Rune of Sustenance enters, draw a card.\\nAs long as enchanted permanent is a creature, it has lifelink.\\nAs long as enchanted permanent is an Equipment, it has \"Equipped creature has lifelink.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rune of Sustenance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

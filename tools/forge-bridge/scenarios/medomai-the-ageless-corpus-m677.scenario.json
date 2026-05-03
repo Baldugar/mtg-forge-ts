@@ -1,0 +1,23 @@
+{
+  "id": "medomai-the-ageless-corpus-m677",
+  "description": "M6 corpus — Medomai the Ageless; in-hand parse.",
+  "seed": 64934,
+  "cards": {
+    "Medomai the Ageless": "Name:Medomai the Ageless\nManaCost:4 W U\nTypes:Legendary Creature Sphinx\nPT:4/4\nK:Flying\nS:Mode$ CantAttack | ValidCard$ Card.Self | Condition$ ExtraTurn | Description$ CARDNAME can't attack during extra turns.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigAddTurn | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, take an extra turn after this one.\nSVar:TrigAddTurn:DB$ AddTurn | NumTurns$ 1\nSVar:MustBeBlocked:True\nOracle:Flying\\nWhenever Medomai the Ageless deals combat damage to a player, take an extra turn after this one.\\nMedomai the Ageless can't attack during extra turns.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Medomai the Ageless"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

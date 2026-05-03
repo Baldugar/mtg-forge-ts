@@ -1,0 +1,23 @@
+{
+  "id": "halimar-tidecaller-corpus-m677",
+  "description": "M6 corpus — Halimar Tidecaller; in-hand parse.",
+  "seed": 61977,
+  "cards": {
+    "Halimar Tidecaller": "Name:Halimar Tidecaller\nManaCost:2 U\nTypes:Creature Human Wizard Ally\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target card with awaken from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.YouCtrl+withAwaken\nS:Mode$ Continuous | Affected$ Creature.Land+YouCtrl | AddKeyword$ Flying | Description$ Land creatures you control have flying.\nDeckHints:Keyword$Awaken\nOracle:When Halimar Tidecaller enters, you may return target card with awaken from your graveyard to your hand.\\nLand creatures you control have flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halimar Tidecaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

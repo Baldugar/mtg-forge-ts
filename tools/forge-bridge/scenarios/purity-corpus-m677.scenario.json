@@ -1,0 +1,25 @@
+{
+  "id": "purity-corpus-m677",
+  "description": "M6 corpus — Purity; ETB-on-bf.",
+  "seed": 67381,
+  "cards": {
+    "Purity": "Name:Purity\nManaCost:3 W W W\nTypes:Creature Elemental Incarnation\nPT:6/6\nK:Flying\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ GainLife | PreventionEffect$ True | IsCombat$ False | Description$ If noncombat damage would be dealt to you, prevent that damage. You gain life equal to the damage prevented this way.\nSVar:GainLife:DB$ GainLife | Defined$ ReplacedTarget | LifeAmount$ X\nSVar:X:ReplaceCount$DamageAmount\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ When CARDNAME is put into a graveyard from anywhere, shuffle it into its owner's library.\nSVar:TrigShuffle:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredCardLKICopy\nOracle:Flying\\nIf noncombat damage would be dealt to you, prevent that damage. You gain life equal to the damage prevented this way.\\nWhen Purity is put into a graveyard from anywhere, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Purity"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

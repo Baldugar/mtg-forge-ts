@@ -1,0 +1,23 @@
+{
+  "id": "midnight-reaper-corpus-m677",
+  "description": "M6 corpus — Midnight Reaper; in-hand parse.",
+  "seed": 65095,
+  "cards": {
+    "Midnight Reaper": "Name:Midnight Reaper\nManaCost:2 B\nTypes:Creature Zombie Knight\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever a nontoken creature you control dies, CARDNAME deals 1 damage to you and you draw a card.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Whenever a nontoken creature you control dies, Midnight Reaper deals 1 damage to you and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Reaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

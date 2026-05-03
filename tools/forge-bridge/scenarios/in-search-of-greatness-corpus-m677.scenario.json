@@ -1,0 +1,23 @@
+{
+  "id": "in-search-of-greatness-corpus-m677",
+  "description": "M6 corpus — In Search of Greatness; in-hand parse.",
+  "seed": 62836,
+  "cards": {
+    "In Search of Greatness": "Name:In Search of Greatness\nManaCost:G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPlay | TriggerDescription$ At the beginning of your upkeep, you may cast a permanent spell from your hand with mana value equal to 1 plus the highest mana value among other permanents you control without paying its mana cost. If you don't, scry 1.\nSVar:TrigPlay:DB$ Play | Valid$ Permanent.YouOwn | ValidZone$ Hand | ValidSA$ Spell.cmcEQX | WithoutManaCost$ True | Amount$ 1 | Optional$ True | SubAbility$ DBScry | RememberPlayed$ True | StackDescription$ None\nSVar:DBScry:DB$ Scry | ScryNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:SVar$Y/Plus.1\nSVar:Y:Count$Valid Permanent.YouCtrl+Other$GreatestCardManaCost\nOracle:At the beginning of your upkeep, you may cast a permanent spell from your hand with mana value equal to 1 plus the highest mana value among other permanents you control without paying its mana cost. If you don't, scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "In Search of Greatness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

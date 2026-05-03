@@ -1,0 +1,23 @@
+{
+  "id": "mage-hunters-onslaught-corpus-m677",
+  "description": "M6 corpus — Mage Hunters' Onslaught; in-hand parse.",
+  "seed": 64574,
+  "cards": {
+    "Mage Hunters' Onslaught": "Name:Mage Hunters' Onslaught\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SubAbility$ DBEffect | SpellDescription$ Destroy target creature or planeswalker.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigBlocking\nSVar:TrigBlocking:Mode$ Blocks | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature blocks this turn, its controller loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredBlockerController | LifeAmount$ 1\nOracle:Destroy target creature or planeswalker.\\nWhenever a creature blocks this turn, its controller loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mage Hunters' Onslaught"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

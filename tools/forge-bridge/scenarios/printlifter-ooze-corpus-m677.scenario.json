@@ -1,0 +1,25 @@
+{
+  "id": "printlifter-ooze-corpus-m677",
+  "description": "M6 corpus — Printlifter Ooze; ETB-on-bf.",
+  "seed": 67210,
+  "cards": {
+    "Printlifter Ooze": "Name:Printlifter Ooze\nManaCost:1 G\nTypes:Creature Ooze\nPT:2/2\nK:Deathtouch\nK:Disguise:3 G\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another creature you control is turned face up, create a 0/0 green Ooze creature token with trample. The token enters with X +1/+1 counters on it, where X is the number of other creatures you control.\nSVar:TrigToken:DB$ Token | TokenScript$ g_0_0_ooze_trample | WithCountersType$ P1P1 | WithCountersAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:Deathtouch\\nWhenever Printlifter Ooze or another creature you control is turned face up, create a 0/0 green Ooze creature token with trample. The token enters with X +1/+1 counters on it, where X is the number of other creatures you control.\\nDisguise {3}{G}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Printlifter Ooze"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

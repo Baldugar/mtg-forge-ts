@@ -1,0 +1,25 @@
+{
+  "id": "sawtooth-ogre-corpus-m677",
+  "description": "M6 corpus — Sawtooth Ogre; ETB-on-bf.",
+  "seed": 69078,
+  "cards": {
+    "Sawtooth Ogre": "Name:Sawtooth Ogre\nManaCost:2 R R\nTypes:Creature Ogre\nPT:3/3\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ DelTrigBlocked | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 1 damage to that creature at end of combat.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ DelTrigBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, CARDNAME deals 1 damage to that creature at end of combat.\nSVar:DelTrigBlocked:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDamage | RememberObjects$ TriggeredAttackerLKICopy | TriggerDescription$ CARDNAME deals 1 damage to blocked creature at end of combat.\nSVar:DelTrigBlocker:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDamage | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ CARDNAME deals 1 damage to blocking creature at end of combat.\nSVar:TrigDamage:DB$ DealDamage | Defined$ DelayTriggerRememberedLKI | NumDmg$ 1\nOracle:Whenever Sawtooth Ogre blocks or becomes blocked by a creature, Sawtooth Ogre deals 1 damage to that creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sawtooth Ogre"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

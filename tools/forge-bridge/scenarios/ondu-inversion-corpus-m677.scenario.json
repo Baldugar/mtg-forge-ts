@@ -1,0 +1,23 @@
+{
+  "id": "ondu-inversion-corpus-m677",
+  "description": "M6 corpus — Ondu Inversion; in-hand parse.",
+  "seed": 66309,
+  "cards": {
+    "Ondu Inversion": "Name:Ondu Inversion\nManaCost:6 W W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Permanent.nonLand | SpellDescription$ Destroy all nonland permanents.\nAlternateMode:Modal\nOracle:Destroy all nonland permanents.\n\nALTERNATE\n\nName:Ondu Skyruins\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:Ondu Skyruins enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ondu Inversion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

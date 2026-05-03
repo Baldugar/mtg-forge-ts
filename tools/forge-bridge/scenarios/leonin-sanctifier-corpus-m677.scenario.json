@@ -1,0 +1,23 @@
+{
+  "id": "leonin-sanctifier-corpus-m677",
+  "description": "M6 corpus — Leonin Sanctifier; in-hand parse.",
+  "seed": 64132,
+  "cards": {
+    "Leonin Sanctifier": "Name:Leonin Sanctifier\nManaCost:1 W\nTypes:Creature Cat Cleric\nPT:2/1\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose a creature card in your hand. It perpetually gains lifelink.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn | ChoiceTitle$ Choose a creature card in your hand | Mandatory$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Lifelink | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHas:Ability$LifeGain\nOracle:Lifelink\\nWhen Leonin Sanctifier enters, choose a creature card in your hand. It perpetually gains lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonin Sanctifier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

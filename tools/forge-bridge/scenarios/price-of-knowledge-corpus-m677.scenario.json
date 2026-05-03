@@ -1,0 +1,23 @@
+{
+  "id": "price-of-knowledge-corpus-m677",
+  "description": "M6 corpus — Price of Knowledge; in-hand parse.",
+  "seed": 67156,
+  "cards": {
+    "Price of Knowledge": "Name:Price of Knowledge\nManaCost:6 B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Player | SetMaxHandSize$ Unlimited | Description$ Players have no maximum hand size.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ At the beginning of each opponent's upkeep, CARDNAME deals damage to that player equal to the number of cards in that player's hand.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ X | Defined$ TriggeredPlayer\nSVar:X:TriggeredPlayer$CardsInHand\nOracle:Players have no maximum hand size.\\nAt the beginning of each opponent's upkeep, Price of Knowledge deals damage to that player equal to the number of cards in that player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Price of Knowledge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goldenhide-ox-corpus-m677",
+  "description": "M6 corpus — Goldenhide Ox; in-hand parse.",
+  "seed": 61532,
+  "cards": {
+    "Goldenhide Ox": "Name:Goldenhide Ox\nManaCost:5 G\nTypes:Enchantment Creature Ox\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigPump | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, target creature must be blocked this turn if able.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME must be blocked if able. | AILogic$ Pump\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Goldenhide Ox or another enchantment you control enters, target creature must be blocked this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goldenhide Ox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

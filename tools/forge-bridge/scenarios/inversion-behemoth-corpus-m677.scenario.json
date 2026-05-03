@@ -1,0 +1,23 @@
+{
+  "id": "inversion-behemoth-corpus-m677",
+  "description": "M6 corpus — Inversion Behemoth; in-hand parse.",
+  "seed": 63085,
+  "cards": {
+    "Inversion Behemoth": "Name:Inversion Behemoth\nManaCost:2 C C\nTypes:Creature Eldrazi\nPT:2/9\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, switch the power and toughness of each of any number of target creatures until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Select any number of target creatures | KW$ HIDDEN CARDNAME's power and toughness are switched\nSVar:X:Count$Valid Creature\nOracle:At the beginning of combat on your turn, switch the power and toughness of each of any number of target creatures until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inversion Behemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

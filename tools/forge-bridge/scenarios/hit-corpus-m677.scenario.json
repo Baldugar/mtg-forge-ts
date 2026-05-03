@@ -1,0 +1,23 @@
+{
+  "id": "hit-corpus-m677",
+  "description": "M6 corpus — Hit; in-hand parse.",
+  "seed": 62406,
+  "cards": {
+    "Hit": "Name:Hit\nManaCost:1 B R\nTypes:Instant\nA:SP$ Sacrifice | ValidTgts$ Player | SacValid$ Creature,Artifact | RememberSacrificed$ True | SubAbility$ DBDmg | SpellDescription$ Target player sacrifices an artifact or creature. CARDNAME deals damage to that player equal to that permanent's mana value.\nSVar:DBDmg:DB$ DealDamage | NumDmg$ X | Defined$ Targeted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAlternateMode:Split\nOracle:Target player sacrifices an artifact or creature. Hit deals damage to that player equal to that permanent's mana value.\n\nALTERNATE\n\nName:Run\nManaCost:3 R G\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.attacking+YouCtrl | NumAtt$ +Y | SpellDescription$ Attacking creatures you control get +1/+0 until end of turn for each other attacking creature.\nSVar:Y:Count$Valid Creature.attacking/Minus.1\nOracle:Attacking creatures you control get +1/+0 until end of turn for each other attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

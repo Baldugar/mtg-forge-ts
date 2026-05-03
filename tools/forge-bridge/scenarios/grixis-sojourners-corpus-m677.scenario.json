@@ -1,0 +1,23 @@
+{
+  "id": "grixis-sojourners-corpus-m677",
+  "description": "M6 corpus — Grixis Sojourners; in-hand parse.",
+  "seed": 61799,
+  "cards": {
+    "Grixis Sojourners": "Name:Grixis Sojourners\nManaCost:1 U B R\nTypes:Creature Zombie Ogre\nPT:4/3\nK:Cycling:2 B\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME or it dies, you may exile target card from a graveyard.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | Secondary$ True | TriggerDescription$ When you cycle CARDNAME or it dies, you may exile target card from a graveyard.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TgtPrompt$ Select target card in a graveyard\nOracle:When you cycle Grixis Sojourners or it dies, you may exile target card from a graveyard.\\nCycling {2}{B} ({2}{B}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grixis Sojourners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

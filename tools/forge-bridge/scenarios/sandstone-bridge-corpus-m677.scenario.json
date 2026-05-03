@@ -1,0 +1,23 @@
+{
+  "id": "sandstone-bridge-corpus-m677",
+  "description": "M6 corpus — Sandstone Bridge; in-hand parse.",
+  "seed": 68969,
+  "cards": {
+    "Sandstone Bridge": "Name:Sandstone Bridge\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +1/+1 and gains vigilance until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ Vigilance\nSVar:PlayMain1:TRUE\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:Sandstone Bridge enters tapped.\\nWhen Sandstone Bridge enters, target creature gets +1/+1 and gains vigilance until end of turn.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sandstone Bridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

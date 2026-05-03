@@ -1,0 +1,23 @@
+{
+  "id": "sandstalker-moloch-corpus-m677",
+  "description": "M6 corpus — Sandstalker Moloch; in-hand parse.",
+  "seed": 68967,
+  "cards": {
+    "Sandstalker Moloch": "Name:Sandstalker Moloch\nManaCost:1 G G\nTypes:Creature Lizard\nPT:4/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | CheckSVar$ X | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, if an opponent cast a blue and/or black spell this turn, look at the top four cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Permanent | SelectPrompt$ Select a permanent to put into your hand | RestRandomOrder$ True\nSVar:X:Count$ThisTurnCast_Card.OppCtrl+Blue,Card.OppCtrl+Black\nOracle:Flash\\nWhen Sandstalker Moloch enters, if an opponent cast a blue and/or black spell this turn, look at the top four cards of your library. You may reveal a permanent card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sandstalker Moloch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

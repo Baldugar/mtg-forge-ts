@@ -1,0 +1,23 @@
+{
+  "id": "moonlit-scavengers-corpus-m677",
+  "description": "M6 corpus — Moonlit Scavengers; in-hand parse.",
+  "seed": 65467,
+  "cards": {
+    "Moonlit Scavengers": "Name:Moonlit Scavengers\nManaCost:5 U\nTypes:Creature Merfolk Rogue\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | IsPresent$ Artifact.YouCtrl,Enchantment.YouCtrl | TriggerDescription$ When CARDNAME enters, if you control an artifact or enchantment, return target creature an opponent controls to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Hand\nDeckHints:Type$Artifact|Enchantment\nOracle:When Moonlit Scavengers enters, if you control an artifact or enchantment, return target creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonlit Scavengers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

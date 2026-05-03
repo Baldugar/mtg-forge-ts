@@ -1,0 +1,23 @@
+{
+  "id": "make-your-mark-corpus-m677",
+  "description": "M6 corpus — Make Your Mark; in-hand parse.",
+  "seed": 64639,
+  "cards": {
+    "Make Your Mark": "Name:Make Your Mark\nManaCost:RW\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +1 | SubAbility$ DBDelayedTrigger | SpellDescription$ Target creature gets +1/+0 until end of turn.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ DBToken | SpellDescription$ When that creature dies this turn, create a 3/2 red and white Spirit creature token.\nSVar:DBToken:DB$ Token | TokenScript$ rw_3_2_spirit\nDeckHas:Ability$Token\nOracle:Target creature gets +1/+0 until end of turn. When that creature dies this turn, create a 3/2 red and white Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Make Your Mark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

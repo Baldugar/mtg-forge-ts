@@ -1,0 +1,23 @@
+{
+  "id": "mirage-mesa-corpus-m677",
+  "description": "M6 corpus — Mirage Mesa; in-hand parse.",
+  "seed": 65214,
+  "cards": {
+    "Mirage Mesa": "Name:Mirage Mesa\nManaCost:no cost\nTypes:Land Desert\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nOracle:Mirage Mesa enters tapped. As it enters, choose a color.\\n{T}: Add one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirage Mesa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

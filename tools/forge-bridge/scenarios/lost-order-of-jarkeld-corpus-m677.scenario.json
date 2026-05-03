@@ -1,0 +1,23 @@
+{
+  "id": "lost-order-of-jarkeld-corpus-m677",
+  "description": "M6 corpus — Lost Order of Jarkeld; in-hand parse.",
+  "seed": 64424,
+  "cards": {
+    "Lost Order of Jarkeld": "Name:Lost Order of Jarkeld\nManaCost:2 W W\nTypes:Creature Human Knight\nPT:1/1\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose an opponent.\nS:Mode$ Continuous | EffectZone$ Battlefield | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to 1 plus the number of creatures the chosen player controls.\nSVar:X:Count$Valid Creature.ChosenCtrl/Plus.1\nOracle:As Lost Order of Jarkeld enters, choose an opponent.\\nLost Order of Jarkeld's power and toughness are each equal to 1 plus the number of creatures the chosen player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lost Order of Jarkeld"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

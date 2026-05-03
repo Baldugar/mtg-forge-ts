@@ -1,0 +1,23 @@
+{
+  "id": "sokka-s-haiku-corpus-m677",
+  "description": "M6 corpus — Sokka's Haiku; in-hand parse.",
+  "seed": 70341,
+  "cards": {
+    "Sokka's Haiku": "Name:Sokka's Haiku\nManaCost:3 U U\nTypes:Instant Lesson\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBDraw | SpellDescription$ Counter target spell.,,,Draw a card, then mill three cards.,,,Untap target land.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | Defined$ You | NumCards$ 3 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | ValidTgts$ Land | TgtPrompt$ Select target land\nOracle:Counter target spell.\\nDraw a card, then mill three cards.\\nUntap target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sokka's Haiku"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "marina-vendrell-corpus-m677",
+  "description": "M6 corpus — Marina Vendrell; in-hand parse.",
+  "seed": 64789,
+  "cards": {
+    "Marina Vendrell": "Name:Marina Vendrell\nManaCost:W U B R G\nTypes:Legendary Creature Human Warlock\nPT:3/5\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top seven cards of your library. Put all enchantment cards from among them into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 7 | Reveal$ True | ChangeNum$ All | ChangeValid$ Enchantment | RestRandomOrder$ True\nA:AB$ UnlockDoor | Cost$ T | Mode$ LockOrUnlock | ValidTgts$ Room.YouCtrl | TgtPrompt$ Choose target Room you control | SorcerySpeed$ True | SpellDescription$ Lock or unlock a door of target Room you control. Activate only as a sorcery.\nOracle:When Marina Vendrell enters, reveal the top seven cards of your library. Put all enchantment cards from among them into your hand and the rest on the bottom of your library in a random order.\\n{T}: Lock or unlock a door of target Room you control. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marina Vendrell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

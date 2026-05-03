@@ -1,0 +1,23 @@
+{
+  "id": "rune-of-flight-corpus-m677",
+  "description": "M6 corpus — Rune of Flight; in-hand parse.",
+  "seed": 68625,
+  "cards": {
+    "Rune of Flight": "Name:Rune of Flight\nManaCost:1 U\nTypes:Enchantment Aura Rune\nK:Enchant:Permanent:permanent\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | Description$ As long as enchanted permanent is a creature, it has flying.\nS:Mode$ Continuous | Affected$ Equipment.EnchantedBy | AddStaticAbility$ RuneFlightST | Description$ As long as enchanted permanent is an Equipment, it has \"Equipped creature has flying.\"\nSVar:RuneFlightST:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | Description$ Equipped creature has flying.\nOracle:Enchant permanent\\nWhen Rune of Flight enters, draw a card.\\nAs long as enchanted permanent is a creature, it has flying.\\nAs long as enchanted permanent is an Equipment, it has \"Equipped creature has flying.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rune of Flight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

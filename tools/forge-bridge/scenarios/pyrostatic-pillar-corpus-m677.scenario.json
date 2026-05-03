@@ -1,0 +1,25 @@
+{
+  "id": "pyrostatic-pillar-corpus-m677",
+  "description": "M6 corpus — Pyrostatic Pillar; ETB-on-bf.",
+  "seed": 67422,
+  "cards": {
+    "Pyrostatic Pillar": "Name:Pyrostatic Pillar\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.cmcLE3 | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a player casts a spell with mana value 3 or less, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a spell with mana value 3 or less, Pyrostatic Pillar deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pyrostatic Pillar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

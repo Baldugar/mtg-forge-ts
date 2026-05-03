@@ -1,0 +1,23 @@
+{
+  "id": "spellrune-painter-corpus-m677",
+  "description": "M6 corpus — Spellrune Painter; in-hand parse.",
+  "seed": 70590,
+  "cards": {
+    "Spellrune Painter": "Name:Spellrune Painter\nManaCost:2 R\nTypes:Creature Human Shaman Werewolf\nPT:2/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | ValidCard$ Card.Self | NumAtt$ +1 | NumDef$ +1\nDeckHints:Type$Instant|Sorcery\nK:Daybound\nAlternateMode:DoubleFaced\nOracle:Whenever you cast an instant or sorcery spell, Spellrune Painter gets +1/+1 until end of turn.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Spellrune Howler\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:3/4\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | ValidCard$ Card.Self | NumAtt$ +2 | NumDef$ +2\nK:Nightbound\nOracle:Whenever you cast an instant or sorcery spell, Spellrune Howler gets +2/+2 until end of turn.\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellrune Painter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

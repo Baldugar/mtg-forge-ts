@@ -1,0 +1,23 @@
+{
+  "id": "struggle-for-sanity-corpus-m677",
+  "description": "M6 corpus — Struggle for Sanity; in-hand parse.",
+  "seed": 71219,
+  "cards": {
+    "Struggle for Sanity": "Name:Struggle for Sanity\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | RememberTargets$ True | RememberRevealed$ True | SubAbility$ DBRepeatChoose | StackDescription$ SpellDescription | SpellDescription$ Target opponent reveals their hand. That player exiles a card from it, then you exile a card from it. Repeat this process until all cards in that hand have been exiled. That player returns the cards they exiled this way to their hand and puts the rest into their graveyard.\nSVar:DBRepeatChoose:DB$ Repeat | RepeatSubAbility$ DBOppChoose | RepeatCheckSVar$ X | RepeatSVarCompare$ GE1 | SubAbility$ DBReturn | StackDescription$ None\nSVar:DBOppChoose:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Card.IsRemembered | ChoiceZone$ Hand | Amount$ 1 | Mandatory$ True | SubAbility$ DBExileOpp\nSVar:DBExileOpp:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Hand | Destination$ Exile | Imprint$ True | SubAbility$ DBYouChoose\nSVar:DBYouChoose:DB$ ChooseCard | Defined$ You | Choices$ Card.IsRemembered | ChoiceZone$ Hand | Amount$ 1 | Mandatory$ True | SubAbility$ DBExileYou\nSVar:DBExileYou:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Hand | Destination$ Exile\nSVar:DBReturn:DB$ ChangeZoneAll | ChangeType$ Card.IsImprinted | Origin$ Exile | Destination$ Hand | SubAbility$ DBGoYard | StackDescription$ None\nSVar:DBGoYard:DB$ ChangeZoneAll | ChangeType$ Card.!IsImprinted+IsRemembered | Origin$ Exile | Destination$ Graveyard | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$ValidHand Card.IsRemembered\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:PlayerCountOpponents$HasPropertyHasCardsInHand_Card_GE2\nOracle:Target opponent reveals their hand. That player exiles a card from it, then you exile a card from it. Repeat this process until all cards in that hand have been exiled. That player returns the cards they exiled this way to their hand and puts the rest into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Struggle for Sanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

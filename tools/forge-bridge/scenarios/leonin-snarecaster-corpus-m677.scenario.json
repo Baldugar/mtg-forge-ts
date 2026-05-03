@@ -1,0 +1,23 @@
+{
+  "id": "leonin-snarecaster-corpus-m677",
+  "description": "M6 corpus — Leonin Snarecaster; in-hand parse.",
+  "seed": 64136,
+  "cards": {
+    "Leonin Snarecaster": "Name:Leonin Snarecaster\nManaCost:1 W\nTypes:Creature Cat Soldier\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, you may tap target creature.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nSVar:PlayMain1:TRUE\nOracle:When Leonin Snarecaster enters, you may tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leonin Snarecaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

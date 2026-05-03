@@ -1,0 +1,23 @@
+{
+  "id": "split-the-party-corpus-m677",
+  "description": "M6 corpus — Split the Party; in-hand parse.",
+  "seed": 70751,
+  "cards": {
+    "Split the Party": "Name:Split the Party\nManaCost:3 U U\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ ChooseCreature | IsCurse$ True | StackDescription$ SpellDescription | SpellDescription$ Choose target player. Return half the creatures they control to their owner's hand, rounded up.\nSVar:ChooseCreature:DB$ ChooseCard | Choices$ Creature.TargetedPlayerCtrl | Mandatory$ True | Amount$ X | ChoiceTitle$ Choose half the creatures (rounded up) target player controls | SubAbility$ ReturnCreature\nSVar:ReturnCreature:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Battlefield | Destination$ Hand\nSVar:X:TargetedPlayer$CreaturesInPlay/HalfUp\nOracle:Choose target player. Return half the creatures they control to their owner's hand, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Split the Party"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

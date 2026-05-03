@@ -1,0 +1,25 @@
+{
+  "id": "pygmy-hippo-corpus-m677",
+  "description": "M6 corpus — Pygmy Hippo; ETB-on-bf.",
+  "seed": 67399,
+  "cards": {
+    "Pygmy Hippo": "Name:Pygmy Hippo\nManaCost:G U\nTypes:Creature Hippo\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ TrigActivateManaAbility | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may have defending player activate a mana ability of each land they control and lose all unspent mana. If you do, CARDNAME assigns no combat damage this turn and at the beginning of your postcombat main phase, you add an amount of {C} equal to the amount of mana that player lost this way.\nSVar:TrigActivateManaAbility:DB$ ActivateAbility | Defined$ DefendingPlayer | Type$ Land | ManaAbility$ True | SubAbility$ DBEmptyPool\nSVar:DBEmptyPool:DB$ DrainMana | Defined$ DefendingPlayer | SubAbility$ DBNoCombatDamage | RememberDrainedMana$ True\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT | SubAbility$ DBDelTrig\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Main2 | Execute$ TrigAddMana | TriggerDescription$ At the beginning of your postcombat main phase, you add an amount of {C} equal to the amount of mana the defending player lost this way. | SubAbility$ DBCleanup | RememberNumber$ True\nSVar:TrigAddMana:DB$ Mana | Produced$ C | Amount$ X\nSVar:X:Count$TriggerRememberAmount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Whenever Pygmy Hippo attacks and isn't blocked, you may have defending player activate a mana ability of each land they control and lose all unspent mana. If you do, Pygmy Hippo assigns no combat damage this turn and at the beginning of your next main phase this turn, you add an amount of {C} equal to the amount of mana that player lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pygmy Hippo"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

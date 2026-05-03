@@ -1,0 +1,23 @@
+{
+  "id": "mystic-genesis-corpus-m677",
+  "description": "M6 corpus — Mystic Genesis; in-hand parse.",
+  "seed": 65665,
+  "cards": {
+    "Mystic Genesis": "Name:Mystic Genesis\nManaCost:2 G U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | RememberCounteredCMC$ True | ValidTgts$ Card | SubAbility$ DBToken | SpellDescription$ Counter target spell. Create an X/X green Ooze creature token, where X is that spell's mana value.\nSVar:DBToken:DB$ Token | TokenScript$ g_x_x_ooze | TokenOwner$ You | TokenPower$ X | TokenToughness$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nOracle:Counter target spell. Create an X/X green Ooze creature token, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Genesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

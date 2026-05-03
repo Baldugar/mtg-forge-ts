@@ -1,0 +1,23 @@
+{
+  "id": "hired-hexblade-corpus-m677",
+  "description": "M6 corpus — Hired Hexblade; in-hand parse.",
+  "seed": 62397,
+  "cards": {
+    "Hired Hexblade": "Name:Hired Hexblade\nManaCost:1 B\nTypes:Creature Elf Warlock\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ TreasureCheck | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if mana from a Treasure was spent to cast it, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:TreasureCheck:Count$CastTotalManaSpent Treasure\nSVar:AIPreference:ManaFrom$Treasure\nOracle:When Hired Hexblade enters, if mana from a Treasure was spent to cast it, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hired Hexblade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

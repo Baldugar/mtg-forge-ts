@@ -1,0 +1,23 @@
+{
+  "id": "restrain-corpus-m677",
+  "description": "M6 corpus — Restrain; in-hand parse.",
+  "seed": 68129,
+  "cards": {
+    "Restrain": "Name:Restrain\nManaCost:2 W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SubAbility$ DBDraw | SpellDescription$ Prevent all combat damage that would be dealt by target attacking creature this turn.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by target attacking creature this turn.\nOracle:Prevent all combat damage that would be dealt by target attacking creature this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

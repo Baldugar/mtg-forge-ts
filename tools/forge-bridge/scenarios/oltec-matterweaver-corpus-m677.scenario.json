@@ -1,0 +1,25 @@
+{
+  "id": "oltec-matterweaver-corpus-m677",
+  "description": "M6 corpus — Oltec Matterweaver; ETB-on-bf.",
+  "seed": 66277,
+  "cards": {
+    "Oltec Matterweaver": "Name:Oltec Matterweaver\nManaCost:2 W\nTypes:Creature Human Artificer\nPT:2/4\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBCopy\nSVar:DBToken:DB$ Token | TokenScript$ c_1_1_a_gnome | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Gnome artifact creature token.\nSVar:DBCopy:DB$ CopyPermanent | ValidTgts$ Artifact.token+YouCtrl | TgtPrompt$ Select target artifact token you control | SpellDescription$ Create a token that's a copy of target artifact token you control.\nDeckHas:Ability$Token\nDeckHints:Ability$Token\nOracle:Whenever you cast a creature spell, choose one —\\n• Create a 1/1 colorless Gnome artifact creature token.\\n• Create a token that's a copy of target artifact token you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oltec Matterweaver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

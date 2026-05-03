@@ -1,0 +1,23 @@
+{
+  "id": "interpret-the-signs-corpus-m677",
+  "description": "M6 corpus — Interpret the Signs; in-hand parse.",
+  "seed": 63027,
+  "cards": {
+    "Interpret the Signs": "Name:Interpret the Signs\nManaCost:5 U\nTypes:Sorcery\nA:SP$ Scry | ScryNum$ 3 | SubAbility$ DBReveal | SpellDescription$ Scry 3, then reveal the top card of your library. Draw cards equal to that card's mana value.\nSVar:DBReveal:DB$ PeekAndReveal | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | NumCardsDesc$ cards equal to that card's mana value\nSVar:X:Count$TopOfLibraryCMC\nOracle:Scry 3, then reveal the top card of your library. Draw cards equal to that card's mana value. (To scry 3, look at the top three cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Interpret the Signs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

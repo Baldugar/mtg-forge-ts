@@ -1,0 +1,23 @@
+{
+  "id": "mutational-advantage-corpus-m677",
+  "description": "M6 corpus — Mutational Advantage; in-hand parse.",
+  "seed": 65618,
+  "cards": {
+    "Mutational Advantage": "Name:Mutational Advantage\nManaCost:1 G U\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Permanent.YouCtrl+HasCounters | KW$ Hexproof & Indestructible | SubAbility$ DBPrevent | SpellDescription$ Permanents you control with counters on them gain hexproof and indestructible until end of turn.\nSVar:DBPrevent:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Valid Permanent.YouCtrl+HasCounters | SubAbility$ DBProliferate | SpellDescription$ Prevent all damage that would be dealt to those permanents this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all damage that would be dealt to those permanents this turn.\nSVar:DBProliferate:DB$ Proliferate | SpellDescription$ Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nDeckNeeds:Ability$Counters\nOracle:Permanents you control with counters on them gain hexproof and indestructible until end of turn. Prevent all damage that would be dealt to those permanents this turn. Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mutational Advantage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

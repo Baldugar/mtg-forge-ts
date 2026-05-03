@@ -1,0 +1,25 @@
+{
+  "id": "opal-eye-konda-s-yojimbo-corpus-m677",
+  "description": "M6 corpus — Opal-Eye, Konda's Yojimbo; ETB-on-bf.",
+  "seed": 66336,
+  "cards": {
+    "Opal-Eye, Konda's Yojimbo": "Name:Opal-Eye, Konda's Yojimbo\nManaCost:1 W W\nTypes:Legendary Creature Fox Samurai\nPT:1/4\nK:Defender\nK:Bushido:1\nA:AB$ ChooseSource | Cost$ T | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage this turn, that damage is dealt to CARDNAME instead.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ SelflessDamage | Duration$ UntilHostLeavesPlayOrEOT | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1\nSVar:SelflessDamage:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ SelflessDmg | DamageTarget$ EffectSource | Description$ The next time a source of your choice would deal damage to you this turn, that damage is dealt to EFFECTSOURCE instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ EffectSource | VarType$ Card | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nA:AB$ PreventDamage | Cost$ 1 W | Defined$ Self | Amount$ 1 | SpellDescription$ Prevent the next 1 damage that would be dealt to NICKNAME this turn.\nAI:RemoveDeck:All\nOracle:Defender (This creature can't attack.)\\nBushido 1 (Whenever this creature blocks or becomes blocked, it gets +1/+1 until end of turn.)\\n{T}: The next time a source of your choice would deal damage this turn, that damage is dealt to Opal-Eye, Konda's Yojimbo instead.\\n{1}{W}: Prevent the next 1 damage that would be dealt to Opal-Eye this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Opal-Eye, Konda's Yojimbo"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

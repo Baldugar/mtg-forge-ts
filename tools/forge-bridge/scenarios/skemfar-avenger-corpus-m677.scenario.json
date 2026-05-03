@@ -1,0 +1,23 @@
+{
+  "id": "skemfar-avenger-corpus-m677",
+  "description": "M6 corpus — Skemfar Avenger; in-hand parse.",
+  "seed": 70030,
+  "cards": {
+    "Skemfar Avenger": "Name:Skemfar Avenger\nManaCost:1 B\nTypes:Creature Elf Berserker\nPT:3/1\nT:Mode$ ChangesZone | ValidCard$ Elf.!token+Other+YouCtrl,Berserker.!token+Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever another nontoken Elf or Berserker you control dies, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nDeckHints:Type$Elf|Berserker\nOracle:Whenever another nontoken Elf or Berserker you control dies, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skemfar Avenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "maralen-fae-ascendant-corpus-m677",
+  "description": "M6 corpus — Maralen, Fae Ascendant; in-hand parse.",
+  "seed": 64744,
+  "cards": {
+    "Maralen, Fae Ascendant": "Name:Maralen, Fae Ascendant\nManaCost:2 B G U\nTypes:Legendary Creature Elf Faerie Noble\nPT:4/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Elf.Other+YouCtrl,Faerie.Other+YouCtrl | Execute$ TrigExile | TriggerDescription$ Whenever NICKNAME or another Elf or Faerie you control enters, exile the top two cards of target opponent's library.\nSVar:TrigExile:DB$ Dig | ValidTgts$ Opponent | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile\nS:Mode$ Continuous | Affected$ Card.nonLand+cmcLEX+ExiledWithSource+ThisTurnEntered | MayPlay$ True | MayPlayLimit$ 1 | MayPlayWithoutManaCost$ True | EffectZone$ Battlefield | AffectedZone$ Exile | Description$ Once each turn, you may cast a spell with mana value less than or equal to the number of Elves and Faeries you control from among cards exiled with NICKNAME this turn without paying its mana cost.\nSVar:X:Count$Valid Elf.YouCtrl,Faerie.YouCtrl\nSVar:PlayMain1:ALWAYS\nDeckHints:Type$Elf|Faerie\nOracle:Flying\\nWhenever Maralen or another Elf or Faerie you control enters, exile the top two cards of target opponent's library.\\nOnce each turn, you may cast a spell with mana value less than or equal to the number of Elves and Faeries you control from among cards exiled with Maralen this turn without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maralen, Fae Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

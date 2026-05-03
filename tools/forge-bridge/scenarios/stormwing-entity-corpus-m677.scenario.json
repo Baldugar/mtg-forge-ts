@@ -1,0 +1,23 @@
+{
+  "id": "stormwing-entity-corpus-m677",
+  "description": "M6 corpus — Stormwing Entity; in-hand parse.",
+  "seed": 71137,
+  "cards": {
+    "Stormwing Entity": "Name:Stormwing Entity\nManaCost:3 U U\nTypes:Creature Elemental\nPT:3/3\nS:Mode$ ReduceCost | ValidCard$ Card.Self | EffectZone$ All | Type$ Spell | Amount$ 2 | CheckSVar$ X | Description$ CARDNAME costs {2}{U} less to cast if you've cast an instant or sorcery spell this turn.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | EffectZone$ All | Type$ Spell | Amount$ 1 | Color$ U | CheckSVar$ X | Secondary$ True | Description$ CARDNAME costs {2}{U} less to cast if you've cast an instant or sorcery spell this turn.\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl\nDeckHints:Type$Instant|Sorcery\nK:Flying\nK:Prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nOracle:This spell costs {2}{U} less to cast if you've cast an instant or sorcery spell this turn.\\nFlying\\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhen Stormwing Entity enters, scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormwing Entity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

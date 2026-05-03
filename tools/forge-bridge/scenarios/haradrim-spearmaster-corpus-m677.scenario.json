@@ -1,0 +1,23 @@
+{
+  "id": "haradrim-spearmaster-corpus-m677",
+  "description": "M6 corpus — Haradrim Spearmaster; in-hand parse.",
+  "seed": 62037,
+  "cards": {
+    "Haradrim Spearmaster": "Name:Haradrim Spearmaster\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:2/3\nK:Reach\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, another target creature you control gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +1\nSVar:PlayMain1:TRUE\nOracle:Reach\\nAt the beginning of combat on your turn, another target creature you control gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haradrim Spearmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

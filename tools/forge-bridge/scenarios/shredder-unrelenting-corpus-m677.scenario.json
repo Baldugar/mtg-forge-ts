@@ -1,0 +1,23 @@
+{
+  "id": "shredder-unrelenting-corpus-m677",
+  "description": "M6 corpus — Shredder, Unrelenting; in-hand parse.",
+  "seed": 69772,
+  "cards": {
+    "Shredder, Unrelenting": "Name:Shredder, Unrelenting\nManaCost:4 B\nTypes:Legendary Creature Human Ninja\nPT:6/4\nK:Sneak:3 B\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME enters or attacks, another target creature you control gains deathtouch until end of turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Secondary$ True | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME enters or attacks, another target creature you control gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | ValidTgtsDesc$ another creature you control | KW$ Deathtouch\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard\nOracle:Sneak {3}{B} (You may cast this spell for {3}{B} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)\\nDeathtouch\\nWhenever Shredder enters or attacks, another target creature you control gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shredder, Unrelenting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

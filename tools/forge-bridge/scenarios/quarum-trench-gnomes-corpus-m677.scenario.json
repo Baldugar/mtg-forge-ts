@@ -1,0 +1,25 @@
+{
+  "id": "quarum-trench-gnomes-corpus-m677",
+  "description": "M6 corpus — Quarum Trench Gnomes; ETB-on-bf.",
+  "seed": 67448,
+  "cards": {
+    "Quarum Trench Gnomes": "Name:Quarum Trench Gnomes\nManaCost:3 R\nTypes:Creature Gnome\nPT:1/1\nA:AB$ Effect | Cost$ T | ValidTgts$ Plains | IsCurse$ True | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | Duration$ Permanent | ReplacementEffects$ QuarumReplacement | StackDescription$ REP target Plains_{c:Targeted} | SpellDescription$ If target Plains is tapped for mana, it produces colorless mana instead of white mana. (This effect lasts indefinitely.)\nSVar:QuarumReplacement:Event$ ProduceMana | ValidCard$ Card.IsRemembered | ReplaceWith$ QuarumProduce | Description$ If this permanent is tapped for mana, it produces colorless mana instead of white mana.\nSVar:QuarumProduce:DB$ ReplaceMana | ReplaceColor$ C | ReplaceOnly$ W\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{T}: If target Plains is tapped for mana, it produces colorless mana instead of white mana. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Quarum Trench Gnomes"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

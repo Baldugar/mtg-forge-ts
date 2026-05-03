@@ -1,0 +1,23 @@
+{
+  "id": "grim-physician-corpus-m677",
+  "description": "M6 corpus — Grim Physician; in-hand parse.",
+  "seed": 61775,
+  "cards": {
+    "Grim Physician": "Name:Grim Physician\nManaCost:B\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME dies, target creature an opponent controls gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nOracle:When Grim Physician dies, target creature an opponent controls gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Physician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

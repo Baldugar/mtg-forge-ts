@@ -1,0 +1,23 @@
+{
+  "id": "phantom-nantuko-corpus-m677",
+  "description": "M6 corpus — Phantom Nantuko; in-hand parse.",
+  "seed": 66806,
+  "cards": {
+    "Phantom Nantuko": "Name:Phantom Nantuko\nManaCost:2 G\nTypes:Creature Insect Spirit\nPT:0/0\nK:Trample\nK:etbCounter:P1P1:2\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. Remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ PutCounter | Cost$ T | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nOracle:Trample\\nPhantom Nantuko enters with two +1/+1 counters on it.\\nIf damage would be dealt to Phantom Nantuko, prevent that damage. Remove a +1/+1 counter from Phantom Nantuko.\\n{T}: Put a +1/+1 counter on Phantom Nantuko.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantom Nantuko"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

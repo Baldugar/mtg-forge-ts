@@ -1,0 +1,23 @@
+{
+  "id": "sunblast-angel-corpus-m677",
+  "description": "M6 corpus — Sunblast Angel; in-hand parse.",
+  "seed": 71338,
+  "cards": {
+    "Sunblast Angel": "Name:Sunblast Angel\nManaCost:4 W W\nTypes:Creature Angel\nPT:4/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, destroy all tapped creatures.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.tapped\nOracle:Flying\\nWhen Sunblast Angel enters, destroy all tapped creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunblast Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

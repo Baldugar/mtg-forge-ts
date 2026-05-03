@@ -1,0 +1,25 @@
+{
+  "id": "primal-plasma-corpus-m677",
+  "description": "M6 corpus — Primal Plasma; ETB-on-bf.",
+  "seed": 67186,
+  "cards": {
+    "Primal Plasma": "Name:Primal Plasma\nManaCost:3 U\nTypes:Creature Elemental Shapeshifter\nPT:*/*\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | Layer$ Copy | ReplacementResult$ Updated | ReplaceWith$ PlasmaChoice | Description$ As CARDNAME enters, it becomes your choice of a 3/3 creature, a 2/2 creature with flying, or a 1/6 creature with defender.\nSVar:PlasmaChoice:DB$ GenericChoice | Defined$ You | Choices$ GroundPlasma,AirPlasma,WallPlasma\nSVar:GroundPlasma:DB$ Clone | Defined$ Self | SetPower$ 3 | SetToughness$ 3 | SpellDescription$ CARDNAME is 3/3.\nSVar:AirPlasma:DB$ Clone | Defined$ Self | SetPower$ 2 | SetToughness$ 2 | AddKeywords$ Flying | SpellDescription$ CARDNAME is 2/2 with flying.\nSVar:WallPlasma:DB$ Clone | Defined$ Self | SetPower$ 1 | SetToughness$ 6 | AddKeywords$ Defender | SpellDescription$ CARDNAME is 1/6 with defender.\nAI:RemoveDeck:All\nOracle:As Primal Plasma enters, it becomes your choice of a 3/3 creature, a 2/2 creature with flying, or a 1/6 creature with defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Primal Plasma"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "silverquill-silencer-corpus-m677",
+  "description": "M6 corpus — Silverquill Silencer; in-hand parse.",
+  "seed": 69938,
+  "cards": {
+    "Silverquill Silencer": "Name:Silverquill Silencer\nManaCost:W B\nTypes:Creature Human Cleric\nPT:3/2\nK:ETBReplacement:Other:DBNameCard\nSVar:DBNameCard:DB$ NameCard | Defined$ You | ValidCards$ Card.nonLand | ValidDescription$ nonland | SpellDescription$ As CARDNAME enters, choose a nonland card name.\nT:Mode$ SpellCast | ValidCard$ Card.NamedCard | ValidActivatingPlayer$ Opponent | Execute$ TrigDrain | TriggerDescription$ Whenever an opponent casts a spell with the chosen name, they lose 3 life and you draw a card.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You\nOracle:As Silverquill Silencer enters, choose a nonland card name.\\nWhenever an opponent casts a spell with the chosen name, they lose 3 life and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silverquill Silencer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

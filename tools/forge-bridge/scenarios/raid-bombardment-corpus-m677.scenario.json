@@ -1,0 +1,23 @@
+{
+  "id": "raid-bombardment-corpus-m677",
+  "description": "M6 corpus — Raid Bombardment; in-hand parse.",
+  "seed": 67580,
+  "cards": {
+    "Raid Bombardment": "Name:Raid Bombardment\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.powerLE2+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature you control with power 2 or less attacks, CARDNAME deals 1 damage to the player or planeswalker that creature is attacking.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | NumDmg$ 1\nSVar:PlayMain1:TRUE\nOracle:Whenever a creature you control with power 2 or less attacks, Raid Bombardment deals 1 damage to the player or planeswalker that creature is attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raid Bombardment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

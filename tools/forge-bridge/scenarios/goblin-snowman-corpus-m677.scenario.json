@@ -1,0 +1,25 @@
+{
+  "id": "goblin-snowman-corpus-m677",
+  "description": "M6 corpus — Goblin Snowman; ETB-on-bf.",
+  "seed": 61472,
+  "cards": {
+    "Goblin Snowman": "Name:Goblin Snowman\nManaCost:3 R\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ Blocks | ValidCard$ Card.Self | ValidBlocked$ Creature | Execute$ TrigPrevent | TriggerDescription$ Whenever CARDNAME blocks, prevent all combat damage that would be dealt to and dealt by it this turn.\nSVar:TrigPrevent:DB$ Pump | Defined$ Self | KW$ Prevent all combat damage that would be dealt to and dealt by CARDNAME.\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.blockedBySource | TgtPrompt$ Select target creature CARDNAME is blocking | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target creature it's blocking.\nOracle:Whenever Goblin Snowman blocks, prevent all combat damage that would be dealt to and dealt by it this turn.\\n{T}: Goblin Snowman deals 1 damage to target creature it's blocking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Snowman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

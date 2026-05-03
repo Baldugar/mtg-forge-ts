@@ -1,0 +1,23 @@
+{
+  "id": "on-wings-of-gold-corpus-m677",
+  "description": "M6 corpus — On Wings of Gold; in-hand parse.",
+  "seed": 66299,
+  "cards": {
+    "On Wings of Gold": "Name:On Wings of Gold\nManaCost:3 W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.Zombie+YouCtrl,Creature.token+YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Flying | Description$ Creatures you control that are Zombies and/or tokens get +1/+1 and have flying.\nT:Mode$ ChangesZoneAll | ValidCards$ Card.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more cards leave your graveyard, create a 1/1 white Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_zombie\nSVar:PlayMain1:TRUE\nOracle:Creatures you control that are Zombies and/or tokens get +1/+1 and have flying.\\nWhenever one or more cards leave your graveyard, create a 1/1 white Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "On Wings of Gold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

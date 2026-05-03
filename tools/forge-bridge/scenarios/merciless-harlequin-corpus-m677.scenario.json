@@ -1,0 +1,23 @@
+{
+  "id": "merciless-harlequin-corpus-m677",
+  "description": "M6 corpus — Merciless Harlequin; in-hand parse.",
+  "seed": 65003,
+  "cards": {
+    "Merciless Harlequin": "Name:Merciless Harlequin\nManaCost:2 B\nTypes:Creature Human Assassin\nPT:2/1\nK:Freerunning:1 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:Freerunning {1}{B} (You may cast this spell for its freerunning cost if you dealt combat damage to a player this turn with an Assassin or commander.)\\nWhen Merciless Harlequin enters, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merciless Harlequin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

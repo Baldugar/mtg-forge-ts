@@ -1,0 +1,23 @@
+{
+  "id": "shattered-crypt-corpus-m677",
+  "description": "M6 corpus — Shattered Crypt; in-hand parse.",
+  "seed": 69631,
+  "cards": {
+    "Shattered Crypt": "Name:Shattered Crypt\nManaCost:X B B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select X target creature cards from your graveyard | TargetMin$ X | TargetMax$ X | SubAbility$ DBLoseLife | SpellDescription$ Return X target creature cards from your graveyard to your hand. You lose X life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Return X target creature cards from your graveyard to your hand. You lose X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shattered Crypt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

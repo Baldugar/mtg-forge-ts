@@ -1,0 +1,23 @@
+{
+  "id": "roadside-blowout-corpus-m677",
+  "description": "M6 corpus — Roadside Blowout; in-hand parse.",
+  "seed": 68418,
+  "cards": {
+    "Roadside Blowout": "Name:Roadside Blowout\nManaCost:2 U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | ValidTarget$ Permanent.cmcEQ1 | EffectZone$ All | Description$ This spell costs {2} less to cast if it targets a permanent with mana value 1.\nA:SP$ ChangeZone | ValidTgts$ Creature.OppCtrl,Vehicle.OppCtrl | TgtPrompt$ Select target creature or Vehicle an opponent controls | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return target creature or Vehicle an opponent controls to its owner's hand. Draw a card.\nSVar:DBDraw:DB$ Draw\nOracle:This spell costs {2} less to cast if it targets a permanent with mana value 1.\\nReturn target creature or Vehicle an opponent controls to its owner's hand.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roadside Blowout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

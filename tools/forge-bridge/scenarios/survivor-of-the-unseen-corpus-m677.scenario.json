@@ -1,0 +1,25 @@
+{
+  "id": "survivor-of-the-unseen-corpus-m677",
+  "description": "M6 corpus — Survivor of the Unseen; ETB-on-bf.",
+  "seed": 71438,
+  "cards": {
+    "Survivor of the Unseen": "Name:Survivor of the Unseen\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Cumulative upkeep:2\nA:AB$ Draw | Cost$ T | NumCards$ 2 | SubAbility$ DBTop | SpellDescription$ Draw two cards, then put a card from your hand on top of your library.\nSVar:DBTop:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True\nAI:RemoveDeck:All\nOracle:Cumulative upkeep {2} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\n{T}: Draw two cards, then put a card from your hand on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Survivor of the Unseen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

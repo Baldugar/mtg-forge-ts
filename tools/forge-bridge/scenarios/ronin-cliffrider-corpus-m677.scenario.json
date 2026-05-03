@@ -1,0 +1,23 @@
+{
+  "id": "ronin-cliffrider-corpus-m677",
+  "description": "M6 corpus — Ronin Cliffrider; in-hand parse.",
+  "seed": 68491,
+  "cards": {
+    "Ronin Cliffrider": "Name:Ronin Cliffrider\nManaCost:3 R R\nTypes:Creature Human Samurai\nPT:2/2\nK:Bushido:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may have it deal 1 damage to each creature defending player controls.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature.ControlledBy TriggeredDefendingPlayer | NumDmg$ 1 | ValidDescription$ each creature defending player controls.\nSVar:HasAttackEffect:TRUE\nOracle:Bushido 1 (Whenever this creature blocks or becomes blocked, it gets +1/+1 until end of turn.)\\nWhenever Ronin Cliffrider attacks, you may have it deal 1 damage to each creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ronin Cliffrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

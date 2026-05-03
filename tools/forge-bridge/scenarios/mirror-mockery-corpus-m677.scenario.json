@@ -1,0 +1,23 @@
+{
+  "id": "mirror-mockery-corpus-m677",
+  "description": "M6 corpus — Mirror Mockery; in-hand parse.",
+  "seed": 65247,
+  "cards": {
+    "Mirror Mockery": "Name:Mirror Mockery\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigCopy | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature attacks, you may create a token that's a copy of that creature. Exile that token at end of combat.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ TriggeredAttackerLKICopy | AtEOT$ ExileCombat\nOracle:Enchant creature\\nWhenever enchanted creature attacks, you may create a token that's a copy of that creature. Exile that token at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror Mockery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

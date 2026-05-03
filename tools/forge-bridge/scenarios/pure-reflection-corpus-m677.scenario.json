@@ -1,0 +1,25 @@
+{
+  "id": "pure-reflection-corpus-m677",
+  "description": "M6 corpus — Pure Reflection; ETB-on-bf.",
+  "seed": 67370,
+  "cards": {
+    "Pure Reflection": "Name:Pure Reflection\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | Execute$ TrigDestroy | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a creature spell, destroy all Reflections. Then that player creates an X/X white Reflection creature token, where X is the mana value of that spell.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Reflection | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenPower$ X | TokenToughness$ X | TokenScript$ w_x_x_reflection | TokenOwner$ TriggeredActivator\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Whenever a player casts a creature spell, destroy all Reflections. Then that player creates an X/X white Reflection creature token, where X is the mana value of that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pure Reflection"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

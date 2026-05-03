@@ -1,0 +1,25 @@
+{
+  "id": "nacatl-hunt-pride-corpus-m677",
+  "description": "M6 corpus — Nacatl Hunt-Pride; ETB-on-bf.",
+  "seed": 65696,
+  "cards": {
+    "Nacatl Hunt-Pride": "Name:Nacatl Hunt-Pride\nManaCost:5 W\nTypes:Creature Cat Warrior\nPT:5/4\nK:Vigilance\nA:AB$ Pump | Cost$ R T | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | SpellDescription$ Target creature can't block this turn.\nA:AB$ Effect | Cost$ G T | ValidTgts$ Creature | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StaticAbilities$ MustBlock | StackDescription$ {c:Targeted} blocks this turn if able. | SpellDescription$ Target creature blocks this turn if able.\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ This creature blocks this turn if able.\nAI:RemoveDeck:All\nOracle:Vigilance\\n{R}, {T}: Target creature can't block this turn.\\n{G}, {T}: Target creature blocks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nacatl Hunt-Pride"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

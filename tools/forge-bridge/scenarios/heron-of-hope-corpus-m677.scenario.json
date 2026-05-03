@@ -1,0 +1,25 @@
+{
+  "id": "heron-of-hope-corpus-m677",
+  "description": "M6 corpus — Heron of Hope; ETB-on-bf.",
+  "seed": 62309,
+  "cards": {
+    "Heron of Hope": "Name:Heron of Hope\nManaCost:3 W\nTypes:Creature Bird\nPT:2/3\nK:Flying\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GainLife | AILogic$ DoubleLife | Description$ If you would gain life, you gain that much life plus 1 instead.\nSVar:GainLife:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nSVar:X:ReplaceCount$LifeGained/Plus.1\nA:AB$ Pump | Cost$ 1 W | Defined$ Self | KW$ Lifelink | SpellDescription$ CARDNAME gains lifelink until end of turn.\nDeckHas:Ability$LifeGain\nOracle:Flying\\nIf you would gain life, you gain that much life plus 1 instead.\\n{1}{W}: Heron of Hope gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Heron of Hope"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

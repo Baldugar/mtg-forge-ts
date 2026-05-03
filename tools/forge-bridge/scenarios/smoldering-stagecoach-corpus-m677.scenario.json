@@ -1,0 +1,23 @@
+{
+  "id": "smoldering-stagecoach-corpus-m677",
+  "description": "M6 corpus — Smoldering Stagecoach; in-hand parse.",
+  "seed": 70273,
+  "cards": {
+    "Smoldering Stagecoach": "Name:Smoldering Stagecoach\nManaCost:3 R\nTypes:Artifact Vehicle\nPT:*/5\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of instant and sorcery cards in your graveyard.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigInstantEffect | TriggerDescription$ Whenever CARDNAME attacks, the next instant spell and the next sorcery spell you cast this turn each have cascade.\nSVar:TrigInstantEffect:DB$ Effect | StaticAbilities$ CascadeInstant | ForgetOnCast$ Instant.YouCtrl | SubAbility$ DBSorceryEffect\nSVar:DBSorceryEffect:DB$ Effect | StaticAbilities$ CascadeSorcery | ForgetOnCast$ Sorcery.YouCtrl\nSVar:CascadeInstant:Mode$ Continuous | Affected$ Card.Instant+YouCtrl | AffectedZone$ Stack | AddKeyword$ Cascade | Description$ The next instant spell you cast this turn has cascade.\nSVar:CascadeSorcery:Mode$ Continuous | Affected$ Card.Sorcery+YouCtrl | AffectedZone$ Stack | AddKeyword$ Cascade | Description$ The next sorcery spell you cast this turn has cascade.\nSVar:HasAttackEffect:TRUE\nK:Crew:2\nDeckHas:Keyword$Cascade\nDeckHints:Type$Instant|Sorcery\nOracle:Smoldering Stagecoach's power is equal to the number of instant and sorcery cards in your graveyard.\\nWhenever Smoldering Stagecoach attacks, the next instant spell and the next sorcery spell you cast this turn each have cascade.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smoldering Stagecoach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

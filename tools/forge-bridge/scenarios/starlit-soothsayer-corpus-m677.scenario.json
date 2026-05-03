@@ -1,0 +1,23 @@
+{
+  "id": "starlit-soothsayer-corpus-m677",
+  "description": "M6 corpus — Starlit Soothsayer; in-hand parse.",
+  "seed": 70901,
+  "cards": {
+    "Starlit Soothsayer": "Name:Starlit Soothsayer\nManaCost:2 B\nTypes:Creature Bat Cleric\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your end step, if you gained or lost life this turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nSVar:X:Count$LifeYouGainedThisTurn/Plus.Y\nSVar:Y:PlayerCountPropertyYou$LifeLostThisTurn\nOracle:Flying\\nAt the beginning of your end step, if you gained or lost life this turn, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starlit Soothsayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

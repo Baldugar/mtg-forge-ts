@@ -1,0 +1,23 @@
+{
+  "id": "jarl-of-the-forsaken-corpus-m677",
+  "description": "M6 corpus — Jarl of the Forsaken; in-hand parse.",
+  "seed": 63245,
+  "cards": {
+    "Jarl of the Forsaken": "Name:Jarl of the Forsaken\nManaCost:3 B\nTypes:Creature Zombie Cleric\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature or planeswalker an opponent controls that was dealt damage this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl+wasDealtDamageThisTurn,Planeswalker.OppCtrl+wasDealtDamageThisTurn | TgtPrompt$ Select target creature or planeswalker an opponent controls that was dealt damage this turn.\nK:Foretell:1 B\nOracle:Flash\\nWhen Jarl of the Forsaken enters, destroy target creature or planeswalker an opponent controls that was dealt damage this turn.\\nForetell {1}{B} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jarl of the Forsaken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

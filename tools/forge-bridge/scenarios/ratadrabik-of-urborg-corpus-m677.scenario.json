@@ -1,0 +1,23 @@
+{
+  "id": "ratadrabik-of-urborg-corpus-m677",
+  "description": "M6 corpus — Ratadrabik of Urborg; in-hand parse.",
+  "seed": 67727,
+  "cards": {
+    "Ratadrabik of Urborg": "Name:Ratadrabik of Urborg\nManaCost:2 W B\nTypes:Legendary Creature Zombie Wizard\nPT:3/3\nK:Vigilance\nK:Ward:2\nS:Mode$ Continuous | Affected$ Zombie.YouCtrl+Other | AddKeyword$ Vigilance | Description$ Other Zombies you control have vigilance.\nT:Mode$ ChangesZone | ValidCard$ Creature.Legendary+Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ DBCopy | TriggerDescription$ Whenever another legendary creature you control dies, create a token that's a copy of that creature, except it's not legendary and it's a 2/2 black Zombie in addition to its other colors and types.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | NonLegendary$ True | SetPower$ 2 | SetToughness$ 2 | AddTypes$ Zombie | AddColors$ Black\nDeckHas:Ability$Token\nDeckHints:Type$Legendary|Zombie\nOracle:Vigilance, ward {2}\\nOther Zombies you control have vigilance.\\nWhenever another legendary creature you control dies, create a token that's a copy of that creature, except it's not legendary and it's a 2/2 black Zombie in addition to its other colors and types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ratadrabik of Urborg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

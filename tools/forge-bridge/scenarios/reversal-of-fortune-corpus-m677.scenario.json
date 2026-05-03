@@ -1,0 +1,23 @@
+{
+  "id": "reversal-of-fortune-corpus-m677",
+  "description": "M6 corpus — Reversal of Fortune; in-hand parse.",
+  "seed": 68186,
+  "cards": {
+    "Reversal of Fortune": "Name:Reversal of Fortune\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | SubAbility$ DBPlay | SpellDescription$ Target opponent reveals their hand. You may copy an instant or sorcery card in it. If you do, you may cast the copy without paying its mana cost.\nSVar:DBPlay:DB$ Play | CopyCard$ True | Optional$ True | Valid$ Sorcery.TargetedPlayerCtrl,Instant.TargetedPlayerCtrl | WithoutManaCost$ True | ValidSA$ Spell\nOracle:Target opponent reveals their hand. You may copy an instant or sorcery card in it. If you do, you may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reversal of Fortune"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

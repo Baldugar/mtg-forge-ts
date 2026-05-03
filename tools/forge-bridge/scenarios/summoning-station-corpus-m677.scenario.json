@@ -1,0 +1,23 @@
+{
+  "id": "summoning-station-corpus-m677",
+  "description": "M6 corpus — Summoning Station; in-hand parse.",
+  "seed": 71319,
+  "cards": {
+    "Summoning Station": "Name:Summoning Station\nManaCost:7\nTypes:Artifact\nA:AB$ Token | Cost$ T | TokenScript$ c_2_2_pincher | TokenOwner$ You | SpellDescription$ Create a 2/2 colorless Pincher creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact | TriggerZones$ Battlefield | Execute$ TrigUntap | OptionalDecider$ You | TriggerDescription$ Whenever an artifact is put into a graveyard from the battlefield, you may untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:Random\nOracle:{T}: Create a 2/2 colorless Pincher creature token.\\nWhenever an artifact is put into a graveyard from the battlefield, you may untap Summoning Station.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summoning Station"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

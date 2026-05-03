@@ -1,0 +1,23 @@
+{
+  "id": "shielding-plax-corpus-m677",
+  "description": "M6 corpus — Shielding Plax; in-hand parse.",
+  "seed": 69687,
+  "cards": {
+    "Shielding Plax": "Name:Shielding Plax\nManaCost:2 GU\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CantTarget | ValidTarget$ Card.EnchantedBy | Activator$ Opponent | Description$ Enchanted creature can't be the target of spells or abilities your opponents control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:({G/U} can be paid with either {G} or {U}.)\\nEnchant creature\\nWhen Shielding Plax enters, draw a card.\\nEnchanted creature can't be the target of spells or abilities your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shielding Plax"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "gorgon-recluse-corpus-m677",
+  "description": "M6 corpus — Gorgon Recluse; ETB-on-bf.",
+  "seed": 61576,
+  "cards": {
+    "Gorgon Recluse": "Name:Gorgon Recluse\nManaCost:3 B B\nTypes:Creature Gorgon\nPT:2/4\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.nonBlack | ValidBlocker$ Card.Self | Execute$ DelTrigBlocked | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a nonblack creature, destroy that creature at end of combat.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.nonBlack | Execute$ DelTrigBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a nonblack creature, destroy that creature at end of combat.\nSVar:DelTrigBlocked:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredAttackerLKICopy | TriggerDescription$ Destroy blocked creature at end of combat.\nSVar:DelTrigBlocker:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ Destroy blocking creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nK:Madness:B B\nOracle:Whenever Gorgon Recluse blocks or becomes blocked by a nonblack creature, destroy that creature at end of combat.\\nMadness {B}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gorgon Recluse"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "phyresis-roach-corpus-m677",
+  "description": "M6 corpus — Phyresis Roach; in-hand parse.",
+  "seed": 66833,
+  "cards": {
+    "Phyresis Roach": "Name:Phyresis Roach\nManaCost:G\nTypes:Creature Phyrexian Insect\nPT:1/1\nK:Toxic:1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, Insects you control and Insect cards in your graveyard, hand, and library perpetually gain toxic 1.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Insect.YouCtrl | PumpZone$ Battlefield,Graveyard,Hand,Library | Duration$ Perpetual | KW$ Toxic:1\nDeckHints:Type$Insect\nOracle:Toxic 1\\nWhenever Phyresis Roach deals combat damage to a player, Insects you control and Insect cards in your graveyard, hand, and library perpetually gain toxic 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyresis Roach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

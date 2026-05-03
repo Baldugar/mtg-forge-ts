@@ -1,0 +1,23 @@
+{
+  "id": "painter-s-studio-corpus-m677",
+  "description": "M6 corpus — Painter's Studio; in-hand parse.",
+  "seed": 66560,
+  "cards": {
+    "Painter's Studio": "Name:Painter's Studio\nManaCost:2 R\nTypes:Enchantment Room\nT:Mode$ UnlockDoor | ValidPlayer$ You | ValidCard$ Card.Self | ThisDoor$ True | Execute$ TrigDig | TriggerDescription$ When you unlock this door, exile the top two cards of your library. You may play them until the end of your next turn.\nSVar:TrigDig:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | FogetOnMoved$ Exile | RememberObjects$ Remembered | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the chosen card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:Split\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhen you unlock this door, exile the top two cards of your library. You may play them until the end of your next turn.\n\nALTERNATE\n\nName:Defaced Gallery\nManaCost:1 R\nTypes:Enchantment Room\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you attack, attacking creatures you control get +1/+0 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.attacking+YouCtrl | NumAtt$ +1\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhenever you attack, attacking creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Painter's Studio"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

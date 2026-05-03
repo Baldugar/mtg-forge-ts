@@ -1,0 +1,23 @@
+{
+  "id": "retraction-helix-corpus-m677",
+  "description": "M6 corpus — Retraction Helix; in-hand parse.",
+  "seed": 68142,
+  "cards": {
+    "Retraction Helix": "Name:Retraction Helix\nManaCost:U\nTypes:Instant\nA:SP$ Animate | ValidTgts$ Creature | Abilities$ ABChangeZone | SpellDescription$ Until end of turn, target creature gains \"{T}: Return target nonland permanent to its owner's hand.\"\nSVar:ABChangeZone:AB$ ChangeZone | Cost$ T | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target nonland permanent to its owner's hand.\nAI:RemoveDeck:All\nOracle:Until end of turn, target creature gains \"{T}: Return target nonland permanent to its owner's hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retraction Helix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

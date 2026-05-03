@@ -1,0 +1,23 @@
+{
+  "id": "psychic-trance-corpus-m677",
+  "description": "M6 corpus — Psychic Trance; in-hand parse.",
+  "seed": 67327,
+  "cards": {
+    "Psychic Trance": "Name:Psychic Trance\nManaCost:2 U U\nTypes:Instant\nA:SP$ AnimateAll | Abilities$ Counter | ValidCards$ Card.Wizard+YouCtrl | SpellDescription$ Until end of turn, Wizards you control gain \"{T}: Counter target spell.\"\nSVar:Counter:AB$ Counter | Cost$ T | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Until end of turn, Wizards you control gain \"{T}: Counter target spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Trance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

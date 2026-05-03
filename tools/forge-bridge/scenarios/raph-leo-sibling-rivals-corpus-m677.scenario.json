@@ -1,0 +1,23 @@
+{
+  "id": "raph-leo-sibling-rivals-corpus-m677",
+  "description": "M6 corpus — Raph & Leo, Sibling Rivals; in-hand parse.",
+  "seed": 67705,
+  "cards": {
+    "Raph & Leo, Sibling Rivals": "Name:Raph & Leo, Sibling Rivals\nManaCost:1 RW RW\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:2/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerZones$ Battlefield | FirstCombat$ True | TriggerDescription$ Whenever NICKNAME attack, if it's the first combat phase of the turn, untap one or two target attacking creatures. After this phase, there is an additional combat phase.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature.attacking | TargetMin$ 1 | TargetMax$ 2 | TgtPrompt$ Choose one or two target attacking creatures | SubAbility$ DBAddPhase\nSVar:DBAddPhase:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Raph & Leo attack, if it's the first combat phase of the turn, untap one or two target attacking creatures. After this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raph & Leo, Sibling Rivals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pentarch-ward-corpus-m677",
+  "description": "M6 corpus — Pentarch Ward; in-hand parse.",
+  "seed": 66723,
+  "cards": {
+    "Pentarch Ward": "Name:Pentarch Ward\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInHumanDeck\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Protection:Card.ChosenColor:chosenColor:Card.CardUID_HostCardUID | Description$ Enchanted creature has protection from the chosen color. This effect doesn't remove CARDNAME.\nSVar:ChosenProtection:True\nOracle:Enchant creature\\nAs Pentarch Ward enters, choose a color.\\nWhen Pentarch Ward enters, draw a card.\\nEnchanted creature has protection from the chosen color. This effect doesn't remove Pentarch Ward.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pentarch Ward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

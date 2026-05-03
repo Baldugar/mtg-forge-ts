@@ -1,0 +1,23 @@
+{
+  "id": "llawan-cephalid-empress-corpus-m677",
+  "description": "M6 corpus — Llawan, Cephalid Empress; in-hand parse.",
+  "seed": 64337,
+  "cards": {
+    "Llawan, Cephalid Empress": "Name:Llawan, Cephalid Empress\nManaCost:3 U\nTypes:Legendary Creature Octopus Noble\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return all blue creatures your opponents control to their owners' hands.\nSVar:TrigChange:DB$ ChangeZoneAll | ChangeType$ Creature.Blue+OppCtrl | Origin$ Battlefield | Destination$ Hand\nS:Mode$ CantBeCast | ValidCard$ Creature.Blue | Caster$ Opponent | Description$ Your opponents can't cast blue creature spells.\nOracle:When Llawan, Cephalid Empress enters, return all blue creatures your opponents control to their owners' hands.\\nYour opponents can't cast blue creature spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Llawan, Cephalid Empress"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

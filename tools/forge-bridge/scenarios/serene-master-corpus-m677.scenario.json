@@ -1,0 +1,25 @@
+{
+  "id": "serene-master-corpus-m677",
+  "description": "M6 corpus — Serene Master; ETB-on-bf.",
+  "seed": 69469,
+  "cards": {
+    "Serene Master": "Name:Serene Master\nManaCost:1 W\nTypes:Creature Human Monk\nPT:0/2\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigExchangePower | TriggerDescription$ Whenever CARDNAME blocks, exchange its power and the power of target creature it's blocking until end of combat.\nSVar:TrigExchangePower:DB$ ExchangePower | ValidTgts$ Creature.blockedBySource | TgtPrompt$ Select target creature it's blocking | Defined$ Self | Duration$ UntilEndOfCombat\nAI:RemoveDeck:All\nOracle:Whenever Serene Master blocks, exchange its power and the power of target creature it's blocking until end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Serene Master"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

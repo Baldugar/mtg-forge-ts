@@ -1,0 +1,23 @@
+{
+  "id": "riling-dawnbreaker-corpus-m677",
+  "description": "M6 corpus — Riling Dawnbreaker; in-hand parse.",
+  "seed": 68283,
+  "cards": {
+    "Riling Dawnbreaker": "Name:Riling Dawnbreaker\nManaCost:4 W\nTypes:Creature Dragon\nPT:3/4\nK:Flying\nK:Vigilance\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, another target creature you control gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +1\nAlternateMode:Omen\nOracle:Flying, vigilance\\nAt the beginning of combat on your turn, another target creature you control gets +1/+0 until end of turn.\n\nALTERNATE\n\nName:Signaling Roar\nManaCost:1 W\nTypes:Sorcery Omen\nA:SP$ Token | TokenScript$ w_2_2_soldier | TokenOwner$ You | SpellDescription$ Create a 2/2 white Soldier creature token. (Then shuffle this card into its owner's library.)\nOracle:Create a 2/2 white Soldier creature token. (Then shuffle this card into its owner's library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riling Dawnbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

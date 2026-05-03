@@ -1,0 +1,23 @@
+{
+  "id": "shining-armor-corpus-m677",
+  "description": "M6 corpus — Shining Armor; in-hand parse.",
+  "seed": 69715,
+  "cards": {
+    "Shining Armor": "Name:Shining Armor\nManaCost:1 W\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target Knight you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Knight.YouCtrl | TgtPrompt$ Select target Knight you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddToughness$ 2 | AddKeyword$ Vigilance | Description$ Equipped creature gets +0/+2 and has vigilance.\nK:Equip:3\nSVar:BuffedBy:Knight\nDeckHints:Type$Knight\nOracle:Flash\\nWhen Shining Armor enters, attach it to target Knight you control.\\nEquipped creature gets +0/+2 and has vigilance.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shining Armor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

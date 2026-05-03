@@ -1,0 +1,23 @@
+{
+  "id": "malamet-scythe-corpus-m677",
+  "description": "M6 corpus — Malamet Scythe; in-hand parse.",
+  "seed": 64656,
+  "cards": {
+    "Malamet Scythe": "Name:Malamet Scythe\nManaCost:2 G\nTypes:Artifact Equipment\nK:Flash\nK:Equip:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Equipped creature gets +2/+2.\nOracle:Flash\\nWhen Malamet Scythe enters, attach it to target creature you control.\\nEquipped creature gets +2/+2.\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malamet Scythe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

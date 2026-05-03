@@ -1,0 +1,23 @@
+{
+  "id": "reweave-corpus-m677",
+  "description": "M6 corpus — Reweave; in-hand parse.",
+  "seed": 68204,
+  "cards": {
+    "Reweave": "Name:Reweave\nManaCost:5 U\nTypes:Instant Arcane\nK:Splice:Arcane:2 U U\nA:SP$ SacrificeAll | Defined$ Targeted | ValidTgts$ Permanent | SubAbility$ DBDigUntil | RememberSacrificed$ True | StackDescription$ {p:TargetedController} sacrifices {c:Targeted}. If {p:TargetedController} does, | SpellDescription$ Target permanent's controller sacrifices it. If the player does, they reveal cards from the top of their library until they reveal a permanent card that shares a card type with the sacrificed permanent, put that card onto the battlefield, then shuffle.\nSVar:DBDigUntil:DB$ DigUntil | Defined$ RememberedController | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | Valid$ Permanent.sharesCardTypeWith RememberedLKI | ValidDescription$ permanent card that shares a card type with the sacrificed permanent | FoundDestination$ Battlefield | RevealedDestination$ Library | Shuffle$ True | StackDescription$ they reveal cards from the top of their library until they reveal a permanent card that shares a card type with {c:Targeted}, put that card onto the battlefield, then shuffle. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHints:Type$Arcane\nOracle:Target permanent's controller sacrifices it. If the player does, they reveal cards from the top of their library until they reveal a permanent card that shares a card type with the sacrificed permanent, put that card onto the battlefield, then shuffle.\\nSplice onto Arcane {2}{U}{U} (As you cast an Arcane spell, you may reveal this card from your hand and pay its splice cost. If you do, add this card's effects to that spell.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reweave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

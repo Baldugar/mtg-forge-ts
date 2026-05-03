@@ -1,0 +1,23 @@
+{
+  "id": "seal-away-corpus-m677",
+  "description": "M6 corpus — Seal Away; in-hand parse.",
+  "seed": 69286,
+  "cards": {
+    "Seal Away": "Name:Seal Away\nManaCost:1 W\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target tapped creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.tapped+OppCtrl | TgtPrompt$ Select target tapped creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:Flash\\nWhen Seal Away enters, exile target tapped creature an opponent controls until Seal Away leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seal Away"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "invasive-species-corpus-m677",
+  "description": "M6 corpus — Invasive Species; in-hand parse.",
+  "seed": 63080,
+  "cards": {
+    "Invasive Species": "Name:Invasive Species\nManaCost:2 G\nTypes:Creature Insect\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return another permanent you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Permanent.Other+YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE2\nAI:RemoveDeck:Random\nOracle:When Invasive Species enters, return another permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasive Species"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

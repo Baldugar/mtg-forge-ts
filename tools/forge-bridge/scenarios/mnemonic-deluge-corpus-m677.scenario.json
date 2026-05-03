@@ -1,0 +1,23 @@
+{
+  "id": "mnemonic-deluge-corpus-m677",
+  "description": "M6 corpus — Mnemonic Deluge; in-hand parse.",
+  "seed": 65336,
+  "cards": {
+    "Mnemonic Deluge": "Name:Mnemonic Deluge\nManaCost:6 U U U\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Instant,Sorcery | TgtPrompt$ Select target instant or sorcery card in a graveyard | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBPlay | SpellDescription$ Exile target instant or sorcery card from a graveyard. Copy that card three times. You may cast the copies without paying their mana costs. Exile CARDNAME.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | CopyCard$ True | Amount$ 3 | AllowRepeats$ True | Controller$ You | Optional$ True | WithoutManaCost$ True | ValidSA$ Spell | SubAbility$ DBExile | StackDescription$ Copy it three times. {p:You} may cast the copies without paying their mana cost.\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Stack | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Instant|Sorcery\nDeckHas:Ability$Graveyard\nOracle:Exile target instant or sorcery card from a graveyard. Copy that card three times. You may cast the copies without paying their mana costs. Exile Mnemonic Deluge.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mnemonic Deluge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

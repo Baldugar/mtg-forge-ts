@@ -1,0 +1,23 @@
+{
+  "id": "summons-of-saruman-corpus-m677",
+  "description": "M6 corpus — Summons of Saruman; in-hand parse.",
+  "seed": 71321,
+  "cards": {
+    "Summons of Saruman": "Name:Summons of Saruman\nManaCost:X U R\nTypes:Sorcery\nA:SP$ Amass | Type$ Orc | Num$ X | SubAbility$ DBMill | SpellDescription$ Amass Orcs X. Mill X cards. You may cast an instant or sorcery spell with mana value X or less from among them without paying its mana cost. (To amass Orcs X, put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:DBMill:DB$ Mill | NumCards$ X | RememberMilled$ True | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | ValidZone$ Graveyard | Valid$ Card.IsRemembered | Controller$ You | WithoutManaCost$ True | ValidSA$ Spell.Instant+cmcLEX,Spell.Sorcery+cmcLEX | Optional$ True | Amount$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Flashback:3 U R ExileFromGrave<X/Card>\nSVar:X:Count$xPaid\nDeckHas:Ability$Mill|Amass|Graveyard & Type$Army|Goblin\nDeckHints:Ability$Graveyard\nOracle:Amass Orcs X. Mill X cards. You may cast an instant or sorcery spell with mana value X or less from among them without paying its mana cost. (To amass Orcs X, put X +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\\nFlashback—{3}{U}{R}, Exile X cards from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summons of Saruman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rankle-s-prank-corpus-m677",
+  "description": "M6 corpus — Rankle's Prank; in-hand parse.",
+  "seed": 67701,
+  "cards": {
+    "Rankle's Prank": "Name:Rankle's Prank\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDiscard,DBLoseLife,DBSac | MinCharmNum$ 1 | CharmNum$ 3\nSVar:DBDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose | Defined$ Player | AILogic$ AnyPhaseIfFavored | SpellDescription$ Each player discards two cards.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 4 | Defined$ Player | AILogic$ AnyPhase | SpellDescription$ Each player loses 4 life.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Creature | Defined$ Player | Amount$ 2 | SpellDescription$ Each player sacrifices two creatures.\nDeckHas:Ability$Sacrifice|Discard\nOracle:Choose one or more —\\n• Each player discards two cards.\\n• Each player loses 4 life.\\n• Each player sacrifices two creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rankle's Prank"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

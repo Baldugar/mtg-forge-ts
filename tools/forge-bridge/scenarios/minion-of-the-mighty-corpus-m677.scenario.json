@@ -1,0 +1,23 @@
+{
+  "id": "minion-of-the-mighty-corpus-m677",
+  "description": "M6 corpus — Minion of the Mighty; in-hand parse.",
+  "seed": 65199,
+  "cards": {
+    "Minion of the Mighty": "Name:Minion of the Mighty\nManaCost:R\nTypes:Creature Kobold\nPT:0/1\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Pack tactics — Whenever CARDNAME attacks, if you attacked with creatures with total power 6 or greater this combat, you may put a Dragon creature card from your hand onto the battlefield tapped and attacking.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.Dragon+YouCtrl | Tapped$ True | Attacking$ True\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nDeckHints:Type$Dragon\nOracle:Menace\\nPack tactics — Whenever Minion of the Mighty attacks, if you attacked with creatures with total power 6 or greater this combat, you may put a Dragon creature card from your hand onto the battlefield tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minion of the Mighty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "herald-of-the-fair-corpus-m677",
+  "description": "M6 corpus — Herald of the Fair; in-hand parse.",
+  "seed": 62272,
+  "cards": {
+    "Herald of the Fair": "Name:Herald of the Fair\nManaCost:2 W\nTypes:Creature Human\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature you control gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When Herald of the Fair enters, target creature you control gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Herald of the Fair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

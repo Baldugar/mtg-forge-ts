@@ -1,0 +1,23 @@
+{
+  "id": "injector-crocodile-corpus-m677",
+  "description": "M6 corpus — Injector Crocodile; in-hand parse.",
+  "seed": 62946,
+  "cards": {
+    "Injector Crocodile": "Name:Injector Crocodile\nManaCost:4 B B\nTypes:Creature Phyrexian Crocodile\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigIncubate | TriggerDescription$ When CARDNAME dies, incubate 3. (Create an Incubator token with three +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigIncubate:DB$ Incubate | Amount$ 3\nK:TypeCycling:Swamp:2\nDeckHas:Ability$Token|Counters & Type$Artifact\nOracle:When Injector Crocodile dies, incubate 3. (Create an Incubator token with three +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\\nSwampcycling {2} ({2}, Discard this card: Search your library for a Swamp card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Injector Crocodile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

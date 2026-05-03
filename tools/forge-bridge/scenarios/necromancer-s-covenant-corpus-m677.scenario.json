@@ -1,0 +1,23 @@
+{
+  "id": "necromancer-s-covenant-corpus-m677",
+  "description": "M6 corpus — Necromancer's Covenant; in-hand parse.",
+  "seed": 65799,
+  "cards": {
+    "Necromancer's Covenant": "Name:Necromancer's Covenant\nManaCost:3 W B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, exile all creature cards from target player's graveyard, then create a 2/2 black Zombie creature token for each card exiled this way.\nSVar:TrigChange:DB$ ChangeZoneAll | ValidTgts$ Player | Origin$ Graveyard | Destination$ Exile | ChangeType$ Creature | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenAmount$ X | SubAbility$ DBClearRemember\nS:Mode$ Continuous | Affected$ Zombie.YouCtrl | AddKeyword$ Lifelink | Description$ Zombies you control have lifelink.\nSVar:DBClearRemember:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:PlayMain1:TRUE\nOracle:When Necromancer's Covenant enters, exile all creature cards from target player's graveyard, then create a 2/2 black Zombie creature token for each card exiled this way.\\nZombies you control have lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromancer's Covenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

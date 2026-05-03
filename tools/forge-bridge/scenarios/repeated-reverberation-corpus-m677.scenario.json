@@ -1,0 +1,23 @@
+{
+  "id": "repeated-reverberation-corpus-m677",
+  "description": "M6 corpus — Repeated Reverberation; in-hand parse.",
+  "seed": 68060,
+  "cards": {
+    "Repeated Reverberation": "Name:Repeated Reverberation\nManaCost:2 R R\nTypes:Instant\nA:SP$ DelayedTrigger | AILogic$ SpellCopy | Mode$ SpellAbilityCast | ValidSA$ Spell.Instant,Spell.Sorcery,Activated.Loyalty | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ EffTrigCopy | SpellDescription$ When you next cast an instant spell, cast a sorcery spell, or activate a loyalty ability this turn, copy that spell or ability twice. You may choose new targets for the copies.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ 2 | MayChooseTarget$ True\nOracle:When you next cast an instant spell, cast a sorcery spell, or activate a loyalty ability this turn, copy that spell or ability twice. You may choose new targets for the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Repeated Reverberation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

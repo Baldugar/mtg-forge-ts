@@ -1,0 +1,23 @@
+{
+  "id": "green-dragon-corpus-m677",
+  "description": "M6 corpus — Green Dragon; in-hand parse.",
+  "seed": 61724,
+  "cards": {
+    "Green Dragon": "Name:Green Dragon\nManaCost:4 G G\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ Poison Breath — When CARDNAME enters, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.\nSVar:TrigEffect:DB$ Effect | Triggers$ TrigDamageDone\nSVar:TrigDamageDone:Mode$ DamageDoneOnce | ValidTarget$ Creature.OppCtrl | Execute$ TrigDestroy | TriggerDescription$ Poison Breath — Until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:PlayMain1:TRUE\nOracle:Flying\\nPoison Breath — When Green Dragon enters, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Green Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

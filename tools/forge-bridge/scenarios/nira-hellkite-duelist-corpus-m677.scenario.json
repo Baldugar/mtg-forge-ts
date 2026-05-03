@@ -1,0 +1,23 @@
+{
+  "id": "nira-hellkite-duelist-corpus-m677",
+  "description": "M6 corpus — Nira, Hellkite Duelist; in-hand parse.",
+  "seed": 65995,
+  "cards": {
+    "Nira, Hellkite Duelist": "Name:Nira, Hellkite Duelist\nManaCost:W U B R G\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flash\nK:Flying\nK:Trample\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigNoLose | TriggerDescription$ When CARDNAME enters, the next time you would lose the game this turn, instead draw three cards and your life total becomes 5.\nSVar:TrigNoLose:DB$ Effect | ReplacementEffects$ LoseReplace\nSVar:LoseReplace:Event$ GameLoss | ActiveZones$ Command | ValidPlayer$ You | ReplaceWith$ DrawSeven | Description$ The next time you would lose the game this turn, instead draw three cards and your life total becomes 5.\nSVar:DrawSeven:DB$ Draw | NumCards$ 3 | SubAbility$ DBSetLife\nSVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ 5 | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Flash\\nFlying, trample, haste\\nWhen Nira, Hellkite Duelist enters, the next time you would lose the game this turn, instead draw three cards and your life total becomes 5.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nira, Hellkite Duelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

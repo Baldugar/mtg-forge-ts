@@ -1,0 +1,23 @@
+{
+  "id": "lithomantic-barrage-corpus-m677",
+  "description": "M6 corpus — Lithomantic Barrage; in-hand parse.",
+  "seed": 64299,
+  "cards": {
+    "Lithomantic Barrage": "Name:Lithomantic Barrage\nManaCost:R\nTypes:Sorcery\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ DealDamage | NumDmg$ X | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | StackDescription$ REP target creature or planeswalker_{c:Targeted} | IsCurse$ True | AITgts$ Creature.White,Creature.Blue,Planeswalker.White,Planeswalker.Blue | SpellDescription$ CARDNAME deals 1 damage to target creature or planeswalker. It deals 5 damage instead if that target is white and/or blue.\nSVar:Y:Targeted$Valid Creature.White,Creature.Blue,Planeswalker.White,Planeswalker.Blue\nSVar:X:Count$Compare Y GE1.5.1\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:This spell can't be countered.\\nLithomantic Barrage deals 1 damage to target creature or planeswalker. It deals 5 damage instead if that target is white and/or blue.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lithomantic Barrage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

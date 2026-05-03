@@ -1,0 +1,23 @@
+{
+  "id": "loathsome-catoblepas-corpus-m677",
+  "description": "M6 corpus — Loathsome Catoblepas; in-hand parse.",
+  "seed": 64346,
+  "cards": {
+    "Loathsome Catoblepas": "Name:Loathsome Catoblepas\nManaCost:5 B\nTypes:Creature Beast\nPT:3/3\nA:AB$ Pump | Cost$ 2 G | Defined$ Self | KW$ HIDDEN CARDNAME must be blocked if able. | AILogic$ Pump | SpellDescription$ CARDNAME must be blocked this turn if able.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME dies, target creature an opponent controls gets -3/-3 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckNeeds:Color$Green\nOracle:{2}{G}: Loathsome Catoblepas must be blocked this turn if able.\\nWhen Loathsome Catoblepas dies, target creature an opponent controls gets -3/-3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loathsome Catoblepas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

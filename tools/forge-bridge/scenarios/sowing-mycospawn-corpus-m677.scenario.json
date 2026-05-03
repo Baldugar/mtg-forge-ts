@@ -1,0 +1,25 @@
+{
+  "id": "sowing-mycospawn-corpus-m677",
+  "description": "M6 corpus — Sowing Mycospawn; ETB-on-bf.",
+  "seed": 70501,
+  "cards": {
+    "Sowing Mycospawn": "Name:Sowing Mycospawn\nManaCost:3 G\nTypes:Creature Eldrazi Fungus\nPT:3/3\nK:Devoid\nK:Kicker:1 C\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When you cast this spell, search your library for a land card, put it onto the battlefield, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1\nT:Mode$ SpellCast | ValidCard$ Card.Self+kicked | Execute$ TrigExile | TriggerDescription$ When you cast this spell, if it was kicked, exile target land.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Land | Origin$ Battlefield | Destination$ Exile\nOracle:Devoid (This card has no color.)\\nKicker {1}{C} (You may pay an additional {1}{C} as you cast this spell.)\\nWhen you cast this spell, search your library for a land card, put it onto the battlefield, then shuffle.\\nWhen you cast this spell, if it was kicked, exile target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sowing Mycospawn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

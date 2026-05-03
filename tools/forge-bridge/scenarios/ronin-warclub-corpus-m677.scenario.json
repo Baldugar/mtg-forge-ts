@@ -1,0 +1,23 @@
+{
+  "id": "ronin-warclub-corpus-m677",
+  "description": "M6 corpus — Ronin Warclub; in-hand parse.",
+  "seed": 68493,
+  "cards": {
+    "Ronin Warclub": "Name:Ronin Warclub\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:5\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Equipped creature gets +2/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | TriggerDescription$ Whenever a creature you control enters, attach CARDNAME to that creature.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nOracle:Equipped creature gets +2/+1.\\nWhenever a creature you control enters, attach Ronin Warclub to that creature.\\nEquip {5} ({5}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ronin Warclub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

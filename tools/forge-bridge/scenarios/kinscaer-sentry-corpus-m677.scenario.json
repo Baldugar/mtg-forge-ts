@@ -1,0 +1,23 @@
+{
+  "id": "kinscaer-sentry-corpus-m677",
+  "description": "M6 corpus — Kinscaer Sentry; in-hand parse.",
+  "seed": 63684,
+  "cards": {
+    "Kinscaer Sentry": "Name:Kinscaer Sentry\nManaCost:1 W\nTypes:Creature Kithkin Soldier\nPT:2/2\nK:First Strike\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | ChangeNum$ 1 | Optional$ True | Tapped$ True | Attacking$ True\nSVar:X:Count$Valid Creature.YouCtrl+attacking\nOracle:First strike, lifelink\\nWhenever this creature attacks, you may put a creature card with mana value X or less from your hand onto the battlefield tapped and attacking, where X is the number of attacking creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kinscaer Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

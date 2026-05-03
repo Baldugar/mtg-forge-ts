@@ -1,0 +1,23 @@
+{
+  "id": "nahiri-s-machinations-corpus-m677",
+  "description": "M6 corpus — Nahiri's Machinations; in-hand parse.",
+  "seed": 65711,
+  "cards": {
+    "Nahiri's Machinations": "Name:Nahiri's Machinations\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gains indestructible until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Indestructible\nA:AB$ DealDamage | Cost$ 1 R | ValidTgts$ Creature.blocking | TgtPrompt$ Select target blocking creature | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target blocking creature.\nSVar:PlayMain1:TRUE\nOracle:At the beginning of combat on your turn, target creature you control gains indestructible until end of turn.\\n{1}{R}: Nahiri's Machinations deals 1 damage to target blocking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nahiri's Machinations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

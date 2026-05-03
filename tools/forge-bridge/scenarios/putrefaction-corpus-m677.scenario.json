@@ -1,0 +1,25 @@
+{
+  "id": "putrefaction-corpus-m677",
+  "description": "M6 corpus — Putrefaction; ETB-on-bf.",
+  "seed": 67392,
+  "cards": {
+    "Putrefaction": "Name:Putrefaction\nManaCost:4 B\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.Green,Card.White | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a green or white spell, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredActivator | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a green or white spell, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Putrefaction"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

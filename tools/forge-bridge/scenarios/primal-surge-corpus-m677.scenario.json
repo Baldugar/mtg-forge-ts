@@ -1,0 +1,23 @@
+{
+  "id": "primal-surge-corpus-m677",
+  "description": "M6 corpus — Primal Surge; in-hand parse.",
+  "seed": 67188,
+  "cards": {
+    "Primal Surge": "Name:Primal Surge\nManaCost:8 G G\nTypes:Sorcery\nA:SP$ Repeat | RepeatSubAbility$ DBDig | RepeatDefined$ Remembered | RepeatPresent$ Permanent | RepeatCompare$ EQ1 | StackDescription$ Exile the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you do, repeat this process. | SpellDescription$ Exile the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you do, repeat this process.\nSVar:DBDig:DB$ Dig | DigNum$ 1 | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Exile | ForgetOtherRemembered$ True | RememberChanged$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Permanent | ConditionCompare$ EQ1 | Optional$ True | RememberChanged$ True | ForgetOtherRemembered$ True\nOracle:Exile the top card of your library. If it's a permanent card, you may put it onto the battlefield. If you do, repeat this process.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Surge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

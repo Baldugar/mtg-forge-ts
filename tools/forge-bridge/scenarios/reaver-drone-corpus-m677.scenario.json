@@ -1,0 +1,23 @@
+{
+  "id": "reaver-drone-corpus-m677",
+  "description": "M6 corpus — Reaver Drone; in-hand parse.",
+  "seed": 67854,
+  "cards": {
+    "Reaver Drone": "Name:Reaver Drone\nManaCost:B\nTypes:Creature Eldrazi Drone\nPT:2/1\nK:Devoid\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you lose 1 life unless you control another colorless creature.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | ConditionPresent$ Creature.YouCtrl+Colorless+Other | ConditionCompare$ EQ0\nDeckHints:Keyword$Devoid & Color$Colorless\nOracle:Devoid (This card has no color.)\\nAt the beginning of your upkeep, you lose 1 life unless you control another colorless creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reaver Drone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

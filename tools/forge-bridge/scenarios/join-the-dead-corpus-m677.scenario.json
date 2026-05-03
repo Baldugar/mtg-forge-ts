@@ -1,0 +1,23 @@
+{
+  "id": "join-the-dead-corpus-m677",
+  "description": "M6 corpus — Join the Dead; in-hand parse.",
+  "seed": 63324,
+  "cards": {
+    "Join the Dead": "Name:Join the Dead\nManaCost:1 B B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SpellDescription$ Target creature gets -5/-5 until end of turn. Descend 4 — That creature gets -10/-10 until end of turn instead if there are four or more permanent cards in your graveyard.\nSVar:X:Count$Compare Y GE4.10.5\nSVar:Y:Count$ValidGraveyard Permanent.YouOwn\nDeckHints:Ability$Sacrifice|Discard|Mill|Dredge|Graveyard\nOracle:Target creature gets -5/-5 until end of turn.\\nDescend 4 — That creature gets -10/-10 until end of turn instead if there are four or more permanent cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Join the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

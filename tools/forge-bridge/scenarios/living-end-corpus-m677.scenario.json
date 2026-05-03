@@ -1,0 +1,23 @@
+{
+  "id": "living-end-corpus-m677",
+  "description": "M6 corpus — Living End; in-hand parse.",
+  "seed": 64307,
+  "cards": {
+    "Living End": "Name:Living End\nManaCost:no cost\nColors:black\nTypes:Sorcery\nK:Suspend:3:2 B B\nA:SP$ ChangeZoneAll | ChangeType$ Creature | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | AILogic$ LivingDeath | SubAbility$ SacAll | SpellDescription$ Each player exiles all creature cards from their graveyard, then sacrifices all creatures they control, then puts all cards they exiled this way onto the battlefield.\nSVar:SacAll:DB$ SacrificeAll | ValidCards$ Creature | SubAbility$ ReturnAll\nSVar:ReturnAll:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Battlefield | ChangeType$ Card.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nSVar:IsReanimatorCard:TRUE\nOracle:Suspend 3—{2}{B}{B}\\nEach player exiles all creature cards from their graveyard, then sacrifices all creatures they control, then puts all cards they exiled this way onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Living End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

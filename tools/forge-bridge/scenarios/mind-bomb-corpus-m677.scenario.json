@@ -1,0 +1,23 @@
+{
+  "id": "mind-bomb-corpus-m677",
+  "description": "M6 corpus — Mind Bomb; in-hand parse.",
+  "seed": 65144,
+  "cards": {
+    "Mind Bomb": "Name:Mind Bomb\nManaCost:U\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatSubAbility$ DBChoose | RepeatPlayers$ Player | DamageMap$ True | SpellDescription$ Each player may discard up to three cards. CARDNAME deals damage to each player equal to 3 minus the number of cards they discarded this way.\nSVar:DBChoose:DB$ ChooseNumber | Defined$ Player.IsRemembered | Min$ 0 | Max$ 3 | AILogic$ LoseLife | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | NumCards$ X | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ Z | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ChosenNumber\nSVar:Y:Count$RememberedSize/Minus.1\nSVar:Z:SVar$Y/NMinus.3\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHas:Ability$Discard\nOracle:Each player may discard up to three cards. Mind Bomb deals damage to each player equal to 3 minus the number of cards they discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Bomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

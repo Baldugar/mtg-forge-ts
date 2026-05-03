@@ -1,0 +1,23 @@
+{
+  "id": "skalla-wolf-corpus-m677",
+  "description": "M6 corpus — Skalla Wolf; in-hand parse.",
+  "seed": 70013,
+  "cards": {
+    "Skalla Wolf": "Name:Skalla Wolf\nManaCost:3 G G\nTypes:Creature Wolf Spirit\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top five cards of your library. You may reveal a green card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Card.Green | RestRandomOrder$ True\nOracle:When Skalla Wolf enters, look at the top five cards of your library. You may reveal a green card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skalla Wolf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

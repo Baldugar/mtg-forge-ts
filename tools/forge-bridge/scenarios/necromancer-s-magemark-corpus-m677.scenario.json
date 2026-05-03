@@ -1,0 +1,23 @@
+{
+  "id": "necromancer-s-magemark-corpus-m677",
+  "description": "M6 corpus — Necromancer's Magemark; in-hand parse.",
+  "seed": 65800,
+  "cards": {
+    "Necromancer's Magemark": "Name:Necromancer's Magemark\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.enchanted+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control that are enchanted get +1/+1.\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.enchanted+YouCtrl | ReplaceWith$ ReturnToHand | Description$ If a creature you control that's enchanted would die, return it to its owner's hand instead.\nSVar:ReturnToHand:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ ReplacedCard\nOracle:Enchant creature\\nCreatures you control that are enchanted get +1/+1.\\nIf a creature you control that's enchanted would die, return it to its owner's hand instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromancer's Magemark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

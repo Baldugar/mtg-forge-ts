@@ -1,0 +1,23 @@
+{
+  "id": "memoricide-corpus-m677",
+  "description": "M6 corpus — Memoricide; in-hand parse.",
+  "seed": 64960,
+  "cards": {
+    "Memoricide": "Name:Memoricide\nManaCost:3 B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonLand | ValidDescription$ nonland | SubAbility$ DBExile | SpellDescription$ Choose a nonland card name. Search target player's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles.\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Player | ChangeType$ Card.NamedCard | Origin$ Graveyard,Hand,Library | DefinedPlayer$ Targeted | Chooser$ You | Destination$ Exile | ChangeNum$ NumTotal | Hidden$ True\nSVar:NumTotal:Count$ValidGraveyard,Hand,Library Card.TargetedPlayerOwn\nAI:RemoveDeck:All\nOracle:Choose a nonland card name. Search target player's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memoricide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "petravark-corpus-m677",
+  "description": "M6 corpus — Petravark; in-hand parse.",
+  "seed": 66779,
+  "cards": {
+    "Petravark": "Name:Petravark\nManaCost:3 R\nTypes:Creature Nightmare Beast\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target land.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Land | Origin$ Battlefield | Destination$ Exile | RememberTargets$ True | ForgetOtherTargets$ True\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nOracle:When Petravark enters, exile target land.\\nWhen Petravark leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Petravark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

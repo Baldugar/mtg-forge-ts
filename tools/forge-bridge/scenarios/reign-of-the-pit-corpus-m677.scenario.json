@@ -1,0 +1,23 @@
+{
+  "id": "reign-of-the-pit-corpus-m677",
+  "description": "M6 corpus — Reign of the Pit; in-hand parse.",
+  "seed": 67974,
+  "cards": {
+    "Reign of the Pit": "Name:Reign of the Pit\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ Sacrifice | SacValid$ Creature | Defined$ Player | SubAbility$ DBToken | RememberSacrificed$ True | SpellDescription$ Each player sacrifices a creature. Create an X/X black Demon creature token with flying, where X is the total power of the creatures sacrificed this way.\nSVar:DBToken:DB$ Token | TokenScript$ b_x_x_demon_flying | TokenOwner$ You | TokenPower$ X | TokenToughness$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardPower\nSVar:NeedsToPlayVar:Z EQ2\nSVar:Z:SVar$Z1/Plus.Z2\nSVar:Z1:Count$Valid Creature.YouCtrl+powerGE1/LimitMax.1\nSVar:Z2:Count$Valid Creature.OppCtrl+powerGE2/LimitMax.1\nOracle:Each player sacrifices a creature. Create an X/X black Demon creature token with flying, where X is the total power of the creatures sacrificed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reign of the Pit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

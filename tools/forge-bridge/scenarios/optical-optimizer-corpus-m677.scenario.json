@@ -1,0 +1,25 @@
+{
+  "id": "optical-optimizer-corpus-m677",
+  "description": "M6 corpus — Optical Optimizer; ETB-on-bf.",
+  "seed": 66361,
+  "cards": {
+    "Optical Optimizer": "Name:Optical Optimizer\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature becomes an artifact in addition to its other types and gains \"{T}: Draw a card.\"\nSVar:TrigCrank:DB$ Animate | ValidTgts$ Creature | Types$ Artifact | Abilities$ ABDraw | AILogic$ Worst | AITgts$ Creature.untapped+YouCtrl\nSVar:ABDraw:AB$ Draw | Cost$ T | SpellDescription$ Draw a card.\nOracle:Whenever you crank Optical Optimizer, until end of turn, target creature becomes an artifact in addition to its other types and gains \"{T}: Draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Optical Optimizer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "nylea-god-of-the-hunt-corpus-m677",
+  "description": "M6 corpus — Nylea, God of the Hunt; ETB-on-bf.",
+  "seed": 66116,
+  "cards": {
+    "Nylea, God of the Hunt": "Name:Nylea, God of the Hunt\nManaCost:3 G\nTypes:Legendary Enchantment Creature God\nPT:6/6\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT5 | Description$ As long as your devotion to green is less than 5, NICKNAME isn't a creature. (Each {G} in the mana costs of permanents you control counts towards your devotion to green.)\nSVar:X:Count$Devotion.Green\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Trample | Description$ Other creatures you control have trample.\nA:AB$ Pump | Cost$ 3 G | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Target creature gets +2/+2 until end of turn.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Permanent.Green\nOracle:Indestructible\\nAs long as your devotion to green is less than five, Nylea isn't a creature. (Each {G} in the mana costs of permanents you control counts toward your devotion to green.)\\nOther creatures you control have trample.\\n{3}{G}: Target creature gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nylea, God of the Hunt"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

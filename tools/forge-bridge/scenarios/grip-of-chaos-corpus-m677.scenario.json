@@ -1,0 +1,25 @@
+{
+  "id": "grip-of-chaos-corpus-m677",
+  "description": "M6 corpus — Grip of Chaos; ETB-on-bf.",
+  "seed": 61787,
+  "cards": {
+    "Grip of Chaos": "Name:Grip of Chaos\nManaCost:4 R R\nTypes:Enchantment\nT:Mode$ SpellAbilityCast | ValidSA$ SpellAbility.!ManaAbility | IsSingleTarget$ True | TriggerZones$ Battlefield | Execute$ TrigChangeTarget | TriggerDescription$ Whenever a spell or ability is put onto the stack, if it has a single target, reselect its target at random. (Select from among all legal targets.)\nT:Mode$ SpellAbilityCopy | IsSingleTarget$ True | TriggerZones$ Battlefield | Execute$ TrigChangeTarget | Secondary$ True | TriggerDescription$ Whenever a spell or ability is put onto the stack, if it has a single target, reselect its target at random. (Select from among all legal targets.)\nSVar:TrigChangeTarget:DB$ ChangeTargets | Defined$ TriggeredSpellAbility | RandomTarget$ True\nAI:RemoveDeck:Random\nOracle:Whenever a spell or ability is put onto the stack, if it has a single target, reselect its target at random. (Select from among all legal targets.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grip of Chaos"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

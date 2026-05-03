@@ -1,0 +1,23 @@
+{
+  "id": "gravebind-corpus-m677",
+  "description": "M6 corpus — Gravebind; in-hand parse.",
+  "seed": 61661,
+  "cards": {
+    "Gravebind": "Name:Gravebind\nManaCost:B\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | SubAbility$ DelTrigSlowtrip | AILogic$ CantRegenerate | SpellDescription$ Target creature can't be regenerated this turn. Draw a card at the beginning of the next turn's upkeep.\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Target creature can't be regenerated this turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gravebind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

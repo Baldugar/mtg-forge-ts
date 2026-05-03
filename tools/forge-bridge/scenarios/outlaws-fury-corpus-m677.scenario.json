@@ -1,0 +1,23 @@
+{
+  "id": "outlaws-fury-corpus-m677",
+  "description": "M6 corpus — Outlaws' Fury; in-hand parse.",
+  "seed": 66474,
+  "cards": {
+    "Outlaws' Fury": "Name:Outlaws' Fury\nManaCost:2 R\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | SubAbility$ DBExile | SpellDescription$ Creatures you control get +2/+0 until end of turn.\nSVar:DBExile:DB$ Dig | DigNum$ 1 | ConditionPresent$ Card.Outlaw+YouCtrl | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ If you control an outlaw, exile the top card of your library. Until the end of your next turn, you may play that card. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play cards exiled this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Assassin|Mercenary|Pirate|Rogue|Warlock\nOracle:Creatures you control get +2/+0 until end of turn. If you control an outlaw, exile the top card of your library. Until the end of your next turn, you may play that card. (Assassins, Mercenaries, Pirates, Rogues, and Warlocks are outlaws.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Outlaws' Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

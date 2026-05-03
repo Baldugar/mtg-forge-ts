@@ -1,0 +1,23 @@
+{
+  "id": "return-to-dust-corpus-m677",
+  "description": "M6 corpus — Return to Dust; in-hand parse.",
+  "seed": 68160,
+  "cards": {
+    "Return to Dust": "Name:Return to Dust\nManaCost:2 W W\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | TargetMin$ 1 | TargetMax$ X | SpellDescription$ Exile target artifact or enchantment. If you cast this spell during your main phase, you may exile up to one other target artifact or enchantment.\nSVar:X:Count$IfCastInOwnMainPhase.2.1\nOracle:Exile target artifact or enchantment. If you cast this spell during your main phase, you may exile up to one other target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Return to Dust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

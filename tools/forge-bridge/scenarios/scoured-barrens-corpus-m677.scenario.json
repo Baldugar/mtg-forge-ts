@@ -1,0 +1,23 @@
+{
+  "id": "scoured-barrens-corpus-m677",
+  "description": "M6 corpus — Scoured Barrens; in-hand parse.",
+  "seed": 69193,
+  "cards": {
+    "Scoured Barrens": "Name:Scoured Barrens\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SpellDescription$ Add {W} or {B}.\nDeckHas:Ability$LifeGain\nOracle:Scoured Barrens enters tapped.\\nWhen Scoured Barrens enters, you gain 1 life.\\n{T}: Add {W} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scoured Barrens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

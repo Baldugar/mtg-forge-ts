@@ -1,0 +1,23 @@
+{
+  "id": "lunar-rejection-corpus-m677",
+  "description": "M6 corpus — Lunar Rejection; in-hand parse.",
+  "seed": 64504,
+  "cards": {
+    "Lunar Rejection": "Name:Lunar Rejection\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature.Wolf,Creature.Werewolf | TgtPrompt$ Select target Wolf or Werewolf | SubAbility$ DBDraw | SpellDescription$ Return target [Wolf or Werewolf] creature to its owner's hand.\nA:SP$ ChangeZone | Cost$ 3 U | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature | PrecostDesc$ Cleave | CostDesc$ {3}{U} | NonBasicSpell$ True | SubAbility$ DBDraw | SpellDescription$ (You may cast this spell for its cleave cost. If you do, remove the words in square brackets.) | StackDescription$ Return {c:Targeted} to its owner's hand.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nAI:RemoveDeck:Random\nOracle:Cleave {3}{U} (You may cast this spell for its cleave cost. If you do, remove the words in square brackets.)\\nReturn target [Wolf or Werewolf] creature to its owner's hand.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lunar Rejection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

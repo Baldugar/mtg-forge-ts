@@ -1,0 +1,23 @@
+{
+  "id": "a-asari-captain-corpus-m677",
+  "description": "M6 corpus — A-Asari Captain; in-hand parse.",
+  "seed": 68702,
+  "cards": {
+    "A-Asari Captain": "Name:A-Asari Captain\nManaCost:1 R W\nTypes:Creature Human Samurai\nPT:2/1\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Samurai.YouCtrl,Warrior.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a Samurai or Warrior you control attacks alone, it gets +1/+0 until end of turn for each Samurai or Warrior you control.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X\nSVar:X:Count$Valid Samurai.YouCtrl,Warrior.YouCtrl\nDeckHints:Type$Samurai|Warrior\nOracle:Trample, haste\\nWhenever a Samurai or Warrior you control attacks alone, it gets +1/+0 until end of turn for each Samurai or Warrior you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Asari Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

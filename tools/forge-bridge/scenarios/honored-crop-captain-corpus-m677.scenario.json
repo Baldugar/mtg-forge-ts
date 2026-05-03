@@ -1,0 +1,23 @@
+{
+  "id": "honored-crop-captain-corpus-m677",
+  "description": "M6 corpus — Honored Crop-Captain; in-hand parse.",
+  "seed": 62466,
+  "cards": {
+    "Honored Crop-Captain": "Name:Honored Crop-Captain\nManaCost:R W\nTypes:Creature Human Warrior\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, other attacking creatures get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +1\nOracle:Whenever Honored Crop-Captain attacks, other attacking creatures get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Honored Crop-Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

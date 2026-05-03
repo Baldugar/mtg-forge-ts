@@ -1,0 +1,23 @@
+{
+  "id": "reap-corpus-m677",
+  "description": "M6 corpus — Reap; in-hand parse.",
+  "seed": 67838,
+  "cards": {
+    "Reap": "Name:Reap\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Opponent | SubAbility$ GraveReap | StackDescription$ Select target opponent. | SpellDescription$ Return up to X target cards from your graveyard to your hand, where X is the number of black permanents target opponent controls as you cast this spell.\nSVar:GraveReap:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ NrBlackAtCasting | TgtPrompt$ Choose target card in your graveyard | ValidTgts$ Card.YouCtrl\nSVar:NrBlackAtCasting:Count$LastStateBattlefieldWithFallback Permanent.Black+TargetedPlayerCtrl\nAI:RemoveDeck:Random\nOracle:Return up to X target cards from your graveyard to your hand, where X is the number of black permanents target opponent controls as you cast this spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

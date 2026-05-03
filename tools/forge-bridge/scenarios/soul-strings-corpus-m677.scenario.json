@@ -1,0 +1,23 @@
+{
+  "id": "soul-strings-corpus-m677",
+  "description": "M6 corpus — Soul Strings; in-hand parse.",
+  "seed": 70465,
+  "cards": {
+    "Soul Strings": "Name:Soul Strings\nManaCost:X B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 2 | TargetMax$ 2 | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | UnlessCost$ X | UnlessPayer$ Player | SpellDescription$ Return two target creature cards from your graveyard to your hand unless any player pays {X}.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Return two target creature cards from your graveyard to your hand unless any player pays {X}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Strings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "grenzo-s-rebuttal-corpus-m677",
+  "description": "M6 corpus — Grenzo's Rebuttal; in-hand parse.",
+  "seed": 61747,
+  "cards": {
+    "Grenzo's Rebuttal": "Name:Grenzo's Rebuttal\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ Token | TokenScript$ r_4_4_ogre | SubAbility$ DBChoose | SpellDescription$ Create a 4/4 red Ogre creature token.\nSVar:DBChoose:DB$ ChooseCard | Defined$ Player | ChooseEach$ Artifact & Creature & Land | ControlledByPlayer$ Left | Mandatory$ True | SubAbility$ DBDestroy | StackDescription$ REP you_{p:You} | SpellDescription$ Starting with you, each player chooses an artifact, a creature, and a land from among the permanents controlled by the player to their left.\nSVar:DBDestroy:DB$ Destroy | Defined$ ChosenCard | StackDescription$ SpellDescription | SpellDescription$ Destroy each permanent chosen this way.\nDeckHas:Ability$Token & Type$Ogre\nOracle:Create a 4/4 red Ogre creature token. Starting with you, each player chooses an artifact, a creature, and a land from among the permanents controlled by the player to their left. Destroy each permanent chosen this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grenzo's Rebuttal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-ringleader-corpus-m677",
+  "description": "M6 corpus — Rakdos Ringleader; in-hand parse.",
+  "seed": 67615,
+  "cards": {
+    "Rakdos Ringleader": "Name:Rakdos Ringleader\nManaCost:4 B R\nTypes:Creature Skeleton Warrior\nPT:3/1\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card at random.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ Random\nA:AB$ Regenerate | Cost$ B | SpellDescription$ Regenerate CARDNAME.\nOracle:First strike\\nWhenever Rakdos Ringleader deals combat damage to a player, that player discards a card at random.\\n{B}: Regenerate Rakdos Ringleader.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos Ringleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

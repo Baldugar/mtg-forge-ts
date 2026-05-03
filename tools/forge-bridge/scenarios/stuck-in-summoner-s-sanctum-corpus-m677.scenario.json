@@ -1,0 +1,23 @@
+{
+  "id": "stuck-in-summoner-s-sanctum-corpus-m677",
+  "description": "M6 corpus — Stuck in Summoner's Sanctum; in-hand parse.",
+  "seed": 71224,
+  "cards": {
+    "Stuck in Summoner's Sanctum": "Name:Stuck in Summoner's Sanctum\nManaCost:2 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Artifact,Creature:artifact or creature\nSVar:AttachAITgts:Artifact,Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Permanent.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted permanent doesn't untap during its controller's untap step and its activated abilities can't be activated.\nS:Mode$ CantBeActivated | ValidCard$ Permanent.EnchantedBy | Secondary$ True | Description$ Enchanted permanent doesn't untap during its controller's untap step and its activated abilities can't be activated.\nOracle:Flash\\nEnchant artifact or creature\\nWhen this Aura enters, tap enchanted permanent.\\nEnchanted permanent doesn't untap during its controller's untap step and its activated abilities can't be activated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stuck in Summoner's Sanctum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

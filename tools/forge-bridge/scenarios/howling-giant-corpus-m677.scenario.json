@@ -1,0 +1,23 @@
+{
+  "id": "howling-giant-corpus-m677",
+  "description": "M6 corpus — Howling Giant; in-hand parse.",
+  "seed": 62557,
+  "cards": {
+    "Howling Giant": "Name:Howling Giant\nManaCost:5 G G\nTypes:Creature Giant Druid\nPT:5/5\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 2/2 green Wolf creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_2_2_wolf | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Reach (This creature can block creatures with flying.)\\nWhen Howling Giant enters, create two 2/2 green Wolf creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Howling Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

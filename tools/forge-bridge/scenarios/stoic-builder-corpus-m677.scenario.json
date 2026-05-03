@@ -1,0 +1,23 @@
+{
+  "id": "stoic-builder-corpus-m677",
+  "description": "M6 corpus — Stoic Builder; in-hand parse.",
+  "seed": 71025,
+  "cards": {
+    "Stoic Builder": "Name:Stoic Builder\nManaCost:2 G\nTypes:Creature Human\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target land card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Land.YouCtrl\nOracle:When Stoic Builder enters, you may return target land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stoic Builder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

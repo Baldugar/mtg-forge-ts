@@ -1,0 +1,23 @@
+{
+  "id": "hunting-wilds-corpus-m677",
+  "description": "M6 corpus — Hunting Wilds; in-hand parse.",
+  "seed": 62631,
+  "cards": {
+    "Hunting Wilds": "Name:Hunting Wilds\nManaCost:3 G\nTypes:Sorcery\nK:Kicker:3 G\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ 2 | Tapped$ True | RememberChanged$ True | SubAbility$ DBUntap | SpellDescription$ Search your library for up to two Forest cards, put them onto the battlefield tapped, then shuffle. If this spell was kicked, untap all Forests put onto the battlefield this way. They become 3/3 green creatures with haste that are still lands.\nSVar:DBUntap:DB$ Untap | Defined$ Remembered | SubAbility$ DBAnimate | Condition$ Kicked | ConditionDescription$ If it was kicked,\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Power$ 3 | Toughness$ 3 | Colors$ Green | Types$ Creature | Keywords$ Haste | Condition$ Kicked | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Kicker {3}{G} (You may pay an additional {3}{G} as you cast this spell.)\\nSearch your library for up to two Forest cards, put them onto the battlefield tapped, then shuffle.\\nIf this spell was kicked, untap all Forests put onto the battlefield this way. They become 3/3 green creatures with haste that are still lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunting Wilds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

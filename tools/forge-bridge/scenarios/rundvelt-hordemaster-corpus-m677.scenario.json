@@ -1,0 +1,23 @@
+{
+  "id": "rundvelt-hordemaster-corpus-m677",
+  "description": "M6 corpus — Rundvelt Hordemaster; in-hand parse.",
+  "seed": 68623,
+  "cards": {
+    "Rundvelt Hordemaster": "Name:Rundvelt Hordemaster\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:1/1\nS:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Goblin.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Goblins you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Goblin.Other+YouCtrl | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME or another Goblin you control dies, exile the top card of your library.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | ConditionDefined$ Remembered | ConditionPresent$ Creature.Goblin | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ If it's a Goblin creature card, you may cast that card until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nDeckNeeds:Type$Goblin\nDeckHints:Type$Goblin\nOracle:Other Goblins you control get +1/+1.\\nWhenever Rundvelt Hordemaster or another Goblin you control dies, exile the top card of your library. If it's a Goblin creature card, you may cast that card until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rundvelt Hordemaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

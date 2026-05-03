@@ -1,0 +1,23 @@
+{
+  "id": "slayer-of-the-wicked-corpus-m677",
+  "description": "M6 corpus — Slayer of the Wicked; in-hand parse.",
+  "seed": 70187,
+  "cards": {
+    "Slayer of the Wicked": "Name:Slayer of the Wicked\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target Vampire, Werewolf, or Zombie.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.Vampire,Creature.Werewolf,Creature.Zombie | TgtPrompt$ Select target Vampire, Werewolf, or Zombie\nSVar:PlayMain1:TRUE\nOracle:When Slayer of the Wicked enters, you may destroy target Vampire, Werewolf, or Zombie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slayer of the Wicked"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

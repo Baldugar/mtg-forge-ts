@@ -1,0 +1,23 @@
+{
+  "id": "halo-hunter-corpus-m677",
+  "description": "M6 corpus — Halo Hunter; in-hand parse.",
+  "seed": 61995,
+  "cards": {
+    "Halo Hunter": "Name:Halo Hunter\nManaCost:2 B B B\nTypes:Creature Demon\nPT:6/3\nK:Intimidate\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target Angel.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Angel | TgtPrompt$ Select target Angel\nOracle:Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nWhen Halo Hunter enters, destroy target Angel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Halo Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

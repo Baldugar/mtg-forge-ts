@@ -1,0 +1,23 @@
+{
+  "id": "radiating-lightning-corpus-m677",
+  "description": "M6 corpus — Radiating Lightning; in-hand parse.",
+  "seed": 67539,
+  "cards": {
+    "Radiating Lightning": "Name:Radiating Lightning\nManaCost:3 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Player | NumDmg$ 3 | SubAbility$ DmgAll | DamageMap$ True | SpellDescription$ CARDNAME deals 3 damage to target player and 1 damage to each creature that player controls.\nSVar:DmgAll:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.TargetedPlayerCtrl | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Radiating Lightning deals 3 damage to target player and 1 damage to each creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radiating Lightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

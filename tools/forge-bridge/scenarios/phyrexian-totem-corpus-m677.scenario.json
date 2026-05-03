@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-totem-corpus-m677",
+  "description": "M6 corpus — Phyrexian Totem; in-hand parse.",
+  "seed": 66871,
+  "cards": {
+    "Phyrexian Totem": "Name:Phyrexian Totem\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1 | SpellDescription$ Add {B}.\nA:AB$ Animate | Cost$ 2 B | Defined$ Self | Power$ 5 | Toughness$ 5 | Types$ Creature,Artifact,Phyrexian,Horror | RemoveCreatureTypes$ True | Colors$ Black | OverwriteColors$ True | Keywords$ Trample | SpellDescription$ CARDNAME becomes a 5/5 black Phyrexian Horror artifact creature with trample until end of turn.\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME is dealt damage, if it's a creature, sacrifice that many permanents.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Permanent | Amount$ X\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:All\nOracle:{T}: Add {B}.\\n{2}{B}: Phyrexian Totem becomes a 5/5 black Phyrexian Horror artifact creature with trample until end of turn.\\nWhenever Phyrexian Totem is dealt damage, if it's a creature, sacrifice that many permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Totem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "splinterfright-corpus-m677",
+  "description": "M6 corpus — Splinterfright; in-hand parse.",
+  "seed": 70747,
+  "cards": {
+    "Splinterfright": "Name:Splinterfright\nManaCost:2 G\nTypes:Creature Elemental\nPT:*/*\nK:Trample\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creature cards in your graveyard.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, mill two cards.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 2\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:NeedsToPlayVar:X GE1\nDeckHas:Ability$Graveyard\nOracle:Trample\\nSplinterfright's power and toughness are each equal to the number of creature cards in your graveyard.\\nAt the beginning of your upkeep, mill two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Splinterfright"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "praetor-s-counsel-corpus-m677",
+  "description": "M6 corpus — Praetor's Counsel; in-hand parse.",
+  "seed": 67102,
+  "cards": {
+    "Praetor's Counsel": "Name:Praetor's Counsel\nManaCost:5 G G G\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Origin$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn | SubAbility$ DBChange | SpellDescription$ Return all cards from your graveyard to your hand. Exile CARDNAME. You have no maximum hand size for the rest of the game.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STHandSize | Duration$ Permanent\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nOracle:Return all cards from your graveyard to your hand. Exile Praetor's Counsel. You have no maximum hand size for the rest of the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Praetor's Counsel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rejoin-the-fight-corpus-m677",
+  "description": "M6 corpus — Rejoin the Fight; in-hand parse.",
+  "seed": 67985,
+  "cards": {
+    "Rejoin the Fight": "Name:Rejoin the Fight\nManaCost:5 B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 3 | SubAbility$ DBRepeatEach | SpellDescription$ Mill three cards. Then starting with the next opponent in turn order, each opponent chooses a creature card in your graveyard that hasn't been chosen. Return each card chosen this way to the battlefield under your control.\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | StartingWith$ Opponent | RepeatSubAbility$ OpponentsChoose | SubAbility$ DBChangeZoneAll\nSVar:OpponentsChoose:DB$ ChooseCard | ChoiceZone$ Graveyard | Choices$ Creature.YouOwn+!IsRemembered | Defined$ Player.IsRemembered | RememberChosen$ True\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:Mill three cards. Then starting with the next opponent in turn order, each opponent chooses a creature card in your graveyard that hasn't been chosen. Return each card chosen this way to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rejoin the Fight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

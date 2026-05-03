@@ -1,0 +1,23 @@
+{
+  "id": "greensleeves-maro-sorcerer-corpus-m677",
+  "description": "M6 corpus — Greensleeves, Maro-Sorcerer; in-hand parse.",
+  "seed": 61736,
+  "cards": {
+    "Greensleeves, Maro-Sorcerer": "Name:Greensleeves, Maro-Sorcerer\nManaCost:3 G G\nTypes:Legendary Creature Elemental Sorcerer\nPT:*/*\nK:Protection:Planeswalker\nK:Protection:Wizard\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Landfall — Whenever a land you control enters, create a 3/3 green Badger creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_badger | TokenOwner$ You\nSVar:X:Count$Valid Land.YouCtrl\nDeckHas:Ability$Token & Type$Badger\nOracle:Protection from planeswalkers and from Wizards\\nGreensleeves, Maro-Sorcerer's power and toughness are each equal to the number of lands you control.\\nLandfall — Whenever a land you control enters, create a 3/3 green Badger creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greensleeves, Maro-Sorcerer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

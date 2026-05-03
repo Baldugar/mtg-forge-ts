@@ -1,0 +1,23 @@
+{
+  "id": "mine-security-corpus-m677",
+  "description": "M6 corpus — Mine Security; in-hand parse.",
+  "seed": 65192,
+  "cards": {
+    "Mine Security": "Name:Mine Security\nManaCost:1 R\nTypes:Creature Kavu Soldier\nPT:3/1\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure | TriggerDescription$ When this creature enters, conjure a card named Flametongue Kavu into the top eight cards of your library at random. It perpetually gains \"You may pay {0} rather than pay this spell's mana cost.\"\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Flametongue Kavu | Zone$ Library | LibraryPosition$ Count$Random.0.8 | RememberMade$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ FreeCast | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:FreeCast:Mode$ Continuous | MayPlay$ True | MayPlayAltManaCost$ 0 | MayPlayDontGrantZonePermissions$ True | Affected$ Card.Self | AffectedZone$ Hand,Graveyard,Exile,Library,Command | EffectZone$ All | Description$ You may pay {0} rather than pay this spell's mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Trample\\nWhen this creature enters, conjure a card named Flametongue Kavu into the top eight cards of your library at random. It perpetually gains \"You may pay {0} rather than pay this spell's mana cost.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mine Security"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

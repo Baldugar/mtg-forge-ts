@@ -1,0 +1,23 @@
+{
+  "id": "grave-betrayal-corpus-m677",
+  "description": "M6 corpus — Grave Betrayal; in-hand parse.",
+  "seed": 61645,
+  "cards": {
+    "Grave Betrayal": "Name:Grave Betrayal\nManaCost:5 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouDontCtrl | TriggerZones$ Battlefield | Execute$ DelTrig | TriggerDescription$ Whenever a creature you don't control dies, return it to the battlefield under your control with an additional +1/+1 counter on it at the beginning of the next end step. That creature is a black Zombie in addition to its other colors and types.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ GBReturn | RememberObjects$ TriggeredNewCardLKICopy | TriggerDescription$ Return creature to the battlefield under your control with an additional +1/+1 counter on it at the beginning of the next end step. It is a black Zombie in addition to its other colors and types.\nSVar:GBReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | WithCountersType$ P1P1 | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Zombie | AddColor$ Black\nOracle:Whenever a creature you don't control dies, return it to the battlefield under your control with an additional +1/+1 counter on it at the beginning of the next end step. That creature is a black Zombie in addition to its other colors and types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grave Betrayal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

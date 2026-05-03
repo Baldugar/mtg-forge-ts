@@ -1,0 +1,25 @@
+{
+  "id": "metalworker-corpus-m677",
+  "description": "M6 corpus — Metalworker; ETB-on-bf.",
+  "seed": 65055,
+  "cards": {
+    "Metalworker": "Name:Metalworker\nManaCost:3\nTypes:Artifact Creature Construct\nPT:1/2\nA:AB$ Reveal | Cost$ T | RevealValid$ Card.Artifact+YouCtrl | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBMetalWorkerMana | SpellDescription$ Reveal any number of artifact cards in your hand. Add {C}{C} for each card revealed this way.\nSVar:DBMetalWorkerMana:DB$ Mana | Produced$ C | Amount$ MetalWorkerX | SubAbility$ DBMetalWorkerCleanup\nSVar:DBMetalWorkerCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MetalWorkerX:Remembered$Amount/Twice\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{T}: Reveal any number of artifact cards in your hand. Add {C}{C} for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Metalworker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

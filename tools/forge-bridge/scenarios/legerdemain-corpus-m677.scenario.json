@@ -1,0 +1,23 @@
+{
+  "id": "legerdemain-corpus-m677",
+  "description": "M6 corpus — Legerdemain; in-hand parse.",
+  "seed": 64097,
+  "cards": {
+    "Legerdemain": "Name:Legerdemain\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Artifact,Creature | TgtPrompt$ target artifact or creature | StackDescription$ None | SubAbility$ DBExchange | SpellDescription$ Exchange control of target artifact or creature and another target permanent that shares one of those types with it. (This effect lasts indefinitely.)\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Permanent | TgtPrompt$ Select target permanent that shares one of those types | TargetsWithSharedCardType$ ParentTarget | TargetsWithSharedTypes$ Artifact,Creature | TargetUnique$ True\nAI:RemoveDeck:All\nOracle:Exchange control of target artifact or creature and another target permanent that shares one of those types with it. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legerdemain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

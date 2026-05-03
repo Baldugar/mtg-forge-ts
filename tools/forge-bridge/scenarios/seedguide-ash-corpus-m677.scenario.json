@@ -1,0 +1,23 @@
+{
+  "id": "seedguide-ash-corpus-m677",
+  "description": "M6 corpus — Seedguide Ash; in-hand parse.",
+  "seed": 69365,
+  "cards": {
+    "Seedguide Ash": "Name:Seedguide Ash\nManaCost:4 G\nTypes:Creature Treefolk Druid\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may search your library for up to three Forest cards, put them onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | Tapped$ True | ChangeNum$ 3 | ShuffleNonMandatory$ True\nOracle:When Seedguide Ash dies, you may search your library for up to three Forest cards, put them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seedguide Ash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

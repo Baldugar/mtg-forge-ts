@@ -1,0 +1,23 @@
+{
+  "id": "lim-d-l-s-hex-corpus-m677",
+  "description": "M6 corpus — Lim-Dûl's Hex; in-hand parse.",
+  "seed": 64279,
+  "cards": {
+    "Lim-Dûl's Hex": "Name:Lim-Dûl's Hex\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of your upkeep, for each player, CARDNAME deals 1 damage to that player unless they pay {B} or {3}.\nSVar:TrigChoose:DB$ GenericChoice | Defined$ Player | Choices$ PayB,Pay3 | TempRemember$ Chooser | AILogic$ PayUnlessCost\nSVar:PayB:DB$ DealDamage | Defined$ Remembered | NumDmg$ 1 | UnlessCost$ B | UnlessPayer$ Remembered | SpellDescription$ CARDNAME deals 1 damage to you unless you pay {B}\nSVar:Pay3:DB$ DealDamage | Defined$ Remembered | NumDmg$ 1 | UnlessCost$ 3 | UnlessPayer$ Remembered | SpellDescription$ CARDNAME deals 1 damage to you unless you pay {3}\nOracle:At the beginning of your upkeep, for each player, Lim-Dûl's Hex deals 1 damage to that player unless they pay {B} or {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lim-Dûl's Hex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

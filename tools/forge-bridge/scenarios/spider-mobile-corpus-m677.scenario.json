@@ -1,0 +1,23 @@
+{
+  "id": "spider-mobile-corpus-m677",
+  "description": "M6 corpus — Spider-Mobile; in-hand parse.",
+  "seed": 70640,
+  "cards": {
+    "Spider-Mobile": "Name:Spider-Mobile\nVariant:UniversesWithin:FlavorName:Scuttling Spidercoach\nManaCost:3\nTypes:Artifact Vehicle\nPT:3/3\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever this Vehicle attacks or blocks, it gets +1/+1 until end of turn for each Spider you control.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever this Vehicle attacks or blocks, it gets +1/+1 until end of turn for each Spider you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nK:Crew:2\nSVar:X:Count$Valid Spider.YouCtrl\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nOracle:Trample\\nWhenever this Vehicle attacks or blocks, it gets +1/+1 until end of turn for each Spider you control.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Mobile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

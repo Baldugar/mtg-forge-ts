@@ -1,0 +1,23 @@
+{
+  "id": "shredder-s-armor-corpus-m677",
+  "description": "M6 corpus — Shredder's Armor; in-hand parse.",
+  "seed": 69773,
+  "cards": {
+    "Shredder's Armor": "Name:Shredder's Armor\nManaCost:1 B\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Equipped creature gets +2/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When this Equipment enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nK:Equip:Sac<1/Permanent.Other+nonLand/another nonland permanent>::ActivationLimit$ 1:Activate only once each turn\nOracle:Equipped creature gets +2/+1.\\nWhen this Equipment enters, attach it to target creature you control.\\nEquip—Sacrifice another nonland permanent. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shredder's Armor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

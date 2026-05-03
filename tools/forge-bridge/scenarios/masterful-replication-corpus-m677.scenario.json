@@ -1,0 +1,23 @@
+{
+  "id": "masterful-replication-corpus-m677",
+  "description": "M6 corpus — Masterful Replication; in-hand parse.",
+  "seed": 64879,
+  "cards": {
+    "Masterful Replication": "Name:Masterful Replication\nManaCost:5 U\nTypes:Instant\nA:SP$ Charm | Choices$ DBToken,DBClone\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_3_3_a_golem | TokenOwner$ You | SpellDescription$ Create two 3/3 colorless Golem artifact creature tokens.\nSVar:DBClone:DB$ Clone | Defined$ Targeted | CloneTarget$ Valid Artifact.YouCtrl+NotDefinedTargeted | Duration$ UntilEndOfTurn | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Choose target artifact you control | StackDescription$ Each other artifact {p:You} controls becomes a copy of {c:Targeted} until end of turn. | SpellDescription$ Choose target artifact you control. Each other artifact you control becomes a copy of that artifact until end of turn.\nAI:RemoveDeck:All\nDeckHas:Ability$Token & Type$Artifact|Golem\nDeckHints:Type$Artifact\nOracle:Choose one —\\n• Create two 3/3 colorless Golem artifact creature tokens.\\n• Choose target artifact you control. Each other artifact you control becomes a copy of that artifact until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Masterful Replication"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

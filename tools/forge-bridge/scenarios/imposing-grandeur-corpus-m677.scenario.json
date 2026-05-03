@@ -1,0 +1,23 @@
+{
+  "id": "imposing-grandeur-corpus-m677",
+  "description": "M6 corpus — Imposing Grandeur; in-hand parse.",
+  "seed": 62818,
+  "cards": {
+    "Imposing Grandeur": "Name:Imposing Grandeur\nManaCost:4 R\nTypes:Sorcery\nA:SP$ GenericChoice | TempRemember$ Chooser | ShowChoice$ ExceptSelf | Defined$ Player | Choices$ Discard,No | SubAbility$ DBGrandWheel | StackDescription$ REP Each player may_{p:Player} may each & they own_that player owns | SpellDescription$ Each player may discard their hand and draw cards equal to the greatest mana value of a commander they own on the battlefield or in the command zone.\nSVar:Discard:DB$ Pump | Defined$ Remembered | NoteCards$ Self | NoteCardsFor$ Discard | SpellDescription$ I will discard my hand.\nSVar:No:DB$ Pump | SpellDescription$ I will NOT discard my hand.\nSVar:DBGrandWheel:DB$ RepeatEach | RepeatPlayers$ Player.NotedForDiscard | RepeatSubAbility$ DBWheelDiscard | SubAbility$ DBClearNotes\nSVar:DBWheelDiscard:DB$ Discard | Mode$ Hand | Defined$ Player.IsRemembered | SubAbility$ DBWheelDraw\nSVar:DBWheelDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered\nSVar:DBClearNotes:DB$ Pump | Defined$ Player | ClearNotedCardsFor$ Discard | StackDescription$ None\nSVar:X:Count$ValidBattlefield,Command Card.IsCommander+RememberedPlayerOwn$GreatestCardManaCost\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Discard\nOracle:Each player may discard their hand and draw cards equal to the greatest mana value of a commander they own on the battlefield or in the command zone.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imposing Grandeur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

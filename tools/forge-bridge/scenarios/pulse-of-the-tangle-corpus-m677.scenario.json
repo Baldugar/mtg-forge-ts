@@ -1,0 +1,23 @@
+{
+  "id": "pulse-of-the-tangle-corpus-m677",
+  "description": "M6 corpus — Pulse of the Tangle; in-hand parse.",
+  "seed": 67354,
+  "cards": {
+    "Pulse of the Tangle": "Name:Pulse of the Tangle\nManaCost:1 G G\nTypes:Sorcery\nA:SP$ Token | TokenScript$ g_3_3_beast | TokenOwner$ You | SubAbility$ DBBounce | SpellDescription$ Create a 3/3 green Beast creature token. Then if an opponent controls more creatures than you, return CARDNAME to its owner's hand.\nSVar:DBBounce:DB$ ChangeZone | Origin$ Stack | Destination$ Hand | ConditionPresent$ Creature.OppCtrl | ConditionCompare$ GTX | Defined$ Parent\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:Create a 3/3 green Beast creature token. Then if an opponent controls more creatures than you, return Pulse of the Tangle to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pulse of the Tangle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

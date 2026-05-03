@@ -1,0 +1,23 @@
+{
+  "id": "ledev-champion-corpus-m677",
+  "description": "M6 corpus — Ledev Champion; in-hand parse.",
+  "seed": 64084,
+  "cards": {
+    "Ledev Champion": "Name:Ledev Champion\nManaCost:1 G W\nTypes:Creature Elf Knight\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may tap any number of untapped creatures you control. CARDNAME gets +1/+1 until end of turn for each creature tapped this way.\nSVar:TrigTap:DB$ Tap | CardChoices$ Creature.YouCtrl+untapped | AnyNumber$ True | ChoiceAmount$ Count$Valid Creature.YouCtrl+untapped | RememberTapped$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | NumAtt$ +Y | NumDef$ +Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nA:AB$ Token | Cost$ 3 G W | TokenScript$ w_1_1_soldier_lifelink | SpellDescription$ Create a 1/1 white Soldier creature token with lifelink.\nDeckHas:Ability$Token|LifeGain\nOracle:Whenever Ledev Champion attacks, you may tap any number of untapped creatures you control. Ledev Champion gets +1/+1 until end of turn for each creature tapped this way.\\n{3}{G}{W}: Create a 1/1 white Soldier creature token with lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ledev Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

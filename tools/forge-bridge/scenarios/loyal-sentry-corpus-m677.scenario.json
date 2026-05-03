@@ -1,0 +1,25 @@
+{
+  "id": "loyal-sentry-corpus-m677",
+  "description": "M6 corpus — Loyal Sentry; ETB-on-bf.",
+  "seed": 64461,
+  "cards": {
+    "Loyal Sentry": "Name:Loyal Sentry\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME blocks a creature, destroy that creature and CARDNAME.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredAttackerLKICopy & Self\nOracle:When Loyal Sentry blocks a creature, destroy that creature and Loyal Sentry.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Loyal Sentry"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

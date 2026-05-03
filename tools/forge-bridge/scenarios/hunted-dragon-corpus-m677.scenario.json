@@ -1,0 +1,23 @@
+{
+  "id": "hunted-dragon-corpus-m677",
+  "description": "M6 corpus — Hunted Dragon; in-hand parse.",
+  "seed": 62613,
+  "cards": {
+    "Hunted Dragon": "Name:Hunted Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:6/6\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, target opponent creates three 2/2 white Knight creature tokens with first strike.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ w_2_2_knight_first_strike | ValidTgts$ Opponent | TokenOwner$ Targeted\nOracle:Flying, haste\\nWhen Hunted Dragon enters, target opponent creates three 2/2 white Knight creature tokens with first strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "singing-bell-strike-corpus-m677",
+  "description": "M6 corpus — Singing Bell Strike; in-hand parse.",
+  "seed": 69966,
+  "cards": {
+    "Singing Bell Strike": "Name:Singing Bell Strike\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ Untap | Description$ Enchanted creature has \"{6}: Untap this creature.\"\nSVar:Untap:AB$ Untap | Cost$ 6 | Defined$ Self | SpellDescription$ Untap CARDNAME.\nOracle:Enchant creature\\nWhen Singing Bell Strike enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\nEnchanted creature has \"{6}: Untap this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Singing Bell Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

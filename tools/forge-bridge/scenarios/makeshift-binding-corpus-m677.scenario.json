@@ -1,0 +1,23 @@
+{
+  "id": "makeshift-binding-corpus-m677",
+  "description": "M6 corpus — Makeshift Binding; in-hand parse.",
+  "seed": 64642,
+  "cards": {
+    "Makeshift Binding": "Name:Makeshift Binding\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield. You gain 2 life.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:When Makeshift Binding enters, exile target creature an opponent controls until Makeshift Binding leaves the battlefield. You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Makeshift Binding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

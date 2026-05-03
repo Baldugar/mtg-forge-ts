@@ -1,0 +1,23 @@
+{
+  "id": "phase-dolphin-corpus-m677",
+  "description": "M6 corpus — Phase Dolphin; in-hand parse.",
+  "seed": 66820,
+  "cards": {
+    "Phase Dolphin": "Name:Phase Dolphin\nManaCost:2 U\nTypes:Creature Elemental Whale\nPT:1/4\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigUnblockable | TriggerDescription$ Whenever CARDNAME attacks, another target attacking creature can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:Whenever Phase Dolphin attacks, another target attacking creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phase Dolphin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

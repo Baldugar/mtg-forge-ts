@@ -1,0 +1,23 @@
+{
+  "id": "shard-of-broken-glass-corpus-m677",
+  "description": "M6 corpus — Shard of Broken Glass; in-hand parse.",
+  "seed": 69612,
+  "cards": {
+    "Shard of Broken Glass": "Name:Shard of Broken Glass\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | Description$ Equipped creature gets +1/+0.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigMill | TriggerDescription$ Whenever equipped creature attacks, you may mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | Optional$ True\nK:Equip:1\nOracle:Equipped creature gets +1/+0.\\nWhenever equipped creature attacks, you may mill two cards.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shard of Broken Glass"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "summon-anima-corpus-m677",
+  "description": "M6 corpus — Summon: Anima; in-hand parse.",
+  "seed": 71304,
+  "cards": {
+    "Summon: Anima": "Name:Summon: Anima\nManaCost:4 B B\nTypes:Enchantment Creature Saga Horror\nPT:4/4\nK:Chapter:4:DBPain,DBPain,DBPain,DBOblivion\nSVar:DBPain:DB$ Draw | SubAbility$ DBLoseLife1 | SpellDescription$ Pain — You draw a card and you lose 1 life.\nSVar:DBLoseLife1:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nSVar:DBOblivion:DB$ Sacrifice | SacValid$ Creature | Defined$ Player.Opponent | SubAbility$ DBLoseLife2 | SpellDescription$ Oblivion — Each opponent sacrifices a creature of their choice and loses 3 life.\nSVar:DBLoseLife2:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3\nK:Menace\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Pain — You draw a card and you lose 1 life.\\nIV — Oblivion — Each opponent sacrifices a creature of their choice and loses 3 life.\\nMenace\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Anima"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

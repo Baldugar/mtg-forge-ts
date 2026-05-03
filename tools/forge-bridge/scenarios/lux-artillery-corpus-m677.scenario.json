@@ -1,0 +1,23 @@
+{
+  "id": "lux-artillery-corpus-m677",
+  "description": "M6 corpus — Lux Artillery; in-hand parse.",
+  "seed": 64525,
+  "cards": {
+    "Lux Artillery": "Name:Lux Artillery\nManaCost:4\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Artifact.Creature | ValidActivatingPlayer$ You | Execute$ TrigAnimate | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact creature spell, it gains sunburst. (It enters with a +1/+1 counter on it for each color of mana spent to cast it.)\nSVar:TrigAnimate:DB$ Animate | Keywords$ Sunburst | Defined$ TriggeredCardLKICopy | Duration$ Permanent\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | SVarCompare$ GE30 | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if there are thirty or more counters among artifacts and creatures you control, CARDNAME deals 10 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 10\nSVar:X:Count$Valid Artifact.YouCtrl,Creature.YouCtrl$CardCounters.ALL\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact\nOracle:Whenever you cast an artifact creature spell, it gains sunburst. (It enters with a +1/+1 counter on it for each color of mana spent to cast it.)\\nAt the beginning of your end step, if there are thirty or more counters among artifacts and creatures you control, Lux Artillery deals 10 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lux Artillery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shrouded-shepherd-corpus-m677",
+  "description": "M6 corpus — Shrouded Shepherd; in-hand parse.",
+  "seed": 69798,
+  "cards": {
+    "Shrouded Shepherd": "Name:Shrouded Shepherd\nManaCost:1 W\nTypes:Creature Spirit Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature you control gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2\nAlternateMode:Adventure\nOracle:When Shrouded Shepherd enters, target creature you control gets +2/+2 until end of turn.\n\nALTERNATE\n\nName:Cleave Shadows\nManaCost:1 B\nTypes:Sorcery Adventure\nA:SP$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ Creatures your opponents control get -1/-1 until end of turn. (Then exile this card. You may cast the creature later from exile.)\nOracle:Creatures your opponents control get -1/-1 until end of turn. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrouded Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

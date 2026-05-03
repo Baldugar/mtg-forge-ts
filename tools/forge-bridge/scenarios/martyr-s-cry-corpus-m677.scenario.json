@@ -1,0 +1,23 @@
+{
+  "id": "martyr-s-cry-corpus-m677",
+  "description": "M6 corpus — Martyr's Cry; in-hand parse.",
+  "seed": 64832,
+  "cards": {
+    "Martyr's Cry": "Name:Martyr's Cry\nManaCost:W W\nTypes:Sorcery\nA:SP$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | ChangeType$ Creature.White | SubAbility$ DBRepeat | SpellDescription$ Exile all white creatures. For each creature exiled this way, its controller draws a card.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ RememberedController | RepeatSubAbility$ DBDraw | SubAbility$ DBCleanup\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Card.RememberedPlayerCtrl\nAI:RemoveDeck:Random\nOracle:Exile all white creatures. For each creature exiled this way, its controller draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martyr's Cry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

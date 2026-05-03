@@ -1,0 +1,23 @@
+{
+  "id": "pest-infestation-corpus-m677",
+  "description": "M6 corpus — Pest Infestation; in-hand parse.",
+  "seed": 66761,
+  "cards": {
+    "Pest Infestation": "Name:Pest Infestation\nManaCost:X X G\nTypes:Sorcery\nA:SP$ Destroy | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select up to X target artifacts and/or enchantments | SubAbility$ DBToken | SpellDescription$ Destroy up to X target artifacts and/or enchantments.\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ bg_1_1_pest_lifegain | TokenOwner$ You | SpellDescription$ Create twice X 1/1 black and green Pest creature tokens with \"When this creature dies, you gain 1 life.\"\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Twice\nDeckHas:Ability$Token|LifeGain\nOracle:Destroy up to X target artifacts and/or enchantments. Create twice X 1/1 black and green Pest creature tokens with \"When this creature dies, you gain 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pest Infestation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

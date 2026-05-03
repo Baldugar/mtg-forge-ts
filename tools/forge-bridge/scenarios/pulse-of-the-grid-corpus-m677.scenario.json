@@ -1,0 +1,23 @@
+{
+  "id": "pulse-of-the-grid-corpus-m677",
+  "description": "M6 corpus — Pulse of the Grid; in-hand parse.",
+  "seed": 67353,
+  "cards": {
+    "Pulse of the Grid": "Name:Pulse of the Grid\nManaCost:1 U U\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBDiscard | SpellDescription$ Draw two cards, then discard a card. Then if an opponent has more cards in hand than you, return CARDNAME to its owner's hand.\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | SubAbility$ TrigReturn\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Hand | ConditionCheckSVar$ X | ConditionSVarCompare$ GTY\nSVar:Y:Count$CardsInYourHand\nSVar:X:PlayerCountOpponents$HighestCardsInHand\nOracle:Draw two cards, then discard a card. Then if an opponent has more cards in hand than you, return Pulse of the Grid to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pulse of the Grid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

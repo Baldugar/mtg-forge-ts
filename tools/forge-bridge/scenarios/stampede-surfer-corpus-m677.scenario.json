@@ -1,0 +1,23 @@
+{
+  "id": "stampede-surfer-corpus-m677",
+  "description": "M6 corpus — Stampede Surfer; in-hand parse.",
+  "seed": 70870,
+  "cards": {
+    "Stampede Surfer": "Name:Stampede Surfer\nManaCost:3 RG RG\nTypes:Creature Human Warrior\nPT:4/4\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBRepeat | TriggerDescription$ Whenever CARDNAME attacks, for each opponent, you create a 2/2 green Boar creature token that's tapped and attacking that opponent.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Opponent | ChangeZoneTable$ True | RepeatSubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ g_2_2_boar | TokenTapped$ True | TokenAttacking$ Remembered | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Haste\\nWhenever Stampede Surfer attacks, for each opponent, you create a 2/2 green Boar creature token that's tapped and attacking that opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stampede Surfer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

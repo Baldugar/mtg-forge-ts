@@ -1,0 +1,25 @@
+{
+  "id": "kruphix-god-of-horizons-corpus-m677",
+  "description": "M6 corpus — Kruphix, God of Horizons; ETB-on-bf.",
+  "seed": 63905,
+  "cards": {
+    "Kruphix, God of Horizons": "Name:Kruphix, God of Horizons\nManaCost:3 G U\nTypes:Legendary Enchantment Creature God\nPT:4/7\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT7 | Description$ As long as your devotion to green and blue is less than seven, NICKNAME isn't a creature.\nSVar:X:Count$DevotionDual.Green.Blue\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nR:Event$ LoseMana | ValidPlayer$ You | ReplacementResult$ Replaced | ReplaceWith$ ConvertMana | ActiveZones$ Battlefield | Description$ If you would lose unspent mana, that mana becomes colorless instead.\nSVar:ConvertMana:DB$ ReplaceMana | ReplaceType$ C\nSVar:BuffedBy:Permanent.Green,Permanent.Blue\nOracle:Indestructible\\nAs long as your devotion to green and blue is less than seven, Kruphix isn't a creature.\\nYou have no maximum hand size.\\nIf you would lose unspent mana, that mana becomes colorless instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kruphix, God of Horizons"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

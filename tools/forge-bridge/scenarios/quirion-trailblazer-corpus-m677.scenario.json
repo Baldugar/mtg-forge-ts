@@ -1,0 +1,23 @@
+{
+  "id": "quirion-trailblazer-corpus-m677",
+  "description": "M6 corpus — Quirion Trailblazer; in-hand parse.",
+  "seed": 67497,
+  "cards": {
+    "Quirion Trailblazer": "Name:Quirion Trailblazer\nManaCost:3 G\nTypes:Creature Elf Scout\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | ShuffleNonMandatory$ True\nOracle:When Quirion Trailblazer enters, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quirion Trailblazer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

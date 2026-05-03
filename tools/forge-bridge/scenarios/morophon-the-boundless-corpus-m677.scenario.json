@@ -1,0 +1,23 @@
+{
+  "id": "morophon-the-boundless-corpus-m677",
+  "description": "M6 corpus — Morophon, the Boundless; in-hand parse.",
+  "seed": 65511,
+  "cards": {
+    "Morophon, the Boundless": "Name:Morophon, the Boundless\nManaCost:7\nTypes:Legendary Creature Shapeshifter\nPT:6/6\nK:Changeling\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | StackDescription$ SpellDescription | AILogic$ MostProminentInComputerDeck\nAI:RemoveDeck:Random\nS:Mode$ ReduceCost | ValidCard$ Card.ChosenType | Type$ Spell | Activator$ You | Amount$ 1 | Color$ W U B R G | IgnoreGeneric$ True | Description$ Spells of the chosen type you cast cost {W}{U}{B}{R}{G} less to cast. This effect reduces only the amount of colored mana you pay.\nS:Mode$ Continuous | Affected$ Creature.ChosenType+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other creatures you control of the chosen type get +1/+1.\nSVar:PlayMain1:TRUE\nOracle:Changeling (This card is every creature type.)\\nAs Morophon, the Boundless enters, choose a creature type.\\nSpells of the chosen type you cast cost {W}{U}{B}{R}{G} less to cast. This effect reduces only the amount of colored mana you pay.\\nOther creatures you control of the chosen type get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morophon, the Boundless"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

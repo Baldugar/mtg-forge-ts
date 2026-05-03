@@ -1,0 +1,23 @@
+{
+  "id": "illusionary-armor-corpus-m677",
+  "description": "M6 corpus — Illusionary Armor; in-hand parse.",
+  "seed": 62751,
+  "cards": {
+    "Illusionary Armor": "Name:Illusionary Armor\nManaCost:4 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 4 | AddToughness$ 4 | Description$ Enchanted creature gets +4/+4.\nT:Mode$ BecomesTarget | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When enchanted creature becomes the target of a spell or ability, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nOracle:Enchant creature\\nEnchanted creature gets +4/+4.\\nWhen enchanted creature becomes the target of a spell or ability, sacrifice Illusionary Armor.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illusionary Armor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

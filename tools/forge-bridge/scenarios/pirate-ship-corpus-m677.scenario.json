@@ -1,0 +1,23 @@
+{
+  "id": "pirate-ship-corpus-m677",
+  "description": "M6 corpus — Pirate Ship; in-hand parse.",
+  "seed": 66925,
+  "cards": {
+    "Pirate Ship": "Name:Pirate Ship\nManaCost:4 U\nTypes:Creature Human Pirate\nPT:4/3\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:Pirate Ship can't attack unless defending player controls an Island.\\n{T}: Pirate Ship deals 1 damage to any target.\\nWhen you control no Islands, sacrifice Pirate Ship.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pirate Ship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

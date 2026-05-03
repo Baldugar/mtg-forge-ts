@@ -1,0 +1,23 @@
+{
+  "id": "maestros-diabolist-corpus-m677",
+  "description": "M6 corpus — Maestros Diabolist; in-hand parse.",
+  "seed": 64569,
+  "cards": {
+    "Maestros Diabolist": "Name:Maestros Diabolist\nManaCost:U B R\nTypes:Creature Vampire Warrior\nPT:1/4\nK:Deathtouch\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | IsPresent$ Devil.token+YouCtrl | PresentCompare$ EQ0 | TriggerDescription$ Whenever CARDNAME attacks, if you don't control a Devil token, create a tapped and attacking 1/1 red Devil creature token with \"When this creature dies, it deals 1 damage to any target.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_devil_burn | TokenTapped$ True | TokenAttacking$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Devil\nOracle:Deathtouch, haste\\nWhenever Maestros Diabolist attacks, if you don't control a Devil token, create a tapped and attacking 1/1 red Devil creature token with \"When this creature dies, it deals 1 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maestros Diabolist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

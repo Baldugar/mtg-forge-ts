@@ -1,0 +1,25 @@
+{
+  "id": "powerbalance-corpus-m677",
+  "description": "M6 corpus — Powerbalance; ETB-on-bf.",
+  "seed": 67094,
+  "cards": {
+    "Powerbalance": "Name:Powerbalance\nManaCost:R R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigReveal | TriggerDescription$ Whenever an opponent casts a spell, you may reveal the top card of your library. If you do, you may cast that card without paying its mana cost if the two spells have the same mana value.\nSVar:TrigReveal:DB$ PeekAndReveal | PeekAmount$ 1 | NoPeek$ True | RevealOptional$ True | RememberRevealed$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell.cmcEQX | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Whenever an opponent casts a spell, you may reveal the top card of your library. If you do, you may cast that card without paying its mana cost if the two spells have the same mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Powerbalance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

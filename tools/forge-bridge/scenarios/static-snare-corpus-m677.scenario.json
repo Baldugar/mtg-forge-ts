@@ -1,0 +1,23 @@
+{
+  "id": "static-snare-corpus-m677",
+  "description": "M6 corpus — Static Snare; in-hand parse.",
+  "seed": 70919,
+  "cards": {
+    "Static Snare": "Name:Static Snare\nManaCost:4 W\nTypes:Enchantment\nK:Flash\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each attacking creature.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Select target artifact or creature an opponent controls | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay\nSVar:X:Count$Valid Creature.attacking\nOracle:Flash\\nThis spell costs {1} less to cast for each attacking creature.\\nWhen this enchantment enters, exile target artifact or creature an opponent controls until this enchantment leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Static Snare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

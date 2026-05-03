@@ -1,0 +1,23 @@
+{
+  "id": "steer-clear-corpus-m677",
+  "description": "M6 corpus — Steer Clear; in-hand parse.",
+  "seed": 70973,
+  "cards": {
+    "Steer Clear": "Name:Steer Clear\nManaCost:W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ X | SpellDescription$ CARDNAME deals 2 damage to target attacking or blocking creature. CARDNAME deals 4 damage to that creature instead if you controlled a Mount as you cast this spell.\nSVar:X:Count$Compare Y GE1.4.2\nSVar:Y:Count$LastStateBattlefieldWithFallback Permanent.Mount+YouCtrl\nOracle:Steer Clear deals 2 damage to target attacking or blocking creature. Steer Clear deals 4 damage to that creature instead if you controlled a Mount as you cast this spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steer Clear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

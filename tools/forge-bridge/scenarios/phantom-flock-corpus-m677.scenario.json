@@ -1,0 +1,23 @@
+{
+  "id": "phantom-flock-corpus-m677",
+  "description": "M6 corpus — Phantom Flock; in-hand parse.",
+  "seed": 66803,
+  "cards": {
+    "Phantom Flock": "Name:Phantom Flock\nManaCost:3 W W\nTypes:Creature Bird Soldier Spirit\nPT:0/0\nK:Flying\nK:etbCounter:P1P1:3\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME, prevent that damage. Remove a +1/+1 counter from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nPhantom Flock enters with three +1/+1 counters on it.\\nIf damage would be dealt to Phantom Flock, prevent that damage. Remove a +1/+1 counter from Phantom Flock.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantom Flock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

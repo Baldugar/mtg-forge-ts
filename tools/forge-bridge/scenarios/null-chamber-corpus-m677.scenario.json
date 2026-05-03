@@ -1,0 +1,23 @@
+{
+  "id": "null-chamber-corpus-m677",
+  "description": "M6 corpus — Null Chamber; in-hand parse.",
+  "seed": 66099,
+  "cards": {
+    "Null Chamber": "Name:Null Chamber\nManaCost:3 W\nTypes:World Enchantment\nK:ETBReplacement:Other:DBNameCard\nSVar:DBNameCard:DB$ NameCard | ValidCards$ Card.nonBasic | ValidDescription$ card other than a basic land | SubAbility$ ChooseP | SpellDescription$ As CARDNAME enters, you and an opponent each choose a card name other than a basic land card name.\nSVar:ChooseP:DB$ ChoosePlayer | Choices$ Opponent | SubAbility$ NameOpp\nSVar:NameOpp:DB$ NameCard | Defined$ ChosenPlayer | ValidCards$ Card.nonBasic | ValidDescription$ a card name other than a basic land card name\nS:Mode$ CantBeCast | ValidCard$ Card.NamedCard | Description$ Spells with the chosen names can't be cast and lands with the chosen names can't be played.\nS:Mode$ CantPlayLand | ValidCard$ Land.NamedCard\nAI:RemoveDeck:Random\nOracle:As Null Chamber enters, you and an opponent each choose a card name other than a basic land card name.\\nSpells with the chosen names can't be cast and lands with the chosen names can't be played.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Null Chamber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

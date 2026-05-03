@@ -1,0 +1,23 @@
+{
+  "id": "shrieking-specter-corpus-m677",
+  "description": "M6 corpus — Shrieking Specter; in-hand parse.",
+  "seed": 69786,
+  "cards": {
+    "Shrieking Specter": "Name:Shrieking Specter\nManaCost:5 B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME attacks, defending player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredDefendingPlayer | NumCards$ 1 | Mode$ TgtChoose\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Shrieking Specter attacks, defending player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrieking Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

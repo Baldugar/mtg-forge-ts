@@ -1,0 +1,23 @@
+{
+  "id": "spirit-of-the-hunt-corpus-m677",
+  "description": "M6 corpus — Spirit of the Hunt; in-hand parse.",
+  "seed": 70707,
+  "cards": {
+    "Spirit of the Hunt": "Name:Spirit of the Hunt\nManaCost:1 G G\nTypes:Creature Wolf Spirit\nPT:3/3\nK:Flash\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, each other creature you control that's a Wolf or a Werewolf gets +0/+3 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.Wolf+StrictlyOther+YouCtrl,Creature.Werewolf+StrictlyOther+YouCtrl | NumDef$ +3\nDeckHints:Type$Wolf|Werewolf\nOracle:Flash\\nWhen Spirit of the Hunt enters, each other creature you control that's a Wolf or a Werewolf gets +0/+3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit of the Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

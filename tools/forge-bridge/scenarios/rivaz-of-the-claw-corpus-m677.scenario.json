@@ -1,0 +1,25 @@
+{
+  "id": "rivaz-of-the-claw-corpus-m677",
+  "description": "M6 corpus — Rivaz of the Claw; ETB-on-bf.",
+  "seed": 68383,
+  "cards": {
+    "Rivaz of the Claw": "Name:Rivaz of the Claw\nManaCost:1 B R\nTypes:Legendary Creature Lizard Warlock\nPT:3/3\nK:Menace\nA:AB$ Mana | Cost$ T | Produced$ Combo Any | Amount$ 2 | RestrictValid$ Spell.Creature+Dragon | SpellDescription$ Add two mana in any combination of colors. Spend this mana only to cast Dragon creature spells.\nS:Mode$ Continuous | Affected$ Creature.Dragon+YouOwn | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ Once during each of your turns, you may cast a Dragon creature spell from your graveyard.\nT:Mode$ SpellCast | ValidCard$ Dragon.wasCastFromYourGraveyard | ValidActivatingPlayer$ You | Execute$ DBAnimate | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Dragon creature spell from your graveyard, it gains \"When this creature dies, exile it.\"\nSVar:DBAnimate:DB$ Animate | Defined$ TriggeredCardLKICopy | Duration$ Permanent | Triggers$ TrigDieExile\nSVar:TrigDieExile:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature dies, exile it.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Dragon & Modifier$NoToken\nOracle:Menace\\n{T}: Add two mana in any combination of colors. Spend this mana only to cast Dragon creature spells.\\nOnce during each of your turns, you may cast a Dragon creature spell from your graveyard.\\nWhenever you cast a Dragon creature spell from your graveyard, it gains \"When this creature dies, exile it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rivaz of the Claw"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

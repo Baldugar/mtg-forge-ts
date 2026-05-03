@@ -1,0 +1,23 @@
+{
+  "id": "shared-trauma-corpus-m677",
+  "description": "M6 corpus — Shared Trauma; in-hand parse.",
+  "seed": 69619,
+  "cards": {
+    "Shared Trauma": "Name:Shared Trauma\nManaCost:B\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | StartingWith$ You | RepeatSubAbility$ DBPay | SubAbility$ DBMill | StackDescription$ SpellDescription | SpellDescription$ Join forces — Starting with you, each player may pay any amount of mana. Each player mills X cards, where X is the total amount of mana paid this way.\nSVar:DBPay:DB$ ChooseNumber | Defined$ Player.IsRemembered | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | SubAbility$ DBStore\nSVar:DBStore:DB$ StoreSVar | SVar$ JoinForcesAmount | Type$ CountSVar | Expression$ JoinForcesAmount/Plus.Y | UnlessCost$ Y | UnlessPayer$ Player.IsRemembered | UnlessSwitched$ True\nSVar:DBMill:DB$ Mill | Defined$ Player | NumCards$ JoinForcesAmount | SubAbility$ DBReset | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ JoinForcesAmount | Type$ Number | Expression$ 0\nSVar:Y:Count$ChosenNumber\nSVar:JoinForcesAmount:Number$0\nAI:RemoveDeck:All\nOracle:Join forces — Starting with you, each player may pay any amount of mana. Each player mills X cards, where X is the total amount of mana paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shared Trauma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

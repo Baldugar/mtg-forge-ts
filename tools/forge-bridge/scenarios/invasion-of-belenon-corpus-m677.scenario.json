@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-belenon-corpus-m677",
+  "description": "M6 corpus — Invasion of Belenon; in-hand parse.",
+  "seed": 63059,
+  "cards": {
+    "Invasion of Belenon": "Name:Invasion of Belenon\nManaCost:2 W\nTypes:Battle Siege\nDefense:5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white and blue Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ wu_2_2_knight_vigilance\nDeckHas:Ability$Token|Discard & Type$Knight & Color$Blue\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Belenon enters, create a 2/2 white and blue Knight creature token with vigilance.\n\nALTERNATE\n\nName:Belenon War Anthem\nManaCost:no cost\nColors:white\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:Creatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Belenon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

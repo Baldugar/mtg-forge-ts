@@ -1,0 +1,25 @@
+{
+  "id": "saint-traft-and-rem-karolus-corpus-m677",
+  "description": "M6 corpus — Saint Traft and Rem Karolus; ETB-on-bf.",
+  "seed": 68889,
+  "cards": {
+    "Saint Traft and Rem Karolus": "Name:Saint Traft and Rem Karolus\nManaCost:U R W\nTypes:Legendary Creature Spirit Human\nPT:3/4\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME becomes tapped, create a 1/1 red Human creature token if this is the first time this ability has resolved this turn. If it's the second time, create a 1/1 blue Spirit creature token with flying. If it's the third time, create a 4/4 white Angel creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_human | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ1 | SubAbility$ DBTokenBis\nSVar:DBTokenBis:DB$ Token | TokenScript$ u_1_1_spirit_flying | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ2 | SubAbility$ DBTokenTrice\nSVar:DBTokenTrice:DB$ Token | TokenScript$ w_4_4_angel_flying | ConditionCheckSVar$ Resolved | ConditionSVarCompare$ EQ3\nSVar:Resolved:Count$ResolvedThisTurn\nT:Mode$ SpellCast | ValidCard$ Card.withConvoke | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a spell that has convoke, untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nDeckHas:Ability$Token & Type$Human|Angel|Spirit\nDeckNeeds:Keyword$Convoke\nOracle:Whenever Saint Traft and Rem Karolus becomes tapped, create a 1/1 red Human creature token if this is the first time this ability has resolved this turn. If it's the second time, create a 1/1 blue Spirit creature token with flying. If it's the third time, create a 4/4 white Angel creature token with flying.\\nWhenever you cast a spell that has convoke, untap Saint Traft and Rem Karolus.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Saint Traft and Rem Karolus"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

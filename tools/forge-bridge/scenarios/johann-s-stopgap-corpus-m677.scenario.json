@@ -1,0 +1,23 @@
+{
+  "id": "johann-s-stopgap-corpus-m677",
+  "description": "M6 corpus — Johann's Stopgap; in-hand parse.",
+  "seed": 63318,
+  "cards": {
+    "Johann's Stopgap": "Name:Johann's Stopgap\nManaCost:3 U\nTypes:Sorcery\nK:Bargain\nS:Mode$ ReduceCost | ValidSpell$ Spell.Bargain | Type$ Spell | ValidCard$ Card.Self | Amount$ 2 | EffectZone$ All | Description$ This spell costs {2} less to cast if it's bargained.\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return target nonland permanent to its owner's hand. Draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Token & Type$Enchantment|Artifact\nOracle:Bargain (You may sacrifice an artifact, enchantment, or token as you cast this spell.)\\nThis spell costs {2} less to cast if it's bargained.\\nReturn target nonland permanent to its owner's hand. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Johann's Stopgap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

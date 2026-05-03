@@ -1,0 +1,23 @@
+{
+  "id": "spectral-prison-corpus-m677",
+  "description": "M6 corpus — Spectral Prison; in-hand parse.",
+  "seed": 70558,
+  "cards": {
+    "Spectral Prison": "Name:Spectral Prison\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:KeepTapped\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nT:Mode$ BecomesTarget | ValidTarget$ Card.EnchantedBy | ValidSource$ Spell | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever enchanted creature becomes the target of a spell, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nOracle:Enchant creature\\nEnchanted creature doesn't untap during its controller's untap step.\\nWhen enchanted creature becomes the target of a spell, sacrifice Spectral Prison.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spectral Prison"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

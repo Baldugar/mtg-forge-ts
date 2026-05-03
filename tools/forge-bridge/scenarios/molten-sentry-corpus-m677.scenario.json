@@ -1,0 +1,23 @@
+{
+  "id": "molten-sentry-corpus-m677",
+  "description": "M6 corpus — Molten Sentry; in-hand parse.",
+  "seed": 65405,
+  "cards": {
+    "Molten Sentry": "Name:Molten Sentry\nManaCost:3 R\nTypes:Creature Elemental\nPT:*/*\nK:ETBReplacement:Other:TrigFlip\nSVar:TrigFlip:DB$ FlipACoin | NoCall$ True | HeadsSubAbility$ DBAttacker | TailsSubAbility$ DBDefender | SpellDescription$ As CARDNAME enters, flip a coin. If the coin comes up heads, CARDNAME enters as a 5/2 creature with haste. If it comes up tails, CARDNAME enters as a 2/5 creature with defender.\nSVar:DBAttacker:DB$ Animate | Defined$ Self | Power$ 5 | Toughness$ 2 | Types$ Creature | Keywords$ Haste | Duration$ Permanent\nSVar:DBDefender:DB$ Animate | Defined$ Self | Power$ 2 | Toughness$ 5 | Types$ Creature | Keywords$ Defender | Duration$ Permanent\nOracle:As Molten Sentry enters, flip a coin. If the coin comes up heads, Molten Sentry enters as a 5/2 creature with haste. If it comes up tails, Molten Sentry enters as a 2/5 creature with defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

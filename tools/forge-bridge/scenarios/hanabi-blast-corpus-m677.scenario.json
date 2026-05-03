@@ -1,0 +1,23 @@
+{
+  "id": "hanabi-blast-corpus-m677",
+  "description": "M6 corpus — Hanabi Blast; in-hand parse.",
+  "seed": 62017,
+  "cards": {
+    "Hanabi Blast": "Name:Hanabi Blast\nManaCost:1 R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBBounce | SpellDescription$ CARDNAME deals 2 damage to any target. Return CARDNAME to its owner's hand, then discard a card at random.\nSVar:DBBounce:DB$ ChangeZone | Origin$ Stack | Destination$ Hand | Defined$ Parent | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ Random | NumCards$ 1\nOracle:Hanabi Blast deals 2 damage to any target. Return Hanabi Blast to its owner's hand, then discard a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hanabi Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

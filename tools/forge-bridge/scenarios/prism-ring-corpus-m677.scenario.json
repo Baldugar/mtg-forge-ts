@@ -1,0 +1,23 @@
+{
+  "id": "prism-ring-corpus-m677",
+  "description": "M6 corpus — Prism Ring; in-hand parse.",
+  "seed": 67212,
+  "cards": {
+    "Prism Ring": "Name:Prism Ring\nManaCost:1\nTypes:Artifact\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInComputerDeck\nT:Mode$ SpellCast | ValidCard$ Card.ChosenColor | ValidActivatingPlayer$ You | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell of the chosen color, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nOracle:As Prism Ring enters, choose a color.\\nWhenever you cast a spell of the chosen color, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prism Ring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

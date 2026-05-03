@@ -1,0 +1,23 @@
+{
+  "id": "southern-air-temple-corpus-m677",
+  "description": "M6 corpus — Southern Air Temple; in-hand parse.",
+  "seed": 70495,
+  "cards": {
+    "Southern Air Temple": "Name:Southern Air Temple\nManaCost:3 W\nTypes:Legendary Enchantment Shrine\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll1 | TriggerDescription$ When CARDNAME enters, put X +1/+1 counters on each creature you control, where X is the number of Shrines you control.\nSVar:TrigPutCounterAll1:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ X\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Shrine.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll2 | TriggerDescription$ Whenever another Shrine you control enters, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounterAll2:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$Valid Shrine.YouCtrl\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nDeckHints:Type$Shrine\nOracle:When Southern Air Temple enters, put X +1/+1 counters on each creature you control, where X is the number of Shrines you control.\\nWhenever another Shrine you control enters, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Southern Air Temple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

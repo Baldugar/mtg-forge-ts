@@ -1,0 +1,23 @@
+{
+  "id": "phoenix-fleet-airship-corpus-m677",
+  "description": "M6 corpus — Phoenix Fleet Airship; in-hand parse.",
+  "seed": 66827,
+  "cards": {
+    "Phoenix Fleet Airship": "Name:Phoenix Fleet Airship\nManaCost:2 B B\nTypes:Artifact Vehicle\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigCopy | TriggerDescription$ At the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Self\nS:Mode$ Continuous | Affected$ Card.Self | IsPresent$ Permanent.YouCtrl+namedPhoenix Fleet Airship | PresentCompare$ GE8 | AddType$ Artifact & Creature | Description$ As long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.\nK:Crew:1\nSVar:X:PlayerCountPropertyYou$SacrificedThisTurn Permanent\nOracle:Flying\\nAt the beginning of your end step, if you sacrificed a permanent this turn, create a token that's a copy of this Vehicle.\\nAs long as you control eight or more permanents named Phoenix Fleet Airship, this Vehicle is an artifact creature.\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phoenix Fleet Airship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

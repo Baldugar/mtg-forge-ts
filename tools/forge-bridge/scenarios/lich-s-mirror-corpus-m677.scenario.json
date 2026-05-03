@@ -1,0 +1,25 @@
+{
+  "id": "lich-s-mirror-corpus-m677",
+  "description": "M6 corpus — Lich's Mirror; ETB-on-bf.",
+  "seed": 64189,
+  "cards": {
+    "Lich's Mirror": "Name:Lich's Mirror\nManaCost:5\nTypes:Artifact\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ShuffleDrawSetLife | Description$ If you would lose the game, instead shuffle your hand, your graveyard, and all permanents you own into your library, then draw seven cards and your life total becomes 20.\nSVar:ShuffleDrawSetLife:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Battlefield | Destination$ Library | Shuffle$ True | SubAbility$ Shuffle2\nSVar:Shuffle2:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Hand | Destination$ Library | Shuffle$ True | SubAbility$ Shuffle3\nSVar:Shuffle3:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ Draw\nSVar:Draw:DB$ Draw | Defined$ You | NumCards$ 7 | SubAbility$ SetLife\nSVar:SetLife:DB$ SetLife | Defined$ You | LifeAmount$ 20\nSVar:NonStackingEffect:True\nOracle:If you would lose the game, instead shuffle your hand, your graveyard, and all permanents you own into your library, then draw seven cards and your life total becomes 20.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lich's Mirror"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shimmerdrift-vale-corpus-m677",
+  "description": "M6 corpus — Shimmerdrift Vale; in-hand parse.",
+  "seed": 69704,
+  "cards": {
+    "Shimmerdrift Vale": "Name:Shimmerdrift Vale\nManaCost:no cost\nTypes:Snow Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nOracle:Shimmerdrift Vale enters tapped.\\nAs Shimmerdrift Vale enters, choose a color.\\n{T}: Add one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shimmerdrift Vale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "searing-rays-corpus-m677",
+  "description": "M6 corpus — Searing Rays; in-hand parse.",
+  "seed": 69306,
+  "cards": {
+    "Searing Rays": "Name:Searing Rays\nManaCost:2 R\nTypes:Sorcery\nA:SP$ ChooseColor | Defined$ You | SubAbility$ DBDmgEach | AILogic$ MostProminentHumanCreatures | SpellDescription$ Choose a color. CARDNAME deals damage to each player equal to the number of creatures of that color that player controls.\nSVar:DBDmgEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDmg | DamageMap$ True\nSVar:DBDmg:DB$ DealDamage | Defined$ Remembered | NumDmg$ X\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl+ChosenColor\nAI:RemoveDeck:All\nOracle:Choose a color. Searing Rays deals damage to each player equal to the number of creatures of that color that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Searing Rays"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

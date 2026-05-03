@@ -1,0 +1,23 @@
+{
+  "id": "limited-resources-corpus-m677",
+  "description": "M6 corpus — Limited Resources; in-hand parse.",
+  "seed": 64283,
+  "cards": {
+    "Limited Resources": "Name:Limited Resources\nManaCost:W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBCardChoice | TriggerDescription$ When CARDNAME enters, each player chooses five lands they control and sacrifices the rest.\nSVar:DBCardChoice:DB$ ChooseCard | Defined$ Player | Choices$ Land | ControlledByPlayer$ Chooser | Amount$ 5 | ChoiceTitle$ Choose five lands to keep | Mandatory$ True | Reveal$ True | SubAbility$ SacRest\nSVar:SacRest:DB$ SacrificeAll | ValidCards$ Land.nonChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nS:Mode$ CantPlayLand | IsPresent$ Land | PresentCompare$ GE10 | Description$ Players can't play lands as long as ten or more lands are on the battlefield.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:When Limited Resources enters, each player chooses five lands they control and sacrifices the rest.\\nPlayers can't play lands as long as ten or more lands are on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Limited Resources"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

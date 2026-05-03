@@ -1,0 +1,23 @@
+{
+  "id": "kindred-charge-corpus-m677",
+  "description": "M6 corpus — Kindred Charge; in-hand parse.",
+  "seed": 63661,
+  "cards": {
+    "Kindred Charge": "Name:Kindred Charge\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBClone | AILogic$ MostProminentComputerControls | SpellDescription$ Choose a creature type. For each creature you control of the chosen type, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.\nSVar:DBClone:DB$ CopyPermanent | Defined$ Valid Creature.ChosenType+YouCtrl | PumpKeywords$ Haste | AtEOT$ Exile\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.YouCtrl\nOracle:Choose a creature type. For each creature you control of the chosen type, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kindred Charge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

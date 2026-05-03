@@ -1,0 +1,23 @@
+{
+  "id": "lo-and-li-twin-tutors-corpus-m677",
+  "description": "M6 corpus — Lo and Li, Twin Tutors; in-hand parse.",
+  "seed": 64339,
+  "cards": {
+    "Lo and Li, Twin Tutors": "Name:Lo and Li, Twin Tutors\nManaCost:4 B\nTypes:Legendary Creature Human Advisor\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When NICKNAME enter, search your library for a Lesson or Noble card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Lesson,Noble | ChangeNum$ 1\nS:Mode$ Continuous | Affected$ Creature.Noble+YouCtrl | AddKeyword$ Lifelink | Description$ Noble creatures you control and Lesson spells you control have lifelink.\nS:Mode$ Continuous | AddKeyword$ Lifelink | Affected$ Lesson.YouCtrl | AffectedZone$ Stack | Secondary$ True | Description$ Noble creatures you control and Lesson spells you control have lifelink.\nDeckHints:Type$Lesson|Noble\nOracle:When Lo and Li enter, search your library for a Lesson or Noble card, reveal it, put it into your hand, then shuffle.\\nNoble creatures you control and Lesson spells you control have lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lo and Li, Twin Tutors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "severance-priest-corpus-m677",
+  "description": "M6 corpus — Severance Priest; in-hand parse.",
+  "seed": 69529,
+  "cards": {
+    "Severance Priest": "Name:Severance Priest\nManaCost:W B G\nTypes:Creature Djinn Cleric\nPT:3/3\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature enters, target opponent reveals their hand. You may choose a nonland card from it. If you do, exile that card.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | Optional$ True | RememberChanged$ True | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature leaves the battlefield, the exiled card's owner creates an X/X white Spirit creature token where X is the mana value of the exiled card.\nSVar:TrigToken:DB$ Token | TokenScript$ w_x_x_spirit | TokenOwner$ RememberedOwner | ConditionDefined$ Remembered | ConditionPresent$ Card.ExiledWithSource | TokenPower$ X | TokenToughness$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Deathtouch\\nWhen this creature enters, target opponent reveals their hand. You may choose a nonland card from it. If you do, exile that card.\\nWhen this creature leaves the battlefield, the exiled card's owner creates an X/X white Spirit creature token where X is the mana value of the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Severance Priest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

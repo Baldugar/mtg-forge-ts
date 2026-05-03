@@ -1,0 +1,23 @@
+{
+  "id": "malicious-advice-corpus-m677",
+  "description": "M6 corpus — Malicious Advice; in-hand parse.",
+  "seed": 64666,
+  "cards": {
+    "Malicious Advice": "Name:Malicious Advice\nManaCost:X U B\nTypes:Instant\nA:SP$ Tap | TargetMin$ X | TargetMax$ X | ValidTgts$ Artifact,Creature,Land | SpellDescription$ Tap X target artifacts, creatures, and/or lands. You lose X life. | SubAbility$ Drain\nSVar:Drain:DB$ LoseLife | LifeAmount$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Tap X target artifacts, creatures, and/or lands. You lose X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malicious Advice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

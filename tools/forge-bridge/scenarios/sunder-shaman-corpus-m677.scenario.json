@@ -1,0 +1,23 @@
+{
+  "id": "sunder-shaman-corpus-m677",
+  "description": "M6 corpus — Sunder Shaman; in-hand parse.",
+  "seed": 71343,
+  "cards": {
+    "Sunder Shaman": "Name:Sunder Shaman\nManaCost:R R G G\nTypes:Creature Giant Shaman\nPT:5/5\nS:Mode$ MinMaxBlocker | ValidCard$ Card.Self | Max$ 1 | Description$ CARDNAME can't be blocked by more than one creature.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, destroy target artifact or enchantment that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget,Enchantment.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact or enchantment damaged player controls\nOracle:Sunder Shaman can't be blocked by more than one creature.\\nWhenever Sunder Shaman deals combat damage to a player, destroy target artifact or enchantment that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunder Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

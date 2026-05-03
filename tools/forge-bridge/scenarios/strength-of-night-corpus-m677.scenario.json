@@ -1,0 +1,23 @@
+{
+  "id": "strength-of-night-corpus-m677",
+  "description": "M6 corpus — Strength of Night; in-hand parse.",
+  "seed": 71179,
+  "cards": {
+    "Strength of Night": "Name:Strength of Night\nManaCost:2 G\nTypes:Instant\nK:Kicker:B\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBPumpYourZombies | SpellDescription$ Creatures you control get +1/+1 until end of turn. If this spell was kicked, Zombie creatures you control get an additional +2/+2 until end of turn.\nSVar:DBPumpYourZombies:DB$ PumpAll | ValidCards$ Creature.Zombie+YouCtrl | NumAtt$ +2 | NumDef$ +2 | Condition$ Kicked | ConditionDescription$ If CARDNAME was kicked,\nSVar:NeedsToPlayKicked:Creature.Zombie+YouCtrl\nDeckNeeds:Color$Black & Type$Zombie\nOracle:Kicker {B} (You may pay an additional {B} as you cast this spell.)\\nCreatures you control get +1/+1 until end of turn. If this spell was kicked, Zombie creatures you control get an additional +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strength of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

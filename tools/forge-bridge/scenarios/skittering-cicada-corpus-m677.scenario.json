@@ -1,0 +1,25 @@
+{
+  "id": "skittering-cicada-corpus-m677",
+  "description": "M6 corpus — Skittering Cicada; ETB-on-bf.",
+  "seed": 70045,
+  "cards": {
+    "Skittering Cicada": "Name:Skittering Cicada\nManaCost:3\nTypes:Creature Insect\nPT:2/2\nK:Flash\nS:Mode$ CastWithFlash | ValidCard$ Card.Colorless | ValidSA$ Spell | EffectZone$ Battlefield | Caster$ You | Description$ You may cast colorless spells as though they had flash.\nT:Mode$ SpellCast | ValidCard$ Card.Colorless | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a colorless spell, until end of turn, CARDNAME gains trample and gets +X/+X, where X is that spell's mana value.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X | KW$ Trample\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:Flash\\nYou may cast colorless spells as though they had flash.\\nWhenever you cast a colorless spell, until end of turn, Skittering Cicada gains trample and gets +X/+X, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Skittering Cicada"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

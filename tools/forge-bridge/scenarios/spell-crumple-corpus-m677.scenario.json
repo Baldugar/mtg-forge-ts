@@ -1,0 +1,23 @@
+{
+  "id": "spell-crumple-corpus-m677",
+  "description": "M6 corpus — Spell Crumple; in-hand parse.",
+  "seed": 70571,
+  "cards": {
+    "Spell Crumple": "Name:Spell Crumple\nManaCost:1 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | Destination$ BottomOfLibrary | SubAbility$ DBChange | SpellDescription$ Counter target spell. If that spell is countered this way, put it on the bottom of its owner's library instead of into that player's graveyard. Put CARDNAME on the bottom of its owner's library.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Library | LibraryPosition$ -1 | Defined$ Parent\nOracle:Counter target spell. If that spell is countered this way, put it on the bottom of its owner's library instead of into that player's graveyard. Put Spell Crumple on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spell Crumple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

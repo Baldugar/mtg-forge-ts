@@ -1,0 +1,23 @@
+{
+  "id": "jeska-s-will-corpus-m677",
+  "description": "M6 corpus — Jeska's Will; in-hand parse.",
+  "seed": 63285,
+  "cards": {
+    "Jeska's Will": "Name:Jeska's Will\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBMana,DBExile | AdditionalDescription$ If you control a commander as you cast this spell, you may choose both.\nSVar:DBMana:DB$ Mana | Defined$ You | ValidTgts$ Opponent | AILogic$ ManaRitual | Produced$ R | Amount$ Z | SpellDescription$ Add {R} for each card in target opponent's hand.\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. You may play them this turn.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$Valid Card.IsCommander+YouCtrl\nSVar:Z:TargetedPlayer$CardsInHand\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both.\\n• Add {R} for each card in target opponent's hand.\\n• Exile the top three cards of your library. You may play them this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeska's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

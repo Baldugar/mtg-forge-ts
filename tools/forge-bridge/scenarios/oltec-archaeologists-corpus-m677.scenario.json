@@ -1,0 +1,23 @@
+{
+  "id": "oltec-archaeologists-corpus-m677",
+  "description": "M6 corpus — Oltec Archaeologists; in-hand parse.",
+  "seed": 66275,
+  "cards": {
+    "Oltec Archaeologists": "Name:Oltec Archaeologists\nManaCost:4 W\nTypes:Creature Human Artificer Scout\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBReturn,DBScry\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose target artifact card in your graveyard | ValidTgts$ Artifact.YouOwn | SpellDescription$ Return target artifact card from your graveyard to your hand.\nSVar:DBScry:DB$ Scry | ScryNum$ 3 | SpellDescription$ Scry 3. (Look at the top three cards of your library, then put any number of them on the bottom and the rest on top in any order.)\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard & Type$Artifact\nOracle:When Oltec Archaeologists enters, choose one —\\n• Return target artifact card from your graveyard to your hand.\\n• Scry 3. (Look at the top three cards of your library, then put any number of them on the bottom and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oltec Archaeologists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

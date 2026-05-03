@@ -1,0 +1,23 @@
+{
+  "id": "plaguecrafter-s-familiar-corpus-m677",
+  "description": "M6 corpus — Plaguecrafter's Familiar; in-hand parse.",
+  "seed": 66963,
+  "cards": {
+    "Plaguecrafter's Familiar": "Name:Plaguecrafter's Familiar\nManaCost:1 B\nTypes:Creature Rat\nPT:1/1\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose a creature card in your hand. It perpetually gains deathtouch.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn | ChoiceTitle$ Choose a creature card in your hand | Mandatory$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Deathtouch | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Deathtouch\\nWhen Plaguecrafter's Familiar enters, choose a creature card in your hand. It perpetually gains deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plaguecrafter's Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

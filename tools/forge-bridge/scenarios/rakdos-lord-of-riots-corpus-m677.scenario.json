@@ -1,0 +1,25 @@
+{
+  "id": "rakdos-lord-of-riots-corpus-m677",
+  "description": "M6 corpus — Rakdos, Lord of Riots; ETB-on-bf.",
+  "seed": 67612,
+  "cards": {
+    "Rakdos, Lord of Riots": "Name:Rakdos, Lord of Riots\nManaCost:B B R R\nTypes:Legendary Creature Demon\nPT:6/6\nK:Flying\nK:Trample\nS:Mode$ CantBeCast | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ EQ0 | EffectZone$ All | Description$ You can't cast this spell unless an opponent lost life this turn.\nS:Mode$ ReduceCost | ValidCard$ Creature | Type$ Spell | Activator$ You | Amount$ X | Description$ Creature spells you cast cost {1} less to cast for each 1 life your opponents have lost this turn.\nSVar:X:Count$LifeOppsLostThisTurn\nOracle:You can't cast this spell unless an opponent lost life this turn.\\nFlying, trample\\nCreature spells you cast cost {1} less to cast for each 1 life your opponents have lost this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rakdos, Lord of Riots"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

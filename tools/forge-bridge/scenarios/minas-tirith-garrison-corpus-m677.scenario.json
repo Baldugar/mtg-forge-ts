@@ -1,0 +1,23 @@
+{
+  "id": "minas-tirith-garrison-corpus-m677",
+  "description": "M6 corpus — Minas Tirith Garrison; in-hand parse.",
+  "seed": 65142,
+  "cards": {
+    "Minas Tirith Garrison": "Name:Minas Tirith Garrison\nManaCost:3 U\nTypes:Creature Human Soldier\nPT:*/5\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of cards in your hand.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may tap any number of untapped Humans you control. Draw a card for each Human tapped this way.\nSVar:TrigTap:DB$ Tap | CardChoices$ Human.YouCtrl+untapped | AnyNumber$ True | ChoiceAmount$ Count$Valid Human.YouCtrl+untapped | RememberTapped$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:Remembered$Amount\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Human\nOracle:Minas Tirith Garrison's power is equal to the number of cards in your hand.\\nWhenever Minas Tirith Garrison attacks, you may tap any number of untapped Humans you control. Draw a card for each Human tapped this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minas Tirith Garrison"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

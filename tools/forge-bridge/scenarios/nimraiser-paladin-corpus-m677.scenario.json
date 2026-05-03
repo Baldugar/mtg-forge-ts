@@ -1,0 +1,23 @@
+{
+  "id": "nimraiser-paladin-corpus-m677",
+  "description": "M6 corpus — Nimraiser Paladin; in-hand parse.",
+  "seed": 65987,
+  "cards": {
+    "Nimraiser Paladin": "Name:Nimraiser Paladin\nManaCost:4 B\nTypes:Creature Phyrexian Knight\nPT:4/4\nK:Toxic:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return target creature with mana value 3 or less from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl+cmcLE3 | TgtPrompt$ Select target creature with mana value 3 or less from your graveyard\nDeckHas:Ability$Graveyard\nOracle:Toxic 2 (Players dealt combat damage by this creature also get two poison counters.)\\nWhen Nimraiser Paladin enters, return target creature with mana value 3 or less from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nimraiser Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

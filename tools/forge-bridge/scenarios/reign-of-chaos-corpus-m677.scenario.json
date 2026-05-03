@@ -1,0 +1,23 @@
+{
+  "id": "reign-of-chaos-corpus-m677",
+  "description": "M6 corpus — Reign of Chaos; in-hand parse.",
+  "seed": 67972,
+  "cards": {
+    "Reign of Chaos": "Name:Reign of Chaos\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDestroy1,DBDestroy2\nSVar:DBDestroy1:DB$ Pump | ValidTgts$ Plains | TgtPrompt$ Select target Plains | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroyWhite | SpellDescription$ Destroy target Plains and target white creature. | StackDescription$ None\nSVar:DBDestroy2:DB$ Pump | ValidTgts$ Island | TgtPrompt$ Select target Island | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroyBlue | SpellDescription$ Destroy target Island and target blue creature. | StackDescription$ None\nSVar:DBDestroyWhite:DB$ Pump | ValidTgts$ Creature.White | TgtPrompt$ Select target white creature | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroyBlue:DB$ Pump | ValidTgts$ Creature.Blue | TgtPrompt$ Select target blue creature | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Destroy target Plains and target white creature.\\n• Destroy target Island and target blue creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reign of Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

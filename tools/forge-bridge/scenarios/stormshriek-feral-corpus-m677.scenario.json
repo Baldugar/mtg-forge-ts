@@ -1,0 +1,23 @@
+{
+  "id": "stormshriek-feral-corpus-m677",
+  "description": "M6 corpus — Stormshriek Feral; in-hand parse.",
+  "seed": 71134,
+  "cards": {
+    "Stormshriek Feral": "Name:Stormshriek Feral\nManaCost:4 R\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nK:Haste\nA:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ +1 | SpellDescription$ This creature gets +1/+0 until end of turn.\nAlternateMode:Omen\nOracle:Flying, haste\\n{1}{R}: This creature gets +1/+0 until end of turn.\n\nALTERNATE\n\nName:Flush Out\nManaCost:1 R\nTypes:Sorcery Omen\nA:SP$ Discard | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Discard a card. If you do, draw two cards. (Then shuffle this card into its owner's library.)\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Discard a card. If you do, draw two cards. (Then shuffle this card into its owner's library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormshriek Feral"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

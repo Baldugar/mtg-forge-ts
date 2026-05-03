@@ -1,0 +1,23 @@
+{
+  "id": "stinging-cave-crawler-corpus-m677",
+  "description": "M6 corpus — Stinging Cave Crawler; in-hand parse.",
+  "seed": 71003,
+  "cards": {
+    "Stinging Cave Crawler": "Name:Stinging Cave Crawler\nManaCost:2 B\nTypes:Creature Insect Horror\nPT:1/3\nK:Deathtouch\nT:Mode$ Attacks | CheckSVar$ X | SVarCompare$ GE4 | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Descend 4 — Whenever CARDNAME attacks, if there are four or more permanent cards in your graveyard, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Sacrifice|Discard|Mill|Dredge|Graveyard\nOracle:Deathtouch\\nDescend 4 — Whenever Stinging Cave Crawler attacks, if there are four or more permanent cards in your graveyard, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stinging Cave Crawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

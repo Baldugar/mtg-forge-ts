@@ -1,0 +1,25 @@
+{
+  "id": "shattered-sanctum-corpus-m677",
+  "description": "M6 corpus — Shattered Sanctum; ETB-on-bf.",
+  "seed": 69635,
+  "cards": {
+    "Shattered Sanctum": "Name:Shattered Sanctum\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SpellDescription$ Add {W} or {B}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ LT2\nOracle:Shattered Sanctum enters tapped unless you control two or more other lands.\\n{T}: Add {W} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shattered Sanctum"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "resplendent-marshal-corpus-m677",
+  "description": "M6 corpus — Resplendent Marshal; in-hand parse.",
+  "seed": 68112,
+  "cards": {
+    "Resplendent Marshal": "Name:Resplendent Marshal\nManaCost:1 W W\nTypes:Creature Angel Warrior\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters or dies, you may exile another creature card from your graveyard. When you do, put a +1/+1 counter on each creature you control other than CARDNAME that shares a creature type with the exiled card.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, you may exile another creature card from your graveyard. When you do, put a +1/+1 counter on each creature you control other than CARDNAME that shares a creature type with the exiled card.\nSVar:TrigExile:DB$ ChangeZone | ChangeType$ Creature.Other+YouOwn | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | Hidden$ True | Chooser$ You | Optional$ True | SubAbility$ DBPutCounters\nSVar:DBPutCounters:DB$ PutCounterAll | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ GE1 | ValidCards$ Creature.StrictlyOther+YouCtrl+sharesCreatureTypeWith Remembered | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard|Counters\nOracle:Flying\\nWhen Resplendent Marshal enters or dies, you may exile another creature card from your graveyard. When you do, put a +1/+1 counter on each creature you control other than Resplendent Marshal that shares a creature type with the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resplendent Marshal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

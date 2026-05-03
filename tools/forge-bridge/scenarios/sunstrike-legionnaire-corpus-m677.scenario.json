@@ -1,0 +1,23 @@
+{
+  "id": "sunstrike-legionnaire-corpus-m677",
+  "description": "M6 corpus — Sunstrike Legionnaire; in-hand parse.",
+  "seed": 71388,
+  "cards": {
+    "Sunstrike Legionnaire": "Name:Sunstrike Legionnaire\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:1/2\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever another creature enters, untap this creature.\nA:AB$ Tap | Cost$ T | ValidTgts$ Creature.cmcLE3 | TgtPrompt$ Select target creature with mana value 3 or less | SpellDescription$ Tap target creature with mana value 3 or less.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:This creature doesn't untap during your untap step.\\nWhenever another creature enters, untap this creature.\\n{T}: Tap target creature with mana value 3 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunstrike Legionnaire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

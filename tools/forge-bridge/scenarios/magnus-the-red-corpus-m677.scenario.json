@@ -1,0 +1,23 @@
+{
+  "id": "magnus-the-red-corpus-m677",
+  "description": "M6 corpus — Magnus the Red; in-hand parse.",
+  "seed": 64612,
+  "cards": {
+    "Magnus the Red": "Name:Magnus the Red\nManaCost:3 U R\nTypes:Legendary Creature Demon Primarch\nPT:4/5\nK:Flying\nS:Mode$ ReduceCost | ValidCard$ Instant,Sorcery | Type$ Spell | Activator$ You | Amount$ X | Description$ Unearthly Power — Instant and sorcery spells you cast cost {1} less to cast for each creature token you control.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Blade of Magnus — Whenever CARDNAME deals combat damage to a player, create a 3/3 red Spawn creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_3_3_spawn\nSVar:X:Count$Valid Creature.YouCtrl+token\nSVar:BuffedBy:Token\nDeckHas:Type$Spawn & Ability$Token\nDeckHints:Ability$Token & Type$Instant|Sorcery\nOracle:Flying\\nUnearthly Power — Instant and sorcery spells you cast cost {1} less to cast for each creature token you control.\\nBlade of Magnus — Whenever Magnus the Red deals combat damage to a player, create a 3/3 red Spawn creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magnus the Red"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

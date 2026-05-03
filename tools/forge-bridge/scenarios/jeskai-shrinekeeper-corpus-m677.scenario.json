@@ -1,0 +1,23 @@
+{
+  "id": "jeskai-shrinekeeper-corpus-m677",
+  "description": "M6 corpus — Jeskai Shrinekeeper; in-hand parse.",
+  "seed": 63282,
+  "cards": {
+    "Jeskai Shrinekeeper": "Name:Jeskai Shrinekeeper\nManaCost:2 U R W\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGainLife | TriggerDescription$ Whenever this creature deals combat damage to a player, you gain 1 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nOracle:Flying, haste\\nWhenever this creature deals combat damage to a player, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeskai Shrinekeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

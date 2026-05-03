@@ -1,0 +1,23 @@
+{
+  "id": "mesmerizing-dose-corpus-m677",
+  "description": "M6 corpus — Mesmerizing Dose; in-hand parse.",
+  "seed": 65049,
+  "cards": {
+    "Mesmerizing Dose": "Name:Mesmerizing Dose\nManaCost:1 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature, then proliferate.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ DBProliferate\nSVar:DBProliferate:DB$ Proliferate\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nOracle:Enchant creature\\nWhen Mesmerizing Dose enters, tap enchanted creature, then proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mesmerizing Dose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

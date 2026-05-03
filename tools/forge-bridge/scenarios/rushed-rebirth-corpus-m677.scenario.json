@@ -1,0 +1,23 @@
+{
+  "id": "rushed-rebirth-corpus-m677",
+  "description": "M6 corpus — Rushed Rebirth; in-hand parse.",
+  "seed": 68670,
+  "cards": {
+    "Rushed Rebirth": "Name:Rushed Rebirth\nManaCost:B G\nTypes:Instant\nA:SP$ ChooseCard | ValidTgts$ Creature | SubAbility$ DBDelayedTrigger | StackDescription$ When {c:Targeted} dies this turn, search your library for a creature card with lesser mana value, put it onto the battlefield tapped, then shuffle. | SpellDescription$ Choose target creature.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigChangeZone | StackDescription$ None | SpellDescription$ When that creature dies this turn, search your library for a creature card with lesser mana value, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLTX | ChangeNum$ 1 | Tapped$ True\nSVar:X:TriggerRemembered$CardManaCost\nOracle:Choose target creature. When that creature dies this turn, search your library for a creature card with lesser mana value, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rushed Rebirth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

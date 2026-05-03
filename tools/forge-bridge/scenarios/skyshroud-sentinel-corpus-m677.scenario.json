@@ -1,0 +1,23 @@
+{
+  "id": "skyshroud-sentinel-corpus-m677",
+  "description": "M6 corpus — Skyshroud Sentinel; in-hand parse.",
+  "seed": 70149,
+  "cards": {
+    "Skyshroud Sentinel": "Name:Skyshroud Sentinel\nManaCost:2 G\nTypes:Creature Elf\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for up to three cards named Skyshroud Sentinel, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedSkyshroud Sentinel | ChangeNum$ 3 | ShuffleNonMandatory$ True\nDeckHints:Name$Skyshroud Sentinel\nOracle:When Skyshroud Sentinel enters, you may search your library for up to three cards named Skyshroud Sentinel, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyshroud Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oakhame-adversary-corpus-m677",
+  "description": "M6 corpus — Oakhame Adversary; in-hand parse.",
+  "seed": 66143,
+  "cards": {
+    "Oakhame Adversary": "Name:Oakhame Adversary\nManaCost:3 G\nTypes:Creature Elf Warrior\nPT:2/3\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | IsPresent$ Permanent.Green+OppCtrl | Description$ CARDNAME costs {2} less to cast if your opponent controls a green permanent.\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:This spell costs {2} less to cast if an opponent controls a green permanent.\\nDeathtouch\\nWhenever Oakhame Adversary deals combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oakhame Adversary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

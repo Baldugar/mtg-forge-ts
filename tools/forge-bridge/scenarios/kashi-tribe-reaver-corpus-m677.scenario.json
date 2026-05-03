@@ -1,0 +1,23 @@
+{
+  "id": "kashi-tribe-reaver-corpus-m677",
+  "description": "M6 corpus — Kashi-Tribe Reaver; in-hand parse.",
+  "seed": 63505,
+  "cards": {
+    "Kashi-Tribe Reaver": "Name:Kashi-Tribe Reaver\nManaCost:3 G\nTypes:Creature Snake Warrior\nPT:3/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nA:AB$ Regenerate | Cost$ 1 G | SpellDescription$ Regenerate CARDNAME.\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Kashi-Tribe Reaver deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\\n{1}{G}: Regenerate Kashi-Tribe Reaver.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kashi-Tribe Reaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

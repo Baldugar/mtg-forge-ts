@@ -1,0 +1,23 @@
+{
+  "id": "jihad-corpus-m677",
+  "description": "M6 corpus — Jihad; in-hand parse.",
+  "seed": 63306,
+  "cards": {
+    "Jihad": "Name:Jihad\nManaCost:W W W\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SubAbility$ ChooseP | AILogic$ MostProminentHumanControls | SpellDescription$ As CARDNAME enters, choose a color and an opponent.\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent\nS:Mode$ Continuous | Affected$ Creature.White | AddPower$ 2 | AddToughness$ 1 | IsPresent$ Permanent.!token+ChosenColor+ChosenCtrl | Description$ White creatures get +2/+1 as long as the chosen player controls a nontoken permanent of the chosen color.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Permanent.!token+ChosenColor+ChosenCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When the chosen player controls no nontoken permanents of the chosen color, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Permanent.nonColorless+OppCtrl\nOracle:As Jihad enters, choose a color and an opponent.\\nWhite creatures get +2/+1 as long as the chosen player controls a nontoken permanent of the chosen color.\\nWhen the chosen player controls no nontoken permanents of the chosen color, sacrifice Jihad.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jihad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

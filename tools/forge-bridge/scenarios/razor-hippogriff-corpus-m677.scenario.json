@@ -1,0 +1,23 @@
+{
+  "id": "razor-hippogriff-corpus-m677",
+  "description": "M6 corpus — Razor Hippogriff; in-hand parse.",
+  "seed": 67793,
+  "cards": {
+    "Razor Hippogriff": "Name:Razor Hippogriff\nManaCost:3 W W\nTypes:Creature Hippogriff\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target artifact card from your graveyard to your hand. You gain life equal to that card's mana value.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.YouCtrl | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardManaCost\nOracle:Flying\\nWhen Razor Hippogriff enters, return target artifact card from your graveyard to your hand. You gain life equal to that card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razor Hippogriff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

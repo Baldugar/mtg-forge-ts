@@ -1,0 +1,23 @@
+{
+  "id": "skeleton-ship-corpus-m677",
+  "description": "M6 corpus — Skeleton Ship; in-hand parse.",
+  "seed": 70028,
+  "cards": {
+    "Skeleton Ship": "Name:Skeleton Ship\nManaCost:3 U B\nTypes:Legendary Creature Skeleton\nPT:0/3\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ PutCounter | Cost$ T | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True | SpellDescription$ Put a -1/-1 counter on target creature.\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:When you control no Islands, sacrifice Skeleton Ship.\\n{T}: Put a -1/-1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skeleton Ship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

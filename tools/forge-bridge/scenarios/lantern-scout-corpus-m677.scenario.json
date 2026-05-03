@@ -1,0 +1,23 @@
+{
+  "id": "lantern-scout-corpus-m677",
+  "description": "M6 corpus — Lantern Scout; in-hand parse.",
+  "seed": 63984,
+  "cards": {
+    "Lantern Scout": "Name:Lantern Scout\nManaCost:2 W\nTypes:Creature Human Scout Ally\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control gain lifelink until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Lifelink\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Lantern Scout or another Ally you control enters, creatures you control gain lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lantern Scout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

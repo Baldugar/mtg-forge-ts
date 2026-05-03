@@ -1,0 +1,23 @@
+{
+  "id": "myrkul-lord-of-bones-corpus-m677",
+  "description": "M6 corpus — Myrkul, Lord of Bones; in-hand parse.",
+  "seed": 65648,
+  "cards": {
+    "Myrkul, Lord of Bones": "Name:Myrkul, Lord of Bones\nManaCost:4 W B G\nTypes:Legendary Creature God\nPT:7/5\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Indestructible | CheckSVar$ X | SVarCompare$ LEY | Description$ As long as your life total is less than or equal to half your starting life total, CARDNAME has indestructible.\nSVar:X:Count$YourLifeTotal/Times.2\nSVar:Y:Count$YourStartingLife\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever another nontoken creature you control dies, you may exile it. If you do, create a token that's a copy of that card, except it's an enchantment and loses all other card types.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | AddTypes$ Enchantment | RemoveCardTypes$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token\nOracle:As long as your life total is less than or equal to half your starting life total, Myrkul, Lord of Bones has indestructible.\\nWhenever another nontoken creature you control dies, you may exile it. If you do, create a token that's a copy of that card, except it's an enchantment and loses all other card types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myrkul, Lord of Bones"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

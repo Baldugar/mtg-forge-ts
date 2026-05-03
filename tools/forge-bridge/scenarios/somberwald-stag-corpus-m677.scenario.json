@@ -1,0 +1,23 @@
+{
+  "id": "somberwald-stag-corpus-m677",
+  "description": "M6 corpus — Somberwald Stag; in-hand parse.",
+  "seed": 70390,
+  "cards": {
+    "Somberwald Stag": "Name:Somberwald Stag\nManaCost:3 G G\nTypes:Creature Elk\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may have it fight target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nSVar:PlayMain1:TRUE\nOracle:When Somberwald Stag enters, you may have it fight target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Somberwald Stag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

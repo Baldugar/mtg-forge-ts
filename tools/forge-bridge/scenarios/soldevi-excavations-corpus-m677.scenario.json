@@ -1,0 +1,25 @@
+{
+  "id": "soldevi-excavations-corpus-m677",
+  "description": "M6 corpus — Soldevi Excavations; ETB-on-bf.",
+  "seed": 70350,
+  "cards": {
+    "Soldevi Excavations": "Name:Soldevi Excavations\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C U | SpellDescription$ Add {C}{U}.\nA:AB$ Scry | Cost$ 1 T | ScryNum$ 1 | SpellDescription$ Scry 1.\nR:Event$ Moved | Destination$ Battlefield | ValidCard$ Card.Self | ReplaceWith$ PayBeforeETB | Description$ If CARDNAME would enter, sacrifice an untapped Island instead. If you do, put CARDNAME onto the battlefield. If you don't, put it into its owner's graveyard.\nSVar:PayBeforeETB:DB$ Sacrifice | SacValid$ Island.untapped | Defined$ You | RememberSacrificed$ True | SubAbility$ MoveToGraveyard\nSVar:MoveToGraveyard:DB$ ChangeZone | Origin$ All | Destination$ Graveyard | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ MoveToBattlefield\nSVar:MoveToBattlefield:DB$ ChangeZone | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:If Soldevi Excavations would enter, sacrifice an untapped Island instead. If you do, put Soldevi Excavations onto the battlefield. If you don't, put it into its owner's graveyard.\\n{T}: Add {C}{U}.\\n{1}, {T}: Scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soldevi Excavations"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

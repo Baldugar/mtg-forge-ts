@@ -1,0 +1,23 @@
+{
+  "id": "mazzy-truesword-paladin-corpus-m677",
+  "description": "M6 corpus — Mazzy, Truesword Paladin; in-hand parse.",
+  "seed": 64919,
+  "cards": {
+    "Mazzy, Truesword Paladin": "Name:Mazzy, Truesword Paladin\nManaCost:1 R G W\nTypes:Legendary Creature Halfling Knight\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Creature.enchanted | Attacked$ Player.Opponent | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever an enchanted creature attacks one of your opponents, it gets +2/+0 and gains trample until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +2 | KW$ Trample\nT:Mode$ ChangesZone | TriggerZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Aura.YouCtrl+YouOwn | Execute$ TrigExile | TriggerDescription$ Whenever an Aura you control is put into your graveyard from the battlefield, exile it. Until the end of your next turn, you may cast that card.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.nonLand+IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ Until the end of your next turn, you may cast that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Aura\nOracle:Whenever an enchanted creature attacks one of your opponents, it gets +2/+0 and gains trample until end of turn.\\nWhenever an Aura you control is put into your graveyard from the battlefield, exile it. Until the end of your next turn, you may cast that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mazzy, Truesword Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

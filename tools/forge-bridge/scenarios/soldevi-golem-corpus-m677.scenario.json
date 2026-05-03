@@ -1,0 +1,23 @@
+{
+  "id": "soldevi-golem-corpus-m677",
+  "description": "M6 corpus — Soldevi Golem; in-hand parse.",
+  "seed": 70351,
+  "cards": {
+    "Soldevi Golem": "Name:Soldevi Golem\nManaCost:4\nTypes:Artifact Creature Golem\nPT:5/3\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigUntap | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may untap target tapped creature an opponent controls. If you do, untap this creature.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature.OppCtrl+tapped | TgtPrompt$ Select target tapped creature an opponent controls | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:All\nOracle:This creature doesn't untap during your untap step.\\nAt the beginning of your upkeep, you may untap target tapped creature an opponent controls. If you do, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soldevi Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

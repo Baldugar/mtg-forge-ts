@@ -1,0 +1,23 @@
+{
+  "id": "griffnaut-tracker-corpus-m677",
+  "description": "M6 corpus — Griffnaut Tracker; in-hand parse.",
+  "seed": 61761,
+  "cards": {
+    "Griffnaut Tracker": "Name:Griffnaut Tracker\nManaCost:3 W\nTypes:Creature Human Detective\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, exile up to two target cards from a single graveyard.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 2 | TargetsWithSameController$ True | ValidTgts$ Card | TgtPrompt$ Select up to two target cards from a single graveyard\nDeckHas:Ability$Graveyard\nOracle:Flying\\nWhen Griffnaut Tracker enters, exile up to two target cards from a single graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Griffnaut Tracker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

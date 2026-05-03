@@ -1,0 +1,23 @@
+{
+  "id": "red-elemental-blast-corpus-m677",
+  "description": "M6 corpus — Red Elemental Blast; in-hand parse.",
+  "seed": 67914,
+  "cards": {
+    "Red Elemental Blast": "Name:Red Elemental Blast\nManaCost:R\nTypes:Instant\nA:SP$ Charm | Choices$ DBCounter,DBDestroy\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.Blue | TgtPrompt$ Select target blue spell | SpellDescription$ Counter target blue spell.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Permanent.Blue | TgtPrompt$ Select target blue permanent | SpellDescription$ Destroy target blue permanent.\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Counter target blue spell.\\n• Destroy target blue permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Red Elemental Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

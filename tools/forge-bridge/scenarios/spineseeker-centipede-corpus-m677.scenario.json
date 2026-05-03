@@ -1,0 +1,23 @@
+{
+  "id": "spineseeker-centipede-corpus-m677",
+  "description": "M6 corpus — Spineseeker Centipede; in-hand parse.",
+  "seed": 70679,
+  "cards": {
+    "Spineseeker Centipede": "Name:Spineseeker Centipede\nManaCost:2 G\nTypes:Creature Insect\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 2 | AddKeyword$ Vigilance | Condition$ Delirium | Description$ Delirium — CARDNAME gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:When Spineseeker Centipede enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\\nDelirium — Spineseeker Centipede gets +1/+2 and has vigilance as long as there are four or more card types among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spineseeker Centipede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

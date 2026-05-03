@@ -1,0 +1,23 @@
+{
+  "id": "moonlight-hunt-corpus-m677",
+  "description": "M6 corpus — Moonlight Hunt; in-hand parse.",
+  "seed": 65466,
+  "cards": {
+    "Moonlight Hunt": "Name:Moonlight Hunt\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | SubAbility$ WolfStrike | SpellDescription$ Choose target creature you don't control. Each creature you control that's a Wolf or a Werewolf deals damage equal to its power to that creature.\nSVar:WolfStrike:DB$ EachDamage | DefinedDamagers$ Valid Creature.Wolf+YouCtrl,Creature.Werewolf+YouCtrl | Defined$ Targeted | NumDmg$ Count$CardPower | StackDescription$ None\nAI:RemoveDeck:Random\nDeckHints:Type$Wolf|Werewolf\nOracle:Choose target creature you don't control. Each creature you control that's a Wolf or a Werewolf deals damage equal to its power to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonlight Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

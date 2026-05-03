@@ -1,0 +1,25 @@
+{
+  "id": "saproling-infestation-corpus-m677",
+  "description": "M6 corpus — Saproling Infestation; ETB-on-bf.",
+  "seed": 69005,
+  "cards": {
+    "Saproling Infestation": "Name:Saproling Infestation\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl+kicked | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a player kicks a spell, you create a 1/1 green Saproling creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nDeckNeeds:Keyword$Kicker\nOracle:Whenever a player kicks a spell, you create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Saproling Infestation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

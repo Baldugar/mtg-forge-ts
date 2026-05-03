@@ -1,0 +1,23 @@
+{
+  "id": "ice-cage-corpus-m677",
+  "description": "M6 corpus — Ice Cage; in-hand parse.",
+  "seed": 62683,
+  "cards": {
+    "Ice Cage": "Name:Ice Cage\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block and its activated abilities can't be activated.\nT:Mode$ BecomesTarget | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When enchanted creature becomes the target of a spell or ability, destroy CARDNAME.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Self\nOracle:Enchant creature\\nEnchanted creature can't attack or block, and its activated abilities can't be activated.\\nWhen enchanted creature becomes the target of a spell or ability, destroy Ice Cage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ice Cage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

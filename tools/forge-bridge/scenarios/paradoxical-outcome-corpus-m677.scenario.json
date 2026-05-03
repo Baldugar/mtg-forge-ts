@@ -1,0 +1,23 @@
+{
+  "id": "paradoxical-outcome-corpus-m677",
+  "description": "M6 corpus — Paradoxical Outcome; in-hand parse.",
+  "seed": 66603,
+  "cards": {
+    "Paradoxical Outcome": "Name:Paradoxical Outcome\nManaCost:3 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand+!token+YouCtrl | TgtPrompt$ Select target nonland, nontoken permanent you control | TargetMin$ 0 | TargetMax$ X | Origin$ Battlefield | Destination$ Hand | RememberChanged$ True | SubAbility$ DBDraw | SpellDescription$ Return any number of target nonland, nontoken permanents you control to their owners' hands. Draw a card for each card returned to your hand this way.\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Permanent.nonLand+!token+YouCtrl\nSVar:Y:Remembered$Valid Card.YouOwn\nOracle:Return any number of target nonland, nontoken permanents you control to their owners' hands. Draw a card for each card returned to your hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paradoxical Outcome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

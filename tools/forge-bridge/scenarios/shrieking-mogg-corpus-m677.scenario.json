@@ -1,0 +1,23 @@
+{
+  "id": "shrieking-mogg-corpus-m677",
+  "description": "M6 corpus — Shrieking Mogg; in-hand parse.",
+  "seed": 69785,
+  "cards": {
+    "Shrieking Mogg": "Name:Shrieking Mogg\nManaCost:1 R\nTypes:Creature Goblin\nPT:1/1\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTapAll | TriggerDescription$ When CARDNAME enters, tap all other creatures.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Creature.StrictlyOther\nSVar:PlayMain1:TRUE\nOracle:Haste\\nWhen Shrieking Mogg enters, tap all other creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrieking Mogg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

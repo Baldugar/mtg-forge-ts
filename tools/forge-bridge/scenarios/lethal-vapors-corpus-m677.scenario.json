@@ -1,0 +1,23 @@
+{
+  "id": "lethal-vapors-corpus-m677",
+  "description": "M6 corpus — Lethal Vapors; in-hand parse.",
+  "seed": 64153,
+  "cards": {
+    "Lethal Vapors": "Name:Lethal Vapors\nManaCost:2 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Creature | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature enters, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy\nA:AB$ Destroy | Cost$ 0 | Defined$ Self | SubAbility$ DBSkipTurn | Activator$ Player | AILogic$ WillSkipTurn | SpellDescription$ Destroy CARDNAME. You skip your next turn. Any player may activate this ability.\nSVar:DBSkipTurn:DB$ SkipTurn | Defined$ You | NumTurns$ 1 | AILogic$ Always\nSVar:AICurseEffect:DestroyCreature\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, destroy it.\\n{0}: Destroy Lethal Vapors. You skip your next turn. Any player may activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lethal Vapors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

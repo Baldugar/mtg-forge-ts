@@ -1,0 +1,23 @@
+{
+  "id": "hanweir-militia-captain-corpus-m677",
+  "description": "M6 corpus — Hanweir Militia Captain; in-hand parse.",
+  "seed": 62031,
+  "cards": {
+    "Hanweir Militia Captain": "Name:Hanweir Militia Captain\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | IsPresent$ Creature.YouCtrl | PresentCompare$ GE4 | Execute$ TrigTransform | TriggerDescription$ At the beginning of your upkeep, if you control four or more creatures, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of your upkeep, if you control four or more creatures, transform Hanweir Militia Captain.\n\nALTERNATE\n\nName:Westvale Cult Leader\nManaCost:no cost\nColors:white\nTypes:Creature Human Cleric\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 1/1 white and black Human Cleric creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ wb_1_1_human_cleric | TokenOwner$ You\nSVar:BuffedBy:Creature\nOracle:Westvale Cult Leader's power and toughness are each equal to the number of creatures you control.\\nAt the beginning of your end step, create a 1/1 white and black Human Cleric creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hanweir Militia Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

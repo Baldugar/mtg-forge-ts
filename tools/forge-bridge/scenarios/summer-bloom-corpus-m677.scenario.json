@@ -1,0 +1,23 @@
+{
+  "id": "summer-bloom-corpus-m677",
+  "description": "M6 corpus — Summer Bloom; in-hand parse.",
+  "seed": 71299,
+  "cards": {
+    "Summer Bloom": "Name:Summer Bloom\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Effect | StaticAbilities$ BloomingLand | AILogic$ Always | SpellDescription$ You may play up to three additional lands this turn.\nSVar:BloomingLand:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 3 | Description$ You may play up to three additional lands this turn.\nSVar:NeedsToPlayVar:LandInHand GE1\nSVar:LandInHand:Count$ValidHand Land.YouOwn\nSVar:PlayMain1:TRUE\nOracle:You may play up to three additional lands this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summer Bloom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

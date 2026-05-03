@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-of-lost-truths-corpus-m677",
+  "description": "M6 corpus — Sphinx of Lost Truths; in-hand parse.",
+  "seed": 70616,
+  "cards": {
+    "Sphinx of Lost Truths": "Name:Sphinx of Lost Truths\nManaCost:3 U U\nTypes:Creature Sphinx\nPT:3/5\nK:Flying\nK:Kicker:1 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards. Then if it wasn't kicked, discard three cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 3 | ConditionDefined$ Self | ConditionPresent$ Card.!kicked\nOracle:Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\\nFlying\\nWhen Sphinx of Lost Truths enters, draw three cards. Then if it wasn't kicked, discard three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx of Lost Truths"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

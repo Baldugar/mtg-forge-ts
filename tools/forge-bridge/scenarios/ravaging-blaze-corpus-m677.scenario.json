@@ -1,0 +1,23 @@
+{
+  "id": "ravaging-blaze-corpus-m677",
+  "description": "M6 corpus — Ravaging Blaze; in-hand parse.",
+  "seed": 67747,
+  "cards": {
+    "Ravaging Blaze": "Name:Ravaging Blaze\nManaCost:X R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DmgController | SpellDescription$ CARDNAME deals X damage to target creature.\nSVar:DmgController:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2 | SpellDescription$ Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, CARDNAME also deals X damage to that creature's controller.\nSVar:X:Count$xPaid\nOracle:Ravaging Blaze deals X damage to target creature.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, Ravaging Blaze also deals X damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravaging Blaze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

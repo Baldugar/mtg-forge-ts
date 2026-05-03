@@ -1,0 +1,23 @@
+{
+  "id": "mirror-of-the-forebears-corpus-m677",
+  "description": "M6 corpus — Mirror of the Forebears; in-hand parse.",
+  "seed": 65250,
+  "cards": {
+    "Mirror of the Forebears": "Name:Mirror of the Forebears\nManaCost:2\nTypes:Artifact\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentComputerControls | SpellDescription$ As CARDNAME enters, choose a creature type.\nA:AB$ Clone | Cost$ 1 | ValidTgts$ Creature.ChosenType+YouCtrl | TgtPrompt$ Select target creature you control of the chosen type | Duration$ UntilEndOfTurn | AddTypes$ Artifact | SpellDescription$ Until end of turn, CARDNAME becomes a copy of target creature you control of the chosen type, except it's an artifact in addition to its other types.\nAI:RemoveDeck:All\nOracle:As Mirror of the Forebears enters, choose a creature type.\\n{1}: Until end of turn, Mirror of the Forebears becomes a copy of target creature you control of the chosen type, except it's an artifact in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror of the Forebears"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

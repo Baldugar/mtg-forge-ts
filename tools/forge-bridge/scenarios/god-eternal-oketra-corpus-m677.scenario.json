@@ -1,0 +1,23 @@
+{
+  "id": "god-eternal-oketra-corpus-m677",
+  "description": "M6 corpus — God-Eternal Oketra; in-hand parse.",
+  "seed": 61497,
+  "cards": {
+    "God-Eternal Oketra": "Name:God-Eternal Oketra\nManaCost:3 W W\nTypes:Legendary Creature Zombie God\nPT:3/6\nK:Double Strike\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, create a 4/4 black Zombie Warrior creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ b_4_4_zombie_warrior_vigilance | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Card.Self | Execute$ TriReturn | OptionalDecider$ You | TriggerDescription$ When CARDNAME dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\nSVar:TriReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Destination$ Library | LibraryPosition$ 2\nDeckHas:Ability$Token\nOracle:Double strike\\nWhenever you cast a creature spell, create a 4/4 black Zombie Warrior creature token with vigilance.\\nWhen God-Eternal Oketra dies or is put into exile from the battlefield, you may put it into its owner's library third from the top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "God-Eternal Oketra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

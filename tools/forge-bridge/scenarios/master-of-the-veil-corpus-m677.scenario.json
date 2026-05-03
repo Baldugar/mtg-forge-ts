@@ -1,0 +1,25 @@
+{
+  "id": "master-of-the-veil-corpus-m677",
+  "description": "M6 corpus — Master of the Veil; ETB-on-bf.",
+  "seed": 64870,
+  "cards": {
+    "Master of the Veil": "Name:Master of the Veil\nManaCost:2 U U\nTypes:Creature Human Wizard\nPT:2/3\nK:Morph:2 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigSetState | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, you may turn target creature with morph face down.\nSVar:TrigSetState:DB$ SetState | ValidTgts$ Creature.withMorph,Creature.withMegamorph | TgtPrompt$ Select target creature with morph. | Mode$ TurnFaceDown\nAI:RemoveDeck:All\nOracle:Morph {2}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Master of the Veil is turned face up, you may turn target creature with a morph ability face down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Master of the Veil"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

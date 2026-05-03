@@ -1,0 +1,23 @@
+{
+  "id": "reprocess-corpus-m677",
+  "description": "M6 corpus — Reprocess; in-hand parse.",
+  "seed": 68078,
+  "cards": {
+    "Reprocess": "Name:Reprocess\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Artifact,Creature,Land | RememberSacrificed$ True | Optional$ True | SubAbility$ DBDraw | SpellDescription$ Sacrifice any number of artifacts, creatures, and/or lands. Draw a card for each permanent sacrificed this way.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ DrawX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Artifact.YouCtrl,Creature.YouCtrl,Land.YouCtrl\nSVar:DrawX:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Sacrifice any number of artifacts, creatures, and/or lands. Draw a card for each permanent sacrificed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reprocess"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

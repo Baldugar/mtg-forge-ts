@@ -1,0 +1,23 @@
+{
+  "id": "mardu-hordechief-corpus-m677",
+  "description": "M6 corpus — Mardu Hordechief; in-hand parse.",
+  "seed": 64778,
+  "cards": {
+    "Mardu Hordechief": "Name:Mardu Hordechief\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigToken | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, create a 1/1 white Warrior creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_warrior | TokenOwner$ You\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When Mardu Hordechief enters, if you attacked this turn, create a 1/1 white Warrior creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mardu Hordechief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

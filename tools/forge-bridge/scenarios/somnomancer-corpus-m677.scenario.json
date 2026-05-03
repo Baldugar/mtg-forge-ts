@@ -1,0 +1,23 @@
+{
+  "id": "somnomancer-corpus-m677",
+  "description": "M6 corpus — Somnomancer; in-hand parse.",
+  "seed": 70392,
+  "cards": {
+    "Somnomancer": "Name:Somnomancer\nManaCost:1 WU\nTypes:Creature Kithkin Wizard\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, you may tap target creature.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nSVar:PlayMain1:TRUE\nOracle:When Somnomancer enters, you may tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Somnomancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

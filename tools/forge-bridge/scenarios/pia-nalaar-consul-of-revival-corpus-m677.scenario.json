@@ -1,0 +1,25 @@
+{
+  "id": "pia-nalaar-consul-of-revival-corpus-m677",
+  "description": "M6 corpus — Pia Nalaar, Consul of Revival; ETB-on-bf.",
+  "seed": 66878,
+  "cards": {
+    "Pia Nalaar, Consul of Revival": "Name:Pia Nalaar, Consul of Revival\nManaCost:R W\nTypes:Legendary Creature Human Artificer\nPT:2/3\nS:Mode$ Continuous | Affected$ Thopter.YouCtrl | AddKeyword$ Haste | Description$ Thopters you control have haste.\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you play a land from exile or cast a spell from exile, create a 1/1 colorless Thopter artifact creature token with flying.\nT:Mode$ LandPlayed | Origin$ Exile | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever you play a land from exile or cast a spell from exile, create a 1/1 colorless Thopter artifact creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You\nDeckHints:Keyword$Cascade & Type$Thopter\nDeckHas:Ability$Token & Type$Thopter\nOracle:Thopters you control have haste.\\nWhenever you play a land from exile or cast a spell from exile, create a 1/1 colorless Thopter artifact creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pia Nalaar, Consul of Revival"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

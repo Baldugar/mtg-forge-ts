@@ -1,0 +1,25 @@
+{
+  "id": "lich-s-tomb-corpus-m677",
+  "description": "M6 corpus — Lich's Tomb; ETB-on-bf.",
+  "seed": 64190,
+  "cards": {
+    "Lich's Tomb": "Name:Lich's Tomb\nManaCost:4\nTypes:Artifact\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ValidLoseReason$ LifeReachedZero | Layer$ CantHappen | Description$ You don't lose the game for having 0 or less life.\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever you lose life, sacrifice a permanent for each 1 life you lost. (Damage causes loss of life.)\nSVar:TrigSac:DB$ Sacrifice | Amount$ X | SacValid$ Permanent\nSVar:X:TriggerCount$LifeAmount\nAI:RemoveDeck:Random\nOracle:You don't lose the game for having 0 or less life.\\nWhenever you lose life, sacrifice a permanent for each 1 life you lost. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lich's Tomb"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

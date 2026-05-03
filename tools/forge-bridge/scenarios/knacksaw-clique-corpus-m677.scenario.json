@@ -1,0 +1,25 @@
+{
+  "id": "knacksaw-clique-corpus-m677",
+  "description": "M6 corpus — Knacksaw Clique; ETB-on-bf.",
+  "seed": 63746,
+  "cards": {
+    "Knacksaw Clique": "Name:Knacksaw Clique\nManaCost:3 U\nTypes:Creature Faerie Rogue\nPT:1/4\nK:Flying\nA:AB$ Dig | Cost$ 1 U Q | ValidTgts$ Opponent | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Target opponent exiles the top card of their library. Until end of turn, you may play that card.\nSVar:DBEffect:DB$ Effect | Duration$ EndOfTurn | RememberObjects$ Remembered | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play a card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Flying\\n{1}{U}, {Q}: Target opponent exiles the top card of their library. Until end of turn, you may play that card. ({Q} is the untap symbol.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Knacksaw Clique"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

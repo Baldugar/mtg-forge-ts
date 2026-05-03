@@ -1,0 +1,23 @@
+{
+  "id": "scorching-winds-corpus-m677",
+  "description": "M6 corpus — Scorching Winds; in-hand parse.",
+  "seed": 69174,
+  "cards": {
+    "Scorching Winds": "Name:Scorching Winds\nManaCost:R\nTypes:Instant\nText:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\r\\n\nA:SP$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.attacking | ValidDescription$ each attacking creature. | CheckSVar$ X | ActivationPhases$ Declare Attackers | SpellDescription$ CARDNAME deals 1 damage to each attacking creature.\nSVar:X:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nScorching Winds deals 1 damage to each attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scorching Winds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

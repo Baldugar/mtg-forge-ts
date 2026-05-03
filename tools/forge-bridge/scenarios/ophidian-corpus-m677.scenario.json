@@ -1,0 +1,25 @@
+{
+  "id": "ophidian-corpus-m677",
+  "description": "M6 corpus — Ophidian; ETB-on-bf.",
+  "seed": 66352,
+  "cards": {
+    "Ophidian": "Name:Ophidian\nManaCost:2 U\nTypes:Creature Snake\nPT:1/3\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may draw a card. If you do, CARDNAME assigns no combat damage this turn.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nAI:RemoveDeck:All\nOracle:Whenever Ophidian attacks and isn't blocked, you may draw a card. If you do, Ophidian assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ophidian"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

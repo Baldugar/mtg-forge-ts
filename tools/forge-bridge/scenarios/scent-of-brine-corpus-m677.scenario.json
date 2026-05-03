@@ -1,0 +1,23 @@
+{
+  "id": "scent-of-brine-corpus-m677",
+  "description": "M6 corpus — Scent of Brine; in-hand parse.",
+  "seed": 69130,
+  "cards": {
+    "Scent of Brine": "Name:Scent of Brine\nManaCost:1 U\nTypes:Instant\nA:SP$ Reveal | Defined$ You | RevealValid$ Card.Blue | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBScentOfBrineCounter | SpellDescription$ Reveal any number of blue cards in your hand. Counter target spell unless its controller pays {1} for each card revealed this way.\nSVar:DBScentOfBrineCounter:DB$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ ScentOfBrineX | SubAbility$ DBScentOfBrineCleanup\nSVar:DBScentOfBrineCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:ScentOfBrineX:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Reveal any number of blue cards in your hand. Counter target spell unless its controller pays {1} for each card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scent of Brine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

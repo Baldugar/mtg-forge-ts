@@ -1,0 +1,23 @@
+{
+  "id": "golgari-germination-corpus-m677",
+  "description": "M6 corpus — Golgari Germination; in-hand parse.",
+  "seed": 61550,
+  "cards": {
+    "Golgari Germination": "Name:Golgari Germination\nManaCost:1 B G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control dies, create a 1/1 green Saproling creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Whenever a nontoken creature you control dies, create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golgari Germination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

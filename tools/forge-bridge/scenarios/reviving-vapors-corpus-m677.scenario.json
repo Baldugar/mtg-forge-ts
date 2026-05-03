@@ -1,0 +1,23 @@
+{
+  "id": "reviving-vapors-corpus-m677",
+  "description": "M6 corpus — Reviving Vapors; in-hand parse.",
+  "seed": 68197,
+  "cards": {
+    "Reviving Vapors": "Name:Reviving Vapors\nManaCost:2 W U\nTypes:Instant\nA:SP$ Dig | DigNum$ 3 | Reveal$ True | SkipReorder$ True | ChangeNum$ 1 | ChangeValid$ Card | LibraryPosition2$ 0 | RememberRevealed$ True | Imprint$ True | SubAbility$ DBGainLife | StackDescription$ SpellDescription | SpellDescription$ Reveal the top three cards of your library and put one of them into your hand. You gain life equal to that card's mana value. Put all other cards revealed this way into your graveyard.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBChange | StackDescription$ None\nSVar:X:Imprinted$CardManaCost\nSVar:DBChange:DB$ ChangeZoneAll | Defined$ You | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Graveyard | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Reveal the top three cards of your library and put one of them into your hand. You gain life equal to that card's mana value. Put all other cards revealed this way into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reviving Vapors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

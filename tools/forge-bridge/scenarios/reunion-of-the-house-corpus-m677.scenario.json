@@ -1,0 +1,23 @@
+{
+  "id": "reunion-of-the-house-corpus-m677",
+  "description": "M6 corpus — Reunion of the House; in-hand parse.",
+  "seed": 68167,
+  "cards": {
+    "Reunion of the House": "Name:Reunion of the House\nManaCost:5 W W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Creature.YouOwn | MaxTotalTargetPower$ 10 | TgtPrompt$ Select any number of creature cards with total power 10 or less | SubAbility$ DBExile | SpellDescription$ Return any number of target creature cards with total power 10 or less from your graveyard to the battlefield. Exile CARDNAME.\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Return any number of target creature cards with total power 10 or less from your graveyard to the battlefield. Exile Reunion of the House.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reunion of the House"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

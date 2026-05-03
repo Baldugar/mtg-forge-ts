@@ -1,0 +1,23 @@
+{
+  "id": "hallowed-moonlight-corpus-m677",
+  "description": "M6 corpus — Hallowed Moonlight; in-hand parse.",
+  "seed": 61991,
+  "cards": {
+    "Hallowed Moonlight": "Name:Hallowed Moonlight\nManaCost:1 W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ ReplaceExile | SubAbility$ DBDraw | AILogic$ NonCastCreature | SpellDescription$ Until end of turn, if a creature would enter and it wasn't cast, exile it instead. Draw a card.\nSVar:ReplaceExile:Event$ Moved | ActiveZones$ Command | Destination$ Battlefield | ValidCard$ Creature.!wasCast | ReplaceWith$ DBExile | Description$ If a creature would enter and it wasn't cast, exile it instead.\nSVar:DBExile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nSVar:DBDraw:DB$ Draw\nOracle:Until end of turn, if a creature would enter and it wasn't cast, exile it instead.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hallowed Moonlight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

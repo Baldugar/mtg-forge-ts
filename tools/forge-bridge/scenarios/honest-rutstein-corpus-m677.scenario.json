@@ -1,0 +1,23 @@
+{
+  "id": "honest-rutstein-corpus-m677",
+  "description": "M6 corpus — Honest Rutstein; in-hand parse.",
+  "seed": 62459,
+  "cards": {
+    "Honest Rutstein": "Name:Honest Rutstein\nManaCost:1 B G\nTypes:Legendary Creature Human Warlock\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return target creature card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouCtrl\nS:Mode$ ReduceCost | ValidCard$ Creature | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Creature spells you cast cost {1} less to cast.\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill\nOracle:When Honest Rutstein enters, return target creature card from your graveyard to your hand.\\nCreature spells you cast cost {1} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Honest Rutstein"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

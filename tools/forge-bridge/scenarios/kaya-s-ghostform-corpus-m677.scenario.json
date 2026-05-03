@@ -1,0 +1,23 @@
+{
+  "id": "kaya-s-ghostform-corpus-m677",
+  "description": "M6 corpus — Kaya's Ghostform; in-hand parse.",
+  "seed": 63531,
+  "cards": {
+    "Kaya's Ghostform": "Name:Kaya's Ghostform\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl,Planeswalker.YouCtrl:creature or planeswalker you control\nSVar:AttachAITgts:Card.!token\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Card.AttachedBy | Execute$ TrigReturn | TriggerDescription$ When enchanted permanent dies or is put into exile, return that card to the battlefield under your control.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Destination$ Battlefield | GainControl$ True\nSVar:PlayMain1:TRUE\nOracle:Enchant creature or planeswalker you control\\nWhen enchanted permanent dies or is put into exile, return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaya's Ghostform"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

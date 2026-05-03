@@ -1,0 +1,25 @@
+{
+  "id": "keepsake-gorgon-corpus-m677",
+  "description": "M6 corpus — Keepsake Gorgon; ETB-on-bf.",
+  "seed": 63574,
+  "cards": {
+    "Keepsake Gorgon": "Name:Keepsake Gorgon\nManaCost:3 B B\nTypes:Creature Gorgon\nPT:2/5\nK:Deathtouch\nA:AB$ PutCounter | Cost$ 5 B B | Monstrosity$ 1\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME becomes monstrous, destroy target non-Gorgon creature an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonGorgon+OppCtrl | TgtPrompt$ Select target non-Gorgon creature an opponent controls\nDeckHas:Ability$Counters\nOracle:Deathtouch\\n{5}{B}{B}: Monstrosity 1. (If this creature isn't monstrous, put a +1/+1 counter on it and it becomes monstrous.)\\nWhen Keepsake Gorgon becomes monstrous, destroy target non-Gorgon creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Keepsake Gorgon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

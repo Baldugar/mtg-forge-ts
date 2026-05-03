@@ -1,0 +1,23 @@
+{
+  "id": "rise-corpus-m677",
+  "description": "M6 corpus — Rise; in-hand parse.",
+  "seed": 68331,
+  "cards": {
+    "Rise": "Name:Rise\nManaCost:U B\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select target creature in a graveyard | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBChangeZone | SpellDescription$ Return target creature card from a graveyard and target creature on the battlefield to their owners' hands.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Creature | TgtPrompt$ Select target creature on the battlefield | Origin$ Battlefield | Destination$ Hand | IsCurse$ True\nAlternateMode:Split\nOracle:Return target creature card from a graveyard and target creature on the battlefield to their owners' hands.\n\nALTERNATE\n\nName:Fall\nManaCost:B R\nTypes:Sorcery\nA:SP$ Reveal | ValidTgts$ Player | IsCurse$ True | Random$ True | NumCards$ 2 | RememberRevealed$ True | SubAbility$ DBDiscard | SpellDescription$ Target player reveals two cards at random from their hand, then discards each nonland card revealed this way.\nSVar:DBDiscard:DB$ Discard | Mode$ Defined | Defined$ Targeted | DefinedCards$ ValidHand Card.nonLand+IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target player reveals two cards at random from their hand, then discards each nonland card revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

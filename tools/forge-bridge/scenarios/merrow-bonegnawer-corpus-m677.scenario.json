@@ -1,0 +1,25 @@
+{
+  "id": "merrow-bonegnawer-corpus-m677",
+  "description": "M6 corpus — Merrow Bonegnawer; ETB-on-bf.",
+  "seed": 65033,
+  "cards": {
+    "Merrow Bonegnawer": "Name:Merrow Bonegnawer\nManaCost:B\nTypes:Creature Merfolk Rogue\nPT:1/1\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | DefinedPlayer$ Targeted | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | IsCurse$ True | Chooser$ Targeted | SpellDescription$ Target player exiles a card from their graveyard.\nT:Mode$ SpellCast | ValidCard$ Card.Black | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a black spell, you may untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:{T}: Target player exiles a card from their graveyard.\\nWhenever you cast a black spell, you may untap Merrow Bonegnawer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Merrow Bonegnawer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

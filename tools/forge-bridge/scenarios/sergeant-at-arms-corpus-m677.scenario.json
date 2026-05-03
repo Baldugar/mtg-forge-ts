@@ -1,0 +1,23 @@
+{
+  "id": "sergeant-at-arms-corpus-m677",
+  "description": "M6 corpus — Sergeant-at-Arms; in-hand parse.",
+  "seed": 69474,
+  "cards": {
+    "Sergeant-at-Arms": "Name:Sergeant-at-Arms\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/3\nK:Kicker:2 W\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if it was kicked, create two 1/1 white Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_soldier | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Kicker {2}{W} (You may pay an additional {2}{W} as you cast this spell.)\\nWhen Sergeant-at-Arms enters, if it was kicked, create two 1/1 white Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sergeant-at-Arms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

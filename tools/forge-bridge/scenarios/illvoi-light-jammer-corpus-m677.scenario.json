@@ -1,0 +1,23 @@
+{
+  "id": "illvoi-light-jammer-corpus-m677",
+  "description": "M6 corpus — Illvoi Light Jammer; in-hand parse.",
+  "seed": 62769,
+  "cards": {
+    "Illvoi Light Jammer": "Name:Illvoi Light Jammer\nManaCost:1 U\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When this Equipment enters, attach it to target creature you control. That creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Hexproof\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 2 | Description$ Equipped creature gets +1/+2.\nK:Equip:3\nOracle:Flash\\nWhen this Equipment enters, attach it to target creature you control. That creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\\nEquipped creature gets +1/+2.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illvoi Light Jammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

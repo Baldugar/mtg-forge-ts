@@ -1,0 +1,23 @@
+{
+  "id": "high-score-corpus-m677",
+  "description": "M6 corpus — High Score; in-hand parse.",
+  "seed": 62360,
+  "cards": {
+    "High Score": "Name:High Score\nManaCost:2 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+inZoneBattlefield | ValidCounterType$ P1P1 | ReplaceWith$ AddOneMoreCounters | Description$ If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ValidCounterType$ P1P1 | ChooseCounter$ True | Amount$ X\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, draw a card if you control a creature with the greatest power among creatures on the battlefield.\nSVar:TrigDraw:DB$ Draw | ConditionPresent$ Creature.greatestPower+YouCtrl | ConditionCompare$ GE1\nSVar:X:ReplaceCount$CounterNum/Plus.1\nDeckNeeds:Ability$Counters\nOracle:If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.\\nAt the beginning of your end step, draw a card if you control a creature with the greatest power among creatures on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "High Score"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

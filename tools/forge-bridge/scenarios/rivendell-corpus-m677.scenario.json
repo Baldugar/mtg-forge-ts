@@ -1,0 +1,25 @@
+{
+  "id": "rivendell-corpus-m677",
+  "description": "M6 corpus — Rivendell; ETB-on-bf.",
+  "seed": 68386,
+  "cards": {
+    "Rivendell": "Name:Rivendell\nManaCost:no cost\nTypes:Legendary Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a legendary creature.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Creature.Legendary+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Scry | Cost$ 1 U T | ScryNum$ 2 | IsPresent$ Creature.Legendary+YouCtrl | SpellDescription$ Scry 2. Activate only if you control a legendary creature.\nDeckHints:Type$Legendary & Type$Creature\nOracle:Rivendell enters tapped unless you control a legendary creature.\\n{T}: Add {U}.\\n{1}{U}, {T}: Scry 2. Activate only if you control a legendary creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rivendell"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

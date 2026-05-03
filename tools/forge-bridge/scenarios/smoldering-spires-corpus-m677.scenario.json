@@ -1,0 +1,23 @@
+{
+  "id": "smoldering-spires-corpus-m677",
+  "description": "M6 corpus — Smoldering Spires; in-hand parse.",
+  "seed": 70272,
+  "cards": {
+    "Smoldering Spires": "Name:Smoldering Spires\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature can't block this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't block.\nSVar:PlayMain1:TRUE\nOracle:Smoldering Spires enters tapped.\\nWhen Smoldering Spires enters, target creature can't block this turn.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smoldering Spires"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

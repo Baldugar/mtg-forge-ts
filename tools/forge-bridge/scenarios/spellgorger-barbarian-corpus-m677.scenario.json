@@ -1,0 +1,23 @@
+{
+  "id": "spellgorger-barbarian-corpus-m677",
+  "description": "M6 corpus — Spellgorger Barbarian; in-hand parse.",
+  "seed": 70585,
+  "cards": {
+    "Spellgorger Barbarian": "Name:Spellgorger Barbarian\nManaCost:3 R\nTypes:Creature Human Nightmare Barbarian\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard a card at random.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME leaves the battlefield, draw a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ Random\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:When Spellgorger Barbarian enters, discard a card at random.\\nWhen Spellgorger Barbarian leaves the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellgorger Barbarian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

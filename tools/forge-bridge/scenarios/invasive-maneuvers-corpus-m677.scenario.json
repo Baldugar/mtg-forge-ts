@@ -1,0 +1,23 @@
+{
+  "id": "invasive-maneuvers-corpus-m677",
+  "description": "M6 corpus — Invasive Maneuvers; in-hand parse.",
+  "seed": 63079,
+  "cards": {
+    "Invasive Maneuvers": "Name:Invasive Maneuvers\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals 3 damage to target creature. It deals 5 damage instead if you control a Spacecraft.\nSVar:Y:Count$Valid Spacecraft.YouCtrl\nSVar:X:Count$Compare Y GE1.5.3\nOracle:Invasive Maneuvers deals 3 damage to target creature. It deals 5 damage instead if you control a Spacecraft.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasive Maneuvers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

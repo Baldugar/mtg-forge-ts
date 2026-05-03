@@ -1,0 +1,23 @@
+{
+  "id": "katara-heroic-healer-corpus-m677",
+  "description": "M6 corpus — Katara, Heroic Healer; in-hand parse.",
+  "seed": 63513,
+  "cards": {
+    "Katara, Heroic Healer": "Name:Katara, Heroic Healer\nManaCost:4 W\nTypes:Legendary Creature Human Warrior Ally\nPT:2/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When NICKNAME enters, put a +1/+1 counter on each other creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Lifelink (Damage dealt by this creature also causes you to gain that much life.)\\nWhen Katara enters, put a +1/+1 counter on each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Katara, Heroic Healer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

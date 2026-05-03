@@ -1,0 +1,23 @@
+{
+  "id": "nightveil-specter-corpus-m677",
+  "description": "M6 corpus — Nightveil Specter; in-hand parse.",
+  "seed": 65956,
+  "cards": {
+    "Nightveil Specter": "Name:Nightveil Specter\nManaCost:UB UB UB\nTypes:Creature Specter\nPT:2/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player exiles the top card of their library.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile\nS:Mode$ Continuous | MayPlay$ True | Affected$ Card.ExiledWithSource | AffectedZone$ Exile | Description$ You may play lands and cast spells from among cards exiled with CARDNAME.\nOracle:Flying\\nWhenever Nightveil Specter deals combat damage to a player, that player exiles the top card of their library.\\nYou may play lands and cast spells from among cards exiled with Nightveil Specter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nightveil Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "seal-from-existence-corpus-m677",
+  "description": "M6 corpus — Seal from Existence; in-hand parse.",
+  "seed": 69287,
+  "cards": {
+    "Seal from Existence": "Name:Seal from Existence\nManaCost:1 W W\nTypes:Enchantment\nK:Ward:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:Ward {3}\\nWhen Seal from Existence enters, exile target nonland permanent an opponent controls until Seal from Existence leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seal from Existence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

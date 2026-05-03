@@ -1,0 +1,23 @@
+{
+  "id": "nahiri-s-warcrafting-corpus-m677",
+  "description": "M6 corpus — Nahiri's Warcrafting; in-hand parse.",
+  "seed": 65714,
+  "cards": {
+    "Nahiri's Warcrafting": "Name:Nahiri's Warcrafting\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker,Battle | TgtPrompt$ Select target creature, planeswalker, or battle | NumDmg$ 5 | ExcessSVar$ X | SubAbility$ DBDig | SpellDescription$ CARDNAME deals 5 damage to target creature, planeswalker, or battle.\nSVar:DBDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | Optional$ True | DestinationZone$ Exile | RestRandomOrder$ True | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Look at the top X cards of your library, where X is the excess damage dealt this way. You may exile one of those cards. Put the rest on the bottom of your library in a random order.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile | SpellDescription$ You may play the exiled card this turn.\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Nahiri's Warcrafting deals 5 damage to target creature, planeswalker, or battle. Look at the top X cards of your library, where X is the excess damage dealt this way. You may exile one of those cards. Put the rest on the bottom of your library in a random order. You may play the exiled card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nahiri's Warcrafting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "octavia-living-thesis-corpus-m677",
+  "description": "M6 corpus — Octavia, Living Thesis; ETB-on-bf.",
+  "seed": 66208,
+  "cards": {
+    "Octavia, Living Thesis": "Name:Octavia, Living Thesis\nManaCost:8 U U\nTypes:Legendary Creature Elemental Octopus\nPT:8/8\nK:Ward:8\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 8 | EffectZone$ All | IsPresent$ Instant.YouOwn,Sorcery.YouOwn | PresentZone$ Graveyard | PresentCompare$ GE8 | Description$ This spell costs {8} less to cast if you have eight or more instant and/or sorcery cards in your graveyard.\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigOctify | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, target creature has base power and toughness 8/8 until end of turn.\nSVar:TrigOctify:DB$ Animate | ValidTgts$ Creature | Power$ 8 | Toughness$ 8 | SpellDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, target creature has base power and toughness 8/8 until end of turn.\nDeckNeeds:Type$Instant|Sorcery\nOracle:This spell costs {8} less to cast if you have eight or more instant and/or sorcery cards in your graveyard.\\nWard {8}\\nMagecraft — Whenever you cast or copy an instant or sorcery spell, target creature has base power and toughness 8/8 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Octavia, Living Thesis"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

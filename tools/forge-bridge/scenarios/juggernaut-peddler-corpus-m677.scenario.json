@@ -1,0 +1,23 @@
+{
+  "id": "juggernaut-peddler-corpus-m677",
+  "description": "M6 corpus — Juggernaut Peddler; in-hand parse.",
+  "seed": 63369,
+  "cards": {
+    "Juggernaut Peddler": "Name:Juggernaut Peddler\nManaCost:W B\nTypes:Creature Human Artificer\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, target player reveals all nonland cards in their hand. You may choose one of those cards. If you do, that player exiles it and conjures a card named Juggernaut into their hand.\nSVar:TrigDiscard:DB$ Reveal | ValidTgts$ Player | RevealAllValid$ Card.nonLand+TargetedPlayerCtrl | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | DefinedPlayer$ Targeted | Chooser$ You | Origin$ Hand | Destination$ Exile | ChangeNum$ 1 | ChangeType$ Card.nonLand+TargetedPlayerCtrl | AlreadyRevealed$ True | AILogic$ BestCard | RememberChanged$ True | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | ConditionDefined$ Remembered | ConditionPresent$ Card | Conjure$ True | Defined$ TargetedPlayer | Name$ Juggernaut | Zone$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Type$Juggernaut|Artifact\nOracle:Vigilance\\nWhen Juggernaut Peddler enter, target player reveals all nonland cards in their hand. You may choose one of those cards. If you do, that player exiles it and conjures a card named Juggernaut into their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Juggernaut Peddler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

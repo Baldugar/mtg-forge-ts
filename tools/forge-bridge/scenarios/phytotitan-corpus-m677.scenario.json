@@ -1,0 +1,23 @@
+{
+  "id": "phytotitan-corpus-m677",
+  "description": "M6 corpus — Phytotitan; in-hand parse.",
+  "seed": 66877,
+  "cards": {
+    "Phytotitan": "Name:Phytotitan\nManaCost:4 G G\nTypes:Creature Plant Elemental\nPT:7/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ DelTrig | TriggerDescription$ When CARDNAME dies, return it to the battlefield tapped under its owner's control at the beginning of their next upkeep.\nSVar:DelTrig:DB$ DelayedTrigger | ValidPlayer$ Player.IsTriggerRemembered | Mode$ Phase | Phase$ Upkeep | Execute$ TrigChange | RememberObjects$ TriggeredNewCardLKICopy & TriggeredCardOwner | TriggerDescription$ Return CARDNAME to the battlefield tapped under its owner's control at the beginning of their next upkeep.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI | Tapped$ True\nSVar:SacMe:1\nOracle:When Phytotitan dies, return it to the battlefield tapped under its owner's control at the beginning of their next upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phytotitan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "initiate-of-blood-corpus-m677",
+  "description": "M6 corpus — Initiate of Blood; in-hand parse.",
+  "seed": 62943,
+  "cards": {
+    "Initiate of Blood": "Name:Initiate of Blood\nManaCost:3 R\nTypes:Creature Ogre Shaman\nPT:2/2\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.wasDealtDamageThisTurn | TgtPrompt$ Select target creature that was dealt damage this turn | NumDmg$ 1 | SubAbility$ DBDelayedTrigger | SpellDescription$ CARDNAME deals 1 damage to target creature that was dealt damage this turn.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigTransform | SpellDescription$ When that creature dies this turn, flip CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Flip\nAlternateMode:Flip\nOracle:{T}: Initiate of Blood deals 1 damage to target creature that was dealt damage this turn. When that creature dies this turn, flip Initiate of Blood.\n\nALTERNATE\n\nName:Goka the Unjust\nManaCost:3 R\nColors:red\nTypes:Legendary Creature Ogre Shaman\nPT:4/4\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.wasDealtDamageThisTurn | TgtPrompt$ Select target creature that was dealt damage this turn. | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature that was dealt damage this turn.\nOracle:{T}: Goka the Unjust deals 4 damage to target creature that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Initiate of Blood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

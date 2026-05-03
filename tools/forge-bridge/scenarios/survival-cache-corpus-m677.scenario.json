@@ -1,0 +1,23 @@
+{
+  "id": "survival-cache-corpus-m677",
+  "description": "M6 corpus — Survival Cache; in-hand parse.",
+  "seed": 71437,
+  "cards": {
+    "Survival Cache": "Name:Survival Cache\nManaCost:2 W\nTypes:Sorcery\nK:Rebound\nA:SP$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DoDraw | SpellDescription$ You gain 2 life. Then if you have more life than an opponent, draw a card.\nSVar:DoDraw:DB$ Draw | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GTY | NumCards$ 1\nSVar:X:Count$YourLifeTotal\nSVar:Y:PlayerCountOpponents$LowestLifeTotal\nOracle:You gain 2 life. Then if you have more life than an opponent, draw a card.\\nRebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Survival Cache"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

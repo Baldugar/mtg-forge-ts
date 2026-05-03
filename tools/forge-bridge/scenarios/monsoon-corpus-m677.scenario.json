@@ -1,0 +1,23 @@
+{
+  "id": "monsoon-corpus-m677",
+  "description": "M6 corpus — Monsoon; in-hand parse.",
+  "seed": 65435,
+  "cards": {
+    "Monsoon": "Name:Monsoon\nManaCost:2 R G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ At the beginning of each player's end step, tap all untapped Islands that player controls and CARDNAME deals X damage to the player, where X is the number of Islands tapped this way.\nSVar:TrigTap:DB$ TapAll | ValidCards$ Island.ActivePlayerCtrl+untapped | RememberTapped$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nS:Mode$ Continuous | Affected$ Island | AddSVar$ AITap\nSVar:AITap:SVar:AITapDown:True\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's end step, tap all untapped Islands that player controls and Monsoon deals X damage to the player, where X is the number of Islands tapped this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Monsoon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

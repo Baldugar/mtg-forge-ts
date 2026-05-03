@@ -1,0 +1,23 @@
+{
+  "id": "kavaron-consumed-corpus-m677",
+  "description": "M6 corpus — Kavaron Consumed; in-hand parse.",
+  "seed": 63520,
+  "cards": {
+    "Kavaron Consumed": "Name:Kavaron Consumed\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ ChangeZone | Hidden$ True | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact.YouOwn,Creature.YouOwn | SelectPrompt$ Select an artifact or creature card in your hand | RememberChanged$ True | AtEOT$ Sacrifice | Optional$ True | SubAbility$ DBAnimatePerpetual | StackDescription$ REP You_{p:You} & your hand_their hand & Sacrifice_{p:You} sacrifices | SpellDescription$ You may put an artifact or creature card from your hand onto the battlefield. It perpetually becomes an artifact creature with base power and toughness 4/4 and gains haste. Sacrifice it at the beginning of the next end step.\nSVar:DBAnimatePerpetual:DB$ Animate | Defined$ Remembered | Types$ Creature,Artifact | Keywords$ Haste | Power$ 4 | Toughness$ 4 | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:You may put an artifact or creature card from your hand onto the battlefield. It perpetually becomes an artifact creature with base power and toughness 4/4 and gains haste. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kavaron Consumed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "induce-paranoia-corpus-m677",
+  "description": "M6 corpus — Induce Paranoia; in-hand parse.",
+  "seed": 62884,
+  "cards": {
+    "Induce Paranoia": "Name:Induce Paranoia\nManaCost:2 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | RememberCounteredCMC$ True | SubAbility$ DBMill | SpellDescription$ Counter target spell. If {B} was spent to cast this spell, that spell's controller mills X cards, where X is the spell's mana value.\nSVar:DBMill:DB$ Mill | NumCards$ X | Defined$ TargetedController | ConditionManaSpent$ B | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nSVar:ManaNeededToAvoidNegativeEffect:black\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:Counter target spell. If {B} was spent to cast this spell, that spell's controller mills X cards, where X is the spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Induce Paranoia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

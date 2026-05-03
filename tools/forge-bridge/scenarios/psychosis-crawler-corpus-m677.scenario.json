@@ -1,0 +1,25 @@
+{
+  "id": "psychosis-crawler-corpus-m677",
+  "description": "M6 corpus — Psychosis Crawler; ETB-on-bf.",
+  "seed": 67332,
+  "cards": {
+    "Psychosis Crawler": "Name:Psychosis Crawler\nManaCost:5\nTypes:Artifact Creature Phyrexian Horror\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nT:Mode$ Drawn | ValidCard$ Card.YouOwn | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever you draw a card, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nAI:RemoveDeck:All\nSVar:NeedsToPlayVar:X GE3\nOracle:Psychosis Crawler's power and toughness are each equal to the number of cards in your hand.\\nWhenever you draw a card, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Psychosis Crawler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

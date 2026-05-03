@@ -1,0 +1,23 @@
+{
+  "id": "six-corpus-m677",
+  "description": "M6 corpus — Six; in-hand parse.",
+  "seed": 70008,
+  "cards": {
+    "Six": "Name:Six\nManaCost:2 G\nTypes:Legendary Creature Treefolk\nPT:2/4\nK:Reach\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, mill three cards. You may put a land card from among them into your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Land.IsRemembered | Optional$ True | SelectPrompt$ You may select a land card milled this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | AffectedZone$ Graveyard | Affected$ Card.nonLand+Permanent+YouOwn | Condition$ PlayerTurn | AddKeyword$ Retrace | Description$ During your turn, nonland permanent cards in your graveyard have retrace.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard|Mill\nOracle:Reach\\nWhenever Six attacks, mill three cards. You may put a land card from among them into your hand.\\nDuring your turn, nonland permanent cards in your graveyard have retrace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Six"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

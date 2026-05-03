@@ -1,0 +1,23 @@
+{
+  "id": "moria-marauder-corpus-m677",
+  "description": "M6 corpus — Moria Marauder; in-hand parse.",
+  "seed": 65500,
+  "cards": {
+    "Moria Marauder": "Name:Moria Marauder\nManaCost:R R\nTypes:Creature Goblin Warrior\nPT:1/1\nK:Double Strike\nT:Mode$ DamageDone | ValidSource$ Goblin.YouCtrl,Orc.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Goblin or Orc you control deals combat damage to a player, exile the top card of your library. You may play that card this turn.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Exile the top card of your library. You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Goblin|Orc\nOracle:Double strike\\nWhenever a Goblin or Orc you control deals combat damage to a player, exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moria Marauder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

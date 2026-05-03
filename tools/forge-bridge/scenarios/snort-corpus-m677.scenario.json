@@ -1,0 +1,23 @@
+{
+  "id": "snort-corpus-m677",
+  "description": "M6 corpus — Snort; in-hand parse.",
+  "seed": 70299,
+  "cards": {
+    "Snort": "Name:Snort\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Discard | Mode$ Hand | Defined$ Player | Optional$ True | RememberDiscardingPlayers$ True | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Each player may discard their hand and draw five cards. Then CARDNAME deals 5 damage to each opponent who discarded their hand this way.\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ 5 | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DamageAll | ValidPlayers$ Opponent.IsRemembered | NumDmg$ 5 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Flashback:5 R\nOracle:Each player may discard their hand and draw five cards. Then Snort deals 5 damage to each opponent who discarded their hand this way.\\nFlashback {5}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snort"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

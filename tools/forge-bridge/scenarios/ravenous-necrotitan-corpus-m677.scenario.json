@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-necrotitan-corpus-m677",
+  "description": "M6 corpus — Ravenous Necrotitan; in-hand parse.",
+  "seed": 67762,
+  "cards": {
+    "Ravenous Necrotitan": "Name:Ravenous Necrotitan\nManaCost:2 B B\nTypes:Creature Phyrexian Horror\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ Corrupted — When CARDNAME enters, sacrifice a creature unless an opponent has three or more poison counters.\nSVar:TrigSacrifice:DB$ Sacrifice | SacValid$ Creature | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ LT3\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckHints:Keyword$Toxic|Infect\nDeckHas:Ability$Sacrifice\nOracle:Corrupted — When Ravenous Necrotitan enters, sacrifice a creature unless an opponent has three or more poison counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Necrotitan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

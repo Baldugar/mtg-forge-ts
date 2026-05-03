@@ -1,0 +1,23 @@
+{
+  "id": "quickchange-corpus-m677",
+  "description": "M6 corpus — Quickchange; in-hand parse.",
+  "seed": 67470,
+  "cards": {
+    "Quickchange": "Name:Quickchange\nManaCost:1 U\nTypes:Instant\nA:SP$ ChooseColor | Defined$ You | OrColors$ True | SubAbility$ Animate | SpellDescription$ Target creature becomes the color or colors of your choice until end of turn. Draw a card.\nSVar:Animate:DB$ Animate | ValidTgts$ Creature | Colors$ ChosenColor | OverwriteColors$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Target creature becomes the color or colors of your choice until end of turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quickchange"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

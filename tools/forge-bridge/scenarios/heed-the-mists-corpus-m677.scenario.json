@@ -1,0 +1,23 @@
+{
+  "id": "heed-the-mists-corpus-m677",
+  "description": "M6 corpus — Heed the Mists; in-hand parse.",
+  "seed": 62212,
+  "cards": {
+    "Heed the Mists": "Name:Heed the Mists\nManaCost:3 U U\nTypes:Sorcery Arcane\nA:SP$ Mill | Defined$ You | NumCards$ 1 | RememberMilled$ True | SubAbility$ TrigDraw | SpellDescription$ Mill a card, then draw cards equal to the milled card's mana value.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Mill a card, then draw cards equal to the milled card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heed the Mists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

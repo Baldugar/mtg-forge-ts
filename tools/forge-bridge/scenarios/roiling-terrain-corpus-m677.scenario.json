@@ -1,0 +1,23 @@
+{
+  "id": "roiling-terrain-corpus-m677",
+  "description": "M6 corpus — Roiling Terrain; in-hand parse.",
+  "seed": 68473,
+  "cards": {
+    "Roiling Terrain": "Name:Roiling Terrain\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Land | SubAbility$ DBDamage | SpellDescription$ Destroy target land, then CARDNAME deals damage to that land's controller equal to the number of land cards in that player's graveyard.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X\nSVar:X:TargetedController$LandsInGraveyard\nAI:RemoveDeck:Random\nOracle:Destroy target land, then Roiling Terrain deals damage to that land's controller equal to the number of land cards in that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Roiling Terrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

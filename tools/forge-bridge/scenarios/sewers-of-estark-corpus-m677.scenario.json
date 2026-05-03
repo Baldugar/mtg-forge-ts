@@ -1,0 +1,23 @@
+{
+  "id": "sewers-of-estark-corpus-m677",
+  "description": "M6 corpus — Sewers of Estark; in-hand parse.",
+  "seed": 69537,
+  "cards": {
+    "Sewers of Estark": "Name:Sewers of Estark\nManaCost:2 B B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | StackDescription$ SpellDescription | SubAbility$ DBUnblockable | SpellDescription$ Choose target creature. If it's attacking, it can't be blocked this turn. If it's blocking, prevent all combat damage that would be dealt this combat by it and each creature it's blocking.\nSVar:DBUnblockable:DB$ Effect | ConditionDefined$ Targeted | ConditionPresent$ Creature.attacking | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SubAbility$ DBPumpAll\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ TargetedCard.Self,Creature.blockedByValidThisTurn Targeted | StackDescription$ None | Duration$ UntilEndOfCombat | KW$ Prevent all combat damage that would be dealt to and dealt by CARDNAME. | ConditionDefined$ Targeted | ConditionPresent$ Creature.blocking\nAI:RemoveDeck:All\nOracle:Choose target creature. If it's attacking, it can't be blocked this turn. If it's blocking, prevent all combat damage that would be dealt this combat by it and each creature it's blocking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sewers of Estark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

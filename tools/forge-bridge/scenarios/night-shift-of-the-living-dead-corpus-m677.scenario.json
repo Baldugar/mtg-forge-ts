@@ -1,0 +1,25 @@
+{
+  "id": "night-shift-of-the-living-dead-corpus-m677",
+  "description": "M6 corpus — Night Shift of the Living Dead; ETB-on-bf.",
+  "seed": 65922,
+  "cards": {
+    "Night Shift of the Living Dead": "Name:Night Shift of the Living Dead\nManaCost:3 B\nTypes:Enchantment\nK:After you roll a die, you may pay 1 life. If you do, increase or decrease the result by 1. Do this only once each turn.\nT:Mode$ TurnBegin | Execute$ ResetTurnCount | Static$ True\nSVar:ResetTurnCount:DB$ StoreSVar | SVar$ ModsThisTurn | Type$ Number | Expression$ 0\nT:Mode$ RolledDie | TriggerZones$ Battlefield | Execute$ TrigToken | ValidPlayer$ You | ValidResult$ EQ6 | TriggerDescription$ Whenever you roll a 6, create a 2/2 black Zombie Employee creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie_employee\nSVar:RollModificationsLimit:1\nSVar:ModsThisTurn:Number$0\nSVar:RollModifyCost:PayLife<1>\nDeckHas:Ability$Token\nAI:RemoveDeck:All\nOracle:After you roll a die, you may pay 1 life. If you do, increase or decrease the result by 1. Do this only once each turn.\\nWhenever you roll a 6, create a 2/2 black Zombie Employee creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Night Shift of the Living Dead"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

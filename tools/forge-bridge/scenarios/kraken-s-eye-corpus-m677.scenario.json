@@ -1,0 +1,25 @@
+{
+  "id": "kraken-s-eye-corpus-m677",
+  "description": "M6 corpus — Kraken's Eye; ETB-on-bf.",
+  "seed": 63861,
+  "cards": {
+    "Kraken's Eye": "Name:Kraken's Eye\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Blue | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts a blue spell, you may gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:Whenever a player casts a blue spell, you may gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kraken's Eye"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

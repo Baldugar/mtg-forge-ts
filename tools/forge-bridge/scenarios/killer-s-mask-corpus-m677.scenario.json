@@ -1,0 +1,23 @@
+{
+  "id": "killer-s-mask-corpus-m677",
+  "description": "M6 corpus — Killer's Mask; in-hand parse.",
+  "seed": 63639,
+  "cards": {
+    "Killer's Mask": "Name:Killer's Mask\nManaCost:2 B\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDread | TriggerDescription$ When CARDNAME enters, manifest dread, then attach CARDNAME to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigDread:DB$ ManifestDread | RememberManifested$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Menace | Description$ Equipped creature has menace.\nK:Equip:2\nOracle:When Killer's Mask enters, manifest dread, then attach Killer's Mask to that creature. (Look at the top two cards of your library. Put one onto the battlefield face down as a 2/2 creature and the other into your graveyard. Turn it face up any time for its mana cost if it's a creature card.)\\nEquipped creature has menace.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Killer's Mask"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

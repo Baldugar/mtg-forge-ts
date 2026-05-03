@@ -1,0 +1,23 @@
+{
+  "id": "soul-search-corpus-m677",
+  "description": "M6 corpus — Soul Search; in-hand parse.",
+  "seed": 70458,
+  "cards": {
+    "Soul Search": "Name:Soul Search\nManaCost:W B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ValidTgts$ Opponent | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | RememberChanged$ True | IsCurse$ True | Mandatory$ True | SubAbility$ DBToken | SpellDescription$ Target opponent reveals their hand. You choose a nonland card from it. Exile that card.\nSVar:DBToken:DB$ Token | TokenScript$ wb_1_1_spirit_flying | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.cmcLE1 | SubAbility$ DBCleanup | SpellDescription$ If the card's mana value is 1 or less, create a 1/1 white and black Spirit creature token with flying.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Spirit\nOracle:Target opponent reveals their hand. You choose a nonland card from it. Exile that card. If the card's mana value is 1 or less, create a 1/1 white and black Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Search"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

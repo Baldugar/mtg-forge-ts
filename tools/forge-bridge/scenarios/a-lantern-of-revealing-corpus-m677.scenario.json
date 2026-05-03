@@ -1,0 +1,25 @@
+{
+  "id": "a-lantern-of-revealing-corpus-m677",
+  "description": "M6 corpus — A-Lantern of Revealing; ETB-on-bf.",
+  "seed": 68757,
+  "cards": {
+    "A-Lantern of Revealing": "Name:A-Lantern of Revealing\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Dig | Cost$ 3 T | DigNum$ 1 | ChangeNum$ All | ForceRevealToController$ True | Optional$ True | PromptToSkipOptionalAbility$ True | OptionalAbilityPrompt$ Would you like to put the land onto the battlefield tapped? | ChangeValid$ Land | DestinationZone$ Battlefield | Tapped$ True | DestinationZone2$ Library | LibraryPosition2$ 0 | RememberChanged$ True | SubAbility$ DBMoveToBottom | SpellDescription$ Look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped. If you don't put the card onto the battlefield, you may put it on the bottom of your library.\nSVar:DBMoveToBottom:DB$ Dig | DigNum$ 1 | DestinationZone$ Library | NoReveal$ True | Optional$ True | LibraryPosition$ -1 | LibraryPosition2$ 0 | ConditionPresent$ Card | ConditionDefined$ Remembered | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{T}: Add one mana of any color.\\n{3}, {T}: Look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped. If you don't put the card onto the battlefield, you may put it on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "A-Lantern of Revealing"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

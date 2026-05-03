@@ -1,0 +1,23 @@
+{
+  "id": "ice-fang-coatl-corpus-m677",
+  "description": "M6 corpus — Ice-Fang Coatl; in-hand parse.",
+  "seed": 62685,
+  "cards": {
+    "Ice-Fang Coatl": "Name:Ice-Fang Coatl\nManaCost:G U\nTypes:Snow Creature Snake\nPT:1/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Deathtouch | IsPresent$ Permanent.Snow+Other+YouCtrl | PresentCompare$ GE3 | Description$ CARDNAME has deathtouch as long as you control at least three other snow permanents.\nSVar:BuffedBy:Permanent.Snow\nDeckHints:Type$Snow\nOracle:Flash\\nFlying\\nWhen Ice-Fang Coatl enters, draw a card.\\nIce-Fang Coatl has deathtouch as long as you control at least three other snow permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ice-Fang Coatl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

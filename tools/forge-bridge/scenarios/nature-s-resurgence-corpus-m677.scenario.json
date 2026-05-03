@@ -1,0 +1,23 @@
+{
+  "id": "nature-s-resurgence-corpus-m677",
+  "description": "M6 corpus — Nature's Resurgence; in-hand parse.",
+  "seed": 65768,
+  "cards": {
+    "Nature's Resurgence": "Name:Nature's Resurgence\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDraw | SpellDescription$ Each player draws a card for each creature card in their graveyard.\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ X\nSVar:X:Count$ValidGraveyard Creature.RememberedPlayerCtrl\nOracle:Each player draws a card for each creature card in their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature's Resurgence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

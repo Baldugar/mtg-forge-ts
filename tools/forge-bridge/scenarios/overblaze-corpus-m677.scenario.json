@@ -1,0 +1,23 @@
+{
+  "id": "overblaze-corpus-m677",
+  "description": "M6 corpus — Overblaze; in-hand parse.",
+  "seed": 66488,
+  "cards": {
+    "Overblaze": "Name:Overblaze\nManaCost:3 R\nTypes:Instant Arcane\nK:Splice:Arcane:2 R R\nA:SP$ Effect | ValidTgts$ Permanent | RememberObjects$ Targeted | ReplacementEffects$ OverblazeEvent | SpellDescription$ Each time target permanent would deal damage to a permanent or player this turn, it deals double that damage to that permanent or player instead.\nSVar:OverblazeEvent:Event$ DamageDone | ValidSource$ Permanent.IsRemembered | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ Each time target permanent would deal damage to a permanent or player this turn, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHints:Type$Arcane\nOracle:Each time target permanent would deal damage to a permanent or player this turn, it deals double that damage to that permanent or player instead.\\nSplice onto Arcane {2}{R}{R} (As you cast an Arcane spell, you may reveal this card from your hand and pay its splice cost. If you do, add this card's effects to that spell.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overblaze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

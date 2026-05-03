@@ -1,0 +1,23 @@
+{
+  "id": "marshaling-the-troops-corpus-m677",
+  "description": "M6 corpus — Marshaling the Troops; in-hand parse.",
+  "seed": 64821,
+  "cards": {
+    "Marshaling the Troops": "Name:Marshaling the Troops\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Tap | CardChoices$ Creature.YouCtrl+untapped | AnyNumber$ True | ChoiceAmount$ Count$Valid Creature.YouCtrl+untapped | RememberTapped$ True | SubAbility$ DBGainLife | SpellDescription$ Tap any number of untapped creatures you control. You gain 4 life for each creature tapped this way.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Z | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nSVar:Z:SVar$Y/Times.4\nAI:RemoveDeck:All\nOracle:Tap any number of untapped creatures you control. You gain 4 life for each creature tapped this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marshaling the Troops"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

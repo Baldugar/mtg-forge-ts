@@ -1,0 +1,23 @@
+{
+  "id": "malcator-purity-overseer-corpus-m677",
+  "description": "M6 corpus — Malcator, Purity Overseer; in-hand parse.",
+  "seed": 64659,
+  "cards": {
+    "Malcator, Purity Overseer": "Name:Malcator, Purity Overseer\nManaCost:1 W U\nTypes:Legendary Creature Phyrexian Elephant Wizard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if three or more artifacts entered the battlefield under your control this turn, create a 3/3 colorless Phyrexian Golem artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_3_3_a_phyrexian_golem | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Battlefield_Artifact.YouCtrl\nDeckHas:Ability$Token & Type$Golem|Artifact\nDeckHints:Type$Artifact\nOracle:When Malcator, Purity Overseer enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\\nAt the beginning of your end step, if three or more artifacts entered the battlefield under your control this turn, create a 3/3 colorless Phyrexian Golem artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malcator, Purity Overseer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

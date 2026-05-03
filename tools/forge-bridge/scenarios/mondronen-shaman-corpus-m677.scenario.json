@@ -1,0 +1,23 @@
+{
+  "id": "mondronen-shaman-corpus-m677",
+  "description": "M6 corpus — Mondronen Shaman; in-hand parse.",
+  "seed": 65425,
+  "cards": {
+    "Mondronen Shaman": "Name:Mondronen Shaman\nManaCost:3 R\nTypes:Creature Human Shaman Werewolf\nPT:3/2\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Mondronen Shaman.\n\nALTERNATE\n\nName:Tovolar's Magehunter\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:5/5\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever an opponent casts a spell, CARDNAME deals 2 damage to that player.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 2\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Whenever an opponent casts a spell, Tovolar's Magehunter deals 2 damage to that player.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Tovolar's Magehunter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mondronen Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

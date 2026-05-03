@@ -1,0 +1,23 @@
+{
+  "id": "solfatara-corpus-m677",
+  "description": "M6 corpus — Solfatara; in-hand parse.",
+  "seed": 70362,
+  "cards": {
+    "Solfatara": "Name:Solfatara\nManaCost:2 R\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Player | StaticAbilities$ STCantPlayLand | RememberObjects$ Targeted | AILogic$ BeginningOfOppTurn | SubAbility$ DelTrigSlowtrip | SpellDescription$ Target player can't play lands this turn. Draw a card at the beginning of the next turn's upkeep.\nSVar:STCantPlayLand:Mode$ CantPlayLand | Player$ Player.IsRemembered | Description$ Target player can't play lands this turn.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Target player can't play lands this turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solfatara"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

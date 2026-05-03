@@ -1,0 +1,23 @@
+{
+  "id": "robot-chicken-corpus-m677",
+  "description": "M6 corpus — Robot Chicken; in-hand parse.",
+  "seed": 68437,
+  "cards": {
+    "Robot Chicken": "Name:Robot Chicken\nManaCost:4\nTypes:Artifact Creature Bird Construct\n# Departure from Oracle justified by https://magic.wizards.com/en/news/announcements/oracle-changes-2020-04-10, deeming it more fun that older funny Chicken cards have the Bird creature type instead.\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, put a 0/1 colorless Egg artifact creature token onto the battlefield.\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_1_a_egg\nT:Mode$ ChangesZone | ValidCard$ Egg.YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDestroy | TriggerDescription$ Whenever an Egg you control is put into a graveyard from the battlefield, destroy target artifact or creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact,Creature\nDeckHas:Ability$Token\nOracle:Whenever you cast a spell, put a 0/1 colorless Egg artifact creature token onto the battlefield.\\nWhenever an Egg you control is put into a graveyard from the battlefield, destroy target artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Robot Chicken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

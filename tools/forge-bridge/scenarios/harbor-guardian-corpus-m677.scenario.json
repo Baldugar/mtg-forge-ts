@@ -1,0 +1,23 @@
+{
+  "id": "harbor-guardian-corpus-m677",
+  "description": "M6 corpus — Harbor Guardian; in-hand parse.",
+  "seed": 62046,
+  "cards": {
+    "Harbor Guardian": "Name:Harbor Guardian\nManaCost:2 W U\nTypes:Creature Gargoyle\nPT:3/4\nK:Reach\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, defending player may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredDefendingPlayer | NumCards$ 1 | OptionalDecider$ True\nOracle:Reach (This creature can block creatures with flying.)\\nWhenever Harbor Guardian attacks, defending player may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harbor Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

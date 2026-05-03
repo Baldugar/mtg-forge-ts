@@ -1,0 +1,23 @@
+{
+  "id": "moonshaker-cavalry-corpus-m677",
+  "description": "M6 corpus — Moonshaker Cavalry; in-hand parse.",
+  "seed": 65476,
+  "cards": {
+    "Moonshaker Cavalry": "Name:Moonshaker Cavalry\nManaCost:5 W W W\nTypes:Creature Spirit Knight\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ BehemothPump | TriggerDescription$ When CARDNAME enters, creatures you control gain flying and get +X/+X until end of turn, where X is the number of creatures you control.\nSVar:BehemothPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Flying | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Moonshaker Cavalry enters, creatures you control gain flying and get +X/+X until end of turn, where X is the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonshaker Cavalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

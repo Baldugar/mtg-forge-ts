@@ -1,0 +1,23 @@
+{
+  "id": "icy-blast-corpus-m677",
+  "description": "M6 corpus — Icy Blast; in-hand parse.",
+  "seed": 62712,
+  "cards": {
+    "Icy Blast": "Name:Icy Blast\nManaCost:X U\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Creature | TgtPrompt$ Select X target creatures | TargetMin$ X | TargetMax$ X | SubAbility$ DBPump | SpellDescription$ Tap X target creatures. Ferocious — If you control a creature with power 4 or greater, those creatures don't untap during their controllers' next untap steps.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | Duration$ Permanent | KW$ HIDDEN This card doesn't untap during your next untap step. | ConditionPresent$ Creature.YouCtrl+powerGE4 | ConditionCompare$ GE1\nSVar:X:Count$xPaid\nOracle:Tap X target creatures.\\nFerocious — If you control a creature with power 4 or greater, those creatures don't untap during their controllers' next untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icy Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "pharika-god-of-affliction-corpus-m677",
+  "description": "M6 corpus — Pharika, God of Affliction; ETB-on-bf.",
+  "seed": 66815,
+  "cards": {
+    "Pharika, God of Affliction": "Name:Pharika, God of Affliction\nManaCost:1 B G\nTypes:Legendary Enchantment Creature God\nPT:5/5\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT7 | Description$ As long as your devotion to black and green is less than seven, NICKNAME isn't a creature.\nSVar:X:Count$DevotionDual.Black.Green\nA:AB$ ChangeZone | Cost$ B G | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | AITgts$ Card.YouOwn | AILogic$ AtOppEOT | AITgtOwnCards$ True | SubAbility$ DBToken | SpellDescription$ Exile target creature card from a graveyard. Its owner creates a 1/1 black and green Snake enchantment creature token with deathtouch.\nSVar:DBToken:DB$ Token | TokenScript$ bg_1_1_e_snake_deathtouch | TokenOwner$ TargetedController\nSVar:BuffedBy:Permanent.Green,Permanent.Black\nOracle:Indestructible\\nAs long as your devotion to black and green is less than seven, Pharika isn't a creature.\\n{B}{G}: Exile target creature card from a graveyard. Its owner creates a 1/1 black and green Snake enchantment creature token with deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pharika, God of Affliction"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

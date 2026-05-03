@@ -1,0 +1,23 @@
+{
+  "id": "sanctify-corpus-m677",
+  "description": "M6 corpus — Sanctify; in-hand parse.",
+  "seed": 68937,
+  "cards": {
+    "Sanctify": "Name:Sanctify\nManaCost:1 W\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ DBGainLife | SpellDescription$ Destroy target artifact or enchantment. You gain 3 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nOracle:Destroy target artifact or enchantment. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctify"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

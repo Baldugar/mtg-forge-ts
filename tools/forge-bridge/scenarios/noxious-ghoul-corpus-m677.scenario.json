@@ -1,0 +1,23 @@
+{
+  "id": "noxious-ghoul-corpus-m677",
+  "description": "M6 corpus — Noxious Ghoul; in-hand parse.",
+  "seed": 66089,
+  "cards": {
+    "Noxious Ghoul": "Name:Noxious Ghoul\nManaCost:3 B B\nTypes:Creature Zombie\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Zombie.Other | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME or another Zombie enters, all non-Zombie creatures get -1/-1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.nonZombie | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nSVar:PlayMain1:TRUE\nOracle:Whenever Noxious Ghoul or another Zombie enters, all non-Zombie creatures get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noxious Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

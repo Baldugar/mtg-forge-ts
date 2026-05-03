@@ -1,0 +1,23 @@
+{
+  "id": "salvation-engine-corpus-m677",
+  "description": "M6 corpus — Salvation Engine; in-hand parse.",
+  "seed": 68914,
+  "cards": {
+    "Salvation Engine": "Name:Salvation Engine\nManaCost:4 W\nTypes:Artifact Vehicle\nPT:6/10\nS:Mode$ Continuous | Affected$ Creature.Artifact+YouCtrl+Other | AddPower$ 2 | AddToughness$ 2 | Description$ Other artifact creatures you control get +2/+2.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Whenever this Vehicle attacks, return up to one target artifact card from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.YouOwn | TgtPrompt$ Choose up to one target artifact card in your graveyard | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ 1\nK:Crew:6\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Graveyard\nOracle:Other artifact creatures you control get +2/+2.\\nWhenever this Vehicle attacks, return up to one target artifact card from your graveyard to the battlefield.\\nCrew 6\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Salvation Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

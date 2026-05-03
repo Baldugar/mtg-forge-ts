@@ -1,0 +1,23 @@
+{
+  "id": "nurgle-s-conscription-corpus-m677",
+  "description": "M6 corpus — Nurgle's Conscription; in-hand parse.",
+  "seed": 66111,
+  "cards": {
+    "Nurgle's Conscription": "Name:Nurgle's Conscription\nManaCost:4 B\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.OppOwn | TgtPrompt$ Select target creature from an opponent's graveyard | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | SubAbility$ DBChangeZoneAll | Tapped$ True | SpellDescription$ Put target creature card from an opponent's graveyard onto the battlefield tapped under your control, then exile that player's graveyard.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Defined$ TargetedOwner | ChangeType$ Card | Origin$ Graveyard | Destination$ Exile\nDeckHas:Ability$Graveyard\nOracle:Put target creature card from an opponent's graveyard onto the battlefield tapped under your control, then exile that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nurgle's Conscription"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

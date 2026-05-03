@@ -1,0 +1,25 @@
+{
+  "id": "rag-man-corpus-m677",
+  "description": "M6 corpus — Rag Man; ETB-on-bf.",
+  "seed": 67550,
+  "cards": {
+    "Rag Man": "Name:Rag Man\nManaCost:2 B B\nTypes:Creature Human Minion\nPT:2/1\nA:AB$ RevealHand | Cost$ B B B T | ValidTgts$ Player | PlayerTurn$ True | SubAbility$ DBDiscard | SpellDescription$ Target opponent reveals their hand and discards a creature card at random. Activate only during your turn.\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | NumCards$ 1 | Mode$ Random | DiscardValid$ Creature\nDeckHas:Ability$Discard\nOracle:{B}{B}{B}, {T}: Target opponent reveals their hand and discards a creature card at random. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rag Man"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

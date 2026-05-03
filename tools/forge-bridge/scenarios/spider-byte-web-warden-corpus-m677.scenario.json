@@ -1,0 +1,23 @@
+{
+  "id": "spider-byte-web-warden-corpus-m677",
+  "description": "M6 corpus — Spider-Byte, Web Warden; in-hand parse.",
+  "seed": 70630,
+  "cards": {
+    "Spider-Byte, Web Warden": "Name:Spider-Byte, Web Warden\nVariant:UniversesWithin:FlavorName:Argyr, Tidal Spinner\nManaCost:2 U\nTypes:Legendary Creature Spider Avatar Hero\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When NICKNAME enters, return up to one target nonland permanent to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to one target nonland permanent\nOracle:When Spider-Byte enters, return up to one target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Byte, Web Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

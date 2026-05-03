@@ -1,0 +1,23 @@
+{
+  "id": "rusko-clockmaker-corpus-m677",
+  "description": "M6 corpus — Rusko, Clockmaker; in-hand parse.",
+  "seed": 68675,
+  "cards": {
+    "Rusko, Clockmaker": "Name:Rusko, Clockmaker\nManaCost:2 U B\nTypes:Legendary Creature Human Artificer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card named Midnight Clock onto the battlefield.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Midnight Clock | Zone$ Battlefield\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put an hour counter on each permanent you control named Midnight Clock. Each opponent loses 1 life and you gain 1 life.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Permanent.YouCtrl+namedMidnight Clock | CounterType$ HOUR | CounterNum$ 1 | SubAbility$ DBDrain\nSVar:DBDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:BuffedBy:nonCreature\nSVar:BuffedBy:Artifact.namedMidnight Clock\nDeckHas:Ability$LifeGain|Counters & Type$Artifact\nDeckHints:Name$Midnight Clock\nOracle:When Rusko, Clockmaker enters, conjure a card named Midnight Clock onto the battlefield.\\nWhenever you cast a noncreature spell, put an hour counter on each permanent you control named Midnight Clock. Each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rusko, Clockmaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

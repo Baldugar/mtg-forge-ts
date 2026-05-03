@@ -1,0 +1,23 @@
+{
+  "id": "smash-to-dust-corpus-m677",
+  "description": "M6 corpus — Smash to Dust; in-hand parse.",
+  "seed": 70250,
+  "cards": {
+    "Smash to Dust": "Name:Smash to Dust\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDestroyArtifact,DBDestroyDefender,DBDamage\nSVar:DBDestroyArtifact:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBDestroyDefender:DB$ Destroy | ValidTgts$ Creature.withDefender | TgtPrompt$ Select target creature with defender. | SpellDescription$ Destroy target creature with defender.\nSVar:DBDamage:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.OppCtrl | ValidDescription$ each creature your opponents control. | SpellDescription$ CARDNAME deals 1 damage to each creature your opponents control.\nOracle:Choose one —\\n• Destroy target artifact.\\n• Destroy target creature with defender.\\n• Smash to Dust deals 1 damage to each creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smash to Dust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

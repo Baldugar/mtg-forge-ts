@@ -1,0 +1,23 @@
+{
+  "id": "kulrath-zealot-corpus-m677",
+  "description": "M6 corpus — Kulrath Zealot; in-hand parse.",
+  "seed": 63914,
+  "cards": {
+    "Kulrath Zealot": "Name:Kulrath Zealot\nManaCost:5 R\nTypes:Creature Elemental Warrior\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | Duration$ UntilTheEndOfYourNextTurn | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:TypeCycling:Basic:1 R\nOracle:When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.\\nBasic landcycling {1}{R} ({1}{R}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kulrath Zealot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

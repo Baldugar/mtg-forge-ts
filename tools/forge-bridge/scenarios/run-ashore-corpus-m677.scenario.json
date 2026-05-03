@@ -1,0 +1,23 @@
+{
+  "id": "run-ashore-corpus-m677",
+  "description": "M6 corpus — Run Ashore; in-hand parse.",
+  "seed": 68616,
+  "cards": {
+    "Run Ashore": "Name:Run Ashore\nManaCost:4 U U\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBSubmerge,DBUnsummon\nSVar:DBSubmerge:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent for its owner to put on the top or bottom of their library | AlternativeDecider$ TargetedOwner | Origin$ Battlefield | Destination$ Library | DestinationAlternative$ Library | LibraryPositionAlternative$ -1 | SpellDescription$ The owner of target nonland permanent puts it on the top or bottom of their library.\nSVar:DBUnsummon:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent to return to owner's hand | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target nonland permanent to its owner's hand.\nOracle:Choose one or both —\\n• The owner of target nonland permanent puts it on the top or bottom of their library.\\n• Return target nonland permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Run Ashore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

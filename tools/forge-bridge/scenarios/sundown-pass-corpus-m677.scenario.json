@@ -1,0 +1,25 @@
+{
+  "id": "sundown-pass-corpus-m677",
+  "description": "M6 corpus — Sundown Pass; ETB-on-bf.",
+  "seed": 71352,
+  "cards": {
+    "Sundown Pass": "Name:Sundown Pass\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ LT2\nOracle:Sundown Pass enters tapped unless you control two or more other lands.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sundown Pass"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shaggy-camel-corpus-m677",
+  "description": "M6 corpus — Shaggy Camel; in-hand parse.",
+  "seed": 69577,
+  "cards": {
+    "Shaggy Camel": "Name:Shaggy Camel\nManaCost:3 W\nTypes:Host Creature Camel\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | Host$ True | TriggerDescription$ When this creature enters, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When this creature enters, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shaggy Camel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "harbor-bandit-corpus-m677",
+  "description": "M6 corpus — Harbor Bandit; ETB-on-bf.",
+  "seed": 62045,
+  "cards": {
+    "Harbor Bandit": "Name:Harbor Bandit\nManaCost:2 B\nTypes:Creature Human Rogue\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 1 | IsPresent$ Island.YouCtrl | Description$ CARDNAME gets +1/+1 as long as you control an Island.\nSVar:BuffedBy:Island\nA:AB$ Effect | Cost$ 1 U | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SpellDescription$ CARDNAME can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:Harbor Bandit gets +1/+1 as long as you control an Island.\\n{1}{U}: Harbor Bandit can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Harbor Bandit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

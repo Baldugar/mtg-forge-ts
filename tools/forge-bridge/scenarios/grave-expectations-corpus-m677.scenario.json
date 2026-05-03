@@ -1,0 +1,23 @@
+{
+  "id": "grave-expectations-corpus-m677",
+  "description": "M6 corpus — Grave Expectations; in-hand parse.",
+  "seed": 61652,
+  "cards": {
+    "Grave Expectations": "Name:Grave Expectations\nManaCost:B\nTypes:Instant\nA:SP$ Charm | Choices$ DBHeist,DBExile\nSVar:DBHeist:DB$ Heist | ValidTgts$ Opponent | SpellDescription$ Heist target opponent's library.\nSVar:DBExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select up to three target cards from your opponents' graveyards | ValidTgts$ Card.OppOwn | SubAbility$ DBGainLife | SpellDescription$ Exile up to three target cards from your opponents' graveyards.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nDeckHas:Ability$LifeGain\nOracle:Choose one —\\n• Heist target opponent's library.\\n• Exile up to three target cards from your opponents' graveyards. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grave Expectations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "strongarm-tactics-corpus-m677",
+  "description": "M6 corpus — Strongarm Tactics; in-hand parse.",
+  "seed": 71205,
+  "cards": {
+    "Strongarm Tactics": "Name:Strongarm Tactics\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Discard | Mode$ TgtChoose | Defined$ Player | NumCards$ 1 | RememberDiscarded$ True | SubAbility$ DBRepeat | SpellDescription$ Each player discards a card. Then each player who didn't discard a creature card this way loses 4 life.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBLoseLife | SubAbility$ DBCleanup\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 4 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | Defined$ Player.IsRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Creature.RememberedPlayerCtrl\nAI:RemoveDeck:All\nSVar:NeedsToPlayVar:Z GE1\nSVar:Z:Count$ValidHand Creature.YouOwn\nOracle:Each player discards a card. Then each player who didn't discard a creature card this way loses 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strongarm Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

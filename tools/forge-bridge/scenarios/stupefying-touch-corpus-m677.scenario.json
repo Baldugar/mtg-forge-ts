@@ -1,0 +1,23 @@
+{
+  "id": "stupefying-touch-corpus-m677",
+  "description": "M6 corpus — Stupefying Touch; in-hand parse.",
+  "seed": 71238,
+  "cards": {
+    "Stupefying Touch": "Name:Stupefying Touch\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.hasAbility Activated\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ CantBeActivated | ValidCard$ Creature.EnchantedBy | ValidSA$ Activated | Description$ Enchanted creature's activated abilities can't be activated.\nOracle:Enchant creature\\nWhen Stupefying Touch enters, draw a card.\\nEnchanted creature's activated abilities can't be activated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stupefying Touch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

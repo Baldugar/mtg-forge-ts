@@ -1,0 +1,23 @@
+{
+  "id": "moonsnare-specialist-corpus-m677",
+  "description": "M6 corpus — Moonsnare Specialist; in-hand parse.",
+  "seed": 65478,
+  "cards": {
+    "Moonsnare Specialist": "Name:Moonsnare Specialist\nManaCost:3 U\nTypes:Creature Human Ninja\nPT:2/2\nK:Ninjutsu:2 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to one target creature to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to one target creature\nOracle:Ninjutsu {2}{U} ({2}{U}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)\\nWhen Moonsnare Specialist enters, return up to one target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonsnare Specialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

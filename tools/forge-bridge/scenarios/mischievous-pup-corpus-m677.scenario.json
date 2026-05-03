@@ -1,0 +1,23 @@
+{
+  "id": "mischievous-pup-corpus-m677",
+  "description": "M6 corpus — Mischievous Pup; in-hand parse.",
+  "seed": 65266,
+  "cards": {
+    "Mischievous Pup": "Name:Mischievous Pup\nManaCost:2 W\nTypes:Creature Dog\nPT:3/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return up to one other target permanent you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.YouCtrl+Other | TgtPrompt$ Select up to one other target permanent you control\nOracle:Flash\\nWhen Mischievous Pup enters, return up to one other target permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mischievous Pup"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "skittish-valesk-corpus-m677",
+  "description": "M6 corpus — Skittish Valesk; in-hand parse.",
+  "seed": 70056,
+  "cards": {
+    "Skittish Valesk": "Name:Skittish Valesk\nManaCost:6 R\nTypes:Creature Beast\nPT:5/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlipACoin | TriggerDescription$ At the beginning of your upkeep, flip a coin. If you lose the flip, turn CARDNAME face down.\nSVar:TrigFlipACoin:DB$ FlipACoin | LoseSubAbility$ DBChange\nSVar:DBChange:DB$ SetState | NewState$ FaceDown\nK:Morph:5 R\nOracle:At the beginning of your upkeep, flip a coin. If you lose the flip, turn Skittish Valesk face down.\\nMorph {5}{R} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skittish Valesk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

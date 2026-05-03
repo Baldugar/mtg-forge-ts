@@ -1,0 +1,23 @@
+{
+  "id": "michelangelo-on-the-scene-corpus-m677",
+  "description": "M6 corpus — Michelangelo, On the Scene; in-hand parse.",
+  "seed": 65080,
+  "cards": {
+    "Michelangelo, On the Scene": "Name:Michelangelo, On the Scene\nManaCost:4 G G\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:2/2\nK:Trample\nK:etbCounter:P1P1:X:no Condition:NICKNAME enters with a +1/+1 counter on him for each land you control.\nSVar:X:Count$Valid Land.YouCtrl\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When NICKNAME dies, return this card to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nDeckHas:Ability$Counters\nOracle:Trample (This creature can deal excess combat damage to the player it's attacking.)\\nMichelangelo enters with a +1/+1 counter on him for each land you control.\\nWhen Michelangelo dies, return this card to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Michelangelo, On the Scene"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

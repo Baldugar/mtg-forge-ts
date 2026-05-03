@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-summoner-corpus-m677",
+  "description": "M6 corpus — Sphinx Summoner; in-hand parse.",
+  "seed": 70623,
+  "cards": {
+    "Sphinx Summoner": "Name:Sphinx Summoner\nManaCost:3 U B\nTypes:Artifact Creature Sphinx\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an artifact creature card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Artifact.Creature | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Flying\\nWhen Sphinx Summoner enters, you may search your library for an artifact creature card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx Summoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

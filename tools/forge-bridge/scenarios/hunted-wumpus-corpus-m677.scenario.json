@@ -1,0 +1,23 @@
+{
+  "id": "hunted-wumpus-corpus-m677",
+  "description": "M6 corpus — Hunted Wumpus; in-hand parse.",
+  "seed": 62620,
+  "cards": {
+    "Hunted Wumpus": "Name:Hunted Wumpus\nManaCost:3 G\nTypes:Creature Beast\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, each other player may put a creature card from their hand onto the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | DefinedPlayer$ Player.Other | ChangeNum$ 1\nOracle:When Hunted Wumpus enters, each other player may put a creature card from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Wumpus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

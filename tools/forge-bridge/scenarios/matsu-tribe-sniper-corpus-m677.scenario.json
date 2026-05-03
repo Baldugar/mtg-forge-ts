@@ -1,0 +1,23 @@
+{
+  "id": "matsu-tribe-sniper-corpus-m677",
+  "description": "M6 corpus — Matsu-Tribe Sniper; in-hand parse.",
+  "seed": 64891,
+  "cards": {
+    "Matsu-Tribe Sniper": "Name:Matsu-Tribe Sniper\nManaCost:1 G\nTypes:Creature Snake Warrior Archer\nPT:1/1\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target creature with flying.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nSVar:HasCombatEffect:TRUE\nOracle:{T}: Matsu-Tribe Sniper deals 1 damage to target creature with flying.\\nWhenever Matsu-Tribe Sniper deals damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Matsu-Tribe Sniper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

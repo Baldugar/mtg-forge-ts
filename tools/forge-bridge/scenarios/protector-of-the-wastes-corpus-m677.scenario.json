@@ -1,0 +1,23 @@
+{
+  "id": "protector-of-the-wastes-corpus-m677",
+  "description": "M6 corpus — Protector of the Wastes; in-hand parse.",
+  "seed": 67288,
+  "cards": {
+    "Protector of the Wastes": "Name:Protector of the Wastes\nManaCost:4 W W\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature enters or becomes monstrous, exile up to two target artifacts and/or enchantments controlled by different players.\nT:Mode$ BecomeMonstrous | Secondary$ True | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ When this creature enters or becomes monstrous, exile up to two target artifacts and/or enchantments controlled by different players.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | TargetMin$ 0 | TargetMax$ 2 | TargetsWithDifferentControllers$ True | Origin$ Battlefield | Destination$ Exile\nA:AB$ PutCounter | Cost$ 4 W | Monstrosity$ 3\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen this creature enters or becomes monstrous, exile up to two target artifacts and/or enchantments controlled by different players.\\n{4}{W}: Monstrosity 3. (If this creature isn't monstrous, put four +1/+1 counters on it and it becomes monstrous.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protector of the Wastes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

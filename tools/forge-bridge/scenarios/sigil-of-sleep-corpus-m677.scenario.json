@@ -1,0 +1,23 @@
+{
+  "id": "sigil-of-sleep-corpus-m677",
+  "description": "M6 corpus — Sigil of Sleep; in-hand parse.",
+  "seed": 69857,
+  "cards": {
+    "Sigil of Sleep": "Name:Sigil of Sleep\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curiosity\nT:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals damage to a player, return target creature that player controls to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select target creature your opponent controls | IsCurse$ True | Origin$ Battlefield | Destination$ Hand\nOracle:Enchant creature\\nWhenever enchanted creature deals damage to a player, return target creature that player controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sigil of Sleep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

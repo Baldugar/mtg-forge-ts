@@ -1,0 +1,23 @@
+{
+  "id": "soaring-show-off-corpus-m677",
+  "description": "M6 corpus — Soaring Show-Off; in-hand parse.",
+  "seed": 70326,
+  "cards": {
+    "Soaring Show-Off": "Name:Soaring Show-Off\nManaCost:2 U\nTypes:Creature Bird Warrior\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, each player draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ Player | NumCards$ 1\nOracle:Flying\\nWhen Soaring Show-Off enters, each player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soaring Show-Off"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

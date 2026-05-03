@@ -1,0 +1,23 @@
+{
+  "id": "skyline-savior-corpus-m677",
+  "description": "M6 corpus — Skyline Savior; in-hand parse.",
+  "seed": 70125,
+  "cards": {
+    "Skyline Savior": "Name:Skyline Savior\nManaCost:1 W W\nTypes:Creature Angel\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a permanent you control to its owner's hand. If it's a non-Angel creature card, it perpetually gets +1/+1, gains flying, and becomes an Angel in addition to its other types.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Permanent.YouCtrl | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ConditionDefined$ Remembered | ConditionPresent$ Creature.nonAngel | PumpZone$ Hand | Defined$ Remembered | NumAtt$ +1 | NumDef$ +1 | KW$ Flying | Duration$ Perpetual | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Duration$ Perpetual | ConditionDefined$ Remembered | ConditionPresent$ Creature.nonAngel | Types$ Angel | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhen Skyline Savior enters, return a permanent you control to its owner's hand. If it's a non-Angel creature card, it perpetually gets +1/+1, gains flying, and becomes an Angel in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyline Savior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

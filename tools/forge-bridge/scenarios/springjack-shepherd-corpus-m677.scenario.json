@@ -1,0 +1,23 @@
+{
+  "id": "springjack-shepherd-corpus-m677",
+  "description": "M6 corpus — Springjack Shepherd; in-hand parse.",
+  "seed": 70787,
+  "cards": {
+    "Springjack Shepherd": "Name:Springjack Shepherd\nManaCost:3 W\nTypes:Creature Kithkin Wizard\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Chroma — When CARDNAME enters, create a 0/1 white Goat creature token for each white mana symbol in the mana costs of permanents you control.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_0_1_goat | TokenOwner$ You\nSVar:X:Count$Chroma.White\nOracle:Chroma — When Springjack Shepherd enters, create a 0/1 white Goat creature token for each white mana symbol in the mana costs of permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Springjack Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

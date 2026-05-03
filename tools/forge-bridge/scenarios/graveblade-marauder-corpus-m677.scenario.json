@@ -1,0 +1,23 @@
+{
+  "id": "graveblade-marauder-corpus-m677",
+  "description": "M6 corpus — Graveblade Marauder; in-hand parse.",
+  "seed": 61662,
+  "cards": {
+    "Graveblade Marauder": "Name:Graveblade Marauder\nManaCost:2 B\nTypes:Creature Human Warrior\nPT:1/4\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player loses life equal to the number of creature cards in your graveyard.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ X\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\\nWhenever Graveblade Marauder deals combat damage to a player, that player loses life equal to the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graveblade Marauder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

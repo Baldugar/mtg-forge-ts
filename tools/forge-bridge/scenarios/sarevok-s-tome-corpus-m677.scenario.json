@@ -1,0 +1,23 @@
+{
+  "id": "sarevok-s-tome-corpus-m677",
+  "description": "M6 corpus — Sarevok's Tome; in-hand parse.",
+  "seed": 69014,
+  "cards": {
+    "Sarevok's Tome": "Name:Sarevok's Tome\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ X | SpellDescription$ Add {C}. If you have the initiative, add {C}{C} instead.\nSVar:X:Count$Initiative.2.1\nA:AB$ DigUntil | Cost$ 3 T | Valid$ Card.nonLand | ValidDescription$ nonland | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBPlay | CheckSVar$ Y | NoPutDesc$ True | SpellDescription$ Exile cards from the top of your library until you exile a nonland card. You may cast that card without paying its mana cost. Activate only if you've completed a dungeon.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | DefinedDesc$ that card | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:DungeonsCompleted$Amount\nOracle:When Sarevok's Tome enters, you take the initiative.\\n{T}: Add {C}. If you have the initiative, add {C}{C} instead.\\n{3}, {T}: Exile cards from the top of your library until you exile a nonland card. You may cast that card without paying its mana cost. Activate only if you've completed a dungeon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarevok's Tome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

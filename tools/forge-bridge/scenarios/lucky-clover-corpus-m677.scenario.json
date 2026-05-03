@@ -1,0 +1,25 @@
+{
+  "id": "lucky-clover-corpus-m677",
+  "description": "M6 corpus — Lucky Clover; ETB-on-bf.",
+  "seed": 64471,
+  "cards": {
+    "Lucky Clover": "Name:Lucky Clover\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Instant.Adventure,Sorcery.Adventure | ValidActivatingPlayer$ You | Execute$ TrigCopySpell | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an Adventure instant or sorcery spell, copy it. You may choose new targets for the copy.\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nAI:RemoveDeck:Random\nOracle:Whenever you cast an Adventure instant or sorcery spell, copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lucky Clover"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

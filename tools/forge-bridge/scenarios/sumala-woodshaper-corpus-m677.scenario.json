@@ -1,0 +1,23 @@
+{
+  "id": "sumala-woodshaper-corpus-m677",
+  "description": "M6 corpus — Sumala Woodshaper; in-hand parse.",
+  "seed": 71296,
+  "cards": {
+    "Sumala Woodshaper": "Name:Sumala Woodshaper\nManaCost:2 G W\nTypes:Creature Elf Druid\nPT:2/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a creature or enchantment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Creature,Enchantment | RestRandomOrder$ True\nOracle:When Sumala Woodshaper enters, look at the top four cards of your library. You may reveal a creature or enchantment card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sumala Woodshaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

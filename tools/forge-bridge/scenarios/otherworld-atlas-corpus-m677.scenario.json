@@ -1,0 +1,25 @@
+{
+  "id": "otherworld-atlas-corpus-m677",
+  "description": "M6 corpus — Otherworld Atlas; ETB-on-bf.",
+  "seed": 66459,
+  "cards": {
+    "Otherworld Atlas": "Name:Otherworld Atlas\nManaCost:4\nTypes:Artifact\nA:AB$ PutCounter | Cost$ T | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nA:AB$ Draw | Cost$ T | Defined$ Player | NumCards$ X | SpellDescription$ Each player draws a card for each charge counter on CARDNAME.\nSVar:X:Count$CardCounters.CHARGE\nAI:RemoveDeck:All\nOracle:{T}: Put a charge counter on Otherworld Atlas.\\n{T}: Each player draws a card for each charge counter on Otherworld Atlas.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Otherworld Atlas"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "riftsweeper-corpus-m677",
+  "description": "M6 corpus — Riftsweeper; in-hand parse.",
+  "seed": 68266,
+  "cards": {
+    "Riftsweeper": "Name:Riftsweeper\nManaCost:1 G\nTypes:Creature Elf Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, choose target face-up exiled card. Its owner shuffles it into their library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Exile | Destination$ Library | ValidTgts$ Card.faceUp | ChangeNum$ 1 | Shuffle$ True\nOracle:When Riftsweeper enters, choose target face-up exiled card. Its owner shuffles it into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riftsweeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "realm-of-koh-corpus-m677",
+  "description": "M6 corpus — Realm of Koh; ETB-on-bf.",
+  "seed": 67832,
+  "cards": {
+    "Realm of Koh": "Name:Realm of Koh\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control a basic land.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ Token | Cost$ 3 B T | TokenScript$ c_1_1_spirit_spiritshadow | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Spirit creature token with \"This token can't block or be blocked by non-Spirit creatures.\"\nOracle:This land enters tapped unless you control a basic land.\\n{T}: Add {B}.\\n{3}{B}, {T}: Create a 1/1 colorless Spirit creature token with \"This token can't block or be blocked by non-Spirit creatures.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Realm of Koh"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

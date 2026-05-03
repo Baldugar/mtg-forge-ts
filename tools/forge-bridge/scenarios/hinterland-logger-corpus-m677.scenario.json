@@ -1,0 +1,23 @@
+{
+  "id": "hinterland-logger-corpus-m677",
+  "description": "M6 corpus — Hinterland Logger; in-hand parse.",
+  "seed": 62391,
+  "cards": {
+    "Hinterland Logger": "Name:Hinterland Logger\nManaCost:1 G\nTypes:Creature Human Werewolf\nPT:2/1\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Hinterland Logger.\n\nALTERNATE\n\nName:Timber Shredder\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:4/2\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Trample\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Timber Shredder.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hinterland Logger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hew-the-entwood-corpus-m677",
+  "description": "M6 corpus — Hew the Entwood; in-hand parse.",
+  "seed": 62317,
+  "cards": {
+    "Hew the Entwood": "Name:Hew the Entwood\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Land | RememberSacrificed$ True | SubAbility$ DBReveal | Optional$ True | SpellDescription$ Sacrifice any number of lands. Reveal the top X cards of your library, where X is the number of lands sacrificed this way. Choose any number of artifact and/or land cards revealed this way. Put all nonland cards chosen this way onto the battlefield, then put all land cards chosen this way onto the battlefield tapped, then put the rest on the bottom of your library in a random order.\nSVar:SacX:Count$Valid Land.YouCtrl\nSVar:DBReveal:DB$ PeekAndReveal | PeekAmount$ ShiftX | RememberRevealed$ True | SubAbility$ DBChoose\nSVar:ShiftX:Remembered$Amount\nSVar:DBChoose:DB$ ChooseCard | Choices$ Land.IsRemembered,Artifact.IsRemembered | MinAmount$ 0 | ChoiceZone$ Library | Amount$ ShiftX | Mandatory$ True | SubAbility$ DBPutArtifact\nSVar:DBPutArtifact:DB$ ChangeZoneAll | ChangeType$ Artifact.ChosenCard | Origin$ Library | Destination$ Battlefield | SubAbility$ DBPutLands\nSVar:DBPutLands:DB$ ChangeZoneAll | ChangeType$ Land.ChosenCard | Origin$ Library | Destination$ Battlefield | Tapped$ True | SubAbility$ ShuffleRest\nSVar:ShuffleRest:DB$ ChangeZoneAll | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | ChangeType$ Card.IsRemembered+!ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nOracle:Sacrifice any number of lands. Reveal the top X cards of your library, where X is the number of lands sacrificed this way. Choose any number of artifact and/or land cards revealed this way. Put all nonland cards chosen this way onto the battlefield, then put all land cards chosen this way onto the battlefield tapped, then put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hew the Entwood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

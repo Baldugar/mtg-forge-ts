@@ -1,0 +1,23 @@
+{
+  "id": "mindslicer-corpus-m677",
+  "description": "M6 corpus — Mindslicer; in-hand parse.",
+  "seed": 65178,
+  "cards": {
+    "Mindslicer": "Name:Mindslicer\nManaCost:2 B B\nTypes:Creature Horror\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, each player discards their hand.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | Mode$ Hand\nOracle:When Mindslicer dies, each player discards their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindslicer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

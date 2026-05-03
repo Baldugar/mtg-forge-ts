@@ -1,0 +1,23 @@
+{
+  "id": "golden-tail-trainer-corpus-m677",
+  "description": "M6 corpus — Golden-Tail Trainer; in-hand parse.",
+  "seed": 61529,
+  "cards": {
+    "Golden-Tail Trainer": "Name:Golden-Tail Trainer\nManaCost:1 G W\nTypes:Creature Fox Samurai\nPT:1/3\nS:Mode$ ReduceCost | ValidCard$ Aura,Equipment | Type$ Spell | Activator$ You | Amount$ X | Description$ Aura and equipment spells you cast cost {X} less to cast, where X is CARDNAME's power.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAttack | TriggerDescription$ Whenever CARDNAME attacks, other modified creatures you control get +X/+X until end of turn, where X is CARDNAME's power.\nSVar:TrigPumpAttack:DB$ PumpAll | ValidCards$ Creature.modified+YouCtrl+StrictlyOther | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$CardPower\nDeckHints:Type$Aura|Equipment\nOracle:Aura and equipment spells you cast cost {X} less to cast, where X is Golden-Tail Trainer's power.\\nWhenever Golden-Tail Trainer attacks, other modified creatures you control get +X/+X until end of turn, where X is Golden-Tail Trainer's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golden-Tail Trainer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

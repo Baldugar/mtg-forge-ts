@@ -1,0 +1,23 @@
+{
+  "id": "psychic-transfer-corpus-m677",
+  "description": "M6 corpus — Psychic Transfer; in-hand parse.",
+  "seed": 67328,
+  "cards": {
+    "Psychic Transfer": "Name:Psychic Transfer\nManaCost:4 U\nTypes:Sorcery\nA:SP$ ExchangeLife | ValidTgts$ Player | ConditionCheckSVar$ X | ConditionSVarCompare$ LE5 | SpellDescription$ If the difference between your life total and target player's life total is 5 or less, exchange life totals with that player.\nSVar:X:SVar$Y/Abs\nSVar:Y:Count$YourLifeTotal/Minus.Z\nSVar:Z:TargetedPlayer$LifeTotal\nAI:RemoveDeck:All\nOracle:If the difference between your life total and target player's life total is 5 or less, exchange life totals with that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Transfer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nathan-drake-treasure-hunter-corpus-m677",
+  "description": "M6 corpus — Nathan Drake, Treasure Hunter; in-hand parse.",
+  "seed": 65752,
+  "cards": {
+    "Nathan Drake, Treasure Hunter": "Name:Nathan Drake, Treasure Hunter\nManaCost:U B R\nTypes:Legendary Creature Human Rogue\nPT:3/2\nK:First Strike\nS:Mode$ ManaConvert | ValidPlayer$ You | ValidCard$ Card.YouDontOwn+YouCtrl | ValidSA$ Spell,Activated | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast spells you don't own or to activate abilities of permanents you control but don't own.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever NICKNAME attacks, exile the top card of each player's library. You may cast a spell from among those cards.\nSVar:TrigExile:DB$ Dig | Defined$ Player | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered | ValidSA$ Spell | ValidZone$ Exile | Controller$ You | Optional$ True | Amount$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:First strike\\nYou may spend mana as though it were mana of any color to cast spells you don't own or to activate abilities of permanents you control but don't own.\\nWhenever Nathan Drake attacks, exile the top card of each player's library. You may cast a spell from among those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nathan Drake, Treasure Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

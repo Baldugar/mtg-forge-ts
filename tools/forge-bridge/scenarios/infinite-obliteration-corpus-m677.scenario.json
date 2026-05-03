@@ -1,0 +1,23 @@
+{
+  "id": "infinite-obliteration-corpus-m677",
+  "description": "M6 corpus — Infinite Obliteration; in-hand parse.",
+  "seed": 62927,
+  "cards": {
+    "Infinite Obliteration": "Name:Infinite Obliteration\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Creature | ValidDescription$ creature | SubAbility$ ExileYard | SpellDescription$ Choose a creature card name. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player.Opponent | ChangeType$ Card.NamedCard | Chooser$ You | ChangeNum$ NumInYard | Hidden$ True | SubAbility$ ExileHand | StackDescription$ Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles their library.\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInYard:TargetedPlayer$CardsInGraveyard\nAI:RemoveDeck:All\nOracle:Choose a creature card name. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infinite Obliteration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

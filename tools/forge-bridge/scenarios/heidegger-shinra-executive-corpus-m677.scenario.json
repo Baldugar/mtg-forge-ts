@@ -1,0 +1,23 @@
+{
+  "id": "heidegger-shinra-executive-corpus-m677",
+  "description": "M6 corpus — Heidegger, Shinra Executive; in-hand parse.",
+  "seed": 62216,
+  "cards": {
+    "Heidegger, Shinra Executive": "Name:Heidegger, Shinra Executive\nManaCost:3 W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gets +X/+0 until end of turn, where X is the number of Soldiers you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a number of 1/1 white Soldier creature tokens equal to the number of opponents who control more creatures than you.\nSVar:TrigToken:DB$ Token | TokenAmount$ Y | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:X:Count$Valid Soldier.YouCtrl\nSVar:Y:PlayerCountOpponents$HasPropertywithMoreCreaturesThanYou\nSVar:PlayMain1:TRUE\nOracle:At the beginning of combat on your turn, target creature you control gets +X/+0 until end of turn, where X is the number of Soldiers you control.\\nAt the beginning of your end step, create a number of 1/1 white Soldier creature tokens equal to the number of opponents who control more creatures than you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heidegger, Shinra Executive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

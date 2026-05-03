@@ -1,0 +1,23 @@
+{
+  "id": "rubblebelt-braggart-corpus-m677",
+  "description": "M6 corpus — Rubblebelt Braggart; in-hand parse.",
+  "seed": 68572,
+  "cards": {
+    "Rubblebelt Braggart": "Name:Rubblebelt Braggart\nManaCost:4 R\nTypes:Creature Lizard Warrior\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Card.Self+IsSuspected | PresentCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigSuspect | TriggerDescription$ Whenever CARDNAME attacks, if it's not suspected, you may suspect it. (A suspected creature has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | Defined$ Self | Attributes$ Suspected | Optional$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Rubblebelt Braggart attacks, if it's not suspected, you may suspect it. (A suspected creature has menace and can't block.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rubblebelt Braggart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nested-ghoul-corpus-m677",
+  "description": "M6 corpus — Nested Ghoul; in-hand parse.",
+  "seed": 65851,
+  "cards": {
+    "Nested Ghoul": "Name:Nested Ghoul\nManaCost:3 B B\nTypes:Creature Phyrexian Zombie Warrior\nPT:4/2\nT:Mode$ DamageDone | ValidTarget$ Creature.Self | Execute$ TrigZombie | TriggerDescription$ Whenever a source deals damage to CARDNAME, create a 2/2 black Phyrexian Zombie creature token.\nSVar:TrigZombie:DB$ Token | TokenScript$ b_2_2_phyrexian_zombie | TokenOwner$ You\nSVar:HasCombatEffect:TRUE\nOracle:Whenever a source deals damage to Nested Ghoul, create a 2/2 black Phyrexian Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nested Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

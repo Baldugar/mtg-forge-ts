@@ -1,0 +1,23 @@
+{
+  "id": "inquisitorial-rosette-corpus-m677",
+  "description": "M6 corpus — Inquisitorial Rosette; in-hand parse.",
+  "seed": 62973,
+  "cards": {
+    "Inquisitorial Rosette": "Name:Inquisitorial Rosette\nManaCost:2\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigToken | TriggerDescription$ Inquisition Agents — Whenever equipped creature attacks, create a 2/2 white Astartes Warrior creature token with vigilance that's attacking. Then attacking creatures gain menace until end of turn.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_astartes_warrior_vigilance | TokenOwner$ You | TokenAttacking$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.attacking | KW$ Menace\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Keyword$Menace & Type$Warrior|Astartes & Ability$Token\nK:Equip:3\nOracle:Inquisition Agents — Whenever equipped creature attacks, create a 2/2 white Astartes Warrior creature token with vigilance that's attacking. Then attacking creatures gain menace until end of turn.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inquisitorial Rosette"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

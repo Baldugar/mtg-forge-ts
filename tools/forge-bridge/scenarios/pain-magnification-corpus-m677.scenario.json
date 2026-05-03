@@ -1,0 +1,23 @@
+{
+  "id": "pain-magnification-corpus-m677",
+  "description": "M6 corpus — Pain Magnification; in-hand parse.",
+  "seed": 66550,
+  "cards": {
+    "Pain Magnification": "Name:Pain Magnification\nManaCost:1 B R\nTypes:Enchantment\nT:Mode$ DamageDone | ValidTarget$ Opponent | DamageAmount$ GE3 | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent is dealt 3 or more damage by a single source, that player discards a card.\nSVar:TrigDestroy:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:Whenever an opponent is dealt 3 or more damage by a single source, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pain Magnification"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

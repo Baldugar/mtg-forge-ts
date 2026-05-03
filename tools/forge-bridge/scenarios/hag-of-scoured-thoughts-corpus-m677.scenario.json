@@ -1,0 +1,23 @@
+{
+  "id": "hag-of-scoured-thoughts-corpus-m677",
+  "description": "M6 corpus — Hag of Scoured Thoughts; in-hand parse.",
+  "seed": 61956,
+  "cards": {
+    "Hag of Scoured Thoughts": "Name:Hag of Scoured Thoughts\nManaCost:2 B\nTypes:Creature Hag Warlock\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, each opponent mills five cards. Then exile each opponent's graveyard.\nSVar:TrigMill:DB$ Mill | NumCards$ 5 | Defined$ Opponent | SubAbility$ DBExileGrave\nSVar:DBExileGrave:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ Opponent | ChangeType$ Card\nDeckHas:Ability$Mill|Graveyard\nOracle:At the beginning of your upkeep, each opponent mills five cards. Then exile each opponent's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hag of Scoured Thoughts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "power-surge-corpus-m677",
+  "description": "M6 corpus — Power Surge; in-hand parse.",
+  "seed": 67091,
+  "cards": {
+    "Power Surge": "Name:Power Surge\nManaCost:R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each player's upkeep, CARDNAME deals X damage to that player, where X is the number of untapped lands they controlled at the beginning of this turn.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:TriggeredPlayer$NumPowerSurgeLands\nS:Mode$ Continuous | Affected$ Land | AddSVar$ AITap\nSVar:AITap:SVar:AITapDown:True\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, Power Surge deals X damage to that player, where X is the number of untapped lands they controlled at the beginning of this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Surge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

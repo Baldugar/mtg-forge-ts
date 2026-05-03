@@ -1,0 +1,23 @@
+{
+  "id": "gouged-zealot-corpus-m677",
+  "description": "M6 corpus — Gouged Zealot; in-hand parse.",
+  "seed": 61596,
+  "cards": {
+    "Gouged Zealot": "Name:Gouged Zealot\nManaCost:3 R\nTypes:Creature Cyclops Berserker\nPT:4/3\nK:Reach\nT:Mode$ Attacks | ValidCard$ Card.Self | Delirium$ True | Execute$ TrigDamageAll | TriggerDescription$ Delirium — Whenever CARDNAME attacks, if there are four or more card types among cards in your graveyard, CARDNAME deals 1 damage to each creature defending player controls.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.DefenderCtrl | NumDmg$ 1 | ValidDescription$ each creature defending player controls.\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Reach\\nDelirium — Whenever Gouged Zealot attacks, if there are four or more card types among cards in your graveyard, Gouged Zealot deals 1 damage to each creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gouged Zealot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

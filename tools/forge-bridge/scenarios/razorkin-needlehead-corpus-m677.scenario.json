@@ -1,0 +1,25 @@
+{
+  "id": "razorkin-needlehead-corpus-m677",
+  "description": "M6 corpus — Razorkin Needlehead; ETB-on-bf.",
+  "seed": 67807,
+  "cards": {
+    "Razorkin Needlehead": "Name:Razorkin Needlehead\nManaCost:R R\nTypes:Creature Human Assassin\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ First Strike | Condition$ PlayerTurn | Description$ CARDNAME has first strike during your turn.\nT:Mode$ Drawn | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an opponent draws a card, CARDNAME deals 1 damage to them.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nOracle:Razorkin Needlehead has first strike during your turn.\\nWhenever an opponent draws a card, Razorkin Needlehead deals 1 damage to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Razorkin Needlehead"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

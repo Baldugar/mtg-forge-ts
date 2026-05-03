@@ -1,0 +1,23 @@
+{
+  "id": "grim-haruspex-corpus-m677",
+  "description": "M6 corpus — Grim Haruspex; in-hand parse.",
+  "seed": 61772,
+  "cards": {
+    "Grim Haruspex": "Name:Grim Haruspex\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:3/2\nK:Morph:B\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever another nontoken creature you control dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Morph {B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhenever another nontoken creature you control dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Haruspex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

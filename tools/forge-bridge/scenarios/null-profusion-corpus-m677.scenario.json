@@ -1,0 +1,25 @@
+{
+  "id": "null-profusion-corpus-m677",
+  "description": "M6 corpus — Null Profusion; ETB-on-bf.",
+  "seed": 66102,
+  "cards": {
+    "Null Profusion": "Name:Null Profusion\nManaCost:4 B B\nTypes:Enchantment\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ 2 | Description$ Your maximum hand size is 2.\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you play a card, draw a card.\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever you play a card, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Skip your draw step.\\nWhenever you play a card, draw a card.\\nYour maximum hand size is two.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Null Profusion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

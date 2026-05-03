@@ -1,0 +1,23 @@
+{
+  "id": "a-ocelot-pride-corpus-m677",
+  "description": "M6 corpus — A-Ocelot Pride; in-hand parse.",
+  "seed": 68775,
+  "cards": {
+    "A-Ocelot Pride": "Name:A-Ocelot Pride\nManaCost:1 W\nTypes:Creature Cat\nPT:1/1\nK:First Strike\nK:Lifelink\nK:Ascend\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ YouLifeGained | SVarCompare$ GE1 | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if you gained life this turn, create a 1/1 white Cat creature token. Then if you have the city's blessing, for each token you control that entered this turn, create a token that's a copy of it.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_cat | TokenOwner$ You | SubAbility$ DBMassTokens\nSVar:DBMassTokens:DB$ CopyPermanent | Condition$ Blessing | Defined$ Valid Card.token+YouCtrl+ThisTurnEntered | NumCopies$ 1\nSVar:YouLifeGained:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain|Token\nDeckHints:Ability$Token\nOracle:First strike, lifelink\\nAscend\\nAt the beginning of your end step, if you gained life this turn, create a 1/1 white Cat creature token. Then if you have the city's blessing, for each token you control that entered this turn, create a token that's a copy of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Ocelot Pride"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

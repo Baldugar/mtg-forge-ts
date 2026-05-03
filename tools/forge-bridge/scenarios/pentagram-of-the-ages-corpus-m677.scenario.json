@@ -1,0 +1,25 @@
+{
+  "id": "pentagram-of-the-ages-corpus-m677",
+  "description": "M6 corpus — Pentagram of the Ages; ETB-on-bf.",
+  "seed": 66721,
+  "cards": {
+    "Pentagram of the Ages": "Name:Pentagram of the Ages\nManaCost:4\nTypes:Artifact\nA:AB$ ChooseSource | Cost$ 4 T | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen source deals damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{4}, {T}: The next time a source of your choice would deal damage to you this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pentagram of the Ages"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

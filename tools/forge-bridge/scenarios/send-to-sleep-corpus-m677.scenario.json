@@ -1,0 +1,23 @@
+{
+  "id": "send-to-sleep-corpus-m677",
+  "description": "M6 corpus — Send to Sleep; in-hand parse.",
+  "seed": 69438,
+  "cards": {
+    "Send to Sleep": "Name:Send to Sleep\nManaCost:1 U\nTypes:Instant\nA:SP$ Tap | TgtPrompt$ Select up to two target creatures | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 2 | SubAbility$ TrigPump | SpellDescription$ Tap up to two target creatures.Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, those creatures don't untap during their controllers' next untap steps.\nSVar:TrigPump:DB$ Pump | Defined$ Targeted | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2 | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nOracle:Tap up to two target creatures.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, those creatures don't untap during their controllers' next untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Send to Sleep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

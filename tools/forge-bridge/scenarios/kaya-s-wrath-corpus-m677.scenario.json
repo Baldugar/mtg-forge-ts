@@ -1,0 +1,23 @@
+{
+  "id": "kaya-s-wrath-corpus-m677",
+  "description": "M6 corpus — Kaya's Wrath; in-hand parse.",
+  "seed": 63534,
+  "cards": {
+    "Kaya's Wrath": "Name:Kaya's Wrath\nManaCost:W W B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBGainLife | SpellDescription$ Destroy all creatures. You gain life equal to the number of creatures you controlled that were destroyed this way.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$Valid Card.YouCtrl\nDeckHas:Ability$LifeGain\nOracle:Destroy all creatures. You gain life equal to the number of creatures you controlled that were destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaya's Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

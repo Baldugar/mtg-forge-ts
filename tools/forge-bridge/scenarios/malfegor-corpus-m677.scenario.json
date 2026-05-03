@@ -1,0 +1,23 @@
+{
+  "id": "malfegor-corpus-m677",
+  "description": "M6 corpus — Malfegor; in-hand parse.",
+  "seed": 64664,
+  "cards": {
+    "Malfegor": "Name:Malfegor\nManaCost:2 B B R R\nTypes:Legendary Creature Demon Dragon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard your hand. Each opponent sacrifices a creature for each card discarded this way.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ Player.Opponent | SacValid$ Creature | Amount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Flying\\nWhen Malfegor enters, discard your hand. Each opponent sacrifices a creature for each card discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malfegor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

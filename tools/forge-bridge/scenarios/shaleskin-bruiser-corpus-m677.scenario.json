@@ -1,0 +1,23 @@
+{
+  "id": "shaleskin-bruiser-corpus-m677",
+  "description": "M6 corpus — Shaleskin Bruiser; in-hand parse.",
+  "seed": 69584,
+  "cards": {
+    "Shaleskin Bruiser": "Name:Shaleskin Bruiser\nManaCost:6 R\nTypes:Creature Beast\nPT:4/4\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +3/+0 until end of turn for each other attacking Beast.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.Beast+Other+attacking/Times.3\nOracle:Trample\\nWhenever Shaleskin Bruiser attacks, it gets +3/+0 until end of turn for each other attacking Beast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shaleskin Bruiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mercadian-atlas-corpus-m677",
+  "description": "M6 corpus — Mercadian Atlas; in-hand parse.",
+  "seed": 64991,
+  "cards": {
+    "Mercadian Atlas": "Name:Mercadian Atlas\nManaCost:5\nTypes:Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ AtlasDraw | CheckSVar$ X | SVarCompare$ EQ0 | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if you didn't play a land this turn, you may draw a card.\nSVar:AtlasDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:X:PlayerCountPropertyYou$LandsPlayed\nOracle:At the beginning of your end step, if you didn't play a land this turn, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mercadian Atlas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

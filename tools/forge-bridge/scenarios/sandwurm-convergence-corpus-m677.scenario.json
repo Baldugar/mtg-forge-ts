@@ -1,0 +1,23 @@
+{
+  "id": "sandwurm-convergence-corpus-m677",
+  "description": "M6 corpus — Sandwurm Convergence; in-hand parse.",
+  "seed": 68976,
+  "cards": {
+    "Sandwurm Convergence": "Name:Sandwurm Convergence\nManaCost:6 G G\nTypes:Enchantment\nS:Mode$ CantAttack | ValidCard$ Creature.withFlying | Target$ You,Planeswalker.YouCtrl | Description$ Creatures with flying can't attack you or planeswalkers you control.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 5/5 green Wurm creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_5_5_wurm | TokenOwner$ TriggeredPlayer\nDeckHas:Ability$Token\nOracle:Creatures with flying can't attack you or planeswalkers you control.\\nAt the beginning of your end step, create a 5/5 green Wurm creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sandwurm Convergence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

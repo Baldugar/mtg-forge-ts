@@ -1,0 +1,23 @@
+{
+  "id": "hurl-into-history-corpus-m677",
+  "description": "M6 corpus — Hurl into History; in-hand parse.",
+  "seed": 62634,
+  "cards": {
+    "Hurl into History": "Name:Hurl into History\nManaCost:3 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target artifact or creature spell | ValidTgts$ Artifact,Creature | RememberCounteredCMC$ True | SubAbility$ DBDiscover | SpellDescription$ Counter target artifact or creature spell.\nSVar:DBDiscover:DB$ Discover | Num$ X | SubAbility$ DBCleanup | StackDescription$ REP Discover_{p:You} discovers | SpellDescription$ Discover X, where X is that spell's mana value. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nOracle:Counter target artifact or creature spell. Discover X, where X is that spell's mana value. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hurl into History"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

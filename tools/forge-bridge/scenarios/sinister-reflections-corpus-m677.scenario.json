@@ -1,0 +1,23 @@
+{
+  "id": "sinister-reflections-corpus-m677",
+  "description": "M6 corpus — Sinister Reflections; in-hand parse.",
+  "seed": 69973,
+  "cards": {
+    "Sinister Reflections": "Name:Sinister Reflections\nManaCost:1 U\nTypes:Instant\nA:SP$ RepeatEach | ValidTgts$ Creature.YouCtrl+!token | TgtPrompt$ Select up to two target nontoken creatures you control | TargetMin$ 0 | TargetMax$ 2 | RepeatSubAbility$ DBConjure | RepeatTargeted$ True | StackDescription$ SpellDescription | SpellDescription$ Conjure a duplicate of each of up to two target nontoken creatures you control into your hand.\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | DefinedName$ Remembered | Zone$ Hand\nOracle:Conjure a duplicate of each of up to two target nontoken creatures you control into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sinister Reflections"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ill-gotten-gains-corpus-m677",
+  "description": "M6 corpus — Ill-Gotten Gains; in-hand parse.",
+  "seed": 62738,
+  "cards": {
+    "Ill-Gotten Gains": "Name:Ill-Gotten Gains\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ Discard | Mode$ Hand | Defined$ Player | SubAbility$ DBExile | SpellDescription$ Exile CARDNAME. Each player discards their hand, then returns up to three cards from their graveyard to their hand.\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeNum$ 3 | ChangeType$ Card | DefinedPlayer$ Player | Hidden$ True\nAI:RemoveDeck:All\nOracle:Exile Ill-Gotten Gains. Each player discards their hand, then returns up to three cards from their graveyard to their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ill-Gotten Gains"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

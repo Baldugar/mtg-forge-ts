@@ -1,0 +1,23 @@
+{
+  "id": "scholar-of-the-ages-corpus-m677",
+  "description": "M6 corpus — Scholar of the Ages; in-hand parse.",
+  "seed": 69147,
+  "cards": {
+    "Scholar of the Ages": "Name:Scholar of the Ages\nManaCost:5 U U\nTypes:Creature Human Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return up to two target instant and/or sorcery cards from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TgtPrompt$ Select target instant or sorcery cards from your graveyard\nOracle:When Scholar of the Ages enters, return up to two target instant and/or sorcery cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scholar of the Ages"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spellscorn-coven-corpus-m677",
+  "description": "M6 corpus — Spellscorn Coven; in-hand parse.",
+  "seed": 70591,
+  "cards": {
+    "Spellscorn Coven": "Name:Spellscorn Coven\nManaCost:3 B\nTypes:Creature Faerie Warlock\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose\nDeckHas:Ability$Discard\nAlternateMode:Adventure\nOracle:Flying\\nWhen Spellscorn Coven enters, each opponent discards a card.\n\nALTERNATE\n\nName:Take It Back\nManaCost:2 U\nTypes:Instant Adventure\nA:SP$ ChangeZone | ValidTgts$ Card.inZoneStack | TgtZone$ Stack | Origin$ Stack | Destination$ Hand | SpellDescription$ Return target spell to its owner's hand. (Then exile this card. You may cast the creature later from exile.)\nOracle:Return target spell to its owner's hand. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellscorn Coven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

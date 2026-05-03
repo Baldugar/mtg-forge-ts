@@ -1,0 +1,23 @@
+{
+  "id": "kami-of-transmutation-corpus-m677",
+  "description": "M6 corpus — Kami of Transmutation; in-hand parse.",
+  "seed": 63464,
+  "cards": {
+    "Kami of Transmutation": "Name:Kami of Transmutation\nManaCost:1 W\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters or leaves the battlefield, ABILITY\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigCharm | Secondary$ True | TriggerDescription$ When CARDNAME enters or leaves the battlefield, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Artifact,Enchantment\nSVar:Artifact:DB$ AnimateAll | Zone$ Hand | ValidCards$ Permanent.YouOwn | Types$ Artifact | Duration$ Perpetual | SpellDescription$ Each permanent card in your hand perpetually becomes an artifact in addition to its other types.\nSVar:Enchantment:DB$ AnimateAll | Zone$ Hand | ValidCards$ Permanent.YouOwn | Types$ Enchantment | Duration$ Perpetual | SpellDescription$ Each permanent card in your hand perpetually becomes an enchantment in addition to its other types.\nDeckHints:Type$Artifact|Enchantment\nOracle:When Kami of Transmutation enters or leaves the battlefield, choose one —\\n• Each permanent card in your hand perpetually becomes an artifact in addition to its other types.\\n• Each permanent card in your hand perpetually becomes an enchantment in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kami of Transmutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "once-and-future-corpus-m677",
+  "description": "M6 corpus — Once and Future; in-hand parse.",
+  "seed": 66302,
+  "cards": {
+    "Once and Future": "Name:Once and Future\nManaCost:3 G\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target card in your graveyard to return to your hand | ValidTgts$ Card.YouOwn | SubAbility$ DBPump | AIManaPref$ G | StackDescription$ SpellDescription | SpellDescription$ Return target card from your graveyard to your hand. Put up to one other target card from your graveyard on top of your library. Exile CARDNAME. Adamant — If at least three green mana was spent to cast this spell, instead return those cards to your hand and exile CARDNAME.\nSVar:DBPump:DB$ Pump | TargetMin$ 0 | TargetMax$ 1 | TgtZone$ Graveyard | TgtPrompt$ Select up to one target card in your graveyard to put on top of your library | ValidTgts$ Card.YouOwn | TargetUnique$ True | RememberObjects$ ThisTargetedCard | SubAbility$ DBReturn | StackDescription$ None\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Hidden$ True | Defined$ Remembered | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBReturn2\nSVar:DBReturn2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Hidden$ True | Defined$ Remembered | ConditionCheckSVar$ X | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Stack | Destination$ Exile | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Adamant.Green.1.0\nAI:RemoveDeck:Random\nOracle:Return target card from your graveyard to your hand. Put up to one other target card from your graveyard on top of your library. Exile Once and Future.\\nAdamant — If at least three green mana was spent to cast this spell, instead return those cards to your hand and exile Once and Future.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Once and Future"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

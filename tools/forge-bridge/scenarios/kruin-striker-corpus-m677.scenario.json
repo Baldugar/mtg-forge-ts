@@ -1,0 +1,23 @@
+{
+  "id": "kruin-striker-corpus-m677",
+  "description": "M6 corpus — Kruin Striker; in-hand parse.",
+  "seed": 63903,
+  "cards": {
+    "Kruin Striker": "Name:Kruin Striker\nManaCost:1 R\nTypes:Creature Human Warrior\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another creature you control enters, CARDNAME gets +1/+0 and gains trample until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | KW$ Trample\nSVar:BuffedBy:Creature\nOracle:Whenever another creature you control enters, Kruin Striker gets +1/+0 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kruin Striker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spoils-of-evil-corpus-m677",
+  "description": "M6 corpus — Spoils of Evil; in-hand parse.",
+  "seed": 70757,
+  "cards": {
+    "Spoils of Evil": "Name:Spoils of Evil\nManaCost:2 B\nTypes:Instant\nA:SP$ GainLife | ValidTgts$ Opponent | Defined$ You | LifeAmount$ X | SubAbility$ DBMana | SpellDescription$ For each artifact or creature card in target opponent's graveyard, add {1} and you gain 1 life.\nSVar:DBMana:DB$ Mana | Produced$ C | Amount$ X\nSVar:X:Count$ValidGraveyard Creature.OppOwn,Artifact.OppOwn\nAI:RemoveDeck:All\nOracle:For each artifact or creature card in target opponent's graveyard, add {C} and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spoils of Evil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

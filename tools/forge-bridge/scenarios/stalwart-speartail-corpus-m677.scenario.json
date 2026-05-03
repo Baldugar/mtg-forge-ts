@@ -1,0 +1,23 @@
+{
+  "id": "stalwart-speartail-corpus-m677",
+  "description": "M6 corpus — Stalwart Speartail; in-hand parse.",
+  "seed": 70867,
+  "cards": {
+    "Stalwart Speartail": "Name:Stalwart Speartail\nManaCost:1 R G\nTypes:Creature Dinosaur\nPT:4/4\nT:Mode$ DamageDoneOnce | Execute$ TrigPump | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Enrage — Whenever CARDNAME is dealt damage, other Dinosaurs you control and Dinosaur cards in your hand and library perpetually get +1/+1.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Dinosaur.YouCtrl+Other | PumpZone$ Battlefield,Hand,Library | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, CARDNAME deals 1 damage to each creature and each planeswalker.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature,Planeswalker | NumDmg$ 1\nSVar:HasAttackEffect:TRUE\nDeckNeeds:Type$Dinosaur\nOracle:Enrage — Whenever Stalwart Speartail is dealt damage, other Dinosaurs you control and Dinosaur cards in your hand and library perpetually get +1/+1.\\nWhenever Stalwart Speartail attacks, Stalwart Speartail deals 1 damage to each creature and each planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stalwart Speartail"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

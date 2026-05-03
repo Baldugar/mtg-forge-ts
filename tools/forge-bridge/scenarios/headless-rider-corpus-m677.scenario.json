@@ -1,0 +1,23 @@
+{
+  "id": "headless-rider-corpus-m677",
+  "description": "M6 corpus — Headless Rider; in-hand parse.",
+  "seed": 62149,
+  "cards": {
+    "Headless Rider": "Name:Headless Rider\nManaCost:2 B\nTypes:Creature Zombie\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Zombie.!token+YouCtrl+Other,Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another nontoken Zombie you control dies, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie\nDeckHas:Ability$Token\nDeckHints:Type$Zombie\nOracle:Whenever Headless Rider or another nontoken Zombie you control dies, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Headless Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stream-of-thought-corpus-m677",
+  "description": "M6 corpus — Stream of Thought; in-hand parse.",
+  "seed": 71164,
+  "cards": {
+    "Stream of Thought": "Name:Stream of Thought\nManaCost:U\nTypes:Sorcery\nK:Replicate:2 U U\nA:SP$ Mill | NumCards$ 4 | ValidTgts$ Player | SubAbility$ DBChangeZone | SpellDescription$ Target player mills four cards. You shuffle up to four cards from your graveyard into your library.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | DefinedPlayer$ You | Hidden$ True | ChangeNum$ 4 | ChangeType$ Card.YouOwn | Shuffle$ True\nOracle:Target player mills four cards. You shuffle up to four cards from your graveyard into your library.\\nReplicate {2}{U}{U} (When you cast this spell, copy it for each time you paid its replicate cost. You may choose new targets for the copies.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stream of Thought"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

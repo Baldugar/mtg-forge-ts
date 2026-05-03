@@ -1,0 +1,25 @@
+{
+  "id": "lightmine-field-corpus-m677",
+  "description": "M6 corpus — Lightmine Field; ETB-on-bf.",
+  "seed": 64233,
+  "cards": {
+    "Lightmine Field": "Name:Lightmine Field\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ AttackersDeclared | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures attack, CARDNAME deals damage to each of those creatures equal to the number of attacking creatures.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredAttackers | NumDmg$ X\nSVar:X:Count$Valid Creature.attacking\nOracle:Whenever one or more creatures attack, Lightmine Field deals damage to each of those creatures equal to the number of attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lightmine Field"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

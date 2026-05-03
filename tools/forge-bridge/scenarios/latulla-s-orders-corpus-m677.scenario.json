@@ -1,0 +1,23 @@
+{
+  "id": "latulla-s-orders-corpus-m677",
+  "description": "M6 corpus — Latulla's Orders; in-hand parse.",
+  "seed": 64014,
+  "cards": {
+    "Latulla's Orders": "Name:Latulla's Orders\nManaCost:1 R\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAITgts:Card.powerGE1\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Player.TriggeredDefendingPlayer | CombatDamage$ True | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ Whenever enchanted creature deals combat damage to defending player, you may destroy target artifact that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact damaged player controls\nOracle:Flash\\nEnchant creature\\nWhenever enchanted creature deals combat damage to defending player, you may destroy target artifact that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Latulla's Orders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

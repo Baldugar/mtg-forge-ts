@@ -1,0 +1,23 @@
+{
+  "id": "subterranean-scout-corpus-m677",
+  "description": "M6 corpus — Subterranean Scout; in-hand parse.",
+  "seed": 71251,
+  "cards": {
+    "Subterranean Scout": "Name:Subterranean Scout\nManaCost:1 R\nTypes:Creature Goblin Scout\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUnblockable | TriggerDescription$ When CARDNAME enters, target creature with power 2 or less can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:PlayMain1:TRUE\nOracle:When Subterranean Scout enters, target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Subterranean Scout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

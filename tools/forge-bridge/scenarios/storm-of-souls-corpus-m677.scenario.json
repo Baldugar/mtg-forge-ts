@@ -1,0 +1,23 @@
+{
+  "id": "storm-of-souls-corpus-m677",
+  "description": "M6 corpus — Storm of Souls; in-hand parse.",
+  "seed": 71098,
+  "cards": {
+    "Storm of Souls": "Name:Storm of Souls\nManaCost:4 W W\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Creature.YouOwn | Origin$ Graveyard | Destination$ Battlefield | StaticEffect$ Animate | SubAbility$ DBExile | SpellDescription$ Return all creature cards from your graveyard to the battlefield. Each of them is a 1/1 Spirit with flying in addition to its other types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | SetPower$ 1 | SetToughness$ 1 | AddType$ Spirit | AddKeyword$ Flying\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SpellDescription$ Exile CARDNAME.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:NeedsToPlayVar:X GE4\nDeckHas:Ability$Graveyard & Type$Spirit\nOracle:Return all creature cards from your graveyard to the battlefield. Each of them is a 1/1 Spirit with flying in addition to its other types. Exile Storm of Souls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm of Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

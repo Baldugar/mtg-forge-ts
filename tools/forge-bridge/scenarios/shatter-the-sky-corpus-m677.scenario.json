@@ -1,0 +1,23 @@
+{
+  "id": "shatter-the-sky-corpus-m677",
+  "description": "M6 corpus — Shatter the Sky; in-hand parse.",
+  "seed": 69629,
+  "cards": {
+    "Shatter the Sky": "Name:Shatter the Sky\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ Draw | Defined$ Player.controlsCreature.powerGE4_GE1 | SubAbility$ DBDestroy | SpellDescription$ Each player who controls a creature with power 4 or greater draws a card. Then destroy all creatures.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature\nAI:RemoveDeck:Random\nOracle:Each player who controls a creature with power 4 or greater draws a card. Then destroy all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shatter the Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "niv-mizzet-reborn-corpus-m677",
+  "description": "M6 corpus — Niv-Mizzet Reborn; in-hand parse.",
+  "seed": 66010,
+  "cards": {
+    "Niv-Mizzet Reborn": "Name:Niv-Mizzet Reborn\nManaCost:W U B R G\nTypes:Legendary Creature Dragon Avatar\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top ten cards of your library. For each color pair, choose a card that's exactly those colors from among them. Put the chosen cards into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 10 | Reveal$ True | ForEachColorPair$ True | RestRandomOrder$ True\nOracle:Flying\\nWhen Niv-Mizzet Reborn enters, reveal the top ten cards of your library. For each color pair, choose a card that's exactly those colors from among them. Put the chosen cards into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niv-Mizzet Reborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

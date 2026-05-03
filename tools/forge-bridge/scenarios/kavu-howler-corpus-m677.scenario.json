@@ -1,0 +1,23 @@
+{
+  "id": "kavu-howler-corpus-m677",
+  "description": "M6 corpus — Kavu Howler; in-hand parse.",
+  "seed": 63526,
+  "cards": {
+    "Kavu Howler": "Name:Kavu Howler\nManaCost:4 G G\nTypes:Creature Kavu\nPT:4/5\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top four cards of your library. Put all Kavu cards revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ All | ChangeValid$ Kavu\nOracle:When Kavu Howler enters, reveal the top four cards of your library. Put all Kavu cards revealed this way into your hand and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kavu Howler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necrogen-mists-corpus-m677",
+  "description": "M6 corpus — Necrogen Mists; in-hand parse.",
+  "seed": 65793,
+  "cards": {
+    "Necrogen Mists": "Name:Necrogen Mists\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of each player's upkeep, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredPlayer | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrogen Mists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

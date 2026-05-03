@@ -1,0 +1,23 @@
+{
+  "id": "obscuring-haze-corpus-m677",
+  "description": "M6 corpus — Obscuring Haze; in-hand parse.",
+  "seed": 66186,
+  "cards": {
+    "Obscuring Haze": "Name:Obscuring Haze\nManaCost:2 G\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell | ValidCard$ Card.Self | ValidPlayer$ You | Cost$ 0 | EffectZone$ All | IsPresent$ Card.IsCommander+YouCtrl | Description$ If you control a commander, you may cast this spell without paying its mana cost.\nA:SP$ Effect | ReplacementEffects$ RPrevent | AILogic$ Fog | SpellDescription$ Prevent all damage that would be dealt this turn by creatures your opponents control.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidSource$ Creature.OppCtrl+inZoneBattlefield | Description$ Prevent all damage that would be dealt this turn by creatures your opponents control.\nOracle:If you control a commander, you may cast this spell without paying its mana cost.\\nPrevent all damage that would be dealt this turn by creatures your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obscuring Haze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

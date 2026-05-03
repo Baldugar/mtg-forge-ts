@@ -1,0 +1,23 @@
+{
+  "id": "seht-s-tiger-corpus-m677",
+  "description": "M6 corpus — Seht's Tiger; in-hand parse.",
+  "seed": 69388,
+  "cards": {
+    "Seht's Tiger": "Name:Seht's Tiger\nManaCost:2 W W\nTypes:Creature Cat\nPT:3/3\nK:Flash\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, you gain protection from the color of your choice until end of turn.\nSVar:TrigChoose:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentAttackers | SubAbility$ SehtsProtection\nSVar:SehtsProtection:DB$ ProtectionAll | ValidPlayers$ You | Gains$ ChosenColor\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Seht's Tiger enters, you gain protection from the color of your choice until end of turn. (You can't be targeted, dealt damage, or enchanted by anything of the chosen color.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seht's Tiger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

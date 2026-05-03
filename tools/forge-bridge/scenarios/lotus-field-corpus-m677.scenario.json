@@ -1,0 +1,23 @@
+{
+  "id": "lotus-field-corpus-m677",
+  "description": "M6 corpus — Lotus Field; in-hand parse.",
+  "seed": 64429,
+  "cards": {
+    "Lotus Field": "Name:Lotus Field\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:Hexproof\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice two lands.\nSVar:TrigSac:DB$ Sacrifice | Amount$ 2 | Defined$ You | SacValid$ Land | AILogic$ ExceptSelf\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 3 | SpellDescription$ Add three mana of any one color.\nSVar:NeedsToPlayVar:X GT2\nSVar:X:Count$Valid Land.Basic+YouCtrl\nOracle:Hexproof\\nLotus Field enters tapped.\\nWhen Lotus Field enters, sacrifice two lands.\\n{T}: Add three mana of any one color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lotus Field"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

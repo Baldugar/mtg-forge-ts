@@ -1,0 +1,23 @@
+{
+  "id": "sleeper-s-robe-corpus-m677",
+  "description": "M6 corpus — Sleeper's Robe; in-hand parse.",
+  "seed": 70200,
+  "cards": {
+    "Sleeper's Robe": "Name:Sleeper's Robe\nManaCost:U B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.powerGE1\nSVar:AttachAILogic:Curiosity\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Fear | Description$ Enchanted creature has fear. (It can't be blocked except by artifact creatures and/or black creatures.)\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Opponent | OptionalDecider$ You | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever enchanted creature deals combat damage to an opponent, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant creature\\nEnchanted creature has fear. (It can't be blocked except by artifact creatures and/or black creatures.)\\nWhenever enchanted creature deals combat damage to an opponent, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sleeper's Robe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

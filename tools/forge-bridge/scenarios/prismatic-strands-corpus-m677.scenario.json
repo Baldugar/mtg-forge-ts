@@ -1,0 +1,23 @@
+{
+  "id": "prismatic-strands-corpus-m677",
+  "description": "M6 corpus — Prismatic Strands; in-hand parse.",
+  "seed": 67225,
+  "cards": {
+    "Prismatic Strands": "Name:Prismatic Strands\nManaCost:2 W\nTypes:Instant\nK:Flashback:tapXType<1/Creature.White/white creature>\nA:SP$ ChooseColor | Defined$ You | AILogic$ MostProminentInHumanDeck | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent | SpellDescription$ Prevent all damage that sources of the color of your choice would deal this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidSource$ Card.ChosenColor | Description$ Prevent all damage that sources of the chosen color would deal this turn.\nAI:RemoveDeck:All\nOracle:Prevent all damage that sources of the color of your choice would deal this turn.\\nFlashback—Tap an untapped white creature you control. (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prismatic Strands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

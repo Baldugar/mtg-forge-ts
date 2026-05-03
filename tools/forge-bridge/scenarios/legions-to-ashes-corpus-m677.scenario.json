@@ -1,0 +1,23 @@
+{
+  "id": "legions-to-ashes-corpus-m677",
+  "description": "M6 corpus — Legions to Ashes; in-hand parse.",
+  "seed": 64111,
+  "cards": {
+    "Legions to Ashes": "Name:Legions to Ashes\nManaCost:1 W B\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Permanent.nonland+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | SubAbility$ ExileAll | SpellDescription$ Exile target nonland permanent an opponent controls and all tokens that player controls with the same name as that permanent.\nSVar:ExileAll:DB$ ChangeZoneAll | ChangeType$ TargetedCard.Self,Card.NotDefinedTargeted+token+sharesNameWith Targeted+ControlledBy TargetedController | Origin$ Battlefield | Destination$ Exile\nAI:RemoveDeck:Random\nOracle:Exile target nonland permanent an opponent controls and all tokens that player controls with the same name as that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legions to Ashes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

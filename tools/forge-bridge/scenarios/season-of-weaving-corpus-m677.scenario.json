@@ -1,0 +1,23 @@
+{
+  "id": "season-of-weaving-corpus-m677",
+  "description": "M6 corpus — Season of Weaving; in-hand parse.",
+  "seed": 69318,
+  "cards": {
+    "Season of Weaving": "Name:Season of Weaving\nManaCost:4 U U\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDraw,DBCopy,DBReturn | CharmNum$ 5 | MinCharmNum$ 0 | CanRepeatModes$ True | Pawprint$ 5\nSVar:DBDraw:DB$ Draw | Pawprint$ 1 | SpellDescription$ Draw a card.\nSVar:DBCopy:DB$ CopyPermanent | Pawprint$ 2 | Choices$ Artifact.YouCtrl,Creature.YouCtrl | SpellDescription$ Choose an artifact or creature you control. Create a token that's a copy of it.\nSVar:DBReturn:DB$ ChangeZoneAll | Pawprint$ 3 | ChangeType$ Permanent.nonLand+!token | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return each nonland, nontoken permanent to its owner's hand.\nDeckHas:Ability$Token\nOracle:Choose up to five {P} worth of modes. You may choose the same mode more than once.\\n{P} — Draw a card.\\n{P}{P} — Choose an artifact or creature you control. Create a token that's a copy of it.\\n{P}{P}{P} — Return each nonland, nontoken permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Season of Weaving"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

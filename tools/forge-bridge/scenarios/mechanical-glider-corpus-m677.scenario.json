@@ -1,0 +1,23 @@
+{
+  "id": "mechanical-glider-corpus-m677",
+  "description": "M6 corpus — Mechanical Glider; in-hand parse.",
+  "seed": 64926,
+  "cards": {
+    "Mechanical Glider": "Name:Mechanical Glider\nManaCost:1\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When this Equipment enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | Description$ Equipped creature has flying. (It can't be blocked except by creatures with flying or reach.)\nK:Equip:2\nOracle:When this Equipment enters, attach it to target creature you control.\\nEquipped creature has flying. (It can't be blocked except by creatures with flying or reach.)\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mechanical Glider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

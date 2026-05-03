@@ -1,0 +1,23 @@
+{
+  "id": "illusory-gains-corpus-m677",
+  "description": "M6 corpus — Illusory Gains; in-hand parse.",
+  "seed": 62765,
+  "cards": {
+    "Illusory Gains": "Name:Illusory Gains\nManaCost:3 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigAttach | TriggerDescription$ Whenever a creature an opponent controls enters, attach CARDNAME to that creature.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nOracle:Enchant creature\\nYou control enchanted creature.\\nWhenever a creature an opponent controls enters, attach Illusory Gains to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illusory Gains"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

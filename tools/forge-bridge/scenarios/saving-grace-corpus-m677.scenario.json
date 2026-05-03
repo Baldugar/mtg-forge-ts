@@ -1,0 +1,23 @@
+{
+  "id": "saving-grace-corpus-m677",
+  "description": "M6 corpus — Saving Grace; in-hand parse.",
+  "seed": 69067,
+  "cards": {
+    "Saving Grace": "Name:Saving Grace\nManaCost:1 W\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBEffect | TriggerDescription$ When CARDNAME enters, all damage that would be dealt this turn to you and permanents you control is dealt to enchanted creature instead.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ SavingGraceDamage | Duration$ EndOfTurn | RememberObjects$ Enchanted | ExileOnMoved$ Battlefield\nSVar:SavingGraceDamage:Event$ DamageDone | ValidTarget$ You,Permanent.YouCtrl | ReplaceWith$ SavingGraceDmg | DamageTarget$ Remembered | Description$ All damage that would be dealt this turn to you and permanents you control is dealt to enchanted creature instead.\nSVar:SavingGraceDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddToughness$ 3 | Description$ Enchanted creature gets +0/+3.\nOracle:Flash\\nEnchant creature you control\\nWhen Saving Grace enters, all damage that would be dealt this turn to you and permanents you control is dealt to enchanted creature instead.\\nEnchanted creature gets +0/+3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saving Grace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

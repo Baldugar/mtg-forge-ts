@@ -1,0 +1,23 @@
+{
+  "id": "reef-worm-corpus-m677",
+  "description": "M6 corpus — Reef Worm; in-hand parse.",
+  "seed": 67938,
+  "cards": {
+    "Reef Worm": "Name:Reef Worm\nManaCost:3 U\nTypes:Creature Worm\nPT:0/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 3/3 blue Fish creature token with \"When this creature dies, create a 6/6 blue Whale creature token with 'When this creature dies, create a 9/9 blue Kraken creature token.'\"\nSVar:TrigToken:DB$ Token | TokenScript$ u_3_3_fish_hatches_whale | TokenOwner$ You\nSVar:SacMe:5\nOracle:When Reef Worm dies, create a 3/3 blue Fish creature token with \"When this creature dies, create a 6/6 blue Whale creature token with 'When this creature dies, create a 9/9 blue Kraken creature token.'\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reef Worm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

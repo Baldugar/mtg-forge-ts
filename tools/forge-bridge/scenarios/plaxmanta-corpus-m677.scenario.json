@@ -1,0 +1,23 @@
+{
+  "id": "plaxmanta-corpus-m677",
+  "description": "M6 corpus — Plaxmanta; in-hand parse.",
+  "seed": 67008,
+  "cards": {
+    "Plaxmanta": "Name:Plaxmanta\nManaCost:1 U\nTypes:Creature Beast\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control gain shroud until end of turn. (They can't be the targets of spells or abilities.)\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | ManaNotSpent$ G | TriggerDescription$ When CARDNAME enters, sacrifice it unless {G} was spent to cast it.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Shroud\nSVar:TrigSac:DB$ Sacrifice\nSVar:ManaNeededToAvoidNegativeEffect:green\nAI:RemoveDeck:Random\nOracle:Flash\\nWhen Plaxmanta enters, creatures you control gain shroud until end of turn. (They can't be the targets of spells or abilities.)\\nWhen Plaxmanta enters, sacrifice it unless {G} was spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plaxmanta"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "resourceful-return-corpus-m677",
+  "description": "M6 corpus — Resourceful Return; in-hand parse.",
+  "seed": 68110,
+  "cards": {
+    "Resourceful Return": "Name:Resourceful Return\nManaCost:1 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SubAbility$ DBDraw | SpellDescription$ Return target creature card from your graveyard to your hand. If you control an artifact, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Artifact.YouCtrl | ConditionCompare$ GE1\nOracle:Return target creature card from your graveyard to your hand. If you control an artifact, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resourceful Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

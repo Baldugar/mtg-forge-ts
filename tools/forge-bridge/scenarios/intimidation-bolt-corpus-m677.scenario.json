@@ -1,0 +1,23 @@
+{
+  "id": "intimidation-bolt-corpus-m677",
+  "description": "M6 corpus — Intimidation Bolt; in-hand parse.",
+  "seed": 63030,
+  "cards": {
+    "Intimidation Bolt": "Name:Intimidation Bolt\nManaCost:1 R W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | SubAbility$ DBEffect | SpellDescription$ CARDNAME deals 3 damage to target creature. Other creatures can't attack this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ ForbidAttack | RememberObjects$ Targeted\nSVar:ForbidAttack:Mode$ CantAttack | ValidCard$ Creature.!IsRemembered | Description$ Other creatures can't attack this turn.\nAI:RemoveDeck:All\nOracle:Intimidation Bolt deals 3 damage to target creature. Other creatures can't attack this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intimidation Bolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

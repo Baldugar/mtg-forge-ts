@@ -1,0 +1,23 @@
+{
+  "id": "scorch-spitter-corpus-m677",
+  "description": "M6 corpus — Scorch Spitter; in-hand parse.",
+  "seed": 69166,
+  "cards": {
+    "Scorch Spitter": "Name:Scorch Spitter\nManaCost:R\nTypes:Creature Elemental Lizard\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals 1 damage to the player or planeswalker it's attacking.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | NumDmg$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Scorch Spitter attacks, it deals 1 damage to the player or planeswalker it's attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scorch Spitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

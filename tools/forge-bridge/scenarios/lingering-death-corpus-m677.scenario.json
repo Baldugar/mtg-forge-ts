@@ -1,0 +1,23 @@
+{
+  "id": "lingering-death-corpus-m677",
+  "description": "M6 corpus — Lingering Death; in-hand parse.",
+  "seed": 64288,
+  "cards": {
+    "Lingering Death": "Name:Lingering Death\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigSacrifice | TriggerDescription$ At the beginning of the end step of enchanted creature's controller, that player sacrifices that creature.\nSVar:TrigSacrifice:DB$ Sacrifice | SacValid$ Card.AttachedBy | Defined$ TriggeredPlayer | SacMessage$ enchanted creature\nOracle:Enchant creature\\nAt the beginning of the end step of enchanted creature's controller, that player sacrifices that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lingering Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goldwardens-gambit-corpus-m677",
+  "description": "M6 corpus — Goldwardens' Gambit; in-hand parse.",
+  "seed": 61542,
+  "cards": {
+    "Goldwardens' Gambit": "Name:Goldwardens' Gambit\nManaCost:6 R R\nTypes:Sorcery\nK:Affinity:Equipment\nA:SP$ Token | TokenScript$ r_2_2_rebel | TokenOwner$ You | RememberTokens$ True | TokenAmount$ 5 | SubAbility$ DBRepeat | PumpKeywords$ Haste | PumpDuration$ EOT | SpellDescription$ Create five 2/2 red Rebel creature tokens. They gain haste until end of turn. For each of those tokens, you may attach an Equipment you control to it.\nSVar:DBRepeat:DB$ RepeatEach | UseImprinted$ True | DefinedCards$ DirectRemembered | RepeatSubAbility$ DBAttach | SubAbility$ DBCleanup\nSVar:DBAttach:DB$ Attach | Choices$ Equipment.YouCtrl+!IsRemembered | Defined$ Imprinted | RememberAttached$ True | ChoiceTitle$ Choose an equipment to attach to this token | Optional$ True\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True | ClearRemembered$ True\nDeckHas:Ability$Token & Type$Rebel & Color$Red\nDeckNeeds:Type$Equipment\nOracle:Affinity for Equipment (This spell costs {1} less to cast for each Equipment you control.)\\nCreate five 2/2 red Rebel creature tokens. They gain haste until end of turn. For each of those tokens, you may attach an Equipment you control to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goldwardens' Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

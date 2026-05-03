@@ -1,0 +1,23 @@
+{
+  "id": "palani-s-hatcher-corpus-m677",
+  "description": "M6 corpus — Palani's Hatcher; in-hand parse.",
+  "seed": 66570,
+  "cards": {
+    "Palani's Hatcher": "Name:Palani's Hatcher\nManaCost:3 R G\nTypes:Creature Dinosaur\nPT:5/3\nS:Mode$ Continuous | Affected$ Creature.Dinosaur+Other+YouCtrl | AddKeyword$ Haste | Description$ Other Dinosaurs you control have haste.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 0/1 green Dinosaur Egg creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_0_1_dinosaur_egg | TokenOwner$ You\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Egg.YouCtrl | Execute$ TrigSacrifice | TriggerDescription$ At the beginning of combat on your turn, if you control one or more Eggs, sacrifice an Egg, then create a 3/3 green Dinosaur creature token.\nSVar:TrigSacrifice:DB$ Sacrifice | SacValid$ Egg.YouCtrl | SacMessage$ Egg you control | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenOwner$ You | TokenScript$ g_3_3_dinosaur\nDeckHas:Ability$Graveyard|Token & Type$Egg\nDeckHints:Type$Dinosaur\nOracle:Other Dinosaurs you control have haste.\\nWhen Palani's Hatcher enters, create two 0/1 green Dinosaur Egg creature tokens.\\nAt the beginning of combat on your turn, if you control one or more Eggs, sacrifice an Egg, then create a 3/3 green Dinosaur creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Palani's Hatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

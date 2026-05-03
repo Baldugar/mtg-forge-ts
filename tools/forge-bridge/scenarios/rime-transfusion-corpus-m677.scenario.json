@@ -1,0 +1,23 @@
+{
+  "id": "rime-transfusion-corpus-m677",
+  "description": "M6 corpus — Rime Transfusion; in-hand parse.",
+  "seed": 68287,
+  "cards": {
+    "Rime Transfusion": "Name:Rime Transfusion\nManaCost:1 B\nTypes:Snow Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 1 | AddAbility$ PumpA | Description$ Enchanted creature gets +2/+1 and has \"{S}: This creature can't be blocked this turn except by snow creatures.\" ({S} can be paid with one mana from a snow source.)\nSVar:PumpA:AB$ Effect | Cost$ S | Duration$ UntilHostLeavesPlayOrEOT | StaticAbilities$ KWPump | SpellDescription$ CARDNAME can't be blocked this turn except by snow creatures.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.nonSnow | Description$ EFFECTSOURCE can't be blocked this turn except by snow creatures.\nOracle:Enchant creature\\nEnchanted creature gets +2/+1 and has \"{S}: This creature can't be blocked this turn except by snow creatures.\" ({S} can be paid with one mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rime Transfusion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

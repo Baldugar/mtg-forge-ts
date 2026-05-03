@@ -1,0 +1,23 @@
+{
+  "id": "scythe-specter-corpus-m677",
+  "description": "M6 corpus — Scythe Specter; in-hand parse.",
+  "seed": 69258,
+  "cards": {
+    "Scythe Specter": "Name:Scythe Specter\nManaCost:4 B B\nTypes:Creature Specter\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, each opponent discards a card. Each player who discarded a card with the highest mana value among cards discarded this way loses life equal to that mana value.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ 1 | Defined$ Player.Opponent | RememberDiscarded$ True | SubAbility$ DBRepeatLoseLife\nSVar:DBRepeatLoseLife:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Card.greatestRememberedCMC | Zone$ Battlefield,Graveyard,Exile,Library,Hand | RepeatSubAbility$ DBLoseLife | SubAbility$ DBCleanup\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ ImprintedController\nSVar:X:Imprinted$CardManaCost\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Scythe Specter deals combat damage to a player, each opponent discards a card. Each player who discarded a card with the highest mana value among cards discarded this way loses life equal to that mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scythe Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

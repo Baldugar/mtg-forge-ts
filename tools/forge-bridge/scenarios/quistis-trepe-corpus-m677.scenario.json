@@ -1,0 +1,23 @@
+{
+  "id": "quistis-trepe-corpus-m677",
+  "description": "M6 corpus — Quistis Trepe; in-hand parse.",
+  "seed": 67498,
+  "cards": {
+    "Quistis Trepe": "Name:Quistis Trepe\nManaCost:2 U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerDescription$ Blue Magic — When CARDNAME enters, you may cast target instant or sorcery card from a graveyard, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead.\nSVar:TrigPlay:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Instant,Sorcery | ValidSA$ Spell | TgtPrompt$ Choose target instant or sorcery card from a graveyard | ManaConversion$ AnyType->AnyType | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nOracle:Blue Magic — When Quistis Trepe enters, you may cast target instant or sorcery card from a graveyard, and mana of any type can be spent to cast that spell. If that spell would be put into a graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quistis Trepe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

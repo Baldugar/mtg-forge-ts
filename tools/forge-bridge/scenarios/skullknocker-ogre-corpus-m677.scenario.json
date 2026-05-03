@@ -1,0 +1,23 @@
+{
+  "id": "skullknocker-ogre-corpus-m677",
+  "description": "M6 corpus — Skullknocker Ogre; in-hand parse.",
+  "seed": 70078,
+  "cards": {
+    "Skullknocker Ogre": "Name:Skullknocker Ogre\nManaCost:3 R\nTypes:Creature Ogre\nPT:4/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, that player discards a card at random. If the player does, they draw a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ Random | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ TriggeredTarget | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever Skullknocker Ogre deals damage to an opponent, that player discards a card at random. If the player does, they draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullknocker Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

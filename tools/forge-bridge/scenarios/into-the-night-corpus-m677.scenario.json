@@ -1,0 +1,23 @@
+{
+  "id": "into-the-night-corpus-m677",
+  "description": "M6 corpus — Into the Night; in-hand parse.",
+  "seed": 63037,
+  "cards": {
+    "Into the Night": "Name:Into the Night\nManaCost:3 R\nTypes:Sorcery\nA:SP$ DayTime | Value$ Night | SubAbility$ DBDiscard | SpellDescription$ It becomes night.\nSVar:DBDiscard:DB$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | StackDescription$ {p:You} discards any number of cards, | SpellDescription$ Discard any number of cards,\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Y | SubAbility$ DBCleanup | StackDescription$ then draws that many cards plus one. | SpellDescription$ then draw that many cards plus one.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount/Plus.1\nOracle:It becomes night. Discard any number of cards, then draw that many cards plus one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Into the Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

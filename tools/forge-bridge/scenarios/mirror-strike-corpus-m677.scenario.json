@@ -1,0 +1,23 @@
+{
+  "id": "mirror-strike-corpus-m677",
+  "description": "M6 corpus — Mirror Strike; in-hand parse.",
+  "seed": 65254,
+  "cards": {
+    "Mirror Strike": "Name:Mirror Strike\nManaCost:3 W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ DamageEvent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | ValidTgts$ Creature.attacking+unblocked | TgtPrompt$ Select target unblocked creature | IsCurse$ True | SpellDescription$ All combat damage that would be dealt to you this turn by target unblocked creature is dealt to its controller instead.\nSVar:DamageEvent:Event$ DamageDone | ValidSource$ Creature.IsRemembered | ValidTarget$ You | ReplaceWith$ MirrorStrikeDmg | IsCombat$ True | DamageTarget$ ReplacedSourceController | Description$ All combat damage that would be dealt to you this turn by target unblocked creature is dealt to its controller instead.\nSVar:MirrorStrikeDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ ReplacedSourceController | VarType$ Player\nAI:RemoveDeck:All\nOracle:All combat damage that would be dealt to you this turn by target unblocked creature is dealt to its controller instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

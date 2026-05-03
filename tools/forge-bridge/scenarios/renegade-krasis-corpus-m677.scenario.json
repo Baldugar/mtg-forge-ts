@@ -1,0 +1,25 @@
+{
+  "id": "renegade-krasis-corpus-m677",
+  "description": "M6 corpus — Renegade Krasis; ETB-on-bf.",
+  "seed": 68043,
+  "cards": {
+    "Renegade Krasis": "Name:Renegade Krasis\nManaCost:1 G G\nTypes:Creature Beast Mutant\nPT:3/2\nK:Evolve\nT:Mode$ Evolved | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever CARDNAME evolves, put a +1/+1 counter on each other creature you control with a +1/+1 counter on it.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+counters_GE1_P1P1+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Evolve (Whenever a creature you control enters, if that creature has greater power or toughness than this creature, put a +1/+1 counter on this creature.)\\nWhenever Renegade Krasis evolves, put a +1/+1 counter on each other creature you control with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Renegade Krasis"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

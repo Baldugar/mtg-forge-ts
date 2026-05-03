@@ -1,0 +1,23 @@
+{
+  "id": "maralen-of-the-mornsong-corpus-m677",
+  "description": "M6 corpus — Maralen of the Mornsong; in-hand parse.",
+  "seed": 64745,
+  "cards": {
+    "Maralen of the Mornsong": "Name:Maralen of the Mornsong\nManaCost:1 B B\nTypes:Legendary Creature Elf Wizard\nPT:2/3\nS:Mode$ CantDraw | ValidPlayer$ Player | Description$ Players can't draw cards.\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of each player's draw step, that player loses 3 life, searches their library for a card, puts it into their hand, then shuffles.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 3 | SubAbility$ DBTutor\nSVar:DBTutor:DB$ ChangeZone | DefinedPlayer$ TriggeredPlayer | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True\nAI:RemoveDeck:Random\nOracle:Players can't draw cards.\\nAt the beginning of each player's draw step, that player loses 3 life, searches their library for a card, puts it into their hand, then shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maralen of the Mornsong"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

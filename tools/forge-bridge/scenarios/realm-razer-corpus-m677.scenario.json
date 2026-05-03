@@ -1,0 +1,23 @@
+{
+  "id": "realm-razer-corpus-m677",
+  "description": "M6 corpus — Realm Razer; in-hand parse.",
+  "seed": 67833,
+  "cards": {
+    "Realm Razer": "Name:Realm Razer\nManaCost:3 R G W\nTypes:Creature Beast\nPT:4/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile all lands.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Land | Origin$ Battlefield | Destination$ Exile\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigRecall | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled cards to the battlefield tapped under their owners' control.\nSVar:TrigRecall:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield | Tapped$ True\nAI:RemoveDeck:All\nOracle:When Realm Razer enters, exile all lands.\\nWhen Realm Razer leaves the battlefield, return the exiled cards to the battlefield tapped under their owners' control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Realm Razer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

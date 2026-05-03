@@ -1,0 +1,25 @@
+{
+  "id": "lady-evangela-corpus-m677",
+  "description": "M6 corpus — Lady Evangela; ETB-on-bf.",
+  "seed": 63951,
+  "cards": {
+    "Lady Evangela": "Name:Lady Evangela\nManaCost:W U B\nTypes:Legendary Creature Human Cleric\nPT:1/2\nA:AB$ Effect | Cost$ W B T | ValidTgts$ Creature | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all combat damage that would be dealt by target creature this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by target creature this turn.\nAI:RemoveDeck:All\nSVar:NonCombatPriority:2\nOracle:{W}{B}, {T}: Prevent all combat damage that would be dealt by target creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lady Evangela"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

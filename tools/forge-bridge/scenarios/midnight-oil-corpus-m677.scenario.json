@@ -1,0 +1,23 @@
+{
+  "id": "midnight-oil-corpus-m677",
+  "description": "M6 corpus — Midnight Oil; in-hand parse.",
+  "seed": 65094,
+  "cards": {
+    "Midnight Oil": "Name:Midnight Oil\nManaCost:2 B B\nTypes:Enchantment\nK:etbCounter:HOUR:7\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your draw step, draw an additional card and remove two hour counters from CARDNAME.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBRemoveCounter\nSVar:DBRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ HOUR | CounterNum$ 2\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ X | Description$ Your maximum hand size is equal to the number of hour counters on CARDNAME.\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever you discard a card, you lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nSVar:X:Count$CardCounters.HOUR\nOracle:Midnight Oil enters with seven hour counters on it.\\nAt the beginning of your draw step, draw an additional card and remove two hour counters from Midnight Oil.\\nYour maximum hand size is equal to the number of hour counters on Midnight Oil.\\nWhenever you discard a card, you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Oil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

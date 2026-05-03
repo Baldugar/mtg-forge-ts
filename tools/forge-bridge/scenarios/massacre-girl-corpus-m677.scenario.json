@@ -1,0 +1,23 @@
+{
+  "id": "massacre-girl-corpus-m677",
+  "description": "M6 corpus — Massacre Girl; in-hand parse.",
+  "seed": 64856,
+  "cards": {
+    "Massacre Girl": "Name:Massacre Girl\nManaCost:3 B B\nTypes:Legendary Creature Human Assassin\nPT:4/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMassacre | TriggerDescription$ When CARDNAME enters, each other creature gets -1/-1 until end of turn. Whenever a creature dies this turn, each creature other than CARDNAME gets -1/-1 until end of turn.\nSVar:TrigMassacre:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.StrictlyOther | IsCurse$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDies | RememberObjects$ Self\nSVar:TrigDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | Execute$ TrigMoreMassacre | TriggerDescription$ Whenever a creature dies this turn, each creature other than EFFECTSOURCE gets -1/-1 until end of turn.\nSVar:TrigMoreMassacre:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.!IsRemembered | IsCurse$ True\nOracle:Menace\\nWhen Massacre Girl enters, each other creature gets -1/-1 until end of turn. Whenever a creature dies this turn, each creature other than Massacre Girl gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Massacre Girl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

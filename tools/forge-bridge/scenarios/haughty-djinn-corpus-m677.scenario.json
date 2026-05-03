@@ -1,0 +1,25 @@
+{
+  "id": "haughty-djinn-corpus-m677",
+  "description": "M6 corpus — Haughty Djinn; ETB-on-bf.",
+  "seed": 62102,
+  "cards": {
+    "Haughty Djinn": "Name:Haughty Djinn\nManaCost:1 U U\nTypes:Creature Djinn\nPT:*/4\nK:Flying\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of instant and sorcery cards in your graveyard.\nS:Mode$ ReduceCost | ValidCard$ Instant,Sorcery | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Instant and sorcery spells you cast cost {1} less to cast.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:BuffedBy:Spell.Instant,Spell.Sorcery\nAI:RemoveDeck:Random\nDeckNeeds:Type$Instant|Sorcery\nOracle:Flying\\nHaughty Djinn's power is equal to the number of instant and sorcery cards in your graveyard.\\nInstant and sorcery spells you cast cost {1} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Haughty Djinn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

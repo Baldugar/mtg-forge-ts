@@ -1,0 +1,23 @@
+{
+  "id": "maul-splicer-corpus-m677",
+  "description": "M6 corpus — Maul Splicer; in-hand parse.",
+  "seed": 64894,
+  "cards": {
+    "Maul Splicer": "Name:Maul Splicer\nManaCost:6 G\nTypes:Creature Phyrexian Human Artificer\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 3/3 colorless Phyrexian Golem artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_3_3_a_phyrexian_golem | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.Golem+YouCtrl | AddKeyword$ Trample | Description$ Golem creatures you control have trample.\nOracle:When Maul Splicer enters, create two 3/3 colorless Phyrexian Golem artifact creature tokens.\\nGolem creatures you control have trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maul Splicer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

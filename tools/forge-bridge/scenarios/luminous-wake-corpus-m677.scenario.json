@@ -1,0 +1,23 @@
+{
+  "id": "luminous-wake-corpus-m677",
+  "description": "M6 corpus — Luminous Wake; in-hand parse.",
+  "seed": 64497,
+  "cards": {
+    "Luminous Wake": "Name:Luminous Wake\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever enchanted creature attacks or blocks, you gain 4 life.\nT:Mode$ Blocks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigGainLife | Secondary$ True | TriggerDescription$ Whenever enchanted creature attacks or blocks, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 4 | Defined$ You\nOracle:Enchant creature\\nWhenever enchanted creature attacks or blocks, you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Luminous Wake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

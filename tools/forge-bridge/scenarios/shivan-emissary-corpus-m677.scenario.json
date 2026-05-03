@@ -1,0 +1,23 @@
+{
+  "id": "shivan-emissary-corpus-m677",
+  "description": "M6 corpus — Shivan Emissary; in-hand parse.",
+  "seed": 69728,
+  "cards": {
+    "Shivan Emissary": "Name:Shivan Emissary\nManaCost:2 R\nTypes:Creature Human Wizard\nPT:1/1\nK:Kicker:1 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, destroy target nonblack creature. It can't be regenerated.\nSVar:TrigKicker:DB$ Destroy | ValidTgts$ Creature.nonBlack | NoRegen$ True | TgtPrompt$ Select target nonblack creature\nSVar:NeedsToPlayKicked:Creature.nonBlack+OppCtrl\nDeckNeeds:Color$Black\nOracle:Kicker {1}{B} (You may pay an additional {1}{B} as you cast this spell.)\\nWhen Shivan Emissary enters, if it was kicked, destroy target nonblack creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shivan Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

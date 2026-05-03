@@ -1,0 +1,23 @@
+{
+  "id": "ludevic-necro-alchemist-corpus-m677",
+  "description": "M6 corpus — Ludevic, Necro-Alchemist; in-hand parse.",
+  "seed": 64473,
+  "cards": {
+    "Ludevic, Necro-Alchemist": "Name:Ludevic, Necro-Alchemist\nManaCost:1 U R\nTypes:Legendary Creature Human Wizard\nPT:1/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | Execute$ DrawDamageOther | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's end step, that player may draw a card if a player other than you lost life this turn.\nSVar:DrawDamageOther:DB$ Draw | Defined$ TriggeredPlayer | NumCards$ 1 | ConditionCheckSVar$ OtherLost | OptionalDecider$ True\nSVar:OtherLost:PlayerCountDefinedRegistered.Other$HasPropertyLostLifeThisTurn\nK:Partner\nOracle:At the beginning of each player's end step, that player may draw a card if a player other than you lost life this turn.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ludevic, Necro-Alchemist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

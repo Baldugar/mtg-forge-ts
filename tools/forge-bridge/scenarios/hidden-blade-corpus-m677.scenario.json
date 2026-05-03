@@ -1,0 +1,23 @@
+{
+  "id": "hidden-blade-corpus-m677",
+  "description": "M6 corpus — Hidden Blade; in-hand parse.",
+  "seed": 62331,
+  "cards": {
+    "Hidden Blade": "Name:Hidden Blade\nManaCost:2\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control. If that creature is an Assassin, it gains deathtouch until end of turn.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | ConditionDefined$ Targeted | ConditionPresent$ Assassin | KW$ Deathtouch\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddKeyword$ First Strike | Description$ Equipped creature gets +1/+0 and has first strike.\nK:Equip:2\nDeckHints:Type$Assassin\nOracle:Flash\\nWhen Hidden Blade enters, attach it to target creature you control. If that creature is an Assassin, it gains deathtouch until end of turn.\\nEquipped creature gets +1/+0 and has first strike.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hidden Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mirror-march-corpus-m677",
+  "description": "M6 corpus — Mirror March; in-hand parse.",
+  "seed": 65245,
+  "cards": {
+    "Mirror March": "Name:Mirror March\nManaCost:5 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigFlipACoin | TriggerDescription$ Whenever a nontoken creature you control enters, flip a coin until you lose a flip. For each flip you won, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.\nSVar:TrigFlipACoin:DB$ FlipACoin | FlipUntilYouLose$ True | WinSubAbility$ DBCopies\nSVar:DBCopies:DB$ CopyPermanent | PumpKeywords$ Haste | AtEOT$ Exile | Defined$ TriggeredCardLKICopy | NumCopies$ Wins\nSVar:MirrorAmount:Number$0\nDeckHas:Ability$Token\nOracle:Whenever a nontoken creature you control enters, flip a coin until you lose a flip. For each flip you won, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror March"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

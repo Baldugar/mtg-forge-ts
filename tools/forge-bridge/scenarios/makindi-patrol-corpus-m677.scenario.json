@@ -1,0 +1,23 @@
+{
+  "id": "makindi-patrol-corpus-m677",
+  "description": "M6 corpus — Makindi Patrol; in-hand parse.",
+  "seed": 64647,
+  "cards": {
+    "Makindi Patrol": "Name:Makindi Patrol\nManaCost:2 W\nTypes:Creature Human Knight Ally\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control gain vigilance until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Makindi Patrol or another Ally you control enters, creatures you control gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Makindi Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

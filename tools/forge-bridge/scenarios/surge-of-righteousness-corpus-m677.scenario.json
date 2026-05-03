@@ -1,0 +1,23 @@
+{
+  "id": "surge-of-righteousness-corpus-m677",
+  "description": "M6 corpus — Surge of Righteousness; in-hand parse.",
+  "seed": 71416,
+  "cards": {
+    "Surge of Righteousness": "Name:Surge of Righteousness\nManaCost:1 W\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.Black+attacking,Creature.Black+blocking,Creature.Red+attacking,Creature.Red+blocking | TgtPrompt$ Select target black or red creature that's attacking or blocking | SubAbility$ NaturalLife | SpellDescription$ Destroy target black or red creature that's attacking or blocking. You gain 2 life.\nSVar:NaturalLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nAI:RemoveDeck:Random\nOracle:Destroy target black or red creature that's attacking or blocking. You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surge of Righteousness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

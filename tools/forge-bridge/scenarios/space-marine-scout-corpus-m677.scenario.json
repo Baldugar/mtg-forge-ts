@@ -1,0 +1,23 @@
+{
+  "id": "space-marine-scout-corpus-m677",
+  "description": "M6 corpus — Space Marine Scout; in-hand parse.",
+  "seed": 70504,
+  "cards": {
+    "Space Marine Scout": "Name:Space Marine Scout\nManaCost:2 W\nTypes:Creature Astartes Scout\nPT:2/1\nK:First Strike\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ X | SVarCompare$ GTY | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ Concealed Position — When CARDNAME enters, if an opponent controls more lands than you, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Plains | ChangeNum$ 1 | Tapped$ True | ShuffleNonMandatory$ True\nSVar:X:PlayerCountOpponents$HighestValid Land.YouCtrl\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:First strike, vigilance\\nConcealed Position — When Space Marine Scout enters, if an opponent controls more lands than you, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Space Marine Scout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

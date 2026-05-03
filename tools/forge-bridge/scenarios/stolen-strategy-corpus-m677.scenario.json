@@ -1,0 +1,23 @@
+{
+  "id": "stolen-strategy-corpus-m677",
+  "description": "M6 corpus — Stolen Strategy; in-hand parse.",
+  "seed": 71034,
+  "cards": {
+    "Stolen Strategy": "Name:Stolen Strategy\nManaCost:4 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile the top card of each opponent's library. Until end of turn, you may cast spells from among those exiled cards, and you may spend mana as though it were mana of any color to cast those spells.\nSVar:TrigExile:DB$ Dig | Defined$ Player.Opponent | DigNum$ 1 | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ Until end of turn, you may cast that card and you may spend mana as though it were mana of any color to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:At the beginning of your upkeep, exile the top card of each opponent's library. Until end of turn, you may cast spells from among those exiled cards, and you may spend mana as though it were mana of any color to cast those spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stolen Strategy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

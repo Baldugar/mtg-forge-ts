@@ -1,0 +1,23 @@
+{
+  "id": "ride-down-corpus-m677",
+  "description": "M6 corpus — Ride Down; in-hand parse.",
+  "seed": 68248,
+  "cards": {
+    "Ride Down": "Name:Ride Down\nManaCost:R W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.blocking | RememberObjects$ Targeted | TgtPrompt$ Select target blocking creature | SubAbility$ DBDestroy | SpellDescription$ Destroy target blocking creature. Creatures that were blocked by that creature this combat gain trample until end of turn. | StackDescription$ SpellDescription\nSVar:DBDestroy:DB$ Destroy | Defined$ Remembered | SubAbility$ DBPump | StackDescription$ None\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.blockedByRemembered | KW$ Trample | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target blocking creature. Creatures that were blocked by that creature this combat gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ride Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

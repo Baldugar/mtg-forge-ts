@@ -1,0 +1,23 @@
+{
+  "id": "plague-mare-corpus-m677",
+  "description": "M6 corpus — Plague Mare; in-hand parse.",
+  "seed": 66955,
+  "cards": {
+    "Plague Mare": "Name:Plague Mare\nManaCost:1 B B\nTypes:Creature Nightmare Horse\nPT:2/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.White | Description$ CARDNAME can't be blocked by white creatures.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures your opponents control get -1/-1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.OppCtrl | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nOracle:Plague Mare can't be blocked by white creatures.\\nWhen Plague Mare enters, creatures your opponents control get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Mare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

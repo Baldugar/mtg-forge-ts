@@ -1,0 +1,23 @@
+{
+  "id": "magus-of-the-bridge-corpus-m677",
+  "description": "M6 corpus — Magus of the Bridge; in-hand parse.",
+  "seed": 64616,
+  "cards": {
+    "Magus of the Bridge": "Name:Magus of the Bridge\nManaCost:B B B\nTypes:Creature Human Wizard\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature is put into your graveyard from the battlefield, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppOwn | Execute$ TrigChange | TriggerDescription$ When a creature is put into an opponent's graveyard from the battlefield, exile CARDNAME.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile\nDeckHas:Ability$Token\nOracle:Whenever a nontoken creature is put into your graveyard from the battlefield, create a 2/2 black Zombie creature token.\\nWhen a creature is put into an opponent's graveyard from the battlefield, exile Magus of the Bridge.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magus of the Bridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

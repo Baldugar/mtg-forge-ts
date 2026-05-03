@@ -1,0 +1,23 @@
+{
+  "id": "introduction-to-annihilation-corpus-m677",
+  "description": "M6 corpus — Introduction to Annihilation; in-hand parse.",
+  "seed": 63049,
+  "cards": {
+    "Introduction to Annihilation": "Name:Introduction to Annihilation\nManaCost:5\nTypes:Sorcery Lesson\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand | RememberLKI$ True | SubAbility$ DBDraw | SpellDescription$ Exile target nonland permanent. Its controller draws a card.\nSVar:DBDraw:DB$ Draw | Defined$ RememberedController | NumCards$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target nonland permanent. Its controller draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Introduction to Annihilation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

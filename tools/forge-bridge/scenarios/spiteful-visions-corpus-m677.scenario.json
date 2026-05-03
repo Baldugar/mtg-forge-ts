@@ -1,0 +1,23 @@
+{
+  "id": "spiteful-visions-corpus-m677",
+  "description": "M6 corpus — Spiteful Visions; in-hand parse.",
+  "seed": 70728,
+  "cards": {
+    "Spiteful Visions": "Name:Spiteful Visions\nManaCost:2 BR BR\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of each player's draw step, that player draws an additional card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer\nT:Mode$ Drawn | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a player draws a card, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredCardOwner | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's draw step, that player draws an additional card.\\nWhenever a player draws a card, Spiteful Visions deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiteful Visions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

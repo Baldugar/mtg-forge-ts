@@ -1,0 +1,23 @@
+{
+  "id": "portable-hole-corpus-m677",
+  "description": "M6 corpus — Portable Hole; in-hand parse.",
+  "seed": 67068,
+  "cards": {
+    "Portable Hole": "Name:Portable Hole\nManaCost:W\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls with mana value 2 or less until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Permanent.nonLand+OppCtrl+cmcLE2 | TgtPrompt$ Select target nonland permanent an opponent controls with mana value 2 or less | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:When Portable Hole enters, exile target nonland permanent an opponent controls with mana value 2 or less until Portable Hole leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Portable Hole"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

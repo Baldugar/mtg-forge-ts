@@ -1,0 +1,25 @@
+{
+  "id": "hostility-corpus-m677",
+  "description": "M6 corpus — Hostility; ETB-on-bf.",
+  "seed": 62525,
+  "cards": {
+    "Hostility": "Name:Hostility\nManaCost:3 R R R\nTypes:Creature Elemental Incarnation\nPT:6/6\nK:Haste\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Spell.YouCtrl | ValidTarget$ Opponent | PreventionEffect$ True | ReplaceWith$ HostilityTokens | Description$ If a spell you control would deal damage to an opponent, prevent that damage. Create a 3/1 red Elemental Shaman creature token with haste for each 1 damage prevented this way.\nSVar:HostilityTokens:DB$ Token | TokenAmount$ X | TokenScript$ r_3_1_elemental_shaman_haste | TokenOwner$ You\nSVar:X:ReplaceCount$DamageAmount\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ When CARDNAME is put into a graveyard from anywhere, shuffle it into its owner's library.\nSVar:TrigShuffle:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredCardLKICopy\nOracle:Haste\\nIf a spell you control would deal damage to an opponent, prevent that damage. Create a 3/1 red Elemental Shaman creature token with haste for each 1 damage prevented this way.\\nWhen Hostility is put into a graveyard from anywhere, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hostility"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

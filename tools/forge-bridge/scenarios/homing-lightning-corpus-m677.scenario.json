@@ -1,0 +1,23 @@
+{
+  "id": "homing-lightning-corpus-m677",
+  "description": "M6 corpus — Homing Lightning; in-hand parse.",
+  "seed": 62451,
+  "cards": {
+    "Homing Lightning": "Name:Homing Lightning\nManaCost:2 R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 4 | DamageMap$ True | SubAbility$ DamageSame | SpellDescription$ CARDNAME deals 4 damage to target creature and to each other creature with the same name as that creature.\nSVar:DamageSame:DB$ DamageAll | ValidCards$ Targeted.sameName+Other | ValidDescription$ each other creature with the same name as that creature. | NumDmg$ 4 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Homing Lightning deals 4 damage to target creature and each other creature with the same name as that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Homing Lightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

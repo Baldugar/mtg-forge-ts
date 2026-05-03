@@ -1,0 +1,23 @@
+{
+  "id": "sizzling-changeling-corpus-m677",
+  "description": "M6 corpus — Sizzling Changeling; in-hand parse.",
+  "seed": 70011,
+  "cards": {
+    "Sizzling Changeling": "Name:Sizzling Changeling\nManaCost:2 R\nTypes:Creature Shapeshifter\nPT:3/2\nK:Changeling\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature dies, exile the top card of your library. Until the end of your next turn, you may play that card.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Changeling (This card is every creature type.)\\nWhen this creature dies, exile the top card of your library. Until the end of your next turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sizzling Changeling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

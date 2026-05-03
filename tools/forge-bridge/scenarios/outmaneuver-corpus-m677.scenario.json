@@ -1,0 +1,23 @@
+{
+  "id": "outmaneuver-corpus-m677",
+  "description": "M6 corpus — Outmaneuver; in-hand parse.",
+  "seed": 66476,
+  "cards": {
+    "Outmaneuver": "Name:Outmaneuver\nManaCost:X R\nTypes:Instant\nA:SP$ Effect | StaticAbilities$ Static | TargetMin$ X | TargetMax$ X | ValidTgts$ Creature.blocked | TgtPrompt$ Select X target blocked creatures | RememberObjects$ Targeted | SpellDescription$ X target blocked creatures assign their combat damage this turn as though they weren't blocked.\nSVar:Static:Mode$ AssignCombatDamageAsUnblocked | ValidCard$ Card.IsRemembered | Description$ These creatures assign their combat damage this turn as though they weren't blocked.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:X target blocked creatures assign their combat damage this turn as though they weren't blocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Outmaneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

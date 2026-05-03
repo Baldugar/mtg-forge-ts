@@ -1,0 +1,23 @@
+{
+  "id": "rabid-bloodsucker-corpus-m677",
+  "description": "M6 corpus — Rabid Bloodsucker; in-hand parse.",
+  "seed": 67505,
+  "cards": {
+    "Rabid Bloodsucker": "Name:Rabid Bloodsucker\nManaCost:4 B\nTypes:Creature Vampire\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each player loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player | LifeAmount$ 2\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Rabid Bloodsucker enters, each player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rabid Bloodsucker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

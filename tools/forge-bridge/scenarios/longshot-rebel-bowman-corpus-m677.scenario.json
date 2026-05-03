@@ -1,0 +1,25 @@
+{
+  "id": "longshot-rebel-bowman-corpus-m677",
+  "description": "M6 corpus — Longshot, Rebel Bowman; ETB-on-bf.",
+  "seed": 64377,
+  "cards": {
+    "Longshot, Rebel Bowman": "Name:Longshot, Rebel Bowman\nManaCost:3 R\nTypes:Legendary Creature Human Rebel Ally\nPT:3/3\nK:Reach\nS:Mode$ ReduceCost | ValidCard$ Card.nonCreature | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Noncreature spells you cast cost {1} less to cast.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast a noncreature spell, NICKNAME deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:Reach (This creature can block creatures with flying.)\\nNoncreature spells you cast cost {1} less to cast.\\nWhenever you cast a noncreature spell, Longshot deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Longshot, Rebel Bowman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

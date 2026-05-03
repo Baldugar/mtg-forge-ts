@@ -1,0 +1,23 @@
+{
+  "id": "once-more-with-feeling-corpus-m677",
+  "description": "M6 corpus — Once More with Feeling; in-hand parse.",
+  "seed": 66303,
+  "cards": {
+    "Once More with Feeling": "Name:Once More with Feeling\nManaCost:W W W W\nTypes:Sorcery\nK:DeckLimit:1:DCI ruling — A deck can have only one card named Once More with Feeling.\nA:SP$ ChangeZoneAll | ChangeType$ Permanent | Origin$ Battlefield,Graveyard | Destination$ Exile | SubAbility$ DBShuffle | SpellDescription$ Exile all permanents and all cards from all graveyards. Each player shuffles their hand into their library, then draws seven cards. Each player's life total becomes 10. Exile CARDNAME.\nSVar:DBShuffle:DB$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand | Destination$ Library | Shuffle$ True | UseAllOriginZones$ True | SubAbility$ DBDraw | StackDescription$ None\nSVar:DBDraw:DB$ Draw | NumCards$ 7 | Defined$ Player | SubAbility$ SetAllLife | StackDescription$ None\nSVar:SetAllLife:DB$ SetLife | Defined$ Player | LifeAmount$ 10 | SubAbility$ ExileSelf | StackDescription$ None\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nOracle:Exile all permanents and all cards from all graveyards. Each player shuffles their hand into their library, then draws seven cards. Each player's life total becomes 10. Exile Once More with Feeling.\\nDCI ruling — A deck can have only one card named Once More with Feeling.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Once More with Feeling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

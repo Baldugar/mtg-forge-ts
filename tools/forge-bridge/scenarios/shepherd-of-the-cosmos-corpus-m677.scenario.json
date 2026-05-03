@@ -1,0 +1,23 @@
+{
+  "id": "shepherd-of-the-cosmos-corpus-m677",
+  "description": "M6 corpus — Shepherd of the Cosmos; in-hand parse.",
+  "seed": 69669,
+  "cards": {
+    "Shepherd of the Cosmos": "Name:Shepherd of the Cosmos\nManaCost:4 W W\nTypes:Creature Angel Warrior\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return target permanent card with mana value 2 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.YouOwn+cmcLE2 | TgtPrompt$ Select target permanent card with mana value 2 or less in your graveyard\nK:Foretell:3 W\nOracle:Flying\\nWhen Shepherd of the Cosmos enters, return target permanent card with mana value 2 or less from your graveyard to the battlefield.\\nForetell {3}{W} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shepherd of the Cosmos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

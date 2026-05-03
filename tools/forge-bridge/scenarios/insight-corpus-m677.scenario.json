@@ -1,0 +1,25 @@
+{
+  "id": "insight-corpus-m677",
+  "description": "M6 corpus — Insight; ETB-on-bf.",
+  "seed": 62986,
+  "cards": {
+    "Insight": "Name:Insight\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an opponent casts a green spell, you draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a green spell, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Insight"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

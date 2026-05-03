@@ -1,0 +1,25 @@
+{
+  "id": "inspiring-vantage-corpus-m677",
+  "description": "M6 corpus — Inspiring Vantage; ETB-on-bf.",
+  "seed": 63008,
+  "cards": {
+    "Inspiring Vantage": "Name:Inspiring Vantage\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or fewer other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT2\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nOracle:Inspiring Vantage enters tapped unless you control two or fewer other lands.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Inspiring Vantage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

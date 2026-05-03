@@ -1,0 +1,23 @@
+{
+  "id": "mythos-of-vadrok-corpus-m677",
+  "description": "M6 corpus — Mythos of Vadrok; in-hand parse.",
+  "seed": 65693,
+  "cards": {
+    "Mythos of Vadrok": "Name:Mythos of Vadrok\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select any number of target creatures or planeswalkers to distribute damage to | NumDmg$ 5 | TargetMin$ 0 | TargetMax$ 5 | DividedAsYouChoose$ 5 | SubAbility$ DBPump | StackDescription$ SpellDescription | SpellDescription$ CARDNAME deals 5 damage divided as you choose among any number of target creatures and/or planeswalkers. If {W}{U} was spent to cast this spell, until your next turn, those permanents can't attack or block and their activated abilities can't be activated.\nSVar:DBPump:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ DBCantStatic | ForgetOnMoved$ Battlefield | IsCurse$ True | Duration$ UntilYourNextTurn | ConditionManaSpent$ W U | StackDescription$ None\nSVar:DBCantStatic:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Card.IsRemembered | Description$ Remembered can't attack or block and its activated abilities can't be activated.\nOracle:Mythos of Vadrok deals 5 damage divided as you choose among any number of target creatures and/or planeswalkers. If {W}{U} was spent to cast this spell, until your next turn, those permanents can't attack or block and their activated abilities can't be activated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mythos of Vadrok"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

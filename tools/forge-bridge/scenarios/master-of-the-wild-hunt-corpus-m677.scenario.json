@@ -1,0 +1,23 @@
+{
+  "id": "master-of-the-wild-hunt-corpus-m677",
+  "description": "M6 corpus — Master of the Wild Hunt; in-hand parse.",
+  "seed": 64871,
+  "cards": {
+    "Master of the Wild Hunt": "Name:Master of the Wild Hunt\nManaCost:2 G G\nTypes:Creature Human Shaman\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 2/2 green Wolf creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf | TokenOwner$ You\nA:AB$ DealDamage | Cost$ T | SubAbility$ TapWolves | ValidTgts$ Creature | NumDmg$ 0 | AILogic$ WildHunt | SpellDescription$ Tap all untapped Wolf creatures you control. Each Wolf tapped this way deals damage equal to its power to target creature. That creature deals damage equal to its power divided as its controller chooses among any number of those Wolves. | StackDescription$ Tap all untapped Wolf creatures you control. Each Wolf tapped this way deals damage equal to its power to {c:Targeted}. That creature deals damage equal to its power divided as its controller chooses among any number of those Wolves.\nSVar:TapWolves:DB$ TapAll | ValidCards$ Creature.Wolf+YouCtrl+untapped | RememberTapped$ True | SubAbility$ WildHuntDamage | StackDescription$ None\nSVar:WildHuntDamage:DB$ RepeatEach | RepeatSubAbility$ WolfStrike | UseImprinted$ True | RepeatCards$ Card.IsRemembered | DamageMap$ True | SubAbility$ HuntedDamage | StackDescription$ None\nSVar:WolfStrike:DB$ DealDamage | DamageSource$ Imprinted | NumDmg$ X | Defined$ ParentTarget | StackDescription$ None\nSVar:HuntedDamage:DB$ DealDamage | DamageSource$ ParentTarget | OptionalDecider$ ParentTargetedController | NumDmg$ Y | DividerOnResolution$ ParentTargetedController | Defined$ Remembered | SubAbility$ DBDamageResolve | StackDescription$ None\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Imprinted$CardPower\nSVar:Y:Targeted$CardPower\nOracle:At the beginning of your upkeep, create a 2/2 green Wolf creature token.\\n{T}: Tap all untapped Wolf creatures you control. Each Wolf tapped this way deals damage equal to its power to target creature. That creature deals damage equal to its power divided as its controller chooses among any number of those Wolves.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master of the Wild Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

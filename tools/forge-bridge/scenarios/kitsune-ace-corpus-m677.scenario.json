@@ -1,0 +1,23 @@
+{
+  "id": "kitsune-ace-corpus-m677",
+  "description": "M6 corpus — Kitsune Ace; in-hand parse.",
+  "seed": 63715,
+  "cards": {
+    "Kitsune Ace": "Name:Kitsune Ace\nManaCost:1 W\nTypes:Creature Fox Pilot\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Vehicle.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Whenever a Vehicle you control attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPump,DBUntap\nSVar:DBPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ First Strike | SpellDescription$ That Vehicle gains first strike until end of turn.\nSVar:DBUntap:DB$ Untap | Defined$ Self | SpellDescription$ Untap CARDNAME.\nDeckNeeds:Type$Vehicle\nOracle:Whenever a Vehicle you control attacks, choose one —\\n• That Vehicle gains first strike until end of turn.\\n• Untap Kitsune Ace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitsune Ace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gruul-ragebeast-corpus-m677",
+  "description": "M6 corpus — Gruul Ragebeast; in-hand parse.",
+  "seed": 61851,
+  "cards": {
+    "Gruul Ragebeast": "Name:Gruul Ragebeast\nManaCost:5 R G\nTypes:Creature Beast\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigFight | TriggerDescription$ Whenever CARDNAME or another creature you control enters, that creature fights target creature an opponent controls.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls.\nOracle:Whenever Gruul Ragebeast or another creature you control enters, that creature fights target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gruul Ragebeast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

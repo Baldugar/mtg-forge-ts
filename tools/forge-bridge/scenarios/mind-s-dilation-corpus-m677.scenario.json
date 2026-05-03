@@ -1,0 +1,25 @@
+{
+  "id": "mind-s-dilation-corpus-m677",
+  "description": "M6 corpus — Mind's Dilation; ETB-on-bf.",
+  "seed": 65176,
+  "cards": {
+    "Mind's Dilation": "Name:Mind's Dilation\nManaCost:5 U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidActivatingPlayer$ Player.Opponent | ActivatorThisTurnCast$ EQ1 | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts their first spell each turn, that player exiles the top card of their library. If it's a nonland card, you may cast it without paying its mana cost.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredActivator | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ CastCard\nSVar:CastCard:DB$ Play | Defined$ Remembered | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | Controller$ You | ShowCardToActivator$ True | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever an opponent casts their first spell each turn, that player exiles the top card of their library. If it's a nonland card, you may cast it without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mind's Dilation"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "recalibrate-corpus-m677",
+  "description": "M6 corpus — Recalibrate; in-hand parse.",
+  "seed": 67868,
+  "cards": {
+    "Recalibrate": "Name:Recalibrate\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return target creature to its owner's hand. If you've discarded a card this turn, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X\nSVar:X:PlayerCountPropertyYou$CardsDiscardedThisTurn\nDeckHints:Ability$Discard\nOracle:Return target creature to its owner's hand. If you've discarded a card this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recalibrate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

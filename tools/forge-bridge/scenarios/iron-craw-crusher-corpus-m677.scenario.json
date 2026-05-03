@@ -1,0 +1,23 @@
+{
+  "id": "iron-craw-crusher-corpus-m677",
+  "description": "M6 corpus — Iron-Craw Crusher; in-hand parse.",
+  "seed": 63122,
+  "cards": {
+    "Iron-Craw Crusher": "Name:Iron-Craw Crusher\nManaCost:7\nTypes:Artifact Creature Wurm\nPT:4/6\nK:Prototype:2 G G:2:5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target attacking creature gets +X/+0 until end of turn, where X is CARDNAME's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | NumAtt$ +X\nSVar:HasAttackEffect:TRUE\nSVar:X:Count$CardPower\nDeckHints:Color$Green\nOracle:Prototype {2}{G}{G} — 2/5 (You may cast this spell with different mana cost, color, and size. It keeps its abilities and types.)\\nWhenever Iron-Craw Crusher attacks, target attacking creature gets +X/+0 until end of turn, where X is Iron-Craw Crusher's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iron-Craw Crusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "imotekh-the-stormlord-corpus-m677",
+  "description": "M6 corpus — Imotekh the Stormlord; in-hand parse.",
+  "seed": 62791,
+  "cards": {
+    "Imotekh the Stormlord": "Name:Imotekh the Stormlord\nManaCost:2 B B\nTypes:Legendary Artifact Creature Necron\nPT:3/3\nT:Mode$ ChangesZoneAll | Origin$ Graveyard | Destination$ Any | ValidCards$ Artifact.YouOwn | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Phaeron — Whenever one or more artifact cards leave your graveyard, create two 2/2 black Necron Warrior artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_2_2_a_necron_warrior | TokenOwner$ You\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Grand Strategist — At the beginning of combat on your turn, another target artifact creature you control gets +2/+2 and gains menace until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+Artifact+YouCtrl | NumDef$ +2 | NumAtt$ +2 | TgtPrompt$ Select another target artifact creature you control | KW$ Menace\nDeckHints:Ability$Graveyard & Type$Artifact\nDeckHas:Ability$Token & Type$Warrior & Keyword$Menace\nOracle:Phaeron — Whenever one or more artifact cards leave your graveyard, create two 2/2 black Necron Warrior artifact creature tokens.\\nGrand Strategist — At the beginning of combat on your turn, another target artifact creature you control gets +2/+2 and gains menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imotekh the Stormlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "liara-of-the-flaming-fist-corpus-m677",
+  "description": "M6 corpus — Liara of the Flaming Fist; in-hand parse.",
+  "seed": 64176,
+  "cards": {
+    "Liara of the Flaming Fist": "Name:Liara of the Flaming Fist\nManaCost:R W\nTypes:Legendary Creature Human Soldier\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigRepeatEach | TriggerDescription$ At the beginning of each combat, each creature you control gets +1/+1 until end of turn if it has the same name as another creature you control or a creature card in your graveyard.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatCards$ Creature.YouCtrl | RepeatSubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | NumAtt$ +1 | NumDef$ +1 | ConditionCheckSVar$ X\nSVar:X:Count$Valid Creature.!IsRemembered+YouCtrl+sharesNameWith Remembered/Plus.Y\nSVar:Y:Count$ValidGraveyard Creature.YouOwn+sharesNameWith Remembered\nA:AB$ Pump | Cost$ 1 R W | ValidTgts$ Creature.Other+!token+YouCtrl | TgtPrompt$ Select another target nontoken creature you control | KW$ First Strike & Double team | SorcerySpeed$ True | GameActivationLimit$ 1 | SpellDescription$ Another target nontoken creature you control gains first strike and double team until end of turn. Activate only as a sorcery and only once.\nOracle:At the beginning of each combat, each creature you control gets +1/+1 until end of turn if it has the same name as another creature you control or a creature card in your graveyard.\\n{1}{R}{W}: Another target nontoken creature you control gains first strike and double team until end of turn. Activate only as a sorcery and only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liara of the Flaming Fist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

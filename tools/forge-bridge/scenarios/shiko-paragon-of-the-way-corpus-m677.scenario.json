@@ -1,0 +1,23 @@
+{
+  "id": "shiko-paragon-of-the-way-corpus-m677",
+  "description": "M6 corpus — Shiko, Paragon of the Way; in-hand parse.",
+  "seed": 69697,
+  "cards": {
+    "Shiko, Paragon of the Way": "Name:Shiko, Paragon of the Way\nManaCost:2 U R W\nTypes:Legendary Creature Spirit Dragon\nPT:4/5\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When NICKNAME enters, exile target nonland card with mana value 3 or less from your graveyard. Copy it, then you may cast the copy without paying its mana cost. (A copy of a permanent spell becomes a token.)\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select target nonland card with mana value 3 or less in your graveyard | ValidTgts$ Card.YouOwn+nonLand+cmcLE3 | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | Controller$ You | CopyCard$ True | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Discard|Mill|Sacrifice\nOracle:Flying, vigilance\\nWhen Shiko enters, exile target nonland card with mana value 3 or less from your graveyard. Copy it, then you may cast the copy without paying its mana cost. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shiko, Paragon of the Way"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

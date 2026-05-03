@@ -1,0 +1,25 @@
+{
+  "id": "scaled-nurturer-corpus-m677",
+  "description": "M6 corpus — Scaled Nurturer; ETB-on-bf.",
+  "seed": 69094,
+  "cards": {
+    "Scaled Nurturer": "Name:Scaled Nurturer\nManaCost:1 G\nTypes:Creature Dragon Druid\nPT:0/2\nA:AB$ Mana | Cost$ T | Produced$ G | TriggersWhenSpent$ TrigSpent | SpellDescription$ Add {G}. When you spend this mana to cast a Dragon creature spell, you gain 2 life.\nSVar:TrigSpent:Mode$ SpellCast | ValidCard$ Creature.Dragon | ValidActivatingPlayer$ You | Execute$ TrigGainLife | TriggerDescription$ When you spend this mana to cast a Dragon creature spell, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nDeckHints:Type$Dragon\nOracle:{T}: Add {G}. When you spend this mana to cast a Dragon creature spell, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scaled Nurturer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

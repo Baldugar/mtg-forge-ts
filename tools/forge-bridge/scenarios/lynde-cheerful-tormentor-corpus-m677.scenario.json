@@ -1,0 +1,23 @@
+{
+  "id": "lynde-cheerful-tormentor-corpus-m677",
+  "description": "M6 corpus — Lynde, Cheerful Tormentor; in-hand parse.",
+  "seed": 64536,
+  "cards": {
+    "Lynde, Cheerful Tormentor": "Name:Lynde, Cheerful Tormentor\nManaCost:1 U B R\nTypes:Legendary Creature Human Warlock\nPT:2/4\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Curse.YouOwn | Execute$ TrigDelayedTrig | TriggerDescription$ Whenever a Curse is put into your graveyard from the battlefield, return it to the battlefield attached to you at the beginning of the next end step.\nSVar:TrigDelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigReturn | RememberObjects$ TriggeredNewCardLKICopy | TriggerDescription$ Whenever a Curse is put into your graveyard from the battlefield, return it to the battlefield attached to you at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Battlefield | AttachedToPlayer$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigChooseCurse | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may attach a Curse attached to you to one of your opponents. If you do, draw two cards.\nSVar:TrigChooseCurse:DB$ ChooseCard | Choices$ Curse.AttachedTo You | ChoiceTitle$ Choose a Curse attached to you | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ ChosenCard | PlayerChoices$ Opponent | RememberAttached$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | Defined$ You | NumCards$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nDeckNeeds:Type$Curse\nOracle:Deathtouch\\nWhenever a Curse is put into your graveyard from the battlefield, return it to the battlefield attached to you at the beginning of the next end step.\\nAt the beginning of your upkeep, you may attach a Curse attached to you to one of your opponents. If you do, draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lynde, Cheerful Tormentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

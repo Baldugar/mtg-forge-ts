@@ -1,0 +1,23 @@
+{
+  "id": "goblin-ruinblaster-corpus-m677",
+  "description": "M6 corpus — Goblin Ruinblaster; in-hand parse.",
+  "seed": 61460,
+  "cards": {
+    "Goblin Ruinblaster": "Name:Goblin Ruinblaster\nManaCost:2 R\nTypes:Creature Goblin Shaman\nPT:2/1\nK:Haste\nK:Kicker:R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, destroy target nonbasic land.\nSVar:TrigKicker:DB$ Destroy | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land.\nSVar:NeedsToPlayKicked:Land.nonBasic+OppCtrl\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nHaste\\nWhen Goblin Ruinblaster enters, if it was kicked, destroy target nonbasic land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Ruinblaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

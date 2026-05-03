@@ -1,0 +1,23 @@
+{
+  "id": "slinn-voda-the-rising-deep-corpus-m677",
+  "description": "M6 corpus — Slinn Voda, the Rising Deep; in-hand parse.",
+  "seed": 70219,
+  "cards": {
+    "Slinn Voda, the Rising Deep": "Name:Slinn Voda, the Rising Deep\nManaCost:6 U U\nTypes:Legendary Creature Leviathan\nPT:8/8\nK:Kicker:1 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, if it was kicked, return all creatures to their owners' hands except for Merfolk, Krakens, Leviathans, Octopuses, and Serpents.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Creature.nonMerfolk+nonKraken+nonLeviathan+nonOctopus+nonSerpent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return all creatures to their owner's hands except for Merfolk, Krakens, Leviathans, Octopuses, and Serpents.\nOracle:Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\\nWhen Slinn Voda, the Rising Deep enters, if it was kicked, return all creatures to their owners' hands except for Merfolk, Krakens, Leviathans, Octopuses, and Serpents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slinn Voda, the Rising Deep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

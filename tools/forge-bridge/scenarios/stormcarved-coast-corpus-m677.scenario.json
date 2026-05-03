@@ -1,0 +1,25 @@
+{
+  "id": "stormcarved-coast-corpus-m677",
+  "description": "M6 corpus — Stormcarved Coast; ETB-on-bf.",
+  "seed": 71113,
+  "cards": {
+    "Stormcarved Coast": "Name:Stormcarved Coast\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ LT2\nOracle:Stormcarved Coast enters tapped unless you control two or more other lands.\\n{T}: Add {U} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stormcarved Coast"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

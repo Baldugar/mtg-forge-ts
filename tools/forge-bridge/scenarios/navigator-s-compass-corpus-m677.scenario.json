@@ -1,0 +1,23 @@
+{
+  "id": "navigator-s-compass-corpus-m677",
+  "description": "M6 corpus — Navigator's Compass; in-hand parse.",
+  "seed": 65776,
+  "cards": {
+    "Navigator's Compass": "Name:Navigator's Compass\nManaCost:1\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nA:AB$ ChooseType | Cost$ T | Defined$ You | Type$ Basic Land | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, target land you control becomes the basic land type of your choice in addition to its other types.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | Types$ ChosenType\nOracle:When Navigator's Compass enters, you gain 3 life.\\n{T}: Until end of turn, target land you control becomes the basic land type of your choice in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Navigator's Compass"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

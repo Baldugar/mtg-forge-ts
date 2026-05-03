@@ -1,0 +1,23 @@
+{
+  "id": "inventory-management-corpus-m677",
+  "description": "M6 corpus — Inventory Management; in-hand parse.",
+  "seed": 63084,
+  "cards": {
+    "Inventory Management": "Name:Inventory Management\nManaCost:R W\nTypes:Instant\nK:Split second\nA:SP$ RepeatEach | RepeatCards$ Aura.YouCtrl,Equipment.YouCtrl | RepeatSubAbility$ DBAttach | SpellDescription$ For each Aura and Equipment you control, you may attach it to a creature you control.\nSVar:DBAttach:DB$ Attach | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose a creature you control | Object$ Remembered | Optional$ True\nDeckNeeds:Type$Equipment|Aura\nOracle:Split second (As long as this spell is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)\\nFor each Aura and Equipment you control, you may attach it to a creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inventory Management"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

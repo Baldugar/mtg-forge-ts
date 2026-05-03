@@ -1,0 +1,23 @@
+{
+  "id": "luminollusk-corpus-m677",
+  "description": "M6 corpus — Luminollusk; in-hand parse.",
+  "seed": 64491,
+  "cards": {
+    "Luminollusk": "Name:Luminollusk\nManaCost:3 G\nTypes:Creature Elemental\nPT:2/4\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ Vivid — When this creature enters, you gain life equal to the number of colors among permanents you control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Deathtouch\\nVivid — When this creature enters, you gain life equal to the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Luminollusk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

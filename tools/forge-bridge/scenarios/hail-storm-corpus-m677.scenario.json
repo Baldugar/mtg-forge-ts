@@ -1,0 +1,23 @@
+{
+  "id": "hail-storm-corpus-m677",
+  "description": "M6 corpus — Hail Storm; in-hand parse.",
+  "seed": 61965,
+  "cards": {
+    "Hail Storm": "Name:Hail Storm\nManaCost:1 G G\nTypes:Instant\nA:SP$ DamageAll | NumDmg$ 2 | ValidCards$ Creature.attacking | ValidDescription$ each attacking creature. | SubAbility$ DBDamage | SpellDescription$ CARDNAME deals 2 damage to each attacking creature and 1 damage to you and each creature you control.\nSVar:DBDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ You | SubAbility$ DBDamageAll\nSVar:DBDamageAll:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.YouCtrl | ValidDescription$ each creature you control.\nAI:RemoveDeck:All\nOracle:Hail Storm deals 2 damage to each attacking creature and 1 damage to you and each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hail Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

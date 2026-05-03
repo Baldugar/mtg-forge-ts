@@ -1,0 +1,23 @@
+{
+  "id": "sky-eel-school-corpus-m677",
+  "description": "M6 corpus — Sky-Eel School; in-hand parse.",
+  "seed": 70086,
+  "cards": {
+    "Sky-Eel School": "Name:Sky-Eel School\nManaCost:3 U U\nTypes:Creature Fish\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigLoot:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying\\nWhen Sky-Eel School enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sky-Eel School"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

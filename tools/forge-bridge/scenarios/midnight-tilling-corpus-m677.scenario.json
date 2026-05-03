@@ -1,0 +1,23 @@
+{
+  "id": "midnight-tilling-corpus-m677",
+  "description": "M6 corpus — Midnight Tilling; in-hand parse.",
+  "seed": 65099,
+  "cards": {
+    "Midnight Tilling": "Name:Midnight Tilling\nManaCost:1 G\nTypes:Instant\nA:SP$ Mill | NumCards$ 4 | Defined$ You | SubAbility$ DBChangeZone | RememberMilled$ True | SpellDescription$ Mill four cards, then you may return a permanent card from among them to your hand. (To mill four cards, put the top four cards of your library into your graveyard.)\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Permanent.IsRemembered | SelectPrompt$ You may select a permanent card milled this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:Mill four cards, then you may return a permanent card from among them to your hand. (To mill four cards, put the top four cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Tilling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

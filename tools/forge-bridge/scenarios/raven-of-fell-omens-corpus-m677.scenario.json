@@ -1,0 +1,25 @@
+{
+  "id": "raven-of-fell-omens-corpus-m677",
+  "description": "M6 corpus — Raven of Fell Omens; ETB-on-bf.",
+  "seed": 67752,
+  "cards": {
+    "Raven of Fell Omens": "Name:Raven of Fell Omens\nManaCost:1 B\nTypes:Creature Bird\nPT:1/2\nK:Flying\nT:Mode$ CommitCrime | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | ActivationLimit$ 1 | TriggerDescription$ Whenever you commit a crime, each opponent loses 1 life and you gain 1 life. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyard is a crime.)\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhenever you commit a crime, each opponent loses 1 life and you gain 1 life. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyard is a crime.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Raven of Fell Omens"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

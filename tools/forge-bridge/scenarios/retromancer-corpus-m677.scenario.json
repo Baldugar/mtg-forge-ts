@@ -1,0 +1,23 @@
+{
+  "id": "retromancer-corpus-m677",
+  "description": "M6 corpus — Retromancer; in-hand parse.",
+  "seed": 68153,
+  "cards": {
+    "Retromancer": "Name:Retromancer\nManaCost:2 R R\nTypes:Creature Lizard Shaman\nPT:3/3\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME becomes the target of a spell or ability, CARDNAME deals 3 damage to that spell or ability's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredSourceController | NumDmg$ 3\nSVar:Targeting:Counter\nOracle:Whenever Retromancer becomes the target of a spell or ability, Retromancer deals 3 damage to that spell or ability's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

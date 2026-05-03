@@ -1,0 +1,23 @@
+{
+  "id": "runner-s-bane-corpus-m677",
+  "description": "M6 corpus — Runner's Bane; in-hand parse.",
+  "seed": 68657,
+  "cards": {
+    "Runner's Bane": "Name:Runner's Bane\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature.powerLE3:creature with power 3 or less\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during the untap step.\nOracle:Enchant creature with power 3 or less\\nWhen Runner's Bane enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runner's Bane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

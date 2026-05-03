@@ -1,0 +1,25 @@
+{
+  "id": "prahv-spires-of-order-corpus-m677",
+  "description": "M6 corpus — Prahv, Spires of Order; ETB-on-bf.",
+  "seed": 67104,
+  "cards": {
+    "Prahv, Spires of Order": "Name:Prahv, Spires of Order\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ChooseSource | Cost$ 4 W U T | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ Prevent all damage a source of your choice would deal this turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | Prevent$ True | Description$ Prevent all damage the chosen source would deal this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{T}: Add {C}.\\n{4}{W}{U}, {T}: Prevent all damage a source of your choice would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Prahv, Spires of Order"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

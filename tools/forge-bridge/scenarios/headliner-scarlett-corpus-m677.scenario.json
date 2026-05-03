@@ -1,0 +1,23 @@
+{
+  "id": "headliner-scarlett-corpus-m677",
+  "description": "M6 corpus — Headliner Scarlett; in-hand parse.",
+  "seed": 62151,
+  "cards": {
+    "Headliner Scarlett": "Name:Headliner Scarlett\nManaCost:3 R\nTypes:Legendary Creature Human Warlock\nPT:3/3\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, creatures target player controls can't block this turn.\nSVar:TrigEffect:DB$ Effect | ValidTgts$ Player | AILogic$ Evasion | StaticAbilities$ OppCantBlock | RememberObjects$ Targeted\nSVar:OppCantBlock:Mode$ CantBlock | ValidCard$ Creature.RememberedPlayerCtrl | Description$ Creatures targeted player controls can't block this turn.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, exile the top card of your library face down. You may look at and play that card this turn.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TopOfLibrary | Origin$ Library | RememberChanged$ True | Destination$ Exile | ExileFaceDown$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayLookAt$ You | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at and play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Haste\\nWhen Headliner Scarlett enters, creatures target player controls can't block this turn.\\nAt the beginning of your upkeep, exile the top card of your library face down. You may look at and play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Headliner Scarlett"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

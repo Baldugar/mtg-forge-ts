@@ -1,0 +1,23 @@
+{
+  "id": "rakish-scoundrel-corpus-m677",
+  "description": "M6 corpus — Rakish Scoundrel; in-hand parse.",
+  "seed": 67627,
+  "cards": {
+    "Rakish Scoundrel": "Name:Rakish Scoundrel\nManaCost:2 B G\nTypes:Creature Elf Rogue\nPT:3/3\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters or is turned face up, target creature gains indestructible until end of turn.\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When CARDNAME enters or is turned face up, target creature gains indestructible until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ Indestructible\nK:Disguise:4 BG BG\nOracle:Deathtouch\\nWhen Rakish Scoundrel enters or is turned face up, target creature gains indestructible until end of turn.\\nDisguise {4}{B/G}{B/G} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakish Scoundrel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

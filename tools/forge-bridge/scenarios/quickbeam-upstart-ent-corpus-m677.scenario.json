@@ -1,0 +1,23 @@
+{
+  "id": "quickbeam-upstart-ent-corpus-m677",
+  "description": "M6 corpus — Quickbeam, Upstart Ent; in-hand parse.",
+  "seed": 67469,
+  "cards": {
+    "Quickbeam, Upstart Ent": "Name:Quickbeam, Upstart Ent\nManaCost:4 G G\nTypes:Legendary Creature Treefolk\nPT:5/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Treefolk.Other+YouCtrl | Execute$ DBPump | TriggerDescription$ Whenever CARDNAME or another Treefolk you control enters, up to two target creatures each get +2/+2 and gain trample until end of turn.\nSVar:DBPump:DB$ Pump | TargetMin$ 0 | TargetMax$ 2 | NumAtt$ +2 | NumDef$ +2 | KW$ Trample | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures.\nDeckHints:Type$Treefolk\nOracle:Whenever Quickbeam, Upstart Ent or another Treefolk you control enters, up to two target creatures each get +2/+2 and gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quickbeam, Upstart Ent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

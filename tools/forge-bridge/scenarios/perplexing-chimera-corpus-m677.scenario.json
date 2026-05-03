@@ -1,0 +1,25 @@
+{
+  "id": "perplexing-chimera-corpus-m677",
+  "description": "M6 corpus — Perplexing Chimera; ETB-on-bf.",
+  "seed": 66750,
+  "cards": {
+    "Perplexing Chimera": "Name:Perplexing Chimera\nManaCost:4 U\nTypes:Enchantment Creature Chimera\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | OptionalDecider$ You | Execute$ ExchangeControlSpell | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts a spell, you may exchange control of CARDNAME and that spell. If you do, you may choose new targets for the spell. (If the spell becomes a permanent, you control that permanent.)\nSVar:ExchangeControlSpell:DB$ ControlSpell | Defined$ TriggeredSpellAbility | Mode$ Exchange | Remember$ True | SubAbility$ DBChooseTargets\nSVar:DBChooseTargets:DB$ ChangeTargets | Defined$ TriggeredSpellAbility | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Whenever an opponent casts a spell, you may exchange control of Perplexing Chimera and that spell. If you do, you may choose new targets for the spell. (If the spell becomes a permanent, you control that permanent.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Perplexing Chimera"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

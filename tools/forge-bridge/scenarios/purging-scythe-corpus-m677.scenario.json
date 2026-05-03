@@ -1,0 +1,23 @@
+{
+  "id": "purging-scythe-corpus-m677",
+  "description": "M6 corpus — Purging Scythe; in-hand parse.",
+  "seed": 67377,
+  "cards": {
+    "Purging Scythe": "Name:Purging Scythe\nManaCost:5\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigChooseDmg | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 2 damage to the creature with the least toughness. If two or more creatures are tied for least toughness, you choose one of them.\nSVar:TrigChooseDmg:DB$ ChooseCard | Defined$ You | Choices$ Creature.leastToughness | Mandatory$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ ChosenCard\nSVar:NeedsToPlay:Creature.YouDontCtrl+leastToughness\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, Purging Scythe deals 2 damage to the creature with the least toughness. If two or more creatures are tied for least toughness, you choose one of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Purging Scythe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

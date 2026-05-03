@@ -1,0 +1,23 @@
+{
+  "id": "price-of-progress-corpus-m677",
+  "description": "M6 corpus — Price of Progress; in-hand parse.",
+  "seed": 67157,
+  "cards": {
+    "Price of Progress": "Name:Price of Progress\nManaCost:1 R\nTypes:Instant\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDamage | DamageMap$ True | AILogic$ PriceOfProgress | SpellDescription$ CARDNAME deals 2 damage to each player for each nonbasic land they control.\nSVar:DBDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ X\nSVar:X:Count$Valid Land.nonBasic+RememberedPlayerCtrl/Times.2\nAI:RemoveDeck:Random\nOracle:Price of Progress deals damage to each player equal to twice the number of nonbasic lands that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Price of Progress"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

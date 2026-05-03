@@ -1,0 +1,23 @@
+{
+  "id": "pure-intentions-corpus-m677",
+  "description": "M6 corpus — Pure Intentions; in-hand parse.",
+  "seed": 67369,
+  "cards": {
+    "Pure Intentions": "Name:Pure Intentions\nManaCost:W\nTypes:Instant Arcane\nA:SP$ Effect | Triggers$ PureDiscarded | SpellDescription$ Whenever a spell or ability an opponent controls causes you to discard cards this turn, return those cards from your graveyard to your hand.\nSVar:PureDiscarded:Mode$ DiscardedAll | ValidCard$ Card.YouCtrl | ValidCause$ SpellAbility.OppCtrl | TriggerZones$ Command | Execute$ TrigPureChange | TriggerDescription$ Whenever a spell or ability an opponent controls causes you to discard cards this turn, return those cards from your graveyard to your hand.\nSVar:TrigPureChange:DB$ ChangeZone | Defined$ TriggeredCards | Origin$ Graveyard | Destination$ Hand\nT:Mode$ Discarded | ValidCard$ Card.Self | ValidCause$ SpellAbility.OppCtrl | Execute$ TrigDelay | TriggerDescription$ When a spell or ability an opponent controls causes you to discard CARDNAME, return CARDNAME from your graveyard to your hand at the beginning of the next end step.\nSVar:TrigDelay:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigPureReturn | SpellDescription$ Return CARDNAME from your graveyard to your hand at the beginning of the next end step.\nSVar:TrigPureReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand\nSVar:DiscardMeByOpp:1\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Whenever a spell or ability an opponent controls causes you to discard cards this turn, return those cards from your graveyard to your hand.\\nWhen a spell or ability an opponent controls causes you to discard Pure Intentions, return Pure Intentions from your graveyard to your hand at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pure Intentions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

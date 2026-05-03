@@ -1,0 +1,23 @@
+{
+  "id": "kenrith-s-transformation-corpus-m677",
+  "description": "M6 corpus — Kenrith's Transformation; in-hand parse.",
+  "seed": 63603,
+  "cards": {
+    "Kenrith's Transformation": "Name:Kenrith's Transformation\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | SetPower$ 3 | SetToughness$ 3 | SetColor$ Green | RemoveAllAbilities$ True | AddType$ Creature & Elk | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Description$ Enchanted creature loses all abilities and is a green Elk creature with base power and toughness 3/3. (It loses all other card types and creature types.)\nAI:RemoveDeck:All\nOracle:Enchant creature\\nWhen Kenrith's Transformation enters, draw a card.\\nEnchanted creature loses all abilities and is a green Elk creature with base power and toughness 3/3. (It loses all other card types and creature types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kenrith's Transformation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

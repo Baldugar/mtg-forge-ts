@@ -1,0 +1,23 @@
+{
+  "id": "saheeli-s-silverwing-corpus-m677",
+  "description": "M6 corpus — Saheeli's Silverwing; in-hand parse.",
+  "seed": 68881,
+  "cards": {
+    "Saheeli's Silverwing": "Name:Saheeli's Silverwing\nManaCost:4\nTypes:Artifact Creature Drake\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When CARDNAME enters, look at the top card of target opponent's library.\nSVar:TrigPeek:DB$ RearrangeTopOfLibrary | ValidTgts$ Opponent | NumCards$ 1 | SpellDescription$ Look at the top card of target opponent's library.\nOracle:Flying\\nWhen Saheeli's Silverwing enters, look at the top card of target opponent's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saheeli's Silverwing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

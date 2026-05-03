@@ -1,0 +1,25 @@
+{
+  "id": "oona-queen-of-the-fae-corpus-m677",
+  "description": "M6 corpus — Oona, Queen of the Fae; ETB-on-bf.",
+  "seed": 66329,
+  "cards": {
+    "Oona, Queen of the Fae": "Name:Oona, Queen of the Fae\nManaCost:3 UB UB UB\nTypes:Legendary Creature Faerie Wizard\nPT:5/5\nK:Flying\nA:AB$ ChooseColor | Cost$ X UB | Defined$ You | AILogic$ MostProminentInHumanDeck | SubAbility$ DBExile | SpellDescription$ Choose a color. Target opponent exiles the top X cards of their library. For each card of the chosen color exiled this way, create a 1/1 blue and black Faerie Rogue creature token with flying.\nSVar:DBExile:DB$ Dig | ValidTgts$ Opponent | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ ub_1_1_faerie_rogue_flying | TokenOwner$ You | SubAbility$ Clear\nSVar:Clear:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Valid Card.ChosenColor\nDeckHas:Ability$Token\nOracle:Flying\\n{X}{U/B}: Choose a color. Target opponent exiles the top X cards of their library. For each card of the chosen color exiled this way, create a 1/1 blue and black Faerie Rogue creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Oona, Queen of the Fae"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

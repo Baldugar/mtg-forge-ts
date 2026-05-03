@@ -1,0 +1,23 @@
+{
+  "id": "justiciar-s-portal-corpus-m677",
+  "description": "M6 corpus — Justiciar's Portal; in-hand parse.",
+  "seed": 63406,
+  "cards": {
+    "Justiciar's Portal": "Name:Justiciar's Portal\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberTargets$ True | SubAbility$ DBReturn | SpellDescription$ Exile target creature you control, then return that card to the battlefield under its owner's control. It gains first strike until end of turn.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ First Strike | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control. It gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Justiciar's Portal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

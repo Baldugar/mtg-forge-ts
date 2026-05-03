@@ -1,0 +1,23 @@
+{
+  "id": "lurebound-scarecrow-corpus-m677",
+  "description": "M6 corpus — Lurebound Scarecrow; in-hand parse.",
+  "seed": 64509,
+  "cards": {
+    "Lurebound Scarecrow": "Name:Lurebound Scarecrow\nManaCost:3\nTypes:Artifact Creature Scarecrow\nPT:4/4\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentComputerControls\nT:Mode$ Always | IsPresent$ Permanent.YouCtrl+ChosenColor | PresentCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigSacrifice | TriggerDescription$ When you control no permanents of the chosen color, sacrifice CARDNAME.\nSVar:TrigSacrifice:DB$ Sacrifice\nSVar:NeedsToPlay:Permanent.nonColorless+YouCtrl\nOracle:As Lurebound Scarecrow enters, choose a color.\\nWhen you control no permanents of the chosen color, sacrifice Lurebound Scarecrow.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lurebound Scarecrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

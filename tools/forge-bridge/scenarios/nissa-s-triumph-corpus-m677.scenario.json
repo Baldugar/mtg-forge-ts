@@ -1,0 +1,23 @@
+{
+  "id": "nissa-s-triumph-corpus-m677",
+  "description": "M6 corpus — Nissa's Triumph; in-hand parse.",
+  "seed": 66007,
+  "cards": {
+    "Nissa's Triumph": "Name:Nissa's Triumph\nManaCost:G G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic+Forest | ChangeNum$ 2 | ConditionPresent$ Planeswalker.Nissa+YouCtrl | ConditionCompare$ EQ0 | SubAbility$ DBChangeZone | SpellDescription$ Search your library for up to two basic Forest cards. If you control a Nissa planeswalker, instead search your library for up to three land cards. Reveal those cards, put them into your hand, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land | ChangeNum$ 3 | ConditionPresent$ Planeswalker.Nissa+YouCtrl | ConditionCompare$ GE1\nDeckHints:Type$Nissa\nOracle:Search your library for up to two basic Forest cards. If you control a Nissa planeswalker, instead search your library for up to three land cards. Reveal those cards, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa's Triumph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

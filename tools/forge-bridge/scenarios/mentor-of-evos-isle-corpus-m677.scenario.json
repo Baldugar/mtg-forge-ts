@@ -1,0 +1,23 @@
+{
+  "id": "mentor-of-evos-isle-corpus-m677",
+  "description": "M6 corpus — Mentor of Evos Isle; in-hand parse.",
+  "seed": 64985,
+  "cards": {
+    "Mentor of Evos Isle": "Name:Mentor of Evos Isle\nManaCost:2 U\nTypes:Creature Bird Wizard\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose a creature card in your hand. It perpetually gains flying.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn | ChoiceTitle$ Choose a creature card in your hand | Mandatory$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Flying | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Flying\\nWhen Mentor of Evos Isle enters, choose a creature card in your hand. It perpetually gains flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mentor of Evos Isle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

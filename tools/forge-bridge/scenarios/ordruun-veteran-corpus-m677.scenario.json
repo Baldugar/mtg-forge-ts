@@ -1,0 +1,23 @@
+{
+  "id": "ordruun-veteran-corpus-m677",
+  "description": "M6 corpus — Ordruun Veteran; in-hand parse.",
+  "seed": 66410,
+  "cards": {
+    "Ordruun Veteran": "Name:Ordruun Veteran\nManaCost:2 R W\nTypes:Creature Minotaur Soldier\nPT:3/1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigBattalionPump | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, CARDNAME gains double strike until end of turn.\nSVar:TrigBattalionPump:DB$ Pump | KW$ Double Strike | Defined$ Self\nOracle:Battalion — Whenever Ordruun Veteran and at least two other creatures attack, Ordruun Veteran gains double strike until end of turn. (It deals both first-strike and regular combat damage.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ordruun Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

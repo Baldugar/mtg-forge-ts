@@ -1,0 +1,25 @@
+{
+  "id": "gutterbones-corpus-m677",
+  "description": "M6 corpus — Gutterbones; ETB-on-bf.",
+  "seed": 61929,
+  "cards": {
+    "Gutterbones": "Name:Gutterbones\nManaCost:B\nTypes:Creature Skeleton Warrior\nPT:2/1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ 1 B | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | PlayerTurn$ True | CheckSVar$ X | SpellDescription$ Return CARDNAME from your graveyard to your hand. Activate only during your turn and only if an opponent lost life this turn.\nSVar:X:Count$LifeOppsLostThisTurn\nOracle:Gutterbones enters tapped.\\n{1}{B}: Return Gutterbones from your graveyard to your hand. Activate only during your turn and only if an opponent lost life this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gutterbones"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

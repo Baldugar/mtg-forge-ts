@@ -1,0 +1,23 @@
+{
+  "id": "oathsworn-knight-corpus-m677",
+  "description": "M6 corpus — Oathsworn Knight; in-hand parse.",
+  "seed": 66162,
+  "cards": {
+    "Oathsworn Knight": "Name:Oathsworn Knight\nManaCost:1 B B\nTypes:Creature Human Knight\nPT:0/0\nK:etbCounter:P1P1:4\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self+counters_GE1_P1P1 | ReplaceWith$ DBRemoveCounters | PreventionEffect$ True | AlwaysReplace$ True | Description$ If damage would be dealt to CARDNAME while it has a +1/+1 counter on it, prevent that damage and remove a +1/+1 counter from it.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Oathsworn Knight enters with four +1/+1 counters on it.\\nOathsworn Knight attacks each combat if able.\\nIf damage would be dealt to Oathsworn Knight while it has a +1/+1 counter on it, prevent that damage and remove a +1/+1 counter from it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oathsworn Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

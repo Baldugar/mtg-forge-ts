@@ -1,0 +1,23 @@
+{
+  "id": "krang-shredder-corpus-m677",
+  "description": "M6 corpus — Krang & Shredder; in-hand parse.",
+  "seed": 63864,
+  "cards": {
+    "Krang & Shredder": "Name:Krang & Shredder\nManaCost:4 UB UB\nTypes:Legendary Creature Utrom Human Ninja\nPT:6/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Whenever CARDNAME enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDigUntil | Secondary$ True | TriggerDescription$ Whenever CARDNAME enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.\nSVar:TrigDigUntil:DB$ DigUntil | Defined$ Opponent | Valid$ Card.nonLand | FoundDestination$ Exile | RevealedDestination$ Exile\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Revolt$ True | TriggerZones$ Battlefield | Execute$ TrigPlay | TriggerDescription$ Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with CARDNAME without paying its mana cost.\nSVar:TrigPlay:DB$ Play | Optional$ True | Valid$ Card.nonLand+ExiledWithSource | ValidZone$ Exile | WithoutManaCost$ True | Amount$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Krang & Shredder enter or attack, each opponent exiles cards from the top of their library until they exile a nonland card.\\nDisappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, you may cast a card exiled with Krang & Shredder without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krang & Shredder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

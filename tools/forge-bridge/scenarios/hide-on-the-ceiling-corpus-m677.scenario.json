@@ -1,0 +1,23 @@
+{
+  "id": "hide-on-the-ceiling-corpus-m677",
+  "description": "M6 corpus — Hide on the Ceiling; in-hand parse.",
+  "seed": 62344,
+  "cards": {
+    "Hide on the Ceiling": "Name:Hide on the Ceiling\nVariant:UniversesWithin:FlavorName:Spectral Restitching\nManaCost:X U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Artifact,Creature | TgtPrompt$ Select X target artifacts and/or creatures | TargetMin$ X | TargetMax$ X | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBDelTrig | SpellDescription$ Exile X target artifacts and/or creatures. Return the exiled cards to the battlefield under their owners' control at the beginning of the next end step.\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | TriggerDescription$ Return the exiled cards to the battlefield under their owners' control at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Exile X target artifacts and/or creatures. Return the exiled cards to the battlefield under their owners' control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hide on the Ceiling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

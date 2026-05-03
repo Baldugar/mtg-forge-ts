@@ -1,0 +1,23 @@
+{
+  "id": "lightwheel-enhancements-corpus-m677",
+  "description": "M6 corpus — Lightwheel Enhancements; in-hand parse.",
+  "seed": 64261,
+  "cards": {
+    "Lightwheel Enhancements": "Name:Lightwheel Enhancements\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature,Vehicle:creature or Vehicle\nSVar:AttachAILogic:Pump\nK:Start your engines\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance | Description$ Enchanted permanent gets +1/+1 and has vigilance.\nS:Mode$ Continuous | EffectZone$ Graveyard | AffectedZone$ Graveyard | Affected$ Card.Self | Condition$ MaxSpeed | AddStaticAbility$ MaxSpeedStatic | Description$ Max speed — You may cast this card from your graveyard.\nSVar:MaxSpeedStatic:Mode$ Continuous | Affected$ Card.Self | AffectedZone$ Graveyard | EffectZone$ Graveyard | MayPlay$ True | Secondary$ True | Description$ Max speed — You may cast this card from your graveyard.\nSVar:DiscardMe:2\nDeckHints:Ability$Discard\nDeckHas:Ability$Graveyard\nOracle:Enchant creature or Vehicle\\nStart your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nEnchanted permanent gets +1/+1 and has vigilance.\\nMax speed — You may cast this card from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightwheel Enhancements"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

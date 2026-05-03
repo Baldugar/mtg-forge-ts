@@ -1,0 +1,23 @@
+{
+  "id": "surge-to-victory-corpus-m677",
+  "description": "M6 corpus — Surge to Victory; in-hand parse.",
+  "seed": 71420,
+  "cards": {
+    "Surge to Victory": "Name:Surge to Victory\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | RememberChanged$ True | SubAbility$ DBPump | SpellDescription$ Exile target instant or sorcery card from your graveyard. Creatures you control get +X/+0 until end of turn, where X is that card's mana value. Whenever a creature you control deals combat damage to a player this turn, copy the exiled card. You may cast the copy without paying its mana cost.\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +X | SubAbility$ DBEffect\nSVar:X:Remembered$CardManaCost\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | Triggers$ TrigDamage | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ DBCopy | TriggerDescription$ Whenever a creature you control deals combat damage to a player this turn, copy the exiled card. You may cast the copy without paying its mana cost.\nSVar:DBCopy:DB$ Play | Defined$ Remembered | Amount$ All | CopyCard$ True | WithoutManaCost$ True | ValidSA$ Spell\nOracle:Exile target instant or sorcery card from your graveyard. Creatures you control get +X/+0 until end of turn, where X is that card's mana value. Whenever a creature you control deals combat damage to a player this turn, copy the exiled card. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surge to Victory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

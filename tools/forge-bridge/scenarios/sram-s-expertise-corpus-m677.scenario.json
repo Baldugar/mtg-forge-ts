@@ -1,0 +1,23 @@
+{
+  "id": "sram-s-expertise-corpus-m677",
+  "description": "M6 corpus — Sram's Expertise; in-hand parse.",
+  "seed": 70837,
+  "cards": {
+    "Sram's Expertise": "Name:Sram's Expertise\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ 3 | TokenScript$ c_1_1_a_servo | TokenOwner$ You | SubAbility$ DBPlay | SpellDescription$ Create three 1/1 colorless Servo artifact creature tokens. You may cast a spell with mana value 3 or less from your hand without paying its mana cost.\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell.cmcLE3 | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True\nOracle:Create three 1/1 colorless Servo artifact creature tokens.\\nYou may cast a spell with mana value 3 or less from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sram's Expertise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

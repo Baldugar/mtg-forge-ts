@@ -1,0 +1,23 @@
+{
+  "id": "rupture-spire-corpus-m677",
+  "description": "M6 corpus — Rupture Spire; in-hand parse.",
+  "seed": 68660,
+  "cards": {
+    "Rupture Spire": "Name:Rupture Spire\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you pay {1}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ 1 | UnlessPayer$ You\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:NeedsToPlay:Land.untapped+YouCtrl\nOracle:Rupture Spire enters tapped.\\nWhen Rupture Spire enters, sacrifice it unless you pay {1}.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rupture Spire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

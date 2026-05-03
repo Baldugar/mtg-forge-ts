@@ -1,0 +1,23 @@
+{
+  "id": "muck-drubb-corpus-m677",
+  "description": "M6 corpus — Muck Drubb; in-hand parse.",
+  "seed": 65570,
+  "cards": {
+    "Muck Drubb": "Name:Muck Drubb\nManaCost:3 B B\nTypes:Creature Beast\nPT:3/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, change the target of target spell that targets only a single creature to CARDNAME.\nSVar:TrigChange:DB$ ChangeTargets | TargetType$ Spell.numTargets EQ1 | TargetValidTargeting$ Creature.inRealZoneBattlefield | ValidTgts$ Card | TgtPrompt$ Select target spell that targets only a single creature | DefinedMagnet$ Self\nK:Madness:2 B\nOracle:Flash\\nWhen Muck Drubb enters, change the target of target spell that targets only a single creature to Muck Drubb.\\nMadness {2}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Muck Drubb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

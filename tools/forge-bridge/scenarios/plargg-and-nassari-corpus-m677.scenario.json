@@ -1,0 +1,23 @@
+{
+  "id": "plargg-and-nassari-corpus-m677",
+  "description": "M6 corpus — Plargg and Nassari; in-hand parse.",
+  "seed": 66989,
+  "cards": {
+    "Plargg and Nassari": "Name:Plargg and Nassari\nManaCost:3 R R\nTypes:Legendary Creature Orc Efreet\nPT:5/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDigUntil | TriggerDescription$ At the beginning of your upkeep, each player exiles cards from the top of their library until they exile a nonland card. An opponent choses a nonland card exiled this way. You may cast up to two spells from among the other cards exiled this way without paying their mana costs.\nSVar:TrigDigUntil:DB$ DigUntil | Defined$ Player | Valid$ Card.nonLand | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBChoosePlayer | StackDescription$ SpellDescription\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ OppPickOne\nSVar:OppPickOne:DB$ ChooseCard | Defined$ ChosenPlayer | Amount$ 1 | Mandatory$ True | ChoiceTitle$ Choose a nonland card among the cards exiled (that can't be played) | Choices$ Card.IsRemembered+nonLand | ChoiceZone$ Exile | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered.!ChosenCard | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | Amount$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:At the beginning of your upkeep, each player exiles cards from the top of their library until they exile a nonland card. An opponent choses a nonland card exiled this way. You may cast up to two spells from among the other cards exiled this way without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plargg and Nassari"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

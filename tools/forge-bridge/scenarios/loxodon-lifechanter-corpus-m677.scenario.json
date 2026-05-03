@@ -1,0 +1,23 @@
+{
+  "id": "loxodon-lifechanter-corpus-m677",
+  "description": "M6 corpus — Loxodon Lifechanter; in-hand parse.",
+  "seed": 64444,
+  "cards": {
+    "Loxodon Lifechanter": "Name:Loxodon Lifechanter\nManaCost:5 W\nTypes:Creature Elephant Cleric\nPT:4/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLife | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may have your life total become the total toughness of creatures you control.\nSVar:TrigLife:DB$ SetLife | Defined$ You | LifeAmount$ Y\nSVar:Y:Count$Valid Creature.YouCtrl$CardToughness\nA:AB$ Pump | Cost$ 5 W | NumAtt$ +X | NumDef$ +X | SpellDescription$ CARDNAME gets +X/+X until end of turn, where X is your life total.\nSVar:X:Count$YourLifeTotal\nAI:RemoveDeck:All\nOracle:When Loxodon Lifechanter enters, you may have your life total become the total toughness of creatures you control.\\n{5}{W}: Loxodon Lifechanter gets +X/+X until end of turn, where X is your life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loxodon Lifechanter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

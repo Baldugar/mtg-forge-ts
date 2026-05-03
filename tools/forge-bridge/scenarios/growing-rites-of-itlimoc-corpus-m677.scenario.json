@@ -1,0 +1,23 @@
+{
+  "id": "growing-rites-of-itlimoc-corpus-m677",
+  "description": "M6 corpus — Growing Rites of Itlimoc; in-hand parse.",
+  "seed": 61833,
+  "cards": {
+    "Growing Rites of Itlimoc": "Name:Growing Rites of Itlimoc\nManaCost:2 G\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBTransform | IsPresent$ Creature.YouCtrl | PresentCompare$ GE4 | TriggerDescription$ At the beginning of your end step, if you control four or more creatures, transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:When Growing Rites of Itlimoc enters, look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\\nAt the beginning of your end step, if you control four or more creatures, transform Growing Rites of Itlimoc.\n\nALTERNATE\n\nName:Itlimoc, Cradle of the Sun\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ 1 | SpellDescription$ Add {G}.\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Add {G} for each creature you control.\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:(Transforms from Growing Rites of Itlimoc.)\\n{T}: Add {G}.\\n{T}: Add {G} for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Growing Rites of Itlimoc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

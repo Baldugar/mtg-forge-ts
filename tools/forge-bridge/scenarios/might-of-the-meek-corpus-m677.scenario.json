@@ -1,0 +1,23 @@
+{
+  "id": "might-of-the-meek-corpus-m677",
+  "description": "M6 corpus — Might of the Meek; in-hand parse.",
+  "seed": 65108,
+  "cards": {
+    "Might of the Meek": "Name:Might of the Meek\nManaCost:R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | KW$ Trample | SubAbility$ DBPump | SpellDescription$ Target creature gains trample until end of turn. It also gets +1/+0 until end of turn if you control a Mouse. Draw a card.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | NumAtt$ +1 | ConditionPresent$ Mouse.YouCtrl | ConditionCompare$ GE1 | ConditionDescription$ If you control a Mouse. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Target creature gains trample until end of turn. It also gets +1/+0 until end of turn if you control a Mouse.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Might of the Meek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

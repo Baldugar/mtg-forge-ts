@@ -1,0 +1,23 @@
+{
+  "id": "master-of-waves-corpus-m677",
+  "description": "M6 corpus — Master of Waves; in-hand parse.",
+  "seed": 64872,
+  "cards": {
+    "Master of Waves": "Name:Master of Waves\nManaCost:3 U\nTypes:Creature Merfolk Wizard\nPT:2/1\nK:Protection from red\nS:Mode$ Continuous | Affected$ Creature.Elemental+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Elemental creatures you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 1/0 blue Elemental creature tokens equal to your devotion to blue. (Each {U} in the mana costs of permanents you control counts toward your devotion to blue.)\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ u_1_0_elemental | TokenOwner$ You\nSVar:X:Count$Devotion.Blue\nSVar:PlayMain1:TRUE\nSVar:AIEvaluationModifier:SVar$AIElemPTBonus/Plus.AIElemTokenGenBonus\nSVar:AIElemPTBonus:PlayerCountPropertyYou$Valid Elemental.YouCtrl/Times.25\nSVar:AIElemTokenGenBonus:PlayerCountPropertyYou$Valid Elemental.token+YouCtrl/Times.15\nOracle:Protection from red\\nElemental creatures you control get +1/+1.\\nWhen Master of Waves enters, create a number of 1/0 blue Elemental creature tokens equal to your devotion to blue. (Each {U} in the mana costs of permanents you control counts toward your devotion to blue.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master of Waves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

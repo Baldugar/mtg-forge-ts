@@ -1,0 +1,23 @@
+{
+  "id": "prismatic-circle-corpus-m677",
+  "description": "M6 corpus — Prismatic Circle; in-hand parse.",
+  "seed": 67218,
+  "cards": {
+    "Prismatic Circle": "Name:Prismatic Circle\nManaCost:2 W\nTypes:Enchantment\nK:Cumulative upkeep:1\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInHumanDeck\nA:AB$ ChooseSource | Cost$ 1 | Choices$ Card.ChosenColorSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice of the chosen color would deal damage to you this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCard+ChosenColorSource | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen source deals damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:All\nOracle:Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAs Prismatic Circle enters, choose a color.\\n{1}: The next time a source of your choice of the chosen color would deal damage to you this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prismatic Circle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

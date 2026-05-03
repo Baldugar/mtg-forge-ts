@@ -1,0 +1,23 @@
+{
+  "id": "siege-dragon-corpus-m677",
+  "description": "M6 corpus — Siege Dragon; in-hand parse.",
+  "seed": 69832,
+  "cards": {
+    "Siege Dragon": "Name:Siege Dragon\nManaCost:5 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, destroy all Walls your opponents control.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Wall.OppCtrl\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDmg | IsPresent$ Wall.DefenderCtrl | PresentCompare$ EQ0 | TriggerDescription$ Whenever CARDNAME attacks, if defending player controls no Walls, it deals 2 damage to each creature without flying that player controls.\nSVar:TrigDmg:DB$ DamageAll | ValidCards$ Creature.withoutFlying+DefenderCtrl | NumDmg$ 2 | ValidDescription$ each creature without flying that player controls.\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhen Siege Dragon enters, destroy all Walls your opponents control.\\nWhenever Siege Dragon attacks, if defending player controls no Walls, it deals 2 damage to each creature without flying that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siege Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

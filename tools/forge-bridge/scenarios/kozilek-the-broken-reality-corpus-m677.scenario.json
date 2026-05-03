@@ -1,0 +1,25 @@
+{
+  "id": "kozilek-the-broken-reality-corpus-m677",
+  "description": "M6 corpus — Kozilek, the Broken Reality; ETB-on-bf.",
+  "seed": 63849,
+  "cards": {
+    "Kozilek, the Broken Reality": "Name:Kozilek, the Broken Reality\nManaCost:9\nTypes:Legendary Creature Eldrazi\nPT:9/9\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigManifest | TriggerDescription$ When you cast this spell, up to two target players each manifest two cards from their hands. For each card manifested this way, you draw a card. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigManifest:DB$ Manifest | ValidTgts$ Player | TargetMin$ 0 | Amount$ 2 | TargetMax$ 2 | RememberManifested$ True | SubAbility$ DBDraw | TgtPrompt$ Select up to two target players | Choices$ Card.TargetedPlayerOwn | ChoiceZone$ Hand | DefinedPlayer$ Targeted\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nS:Mode$ Continuous | Affected$ Creature.Colorless+YouCtrl+Other | AddPower$ 3 | AddToughness$ 2 | Description$ Other colorless creatures you control get +3/+2.\nDeckHints:Color$Colorless & Type$Construct|Eldrazi|Juggernaut|Scarecrow\nOracle:When you cast this spell, up to two target players each manifest two cards from their hands. For each card manifested this way, you draw a card. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\\nOther colorless creatures you control get +3/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kozilek, the Broken Reality"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

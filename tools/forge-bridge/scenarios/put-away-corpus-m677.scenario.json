@@ -1,0 +1,23 @@
+{
+  "id": "put-away-corpus-m677",
+  "description": "M6 corpus — Put Away; in-hand parse.",
+  "seed": 67391,
+  "cards": {
+    "Put Away": "Name:Put Away\nManaCost:2 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBChangeZone | SpellDescription$ Counter target spell. You may shuffle up to one target card from your graveyard into your library.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Card.YouCtrl | TgtPrompt$ Select target card from your graveyard | TargetMin$ 0 | TargetMax$ 1 | Shuffle$ True | ShuffleNonMandatory$ True\nOracle:Counter target spell. You may shuffle up to one target card from your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Put Away"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

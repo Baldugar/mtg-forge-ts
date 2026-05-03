@@ -1,0 +1,25 @@
+{
+  "id": "storm-of-saruman-corpus-m677",
+  "description": "M6 corpus — Storm of Saruman; ETB-on-bf.",
+  "seed": 71097,
+  "cards": {
+    "Storm of Saruman": "Name:Storm of Saruman\nManaCost:4 U U\nTypes:Enchantment\nK:Ward:3\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | Execute$ TrigCopyTarget | ActivatorThisTurnCast$ EQ2 | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast your second spell each turn, copy it, except the copy isn't legendary. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\nSVar:TrigCopyTarget:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | NonLegendary$ True | MayChooseTarget$ True\nDeckHas:Ability$Token\nOracle:Ward {3}\\nWhenever you cast your second spell each turn, copy it, except the copy isn't legendary. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Storm of Saruman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

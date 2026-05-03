@@ -1,0 +1,23 @@
+{
+  "id": "soaring-seacliff-corpus-m677",
+  "description": "M6 corpus — Soaring Seacliff; in-hand parse.",
+  "seed": 70325,
+  "cards": {
+    "Soaring Seacliff": "Name:Soaring Seacliff\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ Flying\nOracle:Soaring Seacliff enters tapped.\\nWhen Soaring Seacliff enters, target creature gains flying until end of turn.\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soaring Seacliff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

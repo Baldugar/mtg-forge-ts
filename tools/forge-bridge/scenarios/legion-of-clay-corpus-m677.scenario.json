@@ -1,0 +1,23 @@
+{
+  "id": "legion-of-clay-corpus-m677",
+  "description": "M6 corpus — Legion of Clay; in-hand parse.",
+  "seed": 64104,
+  "cards": {
+    "Legion of Clay": "Name:Legion of Clay\nManaCost:3 G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Trample | Description$ Creatures you control have trample.\nT:Mode$ ChangesZoneAll | ValidCards$ Artifact.YouCtrl+!token | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever one or more nontoken artifacts you control enter, creatures you control perpetually get +1/+1.\nSVar:TrigEffect:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nDeckHints:Type$Artifact|Golem|Construct|Thopter|Assembly-Worker|Myr|Necron|Juggernaut|Scarecrow\nOracle:Creatures you control have trample.\\nWhenever one or more nontoken artifacts you control enter, creatures you control perpetually get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion of Clay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

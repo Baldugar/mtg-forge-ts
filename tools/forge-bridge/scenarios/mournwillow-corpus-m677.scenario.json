@@ -1,0 +1,23 @@
+{
+  "id": "mournwillow-corpus-m677",
+  "description": "M6 corpus — Mournwillow; in-hand parse.",
+  "seed": 65555,
+  "cards": {
+    "Mournwillow": "Name:Mournwillow\nManaCost:1 B G\nTypes:Creature Plant Skeleton\nPT:3/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Delirium$ True | Execute$ TrigEffect | TriggerDescription$ Delirium — When CARDNAME enters, if there are four or more card types among cards in your graveyard, creatures with power 2 or less can't block this turn.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ KWPump | SpellDescription$ Creatures with power 2 or less can't block this turn.\nSVar:KWPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.powerLE2 | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures with power 2 or less can't block this turn.\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Haste\\nDelirium — When Mournwillow enters, if there are four or more card types among cards in your graveyard, creatures with power 2 or less can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mournwillow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

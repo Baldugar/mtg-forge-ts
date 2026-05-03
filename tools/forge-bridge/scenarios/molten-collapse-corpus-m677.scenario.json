@@ -1,0 +1,23 @@
+{
+  "id": "molten-collapse-corpus-m677",
+  "description": "M6 corpus — Molten Collapse; in-hand parse.",
+  "seed": 65394,
+  "cards": {
+    "Molten Collapse": "Name:Molten Collapse\nManaCost:B R\nTypes:Sorcery\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBDestroy,DBDestroyNonCreature | AdditionalDescription$ . If you descended this turn, you may choose both instead. (You descended if a permanent card was put into your graveyard from anywhere.)\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SpellDescription$ Destroy target creature or planeswalker.\nSVar:DBDestroyNonCreature:DB$ Destroy | ValidTgts$ Permanent.nonCreature+nonLand+cmcLE1 | TgtPrompt$ Select target noncreature, nonland permanent with mana value 1 or less | SpellDescription$ Destroy target noncreature, nonland permanent with mana value 1 or less.\nSVar:Y:Count$YouDescendedThisTurn\nDeckHints:Ability$Mill|Graveyard|Dredge|Sacrifice\nOracle:Choose one. If you descended this turn, you may choose both instead. (You descended if a permanent card was put into your graveyard from anywhere.)\\n• Destroy target creature or planeswalker.\\n• Destroy target noncreature, nonland permanent with mana value 1 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Collapse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

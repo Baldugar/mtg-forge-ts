@@ -1,0 +1,23 @@
+{
+  "id": "landscaper-colos-corpus-m677",
+  "description": "M6 corpus — Landscaper Colos; in-hand parse.",
+  "seed": 63978,
+  "cards": {
+    "Landscaper Colos": "Name:Landscaper Colos\nManaCost:5 W\nTypes:Creature Goat Beast\nPT:4/6\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, put target card from an opponent's graveyard on the bottom of their library.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Card.OppOwn | TgtPrompt$ Select target card in an opponent's graveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1\nK:TypeCycling:Basic:1 W\nOracle:When Landscaper Colos enters, put target card from an opponent's graveyard on the bottom of their library.\\nBasic landcycling {1}{W} ({1}{W}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Landscaper Colos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

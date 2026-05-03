@@ -1,0 +1,23 @@
+{
+  "id": "kor-skyfisher-corpus-m677",
+  "description": "M6 corpus — Kor Skyfisher; in-hand parse.",
+  "seed": 63837,
+  "cards": {
+    "Kor Skyfisher": "Name:Kor Skyfisher\nManaCost:1 W\nTypes:Creature Kor Soldier\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a permanent you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Permanent.YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE2,Permanent.nonLand+YouCtrl+cmcLE1\nOracle:Flying\\nWhen Kor Skyfisher enters, return a permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kor Skyfisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

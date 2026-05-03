@@ -1,0 +1,23 @@
+{
+  "id": "inquisition-corpus-m677",
+  "description": "M6 corpus — Inquisition; in-hand parse.",
+  "seed": 62970,
+  "cards": {
+    "Inquisition": "Name:Inquisition\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Player | RememberRevealed$ True | SubAbility$ Damage | SpellDescription$ Target player reveals their hand. CARDNAME deals damage to that player equal to the number of white cards in their hand.\nSVar:Damage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X\nSVar:X:Remembered$Valid Card.White\nAI:RemoveDeck:Random\nOracle:Target player reveals their hand. Inquisition deals damage to that player equal to the number of white cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inquisition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

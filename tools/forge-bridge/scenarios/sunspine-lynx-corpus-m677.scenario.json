@@ -1,0 +1,23 @@
+{
+  "id": "sunspine-lynx-corpus-m677",
+  "description": "M6 corpus — Sunspine Lynx; in-hand parse.",
+  "seed": 71385,
+  "cards": {
+    "Sunspine Lynx": "Name:Sunspine Lynx\nManaCost:2 R R\nTypes:Creature Elemental Cat\nPT:5/4\nS:Mode$ CantGainLife | ValidPlayer$ Player | Description$ Players can't gain life.\nS:Mode$ CantPreventDamage | Description$ Damage can't be prevented.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeatEach | TriggerDescription$ When CARDNAME enters, it deals damage to each player equal to the number of nonbasic lands that player controls.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDamage | DamageMap$ True\nSVar:DBDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ X\nSVar:X:Count$Valid Land.nonBasic+RememberedPlayerCtrl\nOracle:Players can't gain life.\\nDamage can't be prevented.\\nWhen Sunspine Lynx enters, it deals damage to each player equal to the number of nonbasic lands that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunspine Lynx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

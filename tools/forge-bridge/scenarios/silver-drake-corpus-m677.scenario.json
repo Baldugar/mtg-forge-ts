@@ -1,0 +1,23 @@
+{
+  "id": "silver-drake-corpus-m677",
+  "description": "M6 corpus — Silver Drake; in-hand parse.",
+  "seed": 69906,
+  "cards": {
+    "Silver Drake": "Name:Silver Drake\nManaCost:1 W U\nTypes:Creature Drake\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a white or blue creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.White+YouCtrl,Creature.Blue+YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.White+YouCtrl+cmcLE3,Creature.Blue+YouCtrl+cmcLE3\nOracle:Flying\\nWhen Silver Drake enters, return a white or blue creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silver Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

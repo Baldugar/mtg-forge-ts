@@ -1,0 +1,25 @@
+{
+  "id": "pandora-s-box-corpus-m677",
+  "description": "M6 corpus — Pandora's Box; ETB-on-bf.",
+  "seed": 66588,
+  "cards": {
+    "Pandora's Box": "Name:Pandora's Box\nManaCost:5\nTypes:Artifact\nA:AB$ ChooseCard | Cost$ 3 T | Choices$ Creature | AtRandom$ True | AllCards$ True | SubAbility$ DBRepeatEach | AILogic$ AtOppEOT | StackDescription$ SpellDescription | SpellDescription$ Choose a creature card at random from all players' decklists. Each player flips a coin. Each player whose coin comes up heads creates a token that's a copy of that card.\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBFlip | SubAbility$ DBCleanup\nSVar:DBFlip:DB$ FlipACoin | Flipper$ Remembered | NoCall$ True | HeadsSubAbility$ DBCopyPermanent\nSVar:DBCopyPermanent:DB$ CopyPermanent | Defined$ ChosenCard | Controller$ Remembered\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{3}, {T}: Choose a creature card at random from all players' decklists. Each player flips a coin. Each player whose coin comes up heads creates a token that's a copy of that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pandora's Box"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

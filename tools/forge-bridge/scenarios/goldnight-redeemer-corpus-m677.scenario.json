@@ -1,0 +1,23 @@
+{
+  "id": "goldnight-redeemer-corpus-m677",
+  "description": "M6 corpus — Goldnight Redeemer; in-hand parse.",
+  "seed": 61541,
+  "cards": {
+    "Goldnight Redeemer": "Name:Goldnight Redeemer\nManaCost:4 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life for each other creature you control.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.StrictlyOther+YouCtrl/Times.2\nOracle:Flying\\nWhen Goldnight Redeemer enters, you gain 2 life for each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goldnight Redeemer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

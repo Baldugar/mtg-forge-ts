@@ -1,0 +1,23 @@
+{
+  "id": "mist-of-stagnation-corpus-m677",
+  "description": "M6 corpus — Mist of Stagnation; in-hand parse.",
+  "seed": 65290,
+  "cards": {
+    "Mist of Stagnation": "Name:Mist of Stagnation\nManaCost:3 U U\nTypes:Enchantment\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Permanent | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Permanents don't untap during their controllers' untap steps.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player chooses a permanent for each card in their graveyard, then untaps those permanents.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ TriggeredPlayer | Amount$ X | Mandatory$ True | Choices$ Permanent | ChoiceTitle$ Choose a permanent to untap | SubAbility$ DBUntap\nSVar:DBUntap:DB$ UntapAll | ValidCards$ Permanent.ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:X:Count$ValidGraveyard Card.ActivePlayerCtrl\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Permanents don't untap during their controllers' untap steps.\\nAt the beginning of each player's upkeep, that player chooses a permanent for each card in their graveyard, then untaps those permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mist of Stagnation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

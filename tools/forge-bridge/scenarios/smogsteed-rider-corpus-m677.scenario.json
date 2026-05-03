@@ -1,0 +1,23 @@
+{
+  "id": "smogsteed-rider-corpus-m677",
+  "description": "M6 corpus — Smogsteed Rider; in-hand parse.",
+  "seed": 70263,
+  "cards": {
+    "Smogsteed Rider": "Name:Smogsteed Rider\nManaCost:2 B B\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, each other attacking creature gains fear until end of turn. (They can't be blocked except by artifact creatures and/or black creatures.)\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.attacking+Other | KW$ Fear\nOracle:Whenever Smogsteed Rider attacks, each other attacking creature gains fear until end of turn. (They can't be blocked except by artifact creatures and/or black creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smogsteed Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

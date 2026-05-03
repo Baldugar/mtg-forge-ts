@@ -1,0 +1,25 @@
+{
+  "id": "rock-basilisk-corpus-m677",
+  "description": "M6 corpus — Rock Basilisk; ETB-on-bf.",
+  "seed": 68445,
+  "cards": {
+    "Rock Basilisk": "Name:Rock Basilisk\nManaCost:4 R G\nTypes:Creature Basilisk\nPT:4/5\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.nonWall | ValidBlocker$ Card.Self | Execute$ DelTrigBlocked | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a non-Wall creature, destroy that creature at end of combat.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.nonWall | Execute$ DelTrigBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a non-Wall creature, destroy that creature at end of combat.\nSVar:DelTrigBlocked:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredAttackerLKICopy | TriggerDescription$ Destroy blocked creature at end of combat.\nSVar:DelTrigBlocker:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ Destroy blocking creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nOracle:Whenever Rock Basilisk blocks or becomes blocked by a non-Wall creature, destroy that creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rock Basilisk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

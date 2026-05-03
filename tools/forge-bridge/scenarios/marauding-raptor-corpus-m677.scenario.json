@@ -1,0 +1,23 @@
+{
+  "id": "marauding-raptor-corpus-m677",
+  "description": "M6 corpus — Marauding Raptor; in-hand parse.",
+  "seed": 64756,
+  "cards": {
+    "Marauding Raptor": "Name:Marauding Raptor\nManaCost:1 R\nTypes:Creature Dinosaur\nPT:2/3\nS:Mode$ ReduceCost | ValidCard$ Creature | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Creature spells you cast cost {1} less to cast.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever another creature you control enters, CARDNAME deals 2 damage to it. If a Dinosaur is dealt damage this way, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredCardLKICopy | NumDmg$ 2 | RememberDamaged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | ConditionDefined$ Remembered | ConditionPresent$ Creature.Dinosaur | ConditionCompare$ EQ1 | ConditionDescription$ If a Dinosaur is dealt damage this way, CARDNAME gets +2/+0 until end of turn. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Creature spells you cast cost {1} less to cast.\\nWhenever another creature you control enters, Marauding Raptor deals 2 damage to it. If a Dinosaur is dealt damage this way, Marauding Raptor gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marauding Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

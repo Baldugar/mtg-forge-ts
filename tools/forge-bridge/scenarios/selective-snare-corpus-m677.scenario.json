@@ -1,0 +1,23 @@
+{
+  "id": "selective-snare-corpus-m677",
+  "description": "M6 corpus — Selective Snare; in-hand parse.",
+  "seed": 69415,
+  "cards": {
+    "Selective Snare": "Name:Selective Snare\nManaCost:X U\nTypes:Sorcery\nA:SP$ ChangeZone | AnnounceType$ CreatureType | AILogic$ MostProminentOppControls | ValidTgts$ Creature.ChosenType | TargetMin$ X | TargetMax$ X | TgtPrompt$ Select X target creatures of the chosen creature type | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return X target creatures of the creature type of your choice to their owner's hand.\nSVar:X:Count$xPaid\nOracle:Return X target creatures of the creature type of your choice to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selective Snare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

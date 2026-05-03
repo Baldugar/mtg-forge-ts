@@ -1,0 +1,23 @@
+{
+  "id": "presence-of-the-wise-corpus-m677",
+  "description": "M6 corpus — Presence of the Wise; in-hand parse.",
+  "seed": 67145,
+  "cards": {
+    "Presence of the Wise": "Name:Presence of the Wise\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ GainLife | LifeAmount$ X | SpellDescription$ You gain 2 life for each card in your hand.\nSVar:X:Count$CardsInYourHand/Times.2\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$ValidHand Card.YouOwn\nOracle:You gain 2 life for each card in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Presence of the Wise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

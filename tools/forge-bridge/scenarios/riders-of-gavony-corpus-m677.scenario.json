@@ -1,0 +1,23 @@
+{
+  "id": "riders-of-gavony-corpus-m677",
+  "description": "M6 corpus — Riders of Gavony; in-hand parse.",
+  "seed": 68250,
+  "cards": {
+    "Riders of Gavony": "Name:Riders of Gavony\nManaCost:2 W W\nTypes:Creature Human Knight\nPT:3/3\nK:Vigilance\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentOppControls\nS:Mode$ Continuous | Affected$ Creature.Human+YouCtrl | AddKeyword$ Protection:Creature.ChosenType:ChosenType | Description$ Human creatures you control have protection from creatures of the chosen type.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Human\nOracle:Vigilance\\nAs Riders of Gavony enters, choose a creature type.\\nHuman creatures you control have protection from creatures of the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riders of Gavony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

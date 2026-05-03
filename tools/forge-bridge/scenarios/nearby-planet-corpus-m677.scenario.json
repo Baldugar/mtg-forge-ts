@@ -1,0 +1,23 @@
+{
+  "id": "nearby-planet-corpus-m677",
+  "description": "M6 corpus — Nearby Planet; in-hand parse.",
+  "seed": 65783,
+  "cards": {
+    "Nearby Planet": "Name:Nearby Planet\nManaCost:no cost\nTypes:Land\nS:Mode$ Continuous | Affected$ Card.Self | CharacteristicDefining$ True | AddType$ AllBasicLandType & AllNonBasicLandType | Description$ Rangeling (This card is every land type, including Plains, Island, Swamp, Mountain, Forest, Desert, Gate, Lair, Locus, and all those Urza's ones.)\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters the battlefield, sacrifice it unless you pay {1}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ 1 | UnlessPayer$ You\nOracle:Rangeling (This card is every land type, including Plains, Island, Swamp, Mountain, Forest, Desert, Gate, Lair, Locus, and all those Urza's ones.)\\nNearby Planet enters tapped.\\nWhen Nearby Planet enters the battlefield, sacrifice it unless you pay {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nearby Planet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

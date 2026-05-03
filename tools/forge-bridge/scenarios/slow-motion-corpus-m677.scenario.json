@@ -1,0 +1,23 @@
+{
+  "id": "slow-motion-corpus-m677",
+  "description": "M6 corpus — Slow Motion; in-hand parse.",
+  "seed": 70237,
+  "cards": {
+    "Slow Motion": "Name:Slow Motion\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player sacrifices that creature unless they pay {2}.\nSVar:TrigUpkeep:DB$ SacrificeAll | Defined$ Enchanted | UnlessPayer$ EnchantedController | UnlessCost$ 2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nOracle:Enchant creature\\nAt the beginning of the upkeep of enchanted creature's controller, that player sacrifices that creature unless they pay {2}.\\nWhen Slow Motion is put into a graveyard from the battlefield, return Slow Motion to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slow Motion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

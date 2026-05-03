@@ -1,0 +1,25 @@
+{
+  "id": "mindspring-merfolk-corpus-m677",
+  "description": "M6 corpus — Mindspring Merfolk; ETB-on-bf.",
+  "seed": 65180,
+  "cards": {
+    "Mindspring Merfolk": "Name:Mindspring Merfolk\nManaCost:U\nTypes:Creature Merfolk Wizard\nPT:1/1\nA:AB$ Draw | Cost$ X U U T | NumCards$ X | Exhaust$ True | SubAbility$ DBPutCounterAll | SpellDescription$ Draw X cards. Put a +1/+1 counter on each Merfolk creature you control. (Activate each exhaust ability only once.)\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.Merfolk+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Exhaust — {X}{U}{U}, {T}: Draw X cards. Put a +1/+1 counter on each Merfolk creature you control. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mindspring Merfolk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

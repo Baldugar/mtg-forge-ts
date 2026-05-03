@@ -1,0 +1,23 @@
+{
+  "id": "rapacious-one-corpus-m677",
+  "description": "M6 corpus — Rapacious One; in-hand parse.",
+  "seed": 67704,
+  "cards": {
+    "Rapacious One": "Name:Rapacious One\nManaCost:5 R\nTypes:Creature Eldrazi Drone\nPT:5/4\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, create that many 0/1 colorless Eldrazi Spawn creature tokens. They have \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Eldrazi\nDeckHas:Ability$Mana.Colorless|Token\nOracle:Trample\\nWhenever Rapacious One deals combat damage to a player, create that many 0/1 colorless Eldrazi Spawn creature tokens. They have \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rapacious One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

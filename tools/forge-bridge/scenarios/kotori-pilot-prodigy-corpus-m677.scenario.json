@@ -1,0 +1,23 @@
+{
+  "id": "kotori-pilot-prodigy-corpus-m677",
+  "description": "M6 corpus — Kotori, Pilot Prodigy; in-hand parse.",
+  "seed": 63846,
+  "cards": {
+    "Kotori, Pilot Prodigy": "Name:Kotori, Pilot Prodigy\nManaCost:1 W U\nTypes:Legendary Creature Moonfolk Pilot\nPT:2/4\nS:Mode$ Continuous | Affected$ Vehicle.YouCtrl | AddKeyword$ Crew:2 | Description$ Vehicles you control have crew 2.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target artifact creature you control gains lifelink and vigilance until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Artifact+YouCtrl | TgtPrompt$ Select target artifact creature you control | KW$ Lifelink & Vigilance\nDeckHints:Type$Vehicle\nDeckHas:Ability$LifeGain\nOracle:Vehicles you control have crew 2.\\nAt the beginning of combat on your turn, target artifact creature you control gains lifelink and vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kotori, Pilot Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

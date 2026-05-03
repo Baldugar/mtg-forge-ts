@@ -1,0 +1,23 @@
+{
+  "id": "nazahn-revered-bladesmith-corpus-m677",
+  "description": "M6 corpus — Nazahn, Revered Bladesmith; in-hand parse.",
+  "seed": 65780,
+  "cards": {
+    "Nazahn, Revered Bladesmith": "Name:Nazahn, Revered Bladesmith\nManaCost:4 G W\nTypes:Legendary Creature Cat Artificer\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for an Equipment card and reveal it. If you reveal a card named Hammer of Nazahn this way, put it onto the battlefield. Otherwise, put that card into your hand. Then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Equipment | ChangeNum$ 1 | Reveal$ True | Shuffle$ False | RememberChanged$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Battlefield | ConditionDefined$ Remembered | ConditionPresent$ Card.namedHammer of Nazahn | ForgetChanged$ True | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+equipped | Execute$ TrigTap | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever an equipped creature you control attacks, you may tap target creature defending player controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.DefendingPlayerCtrl | TgtPrompt$ Select target creature defending player controls\nDeckHints:Name$Hammer of Nazahn\nOracle:When Nazahn, Revered Bladesmith enters, search your library for an Equipment card and reveal it. If you reveal a card named Hammer of Nazahn this way, put it onto the battlefield. Otherwise, put that card into your hand. Then shuffle.\\nWhenever an equipped creature you control attacks, you may tap target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nazahn, Revered Bladesmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

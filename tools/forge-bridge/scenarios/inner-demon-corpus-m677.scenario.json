@@ -1,0 +1,23 @@
+{
+  "id": "inner-demon-corpus-m677",
+  "description": "M6 corpus — Inner Demon; in-hand parse.",
+  "seed": 62959,
+  "cards": {
+    "Inner Demon": "Name:Inner Demon\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Flying | AddType$ Demon | Description$ Enchanted creature gets +2/+2, has flying, and is a Demon in addition to its other types.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, all other creatures get -2/-2 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ -2 | NumDef$ -2 | ValidCards$ Creature.nonDemon | IsCurse$ True\nOracle:Enchant creature\\nEnchanted creature gets +2/+2, has flying, and is a Demon in addition to its other types.\\nWhen Inner Demon enters, all non-Demon creatures get -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inner Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

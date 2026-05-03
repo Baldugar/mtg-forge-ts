@@ -1,0 +1,23 @@
+{
+  "id": "malicious-intent-corpus-m677",
+  "description": "M6 corpus — Malicious Intent; in-hand parse.",
+  "seed": 64669,
+  "cards": {
+    "Malicious Intent": "Name:Malicious Intent\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ HostileAct | Description$ Enchanted creature has \"{T}: Target creature can't block this turn.\"\nSVar:HostileAct:AB$ Pump | Cost$ T | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't block. | SpellDescription$ Target creature can't block this turn.\nSVar:NonStackingAttachEffect:True\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature has \"{T}: Target creature can't block this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malicious Intent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

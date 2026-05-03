@@ -1,0 +1,23 @@
+{
+  "id": "screaming-seahawk-corpus-m677",
+  "description": "M6 corpus — Screaming Seahawk; in-hand parse.",
+  "seed": 69223,
+  "cards": {
+    "Screaming Seahawk": "Name:Screaming Seahawk\nManaCost:4 U\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a card named Screaming Seahawk, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedScreaming Seahawk | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Name$Screaming Seahawk\nOracle:Flying\\nWhen Screaming Seahawk enters, you may search your library for a card named Screaming Seahawk, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Screaming Seahawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

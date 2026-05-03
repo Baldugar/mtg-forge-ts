@@ -1,0 +1,23 @@
+{
+  "id": "resistance-squad-corpus-m677",
+  "description": "M6 corpus — Resistance Squad; in-hand parse.",
+  "seed": 68100,
+  "cards": {
+    "Resistance Squad": "Name:Resistance Squad\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Human.Other+YouCtrl | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if you control another Human, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckNeeds:Type$Human\nOracle:When Resistance Squad enters, if you control another Human, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resistance Squad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

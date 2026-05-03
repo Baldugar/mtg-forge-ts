@@ -1,0 +1,23 @@
+{
+  "id": "ondu-giant-corpus-m677",
+  "description": "M6 corpus — Ondu Giant; in-hand parse.",
+  "seed": 66307,
+  "cards": {
+    "Ondu Giant": "Name:Ondu Giant\nManaCost:3 G\nTypes:Creature Giant Druid\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Tapped$ True | ShuffleNonMandatory$ True\nOracle:When Ondu Giant enters, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ondu Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

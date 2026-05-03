@@ -1,0 +1,23 @@
+{
+  "id": "niv-mizzet-dracogenius-corpus-m677",
+  "description": "M6 corpus — Niv-Mizzet, Dracogenius; in-hand parse.",
+  "seed": 66009,
+  "cards": {
+    "Niv-Mizzet, Dracogenius": "Name:Niv-Mizzet, Dracogenius\nManaCost:2 U U R R\nTypes:Legendary Creature Dragon Wizard\nPT:5/5\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals damage to a player, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ DealDamage | Cost$ U R | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nOracle:Flying\\nWhenever Niv-Mizzet, Dracogenius deals damage to a player, you may draw a card.\\n{U}{R}: Niv-Mizzet, Dracogenius deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niv-Mizzet, Dracogenius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

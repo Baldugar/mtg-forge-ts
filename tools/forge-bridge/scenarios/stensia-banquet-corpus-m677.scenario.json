@@ -1,0 +1,23 @@
+{
+  "id": "stensia-banquet-corpus-m677",
+  "description": "M6 corpus — Stensia Banquet; in-hand parse.",
+  "seed": 70979,
+  "cards": {
+    "Stensia Banquet": "Name:Stensia Banquet\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ X | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals damage to target opponent or planeswalker equal to the number of Vampires you control. Draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:X:Count$Valid Vampire.YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Type$Vampire\nOracle:Stensia Banquet deals damage to target opponent or planeswalker equal to the number of Vampires you control.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stensia Banquet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

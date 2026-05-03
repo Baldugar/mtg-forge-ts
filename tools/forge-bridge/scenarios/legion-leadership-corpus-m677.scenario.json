@@ -1,0 +1,23 @@
+{
+  "id": "legion-leadership-corpus-m677",
+  "description": "M6 corpus — Legion Leadership; in-hand parse.",
+  "seed": 64101,
+  "cards": {
+    "Legion Leadership": "Name:Legion Leadership\nManaCost:1 RW\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ Double | KW$ First Strike | StackDescription$ REP target creature_{c:Targeted} | SpellDescription$ Until end of turn, double target creature's power and it gains first strike.\nAlternateMode:Modal\nOracle:Until end of turn, double target creature's power and it gains first strike.\n\nALTERNATE\n\nName:Legion Stronghold\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nOracle:Legion Stronghold enters tapped.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion Leadership"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

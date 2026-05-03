@@ -1,0 +1,23 @@
+{
+  "id": "nettling-curse-corpus-m677",
+  "description": "M6 corpus — Nettling Curse; in-hand parse.",
+  "seed": 65864,
+  "cards": {
+    "Nettling Curse": "Name:Nettling Curse\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nA:AB$ Effect | Cost$ 1 R | IsCurse$ True | StaticAbilities$ MustAttack | ExileOnMoved$ Battlefield | RememberObjects$ Enchanted | SpellDescription$ Enchanted creature attacks this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.IsRemembered | Description$ This creature attacks this turn if able.\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigLoseLifeAttack | TriggerDescription$ Whenever enchanted creature attacks or blocks, its controller loses 3 life.\nT:Mode$ Blocks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigLoseLifeBlock | Secondary$ True | TriggerDescription$ Whenever enchanted creature attacks or blocks, its controller loses 3 life.\nSVar:TrigLoseLifeAttack:DB$ LoseLife | LifeAmount$ 3 | Defined$ TriggeredAttackerController\nSVar:TrigLoseLifeBlock:DB$ LoseLife | LifeAmount$ 3 | Defined$ TriggeredBlockerController\nDeckNeeds:Color$Red\nOracle:Enchant creature\\nWhenever enchanted creature attacks or blocks, its controller loses 3 life.\\n{1}{R}: Enchanted creature attacks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nettling Curse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "renegade-bull-corpus-m677",
+  "description": "M6 corpus — Renegade Bull; in-hand parse.",
+  "seed": 68039,
+  "cards": {
+    "Renegade Bull": "Name:Renegade Bull\nManaCost:4 R\nTypes:Creature Ox\nPT:0/5\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell, this creature gets +X/+0 until end of turn, where X is that spell's mana value.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever this creature attacks, exile up to one target instant or sorcery card from your graveyard and copy it. You may cast the copy without paying its mana cost.\nSVar:TrigExile:DB$ ChangeZone | DefinedPlayer$ You | TargetMin$ 0 | TargetMax$ 1 | Destination$ Exile | ChangeNum$ 1 | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TgtPrompt$ Select target instant or sorcery card from your graveyard | Origin$ Graveyard | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | Controller$ You | CopyCard$ True | ValidSA$ Spell | Optional$ True | WithoutManaCost$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nSVar:BuffedBy:Instant,Sorcery\nDeckHints:Type$Instant|Sorcery\nOracle:Trample\\nWhenever you cast an instant or sorcery spell, this creature gets +X/+0 until end of turn, where X is that spell's mana value.\\nWhenever this creature attacks, exile up to one target instant or sorcery card from your graveyard and copy it. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renegade Bull"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

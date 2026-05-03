@@ -1,0 +1,23 @@
+{
+  "id": "malevolent-witchkite-corpus-m677",
+  "description": "M6 corpus — Malevolent Witchkite; in-hand parse.",
+  "seed": 64663,
+  "cards": {
+    "Malevolent Witchkite": "Name:Malevolent Witchkite\nManaCost:4 B B\nTypes:Creature Dragon Warlock\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice any number of artifacts, enchantments, and/or tokens, then draw that many cards.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Enchantment,Artifact,Card.token | RememberSacrificed$ True | Optional$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ DrawX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Enchantment.YouCtrl,Artifact.YouCtrl,Card.token+YouCtrl\nSVar:DrawX:Remembered$Amount\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Token & Type$Enchantment|Artifact\nOracle:Flying\\nWhen Malevolent Witchkite enters, sacrifice any number of artifacts, enchantments, and/or tokens, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malevolent Witchkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

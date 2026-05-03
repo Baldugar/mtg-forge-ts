@@ -1,0 +1,23 @@
+{
+  "id": "intellectual-offering-corpus-m677",
+  "description": "M6 corpus — Intellectual Offering; in-hand parse.",
+  "seed": 63020,
+  "cards": {
+    "Intellectual Offering": "Name:Intellectual Offering\nManaCost:4 U\nTypes:Instant\nA:SP$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | SubAbility$ DBDraw | SpellDescription$ Choose an opponent. You and that player each draw three cards. Choose an opponent. Untap all nonland permanents you control and all nonland permanents that player controls.\nSVar:DBDraw:DB$ Draw | Defined$ .Chosen,You | NumCards$ 3 | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | SubAbility$ DBUntap\nSVar:DBUntap:DB$ UntapAll | ValidCards$ Permanent.nonLand+YouCtrl,Permanent.nonLand+ChosenCtrl\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose an opponent. You and that player each draw three cards.\\nChoose an opponent. Untap all nonland permanents you control and all nonland permanents that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intellectual Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

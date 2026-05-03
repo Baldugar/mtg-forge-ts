@@ -1,0 +1,23 @@
+{
+  "id": "grave-sifter-corpus-m677",
+  "description": "M6 corpus — Grave Sifter; in-hand parse.",
+  "seed": 61657,
+  "cards": {
+    "Grave Sifter": "Name:Grave Sifter\nManaCost:5 G\nTypes:Creature Elemental Beast\nPT:5/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ When CARDNAME enters, each player chooses a creature type and returns any number of cards of that type from their graveyard to their hand.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChoose | SubAbility$ DBCleanup\nSVar:DBChoose:DB$ ChooseType | Defined$ Player.IsRemembered | Type$ Creature | AILogic$ MostProminentInComputerGraveyard | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | ChangeType$ Card.RememberedPlayerCtrl+ChosenType | Hidden$ True | Origin$ Graveyard | Destination$ Hand | DefinedPlayer$ Remembered | Chooser$ Remembered | ChangeNum$ X\nSVar:X:Count$ValidGraveyard Card.RememberedPlayerCtrl+ChosenType\nSVar:DBCleanup:DB$ Cleanup | ClearChosenType$ True\nOracle:When Grave Sifter enters, each player chooses a creature type and returns any number of cards of that type from their graveyard to their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grave Sifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

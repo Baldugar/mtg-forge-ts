@@ -1,0 +1,23 @@
+{
+  "id": "stalked-researcher-corpus-m677",
+  "description": "M6 corpus — Stalked Researcher; in-hand parse.",
+  "seed": 70857,
+  "cards": {
+    "Stalked Researcher": "Name:Stalked Researcher\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:3/3\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME can attack this turn as though it didn't have defender.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigEffect | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME can attack this turn as though it didn't have defender.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ CanAttack | ForgetOnMoved$ Battlefield\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE can attack this turn as though it didn't have defender.\nDeckNeeds:Type$Enchantment\nOracle:Defender\\nEerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, Stalker Researcher can attack this turn as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stalked Researcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

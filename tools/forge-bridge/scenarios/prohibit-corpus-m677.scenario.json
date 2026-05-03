@@ -1,0 +1,23 @@
+{
+  "id": "prohibit-corpus-m677",
+  "description": "M6 corpus — Prohibit; in-hand parse.",
+  "seed": 67260,
+  "cards": {
+    "Prohibit": "Name:Prohibit\nManaCost:1 U\nTypes:Instant\nK:Kicker:2\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | ConditionCheckSVar$ Y | ConditionSVarCompare$ LEX | SpellDescription$ Counter target spell if its mana value is 2 or less. If this spell was kicked, counter that spell if its mana value is 4 or less instead.\nSVar:X:Count$Kicked.4.2\nSVar:Y:Targeted$CardManaCost\nAI:RemoveDeck:All\nOracle:Kicker {2} (You may pay an additional {2} as you cast this spell.)\\nCounter target spell if its mana value is 2 or less. If this spell was kicked, counter that spell if its mana value is 4 or less instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prohibit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

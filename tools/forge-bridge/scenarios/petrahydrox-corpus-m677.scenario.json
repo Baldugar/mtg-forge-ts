@@ -1,0 +1,23 @@
+{
+  "id": "petrahydrox-corpus-m677",
+  "description": "M6 corpus — Petrahydrox; in-hand parse.",
+  "seed": 66778,
+  "cards": {
+    "Petrahydrox": "Name:Petrahydrox\nManaCost:3 UR\nTypes:Creature Weird\nPT:3/3\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ When CARDNAME becomes the target of a spell or ability, return CARDNAME to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:All\nOracle:({U/R} can be paid with either {U} or {R}.)\\nWhen Petrahydrox becomes the target of a spell or ability, return Petrahydrox to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Petrahydrox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

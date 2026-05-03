@@ -1,0 +1,25 @@
+{
+  "id": "silent-gravestone-corpus-m677",
+  "description": "M6 corpus — Silent Gravestone; ETB-on-bf.",
+  "seed": 69880,
+  "cards": {
+    "Silent Gravestone": "Name:Silent Gravestone\nManaCost:1\nTypes:Artifact\nS:Mode$ CantTarget | AffectedZone$ Graveyard | Description$ Cards in graveyards can't be the targets of spells or abilities.\nA:AB$ ChangeZone | Cost$ 4 T | Origin$ Battlefield | Destination$ Exile | ChangeType$ Card.Self | AILogic$ ExileGraveyards | SubAbility$ DBChangeZoneAll | SpellDescription$ Exile CARDNAME and all cards from all graveyards. Draw a card.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\n# It probably doesn't matter whether graveyards are exiled simultaneously with Silent Gravestone, but nevertheless, is there a way to do it?\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:Cards in graveyards can't be the targets of spells or abilities.\\n{4}, {T}: Exile Silent Gravestone and all cards from all graveyards. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Silent Gravestone"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "meglonoth-corpus-m677",
+  "description": "M6 corpus — Meglonoth; ETB-on-bf.",
+  "seed": 64941,
+  "cards": {
+    "Meglonoth": "Name:Meglonoth\nManaCost:3 R G W\nTypes:Creature Beast\nPT:6/6\nK:Vigilance\nK:Trample\nT:Mode$ AttackerBlocked | ValidCard$ Creature | ValidBlocker$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME blocks a creature, CARDNAME deals damage to that creature's controller equal to CARDNAME's power.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredAttackerController | NumDmg$ X\nSVar:X:Count$CardPower\nSVar:HasBlockEffect:TRUE\nOracle:Vigilance, trample\\nWhenever Meglonoth blocks a creature, Meglonoth deals damage to that creature's controller equal to Meglonoth's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Meglonoth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

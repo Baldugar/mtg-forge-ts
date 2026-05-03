@@ -1,0 +1,25 @@
+{
+  "id": "golden-sidekick-corpus-m677",
+  "description": "M6 corpus — Golden Sidekick; ETB-on-bf.",
+  "seed": 61527,
+  "cards": {
+    "Golden Sidekick": "Name:Golden Sidekick\nManaCost:W B\nTypes:Enchantment Creature Bat Glimmer\nPT:1/3\nK:Flying\nK:Lifelink\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ Whenever you gain life, a random creature card in your hand perpetually gets +X/+X, where X is the amount of life you gained.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Creature.YouOwn | AtRandom$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ChosenCard | PumpZone$ Hand | NumAtt$ +X | NumDef$ +X | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:X:TriggerCount$LifeAmount\nOracle:Flying, lifelink\\nWhenever you gain life, a random creature card in your hand perpetually gets +X/+X, where X is the amount of life you gained.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Golden Sidekick"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

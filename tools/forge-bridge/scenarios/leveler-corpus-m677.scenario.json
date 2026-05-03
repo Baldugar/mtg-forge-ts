@@ -1,0 +1,23 @@
+{
+  "id": "leveler-corpus-m677",
+  "description": "M6 corpus — Leveler; in-hand parse.",
+  "seed": 64156,
+  "cards": {
+    "Leveler": "Name:Leveler\nManaCost:5\nTypes:Artifact Creature Juggernaut\nPT:10/10\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileYourLibrary | TriggerDescription$ When CARDNAME enters, exile all cards from your library.\nSVar:TrigExileYourLibrary:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Library | Destination$ Exile\nAI:RemoveDeck:Random\nOracle:When Leveler enters, exile all cards from your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "imagecrafter-corpus-m677",
+  "description": "M6 corpus — Imagecrafter; ETB-on-bf.",
+  "seed": 62771,
+  "cards": {
+    "Imagecrafter": "Name:Imagecrafter\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ ChooseType | Cost$ T | Defined$ You | Type$ Creature | InvalidTypes$ Wall | SubAbility$ DBAnimate | SpellDescription$ Choose a creature type other than Wall. Target creature becomes that type until end of turn.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Creature | Types$ ChosenType | RemoveCreatureTypes$ True\nAI:RemoveDeck:All\nOracle:{T}: Choose a creature type other than Wall. Target creature becomes that type until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Imagecrafter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sage-of-ancient-lore-corpus-m677",
+  "description": "M6 corpus — Sage of Ancient Lore; in-hand parse.",
+  "seed": 68862,
+  "cards": {
+    "Sage of Ancient Lore": "Name:Sage of Ancient Lore\nManaCost:4 G\nTypes:Creature Human Shaman Werewolf\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\n# TODO: update logic for the AI to play around this\nAI:RemoveDeck:All\nSVar:NeedsToPlayVar:X GE3\nAlternateMode:DoubleFaced\nOracle:Sage of Ancient Lore's power and toughness are each equal to the number of cards in your hand.\\nWhen Sage of Ancient Lore enters, draw a card.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Sage of Ancient Lore.\n\nALTERNATE\n\nName:Werewolf of Ancient Hunger\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:*/*\nK:Vigilance\nK:Trample\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ Y | SetToughness$ Y | Description$ CARDNAME's power and toughness are each equal to the total number of cards in all players' hands.\nSVar:Y:Count$NumInAllHands\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Vigilance, trample\\nWerewolf of Ancient Hunger's power and toughness are each equal to the total number of cards in all players' hands.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Werewolf of Ancient Hunger.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage of Ancient Lore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

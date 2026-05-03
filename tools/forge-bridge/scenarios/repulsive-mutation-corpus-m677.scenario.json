@@ -1,0 +1,23 @@
+{
+  "id": "repulsive-mutation-corpus-m677",
+  "description": "M6 corpus — Repulsive Mutation; in-hand parse.",
+  "seed": 68082,
+  "cards": {
+    "Repulsive Mutation": "Name:Repulsive Mutation\nManaCost:X G U\nTypes:Instant\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCounter | SpellDescription$ Put X +1/+1 counters on target creature you control.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target spell (to counter) | ValidTgts$ Card | UnlessCost$ Y | UnlessPayer$ ThisTargetedController | SpellDescription$ Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.\nSVar:X:Count$xPaid\nSVar:Y:Count$Valid Creature.YouCtrl$GreatestCardPower\nDeckHas:Ability$Counters\nOracle:Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Repulsive Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

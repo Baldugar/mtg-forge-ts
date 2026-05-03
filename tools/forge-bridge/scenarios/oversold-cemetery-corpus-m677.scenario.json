@@ -1,0 +1,23 @@
+{
+  "id": "oversold-cemetery-corpus-m677",
+  "description": "M6 corpus — Oversold Cemetery; in-hand parse.",
+  "seed": 66508,
+  "cards": {
+    "Oversold Cemetery": "Name:Oversold Cemetery\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | OptionalDecider$ You | IsPresent$ Creature.YouCtrl | PresentZone$ Graveyard | PresentCompare$ GE4 | Execute$ TrigReturn | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if you have four or more creature cards in your graveyard, you may return target creature card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature in your graveyard\nOracle:At the beginning of your upkeep, if you have four or more creature cards in your graveyard, you may return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oversold Cemetery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lavaborn-muse-corpus-m677",
+  "description": "M6 corpus — Lavaborn Muse; in-hand parse.",
+  "seed": 64030,
+  "cards": {
+    "Lavaborn Muse": "Name:Lavaborn Muse\nManaCost:3 R\nTypes:Creature Spirit\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | CheckSVar$ CardsInHand | SVarCompare$ LE2 | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, CARDNAME deals 3 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 3\nSVar:CardsInHand:Count$ValidHand Card.ActivePlayerCtrl\nOracle:At the beginning of each opponent's upkeep, if that player has two or fewer cards in hand, Lavaborn Muse deals 3 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lavaborn Muse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

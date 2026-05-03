@@ -1,0 +1,25 @@
+{
+  "id": "relic-golem-corpus-m677",
+  "description": "M6 corpus — Relic Golem; ETB-on-bf.",
+  "seed": 68008,
+  "cards": {
+    "Relic Golem": "Name:Relic Golem\nManaCost:3\nTypes:Artifact Creature Golem\nPT:6/6\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ LT8 | Description$ CARDNAME can't attack or block unless an opponent has eight or more cards in their graveyard.\nSVar:X:PlayerCountOpponents$HighestCardsInGraveyard\nA:AB$ Mill | Cost$ 2 T | NumCards$ 2 | ValidTgts$ Player | SpellDescription$ Target player mills two cards. (They put the top two cards of their library into their graveyard.)\nDeckHas:Ability$Mill\nOracle:Relic Golem can't attack or block unless an opponent has eight or more cards in their graveyard.\\n{2}, {T}: Target player mills two cards. (They put the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Relic Golem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

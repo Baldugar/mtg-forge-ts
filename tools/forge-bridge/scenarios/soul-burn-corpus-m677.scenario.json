@@ -1,0 +1,23 @@
+{
+  "id": "soul-burn-corpus-m677",
+  "description": "M6 corpus — Soul Burn; in-hand parse.",
+  "seed": 70436,
+  "cards": {
+    "Soul Burn": "Name:Soul Burn\nManaCost:X 2 B\nTypes:Sorcery\nA:SP$ StoreSVar | XColor$ Black,Red | ValidTgts$ Any | SVar$ Limit | Type$ Targeted | Expression$ CardToughness | SubAbility$ StoreTgtPW | ConditionDefined$ Targeted | ConditionPresent$ Card.Creature | ConditionCompare$ GE1 | SpellDescription$ Spend only black and/or red mana on X. CARDNAME deals X damage to target creature or player. You gain life equal to the damage dealt, but not more than the amount of {B} spent on X, the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, or the creature's toughness.\nSVar:StoreTgtPW:DB$ StoreSVar | SVar$ Limit | Type$ Targeted | Expression$ CardCounters.LOYALTY | SubAbility$ StoreTgtP | ConditionDefined$ Targeted | ConditionPresent$ Card.Planeswalker | ConditionCheckSVar$ Loyalty | ConditionSVarCompare$ LTLimit\nSVar:StoreTgtP:DB$ StoreSVar | SVar$ Limit | Type$ Calculate | Expression$ TargetedPlayer$LifeTotal | SubAbility$ DBDamage | ConditionDefined$ Targeted | ConditionPresent$ Card.Creature,Card.Planeswalker | ConditionCompare$ EQ0\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X | SubAbility$ DBGainLife | AILogic$ XLifeDrain\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ DrainedLifeCard\nSVar:X:Count$xPaid\nSVar:DrainedLifeCard:SVar$BManaPaid/LimitMax.Limit\nSVar:Limit:Count$xPaid\nSVar:Loyalty:Targeted$CardCounters.LOYALTY\nSVar:BManaPaid:Count$xColorPaid B\nDeckHints:Color$Red\nOracle:Spend only black and/or red mana on X.\\nSoul Burn deals X damage to any target. You gain life equal to the damage dealt, but not more than the amount of {B} spent on X, the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, or the creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Burn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

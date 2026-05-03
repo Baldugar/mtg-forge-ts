@@ -1,0 +1,25 @@
+{
+  "id": "sanguine-savior-corpus-m677",
+  "description": "M6 corpus — Sanguine Savior; ETB-on-bf.",
+  "seed": 68985,
+  "cards": {
+    "Sanguine Savior": "Name:Sanguine Savior\nManaCost:1 W B\nTypes:Creature Vampire Cleric\nPT:2/1\nK:Flying\nK:Lifelink\nK:Disguise:WB WB\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, another target creature you control gains lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | KW$ Lifelink\nDeckHas:Ability$LifeGain\nOracle:Flying, lifelink\\nDisguise {W/B}{W/B} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Sanguine Savior is turned face up, another target creature you control gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sanguine Savior"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

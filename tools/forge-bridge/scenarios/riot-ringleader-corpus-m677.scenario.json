@@ -1,0 +1,23 @@
+{
+  "id": "riot-ringleader-corpus-m677",
+  "description": "M6 corpus — Riot Ringleader; in-hand parse.",
+  "seed": 68313,
+  "cards": {
+    "Riot Ringleader": "Name:Riot Ringleader\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, Human creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.Human+YouCtrl | NumAtt$ +1\nOracle:Whenever Riot Ringleader attacks, Human creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riot Ringleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

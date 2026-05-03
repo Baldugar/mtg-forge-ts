@@ -1,0 +1,25 @@
+{
+  "id": "metathran-aerostat-corpus-m677",
+  "description": "M6 corpus — Metathran Aerostat; ETB-on-bf.",
+  "seed": 65061,
+  "cards": {
+    "Metathran Aerostat": "Name:Metathran Aerostat\nManaCost:2 U U\nTypes:Creature Metathran\nPT:2/2\nK:Flying\nA:AB$ ChangeZone | Cost$ X U | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.cmcEQX | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ You may put a creature card with mana value X from your hand onto the battlefield. If you do, return CARDNAME to its owner's hand.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:X:Count$xPaid\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Flying\\n{X}{U}: You may put a creature card with mana value X from your hand onto the battlefield. If you do, return Metathran Aerostat to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Metathran Aerostat"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

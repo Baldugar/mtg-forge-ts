@@ -1,0 +1,23 @@
+{
+  "id": "storm-fleet-spy-corpus-m677",
+  "description": "M6 corpus — Storm Fleet Spy; in-hand parse.",
+  "seed": 71088,
+  "cards": {
+    "Storm Fleet Spy": "Name:Storm Fleet Spy\nManaCost:2 U\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigDraw | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When Storm Fleet Spy enters, if you attacked this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm Fleet Spy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

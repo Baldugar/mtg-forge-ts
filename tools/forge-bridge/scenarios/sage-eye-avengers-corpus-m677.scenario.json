@@ -1,0 +1,23 @@
+{
+  "id": "sage-eye-avengers-corpus-m677",
+  "description": "M6 corpus — Sage-Eye Avengers; in-hand parse.",
+  "seed": 68860,
+  "cards": {
+    "Sage-Eye Avengers": "Name:Sage-Eye Avengers\nManaCost:4 U U\nTypes:Creature Djinn Monk\nPT:4/5\nK:Prowess\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME attacks, you may return target creature to its owner's hand if its power is less than CARDNAME's power.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | IsCurse$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1\nSVar:Y:Count$CardPower\nSVar:X:Targeted$Valid Creature.powerLTY\nSVar:HasAttackEffect:TRUE\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhenever Sage-Eye Avengers attacks, you may return target creature to its owner's hand if its power is less than Sage-Eye Avengers's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage-Eye Avengers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

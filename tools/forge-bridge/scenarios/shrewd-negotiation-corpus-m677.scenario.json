@@ -1,0 +1,23 @@
+{
+  "id": "shrewd-negotiation-corpus-m677",
+  "description": "M6 corpus — Shrewd Negotiation; in-hand parse.",
+  "seed": 69778,
+  "cards": {
+    "Shrewd Negotiation": "Name:Shrewd Negotiation\nManaCost:4 U\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Choose target artifact you control | SubAbility$ DBExchange | SpellDescription$ Exchange control of target artifact you control and target artifact or creature you don't control.\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Artifact.YouDontCtrl,Creature.YouDontCtrl | TgtPrompt$ Choose target artifact or creature you don't control\nAI:RemoveDeck:All\nOracle:Exchange control of target artifact you control and target artifact or creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrewd Negotiation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

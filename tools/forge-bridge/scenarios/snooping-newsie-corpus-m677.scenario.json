@@ -1,0 +1,23 @@
+{
+  "id": "snooping-newsie-corpus-m677",
+  "description": "M6 corpus — Snooping Newsie; in-hand parse.",
+  "seed": 70298,
+  "cards": {
+    "Snooping Newsie": "Name:Snooping Newsie\nManaCost:U B\nTypes:Creature Human Rogue\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Lifelink | CheckSVar$ X | SVarCompare$ GE5 | Description$ As long as there are five or more mana values among cards in your graveyard, CARDNAME gets +1/+1 and has lifelink.\nSVar:X:Count$ValidGraveyard Card.YouOwn$DifferentCardManaCost\nDeckHas:Ability$Mill|LifeGain\nDeckHints:Ability$Discard\nOracle:When Snooping Newsie enters, mill two cards. (Put the top two cards of your library into your graveyard.)\\nAs long as there are five or more mana values among cards in your graveyard, Snooping Newsie gets +1/+1 and has lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Snooping Newsie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

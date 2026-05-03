@@ -1,0 +1,23 @@
+{
+  "id": "keeper-of-keys-corpus-m677",
+  "description": "M6 corpus — Keeper of Keys; in-hand parse.",
+  "seed": 63561,
+  "cards": {
+    "Keeper of Keys": "Name:Keeper of Keys\nManaCost:3 U U\nTypes:Creature Human Rogue Mutant\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ You.isMonarch | Execute$ TrigUnblockable | TriggerDescription$ At the beginning of your upkeep, if you're the monarch, creatures you control can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Creature.YouCtrl | Description$ Creatures you control can't be blocked this turn.\nOracle:When Keeper of Keys enters, you become the monarch.\\nAt the beginning of your upkeep, if you're the monarch, creatures you control can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keeper of Keys"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

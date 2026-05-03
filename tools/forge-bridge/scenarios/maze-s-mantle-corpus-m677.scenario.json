@@ -1,0 +1,23 @@
+{
+  "id": "maze-s-mantle-corpus-m677",
+  "description": "M6 corpus — Maze's Mantle; in-hand parse.",
+  "seed": 64917,
+  "cards": {
+    "Maze's Mantle": "Name:Maze's Mantle\nManaCost:2 G\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | IsPresent$ Creature.EnchantedBy+withToxic | ValidCard$ Card.Self | Execute$ TrigHexproof | TriggerDescription$ When CARDNAME enters, if enchanted creature has toxic, that creature gains hexproof until end of turn.\nSVar:TrigHexproof:DB$ Pump | Defined$ Enchanted | KW$ Hexproof\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2.\nDeckHints:Keyword$Toxic\nOracle:Flash\\nEnchant creature\\nWhen Maze's Mantle enters, if enchanted creature has toxic, that creature gains hexproof until end of turn.\\nEnchanted creature gets +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maze's Mantle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

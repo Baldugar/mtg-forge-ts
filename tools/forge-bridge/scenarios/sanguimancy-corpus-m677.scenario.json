@@ -1,0 +1,23 @@
+{
+  "id": "sanguimancy-corpus-m677",
+  "description": "M6 corpus — Sanguimancy; in-hand parse.",
+  "seed": 68980,
+  "cards": {
+    "Sanguimancy": "Name:Sanguimancy\nManaCost:4 B\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | SubAbility$ DBLoseLife | SpellDescription$ You draw X cards and you lose X life, where X is your devotion to black.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nSVar:X:Count$Devotion.Black\nAI:RemoveDeck:All\nOracle:You draw X cards and you lose X life, where X is your devotion to black. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanguimancy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

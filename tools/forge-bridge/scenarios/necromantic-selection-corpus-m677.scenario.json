@@ -1,0 +1,23 @@
+{
+  "id": "necromantic-selection-corpus-m677",
+  "description": "M6 corpus — Necromantic Selection; in-hand parse.",
+  "seed": 65801,
+  "cards": {
+    "Necromantic Selection": "Name:Necromantic Selection\nManaCost:4 B B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBReturn | SpellDescription$ Destroy all creatures, then return a creature card put into a graveyard this way to the battlefield under your control. It's a black Zombie in addition to its other colors and types. Exile CARDNAME.\nSVar:DBReturn:DB$ ChangeZone | ChangeType$ Creature.!token+IsRemembered | ChangeNum$ 1 | Hidden$ True | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | StaticEffect$ Animate | SubAbility$ DBCleanup\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Zombie | AddColor$ Black\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nOracle:Destroy all creatures, then return a creature card put into a graveyard this way to the battlefield under your control. It's a black Zombie in addition to its other colors and types. Exile Necromantic Selection.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromantic Selection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

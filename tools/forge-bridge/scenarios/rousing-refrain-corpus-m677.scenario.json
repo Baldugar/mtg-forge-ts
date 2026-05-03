@@ -1,0 +1,23 @@
+{
+  "id": "rousing-refrain-corpus-m677",
+  "description": "M6 corpus — Rousing Refrain; in-hand parse.",
+  "seed": 68553,
+  "cards": {
+    "Rousing Refrain": "Name:Rousing Refrain\nManaCost:3 R R\nTypes:Sorcery\nK:Suspend:3:1 R\nA:SP$ Mana | ValidTgts$ Opponent | AILogic$ ManaRitual | Produced$ R | Amount$ Z | PersistentMana$ True | Defined$ You | SubAbility$ DBChange | StackDescription$ SpellDescription | SpellDescription$ Add {R} for each card in target opponent's hand. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:Z:TargetedPlayer$CardsInHand\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | WithCountersType$ TIME | WithCountersAmount$ 3 | SpellDescription$ Exile CARDNAME with three time counters on it.\nOracle:Add {R} for each card in target opponent's hand. Until end of turn, you don't lose this mana as steps and phases end. Exile Rousing Refrain with three time counters on it.\\nSuspend 3—{1}{R} (Rather than cast this card from your hand, you may pay {1}{R} and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rousing Refrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

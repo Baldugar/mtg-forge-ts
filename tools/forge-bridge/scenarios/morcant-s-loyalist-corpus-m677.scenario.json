@@ -1,0 +1,23 @@
+{
+  "id": "morcant-s-loyalist-corpus-m677",
+  "description": "M6 corpus — Morcant's Loyalist; in-hand parse.",
+  "seed": 65494,
+  "cards": {
+    "Morcant's Loyalist": "Name:Morcant's Loyalist\nManaCost:1 B G\nTypes:Creature Elf Warrior\nPT:3/2\nS:Mode$ Continuous | Affected$ Elf.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Elves you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature dies, return another target Elf card from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Elf.Other+YouOwn\nDeckHints:Type$Elf\nOracle:Other Elves you control get +1/+1.\\nWhen this creature dies, return another target Elf card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morcant's Loyalist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

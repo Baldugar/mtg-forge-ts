@@ -1,0 +1,23 @@
+{
+  "id": "overseer-of-the-damned-corpus-m677",
+  "description": "M6 corpus — Overseer of the Damned; in-hand parse.",
+  "seed": 66507,
+  "cards": {
+    "Overseer of the Damned": "Name:Overseer of the Damned\nManaCost:5 B B\nTypes:Creature Demon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature an opponent controls dies, create a tapped 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenTapped$ True\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Overseer of the Damned enters, you may destroy target creature.\\nWhenever a nontoken creature an opponent controls dies, create a tapped 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overseer of the Damned"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

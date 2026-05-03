@@ -1,0 +1,23 @@
+{
+  "id": "hook-swords-corpus-m677",
+  "description": "M6 corpus — Hook Swords; in-hand parse.",
+  "seed": 62473,
+  "cards": {
+    "Hook Swords": "Name:Hook Swords\nManaCost:2 RW\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Equipment enters, create a 1/1 white Ally creature token, then attach this Equipment to it.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_ally | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ First Strike | Condition$ PlayerTurn | Description$ During your turn, equipped creature gets +1/+1 and has first strike.\nK:Equip:3\nOracle:When this Equipment enters, create a 1/1 white Ally creature token, then attach this Equipment to it.\\nDuring your turn, equipped creature gets +1/+1 and has first strike.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hook Swords"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

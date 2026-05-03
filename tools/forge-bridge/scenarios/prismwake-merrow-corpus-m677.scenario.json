@@ -1,0 +1,23 @@
+{
+  "id": "prismwake-merrow-corpus-m677",
+  "description": "M6 corpus — Prismwake Merrow; in-hand parse.",
+  "seed": 67229,
+  "cards": {
+    "Prismwake Merrow": "Name:Prismwake Merrow\nManaCost:2 U\nTypes:Creature Merfolk Wizard\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseColor | TriggerDescription$ When CARDNAME enters, target permanent becomes the color or colors of your choice until end of turn.\nSVar:TrigChooseColor:DB$ ChooseColor | Defined$ You | OrColors$ True | SubAbility$ Animate\nSVar:Animate:DB$ Animate | ValidTgts$ Permanent | Colors$ ChosenColor | OverwriteColors$ True\nAI:RemoveDeck:All\nOracle:Flash\\nWhen Prismwake Merrow enters, target permanent becomes the color or colors of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prismwake Merrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

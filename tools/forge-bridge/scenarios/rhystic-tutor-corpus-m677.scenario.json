@@ -1,0 +1,23 @@
+{
+  "id": "rhystic-tutor-corpus-m677",
+  "description": "M6 corpus — Rhystic Tutor; in-hand parse.",
+  "seed": 68233,
+  "cards": {
+    "Rhystic Tutor": "Name:Rhystic Tutor\nManaCost:2 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | UnlessCost$ 2 | UnlessPayer$ Player | Mandatory$ True | SpellDescription$ Unless any player pays {2}, search your library for a card, put that card into your hand, then shuffle.\nSVar:NeedsToPlayVar:Z LE1\nSVar:Z:Count$Valid Card.canProduceMana+OppCtrl+untapped\nAI:RemoveDeck:Random\nOracle:Unless any player pays {2}, search your library for a card, put that card into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rhystic Tutor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

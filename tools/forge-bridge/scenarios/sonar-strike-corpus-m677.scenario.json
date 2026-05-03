@@ -1,0 +1,23 @@
+{
+  "id": "sonar-strike-corpus-m677",
+  "description": "M6 corpus — Sonar Strike; in-hand parse.",
+  "seed": 70394,
+  "cards": {
+    "Sonar Strike": "Name:Sonar Strike\nManaCost:1 W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.attacking,Creature.blocking,Creature.tapped | TgtPrompt$ Select target attacking, blocking, or tapped creature | NumDmg$ 4 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 4 damage to target attacking, blocking, or tapped creature. You gain 3 life if you control a Bat.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | ConditionPresent$ Bat.YouCtrl\nOracle:Sonar Strike deals 4 damage to target attacking, blocking, or tapped creature. You gain 3 life if you control a Bat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sonar Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

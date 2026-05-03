@@ -1,0 +1,23 @@
+{
+  "id": "moodmark-painter-corpus-m677",
+  "description": "M6 corpus — Moodmark Painter; in-hand parse.",
+  "seed": 65450,
+  "cards": {
+    "Moodmark Painter": "Name:Moodmark Painter\nManaCost:2 B B\nTypes:Creature Human Shaman\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gains menace and gets +X/+0 until end of turn, where X is the number of creature cards in your graveyard. (It can't blocked except by two or more creatures.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | KW$ Menace\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:PlayMain1:TRUE\nOracle:Undergrowth — When Moodmark Painter enters, target creature gains menace and gets +X/+0 until end of turn, where X is the number of creature cards in your graveyard. (It can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moodmark Painter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

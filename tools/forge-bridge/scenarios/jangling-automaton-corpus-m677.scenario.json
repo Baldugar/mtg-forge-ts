@@ -1,0 +1,23 @@
+{
+  "id": "jangling-automaton-corpus-m677",
+  "description": "M6 corpus — Jangling Automaton; in-hand parse.",
+  "seed": 63242,
+  "cards": {
+    "Jangling Automaton": "Name:Jangling Automaton\nManaCost:3\nTypes:Artifact Creature Construct\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME attacks, untap all creatures defending player controls.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.ControlledBy TriggeredDefendingPlayer\nAI:RemoveDeck:All\nOracle:Whenever Jangling Automaton attacks, untap all creatures defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jangling Automaton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

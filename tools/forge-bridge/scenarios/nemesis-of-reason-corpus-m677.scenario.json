@@ -1,0 +1,23 @@
+{
+  "id": "nemesis-of-reason-corpus-m677",
+  "description": "M6 corpus — Nemesis of Reason; in-hand parse.",
+  "seed": 65833,
+  "cards": {
+    "Nemesis of Reason": "Name:Nemesis of Reason\nManaCost:3 U B\nTypes:Creature Leviathan Horror\nPT:3/7\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME attacks, defending player mills ten cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredDefendingPlayer | NumCards$ 10\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Nemesis of Reason attacks, defending player mills ten cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nemesis of Reason"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

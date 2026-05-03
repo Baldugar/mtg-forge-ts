@@ -1,0 +1,23 @@
+{
+  "id": "manifold-insights-corpus-m677",
+  "description": "M6 corpus — Manifold Insights; in-hand parse.",
+  "seed": 64722,
+  "cards": {
+    "Manifold Insights": "Name:Manifold Insights\nManaCost:2 U\nTypes:Sorcery\nA:SP$ PeekAndReveal | PeekAmount$ 10 | RevealValid$ Card | RememberRevealed$ True | SubAbility$ ChooseNonLand | SpellDescription$ Reveal the top ten cards of your library. Starting with the next opponent in turn order, each opponent chooses a different nonland card from among them. Put the chosen cards into your hand and the rest on the bottom of your library in a random order.\nSVar:ChooseNonLand:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | StartingWith$ Opponent | RepeatSubAbility$ OpponentsChoose | SubAbility$ ShipToBottom\nSVar:OpponentsChoose:DB$ ChooseCard | ChoiceZone$ Library | Choices$ Card.nonLand+IsRemembered | Defined$ Player.IsRemembered | ForgetChosen$ True | SubAbility$ ChosenToHand\nSVar:ChosenToHand:DB$ ChangeZone | Origin$ Library | Destination$ Hand | Defined$ ChosenCard\nSVar:ShipToBottom:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:Reveal the top ten cards of your library. Starting with the next opponent in turn order, each opponent chooses a different nonland card from among them. Put the chosen cards into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manifold Insights"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

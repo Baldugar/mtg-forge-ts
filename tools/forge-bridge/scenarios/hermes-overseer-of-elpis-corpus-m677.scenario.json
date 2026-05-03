@@ -1,0 +1,25 @@
+{
+  "id": "hermes-overseer-of-elpis-corpus-m677",
+  "description": "M6 corpus — Hermes, Overseer of Elpis; ETB-on-bf.",
+  "seed": 62286,
+  "cards": {
+    "Hermes, Overseer of Elpis": "Name:Hermes, Overseer of Elpis\nManaCost:3 U\nTypes:Legendary Creature Elder Wizard\nPT:2/4\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast a noncreature spell, create a 1/1 blue Bird creature token with flying and vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_bird_flying_vigilance | TokenOwner$ You\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.Bird+YouCtrl | Execute$ TrigScry | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack with one or more Birds, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nDeckHas:Ability$Token\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever you cast a noncreature spell, create a 1/1 blue Bird creature token with flying and vigilance.\\nWhenever you attack with one or more Birds, scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hermes, Overseer of Elpis"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

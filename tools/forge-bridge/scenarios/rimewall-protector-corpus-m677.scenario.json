@@ -1,0 +1,23 @@
+{
+  "id": "rimewall-protector-corpus-m677",
+  "description": "M6 corpus — Rimewall Protector; in-hand parse.",
+  "seed": 68295,
+  "cards": {
+    "Rimewall Protector": "Name:Rimewall Protector\nManaCost:1 U U\nTypes:Creature Giant Wizard\nPT:3/4\nK:Ward:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, each other Giant or Wizard you control and each Giant or Wizard card in your hand perpetually gains ward {1}.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Giant.Other+YouCtrl,Wizard.Other+YouCtrl | PumpZone$ Battlefield,Hand | Duration$ Perpetual | KW$ Ward:1\nDeckHints:Type$Giant|Wizard\nOracle:Ward {1}\\nWhen Rimewall Protector enters, each other Giant or Wizard you control and each Giant or Wizard card in your hand perpetually gains ward {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rimewall Protector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

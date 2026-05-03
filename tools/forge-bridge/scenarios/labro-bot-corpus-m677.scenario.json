@@ -1,0 +1,23 @@
+{
+  "id": "labro-bot-corpus-m677",
+  "description": "M6 corpus — Labro Bot; in-hand parse.",
+  "seed": 63945,
+  "cards": {
+    "Labro Bot": "Name:Labro Bot\nManaCost:5\nTypes:Host Artifact Creature Dog\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | Host$ True | TriggerDescription$ When this creature enters, return target host card or card with augment from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Host.YouOwn,Card.YouOwn+withAugment\nOracle:When this creature enters, return target host card or card with augment from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Labro Bot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

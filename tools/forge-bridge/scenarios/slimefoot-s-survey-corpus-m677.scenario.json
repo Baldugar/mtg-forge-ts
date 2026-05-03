@@ -1,0 +1,23 @@
+{
+  "id": "slimefoot-s-survey-corpus-m677",
+  "description": "M6 corpus — Slimefoot's Survey; in-hand parse.",
+  "seed": 70213,
+  "cards": {
+    "Slimefoot's Survey": "Name:Slimefoot's Survey\nManaCost:4 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.hasABasicLandType | ChangeNum$ 2 | Tapped$ True | SubAbility$ DBDig | SpellDescription$ Domain — Search your library for up to two land cards that each have a basic land type, put them onto the battlefield tapped, then shuffle. Look at the top X cards of your library, where X is the number of basic land types among lands you control. Put up to one of them on top of your library and the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | RestRandomOrder$ True | DestinationZone$ Library | LibraryPosition$ 0 | Optional$ True\nSVar:X:Count$Domain\nAI:RemoveDeck:Random\nOracle:Domain — Search your library for up to two land cards that each have a basic land type, put them onto the battlefield tapped, then shuffle. Look at the top X cards of your library, where X is the number of basic land types among lands you control. Put up to one of them on top of your library and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slimefoot's Survey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

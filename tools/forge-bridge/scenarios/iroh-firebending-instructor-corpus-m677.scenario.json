@@ -1,0 +1,23 @@
+{
+  "id": "iroh-firebending-instructor-corpus-m677",
+  "description": "M6 corpus — Iroh, Firebending Instructor; in-hand parse.",
+  "seed": 63119,
+  "cards": {
+    "Iroh, Firebending Instructor": "Name:Iroh, Firebending Instructor\nManaCost:2 R\nTypes:Legendary Creature Human Noble Ally\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever NICKNAME attacks, attacking creatures get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking | NumAtt$ +1 | NumDef$ +1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Iroh attacks, attacking creatures get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iroh, Firebending Instructor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

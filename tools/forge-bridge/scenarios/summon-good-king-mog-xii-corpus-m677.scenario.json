@@ -1,0 +1,23 @@
+{
+  "id": "summon-good-king-mog-xii-corpus-m677",
+  "description": "M6 corpus — Summon: Good King Mog XII; in-hand parse.",
+  "seed": 71311,
+  "cards": {
+    "Summon: Good King Mog XII": "Name:Summon: Good King Mog XII\nManaCost:4 W\nTypes:Enchantment Creature Saga Moogle\nPT:4/4\nK:Chapter:4:DBToken,DBEffect,DBEffect,DBPutCounterAll\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_2_moogle_lifelink | TokenOwner$ You | SpellDescription$ Create two 1/2 white Moogle creature tokens with lifelink.\nSVar:DBEffect:DB$ Effect | Triggers$ MogCopy | SpellDescription$ Whenever you cast a noncreature spell this turn, create a token that's a copy of a non-Saga token you control.\nSVar:MogCopy:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerZones$ Command | TriggerDescription$ Whenever you cast a noncreature spell this turn, create a token that's a copy of a non-Saga token you control.\nSVar:TrigCopy:DB$ CopyPermanent | Choices$ Card.token+nonSaga+YouCtrl | ChoiceTitle$ Choose a non-Saga token you control\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Moogle.Other+YouCtrl | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on each other Moogle you control.\nK:Flying\nK:Lifelink\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI — Create two 1/2 white Moogle creature tokens with lifelink.\\nII, III — Whenever you cast a noncreature spell this turn, create a token that's a copy of a non-Saga token you control.\\nIV — Put two +1/+1 counters on each other Moogle you control.\\nFlying, lifelink\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Good King Mog XII"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

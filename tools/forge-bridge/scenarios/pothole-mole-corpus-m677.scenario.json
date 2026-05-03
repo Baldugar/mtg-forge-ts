@@ -1,0 +1,23 @@
+{
+  "id": "pothole-mole-corpus-m677",
+  "description": "M6 corpus — Pothole Mole; in-hand parse.",
+  "seed": 67081,
+  "cards": {
+    "Pothole Mole": "Name:Pothole Mole\nManaCost:2 G\nTypes:Creature Mole\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this creature enters, mill three cards, then you may return a land card from your graveyard to your hand. (To mill three cards, put the top three cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Land.YouOwn | Hidden$ True | Optional$ True\nDeckHas:Ability$Graveyard\nOracle:When this creature enters, mill three cards, then you may return a land card from your graveyard to your hand. (To mill three cards, put the top three cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pothole Mole"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

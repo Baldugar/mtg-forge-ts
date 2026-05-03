@@ -1,0 +1,23 @@
+{
+  "id": "necromancer-s-assistant-corpus-m677",
+  "description": "M6 corpus — Necromancer's Assistant; in-hand parse.",
+  "seed": 65798,
+  "cards": {
+    "Necromancer's Assistant": "Name:Necromancer's Assistant\nManaCost:2 B\nTypes:Creature Zombie\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You\nDeckHints:Ability$Graveyard\nOracle:When Necromancer's Assistant enters, mill three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromancer's Assistant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nael-avizoa-aeronaut-corpus-m677",
+  "description": "M6 corpus — Nael, Avizoa Aeronaut; in-hand parse.",
+  "seed": 65701,
+  "cards": {
+    "Nael, Avizoa Aeronaut": "Name:Nael, Avizoa Aeronaut\nManaCost:2 G U\nTypes:Legendary Creature Elf Scout\nPT:2/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDig | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, look at the top X cards of your library, where X is the number of basic land types among lands you control. Put up to one of them on top of your library and the rest on the bottom in a random order. Then if there are five basic land types among lands you control, draw a card.\nSVar:TrigDig:DB$ Dig | DigNum$ X | Defined$ You | DestinationZone$ Library | RestRandomOrder$ True | LibraryPosition$ 0 | Optional$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ5\nSVar:X:Count$Domain\nAI:RemoveDeck:Random\nOracle:Flying\\nDomain — Whenever Nael, Avizoa Aeronaut deals combat damage to a player, look at the top X cards of your library, where X is the number of basic land types among lands you control. Put up to one of them on top of your library and the rest on the bottom in a random order. Then if there are five basic land types among lands you control, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nael, Avizoa Aeronaut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

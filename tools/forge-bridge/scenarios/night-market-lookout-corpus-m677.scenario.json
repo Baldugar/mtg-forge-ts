@@ -1,0 +1,25 @@
+{
+  "id": "night-market-lookout-corpus-m677",
+  "description": "M6 corpus — Night Market Lookout; ETB-on-bf.",
+  "seed": 65918,
+  "cards": {
+    "Night Market Lookout": "Name:Night Market Lookout\nManaCost:B\nTypes:Creature Human Rogue\nPT:1/1\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Whenever CARDNAME becomes tapped, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Whenever Night Market Lookout becomes tapped, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Night Market Lookout"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

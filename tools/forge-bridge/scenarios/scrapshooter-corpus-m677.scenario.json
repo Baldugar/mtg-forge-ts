@@ -1,0 +1,23 @@
+{
+  "id": "scrapshooter-corpus-m677",
+  "description": "M6 corpus — Scrapshooter; in-hand parse.",
+  "seed": 69217,
+  "cards": {
+    "Scrapshooter": "Name:Scrapshooter\nManaCost:1 G G\nTypes:Creature Raccoon Archer\nPT:4/4\nK:Gift\nSVar:GiftAbility:DB$ Draw | Defined$ Promised | GiftDescription$ a card\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+PromisedGift | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, if the gift was promised, destroy target artifact or enchantment an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact or enchantment an opponent controls.\nOracle:Gift a card (You may promise an opponent a gift as you cast this spell. If you do, when it enters, they draw a card.)\\nReach\\nWhen Scrapshooter enters, if the gift was promised, destroy target artifact or enchantment an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrapshooter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

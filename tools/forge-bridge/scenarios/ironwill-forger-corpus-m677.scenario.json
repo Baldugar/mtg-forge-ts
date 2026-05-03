@@ -1,0 +1,23 @@
+{
+  "id": "ironwill-forger-corpus-m677",
+  "description": "M6 corpus — Ironwill Forger; in-hand parse.",
+  "seed": 63143,
+  "cards": {
+    "Ironwill Forger": "Name:Ironwill Forger\nManaCost:3 W\nTypes:Creature Orc Artificer\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | Execute$ TrigPump | TriggerDescription$ Lieutenant — At the beginning of combat on your turn, if your control your commander, target nonlegendary creature you control gains myriad until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+nonLegendary | TgtPrompt$ Select target nonlegendary creature you control | KW$ Myriad\nOracle:Lieutenant — At the beginning of combat on your turn, if your control your commander, target nonlegendary creature you control gains myriad until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ironwill Forger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "manic-scribe-corpus-m677",
+  "description": "M6 corpus — Manic Scribe; in-hand parse.",
+  "seed": 64720,
+  "cards": {
+    "Manic Scribe": "Name:Manic Scribe\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill1 | TriggerDescription$ When CARDNAME enters, each opponent mills three cards.\nSVar:TrigMill1:DB$ Mill | Defined$ Player.Opponent | NumCards$ 3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Delirium$ True | Execute$ TrigMill2 | TriggerZones$ Battlefield | TriggerDescription$ Delirium — At the beginning of each opponent's upkeep, if there are four or more card types among cards in your graveyard, that player mills three cards.\nSVar:TrigMill2:DB$ Mill | Defined$ TriggeredPlayer | NumCards$ 3\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:When Manic Scribe enters, each opponent mills three cards.\\nDelirium — At the beginning of each opponent's upkeep, if there are four or more card types among cards in your graveyard, that player mills three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manic Scribe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

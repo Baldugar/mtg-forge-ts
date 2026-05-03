@@ -1,0 +1,25 @@
+{
+  "id": "soaring-lightbringer-corpus-m677",
+  "description": "M6 corpus — Soaring Lightbringer; ETB-on-bf.",
+  "seed": 70323,
+  "cards": {
+    "Soaring Lightbringer": "Name:Soaring Lightbringer\nManaCost:4 W\nTypes:Enchantment Creature Bird Glimmer\nPT:4/5\nK:Flying\nS:Mode$ Continuous | Affected$ Enchantment.Creature+Other+YouCtrl | AddKeyword$ Flying | Description$ Other enchantment creatures you control have flying.\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Creature.YouCtrl | AttackedTarget$ Player | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack a player, create a 1/1 white Glimmer enchantment creature token that's tapped and attacking that player.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_e_glimmer | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ TriggeredAttackedTarget\nSVar:PlayMain1:TRUE\nOracle:Flying\\nOther enchantment creatures you control have flying.\\nWhenever you attack a player, create a 1/1 white Glimmer enchantment creature token that's tapped and attacking that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soaring Lightbringer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

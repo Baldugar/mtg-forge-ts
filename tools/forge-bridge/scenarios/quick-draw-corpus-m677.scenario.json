@@ -1,0 +1,23 @@
+{
+  "id": "quick-draw-corpus-m677",
+  "description": "M6 corpus — Quick Draw; in-hand parse.",
+  "seed": 67462,
+  "cards": {
+    "Quick Draw": "Name:Quick Draw\nManaCost:R\nTypes:Instant\nA:SP$ Pump | NumAtt$ +1 | NumDef$ +1 | KW$ First Strike | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBCurse | SpellDescription$ Target creature you control gets +1/+1 and gains first strike until end of turn.\nSVar:DBCurse:DB$ AnimateAll | ValidCards$ Creature.TargetedPlayerCtrl | ValidTgts$ Opponent | RemoveKeywords$ First Strike & Double Strike | SpellDescription$ Creatures target opponent controls lose first strike and double strike until end of turn.\nOracle:Target creature you control gets +1/+1 and gains first strike until end of turn. Creatures target opponent controls lose first strike and double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quick Draw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

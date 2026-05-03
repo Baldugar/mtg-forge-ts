@@ -1,0 +1,23 @@
+{
+  "id": "hardened-escort-corpus-m677",
+  "description": "M6 corpus — Hardened Escort; in-hand parse.",
+  "seed": 62052,
+  "cards": {
+    "Hardened Escort": "Name:Hardened Escort\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, another target creature you control gets +1/+0 and gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | KW$ Indestructible | NumAtt$ +1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Hardened Escort attacks, another target creature you control gets +1/+0 and gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hardened Escort"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

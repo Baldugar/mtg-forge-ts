@@ -1,0 +1,23 @@
+{
+  "id": "hinterland-hermit-corpus-m677",
+  "description": "M6 corpus — Hinterland Hermit; in-hand parse.",
+  "seed": 62390,
+  "cards": {
+    "Hinterland Hermit": "Name:Hinterland Hermit\nManaCost:1 R\nTypes:Creature Human Werewolf\nPT:2/1\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Hinterland Hermit.\n\nALTERNATE\n\nName:Hinterland Scourge\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:3/2\nK:CARDNAME must be blocked if able.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Hinterland Scourge must be blocked if able.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Hinterland Scourge.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hinterland Hermit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

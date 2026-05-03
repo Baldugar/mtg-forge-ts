@@ -1,0 +1,23 @@
+{
+  "id": "sage-of-days-corpus-m677",
+  "description": "M6 corpus — Sage of Days; in-hand parse.",
+  "seed": 68863,
+  "cards": {
+    "Sage of Days": "Name:Sage of Days\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone2$ Graveyard | DestinationZone$ Library | LibraryPosition$ 0 | Optional$ True | NoReveal$ True\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard\nOracle:When Sage of Days enters, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage of Days"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

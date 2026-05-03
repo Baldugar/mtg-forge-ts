@@ -1,0 +1,23 @@
+{
+  "id": "satyr-wayfinder-corpus-m677",
+  "description": "M6 corpus — Satyr Wayfinder; in-hand parse.",
+  "seed": 69037,
+  "cards": {
+    "Satyr Wayfinder": "Name:Satyr Wayfinder\nManaCost:1 G\nTypes:Creature Satyr\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top four cards of your library. You may put a land card from among them into your hand. Put the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ 1 | ChangeValid$ Land | DestinationZone2$ Graveyard | Optional$ True\nOracle:When Satyr Wayfinder enters, reveal the top four cards of your library. You may put a land card from among them into your hand. Put the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Satyr Wayfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

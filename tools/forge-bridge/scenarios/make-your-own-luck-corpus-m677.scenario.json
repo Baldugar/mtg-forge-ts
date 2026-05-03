@@ -1,0 +1,23 @@
+{
+  "id": "make-your-own-luck-corpus-m677",
+  "description": "M6 corpus — Make Your Own Luck; in-hand parse.",
+  "seed": 64641,
+  "cards": {
+    "Make Your Own Luck": "Name:Make Your Own Luck\nManaCost:3 G U\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 3 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Card.nonLand | ChangeValidDesc$ nonland | DestinationZone$ Exile | DestinationZone2$ Hand | RememberChanged$ True | SubAbility$ DBPlot | StackDescription$ SpellDescription | SpellDescription$ Look at the top three cards of your library. You may exile a nonland card from among them.\nSVar:DBPlot:DB$ AlterAttribute | Defined$ Remembered | Attributes$ Plotted | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Look at the top three cards of your library. You may exile a nonland card from among them. If you do, it becomes plotted. Put the rest into your hand. (You may cast it as a sorcery on a later turn without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Make Your Own Luck"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

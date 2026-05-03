@@ -1,0 +1,23 @@
+{
+  "id": "intellect-devourer-corpus-m677",
+  "description": "M6 corpus — Intellect Devourer; in-hand parse.",
+  "seed": 63019,
+  "cards": {
+    "Intellect Devourer": "Name:Intellect Devourer\nManaCost:3 B\nTypes:Creature Horror\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Devour Intellect — When CARDNAME enters, each opponent exiles a card from their hand until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | DefinedPlayer$ Opponent | Mandatory$ True | Hidden$ True | Duration$ UntilHostLeavesPlay | IsCurse$ True\nS:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.ExiledWithSource | AffectedZone$ Exile | Description$ Body Thief — You may play lands and cast spells from among cards exiled with CARDNAME. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.\nOracle:Devour Intellect — When Intellect Devourer enters, each opponent exiles a card from their hand until Intellect Devourer leaves the battlefield.\\nBody Thief — You may play lands and cast spells from among cards exiled with Intellect Devourer. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intellect Devourer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

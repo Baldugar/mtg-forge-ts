@@ -1,0 +1,23 @@
+{
+  "id": "ominous-roost-corpus-m677",
+  "description": "M6 corpus — Ominous Roost; in-hand parse.",
+  "seed": 66287,
+  "cards": {
+    "Ominous Roost": "Name:Ominous Roost\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or whenever you cast a spell from your graveyard, create a 1/1 blue Bird creature token with flying and \"This creature can block only creatures with flying.\"\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromYourGraveyard | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When CARDNAME enters or whenever you cast a spell from your graveyard, create a 1/1 blue Bird creature token with flying and \"This creature can block only creatures with flying.\"\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ u_1_1_bird_flying_blockflying\nDeckHas:Ability$Token\nDeckHints:Ability$Graveyard\nOracle:When Ominous Roost enters or whenever you cast a spell from your graveyard, create a 1/1 blue Bird creature token with flying and \"This creature can block only creatures with flying.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ominous Roost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

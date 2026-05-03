@@ -1,0 +1,23 @@
+{
+  "id": "liliana-s-influence-corpus-m677",
+  "description": "M6 corpus — Liliana's Influence; in-hand parse.",
+  "seed": 64267,
+  "cards": {
+    "Liliana's Influence": "Name:Liliana's Influence\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ PutCounterAll | ValidCards$ Creature.YouDontCtrl | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True | SubAbility$ DBSearch | SpellDescription$ Put a -1/-1 counter on each creature you don't control.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedLiliana; Death Wielder | Optional$ True | SpellDescription$ You may search your library and/or graveyard for a card named Liliana, Death Wielder, reveal it, and put it into your hand. If you search your library this way, shuffle.\nDeckHints:Name$Liliana, Death Wielder\nOracle:Put a -1/-1 counter on each creature you don't control. You may search your library and/or graveyard for a card named Liliana, Death Wielder, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana's Influence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

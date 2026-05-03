@@ -1,0 +1,23 @@
+{
+  "id": "lightning-dart-corpus-m677",
+  "description": "M6 corpus — Lightning Dart; in-hand parse.",
+  "seed": 64240,
+  "cards": {
+    "Lightning Dart": "Name:Lightning Dart\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | IsCurse$ True | AITgts$ Creature.White,Creature.Blue | NumDmg$ X | StackDescription$ REP target creature_{c:Targeted} | SpellDescription$ CARDNAME deals 1 damage to target creature. If that creature is white or blue, CARDNAME deals 4 damage to it instead.\nSVar:Y:Targeted$Valid Creature.White,Creature.Blue\nSVar:X:Count$Compare Y GE1.4.1\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Lightning Dart deals 1 damage to target creature. If that creature is white or blue, Lightning Dart deals 4 damage to it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Dart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

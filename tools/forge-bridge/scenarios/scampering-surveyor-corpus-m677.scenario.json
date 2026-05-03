@@ -1,0 +1,23 @@
+{
+  "id": "scampering-surveyor-corpus-m677",
+  "description": "M6 corpus — Scampering Surveyor; in-hand parse.",
+  "seed": 69102,
+  "cards": {
+    "Scampering Surveyor": "Name:Scampering Surveyor\nManaCost:4\nTypes:Artifact Creature Gnome\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a basic land card or Cave card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic,Cave | ChangeNum$ 1\nDeckHints:Type$Cave\nOracle:When Scampering Surveyor enters, search your library for a basic land card or Cave card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scampering Surveyor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

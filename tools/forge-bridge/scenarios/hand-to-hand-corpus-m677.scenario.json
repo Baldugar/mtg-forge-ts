@@ -1,0 +1,25 @@
+{
+  "id": "hand-to-hand-corpus-m677",
+  "description": "M6 corpus — Hand to Hand; ETB-on-bf.",
+  "seed": 62025,
+  "cards": {
+    "Hand to Hand": "Name:Hand to Hand\nManaCost:2 R\nTypes:Enchantment\nS:Mode$ CantBeCast | ValidCard$ Instant | Phases$ BeginCombat->EndCombat | Description$ During combat, players can't cast instant spells or activate abilities that aren't mana abilities.\nS:Mode$ CantBeActivated | ValidCard$ Card | Phases$ BeginCombat->EndCombat | ValidSA$ Activated.!ManaAbility\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:During combat, players can't cast instant spells or activate abilities that aren't mana abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hand to Hand"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

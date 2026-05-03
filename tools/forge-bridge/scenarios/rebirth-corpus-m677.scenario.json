@@ -1,0 +1,23 @@
+{
+  "id": "rebirth-corpus-m677",
+  "description": "M6 corpus — Rebirth; in-hand parse.",
+  "seed": 67861,
+  "cards": {
+    "Rebirth": "Name:Rebirth\nManaCost:3 G G G\nTypes:Sorcery\nK:Remove CARDNAME from your deck before playing if you're not playing for ante.\nA:SP$ Dig | Defined$ Player | DestinationZone$ Ante | DigNum$ 1 | ChangeNum$ All | RememberChanged$ True | Optional$ True | PromptToSkipOptionalAbility$ True | SubAbility$ 20Life | SpellDescription$ Each player may ante the top card of their library. If a player does, that player's life total becomes 20.\nSVar:20Life:DB$ SetLife | Defined$ RememberedOwner | LifeAmount$ 20 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Remove Rebirth from your deck before playing if you're not playing for ante.\\nEach player may ante the top card of their library. If a player does, that player's life total becomes 20.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rebirth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

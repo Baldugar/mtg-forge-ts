@@ -1,0 +1,23 @@
+{
+  "id": "a-zar-ojanen-scion-of-efrava-corpus-m677",
+  "description": "M6 corpus — A-Zar Ojanen, Scion of Efrava; in-hand parse.",
+  "seed": 68820,
+  "cards": {
+    "A-Zar Ojanen, Scion of Efrava": "Name:A-Zar Ojanen, Scion of Efrava\nManaCost:3 G W\nTypes:Legendary Creature Cat Warrior\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Domain — Whenever CARDNAME enters or becomes tapped, put a +1/+1 counter on each creature you control with toughness less than the number of basic land types among lands you control.\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Domain — Whenever CARDNAME enters or becomes tapped, put a +1/+1 counter on each creature you control with toughness less than the number of basic land types among lands you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+toughnessLTX | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$Domain\nDeckHas:Ability$Counters\nOracle:Domain — Whenever Zar Ojanen, Scion of Efrava enters or becomes tapped, put a +1/+1 counter on each creature you control with toughness less than the number of basic land types among lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Zar Ojanen, Scion of Efrava"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

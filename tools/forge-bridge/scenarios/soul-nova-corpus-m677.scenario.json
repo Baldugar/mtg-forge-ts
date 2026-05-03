@@ -1,0 +1,23 @@
+{
+  "id": "soul-nova-corpus-m677",
+  "description": "M6 corpus — Soul Nova; in-hand parse.",
+  "seed": 70446,
+  "cards": {
+    "Soul Nova": "Name:Soul Nova\nManaCost:3 W W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | IsCurse$ True | RememberTargets$ True | SubAbility$ DBChangeZoneAll | SpellDescription$ Exile target attacking creature and all Equipment attached to it.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered,Equipment.AttachedTo Targeted | UseAllOriginZones$ True | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target attacking creature and all Equipment attached to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Nova"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

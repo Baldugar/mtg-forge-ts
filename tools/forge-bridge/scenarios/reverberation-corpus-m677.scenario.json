@@ -1,0 +1,23 @@
+{
+  "id": "reverberation-corpus-m677",
+  "description": "M6 corpus — Reverberation; in-hand parse.",
+  "seed": 68181,
+  "cards": {
+    "Reverberation": "Name:Reverberation\nManaCost:2 U U\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Sorcery | AILogic$ Prevent | TgtZone$ Stack | TgtPrompt$ Select target sorcery spell to redirect damage from | RememberObjects$ TargetedSource | ExileOnMoved$ Stack | ReplacementEffects$ SelflessDamage | StackDescription$ SpellDescription | SpellDescription$ All damage that would be dealt this turn by target sorcery spell is dealt to that spell's controller instead.\nSVar:SelflessDamage:Event$ DamageDone | ValidSource$ Card.IsRemembered | ReplaceWith$ SelflessDmg | DamageTarget$ ReplacedSourceController | Description$ The next time a source of your choice would deal damage this turn, that damage is dealt to that source's controller instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ ReplacedSourceController | VarType$ Player\nAI:RemoveDeck:All\nOracle:All damage that would be dealt this turn by target sorcery spell is dealt to that spell's controller instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reverberation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "meneldor-swift-savior-corpus-m677",
+  "description": "M6 corpus — Meneldor, Swift Savior; in-hand parse.",
+  "seed": 64977,
+  "cards": {
+    "Meneldor, Swift Savior": "Name:Meneldor, Swift Savior\nManaCost:3 U\nTypes:Legendary Creature Bird Soldier\nPT:3/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile up to one target creature you own, then return it to the battlefield under your control.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select up to one target creature you own | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Meneldor, Swift Savior deals combat damage to a player, exile up to one target creature you own, then return it to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meneldor, Swift Savior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

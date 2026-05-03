@@ -1,0 +1,23 @@
+{
+  "id": "nimbus-champion-corpus-m677",
+  "description": "M6 corpus — Nimbus Champion; in-hand parse.",
+  "seed": 65982,
+  "cards": {
+    "Nimbus Champion": "Name:Nimbus Champion\nManaCost:5 U\nTypes:Creature Avatar Warrior\nPT:4/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME attacks, you may return target creature to its owner's hand if that creature's power is less than or equal to the number of Warriors your team controls.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | IsCurse$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1\nSVar:Y:Count$Valid Warrior.YourTeamCtrl\nSVar:X:Targeted$Valid Creature.powerLEY\nSVar:HasAttackEffect:TRUE\nSVar:BuffedBy:Warrior\nOracle:Flying\\nWhenever Nimbus Champion attacks, you may return target creature to its owner's hand if that creature's power is less than or equal to the number of Warriors your team controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nimbus Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

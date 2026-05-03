@@ -1,0 +1,25 @@
+{
+  "id": "merry-esquire-of-rohan-corpus-m677",
+  "description": "M6 corpus — Merry, Esquire of Rohan; ETB-on-bf.",
+  "seed": 65040,
+  "cards": {
+    "Merry, Esquire of Rohan": "Name:Merry, Esquire of Rohan\nManaCost:R W\nTypes:Legendary Creature Halfling Knight\nPT:2/2\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Self+equipped | AddKeyword$ First Strike | Description$ CARDNAME has first strike as long as it's equipped.\nT:Mode$ AttackersDeclared | ValidAttackers$ Card.Self | NoResolvingCheck$ True | IsPresent$ Creature.attacking+Other+YouCtrl+Legendary | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you attack with NICKNAME and another legendary creature, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:EquipMe:Once\nDeckHints:Type$Equipment|Legendary\nOracle:Haste\\nMerry, Esquire of Rohan has first strike as long as it's equipped.\\nWhenever you attack with Merry and another legendary creature, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Merry, Esquire of Rohan"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

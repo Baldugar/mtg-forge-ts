@@ -1,0 +1,23 @@
+{
+  "id": "patchwork-beastie-corpus-m677",
+  "description": "M6 corpus — Patchwork Beastie; in-hand parse.",
+  "seed": 66644,
+  "cards": {
+    "Patchwork Beastie": "Name:Patchwork Beastie\nManaCost:G\nTypes:Artifact Creature Beast\nPT:3/3\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | CheckSVar$ X | Description$ Delirium — CARDNAME can't attack or block unless there are four or more card types among cards in your graveyard.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may mill a card. (You may put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 1 | Defined$ You | Optional$ True\nSVar:X:Count$Delirium.0.1\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Delirium — Patchwork Beastie can't attack or block unless there are four or more card types among cards in your graveyard.\\nAt the beginning of your upkeep, you may mill a card. (You may put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patchwork Beastie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

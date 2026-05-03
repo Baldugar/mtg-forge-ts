@@ -1,0 +1,25 @@
+{
+  "id": "grixis-illusionist-corpus-m677",
+  "description": "M6 corpus — Grixis Illusionist; ETB-on-bf.",
+  "seed": 61798,
+  "cards": {
+    "Grixis Illusionist": "Name:Grixis Illusionist\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ ChooseType | Cost$ T | Defined$ You | Type$ Basic Land | SubAbility$ DBAnimate | SpellDescription$ Target land you control becomes the basic land type of your choice until end of turn.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | Types$ ChosenType | RemoveLandTypes$ True\nAI:RemoveDeck:All\nOracle:{T}: Target land you control becomes the basic land type of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grixis Illusionist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

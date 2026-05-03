@@ -1,0 +1,23 @@
+{
+  "id": "moon-blessed-cleric-corpus-m677",
+  "description": "M6 corpus — Moon-Blessed Cleric; in-hand parse.",
+  "seed": 65452,
+  "cards": {
+    "Moon-Blessed Cleric": "Name:Moon-Blessed Cleric\nManaCost:2 W\nTypes:Creature Human Elf Cleric\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ Divine Intervention — When CARDNAME enters, you may search your library for an enchantment card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Enchantment.YouOwn | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Divine Intervention — When Moon-Blessed Cleric enters, you may search your library for an enchantment card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moon-Blessed Cleric"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sudden-reclamation-corpus-m677",
+  "description": "M6 corpus — Sudden Reclamation; in-hand parse.",
+  "seed": 71263,
+  "cards": {
+    "Sudden Reclamation": "Name:Sudden Reclamation\nManaCost:3 G\nTypes:Instant\nA:SP$ Mill | NumCards$ 4 | Defined$ You | SubAbility$ DBChangeZone1 | SpellDescription$ Mill four cards, then return a creature card and a land card from your graveyard to your hand.\nSVar:DBChangeZone1:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Land.YouOwn | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Hand\nAI:RemoveDeck:Random\nDeckHas:Ability$Graveyard\nOracle:Mill four cards, then return a creature card and a land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sudden Reclamation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mythos-of-brokkos-corpus-m677",
+  "description": "M6 corpus — Mythos of Brokkos; in-hand parse.",
+  "seed": 65690,
+  "cards": {
+    "Mythos of Brokkos": "Name:Mythos of Brokkos\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeNum$ 1 | ChangeType$ Card | ConditionManaSpent$ U B | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ If {U}{B} was spent to cast this spell, search your library for a card, put that card into your graveyard, then shuffle. Return up to two permanent cards from your graveyard to your hand.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeNum$ 2 | ChangeType$ Permanent.YouOwn | Hidden$ True | StackDescription$ None\nDeckHas:Ability$Graveyard\nOracle:If {U}{B} was spent to cast this spell, search your library for a card, put that card into your graveyard, then shuffle.\\nReturn up to two permanent cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mythos of Brokkos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

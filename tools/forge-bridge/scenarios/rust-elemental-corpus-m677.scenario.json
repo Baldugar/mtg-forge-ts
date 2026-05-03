@@ -1,0 +1,23 @@
+{
+  "id": "rust-elemental-corpus-m677",
+  "description": "M6 corpus — Rust Elemental; in-hand parse.",
+  "seed": 68678,
+  "cards": {
+    "Rust Elemental": "Name:Rust Elemental\nManaCost:4\nTypes:Artifact Creature Elemental\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice an artifact other than CARDNAME. If you can't, tap CARDNAME and you lose 4 life.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Artifact.Other | SubAbility$ DBTap | RememberSacrificed$ True\nSVar:DBTap:DB$ Tap | Defined$ Self | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 4 | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nSVar:DonateMe:4\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice an artifact other than Rust Elemental. If you can't, tap Rust Elemental and you lose 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rust Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

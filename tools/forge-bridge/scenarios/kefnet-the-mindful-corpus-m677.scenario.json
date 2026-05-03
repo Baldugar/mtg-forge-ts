@@ -1,0 +1,25 @@
+{
+  "id": "kefnet-the-mindful-corpus-m677",
+  "description": "M6 corpus — Kefnet the Mindful; ETB-on-bf.",
+  "seed": 63577,
+  "cards": {
+    "Kefnet the Mindful": "Name:Kefnet the Mindful\nManaCost:2 U\nTypes:Legendary Creature God\nPT:5/5\nK:Flying\nK:Indestructible\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | IsPresent$ Card.YouOwn | PresentZone$ Hand | PresentCompare$ LE6 | Description$ NICKNAME can't attack or block unless you have seven or more cards in hand.\nSVar:X:Count$ValidHand Card.YouOwn\nA:AB$ Draw | Cost$ 3 U | NumCards$ 1 | Defined$ You | SubAbility$ DBChangeZone | SpellDescription$ Draw a card, then you may return a land you control to its owner's hand.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Land.YouCtrl | Hidden$ True\nOracle:Flying, indestructible\\nKefnet the Mindful can't attack or block unless you have seven or more cards in hand.\\n{3}{U}: Draw a card, then you may return a land you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kefnet the Mindful"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

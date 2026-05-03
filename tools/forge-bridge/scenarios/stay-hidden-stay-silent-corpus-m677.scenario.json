@@ -1,0 +1,23 @@
+{
+  "id": "stay-hidden-stay-silent-corpus-m677",
+  "description": "M6 corpus — Stay Hidden, Stay Silent; in-hand parse.",
+  "seed": 70928,
+  "cards": {
+    "Stay Hidden, Stay Silent": "Name:Stay Hidden, Stay Silent\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nA:AB$ ChangeZone | Cost$ 4 U U | Origin$ Battlefield | Destination$ Library | Shuffle$ True | Defined$ Enchanted | SorcerySpeed$ True | SubAbility$ DBDread | SpellDescription$ Shuffle enchanted creature into its owner's library, then manifest dread. Activate only as a sorcery.\nSVar:DBDread:DB$ ManifestDread\nOracle:Enchant creature\\nWhen Stay Hidden, Stay Silent enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\n{4}{U}{U}: Shuffle enchanted creature into its owner's library, then manifest dread. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stay Hidden, Stay Silent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "infernal-medusa-corpus-m677",
+  "description": "M6 corpus — Infernal Medusa; ETB-on-bf.",
+  "seed": 62905,
+  "cards": {
+    "Infernal Medusa": "Name:Infernal Medusa\nManaCost:3 B B\nTypes:Creature Gorgon\nPT:2/4\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ DelTrigBlocked | TriggerDescription$ Whenever CARDNAME blocks a creature, destroy that creature at end of combat.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.nonWall | Execute$ DelTrigBlocker | TriggerDescription$ Whenever CARDNAME becomes blocked by a non-Wall creature, destroy that creature at end of combat.\nSVar:DelTrigBlocked:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredAttackerLKICopy | TriggerDescription$ Destroy blocked creature at end of combat.\nSVar:DelTrigBlocker:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | RememberObjects$ TriggeredBlockerLKICopy | TriggerDescription$ Destroy blocking creature at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nOracle:Whenever Infernal Medusa blocks a creature, destroy that creature at end of combat.\\nWhenever Infernal Medusa becomes blocked by a non-Wall creature, destroy that creature at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Infernal Medusa"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

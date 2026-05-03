@@ -1,0 +1,25 @@
+{
+  "id": "guard-dogs-corpus-m677",
+  "description": "M6 corpus — Guard Dogs; ETB-on-bf.",
+  "seed": 61863,
+  "cards": {
+    "Guard Dogs": "Name:Guard Dogs\nManaCost:3 W\nTypes:Creature Dog\nPT:2/2\nA:AB$ ChooseCard | Cost$ 2 W T | Choices$ Permanent.YouCtrl | Mandatory$ True | ChoiceTitle$ Choose a permanent you control | SubAbility$ DBPrevent | SpellDescription$ Choose a permanent you control.\nSVar:DBPrevent:DB$ Effect | ValidTgts$ Creature | TgtPrompt$ Select target creature whose combat damage will be prevented | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | ConditionDefined$ Targeted | ConditionPresent$ Card.SharesColorWith ChosenCard | SubAbility$ DBCleanup | SpellDescription$ Prevent all combat damage target creature would deal this turn if it shares a color with that permanent.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage target creature would deal this turn if it shares a color with that permanent.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{2}{W}, {T}: Choose a permanent you control. Prevent all combat damage target creature would deal this turn if it shares a color with that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Guard Dogs"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

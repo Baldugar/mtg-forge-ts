@@ -1,0 +1,23 @@
+{
+  "id": "icatian-skirmishers-corpus-m677",
+  "description": "M6 corpus — Icatian Skirmishers; in-hand parse.",
+  "seed": 62681,
+  "cards": {
+    "Icatian Skirmishers": "Name:Icatian Skirmishers\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:1/1\nK:First Strike\nK:Banding\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, all creatures banded with it gain first strike until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.attackersBandedWith | KW$ First Strike\nOracle:First strike; banding (Any creatures with banding, and up to one without, can attack in a band. Bands are blocked as a group. If any creatures with banding you control are blocking or being blocked by a creature, you divide that creature's combat damage, not its controller, among any of the creatures it's being blocked by or is blocking.)\\nWhenever Icatian Skirmishers attacks, all creatures banded with it gain first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icatian Skirmishers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

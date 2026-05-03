@@ -1,0 +1,25 @@
+{
+  "id": "johtull-wurm-corpus-m677",
+  "description": "M6 corpus — Johtull Wurm; ETB-on-bf.",
+  "seed": 63320,
+  "cards": {
+    "Johtull Wurm": "Name:Johtull Wurm\nManaCost:5 G\nTypes:Creature Wurm\nPT:6/6\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME becomes blocked, it gets -2/-1 until end of turn for each creature blocking it beyond the first.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ -X | NumDef$ -Y\nSVar:X:SVar$Y/Twice\nSVar:Y:Count$Valid Creature.blockingTriggeredAttacker/Minus.1\nOracle:Whenever Johtull Wurm becomes blocked, it gets -2/-1 until end of turn for each creature blocking it beyond the first.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Johtull Wurm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

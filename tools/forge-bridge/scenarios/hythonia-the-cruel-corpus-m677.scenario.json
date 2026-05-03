@@ -1,0 +1,25 @@
+{
+  "id": "hythonia-the-cruel-corpus-m677",
+  "description": "M6 corpus — Hythonia the Cruel; ETB-on-bf.",
+  "seed": 62674,
+  "cards": {
+    "Hythonia the Cruel": "Name:Hythonia the Cruel\nManaCost:4 B B\nTypes:Legendary Creature Gorgon\nPT:4/6\nK:Deathtouch\nA:AB$ PutCounter | Cost$ 6 B B | Monstrosity$ 3\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME becomes monstrous, destroy all non-Gorgon creatures.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonGorgon\nDeckHas:Ability$Counters\nOracle:Deathtouch\\n{6}{B}{B}: Monstrosity 3. (If this creature isn't monstrous, put three +1/+1 counters on it and it becomes monstrous.)\\nWhen Hythonia the Cruel becomes monstrous, destroy all non-Gorgon creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hythonia the Cruel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

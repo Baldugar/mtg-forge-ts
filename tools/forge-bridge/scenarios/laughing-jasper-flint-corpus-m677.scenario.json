@@ -1,0 +1,23 @@
+{
+  "id": "laughing-jasper-flint-corpus-m677",
+  "description": "M6 corpus — Laughing Jasper Flint; in-hand parse.",
+  "seed": 64015,
+  "cards": {
+    "Laughing Jasper Flint": "Name:Laughing Jasper Flint\nManaCost:1 B R\nTypes:Legendary Creature Lizard Rogue\nPT:4/3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+YouDontOwn | AddType$ Mercenary | Description$ Creatures you control but don't own are Mercenaries in addition to their other types.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ At the beginning of your upkeep, exile the top X cards of target opponent's library, where X is the number of outlaws you control. Until end of turn, you may cast spells from among those cards, and mana of any type can be spent to cast those spells.\nSVar:TrigDig:DB$ Dig | ValidTgts$ Opponent | DigNum$ X | ChangeNum$ All | RememberChanged$ True | DestinationZone$ Exile | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffPlay | EffectOwner$ You | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:EffPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ Until end of turn, you may cast spells from among those cards, and mana of any type can be spent to cast those spells.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Permanent.Outlaw+YouCtrl\nDeckHints:Type$Assassin|Mercenary|Pirate|Rogue|Warlock\nOracle:Creatures you control but don't own are Mercenaries in addition to their other types.\\nAt the beginning of your upkeep, exile the top X cards of target opponent's library, where X is the number of outlaws you control. Until end of turn, you may cast spells from among those cards, and mana of any type can be spent to cast those spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Laughing Jasper Flint"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

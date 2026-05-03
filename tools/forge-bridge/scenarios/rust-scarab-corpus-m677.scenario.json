@@ -1,0 +1,25 @@
+{
+  "id": "rust-scarab-corpus-m677",
+  "description": "M6 corpus — Rust Scarab; ETB-on-bf.",
+  "seed": 68680,
+  "cards": {
+    "Rust Scarab": "Name:Rust Scarab\nManaCost:4 G\nTypes:Creature Insect\nPT:4/5\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME becomes blocked, you may destroy target artifact or enchantment defending player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredDefendingPlayer,Enchantment.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target artifact or enchantment defending player control\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Rust Scarab becomes blocked, you may destroy target artifact or enchantment defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rust Scarab"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

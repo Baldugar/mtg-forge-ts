@@ -1,0 +1,23 @@
+{
+  "id": "mwonvuli-beast-tracker-corpus-m677",
+  "description": "M6 corpus — Mwonvuli Beast Tracker; in-hand parse.",
+  "seed": 65623,
+  "cards": {
+    "Mwonvuli Beast Tracker": "Name:Mwonvuli Beast Tracker\nManaCost:1 G G\nTypes:Creature Human Scout\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ ScoutSearch | TriggerDescription$ When CARDNAME enters, search your library for a creature card with deathtouch, hexproof, reach or trample and reveal it. Shuffle your library, then put that card on top of it.\nSVar:ScoutSearch:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeNum$ 1 | ChangeType$ Creature.withDeathtouch+YouCtrl,Creature.withHexproof+YouCtrl,Creature.withReach+YouCtrl,Creature.withTrample+YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Keyword$Deathtouch|Hexproof|Reach|Trample\nOracle:When Mwonvuli Beast Tracker enters, search your library for a creature card with deathtouch, hexproof, reach, or trample and reveal it. Shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mwonvuli Beast Tracker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

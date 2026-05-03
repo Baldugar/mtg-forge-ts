@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-traders-corpus-m677",
+  "description": "M6 corpus — Merfolk Traders; in-hand parse.",
+  "seed": 65028,
+  "cards": {
+    "Merfolk Traders": "Name:Merfolk Traders\nManaCost:1 U\nTypes:Creature Merfolk\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Merfolk Traders enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Traders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

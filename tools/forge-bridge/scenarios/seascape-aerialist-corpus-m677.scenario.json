@@ -1,0 +1,23 @@
+{
+  "id": "seascape-aerialist-corpus-m677",
+  "description": "M6 corpus — Seascape Aerialist; in-hand parse.",
+  "seed": 69311,
+  "cards": {
+    "Seascape Aerialist": "Name:Seascape Aerialist\nManaCost:4 U\nTypes:Creature Merfolk Wizard Ally\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may have Ally creatures you control gain flying until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Ally.YouCtrl | KW$ Flying\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nAI:RemoveDeck:Random\nOracle:Whenever Seascape Aerialist or another Ally you control enters, you may have Ally creatures you control gain flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seascape Aerialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

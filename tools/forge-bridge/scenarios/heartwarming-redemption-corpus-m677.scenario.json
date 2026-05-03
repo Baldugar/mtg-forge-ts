@@ -1,0 +1,23 @@
+{
+  "id": "heartwarming-redemption-corpus-m677",
+  "description": "M6 corpus — Heartwarming Redemption; in-hand parse.",
+  "seed": 62180,
+  "cards": {
+    "Heartwarming Redemption": "Name:Heartwarming Redemption\nManaCost:2 R W\nTypes:Instant\nA:SP$ Discard | Defined$ You | RememberDiscarded$ True | Mode$ Hand | SubAbility$ DBDraw | SpellDescription$ Discard all the cards in your hand, then draw that many cards plus one. You gain life equal to the number of cards in your hand.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBGainLife\nSVar:X:Remembered$Amount/Plus.1\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nDeckHas:Ability$LifeGain\nOracle:Discard all the cards in your hand, then draw that many cards plus one. You gain life equal to the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heartwarming Redemption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

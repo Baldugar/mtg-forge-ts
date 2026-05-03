@@ -1,0 +1,25 @@
+{
+  "id": "ragged-playmate-corpus-m677",
+  "description": "M6 corpus — Ragged Playmate; ETB-on-bf.",
+  "seed": 67561,
+  "cards": {
+    "Ragged Playmate": "Name:Ragged Playmate\nManaCost:1 R\nTypes:Artifact Creature Toy\nPT:2/2\nA:AB$ Effect | Cost$ 1 T | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{1}, {T}: Target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ragged Playmate"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

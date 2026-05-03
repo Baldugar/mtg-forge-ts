@@ -1,0 +1,25 @@
+{
+  "id": "pinecrest-ridge-corpus-m677",
+  "description": "M6 corpus — Pinecrest Ridge; ETB-on-bf.",
+  "seed": 66912,
+  "cards": {
+    "Pinecrest Ridge": "Name:Pinecrest Ridge\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SubAbility$ DBStayTapped | SpellDescription$ Add {R} or {G}. CARDNAME doesn't untap during your next untap step.\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{T}: Add {C}.\\n{T}: Add {R} or {G}. Pinecrest Ridge doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pinecrest Ridge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

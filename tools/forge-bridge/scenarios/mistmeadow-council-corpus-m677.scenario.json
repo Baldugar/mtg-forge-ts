@@ -1,0 +1,23 @@
+{
+  "id": "mistmeadow-council-corpus-m677",
+  "description": "M6 corpus — Mistmeadow Council; in-hand parse.",
+  "seed": 65313,
+  "cards": {
+    "Mistmeadow Council": "Name:Mistmeadow Council\nManaCost:4 G\nTypes:Creature Kithkin Advisor\nPT:4/3\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Kithkin.YouCtrl | Description$ This spell costs {1} less to cast if you control a Kithkin.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckHints:Type$Kithkin\nOracle:This spell costs {1} less to cast if you control a Kithkin.\\nWhen this creature enters, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistmeadow Council"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

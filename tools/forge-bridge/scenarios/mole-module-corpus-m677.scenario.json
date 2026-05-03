@@ -1,0 +1,23 @@
+{
+  "id": "mole-module-corpus-m677",
+  "description": "M6 corpus — Mole Module; in-hand parse.",
+  "seed": 65389,
+  "cards": {
+    "Mole Module": "Name:Mole Module\nManaCost:5\nTypes:Artifact Vehicle\nPT:6/6\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever this Vehicle deals combat damage to a player, mill four cards. You may put a permanent card from among them onto the battlefield.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Battlefield | Hidden$ True | ChangeType$ Permanent.IsRemembered | ChangeNum$ 1 | SelectPrompt$ You may choose a permanent card milled this way | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Crew:2\nOracle:Menace\\nWhenever this Vehicle deals combat damage to a player, mill four cards. You may put a permanent card from among them onto the battlefield.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mole Module"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

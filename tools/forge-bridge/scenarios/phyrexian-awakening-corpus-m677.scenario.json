@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-awakening-corpus-m677",
+  "description": "M6 corpus — Phyrexian Awakening; in-hand parse.",
+  "seed": 66836,
+  "cards": {
+    "Phyrexian Awakening": "Name:Phyrexian Awakening\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigIncubate | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME enters, incubate 4. (Create an Incubator token with four +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigIncubate:DB$ Incubate | Amount$ 4\nS:Mode$ Continuous | Affected$ Phyrexian.YouCtrl | AddKeyword$ Vigilance | Description$ Phyrexians you control have vigilance.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Phyrexian\nDeckHas:Ability$Token|Counters & Type$Artifact|Incubator|Phyrexian\nOracle:When Phyrexian Awakening enters, incubate 4. (Create an Incubator token with four +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\\nPhyrexians you control have vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Awakening"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

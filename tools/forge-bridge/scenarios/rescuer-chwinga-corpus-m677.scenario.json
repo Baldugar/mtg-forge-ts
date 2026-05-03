@@ -1,0 +1,23 @@
+{
+  "id": "rescuer-chwinga-corpus-m677",
+  "description": "M6 corpus — Rescuer Chwinga; in-hand parse.",
+  "seed": 68090,
+  "cards": {
+    "Rescuer Chwinga": "Name:Rescuer Chwinga\nManaCost:1 W\nTypes:Creature Elemental Spirit\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ Natural Shelter — When CARDNAME enters, you may return another permanent you control to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | AILogic$ BounceOwnTrigger | Mandatory$ True | ChangeType$ Permanent.Other+YouCtrl\nAI:RemoveDeck:Random\nOracle:Flash\\nNatural Shelter — When Rescuer Chwinga enters, you may return another permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rescuer Chwinga"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

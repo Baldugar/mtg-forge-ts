@@ -1,0 +1,23 @@
+{
+  "id": "mob-lookout-corpus-m677",
+  "description": "M6 corpus — Mob Lookout; in-hand parse.",
+  "seed": 65345,
+  "cards": {
+    "Mob Lookout": "Name:Mob Lookout\nManaCost:1 UB\nTypes:Creature Human Rogue Villain\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConnive | TriggerDescription$ When this creature enters, target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\nSVar:TrigConnive:DB$ Connive | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nOracle:When this creature enters, target creature you control connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mob Lookout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

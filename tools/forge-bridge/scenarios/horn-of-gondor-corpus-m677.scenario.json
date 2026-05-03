@@ -1,0 +1,23 @@
+{
+  "id": "horn-of-gondor-corpus-m677",
+  "description": "M6 corpus — Horn of Gondor; in-hand parse.",
+  "seed": 62494,
+  "cards": {
+    "Horn of Gondor": "Name:Horn of Gondor\nManaCost:3\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nA:AB$ Token | Cost$ 3 T | TokenAmount$ X | TokenScript$ w_1_1_human_soldier | TokenOwner$ You | SpellDescription$ Create X 1/1 white Human Soldier creature tokens, where X is the number of Humans you control.\nSVar:X:Count$Valid Creature.Human+YouCtrl\nDeckHas:Ability$Token & Type$Soldier|Human\nDeckHints:Type$Human\nOracle:When Horn of Gondor enters, create a 1/1 white Human Soldier creature token.\\n{3}, {T}: Create X 1/1 white Human Soldier creature tokens, where X is the number of Humans you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Horn of Gondor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

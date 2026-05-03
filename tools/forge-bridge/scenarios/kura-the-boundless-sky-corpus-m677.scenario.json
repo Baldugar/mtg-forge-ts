@@ -1,0 +1,23 @@
+{
+  "id": "kura-the-boundless-sky-corpus-m677",
+  "description": "M6 corpus — Kura, the Boundless Sky; in-hand parse.",
+  "seed": 63922,
+  "cards": {
+    "Kura, the Boundless Sky": "Name:Kura, the Boundless Sky\nManaCost:3 G G\nTypes:Legendary Creature Dragon Spirit\nPT:4/4\nK:Flying\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerController$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ RampThree,SpiritLand\nSVar:RampThree:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land | ChangeNum$ 3 | Reveal$ True | SpellDescription$ Search your library for up to three land cards, reveal them, put them in your hand, then shuffle.\nSVar:SpiritLand:DB$ Token | TokenScript$ g_x_x_spirit | TokenPower$ X | TokenToughness$ X | SpellDescription$ Create an X/X green Spirit creature token, where X is the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nDeckHas:Ability$Token\nOracle:Flying, deathtouch\\nWhen Kura, the Boundless Sky dies, choose one —\\n• Search your library for up to three land cards, reveal them, put them into your hand, then shuffle.\\n• Create an X/X green Spirit creature token, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kura, the Boundless Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rise-of-extus-corpus-m677",
+  "description": "M6 corpus — Rise of Extus; in-hand parse.",
+  "seed": 68336,
+  "cards": {
+    "Rise of Extus": "Name:Rise of Extus\nManaCost:4 WB WB\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBExile | SpellDescription$ Exile target creature.\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | ValidTgts$ Instant,Sorcery | TgtPrompt$ Select up to one target instant or sorcery card from a graveyard | SubAbility$ DBLearn | SpellDescription$ Exile up to one target instant or sorcery card from a graveyard.\nSVar:DBLearn:DB$ Learn | SpellDescription$ Learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\nOracle:Exile target creature. Exile up to one target instant or sorcery card from a graveyard.\\nLearn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rise of Extus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

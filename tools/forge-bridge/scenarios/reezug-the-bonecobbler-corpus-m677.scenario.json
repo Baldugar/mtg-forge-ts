@@ -1,0 +1,25 @@
+{
+  "id": "reezug-the-bonecobbler-corpus-m677",
+  "description": "M6 corpus — Reezug, the Bonecobbler; ETB-on-bf.",
+  "seed": 67940,
+  "cards": {
+    "Reezug, the Bonecobbler": "Name:Reezug, the Bonecobbler\nManaCost:1 B\nTypes:Legendary Creature Spirit Artificer\nPT:1/3\nA:AB$ Animate | Cost$ T | ValidTgts$ Creature.YouOwn | TgtZone$ Graveyard | TgtPrompt$ Select target creature card in your graveyard | Types$ Artifact | Duration$ Perpetual | RemoveCardTypes$ True | SubAbility$ DBEffect | StackDescription$ REP Target creature card in your graveyard_{c:Targeted} | SpellDescription$ Target creature card in your graveyard perpetually becomes an artifact.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ MayPlay | StackDescription$ SpellDescription | SpellDescription$ You may cast that card this turn. (It loses all other card types.)\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Graveyard | Description$ You may cast that card this turn.\nDeckHints:Ability$Graveyard & Type$Artifact\nDeckHas:Ability$Graveyard & Type$Artifact\nOracle:{T}: Target creature card in your graveyard perpetually becomes an artifact. You may cast that card this turn. (It loses all other card types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Reezug, the Bonecobbler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

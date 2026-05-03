@@ -1,0 +1,23 @@
+{
+  "id": "prototype-x-8-corpus-m677",
+  "description": "M6 corpus — Prototype X-8; in-hand parse.",
+  "seed": 67291,
+  "cards": {
+    "Prototype X-8": "Name:Prototype X-8\nManaCost:8 U B\nTypes:Legendary Artifact Creature Robot Octopus\nPT:8/8\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {2} less to cast for each creature card in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn/Twice\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Creature.wasCastByYou+YouCtrl+Other | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever another creature you control enters, if you cast it, sacrifice it. Conjure a duplicate of it onto the battlefield. The duplicate perpetually becomes a Robot artifact in addition to its other types.\nSVar:TrigSac:DB$ SacrificeAll | Defined$ TriggeredCardLKICopy | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | DefinedName$ TriggeredCardLKICopy | Zone$ Battlefield | RememberMade$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Types$ Artifact,Robot | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:This spell costs {2} less to cast for each creature card in your graveyard.\\nWhenever another creature you control enters, if you cast it, sacrifice it. Conjure a duplicate of it onto the battlefield. The duplicate perpetually becomes a Robot artifact in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prototype X-8"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "intimidation-campaign-corpus-m677",
+  "description": "M6 corpus — Intimidation Campaign; in-hand parse.",
+  "seed": 63031,
+  "cards": {
+    "Intimidation Campaign": "Name:Intimidation Campaign\nManaCost:1 U B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each opponent loses 1 life, you gain 1 life, and you draw a card.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nT:Mode$ CommitCrime | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever you commit a crime, you may return CARDNAME to its owner's hand. (It returns only from the battlefield. Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self | Optional$ True\nDeckHas:Ability$LifeGain\nOracle:When Intimidation Campaign enters, each opponent loses 1 life, you gain 1 life, and you draw a card.\\nWhenever you commit a crime, you may return Intimidation Campaign to its owner's hand. (It returns only from the battlefield. Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intimidation Campaign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

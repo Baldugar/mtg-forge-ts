@@ -1,0 +1,25 @@
+{
+  "id": "metrognome-corpus-m677",
+  "description": "M6 corpus — Metrognome; ETB-on-bf.",
+  "seed": 65073,
+  "cards": {
+    "Metrognome": "Name:Metrognome\nManaCost:4\nTypes:Artifact\nA:AB$ Token | Cost$ 4 T | TokenScript$ c_1_1_a_gnome | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Gnome artifact creature token.\nT:Mode$ Discarded | ValidCard$ Card.Self | ValidCause$ SpellAbility.OppCtrl | Execute$ TrigToken | TriggerDescription$ When a spell or ability an opponent controls causes you to discard CARDNAME, create four 1/1 colorless Gnome artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 4 | TokenScript$ c_1_1_a_gnome | TokenOwner$ You\nSVar:DiscardMeByOpp:2\nOracle:When a spell or ability an opponent controls causes you to discard Metrognome, create four 1/1 colorless Gnome artifact creature tokens.\\n{4}, {T}: Create a 1/1 colorless Gnome artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Metrognome"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

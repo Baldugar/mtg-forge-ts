@@ -1,0 +1,23 @@
+{
+  "id": "rune-tail-kitsune-ascendant-corpus-m677",
+  "description": "M6 corpus — Rune-Tail, Kitsune Ascendant; in-hand parse.",
+  "seed": 68640,
+  "cards": {
+    "Rune-Tail, Kitsune Ascendant": "Name:Rune-Tail, Kitsune Ascendant\nManaCost:2 W\nTypes:Legendary Creature Fox Monk\nPT:2/2\nT:Mode$ Always | LifeTotal$ You | LifeAmount$ GE30 | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ When you have 30 or more life, flip CARDNAME.\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nAlternateMode:Flip\nOracle:When you have 30 or more life, flip Rune-Tail, Kitsune Ascendant.\n\nALTERNATE\n\nName:Rune-Tail's Essence\nManaCost:2 W\nTypes:Legendary Enchantment\nR:Event$ DamageDone | Prevent$ True | ValidTarget$ Creature.YouCtrl | Description$ Prevent all damage that would be dealt to creatures you control.\nOracle:Prevent all damage that would be dealt to creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rune-Tail, Kitsune Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

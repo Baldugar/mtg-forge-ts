@@ -1,0 +1,23 @@
+{
+  "id": "invade-the-city-corpus-m677",
+  "description": "M6 corpus — Invade the City; in-hand parse.",
+  "seed": 63055,
+  "cards": {
+    "Invade the City": "Name:Invade the City\nManaCost:1 U R\nTypes:Sorcery\nA:SP$ Amass | Type$ Zombie | Num$ X | SpellDescription$ Amass Zombies X, where X is the number of instant and sorcery cards in your graveyard. (Put X +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:NeedsToPlayVar:X GE1\nDeckHas:Ability$Amass|Counters|Token\nDeckHints:Ability$Amass & Type$Zombie\nDeckNeeds:Type$Instant|Sorcery\nOracle:Amass Zombies X, where X is the number of instant and sorcery cards in your graveyard. (Put X +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invade the City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

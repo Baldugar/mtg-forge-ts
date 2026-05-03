@@ -1,0 +1,23 @@
+{
+  "id": "obsessive-collector-corpus-m677",
+  "description": "M6 corpus — Obsessive Collector; in-hand parse.",
+  "seed": 66189,
+  "cards": {
+    "Obsessive Collector": "Name:Obsessive Collector\nManaCost:3 U\nTypes:Creature Spirit\nPT:4/4\nK:Flying\nK:Ward:2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigSeek | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, seek a card with mana value equal to the number of cards in your hand.\nSVar:TrigSeek:DB$ Seek | Type$ Card.cmcEQX\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:Flying\\nWard {2}\\nWhenever Obsessive Collector deals combat damage to a player, seek a card with mana value equal to the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obsessive Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

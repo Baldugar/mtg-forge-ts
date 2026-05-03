@@ -1,0 +1,25 @@
+{
+  "id": "scroll-rack-corpus-m677",
+  "description": "M6 corpus — Scroll Rack; ETB-on-bf.",
+  "seed": 69238,
+  "cards": {
+    "Scroll Rack": "Name:Scroll Rack\nManaCost:2\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 1 T | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ChangeNum$ XFetch | RememberChanged$ True | SubAbility$ DBDig | SpellDescription$ Exile any number of cards from your hand face down. Put that many cards from the top of your library into your hand. Then look at the exiled cards and put them on top of your library in any order. | StackDescription$ SpellDescription\nSVar:DBDig:DB$ Dig | DigNum$ X | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Hand | SubAbility$ DBReplace\nSVar:DBReplace:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Library | ChangeType$ Card.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:XFetch:Count$ValidHand Card.YouOwn\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:{1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into your hand. Then look at the exiled cards and put them on top of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scroll Rack"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

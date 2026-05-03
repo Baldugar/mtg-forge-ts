@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-of-uthuun-corpus-m677",
+  "description": "M6 corpus — Sphinx of Uthuun; in-hand parse.",
+  "seed": 70621,
+  "cards": {
+    "Sphinx of Uthuun": "Name:Sphinx of Uthuun\nManaCost:5 U U\nTypes:Creature Sphinx\nPT:5/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.\nSVar:TrigChangeZone:DB$ PeekAndReveal | PeekAmount$ 5 | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBTwoPiles | SpellDescription$ Reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.\nSVar:DBTwoPiles:DB$ TwoPiles | Defined$ You | DefinedCards$ Remembered | Separator$ Opponent | ChosenPile$ DBHand | UnchosenPile$ DBGrave\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Graveyard\nOracle:Flying\\nWhen Sphinx of Uthuun enters, reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx of Uthuun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

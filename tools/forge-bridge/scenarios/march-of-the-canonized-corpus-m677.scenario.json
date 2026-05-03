@@ -1,0 +1,23 @@
+{
+  "id": "march-of-the-canonized-corpus-m677",
+  "description": "M6 corpus — March of the Canonized; in-hand parse.",
+  "seed": 64769,
+  "cards": {
+    "March of the Canonized": "Name:March of the Canonized\nManaCost:X W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create X 1/1 white Vampire creature tokens with lifelink.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_vampire_lifelink | TokenOwner$ You\nSVar:X:Count$xPaid\nT:Mode$ Phase | Phase$ Upkeep | CheckSVar$ Y | SVarCompare$ GE7 | ValidPlayer$ You | Execute$ TrigTokenDemon | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if your devotion to white and black is seven or greater, create a 4/3 white and black Vampire Demon creature token with flying.\nSVar:TrigTokenDemon:DB$ Token | TokenScript$ wb_4_3_vampire_demon_flying | TokenOwner$ You\nSVar:Y:Count$DevotionDual.White.Black\nDeckHas:Ability$Token & Type$Vampire|Demon\nOracle:When March of the Canonized enters, create X 1/1 white Vampire creature tokens with lifelink.\\nAt the beginning of your upkeep, if your devotion to white and black is seven or greater, create a 4/3 white and black Vampire Demon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "March of the Canonized"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

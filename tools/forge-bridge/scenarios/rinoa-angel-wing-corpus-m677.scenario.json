@@ -1,0 +1,23 @@
+{
+  "id": "rinoa-angel-wing-corpus-m677",
+  "description": "M6 corpus — Rinoa, Angel Wing; in-hand parse.",
+  "seed": 68307,
+  "cards": {
+    "Rinoa, Angel Wing": "Name:Rinoa, Angel Wing\nManaCost:2 W\nTypes:Legendary Creature Human Rebel Warlock\nPT:2/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ At the beginning of combat on your turn, creatures you control with flying get +1/+1 and gain vigilance until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+withFlying | NumAtt$ +1 | NumDef$ +1 | KW$ Vigilance\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.attacking+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | OptionalDecider$ You | ResolvedLimit$ 1 | Execute$ TrigChangeZone | TriggerDescription$ Whenever one or more attacking creatures you control die, you may return one of them to the battlefield tapped under its owner's control with a flying counter on it. Do this only once each turn.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | ChangeNum$ 1 | Destination$ Battlefield | Hidden$ True | Tapped$ True | ChooseFromDefined$ TriggeredCards | Mandatory$ True | WithCountersType$ Flying\nOracle:At the beginning of combat on your turn, creatures you control with flying get +1/+1 and gain vigilance until end of turn.\\nWhenever one or more attacking creatures you control die, you may return one of them to the battlefield tapped under its owner's control with a flying counter on it. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rinoa, Angel Wing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "queen-of-ice-corpus-m677",
+  "description": "M6 corpus — Queen of Ice; in-hand parse.",
+  "seed": 67454,
+  "cards": {
+    "Queen of Ice": "Name:Queen of Ice\nManaCost:2 U\nTypes:Creature Human Noble Wizard\nPT:2/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, tap that creature. It doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nSVar:HasCombatEffect:TRUE\nAlternateMode:Adventure\nOracle:Whenever Queen of Ice deals combat damage to a creature, tap that creature. It doesn't untap during its controller's next untap step.\n\nALTERNATE\n\nName:Rage of Winter\nManaCost:1 U\nTypes:Sorcery Adventure\nA:SP$ Tap | ValidTgts$ Creature | SubAbility$ DBPump | SpellDescription$ Tap target creature. It doesn't untap during its controller's next untap step. (Then exile this card. You may cast the creature later from exile.)\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nOracle:Tap target creature. It doesn't untap during its controller's next untap step. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Queen of Ice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

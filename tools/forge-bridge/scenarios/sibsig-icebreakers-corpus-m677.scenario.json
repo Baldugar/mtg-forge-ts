@@ -1,0 +1,23 @@
+{
+  "id": "sibsig-icebreakers-corpus-m677",
+  "description": "M6 corpus — Sibsig Icebreakers; in-hand parse.",
+  "seed": 69816,
+  "cards": {
+    "Sibsig Icebreakers": "Name:Sibsig Icebreakers\nManaCost:2 B\nTypes:Creature Zombie\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Sibsig Icebreakers enters, each player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sibsig Icebreakers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

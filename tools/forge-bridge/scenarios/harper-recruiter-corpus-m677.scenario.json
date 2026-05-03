@@ -1,0 +1,23 @@
+{
+  "id": "harper-recruiter-corpus-m677",
+  "description": "M6 corpus — Harper Recruiter; in-hand parse.",
+  "seed": 62068,
+  "cards": {
+    "Harper Recruiter": "Name:Harper Recruiter\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:3/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDigMulti | TriggerDescription$ Whenever CARDNAME attacks, look at the top four cards of your library. You may reveal a Cleric card, a Rogue card, a Warrior card, and/or a Wizard card from among them and put those cards into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDigMulti:DB$ DigMultiple | DigNum$ 4 | ChangeValid$ Card.Cleric,Card.Rogue,Card.Warrior,Card.Wizard | SourceZone$ Library | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | Optional$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:Whenever Harper Recruiter attacks, look at the top four cards of your library. You may reveal a Cleric card, a Rogue card, a Warrior card, and/or a Wizard card from among them and put those cards into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harper Recruiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

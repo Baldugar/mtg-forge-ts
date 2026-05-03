@@ -1,0 +1,23 @@
+{
+  "id": "obstinate-baloth-corpus-m677",
+  "description": "M6 corpus — Obstinate Baloth; in-hand parse.",
+  "seed": 66198,
+  "cards": {
+    "Obstinate Baloth": "Name:Obstinate Baloth\nManaCost:2 G G\nTypes:Creature Beast\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 4\nR:Event$ Moved | ActiveZones$ Hand | ValidCard$ Card.Self | ValidCause$ SpellAbility.OppCtrl | Discard$ True | EffectOnly$ True | ReplaceWith$ SurpriseETB | Description$ If a spell or ability an opponent controls causes you to discard CARDNAME, put it onto the battlefield instead of putting it into your graveyard.\nSVar:SurpriseETB:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Hand | Destination$ Battlefield\nSVar:DiscardMeByOpp:2\nOracle:When Obstinate Baloth enters, you gain 4 life.\\nIf a spell or ability an opponent controls causes you to discard Obstinate Baloth, put it onto the battlefield instead of putting it into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obstinate Baloth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

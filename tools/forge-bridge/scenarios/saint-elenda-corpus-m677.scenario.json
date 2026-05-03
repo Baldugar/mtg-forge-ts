@@ -1,0 +1,23 @@
+{
+  "id": "saint-elenda-corpus-m677",
+  "description": "M6 corpus — Saint Elenda; in-hand parse.",
+  "seed": 68888,
+  "cards": {
+    "Saint Elenda": "Name:Saint Elenda\nManaCost:4 W W W\nTypes:Legendary Creature Vampire Cleric\nPT:4/7\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMakeCard | TriggerDescription$ When CARDNAME enters, conjure a card of your choice from CARDNAME's spellbook into your hand. You may cast that card this turn without paying its mana cost.\nSVar:TrigMakeCard:DB$ MakeCard | Conjure$ True | Spellbook$ Faith's Fetters,Ritual of Rejuvenation,Invoke the Divine,Inspiring Cleric | Zone$ Hand | SubAbility$ DBEffect | RememberMade$ True\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered | AffectedZone$ Hand | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you gained life this turn, create an X/X white Avatar creature token, where X is the amount of life you gained this turn.\nSVar:TrigToken:DB$ Token | TokenScript$ w_x_x_avatar | TokenOwner$ You | TokenPower$ X | TokenToughness$ X\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain|Token\nOracle:Lifelink\\nWhen Saint Elenda enters, conjure a card of your choice from Saint Elenda's spellbook into your hand. You may cast that card this turn without paying its mana cost.\\nAt the beginning of your end step, if you gained life this turn, create an X/X white Avatar creature token, where X is the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saint Elenda"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "septic-rats-corpus-m677",
+  "description": "M6 corpus — Septic Rats; in-hand parse.",
+  "seed": 69455,
+  "cards": {
+    "Septic Rats": "Name:Septic Rats\nManaCost:1 B B\nTypes:Creature Phyrexian Rat\nPT:2/2\nK:Infect\nT:Mode$ Attacks | ValidCard$ Creature.Self | TriggerZones$ Battlefield | DefendingPlayerPoisoned$ True | Execute$ TrigPump | TriggerDescription$ When CARDNAME attacks, if defending player is poisoned, it gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | Defined$ Self\nOracle:Infect (This creature deals damage to creatures in the form of -1/-1 counters and to players in the form of poison counters.)\\nWhenever Septic Rats attacks, if defending player is poisoned, it gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Septic Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

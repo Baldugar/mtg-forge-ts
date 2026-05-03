@@ -1,0 +1,23 @@
+{
+  "id": "painful-bond-corpus-m677",
+  "description": "M6 corpus — Painful Bond; in-hand parse.",
+  "seed": 66553,
+  "cards": {
+    "Painful Bond": "Name:Painful Bond\nManaCost:1 B\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBAnimate | StackDescription$ REP Draw_{p:You} draws | SpellDescription$ Draw two cards,\nSVar:DBAnimate:DB$ AnimateAll | Zone$ Hand | ValidCards$ Card.nonLand+cmcLE3+YouOwn | Triggers$ CastSpellLoseLife | Duration$ Perpetual | StackDescription$ REP your_their | SpellDescription$ then nonland cards in your hand with mana value 3 or less perpetually gain \"When you cast this spell, you lose 1 life.\"\nSVar:CastSpellLoseLife:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When you cast this spell, you lose 1 life.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 1\nOracle:Draw two cards, then nonland cards in your hand with mana value 3 or less perpetually gain \"When you cast this spell, you lose 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Painful Bond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

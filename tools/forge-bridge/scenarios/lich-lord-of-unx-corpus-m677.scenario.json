@@ -1,0 +1,25 @@
+{
+  "id": "lich-lord-of-unx-corpus-m677",
+  "description": "M6 corpus — Lich Lord of Unx; ETB-on-bf.",
+  "seed": 64186,
+  "cards": {
+    "Lich Lord of Unx": "Name:Lich Lord of Unx\nManaCost:1 U B\nTypes:Creature Zombie Wizard\nPT:2/2\nA:AB$ Token | Cost$ U B T | TokenScript$ ub_1_1_zombie_wizard | TokenOwner$ You | SpellDescription$ Create a 1/1 blue and black Zombie Wizard creature token.\nA:AB$ Mill | Cost$ U U B B | ValidTgts$ Player | TgtPrompt$ Select a player | NumCards$ X | SubAbility$ DBLoseLife | SpellDescription$ Target player loses X life and mills X cards, where X is the number of Zombies you control.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ Targeted\nSVar:X:Count$Valid Zombie.YouCtrl\nSVar:NonCombatPriority:1\nDeckHints:Type$Zombie\nDeckHas:Ability$Token\nOracle:{U}{B}, {T}: Create a 1/1 blue and black Zombie Wizard creature token.\\n{U}{U}{B}{B}: Target player loses X life and mills X cards, where X is the number of Zombies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lich Lord of Unx"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

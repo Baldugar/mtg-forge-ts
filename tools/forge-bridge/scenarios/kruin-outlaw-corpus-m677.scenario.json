@@ -1,0 +1,23 @@
+{
+  "id": "kruin-outlaw-corpus-m677",
+  "description": "M6 corpus — Kruin Outlaw; in-hand parse.",
+  "seed": 63902,
+  "cards": {
+    "Kruin Outlaw": "Name:Kruin Outlaw\nManaCost:1 R R\nTypes:Creature Human Rogue Werewolf\nPT:2/2\nK:First Strike\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:First strike\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Kruin Outlaw.\n\nALTERNATE\n\nName:Terror of Kruin Pass\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:3/3\nK:Double Strike\nS:Mode$ Continuous | Affected$ Werewolf.YouCtrl | AddKeyword$ Menace | Description$ Werewolves you control has menace.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Double strike\\nWerewolves you control have menace. (They can't be blocked except by two or more creatures.)\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Terror of Kruin Pass.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kruin Outlaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

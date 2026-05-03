@@ -1,0 +1,23 @@
+{
+  "id": "marisi-breaker-of-the-coil-corpus-m677",
+  "description": "M6 corpus — Marisi, Breaker of the Coil; in-hand parse.",
+  "seed": 64792,
+  "cards": {
+    "Marisi, Breaker of the Coil": "Name:Marisi, Breaker of the Coil\nManaCost:1 R G W\nTypes:Legendary Creature Cat Warrior\nPT:5/4\nS:Mode$ CantBeCast | ValidCard$ Card | Caster$ Player.Opponent | Phases$ BeginCombat->EndCombat | Description$ Your opponents can't cast spells during combat.\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGoad | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage to a player, goad each creature that player controls. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\nSVar:TrigGoad:DB$ Goad | Defined$ Valid Creature.ControlledBy Player.TriggeredTarget\nSVar:PlayMain1:TRUE\nOracle:Your opponents can't cast spells during combat.\\nWhenever a creature you control deals combat damage to a player, goad each creature that player controls. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marisi, Breaker of the Coil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

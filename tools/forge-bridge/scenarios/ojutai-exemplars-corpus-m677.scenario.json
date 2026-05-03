@@ -1,0 +1,25 @@
+{
+  "id": "ojutai-exemplars-corpus-m677",
+  "description": "M6 corpus — Ojutai Exemplars; ETB-on-bf.",
+  "seed": 66248,
+  "cards": {
+    "Ojutai Exemplars": "Name:Ojutai Exemplars\nManaCost:2 W W\nTypes:Creature Human Monk\nPT:4/4\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBTap,DBPump,DBBlink\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | SpellDescription$ Tap target creature.\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ First Strike & Lifelink | SpellDescription$ CARDNAME gains first strike and lifelink until end of turn.\nSVar:DBBlink:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | RememberChanged$ True | SpellDescription$ Exile CARDNAME, then return it to the battlefield tapped under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Card.nonLand+nonCreature\nOracle:Whenever you cast a noncreature spell, choose one —\\n• Tap target creature.\\n• Ojutai Exemplars gains first strike and lifelink until end of turn.\\n• Exile Ojutai Exemplars, then return it to the battlefield tapped under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ojutai Exemplars"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

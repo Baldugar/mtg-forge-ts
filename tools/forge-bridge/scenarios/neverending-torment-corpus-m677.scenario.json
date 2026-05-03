@@ -1,0 +1,23 @@
+{
+  "id": "neverending-torment-corpus-m677",
+  "description": "M6 corpus — Neverending Torment; in-hand parse.",
+  "seed": 65880,
+  "cards": {
+    "Neverending Torment": "Name:Neverending Torment\nManaCost:4 B B\nTypes:Sorcery\nK:Epic\nA:SP$ ChangeZone | Origin$ Library | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | ChangeNum$ X | IsCurse$ True | SpellDescription$ Search target player's library for X cards, where X is the number of cards in your hand, and exile it. Then that player shuffles their library.\nSVar:X:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Search target player's library for X cards, where X is the number of cards in your hand, and exile them. Then that player shuffles.\\nEpic (For the rest of the game, you can't cast spells. At the beginning of each of your upkeeps, copy this spell except for its epic ability. You may choose a new target for the copy.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Neverending Torment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

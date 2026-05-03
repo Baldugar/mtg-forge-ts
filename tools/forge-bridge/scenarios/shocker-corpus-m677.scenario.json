@@ -1,0 +1,23 @@
+{
+  "id": "shocker-corpus-m677",
+  "description": "M6 corpus — Shocker; in-hand parse.",
+  "seed": 69743,
+  "cards": {
+    "Shocker": "Name:Shocker\nManaCost:1 R\nTypes:Creature Insect\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME deals damage to a player, that player discards all the cards in their hand, then draws that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBDraw | SpellDescription$ Discard your hand,\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ TriggeredTarget | SubAbility$ DBCleanup | SpellDescription$ then draw that many cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Whenever Shocker deals damage to a player, that player discards all the cards in their hand, then draws that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shocker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "master-splicer-corpus-m677",
+  "description": "M6 corpus — Master Splicer; in-hand parse.",
+  "seed": 64875,
+  "cards": {
+    "Master Splicer": "Name:Master Splicer\nManaCost:3 W\nTypes:Creature Phyrexian Human Artificer\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_3_3_a_phyrexian_golem | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.Golem+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Golems you control get +1/+1.\nDeckHas:Ability$Token\nOracle:When Master Splicer enters, create a 3/3 colorless Phyrexian Golem artifact creature token.\\nGolems you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master Splicer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

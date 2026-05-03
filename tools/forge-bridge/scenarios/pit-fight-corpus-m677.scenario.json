@@ -1,0 +1,23 @@
+{
+  "id": "pit-fight-corpus-m677",
+  "description": "M6 corpus — Pit Fight; in-hand parse.",
+  "seed": 66934,
+  "cards": {
+    "Pit Fight": "Name:Pit Fight\nManaCost:1 RG\nTypes:Instant\nA:SP$ Pump | AILogic$ Fight | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ DBPitFight | StackDescription$ None | SpellDescription$ Target creature you control fights another target creature.\nSVar:DBPitFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature | TargetUnique$ True | TgtPrompt$ Choose target creature to fight the first target\nOracle:Target creature you control fights another target creature. (Each deals damage equal to its power to the other.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pit Fight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

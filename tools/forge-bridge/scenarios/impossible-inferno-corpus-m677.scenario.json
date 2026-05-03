@@ -1,0 +1,23 @@
+{
+  "id": "impossible-inferno-corpus-m677",
+  "description": "M6 corpus — Impossible Inferno; in-hand parse.",
+  "seed": 62822,
+  "cards": {
+    "Impossible Inferno": "Name:Impossible Inferno\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 6 | SubAbility$ DBDig | SpellDescription$ CARDNAME deals 6 damage to target creature. Delirium — If there are four or more card types among cards in your graveyard, exile the top card of your library. You may play it until the end of your next turn.\nSVar:DBDig:DB$ Dig | Condition$ Delirium | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play it until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Impossible Inferno deals 6 damage to target creature.\\nDelirium — If there are four or more card types among cards in your graveyard, exile the top card of your library. You may play it until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impossible Inferno"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

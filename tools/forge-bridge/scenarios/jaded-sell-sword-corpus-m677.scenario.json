@@ -1,0 +1,23 @@
+{
+  "id": "jaded-sell-sword-corpus-m677",
+  "description": "M6 corpus — Jaded Sell-Sword; in-hand parse.",
+  "seed": 63229,
+  "cards": {
+    "Jaded Sell-Sword": "Name:Jaded Sell-Sword\nManaCost:3 R\nTypes:Creature Dragon Warrior\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ TreasureCheck | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, if mana from a Treasure was spent to cast it, it gains first strike and haste until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ First Strike & Haste\nSVar:TreasureCheck:Count$CastTotalManaSpent Treasure\nSVar:AIPreference:ManaFrom$Treasure\nOracle:When Jaded Sell-Sword enters, if mana from a Treasure was spent to cast it, it gains first strike and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaded Sell-Sword"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

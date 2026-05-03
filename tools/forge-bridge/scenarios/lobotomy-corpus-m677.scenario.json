@@ -1,0 +1,23 @@
+{
+  "id": "lobotomy-corpus-m677",
+  "description": "M6 corpus — Lobotomy; in-hand parse.",
+  "seed": 64349,
+  "cards": {
+    "Lobotomy": "Name:Lobotomy\nManaCost:2 U B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Player | SubAbility$ ChooseCard | StackDescription$ SpellDescription | SpellDescription$ Target player reveals their hand,\nSVar:ChooseCard:DB$ ChooseCard | Choices$ Card.nonBasic+TargetedPlayerCtrl+inZoneHand | ChoiceZone$ Hand | SubAbility$ ExileYard | RememberChosen$ True | ForgetOtherTargets$ True | SpellDescription$ then you choose a card other than a basic land card from it. Search that player's graveyard, hand, and library for all cards with the same name as the chosen card and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ Targeted | ChangeType$ Remembered.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | AlreadyRevealed$ True | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target player reveals their hand, then you choose a card other than a basic land card from it. Search that player's graveyard, hand, and library for all cards with the same name as the chosen card and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lobotomy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

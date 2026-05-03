@@ -1,0 +1,25 @@
+{
+  "id": "skittish-kavu-corpus-m677",
+  "description": "M6 corpus — Skittish Kavu; ETB-on-bf.",
+  "seed": 70055,
+  "cards": {
+    "Skittish Kavu": "Name:Skittish Kavu\nManaCost:1 R\nTypes:Creature Kavu\nPT:1/1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 1 | CheckSVar$ X | SVarCompare$ EQ0 | Description$ CARDNAME gets +1/+1 as long as no opponent controls a white or blue creature.\nSVar:X:Count$Valid Creature.White+OppCtrl/Plus.Y\nSVar:Y:Count$Valid Creature.Blue+OppCtrl\nSVar:AntiBuffedBy:Creature.White,Creature.Blue\nAI:RemoveDeck:Random\nOracle:Skittish Kavu gets +1/+1 as long as no opponent controls a white or blue creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Skittish Kavu"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

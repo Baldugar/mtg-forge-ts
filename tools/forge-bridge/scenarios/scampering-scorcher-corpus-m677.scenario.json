@@ -1,0 +1,23 @@
+{
+  "id": "scampering-scorcher-corpus-m677",
+  "description": "M6 corpus — Scampering Scorcher; in-hand parse.",
+  "seed": 69101,
+  "cards": {
+    "Scampering Scorcher": "Name:Scampering Scorcher\nManaCost:3 R\nTypes:Creature Elemental\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 red Elemental creature tokens. Elementals you control gain haste until end of turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_elemental | TokenOwner$ You | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Elemental.YouCtrl | KW$ Haste\nDeckHas:Ability$Token\nOracle:When Scampering Scorcher enters, create two 1/1 red Elemental creature tokens. Elementals you control gain haste until end of turn. (They can attack and {T} this turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scampering Scorcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

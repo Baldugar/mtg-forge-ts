@@ -1,0 +1,23 @@
+{
+  "id": "life-burst-corpus-m677",
+  "description": "M6 corpus — Life Burst; in-hand parse.",
+  "seed": 64199,
+  "cards": {
+    "Life Burst": "Name:Life Burst\nManaCost:1 W\nTypes:Instant\nA:SP$ GainLife | LifeAmount$ 4 | ValidTgts$ Player | SubAbility$ DBGainLife | SpellDescription$ Target player gains 4 life, then gains 4 life for each card named Life Burst in each graveyard.\nSVar:DBGainLife:DB$ GainLife | Defined$ Targeted | LifeAmount$ X\nSVar:X:Count$ValidGraveyard Card.namedLife Burst/Times.4\nDeckHints:Name$Life Burst\nOracle:Target player gains 4 life, then gains 4 life for each card named Life Burst in each graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Life Burst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reflect-damage-corpus-m677",
+  "description": "M6 corpus — Reflect Damage; in-hand parse.",
+  "seed": 67942,
+  "cards": {
+    "Reflect Damage": "Name:Reflect Damage\nManaCost:3 R W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ The next time a source of your choice would deal damage this turn, that damage is dealt to that source's controller instead.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ SelflessDamage\nSVar:SelflessDamage:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ReplaceWith$ SelflessDmg | DamageTarget$ ReplacedSourceController | Description$ The next time a source of your choice would deal damage this turn, that damage is dealt to that source's controller instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ ReplacedSourceController | VarType$ Player | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:The next time a source of your choice would deal damage this turn, that damage is dealt to that source's controller instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reflect Damage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

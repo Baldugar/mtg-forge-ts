@@ -1,0 +1,23 @@
+{
+  "id": "hidden-grotto-corpus-m677",
+  "description": "M6 corpus — Hidden Grotto; in-hand parse.",
+  "seed": 62334,
+  "cards": {
+    "Hidden Grotto": "Name:Hidden Grotto\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Any | SpellDescription$ Add one mana of any color.\nAI:RemoveDeck:Random\nDeckHas:Ability$Mana.Colorless\nDeckHints:Color$Colorless & Keyword$Devoid\nOracle:When Hidden Grotto enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\\n{T}: Add {C}.\\n{1}, {T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hidden Grotto"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

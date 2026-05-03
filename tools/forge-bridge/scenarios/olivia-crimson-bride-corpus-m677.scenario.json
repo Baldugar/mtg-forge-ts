@@ -1,0 +1,23 @@
+{
+  "id": "olivia-crimson-bride-corpus-m677",
+  "description": "M6 corpus — Olivia, Crimson Bride; in-hand parse.",
+  "seed": 66269,
+  "cards": {
+    "Olivia, Crimson Bride": "Name:Olivia, Crimson Bride\nManaCost:4 B R\nTypes:Legendary Creature Vampire Noble\nPT:3/4\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, return target creature card from your graveyard to the battlefield tapped and attacking. It gains \"When you don't control a legendary Vampire, exile this creature.\"\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn | Tapped$ True | Attacking$ True | RememberChanged$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Duration$ Permanent | Triggers$ TrigOlivia | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigOlivia:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Vampire.YouCtrl+Legendary | PresentCompare$ EQ0 | Execute$ TrigExile | TriggerDescription$ When you don't control a legendary Vampire, exile this creature.\nSVar:TrigExile:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard\nDeckHints:Type$Vampire|Legendary\nOracle:Flying, haste\\nWhenever Olivia, Crimson Bride attacks, return target creature card from your graveyard to the battlefield tapped and attacking. It gains \"When you don't control a legendary Vampire, exile this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Olivia, Crimson Bride"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

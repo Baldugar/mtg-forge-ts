@@ -1,0 +1,23 @@
+{
+  "id": "phosphorescent-feast-corpus-m677",
+  "description": "M6 corpus — Phosphorescent Feast; in-hand parse.",
+  "seed": 66829,
+  "cards": {
+    "Phosphorescent Feast": "Name:Phosphorescent Feast\nManaCost:2 G G G\nTypes:Sorcery\nA:SP$ Reveal | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBGainLife | SpellDescription$ Chroma — Reveal any number of cards in your hand. You gain 2 life for each green mana symbol in those cards' mana costs.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$ChromaSource.Green/Twice\nAI:RemoveDeck:All\nOracle:Chroma — Reveal any number of cards in your hand. You gain 2 life for each green mana symbol in those cards' mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phosphorescent Feast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

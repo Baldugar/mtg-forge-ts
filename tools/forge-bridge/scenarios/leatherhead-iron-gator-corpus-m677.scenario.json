@@ -1,0 +1,23 @@
+{
+  "id": "leatherhead-iron-gator-corpus-m677",
+  "description": "M6 corpus — Leatherhead, Iron Gator; in-hand parse.",
+  "seed": 64080,
+  "cards": {
+    "Leatherhead, Iron Gator": "Name:Leatherhead, Iron Gator\nManaCost:5 G G\nTypes:Legendary Creature Crocodile Mutant Rogue\nPT:5/5\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever NICKNAME attacks, put two +1/+1 counters on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 2\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Trample, haste\\nWhenever Leatherhead attacks, put two +1/+1 counters on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leatherhead, Iron Gator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

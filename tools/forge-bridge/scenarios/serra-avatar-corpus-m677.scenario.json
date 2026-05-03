@@ -1,0 +1,25 @@
+{
+  "id": "serra-avatar-corpus-m677",
+  "description": "M6 corpus — Serra Avatar; ETB-on-bf.",
+  "seed": 69488,
+  "cards": {
+    "Serra Avatar": "Name:Serra Avatar\nManaCost:4 W W W\nTypes:Creature Avatar\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to your life total.\nSVar:X:Count$YourLifeTotal\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ When CARDNAME is put into a graveyard from anywhere, shuffle it into its owner's library.\nSVar:TrigShuffle:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredCardLKICopy\nOracle:Serra Avatar's power and toughness are each equal to your life total.\\nWhen Serra Avatar is put into a graveyard from anywhere, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Serra Avatar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

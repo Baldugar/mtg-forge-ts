@@ -1,0 +1,25 @@
+{
+  "id": "ore-gorger-corpus-m677",
+  "description": "M6 corpus — Ore Gorger; ETB-on-bf.",
+  "seed": 66411,
+  "cards": {
+    "Ore Gorger": "Name:Ore Gorger\nManaCost:3 R R\nTypes:Creature Spirit\nPT:3/1\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDestroy | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may destroy target nonbasic land.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, you may destroy target nonbasic land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ore Gorger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

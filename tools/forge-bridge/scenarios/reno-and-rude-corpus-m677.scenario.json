@@ -1,0 +1,23 @@
+{
+  "id": "reno-and-rude-corpus-m677",
+  "description": "M6 corpus — Reno and Rude; in-hand parse.",
+  "seed": 68055,
+  "cards": {
+    "Reno and Rude": "Name:Reno and Rude\nManaCost:1 B\nTypes:Legendary Creature Human Assassin\nPT:2/1\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile the top card of that player's library. Then you may sacrifice another creature or artifact. If you do, you may play the exiled card this turn, and mana of any type can be spent to cast it.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Imprint$ True | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | SacValid$ Artifact.Other,Creature.Other | SacMessage$ other creature or artifact | Optional$ True | RememberSacrificed$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ConditionDefined$ Remembered | ConditionPresent$ Card | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ Imprinted | ForgetOtherRemembered$ True | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card, and mana of any type can be spent to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Menace\\nWhenever Reno and Rude deals combat damage to a player, exile the top card of that player's library. Then you may sacrifice another creature or artifact. If you do, you may play the exiled card this turn, and mana of any type can be spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reno and Rude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

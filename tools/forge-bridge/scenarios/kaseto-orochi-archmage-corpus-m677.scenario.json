@@ -1,0 +1,25 @@
+{
+  "id": "kaseto-orochi-archmage-corpus-m677",
+  "description": "M6 corpus — Kaseto, Orochi Archmage; ETB-on-bf.",
+  "seed": 63503,
+  "cards": {
+    "Kaseto, Orochi Archmage": "Name:Kaseto, Orochi Archmage\nManaCost:1 G U\nTypes:Legendary Creature Snake Wizard\nPT:2/2\nA:AB$ Effect | Cost$ G U | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | AITgts$ Snake | SubAbility$ DBPump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBPump:DB$ Pump | Defined$ Targeted.Snake | NumAtt$ +2 | NumDef$ +2 | StackDescription$ SpellDescription | SpellDescription$ If that creature is a Snake, it gets +2/+2 until end of turn.\nDeckHints:Type$Snake\nOracle:{G}{U}: Target creature can't be blocked this turn. If that creature is a Snake, it gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Kaseto, Orochi Archmage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

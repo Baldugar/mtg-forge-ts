@@ -1,0 +1,23 @@
+{
+  "id": "restless-spire-corpus-m677",
+  "description": "M6 corpus — Restless Spire; in-hand parse.",
+  "seed": 68122,
+  "cards": {
+    "Restless Spire": "Name:Restless Spire\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nA:AB$ Animate | Cost$ U R | Defined$ Self | Power$ 2 | Toughness$ 1 | staticAbilities$ STFirstStrike | Types$ Creature,Elemental | Colors$ Blue,Red | OverwriteColors$ True | SpellDescription$ Until end of turn, CARDNAME becomes a 2/1 blue and red Elemental creature with \"During your turn, this creature has first strike.\" It's still a land.\nSVar:STFirstStrike:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ First Strike | Condition$ PlayerTurn | Description$ During your turn, CARDNAME has first strike.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever CARDNAME attacks, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain & Type$Elemental & Color$Blue|Red\nOracle:Restless Spire enters tapped.\\n{T}: Add {U} or {R}.\\n{U}{R}: Until end of turn, Restless Spire becomes a 2/1 blue and red Elemental creature with \"During your turn, this creature has first strike.\" It's still a land.\\nWhenever Restless Spire attacks, scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restless Spire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

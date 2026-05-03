@@ -1,0 +1,23 @@
+{
+  "id": "rampage-of-the-valkyries-corpus-m677",
+  "description": "M6 corpus — Rampage of the Valkyries; in-hand parse.",
+  "seed": 67665,
+  "cards": {
+    "Rampage of the Valkyries": "Name:Rampage of the Valkyries\nManaCost:3 W B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 4/4 white Angel creature token with flying and vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ w_4_4_angel_flying_vigilance | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Angel.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever an Angel you control dies, each opponent sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature\nDeckHints:Type$Angel\nDeckHas:Ability$Token\nOracle:When Rampage of the Valkyries enters, create a 4/4 white Angel creature token with flying and vigilance.\\nWhenever an Angel you control dies, each other player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampage of the Valkyries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

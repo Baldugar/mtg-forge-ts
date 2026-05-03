@@ -1,0 +1,25 @@
+{
+  "id": "planeswalker-s-favor-corpus-m677",
+  "description": "M6 corpus — Planeswalker's Favor; ETB-on-bf.",
+  "seed": 66982,
+  "cards": {
+    "Planeswalker's Favor": "Name:Planeswalker's Favor\nManaCost:2 G\nTypes:Enchantment\nA:AB$ Reveal | Cost$ 3 G | Random$ True | RememberRevealed$ True | ValidTgts$ Opponent | SubAbility$ DBPump | SpellDescription$ Target opponent reveals a card at random from their hand. Target creature gets +X/+X until end of turn, where X is the revealed card's mana value.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nSVar:NonStackingEffect:True\nOracle:{3}{G}: Target opponent reveals a card at random from their hand. Target creature gets +X/+X until end of turn, where X is the revealed card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Planeswalker's Favor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

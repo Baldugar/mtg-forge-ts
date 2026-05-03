@@ -1,0 +1,23 @@
+{
+  "id": "knollspine-dragon-corpus-m677",
+  "description": "M6 corpus — Knollspine Dragon; in-hand parse.",
+  "seed": 63783,
+  "cards": {
+    "Knollspine Dragon": "Name:Knollspine Dragon\nManaCost:5 R R\nTypes:Creature Dragon\nPT:7/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may discard your hand and draw cards equal to the damage dealt to target opponent this turn.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ You | ValidTgts$ Opponent\nSVar:X:TargetedPlayer$DamageThisTurn\nAI:RemoveDeck:All\nOracle:Flying\\nWhen Knollspine Dragon enters, you may discard your hand and draw cards equal to the damage dealt to target opponent this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knollspine Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

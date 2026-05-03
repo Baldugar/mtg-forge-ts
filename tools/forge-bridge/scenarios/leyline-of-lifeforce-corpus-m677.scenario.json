@@ -1,0 +1,25 @@
+{
+  "id": "leyline-of-lifeforce-corpus-m677",
+  "description": "M6 corpus — Leyline of Lifeforce; ETB-on-bf.",
+  "seed": 64164,
+  "cards": {
+    "Leyline of Lifeforce": "Name:Leyline of Lifeforce\nManaCost:2 G G\nTypes:Enchantment\nK:MayEffectFromOpeningHand:FromHand\nSVar:FromHand:DB$ ChangeZone | Defined$ Self | Origin$ Hand | Destination$ Battlefield | SpellDescription$ If CARDNAME is in your opening hand, you may begin the game with it on the battlefield.\nR:Event$ Counter | ValidSA$ Spell.Creature | Layer$ CantHappen | ActiveZones$ Battlefield | Description$ Creature spells can't be countered.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:If Leyline of Lifeforce is in your opening hand, you may begin the game with it on the battlefield.\\nCreature spells can't be countered.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leyline of Lifeforce"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sinister-waltz-corpus-m677",
+  "description": "M6 corpus — Sinister Waltz; in-hand parse.",
+  "seed": 69977,
+  "cards": {
+    "Sinister Waltz": "Name:Sinister Waltz\nManaCost:3 B R\nTypes:Sorcery\nA:SP$ Pump | TargetMin$ 3 | TargetMax$ 3 | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select three target creature cards in your graveyard | TgtZone$ Graveyard | RememberObjects$ Targeted | SubAbility$ ReturnTwo | StackDescription$ {p:You} chooses {c:Targeted}, | SpellDescription$ Choose three target creature cards in your graveyard. Return two of them at random to the battlefield and put the other on the bottom of your library.\nSVar:ReturnTwo:DB$ ChangeZone | ChangeType$ Card.IsRemembered | ChangeNum$ 2 | Origin$ Graveyard | Destination$ Battlefield | AtRandom$ True | Hidden$ True | ForgetChanged$ True | SubAbility$ Wallflower | StackDescription$ returns two of them at random to the battlefield\nSVar:Wallflower:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | ForgetChanged$ True | StackDescription$ and puts the other on the bottom of their library.\nOracle:Choose three target creature cards in your graveyard. Return two of them at random to the battlefield and put the other on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sinister Waltz"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

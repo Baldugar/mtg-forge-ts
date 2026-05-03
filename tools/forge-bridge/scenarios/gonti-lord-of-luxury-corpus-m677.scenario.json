@@ -1,0 +1,23 @@
+{
+  "id": "gonti-lord-of-luxury-corpus-m677",
+  "description": "M6 corpus — Gonti, Lord of Luxury; in-hand parse.",
+  "seed": 61570,
+  "cards": {
+    "Gonti, Lord of Luxury": "Name:Gonti, Lord of Luxury\nManaCost:2 B B\nTypes:Legendary Creature Aetherborn Rogue\nPT:2/3\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of target opponent's library, exile one of them face down, then put the rest on the bottom of that library in a random order. You may cast that card for as long as it remains exiled, and mana of any type can be spent to cast that spell.\nSVar:TrigDig:DB$ Dig | ValidTgts$ Opponent | DigNum$ 4 | ChangeNum$ 1 | DestinationZone$ Exile | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | ExileFaceDown$ True | WithMayLook$ True | ChangeValid$ Card | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast that card for as long as it remains exiled, and mana of any type can be spent to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nOracle:Deathtouch\\nWhen Gonti, Lord of Luxury enters, look at the top four cards of target opponent's library, exile one of them face down, then put the rest on the bottom of that library in a random order. You may cast that card for as long as it remains exiled, and mana of any type can be spent to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gonti, Lord of Luxury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

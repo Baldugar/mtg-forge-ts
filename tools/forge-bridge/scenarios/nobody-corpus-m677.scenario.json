@@ -1,0 +1,23 @@
+{
+  "id": "nobody-corpus-m677",
+  "description": "M6 corpus — Nobody; in-hand parse.",
+  "seed": 66034,
+  "cards": {
+    "Nobody": "Name:Nobody\nManaCost:1 UR UR\nTypes:Artifact Creature Human Hero\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this creature enters, return up to one other target artifact you control to its owner's hand. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Artifact.Other+YouCtrl | ValidTgtsDesc$ another artifact you control | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nOracle:When this creature enters, return up to one other target artifact you control to its owner's hand. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nobody"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

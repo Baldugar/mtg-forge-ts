@@ -1,0 +1,25 @@
+{
+  "id": "graveyard-shovel-corpus-m677",
+  "description": "M6 corpus — Graveyard Shovel; ETB-on-bf.",
+  "seed": 61680,
+  "cards": {
+    "Graveyard Shovel": "Name:Graveyard Shovel\nManaCost:2\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 2 T | ValidTgts$ Player | DefinedPlayer$ Targeted | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | Chooser$ Targeted | Mandatory$ True | SubAbility$ DBGainLife | RememberChanged$ True | IsCurse$ True | StackDescription$ SpellDescription | SpellDescription$ Target player exiles a card from their graveyard. If it's a creature card, you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Creature | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{2}, {T}: Target player exiles a card from their graveyard. If it's a creature card, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Graveyard Shovel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

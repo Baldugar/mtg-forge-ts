@@ -1,0 +1,23 @@
+{
+  "id": "hero-of-the-nyxborn-corpus-m677",
+  "description": "M6 corpus — Hero of the Nyxborn; in-hand parse.",
+  "seed": 62297,
+  "cards": {
+    "Hero of the Nyxborn": "Name:Hero of the Nyxborn\nManaCost:1 R W\nTypes:Enchantment Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast a spell that targets CARDNAME, creatures you control get +1/+0 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nDeckHas:Ability$Token\nOracle:When Hero of the Nyxborn enters, create a 1/1 white Human Soldier creature token.\\nWhenever you cast a spell that targets Hero of the Nyxborn, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hero of the Nyxborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

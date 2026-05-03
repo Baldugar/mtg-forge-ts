@@ -1,0 +1,23 @@
+{
+  "id": "scour-for-scrap-corpus-m677",
+  "description": "M6 corpus — Scour for Scrap; in-hand parse.",
+  "seed": 69188,
+  "cards": {
+    "Scour for Scrap": "Name:Scour for Scrap\nManaCost:3 U\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBSearch,DBReturn\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Artifact | ChangeNum$ 1 | SpellDescription$ Search your library for an artifact card, reveal it, put it into your hand, then shuffle.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.YouOwn | TgtPrompt$ Select target artifact card in your graveyard | SpellDescription$ Return target artifact card from your graveyard to your hand.\nOracle:Choose one or both —\\n• Search your library for an artifact card, reveal it, put it into your hand, then shuffle.\\n• Return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scour for Scrap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

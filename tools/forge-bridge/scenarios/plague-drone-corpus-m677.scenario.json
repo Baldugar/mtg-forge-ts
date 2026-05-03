@@ -1,0 +1,25 @@
+{
+  "id": "plague-drone-corpus-m677",
+  "description": "M6 corpus — Plague Drone; ETB-on-bf.",
+  "seed": 66952,
+  "cards": {
+    "Plague Drone": "Name:Plague Drone\nManaCost:3 B\nTypes:Creature Demon\nPT:3/3\nK:Flying\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ Opponent | ReplaceWith$ RLoseLife | AILogic$ LoseLife | Description$ Rot Fly — If an opponent would gain life, that player loses that much life instead.\nSVar:RLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ ReplacedPlayer\nSVar:X:ReplaceCount$LifeGained\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:Flying\\nRot Fly — If an opponent would gain life, that player loses that much life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Plague Drone"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

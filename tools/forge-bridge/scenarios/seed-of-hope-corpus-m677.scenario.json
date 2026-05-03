@@ -1,0 +1,23 @@
+{
+  "id": "seed-of-hope-corpus-m677",
+  "description": "M6 corpus — Seed of Hope; in-hand parse.",
+  "seed": 69361,
+  "cards": {
+    "Seed of Hope": "Name:Seed of Hope\nManaCost:G\nTypes:Instant\nA:SP$ Mill | NumCards$ 2 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill two cards. You may put a permanent card from among the milled cards into your hand. You gain 2 life. (To mill two cards, put the top two cards of your library into your graveyard.)\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Card.IsRemembered+Permanent | SelectPrompt$ You may put a permanent card from among the milled cards into your hand | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill|LifeGain\nOracle:Mill two cards. You may put a permanent card from among the milled cards into your hand. You gain 2 life. (To mill two cards, put the top two cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seed of Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

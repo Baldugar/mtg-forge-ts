@@ -1,0 +1,23 @@
+{
+  "id": "soul-bleed-corpus-m677",
+  "description": "M6 corpus — Soul Bleed; in-hand parse.",
+  "seed": 70435,
+  "cards": {
+    "Soul Bleed": "Name:Soul Bleed\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 1\nOracle:Enchant creature\\nAt the beginning of the upkeep of enchanted creature's controller, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Bleed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

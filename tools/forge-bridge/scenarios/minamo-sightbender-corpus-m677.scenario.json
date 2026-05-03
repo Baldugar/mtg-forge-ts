@@ -1,0 +1,25 @@
+{
+  "id": "minamo-sightbender-corpus-m677",
+  "description": "M6 corpus — Minamo Sightbender; ETB-on-bf.",
+  "seed": 65138,
+  "cards": {
+    "Minamo Sightbender": "Name:Minamo Sightbender\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/2\nA:AB$ Effect | Cost$ X T | ValidTgts$ Creature.powerLEX | TgtPrompt$ Select target creature with power X or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power X or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{X}, {T}: Target creature with power X or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Minamo Sightbender"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

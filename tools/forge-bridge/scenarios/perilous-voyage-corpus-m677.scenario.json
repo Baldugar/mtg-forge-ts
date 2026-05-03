@@ -1,0 +1,23 @@
+{
+  "id": "perilous-voyage-corpus-m677",
+  "description": "M6 corpus — Perilous Voyage; in-hand parse.",
+  "seed": 66740,
+  "cards": {
+    "Perilous Voyage": "Name:Perilous Voyage\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand+YouDontCtrl | TgtPrompt$ Select target nonland permanent you don't control | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBScry | SpellDescription$ Return target nonland permanent you don't control to its owner's hand. If its mana value was 2 or less, scry 2.\nSVar:DBScry:DB$ Scry | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcLE2 | ConditionCompare$ EQ1 | ScryNum$ 2\nOracle:Return target nonland permanent you don't control to its owner's hand. If its mana value was 2 or less, scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perilous Voyage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

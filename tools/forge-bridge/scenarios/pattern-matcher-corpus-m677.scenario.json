@@ -1,0 +1,23 @@
+{
+  "id": "pattern-matcher-corpus-m677",
+  "description": "M6 corpus — Pattern Matcher; in-hand parse.",
+  "seed": 66678,
+  "cards": {
+    "Pattern Matcher": "Name:Pattern Matcher\nManaCost:4\nTypes:Artifact Creature Golem\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a card with the same name as another creature you control, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.sharesNameWith Valid Creature.YouCtrl+Other | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When Pattern Matcher enters, you may search your library for a card with the same name as another creature you control, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pattern Matcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

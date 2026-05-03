@@ -1,0 +1,23 @@
+{
+  "id": "primeval-spawn-corpus-m677",
+  "description": "M6 corpus — Primeval Spawn; in-hand parse.",
+  "seed": 67199,
+  "cards": {
+    "Primeval Spawn": "Name:Primeval Spawn\nManaCost:5 W U B R G\nTypes:Creature Avatar\nPT:10/10\nK:Vigilance\nK:Trample\nK:Lifelink\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Battlefield | ValidCard$ Card.Self+!wasCast,Card.Self+CastSa Spell.ManaSpent EQ0 | ReplaceWith$ Exile | Description$ If CARDNAME would enter and it wasn't cast or no mana was spent to cast it, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME leaves the battlefield, exile the top ten cards of your library. You may cast any number of spells with total mana value 10 or less from among them without paying their mana costs.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 10 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+IsRemembered+YouOwn+cmcLE10 | WithTotalCMC$ 10 | ValidZone$ Exile | ValidSA$ Spell | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ All\nOracle:If Primeval Spawn would enter and it wasn't cast or no mana was spent to cast it, exile it instead.\\nVigilance, trample, lifelink\\nWhen Primeval Spawn leaves the battlefield, exile the top ten cards of your library. You may cast any number of spells with total mana value 10 or less from among them without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primeval Spawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

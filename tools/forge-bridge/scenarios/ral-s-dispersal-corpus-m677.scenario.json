@@ -1,0 +1,23 @@
+{
+  "id": "ral-s-dispersal-corpus-m677",
+  "description": "M6 corpus — Ral's Dispersal; in-hand parse.",
+  "seed": 67650,
+  "cards": {
+    "Ral's Dispersal": "Name:Ral's Dispersal\nManaCost:3 U U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBSearch | SpellDescription$ Return target creature to its owner's hand.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedRal; Caller of Storms | Optional$ True | SpellDescription$ You may search your library and/or graveyard for a card named, Ral, Caller of Storms and put it in your hand. If you search your library this way, shuffle it.\nDeckNeeds:Name$Ral, Caller of Storms\nOracle:Return target creature to its owner's hand. You may search your library and/or graveyard for a card named Ral, Caller of Storms, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ral's Dispersal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

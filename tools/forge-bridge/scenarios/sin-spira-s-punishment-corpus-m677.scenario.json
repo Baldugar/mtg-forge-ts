@@ -1,0 +1,23 @@
+{
+  "id": "sin-spira-s-punishment-corpus-m677",
+  "description": "M6 corpus — Sin, Spira's Punishment; in-hand parse.",
+  "seed": 69960,
+  "cards": {
+    "Sin, Spira's Punishment": "Name:Sin, Spira's Punishment\nManaCost:4 B G U\nTypes:Legendary Creature Leviathan Avatar\nPT:7/7\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ Whenever NICKNAME enters or attacks, exile a permanent card from your graveyard at random, then create a tapped token that's a copy of that card. If the exiled card is a land card, repeat this process.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, exile a permanent card from your graveyard at random, then create a tapped token that's a copy of that card. If the exiled card is a land card, repeat this process.\nSVar:TrigRepeat:DB$ Repeat | RepeatSubAbility$ DBChange | RepeatDefined$ Remembered | RepeatPresent$ Land | RepeatSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | AtRandom$ True | ChangeType$ Permanent.YouOwn | ChangeNum$ 1 | RememberChanged$ True | ForgetOtherRemembered$ True | Hidden$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | TokenTapped$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Sin enters or attacks, exile a permanent card from your graveyard at random, then create a tapped token that's a copy of that card. If the exiled card is a land card, repeat this process.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sin, Spira's Punishment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

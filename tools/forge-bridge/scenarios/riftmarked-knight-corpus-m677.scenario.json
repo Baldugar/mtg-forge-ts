@@ -1,0 +1,25 @@
+{
+  "id": "riftmarked-knight-corpus-m677",
+  "description": "M6 corpus — Riftmarked Knight; ETB-on-bf.",
+  "seed": 68264,
+  "cards": {
+    "Riftmarked Knight": "Name:Riftmarked Knight\nManaCost:1 W W\nTypes:Creature Human Rebel Knight\nPT:2/2\nK:Flanking\nK:Protection from black\nK:Suspend:3:1 W W\nT:Mode$ CounterRemoved | ValidCard$ Card.Self | TriggerZones$ Exile | CounterType$ TIME | Execute$ TrigToken | NewCounterAmount$ 0 | TriggerDescription$ When the last time counter is removed from CARDNAME while it's exiled, create a 2/2 black Knight creature token with flanking, protection from white, and haste.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_knight_flanking_pro_white_haste\nOracle:Protection from black; flanking (Whenever a creature without flanking blocks this creature, the blocking creature gets -1/-1 until end of turn.)\\nSuspend 3—{1}{W}{W}\\nWhen the last time counter is removed from Riftmarked Knight while it's exiled, create a 2/2 black Knight creature token with flanking, protection from white, and haste.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Riftmarked Knight"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

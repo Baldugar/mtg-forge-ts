@@ -1,0 +1,23 @@
+{
+  "id": "plagon-lord-of-the-beach-corpus-m677",
+  "description": "M6 corpus — Plagon, Lord of the Beach; in-hand parse.",
+  "seed": 66950,
+  "cards": {
+    "Plagon, Lord of the Beach": "Name:Plagon, Lord of the Beach\nManaCost:2 U\nTypes:Legendary Creature Starfish Wizard\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each creature you control with toughness greater than its power.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nA:AB$ Effect | Cost$ WU | ValidTgts$ Creature.YouCtrl | RememberObjects$ Targeted | StaticAbilities$ CombatDamageToughness | ForgetOnMoved$ Battlefield | TgtPrompt$ Select target creature you control | SpellDescription$ Target creature you control assigns combat damage equal to its toughness rather than its power this turn.\nSVar:CombatDamageToughness:Mode$ CombatDamageToughness | ValidCard$ Card.IsRemembered | Description$ This creature assigns combat damage equal to its toughness rather than its power.\nSVar:X:Count$Valid Creature.YouCtrl+powerLTtoughness\nOracle:When Plagon, Lord of the Beach enters, draw a card for each creature you control with toughness greater than its power.\\n{W/U}: Target creature you control assigns combat damage equal to its toughness rather than its power this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plagon, Lord of the Beach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

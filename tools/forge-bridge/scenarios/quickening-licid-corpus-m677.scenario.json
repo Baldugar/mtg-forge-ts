@@ -1,0 +1,25 @@
+{
+  "id": "quickening-licid-corpus-m677",
+  "description": "M6 corpus — Quickening Licid; ETB-on-bf.",
+  "seed": 67472,
+  "cards": {
+    "Quickening Licid": "Name:Quickening Licid\nManaCost:1 W\nTypes:Creature Licid\nPT:1/1\nA:AB$ Animate | Cost$ 1 W T | Defined$ Self | RemoveThisAbility$ True | Duration$ Permanent | RevertCost$ W | Keywords$ Enchant:Creature | Types$ Enchantment,Aura | RemoveCardTypes$ True | RemoveEnchantmentTypes$ True | SubAbility$ DBAttach | SpellDescription$ CARDNAME loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {W} to end this effect.\nSVar:DBAttach:DB$ Attach | ValidTgts$ Creature | AILogic$ Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ First Strike | Description$ Enchanted creature has first strike.\nAI:RemoveDeck:All\nOracle:{1}{W}, {T}: Quickening Licid loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {W} to end this effect.\\nEnchanted creature has first strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Quickening Licid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

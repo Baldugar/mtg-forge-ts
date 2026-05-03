@@ -1,0 +1,23 @@
+{
+  "id": "illuminating-lash-corpus-m677",
+  "description": "M6 corpus — Illuminating Lash; in-hand parse.",
+  "seed": 62745,
+  "cards": {
+    "Illuminating Lash": "Name:Illuminating Lash\nManaCost:U R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SubAbility$ DBBoon | SpellDescription$ CARDNAME deals 3 damage to any target.\nSVar:DBBoon:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ Boon | SpellDescription$ You get a one-time boon with \"When you cast a noncreature spell, draw a card.\"\nSVar:Boon:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerDescription$ When you cast a noncreature spell, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Illuminating Lash deals 3 damage to any target.\\nYou get a one-time boon with \"When you cast a noncreature spell, draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illuminating Lash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

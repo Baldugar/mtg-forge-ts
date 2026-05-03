@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-baboons-corpus-m677",
+  "description": "M6 corpus — Ravenous Baboons; in-hand parse.",
+  "seed": 67756,
+  "cards": {
+    "Ravenous Baboons": "Name:Ravenous Baboons\nManaCost:3 R\nTypes:Creature Monkey\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonbasic land.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land.\nOracle:When Ravenous Baboons enters, destroy target nonbasic land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Baboons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

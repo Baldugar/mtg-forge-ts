@@ -1,0 +1,23 @@
+{
+  "id": "reenact-the-crime-corpus-m677",
+  "description": "M6 corpus — Reenact the Crime; in-hand parse.",
+  "seed": 67939,
+  "cards": {
+    "Reenact the Crime": "Name:Reenact the Crime\nManaCost:1 U U U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select target nonland card in a graveyard that was put there from anywhere this turn | ValidTgts$ Card.nonLand+ThisTurnEntered | RememberChanged$ True | SubAbility$ DBPlay | SpellDescription$ Exile target nonland card in a graveyard that was put there from anywhere this turn. Copy it. You may cast the copy without paying its mana cost.\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | Controller$ You | CopyCard$ True | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard|Mill & Type$Instant|Sorcery\nOracle:Exile target nonland card in a graveyard that was put there from anywhere this turn. Copy it. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reenact the Crime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

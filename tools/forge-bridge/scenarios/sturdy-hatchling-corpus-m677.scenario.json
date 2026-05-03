@@ -1,0 +1,23 @@
+{
+  "id": "sturdy-hatchling-corpus-m677",
+  "description": "M6 corpus — Sturdy Hatchling; in-hand parse.",
+  "seed": 71240,
+  "cards": {
+    "Sturdy Hatchling": "Name:Sturdy Hatchling\nManaCost:3 GU\nTypes:Creature Elemental\nPT:6/6\nK:etbCounter:M1M1:4\nA:AB$ Pump | Cost$ GU | Defined$ Self | KW$ Shroud | SpellDescription$ CARDNAME gains shroud until end of turn.\nT:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast a green spell, remove a -1/-1 counter from CARDNAME.\nT:Mode$ SpellCast | ValidCard$ Card.Blue | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever you cast a blue spell, remove a -1/-1 counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nSVar:BuffedBy:Card.Blue,Card.Green\nOracle:Sturdy Hatchling enters with four -1/-1 counters on it.\\n{G/U}: Sturdy Hatchling gains shroud until end of turn. (It can't be the target of spells or abilities.)\\nWhenever you cast a green spell, remove a -1/-1 counter from Sturdy Hatchling.\\nWhenever you cast a blue spell, remove a -1/-1 counter from Sturdy Hatchling.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sturdy Hatchling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

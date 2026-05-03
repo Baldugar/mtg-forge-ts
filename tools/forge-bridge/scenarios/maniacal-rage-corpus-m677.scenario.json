@@ -1,0 +1,23 @@
+{
+  "id": "maniacal-rage-corpus-m677",
+  "description": "M6 corpus — Maniacal Rage; in-hand parse.",
+  "seed": 64719,
+  "cards": {
+    "Maniacal Rage": "Name:Maniacal Rage\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2 and can't block.\nS:Mode$ CantBlock | ValidCard$ Creature.EnchantedBy | Secondary$ True | Description$ Enchanted creature gets +2/+2 and can't block.\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature gets +2/+2 and can't block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maniacal Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

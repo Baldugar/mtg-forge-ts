@@ -1,0 +1,25 @@
+{
+  "id": "perception-bobblehead-corpus-m677",
+  "description": "M6 corpus — Perception Bobblehead; ETB-on-bf.",
+  "seed": 66726,
+  "cards": {
+    "Perception Bobblehead": "Name:Perception Bobblehead\nManaCost:3\nTypes:Artifact Bobblehead\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ PeekAndReveal | Cost$ 3 T | Defined$ You | PeekAmount$ X | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBPlay | SpellDescription$ Look at the top X cards of your library, where X is the number of Bobbleheads you control. You may cast a spell with mana value 3 or less from among them without paying its mana cost. Put the rest on the bottom of your library in a random order.\nSVar:DBPlay:DB$ Play | ValidZone$ Library | Valid$ Card.IsRemembered | ValidSA$ Spell.cmcLE3 | Optional$ True | Controller$ You | WithoutManaCost$ True | Amount$ 1 | ForgetPlayed$ True | SubAbility$ DBRestRandomOrder\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Bobblehead.YouCtrl\nDeckHas:Ability$Token & Type$Soldier\nDeckNeeds:Type$Bobblehead\nOracle:{T}: Add one mana of any color.\\n{3}, {T}: Look at the top X cards of your library, where X is the number of Bobbleheads you control. You may cast a spell with mana value 3 or less from among them without paying its mana cost. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Perception Bobblehead"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

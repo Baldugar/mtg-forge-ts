@@ -1,0 +1,23 @@
+{
+  "id": "salacinder-and-soot-rascals-corpus-m677",
+  "description": "M6 corpus — Salacinder and Soot, Rascals; in-hand parse.",
+  "seed": 68898,
+  "cards": {
+    "Salacinder and Soot, Rascals": "Name:Salacinder and Soot, Rascals\nManaCost:2 U R\nTypes:Legendary Creature Elemental\nPT:3/3\nK:Prowess\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigCharm | TriggerDescription$ When NICKNAME enters and whenever you cast an Elemental spell, ABILITY\nT:Mode$ SpellCast | ValidCard$ Elemental | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigCharm | TriggerDescription$ When NICKNAME enters and whenever you cast an Elemental spell, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBConjureRite,DBConjureTake\nSVar:DBConjureRite:DB$ MakeCard | Conjure$ True | Name$ Rite of Flame | Zone$ Hand | SpellDescription$ Conjure a card named Rite of Flame into your hand.\nSVar:DBConjureTake:DB$ MakeCard | Conjure$ True | Name$ Take Inventory | Zone$ Hand | SpellDescription$ Conjure a card named Take Inventory into your hand.\nOracle:Prowess, trample\\nWhen Salacinder and Soot enters and whenever you cast an Elemental spell, choose one —\\n• Conjure a card named Rite of Flame into your hand.\\n• Conjure a card named Take Inventory into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Salacinder and Soot, Rascals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

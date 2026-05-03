@@ -1,0 +1,23 @@
+{
+  "id": "nylea-s-intervention-corpus-m677",
+  "description": "M6 corpus — Nylea's Intervention; in-hand parse.",
+  "seed": 66122,
+  "cards": {
+    "Nylea's Intervention": "Name:Nylea's Intervention\nManaCost:X G G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBSearch,DBDamage\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land | ChangeNum$ X | SpellDescription$ Search your library for up to X land cards, reveal them, put them into your hand, then shuffle.\nSVar:DBDamage:DB$ DamageAll | ValidCards$ Creature.withFlying | NumDmg$ XX | SpellDescription$ CARDNAME deals twice X damage to each creature with flying.\nSVar:X:Count$xPaid\nSVar:XX:SVar$X/Twice\nOracle:Choose one —\\n• Search your library for up to X land cards, reveal them, put them into your hand, then shuffle.\\n• Nylea's Intervention deals twice X damage to each creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nylea's Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

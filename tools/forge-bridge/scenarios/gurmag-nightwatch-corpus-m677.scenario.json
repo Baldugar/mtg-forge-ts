@@ -1,0 +1,23 @@
+{
+  "id": "gurmag-nightwatch-corpus-m677",
+  "description": "M6 corpus — Gurmag Nightwatch; in-hand parse.",
+  "seed": 61915,
+  "cards": {
+    "Gurmag Nightwatch": "Name:Gurmag Nightwatch\nManaCost:2B 2G 2U\nTypes:Creature Human Ranger\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When this creature enters, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone2$ Graveyard | DestinationZone$ Library | LibraryPosition$ 0 | Optional$ True\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard\nOracle:When this creature enters, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gurmag Nightwatch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

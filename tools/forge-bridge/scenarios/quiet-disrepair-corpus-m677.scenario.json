@@ -1,0 +1,23 @@
+{
+  "id": "quiet-disrepair-corpus-m677",
+  "description": "M6 corpus — Quiet Disrepair; in-hand parse.",
+  "seed": 67486,
+  "cards": {
+    "Quiet Disrepair": "Name:Quiet Disrepair\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Artifact,Enchantment:artifact or enchantment\nSVar:AttachAILogic:Pump\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ Destroy,GainLife\nSVar:Destroy:DB$ Destroy | Defined$ Enchanted | IsCurse$ True | SpellDescription$ Destroy enchanted permanent.\nSVar:GainLife:DB$ GainLife | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nSVar:NonStackingAttachEffect:True\nDeckHas:Ability$LifeGain\nOracle:Enchant artifact or enchantment\\nAt the beginning of your upkeep, choose one —\\n• Destroy enchanted permanent.\\n• You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quiet Disrepair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

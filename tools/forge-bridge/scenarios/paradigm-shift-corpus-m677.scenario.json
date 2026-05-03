@@ -1,0 +1,23 @@
+{
+  "id": "paradigm-shift-corpus-m677",
+  "description": "M6 corpus — Paradigm Shift; in-hand parse.",
+  "seed": 66599,
+  "cards": {
+    "Paradigm Shift": "Name:Paradigm Shift\nManaCost:1 U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Library | Destination$ Exile | SubAbility$ DBShuffle | SpellDescription$ Exile all cards from your library. Then shuffle your graveyard into your library.\nSVar:DBShuffle:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True\nAI:RemoveDeck:All\nOracle:Exile all cards from your library. Then shuffle your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paradigm Shift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

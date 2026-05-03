@@ -1,0 +1,25 @@
+{
+  "id": "revenant-corpus-m677",
+  "description": "M6 corpus — Revenant; ETB-on-bf.",
+  "seed": 68175,
+  "cards": {
+    "Revenant": "Name:Revenant\nManaCost:4 B\nTypes:Creature Spirit\nPT:*/*\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creature cards in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:X GE3\nOracle:Flying\\nRevenant's power and toughness are each equal to the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Revenant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

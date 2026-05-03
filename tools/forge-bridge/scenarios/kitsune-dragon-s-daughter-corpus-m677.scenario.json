@@ -1,0 +1,23 @@
+{
+  "id": "kitsune-dragon-s-daughter-corpus-m677",
+  "description": "M6 corpus — Kitsune, Dragon's Daughter; in-hand parse.",
+  "seed": 63720,
+  "cards": {
+    "Kitsune, Dragon's Daughter": "Name:Kitsune, Dragon's Daughter\nManaCost:4 U U\nTypes:Legendary Creature Fox Warlock Avatar\nPT:6/6\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExchangeControl | OptionalDecider$ You | TriggerDescription$ Whenever NICKNAME enters or deals combat damage to a player, you may exchange control of two other target creatures controlled by different players.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExchangeControl | TriggerZones$ Battlefield | Secondary$ True | OptionalDecider$ You | TriggerDescription$ Whenever NICKNAME enters or deals combat damage to a player, you may exchange control of two other target creatures controlled by different players.\nSVar:TrigExchangeControl:DB$ ExchangeControl | ValidTgts$ Creature.Other | TargetsWithDifferentControllers$ True | TgtPrompt$ Select another target creature | TargetMin$ 2 | TargetMax$ 2\nOracle:Vigilance\\nWhenever Kitsune enters or deals combat damage to a player, you may exchange control of two other target creatures controlled by different players.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitsune, Dragon's Daughter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

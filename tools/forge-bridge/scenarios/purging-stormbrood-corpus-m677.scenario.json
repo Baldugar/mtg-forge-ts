@@ -1,0 +1,23 @@
+{
+  "id": "purging-stormbrood-corpus-m677",
+  "description": "M6 corpus — Purging Stormbrood; in-hand parse.",
+  "seed": 67378,
+  "cards": {
+    "Purging Stormbrood": "Name:Purging Stormbrood\nManaCost:4 B\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Ward:PayLife<2>\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRemoveCounter | TriggerDescription$ When this creature enters, remove all counters from up to one target creature.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | CounterType$ All | CounterNum$ All\nAlternateMode:Omen\nOracle:Flying\\nWard—Pay 2 life.\\nWhen this creature enters, remove all counters from up to one target creature.\n\nALTERNATE\n\nName:Absorb Essence\nManaCost:1 W\nTypes:Instant Omen\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | KW$ Lifelink & Hexproof | SpellDescription$ Target creature gets +2/+2 and gains lifelink and hexproof until end of turn. (Then shuffle this card into its owner's library.)\nOracle:Target creature gets +2/+2 and gains lifelink and hexproof until end of turn. (Then shuffle this card into its owner's library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Purging Stormbrood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "seasoned-dungeoneer-corpus-m677",
+  "description": "M6 corpus — Seasoned Dungeoneer; in-hand parse.",
+  "seed": 69321,
+  "cards": {
+    "Seasoned Dungeoneer": "Name:Seasoned Dungeoneer\nManaCost:3 W\nTypes:Creature Human Warrior\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInitiative | TriggerDescription$ When CARDNAME enters, you take the initiative.\nSVar:TrigInitiative:DB$ TakeInitiative\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target attacking Cleric, Rogue, Warrior, or Wizard gains protection from creatures until end of turn. It explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on the creature, then put the card back or put it into your graveyard.)\nSVar:TrigPump:DB$ Pump | KW$ Protection:Creature | TgtPrompt$ Select target attacking Cleric, Rogue, Warrior, or Wizard | ValidTgts$ Creature.attacking+Cleric,Creature.attacking+Rogue,Creature.attacking+Warrior,Creature.attacking+Wizard | SubAbility$ DBExplore\nSVar:DBExplore:DB$ Explore | Defined$ Targeted\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Party\nDeckHints:Type$Cleric|Rogue|Warrior|Wizard\nOracle:When Seasoned Dungeoneer enters, you take the initiative.\\nWhenever you attack, target attacking Cleric, Rogue, Warrior, or Wizard gains protection from creatures until end of turn. It explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on the creature, then put the card back or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seasoned Dungeoneer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "haazda-officer-corpus-m677",
+  "description": "M6 corpus — Haazda Officer; in-hand parse.",
+  "seed": 61947,
+  "cards": {
+    "Haazda Officer": "Name:Haazda Officer\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature you control gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When Haazda Officer enters, target creature you control gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haazda Officer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

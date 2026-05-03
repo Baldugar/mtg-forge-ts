@@ -1,0 +1,23 @@
+{
+  "id": "slaughter-games-corpus-m677",
+  "description": "M6 corpus — Slaughter Games; in-hand parse.",
+  "seed": 70180,
+  "cards": {
+    "Slaughter Games": "Name:Slaughter Games\nManaCost:2 B R\nTypes:Sorcery\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonLand | ValidDescription$ nonland | SubAbility$ ExileYard | SpellDescription$ Choose a nonland card name. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player.Opponent | ChangeType$ Card.NamedCard | Chooser$ You | ChangeNum$ NumInYard | Hidden$ True | SubAbility$ ExileHand | StackDescription$ Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles their library.\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInYard:TargetedPlayer$CardsInGraveyard\nAI:RemoveDeck:All\nOracle:This spell can't be countered.\\nChoose a nonland card name. Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slaughter Games"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

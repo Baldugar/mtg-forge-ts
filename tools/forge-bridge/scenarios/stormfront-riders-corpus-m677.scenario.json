@@ -1,0 +1,23 @@
+{
+  "id": "stormfront-riders-corpus-m677",
+  "description": "M6 corpus — Stormfront Riders; in-hand parse.",
+  "seed": 71122,
+  "cards": {
+    "Stormfront Riders": "Name:Stormfront Riders\nManaCost:4 W\nTypes:Creature Human Soldier\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return two creatures you control to their owner's hand.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Hand | ValidCard$ Card.Self,Creature.YouOwn+Other | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME or another creature is returned to your hand from the battlefield, create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | ChangeType$ Creature.YouCtrl | ChangeNum$ 2 | Mandatory$ True\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.YouCtrl+cmcLE4\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Stormfront Riders enters, return two creatures you control to their owner's hand.\\nWhenever Stormfront Riders or another creature is returned to your hand from the battlefield, create a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stormfront Riders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rescue-retriever-corpus-m677",
+  "description": "M6 corpus — Rescue Retriever; in-hand parse.",
+  "seed": 68088,
+  "cards": {
+    "Rescue Retriever": "Name:Rescue Retriever\nManaCost:3 W W\nTypes:Creature Dog Soldier\nPT:3/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other Soldier you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Soldier.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ Soldier.attacking+YouCtrl+Other | IsCombat$ True | Description$ Prevent all damage that would be dealt to other attacking Soldiers you control.\nSVar:NonStackingEffect:True\nDeckHas:Ability$Counters\nDeckHints:Type$Soldier\nOracle:Flash\\nWhen Rescue Retriever enters, put a +1/+1 counter on each other Soldier you control.\\nPrevent all damage that would be dealt to other attacking Soldiers you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rescue Retriever"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

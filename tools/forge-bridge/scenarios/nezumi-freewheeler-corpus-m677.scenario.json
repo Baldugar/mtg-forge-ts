@@ -1,0 +1,23 @@
+{
+  "id": "nezumi-freewheeler-corpus-m677",
+  "description": "M6 corpus — Nezumi Freewheeler; in-hand parse.",
+  "seed": 65897,
+  "cards": {
+    "Nezumi Freewheeler": "Name:Nezumi Freewheeler\nManaCost:3 B\nTypes:Creature Rat Samurai\nPT:3/3\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, each player mills three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ Player\nA:AB$ SetState | Cost$ 5 WP | Mode$ Transform | SorcerySpeed$ True | SpellDescription$ Transform CARDNAME. Activate only as a sorcery. ({W/P} can be paid with either {W} or 2 life.)\nDeckHas:Ability$Mill\nDeckHints:Color$White\nAlternateMode:DoubleFaced\nOracle:Menace\\nWhen Nezumi Freewheeler enters, each player mills three cards. (To mill a card, put the top card of your library into your graveyard.)\\n{5}{W/P}: Transform Nezumi Freewheeler. Activate only as a sorcery. ({W/P} can be paid with either {W} or 2 life.)\n\nALTERNATE\n\nName:Hideous Fleshwheeler\nManaCost:no cost\nColors:white,black\nTypes:Creature Phyrexian Rat\nPT:4/5\nK:Menace\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigPut | TriggerDescription$ When this creature transforms into CARDNAME, put target permanent card with mana value 2 or less from a graveyard onto the battlefield under your control.\nSVar:TrigPut:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target permanent card with mana value 2 or less from a graveyard | ValidTgts$ Permanent.cmcLE2 | GainControl$ True\nDeckHas:Ability$Graveyard\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen this creature transforms into Hideous Fleshwheeler, put target permanent card with mana value 2 or less from a graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nezumi Freewheeler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lulu-loyal-hollyphant-corpus-m677",
+  "description": "M6 corpus — Lulu, Loyal Hollyphant; in-hand parse.",
+  "seed": 64476,
+  "cards": {
+    "Lulu, Loyal Hollyphant": "Name:Lulu, Loyal Hollyphant\nManaCost:3 W\nTypes:Legendary Creature Elephant Angel\nPT:3/2\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Revolt$ True | Execute$ TrigPutCounters | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a +1/+1 counter on each tapped creature you control, then untap them.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.tapped+YouCtrl | CounterType$ P1P1 | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.tapped+YouCtrl\nK:Choose a Background\nDeckHas:Ability$Counters\nOracle:Flying\\nAt the beginning of your end step, if a permanent you controlled left the battlefield this turn, put a +1/+1 counter on each tapped creature you control, then untap them.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lulu, Loyal Hollyphant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

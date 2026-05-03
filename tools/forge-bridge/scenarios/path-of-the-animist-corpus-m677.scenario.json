@@ -1,0 +1,23 @@
+{
+  "id": "path-of-the-animist-corpus-m677",
+  "description": "M6 corpus — Path of the Animist; in-hand parse.",
+  "seed": 66651,
+  "cards": {
+    "Path of the Animist": "Name:Path of the Animist\nManaCost:3 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 2 | Tapped$ True | SubAbility$ DBSpace | SpellDescription$ Search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\nSVar:DBSpace:DB$ BlankLine | SubAbility$ DBVote | SpellDescription$ ,,,,,,\nSVar:DBVote:DB$ Vote | Defined$ Player | Choices$ DBPlaneswalk,DBChaos | VoteTiedAbility$ DBChaos | StackDescription$ SpellDescription | SpellDescription$ Will of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\nSVar:DBPlaneswalk:DB$ Planeswalk | SpellDescription$ Planeswalk\nSVar:DBChaos:DB$ ChaosEnsues | SpellDescription$ Chaos\nOracle:Search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\\nWill of the Planeswalkers — Starting with you, each player votes for planeswalk or chaos. If planeswalk gets more votes, planeswalk. If chaos gets more votes or the vote is tied, chaos ensues.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path of the Animist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "setessan-petitioner-corpus-m677",
+  "description": "M6 corpus — Setessan Petitioner; in-hand parse.",
+  "seed": 69515,
+  "cards": {
+    "Setessan Petitioner": "Name:Setessan Petitioner\nManaCost:1 G G\nTypes:Creature Human Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain life equal to your devotion to green.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Devotion.Green\nOracle:When Setessan Petitioner enters, you gain life equal to your devotion to green. (Each {G} in the mana costs of permanents you control counts toward your devotion to green.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Setessan Petitioner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

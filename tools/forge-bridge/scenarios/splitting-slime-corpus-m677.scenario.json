@@ -1,0 +1,25 @@
+{
+  "id": "splitting-slime-corpus-m677",
+  "description": "M6 corpus — Splitting Slime; ETB-on-bf.",
+  "seed": 70755,
+  "cards": {
+    "Splitting Slime": "Name:Splitting Slime\nManaCost:3 G G\nTypes:Creature Ooze\nPT:3/3\nA:AB$ PutCounter | Cost$ 4 G G | Monstrosity$ 3\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ When CARDNAME becomes monstrous, create a token that's a copy of CARDNAME. (The token has no counters and isn't monstrous.)\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Self\nDeckHas:Ability$Counters|Token\nOracle:{4}{G}{G}: Monstrosity 3. (If this creature isn't monstrous, put three +1/+1 counters on it and it becomes monstrous.)\\nWhen Splitting Slime becomes monstrous, create a token that's a copy of Splitting Slime. (The token has no counters and isn't monstrous.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Splitting Slime"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ingenious-thief-corpus-m677",
+  "description": "M6 corpus — Ingenious Thief; in-hand parse.",
+  "seed": 62941,
+  "cards": {
+    "Ingenious Thief": "Name:Ingenious Thief\nManaCost:1 U\nTypes:Creature Human Rogue\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When CARDNAME enters, look at target player's hand.\nSVar:TrigPeek:DB$ RevealHand | ValidTgts$ Player | Look$ True\nOracle:Flying\\nWhen Ingenious Thief enters, look at target player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ingenious Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

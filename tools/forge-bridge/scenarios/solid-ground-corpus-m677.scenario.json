@@ -1,0 +1,23 @@
+{
+  "id": "solid-ground-corpus-m677",
+  "description": "M6 corpus — Solid Ground; in-hand parse.",
+  "seed": 70364,
+  "cards": {
+    "Solid Ground": "Name:Solid Ground\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEarthbend | TriggerDescription$ When this enchantment enters, earthbend 3. (Target land you control becomes a 0/0 creature with haste that's still a land. Put three +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ 3\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YouCtrl+inZoneBattlefield | ValidCounterType$ P1P1 | ReplaceWith$ AddOneMoreCounters | Description$ If one or more +1/+1 counters would be put on a permanent you control, that many plus one +1/+1 counters are put on it instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ValidCounterType$ P1P1 | ChooseCounter$ True | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Plus.1\nDeckHints:Ability$Counters\nOracle:When this enchantment enters, earthbend 3. (Target land you control becomes a 0/0 creature with haste that's still a land. Put three +1/+1 counters on it. When it dies or is exiled, return it to the battlefield tapped.)\\nIf one or more +1/+1 counters would be put on a permanent you control, that many plus one +1/+1 counters are put on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solid Ground"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

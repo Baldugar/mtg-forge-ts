@@ -1,0 +1,23 @@
+{
+  "id": "lightform-corpus-m677",
+  "description": "M6 corpus — Lightform; in-hand parse.",
+  "seed": 64231,
+  "cards": {
+    "Lightform": "Name:Lightform\nManaCost:1 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigManifest | TriggerDescription$ When CARDNAME enters, it becomes an Aura with enchant creature. Manifest the top card of your library and attach CARDNAME to it. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. You may turn it face up at any time for its mana cost if it's a creature card.)\nSVar:TrigManifest:DB$ Manifest | RememberManifested$ True | SubAbility$ Aurify\nSVar:Aurify:DB$ Animate | Types$ Aura | Keywords$ Enchant:Creature | Duration$ Permanent | SubAbility$ LightformAttach\nSVar:LightformAttach:DB$ Attach | Defined$ Remembered\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Lifelink & Flying | Description$ Enchanted creature has flying and lifelink.\nOracle:When Lightform enters, it becomes an Aura with enchant creature. Manifest the top card of your library and attach Lightform to it. (To manifest a card, put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\\nEnchanted creature has flying and lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightform"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

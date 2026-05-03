@@ -1,0 +1,23 @@
+{
+  "id": "niambi-faithful-healer-corpus-m677",
+  "description": "M6 corpus — Niambi, Faithful Healer; in-hand parse.",
+  "seed": 65906,
+  "cards": {
+    "Niambi, Faithful Healer": "Name:Niambi, Faithful Healer\nManaCost:1 W U\nTypes:Legendary Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library and/or graveyard for a card named Teferi, Timebender, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedTeferi; Timebender | Optional$ True\nDeckNeeds:Name$Teferi, Timebender\nOracle:When Niambi, Faithful Healer enters, you may search your library and/or graveyard for a card named Teferi, Timebender, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niambi, Faithful Healer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

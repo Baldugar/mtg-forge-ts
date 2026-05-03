@@ -1,0 +1,25 @@
+{
+  "id": "hemosymbic-mite-corpus-m677",
+  "description": "M6 corpus — Hemosymbic Mite; ETB-on-bf.",
+  "seed": 62255,
+  "cards": {
+    "Hemosymbic Mite": "Name:Hemosymbic Mite\nManaCost:G\nTypes:Creature Mite\nPT:1/1\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever this creature becomes tapped, another target creature you control gets +X/+X until end of turn, where X is this creature's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$CardPower\nOracle:Whenever this creature becomes tapped, another target creature you control gets +X/+X until end of turn, where X is this creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hemosymbic Mite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

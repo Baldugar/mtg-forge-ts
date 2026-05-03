@@ -1,0 +1,23 @@
+{
+  "id": "pallimud-corpus-m677",
+  "description": "M6 corpus — Pallimud; in-hand parse.",
+  "seed": 66586,
+  "cards": {
+    "Pallimud": "Name:Pallimud\nManaCost:2 R\nTypes:Creature Beast\nPT:*/3\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose an opponent.\nS:Mode$ Continuous | EffectZone$ Battlefield | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of tapped lands the chosen player controls.\nSVar:X:Count$Valid Land.tapped+ChosenCtrl\nOracle:As Pallimud enters, choose an opponent.\\nPallimud's power is equal to the number of tapped lands the chosen player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pallimud"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

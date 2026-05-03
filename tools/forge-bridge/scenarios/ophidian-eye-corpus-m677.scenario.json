@@ -1,0 +1,23 @@
+{
+  "id": "ophidian-eye-corpus-m677",
+  "description": "M6 corpus — Ophidian Eye; in-hand parse.",
+  "seed": 66353,
+  "cards": {
+    "Ophidian Eye": "Name:Ophidian Eye\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:Flash\nSVar:AttachAILogic:Curiosity\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Opponent | Execute$ TrigDraw | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever enchanted creature deals damage to an opponent, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nEnchant creature\\nWhenever enchanted creature deals damage to an opponent, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ophidian Eye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

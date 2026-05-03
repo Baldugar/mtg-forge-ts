@@ -1,0 +1,25 @@
+{
+  "id": "shield-dancer-corpus-m677",
+  "description": "M6 corpus — Shield Dancer; ETB-on-bf.",
+  "seed": 69674,
+  "cards": {
+    "Shield Dancer": "Name:Shield Dancer\nManaCost:2 W\nTypes:Creature Human Rebel\nPT:1/3\nA:AB$ Effect | Cost$ 2 W | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | IsCurse$ True | ReplacementEffects$ DamageShielded | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | AILogic$ Fog | SpellDescription$ The next time target attacking creature would deal combat damage to CARDNAME this turn, that creature deals that damage to itself instead.\nSVar:DamageShielded:Event$ DamageDone | IsCombat$ True | ValidSource$ Card.IsRemembered | ValidTarget$ Card.EffectSource | ReplaceWith$ DmgSelf | DamageTarget$ Remembered | Description$ The next time the targeted attacking creature would deal combat damage to EFFECTSOURCE this turn, that creature deals that damage to itself instead.\nSVar:DmgSelf:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:{2}{W}: The next time target attacking creature would deal combat damage to Shield Dancer this turn, that creature deals that damage to itself instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Shield Dancer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

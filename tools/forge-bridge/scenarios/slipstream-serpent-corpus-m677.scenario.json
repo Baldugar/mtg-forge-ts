@@ -1,0 +1,23 @@
+{
+  "id": "slipstream-serpent-corpus-m677",
+  "description": "M6 corpus — Slipstream Serpent; in-hand parse.",
+  "seed": 70227,
+  "cards": {
+    "Slipstream Serpent": "Name:Slipstream Serpent\nManaCost:7 U\nTypes:Creature Serpent\nPT:6/6\nK:Morph:5 U\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:Slipstream Serpent can't attack unless defending player controls an Island.\\nWhen you control no Islands, sacrifice Slipstream Serpent.\\nMorph {5}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slipstream Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

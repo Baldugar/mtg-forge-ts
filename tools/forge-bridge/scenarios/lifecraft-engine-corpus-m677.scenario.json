@@ -1,0 +1,23 @@
+{
+  "id": "lifecraft-engine-corpus-m677",
+  "description": "M6 corpus — Lifecraft Engine; in-hand parse.",
+  "seed": 64210,
+  "cards": {
+    "Lifecraft Engine": "Name:Lifecraft Engine\nManaCost:3\nTypes:Artifact Vehicle\nPT:4/4\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As this Vehicle enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Creature.Vehicle+YouCtrl | AddType$ ChosenType | Description$ Vehicle creatures you control are the chosen creature type in addition to their other types.\nS:Mode$ Continuous | Affected$ Creature.ChosenType+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Each creature you control of the chosen type other than this Vehicle gets +1/+1.\nK:Crew:3\nSVar:PlayMain1:TRUE\nOracle:As this Vehicle enters, choose a creature type.\\nVehicle creatures you control are the chosen creature type in addition to their other types.\\nEach creature you control of the chosen type other than this Vehicle gets +1/+1.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lifecraft Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

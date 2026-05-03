@@ -1,0 +1,23 @@
+{
+  "id": "noxious-assault-corpus-m677",
+  "description": "M6 corpus — Noxious Assault; in-hand parse.",
+  "seed": 66084,
+  "cards": {
+    "Noxious Assault": "Name:Noxious Assault\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ PumpAll | NumAtt$ +2 | NumDef$ +2 | ValidCards$ Creature.YouCtrl | SubAbility$ DBEffect | SpellDescription$ Creatures you control get +2/+2 until end of turn. Whenever a creature blocks this turn, its controller gets a poison counter.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigBlock\nSVar:TrigBlock:Mode$ Blocks | ValidCard$ Creature | Execute$ TrigPoison | TriggerDescription$ Whenever a creature blocks this turn, its controller gets a poison counter.\nSVar:TrigPoison:DB$ Poison | Defined$ TriggeredBlockerController | Num$ 1\nOracle:Creatures you control get +2/+2 until end of turn.\\nWhenever a creature blocks this turn, its controller gets a poison counter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noxious Assault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

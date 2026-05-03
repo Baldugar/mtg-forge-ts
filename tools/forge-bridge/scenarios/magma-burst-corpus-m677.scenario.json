@@ -1,0 +1,23 @@
+{
+  "id": "magma-burst-corpus-m677",
+  "description": "M6 corpus — Magma Burst; in-hand parse.",
+  "seed": 64595,
+  "cards": {
+    "Magma Burst": "Name:Magma Burst\nManaCost:3 R\nTypes:Instant\nK:Kicker:Sac<2/Land>\nA:SP$ DealDamage | ValidTgts$ Any | TargetMin$ X | TargetMax$ X | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to any target. If this spell was kicked, it deals 3 damage to another target.\nSVar:X:Count$Kicked.2.1\nSVar:NeedsToPlayKickedVar:Z GE2\nSVar:Z:Count$Valid Creature.OppCtrl/Plus.Z1\nSVar:Z1:Count$Valid Planeswalker.OppCtrl\nAI:RemoveDeck:All\nOracle:Kicker—Sacrifice two lands. (You may sacrifice two lands in addition to any other costs as you cast this spell.)\\nMagma Burst deals 3 damage to any target. If this spell was kicked, it deals 3 damage to another target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magma Burst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

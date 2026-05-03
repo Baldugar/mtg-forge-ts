@@ -1,0 +1,23 @@
+{
+  "id": "rassilon-the-war-president-corpus-m677",
+  "description": "M6 corpus — Rassilon, the War President; in-hand parse.",
+  "seed": 67724,
+  "cards": {
+    "Rassilon, the War President": "Name:Rassilon, the War President\nManaCost:3 U B\nTypes:Legendary Creature Time Lord Noble\nPT:3/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 2 life and exile the top card of your library. You may play that card for as long as it remains exiled.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 2 | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Imprint$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ Imprinted | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play that card for as long as it remains exiled.\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nS:Mode$ Continuous | AddKeyword$ Conspire | Affected$ Card.nonCreature+wasCastFromExile+YouCtrl | AffectedZone$ Stack | EffectZone$ Battlefield | Description$ Each noncreature spell you cast from exile has conspire. (As you cast that spell, you may tap two untapped creatures you control that share a color with it. When you do, copy it and you may choose new targets for the copy.)\nOracle:At the beginning of your upkeep, you lose 2 life and exile the top card of your library. You may play that card for as long as it remains exiled.\\nEach noncreature spell you cast from exile has conspire. (As you cast that spell, you may tap two untapped creatures you control that share a color with it. When you do, copy it and you may choose new targets for the copy.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rassilon, the War President"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

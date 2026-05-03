@@ -1,0 +1,23 @@
+{
+  "id": "sapphire-charm-corpus-m677",
+  "description": "M6 corpus — Sapphire Charm; in-hand parse.",
+  "seed": 68993,
+  "cards": {
+    "Sapphire Charm": "Name:Sapphire Charm\nManaCost:U\nTypes:Instant\nA:SP$ Charm | Choices$ DelTrigSlowtrip,Pump,Phases\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidTgts$ Player | RememberObjects$ Targeted | Execute$ DrawSlowtrip | SpellDescription$ Target player draws a card at the beginning of the next turn's upkeep.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ DelayTriggerRemembered | SpellDescription$ Draw a card.\nSVar:Pump:DB$ Pump | ValidTgts$ Creature | KW$ Flying | SpellDescription$ Target creature gains flying until end of turn.\nSVar:Phases:DB$ Phases | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SpellDescription$ Target creature an opponent controls phases out.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Target player draws a card at the beginning of the next turn's upkeep.\\n• Target creature gains flying until end of turn.\\n• Target creature an opponent controls phases out. (While it's phased out, it's treated as though it doesn't exist. It phases in before its controller untaps during their next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sapphire Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

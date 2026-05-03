@@ -1,0 +1,23 @@
+{
+  "id": "laquatus-s-creativity-corpus-m677",
+  "description": "M6 corpus — Laquatus's Creativity; in-hand parse.",
+  "seed": 63988,
+  "cards": {
+    "Laquatus's Creativity": "Name:Laquatus's Creativity\nManaCost:4 U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | ValidTgts$ Player | RememberDrawn$ AllReplaced | SubAbility$ DBDiscard | SpellDescription$ Target player draws cards equal to the number of cards in their hand, then discards that many cards.\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | Mode$ TgtChoose | NumCards$ Z | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TargetedPlayer$CardsInHand\nSVar:Y:Remembered$Amount\nSVar:Z:SVar$X/Minus.Y\nAI:RemoveDeck:All\nOracle:Target player draws cards equal to the number of cards in their hand, then discards that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Laquatus's Creativity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

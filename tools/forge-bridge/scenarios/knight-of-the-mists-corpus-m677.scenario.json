@@ -1,0 +1,23 @@
+{
+  "id": "knight-of-the-mists-corpus-m677",
+  "description": "M6 corpus — Knight of the Mists; in-hand parse.",
+  "seed": 63766,
+  "cards": {
+    "Knight of the Mists": "Name:Knight of the Mists\nManaCost:2 U\nTypes:Creature Human Knight\nPT:2/2\nK:Flanking\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, you may pay {U}. If you don't, destroy target Knight and it can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.Knight | TgtPrompt$ Select target Knight | NoRegen$ True | UnlessCost$ U | UnlessPayer$ You\nAI:RemoveDeck:All\nOracle:Flanking (Whenever a creature without flanking blocks this creature, the blocking creature gets -1/-1 until end of turn.)\\nWhen Knight of the Mists enters, you may pay {U}. If you don't, destroy target Knight and it can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knight of the Mists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

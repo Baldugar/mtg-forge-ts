@@ -1,0 +1,23 @@
+{
+  "id": "grim-initiate-corpus-m677",
+  "description": "M6 corpus — Grim Initiate; in-hand parse.",
+  "seed": 61773,
+  "cards": {
+    "Grim Initiate": "Name:Grim Initiate\nManaCost:R\nTypes:Creature Zombie Warrior\nPT:1/1\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ DBAmass | TriggerDescription$ When CARDNAME dies, amass Zombies 1. (Put a +1/+1 counter on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\nSVar:DBAmass:DB$ Amass | Type$ Zombie | Num$ 1\nDeckHints:Ability$Amass & Type$Zombie\nDeckHas:Ability$Amass|Counters|Token\nOracle:First strike\\nWhen Grim Initiate dies, amass Zombies 1. (Put a +1/+1 counter on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Initiate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

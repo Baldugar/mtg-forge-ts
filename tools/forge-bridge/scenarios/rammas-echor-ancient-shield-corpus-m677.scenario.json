@@ -1,0 +1,23 @@
+{
+  "id": "rammas-echor-ancient-shield-corpus-m677",
+  "description": "M6 corpus — Rammas Echor, Ancient Shield; in-hand parse.",
+  "seed": 67657,
+  "cards": {
+    "Rammas Echor, Ancient Shield": "Name:Rammas Echor, Ancient Shield\nManaCost:3 W\nTypes:Legendary Artifact\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDaw | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, draw a card, then create a 0/3 white Wall creature token with defender.\nSVar:TrigDaw:DB$ Draw | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ w_0_3_wall_defender\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, creatures you control with defender gain exalted until end of turn. (Whenever a creature you control attacks alone, it gets +1/+1 until end of turn for each instance of exalted among permanents you control.)\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.withDefender+YouCtrl | KW$ Exalted\nDeckHas:Ability$Token & Type$Wall\nDeckHints:Keyword$Defender & Type$Wall\nOracle:Whenever you cast your second spell each turn, draw a card, then create a 0/3 white Wall creature token with defender.\\nAt the beginning of combat on your turn, creatures you control with defender gain exalted until end of turn. (Whenever a creature you control attacks alone, it gets +1/+1 until end of turn for each instance of exalted among permanents you control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rammas Echor, Ancient Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

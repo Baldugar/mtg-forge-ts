@@ -1,0 +1,23 @@
+{
+  "id": "skyshroud-war-beast-corpus-m677",
+  "description": "M6 corpus — Skyshroud War Beast; in-hand parse.",
+  "seed": 70152,
+  "cards": {
+    "Skyshroud War Beast": "Name:Skyshroud War Beast\nManaCost:1 G\nTypes:Creature Beast\nPT:*/*\nK:Trample\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose an opponent.\nS:Mode$ Continuous | EffectZone$ Battlefield | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of nonbasic lands the chosen player controls.\nSVar:X:Count$Valid Land.nonBasic+ChosenCtrl\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:Z GE1\nSVar:Z:Count$Valid Land.nonBasic+OppCtrl\nOracle:Trample\\nAs Skyshroud War Beast enters, choose an opponent.\\nSkyshroud War Beast's power and toughness are each equal to the number of nonbasic lands the chosen player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyshroud War Beast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

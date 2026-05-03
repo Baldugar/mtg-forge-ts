@@ -1,0 +1,23 @@
+{
+  "id": "kyoshi-battle-fan-corpus-m677",
+  "description": "M6 corpus — Kyoshi Battle Fan; in-hand parse.",
+  "seed": 63934,
+  "cards": {
+    "Kyoshi Battle Fan": "Name:Kyoshi Battle Fan\nManaCost:2\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Equipment enters, create a 1/1 white Ally creature token, then attach this Equipment to it.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_ally | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | Description$ Equipped creature gets +1/+0.\nK:Equip:2\nDeckHas:Ability$Token\nOracle:When this Equipment enters, create a 1/1 white Ally creature token, then attach this Equipment to it.\\nEquipped creature gets +1/+0.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kyoshi Battle Fan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

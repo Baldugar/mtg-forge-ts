@@ -1,0 +1,23 @@
+{
+  "id": "maalfeld-twins-corpus-m677",
+  "description": "M6 corpus — Maalfeld Twins; in-hand parse.",
+  "seed": 64544,
+  "cards": {
+    "Maalfeld Twins": "Name:Maalfeld Twins\nManaCost:5 B\nTypes:Creature Zombie\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create two 2/2 black Zombie creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_2_2_zombie | TokenOwner$ You\nSVar:SacMe:3\nOracle:When Maalfeld Twins dies, create two 2/2 black Zombie creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maalfeld Twins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

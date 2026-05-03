@@ -1,0 +1,23 @@
+{
+  "id": "morality-shift-corpus-m677",
+  "description": "M6 corpus — Morality Shift; in-hand parse.",
+  "seed": 65488,
+  "cards": {
+    "Morality Shift": "Name:Morality Shift\nManaCost:5 B B\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card.YouCtrl | Origin$ Library | Destination$ Graveyard | SubAbility$ GraveShift | RememberChanged$ True | SpellDescription$ Exchange your graveyard and library. Then shuffle your library.\nSVar:GraveShift:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl+!IsRemembered | Origin$ Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exchange your graveyard and library. Then shuffle your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morality Shift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

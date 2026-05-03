@@ -1,0 +1,25 @@
+{
+  "id": "sapphire-collector-corpus-m677",
+  "description": "M6 corpus — Sapphire Collector; ETB-on-bf.",
+  "seed": 68994,
+  "cards": {
+    "Sapphire Collector": "Name:Sapphire Collector\nManaCost:2 R\nTypes:Creature Human Mercenary\nPT:3/3\nK:Prowess\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl+nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigConjure | GameActivationLimit$ 1 | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ When you cast your second noncreature spell in a turn, conjure a card named Mox Sapphire into your hand. This ability triggers only once.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Mox Sapphire | Zone$ Hand\nA:AB$ Pump | Cost$ 2 U | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TgtZone$ Graveyard | TgtPrompt$ Select target instant or sorcery card | KW$ Flashback | PumpZone$ Graveyard | AILogic$ ReplaySpell | SpellDescription$ Target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.\nDeckHas:Type$Artifact & Ability$Graveyard\nDeckHints:Ability$Graveyard & Type$Instant|Sorcery\nOracle:Prowess\\nWhen you cast your second noncreature spell in a turn, conjure a card named Mox Sapphire into your hand. This ability triggers only once.\\n{2}{U}: Target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sapphire Collector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

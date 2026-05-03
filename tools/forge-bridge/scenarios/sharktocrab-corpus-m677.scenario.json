@@ -1,0 +1,25 @@
+{
+  "id": "sharktocrab-corpus-m677",
+  "description": "M6 corpus — Sharktocrab; ETB-on-bf.",
+  "seed": 69624,
+  "cards": {
+    "Sharktocrab": "Name:Sharktocrab\nManaCost:2 G U\nTypes:Creature Shark Octopus Crab\nPT:4/4\nA:AB$ PutCounter | Cost$ 2 G U | Adapt$ 1\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ TrigTap | TriggerDescription$ Whenever one or more +1/+1 counters are put on CARDNAME, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nDeckHas:Ability$Counters\nOracle:{2}{G}{U}: Adapt 1. (If this creature has no +1/+1 counters on it, put a +1/+1 counter on it.)\\nWhenever one or more +1/+1 counters are put on Sharktocrab, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sharktocrab"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

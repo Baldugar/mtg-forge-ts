@@ -1,0 +1,23 @@
+{
+  "id": "peacekeeper-corpus-m677",
+  "description": "M6 corpus — Peacekeeper; in-hand parse.",
+  "seed": 66686,
+  "cards": {
+    "Peacekeeper": "Name:Peacekeeper\nManaCost:2 W\nTypes:Creature Human\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1}{W}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 1 W\nS:Mode$ CantAttack | ValidCard$ Creature | Description$ Creatures can't attack.\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, sacrifice Peacekeeper unless you pay {1}{W}.\\nCreatures can't attack.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peacekeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "separatist-voidmage-corpus-m677",
+  "description": "M6 corpus — Separatist Voidmage; in-hand parse.",
+  "seed": 69453,
+  "cards": {
+    "Separatist Voidmage": "Name:Separatist Voidmage\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature\nSVar:PlayMain1:TRUE\nOracle:When Separatist Voidmage enters, you may return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Separatist Voidmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

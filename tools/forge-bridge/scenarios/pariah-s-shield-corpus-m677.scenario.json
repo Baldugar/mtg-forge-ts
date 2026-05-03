@@ -1,0 +1,25 @@
+{
+  "id": "pariah-s-shield-corpus-m677",
+  "description": "M6 corpus — Pariah's Shield; ETB-on-bf.",
+  "seed": 66629,
+  "cards": {
+    "Pariah's Shield": "Name:Pariah's Shield\nManaCost:5\nTypes:Artifact Equipment\nK:Equip:3\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ DmgEquipped | IsPresent$ Card.equipping | PresentDefined$ Self | DamageTarget$ Equipped | Description$ All damage that would be dealt to you is dealt to equipped creature instead.\nSVar:DmgEquipped:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Equipped | VarType$ Card\nOracle:All damage that would be dealt to you is dealt to equipped creature instead.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Pariah's Shield"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

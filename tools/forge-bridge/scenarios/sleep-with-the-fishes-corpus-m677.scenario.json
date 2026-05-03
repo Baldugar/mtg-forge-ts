@@ -1,0 +1,23 @@
+{
+  "id": "sleep-with-the-fishes-corpus-m677",
+  "description": "M6 corpus — Sleep with the Fishes; in-hand parse.",
+  "seed": 70198,
+  "cards": {
+    "Sleep with the Fishes": "Name:Sleep with the Fishes\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature and you create a 1/1 blue Fish creature token with \"This creature can't be blocked.\"\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ u_1_1_fish_unblockable\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nDeckHas:Ability$Token & Type$Fish\nOracle:Enchant creature\\nWhen Sleep with the Fishes enters, tap enchanted creature and you create a 1/1 blue Fish creature token with \"This creature can't be blocked.\"\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sleep with the Fishes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

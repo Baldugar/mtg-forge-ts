@@ -1,0 +1,23 @@
+{
+  "id": "shrieking-drake-corpus-m677",
+  "description": "M6 corpus — Shrieking Drake; in-hand parse.",
+  "seed": 69784,
+  "cards": {
+    "Shrieking Drake": "Name:Shrieking Drake\nManaCost:U\nTypes:Creature Drake\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.YouCtrl\nOracle:Flying\\nWhen Shrieking Drake enters, return a creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrieking Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

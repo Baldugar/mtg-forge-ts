@@ -1,0 +1,23 @@
+{
+  "id": "ma-chao-western-warrior-corpus-m677",
+  "description": "M6 corpus — Ma Chao, Western Warrior; in-hand parse.",
+  "seed": 64543,
+  "cards": {
+    "Ma Chao, Western Warrior": "Name:Ma Chao, Western Warrior\nManaCost:3 R R\nTypes:Legendary Creature Human Soldier Warrior\nPT:3/3\nK:Horsemanship\nT:Mode$ Attacks | ValidCard$ Card.Self | Alone$ True | Execute$ TrigUnblockable | TriggerDescription$ Whenever CARDNAME attacks alone, it can't be blocked this combat.\nSVar:TrigUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | Duration$ UntilEndOfCombat\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this combat.\nOracle:Horsemanship (This creature can't be blocked except by creatures with horsemanship.)\\nWhenever Ma Chao, Western Warrior attacks alone, it can't be blocked this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ma Chao, Western Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

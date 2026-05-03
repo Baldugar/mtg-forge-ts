@@ -1,0 +1,23 @@
+{
+  "id": "pious-warrior-corpus-m677",
+  "description": "M6 corpus — Pious Warrior; in-hand parse.",
+  "seed": 66917,
+  "cards": {
+    "Pious Warrior": "Name:Pious Warrior\nManaCost:3 W\nTypes:Creature Human Rebel Warrior\nPT:2/3\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidTarget$ Card.Self | Execute$ TrigGain | TriggerDescription$ Whenever CARDNAME is dealt combat damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Pious Warrior is dealt combat damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pious Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

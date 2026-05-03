@@ -1,0 +1,23 @@
+{
+  "id": "lithomancer-s-focus-corpus-m677",
+  "description": "M6 corpus — Lithomancer's Focus; in-hand parse.",
+  "seed": 64298,
+  "cards": {
+    "Lithomancer's Focus": "Name:Lithomancer's Focus\nManaCost:W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBEffect | SpellDescription$ Target creature gets +2/+2 until end of turn. Prevent all damage that would be dealt to that creature this turn by colorless sources.\nSVar:DBEffect:DB$ Effect | Defined$ Targeted | ReplacementEffects$ PreventColorless | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield\nSVar:PreventColorless:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidSource$ Card.ColorlessSource,Emblem.ColorlessSource | ValidTarget$ Card.IsRemembered | Description$ Prevent all damage that would be dealt to that creature this turn by colorless sources.\nOracle:Target creature gets +2/+2 until end of turn. Prevent all damage that would be dealt to that creature this turn by colorless sources.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lithomancer's Focus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

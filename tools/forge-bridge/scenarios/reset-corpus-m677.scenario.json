@@ -1,0 +1,23 @@
+{
+  "id": "reset-corpus-m677",
+  "description": "M6 corpus — Reset; in-hand parse.",
+  "seed": 68095,
+  "cards": {
+    "Reset": "Name:Reset\nManaCost:U U\nTypes:Instant\nA:SP$ UntapAll | ValidCards$ Land.YouCtrl | OpponentTurn$ True | CheckSVar$ Count$FinishedUpkeepsThisTurn | SpellDescription$ Cast CARDNAME only during an opponent's turn after their upkeep step. Untap all lands you control.\nAI:RemoveDeck:All\nOracle:Cast this spell only during an opponent's turn after their upkeep step.\\nUntap all lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reset"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "student-of-elements-corpus-m677",
+  "description": "M6 corpus — Student of Elements; in-hand parse.",
+  "seed": 71225,
+  "cards": {
+    "Student of Elements": "Name:Student of Elements\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ Always | IsPresent$ Card.Self+withFlying | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ When CARDNAME has flying, flip it.\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nAI:RemoveDeck:Random\nAlternateMode:Flip\nOracle:When Student of Elements has flying, flip it.\n\nALTERNATE\n\nName:Tobita, Master of Winds\nManaCost:1 U\nColors:blue\nTypes:Legendary Creature Human Wizard\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Flying | Description$ Creatures you control have flying.\nOracle:Creatures you control have flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Student of Elements"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

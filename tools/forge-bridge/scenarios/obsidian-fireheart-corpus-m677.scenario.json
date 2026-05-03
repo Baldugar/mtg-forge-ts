@@ -1,0 +1,25 @@
+{
+  "id": "obsidian-fireheart-corpus-m677",
+  "description": "M6 corpus — Obsidian Fireheart; ETB-on-bf.",
+  "seed": 66195,
+  "cards": {
+    "Obsidian Fireheart": "Name:Obsidian Fireheart\nManaCost:1 R R R\nTypes:Creature Elemental\nPT:4/4\nA:AB$ PutCounter | Cost$ 1 R R | IsCurse$ True | ValidTgts$ Land.counters_EQ0_BLAZE | TgtPrompt$ Select target land without a blaze counter | CounterType$ BLAZE | CounterNum$ 1 | SubAbility$ DBEffect | SpellDescription$ Put a blaze counter on target land without a blaze counter on it. For as long as that land has a blaze counter on it, it has \"At the beginning of your upkeep, this land deals 1 damage to you.\" (The land continues to burn after CARDNAME has left the battlefield.)\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | StaticAbilities$ ObsidianStatic | ForgetOnMoved$ Battlefield | ForgetCounter$ BLAZE | Duration$ Permanent\nSVar:ObsidianStatic:Mode$ Continuous | Affected$ Card.IsRemembered | AddTrigger$ ObsidianBlazeTrig | Description$ For as long as that land has a blaze counter on it, it has \"At the beginning of your upkeep, this land deals 1 damage to you.\"\nSVar:ObsidianBlazeTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ ObsidianBlazeDmg | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to you.\nSVar:ObsidianBlazeDmg:DB$ DealDamage | Defined$ You | NumDmg$ 1\nOracle:{1}{R}{R}: Put a blaze counter on target land without a blaze counter on it. For as long as that land has a blaze counter on it, it has \"At the beginning of your upkeep, this land deals 1 damage to you.\" (The land continues to burn after Obsidian Fireheart has left the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Obsidian Fireheart"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

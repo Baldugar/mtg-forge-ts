@@ -1,0 +1,25 @@
+{
+  "id": "suppressor-skyguard-corpus-m677",
+  "description": "M6 corpus — Suppressor Skyguard; ETB-on-bf.",
+  "seed": 71406,
+  "cards": {
+    "Suppressor Skyguard": "Name:Suppressor Skyguard\nManaCost:2 W U\nTypes:Creature Human Knight\nPT:2/4\nK:Flying\nT:Mode$ AttackersDeclared | AttackingPlayer$ Player | AttackedTarget$ You | Condition$ AttackerHasUnattackedOpp | TriggerZones$ Battlefield | Execute$ TrigSuppression | TriggerDescription$ Whenever a player attacks you, if that player has another opponent who isn't being attacked, prevent all combat damage that would be dealt to you this combat.\nSVar:TrigSuppression:DB$ Effect | ReplacementEffects$ RPrevent | Duration$ UntilEndOfCombat | AILogic$ Fog\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | ValidTarget$ You | Description$ Prevent all combat damage that would be dealt to you this combat.\nOracle:Flying\\nWhenever a player attacks you, if that player has another opponent who isn't being attacked, prevent all combat damage that would be dealt to you this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Suppressor Skyguard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "midnight-ritual-corpus-m677",
+  "description": "M6 corpus — Midnight Ritual; in-hand parse.",
+  "seed": 65097,
+  "cards": {
+    "Midnight Ritual": "Name:Midnight Ritual\nManaCost:X 2 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose X target creature cards in your graveyard | ValidTgts$ Creature.YouOwn | TargetMin$ X | TargetMax$ X | SubAbility$ DBToken | StackDescription$ {p:You} exiles {c:Targeted} from their graveyard. For each creature card exiled this way, {p:You} creates a 2/2 black Zombie creature token. | SpellDescription$ Exile X target creature cards from your graveyard. For each creature card exiled this way, create a 2/2 black Zombie creature token.\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenAmount$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Exile X target creature cards from your graveyard. For each creature card exiled this way, create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Ritual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

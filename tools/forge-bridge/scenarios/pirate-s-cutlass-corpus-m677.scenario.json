@@ -1,0 +1,23 @@
+{
+  "id": "pirate-s-cutlass-corpus-m677",
+  "description": "M6 corpus — Pirate's Cutlass; in-hand parse.",
+  "seed": 66927,
+  "cards": {
+    "Pirate's Cutlass": "Name:Pirate's Cutlass\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target Pirate you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.Pirate+YouCtrl | TgtPrompt$ Select target Pirate you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Equipped creature gets +2/+1.\nDeckHints:Type$Pirate\nOracle:When Pirate's Cutlass enters, attach it to target Pirate you control.\\nEquipped creature gets +2/+1.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pirate's Cutlass"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

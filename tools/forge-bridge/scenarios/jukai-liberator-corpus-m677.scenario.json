@@ -1,0 +1,23 @@
+{
+  "id": "jukai-liberator-corpus-m677",
+  "description": "M6 corpus — Jukai Liberator; in-hand parse.",
+  "seed": 63372,
+  "cards": {
+    "Jukai Liberator": "Name:Jukai Liberator\nManaCost:2 G\nTypes:Creature Snake Ninja\nPT:3/3\nK:Ninjutsu:1 G\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, choose land or nonland. Seek a permanent card of the chosen type.\nSVar:TrigChoose:DB$ ChooseType | Type$ Card | ValidTypes$ Land,Nonland | SubAbility$ DBSeek\nSVar:DBSeek:DB$ Seek | Type$ Card.Permanent+ChosenType | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenType$ True\nOracle:Ninjutsu {1}{G}\\nWhenever Jukai Liberator deals combat damage to a player, choose land or nonland. Seek a permanent card of the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jukai Liberator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

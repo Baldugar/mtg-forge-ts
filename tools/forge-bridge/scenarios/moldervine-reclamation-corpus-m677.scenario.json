@@ -1,0 +1,23 @@
+{
+  "id": "moldervine-reclamation-corpus-m677",
+  "description": "M6 corpus — Moldervine Reclamation; in-hand parse.",
+  "seed": 65386,
+  "cards": {
+    "Moldervine Reclamation": "Name:Moldervine Reclamation\nManaCost:3 B G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature you control dies, you gain 1 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$LifeGain\nOracle:Whenever a creature you control dies, you gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moldervine Reclamation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

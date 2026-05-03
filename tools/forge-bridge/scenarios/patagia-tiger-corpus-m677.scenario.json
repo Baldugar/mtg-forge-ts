@@ -1,0 +1,23 @@
+{
+  "id": "patagia-tiger-corpus-m677",
+  "description": "M6 corpus — Patagia Tiger; in-hand parse.",
+  "seed": 66639,
+  "cards": {
+    "Patagia Tiger": "Name:Patagia Tiger\nManaCost:4 W\nTypes:Creature Cat\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target Human you control gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Human.YouCtrl | TgtPrompt$ Select target Human you control | NumAtt$ +2 | NumDef$ +2\nSVar:PlayMain1:TRUE\nDeckHints:Type$Human\nOracle:Flying\\nWhen Patagia Tiger enters, target Human you control gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patagia Tiger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

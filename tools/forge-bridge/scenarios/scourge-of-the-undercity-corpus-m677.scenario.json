@@ -1,0 +1,23 @@
+{
+  "id": "scourge-of-the-undercity-corpus-m677",
+  "description": "M6 corpus — Scourge of the Undercity; in-hand parse.",
+  "seed": 69199,
+  "cards": {
+    "Scourge of the Undercity": "Name:Scourge of the Undercity\nManaCost:1 B\nTypes:Creature Gorgon Vampire\nPT:2/1\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, another target creature you control gains lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | KW$ Lifelink\nSVar:PlayMain1:TRUE\nOracle:Lifelink (Damage dealt by this creature also causes you to gain that much life.)\\nWhen Scourge of the Undercity enters, another target creature you control gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourge of the Undercity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

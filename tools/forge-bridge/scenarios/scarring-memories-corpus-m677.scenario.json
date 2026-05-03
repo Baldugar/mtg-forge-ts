@@ -1,0 +1,23 @@
+{
+  "id": "scarring-memories-corpus-m677",
+  "description": "M6 corpus — Scarring Memories; in-hand parse.",
+  "seed": 69114,
+  "cards": {
+    "Scarring Memories": "Name:Scarring Memories\nManaCost:3 B\nTypes:Sorcery Lesson\nS:Mode$ CastWithFlash | ValidCard$ Card.Self | ValidSA$ Spell | IsPresent$ Creature.YouCtrl+attacking+Legendary | EffectZone$ All | Caster$ You | Description$ You may cast this spell as though it had flash if you control an attacking legendary creature.\nA:SP$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature | SubAbility$ DBDiscard | SpellDescription$ Target opponent sacrifices a creature of their choice, discards a card, and loses 3 life.\nSVar:DBDiscard:DB$ Discard | Defined$ Targeted | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 3\nOracle:You may cast this spell as though it had flash if you control an attacking legendary creature.\\nTarget opponent sacrifices a creature of their choice, discards a card, and loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scarring Memories"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

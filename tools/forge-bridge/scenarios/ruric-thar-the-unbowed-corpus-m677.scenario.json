@@ -1,0 +1,25 @@
+{
+  "id": "ruric-thar-the-unbowed-corpus-m677",
+  "description": "M6 corpus — Ruric Thar, the Unbowed; ETB-on-bf.",
+  "seed": 68662,
+  "cards": {
+    "Ruric Thar, the Unbowed": "Name:Ruric Thar, the Unbowed\nManaCost:4 R G\nTypes:Legendary Creature Ogre Warrior\nPT:6/6\nK:Vigilance\nK:Reach\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Player | Execute$ TrigDmg | TriggerDescription$ Whenever a player casts a noncreature spell, NICKNAME deals 6 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 6\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Vigilance, reach\\nRuric Thar, the Unbowed attacks each combat if able.\\nWhenever a player casts a noncreature spell, Ruric Thar deals 6 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ruric Thar, the Unbowed"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nulltread-gargantuan-corpus-m677",
+  "description": "M6 corpus — Nulltread Gargantuan; in-hand parse.",
+  "seed": 66109,
+  "cards": {
+    "Nulltread Gargantuan": "Name:Nulltread Gargantuan\nManaCost:1 G U\nTypes:Creature Beast\nPT:5/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, put a creature you control on top of its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | Hidden$ True | ChangeType$ Creature.YouCtrl | Mandatory$ True\nSVar:NeedsToPlay:Creature.cmcLE2+YouCtrl\nOracle:When Nulltread Gargantuan enters, put a creature you control on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nulltread Gargantuan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scalding-salamander-corpus-m677",
+  "description": "M6 corpus — Scalding Salamander; in-hand parse.",
+  "seed": 69083,
+  "cards": {
+    "Scalding Salamander": "Name:Scalding Salamander\nManaCost:2 R\nTypes:Creature Salamander\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may have it deal 1 damage to each creature without flying defending player controls.\nSVar:TrigDamage:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.withoutFlying+ControlledBy TriggeredDefendingPlayer\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Scalding Salamander attacks, you may have it deal 1 damage to each creature without flying defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scalding Salamander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

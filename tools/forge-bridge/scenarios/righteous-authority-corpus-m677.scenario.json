@@ -1,0 +1,23 @@
+{
+  "id": "righteous-authority-corpus-m677",
+  "description": "M6 corpus — Righteous Authority; in-hand parse.",
+  "seed": 68270,
+  "cards": {
+    "Righteous Authority": "Name:Righteous Authority\nManaCost:3 W U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | Description$ Enchanted creature gets +1/+1 for each card in its controller's hand.\nSVar:X:Count$ValidHand Card.OwnedBy EnchantedController\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of the draw step of enchanted creature's controller, that player draws an additional card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 for each card in its controller's hand.\\nAt the beginning of the draw step of enchanted creature's controller, that player draws an additional card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Righteous Authority"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

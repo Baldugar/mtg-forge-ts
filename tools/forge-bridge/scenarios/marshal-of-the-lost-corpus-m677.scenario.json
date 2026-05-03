@@ -1,0 +1,25 @@
+{
+  "id": "marshal-of-the-lost-corpus-m677",
+  "description": "M6 corpus — Marshal of the Lost; ETB-on-bf.",
+  "seed": 64818,
+  "cards": {
+    "Marshal of the Lost": "Name:Marshal of the Lost\nManaCost:2 W B\nTypes:Creature Orc Warrior\nPT:3/3\nK:Deathtouch\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, target creature gets +X/+X until end of turn, where X is the number of attacking creatures.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.attacking\nSVar:PlayMain1:TRUE\nOracle:Deathtouch\\nWhenever you attack, target creature gets +X/+X until end of turn, where X is the number of attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Marshal of the Lost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

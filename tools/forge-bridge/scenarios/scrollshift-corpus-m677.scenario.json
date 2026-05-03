@@ -1,0 +1,23 @@
+{
+  "id": "scrollshift-corpus-m677",
+  "description": "M6 corpus — Scrollshift; in-hand parse.",
+  "seed": 69240,
+  "cards": {
+    "Scrollshift": "Name:Scrollshift\nManaCost:2 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl,Enchantment.YouCtrl | Origin$ Battlefield | Destination$ Exile | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target artifact, creature, or enchantment you control | RememberTargets$ True | SubAbility$ DBReturn | StackDescription$ Exile {c:Targeted}, | SpellDescription$ Exile up to one target artifact, creature, or enchantment you control, then return it to the battlefield under its owner's control. Draw a card.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBDraw | StackDescription$ then return it to the battlefield under its owner's control.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile up to one target artifact, creature, or enchantment you control, then return it to the battlefield under its owner's control.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrollshift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

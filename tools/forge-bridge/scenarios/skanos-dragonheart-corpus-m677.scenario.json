@@ -1,0 +1,23 @@
+{
+  "id": "skanos-dragonheart-corpus-m677",
+  "description": "M6 corpus — Skanos Dragonheart; in-hand parse.",
+  "seed": 70015,
+  "cards": {
+    "Skanos Dragonheart": "Name:Skanos Dragonheart\nManaCost:4 G\nTypes:Legendary Creature Dragon Ranger\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+X until end of turn, where X is the greatest power among other Dragons you control and Dragon cards in your graveyard.\nSVar:TrigPump:DB$ Pump | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$ValidGraveyard,Battlefield Dragon.YouCtrl+Other$GreatestCardPower\nK:Choose a Background\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard|Counters\nDeckNeeds:Type$Dragon\nOracle:Whenever Skanos Dragonheart attacks, it gets +X/+X until end of turn, where X is the greatest power among other Dragons you control and Dragon cards in your graveyard.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skanos Dragonheart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

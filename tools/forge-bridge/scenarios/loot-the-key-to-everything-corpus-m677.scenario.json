@@ -1,0 +1,23 @@
+{
+  "id": "loot-the-key-to-everything-corpus-m677",
+  "description": "M6 corpus — Loot, the Key to Everything; in-hand parse.",
+  "seed": 64386,
+  "cards": {
+    "Loot, the Key to Everything": "Name:Loot, the Key to Everything\nManaCost:G U R\nTypes:Legendary Creature Beast Noble\nPT:1/2\nK:Ward:1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ At the beginning of your upkeep, exile the top X cards of your library, where X is the number of card types among other nonland permanents you control. You may play those cards this turn.\nSVar:TrigDig:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play those cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Permanent.nonLand+Other+YouCtrl$CardTypes\nOracle:Ward {1}\\nAt the beginning of your upkeep, exile the top X cards of your library, where X is the number of card types among other nonland permanents you control. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loot, the Key to Everything"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

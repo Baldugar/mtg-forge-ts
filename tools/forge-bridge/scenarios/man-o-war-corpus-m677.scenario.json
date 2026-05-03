@@ -1,0 +1,23 @@
+{
+  "id": "man-o-war-corpus-m677",
+  "description": "M6 corpus — Man-o'-War; in-hand parse.",
+  "seed": 64678,
+  "cards": {
+    "Man-o'-War": "Name:Man-o'-War\nManaCost:2 U\nTypes:Creature Jellyfish\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nOracle:When Man-o'-War enters, return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Man-o'-War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

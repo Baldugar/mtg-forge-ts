@@ -1,0 +1,23 @@
+{
+  "id": "indentured-djinn-corpus-m677",
+  "description": "M6 corpus — Indentured Djinn; in-hand parse.",
+  "seed": 62868,
+  "cards": {
+    "Indentured Djinn": "Name:Indentured Djinn\nManaCost:1 U U\nTypes:Creature Djinn\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, each other player may draw up to three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ Player.Other | NumCards$ 3 | Upto$ True | AILogic$ OptionalDraw\nOracle:Flying\\nWhen Indentured Djinn enters, each other player may draw up to three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Indentured Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

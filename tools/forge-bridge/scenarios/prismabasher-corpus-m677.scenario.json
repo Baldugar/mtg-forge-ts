@@ -1,0 +1,23 @@
+{
+  "id": "prismabasher-corpus-m677",
+  "description": "M6 corpus — Prismabasher; in-hand parse.",
+  "seed": 67213,
+  "cards": {
+    "Prismabasher": "Name:Prismabasher\nManaCost:4 G G\nTypes:Creature Elemental\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Vivid — When this creature enters, up to X target creatures you control get +X/+X until end of turn, where X is the number of colors among permanents you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Select target creature you control | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nSVar:PlayMain1:ALWAYS\nOracle:Trample\\nVivid — When this creature enters, up to X target creatures you control get +X/+X until end of turn, where X is the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prismabasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spelldrain-assassin-corpus-m677",
+  "description": "M6 corpus — Spelldrain Assassin; in-hand parse.",
+  "seed": 70583,
+  "cards": {
+    "Spelldrain Assassin": "Name:Spelldrain Assassin\nManaCost:U B R\nTypes:Creature Vampire Assassin\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose an instant or sorcery card in your hand. It perpetually gains casualty 2.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Sorcery.YouOwn,Instant.YouOwn | ChoiceTitle$ Choose an instant or sorcery card in your hand | Mandatory$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | PumpZone$ Hand | Defined$ ChosenCard | KW$ Casualty:2 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHints:Type$Instant|Sorcery\nDeckHas:Ability$Sacrifice\nOracle:When Spelldrain Assassin enters, choose an instant or sorcery card in your hand. It perpetually gains casualty 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spelldrain Assassin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

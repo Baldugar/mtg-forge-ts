@@ -1,0 +1,23 @@
+{
+  "id": "sheoldred-s-assimilator-corpus-m677",
+  "description": "M6 corpus — Sheoldred's Assimilator; in-hand parse.",
+  "seed": 69663,
+  "cards": {
+    "Sheoldred's Assimilator": "Name:Sheoldred's Assimilator\nManaCost:1 B\nTypes:Creature Phyrexian Horror\nPT:3/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one target card from a graveyard. If a card is exiled this way, you may conjure a duplicate of that card into the top five cards of your library at random.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, exile up to one target card from a graveyard. If a card is exiled this way, you may conjure a duplicate of that card into the top five cards of your library at random.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select up to one target card in a graveyard | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Card | RememberChanged$ True | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Optional$ True | OptionPrompt$ Would you like to conjure a duplicate of the targeted card into the top five cards of your library ? | DefinedName$ Remembered | Zone$ Library | LibraryPosition$ Z | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Z:Count$Random.0.4\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Graveyard\nOracle:Menace\\nWhenever Sheoldred's Assimilator enters or attacks, exile up to one target card from a graveyard. If a card is exiled this way, you may conjure a duplicate of that card into the top five cards of your library at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheoldred's Assimilator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

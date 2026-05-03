@@ -1,0 +1,23 @@
+{
+  "id": "light-of-the-legion-corpus-m677",
+  "description": "M6 corpus — Light of the Legion; in-hand parse.",
+  "seed": 64228,
+  "cards": {
+    "Light of the Legion": "Name:Light of the Legion\nManaCost:4 W W\nTypes:Creature Angel\nPT:5/5\nK:Flying\nK:Mentor\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME dies, put a +1/+1 counter on each white creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.White+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters|Token\nOracle:Flying\\nMentor (Whenever this creature attacks, put a +1/+1 counter on target attacking creature with lesser power.)\\nWhen Light of the Legion dies, put a +1/+1 counter on each white creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Light of the Legion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

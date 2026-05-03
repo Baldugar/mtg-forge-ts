@@ -1,0 +1,23 @@
+{
+  "id": "kami-of-mourning-corpus-m677",
+  "description": "M6 corpus — Kami of Mourning; in-hand parse.",
+  "seed": 63456,
+  "cards": {
+    "Kami of Mourning": "Name:Kami of Mourning\nManaCost:2 B\nTypes:Creature Spirit\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, target creature you control or creature card in your graveyard perpetually gains \"Whenever a creature you control with greater mana value than this card dies, return this card from your graveyard to the battlefield tapped.\"\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control or creature card in your graveyard | TgtZone$ Battlefield,Graveyard | Triggers$ BiggerDies | Duration$ Perpetual\nSVar:BiggerDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+cmcGTX | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Whenever a creature you control with greater mana value than this card dies, return this card from your graveyard to the battlefield tapped.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nSVar:X:Count$CardManaCost\nDeckHas:Ability$Graveyard\nOracle:Whenever Kami of Mourning enters, target creature you control or creature card in your graveyard perpetually gains \"Whenever a creature you control with greater mana value than this card dies, return this card from your graveyard to the battlefield tapped.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kami of Mourning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

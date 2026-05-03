@@ -1,0 +1,23 @@
+{
+  "id": "stillness-in-motion-corpus-m677",
+  "description": "M6 corpus — Stillness in Motion; in-hand parse.",
+  "seed": 70998,
+  "cards": {
+    "Stillness in Motion": "Name:Stillness in Motion\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, mill three cards. Then if you have no cards in your library, exile this enchantment and put five cards from your graveyard on top of your library in any order.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 3 | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ConditionPresent$ Card.YouOwn | ConditionZone$ Library | ConditionCompare$ EQ0 | SubAbility$ DBChangeZone | StackDescription$ None\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Card.YouOwn | ChangeNum$ 5 | Origin$ Graveyard | Destination$ Library | Hidden$ True | Reorder$ True | Mandatory$ True | ConditionPresent$ Card.YouOwn | ConditionZone$ Library | ConditionCompare$ EQ0 | StackDescription$ None\nOracle:At the beginning of your upkeep, mill three cards. Then if you have no cards in your library, exile this enchantment and put five cards from your graveyard on top of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stillness in Motion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

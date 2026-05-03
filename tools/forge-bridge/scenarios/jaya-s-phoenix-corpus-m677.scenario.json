@@ -1,0 +1,23 @@
+{
+  "id": "jaya-s-phoenix-corpus-m677",
+  "description": "M6 corpus — Jaya's Phoenix; in-hand parse.",
+  "seed": 63258,
+  "cards": {
+    "Jaya's Phoenix": "Name:Jaya's Phoenix\nManaCost:4 R\nTypes:Creature Phoenix\nPT:3/3\nK:Flying\nK:Haste\nT:Mode$ DamageDone | CombatDamage$ True | ValidTarget$ Player,Planeswalker | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDelayedTrigger | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or planeswalker, copy the next loyalty ability you activate this turn when you activate it. You may choose new targets for the copy.\nSVar:TrigDelayedTrigger:DB$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellAbilityCast | ValidSA$ Activated.Loyalty | ValidActivatingPlayer$ You | SpellDescription$ Copy the next loyalty ability you activate this turn when you activate it.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ 1 | MayChooseTarget$ True\nT:Mode$ SpellCast | ValidCard$ Card.Planeswalker | OptionalDecider$ You | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a planeswalker spell, you may return CARDNAME from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:SacMe:2\nSVar:DiscardMe:3\nDeckHas:Ability$Graveyard\nDeckHints:Type$Planeswalker\nOracle:Flying, haste\\nWhenever Jaya's Phoenix deals combat damage to a player or planeswalker, copy the next loyalty ability you activate this turn when you activate it. You may choose new targets for the copy.\\nWhenever you cast a planeswalker spell, you may return Jaya's Phoenix from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaya's Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

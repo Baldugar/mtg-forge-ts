@@ -1,0 +1,23 @@
+{
+  "id": "sproutback-trudge-corpus-m677",
+  "description": "M6 corpus — Sproutback Trudge; in-hand parse.",
+  "seed": 70794,
+  "cards": {
+    "Sproutback Trudge": "Name:Sproutback Trudge\nManaCost:7 G G\nTypes:Creature Fungus Beast\nPT:9/7\nK:Trample\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the amount of life you gained this turn.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Graveyard | CheckSVar$ X | Execute$ TrigPlay | TriggerDescription$ At the beginning of your end step, if you gained life this turn, you may cast CARDNAME from your graveyard.\nSVar:TrigPlay:DB$ Play | Defined$ Self | Optional$ True\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Graveyard\nOracle:This spell costs {X} less to cast, where X is the amount of life you gained this turn.\\nTrample\\nAt the beginning of your end step, if you gained life this turn, you may cast Sproutback Trudge from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sproutback Trudge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

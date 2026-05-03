@@ -1,0 +1,23 @@
+{
+  "id": "mist-raven-corpus-m677",
+  "description": "M6 corpus — Mist Raven; in-hand parse.",
+  "seed": 65291,
+  "cards": {
+    "Mist Raven": "Name:Mist Raven\nManaCost:2 U U\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Mist Raven enters, return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mist Raven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gremlin-infestation-corpus-m677",
+  "description": "M6 corpus — Gremlin Infestation; in-hand parse.",
+  "seed": 61741,
+  "cards": {
+    "Gremlin Infestation": "Name:Gremlin Infestation\nManaCost:3 R\nTypes:Enchantment Aura\nK:Enchant:Artifact\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your end step, CARDNAME deals 2 damage to enchanted artifact's controller.\nSVar:TrigDamage:DB$ DealDamage | Defined$ EnchantedController | NumDmg$ 2\nT:Mode$ ChangesZone | ValidCard$ Card.AttachedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigToken | TriggerDescription$ When enchanted artifact is put into a graveyard, create a 2/2 red Gremlin creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_gremlin | TokenOwner$ You\nOracle:Enchant artifact\\nAt the beginning of your end step, Gremlin Infestation deals 2 damage to enchanted artifact's controller.\\nWhen enchanted artifact is put into a graveyard, create a 2/2 red Gremlin creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gremlin Infestation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

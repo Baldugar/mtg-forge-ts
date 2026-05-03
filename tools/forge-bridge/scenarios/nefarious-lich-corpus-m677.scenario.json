@@ -1,0 +1,23 @@
+{
+  "id": "nefarious-lich-corpus-m677",
+  "description": "M6 corpus — Nefarious Lich; in-hand parse.",
+  "seed": 65820,
+  "cards": {
+    "Nefarious Lich": "Name:Nefarious Lich\nManaCost:B B B B\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ ExileCards | Description$ If damage would be dealt to you, exile that many cards from your graveyard instead. If you can't, you lose the game.\nSVar:ExileCards:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Card | ChangeNum$ X | DefinedPlayer$ ReplacedTarget | Origin$ Graveyard | Destination$ Exile | ConditionCheckSVar$ CheckYard | ConditionSVarCompare$ GEX | SubAbility$ DBLose | RememberChanged$ True\nSVar:DBLose:DB$ LosesGame | Defined$ You | ConditionCheckSVar$ CheckExile | ConditionSVarCompare$ LTX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:CheckYard:Count$ValidGraveyard Card.YouOwn\nSVar:CheckExile:Count$ValidExile Card.IsRemembered\nSVar:X:ReplaceCount$DamageAmount\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | AILogic$ LichDraw | ReplaceWith$ Draw | Description$ If you would gain life, draw that many cards instead.\nSVar:Draw:DB$ Draw | Defined$ You | NumCards$ Y\nSVar:Y:ReplaceCount$LifeGained\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigLose | TriggerDescription$ When CARDNAME leaves the battlefield, you lose the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:If damage would be dealt to you, exile that many cards from your graveyard instead. If you can't, you lose the game.\\nIf you would gain life, draw that many cards instead.\\nWhen Nefarious Lich leaves the battlefield, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nefarious Lich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "majestic-genesis-corpus-m677",
+  "description": "M6 corpus — Majestic Genesis; in-hand parse.",
+  "seed": 64630,
+  "cards": {
+    "Majestic Genesis": "Name:Majestic Genesis\nManaCost:6 G G\nTypes:Sorcery\nA:SP$ Dig | DigNum$ X | Reveal$ True | ChangeNum$ Any | ChangeValid$ Permanent | DestinationZone$ Battlefield | Optional$ True | RestRandomOrder$ True | SpellDescription$ Reveal the top X cards of your library, where X is the greatest mana value of a commander you own on the battlefield or in the command zone. You may put any number of permanent cards from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:X:Count$ValidBattlefield,Command Card.IsCommander+YouOwn$GreatestCardManaCost\nAI:RemoveDeck:NonCommander\nOracle:Reveal the top X cards of your library, where X is the greatest mana value of a commander you own on the battlefield or in the command zone. You may put any number of permanent cards from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Majestic Genesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

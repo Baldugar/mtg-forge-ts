@@ -1,0 +1,23 @@
+{
+  "id": "a-return-upon-the-tide-corpus-m677",
+  "description": "M6 corpus — A-Return Upon the Tide; in-hand parse.",
+  "seed": 68789,
+  "cards": {
+    "A-Return Upon the Tide": "Name:A-Return Upon the Tide\nManaCost:4 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SubAbility$ DBToken | SpellDescription$ Return target creature card from your graveyard to the battlefield. If it's an Elf, create three 1/1 green Elf Warrior creature tokens.\nSVar:DBToken:DB$ Token | TokenAmount$ 3 | TokenScript$ g_1_1_elf_warrior | TokenOwner$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:X:Targeted$Valid Elf\nK:Foretell:3 B\nDeckHas:Ability$Token\nOracle:Return target creature card from your graveyard to the battlefield. If it's an Elf, create three 1/1 green Elf Warrior creature tokens.\\nForetell {3}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Return Upon the Tide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

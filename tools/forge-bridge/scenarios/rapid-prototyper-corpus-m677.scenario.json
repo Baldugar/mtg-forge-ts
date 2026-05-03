@@ -1,0 +1,25 @@
+{
+  "id": "rapid-prototyper-corpus-m677",
+  "description": "M6 corpus — Rapid Prototyper; ETB-on-bf.",
+  "seed": 67717,
+  "cards": {
+    "Rapid Prototyper": "Name:Rapid Prototyper\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, create an X/X colorless Construct artifact creature token, where X is the number of artifacts you control.\nSVar:TrigCrank:DB$ Token | TokenScript$ c_x_x_a_construct | TokenPower$ X | TokenToughness$ X\nSVar:X:Count$Valid Artifact.YouCtrl\nOracle:Whenever you crank Rapid Prototyper, create an X/X colorless Construct artifact creature token, where X is the number of artifacts you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rapid Prototyper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "rain-of-gore-corpus-m677",
+  "description": "M6 corpus — Rain of Gore; ETB-on-bf.",
+  "seed": 67587,
+  "cards": {
+    "Rain of Gore": "Name:Rain of Gore\nManaCost:B R\nTypes:Enchantment\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidSource$ SpellAbility | SourceController$ True | AILogic$ LoseLife | ReplaceWith$ RLoseLife | Description$ If a spell or ability would cause its controller to gain life, that player loses that much life instead.\nSVar:RLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ ReplacedPlayer\nSVar:X:ReplaceCount$LifeGained\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:If a spell or ability would cause its controller to gain life, that player loses that much life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rain of Gore"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

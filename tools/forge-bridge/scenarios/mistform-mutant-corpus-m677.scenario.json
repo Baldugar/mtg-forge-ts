@@ -1,0 +1,25 @@
+{
+  "id": "mistform-mutant-corpus-m677",
+  "description": "M6 corpus — Mistform Mutant; ETB-on-bf.",
+  "seed": 65301,
+  "cards": {
+    "Mistform Mutant": "Name:Mistform Mutant\nManaCost:4 U U\nTypes:Creature Illusion Mutant\nPT:3/4\nA:AB$ ChooseType | Cost$ 1 U | Defined$ You | Type$ Creature | InvalidTypes$ Wall | SubAbility$ DBAnimate | SpellDescription$ Choose a creature type other than Wall. Target creature becomes that type until end of turn.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Creature | Types$ ChosenType | RemoveCreatureTypes$ True\nAI:RemoveDeck:All\nOracle:{1}{U}: Choose a creature type other than Wall. Target creature becomes that type until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mistform Mutant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

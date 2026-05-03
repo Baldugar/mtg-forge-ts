@@ -1,0 +1,23 @@
+{
+  "id": "sheoldred-s-restoration-corpus-m677",
+  "description": "M6 corpus — Sheoldred's Restoration; in-hand parse.",
+  "seed": 69666,
+  "cards": {
+    "Sheoldred's Restoration": "Name:Sheoldred's Restoration\nManaCost:3 B\nTypes:Sorcery\nK:Kicker:2 W\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn | SubAbility$ DBGainLife | TgtPrompt$ Select target creature to return from your graveyard | TriggerDescription$ Return target creature card from your graveyard to the battlefield. If this spell was kicked, you gain life equal to that card's mana value. Otherwise, you lose that much life. Exile CARDNAME.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBLoseLife | Condition$ Kicked\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | ConditionCheckSVar$ Y | ConditionSVarCompare$ EQ0 | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:X:Targeted$CardManaCost\nSVar:Y:Count$TimesKicked\nDeckHas:Ability$Graveyard|LifeGain\nOracle:Kicker {2}{W} (You may pay an additional {2}{W} as you cast this spell.)\\nReturn target creature card from your graveyard to the battlefield. If this spell was kicked, you gain life equal to that card's mana value. Otherwise, you lose that much life. Exile Sheoldred's Restoration.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheoldred's Restoration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

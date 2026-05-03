@@ -1,0 +1,23 @@
+{
+  "id": "rimehorn-aurochs-corpus-m677",
+  "description": "M6 corpus — Rimehorn Aurochs; in-hand parse.",
+  "seed": 68291,
+  "cards": {
+    "Rimehorn Aurochs": "Name:Rimehorn Aurochs\nManaCost:4 G\nTypes:Snow Creature Aurochs\nPT:3/3\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.Aurochs+attacking+Other\nA:AB$ Pump | Cost$ 2 S | ValidTgts$ Creature | TgtPrompt$ Select target creature to attack | StackDescription$ None | SubAbility$ DBMustBlock | SpellDescription$ Target creature blocks target creature this turn if able.\nSVar:DBMustBlock:DB$ MustBlock | DefinedAttacker$ ParentTarget | ValidTgts$ Creature | TgtPrompt$ Select target creature to block\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Aurochs\nOracle:Trample\\nWhenever Rimehorn Aurochs attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\\n{2}{S}: Target creature blocks target creature this turn if able. ({S} can be paid with one mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rimehorn Aurochs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

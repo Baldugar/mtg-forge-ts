@@ -1,0 +1,23 @@
+{
+  "id": "starfall-corpus-m677",
+  "description": "M6 corpus — Starfall; in-hand parse.",
+  "seed": 70889,
+  "cards": {
+    "Starfall": "Name:Starfall\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | NumDmg$ 3 | ValidTgts$ Creature | SubAbility$ DBDamage | SpellDescription$ CARDNAME deals 3 damage to target creature. If that creature is an enchantment, CARDNAME deals 3 damage to that creature's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 3 | ConditionDefined$ Targeted | ConditionPresent$ Enchantment\nOracle:Starfall deals 3 damage to target creature. If that creature is an enchantment, Starfall deals 3 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starfall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

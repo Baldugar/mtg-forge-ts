@@ -1,0 +1,25 @@
+{
+  "id": "lim-d-l-s-cohort-corpus-m677",
+  "description": "M6 corpus — Lim-Dûl's Cohort; ETB-on-bf.",
+  "seed": 64278,
+  "cards": {
+    "Lim-Dûl's Cohort": "Name:Lim-Dûl's Cohort\nManaCost:1 B B\nTypes:Creature Zombie\nPT:2/3\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigBlocks | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature can't be regenerated this turn.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigBlocked | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature can't be regenerated this turn.\nSVar:TrigBlocks:DB$ Effect | RememberObjects$ TriggeredAttackerLKICopy | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | AILogic$ CantRegenerate\nSVar:TrigBlocked:DB$ Effect | RememberObjects$ TriggeredBlockerLKICopy | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | AILogic$ CantRegenerate\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nOracle:Whenever Lim-Dûl's Cohort blocks or becomes blocked by a creature, that creature can't be regenerated this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lim-Dûl's Cohort"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

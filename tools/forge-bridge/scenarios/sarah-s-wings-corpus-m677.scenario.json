@@ -1,0 +1,23 @@
+{
+  "id": "sarah-s-wings-corpus-m677",
+  "description": "M6 corpus — Sarah's Wings; in-hand parse.",
+  "seed": 69009,
+  "cards": {
+    "Sarah's Wings": "Name:Sarah's Wings\nManaCost:W\nTypes:Kindred Instant Angel\nA:SP$ Pump | ValidTgts$ Creature,Player | TgtPrompt$ Select target creature or player | KW$ Flying | SubAbility$ NoDamage | SpellDescription$ Target creature or player gains flying until end of turn.\nSVar:NoDamage:DB$ Effect | ReplacementEffects$ RPrevent | EffectOwner$ TargetedPlayer | ConditionPlayerDefined$ Targeted | ConditionPlayerContains$ Targeted | SpellDescription$ (Players with flying can't be dealt damage by creatures without flying.)\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ You | ValidSource$ Creature.withoutFlying | Description$ Prevent all damage that would be dealt to you this turn by creatures without flying.\nOracle:Target creature or player gains flying until end of turn. (Players with flying can't be dealt damage by creatures without flying.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarah's Wings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

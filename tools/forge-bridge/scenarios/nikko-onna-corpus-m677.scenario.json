@@ -1,0 +1,23 @@
+{
+  "id": "nikko-onna-corpus-m677",
+  "description": "M6 corpus — Nikko-Onna; in-hand parse.",
+  "seed": 65962,
+  "cards": {
+    "Nikko-Onna": "Name:Nikko-Onna\nManaCost:2 W\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target enchantment.\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Enchantment | TgtPrompt$ Choose target enchantment\nOracle:When Nikko-Onna enters, destroy target enchantment.\\nWhenever you cast a Spirit or Arcane spell, you may return Nikko-Onna to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nikko-Onna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

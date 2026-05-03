@@ -1,0 +1,23 @@
+{
+  "id": "perimeter-enforcer-corpus-m677",
+  "description": "M6 corpus — Perimeter Enforcer; in-hand parse.",
+  "seed": 66742,
+  "cards": {
+    "Perimeter Enforcer": "Name:Perimeter Enforcer\nManaCost:1 W\nTypes:Creature Human Detective\nPT:1/1\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Detective.YouCtrl+Other | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever another Detective you control enters and whenever a Detective you control is turned face up, CARDNAME gets +1/+1 until end of turn.\nT:Mode$ TurnFaceUp | ValidCard$ Detective.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever another Detective you control enters and whenever a Detective you control is turned face up, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nDeckHas:Ability$LifeGain\nDeckHints:Type$Detective\nOracle:Flying, lifelink\\nWhenever another Detective you control enters and whenever a Detective you control is turned face up, Perimeter Enforcer gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perimeter Enforcer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

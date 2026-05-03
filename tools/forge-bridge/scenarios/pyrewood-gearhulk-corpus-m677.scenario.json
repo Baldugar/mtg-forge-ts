@@ -1,0 +1,23 @@
+{
+  "id": "pyrewood-gearhulk-corpus-m677",
+  "description": "M6 corpus — Pyrewood Gearhulk; in-hand parse.",
+  "seed": 67411,
+  "cards": {
+    "Pyrewood Gearhulk": "Name:Pyrewood Gearhulk\nManaCost:2 R R G G\nTypes:Artifact Creature Construct\nPT:7/7\nK:Vigilance\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When this creature enters, other creatures you control get +2/+2 and gain vigilance and menace until end of turn. Damage can't be prevented this turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +2 | NumDef$ +2 | KW$ Vigilance & Menace | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STCantPrevent\nSVar:STCantPrevent:Mode$ CantPreventDamage | Description$ Damage can't be prevented this turn.\nSVar:PlayMain1:TRUE\nOracle:Vigilance, menace\\nWhen this creature enters, other creatures you control get +2/+2 and gain vigilance and menace until end of turn. Damage can't be prevented this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyrewood Gearhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

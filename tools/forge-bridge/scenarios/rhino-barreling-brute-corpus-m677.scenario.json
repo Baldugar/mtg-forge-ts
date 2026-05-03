@@ -1,0 +1,23 @@
+{
+  "id": "rhino-barreling-brute-corpus-m677",
+  "description": "M6 corpus — Rhino, Barreling Brute; in-hand parse.",
+  "seed": 68209,
+  "cards": {
+    "Rhino, Barreling Brute": "Name:Rhino, Barreling Brute\nVariant:UniversesWithin:FlavorName:Xecau, Predation's Shadow\nManaCost:3 R R G G\nTypes:Legendary Creature Human Villain\nPT:6/7\nK:Vigilance\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME attacks, if you've cast a spell with mana value 4 or greater this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:X:Count$ThisTurnCast_Card.cmcGE4+YouCtrl\nSVar:HasAttackEffect:TRUE\nOracle:Vigilance, trample, haste\\nWhenever Rhino attacks, if you've cast a spell with mana value 4 or greater this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rhino, Barreling Brute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

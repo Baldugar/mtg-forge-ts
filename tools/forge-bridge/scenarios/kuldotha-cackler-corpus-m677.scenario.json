@@ -1,0 +1,23 @@
+{
+  "id": "kuldotha-cackler-corpus-m677",
+  "description": "M6 corpus — Kuldotha Cackler; in-hand parse.",
+  "seed": 63910,
+  "cards": {
+    "Kuldotha Cackler": "Name:Kuldotha Cackler\nManaCost:2 R\nTypes:Creature Phyrexian Hyena\nPT:2/3\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ HeroPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the number of permanents you control with oil counters on them.\nSVar:HeroPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Permanent.YouCtrl+counters_GE1_OIL\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Trample\\nWhenever Kuldotha Cackler attacks, it gets +X/+0 until end of turn, where X is the number of permanents you control with oil counters on them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kuldotha Cackler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

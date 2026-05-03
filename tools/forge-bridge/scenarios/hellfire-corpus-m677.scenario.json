@@ -1,0 +1,23 @@
+{
+  "id": "hellfire-corpus-m677",
+  "description": "M6 corpus — Hellfire; in-hand parse.",
+  "seed": 62236,
+  "cards": {
+    "Hellfire": "Name:Hellfire\nManaCost:2 B B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature.nonBlack | RememberDestroyed$ True | SubAbility$ DBDealDamage | SpellDescription$ Destroy all nonblack creatures. CARDNAME deals X plus 3 damage to you, where X is the number of creatures that died this way.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ X | Defined$ You\nSVar:X:Remembered$Amount/Plus.3\n# Remember Destroyed still isn't quite right since Hellfire cares about Replacement effects too\nSVar:NeedsToPlayVar:Y GE5\nSVar:Y:Count$YourLifeTotal\nAI:RemoveDeck:Random\nOracle:Destroy all nonblack creatures. Hellfire deals X plus 3 damage to you, where X is the number of creatures that died this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hellfire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

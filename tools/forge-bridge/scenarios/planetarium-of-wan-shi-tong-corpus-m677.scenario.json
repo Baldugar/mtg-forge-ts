@@ -1,0 +1,23 @@
+{
+  "id": "planetarium-of-wan-shi-tong-corpus-m677",
+  "description": "M6 corpus — Planetarium of Wan Shi Tong; in-hand parse.",
+  "seed": 66987,
+  "cards": {
+    "Planetarium of Wan Shi Tong": "Name:Planetarium of Wan Shi Tong\nManaCost:6\nTypes:Legendary Artifact\nA:AB$ Scry | Cost$ 1 T | ScryNum$ 2 | SpellDescription$ Scry 2.\nT:Mode$ Scry | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPeek | PresentDefined$ Remembered | IsPresent$ Card | PresentCompare$ EQ0 | TriggerDescription$ Whenever you scry or surveil, look at the top card of your library. You may cast that card without paying its mana cost. Do this only once each turn. (Look at the card after you scry or surveil.)\nT:Mode$ Surveil | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPeek | Secondary$ True | PresentDefined$ Remembered | IsPresent$ Card | PresentCompare$ EQ0 | TriggerDescription$ Whenever you scry or surveil, look at the top card of your library. You may cast that card without paying its mana cost. Do this only once each turn. (Look at the card after you scry or surveil.)\nSVar:TrigPeek:DB$ PeekAndReveal | NoReveal$ True | SubAbility$ TrigPlay\nSVar:TrigPlay:DB$ Play | Defined$ TopOfLibrary | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | RememberPlayed$ True | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup | Static$ True\nT:Mode$ TurnBegin | ValidPlayer$ Player | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{1}, {T}: Scry 2.\\nWhenever you scry or surveil, look at the top card of your library. You may cast that card without paying its mana cost. Do this only once each turn. (Look at the card after you scry or surveil.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planetarium of Wan Shi Tong"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

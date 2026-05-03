@@ -1,0 +1,25 @@
+{
+  "id": "spirebluff-canal-corpus-m677",
+  "description": "M6 corpus — Spirebluff Canal; ETB-on-bf.",
+  "seed": 70697,
+  "cards": {
+    "Spirebluff Canal": "Name:Spirebluff Canal\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or fewer other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT2\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nOracle:Spirebluff Canal enters tapped unless you control two or fewer other lands.\\n{T}: Add {U} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spirebluff Canal"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

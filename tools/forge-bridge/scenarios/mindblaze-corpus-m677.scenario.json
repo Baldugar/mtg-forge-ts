@@ -1,0 +1,23 @@
+{
+  "id": "mindblaze-corpus-m677",
+  "description": "M6 corpus — Mindblaze; in-hand parse.",
+  "seed": 65163,
+  "cards": {
+    "Mindblaze": "Name:Mindblaze\nManaCost:5 R\nTypes:Sorcery\nA:SP$ NameCard | ValidCards$ Card.nonLand | ValidDescription$ nonland | SubAbility$ DBChooseNumber | SpellDescription$ Choose a nonland card name and a number greater than 0. Target player reveals their library. If that library contains exactly the chosen number of cards with the chosen name, CARDNAME deals 8 damage to that player. Then that player shuffles their library.\nSVar:DBChooseNumber:DB$ ChooseNumber | Min$ 1 | SubAbility$ DBReveal\nSVar:DBReveal:DB$ PeekAndReveal | PeekNum$ X | NoPeek$ True | ValidTgts$ Player | RememberRevealed$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | NumDmg$ 8 | Defined$ Targeted | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ EQY | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ ParentTarget | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TargetedPlayer$CardsInLibrary\nSVar:Y:Count$ChosenNumber\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose a nonland card name and a number greater than 0. Target player reveals their library. If that library contains exactly the chosen number of cards with the chosen name, Mindblaze deals 8 damage to that player. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindblaze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

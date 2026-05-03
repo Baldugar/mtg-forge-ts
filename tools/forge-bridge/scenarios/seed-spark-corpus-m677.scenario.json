@@ -1,0 +1,23 @@
+{
+  "id": "seed-spark-corpus-m677",
+  "description": "M6 corpus — Seed Spark; in-hand parse.",
+  "seed": 69362,
+  "cards": {
+    "Seed Spark": "Name:Seed Spark\nManaCost:3 W\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ MakeToken | SpellDescription$ Destroy target artifact or enchantment.\nSVar:MakeToken:DB$ Token | ConditionManaSpent$ G | TokenAmount$ 2 | TokenOwner$ You | TokenScript$ g_1_1_saproling | SpellDescription$ If {G} was spent to cast CARDNAME, create two 1/1 green Saproling creature tokens.\nSVar:ManaNeededToAvoidNegativeEffect:green\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nDeckNeeds:Color$Green\nOracle:Destroy target artifact or enchantment. If {G} was spent to cast this spell, create two 1/1 green Saproling creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seed Spark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

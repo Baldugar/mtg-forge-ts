@@ -1,0 +1,23 @@
+{
+  "id": "poison-tip-archer-corpus-m677",
+  "description": "M6 corpus — Poison-Tip Archer; in-hand parse.",
+  "seed": 67033,
+  "cards": {
+    "Poison-Tip Archer": "Name:Poison-Tip Archer\nManaCost:2 B G\nTypes:Creature Elf Archer\nPT:2/3\nK:Reach\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature.Other | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever another creature dies, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Reach (This creature can block creatures with flying.)\\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\\nWhenever another creature dies, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Poison-Tip Archer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

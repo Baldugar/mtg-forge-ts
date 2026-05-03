@@ -1,0 +1,23 @@
+{
+  "id": "majestic-myriarch-corpus-m677",
+  "description": "M6 corpus — Majestic Myriarch; in-hand parse.",
+  "seed": 64633,
+  "cards": {
+    "Majestic Myriarch": "Name:Majestic Myriarch\nManaCost:4 G\nTypes:Creature Chimera\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to twice the number of creatures you control.\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of each combat, CARDNAME gains flying until end of turn if you control a creature with flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ First Strike & Flying & Deathtouch & Double Strike & Haste & Hexproof & Indestructible & Lifelink & Menace & Reach & Trample & Vigilance | SharedKeywordsZone$ Battlefield | SharedRestrictions$ Creature.YouCtrl\nSVar:X:Count$Valid Creature.YouCtrl/Twice\nSVar:BuffedBy:Creature\nSVar:NoZeroToughnessAI:True\nOracle:Majestic Myriarch's power and toughness are each equal to twice the number of creatures you control.\\nAt the beginning of each combat, Majestic Myriarch gains flying until end of turn if you control a creature with flying. The same is true for first strike, double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Majestic Myriarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

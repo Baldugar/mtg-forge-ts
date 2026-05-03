@@ -1,0 +1,23 @@
+{
+  "id": "obscura-charm-corpus-m677",
+  "description": "M6 corpus — Obscura Charm; in-hand parse.",
+  "seed": 66181,
+  "cards": {
+    "Obscura Charm": "Name:Obscura Charm\nManaCost:W U B\nTypes:Instant\nA:SP$ Charm | Choices$ DBReturn,DBCounter,DBDestroy\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target multicolored permanent card with mana value 3 or less from your graveyard | ValidTgts$ Permanent.cmcLE3+MultiColor+YouCtrl | Tapped$ True | SpellDescription$ Return target multicolored permanent card with mana value 3 or less from your graveyard to the battlefield tapped.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Instant,Sorcery | SpellDescription$ Counter target instant or sorcery spell.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.cmcLE3,Planeswalker.cmcLE3 | TgtPrompt$ Select target creature or planeswalker with mana value 3 or less | SpellDescription$ Destroy target creature or planeswalker with mana value 3 or less.\nDeckHas:Ability$Graveyard\nOracle:Choose one —\\n• Return target multicolored permanent card with mana value 3 or less from your graveyard to the battlefield tapped.\\n• Counter target instant or sorcery spell.\\n• Destroy target creature or planeswalker with mana value 3 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obscura Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

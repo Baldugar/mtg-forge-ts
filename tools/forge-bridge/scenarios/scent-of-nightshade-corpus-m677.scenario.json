@@ -1,0 +1,23 @@
+{
+  "id": "scent-of-nightshade-corpus-m677",
+  "description": "M6 corpus — Scent of Nightshade; in-hand parse.",
+  "seed": 69133,
+  "cards": {
+    "Scent of Nightshade": "Name:Scent of Nightshade\nManaCost:1 B\nTypes:Instant\nA:SP$ Reveal | Defined$ You | RevealValid$ Card.Black | AnyNumber$ True | RememberRevealed$ True | SubAbility$ DBScentOfNightshadePump | SpellDescription$ Reveal any number of black cards in your hand. Target creature gets -X/-X until end of turn, where X is the number of cards revealed this way.\nSVar:DBScentOfNightshadePump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -ScentOfNightshadeX | NumDef$ -ScentOfNightshadeX | SubAbility$ DBScentOfNightshadeCleanup\nSVar:DBScentOfNightshadeCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:ScentOfNightshadeX:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Reveal any number of black cards in your hand. Target creature gets -X/-X until end of turn, where X is the number of cards revealed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scent of Nightshade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

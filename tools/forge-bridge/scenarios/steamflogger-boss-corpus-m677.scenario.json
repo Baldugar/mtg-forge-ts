@@ -1,0 +1,25 @@
+{
+  "id": "steamflogger-boss-corpus-m677",
+  "description": "M6 corpus — Steamflogger Boss; ETB-on-bf.",
+  "seed": 70948,
+  "cards": {
+    "Steamflogger Boss": "Name:Steamflogger Boss\nManaCost:3 R\nTypes:Creature Goblin Rigger\nPT:3/3\nR:Event$ AssembleContraption | ActiveZones$ Battlefield | ValidCause$ Rigger.YouCtrl | ReplaceWith$ AssembleTwo | Description$ If a Rigger you control would assemble a Contraption, it assembles two Contraptions instead.\nSVar:AssembleTwo:DB$ AssembleContraption | DefinedAssembler$ ReplacedCause | Amount$ 2\nS:Mode$ Continuous | Affected$ Creature.Other+Rigger+YouCtrl | AddKeyword$ Haste | AddPower$ 1 | Description$ Other Riggers you control get +1/+0 and have haste.\nSVar:PlayMain1:TRUE\nOracle:Other Riggers you control get +1/+0 and have haste.\\nIf a Rigger you control would assemble a Contraption, it assembles two Contraptions instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Steamflogger Boss"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

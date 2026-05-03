@@ -1,0 +1,23 @@
+{
+  "id": "infernal-tutor-corpus-m677",
+  "description": "M6 corpus — Infernal Tutor; in-hand parse.",
+  "seed": 62909,
+  "cards": {
+    "Infernal Tutor": "Name:Infernal Tutor\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Reveal | RememberRevealed$ True | Defined$ You | SubAbility$ DBChangeZone | ConditionCheckSVar$ X | SpellDescription$ Reveal a card from your hand. Search your library for a card with the same name as that card, reveal it, put it into your hand, then shuffle. Hellbent — If you have no cards in hand, instead search your library for a card, put it into your hand, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Remembered.sameName | ChangeNum$ 1 | ConditionCheckSVar$ X | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Reveal a card from your hand. Search your library for a card with the same name as that card, reveal it, put it into your hand, then shuffle.\\nHellbent — If you have no cards in hand, instead search your library for a card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infernal Tutor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

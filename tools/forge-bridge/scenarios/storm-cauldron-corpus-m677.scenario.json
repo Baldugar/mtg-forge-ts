@@ -1,0 +1,25 @@
+{
+  "id": "storm-cauldron-corpus-m677",
+  "description": "M6 corpus — Storm Cauldron; ETB-on-bf.",
+  "seed": 71083,
+  "cards": {
+    "Storm Cauldron": "Name:Storm Cauldron\nManaCost:5\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Player | AdjustLandPlays$ 1 | Description$ Each player may play an additional land during each of their turns.\nT:Mode$ TapsForMana | ValidCard$ Land | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ Whenever a land is tapped for mana, return it to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ TriggeredCardLKICopy\nAI:RemoveDeck:Random\nOracle:Each player may play an additional land during each of their turns.\\nWhenever a land is tapped for mana, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Storm Cauldron"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

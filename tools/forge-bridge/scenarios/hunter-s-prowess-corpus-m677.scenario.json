@@ -1,0 +1,23 @@
+{
+  "id": "hunter-s-prowess-corpus-m677",
+  "description": "M6 corpus — Hunter's Prowess; in-hand parse.",
+  "seed": 62625,
+  "cards": {
+    "Hunter's Prowess": "Name:Hunter's Prowess\nManaCost:4 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | KW$ Trample | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, target creature gets +3/+3 and gains trample and \"Whenever this creature deals combat damage to a player, draw that many cards.\" | StackDescription$ SpellDescription\nSVar:DBAnimate:DB$ Animate | Defined$ ParentTarget | Triggers$ HunterProwessTrig | StackDescription$ None\nSVar:HunterProwessTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ HunterProwessX | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw that many cards.\nSVar:HunterProwessX:DB$ Draw | Defined$ You | NumCards$ HunterProwessY\nSVar:HunterProwessY:TriggerCount$DamageAmount\nOracle:Until end of turn, target creature gets +3/+3 and gains trample and \"Whenever this creature deals combat damage to a player, draw that many cards.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunter's Prowess"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

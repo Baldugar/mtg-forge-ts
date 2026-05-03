@@ -1,0 +1,23 @@
+{
+  "id": "icequake-corpus-m677",
+  "description": "M6 corpus — Icequake; in-hand parse.",
+  "seed": 62698,
+  "cards": {
+    "Icequake": "Name:Icequake\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Land | SubAbility$ DBDamage | SpellDescription$ Destroy target land. If that land was a snow land, CARDNAME deals 1 damage to that land's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 1 | ConditionDefined$ Targeted | ConditionPresent$ Land.Snow | ConditionCompare$ EQ1 | ConditionDescription$ If that land was a snow land,\nOracle:Destroy target land. If that land was a snow land, Icequake deals 1 damage to that land's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icequake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

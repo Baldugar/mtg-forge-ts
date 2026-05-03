@@ -1,0 +1,23 @@
+{
+  "id": "griffin-aerie-corpus-m677",
+  "description": "M6 corpus — Griffin Aerie; in-hand parse.",
+  "seed": 61754,
+  "cards": {
+    "Griffin Aerie": "Name:Griffin Aerie\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ LifeGained | SVarCompare$ GE3 | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you gained 3 or more life this turn, create a 2/2 white Griffin creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_griffin_flying | TokenOwner$ You\nSVar:LifeGained:Count$LifeYouGainedThisTurn\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Token\nOracle:At the beginning of your end step, if you gained 3 or more life this turn, create a 2/2 white Griffin creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Griffin Aerie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

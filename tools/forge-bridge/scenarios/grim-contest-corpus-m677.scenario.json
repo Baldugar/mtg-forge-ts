@@ -1,0 +1,23 @@
+{
+  "id": "grim-contest-corpus-m677",
+  "description": "M6 corpus — Grim Contest; in-hand parse.",
+  "seed": 61765,
+  "cards": {
+    "Grim Contest": "Name:Grim Contest\nManaCost:1 B G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ DBEachDamage | StackDescription$ None | SpellDescription$ Choose target creature you control and target creature an opponent controls. Each of those creatures deals damage equal to its toughness to the other.\nSVar:DBEachDamage:DB$ EachDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | ToEachOther$ Targeted | NumDmg$ Count$CardToughness | StackDescription$ {c:Targeted} each deal damage equal to its toughness to the other.\nAI:RemoveDeck:All\nOracle:Choose target creature you control and target creature an opponent controls. Each of those creatures deals damage equal to its toughness to the other.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Contest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sadistic-augermage-corpus-m677",
+  "description": "M6 corpus — Sadistic Augermage; in-hand parse.",
+  "seed": 68849,
+  "cards": {
+    "Sadistic Augermage": "Name:Sadistic Augermage\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, each player puts a card from their hand on top of their library.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | DefinedPlayer$ Player\nOracle:When Sadistic Augermage dies, each player puts a card from their hand on top of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sadistic Augermage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "inspiring-captain-corpus-m677",
+  "description": "M6 corpus — Inspiring Captain; in-hand parse.",
+  "seed": 62998,
+  "cards": {
+    "Inspiring Captain": "Name:Inspiring Captain\nManaCost:3 W\nTypes:Creature Human Knight\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When Inspiring Captain enters, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inspiring Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

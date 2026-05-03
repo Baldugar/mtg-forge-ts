@@ -1,0 +1,23 @@
+{
+  "id": "reaper-s-talisman-corpus-m677",
+  "description": "M6 corpus — Reaper's Talisman; in-hand parse.",
+  "seed": 67849,
+  "cards": {
+    "Reaper's Talisman": "Name:Reaper's Talisman\nManaCost:B\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TripPump | TriggerDescription$ Whenever equipped creature attacks, it gains deathtouch until end of turn.\nSVar:TripPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Deathtouch\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Alone$ True | Execute$ TrigLoseLife | TriggerDescription$ Whenever equipped creature attacks alone, defending player loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Whenever equipped creature attacks, it gains deathtouch until end of turn.\\nWhenever equipped creature attacks alone, defending player loses 2 life and you gain 2 life.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reaper's Talisman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

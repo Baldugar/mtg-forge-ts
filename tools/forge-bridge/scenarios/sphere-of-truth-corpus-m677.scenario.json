@@ -1,0 +1,25 @@
+{
+  "id": "sphere-of-truth-corpus-m677",
+  "description": "M6 corpus — Sphere of Truth; ETB-on-bf.",
+  "seed": 70608,
+  "cards": {
+    "Sphere of Truth": "Name:Sphere of Truth\nManaCost:3 W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.WhiteSource | ValidTarget$ You | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ If a white source would deal damage to you, prevent 2 of that damage.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ 2\nAI:RemoveDeck:Random\nOracle:If a white source would deal damage to you, prevent 2 of that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sphere of Truth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

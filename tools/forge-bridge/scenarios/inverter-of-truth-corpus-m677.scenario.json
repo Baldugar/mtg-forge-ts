@@ -1,0 +1,23 @@
+{
+  "id": "inverter-of-truth-corpus-m677",
+  "description": "M6 corpus — Inverter of Truth; in-hand parse.",
+  "seed": 63090,
+  "cards": {
+    "Inverter of Truth": "Name:Inverter of Truth\nManaCost:2 B B\nTypes:Creature Eldrazi\nPT:6/6\nK:Devoid\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileYourLibrary | TriggerDescription$ When CARDNAME enters, exile all cards from your library face down, then shuffle all cards from your graveyard into your library.\nSVar:TrigExileYourLibrary:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Library | Destination$ Exile | ExileFaceDown$ True | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True\nAI:RemoveDeck:Random\nOracle:Devoid (This card has no color.)\\nFlying\\nWhen Inverter of Truth enters, exile all cards from your library face down, then shuffle all cards from your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inverter of Truth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kalastria-healer-corpus-m677",
+  "description": "M6 corpus — Kalastria Healer; in-hand parse.",
+  "seed": 63434,
+  "cards": {
+    "Kalastria Healer": "Name:Kalastria Healer\nManaCost:1 B\nTypes:Creature Vampire Cleric Ally\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigDrain | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Kalastria Healer or another Ally you control enters, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kalastria Healer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "palazzo-archers-corpus-m677",
+  "description": "M6 corpus — Palazzo Archers; in-hand parse.",
+  "seed": 66571,
+  "cards": {
+    "Palazzo Archers": "Name:Palazzo Archers\nManaCost:2 G\nTypes:Creature Human Archer\nPT:2/3\nK:Reach\nT:Mode$ Attacks | ValidCard$ Creature.withFlying | Attacked$ You,Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature with flying attacks you or a planeswalker you control, CARDNAME deals damage equal to its power to that creature.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredAttackerLKICopy | NumDmg$ X\nSVar:X:Count$CardPower\nOracle:Whenever a creature with flying attacks you or a planeswalker you control, Palazzo Archers deals damage equal to its power to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Palazzo Archers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hammer-of-ruin-corpus-m677",
+  "description": "M6 corpus — Hammer of Ruin; in-hand parse.",
+  "seed": 62008,
+  "cards": {
+    "Hammer of Ruin": "Name:Hammer of Ruin\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you may destroy target Equipment that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Equipment.ControlledBy TriggeredTarget | TgtPrompt$ Select target Equipment damaged player controls\nOracle:Equipped creature gets +2/+0.\\nWhenever equipped creature deals combat damage to a player, you may destroy target Equipment that player controls.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hammer of Ruin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

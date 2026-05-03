@@ -1,0 +1,23 @@
+{
+  "id": "sunderflock-corpus-m677",
+  "description": "M6 corpus — Sunderflock; in-hand parse.",
+  "seed": 71345,
+  "cards": {
+    "Sunderflock": "Name:Sunderflock\nManaCost:7 U U\nTypes:Creature Elemental\nPT:5/5\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the greatest mana value among Elementals you control.\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCastByYou | Destination$ Battlefield | Execute$ TrigChangeZoneAll | TriggerDescription$ When this creature enters, if you cast it, return all non-Elemental creatures to their owners' hands.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Creature.nonElemental | Origin$ Battlefield | Destination$ Hand\nSVar:X:Count$Valid Elemental.YouCtrl$GreatestCardManaCost\nDeckHints:Type$Elemental\nOracle:This spell costs {X} less to cast, where X is the greatest mana value among Elementals you control.\\nFlying\\nWhen this creature enters, if you cast it, return all non-Elemental creatures to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunderflock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

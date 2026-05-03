@@ -1,0 +1,23 @@
+{
+  "id": "jyoti-moag-ancient-corpus-m677",
+  "description": "M6 corpus — Jyoti, Moag Ancient; in-hand parse.",
+  "seed": 63413,
+  "cards": {
+    "Jyoti, Moag Ancient": "Name:Jyoti, Moag Ancient\nManaCost:2 G U\nTypes:Legendary Creature Elemental\nPT:2/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 green Forest Dryad land creature token for each time you've cast a commander from the command zone this game.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_forest_dryad | TokenOwner$ You\nSVar:X:Count$TotalCommanderCastFromCommandZone\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ At the beginning of each combat, land creatures you control get +X/+X until end of turn, where X is NICKNAME's power.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.Land+YouCtrl | NumAtt$ +Y | NumDef$ +Y\nSVar:Y:Count$CardPower\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Token & Type$Dryad\nOracle:When Jyoti, Moag Ancient enters, create a 1/1 green Forest Dryad land creature token for each time you've cast a commander from the command zone this game.\\nAt the beginning of each combat, land creatures you control get +X/+X until end of turn, where X is Jyoti's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jyoti, Moag Ancient"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

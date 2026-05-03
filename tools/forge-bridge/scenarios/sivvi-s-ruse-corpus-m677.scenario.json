@@ -1,0 +1,23 @@
+{
+  "id": "sivvi-s-ruse-corpus-m677",
+  "description": "M6 corpus — Sivvi's Ruse; in-hand parse.",
+  "seed": 70007,
+  "cards": {
+    "Sivvi's Ruse": "Name:Sivvi's Ruse\nManaCost:2 W W\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell | ValidCard$ Card.Self | ValidPlayer$ You | Cost$ 0 | EffectZone$ All | CheckSVar$ X | CheckSecondSVar$ Y | Description$ If an opponent controls a Mountain and you control a Plains, you may cast this spell without paying its mana cost.\nA:SP$ Effect | ReplacementEffects$ RPrevent | SpellDescription$ Prevent all damage that would be dealt this turn to creatures you control.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Creature.YouCtrl | Description$ Prevent all damage that would be dealt this turn to creatures you control.\nSVar:X:Count$Valid Mountain.OppCtrl\nSVar:Y:Count$Valid Plains.YouCtrl\nAI:RemoveDeck:All\nOracle:If an opponent controls a Mountain and you control a Plains, you may cast this spell without paying its mana cost.\\nPrevent all damage that would be dealt this turn to creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sivvi's Ruse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

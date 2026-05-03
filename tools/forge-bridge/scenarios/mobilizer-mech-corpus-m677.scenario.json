@@ -1,0 +1,23 @@
+{
+  "id": "mobilizer-mech-corpus-m677",
+  "description": "M6 corpus — Mobilizer Mech; in-hand parse.",
+  "seed": 65354,
+  "cards": {
+    "Mobilizer Mech": "Name:Mobilizer Mech\nManaCost:1 U\nTypes:Artifact Vehicle\nPT:3/4\nK:Flying\nT:Mode$ BecomesCrewed | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ Whenever CARDNAME becomes crewed, up to one other target Vehicle you control becomes an artifact creature until end of turn.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Vehicle.YouCtrl+Other | TgtPrompt$ Select up to one other target Vehicle you control | TargetMin$ 0 | TargetMax$ 1 | Types$ Creature,Artifact\nK:Crew:3\nDeckHints:Type$Vehicle\nOracle:Whenever Mobilizer Mech becomes crewed, up to one other target Vehicle you control becomes an artifact creature until end of turn.\\nCrew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mobilizer Mech"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

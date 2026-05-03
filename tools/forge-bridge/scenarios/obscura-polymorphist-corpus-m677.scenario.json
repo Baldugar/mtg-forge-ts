@@ -1,0 +1,23 @@
+{
+  "id": "obscura-polymorphist-corpus-m677",
+  "description": "M6 corpus — Obscura Polymorphist; in-hand parse.",
+  "seed": 66184,
+  "cards": {
+    "Obscura Polymorphist": "Name:Obscura Polymorphist\nManaCost:1 W U\nTypes:Creature Octopus Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile up to one target creature. Its controller seeks a creature card.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBSeek\nSVar:DBSeek:DB$ Seek | Defined$ TargetedController | Type$ Creature\nOracle:When Obscura Polymorphist enters, exile up to one target creature. Its controller seeks a creature card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obscura Polymorphist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

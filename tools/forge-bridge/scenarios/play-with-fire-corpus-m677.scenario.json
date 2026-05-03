@@ -1,0 +1,23 @@
+{
+  "id": "play-with-fire-corpus-m677",
+  "description": "M6 corpus — Play with Fire; in-hand parse.",
+  "seed": 67010,
+  "cards": {
+    "Play with Fire": "Name:Play with Fire\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | RememberDamaged$ True | SubAbility$ DBScry | StackDescription$ SpellDescription | SpellDescription$ CARDNAME deals 2 damage to any target. If a player is dealt damage this way, scry 1.\nSVar:DBScry:DB$ Scry | Defined$ You | ScryNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Player | ConditionCompare$ GE1 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Play with Fire deals 2 damage to any target. If a player is dealt damage this way, scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Play with Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

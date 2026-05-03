@@ -1,0 +1,23 @@
+{
+  "id": "skullcap-snail-corpus-m677",
+  "description": "M6 corpus — Skullcap Snail; in-hand parse.",
+  "seed": 70077,
+  "cards": {
+    "Skullcap Snail": "Name:Skullcap Snail\nManaCost:1 B\nTypes:Creature Fungus Snail\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, target opponent exiles a card from their hand.\nSVar:TrigExile:DB$ ChangeZone | Chooser$ Targeted | Origin$ Hand | Destination$ Exile | ValidTgts$ Opponent | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | IsCurse$ True\nOracle:When Skullcap Snail enters, target opponent exiles a card from their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skullcap Snail"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

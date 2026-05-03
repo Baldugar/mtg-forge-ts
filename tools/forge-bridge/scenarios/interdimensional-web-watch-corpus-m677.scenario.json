@@ -1,0 +1,23 @@
+{
+  "id": "interdimensional-web-watch-corpus-m677",
+  "description": "M6 corpus — Interdimensional Web Watch; in-hand parse.",
+  "seed": 63024,
+  "cards": {
+    "Interdimensional Web Watch": "Name:Interdimensional Web Watch\nVariant:UniversesWithin:FlavorName:Reality Fulcrum\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this artifact enters, exile the top two cards of your library. Until the end of your next turn, you may play those cards.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | Duration$ UntilTheEndOfYourNextTurn | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the remembered cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo Any | Amount$ 2 | RestrictValid$ Spell.wasCastFromExile | SpellDescription$ Add two mana in any combination of colors. Spend this mana only to cast spells from exile.\nOracle:When this artifact enters, exile the top two cards of your library. Until the end of your next turn, you may play those cards.\\n{T}: Add two mana in any combination of colors. Spend this mana only to cast spells from exile.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Interdimensional Web Watch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

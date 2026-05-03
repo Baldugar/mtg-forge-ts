@@ -1,0 +1,23 @@
+{
+  "id": "primetime-suspect-corpus-m677",
+  "description": "M6 corpus — Primetime Suspect; in-hand parse.",
+  "seed": 67194,
+  "cards": {
+    "Primetime Suspect": "Name:Primetime Suspect\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigChange | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever enchanted creature attacks, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle. If enchanted creature is suspected, you search for two lands instead.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land | ChangeNum$ X | ShuffleNonMandatory$ True\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ AE\nSVar:X:Count$Valid Creature.EnchantedBy+IsSuspected/Plus.1\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Enchant creature\\nWhenever enchanted creature attacks, you may search your library for a land card, put that card onto the battlefield tapped, then shuffle. If enchanted creature is suspected, you search for two lands instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primetime Suspect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

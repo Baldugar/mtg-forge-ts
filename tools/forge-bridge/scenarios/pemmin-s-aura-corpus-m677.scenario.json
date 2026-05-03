@@ -1,0 +1,23 @@
+{
+  "id": "pemmin-s-aura-corpus-m677",
+  "description": "M6 corpus — Pemmin's Aura; in-hand parse.",
+  "seed": 66713,
+  "cards": {
+    "Pemmin's Aura": "Name:Pemmin's Aura\nManaCost:1 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nA:AB$ Untap | Cost$ U | Defined$ Enchanted | SpellDescription$ Untap enchanted creature.\nA:AB$ Pump | Cost$ U | Defined$ Enchanted | KW$ Flying | SpellDescription$ Enchanted creature gains flying until end of turn.\nA:AB$ Pump | Cost$ U | Defined$ Enchanted | KW$ Shroud | SpellDescription$ Enchanted creature gains shroud until end of turn.\nA:AB$ GenericChoice | Cost$ 1 | Choices$ PumpAtt,PumpDef | SpellDescription$ Enchanted creature gets +1/-1 or -1/+1 until end of turn.\nSVar:PumpAtt:DB$ Pump | Defined$ Enchanted | NumAtt$ +1 | NumDef$ -1 | SpellDescription$ Enchanted creature gets +1/-1 until end of turn.\nSVar:PumpDef:DB$ Pump | Defined$ Enchanted | NumAtt$ -1 | NumDef$ +1 | SpellDescription$ Enchanted creature gets -1/+1 until end of turn.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\n{U}: Untap enchanted creature.\\n{U}: Enchanted creature gains flying until end of turn.\\n{U}: Enchanted creature gains shroud until end of turn. (It can't be the target of spells or abilities.)\\n{1}: Enchanted creature gets +1/-1 or -1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pemmin's Aura"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "supplant-form-corpus-m677",
+  "description": "M6 corpus — Supplant Form; in-hand parse.",
+  "seed": 71398,
+  "cards": {
+    "Supplant Form": "Name:Supplant Form\nManaCost:4 U U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | RememberLKI$ True | SubAbility$ DBCopy | SpellDescription$ Return target creature to its owner's hand. You create a token that's a copy of that creature.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ DirectRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\n# Use DirectRemembered to copy the LKI\nOracle:Return target creature to its owner's hand. You create a token that's a copy of that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Supplant Form"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

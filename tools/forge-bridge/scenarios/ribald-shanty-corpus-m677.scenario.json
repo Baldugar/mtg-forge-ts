@@ -1,0 +1,23 @@
+{
+  "id": "ribald-shanty-corpus-m677",
+  "description": "M6 corpus — Ribald Shanty; in-hand parse.",
+  "seed": 68238,
+  "cards": {
+    "Ribald Shanty": "Name:Ribald Shanty\nManaCost:R\nTypes:Instant Chorus\nK:Starting intensity:2\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X | SubAbility$ DBIntensify | SpellDescription$ This spell deals damage equal to its intensity to target creature or planeswalker.\nSVar:DBIntensify:DB$ Intensify | AllDefined$ Card.YouOwn+Chorus | DefinedDesc$ all Chorus cards you own | SpellDescription$ All Chorus cards you own intensify by 1.\nSVar:X:Count$Intensity\nDeckHints:Type$Chorus\nOracle:Starting intensity 2\\nThis spell deals damage equal to its intensity to target creature or planeswalker.\\nAll Chorus cards you own intensify by 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ribald Shanty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

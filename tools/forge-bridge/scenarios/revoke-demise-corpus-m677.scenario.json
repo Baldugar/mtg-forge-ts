@@ -1,0 +1,23 @@
+{
+  "id": "revoke-demise-corpus-m677",
+  "description": "M6 corpus — Revoke Demise; in-hand parse.",
+  "seed": 68198,
+  "cards": {
+    "Revoke Demise": "Name:Revoke Demise\nManaCost:4 B\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | ValidTarget$ Creature.cmcLE3 | EffectZone$ All | Description$ This spell costs {2} less to cast if it targets a creature card with mana value 3 or less.\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SubAbility$ DBGainLife | SpellDescription$ Return target creature card from your graveyard to the battlefield. You gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$Graveyard\nOracle:This spell costs {2} less to cast if it targets a creature card with mana value 3 or less.\\nReturn target creature card from your graveyard to the battlefield. You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Revoke Demise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

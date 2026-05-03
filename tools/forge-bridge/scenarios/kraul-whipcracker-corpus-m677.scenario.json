@@ -1,0 +1,23 @@
+{
+  "id": "kraul-whipcracker-corpus-m677",
+  "description": "M6 corpus — Kraul Whipcracker; in-hand parse.",
+  "seed": 63874,
+  "cards": {
+    "Kraul Whipcracker": "Name:Kraul Whipcracker\nManaCost:B G\nTypes:Creature Insect Assassin\nPT:3/2\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target token an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.token+OppCtrl | TgtPrompt$ Select target token an opponent controls\nSVar:PlayMain1:TRUE\nOracle:When Kraul Whipcracker enters, destroy target token an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kraul Whipcracker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

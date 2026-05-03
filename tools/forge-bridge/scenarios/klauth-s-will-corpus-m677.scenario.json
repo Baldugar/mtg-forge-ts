@@ -1,0 +1,23 @@
+{
+  "id": "klauth-s-will-corpus-m677",
+  "description": "M6 corpus — Klauth's Will; in-hand parse.",
+  "seed": 63743,
+  "cards": {
+    "Klauth's Will": "Name:Klauth's Will\nManaCost:X R R G\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Y | Choices$ DBDamage,DBDestroy | AdditionalDescription$ If you control a commander as you cast this spell, you may choose both.\nSVar:DBDamage:DB$ DamageAll | ValidCards$ Creature.withoutFlying | NumDmg$ X | SpellDescription$ Breathe Flame — CARDNAME deals X damage to each creature without flying.\nSVar:DBDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select up to X target artifacts and/or enchantments | SpellDescription$ Smash Relics — Destroy up to X target artifacts and/or enchantments.\nSVar:X:Count$xPaid\nSVar:Y:Count$Compare Z GE1.2.1\nSVar:Z:Count$Valid Card.IsCommander+YouCtrl\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both.\\n• Breathe Flame — Klauth's Will deals X damage to each creature without flying.\\n• Smash Relics — Destroy up to X target artifacts and/or enchantments.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Klauth's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

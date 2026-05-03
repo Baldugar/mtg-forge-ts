@@ -1,0 +1,23 @@
+{
+  "id": "sheltered-valley-corpus-m677",
+  "description": "M6 corpus — Sheltered Valley; in-hand parse.",
+  "seed": 69655,
+  "cards": {
+    "Sheltered Valley": "Name:Sheltered Valley\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | Destination$ Battlefield | ValidCard$ Card.Self | ReplaceWith$ SacBeforeETB | Description$ If CARDNAME would enter, instead sacrifice each other permanent named Sheltered Valley you control, then put CARDNAME onto the battlefield.\nSVar:SacBeforeETB:DB$ SacrificeAll | ValidCards$ Permanent.YouCtrl+namedSheltered Valley | SubAbility$ MoveToBattlefield\nSVar:MoveToBattlefield:DB$ ChangeZone | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Land.YouCtrl | PresentCompare$ LE3 | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if you control three or fewer lands, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:NeedsToPlayVar:OnlyOne EQ0\nSVar:OnlyOne:Count$Valid Permanent.YouCtrl+namedSheltered Valley\nOracle:If Sheltered Valley would enter, instead sacrifice each other permanent named Sheltered Valley you control, then put Sheltered Valley onto the battlefield.\\nAt the beginning of your upkeep, if you control three or fewer lands, you gain 1 life.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sheltered Valley"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lightwielder-paladin-corpus-m677",
+  "description": "M6 corpus — Lightwielder Paladin; in-hand parse.",
+  "seed": 64262,
+  "cards": {
+    "Lightwielder Paladin": "Name:Lightwielder Paladin\nManaCost:3 W W\nTypes:Creature Human Knight\nPT:4/4\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may exile target black or red permanent that player controls.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Permanent.Black+ControlledBy TriggeredTarget,Permanent.Red+ControlledBy TriggeredTarget | TgtPrompt$ Choose target black or red permanent. | Origin$ Battlefield | Destination$ Exile | IsCurse$ True\nOracle:First strike (This creature deals combat damage before creatures without first strike.)\\nWhenever Lightwielder Paladin deals combat damage to a player, you may exile target black or red permanent that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightwielder Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

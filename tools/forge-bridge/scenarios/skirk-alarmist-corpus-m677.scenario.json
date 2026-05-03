@@ -1,0 +1,25 @@
+{
+  "id": "skirk-alarmist-corpus-m677",
+  "description": "M6 corpus — Skirk Alarmist; ETB-on-bf.",
+  "seed": 70038,
+  "cards": {
+    "Skirk Alarmist": "Name:Skirk Alarmist\nManaCost:1 R\nTypes:Creature Human Wizard\nPT:1/2\nK:Haste\nA:AB$ SetState | Cost$ T | ValidTgts$ Creature.YouCtrl+faceDown | TgtPrompt$ Select target face-down creature you control | Mode$ TurnFaceUp | SubAbility$ DBPump | StackDescription$ Turn {c:Targeted} face up. | SpellDescription$ Turn target face-down creature you control face up.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | AtEOT$ Sacrifice | StackDescription$ SpellDescription | SpellDescription$ At the beginning of the next end step, sacrifice it.\nAI:RemoveDeck:All\nOracle:Haste\\n{T}: Turn target face-down creature you control face up. At the beginning of the next end step, sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Skirk Alarmist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stasis-snare-corpus-m677",
+  "description": "M6 corpus — Stasis Snare; in-hand parse.",
+  "seed": 70916,
+  "cards": {
+    "Stasis Snare": "Name:Stasis Snare\nManaCost:1 W W\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Stasis Snare enters, exile target creature an opponent controls until Stasis Snare leaves the battlefield. (That creature returns under its owner's control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stasis Snare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

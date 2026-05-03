@@ -1,0 +1,25 @@
+{
+  "id": "sunflare-shaman-corpus-m677",
+  "description": "M6 corpus — Sunflare Shaman; ETB-on-bf.",
+  "seed": 71353,
+  "cards": {
+    "Sunflare Shaman": "Name:Sunflare Shaman\nManaCost:1 R\nTypes:Creature Elemental Shaman\nPT:2/1\nA:AB$ DealDamage | Cost$ 1 R T | ValidTgts$ Any | NumDmg$ X | DamageMap$ True | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals X damage to any target and X damage to itself, where X is the number of Elemental cards in your graveyard.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ X | Defined$ Self | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Count$ValidGraveyard Elemental.YouOwn\nAI:RemoveDeck:Random\nOracle:{1}{R}, {T}: Sunflare Shaman deals X damage to any target and X damage to itself, where X is the number of Elemental cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sunflare Shaman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

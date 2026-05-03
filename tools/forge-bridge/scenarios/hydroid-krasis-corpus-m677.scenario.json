@@ -1,0 +1,23 @@
+{
+  "id": "hydroid-krasis-corpus-m677",
+  "description": "M6 corpus — Hydroid Krasis; in-hand parse.",
+  "seed": 62655,
+  "cards": {
+    "Hydroid Krasis": "Name:Hydroid Krasis\nManaCost:X G U\nTypes:Creature Jellyfish Hydra Beast\nPT:0/0\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When you cast CARDNAME, you gain half X life and draw half X cards. Round down each time.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ HalfXDown | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ HalfXDown\nK:Flying\nK:Trample\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nSVar:HalfXDown:Count$xPaid/HalfDown\nDeckHas:Ability$Counters\nOracle:When you cast this spell, you gain half X life and draw half X cards. Round down each time.\\nFlying, trample\\nHydroid Krasis enters with X +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hydroid Krasis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

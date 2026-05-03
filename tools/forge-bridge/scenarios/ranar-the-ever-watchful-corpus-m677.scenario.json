@@ -1,0 +1,23 @@
+{
+  "id": "ranar-the-ever-watchful-corpus-m677",
+  "description": "M6 corpus — Ranar the Ever-Watchful; in-hand parse.",
+  "seed": 67687,
+  "cards": {
+    "Ranar the Ever-Watchful": "Name:Ranar the Ever-Watchful\nManaCost:2 W U\nTypes:Legendary Creature Spirit Warrior\nPT:2/3\nK:Flying\nK:Vigilance\nS:Mode$ ReduceCost | ValidCard$ Card | Type$ Foretell | Amount$ 2 | FirstForetell$ True | Activator$ You | Description$ The first card you foretell each turn costs {0} to foretell.\nT:Mode$ ChangesZoneAll | Origin$ Hand | Destination$ Exile | ValidCards$ Card.YouOwn | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more cards are put into exile from your hand or a spell or ability you control exiles one or more permanents from the battlefield, create a 1/1 white Spirit creature token with flying.\nT:Mode$ ChangesZoneAll | ValidCause$ SpellAbility.YouCtrl | Origin$ Battlefield | Destination$ Exile | Execute$ TrigToken | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever one or more cards are put into exile from your hand or a spell or ability you control exiles one or more permanents from the battlefield, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Flying, vigilance\\nThe first card you foretell each turn costs {0} to foretell.\\nWhenever one or more cards are put into exile from your hand or a spell or ability you control exiles one or more permanents from the battlefield, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ranar the Ever-Watchful"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

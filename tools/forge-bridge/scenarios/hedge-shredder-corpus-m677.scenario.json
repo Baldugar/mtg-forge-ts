@@ -1,0 +1,23 @@
+{
+  "id": "hedge-shredder-corpus-m677",
+  "description": "M6 corpus — Hedge Shredder; in-hand parse.",
+  "seed": 62201,
+  "cards": {
+    "Hedge Shredder": "Name:Hedge Shredder\nManaCost:2 G G\nTypes:Artifact Vehicle\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME attacks, you may mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | Optional$ True\nT:Mode$ ChangesZoneAll | ValidCards$ Land.YouOwn | Origin$ Library | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigChangeZoneAll | TriggerDescription$ Whenever one or more land cards are put into your graveyard from your library, put them onto the battlefield tapped.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.TriggeredCards | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nK:Crew:1\nOracle:Whenever Hedge Shredder attacks, you may mill two cards.\\nWhenever one or more land cards are put into your graveyard from your library, put them onto the battlefield tapped.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hedge Shredder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

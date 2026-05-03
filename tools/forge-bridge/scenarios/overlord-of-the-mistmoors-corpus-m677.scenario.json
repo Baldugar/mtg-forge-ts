@@ -1,0 +1,23 @@
+{
+  "id": "overlord-of-the-mistmoors-corpus-m677",
+  "description": "M6 corpus — Overlord of the Mistmoors; in-hand parse.",
+  "seed": 66501,
+  "cards": {
+    "Overlord of the Mistmoors": "Name:Overlord of the Mistmoors\nManaCost:5 W W\nTypes:Enchantment Creature Avatar Horror\nPT:6/6\nK:Impending:4:2 W W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create two 2/1 white Insect creature tokens with flying.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME enters or attacks, create two 2/1 white Insect creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_2_1_insect_flying\nOracle:Impending 4—{2}{W}{W} (If you cast this spell for its impending cost, it enters with four time counters and isn't a creature until the last is removed. At the beginning of your end step, remove a time counter from it.)\\nWhenever Overlord of the Mistmoors enters or attacks, create two 2/1 white Insect creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overlord of the Mistmoors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

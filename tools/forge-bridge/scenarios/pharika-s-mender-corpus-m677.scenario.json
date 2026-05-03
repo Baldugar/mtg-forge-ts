@@ -1,0 +1,23 @@
+{
+  "id": "pharika-s-mender-corpus-m677",
+  "description": "M6 corpus — Pharika's Mender; in-hand parse.",
+  "seed": 66819,
+  "cards": {
+    "Pharika's Mender": "Name:Pharika's Mender\nManaCost:3 B G\nTypes:Creature Gorgon\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target creature or enchantment card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl,Enchantment.YouCtrl | TgtPrompt$ Select target creature or enchantment card in your graveyard\nOracle:When Pharika's Mender enters, you may return target creature or enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pharika's Mender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "storm-king-s-thunder-corpus-m677",
+  "description": "M6 corpus — Storm King's Thunder; in-hand parse.",
+  "seed": 71094,
+  "cards": {
+    "Storm King's Thunder": "Name:Storm King's Thunder\nManaCost:X R R R\nTypes:Instant\nA:SP$ DelayedTrigger | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy that spell X times. You may choose new targets for the copies.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckNeeds:Type$Instant|Sorcery\nOracle:When you cast your next instant or sorcery spell this turn, copy that spell X times. You may choose new targets for the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm King's Thunder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

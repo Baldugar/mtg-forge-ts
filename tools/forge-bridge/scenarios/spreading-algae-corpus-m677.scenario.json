@@ -1,0 +1,23 @@
+{
+  "id": "spreading-algae-corpus-m677",
+  "description": "M6 corpus — Spreading Algae; in-hand parse.",
+  "seed": 70777,
+  "cards": {
+    "Spreading Algae": "Name:Spreading Algae\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Swamp\nSVar:AttachAILogic:Curse\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | Execute$ TrigDestroy | TriggerDescription$ When enchanted land becomes tapped, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nOracle:Enchant Swamp\\nWhen enchanted land becomes tapped, destroy it.\\nWhen Spreading Algae is put into a graveyard from the battlefield, return Spreading Algae to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spreading Algae"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

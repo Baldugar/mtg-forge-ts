@@ -1,0 +1,23 @@
+{
+  "id": "kaho-minamo-historian-corpus-m677",
+  "description": "M6 corpus — Kaho, Minamo Historian; in-hand parse.",
+  "seed": 63429,
+  "cards": {
+    "Kaho, Minamo Historian": "Name:Kaho, Minamo Historian\nManaCost:2 U U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ Catalogue | TriggerDescription$ When CARDNAME enters, search your library for up to three instant cards, exile them, then shuffle.\nSVar:Catalogue:DB$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Instant | ChangeNum$ 3\nA:AB$ Play | Cost$ X T | Valid$ Card.ExiledWithSource | ValidSA$ Spell.cmcEQX | ValidZone$ Exile | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True | SpellDescription$ You may cast a spell with mana value X exiled with NICKNAME without paying its mana cost.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:When Kaho, Minamo Historian enters, search your library for up to three instant cards, exile them, then shuffle.\\n{X}, {T}: You may cast a spell with mana value X from among cards exiled with Kaho without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaho, Minamo Historian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "keeper-of-the-light-corpus-m677",
+  "description": "M6 corpus — Keeper of the Light; ETB-on-bf.",
+  "seed": 63570,
+  "cards": {
+    "Keeper of the Light": "Name:Keeper of the Light\nManaCost:W W\nTypes:Creature Human Wizard\nPT:1/2\nA:AB$ Pump | Cost$ W T | ValidTgts$ Opponent | ValidAfterStack$ Ability.IsTargeting Player.hasMoreLife | TgtPrompt$ Choose target opponent with more life than you | SubAbility$ LightKeepersLife | StackDescription$ None | SpellDescription$ Choose target opponent who had more life than you did as you activated this ability. You gain 3 life.\nSVar:LightKeepersLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nOracle:{W}, {T}: Choose target opponent who had more life than you did as you activated this ability. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Keeper of the Light"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

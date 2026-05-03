@@ -1,0 +1,23 @@
+{
+  "id": "petradon-corpus-m677",
+  "description": "M6 corpus — Petradon; in-hand parse.",
+  "seed": 66777,
+  "cards": {
+    "Petradon": "Name:Petradon\nManaCost:6 R R\nTypes:Creature Nightmare Beast\nPT:5/6\nA:AB$ Pump | Cost$ R | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile two target lands.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled cards to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 2 | TargetMax$ 2 | IsCurse$ True | ValidTgts$ Land | TgtPrompt$ Choose two target lands. | RememberTargets$ True | ForgetOtherTargets$ True | Origin$ Battlefield | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nOracle:When Petradon enters, exile two target lands.\\nWhen Petradon leaves the battlefield, return the exiled cards to the battlefield under their owners' control.\\n{R}: Petradon gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Petradon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

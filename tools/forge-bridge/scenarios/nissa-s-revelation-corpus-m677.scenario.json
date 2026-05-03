@@ -1,0 +1,23 @@
+{
+  "id": "nissa-s-revelation-corpus-m677",
+  "description": "M6 corpus — Nissa's Revelation; in-hand parse.",
+  "seed": 66006,
+  "cards": {
+    "Nissa's Revelation": "Name:Nissa's Revelation\nManaCost:5 G G\nTypes:Sorcery\nA:SP$ Scry | ScryNum$ 5 | SubAbility$ DBReveal | SpellDescription$ Scry 5, then reveal the top card of your library. If it's a creature card, you draw cards equal to its power and you gain life equal to its toughness.\nSVar:DBReveal:DB$ Dig | DigNum$ 1 | Reveal$ True | RememberRevealed$ True | DestinationZone$ Library | LibraryPosition$ 0 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | ConditionCheckSVar$ Z | ConditionSVarCompare$ EQ1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y | ConditionCheckSVar$ Z | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardPower\nSVar:Y:Remembered$CardToughness\nSVar:Z:Remembered$Valid Creature\nOracle:Scry 5, then reveal the top card of your library. If it's a creature card, you draw cards equal to its power and you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa's Revelation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "polis-crusher-corpus-m677",
+  "description": "M6 corpus — Polis Crusher; in-hand parse.",
+  "seed": 67036,
+  "cards": {
+    "Polis Crusher": "Name:Polis Crusher\nManaCost:2 R G\nTypes:Creature Cyclops\nPT:4/4\nK:Trample\nK:Protection:Enchantment\nA:AB$ PutCounter | Cost$ 4 R G | Monstrosity$ 3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | IsPresent$ Card.Self+IsMonstrous | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, if CARDNAME is monstrous, destroy target enchantment that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Enchantment | TgtPrompt$ Select target enchantment damaged player controls | TargetsWithDefinedController$ TriggeredTarget\nDeckHas:Ability$Counters\nOracle:Trample, protection from enchantments\\n{4}{R}{G}: Monstrosity 3. (If this creature isn't monstrous, put three +1/+1 counters on it and it becomes monstrous.)\\nWhenever Polis Crusher deals combat damage to a player, if Polis Crusher is monstrous, destroy target enchantment that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Polis Crusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

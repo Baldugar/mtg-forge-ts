@@ -1,0 +1,23 @@
+{
+  "id": "silent-sentinel-corpus-m677",
+  "description": "M6 corpus — Silent Sentinel; in-hand parse.",
+  "seed": 69882,
+  "cards": {
+    "Silent Sentinel": "Name:Silent Sentinel\nManaCost:5 W W\nTypes:Creature Archon\nPT:4/6\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME attacks, you may return target enchantment card from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Enchantment.YouOwn | TgtPrompt$ Select target enchantment card in your graveyard\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Silent Sentinel attacks, you may return target enchantment card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silent Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

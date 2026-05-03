@@ -1,0 +1,23 @@
+{
+  "id": "horn-of-valhalla-corpus-m677",
+  "description": "M6 corpus — Horn of Valhalla; in-hand parse.",
+  "seed": 62497,
+  "cards": {
+    "Horn of Valhalla": "Name:Horn of Valhalla\nManaCost:1 W\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each creature you control.\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:BuffedBy:Creature\nK:Equip:3\nAlternateMode:Adventure\nOracle:Equipped creature gets +1/+1 for each creature you control.\\nEquip {3}\n\nALTERNATE\n\nName:Ysgard's Call\nManaCost:X W W\nTypes:Sorcery Adventure\nA:SP$ Token | TokenAmount$ X | TokenScript$ w_1_1_soldier | SpellDescription$ Create X 1/1 white Soldier creature tokens. (Then exile this card. You may cast the artifact later from exile.)\nSVar:X:Count$xPaid\nDeckHas:Ability$Token & Type$Soldier\nOracle:Create X 1/1 white Soldier creature tokens. (Then exile this card. You may cast the artifact later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Horn of Valhalla"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

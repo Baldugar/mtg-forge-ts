@@ -1,0 +1,25 @@
+{
+  "id": "hikari-twilight-guardian-corpus-m677",
+  "description": "M6 corpus — Hikari, Twilight Guardian; ETB-on-bf.",
+  "seed": 62378,
+  "cards": {
+    "Hikari, Twilight Guardian": "Name:Hikari, Twilight Guardian\nManaCost:3 W W\nTypes:Legendary Creature Spirit\nPT:4/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may exile CARDNAME. If you do, return it to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigExile:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile | AILogic$ IfNotBuffed | RememberChanged$ True | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | ConditionDefined$ Remembered | ConditionPresent$ Card | RememberObjects$ Remembered | TriggerDescription$ Return CARDNAME to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Flying\\nWhenever you cast a Spirit or Arcane spell, you may exile Hikari, Twilight Guardian. If you do, return it to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Hikari, Twilight Guardian"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

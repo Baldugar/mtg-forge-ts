@@ -1,0 +1,23 @@
+{
+  "id": "greater-werewolf-corpus-m677",
+  "description": "M6 corpus — Greater Werewolf; in-hand parse.",
+  "seed": 61720,
+  "cards": {
+    "Greater Werewolf": "Name:Greater Werewolf\nManaCost:4 B\nTypes:Creature Werewolf\nPT:2/4\nT:Mode$ Phase | Phase$ EndCombat | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ At end of combat, put a -0/-2 counter on each creature blocking or blocked by CARDNAME.\nSVar:TrigCounter:DB$ PutCounterAll | CounterType$ M0M2 | CounterNum$ 1 | ValidCards$ Creature.blockingSource,Creature.blockedBySource\nOracle:At end of combat, put a -0/-2 counter on each creature blocking or blocked by Greater Werewolf.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greater Werewolf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

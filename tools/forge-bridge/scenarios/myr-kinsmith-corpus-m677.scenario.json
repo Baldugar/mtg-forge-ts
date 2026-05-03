@@ -1,0 +1,23 @@
+{
+  "id": "myr-kinsmith-corpus-m677",
+  "description": "M6 corpus — Myr Kinsmith; in-hand parse.",
+  "seed": 65636,
+  "cards": {
+    "Myr Kinsmith": "Name:Myr Kinsmith\nManaCost:4\nTypes:Artifact Creature Myr\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, you may search your library for a Myr card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Myr | ChangeNum$ 1 | Shuffle$ True\nDeckHints:Type$Myr\nOracle:When Myr Kinsmith enters, you may search your library for a Myr card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Kinsmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

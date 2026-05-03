@@ -1,0 +1,25 @@
+{
+  "id": "radiant-summit-corpus-m677",
+  "description": "M6 corpus — Radiant Summit; ETB-on-bf.",
+  "seed": 67536,
+  "cards": {
+    "Radiant Summit": "Name:Radiant Summit\nManaCost:no cost\nTypes:Land Mountain Plains\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {R} or {W}.)\\nThis land enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Radiant Summit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

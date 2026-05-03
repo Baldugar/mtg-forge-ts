@@ -1,0 +1,25 @@
+{
+  "id": "harpoon-sniper-corpus-m677",
+  "description": "M6 corpus — Harpoon Sniper; ETB-on-bf.",
+  "seed": 62069,
+  "cards": {
+    "Harpoon Sniper": "Name:Harpoon Sniper\nManaCost:2 W\nTypes:Creature Merfolk Archer\nPT:2/2\nA:AB$ DealDamage | Cost$ W T | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target attacking or blocking creature, where X is the number of Merfolk you control.\nSVar:X:Count$Valid Merfolk.YouCtrl\nOracle:{W}, {T}: Harpoon Sniper deals X damage to target attacking or blocking creature, where X is the number of Merfolk you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Harpoon Sniper"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

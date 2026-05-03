@@ -1,0 +1,23 @@
+{
+  "id": "mangara-s-equity-corpus-m677",
+  "description": "M6 corpus — Mangara's Equity; in-hand parse.",
+  "seed": 64715,
+  "cards": {
+    "Mangara's Equity": "Name:Mangara's Equity\nManaCost:1 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1}{W}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 1 W\nK:ETBReplacement:Other:ChooseBlackOrRed\nSVar:ChooseBlackOrRed:DB$ ChooseColor | Defined$ You | Choices$ black,red | AILogic$ MostProminentHumanCreatures | SpellDescription$ As CARDNAME enters, choose black or red.\nT:Mode$ DamageDone | ValidSource$ Creature.ChosenColor+inZoneBattlefield | ValidTarget$ Creature.White+YouCtrl,You | TriggerZones$ Battlefield | Execute$ MangarasRetribution | TriggerDescription$ Whenever a creature of the chosen color deals damage to you or a white creature you control, CARDNAME deals that much damage to that creature.\nSVar:MangarasRetribution:DB$ DealDamage | Defined$ TriggeredSourceLKICopy | NumDmg$ MangaraX\nSVar:MangaraX:TriggerCount$DamageAmount\nAI:RemoveDeck:Random\nOracle:As Mangara's Equity enters, choose black or red.\\nAt the beginning of your upkeep, sacrifice Mangara's Equity unless you pay {1}{W}.\\nWhenever a creature of the chosen color deals damage to you or a white creature you control, Mangara's Equity deals that much damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mangara's Equity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

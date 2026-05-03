@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-tunnel-guide-corpus-m677",
+  "description": "M6 corpus — Merfolk Tunnel-Guide; in-hand parse.",
+  "seed": 65030,
+  "cards": {
+    "Merfolk Tunnel-Guide": "Name:Merfolk Tunnel-Guide\nManaCost:G U\nTypes:Creature Merfolk Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBoon | TriggerDescription$ When CARDNAME enters, you get a three-time boon with \"Whenever one or more Merfolk you control enter, target Merfolk creature you control explores.\"\nSVar:TrigBoon:DB$ Effect | Boon$ True | Duration$ Permanent | Triggers$ MerfolkETB | SpellDescription$ You get a boon with \"Whenever one or more Merfolk you control enter, target Merfolk creature you control explores.\"\nSVar:MerfolkETB:Mode$ ChangesZoneAll | ValidCards$ Merfolk.YouCtrl | Destination$ Battlefield | TriggerZones$ Command | BoonAmount$ 3 | Execute$ TrigExplore | TriggerDescription$ Whenever one or more Merfolk you control enter, target Merfolk creature you control explores.\nSVar:TrigExplore:DB$ Explore | ValidTgts$ Creature.Merfolk+YouCtrl | TgtPrompt$ Select target Merfolk creature you control\nDeckNeeds:Type$Merfolk\nOracle:When Merfolk Tunnel-Guide enters, you get a three-time boon with \"Whenever one or more Merfolk you control enter, target Merfolk creature you control explores.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Tunnel-Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

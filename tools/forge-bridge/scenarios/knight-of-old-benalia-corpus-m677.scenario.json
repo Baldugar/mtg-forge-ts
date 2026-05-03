@@ -1,0 +1,23 @@
+{
+  "id": "knight-of-old-benalia-corpus-m677",
+  "description": "M6 corpus — Knight of Old Benalia; in-hand parse.",
+  "seed": 63760,
+  "cards": {
+    "Knight of Old Benalia": "Name:Knight of Old Benalia\nManaCost:3 W W\nTypes:Creature Human Knight\nPT:3/3\nK:Suspend:5:W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, other creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:Suspend 5—{W} (Rather than cast this card from your hand, you may pay {W} and exile it with five time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)\\nWhen Knight of Old Benalia enters, other creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knight of Old Benalia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

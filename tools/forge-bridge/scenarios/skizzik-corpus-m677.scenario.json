@@ -1,0 +1,23 @@
+{
+  "id": "skizzik-corpus-m677",
+  "description": "M6 corpus — Skizzik; in-hand parse.",
+  "seed": 70057,
+  "cards": {
+    "Skizzik": "Name:Skizzik\nManaCost:3 R\nTypes:Creature Elemental\nPT:5/3\nK:Haste\nK:Trample\nK:Kicker:R\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Card.Self+!kicked | Execute$ TrigNotKicked | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, if CARDNAME wasn't kicked, sacrifice it.\nSVar:TrigNotKicked:DB$ Sacrifice\n# The following construct specifies that the AI always plays the spell kicked, and plays it unkicked on its own turn only if it will attack\nSVar:NeedsToPlay:WillAttack\nSVar:NeedsToPlayKickedVar:Z GE1\nSVar:Z:Number$1\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nTrample, haste\\nAt the beginning of the end step, if Skizzik wasn't kicked, sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skizzik"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

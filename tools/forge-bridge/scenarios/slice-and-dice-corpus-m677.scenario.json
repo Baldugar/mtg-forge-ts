@@ -1,0 +1,23 @@
+{
+  "id": "slice-and-dice-corpus-m677",
+  "description": "M6 corpus — Slice and Dice; in-hand parse.",
+  "seed": 70205,
+  "cards": {
+    "Slice and Dice": "Name:Slice and Dice\nManaCost:4 R R\nTypes:Sorcery\nK:Cycling:2 R\nA:SP$ DamageAll | NumDmg$ 4 | ValidCards$ Creature | ValidDescription$ each creature. | SpellDescription$ CARDNAME deals 4 damage to each creature.\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigDamageAll | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME, you may have it deal 1 damage to each creature.\nSVar:TrigDamageAll:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature | ValidDescription$ each creature.\nOracle:Slice and Dice deals 4 damage to each creature.\\nCycling {2}{R} ({2}{R}, Discard this card: Draw a card.)\\nWhen you cycle Slice and Dice, you may have it deal 1 damage to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slice and Dice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

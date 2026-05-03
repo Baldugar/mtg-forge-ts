@@ -1,0 +1,23 @@
+{
+  "id": "orcus-prince-of-undeath-corpus-m677",
+  "description": "M6 corpus — Orcus, Prince of Undeath; in-hand parse.",
+  "seed": 66395,
+  "cards": {
+    "Orcus, Prince of Undeath": "Name:Orcus, Prince of Undeath\nManaCost:X 2 B R\nTypes:Legendary Creature Demon\nPT:5/3\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPumpAll,DBReturn\nSVar:DBPumpAll:DB$ PumpAll | NumAtt$ -X | NumDef$ -X | ValidCards$ Creature.StrictlyOther | IsCurse$ True | SubAbility$ DBLoseLife | SpellDescription$ Each other creature gets -X/-X until end of turn. You lose X life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ X | MaxTotalTargetCMC$ X | ValidTgts$ Creature.YouOwn | SubAbility$ DBPump | TgtPrompt$ Select up to X target creature cards with total mana value X or less | SpellDescription$ Return up to X target creature cards with total mana value X or less from your graveyard to the battlefield. They gain haste until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Haste\nSVar:X:Count$xPaid\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Graveyard\nOracle:Flying, trample\\nWhen Orcus, Prince of Undeath enters, choose one —\\n• Each other creature gets -X/-X until end of turn. You lose X life.\\n• Return up to X target creature cards with total mana value X or less from your graveyard to the battlefield. They gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orcus, Prince of Undeath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

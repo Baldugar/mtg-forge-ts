@@ -1,0 +1,23 @@
+{
+  "id": "structural-assault-corpus-m677",
+  "description": "M6 corpus — Structural Assault; in-hand parse.",
+  "seed": 71216,
+  "cards": {
+    "Structural Assault": "Name:Structural Assault\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Artifact | SubAbility$ DBDamageAll | SpellDescription$ Destroy all artifacts,\nSVar:DBDamageAll:DB$ DamageAll | NumDmg$ X | ValidCards$ Creature | ValidDescription$ each creature | SpellDescription$ then CARDNAME deals damage to each creature equal to the number of artifacts that were put into graveyards from the battlefield this turn.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Card.Artifact\nAI:RemoveDeck:Random\nOracle:Destroy all artifacts, then Structural Assault deals damage to each creature equal to the number of artifacts that were put into graveyards from the battlefield this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Structural Assault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "obsidian-obelisk-corpus-m677",
+  "description": "M6 corpus — Obsidian Obelisk; ETB-on-bf.",
+  "seed": 66197,
+  "cards": {
+    "Obsidian Obelisk": "Name:Obsidian Obelisk\nManaCost:2\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.MultiColor | SpellDescription$ Add one mana of any color. Spend this mana only to cast a multicolored spell.\nAI:RemoveDeck:Random\nOracle:Obsidian Obelisk enters tapped.\\n{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a multicolored spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Obsidian Obelisk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "inkshield-corpus-m677",
+  "description": "M6 corpus — Inkshield; in-hand parse.",
+  "seed": 62955,
+  "cards": {
+    "Inkshield": "Name:Inkshield\nManaCost:3 W B\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent | AILogic$ Fog | SpellDescription$ Prevent all combat damage that would be dealt to you this turn. For each 1 damage prevented this way, create a 2/1 white and black Inkling creature token with flying.\nSVar:RPrevent:Event$ DamageDone | ValidTarget$ You | PreventionEffect$ True | ReplaceWith$ Token | IsCombat$ True | ActiveZones$ Command | ValidTarget$ You | Description$ Prevent all combat damage that would be dealt to you this turn. For each 1 damage prevented this way, create a 2/1 white and black Inkling creature token with flying.\nSVar:Token:DB$ Token | TokenAmount$ X | TokenScript$ wb_2_1_inkling_flying\nSVar:X:ReplaceCount$DamageAmount\nDeckHas:Ability$Token\nOracle:Prevent all combat damage that would be dealt to you this turn. For each 1 damage prevented this way, create a 2/1 white and black Inkling creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inkshield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

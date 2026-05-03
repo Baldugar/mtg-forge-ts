@@ -1,0 +1,25 @@
+{
+  "id": "old-stickfingers-corpus-m677",
+  "description": "M6 corpus — Old Stickfingers; ETB-on-bf.",
+  "seed": 66267,
+  "cards": {
+    "Old Stickfingers": "Name:Old Stickfingers\nManaCost:X B G\nTypes:Legendary Creature Horror\nPT:*/*\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ When you cast CARDNAME, reveal cards from the top of your library until you reveal X creature cards. Put all the creature cards revealed this way into your graveyard and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Amount$ X | Valid$ Creature | FoundDestination$ Graveyard | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nSVar:X:Count$xPaid\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ Y | SetToughness$ Y | Description$ CARDNAME's power and toughness are each equal to the number of creature cards in your graveyard.\nSVar:Y:Count$ValidGraveyard Creature.YouOwn\nDeckHas:Ability$Graveyard\nOracle:When you cast this spell, reveal cards from the top of your library until you reveal X creature cards. Put all the creature cards revealed this way into your graveyard and the rest on the bottom of your library in a random order.\\nOld Stickfingers's power and toughness are each equal to the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Old Stickfingers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

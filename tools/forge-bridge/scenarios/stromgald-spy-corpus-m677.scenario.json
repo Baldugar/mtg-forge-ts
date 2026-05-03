@@ -1,0 +1,25 @@
+{
+  "id": "stromgald-spy-corpus-m677",
+  "description": "M6 corpus — Stromgald Spy; ETB-on-bf.",
+  "seed": 71200,
+  "cards": {
+    "Stromgald Spy": "Name:Stromgald Spy\nManaCost:3 B\nTypes:Creature Human Rogue\nPT:2/4\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may have defending player play with their hand revealed for as long as CARDNAME remains on the battlefield. If you do, CARDNAME assigns no combat damage this turn.\nSVar:TrigExile:DB$ Effect | StaticAbilities$ STRevealHand | RememberObjects$ DefendingPlayer | Duration$ AsLongAsInPlay | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nSVar:STRevealHand:Mode$ Continuous | AffectedZone$ Hand | Affected$ Card.RememberedPlayerOwn | MayLookAt$ Player | Description$ The defending player plays with their hand revealed.\nAI:RemoveDeck:All\nOracle:Whenever Stromgald Spy attacks and isn't blocked, you may have defending player play with their hand revealed for as long as Stromgald Spy remains on the battlefield. If you do, Stromgald Spy assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Stromgald Spy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

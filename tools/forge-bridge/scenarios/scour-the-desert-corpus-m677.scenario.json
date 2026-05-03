@@ -1,0 +1,23 @@
+{
+  "id": "scour-the-desert-corpus-m677",
+  "description": "M6 corpus — Scour the Desert; in-hand parse.",
+  "seed": 69190,
+  "cards": {
+    "Scour the Desert": "Name:Scour the Desert\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature.YouOwn | TgtPrompt$ Choose target creature card in your graveyard | SubAbility$ DBToken | SpellDescription$ Exile target creature card from your graveyard. Create X 1/1 white Bird creature tokens with flying, where X is the exiled card's toughness.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_bird_flying | TokenOwner$ You\nSVar:X:Targeted$CardToughness\nDeckHas:Ability$Token\nOracle:Exile target creature card from your graveyard. Create X 1/1 white Bird creature tokens with flying, where X is the exiled card's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scour the Desert"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

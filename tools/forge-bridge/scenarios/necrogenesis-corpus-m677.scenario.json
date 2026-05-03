@@ -1,0 +1,25 @@
+{
+  "id": "necrogenesis-corpus-m677",
+  "description": "M6 corpus — Necrogenesis; ETB-on-bf.",
+  "seed": 65796,
+  "cards": {
+    "Necrogenesis": "Name:Necrogenesis\nManaCost:B G\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ 2 | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | TgtPrompt$ Select target creature from a graveyard | SubAbility$ DBToken | SpellDescription$ Exile target creature card from a graveyard. Create a 1/1 green Saproling creature token.\nSVar:DBToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:{2}: Exile target creature card from a graveyard. Create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Necrogenesis"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

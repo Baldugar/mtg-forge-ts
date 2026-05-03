@@ -1,0 +1,23 @@
+{
+  "id": "illithid-harvester-corpus-m677",
+  "description": "M6 corpus — Illithid Harvester; in-hand parse.",
+  "seed": 62741,
+  "cards": {
+    "Illithid Harvester": "Name:Illithid Harvester\nManaCost:4 U\nTypes:Creature Horror\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTurnFaceDown | TriggerDescription$ Ceremorphosis — When CARDNAME enters, turn any number of target tapped nontoken creatures face down. They're 2/2 Horror creatures.\nSVar:TrigTurnFaceDown:DB$ SetState | ValidTgts$ Creature.tapped+!token | TgtPrompt$ Select any number of target tapped nontoken creatures | TargetMin$ 0 | TargetMax$ X | Mode$ TurnFaceDown | FaceDownPower$ 2 | FaceDownToughness$ 2 | FaceDownSetType$ Horror & Creature\nSVar:X:Count$Valid Creature.tapped+!token\nAlternateMode:Adventure\nOracle:Ceremorphosis — When Illithid Harvester enters, turn any number of target tapped nontoken creatures face down. They're 2/2 Horror creatures.\n\nALTERNATE\n\nName:Plant Tadpoles\nManaCost:X U U\nTypes:Sorcery Adventure\nA:SP$ Tap | ValidTgts$ Creature | TgtPrompt$ Select X target creatures | TargetMin$ X | TargetMax$ X | AlwaysRemember$ True | SubAbility$ DBPump | SpellDescription$ Tap X target creatures.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | StackDescription$ SpellDescription | SpellDescription$ They don't untap during their controllers' next untap steps.\nSVar:X:Count$xPaid\nOracle:Tap X target creatures. They don't untap during their controllers' next untap steps. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illithid Harvester"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

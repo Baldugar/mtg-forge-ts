@@ -1,0 +1,25 @@
+{
+  "id": "legacy-weapon-corpus-m677",
+  "description": "M6 corpus — Legacy Weapon; ETB-on-bf.",
+  "seed": 64096,
+  "cards": {
+    "Legacy Weapon": "Name:Legacy Weapon\nManaCost:7\nTypes:Legendary Artifact\nA:AB$ ChangeZone | Cost$ W U B R G | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target permanent.\nR:Event$ Moved | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ DBShuffle | Description$ If CARDNAME would be put into a graveyard from anywhere, reveal CARDNAME and shuffle it into its owner's library instead.\nSVar:DBShuffle:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | Defined$ ReplacedCard | Reveal$ True | Shuffle$ True\nAI:RemoveDeck:Random\nOracle:{W}{U}{B}{R}{G}: Exile target permanent.\\nIf Legacy Weapon would be put into a graveyard from anywhere, reveal Legacy Weapon and shuffle it into its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Legacy Weapon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

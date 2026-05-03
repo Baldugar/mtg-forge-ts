@@ -1,0 +1,23 @@
+{
+  "id": "protector-of-the-crown-corpus-m677",
+  "description": "M6 corpus — Protector of the Crown; in-hand parse.",
+  "seed": 67287,
+  "cards": {
+    "Protector of the Crown": "Name:Protector of the Crown\nManaCost:5 W\nTypes:Creature Giant Soldier\nPT:2/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ DmgSelf | DamageTarget$ Self | Description$ All damage that would be dealt to you is dealt to CARDNAME instead.\nSVar:DmgSelf:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Self | VarType$ Card\nOracle:When Protector of the Crown enters, you become the monarch.\\nAll damage that would be dealt to you is dealt to Protector of the Crown instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protector of the Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

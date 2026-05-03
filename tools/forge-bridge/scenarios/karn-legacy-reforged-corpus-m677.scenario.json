@@ -1,0 +1,23 @@
+{
+  "id": "karn-legacy-reforged-corpus-m677",
+  "description": "M6 corpus — Karn, Legacy Reforged; in-hand parse.",
+  "seed": 63491,
+  "cards": {
+    "Karn, Legacy Reforged": "Name:Karn, Legacy Reforged\nManaCost:5\nTypes:Legendary Artifact Creature Golem\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the greatest mana value among artifacts you control.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ ArtifactMana | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, add {C} for each artifact you control. This mana can't be spent to cast nonartifact spells. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:ArtifactMana:DB$ Mana | Produced$ C | Amount$ Y | PersistentMana$ True | RestrictValid$ CantCastNonArtifactSpells\nSVar:X:Count$Valid Artifact.YouCtrl$GreatestCardManaCost\nSVar:Y:Count$Valid Artifact.YouCtrl\nSVar:BuffedBy:Artifact\nSVar:NoZeroToughnessAI:True\nDeckNeeds:Type$Artifact\nOracle:Karn, Legacy Reforged's power and toughness are each equal to the greatest mana value among artifacts you control.\\nAt the beginning of your upkeep, add {C} for each artifact you control. This mana can't be spent to cast nonartifact spells. Until end of turn, you don't lose this mana as steps and phases end.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karn, Legacy Reforged"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

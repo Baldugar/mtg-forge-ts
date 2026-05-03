@@ -1,0 +1,25 @@
+{
+  "id": "spellshock-corpus-m677",
+  "description": "M6 corpus — Spellshock; ETB-on-bf.",
+  "seed": 70594,
+  "cards": {
+    "Spellshock": "Name:Spellshock\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a spell, CARDNAME deals 2 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 2\nAI:RemoveDeck:All\nOracle:Whenever a player casts a spell, Spellshock deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Spellshock"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

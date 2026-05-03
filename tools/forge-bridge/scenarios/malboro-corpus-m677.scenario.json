@@ -1,0 +1,23 @@
+{
+  "id": "malboro-corpus-m677",
+  "description": "M6 corpus — Malboro; in-hand parse.",
+  "seed": 64658,
+  "cards": {
+    "Malboro": "Name:Malboro\nManaCost:4 B B\nTypes:Creature Plant Horror\nPT:4/4\nK:TypeCycling:Swamp:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Bad Breath — When this creature enters, each opponent discards a card, loses 2 life, and exiles the top three cards of their library.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Opponent | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ Player.Opponent | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile\nOracle:Bad Breath — When this creature enters, each opponent discards a card, loses 2 life, and exiles the top three cards of their library.\\nSwampcycling {2} ({2}, Discard this card: Search your library for a Swamp card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malboro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

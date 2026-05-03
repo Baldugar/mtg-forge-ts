@@ -1,0 +1,23 @@
+{
+  "id": "miasmic-mummy-corpus-m677",
+  "description": "M6 corpus — Miasmic Mummy; in-hand parse.",
+  "seed": 65078,
+  "cards": {
+    "Miasmic Mummy": "Name:Miasmic Mummy\nManaCost:1 B\nTypes:Creature Zombie Jackal\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:Random\nOracle:When Miasmic Mummy enters, each player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miasmic Mummy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

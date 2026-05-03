@@ -1,0 +1,23 @@
+{
+  "id": "refuse-corpus-m677",
+  "description": "M6 corpus — Refuse; in-hand parse.",
+  "seed": 67956,
+  "cards": {
+    "Refuse": "Name:Refuse\nManaCost:3 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Card | TargetType$ Spell | TgtZone$ Stack | TgtPrompt$ Select target spell | PumpZone$ Stack | StackDescription$ None | SubAbility$ DBDmg | SpellDescription$ CARDNAME deals damage to target spell's controller equal to that spell's mana value.\nSVar:DBDmg:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:All\nAlternateMode:Split\nOracle:Refuse deals damage to target spell's controller equal to that spell's mana value.\n\nALTERNATE\n\nName:Cooperate\nManaCost:2 U\nTypes:Instant\nK:Aftermath\nA:SP$ CopySpellAbility | ValidTgts$ Instant,Sorcery | TargetType$ Spell | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell. You may choose new targets for the copy.\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nCopy target instant or sorcery spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Refuse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

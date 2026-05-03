@@ -1,0 +1,23 @@
+{
+  "id": "phantom-steed-corpus-m677",
+  "description": "M6 corpus — Phantom Steed; in-hand parse.",
+  "seed": 66810,
+  "cards": {
+    "Phantom Steed": "Name:Phantom Steed\nManaCost:3 U\nTypes:Creature Horse Illusion\nPT:4/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile another target creature you control until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, create a tapped and attacking token that's a copy of the exiled card, except it's an Illusion in addition to its other types. Sacrifice that token at end of combat.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ ValidExile Card.ExiledWithSource | TokenTapped$ True | TokenAttacking$ True | AddTypes$ Illusion | AtEOT$ SacrificeCombat\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Flash\\nWhen Phantom Steed enters, exile another target creature you control until Phantom Steed leaves the battlefield.\\nWhenever Phantom Steed attacks, create a tapped and attacking token that's a copy of the exiled card, except it's an Illusion in addition to its other types. Sacrifice that token at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantom Steed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

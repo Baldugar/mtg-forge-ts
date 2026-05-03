@@ -1,0 +1,23 @@
+{
+  "id": "puppet-s-verdict-corpus-m677",
+  "description": "M6 corpus — Puppet's Verdict; in-hand parse.",
+  "seed": 67367,
+  "cards": {
+    "Puppet's Verdict": "Name:Puppet's Verdict\nManaCost:1 R R\nTypes:Instant\nA:SP$ FlipACoin | WinSubAbility$ DBDestroySmall | LoseSubAbility$ DBDestroyBig | SpellDescription$ Flip a coin. If you win the flip, destroy all creatures with power 2 or less. If you lose the flip, destroy all creatures with power 3 or greater.\nSVar:DBDestroySmall:DB$ DestroyAll | ValidCards$ Creature.powerLE2\nSVar:DBDestroyBig:DB$ DestroyAll | ValidCards$ Creature.powerGE3\nAI:RemoveDeck:All\nOracle:Flip a coin. If you win the flip, destroy all creatures with power 2 or less. If you lose the flip, destroy all creatures with power 3 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Puppet's Verdict"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

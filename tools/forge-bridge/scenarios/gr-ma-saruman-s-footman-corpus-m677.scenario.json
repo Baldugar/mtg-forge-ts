@@ -1,0 +1,23 @@
+{
+  "id": "gr-ma-saruman-s-footman-corpus-m677",
+  "description": "M6 corpus — Gríma, Saruman's Footman; in-hand parse.",
+  "seed": 61783,
+  "cards": {
+    "Gríma, Saruman's Footman": "Name:Gríma, Saruman's Footman\nManaCost:2 U B\nTypes:Legendary Creature Human Advisor\nPT:1/4\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDigUntil | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, that player exiles cards from the top of their library until they exile an instant or sorcery card. You may cast that card without paying its mana cost. Then that player puts the exiled cards that weren't cast this way on the bottom of their library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Defined$ TriggeredTarget | Valid$ Instant,Sorcery | ValidDescription$ instant or sorcery | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | ImprintRevealed$ True | IsCurse$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | ValidZone$ Exile | Valid$ Instant.IsRemembered,Sorcery.IsRemembered | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBRestRandomOrder\nSVar:DBRestRandomOrder:DB$ ChangeZoneAll | ChangeType$ Card.IsImprinted,Card.IsRemembered | Origin$ Exile | Destination$ Library | LibraryPosition$ -1 | RandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Gríma, Saruman's Footman can't be blocked.\\nWhenever Grima deals combat damage to a player, that player exiles cards from the top of their library until they exile an instant or sorcery card. You may cast that card without paying its mana cost. Then that player puts the exiled cards that weren't cast this way on the bottom of their library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gríma, Saruman's Footman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

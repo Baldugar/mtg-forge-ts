@@ -1,0 +1,25 @@
+{
+  "id": "scabland-corpus-m677",
+  "description": "M6 corpus — Scabland; ETB-on-bf.",
+  "seed": 69080,
+  "cards": {
+    "Scabland": "Name:Scabland\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SubAbility$ DBPain | SpellDescription$ Add {R} or {W}. CARDNAME deals 1 damage to you.\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nOracle:Scabland enters tapped.\\n{T}: Add {C}.\\n{T}: Add {R} or {W}. Scabland deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Scabland"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

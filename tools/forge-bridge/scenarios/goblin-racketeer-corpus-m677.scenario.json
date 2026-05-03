@@ -1,0 +1,23 @@
+{
+  "id": "goblin-racketeer-corpus-m677",
+  "description": "M6 corpus — Goblin Racketeer; in-hand parse.",
+  "seed": 61453,
+  "cards": {
+    "Goblin Racketeer": "Name:Goblin Racketeer\nManaCost:3 R\nTypes:Creature Goblin Rogue\nPT:4/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigGoad | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may goad target creature defending player controls. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls.\nOracle:Whenever Goblin Racketeer attacks, you may goad target creature defending player controls. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Racketeer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

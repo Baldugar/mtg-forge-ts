@@ -1,0 +1,23 @@
+{
+  "id": "healing-technique-corpus-m677",
+  "description": "M6 corpus — Healing Technique; in-hand parse.",
+  "seed": 62164,
+  "cards": {
+    "Healing Technique": "Name:Healing Technique\nManaCost:3 G\nTypes:Sorcery\nK:Demonstrate\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target card in your graveyard | ValidTgts$ Card.YouOwn | SubAbility$ DBGainLife | SpellDescription$ Return target card from your graveyard to your hand. You gain life equal to that card's mana value. Exile CARDNAME.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nSVar:X:Targeted$CardManaCost\nDeckHas:Ability$Graveyard|LifeGain\nOracle:Demonstrate (When you cast this spell, you may copy it. If you do, choose an opponent to also copy it. Players may choose new targets for their copies.)\\nReturn target card from your graveyard to your hand. You gain life equal to that card's mana value. Exile Healing Technique.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Healing Technique"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "reality-twist-corpus-m677",
+  "description": "M6 corpus — Reality Twist; ETB-on-bf.",
+  "seed": 67829,
+  "cards": {
+    "Reality Twist": "Name:Reality Twist\nManaCost:U U U\nTypes:Enchantment\nText:If tapped for mana, Plains produce {R}, Swamps produce {G}, Mountains produce {W}, and Forests produce {B} instead of any other type.\nK:Cumulative upkeep:1 U U\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Plains | ReplaceWith$ ProduceR | Secondary$ True | Description$ If tapped for mana, Plains produce R.\nSVar:ProduceR:DB$ ReplaceMana | ReplaceType$ R\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Swamp | ReplaceWith$ ProduceG | Secondary$ True | Description$ If tapped for mana, Swamps produce G.\nSVar:ProduceG:DB$ ReplaceMana | ReplaceType$ G\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Mountain | ReplaceWith$ ProduceW | Secondary$ True | Description$ If tapped for mana, Mountains produce U.\nSVar:ProduceW:DB$ ReplaceMana | ReplaceType$ W\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Forest | ReplaceWith$ ProduceB | Secondary$ True | Description$ If tapped for mana, Forests produce B.\nSVar:ProduceB:DB$ ReplaceMana | ReplaceType$ B\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Cumulative upkeep {1}{U}{U} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nIf tapped for mana, Plains produce {R}, Swamps produce {G}, Mountains produce {W}, and Forests produce {B} instead of any other type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Reality Twist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

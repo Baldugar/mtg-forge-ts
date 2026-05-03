@@ -1,0 +1,23 @@
+{
+  "id": "speakeasy-server-corpus-m677",
+  "description": "M6 corpus — Speakeasy Server; in-hand parse.",
+  "seed": 70530,
+  "cards": {
+    "Speakeasy Server": "Name:Speakeasy Server\nManaCost:4 W\nTypes:Creature Bird Citizen\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life for each other creature you control.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.StrictlyOther+YouCtrl\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Speakeasy Server enters, you gain 1 life for each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Speakeasy Server"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

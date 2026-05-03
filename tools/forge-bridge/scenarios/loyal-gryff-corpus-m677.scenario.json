@@ -1,0 +1,23 @@
+{
+  "id": "loyal-gryff-corpus-m677",
+  "description": "M6 corpus — Loyal Gryff; in-hand parse.",
+  "seed": 64456,
+  "cards": {
+    "Loyal Gryff": "Name:Loyal Gryff\nManaCost:2 W\nTypes:Creature Hippogriff\nPT:2/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return another creature you control to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Other+YouCtrl | SelectPrompt$ Select another target creature you control\nOracle:Flash\\nFlying\\nWhen Loyal Gryff enters, you may return another creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loyal Gryff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

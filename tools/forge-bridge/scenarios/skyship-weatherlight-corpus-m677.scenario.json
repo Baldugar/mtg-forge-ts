@@ -1,0 +1,23 @@
+{
+  "id": "skyship-weatherlight-corpus-m677",
+  "description": "M6 corpus — Skyship Weatherlight; in-hand parse.",
+  "seed": 70138,
+  "cards": {
+    "Skyship Weatherlight": "Name:Skyship Weatherlight\nManaCost:4\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for any number of artifact and/or creature cards, exile them, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | ChangeType$ Creature.YouOwn,Artifact.YouOwn | ChangeNum$ X | Origin$ Library | Destination$ Exile\nA:AB$ ChangeZone | Cost$ 4 T | Hidden$ True | Origin$ Exile | Destination$ Hand | AtRandom$ True | ChangeType$ Card.ExiledWithSource | SpellDescription$ Choose a card at random that was exiled with CARDNAME. Put that card into its owner's hand.\nSVar:X:Count$ValidLibrary Creature.YouOwn,Artifact.YouOwn\nOracle:When Skyship Weatherlight enters, search your library for any number of artifact and/or creature cards, exile them, then shuffle.\\n{4}, {T}: Choose a card at random that was exiled with Skyship Weatherlight. Put that card into its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyship Weatherlight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

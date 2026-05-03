@@ -1,0 +1,23 @@
+{
+  "id": "mortus-strider-corpus-m677",
+  "description": "M6 corpus — Mortus Strider; in-hand parse.",
+  "seed": 65523,
+  "cards": {
+    "Mortus Strider": "Name:Mortus Strider\nManaCost:1 U B\nTypes:Creature Skeleton\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, return it to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nOracle:When Mortus Strider dies, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mortus Strider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

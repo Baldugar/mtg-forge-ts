@@ -1,0 +1,23 @@
+{
+  "id": "search-warrant-corpus-m677",
+  "description": "M6 corpus — Search Warrant; in-hand parse.",
+  "seed": 69299,
+  "cards": {
+    "Search Warrant": "Name:Search Warrant\nManaCost:W U\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Player | SubAbility$ DBGainLife | SpellDescription$ Target player reveals their hand. You gain life equal to the number of cards in that player's hand.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ValidHand Card.TargetedPlayerOwn\nAI:RemoveDeck:All\nOracle:Target player reveals their hand. You gain life equal to the number of cards in that player's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Search Warrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

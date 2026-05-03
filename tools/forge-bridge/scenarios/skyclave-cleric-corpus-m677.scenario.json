@@ -1,0 +1,23 @@
+{
+  "id": "skyclave-cleric-corpus-m677",
+  "description": "M6 corpus — Skyclave Cleric; in-hand parse.",
+  "seed": 70102,
+  "cards": {
+    "Skyclave Cleric": "Name:Skyclave Cleric\nManaCost:1 W\nTypes:Creature Kor Cleric\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nAlternateMode:Modal\nOracle:When Skyclave Cleric enters, you gain 2 life.\n\nALTERNATE\n\nName:Skyclave Basilica\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:Skyclave Basilica enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyclave Cleric"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

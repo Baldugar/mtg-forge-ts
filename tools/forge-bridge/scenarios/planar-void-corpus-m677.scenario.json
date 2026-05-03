@@ -1,0 +1,23 @@
+{
+  "id": "planar-void-corpus-m677",
+  "description": "M6 corpus — Planar Void; in-hand parse.",
+  "seed": 66979,
+  "cards": {
+    "Planar Void": "Name:Planar Void\nManaCost:B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | TriggerZones$ Battlefield | ValidCard$ Card.!token+Other | Execute$ TrigChange | TriggerDescription$ Whenever another card is put into a graveyard from anywhere, exile that card.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredCardLKICopy | Origin$ Graveyard | Destination$ Exile\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Whenever another card is put into a graveyard from anywhere, exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planar Void"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

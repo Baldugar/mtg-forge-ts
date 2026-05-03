@@ -1,0 +1,23 @@
+{
+  "id": "spellseeker-corpus-m677",
+  "description": "M6 corpus — Spellseeker; in-hand parse.",
+  "seed": 70592,
+  "cards": {
+    "Spellseeker": "Name:Spellseeker\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an instant or sorcery card with mana value 2 or less, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Instant.cmcLE2,Sorcery.cmcLE2 | ChangeNum$ 1\nOracle:When Spellseeker enters, you may search your library for an instant or sorcery card with mana value 2 or less, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spellseeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

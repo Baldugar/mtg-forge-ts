@@ -1,0 +1,23 @@
+{
+  "id": "lay-down-arms-corpus-m677",
+  "description": "M6 corpus — Lay Down Arms; in-hand parse.",
+  "seed": 64044,
+  "cards": {
+    "Lay Down Arms": "Name:Lay Down Arms\nManaCost:W\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature.cmcLEX | TgtPrompt$ Select target creature with mana value less or equal to the number of Plains you control | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBGainLife | SpellDescription$ Exile target creature with mana value less than or equal to the number of Plains you control. Its controller gains 3 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | Defined$ TargetedController\nSVar:X:Count$Valid Plains.YouCtrl\nSVar:BuffedBy:Plains\nOracle:Exile target creature with mana value less than or equal to the number of Plains you control. Its controller gains 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lay Down Arms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

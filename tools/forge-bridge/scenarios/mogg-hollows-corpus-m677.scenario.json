@@ -1,0 +1,25 @@
+{
+  "id": "mogg-hollows-corpus-m677",
+  "description": "M6 corpus — Mogg Hollows; ETB-on-bf.",
+  "seed": 65367,
+  "cards": {
+    "Mogg Hollows": "Name:Mogg Hollows\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}. CARDNAME doesn't untap during your next untap step. | SubAbility$ DBStayTapped\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{T}: Add {C}.\\n{T}: Add {R} or {G}. Mogg Hollows doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mogg Hollows"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sengir-autocrat-corpus-m677",
+  "description": "M6 corpus — Sengir Autocrat; in-hand parse.",
+  "seed": 69439,
+  "cards": {
+    "Sengir Autocrat": "Name:Sengir Autocrat\nManaCost:3 B\nTypes:Creature Human\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create three 0/1 black Serf creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ b_0_1_serf | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigExileAllSerfs | TriggerDescription$ When CARDNAME leaves the battlefield, exile all Serf tokens.\nSVar:TrigExileAllSerfs:DB$ ChangeZoneAll | ChangeType$ Serf.token | Origin$ Battlefield | Destination$ Exile\nOracle:When Sengir Autocrat enters, create three 0/1 black Serf creature tokens.\\nWhen Sengir Autocrat leaves the battlefield, exile all Serf tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sengir Autocrat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

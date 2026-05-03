@@ -1,0 +1,23 @@
+{
+  "id": "sidequest-play-blitzball-corpus-m677",
+  "description": "M6 corpus — Sidequest: Play Blitzball; in-hand parse.",
+  "seed": 69824,
+  "cards": {
+    "Sidequest: Play Blitzball": "Name:Sidequest: Play Blitzball\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +2\nT:Mode$ Phase | Phase$ EndCombat | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE6 | Execute$ TrigTransform | TriggerDescription$ At the end of combat on your turn, if a player was dealt 6 or more combat damage this turn, transform this enchantment, then attach it to a creature you control.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Choices$ Creature.YouCtrl | ChoiceTitle$ Choose a creature you control | Object$ Self | AILogic$ Pump\nSVar:X:Count$MaxCombatDamageThisTurn\nSVar:PlayMain1:TRUE\nAlternateMode:DoubleFaced\nOracle:At the beginning of combat on your turn, target creature you control gets +2/+0 until end of turn.\\nAt the end of combat on your turn, if a player was dealt 6 or more combat damage this turn, transform this enchantment, then attach it to a creature you control.\n\nALTERNATE\n\nName:World Champion, Celestial Weapon\nManaCost:no cost\nColors:red\nTypes:Legendary Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Double Strike | Description$ Double Overdrive — Equipped creature gets +2/+0 and has double strike.\nOracle:Double Overdrive — Equipped creature gets +2/+0 and has double strike.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sidequest: Play Blitzball"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

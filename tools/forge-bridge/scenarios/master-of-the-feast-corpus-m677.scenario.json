@@ -1,0 +1,23 @@
+{
+  "id": "master-of-the-feast-corpus-m677",
+  "description": "M6 corpus — Master of the Feast; in-hand parse.",
+  "seed": 64868,
+  "cards": {
+    "Master of the Feast": "Name:Master of the Feast\nManaCost:1 B B\nTypes:Enchantment Creature Demon\nPT:5/5\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, each opponent draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ Player.Opponent | NumCards$ 1\nSVar:DonateMe:3\nOracle:Flying\\nAt the beginning of your upkeep, each opponent draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master of the Feast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

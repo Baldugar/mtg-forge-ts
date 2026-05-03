@@ -1,0 +1,23 @@
+{
+  "id": "mystic-restraints-corpus-m677",
+  "description": "M6 corpus — Mystic Restraints; in-hand parse.",
+  "seed": 65675,
+  "cards": {
+    "Mystic Restraints": "Name:Mystic Restraints\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nOracle:Flash\\nEnchant creature\\nWhen Mystic Restraints enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Restraints"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

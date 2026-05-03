@@ -1,0 +1,23 @@
+{
+  "id": "lumra-bellow-of-the-woods-corpus-m677",
+  "description": "M6 corpus — Lumra, Bellow of the Woods; in-hand parse.",
+  "seed": 64499,
+  "cards": {
+    "Lumra, Bellow of the Woods": "Name:Lumra, Bellow of the Woods\nManaCost:4 G G\nTypes:Legendary Creature Elemental Bear\nPT:*/*\nK:Vigilance\nK:Reach\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When NICKNAME enters, mill four cards. Then return all land cards from your graveyard to the battlefield tapped.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZoneAll | ChangeType$ Land.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nDeckHas:Ability$Mill|Graveyard\nOracle:Vigilance, reach\\nLumra, Bellow of the Woods's power and toughness are each equal to the number of lands you control.\\nWhen Lumra enters, mill four cards. Then return all land cards from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lumra, Bellow of the Woods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

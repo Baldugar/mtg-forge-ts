@@ -1,0 +1,23 @@
+{
+  "id": "skull-collector-corpus-m677",
+  "description": "M6 corpus — Skull Collector; in-hand parse.",
+  "seed": 70069,
+  "cards": {
+    "Skull Collector": "Name:Skull Collector\nManaCost:1 B B\nTypes:Creature Ogre Warrior\nPT:3/3\nA:AB$ Regenerate | Cost$ 1 B | SpellDescription$ Regenerate CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, return a black creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Creature.Black+YouCtrl\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.Black+YouCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, return a black creature you control to its owner's hand.\\n{1}{B}: Regenerate Skull Collector.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skull Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

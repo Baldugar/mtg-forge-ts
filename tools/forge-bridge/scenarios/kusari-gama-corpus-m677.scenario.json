@@ -1,0 +1,23 @@
+{
+  "id": "kusari-gama-corpus-m677",
+  "description": "M6 corpus — Kusari-Gama; in-hand parse.",
+  "seed": 63924,
+  "cards": {
+    "Kusari-Gama": "Name:Kusari-Gama\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddAbility$ GamaPump | Description$ Equipped creature has \"{2}: This creature gets +1/+0 until end of turn.\"\nSVar:GamaPump:AB$ Pump | Cost$ 2 | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ DamageDone | ValidSource$ Card.EquippedBy | ValidTarget$ Creature.blocking | Execute$ GamaDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals damage to a blocking creature, CARDNAME deals that much damage to each other creature defending player controls.\nSVar:GamaDamage:DB$ DamageAll | NumDmg$ X | ValidCards$ Creature.!TriggeredTarget+ControlledBy TriggeredTargetController\nSVar:X:TriggerCount$DamageAmount\nOracle:Equipped creature has \"{2}: This creature gets +1/+0 until end of turn.\"\\nWhenever equipped creature deals damage to a blocking creature, Kusari-Gama deals that much damage to each other creature defending player controls.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kusari-Gama"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

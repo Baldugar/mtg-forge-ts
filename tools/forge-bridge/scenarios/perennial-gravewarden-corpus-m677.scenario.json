@@ -1,0 +1,23 @@
+{
+  "id": "perennial-gravewarden-corpus-m677",
+  "description": "M6 corpus — Perennial Gravewarden; in-hand parse.",
+  "seed": 66733,
+  "cards": {
+    "Perennial Gravewarden": "Name:Perennial Gravewarden\nManaCost:B G\nTypes:Creature Elf Warlock\nPT:1/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, it perpetually gets +1/+1.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Graveyard | CheckSVar$ X | SVarCompare$ EQ2 | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of your end step, if a creature entered and a creature died this turn, return this card from your graveyard to the battlefield tapped.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nSVar:X:SVar$Y/Plus.Z\nSVar:Y:Count$ThisTurnEntered_Battlefield_Creature/LimitMax.1\nSVar:Z:Count$Morbid.1.0\nOracle:Menace\\nWhen this creature enters, it perpetually gets +1/+1.\\nAt the beginning of your end step, if a creature entered and a creature died this turn, return this card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perennial Gravewarden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

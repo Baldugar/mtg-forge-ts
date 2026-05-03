@@ -1,0 +1,23 @@
+{
+  "id": "retched-wretch-corpus-m677",
+  "description": "M6 corpus — Retched Wretch; in-hand parse.",
+  "seed": 68137,
+  "cards": {
+    "Retched Wretch": "Name:Retched Wretch\nManaCost:2 B\nTypes:Creature Goblin\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+counters_GE1_M1M1 | Execute$ TrigChangeZone | TriggerDescription$ When this creature dies, if it had a -1/-1 counter on it, return it to the battlefield under its owner's control and it loses all abilities.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredNewCardLKICopy | RememberChanged$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | RemoveAllAbilities$ True | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When this creature dies, if it had a -1/-1 counter on it, return it to the battlefield under its owner's control and it loses all abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retched Wretch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hopeful-vigil-corpus-m677",
+  "description": "M6 corpus — Hopeful Vigil; in-hand parse.",
+  "seed": 62482,
+  "cards": {
+    "Hopeful Vigil": "Name:Hopeful Vigil\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight_vigilance\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nA:AB$ Sacrifice | Cost$ 2 W | SpellDescription$ Sacrifice CARDNAME.\nDeckHas:Ability$Sacrifice|Token & Type$Knight\nOracle:When Hopeful Vigil enters, create a 2/2 white Knight creature token with vigilance.\\nWhen Hopeful Vigil is put into a graveyard from the battlefield, scry 2.\\n{2}{W}: Sacrifice Hopeful Vigil.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hopeful Vigil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "sisay-weatherlight-captain-corpus-m677",
+  "description": "M6 corpus — Sisay, Weatherlight Captain; ETB-on-bf.",
+  "seed": 69996,
+  "cards": {
+    "Sisay, Weatherlight Captain": "Name:Sisay, Weatherlight Captain\nManaCost:2 W\nTypes:Legendary Creature Human Soldier\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each color among other legendary permanents you control.\nSVar:X:Count$Valid Permanent.YouCtrl+Other+Legendary$Colors\nA:AB$ ChangeZone | Cost$ W U B R G | Origin$ Library | Destination$ Battlefield | ChangeType$ Permanent.Legendary+cmcLTY | ChangeNum$ 1 | SpellDescription$ Search your library for a legendary permanent card with mana value less than NICKNAME's power, put that card onto the battlefield, then shuffle.\nSVar:Y:Count$CardPower\nDeckHints:Type$Legendary\nOracle:Sisay, Weatherlight Captain gets +1/+1 for each color among other legendary permanents you control.\\n{W}{U}{B}{R}{G}: Search your library for a legendary permanent card with mana value less than Sisay's power, put that card onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sisay, Weatherlight Captain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

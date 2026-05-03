@@ -1,0 +1,23 @@
+{
+  "id": "lord-of-the-void-corpus-m677",
+  "description": "M6 corpus — Lord of the Void; in-hand parse.",
+  "seed": 64400,
+  "cards": {
+    "Lord of the Void": "Name:Lord of the Void\nManaCost:4 B B B\nTypes:Creature Demon\nPT:7/7\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile the top seven cards of that player's library, then put a creature card from among them onto the battlefield under your control.\nSVar:TrigExile:DB$ Dig | DigNum$ 7 | ChangeNum$ All | Defined$ TriggeredTarget | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ PickOne\nSVar:PickOne:DB$ ChooseCard | Defined$ You | Amount$ 1 | Mandatory$ True | ChoiceTitle$ Choose creature to put on the battlefield under your control | Choices$ Creature.IsRemembered | ChoiceZone$ Exile | SubAbility$ MoveChosen\nSVar:MoveChosen:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | GainControl$ True | Defined$ ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhenever Lord of the Void deals combat damage to a player, exile the top seven cards of that player's library, then put a creature card from among them onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lord of the Void"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

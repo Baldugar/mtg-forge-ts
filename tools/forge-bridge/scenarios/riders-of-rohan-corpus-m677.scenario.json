@@ -1,0 +1,23 @@
+{
+  "id": "riders-of-rohan-corpus-m677",
+  "description": "M6 corpus — Riders of Rohan; in-hand parse.",
+  "seed": 68251,
+  "cards": {
+    "Riders of Rohan": "Name:Riders of Rohan\nManaCost:3 R W\nTypes:Creature Human Knight\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 2/2 red Human Knight creature tokens with trample and haste.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_2_2_human_knight_trample_haste | TokenOwner$ You\nK:Dash:4 R W\nDeckHas:Ability$Token\nOracle:When Riders of Rohan enters, create two 2/2 red Human Knight creature tokens with trample and haste.\\nDash {4}{R}{W} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riders of Rohan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spelunking-corpus-m677",
+  "description": "M6 corpus — Spelunking; in-hand parse.",
+  "seed": 70600,
+  "cards": {
+    "Spelunking": "Name:Spelunking\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then you may put a land card from your hand onto the battlefield. If you put a Cave onto the battlefield this way, you gain 4 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Optional$ You | RememberChanged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | ConditionDefined$ Remembered | ConditionPresent$ Card.Cave | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nR:Event$ Moved | ValidCard$ Land.YouCtrl | Destination$ Battlefield | ReplaceWith$ ETBUntapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Lands you control enter untapped.\nSVar:ETBUntapped:DB$ Untap | ETB$ True | Defined$ ReplacedCard\nDeckHas:Ability$LifeGain\nDeckHints:Type$Cave\nOracle:When Spelunking enters, draw a card, then you may put a land card from your hand onto the battlefield. If you put a Cave onto the battlefield this way, you gain 4 life.\\nLands you control enter untapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spelunking"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

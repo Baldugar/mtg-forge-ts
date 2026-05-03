@@ -1,0 +1,25 @@
+{
+  "id": "soulblade-djinn-corpus-m677",
+  "description": "M6 corpus — Soulblade Djinn; ETB-on-bf.",
+  "seed": 70469,
+  "cards": {
+    "Soulblade Djinn": "Name:Soulblade Djinn\nManaCost:3 U U\nTypes:Creature Djinn\nPT:4/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever you cast a noncreature spell, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:BuffedBy:Card.nonCreature+nonLand\nOracle:Flying\\nWhenever you cast a noncreature spell, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soulblade Djinn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

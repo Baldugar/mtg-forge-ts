@@ -1,0 +1,23 @@
+{
+  "id": "radiant-epicure-corpus-m677",
+  "description": "M6 corpus — Radiant Epicure; in-hand parse.",
+  "seed": 67524,
+  "cards": {
+    "Radiant Epicure": "Name:Radiant Epicure\nManaCost:4 B\nTypes:Creature Vampire Wizard\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ Converge — When CARDNAME enters, each opponent loses X life and you gain X life, where X is the number of colors of mana spent to cast this spell.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Converge\nDeckHas:Ability$LifeGain\nOracle:Converge — When Radiant Epicure enters, each opponent loses X life and you gain X life, where X is the number of colors of mana spent to cast this spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radiant Epicure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rock-soldiers-corpus-m677",
+  "description": "M6 corpus — Rock Soldiers; in-hand parse.",
+  "seed": 68450,
+  "cards": {
+    "Rock Soldiers": "Name:Rock Soldiers\nManaCost:3 R\nTypes:Artifact Creature Elemental Soldier\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this creature enters, destroy up to one target noncreature artifact.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.nonCreature | TargetMin$ 0 | TargetMax$ 1 | ValidTgtsDesc$ noncreature artifact\nOracle:When this creature enters, destroy up to one target noncreature artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rock Soldiers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

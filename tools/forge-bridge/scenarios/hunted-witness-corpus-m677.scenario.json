@@ -1,0 +1,23 @@
+{
+  "id": "hunted-witness-corpus-m677",
+  "description": "M6 corpus — Hunted Witness; in-hand parse.",
+  "seed": 62619,
+  "cards": {
+    "Hunted Witness": "Name:Hunted Witness\nManaCost:W\nTypes:Creature Human\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 white Soldier creature token with lifelink.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier_lifelink\nSVar:SacMe:1\nDeckHas:Ability$Token|LifeGain\nOracle:When Hunted Witness dies, create a 1/1 white Soldier creature token with lifelink.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hunted Witness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

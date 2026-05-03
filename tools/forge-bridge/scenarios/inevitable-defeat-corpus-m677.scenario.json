@@ -1,0 +1,23 @@
+{
+  "id": "inevitable-defeat-corpus-m677",
+  "description": "M6 corpus — Inevitable Defeat; in-hand parse.",
+  "seed": 62890,
+  "cards": {
+    "Inevitable Defeat": "Name:Inevitable Defeat\nManaCost:1 R W B\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBLoseLife | SpellDescription$ Exile target nonland permanent. Its controller loses 3 life and you gain 3 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nOracle:This spell can't be countered.\\nExile target nonland permanent. Its controller loses 3 life and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inevitable Defeat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

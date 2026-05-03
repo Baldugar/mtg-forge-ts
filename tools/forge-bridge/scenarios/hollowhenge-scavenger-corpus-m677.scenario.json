@@ -1,0 +1,23 @@
+{
+  "id": "hollowhenge-scavenger-corpus-m677",
+  "description": "M6 corpus — Hollowhenge Scavenger; in-hand parse.",
+  "seed": 62437,
+  "cards": {
+    "Hollowhenge Scavenger": "Name:Hollowhenge Scavenger\nManaCost:3 G G\nTypes:Creature Elemental\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ Morbid | Execute$ TrigGainLife | TriggerDescription$ Morbid — When CARDNAME enters, if a creature died this turn, you gain 5 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 5\nSVar:Morbid:Count$Morbid.1.0\nOracle:Morbid — When Hollowhenge Scavenger enters, if a creature died this turn, you gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollowhenge Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

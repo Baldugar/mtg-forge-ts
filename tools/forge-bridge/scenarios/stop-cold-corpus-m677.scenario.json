@@ -1,0 +1,23 @@
+{
+  "id": "stop-cold-corpus-m677",
+  "description": "M6 corpus — Stop Cold; in-hand parse.",
+  "seed": 71080,
+  "cards": {
+    "Stop Cold": "Name:Stop Cold\nManaCost:3 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Artifact,Creature:artifact or creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted permanent.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nS:Mode$ Continuous | Affected$ Permanent.AttachedBy | RemoveAllAbilities$ True | Description$ Enchanted permanent loses all abilities and doesn't untap during its controller's untap step.\nR:Event$ Untap | ValidCard$ Permanent.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Secondary$ True | Description$ Enchanted permanent doesn't untap during its controller's untap step.\nOracle:Flash\\nEnchant artifact or creature\\nWhen this Aura enters, tap enchanted permanent.\\nEnchanted permanent loses all abilities and doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stop Cold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

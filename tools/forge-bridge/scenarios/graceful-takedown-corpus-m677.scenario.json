@@ -1,0 +1,23 @@
+{
+  "id": "graceful-takedown-corpus-m677",
+  "description": "M6 corpus — Graceful Takedown; in-hand parse.",
+  "seed": 61604,
+  "cards": {
+    "Graceful Takedown": "Name:Graceful Takedown\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl+enchanted | TargetMin$ 0 | TargetMax$ X | AILogic$ PowerDmg | RememberObjects$ ThisTargetedCard | SubAbility$ DBPumpBis | SpellDescription$ Any number of target enchanted creatures you control and up to one other target creature you control each deal damage equal to their power to target creature you don't control.\nSVar:DBPumpBis:DB$ Pump | ValidTgts$ Creature.YouCtrl | TargetUnique$ True | TargetMin$ 0 | TargetMax$ 1 | RememberObjects$ ThisTargetedCard | SubAbility$ DBEachDamage\nSVar:X:Count$Valid Creature.YouCtrl+enchanted\nSVar:DBEachDamage:DB$ EachDamage | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | DefinedDamagers$ Remembered | NumDmg$ Count$CardPower | StackDescription$ REP target creature_{c:ThisTargetedCard} | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Aura\nOracle:Any number of target enchanted creatures you control and up to one other target creature you control each deal damage equal to their power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graceful Takedown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

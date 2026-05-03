@@ -1,0 +1,23 @@
+{
+  "id": "null-elemental-blast-corpus-m677",
+  "description": "M6 corpus — Null Elemental Blast; in-hand parse.",
+  "seed": 66101,
+  "cards": {
+    "Null Elemental Blast": "Name:Null Elemental Blast\nManaCost:C\nTypes:Instant\nA:SP$ Charm | Choices$ DBCounter,DBDestroy\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card.MultiColor | TgtPrompt$ Select target multicolored spell | SpellDescription$ Counter target multicolored spell.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Permanent.MultiColor | TgtPrompt$ Select target multicolored permanent. | SpellDescription$ Destroy target multicolored permanent.\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Counter target multicolored spell.\\n• Destroy target multicolored permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Null Elemental Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

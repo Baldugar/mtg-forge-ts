@@ -1,0 +1,23 @@
+{
+  "id": "stealth-mission-corpus-m677",
+  "description": "M6 corpus — Stealth Mission; in-hand parse.",
+  "seed": 70941,
+  "cards": {
+    "Stealth Mission": "Name:Stealth Mission\nManaCost:2 U\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBUnblockable | SpellDescription$ Put two +1/+1 counters on target creature you control.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SpellDescription$ That creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHas:Ability$Counters\nOracle:Put two +1/+1 counters on target creature you control. That creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stealth Mission"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

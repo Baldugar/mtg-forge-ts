@@ -1,0 +1,23 @@
+{
+  "id": "nylea-s-disciple-corpus-m677",
+  "description": "M6 corpus — Nylea's Disciple; in-hand parse.",
+  "seed": 66119,
+  "cards": {
+    "Nylea's Disciple": "Name:Nylea's Disciple\nManaCost:2 G G\nTypes:Creature Centaur Archer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain life equal to your devotion to green.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Devotion.Green\nOracle:When Nylea's Disciple enters, you gain life equal to your devotion to green. (Each {G} in the mana costs of permanents you control counts toward your devotion to green.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nylea's Disciple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

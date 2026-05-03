@@ -1,0 +1,23 @@
+{
+  "id": "rising-waters-corpus-m677",
+  "description": "M6 corpus — Rising Waters; in-hand parse.",
+  "seed": 68356,
+  "cards": {
+    "Rising Waters": "Name:Rising Waters\nManaCost:3 U\nTypes:Enchantment\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Land | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Lands don't untap during their controller's untap steps.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of each player's upkeep, that player untaps a land they control.\nSVar:TrigUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land.ActivePlayerCtrl | Amount$ 1 | Defined$ TriggeredPlayer\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Lands don't untap during their controllers' untap steps.\\nAt the beginning of each player's upkeep, that player untaps a land they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rising Waters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "mogg-conscripts-corpus-m677",
+  "description": "M6 corpus — Mogg Conscripts; ETB-on-bf.",
+  "seed": 65365,
+  "cards": {
+    "Mogg Conscripts": "Name:Mogg Conscripts\nManaCost:R\nTypes:Creature Goblin\nPT:2/2\nS:Mode$ CantAttack | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ EQ0 | Description$ CARDNAME can't attack unless you've cast a creature spell this turn.\nSVar:X:Count$ThisTurnCast_Creature.YouCtrl\nSVar:BuffedBy:Creature\nOracle:Mogg Conscripts can't attack unless you've cast a creature spell this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Mogg Conscripts"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

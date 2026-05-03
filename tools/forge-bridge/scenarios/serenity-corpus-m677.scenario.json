@@ -1,0 +1,23 @@
+{
+  "id": "serenity-corpus-m677",
+  "description": "M6 corpus — Serenity; in-hand parse.",
+  "seed": 69473,
+  "cards": {
+    "Serenity": "Name:Serenity\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDestroyAll | TriggerDescription$ At the beginning of your upkeep, destroy all artifacts and enchantments. They can't be regenerated.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Artifact,Enchantment | NoRegen$ True\nSVar:NeedsToPlay:Artifact.YouDontCtrl,Enchantment.YouDontCtrl\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:At the beginning of your upkeep, destroy all artifacts and enchantments. They can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serenity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

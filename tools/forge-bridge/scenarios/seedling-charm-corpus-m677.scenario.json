@@ -1,0 +1,23 @@
+{
+  "id": "seedling-charm-corpus-m677",
+  "description": "M6 corpus — Seedling Charm; in-hand parse.",
+  "seed": 69366,
+  "cards": {
+    "Seedling Charm": "Name:Seedling Charm\nManaCost:G\nTypes:Instant\nA:SP$ Charm | Choices$ DBChangeZone,DBRegen,DBPump\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Aura.AttachedTo Creature | TgtPrompt$ Select target Aura attached to a creature | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target Aura attached to a creature to its owner's hand.\nSVar:DBRegen:DB$ Regenerate | ValidTgts$ Creature.Green | TgtPrompt$ Select target green creature. | SpellDescription$ Regenerate target green creature.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | KW$ Trample | SpellDescription$ Target creature gains trample until end of turn.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Return target Aura attached to a creature to its owner's hand.\\n• Regenerate target green creature.\\n• Target creature gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seedling Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

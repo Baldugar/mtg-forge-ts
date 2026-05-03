@@ -1,0 +1,25 @@
+{
+  "id": "nebuchadnezzar-corpus-m677",
+  "description": "M6 corpus — Nebuchadnezzar; ETB-on-bf.",
+  "seed": 65787,
+  "cards": {
+    "Nebuchadnezzar": "Name:Nebuchadnezzar\nManaCost:3 U B\nTypes:Legendary Creature Human Wizard\nPT:3/3\nA:AB$ NameCard | Cost$ X T | Defined$ You | SubAbility$ DBReveal | PlayerTurn$ True | SpellDescription$ Choose a card name. Target opponent reveals X cards at random from their hand. Then that player discards all cards with that name revealed this way. Activate only during your turn.\nSVar:DBReveal:DB$ Reveal | ValidTgts$ Opponent | Random$ True | NumCards$ X | RememberRevealed$ True | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | DefinedCards$ ValidHand Card.IsRemembered+NamedCard | Defined$ Targeted | Mode$ Defined | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHas:Ability$Discard\nOracle:{X}, {T}: Choose a card name. Target opponent reveals X cards at random from their hand. Then that player discards all cards with that name revealed this way. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nebuchadnezzar"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

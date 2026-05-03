@@ -1,0 +1,23 @@
+{
+  "id": "subterranean-schooner-corpus-m677",
+  "description": "M6 corpus — Subterranean Schooner; in-hand parse.",
+  "seed": 71250,
+  "cards": {
+    "Subterranean Schooner": "Name:Subterranean Schooner\nManaCost:1 U\nTypes:Artifact Vehicle\nPT:3/4\nK:Crew:1\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExplore | TriggerDescription$ Whenever CARDNAME attacks, target creature that crewed it this turn explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\nSVar:TrigExplore:DB$ Explore | ValidTgts$ Creature.CrewedThisTurn | TgtPrompt$ Select target creature that crewed it this turn\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever Subterranean Schooner attacks, target creature that crewed it this turn explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Subterranean Schooner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "skywriter-djinn-corpus-m677",
+  "description": "M6 corpus — Skywriter Djinn; in-hand parse.",
+  "seed": 70166,
+  "cards": {
+    "Skywriter Djinn": "Name:Skywriter Djinn\nManaCost:3 U\nTypes:Creature Djinn\nPT:3/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMakeCard | TriggerDescription$ When CARDNAME enters conjure a random card from CARDNAME's spellbook into your hand. Then if you have fewer cards in hand than the number of basic land types among lands you control, repeat this process.\nSVar:TrigMakeCard:DB$ MakeCard | Conjure$ True | AtRandom$ True | Spellbook$ Hard Evidence,Stifle,Contentious Plan,Suit Up,Befuddle,Majestic Metamorphosis,Hampering Snare,Ghostform,See the Truth,Keep Safe,Teferi's Time Twist,Startle,Flood of Recollection,Choking Tethers,Bury in Books | Zone$ Hand | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ Repeat | RepeatCheckSVar$ X | RepeatSVarCompare$ LTY | ConditionCheckSVar$ X | ConditionSVarCompare$ LTY | RepeatSubAbility$ DBMakeCard\nSVar:DBMakeCard:DB$ MakeCard | Conjure$ True | AtRandom$ True | Spellbook$ Hard Evidence,Stifle,Contentious Plan,Suit Up,Befuddle,Majestic Metamorphosis,Hampering Snare,Ghostform,See the Truth,Keep Safe,Teferi's Time Twist,Startle,Flood of Recollection,Choking Tethers,Bury in Books | Zone$ Hand\nSVar:X:Count$CardsInYourHand\nSVar:Y:Count$Domain\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Cycling & Type$Crab|Zombie\nOracle:Flying\\nDomain — When Skywriter Djinn enters conjure a random card from Skywriter Djinn's spellbook into your hand. Then if you have fewer cards in hand than the number of basic land types among lands you control, repeat this process.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skywriter Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

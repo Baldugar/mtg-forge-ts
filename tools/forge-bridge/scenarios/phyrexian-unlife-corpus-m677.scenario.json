@@ -1,0 +1,25 @@
+{
+  "id": "phyrexian-unlife-corpus-m677",
+  "description": "M6 corpus — Phyrexian Unlife; ETB-on-bf.",
+  "seed": 66872,
+  "cards": {
+    "Phyrexian Unlife": "Name:Phyrexian Unlife\nManaCost:2 W\nTypes:Enchantment\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ValidLoseReason$ LifeReachedZero | Layer$ CantHappen | Description$ You don't lose the game for having 0 or less life.\nS:Mode$ InfectDamage | ValidTarget$ You | CheckSVar$ UnlifeCondition | SVarCompare$ LE0 | Description$ As long as you have 0 or less life, all damage is dealt to you as though its source had infect.\nSVar:UnlifeCondition:Count$YourLifeTotal\nSVar:NonStackingEffect:True\nOracle:You don't lose the game for having 0 or less life.\\nAs long as you have 0 or less life, all damage is dealt to you as though its source had infect. (Damage is dealt to you in the form of poison counters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Phyrexian Unlife"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

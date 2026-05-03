@@ -1,0 +1,25 @@
+{
+  "id": "sandals-of-abdallah-corpus-m677",
+  "description": "M6 corpus — Sandals of Abdallah; ETB-on-bf.",
+  "seed": 68955,
+  "cards": {
+    "Sandals of Abdallah": "Name:Sandals of Abdallah\nManaCost:4\nTypes:Artifact\nA:AB$ Pump | Cost$ 2 T | KW$ Landwalk:Island | ValidTgts$ Creature | SubAbility$ DBDelayedTrigger | SpellDescription$ Target creature gains islandwalk until end of turn. When that creature dies this turn, destroy CARDNAME. (A creature with islandwalk can't be blocked as long as defending player controls an Island.)\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigDestroy | TriggerDescription$ When that creature dies this turn, destroy CARDNAME.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Self\nAI:RemoveDeck:Random\nDeckHas:Keyword$Landwalk:Island\nOracle:{2}, {T}: Target creature gains islandwalk until end of turn. When that creature dies this turn, destroy Sandals of Abdallah. (A creature with islandwalk can't be blocked as long as defending player controls an Island.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sandals of Abdallah"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

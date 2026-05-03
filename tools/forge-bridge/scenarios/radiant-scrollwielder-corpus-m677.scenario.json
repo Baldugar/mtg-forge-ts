@@ -1,0 +1,23 @@
+{
+  "id": "radiant-scrollwielder-corpus-m677",
+  "description": "M6 corpus — Radiant Scrollwielder; in-hand parse.",
+  "seed": 67533,
+  "cards": {
+    "Radiant Scrollwielder": "Name:Radiant Scrollwielder\nManaCost:2 R W\nTypes:Creature Dwarf Cleric\nPT:2/4\nS:Mode$ Continuous | AddKeyword$ Lifelink | Affected$ Instant.YouCtrl,Sorcery.YouCtrl | AffectedZone$ Stack | Description$ Instant and sorcery spells you control have lifelink.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your upkeep, exile an instant or sorcery card at random from your graveyard. You may cast it this turn. If a spell cast this way would be put into your graveyard, exile it instead.\nSVar:TrigExile:DB$ ChangeZone | DefinedPlayer$ You | Destination$ Exile | ChangeNum$ 1 | ChangeType$ Instant.YouOwn,Sorcery.YouOwn | AtRandom$ True | Origin$ Graveyard | Hidden$ True | Mandatory$ True | RememberChanged$ True | SubAbility$ DBMayCast\nSVar:DBMayCast:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Stack | ReplacementEffects$ ReplaceGraveyard\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may cast this card this turn. If a spell cast this way would be put into your graveyard, exile it instead.\nSVar:ReplaceGraveyard:Event$ Moved | ValidLKI$ Card.CastSa Spell.MayPlaySource | Origin$ Stack | Destination$ Graveyard | ReplaceWith$ MoveExile\nSVar:MoveExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Stack | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nDeckNeeds:Type$Instant|Sorcery\nOracle:Instant and sorcery spells you control have lifelink.\\nAt the beginning of your upkeep, exile an instant or sorcery card at random from your graveyard. You may cast it this turn. If a spell cast this way would be put into your graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radiant Scrollwielder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

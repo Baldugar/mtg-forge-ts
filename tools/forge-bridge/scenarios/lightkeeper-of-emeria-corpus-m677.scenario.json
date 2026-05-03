@@ -1,0 +1,23 @@
+{
+  "id": "lightkeeper-of-emeria-corpus-m677",
+  "description": "M6 corpus — Lightkeeper of Emeria; in-hand parse.",
+  "seed": 64232,
+  "cards": {
+    "Lightkeeper of Emeria": "Name:Lightkeeper of Emeria\nManaCost:3 W\nTypes:Creature Angel\nPT:2/4\nK:Flying\nK:Multikicker:W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life for each time it was kicked.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$TimesKicked/Times.2\nOracle:Multikicker {W} (You may pay an additional {W} any number of times as you cast this spell.)\\nFlying\\nWhen Lightkeeper of Emeria enters, you gain 2 life for each time it was kicked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightkeeper of Emeria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

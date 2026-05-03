@@ -1,0 +1,23 @@
+{
+  "id": "rally-for-the-throne-corpus-m677",
+  "description": "M6 corpus — Rally for the Throne; in-hand parse.",
+  "seed": 67636,
+  "cards": {
+    "Rally for the Throne": "Name:Rally for the Throne\nManaCost:2 W\nTypes:Instant\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_human | TokenOwner$ You | AIManaPref$ W | SubAbility$ DBGainLife | SpellDescription$ Create two 1/1 white Human creature tokens. Adamant — If at least three white mana was spent to cast this spell, you gain 1 life for each creature you control.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | ConditionCheckSVar$ X\nSVar:X:Count$Adamant.White.1.0\nSVar:Y:Count$Valid Creature.YouCtrl\nDeckHas:Ability$Token|LifeGain\nOracle:Create two 1/1 white Human creature tokens.\\nAdamant — If at least three white mana was spent to cast this spell, you gain 1 life for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rally for the Throne"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

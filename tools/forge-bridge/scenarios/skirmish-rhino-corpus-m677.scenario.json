@@ -1,0 +1,23 @@
+{
+  "id": "skirmish-rhino-corpus-m677",
+  "description": "M6 corpus — Skirmish Rhino; in-hand parse.",
+  "seed": 70041,
+  "cards": {
+    "Skirmish Rhino": "Name:Skirmish Rhino\nManaCost:W B G\nTypes:Creature Rhino\nPT:3/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When this creature enters, each opponent loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ GainLife\nSVar:GainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Trample\\nWhen this creature enters, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skirmish Rhino"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

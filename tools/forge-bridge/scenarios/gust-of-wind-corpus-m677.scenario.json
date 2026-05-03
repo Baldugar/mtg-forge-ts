@@ -1,0 +1,23 @@
+{
+  "id": "gust-of-wind-corpus-m677",
+  "description": "M6 corpus — Gust of Wind; in-hand parse.",
+  "seed": 61918,
+  "cards": {
+    "Gust of Wind": "Name:Gust of Wind\nManaCost:3 U\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | IsPresent$ Creature.YouCtrl+withFlying | Description$ This spell costs {2} less to cast if you control a creature with flying.\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand+YouDontCtrl | TgtPrompt$ Select target nonland permanent you don't control | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return target nonland permanent you don't control to its owner's hand.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:BuffedBy:Creature.withFlying\nDeckHints:Keyword$Flying\nOracle:This spell costs {2} less to cast if you control a creature with flying.\\nReturn target nonland permanent you don't control to its owner's hand.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gust of Wind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

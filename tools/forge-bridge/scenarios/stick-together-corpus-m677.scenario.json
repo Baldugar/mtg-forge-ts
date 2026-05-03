@@ -1,0 +1,23 @@
+{
+  "id": "stick-together-corpus-m677",
+  "description": "M6 corpus — Stick Together; in-hand parse.",
+  "seed": 70994,
+  "cards": {
+    "Stick Together": "Name:Stick Together\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ Player | Choices$ Creature | ChooseEach$ Party | Reveal$ True | SubAbility$ SacAllOthers | StackDescription$ SpellDescription | SpellDescription$ Each player chooses a party from among creatures they control,\nSVar:SacAllOthers:DB$ SacrificeAll | ValidCards$ Creature.nonChosenCard | StackDescription$ then sacrifices the rest. | SpellDescription$ then sacrifices the rest. (To choose a party, choose up to one each of Cleric, Rogue, Warrior, and Wizard.)\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Party\nDeckNeeds:Type$Cleric|Rogue|Warrior|Wizard\nOracle:Each player chooses a party from among creatures they control, then sacrifices the rest. (To choose a party, choose up to one each of Cleric, Rogue, Warrior, and Wizard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stick Together"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

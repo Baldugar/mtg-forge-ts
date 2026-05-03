@@ -1,0 +1,25 @@
+{
+  "id": "nin-the-pain-artist-corpus-m677",
+  "description": "M6 corpus — Nin, the Pain Artist; ETB-on-bf.",
+  "seed": 65989,
+  "cards": {
+    "Nin, the Pain Artist": "Name:Nin, the Pain Artist\nManaCost:U R\nTypes:Legendary Creature Vedalken Wizard\nPT:1/1\nA:AB$ DealDamage | Cost$ X U R T | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DBDraw | AILogic$ NinThePainArtist | SpellDescription$ CARDNAME deals X damage to target creature. That creature's controller draws X cards.\nSVar:DBDraw:DB$ Draw | Defined$ TargetedController | NumCards$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nOracle:{X}{U}{R}, {T}: Nin, the Pain Artist deals X damage to target creature. That creature's controller draws X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nin, the Pain Artist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

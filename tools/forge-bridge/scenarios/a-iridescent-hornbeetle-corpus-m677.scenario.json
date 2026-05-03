@@ -1,0 +1,23 @@
+{
+  "id": "a-iridescent-hornbeetle-corpus-m677",
+  "description": "M6 corpus — A-Iridescent Hornbeetle; in-hand parse.",
+  "seed": 68750,
+  "cards": {
+    "A-Iridescent Hornbeetle": "Name:A-Iridescent Hornbeetle\nManaCost:3 G\nTypes:Creature Insect\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a 1/1 green Insect creature token for each +1/+1 counter you've put on creatures under your control this turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenOwner$ You | TokenScript$ g_1_1_insect\nSVar:X:Count$CountersAddedThisTurn P1P1 You Creature.YouCtrl\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:At the beginning of your end step, create a 1/1 green Insect creature token for each +1/+1 counter you've put on creatures under your control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Iridescent Hornbeetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

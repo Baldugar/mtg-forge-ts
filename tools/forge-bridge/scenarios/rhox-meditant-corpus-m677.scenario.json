@@ -1,0 +1,23 @@
+{
+  "id": "rhox-meditant-corpus-m677",
+  "description": "M6 corpus — Rhox Meditant; in-hand parse.",
+  "seed": 68217,
+  "cards": {
+    "Rhox Meditant": "Name:Rhox Meditant\nManaCost:3 W\nTypes:Creature Rhino Monk\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Permanent.Green+YouCtrl | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if you control a green permanent, draw a card.\nSVar:TrigDraw:DB$ Draw\nAI:RemoveDeck:Random\nDeckNeeds:Color$Green\nDeckHints:Color$Green\nOracle:When Rhox Meditant enters, if you control a green permanent, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rhox Meditant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

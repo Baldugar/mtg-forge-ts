@@ -1,0 +1,25 @@
+{
+  "id": "opal-acrolith-corpus-m677",
+  "description": "M6 corpus — Opal Acrolith; ETB-on-bf.",
+  "seed": 66331,
+  "cards": {
+    "Opal Acrolith": "Name:Opal Acrolith\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | IsPresent$ Card.Self+Enchantment | Execute$ TrigAnimate | TriggerDescription$ When an opponent casts a creature spell, if CARDNAME is an enchantment, CARDNAME becomes a 2/4 Soldier creature.\nA:AB$ Animate | Cost$ 0 | Defined$ Self | Types$ Enchantment | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent | SpellDescription$ CARDNAME becomes an enchantment.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 2 | Toughness$ 4 | Types$ Creature,Soldier | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Duration$ Permanent\nAI:RemoveDeck:All\nOracle:Whenever an opponent casts a creature spell, if Opal Acrolith is an enchantment, Opal Acrolith becomes a 2/4 Soldier creature.\\n{0}: Opal Acrolith becomes an enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Opal Acrolith"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

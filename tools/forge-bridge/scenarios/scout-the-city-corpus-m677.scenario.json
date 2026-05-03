@@ -1,0 +1,23 @@
+{
+  "id": "scout-the-city-corpus-m677",
+  "description": "M6 corpus — Scout the City; in-hand parse.",
+  "seed": 69205,
+  "cards": {
+    "Scout the City": "Name:Scout the City\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBMill,DBDestroy\nSVar:DBMill:DB$ Mill | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Look Around — Mill three cards. You may put a permanent card from among them into your hand. You gain 3 life. (To mill three cards, put the top three cards of your library into your graveyard.)\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Permanent.IsRemembered | SelectPrompt$ You may select a permanent card | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | SpellDescription$ Bring Down — Destroy target creature with flying.\nOracle:Choose one —\\n• Look Around — Mill three cards. You may put a permanent card from among them into your hand. You gain 3 life. (To mill three cards, put the top three cards of your library into your graveyard.)\\n• Bring Down — Destroy target creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scout the City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

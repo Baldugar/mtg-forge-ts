@@ -1,0 +1,23 @@
+{
+  "id": "reclusive-wight-corpus-m677",
+  "description": "M6 corpus — Reclusive Wight; in-hand parse.",
+  "seed": 67895,
+  "cards": {
+    "Reclusive Wight": "Name:Reclusive Wight\nManaCost:3 B\nTypes:Creature Zombie Minion\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Permanent.nonLand+YouCtrl | PresentCompare$ GE2 | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if you control another nonland permanent, sacrifice CARDNAME.\nSVar:TrigSacrifice:DB$ Sacrifice\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, if you control another nonland permanent, sacrifice Reclusive Wight.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reclusive Wight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

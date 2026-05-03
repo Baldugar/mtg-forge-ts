@@ -1,0 +1,25 @@
+{
+  "id": "lairwatch-giant-corpus-m677",
+  "description": "M6 corpus — Lairwatch Giant; ETB-on-bf.",
+  "seed": 63965,
+  "cards": {
+    "Lairwatch Giant": "Name:Lairwatch Giant\nManaCost:5 W\nTypes:Creature Giant Warrior\nPT:5/3\nS:Mode$ Continuous | Affected$ Card.Self | CanBlockAmount$ 1 | Description$ CARDNAME can block an additional creature each combat.\nT:Mode$ Blocks | ValidCard$ Card.Self | IsPresent$ Creature.blockedBySource | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks two or more creatures, it gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ First Strike | SpellDescription$ CARDNAME gains first strike until end of turn.\nOracle:Lairwatch Giant can block an additional creature each combat.\\nWhenever Lairwatch Giant blocks two or more creatures, it gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Lairwatch Giant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

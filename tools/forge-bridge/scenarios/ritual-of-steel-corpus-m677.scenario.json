@@ -1,0 +1,23 @@
+{
+  "id": "ritual-of-steel-corpus-m677",
+  "description": "M6 corpus — Ritual of Steel; in-hand parse.",
+  "seed": 68378,
+  "cards": {
+    "Ritual of Steel": "Name:Ritual of Steel\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddToughness$ 2 | Description$ Enchanted creature gets +0/+2.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DelTrigSlowtrip | TriggerDescription$ When CARDNAME enters, draw a card at the beginning of the next turn's upkeep.\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Enchant creature\\nWhen Ritual of Steel enters, draw a card at the beginning of the next turn's upkeep.\\nEnchanted creature gets +0/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ritual of Steel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

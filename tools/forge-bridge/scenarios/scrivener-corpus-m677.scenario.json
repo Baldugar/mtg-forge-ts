@@ -1,0 +1,23 @@
+{
+  "id": "scrivener-corpus-m677",
+  "description": "M6 corpus — Scrivener; in-hand parse.",
+  "seed": 69235,
+  "cards": {
+    "Scrivener": "Name:Scrivener\nManaCost:4 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target instant card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouCtrl\nOracle:When Scrivener enters, you may return target instant card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrivener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

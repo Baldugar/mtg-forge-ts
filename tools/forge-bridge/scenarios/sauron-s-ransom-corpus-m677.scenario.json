@@ -1,0 +1,23 @@
+{
+  "id": "sauron-s-ransom-corpus-m677",
+  "description": "M6 corpus — Sauron's Ransom; in-hand parse.",
+  "seed": 69042,
+  "cards": {
+    "Sauron's Ransom": "Name:Sauron's Ransom\nManaCost:1 U B\nTypes:Instant\nA:SP$ TwoPiles | Defined$ You | Separator$ Opponent | Chooser$ You | DefinedCards$ Top_4_OfLibrary | ChosenPile$ DBHand | UnchosenPile$ DBGrave | FaceDown$ One | SubAbility$ TrigTempt | SpellDescription$ Choose an opponent. They look at the top four cards of your library and separate them into a face-down pile and a face-up pile. Put one pile into your hand and the other into your graveyard. The Ring tempts you.\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Graveyard\nSVar:TrigTempt:DB$ RingTemptsYou\nOracle:Choose an opponent. They look at the top four cards of your library and separate them into a face-down pile and a face-up pile. Put one pile into your hand and the other into your graveyard. The Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sauron's Ransom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

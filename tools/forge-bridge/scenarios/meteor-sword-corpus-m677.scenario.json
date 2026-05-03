@@ -1,0 +1,23 @@
+{
+  "id": "meteor-sword-corpus-m677",
+  "description": "M6 corpus — Meteor Sword; in-hand parse.",
+  "seed": 65070,
+  "cards": {
+    "Meteor Sword": "Name:Meteor Sword\nManaCost:7\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this Equipment enters, destroy target permanent.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent | TgtPrompt$ Select target permanent\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Equipped creature gets +3/+3.\nK:Equip:3\nOracle:When this Equipment enters, destroy target permanent.\\nEquipped creature gets +3/+3.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meteor Sword"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

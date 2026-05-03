@@ -1,0 +1,25 @@
+{
+  "id": "skinthinner-corpus-m677",
+  "description": "M6 corpus — Skinthinner; ETB-on-bf.",
+  "seed": 70037,
+  "cards": {
+    "Skinthinner": "Name:Skinthinner\nManaCost:1 B\nTypes:Creature Zombie\nPT:2/1\nK:Morph:3 B B\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, destroy target nonblack creature. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack | NoRegen$ True | TgtPrompt$ Select target nonblack creature\nOracle:Morph {3}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Skinthinner is turned face up, destroy target nonblack creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Skinthinner"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

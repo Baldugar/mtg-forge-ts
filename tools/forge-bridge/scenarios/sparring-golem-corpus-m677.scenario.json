@@ -1,0 +1,25 @@
+{
+  "id": "sparring-golem-corpus-m677",
+  "description": "M6 corpus — Sparring Golem; ETB-on-bf.",
+  "seed": 70520,
+  "cards": {
+    "Sparring Golem": "Name:Sparring Golem\nManaCost:3\nTypes:Artifact Creature Golem\nPT:2/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME becomes blocked, it gets +1/+1 until end of turn for each creature blocking it.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.blockingTriggeredAttacker\nOracle:Whenever Sparring Golem becomes blocked, it gets +1/+1 until end of turn for each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Sparring Golem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

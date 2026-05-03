@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-the-defiler-corpus-m677",
+  "description": "M6 corpus — Rakdos the Defiler; in-hand parse.",
+  "seed": 67619,
+  "cards": {
+    "Rakdos the Defiler": "Name:Rakdos the Defiler\nManaCost:2 B B R R\nTypes:Legendary Creature Demon\nPT:7/6\nK:Flying\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks, sacrifice half the non-Demon permanents you control, rounded up.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSac2 | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, that player sacrifices half the non-Demon permanents they control, rounded up.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | Amount$ X | SacValid$ Permanent.nonDemon | SacMessage$ non-Demon Permanent\nSVar:TrigSac2:DB$ Sacrifice | Defined$ TriggeredTarget | Amount$ Y | SacValid$ Permanent.nonDemon | SacMessage$ non-Demon Permanent\nSVar:X:Count$Valid Permanent.nonDemon+YouCtrl/HalfUp\nSVar:Y:TriggeredTarget$Valid Permanent.nonDemon+YouCtrl/HalfUp\nAI:RemoveDeck:Random\nOracle:Flying, trample\\nWhenever Rakdos the Defiler attacks, sacrifice half the non-Demon permanents you control, rounded up.\\nWhenever Rakdos deals combat damage to a player, that player sacrifices half the non-Demon permanents they control, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos the Defiler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

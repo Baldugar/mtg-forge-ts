@@ -1,0 +1,23 @@
+{
+  "id": "jelenn-sphinx-corpus-m677",
+  "description": "M6 corpus — Jelenn Sphinx; in-hand parse.",
+  "seed": 63266,
+  "cards": {
+    "Jelenn Sphinx": "Name:Jelenn Sphinx\nManaCost:3 W U\nTypes:Creature Sphinx\nPT:1/5\nK:Flying\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAttack | TriggerDescription$ Whenever CARDNAME attacks, other attacking creatures get +1/+1 until end of turn.\nSVar:TrigPumpAttack:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +1 | NumDef$ +1\nOracle:Flying, vigilance\\nWhenever Jelenn Sphinx attacks, other attacking creatures get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jelenn Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "heroic-defiance-corpus-m677",
+  "description": "M6 corpus — Heroic Defiance; in-hand parse.",
+  "seed": 62307,
+  "cards": {
+    "Heroic Defiance": "Name:Heroic Defiance\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | CheckSVar$ X | SVarCompare$ EQ0 | Description$ Enchanted creature gets +3/+3 unless it shares a color with the most common color among all permanents or a color tied for most common.\nSVar:X:Count$Valid Card.EnchantedBy+SharesColorWith MostProminentColor\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature gets +3/+3 unless it shares a color with the most common color among all permanents or a color tied for most common.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heroic Defiance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

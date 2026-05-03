@@ -1,0 +1,23 @@
+{
+  "id": "seedtime-corpus-m677",
+  "description": "M6 corpus — Seedtime; in-hand parse.",
+  "seed": 69371,
+  "cards": {
+    "Seedtime": "Name:Seedtime\nManaCost:1 G\nTypes:Instant\nA:SP$ AddTurn | NumTurns$ 1 | PlayerTurn$ True | ConditionCheckSVar$ X | SpellDescription$ Cast this spell only during your turn. Take an extra turn after this one if an opponent cast a blue spell this turn.\nSVar:X:Count$ThisTurnCast_Card.Blue+OppCtrl\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Cast this spell only during your turn.\\nTake an extra turn after this one if an opponent cast a blue spell this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seedtime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

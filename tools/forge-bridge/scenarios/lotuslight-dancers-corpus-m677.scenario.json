@@ -1,0 +1,23 @@
+{
+  "id": "lotuslight-dancers-corpus-m677",
+  "description": "M6 corpus — Lotuslight Dancers; in-hand parse.",
+  "seed": 64434,
+  "cards": {
+    "Lotuslight Dancers": "Name:Lotuslight Dancers\nManaCost:2 B G U\nTypes:Creature Zombie Bard\nPT:3/6\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSearch | TriggerDescription$ When this creature enters, search your library for a black card, a green card, and a blue card. Put those cards into your graveyard, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ EACH Card.Black & Card.Green & Card.Blue | ChangeNum$ 1\nDeckHas:Ability$Graveyard\nOracle:Lifelink\\nWhen this creature enters, search your library for a black card, a green card, and a blue card. Put those cards into your graveyard, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lotuslight Dancers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

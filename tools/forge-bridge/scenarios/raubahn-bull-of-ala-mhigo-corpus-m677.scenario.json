@@ -1,0 +1,23 @@
+{
+  "id": "raubahn-bull-of-ala-mhigo-corpus-m677",
+  "description": "M6 corpus — Raubahn, Bull of Ala Mhigo; in-hand parse.",
+  "seed": 67739,
+  "cards": {
+    "Raubahn, Bull of Ala Mhigo": "Name:Raubahn, Bull of Ala Mhigo\nManaCost:1 R\nTypes:Legendary Creature Human Warrior\nPT:2/2\nK:Ward:PayLife<X/life equal to NICKNAME's power>\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME attacks, attach up to one target Equipment you control to target attacking creature.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Equipment.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target Equipment you control | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ ParentTarget | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature\nSVar:X:Count$CardPower\nDeckHints:Type$Equipment\nOracle:Ward—Pay life equal to Raubahn's power.\\nWhenever Raubahn attacks, attach up to one target Equipment you control to target attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raubahn, Bull of Ala Mhigo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "planeswalker-s-scorn-corpus-m677",
+  "description": "M6 corpus — Planeswalker's Scorn; ETB-on-bf.",
+  "seed": 66986,
+  "cards": {
+    "Planeswalker's Scorn": "Name:Planeswalker's Scorn\nManaCost:2 B\nTypes:Enchantment\nA:AB$ Reveal | Cost$ 3 B | Random$ True | RememberRevealed$ True | ValidTgts$ Opponent | SorcerySpeed$ True | SubAbility$ DBPump | SpellDescription$ Target opponent reveals a card at random from their hand. Target creature gets -X/-X until end of turn, where X is the revealed card's mana value. Activate only as a sorcery.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nSVar:NonStackingEffect:True\nOracle:{3}{B}: Target opponent reveals a card at random from their hand. Target creature gets -X/-X until end of turn, where X is the revealed card's mana value. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Planeswalker's Scorn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

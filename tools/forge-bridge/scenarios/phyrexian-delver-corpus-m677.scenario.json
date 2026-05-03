@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-delver-corpus-m677",
+  "description": "M6 corpus — Phyrexian Delver; in-hand parse.",
+  "seed": 66843,
+  "cards": {
+    "Phyrexian Delver": "Name:Phyrexian Delver\nManaCost:3 B B\nTypes:Creature Phyrexian Zombie\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature card from your graveyard to the battlefield. You lose life equal to that card's mana value.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature card in your graveyard | GainControl$ True | ChangeNum$ 1 | SubAbility$ DBLoseLifeYou\nSVar:DBLoseLifeYou:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:All\nOracle:When Phyrexian Delver enters, return target creature card from your graveyard to the battlefield. You lose life equal to that card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Delver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

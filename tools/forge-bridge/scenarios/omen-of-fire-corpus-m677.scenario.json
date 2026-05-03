@@ -1,0 +1,23 @@
+{
+  "id": "omen-of-fire-corpus-m677",
+  "description": "M6 corpus — Omen of Fire; in-hand parse.",
+  "seed": 66282,
+  "cards": {
+    "Omen of Fire": "Name:Omen of Fire\nManaCost:3 R R\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Island | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return all Islands to their owners' hands. Each player sacrifices a Plains or a white permanent for each white permanent they control. | SubAbility$ DBSac\nSVar:DBSac:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBSacEach\nSVar:DBSacEach:DB$ Sacrifice | Defined$ Player.IsRemembered | Amount$ OppX | SacValid$ Plains,Permanent.White\nSVar:OppX:Count$Valid Permanent.White+RememberedPlayerCtrl\nAI:RemoveDeck:Random\nOracle:Return all Islands to their owners' hands. Each player sacrifices a Plains or a white permanent for each white permanent they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omen of Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

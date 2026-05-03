@@ -1,0 +1,23 @@
+{
+  "id": "psychic-vortex-corpus-m677",
+  "description": "M6 corpus — Psychic Vortex; in-hand parse.",
+  "seed": 67329,
+  "cards": {
+    "Psychic Vortex": "Name:Psychic Vortex\nManaCost:2 U U\nTypes:Enchantment\nK:Cumulative upkeep:Draw<1/You>:Draw a card.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, sacrifice a land and discard your hand.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ Hand\nAI:RemoveDeck:All\nOracle:Cumulative upkeep—Draw a card. (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAt the beginning of your end step, sacrifice a land and discard your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Vortex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

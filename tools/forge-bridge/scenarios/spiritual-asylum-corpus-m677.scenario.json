@@ -1,0 +1,23 @@
+{
+  "id": "spiritual-asylum-corpus-m677",
+  "description": "M6 corpus — Spiritual Asylum; in-hand parse.",
+  "seed": 70716,
+  "cards": {
+    "Spiritual Asylum": "Name:Spiritual Asylum\nManaCost:2 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl,Land.YouCtrl | AddKeyword$ Shroud | Description$ Creatures and lands you control have shroud.\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigSacrifice | TriggerDescription$ When a creature you control attacks, sacrifice CARDNAME.\nSVar:TrigSacrifice:DB$ Sacrifice\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:Creatures and lands you control have shroud. (They can't be the targets of spells or abilities.)\\nWhen a creature you control attacks, sacrifice Spiritual Asylum.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiritual Asylum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

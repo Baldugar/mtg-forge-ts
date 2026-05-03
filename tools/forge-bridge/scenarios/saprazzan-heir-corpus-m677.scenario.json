@@ -1,0 +1,25 @@
+{
+  "id": "saprazzan-heir-corpus-m677",
+  "description": "M6 corpus — Saprazzan Heir; ETB-on-bf.",
+  "seed": 69001,
+  "cards": {
+    "Saprazzan Heir": "Name:Saprazzan Heir\nManaCost:1 U\nTypes:Creature Merfolk\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME becomes blocked, you may draw three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3 | OptionalDecider$ You\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Saprazzan Heir becomes blocked, you may draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Saprazzan Heir"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

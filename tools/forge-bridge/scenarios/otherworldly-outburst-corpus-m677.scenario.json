@@ -1,0 +1,23 @@
+{
+  "id": "otherworldly-outburst-corpus-m677",
+  "description": "M6 corpus — Otherworldly Outburst; in-hand parse.",
+  "seed": 66462,
+  "cards": {
+    "Otherworldly Outburst": "Name:Otherworldly Outburst\nManaCost:R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +1 | SubAbility$ DBDelayedTrigger | SpellDescription$ Target creature gets +1/+0 until end of turn.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ DBToken | SpellDescription$ When that creature dies this turn, create a 3/2 colorless Eldrazi Horror creature token.\nSVar:DBToken:DB$ Token | TokenScript$ c_3_2_eldrazi_horror\nDeckHints:Type$Eldrazi|Horror\nDeckHas:Ability$Token\nOracle:Target creature gets +1/+0 until end of turn. When that creature dies this turn, create a 3/2 colorless Eldrazi Horror creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Otherworldly Outburst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

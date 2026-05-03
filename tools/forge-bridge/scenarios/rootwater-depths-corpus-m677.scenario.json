@@ -1,0 +1,25 @@
+{
+  "id": "rootwater-depths-corpus-m677",
+  "description": "M6 corpus — Rootwater Depths; ETB-on-bf.",
+  "seed": 68523,
+  "cards": {
+    "Rootwater Depths": "Name:Rootwater Depths\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | SpellDescription$ Add {U} or {B}. CARDNAME doesn't untap during your next untap step. | SubAbility$ DBStayTapped\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{T}: Add {C}.\\n{T}: Add {U} or {B}. Rootwater Depths doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Rootwater Depths"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

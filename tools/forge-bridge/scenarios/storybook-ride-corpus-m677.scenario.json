@@ -1,0 +1,25 @@
+{
+  "id": "storybook-ride-corpus-m677",
+  "description": "M6 corpus — Storybook Ride; ETB-on-bf.",
+  "seed": 71142,
+  "cards": {
+    "Storybook Ride": "Name:Storybook Ride\nManaCost:no cost\nTypes:Artifact Attraction\nK:Visit:TrigExile\nSVar:TrigExile:DB$ Dig | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top X cards of your library, where X is the number of Attractions you've visited this turn (including this one). You may play those cards this turn. At the beginning of the next end step, if any of those cards remain exiled, put them on the bottom of your library in any order.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ForgetOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBDelayTrig\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play those cards this turn.\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | RememberObjects$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionZone$ Exile | Phase$ End Of Turn | Execute$ TrigChangeAll | SubAbility$ DBCleanup | TriggerDescription$ At the beginning of the next end step, if any of those cards remain exiled, put them on the bottom of your library in any order.\nSVar:TrigChangeAll:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Library | LibraryPosition$ -1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountPropertyYou$AttractionsVisitedThisTurn\nOracle:Visit — Exile the top X cards of your library, where X is the number of Attractions you've visited this turn (including this one). You may play those cards this turn. At the beginning of the next end step, if any of those cards remain exiled, put them on the bottom of your library in any order.\n\n# --- VARIANTS ---\n\nVariant:A:Lights:2 5 6\nVariant:B:Lights:3 4 6\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Storybook Ride"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

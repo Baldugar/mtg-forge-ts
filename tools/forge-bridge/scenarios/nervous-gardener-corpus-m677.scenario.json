@@ -1,0 +1,25 @@
+{
+  "id": "nervous-gardener-corpus-m677",
+  "description": "M6 corpus — Nervous Gardener; ETB-on-bf.",
+  "seed": 65843,
+  "cards": {
+    "Nervous Gardener": "Name:Nervous Gardener\nManaCost:1 G\nTypes:Creature Dryad\nPT:2/2\nK:Disguise:G\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, search your library for a land card with a basic land type, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.hasABasicLandType | ChangeNum$ 1 | Reveal$ True\nOracle:Disguise {G} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Nervous Gardener is turned face up, search your library for a land card with a basic land type, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Nervous Gardener"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

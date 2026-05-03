@@ -1,0 +1,23 @@
+{
+  "id": "panicked-bystander-corpus-m677",
+  "description": "M6 corpus — Panicked Bystander; in-hand parse.",
+  "seed": 66595,
+  "cards": {
+    "Panicked Bystander": "Name:Panicked Bystander\nManaCost:1 W\nTypes:Creature Human Peasant\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife1 | TriggerDescription$ Whenever CARDNAME or another creature you control dies, you gain 1 life.\nSVar:TrigGainLife1:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ YouLifeGained | SVarCompare$ GE3 | Execute$ TrigTransform | TriggerDescription$ At the beginning of your end step, if you gained 3 or more life this turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:YouLifeGained:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:Whenever Panicked Bystander or another creature you control dies, you gain 1 life.\\nAt the beginning of your end step, if you gained 3 or more life this turn, transform Panicked Bystander.\n\nALTERNATE\n\nName:Cackling Culprit\nManaCost:no cost\nColors:black\nTypes:Creature Human Rogue\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife2 | TriggerDescription$ Whenever CARDNAME or another creature you control dies, you gain 1 life.\nSVar:TrigGainLife2:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Pump | Cost$ 1 B | Defined$ Self | KW$ Deathtouch | SpellDescription$ CARDNAME gains deathtouch until end of turn.\nOracle:Whenever Cackling Culprit or another creature you control dies, you gain 1 life.\\n{1}{B}: Cackling Culprit gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Panicked Bystander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

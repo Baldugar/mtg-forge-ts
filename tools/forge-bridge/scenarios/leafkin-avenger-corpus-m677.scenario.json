@@ -1,0 +1,25 @@
+{
+  "id": "leafkin-avenger-corpus-m677",
+  "description": "M6 corpus — Leafkin Avenger; ETB-on-bf.",
+  "seed": 64067,
+  "cards": {
+    "Leafkin Avenger": "Name:Leafkin Avenger\nManaCost:2 R G\nTypes:Creature Elemental Druid\nPT:4/3\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ X | SpellDescription$ Add {G} for each creature you control with power 4 or greater.\nSVar:X:Count$Valid Creature.YouCtrl+powerGE4\nA:AB$ DealDamage | Cost$ 7 R | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ Y | SpellDescription$ CARDNAME deals damage equal to its power to target player or planeswalker.\nSVar:Y:Count$CardPower\nOracle:{T}: Add {G} for each creature with power 4 or greater you control.\\n{7}{R}: Leafkin Avenger deals damage equal to its power to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Leafkin Avenger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "steamflogger-of-the-month-corpus-m677",
+  "description": "M6 corpus — Steamflogger of the Month; in-hand parse.",
+  "seed": 70949,
+  "cards": {
+    "Steamflogger of the Month": "Name:Steamflogger of the Month\nManaCost:3 R R\nTypes:Creature Goblin Rigger\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigAssemble | TriggerDescription$ When CARDNAME enters, it assembles a Contraption for each Contraption you control.\nSVar:TrigAssemble:DB$ AssembleContraption | Amount$ X\nSVar:X:Count$Valid Contraption.YouCtrl\nOracle:When Steamflogger of the Month enters, it assembles a Contraption for each Contraption you control. (To assemble a Contraption, put the top card of your Contraption deck face up onto one of your sprockets.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steamflogger of the Month"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

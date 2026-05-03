@@ -1,0 +1,23 @@
+{
+  "id": "haste-magic-corpus-m677",
+  "description": "M6 corpus — Haste Magic; in-hand parse.",
+  "seed": 62096,
+  "cards": {
+    "Haste Magic": "Name:Haste Magic\nManaCost:1 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +1 | KW$ Haste | SubAbility$ DBExileTop | SpellDescription$ Target creature gets +3/+1 and gains haste until end of turn. Exile the top card of your library. You may play it until your next end step.\nSVar:DBExileTop:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | Duration$ UntilYourNextEndStep | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card until your next end step.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target creature gets +3/+1 and gains haste until end of turn. Exile the top card of your library. You may play it until your next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haste Magic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

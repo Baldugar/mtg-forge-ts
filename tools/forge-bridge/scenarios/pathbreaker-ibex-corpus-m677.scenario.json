@@ -1,0 +1,23 @@
+{
+  "id": "pathbreaker-ibex-corpus-m677",
+  "description": "M6 corpus — Pathbreaker Ibex; in-hand parse.",
+  "seed": 66657,
+  "cards": {
+    "Pathbreaker Ibex": "Name:Pathbreaker Ibex\nManaCost:4 G G\nTypes:Creature Goat\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, creatures you control gain trample and get +X/+X until end of turn, where X is the greatest power among creatures you control.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +X | NumDef$ +X | KW$ Trample\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Pathbreaker Ibex attacks, creatures you control gain trample and get +X/+X until end of turn, where X is the greatest power among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pathbreaker Ibex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

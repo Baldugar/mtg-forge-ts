@@ -1,0 +1,23 @@
+{
+  "id": "rick-steadfast-leader-corpus-m677",
+  "description": "M6 corpus — Rick, Steadfast Leader; in-hand parse.",
+  "seed": 68243,
+  "cards": {
+    "Rick, Steadfast Leader": "Name:Rick, Steadfast Leader\nVariant:UniversesWithin:FlavorName:Greymond, Avacyn's Stalwart\nManaCost:2 W W\nTypes:Legendary Creature Human Soldier\nPT:3/4\nK:ETBReplacement:Other:ChooseAbilities\nSVar:ChooseAbilities:DB$ GenericChoice | Choices$ FSVig,VigLif,FSLif | SpellDescription$ As NICKNAME enters, choose two abilities from among first strike, vigilance, and lifelink.\nSVar:FSVig:DB$ StoreSVar | SVar$ VarFSVig | Type$ Number | Expression$ 1 | SpellDescription$ First strike, vigilance\nSVar:VigLif:DB$ StoreSVar | SVar$ VarVigLif | Type$ Number | Expression$ 1 | SpellDescription$ Vigilance, lifelink\nSVar:FSLif:DB$ StoreSVar | SVar$ VarFSLif | Type$ Number | Expression$ 1 | SpellDescription$ First strike, lifelink\nS:Mode$ Continuous | Affected$ Human.YouCtrl | AddKeyword$ First Strike & Vigilance | CheckSVar$ VarFSVig | SVarCompare$ EQ1 | Description$ Humans you control have each of the chosen abilities.\nS:Mode$ Continuous | Affected$ Human.YouCtrl | AddKeyword$ Vigilance & Lifelink | CheckSVar$ VarVigLif | SVarCompare$ EQ1 | Secondary$ True\nS:Mode$ Continuous | Affected$ Human.YouCtrl | AddKeyword$ First Strike & Lifelink | CheckSVar$ VarFSLif | SVarCompare$ EQ1 | Secondary$ True\nS:Mode$ Continuous | Affected$ Human.YouCtrl | AddPower$ 2 | AddToughness$ 2 | IsPresent$ Human.YouCtrl | PresentCompare$ GE4 | Description$ As long as you control four or more Humans, Humans you control get +2/+2.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ ResetSVars | Static$ True\nSVar:ResetSVars:DB$ StoreSVar | SVar$ VarFSVig | Type$ Number | Expression$ 0 | SubAbility$ ResetSVars2\nSVar:ResetSVars2:DB$ StoreSVar | SVar$ VarVigLif | Type$ Number | Expression$ 0 | SubAbility$ ResetSVars3\nSVar:ResetSVars3:DB$ StoreSVar | SVar$ VarFSLif | Type$ Number | Expression$ 0\nSVar:VarFSVig:Number$0\nSVar:VarVigLif:Number$0\nSVar:VarFSLif:Number$0\nSVar:PlayMain1:TRUE\nDeckHints:Type$Human\nOracle:As Rick enters, choose two abilities from among first strike, vigilance, and lifelink.\\nHumans you control have each of the chosen abilities.\\nAs long as you control four or more Humans, Humans you control get +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rick, Steadfast Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

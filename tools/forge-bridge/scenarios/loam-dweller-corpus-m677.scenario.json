@@ -1,0 +1,25 @@
+{
+  "id": "loam-dweller-corpus-m677",
+  "description": "M6 corpus — Loam Dweller; ETB-on-bf.",
+  "seed": 64341,
+  "cards": {
+    "Loam Dweller": "Name:Loam Dweller\nManaCost:1 G\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigLand | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a land card from your hand onto the battlefield tapped.\nSVar:TrigLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Tapped$ True\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a land card from your hand onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Loam Dweller"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shinestriker-corpus-m677",
+  "description": "M6 corpus — Shinestriker; in-hand parse.",
+  "seed": 69713,
+  "cards": {
+    "Shinestriker": "Name:Shinestriker\nManaCost:4 U U\nTypes:Creature Elemental\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Vivid — When this creature enters, draw cards equal to the number of colors among permanents you control.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Flying\\nVivid — When this creature enters, draw cards equal to the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shinestriker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

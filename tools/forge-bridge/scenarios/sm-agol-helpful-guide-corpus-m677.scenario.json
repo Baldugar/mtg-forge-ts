@@ -1,0 +1,23 @@
+{
+  "id": "sm-agol-helpful-guide-corpus-m677",
+  "description": "M6 corpus — Sméagol, Helpful Guide; in-hand parse.",
+  "seed": 70252,
+  "cards": {
+    "Sméagol, Helpful Guide": "Name:Sméagol, Helpful Guide\nManaCost:1 B G\nTypes:Legendary Creature Halfling Horror\nPT:4/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigTempt | TriggerDescription$ At the beginning of your end step, if a creature died under your control this turn, the Ring tempts you.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouCtrl\nSVar:TrigTempt:DB$ RingTemptsYou\nT:Mode$ RingTemptsYou | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDigUntil | TriggerDescription$ Whenever the Ring tempts you, target opponent reveals cards from the top of their library until they reveal a land card. Put that card onto the battlefield tapped under your control and the rest into their graveyard.\nSVar:TrigDigUntil:DB$ DigUntil | Reveal$ True | ValidTgts$ Opponent | IsCurse$ True | Valid$ Land | ValidDescription$ land card | FoundDestination$ Battlefield | GainControl$ True | Tapped$ True | RevealedDestination$ Graveyard\nOracle:At the beginning of your end step, if a creature died under your control this turn, the Ring tempts you.\\nWhenever the Ring tempts you, target opponent reveals cards from the top of their library until they reveal a land card. Put that card onto the battlefield tapped under your control and the rest into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sméagol, Helpful Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

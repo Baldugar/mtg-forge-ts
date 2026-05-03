@@ -1,0 +1,23 @@
+{
+  "id": "rampaging-raptor-corpus-m677",
+  "description": "M6 corpus — Rampaging Raptor; in-hand parse.",
+  "seed": 67671,
+  "cards": {
+    "Rampaging Raptor": "Name:Rampaging Raptor\nManaCost:2 R R\nTypes:Creature Dinosaur\nPT:4/4\nK:Trample\nK:Haste\nA:AB$ Pump | Cost$ 2 R | NumAtt$ +2 | SpellDescription$ CARDNAME gets +2/+0 until end of turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME deals combat damage to an opponent, it deals that much damage to target planeswalker that player controls or battle that player protects.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Planeswalker.ControlledBy TriggeredTarget,Battle.ProtectedBy TriggeredTarget | TgtPrompt$ Select target planeswalker that player controls or battle that player protects | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Trample, haste\\n{2}{R}: Rampaging Raptor gets +2/+0 until end of turn.\\nWhenever Rampaging Raptor deals combat damage to an opponent, it deals that much damage to target planeswalker that player controls or battle that player protects.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampaging Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

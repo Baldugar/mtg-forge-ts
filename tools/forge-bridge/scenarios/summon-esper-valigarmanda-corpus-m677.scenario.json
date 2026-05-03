@@ -1,0 +1,23 @@
+{
+  "id": "summon-esper-valigarmanda-corpus-m677",
+  "description": "M6 corpus — Summon: Esper Valigarmanda; in-hand parse.",
+  "seed": 71308,
+  "cards": {
+    "Summon: Esper Valigarmanda": "Name:Summon: Esper Valigarmanda\nManaCost:3 R\nTypes:Enchantment Creature Saga Drake\nPT:3/3\nK:Chapter:4:DBExile,DBMana,DBMana,DBMana\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Hidden$ True | Mandatory$ True | DefinedPlayer$ Player | Chooser$ You | ChangeType$ Instant,Sorcery\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ X | SubAbility$ DBPlay | SpellDescription$ Add {R} for each lore counter on this Saga. You may cast an instant or sorcery card exiled with this Saga, and mana of any type can be spent to cast that spell.\nSVar:DBPlay:DB$ Play | Valid$ Instant.ExiledWithSource,Sorcery.ExiledWithSource | ValidSA$ Spell | ManaConversion$ AnyType->AnyType | ValidZone$ Exile | Optional$ True\nK:Flying\nK:Haste\nSVar:X:Count$CardCounters.LORE\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI — Exile an instant or sorcery card from each graveyard.\\nII, III, IV — Add {R} for each lore counter on this Saga. You may cast an instant or sorcery card exiled with this Saga, and mana of any type can be spent to cast that spell.\\nFlying, haste\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Summon: Esper Valigarmanda"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

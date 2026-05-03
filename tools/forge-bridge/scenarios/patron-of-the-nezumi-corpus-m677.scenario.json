@@ -1,0 +1,23 @@
+{
+  "id": "patron-of-the-nezumi-corpus-m677",
+  "description": "M6 corpus — Patron of the Nezumi; in-hand parse.",
+  "seed": 66673,
+  "cards": {
+    "Patron of the Nezumi": "Name:Patron of the Nezumi\nManaCost:5 B B\nTypes:Legendary Creature Spirit\nPT:6/6\nK:Offering:Rat\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | ValidCard$ Card.OppOwn | Execute$ TrigLoseLife | TriggerDescription$ Whenever a permanent is put into an opponent's graveyard, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredCardOwner | LifeAmount$ 1\nAI:RemoveDeck:All\nOracle:Rat offering (You may cast this card any time you could cast an instant by sacrificing a Rat and paying the difference in mana costs between this and the sacrificed Rat. Mana cost includes color.)\\nWhenever a permanent is put into an opponent's graveyard, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Patron of the Nezumi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

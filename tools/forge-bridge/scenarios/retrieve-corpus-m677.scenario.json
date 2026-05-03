@@ -1,0 +1,23 @@
+{
+  "id": "retrieve-corpus-m677",
+  "description": "M6 corpus — Retrieve; in-hand parse.",
+  "seed": 68149,
+  "cards": {
+    "Retrieve": "Name:Retrieve\nManaCost:2 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select up to one target creature card in your graveyard | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.YouOwn | SubAbility$ DBReturn | StackDescription$ SpellDescription | SpellDescription$ Return up to one target creature card\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.nonCreature+YouOwn | TgtPrompt$ Select up to one target noncreature permanent card in your graveyard | SubAbility$ DBExile | StackDescription$ SpellDescription | SpellDescription$ and up to one target noncreature permanent card\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ SpellDescription | SpellDescription$ from your graveyard to your hand. Exile CARDNAME.\nOracle:Return up to one target creature card and up to one target noncreature permanent card from your graveyard to your hand. Exile Retrieve.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Retrieve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

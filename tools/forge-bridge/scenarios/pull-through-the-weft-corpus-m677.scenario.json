@@ -1,0 +1,23 @@
+{
+  "id": "pull-through-the-weft-corpus-m677",
+  "description": "M6 corpus — Pull Through the Weft; in-hand parse.",
+  "seed": 67346,
+  "cards": {
+    "Pull Through the Weft": "Name:Pull Through the Weft\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand+YouOwn | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target nonland permanent cards in your graveyard | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBChangeZone | SpellDescription$ Return up to two target nonland permanent cards from your graveyard to your hand, then return up to two target land cards from your graveyard to the battlefield tapped.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Land.YouOwn | TgtPrompt$ Select up to two target land cards in your graveyard | TargetMin$ 0 | TargetMax$ 2 | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True\nDeckHints:Ability$Graveyard|Discard\nOracle:Return up to two target nonland permanent cards from your graveyard to your hand, then return up to two target land cards from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pull Through the Weft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

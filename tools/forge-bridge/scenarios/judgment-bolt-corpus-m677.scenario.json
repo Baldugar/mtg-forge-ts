@@ -1,0 +1,23 @@
+{
+  "id": "judgment-bolt-corpus-m677",
+  "description": "M6 corpus — Judgment Bolt; in-hand parse.",
+  "seed": 63366,
+  "cards": {
+    "Judgment Bolt": "Name:Judgment Bolt\nManaCost:3 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 5 | DamageMap$ True | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 5 damage to target creature and X damage to that creature's controller, where X is the number of Equipment you control.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Count$Valid Equipment.YouCtrl\nOracle:Judgment Bolt deals 5 damage to target creature and X damage to that creature's controller, where X is the number of Equipment you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Judgment Bolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "serah-farron-corpus-m677",
+  "description": "M6 corpus — Serah Farron; in-hand parse.",
+  "seed": 69457,
+  "cards": {
+    "Serah Farron": "Name:Serah Farron\nManaCost:1 G W\nTypes:Legendary Creature Human Citizen\nPT:2/2\nS:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Creature.Legendary | Activator$ You | Type$ Spell | OnlyFirstSpell$ True | Amount$ 2 | Description$ The first legendary creature spell you cast each turn costs {2} less to cast.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | IsPresent$ Creature.Other+Legendary+YouCtrl | PresentCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ At the beginning of combat on your turn, if you control two or more other legendary creatures, you may transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nSVar:PlayMain1:TRUE\nDeckHints:Type$Legendary\nOracle:The first legendary creature spell you cast each turn costs {2} less to cast.\\nAt the beginning of combat on your turn, if you control two or more other legendary creatures, you may transform Serah Farron.\n\nALTERNATE\n\nName:Crystallized Serah\nManaCost:no cost\nColors:green,white\nTypes:Legendary Artifact\nS:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Creature.Legendary | Activator$ You | Type$ Spell | OnlyFirstSpell$ True | Amount$ 2 | Description$ The first legendary creature spell you cast each turn costs {2} less to cast.\nS:Mode$ Continuous | Affected$ Creature.Legendary+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Legendary creatures you control get +2/+2.\nOracle:The first legendary creature spell you cast each turn costs {2} less to cast.\\nLegendary creatures you control get +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serah Farron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

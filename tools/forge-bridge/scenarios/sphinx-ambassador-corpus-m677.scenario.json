@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-ambassador-corpus-m677",
+  "description": "M6 corpus — Sphinx Ambassador; in-hand parse.",
+  "seed": 70609,
+  "cards": {
+    "Sphinx Ambassador": "Name:Sphinx Ambassador\nManaCost:5 U U\nTypes:Creature Sphinx\nPT:5/5\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSearch | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, search that player's library for a card, then that player chooses a card name. If you searched for a creature card that doesn't have that name, you may put it onto the battlefield under your control. Then that player shuffles.\nSVar:TrigSearch:DB$ ChangeZone | ChangeType$ Card | Origin$ Library | Destination$ Library | DefinedPlayer$ TriggeredTarget | Chooser$ You | Shuffle$ False | RememberChanged$ True | SubAbility$ DBName\nSVar:DBName:DB$ NameCard | Defined$ TriggeredTarget | SubAbility$ DBChangeZone | AILogic$ BestCreatureInComputerDeck\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Battlefield | GainControl$ True | ConditionDefined$ Remembered | Shuffle$ False | ConditionPresent$ Card.NamedCard | ConditionCompare$ EQ0 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | Optional$ True | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ TriggeredTarget | SubAbility$ DBCleanup\nSVar:X:Count$ValidLibrary Creature.IsRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nOracle:Flying\\nWhenever Sphinx Ambassador deals combat damage to a player, search that player's library for a card, then that player chooses a card name. If you searched for a creature card that doesn't have that name, you may put it onto the battlefield under your control. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx Ambassador"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

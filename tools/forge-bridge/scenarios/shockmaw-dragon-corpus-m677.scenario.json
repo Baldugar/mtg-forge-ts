@@ -1,0 +1,23 @@
+{
+  "id": "shockmaw-dragon-corpus-m677",
+  "description": "M6 corpus — Shockmaw Dragon; in-hand parse.",
+  "seed": 69745,
+  "cards": {
+    "Shockmaw Dragon": "Name:Shockmaw Dragon\nManaCost:4 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, it deals 1 damage to each creature that player controls.\nSVar:TrigDamage:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.ControlledBy TriggeredTarget\nOracle:Flying\\nWhenever Shockmaw Dragon deals combat damage to a player, it deals 1 damage to each creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shockmaw Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

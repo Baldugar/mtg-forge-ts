@@ -1,0 +1,23 @@
+{
+  "id": "mephitic-ooze-corpus-m677",
+  "description": "M6 corpus — Mephitic Ooze; in-hand parse.",
+  "seed": 64988,
+  "cards": {
+    "Mephitic Ooze": "Name:Mephitic Ooze\nManaCost:4 B\nTypes:Creature Ooze\nPT:0/5\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +1/+0 for each artifact you control.\nSVar:X:Count$Valid Artifact.YouCtrl\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, destroy that creature. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy | NoRegen$ True\nSVar:BuffedBy:Artifact\nOracle:Mephitic Ooze gets +1/+0 for each artifact you control.\\nWhenever Mephitic Ooze deals combat damage to a creature, destroy that creature. The creature can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mephitic Ooze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

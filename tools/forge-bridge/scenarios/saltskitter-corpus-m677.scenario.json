@@ -1,0 +1,23 @@
+{
+  "id": "saltskitter-corpus-m677",
+  "description": "M6 corpus — Saltskitter; in-hand parse.",
+  "seed": 68906,
+  "cards": {
+    "Saltskitter": "Name:Saltskitter\nManaCost:3 W\nTypes:Creature Wurm\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever another creature enters, exile CARDNAME. Return CARDNAME to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigExile:DB$ ChangeZone | Defined$ Self | RememberChanged$ True | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBDelTrig\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | RememberObjects$ Remembered | Execute$ TrigBack | TriggerDescription$ Return CARDNAME to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigBack:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nOracle:Whenever another creature enters, exile Saltskitter. Return Saltskitter to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saltskitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

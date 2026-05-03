@@ -1,0 +1,23 @@
+{
+  "id": "psychic-possession-corpus-m677",
+  "description": "M6 corpus — Psychic Possession; in-hand parse.",
+  "seed": 67319,
+  "cards": {
+    "Psychic Possession": "Name:Psychic Possession\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Opponent\nSVar:AttachAILogic:Curse\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nT:Mode$ Drawn | ValidCard$ Card.OwnedBy Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever enchanted opponent draws a card, you may draw a card.\nSVar:TrigDraw:DB$ Draw\nAI:RemoveDeck:All\nOracle:Enchant opponent\\nSkip your draw step.\\nWhenever enchanted opponent draws a card, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Possession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

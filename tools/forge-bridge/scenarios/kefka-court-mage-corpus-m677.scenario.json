@@ -1,0 +1,23 @@
+{
+  "id": "kefka-court-mage-corpus-m677",
+  "description": "M6 corpus — Kefka, Court Mage; in-hand parse.",
+  "seed": 63575,
+  "cards": {
+    "Kefka, Court Mage": "Name:Kefka, Court Mage\nManaCost:2 U B R\nTypes:Legendary Creature Human Wizard\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever NICKNAME enters or attacks, each player discards a card. Then you draw a card for each card type among cards discarded this way.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, each player discards a card. Then you draw a card for each card type among cards discarded this way.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Sacrifice | Cost$ 8 | SacValid$ Permanent | Defined$ Player.Opponent | SorcerySpeed$ True | SubAbility$ DBTransform | SpellDescription$ Each opponent sacrifices a permanent of their choice. Transform NICKNAME. Activate only as a sorcery.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:X:Remembered$CardTypes\nAlternateMode:DoubleFaced\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard|Sacrifice\nOracle:Whenever Kefka enters or attacks, each player discards a card. Then you draw a card for each card type among cards discarded this way.\\n{8}: Each opponent sacrifices a permanent of their choice. Transform Kefka. Activate only as a sorcery.\n\nALTERNATE\n\nName:Kefka, Ruler of Ruin\nManaCost:no cost\nColors:blue,black,red\nTypes:Legendary Creature Avatar Wizard\nPT:5/7\nK:Flying\nT:Mode$ LifeLost | ValidPlayer$ Opponent | PlayerTurn$ True | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an opponent loses life during your turn, you draw that many cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ Y\nSVar:Y:TriggerCount$LifeAmount\nOracle:Flying\\nWhenever an opponent loses life during your turn, you draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kefka, Court Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

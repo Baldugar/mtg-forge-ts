@@ -1,0 +1,23 @@
+{
+  "id": "goliath-hatchery-corpus-m677",
+  "description": "M6 corpus — Goliath Hatchery; in-hand parse.",
+  "seed": 61559,
+  "cards": {
+    "Goliath Hatchery": "Name:Goliath Hatchery\nManaCost:4 G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 3/3 green Phyrexian Beast creature tokens with toxic 1. (Players dealt combat damage by them also get a poison counter.)\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_3_3_phyrexian_beast_toxic\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigChooseCard | CheckSVar$ X | SVarCompare$ GE3 | TriggerDescription$ Corrupted — At the beginning of your upkeep, if an opponent has three or more poison counters, choose a creature you control, then draw cards equal to its total toxic value.\nSVar:TrigChooseCard:DB$ ChooseCard | Defined$ You | Amount$ 1 | Choices$ Creature.YouCtrl | Mandatory$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ AffectedX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nSVar:AffectedX:ChosenCard$TotalValue Toxic\nDeckHas:Ability$Token & Type$Beast|Phyrexian\nDeckHints:Keyword$Toxic|Infect\nOracle:When Goliath Hatchery enters, create two 3/3 green Phyrexian Beast creature tokens with toxic 1. (Players dealt combat damage by them also get a poison counter.)\\nCorrupted — At the beginning of your upkeep, if an opponent has three or more poison counters, choose a creature you control, then draw cards equal to its total toxic value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goliath Hatchery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

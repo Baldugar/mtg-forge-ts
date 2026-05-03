@@ -1,0 +1,23 @@
+{
+  "id": "scorned-villager-corpus-m677",
+  "description": "M6 corpus — Scorned Villager; in-hand parse.",
+  "seed": 69180,
+  "cards": {
+    "Scorned Villager": "Name:Scorned Villager\nManaCost:1 G\nTypes:Creature Human Werewolf\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:{T}: Add {G}.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Scorned Villager.\n\nALTERNATE\n\nName:Moonscarred Werewolf\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:2/2\nK:Vigilance\nA:AB$ Mana | Cost$ T | Produced$ G | Amount$ 2 | SpellDescription$ Add {G}{G}.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Vigilance\\n{T}: Add {G}{G}.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Moonscarred Werewolf.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scorned Villager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

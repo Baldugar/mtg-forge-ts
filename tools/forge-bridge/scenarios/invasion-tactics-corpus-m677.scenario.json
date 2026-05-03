@@ -1,0 +1,23 @@
+{
+  "id": "invasion-tactics-corpus-m677",
+  "description": "M6 corpus — Invasion Tactics; in-hand parse.",
+  "seed": 63078,
+  "cards": {
+    "Invasion Tactics": "Name:Invasion Tactics\nManaCost:4 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When this enchantment enters, creatures you control get +2/+2 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Ally.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ TrigDraw | TriggerDescription$ Whenever one or more Allies you control deal combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:PlayMain1:ALWAYS\nDeckHints:Type$Ally\nOracle:When this enchantment enters, creatures you control get +2/+2 until end of turn.\\nWhenever one or more Allies you control deal combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion Tactics"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

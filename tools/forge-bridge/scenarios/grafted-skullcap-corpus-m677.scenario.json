@@ -1,0 +1,23 @@
+{
+  "id": "grafted-skullcap-corpus-m677",
+  "description": "M6 corpus — Grafted Skullcap; in-hand parse.",
+  "seed": 61609,
+  "cards": {
+    "Grafted Skullcap": "Name:Grafted Skullcap\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your draw step, draw an additional card.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of your end step, discard your hand.\nSVar:TrigDraw:DB$ Draw\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand\nAI:RemoveDeck:Random\nOracle:At the beginning of your draw step, draw an additional card.\\nAt the beginning of your end step, discard your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grafted Skullcap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

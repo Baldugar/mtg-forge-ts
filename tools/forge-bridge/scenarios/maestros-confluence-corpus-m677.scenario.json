@@ -1,0 +1,23 @@
+{
+  "id": "maestros-confluence-corpus-m677",
+  "description": "M6 corpus — Maestros Confluence; in-hand parse.",
+  "seed": 64568,
+  "cards": {
+    "Maestros Confluence": "Name:Maestros Confluence\nManaCost:3 U B R\nTypes:Sorcery\nA:SP$ Charm | Choices$ Return,Curse,Goad | CharmNum$ 3 | CanRepeatModes$ True\nSVar:Return:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target monocolored instant or sorcery card | ValidTgts$ Instant.MonoColor+YouOwn,Sorcery.MonoColor+YouOwn | SpellDescription$ Return target monocolored instant or sorcery card from your graveyard to your hand.\nSVar:Curse:DB$ Pump | ValidTgts$ Creature | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True | SpellDescription$ Target creature gets -3/-3 until end of turn.\nSVar:Goad:DB$ Goad | ValidTgts$ Player | Defined$ Valid Creature.ControlledBy TargetedPlayer | SpellDescription$ Goad each creature target player controls. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\nDeckHas:Ability$Graveyard\nDeckHints:Type$Instant|Sorcery\nOracle:Choose three. You may choose the same mode more than once.\\n• Return target monocolored instant or sorcery card from your graveyard to your hand.\\n• Target creature gets -3/-3 until end of turn.\\n• Goad each creature target player controls. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maestros Confluence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

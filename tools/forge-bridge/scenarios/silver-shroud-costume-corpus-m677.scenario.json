@@ -1,0 +1,23 @@
+{
+  "id": "silver-shroud-costume-corpus-m677",
+  "description": "M6 corpus — Silver Shroud Costume; in-hand parse.",
+  "seed": 69915,
+  "cards": {
+    "Silver Shroud Costume": "Name:Silver Shroud Costume\nManaCost:2\nTypes:Artifact Equipment\nK:Flash\nK:Equip:3\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EquippedBy | Description$ Equipped creature can't be blocked.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control. That creature gains shroud until end of turn. (It can't be the target of spells or abilities.)\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Shroud\nOracle:Flash\\nWhen Silver Shroud Costume enters, attach it to target creature you control. That creature gains shroud until end of turn. (It can't be the target of spells or abilities.)\\nEquipped creature can't be blocked.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silver Shroud Costume"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

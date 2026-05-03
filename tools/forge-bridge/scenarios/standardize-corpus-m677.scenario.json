@@ -1,0 +1,23 @@
+{
+  "id": "standardize-corpus-m677",
+  "description": "M6 corpus — Standardize; in-hand parse.",
+  "seed": 70882,
+  "cards": {
+    "Standardize": "Name:Standardize\nManaCost:U U\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Creature | InvalidTypes$ Wall | SubAbility$ DBAnimateAll | SpellDescription$ Choose a creature type other than Wall. Each creature becomes that type until end of turn.\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature | Types$ ChosenType | RemoveCreatureTypes$ True\nAI:RemoveDeck:All\nOracle:Choose a creature type other than Wall. Each creature becomes that type until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Standardize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

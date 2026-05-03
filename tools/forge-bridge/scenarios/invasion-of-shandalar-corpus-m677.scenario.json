@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-shandalar-corpus-m677",
+  "description": "M6 corpus — Invasion of Shandalar; in-hand parse.",
+  "seed": 63071,
+  "cards": {
+    "Invasion of Shandalar": "Name:Invasion of Shandalar\nManaCost:3 G G\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return up to three target permanent cards from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 3 | TgtPrompt$ Choose up to three target permanent cards in your graveyard | ValidTgts$ Permanent.YouOwn\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Shandalar enters, return up to three target permanent cards from your graveyard to your hand.\n\nALTERNATE\n\nName:Leyline Surge\nManaCost:no cost\nColors:green\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of your upkeep, you may put a permanent card from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent.YouOwn\nOracle:At the beginning of your upkeep, you may put a permanent card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Shandalar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

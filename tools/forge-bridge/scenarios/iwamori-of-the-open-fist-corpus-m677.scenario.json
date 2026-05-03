@@ -1,0 +1,23 @@
+{
+  "id": "iwamori-of-the-open-fist-corpus-m677",
+  "description": "M6 corpus — Iwamori of the Open Fist; in-hand parse.",
+  "seed": 63184,
+  "cards": {
+    "Iwamori of the Open Fist": "Name:Iwamori of the Open Fist\nManaCost:2 G G\nTypes:Legendary Creature Human Monk\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, each opponent may put a legendary creature card from their hand onto the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.Legendary | DefinedPlayer$ Player.Opponent | ChangeNum$ 1\nOracle:Trample\\nWhen Iwamori of the Open Fist enters, each opponent may put a legendary creature card from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iwamori of the Open Fist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

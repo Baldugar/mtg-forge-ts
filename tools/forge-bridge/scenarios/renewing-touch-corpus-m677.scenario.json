@@ -1,0 +1,23 @@
+{
+  "id": "renewing-touch-corpus-m677",
+  "description": "M6 corpus — Renewing Touch; in-hand parse.",
+  "seed": 68054,
+  "cards": {
+    "Renewing Touch": "Name:Renewing Touch\nManaCost:G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Library | TargetMin$ 0 | TargetMax$ X | Shuffle$ True | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | AILogic$ AtOppEOT | SpellDescription$ Shuffle any number of target creature cards from your graveyard into your library.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Shuffle any number of target creature cards from your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renewing Touch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

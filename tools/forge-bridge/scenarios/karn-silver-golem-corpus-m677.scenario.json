@@ -1,0 +1,25 @@
+{
+  "id": "karn-silver-golem-corpus-m677",
+  "description": "M6 corpus — Karn, Silver Golem; ETB-on-bf.",
+  "seed": 63492,
+  "cards": {
+    "Karn, Silver Golem": "Name:Karn, Silver Golem\nManaCost:5\nTypes:Legendary Artifact Creature Golem\nPT:4/4\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets -4/+4 until end of turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets -4/+4 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ -4 | NumDef$ +4\nA:AB$ Animate | Cost$ 1 | ValidTgts$ Artifact.nonCreature | TgtPrompt$ Select target noncreature artifact | Power$ X | Toughness$ X | Types$ Artifact,Creature | SpellDescription$ Target noncreature artifact becomes an artifact creature with power and toughness each equal to its mana value until end of turn.\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:All\nOracle:Whenever Karn, Silver Golem blocks or becomes blocked, it gets -4/+4 until end of turn.\\n{1}: Target noncreature artifact becomes an artifact creature with power and toughness each equal to its mana value until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Karn, Silver Golem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

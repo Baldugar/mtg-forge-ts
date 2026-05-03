@@ -1,0 +1,25 @@
+{
+  "id": "strago-and-relm-corpus-m677",
+  "description": "M6 corpus — Strago and Relm; ETB-on-bf.",
+  "seed": 71145,
+  "cards": {
+    "Strago and Relm": "Name:Strago and Relm\nManaCost:2 R\nTypes:Legendary Creature Human Wizard\nPT:1/3\nA:AB$ DigUntil | PrecostDesc$ Sketch and Lore | Cost$ 2 R T | ValidTgts$ Opponent | Valid$ Instant,Sorcery,Creature | ValidDescription$ instant, sorcery, or creature | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | IsCurse$ True | SorcerySpeed$ True | SubAbility$ DBPlay | SpellDescription$ Target opponent exiles cards from the top of their library until they exile an instant, sorcery, or creature card. You may cast that card without paying its mana cost. If you cast a creature spell this way, it gains haste and \"At the beginning of the end step, sacrifice this creature.\" Activate only as a sorcery.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Haste | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | PumpZone$ Stack | Duration$ Permanent | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Triggers$ EOTSac | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature+inZoneStack | Defined$ Remembered | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:EOTSac:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, sacrifice this creature.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Sketch and Lore — {2}{R}, {T}: Target opponent exiles cards from the top of their library until they exile an instant, sorcery, or creature card. You may cast that card without paying its mana cost. If you cast a creature spell this way, it gains haste and \"At the beginning of the end step, sacrifice this creature.\" Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Strago and Relm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

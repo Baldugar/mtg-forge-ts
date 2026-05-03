@@ -1,0 +1,23 @@
+{
+  "id": "sea-drake-corpus-m677",
+  "description": "M6 corpus — Sea Drake; in-hand parse.",
+  "seed": 69260,
+  "cards": {
+    "Sea Drake": "Name:Sea Drake\nManaCost:2 U\nTypes:Creature Drake\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, return two target lands you control to their owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | TargetMin$ 2 | TargetMax$ 2\nOracle:Flying\\nWhen Sea Drake enters, return two target lands you control to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sea Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

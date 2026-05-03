@@ -1,0 +1,23 @@
+{
+  "id": "molten-echoes-corpus-m677",
+  "description": "M6 corpus — Molten Echoes; in-hand parse.",
+  "seed": 65397,
+  "cards": {
+    "Molten Echoes": "Name:Molten Echoes\nManaCost:2 R R\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerDeckNonToken | SpellDescription$ As CARDNAME enters, choose a creature type.\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+ChosenType+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigCopyPermanent | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken creature you control of the chosen type enters, create a token that's a copy of that creature. That token gains haste. Exile it at the beginning of the next end step.\nSVar:TrigCopyPermanent:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | PumpKeywords$ Haste | AtEOT$ Exile\nOracle:As Molten Echoes enters, choose a creature type.\\nWhenever a nontoken creature you control of the chosen type enters, create a token that's a copy of that creature. That token gains haste. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Echoes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

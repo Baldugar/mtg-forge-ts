@@ -1,0 +1,23 @@
+{
+  "id": "subversion-corpus-m677",
+  "description": "M6 corpus — Subversion; in-hand parse.",
+  "seed": 71255,
+  "cards": {
+    "Subversion": "Name:Subversion\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of your upkeep, each opponent loses 1 life. You gain life equal to the life lost this way.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nOracle:At the beginning of your upkeep, each opponent loses 1 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Subversion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sun-blessed-mount-corpus-m677",
+  "description": "M6 corpus — Sun-Blessed Mount; in-hand parse.",
+  "seed": 71323,
+  "cards": {
+    "Sun-Blessed Mount": "Name:Sun-Blessed Mount\nManaCost:3 R W\nTypes:Creature Dinosaur\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library and/or graveyard for a card named Huatli, Dinosaur Knight, reveal it, then put it into your hand. If you search your library this way, shuffle it.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedHuatli; Dinosaur Knight | Optional$ True\nDeckHints:Name$Huatli, Dinosaur Knight\nOracle:When Sun-Blessed Mount enters, you may search your library and/or graveyard for a card named Huatli, Dinosaur Knight, reveal it, then put it into your hand. If you searched your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sun-Blessed Mount"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hedron-alignment-corpus-m677",
+  "description": "M6 corpus — Hedron Alignment; in-hand parse.",
+  "seed": 62205,
+  "cards": {
+    "Hedron Alignment": "Name:Hedron Alignment\nManaCost:2 U\nTypes:Enchantment\nK:Hexproof\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRevealToWin | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may reveal your hand. If you do, you win the game if you own a card named Hedron Alignment in exile, in your hand, in your graveyard, and on the battlefield.\nSVar:TrigRevealToWin:DB$ RevealHand | Defined$ You | SubAbility$ WinGame | SpellDescription$ Reveal your hand.\nSVar:WinGame:DB$ WinsGame | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ4\n# Combine Hedron Alignments in 4 different zones, cap the count of each zone to 1.\nSVar:A:Count$Valid Card.YouOwn+!token+namedHedron Alignment/LimitMax.1\nSVar:B:Count$ValidHand Card.YouOwn+namedHedron Alignment/LimitMax.1\nSVar:C:Count$ValidGraveyard Card.YouOwn+namedHedron Alignment/LimitMax.1\nSVar:D:Count$ValidExile Card.YouOwn+namedHedron Alignment/LimitMax.1\n# Double addition to try to get up to 4\nSVar:X:SVar$Y/Plus.Z\nSVar:Y:SVar$A/Plus.B\nSVar:Z:SVar$C/Plus.D\nA:AB$ Scry | Cost$ 1 U | ScryNum$ 1 | SpellDescription$ Scry 1.\nAI:RemoveDeck:Random\nDeckNeeds:Name$Hedron Alignment\nOracle:Hexproof\\nAt the beginning of your upkeep, you may reveal your hand. If you do, you win the game if you own a card named Hedron Alignment in exile, in your hand, in your graveyard, and on the battlefield.\\n{1}{U}: Scry 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hedron Alignment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

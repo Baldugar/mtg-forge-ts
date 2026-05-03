@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-of-clear-skies-corpus-m677",
+  "description": "M6 corpus — Sphinx of Clear Skies; in-hand parse.",
+  "seed": 70611,
+  "cards": {
+    "Sphinx of Clear Skies": "Name:Sphinx of Clear Skies\nManaCost:3 U U\nTypes:Creature Sphinx\nPT:5/5\nK:Flying\nK:Ward:2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigChangeZone | TriggerDescription$ Domain — Whenever CARDNAME deals combat damage to a player, reveal the top X cards of your library, where X is the number of basic land types among lands you control. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard. (Piles can be empty.)\nSVar:TrigChangeZone:DB$ PeekAndReveal | PeekAmount$ X | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBTwoPiles\nSVar:DBTwoPiles:DB$ TwoPiles | Defined$ You | DefinedCards$ Remembered | Separator$ Opponent | ChosenPile$ DBHand | UnchosenPile$ DBGrave\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Graveyard\nSVar:X:Count$Domain\nDeckHas:Ability$Graveyard\nOracle:Flying, ward {2}\\nDomain — Whenever Sphinx of Clear Skies deals combat damage to a player, reveal the top X cards of your library, where X is the number of basic land types among lands you control. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard. (Piles can be empty.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx of Clear Skies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

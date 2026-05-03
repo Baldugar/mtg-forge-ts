@@ -1,0 +1,23 @@
+{
+  "id": "painwracker-oni-corpus-m677",
+  "description": "M6 corpus — Painwracker Oni; in-hand parse.",
+  "seed": 66561,
+  "cards": {
+    "Painwracker Oni": "Name:Painwracker Oni\nManaCost:3 B B\nTypes:Creature Demon Spirit\nPT:5/4\nK:Fear\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature if you don't control an Ogre.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature | Defined$ You | ConditionPresent$ Ogre.YouCtrl | ConditionCompare$ EQ0\nSVar:NeedsToPlay:Ogre.YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Type$Ogre\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nAt the beginning of your upkeep, sacrifice a creature if you don't control an Ogre.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Painwracker Oni"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

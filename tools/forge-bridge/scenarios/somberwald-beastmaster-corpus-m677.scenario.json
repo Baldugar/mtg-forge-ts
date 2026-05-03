@@ -1,0 +1,23 @@
+{
+  "id": "somberwald-beastmaster-corpus-m677",
+  "description": "M6 corpus — Somberwald Beastmaster; in-hand parse.",
+  "seed": 70386,
+  "cards": {
+    "Somberwald Beastmaster": "Name:Somberwald Beastmaster\nManaCost:6 G\nTypes:Creature Human Ranger\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 green Wolf creature token, a 3/3 green Beast creature token, and a 4/4 green Beast creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf,g_3_3_beast,g_4_4_beast | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddKeyword$ Deathtouch | Description$ Creature tokens you control have deathtouch.\nDeckHas:Ability$Token\nOracle:When Somberwald Beastmaster enters, create a 2/2 green Wolf creature token, a 3/3 green Beast creature token, and a 4/4 green Beast creature token.\\nCreature tokens you control have deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Somberwald Beastmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

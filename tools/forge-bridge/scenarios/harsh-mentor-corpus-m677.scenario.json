@@ -1,0 +1,25 @@
+{
+  "id": "harsh-mentor-corpus-m677",
+  "description": "M6 corpus — Harsh Mentor; ETB-on-bf.",
+  "seed": 62080,
+  "cards": {
+    "Harsh Mentor": "Name:Harsh Mentor\nManaCost:1 R\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ AbilityCast | ValidActivatingPlayer$ Opponent | ValidCard$ Artifact.inZoneBattlefield,Creature.inZoneBattlefield,Land.inZoneBattlefield | ValidSA$ SpellAbility.!ManaAbility | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever an opponent activates an ability of an artifact, creature, or land on the battlefield, if it isn't a mana ability, CARDNAME deals 2 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 2 | Defined$ TriggeredActivator\nOracle:Whenever an opponent activates an ability of an artifact, creature, or land on the battlefield, if it isn't a mana ability, Harsh Mentor deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Harsh Mentor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

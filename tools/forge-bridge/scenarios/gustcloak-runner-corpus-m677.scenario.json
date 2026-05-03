@@ -1,0 +1,25 @@
+{
+  "id": "gustcloak-runner-corpus-m677",
+  "description": "M6 corpus — Gustcloak Runner; ETB-on-bf.",
+  "seed": 61922,
+  "cards": {
+    "Gustcloak Runner": "Name:Gustcloak Runner\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME becomes blocked, you may untap it and remove it from combat.\nSVar:TrigUntap:DB$ Untap | Defined$ Self | SubAbility$ RemCombat\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ Self\nOracle:Whenever Gustcloak Runner becomes blocked, you may untap it and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gustcloak Runner"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

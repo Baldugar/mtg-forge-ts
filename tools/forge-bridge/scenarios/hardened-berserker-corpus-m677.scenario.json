@@ -1,0 +1,23 @@
+{
+  "id": "hardened-berserker-corpus-m677",
+  "description": "M6 corpus — Hardened Berserker; in-hand parse.",
+  "seed": 62050,
+  "cards": {
+    "Hardened Berserker": "Name:Hardened Berserker\nManaCost:2 R\nTypes:Creature Human Berserker\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ When CARDNAME attacks, the next spell you cast this turn costs {1} less to cast.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ HBReduceCost | ForgetOnCast$ Card.YouCtrl\nSVar:HBReduceCost:Mode$ ReduceCost | Type$ Spell | Activator$ You | Amount$ 1 | Description$ the next spell you cast this turn costs {1} less to cast.\nOracle:Whenever Hardened Berserker attacks, the next spell you cast this turn costs {1} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hardened Berserker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

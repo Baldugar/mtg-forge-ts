@@ -1,0 +1,23 @@
+{
+  "id": "journey-of-discovery-corpus-m677",
+  "description": "M6 corpus — Journey of Discovery; in-hand parse.",
+  "seed": 63349,
+  "cards": {
+    "Journey of Discovery": "Name:Journey of Discovery\nManaCost:2 G\nTypes:Sorcery\nK:Entwine:2 G\nA:SP$ Charm | Choices$ DBChangeZone,DBEffect\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 2 | SpellDescription$ Search your library for up to two basic land cards, reveal them, put them into your hand, then shuffle.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ JourneyOfDis | AILogic$ Always | SpellDescription$ You may play up to two additional lands this turn.\nSVar:JourneyOfDis:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 2 | Description$ You may play two additional lands this turn.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Search your library for up to two basic land cards, reveal them, put them into your hand, then shuffle.\\n• You may play up to two additional lands this turn.\\nEntwine {2}{G} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Journey of Discovery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

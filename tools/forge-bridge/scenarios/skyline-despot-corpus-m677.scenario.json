@@ -1,0 +1,23 @@
+{
+  "id": "skyline-despot-corpus-m677",
+  "description": "M6 corpus — Skyline Despot; in-hand parse.",
+  "seed": 70123,
+  "cards": {
+    "Skyline Despot": "Name:Skyline Despot\nManaCost:5 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ You.isMonarch | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, if you're the monarch, create a 5/5 red Dragon creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ r_5_5_dragon_flying | TokenOwner$ You\nOracle:Flying\\nWhen Skyline Despot enters, you become the monarch.\\nAt the beginning of your upkeep, if you're the monarch, create a 5/5 red Dragon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyline Despot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mentor-s-guidance-corpus-m677",
+  "description": "M6 corpus — Mentor's Guidance; in-hand parse.",
+  "seed": 64986,
+  "cards": {
+    "Mentor's Guidance": "Name:Mentor's Guidance\nManaCost:2 U\nTypes:Sorcery\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it if you control a planeswalker, Cleric, Druid, Shaman, Warlock, or Wizard.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | ConditionPresent$ Planeswalker.YouCtrl,Cleric.YouCtrl,Druid.YouCtrl,Shaman.YouCtrl,Warlock.YouCtrl,Wizard.YouCtrl | ConditionCompare$ GE1\nA:SP$ Scry | ScryNum$ 1 | SubAbility$ DBDraw | SpellDescription$ Scry 1,\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ then draw a card.\nDeckHints:Type$Planeswalker|Cleric|Druid|Shaman|Warlock|Wizard\nOracle:When you cast this spell, copy it if you control a planeswalker, Cleric, Druid, Shaman, Warlock, or Wizard.\\nScry 1, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mentor's Guidance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "keen-eyed-curator-corpus-m677",
+  "description": "M6 corpus — Keen-Eyed Curator; ETB-on-bf.",
+  "seed": 63552,
+  "cards": {
+    "Keen-Eyed Curator": "Name:Keen-Eyed Curator\nManaCost:G G\nTypes:Creature Raccoon Scout\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 4 | AddToughness$ 4 | AddKeyword$ Trample | CheckSVar$ X | SVarCompare$ GE4 | Description$ As long as there are four or more card types among cards exiled with CARDNAME, it gets +4/+4 and has trample.\nA:AB$ ChangeZone | Cost$ 1 | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SpellDescription$ Exile target card from a graveyard.\nSVar:X:Count$ValidExile Card.ExiledWithSource$CardTypes\nOracle:As long as there are four or more card types among cards exiled with Keen-Eyed Curator, it gets +4/+4 and has trample.\\n{1}: Exile target card from a graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Keen-Eyed Curator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
