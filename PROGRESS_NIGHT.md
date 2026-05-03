@@ -190,6 +190,8 @@ Both fixes shipped with re-captured Java goldens. Result: **0 divergences across
 | Engine TODO sweep | ✅ 2 stale closures + audit (most remaining are TODO(advanced) deferred) |
 | Wave test scaffolds | ✅ Audited — already real |
 | Multi-turn parity | ✅ 100 scenarios, 100/100 full-match (M7.12 closed all bridge gaps) |
+| Variant gameplay | ✅ Vanguard / Conspiracy / Planechase / Archenemy / 2HG (M7.13–13e) |
+| Reference consumers | ✅ CLI + browser-worker + bot-harness + headless-server (M7.6/7/8/14) |
 | Performance baseline | ✅ ~20K ops/sec (tools/bench/) |
 | NPM publish prep | ✅ 1.0.0 packages publish-ready (`npm pack` clean) |
 | CI matrix | ✅ Linux/Mac/Windows × Node 20/22 |
