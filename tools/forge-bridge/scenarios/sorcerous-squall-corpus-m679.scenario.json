@@ -1,0 +1,23 @@
+{
+  "id": "sorcerous-squall-corpus-m679",
+  "description": "M6 corpus — Sorcerous Squall; in-hand parse.",
+  "seed": 62127,
+  "cards": {
+    "Sorcerous Squall": "Name:Sorcerous Squall\nManaCost:6 U U U\nTypes:Sorcery\nK:Delve\nA:SP$ Mill | NumCards$ 9 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent to mill | SubAbility$ FishyCast | SpellDescription$ Target opponent mills nine cards, then you may cast an instant or sorcery spell from that player's graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\nSVar:FishyCast:DB$ Play | ValidZone$ Graveyard | Valid$ Instant.TargetedPlayerCtrl,Sorcery.TargetedPlayerCtrl | Controller$ You | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | Amount$ 1 | ReplaceGraveyard$ Exile\nDeckHints:Ability$Mill|Graveyard\nOracle:Delve (Each card you exile from your graveyard while casting this spell pays for {1}.)\\nTarget opponent mills nine cards, then you may cast an instant or sorcery spell from that player's graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sorcerous Squall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ryan-sinclair-corpus-m679",
+  "description": "M6 corpus — Ryan Sinclair; in-hand parse.",
+  "seed": 62034,
+  "cards": {
+    "Ryan Sinclair": "Name:Ryan Sinclair\nManaCost:2 R\nTypes:Legendary Creature Human\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBDigUntil | TriggerDescription$ Whenever NICKNAME attacks, exile cards from the top of your library until you exile a nonland card. You may cast the exiled card without paying its mana cost if it's a spell with mana value less than or equal to NICKNAME's power. Put the exiled cards not cast this way on the bottom of your library in a random order.\nSVar:DBDigUntil:DB$ DigUntil | Defined$ You | Valid$ Card.nonLand | FoundDestination$ Exile | RevealedDestination$ Exile | ImprintFound$ True | RememberRevealed$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Imprinted | ValidSA$ Spell.cmcLEX | WithoutManaCost$ True | Optional$ True | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered,Card.IsImprinted | Origin$ Exile | Destination$ Library | RandomOrder$ True | LibraryPosition$ -1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:Count$CardPower\nK:Doctor's companion\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Counters\nOracle:Whenever Ryan attacks, exile cards from the top of your library until you exile a nonland card. You may cast the exiled card without paying its mana cost if it's a spell with mana value less than or equal to Ryan's power. Put the exiled cards not cast this way on the bottom of your library in a random order.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ryan Sinclair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

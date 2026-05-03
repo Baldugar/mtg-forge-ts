@@ -1,0 +1,23 @@
+{
+  "id": "rictus-robber-corpus-m679",
+  "description": "M6 corpus — Rictus Robber; in-hand parse.",
+  "seed": 62013,
+  "cards": {
+    "Rictus Robber": "Name:Rictus Robber\nManaCost:3 B\nTypes:Creature Zombie Rogue\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | CheckSVar$ Morbid | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if a creature died this turn, create a 2/2 blue and black Zombie Rogue creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ ub_2_2_zombie_rogue | TokenOwner$ You\nSVar:Morbid:Count$Morbid.1.0\nDeckHas:Ability$Token & Type$Zombie|Rogue & Color$Blue\nK:Plot:2 B\nOracle:When Rictus Robber enters, if a creature died this turn, create a 2/2 blue and black Zombie Rogue creature token.\\nPlot {2}{B} (You may pay {2}{B} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rictus Robber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

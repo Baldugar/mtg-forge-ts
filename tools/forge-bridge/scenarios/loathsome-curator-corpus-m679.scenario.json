@@ -1,0 +1,23 @@
+{
+  "id": "loathsome-curator-corpus-m679",
+  "description": "M6 corpus — Loathsome Curator; in-hand parse.",
+  "seed": 61816,
+  "cards": {
+    "Loathsome Curator": "Name:Loathsome Curator\nManaCost:4 B\nTypes:Creature Gorgon Wizard\nPT:5/4\nK:Menace\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME exploits a creature, destroy target creature you don't control with mana value 3 or less.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.cmcLE3+YouDontCtrl | TgtPrompt$ Select target creature with mana value 3 or less you don't control\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nMenace\\nWhen Loathsome Curator exploits a creature, destroy target creature you don't control with mana value 3 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loathsome Curator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

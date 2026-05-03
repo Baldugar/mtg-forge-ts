@@ -1,0 +1,23 @@
+{
+  "id": "temmet-vizier-of-naktamun-corpus-m679",
+  "description": "M6 corpus — Temmet, Vizier of Naktamun; in-hand parse.",
+  "seed": 62184,
+  "cards": {
+    "Temmet, Vizier of Naktamun": "Name:Temmet, Vizier of Naktamun\nManaCost:W U\nTypes:Legendary Creature Human Cleric\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature token you control gets +1/+1 until end of turn and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.token+YouCtrl | TgtPrompt$ Select target creature token you control | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nK:Embalm:3 W U\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token & Type$Zombie\nDeckHints:Ability$Token\nOracle:At the beginning of combat on your turn, target creature token you control gets +1/+1 until end of turn and can't be blocked this turn.\\nEmbalm {3}{W}{U} ({3}{W}{U}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a white Zombie Human Cleric with no mana cost. Embalm only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Temmet, Vizier of Naktamun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

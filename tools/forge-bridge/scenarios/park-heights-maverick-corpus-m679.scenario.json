@@ -1,0 +1,23 @@
+{
+  "id": "park-heights-maverick-corpus-m679",
+  "description": "M6 corpus — Park Heights Maverick; in-hand parse.",
+  "seed": 61937,
+  "cards": {
+    "Park Heights Maverick": "Name:Park Heights Maverick\nManaCost:2 G\nTypes:Creature Human Soldier\nPT:2/2\nK:Dethrone\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigProliferate | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or dies, proliferate.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigProliferate | Secondary$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or dies, proliferate.\nSVar:TrigProliferate:DB$ Proliferate\nDeckHas:Ability$Proliferate|Counters\nDeckHints:Ability$Counters\nOracle:Dethrone (Whenever this creature attacks the player with the most life or tied for the most life, put a +1/+1 counter on it.)\\nPark Heights Maverick can't be blocked by creatures with power 2 or less.\\nWhenever Park Heights Maverick deals combat damage to a player or dies, proliferate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Park Heights Maverick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

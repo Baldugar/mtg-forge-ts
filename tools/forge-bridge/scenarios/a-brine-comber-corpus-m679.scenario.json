@@ -1,0 +1,23 @@
+{
+  "id": "a-brine-comber-corpus-m679",
+  "description": "M6 corpus — A-Brine Comber; in-hand parse.",
+  "seed": 62037,
+  "cards": {
+    "A-Brine Comber": "Name:A-Brine Comber\nManaCost:1 W U\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Spell.Aura | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying\nK:Disturb:W U\nSVar:EnchantMe:Multiple\nDeckHas:Ability$Graveyard|Token\nDeckHints:Type$Enchantment\nAlternateMode:DoubleFaced\nOracle:Whenever Brine Comber enters or becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\\nDisturb {W}{U}\n\nALTERNATE\n\nName:A-Brinebound Gift\nManaCost:no cost\nColors:white,blue\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or enchanted creature becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\nT:Mode$ BecomesTarget | ValidTarget$ Creature.EnchantedBy | ValidSource$ Spell.Aura | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or enchanted creature becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ EnMe | Secondary$ True\nSVar:EnMe:SVar:EnchantMe:Multiple\nOracle:Enchant creature\\nWhenever Brinebound Gift enters or enchanted creature becomes the target of an Aura spell, create a 1/1 white Spirit creature token with flying.\\nIf Brinebound Gift would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Brine Comber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

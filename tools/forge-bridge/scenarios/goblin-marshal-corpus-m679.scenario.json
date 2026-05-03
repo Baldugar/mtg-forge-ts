@@ -1,0 +1,23 @@
+{
+  "id": "goblin-marshal-corpus-m679",
+  "description": "M6 corpus — Goblin Marshal; in-hand parse.",
+  "seed": 61674,
+  "cards": {
+    "Goblin Marshal": "Name:Goblin Marshal\nManaCost:4 R R\nTypes:Creature Goblin Warrior\nPT:3/3\nK:Echo:4 R R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or dies, create two 1/1 red Goblin creature tokens.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, create two 1/1 red Goblin creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You\nOracle:Echo {4}{R}{R} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Goblin Marshal enters or dies, create two 1/1 red Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Marshal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

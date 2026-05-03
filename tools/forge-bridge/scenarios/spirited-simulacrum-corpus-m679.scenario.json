@@ -1,0 +1,23 @@
+{
+  "id": "spirited-simulacrum-corpus-m679",
+  "description": "M6 corpus — Spirited Simulacrum; in-hand parse.",
+  "seed": 62139,
+  "cards": {
+    "Spirited Simulacrum": "Name:Spirited Simulacrum\nManaCost:4\nTypes:Artifact Creature Robot\nPT:2/1\nK:Warp:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSeekLand | TriggerDescription$ When this creature enters, seek a land card and put it onto the battlefield tapped.\nSVar:TrigSeekLand:DB$ Seek | Type$ Card.Land | RememberFound$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigSeekNonLand | TriggerDescription$ When this creature leaves the battlefield, seek a nonland card.\nSVar:TrigSeekNonLand:DB$ Seek | Type$ Card.nonLand\nOracle:When this creature enters, seek a land card and put it onto the battlefield tapped.\\nWhen this creature leaves the battlefield, seek a nonland card.\\nWarp {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirited Simulacrum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

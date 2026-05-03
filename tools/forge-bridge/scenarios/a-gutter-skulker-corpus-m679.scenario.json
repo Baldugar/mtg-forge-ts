@@ -1,0 +1,23 @@
+{
+  "id": "a-gutter-skulker-corpus-m679",
+  "description": "M6 corpus — A-Gutter Skulker; in-hand parse.",
+  "seed": 62041,
+  "cards": {
+    "A-Gutter Skulker": "Name:A-Gutter Skulker\nManaCost:2 U\nTypes:Creature Spirit\nPT:3/3\nK:Disturb:2 U\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self+attacking | IsPresent$ Card.Other+attacking | PresentCompare$ EQ0 | Description$ CARDNAME can't be blocked as long as it's attacking alone.\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Gutter Skulker can't be blocked as long as it's attacking alone.\\nDisturb {2}{U}\n\nALTERNATE\n\nName:A-Gutter Shortcut\nManaCost:no cost\nColors:blue\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | Description$ Enchanted creature gets +3/+0. It can't be blocked as long as it's attacking alone.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy+attacking | IsPresent$ Card.attacking | PresentCompare$ EQ1 | Secondary$ True | Description$ It can't be blocked as long as it's attacking alone.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature gets +3/+0. It can't be blocked as long as it's attacking alone.\\nIf Gutter Shortcut would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Gutter Skulker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

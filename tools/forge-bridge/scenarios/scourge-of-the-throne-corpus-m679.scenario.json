@@ -1,0 +1,23 @@
+{
+  "id": "scourge-of-the-throne-corpus-m679",
+  "description": "M6 corpus — Scourge of the Throne; in-hand parse.",
+  "seed": 62057,
+  "cards": {
+    "Scourge of the Throne": "Name:Scourge of the Throne\nManaCost:4 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nK:Dethrone\nT:Mode$ Attacks | ValidCard$ Creature.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | FirstAttack$ True | Condition$ AttackedPlayerWithMostLife | TriggerDescription$ Whenever CARDNAME attacks for the first time each turn, if it's attacking the player with the most life or tied for most life, untap all attacking creatures. After this phase, there is an additional combat phase.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.attacking | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nOracle:Flying\\nDethrone (Whenever this creature attacks the player with the most life or tied for most life, put a +1/+1 counter on it.)\\nWhenever Scourge of the Throne attacks for the first time each turn, if it's attacking the player with the most life or tied for most life, untap all attacking creatures. After this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourge of the Throne"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

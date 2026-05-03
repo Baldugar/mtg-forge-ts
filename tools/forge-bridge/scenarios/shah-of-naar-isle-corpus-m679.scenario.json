@@ -1,0 +1,23 @@
+{
+  "id": "shah-of-naar-isle-corpus-m679",
+  "description": "M6 corpus — Shah of Naar Isle; in-hand parse.",
+  "seed": 62074,
+  "cards": {
+    "Shah of Naar Isle": "Name:Shah of Naar Isle\nManaCost:3 R\nTypes:Creature Efreet\nPT:6/6\nK:Trample\nK:Echo:0\nT:Mode$ PayEcho | ValidCard$ Card.Self | Paid$ True | Execute$ TrigDraw | TriggerDescription$ When CARDNAME's echo cost is paid, each opponent may draw up to three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ Player.Opponent | Upto$ True | NumCards$ 3 | AILogic$ OptionalDraw\nOracle:Trample\\nEcho {0} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Shah of Naar Isle's echo cost is paid, each opponent may draw up to three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shah of Naar Isle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

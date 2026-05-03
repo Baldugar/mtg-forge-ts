@@ -1,0 +1,23 @@
+{
+  "id": "embalmed-brawler-corpus-m679",
+  "description": "M6 corpus — Embalmed Brawler; in-hand parse.",
+  "seed": 61614,
+  "cards": {
+    "Embalmed Brawler": "Name:Embalmed Brawler\nManaCost:2 B\nTypes:Creature Zombie\nPT:2/2\nK:Amplify:1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME attacks or blocks, you lose 1 life for each +1/+1 counter on it.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, you lose 1 life for each +1/+1 counter on it.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$CardCounters.P1P1\nAI:RemoveDeck:All\nOracle:Amplify 1 (As this creature enters, put a +1/+1 counter on it for each Zombie card you reveal in your hand.)\\nWhenever Embalmed Brawler attacks or blocks, you lose 1 life for each +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embalmed Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

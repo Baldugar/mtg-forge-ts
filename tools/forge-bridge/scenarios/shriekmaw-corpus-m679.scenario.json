@@ -1,0 +1,23 @@
+{
+  "id": "shriekmaw-corpus-m679",
+  "description": "M6 corpus — Shriekmaw; in-hand parse.",
+  "seed": 62086,
+  "cards": {
+    "Shriekmaw": "Name:Shriekmaw\nManaCost:4 B\nTypes:Creature Elemental\nPT:3/2\nK:Fear\nK:Evoke:1 B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonartifact, nonblack creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack+nonArtifact | TgtPrompt$ Select target nonartifact, nonblack creature.\nSVar:NeedsToPlayEvoked:Creature.OppCtrl+nonArtifact+nonBlack\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nWhen Shriekmaw enters, destroy target nonartifact, nonblack creature.\\nEvoke {1}{B} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shriekmaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

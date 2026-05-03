@@ -1,0 +1,23 @@
+{
+  "id": "ire-shaman-corpus-m679",
+  "description": "M6 corpus — Ire Shaman; in-hand parse.",
+  "seed": 61757,
+  "cards": {
+    "Ire Shaman": "Name:Ire Shaman\nManaCost:1 R\nTypes:Creature Orc Shaman\nPT:2/1\nK:Menace\nK:Megamorph:R\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, exile the top card of your library. Until end of turn, you may play that card.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ Until end of turn, you may play that card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nMegamorph {R} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)\\nWhen Ire Shaman is turned face up, exile the top card of your library. Until end of turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ire Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

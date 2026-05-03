@@ -1,0 +1,23 @@
+{
+  "id": "brackwater-elemental-corpus-m679",
+  "description": "M6 corpus — Brackwater Elemental; in-hand parse.",
+  "seed": 61507,
+  "cards": {
+    "Brackwater Elemental": "Name:Brackwater Elemental\nManaCost:2 U\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME attacks or blocks, sacrifice it at the beginning of the next end step.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ When CARDNAME attacks or blocks, sacrifice it at the beginning of the next end step.\nK:Unearth:2 U\nSVar:TrigPump:DB$ Pump | Defined$ Self | AtEOT$ Sacrifice\nSVar:EndOfTurnLeavePlay:True\nOracle:When Brackwater Elemental attacks or blocks, sacrifice it at the beginning of the next end step.\\nUnearth {2}{U} ({2}{U}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brackwater Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

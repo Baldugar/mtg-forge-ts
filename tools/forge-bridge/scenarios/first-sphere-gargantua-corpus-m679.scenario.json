@@ -1,0 +1,23 @@
+{
+  "id": "first-sphere-gargantua-corpus-m679",
+  "description": "M6 corpus — First-Sphere Gargantua; in-hand parse.",
+  "seed": 61640,
+  "cards": {
+    "First-Sphere Gargantua": "Name:First-Sphere Gargantua\nManaCost:4 B B\nTypes:Creature Phyrexian Horror\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nK:Unearth:2 B\nOracle:When First-Sphere Gargantua enters, you draw a card and you lose 1 life.\\nUnearth {2}{B} ({2}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "First-Sphere Gargantua"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

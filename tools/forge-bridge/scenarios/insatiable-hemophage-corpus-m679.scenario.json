@@ -1,0 +1,23 @@
+{
+  "id": "insatiable-hemophage-corpus-m679",
+  "description": "M6 corpus — Insatiable Hemophage; in-hand parse.",
+  "seed": 61751,
+  "cards": {
+    "Insatiable Hemophage": "Name:Insatiable Hemophage\nManaCost:3 B\nTypes:Creature Nightmare\nPT:3/3\nK:Mutate:2 B\nK:Deathtouch\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature mutates, each opponent loses X life and you gain X life, where X is the number of times this creature has mutated.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$TimesMutated\nOracle:Mutate {2}{B} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nDeathtouch\\nWhenever this creature mutates, each opponent loses X life and you gain X life, where X is the number of times this creature has mutated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insatiable Hemophage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

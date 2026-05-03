@@ -1,0 +1,23 @@
+{
+  "id": "immovable-rod-corpus-m679",
+  "description": "M6 corpus — Immovable Rod; in-hand parse.",
+  "seed": 61740,
+  "cards": {
+    "Immovable Rod": "Name:Immovable Rod\nManaCost:W\nTypes:Artifact\nK:You may choose not to untap CARDNAME during your untap step.\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigVenture | TriggerDescription$ Whenever CARDNAME becomes untapped, venture into the dungeon.\nSVar:TrigVenture:DB$ Venture\nA:AB$ Pump | Cost$ 3 W T | ValidTgts$ Permanent | RememberObjects$ Targeted | SpellDescription$ For as long as CARDNAME remains tapped, another target permanent loses all abilities and can't attack or block.\nS:Mode$ Continuous | Affected$ Card.IsRemembered | AddHiddenKeyword$ CARDNAME can't attack or block. | RemoveAllAbilities$ True\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ ClearRemembered | Static$ True\nSVar:ClearRemembered:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:You may choose not to untap Immovable Rod during your untap step.\\nWhenever Immovable Rod becomes untapped, venture into the dungeon.\\n{3}{W}, {T}: For as long as Immovable Rod remains tapped, another target permanent loses all abilities and can't attack or block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Immovable Rod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

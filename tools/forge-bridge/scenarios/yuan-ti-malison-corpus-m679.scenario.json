@@ -1,0 +1,23 @@
+{
+  "id": "yuan-ti-malison-corpus-m679",
+  "description": "M6 corpus — Yuan-Ti Malison; in-hand parse.",
+  "seed": 62302,
+  "cards": {
+    "Yuan-Ti Malison": "Name:Yuan-Ti Malison\nManaCost:1 U\nTypes:Creature Snake Rogue\nPT:2/1\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self+attacking | IsPresent$ Card.attacking+Other | PresentCompare$ EQ0 | Description$ CARDNAME can't be blocked as long as it's attacking alone.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigVenture | TriggerZones$ Battlefield | TriggerController$ TriggeredSourceController | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, venture into the dungeon. (Enter the first room or advance to the next room.)\nSVar:TrigVenture:DB$ Venture\nOracle:Yuan-Ti Malison can't be blocked as long as it's attacking alone.\\nWhenever Yuan-Ti Malison deals combat damage to a player, venture into the dungeon. (Enter the first room or advance to the next room.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuan-Ti Malison"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

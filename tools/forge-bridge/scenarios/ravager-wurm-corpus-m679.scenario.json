@@ -1,0 +1,23 @@
+{
+  "id": "ravager-wurm-corpus-m679",
+  "description": "M6 corpus — Ravager Wurm; in-hand parse.",
+  "seed": 61987,
+  "cards": {
+    "Ravager Wurm": "Name:Ravager Wurm\nManaCost:3 R G G\nTypes:Creature Wurm\nPT:4/5\nK:Riot\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 0 | Choices$ DBFight,DBDestroy\nSVar:DBFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | SpellDescription$ CARDNAME fights target creature you don't control.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Land.hasNonManaActivatedAbility | TgtPrompt$ Select target land with an activated ability that isn't a mana ability | SpellDescription$ Destroy target land with an activated ability that isn't a mana ability.\nDeckHas:Ability$Counters\nOracle:Riot (This creature enters with your choice of a +1/+1 counter or haste.)\\nWhen Ravager Wurm enters, choose up to one —\\n• Ravager Wurm fights target creature you don't control.\\n• Destroy target land with an activated ability that isn't a mana ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravager Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

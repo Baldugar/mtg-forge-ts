@@ -1,0 +1,23 @@
+{
+  "id": "mindleech-ghoul-corpus-m679",
+  "description": "M6 corpus — Mindleech Ghoul; in-hand parse.",
+  "seed": 61858,
+  "cards": {
+    "Mindleech Ghoul": "Name:Mindleech Ghoul\nManaCost:1 B\nTypes:Creature Zombie\nPT:2/2\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME exploits a creature, each opponent exiles a card from their hand.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Player.Opponent | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | IsCurse$ True\nDeckHas:Ability$Sacrifice\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Mindleech Ghoul exploits a creature, each opponent exiles a card from their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindleech Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

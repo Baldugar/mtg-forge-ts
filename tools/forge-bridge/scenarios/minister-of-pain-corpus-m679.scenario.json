@@ -1,0 +1,23 @@
+{
+  "id": "minister-of-pain-corpus-m679",
+  "description": "M6 corpus — Minister of Pain; in-hand parse.",
+  "seed": 61860,
+  "cards": {
+    "Minister of Pain": "Name:Minister of Pain\nManaCost:2 B\nTypes:Creature Human Shaman\nPT:2/3\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigMassacre | TriggerDescription$ When CARDNAME exploits a creature, creatures your opponents control get -1/-1 until end of turn.\nSVar:TrigMassacre:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.OppCtrl | IsCurse$ True\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Minister of Pain exploits a creature, creatures your opponents control get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minister of Pain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gurmag-drowner-corpus-m679",
+  "description": "M6 corpus — Gurmag Drowner; in-hand parse.",
+  "seed": 61696,
+  "cards": {
+    "Gurmag Drowner": "Name:Gurmag Drowner\nManaCost:3 U\nTypes:Creature Snake Wizard\nPT:2/4\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME exploits a creature, look at the top four cards of your library. Put one of them into your hand and the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone2$ Graveyard | NoReveal$ True\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Gurmag Drowner exploits a creature, look at the top four cards of your library. Put one of them into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gurmag Drowner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

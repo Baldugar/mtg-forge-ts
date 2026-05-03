@@ -1,0 +1,23 @@
+{
+  "id": "mirrorhall-mimic-corpus-m679",
+  "description": "M6 corpus — Mirrorhall Mimic; in-hand parse.",
+  "seed": 61864,
+  "cards": {
+    "Mirrorhall Mimic": "Name:Mirrorhall Mimic\nManaCost:3 U\nTypes:Creature Spirit\nPT:0/0\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other | ChoiceTitle$ Choose a creature on the battlefield to copy | AddTypes$ Spirit | SpellDescription$ You may have CARDNAME enter as a copy of any creature on the battlefield, except it's a Spirit in addition to its other types.\nK:Disturb:3 U U\nDeckHas:Ability$Graveyard|Token\nAlternateMode:DoubleFaced\nOracle:You may have Mirrorhall Mimic enter as a copy of any creature on the battlefield, except it's a Spirit in addition to its other types.\\nDisturb {3}{U}{U} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Ghastly Mimicry\nManaCost:no cost\nColors:blue\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:HighestEvaluation\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, create a token that's a copy of enchanted creature, except it's a Spirit in addition to its other types.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Enchanted | AddTypes$ Spirit\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nAt the beginning of your upkeep, create a token that's a copy of enchanted creature, except it's a Spirit in addition to its other types.\\nIf Ghastly Mimicry would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirrorhall Mimic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

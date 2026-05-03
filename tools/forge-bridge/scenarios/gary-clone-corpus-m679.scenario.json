@@ -1,0 +1,23 @@
+{
+  "id": "gary-clone-corpus-m679",
+  "description": "M6 corpus — Gary Clone; in-hand parse.",
+  "seed": 61656,
+  "cards": {
+    "Gary Clone": "Name:Gary Clone\nManaCost:1 W\nTypes:Creature Human Citizen\nPT:1/3\nK:Squad:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, each creature you control named Gary Clone gets +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+namedGary Clone | NumAtt$ +1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckHints:Name$Gary Clone\nOracle:Squad {2} (As an additional cost to cast this spell, you may pay {2} any number of times. When this creature enters, create that many tokens that are copies of it.)\\nWhenever Gary Clone attacks, each creature you control named Gary Clone gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gary Clone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dreamstealer-corpus-m679",
+  "description": "M6 corpus — Dreamstealer; in-hand parse.",
+  "seed": 61597,
+  "cards": {
+    "Dreamstealer": "Name:Dreamstealer\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:1/2\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards that many cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ X | Mode$ TgtChoose\nSVar:X:TriggerCount$DamageAmount\nK:Eternalize:4 B B\nDeckHas:Ability$Token\nOracle:Menace\\nWhenever Dreamstealer deals combat damage to a player, that player discards that many cards.\\nEternalize {4}{B}{B} ({4}{B}{B}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a 4/4 black Zombie Human Wizard with no mana cost. Eternalize only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreamstealer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

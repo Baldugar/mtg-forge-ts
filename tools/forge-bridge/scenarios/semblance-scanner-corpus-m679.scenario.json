@@ -1,0 +1,23 @@
+{
+  "id": "semblance-scanner-corpus-m679",
+  "description": "M6 corpus — Semblance Scanner; in-hand parse.",
+  "seed": 62069,
+  "cards": {
+    "Semblance Scanner": "Name:Semblance Scanner\nManaCost:2 U\nTypes:Artifact Creature Equipment Shapeshifter\nPT:3/2\nT:Mode$ DamageDone | ValidSource$ Card.Self+!token,Creature.EquippedBy+!token | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigConjure | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or equipped creature deals combat damage to a player, if it's not a token, conjure a duplicate of it into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | DefinedName$ TriggeredSource | Zone$ Hand\nK:Reconfigure:1\nOracle:Whenever Semblance Scanner or equipped creature deals combat damage to a player, if it's not a token, conjure a duplicate of it into your hand.\\nReconfigure {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Semblance Scanner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

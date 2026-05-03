@@ -1,0 +1,23 @@
+{
+  "id": "manifold-mouse-corpus-m679",
+  "description": "M6 corpus — Manifold Mouse; in-hand parse.",
+  "seed": 61832,
+  "cards": {
+    "Manifold Mouse": "Name:Manifold Mouse\nManaCost:1 R\nTypes:Creature Mouse Soldier\nPT:1/2\nK:Offspring:2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target Mouse you control gains your choice of double strike or trample until end of turn.\nSVar:TrigPump:DB$ Pump | KWChoice$ Double Strike,Trample | ValidTgts$ Mouse.YouCtrl | TgtPrompt$ Select target Mouse you control\nSVar:PlayMain1:TRUE\nOracle:Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nAt the beginning of combat on your turn, target Mouse you control gains your choice of double strike or trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manifold Mouse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

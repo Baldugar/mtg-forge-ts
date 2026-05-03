@@ -1,0 +1,23 @@
+{
+  "id": "midnight-banshee-corpus-m679",
+  "description": "M6 corpus — Midnight Banshee; in-hand parse.",
+  "seed": 61852,
+  "cards": {
+    "Midnight Banshee": "Name:Midnight Banshee\nManaCost:3 B B B\nTypes:Creature Spirit\nPT:5/5\nK:Wither\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ At the beginning of your upkeep, put a -1/-1 counter on each nonblack creature.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.nonBlack | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 1\nAI:RemoveDeck:Random\nOracle:Wither (This deals damage to creatures in the form of -1/-1 counters.)\\nAt the beginning of your upkeep, put a -1/-1 counter on each nonblack creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midnight Banshee"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

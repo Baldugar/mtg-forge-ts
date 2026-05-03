@@ -1,0 +1,23 @@
+{
+  "id": "possibility-technician-corpus-m679",
+  "description": "M6 corpus — Possibility Technician; in-hand parse.",
+  "seed": 61959,
+  "cards": {
+    "Possibility Technician": "Name:Possibility Technician\nManaCost:2 R\nTypes:Creature Kavu Artificer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Kavu.Other+YouCtrl | Execute$ TrigExile | TriggerDescription$ Whenever this creature or another Kavu you control enters, exile the top card of your library. For as long as that card remains exiled, you may play it if you control a Kavu.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | CheckSVar$ X | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ For as long as that card remains exiled, you may play it if you control a Kavu.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Kavu.YouCtrl\nK:Warp:1 R\nOracle:Whenever this creature or another Kavu you control enters, exile the top card of your library. For as long as that card remains exiled, you may play it if you control a Kavu.\\nWarp {1}{R} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Possibility Technician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

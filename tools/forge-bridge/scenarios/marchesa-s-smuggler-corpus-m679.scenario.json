@@ -1,0 +1,23 @@
+{
+  "id": "marchesa-s-smuggler-corpus-m679",
+  "description": "M6 corpus — Marchesa's Smuggler; in-hand parse.",
+  "seed": 61838,
+  "cards": {
+    "Marchesa's Smuggler": "Name:Marchesa's Smuggler\nManaCost:U R\nTypes:Creature Human Rogue\nPT:1/1\nK:Dethrone\nA:AB$ Pump | Cost$ 1 U R | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Haste | SubAbility$ DBUnblockable | StackDescription$ {c:Targeted} gains haste until end of turn and can't be blocked this turn. | SpellDescription$ Target creature you control gains haste until end of turn and can't be blocked this turn.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHas:Ability$Counters\nOracle:Dethrone (Whenever this creature attacks the player with the most life or tied for most life, put a +1/+1 counter on it.)\\n{1}{U}{R}: Target creature you control gains haste until end of turn and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marchesa's Smuggler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

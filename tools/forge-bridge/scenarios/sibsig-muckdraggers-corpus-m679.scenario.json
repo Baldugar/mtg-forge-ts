@@ -1,0 +1,23 @@
+{
+  "id": "sibsig-muckdraggers-corpus-m679",
+  "description": "M6 corpus — Sibsig Muckdraggers; in-hand parse.",
+  "seed": 62088,
+  "cards": {
+    "Sibsig Muckdraggers": "Name:Sibsig Muckdraggers\nManaCost:8 B\nTypes:Creature Zombie\nPT:3/6\nK:Delve\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl\nDeckHints:Ability$Graveyard\nOracle:Delve (Each card you exile from your graveyard while casting this spell pays for {1}.)\\nWhen Sibsig Muckdraggers enters, return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sibsig Muckdraggers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

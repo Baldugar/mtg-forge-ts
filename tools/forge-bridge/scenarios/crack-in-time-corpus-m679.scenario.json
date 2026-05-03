@@ -1,0 +1,23 @@
+{
+  "id": "crack-in-time-corpus-m679",
+  "description": "M6 corpus — Crack in Time; in-hand parse.",
+  "seed": 61566,
+  "cards": {
+    "Crack in Time": "Name:Crack in Time\nManaCost:3 W\nTypes:Enchantment\nK:Vanishing:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ When CARDNAME enters and at the beginning of your first main phase, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters and at the beginning of your first main phase, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nDeckHas:Ability$Counters\nOracle:Vanishing 3 (This enchantment enters with three time counters on it. At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)\\nWhen Crack in Time enters and at the beginning of your first main phase, exile target creature an opponent controls until Crack in Time leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crack in Time"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

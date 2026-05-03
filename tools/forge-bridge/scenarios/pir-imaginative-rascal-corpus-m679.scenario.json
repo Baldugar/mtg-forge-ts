@@ -1,0 +1,23 @@
+{
+  "id": "pir-imaginative-rascal-corpus-m679",
+  "description": "M6 corpus — Pir, Imaginative Rascal; in-hand parse.",
+  "seed": 61952,
+  "cards": {
+    "Pir, Imaginative Rascal": "Name:Pir, Imaginative Rascal\nManaCost:2 G\nTypes:Legendary Creature Human\nPT:1/1\nK:Partner with:Toothy, Imaginary Friend:Toothy\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Permanent.YourTeamCtrl+inZoneBattlefield | ReplaceWith$ AddOneMoreCounters | Description$ If one or more counters would be put on a permanent your team controls, that many plus one of each of those kinds of counters are put on that permanent instead.\nSVar:AddOneMoreCounters:DB$ ReplaceCounter | ChooseCounter$ True | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Plus.1\nDeckNeeds:Ability$Counters\nOracle:Partner with Toothy, Imaginary Friend (When this creature enters, target player may put Toothy into their hand from their library, then shuffle.)\\nIf one or more counters would be put on a permanent your team controls, that many plus one of each of those kinds of counters are put on that permanent instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pir, Imaginative Rascal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

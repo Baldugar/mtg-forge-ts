@@ -1,0 +1,23 @@
+{
+  "id": "haliya-guided-by-light-corpus-m679",
+  "description": "M6 corpus — Haliya, Guided by Light; in-hand parse.",
+  "seed": 61699,
+  "cards": {
+    "Haliya, Guided by Light": "Name:Haliya, Guided by Light\nManaCost:2 W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Other+YouCtrl,Artifact.Other+YouCtrl | Destination$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever NICKNAME or another creature or artifact you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, draw a card if you've gained 3 or more life this turn.\nSVar:TrigDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3\nK:Warp:W\nSVar:X:Count$LifeYouGainedThisTurn\nDeckHas:Ability$LifeGain\nOracle:Whenever Haliya or another creature or artifact you control enters, you gain 1 life.\\nAt the beginning of your end step, draw a card if you've gained 3 or more life this turn.\\nWarp {W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haliya, Guided by Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

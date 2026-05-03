@@ -1,0 +1,23 @@
+{
+  "id": "bola-slinger-corpus-m679",
+  "description": "M6 corpus — Bola Slinger; in-hand parse.",
+  "seed": 61502,
+  "cards": {
+    "Bola Slinger": "Name:Bola Slinger\nManaCost:3 W\nTypes:Creature Cat Soldier\nPT:2/2\nK:Backup:1:BackupAbility\nSVar:BackupAbility:DB$ Animate | Triggers$ AttackTrig | sVars$ AE\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever this creature attacks, tap target artifact or creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Select target artifact or creature an opponent controls\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever this creature attacks, tap target artifact or creature an opponent controls.\nSVar:HasAttackEffect:TRUE\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:Backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following ability until end of turn.)\\nWhenever this creature attacks, tap target artifact or creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bola Slinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "trynn-champion-of-freedom-corpus-m679",
+  "description": "M6 corpus — Trynn, Champion of Freedom; in-hand parse.",
+  "seed": 62224,
+  "cards": {
+    "Trynn, Champion of Freedom": "Name:Trynn, Champion of Freedom\nManaCost:3 W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nK:Partner with:Silvar, Devourer of the Free:Silvar\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you attacked this turn, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nSVar:RaidTest:Count$AttackersDeclared\nDeckHas:Ability$Token\nDeckHints:Name$Silvar, Devourer of the Free\nOracle:Partner with Silvar, Devourer of the Free (When this creature enters, target player may put Silvar into their hand from their library, then shuffle.)\\nAt the beginning of your end step, if you attacked this turn, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trynn, Champion of Freedom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

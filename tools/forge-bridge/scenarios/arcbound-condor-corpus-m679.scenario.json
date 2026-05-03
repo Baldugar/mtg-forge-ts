@@ -1,0 +1,23 @@
+{
+  "id": "arcbound-condor-corpus-m679",
+  "description": "M6 corpus — Arcbound Condor; in-hand parse.",
+  "seed": 61449,
+  "cards": {
+    "Arcbound Condor": "Name:Arcbound Condor\nManaCost:2 B B\nTypes:Artifact Creature Bird\nPT:0/0\nK:Flying\nK:Modular:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another artifact you control enters, target creature an opponent controls gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls. | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nDeckHas:Ability$Counters\nDeckNeeds:Type$Artifact\nOracle:Flying\\nModular 3 (This creature enters with three +1/+1 counters on it. When it dies, you may put its +1/+1 counters on target artifact creature.)\\nWhenever another artifact you control enters, target creature an opponent controls gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcbound Condor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

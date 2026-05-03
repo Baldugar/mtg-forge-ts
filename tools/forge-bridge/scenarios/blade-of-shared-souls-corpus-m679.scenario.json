@@ -1,0 +1,23 @@
+{
+  "id": "blade-of-shared-souls-corpus-m679",
+  "description": "M6 corpus — Blade of Shared Souls; in-hand parse.",
+  "seed": 61487,
+  "cards": {
+    "Blade of Shared Souls": "Name:Blade of Shared Souls\nManaCost:2 U\nTypes:Artifact Equipment\nK:For Mirrodin\nT:Mode$ Attached | ValidSource$ Card.Self | TriggerZones$ Battlefield | ValidTarget$ Creature | Execute$ TrigCopy | TriggerDescription$ Whenever CARDNAME becomes attached to a creature, for as long as CARDNAME remains attached to it, you may have that creature become a copy of another target creature you control.\nSVar:TrigCopy:DB$ Clone | ValidTgts$ Creature.YouCtrl+!TriggeredTarget | Optional$ True | TgtPrompt$ Choose another target creature you control | CloneTarget$ TriggeredTargetLKICopy | Duration$ UntilUnattached\nK:Equip:2\nDeckHas:Ability$Token & Type$Rebel & Color$Red\nOracle:For Mirrodin! (When this Equipment enters, create a 2/2 red Rebel creature token, then attach this to it.)\\nWhenever Blade of Shared Souls becomes attached to a creature, for as long as Blade of Shared Souls remains attached to it, you may have that creature become a copy of another target creature you control.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blade of Shared Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

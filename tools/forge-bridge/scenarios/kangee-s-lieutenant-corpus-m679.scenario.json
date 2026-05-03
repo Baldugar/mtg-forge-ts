@@ -1,0 +1,23 @@
+{
+  "id": "kangee-s-lieutenant-corpus-m679",
+  "description": "M6 corpus — Kangee's Lieutenant; in-hand parse.",
+  "seed": 61773,
+  "cards": {
+    "Kangee's Lieutenant": "Name:Kangee's Lieutenant\nManaCost:2 W\nTypes:Creature Bird Soldier\nPT:1/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, attacking creatures with flying get +1/+1 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.attacking+withFlying | NumAtt$ +1 | NumDef$ +1\nK:Encore:5 W\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckHints:Keyword$Flying\nOracle:Flying\\nWhenever Kangee's Lieutenant attacks, attacking creatures with flying get +1/+1 until end of turn.\\nEncore {5}{W} ({5}{W}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kangee's Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

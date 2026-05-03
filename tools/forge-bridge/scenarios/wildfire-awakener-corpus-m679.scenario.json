@@ -1,0 +1,23 @@
+{
+  "id": "wildfire-awakener-corpus-m679",
+  "description": "M6 corpus — Wildfire Awakener; in-hand parse.",
+  "seed": 62283,
+  "cards": {
+    "Wildfire Awakener": "Name:Wildfire Awakener\nManaCost:X 1 R W\nTypes:Creature Human Wizard\nPT:3/2\nK:Convoke\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create X 1/1 red Elemental creature tokens with \"Whenever this creature becomes tapped, it deals 1 damage to target player.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ r_1_1_elemental_ping | TokenOwner$ You\nSVar:X:Count$xPaid\nDeckHas:Ability$Token & Type$Elemental\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nWhen Wildfire Awakener enters, create X 1/1 red Elemental creature tokens with \"Whenever this creature becomes tapped, it deals 1 damage to target player.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildfire Awakener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

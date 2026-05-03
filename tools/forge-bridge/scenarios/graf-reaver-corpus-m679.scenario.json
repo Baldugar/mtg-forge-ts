@@ -1,0 +1,23 @@
+{
+  "id": "graf-reaver-corpus-m679",
+  "description": "M6 corpus — Graf Reaver; in-hand parse.",
+  "seed": 61683,
+  "cards": {
+    "Graf Reaver": "Name:Graf Reaver\nManaCost:1 B\nTypes:Creature Zombie Warrior\nPT:3/3\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME exploits a creature, destroy target planeswalker.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Planeswalker | TgtPrompt$ Select target planeswalker\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to you.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Graf Reaver exploits a creature, destroy target planeswalker.\\nAt the beginning of your upkeep, Graf Reaver deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graf Reaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

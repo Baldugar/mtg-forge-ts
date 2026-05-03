@@ -1,0 +1,23 @@
+{
+  "id": "a-stitched-assistant-corpus-m679",
+  "description": "M6 corpus — A-Stitched Assistant; in-hand parse.",
+  "seed": 62045,
+  "cards": {
+    "A-Stitched Assistant": "Name:A-Stitched Assistant\nManaCost:1 U\nTypes:Creature Zombie\nPT:2/1\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ When CARDNAME exploits a creature, scry 2, then draw a card.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$Sacrifice\nOracle:Exploit \\nWhen Stitched Assistant exploits a creature, scry 2, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Stitched Assistant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

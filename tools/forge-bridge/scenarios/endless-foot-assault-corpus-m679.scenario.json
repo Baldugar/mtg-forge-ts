@@ -1,0 +1,23 @@
+{
+  "id": "endless-foot-assault-corpus-m679",
+  "description": "M6 corpus — Endless Foot Assault; in-hand parse.",
+  "seed": 61616,
+  "cards": {
+    "Endless Foot Assault": "Name:Endless Foot Assault\nManaCost:2 W\nTypes:Enchantment\nK:Squad:1 W\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ DBRepeat | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, for each opponent, create a 1/1 black Ninja creature token that's tapped and attacking that player.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Opponent | ChangeZoneTable$ True | RepeatSubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_1_1_ninja | TokenTapped$ True | TokenAttacking$ RememberedPlayer | TokenOwner$ You\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:Squad {1}{W} (As an additional cost to cast this spell, you may pay {1}{W} any number of times. When this enchantment enters, create that many tokens that are copies of it.)\\nWhenever you attack, for each opponent, create a 1/1 black Ninja creature token that's tapped and attacking that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endless Foot Assault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

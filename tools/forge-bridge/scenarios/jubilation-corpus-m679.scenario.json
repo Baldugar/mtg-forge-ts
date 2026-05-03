@@ -1,0 +1,23 @@
+{
+  "id": "jubilation-corpus-m679",
+  "description": "M6 corpus — Jubilation; in-hand parse.",
+  "seed": 61763,
+  "cards": {
+    "Jubilation": "Name:Jubilation\nManaCost:5 G\nTypes:Creature Elemental Incarnation\nPT:5/5\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ When this creature enters, creatures you control get +2/+2 and gain trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | KW$ Trample\nK:Encore:7 G G\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:When this creature enters, creatures you control get +2/+2 and gain trample until end of turn.\\nEncore {7}{G}{G} ({7}{G}{G}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jubilation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

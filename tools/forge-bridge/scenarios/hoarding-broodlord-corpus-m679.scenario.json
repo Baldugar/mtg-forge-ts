@@ -1,0 +1,23 @@
+{
+  "id": "hoarding-broodlord-corpus-m679",
+  "description": "M6 corpus — Hoarding Broodlord; in-hand parse.",
+  "seed": 61725,
+  "cards": {
+    "Hoarding Broodlord": "Name:Hoarding Broodlord\nManaCost:5 B B B\nTypes:Creature Dragon\nPT:7/6\nK:Convoke\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When CARDNAME enters, search your library for a card, exile it face down, then shuffle. For as long as that card remains exiled, you may play it.\nSVar:TrigSearch:DB$ ChangeZone | ChangeNum$ 1 | ChangeType$ Card | Mandatory$ True | SubAbility$ DBEffect | Origin$ Library | Destination$ Exile | ExileFaceDown$ True | RememberChanged$ True\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayLookAt$ You | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ For as long as that card remains exiled, you may play it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Card.YouCtrl+wasCastFromExile | AffectedZone$ Stack | AddKeyword$ Convoke | Description$ Spells you cast from exile have convoke.\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nFlying\\nWhen Hoarding Broodlord enters, search your library for a card, exile it face down, then shuffle. For as long as that card remains exiled, you may play it.\\nSpells you cast from exile have convoke.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoarding Broodlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

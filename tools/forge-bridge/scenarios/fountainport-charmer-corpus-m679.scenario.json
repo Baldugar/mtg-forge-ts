@@ -1,0 +1,23 @@
+{
+  "id": "fountainport-charmer-corpus-m679",
+  "description": "M6 corpus — Fountainport Charmer; in-hand parse.",
+  "seed": 61647,
+  "cards": {
+    "Fountainport Charmer": "Name:Fountainport Charmer\nManaCost:1 G\nTypes:Creature Frog Bard\nPT:2/3\nK:Offspring:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, creature cards in your hand perpetually gain \"This spell costs {1} less to cast.\"\nSVar:TrigAnimate:DB$ AnimateAll | ValidCards$ Creature.YouOwn | Zone$ Hand | staticAbilities$ ReduceCost | Duration$ Perpetual\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} less to cast.\nOracle:Offspring {2}\\nWhen Fountainport Charmer enters, creature cards in your hand perpetually gain \"This spell costs {1} less to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fountainport Charmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

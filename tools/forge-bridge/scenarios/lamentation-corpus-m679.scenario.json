@@ -1,0 +1,23 @@
+{
+  "id": "lamentation-corpus-m679",
+  "description": "M6 corpus — Lamentation; in-hand parse.",
+  "seed": 61801,
+  "cards": {
+    "Lamentation": "Name:Lamentation\nManaCost:5 B\nTypes:Creature Elemental Incarnation\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this creature enters, destroy target creature an opponent controls. You gain 3 life.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nK:Encore:6 B B\nDeckHas:Ability$Token\nOracle:When this creature enters, destroy target creature an opponent controls. You gain 3 life.\\nEncore {6}{B}{B} ({6}{B}{B}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lamentation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

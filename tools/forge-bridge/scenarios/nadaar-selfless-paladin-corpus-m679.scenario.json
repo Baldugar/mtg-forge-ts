@@ -1,0 +1,23 @@
+{
+  "id": "nadaar-selfless-paladin-corpus-m679",
+  "description": "M6 corpus — Nadaar, Selfless Paladin; in-hand parse.",
+  "seed": 61880,
+  "cards": {
+    "Nadaar, Selfless Paladin": "Name:Nadaar, Selfless Paladin\nManaCost:2 W\nTypes:Legendary Creature Dragon Knight\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBVenture | TriggerDescription$ Whenever CARDNAME enters or attacks, venture into the dungeon. (Enter the first room or advance to the next room.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBVenture | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, venture into the dungeon. (Enter the first room or advance to the next room.)\nSVar:DBVenture:DB$ Venture | Defined$ You\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+Other | AddPower$ 1 | AddToughness$ 1 | CheckSVar$ X | Description$ Other creatures you control get +1/+1 as long as you've completed a dungeon.\nSVar:X:DungeonsCompleted$Amount\nOracle:Vigilance\\nWhenever Nadaar, Selfless Paladin enters or attacks, venture into the dungeon. (Enter the first room or advance to the next room.)\\nOther creatures you control get +1/+1 as long as you've completed a dungeon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nadaar, Selfless Paladin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

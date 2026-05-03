@@ -1,0 +1,23 @@
+{
+  "id": "crush-of-tentacles-corpus-m679",
+  "description": "M6 corpus — Crush of Tentacles; in-hand parse.",
+  "seed": 61572,
+  "cards": {
+    "Crush of Tentacles": "Name:Crush of Tentacles\nManaCost:4 U U\nTypes:Sorcery\nK:Surge:3 U U\nA:SP$ ChangeZoneAll | ChangeType$ Permanent.nonLand | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return all nonland permanents to their owners' hands. If CARDNAME's surge cost was paid, create an 8/8 blue Octopus creature token. | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ u_8_8_octopus | TokenOwner$ You | Condition$ Surge\nAI:RemoveDeck:All\nOracle:Surge {3}{U}{U} (You may cast this spell for its surge cost if you or a teammate has cast another spell this turn.)\\nReturn all nonland permanents to their owners' hands. If this spell's surge cost was paid, create an 8/8 blue Octopus creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crush of Tentacles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

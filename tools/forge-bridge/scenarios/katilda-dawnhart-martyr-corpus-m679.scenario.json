@@ -1,0 +1,23 @@
+{
+  "id": "katilda-dawnhart-martyr-corpus-m679",
+  "description": "M6 corpus — Katilda, Dawnhart Martyr; in-hand parse.",
+  "seed": 61778,
+  "cards": {
+    "Katilda, Dawnhart Martyr": "Name:Katilda, Dawnhart Martyr\nManaCost:1 W W\nTypes:Legendary Creature Spirit Warlock\nPT:*/*\nK:Flying\nK:Lifelink\nK:Protection:Vampire\nK:Disturb:3 W W\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of permanents you control that are Spirits and/or enchantments.\nSVar:X:Count$Valid Spirit.YouCtrl,Enchantment.YouCtrl\nSVar:NeedsToPlayVar:X GE2\nSVar:BuffedBy:Enchantment,Spirit\nSVar:NoZeroToughnessAI:True\nDeckHints:Type$Spirit|Enchantment\nDeckHas:Ability$LifeGain|Graveyard\nAlternateMode:DoubleFaced\nOracle:Flying, lifelink, protection from Vampires\\nKatilda, Dawnhart Martyr's power and toughness are each equal to the number of permanents you control that are Spirits and/or enchantments.\\nDisturb {3}{W}{W} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Katilda's Rising Dawn\nManaCost:no cost\nColors:white\nTypes:Legendary Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | AddKeyword$ Flying & Lifelink & Protection:Vampire | Description$ Enchanted creature has flying, lifelink, and protection from Vampires, and it gets +X/+X, where X is the number of permanents you control that are Spirits and/or enchantments.\nSVar:X:Count$Valid Spirit.YouCtrl,Enchantment.YouCtrl\nSVar:BuffedBy:Enchantment,Spirit\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature has flying, lifelink, and protection from Vampires, and it gets +X/+X, where X is the number of permanents you control that are Spirits and/or enchantments.\\nIf Katilda's Rising Dawn would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Katilda, Dawnhart Martyr"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

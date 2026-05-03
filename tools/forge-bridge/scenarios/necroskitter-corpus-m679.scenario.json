@@ -1,0 +1,23 @@
+{
+  "id": "necroskitter-corpus-m679",
+  "description": "M6 corpus — Necroskitter; in-hand parse.",
+  "seed": 61885,
+  "cards": {
+    "Necroskitter": "Name:Necroskitter\nManaCost:1 B B\nTypes:Creature Elemental\nPT:1/4\nK:Wither\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl+counters_GE1_M1M1 | TriggerZones$ Battlefield | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Whenever a creature an opponent controls with a -1/-1 counter on it dies, you may return that card to the battlefield under your control.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Wither (This deals damage to creatures in the form of -1/-1 counters.)\\nWhenever a creature an opponent controls with a -1/-1 counter on it dies, you may return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necroskitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

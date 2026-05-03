@@ -1,0 +1,23 @@
+{
+  "id": "artisan-of-kozilek-corpus-m679",
+  "description": "M6 corpus — Artisan of Kozilek; in-hand parse.",
+  "seed": 61466,
+  "cards": {
+    "Artisan of Kozilek": "Name:Artisan of Kozilek\nManaCost:9\nTypes:Creature Eldrazi\nPT:10/9\nK:Annihilator:2\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ When you cast this spell, you may return target creature card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature in your graveyard | Origin$ Graveyard | Destination$ Battlefield\nOracle:When you cast this spell, you may return target creature card from your graveyard to the battlefield.\\nAnnihilator 2 (Whenever this creature attacks, defending player sacrifices two permanents.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Artisan of Kozilek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "k-9-mark-i-corpus-m679",
+  "description": "M6 corpus — K-9, Mark I; in-hand parse.",
+  "seed": 61766,
+  "cards": {
+    "K-9, Mark I": "Name:K-9, Mark I\nManaCost:U\nTypes:Legendary Artifact Creature Robot Dog\nPT:1/1\nS:Mode$ Continuous | IsPresent$ Card.Self+untapped | Affected$ Creature.Other+Legendary+YouCtrl | AddKeyword$ Ward:1 | Description$ Negative — As long as CARDNAME is untapped, other legendary creatures you control have ward {1}.\nA:AB$ Effect | PrecostDesc$ Affirmative — | Cost$ 1 U T | ValidTgts$ Creature.Legendary | TgtPrompt$ Select target legendary creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target legendary creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nK:Doctor's companion\nDeckNeeds:Type$Legendary & Type$Creature\nOracle:Negative — As long as K-9, Mark I is untapped, other legendary creatures you control have ward {1}.\\nAffirmative — {1}{U}, {T}: Target legendary creature can't be blocked this turn.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "K-9, Mark I"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gruul-beastmaster-corpus-m679",
+  "description": "M6 corpus — Gruul Beastmaster; in-hand parse.",
+  "seed": 61691,
+  "cards": {
+    "Gruul Beastmaster": "Name:Gruul Beastmaster\nManaCost:3 G\nTypes:Creature Human Shaman\nPT:2/2\nK:Riot\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target creature you control gets +X/+0 until end of turn, where X is CARDNAME's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select another target creature you control | NumAtt$ +X\nSVar:X:Count$CardPower\nDeckHas:Ability$Counters\nOracle:Riot (This creature enters with your choice of a +1/+1 counter or haste.)\\nWhenever Gruul Beastmaster attacks, another target creature you control gets +X/+0 until end of turn, where X is Gruul Beastmaster's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gruul Beastmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

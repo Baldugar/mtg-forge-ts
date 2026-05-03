@@ -1,0 +1,23 @@
+{
+  "id": "yavimaya-granger-corpus-m679",
+  "description": "M6 corpus — Yavimaya Granger; in-hand parse.",
+  "seed": 62299,
+  "cards": {
+    "Yavimaya Granger": "Name:Yavimaya Granger\nManaCost:2 G\nTypes:Creature Elf\nPT:2/2\nK:Echo:2 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:Echo {2}{G} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Yavimaya Granger enters, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yavimaya Granger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

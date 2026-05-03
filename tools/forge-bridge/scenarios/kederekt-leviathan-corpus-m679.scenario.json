@@ -1,0 +1,23 @@
+{
+  "id": "kederekt-leviathan-corpus-m679",
+  "description": "M6 corpus — Kederekt Leviathan; in-hand parse.",
+  "seed": 61780,
+  "cards": {
+    "Kederekt Leviathan": "Name:Kederekt Leviathan\nManaCost:6 U U\nTypes:Creature Leviathan\nPT:5/5\nK:Unearth:6 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return all other nonland permanents to their owners' hands.\nSVar:TrigChange:DB$ ChangeZoneAll | ChangeType$ Permanent.nonLand+StrictlyOther | Origin$ Battlefield | Destination$ Hand\nAI:RemoveDeck:Random\nOracle:When Kederekt Leviathan enters, return all other nonland permanents to their owners' hands.\\nUnearth {6}{U} ({6}{U}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kederekt Leviathan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

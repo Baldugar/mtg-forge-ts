@@ -1,0 +1,23 @@
+{
+  "id": "shorecrasher-elemental-corpus-m679",
+  "description": "M6 corpus — Shorecrasher Elemental; in-hand parse.",
+  "seed": 62084,
+  "cards": {
+    "Shorecrasher Elemental": "Name:Shorecrasher Elemental\nManaCost:U U U\nTypes:Creature Elemental\nPT:3/3\nK:Megamorph:4 U\nA:AB$ ChangeZone | Cost$ U | Defined$ Self | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | SpellDescription$ Exile CARDNAME, then return it to the battlefield face down under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | FaceDown$ True | Origin$ Exile | Destination$ Battlefield | Defined$ CorrectedSelf\nA:AB$ GenericChoice | Cost$ 1 | Choices$ PumpAtt,PumpDef | SpellDescription$ CARDNAME gets +1/-1 or -1/+1 until end of turn.\nSVar:PumpAtt:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ -1 | SpellDescription$ CARDNAME gets +1/-1 until end of turn.\nSVar:PumpDef:DB$ Pump | Defined$ Self | NumAtt$ -1 | NumDef$ +1 | SpellDescription$ CARDNAME gets -1/+1 until end of turn.\nOracle:{U}: Exile Shorecrasher Elemental, then return it to the battlefield face down under its owner's control.\\n{1}: Shorecrasher Elemental gets +1/-1 or -1/+1 until end of turn.\\nMegamorph {4}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shorecrasher Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

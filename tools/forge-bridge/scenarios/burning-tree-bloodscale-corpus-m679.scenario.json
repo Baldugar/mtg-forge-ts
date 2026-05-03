@@ -1,0 +1,23 @@
+{
+  "id": "burning-tree-bloodscale-corpus-m679",
+  "description": "M6 corpus — Burning-Tree Bloodscale; in-hand parse.",
+  "seed": 61515,
+  "cards": {
+    "Burning-Tree Bloodscale": "Name:Burning-Tree Bloodscale\nManaCost:2 R G\nTypes:Creature Lizard Berserker\nPT:2/2\nK:Bloodthirst:1\nA:AB$ Effect | Cost$ 2 R | ValidTgts$ Creature | TgtPrompt$ Select target creature that can't block this creature this turn | IsCurse$ True | RememberObjects$ ThisTargetedCard | ForgetOnMoved$ Battlefield | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | StackDescription$ {c:Targeted} can't block CARDNAME this turn. | SpellDescription$ Target creature can't block CARDNAME this turn.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.IsRemembered | Description$ {c:Remembered} can't block EFFECTSOURCE this turn.\nA:AB$ MustBlock | Cost$ 2 G | ValidTgts$ Creature | TgtPrompt$ Select target creature that must block this creature this turn | SpellDescription$ Target creature blocks CARDNAME this turn if able.\nAI:RemoveDeck:All\nOracle:Bloodthirst 1 (If an opponent was dealt damage this turn, this creature enters with a +1/+1 counter on it.)\\n{2}{R}: Target creature can't block Burning-Tree Bloodscale this turn.\\n{2}{G}: Target creature blocks Burning-Tree Bloodscale this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning-Tree Bloodscale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

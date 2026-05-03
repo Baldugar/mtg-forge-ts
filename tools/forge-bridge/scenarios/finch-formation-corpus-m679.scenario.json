@@ -1,0 +1,23 @@
+{
+  "id": "finch-formation-corpus-m679",
+  "description": "M6 corpus — Finch Formation; in-hand parse.",
+  "seed": 61636,
+  "cards": {
+    "Finch Formation": "Name:Finch Formation\nManaCost:2 U\nTypes:Creature Bird Scout\nPT:2/2\nK:Offspring:3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, target creature you control gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Flying\nOracle:Offspring {3} (You may pay an additional {3} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nFlying\\nWhen this creature enters, target creature you control gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Finch Formation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "network-marauder-corpus-m679",
+  "description": "M6 corpus — Network Marauder; in-hand parse.",
+  "seed": 61891,
+  "cards": {
+    "Network Marauder": "Name:Network Marauder\nManaCost:2 U\nTypes:Artifact Creature Robot Pirate\nPT:1/2\nK:Warp:1 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Artifact.YouCtrl+cmcGE3 | Execute$ TrigPump | TriggerDescription$ When this creature enters and whenever another artifact you control with mana value 3 or greater enters, all artifact creature cards and Spacecraft cards you own perpetually get +1/+1.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Artifact.Creature+YouOwn+!token,Spacecraft.YouOwn+!token | PumpZone$ All | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nOracle:When this creature enters and whenever another artifact you control with mana value 3 or greater enters, all artifact creature cards and Spacecraft cards you own perpetually get +1/+1.\\nWarp {1}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Network Marauder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

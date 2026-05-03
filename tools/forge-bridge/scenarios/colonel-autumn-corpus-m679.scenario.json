@@ -1,0 +1,23 @@
+{
+  "id": "colonel-autumn-corpus-m679",
+  "description": "M6 corpus — Colonel Autumn; in-hand parse.",
+  "seed": 61553,
+  "cards": {
+    "Colonel Autumn": "Name:Colonel Autumn\nManaCost:1 W B\nTypes:Legendary Creature Human Soldier\nPT:2/3\nK:Lifelink\nK:Exploit\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+Legendary+Other | AddKeyword$ Exploit | Description$ Other legendary creatures you control have exploit.\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever a creature you control exploits a creature, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Sacrifice|LifeGain|Counters\nDeckHints:Type$Legendary\nOracle:Lifelink\\nExploit (When this creature enters, you may sacrifice a creature.)\\nOther legendary creatures you control have exploit.\\nWhenever a creature you control exploits a creature, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colonel Autumn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

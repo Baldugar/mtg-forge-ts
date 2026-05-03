@@ -1,0 +1,23 @@
+{
+  "id": "impulsivity-corpus-m679",
+  "description": "M6 corpus — Impulsivity; in-hand parse.",
+  "seed": 61744,
+  "cards": {
+    "Impulsivity": "Name:Impulsivity\nManaCost:6 R\nTypes:Creature Elemental Incarnation\nPT:7/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerDescription$ When this creature enters, you may cast target instant or sorcery card from a graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\nSVar:TrigPlay:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Instant,Sorcery | ValidSA$ Spell | TgtPrompt$ Choose target instant or sorcery card from a graveyard | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nK:Encore:7 R R\nDeckHas:Ability$Token\nOracle:When this creature enters, you may cast target instant or sorcery card from a graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\\nEncore {7}{R}{R} ({7}{R}{R}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impulsivity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

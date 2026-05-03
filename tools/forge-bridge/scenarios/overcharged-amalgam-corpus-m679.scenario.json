@@ -1,0 +1,23 @@
+{
+  "id": "overcharged-amalgam-corpus-m679",
+  "description": "M6 corpus — Overcharged Amalgam; in-hand parse.",
+  "seed": 61929,
+  "cards": {
+    "Overcharged Amalgam": "Name:Overcharged Amalgam\nManaCost:2 U U\nTypes:Creature Zombie Horror\nPT:3/3\nK:Flash\nK:Flying\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ When CARDNAME exploits a creature, counter target spell, activated ability, or triggered ability.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell,Activated,Triggered | TgtPrompt$ Select target spell or ability | ValidTgts$ Card,Emblem | SpellDescription$ Counter target spell, activated ability, or triggered ability.\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Flash\\nFlying\\nExploit (When this creature enters, you may sacrifice a creature.)\\nWhen Overcharged Amalgam exploits a creature, counter target spell, activated ability, or triggered ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overcharged Amalgam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

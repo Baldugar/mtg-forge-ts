@@ -1,0 +1,23 @@
+{
+  "id": "power-depot-corpus-m679",
+  "description": "M6 corpus — Power Depot; in-hand parse.",
+  "seed": 61962,
+  "cards": {
+    "Power Depot": "Name:Power Depot\nManaCost:no cost\nTypes:Artifact Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:Modular:1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Artifact,Activated.Artifact+inZoneBattlefield | SpellDescription$ Add one mana of any color. Spend this mana only to cast artifact spells or activate abilities of artifacts.\nDeckHints:Type$Artifact\nDeckHas:Ability$Counters\nOracle:Power Depot enters tapped.\\n{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast artifact spells or activate abilities of artifacts.\\nModular 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Depot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

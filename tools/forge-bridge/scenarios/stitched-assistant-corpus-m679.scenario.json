@@ -1,0 +1,23 @@
+{
+  "id": "stitched-assistant-corpus-m679",
+  "description": "M6 corpus — Stitched Assistant; in-hand parse.",
+  "seed": 62155,
+  "cards": {
+    "Stitched Assistant": "Name:Stitched Assistant\nManaCost:2 U\nTypes:Creature Zombie\nPT:3/2\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ When CARDNAME exploits a creature, scry 1, then draw a card. (To scry 1, look at the top card of your library, then you may put that card on the bottom of your library.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$Sacrifice\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Stitched Assistant exploits a creature, scry 1, then draw a card. (To scry 1, look at the top card of your library, then you may put that card on the bottom of your library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stitched Assistant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

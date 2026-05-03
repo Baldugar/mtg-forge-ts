@@ -1,0 +1,23 @@
+{
+  "id": "arcbound-shikari-corpus-m679",
+  "description": "M6 corpus — Arcbound Shikari; in-hand parse.",
+  "seed": 61456,
+  "cards": {
+    "Arcbound Shikari": "Name:Arcbound Shikari\nManaCost:1 R W\nTypes:Artifact Creature Cat Soldier\nPT:0/0\nK:First Strike\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other artifact creature you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.Artifact+StrictlyOther+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nK:Modular:2\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:First strike\\nWhen Arcbound Shikari enters, put a +1/+1 counter on each other artifact creature you control.\\nModular 2 (This creature enters with two +1/+1 counters on it. When it dies, you may put its +1/+1 counters on target artifact creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcbound Shikari"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

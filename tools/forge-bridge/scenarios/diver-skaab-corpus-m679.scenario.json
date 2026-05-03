@@ -1,0 +1,23 @@
+{
+  "id": "diver-skaab-corpus-m679",
+  "description": "M6 corpus — Diver Skaab; in-hand parse.",
+  "seed": 61593,
+  "cards": {
+    "Diver Skaab": "Name:Diver Skaab\nManaCost:3 U U\nTypes:Creature Zombie\nPT:3/5\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSubmerge | TriggerDescription$ When CARDNAME exploits a creature, target creature's owner puts it on the top or bottom of their library.\nSVar:TrigSubmerge:DB$ ChangeZone | ValidTgts$ Creature | AlternativeDecider$ TargetedOwner | Origin$ Battlefield | Destination$ Library | DestinationAlternative$ Library | LibraryPositionAlternative$ -1\nDeckHas:Ability$Sacrifice\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Diver Skaab exploits a creature, target creature's owner puts it on the top or bottom of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diver Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

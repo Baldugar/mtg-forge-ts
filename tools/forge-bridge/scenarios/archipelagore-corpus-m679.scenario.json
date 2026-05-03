@@ -1,0 +1,23 @@
+{
+  "id": "archipelagore-corpus-m679",
+  "description": "M6 corpus — Archipelagore; in-hand parse.",
+  "seed": 61461,
+  "cards": {
+    "Archipelagore": "Name:Archipelagore\nManaCost:5 U U\nTypes:Creature Leviathan\nPT:7/7\nK:Mutate:5 U\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Whenever this creature mutates, tap up to X target creatures, where X is the number of times this creature has mutated. Those creatures don't untap during their controller's next untap step.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Select up to X target creatures to tap | ValidTgts$ Creature | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:X:Count$TimesMutated\nAI:RemoveDeck:Random\nOracle:Mutate {5}{U} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nWhenever this creature mutates, tap up to X target creatures, where X is the number of times this creature has mutated. Those creatures don't untap during their controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archipelagore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

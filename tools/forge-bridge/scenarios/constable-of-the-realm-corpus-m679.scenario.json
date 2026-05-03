@@ -1,0 +1,23 @@
+{
+  "id": "constable-of-the-realm-corpus-m679",
+  "description": "M6 corpus — Constable of the Realm; in-hand parse.",
+  "seed": 61556,
+  "cards": {
+    "Constable of the Realm": "Name:Constable of the Realm\nManaCost:4 W\nTypes:Creature Giant Soldier\nPT:3/3\nK:Renown:2\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | CounterType$ P1P1 | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever one or more +1/+1 counters are put on CARDNAME, exile up to one other target nonland permanent until CARDNAME leaves the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Permanent.Other+nonLand | TgtPrompt$ Select up to one other target nonland permanent | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters|Proliferate\nOracle:Renown 2 (When this creature deals combat damage to a player, if it isn't renowned, put two +1/+1 counters on it and it becomes renowned.)\\nWhenever one or more +1/+1 counters are put on Constable of the Realm, exile up to one other target nonland permanent until Constable of the Realm leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Constable of the Realm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

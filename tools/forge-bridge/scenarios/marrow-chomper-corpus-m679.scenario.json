@@ -1,0 +1,23 @@
+{
+  "id": "marrow-chomper-corpus-m679",
+  "description": "M6 corpus — Marrow Chomper; in-hand parse.",
+  "seed": 61841,
+  "cards": {
+    "Marrow Chomper": "Name:Marrow Chomper\nManaCost:3 B G\nTypes:Creature Zombie Lizard\nPT:3/3\nK:Devour:2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life for each creature it devoured.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Devoured Card/Twice\nOracle:Devour 2 (As this enters, you may sacrifice any number of creatures. This creature enters with twice that many +1/+1 counters on it.)\\nWhen Marrow Chomper enters, you gain 2 life for each creature it devoured.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marrow Chomper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

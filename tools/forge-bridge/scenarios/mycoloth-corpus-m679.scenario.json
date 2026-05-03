@@ -1,0 +1,23 @@
+{
+  "id": "mycoloth-corpus-m679",
+  "description": "M6 corpus — Mycoloth; in-hand parse.",
+  "seed": 61878,
+  "cards": {
+    "Mycoloth": "Name:Mycoloth\nManaCost:3 G G\nTypes:Creature Fungus\nPT:4/4\nK:Devour:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 1/1 green Saproling creature token for each +1/+1 counter on CARDNAME.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:X:Count$CardCounters.P1P1\nDeckHas:Ability$Counters|Token\nOracle:Devour 2 (As this enters, you may sacrifice any number of creatures. This creature enters with twice that many +1/+1 counters on it.)\\nAt the beginning of your upkeep, create a 1/1 green Saproling creature token for each +1/+1 counter on Mycoloth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mycoloth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

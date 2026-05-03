@@ -1,0 +1,23 @@
+{
+  "id": "illuna-apex-of-wishes-corpus-m679",
+  "description": "M6 corpus — Illuna, Apex of Wishes; in-hand parse.",
+  "seed": 61739,
+  "cards": {
+    "Illuna, Apex of Wishes": "Name:Illuna, Apex of Wishes\nManaCost:2 G U R\nTypes:Legendary Creature Beast Elemental Dinosaur\nPT:6/6\nK:Mutate:3 RG U U\nK:Flying\nK:Trample\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ Whenever this creature mutates, exile cards from the top of your library until you exile a nonland permanent card. Put that card onto the battlefield or into your hand.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Permanent.nonLand | ValidDescription$ nonland permanent | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | DestinationAlternative$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Mutate {3}{R/G}{U}{U} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nFlying, trample\\nWhenever this creature mutates, exile cards from the top of your library until you exile a nonland permanent card. Put that card onto the battlefield or into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Illuna, Apex of Wishes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

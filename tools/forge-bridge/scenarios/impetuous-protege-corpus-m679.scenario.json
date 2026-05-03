@@ -1,0 +1,23 @@
+{
+  "id": "impetuous-protege-corpus-m679",
+  "description": "M6 corpus — Impetuous Protege; in-hand parse.",
+  "seed": 61742,
+  "cards": {
+    "Impetuous Protege": "Name:Impetuous Protege\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:0/4\nK:Partner with:Proud Mentor\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the greatest power among tapped creatures your opponents control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.tapped+OppCtrl$GreatestCardPower\nDeckHints:Name$Proud Mentor\nOracle:Partner with Proud Mentor (When this creature enters, target player may put Proud Mentor into their hand from their library, then shuffle.)\\nWhenever Impetuous Protege attacks, it gets +X/+0 until end of turn, where X is the greatest power among tapped creatures your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Impetuous Protege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

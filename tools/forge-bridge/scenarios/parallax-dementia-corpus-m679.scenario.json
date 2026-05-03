@@ -1,0 +1,23 @@
+{
+  "id": "parallax-dementia-corpus-m679",
+  "description": "M6 corpus — Parallax Dementia; in-hand parse.",
+  "seed": 61935,
+  "cards": {
+    "Parallax Dementia": "Name:Parallax Dementia\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:Fading:1\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 2 | Description$ Enchanted creature gets +3/+2.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME leaves the battlefield, destroy enchanted creature. That creature can't be regenerated.\nSVar:TrigSac:DB$ Destroy | Defined$ AttachedBy TriggeredCardLKICopy | NoRegen$ True\nAI:RemoveDeck:All\nOracle:Enchant creature\\nFading 1 (This enchantment enters with one fade counter on it. At the beginning of your upkeep, remove a fade counter from it. If you can't, sacrifice it.)\\nEnchanted creature gets +3/+2.\\nWhen Parallax Dementia leaves the battlefield, destroy enchanted creature. That creature can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parallax Dementia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

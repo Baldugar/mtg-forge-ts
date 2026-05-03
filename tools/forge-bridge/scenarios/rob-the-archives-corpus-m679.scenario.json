@@ -1,0 +1,23 @@
+{
+  "id": "rob-the-archives-corpus-m679",
+  "description": "M6 corpus — Rob the Archives; in-hand parse.",
+  "seed": 62018,
+  "cards": {
+    "Rob the Archives": "Name:Rob the Archives\nManaCost:1 R\nTypes:Sorcery\nK:Casualty:1\nA:SP$ Dig | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top two cards of your library. You may play those cards this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup | StackDescription$ You may play those cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ You may play those cards this turn.\nDeckHas:Ability$Sacrifice\nOracle:Casualty 1 (As you cast this spell, you may sacrifice a creature with power 1 or greater. When you do, copy this spell.)\\nExile the top two cards of your library. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rob the Archives"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

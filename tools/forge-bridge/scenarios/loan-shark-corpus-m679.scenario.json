@@ -1,0 +1,23 @@
+{
+  "id": "loan-shark-corpus-m679",
+  "description": "M6 corpus — Loan Shark; in-hand parse.",
+  "seed": 61815,
+  "cards": {
+    "Loan Shark": "Name:Loan Shark\nManaCost:3 U\nTypes:Creature Shark Rogue\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ GE2 | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if you've cast two or more spells this turn, draw a card.\nSVar:X:Count$ThisTurnCast_Card.YouCtrl\nSVar:TrigDraw:DB$ Draw\nK:Plot:3 U\nOracle:When Loan Shark enters, if you've cast two or more spells this turn, draw a card.\\nPlot {3}{U} (You may pay {3}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loan Shark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

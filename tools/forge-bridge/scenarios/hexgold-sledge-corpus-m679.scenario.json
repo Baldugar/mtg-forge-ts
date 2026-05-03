@@ -1,0 +1,23 @@
+{
+  "id": "hexgold-sledge-corpus-m679",
+  "description": "M6 corpus — Hexgold Sledge; in-hand parse.",
+  "seed": 61720,
+  "cards": {
+    "Hexgold Sledge": "Name:Hexgold Sledge\nManaCost:2 R\nTypes:Artifact Equipment\nK:For Mirrodin\nK:Equip:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card named Goblin Gaveleer onto the battlefield.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Goblin Gaveleer | Zone$ Battlefield\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | Description$ Equipped creature gets +1/+0.\nDeckHas:Ability$Token & Type$Rebel|Goblin|Warrior\nOracle:For Mirrodin!\\nWhen Hexgold Sledge enters, conjure a card named Goblin Gaveleer onto the battlefield.\\nEquipped creature gets +1/+0.\\nEquip {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hexgold Sledge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "starfield-shepherd-corpus-m679",
+  "description": "M6 corpus — Starfield Shepherd; in-hand parse.",
+  "seed": 62147,
+  "cards": {
+    "Starfield Shepherd": "Name:Starfield Shepherd\nManaCost:3 W W\nTypes:Creature Angel\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, search your library for a basic Plains card or a creature card with mana value 1 or less, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Plains.Basic,Creature.cmcLE1 | ChangeNum$ 1\nK:Warp:1 W\nOracle:Flying\\nWhen this creature enters, search your library for a basic Plains card or a creature card with mana value 1 or less, reveal it, put it into your hand, then shuffle.\\nWarp {1}{W} (You may cast this card from your hand for its warp cost. Exile this creature at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starfield Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

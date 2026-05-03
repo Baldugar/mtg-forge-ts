@@ -1,0 +1,23 @@
+{
+  "id": "galedrifter-corpus-m679",
+  "description": "M6 corpus — Galedrifter; in-hand parse.",
+  "seed": 61655,
+  "cards": {
+    "Galedrifter": "Name:Galedrifter\nManaCost:3 U\nTypes:Creature Hippogriff\nPT:3/2\nK:Flying\nK:Disturb:4 U\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Flying\\nDisturb {4}{U} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Waildrifter\nManaCost:no cost\nColors:blue\nTypes:Creature Hippogriff Spirit\nPT:2/2\nK:Flying\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying\\nIf Waildrifter would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galedrifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

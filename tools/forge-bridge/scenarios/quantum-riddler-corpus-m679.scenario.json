@@ -1,0 +1,23 @@
+{
+  "id": "quantum-riddler-corpus-m679",
+  "description": "M6 corpus — Quantum Riddler; in-hand parse.",
+  "seed": 61975,
+  "cards": {
+    "Quantum Riddler": "Name:Quantum Riddler\nManaCost:3 U U\nTypes:Creature Sphinx\nPT:4/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nR:Event$ DrawCards | ActiveZones$ Battlefield | ValidPlayer$ You | CheckSVar$ X | SVarCompare$ LE1 | ReplaceWith$ DrawPlusOne | Description$ As long as you have one or fewer cards in hand, if you would draw one or more cards, you draw that many cards plus one instead.\nSVar:DrawPlusOne:DB$ Draw | NumCards$ ReplaceCount$Number/Plus.1\nSVar:X:Count$ValidHand Card.YouOwn\nK:Warp:1 U\nOracle:Flying\\nWhen this creature enters, draw a card.\\nAs long as you have one or fewer cards in hand, if you would draw one or more cards, you draw that many cards plus one instead.\\nWarp {1}{U}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quantum Riddler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reckless-bushwhacker-corpus-m679",
+  "description": "M6 corpus — Reckless Bushwhacker; in-hand parse.",
+  "seed": 61992,
+  "cards": {
+    "Reckless Bushwhacker": "Name:Reckless Bushwhacker\nManaCost:2 R\nTypes:Creature Goblin Warrior Ally\nPT:2/1\nK:Surge:1 R\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+surged | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, if its surge cost was paid, other creatures you control get +1/+0 and gain haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+StrictlyOther | NumAtt$ +1 | KW$ Haste\nSVar:PlayMain1:TRUE\nOracle:Surge {1}{R} (You may cast this spell for its surge cost if you or a teammate has cast another spell this turn.)\\nHaste\\nWhen Reckless Bushwhacker enters, if its surge cost was paid, other creatures you control get +1/+0 and gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reckless Bushwhacker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

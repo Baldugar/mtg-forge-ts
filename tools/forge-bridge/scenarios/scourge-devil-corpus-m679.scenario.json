@@ -1,0 +1,23 @@
+{
+  "id": "scourge-devil-corpus-m679",
+  "description": "M6 corpus — Scourge Devil; in-hand parse.",
+  "seed": 62056,
+  "cards": {
+    "Scourge Devil": "Name:Scourge Devil\nManaCost:4 R\nTypes:Creature Devil\nPT:3/3\nK:Unearth:2 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nSVar:PlayMain1:TRUE\nOracle:When Scourge Devil enters, creatures you control get +1/+0 until end of turn.\\nUnearth {2}{R} ({2}{R}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scourge Devil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

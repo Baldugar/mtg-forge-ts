@@ -1,0 +1,23 @@
+{
+  "id": "vadrok-apex-of-thunder-corpus-m679",
+  "description": "M6 corpus — Vadrok, Apex of Thunder; in-hand parse.",
+  "seed": 62241,
+  "cards": {
+    "Vadrok, Apex of Thunder": "Name:Vadrok, Apex of Thunder\nManaCost:U R W\nTypes:Legendary Creature Elemental Dinosaur Cat\nPT:3/3\nK:Mutate:1 WU R R\nK:Flying\nK:First Strike\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerDescription$ Whenever this creature mutates, you may cast target noncreature card with mana value 3 or less from your graveyard without paying its mana cost.\nSVar:TrigPlay:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Card.nonCreature+cmcLE3+YouOwn | ValidSA$ Spell | TgtPrompt$ Choose target noncreature card with mana value 3 or less from your graveyard | WithoutManaCost$ True | Optional$ True | AILogic$ ReplaySpell\nOracle:Mutate {1}{W/U}{R}{R} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nFlying, first strike\\nWhenever this creature mutates, you may cast target noncreature card with mana value 3 or less from your graveyard without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vadrok, Apex of Thunder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

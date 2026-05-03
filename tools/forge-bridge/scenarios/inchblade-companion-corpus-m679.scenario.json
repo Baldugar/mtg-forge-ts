@@ -1,0 +1,23 @@
+{
+  "id": "inchblade-companion-corpus-m679",
+  "description": "M6 corpus — Inchblade Companion; in-hand parse.",
+  "seed": 61745,
+  "cards": {
+    "Inchblade Companion": "Name:Inchblade Companion\nManaCost:W\nTypes:Artifact Creature Equipment Insect\nPT:1/1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ Attached | ValidSource$ Card.Self | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigCopy | ActivationLimit$ 1 | TriggerDescription$ Whenever CARDNAME becomes attached to a creature, create a token that's a copy of CARDNAME, except it doesn't have this ability. This ability triggers only once each turn.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Self | DoesntHaveThisAbility$ True\nK:Reconfigure:2\nDeckHas:Ability$Token\nOracle:Equipped creature gets +1/+1.\\nWhenever Inchblade Companion becomes attached to a creature, create a token that's a copy of Inchblade Companion, except it doesn't have this ability. This ability triggers only once each turn.\\nReconfigure {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inchblade Companion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

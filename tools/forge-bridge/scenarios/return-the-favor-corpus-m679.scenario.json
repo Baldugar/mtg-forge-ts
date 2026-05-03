@@ -1,0 +1,23 @@
+{
+  "id": "return-the-favor-corpus-m679",
+  "description": "M6 corpus — Return the Favor; in-hand parse.",
+  "seed": 62008,
+  "cards": {
+    "Return the Favor": "Name:Return the Favor\nManaCost:R R\nTypes:Instant\nK:Spree\nA:SP$ Charm | Choices$ DBCopy,DBChangeTarget | MinCharmNum$ 1 | CharmNum$ 2\nSVar:DBCopy:DB$ CopySpellAbility | ModeCost$ 1 | TargetType$ Activated,Triggered,Instant,Sorcery | ValidTgts$ Card,Emblem | TgtPrompt$ Select target instant spell, sorcery spell, activated ability, or triggered ability | MayChooseTarget$ True | SpellDescription$ Copy target instant spell, sorcery spell, activated ability, or triggered ability. You may choose new targets for the copy.\nSVar:DBChangeTarget:DB$ ChangeTargets | ModeCost$ 1 | TargetType$ SpellAbility.singleTarget | ValidTgts$ Card,Emblem | TgtPrompt$ Select target spell or ability with a single target | SpellDescription$ Change the target of target spell or ability with a single target.\nOracle:Spree (Choose one or more additional costs.)\\n+ {1} — Copy target instant spell, sorcery spell, activated ability, or triggered ability. You may choose new targets for the copy.\\n+ {1} — Change the target of target spell or ability with a single target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Return the Favor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

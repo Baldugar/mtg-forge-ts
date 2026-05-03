@@ -1,0 +1,23 @@
+{
+  "id": "kasla-the-broken-halo-corpus-m679",
+  "description": "M6 corpus — Kasla, the Broken Halo; in-hand parse.",
+  "seed": 61775,
+  "cards": {
+    "Kasla, the Broken Halo": "Name:Kasla, the Broken Halo\nManaCost:3 U R W\nTypes:Legendary Creature Angel Ally\nPT:5/4\nK:Convoke\nK:Flying\nK:Vigilance\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.hasKeywordConvoke+Other | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever you cast another spell that has convoke, scry 2, then draw a card.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckNeeds:Keyword$Convoke\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nFlying, vigilance, haste\\nWhenever you cast another spell that has convoke, scry 2, then draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kasla, the Broken Halo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

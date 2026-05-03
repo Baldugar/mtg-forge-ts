@@ -1,0 +1,23 @@
+{
+  "id": "hexplate-wallbreaker-corpus-m679",
+  "description": "M6 corpus — Hexplate Wallbreaker; in-hand parse.",
+  "seed": 61722,
+  "cards": {
+    "Hexplate Wallbreaker": "Name:Hexplate Wallbreaker\nManaCost:3 R R\nTypes:Artifact Equipment\nK:For Mirrodin\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Equipped creature gets +2/+2.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | FirstCombat$ True | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever equipped creature attacks, if it's the first combat phase of the turn, untap each attacking creature. After this phase, there is an additional combat phase.\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.attacking | SubAbility$ DBAddPhase\nSVar:DBAddPhase:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nK:Equip:3 R\nDeckHas:Ability$Token & Type$Rebel & Color$Red\nOracle:For Mirrodin! (When this Equipment enters, create a 2/2 red Rebel creature token, then attach this to it.)\\nEquipped creature gets +2/+2.\\nWhenever equipped creature attacks, if it's the first combat phase of the turn, untap each attacking creature. After this phase, there is an additional combat phase.\\nEquip {3}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hexplate Wallbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

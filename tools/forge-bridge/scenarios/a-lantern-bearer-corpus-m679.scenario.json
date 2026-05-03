@@ -1,0 +1,23 @@
+{
+  "id": "a-lantern-bearer-corpus-m679",
+  "description": "M6 corpus — A-Lantern Bearer; in-hand parse.",
+  "seed": 62042,
+  "cards": {
+    "A-Lantern Bearer": "Name:A-Lantern Bearer\nManaCost:U\nTypes:Creature Spirit\nPT:1/1\nK:Flying\nK:Disturb:1 U\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Flying\\nDisturb {1}{U}\n\nALTERNATE\n\nName:A-Lanterns' Lift\nManaCost:no cost\nColors:blue\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Flying | Description$ Enchanted creature gets +1/+1 and has flying.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 and has flying.\\nIf Lanterns' Lift would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Lantern Bearer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

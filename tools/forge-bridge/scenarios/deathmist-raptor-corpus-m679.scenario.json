@@ -1,0 +1,23 @@
+{
+  "id": "deathmist-raptor-corpus-m679",
+  "description": "M6 corpus — Deathmist Raptor; in-hand parse.",
+  "seed": 61584,
+  "cards": {
+    "Deathmist Raptor": "Name:Deathmist Raptor\nManaCost:1 G G\nTypes:Creature Dinosaur Beast\nPT:3/3\nK:Deathtouch\nK:Megamorph:4 G\nT:Mode$ TurnFaceUp | ValidCard$ Permanent.YouCtrl | Execute$ TrigChange | TriggerZones$ Graveyard | OptionalDecider$ You | TriggerDescription$ Whenever a permanent you control is turned face up, you may return CARDNAME from your graveyard to the battlefield face up or face down.\nSVar:TrigChange:DB$ GenericChoice | Choices$ DBTop,DBBottom\nSVar:DBTop:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Put CARDNAME on battlefield face up.\nSVar:DBBottom:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | FaceDown$ True | SpellDescription$ Put CARDNAME on battlefield face down.\nOracle:Deathtouch\\nWhenever a permanent you control is turned face up, you may return Deathmist Raptor from your graveyard to the battlefield face up or face down.\\nMegamorph {4}{G} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathmist Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -278,15 +278,18 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
         /\bDB\$ ChoosePlayer/.test(l) ||
         /\bSP\$ ChoosePlayer/.test(l),
     );
+    // M6.78 — Distinguish "hard-skip" (card script can't be parsed at all)
+    // from "soft-skip" (parse OK but ETB/cast scenario diverges → use
+    // in-hand instead). The hasComplexMechanic / hasOffspring / hasFlash+
+    // SetState families are soft-skip: the parser handles them, only the
+    // ETB resolution diverges.
     const skip =
       hasAltCostInManaCost ||
       usesUnsupportedCount ||
       hasPutCounterInTrigger ||
       usesUnsubscribedEvent ||
-      hasOffspring ||
       hasEtbTriggerWithTargetedPlayer ||
       hasImmediateTrigger ||
-      hasComplexMechanic ||
       triggerExecutesActivated ||
       usesAvatarMechanics ||
       hasAnyAsNumber ||
@@ -304,7 +307,9 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       (isLand && hasSelfEtbTrigger) ||
       (hasFlash && hasSetStateAbility) ||
       usesNicheEffect ||
-      usesChoosePlayer;
+      usesChoosePlayer ||
+      hasComplexMechanic ||
+      hasOffspring;
     uncovered.push({ name: nm, script: txt, types: typesLine, inHandOnly });
     if (uncovered.length >= count) break outer;
   }

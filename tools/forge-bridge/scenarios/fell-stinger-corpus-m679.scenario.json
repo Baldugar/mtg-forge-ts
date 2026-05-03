@@ -1,0 +1,23 @@
+{
+  "id": "fell-stinger-corpus-m679",
+  "description": "M6 corpus — Fell Stinger; in-hand parse.",
+  "seed": 61634,
+  "cards": {
+    "Fell Stinger": "Name:Fell Stinger\nManaCost:2 B\nTypes:Creature Zombie Scorpion\nPT:3/2\nK:Deathtouch\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME exploits a creature, target player draws two cards and loses 2 life.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | Defined$ Targeted\nDeckHas:Ability$Sacrifice\nOracle:Deathtouch\\nExploit (When this creature enters, you may sacrifice a creature.)\\nWhen Fell Stinger exploits a creature, target player draws two cards and loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell Stinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

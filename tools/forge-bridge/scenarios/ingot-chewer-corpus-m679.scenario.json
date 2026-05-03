@@ -1,0 +1,23 @@
+{
+  "id": "ingot-chewer-corpus-m679",
+  "description": "M6 corpus — Ingot Chewer; in-hand parse.",
+  "seed": 61748,
+  "cards": {
+    "Ingot Chewer": "Name:Ingot Chewer\nManaCost:4 R\nTypes:Creature Elemental\nPT:3/3\nK:Evoke:R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target artifact.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact\nSVar:NeedsToPlayEvoked:Artifact.OppCtrl\nOracle:When Ingot Chewer enters, destroy target artifact.\\nEvoke {R} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ingot Chewer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

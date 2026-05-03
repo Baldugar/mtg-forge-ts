@@ -1,0 +1,23 @@
+{
+  "id": "whim-of-volrath-corpus-m679",
+  "description": "M6 corpus — Whim of Volrath; in-hand parse.",
+  "seed": 62280,
+  "cards": {
+    "Whim of Volrath": "Name:Whim of Volrath\nManaCost:U\nTypes:Instant\nK:Buyback:2\nA:SP$ GenericChoice | ValidTgts$ Permanent | Choices$ ChangeColor,ChangeType | Defined$ You | StackDescription$ Change the text of target permanent by replacing all instances of one color word with another or one basic land type with another until end of turn. | SpellDescription$ Change the text of target permanent by replacing all instances of one color word with another or one basic land type with another until end of turn. (For example, you may change \"nonred creature\" to \"nongreen creature\" or \"plainswalk\" to \"swampwalk.\")\nSVar:ChangeColor:DB$ ChangeText | Defined$ ParentTarget | ChangeColorWord$ Choose Choose | SpellDescription$ Change color\nSVar:ChangeType:DB$ ChangeText | Defined$ ParentTarget | ChangeTypeWord$ ChooseBasicLandType ChooseBasicLandType | SpellDescription$ Change type\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Buyback {2} (You may pay an additional {2} as you cast this spell. If you do, put this card into your hand as it resolves.)\\nChange the text of target permanent by replacing all instances of one color word with another or one basic land type with another until end of turn. (For example, you may change \"nonred creature\" to \"nongreen creature\" or \"plainswalk\" to \"swampwalk.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whim of Volrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

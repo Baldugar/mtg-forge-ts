@@ -1,0 +1,23 @@
+{
+  "id": "mindleecher-corpus-m679",
+  "description": "M6 corpus — Mindleecher; in-hand parse.",
+  "seed": 61859,
+  "cards": {
+    "Mindleecher": "Name:Mindleecher\nManaCost:4 B B\nTypes:Creature Nightmare\nPT:5/5\nK:Mutate:4 B\nK:Flying\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature mutates, exile the top card of each opponent's library face down. You may look at and play those cards for as long as they remain exiled.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ Opponent | DestinationZone$ Exile | RememberChanged$ True | ExileFaceDown$ True | WithMayLook$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ STPlay | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at and play a card as long as it remains exiled.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Mutate {4}{B} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nFlying\\nWhenever this creature mutates, exile the top card of each opponent's library face down. You may look at and play those cards for as long as they remain exiled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mindleecher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scrapwork-rager-corpus-m679",
+  "description": "M6 corpus — Scrapwork Rager; in-hand parse.",
+  "seed": 62059,
+  "cards": {
+    "Scrapwork Rager": "Name:Scrapwork Rager\nManaCost:4\nTypes:Artifact Creature Phyrexian Horror\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nK:Unearth:3 B\nDeckHas:Ability$Graveyard\nDeckHints:Color$Black\nOracle:When Scrapwork Rager enters, you draw a card and you lose 1 life.\\nUnearth {3}{B} ({3}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrapwork Rager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

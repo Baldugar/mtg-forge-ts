@@ -1,0 +1,23 @@
+{
+  "id": "deranged-hermit-corpus-m679",
+  "description": "M6 corpus — Deranged Hermit; in-hand parse.",
+  "seed": 61588,
+  "cards": {
+    "Deranged Hermit": "Name:Deranged Hermit\nManaCost:3 G G\nTypes:Creature Elf\nPT:1/1\nK:Echo:3 G G\nS:Mode$ Continuous | Affected$ Creature.Squirrel | AddPower$ 1 | AddToughness$ 1 | Description$ Squirrel creatures get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create four 1/1 green Squirrel creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 4 | TokenScript$ g_1_1_squirrel | TokenOwner$ You\nSVar:PlayMain1:TRUE\nOracle:Echo {3}{G}{G} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Deranged Hermit enters, create four 1/1 green Squirrel creature tokens.\\nSquirrel creatures get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deranged Hermit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

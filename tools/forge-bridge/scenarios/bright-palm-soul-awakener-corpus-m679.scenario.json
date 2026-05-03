@@ -1,0 +1,23 @@
+{
+  "id": "bright-palm-soul-awakener-corpus-m679",
+  "description": "M6 corpus — Bright-Palm, Soul Awakener; in-hand parse.",
+  "seed": 61511,
+  "cards": {
+    "Bright-Palm, Soul Awakener": "Name:Bright-Palm, Soul Awakener\nManaCost:1 R G W\nTypes:Legendary Creature Fox Shaman\nPT:4/3\nK:Backup:1:BackupAbility\nSVar:BackupAbility:DB$ Animate | Triggers$ AttackTrig | sVars$ AE\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDoubleCounters | TriggerDescription$ Whenever this creature attacks, double the number of +1/+1 counters on target creature. That creature can't be blocked by creatures with power 2 or less this turn.\nSVar:TrigDoubleCounters:DB$ MultiplyCounter | ValidTgts$ Creature | CounterType$ P1P1 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ BlockRestrict | RememberObjects$ Targeted\nSVar:BlockRestrict:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | ValidBlocker$ Creature.powerLE2 | Description$ That creature can't be blocked by creatures with power 2 or less this turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDoubleCounters | TriggerDescription$ Whenever this creature attacks, double the number of +1/+1 counters on target creature. That creature can't be blocked by creatures with power 2 or less this turn.\nSVar:HasAttackEffect:TRUE\nSVar:AE:SVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:Backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following ability until end of turn.)\\nWhenever this creature attacks, double the number of +1/+1 counters on target creature. That creature can't be blocked by creatures with power 2 or less this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bright-Palm, Soul Awakener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

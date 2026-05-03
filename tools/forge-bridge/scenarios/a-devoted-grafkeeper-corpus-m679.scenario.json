@@ -1,0 +1,23 @@
+{
+  "id": "a-devoted-grafkeeper-corpus-m679",
+  "description": "M6 corpus — A-Devoted Grafkeeper; in-hand parse.",
+  "seed": 62039,
+  "cards": {
+    "A-Devoted Grafkeeper": "Name:A-Devoted Grafkeeper\nManaCost:W U\nTypes:Creature Human Peasant\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromYourGraveyardByYou | ValidActivatingPlayer$ You | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from your graveyard, tap target creature you don't control.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nDeckHas:Ability$Mill|Graveyard\nK:Disturb:1 W U\nAlternateMode:DoubleFaced\nOracle:When Devoted Grafkeeper enters, mill four cards.\\nWhenever you cast a spell from your graveyard, tap target creature you don't control.\\nDisturb {1}{W}{U}\n\nALTERNATE\n\nName:A-Departed Soulkeeper\nManaCost:no cost\nColors:white,blue\nTypes:Creature Spirit\nPT:3/1\nK:Flying\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying\\nIf Departed Soulkeeper would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Devoted Grafkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rite-of-undoing-corpus-m679",
+  "description": "M6 corpus — Rite of Undoing; in-hand parse.",
+  "seed": 62017,
+  "cards": {
+    "Rite of Undoing": "Name:Rite of Undoing\nManaCost:4 U\nTypes:Instant\nK:Delve\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.YouCtrl+nonLand | TgtPrompt$ Select target nonland permanent you control | SubAbility$ DBChange | SpellDescription$ Return target nonland permanent you control and target nonland permanent you don't control to their owners' hands.\nSVar:DBChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.YouDontCtrl+nonLand | TgtPrompt$ Select target nonland permanent you don't control\nAI:RemoveDeck:All\nDeckHints:Ability$Graveyard\nOracle:Delve (Each card you exile from your graveyard while casting this spell pays for {1}.)\\nReturn target nonland permanent you control and target nonland permanent you don't control to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rite of Undoing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

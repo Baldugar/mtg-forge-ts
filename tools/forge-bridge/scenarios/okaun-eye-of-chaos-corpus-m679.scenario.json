@@ -1,0 +1,23 @@
+{
+  "id": "okaun-eye-of-chaos-corpus-m679",
+  "description": "M6 corpus — Okaun, Eye of Chaos; in-hand parse.",
+  "seed": 61912,
+  "cards": {
+    "Okaun, Eye of Chaos": "Name:Okaun, Eye of Chaos\nManaCost:4 R\nTypes:Legendary Creature Cyclops Berserker\nPT:3/3\nK:Partner with:Zndrsplt, Eye of Wisdom:Zndrsplt\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ At the beginning of combat on your turn, flip a coin until you lose a flip.\nSVar:TrigFlip:DB$ FlipACoin | FlipUntilYouLose$ True\nT:Mode$ FlippedCoin | ValidResult$ Win | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a player wins a coin flip, double NICKNAME's power and toughness until end of turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ Double | NumDef$ Double\nOracle:Partner with Zndrsplt, Eye of Wisdom (When this creature enters, target player may put Zndrsplt into their hand from their library, then shuffle.)\\nAt the beginning of combat on your turn, flip a coin until you lose a flip.\\nWhenever a player wins a coin flip, double Okaun's power and toughness until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Okaun, Eye of Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

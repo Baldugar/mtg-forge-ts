@@ -1,0 +1,23 @@
+{
+  "id": "briarhorn-corpus-m679",
+  "description": "M6 corpus — Briarhorn; in-hand parse.",
+  "seed": 61510,
+  "cards": {
+    "Briarhorn": "Name:Briarhorn\nManaCost:3 G\nTypes:Creature Elemental\nPT:3/3\nK:Evoke:1 G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +3/+3 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlayEvoked:Creature.YouCtrl\nK:Flash\nOracle:Flash\\nWhen Briarhorn enters, target creature gets +3/+3 until end of turn.\\nEvoke {1}{G} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Briarhorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

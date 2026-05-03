@@ -1,0 +1,23 @@
+{
+  "id": "motivated-muralist-corpus-m679",
+  "description": "M6 corpus — Motivated Muralist; in-hand parse.",
+  "seed": 61874,
+  "cards": {
+    "Motivated Muralist": "Name:Motivated Muralist\nManaCost:1 R\nTypes:Creature Dwarf Bard\nPT:2/1\nK:Improvise\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure | TriggerDescription$ When this creature enters, conjure a card named Inspiring Statuary into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Inspiring Statuary | Zone$ Hand\nOracle:Improvise\\nWhen this creature enters, conjure a card named Inspiring Statuary into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Motivated Muralist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

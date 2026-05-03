@@ -1,0 +1,23 @@
+{
+  "id": "barrowin-of-clan-undurr-corpus-m679",
+  "description": "M6 corpus — Barrowin of Clan Undurr; in-hand parse.",
+  "seed": 61477,
+  "cards": {
+    "Barrowin of Clan Undurr": "Name:Barrowin of Clan Undurr\nManaCost:2 W B\nTypes:Legendary Creature Dwarf Cleric\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBVenture | TriggerDescription$ When CARDNAME enters, venture into the dungeon. (Enter the first room or advance to the next room.)\nT:Mode$ Attacks | ValidCard$ Card.Self | CheckSVar$ X | Execute$ DBChangeZone | TriggerDescription$ Whenever CARDNAME attacks, return up to one creature card with mana value 3 or less from your graveyard to the battlefield if you've completed a dungeon.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Hidden$ True | ChangeType$ Creature.YouOwn+cmcLE3\nSVar:DBVenture:DB$ Venture | Defined$ You\nSVar:X:DungeonsCompleted$Amount\nDeckHints:Ability$Mill|Discard\nDeckHas:Ability$Graveyard\nOracle:When Barrowin of Clan Undurr enters, venture into the dungeon. (Enter the first room or advance to the next room.)\\nWhenever Barrowin of Clan Undurr attacks, return up to one creature card with mana value 3 or less from your graveyard to the battlefield if you've completed a dungeon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Barrowin of Clan Undurr"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

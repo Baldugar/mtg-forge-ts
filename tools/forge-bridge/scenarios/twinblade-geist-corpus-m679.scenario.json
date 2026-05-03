@@ -1,0 +1,23 @@
+{
+  "id": "twinblade-geist-corpus-m679",
+  "description": "M6 corpus — Twinblade Geist; in-hand parse.",
+  "seed": 62227,
+  "cards": {
+    "Twinblade Geist": "Name:Twinblade Geist\nManaCost:1 W\nTypes:Creature Spirit Warrior\nPT:1/1\nK:Double Strike\nK:Disturb:2 W\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Double strike\\nDisturb {2}{W} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Twinblade Invocation\nManaCost:no cost\nColors:white\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Double Strike | Description$ Enchanted creature has double strike.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature has double strike.\\nIf Twinblade Invocation would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twinblade Geist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "slithermuse-corpus-m679",
+  "description": "M6 corpus — Slithermuse; in-hand parse.",
+  "seed": 62121,
+  "cards": {
+    "Slithermuse": "Name:Slithermuse\nManaCost:2 U U\nTypes:Creature Elemental\nPT:3/3\nK:Evoke:3 U\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigChooseOpp | TriggerDescription$ When CARDNAME leaves the battlefield, choose an opponent. If that player has more cards in hand than you, draw cards equal to the difference.\nSVar:TrigChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ MostCardsInHand | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | ConditionPresent$ Card.ChosenCtrl | ConditionCompare$ GTY | ConditionZone$ Hand\nSVar:Y:Count$ValidHand Card.YouOwn\nSVar:X:Count$ValidHand Card.ChosenCtrl/Minus.Y\nOracle:When Slithermuse leaves the battlefield, choose an opponent. If that player has more cards in hand than you, draw cards equal to the difference.\\nEvoke {3}{U} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slithermuse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

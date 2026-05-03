@@ -1,0 +1,23 @@
+{
+  "id": "tangleweave-armor-corpus-m679",
+  "description": "M6 corpus — Tangleweave Armor; in-hand parse.",
+  "seed": 62179,
+  "cards": {
+    "Tangleweave Armor": "Name:Tangleweave Armor\nManaCost:2 G G\nTypes:Artifact Equipment\nK:Living Weapon\nK:Equip:4\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +X/+X, where X is the greatest mana value among your commanders.\nSVar:X:Count$ValidAll Card.IsCommander+YouOwn$GreatestCardManaCost\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Token & Type$Phyrexian|Germ\nOracle:Living weapon (When this Equipment enters, create a 0/0 black Phyrexian Germ creature token, then attach this to it.)\\nEquipped creature gets +X/+X, where X is the greatest mana value among your commanders.\\nEquip {4}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tangleweave Armor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

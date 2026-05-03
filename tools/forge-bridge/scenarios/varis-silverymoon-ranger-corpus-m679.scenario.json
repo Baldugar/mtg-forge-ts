@@ -1,0 +1,23 @@
+{
+  "id": "varis-silverymoon-ranger-corpus-m679",
+  "description": "M6 corpus — Varis, Silverymoon Ranger; in-hand parse.",
+  "seed": 62245,
+  "cards": {
+    "Varis, Silverymoon Ranger": "Name:Varis, Silverymoon Ranger\nManaCost:1 G G\nTypes:Legendary Creature Human Elf Ranger\nPT:3/3\nK:Reach\nK:Ward:1\nT:Mode$ SpellCast | ValidCard$ Creature,Planeswalker | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigVenture | TriggerDescription$ Whenever you cast a creature or planeswalker spell, venture into the dungeon. This ability triggers only once each turn. (To venture into the dungeon, enter the first room or advance to the next room.)\nSVar:TrigVenture:DB$ Venture\nT:Mode$ DungeonCompleted | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you complete a dungeon, create a 2/2 green Wolf creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_2_2_wolf\nDeckHas:Ability$Token\nOracle:Reach, ward {1}\\nWhenever you cast a creature or planeswalker spell, venture into the dungeon. This ability triggers only once each turn. (To venture into the dungeon, enter the first room or advance to the next room.)\\nWhenever you complete a dungeon, create a 2/2 green Wolf creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Varis, Silverymoon Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

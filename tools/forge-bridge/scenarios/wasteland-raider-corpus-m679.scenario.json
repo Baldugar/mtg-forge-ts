@@ -1,0 +1,23 @@
+{
+  "id": "wasteland-raider-corpus-m679",
+  "description": "M6 corpus — Wasteland Raider; in-hand parse.",
+  "seed": 62274,
+  "cards": {
+    "Wasteland Raider": "Name:Wasteland Raider\nManaCost:2 B B\nTypes:Creature Human Mercenary\nPT:4/3\nK:Squad:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each player sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature\nSVar:NeedsToPlay:Creature.YouDontCtrl\nDeckHas:Ability$Token\nOracle:Squad {2} (As an additional cost to cast this spell, you may pay {2} any number of times. When this creature enters, create that many tokens that are copies of it.)\\nWhen Wasteland Raider enters, each player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wasteland Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

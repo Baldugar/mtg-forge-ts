@@ -1,0 +1,23 @@
+{
+  "id": "starscape-cleric-corpus-m679",
+  "description": "M6 corpus — Starscape Cleric; in-hand parse.",
+  "seed": 62149,
+  "cards": {
+    "Starscape Cleric": "Name:Starscape Cleric\nManaCost:1 B\nTypes:Creature Bat Cleric\nPT:2/1\nK:Offspring:2 B\nK:Flying\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you gain life, each opponent loses 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nDeckHints:Ability$LifeGain\nOracle:Offspring {2}{B} (You may pay an additional {2}{B} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nFlying\\nThis creature can't block.\\nWhenever you gain life, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starscape Cleric"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

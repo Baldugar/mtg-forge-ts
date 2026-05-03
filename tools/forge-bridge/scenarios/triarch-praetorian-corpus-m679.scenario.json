@@ -1,0 +1,23 @@
+{
+  "id": "triarch-praetorian-corpus-m679",
+  "description": "M6 corpus — Triarch Praetorian; in-hand parse.",
+  "seed": 62216,
+  "cards": {
+    "Triarch Praetorian": "Name:Triarch Praetorian\nManaCost:1 B\nTypes:Artifact Creature Necron\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Dynastic Codes — When CARDNAME enters from a graveyard, you draw two cards and you lose 2 life.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2\nK:Unearth:4 B\nDeckHas:Ability$Graveyard\nOracle:Flying\\nDynastic Codes — When Triarch Praetorian enters from a graveyard, you draw two cards and you lose 2 life.\\nUnearth {4}{B} ({4}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Triarch Praetorian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

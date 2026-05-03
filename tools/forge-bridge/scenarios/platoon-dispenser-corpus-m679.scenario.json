@@ -1,0 +1,23 @@
+{
+  "id": "platoon-dispenser-corpus-m679",
+  "description": "M6 corpus — Platoon Dispenser; in-hand parse.",
+  "seed": 61957,
+  "cards": {
+    "Platoon Dispenser": "Name:Platoon Dispenser\nManaCost:5\nTypes:Artifact Creature Construct\nPT:4/6\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Creature.YouCtrl+Other | PresentCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if you control two or more other creatures, draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ Token | Cost$ 3 W | TokenScript$ c_1_1_a_soldier | SpellDescription$ Create a 1/1 colorless Soldier artifact creature token.\nK:Unearth:2 W W\nDeckHas:Ability$Token|Graveyard & Type$Soldier\nDeckHints:Color$White\nOracle:At the beginning of your end step, if you control two or more other creatures, draw a card.\\n{3}{W}: Create a 1/1 colorless Soldier artifact creature token.\\nUnearth {2}{W}{W}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Platoon Dispenser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

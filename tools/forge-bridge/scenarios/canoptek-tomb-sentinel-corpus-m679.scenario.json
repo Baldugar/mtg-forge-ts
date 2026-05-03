@@ -1,0 +1,23 @@
+{
+  "id": "canoptek-tomb-sentinel-corpus-m679",
+  "description": "M6 corpus — Canoptek Tomb Sentinel; in-hand parse.",
+  "seed": 61519,
+  "cards": {
+    "Canoptek Tomb Sentinel": "Name:Canoptek Tomb Sentinel\nManaCost:4\nTypes:Artifact Creature Insect\nPT:4/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self | Execute$ DBChangeZone | TriggerDescription$ Exile Cannon — When CARDNAME enters from a graveyard, exile up to one target nonland permanent.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand | TargetMin$ 0 | TargetMax$ 1\nK:Unearth:7\nDeckHas:Ability$Graveyard\nOracle:Vigilance\\nExile Cannon — When Canoptek Tomb Sentinel enters from a graveyard, exile up to one target nonland permanent.\\nUnearth {7} ({7}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canoptek Tomb Sentinel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

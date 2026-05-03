@@ -1,0 +1,23 @@
+{
+  "id": "terisian-mindbreaker-corpus-m679",
+  "description": "M6 corpus — Terisian Mindbreaker; in-hand parse.",
+  "seed": 62188,
+  "cards": {
+    "Terisian Mindbreaker": "Name:Terisian Mindbreaker\nManaCost:7\nTypes:Artifact Creature Juggernaut\nPT:6/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME attacks, defending player mills half their library, rounded up.\nSVar:TrigMill:DB$ Mill | NumCards$ X | Defined$ TriggeredDefendingPlayer\nSVar:X:TriggeredDefendingPlayer$CardsInLibrary/HalfUp\nK:Unearth:1 U U U\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard|Mill\nDeckHints:Color$Blue\nOracle:Whenever Terisian Mindbreaker attacks, defending player mills half their library, rounded up.\\nUnearth {1}{U}{U}{U} ({1}{U}{U}{U}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terisian Mindbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

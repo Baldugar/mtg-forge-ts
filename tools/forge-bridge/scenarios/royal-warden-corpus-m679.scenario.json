@@ -1,0 +1,23 @@
+{
+  "id": "royal-warden-corpus-m679",
+  "description": "M6 corpus — Royal Warden; in-hand parse.",
+  "seed": 62026,
+  "cards": {
+    "Royal Warden": "Name:Royal Warden\nManaCost:3 B B\nTypes:Artifact Creature Necron\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Phalanx Commander — When CARDNAME enters, create two tapped 2/2 black Necron Warrior artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_2_2_a_necron_warrior | TokenTapped$ True\nK:Unearth:3 B\nDeckHas:Ability$Token|Graveyard & Type$Warrior\nOracle:Phalanx Commander — When Royal Warden enters, create two tapped 2/2 black Necron Warrior artifact creature tokens.\\nUnearth {3}{B} ({3}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Royal Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

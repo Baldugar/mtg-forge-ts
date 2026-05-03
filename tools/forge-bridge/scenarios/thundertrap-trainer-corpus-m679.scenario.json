@@ -1,0 +1,23 @@
+{
+  "id": "thundertrap-trainer-corpus-m679",
+  "description": "M6 corpus — Thundertrap Trainer; in-hand parse.",
+  "seed": 62203,
+  "cards": {
+    "Thundertrap Trainer": "Name:Thundertrap Trainer\nManaCost:1 U\nTypes:Creature Otter Wizard\nPT:1/2\nK:Offspring:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When this creature enters, look at the top four cards of your library. You may reveal a noncreature, nonland card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Card.nonCreature+nonLand | RestRandomOrder$ True\nOracle:Offspring {4} (You may pay an additional {4} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nWhen this creature enters, look at the top four cards of your library. You may reveal a noncreature, nonland card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundertrap Trainer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

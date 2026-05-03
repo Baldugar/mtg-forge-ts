@@ -1,0 +1,23 @@
+{
+  "id": "beloved-beggar-corpus-m679",
+  "description": "M6 corpus — Beloved Beggar; in-hand parse.",
+  "seed": 61483,
+  "cards": {
+    "Beloved Beggar": "Name:Beloved Beggar\nManaCost:1 W\nTypes:Creature Human Peasant\nPT:0/4\nK:Disturb:4 W W\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Disturb {4}{W}{W} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Generous Soul\nManaCost:no cost\nColors:white\nTypes:Creature Spirit\nPT:4/4\nK:Flying\nK:Vigilance\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying, vigilance\\nIf Generous Soul would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beloved Beggar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "overwhelmed-archivist-corpus-m679",
+  "description": "M6 corpus — Overwhelmed Archivist; in-hand parse.",
+  "seed": 61931,
+  "cards": {
+    "Overwhelmed Archivist": "Name:Overwhelmed Archivist\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nK:Disturb:3 U\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:When Overwhelmed Archivist enters, draw a card, then discard a card.\\nDisturb {3}{U} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Archive Haunt\nManaCost:no cost\nColors:blue\nTypes:Creature Spirit Wizard\nPT:2/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying\\nWhenever Archive Haunt attacks, draw a card, then discard a card.\\nIf Archive Haunt would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overwhelmed Archivist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

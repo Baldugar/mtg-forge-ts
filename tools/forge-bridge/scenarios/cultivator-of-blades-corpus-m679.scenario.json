@@ -1,0 +1,23 @@
+{
+  "id": "cultivator-of-blades-corpus-m679",
+  "description": "M6 corpus — Cultivator of Blades; in-hand parse.",
+  "seed": 61574,
+  "cards": {
+    "Cultivator of Blades": "Name:Cultivator of Blades\nManaCost:3 G G\nTypes:Creature Elf Artificer\nPT:1/1\nK:Fabricate:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may have other attacking creatures get +X/+X until end of turn, where X is CARDNAME's power.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$CardPower\nDeckHas:Ability$Counters|Token\nOracle:Fabricate 2 (When this creature enters, put two +1/+1 counters on it or create two 1/1 colorless Servo artifact creature tokens.)\\nWhenever Cultivator of Blades attacks, you may have other attacking creatures get +X/+X until end of turn, where X is Cultivator of Blades's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cultivator of Blades"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

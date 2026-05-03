@@ -1,0 +1,23 @@
+{
+  "id": "archpriest-of-shadows-corpus-m679",
+  "description": "M6 corpus — Archpriest of Shadows; in-hand parse.",
+  "seed": 61462,
+  "cards": {
+    "Archpriest of Shadows": "Name:Archpriest of Shadows\nManaCost:3 B B\nTypes:Creature Human Warlock\nPT:4/4\nK:Backup:1:BackupAbilities\nSVar:BackupAbilities:DB$ Animate | Keywords$ Deathtouch | Triggers$ DamageTrig\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Battle | Execute$ TrigReturn | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player or battle, return target creature card from your graveyard to the battlefield.\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Battle | Execute$ TrigReturn | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player or battle, return target creature card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature from your graveyard | Origin$ Graveyard | Destination$ Battlefield\nDeckHas:Ability$Counters|Graveyard\nDeckHints:Ability$Discard|Sacrifice\nOracle:Backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following abilities until end of turn.)\\nDeathtouch\\nWhenever this creature deals combat damage to a player or battle, return target creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Archpriest of Shadows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

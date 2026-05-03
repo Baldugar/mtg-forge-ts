@@ -1,0 +1,23 @@
+{
+  "id": "devoted-grafkeeper-corpus-m679",
+  "description": "M6 corpus — Devoted Grafkeeper; in-hand parse.",
+  "seed": 61589,
+  "cards": {
+    "Devoted Grafkeeper": "Name:Devoted Grafkeeper\nManaCost:W U\nTypes:Creature Human Peasant\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromYourGraveyardByYou | ValidActivatingPlayer$ You | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from your graveyard, tap target creature you don't control.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nDeckHas:Ability$Mill|Graveyard\nK:Disturb:1 W U\nAlternateMode:DoubleFaced\nOracle:When Devoted Grafkeeper enters, mill two cards.\\nWhenever you cast a spell from your graveyard, tap target creature you don't control.\\nDisturb {1}{W}{U} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Departed Soulkeeper\nManaCost:no cost\nColors:white,blue\nTypes:Creature Spirit\nPT:3/1\nK:Flying\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.withoutFlying | ValidBlocker$ Creature.Self | Description$ CARDNAME can block only creatures with flying.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying\\nDeparted Soulkeeper can block only creatures with flying.\\nIf Departed Soulkeeper would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devoted Grafkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

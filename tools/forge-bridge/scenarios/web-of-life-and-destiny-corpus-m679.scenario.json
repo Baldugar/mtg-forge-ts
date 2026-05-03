@@ -1,0 +1,23 @@
+{
+  "id": "web-of-life-and-destiny-corpus-m679",
+  "description": "M6 corpus — Web of Life and Destiny; in-hand parse.",
+  "seed": 62277,
+  "cards": {
+    "Web of Life and Destiny": "Name:Web of Life and Destiny\nVariant:UniversesWithin:FlavorName:Through the Omenpath\nManaCost:6 G G\nTypes:Enchantment\nK:Convoke\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ At the beginning of combat on your turn, look at the top five cards of your library. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | ChangeValid$ Creature | Optional$ True | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True\nSVar:PlayMain1:TRUE\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nAt the beginning of combat on your turn, look at the top five cards of your library. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Web of Life and Destiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

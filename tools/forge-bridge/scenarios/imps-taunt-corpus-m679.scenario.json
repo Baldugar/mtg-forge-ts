@@ -1,0 +1,23 @@
+{
+  "id": "imps-taunt-corpus-m679",
+  "description": "M6 corpus — Imps' Taunt; in-hand parse.",
+  "seed": 61743,
+  "cards": {
+    "Imps' Taunt": "Name:Imps' Taunt\nManaCost:1 B\nTypes:Instant\nK:Buyback:3\nA:SP$ Effect | ValidTgts$ Creature | StaticAbilities$ MustAttack | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Target creature attacks this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ This creature attacks this turn if able.\nAI:RemoveDeck:All\nOracle:Buyback {3} (You may pay an additional {3} as you cast this spell. If you do, put this card into your hand as it resolves.)\\nTarget creature attacks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imps' Taunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

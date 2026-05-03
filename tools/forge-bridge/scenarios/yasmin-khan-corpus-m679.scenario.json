@@ -1,0 +1,23 @@
+{
+  "id": "yasmin-khan-corpus-m679",
+  "description": "M6 corpus — Yasmin Khan; in-hand parse.",
+  "seed": 62298,
+  "cards": {
+    "Yasmin Khan": "Name:Yasmin Khan\nManaCost:3 R\nTypes:Legendary Creature Human Detective\nPT:3/3\nA:AB$ Dig | Cost$ T | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. Until your next end step, you may play it.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | Duration$ UntilYourNextEndStep | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until your next end step, you may play it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Doctor's companion\nOracle:{T}: Exile the top card of your library. Until your next end step, you may play it.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yasmin Khan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

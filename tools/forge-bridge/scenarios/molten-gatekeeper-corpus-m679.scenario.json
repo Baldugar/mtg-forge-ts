@@ -1,0 +1,23 @@
+{
+  "id": "molten-gatekeeper-corpus-m679",
+  "description": "M6 corpus — Molten Gatekeeper; in-hand parse.",
+  "seed": 61870,
+  "cards": {
+    "Molten Gatekeeper": "Name:Molten Gatekeeper\nManaCost:2 R\nTypes:Artifact Creature Golem\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever another creature you control enters, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDmg:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nK:Unearth:R\nDeckHas:Ability$Graveyard\nOracle:Whenever another creature you control enters, Molten Gatekeeper deals 1 damage to each opponent.\\nUnearth {R} ({R}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten Gatekeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

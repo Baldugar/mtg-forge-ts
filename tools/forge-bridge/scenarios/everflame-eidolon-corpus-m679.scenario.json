@@ -1,0 +1,23 @@
+{
+  "id": "everflame-eidolon-corpus-m679",
+  "description": "M6 corpus — Everflame Eidolon; in-hand parse.",
+  "seed": 61622,
+  "cards": {
+    "Everflame Eidolon": "Name:Everflame Eidolon\nManaCost:1 R\nTypes:Enchantment Creature Spirit\nPT:1/1\nK:Bestow:2 R\nA:AB$ Pump | Cost$ R | Defined$ Self | NumAtt$ +1 | ConditionPresent$ Card.Self+nonAura | SubAbility$ DBPump | SpellDescription$ CARDNAME gets +1/+0 until end of turn. If it's an Aura, enchanted creature gets +1/+0 until end of turn instead.\nSVar:DBPump:DB$ Pump | Defined$ Enchanted | NumAtt$ +1 | ConditionPresent$ Card.Self+Aura\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nOracle:Bestow {2}{R} (If you cast this card for its bestow cost, it's an Aura spell with enchant creature. It becomes a creature again if it's not attached to a creature.)\\n{R}: Everflame Eidolon gets +1/+0 until end of turn. If it's an Aura, enchanted creature gets +1/+0 until end of turn instead.\\nEnchanted creature gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Everflame Eidolon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

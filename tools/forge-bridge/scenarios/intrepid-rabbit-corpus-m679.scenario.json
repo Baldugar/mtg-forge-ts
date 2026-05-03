@@ -1,0 +1,23 @@
+{
+  "id": "intrepid-rabbit-corpus-m679",
+  "description": "M6 corpus — Intrepid Rabbit; in-hand parse.",
+  "seed": 61754,
+  "cards": {
+    "Intrepid Rabbit": "Name:Intrepid Rabbit\nManaCost:2 W\nTypes:Creature Rabbit Soldier\nPT:3/2\nK:Offspring:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, target creature you control gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1\nOracle:Offspring {1} (You may pay an additional {1} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nWhen this creature enters, target creature you control gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Intrepid Rabbit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

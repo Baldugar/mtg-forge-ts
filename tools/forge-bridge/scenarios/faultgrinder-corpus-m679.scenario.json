@@ -1,0 +1,23 @@
+{
+  "id": "faultgrinder-corpus-m679",
+  "description": "M6 corpus — Faultgrinder; in-hand parse.",
+  "seed": 61630,
+  "cards": {
+    "Faultgrinder": "Name:Faultgrinder\nManaCost:6 R\nTypes:Creature Elemental\nPT:4/4\nK:Trample\nK:Evoke:4 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target land.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land\nSVar:NeedsToPlayEvoked:Land.OppCtrl\nOracle:Trample\\nWhen Faultgrinder enters, destroy target land.\\nEvoke {4}{R} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faultgrinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

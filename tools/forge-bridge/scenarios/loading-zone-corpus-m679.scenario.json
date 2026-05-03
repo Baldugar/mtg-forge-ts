@@ -1,0 +1,23 @@
+{
+  "id": "loading-zone-corpus-m679",
+  "description": "M6 corpus — Loading Zone; in-hand parse.",
+  "seed": 61814,
+  "cards": {
+    "Loading Zone": "Name:Loading Zone\nManaCost:3 G\nTypes:Enchantment\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+inZoneBattlefield,Spacecraft.YouCtrl+inZoneBattlefield,Planet.YouCtrl+inZoneBattlefield | ReplaceWith$ DoubleCounters | Description$ If one or more counters would be put on a creature, Spacecraft, or Planet you control, twice that many of each of those kinds of counters are put on it instead.\nSVar:DoubleCounters:DB$ ReplaceCounter | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Twice\nK:Warp:G\nOracle:If one or more counters would be put on a creature, Spacecraft, or Planet you control, twice that many of each of those kinds of counters are put on it instead.\\nWarp {G} (You may cast this card from your hand for its warp cost. Exile this enchantment at the beginning of the next end step, then you may cast it from exile on a later turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loading Zone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

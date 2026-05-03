@@ -1,0 +1,23 @@
+{
+  "id": "silumgar-sorcerer-corpus-m679",
+  "description": "M6 corpus — Silumgar Sorcerer; in-hand parse.",
+  "seed": 62103,
+  "cards": {
+    "Silumgar Sorcerer": "Name:Silumgar Sorcerer\nManaCost:1 U U\nTypes:Creature Human Wizard Sorcerer\nPT:2/1\nK:Flash\nK:Flying\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ When CARDNAME exploits a creature, counter target creature spell.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Creature | TgtPrompt$ Select target creature spell\nAI:RemoveDeck:All\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nFlying\\nExploit (When this creature enters, you may sacrifice a creature.)\\nWhen Silumgar Sorcerer exploits a creature, counter target creature spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silumgar Sorcerer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

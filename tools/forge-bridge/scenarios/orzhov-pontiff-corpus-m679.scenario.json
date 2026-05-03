@@ -1,0 +1,23 @@
+{
+  "id": "orzhov-pontiff-corpus-m679",
+  "description": "M6 corpus — Orzhov Pontiff; in-hand parse.",
+  "seed": 61925,
+  "cards": {
+    "Orzhov Pontiff": "Name:Orzhov Pontiff\nManaCost:1 W B\nTypes:Creature Human Cleric\nPT:1/1\nK:Haunt:TrigChoose\nSVar:TrigChoose:DB$ Charm | Choices$ DBPump,DBCurse\nSVar:DBPump:DB$ PumpAll | ValidCards$ Card.Creature+YouCtrl | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Creatures you control get +1/+1 until end of turn.\nSVar:DBCurse:DB$ PumpAll | ValidCards$ Card.Creature+YouDontCtrl | NumAtt$ -1 | NumDef$ -1 | SpellDescription$ Creatures you don't control get -1/-1 until end of turn.\nAI:RemoveDeck:All\nOracle:Haunt (When this creature dies, exile it haunting target creature.)\\nWhen Orzhov Pontiff enters or the creature it haunts dies, choose one —\\n• Creatures you control get +1/+1 until end of turn.\\n• Creatures you don't control get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orzhov Pontiff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

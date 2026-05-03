@@ -1,0 +1,23 @@
+{
+  "id": "kestia-the-cultivator-corpus-m679",
+  "description": "M6 corpus — Kestia, the Cultivator; in-hand parse.",
+  "seed": 61783,
+  "cards": {
+    "Kestia, the Cultivator": "Name:Kestia, the Cultivator\nManaCost:1 G W U\nTypes:Legendary Enchantment Creature Nymph\nPT:4/4\nK:Bestow:3 G W U\nS:Mode$ Continuous | Affected$ Card.AttachedBy | AddPower$ 4 | AddToughness$ 4 | Description$ Enchanted creature gets +4/+4.\nT:Mode$ Attacks | ValidCard$ Creature.enchanted+YouCtrl,Creature.Enchantment+YouCtrl | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever an enchanted creature or enchantment creature you control attacks, draw a card.\nSVar:TrigDraw:DB$ Draw\nOracle:Bestow {3}{G}{W}{U} (If you cast this card for its bestow cost, it's an Aura spell with enchant creature. It becomes a creature again if it's not attached to a creature.)\\nEnchanted creature gets +4/+4.\\nWhenever an enchanted creature or enchantment creature you control attacks, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kestia, the Cultivator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

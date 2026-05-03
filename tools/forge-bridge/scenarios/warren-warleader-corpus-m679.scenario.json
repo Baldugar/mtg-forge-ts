@@ -1,0 +1,23 @@
+{
+  "id": "warren-warleader-corpus-m679",
+  "description": "M6 corpus — Warren Warleader; in-hand parse.",
+  "seed": 62272,
+  "cards": {
+    "Warren Warleader": "Name:Warren Warleader\nManaCost:2 W W\nTypes:Creature Rabbit Knight\nPT:4/4\nK:Offspring:2\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBPumpAll\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_rabbit | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True | SpellDescription$ Create a 1/1 white Rabbit creature token that's tapped and attacking.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking+YouCtrl | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Attacking creatures you control get +1/+1 until end of turn.\nOracle:Offspring {2} (You may pay an additional {2} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\\nWhenever you attack, choose one —\\n• Create a 1/1 white Rabbit creature token that's tapped and attacking.\\n• Attacking creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warren Warleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

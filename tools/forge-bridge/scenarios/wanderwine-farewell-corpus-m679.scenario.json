@@ -1,0 +1,23 @@
+{
+  "id": "wanderwine-farewell-corpus-m679",
+  "description": "M6 corpus — Wanderwine Farewell; in-hand parse.",
+  "seed": 62268,
+  "cards": {
+    "Wanderwine Farewell": "Name:Wanderwine Farewell\nManaCost:5 U U\nTypes:Kindred Sorcery Merfolk\nK:Convoke\nA:SP$ ChangeZone | TargetMin$ 1 | TargetMax$ 2 | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | RememberChanged$ True | SubAbility$ DBToken | SpellDescription$ Return one or two target nonland permanents to their owners' hands. Then if you control a Merfolk, create a 1/1 white and blue Merfolk creature token for each permanent returned to its owner's hand this way.\nSVar:DBToken:DB$ Token | TokenAmount$ Remembered$Amount | TokenScript$ wu_1_1_merfolk | ConditionPresent$ Merfolk.YouCtrl | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nReturn one or two target nonland permanents to their owners' hands. Then if you control a Merfolk, create a 1/1 white and blue Merfolk creature token for each permanent returned to its owner's hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wanderwine Farewell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

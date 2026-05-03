@@ -1,0 +1,23 @@
+{
+  "id": "regna-the-redeemer-corpus-m679",
+  "description": "M6 corpus — Regna, the Redeemer; in-hand parse.",
+  "seed": 61998,
+  "cards": {
+    "Regna, the Redeemer": "Name:Regna, the Redeemer\nManaCost:5 W\nTypes:Legendary Creature Angel\nPT:4/4\nK:Partner with:Krav, the Unredeemed:Krav\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ YouTeamLifeGained | Execute$ TrigWarrior | TriggerDescription$ At the beginning of each end step, if your team gained life this turn, create two 1/1 white Warrior creature tokens.\nSVar:TrigWarrior:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_warrior | TokenOwner$ You\nSVar:YouTeamLifeGained:Count$LifeYourTeamGainedThisTurn\nDeckHints:Name$Krav, the Unredeemed\nOracle:Partner with Krav, the Unredeemed (When this creature enters, target player may put Krav into their hand from their library, then shuffle.)\\nFlying\\nAt the beginning of each end step, if your team gained life this turn, create two 1/1 white Warrior creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Regna, the Redeemer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

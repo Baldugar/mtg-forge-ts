@@ -1,0 +1,23 @@
+{
+  "id": "subterfuge-corpus-m679",
+  "description": "M6 corpus — Subterfuge; in-hand parse.",
+  "seed": 62164,
+  "cards": {
+    "Subterfuge": "Name:Subterfuge\nManaCost:4 U\nTypes:Creature Elemental Incarnation\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When this creature enters, target creature gains flying and \"Whenever this creature deals combat damage to a player, draw that many cards\" until end of turn.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature | Keywords$ Flying | Triggers$ DealsDamage\nSVar:DealsDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever this creature deals combat damage to a player, draw that many cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nK:Encore:7 U U\nSVar:X:TriggerCount$DamageAmount\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:When this creature enters, target creature gains flying and \"Whenever this creature deals combat damage to a player, draw that many cards\" until end of turn.\\nEncore {7}{U}{U} ({7}{U}{U}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Subterfuge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

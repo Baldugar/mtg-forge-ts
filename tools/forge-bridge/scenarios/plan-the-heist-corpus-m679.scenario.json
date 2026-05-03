@@ -1,0 +1,23 @@
+{
+  "id": "plan-the-heist-corpus-m679",
+  "description": "M6 corpus — Plan the Heist; in-hand parse.",
+  "seed": 61954,
+  "cards": {
+    "Plan the Heist": "Name:Plan the Heist\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ Surveil | Amount$ 3 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBDraw | SpellDescription$ Surveil 3 if you have no cards in hand. Then draw three cards. (To surveil 3, look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 3\nSVar:X:Count$CardsInYourHand\nK:Plot:3 U\nDeckHas:Ability$Surveil|Graveyard\nOracle:Surveil 3 if you have no cards in hand. Then draw three cards. (To surveil 3, look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\\nPlot {3}{U} (You may pay {3}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plan the Heist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "amy-pond-corpus-m679",
+  "description": "M6 corpus — Amy Pond; in-hand parse.",
+  "seed": 61445,
+  "cards": {
+    "Amy Pond": "Name:Amy Pond\nManaCost:2 R\nTypes:Legendary Creature Human\nPT:2/2\nK:Partner with:Rory Williams:Rory\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigRemove | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, choose a suspended card you own and remove that many time counters from it.\nSVar:TrigRemove:DB$ RemoveCounter | Choices$ Card.suspended+YouOwn | ChoiceZone$ Exile | CounterType$ TIME | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nK:Doctor's companion\nDeckNeeds:Keyword$Suspend\nOracle:Partner with Rory Williams (When this creature enters, target player may put Rory into their hand from their library, then shuffle.)\\nWhenever Amy Pond deals combat damage to a player, choose a suspended card you own and remove that many time counters from it.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Amy Pond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

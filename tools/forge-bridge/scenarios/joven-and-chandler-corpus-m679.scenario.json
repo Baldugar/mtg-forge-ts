@@ -1,0 +1,23 @@
+{
+  "id": "joven-and-chandler-corpus-m679",
+  "description": "M6 corpus — Joven and Chandler; in-hand parse.",
+  "seed": 61762,
+  "cards": {
+    "Joven and Chandler": "Name:Joven and Chandler\nManaCost:3 R R\nTypes:Legendary Creature Human Rogue\nPT:3/3\nK:Backup:2:BackupAbilities\nSVar:BackupAbilities:DB$ Animate | Keywords$ Haste | Triggers$ DamageTrig\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to an opponent, destroy target artifact that player controls.\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to an opponent, destroy target artifact that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact damaged player controls\nDeckHas:Ability$Counters\nOracle:Backup 2 (When this creature enters the battlefield, put two +1/+1 counters on target creature. If that's another creature, it gains the following abilities until end of turn.)\\nHaste\\nWhenever this creature deals combat damage to an opponent, destroy target artifact that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Joven and Chandler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

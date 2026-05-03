@@ -1,0 +1,23 @@
+{
+  "id": "bill-potts-corpus-m679",
+  "description": "M6 corpus — Bill Potts; in-hand parse.",
+  "seed": 61484,
+  "cards": {
+    "Bill Potts": "Name:Bill Potts\nManaCost:3 R\nTypes:Legendary Creature Human\nPT:2/4\nT:Mode$ SpellAbilityCast | ValidSA$ Instant.YouCtrl,Sorcery.YouCtrl,Activated.YouCtrl | ValidActivatingPlayer$ You | IsSingleTarget$ True | TargetsValid$ Card.Self | ActivationLimit$ 1 | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell that targets only CARDNAME or activate an ability that targets only CARDNAME, copy that spell or ability. You may choose new targets for the copy. This ability triggers only once each turn.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nK:Doctor's companion\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell that targets only Bill Potts or activate an ability that targets only Bill Potts, copy that spell or ability. You may choose new targets for the copy. This ability triggers only once each turn.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bill Potts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

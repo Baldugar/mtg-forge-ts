@@ -1,0 +1,23 @@
+{
+  "id": "drogskol-infantry-corpus-m679",
+  "description": "M6 corpus — Drogskol Infantry; in-hand parse.",
+  "seed": 61602,
+  "cards": {
+    "Drogskol Infantry": "Name:Drogskol Infantry\nManaCost:1 W\nTypes:Creature Spirit Soldier\nPT:2/2\nK:Disturb:3 W\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Disturb {3}{W} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Drogskol Armaments\nManaCost:no cost\nColors:white\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature gets +2/+2.\\nIf Drogskol Armaments would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drogskol Infantry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

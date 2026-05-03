@@ -1,0 +1,23 @@
+{
+  "id": "kitesail-skirmisher-corpus-m679",
+  "description": "M6 corpus — Kitesail Skirmisher; in-hand parse.",
+  "seed": 61788,
+  "cards": {
+    "Kitesail Skirmisher": "Name:Kitesail Skirmisher\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:3/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target creature attacking the same player or planeswalker gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+attackingSame | TgtPrompt$ Choose another target creature attacking the same player or planeswalker | KW$ Flying\nK:Encore:4 U\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever Kitesail Skirmisher attacks, another target creature attacking the same player or planeswalker gains flying until end of turn.\\nEncore {4}{U} ({4}{U}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitesail Skirmisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

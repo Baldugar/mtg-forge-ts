@@ -1,0 +1,23 @@
+{
+  "id": "virtus-the-veiled-corpus-m679",
+  "description": "M6 corpus — Virtus the Veiled; in-hand parse.",
+  "seed": 62253,
+  "cards": {
+    "Virtus the Veiled": "Name:Virtus the Veiled\nManaCost:2 B\nTypes:Legendary Creature Azra Assassin\nPT:1/1\nK:Partner with:Gorm the Great\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLifeOpp | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player loses half their life, rounded up.\nSVar:TrigLoseLifeOpp:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ QuietusX\nSVar:QuietusX:TriggeredTarget$LifeTotal/HalfUp\nOracle:Partner with Gorm the Great (When this creature enters, target player may put Gorm into their hand from their library, then shuffle.)\\nDeathtouch\\nWhenever Virtus the Veiled deals combat damage to a player, that player loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Virtus the Veiled"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

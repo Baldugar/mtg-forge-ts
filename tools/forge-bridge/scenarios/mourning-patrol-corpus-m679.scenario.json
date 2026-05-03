@@ -1,0 +1,23 @@
+{
+  "id": "mourning-patrol-corpus-m679",
+  "description": "M6 corpus — Mourning Patrol; in-hand parse.",
+  "seed": 61875,
+  "cards": {
+    "Mourning Patrol": "Name:Mourning Patrol\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/3\nK:Vigilance\nK:Disturb:3 W\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Vigilance\\nDisturb {3}{W} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Morning Apparition\nManaCost:no cost\nColors:white\nTypes:Creature Spirit Soldier\nPT:2/1\nK:Flying\nK:Vigilance\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying, vigilance\\nIf Morning Apparition would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mourning Patrol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

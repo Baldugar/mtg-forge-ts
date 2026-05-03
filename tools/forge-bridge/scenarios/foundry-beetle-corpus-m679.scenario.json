@@ -1,0 +1,23 @@
+{
+  "id": "foundry-beetle-corpus-m679",
+  "description": "M6 corpus — Foundry Beetle; in-hand parse.",
+  "seed": 61646,
+  "cards": {
+    "Foundry Beetle": "Name:Foundry Beetle\nManaCost:1 R\nTypes:Artifact Creature Equipment Insect\nPT:2/2\nK:First Strike\nK:Reconfigure:R\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ First Strike | Description$ Equipped creature has first strike.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRandom | TriggerDescription$ At the beginning of your upkeep, a random artifact card in your hand perpetually gains \"This spell costs {1} less to cast.\"\nSVar:TrigRandom:DB$ ChooseCard | Defined$ You | Choices$ Artifact.YouOwn | ChoiceZone$ Hand | AtRandom$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | staticAbilities$ ReduceCost | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} less to cast.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHints:Type$Artifact\nOracle:First strike\\nEquipped creature has first strike.\\nAt the beginning of your upkeep, a random artifact card in your hand perpetually gains \"This spell costs {1} less to cast.\"\\nReconfigure {R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foundry Beetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

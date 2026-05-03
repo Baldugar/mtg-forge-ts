@@ -1,0 +1,23 @@
+{
+  "id": "silumgar-spell-eater-corpus-m679",
+  "description": "M6 corpus — Silumgar Spell-Eater; in-hand parse.",
+  "seed": 62104,
+  "cards": {
+    "Silumgar Spell-Eater": "Name:Silumgar Spell-Eater\nManaCost:2 U\nTypes:Creature Snake Wizard\nPT:2/3\nK:Megamorph:4 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, counter target spell unless its controller pays {3}.\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | UnlessCost$ 3 | TgtPrompt$ Select target spell\nOracle:Megamorph {4}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)\\nWhen Silumgar Spell-Eater is turned face up, counter target spell unless its controller pays {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silumgar Spell-Eater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

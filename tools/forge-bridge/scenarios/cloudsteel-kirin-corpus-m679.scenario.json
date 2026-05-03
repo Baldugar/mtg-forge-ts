@@ -1,0 +1,23 @@
+{
+  "id": "cloudsteel-kirin-corpus-m679",
+  "description": "M6 corpus — Cloudsteel Kirin; in-hand parse.",
+  "seed": 61550,
+  "cards": {
+    "Cloudsteel Kirin": "Name:Cloudsteel Kirin\nManaCost:2 W\nTypes:Artifact Creature Equipment Kirin\nPT:3/2\nK:Flying\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | AddReplacementEffect$ YouCantLose & OppCantWin | Description$ Equipped creature has flying and \"You can't lose the game and your opponents can't win the game.\"\nSVar:YouCantLose:Event$ GameLoss | ValidPlayer$ You | Layer$ CantHappen | Description$ You can't lose the game.\nSVar:OppCantWin:Event$ GameWin | ValidPlayer$ Opponent | Layer$ CantHappen | Description$ Opponents can't win the game.\nK:Reconfigure:5\nOracle:Flying\\nEquipped creature has flying and \"You can't lose the game and your opponents can't win the game.\"\\nReconfigure {5}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudsteel Kirin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

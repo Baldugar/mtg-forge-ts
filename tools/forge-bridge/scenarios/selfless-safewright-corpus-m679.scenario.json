@@ -1,0 +1,23 @@
+{
+  "id": "selfless-safewright-corpus-m679",
+  "description": "M6 corpus — Selfless Safewright; in-hand parse.",
+  "seed": 62068,
+  "cards": {
+    "Selfless Safewright": "Name:Selfless Safewright\nManaCost:3 G G\nTypes:Creature Elf Warrior\nPT:4/2\nK:Flash\nK:Convoke\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseType | TriggerDescription$ When this creature enters, choose a creature type. Other permanents you control of that type gain hexproof and indestructible until end of turn.\nSVar:TrigChooseType:DB$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBPumpAll | AILogic$ MostProminentComputerControls\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Permanent.YouCtrl+Other+ChosenType | KW$ Hexproof & Indestructible\nOracle:Flash\\nConvoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nWhen this creature enters, choose a creature type. Other permanents you control of that type gain hexproof and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selfless Safewright"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cloister-gargoyle-corpus-m679",
+  "description": "M6 corpus — Cloister Gargoyle; in-hand parse.",
+  "seed": 61548,
+  "cards": {
+    "Cloister Gargoyle": "Name:Cloister Gargoyle\nManaCost:2 W\nTypes:Artifact Creature Gargoyle\nPT:0/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBVenture | TriggerDescription$ When CARDNAME enters, venture into the dungeon. (Enter the first room or advance to the next room.)\nSVar:DBVenture:DB$ Venture | Defined$ You\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 3 | AddKeyword$ Flying | CheckSVar$ X | Description$ As long as you've completed a dungeon, CARDNAME gets +3/+0 and has flying.\nSVar:X:DungeonsCompleted$Amount\nOracle:When Cloister Gargoyle enters, venture into the dungeon. (Enter the first room or advance to the next room.)\\nAs long as you've completed a dungeon, Cloister Gargoyle gets +3/+0 and has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloister Gargoyle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deep-forest-hermit-corpus-m679",
+  "description": "M6 corpus — Deep Forest Hermit; in-hand parse.",
+  "seed": 61585,
+  "cards": {
+    "Deep Forest Hermit": "Name:Deep Forest Hermit\nManaCost:3 G G\nTypes:Creature Elf Druid\nPT:1/1\nK:Vanishing:3\nS:Mode$ Continuous | Affected$ Creature.Squirrel+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Squirrel creatures you control get +1/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create four 1/1 green Squirrel creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 4 | TokenScript$ g_1_1_squirrel | TokenOwner$ You\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:Vanishing 3 (This creature enters with three time counters on it. At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)\\nWhen Deep Forest Hermit enters, create four 1/1 green Squirrel creature tokens.\\nSquirrels you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deep Forest Hermit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

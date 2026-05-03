@@ -1,0 +1,23 @@
+{
+  "id": "scab-clan-berserker-corpus-m679",
+  "description": "M6 corpus — Scab-Clan Berserker; in-hand parse.",
+  "seed": 62053,
+  "cards": {
+    "Scab-Clan Berserker": "Name:Scab-Clan Berserker\nManaCost:1 R R\nTypes:Creature Human Berserker\nPT:2/2\nK:Haste\nK:Renown:1\nT:Mode$ SpellCast | TriggerZones$ Battlefield | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | IsPresent$ Card.Self+IsRenowned | Execute$ TrigDmg | TriggerDescription$ Whenever an opponent casts a noncreature spell, if CARDNAME is renowned, CARDNAME deals 2 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 2\nDeckHas:Ability$Counters\nOracle:Haste\\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\\nWhenever an opponent casts a noncreature spell, if Scab-Clan Berserker is renowned, Scab-Clan Berserker deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scab-Clan Berserker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

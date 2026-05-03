@@ -1,0 +1,23 @@
+{
+  "id": "kathari-bomber-corpus-m679",
+  "description": "M6 corpus — Kathari Bomber; in-hand parse.",
+  "seed": 61776,
+  "cards": {
+    "Kathari Bomber": "Name:Kathari Bomber\nManaCost:1 B R\nTypes:Creature Bird Shaman\nPT:2/2\nK:Flying\nK:Unearth:3 B R\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ When CARDNAME deals combat damage to a player, create two 1/1 red Goblin creature tokens and sacrifice CARDNAME.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self\nOracle:Flying\\nWhen Kathari Bomber deals combat damage to a player, create two 1/1 red Goblin creature tokens and sacrifice Kathari Bomber.\\nUnearth {3}{B}{R} ({3}{B}{R}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kathari Bomber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

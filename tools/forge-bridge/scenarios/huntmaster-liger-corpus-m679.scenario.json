@@ -1,0 +1,23 @@
+{
+  "id": "huntmaster-liger-corpus-m679",
+  "description": "M6 corpus — Huntmaster Liger; in-hand parse.",
+  "seed": 61733,
+  "cards": {
+    "Huntmaster Liger": "Name:Huntmaster Liger\nManaCost:3 W\nTypes:Creature Cat\nPT:3/4\nK:Mutate:2 W\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever this creature mutates, other creatures you control get +X/+X until end of turn, where X is the number of times this creature has mutated.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$TimesMutated\nOracle:Mutate {2}{W} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nWhenever this creature mutates, other creatures you control get +X/+X until end of turn, where X is the number of times this creature has mutated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Huntmaster Liger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

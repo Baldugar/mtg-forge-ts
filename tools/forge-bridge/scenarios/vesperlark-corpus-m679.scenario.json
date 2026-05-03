@@ -1,0 +1,23 @@
+{
+  "id": "vesperlark-corpus-m679",
+  "description": "M6 corpus — Vesperlark; in-hand parse.",
+  "seed": 62249,
+  "cards": {
+    "Vesperlark": "Name:Vesperlark\nManaCost:2 W\nTypes:Creature Elemental\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME leaves the battlefield, return target creature card with power 1 or less from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+powerLE1 | TgtPrompt$ Select target creature card with power 1 or less in your graveyard\nK:Evoke:1 W\nSVar:NeedsToPlayEvokedVar:Z GE1\nSVar:Z:Count$ValidGraveyard Creature.YouCtrl+powerLE1\nOracle:Flying\\nWhen Vesperlark leaves the battlefield, return target creature card with power 1 or less from your graveyard to the battlefield.\\nEvoke {1}{W} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vesperlark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

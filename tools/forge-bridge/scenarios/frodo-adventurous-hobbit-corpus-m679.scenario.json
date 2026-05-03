@@ -1,0 +1,23 @@
+{
+  "id": "frodo-adventurous-hobbit-corpus-m679",
+  "description": "M6 corpus — Frodo, Adventurous Hobbit; in-hand parse.",
+  "seed": 61651,
+  "cards": {
+    "Frodo, Adventurous Hobbit": "Name:Frodo, Adventurous Hobbit\nManaCost:W B\nTypes:Legendary Creature Halfling Scout\nPT:1/3\nK:Partner with:Sam, Loyal Attendant:Sam\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTempt | CheckSVar$ YouLifeGained | SVarCompare$ GE3 | TriggerDescription$ Whenever CARDNAME attacks, if you gained 3 or more life this turn, the Ring tempts you. Then if NICKNAME is your Ring-bearer and the Ring has tempted you two or more times this game, draw a card.\nSVar:TrigTempt:DB$ RingTemptsYou | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ NumRingTempted | ConditionSVarCompare$ GE2 | ConditionPresent$ Card.Self+IsRingbearer | ConditionCompare$ GE1\nSVar:YouLifeGained:Count$LifeYouGainedThisTurn\nSVar:NumRingTempted:PlayerCountPropertyYou$RingTemptedYou\nOracle:Partner with Sam, Loyal Attendant\\nVigilance\\nWhenever Frodo, Adventurous Hobbit attacks, if you gained 3 or more life this turn, the Ring tempts you. Then if Frodo is your Ring-bearer and the Ring has tempted you two or more times this game, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frodo, Adventurous Hobbit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

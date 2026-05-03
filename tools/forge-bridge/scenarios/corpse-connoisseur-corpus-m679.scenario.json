@@ -1,0 +1,23 @@
+{
+  "id": "corpse-connoisseur-corpus-m679",
+  "description": "M6 corpus — Corpse Connoisseur; in-hand parse.",
+  "seed": 61561,
+  "cards": {
+    "Corpse Connoisseur": "Name:Corpse Connoisseur\nManaCost:4 B\nTypes:Creature Zombie Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a creature card, put that card into your graveyard, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Creature | ChangeNum$ 1 | ShuffleNonMandatory$ True\nK:Unearth:3 B\nAI:RemoveDeck:Random\nOracle:When Corpse Connoisseur enters, you may search your library for a creature card, put that card into your graveyard, then shuffle.\\nUnearth {3}{B} ({3}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corpse Connoisseur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

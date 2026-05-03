@@ -1,0 +1,23 @@
+{
+  "id": "lockjaw-snapper-corpus-m679",
+  "description": "M6 corpus — Lockjaw Snapper; in-hand parse.",
+  "seed": 61818,
+  "cards": {
+    "Lockjaw Snapper": "Name:Lockjaw Snapper\nManaCost:4\nTypes:Artifact Creature Scarecrow\nPT:2/2\nK:Wither\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME dies, put a -1/-1 counter on each creature with a -1/-1 counter on it.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.counters_GE1_M1M1 | CounterType$ M1M1 | CounterNum$ 1\nOracle:Wither (This deals damage to creatures in the form of -1/-1 counters.)\\nWhen Lockjaw Snapper dies, put a -1/-1 counter on each creature with a -1/-1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lockjaw Snapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

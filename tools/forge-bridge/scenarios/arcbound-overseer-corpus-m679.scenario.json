@@ -1,0 +1,23 @@
+{
+  "id": "arcbound-overseer-corpus-m679",
+  "description": "M6 corpus — Arcbound Overseer; in-hand parse.",
+  "seed": 61454,
+  "cards": {
+    "Arcbound Overseer": "Name:Arcbound Overseer\nManaCost:8\nTypes:Artifact Creature Golem\nPT:0/0\nK:Modular:6\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a +1/+1 counter on each creature with modular you control.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+withModular | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckNeeds:Keyword$Modular\nOracle:At the beginning of your upkeep, put a +1/+1 counter on each creature with modular you control.\\nModular 6 (This creature enters with six +1/+1 counters on it. When it dies, you may put its +1/+1 counters on target artifact creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcbound Overseer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

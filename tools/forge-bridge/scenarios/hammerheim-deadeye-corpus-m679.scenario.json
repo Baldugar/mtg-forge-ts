@@ -1,0 +1,23 @@
+{
+  "id": "hammerheim-deadeye-corpus-m679",
+  "description": "M6 corpus — Hammerheim Deadeye; in-hand parse.",
+  "seed": 61701,
+  "cards": {
+    "Hammerheim Deadeye": "Name:Hammerheim Deadeye\nManaCost:3 R\nTypes:Creature Giant Warrior\nPT:3/3\nK:Echo:5 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature with flying.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying.\nSVar:NeedsToPlayVar:Y GE6\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:Echo {5}{R} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Hammerheim Deadeye enters, destroy target creature with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hammerheim Deadeye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

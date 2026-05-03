@@ -1,0 +1,23 @@
+{
+  "id": "a-binding-geist-corpus-m679",
+  "description": "M6 corpus — A-Binding Geist; in-hand parse.",
+  "seed": 62036,
+  "cards": {
+    "A-Binding Geist": "Name:A-Binding Geist\nManaCost:1 U\nTypes:Creature Spirit\nPT:2/1\nK:Disturb:U\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, target creature an opponent controls gets -2/-0 until your next turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | IsCurse$ True | Duration$ UntilYourNextTurn\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Whenever Binding Geist attacks, target creature an opponent controls gets -2/-0 until your next turn.\\nDisturb {U}\n\nALTERNATE\n\nName:A-Spectral Binding\nManaCost:no cost\nColors:blue\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -2 | Description$ Enchanted creature gets -2/-0.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Enchant creature\\nEnchanted creature gets -2/-0.\\nIf Spectral Binding would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Binding Geist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

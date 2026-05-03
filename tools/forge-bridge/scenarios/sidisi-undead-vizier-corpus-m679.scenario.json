@@ -1,0 +1,23 @@
+{
+  "id": "sidisi-undead-vizier-corpus-m679",
+  "description": "M6 corpus — Sidisi, Undead Vizier; in-hand parse.",
+  "seed": 62092,
+  "cards": {
+    "Sidisi, Undead Vizier": "Name:Sidisi, Undead Vizier\nManaCost:3 B B\nTypes:Legendary Creature Zombie Snake\nPT:4/6\nK:Deathtouch\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME exploits a creature, you may search your library for a card, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Deathtouch\\nExploit (When this creature enters, you may sacrifice a creature.)\\nWhen Sidisi, Undead Vizier exploits a creature, you may search your library for a card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sidisi, Undead Vizier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

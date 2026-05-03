@@ -1,0 +1,23 @@
+{
+  "id": "repository-skaab-corpus-m679",
+  "description": "M6 corpus — Repository Skaab; in-hand parse.",
+  "seed": 62003,
+  "cards": {
+    "Repository Skaab": "Name:Repository Skaab\nManaCost:3 U\nTypes:Creature Zombie\nPT:3/3\nK:Exploit\nT:Mode$ Exploited | ValidCard$ Creature | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME exploits a creature, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn/LimitMax.1\nSVar:Y:Count$Valid Creature.token,Creature.cmcLE2/LimitMax.1\nSVar:Z:SVar$X/Plus.Y\nSVar:NeedsToPlayVar:Z EQ2\nDeckHas:Ability$Sacrifice|Graveyard\nDeckHints:Type$Instant|Sorcery\nOracle:Exploit (When this creature enters, you may sacrifice a creature.)\\nWhen Repository Skaab exploits a creature, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Repository Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necropanther-corpus-m679",
+  "description": "M6 corpus — Necropanther; in-hand parse.",
+  "seed": 61883,
+  "cards": {
+    "Necropanther": "Name:Necropanther\nManaCost:1 W B\nTypes:Creature Cat Nightmare\nPT:3/3\nK:Mutate:2 WB WB\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Whenever this creature mutates, return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLE3\nOracle:Mutate {2}{W/B}{W/B} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nWhenever this creature mutates, return target creature card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necropanther"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

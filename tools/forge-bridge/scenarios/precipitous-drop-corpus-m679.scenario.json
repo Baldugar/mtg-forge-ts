@@ -1,0 +1,23 @@
+{
+  "id": "precipitous-drop-corpus-m679",
+  "description": "M6 corpus — Precipitous Drop; in-hand parse.",
+  "seed": 61963,
+  "cards": {
+    "Precipitous Drop": "Name:Precipitous Drop\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigVenture | TriggerDescription$ When CARDNAME enters, venture into the dungeon. (Enter the first room or advance to the next room.)\nSVar:TrigVenture:DB$ Venture\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -X | AddToughness$ -X | Description$ Enchanted creature gets -2/-2. It gets -5/-5 instead as long as you've completed a dungeon.\nSVar:X:Count$Compare Y GE1.5.2\nSVar:Y:DungeonsCompleted$Amount\nOracle:Enchant creature\\nWhen Precipitous Drop enters, venture into the dungeon. (Enter the first room or advance to the next room.)\\nEnchanted creature gets -2/-2. It gets -5/-5 instead as long as you've completed a dungeon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Precipitous Drop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

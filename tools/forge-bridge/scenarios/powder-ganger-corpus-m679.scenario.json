@@ -1,0 +1,23 @@
+{
+  "id": "powder-ganger-corpus-m679",
+  "description": "M6 corpus — Powder Ganger; in-hand parse.",
+  "seed": 61961,
+  "cards": {
+    "Powder Ganger": "Name:Powder Ganger\nManaCost:2 R\nTypes:Creature Human Rogue\nPT:2/2\nK:Squad:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy up to one target artifact.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact | TgtPrompt$ Select up to one target artifact | TargetMin$ 0 | TargetMax$ 1\nDeckHas:Ability$Token\nOracle:Squad {2} (As an additional cost to cast this spell, you may pay {2} any number of times. When this creature enters, create that many tokens that are copies of it.)\\nWhen Powder Ganger enters, destroy up to one target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Powder Ganger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

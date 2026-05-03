@@ -1,0 +1,23 @@
+{
+  "id": "thassa-s-emissary-corpus-m679",
+  "description": "M6 corpus — Thassa's Emissary; in-hand parse.",
+  "seed": 62190,
+  "cards": {
+    "Thassa's Emissary": "Name:Thassa's Emissary\nManaCost:3 U\nTypes:Enchantment Creature Crab\nPT:3/3\nK:Bestow:5 U\nT:Mode$ DamageDone | ValidSource$ Card.Self,Creature.EnchantedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME or enchanted creature deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3.\nOracle:Bestow {5}{U} (If you cast this card for its bestow cost, it's an Aura spell with enchant creature. It becomes a creature again if it's not attached to a creature.)\\nWhenever Thassa's Emissary or enchanted creature deals combat damage to a player, draw a card.\\nEnchanted creature gets +3/+3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thassa's Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

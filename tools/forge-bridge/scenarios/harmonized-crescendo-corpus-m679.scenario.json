@@ -1,0 +1,23 @@
+{
+  "id": "harmonized-crescendo-corpus-m679",
+  "description": "M6 corpus — Harmonized Crescendo; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Harmonized Crescendo": "Name:Harmonized Crescendo\nManaCost:4 U U\nTypes:Instant\nK:Convoke\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBDraw | AILogic$ MostProminentComputerControls | SpellDescription$ Choose a creature type. Draw a card for each permanent you control of that type.\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Permanent.ChosenType+YouCtrl\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nChoose a creature type. Draw a card for each permanent you control of that type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harmonized Crescendo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

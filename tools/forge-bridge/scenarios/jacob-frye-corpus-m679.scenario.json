@@ -1,0 +1,23 @@
+{
+  "id": "jacob-frye-corpus-m679",
+  "description": "M6 corpus — Jacob Frye; in-hand parse.",
+  "seed": 61759,
+  "cards": {
+    "Jacob Frye": "Name:Jacob Frye\nManaCost:2 B\nTypes:Legendary Creature Human Assassin\nPT:3/2\nK:Partner with:Evie Frye\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Assassin.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever one or more Assassins you control deal combat damage to a player, exile up to one target Assassin card or card with freerunning from your graveyard. If you do, copy it. You may cast the copy.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Card.Assassin+YouCtrl,Card.withFreerunning+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select up to one target Assassin card or card with freerunning from your graveyard | RememberChanged$ True | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | CopyCard$ True | ValidSA$ Spell | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Name$Evie Fryer & Type$Assassin & Ability$Graveyard\nOracle:Partner with Evie Frye (When this creature enters, target player may put Evie into their hand from their library, then shuffle.)\\nWhenever one or more Assassins you control deal combat damage to a player, exile up to one target Assassin card or card with freerunning from your graveyard. If you do, copy it. You may cast the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jacob Frye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

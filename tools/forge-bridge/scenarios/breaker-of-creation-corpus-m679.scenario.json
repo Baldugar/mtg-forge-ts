@@ -1,0 +1,23 @@
+{
+  "id": "breaker-of-creation-corpus-m679",
+  "description": "M6 corpus — Breaker of Creation; in-hand parse.",
+  "seed": 61509,
+  "cards": {
+    "Breaker of Creation": "Name:Breaker of Creation\nManaCost:6 C C\nTypes:Creature Eldrazi\nPT:8/4\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When you cast this spell, you gain 1 life for each colorless permanent you control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ Count$Valid Permanent.Colorless+YouCtrl\nK:Hexproof:Card.nonColorless:each color\nK:Annihilator:2\nDeckHas:Ability$LifeGain\nDeckHints:Color$Colorless\nOracle:When you cast this spell, you gain 1 life for each colorless permanent you control.\\nHexproof from each color\\nAnnihilator 2 (Whenever this creature attacks, defending player sacrifices two permanents.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breaker of Creation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

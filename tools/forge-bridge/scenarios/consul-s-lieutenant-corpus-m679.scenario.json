@@ -1,0 +1,23 @@
+{
+  "id": "consul-s-lieutenant-corpus-m679",
+  "description": "M6 corpus — Consul's Lieutenant; in-hand parse.",
+  "seed": 61557,
+  "cards": {
+    "Consul's Lieutenant": "Name:Consul's Lieutenant\nManaCost:W W\nTypes:Creature Human Soldier\nPT:2/1\nK:First Strike\nK:Renown:1\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Card.Self+IsRenowned | TriggerZones$ Battlefield | Execute$ TrigPumpAttack | TriggerDescription$ Whenever CARDNAME attacks, if it's renowned, other attacking creatures get +1/+1 until end of turn.\nSVar:TrigPumpAttack:DB$ PumpAll | ValidCards$ Creature.attacking+Other+YouCtrl | NumAtt$ +1 | NumDef$ +1\nDeckHas:Ability$Counters\nOracle:First strike\\nRenown 1 (When this creature deals combat damage to a player, if it isn't renowned, put a +1/+1 counter on it and it becomes renowned.)\\nWhenever Consul's Lieutenant attacks, if it's renowned, other attacking creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consul's Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

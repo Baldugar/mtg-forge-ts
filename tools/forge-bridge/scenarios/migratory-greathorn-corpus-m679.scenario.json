@@ -1,0 +1,23 @@
+{
+  "id": "migratory-greathorn-corpus-m679",
+  "description": "M6 corpus — Migratory Greathorn; in-hand parse.",
+  "seed": 61855,
+  "cards": {
+    "Migratory Greathorn": "Name:Migratory Greathorn\nManaCost:3 G\nTypes:Creature Beast\nPT:3/4\nK:Mutate:2 G\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature mutates, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nOracle:Mutate {2}{G} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nWhenever this creature mutates, search your library for a basic land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Migratory Greathorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chronozoa-corpus-m679",
+  "description": "M6 corpus — Chronozoa; in-hand parse.",
+  "seed": 61541,
+  "cards": {
+    "Chronozoa": "Name:Chronozoa\nManaCost:3 U\nTypes:Creature Illusion\nPT:3/3\nK:Flying\nK:Vanishing:3\nT:Mode$ ChangesZone | ValidCard$ Card.Self+counters_EQ0_TIME | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigCopyPermanent | TriggerDescription$ When CARDNAME dies, if it had no time counters on it, create two tokens that are copies of it.\nSVar:TrigCopyPermanent:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | NumCopies$ 2\nOracle:Flying\\nVanishing 3 (This creature enters with three time counters on it. At the beginning of your upkeep, remove a time counter from it. When the last is removed, sacrifice it.)\\nWhen Chronozoa dies, if it had no time counters on it, create two tokens that are copies of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chronozoa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

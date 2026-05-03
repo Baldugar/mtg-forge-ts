@@ -1,0 +1,23 @@
+{
+  "id": "nethroi-apex-of-death-corpus-m679",
+  "description": "M6 corpus — Nethroi, Apex of Death; in-hand parse.",
+  "seed": 61890,
+  "cards": {
+    "Nethroi, Apex of Death": "Name:Nethroi, Apex of Death\nManaCost:2 W B G\nTypes:Legendary Creature Cat Nightmare Beast\nPT:5/5\nK:Mutate:4 GW B B\nK:Deathtouch\nK:Lifelink\nT:Mode$ Mutates | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Whenever this creature mutates, return any number of target creature cards with total power 10 or less from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Creature.YouOwn | MaxTotalTargetPower$ 10 | TgtPrompt$ Select any number of creature cards with total power 10 or less\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Mutate {4}{G/W}{B}{B} (If you cast this spell for its mutate cost, put it over or under target non-Human creature you own. They mutate into the creature on top plus all abilities from under it.)\\nDeathtouch, lifelink\\nWhenever this creature mutates, return any number of target creature cards with total power 10 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nethroi, Apex of Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

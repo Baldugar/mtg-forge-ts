@@ -1,0 +1,23 @@
+{
+  "id": "multani-s-acolyte-corpus-m679",
+  "description": "M6 corpus — Multani's Acolyte; in-hand parse.",
+  "seed": 61876,
+  "cards": {
+    "Multani's Acolyte": "Name:Multani's Acolyte\nManaCost:G G\nTypes:Creature Elf\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nK:Echo:G G\nOracle:Echo {G}{G} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Multani's Acolyte enters, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Multani's Acolyte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

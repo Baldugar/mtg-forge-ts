@@ -1,0 +1,23 @@
+{
+  "id": "chaplain-of-alms-corpus-m679",
+  "description": "M6 corpus — Chaplain of Alms; in-hand parse.",
+  "seed": 61537,
+  "cards": {
+    "Chaplain of Alms": "Name:Chaplain of Alms\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nK:First Strike\nK:Ward:1\nK:Disturb:3 W\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:First strike\\nWard {1} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\\nDisturb {3}{W} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Chapel Shieldgeist\nManaCost:no cost\nColors:white\nTypes:Creature Spirit Cleric\nPT:2/1\nK:Flying\nK:First Strike\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Ward:1 | Description$ Each creature you control has ward {1}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying, first strike\\nEach creature you control has ward {1}. (Whenever it becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\\nIf Chapel Shieldgeist would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaplain of Alms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

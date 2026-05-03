@@ -1,0 +1,23 @@
+{
+  "id": "karmic-guide-corpus-m679",
+  "description": "M6 corpus — Karmic Guide; in-hand parse.",
+  "seed": 61774,
+  "cards": {
+    "Karmic Guide": "Name:Karmic Guide\nManaCost:3 W W\nTypes:Creature Angel Spirit\nPT:2/2\nK:Flying\nK:Protection from black\nK:Echo:3 W W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature card from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Flying, protection from black\\nEcho {3}{W}{W} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\\nWhen Karmic Guide enters, return target creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karmic Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
