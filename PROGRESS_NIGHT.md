@@ -1,4 +1,4 @@
-# Overnight Progress Report — M6.62 → M6.86
+# Overnight Progress Report — M6.62 → M6.92
 
 ## TL;DR
 
@@ -9,8 +9,12 @@
 | Match rate | 100% | **100%** | sustained |
 | mvp-known | 0 | **0** | sustained |
 | Capture speed | ~21 s/scenario | **~80 ms/scenario** | ~260× |
+| Package versions | `0.0.0` | **`1.0.0`** | first SemVer release |
+| Typecheck (full repo) | ~250 errors | **0** | clean |
 
 # 🏆 **32,300 / 32,300 Forge corpus cards parity-validated against the Java engine. 100.0% coverage. 0 mvp-known. 0 unknown.**
+
+Three packages cut to **`1.0.0`**: `@mtg-forge-ts/core`, `@mtg-forge-ts/cards`, `@mtg-forge-ts/game`. Per-package READMEs + CHANGELOGs in.
 
 19 commits, all green. 30 of 32,300 corpus cards skipped at hard parser blockers; remaining ~2,400 are filtered to in-hand-only soft-coverage.
 
@@ -114,7 +118,7 @@ The parity-validation milestone is met. Remaining items on the original 100%-fid
 
 ---
 
-## Engine bugs surfaced + fixed by parity tonight (7)
+## Engine bugs surfaced + fixed by parity tonight (9)
 
 1. **`Targeted$<Property>` selector** — was numeric-index only; now supports CardPower/CardToughness/CMC.
 2. **`GainLifeEffect` `Defined$` honoring** — was always casting controller; now routes to TargetedController/Targeted/Opponent/You.
@@ -122,7 +126,9 @@ The parity-validation milestone is met. Remaining items on the original 100%-fid
 4. **`TokenEffect` synthesizeFromId fallback** — was hard-fail on unknown token-id; now parses Forge's `<color>_<P>_<T>_<subtype>` convention.
 5. **Bridge PlayerLost emission** — was missing; now emits synthetic event from post-action sweep over registered players.
 6. **`parseCostParamSymbols` (RaiseCost/ReduceCost)** — was throwing on alt-cost expressions in `Cost$` field; now gracefully short-circuits to no-pip-change.
-7. **`ManaCost.parse` alt-cost mana-slot** — was throwing on Forge's Avatar mana costs (`Waterbend<5>`, `Earthbend<3>`) and `no cost` sentinels; now recognized as NO_COST (alt-cost handled by dedicated cost-part handlers).
+7. **`ManaCost.parse` alt-cost mana-slot** — was throwing on Forge's Avatar mana costs (`Waterbend<5>`, `Earthbend<3>`) and `no cost` sentinels; now recognized as NO_COST.
+8. **`SurveilEffect` Defined$ Targeted/Opponent/TargetedController** — was hardcoded to controllerSeat; now resolves via sa.targetRefs (preferred) or sa.targets.
+9. **`PlayEffect` Defined$ Remembered/Self** — was hard-rejecting non-Targeted forms; now resolves Remembered → source.remembered[0] and Self → source.
 
 ---
 
