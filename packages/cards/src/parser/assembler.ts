@@ -73,6 +73,9 @@ interface AssemblerState {
   aiHints: ReadonlyMap<string, string>[];
   oracle: string;
   rulesText: string;
+  // Vanguard avatar starting-hand/life modifier (CR 902). Source line:
+  // `HandLifeModifier:+H/+L` (each side may be signed). Null when absent.
+  handLifeModifier: { hand: number; life: number } | null;
 }
 
 const freshState = (): AssemblerState => ({
@@ -92,6 +95,7 @@ const freshState = (): AssemblerState => ({
   aiHints: [],
   oracle: "",
   rulesText: "",
+  handLifeModifier: null,
 });
 
 const dispatch = (line: LexedLine, st: AssemblerState): void => {
@@ -178,9 +182,21 @@ const dispatch = (line: LexedLine, st: AssemblerState): void => {
     case "AlternateMode":
       // Handled by the multi-face split at the top level; no-op here.
       break;
-    case "HandLifeModifier":
-      // Commander-specific metadata; noop for parser.
+    case "HandLifeModifier": {
+      // Vanguard avatar metadata (CR 902). Format: `+H/+L` where each
+      // half is a signed integer. Forge accepts `+1/+7`, `+2/-7`, `-1/+0`,
+      // etc. Setup-flow reads this to adjust the avatar's controller's
+      // opening hand size and starting life.
+      const m = /^([+-]?\d+)\s*\/\s*([+-]?\d+)$/.exec(line.content.trim());
+      if (m && m[1] !== undefined && m[2] !== undefined) {
+        const hand = Number.parseInt(m[1], 10);
+        const life = Number.parseInt(m[2], 10);
+        if (!Number.isNaN(hand) && !Number.isNaN(life)) {
+          st.handLifeModifier = { hand, life };
+        }
+      }
       break;
+    }
     case "Variant":
     case "Draft":
     case "Schemes":
@@ -217,6 +233,7 @@ const finalizeDefinition = (st: AssemblerState, file: string): CardDefinition =>
     statics: st.statics,
     keywords: st.keywords,
     svars: st.svars,
+    ...(st.handLifeModifier ? { handLifeModifier: st.handLifeModifier } : {}),
   };
 };
 

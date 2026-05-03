@@ -33,6 +33,8 @@ import {
 import type { EngineYield } from "../action/engine-yield.js";
 import { GameAction } from "../action/game-action.js";
 import type { Game } from "../game.js";
+import { effectiveStartingHandSize } from "../player.js";
+import { onZoneChange } from "../statics/zone-activation.js";
 import type { Zone } from "../zone/zone.js";
 import { Battlefield } from "../zone/zones/battlefield.js";
 import { CommandZone } from "../zone/zones/command-zone.js";
@@ -81,6 +83,45 @@ export type CommanderAssignment =
       readonly signatureSpell: EntityId;
     };
 
+/**
+ * Per-seat Vanguard avatar assignment (CR 902). SetupGame places the
+ * referenced card in the seat's command zone, applies the avatar's
+ * `HandLifeModifier:+H/+L` to the player's starting life and opening hand
+ * size, and activates the avatar's printed triggers + statics so abilities
+ * with `TriggerZones$ Command` (or no zone restriction) fire while the
+ * avatar sits in the command zone.
+ *
+ * The EntityId must already be present in `game.cards` at call time; it
+ * does NOT need to be in the seat's library (avatars are not part of the
+ * 60-card deck — Forge models them as a separate command-zone slot
+ * declared at lobby time).
+ */
+export interface VanguardAssignment {
+  readonly seat: PlayerSeat;
+  readonly cardId: EntityId;
+}
+
+/**
+ * Per-seat Conspiracy assignment (CR 901). Conspiracy cards are NOT part of
+ * a player's 60-card deck — they live exclusively in the command zone for
+ * the entire game (Conspiracy-format draft, CMR / CN2 sets). setupGame
+ * places each entry's `cardId` in the named seat's command zone, then
+ * activates the card's printed statics + triggers + replacements so static
+ * effects with `EffectZone$ Command` and triggers with `TriggerZones$
+ * Command` fire from the command zone for the duration of the game.
+ *
+ * The EntityId must already be present in `game.cards` at call time and
+ * the live Card SHOULD already have its abilities populated (via
+ * `card.activate*FromDefinition`) before setupGame runs, OR the caller
+ * may pre-seed `card.intrinsicStatics` / `card.triggeredAbilities` /
+ * `card.replacementAbilities` directly for tests. setupGame only handles
+ * the zone placement + the static/trigger zone-activation hand-off.
+ */
+export interface ConspiracyAssignment {
+  readonly seat: PlayerSeat;
+  readonly cardId: EntityId;
+}
+
 export interface SetupOptions {
   readonly decks: SetupDecks;
   /**
@@ -90,6 +131,30 @@ export interface SetupOptions {
    * shuffling. SP1 §6.4 + §6.6.
    */
   readonly commanders?: { readonly [seat: number]: CommanderAssignment };
+  /**
+   * Optional Vanguard avatar assignments (CR 902). One entry per seat
+   * that brings an avatar — seats omitted from this list play without one.
+   * The avatar card's `HandLifeModifier:+H/+L` adjusts the controller's
+   * starting life and opening-hand size; printed triggers/statics tagged
+   * for the Command zone activate so abilities fire from the command zone
+   * for the duration of the game.
+   */
+  readonly vanguard?: readonly VanguardAssignment[];
+  /**
+   * Optional Conspiracy cards (CR 901). Each entry seeds one Conspiracy
+   * into the named seat's command zone face-up; the engine activates the
+   * card's printed statics + triggers + replacements so abilities with
+   * `EffectZone$ Command` / `TriggerZones$ Command` register and fire from
+   * the command zone for the duration of the game.
+   *
+   * A seat may bring zero or many Conspiracies (Conspiracy-format draft
+   * decks routinely include 5+ in the command zone). Conspiracies must
+   * NOT appear in the seat's library; they are a separate command-zone
+   * pool. Hidden Agenda / Double Agenda variants are accepted — face-up
+   * default placement is correct for SP1 since the agenda-naming flow
+   * (face-down placement + secret name choice) lives in SP6.
+   */
+  readonly conspiracies?: readonly ConspiracyAssignment[];
 }
 
 // Per-player zone set covered by SP1. Sideboard/Ante/etc. populate in SP2 as
@@ -157,6 +222,7 @@ export function* setupGame(
   const opts: SetupOptions = isOptions ? (decksOrOpts as SetupOptions) : { decks: decksOrOpts as SetupDecks };
   const decks = opts.decks;
   const commanders = opts.commanders;
+  const vanguard = opts.vanguard;
   const action = new GameAction(game);
 
   // Step 0: die-roll for starting player if not pre-assigned. Hosts that
@@ -221,6 +287,114 @@ export function* setupGame(
     }
   }
 
+  // Step 1d (CR 902): Vanguard avatar placement. For each declared seat,
+  // place the avatar's EntityId in the Command zone, apply the avatar's
+  // `HandLifeModifier:+H/+L` to starting life and the player's
+  // `startingHandSizeMod` accumulator (so `effectiveStartingHandSize`
+  // picks it up at draw time), and activate the avatar's printed
+  // triggers + statics so abilities tagged for the Command zone fire
+  // for the duration of the game. Must run before shuffling so the
+  // avatar id (which is NOT in the library) cannot accidentally collide
+  // with a library entry.
+  if (vanguard !== undefined) {
+    for (const slot of vanguard) {
+      const player = game.players.find((p) => p.seat === slot.seat);
+      if (!player) {
+        throw new GameStateIntegrityError(
+          `setupGame: vanguard assignment for unknown seat ${slot.seat as unknown as number}`,
+        );
+      }
+      const cmdZone = player.zones.get(ZoneType.Command);
+      if (!cmdZone) {
+        throw new GameStateIntegrityError(
+          `setupGame: seat ${player.seat as unknown as number} missing Command zone for Vanguard`,
+        );
+      }
+      const card = game.cards.get(slot.cardId);
+      if (!card) {
+        throw new GameStateIntegrityError(
+          `setupGame: Vanguard card id ${slot.cardId as unknown as number} not in game.cards`,
+        );
+      }
+      // Defensive: if the avatar ended up in the library (caller seeded
+      // it there by mistake), pull it out so it doesn't get shuffled.
+      const lib = player.zones.get(ZoneType.Library);
+      if (lib) lib.remove(slot.cardId);
+      cmdZone.add(slot.cardId);
+      card.zone = ZoneType.Command;
+      // Apply the modifier. Forge stores both halves as signed integers;
+      // `handLifeModifier` is undefined on cards parsed without the line.
+      const def = card.paperCard.definition;
+      const mod = def?.handLifeModifier;
+      if (mod) {
+        player.life += mod.life;
+        player.startingHandSizeMod = (player.startingHandSizeMod ?? 0) + mod.hand;
+      }
+      // Activate triggers and statics so command-zone abilities fire.
+      // (Spell abilities are activated lazily by the cast pipeline; the
+      // avatar is never cast, so we don't bind activated abilities here.)
+      card.activateTriggersFromDefinition(game);
+      card.activateStaticsFromDefinition(game);
+      // Hand the freshly-built intrinsic statics to the zone-activation
+      // discipline so the static-effect registry actually registers them
+      // (intrinsicStatics by itself only stores the built abilities — the
+      // registry-side membership is gated on onZoneChange transitioning
+      // the source from a non-active zone to one of its activeInZones).
+      onZoneChange(game, slot.cardId, ZoneType.None, ZoneType.Command);
+    }
+  }
+
+  // Step 1e (CR 901): Conspiracy placement. Each entry seeds one card into
+  // its named seat's command zone face-up, then activates the printed
+  // statics + triggers + replacements so abilities tagged for the Command
+  // zone fire from the command zone for the duration of the game.
+  // Conspiracies are NOT part of the seat's library (they're a separate
+  // command-zone pool); we defensively pull the id out of the library if
+  // the caller mis-seeded it there.
+  const conspiracies = opts.conspiracies;
+  if (conspiracies !== undefined) {
+    for (const slot of conspiracies) {
+      const player = game.players.find((p) => p.seat === slot.seat);
+      if (!player) {
+        throw new GameStateIntegrityError(
+          `setupGame: conspiracy assignment for unknown seat ${slot.seat as unknown as number}`,
+        );
+      }
+      const cmdZone = player.zones.get(ZoneType.Command);
+      if (!cmdZone) {
+        throw new GameStateIntegrityError(
+          `setupGame: seat ${player.seat as unknown as number} missing Command zone for Conspiracy`,
+        );
+      }
+      const card = game.cards.get(slot.cardId);
+      if (!card) {
+        throw new GameStateIntegrityError(
+          `setupGame: Conspiracy card id ${slot.cardId as unknown as number} not in game.cards`,
+        );
+      }
+      // Defensive: pull the conspiracy out of the library if the caller
+      // accidentally seeded it there. CR 901 keeps conspiracies entirely
+      // outside the deck.
+      const lib = player.zones.get(ZoneType.Library);
+      if (lib) lib.remove(slot.cardId);
+      cmdZone.add(slot.cardId);
+      card.zone = ZoneType.Command;
+      // Activate printed abilities. Conspiracies have no spell-cost
+      // (`ManaCost:no cost`) and are never cast — they're revealed at
+      // game start — so we skip activated/spell abilities and just bind
+      // the trigger / static / replacement layers their printed text needs.
+      card.activateTriggersFromDefinition(game);
+      card.activateStaticsFromDefinition(game);
+      card.activateReplacementsFromDefinition(game);
+      // Wire the freshly-built statics into the static-effect registry by
+      // replaying a None → Command zone transition through the standard
+      // zone-activation discipline. Without this, intrinsicStatics is
+      // populated but the registry never sees them (so layer/SBA queries
+      // miss the conspiracy's continuous effects).
+      onZoneChange(game, slot.cardId, ZoneType.None, ZoneType.Command);
+    }
+  }
+
   // Step 2: shuffle each library via the game's rng for determinism.
   for (const player of game.players) {
     const lib = player.zones.get(ZoneType.Library);
@@ -265,10 +439,16 @@ export function* setupGame(
     game.companions.set(player.seat, resp.companionId);
   }
 
-  // Step 3: draw starting hands.
-  const handSize = game.rules.startingHandSize;
+  // Step 3: draw starting hands. Per-player effective starting hand size
+  // honours `Player.startingHandSizeMod` — set by `S:Mode$
+  // StartingHandSizeMod` statics and by Vanguard avatars (CR 902).
+  const handSizes = new Map<PlayerSeat, number>();
   for (const player of game.players) {
-    yield* action.drawCards(player.seat, handSize);
+    const eff = effectiveStartingHandSize(player, game.rules.startingHandSize);
+    handSizes.set(player.seat, eff);
+  }
+  for (const player of game.players) {
+    yield* action.drawCards(player.seat, handSizes.get(player.seat) ?? game.rules.startingHandSize);
   }
 
   // Step 4: mulligan loop. SP1 branches on rules.mulliganRule:
@@ -356,7 +536,7 @@ export function* setupGame(
           kind: "event",
           event: mkEvent("MulliganTaken", game.turn, game.phase, {
             playerSeat: player.seat,
-            handBefore: handSize,
+            handBefore: handSizes.get(player.seat) ?? game.rules.startingHandSize,
             handAfter: hand ? hand.size : 0,
             rule: eventRule,
           }),
@@ -384,7 +564,7 @@ export function* setupGame(
       }
       // London always redraws to full hand size; bottoming happens after keep.
       // Free/Vancouver/Paris also redraw to full in SP1 (see module docblock).
-      yield* action.drawCards(player.seat, handSize);
+      yield* action.drawCards(player.seat, handSizes.get(player.seat) ?? game.rules.startingHandSize);
       mulligansTaken++;
       if (mulligansTaken > MULLIGAN_MAX) {
         throw new GameStateIntegrityError(

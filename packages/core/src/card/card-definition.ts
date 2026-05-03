@@ -34,4 +34,12 @@ export interface CardDefinition {
   // MDFC / transform / split cards carry a `faces` array whose entries are
   // themselves CardDefinitions; the primary face is the wrapper itself.
   readonly faces?: readonly CardDefinition[];
+  /**
+   * Vanguard variant metadata (CR 902). Forge stores the avatar's starting-
+   * hand-size and starting-life modifiers on the `HandLifeModifier:+H/+L`
+   * line. SetupGame's Vanguard wiring reads this when seeding the command
+   * zone to apply the modifiers to the avatar's controller. `undefined`
+   * for non-Vanguard cards.
+   */
+  readonly handLifeModifier?: { readonly hand: number; readonly life: number };
 }
