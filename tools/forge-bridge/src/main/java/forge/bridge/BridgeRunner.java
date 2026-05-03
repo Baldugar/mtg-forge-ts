@@ -499,24 +499,32 @@ public final class BridgeRunner {
         // We check life ≤ 0 (704.5a) and poison ≥ 10 (704.5c) directly,
         // bypassing Player.hasLost() which depends on getOutcome() being
         // set by a fully-running match loop the bridge doesn't drive.
-        for (int i = 0; i < game.getRegisteredPlayers().size(); i++) {
-            try {
-                List<Player> allPlayers = game.getRegisteredPlayers();
-                if (i >= allPlayers.size()) continue;
-                Player pl = allPlayers.get(i);
-                String reason = null;
-                if (pl.getLife() <= 0) reason = "life";
-                else if (pl.getPoisonCounters() >= 10) reason = "poison";
-                if (reason != null) {
-                    Map<String, Object> payload = new LinkedHashMap<>();
-                    payload.put("playerSeat", i);
-                    payload.put("reason", reason);
-                    rec.recordSyntheticPayload("PlayerLost", payload);
-                }
-            } catch (Throwable t) {
-                // Defensive — never let the loss-emit pass crash the bridge.
-                if (System.getenv("BRIDGE_DEBUG") != null) {
-                    System.err.println("PlayerLost-emit failed for seat " + i + ": " + t);
+        // M7.0a — Suppress synthetic PlayerLost emit when running a multi-
+        // turn scenario. The TS golden runner doesn't drive a combat AI;
+        // Forge's natural phase progression auto-attacks during passTurn /
+        // advancePhase, dealing combat damage that can kill the opp. The TS
+        // side never sees that damage and never emits PlayerLost. Suppress
+        // the bridge synthetic to match.
+        if (!isMultiTurn) {
+            for (int i = 0; i < game.getRegisteredPlayers().size(); i++) {
+                try {
+                    List<Player> allPlayers = game.getRegisteredPlayers();
+                    if (i >= allPlayers.size()) continue;
+                    Player pl = allPlayers.get(i);
+                    String reason = null;
+                    if (pl.getLife() <= 0) reason = "life";
+                    else if (pl.getPoisonCounters() >= 10) reason = "poison";
+                    if (reason != null) {
+                        Map<String, Object> payload = new LinkedHashMap<>();
+                        payload.put("playerSeat", i);
+                        payload.put("reason", reason);
+                        rec.recordSyntheticPayload("PlayerLost", payload);
+                    }
+                } catch (Throwable t) {
+                    // Defensive — never let the loss-emit pass crash the bridge.
+                    if (System.getenv("BRIDGE_DEBUG") != null) {
+                        System.err.println("PlayerLost-emit failed for seat " + i + ": " + t);
+                    }
                 }
             }
         }
