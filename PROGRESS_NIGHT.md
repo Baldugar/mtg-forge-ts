@@ -139,6 +139,18 @@ The parity-validation milestone is met. Remaining items on the original 100%-fid
 2. ✅ Avatar mana-cost alt-shape (`Waterbend<5>`) parsed as NO_COST (M6.83).
 3. ✅ Token DB extended + synthesizeFromId fallback covers exotic tokens (M6.75-M6.85).
 4. ✅ Scheme/Conspiracy/Vanguard/Dungeon cards covered via in-hand-parse path (M6.86).
+5. ✅ Typecheck clean across the repo — 250 strict-index errors fixed (M6.87).
+6. ✅ Versions bumped to 1.0.0; per-package CHANGELOGs + READMEs (M6.88-M6.90).
+7. ✅ SurveilEffect Defined$ Targeted/TargetedController/Opponent (M6.91).
+8. ✅ PlayEffect Defined$ Remembered/Self (M6.92).
+
+### NPM publish — packages ready
+`npm pack --dry-run` produces clean tarballs:
+- `@mtg-forge-ts/core@1.0.0` — 302 kB packed / 1.4 MB unpacked, 10 files.
+- `@mtg-forge-ts/cards@1.0.0` — 89 kB packed / 372 kB unpacked, 10 files.
+- `@mtg-forge-ts/game@1.0.0` — 2.3 MB packed / 11.5 MB unpacked, 10 files.
+
+Just need `npm publish --access public` (or the configured publish pipeline) to ship.
 
 ### TODO sweep (~70 production source markers)
 - card.ts, player.ts, phase-handler.ts, layer5-color.ts, sba-engine.ts.
