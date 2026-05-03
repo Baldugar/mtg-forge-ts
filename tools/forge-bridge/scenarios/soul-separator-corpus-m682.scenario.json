@@ -1,0 +1,23 @@
+{
+  "id": "soul-separator-corpus-m682",
+  "description": "M6 corpus — Soul Separator; in-hand parse.",
+  "seed": 64502,
+  "cards": {
+    "Soul Separator": "Name:Soul Separator\nManaCost:3\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 5 T Sac<1/CARDNAME> | RememberLKI$ True | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature.YouCtrl | ChangeNum$ 1 | SubAbility$ DBCopy | SpellDescription$ Exile target creature card from your graveyard. Create a token that's a copy of that card, except it's 1/1, it's a Spirit in addition to its other types, and it has flying. Create a black Zombie creature token with power equal to that card's power and toughness equal to that card's toughness.\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | SetPower$ 1 | SetToughness$ 1 | AddTypes$ Spirit | AddKeywords$ Flying | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_x_x_zombie | TokenPower$ X | TokenToughness$ Y | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardPower\nSVar:Y:RememberedLKI$CardToughness\nOracle:{5}, {T}, Sacrifice Soul Separator: Exile target creature card from your graveyard. Create a token that's a copy of that card, except it's 1/1, it's a Spirit in addition to its other types, and it has flying. Create a black Zombie creature token with power equal to that card's power and toughness equal to that card's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Separator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

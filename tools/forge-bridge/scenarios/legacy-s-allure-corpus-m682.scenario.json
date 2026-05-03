@@ -1,0 +1,23 @@
+{
+  "id": "legacy-s-allure-corpus-m682",
+  "description": "M6 corpus — Legacy's Allure; in-hand parse.",
+  "seed": 63121,
+  "cards": {
+    "Legacy's Allure": "Name:Legacy's Allure\nManaCost:U U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a treasure counter on CARDNAME.\nA:AB$ GainControl | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature.powerLEX | TgtPrompt$ Select target creature with power less than or equal to the number of treasure counters on CARDNAME | SpellDescription$ Gain control of target creature with power less than or equal to the number of treasure counters on CARDNAME. (This effect lasts indefinitely.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ TREASURE | CounterNum$ 1\nSVar:X:Count$CardCounters.TREASURE\nOracle:At the beginning of your upkeep, you may put a treasure counter on Legacy's Allure.\\nSacrifice Legacy's Allure: Gain control of target creature with power less than or equal to the number of treasure counters on Legacy's Allure. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legacy's Allure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

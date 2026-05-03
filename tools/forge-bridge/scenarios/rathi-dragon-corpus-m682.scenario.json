@@ -1,0 +1,23 @@
+{
+  "id": "rathi-dragon-corpus-m682",
+  "description": "M6 corpus — Rathi Dragon; in-hand parse.",
+  "seed": 63930,
+  "cards": {
+    "Rathi Dragon": "Name:Rathi Dragon\nManaCost:2 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice two Mountains.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<2/Mountain> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$Valid Mountain.YouCtrl\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Rathi Dragon enters, sacrifice it unless you sacrifice two Mountains.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rathi Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

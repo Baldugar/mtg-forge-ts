@@ -1,0 +1,23 @@
+{
+  "id": "living-tsunami-corpus-m682",
+  "description": "M6 corpus — Living Tsunami; in-hand parse.",
+  "seed": 63178,
+  "cards": {
+    "Living Tsunami": "Name:Living Tsunami\nManaCost:2 U U\nTypes:Creature Elemental\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you return a land you control to its owner's hand.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Return<1/Land>\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice Living Tsunami unless you return a land you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Living Tsunami"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

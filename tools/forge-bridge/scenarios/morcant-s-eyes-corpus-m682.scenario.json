@@ -1,0 +1,23 @@
+{
+  "id": "morcant-s-eyes-corpus-m682",
+  "description": "M6 corpus — Morcant's Eyes; in-hand parse.",
+  "seed": 63431,
+  "cards": {
+    "Morcant's Eyes": "Name:Morcant's Eyes\nManaCost:1 G\nTypes:Kindred Enchantment Elf\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ Token | Cost$ 4 G G Sac<1/CARDNAME/this enchantment> | TokenAmount$ X | TokenScript$ bg_2_2_elf | SorcerySpeed$ True | SpellDescription$ Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard. Activate only as a sorcery.\nSVar:X:Count$ValidGraveyard Elf.YouOwn\nDeckHas:Ability$Surveil|Sacrifice|Graveyard|Token\nOracle:At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\\n{4}{G}{G}, Sacrifice this enchantment: Create X 2/2 black and green Elf creature tokens, where X is the number of Elf cards in your graveyard. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morcant's Eyes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

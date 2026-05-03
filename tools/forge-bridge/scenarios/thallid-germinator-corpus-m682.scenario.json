@@ -1,0 +1,23 @@
+{
+  "id": "thallid-germinator-corpus-m682",
+  "description": "M6 corpus — Thallid Germinator; in-hand parse.",
+  "seed": 64779,
+  "cards": {
+    "Thallid Germinator": "Name:Thallid Germinator\nManaCost:2 G\nTypes:Creature Fungus\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a spore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SPORE | CounterNum$ 1 | SpellDescription$ Put a spore counter on CARDNAME.\nA:AB$ Token | Cost$ SubCounter<3/SPORE> | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nA:AB$ Pump | Cost$ Sac<1/Saproling> | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Target creature gets +1/+1 until end of turn.\nDeckHints:Type$Fungus\nDeckHas:Ability$Counters|Token\nOracle:At the beginning of your upkeep, put a spore counter on Thallid Germinator.\\nRemove three spore counters from Thallid Germinator: Create a 1/1 green Saproling creature token.\\nSacrifice a Saproling: Target creature gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thallid Germinator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

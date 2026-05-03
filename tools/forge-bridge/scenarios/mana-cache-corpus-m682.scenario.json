@@ -1,0 +1,23 @@
+{
+  "id": "mana-cache-corpus-m682",
+  "description": "M6 corpus — Mana Cache; in-hand parse.",
+  "seed": 63262,
+  "cards": {
+    "Mana Cache": "Name:Mana Cache\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | Execute$ TrigCounters | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's end step, put a charge counter on CARDNAME for each untapped land that player controls.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ X\nSVar:X:Count$Valid Land.ActivePlayerCtrl+untapped\nA:AB$ Mana | Cost$ SubCounter<1/CHARGE> | Produced$ C | Activator$ Player | PlayerTurn$ True | ActivationPhases$ Upkeep->Main2 | SpellDescription$ Add {C}. Any player may activate this ability but only during their turn before the end step.\nAI:RemoveDeck:All\nOracle:At the beginning of each player's end step, put a charge counter on Mana Cache for each untapped land that player controls.\\nRemove a charge counter from Mana Cache: Add {C}. Any player may activate this ability but only during their turn before the end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Cache"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

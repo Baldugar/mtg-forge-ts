@@ -1,0 +1,23 @@
+{
+  "id": "craig-boone-novac-guard-corpus-m682",
+  "description": "M6 corpus — Craig Boone, Novac Guard; in-hand parse.",
+  "seed": 61853,
+  "cards": {
+    "Craig Boone, Novac Guard": "Name:Craig Boone, Novac Guard\nManaCost:1 R W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nK:Reach\nK:Lifelink\nT:Mode$ AttackersDeclared | Execute$ TrigPutCounter | ValidAttackers$ Creature | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ One for My Baby — Whenever you attack with two or more creatures, put two quest counters on CARDNAME. When you do, NICKNAME deals damage equal to the number of quest counters on it to up to one target creature unless that creature's controller has NICKNAME deal that much damage to them.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ QUEST | CounterNum$ 2 | RememberPut$ True | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | Execute$ TrigDealDamage | SpellDescription$ When you do, NICKNAME deals damage equal to the number of quest counters on it to up to one target creature unless that creature's controller has NICKNAME deal that much damage to them.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ X | UnlessCost$ DamageYou<X> | UnlessPayer$ TargetedController\nSVar:X:Count$CardCounters.QUEST\nDeckHas:Ability$LifeGain|Counters\nOracle:Reach, lifelink\\nOne for My Baby — Whenever you attack with two or more creatures, put two quest counters on Craig Boone, Novac Guard. When you do, Craig Boone deals damage equal to the number of quest counters on it to up to one target creature unless that creature's controller has Craig Boone deal that much damage to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Craig Boone, Novac Guard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

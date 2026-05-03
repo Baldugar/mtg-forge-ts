@@ -1,0 +1,23 @@
+{
+  "id": "scroll-of-avacyn-corpus-m682",
+  "description": "M6 corpus — Scroll of Avacyn; in-hand parse.",
+  "seed": 64237,
+  "cards": {
+    "Scroll of Avacyn": "Name:Scroll of Avacyn\nManaCost:1\nTypes:Artifact\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | NumCards$ 1 | SubAbility$ BlessedLife | SpellDescription$ Draw a card. If you control an Angel, you gain 5 life.\nSVar:BlessedLife:DB$ GainLife | Defined$ You | ConditionPresent$ Angel.YouCtrl | ConditionCompare$ GE1 | LifeAmount$ 5 | ConditionDescription$ If you control an Angel,\nAI:RemoveDeck:Random\nOracle:{1}, Sacrifice Scroll of Avacyn: Draw a card. If you control an Angel, you gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scroll of Avacyn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

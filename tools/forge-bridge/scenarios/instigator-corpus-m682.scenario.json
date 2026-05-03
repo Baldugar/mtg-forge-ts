@@ -1,0 +1,23 @@
+{
+  "id": "instigator-corpus-m682",
+  "description": "M6 corpus — Instigator; in-hand parse.",
+  "seed": 62887,
+  "cards": {
+    "Instigator": "Name:Instigator\nManaCost:1 B\nTypes:Creature Human Spellshaper\nPT:1/1\nA:AB$ Effect | Cost$ 1 B B T Discard<1/Card> | ValidTgts$ Player | StaticAbilities$ AttackThisTurn | RememberObjects$ Targeted | SpellDescription$ Creatures target player controls attack this turn if able.\nSVar:AttackThisTurn:Mode$ MustAttack | ValidCreature$ Creature.RememberedPlayerCtrl | Description$ Creatures targeted player controls attack this turn if able.\nAI:RemoveDeck:All\nOracle:{1}{B}{B}, {T}, Discard a card: Creatures target player controls attack this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Instigator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

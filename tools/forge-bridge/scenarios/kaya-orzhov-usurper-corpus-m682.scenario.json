@@ -1,0 +1,23 @@
+{
+  "id": "kaya-orzhov-usurper-corpus-m682",
+  "description": "M6 corpus — Kaya, Orzhov Usurper; in-hand parse.",
+  "seed": 63004,
+  "cards": {
+    "Kaya, Orzhov Usurper": "Name:Kaya, Orzhov Usurper\nManaCost:1 W B\nTypes:Legendary Planeswalker Kaya\nLoyalty:3\nA:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 2 | TargetsWithSameController$ True | ValidTgts$ Card | TgtPrompt$ Select target card from a graveyard | Planeswalker$ True | SubAbility$ DBGainLife | RememberChanged$ True | SpellDescription$ Exile up to two target cards from a single graveyard. You gain 2 life if at least one creature card was exiled this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Choose target nonland permanent with mana value 1 or less | ValidTgts$ Permanent.nonLand+cmcLE1 | SpellDescription$ Exile target nonland permanent with mana value 1 or less.\nA:AB$ DealDamage | Cost$ SubCounter<5/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player | RememberTargets$ True | NumDmg$ X | SubAbility$ DBYouGainLife | SpellDescription$ CARDNAME deals damage to target player equal to the number of cards that player owns in exile and you gain that much life.\nSVar:DBYouGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ValidExile Card.RememberedPlayerOwn\nDeckHas:Ability$LifeGain\nOracle:[+1]: Exile up to two target cards from a single graveyard. You gain 2 life if at least one creature card was exiled this way.\\n[-1]: Exile target nonland permanent with mana value 1 or less.\\n[-5]: Kaya, Orzhov Usurper deals damage to target player equal to the number of cards that player owns in exile and you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaya, Orzhov Usurper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

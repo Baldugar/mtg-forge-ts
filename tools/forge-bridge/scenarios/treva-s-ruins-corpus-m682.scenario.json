@@ -1,0 +1,23 @@
+{
+  "id": "treva-s-ruins-corpus-m682",
+  "description": "M6 corpus — Treva's Ruins; in-hand parse.",
+  "seed": 64962,
+  "cards": {
+    "Treva's Ruins": "Name:Treva's Ruins\nManaCost:no cost\nTypes:Land Lair\nA:AB$ Mana | Cost$ T | Produced$ Combo G W U | SpellDescription$ Add {G}, {W}, or {U}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Land.nonLair/non-Lair land> | UnlessPayer$ You\nSVar:NeedsToPlay:Land.nonLair+YouCtrl\nOracle:When Treva's Ruins enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\\n{T}: Add {G}, {W}, or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treva's Ruins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

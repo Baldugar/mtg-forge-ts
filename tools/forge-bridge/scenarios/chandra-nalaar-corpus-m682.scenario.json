@@ -1,0 +1,23 @@
+{
+  "id": "chandra-nalaar-corpus-m682",
+  "description": "M6 corpus — Chandra Nalaar; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Chandra Nalaar": "Name:Chandra Nalaar\nManaCost:3 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:6\nA:AB$ DealDamage | Cost$ AddCounter<1/LOYALTY> | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1 | Planeswalker$ True | SpellDescription$ CARDNAME deals 1 damage to target player or planeswalker.\nA:AB$ DealDamage | Cost$ SubCounter<X/LOYALTY> | ValidTgts$ Creature | NumDmg$ X | Planeswalker$ True | SpellDescription$ CARDNAME deals X damage to target creature.\nA:AB$ DealDamage | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select a player or planeswalker | NumDmg$ 10 | SubAbility$ DmgAll | DamageMap$ True | SpellDescription$ CARDNAME deals 10 damage to target player or planeswalker and each creature that player or that planeswalker's controller controls.\nSVar:DmgAll:DB$ DamageAll | NumDmg$ 10 | ValidCards$ Creature.ControlledBy TargetedOrController | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:X:Count$xPaid\nOracle:[+1]: Chandra Nalaar deals 1 damage to target player or planeswalker.\\n[-X]: Chandra Nalaar deals X damage to target creature.\\n[-8]: Chandra Nalaar deals 10 damage to target player or planeswalker and each creature that player or that planeswalker's controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra Nalaar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

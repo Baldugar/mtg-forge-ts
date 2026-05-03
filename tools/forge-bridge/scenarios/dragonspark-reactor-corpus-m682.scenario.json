@@ -1,0 +1,23 @@
+{
+  "id": "dragonspark-reactor-corpus-m682",
+  "description": "M6 corpus — Dragonspark Reactor; in-hand parse.",
+  "seed": 62076,
+  "cards": {
+    "Dragonspark Reactor": "Name:Dragonspark Reactor\nManaCost:1 R\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Artifact.Other+YouCtrl | Destination$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever CARDNAME or another artifact you control enters, put a charge counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ DealDamage | Cost$ 4 Sac<1/CARDNAME> | ValidTgts$ Player | NumDmg$ X | SubAbility$ DBDamage | SpellDescription$ It deals damage equal to the number of charge counters on it to target player and that much damage to up to one target creature.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumDmg$ X\nSVar:X:Count$CardCounters.CHARGE\nSVar:BuffedBy:Artifact\nDeckHas:Ability$Counters\nDeckNeeds:Type$Artifact\nOracle:Whenever Dragonspark Reactor or another artifact you control enters, put a charge counter on Dragonspark Reactor.\\n{4}, Sacrifice Dragonspark Reactor: It deals damage equal to the number of charge counters on it to target player and that much damage to up to one target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonspark Reactor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

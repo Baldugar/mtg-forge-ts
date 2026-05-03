@@ -1,0 +1,23 @@
+{
+  "id": "myr-battlesphere-corpus-m682",
+  "description": "M6 corpus — Myr Battlesphere; in-hand parse.",
+  "seed": 63480,
+  "cards": {
+    "Myr Battlesphere": "Name:Myr Battlesphere\nManaCost:7\nTypes:Artifact Creature Myr Construct\nPT:4/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create four 1/1 colorless Myr artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 4 | TokenScript$ c_1_1_a_myr | TokenOwner$ You\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may tap X untapped Myr you control. If you do, CARDNAME gets +X/+0 until end of turn and deals X damage to the player or planeswalker it's attacking.\nSVar:TrigPump:AB$ Pump | Cost$ tapXType<X/Myr> | Defined$ Self | NumAtt$ +X | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | NumDmg$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nOracle:When Myr Battlesphere enters, create four 1/1 colorless Myr artifact creature tokens.\\nWhenever Myr Battlesphere attacks, you may tap X untapped Myr you control. If you do, Myr Battlesphere gets +X/+0 until end of turn and deals X damage to the player or planeswalker it's attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Battlesphere"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

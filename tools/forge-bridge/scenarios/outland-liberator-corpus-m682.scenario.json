@@ -1,0 +1,23 @@
+{
+  "id": "outland-liberator-corpus-m682",
+  "description": "M6 corpus — Outland Liberator; in-hand parse.",
+  "seed": 63671,
+  "cards": {
+    "Outland Liberator": "Name:Outland Liberator\nManaCost:1 G\nTypes:Creature Human Werewolf\nPT:2/2\nA:AB$ Destroy | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nK:Daybound\nAlternateMode:DoubleFaced\nOracle:{1}, Sacrifice Outland Liberator: Destroy target artifact or enchantment.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Frenzied Trapbreaker\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:3/3\nA:AB$ Destroy | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME attacks, destroy target artifact or enchantment defending player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredDefendingPlayer,Enchantment.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target artifact or enchantment defending player controls\nK:Nightbound\nSVar:HasAttackEffect:TRUE\nOracle:{1}, Sacrifice Frenzied Trapbreaker: Destroy target artifact or enchantment.\\nWhenever Frenzied Trapbreaker attacks, destroy target artifact or enchantment defending player controls.\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Outland Liberator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sugar-coat-corpus-m682",
+  "description": "M6 corpus — Sugar Coat; in-hand parse.",
+  "seed": 64641,
+  "cards": {
+    "Sugar Coat": "Name:Sugar Coat\nManaCost:2 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature,Food:creature or Food\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Permanent.EnchantedBy | SetColor$ Colorless | AddType$ Food & Artifact | RemoveCardTypes$ True | RemoveAllAbilities$ True | AddAbility$ FoodSac | Description$ Enchanted permanent is a colorless Food artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life\" and loses all other card types and abilities.\nSVar:FoodSac:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this artifact> | Defined$ You | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nOracle:Flash\\nEnchant creature or Food\\nEnchanted permanent is a colorless Food artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life\" and loses all other card types and abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sugar Coat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

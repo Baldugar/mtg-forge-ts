@@ -1,0 +1,23 @@
+{
+  "id": "excogitator-sphinx-corpus-m682",
+  "description": "M6 corpus — Excogitator Sphinx; in-hand parse.",
+  "seed": 62251,
+  "cards": {
+    "Excogitator Sphinx": "Name:Excogitator Sphinx\nManaCost:2 U U\nTypes:Creature Sphinx Detective\nPT:4/4\nK:Flying\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigInvestigate | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, investigate.\nSVar:TrigInvestigate:DB$ Investigate\nA:AB$ Seek | Cost$ 1 Sac<1/Clue> | Type$ Instant,Sorcery | SpellDescription$ Seek an instant or sorcery card.\nDeckHas:Ability$Investigate|Token|Sacrifice & Type$Artifact|Clue\nDeckHints:Type$Clue\nDeckNeeds:Type$Sorcery|Instant\nOracle:Flying\\nWhenever one or more creatures you control deal combat damage to a player, investigate.\\n{1}, Sacrifice a Clue: Seek an instant or sorcery card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Excogitator Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

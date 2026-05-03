@@ -1,0 +1,23 @@
+{
+  "id": "epiphany-storm-corpus-m682",
+  "description": "M6 corpus — Epiphany Storm; in-hand parse.",
+  "seed": 62213,
+  "cards": {
+    "Epiphany Storm": "Name:Epiphany Storm\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ UCDraw | Description$ Enchanted creature has \"{R}, {T}, Discard a card: Draw a card.\"\nSVar:UCDraw:AB$ Draw | Cost$ R T Discard<1/Card> | NumCards$ 1 | SpellDescription$ Draw a card.\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature has \"{R}, {T}, Discard a card: Draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Epiphany Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sample-collector-corpus-m682",
+  "description": "M6 corpus — Sample Collector; in-hand parse.",
+  "seed": 64152,
+  "cards": {
+    "Sample Collector": "Name:Sample Collector\nManaCost:2 G\nTypes:Creature Troll Detective\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever CARDNAME attacks, you may collect evidence 3. When you do, put a +1/+1 counter on target creature you control. (To collect evidence 3, exile cards with total mana value 3 or greater from your graveyard.)\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ CollectEvidence<3> | Execute$ TrigCounter | SpellDescription$ When you do, put a +1/+1 counter on target creature you control.\nSVar:TrigCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nDeckHints:Ability$Graveyard|Mill|Discard|Dredge\nOracle:Whenever Sample Collector attacks, you may collect evidence 3. When you do, put a +1/+1 counter on target creature you control. (To collect evidence 3, exile cards with total mana value 3 or greater from your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sample Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

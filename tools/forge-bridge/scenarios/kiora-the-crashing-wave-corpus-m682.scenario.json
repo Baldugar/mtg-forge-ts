@@ -1,0 +1,23 @@
+{
+  "id": "kiora-the-crashing-wave-corpus-m682",
+  "description": "M6 corpus — Kiora, the Crashing Wave; in-hand parse.",
+  "seed": 63033,
+  "cards": {
+    "Kiora, the Crashing Wave": "Name:Kiora, the Crashing Wave\nManaCost:2 G U\nTypes:Legendary Planeswalker Kiora\nLoyalty:2\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | ValidTgts$ Permanent.OppCtrl | TgtPrompt$ Select target permanent an opponent controls | Planeswalker$ True | KW$ Prevent all damage that would be dealt to and dealt by CARDNAME. | IsCurse$ True | Duration$ UntilYourNextTurn | SpellDescription$ Until your next turn, prevent all damage that would be dealt to and dealt by target permanent an opponent controls.\nA:AB$ Draw | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | SubAbility$ DBEffect | SpellDescription$ Draw a card. You may play an additional land this turn.\nSVar:DBEffect:DB$ Effect | Name$ Kiora, the Crashing Wave's Effect — Exploration | StaticAbilities$ Exploration\nSVar:Exploration:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land this turn.\nA:AB$ Effect | Cost$ SubCounter<5/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Kiora, the Crashing Wave | Triggers$ EOTTrig | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"At the beginning of your end step, create a 9/9 blue Kraken creature token.\"\nSVar:EOTTrig:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ KioraToken | TriggerDescription$ At the beginning of your end step, create a 9/9 blue Kraken creature token.\nSVar:KioraToken:DB$ Token | TokenScript$ u_9_9_kraken | TokenOwner$ You\nOracle:[+1]: Until your next turn, prevent all damage that would be dealt to and dealt by target permanent an opponent controls.\\n[-1]: Draw a card. You may play an additional land this turn.\\n[-5]: You get an emblem with \"At the beginning of your end step, create a 9/9 blue Kraken creature token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kiora, the Crashing Wave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

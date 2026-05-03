@@ -1,0 +1,23 @@
+{
+  "id": "a-sprouting-goblin-corpus-m682",
+  "description": "M6 corpus — A-Sprouting Goblin; in-hand parse.",
+  "seed": 64120,
+  "cards": {
+    "A-Sprouting Goblin": "Name:A-Sprouting Goblin\nManaCost:1 R\nTypes:Creature Goblin Druid\nPT:2/2\nK:Kicker:G\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, if it was kicked, search your library for a land card with a basic land type, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.hasABasicLandType\nA:AB$ Draw | Cost$ T Sac<1/Land> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nDeckHints:Color$Green\nOracle:Kicker {G}\\nWhen Sprouting Goblin enters, if it was kicked, search your library for a land card with a basic land type, reveal it, put it into your hand, then shuffle.\\n{T}, Sacrifice a land: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Sprouting Goblin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deviant-skytech-corpus-m682",
+  "description": "M6 corpus — Deviant Skytech; in-hand parse.",
+  "seed": 61997,
+  "cards": {
+    "Deviant Skytech": "Name:Deviant Skytech\nManaCost:2 U\nTypes:Enchantment\nK:Start your engines\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this enchantment enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_a_thopter_flying\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddAbility$ ABToken | Description$ Max speed — Sacrifice this enchantment: Create two 1/1 colorless Thopter artifact creature tokens with flying.\nSVar:ABToken:AB$ Token | Secondary$ True | PrecostDesc$ Max speed — | Cost$ Sac<1/CARDNAME/this enchantment> | TokenAmount$ 2 | TokenScript$ c_1_1_a_thopter_flying | SpellDescription$ Create two 1/1 colorless Thopter artifact creature tokens with flying.\nOracle:Start your engines!\\nWhen this enchantment enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\\nMax speed — Sacrifice this enchantment: Create two 1/1 colorless Thopter artifact creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deviant Skytech"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

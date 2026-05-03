@@ -1,0 +1,23 @@
+{
+  "id": "void-maw-corpus-m682",
+  "description": "M6 corpus — Void Maw; in-hand parse.",
+  "seed": 65145,
+  "cards": {
+    "Void Maw": "Name:Void Maw\nManaCost:4 B B\nTypes:Creature Horror\nPT:4/5\nK:Trample\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.Other | ReplaceWith$ Exile | Description$ If another creature would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nA:AB$ Pump | Cost$ ExiledMoveToGrave<1/Card.ExiledWithSource/card exiled with CARDNAME> | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ CARDNAME gets +2/+2 until end of turn.\nOracle:Trample\\nIf another creature would die, exile it instead.\\nPut a card exiled with Void Maw into its owner's graveyard: Void Maw gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Void Maw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

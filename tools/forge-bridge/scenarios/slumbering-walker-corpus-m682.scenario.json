@@ -1,0 +1,23 @@
+{
+  "id": "slumbering-walker-corpus-m682",
+  "description": "M6 corpus — Slumbering Walker; in-hand parse.",
+  "seed": 64451,
+  "cards": {
+    "Slumbering Walker": "Name:Slumbering Walker\nManaCost:3 W W\nTypes:Creature Giant Warrior\nPT:4/7\nK:etbCounter:M1M1:2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of your end step, you may remove a counter from this creature. When you do, return target creature card with power 2 or less from your graveyard to the battlefield.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ RemoveAnyCounter<1/Any/CARDNAME/this creature> | Execute$ TrigChangeZone | SpellDescription$ When you do, return target creature card with power 2 or less from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+powerLE2 | TgtPrompt$ Choose target creature card with power 2 or less in your graveyard\nOracle:This creature enters with two -1/-1 counters on it.\\nAt the beginning of your end step, you may remove a counter from this creature. When you do, return target creature card with power 2 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slumbering Walker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kithkeeper-corpus-m682",
+  "description": "M6 corpus — Kithkeeper; in-hand parse.",
+  "seed": 63038,
+  "cards": {
+    "Kithkeeper": "Name:Kithkeeper\nManaCost:6 W\nTypes:Creature Elemental\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Vivid — When this creature enters, create X 1/1 green and white Kithkin creature tokens, where X is the number of colors among permanents you control.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ gw_1_1_kithkin\nA:AB$ Pump | Cost$ tapXType<3/Creature> | Defined$ Self | NumAtt$ +3 | KW$ Flying | SpellDescription$ This creature gets +3/+0 and gains flying until end of turn.\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nDeckHints:Type$Kithkin\nOracle:Vivid — When this creature enters, create X 1/1 green and white Kithkin creature tokens, where X is the number of colors among permanents you control.\\nTap three untapped creatures you control: This creature gets +3/+0 and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kithkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flight-spellbomb-corpus-m682",
+  "description": "M6 corpus — Flight Spellbomb; in-hand parse.",
+  "seed": 62364,
+  "cards": {
+    "Flight Spellbomb": "Name:Flight Spellbomb\nManaCost:1\nTypes:Artifact\nA:AB$ Pump | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Creature | KW$ Flying | SpellDescription$ Target creature gains flying until end of turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, you may pay {U}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ U | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:{T}, Sacrifice Flight Spellbomb: Target creature gains flying until end of turn.\\nWhen Flight Spellbomb is put into a graveyard from the battlefield, you may pay {U}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flight Spellbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

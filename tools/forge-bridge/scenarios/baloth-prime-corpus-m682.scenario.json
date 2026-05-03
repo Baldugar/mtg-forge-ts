@@ -1,0 +1,23 @@
+{
+  "id": "baloth-prime-corpus-m682",
+  "description": "M6 corpus — Baloth Prime; in-hand parse.",
+  "seed": 61519,
+  "cards": {
+    "Baloth Prime": "Name:Baloth Prime\nManaCost:3 G\nTypes:Creature Beast\nPT:10/10\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ This creature enters tapped with six stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ STUN | CounterNum$ 6\nT:Mode$ Sacrificed | ValidCard$ Land | Execute$ TrigToken | TriggerZones$ Battlefield | ValidPlayer$ You | TriggerDescription$ Whenever you sacrifice a land, create a tapped 4/4 green Beast creature token and untap this creature.\nSVar:TrigToken:DB$ Token | TokenScript$ g_4_4_beast | TokenTapped$ True | SubAbility$ DBUntap | TokenOwner$ You\nSVar:DBUntap:DB$ Untap\nA:AB$ GainLife | Cost$ 4 Sac<1/Land> | Defined$ You | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nDeckHas:Ability$Counters|Token|LifeGain\nOracle:This creature enters tapped with six stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\\nWhenever you sacrifice a land, create a tapped 4/4 green Beast creature token and untap this creature.\\n{4}, Sacrifice a land: You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baloth Prime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

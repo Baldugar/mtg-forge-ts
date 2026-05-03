@@ -1,0 +1,23 @@
+{
+  "id": "supply-drop-corpus-m682",
+  "description": "M6 corpus — Supply Drop; in-hand parse.",
+  "seed": 64666,
+  "cards": {
+    "Supply Drop": "Name:Supply Drop\nManaCost:3\nTypes:Artifact\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature you control gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +2 | NumDef$ +2\nA:AB$ Draw | Cost$ 4 T Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Flash\\nWhen Supply Drop enters, target creature you control gets +2/+2 until end of turn.\\n{4}, {T}, Sacrifice Supply Drop: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Supply Drop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

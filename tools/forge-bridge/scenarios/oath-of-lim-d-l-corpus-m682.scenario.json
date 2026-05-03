@@ -1,0 +1,23 @@
+{
+  "id": "oath-of-lim-d-l-corpus-m682",
+  "description": "M6 corpus — Oath of Lim-Dûl; in-hand parse.",
+  "seed": 63599,
+  "cards": {
+    "Oath of Lim-Dûl": "Name:Oath of Lim-Dûl\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLimDulSac | TriggerDescription$ Whenever you lose life, for each 1 life you lost, sacrifice a permanent other than CARDNAME unless you discard a card. (Damage dealt to you causes you to lose life.)\nSVar:TrigLimDulSac:DB$ Repeat | MaxRepeat$ X | RepeatSubAbility$ DBSac | Mandatory$ True\nSVar:DBSac:DB$ Sacrifice | SacValid$ Permanent.Other | Amount$ 1 | UnlessCost$ Discard<1/Card> | UnlessPayer$ You\nA:AB$ Draw | Cost$ B B | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:X:TriggerCount$LifeAmount\nAI:RemoveDeck:All\nOracle:Whenever you lose life, for each 1 life you lost, sacrifice a permanent other than Oath of Lim-Dûl unless you discard a card. (Damage dealt to you causes you to lose life.)\\n{B}{B}: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oath of Lim-Dûl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

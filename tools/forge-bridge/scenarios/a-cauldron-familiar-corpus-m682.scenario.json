@@ -1,0 +1,23 @@
+{
+  "id": "a-cauldron-familiar-corpus-m682",
+  "description": "M6 corpus — A-Cauldron Familiar; in-hand parse.",
+  "seed": 64090,
+  "cards": {
+    "A-Cauldron Familiar": "Name:A-Cauldron Familiar\nManaCost:B\nTypes:Creature Cat\nPT:1/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nA:AB$ ChangeZone | Cost$ Sac<1/Food> | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to the battlefield.\nSVar:DiscardMe:2\nSVar:SacMe:1\nSVar:AIPreference:SacCost$Card.Food\nDeckHints:Ability$Food\nOracle:Cauldron Familiar can't block.\\nWhen Cauldron Familiar enters, each opponent loses 1 life and you gain 1 life.\\nSacrifice a Food: Return Cauldron Familiar from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Cauldron Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

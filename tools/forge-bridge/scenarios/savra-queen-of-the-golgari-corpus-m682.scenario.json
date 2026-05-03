@@ -1,0 +1,23 @@
+{
+  "id": "savra-queen-of-the-golgari-corpus-m682",
+  "description": "M6 corpus — Savra, Queen of the Golgari; in-hand parse.",
+  "seed": 64195,
+  "cards": {
+    "Savra, Queen of the Golgari": "Name:Savra, Queen of the Golgari\nManaCost:2 B G\nTypes:Legendary Creature Elf Shaman\nPT:2/2\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Creature.Black | TriggerZones$ Battlefield | Execute$ TrigSacrifice | OptionalDecider$ You | TriggerDescription$ Whenever you sacrifice a black creature, you may pay 2 life. If you do, each other player sacrifices a creature.\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Creature.Green | TriggerZones$ Battlefield | Execute$ TrigGainLife | OptionalDecider$ You | TriggerDescription$ Whenever you sacrifice a green creature, you may gain 2 life.\nSVar:TrigSacrifice:AB$ Sacrifice | Cost$ PayLife<2> | Defined$ Player.Other | SacValid$ Creature\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nAI:RemoveDeck:Random\nOracle:Whenever you sacrifice a black creature, you may pay 2 life. If you do, each other player sacrifices a creature.\\nWhenever you sacrifice a green creature, you may gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savra, Queen of the Golgari"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ill-timed-explosion-corpus-m682",
+  "description": "M6 corpus — Ill-Timed Explosion; in-hand parse.",
+  "seed": 62835,
+  "cards": {
+    "Ill-Timed Explosion": "Name:Ill-Timed Explosion\nManaCost:2 U R\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBImmediateTrig | SpellDescription$ Draw two cards. Then you may discard two cards. When you do, CARDNAME deals X damage to each creature, where X is the highest mana value among the discarded cards.\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | UnlessCost$ Discard<2/Card> | UnlessPayer$ You | RememberDiscarded$ True | RememberObjects$ Remembered | SubAbility$ DBCleanup | UnlessSwitched$ True | Execute$ TrigDamageAll | TriggerDescription$ When you do, CARDNAME deals X damage to each creature, where X is the highest mana value among the discarded cards.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature | NumDmg$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$GreatestCardManaCost\nDeckHas:Ability$Counters|Discard\nOracle:Draw two cards. Then you may discard two cards. When you do, Ill-Timed Explosion deals X damage to each creature, where X is the highest mana value among the discarded cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ill-Timed Explosion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

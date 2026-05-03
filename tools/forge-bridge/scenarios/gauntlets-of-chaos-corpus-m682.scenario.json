@@ -1,0 +1,23 @@
+{
+  "id": "gauntlets-of-chaos-corpus-m682",
+  "description": "M6 corpus — Gauntlets of Chaos; in-hand parse.",
+  "seed": 62475,
+  "cards": {
+    "Gauntlets of Chaos": "Name:Gauntlets of Chaos\nManaCost:5\nTypes:Artifact\nA:AB$ Pump | Cost$ 5 Sac<1/CARDNAME> | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl,Land.YouCtrl | TgtPrompt$ target artifact, creature, or land you control | StackDescription$ None | SubAbility$ DBExchange | SpellDescription$ Exchange control of target artifact, creature, or land you control and target permanent an opponent controls that shares one of those types with it. If those permanents are exchanged this way, destroy all Auras attached to them.\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Permanent.OppCtrl | TgtPrompt$ Select target permanent an opponent controls that shares one of those types | TargetsWithSharedCardType$ ParentTarget | TargetsWithSharedTypes$ Artifact,Creature,Land | RememberExchanged$ True | SubAbility$ DBDestroyAll\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Aura.AttachedTo Card.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:{5}, Sacrifice Gauntlets of Chaos: Exchange control of target artifact, creature, or land you control and target permanent an opponent controls that shares one of those types with it. If those permanents are exchanged this way, destroy all Auras attached to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gauntlets of Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "psychic-frog-corpus-m682",
+  "description": "M6 corpus — Psychic Frog; in-hand parse.",
+  "seed": 63846,
+  "cards": {
+    "Psychic Frog": "Name:Psychic Frog\nManaCost:U B\nTypes:Creature Frog\nPT:1/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or planeswalker, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ PutCounter | Cost$ Discard<1/Card> | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ PsychicFrog | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nA:AB$ Pump | Cost$ ExileFromGrave<3/Card> | Defined$ Self | KW$ Flying | AILogic$ PsychicFrog | SpellDescription$ CARDNAME gains flying until end of turn.\nDeckHas:Ability$Counters|Graveyard\nSVar:AIPreference:DiscardCost$Card\nOracle:Whenever Psychic Frog deals combat damage to a player or planeswalker, draw a card.\\nDiscard a card: Put a +1/+1 counter on Psychic Frog.\\nExile three cards from your graveyard: Psychic Frog gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Frog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

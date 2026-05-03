@@ -1,0 +1,23 @@
+{
+  "id": "tangletrove-kelp-corpus-m682",
+  "description": "M6 corpus — Tangletrove Kelp; in-hand parse.",
+  "seed": 64717,
+  "cards": {
+    "Tangletrove Kelp": "Name:Tangletrove Kelp\nManaCost:5 U U\nTypes:Artifact Creature Clue Plant\nPT:6/6\nK:Ward:2\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigAnimateAll | TriggerDescription$ At the beginning of each combat, other Clues you control become 6/6 Plant creatures in addition to their other types until end of turn.\nSVar:TrigAnimateAll:DB$ AnimateAll | ValidCards$ Clue.Other+YouCtrl | Power$ 6 | Toughness$ 6 | Types$ Creature,Plant\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Clue\nOracle:Ward {2}\\nAt the beginning of each combat, other Clues you control become 6/6 Plant creatures in addition to their other types until end of turn.\\n{2}, Sacrifice Tangletrove Kelp: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tangletrove Kelp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

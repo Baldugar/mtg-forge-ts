@@ -1,0 +1,23 @@
+{
+  "id": "formidable-speaker-corpus-m682",
+  "description": "M6 corpus — Formidable Speaker; in-hand parse.",
+  "seed": 62407,
+  "cards": {
+    "Formidable Speaker": "Name:Formidable Speaker\nManaCost:2 G\nTypes:Creature Elf Druid\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When this creature enters, you may discard a card. If you do, search your library for a creature card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:AB$ ChangeZone | Cost$ Discard<1/Card> | Origin$ Library | Destination$ Hand | ChangeType$ Creature | ChangeNum$ 1\nA:AB$ Untap | Cost$ 1 T | ValidTgts$ Permanent.Other | TgtPrompt$ Select another target permanent. | SpellDescription$ Untap another target permanent.\nOracle:When this creature enters, you may discard a card. If you do, search your library for a creature card, reveal it, put it into your hand, then shuffle.\\n{1}, {T}: Untap another target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Formidable Speaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "qiqirn-merchant-corpus-m682",
+  "description": "M6 corpus — Qiqirn Merchant; in-hand parse.",
+  "seed": 63872,
+  "cards": {
+    "Qiqirn Merchant": "Name:Qiqirn Merchant\nManaCost:2 U\nTypes:Creature Beast Citizen\nPT:1/4\nA:AB$ Draw | Cost$ 1 T | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nA:AB$ Draw | Cost$ 7 T Sac<1/CARDNAME> | NumCards$ 3 | ReduceCost$ X | SpellDescription$ Draw three cards. This ability costs {1} less to activate for each Town you control.\nSVar:X:Count$Valid Town.YouCtrl\nOracle:{1}, {T}: Draw a card, then discard a card.\\n{7}, {T}, Sacrifice this creature: Draw three cards. This ability costs {1} less to activate for each Town you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Qiqirn Merchant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

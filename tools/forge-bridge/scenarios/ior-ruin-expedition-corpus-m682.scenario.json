@@ -1,0 +1,23 @@
+{
+  "id": "ior-ruin-expedition-corpus-m682",
+  "description": "M6 corpus — Ior Ruin Expedition; in-hand parse.",
+  "seed": 62905,
+  "cards": {
+    "Ior Ruin Expedition": "Name:Ior Ruin Expedition\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nA:AB$ Draw | Cost$ SubCounter<3/QUEST> Sac<1/CARDNAME> | NumCards$ 2 | SpellDescription$ Draw two cards.\nSVar:MaxQuestEffect:3\nDeckHas:Ability$Counters\nOracle:Landfall — Whenever a land you control enters, you may put a quest counter on Ior Ruin Expedition.\\nRemove three quest counters from Ior Ruin Expedition and sacrifice it: Draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ior Ruin Expedition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

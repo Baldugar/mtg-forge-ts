@@ -1,0 +1,23 @@
+{
+  "id": "jeskai-elder-corpus-m682",
+  "description": "M6 corpus — Jeskai Elder; in-hand parse.",
+  "seed": 62954,
+  "cards": {
+    "Jeskai Elder": "Name:Jeskai Elder\nManaCost:1 U\nTypes:Creature Human Monk\nPT:1/2\nK:Prowess\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoot | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Cost$ Draw<1/You>\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhenever Jeskai Elder deals combat damage to a player, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeskai Elder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

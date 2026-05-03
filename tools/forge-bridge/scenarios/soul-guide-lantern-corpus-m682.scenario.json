@@ -1,0 +1,23 @@
+{
+  "id": "soul-guide-lantern-corpus-m682",
+  "description": "M6 corpus — Soul-Guide Lantern; in-hand parse.",
+  "seed": 64490,
+  "cards": {
+    "Soul-Guide Lantern": "Name:Soul-Guide Lantern\nManaCost:1\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, exile target card from a graveyard.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | TgtZone$ Graveyard\nA:AB$ ChangeZoneAll | Cost$ T Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.OppOwn | AILogic$ Curse | SpellDescription$ Exile each opponent's graveyard.\nA:AB$ Draw | Cost$ 1 T Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:When Soul-Guide Lantern enters, exile target card from a graveyard.\\n{T}, Sacrifice Soul-Guide Lantern: Exile each opponent's graveyard.\\n{1}, {T}, Sacrifice Soul-Guide Lantern: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul-Guide Lantern"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

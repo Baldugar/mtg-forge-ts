@@ -1,0 +1,23 @@
+{
+  "id": "extract-a-confession-corpus-m682",
+  "description": "M6 corpus — Extract a Confession; in-hand parse.",
+  "seed": 62261,
+  "cards": {
+    "Extract a Confession": "Name:Extract a Confession\nManaCost:1 B\nTypes:Sorcery\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ CollectEvidence<6> | Description$ As an additional cost to cast this spell, you may collect evidence 6. (Exile cards with total mana value 6 or greater from your graveyard.)\nA:SP$ Sacrifice | Defined$ Opponent | ConditionDefined$ Collected | ConditionPresent$ Card | ConditionCompare$ EQ0 | SacValid$ Creature | SubAbility$ EvidenceCollected | SpellDescription$ Each opponent sacrifices a creature.\nSVar:EvidenceCollected:DB$ RepeatEach | RepeatPlayers$ Opponent | ConditionDefined$ Collected | ConditionPresent$ Card | RepeatSubAbility$ DBChooseCard | SubAbility$ DBSac | SpellDescription$ If evidence was collected, instead each opponent sacrifices a creature with the greatest power among creatures they control.\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Creature.greatestPowerControlledByRemembered | ChoiceTitle$ Choose a creature you control with the greatest power | Mandatory$ True | RememberChosen$ True\nSVar:DBSac:DB$ SacrificeAll | ValidCards$ Card.IsRemembered | SubAbility$ DBCleanup | StackDescription$ Each opponent sacrifices a creature with the greatest power among creatures they control.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nDeckHints:Ability$Graveyard|Mill|Discard|Dredge\nDeckHas:Ability$Counters|Sacrifice|Surveil\nOracle:As an additional cost to cast this spell, you may collect evidence 6. (Exile cards with total mana value 6 or greater from your graveyard.)\\nEach opponent sacrifices a creature. If evidence was collected, instead each opponent sacrifices a creature with the greatest power among creatures they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extract a Confession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

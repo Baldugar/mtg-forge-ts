@@ -1,0 +1,23 @@
+{
+  "id": "network-terminal-corpus-m682",
+  "description": "M6 corpus — Network Terminal; in-hand parse.",
+  "seed": 63537,
+  "cards": {
+    "Network Terminal": "Name:Network Terminal\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Draw | Cost$ 1 T tapXType<1/Artifact.Other> | NumCards$ 1 | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nDeckHints:Type$Artifact\nDeckHas:Ability$Discard\nOracle:{T}: Add one mana of any color.\\n{1}, {T}, Tap another untapped artifact you control: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Network Terminal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

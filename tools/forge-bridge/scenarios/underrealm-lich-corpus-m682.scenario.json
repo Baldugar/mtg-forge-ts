@@ -1,0 +1,23 @@
+{
+  "id": "underrealm-lich-corpus-m682",
+  "description": "M6 corpus — Underrealm Lich; in-hand parse.",
+  "seed": 65023,
+  "cards": {
+    "Underrealm Lich": "Name:Underrealm Lich\nManaCost:3 B G\nTypes:Creature Zombie Elf Shaman\nPT:4/3\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ Dig | Description$ If you would draw a card, instead look at the top three cards of your library, then put one into your hand and the rest into your graveyard.\nSVar:Dig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone2$ Graveyard | NoReveal$ True\nA:AB$ Pump | Cost$ PayLife<4> | Defined$ Self | KW$ Indestructible | SubAbility$ DBTap | SpellDescription$ CARDNAME gains indestructible until end of turn. Tap it.\nSVar:DBTap:DB$ Tap | Defined$ Self\nOracle:If you would draw a card, instead look at the top three cards of your library, then put one into your hand and the rest into your graveyard.\\nPay 4 life: Underrealm Lich gains indestructible until end of turn. Tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underrealm Lich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

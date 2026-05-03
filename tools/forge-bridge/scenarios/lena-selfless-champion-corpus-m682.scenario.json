@@ -1,0 +1,23 @@
+{
+  "id": "lena-selfless-champion-corpus-m682",
+  "description": "M6 corpus — Lena, Selfless Champion; in-hand parse.",
+  "seed": 63126,
+  "cards": {
+    "Lena, Selfless Champion": "Name:Lena, Selfless Champion\nManaCost:4 W W\nTypes:Legendary Creature Human Knight\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 white Soldier creature token for each nontoken creature you control.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenAmount$ X | TokenScript$ w_1_1_soldier\nSVar:X:Count$Valid Creature.!token+YouCtrl\nA:AB$ PumpAll | Cost$ Sac<1/NICKNAME> | ValidCards$ Creature.YouCtrl+powerLTY | KW$ Indestructible | SpellDescription$ Creatures you control with power less than NICKNAME's power gain indestructible until end of turn.\nSVar:Y:Count$CardPower\nDeckHas:Ability$Token\nOracle:When Lena, Selfless Champion enters, create a 1/1 white Soldier creature token for each nontoken creature you control.\\nSacrifice Lena: Creatures you control with power less than Lena's power gain indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lena, Selfless Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

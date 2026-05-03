@@ -1,0 +1,23 @@
+{
+  "id": "oko-the-ringleader-corpus-m682",
+  "description": "M6 corpus — Oko, the Ringleader; in-hand parse.",
+  "seed": 63614,
+  "cards": {
+    "Oko, the Ringleader": "Name:Oko, the Ringleader\nManaCost:2 G U\nTypes:Legendary Planeswalker Oko\nLoyalty:3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigClone | TriggerDescription$ At the beginning of combat on your turn, CARDNAME becomes a copy of up to one target creature you control until end of turn, except he has hexproof.\nSVar:TrigClone:DB$ Clone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature you control | TargetMin$ 0 | TargetMax$ 1 | Duration$ UntilEndOfTurn | AddKeywords$ Hexproof\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumCards$ 2 | SubAbility$ DBDiscard | SpellDescription$ Draw two cards.\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | NumCards$ Count$CommittedCrimeThisTurn.1.2 | StackDescription$ SpellDescription | SpellDescription$ If you've committed a crime this turn, discard a card. Otherwise, discard two cards.\nA:AB$ Token | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ g_3_3_elk | SpellDescription$ Create a 3/3 green Elk creature token.\nA:AB$ CopyPermanent | Cost$ SubCounter<5/LOYALTY> | Planeswalker$ True | Ultimate$ True | Defined$ Valid Permanent.Other+YouCtrl+nonLand | StackDescription$ SpellDescription | SpellDescription$ For each other nonland permanent you control, create a token that's a copy of that permanent.\nDeckHas:Ability$Discard|Token & Type$Elk\nOracle:At the beginning of combat on your turn, Oko, the Ringleader becomes a copy of up to one target creature you control until end of turn, except he has hexproof.\\n[+1]: Draw two cards. If you've committed a crime this turn, discard a card. Otherwise, discard two cards.\\n[-1]: Create a 3/3 green Elk creature token.\\n[-5]: For each other nonland permanent you control, create a token that's a copy of that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oko, the Ringleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

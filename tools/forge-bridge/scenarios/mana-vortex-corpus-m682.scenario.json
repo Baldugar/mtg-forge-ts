@@ -1,0 +1,23 @@
+{
+  "id": "mana-vortex-corpus-m682",
+  "description": "M6 corpus — Mana Vortex; in-hand parse.",
+  "seed": 63263,
+  "cards": {
+    "Mana Vortex": "Name:Mana Vortex\nManaCost:1 U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When you cast this spell, counter it unless you sacrifice a land.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | UnlessCost$ Sac<1/Land> | UnlessPayer$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player sacrifices a land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land | Defined$ TriggeredPlayer | SacMessage$ land\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Land | PresentCompare$ EQ0 | Execute$ TrigSacSelf | TriggerDescription$ When there are no lands on the battlefield, sacrifice CARDNAME.\nSVar:TrigSacSelf:DB$ Sacrifice\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:When you cast this spell, counter it unless you sacrifice a land.\\nAt the beginning of each player's upkeep, that player sacrifices a land.\\nWhen there are no lands on the battlefield, sacrifice Mana Vortex.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mana Vortex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

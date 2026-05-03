@@ -1,0 +1,23 @@
+{
+  "id": "egon-god-of-death-corpus-m682",
+  "description": "M6 corpus — Egon, God of Death; in-hand parse.",
+  "seed": 62148,
+  "cards": {
+    "Egon, God of Death": "Name:Egon, God of Death\nManaCost:2 B\nTypes:Legendary Creature God\nPT:6/6\nK:Deathtouch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBSacSelf | TriggerDescription$ At the beginning of your upkeep, exile two cards from your graveyard. If you can't, sacrifice NICKNAME and draw a card.\nSVar:DBSacSelf:DB$ Sacrifice | UnlessCost$ Mandatory ExileFromGrave<2/Card> | UnlessPayer$ You | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nDeckHints:Ability$Discard|Graveyard\nAlternateMode:Modal\nOracle:Deathtouch\\nAt the beginning of your upkeep, exile two cards from your graveyard. If you can't, sacrifice Egon and draw a card.\n\nALTERNATE\n\nName:Throne of Death\nManaCost:B\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, mill a card.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 1\nA:AB$ Draw | Cost$ 2 B T ExileFromGrave<1/Creature/creature card> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Mill\nOracle:At the beginning of your upkeep, mill a card.\\n{2}{B}, {T}, Exile a creature card from your graveyard: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Egon, God of Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

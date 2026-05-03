@@ -1,0 +1,23 @@
+{
+  "id": "scrapwork-mutt-corpus-m682",
+  "description": "M6 corpus — Scrapwork Mutt; in-hand parse.",
+  "seed": 64232,
+  "cards": {
+    "Scrapwork Mutt": "Name:Scrapwork Mutt\nManaCost:2\nTypes:Artifact Creature Dog\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nK:Unearth:1 R\nDeckHas:Ability$Graveyard|Discard\nDeckHints:Color$Red\nOracle:When Scrapwork Mutt enters, you may discard a card. If you do, draw a card.\\nUnearth {1}{R} ({1}{R}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrapwork Mutt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "city-of-shadows-corpus-m682",
+  "description": "M6 corpus — City of Shadows; in-hand parse.",
+  "seed": 61753,
+  "cards": {
+    "City of Shadows": "Name:City of Shadows\nManaCost:no cost\nTypes:Land\nA:AB$ PutCounter | Cost$ T Exile<1/Creature> | CounterType$ STORAGE | CounterNum$ 1 | SpellDescription$ Put a storage counter on CARDNAME.\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ X | SpellDescription$ Add {C} for each storage counter on CARDNAME.\nSVar:X:Count$CardCounters.STORAGE\nAI:RemoveDeck:All\nOracle:{T}, Exile a creature you control: Put a storage counter on City of Shadows.\\n{T}: Add {C} for each storage counter on City of Shadows.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "City of Shadows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kotis-sibsig-champion-corpus-m682",
+  "description": "M6 corpus — Kotis, Sibsig Champion; in-hand parse.",
+  "seed": 63056,
+  "cards": {
+    "Kotis, Sibsig Champion": "Name:Kotis, Sibsig Champion\nManaCost:B G U\nTypes:Legendary Creature Zombie Warrior\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.YouOwn | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | RaiseCost$ ExileFromGrave<3/Card/other cards> | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ Once during each of your turns, you may cast a creature spell from your graveyard by exiling three other cards from your graveyard in addition to paying its other costs.\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.YouCtrl+ThisTurnEnteredFrom_Graveyard,Creature.YouCtrl+wasCastFromGraveyard | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever one or more creatures you control enter, if one or more of them entered from a graveyard or was cast from a graveyard, put two +1/+1 counters on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nDeckHas:Ability$Counters|Graveyard\nDeckHints:Ability$Graveyard|Mill\nOracle:Once during each of your turns, you may cast a creature spell from your graveyard by exiling three other cards from your graveyard in addition to paying its other costs.\\nWhenever one or more creatures you control enter, if one or more of them entered from a graveyard or was cast from a graveyard, put two +1/+1 counters on Kotis.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kotis, Sibsig Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

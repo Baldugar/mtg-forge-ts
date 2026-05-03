@@ -1,0 +1,23 @@
+{
+  "id": "trueheart-twins-corpus-m682",
+  "description": "M6 corpus — Trueheart Twins; in-hand parse.",
+  "seed": 64976,
+  "cards": {
+    "Trueheart Twins": "Name:Trueheart Twins\nManaCost:4 R\nTypes:Creature Jackal Warrior\nPT:4/4\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. (It won't untap during your next untap step.)\nT:Mode$ Exerted | ValidCard$ Creature.YouCtrl | Execute$ TrigPumpAll | TriggerZones$ Battlefield | TriggerDescription$ Whenever you exert a creature, creatures you control get +1/+0 until end of turn.\n# This code presumes that you are only ever allowed to exert creatures you control. If this is changed in the future, it will need an update.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nOracle:You may exert Trueheart Twins as it attacks. (It won't untap during your next untap step.)\\nWhenever you exert a creature, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trueheart Twins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

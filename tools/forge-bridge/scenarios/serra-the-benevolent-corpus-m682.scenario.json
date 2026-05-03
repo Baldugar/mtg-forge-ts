@@ -1,0 +1,23 @@
+{
+  "id": "serra-the-benevolent-corpus-m682",
+  "description": "M6 corpus — Serra the Benevolent; in-hand parse.",
+  "seed": 64289,
+  "cards": {
+    "Serra the Benevolent": "Name:Serra the Benevolent\nManaCost:2 W W\nTypes:Legendary Planeswalker Serra\nLoyalty:4\nA:AB$ PumpAll | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | ValidCards$ Creature.withFlying+YouCtrl | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Creatures you control with flying get +1/+1 until end of turn.\nA:AB$ Token | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | TokenScript$ w_4_4_angel_flying_vigilance | TokenOwner$ You | SpellDescription$ Create a 4/4 white Angel creature token with flying and vigilance.\nA:AB$ Effect | Cost$ SubCounter<6/LOYALTY> | Name$ Emblem — Serra the Benevolent | Image$ emblem_serra_the_benevolent | ReplacementEffects$ STWorship | Planeswalker$ True | Ultimate$ True | Stackable$ False | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.\"\nSVar:STWorship:Event$ LifeReduced | ValidPlayer$ You.lifeGE1 | Result$ LT1 | IsDamage$ True | IsPresent$ Creature.YouCtrl | ReplaceWith$ ReduceLoss | Description$ If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.1\nDeckHas:Ability$Token\nOracle:[+2]: Creatures you control with flying get +1/+1 until end of turn.\\n[-3]: Create a 4/4 white Angel creature token with flying and vigilance.\\n[-6]: You get an emblem with \"If you control a creature, damage that would reduce your life total to less than 1 reduces it to 1 instead.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serra the Benevolent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

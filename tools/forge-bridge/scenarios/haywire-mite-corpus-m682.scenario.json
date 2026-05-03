@@ -1,0 +1,23 @@
+{
+  "id": "haywire-mite-corpus-m682",
+  "description": "M6 corpus — Haywire Mite; in-hand parse.",
+  "seed": 62711,
+  "cards": {
+    "Haywire Mite": "Name:Haywire Mite\nManaCost:1\nTypes:Artifact Creature Insect\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nA:AB$ ChangeZone | Cost$ G Sac<1/CARDNAME> | ValidTgts$ Enchantment.nonCreature,Artifact.nonCreature | TgtPrompt$ Select target noncreature artifact or noncreature enchantment | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target noncreature artifact or noncreature enchantment.\nSVar:SacMe:1\nDeckHas:Ability$LifeGain|Sacrifice\nDeckHints:Color$Green\nOracle:When Haywire Mite dies, you gain 2 life.\\n{G}, Sacrifice Haywire Mite: Exile target noncreature artifact or noncreature enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haywire Mite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

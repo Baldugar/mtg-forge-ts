@@ -1,0 +1,23 @@
+{
+  "id": "localized-destruction-corpus-m682",
+  "description": "M6 corpus — Localized Destruction; in-hand parse.",
+  "seed": 63186,
+  "cards": {
+    "Localized Destruction": "Name:Localized Destruction\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ PutCounter | Defined$ You | CounterType$ ENERGY | SubAbility$ DBChooseNumber | StackDescription$ SpellDescription | SpellDescription$ You get {E} (an energy counter), then you may pay one or more {E}.\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Count$YourCountersEnergy | ListTitle$ Choose amount of energy to pay | SubAbility$ DBPumpAll | StackDescription$ None\nSVar:DBPumpAll:DB$ PumpAll | ConditionCheckSVar$ X | UnlessCost$ Mandatory PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True | ValidCards$ Creature.YouCtrl+powerEQX | KW$ Indestructible | SubAbility$ DBDestroyAll | StackDescription$ SpellDescription | SpellDescription$ If you do, each creature you control with power equal to the amount of {E} paid this way gains indestructible until end of turn.,,,,,,\nSVar:X:Count$ChosenNumber\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature | SpellDescription$ Destroy all creatures.\nOracle:You get {E} (an energy counter), then you may pay one or more {E}. If you do, each creature you control with power equal to the amount of {E} paid this way gains indestructible until end of turn.\\nDestroy all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Localized Destruction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scrap-welder-corpus-m682",
+  "description": "M6 corpus — Scrap Welder; in-hand parse.",
+  "seed": 64229,
+  "cards": {
+    "Scrap Welder": "Name:Scrap Welder\nManaCost:2 R\nTypes:Creature Goblin Artificer\nPT:3/3\nA:AB$ ChangeZone | Cost$ T Sac<1/Artifact.cmcGTX/artifact with mana value X> | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Artifact.YouOwn | TgtPrompt$ Select target artifact card with mana value less than X | SubAbility$ DBPump | SpellDescription$ Return target artifact card with mana value less than X from your graveyard to the battlefield.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Haste | StackDescription$ SpellDescription | SpellDescription$ It gains haste until end of turn.\nSVar:X:Targeted$CardManaCost\nDeckHints:Type$Artifact\nDeckHas:Ability$Graveyard\nOracle:{T}, Sacrifice an artifact with mana value X: Return target artifact card with mana value less than X from your graveyard to the battlefield. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrap Welder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

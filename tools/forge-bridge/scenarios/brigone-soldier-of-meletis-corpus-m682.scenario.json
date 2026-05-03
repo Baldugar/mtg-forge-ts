@@ -1,0 +1,23 @@
+{
+  "id": "brigone-soldier-of-meletis-corpus-m682",
+  "description": "M6 corpus — Brigone, Soldier of Meletis; in-hand parse.",
+  "seed": 61567,
+  "cards": {
+    "Brigone, Soldier of Meletis": "Name:Brigone, Soldier of Meletis\nManaCost:1 W\nTypes:Legendary Creature Human Soldier\nPT:2/2\nK:Vigilance\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, put a +1/+1 counter on NICKNAME.\nSVar:TrigCounters:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Draw | Cost$ T SubCounter<1/P1P1> | SpellDescription$ Draw a card.\nOracle:Vigilance\\nHeroic — Whenever you cast a spell that targets Brigone, Soldier of Meletis, put a +1/+1 counter on Brigone.\\n{T}, Remove a +1/+1 counter from Brigone: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brigone, Soldier of Meletis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

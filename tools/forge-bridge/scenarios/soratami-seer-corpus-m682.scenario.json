@@ -1,0 +1,23 @@
+{
+  "id": "soratami-seer-corpus-m682",
+  "description": "M6 corpus — Soratami Seer; in-hand parse.",
+  "seed": 64479,
+  "cards": {
+    "Soratami Seer": "Name:Soratami Seer\nManaCost:4 U\nTypes:Creature Moonfolk Wizard\nPT:2/3\nK:Flying\nA:AB$ Discard | Cost$ 4 Return<2/Land> | Defined$ You | RememberDiscarded$ True | Mode$ Hand | SubAbility$ DBDraw | SpellDescription$ Discard all the cards in your hand, then draw that many cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Flying\\n{4}, Return two lands you control to their owner's hand: Discard all the cards in your hand, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soratami Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

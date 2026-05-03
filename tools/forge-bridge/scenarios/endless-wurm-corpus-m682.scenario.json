@@ -1,0 +1,23 @@
+{
+  "id": "endless-wurm-corpus-m682",
+  "description": "M6 corpus — Endless Wurm; in-hand parse.",
+  "seed": 62204,
+  "cards": {
+    "Endless Wurm": "Name:Endless Wurm\nManaCost:3 G G\nTypes:Creature Wurm\nPT:9/9\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you sacrifice an enchantment.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Sac<1/Enchantment>\nSVar:NeedsToPlay:Enchantment.YouCtrl\nOracle:Trample\\nAt the beginning of your upkeep, sacrifice Endless Wurm unless you sacrifice an enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endless Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

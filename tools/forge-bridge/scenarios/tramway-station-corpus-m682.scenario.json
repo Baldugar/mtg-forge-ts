@@ -1,0 +1,23 @@
+{
+  "id": "tramway-station-corpus-m682",
+  "description": "M6 corpus — Tramway Station; in-hand parse.",
+  "seed": 64944,
+  "cards": {
+    "Tramway Station": "Name:Tramway Station\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nA:AB$ Draw | Cost$ 2 B R T Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Tramway Station enters tapped.\\n{T}: Add {B} or {R}.\\n{2}{B}{R}, {T}, Sacrifice Tramway Station: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tramway Station"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

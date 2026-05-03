@@ -1,0 +1,23 @@
+{
+  "id": "magma-mine-corpus-m682",
+  "description": "M6 corpus — Magma Mine; in-hand parse.",
+  "seed": 63237,
+  "cards": {
+    "Magma Mine": "Name:Magma Mine\nManaCost:1\nTypes:Artifact\nA:AB$ PutCounter | Cost$ 4 | CounterType$ PRESSURE | CounterNum$ 1 | SpellDescription$ Put a pressure counter on CARDNAME.\nA:AB$ DealDamage | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ It deals damage equal to the number of pressure counters on it to any target.\nSVar:X:Count$CardCounters.PRESSURE\nOracle:{4}: Put a pressure counter on Magma Mine.\\n{T}, Sacrifice Magma Mine: It deals damage equal to the number of pressure counters on it to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magma Mine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

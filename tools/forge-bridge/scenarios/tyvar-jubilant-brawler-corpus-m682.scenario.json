@@ -1,0 +1,23 @@
+{
+  "id": "tyvar-jubilant-brawler-corpus-m682",
+  "description": "M6 corpus — Tyvar, Jubilant Brawler; in-hand parse.",
+  "seed": 64995,
+  "cards": {
+    "Tyvar, Jubilant Brawler": "Name:Tyvar, Jubilant Brawler\nManaCost:1 B G\nTypes:Legendary Planeswalker Tyvar\nLoyalty:3\nS:Mode$ ActivateAbilityAsIfHaste | ValidCard$ Creature.YouCtrl | Description$ You may activate abilities of creatures you control as though those creatures had haste.\nA:AB$ Untap | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Untap up to one target creature.\nA:AB$ Mill | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | NumCards$ 3 | Defined$ You | SubAbility$ DBChange | SpellDescription$ Mill three cards, then you may return a creature card with mana value 2 or less from your graveyard to the battlefield.\nSVar:DBChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | SelectPrompt$ Choose a creature card with mana value 2 or less | Hidden$ True | ChangeType$ Creature.YouOwn+cmcLE2\nDeckHas:Ability$Graveyard|Mill\nDeckHints:Ability$Graveyard\nOracle:You may activate abilities of creatures you control as though those creatures had haste.\\n[+1]: Untap up to one target creature.\\n[-2]: Mill three cards, then you may return a creature card with mana value 2 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tyvar, Jubilant Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

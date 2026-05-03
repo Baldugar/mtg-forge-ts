@@ -1,0 +1,23 @@
+{
+  "id": "grasslands-corpus-m682",
+  "description": "M6 corpus — Grasslands; in-hand parse.",
+  "seed": 62614,
+  "cards": {
+    "Grasslands": "Name:Grasslands\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ T Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest,Plains | SpellDescription$ Search your library for a Forest or Plains card, put it onto the battlefield, then shuffle.\nOracle:Grasslands enters tapped.\\n{T}, Sacrifice Grasslands: Search your library for a Forest or Plains card, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grasslands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

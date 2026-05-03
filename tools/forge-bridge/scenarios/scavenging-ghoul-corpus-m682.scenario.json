@@ -1,0 +1,23 @@
+{
+  "id": "scavenging-ghoul-corpus-m682",
+  "description": "M6 corpus — Scavenging Ghoul; in-hand parse.",
+  "seed": 64217,
+  "cards": {
+    "Scavenging Ghoul": "Name:Scavenging Ghoul\nManaCost:3 B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of each end step, put a corpse counter on CARDNAME for each creature that died this turn.\nA:AB$ Regenerate | Cost$ SubCounter<1/CORPSE> | SpellDescription$ Regenerate CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CORPSE | CounterNum$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHas:Ability$Counters\nOracle:At the beginning of each end step, put a corpse counter on Scavenging Ghoul for each creature that died this turn.\\nRemove a corpse counter from Scavenging Ghoul: Regenerate Scavenging Ghoul.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scavenging Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

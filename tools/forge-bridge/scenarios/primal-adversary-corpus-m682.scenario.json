@@ -1,0 +1,23 @@
+{
+  "id": "primal-adversary-corpus-m682",
+  "description": "M6 corpus — Primal Adversary; in-hand parse.",
+  "seed": 63820,
+  "cards": {
+    "Primal Adversary": "Name:Primal Adversary\nManaCost:2 G\nTypes:Creature Wolf\nPT:4/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPay | TriggerDescription$ When CARDNAME enters, you may pay {1}{G} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then up to that many target lands you control become 3/3 Wolf creatures with haste that are still lands.\nSVar:TrigPay:AB$ ImmediateTrigger | Cost$ Mana<1 G\\NumTimes> | Announce$ NumTimes | ConditionCheckSVar$ NumTimes | RememberSVarAmount$ NumTimes | Execute$ TrigPutCounter | TriggerDescription$ When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then up to that many target lands you control become 3/3 Wolf creatures with haste that are still lands.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select up to that many target lands you control | Power$ 3 | Toughness$ 3 | Types$ Wolf,Creature | Keywords$ Haste | Duration$ Permanent\nSVar:X:Count$TriggerRememberAmount\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Trample\\nWhen Primal Adversary enters, you may pay {1}{G} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on Primal Adversary, then up to that many target lands you control become 3/3 Wolf creatures with haste that are still lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Adversary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tomb-tyrant-corpus-m682",
+  "description": "M6 corpus — Tomb Tyrant; in-hand parse.",
+  "seed": 64906,
+  "cards": {
+    "Tomb Tyrant": "Name:Tomb Tyrant\nManaCost:3 B\nTypes:Creature Zombie Noble\nPT:3/3\nS:Mode$ Continuous | Affected$ Zombie.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Zombies you control get +1/+1.\nA:AB$ ChangeZone | Cost$ 2 B T Sac<1/Creature/creature> | ChangeType$ Zombie.YouOwn | Origin$ Graveyard | Destination$ Battlefield | AtRandom$ True | CheckSVar$ X | SVarCompare$ GE3 | PlayerTurn$ True | Hidden$ True | StackDescription$ Return a Zombie creature card at random from your graveyard to the battlefield. | SpellDescription$ Return a Zombie creature card at random from your graveyard to the battlefield. Activate only during your turn and only if there are at least three Zombie creature cards in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.Zombie+YouCtrl\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Zombie\nOracle:Other Zombies you control get +1/+1.\\n{2}{B}, {T}, Sacrifice a creature: Return a Zombie creature card at random from your graveyard to the battlefield. Activate only during your turn and only if there are at least three Zombie creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tomb Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

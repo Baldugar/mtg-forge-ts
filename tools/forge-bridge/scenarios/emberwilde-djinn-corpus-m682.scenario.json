@@ -1,0 +1,23 @@
+{
+  "id": "emberwilde-djinn-corpus-m682",
+  "description": "M6 corpus — Emberwilde Djinn; in-hand parse.",
+  "seed": 62191,
+  "cards": {
+    "Emberwilde Djinn": "Name:Emberwilde Djinn\nManaCost:2 R R\nTypes:Creature Djinn\nPT:5/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of each player's upkeep, that player may pay {R}{R} or 2 life. If the player does, they gain control of CARDNAME.\nSVar:TrigChoose:DB$ GenericChoice | Defined$ TriggeredPlayer | AILogic$ PayUnlessCost | Choices$ PayRR,Pay2Life\nSVar:PayRR:DB$ GainControl | Defined$ Self | NewController$ TriggeredPlayer | UnlessCost$ R R | UnlessPayer$ TriggeredPlayer | UnlessSwitched$ True | SpellDescription$ Pay R R to gain control of CARDNAME.\nSVar:Pay2Life:DB$ GainControl | Defined$ Self | NewController$ TriggeredPlayer | UnlessCost$ PayLife<2> | UnlessPayer$ TriggeredPlayer | UnlessSwitched$ True | SpellDescription$ Pay 2 life to gain control of CARDNAME.\nOracle:Flying\\nAt the beginning of each player's upkeep, that player may pay {R}{R} or 2 life. If the player does, they gain control of Emberwilde Djinn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emberwilde Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

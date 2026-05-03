@@ -1,0 +1,23 @@
+{
+  "id": "restless-vents-corpus-m682",
+  "description": "M6 corpus — Restless Vents; in-hand parse.",
+  "seed": 63994,
+  "cards": {
+    "Restless Vents": "Name:Restless Vents\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nA:AB$ Animate | Cost$ 1 B R | Defined$ Self | Power$ 2 | Toughness$ 3 | Types$ Creature,Insect | Keywords$ Menace | Colors$ Black,Red | OverwriteColors$ True | SpellDescription$ Until end of turn, CARDNAME becomes a 2/3 black and red Insect creature with menace. It's still a land.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoot | TriggerDescription$ Whenever CARDNAME attacks, you may discard a card. If you do, draw a card.\nSVar:TrigLoot:AB$ Draw | Cost$ Discard<1/Card>\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard & Type$Insect & Color$Black|Red\nOracle:Restless Vents enters tapped.\\n{T}: Add {B} or {R}.\\n{1}{B}{R}: Until end of turn, Restless Vents becomes a 2/3 black and red Insect creature with menace. It's still a land.\\nWhenever Restless Vents attacks, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restless Vents"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cryptbreaker-corpus-m682",
+  "description": "M6 corpus — Cryptbreaker; in-hand parse.",
+  "seed": 61881,
+  "cards": {
+    "Cryptbreaker": "Name:Cryptbreaker\nManaCost:B\nTypes:Creature Zombie\nPT:1/1\nA:AB$ Token | Cost$ 1 B T Discard<1/Card> | TokenScript$ b_2_2_zombie | TokenOwner$ You | SpellDescription$ Create a 2/2 black Zombie creature token.\nA:AB$ Draw | Cost$ tapXType<3/Zombie> | NumCards$ 1 | AILogic$ AtOppEOT | SpellDescription$ You draw a card and you lose 1 life. | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:AIPreference:DiscardCost$Card\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nDeckNeeds:Type$Zombie\nOracle:{1}{B}, {T}, Discard a card: Create a 2/2 black Zombie creature token.\\nTap three untapped Zombies you control: You draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryptbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

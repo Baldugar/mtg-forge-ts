@@ -1,0 +1,23 @@
+{
+  "id": "chandra-gremlin-wrangler-corpus-m682",
+  "description": "M6 corpus — Chandra, Gremlin Wrangler; in-hand parse.",
+  "seed": 61700,
+  "cards": {
+    "Chandra, Gremlin Wrangler": "Name:Chandra, Gremlin Wrangler\nManaCost:2 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:3\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenScript$ r_2_2_gremlin | TokenOwner$ You | Planeswalker$ True | SpellDescription$ Create a 2/2 red Gremlin creature token.\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature,Player | TgtPrompt$ Select target creature or player | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target creature or player, where X is the number of Gremlins you control.\nSVar:X:Count$Valid Gremlin.YouCtrl\nDeckHas:Ability$Token\nOracle:[+1]: Create a 2/2 red Gremlin creature token.\\n[-2]: Chandra, Gremlin Wrangler deals X damage to target creature or player, where X is the number of Gremlins you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Gremlin Wrangler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

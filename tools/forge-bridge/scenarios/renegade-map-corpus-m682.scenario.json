@@ -1,0 +1,23 @@
+{
+  "id": "renegade-map-corpus-m682",
+  "description": "M6 corpus — Renegade Map; in-hand parse.",
+  "seed": 63975,
+  "cards": {
+    "Renegade Map": "Name:Renegade Map\nManaCost:1\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ T Sac<1/CARDNAME> | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SpellDescription$ Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nOracle:Renegade Map enters tapped.\\n{T}, Sacrifice Renegade Map: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Renegade Map"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

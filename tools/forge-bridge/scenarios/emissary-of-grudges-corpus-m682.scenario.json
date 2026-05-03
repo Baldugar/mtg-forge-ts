@@ -1,0 +1,23 @@
+{
+  "id": "emissary-of-grudges-corpus-m682",
+  "description": "M6 corpus — Emissary of Grudges; in-hand parse.",
+  "seed": 62197,
+  "cards": {
+    "Emissary of Grudges": "Name:Emissary of Grudges\nManaCost:5 R\nTypes:Creature Efreet\nPT:6/5\nK:Flying\nK:Haste\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | ChoiceTitle$ Choose an opponent | Secretly$ True | SpellDescription$ As CARDNAME enters, secretly choose an opponent.\nA:AB$ ChangeTargets | Cost$ RevealChosen<Player> | TargetType$ Spell,Activated,Triggered | ValidTgts$ Card,Emblem | ConditionTargetValidTargeting$ Permanent.YouCtrl+inRealZoneBattlefield,You | ConditionPlayerDefined$ TargetedController | ConditionPlayerContains$ Player.Chosen | GameActivationLimit$ 1 | SpellDescription$ Choose new targets for target spell or ability if it's controlled by the chosen player and if it targets you or a permanent you control. Activate only once.\nOracle:Flying, haste\\nAs Emissary of Grudges enters, secretly choose an opponent.\\nReveal the player you chose: Choose new targets for target spell or ability if it's controlled by the chosen player and if it targets you or a permanent you control. Activate only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emissary of Grudges"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

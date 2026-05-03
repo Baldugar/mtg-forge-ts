@@ -1,0 +1,23 @@
+{
+  "id": "architect-of-the-untamed-corpus-m682",
+  "description": "M6 corpus — Architect of the Untamed; in-hand parse.",
+  "seed": 61485,
+  "cards": {
+    "Architect of the Untamed": "Name:Architect of the Untamed\nManaCost:2 G\nTypes:Creature Elf Artificer Druid\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigEnergy | TriggerDescription$ Landfall — Whenever a land you control enters, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Token | Cost$ PayEnergy<8> | TokenScript$ c_6_6_a_beast | TokenOwner$ You | SpellDescription$ Create a 6/6 colorless Beast artifact creature token.\nOracle:Landfall — Whenever a land you control enters, you get {E} (an energy counter).\\nPay eight {E}: Create a 6/6 colorless Beast artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Architect of the Untamed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

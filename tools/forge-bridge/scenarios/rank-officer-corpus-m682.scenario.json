@@ -1,0 +1,23 @@
+{
+  "id": "rank-officer-corpus-m682",
+  "description": "M6 corpus — Rank Officer; in-hand parse.",
+  "seed": 63922,
+  "cards": {
+    "Rank Officer": "Name:Rank Officer\nManaCost:3 B\nTypes:Creature Zombie Soldier\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBToken | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, create a 2/2 black Zombie creature token.\nSVar:DBToken:AB$ Token | Cost$ Discard<1/Card> | TokenScript$ b_2_2_zombie | TokenOwner$ You\nA:AB$ LoseLife | Cost$ 1 B T ExileFromGrave<1/Creature> | Defined$ Player.Opponent | LifeAmount$ 2 | SpellDescription$ Each opponent loses 2 life.\nDeckHas:Ability$Token\nOracle:When Rank Officer enters, you may discard a card. If you do, create a 2/2 black Zombie creature token.\\n{1}{B}, {T}, Exile a creature card from your graveyard: Each opponent loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rank Officer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

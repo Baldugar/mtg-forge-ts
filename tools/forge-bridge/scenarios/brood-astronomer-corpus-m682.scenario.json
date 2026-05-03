@@ -1,0 +1,23 @@
+{
+  "id": "brood-astronomer-corpus-m682",
+  "description": "M6 corpus — Brood Astronomer; in-hand parse.",
+  "seed": 61570,
+  "cards": {
+    "Brood Astronomer": "Name:Brood Astronomer\nManaCost:1 G\nTypes:Creature Insect Scientist\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDraft | TriggerDescription$ When this creature enters, you may sacrifice a land. If you do, draft a card from the Planets spellbook and put it onto the battlefield tapped.\nSVar:TrigDraft:AB$ Draft | Cost$ Sac<1/Land> | SpellbookName$ Planets | Spellbook$ Adagia; Windswept Bastion,Evendo; Waking Haven,Kavaron; Memorial World,Susur Secundi; Void Altar,Uthros; Titanic Godcore | RememberDrafted$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ X | SpellDescription$ Add one mana of any color. If you control a Planet with twelve or more charge counters on it, add three mana of any one color instead.\nSVar:X:Count$Compare Y GE1.3.1\nSVar:Y:Count$Valid Planet.YouCtrl+counters_GE12_CHARGE\nOracle:When this creature enters, you may sacrifice a land. If you do, draft a card from the Planets spellbook and put it onto the battlefield tapped.\\n{T}: Add one mana of any color. If you control a Planet with twelve or more charge counters on it, add three mana of any one color instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brood Astronomer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

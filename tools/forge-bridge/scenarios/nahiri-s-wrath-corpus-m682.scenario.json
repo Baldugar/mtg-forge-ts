@@ -1,0 +1,23 @@
+{
+  "id": "nahiri-s-wrath-corpus-m682",
+  "description": "M6 corpus — Nahiri's Wrath; in-hand parse.",
+  "seed": 63494,
+  "cards": {
+    "Nahiri's Wrath": "Name:Nahiri's Wrath\nManaCost:2 R\nTypes:Sorcery\nA:SP$ DealDamage | Cost$ 2 R Discard<X/Card> | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | TargetMin$ 0 | TargetMax$ X | NumDmg$ Y | SpellDescription$ CARDNAME deals damage equal to the total mana value of the discarded cards to each of up to X target creatures and/or planeswalkers.\nSVar:X:Count$xPaid\nSVar:Y:Discarded$CardManaCost\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, discard X cards.\\nNahiri's Wrath deals damage equal to the total mana value of the discarded cards to each of up to X target creatures and/or planeswalkers.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nahiri's Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "havengul-runebinder-corpus-m682",
+  "description": "M6 corpus — Havengul Runebinder; in-hand parse.",
+  "seed": 62708,
+  "cards": {
+    "Havengul Runebinder": "Name:Havengul Runebinder\nManaCost:2 U U\nTypes:Creature Human Wizard\nPT:2/2\nA:AB$ Token | Cost$ 2 U T ExileFromGrave<1/Creature/creature card> | TokenScript$ b_2_2_zombie | SubAbility$ DBCounters | SpellDescription$ Create a 2/2 black Zombie creature token, then put a +1/+1 counter on each Zombie creature you control.\nSVar:DBCounters:DB$ PutCounterAll | ValidCards$ Creature.Zombie+YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | StackDescription$ None\nDeckHas:Ability$Token|Counters & Type$Zombie\nOracle:{2}{U}, {T}, Exile a creature card from your graveyard: Create a 2/2 black Zombie creature token, then put a +1/+1 counter on each Zombie creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Havengul Runebinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

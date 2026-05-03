@@ -1,0 +1,23 @@
+{
+  "id": "elminster-corpus-m682",
+  "description": "M6 corpus — Elminster; in-hand parse.",
+  "seed": 62168,
+  "cards": {
+    "Elminster": "Name:Elminster\nManaCost:3 W U\nTypes:Legendary Planeswalker Elminster\nLoyalty:5\nT:Mode$ Scry | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEff | TriggerDescription$ Whenever you scry, the next instant or sorcery spell you cast this turn costs {X} less to cast, where X is the number of cards looked at while scrying this way.\nSVar:TrigEff:DB$ Effect | StaticAbilities$ ReduceCost | ForgetOnCast$ Instant.YouCtrl,Sorcery.YouCtrl | SetChosenNumber$ X\nSVar:ReduceCost:Mode$ ReduceCost | Type$ Spell | ValidCard$ Instant,Sorcery | Activator$ You | Amount$ Count$ChosenNumber | Description$ The next instant or sorcery spell you cast this turn costs {X} less to cast, where X is the number of cards looked at while scrying.\nSVar:X:TriggerCount$ScryNum\nA:AB$ Draw | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | SubAbility$ DBScry | SpellDescription$ Draw a card, then scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nA:AB$ Dig | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | Reveal$ True | SubAbility$ DBToken | SpellDescription$ Exile the top card of your library.\nSVar:DBToken:DB$ Token | TokenAmount$ Z | TokenScript$ u_1_1_faerie_dragon_flying | SubAbility$ DBCleanup | SpellDescription$ Create a number of 1/1 blue Faerie Dragon creature tokens with flying equal to that card's mana value.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Z:Remembered$CardManaCost\nText:CARDNAME can be your commander.\nDeckHas:Ability$Token & Type$Faerie|Dragon\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever you scry, the next instant or sorcery spell you cast this turn costs {X} less to cast, where X is the number of cards looked at while scrying this way.\\n+2: Draw a card, then scry 2.\\n-3: Exile the top card of your library. Create a number of 1/1 blue Faerie Dragon creature tokens with flying equal to that card's mana value.\\nElminster can be your commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elminster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "memorial-to-unity-corpus-m682",
+  "description": "M6 corpus — Memorial to Unity; in-hand parse.",
+  "seed": 63326,
+  "cards": {
+    "Memorial to Unity": "Name:Memorial to Unity\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Dig | Cost$ 2 G T Sac<1/CARDNAME> | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Creature | RestRandomOrder$ True | SpellDescription$ Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Then put the rest on the bottom of your library in a random order.\nOracle:Memorial to Unity enters tapped.\\n{T}: Add {G}.\\n{2}{G}, {T}, Sacrifice Memorial to Unity: Look at the top five cards of your library. You may reveal a creature card from among them and put it into your hand. Then put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memorial to Unity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

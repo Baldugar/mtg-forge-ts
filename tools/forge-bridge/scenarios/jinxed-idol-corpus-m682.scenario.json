@@ -1,0 +1,23 @@
+{
+  "id": "jinxed-idol-corpus-m682",
+  "description": "M6 corpus — Jinxed Idol; in-hand parse.",
+  "seed": 62964,
+  "cards": {
+    "Jinxed Idol": "Name:Jinxed Idol\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 2 damage to you.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ 2\nA:AB$ GainControl | Cost$ Sac<1/Creature> | Defined$ Self | ValidTgts$ Opponent | SpellDescription$ Target opponent gains control of CARDNAME.\nSVar:SacMe:4\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, Jinxed Idol deals 2 damage to you.\\nSacrifice a creature: Target opponent gains control of Jinxed Idol.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jinxed Idol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

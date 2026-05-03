@@ -1,0 +1,23 @@
+{
+  "id": "purple-pentapus-corpus-m682",
+  "description": "M6 corpus — Purple Pentapus; in-hand parse.",
+  "seed": 63856,
+  "cards": {
+    "Purple Pentapus": "Name:Purple Pentapus\nManaCost:B\nTypes:Creature Octopus Starfish\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ ChangeZone | Cost$ 2 B tapXType<1/Creature> | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | Tapped$ True | SpellDescription$ Return this card from your graveyard to the battlefield tapped.\nDeckHas:Ability$Surveil|Graveyard\nOracle:When this creature enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\\n{2}{B}, Tap an untapped creature you control: Return this card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Purple Pentapus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

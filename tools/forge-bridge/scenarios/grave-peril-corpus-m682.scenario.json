@@ -1,0 +1,23 @@
+{
+  "id": "grave-peril-corpus-m682",
+  "description": "M6 corpus — Grave Peril; in-hand parse.",
+  "seed": 62615,
+  "cards": {
+    "Grave Peril": "Name:Grave Peril\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.nonBlack | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When a nonblack creature enters, sacrifice CARDNAME. If you do, destroy that creature.\nSVar:TrigSac:AB$ Destroy | Defined$ TriggeredCardLKICopy | Cost$ Mandatory Sac<1/CARDNAME>\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:When a nonblack creature enters, sacrifice Grave Peril. If you do, destroy that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grave Peril"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

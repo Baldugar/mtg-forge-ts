@@ -1,0 +1,23 @@
+{
+  "id": "harvester-troll-corpus-m682",
+  "description": "M6 corpus — Harvester Troll; in-hand parse.",
+  "seed": 62699,
+  "cards": {
+    "Harvester Troll": "Name:Harvester Troll\nManaCost:3 G\nTypes:Creature Troll\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, you may sacrifice a creature or land. If you do, put two +1/+1 counters on CARDNAME.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ Sac<1/Creature;Land/creature or land> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2\nSVar:AIPreference:SacCost$Creature.token,Land.Basic\nOracle:When Harvester Troll enters, you may sacrifice a creature or land. If you do, put two +1/+1 counters on Harvester Troll.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harvester Troll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

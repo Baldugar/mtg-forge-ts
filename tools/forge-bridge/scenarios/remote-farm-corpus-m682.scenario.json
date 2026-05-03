@@ -1,0 +1,23 @@
+{
+  "id": "remote-farm-corpus-m682",
+  "description": "M6 corpus — Remote Farm; in-hand parse.",
+  "seed": 63974,
+  "cards": {
+    "Remote Farm": "Name:Remote Farm\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with two depletion counters on it.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ DEPLETION | CounterNum$ 2\nA:AB$ Mana | Cost$ T SubCounter<1/DEPLETION> | Produced$ W | SubAbility$ DBSac | Amount$ 2 | SpellDescription$ Add {W}{W}. If there are no depletion counters on CARDNAME, sacrifice it.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | ConditionPresent$ Card.Self+counters_EQ0_DEPLETION\nAI:RemoveDeck:Random\nOracle:Remote Farm enters tapped with two depletion counters on it.\\n{T}, Remove a depletion counter from Remote Farm: Add {W}{W}. If there are no depletion counters on Remote Farm, sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Remote Farm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

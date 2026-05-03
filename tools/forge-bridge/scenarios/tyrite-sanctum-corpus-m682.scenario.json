@@ -1,0 +1,23 @@
+{
+  "id": "tyrite-sanctum-corpus-m682",
+  "description": "M6 corpus — Tyrite Sanctum; in-hand parse.",
+  "seed": 64994,
+  "cards": {
+    "Tyrite Sanctum": "Name:Tyrite Sanctum\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Animate | Cost$ 2 T | ValidTgts$ Creature.Legendary | TgtPrompt$ Select target legendary creature | Types$ God | Duration$ Permanent | SubAbility$ DBPutCounter | SpellDescription$ Target legendary creature becomes a God in addition to its other types. Put a +1/+1 counter on it.\nA:AB$ PutCounter | Cost$ 4 T Sac<1/CARDNAME> | ValidTgts$ God | TgtPrompt$ Select target God | CounterType$ Indestructible | CounterNum$ 1 | SpellDescription$ Put an indestructible counter on target God.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:{T}: Add {C}.\\n{2}, {T}: Target legendary creature becomes a God in addition to its other types. Put a +1/+1 counter on it.\\n{4}, {T}, Sacrifice Tyrite Sanctum: Put an indestructible counter on target God.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tyrite Sanctum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

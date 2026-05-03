@@ -1,0 +1,23 @@
+{
+  "id": "uktabi-kong-corpus-m682",
+  "description": "M6 corpus — Uktabi Kong; in-hand parse.",
+  "seed": 65002,
+  "cards": {
+    "Uktabi Kong": "Name:Uktabi Kong\nManaCost:5 G G G\nTypes:Creature Ape\nPT:8/8\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy all artifacts.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Artifact\nA:AB$ Token | Cost$ tapXType<2/Ape> | TokenScript$ g_1_1_ape | TokenOwner$ You | SpellDescription$ Create a 1/1 green Ape creature token.\nDeckHas:Ability$Token\nOracle:Trample\\nWhen Uktabi Kong enters, destroy all artifacts.\\nTap two untapped Apes you control: Create a 1/1 green Ape creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uktabi Kong"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

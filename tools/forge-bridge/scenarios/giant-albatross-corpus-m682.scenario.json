@@ -1,0 +1,23 @@
+{
+  "id": "giant-albatross-corpus-m682",
+  "description": "M6 corpus — Giant Albatross; in-hand parse.",
+  "seed": 62514,
+  "cards": {
+    "Giant Albatross": "Name:Giant Albatross\nManaCost:1 U\nTypes:Creature Bird\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigEach | TriggerDescription$ When CARDNAME dies, you may pay {1}{U}. If you do, for each creature that dealt damage to CARDNAME this turn, destroy that creature unless its controller pays 2 life. A creature destroyed this way can't be regenerated.\nSVar:TrigEach:AB$ RepeatEach | Cost$ 1 U | RepeatCards$ Creature.Damaged | RepeatSubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ Remembered | NoRegen$ True | UnlessCost$ PayLife<2> | UnlessPayer$ RememberedController\nOracle:Flying\\nWhen Giant Albatross dies, you may pay {1}{U}. If you do, for each creature that dealt damage to Giant Albatross this turn, destroy that creature unless its controller pays 2 life. A creature destroyed this way can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant Albatross"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

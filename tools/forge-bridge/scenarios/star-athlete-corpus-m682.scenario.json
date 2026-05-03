@@ -1,0 +1,23 @@
+{
+  "id": "star-athlete-corpus-m682",
+  "description": "M6 corpus — Star Athlete; in-hand parse.",
+  "seed": 64593,
+  "cards": {
+    "Star Athlete": "Name:Star Athlete\nManaCost:1 R R\nTypes:Creature Human Warrior\nPT:3/2\nK:Menace\nK:Blitz:3 R\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBPump | TriggerDescription$ Whenever CARDNAME attacks, choose up to one target nonland permanent. Its controller may sacrifice it. If they don't, CARDNAME deals 5 damage to that player.\nSVar:DBPump:DB$ Pump | ValidTgts$ Permanent.nonLand | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target nonland permanent | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | UnlessCost$ Sac<1/Permanent.nonLand+targetedBy/targeted nonland permanent> | NumDmg$ 5\nDeckHas:Ability$Sacrifice\nOracle:Menace\\nWhenever Star Athlete attacks, choose up to one target nonland permanent. Its controller may sacrifice it. If they don't, Star Athlete deals 5 damage to that player.\\nBlitz {3}{R} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Star Athlete"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

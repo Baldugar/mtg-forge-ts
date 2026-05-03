@@ -1,0 +1,23 @@
+{
+  "id": "rith-s-grove-corpus-m682",
+  "description": "M6 corpus — Rith's Grove; in-hand parse.",
+  "seed": 64025,
+  "cards": {
+    "Rith's Grove": "Name:Rith's Grove\nManaCost:no cost\nTypes:Land Lair\nA:AB$ Mana | Cost$ T | Produced$ Combo R G W | SpellDescription$ Add {R}, {G}, or {W}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Land.nonLair/non-Lair land> | UnlessPayer$ You\nSVar:NeedsToPlay:Land.nonLair+YouCtrl\nOracle:When Rith's Grove enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\\n{T}: Add {R}, {G}, or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rith's Grove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ravaged-highlands-corpus-m682",
+  "description": "M6 corpus — Ravaged Highlands; in-hand parse.",
+  "seed": 63932,
+  "cards": {
+    "Ravaged Highlands": "Name:Ravaged Highlands\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | SpellDescription$ Add one mana of any color.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nOracle:Ravaged Highlands enters tapped.\\n{T}: Add {R}.\\n{T}, Sacrifice Ravaged Highlands: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravaged Highlands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

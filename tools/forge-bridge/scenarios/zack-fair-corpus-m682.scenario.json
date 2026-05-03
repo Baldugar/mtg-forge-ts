@@ -1,0 +1,23 @@
+{
+  "id": "zack-fair-corpus-m682",
+  "description": "M6 corpus — Zack Fair; in-hand parse.",
+  "seed": 65303,
+  "cards": {
+    "Zack Fair": "Name:Zack Fair\nManaCost:W\nTypes:Legendary Creature Human Soldier\nPT:0/1\nK:etbCounter:P1P1:1\nA:AB$ Pump | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Indestructible | SubAbility$ DBPutCounter | SpellDescription$ Target creature you control gains indestructible until end of turn. Put CARDNAME's counters on that creature and attach an Equipment that was attached to CARDNAME to that creature.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ EachFromSource | EachFromSource$ Self | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Choices$ Equipment.Attached | ChoiceTitle$ Choose an Equipment you control | Defined$ Targeted\nDeckHas:Ability$Counters\nOracle:Zack Fair enters with a +1/+1 counter on it.\\n{1}, Sacrifice Zack Fair: Target creature you control gains indestructible until end of turn. Put Zack Fair's counters on that creature and attach an Equipment that was attached to Zack Fair to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zack Fair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

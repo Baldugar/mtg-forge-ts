@@ -1,0 +1,23 @@
+{
+  "id": "civil-servant-corpus-m682",
+  "description": "M6 corpus — Civil Servant; in-hand parse.",
+  "seed": 61754,
+  "cards": {
+    "Civil Servant": "Name:Civil Servant\nManaCost:G W\nTypes:Creature Cat Citizen\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may tap another untapped Citizen you control. If you do, CARDNAME gets +1/+0 and gains lifelink until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ tapXType<1/Citizen.Other> | Defined$ Self | NumAtt$ +1 | KW$ Lifelink\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nDeckNeeds:Type$Citizen\nOracle:Whenever Civil Servant attacks, you may tap another untapped Citizen you control. If you do, Civil Servant gets +1/+0 and gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Civil Servant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

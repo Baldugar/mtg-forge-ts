@@ -1,0 +1,23 @@
+{
+  "id": "fell-shepherd-corpus-m682",
+  "description": "M6 corpus — Fell Shepherd; in-hand parse.",
+  "seed": 62300,
+  "cards": {
+    "Fell Shepherd": "Name:Fell Shepherd\nManaCost:5 B B\nTypes:Creature Avatar\nPT:8/6\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigReturn | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may return all creature cards put into your graveyard from the battlefield this turn to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ ValidGraveyard Creature.YouOwn+ThisTurnEnteredFrom_Battlefield\nA:AB$ Pump | Cost$ B Sac<1/Creature.Other/another creature> | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | SpellDescription$ Target creature gets -2/-2 until end of turn.\nOracle:Whenever Fell Shepherd deals combat damage to a player, you may return to your hand all creature cards that were put into your graveyard from the battlefield this turn.\\n{B}, Sacrifice another creature: Target creature gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "masticore-corpus-m682",
+  "description": "M6 corpus — Masticore; in-hand parse.",
+  "seed": 63305,
+  "cards": {
+    "Masticore": "Name:Masticore\nManaCost:4\nTypes:Artifact Creature Masticore\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you discard a card.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Discard<1/Card>\nA:AB$ Regenerate | Cost$ 2 | SpellDescription$ Regenerate CARDNAME.\nA:AB$ DealDamage | Cost$ 2 | ValidTgts$ Creature | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target creature.\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, sacrifice Masticore unless you discard a card.\\n{2}: Masticore deals 1 damage to target creature.\\n{2}: Regenerate Masticore.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Masticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

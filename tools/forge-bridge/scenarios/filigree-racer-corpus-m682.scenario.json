@@ -1,0 +1,23 @@
+{
+  "id": "filigree-racer-corpus-m682",
+  "description": "M6 corpus — Filigree Racer; in-hand parse.",
+  "seed": 62319,
+  "cards": {
+    "Filigree Racer": "Name:Filigree Racer\nManaCost:3 R\nTypes:Artifact Vehicle\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E}{E} (four energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTrigger | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. When you do, target instant or sorcery card in your graveyard gains jump-start until end of turn. (You may cast that card from your graveyard by discarding a card in addition to paying its other costs. Then exile it.)\nSVar:TrigTrigger:AB$ ImmediateTrigger | Cost$ PayEnergy<2> | Execute$ DBPump | SpellDescription$ When you do, target instant or sorcery card in your graveyard gains jump-start until end of turn. (You may cast that card from your graveyard by discarding a card in addition to paying its other costs. Then exile it.)\nSVar:DBPump:DB$ Pump | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | KW$ Jump-start | TgtZone$ Graveyard | PumpZone$ Graveyard\nK:Crew:1\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Instant|Sorcery\nDeckHas:Ability$Graveyard|Discard\nOracle:When Filigree Racer enters, you get {E}{E}{E}{E} (four energy counters).\\nWhenever Filigree Racer attacks, you may pay {E}{E}. When you do, target instant or sorcery card in your graveyard gains jump-start until end of turn. (You may cast that card from your graveyard by discarding a card in addition to paying its other costs. Then exile it.)\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Filigree Racer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

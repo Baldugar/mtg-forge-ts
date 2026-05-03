@@ -1,0 +1,23 @@
+{
+  "id": "commandeer-corpus-m682",
+  "description": "M6 corpus — Commandeer; in-hand parse.",
+  "seed": 61791,
+  "cards": {
+    "Commandeer": "Name:Commandeer\nManaCost:5 U U\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ ExileFromHand<2/Card.Blue+Other> | Description$ You may exile two blue cards from your hand rather than pay this spell's mana cost.\nA:SP$ ControlSpell | ValidTgts$ Card.nonCreature | TargetType$ Spell | Mode$ Gain | SubAbility$ DBChooseTargets | SpellDescription$ Gain control of target noncreature spell. You may choose new targets for it. (If that spell is an artifact, enchantment, or planeswalker, the permanent you control enters.)\nSVar:DBChooseTargets:DB$ ChangeTargets | Defined$ Targeted | Optional$ True\nAI:RemoveDeck:All\nOracle:You may exile two blue cards from your hand rather than pay this spell's mana cost.\\nGain control of target noncreature spell. You may choose new targets for it. (If that spell is an artifact, enchantment, or planeswalker, the permanent you control enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commandeer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "filigree-vector-corpus-m682",
+  "description": "M6 corpus — Filigree Vector; in-hand parse.",
+  "seed": 62320,
+  "cards": {
+    "Filigree Vector": "Name:Filigree Vector\nManaCost:3 W\nTypes:Artifact Creature Phyrexian Construct\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each of any number of target creatures and a charge counter on each of any number of target artifacts.\nSVar:TrigCounter:DB$ Pump | ValidTgts$ Creature | AILogic$ Pump | TgtPrompt$ Select any number of target creatures to distribute +1/+1 counters to | TargetMin$ 0 | TargetMax$ X | RememberTargets$ True | SubAbility$ DBChargeCounter\nSVar:DBChargeCounter:DB$ Pump | ValidTgts$ Artifact | AITgts$ Artifact.YouCtrl | TgtPrompt$ Select any number of target artifacts to distribute charge counters to | TargetMin$ 0 | TargetMax$ Y | ImprintCards$ ThisTargetedCard | SubAbility$ DBPutCounterAll\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.IsRemembered | CounterType$ P1P1 | CounterNum$ 1 | ValidCards2$ Artifact.IsImprinted | CounterType2$ CHARGE | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True | ClearRemembered$ True\nSVar:X:Count$Valid Creature\nSVar:Y:Count$Valid Artifact\nA:AB$ Proliferate | Cost$ 1 T Sac<1/Artifact.Other/other artifact> | SpellDescription$ Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nDeckHas:Ability$Counters|Proliferate|Sacrifice\nDeckHints:Type$Artifact\nOracle:When Filigree Vector enters, put a +1/+1 counter on each of any number of target creatures and a charge counter on each of any number of target artifacts.\\n{1}, {T}, Sacrifice another artifact: Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Filigree Vector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

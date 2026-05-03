@@ -1,0 +1,23 @@
+{
+  "id": "pardic-miner-corpus-m682",
+  "description": "M6 corpus — Pardic Miner; in-hand parse.",
+  "seed": 63700,
+  "cards": {
+    "Pardic Miner": "Name:Pardic Miner\nManaCost:1 R\nTypes:Creature Dwarf\nPT:1/1\nA:AB$ Effect | Cost$ Sac<1/CARDNAME> | ValidTgts$ Player | StaticAbilities$ STCantPlayLand | RememberObjects$ Targeted | AILogic$ BeginningOfOppTurn | SpellDescription$ Target player can't play lands this turn.\nSVar:STCantPlayLand:Mode$ CantPlayLand | Player$ Player.IsRemembered | Description$ This player can't play land cards this turn.\nAI:RemoveDeck:All\nOracle:Sacrifice Pardic Miner: Target player can't play lands this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pardic Miner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

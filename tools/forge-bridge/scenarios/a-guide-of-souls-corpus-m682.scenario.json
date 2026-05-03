@@ -1,0 +1,23 @@
+{
+  "id": "a-guide-of-souls-corpus-m682",
+  "description": "M6 corpus — A-Guide of Souls; in-hand parse.",
+  "seed": 64100,
+  "cards": {
+    "A-Guide of Souls": "Name:A-Guide of Souls\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control enters, you gain 1 life and get {E}.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBEnergy\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, you may pay {E}{E}{E}{E}. When you do, put two +1/+1 counters and a flying counter on target attacking creature. It becomes an Angel in addition to its other types.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ PayEnergy<4> | Execute$ TrigPutCounter | TriggerDescription$ When you do, put two +1/+1 counters and a flying counter on target attacking creature. It becomes an Angel in addition to its other types.\nSVar:TrigPutCounter:DB$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounterAll | ValidCards$ Creature.targetedBy | CounterType$ P1P1 | CounterNum$ 2 | CounterType2$ Flying | CounterNum2$ 1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Angel | Duration$ Permanent\nOracle:Whenever another creature you control enters, you gain 1 life and get {E}.\\nWhenever you attack, you may pay {E}{E}{E}{E}. When you do, put two +1/+1 counters and a flying counter on target attacking creature. It becomes an Angel in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Guide of Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

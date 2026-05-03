@@ -1,0 +1,23 @@
+{
+  "id": "merseine-corpus-m682",
+  "description": "M6 corpus — Merseine; in-hand parse.",
+  "seed": 63346,
+  "cards": {
+    "Merseine": "Name:Merseine\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.cmcGE2\nK:etbCounter:NET:3\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | IsPresent$ Card.Self+counters_GE1_NET | Description$ Enchanted creature doesn't untap during its controller's untap step if this Aura has a net counter on it.\nA:AB$ RemoveCounter | Activator$ Player.EnchantedController | Cost$ Mana<0\\EnchantedCost> | CostDesc$ Pay enchanted creature's mana cost: | CounterType$ NET | CounterNum$ 1 | SpellDescription$ Remove a net counter from this Aura. Only the controller of the enchanted creature may activate this ability.\nOracle:Enchant creature\\nThis Aura enters with three net counters on it.\\nEnchanted creature doesn't untap during its controller's untap step if this Aura has a net counter on it.\\nPay enchanted creature's mana cost: Remove a net counter from this Aura. Only the controller of the enchanted creature may activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merseine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-gitrog-monster-corpus-m682",
+  "description": "M6 corpus — The Gitrog Monster; in-hand parse.",
+  "seed": 64805,
+  "cards": {
+    "The Gitrog Monster": "Name:The Gitrog Monster\nManaCost:3 B G\nTypes:Legendary Creature Frog Horror\nPT:6/6\nK:Deathtouch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you sacrifice a land.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Sac<1/Land>\nS:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land on each of your turns.\nT:Mode$ ChangesZoneAll | ValidCards$ Land.YouOwn+!token | Origin$ Any | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever one or more land cards are put into your graveyard from anywhere, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$Graveyard\nOracle:Deathtouch\\nAt the beginning of your upkeep, sacrifice The Gitrog Monster unless you sacrifice a land.\\nYou may play an additional land on each of your turns.\\nWhenever one or more land cards are put into your graveyard from anywhere, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Gitrog Monster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

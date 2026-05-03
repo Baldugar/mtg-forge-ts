@@ -1,0 +1,23 @@
+{
+  "id": "the-war-games-corpus-m682",
+  "description": "M6 corpus — The War Games; in-hand parse.",
+  "seed": 64828,
+  "cards": {
+    "The War Games": "Name:The War Games\nManaCost:2 W W\nTypes:Enchantment Saga\nK:Chapter:4:DBTokens,DBPutCounterAll,DBPutCounterAll,DBMayExile\nSVar:DBTokens:DB$ Token | TokenAmount$ 3 | TokenTapped$ True | TokenScript$ w_1_1_warrior | TokenOwner$ Player | RememberTokens$ True | SubAbility$ DBGoad | SpellDescription$ Each player creates three tapped 1/1 white Warrior creature tokens. The tokens are goaded for as long as CARDNAME remains on the battlefield.\nSVar:DBGoad:DB$ Goad | Defined$ Remembered | Duration$ AsLongAsInPlay | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.Warrior | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each Warrior creature.\nSVar:DBMayExile:DB$ ImmediateTrigger | Execute$ TrigExileAll | UnlessCost$ Exile<1/Creature.!token> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ You may exile a nontoken creature you control. When you do, exile all Warriors.\nSVar:TrigExileAll:DB$ ChangeZoneAll | ChangeType$ Warrior | Origin$ Battlefield | Destination$ Exile\nDeckHas:Ability$Token & Type$Warrior\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI — Each player creates three tapped 1/1 white Warrior creature tokens. The tokens are goaded for as long as The War Games remains on the battlefield.\\nII, III — Put a +1/+1 counter on each Warrior creature.\\nIV — You may exile a nontoken creature you control. When you do, exile all Warriors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The War Games"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

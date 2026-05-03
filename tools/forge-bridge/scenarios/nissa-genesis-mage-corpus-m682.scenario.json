@@ -1,0 +1,23 @@
+{
+  "id": "nissa-genesis-mage-corpus-m682",
+  "description": "M6 corpus — Nissa, Genesis Mage; in-hand parse.",
+  "seed": 63560,
+  "cards": {
+    "Nissa, Genesis Mage": "Name:Nissa, Genesis Mage\nManaCost:5 G G\nTypes:Legendary Planeswalker Nissa\nLoyalty:5\nA:AB$ Untap | Cost$ AddCounter<2/LOYALTY> | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 2 | Planeswalker$ True | SubAbility$ DBUntap | TgtPrompt$ Select up to two target creatures | SpellDescription$ Untap up to two target creatures and up to two target lands.\nSVar:DBUntap:DB$ Untap | ValidTgts$ Land | TargetMin$ 0 | TargetMax$ 2 | AILogic$ Always | TgtPrompt$ Select up to two target lands\nA:AB$ Pump | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | NumAtt$ +5 | NumDef$ +5 | SpellDescription$ Target creature gets +5/+5 until end of turn.\nA:AB$ Dig | Cost$ SubCounter<10/LOYALTY> | DigNum$ 10 | ChangeNum$ Any | ChangeValid$ Creature,Land | DestinationZone$ Battlefield | Ultimate$ True | Planeswalker$ True | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | SpellDescription$ Look at the top ten cards of your library. You may put any number of creature and/or land cards from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nDeckHints:Name$Nissa's Encouragement|Brambleweft Behemoth|Forest\nOracle:[+2]: Untap up to two target creatures and up to two target lands.\\n[-3]: Target creature gets +5/+5 until end of turn.\\n[-10]: Look at the top ten cards of your library. You may put any number of creature and/or land cards from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa, Genesis Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hired-muscle-corpus-m682",
+  "description": "M6 corpus — Hired Muscle; in-hand parse.",
+  "seed": 62772,
+  "cards": {
+    "Hired Muscle": "Name:Hired Muscle\nManaCost:1 B B\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Spirit,Card.Arcane | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Card.Self+counters_GE2_KI | Execute$ TrigFlip | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, if there are two or more ki counters on CARDNAME, you may flip it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nDeckHints:Type$Spirit|Arcane\nAlternateMode:Flip\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Hired Muscle.\\nAt the beginning of the end step, if there are two or more ki counters on Hired Muscle, you may flip it.\n\nALTERNATE\n\nName:Scarmaker\nManaCost:1 B B\nColors:black\nTypes:Legendary Creature Spirit\nPT:4/4\nA:AB$ Pump | Cost$ SubCounter<1/KI> | KW$ Fear | ValidTgts$ Creature | SpellDescription$ Target creature gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)\nOracle:Remove a ki counter from Scarmaker: Target creature gains fear until end of turn. (It can't be blocked except by artifact creatures and/or black creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hired Muscle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sunspring-expedition-corpus-m682",
+  "description": "M6 corpus — Sunspring Expedition; in-hand parse.",
+  "seed": 64663,
+  "cards": {
+    "Sunspring Expedition": "Name:Sunspring Expedition\nManaCost:W\nTypes:Enchantment\nA:AB$ GainLife | Cost$ SubCounter<3/QUEST> Sac<1/CARDNAME> | Defined$ You | LifeAmount$ 8 | SpellDescription$ You gain 8 life.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:MaxQuestEffect:3\nDeckHas:Ability$Counters|LifeGain\nOracle:Landfall — Whenever a land you control enters, you may put a quest counter on Sunspring Expedition.\\nRemove three quest counters from Sunspring Expedition and sacrifice it: You gain 8 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunspring Expedition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

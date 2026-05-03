@@ -1,0 +1,23 @@
+{
+  "id": "a-demilich-corpus-m682",
+  "description": "M6 corpus — A-Demilich; in-hand parse.",
+  "seed": 64093,
+  "cards": {
+    "A-Demilich": "Name:A-Demilich\nManaCost:U U U U\nTypes:Creature Skeleton Wizard\nPT:4/4\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Color$ U | Amount$ X | EffectZone$ All | Description$ This spell costs {U} less to cast for each instant and sorcery spell you've cast this turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile up to one target instant or sorcery card from your graveyard. Copy it. You may cast the copy.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose up to one target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | RememberChanged$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | Optional$ True | CopyCard$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Graveyard | EffectZone$ Graveyard | MayPlayAltManaCost$ U U U U ExileFromGrave<4/Instant;Sorcery/instant or sorcery cards> | ActivationZone$ Graveyard | Description$ You may cast CARDNAME from your graveyard by exiling four instant and/or sorcery cards from your graveyard in addition to paying its other costs.\nSVar:X:Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl\nDeckNeeds:Type$Instant|Sorcery\nOracle:This spell costs {U} less to cast for each instant and sorcery spell you've cast this turn.\\nWhenever Demilich attacks, exile up to one target instant or sorcery card from your graveyard. Copy it. You may cast the copy.\\nYou may cast Demilich from your graveyard by exiling four instant and/or sorcery cards from your graveyard in addition to paying its other costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Demilich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

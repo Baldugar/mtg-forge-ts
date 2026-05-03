@@ -1,0 +1,23 @@
+{
+  "id": "grist-the-hunger-tide-corpus-m682",
+  "description": "M6 corpus — Grist, the Hunger Tide; in-hand parse.",
+  "seed": 62649,
+  "cards": {
+    "Grist, the Hunger Tide": "Name:Grist, the Hunger Tide\nManaCost:1 B G\nTypes:Legendary Planeswalker Grist\nLoyalty:3\nS:Mode$ Continuous | Affected$ Card.Self | ExcludeZone$ Battlefield | SetPower$ 1 | SetToughness$ 1 | AddType$ Creature & Insect | CharacteristicDefining$ True | Description$ As long as CARDNAME isn't on the battlefield, it's a 1/1 Insect creature in addition to its other types.\nA:AB$ Repeat | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | RepeatSubAbility$ CleanupBegin | RepeatCheckSVar$ MilledInsect | RepeatSVarCompare$ EQ1 | SubAbility$ DBCleanup | SpellDescription$ Create a 1/1 black and green Insect creature token, then mill a card. If an Insect card was milled this way, put a loyalty counter on NICKNAME and repeat this process. | StackDescription$ SpellDescription\nSVar:CleanupBegin:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ bg_1_1_insect | TokenOwner$ You | Planeswalker$ True | SubAbility$ DBMill | SpellDescription$ Create a 1/1 black and green Insect creature token, then mill a card. If an Insect card was milled this way, put a loyalty counter on Grist and repeat this process.\nSVar:DBMill:DB$ Mill | Defined$ You | NumCards$ 1 | RememberMilled$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ LOYALTY | CounterNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card.Insect | ConditionCompare$ EQ1\nSVar:MilledInsect:Remembered$Valid Card.Insect\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ ImmediateTrigger | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | Execute$ TrigDestroy | UnlessCost$ Sac<1/Creature> | UnlessPayer$ You | UnlessSwitched$ True | AILogic$ WeakerCreature | SpellDescription$ You may sacrifice a creature. When you do, destroy target creature or planeswalker.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker\nA:AB$ LoseLife | Cost$ SubCounter<5/LOYALTY> | LifeAmount$ X | Defined$ Player.Opponent | Planeswalker$ True | Ultimate$ True | SpellDescription$ Each opponent loses life equal to the number of creature cards in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHas:Ability$Token|Mill\nDeckHints:Type$Insect\nOracle:As long as Grist, the Hunger Tide isn't on the battlefield, it's a 1/1 Insect creature in addition to its other types.\\n[+1]: Create a 1/1 black and green Insect creature token, then mill a card. If an Insect card was milled this way, put a loyalty counter on Grist and repeat this process.\\n[-2]: You may sacrifice a creature. When you do, destroy target creature or planeswalker.\\n[-5]: Each opponent loses life equal to the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grist, the Hunger Tide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

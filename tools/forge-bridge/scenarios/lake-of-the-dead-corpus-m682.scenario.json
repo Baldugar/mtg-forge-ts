@@ -1,0 +1,23 @@
+{
+  "id": "lake-of-the-dead-corpus-m682",
+  "description": "M6 corpus — Lake of the Dead; in-hand parse.",
+  "seed": 63094,
+  "cards": {
+    "Lake of the Dead": "Name:Lake of the Dead\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ Mana | Cost$ T Sac<1/Swamp> | Produced$ B | Amount$ 4 | SpellDescription$ Add {B}{B}{B}{B}.\nR:Event$ Moved | Destination$ Battlefield | ValidCard$ Card.Self | ReplaceWith$ PayBeforeETB | Description$ If CARDNAME would enter, sacrifice a Swamp instead. If you do, put CARDNAME onto the battlefield. If you don't, put it into its owner's graveyard.\nSVar:PayBeforeETB:DB$ Sacrifice | SacValid$ Swamp | Defined$ You | RememberSacrificed$ True | SubAbility$ MoveToGraveyard\nSVar:MoveToGraveyard:DB$ ChangeZone | Origin$ All | Destination$ Graveyard | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ MoveToBattlefield\nSVar:MoveToBattlefield:DB$ ChangeZone | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:If Lake of the Dead would enter, sacrifice a Swamp instead. If you do, put Lake of the Dead onto the battlefield. If you don't, put it into its owner's graveyard.\\n{T}: Add {B}.\\n{T}, Sacrifice a Swamp: Add {B}{B}{B}{B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lake of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

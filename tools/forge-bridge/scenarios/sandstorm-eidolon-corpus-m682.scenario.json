@@ -1,0 +1,23 @@
+{
+  "id": "sandstorm-eidolon-corpus-m682",
+  "description": "M6 corpus — Sandstorm Eidolon; in-hand parse.",
+  "seed": 64170,
+  "cards": {
+    "Sandstorm Eidolon": "Name:Sandstorm Eidolon\nManaCost:3 R\nTypes:Creature Spirit\nPT:2/2\nA:AB$ Pump | Cost$ R Sac<1/CARDNAME> | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SpellDescription$ Target creature can't block this turn.\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a multicolored spell, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nAI:RemoveDeck:All\nOracle:{R}, Sacrifice Sandstorm Eidolon: Target creature can't block this turn.\\nWhenever you cast a multicolored spell, you may return Sandstorm Eidolon from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sandstorm Eidolon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "moonlight-bargain-corpus-m682",
+  "description": "M6 corpus — Moonlight Bargain; in-hand parse.",
+  "seed": 63421,
+  "cards": {
+    "Moonlight Bargain": "Name:Moonlight Bargain\nManaCost:3 B B\nTypes:Instant\nA:SP$ PeekAndReveal | PeekAmount$ 5 | NoReveal$ True | RememberPeeked$ True | SubAbility$ DBRepeat | SpellDescription$ Look at the top five cards of your library.\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ DBChangeZone | RepeatCards$ Card.IsRemembered | Zone$ Library | UseImprinted$ True | SubAbility$ PutIntoHand | SpellDescription$ For each card, put that card into your graveyard unless you pay 2 life. Then put the rest into your hand.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Imprinted | Origin$ Library | Destination$ Graveyard | UnlessCost$ PayLife<2> | UnlessPayer$ You | ForgetChanged$ True\nSVar:PutIntoHand:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Look at the top five cards of your library. For each card, put that card into your graveyard unless you pay 2 life. Then put the rest into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonlight Bargain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

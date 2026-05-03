@@ -1,0 +1,23 @@
+{
+  "id": "clockwork-droid-corpus-m682",
+  "description": "M6 corpus — Clockwork Droid; in-hand parse.",
+  "seed": 61765,
+  "cards": {
+    "Clockwork Droid": "Name:Clockwork Droid\nManaCost:2\nTypes:Artifact Creature Robot\nPT:3/1\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Trigger$ TrigEffect | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. When you do, it can't be blocked this turn and you scry 1. (An exerted creature won't untap during your next untap step. To scry 1, look at the top card of your library. You may put that card on the bottom.)\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ Unblockable | SubAbility$ DBScry | SpellDescription$ When you do, it can't be blocked this turn and you scry 1.\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.EffectSource | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:You may exert Clockwork Droid as it attacks. When you do, it can't be blocked this turn and you scry 1. (An exerted creature won't untap during your next untap step. To scry 1, look at the top card of your library. You may put that card on the bottom.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clockwork Droid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

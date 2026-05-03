@@ -1,0 +1,23 @@
+{
+  "id": "runed-arch-corpus-m682",
+  "description": "M6 corpus — Runed Arch; in-hand parse.",
+  "seed": 64072,
+  "cards": {
+    "Runed Arch": "Name:Runed Arch\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Effect | Cost$ X T Sac<1/CARDNAME> | StaticAbilities$ Unblockable | TargetMin$ X | TargetMax$ X | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select X target creatures with power 2 or less | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StackDescription$ X target creatures with power 2 or less [{c:Targeted}] can't be blocked this turn. | SpellDescription$ X target creatures with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ These creatures can't be blocked this turn.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:Runed Arch enters tapped.\\n{X}, {T}, Sacrifice Runed Arch: X target creatures with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runed Arch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

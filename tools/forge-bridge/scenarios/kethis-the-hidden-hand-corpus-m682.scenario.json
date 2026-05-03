@@ -1,0 +1,23 @@
+{
+  "id": "kethis-the-hidden-hand-corpus-m682",
+  "description": "M6 corpus — Kethis, the Hidden Hand; in-hand parse.",
+  "seed": 63018,
+  "cards": {
+    "Kethis, the Hidden Hand": "Name:Kethis, the Hidden Hand\nManaCost:W B G\nTypes:Legendary Creature Elf Advisor\nPT:3/4\nS:Mode$ ReduceCost | ValidCard$ Legendary | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Legendary spells you cast cost {1} less to cast.\nA:AB$ Animate | Cost$ ExileFromGrave<2/Card.Legendary/legendary card> | staticAbilities$ Play | Defined$ ValidGraveyard Card.Legendary+YouOwn | SpellDescription$ Until end of turn, each legendary card in your graveyard gains \"You may play this card from your graveyard.\"\nSVar:Play:Mode$ Continuous | Affected$ Card.Self | AffectedZone$ Graveyard | EffectZone$ Graveyard | MayPlay$ True | Description$ You may play this card from your graveyard.\nDeckHints:Type$Legendary\nOracle:Legendary spells you cast cost {1} less to cast.\\nExile two legendary cards from your graveyard: Until end of turn, each legendary card in your graveyard gains \"You may play this card from your graveyard.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kethis, the Hidden Hand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

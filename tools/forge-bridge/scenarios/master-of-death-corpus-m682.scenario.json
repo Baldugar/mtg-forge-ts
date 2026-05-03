@@ -1,0 +1,23 @@
+{
+  "id": "master-of-death-corpus-m682",
+  "description": "M6 corpus — Master of Death; in-hand parse.",
+  "seed": 63302,
+  "cards": {
+    "Master of Death": "Name:Master of Death\nManaCost:1 U B\nTypes:Creature Zombie Wizard\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | PresentPlayer$ You | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard, you may pay 1 life. If you do, return it to your hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ PayLife<1> | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nSVar:SacMe:2\nSVar:DiscardMe:1\nOracle:When Master of Death enters, surveil 2.\\nAt the beginning of your upkeep, if Master of Death is in your graveyard, you may pay 1 life. If you do, return it to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master of Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

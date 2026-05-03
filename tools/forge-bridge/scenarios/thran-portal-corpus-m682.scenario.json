@@ -1,0 +1,23 @@
+{
+  "id": "thran-portal-corpus-m682",
+  "description": "M6 corpus — Thran Portal; in-hand parse.",
+  "seed": 64848,
+  "cards": {
+    "Thran Portal": "Name:Thran Portal\nManaCost:no cost\nTypes:Land Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or fewer other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT2\nK:ETBReplacement:Other:DBChooseBasic\nSVar:DBChooseBasic:DB$ ChooseType | Type$ Basic Land | SpellDescription$ As CARDNAME enters, choose a basic land type.\nS:Mode$ Continuous | Affected$ Card.Self | AddType$ ChosenType | Description$ CARDNAME is the chosen type in addition to its other types.\nS:Mode$ RaiseCost | Type$ Ability | ValidSpell$ Activated.ManaAbility | ValidCard$ Card.Self | Cost$ PayLife<1> | EffectZone$ All | Description$ Mana abilities of CARDNAME cost an additional 1 life to activate.\nAI:RemoveDeck:All\nOracle:Thran Portal enters tapped unless you control two or fewer other lands.\\nAs Thran Portal enters, choose a basic land type.\\nThran Portal is the chosen type in addition to its other types.\\nMana abilities of Thran Portal cost an additional 1 life to activate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thran Portal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

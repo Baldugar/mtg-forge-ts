@@ -1,0 +1,23 @@
+{
+  "id": "murgish-cemetery-corpus-m682",
+  "description": "M6 corpus — Murgish Cemetery; in-hand parse.",
+  "seed": 63462,
+  "cards": {
+    "Murgish Cemetery": "Name:Murgish Cemetery\nManaCost:4 B B\nTypes:Enchantment\nA:AB$ ChooseNumber | Cost$ 3 B Discard<1/Card> | Min$ 2 | Max$ 6 | Defined$ You | Random$ True | SubAbility$ DBToken | SpellDescription$ Create an X/X black Zombie creature token, where X is a number from 2 to 6 chosen at random.\nSVar:DBToken:DB$ Token | TokenScript$ b_x_x_zombie | TokenPower$ X | TokenToughness$ X\nSVar:X:Count$Random.2.6\nDeckHas:Ability$Token|Discard\nDeckHints:Type$Zombie\nOracle:{3}{B}, Discard a card: Create an X/X black Zombie creature token, where X is a number from 2 to 6 chosen at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murgish Cemetery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

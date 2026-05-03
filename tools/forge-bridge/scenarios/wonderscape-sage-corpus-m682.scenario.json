@@ -1,0 +1,23 @@
+{
+  "id": "wonderscape-sage-corpus-m682",
+  "description": "M6 corpus — Wonderscape Sage; in-hand parse.",
+  "seed": 65269,
+  "cards": {
+    "Wonderscape Sage": "Name:Wonderscape Sage\nManaCost:1 U\nTypes:Creature Moonfolk Wizard\nPT:1/3\nK:Flying\nA:AB$ Draw | Cost$ T Return<1/Land> | NumCards$ 1 | SubAbility$ DBDiscard | SpellDescription$ Draw a card. Then discard a card unless that land had a nonbasic land type.\nSVar:DBDiscard:DB$ Discard | ConditionDefined$ Returned | ConditionPresent$ Land.hasANonBasicLandType | ConditionCompare$ EQ0 | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying\\n{T}, Return a land you control to its owner's hand: Draw a card. Then discard a card unless that land had a nonbasic land type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wonderscape Sage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

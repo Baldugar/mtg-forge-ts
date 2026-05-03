@@ -1,0 +1,23 @@
+{
+  "id": "nature-s-blessing-corpus-m682",
+  "description": "M6 corpus — Nature's Blessing; in-hand parse.",
+  "seed": 63505,
+  "cards": {
+    "Nature's Blessing": "Name:Nature's Blessing\nManaCost:2 G W\nTypes:Enchantment\nA:AB$ GenericChoice | Cost$ G W Discard<1/Card> | ValidTgts$ Creature | Defined$ You | Choices$ DBPutCounter,DBBanding,DBFirstStrike,DBTrample | SpellDescription$ Put a +1/+1 counter on target creature or that creature gains banding, first strike, or trample.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on target creature.\nSVar:DBBanding:DB$ Pump | Defined$ Targeted | KW$ Banding | Duration$ Permanent | SpellDescription$ Target creature gains banding.\nSVar:DBFirstStrike:DB$ Pump | Defined$ Targeted | KW$ First Strike | Duration$ Permanent | SpellDescription$ Target creature gains first strike.\nSVar:DBTrample:DB$ Pump | Defined$ Targeted | KW$ Trample | Duration$ Permanent | SpellDescription$ Target creature gains trample.\nSVar:NonStackingEffect:True\nOracle:{G}{W}, Discard a card: Put a +1/+1 counter on target creature or that creature gains banding, first strike, or trample. (This effect lasts indefinitely. Any creatures with banding, and up to one without, can attack in a band. Bands are blocked as a group. If any creatures with banding a player controls are blocking or being blocked by a creature, that player divides that creature's combat damage, not its controller, among any of the creatures it's being blocked by or is blocking.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nature's Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

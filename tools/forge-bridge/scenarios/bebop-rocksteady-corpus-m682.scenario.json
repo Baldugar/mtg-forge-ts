@@ -1,0 +1,23 @@
+{
+  "id": "bebop-rocksteady-corpus-m682",
+  "description": "M6 corpus — Bebop & Rocksteady; in-hand parse.",
+  "seed": 61529,
+  "cards": {
+    "Bebop & Rocksteady": "Name:Bebop & Rocksteady\nManaCost:1 BG BG\nTypes:Legendary Creature Boar Rhino Mutant\nPT:7/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attack or block, sacrifice a permanent unless you discard a card.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigSac | Secondary$ True | TriggerDescription$ Whenever CARDNAME attack or block, sacrifice a permanent unless you discard a card.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Permanent | UnlessCost$ Discard<1/Card> | UnlessPayer$ You\nOracle:Whenever Bebop & Rocksteady attack or block, sacrifice a permanent unless you discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bebop & Rocksteady"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

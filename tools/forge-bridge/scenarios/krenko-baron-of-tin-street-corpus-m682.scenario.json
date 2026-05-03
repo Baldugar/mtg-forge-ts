@@ -1,0 +1,23 @@
+{
+  "id": "krenko-baron-of-tin-street-corpus-m682",
+  "description": "M6 corpus — Krenko, Baron of Tin Street; in-hand parse.",
+  "seed": 63068,
+  "cards": {
+    "Krenko, Baron of Tin Street": "Name:Krenko, Baron of Tin Street\nManaCost:2 R\nTypes:Legendary Creature Goblin\nPT:3/3\nK:Haste\nA:AB$ PutCounterAll | Cost$ T Sac<1/Artifact/an artifact> | ValidCards$ Goblin.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each Goblin you control.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an artifact is put into a graveyard from the battlefield, you may pay {R}. If you do, create a 1/1 red Goblin creature token. It gains haste until end of turn.\nSVar:TrigToken:AB$ Token | Cost$ R | TokenScript$ r_1_1_goblin | PumpKeywords$ Haste | PumpDuration$ EOT\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token & Type$Goblin|Artifact\nOracle:Haste\\n{T}, Sacrifice an artifact: Put a +1/+1 counter on each Goblin you control.\\nWhenever an artifact is put into a graveyard from the battlefield, you may pay {R}. If you do, create a 1/1 red Goblin creature token. It gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krenko, Baron of Tin Street"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

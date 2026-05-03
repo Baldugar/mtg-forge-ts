@@ -1,0 +1,23 @@
+{
+  "id": "watchers-of-the-dead-corpus-m682",
+  "description": "M6 corpus — Watchers of the Dead; in-hand parse.",
+  "seed": 65203,
+  "cards": {
+    "Watchers of the Dead": "Name:Watchers of the Dead\nManaCost:2\nTypes:Artifact Creature Cat\nPT:2/2\nA:AB$ RepeatEach | Cost$ Exile<1/CARDNAME> | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ ChooseTwoGrave | AILogic$ Never | SubAbility$ ExileAllOthers | SpellDescription$ Each opponent chooses two cards in their graveyard and exiles the rest.\nSVar:ChooseTwoGrave:DB$ ChooseCard | Defined$ Remembered | Amount$ 2 | Choices$ Card.RememberedPlayerCtrl | ChoiceZone$ Graveyard | ChoiceTitle$ Choose two cards not to exile | RememberChosen$ True | Mandatory$ True\nSVar:ExileAllOthers:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.!IsRemembered\nOracle:Exile Watchers of the Dead: Each opponent chooses two cards in their graveyard and exiles the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Watchers of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "razorgrass-ambush-corpus-m682",
+  "description": "M6 corpus — Razorgrass Ambush; in-hand parse.",
+  "seed": 63943,
+  "cards": {
+    "Razorgrass Ambush": "Name:Razorgrass Ambush\nManaCost:1 W\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target attacking or blocking creature.\nAlternateMode:Modal\nOracle:Razorgrass Ambush deals 3 damage to target attacking or blocking creature.\n\nALTERNATE\n\nName:Razorgrass Field\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 3 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<3> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:As Razorgrass Field enters, you may pay 3 life. If you don't, it enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razorgrass Ambush"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

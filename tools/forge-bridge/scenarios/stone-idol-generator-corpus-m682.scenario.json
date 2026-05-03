@@ -1,0 +1,23 @@
+{
+  "id": "stone-idol-generator-corpus-m682",
+  "description": "M6 corpus — Stone Idol Generator; in-hand parse.",
+  "seed": 64619,
+  "cards": {
+    "Stone Idol Generator": "Name:Stone Idol Generator\nManaCost:5\nTypes:Artifact\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigEnergy | TriggerDescription$ Whenever a creature you control attacks, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Token | Cost$ T PayEnergy<6> | TokenScript$ c_6_12_a_construct_trample | SorcerySpeed$ True | SpellDescription$ Create a 6/12 colorless Construct artifact creature token with trample. Activate only as a sorcery.\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Token\nOracle:Whenever a creature you control attacks, you get {E} (an energy counter).\\n{T}, Pay six {E}: Create a 6/12 colorless Construct artifact creature token with trample. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stone Idol Generator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

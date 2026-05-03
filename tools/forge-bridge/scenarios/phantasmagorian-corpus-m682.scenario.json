@@ -1,0 +1,23 @@
+{
+  "id": "phantasmagorian-corpus-m682",
+  "description": "M6 corpus — Phantasmagorian; in-hand parse.",
+  "seed": 63732,
+  "cards": {
+    "Phantasmagorian": "Name:Phantasmagorian\nManaCost:5 B B\nTypes:Creature Horror\nPT:6/6\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When you cast this spell, any player may discard three cards. If a player does, counter CARDNAME.\nSVar:TrigCounter:DB$ Counter | UnlessCost$ Discard<3/Card> | Defined$ TriggeredSpellAbility | UnlessPayer$ Player | UnlessSwitched$ True\nA:AB$ ChangeZone | Cost$ Discard<3/Card> | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nOracle:When you cast this spell, any player may discard three cards. If a player does, counter Phantasmagorian.\\nDiscard three cards: Return Phantasmagorian from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phantasmagorian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

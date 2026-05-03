@@ -1,0 +1,23 @@
+{
+  "id": "uneasy-alliance-corpus-m682",
+  "description": "M6 corpus — Uneasy Alliance; in-hand parse.",
+  "seed": 65027,
+  "cards": {
+    "Uneasy Alliance": "Name:Uneasy Alliance\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nA:AB$ ChangeZone | Cost$ 5 Sac<1/CARDNAME> | Defined$ Enchanted | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBToken | SorcerySpeed$ True | SpellDescription$ Exile enchanted creature. You create a 1/1 black Ninja creature token. Activate only as a sorcery.\nSVar:DBToken:DB$ Token | TokenScript$ b_1_1_ninja\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\n{5}, Sacrifice this Aura: Exile enchanted creature. You create a 1/1 black Ninja creature token. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Uneasy Alliance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

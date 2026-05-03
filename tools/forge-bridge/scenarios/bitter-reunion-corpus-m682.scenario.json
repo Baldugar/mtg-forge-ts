@@ -1,0 +1,23 @@
+{
+  "id": "bitter-reunion-corpus-m682",
+  "description": "M6 corpus — Bitter Reunion; in-hand parse.",
+  "seed": 61539,
+  "cards": {
+    "Bitter Reunion": "Name:Bitter Reunion\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, draw two cards.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 2\nA:AB$ PumpAll | Cost$ 1 Sac<1/CARDNAME> | ValidCards$ Creature.YouCtrl | KW$ Haste | SpellDescription$ Creatures you control gain haste until end of turn.\nDeckHas:Ability$Discard|Sacrifice & Keyword$Haste\nOracle:When Bitter Reunion enters, you may discard a card. If you do, draw two cards.\\n{1}, Sacrifice Bitter Reunion: Creatures you control gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bitter Reunion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

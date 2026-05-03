@@ -1,0 +1,23 @@
+{
+  "id": "rent-is-due-corpus-m682",
+  "description": "M6 corpus — Rent Is Due; in-hand parse.",
+  "seed": 63978,
+  "cards": {
+    "Rent Is Due": "Name:Rent Is Due\nVariant:UniversesWithin:FlavorName:Confessor's Bindings\nManaCost:W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, you may tap two untapped creatures and/or Treasures you control. If you do, draw a card. Otherwise, sacrifice this enchantment.\nSVar:TrigDraw:DB$ Draw | UnlessCost$ tapXType<2/Creature;Treasure/creatures and/or Treasures> | UnlessPayer$ You | UnlessSwitched$ True | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self\nOracle:At the beginning of your end step, you may tap two untapped creatures and/or Treasures you control. If you do, draw a card. Otherwise, sacrifice this enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rent Is Due"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

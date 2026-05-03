@@ -1,0 +1,23 @@
+{
+  "id": "havenwood-battleground-corpus-m682",
+  "description": "M6 corpus — Havenwood Battleground; in-hand parse.",
+  "seed": 62709,
+  "cards": {
+    "Havenwood Battleground": "Name:Havenwood Battleground\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ G | Amount$ 2 | SpellDescription$ Add {G}{G}.\nAI:RemoveDeck:All\nOracle:Havenwood Battleground enters tapped.\\n{T}: Add {G}.\\n{T}, Sacrifice Havenwood Battleground: Add {G}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Havenwood Battleground"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

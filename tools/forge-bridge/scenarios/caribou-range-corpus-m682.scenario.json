@@ -1,0 +1,23 @@
+{
+  "id": "caribou-range-corpus-m682",
+  "description": "M6 corpus — Caribou Range; in-hand parse.",
+  "seed": 61632,
+  "cards": {
+    "Caribou Range": "Name:Caribou Range\nManaCost:2 W W\nTypes:Enchantment Aura\nK:Enchant:Land.YouCtrl:land you control\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddAbility$ Token | Description$ Enchanted land has \"{W}{W}, {T}: Create a 0/1 white Caribou creature token.\"\nSVar:Token:AB$ Token | Cost$ W W T | TokenScript$ w_0_1_caribou | TokenOwner$ You | SpellDescription$ Create a 0/1 white Caribou creature token.\nA:AB$ GainLife | Cost$ Sac<1/Caribou.token/Caribou token> | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nOracle:Enchant land you control\\nEnchanted land has \"{W}{W}, {T}: Create a 0/1 white Caribou creature token.\"\\nSacrifice a Caribou token: You gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caribou Range"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "momentous-fall-corpus-m682",
+  "description": "M6 corpus — Momentous Fall; in-hand parse.",
+  "seed": 63413,
+  "cards": {
+    "Momentous Fall": "Name:Momentous Fall\nManaCost:2 G G\nTypes:Instant\nA:SP$ Draw | Cost$ 2 G G Sac<1/Creature> | NumCards$ XPower | SubAbility$ DBGainLife | SpellDescription$ You draw cards equal to the sacrificed creature's power, then you gain life equal to its toughness.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ XToughness\nSVar:XPower:Sacrificed$CardPower\nSVar:XToughness:Sacrificed$CardToughness\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nYou draw cards equal to the sacrificed creature's power, then you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Momentous Fall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

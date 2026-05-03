@@ -1,0 +1,23 @@
+{
+  "id": "jinxed-ring-corpus-m682",
+  "description": "M6 corpus — Jinxed Ring; in-hand parse.",
+  "seed": 62965,
+  "cards": {
+    "Jinxed Ring": "Name:Jinxed Ring\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.!token+YouOwn | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken permanent is put into your graveyard from the battlefield, CARDNAME deals 1 damage to you.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ 1\nA:AB$ GainControl | Cost$ Sac<1/Creature> | Defined$ Self | ValidTgts$ Opponent | SpellDescription$ Target opponent gains control of CARDNAME. (This effect lasts indefinitely.)\nSVar:SacMe:4\nAI:RemoveDeck:All\nOracle:Whenever a nontoken permanent is put into your graveyard from the battlefield, Jinxed Ring deals 1 damage to you.\\nSacrifice a creature: Target opponent gains control of Jinxed Ring. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jinxed Ring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

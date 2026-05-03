@@ -1,0 +1,23 @@
+{
+  "id": "general-traag-heart-of-stone-corpus-m682",
+  "description": "M6 corpus — General Traag, Heart of Stone; in-hand parse.",
+  "seed": 62486,
+  "cards": {
+    "General Traag, Heart of Stone": "Name:General Traag, Heart of Stone\nManaCost:3 R R\nTypes:Legendary Artifact Creature Elemental Soldier\nPT:4/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When NICKNAME enters, you may sacrifice another artifact. When you do, NICKNAME deals 4 damage to target creature.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<1/Artifact.Other/another artifact> | Execute$ TrigDealDamage | TriggerDescription$ When you do, NICKNAME deals 4 damage to target creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 4\nOracle:Trample\\nWhen General Traag enters, you may sacrifice another artifact. When you do, General Traag deals 4 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "General Traag, Heart of Stone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

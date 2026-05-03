@@ -1,0 +1,23 @@
+{
+  "id": "choking-restraints-corpus-m682",
+  "description": "M6 corpus — Choking Restraints; in-hand parse.",
+  "seed": 61736,
+  "cards": {
+    "Choking Restraints": "Name:Choking Restraints\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nA:AB$ ChangeZone | Cost$ 3 W W Sac<1/CARDNAME> | Defined$ Enchanted | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile enchanted creature.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\n{3}{W}{W}, Sacrifice Choking Restraints: Exile enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Choking Restraints"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

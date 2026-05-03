@@ -1,0 +1,23 @@
+{
+  "id": "furgul-quag-nurturer-corpus-m682",
+  "description": "M6 corpus — Furgul, Quag Nurturer; in-hand parse.",
+  "seed": 62438,
+  "cards": {
+    "Furgul, Quag Nurturer": "Name:Furgul, Quag Nurturer\nManaCost:2 B G\nTypes:Legendary Creature Elf Shaman\nPT:2/4\nT:Mode$ Phase | Phase$ End of Turn | Execute$ TrigBranch | ValidPlayer$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, conjure a card named Slimy Dualleech onto the battlefield if you control no Leeches. Otherwise, put a +1/+1 counter on each Leech you control.\nSVar:TrigBranch:DB$ Branch | BranchConditionSVar$ Count$Valid Leech.YouCtrl | BranchConditionSVarCompare$ EQ0 | TrueSubAbility$ DBConjure | FalseSubAbility$ DBPutCounter\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Name$ Slimy Dualleech | Zone$ Battlefield\nSVar:DBPutCounter:DB$ PutCounterAll | ValidCards$ Leech.YouCtrl | CounterType$ P1P1\nA:AB$ Mana | Cost$ T Sac<1/Creature> | Produced$ G | Amount$ Sacrificed$CardPower | SpellDescription$ Add an amount of {G} equal to the sacrificed creature's power.\nDeckHas:Ability$Counters|Sacrifice & Type$Leech\nDeckHints:Type$Leech\nOracle:At the beginning of your end step, conjure a card named Slimy Dualleech onto the battlefield if you control no Leeches. Otherwise, put a +1/+1 counter on each Leech you control.\\n{T}, Sacrifice a creature: Add an amount of {G} equal to the sacrificed creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furgul, Quag Nurturer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hoofprints-of-the-stag-corpus-m682",
+  "description": "M6 corpus — Hoofprints of the Stag; in-hand parse.",
+  "seed": 62789,
+  "cards": {
+    "Hoofprints of the Stag": "Name:Hoofprints of the Stag\nManaCost:1 W\nTypes:Kindred Enchantment Elemental\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw a card, you may put a hoofprint counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ HOOFPRINT | CounterNum$ 1\nA:AB$ Token | Cost$ 2 W SubCounter<4/HOOFPRINT> | TokenScript$ w_4_4_elemental_flying | TokenOwner$ You | PlayerTurn$ True | SpellDescription$ Create a 4/4 white Elemental creature token with flying. Activate only during your turn.\nDeckHas:Ability$Counters|Token\nOracle:Whenever you draw a card, you may put a hoofprint counter on Hoofprints of the Stag.\\n{2}{W}, Remove four hoofprint counters from Hoofprints of the Stag: Create a 4/4 white Elemental creature token with flying. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoofprints of the Stag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jace-arcane-strategist-corpus-m682",
+  "description": "M6 corpus — Jace, Arcane Strategist; in-hand parse.",
+  "seed": 62922,
+  "cards": {
+    "Jace, Arcane Strategist": "Name:Jace, Arcane Strategist\nManaCost:4 U U\nTypes:Legendary Planeswalker Jace\nLoyalty:4\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you draw your second card each turn, put a +1/+1 counter on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | SpellDescription$ Draw a card.\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | StaticAbilities$ Unblockable | SpellDescription$ Creatures you control can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Creature.YouCtrl | Description$ Creatures you control can't be blocked this turn.\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Whenever you draw your second card each turn, put a +1/+1 counter on target creature you control.\\n[+1]: Draw a card.\\n[-7]: Creatures you control can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, Arcane Strategist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

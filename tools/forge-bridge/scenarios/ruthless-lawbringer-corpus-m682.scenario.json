@@ -1,0 +1,23 @@
+{
+  "id": "ruthless-lawbringer-corpus-m682",
+  "description": "M6 corpus — Ruthless Lawbringer; in-hand parse.",
+  "seed": 64083,
+  "cards": {
+    "Ruthless Lawbringer": "Name:Ruthless Lawbringer\nManaCost:1 W B\nTypes:Creature Vampire Assassin\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature. When you do, destroy target nonland permanent.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target nonland permanent.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent\nDeckHas:Ability$Sacrifice\nOracle:When Ruthless Lawbringer enters, you may sacrifice another creature. When you do, destroy target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruthless Lawbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

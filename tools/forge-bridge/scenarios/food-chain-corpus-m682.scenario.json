@@ -1,0 +1,23 @@
+{
+  "id": "food-chain-corpus-m682",
+  "description": "M6 corpus — Food Chain; in-hand parse.",
+  "seed": 62390,
+  "cards": {
+    "Food Chain": "Name:Food Chain\nManaCost:2 G\nTypes:Enchantment\nA:AB$ Mana | Cost$ Exile<1/Creature> | Produced$ Any | Amount$ X | RestrictValid$ Spell.Creature | SpellDescription$ Add X mana of any one color, where X is 1 plus the exiled creature's mana value. Spend this mana only to cast creature spells.\nSVar:X:Exiled$CardManaCost/Plus.1\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:Exile a creature you control: Add X mana of any one color, where X is 1 plus the exiled creature's mana value. Spend this mana only to cast creature spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Food Chain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wandering-champion-corpus-m682",
+  "description": "M6 corpus — Wandering Champion; in-hand parse.",
+  "seed": 65187,
+  "cards": {
+    "Wandering Champion": "Name:Wandering Champion\nManaCost:1 W\nTypes:Creature Human Monk\nPT:3/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | IsPresent$ Permanent.Blue+YouCtrl,Permanent.Red+YouCtrl | CombatDamage$ True | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, if you control a blue or red permanent, you may discard a card. If you do, draw a card.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card>\nDeckHints:Color$Blue|Red\nOracle:Whenever Wandering Champion deals combat damage to a player, if you control a blue or red permanent, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wandering Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

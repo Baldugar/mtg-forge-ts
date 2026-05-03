@@ -1,0 +1,23 @@
+{
+  "id": "treacherous-vampire-corpus-m682",
+  "description": "M6 corpus — Treacherous Vampire; in-hand parse.",
+  "seed": 64955,
+  "cards": {
+    "Treacherous Vampire": "Name:Treacherous Vampire\nManaCost:4 B\nTypes:Creature Vampire\nPT:4/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice it unless you exile a card from your graveyard.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigSac | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice it unless you exile a card from your graveyard.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ ExileFromGrave<1/Card> | UnlessPayer$ You\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | AddTrigger$ Dies | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME gets +2/+2 and has \"When CARDNAME dies, you lose 6 life.\"\nSVar:Dies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLose | Secondary$ True | TriggerController$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you lose 6 life.\nSVar:TrigLose:DB$ LoseLife | Defined$ You | LifeAmount$ 6\nAI:RemoveDeck:All\nOracle:Flying\\nWhenever Treacherous Vampire attacks or blocks, sacrifice it unless you exile a card from your graveyard.\\nThreshold — As long as there are seven or more cards in your graveyard, Treacherous Vampire gets +2/+2 and has \"When Treacherous Vampire dies, you lose 6 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Treacherous Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

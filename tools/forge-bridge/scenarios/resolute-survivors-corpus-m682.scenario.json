@@ -1,0 +1,23 @@
+{
+  "id": "resolute-survivors-corpus-m682",
+  "description": "M6 corpus — Resolute Survivors; in-hand parse.",
+  "seed": 63989,
+  "cards": {
+    "Resolute Survivors": "Name:Resolute Survivors\nManaCost:1 R W\nTypes:Creature Human Warrior\nPT:3/3\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. (It won't untap during your next untap step.)\nT:Mode$ Exerted | ValidCard$ Creature.YouCtrl | Execute$ TrigDamageAll | TriggerZones$ Battlefield | TriggerDescription$ Whenever you exert a creature, CARDNAME deals 1 damage to each opponent and you gain 1 life.\n# This code presumes that you are only ever allowed to exert creatures you control. If this is changed in the future, it will need an update.\nSVar:TrigDamageAll:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:You may exert Resolute Survivors as it attacks. (It won't untap during your next untap step.)\\nWhenever you exert a creature, Resolute Survivors deals 1 damage to each opponent and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resolute Survivors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

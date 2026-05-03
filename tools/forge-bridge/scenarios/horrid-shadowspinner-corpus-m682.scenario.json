@@ -1,0 +1,23 @@
+{
+  "id": "horrid-shadowspinner-corpus-m682",
+  "description": "M6 corpus — Horrid Shadowspinner; in-hand parse.",
+  "seed": 62798,
+  "cards": {
+    "Horrid Shadowspinner": "Name:Horrid Shadowspinner\nManaCost:1 U B\nTypes:Creature Horror\nPT:2/3\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, you may draw cards equal to its power. If you do, discard that many cards.\nSVar:TrigDraw:AB$ Discard | Cost$ Draw<X/You> | Defined$ You | Mode$ TgtChoose | NumCards$ X\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard\nOracle:Lifelink\\nWhenever Horrid Shadowspinner attacks, you may draw cards equal to its power. If you do, discard that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Horrid Shadowspinner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

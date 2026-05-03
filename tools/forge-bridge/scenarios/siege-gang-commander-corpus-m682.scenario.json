@@ -1,0 +1,23 @@
+{
+  "id": "siege-gang-commander-corpus-m682",
+  "description": "M6 corpus — Siege-Gang Commander; in-hand parse.",
+  "seed": 64365,
+  "cards": {
+    "Siege-Gang Commander": "Name:Siege-Gang Commander\nManaCost:3 R R\nTypes:Creature Goblin\nPT:2/2\nA:AB$ DealDamage | Cost$ 1 R Sac<1/Goblin> | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create three 1/1 red Goblin creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ r_1_1_goblin | TokenOwner$ You\nSVar:AIPreference:SacCost$Creature.Goblin+token,Creature.Goblin+cmcLE1\nDeckHas:Ability$Token\nDeckHints:Type$Goblin\nOracle:When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens.\\n{1}{R}, Sacrifice a Goblin: Siege-Gang Commander deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siege-Gang Commander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hourglass-of-the-lost-corpus-m682",
+  "description": "M6 corpus — Hourglass of the Lost; in-hand parse.",
+  "seed": 62802,
+  "cards": {
+    "Hourglass of the Lost": "Name:Hourglass of the Lost\nManaCost:2 W\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ W | SubAbility$ DBPutCounter | SpellDescription$ Add {W}. Put a time counter on CARDNAME.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ TIME | CounterNum$ 1\nA:AB$ ChangeZoneAll | Cost$ T SubCounter<X/TIME> Exile<1/CARDNAME> | CostDesc$ {T}, Remove X time counters from CARDNAME and exile it: | ChangeType$ Permanent.YouOwn+nonLand+cmcEQX | Origin$ Graveyard | Destination$ Battlefield | SorcerySpeed$ True | SpellDescription$ Return each nonland permanent card with mana value X from your graveyard to the battlefield. Activate only as a sorcery.\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters|Graveyard\nOracle:{T}: Add {W}. Put a time counter on Hourglass of the Lost.\\n{T}, Remove X time counters from Hourglass of the Lost and exile it: Return each nonland permanent card with mana value X from your graveyard to the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hourglass of the Lost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gremlin-mine-corpus-m682",
+  "description": "M6 corpus — Gremlin Mine; in-hand parse.",
+  "seed": 62634,
+  "cards": {
+    "Gremlin Mine": "Name:Gremlin Mine\nManaCost:1\nTypes:Artifact\nA:AB$ DealDamage | Cost$ 1 T Sac<1/CARDNAME> | ValidTgts$ Creature.Artifact | TgtPrompt$ Select target artifact creature | NumDmg$ 4 | SpellDescription$ It deals 4 damage to target artifact creature.\nA:AB$ RemoveCounter | Cost$ 1 T Sac<1/CARDNAME> | ValidTgts$ Artifact.nonCreature | TgtPrompt$ Select target noncreature artifact | CounterType$ CHARGE | CounterNum$ 4 | UpTo$ True | SpellDescription$ Remove up to four charge counters from target noncreature artifact.\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:{1}, {T}, Sacrifice Gremlin Mine: It deals 4 damage to target artifact creature.\\n{1}, {T}, Sacrifice Gremlin Mine: Remove up to four charge counters from target noncreature artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gremlin Mine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

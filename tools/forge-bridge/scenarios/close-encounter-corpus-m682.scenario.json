@@ -1,0 +1,23 @@
+{
+  "id": "close-encounter-corpus-m682",
+  "description": "M6 corpus — Close Encounter; in-hand parse.",
+  "seed": 61766,
+  "cards": {
+    "Close Encounter": "Name:Close Encounter\nManaCost:1 G\nTypes:Instant\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Activator$ You | Type$ Spell | Cost$ ChooseCard<1/Creature.YouCtrl+inZoneBattlefield;Creature.YouOwn+inZoneExile+warped> | EffectZone$ All | Description$ As an additional cost to cast this spell, choose a creature you control or a warped creature card you own in exile.\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to the power of the chosen creature or card to target creature.\nSVar:X:Revealed$CardPower\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, choose a creature you control or a warped creature card you own in exile.\\nCARDNAME deals damage equal to the power of the chosen creature or card to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Close Encounter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

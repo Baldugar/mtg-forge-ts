@@ -1,0 +1,23 @@
+{
+  "id": "standstill-corpus-m682",
+  "description": "M6 corpus — Standstill; in-hand parse.",
+  "seed": 64592,
+  "cards": {
+    "Standstill": "Name:Standstill\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidActivatingPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When a player casts a spell, sacrifice CARDNAME. If you do, each of that player's opponents draws three cards.\nSVar:TrigSac:AB$ Draw | NumCards$ 3 | Cost$ Mandatory Sac<1/CARDNAME> | Defined$ TriggeredCardOpponent\nSVar:Y:Count$Valid Creature.YouCtrl\nSVar:Z:Count$Valid Creature.OppCtrl\nSVar:NeedsToPlayVar:Y GTZ\nAI:RemoveDeck:All\nOracle:When a player casts a spell, sacrifice Standstill. If you do, each of that player's opponents draws three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Standstill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

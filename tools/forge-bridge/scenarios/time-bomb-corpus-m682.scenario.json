@@ -1,0 +1,23 @@
+{
+  "id": "time-bomb-corpus-m682",
+  "description": "M6 corpus — Time Bomb; in-hand parse.",
+  "seed": 64882,
+  "cards": {
+    "Time Bomb": "Name:Time Bomb\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a time counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1\nA:AB$ DamageAll | Cost$ 1 T Sac<1/CARDNAME> | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to the number of time counters on it to each creature and each player.\nSVar:X:Count$CardCounters.TIME\nOracle:At the beginning of your upkeep, put a time counter on Time Bomb.\\n{1}, {T}, Sacrifice Time Bomb: Time Bomb deals damage equal to the number of time counters on it to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Time Bomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

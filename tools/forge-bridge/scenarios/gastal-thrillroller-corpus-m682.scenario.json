@@ -1,0 +1,23 @@
+{
+  "id": "gastal-thrillroller-corpus-m682",
+  "description": "M6 corpus — Gastal Thrillroller; in-hand parse.",
+  "seed": 62469,
+  "cards": {
+    "Gastal Thrillroller": "Name:Gastal Thrillroller\nManaCost:2 R\nTypes:Artifact Vehicle\nPT:4/2\nK:Trample\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When this Vehicle enters, it becomes an artifact creature until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Types$ Artifact,Creature\nK:Crew:2\nA:AB$ ChangeZone | Cost$ 2 R Discard<1/Card> | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ FINALITY | ActivationZone$ Graveyard | SorcerySpeed$ True | SpellDescription$ Return this card from your graveyard to the battlefield with a finality counter on it. Activate only as a sorcery.\nDeckHas:Ability$Discard\nDeckHints:Ability$Graveyard|Discard\nOracle:Trample, haste\\nWhen this Vehicle enters, it becomes an artifact creature until end of turn.\\nCrew 2\\n{2}{R}, Discard a card: Return this card from your graveyard to the battlefield with a finality counter on it. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gastal Thrillroller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

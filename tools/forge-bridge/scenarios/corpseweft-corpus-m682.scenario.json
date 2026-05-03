@@ -1,0 +1,23 @@
+{
+  "id": "corpseweft-corpus-m682",
+  "description": "M6 corpus — Corpseweft; in-hand parse.",
+  "seed": 61837,
+  "cards": {
+    "Corpseweft": "Name:Corpseweft\nManaCost:2 B\nTypes:Enchantment\nA:AB$ Token | Cost$ 1 B ExileFromGrave<X/Creature> | XMin$ 1 | TokenScript$ b_x_x_zombie_horror | TokenPower$ Y | TokenToughness$ Y | TokenTapped$ True | SpellDescription$ Create a tapped X/X black Zombie Horror creature token, where X is twice the number of cards exiled this way.\nSVar:X:Count$xPaid\nSVar:Y:ExiledCards$Amount/Twice\nAI:RemoveDeck:All\nDeckHas:Ability$Token & Type$Zombie|Horror\nOracle:{1}{B}, Exile one or more creature cards from your graveyard: Create a tapped X/X black Zombie Horror creature token, where X is twice the number of cards exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corpseweft"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

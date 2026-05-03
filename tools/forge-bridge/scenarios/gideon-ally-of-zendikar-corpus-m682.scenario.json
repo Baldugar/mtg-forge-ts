@@ -1,0 +1,23 @@
+{
+  "id": "gideon-ally-of-zendikar-corpus-m682",
+  "description": "M6 corpus — Gideon, Ally of Zendikar; in-hand parse.",
+  "seed": 62516,
+  "cards": {
+    "Gideon, Ally of Zendikar": "Name:Gideon, Ally of Zendikar\nManaCost:2 W W\nTypes:Legendary Planeswalker Gideon\nLoyalty:4\nA:AB$ Animate | Cost$ AddCounter<1/LOYALTY> | Defined$ Self | Power$ 5 | Toughness$ 5 | Keywords$ Indestructible | Types$ Creature,Human,Soldier,Ally | SubAbility$ GideonPrevent | Planeswalker$ True | SpellDescription$ Until end of turn, CARDNAME becomes a 5/5 Human Soldier Ally creature with indestructible that's still a planeswalker. Prevent all damage that would be dealt to him this turn.\nSVar:GideonPrevent:DB$ Effect | ReplacementEffects$ RPrevent | Duration$ UntilHostLeavesPlayOrEOT\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ValidTarget$ Card.EffectSource | Description$ Prevent all damage that would be dealt to EFFECTSOURCE.\nA:AB$ Token | Cost$ AddCounter<0/LOYALTY> | TokenScript$ w_2_2_knight_ally | TokenOwner$ You | Planeswalker$ True | SpellDescription$ Create a 2/2 white Knight Ally creature token.\nA:AB$ Effect | Cost$ SubCounter<4/LOYALTY> | Name$ Emblem — Gideon, Ally of Zendikar | StaticAbilities$ STPump | Planeswalker$ True | Ultimate$ True | Duration$ Permanent | AILogic$ NeedCreatures:3 | SpellDescription$ You get an emblem with \"Creatures you control get +1/+1.\"\nSVar:STPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:[+1]: Until end of turn, Gideon, Ally of Zendikar becomes a 5/5 Human Soldier Ally creature with indestructible that's still a planeswalker. Prevent all damage that would be dealt to him this turn.\\n[0]: Create a 2/2 white Knight Ally creature token.\\n[-4]: You get an emblem with \"Creatures you control get +1/+1.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon, Ally of Zendikar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

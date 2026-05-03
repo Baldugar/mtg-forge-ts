@@ -1,0 +1,23 @@
+{
+  "id": "lobelia-defender-of-bag-end-corpus-m682",
+  "description": "M6 corpus — Lobelia, Defender of Bag End; in-hand parse.",
+  "seed": 63185,
+  "cards": {
+    "Lobelia, Defender of Bag End": "Name:Lobelia, Defender of Bag End\nManaCost:2 B\nTypes:Legendary Creature Halfling Citizen\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When NICKNAME enters, look at the top card of each opponent's library and exile those cards face down.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | Defined$ Opponent | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True\nA:AB$ Charm | Cost$ T Sac<1/Artifact> | Choices$ DBEffect,DBLoseGain\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | SpellDescription$ Until end of turn, you may play a card exiled with NICKNAME without paying its mana cost.\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.ExiledWithEffectSource | AffectedZone$ Exile | MayPlayLimit$ 1\nSVar:DBLoseGain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 2 | SubAbility$ DBGain2 | SpellDescription$ Each opponent loses 2 life and you gain 2 life.\nSVar:DBGain2:DB$ GainLife | Defined$ You | LifeAmount$ 2\nOracle:When Lobelia enters, look at the top card of each opponent's library and exile those cards face down.\\n{T}, Sacrifice an artifact: Choose one —\\n• Until end of turn, you may play a card exiled with Lobelia without paying its mana cost.\\n• Each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lobelia, Defender of Bag End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

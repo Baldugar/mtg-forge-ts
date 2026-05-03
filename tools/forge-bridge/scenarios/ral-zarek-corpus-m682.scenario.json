@@ -1,0 +1,23 @@
+{
+  "id": "ral-zarek-corpus-m682",
+  "description": "M6 corpus — Ral Zarek; in-hand parse.",
+  "seed": 63916,
+  "cards": {
+    "Ral Zarek": "Name:Ral Zarek\nManaCost:2 U R\nTypes:Legendary Planeswalker Ral\nLoyalty:4\nA:AB$ Tap | Cost$ AddCounter<1/LOYALTY> | ValidTgts$ Permanent | TgtPrompt$ Select target permanent to tap | Planeswalker$ True | SubAbility$ DBUntap | SpellDescription$ Tap target permanent, then untap another target permanent.\nSVar:DBUntap:DB$ Untap | ValidTgts$ Permanent | TargetUnique$ True | TgtPrompt$ Select target permanent to untap\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Any | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to any target.\nA:AB$ FlipACoin | Cost$ SubCounter<7/LOYALTY> | Amount$ 5 | NoCall$ True | HeadsSubAbility$ DBAddTurn | Planeswalker$ True | Ultimate$ True | StackDescription$ SpellDescription | SpellDescription$ Flip 5 coins. Take an extra turn after this one for each coin that comes up heads.\nSVar:DBAddTurn:DB$ AddTurn | Defined$ You | NumTurns$ X\nOracle:[+1]: Tap target permanent, then untap another target permanent.\\n[-2]: Ral Zarek deals 3 damage to any target.\\n[-7]: Flip five coins. Take an extra turn after this one for each coin that comes up heads.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ral Zarek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

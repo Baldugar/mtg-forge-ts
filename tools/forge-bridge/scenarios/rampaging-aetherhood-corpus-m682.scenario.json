@@ -1,0 +1,23 @@
+{
+  "id": "rampaging-aetherhood-corpus-m682",
+  "description": "M6 corpus — Rampaging Aetherhood; in-hand parse.",
+  "seed": 63919,
+  "cards": {
+    "Rampaging Aetherhood": "Name:Rampaging Aetherhood\nManaCost:4 G\nTypes:Creature Snake Hydra\nPT:4/4\nK:Trample\nK:Ward:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEnergy | TriggerDescription$ At the beginning of your upkeep, you get an amount of {E} (energy counters) equal to this creature's power. Then you may pay one or more {E}. If you do, put that many +1/+1 counters on this creature.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X | SubAbility$ DBChooseNumber\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Max | ListTitle$ amount of energy to pay | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | UnlessCost$ PayEnergy<Y> | UnlessPayer$ You | UnlessSwitched$ True | CounterType$ P1P1 | CounterNum$ Y\nSVar:X:Count$CardPower\nSVar:Max:Count$YourCountersEnergy\nSVar:Y:Count$ChosenNumber\nDeckHas:Ability$Counters\nOracle:Trample, ward {2}\\nAt the beginning of your upkeep, you get an amount of {E} (energy counters) equal to this creature's power. Then you may pay one or more {E}. If you do, put that many +1/+1 counters on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rampaging Aetherhood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "unstable-amulet-corpus-m682",
+  "description": "M6 corpus — Unstable Amulet; in-hand parse.",
+  "seed": 65037,
+  "cards": {
+    "Unstable Amulet": "Name:Unstable Amulet\nManaCost:1 R\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromYourHand | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever you cast a spell from anywhere other than your hand, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ Opponent\nA:AB$ ChangeZone | Cost$ T PayEnergy<2> | Defined$ Imprinted | Origin$ Command | Destination$ Exile | SubAbility$ DBCleanup | StackDescription$ None | SpellDescription$ Exile the top card of your library.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | AILogic$ ExileAndPlayUntilEOT\n# AILogic tag not quite right?\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ Play | Duration$ Permanent | ForgetOnMoved$ Exile | ImprintOnHost$ True | StackDescription$ SpellDescription | SpellDescription$ You may play it until you exile another card with CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup2\nSVar:DBCleanup2:DB$ Cleanup | ClearImprinted$ True\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card until you exile another card with EFFECTSOURCE.\nOracle:When Unstable Amulet enters, you get {E}{E} (two energy counters).\\nWhenever you cast a spell from anywhere other than your hand, Unstable Amulet deals 1 damage to each opponent.\\n{T}, Pay {E}{E}: Exile the top card of your library. You may play it until you exile another card with Unstable Amulet.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unstable Amulet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

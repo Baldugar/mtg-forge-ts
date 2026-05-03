@@ -1,0 +1,23 @@
+{
+  "id": "strax-sontaran-nurse-corpus-m682",
+  "description": "M6 corpus — Strax, Sontaran Nurse; in-hand parse.",
+  "seed": 64631,
+  "cards": {
+    "Strax, Sontaran Nurse": "Name:Strax, Sontaran Nurse\nManaCost:3 R G\nTypes:Legendary Creature Alien Cleric\nPT:5/5\nK:Vigilance\nK:Trample\nA:AB$ ChoosePlayer | Cost$ 2 T Sac<1/Artifact> | Defined$ You | Choices$ Player | PrecostDesc$ Grenades! — | Random$ True | SubAbility$ DBImmediateTrig | SpellDescription$ Choose a player at random. When you do, NICKNAME fights another target creature that player controls.\nSVar:DBImmediateTrig:DB$ ImmediateTrigger | Execute$ TrigFight | RememberObjects$ ChosenPlayer | SubAbility$ DBCleanup | TriggerDescription$ When you do, NICKNAME fights another target creature that player controls.\nSVar:TrigFight:DB$ Fight | Defined$ Self | ValidTgts$ Creature.Other+ControlledBy DelayTriggerRemembered | TgtPrompt$ Choose another target creature controlled by the chosen player\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Glory of Battle — Whenever NICKNAME deals damage to a creature, put a +1/+1 counter on NICKNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Sacrifice|Counters\nDeckHints:Type$Artifact\nOracle:Vigilance, trample\\nGrenades! — {2}, {T}, Sacrifice an artifact: Choose a player at random. When you do, Strax fights another target creature that player controls.\\nGlory of Battle — Whenever Strax deals damage to a creature, put a +1/+1 counter on Strax.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Strax, Sontaran Nurse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

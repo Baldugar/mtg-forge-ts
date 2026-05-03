@@ -1,0 +1,23 @@
+{
+  "id": "jeska-thrice-reborn-corpus-m682",
+  "description": "M6 corpus — Jeska, Thrice Reborn; in-hand parse.",
+  "seed": 62951,
+  "cards": {
+    "Jeska, Thrice Reborn": "Name:Jeska, Thrice Reborn\nManaCost:2 R\nTypes:Legendary Planeswalker Jeska\nLoyalty:0\nK:etbCounter:LOYALTY:Y:no Condition:CARDNAME enters with a loyalty counter on her for each time you've cast a commander from the command zone this game.\nSVar:Y:Count$TotalCommanderCastFromCommandZone\nA:AB$ Effect | Cost$ AddCounter<0/LOYALTY> | Planeswalker$ True | Duration$ UntilYourNextTurn | ValidTgts$ Creature | AILogic$ Pump | RememberObjects$ Targeted | ReplacementEffects$ TripleCombatDamage | SpellDescription$ Choose target creature. Until your next turn, if that creature would deal combat damage to one of your opponents, it deals triple that damage to that player instead.\nSVar:TripleCombatDamage:Event$ DamageDone | ValidSource$ Creature.IsRemembered | IsCombat$ True | ValidTarget$ Player.Opponent | ReplaceWith$ DmgTriple | Description$ Choose target creature. Until your next turn, if that creature would deal combat damage to one of your opponents, it deals triple that damage to that player instead.\nSVar:DmgTriple:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ Z\nSVar:Z:ReplaceCount$DamageAmount/Thrice\nA:AB$ DealDamage | Cost$ SubCounter<X/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Any | TgtPrompt$ Choose up to three targets | TargetMin$ 0 | TargetMax$ 3 | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to each of up to three targets.\nSVar:X:Count$xPaid\nAI:RemoveDeck:NonCommander\nText:CARDNAME can be your commander.\nK:Partner\nOracle:Jeska, Thrice Reborn enters with a loyalty counter on her for each time you've cast a commander from the command zone this game.\\n[0]: Choose target creature. Until your next turn, if that creature would deal combat damage to one of your opponents, it deals triple that damage to that player instead.\\n[-X]: Jeska, Thrice Reborn deals X damage to each of up to three targets.\\nJeska, Thrice Reborn can be your commander.\\nPartner\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeska, Thrice Reborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

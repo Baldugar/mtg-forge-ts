@@ -1,0 +1,23 @@
+{
+  "id": "firemind-s-research-corpus-m682",
+  "description": "M6 corpus — Firemind's Research; in-hand parse.",
+  "seed": 62332,
+  "cards": {
+    "Firemind's Research": "Name:Firemind's Research\nManaCost:U R\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ DBPutCounter | TriggerDescription$ Whenever you cast an instant or sorcery spell, put a charge counter on CARDNAME.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nSVar:BuffedBy:Instant,Sorcery\nA:AB$ Draw | Cost$ 1 U SubCounter<2/CHARGE> | NumCards$ 1 | SpellDescription$ Draw a card.\nA:AB$ DealDamage | Cost$ 1 R SubCounter<5/CHARGE> | ValidTgts$ Any | NumDmg$ 5 | SpellDescription$ It deals 5 damage to any target.\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckHints:Ability$Proliferate & Type$Instant|Sorcery\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell, put a charge counter on Firemind's Research.\\n{1}{U}, Remove two charge counters from Firemind's Research: Draw a card.\\n{1}{R}, Remove five charge counters from Firemind's Research: It deals 5 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firemind's Research"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

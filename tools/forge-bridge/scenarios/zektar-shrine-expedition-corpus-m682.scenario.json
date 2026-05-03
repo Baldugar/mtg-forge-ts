@@ -1,0 +1,23 @@
+{
+  "id": "zektar-shrine-expedition-corpus-m682",
+  "description": "M6 corpus — Zektar Shrine Expedition; in-hand parse.",
+  "seed": 65310,
+  "cards": {
+    "Zektar Shrine Expedition": "Name:Zektar Shrine Expedition\nManaCost:1 R\nTypes:Enchantment\nA:AB$ Token | Cost$ SubCounter<3/QUEST> Sac<1/CARDNAME> | TokenScript$ r_7_1_elemental_trample_haste | AtEOT$ Exile | SpellDescription$ Create a 7/1 red Elemental creature token with trample and haste. Exile it at the beginning of the next end step.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:MaxQuestEffect:3\nDeckHas:Ability$Counters|Token\nOracle:Landfall — Whenever a land you control enters, you may put a quest counter on Zektar Shrine Expedition.\\nRemove three quest counters from Zektar Shrine Expedition and sacrifice it: Create a 7/1 red Elemental creature token with trample and haste. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zektar Shrine Expedition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "murder-of-crows-corpus-m682",
+  "description": "M6 corpus — Murder of Crows; in-hand parse.",
+  "seed": 63460,
+  "cards": {
+    "Murder of Crows": "Name:Murder of Crows\nManaCost:3 U U\nTypes:Creature Bird\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | Execute$ TrigLoot | TriggerZones$ Battlefield | TriggerDescription$ Whenever another creature dies, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Cost$ Draw<1/You>\nOracle:Flying\\nWhenever another creature dies, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murder of Crows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

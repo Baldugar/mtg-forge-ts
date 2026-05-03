@@ -1,0 +1,23 @@
+{
+  "id": "march-of-swirling-mist-corpus-m682",
+  "description": "M6 corpus — March of Swirling Mist; in-hand parse.",
+  "seed": 63271,
+  "cards": {
+    "March of Swirling Mist": "Name:March of Swirling Mist\nManaCost:X U\nTypes:Instant\nA:SP$ Phases | AnnounceTitle$ how many blue cards to exile | Announce$ Exiled | ValidTgts$ Creature | TgtPrompt$ Select up to X target creatures | TargetMin$ 0 | TargetMax$ X | SpellDescription$ Up to X target creatures phase out. (While they're phased out, they're treated as though they don't exist. Each one phases in before its controller untaps during their next untap step.)\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Type$ Spell | Cost$ ExileFromHand<Y/Card.Blue/blue cards> | EffectZone$ All | Description$ As an additional cost to cast this spell, you may exile any number of blue cards from your hand. This spell costs {2} less to cast for each card exiled this way.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Z | EffectZone$ All | Relative$ True | Secondary$ True | Description$ This spell costs {2} less to cast for each card exiled this way.\nSVar:X:Count$xPaid\nSVar:Y:SVar$Exiled\nSVar:Z:SVar$Y/Times.2\nSVar:Exiled:Number$0\nOracle:As an additional cost to cast this spell, you may exile any number of blue cards from your hand. This spell costs {2} less to cast for each card exiled this way.\\nUp to X target creatures phase out. (While they're phased out, they're treated as though they don't exist. Each one phases in before its controller untaps during their next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "March of Swirling Mist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

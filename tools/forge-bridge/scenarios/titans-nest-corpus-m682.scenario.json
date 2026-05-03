@@ -1,0 +1,23 @@
+{
+  "id": "titans-nest-corpus-m682",
+  "description": "M6 corpus — Titans' Nest; in-hand parse.",
+  "seed": 64897,
+  "cards": {
+    "Titans' Nest": "Name:Titans' Nest\nManaCost:1 B G U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ Mana | Cost$ ExileFromGrave<1/Card> | Produced$ C | RestrictValid$ Spell.nonColorless+!hasXCost | SpellDescription$ Add {C}. Spend this mana only to cast a spell that's one or more colors without {X} in its mana cost.\nAI:RemoveDeck:All\nDeckHas:Ability$Surveil|Graveyard\nOracle:At the beginning of your upkeep, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\\nExile a card from your graveyard: Add {C}. Spend this mana only to cast a spell that's one or more colors without {X} in its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titans' Nest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

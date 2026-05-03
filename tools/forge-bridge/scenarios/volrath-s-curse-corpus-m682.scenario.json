@@ -1,0 +1,23 @@
+{
+  "id": "volrath-s-curse-corpus-m682",
+  "description": "M6 corpus — Volrath's Curse; in-hand parse.",
+  "seed": 65153,
+  "cards": {
+    "Volrath's Curse": "Name:Volrath's Curse\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Creature.powerLT4\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous,CantAttack,CantBlock,CantBeActivated | Affected$ Creature.EnchantedBy | ValidCard$ Card.EnchantedBy | IgnoreEffectCost$ Sac<1/Permanent> | Description$ Enchanted creature can't attack or block, and its activated abilities can't be activated. That creature's controller may sacrifice a permanent for that player to ignore this effect until end of turn.\nA:AB$ ChangeZone | Cost$ 1 U | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nOracle:Enchant creature\\nEnchanted creature can't attack or block, and its activated abilities can't be activated. That creature's controller may sacrifice a permanent for that player to ignore this effect until end of turn.\\n{1}{U}: Return Volrath's Curse to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volrath's Curse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

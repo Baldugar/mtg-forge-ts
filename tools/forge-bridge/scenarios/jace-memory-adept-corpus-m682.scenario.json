@@ -1,0 +1,23 @@
+{
+  "id": "jace-memory-adept-corpus-m682",
+  "description": "M6 corpus — Jace, Memory Adept; in-hand parse.",
+  "seed": 62927,
+  "cards": {
+    "Jace, Memory Adept": "Name:Jace, Memory Adept\nManaCost:3 U U\nTypes:Legendary Planeswalker Jace\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Defined$ You | SubAbility$ DBMill | Planeswalker$ True | SpellDescription$ Draw a card. Target player mills a card.\nSVar:DBMill:DB$ Mill | ValidTgts$ Player | NumCards$ 1\nA:AB$ Mill | Cost$ AddCounter<0/LOYALTY> | ValidTgts$ Player | NumCards$ 10 | Planeswalker$ True | SpellDescription$ Target player mills 10 cards.\nA:AB$ Draw | Cost$ SubCounter<7/LOYALTY> | ValidTgts$ Player | TargetMin$ 0 | TargetMax$ MaxTgt | NumCards$ 20 | Planeswalker$ True | Ultimate$ True | SpellDescription$ Any number of target players each draw 20 cards.\nSVar:MaxTgt:PlayerCountPlayers$Amount\nOracle:[+1]: Draw a card. Target player mills a card.\\n[0]: Target player mills ten cards.\\n[-7]: Any number of target players each draw twenty cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, Memory Adept"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "guild-globe-corpus-m682",
+  "description": "M6 corpus — Guild Globe; in-hand parse.",
+  "seed": 62666,
+  "cards": {
+    "Guild Globe": "Name:Guild Globe\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Mana | Cost$ 2 T Sac<1/CARDNAME> | Produced$ Combo AnyDifferent | Amount$ 2 | SpellDescription$ Add two mana of different colors.\nAI:RemoveDeck:All\nOracle:When Guild Globe enters, draw a card.\\n{2}, {T}, Sacrifice Guild Globe: Add two mana of different colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guild Globe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

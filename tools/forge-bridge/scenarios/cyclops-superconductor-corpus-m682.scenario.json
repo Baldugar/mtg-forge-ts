@@ -1,0 +1,23 @@
+{
+  "id": "cyclops-superconductor-corpus-m682",
+  "description": "M6 corpus — Cyclops Superconductor; in-hand parse.",
+  "seed": 61905,
+  "cards": {
+    "Cyclops Superconductor": "Name:Cyclops Superconductor\nManaCost:1 U R\nTypes:Creature Cyclops Wizard\nPT:2/2\nK:Prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ DBTrigger | TriggerDescription$ When CARDNAME dies, you may pay {E}{E}{E}. When you do, CARDNAME deals damage equal to its power to any target.\nSVar:DBTrigger:AB$ ImmediateTrigger | Cost$ PayEnergy<3> | Execute$ TrigDamage | TriggerDescription$ When you do, CARDNAME deals damage equal to its power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Count$CardPower\nDeckHints:Type$Instant|Sorcery\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhen Cyclops Superconductor enters, you get {E}{E}{E} (three energy counters).\\nWhen Cyclops Superconductor dies, you may pay {E}{E}{E}. When you do, Cyclops Superconductor deals damage equal to its power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclops Superconductor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

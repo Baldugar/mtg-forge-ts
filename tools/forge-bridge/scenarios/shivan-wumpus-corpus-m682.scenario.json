@@ -1,0 +1,23 @@
+{
+  "id": "shivan-wumpus-corpus-m682",
+  "description": "M6 corpus — Shivan Wumpus; in-hand parse.",
+  "seed": 64347,
+  "cards": {
+    "Shivan Wumpus": "Name:Shivan Wumpus\nManaCost:3 R\nTypes:Creature Beast\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, any player may sacrifice a land. If a player does, put CARDNAME on top of its owner's library.\nSVar:TrigSac:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | Defined$ Self | UnlessCost$ Sac<1/Land> | UnlessPayer$ Player | UnlessSwitched$ True\nOracle:Trample\\nWhen Shivan Wumpus enters, any player may sacrifice a land. If a player does, put Shivan Wumpus on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shivan Wumpus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

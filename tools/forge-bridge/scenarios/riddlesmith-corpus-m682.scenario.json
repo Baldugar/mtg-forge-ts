@@ -1,0 +1,23 @@
+{
+  "id": "riddlesmith-corpus-m682",
+  "description": "M6 corpus — Riddlesmith; in-hand parse.",
+  "seed": 64007,
+  "cards": {
+    "Riddlesmith": "Name:Riddlesmith\nManaCost:1 U\nTypes:Creature Human Artificer\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | Execute$ TrigLoot | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact spell, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Cost$ Draw<1/You>\nAI:RemoveDeck:Random\nOracle:Whenever you cast an artifact spell, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riddlesmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

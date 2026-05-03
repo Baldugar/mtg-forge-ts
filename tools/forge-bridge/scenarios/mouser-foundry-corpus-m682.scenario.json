@@ -1,0 +1,23 @@
+{
+  "id": "mouser-foundry-corpus-m682",
+  "description": "M6 corpus — Mouser Foundry; in-hand parse.",
+  "seed": 63447,
+  "cards": {
+    "Mouser Foundry": "Name:Mouser Foundry\nManaCost:1 R\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this artifact enters or leaves the battlefield, create a 1/1 colorless Robot artifact creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When this artifact enters or leaves the battlefield, create a 1/1 colorless Robot artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_robot | TokenOwner$ You\nA:AB$ DealDamage | Cost$ 4 R Sac<1/CARDNAME/this artifact> | ValidTgts$ Creature | NumDmg$ 3 | SpellDescription$ It deals 3 damage to target creature.\nDeckHas:Ability$Sacrifice|Token\nOracle:When this artifact enters or leaves the battlefield, create a 1/1 colorless Robot artifact creature token.\\n{4}{R}, Sacrifice this artifact: It deals 3 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mouser Foundry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

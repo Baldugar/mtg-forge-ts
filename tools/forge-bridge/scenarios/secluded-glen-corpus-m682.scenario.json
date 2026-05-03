@@ -1,0 +1,23 @@
+{
+  "id": "secluded-glen-corpus-m682",
+  "description": "M6 corpus — Secluded Glen; in-hand parse.",
+  "seed": 64255,
+  "cards": {
+    "Secluded Glen": "Name:Secluded Glen\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | SpellDescription$ Add {U} or {B}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal a Faerie card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Faerie> | UnlessPayer$ You | StackDescription$ enters tapped.\nOracle:As Secluded Glen enters, you may reveal a Faerie card from your hand. If you don't, Secluded Glen enters tapped.\\n{T}: Add {U} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Secluded Glen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

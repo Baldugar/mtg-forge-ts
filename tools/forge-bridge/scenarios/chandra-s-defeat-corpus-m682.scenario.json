@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-defeat-corpus-m682",
+  "description": "M6 corpus — Chandra's Defeat; in-hand parse.",
+  "seed": 61710,
+  "cards": {
+    "Chandra's Defeat": "Name:Chandra's Defeat\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.Red,Planeswalker.Red | TgtPrompt$ Select target red creature or red planeswalker | NumDmg$ 5 | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals 5 damage to target red creature or red planeswalker. If that permanent is a Chandra planeswalker, you may discard a card. If you do, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Targeted | ConditionPresent$ Planeswalker.Chandra | UnlessCost$ Discard<1/Card> | UnlessSwitched$ True | UnlessPayer$ You\nOracle:Chandra's Defeat deals 5 damage to target red creature or red planeswalker. If that permanent is a Chandra planeswalker, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Defeat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

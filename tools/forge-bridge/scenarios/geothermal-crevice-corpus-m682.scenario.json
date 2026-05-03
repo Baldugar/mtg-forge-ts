@@ -1,0 +1,23 @@
+{
+  "id": "geothermal-crevice-corpus-m682",
+  "description": "M6 corpus — Geothermal Crevice; in-hand parse.",
+  "seed": 62489,
+  "cards": {
+    "Geothermal Crevice": "Name:Geothermal Crevice\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ B G | SpellDescription$ Add {B}{G}.\nAI:RemoveDeck:All\nOracle:Geothermal Crevice enters tapped.\\n{T}: Add {R}.\\n{T}, Sacrifice Geothermal Crevice: Add {B}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geothermal Crevice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

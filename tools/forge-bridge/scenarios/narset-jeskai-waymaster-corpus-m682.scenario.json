@@ -1,0 +1,23 @@
+{
+  "id": "narset-jeskai-waymaster-corpus-m682",
+  "description": "M6 corpus — Narset, Jeskai Waymaster; in-hand parse.",
+  "seed": 63499,
+  "cards": {
+    "Narset, Jeskai Waymaster": "Name:Narset, Jeskai Waymaster\nManaCost:U R W\nTypes:Legendary Creature Human Monk\nPT:3/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, you may discard your hand. If you do, draw cards equal to the number of spells you've cast this turn.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Hand> | NumCards$ X\nSVar:X:Count$ThisTurnCast_Card.YouCtrl\nOracle:At the beginning of your end step, you may discard your hand. If you do, draw cards equal to the number of spells you've cast this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Narset, Jeskai Waymaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

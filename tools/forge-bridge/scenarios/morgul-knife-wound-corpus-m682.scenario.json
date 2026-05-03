@@ -1,0 +1,23 @@
+{
+  "id": "morgul-knife-wound-corpus-m682",
+  "description": "M6 corpus — Morgul-Knife Wound; in-hand parse.",
+  "seed": 63435,
+  "cards": {
+    "Morgul-Knife Wound": "Name:Morgul-Knife Wound\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -3 | AddTrigger$ TrigExile | Description$ Enchanted creature gets -3/-0 and has \"At the beginning of your upkeep, exile this creature unless you pay 2 life.\"\nSVar:TrigExile:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExileEnchanted | TriggerDescription$ At the beginning of your upkeep, exile this creature unless you pay 2 life.\nSVar:TrigExileEnchanted:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | UnlessCost$ PayLife<2> | UnlessPayer$ TriggeredPlayer\nOracle:Enchant creature\\nEnchanted creature gets -3/-0 and has \"At the beginning of your upkeep, exile this creature unless you pay 2 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Morgul-Knife Wound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

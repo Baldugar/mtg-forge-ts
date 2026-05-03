@@ -1,0 +1,23 @@
+{
+  "id": "ruin-processor-corpus-m682",
+  "description": "M6 corpus — Ruin Processor; in-hand parse.",
+  "seed": 64064,
+  "cards": {
+    "Ruin Processor": "Name:Ruin Processor\nManaCost:7\nTypes:Creature Eldrazi Processor\nPT:7/8\nT:Mode$ SpellCast | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigHerd | TriggerDescription$ When you cast this spell, you may put a card an opponent owns from exile into that player's graveyard. If you do, you gain 5 life.\nSVar:TrigHerd:AB$ GainLife | Cost$ ExiledMoveToGrave<1/Card.OppOwn/card an opponent owns> | Defined$ You | LifeAmount$ 5\nDeckHints:Keyword$Ingest\nDeckHas:Ability$LifeGain\nOracle:When you cast this spell, you may put a card an opponent owns from exile into that player's graveyard. If you do, you gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruin Processor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

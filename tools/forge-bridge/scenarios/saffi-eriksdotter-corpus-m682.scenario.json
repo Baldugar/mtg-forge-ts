@@ -1,0 +1,23 @@
+{
+  "id": "saffi-eriksdotter-corpus-m682",
+  "description": "M6 corpus — Saffi Eriksdotter; in-hand parse.",
+  "seed": 64131,
+  "cards": {
+    "Saffi Eriksdotter": "Name:Saffi Eriksdotter\nManaCost:G W\nTypes:Legendary Creature Human Scout\nPT:2/2\nA:AB$ Effect | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature | Triggers$ TrigChangesZone | ForgetOnMoved$ Graveyard | RememberObjects$ Targeted | SpellDescription$ When target creature is put into your graveyard this turn, return that card to the battlefield.\nSVar:TrigChangesZone:Mode$ ChangesZone | ValidCard$ Creature.IsRemembered+YouOwn | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigBounceMe | TriggerDescription$ When this creature is put into your graveyard from the battlefield this turn, return it to the battlefield.\nSVar:TrigBounceMe:DB$ ChangeZone | Defined$ Remembered | Origin$ Graveyard | Destination$ Battlefield\nAI:RemoveDeck:All\nOracle:Sacrifice Saffi Eriksdotter: When target creature is put into your graveyard this turn, return that card to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saffi Eriksdotter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

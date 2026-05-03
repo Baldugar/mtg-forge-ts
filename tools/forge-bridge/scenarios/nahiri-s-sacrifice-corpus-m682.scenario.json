@@ -1,0 +1,23 @@
+{
+  "id": "nahiri-s-sacrifice-corpus-m682",
+  "description": "M6 corpus — Nahiri's Sacrifice; in-hand parse.",
+  "seed": 63493,
+  "cards": {
+    "Nahiri's Sacrifice": "Name:Nahiri's Sacrifice\nManaCost:1 R\nTypes:Sorcery\nA:SP$ DealDamage | Cost$ 1 R Sac<1/Creature.cmcEQX;Artifact.cmcEQX/artifact or creature with mana value X> | Announce$ X | ValidTgts$ Creature | TgtPrompt$ Select any number of target creatures to distribute damage to | NumDmg$ X | TargetMin$ 0 | TargetMax$ MaxTgts | DividedAsYouChoose$ X | SpellDescription$ CARDNAME deals X damage divided as you choose among any number of target creatures.\nSVar:MaxTgts:Count$Valid Creature\nSVar:AIPreference:SacCost$Creature,Artifact\n# X needs to be set this way to allow cost checks to pass — will be overwritten by Announce\nSVar:X:Count$Valid Creature.YouCtrl,Artifact.YouCtrl$GreatestCardManaCost\nOracle:As an additional cost to cast this spell, sacrifice an artifact or creature with mana value X.\\nNahiri's Sacrifice deals X damage divided as you choose among any number of target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nahiri's Sacrifice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

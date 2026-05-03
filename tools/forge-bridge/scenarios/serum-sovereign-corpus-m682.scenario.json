@@ -1,0 +1,23 @@
+{
+  "id": "serum-sovereign-corpus-m682",
+  "description": "M6 corpus — Serum Sovereign; in-hand parse.",
+  "seed": 64294,
+  "cards": {
+    "Serum Sovereign": "Name:Serum Sovereign\nManaCost:4 U\nTypes:Creature Phyrexian Sphinx\nPT:4/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nA:AB$ Draw | Cost$ U SubCounter<1/OIL/NICKNAME> | SubAbility$ DBScry | SpellDescription$ Draw a card, then scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever you cast a noncreature spell, put an oil counter on Serum Sovereign.\\n{U}, Remove an oil counter from Serum Sovereign: Draw a card, then scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serum Sovereign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

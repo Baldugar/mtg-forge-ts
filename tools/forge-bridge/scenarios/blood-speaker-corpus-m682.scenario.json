@@ -1,0 +1,23 @@
+{
+  "id": "blood-speaker-corpus-m682",
+  "description": "M6 corpus — Blood Speaker; in-hand parse.",
+  "seed": 61550,
+  "cards": {
+    "Blood Speaker": "Name:Blood Speaker\nManaCost:3 B\nTypes:Creature Ogre Shaman\nPT:3/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSearch | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may sacrifice CARDNAME. If you do, search your library for a Demon card, reveal that card, put it into your hand, then shuffle.\nSVar:TrigSearch:AB$ ChangeZone | Cost$ Sac<1/CARDNAME> | Origin$ Library | Destination$ Hand | ChangeType$ Demon | ChangeNum$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Demon.YouCtrl | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever a Demon you control enters, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nDeckHints:Type$Demon\nOracle:At the beginning of your upkeep, you may sacrifice Blood Speaker. If you do, search your library for a Demon card, reveal that card, put it into your hand, then shuffle.\\nWhenever a Demon you control enters, return Blood Speaker from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blood Speaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

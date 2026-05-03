@@ -1,0 +1,23 @@
+{
+  "id": "mercenary-knight-corpus-m682",
+  "description": "M6 corpus — Mercenary Knight; in-hand parse.",
+  "seed": 63335,
+  "cards": {
+    "Mercenary Knight": "Name:Mercenary Knight\nManaCost:2 B\nTypes:Creature Human Mercenary Knight\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacSelf | TriggerDescription$ When CARDNAME enters, sacrifice it unless you discard a creature card.\nSVar:DBSacSelf:DB$ Sacrifice | UnlessCost$ Discard<1/Creature> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$ValidHand Creature.YouOwn\nOracle:When Mercenary Knight enters, sacrifice it unless you discard a creature card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mercenary Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

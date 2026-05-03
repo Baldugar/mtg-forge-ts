@@ -1,0 +1,23 @@
+{
+  "id": "obsessive-stitcher-corpus-m682",
+  "description": "M6 corpus — Obsessive Stitcher; in-hand parse.",
+  "seed": 63607,
+  "cards": {
+    "Obsessive Stitcher": "Name:Obsessive Stitcher\nManaCost:1 U B\nTypes:Creature Human Wizard\nPT:0/3\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nA:AB$ ChangeZone | Cost$ 2 U B T Sac<1/CARDNAME> | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return target creature card from your graveyard to the battlefield.\nDeckHas:Ability$Graveyard|Discard\nOracle:{T}: Draw a card, then discard a card.\\n{2}{U}{B}, {T}, Sacrifice Obsessive Stitcher: Return target creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Obsessive Stitcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

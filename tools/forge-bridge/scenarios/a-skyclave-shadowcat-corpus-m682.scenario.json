@@ -1,0 +1,23 @@
+{
+  "id": "a-skyclave-shadowcat-corpus-m682",
+  "description": "M6 corpus — A-Skyclave Shadowcat; in-hand parse.",
+  "seed": 64115,
+  "cards": {
+    "A-Skyclave Shadowcat": "Name:A-Skyclave Shadowcat\nManaCost:2 B\nTypes:Creature Cat Horror\nPT:3/3\nA:AB$ PutCounter | Cost$ B Sac<1/Creature.Other/another creature> | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+counters_GE1_P1P1 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control with a +1/+1 counter on it dies, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Sacrifice|Counters\nOracle:{B}, Sacrifice another creature: Put a +1/+1 counter on Skyclave Shadowcat.\\nWhenever a creature you control with a +1/+1 counter on it dies, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Skyclave Shadowcat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

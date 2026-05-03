@@ -1,0 +1,23 @@
+{
+  "id": "spawning-pit-corpus-m682",
+  "description": "M6 corpus — Spawning Pit; in-hand parse.",
+  "seed": 64526,
+  "cards": {
+    "Spawning Pit": "Name:Spawning Pit\nManaCost:2\nTypes:Artifact\nA:AB$ PutCounter | Cost$ Sac<1/Creature> | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nA:AB$ Token | Cost$ 1 SubCounter<2/CHARGE> | TokenController$ You | TokenScript$ c_2_2_a_spawn | SpellDescription$ Create a 2/2 colorless Spawn artifact creature token.\nAI:RemoveDeck:All\nOracle:Sacrifice a creature: Put a charge counter on Spawning Pit.\\n{1}, Remove two charge counters from Spawning Pit: Create a 2/2 colorless Spawn artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawning Pit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "faerie-impostor-corpus-m682",
+  "description": "M6 corpus — Faerie Impostor; in-hand parse.",
+  "seed": 62274,
+  "cards": {
+    "Faerie Impostor": "Name:Faerie Impostor\nManaCost:U\nTypes:Creature Faerie Rogue\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return another creature you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Creature.Other/other creature> | UnlessPayer$ You\nSVar:NeedsToPlay:Creature.YouCtrl\nOracle:Flying\\nWhen Faerie Impostor enters, sacrifice it unless you return another creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Impostor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

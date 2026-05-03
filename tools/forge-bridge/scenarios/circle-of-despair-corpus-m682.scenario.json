@@ -1,0 +1,23 @@
+{
+  "id": "circle-of-despair-corpus-m682",
+  "description": "M6 corpus — Circle of Despair; in-hand parse.",
+  "seed": 61749,
+  "cards": {
+    "Circle of Despair": "Name:Circle of Despair\nManaCost:1 W B\nTypes:Enchantment\nA:AB$ ChooseSource | Cost$ 1 Sac<1/Creature> | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to any target this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Any | TgtPrompt$ Select any target to prevent damage to | ExileOnMoved$ Battlefield | ReplacementEffects$ RPreventNextFromSource | RememberObjects$ Targeted | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ Card.IsRemembered,Player.IsRemembered | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen source deals damage to the targeted permanent or player, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:NonStackingEffect:True\nSVar:AIPreference:SacCost$Creature.namedBrood of Cockroaches,Creature.token\nAI:RemoveDeck:All\nOracle:{1}, Sacrifice a creature: The next time a source of your choice would deal damage to any target this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Circle of Despair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

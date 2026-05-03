@@ -1,0 +1,23 @@
+{
+  "id": "heroism-corpus-m682",
+  "description": "M6 corpus — Heroism; in-hand parse.",
+  "seed": 62749,
+  "cards": {
+    "Heroism": "Name:Heroism\nManaCost:2 W\nTypes:Enchantment\nA:AB$ RepeatEach | Cost$ Sac<1/Creature.White/White Creature> | RepeatCards$ Creature.attacking+Red | UseImprinted$ True | RepeatSubAbility$ DBPump | SubAbility$ DBEffect | SpellDescription$ For each attacking red creature, prevent all combat damage that would be dealt by that creature this turn unless its controller pays {2}{R}.\nSVar:DBPump:DB$ Pump | RememberObjects$ Imprinted | UnlessCost$ 2 R | UnlessPayer$ ImprintedController | ShowCurrentCard$ Imprinted\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Remembered | ForgetOnMoved$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by that creature.\nSVar:AIPreference:SacCost$Creature.token\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Sacrifice a white creature: For each attacking red creature, prevent all combat damage that would be dealt by that creature this turn unless its controller pays {2}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heroism"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

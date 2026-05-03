@@ -1,0 +1,23 @@
+{
+  "id": "titan-of-littjara-corpus-m682",
+  "description": "M6 corpus — Titan of Littjara; in-hand parse.",
+  "seed": 64896,
+  "cards": {
+    "Titan of Littjara": "Name:Titan of Littjara\nManaCost:4 U U\nTypes:Creature Illusion\nPT:6/6\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Card.Self | AddType$ ChosenType | Description$ CARDNAME is the chosen type in addition to its other types.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, you may draw a card for each other creature you control that shares a creature type with it. If you do, discard a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may draw a card for each other creature you control that shares a creature type with it. If you do, discard a card.\nSVar:TrigDraw:AB$ Discard | Cost$ Draw<X/You> | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nSVar:X:Count$Valid Creature.YouCtrl+Other+sharesCreatureTypeWith\nSVar:HasAttackEffect:TRUE\nOracle:As Titan of Littjara enters, choose a creature type.\\nTitan of Littjara is the chosen type in addition to its other types.\\nWhenever Titan of Littjara enters or attacks, you may draw a card for each other creature you control that shares a creature type with it. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titan of Littjara"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

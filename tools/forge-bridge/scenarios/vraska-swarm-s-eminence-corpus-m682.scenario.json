@@ -1,0 +1,23 @@
+{
+  "id": "vraska-swarm-s-eminence-corpus-m682",
+  "description": "M6 corpus — Vraska, Swarm's Eminence; in-hand parse.",
+  "seed": 65168,
+  "cards": {
+    "Vraska, Swarm's Eminence": "Name:Vraska, Swarm's Eminence\nManaCost:2 BG BG\nTypes:Legendary Planeswalker Vraska\nLoyalty:5\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+withDeathtouch+inZoneBattlefield | ValidTarget$ Player,Planeswalker | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control with deathtouch deals damage to a player or planeswalker, put a +1/+1 counter on that creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ b_1_1_assassin_deathtouch_pwdestroy | TokenOwner$ You | SpellDescription$ Create a 1/1 black Assassin creature token with deathtouch and \"Whenever this creature deals damage to a planeswalker, destroy that planeswalker.\"\nDeckHas:Ability$Counters|Token\nOracle:Whenever a creature you control with deathtouch deals damage to a player or planeswalker, put a +1/+1 counter on that creature.\\n[-2]: Create a 1/1 black Assassin creature token with deathtouch and \"Whenever this creature deals damage to a planeswalker, destroy that planeswalker.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska, Swarm's Eminence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

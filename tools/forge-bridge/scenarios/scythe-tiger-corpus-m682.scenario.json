@@ -1,0 +1,23 @@
+{
+  "id": "scythe-tiger-corpus-m682",
+  "description": "M6 corpus — Scythe Tiger; in-hand parse.",
+  "seed": 64242,
+  "cards": {
+    "Scythe Tiger": "Name:Scythe Tiger\nManaCost:G\nTypes:Creature Cat\nPT:3/2\nK:Shroud\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice a Land.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<1/Land> | UnlessPayer$ You\nSVar:NeedsToPlay:Land.YouCtrl\nOracle:Shroud (This creature can't be the target of spells or abilities.)\\nWhen Scythe Tiger enters, sacrifice it unless you sacrifice a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scythe Tiger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

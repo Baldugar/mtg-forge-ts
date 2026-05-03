@@ -1,0 +1,23 @@
+{
+  "id": "mind-raker-corpus-m682",
+  "description": "M6 corpus — Mind Raker; in-hand parse.",
+  "seed": 63364,
+  "cards": {
+    "Mind Raker": "Name:Mind Raker\nManaCost:3 B\nTypes:Creature Eldrazi Processor\nPT:3/3\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put a card an opponent owns from exile into that player's graveyard. If you do, each opponent discards a card.\nSVar:TrigChangeZone:AB$ Discard | Cost$ ExiledMoveToGrave<1/Card.OppOwn/card an opponent owns> | Defined$ Opponent | NumCards$ 1 | Mode$ TgtChoose\nDeckHints:Keyword$Ingest\nOracle:Devoid (This card has no color.)\\nWhen Mind Raker enters, you may put a card an opponent owns from exile into that player's graveyard. If you do, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mind Raker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

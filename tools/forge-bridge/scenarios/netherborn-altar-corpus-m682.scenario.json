@@ -1,0 +1,23 @@
+{
+  "id": "netherborn-altar-corpus-m682",
+  "description": "M6 corpus — Netherborn Altar; in-hand parse.",
+  "seed": 63533,
+  "cards": {
+    "Netherborn Altar": "Name:Netherborn Altar\nManaCost:1 B\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ T AddCounter<1/SOUL> | ChangeType$ Card.IsCommander+YouOwn | SelectPrompt$ Select a commander | ChangeNum$ 1 | Mandatory$ True | Origin$ Command | Destination$ Hand | Hidden$ True | SubAbility$ DBLoseLife | StackDescription$ SpellDescription | SpellDescription$ Put your commander into your hand from the command zone. Then you lose 3 life for each soul counter on CARDNAME.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$CardCounters.SOUL/Times.3\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:{T}, Put a soul counter on Netherborn Altar: Put your commander into your hand from the command zone. Then you lose 3 life for each soul counter on Netherborn Altar.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Netherborn Altar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

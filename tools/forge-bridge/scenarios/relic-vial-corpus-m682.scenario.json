@@ -1,0 +1,23 @@
+{
+  "id": "relic-vial-corpus-m682",
+  "description": "M6 corpus — Relic Vial; in-hand parse.",
+  "seed": 63971,
+  "cards": {
+    "Relic Vial": "Name:Relic Vial\nManaCost:3\nTypes:Artifact\nA:AB$ Draw | Cost$ 2 T Sac<1/Creature> | NumCards$ 1 | SpellDescription$ Draw a card.\nS:Mode$ Continuous | Affected$ Card.Self | AddTrigger$ TrigDrain | IsPresent$ Cleric.YouCtrl | Description$ As long as you control a Cleric, CARDNAME has \"Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.\"\nSVar:TrigDrain:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Sacrifice|LifeGain\nDeckNeeds:Type$Cleric\nOracle:{2}, {T}, Sacrifice a creature: Draw a card.\\nAs long as you control a Cleric, Relic Vial has \"Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relic Vial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

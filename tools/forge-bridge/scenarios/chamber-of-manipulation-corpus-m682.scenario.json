@@ -1,0 +1,23 @@
+{
+  "id": "chamber-of-manipulation-corpus-m682",
+  "description": "M6 corpus — Chamber of Manipulation; in-hand parse.",
+  "seed": 61678,
+  "cards": {
+    "Chamber of Manipulation": "Name:Chamber of Manipulation\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ ChamberofManipulationTap | Description$ Enchanted land has \"{T}, Discard a card: Gain control of target creature until end of turn.\"\nSVar:ChamberofManipulationTap:AB$ GainControl | Cost$ T Discard<1/Card> | ValidTgts$ Creature | LoseControl$ EOT | SpellDescription$ Gain control of target creature until end of turn.\nAI:RemoveDeck:All\nOracle:Enchant land\\nEnchanted land has \"{T}, Discard a card: Gain control of target creature until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chamber of Manipulation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

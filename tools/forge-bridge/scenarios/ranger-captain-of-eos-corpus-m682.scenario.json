@@ -1,0 +1,23 @@
+{
+  "id": "ranger-captain-of-eos-corpus-m682",
+  "description": "M6 corpus — Ranger-Captain of Eos; in-hand parse.",
+  "seed": 63920,
+  "cards": {
+    "Ranger-Captain of Eos": "Name:Ranger-Captain of Eos\nManaCost:1 W W\nTypes:Creature Human Soldier Ranger\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a creature card with mana value 1 or less, reveal that card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Creature.cmcLE1 | ChangeNum$ 1 | ShuffleNonMandatory$ True\nA:AB$ Effect | Cost$ Sac<1/CARDNAME> | StaticAbilities$ STCantBeCast | SpellDescription$ Your opponents can't cast noncreature spells this turn.\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Card.nonCreature | Caster$ Opponent | Description$ Your opponents can't cast noncreature spells this turn.\nOracle:When Ranger-Captain of Eos enters, you may search your library for a creature card with mana value 1 or less, reveal it, put it into your hand, then shuffle.\\nSacrifice Ranger-Captain of Eos: Your opponents can't cast noncreature spells this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ranger-Captain of Eos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

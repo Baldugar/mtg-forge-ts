@@ -1,0 +1,23 @@
+{
+  "id": "memorial-to-folly-corpus-m682",
+  "description": "M6 corpus — Memorial to Folly; in-hand parse.",
+  "seed": 63323,
+  "cards": {
+    "Memorial to Folly": "Name:Memorial to Folly\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ ChangeZone | Cost$ 2 B T Sac<1/CARDNAME> | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return target creature card from your graveyard to your hand.\nOracle:Memorial to Folly enters tapped.\\n{T}: Add {B}.\\n{2}{B}, {T}, Sacrifice Memorial to Folly: Return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memorial to Folly"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

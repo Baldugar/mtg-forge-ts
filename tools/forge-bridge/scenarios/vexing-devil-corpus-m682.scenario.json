@@ -1,0 +1,23 @@
+{
+  "id": "vexing-devil-corpus-m682",
+  "description": "M6 corpus — Vexing Devil; in-hand parse.",
+  "seed": 65094,
+  "cards": {
+    "Vexing Devil": "Name:Vexing Devil\nManaCost:R\nTypes:Creature Devil\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacrifice | TriggerDescription$ When CARDNAME enters, any opponent may have it deal 4 damage to them. If a player does, sacrifice CARDNAME.\nSVar:DBSacrifice:DB$ Sacrifice | UnlessCost$ DamageYou<4> | UnlessPayer$ Opponent | UnlessSwitched$ True\nOracle:When Vexing Devil enters, any opponent may have it deal 4 damage to them. If a player does, sacrifice Vexing Devil.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vexing Devil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

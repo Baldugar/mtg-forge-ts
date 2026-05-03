@@ -1,0 +1,23 @@
+{
+  "id": "waterspout-djinn-corpus-m682",
+  "description": "M6 corpus — Waterspout Djinn; in-hand parse.",
+  "seed": 65208,
+  "cards": {
+    "Waterspout Djinn": "Name:Waterspout Djinn\nManaCost:2 U U\nTypes:Creature Djinn\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you return an untapped Island you control to its owner's hand.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Return<1/Island.untapped+YouCtrl/untapped Island you control>\nSVar:NeedsToPlay:Island.YouCtrl\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice Waterspout Djinn unless you return an untapped Island you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waterspout Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

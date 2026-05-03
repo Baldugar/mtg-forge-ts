@@ -1,0 +1,23 @@
+{
+  "id": "drowner-of-hope-corpus-m682",
+  "description": "M6 corpus — Drowner of Hope; in-hand parse.",
+  "seed": 62104,
+  "cards": {
+    "Drowner of Hope": "Name:Drowner of Hope\nManaCost:5 U\nTypes:Creature Eldrazi\nPT:5/5\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_eldrazi_scion_sac | TokenOwner$ You\nA:AB$ Tap | Cost$ Sac<1/Card.Eldrazi+Scion> | CostDesc$ Sacrifice an Eldrazi Scion: | ValidTgts$ Creature | SpellDescription$ Tap target creature.\nDeckHints:Type$Eldrazi\nDeckHas:Ability$Mana.Colorless|Token\nOracle:Devoid (This card has no color.)\\nWhen Drowner of Hope enters, create two 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\"\\nSacrifice an Eldrazi Scion: Tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drowner of Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

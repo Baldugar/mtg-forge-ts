@@ -1,0 +1,23 @@
+{
+  "id": "crown-of-ascension-corpus-m682",
+  "description": "M6 corpus — Crown of Ascension; in-hand parse.",
+  "seed": 61871,
+  "cards": {
+    "Crown of Ascension": "Name:Crown of Ascension\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | Description$ Enchanted creature has flying.\nA:AB$ Pump | Cost$ Sac<1/CARDNAME> | Defined$ AttachedBy Sacrificed & Valid Creature.sharesCreatureTypeWith AttachedBy Sacrificed | KW$ Flying | SpellDescription$ Enchanted creature and other creatures that share a creature type with it gain flying until end of turn.\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature has flying.\\nSacrifice Crown of Ascension: Enchanted creature and other creatures that share a creature type with it gain flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crown of Ascension"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

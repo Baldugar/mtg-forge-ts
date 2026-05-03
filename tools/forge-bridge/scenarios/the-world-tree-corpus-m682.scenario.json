@@ -1,0 +1,23 @@
+{
+  "id": "the-world-tree-corpus-m682",
+  "description": "M6 corpus — The World Tree; in-hand parse.",
+  "seed": 64830,
+  "cards": {
+    "The World Tree": "Name:The World Tree\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nS:Mode$ Continuous | Affected$ Land.YouCtrl | AddAbility$ AnyMana | IsPresent$ Land.YouCtrl | PresentCompare$ GE6 | Description$ As long as you control six or more lands, lands you control have \"{T}: Add one mana of any color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nA:AB$ ChangeZone | Cost$ W W U U B B R R G G T Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ God | ChangeNum$ XFetch | StackDescription$ SpellDescription | SpellDescription$ Search your library for any number of God cards, put them onto the battlefield, then shuffle.\nSVar:XFetch:Count$ValidLibrary God.YouCtrl\nDeckHints:Type$God\nOracle:The World Tree enters tapped.\\n{T}: Add {G}.\\nAs long as you control six or more lands, lands you control have \"{T}: Add one mana of any color.\"\\n{W}{W}{U}{U}{B}{B}{R}{R}{G}{G}, {T}, Sacrifice The World Tree: Search your library for any number of God cards, put them onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The World Tree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

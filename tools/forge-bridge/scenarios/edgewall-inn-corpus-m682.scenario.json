@@ -1,0 +1,23 @@
+{
+  "id": "edgewall-inn-corpus-m682",
+  "description": "M6 corpus — Edgewall Inn; in-hand parse.",
+  "seed": 62144,
+  "cards": {
+    "Edgewall Inn": "Name:Edgewall Inn\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nA:AB$ ChangeZone | Cost$ 3 T Sac<1/CARDNAME> | TgtPrompt$ Choose target card in your graveyard that has an adventure | ValidTgts$ Card.YouCtrl+AdventureCard | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return target card that has an Adventure from your graveyard to your hand.\nDeckHas:Ability$Graveyard|Sacrifice\nDeckHints:Type$Adventure\nOracle:Edgewall Inn enters tapped.\\nAs Edgewall Inn enters, choose a color.\\n{T}: Add one mana of the chosen color.\\n{3}, {T}, Sacrifice Edgewall Inn: Return target card that has an Adventure from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Edgewall Inn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chivalric-alliance-corpus-m682",
+  "description": "M6 corpus — Chivalric Alliance; in-hand parse.",
+  "seed": 61733,
+  "cards": {
+    "Chivalric Alliance": "Name:Chivalric Alliance\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ AttackersDeclared | Execute$ TrigDraw | ValidAttackers$ Creature | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever you attack with two or more creatures, draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ Token | Cost$ 2 Discard<1/Card> | TokenScript$ wu_2_2_knight_vigilance | TokenOwner$ You | SpellDescription$ Create a 2/2 white and blue Knight creature token with vigilance.\nDeckHas:Ability$Token|Discard & Type$Knight & Color$Blue\nOracle:Whenever you attack with two or more creatures, draw a card.\\n{2}, Discard a card: Create a 2/2 white and blue Knight creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chivalric Alliance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

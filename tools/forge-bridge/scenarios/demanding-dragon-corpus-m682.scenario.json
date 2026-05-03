@@ -1,0 +1,23 @@
+{
+  "id": "demanding-dragon-corpus-m682",
+  "description": "M6 corpus — Demanding Dragon; in-hand parse.",
+  "seed": 61974,
+  "cards": {
+    "Demanding Dragon": "Name:Demanding Dragon\nManaCost:3 R R\nTypes:Creature Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 5 damage to target opponent unless that player sacrifices a creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 5 | UnlessCost$ Sac<1/Creature> | UnlessPayer$ Targeted\nOracle:Flying\\nWhen Demanding Dragon enters, it deals 5 damage to target opponent unless that player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demanding Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

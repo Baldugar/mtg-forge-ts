@@ -1,0 +1,23 @@
+{
+  "id": "catapult-fodder-corpus-m682",
+  "description": "M6 corpus — Catapult Fodder; in-hand parse.",
+  "seed": 61649,
+  "cards": {
+    "Catapult Fodder": "Name:Catapult Fodder\nManaCost:2 B\nTypes:Creature Zombie\nPT:1/5\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+powerLTtoughness | PresentCompare$ GE3 | Execute$ TrigTransform | TriggerDescription$ At the beginning of combat on your turn, if you control three or more creatures that each have toughness greater than their power, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:PlayMain1:TRUE\nAlternateMode:DoubleFaced\nOracle:At the beginning of combat on your turn, if you control three or more creatures that each have toughness greater than their power, transform Catapult Fodder.\n\nALTERNATE\n\nName:Catapult Captain\nManaCost:no cost\nColors:black\nTypes:Creature Zombie\nPT:2/6\nA:AB$ LoseLife | Cost$ 2 B T Sac<1/Creature.Other/another creature> | ValidTgts$ Opponent | LifeAmount$ X | SpellDescription$ Target opponent loses life equal to the sacrificed creature's toughness.\nSVar:X:Sacrificed$CardToughness\nOracle:{2}{B}, {T}, Sacrifice another creature: Target opponent loses life equal to the sacrificed creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Catapult Fodder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

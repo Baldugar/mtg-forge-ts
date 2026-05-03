@@ -1,0 +1,23 @@
+{
+  "id": "ring-of-ma-r-f-corpus-m682",
+  "description": "M6 corpus — Ring of Ma'rûf; in-hand parse.",
+  "seed": 64012,
+  "cards": {
+    "Ring of Ma'rûf": "Name:Ring of Ma'rûf\nManaCost:5\nTypes:Artifact\nA:AB$ Effect | Cost$ 5 T Exile<1/CARDNAME> | ReplacementEffects$ DrawReplace | SpellDescription$ The next time you would draw a card this turn, instead put a card you own from outside the game into your hand.\nSVar:DrawReplace:Event$ Draw | ValidPlayer$ You | ReplaceWith$ TutorSideboard | Description$ The next time you would draw a card this turn, instead put a card you own from outside the game into your hand.\nSVar:TutorSideboard:DB$ ChangeZone | Origin$ Sideboard | Destination$ Hand | ChangeType$ Card.YouOwn | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{5}, {T}, Exile Ring of Ma'rûf: The next time you would draw a card this turn, instead put a card you own from outside the game into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ring of Ma'rûf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

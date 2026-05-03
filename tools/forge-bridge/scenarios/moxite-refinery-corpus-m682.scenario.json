@@ -1,0 +1,23 @@
+{
+  "id": "moxite-refinery-corpus-m682",
+  "description": "M6 corpus — Moxite Refinery; in-hand parse.",
+  "seed": 63449,
+  "cards": {
+    "Moxite Refinery": "Name:Moxite Refinery\nManaCost:2\nTypes:Artifact\nA:AB$ Charm | Cost$ 2 T SubCounter<X/Any/Artifact.YouCtrl;Creature.YouCtrl/an artifact or creature you control> | Choices$ Artifact,Creature | SorcerySpeed$ True | AdditionalDescription$ . Activate only as a sorcery.\nSVar:Artifact:DB$ PutCounter | ValidTgts$ Artifact | CounterType$ CHARGE | CounterNum$ X | SpellDescription$ Put X charge counters on target artifact.\nSVar:Creature:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ X | SpellDescription$ Put X +1/+1 counters on target creature.\nSVar:X:Count$xPaid\nDeckNeeds:Ability$Counters\nDeckHas:Ability$Counters\nOracle:{2}, {T}, Remove X counters from an artifact or creature you control: Choose one. Activate only as a sorcery.\\n• Put X charge counters on target artifact.\\n• Put X +1/+1 counters on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moxite Refinery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

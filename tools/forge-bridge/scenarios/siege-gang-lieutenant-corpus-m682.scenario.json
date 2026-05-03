@@ -1,0 +1,23 @@
+{
+  "id": "siege-gang-lieutenant-corpus-m682",
+  "description": "M6 corpus — Siege-Gang Lieutenant; in-hand parse.",
+  "seed": 64366,
+  "cards": {
+    "Siege-Gang Lieutenant": "Name:Siege-Gang Lieutenant\nManaCost:3 R\nTypes:Creature Goblin\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | IsPresent$ Card.IsCommander+YouOwn+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Lieutenant — At the beginning of combat on your turn, if you control your commander, create two 1/1 red Goblin creature tokens. Those tokens gain haste until end of turn.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | PumpKeywords$ Haste | PumpDuration$ EOT | TokenOwner$ You\nA:AB$ DealDamage | Cost$ 2 Sac<1/Goblin> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nSVar:AIPreference:SacCost$Creature.Goblin+token,Creature.Goblin+cmcLE1\nDeckHas:Ability$Token\nDeckHints:Type$Goblin\nOracle:Lieutenant — At the beginning of combat on your turn, if you control your commander, create two 1/1 red Goblin creature tokens. Those tokens gain haste until end of turn.\\n{2}, Sacrifice a Goblin: Siege-Gang Lieutenant deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Siege-Gang Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

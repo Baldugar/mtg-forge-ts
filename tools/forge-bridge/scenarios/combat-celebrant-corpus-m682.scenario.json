@@ -1,0 +1,23 @@
+{
+  "id": "combat-celebrant-corpus-m682",
+  "description": "M6 corpus — Combat Celebrant; in-hand parse.",
+  "seed": 61783,
+  "cards": {
+    "Combat Celebrant": "Name:Combat Celebrant\nManaCost:2 R\nTypes:Creature Human Warrior\nPT:4/1\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | IsPresent$ Creature.Self+notExertedThisTurn | Trigger$ TrigUntapAll | Cost$ Exert<1/CARDNAME> | Description$ If CARDNAME hasn't been exerted this turn, you may exert it as it attacks. When you do, untap all other creatures you control and after this phase, there is an additional combat phase. (An exerted creature won't untap during your next untap step.)\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl+StrictlyOther | SubAbility$ DBAddCombat | SpellDescription$ When you do, untap all other creatures you control and after this phase, there is an additional combat phase.\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nOracle:If Combat Celebrant hasn't been exerted this turn, you may exert it as it attacks. When you do, untap all other creatures you control and after this phase, there is an additional combat phase. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Combat Celebrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

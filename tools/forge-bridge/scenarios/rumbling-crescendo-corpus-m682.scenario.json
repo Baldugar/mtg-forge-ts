@@ -1,0 +1,23 @@
+{
+  "id": "rumbling-crescendo-corpus-m682",
+  "description": "M6 corpus — Rumbling Crescendo; in-hand parse.",
+  "seed": 64067,
+  "cards": {
+    "Rumbling Crescendo": "Name:Rumbling Crescendo\nManaCost:3 R R\nTypes:Enchantment\nA:AB$ Destroy | Cost$ R Sac<1/CARDNAME> | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Land | SpellDescription$ Destroy up to X target lands, where X is the number of verse counters on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a verse counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ VERSE | CounterNum$ 1\nSVar:X:Count$CardCounters.VERSE\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may put a verse counter on Rumbling Crescendo.\\n{R}, Sacrifice Rumbling Crescendo: Destroy up to X target lands, where X is the number of verse counters on Rumbling Crescendo.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rumbling Crescendo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

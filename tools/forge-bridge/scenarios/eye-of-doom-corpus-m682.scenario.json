@@ -1,0 +1,23 @@
+{
+  "id": "eye-of-doom-corpus-m682",
+  "description": "M6 corpus — Eye of Doom; in-hand parse.",
+  "seed": 62265,
+  "cards": {
+    "Eye of Doom": "Name:Eye of Doom\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, each player chooses a nonland permanent and puts a doom counter on it.\nSVar:TrigChoose:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Chooser$ Remembered | Choices$ Permanent.nonLand | CounterType$ DOOM | CounterNum$ 1\nA:AB$ DestroyAll | Cost$ 2 T Sac<1/CARDNAME> | ValidCards$ Permanent.counters_GE1_DOOM | SpellDescription$ Destroy each permanent with a doom counter.\nAI:RemoveDeck:All\nOracle:When Eye of Doom enters, each player chooses a nonland permanent and puts a doom counter on it.\\n{2}, {T}, Sacrifice Eye of Doom: Destroy each permanent with a doom counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eye of Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

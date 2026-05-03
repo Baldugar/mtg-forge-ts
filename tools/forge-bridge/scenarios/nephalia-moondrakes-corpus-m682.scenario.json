@@ -1,0 +1,23 @@
+{
+  "id": "nephalia-moondrakes-corpus-m682",
+  "description": "M6 corpus — Nephalia Moondrakes; in-hand parse.",
+  "seed": 63532,
+  "cards": {
+    "Nephalia Moondrakes": "Name:Nephalia Moondrakes\nManaCost:5 U U\nTypes:Creature Drake\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ Flying\nA:AB$ PumpAll | Cost$ 4 U U ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | ValidCards$ Creature.YouCtrl | KW$ Flying | SpellDescription$ Creatures you control gain flying until end of turn.\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Nephalia Moondrakes enters, target creature gains flying until end of turn.\\n{4}{U}{U}, Exile Nephalia Moondrakes from your graveyard: Creatures you control gain flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nephalia Moondrakes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

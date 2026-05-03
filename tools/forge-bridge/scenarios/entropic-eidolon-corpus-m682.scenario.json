@@ -1,0 +1,23 @@
+{
+  "id": "entropic-eidolon-corpus-m682",
+  "description": "M6 corpus — Entropic Eidolon; in-hand parse.",
+  "seed": 62211,
+  "cards": {
+    "Entropic Eidolon": "Name:Entropic Eidolon\nManaCost:3 B\nTypes:Creature Spirit\nPT:2/2\nA:AB$ LoseLife | Cost$ B Sac<1/CARDNAME> | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ DBGainLife | SpellDescription$ Target player loses 1 life and you gain 1 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a multicolored spell, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nAI:RemoveDeck:Random\nOracle:{B}, Sacrifice Entropic Eidolon: Target player loses 1 life and you gain 1 life.\\nWhenever you cast a multicolored spell, you may return Entropic Eidolon from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Entropic Eidolon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

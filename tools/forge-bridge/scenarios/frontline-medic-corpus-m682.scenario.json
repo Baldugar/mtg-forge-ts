@@ -1,0 +1,23 @@
+{
+  "id": "frontline-medic-corpus-m682",
+  "description": "M6 corpus — Frontline Medic; in-hand parse.",
+  "seed": 62427,
+  "cards": {
+    "Frontline Medic": "Name:Frontline Medic\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.attacking+Other | NoResolvingCheck$ True | PresentCompare$ GE2 | Execute$ TrigBattalionEffect | TriggerDescription$ Battalion — Whenever CARDNAME and at least two other creatures attack, creatures you control gain indestructible until end of turn.\nSVar:TrigBattalionEffect:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Indestructible\nA:AB$ Counter | Cost$ Sac<1/CARDNAME> | TargetType$ Spell | TgtPrompt$ Select target spell with X in its mana cost | ValidTgts$ Card.hasXCost | UnlessCost$ 3 | SpellDescription$ Counter target spell with {X} in its mana cost unless its controller pays {3}.\nOracle:Battalion — Whenever Frontline Medic and at least two other creatures attack, creatures you control gain indestructible until end of turn.\\nSacrifice Frontline Medic: Counter target spell with {X} in its mana cost unless its controller pays {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frontline Medic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

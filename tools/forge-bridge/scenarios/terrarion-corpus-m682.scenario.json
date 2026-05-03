@@ -1,0 +1,23 @@
+{
+  "id": "terrarion-corpus-m682",
+  "description": "M6 corpus — Terrarion; in-hand parse.",
+  "seed": 64755,
+  "cards": {
+    "Terrarion": "Name:Terrarion\nManaCost:1\nTypes:Artifact\nA:AB$ Mana | Cost$ 2 T Sac<1/CARDNAME> | Produced$ Combo Any | Amount$ 2 | SpellDescription$ Add two mana in any combination of colors.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nAI:RemoveDeck:All\nOracle:Terrarion enters tapped.\\n{2}, {T}, Sacrifice Terrarion: Add two mana in any combination of colors.\\nWhen Terrarion is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terrarion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

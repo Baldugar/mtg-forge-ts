@@ -1,0 +1,23 @@
+{
+  "id": "scene-of-the-crime-corpus-m682",
+  "description": "M6 corpus — Scene of the Crime; in-hand parse.",
+  "seed": 64218,
+  "cards": {
+    "Scene of the Crime": "Name:Scene of the Crime\nManaCost:no cost\nTypes:Artifact Land Clue\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T tapXType<1/Creature> | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Clue\nOracle:Scene of the Crime enters tapped.\\n{T}: Add {C}.\\n{T}, Tap an untapped creature you control: Add one mana of any color.\\n{2}, Sacrifice Scene of the Crime: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scene of the Crime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

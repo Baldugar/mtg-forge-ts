@@ -1,0 +1,23 @@
+{
+  "id": "vindictive-flamestoker-corpus-m682",
+  "description": "M6 corpus — Vindictive Flamestoker; in-hand parse.",
+  "seed": 65113,
+  "cards": {
+    "Vindictive Flamestoker": "Name:Vindictive Flamestoker\nManaCost:R\nTypes:Creature Phyrexian Wizard\nPT:1/2\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nA:AB$ Discard | Cost$ 6 R Sac<1/CARDNAME> | Defined$ You | Mode$ Hand | ReduceCost$ X | SubAbility$ DBDraw | SpellDescription$ Discard your hand, then draw four cards. This ability costs {1} less to activate for each oil counter on CARDNAME.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 4\nSVar:X:Count$CardCounters.OIL\nDeckHints:Type$Instant|Sorcery\nDeckHas:Ability$Counters|Sacrifice|Discard\nOracle:Whenever you cast a noncreature spell, put an oil counter on Vindictive Flamestoker.\\n{6}{R}, Sacrifice Vindictive Flamestoker: Discard your hand, then draw four cards. This ability costs {1} less to activate for each oil counter on Vindictive Flamestoker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vindictive Flamestoker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

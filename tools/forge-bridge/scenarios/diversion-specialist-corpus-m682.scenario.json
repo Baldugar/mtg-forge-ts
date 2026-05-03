@@ -1,0 +1,23 @@
+{
+  "id": "diversion-specialist-corpus-m682",
+  "description": "M6 corpus — Diversion Specialist; in-hand parse.",
+  "seed": 62043,
+  "cards": {
+    "Diversion Specialist": "Name:Diversion Specialist\nManaCost:3 R\nTypes:Creature Human Warrior\nPT:4/3\nK:Menace\nA:AB$ Dig | Cost$ 1 Sac<1/Creature.Other;Enchantment.Other/another creature or enchantment> | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Menace (This creature can't be blocked except by two or more creatures)\\n{1}, Sacrifice another creature or enchantment: Exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diversion Specialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "skeleton-key-corpus-m682",
+  "description": "M6 corpus — Skeleton Key; in-hand parse.",
+  "seed": 64402,
+  "cards": {
+    "Skeleton Key": "Name:Skeleton Key\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Skulk | Description$ Equipped creature has skulk. (It can't be blocked by creatures with greater power.)\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you may draw a card. If you do, discard a card.\nSVar:TrigDraw:AB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | Cost$ Draw<1/You>\nK:Equip:2\nDeckHas:Ability$Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:Equipped creature has skulk. (It can't be blocked by creatures with greater power.)\\nWhenever equipped creature deals combat damage to a player, you may draw a card. If you do, discard a card.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skeleton Key"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

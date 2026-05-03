@@ -1,0 +1,23 @@
+{
+  "id": "restoration-specialist-corpus-m682",
+  "description": "M6 corpus — Restoration Specialist; in-hand parse.",
+  "seed": 63995,
+  "cards": {
+    "Restoration Specialist": "Name:Restoration Specialist\nManaCost:1 W\nTypes:Creature Dwarf Artificer\nPT:2/1\nA:AB$ ChangeZone | Cost$ W Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact card in your graveyard | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Artifact.YouOwn | SubAbility$ DBReturn | SpellDescription$ Return up to one target artifact card and up to one target enchantment card from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Enchantment.YouOwn | TgtPrompt$ Select target enchantment card in your graveyard\nOracle:{W}, Sacrifice Restoration Specialist: Return up to one target artifact card and up to one target enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Restoration Specialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

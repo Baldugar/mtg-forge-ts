@@ -1,0 +1,23 @@
+{
+  "id": "goblin-engineer-corpus-m682",
+  "description": "M6 corpus — Goblin Engineer; in-hand parse.",
+  "seed": 62567,
+  "cards": {
+    "Goblin Engineer": "Name:Goblin Engineer\nManaCost:1 R\nTypes:Creature Goblin Artificer\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an artifact card, put it into your graveyard, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Artifact | ChangeNum$ 1 | ShuffleNonMandatory$ True\nA:AB$ ChangeZone | Cost$ R T Sac<1/Artifact> | TgtPrompt$ Choose target artifact card with mana value 3 or less from your graveyard | ValidTgts$ Artifact.cmcLE3+YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return target artifact card with mana value 3 or less from your graveyard to the battlefield.\nSVar:AIPreference:SacCost$Artifact.token\nOracle:When Goblin Engineer enters, you may search your library for an artifact card, put it into your graveyard, then shuffle.\\n{R}, {T}, Sacrifice an artifact: Return target artifact card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dargo-the-shipwrecker-corpus-m682",
+  "description": "M6 corpus — Dargo, the Shipwrecker; in-hand parse.",
+  "seed": 61913,
+  "cards": {
+    "Dargo, the Shipwrecker": "Name:Dargo, the Shipwrecker\nManaCost:6 R\nTypes:Legendary Creature Giant Pirate\nPT:7/5\nA:SP$ PermanentCreature | Cost$ 6 R Sac<X/Artifact;Creature/any number of artifacts and/or creatures> | AILogic$ SacToReduceCost | AdditionalDesc$ This spell costs {2} less to cast for each permanent sacrificed this way and {2} less to cast for each other artifact or creature you've sacrificed this turn.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Y | EffectZone$ All | Relative$ True\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Z | EffectZone$ All\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.2\nSVar:Z:PlayerCountPropertyYou$SacrificedThisTurn Artifact,Creature/Times.2\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE2\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nK:Trample\nK:Partner\nOracle:As an additional cost to cast this spell, you may sacrifice any number of artifacts and/or creatures. This spell costs {2} less to cast for each permanent sacrificed this way and {2} less to cast for each other artifact or creature you've sacrificed this turn.\\nTrample\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dargo, the Shipwrecker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

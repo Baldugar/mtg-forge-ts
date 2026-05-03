@@ -1,0 +1,23 @@
+{
+  "id": "goblin-dynamo-corpus-m682",
+  "description": "M6 corpus — Goblin Dynamo; in-hand parse.",
+  "seed": 62566,
+  "cards": {
+    "Goblin Dynamo": "Name:Goblin Dynamo\nManaCost:5 R R\nTypes:Creature Goblin Mutant\nPT:4/4\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nA:AB$ DealDamage | Cost$ X R T Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ It deals X damage to any target.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:{T}: Goblin Dynamo deals 1 damage to any target.\\n{X}{R}, {T}, Sacrifice Goblin Dynamo: It deals X damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Dynamo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

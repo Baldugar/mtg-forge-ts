@@ -1,0 +1,23 @@
+{
+  "id": "propagator-primordium-corpus-m682",
+  "description": "M6 corpus — Propagator Primordium; in-hand parse.",
+  "seed": 63837,
+  "cards": {
+    "Propagator Primordium": "Name:Propagator Primordium\nManaCost:1 G\nTypes:Creature Fungus\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure two cards named Propagator Primordium into your graveyard.\nSVar:TrigConjure:DB$ MakeCard | Amount$ 2 | Conjure$ True | Name$ Propagator Primordium | Zone$ Graveyard\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a spore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SPORE | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ SubCounter<3/SPORE> | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.Fungus+YouOwn | TgtPrompt$ Choose target Fungus creature card in your graveyard | SpellDescription$ Return target Fungus creature card from your graveyard to the battlefield.\nDeckHas:Ability$Counters|Graveyard\nDeckHints:Type$Fungus\nOracle:When Propagator Primordium enters, conjure two cards named Propagator Primordium into your graveyard.\\nAt the beginning of your upkeep, put a spore counter on Propagator Primordium.\\nRemove three spore counters from Propagator Primordium: Return target Fungus creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Propagator Primordium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

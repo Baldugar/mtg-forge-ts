@@ -1,0 +1,23 @@
+{
+  "id": "redemptor-dreadnought-corpus-m682",
+  "description": "M6 corpus — Redemptor Dreadnought; in-hand parse.",
+  "seed": 63964,
+  "cards": {
+    "Redemptor Dreadnought": "Name:Redemptor Dreadnought\nManaCost:5\nTypes:Artifact Creature Astartes Dreadnought\nPT:4/4\nK:Trample\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ ExileFromGrave<1/Creature> | Description$ Fallen Warrior — As an additional cost to cast this spell, you may exile a creature card from your graveyard.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | IsPresent$ Card.ExiledWithSource | PresentZone$ Exile | TriggerDescription$ Plasma Incinerator — Whenever CARDNAME attacks, if a card is exiled with it, it gets +X/+X until end of turn, where X is the power of the exiled card.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumDef$ +Y | NumAtt$ +Y\nSVar:X:Count$xPaid\nSVar:Y:Count$ValidExile Card.ExiledWithSource$CardPower\nSVar:HasAttackEffect:TRUE\nOracle:Fallen Warrior — As an additional cost to cast this spell, you may exile a creature card from your graveyard.\\nTrample\\nPlasma Incinerator — Whenever Redemptor Dreadnought attacks, if a card is exiled with it, it gets +X/+X until end of turn, where X is the power of the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Redemptor Dreadnought"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fire-whip-corpus-m682",
+  "description": "M6 corpus — Fire Whip; in-hand parse.",
+  "seed": 62329,
+  "cards": {
+    "Fire Whip": "Name:Fire Whip\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ ABDamage | Description$ Enchanted creature has \"{T}: This creature deals 1 damage to any target.\"\nSVar:ABDamage:AB$ DealDamage | Cost$ T | NumDmg$ 1 | ValidTgts$ Any | SpellDescription$ This creature deals 1 damage to any target.\nA:AB$ DealDamage | Cost$ Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nOracle:Enchant creature you control\\nEnchanted creature has \"{T}: This creature deals 1 damage to any target.\"\\nSacrifice Fire Whip: Fire Whip deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Whip"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

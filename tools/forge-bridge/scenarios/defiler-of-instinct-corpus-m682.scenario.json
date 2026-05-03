@@ -1,0 +1,23 @@
+{
+  "id": "defiler-of-instinct-corpus-m682",
+  "description": "M6 corpus — Defiler of Instinct; in-hand parse.",
+  "seed": 61967,
+  "cards": {
+    "Defiler of Instinct": "Name:Defiler of Instinct\nManaCost:2 R R\nTypes:Creature Phyrexian Kavu\nPT:4/4\nK:First Strike\nS:Mode$ OptionalCost | ValidCard$ Permanent.Red | ValidSA$ Spell | Activator$ You | Cost$ PayLife<2> | ReduceColor$ R | Description$ As an additional cost to cast red permanent spells, you may pay 2 life. Those spells cost {R} less to cast if you paid life this way. This effect reduces only the amount of red mana you pay.\nT:Mode$ SpellCast | ValidCard$ Permanent.Red | ValidActivatingPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a red permanent spell, CARDNAME deals 1 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nSVar:BuffedBy:Permanent.Red\nOracle:First strike\\nAs an additional cost to cast red permanent spells, you may pay 2 life. Those spells cost {R} less to cast if you paid life this way. This effect reduces only the amount of red mana you pay.\\nWhenever you cast a red permanent spell, Defiler of Instinct deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiler of Instinct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

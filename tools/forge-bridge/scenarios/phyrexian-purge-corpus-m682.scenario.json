@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-purge-corpus-m682",
+  "description": "M6 corpus — Phyrexian Purge; in-hand parse.",
+  "seed": 63753,
+  "cards": {
+    "Phyrexian Purge": "Name:Phyrexian Purge\nManaCost:2 B R\nTypes:Sorcery\nA:SP$ Destroy | Cost$ 2 B R PayLife<X> | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ MaxPayLifeLimit | CostDesc$ This spell costs 3 life more to cast for each target. | SpellDescription$ Destroy any number of target creatures.\nSVar:MaxPayLifeLimit:Count$YourLifeTotal/DivideEvenlyDown.3\nSVar:X:SVar$Y/Times.3\nSVar:Y:Targeted$Amount\nAI:RemoveDeck:All\nOracle:This spell costs 3 life more to cast for each target.\\nDestroy any number of target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Purge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

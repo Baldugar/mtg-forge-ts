@@ -1,0 +1,23 @@
+{
+  "id": "synthesis-pod-corpus-m682",
+  "description": "M6 corpus — Synthesis Pod; in-hand parse.",
+  "seed": 64699,
+  "cards": {
+    "Synthesis Pod": "Name:Synthesis Pod\nManaCost:3 UP\nTypes:Artifact\nA:AB$ DigUntil | Cost$ 1 UP T ExileFromStack<1/Card.YouCtrl/spell you control> | ValidTgts$ Opponent | Valid$ Card.cmcEQX | FoundDestination$ Exile | RevealedDestination$ Library | ImprintFound$ True | Shuffle$ True | SubAbility$ DBPlay | SpellDescription$ Target opponent reveals cards from the top of their library until they reveal a card with mana value equal to 1 plus the exiled spell's mana value. Exile that card, then that player shuffles. You may cast that exiled card without paying its mana cost.\nSVar:DBPlay:DB$ Play | Defined$ Imprinted | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:X:Exiled$CardManaCost/Plus.1\nAI:RemoveDeck:All\nOracle:{1}{U/P}, {T}, Exile a spell you control: Target opponent reveals cards from the top of their library until they reveal a card with mana value equal to 1 plus the exiled spell's mana value. Exile that card, then that player shuffles. You may cast that exiled card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Synthesis Pod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

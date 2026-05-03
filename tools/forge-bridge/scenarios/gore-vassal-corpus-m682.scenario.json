@@ -1,0 +1,23 @@
+{
+  "id": "gore-vassal-corpus-m682",
+  "description": "M6 corpus — Gore Vassal; in-hand parse.",
+  "seed": 62600,
+  "cards": {
+    "Gore Vassal": "Name:Gore Vassal\nManaCost:2 W\nTypes:Creature Phyrexian Dog\nPT:2/1\nA:AB$ PutCounter | Cost$ Sac<1/CARDNAME> | CounterType$ M1M1 | CounterNum$ 1 | ValidTgts$ Creature | RememberTargets$ True | SubAbility$ DBRegenerate | SpellDescription$ Put a -1/-1 counter on target creature. Then if that creature's toughness is 1 or greater, regenerate it.\nSVar:DBRegenerate:DB$ Regenerate | Defined$ Remembered | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardToughness\nAI:RemoveDeck:All\nOracle:Sacrifice Gore Vassal: Put a -1/-1 counter on target creature. Then if that creature's toughness is 1 or greater, regenerate it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gore Vassal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "automated-assembly-line-corpus-m682",
+  "description": "M6 corpus — Automated Assembly Line; in-hand parse.",
+  "seed": 61508,
+  "cards": {
+    "Automated Assembly Line": "Name:Automated Assembly Line\nManaCost:1 W\nTypes:Artifact\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.Artifact+YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigEnergy | TriggerDescription$ Whenever one or more artifact creatures you control deal combat damage to a player, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Token | Cost$ PayEnergy<3> | TokenScript$ c_3_3_a_robot | TokenTapped$ True | SpellDescription$ Create a tapped 3/3 colorless Robot artifact creature token.\nDeckHas:Ability$Token & Type$Robot\nOracle:Whenever one or more artifact creatures you control deal combat damage to a player, you get {E} (an energy counter).\\nPay {E}{E}{E}: Create a tapped 3/3 colorless Robot artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Automated Assembly Line"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

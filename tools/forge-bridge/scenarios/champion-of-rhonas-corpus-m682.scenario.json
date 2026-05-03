@@ -1,0 +1,23 @@
+{
+  "id": "champion-of-rhonas-corpus-m682",
+  "description": "M6 corpus — Champion of Rhonas; in-hand parse.",
+  "seed": 61681,
+  "cards": {
+    "Champion of Rhonas": "Name:Champion of Rhonas\nManaCost:3 G\nTypes:Creature Jackal Warrior\nPT:3/3\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Trigger$ TrigChangeZone | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. When you do, you may put a creature card from your hand onto the battlefield. (An exerted creature won't untap during your next untap step.)\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | SpellDescription$ When you do, you may put a creature card from your hand onto the battlefield.\nOracle:You may exert Champion of Rhonas as it attacks. When you do, you may put a creature card from your hand onto the battlefield. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Champion of Rhonas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

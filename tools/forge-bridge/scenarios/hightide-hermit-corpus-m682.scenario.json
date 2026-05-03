@@ -1,0 +1,23 @@
+{
+  "id": "hightide-hermit-corpus-m682",
+  "description": "M6 corpus — Hightide Hermit; in-hand parse.",
+  "seed": 62769,
+  "cards": {
+    "Hightide Hermit": "Name:Hightide Hermit\nManaCost:4 U\nTypes:Creature Crab\nPT:4/4\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E}{E} (four energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 4\nA:AB$ Effect | Cost$ PayEnergy<2> | StaticAbilities$ CanAttack | Duration$ UntilHostLeavesPlayOrEOT | SpellDescription$ CARDNAME can attack this turn as though it didn't have defender.\nSVar:CanAttack:Mode$ CanAttackDefender | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE can attack this turn as though it didn't have defender.\nOracle:Defender\\nWhen Hightide Hermit enters, you get {E}{E}{E}{E} (four energy counters).\\nPay {E}{E}: Hightide Hermit can attack this turn as though it didn't have defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hightide Hermit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

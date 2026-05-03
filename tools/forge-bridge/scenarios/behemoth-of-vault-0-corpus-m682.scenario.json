@@ -1,0 +1,23 @@
+{
+  "id": "behemoth-of-vault-0-corpus-m682",
+  "description": "M6 corpus — Behemoth of Vault 0; in-hand parse.",
+  "seed": 61532,
+  "cards": {
+    "Behemoth of Vault 0": "Name:Behemoth of Vault 0\nManaCost:6\nTypes:Artifact Creature Robot\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E}{E} (four energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME dies, you may pay an amount of {E} equal to target nonland permanent's mana value. When you do, destroy that permanent.\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | RememberObjects$ Targeted | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | UnlessCost$ PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy that permanent.\nSVar:TrigDestroy:DB$ Destroy | Defined$ DelayTriggerRememberedLKI\nSVar:X:Targeted$CardManaCost\nOracle:Trample\\nWhen Behemoth of Vault 0 enters, you get {E}{E}{E}{E} (four energy counters).\\nWhen Behemoth of Vault 0 dies, you may pay an amount of {E} equal to target nonland permanent's mana value. When you do, destroy that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Behemoth of Vault 0"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

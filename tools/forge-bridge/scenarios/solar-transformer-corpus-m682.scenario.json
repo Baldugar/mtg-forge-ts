@@ -1,0 +1,23 @@
+{
+  "id": "solar-transformer-corpus-m682",
+  "description": "M6 corpus — Solar Transformer; in-hand parse.",
+  "seed": 64462,
+  "cards": {
+    "Solar Transformer": "Name:Solar Transformer\nManaCost:2\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T PayEnergy<1> | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Solar Transformer enters tapped.\\nWhen Solar Transformer enters, you get {E}{E}{E} (three energy counters).\\n{T}: Add {C}.\\n{T}, Pay {E}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solar Transformer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "selfless-glyphweaver-corpus-m682",
+  "description": "M6 corpus — Selfless Glyphweaver; in-hand parse.",
+  "seed": 64272,
+  "cards": {
+    "Selfless Glyphweaver": "Name:Selfless Glyphweaver\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:2/3\nA:AB$ PumpAll | Cost$ Exile<1/CARDNAME> | ValidCards$ Creature.YouCtrl | KW$ Indestructible | SpellDescription$ Creatures you control gain indestructible until end of turn.\nAlternateMode:Modal\nOracle:Exile Selfless Glyphweaver: Creatures you control gain indestructible until end of turn.\n\nALTERNATE\n\nName:Deadly Vanity\nManaCost:5 B B B\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ You | Amount$ 1 | Choices$ Creature,Planeswalker | ChoiceTitle$ Choose a creature or planeswalker | Mandatory$ True | ChoiceZone$ Battlefield | SubAbility$ DBDestroyAll | StackDescription$ SpellDescription | SpellDescription$ Choose a creature or planeswalker,\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonChosenCard,Planeswalker.nonChosenCard | StackDescription$ SpellDescription | SpellDescription$ then destroy all other creatures and planeswalkers.\nOracle:Choose a creature or planeswalker, then destroy all other creatures and planeswalkers.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selfless Glyphweaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

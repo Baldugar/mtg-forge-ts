@@ -1,0 +1,23 @@
+{
+  "id": "rydia-summoner-of-mist-corpus-m682",
+  "description": "M6 corpus — Rydia, Summoner of Mist; in-hand parse.",
+  "seed": 64084,
+  "cards": {
+    "Rydia, Summoner of Mist": "Name:Rydia, Summoner of Mist\nManaCost:R G\nTypes:Legendary Creature Human Shaman\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Landfall — Whenever a land you control enters, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nA:AB$ ChangeZone | PrecostDesc$ Summon — | Cost$ X T | ValidTgts$ Saga.YouOwn+cmcEQX | TgtPrompt$ Choose target Saga card with mana value X in your graveyard | Origin$ Graveyard | Destination$ Battlefield | SorcerySpeed$ True | WithCountersType$ FINALITY | WithCountersAmount$ 1 | SubAbility$ DBPump | RememberChanged$ True | SpellDescription$ Return target Saga card with mana value X from your graveyard to the battlefield with a finality counter on it. It gains haste until end of turn. Activate only as a sorcery.\nSVar:DBPump:DB$ Pump | KW$ Haste | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Landfall — Whenever a land you control enters, you may discard a card. If you do, draw a card.\\nSummon — {X}, {T}: Return target Saga card with mana value X from your graveyard to the battlefield with a finality counter on it. It gains haste until end of turn. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rydia, Summoner of Mist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

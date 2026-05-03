@@ -1,0 +1,23 @@
+{
+  "id": "ghost-lit-drifter-corpus-m682",
+  "description": "M6 corpus — Ghost-Lit Drifter; in-hand parse.",
+  "seed": 62501,
+  "cards": {
+    "Ghost-Lit Drifter": "Name:Ghost-Lit Drifter\nManaCost:2 U\nTypes:Creature Spirit\nPT:2/2\nK:Flying\nA:AB$ Pump | Cost$ 2 U | ValidTgts$ Creature.Other | KW$ Flying | TgtPrompt$ Select another target creature | SpellDescription$ Another target creature gains flying until end of turn.\nA:AB$ Pump | Cost$ X U Discard<1/CARDNAME> | TargetMin$ X | TargetMax$ X | KW$ Flying | ValidTgts$ Creature | TgtPrompt$ Select X target creatures | ActivationZone$ Hand | PrecostDesc$ Channel — | SpellDescription$ X target creatures gain flying until end of turn.\nSVar:X:Count$xPaid\nOracle:Flying\\n{2}{U}: Another target creature gains flying until end of turn.\\nChannel — {X}{U}, Discard Ghost-Lit Drifter: X target creatures gain flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghost-Lit Drifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

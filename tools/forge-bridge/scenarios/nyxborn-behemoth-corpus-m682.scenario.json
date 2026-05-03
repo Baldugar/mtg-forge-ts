@@ -1,0 +1,23 @@
+{
+  "id": "nyxborn-behemoth-corpus-m682",
+  "description": "M6 corpus — Nyxborn Behemoth; in-hand parse.",
+  "seed": 63595,
+  "cards": {
+    "Nyxborn Behemoth": "Name:Nyxborn Behemoth\nManaCost:10 G G\nTypes:Enchantment Creature Beast\nPT:10/10\nK:Trample\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the total mana value of noncreature enchantments you control.\nA:AB$ Pump | Cost$ 1 G Sac<1/Enchantment.Other/another enchantment> | Defined$ Self | KW$ Indestructible | SpellDescription$ CARDNAME gains indestructible until end of turn.\nSVar:X:Count$Valid Enchantment.nonCreature+YouCtrl$CardManaCost\nOracle:This spell costs {X} less to cast, where X is the total mana value of noncreature enchantments you control.\\nTrample\\n{1}{G}, Sacrifice another enchantment: Nyxborn Behemoth gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nyxborn Behemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

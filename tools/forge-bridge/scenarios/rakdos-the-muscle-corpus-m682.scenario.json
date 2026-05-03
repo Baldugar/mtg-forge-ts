@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-the-muscle-corpus-m682",
+  "description": "M6 corpus — Rakdos, the Muscle; in-hand parse.",
+  "seed": 63909,
+  "cards": {
+    "Rakdos, the Muscle": "Name:Rakdos, the Muscle\nManaCost:2 B B R\nTypes:Legendary Creature Demon Mercenary\nPT:6/5\nK:Flying\nK:Trample\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you sacrifice another creature, exile cards equal to its mana value from the top of target player's library. Until your next end step, you may play those cards and mana of any type can be spent to cast those spells.\nSVar:TrigExile:DB$ Dig | DigNum$ X | ChangeNum$ All | ValidTgts$ Player | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilYourNextEndStep\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until your next end step, you may play those cards and mana of any type can be spent to cast those spells.\nA:AB$ Pump | Cost$ Sac<1/Creature.Other/another creature> | Defined$ Self | KW$ Indestructible | ActivationLimit$ 1 | SubAbility$ DBTap | SpellDescription$ CARDNAME gains indestructible until end of turn. Tap it. Activate only once each turn.\nSVar:DBTap:DB$ Tap | Defined$ Self\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardManaCost\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Sacrifice\nOracle:Flying, trample\\nWhenever you sacrifice another creature, exile cards equal to its mana value from the top of target player's library. Until your next end step, you may play those cards and mana of any type can be spent to cast those spells.\\nSacrifice another creature: Rakdos, the Muscle gains indestructible until end of turn. Tap it. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos, the Muscle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

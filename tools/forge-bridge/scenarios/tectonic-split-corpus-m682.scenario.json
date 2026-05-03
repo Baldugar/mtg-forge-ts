@@ -1,0 +1,23 @@
+{
+  "id": "tectonic-split-corpus-m682",
+  "description": "M6 corpus — Tectonic Split; in-hand parse.",
+  "seed": 64731,
+  "cards": {
+    "Tectonic Split": "Name:Tectonic Split\nManaCost:4 G G\nTypes:Enchantment\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Activator$ You | Type$ Spell | Cost$ Sac<X/Land/land(s)> | EffectZone$ All | Description$ As an additional cost to cast this spell, sacrifice half the lands you control, rounded up.\nK:Hexproof\nS:Mode$ Continuous | Affected$ Land.YouCtrl | AddAbility$ AnyMana | Description$ Lands you control have \"{T}: Add three mana of any one color.\"\nSVar:AnyMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 3 | SpellDescription$ Add three mana of any one color.\nSVar:X:Count$Valid Land.YouCtrl/HalfUp\nOracle:As an additional cost to cast this spell, sacrifice half the lands you control, rounded up.\\nHexproof\\nLands you control have \"{T}: Add three mana of any one color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tectonic Split"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

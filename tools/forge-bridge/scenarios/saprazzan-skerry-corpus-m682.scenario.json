@@ -1,0 +1,23 @@
+{
+  "id": "saprazzan-skerry-corpus-m682",
+  "description": "M6 corpus — Saprazzan Skerry; in-hand parse.",
+  "seed": 64176,
+  "cards": {
+    "Saprazzan Skerry": "Name:Saprazzan Skerry\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with two depletion counters on it.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | Defined$ Self | ETB$ True | CounterType$ DEPLETION | CounterNum$ 2\nA:AB$ Mana | Cost$ T SubCounter<1/DEPLETION> | Produced$ U | SubAbility$ DBSac | Amount$ 2 | SpellDescription$ Add {U}{U}. If there are no depletion counters on CARDNAME, sacrifice it.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | ConditionPresent$ Card.Self+counters_EQ0_DEPLETION\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Saprazzan Skerry enters tapped with two depletion counters on it.\\n{T}, Remove a depletion counter from Saprazzan Skerry: Add {U}{U}. If there are no depletion counters on Saprazzan Skerry, sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saprazzan Skerry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

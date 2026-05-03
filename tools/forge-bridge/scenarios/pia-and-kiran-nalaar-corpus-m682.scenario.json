@@ -1,0 +1,23 @@
+{
+  "id": "pia-and-kiran-nalaar-corpus-m682",
+  "description": "M6 corpus — Pia and Kiran Nalaar; in-hand parse.",
+  "seed": 63761,
+  "cards": {
+    "Pia and Kiran Nalaar": "Name:Pia and Kiran Nalaar\nManaCost:2 R R\nTypes:Legendary Creature Human Artificer\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You\nA:AB$ DealDamage | Cost$ 2 R Sac<1/Artifact> | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nDeckHas:Ability$Token\nOracle:When Pia and Kiran Nalaar enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\\n{2}{R}, Sacrifice an artifact: Pia and Kiran Nalaar deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pia and Kiran Nalaar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

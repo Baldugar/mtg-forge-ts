@@ -1,0 +1,23 @@
+{
+  "id": "metalhead-corpus-m682",
+  "description": "M6 corpus — Metalhead; in-hand parse.",
+  "seed": 63348,
+  "cards": {
+    "Metalhead": "Name:Metalhead\nManaCost:4 U\nTypes:Legendary Artifact Creature Robot Turtle\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return up to one other target artifact or creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.Other,Creature.Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one other target artifact or creature | Origin$ Battlefield | Destination$ Hand\nA:AB$ PutCounter | Cost$ R Sac<1/Artifact.Other/another artifact> | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on CARDNAME. He gains menace and haste until end of turn.\nSVar:DBPump:DB$ Pump | KW$ Menace & Haste | Defined$ Self\nOracle:When Metalhead enters, return up to one other target artifact or creature to its owner's hand.\\n{R}, Sacrifice another artifact: Put a +1/+1 counter on Metalhead. He gains menace and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Metalhead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

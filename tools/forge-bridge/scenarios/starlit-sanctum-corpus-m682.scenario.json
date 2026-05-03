@@ -1,0 +1,23 @@
+{
+  "id": "starlit-sanctum-corpus-m682",
+  "description": "M6 corpus — Starlit Sanctum; in-hand parse.",
+  "seed": 64594,
+  "cards": {
+    "Starlit Sanctum": "Name:Starlit Sanctum\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ GainLife | Cost$ W T Sac<1/Creature.Cleric/Cleric creature> | LifeAmount$ X | SpellDescription$ You gain life equal to the sacrificed creature's toughness.\nSVar:X:Sacrificed$CardToughness\nA:AB$ LoseLife | Cost$ B T Sac<1/Creature.Cleric/Cleric creature> | ValidTgts$ Player | LifeAmount$ Y | TgtPrompt$ Select a player | SpellDescription$ Target player loses life equal to the sacrificed creature's power.\nSVar:Y:Sacrificed$CardPower\nAI:RemoveDeck:Random\nOracle:{T}: Add {C}.\\n{W}, {T}, Sacrifice a Cleric creature: You gain life equal to the sacrificed creature's toughness.\\n{B}, {T}, Sacrifice a Cleric creature: Target player loses life equal to the sacrificed creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starlit Sanctum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

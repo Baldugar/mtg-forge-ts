@@ -1,0 +1,23 @@
+{
+  "id": "riptide-shapeshifter-corpus-m682",
+  "description": "M6 corpus — Riptide Shapeshifter; in-hand parse.",
+  "seed": 64020,
+  "cards": {
+    "Riptide Shapeshifter": "Name:Riptide Shapeshifter\nManaCost:3 U U\nTypes:Creature Shapeshifter\nPT:3/3\nA:AB$ ChooseType | Cost$ 2 U U Sac<1/CARDNAME> | Type$ Creature | SubAbility$ DBDigUntil | SpellDescription$ Choose a creature type. Reveal cards from the top of your library until you reveal a creature card of that type. Put that card onto the battlefield and shuffle the rest into your library.\nSVar:DBDigUntil:DB$ DigUntil | Valid$ Creature.ChosenType | ValidDescription$ creature card of chosen type | FoundDestination$ Battlefield | RevealedDestination$ Library | Shuffle$ True\nAI:RemoveDeck:All\nOracle:{2}{U}{U}, Sacrifice Riptide Shapeshifter: Choose a creature type. Reveal cards from the top of your library until you reveal a creature card of that type. Put that card onto the battlefield and shuffle the rest into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Shapeshifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

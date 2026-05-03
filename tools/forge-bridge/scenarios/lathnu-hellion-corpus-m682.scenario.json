@@ -1,0 +1,23 @@
+{
+  "id": "lathnu-hellion-corpus-m682",
+  "description": "M6 corpus — Lathnu Hellion; in-hand parse.",
+  "seed": 63106,
+  "cards": {
+    "Lathnu Hellion": "Name:Lathnu Hellion\nManaCost:2 R\nTypes:Creature Hellion\nPT:4/4\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your end step, sacrifice CARDNAME unless you pay {E}{E}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ PayEnergy<2> | UnlessPayer$ You | SacValid$ Self\nOracle:Haste\\nWhen Lathnu Hellion enters, you get {E}{E} (two energy counters).\\nAt the beginning of your end step, sacrifice Lathnu Hellion unless you pay {E}{E}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lathnu Hellion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "raiding-party-corpus-m682",
+  "description": "M6 corpus — Raiding Party; in-hand parse.",
+  "seed": 63902,
+  "cards": {
+    "Raiding Party": "Name:Raiding Party\nManaCost:2 R\nTypes:Enchantment\nS:Mode$ CantTarget | ValidTarget$ Card.Self | ValidSource$ Card.White | Description$ CARDNAME can't be the target of white spells or abilities from white sources.\nA:AB$ RepeatEach | Cost$ Sac<1/Orc> | RepeatPlayers$ Player | RepeatSubAbility$ DBTap | SubAbility$ DBDestroy | SpellDescription$ Each player may tap any number of untapped white creatures they control. For each creature tapped this way, that player chooses up to two Plains. Then destroy all Plains that weren't chosen this way by any player.\nSVar:DBTap:DB$ Tap | CardChoices$ Creature.untapped+White+RememberedPlayerCtrl | Tapper$ RememberedPlayer | AnyNumber$ True | ChoiceAmount$ Count$Valid Creature.untapped+White+RememberedPlayerCtrl | RememberTapped$ True | SubAbility$ ChoosePlainsToSave\nSVar:ChoosePlainsToSave:DB$ ChooseCard | Defined$ Remembered | MinAmount$ 0 | Amount$ TappedXTwo | Choices$ Plains | ChoiceTitle$ Choose up to two Plains for each creature tapped | ChoiceZone$ Battlefield | ImprintChosen$ True | AILogic$ OwnCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Plains.!IsImprinted | SubAbility$ DBCleanImp | AILogic$ RaidingParty | StackDescription$ None\nSVar:DBCleanImp:DB$ Cleanup | ClearImprinted$ True\nSVar:TappedXTwo:Count$Valid Creature.IsRemembered/Times.2\nSVar:NeedsToPlay:Plains.OppCtrl\nAI:RemoveDeck:Random\nDeckNeeds:Type$Orc\nOracle:Raiding Party can't be the target of white spells or abilities from white sources.\\nSacrifice an Orc: Each player may tap any number of untapped white creatures they control. For each creature tapped this way, that player chooses up to two Plains. Then destroy all Plains that weren't chosen this way by any player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Raiding Party"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

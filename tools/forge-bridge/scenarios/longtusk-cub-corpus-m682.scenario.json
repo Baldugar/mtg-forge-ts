@@ -1,0 +1,23 @@
+{
+  "id": "longtusk-cub-corpus-m682",
+  "description": "M6 corpus — Longtusk Cub; in-hand parse.",
+  "seed": 63195,
+  "cards": {
+    "Longtusk Cub": "Name:Longtusk Cub\nManaCost:1 G\nTypes:Creature Cat\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ PutCounter | Cost$ PayEnergy<2> | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ PayEnergyConservatively | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nDeckHas:Ability$Counters\nOracle:Whenever Longtusk Cub deals combat damage to a player, you get {E}{E} (two energy counters).\\nPay {E}{E}: Put a +1/+1 counter on Longtusk Cub.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Longtusk Cub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

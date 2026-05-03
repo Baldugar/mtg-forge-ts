@@ -1,0 +1,23 @@
+{
+  "id": "solphim-mayhem-dominus-corpus-m682",
+  "description": "M6 corpus — Solphim, Mayhem Dominus; in-hand parse.",
+  "seed": 64467,
+  "cards": {
+    "Solphim, Mayhem Dominus": "Name:Solphim, Mayhem Dominus\nManaCost:2 R R\nTypes:Legendary Creature Phyrexian Horror\nPT:5/4\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Permanent.OppCtrl,Opponent | IsCombat$ False | ReplaceWith$ DmgTwice | Description$ If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals double that damage to that player or permanent instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nA:AB$ PutCounter | Cost$ 1 RP RP Discard<2/Card> | Defined$ Self | CounterType$ Indestructible | CounterNum$ 1 | SpellDescription$ Put an indestructible counter on CARDNAME. ({R/P} can be paid with either {R} or 2 life.)\nDeckHas:Ability$Discard|Counters\nOracle:If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals double that damage to that player or permanent instead.\\n{1}{R/P}{R/P}, Discard two cards: Put an indestructible counter on Solphim, Mayhem Dominus. ({R/P} can be paid with either {R} or 2 life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solphim, Mayhem Dominus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

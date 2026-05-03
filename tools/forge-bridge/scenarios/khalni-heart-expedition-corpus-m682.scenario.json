@@ -1,0 +1,23 @@
+{
+  "id": "khalni-heart-expedition-corpus-m682",
+  "description": "M6 corpus — Khalni Heart Expedition; in-hand parse.",
+  "seed": 63021,
+  "cards": {
+    "Khalni Heart Expedition": "Name:Khalni Heart Expedition\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ SubCounter<3/QUEST> Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 2 | Tapped$ True | SpellDescription$ Search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\nSVar:MaxQuestEffect:3\nDeckHas:Ability$Counters\nOracle:Landfall — Whenever a land you control enters, you may put a quest counter on Khalni Heart Expedition.\\nRemove three quest counters from Khalni Heart Expedition and sacrifice it: Search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Khalni Heart Expedition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

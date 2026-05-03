@@ -1,0 +1,23 @@
+{
+  "id": "simic-slaw-corpus-m682",
+  "description": "M6 corpus — Simic Slaw; in-hand parse.",
+  "seed": 64384,
+  "cards": {
+    "Simic Slaw": "Name:Simic Slaw\nManaCost:2\nTypes:Artifact Food Clue\nT:Mode$ ChangesZoneAll | TriggerZones$ Battlefield | ValidCards$ Creature | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigCounter | TriggerDescription$ Whenever one or more creatures die, put a charge counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | CounterType$ CHARGE\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | NumCards$ X | SubAbility$ DBLife | SpellDescription$ Draw X cards and gain X life, where X is the number of charge counters on CARDNAME.\nSVar:DBLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$CardCounters.CHARGE\nDeckHas:Ability$LifeGain|Sacrifice|Counters\nOracle:Whenever one or more creatures die, put a charge counter on Simic Slaw.\\n{2}, Sacrifice Simic Slaw: Draw X cards and gain X life, where X is the number of charge counters on Simic Slaw.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Simic Slaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

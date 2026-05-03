@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-silence-corpus-m682",
+  "description": "M6 corpus — Curse of Silence; in-hand parse.",
+  "seed": 61897,
+  "cards": {
+    "Curse of Silence": "Name:Curse of Silence\nManaCost:W\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nK:ETBReplacement:Other:DBNameCard\nSVar:DBNameCard:DB$ NameCard | Defined$ You | SpellDescription$ As CARDNAME enters, choose a card name.\nS:Mode$ RaiseCost | EffectZone$ Battlefield | ValidCard$ Card.NamedCard | Type$ Spell | Activator$ Player.EnchantedBy | Amount$ 2 | Description$ Spells with the chosen name enchanted player casts cost {2} more to cast.\nT:Mode$ SpellCast | ValidCard$ Card.NamedCard | ValidActivatingPlayer$ Player.EnchantedBy | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player casts a spell with the chosen name, you may sacrifice CARDNAME. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/CARDNAME> | NumCards$ 1\nDeckHas:Ability$Sacrifice\nOracle:Enchant player\\nAs Curse of Silence enters, choose a card name.\\nSpells with the chosen name enchanted player casts cost {2} more to cast.\\nWhenever enchanted player casts a spell with the chosen name, you may sacrifice Curse of Silence. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Silence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

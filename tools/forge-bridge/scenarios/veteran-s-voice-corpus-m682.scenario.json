@@ -1,0 +1,23 @@
+{
+  "id": "veteran-s-voice-corpus-m682",
+  "description": "M6 corpus — Veteran's Voice; in-hand parse.",
+  "seed": 65092,
+  "cards": {
+    "Veteran's Voice": "Name:Veteran's Voice\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nA:AB$ Pump | Cost$ tapXType<1/Creature.EnchantedBy/Enchanted Creature> | ValidTgts$ Creature.!EnchantedBy | TgtPrompt$ Select target creature other than the creature tapped | NumAtt$ +2 | NumDef$ +1 | CostDesc$ Tap enchanted creature: | SpellDescription$ Target creature other than the creature tapped this way gets +2/+1 until end of turn. Activate only if enchanted creature is untapped.\nAI:RemoveDeck:All\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature you control\\nTap enchanted creature: Target creature other than the creature tapped this way gets +2/+1 until end of turn. Activate only if enchanted creature is untapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran's Voice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tranquil-frillback-corpus-m682",
+  "description": "M6 corpus — Tranquil Frillback; in-hand parse.",
+  "seed": 64945,
+  "cards": {
+    "Tranquil Frillback": "Name:Tranquil Frillback\nManaCost:2 G\nTypes:Creature Dinosaur\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPay | TriggerDescription$ When CARDNAME enters, you may pay {G} up to three times. When you pay this cost one or more times, ABILITY\nSVar:TrigPay:AB$ ImmediateTrigger | Cost$ Mana<G\\NumTimes> | Announce$ NumTimes | AnnounceMax$ 3 | ConditionCheckSVar$ NumTimes | RememberSVarAmount$ NumTimes | Execute$ TrigCharm | TriggerDescription$ When you pay this cost one or more times, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 0 | CharmNum$ Count$TriggerRememberAmount | Choices$ DestroyAE,ExileGrave,GainLife\nSVar:DestroyAE:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nSVar:ExileGrave:DB$ ChangeZoneAll | ValidTgts$ Player | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | SpellDescription$ Exile target player's graveyard.\nSVar:GainLife:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nAI:RemoveDeck:All\nDeckHas:Ability$LifeGain\nOracle:When Tranquil Frillback enters, you may pay {G} up to three times. When you pay this cost one or more times, choose up to that many —\\n• Destroy target artifact or enchantment.\\n• Exile target player's graveyard.\\n• You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tranquil Frillback"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "undercity-plunder-corpus-m682",
+  "description": "M6 corpus — Undercity Plunder; in-hand parse.",
+  "seed": 65018,
+  "cards": {
+    "Undercity Plunder": "Name:Undercity Plunder\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Opponent | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBChooseCard | SpellDescription$ Target opponent discards a card.\nSVar:DBChooseCard:DB$ ChooseCard | UnlessCost$ Discard<1/Card> | UnlessPayer$ Targeted | Choices$ Card.TargetedPlayerOwn | ChoiceZone$ Library | AtRandom$ True | SubAbility$ DBConjure | OrString$ {p:You} conjures a duplicate of a random card from their library into your hand. | StackDescription$ SpellDescription | SpellDescription$ Then they may discard an additional card.\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | DefinedName$ ChosenCard | Zone$ Hand | RememberMade$ True | SubAbility$ DBClearChosen | StackDescription$ If they don't, {p:You} conjures a duplicate of a random card from their library into their hand. | SpellDescription$ If they don't, conjure a duplicate of a random card from their library into your hand.\nSVar:DBClearChosen:DB$ Cleanup | ClearChosenCard$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast this spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target opponent discards a card. Then they may discard an additional card. If they don't, conjure a duplicate of a random card from their library into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undercity Plunder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

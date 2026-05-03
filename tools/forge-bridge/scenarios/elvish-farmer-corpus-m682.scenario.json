@@ -1,0 +1,23 @@
+{
+  "id": "elvish-farmer-corpus-m682",
+  "description": "M6 corpus — Elvish Farmer; in-hand parse.",
+  "seed": 62180,
+  "cards": {
+    "Elvish Farmer": "Name:Elvish Farmer\nManaCost:1 G\nTypes:Creature Elf\nPT:0/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a spore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SPORE | CounterNum$ 1 | SpellDescription$ Put a spore counter on CARDNAME.\nA:AB$ Token | Cost$ SubCounter<3/SPORE> | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nA:AB$ GainLife | Cost$ Sac<1/Saproling> | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nDeckHas:Ability$Counters|Token|LifeGain\nOracle:At the beginning of your upkeep, put a spore counter on Elvish Farmer.\\nRemove three spore counters from Elvish Farmer: Create a 1/1 green Saproling creature token.\\nSacrifice a Saproling: You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "karlov-s-crossbow-corpus-m682",
+  "description": "M6 corpus — Karlov's Crossbow; in-hand parse.",
+  "seed": 62992,
+  "cards": {
+    "Karlov's Crossbow": "Name:Karlov's Crossbow\nManaCost:5\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigSac | TriggerDescription$ Whenever equipped creature attacks, sacrifice CARDNAME and destroy target creature an opponent controls.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls.\nK:Equip:1\nA:AB$ Effect | Cost$ 0 Reveal<1/CARDNAME> | Forecast$ True | Name$ Emblem — Karlov's Crossbow | StaticAbilities$ ReduceCost | Duration$ Permanent | AILogic$ Always | SpellDescription$ For the remainder of the game, spells you cast named Karlov's Crossbow cost {1} less to cast. (Activate only during your upkeep and only once each turn.)\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.namedKarlov's Crossbow | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Spells you cast named Karlov's Crossbow cost {1} less to cast.\nOracle:Whenever equipped creature attacks, sacrifice Karlov's Crossbow and destroy target creature an opponent controls.\\nEquip {1}\\nForecast — {0}, Reveal Karlov's Crossbow from your hand: For the remainder of the game, spells you cast named Karlov's Crossbow cost {1} less to cast. (Activate only during your upkeep and only once each turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karlov's Crossbow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

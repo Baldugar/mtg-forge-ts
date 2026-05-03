@@ -1,0 +1,23 @@
+{
+  "id": "chandra-flame-s-fury-corpus-m682",
+  "description": "M6 corpus — Chandra, Flame's Fury; in-hand parse.",
+  "seed": 61698,
+  "cards": {
+    "Chandra, Flame's Fury": "Name:Chandra, Flame's Fury\nManaCost:4 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:4\nA:AB$ DealDamage | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | NumDmg$ 4 | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 4 damage to target creature and 2 damage to that creature's controller.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 2\nA:AB$ DamageAll | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player | ValidPlayers$ Targeted | ValidCards$ Creature.TargetedPlayerCtrl | NumDmg$ 10 | ValidDescription$ target player and each creature that player controls. | SpellDescription$ CARDNAME deals 10 damage to target player and each creature that player controls.\nOracle:[+1]: Chandra, Flame's Fury deals 2 damage to any target.\\n[-2]: Chandra, Flame's Fury deals 4 damage to target creature and 2 damage to that creature's controller.\\n[-8]: Chandra, Flame's Fury deals 10 damage to target player and each creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Flame's Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

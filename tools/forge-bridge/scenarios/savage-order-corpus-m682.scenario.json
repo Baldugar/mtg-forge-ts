@@ -1,0 +1,23 @@
+{
+  "id": "savage-order-corpus-m682",
+  "description": "M6 corpus — Savage Order; in-hand parse.",
+  "seed": 64193,
+  "cards": {
+    "Savage Order": "Name:Savage Order\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ 2 G G Sac<1/Creature.powerGE4/creature with power 4 or greater> | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Creature+Dinosaur | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBPump | SpellDescription$ Search your library for a Dinosaur creature card, put it onto the battlefield, then shuffle. It gains indestructible until your next turn.\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Indestructible | Duration$ UntilYourNextTurn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Dinosaur\nOracle:As an additional cost to cast this spell, sacrifice a creature with power 4 or greater.\\nSearch your library for a Dinosaur creature card, put it onto the battlefield, then shuffle. It gains indestructible until your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Savage Order"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

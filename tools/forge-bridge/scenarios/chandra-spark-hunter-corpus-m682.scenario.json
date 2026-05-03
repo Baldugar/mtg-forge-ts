@@ -1,0 +1,23 @@
+{
+  "id": "chandra-spark-hunter-corpus-m682",
+  "description": "M6 corpus — Chandra, Spark Hunter; in-hand parse.",
+  "seed": 61708,
+  "cards": {
+    "Chandra, Spark Hunter": "Name:Chandra, Spark Hunter\nManaCost:3 R\nTypes:Legendary Planeswalker Chandra\nLoyalty:4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ At the beginning of combat on your turn, choose up to one target Vehicle you control. Until end of turn, it becomes an artifact creature and gains haste.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Vehicle.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose target Vehicle | Types$ Artifact,Creature | Keywords$ Haste\nA:AB$ GenericChoice | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | Choices$ DBSacToDraw,DBDiscardToDraw | SpellDescription$ You may sacrifice an artifact or discard a card. If you do, draw a card.\nSVar:DBSacToDraw:DB$ Draw | UnlessCost$ Sac<1/Artifact> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ Sacrifice an artifact.\nSVar:DBDiscardToDraw:DB$ Draw | UnlessCost$ Discard<1/Card> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ Discard a card.\nA:AB$ Token | Cost$ AddCounter<0/LOYALTY> | Planeswalker$ True | TokenScript$ c_3_2_a_vehicle_crew_1 | TokenOwner$ You | SpellDescription$ Create a 3/2 colorless Vehicle token with crew 1.\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Name$ Emblem — Chandra, Spark Hunter | Image$ emblem_chandra_spark_hunter | Triggers$ TrigChangesZone | Planeswalker$ True | Ultimate$ True | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Whenever an artifact you control enters, this emblem deals 3 damage to any target.\"\nSVar:TrigChangesZone:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | TriggerZones$ Battlefield | Execute$ EffDealDamage | TriggerDescription$ Whenever an artifact you control enters, this emblem deals 3 damage to any target.\nSVar:EffDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Sacrifice|Discard|Token\nDeckHints:Type$Artifact|Vehicle\nOracle:At the beginning of combat on your turn, choose up to one target Vehicle you control. Until end of turn, it becomes an artifact creature and gains haste.\\n[+2]: You may sacrifice an artifact or discard a card. If you do, draw a card.\\n[0]: Create a 3/2 colorless Vehicle token with crew 1.\\n[-7]: You get an emblem with \"Whenever an artifact you control enters, this emblem deals 3 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Spark Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

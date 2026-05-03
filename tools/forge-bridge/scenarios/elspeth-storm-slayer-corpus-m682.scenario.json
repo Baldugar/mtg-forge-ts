@@ -1,0 +1,23 @@
+{
+  "id": "elspeth-storm-slayer-corpus-m682",
+  "description": "M6 corpus — Elspeth, Storm Slayer; in-hand parse.",
+  "seed": 62171,
+  "cards": {
+    "Elspeth, Storm Slayer": "Name:Elspeth, Storm Slayer\nManaCost:3 W W\nTypes:Legendary Planeswalker Elspeth\nLoyalty:5\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidToken$ Card.YouCtrl | ReplaceWith$ DoubleToken | Description$ If one or more tokens would be created under your control, twice that many of those tokens are created instead.\nSVar:DoubleToken:DB$ ReplaceToken | Type$ Amount\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ w_1_1_soldier | SpellDescription$ Create a 1/1 white Soldier creature token.\nA:AB$ PutCounterAll | Cost$ AddCounter<0/LOYALTY> | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | Planeswalker$ True | SubAbility$ DBPumpAll | SpellDescription$ Put a +1/+1 counter on each creature you control. Those creatures gain flying until your next turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Flying | Duration$ UntilYourNextTurn\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Creature.OppCtrl+cmcGE3 | TgtPrompt$ Select target creature an opponent controls with mana value 3 or greater | SpellDescription$ Destroy target creature an opponent controls with mana value 3 or greater.\nOracle:If one or more tokens would be created under your control, twice that many of those tokens are created instead.\\n[+1]: Create a 1/1 white Soldier creature token.\\n[0]: Put a +1/+1 counter on each creature you control. Those creatures gain flying until your next turn.\\n[-3]: Destroy target creature an opponent controls with mana value 3 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elspeth, Storm Slayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

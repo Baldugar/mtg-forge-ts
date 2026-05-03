@@ -1,0 +1,23 @@
+{
+  "id": "twinshot-sniper-corpus-m682",
+  "description": "M6 corpus — Twinshot Sniper; in-hand parse.",
+  "seed": 64986,
+  "cards": {
+    "Twinshot Sniper": "Name:Twinshot Sniper\nManaCost:3 R\nTypes:Artifact Creature Goblin Archer\nPT:2/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nA:AB$ DealDamage | Cost$ 1 R Discard<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 2 | ActivationZone$ Hand | PrecostDesc$ Channel — | SpellDescription$ It deals 2 damage to any target.\nDeckHas:Ability$Discard\nOracle:Reach\\nWhen Twinshot Sniper enters, it deals 2 damage to any target.\\nChannel — {1}{R}, Discard Twinshot Sniper: It deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Twinshot Sniper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

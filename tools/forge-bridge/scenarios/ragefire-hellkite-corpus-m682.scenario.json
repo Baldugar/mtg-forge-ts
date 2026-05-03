@@ -1,0 +1,23 @@
+{
+  "id": "ragefire-hellkite-corpus-m682",
+  "description": "M6 corpus — Ragefire Hellkite; in-hand parse.",
+  "seed": 63899,
+  "cards": {
+    "Ragefire Hellkite": "Name:Ragefire Hellkite\nManaCost:4 R R\nTypes:Creature Dragon\nPT:5/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. If you do, CARDNAME gains double strike until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ Sac<1/Creature.Other/another creature> | Defined$ Self | KW$ Double Strike\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Flying\\nWhenever Ragefire Hellkite attacks, you may sacrifice another creature. If you do, Ragefire Hellkite gains double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ragefire Hellkite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pyxis-of-pandemonium-corpus-m682",
+  "description": "M6 corpus — Pyxis of Pandemonium; in-hand parse.",
+  "seed": 63868,
+  "cards": {
+    "Pyxis of Pandemonium": "Name:Pyxis of Pandemonium\nManaCost:1\nTypes:Artifact\nA:AB$ Dig | Cost$ T | Defined$ Player | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | SpellDescription$ Each player exiles the top card of their library face down.\nA:AB$ SetState | Cost$ 7 T Sac<1/CARDNAME> | Defined$ ValidExile Card.ExiledWithSource | Mode$ TurnFaceUp | SubAbility$ DBChangeZone | SpellDescription$ Each player turns face up all cards they own exiled with CARDNAME, then puts all permanent cards among them onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZoneAll | ChangeType$ Permanent.ExiledWithSource | Origin$ Exile | Destination$ Battlefield\nAI:RemoveDeck:All\nOracle:{T}: Each player exiles the top card of their library face down.\\n{7}, {T}, Sacrifice Pyxis of Pandemonium: Each player turns face up all cards they own exiled with Pyxis of Pandemonium, then puts all permanent cards among them onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyxis of Pandemonium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

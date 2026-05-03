@@ -1,0 +1,23 @@
+{
+  "id": "lamplighter-of-selhoff-corpus-m682",
+  "description": "M6 corpus — Lamplighter of Selhoff; in-hand parse.",
+  "seed": 63097,
+  "cards": {
+    "Lamplighter of Selhoff": "Name:Lamplighter of Selhoff\nManaCost:4 U\nTypes:Creature Zombie Horror\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Permanent.Zombie+Other+YouCtrl | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, if you control another Zombie, you may draw a card. If you do, discard a card.\nSVar:TrigDraw:AB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | Cost$ Draw<1/You>\nDeckHints:Type$Zombie\nOracle:When Lamplighter of Selhoff enters, if you control another Zombie, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lamplighter of Selhoff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "plague-of-vermin-corpus-m682",
+  "description": "M6 corpus — Plague of Vermin; in-hand parse.",
+  "seed": 63781,
+  "cards": {
+    "Plague of Vermin": "Name:Plague of Vermin\nManaCost:6 B\nTypes:Sorcery\nA:SP$ Repeat | RepeatSubAbility$ DBResetCheck | RepeatCheckSVar$ NumPlayerGiveup | RepeatSVarCompare$ LTTotalPlayer | SubAbility$ DBRepeatToken | StackDescription$ REP you_{p:You} | SpellDescription$ Starting with you, each player may pay any amount of life. Repeat this process until no one pays life. Each player creates a 1/1 black Rat creature token for each 1 life they paid this way.\nSVar:DBResetCheck:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ Number | Expression$ 0 | SubAbility$ DBRepeatChoice\nSVar:DBRepeatChoice:DB$ RepeatEach | StartingWith$ You | RepeatSubAbility$ DBChoice | RepeatPlayers$ Player\nSVar:DBChoice:DB$ ChooseNumber | Defined$ Remembered | Max$ LifeTotal | AILogic$ Vermin | ListTitle$ amount of life to pay | SubAbility$ DBCheckPaid\nSVar:DBCheckPaid:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ CountSVar | Expression$ NumPlayerGiveup/Plus.1 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBStore\nSVar:DBStore:DB$ StoreSVar | SVar$ EachPlayer | Type$ AdditiveForEach | Expression$ X | ConditionCheckSVar$ X | UnlessCost$ PayLife<X> | UnlessPayer$ Remembered | UnlessSwitched$ True | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBGiveUp | SpellDescription$ Pay the chosen amount of life.\nSVar:DBGiveUp:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ CountSVar | Expression$ NumPlayerGiveup/Plus.1 | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:DBRepeatToken:DB$ RepeatEach | ChangeZoneTable$ True | RepeatSubAbility$ DBToken | RepeatPlayers$ Player | SubAbility$ DBFinalReset\nSVar:DBToken:DB$ Token | TokenAmount$ LifePaidAmount | TokenScript$ b_1_1_rat | TokenOwner$ Remembered | StackDescription$ None\nSVar:DBFinalReset:DB$ StoreSVar | SVar$ NumPlayerGiveup | Type$ Number | Expression$ 0 | SubAbility$ DBResetEach\nSVar:DBResetEach:DB$ RepeatEach | RepeatSubAbility$ DBCleanup | RepeatPlayers$ Player\nSVar:DBCleanup:DB$ StoreSVar | SVar$ EachPlayer | Type$ Number | Expression$ 0\nSVar:NumPlayerGiveup:Number$0\nSVar:TotalPlayer:PlayerCountPlayers$Amount\nSVar:LifeTotal:PlayerCountRemembered$LifeTotal\nSVar:LifePaidAmount:PlayerCountRemembered$SVarAmount\nSVar:X:Count$ChosenNumber\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Rat\nOracle:Starting with you, each player may pay any amount of life. Repeat this process until no one pays life. Each player creates a 1/1 black Rat creature token for each 1 life they paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague of Vermin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

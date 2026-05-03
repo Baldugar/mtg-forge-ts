@@ -1,0 +1,23 @@
+{
+  "id": "paladin-of-prahv-corpus-m682",
+  "description": "M6 corpus — Paladin of Prahv; in-hand parse.",
+  "seed": 63687,
+  "cards": {
+    "Paladin of Prahv": "Name:Paladin of Prahv\nManaCost:4 W W\nTypes:Creature Human Knight\nPT:3/4\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nA:AB$ Effect | Cost$ 1 W Reveal<1/CARDNAME> | ValidTgts$ Creature | Triggers$ TrigDamage | RememberObjects$ Targeted | Forecast$ True | SpellDescription$ Whenever target creature deals damage this turn, you gain that much life. (Activate only during your upkeep and only once each turn.)\nSVar:TrigDamage:Mode$ DamageDealtOnce | ValidSource$ Creature.IsRemembered | Execute$ TrigGain | TriggerDescription$ Whenever the targeted creature deals damage, you gain that much life.\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Paladin of Prahv deals damage, you gain that much life.\\nForecast — {1}{W}, Reveal Paladin of Prahv from your hand: Whenever target creature deals damage this turn, you gain that much life. (Activate only during your upkeep and only once each turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Paladin of Prahv"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

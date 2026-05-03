@@ -1,0 +1,23 @@
+{
+  "id": "implement-of-malice-corpus-m682",
+  "description": "M6 corpus — Implement of Malice; in-hand parse.",
+  "seed": 62853,
+  "cards": {
+    "Implement of Malice": "Name:Implement of Malice\nManaCost:2\nTypes:Artifact\nA:AB$ Discard | Cost$ B Sac<1/CARDNAME> | ValidTgts$ Player | SorcerySpeed$ True | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Target player discards a card. Activate only as a sorcery.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:{B}, Sacrifice Implement of Malice: Target player discards a card. Activate only as a sorcery.\\nWhen Implement of Malice is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Implement of Malice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

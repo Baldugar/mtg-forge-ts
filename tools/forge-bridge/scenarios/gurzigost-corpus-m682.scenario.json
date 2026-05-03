@@ -1,0 +1,23 @@
+{
+  "id": "gurzigost-corpus-m682",
+  "description": "M6 corpus — Gurzigost; in-hand parse.",
+  "seed": 62667,
+  "cards": {
+    "Gurzigost": "Name:Gurzigost\nManaCost:3 G G\nTypes:Creature Beast\nPT:6/8\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you put two cards from your graveyard on the bottom of your library.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ PutCardToLibFromGrave<2/-1/Card>\nA:AB$ Effect | Cost$ G G Discard<1/Card> | StaticAbilities$ Static | Duration$ UntilHostLeavesPlayOrEOT | SpellDescription$ You may have CARDNAME assign its combat damage this turn as though it weren't blocked.\nSVar:Static:Mode$ AssignCombatDamageAsUnblocked | ValidCard$ Card.EffectSource | Optional$ True | Description$ You may have EFFECTSOURCE assign its combat damage this turn as though it weren't blocked.\nAI:RemoveDeck:All\nDeckHas:Ability$Discard\nOracle:At the beginning of your upkeep, sacrifice Gurzigost unless you put two cards from your graveyard on the bottom of your library.\\n{G}{G}, Discard a card: You may have Gurzigost assign its combat damage this turn as though it weren't blocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gurzigost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lasyd-prowler-corpus-m682",
+  "description": "M6 corpus — Lasyd Prowler; in-hand parse.",
+  "seed": 63105,
+  "cards": {
+    "Lasyd Prowler": "Name:Lasyd Prowler\nManaCost:2 G G\nTypes:Creature Snake Ranger\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this creature enters, you may mill cards equal to the number of lands you control.\nSVar:TrigMill:DB$ Mill | NumCards$ X | Defined$ You | Optional$ True\nSVar:X:Count$Valid Land.YouCtrl\nA:AB$ PutCounter | Cost$ 1 G ExileFromGrave<1/CARDNAME/this card> | PrecostDesc$ Renew — | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ Y | ActivationZone$ Graveyard | SorcerySpeed$ True | SpellDescription$ Put X +1/+1 counters on target creature, where X is the number of land cards in your graveyard. Activate only as a sorcery.\nSVar:Y:Count$ValidGraveyard Land.YouOwn\nOracle:When this creature enters, you may mill cards equal to the number of lands you control.\\nRenew — {1}{G}, Exile this card from your graveyard: Put X +1/+1 counters on target creature, where X is the number of land cards in your graveyard. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lasyd Prowler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

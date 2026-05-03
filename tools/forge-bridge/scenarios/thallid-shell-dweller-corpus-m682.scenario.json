@@ -1,0 +1,23 @@
+{
+  "id": "thallid-shell-dweller-corpus-m682",
+  "description": "M6 corpus — Thallid Shell-Dweller; in-hand parse.",
+  "seed": 64781,
+  "cards": {
+    "Thallid Shell-Dweller": "Name:Thallid Shell-Dweller\nManaCost:1 G\nTypes:Creature Fungus\nPT:0/5\nK:Defender\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a spore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SPORE | CounterNum$ 1 | SpellDescription$ Put a spore counter on CARDNAME.\nA:AB$ Token | Cost$ SubCounter<3/SPORE> | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nDeckHints:Type$Fungus\nDeckHas:Ability$Counters|Token\nOracle:Defender\\nAt the beginning of your upkeep, put a spore counter on Thallid Shell-Dweller.\\nRemove three spore counters from Thallid Shell-Dweller: Create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thallid Shell-Dweller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

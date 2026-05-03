@@ -1,0 +1,23 @@
+{
+  "id": "northampton-farm-corpus-m682",
+  "description": "M6 corpus — Northampton Farm; in-hand parse.",
+  "seed": 63578,
+  "cards": {
+    "Northampton Farm": "Name:Northampton Farm\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ChangeZone | Cost$ 1 T | ValidTgts$ Creature.YouOwn | TgtPrompt$ Choose target creature you own. | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature you own.\nA:AB$ ChangeZone | Cost$ 2 T Sac<1/CARDNAME/this land> | Origin$ Exile | Destination$ Battlefield | GainControl$ True | Mandatory$ True | Hidden$ True | ChangeType$ Card.ExiledWithSource | SubAbility$ DBChangeZoneAll | SpellDescription$ Return a creature card exiled with this land to the battlefield under your control. Return each other card exiled with this land to its owner's hand.\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Hand\nDeckHas:Ability$Sacrifice\nOracle:{T}: Add {C}.\\n{1}, {T}: Exile target creature you own.\\n{2}, {T}, Sacrifice this land: Return a creature card exiled with this land to the battlefield under your control. Return each other card exiled with this land to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Northampton Farm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

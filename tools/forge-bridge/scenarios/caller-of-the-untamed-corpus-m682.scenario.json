@@ -1,0 +1,23 @@
+{
+  "id": "caller-of-the-untamed-corpus-m682",
+  "description": "M6 corpus — Caller of the Untamed; in-hand parse.",
+  "seed": 61613,
+  "cards": {
+    "Caller of the Untamed": "Name:Caller of the Untamed\nManaCost:3 G\nTypes:Creature Elf Shaman\nPT:2/4\nK:MayEffectFromOpeningDeck:DBReveal\nSVar:DBReveal:DB$ Reveal | RevealDefined$ Self | SubAbility$ DBExile | SpellDescription$ Before you shuffle your deck to start the game, you may reveal this card from your deck and exile an instant or sorcery card you drafted that isn't in your deck.\nSVar:DBExile:DB$ ChangeZone | Origin$ Sideboard | Destination$ Exile | ChangeType$ Creature.YouOwn | ChangeNum$ 1 | Optional$ True | RememberChanged$ True | SubAbility$ DBPump | ConditionGameTypes$ Draft,QuestDraft | SelectPrompt$ Exile with CARDNAME\nSVar:DBPump:DB$ Pump | NoteCards$ Remembered | NoteCardsFor$ CallerOfTheUntamed | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ CopyPermanent | Cost$ RevealFromExile<1/Creature.YouOwn+NotedForCallerOfTheUntamed> X T | CostDesc$ {X}, {T} | Defined$ Revealed | SpellDescription$ Create a token that's a copy of a card you exiled with cards named Caller of the Untamed. X is the mana value of that card. | SubAbility$ DBCleanup\nSVar:X:Revealed$CardManaCost\nOracle:Before you shuffle your deck to start the game, you may reveal this card from your deck and exile a creature card you drafted that isn't in your deck.\\n{X}, {T}: Create a token that's a copy of a card you exiled with cards named Caller of the Untamed. X is the mana value of that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caller of the Untamed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

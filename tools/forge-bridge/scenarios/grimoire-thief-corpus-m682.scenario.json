@@ -1,0 +1,23 @@
+{
+  "id": "grimoire-thief-corpus-m682",
+  "description": "M6 corpus — Grimoire Thief; in-hand parse.",
+  "seed": 62644,
+  "cards": {
+    "Grimoire Thief": "Name:Grimoire Thief\nManaCost:U U\nTypes:Creature Merfolk Rogue\nPT:2/2\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME becomes tapped, exile the top three cards of target opponent's library face down.\nSVar:TrigExile:DB$ Dig | ValidTgts$ Opponent | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True\nS:Mode$ Continuous | Affected$ Card.ExiledWithSource | AffectedZone$ Exile | MayLookAt$ You | Description$ You may look at cards exiled with CARDNAME.\nA:AB$ SetState | Cost$ U Sac<1/CARDNAME> | Defined$ ExiledWithSource | Mode$ TurnFaceUp | SubAbility$ DBCounter | SpellDescription$ Turn all cards exiled with CARDNAME face up. Counter all spells with those names.\nSVar:DBCounter:DB$ Counter | Defined$ ValidStack Spell.sharesNameWith ExiledWithSource\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Whenever Grimoire Thief becomes tapped, exile the top three cards of target opponent's library face down.\\nYou may look at cards exiled with Grimoire Thief.\\n{U}, Sacrifice Grimoire Thief: Turn all cards exiled with Grimoire Thief face up. Counter all spells with those names.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grimoire Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

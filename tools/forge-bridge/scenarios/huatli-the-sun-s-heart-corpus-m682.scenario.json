@@ -1,0 +1,23 @@
+{
+  "id": "huatli-the-sun-s-heart-corpus-m682",
+  "description": "M6 corpus — Huatli, the Sun's Heart; in-hand parse.",
+  "seed": 62806,
+  "cards": {
+    "Huatli, the Sun's Heart": "Name:Huatli, the Sun's Heart\nManaCost:2 GW\nTypes:Legendary Planeswalker Huatli\nLoyalty:7\nS:Mode$ CombatDamageToughness | ValidCard$ Creature.YouCtrl | Description$ Each creature you control assigns combat damage equal to its toughness rather than its power.\nA:AB$ GainLife | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | LifeAmount$ X | SpellDescription$ You gain life equal to the greatest toughness among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardToughness\nSVar:NeedsToPlay:Creature.YouCtrl\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nOracle:Each creature you control assigns combat damage equal to its toughness rather than its power.\\n[-3]: You gain life equal to the greatest toughness among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Huatli, the Sun's Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

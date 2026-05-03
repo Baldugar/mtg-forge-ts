@@ -1,0 +1,23 @@
+{
+  "id": "excavating-anurid-corpus-m682",
+  "description": "M6 corpus — Excavating Anurid; in-hand parse.",
+  "seed": 62248,
+  "cards": {
+    "Excavating Anurid": "Name:Excavating Anurid\nManaCost:4 G\nTypes:Creature Frog Beast\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you may sacrifice a land. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Land> | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance | Condition$ Threshold | Description$ Threshold — As long as there are seven or more cards in your graveyard, CARDNAME gets +1/+1 and has vigilance.\nOracle:When Excavating Anurid enters, you may sacrifice a land. If you do, draw a card.\\nThreshold — As long as there are seven or more cards in your graveyard, Excavating Anurid gets +1/+1 and has vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Excavating Anurid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

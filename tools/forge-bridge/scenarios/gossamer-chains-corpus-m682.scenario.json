@@ -1,0 +1,23 @@
+{
+  "id": "gossamer-chains-corpus-m682",
+  "description": "M6 corpus — Gossamer Chains; in-hand parse.",
+  "seed": 62603,
+  "cards": {
+    "Gossamer Chains": "Name:Gossamer Chains\nManaCost:W W\nTypes:Enchantment\nA:AB$ Effect | Cost$ Return<1/CARDNAME> | ValidTgts$ Creature.attacking+unblocked | TgtPrompt$ Select target unblocked creature | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all combat damage that would be dealt by target unblocked creature this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by target unblocked creature this turn.\nAI:RemoveDeck:All\nOracle:Return Gossamer Chains to its owner's hand: Prevent all combat damage that would be dealt by target unblocked creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gossamer Chains"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

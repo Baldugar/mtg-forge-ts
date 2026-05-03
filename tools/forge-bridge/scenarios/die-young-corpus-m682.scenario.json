@@ -1,0 +1,23 @@
+{
+  "id": "die-young-corpus-m682",
+  "description": "M6 corpus — Die Young; in-hand parse.",
+  "seed": 62011,
+  "cards": {
+    "Die Young": "Name:Die Young\nManaCost:1 B\nTypes:Sorcery\nA:SP$ PutCounter | Defined$ You | AILogic$ PayEnergy | CounterType$ ENERGY | CounterNum$ 2 | SubAbility$ DBChooseNumber | SpellDescription$ Choose target creature. You get {E}{E} (two energy counters), then you may pay any amount of {E}. The creature gets -1/-1 until end of turn for each {E} paid this way.\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Max | ListTitle$ amount of energy to pay | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | UnlessCost$ PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True\nSVar:Max:Count$YourCountersEnergy\nSVar:X:Count$ChosenNumber\nOracle:Choose target creature. You get {E}{E} (two energy counters), then you may pay any amount of {E}. The creature gets -1/-1 until end of turn for each {E} paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Die Young"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

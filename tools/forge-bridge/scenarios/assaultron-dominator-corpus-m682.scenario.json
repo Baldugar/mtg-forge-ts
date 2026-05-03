@@ -1,0 +1,23 @@
+{
+  "id": "assaultron-dominator-corpus-m682",
+  "description": "M6 corpus — Assaultron Dominator; in-hand parse.",
+  "seed": 61502,
+  "cards": {
+    "Assaultron Dominator": "Name:Assaultron Dominator\nManaCost:1 R\nTypes:Artifact Creature Robot\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Creature.Artifact+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever an artifact creature you control attacks, you may pay {E}. If you do, put your choice of a +1/+1, first strike, or trample counter on that creature.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayEnergy<1> | CounterType$ P1P1,First Strike,Trample | CounterNum$ 1 | Defined$ TriggeredAttackerLKICopy\nDeckHas:Ability$Counters\nDeckHints:Type$Artifact\nOracle:When Assaultron Dominator enters, you get {E}{E} (two energy counters).\\nWhenever an artifact creature you control attacks, you may pay {E}. If you do, put your choice of a +1/+1, first strike, or trample counter on that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Assaultron Dominator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

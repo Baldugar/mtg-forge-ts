@@ -1,0 +1,23 @@
+{
+  "id": "canonized-in-blood-corpus-m682",
+  "description": "M6 corpus — Canonized in Blood; in-hand parse.",
+  "seed": 61620,
+  "cards": {
+    "Canonized in Blood": "Name:Canonized in Blood\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You.descended | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if you descended this turn, put a +1/+1 counter on target creature you control. (You descended if a permanent card was put into your graveyard from anywhere.)\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterNum$ 1 | CounterType$ P1P1\nA:AB$ Token | Cost$ 5 B B Sac<1/CARDNAME> | TokenScript$ wb_4_3_vampire_demon_flying | TokenOwner$ You | SpellDescription$ Create a 4/3 white and black Vampire Demon creature token with flying.\nDeckHas:Ability$Sacrifice|Token|Counters & Type$Vampire|Demon\nDeckHints:Ability$Mill|Sacrifice\nOracle:At the beginning of your end step, if you descended this turn, put a +1/+1 counter on target creature you control. (You descended if a permanent card was put into your graveyard from anywhere.)\\n{5}{B}{B}, Sacrifice Canonized in Blood: Create a 4/3 white and black Vampire Demon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canonized in Blood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

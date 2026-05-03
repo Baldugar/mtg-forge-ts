@@ -1,0 +1,23 @@
+{
+  "id": "whispering-specter-corpus-m682",
+  "description": "M6 corpus — Whispering Specter; in-hand parse.",
+  "seed": 65234,
+  "cards": {
+    "Whispering Specter": "Name:Whispering Specter\nManaCost:1 B B\nTypes:Creature Phyrexian Specter\nPT:1/1\nK:Flying\nK:Infect\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may sacrifice it. If you do, that player discards a card for each poison counter they have.\nSVar:TrigDiscard:AB$ Discard | Defined$ TriggeredTarget | NumCards$ X | Mode$ TgtChoose | Cost$ Sac<1/CARDNAME>\nSVar:X:TriggeredTarget$Counters.Poison\nOracle:Flying\\nInfect (This creature deals damage to creatures in the form of -1/-1 counters and to players in the form of poison counters.)\\nWhenever Whispering Specter deals combat damage to a player, you may sacrifice it. If you do, that player discards a card for each poison counter they have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whispering Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

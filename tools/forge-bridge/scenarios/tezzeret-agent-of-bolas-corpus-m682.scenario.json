@@ -1,0 +1,23 @@
+{
+  "id": "tezzeret-agent-of-bolas-corpus-m682",
+  "description": "M6 corpus — Tezzeret, Agent of Bolas; in-hand parse.",
+  "seed": 64767,
+  "cards": {
+    "Tezzeret, Agent of Bolas": "Name:Tezzeret, Agent of Bolas\nManaCost:2 U B\nTypes:Legendary Planeswalker Tezzeret\nLoyalty:3\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Artifact | SpellDescription$ Look at the top five cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nA:AB$ Animate | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Artifact | AITgts$ Artifact.YouCtrl | AITgtsStrict$ True | Power$ 5 | Toughness$ 5 | Types$ Creature | Duration$ Permanent | SpellDescription$ Target artifact becomes an artifact creature with base power and toughness 5/5.\nA:AB$ LoseLife | Cost$ SubCounter<4/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player | LifeAmount$ X | SubAbility$ DBGain | SpellDescription$ Target player loses X life and you gain X life, where X is twice the number of artifacts you control.\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Artifact.YouCtrl/Times.2\nOracle:[+1]: Look at the top five cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\\n[-1]: Target artifact becomes an artifact creature with base power and toughness 5/5.\\n[-4]: Target player loses X life and you gain X life, where X is twice the number of artifacts you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret, Agent of Bolas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

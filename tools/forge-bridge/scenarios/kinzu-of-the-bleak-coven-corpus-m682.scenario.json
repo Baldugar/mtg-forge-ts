@@ -1,0 +1,23 @@
+{
+  "id": "kinzu-of-the-bleak-coven-corpus-m682",
+  "description": "M6 corpus — Kinzu of the Bleak Coven; in-hand parse.",
+  "seed": 63030,
+  "cards": {
+    "Kinzu of the Bleak Coven": "Name:Kinzu of the Bleak Coven\nManaCost:4 B\nTypes:Legendary Creature Phyrexian Vampire\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ Whenever another nontoken creature you control dies, you may pay 2 life and exile it. If you do, create a token that's a copy of that creature, except it's 1/1 and has toxic 1. (Players dealt combat damage by it also get a poison counter.)\nSVar:TrigExile:AB$ CopyPermanent | Cost$ PayLife<2> ExileAnyGrave<1/Card.TriggeredNewCard> | AddKeywords$ Toxic:1 | Defined$ TriggeredCardLKICopy | SetPower$ 1 | SetToughness$ 1\nDeckHas:Ability$Token\nOracle:Flying\\nWhenever another nontoken creature you control dies, you may pay 2 life and exile it. If you do, create a token that's a copy of that creature, except it's 1/1 and has toxic 1. (Players dealt combat damage by it also get a poison counter.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kinzu of the Bleak Coven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

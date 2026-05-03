@@ -1,0 +1,23 @@
+{
+  "id": "dauthi-mindripper-corpus-m682",
+  "description": "M6 corpus — Dauthi Mindripper; in-hand parse.",
+  "seed": 61932,
+  "cards": {
+    "Dauthi Mindripper": "Name:Dauthi Mindripper\nManaCost:3 B\nTypes:Creature Dauthi Minion\nPT:2/1\nK:Shadow\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may sacrifice it. If you do, defending player discards three cards.\nSVar:TrigDiscard:AB$ Discard | Cost$ Sac<1/CARDNAME> | Defined$ TriggeredDefendingPlayer | NumCards$ 3 | AILogic$ AtLeast2 | Mode$ TgtChoose\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhenever Dauthi Mindripper attacks and isn't blocked, you may sacrifice it. If you do, defending player discards three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dauthi Mindripper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

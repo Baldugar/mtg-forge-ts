@@ -1,0 +1,23 @@
+{
+  "id": "chicken-la-king-corpus-m682",
+  "description": "M6 corpus — Chicken à la King; in-hand parse.",
+  "seed": 61723,
+  "cards": {
+    "Chicken à la King": "Name:Chicken à la King\nManaCost:1 U U\nTypes:Creature Bird Noble\nPT:2/2\nT:Mode$ RolledDie | TriggerZones$ Battlefield | Execute$ TrigCounters | ValidResult$ 6 | ValidSides$ 6 | TriggerDescription$ Whenever a 6 is rolled on a six-sided die, put a +1/+1 counter on each Bird.\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Bird | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ RollDice | Cost$ tapXType<1/Bird> | AILogic$ AtOppEOT | SpellDescription$ Roll a six-sided die.\nDeckHas:Ability$Counters\nOracle:Whenever a 6 is rolled on a six-sided die, put a +1/+1 counter on each Bird. (You may roll dice only when instructed to.)\\nTap an untapped Bird you control: Roll a six-sided die. (Like now.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chicken à la King"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

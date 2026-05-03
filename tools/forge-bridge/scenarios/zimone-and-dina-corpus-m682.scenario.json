@@ -1,0 +1,23 @@
+{
+  "id": "zimone-and-dina-corpus-m682",
+  "description": "M6 corpus — Zimone and Dina; in-hand parse.",
+  "seed": 65312,
+  "cards": {
+    "Zimone and Dina": "Name:Zimone and Dina\nManaCost:B G U\nTypes:Legendary Creature Human Dryad\nPT:3/4\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ LoseGain | TriggerDescription$ Whenever you draw your second card each turn, target opponent loses 2 life and you gain 2 life.\nSVar:LoseGain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 2 | SubAbility$ DBGain\nSVar:DBGain:DB$ GainLife | Defined$ You | LifeAmount$ 2\nA:AB$ Repeat | Cost$ T Sac<1/Creature.Other/another creature> | RepeatSubAbility$ DBDraw | MaxRepeat$ 2 | RepeatPresent$ Land.YouCtrl | RepeatCompare$ GE8 | StackDescription$ SpellDescription | SpellDescription$ Draw a card. You may put a land card from your hand onto the battlefield tapped. If you control eight or more lands, repeat this process once.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Optional$ You | ChangeType$ Land | ChangeNum$ 1 | Tapped$ True\nDeckHas:Ability$LifeGain|Sacrifice\nOracle:Whenever you draw your second card each turn, target opponent loses 2 life and you gain 2 life.\\n{T}, Sacrifice another creature: Draw a card. You may put a land card from your hand onto the battlefield tapped. If you control eight or more lands, repeat this process once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zimone and Dina"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

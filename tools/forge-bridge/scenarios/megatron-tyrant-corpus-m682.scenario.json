@@ -1,0 +1,23 @@
+{
+  "id": "megatron-tyrant-corpus-m682",
+  "description": "M6 corpus — Megatron, Tyrant; in-hand parse.",
+  "seed": 63318,
+  "cards": {
+    "Megatron, Tyrant": "Name:Megatron, Tyrant\nManaCost:3 R W B\nTypes:Legendary Artifact Creature Robot\nPT:7/5\nK:More Than Meets the Eye:1 R W B\nS:Mode$ CantBeCast | ValidCard$ Card | Caster$ Opponent | Phases$ BeginCombat->EndCombat | Description$ Your opponents can't cast spells during combat.\nT:Mode$ Phase | Phase$ Main2 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigConvert | OptionalDecider$ You | TriggerDescription$ At the beginning of each of your postcombat main phases, you may convert NICKNAME. If you do, add {C} for each 1 life your opponents have lost this turn.\nSVar:TrigConvert:DB$ SetState | Mode$ Transform | RememberChanged$ True | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | ConditionDefined$ Remembered | ConditionPresent$ Card | Produced$ C | Amount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$LifeOppsLostThisTurn\nAlternateMode:DoubleFaced\nOracle:More Than Meets the Eye {1}{R}{W}{B} (You may cast this card converted for {1}{R}{W}{B}.)\\nYour opponents can't cast spells during combat.\\nAt the beginning of each of your postcombat main phases, you may convert Megatron. If you do, add {C} for each 1 life your opponents have lost this turn.\n\nALTERNATE\n\nName:Megatron, Destructive Force\nManaCost:no cost\nColors:white,black,red\nTypes:Legendary Artifact Vehicle\nPT:4/5\nK:Living metal\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediate | TriggerDescription$ Whenever NICKNAME attacks, you may sacrifice another artifact. When you do, NICKNAME deals damage equal to the sacrificed artifact's mana value to target creature. If excess damage would be dealt to that creature this way, instead that damage is dealt to that creature's controller and you convert NICKNAME.\nSVar:TrigImmediate:AB$ ImmediateTrigger | Cost$ Sac<1/Artifact.Other/another artifact> | RememberObjects$ Sacrificed | Execute$ TrigDamage | AILogic$ SacForDamage.cmc | TriggerDescription$ When you do, NICKNAME deals damage equal to the sacrificed artifact's mana value to target creature. If excess damage would be dealt to that creature this way, instead that damage is dealt to that creature's controller and you convert NICKNAME.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | RememberRedirectedExcess$ True | ExcessDamage$ TargetedController | SubAbility$ DBConvert\nSVar:DBConvert:DB$ SetState | ConditionCheckSVar$ Count$RememberedNumber | Mode$ Transform | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerRemembered$CardManaCost\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Living metal (During your turn, this Vehicle is also a creature.)\\nWhenever Megatron attacks, you may sacrifice another artifact. When you do, Megatron deals damage equal to the sacrificed artifact's mana value to target creature. If excess damage would be dealt to that creature this way, instead that damage is dealt to that creature's controller and you convert Megatron.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Megatron, Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

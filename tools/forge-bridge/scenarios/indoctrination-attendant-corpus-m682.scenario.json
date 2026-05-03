@@ -1,0 +1,23 @@
+{
+  "id": "indoctrination-attendant-corpus-m682",
+  "description": "M6 corpus — Indoctrination Attendant; in-hand parse.",
+  "seed": 62864,
+  "cards": {
+    "Indoctrination Attendant": "Name:Indoctrination Attendant\nManaCost:3 W\nTypes:Creature Phyrexian Cleric\nPT:3/4\nK:Toxic:1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, you may return another permanent you control to its owner's hand. If you do, create a 1/1 colorless Phyrexian Mite artifact creature token with toxic 1 and \"This creature can't block.\"\nSVar:TrigToken:AB$ Token | Cost$ Return<1/Permanent.Other/other permanent> | TokenScript$ c_1_1_a_phyrexian_mite_toxic_noblock\nDeckHas:Ability$Token & Type$Artifact|Mite\nOracle:Toxic 1 (Players dealt combat damage by this creature also get a poison counter.)\\nWhen Indoctrination Attendant enters, you may return another permanent you control to its owner's hand. If you do, create a 1/1 colorless Phyrexian Mite artifact creature token with toxic 1 and \"This creature can't block.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Indoctrination Attendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

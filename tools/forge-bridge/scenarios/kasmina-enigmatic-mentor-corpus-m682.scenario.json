@@ -1,0 +1,23 @@
+{
+  "id": "kasmina-enigmatic-mentor-corpus-m682",
+  "description": "M6 corpus — Kasmina, Enigmatic Mentor; in-hand parse.",
+  "seed": 62997,
+  "cards": {
+    "Kasmina, Enigmatic Mentor": "Name:Kasmina, Enigmatic Mentor\nManaCost:3 U\nTypes:Legendary Planeswalker Kasmina\nLoyalty:5\nS:Mode$ RaiseCost | ValidTarget$ Creature.YouCtrl+inZoneBattlefield,Planeswalker.YouCtrl+inZoneBattlefield | Activator$ Player.Opponent | Type$ Spell | Amount$ 2 | Description$ Spells your opponents cast that target a creature or planeswalker you control cost {2} more to cast.\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ u_2_2_wizard | TokenOwner$ You | SubAbility$ DBDraw | SpellDescription$ Create a 2/2 blue Wizard creature token. Draw a card, then discard a card.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Spells your opponents cast that target a creature or planeswalker you control cost {2} more to cast.\\n[-2]: Create a 2/2 blue Wizard creature token. Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kasmina, Enigmatic Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

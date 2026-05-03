@@ -1,0 +1,23 @@
+{
+  "id": "pack-guardian-corpus-m682",
+  "description": "M6 corpus — Pack Guardian; in-hand parse.",
+  "seed": 63681,
+  "cards": {
+    "Pack Guardian": "Name:Pack Guardian\nManaCost:2 G G\nTypes:Creature Wolf Spirit\nPT:4/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, you may discard a land card. If you do, create a 2/2 green Wolf creature token.\nSVar:TrigToken:AB$ Token | Cost$ Discard<1/Land> | TokenScript$ g_2_2_wolf | TokenOwner$ You\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen Pack Guardian enters, you may discard a land card. If you do, create a 2/2 green Wolf creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pack Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

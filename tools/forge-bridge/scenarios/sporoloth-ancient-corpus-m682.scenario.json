@@ -1,0 +1,23 @@
+{
+  "id": "sporoloth-ancient-corpus-m682",
+  "description": "M6 corpus — Sporoloth Ancient; in-hand parse.",
+  "seed": 64570,
+  "cards": {
+    "Sporoloth Ancient": "Name:Sporoloth Ancient\nManaCost:3 G G\nTypes:Creature Fungus\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddAbility$ MakeSaproling | Description$ Creatures you control have \"Remove two spore counters from this creature: Create a 1/1 green Saproling creature token.\"\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a spore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SPORE | CounterNum$ 1 | SpellDescription$ Put a spore counter on CARDNAME.\nSVar:MakeSaproling:AB$ Token | Cost$ SubCounter<2/SPORE> | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nDeckHints:Type$Fungus\nDeckHas:Ability$Counters|Token\nOracle:At the beginning of your upkeep, put a spore counter on Sporoloth Ancient.\\nCreatures you control have \"Remove two spore counters from this creature: Create a 1/1 green Saproling creature token.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sporoloth Ancient"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "baku-altar-corpus-m682",
+  "description": "M6 corpus — Baku Altar; in-hand parse.",
+  "seed": 61516,
+  "cards": {
+    "Baku Altar": "Name:Baku Altar\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nA:AB$ Token | Cost$ 2 T SubCounter<1/KI> | TokenScript$ c_1_1_spirit | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Spirit creature token.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Baku Altar.\\n{2}, {T}, Remove a ki counter from Baku Altar: Create a 1/1 colorless Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baku Altar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "umbilicus-corpus-m682",
+  "description": "M6 corpus — Umbilicus; in-hand parse.",
+  "seed": 65009,
+  "cards": {
+    "Umbilicus": "Name:Umbilicus\nManaCost:4\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of each player's upkeep, that player returns a permanent they control to its owner's hand unless they pay 2 life.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Permanent | DefinedPlayer$ TriggeredPlayer | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | UnlessCost$ PayLife<2> | UnlessPayer$ TriggeredPlayer\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player returns a permanent they control to its owner's hand unless they pay 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Umbilicus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

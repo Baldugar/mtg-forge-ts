@@ -1,0 +1,23 @@
+{
+  "id": "marjhan-corpus-m682",
+  "description": "M6 corpus — Marjhan; in-hand parse.",
+  "seed": 63276,
+  "cards": {
+    "Marjhan": "Name:Marjhan\nManaCost:5 U U\nTypes:Creature Serpent\nPT:8/8\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ This creature can't attack unless defending player controls an Island.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice this creature.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ Untap | Cost$ U U Sac<1/Creature> | ActivationPhases$ Upkeep | PlayerTurn$ True | SpellDescription$ Untap this creature. Activate only during your upkeep.\nA:AB$ DealDamage | Cost$ U U | NumDmg$ 1 | ValidTgts$ Creature.attacking+withoutFlying | TgtPrompt$ Select target attacking creature without flying | SubAbility$ DBPump | SpellDescription$ This creature gets -1/-0 until end of turn and deals 1 damage to target attacking creature without flying.\nSVar:DBPump:DB$ Pump | NumAtt$ -1 | Defined$ Self\nSVar:NeedsToPlay:Island.YouCtrl\nAI:RemoveDeck:Random\nOracle:This creature doesn't untap during your untap step.\\n{U}{U}, Sacrifice a creature: Untap this creature. Activate only during your upkeep.\\nThis creature can't attack unless defending player controls an Island.\\n{U}{U}: This creature gets -1/-0 until end of turn and deals 1 damage to target attacking creature without flying.\\nWhen you control no Islands, sacrifice this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marjhan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

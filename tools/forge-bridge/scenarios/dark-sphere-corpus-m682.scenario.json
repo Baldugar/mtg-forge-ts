@@ -1,0 +1,23 @@
+{
+  "id": "dark-sphere-corpus-m682",
+  "description": "M6 corpus — Dark Sphere; in-hand parse.",
+  "seed": 61922,
+  "cards": {
+    "Dark Sphere": "Name:Dark Sphere\nManaCost:0\nTypes:Artifact\nA:AB$ ChooseSource | Cost$ T Sac<1/CARDNAME> | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent half that damage, rounded down.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ DBPrevent\nSVar:DBPrevent:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ The next time a source of your choice would deal damage to you this turn, prevent half that damage, rounded down.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ ShieldAmount | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:ShieldAmount:ReplaceCount$DamageAmount/HalfDown\nDeckHas:Ability$Sacrifice\nOracle:{T}, Sacrifice Dark Sphere: The next time a source of your choice would deal damage to you this turn, prevent half that damage, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Sphere"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

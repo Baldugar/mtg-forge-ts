@@ -1,0 +1,23 @@
+{
+  "id": "mold-demon-corpus-m682",
+  "description": "M6 corpus — Mold Demon; in-hand parse.",
+  "seed": 63404,
+  "cards": {
+    "Mold Demon": "Name:Mold Demon\nManaCost:5 B B\nTypes:Creature Fungus Demon\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice two Swamps.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<2/Swamp> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$Valid Swamp.YouCtrl\nDeckHas:Ability$Sacrifice\nOracle:When Mold Demon enters, sacrifice it unless you sacrifice two Swamps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mold Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

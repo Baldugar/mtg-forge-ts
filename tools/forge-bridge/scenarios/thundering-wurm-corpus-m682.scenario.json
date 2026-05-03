@@ -1,0 +1,23 @@
+{
+  "id": "thundering-wurm-corpus-m682",
+  "description": "M6 corpus — Thundering Wurm; in-hand parse.",
+  "seed": 64870,
+  "cards": {
+    "Thundering Wurm": "Name:Thundering Wurm\nManaCost:2 G\nTypes:Creature Wurm\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacSelf | TriggerDescription$ When CARDNAME enters, sacrifice it unless you discard a land card.\nSVar:DBSacSelf:DB$ Sacrifice | UnlessCost$ Discard<1/Land> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:Count$ValidHand Land.YouOwn\nSVar:PlayMain1:TRUE\nSVar:PlayBeforeLandDrop:TRUE\nOracle:When Thundering Wurm enters, sacrifice it unless you discard a land card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thundering Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nameless-race-corpus-m682",
+  "description": "M6 corpus — Nameless Race; in-hand parse.",
+  "seed": 63495,
+  "cards": {
+    "Nameless Race": "Name:Nameless Race\nManaCost:3 B\nTypes:Creature\nPT:*/*\nK:Trample\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ PayLife | ReplacementResult$ Updated | Description$ As CARDNAME enters, pay any amount of life. The amount you pay can't be more than the total number of white nontoken permanents your opponents control plus the total number of white cards in their graveyards.\nSVar:PayLife:AB$ StoreSVar | Cost$ Mandatory PayLife<X> | XMaxLimit$ Limit | SVar$ LifePaidOnETB | Type$ Calculate | Expression$ X\n# Don't use References, when the variable is set by StoreSVar\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ LifePaidOnETB | SetToughness$ LifePaidOnETB | Description$ CARDNAME's power and toughness are each equal to the life paid as it entered.\nSVar:X:Count$xPaid\nSVar:Limit:SVar$Active/Plus.Buried\nSVar:Active:Count$Valid Permanent.White+!token+OppCtrl\nSVar:Buried:Count$ValidGraveyard Card.White+OppCtrl\nSVar:LifePaidOnETB:Number$0\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Trample\\nAs Nameless Race enters, pay any amount of life. The amount you pay can't be more than the total number of white nontoken permanents your opponents control plus the total number of white cards in their graveyards.\\nNameless Race's power and toughness are each equal to the life paid as it entered.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nameless Race"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

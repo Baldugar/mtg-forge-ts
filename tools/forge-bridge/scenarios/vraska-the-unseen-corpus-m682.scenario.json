@@ -1,0 +1,23 @@
+{
+  "id": "vraska-the-unseen-corpus-m682",
+  "description": "M6 corpus — Vraska the Unseen; in-hand parse.",
+  "seed": 65169,
+  "cards": {
+    "Vraska the Unseen": "Name:Vraska the Unseen\nManaCost:3 B G\nTypes:Legendary Planeswalker Vraska\nLoyalty:5\nA:AB$ Animate | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ Self | Triggers$ TrigVraska | Duration$ UntilYourNextTurn | AILogic$ EOT | SpellDescription$ Until your next turn, whenever a creature deals combat damage to CARDNAME, destroy that creature. | StackDescription$ Until your next turn, whenever a creature deals combat damage to CARDNAME, destroy that creature.\nSVar:TrigVraska:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ Card.Self | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ VraskaGaze | TriggerDescription$ Until your next turn, whenever a creature deals combat damage to CARDNAME, destroy that creature.\nSVar:VraskaGaze:DB$ Destroy | Defined$ TriggeredSourceLKICopy\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SpellDescription$ Destroy target nonland permanent.\nA:AB$ Token | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | TokenAmount$ 3 | TokenScript$ b_1_1_assassin_lose_con | TokenOwner$ You | SpellDescription$ Create three 1/1 black Assassin creature tokens with \"Whenever this creature deals combat damage to a player, that player loses the game.\"\nOracle:[+1]: Until your next turn, whenever a creature deals combat damage to Vraska the Unseen, destroy that creature.\\n[-3]: Destroy target nonland permanent.\\n[-7]: Create three 1/1 black Assassin creature tokens with \"Whenever this creature deals combat damage to a player, that player loses the game.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska the Unseen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

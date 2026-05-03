@@ -1,0 +1,23 @@
+{
+  "id": "dromar-s-cavern-corpus-m682",
+  "description": "M6 corpus — Dromar's Cavern; in-hand parse.",
+  "seed": 62098,
+  "cards": {
+    "Dromar's Cavern": "Name:Dromar's Cavern\nManaCost:no cost\nTypes:Land Lair\nA:AB$ Mana | Cost$ T | Produced$ Combo W U B | SpellDescription$ Add {W}, {U}, or {B}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Land.nonLair/non-Lair land> | UnlessPayer$ You\nSVar:NeedsToPlay:Land.nonLair+YouCtrl\nOracle:When Dromar's Cavern enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\\n{T}: Add {W}, {U}, or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dromar's Cavern"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

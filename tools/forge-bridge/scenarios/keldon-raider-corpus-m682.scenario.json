@@ -1,0 +1,23 @@
+{
+  "id": "keldon-raider-corpus-m682",
+  "description": "M6 corpus — Keldon Raider; in-hand parse.",
+  "seed": 63013,
+  "cards": {
+    "Keldon Raider": "Name:Keldon Raider\nManaCost:2 R R\nTypes:Creature Human Warrior\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, draw a card.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card>\nSVar:X:Remembered$Amount\nOracle:When Keldon Raider enters, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Raider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

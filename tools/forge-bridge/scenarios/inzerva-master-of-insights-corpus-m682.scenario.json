@@ -1,0 +1,23 @@
+{
+  "id": "inzerva-master-of-insights-corpus-m682",
+  "description": "M6 corpus — Inzerva, Master of Insights; in-hand parse.",
+  "seed": 62903,
+  "cards": {
+    "Inzerva, Master of Insights": "Name:Inzerva, Master of Insights\nManaCost:1 2U 2R\nTypes:Legendary Planeswalker Inzerva\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | NumCards$ 2 | SpellDescription$ Draw two cards, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nA:AB$ RepeatEach | Cost$ SubCounter<2/LOYALTY> | RepeatPlayers$ Opponent | RepeatSubAbility$ DBDig | SubAbility$ DBScry | Planeswalker$ True | SpellDescription$ Look at the top two cards of each other player's library, then put any number of them on the bottom of that library and the rest on top in any order.\nSVar:DBDig:DB$ Dig | Defined$ Remembered | DigNum$ 2 | ChangeNum$ Any | DestinationZone$ Library | LibraryPosition2$ 0\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nA:AB$ Effect | Cost$ SubCounter<4/LOYALTY> | Planeswalker$ True | Name$ Emblem — Inzerva, Master of Insights | Ultimate$ True | Duration$ Permanent | StaticAbilities$ STReveal | Triggers$ TrigDraw | SpellDescription$ You get an emblem with \"Your opponents play with their hands revealed\" and \"Whenever an opponent draws a card, this emblem deals 1 damage to them.\"\nSVar:STReveal:Mode$ Continuous | AffectedZone$ Hand | Affected$ Card.OppOwn | MayLookAt$ Player | Description$ Your opponents play with their hands revealed.\nSVar:TrigDraw:Mode$ Drawn | ValidCard$ Card.OppOwn | TriggerZones$ Command | Execute$ DBDamage | TriggerDescription$ Whenever an opponent draws a card, CARDNAME deals 1 damage to that player.\nSVar:DBDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nOracle:[+2]: Draw two cards, then discard a card.\\n[-2]: Look at the top two cards of each other player's library, then put any number of them on the bottom of that library and the rest on top in any order. Scry 2.\\n[-4]: You get an emblem with \"Your opponents play with their hands revealed\" and \"Whenever an opponent draws a card, this emblem deals 1 damage to them.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inzerva, Master of Insights"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

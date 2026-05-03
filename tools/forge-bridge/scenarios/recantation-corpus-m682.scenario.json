@@ -1,0 +1,23 @@
+{
+  "id": "recantation-corpus-m682",
+  "description": "M6 corpus — Recantation; in-hand parse.",
+  "seed": 63950,
+  "cards": {
+    "Recantation": "Name:Recantation\nManaCost:3 U U\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ U Sac<1/CARDNAME> | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Permanent | SpellDescription$ Return up to X target permanents to their owners' hands, where X is the number of verse counters on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a verse counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ VERSE | CounterNum$ 1\nSVar:X:Count$CardCounters.VERSE\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may put a verse counter on Recantation.\\n{U}, Sacrifice Recantation: Return up to X target permanents to their owners' hands, where X is the number of verse counters on Recantation.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Recantation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

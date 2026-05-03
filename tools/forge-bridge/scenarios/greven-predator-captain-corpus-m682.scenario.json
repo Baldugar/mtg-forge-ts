@@ -1,0 +1,23 @@
+{
+  "id": "greven-predator-captain-corpus-m682",
+  "description": "M6 corpus — Greven, Predator Captain; in-hand parse.",
+  "seed": 62635,
+  "cards": {
+    "Greven, Predator Captain": "Name:Greven, Predator Captain\nManaCost:3 B R\nTypes:Legendary Creature Phyrexian Human Warrior\nPT:5/5\nK:Menace\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +X/+0, where X is the amount of life you've lost this turn.\nSVar:X:Count$LifeYouLostThisTurn\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. If you do, you draw cards equal to that creature's power and you lose life equal to that creature's toughness.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Creature.Other/another creature> | Defined$ You | NumCards$ Y | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ Z\nSVar:Y:Sacrificed$CardPower\nSVar:Z:Sacrificed$CardToughness\nOracle:Menace\\nGreven, Predator Captain gets +X/+0, where X is the amount of life you've lost this turn.\\nWhenever Greven attacks, you may sacrifice another creature. If you do, you draw cards equal to that creature's power and you lose life equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greven, Predator Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

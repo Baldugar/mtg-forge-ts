@@ -1,0 +1,23 @@
+{
+  "id": "grotag-siege-runner-corpus-m682",
+  "description": "M6 corpus — Grotag Siege-Runner; in-hand parse.",
+  "seed": 62653,
+  "cards": {
+    "Grotag Siege-Runner": "Name:Grotag Siege-Runner\nManaCost:1 R\nTypes:Creature Goblin Rogue\nPT:2/1\nA:AB$ Destroy | Cost$ R Sac<1/CARDNAME> | ValidTgts$ Creature.withDefender | TgtPrompt$ Select target creature with defender | SubAbility$ DBDealDamage | SpellDescription$ Destroy target creature with defender. CARDNAME deals 2 damage to that creature's controller.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ 2 | Defined$ TargetedController\nOracle:{R}, Sacrifice Grotag Siege-Runner: Destroy target creature with defender. Grotag Siege-Runner deals 2 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grotag Siege-Runner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

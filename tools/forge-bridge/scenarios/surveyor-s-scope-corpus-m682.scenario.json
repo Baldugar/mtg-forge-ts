@@ -1,0 +1,23 @@
+{
+  "id": "surveyor-s-scope-corpus-m682",
+  "description": "M6 corpus — Surveyor's Scope; in-hand parse.",
+  "seed": 64680,
+  "cards": {
+    "Surveyor's Scope": "Name:Surveyor's Scope\nManaCost:2\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ T Exile<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ X | SpellDescription$ Search your library for up to X basic land cards, where X is the number of players who control at least two more lands than you. Put those lands onto the battlefield, then shuffle.\nSVar:X:PlayerCountPropertywithAtLeast2MoreLandsThanYou$Amount\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{T}, Exile Surveyor's Scope: Search your library for up to X basic land cards, where X is the number of players who control at least two more lands than you. Put those cards onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surveyor's Scope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

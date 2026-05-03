@@ -1,0 +1,23 @@
+{
+  "id": "irrigation-ditch-corpus-m682",
+  "description": "M6 corpus — Irrigation Ditch; in-hand parse.",
+  "seed": 62913,
+  "cards": {
+    "Irrigation Ditch": "Name:Irrigation Ditch\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ G U | SpellDescription$ Add {G}{U}.\nAI:RemoveDeck:All\nOracle:Irrigation Ditch enters tapped.\\n{T}: Add {W}.\\n{T}, Sacrifice Irrigation Ditch: Add {G}{U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Irrigation Ditch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

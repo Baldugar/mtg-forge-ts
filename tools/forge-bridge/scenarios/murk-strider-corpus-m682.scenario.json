@@ -1,0 +1,23 @@
+{
+  "id": "murk-strider-corpus-m682",
+  "description": "M6 corpus — Murk Strider; in-hand parse.",
+  "seed": 63463,
+  "cards": {
+    "Murk Strider": "Name:Murk Strider\nManaCost:3 U\nTypes:Creature Eldrazi Processor\nPT:3/2\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put a card an opponent owns from exile into that player's graveyard. If you do, return target creature to its owner's hand.\nSVar:TrigChangeZone:AB$ ChangeZone | Cost$ ExiledMoveToGrave<1/Card.OppOwn/card an opponent owns> | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nDeckHints:Keyword$Ingest\nOracle:Devoid (This card has no color.)\\nWhen Murk Strider enters, you may put a card an opponent owns from exile into that player's graveyard. If you do, return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murk Strider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

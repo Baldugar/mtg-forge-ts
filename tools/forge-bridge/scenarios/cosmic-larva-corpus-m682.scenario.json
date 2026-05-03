@@ -1,0 +1,23 @@
+{
+  "id": "cosmic-larva-corpus-m682",
+  "description": "M6 corpus — Cosmic Larva; in-hand parse.",
+  "seed": 61841,
+  "cards": {
+    "Cosmic Larva": "Name:Cosmic Larva\nManaCost:1 R R\nTypes:Creature Beast\nPT:7/6\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you sacrifice two lands.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Sac<2/Land>\nAI:RemoveDeck:All\nOracle:Trample\\nAt the beginning of your upkeep, sacrifice Cosmic Larva unless you sacrifice two lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cosmic Larva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

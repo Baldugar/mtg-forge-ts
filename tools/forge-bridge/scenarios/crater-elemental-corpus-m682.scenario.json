@@ -1,0 +1,23 @@
+{
+  "id": "crater-elemental-corpus-m682",
+  "description": "M6 corpus — Crater Elemental; in-hand parse.",
+  "seed": 61858,
+  "cards": {
+    "Crater Elemental": "Name:Crater Elemental\nManaCost:2 R\nTypes:Creature Elemental\nPT:0/6\nA:AB$ DealDamage | Cost$ R T Sac<1/CARDNAME> | ValidTgts$ Creature | NumDmg$ 4 | SpellDescription$ It deals 4 damage to target creature.\nA:AB$ Animate | Cost$ 2 R | Defined$ Self | Power$ 8 | CheckSVar$ FormidableTest | SVarCompare$ GE8 | PrecostDesc$ Formidable — | SpellDescription$ CARDNAME has base power 8 until end of turn. Activate only if creatures you control have total power 8 or greater.\nSVar:FormidableTest:Count$Valid Creature.YouCtrl$CardPower\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:{R}, {T}, Sacrifice Crater Elemental: It deals 4 damage to target creature.\\nFormidable — {2}{R}: Crater Elemental has base power 8 until end of turn. Activate only if creatures you control have total power 8 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crater Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

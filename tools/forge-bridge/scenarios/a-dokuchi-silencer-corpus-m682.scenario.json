@@ -1,0 +1,23 @@
+{
+  "id": "a-dokuchi-silencer-corpus-m682",
+  "description": "M6 corpus — A-Dokuchi Silencer; in-hand parse.",
+  "seed": 64094,
+  "cards": {
+    "A-Dokuchi Silencer": "Name:A-Dokuchi Silencer\nManaCost:1 B\nTypes:Creature Human Ninja\nPT:2/1\nK:Ninjutsu:1 B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigImmediateTrig | CombatDamage$ True | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may discard a card. When you do, destroy target creature or planeswalker that player controls.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Discard<1/Card> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target creature or planeswalker that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.ControlledBy Spawner>TriggeredTarget,Planeswalker.ControlledBy Spawner>TriggeredTarget | TgtPrompt$ Select target creature or planeswalker damaged player controls\nSVar:AIPreference:DiscardCost$Card.cmcLE3\nDeckHas:Ability$Discard\nOracle:Ninjutsu {1}{B}\\nWhenever Dokuchi Silencer deals combat damage to a player, you may discard a card. When you do, destroy target creature or planeswalker that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Dokuchi Silencer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

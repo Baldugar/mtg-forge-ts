@@ -1,0 +1,23 @@
+{
+  "id": "firewild-borderpost-corpus-m682",
+  "description": "M6 corpus — Firewild Borderpost; in-hand parse.",
+  "seed": 62336,
+  "cards": {
+    "Firewild Borderpost": "Name:Firewild Borderpost\nManaCost:1 R G\nTypes:Artifact\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ 1 Return<1/Land.Basic> | Description$ You may pay {1} and return a basic land you control to its owner's hand rather than pay this spell's mana cost.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nOracle:You may pay {1} and return a basic land you control to its owner's hand rather than pay this spell's mana cost.\\nFirewild Borderpost enters tapped.\\n{T}: Add {R} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firewild Borderpost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crosis-s-catacombs-corpus-m682",
+  "description": "M6 corpus — Crosis's Catacombs; in-hand parse.",
+  "seed": 61867,
+  "cards": {
+    "Crosis's Catacombs": "Name:Crosis's Catacombs\nManaCost:no cost\nTypes:Land Lair\nA:AB$ Mana | Cost$ T | Produced$ Combo U B R | SpellDescription$ Add {U}, {B}, or {R}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Land.nonLair/non-Lair land> | UnlessPayer$ You\nSVar:NeedsToPlay:Land.nonLair+YouCtrl\nOracle:When Crosis's Catacombs enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\\n{T}: Add {U}, {B}, or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crosis's Catacombs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

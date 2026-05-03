@@ -1,0 +1,23 @@
+{
+  "id": "meathook-massacre-ii-corpus-m682",
+  "description": "M6 corpus — Meathook Massacre II; in-hand parse.",
+  "seed": 63314,
+  "cards": {
+    "Meathook Massacre II": "Name:Meathook Massacre II\nManaCost:X X B B B B\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each player sacrifices X creatures.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player | Amount$ X | SacValid$ Creature\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigReturn1 | TriggerDescription$ Whenever a creature you control dies, you may pay 3 life. If you do, return that card under your control with a finality counter on it.\nSVar:TrigReturn1:AB$ ChangeZone | Cost$ PayLife<3> | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy | WithCountersType$ FINALITY\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigReturn2 | TriggerDescription$ Whenever a creature an opponent controls dies, they may pay 3 life. If they don't, return that card under your control with a finality counter on it.\nSVar:TrigReturn2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy | UnlessCost$ PayLife<3> | UnlessPayer$ TriggeredCardController | WithCountersType$ FINALITY\nSVar:X:Count$xPaid\nDeckHas:Ability$Sacrifice\nOracle:When Meathook Massacre II enters, each player sacrifices X creatures.\\nWhenever a creature you control dies, you may pay 3 life. If you do, return that card under your control with a finality counter on it.\\nWhenever a creature an opponent controls dies, they may pay 3 life. If they don't, return that card under your control with a finality counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meathook Massacre II"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

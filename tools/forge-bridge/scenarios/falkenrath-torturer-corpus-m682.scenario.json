@@ -1,0 +1,23 @@
+{
+  "id": "falkenrath-torturer-corpus-m682",
+  "description": "M6 corpus — Falkenrath Torturer; in-hand parse.",
+  "seed": 62281,
+  "cards": {
+    "Falkenrath Torturer": "Name:Falkenrath Torturer\nManaCost:2 B\nTypes:Creature Vampire\nPT:2/1\nA:AB$ Pump | Cost$ Sac<1/Creature> | Defined$ Self | KW$ Flying | SubAbility$ DBPutCounter | SpellDescription$ CARDNAME gains flying until end of turn. If the sacrificed creature was a Human, put a +1/+1 counter on CARDNAME.\nSVar:DBPutCounter:DB$ PutCounter | ConditionDefined$ Sacrificed | ConditionPresent$ Human | CounterNum$ 1 | CounterType$ P1P1\nAI:RemoveDeck:All\nOracle:Sacrifice a creature: Falkenrath Torturer gains flying until end of turn. If the sacrificed creature was a Human, put a +1/+1 counter on Falkenrath Torturer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Falkenrath Torturer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

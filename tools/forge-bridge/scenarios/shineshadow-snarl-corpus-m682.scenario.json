@@ -1,0 +1,23 @@
+{
+  "id": "shineshadow-snarl-corpus-m682",
+  "description": "M6 corpus — Shineshadow Snarl; in-hand parse.",
+  "seed": 64339,
+  "cards": {
+    "Shineshadow Snarl": "Name:Shineshadow Snarl\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal a Plains or Swamp card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Plains;Swamp/Plains or Swamp> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SpellDescription$ Add {W} or {B}.\nOracle:As Shineshadow Snarl enters, you may reveal a Plains or Swamp card from your hand. If you don't, Shineshadow Snarl enters tapped.\\n{T}: Add {W} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shineshadow Snarl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spider-slayer-hatred-honed-corpus-m682",
+  "description": "M6 corpus — Spider-Slayer, Hatred Honed; in-hand parse.",
+  "seed": 64539,
+  "cards": {
+    "Spider-Slayer, Hatred Honed": "Name:Spider-Slayer, Hatred Honed\nVariant:UniversesWithin:FlavorName:Goro Rel, Scourge to Spiders\nManaCost:2\nTypes:Legendary Artifact Creature Human Villain\nPT:2/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Spider | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever NICKNAME deals damage to a Spider, destroy that creature.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nA:AB$ Token | Cost$ 6 ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | TokenTapped$ True | TokenAmount$ 2 | TokenScript$ c_1_1_a_robot_flying | SpellDescription$ Create two tapped 1/1 colorless Robot artifact creature tokens with flying.\nDeckHas:Ability$Token|Graveyard & Type$Robot\nOracle:Whenever Spider-Slayer deals damage to a Spider, destroy that creature.\\n{6}, Exile this card from your graveyard: Create two tapped 1/1 colorless Robot artifact creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spider-Slayer, Hatred Honed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "transplant-theorist-corpus-m682",
+  "description": "M6 corpus — Transplant Theorist; in-hand parse.",
+  "seed": 64950,
+  "cards": {
+    "Transplant Theorist": "Name:Transplant Theorist\nManaCost:3 U\nTypes:Artifact Creature Phyrexian Artificer\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Artifact.YouCtrl+Other | Execute$ TrigLoot | TriggerDescription$ Whenever CARDNAME or another artifact you control enters, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | Cost$ Draw<1/You>\nA:AB$ ChangeZone | Cost$ 2 | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | ValidTgts$ Card.YouCtrl | TgtPrompt$ Select target card from your graveyard | SpellDescription$ Put target card from your graveyard on the bottom of your library.\nDeckHas:Ability$Discard\nDeckHints:Type$Artifact\nOracle:Whenever Transplant Theorist or another artifact you control enters, you may draw a card. If you do, discard a card.\\n{2}: Put target card from your graveyard on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transplant Theorist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "disciple-of-freyalise-corpus-m682",
+  "description": "M6 corpus — Disciple of Freyalise; in-hand parse.",
+  "seed": 62029,
+  "cards": {
+    "Disciple of Freyalise": "Name:Disciple of Freyalise\nManaCost:3 G G G\nTypes:Creature Elf Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature. If you do, you gain X life and draw X cards, where X is that creature's power.\nSVar:TrigGainLife:AB$ GainLife | Cost$ Sac<1/Creature.Other/another creature> | LifeAmount$ X | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Sacrificed$CardPower\nDeckHas:Ability$Sacrifice|LifeGain\nAlternateMode:Modal\nOracle:When Disciple of Freyalise enters, you may sacrifice another creature. If you do, you gain X life and draw X cards, where X is that creature's power.\n\nALTERNATE\n\nName:Garden of Freyalise\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 3 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<3> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:As Garden of Freyalise enters, you may pay 3 life. If you don't, it enters tapped.\\n{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disciple of Freyalise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

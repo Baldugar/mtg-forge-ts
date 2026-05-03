@@ -1,0 +1,23 @@
+{
+  "id": "urban-retreat-corpus-m682",
+  "description": "M6 corpus — Urban Retreat; in-hand parse.",
+  "seed": 65043,
+  "cards": {
+    "Urban Retreat": "Name:Urban Retreat\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo G W U | SpellDescription$ Add {G}, {W}, or {U}.\nA:AB$ ChangeZone | Cost$ 2 Return<1/Creature.tapped/tapped creature> | ActivationZone$ Hand | Origin$ Hand | Defined$ Self | Destination$ Battlefield | SorcerySpeed$ True | SpellDescription$ Put this card from your hand onto the battlefield. Activate only as a sorcery.\nOracle:This land enters tapped.\\n{T}: Add {G}, {W}, or {U}.\\n{2}, Return a tapped creature you control to its owner's hand: Put this card from your hand onto the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urban Retreat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

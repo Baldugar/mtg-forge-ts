@@ -1,0 +1,23 @@
+{
+  "id": "vivid-grove-corpus-m682",
+  "description": "M6 corpus — Vivid Grove; in-hand parse.",
+  "seed": 65126,
+  "cards": {
+    "Vivid Grove": "Name:Vivid Grove\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with two charge counters on it.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Mana | Cost$ T SubCounter<1/CHARGE> | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$Counters\nOracle:Vivid Grove enters tapped with two charge counters on it.\\n{T}: Add {G}.\\n{T}, Remove a charge counter from Vivid Grove: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivid Grove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

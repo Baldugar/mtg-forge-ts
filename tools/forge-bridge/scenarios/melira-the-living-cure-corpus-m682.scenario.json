@@ -1,0 +1,23 @@
+{
+  "id": "melira-the-living-cure-corpus-m682",
+  "description": "M6 corpus — Melira, the Living Cure; in-hand parse.",
+  "seed": 63321,
+  "cards": {
+    "Melira, the Living Cure": "Name:Melira, the Living Cure\nManaCost:G W\nTypes:Legendary Creature Human Scout\nPT:3/3\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ValidCounterType$ POISON | ReplaceWith$ OnlyOnePoison | Description$ If you would get one or more poison counters, instead you get one poison counter and you can't get additional poison counters this turn.\nSVar:OnlyOnePoison:DB$ ReplaceCounter | ValidCounterType$ POISON | Amount$ 1 | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Static$ True | Execute$ TrigEffect | AfterReplacement$ True\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ NoMorePoison\nSVar:NoMorePoison:Mode$ CantPutCounter | ValidPlayer$ You | CounterType$ POISON | Description$ You can't get additional poison counters this turn.\nA:AB$ DelayedTrigger | Cost$ Exile<1/NICKNAME> | ValidTgts$ Creature.Other,Artifact.Other | TgtPrompt$ Select another target creature or artifact | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigReturn | StackDescription$ When {c:Targeted} is put into a graveyard this turn, return it to the battlefield under its owner's control. | SpellDescription$ Choose another target creature or artifact. When it's put into a graveyard this turn, return that card to the battlefield under its owner's control.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ TriggeredCard\nDeckHints:Ability$Graveyard|Sacrifice\nOracle:If you would get one or more poison counters, instead you get one poison counter and you can't get additional poison counters this turn.\\nExile Melira: Choose another target creature or artifact. When it's put into a graveyard this turn, return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Melira, the Living Cure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "scrapyard-recombiner-corpus-m682",
+  "description": "M6 corpus — Scrapyard Recombiner; in-hand parse.",
+  "seed": 64233,
+  "cards": {
+    "Scrapyard Recombiner": "Name:Scrapyard Recombiner\nManaCost:3\nTypes:Artifact Creature Construct\nPT:0/0\nK:Modular:2\nA:AB$ ChangeZone | Cost$ T Sac<1/Artifact> | Origin$ Library | Destination$ Hand | ChangeType$ Construct | SpellDescription$ Search your library for a Construct card, reveal it, put it into your hand, then shuffle.\nSVar:AIPreference:SacCost$Artifact.token,Artifact.cmcEQ1\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckHints:Type$Construct\nOracle:Modular 2 (This creature enters with two +1/+1 counters on it. When it dies, you may put its +1/+1 counters on target artifact creature.)\\n{T}, Sacrifice an artifact: Search your library for a Construct card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrapyard Recombiner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chain-of-plasma-corpus-m682",
+  "description": "M6 corpus — Chain of Plasma; in-hand parse.",
+  "seed": 61673,
+  "cards": {
+    "Chain of Plasma": "Name:Chain of Plasma\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SubAbility$ DBCopy1 | SpellDescription$ CARDNAME deals 3 damage to any target. Then that player or that permanent's controller may discard a card. If the player does, they may copy this spell and may choose a new target for that copy.\nSVar:DBCopy1:DB$ CopySpellAbility | Defined$ Parent | Controller$ TargetedOrController | UnlessPayer$ TargetedOrController | UnlessCost$ Discard<1/Card> | UnlessSwitched$ True | StackDescription$ None | MayChooseTarget$ True\nOracle:Chain of Plasma deals 3 damage to any target. Then that player or that permanent's controller may discard a card. If the player does, they may copy this spell and may choose a new target for that copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chain of Plasma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

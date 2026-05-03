@@ -1,0 +1,23 @@
+{
+  "id": "liliana-s-talent-corpus-m682",
+  "description": "M6 corpus — Liliana's Talent; in-hand parse.",
+  "seed": 63163,
+  "cards": {
+    "Liliana's Talent": "Name:Liliana's Talent\nManaCost:B B\nTypes:Enchantment Aura\nK:Enchant:Planeswalker\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Planeswalker.EnchantedBy | AddAbility$ LilianaUlt | Description$ Enchanted planeswalker has \"[-8]: Put all creature cards from all graveyards onto the battlefield under your control.\"\nSVar:LilianaUlt:AB$ ChangeZoneAll | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | ChangeType$ Creature | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | SpellDescription$ Put all creature cards in all graveyards onto the battlefield under your control.\nT:Mode$ DamageDone | ValidSource$ Creature.inZoneBattlefield | ValidTarget$ Planeswalker.EnchantedBy | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature deals damage to enchanted planeswalker, destroy that creature.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredSourceLKICopy\nDeckNeeds:Type$Planeswalker\nOracle:Enchant planeswalker\\nEnchanted planeswalker has \"[-8]: Put all creature cards from all graveyards onto the battlefield under your control.\"\\nWhenever a creature deals damage to enchanted planeswalker, destroy that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

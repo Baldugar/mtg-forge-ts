@@ -1,0 +1,23 @@
+{
+  "id": "sai-master-thopterist-corpus-m682",
+  "description": "M6 corpus — Sai, Master Thopterist; in-hand parse.",
+  "seed": 64143,
+  "cards": {
+    "Sai, Master Thopterist": "Name:Sai, Master Thopterist\nManaCost:2 U\nTypes:Legendary Creature Human Artificer\nPT:1/4\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | ValidCard$ Artifact | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an artifact spell, create a 1/1 colorless Thopter artifact creature token with flying.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ c_1_1_a_thopter_flying\nA:AB$ Draw | Cost$ 1 U Sac<2/Artifact> | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHints:Type$Artifact\nDeckHas:Ability$Token\nOracle:Whenever you cast an artifact spell, create a 1/1 colorless Thopter artifact creature token with flying.\\n{1}{U}, Sacrifice two artifacts: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sai, Master Thopterist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

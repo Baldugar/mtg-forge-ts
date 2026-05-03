@@ -1,0 +1,23 @@
+{
+  "id": "deconstruction-hammer-corpus-m682",
+  "description": "M6 corpus — Deconstruction Hammer; in-hand parse.",
+  "seed": 61954,
+  "cards": {
+    "Deconstruction Hammer": "Name:Deconstruction Hammer\nManaCost:W\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddAbility$ ABDestroy | Description$ Equipped creature gets +1/+1 and has \"{3}, {T}, Sacrifice CARDNAME: Destroy target artifact or enchantment.\"\nSVar:ABDestroy:AB$ Destroy | Cost$ 3 T Sac<1/OriginalHost/Deconstruction Hammer> | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nK:Equip:1\nDeckHas:Ability$Sacrifice\nOracle:Equipped creature gets +1/+1 and has \"{3}, {T}, Sacrifice Deconstruction Hammer: Destroy target artifact or enchantment.\"\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deconstruction Hammer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "starting-town-corpus-m682",
+  "description": "M6 corpus — Starting Town; in-hand parse.",
+  "seed": 64598,
+  "cards": {
+    "Starting Town": "Name:Starting Town\nManaCost:no cost\nTypes:Land Town\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless it's your first, second, or third turn of the game.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GT3\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T PayLife<1> | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nSVar:X:Count$Compare Y GE1.Z.4\nSVar:Y:PlayerCountPropertyYou$HasPropertyActive\nSVar:Z:Count$YourTurns\nOracle:This land enters tapped unless it's your first, second, or third turn of the game.\\n{T}: Add {C}.\\n{T}, Pay 1 life: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starting Town"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

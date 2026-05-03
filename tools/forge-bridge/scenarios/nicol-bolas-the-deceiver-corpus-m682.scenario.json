@@ -1,0 +1,23 @@
+{
+  "id": "nicol-bolas-the-deceiver-corpus-m682",
+  "description": "M6 corpus — Nicol Bolas, the Deceiver; in-hand parse.",
+  "seed": 63549,
+  "cards": {
+    "Nicol Bolas, the Deceiver": "Name:Nicol Bolas, the Deceiver\nManaCost:5 U B R\nTypes:Legendary Planeswalker Bolas\nLoyalty:5\nA:AB$ GenericChoice | Cost$ AddCounter<3/LOYALTY> | Planeswalker$ True | Defined$ Opponent | Choices$ SacNonland,Discard | TempRemember$ Chooser | FallbackAbility$ LoseLifeFallback | AILogic$ PayUnlessCost | SpellDescription$ Each opponent loses 3 life unless that player sacrifices a nonland permanent or discards a card.\nSVar:Discard:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 3 | UnlessCost$ Discard<1/Card> | UnlessPayer$ Remembered | SpellDescription$ You lose 3 life unless you discard a card.\nSVar:SacNonland:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 3 | UnlessCost$ Sac<1/Permanent.nonLand> | UnlessPayer$ Remembered | SpellDescription$ You lose 3 life unless you sacrifice a nonland permanent.\nSVar:LoseLifeFallback:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 3\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | ValidTgts$ Creature | Planeswalker$ True | SubAbility$ DBDraw | SpellDescription$ Destroy target creature. Draw a card.\nSVar:DBDraw:DB$ Draw\nA:AB$ DealDamage | Cost$ SubCounter<11/LOYALTY> | Defined$ Opponent | NumDmg$ 7 | Planeswalker$ True | Ultimate$ True | SubAbility$ DBDrawSeven | SpellDescription$ CARDNAME deals 7 damage to each opponent. You draw seven cards.\nSVar:DBDrawSeven:DB$ Draw | NumCards$ 7\nSVar:AIPreference:SacCost$Permanent.nonLand | DiscardCost$Card\nDeckHints:Name$Visage of Bolas\nOracle:[+3]: Each opponent loses 3 life unless that player sacrifices a nonland permanent or discards a card.\\n[-3]: Destroy target creature. Draw a card.\\n[-11]: Nicol Bolas, the Deceiver deals 7 damage to each opponent. You draw seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nicol Bolas, the Deceiver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "domri-anarch-of-bolas-corpus-m682",
+  "description": "M6 corpus — Domri, Anarch of Bolas; in-hand parse.",
+  "seed": 62051,
+  "cards": {
+    "Domri, Anarch of Bolas": "Name:Domri, Anarch of Bolas\nManaCost:1 R G\nTypes:Legendary Planeswalker Domri\nLoyalty:3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | Description$ Creatures you control get +1/+0.\nSVar:PlayMain1:TRUE\nA:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Produced$ Combo R G | Amount$ 1 | AILogic$ Always | SubAbility$ DBEffect | SpellDescription$ Add {R} or {G}.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ AntiMagic | SpellDescription$ Creature spells you cast this turn can't be countered.\nSVar:AntiMagic:Event$ Counter | ValidSA$ Spell.Creature+wasCastByYou | Layer$ CantHappen | Description$ Creature spells you cast this turn can't be countered.\nA:AB$ Pump | Planeswalker$ True | Cost$ SubCounter<2/LOYALTY> | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | AILogic$ Fight | SpellDescription$ Target creature you control fights target creature you don't control. | SubAbility$ DBFight\nSVar:DBFight:DB$ Fight | Defined$ ParentTarget | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control\nOracle:Creatures you control get +1/+0.\\n[+1]: Add {R} or {G}. Creature spells you cast this turn can't be countered.\\n[-2]: Target creature you control fights target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Domri, Anarch of Bolas"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

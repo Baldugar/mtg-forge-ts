@@ -1,0 +1,23 @@
+{
+  "id": "lukka-bound-to-ruin-corpus-m682",
+  "description": "M6 corpus — Lukka, Bound to Ruin; in-hand parse.",
+  "seed": 63215,
+  "cards": {
+    "Lukka, Bound to Ruin": "Name:Lukka, Bound to Ruin\nManaCost:2 R PRG G\nTypes:Legendary Planeswalker Lukka\nLoyalty:5\nK:Compleated\nA:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Produced$ R G | Amount$ 1 | RestrictValid$ Spell.Creature,Activated.Creature+inZoneBattlefield | SpellDescription$ Add {R}{G}. Spend this mana only to cast creature spells or activate abilities of creatures.\nA:AB$ Token | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ g_3_3_phyrexian_beast_toxic | SpellDescription$ Create a 3/3 green Phyrexian Beast creature token with toxic 1.\nA:AB$ DealDamage | Cost$ SubCounter<4/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select any number of creatures and planeswalkers to distribute damage to | NumDmg$ OrigPower | TargetMin$ 0 | TargetMax$ OrigPower | DividedAsYouChoose$ OrigPower | SpellDescription$ NICKNAME deals X damage divided as you choose among any number of target creatures and/or planeswalkers, where X is the greatest power among creatures you controlled as you activated this ability.\nSVar:OrigPower:Count$Valid Creature.YouCtrl$GreatestCardPower\nDeckHas:Type$Beast|Phyrexian & Ability$Counters\nOracle:Compleated ({R/G/P} can be paid with {R}, {G}, or 2 life. If life was paid, this planeswalker enters with two fewer loyalty counters.)\\n[+1]: Add {R}{G}. Spend this mana only to cast creature spells or activate abilities of creatures.\\n[-1]: Create a 3/3 green Phyrexian Beast creature token with toxic 1.\\n[-4]: Lukka deals X damage divided as you choose among any number of target creatures and/or planeswalkers, where X is the greatest power among creatures you controlled as you activated this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lukka, Bound to Ruin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

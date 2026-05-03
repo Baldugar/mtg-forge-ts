@@ -1,0 +1,23 @@
+{
+  "id": "defiler-of-faith-corpus-m682",
+  "description": "M6 corpus — Defiler of Faith; in-hand parse.",
+  "seed": 61965,
+  "cards": {
+    "Defiler of Faith": "Name:Defiler of Faith\nManaCost:3 W W\nTypes:Creature Phyrexian Human\nPT:5/5\nK:Vigilance\nS:Mode$ OptionalCost | ValidCard$ Permanent.White | ValidSA$ Spell | Activator$ You | Cost$ PayLife<2> | ReduceColor$ W | Description$ As an additional cost to cast white permanent spells, you may pay 2 life. Those spells cost {W} less to cast if you paid life this way. This effect reduces only the amount of white mana you pay.\nT:Mode$ SpellCast | ValidCard$ Permanent.White | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a white permanent spell, create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier\nSVar:BuffedBy:Permanent.White\nDeckHas:Ability$Token & Type$Soldier\nOracle:Vigilance\\nAs an additional cost to cast white permanent spells, you may pay 2 life. Those spells cost {W} less to cast if you paid life this way. This effect reduces only the amount of white mana you pay.\\nWhenever you cast a white permanent spell, create a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiler of Faith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

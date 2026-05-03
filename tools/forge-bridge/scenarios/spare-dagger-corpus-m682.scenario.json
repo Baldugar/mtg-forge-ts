@@ -1,0 +1,23 @@
+{
+  "id": "spare-dagger-corpus-m682",
+  "description": "M6 corpus — Spare Dagger; in-hand parse.",
+  "seed": 64517,
+  "cards": {
+    "Spare Dagger": "Name:Spare Dagger\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddTrigger$ AttackTrigger | Description$ Equipped creature gets +1/+0 and has \"Whenever this creature attacks, you may sacrifice CARDNAME. When you do, this creature deals 1 damage to any target.\"\nSVar:AttackTrigger:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice ORIGINALHOST. When you do, CARDNAME deals 1 damage to any target.\nSVar:TrigDealDamage:AB$ ImmediateTrigger | Cost$ Sac<1/OriginalHost/Spare Dagger> | Execute$ TrigDamage | TriggerDescription$ When you do, CARDNAME deals 1 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nOracle:Equipped creature gets +1/+0 and has \"Whenever this creature attacks, you may sacrifice Spare Dagger. When you do, this creature deals 1 damage to any target.\"\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spare Dagger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

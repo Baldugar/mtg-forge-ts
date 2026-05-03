@@ -1,0 +1,23 @@
+{
+  "id": "zameck-guildmage-corpus-m682",
+  "description": "M6 corpus — Zameck Guildmage; in-hand parse.",
+  "seed": 65307,
+  "cards": {
+    "Zameck Guildmage": "Name:Zameck Guildmage\nManaCost:G U\nTypes:Creature Elf Wizard\nPT:2/2\nA:AB$ Effect | Cost$ G U | ReplacementEffects$ ExtraETBCounter | SpellDescription$ This turn, each creature you control enters with an additional +1/+1 counter on it.\nSVar:ExtraETBCounter:Event$ Moved | ReplacementResult$ Updated | ActiveZones$ Command | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | ReplaceWith$ AddExtraCounter | Description$ This turn, each creature you control enters with an additional +1/+1 counter on it.\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Draw | Cost$ G U SubCounter<1/P1P1/Creature.YouCtrl/a creature you control> | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:{G}{U}: This turn, each creature you control enters with an additional +1/+1 counter on it.\\n{G}{U}, Remove a +1/+1 counter from a creature you control: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zameck Guildmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

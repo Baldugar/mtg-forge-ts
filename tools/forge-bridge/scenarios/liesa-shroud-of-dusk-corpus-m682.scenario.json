@@ -1,0 +1,23 @@
+{
+  "id": "liesa-shroud-of-dusk-corpus-m682",
+  "description": "M6 corpus — Liesa, Shroud of Dusk; in-hand parse.",
+  "seed": 63139,
+  "cards": {
+    "Liesa, Shroud of Dusk": "Name:Liesa, Shroud of Dusk\nManaCost:2 W W B\nTypes:Legendary Creature Angel\nPT:5/5\nS:Mode$ ReduceCost | ValidCard$ Card.Self+wasCastFromCommand | Type$ Spell | Amount$ X | EffectZone$ Stack | Description$ Rather than pay {2} for each previous time you've cast this spell from the command zone this game, pay 2 life that many times.\nS:Mode$ RaiseCost | ValidCard$ Card.Self+wasCastFromCommand | Type$ Spell | Cost$ PayLife<X> | EffectZone$ Stack | Secondary$ True\nSVar:X:Count$CommanderCastFromCommandZone/Times.2\nK:Flying\nK:Lifelink\nT:Mode$ SpellCast | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a player casts a spell, they lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Rather than pay {2} for each previous time you've cast this spell from the command zone this game, pay 2 life that many times.\\nFlying, lifelink\\nWhenever a player casts a spell, they lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liesa, Shroud of Dusk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

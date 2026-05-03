@@ -1,0 +1,23 @@
+{
+  "id": "cavern-harpy-corpus-m682",
+  "description": "M6 corpus — Cavern Harpy; in-hand parse.",
+  "seed": 61661,
+  "cards": {
+    "Cavern Harpy": "Name:Cavern Harpy\nManaCost:U B\nTypes:Creature Harpy Beast\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a blue or black creature you control to its owner's hand.\nA:AB$ ChangeZone | Cost$ PayLife<1> | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Black+YouCtrl,Creature.Blue+YouCtrl | AILogic$ NeverBounceItself\nSVar:NeedsToPlay:Creature.Black+YouCtrl+cmcLE2,Creature.Blue+YouCtrl+cmcLE2\nOracle:Flying\\nWhen Cavern Harpy enters, return a blue or black creature you control to its owner's hand.\\nPay 1 life: Return Cavern Harpy to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavern Harpy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "transluminant-corpus-m682",
+  "description": "M6 corpus — Transluminant; in-hand parse.",
+  "seed": 64947,
+  "cards": {
+    "Transluminant": "Name:Transluminant\nManaCost:1 G\nTypes:Creature Dryad Shaman\nPT:2/2\nA:AB$ DelayedTrigger | Cost$ W Sac<1/CARDNAME> | Mode$ Phase | Phase$ End of Turn | Execute$ TrigToken | SpellDescription$ Create a 1/1 white Spirit creature token with flying at the beginning of the next end step.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nDeckHints:Color$White\nDeckHas:Ability$Token\nOracle:{W}, Sacrifice Transluminant: Create a 1/1 white Spirit creature token with flying at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Transluminant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

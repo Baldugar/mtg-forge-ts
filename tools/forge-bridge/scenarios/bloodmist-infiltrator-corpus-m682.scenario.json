@@ -1,0 +1,23 @@
+{
+  "id": "bloodmist-infiltrator-corpus-m682",
+  "description": "M6 corpus — Bloodmist Infiltrator; in-hand parse.",
+  "seed": 61551,
+  "cards": {
+    "Bloodmist Infiltrator": "Name:Bloodmist Infiltrator\nManaCost:2 B\nTypes:Creature Vampire\nPT:3/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUnblockable | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. If you do, CARDNAME can't be blocked this turn.\nSVar:TrigUnblockable:AB$ Effect | Cost$ Sac<1/Creature.Other/another creature> | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Bloodmist Infiltrator attacks, you may sacrifice another creature. If you do, Bloodmist Infiltrator can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodmist Infiltrator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

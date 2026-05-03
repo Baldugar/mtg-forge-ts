@@ -1,0 +1,23 @@
+{
+  "id": "breeches-the-blastmaker-corpus-m682",
+  "description": "M6 corpus — Breeches, the Blastmaker; in-hand parse.",
+  "seed": 61565,
+  "cards": {
+    "Breeches, the Blastmaker": "Name:Breeches, the Blastmaker\nManaCost:1 U R\nTypes:Legendary Creature Goblin Pirate\nPT:3/3\nK:Menace\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigFlip | ValidActivatingPlayer$ You | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, you may sacrifice an artifact. If you do, flip a coin. When you win the flip, copy that spell. You may choose new targets for the copy. When you lose the flip, CARDNAME deals damage equal to that spell's mana value to any target.\nSVar:TrigFlip:AB$ FlipACoin | Cost$ Sac<1/Artifact> | WinSubAbility$ DBImmediateTrigDamageCopy | LoseSubAbility$ DBImmediateTrigDamage\nSVar:DBImmediateTrigDamageCopy:DB$ ImmediateTrigger | Execute$ TrigCopy | TriggerDescription$ When you win the flip, copy that spell. You may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ Spawner>TriggeredSpellAbility | MayChooseTarget$ True\nSVar:DBImmediateTrigDamage:DB$ ImmediateTrigger | Execute$ TrigDamage | TriggerDescription$ When you lose the flip, CARDNAME deals damage equal to that spell's mana value to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:Spawner>TriggeredSpellAbility$CardManaCost\nOracle:Menace\\nWhenever you cast your second spell each turn, you may sacrifice an artifact. If you do, flip a coin. When you win the flip, copy that spell. You may choose new targets for the copy. When you lose the flip, Breeches, the Blastmaker deals damage equal to that spell's mana value to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Breeches, the Blastmaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

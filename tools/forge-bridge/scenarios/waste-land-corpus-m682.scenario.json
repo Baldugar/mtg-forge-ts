@@ -1,0 +1,23 @@
+{
+  "id": "waste-land-corpus-m682",
+  "description": "M6 corpus — Waste Land; in-hand parse.",
+  "seed": 65200,
+  "cards": {
+    "Waste Land": "Name:Waste Land\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Destroy | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Land.nonBasic | SubAbility$ DBToken | AILogic$ GhostQuarter | AITgts$ Land.nonBasic | SpellDescription$ Destroy target nonbasic land. That land's controller creates a Wastes land token. (It has {T}: Add {C}.)\nSVar:DBToken:DB$ CopyPermanent | DefinedName$ Wastes | Controller$ TargetedController\nDeckHas:Ability$Mana.Colorless\nOracle:{T}: Add {C}.\\n{T}, Sacrifice Waste Land: Destroy target nonbasic land. That land's controller creates a Wastes token. (It's a land with {T}: Add {C}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waste Land"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

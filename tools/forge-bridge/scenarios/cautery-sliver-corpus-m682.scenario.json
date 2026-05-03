@@ -1,0 +1,23 @@
+{
+  "id": "cautery-sliver-corpus-m682",
+  "description": "M6 corpus — Cautery Sliver; in-hand parse.",
+  "seed": 61657,
+  "cards": {
+    "Cautery Sliver": "Name:Cautery Sliver\nManaCost:R W\nTypes:Creature Sliver\nPT:2/2\nS:Mode$ Continuous | Affected$ Sliver | AddAbility$ Damage | Description$ All Slivers have \"{1}, Sacrifice this permanent: This permanent deals 1 damage to any target.\"\nSVar:Damage:AB$ DealDamage | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nS:Mode$ Continuous | Affected$ Sliver | AddAbility$ Prevent | Description$ All Slivers have \"{1}, Sacrifice this permanent: Prevent the next 1 damage that would be dealt to target player, planeswalker, or Sliver creature this turn.\"\nSVar:Prevent:AB$ PreventDamage | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Creature.Sliver,Player,Planeswalker | Amount$ 1 | SpellDescription$ Prevent the next 1 damage that would be dealt to target player, planeswalker, or Sliver creature this turn.\nSVar:PlayMain1:TRUE\nOracle:All Slivers have \"{1}, Sacrifice this permanent: This permanent deals 1 damage to any target.\"\\nAll Slivers have \"{1}, Sacrifice this permanent: Prevent the next 1 damage that would be dealt to target player, planeswalker, or Sliver creature this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cautery Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

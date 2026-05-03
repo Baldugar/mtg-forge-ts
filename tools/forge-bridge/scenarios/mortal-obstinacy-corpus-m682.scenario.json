@@ -1,0 +1,23 @@
+{
+  "id": "mortal-obstinacy-corpus-m682",
+  "description": "M6 corpus — Mortal Obstinacy; in-hand parse.",
+  "seed": 63439,
+  "cards": {
+    "Mortal Obstinacy": "Name:Mortal Obstinacy\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nT:Mode$ DamageDone | ValidSource$ Card.EnchantedBy | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever enchanted creature deals combat damage to a player, you may sacrifice CARDNAME. If you do, destroy target enchantment.\nSVar:TrigDestroy:AB$ Destroy | Cost$ Sac<1/CARDNAME> | ValidTgts$ Enchantment | TgtPrompt$ Select target enchantment\nOracle:Enchant creature you control\\nEnchanted creature gets +1/+1.\\nWhenever enchanted creature deals combat damage to a player, you may sacrifice Mortal Obstinacy. If you do, destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mortal Obstinacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

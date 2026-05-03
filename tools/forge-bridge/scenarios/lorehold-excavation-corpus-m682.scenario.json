@@ -1,0 +1,23 @@
+{
+  "id": "lorehold-excavation-corpus-m682",
+  "description": "M6 corpus — Lorehold Excavation; in-hand parse.",
+  "seed": 63202,
+  "cards": {
+    "Lorehold Excavation": "Name:Lorehold Excavation\nManaCost:R W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your end step, mill a card. If a land card was milled this way, you gain 1 life. Otherwise, CARDNAME deals 1 damage to each opponent. (To mill a card, put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 1 | RememberMilled$ True | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | BranchConditionSVarCompare$ GE1 | TrueSubAbility$ GainLife | FalseSubAbility$ DealDamage | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Land\nSVar:GainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:DealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ 1\nA:AB$ Token | Cost$ 5 ExileFromGrave<1/Creature/creature card> | TokenTapped$ True | TokenScript$ rw_3_2_spirit | TokenOwner$ You | SpellDescription$ Create a tapped 3/2 red and white Spirit creature token.\nDeckHas:Ability$Mill|Token|LifeGain\nOracle:At the beginning of your end step, mill a card. If a land card was milled this way, you gain 1 life. Otherwise, Lorehold Excavation deals 1 damage to each opponent. (To mill a card, put the top card of your library into your graveyard.)\\n{5}, Exile a creature card from your graveyard: Create a tapped 3/2 red and white Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lorehold Excavation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oriss-samite-guardian-corpus-m682",
+  "description": "M6 corpus — Oriss, Samite Guardian; in-hand parse.",
+  "seed": 63657,
+  "cards": {
+    "Oriss, Samite Guardian": "Name:Oriss, Samite Guardian\nManaCost:1 W W\nTypes:Legendary Creature Human Cleric\nPT:1/3\nA:AB$ Pump | Cost$ T | KW$ Prevent all damage that would be dealt to CARDNAME. | ValidTgts$ Creature | SpellDescription$ Prevent all damage that would be dealt to target creature this turn.\nA:AB$ Effect | Cost$ Discard<1/Card.namedOriss, Samite Guardian> | CostDesc$ Grandeur — Discard another card named Oriss, Samite Guardian: | IsCurse$ True | StaticAbilities$ CantBeCast,CantAttack | ValidTgts$ Player | RememberObjects$ Targeted | AILogic$ BeginningOfOppTurn | SpellDescription$ Target player can't cast spells this turn, and creatures that player controls can't attack this turn.\nSVar:CantBeCast:Mode$ CantBeCast | ValidCard$ Card | Caster$ Player.IsRemembered | Description$ Targeted player can't cast spells this turn.\nSVar:CantAttack:Mode$ CantAttack | ValidCard$ Creature.RememberedPlayerCtrl | Description$ Creatures targeted player controls can't attack this turn.\nSVar:NonCombatPriority:2\nAI:RemoveDeck:All\nDeckHints:Name$Oriss, Samite Guardian\nOracle:{T}: Prevent all damage that would be dealt to target creature this turn.\\nGrandeur — Discard another card named Oriss, Samite Guardian: Target player can't cast spells this turn, and creatures that player controls can't attack this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oriss, Samite Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

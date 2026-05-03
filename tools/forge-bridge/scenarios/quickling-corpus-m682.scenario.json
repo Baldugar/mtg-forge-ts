@@ -1,0 +1,23 @@
+{
+  "id": "quickling-corpus-m682",
+  "description": "M6 corpus — Quickling; in-hand parse.",
+  "seed": 63881,
+  "cards": {
+    "Quickling": "Name:Quickling\nManaCost:1 U\nTypes:Creature Faerie Rogue\nPT:2/2\nK:Flying\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return another creature you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Creature.Other/other creature> | UnlessPayer$ You\nSVar:NeedsToPlay:Creature.YouCtrl\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nFlying\\nWhen Quickling enters, sacrifice it unless you return another creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quickling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vilespawn-spider-corpus-m682",
+  "description": "M6 corpus — Vilespawn Spider; in-hand parse.",
+  "seed": 65109,
+  "cards": {
+    "Vilespawn Spider": "Name:Vilespawn Spider\nManaCost:G U\nTypes:Creature Spider\nPT:2/3\nK:Reach\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your upkeep, mill a card. (Put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 1\nA:AB$ Token | Cost$ 2 G U T Sac<1/CARDNAME> | TokenScript$ g_1_1_insect | TokenAmount$ X | SorcerySpeed$ True | AICheckSVar$ X | AISVarCompare$ GE4 | StackDescription$ {p:You} creates a 1/1 green Insect creature token for each creature card in their graveyard. | SpellDescription$ Create a 1/1 green Insect creature token for each creature card in your graveyard. Activate only as a sorcery.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHas:Ability$Mill|Token|Sacrifice\nDeckHints:Ability$Discard\nOracle:Reach\\nAt the beginning of your upkeep, mill a card. (Put the top card of your library into your graveyard.)\\n{2}{G}{U}, {T}, Sacrifice Vilespawn Spider: Create a 1/1 green Insect creature token for each creature card in your graveyard. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vilespawn Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

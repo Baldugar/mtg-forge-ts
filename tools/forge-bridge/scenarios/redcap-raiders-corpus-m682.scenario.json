@@ -1,0 +1,23 @@
+{
+  "id": "redcap-raiders-corpus-m682",
+  "description": "M6 corpus — Redcap Raiders; in-hand parse.",
+  "seed": 63963,
+  "cards": {
+    "Redcap Raiders": "Name:Redcap Raiders\nManaCost:2 R\nTypes:Creature Goblin Warrior\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may tap an untapped non-Human creature you control. If you do, CARDNAME gets +1/+1 and gains trample until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ tapXType<1/Creature.nonHuman/non-Human creature> | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nOracle:Whenever Redcap Raiders attacks, you may tap an untapped non-Human creature you control. If you do, Redcap Raiders gets +1/+1 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Redcap Raiders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tekuthal-inquiry-dominus-corpus-m682",
+  "description": "M6 corpus — Tekuthal, Inquiry Dominus; in-hand parse.",
+  "seed": 64741,
+  "cards": {
+    "Tekuthal, Inquiry Dominus": "Name:Tekuthal, Inquiry Dominus\nManaCost:2 U U\nTypes:Legendary Creature Phyrexian Horror\nPT:3/5\nK:Flying\nR:Event$ Proliferate | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ProlifTwice | AILogic$ DoubleLife | Description$ If you would proliferate, proliferate twice instead.\nSVar:ProlifTwice:DB$ ReplaceEffect | VarName$ Num | VarValue$ ReplaceCount$Num/Twice\nA:AB$ PutCounter | Cost$ 1 UP UP RemoveAnyCounter<3/Any/Artifact.Other;Creature.Other;Planeswalker.Other/other artifacts, creatures, and planeswalkers> | CounterType$ Indestructible | SpellDescription$ Put an indestructible counter on CARDNAME. ({U/P} can be paid with either {U} or 2 life.)\nDeckHints:Type$Artifact|Planeswalker & Ability$Proliferate\nDeckNeeds:Ability$Counters\nOracle:Flying\\nIf you would proliferate, proliferate twice instead.\\n{1}{U/P}{U/P}, Remove three counters from among other artifacts, creatures, and planeswalkers you control: Put an indestructible counter on Tekuthal, Inquiry Dominus. ({U/P} can be paid with either {U} or 2 life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tekuthal, Inquiry Dominus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

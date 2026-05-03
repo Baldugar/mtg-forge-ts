@@ -1,0 +1,23 @@
+{
+  "id": "smellerbee-rebel-fighter-corpus-m682",
+  "description": "M6 corpus — Smellerbee, Rebel Fighter; in-hand parse.",
+  "seed": 64452,
+  "cards": {
+    "Smellerbee, Rebel Fighter": "Name:Smellerbee, Rebel Fighter\nManaCost:3 R\nTypes:Legendary Creature Human Rebel Ally\nPT:3/3\nK:First Strike\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Haste | Description$ Other creatures you control have haste.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME attacks, you may discard your hand. If you do, draw cards equal to the number of attacking creatures.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Hand> | NumCards$ X\nSVar:X:Count$Valid Creature.attacking\nSVar:PlayMain1:TRUE\nSVar:HasAttackEffect:TRUE\nSVar:BuffedBy:Creature.attacking\nDeckHas:Ability$Discard\nOracle:First strike\\nOther creatures you control have haste.\\nWhenever Smellerbee attacks, you may discard your hand. If you do, draw cards equal to the number of attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smellerbee, Rebel Fighter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

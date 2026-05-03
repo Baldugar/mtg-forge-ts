@@ -1,0 +1,23 @@
+{
+  "id": "doom-cannon-corpus-m682",
+  "description": "M6 corpus — Doom Cannon; in-hand parse.",
+  "seed": 62054,
+  "cards": {
+    "Doom Cannon": "Name:Doom Cannon\nManaCost:6\nTypes:Artifact\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentInComputerDeck\nA:AB$ DealDamage | Cost$ 3 T Sac<1/Creature.ChosenType> | NumDmg$ 3 | ValidTgts$ Any | CostDesc$ {3}, {T}, Sacrifice a creature of the chosen type: | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:As Doom Cannon enters, choose a creature type.\\n{3}, {T}, Sacrifice a creature of the chosen type: Doom Cannon deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doom Cannon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

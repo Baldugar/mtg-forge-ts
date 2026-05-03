@@ -1,0 +1,23 @@
+{
+  "id": "hordewing-skaab-corpus-m682",
+  "description": "M6 corpus — Hordewing Skaab; in-hand parse.",
+  "seed": 62793,
+  "cards": {
+    "Hordewing Skaab": "Name:Hordewing Skaab\nManaCost:4 U\nTypes:Creature Zombie Horror\nPT:3/3\nK:Flying\nS:Mode$ Continuous | Affected$ Zombie.YouCtrl+Other | AddKeyword$ Flying | Description$ Other Zombies you control have flying.\nT:Mode$ DamageAll | ValidSource$ Creature.Zombie+YouCtrl | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever one or more Zombies you control deal combat damage to one or more of your opponents, you may draw cards equal to the number of opponents dealt damage this way. If you do, discard that many cards.\nSVar:TrigDraw:AB$ Discard | Cost$ Draw<X/You> | Defined$ You | Mode$ TgtChoose | NumCards$ X\nSVar:X:TriggeredPlayersTargets$Amount\nDeckHints:Type$Zombie\nDeckHas:Ability$Discard\nOracle:Flying\\nOther Zombies you control have flying.\\nWhenever one or more Zombies you control deal combat damage to one or more of your opponents, you may draw cards equal to the number of opponents dealt damage this way. If you do, discard that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hordewing Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

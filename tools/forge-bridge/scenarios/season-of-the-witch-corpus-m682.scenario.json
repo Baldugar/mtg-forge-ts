@@ -1,0 +1,23 @@
+{
+  "id": "season-of-the-witch-corpus-m682",
+  "description": "M6 corpus — Season of the Witch; in-hand parse.",
+  "seed": 64251,
+  "cards": {
+    "Season of the Witch": "Name:Season of the Witch\nManaCost:B B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay 2 life.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ PayLife<2>\nT:Mode$ Phase | Phase$ Declare Attackers | Execute$ TrigMarkCouldAttack | Static$ True\nSVar:TrigMarkCouldAttack:DB$ PumpAll | ValidCards$ Creature.couldAttackButNotAttacking | RememberPumped$ True\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigDestroyAll | TriggerDescription$ At the beginning of the end step, destroy all untapped creatures that didn't attack this turn, except for creatures that couldn't attack.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.untapped+IsRemembered\nT:Mode$ Phase | Phase$ Cleanup | Execute$ DBCleanup | Static$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, sacrifice Season of the Witch unless you pay 2 life.\\nAt the beginning of the end step, destroy all untapped creatures that didn't attack this turn, except for creatures that couldn't attack.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Season of the Witch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

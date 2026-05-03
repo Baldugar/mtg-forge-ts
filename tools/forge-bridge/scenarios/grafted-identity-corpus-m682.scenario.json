@@ -1,0 +1,23 @@
+{
+  "id": "grafted-identity-corpus-m682",
+  "description": "M6 corpus — Grafted Identity; in-hand parse.",
+  "seed": 62609,
+  "cards": {
+    "Grafted Identity": "Name:Grafted Identity\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Activator$ You | Type$ Spell | Cost$ Sac<1/Creature/creature> | EffectZone$ All | Description$ As an additional cost to cast this spell, sacrifice a creature.\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nSVar:AttachAILogic:GainControl\nDeckHas:Ability$Sacrifice\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nEnchant creature\\nYou control enchanted creature.\\nEnchanted creature gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grafted Identity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

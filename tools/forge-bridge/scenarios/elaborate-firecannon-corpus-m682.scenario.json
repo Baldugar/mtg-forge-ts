@@ -1,0 +1,23 @@
+{
+  "id": "elaborate-firecannon-corpus-m682",
+  "description": "M6 corpus — Elaborate Firecannon; in-hand parse.",
+  "seed": 62150,
+  "cards": {
+    "Elaborate Firecannon": "Name:Elaborate Firecannon\nManaCost:2\nTypes:Artifact\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This artifact doesn't untap during your untap step.\nA:AB$ DealDamage | Cost$ 4 T | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ This artifact deals 2 damage to any target.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your upkeep, you may discard a card. If you do, untap this artifact.\nSVar:TrigUntap:AB$ Untap | Cost$ Discard<1/Card> | Defined$ Self\nOracle:This artifact doesn't untap during your untap step.\\n{4}, {T}: This artifact deals 2 damage to any target.\\nAt the beginning of your upkeep, you may discard a card. If you do, untap this artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elaborate Firecannon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

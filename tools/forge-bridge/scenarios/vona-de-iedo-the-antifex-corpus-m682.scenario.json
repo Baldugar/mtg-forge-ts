@@ -1,0 +1,23 @@
+{
+  "id": "vona-de-iedo-the-antifex-corpus-m682",
+  "description": "M6 corpus — Vona de Iedo, the Antifex; in-hand parse.",
+  "seed": 65160,
+  "cards": {
+    "Vona de Iedo, the Antifex": "Name:Vona de Iedo, the Antifex\nManaCost:2 W B B\nTypes:Legendary Creature Vampire Cleric Knight\nPT:4/2\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonland, nontoken permanent an opponent controls. Then you may discard a card. If you do, conjure a duplicate of that permanent into your hand, and the duplicate perpetually gains \"Mana of any type can be spent to cast this spell.\"\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.OppCtrl+nonland+!token | TgtPrompt$ Select target nonland, nontoken permanent an opponent controls | RememberTargets$ True | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | UnlessCost$ Discard<1/Card> | UnlessPayer$ You | UnlessSwitched$ True | Conjure$ True | DefinedName$ Remembered | Zone$ Hand | Amount$ 1 | ImprintMade$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Imprinted | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyType | Description$ Mana of any type can be spent to cast this spell.\nDeckHas:Ability$Discard\nOracle:Menace\\nWhen Vona de Iedo enters, destroy target nonland, nontoken permanent an opponent controls. Then you may discard a card. If you do, conjure a duplicate of that permanent into your hand, and the duplicate perpetually gains \"Mana of any type can be spent to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vona de Iedo, the Antifex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

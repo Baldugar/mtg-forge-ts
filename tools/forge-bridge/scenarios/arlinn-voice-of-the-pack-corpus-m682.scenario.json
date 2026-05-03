@@ -1,0 +1,23 @@
+{
+  "id": "arlinn-voice-of-the-pack-corpus-m682",
+  "description": "M6 corpus — Arlinn, Voice of the Pack; in-hand parse.",
+  "seed": 61493,
+  "cards": {
+    "Arlinn, Voice of the Pack": "Name:Arlinn, Voice of the Pack\nManaCost:4 G G\nTypes:Legendary Planeswalker Arlinn\nLoyalty:7\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.Wolf+YouCtrl,Creature.Werewolf+YouCtrl\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Each creature you control that's a Wolf or a Werewolf enters with an additional +1/+1 counter on it.\nSVar:PlayMain1:TRUE\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ g_2_2_wolf | TokenOwner$ You | SpellDescription$ Create a 2/2 green Wolf creature token.\nDeckHints:Type$Wolf|Werewolf\nDeckHas:Ability$Counters|Token\nOracle:Each creature you control that's a Wolf or a Werewolf enters with an additional +1/+1 counter on it.\\n[-2]: Create a 2/2 green Wolf creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arlinn, Voice of the Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

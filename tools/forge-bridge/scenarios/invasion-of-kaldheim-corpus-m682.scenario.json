@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-kaldheim-corpus-m682",
+  "description": "M6 corpus — Invasion of Kaldheim; in-hand parse.",
+  "seed": 62893,
+  "cards": {
+    "Invasion of Kaldheim": "Name:Invasion of Kaldheim\nManaCost:3 R\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileHand | TriggerDescription$ When CARDNAME enters, exile all cards from your hand, then draw that many cards. Until the end of your next turn, you may play cards exiled this way.\nSVar:TrigExileHand:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Hand | Destination$ Exile | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Y | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | Duration$ UntilTheEndOfYourNextTurn | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play cards exiled this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$RememberedSize\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Kaldheim enters, exile all cards from your hand, then draw that many cards. Until the end of your next turn, you may play cards exiled this way.\n\nALTERNATE\n\nName:Pyre of the World Tree\nManaCost:no cost\nColors:red\nTypes:Enchantment\nA:AB$ DealDamage | Cost$ Discard<1/Land> | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nT:Mode$ Discarded | ValidCard$ Land.YouOwn | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you discard a land card, exile the top card of your library. You may play that card this turn.\nSVar:TrigExile:DB$ Dig | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | AILogic$ ExileAndPlayUntilEOT\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | ExileOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard\nDeckHints:Ability$Discard\nOracle:Discard a land card: Pyre of the World Tree deals 2 damage to any target.\\nWhenever you discard a land card, exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Kaldheim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

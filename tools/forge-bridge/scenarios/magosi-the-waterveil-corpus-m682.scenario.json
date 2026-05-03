@@ -1,0 +1,23 @@
+{
+  "id": "magosi-the-waterveil-corpus-m682",
+  "description": "M6 corpus — Magosi, the Waterveil; in-hand parse.",
+  "seed": 63246,
+  "cards": {
+    "Magosi, the Waterveil": "Name:Magosi, the Waterveil\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ PutCounter | Cost$ U T | Defined$ Self | CounterType$ EON | CounterNum$ 1 | SubAbility$ DBSkipTurn | SpellDescription$ Put an eon counter on CARDNAME. Skip your next turn.\nA:AB$ AddTurn | Cost$ T SubCounter<1/EON> Return<1/CARDNAME> | NumTurns$ 1 | Defined$ You | SpellDescription$ Take an extra turn after this one.\nSVar:DBSkipTurn:DB$ SkipTurn | NumTurns$ 1 | Defined$ You\nAI:RemoveDeck:All\nOracle:Magosi, the Waterveil enters tapped.\\n{T}: Add {U}.\\n{U}, {T}: Put an eon counter on Magosi, the Waterveil. Skip your next turn.\\n{T}, Remove an eon counter from Magosi, the Waterveil and return it to its owner's hand: Take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magosi, the Waterveil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

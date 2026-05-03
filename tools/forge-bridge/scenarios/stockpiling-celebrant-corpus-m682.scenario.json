@@ -1,0 +1,23 @@
+{
+  "id": "stockpiling-celebrant-corpus-m682",
+  "description": "M6 corpus — Stockpiling Celebrant; in-hand parse.",
+  "seed": 64616,
+  "cards": {
+    "Stockpiling Celebrant": "Name:Stockpiling Celebrant\nManaCost:2 W\nTypes:Creature Dwarf Knight\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, you may return another target nonland permanent you control to its owner's hand. If you do, scry 2.\nSVar:TrigScry:AB$ Scry | ScryNum$ 2 | Cost$ Return<1/Permanent.nonLand+Other/another nonland permanent>\nOracle:When Stockpiling Celebrant enters, you may return another target nonland permanent you control to its owner's hand. If you do, scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stockpiling Celebrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vraska-scheming-gorgon-corpus-m682",
+  "description": "M6 corpus — Vraska, Scheming Gorgon; in-hand parse.",
+  "seed": 65167,
+  "cards": {
+    "Vraska, Scheming Gorgon": "Name:Vraska, Scheming Gorgon\nManaCost:4 B B\nTypes:Legendary Planeswalker Vraska\nLoyalty:5\nA:AB$ PumpAll | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | SpellDescription$ Creatures you control get +1/+0 until end of turn.\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | SpellDescription$ Destroy target creature.\nA:AB$ AnimateAll | Cost$ SubCounter<10/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidCards$ Creature.YouCtrl | Keywords$ Deathtouch | Triggers$ Trig | SpellDescription$ Until end of turn, creatures you control gain deathtouch and \"Whenever this creature deals damage to an opponent, that player loses the game.\"\nSVar:Trig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ Eff | TriggerDescription$ Whenever this creature deals damage to an opponent, that player loses the game.\nSVar:Eff:DB$ LosesGame | Defined$ TriggeredTarget\nSVar:PlayMain1:TRUE\nOracle:[+2]: Creatures you control get +1/+0 until end of turn.\\n[-3]: Destroy target creature.\\n[-10]: Until end of turn, creatures you control gain deathtouch and \"Whenever this creature deals damage to an opponent, that player loses the game.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vraska, Scheming Gorgon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ardent-dustspeaker-corpus-m682",
+  "description": "M6 corpus — Ardent Dustspeaker; in-hand parse.",
+  "seed": 61487,
+  "cards": {
+    "Ardent Dustspeaker": "Name:Ardent Dustspeaker\nManaCost:4 R\nTypes:Creature Minotaur Shaman\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ ABImpulse | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may put an instant or sorcery card from your graveyard on the bottom of your library. If you do, exile the top two cards of your library. You may play those cards this turn.\nSVar:ABImpulse:AB$ Dig | Cost$ PutCardToLibFromGrave<1/-1/Sorcery;Instant> | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top two cards of your library. You may play those cards this turn.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled cards this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Ardent Dustspeaker attacks, you may put an instant or sorcery card from your graveyard on the bottom of your library. If you do, exile the top two cards of your library. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ardent Dustspeaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

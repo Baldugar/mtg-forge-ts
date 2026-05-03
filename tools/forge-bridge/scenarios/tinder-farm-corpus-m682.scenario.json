@@ -1,0 +1,23 @@
+{
+  "id": "tinder-farm-corpus-m682",
+  "description": "M6 corpus — Tinder Farm; in-hand parse.",
+  "seed": 64889,
+  "cards": {
+    "Tinder Farm": "Name:Tinder Farm\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ R W | SpellDescription$ Add {R}{W}.\nAI:RemoveDeck:All\nOracle:Tinder Farm enters tapped.\\n{T}: Add {G}.\\n{T}, Sacrifice Tinder Farm: Add {R}{W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tinder Farm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

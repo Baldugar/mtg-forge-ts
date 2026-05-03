@@ -1,0 +1,23 @@
+{
+  "id": "gilt-leaf-archdruid-corpus-m682",
+  "description": "M6 corpus — Gilt-Leaf Archdruid; in-hand parse.",
+  "seed": 62526,
+  "cards": {
+    "Gilt-Leaf Archdruid": "Name:Gilt-Leaf Archdruid\nManaCost:3 G G\nTypes:Creature Elf Druid\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Druid | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you cast a Druid spell, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ GainControl | Cost$ tapXType<7/Druid> | ValidTgts$ Player | AllValid$ Land.ControlledBy Targeted | NewController$ You | CostDesc$ Tap seven untapped Druids you control: | SpellDescription$ Gain control of all lands target player controls.\nOracle:Whenever you cast a Druid spell, you may draw a card.\\nTap seven untapped Druids you control: Gain control of all lands target player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gilt-Leaf Archdruid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

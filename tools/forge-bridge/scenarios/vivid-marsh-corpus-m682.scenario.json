@@ -1,0 +1,23 @@
+{
+  "id": "vivid-marsh-corpus-m682",
+  "description": "M6 corpus — Vivid Marsh; in-hand parse.",
+  "seed": 65127,
+  "cards": {
+    "Vivid Marsh": "Name:Vivid Marsh\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with two charge counters on it.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ Mana | Cost$ T SubCounter<1/CHARGE> | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$Counters\nOracle:Vivid Marsh enters tapped with two charge counters on it.\\n{T}: Add {B}.\\n{T}, Remove a charge counter from Vivid Marsh: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivid Marsh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

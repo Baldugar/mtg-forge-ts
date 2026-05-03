@@ -1,0 +1,23 @@
+{
+  "id": "devouring-greed-corpus-m682",
+  "description": "M6 corpus — Devouring Greed; in-hand parse.",
+  "seed": 62000,
+  "cards": {
+    "Devouring Greed": "Name:Devouring Greed\nManaCost:2 B B\nTypes:Sorcery Arcane\nA:SP$ LoseLife | Cost$ 2 B B Sac<X/Spirit> | ValidTgts$ Player | LifeAmount$ C | SubAbility$ DBGainLife | SpellDescription$ Target player loses 2 life plus 2 life for each Spirit sacrificed this way. You gain that much life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ C\nSVar:X:Count$xPaid\nSVar:A:Sacrificed$Amount\nSVar:B:SVar$A/Times.2\nSVar:C:SVar$B/Plus.2\nSVar:AIPreference:SacCost$Creature.Spirit+token,Creature.Spirit+cmcLE2\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit\nOracle:As an additional cost to cast this spell, you may sacrifice any number of Spirits.\\nTarget player loses 2 life plus 2 life for each Spirit sacrificed this way. You gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devouring Greed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

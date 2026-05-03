@@ -1,0 +1,23 @@
+{
+  "id": "martyr-of-frost-corpus-m682",
+  "description": "M6 corpus — Martyr of Frost; in-hand parse.",
+  "seed": 63286,
+  "cards": {
+    "Martyr of Frost": "Name:Martyr of Frost\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ Counter | Cost$ 2 Reveal<X/Card.Blue/blue> Sac<1/CARDNAME> | CostDesc$ {2}, Reveal X blue cards from your hand, Sacrifice CARDNAME: | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ X | SpellDescription$ Counter target spell unless its controller pays {X}.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{2}, Reveal X blue cards from your hand, Sacrifice Martyr of Frost: Counter target spell unless its controller pays {X}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martyr of Frost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

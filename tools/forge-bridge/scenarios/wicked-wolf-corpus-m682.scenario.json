@@ -1,0 +1,23 @@
+{
+  "id": "wicked-wolf-corpus-m682",
+  "description": "M6 corpus — Wicked Wolf; in-hand parse.",
+  "seed": 65240,
+  "cards": {
+    "Wicked Wolf": "Name:Wicked Wolf\nManaCost:2 G G\nTypes:Creature Wolf\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFight | TriggerDescription$ When CARDNAME enters, it fights up to one target creature you don't control.\nSVar:TrigFight:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nA:AB$ PutCounter | Cost$ Sac<1/Food> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on CARDNAME. It gains indestructible until end of turn. Tap it.\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Indestructible | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Self\nDeckHas:Ability$Counters\nDeckHints:Ability$Food\nOracle:When Wicked Wolf enters, it fights up to one target creature you don't control.\\nSacrifice a Food: Put a +1/+1 counter on Wicked Wolf. It gains indestructible until end of turn. Tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wicked Wolf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

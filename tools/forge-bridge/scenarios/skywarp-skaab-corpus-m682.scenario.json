@@ -1,0 +1,23 @@
+{
+  "id": "skywarp-skaab-corpus-m682",
+  "description": "M6 corpus — Skywarp Skaab; in-hand parse.",
+  "seed": 64432,
+  "cards": {
+    "Skywarp Skaab": "Name:Skywarp Skaab\nManaCost:3 U U\nTypes:Creature Zombie Drake\nPT:2/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDraw | TriggerDescription$ When CARDNAME enters, you may exile two creature cards from your graveyard. If you do, draw a card.\nSVar:DBDraw:AB$ Draw | Cost$ ExileFromGrave<2/Creature/creature card> | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Graveyard\nOracle:Flying\\nWhen Skywarp Skaab enters, you may exile two creature cards from your graveyard. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skywarp Skaab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

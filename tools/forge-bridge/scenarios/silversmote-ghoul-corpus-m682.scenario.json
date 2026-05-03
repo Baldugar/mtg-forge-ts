@@ -1,0 +1,23 @@
+{
+  "id": "silversmote-ghoul-corpus-m682",
+  "description": "M6 corpus — Silversmote Ghoul; in-hand parse.",
+  "seed": 64378,
+  "cards": {
+    "Silversmote Ghoul": "Name:Silversmote Ghoul\nManaCost:2 B\nTypes:Creature Zombie Vampire\nPT:3/1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Graveyard | CheckSVar$ LifeGained | SVarCompare$ GE3 | Execute$ ReturnedBattlefield | TriggerDescription$ At the beginning of your end step, if you gained 3 or more life this turn, return CARDNAME from your graveyard to the battlefield tapped.\nSVar:ReturnedBattlefield:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | SpellDescription$ Return CARDNAME from your graveyard to the battlefield tapped.\nSVar:LifeGained:Count$LifeYouGainedThisTurn\nA:AB$ Draw | Cost$ 1 B Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHints:Ability$LifeGain\nOracle:At the beginning of your end step, if you gained 3 or more life this turn, return Silversmote Ghoul from your graveyard to the battlefield tapped.\\n{1}{B}, Sacrifice Silversmote Ghoul: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silversmote Ghoul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

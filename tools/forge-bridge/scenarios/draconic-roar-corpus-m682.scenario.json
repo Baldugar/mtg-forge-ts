@@ -1,0 +1,23 @@
+{
+  "id": "draconic-roar-corpus-m682",
+  "description": "M6 corpus — Draconic Roar; in-hand parse.",
+  "seed": 62069,
+  "cards": {
+    "Draconic Roar": "Name:Draconic Roar\nManaCost:1 R\nTypes:Instant\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Reveal<1/Dragon> | Description$ As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | SubAbility$ DBDamageController | SpellDescription$ CARDNAME deals 3 damage to target creature. If you revealed a Dragon card or controlled a Dragon as you cast this spell, CARDNAME deals 3 damage to that creature's controller. | StackDescription$ SpellDescription\nSVar:DBDamageController:DB$ DealDamage | Defined$ ParentTargetedController | NumDmg$ 3 | ConditionCheckSVar$ Count$Presence_Dragon.1.0 | StackDescription$ None\nDeckHints:Type$Dragon\nOracle:As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\\nDraconic Roar deals 3 damage to target creature. If you revealed a Dragon card or controlled a Dragon as you cast this spell, Draconic Roar deals 3 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draconic Roar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

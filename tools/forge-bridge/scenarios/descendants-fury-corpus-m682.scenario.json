@@ -1,0 +1,23 @@
+{
+  "id": "descendants-fury-corpus-m682",
+  "description": "M6 corpus — Descendants' Fury; in-hand parse.",
+  "seed": 61991,
+  "cards": {
+    "Descendants' Fury": "Name:Descendants' Fury\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDigUntil | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, you may sacrifice one of them. If you do, reveal cards from the top of your library until you reveal a creature card that shares a creature type with the sacrificed creature. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:AB$ DigUntil | Cost$ Sac<1/Card.TriggeredSources> | Valid$ Creature.sharesCreatureTypeWith Sacrificed | ValidDescription$ creature that shares a creature type | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Whenever one or more creatures you control deal combat damage to a player, you may sacrifice one of them. If you do, reveal cards from the top of your library until you reveal a creature card that shares a creature type with the sacrificed creature. Put that card onto the battlefield and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Descendants' Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

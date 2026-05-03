@@ -1,0 +1,23 @@
+{
+  "id": "everything-pizza-corpus-m682",
+  "description": "M6 corpus — Everything Pizza; in-hand parse.",
+  "seed": 62242,
+  "cards": {
+    "Everything Pizza": "Name:Everything Pizza\nManaCost:2\nTypes:Artifact Food\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this artifact enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic\nA:AB$ GainLife | Cost$ 2 W U B R G T Sac<1/CARDNAME/this artifact> | LifeAmount$ 3 | ValidTgts$ Player | SubAbility$ DBDraw | SpellDescription$ Target player gains 3 life and draws a card. Each of your opponents discards a card. This artifact deals 3 damage to any target. Put three +1/+1 counters on up to one target creature.\nSVar:DBDraw:DB$ Draw | Defined$ ParentTarget | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Player.Opponent | Mode$ TgtChoose | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | CounterType$ P1P1 | CounterNum$ 3\nOracle:When this artifact enters, search your library for a basic land card, reveal it, put it into your hand, then shuffle.\\n{2}{W}{U}{B}{R}{G}, {T}, Sacrifice this artifact: Target player gains 3 life and draws a card. Each of your opponents discards a card. This artifact deals 3 damage to any target. Put three +1/+1 counters on up to one target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Everything Pizza"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

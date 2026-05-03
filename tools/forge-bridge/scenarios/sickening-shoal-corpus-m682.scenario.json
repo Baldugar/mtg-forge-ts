@@ -1,0 +1,23 @@
+{
+  "id": "sickening-shoal-corpus-m682",
+  "description": "M6 corpus — Sickening Shoal; in-hand parse.",
+  "seed": 64363,
+  "cards": {
+    "Sickening Shoal": "Name:Sickening Shoal\nManaCost:X B B\nTypes:Instant Arcane\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ ExileFromHand<1/Card.Black+Other+cmcEQX> | Announce$ X | Description$ You may exile a black card with mana value X from your hand rather than pay this spell's mana cost.\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SpellDescription$ Target creature gets -X/-X until end of turn.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:You may exile a black card with mana value X from your hand rather than pay this spell's mana cost.\\nTarget creature gets -X/-X until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sickening Shoal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

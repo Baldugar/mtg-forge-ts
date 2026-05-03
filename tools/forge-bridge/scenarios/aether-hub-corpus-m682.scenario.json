@@ -1,0 +1,23 @@
+{
+  "id": "aether-hub-corpus-m682",
+  "description": "M6 corpus — Aether Hub; in-hand parse.",
+  "seed": 61448,
+  "cards": {
+    "Aether Hub": "Name:Aether Hub\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T PayEnergy<1> | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When Aether Hub enters, you get {E} (an energy counter).\\n{T}: Add {C}.\\n{T}, Pay {E}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Hub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

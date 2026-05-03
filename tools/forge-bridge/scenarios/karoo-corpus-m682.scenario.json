@@ -1,0 +1,23 @@
+{
+  "id": "karoo-corpus-m682",
+  "description": "M6 corpus — Karoo; in-hand parse.",
+  "seed": 62994,
+  "cards": {
+    "Karoo": "Name:Karoo\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C W | SpellDescription$ Add {C}{W}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return an untapped Plains you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Plains.untapped/untapped Plains> | UnlessPayer$ You\nSVar:NeedsToPlay:Plains.YouCtrl+untapped\nOracle:Karoo enters tapped.\\nWhen Karoo enters, sacrifice it unless you return an untapped Plains you control to its owner's hand.\\n{T}: Add {C}{W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Karoo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

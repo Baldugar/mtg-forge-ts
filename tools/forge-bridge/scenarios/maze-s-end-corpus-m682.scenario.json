@@ -1,0 +1,23 @@
+{
+  "id": "maze-s-end-corpus-m682",
+  "description": "M6 corpus — Maze's End; in-hand parse.",
+  "seed": 63311,
+  "cards": {
+    "Maze's End": "Name:Maze's End\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ChangeZone | Cost$ 3 T Return<1/CARDNAME> | ChangeType$ Gate | ChangeNum$ 1 | Origin$ Library | Destination$ Battlefield | AILogic$ MazesEnd | SubAbility$ DBWin | SpellDescription$ Search your library for a Gate card, put it onto the battlefield, then shuffle. If you control ten or more Gates with different names, you win the game.\nSVar:DBWin:DB$ WinsGame | Defined$ You | ConditionCheckSVar$ MazeGate | ConditionSVarCompare$ GE10\nSVar:MazeGate:Count$Valid Gate.YouCtrl$DifferentCardNames\nAI:RemoveDeck:Random\nOracle:Maze's End enters tapped.\\n{T}: Add {C}.\\n{3}, {T}, Return Maze's End to its owner's hand: Search your library for a Gate card, put it onto the battlefield, then shuffle. If you control ten or more Gates with different names, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maze's End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

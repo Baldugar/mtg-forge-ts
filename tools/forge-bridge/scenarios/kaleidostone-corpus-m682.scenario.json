@@ -1,0 +1,23 @@
+{
+  "id": "kaleidostone-corpus-m682",
+  "description": "M6 corpus — Kaleidostone; in-hand parse.",
+  "seed": 62983,
+  "cards": {
+    "Kaleidostone": "Name:Kaleidostone\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Mana | Cost$ 5 T Sac<1/CARDNAME> | Produced$ W U B R G | SpellDescription$ Add {W}{U}{B}{R}{G}.\nAI:RemoveDeck:All\nOracle:When Kaleidostone enters, draw a card.\\n{5}, {T}, Sacrifice Kaleidostone: Add {W}{U}{B}{R}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaleidostone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "greater-good-corpus-m682",
+  "description": "M6 corpus — Greater Good; in-hand parse.",
+  "seed": 62626,
+  "cards": {
+    "Greater Good": "Name:Greater Good\nManaCost:2 G G\nTypes:Enchantment\nA:AB$ Draw | Cost$ Sac<1/Creature> | NumCards$ X | SubAbility$ DBDiscard | SpellDescription$ Draw cards equal to the sacrificed creature's power, then discard three cards.\nSVar:DBDiscard:DB$ Discard | NumCards$ 3 | Mode$ TgtChoose\nSVar:X:Sacrificed$CardPower\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:Sacrifice a creature: Draw cards equal to the sacrificed creature's power, then discard three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Greater Good"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

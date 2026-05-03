@@ -1,0 +1,23 @@
+{
+  "id": "sky-hussar-corpus-m682",
+  "description": "M6 corpus — Sky Hussar; in-hand parse.",
+  "seed": 64420,
+  "cards": {
+    "Sky Hussar": "Name:Sky Hussar\nManaCost:3 W U\nTypes:Creature Human Knight\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntapAll | TriggerDescription$ When CARDNAME enters, untap all creatures you control.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SpellDescription$ untap all creatures you control.\nA:AB$ Draw | Cost$ tapXType<2/Creature.White;Creature.Blue/white and/or blue creatures> Reveal<1/CARDNAME> | NumCards$ 1 | Forecast$ True | SpellDescription$ Draw a card. (Activate only during your upkeep and only once each turn.)\nOracle:Flying\\nWhen Sky Hussar enters, untap all creatures you control.\\nForecast — Tap two untapped white and/or blue creatures you control, Reveal Sky Hussar from your hand: Draw a card. (Activate only during your upkeep and only once each turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sky Hussar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

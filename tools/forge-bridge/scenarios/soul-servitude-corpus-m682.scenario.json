@@ -1,0 +1,23 @@
+{
+  "id": "soul-servitude-corpus-m682",
+  "description": "M6 corpus — Soul Servitude; in-hand parse.",
+  "seed": 64503,
+  "cards": {
+    "Soul Servitude": "Name:Soul Servitude\nManaCost:2 B\nTypes:Instant\nA:SP$ Sacrifice | ValidTgts$ Player | SacValid$ Creature.!token | SacMessage$ nontoken creature | RememberSacrificed$ True | SubAbility$ DBImmediateTrigger | SpellDescription$ Target player sacrifices a nontoken creature.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | RememberObjects$ Remembered | Execute$ TrigConjure | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ When they do, you may discard a card. If you do, conjure a duplicate of the sacrificed creature into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\nSVar:TrigConjure:AB$ MakeCard | Cost$ Discard<1/Card> | Conjure$ True | DefinedName$ DelayTriggerRemembered | Zone$ Hand | RememberMade$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast this spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice|Discard\nOracle:Target player sacrifices a nontoken creature. When they do, you may discard a card. If you do, conjure a duplicate of the sacrificed creature into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Servitude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

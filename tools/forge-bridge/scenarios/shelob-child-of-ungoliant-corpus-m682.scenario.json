@@ -1,0 +1,23 @@
+{
+  "id": "shelob-child-of-ungoliant-corpus-m682",
+  "description": "M6 corpus — Shelob, Child of Ungoliant; in-hand parse.",
+  "seed": 64323,
+  "cards": {
+    "Shelob, Child of Ungoliant": "Name:Shelob, Child of Ungoliant\nManaCost:4 B G\nTypes:Legendary Creature Spider Demon\nPT:8/8\nK:Deathtouch\nK:Ward:2\nS:Mode$ Continuous | Affected$ Spider.Other+YouCtrl | AddKeyword$ Deathtouch & Ward:2 | Description$ Other Spiders you control have deathtouch and ward {2}.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+DamagedBySpider.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever another creature dealt damage this turn by a Spider you controlled dies, create a token that's a copy of that creature, except it's a Food artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life,\" and it loses all other card types.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | AddAbilities$ FoodSac | AddTypes$ Artifact & Food | RemoveCardTypes$ True | RemoveSubTypes$ True\nSVar:FoodSac:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this creature> | Defined$ You | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token|LifeGain & Type$Artifact|Food\nDeckHints:Type$Spider\nOracle:Deathtouch, ward {2}\\nOther Spiders you control have deathtouch and ward {2}.\\nWhenever another creature dealt damage this turn by a Spider you controlled dies, create a token that's a copy of that creature, except it's a Food artifact with \"{2}, {T}, Sacrifice this artifact: You gain 3 life,\" and it loses all other card types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shelob, Child of Ungoliant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

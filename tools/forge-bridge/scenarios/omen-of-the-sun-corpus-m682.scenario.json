@@ -1,0 +1,23 @@
+{
+  "id": "omen-of-the-sun-corpus-m682",
+  "description": "M6 corpus — Omen of the Sun; in-hand parse.",
+  "seed": 63627,
+  "cards": {
+    "Omen of the Sun": "Name:Omen of the Sun\nManaCost:2 W\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 white Human Soldier creature tokens and you gain 2 life.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_human_soldier | TokenOwner$ You | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nA:AB$ Scry | Cost$ 2 W Sac<1/CARDNAME> | ScryNum$ 2 | AILogic$ BestOpportunity | SpellDescription$ Scry 2.\nDeckHas:Ability$Token\nOracle:Flash\\nWhen Omen of the Sun enters, create two 1/1 white Human Soldier creature tokens and you gain 2 life.\\n{2}{W}, Sacrifice Omen of the Sun: Scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omen of the Sun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

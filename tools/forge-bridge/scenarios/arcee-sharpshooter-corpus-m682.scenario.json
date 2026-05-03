@@ -1,0 +1,23 @@
+{
+  "id": "arcee-sharpshooter-corpus-m682",
+  "description": "M6 corpus — Arcee, Sharpshooter; in-hand parse.",
+  "seed": 61484,
+  "cards": {
+    "Arcee, Sharpshooter": "Name:Arcee, Sharpshooter\nManaCost:1 R W\nTypes:Legendary Artifact Creature Robot\nPT:2/2\nK:More Than Meets the Eye:R W\nK:First Strike\nA:AB$ DealDamage | Cost$ 1 XMin1 SubCounter<X/P1P1/NICKNAME> | ValidTgts$ Creature | NumDmg$ X | SubAbility$ DBConvert | SpellDescription$ It deals that much damage to target creature.\nSVar:DBConvert:DB$ SetState | Mode$ Transform | StackDescription$ SpellDescription | SpellDescription$ Convert NICKNAME.\nSVar:X:Count$xPaid\nDeckNeeds:Ability$Counters\nAlternateMode:DoubleFaced\nOracle:More Than Meets the Eye {R}{W} (You may cast this card converted for {R}{W}.)\\nFirst strike\\n{1}, Remove one or more +1/+1 counters from Arcee: It deals that much damage to target creature. Convert Arcee.\n\nALTERNATE\n\nName:Arcee, Acrobatic Coupe\nManaCost:no cost\nColors:red,white\nTypes:Legendary Artifact Vehicle\nPT:2/2\nK:Living metal\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Creature.YouCtrl,Vehicle.YouCtrl | Execute$ TrigPutCounters | TriggerDescription$ Whenever you cast a spell that targets one or more creatures or Vehicles you control, put that many +1/+1 counters on NICKNAME. Convert NICKNAME.\nSVar:TrigPutCounters:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBConvert\nSVar:DBConvert:DB$ SetState | Mode$ Transform\nSVar:X:TriggerObjectsSpellAbilityTargets$Valid Creature.YouCtrl,Vehicle.YouCtrl\nDeckHas:Ability$Counters\nOracle:Living metal (During your turn, this Vehicle is also a creature.)\\nWhenever you cast a spell that targets one or more creatures or Vehicles you control, put that many +1/+1 counters on Arcee. Convert Arcee.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcee, Sharpshooter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

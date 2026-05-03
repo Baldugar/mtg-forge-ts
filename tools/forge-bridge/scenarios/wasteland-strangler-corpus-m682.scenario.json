@@ -1,0 +1,23 @@
+{
+  "id": "wasteland-strangler-corpus-m682",
+  "description": "M6 corpus — Wasteland Strangler; in-hand parse.",
+  "seed": 65201,
+  "cards": {
+    "Wasteland Strangler": "Name:Wasteland Strangler\nManaCost:2 B\nTypes:Creature Eldrazi Processor\nPT:3/2\nK:Devoid\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put a card an opponent owns from exile into that player's graveyard. If you do, target creature gets -3/-3 until end of turn.\nSVar:TrigChangeZone:AB$ Pump | Cost$ ExiledMoveToGrave<1/Card.OppOwn/card an opponent owns> | ValidTgts$ Creature | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True\nSVar:PlayMain1:TRUE\nDeckHints:Keyword$Ingest\nOracle:Devoid (This card has no color.)\\nWhen Wasteland Strangler enters, you may put a card an opponent owns from exile into that player's graveyard. If you do, target creature gets -3/-3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wasteland Strangler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

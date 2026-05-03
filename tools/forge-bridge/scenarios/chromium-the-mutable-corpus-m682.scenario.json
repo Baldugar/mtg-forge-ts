@@ -1,0 +1,23 @@
+{
+  "id": "chromium-the-mutable-corpus-m682",
+  "description": "M6 corpus — Chromium, the Mutable; in-hand parse.",
+  "seed": 61740,
+  "cards": {
+    "Chromium, the Mutable": "Name:Chromium, the Mutable\nManaCost:4 W U B\nTypes:Legendary Creature Elder Dragon\nPT:7/7\nK:Flash\nK:Flying\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:AB$ Animate | Cost$ Discard<1/Card> | Types$ Human | Power$ 1 | Toughness$ 1 | Keywords$ Hexproof | RemoveAllAbilities$ True | RemoveCreatureTypes$ True | SubAbility$ DBUnblockable | SpellDescription$ Until end of turn, CARDNAME becomes a Human with base power and toughness 1/1, loses all abilities, and gains hexproof. It can't be blocked this turn.\nSVar:DBUnblockable:DB$ Effect | ExileOnMoved$ Battlefield | RememberObjects$ Self | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nDeckHas:Ability$Discard\nOracle:Flash\\nThis spell can't be countered.\\nFlying\\nDiscard a card: Until end of turn, Chromium, the Mutable becomes a Human with base power and toughness 1/1, loses all abilities, and gains hexproof. It can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chromium, the Mutable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fetid-gargantua-corpus-m682",
+  "description": "M6 corpus — Fetid Gargantua; in-hand parse.",
+  "seed": 62311,
+  "cards": {
+    "Fetid Gargantua": "Name:Fetid Gargantua\nManaCost:4 B\nTypes:Creature Horror\nPT:4/4\nA:AB$ PutCounter | Cost$ 2 B | Adapt$ 2\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ TrigLoseLife | TriggerDescription$ Whenever one or more +1/+1 counters are put on CARDNAME, you may draw two cards. If you do, lose 2 life.\nSVar:TrigLoseLife:AB$ LoseLife | Cost$ Draw<2/You> | LifeAmount$ 2\nOracle:{2}{B}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\\nWhenever one or more +1/+1 counters are put on Fetid Gargantua, you may draw two cards. If you do, lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fetid Gargantua"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

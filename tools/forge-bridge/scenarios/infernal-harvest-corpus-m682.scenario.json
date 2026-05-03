@@ -1,0 +1,23 @@
+{
+  "id": "infernal-harvest-corpus-m682",
+  "description": "M6 corpus — Infernal Harvest; in-hand parse.",
+  "seed": 62870,
+  "cards": {
+    "Infernal Harvest": "Name:Infernal Harvest\nManaCost:1 B\nTypes:Sorcery\nA:SP$ DealDamage | Cost$ 1 B Return<X/Swamp> | ValidTgts$ Creature | TgtPrompt$ Select any number of target creatures to distribute damage to | NumDmg$ X | TargetMin$ 0 | TargetMax$ MaxTgts | DividedAsYouChoose$ X | SpellDescription$ CARDNAME deals X damage divided as you choose among any number of target creatures.\nSVar:MaxTgts:Count$Valid Creature\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, return X Swamps you control to their owner's hand.\\nInfernal Harvest deals X damage divided as you choose among any number of target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Infernal Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

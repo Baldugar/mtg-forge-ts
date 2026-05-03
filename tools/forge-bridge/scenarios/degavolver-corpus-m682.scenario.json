@@ -1,0 +1,23 @@
+{
+  "id": "degavolver-corpus-m682",
+  "description": "M6 corpus — Degavolver; in-hand parse.",
+  "seed": 61969,
+  "cards": {
+    "Degavolver": "Name:Degavolver\nManaCost:1 W\nTypes:Creature Volver\nPT:1/1\nK:Kicker:1 B:R\nK:ETBReplacement:Other:VolverStrength:Mandatory::Card.Self+kicked 1\nK:ETBReplacement:Other:VolverPumped:Mandatory::Card.Self+kicked 2\nSVar:VolverStrength:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | ETB$ True | SubAbility$ VolverResilience | SpellDescription$ If CARDNAME was kicked with its {1}{B} kicker, it enters with two +1/+1 counters on it and with \"Pay 3 life: Regenerate CARDNAME.\"\nSVar:VolverResilience:DB$ Animate | Defined$ Self | Abilities$ ABRegen | Duration$ Permanent\nSVar:ABRegen:AB$ Regenerate | Cost$ PayLife<3> | SpellDescription$ Regenerate CARDNAME.\nSVar:VolverPumped:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | ETB$ True | SubAbility$ VolverSpeed | SpellDescription$ If CARDNAME was kicked with its {R} kicker, it enters with a +1/+1 counter on it and with first strike.\nSVar:VolverSpeed:DB$ Animate | Defined$ Self | Keywords$ First Strike | Duration$ Permanent\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckNeeds:Color$Black|Red\nOracle:Kicker {1}{B} and/or {R} (You may pay an additional {1}{B} and/or {R} as you cast this spell.)\\nIf Degavolver was kicked with its {1}{B} kicker, it enters with two +1/+1 counters on it and with \"Pay 3 life: Regenerate Degavolver.\"\\nIf Degavolver was kicked with its {R} kicker, it enters with a +1/+1 counter on it and with first strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Degavolver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lotus-blossom-corpus-m682",
+  "description": "M6 corpus — Lotus Blossom; in-hand parse.",
+  "seed": 63208,
+  "cards": {
+    "Lotus Blossom": "Name:Lotus Blossom\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ During your upkeep, you may put a petal counter on CARDNAME.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | Amount$ X | SpellDescription$ Add X mana of any one color, where X is the number of petal counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ PETAL | CounterNum$ 1\nSVar:X:Count$CardCounters.PETAL\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may put a petal counter on Lotus Blossom.\\n{T}, Sacrifice Lotus Blossom: Add X mana of any one color, where X is the number of petal counters on Lotus Blossom.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lotus Blossom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

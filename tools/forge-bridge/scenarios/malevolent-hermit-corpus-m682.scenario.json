@@ -1,0 +1,23 @@
+{
+  "id": "malevolent-hermit-corpus-m682",
+  "description": "M6 corpus — Malevolent Hermit; in-hand parse.",
+  "seed": 63259,
+  "cards": {
+    "Malevolent Hermit": "Name:Malevolent Hermit\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:2/1\nK:Disturb:2 U\nA:AB$ Counter | Cost$ U Sac<1/CARDNAME> | TargetType$ Spell | ValidTgts$ Card.nonCreature | UnlessCost$ 3 | TgtPrompt$ Select target noncreature spell | SpellDescription$ Counter target noncreature spell unless its controller pays {3}.\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:{U}, Sacrifice Malevolent Hermit: Counter target noncreature spell unless its controller pays {3}.\\nDisturb {2}{U} (You may cast this card from your graveyard transformed for its disturb cost.)\n\nALTERNATE\n\nName:Benevolent Geist\nManaCost:no cost\nColors:blue\nTypes:Creature Spirit Wizard\nPT:2/2\nK:Flying\nR:Event$ Counter | ValidSA$ Spell.nonCreature+YouCtrl | Layer$ CantHappen | ActiveZones$ Battlefield | Description$ Noncreature spells you control can't be countered.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If CARDNAME would be put into a graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flying\\nNoncreature spells you control can't be countered.\\nIf Benevolent Geist would be put into a graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Malevolent Hermit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

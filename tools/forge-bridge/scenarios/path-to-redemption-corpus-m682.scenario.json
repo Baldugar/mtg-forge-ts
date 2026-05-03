@@ -1,0 +1,23 @@
+{
+  "id": "path-to-redemption-corpus-m682",
+  "description": "M6 corpus — Path to Redemption; in-hand parse.",
+  "seed": 63706,
+  "cards": {
+    "Path to Redemption": "Name:Path to Redemption\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nA:AB$ ChangeZone | Cost$ 5 Sac<1/CARDNAME/this Aura> | PlayerTurn$ True | Defined$ Enchanted | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBToken | SpellDescription$ Exile enchanted creature. Create a 1/1 white Ally creature token. Activate only during your turn.\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_ally\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\n{5}, Sacrifice this Aura: Exile enchanted creature. Create a 1/1 white Ally creature token. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Path to Redemption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

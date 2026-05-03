@@ -1,0 +1,23 @@
+{
+  "id": "fallen-ideal-corpus-m682",
+  "description": "M6 corpus — Fallen Ideal; in-hand parse.",
+  "seed": 62283,
+  "cards": {
+    "Fallen Ideal": "Name:Fallen Ideal\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | AddAbility$ ABPump | Description$ Enchanted creature has flying and \"Sacrifice a creature: This creature gets +2/+1 until end of turn.\"\nSVar:ABPump:AB$ Pump | Cost$ Sac<1/Creature> | Defined$ Self | NumAtt$ +2 | NumDef$ +1 | SpellDescription$ CARDNAME gets +2/+1 until end of turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nDeckHas:Ability$Sacrifice\nOracle:Enchant creature\\nEnchanted creature has flying and \"Sacrifice a creature: This creature gets +2/+1 until end of turn.\"\\nWhen Fallen Ideal is put into a graveyard from the battlefield, return Fallen Ideal to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fallen Ideal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fire-lord-ozai-corpus-m682",
+  "description": "M6 corpus — Fire Lord Ozai; in-hand parse.",
+  "seed": 62326,
+  "cards": {
+    "Fire Lord Ozai": "Name:Fire Lord Ozai\nManaCost:3 B\nTypes:Legendary Creature Human Noble\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMana | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. If you do, add an amount of {R} equal to the sacrificed creature's power. Until end of combat, you don't lose this mana as steps end.\nSVar:TrigMana:AB$ Mana | Cost$ Sac<1/Creature.Other/another creature> | Produced$ R | Amount$ X | CombatMana$ True\nA:AB$ Dig | Cost$ 6 | DigNum$ 1 | ChangeNum$ All | Defined$ Opponent | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of each opponent's library. Until end of turn, you may play one of those cards without paying its mana cost.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ MayPlay | Triggers$ Play1,Play2 | SubAbility$ DBCleanup\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | MayPlayWithoutManaCost$ True | Description$ Until end of turn, you may play one of those cards without paying its mana cost.\nSVar:Play1:Mode$ SpellCast | ValidCard$ Card.IsRemembered | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:Play2:Mode$ LandPlayed | ValidCard$ Land.IsRemembered | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Sacrificed$CardPower\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Whenever Fire Lord Ozai attacks, you may sacrifice another creature. If you do, add an amount of {R} equal to the sacrificed creature's power. Until end of combat, you don't lose this mana as steps end.\\n{6}: Exile the top card of each opponent's library. Until end of turn, you may play one of those cards without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Lord Ozai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

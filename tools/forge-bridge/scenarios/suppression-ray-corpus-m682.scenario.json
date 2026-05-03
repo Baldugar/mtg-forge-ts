@@ -1,0 +1,23 @@
+{
+  "id": "suppression-ray-corpus-m682",
+  "description": "M6 corpus — Suppression Ray; in-hand parse.",
+  "seed": 64668,
+  "cards": {
+    "Suppression Ray": "Name:Suppression Ray\nManaCost:3 WU WU\nTypes:Sorcery\nA:SP$ TapAll | ValidCards$ Creature | ValidTgts$ Player | RememberTapped$ True | SubAbility$ DBChooseNumber | StackDescription$ REP target player_{p:Targeted} | SpellDescription$ Tap all creatures target player controls.\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Max | ListTitle$ amount of energy to pay | SubAbility$ DBStun | StackDescription$ None\nSVar:DBStun:DB$ PutCounter | UnlessCost$ PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True | Choices$ Creature.IsRemembered | ChoiceAmount$ X | MinChoiceAmount$ 0 | ChoiceTitle$ Choose up to that many creatures tapped this way | CounterType$ Stun | StackDescription$ SpellDescription | SpellDescription$ You may pay any amount of {E}. If you do, choose up to that many creatures tapped this way. Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:Max:Count$YourCountersEnergy\nSVar:X:Count$ChosenNumber\nAlternateMode:Modal\nOracle:Tap all creatures target player controls. You may pay any amount of {E}. If you do, choose up to that many creatures tapped this way. Put a stun counter on each of them. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n\nALTERNATE\n\nName:Orderly Plaza\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nOracle:Orderly Plaza enters tapped.\\n{T}: Add {W} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suppression Ray"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

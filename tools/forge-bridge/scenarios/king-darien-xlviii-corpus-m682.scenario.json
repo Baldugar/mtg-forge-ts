@@ -1,0 +1,23 @@
+{
+  "id": "king-darien-xlviii-corpus-m682",
+  "description": "M6 corpus — King Darien XLVIII; in-hand parse.",
+  "seed": 63029,
+  "cards": {
+    "King Darien XLVIII": "Name:King Darien XLVIII\nManaCost:1 G W\nTypes:Legendary Creature Human Soldier\nPT:2/3\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other creatures you control get +1/+1.\nA:AB$ PutCounter | Cost$ 3 G W | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBToken | SpellDescription$ Put a +1/+1 counter on NICKNAME and create a 1/1 white Soldier creature token.\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You | StackDescription$ None\nA:AB$ PumpAll | Cost$ Sac<1/CARDNAME> | ValidCards$ Creature.token+YouCtrl | KW$ Hexproof & Indestructible | SpellDescription$ Creature tokens you control gain hexproof and indestructible until end of turn.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters|Token|Sacrifice & Type$Soldier\nDeckHints:Ability$Token\nOracle:Other creatures you control get +1/+1.\\n{3}{G}{W}: Put a +1/+1 counter on King Darien and create a 1/1 white Soldier creature token.\\nSacrifice King Darien: Creature tokens you control gain hexproof and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "King Darien XLVIII"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

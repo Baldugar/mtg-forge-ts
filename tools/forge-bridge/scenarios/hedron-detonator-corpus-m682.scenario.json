@@ -1,0 +1,23 @@
+{
+  "id": "hedron-detonator-corpus-m682",
+  "description": "M6 corpus — Hedron Detonator; in-hand parse.",
+  "seed": 62730,
+  "cards": {
+    "Hedron Detonator": "Name:Hedron Detonator\nManaCost:2 R\nTypes:Creature Goblin Artificer\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever an artifact you control enters, CARDNAME deals 1 damage to target opponent.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ 1\nA:AB$ Dig | Cost$ T Sac<2/Artifact> | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ You | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nOracle:Whenever an artifact you control enters, Hedron Detonator deals 1 damage to target opponent.\\n{T}, Sacrifice two artifacts: Exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hedron Detonator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

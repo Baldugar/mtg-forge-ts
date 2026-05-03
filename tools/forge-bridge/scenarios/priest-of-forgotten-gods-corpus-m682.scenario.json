@@ -1,0 +1,23 @@
+{
+  "id": "priest-of-forgotten-gods-corpus-m682",
+  "description": "M6 corpus — Priest of Forgotten Gods; in-hand parse.",
+  "seed": 63815,
+  "cards": {
+    "Priest of Forgotten Gods": "Name:Priest of Forgotten Gods\nManaCost:1 B\nTypes:Creature Human Cleric\nPT:1/2\nA:AB$ LoseLife | Cost$ T Sac<2/Creature.Other/other creature> | ValidTgts$ Player | TargetMin$ 0 | TargetMax$ MaxTgts | LifeAmount$ 2 | SubAbility$ DBSac | SpellDescription$ Any number of target players each lose 2 life and sacrifice a creature. You add {B}{B} and draw a card.\nSVar:MaxTgts:PlayerCountPlayers$Amount\nSVar:DBSac:DB$ Sacrifice | SacValid$ Creature | Defined$ Targeted | Amount$ 1 | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ B | Amount$ 2 | AILogic$ Always | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE2\nOracle:{T}, Sacrifice two other creatures: Any number of target players each lose 2 life and sacrifice a creature. You add {B}{B} and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Priest of Forgotten Gods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

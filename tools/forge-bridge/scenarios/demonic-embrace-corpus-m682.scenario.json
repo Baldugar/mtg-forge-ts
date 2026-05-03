@@ -1,0 +1,23 @@
+{
+  "id": "demonic-embrace-corpus-m682",
+  "description": "M6 corpus — Demonic Embrace; in-hand parse.",
+  "seed": 61982,
+  "cards": {
+    "Demonic Embrace": "Name:Demonic Embrace\nManaCost:1 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 1 | AddKeyword$ Flying | AddType$ Demon | Description$ Enchanted creature gets +3/+1, has flying, and is a Demon in addition to its other types.\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Graveyard | EffectZone$ Graveyard | RaiseCost$ PayLife<3> Discard<1/Card> | Description$ You may cast CARDNAME from your graveyard by paying 3 life and discarding a card in addition to paying its other costs.\nSVar:DiscardMe:1\nDeckHas:Ability$Discard|Graveyard\nOracle:Enchant creature\\nEnchanted creature gets +3/+1, has flying, and is a Demon in addition to its other types.\\nYou may cast Demonic Embrace from your graveyard by paying 3 life and discarding a card in addition to paying its other costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Embrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

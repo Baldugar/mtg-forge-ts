@@ -1,0 +1,23 @@
+{
+  "id": "undead-butler-corpus-m682",
+  "description": "M6 corpus — Undead Butler; in-hand parse.",
+  "seed": 65013,
+  "cards": {
+    "Undead Butler": "Name:Undead Butler\nManaCost:1 B\nTypes:Creature Zombie\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards. (Put the top three cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME dies, you may exile it. When you do, return target creature card from your graveyard to your hand.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ ExileAnyGrave<1/Card.TriggeredNewCard> | Execute$ TrigReturn | TriggerDescription$ When you do, return target creature card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature card in your graveyard\nOracle:When Undead Butler enters, mill three cards. (Put the top three cards of your library into your graveyard.)\\nWhen Undead Butler dies, you may exile it. When you do, return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undead Butler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

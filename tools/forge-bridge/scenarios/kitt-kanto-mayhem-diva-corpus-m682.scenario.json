@@ -1,0 +1,23 @@
+{
+  "id": "kitt-kanto-mayhem-diva-corpus-m682",
+  "description": "M6 corpus — Kitt Kanto, Mayhem Diva; in-hand parse.",
+  "seed": 63041,
+  "cards": {
+    "Kitt Kanto, Mayhem Diva": "Name:Kitt Kanto, Mayhem Diva\nManaCost:1 R G W\nTypes:Legendary Creature Cat Bard Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a 1/1 green and white Citizen creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ gw_1_1_citizen\nT:Mode$ Phase | Phase$ BeginCombat | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on each player's turn, you may tap two untapped creatures you control. When you do, target creature that player controls gets +2/+2 and gains trample until end of turn. Goad that creature.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ tapXType<2/Creature> | Execute$ TrigPump | TriggerDescription$ When you do, target creature that player controls gets +2/+2 and gains trample until end of turn. Goad that creature.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.ActivePlayerCtrl | TgtPrompt$ Select target creature that player controls | NumAtt$ +2 | NumDef$ +2 | KW$ Trample | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ Targeted\nDeckHas:Ability$Token & Type$Citizen\nOracle:When Kitt Kanto enters, create a 1/1 green and white Citizen creature token.\\nAt the beginning of combat on each player's turn, you may tap two untapped creatures you control. When you do, target creature that player controls gets +2/+2 and gains trample until end of turn. Goad that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kitt Kanto, Mayhem Diva"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

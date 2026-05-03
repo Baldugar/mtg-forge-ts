@@ -1,0 +1,23 @@
+{
+  "id": "thriving-rhino-corpus-m682",
+  "description": "M6 corpus — Thriving Rhino; in-hand parse.",
+  "seed": 64858,
+  "cards": {
+    "Thriving Rhino": "Name:Thriving Rhino\nManaCost:2 G\nTypes:Creature Rhino\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayEnergy<2> | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Thriving Rhino enters, you get {E}{E} (two energy counters).\\nWhenever Thriving Rhino attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thriving Rhino"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

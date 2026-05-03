@@ -1,0 +1,23 @@
+{
+  "id": "bulwark-ox-corpus-m682",
+  "description": "M6 corpus — Bulwark Ox; in-hand parse.",
+  "seed": 61578,
+  "cards": {
+    "Bulwark Ox": "Name:Bulwark Ox\nManaCost:1 W\nTypes:Creature Ox Mount\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever this creature attacks while saddled, put a +1/+1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1\nA:AB$ PumpAll | Cost$ Sac<1/CARDNAME> | ValidCards$ Creature.YouCtrl+HasCounters | KW$ Hexproof & Indestructible | SpellDescription$ Creatures you control with counters on them gain hexproof and indestructible until end of turn.\nK:Saddle:1\nDeckHas:Ability$Counters\nOracle:Whenever this creature attacks while saddled, put a +1/+1 counter on target creature.\\nSacrifice this creature: Creatures you control with counters on them gain hexproof and indestructible until end of turn.\\nSaddle 1 (Tap any number of other creatures you control with total power 1 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bulwark Ox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

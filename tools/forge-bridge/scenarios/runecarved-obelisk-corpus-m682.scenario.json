@@ -1,0 +1,23 @@
+{
+  "id": "runecarved-obelisk-corpus-m682",
+  "description": "M6 corpus — Runecarved Obelisk; in-hand parse.",
+  "seed": 64071,
+  "cards": {
+    "Runecarved Obelisk": "Name:Runecarved Obelisk\nManaCost:4\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SubAbility$ DBPutCounter | SpellDescription$ Add {C}{C}.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 2 | SpellDescription$ Put two charge counters on CARDNAME.\nA:AB$ Seek | Cost$ T Sac<1/CARDNAME> | Type$ Card.cmcEQY | SpellDescription$ Seek a card with the highest mana value among cards in your library with mana value X or less, where X is the number of charge counters on CARDNAME.\nSVar:Y:Count$ValidLibrary Card.YouOwn+cmcLEX$GreatestCardManaCost\nSVar:X:Count$CardCounters.CHARGE\nDeckHas:Ability$Counters|Sacrifice\nOracle:{T}: Add {C}{C}. Put two charge counters on Runecarved Obelisk.\\n{T}, Sacrifice Runecarved Obelisk: Seek a card with the highest mana value among cards in your library with mana value X or less, where X is the number of charge counters on Runecarved Obelisk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Runecarved Obelisk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "catti-brie-of-mithral-hall-corpus-m682",
+  "description": "M6 corpus — Catti-brie of Mithral Hall; in-hand parse.",
+  "seed": 61655,
+  "cards": {
+    "Catti-brie of Mithral Hall": "Name:Catti-brie of Mithral Hall\nManaCost:G W\nTypes:Legendary Creature Human Archer\nPT:2/2\nK:First Strike\nK:Reach\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on it for each Equipment attached to it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ Y\nSVar:Y:Count$Valid Equipment.Attached\nA:AB$ DealDamage | Cost$ 1 SubCounter<All/P1P1/NICKNAME> | NumDmg$ X | ValidTgts$ Creature.attacking+OppCtrl,Creature.blocking+OppCtrl | TgtPrompt$ Select target attacking or blocking creature an opponent controls | SpellDescription$ It deals X damage to target attacking or blocking creature an opponent controls, where X is the number of counters removed this way.\nSVar:X:SVar$CostCountersRemoved\nSVar:HasAttackEffect:TRUE\nSVar:EquipMe:Multiple\nDeckHas:Ability$Counters\nDeckNeeds:Type$Equipment\nOracle:First strike, reach\\nWhenever Catti-brie of Mithral Hall attacks, put a +1/+1 counter on it for each Equipment attached to it.\\n{1}, Remove all +1/+1 counters from Catti-brie: It deals X damage to target attacking or blocking creature an opponent controls, where X is the number of counters removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Catti-brie of Mithral Hall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

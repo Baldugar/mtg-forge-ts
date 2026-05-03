@@ -1,0 +1,23 @@
+{
+  "id": "frostboil-snarl-corpus-m682",
+  "description": "M6 corpus — Frostboil Snarl; in-hand parse.",
+  "seed": 62428,
+  "cards": {
+    "Frostboil Snarl": "Name:Frostboil Snarl\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal an Island or Mountain card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Island;Mountain/Island or Mountain> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nOracle:As Frostboil Snarl enters, you may reveal an Island or Mountain card from your hand. If you don't, Frostboil Snarl enters tapped.\\n{T}: Add {U} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frostboil Snarl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

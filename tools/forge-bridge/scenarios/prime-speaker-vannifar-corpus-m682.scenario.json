@@ -1,0 +1,23 @@
+{
+  "id": "prime-speaker-vannifar-corpus-m682",
+  "description": "M6 corpus — Prime Speaker Vannifar; in-hand parse.",
+  "seed": 63823,
+  "cards": {
+    "Prime Speaker Vannifar": "Name:Prime Speaker Vannifar\nManaCost:2 G U\nTypes:Legendary Creature Elf Ooze Wizard\nPT:2/4\nA:AB$ ChangeZone | Cost$ T Sac<1/Creature.Other/another creature> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcEQX | ChangeNum$ 1 | SorcerySpeed$ True | AILogic$ SacAndUpgrade | SpellDescription$ Search your library for a creature card with mana value equal to 1 plus the sacrificed creature's mana value, put that card onto the battlefield, then shuffle. Activate only as a sorcery.\nSVar:X:Sacrificed$CardManaCost/Plus.1\n# AI Preference is needed to make the AI consider the ability. Further constraints are defined by AILogic SacAndUpgrade.\nSVar:AIPreference:SacCost$Creature\nOracle:{T}, Sacrifice another creature: Search your library for a creature card with mana value equal to 1 plus the sacrificed creature's mana value, put that card onto the battlefield, then shuffle. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prime Speaker Vannifar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "longhorn-firebeast-corpus-m682",
+  "description": "M6 corpus — Longhorn Firebeast; in-hand parse.",
+  "seed": 63194,
+  "cards": {
+    "Longhorn Firebeast": "Name:Longhorn Firebeast\nManaCost:2 R\nTypes:Creature Elemental Ox Beast\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, any opponent may have it deal 5 damage to them. If a player does, sacrifice CARDNAME.\nSVar:TrigDealDamage:DB$ Sacrifice | UnlessCost$ DamageYou<5> | UnlessPayer$ Opponent | UnlessSwitched$ True\nOracle:When Longhorn Firebeast enters, any opponent may have it deal 5 damage to them. If a player does, sacrifice Longhorn Firebeast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Longhorn Firebeast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

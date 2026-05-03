@@ -1,0 +1,23 @@
+{
+  "id": "liberty-prime-recharged-corpus-m682",
+  "description": "M6 corpus — Liberty Prime, Recharged; in-hand parse.",
+  "seed": 63137,
+  "cards": {
+    "Liberty Prime, Recharged": "Name:Liberty Prime, Recharged\nManaCost:2 U R W\nTypes:Legendary Artifact Creature Robot\nPT:8/8\nK:Vigilance\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice it unless you pay {E}{E} (two energy counters).\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigSac | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice it unless you pay {E}{E} (two energy counters).\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ PayEnergy<2> | UnlessPayer$ You\nA:AB$ PutCounter | Defined$ You | Cost$ 2 T Sac<1/Artifact> | CounterType$ ENERGY | CounterNum$ 2 | SubAbility$ DBDraw | SpellDescription$ You get {E}{E} and draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nOracle:Vigilance, trample, haste\\nWhenever Liberty Prime, Recharged attacks or blocks, sacrifice it unless you pay {E}{E} (two energy counters).\\n{2}, {T}, Sacrifice an artifact: You get {E}{E} and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liberty Prime, Recharged"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

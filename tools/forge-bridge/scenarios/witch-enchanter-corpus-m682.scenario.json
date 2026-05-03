@@ -1,0 +1,23 @@
+{
+  "id": "witch-enchanter-corpus-m682",
+  "description": "M6 corpus — Witch Enchanter; in-hand parse.",
+  "seed": 65258,
+  "cards": {
+    "Witch Enchanter": "Name:Witch Enchanter\nManaCost:3 W\nTypes:Creature Human Warlock\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target artifact or enchantment an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact or enchantment an opponent controls.\nAlternateMode:Modal\nOracle:When Witch Enchanter enters, destroy target artifact or enchantment an opponent controls.\n\nALTERNATE\n\nName:Witch-Blessed Meadow\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 3 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<3> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:As Witch-Blessed Meadow enters, you may pay 3 life. If you don't, it enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witch Enchanter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

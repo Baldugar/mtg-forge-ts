@@ -1,0 +1,23 @@
+{
+  "id": "tornado-corpus-m682",
+  "description": "M6 corpus — Tornado; in-hand parse.",
+  "seed": 64925,
+  "cards": {
+    "Tornado": "Name:Tornado\nManaCost:4 G\nTypes:Enchantment\nK:Cumulative upkeep:G\nA:AB$ Destroy | Cost$ 2 G PayLife<X> | CostDesc$ {2}{G}, Pay 3 life for each velocity counter on CARDNAME: | ValidTgts$ Permanent | SubAbility$ Velocity | ActivationLimit$ 1 | SpellDescription$ Destroy target permanent and put a velocity counter on CARDNAME. Activate only once each turn.\nSVar:Velocity:DB$ PutCounter | Defined$ Self | CounterType$ VELOCITY | CounterNum$ 1\nSVar:X:Count$CardCounters.VELOCITY/Times.3\nAI:RemoveDeck:All\nOracle:Cumulative upkeep {G} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\n{2}{G}, Pay 3 life for each velocity counter on Tornado: Destroy target permanent and put a velocity counter on Tornado. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tornado"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

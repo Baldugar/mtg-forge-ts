@@ -1,0 +1,23 @@
+{
+  "id": "voltaic-brawler-corpus-m682",
+  "description": "M6 corpus — Voltaic Brawler; in-hand parse.",
+  "seed": 65157,
+  "cards": {
+    "Voltaic Brawler": "Name:Voltaic Brawler\nManaCost:R G\nTypes:Creature Human Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}. If you do, it gets +1/+1 and gains trample until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ PayEnergy<1> | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nSVar:HasAttackEffect:TRUE\nOracle:When Voltaic Brawler enters, you get {E}{E} (two energy counters).\\nWhenever Voltaic Brawler attacks, you may pay {E}. If you do, it gets +1/+1 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voltaic Brawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "teysa-orzhov-scion-corpus-m682",
+  "description": "M6 corpus — Teysa, Orzhov Scion; in-hand parse.",
+  "seed": 64766,
+  "cards": {
+    "Teysa, Orzhov Scion": "Name:Teysa, Orzhov Scion\nManaCost:1 W B\nTypes:Legendary Creature Human Advisor\nPT:2/3\nA:AB$ ChangeZone | Cost$ Sac<3/Creature.White/white creature> | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Black+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever another black creature you control dies, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Sacrifice three white creatures: Exile target creature.\\nWhenever another black creature you control dies, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teysa, Orzhov Scion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

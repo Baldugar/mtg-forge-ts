@@ -1,0 +1,23 @@
+{
+  "id": "kylox-s-voltstrider-corpus-m682",
+  "description": "M6 corpus — Kylox's Voltstrider; in-hand parse.",
+  "seed": 63087,
+  "cards": {
+    "Kylox's Voltstrider": "Name:Kylox's Voltstrider\nManaCost:1 U R\nTypes:Artifact Vehicle\nPT:4/4\nA:AB$ Animate | Cost$ CollectEvidence<6> | Defined$ Self | Types$ Artifact,Creature | SpellDescription$ CARDNAME becomes an artifact creature until end of turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPlay | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may cast an instant or sorcery spell from among cards exiled with it. If that spell would be put into a graveyard, put it on the bottom of its owner's library instead.\nSVar:TrigPlay:DB$ Play | ValidZone$ Exile | Valid$ Card.ExiledWithSource | ValidSA$ Instant,Sorcery | Controller$ You | Optional$ True | RememberPlayed$ True | Amount$ 1 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ StaticReplace | RememberObjects$ Remembered\nSVar:StaticReplace:Event$ Moved | ValidLKI$ Card.IsRemembered | Origin$ Stack | Destination$ Graveyard | ReplaceWith$ MoveLibrary\nSVar:MoveLibrary:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Stack | Destination$ Library | LibraryPosition$ -1 | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nK:Crew:2\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Instant|Sorcery & Ability$Graveyard|Mill|Discard|Dredge\nOracle:Collect evidence 6: Kylox's Voltstrider becomes an artifact creature until end of turn.\\nWhenever Kylox's Voltstrider attacks, you may cast an instant or sorcery spell from among cards exiled with it. If that spell would be put into a graveyard, put it on the bottom of its owner's library instead.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kylox's Voltstrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sorin-imperious-bloodlord-corpus-m682",
+  "description": "M6 corpus — Sorin, Imperious Bloodlord; in-hand parse.",
+  "seed": 64481,
+  "cards": {
+    "Sorin, Imperious Bloodlord": "Name:Sorin, Imperious Bloodlord\nManaCost:2 B\nTypes:Legendary Planeswalker Sorin\nLoyalty:4\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Deathtouch & Lifelink | SubAbility$ DBPutCounter | SpellDescription$ Target creature you control gains deathtouch and lifelink until end of turn. If it's a Vampire, put a +1/+1 counter on it.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 1 | ConditionDefined$ Targeted | ConditionPresent$ Card.Vampire | ConditionCompare$ GE1\nA:AB$ Sacrifice | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | SacValid$ Vampire | Optional$ True | RememberSacrificed$ True | SubAbility$ TrigPayCost | SpellDescription$ You may sacrifice a Vampire.\nSVar:TrigPayCost:DB$ ImmediateTrigger | Execute$ DBDmg | ConditionDefined$ RememberedLKI | ConditionPresent$ Creature | ConditionCompare$ GE1 | SpellDescription$ When you do, CARDNAME deals 3 damage to any target and you gain 3 life. | SubAbility$ DBCleanup\nSVar:DBDmg:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Ultimate$ True | Planeswalker$ True | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.Vampire | ChangeNum$ 1 | SpellDescription$ You may put a Vampire creature card from your hand onto the battlefield.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nDeckHints:Type$Vampire\nOracle:[+1]: Target creature you control gains deathtouch and lifelink until end of turn. If it's a Vampire, put a +1/+1 counter on it.\\n[+1]: You may sacrifice a Vampire. When you do, Sorin, Imperious Bloodlord deals 3 damage to any target and you gain 3 life.\\n[-3]: You may put a Vampire creature card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sorin, Imperious Bloodlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

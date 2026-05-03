@@ -1,0 +1,23 @@
+{
+  "id": "haven-of-the-spirit-dragon-corpus-m682",
+  "description": "M6 corpus — Haven of the Spirit Dragon; in-hand parse.",
+  "seed": 62707,
+  "cards": {
+    "Haven of the Spirit Dragon": "Name:Haven of the Spirit Dragon\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | RestrictValid$ Spell.Creature+Dragon | SpellDescription$ Add one mana of any color. Spend this mana only to cast a Dragon creature spell.\nA:AB$ ChangeZone | Cost$ 2 T Sac<1/CARDNAME> | TgtPrompt$ Select target Dragon creature card or Ugin planeswalker card in your graveyard | ValidTgts$ Creature.Dragon+YouCtrl,Planeswalker.Ugin+YouCtrl | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return target Dragon creature card or Ugin planeswalker card from your graveyard to your hand.\nAI:RemoveDeck:Random\nOracle:{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a Dragon creature spell.\\n{2}, {T}, Sacrifice Haven of the Spirit Dragon: Return target Dragon creature card or Ugin planeswalker card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Haven of the Spirit Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

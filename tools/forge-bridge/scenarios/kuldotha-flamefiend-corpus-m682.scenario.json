@@ -1,0 +1,23 @@
+{
+  "id": "kuldotha-flamefiend-corpus-m682",
+  "description": "M6 corpus — Kuldotha Flamefiend; in-hand parse.",
+  "seed": 63080,
+  "cards": {
+    "Kuldotha Flamefiend": "Name:Kuldotha Flamefiend\nManaCost:4 R R\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, you may sacrifice an artifact. If you do, CARDNAME deals 4 damage divided as you choose among any number of targets.\nSVar:TrigDealDamage:AB$ DealDamage | Cost$ Sac<1/Artifact> | ValidTgts$ Any | TgtPrompt$ Select any number of targets to distribute damage to | NumDmg$ 4 | TargetMin$ 0 | TargetMax$ 4 | DividedAsYouChoose$ 4\nAI:RemoveDeck:All\nOracle:When Kuldotha Flamefiend enters, you may sacrifice an artifact. If you do, Kuldotha Flamefiend deals 4 damage divided as you choose among any number of targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kuldotha Flamefiend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lyzolda-the-blood-witch-corpus-m682",
+  "description": "M6 corpus — Lyzolda, the Blood Witch; in-hand parse.",
+  "seed": 63227,
+  "cards": {
+    "Lyzolda, the Blood Witch": "Name:Lyzolda, the Blood Witch\nManaCost:1 B R\nTypes:Legendary Creature Human Cleric\nPT:3/1\nA:AB$ DealDamage | Cost$ 2 Sac<1/Creature> | ValidTgts$ Any | NumDmg$ 2 | ConditionDefined$ Sacrificed | ConditionPresent$ Card.Red | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals 2 damage to any target if the sacrificed creature was red. Draw a card if the sacrificed creature was black.\nSVar:DBDraw:DB$ Draw | Defined$ You | ConditionDefined$ Sacrificed | ConditionPresent$ Card.Black\nAI:RemoveDeck:All\nOracle:{2}, Sacrifice a creature: Lyzolda, the Blood Witch deals 2 damage to any target if the sacrificed creature was red. Draw a card if the sacrificed creature was black.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lyzolda, the Blood Witch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

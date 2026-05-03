@@ -1,0 +1,23 @@
+{
+  "id": "cryogen-relic-corpus-m682",
+  "description": "M6 corpus — Cryogen Relic; in-hand parse.",
+  "seed": 61878,
+  "cards": {
+    "Cryogen Relic": "Name:Cryogen Relic\nManaCost:1 U\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this artifact enters or leaves the battlefield, draw a card.\nT:Mode$ ChangesZone | Destination$ Any | Origin$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ When this artifact enters or leaves the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ PutCounter | Cost$ 1 U Sac<1/CARDNAME/this artifact> | ValidTgts$ Creature.tapped | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target tapped creature | CounterType$ STUN | CounterNum$ 1 | SpellDescription$ Put a stun counter on up to one target tapped creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nOracle:When this artifact enters or leaves the battlefield, draw a card.\\n{1}{U}, Sacrifice this artifact: Put a stun counter on up to one target tapped creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryogen Relic"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

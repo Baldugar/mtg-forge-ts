@@ -1,0 +1,23 @@
+{
+  "id": "rush-of-inspiration-corpus-m682",
+  "description": "M6 corpus — Rush of Inspiration; in-hand parse.",
+  "seed": 64074,
+  "cards": {
+    "Rush of Inspiration": "Name:Rush of Inspiration\nManaCost:1 UR UR\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBDiscard | SpellDescription$ Draw two cards.\nSVar:DBDiscard:DB$ Discard | Mode$ Random | UnlessCost$ PayEnergy<2> | UnlessPayer$ You | SpellDescription$ Then discard a card at random unless you pay {E}{E} (two energy counters).\nAlternateMode:Modal\nOracle:Draw two cards. Then discard a card at random unless you pay {E}{E} (two energy counters).\n\nALTERNATE\n\nName:Crackling Falls\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nOracle:Crackling Falls enters tapped.\\n{T}: Add {U} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rush of Inspiration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

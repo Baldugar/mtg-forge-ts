@@ -1,0 +1,23 @@
+{
+  "id": "ludevic-necrogenius-corpus-m682",
+  "description": "M6 corpus — Ludevic, Necrogenius; in-hand parse.",
+  "seed": 63214,
+  "cards": {
+    "Ludevic, Necrogenius": "Name:Ludevic, Necrogenius\nManaCost:U B\nTypes:Legendary Creature Human Wizard\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME enters or attacks, mill a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, mill a card.\nSVar:TrigMill:DB$ Mill | NumCards$ 1 | Defined$ You\nA:AB$ SetState | Cost$ XMin1 X U U B B ExileFromGrave<X/Creature/creature cards> | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | SpellDescription$ Transform NICKNAME. X can't be zero. Activate only as a sorcery.\nSVar:X:Count$xPaid\nDeckHas:Ability$Mill|Counters\nDeckHints:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Whenever Ludevic, Necrogenius enters or attacks, mill a card.\\n{X}{U}{U}{B}{B}, Exile X creature cards from your graveyard: Transform Ludevic. X can't be zero. Activate only as a sorcery.\n\nALTERNATE\n\nName:Olag, Ludevic's Hubris\nManaCost:no cost\nColors:blue,black\nTypes:Legendary Creature Zombie\nPT:4/4\nR:Event$ Transform | ValidCard$ Card.Self | ReplaceWith$ Copy | Description$ As this creature transforms into CARDNAME, it becomes a copy of a creature card exiled with it, except its name is Olag, Ludevic's Hubris, it's 4/4, and it's a legendary blue and black Zombie in addition to its other colors and types. Put a number of +1/+1 counters on NICKNAME equal to the number of creature cards exiled with it.\nSVar:Copy:DB$ Clone | Choices$ Creature.ExiledWithSource | ChoiceZone$ Exile | NewName$ Olag, Ludevic's Hubris | SetPower$ 4 | SetToughness$ 4 | AddTypes$ Legendary & Zombie | AddColors$ Blue & Black | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterNum$ Y | CounterType$ P1P1\nSVar:Y:Count$ValidExile Creature.ExiledWithSource\nOracle:As this creature transforms into Olag, Ludevic's Hubris, it becomes a copy of a creature card exiled with it, except its name is Olag, Ludevic's Hubris, it's 4/4, and it's a legendary blue and black Zombie in addition to its other colors and types. Put a number of +1/+1 counters on Olag equal to the number of creature cards exiled with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ludevic, Necrogenius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

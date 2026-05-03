@@ -1,0 +1,23 @@
+{
+  "id": "myojin-of-night-s-reach-corpus-m682",
+  "description": "M6 corpus — Myojin of Night's Reach; in-hand parse.",
+  "seed": 63475,
+  "cards": {
+    "Myojin of Night's Reach": "Name:Myojin of Night's Reach\nManaCost:5 B B B\nTypes:Legendary Creature Spirit\nPT:5/2\nK:etbCounter:DIVINITY:1:CheckSVar$ FromHand:CARDNAME enters with a divinity counter on it if you cast it from your hand.\nSVar:FromHand:Count$wasCastFromYourHandByYou.1.0\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE1_DIVINITY | AddKeyword$ Indestructible | Description$ CARDNAME has indestructible as long as it has a divinity counter on it.\nA:AB$ Discard | Cost$ SubCounter<1/DIVINITY> | Defined$ Player.Opponent | Mode$ Hand | SpellDescription$ Each opponent discards their hand.\nOracle:Myojin of Night's Reach enters with a divinity counter on it if you cast it from your hand.\\nMyojin of Night's Reach has indestructible as long as it has a divinity counter on it.\\nRemove a divinity counter from Myojin of Night's Reach: Each opponent discards their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myojin of Night's Reach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

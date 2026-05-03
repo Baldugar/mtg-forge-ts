@@ -1,0 +1,23 @@
+{
+  "id": "spell-satchel-corpus-m682",
+  "description": "M6 corpus — Spell Satchel; in-hand parse.",
+  "seed": 64531,
+  "cards": {
+    "Spell Satchel": "Name:Spell Satchel\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCastOrCopy | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Magecraft — Whenever you cast or copy an instant or sorcery spell, put a book counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<1/BOOK> | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Draw | Cost$ 3 T SubCounter<3/BOOK> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ BOOK | CounterNum$ 1 | Defined$ Self\nOracle:Magecraft — Whenever you cast or copy an instant or sorcery spell, put a book counter on Spell Satchel.\\n{T}, Remove a book counter from Spell Satchel: Add {C}.\\n{3}, {T}, Remove three book counters from Spell Satchel: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spell Satchel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rankle-pitiless-trickster-corpus-m682",
+  "description": "M6 corpus — Rankle, Pitiless Trickster; in-hand parse.",
+  "seed": 63923,
+  "cards": {
+    "Rankle, Pitiless Trickster": "Name:Rankle, Pitiless Trickster\nManaCost:1 B B\nTypes:Legendary Creature Faerie Rogue\nPT:1/3\nK:Flying\nS:Mode$ Continuous | EffectZone$ Battlefield | Affected$ Card.Self | AddKeyword$ Lifelink & Haste | CheckSVar$ X | SVarCompare$ EQ0 | Description$ NICKNAME has lifelink and haste as long as an opponent controls no creatures.\nSVar:X:PlayerCountOpponents$LowestValid Creature.YouCtrl\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBTrigger | TriggerDescription$ When NICKNAME enters, you may pay 1 life. When you do, each player discards a card and sacrifices a creature.\nSVar:DBTrigger:AB$ ImmediateTrigger | Cost$ PayLife<1> | Execute$ TrigDiscard | TriggerDescription$ When you do, each player discards a card and sacrifices a creature.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | Defined$ Player | SubAbility$ DBSacCreature\nSVar:DBSacCreature:DB$ Sacrifice | SacValid$ Creature | Defined$ Player\nT:Mode$ Discarded | ValidCard$ Card | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a player discards a card, NICKNAME perpetually gets +1/+0.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | Duration$ Perpetual\nDeckHas:Ability$Discard|LifeGain|Sacrifice\nDeckHints:Ability$LifeGain\nOracle:Flying\\nRankle has lifelink and haste as long as an opponent controls no creatures.\\nWhen Rankle enters, you may pay 1 life. When you do, each player discards a card and sacrifices a creature.\\nWhenever a player discards a card, Rankle perpetually gets +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rankle, Pitiless Trickster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

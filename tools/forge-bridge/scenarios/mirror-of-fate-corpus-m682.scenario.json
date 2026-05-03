@@ -1,0 +1,23 @@
+{
+  "id": "mirror-of-fate-corpus-m682",
+  "description": "M6 corpus — Mirror of Fate; in-hand parse.",
+  "seed": 63384,
+  "cards": {
+    "Mirror of Fate": "Name:Mirror of Fate\nManaCost:5\nTypes:Artifact\nA:AB$ ChooseCard | Cost$ T Sac<1/CARDNAME> | MinAmount$ 0 | Amount$ 7 | Choices$ Card.YouOwn+faceUp | SubAbility$ DBExile | ChoiceZone$ Exile | SpellDescription$ Choose up to seven face-up exiled cards you own. Exile all the cards from your library, then put the chosen cards on top of your library.\nSVar:DBExile:DB$ ChangeZoneAll | Origin$ Library | Destination$ Exile | Defined$ You | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Library | Defined$ You | ChangeType$ Card.ChosenCard\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:{T}, Sacrifice Mirror of Fate: Choose up to seven face-up exiled cards you own. Exile all the cards from your library, then put the chosen cards on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirror of Fate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

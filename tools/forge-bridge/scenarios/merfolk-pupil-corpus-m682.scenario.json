@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-pupil-corpus-m682",
+  "description": "M6 corpus — Merfolk Pupil; in-hand parse.",
+  "seed": 63343,
+  "cards": {
+    "Merfolk Pupil": "Name:Merfolk Pupil\nManaCost:1 U\nTypes:Creature Merfolk Wizard\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nA:AB$ Draw | Cost$ 1 U ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:SacMe:2\nSVar:DiscardMe:2\nDeckHas:Ability$Discard|Graveyard\nOracle:When Merfolk Pupil enters, draw a card, then discard a card.\\n{1}{U}, Exile Merfolk Pupil from your graveyard: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Pupil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

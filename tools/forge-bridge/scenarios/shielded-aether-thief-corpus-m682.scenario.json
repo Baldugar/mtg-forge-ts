@@ -1,0 +1,23 @@
+{
+  "id": "shielded-aether-thief-corpus-m682",
+  "description": "M6 corpus — Shielded Aether Thief; in-hand parse.",
+  "seed": 64329,
+  "cards": {
+    "Shielded Aether Thief": "Name:Shielded Aether Thief\nManaCost:1 U\nTypes:Creature Vedalken Rogue\nPT:0/4\nK:Flash\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME blocks, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Draw | Cost$ T PayEnergy<3> | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhenever Shielded Aether Thief blocks, you get {E} (an energy counter).\\n{T}, Pay {E}{E}{E}: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shielded Aether Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

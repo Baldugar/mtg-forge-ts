@@ -1,0 +1,23 @@
+{
+  "id": "hecatomb-corpus-m682",
+  "description": "M6 corpus — Hecatomb; in-hand parse.",
+  "seed": 62728,
+  "cards": {
+    "Hecatomb": "Name:Hecatomb\nManaCost:1 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice CARDNAME unless you sacrifice four creatures.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ Sac<4/Creature> | UnlessPayer$ You\nA:AB$ DealDamage | Cost$ tapXType<1/Swamp> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nSVar:NeedsToPlayVar:Creats GE4\nSVar:Creats:Count$Valid Creature.YouCtrl\nOracle:When Hecatomb enters, sacrifice Hecatomb unless you sacrifice four creatures.\\nTap an untapped Swamp you control: Hecatomb deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hecatomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

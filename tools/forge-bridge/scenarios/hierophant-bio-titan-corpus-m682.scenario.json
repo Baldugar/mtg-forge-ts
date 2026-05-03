@@ -1,0 +1,23 @@
+{
+  "id": "hierophant-bio-titan-corpus-m682",
+  "description": "M6 corpus — Hierophant Bio-Titan; in-hand parse.",
+  "seed": 62764,
+  "cards": {
+    "Hierophant Bio-Titan": "Name:Hierophant Bio-Titan\nManaCost:10 G G\nTypes:Creature Tyranid\nPT:12/12\nK:Vigilance\nK:Reach\nK:Ward:2\nA:SP$ PermanentCreature | Cost$ 10 G G RemoveAnyCounter<X/P1P1/Creature> | PrecostDesc$ Frenzied Metabolism — | AdditionalDesc$ This spell costs {2} less to cast for each counter removed this way.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Y | EffectZone$ All | Relative$ True\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | ValidBlocker$ Creature.powerLE2 | Description$ Titanic — CARDNAME can't be blocked by creatures with power 2 or less.\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.2\nDeckHints:Ability$Counters\nOracle:Frenzied Metabolism — As an additional cost to cast this spell, you may remove any number of +1/+1 counters from among creatures you control. This spell costs {2} less to cast for each counter removed this way.\\nVigilance, reach, ward {2}\\nTitanic — Hierophant Bio-Titan can't be blocked by creatures with power 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hierophant Bio-Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

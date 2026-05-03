@@ -1,0 +1,23 @@
+{
+  "id": "lithophage-corpus-m682",
+  "description": "M6 corpus — Lithophage; in-hand parse.",
+  "seed": 63171,
+  "cards": {
+    "Lithophage": "Name:Lithophage\nManaCost:3 R R\nTypes:Creature Insect\nPT:7/7\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you sacrifice a Mountain.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Sac<1/Mountain>\nSVar:NeedsToPlay:Mountain.YouCtrl\nOracle:At the beginning of your upkeep, sacrifice Lithophage unless you sacrifice a Mountain.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lithophage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kukemssa-serpent-corpus-m682",
+  "description": "M6 corpus — Kukemssa Serpent; in-hand parse.",
+  "seed": 63079,
+  "cards": {
+    "Kukemssa Serpent": "Name:Kukemssa Serpent\nManaCost:3 U\nTypes:Creature Serpent\nPT:4/3\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nA:AB$ Animate | Cost$ U Sac<1/Island> | ValidTgts$ Land.OppCtrl | TgtPrompt$ Select target land an opponent controls | Types$ Island | RemoveLandTypes$ True | SpellDescription$ Target land an opponent controls becomes an Island until end of turn.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Island.YouCtrl\nAI:RemoveDeck:All\nOracle:Kukemssa Serpent can't attack unless defending player controls an Island.\\n{U}, Sacrifice an Island: Target land an opponent controls becomes an Island until end of turn.\\nWhen you control no Islands, sacrifice Kukemssa Serpent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kukemssa Serpent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

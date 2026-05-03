@@ -1,0 +1,23 @@
+{
+  "id": "horizon-spellbomb-corpus-m682",
+  "description": "M6 corpus — Horizon Spellbomb; in-hand parse.",
+  "seed": 62796,
+  "cards": {
+    "Horizon Spellbomb": "Name:Horizon Spellbomb\nManaCost:1\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 2 T Sac<1/CARDNAME> | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | Origin$ Library | Destination$ Hand | ChangeNum$ 1 | SpellDescription$ Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, you may pay {G}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ G | NumCards$ 1\nOracle:{2}, {T}, Sacrifice Horizon Spellbomb: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\\nWhen Horizon Spellbomb is put into a graveyard from the battlefield, you may pay {G}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Horizon Spellbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

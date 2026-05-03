@@ -1,0 +1,23 @@
+{
+  "id": "seraph-of-new-capenna-corpus-m682",
+  "description": "M6 corpus — Seraph of New Capenna; in-hand parse.",
+  "seed": 64286,
+  "cards": {
+    "Seraph of New Capenna": "Name:Seraph of New Capenna\nManaCost:2 W\nTypes:Creature Angel Soldier\nPT:2/2\nK:Flying\nA:AB$ SetState | Cost$ 4 BP | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | AILogic$ Always | SpellDescription$ Transform CARDNAME. Activate only as a sorcery. ({B/P} can be paid with either {B} or 2 life.)\nAlternateMode:DoubleFaced\nOracle:Flying\\n{4}{B/P}: Transform Seraph of New Capenna. Activate only as a sorcery. ({B/P} can be paid with either {B} or 2 life.)\n\nALTERNATE\n\nName:Seraph of New Phyrexia\nManaCost:no cost\nColors:white,black\nTypes:Creature Phyrexian Angel\nPT:3/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature or artifact. If you do, CARDNAME gets +2/+1 until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ Sac<1/Creature.Other;Artifact.Other/another creature or artifact> | Defined$ Self | NumAtt$ +2 | NumDef$ +1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nOracle:Flying\\nWhenever Seraph of New Phyrexia attacks, you may sacrifice another creature or artifact. If you do, Seraph of New Phyrexia gets +2/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seraph of New Capenna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

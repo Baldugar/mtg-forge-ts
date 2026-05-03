@@ -1,0 +1,23 @@
+{
+  "id": "eddytrail-hawk-corpus-m682",
+  "description": "M6 corpus — Eddytrail Hawk; in-hand parse.",
+  "seed": 62143,
+  "cards": {
+    "Eddytrail Hawk": "Name:Eddytrail Hawk\nManaCost:1 W\nTypes:Creature Bird\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}. If you do, another target attacking creature gains flying until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ PayEnergy<1> | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature | KW$ Flying\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhen Eddytrail Hawk enters, you get {E}{E} (two energy counters).\\nWhenever Eddytrail Hawk attacks, you may pay {E}. If you do, another target attacking creature gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eddytrail Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

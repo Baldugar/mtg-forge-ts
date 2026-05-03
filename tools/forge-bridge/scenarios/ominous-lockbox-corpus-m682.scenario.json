@@ -1,0 +1,23 @@
+{
+  "id": "ominous-lockbox-corpus-m682",
+  "description": "M6 corpus — Ominous Lockbox; in-hand parse.",
+  "seed": 63629,
+  "cards": {
+    "Ominous Lockbox": "Name:Ominous Lockbox\nManaCost:1 U\nTypes:Artifact Clue\nK:ETBReplacement:Other:ChooseNum\nSVar:ChooseNum:DB$ ChooseNumber | Secretly$ True | Min$ 1 | Max$ 20 | KeepSecret$ True | SpellDescription$ As CARDNAME enters, secretly choose a number between 1 and 20.\nT:Mode$ SpellCast | ValidCard$ Card.cmcEQCount$ChosenNumber | TriggerZones$ Battlefield | ValidActivatingPlayer$ Opponent | Execute$ TrigCopy | TriggerDescription$ When an opponent casts a spell with mana value equal to the chosen number, sacrifice CARDNAME. If you do, copy that spell, and you may choose new targets for the copy.\nSVar:TrigCopy:AB$ CopySpellAbility | Cost$ Mandatory Sac<1/CARDNAME> | Defined$ TriggeredSpellAbility | AILogic$ Always | MayChooseTarget$ True\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:As Ominous Lockbox enters, secretly choose a number between 1 and 20.\\nWhen an opponent casts a spell with mana value equal to the chosen number, sacrifice Ominous Lockbox. If you do, copy that spell, and you may choose new targets for the copy.\\n{2}, Sacrifice Ominous Lockbox: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ominous Lockbox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

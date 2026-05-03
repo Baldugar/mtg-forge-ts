@@ -1,0 +1,23 @@
+{
+  "id": "fiend-of-the-shadows-corpus-m682",
+  "description": "M6 corpus — Fiend of the Shadows; in-hand parse.",
+  "seed": 62315,
+  "cards": {
+    "Fiend of the Shadows": "Name:Fiend of the Shadows\nManaCost:3 B B\nTypes:Creature Vampire Wizard\nPT:3/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player exiles a card from their hand. You may play that card for as long as it remains exiled.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | DefinedPlayer$ TriggeredTarget | Chooser$ TriggeredTarget | Mandatory$ True | ChangeNum$ 1 | RememberChanged$ True\nS:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsRemembered | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Regenerate | Cost$ Sac<1/Human> | SpellDescription$ Regenerate CARDNAME.\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE1\nAI:RemoveDeck:Random\nDeckNeeds:Type$Human\nOracle:Flying\\nWhenever Fiend of the Shadows deals combat damage to a player, that player exiles a card from their hand. You may play that card for as long as it remains exiled.\\nSacrifice a Human: Regenerate Fiend of the Shadows.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiend of the Shadows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

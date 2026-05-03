@@ -1,0 +1,23 @@
+{
+  "id": "lost-jitte-corpus-m682",
+  "description": "M6 corpus — Lost Jitte; in-hand parse.",
+  "seed": 63206,
+  "cards": {
+    "Lost Jitte": "Name:Lost Jitte\nManaCost:1\nTypes:Legendary Artifact Equipment\nK:Equip:1\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Creature.EquippedBy | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ Charm | Cost$ SubCounter<1/CHARGE> | Choices$ DBUntap,DBCantBlock,DBPutCounter\nSVar:DBUntap:DB$ Untap | ValidTgts$ Land | SpellDescription$ Untap target land.\nSVar:DBCantBlock:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SpellDescription$ Target creature can't block this turn.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Equipped | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on equipped creature.\nDeckHas:Ability$Counters\nOracle:Whenever equipped creature deals combat damage, put a charge counter on Lost Jitte.\\nRemove a charge counter from Lost Jitte: Choose one —\\n• Untap target land.\\n• Target creature can't block this turn.\\n• Put a +1/+1 counter on equipped creature.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lost Jitte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

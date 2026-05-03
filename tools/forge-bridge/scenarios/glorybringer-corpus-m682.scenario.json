@@ -1,0 +1,23 @@
+{
+  "id": "glorybringer-corpus-m682",
+  "description": "M6 corpus — Glorybringer; in-hand parse.",
+  "seed": 62554,
+  "cards": {
+    "Glorybringer": "Name:Glorybringer\nManaCost:3 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nK:Haste\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Trigger$ TrigDealDamage | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. When you do, it deals 4 damage to target non-Dragon creature an opponent controls.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature.nonDragon+OppCtrl | TgtPrompt$ Select target non-Dragon creature an opponent controls | NumDmg$ 4 | SpellDescription$ When you exert CARDNAME, it deals 4 damage to target non-Dragon creature an opponent controls.\nOracle:Flying, haste\\nYou may exert Glorybringer as it attacks. When you do, it deals 4 damage to target non-Dragon creature an opponent controls. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glorybringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

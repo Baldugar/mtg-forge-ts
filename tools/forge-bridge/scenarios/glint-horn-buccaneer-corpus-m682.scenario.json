@@ -1,0 +1,23 @@
+{
+  "id": "glint-horn-buccaneer-corpus-m682",
+  "description": "M6 corpus — Glint-Horn Buccaneer; in-hand parse.",
+  "seed": 62546,
+  "cards": {
+    "Glint-Horn Buccaneer": "Name:Glint-Horn Buccaneer\nManaCost:1 R R\nTypes:Creature Minotaur Pirate\nPT:2/4\nK:Haste\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you discard a card, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nA:AB$ Draw | Cost$ 1 R Discard<1/Card> | Defined$ You | IsPresent$ Card.Self+attacking | SpellDescription$ Draw a card. Activate only if CARDNAME is attacking.\nOracle:Haste\\nWhenever you discard a card, Glint-Horn Buccaneer deals 1 damage to each opponent.\\n{1}{R}, Discard a card: Draw a card. Activate only if Glint-Horn Buccaneer is attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glint-Horn Buccaneer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

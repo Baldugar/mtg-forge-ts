@@ -1,0 +1,23 @@
+{
+  "id": "seasoned-tactician-corpus-m682",
+  "description": "M6 corpus — Seasoned Tactician; in-hand parse.",
+  "seed": 64254,
+  "cards": {
+    "Seasoned Tactician": "Name:Seasoned Tactician\nManaCost:2 W\nTypes:Creature Human Advisor\nPT:1/3\nA:AB$ ChooseSource | Cost$ 3 ExileFromTop<4/Card> | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | RememberObjects$ Remembered | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen source deals damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{3}, Exile the top four cards of your library: The next time a source of your choice would deal damage to you this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seasoned Tactician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

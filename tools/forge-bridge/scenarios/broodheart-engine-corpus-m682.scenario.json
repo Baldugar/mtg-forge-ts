@@ -1,0 +1,23 @@
+{
+  "id": "broodheart-engine-corpus-m682",
+  "description": "M6 corpus — Broodheart Engine; in-hand parse.",
+  "seed": 61571,
+  "cards": {
+    "Broodheart Engine": "Name:Broodheart Engine\nManaCost:B G\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your upkeep, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ ChangeZone | Cost$ 2 B G T Sac<1/CARDNAME/this artifact> | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn,Vehicle.YouOwn | SorcerySpeed$ True | SpellDescription$ Return target creature or Vehicle card from your graveyard to the battlefield. Activate only as a sorcery.\nDeckHas:Ability$Surveil|Sacrifice|Graveyard\nOracle:At the beginning of your upkeep, surveil 1.\\n{2}{B}{G}, {T}, Sacrifice this artifact: Return target creature or Vehicle card from your graveyard to the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broodheart Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

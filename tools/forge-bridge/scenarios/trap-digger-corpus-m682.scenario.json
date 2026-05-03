@@ -1,0 +1,23 @@
+{
+  "id": "trap-digger-corpus-m682",
+  "description": "M6 corpus — Trap Digger; in-hand parse.",
+  "seed": 64951,
+  "cards": {
+    "Trap Digger": "Name:Trap Digger\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:1/3\nA:AB$ PutCounter | Cost$ 2 W T | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | CounterType$ TRAP | CounterNum$ 1 | SpellDescription$ Put a trap counter on target land you control.\nA:AB$ DealDamage | Cost$ Sac<1/Land.counters_GE1_TRAP/land with a trap counter on it> | ValidTgts$ Creature.attacking+withoutFlying | TgtPrompt$ Select target attacking creature without flying | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target attacking creature without flying.\nOracle:{2}{W}, {T}: Put a trap counter on target land you control.\\nSacrifice a land with a trap counter on it: Trap Digger deals 3 damage to target attacking creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trap Digger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

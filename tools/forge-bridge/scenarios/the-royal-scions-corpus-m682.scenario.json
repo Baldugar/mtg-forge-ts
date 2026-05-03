@@ -1,0 +1,23 @@
+{
+  "id": "the-royal-scions-corpus-m682",
+  "description": "M6 corpus — The Royal Scions; in-hand parse.",
+  "seed": 64821,
+  "cards": {
+    "The Royal Scions": "Name:The Royal Scions\nManaCost:1 U R\nTypes:Legendary Planeswalker Will Rowan\nLoyalty:5\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:All\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | NumAtt$ +2 | KW$ First Strike & Trample | SpellDescription$ Target creature gets +2/+0 and gains first strike and trample until end of turn.\nA:AB$ Draw | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | NumCards$ 4 | RememberDrawn$ AllReplaced | SubAbility$ DBTrigger | SpellDescription$ Draw four cards.\nSVar:DBTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE4 | Execute$ DBDamage | SpellDescription$ When you do, CARDNAME deals damage to any target equal to the number of cards in your hand. | SubAbility$ DBCleanup\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:[+1]: Draw a card, then discard a card.\\n[+1]: Target creature gets +2/+0 and gains first strike and trample until end of turn.\\n[-8]: Draw four cards. When you do, The Royal Scions deals damage to any target equal to the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Royal Scions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

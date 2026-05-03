@@ -1,0 +1,23 @@
+{
+  "id": "jaya-venerated-firemage-corpus-m682",
+  "description": "M6 corpus — Jaya, Venerated Firemage; in-hand parse.",
+  "seed": 62949,
+  "cards": {
+    "Jaya, Venerated Firemage": "Name:Jaya, Venerated Firemage\nManaCost:4 R\nTypes:Legendary Planeswalker Jaya\nLoyalty:5\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.RedSource+Other+YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus1 | Description$ If another red source you control would deal damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.\nSVar:DmgPlus1:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.1\nSVar:PlayMain1:TRUE\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ true | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nOracle:If another red source you control would deal damage to a permanent or player, it deals that much damage plus 1 to that permanent or player instead.\\n[-2]: Jaya, Venerated Firemage deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaya, Venerated Firemage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "candy-trail-corpus-m682",
+  "description": "M6 corpus — Candy Trail; in-hand parse.",
+  "seed": 61618,
+  "cards": {
+    "Candy Trail": "Name:Candy Trail\nManaCost:1\nTypes:Artifact Food Clue\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME> | LifeAmount$ 3 | SubAbility$ DBDraw | SpellDescription$ You gain 3 life and draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$LifeGain|Sacrifice\nOracle:When Candy Trail enters, scry 2.\\n{2}, {T}, Sacrifice Candy Trail: You gain 3 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Candy Trail"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

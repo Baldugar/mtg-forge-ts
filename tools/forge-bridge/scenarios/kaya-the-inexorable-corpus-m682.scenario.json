@@ -1,0 +1,23 @@
+{
+  "id": "kaya-the-inexorable-corpus-m682",
+  "description": "M6 corpus — Kaya the Inexorable; in-hand parse.",
+  "seed": 63006,
+  "cards": {
+    "Kaya the Inexorable": "Name:Kaya the Inexorable\nManaCost:3 W B\nTypes:Legendary Planeswalker Kaya\nLoyalty:5\nA:AB$ PutCounter | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature.!token | AITgts$ Creature.!token+YouCtrl | TgtPrompt$ Select target nontoken creature | TargetMin$ 0 | TargetMax$ 1 | CounterType$ GHOSTFORM | CounterNum$ 1 | SubAbility$ DBAnimate | SpellDescription$ Put a ghostform counter on up to one target nontoken creature. It gains \"When this creature dies or is put into exile, return it to its owner's hand and create a 1/1 white Spirit creature token with flying.\"\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Duration$ Permanent | Triggers$ TrigDieExile | StackDescription$ {c:Targeted} gains \"When this creature dies or is put into exile, return it to its owner's hand and create a 1/1 white Spirit creature token with flying.\"\nSVar:TrigDieExile:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard,Exile | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this creature dies or is put into exile, return it to its owner's hand and create a 1/1 white Spirit creature token with flying.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard,Exile | Destination$ Hand | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ TriggeredCardController\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SpellDescription$ Exile target nonland permanent.\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Kaya the Inexorable | Image$ emblem_kaya_the_inexorable | Duration$ Permanent | Triggers$ Upkeep | SpellDescription$ You get an emblem with \"At the beginning of your upkeep, you may cast a legendary spell from your hand, from your graveyard, or from among cards you own in exile without paying its mana cost.\"\nSVar:Upkeep:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | OptionalDecider$ You | Execute$ TrigCast | TriggerDescription$ At the beginning of your upkeep, you may cast a legendary spell from your hand, from your graveyard, or from among cards you own in exile without paying its mana cost.\nSVar:TrigCast:DB$ Play | Valid$ Card.Legendary+YouOwn | ValidSA$ Spell | ValidZone$ Hand,Graveyard,Exile | WithoutManaCost$ True\nDeckHas:Ability$Token|Counters\nDeckHints:Type$Legendary\nOracle:[+1]: Put a ghostform counter on up to one target nontoken creature. It gains \"When this creature dies or is put into exile, return it to its owner's hand and create a 1/1 white Spirit creature token with flying.\"\\n[-3]: Exile target nonland permanent.\\n[-7]: You get an emblem with \"At the beginning of your upkeep, you may cast a legendary spell from your hand, from your graveyard, or from among cards you own in exile without paying its mana cost.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaya the Inexorable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

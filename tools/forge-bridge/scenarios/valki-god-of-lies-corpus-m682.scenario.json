@@ -1,0 +1,23 @@
+{
+  "id": "valki-god-of-lies-corpus-m682",
+  "description": "M6 corpus — Valki, God of Lies; in-hand parse.",
+  "seed": 65060,
+  "cards": {
+    "Valki, God of Lies": "Name:Valki, God of Lies\nManaCost:1 B\nTypes:Legendary Creature God\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When NICKNAME enters, each opponent reveals their hand. For each opponent, exile a creature card they revealed this way until NICKNAME leaves the battlefield.\nSVar:TrigReveal:DB$ RevealHand | Defined$ Player.Opponent | ImprintRevealed$ True | SubAbility$ DBRepeatEach\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBExile | SubAbility$ DBCleanup\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Remembered | ChangeType$ Creature.IsImprinted | ChangeNum$ 1 | AlreadyRevealed$ True | Chooser$ You | Duration$ UntilHostLeavesPlay\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nA:AB$ ChooseCard | Cost$ X | ChoiceZone$ Exile | Choices$ Card.Creature+ExiledWithSource+cmcEQX | Amount$ 1 | ChoiceTitle$ Choose a card exiled with Valki with mana value X | SubAbility$ DBClone | AILogic$ Never | StackDescription$ {p:You} chooses a card exiled with NICKNAME with mana value X. NICKNAME becomes a copy of that card. | SpellDescription$ Choose a card exiled with NICKNAME with mana value X. NICKNAME becomes a copy of that card.\nSVar:DBClone:DB$ Clone | Defined$ ChosenCard | SubAbility$ DBClearChosen\nSVar:DBClearChosen:DB$ Cleanup | ClearChosenCard$ True\nSVar:X:Count$xPaid\nSVar:PlayMain1:TRUE\nAlternateMode:Modal\nOracle:When Valki enters, each opponent reveals their hand. For each opponent, exile a creature card they revealed this way until Valki leaves the battlefield.\\n{X}: Choose a creature card exiled with Valki with mana value X. Valki becomes a copy of that card.\n\nALTERNATE\n\nName:Tibalt, Cosmic Impostor\nManaCost:5 B R\nTypes:Legendary Planeswalker Tibalt\nLoyalty:5\nK:ETBReplacement:Other:Emblem\nSVar:Emblem:DB$ Effect | Name$ Emblem — Tibalt, Cosmic Impostor | Image$ emblem_tibalt_cosmic_impostor | StaticAbilities$ PlayExile | Duration$ Permanent | SpellDescription$ As NICKNAME enters, you get an emblem with \"You may play cards exiled with CARDNAME, and you may spend mana as though it were mana of any color to cast those spells.\"\nSVar:PlayExile:Mode$ Continuous | MayPlayIgnoreType$ True | MayPlayIgnoreColor$ True | MayPlay$ True | Affected$ Card.ExiledWithEffectSource | AffectedZone$ Exile | Description$ You may play cards exiled with EFFECTSOURCE, and you may spend mana as though it were mana of any color to cast those spells.\nA:AB$ Dig | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | Defined$ Player | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | StackDescription$ SpellDescription | SpellDescription$ Exile the top card of each player's library.\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature,Artifact | TgtPrompt$ Select target artifact or creature | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target artifact or creature.\nA:AB$ ChangeZoneAll | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | SubAbility$ DBMana | SpellDescription$ Exile all graveyards. Add {R}{R}{R}.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ 3\nOracle:As Tibalt enters, you get an emblem with \"You may play cards exiled with Tibalt, Cosmic Impostor, and you may spend mana as though it were mana of any color to cast those spells.\"\\n[+2]: Exile the top card of each player's library.\\n[-3]: Exile target artifact or creature.\\n[-8]: Exile all graveyards. Add {R}{R}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valki, God of Lies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

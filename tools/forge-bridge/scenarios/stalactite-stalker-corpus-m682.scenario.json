@@ -1,0 +1,23 @@
+{
+  "id": "stalactite-stalker-corpus-m682",
+  "description": "M6 corpus — Stalactite Stalker; in-hand parse.",
+  "seed": 64585,
+  "cards": {
+    "Stalactite Stalker": "Name:Stalactite Stalker\nManaCost:B\nTypes:Creature Goblin Rogue\nPT:1/1\nK:Menace\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You.descended | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, if you descended this turn, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1\nA:AB$ Pump | Cost$ 2 B Sac<1/CARDNAME> | ValidTgts$ Creature | IsCurse$ True | NumAtt$ -X | NumDef$ -X | StackDescription$ REP Target creature_{c:Targeted} | SpellDescription$ Target creature gets -X/-X until end of turn, where X is CARDNAME's power.\nSVar:X:Sacrificed$CardPower\nDeckHas:Ability$Counters|Sacrifice\nDeckHints:Ability$Sacrifice\nOracle:Menace\\nAt the beginning of your end step, if you descended this turn, put a +1/+1 counter on Stalactite Stalker.\\n{2}{B}, Sacrifice Stalactite Stalker: Target creature gets -X/-X until end of turn, where X is Stalactite Stalker's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stalactite Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kozilek-s-return-corpus-m682",
+  "description": "M6 corpus — Kozilek's Return; in-hand parse.",
+  "seed": 63058,
+  "cards": {
+    "Kozilek's Return": "Name:Kozilek's Return\nManaCost:2 R\nTypes:Instant\nK:Devoid\nA:SP$ DamageAll | NumDmg$ 2 | ValidCards$ Creature | ValidDescription$ each creature. | SpellDescription$ CARDNAME deals 2 damage to each creature.\nT:Mode$ SpellCast | ValidCard$ Creature.Eldrazi+cmcGE7+YouCtrl | TriggerZones$ Graveyard | Execute$ DBDamageAll | TriggerDescription$ Whenever you cast an Eldrazi creature spell with mana value 7 or greater, you may exile CARDNAME from your graveyard. If you do, CARDNAME deals 5 damage to each creature.\nSVar:DBDamageAll:AB$ DamageAll | Cost$ ExileFromGrave<1/CARDNAME> | ValidCards$ Creature | NumDmg$ 5 | ValidDescription$ each creature.\nOracle:Devoid (This card has no color.)\\nKozilek's Return deals 2 damage to each creature.\\nWhenever you cast an Eldrazi creature spell with mana value 7 or greater, you may exile Kozilek's Return from your graveyard. If you do, Kozilek's Return deals 5 damage to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kozilek's Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

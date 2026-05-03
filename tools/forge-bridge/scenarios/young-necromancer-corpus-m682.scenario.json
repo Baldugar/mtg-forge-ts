@@ -1,0 +1,23 @@
+{
+  "id": "young-necromancer-corpus-m682",
+  "description": "M6 corpus — Young Necromancer; in-hand parse.",
+  "seed": 65300,
+  "cards": {
+    "Young Necromancer": "Name:Young Necromancer\nManaCost:4 B\nTypes:Creature Human Warlock\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME enters, you may exile two cards from your graveyard. When you do, return target creature card from your graveyard to the battlefield.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ ExileFromGrave<2/card> | Execute$ TrigReturn | SpellDescription$ When you do, return target creature card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature to return from your graveyard\nSVar:NeedsToPlayVar:Z EQ3\nSVar:X:Count$ValidGraveyard Card.YouOwn/LimitMax.3\nSVar:Y:Count$ValidGraveyard Creature.YouOwn/LimitMax.1\nSVar:Z:SVar$X/Times.Y\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Discard\nOracle:When Young Necromancer enters, you may exile two cards from your graveyard. When you do, return target creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Young Necromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

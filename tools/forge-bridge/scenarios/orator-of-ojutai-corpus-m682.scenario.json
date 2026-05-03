@@ -1,0 +1,23 @@
+{
+  "id": "orator-of-ojutai-corpus-m682",
+  "description": "M6 corpus — Orator of Ojutai; in-hand parse.",
+  "seed": 63642,
+  "cards": {
+    "Orator of Ojutai": "Name:Orator of Ojutai\nManaCost:1 W\nTypes:Creature Bird Monk\nPT:0/4\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Reveal<1/Dragon> | Description$ As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\nK:Defender\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ Count$Presence_Dragon.1.0 | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if you revealed a Dragon card or controlled a Dragon as you cast this spell, draw a card.\nSVar:TrigKicker:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHints:Type$Dragon\nOracle:As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\\nDefender, flying\\nWhen Orator of Ojutai enters, if you revealed a Dragon card or controlled a Dragon as you cast this spell, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orator of Ojutai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

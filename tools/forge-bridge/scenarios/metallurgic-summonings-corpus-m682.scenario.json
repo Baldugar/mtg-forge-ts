@@ -1,0 +1,23 @@
+{
+  "id": "metallurgic-summonings-corpus-m682",
+  "description": "M6 corpus — Metallurgic Summonings; in-hand parse.",
+  "seed": 63349,
+  "cards": {
+    "Metallurgic Summonings": "Name:Metallurgic Summonings\nManaCost:3 U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an instant or sorcery spell, create an X/X colorless Construct artifact creature token, where X is that spell's mana value.\nSVar:TrigToken:DB$ Token | TokenScript$ c_x_x_a_construct | TokenPower$ X | TokenToughness$ X | TokenOwner$ You\nA:AB$ ChangeZoneAll | Cost$ 3 U U Exile<1/CARDNAME> | ChangeType$ Instant.YouOwn,Sorcery.YouOwn | IsPresent$ Card.Artifact+YouCtrl | PresentCompare$ GE6 | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return all instant and sorcery cards from your graveyard to your hand. Activate only if you control six or more artifacts.\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:BuffedBy:Instant,Sorcery\nDeckHints:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell, create an X/X colorless Construct artifact creature token, where X is that spell's mana value.\\n{3}{U}{U}, Exile Metallurgic Summonings: Return all instant and sorcery cards from your graveyard to your hand. Activate only if you control six or more artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Metallurgic Summonings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

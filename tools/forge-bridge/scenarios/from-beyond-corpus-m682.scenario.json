@@ -1,0 +1,23 @@
+{
+  "id": "from-beyond-corpus-m682",
+  "description": "M6 corpus — From Beyond; in-hand parse.",
+  "seed": 62426,
+  "cards": {
+    "From Beyond": "Name:From Beyond\nManaCost:3 G\nTypes:Enchantment\nK:Devoid\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 1/1 colorless Eldrazi Scion creature token. It has \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_eldrazi_scion_sac | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ 1 G Sac<1/CARDNAME> | Origin$ Library | Destination$ Hand | ChangeType$ Eldrazi | ChangeNum$ 1 | SpellDescription$ Search your library for an Eldrazi card, reveal it, put it into your hand, then shuffle.\nDeckHints:Type$Eldrazi\nDeckHas:Ability$Mana.Colorless|Token\nOracle:Devoid (This card has no color.)\\nAt the beginning of your upkeep, create a 1/1 colorless Eldrazi Scion creature token. It has \"Sacrifice this creature: Add {C}.\"\\n{1}{G}, Sacrifice From Beyond: Search your library for an Eldrazi card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "From Beyond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

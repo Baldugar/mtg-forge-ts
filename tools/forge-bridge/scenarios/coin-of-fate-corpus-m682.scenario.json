@@ -1,0 +1,23 @@
+{
+  "id": "coin-of-fate-corpus-m682",
+  "description": "M6 corpus — Coin of Fate; in-hand parse.",
+  "seed": 61777,
+  "cards": {
+    "Coin of Fate": "Name:Coin of Fate\nManaCost:1 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When this artifact enters, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ ChangeZone | Cost$ 3 W T ExileFromGrave<2/Creature/creature cards> Sac<1/CARDNAME> | Hidden$ True | Origin$ Exile | ChangeNum$ 1 | ChangeType$ Card.ExiledWithSource | Destination$ Library | LibraryPosition$ -1 | Chooser$ Opponent | Mandatory$ True | SubAbility$ DBChangeZone | SpellDescription$ An opponent chooses one of the exiled cards. You put that card on the bottom of your library and return the other to the battlefield tapped. You become the monarch.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | Defined$ ExiledWith | Destination$ Battlefield | Tapped$ True | SubAbility$ DBMonarch\nSVar:DBMonarch:DB$ BecomeMonarch\nDeckHas:Ability$Surveil|Graveyard\nOracle:When this artifact enters, surveil 1.\\n{3}{W}, {T}, Exile two creature cards from your graveyard, Sacrifice this artifact: An opponent chooses one of the exiled cards. You put that card on the bottom of your library and return the other to the battlefield tapped. You become the monarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coin of Fate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

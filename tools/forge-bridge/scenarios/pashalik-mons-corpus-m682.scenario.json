@@ -1,0 +1,23 @@
+{
+  "id": "pashalik-mons-corpus-m682",
+  "description": "M6 corpus — Pashalik Mons; in-hand parse.",
+  "seed": 63704,
+  "cards": {
+    "Pashalik Mons": "Name:Pashalik Mons\nManaCost:2 R\nTypes:Legendary Creature Goblin Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Goblin.Other+YouCtrl | Execute$ DBDamage | TriggerDescription$ Whenever CARDNAME or another Goblin you control dies, CARDNAME deals 1 damage to any target.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nA:AB$ Token | Cost$ 3 R Sac<1/Goblin> | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You | SpellDescription$ Create two 1/1 red Goblin creature tokens.\nSVar:AIPreference:SacCost$Goblin.token+powerLE1,Goblin.cmcLE1+powerLE1\nDeckHas:Ability$Token|Sacrifice\nDeckHints:Type$Goblin\nOracle:Whenever Pashalik Mons or another Goblin you control dies, Pashalik Mons deals 1 damage to any target.\\n{3}{R}, Sacrifice a Goblin: Create two 1/1 red Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pashalik Mons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

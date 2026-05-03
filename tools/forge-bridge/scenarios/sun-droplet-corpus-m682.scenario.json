@@ -1,0 +1,23 @@
+{
+  "id": "sun-droplet-corpus-m682",
+  "description": "M6 corpus — Sun Droplet; in-hand parse.",
+  "seed": 64649,
+  "cards": {
+    "Sun Droplet": "Name:Sun Droplet\nManaCost:2\nTypes:Artifact\nT:Mode$ DamageDoneOnce | ValidTarget$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you're dealt damage, put that many charge counters on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | IsPresent$ Card.Self+counters_GE1_CHARGE | Execute$ TrigGainLife | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of each upkeep, you may remove a charge counter from CARDNAME. If you do, you gain 1 life.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ X | Defined$ Self\nSVar:TrigGainLife:AB$ GainLife | Cost$ SubCounter<1/CHARGE> | LifeAmount$ 1 | Defined$ You\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever you're dealt damage, put that many charge counters on Sun Droplet.\\nAt the beginning of each upkeep, you may remove a charge counter from Sun Droplet. If you do, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sun Droplet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

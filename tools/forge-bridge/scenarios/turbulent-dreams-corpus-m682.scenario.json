@@ -1,0 +1,23 @@
+{
+  "id": "turbulent-dreams-corpus-m682",
+  "description": "M6 corpus — Turbulent Dreams; in-hand parse.",
+  "seed": 64981,
+  "cards": {
+    "Turbulent Dreams": "Name:Turbulent Dreams\nManaCost:U U\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ U U Discard<X/Card/card(s)> | CostDesc$ As an additional cost to cast this spell, discard X cards. | Origin$ Battlefield | Destination$ Hand | TargetMin$ X | TargetMax$ X | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select X target nonland permanents | SpellDescription$ Return X target nonland permanents to their owners' hands.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, discard X cards.\\nReturn X target nonland permanents to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turbulent Dreams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

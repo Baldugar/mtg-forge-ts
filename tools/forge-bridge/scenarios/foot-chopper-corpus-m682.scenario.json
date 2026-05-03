@@ -1,0 +1,23 @@
+{
+  "id": "foot-chopper-corpus-m682",
+  "description": "M6 corpus — Foot Chopper; in-hand parse.",
+  "seed": 62392,
+  "cards": {
+    "Foot Chopper": "Name:Foot Chopper\nManaCost:1 B\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Equipment enters, create a 1/1 black Ninja creature token, then attach this Equipment to it.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_ninja | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | Description$ Equipped creature has flying.\nT:Mode$ DamageDone | ValidSource$ Creature.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you may sacrifice it. If you do, draw cards equal to its power.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Card.AttachedBy/equipped creature> | NumCards$ X\nSVar:X:Sacrificed$CardPower\nDeckHas:Ability$Token\nOracle:When this Equipment enters, create a 1/1 black Ninja creature token, then attach this Equipment to it.\\nEquipped creature has flying.\\nWhenever equipped creature deals combat damage to a player, you may sacrifice it. If you do, draw cards equal to its power.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foot Chopper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

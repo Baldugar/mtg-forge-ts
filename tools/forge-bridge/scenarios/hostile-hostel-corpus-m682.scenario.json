@@ -1,0 +1,23 @@
+{
+  "id": "hostile-hostel-corpus-m682",
+  "description": "M6 corpus — Hostile Hostel; in-hand parse.",
+  "seed": 62800,
+  "cards": {
+    "Hostile Hostel": "Name:Hostile Hostel\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ PutCounter | Cost$ 1 T Sac<1/Creature/creature> | CounterType$ SOUL | CounterNum$ 1 | SubAbility$ DBBranch | SorcerySpeed$ True | SpellDescription$ Put a soul counter on CARDNAME. Then if there are three or more soul counters on it, remove those counters, transform it, then untap it. Activate only as a sorcery.\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ Soul | TrueSubAbility$ DBRemoveCtrs | StackDescription$ Then if there are three or more soul counters on it, remove those counters, transform it, then untap it. Activate only as a sorcery.\nSVar:DBRemoveCtrs:DB$ RemoveCounter | Defined$ Self | CounterType$ SOUL | CounterNum$ All | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap\nSVar:Soul:Count$Valid Card.Self+counters_GE3_SOUL\nDeckHas:Ability$Mana.Colorless|Sacrifice|Counters|LifeGain|Graveyard\nAlternateMode:DoubleFaced\nOracle:{T}: Add {C}.\\n{1}, {T}, Sacrifice a creature: Put a soul counter on Hostile Hostel. Then if there are three or more soul counters on it, remove those counters, transform it, then untap it. Activate only as a sorcery.\n\nALTERNATE\n\nName:Creeping Inn\nManaCost:no cost\nColors:black\nTypes:Artifact Creature Horror Construct\nPT:3/7\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may exile a creature card from your graveyard. If you do, each opponent loses X life and you gain X life, where X is the number of creature cards exiled with CARDNAME.\nSVar:TrigDrain:AB$ LoseLife | Cost$ ExileFromGrave<1/Creature/creature card> | Defined$ Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$ValidExile Creature.ExiledWithSource\nA:AB$ Phases | Cost$ 4 | Defined$ Self | SpellDescription$ CARDNAME phases out.\nOracle:Whenever Creeping Inn attacks, you may exile a creature card from your graveyard. If you do, each opponent loses X life and you gain X life, where X is the number of creature cards exiled with Creeping Inn.\\n{4}: Creeping Inn phases out.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hostile Hostel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

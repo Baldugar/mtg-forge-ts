@@ -1,0 +1,23 @@
+{
+  "id": "thriving-skyclaw-corpus-m682",
+  "description": "M6 corpus — Thriving Skyclaw; in-hand parse.",
+  "seed": 64859,
+  "cards": {
+    "Thriving Skyclaw": "Name:Thriving Skyclaw\nManaCost:2 R R\nTypes:Creature Cat Dragon\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}{E}. If you do, put a +1/+1 counter on it.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayEnergy<3> | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nWhen Thriving Skyclaw enters, you get {E}{E}{E} (three energy counters).\\nWhenever Thriving Skyclaw attacks, you may pay {E}{E}{E}. If you do, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thriving Skyclaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

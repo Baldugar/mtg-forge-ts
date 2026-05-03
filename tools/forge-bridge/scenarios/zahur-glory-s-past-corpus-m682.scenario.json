@@ -1,0 +1,23 @@
+{
+  "id": "zahur-glory-s-past-corpus-m682",
+  "description": "M6 corpus — Zahur, Glory's Past; in-hand parse.",
+  "seed": 65306,
+  "cards": {
+    "Zahur, Glory's Past": "Name:Zahur, Glory's Past\nManaCost:W B\nTypes:Legendary Creature Zombie Cat Warrior\nPT:3/2\nK:Start your engines\nA:AB$ Surveil | Cost$ Sac<1/Creature.Other/another creature> | ActivationLimit$ 1 | SpellDescription$ Surveil 1. Activate only once each turn.\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddTrigger$ TrigDies | Description$ Max speed — Whenever a nontoken creature you control dies, create a tapped 2/2 black Zombie creature token.\nSVar:TrigDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Max speed — Whenever a nontoken creature you control dies, create a tapped 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenTapped$ True\nDeckHas:Ability$Sacrifice|Token\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nSacrifice another creature: Surveil 1. Activate only once each turn.\\nMax speed — Whenever a nontoken creature you control dies, create a tapped 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zahur, Glory's Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

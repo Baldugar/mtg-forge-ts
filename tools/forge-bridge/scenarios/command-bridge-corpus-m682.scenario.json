@@ -1,0 +1,23 @@
+{
+  "id": "command-bridge-corpus-m682",
+  "description": "M6 corpus — Command Bridge; in-hand parse.",
+  "seed": 61790,
+  "cards": {
+    "Command Bridge": "Name:Command Bridge\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When this land enters, sacrifice it unless you tap an untapped permanent you control.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ tapXType<1/Permanent> | UnlessPayer$ You\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:NeedsToPlay:Permanent.untapped+YouCtrl\nOracle:This land enters tapped.\\nWhen this land enters, sacrifice it unless you tap an untapped permanent you control.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Command Bridge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

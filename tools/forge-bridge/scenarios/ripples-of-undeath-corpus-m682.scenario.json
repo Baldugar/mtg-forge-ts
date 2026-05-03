@@ -1,0 +1,23 @@
+{
+  "id": "ripples-of-undeath-corpus-m682",
+  "description": "M6 corpus — Ripples of Undeath; in-hand parse.",
+  "seed": 64017,
+  "cards": {
+    "Ripples of Undeath": "Name:Ripples of Undeath\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of your first main phase, mill three cards. Then you may pay {1} and 3 life. If you do, put a card from among those cards into your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | UnlessCost$ 1 PayLife<3> | UnlessPayer$ You | UnlessSwitched$ True | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Card.IsRemembered | SelectPrompt$ You may put a card from among them into your hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill|Graveyard\nOracle:At the beginning of your first main phase, mill three cards. Then you may pay {1} and 3 life. If you do, put a card from among those cards into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ripples of Undeath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

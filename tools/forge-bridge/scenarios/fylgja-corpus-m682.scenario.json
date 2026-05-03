@@ -1,0 +1,23 @@
+{
+  "id": "fylgja-corpus-m682",
+  "description": "M6 corpus — Fylgja; in-hand parse.",
+  "seed": 62445,
+  "cards": {
+    "Fylgja": "Name:Fylgja\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:etbCounter:HEALING:4\nSVar:AttachAILogic:Pump\nA:AB$ PreventDamage | Cost$ SubCounter<1/HEALING> | Defined$ Enchanted | Amount$ 1 | SpellDescription$ Prevent the next 1 damage that would be dealt to enchanted creature this turn.\nA:AB$ PutCounter | Cost$ 2 W | CounterType$ HEALING | CounterNum$ 1 | SpellDescription$ Put a healing counter on CARDNAME.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nFylgja enters with four healing counters on it.\\nRemove a healing counter from Fylgja: Prevent the next 1 damage that would be dealt to enchanted creature this turn.\\n{2}{W}: Put a healing counter on Fylgja.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fylgja"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

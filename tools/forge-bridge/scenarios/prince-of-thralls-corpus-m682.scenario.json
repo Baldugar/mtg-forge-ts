@@ -1,0 +1,23 @@
+{
+  "id": "prince-of-thralls-corpus-m682",
+  "description": "M6 corpus — Prince of Thralls; in-hand parse.",
+  "seed": 63826,
+  "cards": {
+    "Prince of Thralls": "Name:Prince of Thralls\nManaCost:4 U B B R\nTypes:Creature Demon\nPT:7/7\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Permanent.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a permanent an opponent controls is put into a graveyard, put that card onto the battlefield under your control unless that opponent pays 3 life.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy | UnlessCost$ PayLife<3> | UnlessPayer$ TriggeredCardController\nOracle:Whenever a permanent an opponent controls is put into a graveyard, put that card onto the battlefield under your control unless that opponent pays 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prince of Thralls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

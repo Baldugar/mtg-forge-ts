@@ -1,0 +1,23 @@
+{
+  "id": "vulshok-factory-corpus-m682",
+  "description": "M6 corpus — Vulshok Factory; in-hand parse.",
+  "seed": 65171,
+  "cards": {
+    "Vulshok Factory": "Name:Vulshok Factory\nManaCost:2 R\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ R | SubAbility$ DBCounter | SpellDescription$ Add {R}. Put a charge counter on CARDNAME.\nSVar:DBCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ Token | Cost$ 2 R T Sac<1/CARDNAME> | SorcerySpeed$ True | TokenScript$ c_x_x_a_golem_haste | TokenPower$ X | TokenToughness$ X | SpellDescription$ Create an X/X colorless Golem artifact creature token with haste, where X is the number of charge counters on CARDNAME. Activate only as a sorcery.\nSVar:X:Count$CardCounters.CHARGE\nDeckHas:Ability$Counters|Token|Sacrifice & Type$Golem\nOracle:{T}: Add {R}. Put a charge counter on Vulshok Factory.\\n{2}{R}, {T}, Sacrifice Vulshok Factory: Create an X/X colorless Golem artifact creature token with haste, where X is the number of charge counters on Vulshok Factory. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vulshok Factory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

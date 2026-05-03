@@ -1,0 +1,23 @@
+{
+  "id": "pursuit-of-knowledge-corpus-m682",
+  "description": "M6 corpus — Pursuit of Knowledge; in-hand parse.",
+  "seed": 63857,
+  "cards": {
+    "Pursuit of Knowledge": "Name:Pursuit of Knowledge\nManaCost:3 W\nTypes:Enchantment\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | Optional$ True | ReplaceWith$ Counter | Description$ If you would draw a card, you may put a study counter on CARDNAME instead.\nA:AB$ Draw | Cost$ SubCounter<3/STUDY> Sac<1/CARDNAME> | NumCards$ 7 | SpellDescription$ Draw seven cards.\nSVar:Counter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ STUDY\nAI:RemoveDeck:All\nOracle:If you would draw a card, you may put a study counter on Pursuit of Knowledge instead.\\nRemove three study counters from Pursuit of Knowledge, Sacrifice Pursuit of Knowledge: Draw seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pursuit of Knowledge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

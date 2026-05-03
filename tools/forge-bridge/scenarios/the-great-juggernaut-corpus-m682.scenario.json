@@ -1,0 +1,23 @@
+{
+  "id": "the-great-juggernaut-corpus-m682",
+  "description": "M6 corpus — The Great Juggernaut; in-hand parse.",
+  "seed": 64808,
+  "cards": {
+    "The Great Juggernaut": "Name:The Great Juggernaut\nManaCost:3 R\nTypes:Legendary Artifact Creature Juggernaut\nPT:5/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you discard a card.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Discard<1/Card>\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, shuffle your library then exile the top card of your library. You may play that card without paying its mana cost this turn.\nSVar:TrigShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ DBPlay | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:DBPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nOracle:At the beginning of your upkeep, sacrifice The Great Juggernaut unless you discard a card.\\nWhenever The Great Juggernaut attacks, shuffle your library then exile the top card of your library. You may play that card without paying its mana cost this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Great Juggernaut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

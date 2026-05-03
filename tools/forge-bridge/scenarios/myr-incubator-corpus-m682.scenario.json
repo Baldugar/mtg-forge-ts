@@ -1,0 +1,23 @@
+{
+  "id": "myr-incubator-corpus-m682",
+  "description": "M6 corpus — Myr Incubator; in-hand parse.",
+  "seed": 63482,
+  "cards": {
+    "Myr Incubator": "Name:Myr Incubator\nManaCost:6\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 6 Sac<1/CARDNAME> | Origin$ Library | Destination$ Exile | ChangeType$ Artifact | ChangeNum$ X | RememberChanged$ True | ForgetOtherRemembered$ True | Shuffle$ True | SubAbility$ Token | SpellDescription$ Search your library for any number of artifact cards, exile them, then create that many 1/1 colorless Myr artifact creature tokens. Then shuffle.\nSVar:Token:DB$ Token | TokenAmount$ Y | TokenScript$ c_1_1_a_myr | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidLibrary Artifact.YouOwn\nSVar:Y:Remembered$Amount\nDeckHints:Type$Myr\nDeckHas:Ability$Token\nOracle:{6}, {T}, Sacrifice Myr Incubator: Search your library for any number of artifact cards, exile them, then create that many 1/1 colorless Myr artifact creature tokens. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myr Incubator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

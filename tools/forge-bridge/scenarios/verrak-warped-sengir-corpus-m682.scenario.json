@@ -1,0 +1,23 @@
+{
+  "id": "verrak-warped-sengir-corpus-m682",
+  "description": "M6 corpus — Verrak, Warped Sengir; in-hand parse.",
+  "seed": 65084,
+  "cards": {
+    "Verrak, Warped Sengir": "Name:Verrak, Warped Sengir\nManaCost:1 W B\nTypes:Legendary Creature Vampire\nPT:2/2\nK:Flying\nK:Deathtouch\nK:Lifelink\nT:Mode$ AbilityCast | ValidActivatingPlayer$ You | ValidSA$ SpellAbility.!ManaAbility | Condition$ LifePaid | TriggerZones$ Battlefield | Execute$ TrigCopySpell | TriggerDescription$ Whenever you activate an ability that isn't a mana ability, if life was paid to activate it, you may pay that much life again. If you do, copy that ability. You may choose new targets for the copy.\nSVar:TrigCopySpell:AB$ CopySpellAbility | Cost$ PayLife<X> | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:X:TriggerCount$LifeAmount\nOracle:Flying, deathtouch, lifelink\\nWhenever you activate an ability that isn't a mana ability, if life was paid to activate it, you may pay that much life again. If you do, copy that ability. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Verrak, Warped Sengir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

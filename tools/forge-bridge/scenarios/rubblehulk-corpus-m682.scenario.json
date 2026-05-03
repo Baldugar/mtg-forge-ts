@@ -1,0 +1,23 @@
+{
+  "id": "rubblehulk-corpus-m682",
+  "description": "M6 corpus — Rubblehulk; in-hand parse.",
+  "seed": 64063,
+  "cards": {
+    "Rubblehulk": "Name:Rubblehulk\nManaCost:4 R G\nTypes:Creature Elemental\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nA:AB$ Pump | Cost$ 1 R G Discard<1/CARDNAME> | ActivationZone$ Hand | PrecostDesc$ Bloodrush — | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | NumAtt$ +X | NumDef$ +X | SpellDescription$ Target attacking creature gets +X/+X until end of turn, where X is the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:BuffedBy:Land\nSVar:NeedsToPlayVar:X GE3\nOracle:Rubblehulk's power and toughness are each equal to the number of lands you control.\\nBloodrush — {1}{R}{G}, Discard Rubblehulk: Target attacking creature gets +X/+X until end of turn, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rubblehulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

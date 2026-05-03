@@ -1,0 +1,23 @@
+{
+  "id": "aegis-sculptor-corpus-m682",
+  "description": "M6 corpus — Aegis Sculptor; in-hand parse.",
+  "seed": 61444,
+  "cards": {
+    "Aegis Sculptor": "Name:Aegis Sculptor\nManaCost:3 U\nTypes:Creature Bird Wizard\nPT:2/3\nK:Flying\nK:Ward:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may exile two cards from your graveyard. If you do, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ ExileFromGrave<2/Card> | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying\\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\\nAt the beginning of your upkeep, you may exile two cards from your graveyard. If you do, put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aegis Sculptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

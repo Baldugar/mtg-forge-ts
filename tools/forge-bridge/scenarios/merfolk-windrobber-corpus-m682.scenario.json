@@ -1,0 +1,23 @@
+{
+  "id": "merfolk-windrobber-corpus-m682",
+  "description": "M6 corpus — Merfolk Windrobber; in-hand parse.",
+  "seed": 63344,
+  "cards": {
+    "Merfolk Windrobber": "Name:Merfolk Windrobber\nManaCost:U\nTypes:Creature Merfolk Rogue\nPT:1/1\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player mills a card.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ 1\nA:AB$ Draw | Cost$ Sac<1/CARDNAME> | NumCards$ 1 | CheckSVar$ X | SVarCompare$ GE8 | SpellDescription$ Draw a card. Activate only if an opponent has eight or more cards in their graveyard.\nSVar:X:PlayerCountOpponents$HighestCardsInGraveyard\nDeckHas:Ability$Mill|Sacrifice\nOracle:Flying\\nWhenever Merfolk Windrobber deals combat damage to a player, that player mills a card. (They put the top card of their library into their graveyard.)\\nSacrifice Merfolk Windrobber: Draw a card. Activate only if an opponent has eight or more cards in their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Merfolk Windrobber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

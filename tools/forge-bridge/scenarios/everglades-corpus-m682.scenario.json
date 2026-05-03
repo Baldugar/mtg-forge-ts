@@ -1,0 +1,23 @@
+{
+  "id": "everglades-corpus-m682",
+  "description": "M6 corpus — Everglades; in-hand parse.",
+  "seed": 62240,
+  "cards": {
+    "Everglades": "Name:Everglades\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C B | SpellDescription$ Add {C}{B}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return an untapped Swamp you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Swamp.untapped/untapped Swamp> | UnlessPayer$ You\nSVar:NeedsToPlay:Swamp.YouCtrl+untapped\nOracle:Everglades enters tapped.\\nWhen Everglades enters, sacrifice it unless you return an untapped Swamp you control to its owner's hand.\\n{T}: Add {C}{B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Everglades"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

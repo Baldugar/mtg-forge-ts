@@ -1,0 +1,23 @@
+{
+  "id": "untaidake-the-cloud-keeper-corpus-m682",
+  "description": "M6 corpus — Untaidake, the Cloud Keeper; in-hand parse.",
+  "seed": 65039,
+  "cards": {
+    "Untaidake, the Cloud Keeper": "Name:Untaidake, the Cloud Keeper\nManaCost:no cost\nTypes:Legendary Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T PayLife<2> | Produced$ C | Amount$ 2 | RestrictValid$ Spell.Legendary | SpellDescription$ Add {C}{C}. Spend this mana only to cast legendary spells.\nAI:RemoveDeck:Random\nDeckHints:Type$Legendary\nOracle:Untaidake, the Cloud Keeper enters tapped.\\n{T}, Pay 2 life: Add {C}{C}. Spend this mana only to cast legendary spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Untaidake, the Cloud Keeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

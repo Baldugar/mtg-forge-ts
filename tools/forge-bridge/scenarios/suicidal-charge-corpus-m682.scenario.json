@@ -1,0 +1,23 @@
+{
+  "id": "suicidal-charge-corpus-m682",
+  "description": "M6 corpus — Suicidal Charge; in-hand parse.",
+  "seed": 64642,
+  "cards": {
+    "Suicidal Charge": "Name:Suicidal Charge\nManaCost:3 B R\nTypes:Enchantment\nA:AB$ PumpAll | Cost$ Sac<1/CARDNAME> | ValidCards$ Creature.OppCtrl | NumAtt$ -1 | NumDef$ -1 | SubAbility$ DBEffect | IsCurse$ True | SpellDescription$ Creatures your opponents control get -1/-1 until end of turn. Those creatures attack this turn if able.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Valid Creature.OppCtrl | StaticAbilities$ MustAttack\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ Those creatures attack this turn if able.\nAI:RemoveDeck:All\nOracle:Sacrifice Suicidal Charge: Creatures your opponents control get -1/-1 until end of turn. Those creatures attack this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Suicidal Charge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

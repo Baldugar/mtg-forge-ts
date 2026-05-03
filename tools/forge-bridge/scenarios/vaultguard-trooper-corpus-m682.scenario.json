@@ -1,0 +1,23 @@
+{
+  "id": "vaultguard-trooper-corpus-m682",
+  "description": "M6 corpus — Vaultguard Trooper; in-hand parse.",
+  "seed": 65073,
+  "cards": {
+    "Vaultguard Trooper": "Name:Vaultguard Trooper\nManaCost:4 R\nTypes:Creature Kavu Soldier\nPT:5/5\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Creature.YouCtrl+tapped | PresentCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if you control two or more tapped creatures, you may discard your hand. If you do, draw two cards.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<0/Hand> | NumCards$ 2\nOracle:At the beginning of your end step, if you control two or more tapped creatures, you may discard your hand. If you do, draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vaultguard Trooper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

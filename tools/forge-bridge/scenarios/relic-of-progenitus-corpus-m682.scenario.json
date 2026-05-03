@@ -1,0 +1,23 @@
+{
+  "id": "relic-of-progenitus-corpus-m682",
+  "description": "M6 corpus — Relic of Progenitus; in-hand parse.",
+  "seed": 63970,
+  "cards": {
+    "Relic of Progenitus": "Name:Relic of Progenitus\nManaCost:1\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | DefinedPlayer$ Targeted | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | IsCurse$ True | Chooser$ Targeted | SpellDescription$ Target player exiles a card from their graveyard.\nA:AB$ ChangeZoneAll | Cost$ 1 Exile<1/CARDNAME> | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | AILogic$ ExileGraveyards | SubAbility$ DBDraw | SpellDescription$ Exile all graveyards. Draw a card.\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:Random\nOracle:{T}: Target player exiles a card from their graveyard.\\n{1}, Exile Relic of Progenitus: Exile all graveyards. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Relic of Progenitus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

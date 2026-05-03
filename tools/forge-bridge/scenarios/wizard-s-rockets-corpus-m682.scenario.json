@@ -1,0 +1,23 @@
+{
+  "id": "wizard-s-rockets-corpus-m682",
+  "description": "M6 corpus — Wizard's Rockets; in-hand parse.",
+  "seed": 65265,
+  "cards": {
+    "Wizard's Rockets": "Name:Wizard's Rockets\nManaCost:1\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ X T Sac<1/CARDNAME> | Produced$ Combo Any | Amount$ X | SpellDescription$ Add X mana in any combination of colors.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController | NumCards$ 1\nSVar:X:Count$xPaid\nSVar:SacMe:1\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Wizard's Rockets enters tapped.\\n{X}, {T}, Sacrifice Wizard's Rockets: Add X mana in any combination of colors.\\nWhen Wizard's Rockets is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wizard's Rockets"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "zoyowa-lava-tongue-corpus-m682",
+  "description": "M6 corpus — Zoyowa Lava-Tongue; in-hand parse.",
+  "seed": 65319,
+  "cards": {
+    "Zoyowa Lava-Tongue": "Name:Zoyowa Lava-Tongue\nManaCost:B R\nTypes:Legendary Creature Goblin Warlock\nPT:2/2\nK:Deathtouch\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You.descended | TriggerZones$ Battlefield | Execute$ TrigMaySacorDiscard | TriggerDescription$ At the beginning of your end step, if you descended this turn, each opponent may discard a card or sacrifice a permanent. CARDNAME deals 3 damage to each opponent who didn't. (You descended if a permanent card was put into your graveyard from anywhere.)\nSVar:TrigMaySacorDiscard:DB$ GenericChoice | Choices$ PaySac,PayDiscard | TempRemember$ Chooser | Defined$ Opponent | AILogic$ PayUnlessCost | DamageMap$ True\nSVar:PaySac:DB$ DealDamage | NumDmg$ 3 | Defined$ Remembered | UnlessCost$ Sac<1/Permanent> | UnlessPayer$ Remembered | SpellDescription$ CARDNAME deals 3 damage to you unless you sacrifice a permanent.\nSVar:PayDiscard:DB$ DealDamage | NumDmg$ 3 | Defined$ Remembered | UnlessCost$ Discard<1/Card> | UnlessPayer$ Remembered | SpellDescription$ CARDNAME deals 3 damage to you unless you discard a card.\nDeckHas:Ability$Discard|Sacrifice\nOracle:Deathtouch\\nAt the beginning of your end step, if you descended this turn, each opponent may discard a card or sacrifice a permanent. Zoyowa Lava-Tongue deals 3 damage to each opponent who didn't. (You descended if a permanent card was put into your graveyard from anywhere.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zoyowa Lava-Tongue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

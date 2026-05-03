@@ -1,0 +1,23 @@
+{
+  "id": "solitary-confinement-corpus-m682",
+  "description": "M6 corpus — Solitary Confinement; in-hand parse.",
+  "seed": 64466,
+  "cards": {
+    "Solitary Confinement": "Name:Solitary Confinement\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you discard a card.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Discard<1/Card>\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nS:Mode$ Continuous | Affected$ You | AddKeyword$ Shroud | Description$ You have shroud. (You can't be the target of spells or abilities.)\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ You | Description$ Prevent all damage that would be dealt to you.\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, sacrifice Solitary Confinement unless you discard a card.\\nSkip your draw step.\\nYou have shroud. (You can't be the target of spells or abilities.)\\nPrevent all damage that would be dealt to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solitary Confinement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

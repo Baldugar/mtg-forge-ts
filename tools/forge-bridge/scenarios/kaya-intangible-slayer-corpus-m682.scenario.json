@@ -1,0 +1,23 @@
+{
+  "id": "kaya-intangible-slayer-corpus-m682",
+  "description": "M6 corpus — Kaya, Intangible Slayer; in-hand parse.",
+  "seed": 63003,
+  "cards": {
+    "Kaya, Intangible Slayer": "Name:Kaya, Intangible Slayer\nManaCost:3 W W B B\nTypes:Legendary Planeswalker Kaya\nLoyalty:6\nK:Hexproof\nA:AB$ LoseLife | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | Defined$ Opponent | LifeAmount$ 3 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 3 life and you gain 3 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nA:AB$ Draw | Cost$ AddCounter<0/LOYALTY> | Planeswalker$ True | NumCards$ 2 | SubAbility$ DBScry | SpellDescription$ You draw two cards.\nSVar:DBScry:DB$ Scry | Defined$ Opponent | Optional$ True | StackDescription$ SpellDescription | SpellDescription$ Then each opponent may scry 1.\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature,Enchantment | TgtPrompt$ Select target creature or enchantment | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | SubAbility$ DBCopy | SpellDescription$ Exile target creature or enchantment.\nSVar:DBCopy:DB$ CopyPermanent | ConditionDefined$ RememberedLKI | ConditionPresent$ Card.nonAura | Defined$ RememberedLKI | SetPower$ 1 | SetToughness$ 1 | AddTypes$ Creature & Spirit | AddKeywords$ Flying | SetColor$ White | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ If it wasn't an Aura, create a token that's a copy of it, except it's a 1/1 white Spirit creature with flying in addition to its other types.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain|Token & Type$Spirit\nOracle:Hexproof\\n[+2]: Each opponent loses 3 life and you gain 3 life.\\n[0]: You draw two cards. Then each opponent may scry 1.\\n[-3]: Exile target creature or enchantment. If it wasn't an Aura, create a token that's a copy of it, except it's a 1/1 white Spirit creature with flying in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kaya, Intangible Slayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

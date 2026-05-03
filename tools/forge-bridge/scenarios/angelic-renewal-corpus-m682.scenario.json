@@ -1,0 +1,23 @@
+{
+  "id": "angelic-renewal-corpus-m682",
+  "description": "M6 corpus — Angelic Renewal; in-hand parse.",
+  "seed": 61474,
+  "cards": {
+    "Angelic Renewal": "Name:Angelic Renewal\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouOwn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a creature is put into your graveyard from the battlefield, you may sacrifice CARDNAME. If you do, return that card to the battlefield.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ Sac<1/CARDNAME> | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield\nOracle:Whenever a creature is put into your graveyard from the battlefield, you may sacrifice Angelic Renewal. If you do, return that card to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angelic Renewal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

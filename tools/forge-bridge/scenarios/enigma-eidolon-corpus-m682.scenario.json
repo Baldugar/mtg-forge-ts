@@ -1,0 +1,23 @@
+{
+  "id": "enigma-eidolon-corpus-m682",
+  "description": "M6 corpus — Enigma Eidolon; in-hand parse.",
+  "seed": 62207,
+  "cards": {
+    "Enigma Eidolon": "Name:Enigma Eidolon\nManaCost:3 U\nTypes:Creature Spirit\nPT:2/2\nA:AB$ Mill | Cost$ U Sac<1/CARDNAME> | NumCards$ 3 | ValidTgts$ Player | SpellDescription$ Target player mills three cards.\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ Whenever you cast a multicolored spell, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nAI:RemoveDeck:All\nOracle:{U}, Sacrifice Enigma Eidolon: Target player mills three cards.\\nWhenever you cast a multicolored spell, you may return Enigma Eidolon from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enigma Eidolon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

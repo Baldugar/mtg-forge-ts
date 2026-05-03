@@ -1,0 +1,23 @@
+{
+  "id": "lorehold-the-historian-corpus-m682",
+  "description": "M6 corpus — Lorehold, the Historian; in-hand parse.",
+  "seed": 63203,
+  "cards": {
+    "Lorehold, the Historian": "Name:Lorehold, the Historian\nManaCost:3 R W\nTypes:Legendary Creature Elder Dragon\nPT:5/5\nK:Flying\nK:Haste\nS:Mode$ Continuous | Affected$ Card.Instant+YouOwn,Card.Sorcery+YouOwn | AffectedZone$ Hand | AddKeyword$ Miracle:2 | Description$ Each instant and sorcery card in your hand has miracle {2}. (You may cast a card for its miracle cost when you draw it if it's the first card you drew this turn.)\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card>\nOracle:Flying, haste\\nEach instant and sorcery card in your hand has miracle {2}. (You may cast a card for its miracle cost when you draw it if it's the first card you drew this turn.)\\nAt the beginning of each opponent's upkeep, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lorehold, the Historian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

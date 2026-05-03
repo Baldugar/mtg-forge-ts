@@ -1,0 +1,23 @@
+{
+  "id": "gonti-s-machinations-corpus-m682",
+  "description": "M6 corpus — Gonti's Machinations; in-hand parse.",
+  "seed": 62599,
+  "cards": {
+    "Gonti's Machinations": "Name:Gonti's Machinations\nManaCost:B\nTypes:Enchantment\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | FirstTime$ True | Execute$ TrigEnergy | TriggerDescription$ Whenever you lose life for the first time each turn, you get {E}. (You get an energy counter. Damage causes loss of life.)\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ LoseLife | Cost$ PayEnergy<2> Sac<1/CARDNAME> | Defined$ Player.Opponent | LifeAmount$ 3 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 3 life. You gain life equal to the life lost this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | StackDescription$ You gain life equal to the life lost this way.\nOracle:Whenever you lose life for the first time each turn, you get {E}. (You get an energy counter. Damage causes loss of life.)\\nPay {E}{E}, Sacrifice Gonti's Machinations: Each opponent loses 3 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gonti's Machinations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-demon-corpus-m682",
+  "description": "M6 corpus — Ravenous Demon; in-hand parse.",
+  "seed": 63936,
+  "cards": {
+    "Ravenous Demon": "Name:Ravenous Demon\nManaCost:3 B B\nTypes:Creature Demon\nPT:4/4\nA:AB$ SetState | Cost$ Sac<1/Human> | Defined$ Self | SorcerySpeed$ True | Mode$ Transform | SpellDescription$ Transform CARDNAME. Activate this only any time you could cast a sorcery.\nAlternateMode:DoubleFaced\nOracle:Sacrifice a Human: Transform Ravenous Demon. Activate only as a sorcery.\n\nALTERNATE\n\nName:Archdemon of Greed\nManaCost:no cost\nColors:black\nTypes:Creature Demon\nPT:9/9\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a Human. If you can't, tap CARDNAME and it deals 9 damage to you.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature.Human | SubAbility$ DBTap | RememberSacrificed$ True\nSVar:DBTap:DB$ Tap | Defined$ Self | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ You | NumDmg$ 9 | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Flying, trample\\nAt the beginning of your upkeep, sacrifice a Human. If you can't, tap Archdemon of Greed and it deals 9 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

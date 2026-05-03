@@ -291,10 +291,14 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     // Hard-skip = parser/loader cannot handle the card script at all.
     // Soft-skip (in-hand-only) = parser handles it but ETB/cast diverges.
     // True hard-skips: parser/loader fails outright on the card script.
-    // alt-cost in Cost$ fields fails parser too (the cost evaluator treats
-    // it as mana). These need a parser fix before they can join the cohort.
+    // M6.82 — alt-cost in Cost$ fields no longer fails parser since
+    // RaiseCost/ReduceCost gracefully ignore non-mana-pip Cost$ values.
+    // Move to soft-skip (in-hand only) below.
+    const manaCostHasAltCost = lines.some(
+      (l) => l.startsWith("ManaCost:") && /<[^>]*\/[^>]*>/.test(l),
+    );
     const skip =
-      hasAltCostInManaCost ||
+      manaCostHasAltCost ||
       usesAvatarMechanics ||
       hasAnyAsNumber ||
       hasExoticToken;
@@ -312,6 +316,7 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       usesChoosePlayer ||
       hasComplexMechanic ||
       hasOffspring ||
+      hasAltCostInManaCost ||
       usesUnsupportedCount ||
       hasPutCounterInTrigger ||
       usesUnsubscribedEvent ||

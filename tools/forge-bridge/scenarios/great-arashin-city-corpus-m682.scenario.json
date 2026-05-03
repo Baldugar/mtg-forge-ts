@@ -1,0 +1,23 @@
+{
+  "id": "great-arashin-city-corpus-m682",
+  "description": "M6 corpus — Great Arashin City; in-hand parse.",
+  "seed": 62623,
+  "cards": {
+    "Great Arashin City": "Name:Great Arashin City\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control a Forest or a Plains.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Forest.YouCtrl,Plains.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ Token | Cost$ 1 B T ExileFromGrave<1/Creature/creature card> | TokenScript$ w_1_1_spirit | TokenOwner$ You | SpellDescription$ Create a 1/1 white Spirit creature token.\nDeckHas:Ability$Token\nOracle:This land enters tapped unless you control a Forest or a Plains.\\n{T}: Add {B}.\\n{1}{B}, {T}, Exile a creature card from your graveyard: Create a 1/1 white Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Great Arashin City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

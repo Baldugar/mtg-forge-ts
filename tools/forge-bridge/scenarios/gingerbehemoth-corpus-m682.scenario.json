@@ -1,0 +1,23 @@
+{
+  "id": "gingerbehemoth-corpus-m682",
+  "description": "M6 corpus — Gingerbehemoth; in-hand parse.",
+  "seed": 62528,
+  "cards": {
+    "Gingerbehemoth": "Name:Gingerbehemoth\nManaCost:6\nTypes:Artifact Creature Food Golem\nPT:6/6\nK:Vigilance\nK:Trample\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Secondary$ True | Description$ CARDNAME costs {2} less to cast for each Food you've sacrificed this turn.\nSVar:X:PlayerCountPropertyYou$SacrificedThisTurn Food/Times.2\nA:AB$ GainLife | Cost$ 4 T Sac<1/CARDNAME> | LifeAmount$ 6 | SpellDescription$ You gain 6 life.\nDeckHas:Ability$LifeGain\nDeckHints:Type$Food\nOracle:Gingerbehemoth costs {2} less to cast for each Food you've sacrificed this turn.\\nVigilance, trample\\n{4}, {T}, Sacrifice Gingerbehemoth: You gain 6 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gingerbehemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

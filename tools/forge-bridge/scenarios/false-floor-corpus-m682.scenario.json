@@ -1,0 +1,23 @@
+{
+  "id": "false-floor-corpus-m682",
+  "description": "M6 corpus — False Floor; in-hand parse.",
+  "seed": 62285,
+  "cards": {
+    "False Floor": "Name:False Floor\nManaCost:4\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nR:Event$ Moved | ValidCard$ Creature | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Creatures enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nA:AB$ ChangeZoneAll | Cost$ 2 T Exile<1/CARDNAME> | ChangeType$ Creature.untapped | Origin$ Battlefield | Destination$ Exile | SorcerySpeed$ True | SpellDescription$ Exile all untapped creatures. Activate only as a sorcery.\nOracle:False Floor enters tapped.\\nCreatures enter tapped.\\n{2}, {T}, Exile False Floor: Exile all untapped creatures. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "False Floor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

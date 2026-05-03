@@ -1,0 +1,23 @@
+{
+  "id": "trench-behemoth-corpus-m682",
+  "description": "M6 corpus — Trench Behemoth; in-hand parse.",
+  "seed": 64957,
+  "cards": {
+    "Trench Behemoth": "Name:Trench Behemoth\nManaCost:5 U U\nTypes:Creature Kraken\nPT:7/7\nA:AB$ Untap | Cost$ Return<1/Land> | SubAbility$ DBPump | SpellDescription$ Untap CARDNAME. It gains hexproof until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Hexproof\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Landfall — Whenever a land you control enters, target creature an opponent controls attacks during its controller's next combat phase if able.\nSVar:TrigEffect:DB$ Effect | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | IsCurse$ True | RememberObjects$ Targeted | Triggers$ MustAttackTrig | Duration$ Permanent | ExileOnMoved$ Battlefield\nSVar:MustAttackTrig:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ Player.controlsCreature.IsRemembered_GE1 | Execute$ TrigPump | Static$ True | TriggerDescription$ Target creature an opponent controls attacks during its controller's next combat phase if able.\nSVar:TrigPump:DB$ Animate | Defined$ Remembered | staticAbilities$ MustAttack | Duration$ UntilEndOfCombat | SubAbility$ ExileSelf\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ This creature attacks during its controller's next combat phase if able.\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nSVar:BuffedBy:Land\nOracle:Return a land you control to its owner's hand: Untap Trench Behemoth. It gains hexproof until end of turn.\\nLandfall — Whenever a land you control enters, target creature an opponent controls attacks during its controller's next combat phase if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trench Behemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

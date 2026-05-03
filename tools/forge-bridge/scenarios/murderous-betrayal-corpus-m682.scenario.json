@@ -1,0 +1,23 @@
+{
+  "id": "murderous-betrayal-corpus-m682",
+  "description": "M6 corpus — Murderous Betrayal; in-hand parse.",
+  "seed": 63461,
+  "cards": {
+    "Murderous Betrayal": "Name:Murderous Betrayal\nManaCost:B B B\nTypes:Enchantment\nA:AB$ Destroy | Cost$ B B PayLife<X> | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | NoRegen$ True | CostDesc$ {B}{B}, Pay half your life, rounded up: | SpellDescription$ Destroy target nonblack creature. It can't be regenerated.\nSVar:X:Count$YourLifeTotal/HalfUp\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:{B}{B}, Pay half your life, rounded up: Destroy target nonblack creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murderous Betrayal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

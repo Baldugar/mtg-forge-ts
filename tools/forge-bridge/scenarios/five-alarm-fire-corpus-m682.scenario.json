@@ -1,0 +1,23 @@
+{
+  "id": "five-alarm-fire-corpus-m682",
+  "description": "M6 corpus — Five-Alarm Fire; in-hand parse.",
+  "seed": 62339,
+  "cards": {
+    "Five-Alarm Fire": "Name:Five-Alarm Fire\nManaCost:1 R R\nTypes:Enchantment\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Creature.YouCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control deals combat damage, put a blaze counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ BLAZE | CounterNum$ 1\nA:AB$ DealDamage | Cost$ SubCounter<5/BLAZE> | ValidTgts$ Any | NumDmg$ 5 | SpellDescription$ It deals 5 damage to any target.\nDeckHas:Ability$Counters\nDeckHints:Ability$Proliferate\nOracle:Whenever a creature you control deals combat damage, put a blaze counter on Five-Alarm Fire.\\nRemove five blaze counters from Five-Alarm Fire: It deals 5 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Five-Alarm Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

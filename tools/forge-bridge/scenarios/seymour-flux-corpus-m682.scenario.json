@@ -1,0 +1,23 @@
+{
+  "id": "seymour-flux-corpus-m682",
+  "description": "M6 corpus — Seymour Flux; in-hand parse.",
+  "seed": 64303,
+  "cards": {
+    "Seymour Flux": "Name:Seymour Flux\nManaCost:4 B\nTypes:Legendary Creature Spirit Avatar\nPT:5/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, you may pay 1 life. If you do, draw a card and put a +1/+1 counter on CARDNAME.\nSVar:TrigDraw:AB$ Draw | Cost$ PayLife<1> | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nOracle:At the beginning of your upkeep, you may pay 1 life. If you do, draw a card and put a +1/+1 counter on Seymour Flux.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seymour Flux"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

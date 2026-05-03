@@ -1,0 +1,23 @@
+{
+  "id": "vilis-broker-of-blood-corpus-m682",
+  "description": "M6 corpus — Vilis, Broker of Blood; in-hand parse.",
+  "seed": 65110,
+  "cards": {
+    "Vilis, Broker of Blood": "Name:Vilis, Broker of Blood\nManaCost:5 B B B\nTypes:Legendary Creature Demon\nPT:8/8\nK:Flying\nA:AB$ Pump | Cost$ B PayLife<2> | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ Target creature gets -1/-1 until end of turn.\nAI:RemoveDeck:Random\nT:Mode$ LifeLost | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you lose life, draw that many cards. (Damage causes loss of life.)\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TriggerCount$LifeAmount\nAI:RemoveDeck:Random\nOracle:Flying\\n{B}, Pay 2 life: Target creature gets -1/-1 until end of turn.\\nWhenever you lose life, draw that many cards. (Damage causes loss of life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vilis, Broker of Blood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

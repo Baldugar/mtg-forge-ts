@@ -1,0 +1,23 @@
+{
+  "id": "shadow-stinger-corpus-m682",
+  "description": "M6 corpus — Shadow Stinger; in-hand parse.",
+  "seed": 64307,
+  "cards": {
+    "Shadow Stinger": "Name:Shadow Stinger\nManaCost:2 B\nTypes:Creature Vampire Rogue\nPT:1/4\nA:AB$ Pump | Cost$ tapXType<1/Rogue.Other> | Defined$ Self | KW$ Deathtouch | SpellDescription$ CARDNAME gains deathtouch until end of turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player mills three cards. (They put the top three cards of their library into their graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ 3\nDeckHas:Ability$Mill\nDeckHints:Type$Rogue\nOracle:Tap another untapped Rogue you control: Shadow Stinger gains deathtouch until end of turn.\\nWhenever Shadow Stinger deals combat damage to a player, that player mills three cards. (They put the top three cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shadow Stinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

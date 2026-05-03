@@ -1,0 +1,23 @@
+{
+  "id": "heart-piercer-manticore-corpus-m682",
+  "description": "M6 corpus — Heart-Piercer Manticore; in-hand parse.",
+  "seed": 62720,
+  "cards": {
+    "Heart-Piercer Manticore": "Name:Heart-Piercer Manticore\nManaCost:2 R R\nTypes:Creature Manticore\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBTrigger | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature. When you do, CARDNAME deals damage equal to that creature's power to target creature or player.\nSVar:DBTrigger:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | Execute$ TrigDamage | AILogic$ SacForDamage | TriggerDescription$ When you do, CARDNAME deals damage equal to that creature's power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ XPower\nK:Embalm:5 R\nSVar:XPower:Spawner>Sacrificed$CardPower\nSVar:AIPreferenceParams:CreatureEvalThreshold$ 200\nDeckHas:Ability$Token|Sacrifice\nOracle:When Heart-Piercer Manticore enters, you may sacrifice another creature. When you do, Heart-Piercer Manticore deals damage equal to that creature's power to any target.\\nEmbalm {5}{R} ({5}{R}, Exile this card from your graveyard: Create a token that's a copy of it, except it's a white Zombie Manticore with no mana cost. Embalm only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Heart-Piercer Manticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jetfire-ingenious-scientist-corpus-m682",
+  "description": "M6 corpus — Jetfire, Ingenious Scientist; in-hand parse.",
+  "seed": 62959,
+  "cards": {
+    "Jetfire, Ingenious Scientist": "Name:Jetfire, Ingenious Scientist\nManaCost:4 U\nTypes:Legendary Artifact Creature Robot\nPT:3/4\nK:More Than Meets the Eye:3 U\nK:Flying\nA:AB$ Mana | Cost$ RemoveAnyCounter<X1+/P1P1/Artifact> | XMin$ 1 | ValidTgts$ Player | Produced$ C | Amount$ X | AmountDesc$ for each counter removed | RestrictValid$ CantCastNonArtifactSpells | SubAbility$ DBConvert | SpellDescription$ Target player adds that much {C}. This mana can't be spent to cast nonartifact spells.\nSVar:DBConvert:DB$ SetState | Mode$ Transform | StackDescription$ SpellDescription | SpellDescription$ Convert NICKNAME.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHints:Ability$Counters & Keyword$Adapt|Modular\nAlternateMode:DoubleFaced\nOracle:More Than Meets the Eye {3}{U} (You may cast this card converted for {3}{U}.)\\nFlying\\nRemove one or more +1/+1 counters from among artifacts you control: Target player adds that much {C}. This mana can't be spent to cast nonartifact spells. Convert Jetfire.\n\nALTERNATE\n\nName:Jetfire, Air Guardian\nManaCost:no cost\nColors:blue\nTypes:Legendary Artifact Vehicle\nPT:3/4\nK:Living metal\nK:Flying\nA:AB$ SetState | Cost$ U U U | Mode$ Transform | SubAbility$ DBAdapt | StackDescription$ Convert NICKNAME, | SpellDescription$ Convert NICKNAME, then adapt 3. (If it has no +1/+1 counters on it, put three +1/+1 counters on it.)\nSVar:DBAdapt:DB$ PutCounter | Adapt$ 3 | StackDescription$ then adapt 3.\nDeckHas:Ability$Counters\nOracle:Living metal (During your turn, this Vehicle is also a creature.)\\nFlying\\n{U}{U}{U}: Convert Jetfire, then adapt 3. (If it has no +1/+1 counters on it, put three +1/+1 counters on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jetfire, Ingenious Scientist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

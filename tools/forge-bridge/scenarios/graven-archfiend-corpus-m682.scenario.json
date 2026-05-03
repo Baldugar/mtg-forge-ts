@@ -1,0 +1,23 @@
+{
+  "id": "graven-archfiend-corpus-m682",
+  "description": "M6 corpus — Graven Archfiend; in-hand parse.",
+  "seed": 62618,
+  "cards": {
+    "Graven Archfiend": "Name:Graven Archfiend\nManaCost:3 B B\nTypes:Artifact Creature Gargoyle Demon\nPT:4/5\nK:Flying\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Sac<1/Creature.nonDemon/non-Demon creature> | Description$ As an additional cost to cast this spell, you may sacrifice a non-Demon creature.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ CastSA>Count$OptionalGenericCostPaid.1.0 | NoResolvingCheck$ True | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, if its additional cost was paid, conjure a card named Demonic Pact onto the battlefield.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Demonic Pact | Zone$ Battlefield\nDeckHas:Ability$Sacrifice\nOracle:As an additional cost to cast this spell, you may sacrifice a non-Demon creature.\\nFlying\\nWhen Graven Archfiend enters, if its additional cost was paid, conjure a card named Demonic Pact onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Graven Archfiend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

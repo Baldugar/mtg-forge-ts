@@ -1,0 +1,23 @@
+{
+  "id": "sivriss-nightmare-speaker-corpus-m682",
+  "description": "M6 corpus — Sivriss, Nightmare Speaker; in-hand parse.",
+  "seed": 64392,
+  "cards": {
+    "Sivriss, Nightmare Speaker": "Name:Sivriss, Nightmare Speaker\nManaCost:3 B\nTypes:Legendary Creature Snake Cleric Warlock\nPT:3/3\nA:AB$ RepeatEach | Cost$ T Sac<1/Creature.Other;Artifact/another creature or an artifact> | RepeatPlayers$ Opponent | RepeatSubAbility$ DBMill | SpellDescription$ For each opponent, you mill a card, then return that card from your graveyard to your hand unless that player pays 3 life. (To mill a card, put the top card of your library into your graveyard.)\nSVar:DBMill:DB$ Mill | Imprint$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Imprinted | Origin$ Graveyard | Destination$ Hand | UnlessCost$ PayLife<3> | UnlessPayer$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nK:Choose a Background\nSVar:AIPreference:SacCost$Artifact.token,Creature.Other+cmcLE2,Artifact.cmcLE1\nDeckHints:Type$Artifact\nDeckHas:Ability$Sacrifice|Mill|Graveyard\nOracle:{T}, Sacrifice another creature or an artifact: For each opponent, you mill a card, then return that card from your graveyard to your hand unless that player pays 3 life. (To mill a card, put the top card of your library into your graveyard.)\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sivriss, Nightmare Speaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

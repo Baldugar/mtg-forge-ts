@@ -1,0 +1,23 @@
+{
+  "id": "gastal-blockbuster-corpus-m682",
+  "description": "M6 corpus — Gastal Blockbuster; in-hand parse.",
+  "seed": 62468,
+  "cards": {
+    "Gastal Blockbuster": "Name:Gastal Blockbuster\nManaCost:2 R\nTypes:Creature Human Berserker\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When this creature enters, you may sacrifice a creature or Vehicle. When you do, destroy target artifact an opponent controls.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature;Vehicle/a creature or Vehicle> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target artifact an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl | TgtPrompt$ Select target artifact an opponent controls\nDeckHas:Ability$Sacrifice\nOracle:When this creature enters, you may sacrifice a creature or Vehicle. When you do, destroy target artifact an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gastal Blockbuster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "urborg-syphon-mage-corpus-m682",
+  "description": "M6 corpus — Urborg Syphon-Mage; in-hand parse.",
+  "seed": 65046,
+  "cards": {
+    "Urborg Syphon-Mage": "Name:Urborg Syphon-Mage\nManaCost:2 B\nTypes:Creature Human Spellshaper\nPT:2/2\nA:AB$ LoseLife | Cost$ 2 B T Discard<1/Card> | LifeAmount$ 2 | Defined$ Player.Other | SubAbility$ DBGainLife | SpellDescription$ Each other player loses 2 life. You gain life equal to the life lost this way. | StackDescription$ SpellDescription\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | StackDescription$ None\nSVar:AFLifeLost:Number$0\nOracle:{2}{B}, {T}, Discard a card: Each other player loses 2 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urborg Syphon-Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

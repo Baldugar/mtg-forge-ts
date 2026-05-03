@@ -1,0 +1,23 @@
+{
+  "id": "deep-dish-pizza-corpus-m682",
+  "description": "M6 corpus — Deep Dish Pizza; in-hand parse.",
+  "seed": 61956,
+  "cards": {
+    "Deep Dish Pizza": "Name:Deep Dish Pizza\nManaCost:no cost\nTypes:Artifact Food\nK:Suspend:2:2\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME> | LifeAmount$ 3 | SubAbility$ DBDraw | SpellDescription$ Gain 3 life, draw three cards, and CARDNAME deals 3 damage to each opponent.\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 3\nDeckHas:Ability$LifeGain|Sacrifice\nOracle:Suspend 2—{2} (Deep Dish Pizza has no mana cost and must be suspended.)\\n{2}, {T}, Sacrifice Deep Dish Pizza: Gain 3 life, draw three cards, and Deep Dish Pizza deals 3 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deep Dish Pizza"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "peema-trailblazer-corpus-m682",
+  "description": "M6 corpus — Peema Trailblazer; in-hand parse.",
+  "seed": 63714,
+  "cards": {
+    "Peema Trailblazer": "Name:Peema Trailblazer\nManaCost:2 G\nTypes:Creature Elephant Warrior\nPT:3/3\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigEnergy | TriggerDescription$ Whenever this creature deals combat damage to a player, you get that many {E} (energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ TriggerCount$DamageAmount\nA:AB$ PutCounter | Cost$ PayEnergy<6> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | Exhaust$ True | SubAbility$ DBDraw | SpellDescription$ Put two +1/+1 counters on this creature. Then draw cards equal to the greatest power among creatures you control. (Activate each exhaust ability only once.)\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nDeckHas:Ability$Counters\nOracle:Trample\\nWhenever this creature deals combat damage to a player, you get that many {E} (energy counters).\\nExhaust — Pay six {E}: Put two +1/+1 counters on this creature. Then draw cards equal to the greatest power among creatures you control. (Activate each exhaust ability only once.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peema Trailblazer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

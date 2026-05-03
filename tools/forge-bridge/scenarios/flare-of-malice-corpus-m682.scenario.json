@@ -1,0 +1,23 @@
+{
+  "id": "flare-of-malice-corpus-m682",
+  "description": "M6 corpus — Flare of Malice; in-hand parse.",
+  "seed": 62354,
+  "cards": {
+    "Flare of Malice": "Name:Flare of Malice\nManaCost:2 B B\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ Sac<1/Creature.Black+!token/a nontoken black creature> | Description$ You may sacrifice a nontoken black creature rather than pay this spell's mana cost.\nA:SP$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChooseCard | SubAbility$ DBSacAll | SpellDescription$ Each opponent sacrifices a creature or planeswalker with the greatest mana value among creatures and planeswalkers they control.\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Creature.RememberedPlayerCtrl+cmcEQX,Planeswalker.RememberedPlayerCtrl+cmcEQX | ChoiceTitle$ Choose a creature or planeswalker with the greatest mana value among creatures and planeswalkers you control | Mandatory$ True | Reveal$ True | RememberChosen$ True\nSVar:X:Count$Valid Creature.RememberedPlayerCtrl,Planeswalker.RememberedPlayerCtrl$GreatestCardManaCost\nSVar:DBSacAll:DB$ SacrificeAll | ValidCards$ Card.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanupChosen:DB$ Cleanup | ClearChosenPlayer$ True\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsToPlay:Creature.OppCtrl\nOracle:You may sacrifice a nontoken black creature rather than pay this spell's mana cost.\\nEach opponent sacrifices a creature or planeswalker with the greatest mana value among creatures and planeswalkers they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flare of Malice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

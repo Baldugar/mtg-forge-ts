@@ -1,0 +1,23 @@
+{
+  "id": "spire-mechcycle-corpus-m682",
+  "description": "M6 corpus — Spire Mechcycle; in-hand parse.",
+  "seed": 64559,
+  "cards": {
+    "Spire Mechcycle": "Name:Spire Mechcycle\nManaCost:4 R\nTypes:Artifact Vehicle\nPT:5/4\nK:Haste\nA:AB$ Animate | Cost$ tapXType<1/Mount.Other;Vehicle.Other/another Mount or Vehicle> | Defined$ Self | Types$ Artifact,Creature | Exhaust$ True | Duration$ Permanent | SubAbility$ DBPutCounter | SpellDescription$ This Vehicle becomes an artifact creature. Put a +1/+1 counter on it for each Mount and/or Vehicle you control other than this Vehicle. (Activate each exhaust ability only once.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Count$Valid Mount.Other+YouCtrl,Vehicle.Other+YouCtrl\nK:Crew:2\nDeckHints:Type$Mount|Vehicle\nOracle:Haste\\nExhaust — Tap another untapped Mount or Vehicle you control: This Vehicle becomes an artifact creature. Put a +1/+1 counter on it for each Mount and/or Vehicle you control other than this Vehicle. (Activate each exhaust ability only once.)\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spire Mechcycle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

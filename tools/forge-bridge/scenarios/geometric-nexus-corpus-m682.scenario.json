@@ -1,0 +1,23 @@
+{
+  "id": "geometric-nexus-corpus-m682",
+  "description": "M6 corpus — Geometric Nexus; in-hand parse.",
+  "seed": 62488,
+  "cards": {
+    "Geometric Nexus": "Name:Geometric Nexus\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts an instant or sorcery spell, put a number of charge counters on CARDNAME equal to that spell's mana value.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ Y\nSVar:Y:TriggeredSpellAbility$CardManaCostLKI\nA:AB$ Token | Cost$ 6 T SubCounter<All/CHARGE> | CostDesc$ {6}, {T}, Remove all charge counters from CARDNAME: | TokenScript$ gu_0_0_fractal | RememberTokens$ True | SubAbility$ DBPutCounter | SpellDescription$ Create a 0/0 green and blue Fractal creature token.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ Put X +1/+1 counters on it, where X is the number of charge counters removed this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:SVar$CostCountersRemoved\nDeckHas:Ability$Token|Counters\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever a player casts an instant or sorcery spell, put a number of charge counters on Geometric Nexus equal to that spell's mana value.\\n{6}, {T}, Remove all charge counters from Geometric Nexus: Create a 0/0 green and blue Fractal creature token. Put X +1/+1 counters on it, where X is the number of charge counters removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geometric Nexus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

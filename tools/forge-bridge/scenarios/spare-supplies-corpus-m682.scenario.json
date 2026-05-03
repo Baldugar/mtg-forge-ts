@@ -1,0 +1,23 @@
+{
+  "id": "spare-supplies-corpus-m682",
+  "description": "M6 corpus — Spare Supplies; in-hand parse.",
+  "seed": 64518,
+  "cards": {
+    "Spare Supplies": "Name:Spare Supplies\nManaCost:2\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Draw | Cost$ 2 T Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Spare Supplies enters tapped.\\nWhen Spare Supplies enters, draw a card.\\n{2}, {T}, Sacrifice Spare Supplies: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spare Supplies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

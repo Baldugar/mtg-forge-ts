@@ -1,0 +1,23 @@
+{
+  "id": "keldon-battlewagon-corpus-m682",
+  "description": "M6 corpus — Keldon Battlewagon; in-hand parse.",
+  "seed": 63011,
+  "cards": {
+    "Keldon Battlewagon": "Name:Keldon Battlewagon\nManaCost:5\nTypes:Artifact Creature Juggernaut\nPT:0/3\nK:Trample\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelTrig | TriggerDescription$ When CARDNAME attacks, sacrifice it at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigSacrifice | TriggerDescription$ Sacrifice CARDNAME at end of combat.\nSVar:TrigSacrifice:DB$ SacrificeAll | Defined$ Self | Controller$ You\nSVar:SacrificeEndCombat:True\nA:AB$ Pump | Cost$ tapXType<1/Creature> | NumAtt$ +X | SpellDescription$ CARDNAME gets +X/+0 until end of turn, where X is the power of the creature tapped this way.\nSVar:X:Tapped$CardPower\nAI:RemoveDeck:All\nOracle:Trample\\nKeldon Battlewagon can't block.\\nWhen Keldon Battlewagon attacks, sacrifice it at end of combat.\\nTap an untapped creature you control: Keldon Battlewagon gets +X/+0 until end of turn, where X is the power of the creature tapped this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Keldon Battlewagon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

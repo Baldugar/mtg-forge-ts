@@ -1,0 +1,23 @@
+{
+  "id": "consul-s-shieldguard-corpus-m682",
+  "description": "M6 corpus — Consul's Shieldguard; in-hand parse.",
+  "seed": 61813,
+  "cards": {
+    "Consul's Shieldguard": "Name:Consul's Shieldguard\nManaCost:3 W\nTypes:Creature Dwarf Soldier\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}. If you do, another target attacking creature gains indestructible until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ PayEnergy<1> | ValidTgts$ Creature.attacking+Other | TgtPrompt$ Select another target attacking creature | KW$ Indestructible\nSVar:HasAttackEffect:TRUE\nOracle:When Consul's Shieldguard enters, you get {E}{E} (two energy counters).\\nWhenever Consul's Shieldguard attacks, you may pay {E}. If you do, another target attacking creature gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consul's Shieldguard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

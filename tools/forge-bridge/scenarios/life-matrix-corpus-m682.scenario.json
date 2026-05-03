@@ -1,0 +1,23 @@
+{
+  "id": "life-matrix-corpus-m682",
+  "description": "M6 corpus — Life Matrix; in-hand parse.",
+  "seed": 63142,
+  "cards": {
+    "Life Matrix": "Name:Life Matrix\nManaCost:4\nTypes:Artifact\nA:AB$ PutCounter | Cost$ 4 T | PlayerTurn$ True | ActivationPhases$ Upkeep | CounterType$ MATRIX | CounterNum$ 1 | ValidTgts$ Creature | SubAbility$ DBAnimate | SpellDescription$ Put a matrix counter on target creature and that creature gains \"Remove a matrix counter from this creature: Regenerate this creature.\"\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Abilities$ Regen | Duration$ Permanent | SpellDescription$ Activate only during your upkeep.\nSVar:Regen:AB$ Regenerate | Cost$ SubCounter<1/MATRIX> | SpellDescription$ Regenerate CARDNAME.\nAI:RemoveDeck:All\nDeckHas:Ability$Counters & Keyword$Regenerate\nOracle:{4}, {T}: Put a matrix counter on target creature and that creature gains \"Remove a matrix counter from this creature: Regenerate this creature.\" Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Life Matrix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

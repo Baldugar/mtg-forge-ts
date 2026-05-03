@@ -1,0 +1,23 @@
+{
+  "id": "jace-architect-of-thought-corpus-m682",
+  "description": "M6 corpus — Jace, Architect of Thought; in-hand parse.",
+  "seed": 62923,
+  "cards": {
+    "Jace, Architect of Thought": "Name:Jace, Architect of Thought\nManaCost:2 U U\nTypes:Legendary Planeswalker Jace\nLoyalty:4\nA:AB$ Effect | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Triggers$ TrigAttack | Duration$ UntilYourNextTurn | AILogic$ Main2 | SpellDescription$ Until your next turn, whenever a creature an opponent controls attacks, it gets -1/-0 until end of turn.\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Creature.OppCtrl | TriggerZones$ Command | Execute$ JacePump | TriggerDescription$ Until your next turn, whenever a creature an opponent controls attacks, it gets -1/-0 until end of turn.\nSVar:JacePump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ -1\nA:AB$ PeekAndReveal | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | PeekAmount$ 3 | RememberRevealed$ True | NoPeek$ True | SubAbility$ DBTwoPiles | SpellDescription$ Reveal the top three cards of your library. An opponent separates them into two piles. Put one pile into your hand and the other on the bottom of your library in any order.\nSVar:DBTwoPiles:DB$ TwoPiles | Defined$ You | DefinedCards$ Remembered | Separator$ Opponent | ChosenPile$ DBHand | UnchosenPile$ DBLibraryBottom\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBLibraryBottom:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Library | LibraryPosition$ -1\nA:AB$ ChangeZone | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | Origin$ Library | Destination$ Exile | DefinedPlayer$ Player | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | Imprint$ True | Shuffle$ True | SubAbility$ DBPlayIt | SpellDescription$ For each player, search that player's library for a nonland card and exile it, then that player shuffles. You may cast those cards without paying their mana costs.\nSVar:DBPlayIt:DB$ Play | Defined$ Imprinted | Amount$ All | Controller$ You | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nOracle:[+1]: Until your next turn, whenever a creature an opponent controls attacks, it gets -1/-0 until end of turn.\\n[-2]: Reveal the top three cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other on the bottom of your library in any order.\\n[-8]: For each player, search that player's library for a nonland card and exile it, then that player shuffles. You may cast those cards without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, Architect of Thought"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quest-for-pure-flame-corpus-m682",
+  "description": "M6 corpus — Quest for Pure Flame; in-hand parse.",
+  "seed": 63876,
+  "cards": {
+    "Quest for Pure Flame": "Name:Quest for Pure Flame\nManaCost:R\nTypes:Enchantment\nT:Mode$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Opponent | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever a source you control deals damage to an opponent, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nA:AB$ Effect | Cost$ SubCounter<4/QUEST> Sac<1/CARDNAME> | ReplacementEffects$ DamageEvent | SpellDescription$ If any source you control would deal damage to a permanent or player this turn, it deals double that damage to that permanent or player instead.\nSVar:DamageEvent:Event$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ If any source you control would deal damage to a permanent or player this turn, it deals double that damage to that permanent or player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nSVar:MaxQuestEffect:4\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Whenever a source you control deals damage to an opponent, you may put a quest counter on Quest for Pure Flame.\\nRemove four quest counters from Quest for Pure Flame and sacrifice it: If any source you control would deal damage to a permanent or player this turn, it deals double that damage to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quest for Pure Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "writ-of-passage-corpus-m682",
+  "description": "M6 corpus — Writ of Passage; in-hand parse.",
+  "seed": 65286,
+  "cards": {
+    "Writ of Passage": "Name:Writ of Passage\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Creature.powerLE2\nSVar:AttachAILogic:Pump\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy+powerLE2 | Execute$ TrigUnblockable | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature attacks, if its power is 2 or less, it can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | RememberObjects$ TriggeredAttackerLKICopy | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | ConditionCheckSVar$ TriggeredAttacker$Valid Card.powerLE2\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nA:AB$ Effect | Cost$ 1 U Reveal<1/CARDNAME> | TgtPrompt$ Choose target creature with power 2 or less | ValidTgts$ Creature.powerLE2 | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | Forecast$ True | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn. (Activate only during your upkeep and only once each turn.)\nSVar:NonStackingAttachEffect:True\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nWhenever enchanted creature attacks, if its power is 2 or less, it can't be blocked this turn.\\nForecast — {1}{U}, Reveal Writ of Passage from your hand: Target creature with power 2 or less can't be blocked this turn. (Activate only during your upkeep and only once each turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Writ of Passage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

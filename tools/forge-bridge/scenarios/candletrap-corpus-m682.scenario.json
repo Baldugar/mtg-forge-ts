@@ -1,0 +1,23 @@
+{
+  "id": "candletrap-corpus-m682",
+  "description": "M6 corpus — Candletrap; in-hand parse.",
+  "seed": 61617,
+  "cards": {
+    "Candletrap": "Name:Candletrap\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Defender | Description$ Enchanted creature has defender.\nR:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Creature.EnchantedBy | Description$ Prevent all combat damage that would be dealt by enchanted creature.\nA:AB$ ChangeZone | Cost$ 2 W Sac<1/CARDNAME> | Defined$ Enchanted | CheckSVar$ X | SVarCompare$ GE3 | Origin$ Battlefield | Destination$ Exile | PrecostDesc$ Coven — | SpellDescription$ Exile enchanted creature. Activate only if you control three or more creatures with different powers.\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nOracle:Enchant creature\\nEnchanted creature has defender.\\nPrevent all combat damage that would be dealt by enchanted creature.\\nCoven — {2}{W}, Sacrifice Candletrap: Exile enchanted creature. Activate only if you control three or more creatures with different powers.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Candletrap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

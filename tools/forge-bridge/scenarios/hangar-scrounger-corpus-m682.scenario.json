@@ -1,0 +1,23 @@
+{
+  "id": "hangar-scrounger-corpus-m682",
+  "description": "M6 corpus — Hangar Scrounger; in-hand parse.",
+  "seed": 62688,
+  "cards": {
+    "Hangar Scrounger": "Name:Hangar Scrounger\nManaCost:2 R\nTypes:Creature Dwarf Pilot\nPT:2/1\nK:Backup:1:BackupAbility\nSVar:BackupAbility:DB$ Animate | Triggers$ TapTrig\nSVar:TapTrig:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature becomes tapped, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card>\nT:Mode$ Taps | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature becomes tapped, you may discard a card. If you do, draw a card.\nDeckHas:Ability$Counters|Discard\nOracle:Backup 1 (When this creature enters, put a +1/+1 counter on target creature. If that's another creature, it gains the following abilities until end of turn.)\\nWhenever this creature becomes tapped, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hangar Scrounger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quest-for-the-necropolis-corpus-m682",
+  "description": "M6 corpus — Quest for the Necropolis; in-hand parse.",
+  "seed": 63880,
+  "cards": {
+    "Quest for the Necropolis": "Name:Quest for the Necropolis\nManaCost:B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ 5 B Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | SorcerySpeed$ True | ReduceCost$ X | TgtPrompt$ Select target creature card in a graveyard | ValidTgts$ Creature | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control. This ability costs {1} less to activate for each quest counter on CARDNAME. Activate only as a sorcery.\nSVar:X:Count$CardCounters.QUEST\nSVar:MaxQuestEffect:5\nDeckHas:Ability$Counters\nOracle:Landfall — Whenever a land you control enters, you may put a quest counter on Quest for the Necropolis.\\n{5}{B}, Sacrifice Quest for the Necropolis: Put target creature card from a graveyard onto the battlefield under your control. This ability costs {1} less to activate for each quest counter on Quest for the Necropolis. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quest for the Necropolis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "severed-strands-corpus-m682",
+  "description": "M6 corpus — Severed Strands; in-hand parse.",
+  "seed": 64299,
+  "cards": {
+    "Severed Strands": "Name:Severed Strands\nManaCost:1 B\nTypes:Sorcery\nA:SP$ GainLife | Cost$ 1 B Sac<1/Creature> | Defined$ You | LifeAmount$ X | SubAbility$ DBDestroy | SpellDescription$ You gain life equal to the sacrificed creature's toughness. Destroy target creature an opponent controls.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls.\nSVar:X:Sacrificed$CardToughness\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nYou gain life equal to the sacrificed creature's toughness. Destroy target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Severed Strands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

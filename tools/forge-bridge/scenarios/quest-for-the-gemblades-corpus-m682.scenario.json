@@ -1,0 +1,23 @@
+{
+  "id": "quest-for-the-gemblades-corpus-m682",
+  "description": "M6 corpus — Quest for the Gemblades; in-hand parse.",
+  "seed": 63877,
+  "cards": {
+    "Quest for the Gemblades": "Name:Quest for the Gemblades\nManaCost:1 G\nTypes:Enchantment\nA:AB$ PutCounter | Cost$ SubCounter<1/QUEST> Sac<1/CARDNAME> | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 4 | SpellDescription$ Put four +1/+1 counters on target creature.\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Creature | TriggerZones$ Battlefield | OptionalDecider$ You | CombatDamage$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control deals combat damage to a creature, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:MaxQuestEffect:1\nDeckHas:Ability$Counters\nOracle:Whenever a creature you control deals combat damage to a creature, you may put a quest counter on Quest for the Gemblades.\\nRemove a quest counter from Quest for the Gemblades and sacrifice it: Put four +1/+1 counters on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quest for the Gemblades"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

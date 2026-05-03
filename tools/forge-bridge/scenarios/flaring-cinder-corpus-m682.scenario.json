@@ -1,0 +1,23 @@
+{
+  "id": "flaring-cinder-corpus-m682",
+  "description": "M6 corpus — Flaring Cinder; in-hand parse.",
+  "seed": 62355,
+  "cards": {
+    "Flaring Cinder": "Name:Flaring Cinder\nManaCost:1 UR UR\nTypes:Creature Elemental Sorcerer\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters and whenever you cast a spell with mana value 4 or greater, you may discard a card. If you do, draw a card.\nT:Mode$ SpellCast | ValidCard$ Card.cmcGE4 | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When this creature enters and whenever you cast a spell with mana value 4 or greater, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:When this creature enters and whenever you cast a spell with mana value 4 or greater, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flaring Cinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

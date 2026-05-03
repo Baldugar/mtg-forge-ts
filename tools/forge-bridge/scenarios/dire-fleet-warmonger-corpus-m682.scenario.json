@@ -1,0 +1,23 @@
+{
+  "id": "dire-fleet-warmonger-corpus-m682",
+  "description": "M6 corpus — Dire Fleet Warmonger; in-hand parse.",
+  "seed": 62022,
+  "cards": {
+    "Dire Fleet Warmonger": "Name:Dire Fleet Warmonger\nManaCost:1 B R\nTypes:Creature Orc Pirate\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, you may sacrifice another creature. If you do, CARDNAME gets +2/+2 and gains trample until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ Sac<1/Creature.Other/another creature> | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | KW$ Trample\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE1\nOracle:At the beginning of combat on your turn, you may sacrifice another creature. If you do, Dire Fleet Warmonger gets +2/+2 and gains trample until end of turn. (It can deal excess combat damage to the player or planeswalker it's attacking.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dire Fleet Warmonger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

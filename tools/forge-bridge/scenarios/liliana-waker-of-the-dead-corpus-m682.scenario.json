@@ -1,0 +1,23 @@
+{
+  "id": "liliana-waker-of-the-dead-corpus-m682",
+  "description": "M6 corpus — Liliana, Waker of the Dead; in-hand parse.",
+  "seed": 63161,
+  "cards": {
+    "Liliana, Waker of the Dead": "Name:Liliana, Waker of the Dead\nManaCost:2 B B\nTypes:Legendary Planeswalker Liliana\nLoyalty:4\nA:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBLoseLife | StackDescription$ SpellDescription | SpellDescription$ Each player discards a card. Each opponent who can't loses 3 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ OppNonRememberedController | LifeAmount$ 3 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Pump | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SpellDescription$ Target creature gets -X/-X until end of turn, where X is the number of cards in your graveyard.\nSVar:X:Count$ValidGraveyard Card.YouOwn\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Liliana, Waker of the Dead | Image$ emblem_liliana_waker_of_the_dead | Triggers$ EffPhase | Duration$ Permanent | SpellDescription$ You get an emblem with \"At the beginning of combat on your turn, put target creature card from a graveyard onto the battlefield under your control. It gains haste.\"\nSVar:EffPhase:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ EmblemTrigChangeZone | TriggerDescription$ At the beginning of combat on your turn, put target creature card from a graveyard onto the battlefield under your control. It gains haste.\nSVar:EmblemTrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target creature card in a graveyard | ValidTgts$ Creature | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Haste | Duration$ Permanent\nDeckHas:Ability$Discard|Graveyard\nOracle:[+1]: Each player discards a card. Each opponent who can't loses 3 life.\\n[-3]: Target creature gets -X/-X until end of turn, where X is the number of cards in your graveyard.\\n[-7]: You get an emblem with \"At the beginning of combat on your turn, put target creature card from a graveyard onto the battlefield under your control. It gains haste.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana, Waker of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

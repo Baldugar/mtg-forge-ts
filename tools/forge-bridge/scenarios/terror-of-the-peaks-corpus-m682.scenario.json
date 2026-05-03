@@ -1,0 +1,23 @@
+{
+  "id": "terror-of-the-peaks-corpus-m682",
+  "description": "M6 corpus — Terror of the Peaks; in-hand parse.",
+  "seed": 64760,
+  "cards": {
+    "Terror of the Peaks": "Name:Terror of the Peaks\nManaCost:3 R R\nTypes:Creature Dragon\nPT:5/4\nK:Flying\nS:Mode$ RaiseCost | ValidTarget$ Card.Self | Activator$ Player.Opponent | Type$ Spell | Cost$ PayLife<3> | Description$ Spells your opponents cast that target CARDNAME cost an additional 3 life to cast.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever another creature you control enters, CARDNAME deals damage equal to that creature's power to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredCard$CardPower\nSVar:BuffedBy:Creature\nOracle:Flying\\nSpells your opponents cast that target Terror of the Peaks cost an additional 3 life to cast.\\nWhenever another creature you control enters, Terror of the Peaks deals damage equal to that creature's power to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terror of the Peaks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

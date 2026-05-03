@@ -1,0 +1,23 @@
+{
+  "id": "key-to-the-city-corpus-m682",
+  "description": "M6 corpus — Key to the City; in-hand parse.",
+  "seed": 63019,
+  "cards": {
+    "Key to the City": "Name:Key to the City\nManaCost:2\nTypes:Artifact\nA:AB$ Effect | Cost$ T Discard<1/Card> | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ SpellDescription | SpellDescription$ Up to one target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME becomes untapped, you may pay {2}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ 2\nDeckHas:Ability$Discard\nOracle:{T}, Discard a card: Up to one target creature can't be blocked this turn.\\nWhenever Key to the City becomes untapped, you may pay {2}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Key to the City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

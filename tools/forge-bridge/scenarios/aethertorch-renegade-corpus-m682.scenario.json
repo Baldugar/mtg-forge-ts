@@ -1,0 +1,23 @@
+{
+  "id": "aethertorch-renegade-corpus-m682",
+  "description": "M6 corpus — Aethertorch Renegade; in-hand parse.",
+  "seed": 61461,
+  "cards": {
+    "Aethertorch Renegade": "Name:Aethertorch Renegade\nManaCost:2 R\nTypes:Creature Human Rogue\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E}{E} (four energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 4\nA:AB$ DealDamage | Cost$ T PayEnergy<2> | ValidTgts$ Creature | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target creature.\nA:AB$ DealDamage | Cost$ T PayEnergy<8> | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 6 | SpellDescription$ CARDNAME deals 6 damage to target player or planeswalker.\nOracle:When Aethertorch Renegade enters, you get {E}{E}{E}{E} (four energy counters).\\n{T}, Pay {E}{E}: Aethertorch Renegade deals 1 damage to target creature.\\n{T}, Pay eight {E}: Aethertorch Renegade deals 6 damage to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aethertorch Renegade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

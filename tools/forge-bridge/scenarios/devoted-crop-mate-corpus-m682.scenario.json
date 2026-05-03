@@ -1,0 +1,23 @@
+{
+  "id": "devoted-crop-mate-corpus-m682",
+  "description": "M6 corpus — Devoted Crop-Mate; in-hand parse.",
+  "seed": 61998,
+  "cards": {
+    "Devoted Crop-Mate": "Name:Devoted Crop-Mate\nManaCost:2 W\nTypes:Creature Human Warrior\nPT:3/2\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Trigger$ TrigChangeZone | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. When you do, return target creature card with mana value 2 or less from your graveyard to the battlefield. (An exerted creature won't untap during your next untap step.)\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE2 | TgtPrompt$ Select target creature card with mana value 2 or less in your graveyard | SpellDescription$ When you do, return target creature card with mana value 2 or less from your graveyard to the battlefield.\nOracle:You may exert Devoted Crop-Mate as it attacks. When you do, return target creature card with mana value 2 or less from your graveyard to the battlefield. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devoted Crop-Mate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

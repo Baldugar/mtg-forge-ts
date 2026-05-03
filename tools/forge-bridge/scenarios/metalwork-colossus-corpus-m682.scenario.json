@@ -1,0 +1,23 @@
+{
+  "id": "metalwork-colossus-corpus-m682",
+  "description": "M6 corpus — Metalwork Colossus; in-hand parse.",
+  "seed": 63351,
+  "cards": {
+    "Metalwork Colossus": "Name:Metalwork Colossus\nManaCost:11\nTypes:Artifact Creature Construct\nPT:10/10\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the total mana value of noncreature artifacts you control.\nA:AB$ ChangeZone | Cost$ Sac<2/Artifact> | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nSVar:DiscardMe:1\nSVar:X:Count$Valid Artifact.nonCreature+YouCtrl$CardManaCost\nSVar:AIPreference:SacCost$Artifact.token,Artifact.cmcEQ1,Artifact.cmcEQ2\nOracle:This spell costs {X} less to cast, where X is the total mana value of noncreature artifacts you control.\\nSacrifice two artifacts: Return Metalwork Colossus from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Metalwork Colossus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

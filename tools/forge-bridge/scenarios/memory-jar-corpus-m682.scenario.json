@@ -1,0 +1,23 @@
+{
+  "id": "memory-jar-corpus-m682",
+  "description": "M6 corpus — Memory Jar; in-hand parse.",
+  "seed": 63329,
+  "cards": {
+    "Memory Jar": "Name:Memory Jar\nManaCost:5\nTypes:Artifact\nA:AB$ ChangeZoneAll | Cost$ T Sac<1/CARDNAME> | ChangeType$ Card | Origin$ Hand | Destination$ Exile | ExileFaceDown$ True | RememberChanged$ True | SubAbility$ DrawEach | SpellDescription$ Each player exiles all cards from their hand face down and draws seven cards. At the beginning of the next end step, each player discards their hand and returns to their hand each card they exiled this way.\nSVar:DrawEach:DB$ Draw | Defined$ Player | NumCards$ 7 | SubAbility$ DelayedReturn\nSVar:DelayedReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ DiscardEach | RememberObjects$ RememberedLKI | TriggerDescription$ At the beginning of the next end step, each player discards their hand and returns to their hand each card they exiled this way. | SubAbility$ DBCleanup\nSVar:DiscardEach:DB$ Discard | Defined$ Player | Mode$ Hand | SubAbility$ ReturnAll\nSVar:ReturnAll:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{T}, Sacrifice Memory Jar: Each player exiles all cards from their hand face down and draws seven cards. At the beginning of the next end step, each player discards their hand and returns to their hand each card they exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memory Jar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

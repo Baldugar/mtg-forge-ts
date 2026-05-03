@@ -1,0 +1,23 @@
+{
+  "id": "spotlight-falcon-corpus-m682",
+  "description": "M6 corpus — Spotlight Falcon; in-hand parse.",
+  "seed": 64571,
+  "cards": {
+    "Spotlight Falcon": "Name:Spotlight Falcon\nManaCost:2 W W\nTypes:Artifact Creature Bird\nPT:4/3\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ CollectEvidence<5> | Description$ As an additional cost to cast this spell, you may collect evidence 5.\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | CheckSVar$ X | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, if evidence was collected, conjure a card named Spotlight Falcon into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Spotlight Falcon | Zone$ Hand\nSVar:X:CastSA>Collected$Amount\nDeckHints:Ability$Graveyard|Mill|Discard|Dredge\nOracle:As an additional cost to cast this spell, you may collect evidence 5.\\nFlying\\nWhen Spotlight Falcon enters, if evidence was collected, conjure a card named Spotlight Falcon into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spotlight Falcon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

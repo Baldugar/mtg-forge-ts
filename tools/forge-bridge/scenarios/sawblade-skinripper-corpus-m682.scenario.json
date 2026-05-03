@@ -1,0 +1,23 @@
+{
+  "id": "sawblade-skinripper-corpus-m682",
+  "description": "M6 corpus — Sawblade Skinripper; in-hand parse.",
+  "seed": 64198,
+  "cards": {
+    "Sawblade Skinripper": "Name:Sawblade Skinripper\nManaCost:1 B R\nTypes:Creature Human Assassin\nPT:3/2\nK:Menace\nA:AB$ PutCounter | Cost$ 2 Sac<1/Creature.Other;Enchantment.Other/another creature or enchantment> | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GT0 | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your end step, if you sacrificed one or more permanents this turn, CARDNAME deals that much damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | NumDmg$ X | ValidTgts$ Any\nSVar:X:PlayerCountPropertyYou$SacrificedThisTurn Permanent\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token\nOracle:Menace\\n{2}, Sacrifice another creature or enchantment: Put a +1/+1 counter on Sawblade Skinripper.\\nAt the beginning of your end step, if you sacrificed one or more permanents this turn, Sawblade Skinripper deals that much damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sawblade Skinripper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

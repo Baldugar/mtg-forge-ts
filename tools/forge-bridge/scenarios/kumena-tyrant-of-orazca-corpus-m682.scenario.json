@@ -1,0 +1,23 @@
+{
+  "id": "kumena-tyrant-of-orazca-corpus-m682",
+  "description": "M6 corpus — Kumena, Tyrant of Orazca; in-hand parse.",
+  "seed": 63083,
+  "cards": {
+    "Kumena, Tyrant of Orazca": "Name:Kumena, Tyrant of Orazca\nManaCost:1 G U\nTypes:Legendary Creature Merfolk Shaman\nPT:2/4\nA:AB$ Effect | Cost$ tapXType<1/Merfolk.Other> | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SpellDescription$ CARDNAME can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nA:AB$ Draw | Cost$ tapXType<3/Merfolk> | AILogic$ AtOppEOT | SpellDescription$ Draw a card.\nA:AB$ PutCounterAll | Cost$ tapXType<5/Merfolk> | ValidCards$ Merfolk.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ AtOppEOT | SpellDescription$ Put a +1/+1 counter on each Merfolk you control.\nSVar:BuffedBy:Merfolk\nDeckHas:Ability$Counters\nDeckHints:Type$Merfolk\nOracle:Tap another untapped Merfolk you control: Kumena, Tyrant of Orazca can't be blocked this turn.\\nTap three untapped Merfolk you control: Draw a card.\\nTap five untapped Merfolk you control: Put a +1/+1 counter on each Merfolk you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kumena, Tyrant of Orazca"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

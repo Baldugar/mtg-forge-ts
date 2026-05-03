@@ -1,0 +1,23 @@
+{
+  "id": "toralf-god-of-fury-corpus-m682",
+  "description": "M6 corpus — Toralf, God of Fury; in-hand parse.",
+  "seed": 64913,
+  "cards": {
+    "Toralf, God of Fury": "Name:Toralf, God of Fury\nManaCost:2 R R\nTypes:Legendary Creature God\nPT:5/4\nK:Trample\nT:Mode$ ExcessDamage | ValidTarget$ Creature.OppCtrl,Planeswalker.OppCtrl | CombatDamage$ False | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature or planeswalker an opponent controls is dealt excess noncombat damage, NICKNAME deals damage equal to the excess to any target other than that permanent.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.!TriggeredTarget,Player,Planeswalker.!TriggeredTarget | TgtPrompt$ Select any target | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nAlternateMode:Modal\nOracle:Trample\\nWhenever a creature or planeswalker an opponent controls is dealt excess noncombat damage, Toralf deals damage equal to the excess to any target other than that permanent.\n\nALTERNATE\n\nName:Toralf's Hammer\nManaCost:1 R\nTypes:Legendary Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddAbility$ HammerDamage | Description$ Equipped creature has \"{1}{R}, {T}, Unattach CARDNAME: It deals 3 damage to any target. Return CARDNAME to it owner's hand.\"\nSVar:HammerDamage:AB$ DealDamage | Cost$ 1 R T Unattach<OriginalHost/Toralf's Hammer> | NumDmg$ 3 | DamageSource$ OriginalHost | ValidTgts$ Any | SubAbility$ HammerCatch | SpellDescription$ It deals 3 damage to any target. Return ORIGINALHOST to its owner's hand.\nSVar:HammerCatch:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ OriginalHost\nS:Mode$ Continuous | Affected$ Card.EquippedBy+Legendary | AddPower$ 3 | Description$ Equipped creature gets +3/+0 as long as it's legendary.\nK:Equip:1 R\nOracle:Equipped creature has \"{1}{R}, {T}, Unattach Toralf's Hammer: It deals 3 damage to any target. Return Toralf's Hammer to its owner's hand.\"\\nEquipped creature gets +3/+0 as long as it's legendary.\\nEquip {1}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Toralf, God of Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

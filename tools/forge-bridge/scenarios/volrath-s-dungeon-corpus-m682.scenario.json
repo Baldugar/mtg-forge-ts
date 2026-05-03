@@ -1,0 +1,23 @@
+{
+  "id": "volrath-s-dungeon-corpus-m682",
+  "description": "M6 corpus — Volrath's Dungeon; in-hand parse.",
+  "seed": 65154,
+  "cards": {
+    "Volrath's Dungeon": "Name:Volrath's Dungeon\nManaCost:2 B B\nTypes:Enchantment\nA:AB$ Destroy | Cost$ PayLife<5> | Defined$ Self | PlayerTurn$ True | Activator$ Player | SpellDescription$ Destroy CARDNAME. Any player may activate this ability but only during their turn.\nA:AB$ ChangeZone | Cost$ Discard<1/Card> | ValidTgts$ Player | Origin$ Hand | Destination$ Library | ChangeType$ Card | ChangeNum$ 1 | Chooser$ Targeted | LibraryPosition$ 0 | SorcerySpeed$ True | SpellDescription$ Target player puts a card from their hand on top of their library. Activate only as a sorcery.\nAI:RemoveDeck:Random\nOracle:Pay 5 life: Destroy Volrath's Dungeon. Any player may activate this ability but only during their turn.\\nDiscard a card: Target player puts a card from their hand on top of their library. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Volrath's Dungeon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

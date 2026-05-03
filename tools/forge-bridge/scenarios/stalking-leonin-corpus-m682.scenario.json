@@ -1,0 +1,23 @@
+{
+  "id": "stalking-leonin-corpus-m682",
+  "description": "M6 corpus — Stalking Leonin; in-hand parse.",
+  "seed": 64587,
+  "cards": {
+    "Stalking Leonin": "Name:Stalking Leonin\nManaCost:2 W\nTypes:Creature Cat Archer\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChooseOpp | TriggerDescription$ When CARDNAME enters, secretly choose an opponent.\nSVar:TrigChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | Secretly$ True\nA:AB$ ChangeZone | Cost$ RevealChosen<Player> | ValidTgts$ Creature.attackingYou | TgtPrompt$ Select target creature that's attacking you | Origin$ Battlefield | Destination$ Exile | ConditionDefined$ Targeted | ConditionPresent$ Card.ChosenCtrl | GameActivationLimit$ 1 | SpellDescription$ Exile target creature that's attacking you if it's controlled by the chosen player. Activate only once.\nOracle:When Stalking Leonin enters, secretly choose an opponent.\\nReveal the player you chose: Exile target creature that's attacking you if it's controlled by the chosen player. Activate only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stalking Leonin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

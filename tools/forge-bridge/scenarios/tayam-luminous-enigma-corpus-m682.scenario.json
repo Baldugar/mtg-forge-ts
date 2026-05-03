@@ -1,0 +1,23 @@
+{
+  "id": "tayam-luminous-enigma-corpus-m682",
+  "description": "M6 corpus — Tayam, Luminous Enigma; in-hand parse.",
+  "seed": 64727,
+  "cards": {
+    "Tayam, Luminous Enigma": "Name:Tayam, Luminous Enigma\nManaCost:1 W B G\nTypes:Legendary Creature Nightmare Beast\nPT:3/3\nK:ETBReplacement:Other:AddExtraCounter:Mandatory:Battlefield:Creature.Other+YouCtrl\nSVar:AddExtraCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ Vigilance | CounterNum$ 1 | SpellDescription$ Each other creature you control enters with an additional vigilance counter on it.\nA:AB$ Mill | Cost$ 3 RemoveAnyCounter<3/Any/Creature> | NumCards$ 3 | Defined$ You | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ Mill three cards, then return a permanent card with mana value 3 or less from your graveyard to the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Permanent.YouOwn+cmcLE3 | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Battlefield\nSVar:AIRemoveCounterCostPriority:Vigilance\nDeckHas:Ability$Counters\nOracle:Each other creature you control enters with an additional vigilance counter on it.\\n{3}, Remove three counters from among creatures you control: Mill three cards, then return a permanent card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tayam, Luminous Enigma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

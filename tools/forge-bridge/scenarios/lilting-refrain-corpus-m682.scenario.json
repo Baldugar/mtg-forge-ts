@@ -1,0 +1,23 @@
+{
+  "id": "lilting-refrain-corpus-m682",
+  "description": "M6 corpus — Lilting Refrain; in-hand parse.",
+  "seed": 63164,
+  "cards": {
+    "Lilting Refrain": "Name:Lilting Refrain\nManaCost:1 U\nTypes:Enchantment\nA:AB$ Counter | Cost$ Sac<1/CARDNAME> | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ X | SpellDescription$ Counter target spell unless its controller pays {X}, where X is the number of verse counters on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a verse counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ VERSE | CounterNum$ 1\nSVar:X:Count$CardCounters.VERSE\nOracle:At the beginning of your upkeep, you may put a verse counter on Lilting Refrain.\\nSacrifice Lilting Refrain: Counter target spell unless its controller pays {X}, where X is the number of verse counters on Lilting Refrain.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lilting Refrain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

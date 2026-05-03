@@ -1,0 +1,23 @@
+{
+  "id": "vitaspore-thallid-corpus-m682",
+  "description": "M6 corpus — Vitaspore Thallid; in-hand parse.",
+  "seed": 65121,
+  "cards": {
+    "Vitaspore Thallid": "Name:Vitaspore Thallid\nManaCost:1 G\nTypes:Creature Fungus\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a spore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SPORE | CounterNum$ 1\nA:AB$ Token | Cost$ SubCounter<3/SPORE> | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nA:AB$ Pump | Cost$ Sac<1/Saproling> | ValidTgts$ Creature | KW$ Haste | SpellDescription$ Target creature gains haste until end of turn.\nDeckHas:Ability$Counters|Token\nOracle:At the beginning of your upkeep, put a spore counter on Vitaspore Thallid.\\nRemove three spore counters from Vitaspore Thallid: Create a 1/1 green Saproling creature token.\\nSacrifice a Saproling: Target creature gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vitaspore Thallid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

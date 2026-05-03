@@ -1,0 +1,23 @@
+{
+  "id": "primal-prayers-corpus-m682",
+  "description": "M6 corpus — Primal Prayers; in-hand parse.",
+  "seed": 63822,
+  "cards": {
+    "Primal Prayers": "Name:Primal Prayers\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nS:Mode$ Continuous | Affected$ Creature.cmcLE3 | MayPlay$ True | MayPlayAltManaCost$ PayEnergy<1> | MayPlayDontGrantZonePermissions$ True | MayPlayWithFlash$ True | AffectedZone$ Hand,Graveyard,Exile,Library,Command | Description$ You may cast creature spells with mana value 3 or less by paying {E} rather than paying their mana costs. If you cast a spell this way, you may cast it as though it had flash.\nOracle:When Primal Prayers enters, you get {E}{E} (two energy counters).\\nYou may cast creature spells with mana value 3 or less by paying {E} rather than paying their mana costs. If you cast a spell this way, you may cast it as though it had flash.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Prayers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

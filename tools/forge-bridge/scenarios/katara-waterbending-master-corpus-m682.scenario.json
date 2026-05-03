@@ -1,0 +1,23 @@
+{
+  "id": "katara-waterbending-master-corpus-m682",
+  "description": "M6 corpus — Katara, Waterbending Master; in-hand parse.",
+  "seed": 62998,
+  "cards": {
+    "Katara, Waterbending Master": "Name:Katara, Waterbending Master\nManaCost:1 U\nTypes:Legendary Creature Human Warrior Ally\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a spell during an opponent's turn, you get an experience counter.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ You | CounterType$ Experience | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME attacks, you may draw a card for each experience counter you have. If you do, discard a card.\nSVar:TrigDraw:AB$ Discard | Cost$ Draw<X/You> | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nSVar:X:Count$YourCountersExperience\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard\nOracle:Whenever you cast a spell during an opponent's turn, you get an experience counter.\\nWhenever Katara attacks, you may draw a card for each experience counter you have. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Katara, Waterbending Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

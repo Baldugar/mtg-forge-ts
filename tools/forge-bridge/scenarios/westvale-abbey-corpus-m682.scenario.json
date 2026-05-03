@@ -1,0 +1,23 @@
+{
+  "id": "westvale-abbey-corpus-m682",
+  "description": "M6 corpus — Westvale Abbey; in-hand parse.",
+  "seed": 65225,
+  "cards": {
+    "Westvale Abbey": "Name:Westvale Abbey\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Token | Cost$ 5 T PayLife<1> | TokenScript$ wb_1_1_human_cleric | TokenOwner$ You | SpellDescription$ Create a 1/1 white and black Human Cleric creature token.\nA:AB$ SetState | Cost$ 5 T Sac<5/Creature> | Defined$ Self | Mode$ Transform | SubAbility$ DBUntap | SpellDescription$ Transform CARDNAME, then untap it.\nSVar:DBUntap:DB$ Untap | Defined$ Self\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE2\nAlternateMode:DoubleFaced\nOracle:{T}: Add {C}.\\n{5}, {T}, Pay 1 life: Create a 1/1 white and black Human Cleric creature token.\\n{5}, {T}, Sacrifice five creatures: Transform Westvale Abbey, then untap it.\n\nALTERNATE\n\nName:Ormendahl, Profane Prince\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Demon\nPT:9/7\nK:Flying\nK:Lifelink\nK:Indestructible\nK:Haste\nOracle:Flying, lifelink, indestructible, haste\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Westvale Abbey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "era-of-innovation-corpus-m682",
+  "description": "M6 corpus — Era of Innovation; in-hand parse.",
+  "seed": 62214,
+  "cards": {
+    "Era of Innovation": "Name:Era of Innovation\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Artifact.YouCtrl,Permanent.Artificer+YouCtrl | Execute$ TrigEnergy | TriggerDescription$ Whenever an artifact or Artificer you control enters, you may pay {1}. If you do, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:AB$ PutCounter | Cost$ 1 | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ Draw | Cost$ PayEnergy<6> Sac<1/CARDNAME> | NumCards$ 3 | SpellDescription$ Draw three cards.\nSVar:BuffedBy:Artifact,Artificer\nDeckHints:Type$Artifact|Artificer\nOracle:Whenever an artifact or Artificer you control enters, you may pay {1}. If you do, you get {E}{E} (two energy counters).\\nPay six {E}, Sacrifice Era of Innovation: Draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Era of Innovation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

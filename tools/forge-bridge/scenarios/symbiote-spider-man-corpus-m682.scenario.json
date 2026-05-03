@@ -1,0 +1,23 @@
+{
+  "id": "symbiote-spider-man-corpus-m682",
+  "description": "M6 corpus — Symbiote Spider-Man; in-hand parse.",
+  "seed": 64694,
+  "cards": {
+    "Symbiote Spider-Man": "Name:Symbiote Spider-Man\nVariant:UniversesWithin:FlavorName:Skv'x the Augmenter\nManaCost:2 UB\nTypes:Legendary Creature Symbiote Spider Hero\nPT:2/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDig | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, look at that many cards from the top of your library. Put one of them into your hand and the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | ChangeValid$ Card | DestinationZone$ Hand | DestinationZone2$ Graveyard\nSVar:X:TriggerCount$DamageAmount\nA:AB$ PutCounter | PrecostDesc$ Find New Host — | Cost$ 2 UB ExileFromGrave<1/CARDNAME/this card> | ActivationZone$ Graveyard | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SorcerySpeed$ True | SubAbility$ DBAnimate | SpellDescription$ Put a +1/+1 counter on target creature you control. It gains this card's other abilities. Activate only as a sorcery.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Triggers$ SymbioteTrig | Duration$ Permanent\nSVar:SymbioteTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDig | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, look at that many cards from the top of your library. Put one of them into your hand and the rest into your graveyard.\nDeckHas:Ability$Counters\nDeckHints:Ability$Discard|Mill|Sacrifice\nOracle:Whenever this creature deals combat damage to a player, look at that many cards from the top of your library. Put one of them into your hand and the rest into your graveyard.\\nFind New Host — {2}{U/B}, Exile this card from your graveyard: Put a +1/+1 counter on target creature you control. It gains this card's other abilities. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Symbiote Spider-Man"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

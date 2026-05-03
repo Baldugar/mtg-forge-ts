@@ -1,0 +1,23 @@
+{
+  "id": "faithful-squire-corpus-m682",
+  "description": "M6 corpus — Faithful Squire; in-hand parse.",
+  "seed": 62278,
+  "cards": {
+    "Faithful Squire": "Name:Faithful Squire\nManaCost:1 W W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Card.Self+counters_GE2_KI | Execute$ TrigFlip | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, if there are two or more ki counters on CARDNAME, you may flip it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nDeckHints:Type$Spirit|Arcane\nAlternateMode:Flip\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Faithful Squire.\\nAt the beginning of the end step, if there are two or more ki counters on Faithful Squire, you may flip it.\n\nALTERNATE\n\nName:Kaiso, Memory of Loyalty\nManaCost:1 W W\nColors:white\nTypes:Legendary Creature Spirit\nPT:3/4\nK:Flying\nA:AB$ Pump | Cost$ SubCounter<1/KI> | KW$ Prevent all damage that would be dealt to CARDNAME. | ValidTgts$ Creature | SpellDescription$ Prevent all damage that would be dealt to target creature this turn.\nOracle:Flying\\nRemove a ki counter from Kaiso, Memory of Loyalty: Prevent all damage that would be dealt to target creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faithful Squire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

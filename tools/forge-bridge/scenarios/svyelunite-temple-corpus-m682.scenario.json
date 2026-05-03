@@ -1,0 +1,23 @@
+{
+  "id": "svyelunite-temple-corpus-m682",
+  "description": "M6 corpus — Svyelunite Temple; in-hand parse.",
+  "seed": 64687,
+  "cards": {
+    "Svyelunite Temple": "Name:Svyelunite Temple\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ U | Amount$ 2 | SpellDescription$ Add {U}{U}.\nAI:RemoveDeck:All\nOracle:Svyelunite Temple enters tapped.\\n{T}: Add {U}.\\n{T}, Sacrifice Svyelunite Temple: Add {U}{U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Svyelunite Temple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

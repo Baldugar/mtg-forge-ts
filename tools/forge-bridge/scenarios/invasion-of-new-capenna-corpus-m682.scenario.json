@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-new-capenna-corpus-m682",
+  "description": "M6 corpus — Invasion of New Capenna; in-hand parse.",
+  "seed": 62895,
+  "cards": {
+    "Invasion of New Capenna": "Name:Invasion of New Capenna\nManaCost:W B\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME enters, you may sacrifice an artifact or creature. When you do, exile target artifact or creature an opponent controls.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<1/Artifact;Creature/artifact or creature> | Execute$ TrigExile | TriggerDescription$ When you do, exile target artifact or creature an opponent controls.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Select target artifact or creature an opponent controls | Origin$ Battlefield | Destination$ Exile\nDeckHas:Ability$Sacrifice\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of New Capenna enters, you may sacrifice an artifact or creature. When you do, exile target artifact or creature an opponent controls.\n\nALTERNATE\n\nName:Holy Frazzle-Cannon\nManaCost:no cost\nColors:white,black\nTypes:Artifact Equipment\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigPutCounters | TriggerDescription$ Whenever equipped creature attacks, put a +1/+1 counter on that creature and each other creature you control that shares a creature type with it.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.TriggeredAttacker,Creature.YouCtrl+sharesCreatureTypeWith TriggeredAttackerLKICopy | CounterType$ P1P1\nDeckHas:Ability$Counters\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddSVar$ AE\nSVar:AE:SVar:HasAttackEffect:TRUE\nK:Equip:1\nOracle:Whenever equipped creature attacks, put a +1/+1 counter on that creature and each other creature you control that shares a creature type with it.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of New Capenna"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

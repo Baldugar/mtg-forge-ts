@@ -1,0 +1,23 @@
+{
+  "id": "bebop-skull-crossbones-corpus-m682",
+  "description": "M6 corpus — Bebop, Skull & Crossbones; in-hand parse.",
+  "seed": 61530,
+  "cards": {
+    "Bebop, Skull & Crossbones": "Name:Bebop, Skull & Crossbones\nManaCost:1 B\nTypes:Legendary Creature Boar Mutant\nPT:2/1\nK:Partner with:Rocksteady, Mutant Marauder:Rocksteady\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, you may draw X cards, where X is the number of counters on NICKNAME. If you do, you lose X life.\nSVar:TrigLoseLife:AB$ LoseLife | Defined$ You | LifeAmount$ X | Cost$ Draw<X/You>\nSVar:X:Count$CardCounters.ALL\nOracle:Partner with Rocksteady, Mutant Marauder (When this creature enters, target player may put Rocksteady into their hand from their library, then shuffle.)\\nDeathtouch\\nWhenever Bebop deals combat damage to a player, you may draw X cards, where X is the number of counters on Bebop. If you do, you lose X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bebop, Skull & Crossbones"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

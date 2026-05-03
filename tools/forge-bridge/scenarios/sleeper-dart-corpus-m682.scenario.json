@@ -1,0 +1,23 @@
+{
+  "id": "sleeper-dart-corpus-m682",
+  "description": "M6 corpus — Sleeper Dart; in-hand parse.",
+  "seed": 64441,
+  "cards": {
+    "Sleeper Dart": "Name:Sleeper Dart\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Pump | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Creature | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True | SpellDescription$ Target creature doesn't untap during its controller's next untap step.\nOracle:When Sleeper Dart enters, draw a card.\\n{T}, Sacrifice Sleeper Dart: Target creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sleeper Dart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

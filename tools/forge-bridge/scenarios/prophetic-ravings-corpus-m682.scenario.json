@@ -1,0 +1,23 @@
+{
+  "id": "prophetic-ravings-corpus-m682",
+  "description": "M6 corpus — Prophetic Ravings; in-hand parse.",
+  "seed": 63838,
+  "cards": {
+    "Prophetic Ravings": "Name:Prophetic Ravings\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Haste | AddAbility$ ProphetDraw | Description$ Enchanted creature has haste and \"{T}, Discard a card: Draw a card.\"\nSVar:ProphetDraw:AB$ Draw | Cost$ T Discard<1/Card> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:NonStackingAttachEffect:True\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature has haste and \"{T}, Discard a card: Draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prophetic Ravings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "perforating-artist-corpus-m682",
+  "description": "M6 corpus — Perforating Artist; in-hand parse.",
+  "seed": 63721,
+  "cards": {
+    "Perforating Artist": "Name:Perforating Artist\nManaCost:1 B R\nTypes:Creature Devil\nPT:3/2\nK:Deathtouch\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ RaidTest | Execute$ TrigTorment | TriggerDescription$ Raid — At the beginning of your end step, if you attacked this turn, each opponent loses 3 life unless that player sacrifices a nonland permanent of their choice or discards a card.\nSVar:TrigTorment:DB$ GenericChoice | Defined$ Opponent | TempRemember$ Chooser | Choices$ SacNonland,Discard | FallbackAbility$ LoseLifeFallback | AILogic$ PayUnlessCost\nSVar:Discard:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 3 | UnlessCost$ Discard<1/Card> | UnlessPayer$ Remembered | SpellDescription$ You lose 3 life unless you discard a card.\nSVar:SacNonland:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 3 | UnlessCost$ Sac<1/Permanent.nonLand/nonland permanent> | UnlessPayer$ Remembered | SpellDescription$ You lose 3 life unless you sacrifice a nonland permanent.\nSVar:LoseLifeFallback:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 3\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\\nRaid — At the beginning of your end step, if you attacked this turn, each opponent loses 3 life unless that player sacrifices a nonland permanent of their choice or discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Perforating Artist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

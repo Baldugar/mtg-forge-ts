@@ -1,0 +1,23 @@
+{
+  "id": "safe-haven-corpus-m682",
+  "description": "M6 corpus — Safe Haven; in-hand parse.",
+  "seed": 64130,
+  "cards": {
+    "Safe Haven": "Name:Safe Haven\nManaCost:no cost\nTypes:Land\nA:AB$ ChangeZone | Cost$ 2 T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control. | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature you control.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigReturn | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may sacrifice CARDNAME. If you do, return each card exiled with CARDNAME to the battlefield under its owner's control.\nSVar:TrigReturn:AB$ ChangeZoneAll | Cost$ Sac<1/CARDNAME> | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:{2}, {T}: Exile target creature you control.\\nAt the beginning of your upkeep, you may sacrifice Safe Haven. If you do, return each card exiled with Safe Haven to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Safe Haven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

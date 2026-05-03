@@ -1,0 +1,23 @@
+{
+  "id": "giott-king-of-the-dwarves-corpus-m682",
+  "description": "M6 corpus — Giott, King of the Dwarves; in-hand parse.",
+  "seed": 62530,
+  "cards": {
+    "Giott, King of the Dwarves": "Name:Giott, King of the Dwarves\nManaCost:R W\nTypes:Legendary Creature Dwarf Noble\nPT:1/1\nK:Double Strike\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Dwarf.Other+YouCtrl,Equipment.YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME or another Dwarf you control enters and whenever an Equipment you control enters, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nOracle:Double strike\\nWhenever Giott or another Dwarf you control enters and whenever an Equipment you control enters, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giott, King of the Dwarves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

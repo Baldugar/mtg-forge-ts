@@ -1,0 +1,23 @@
+{
+  "id": "defiler-of-flesh-corpus-m682",
+  "description": "M6 corpus — Defiler of Flesh; in-hand parse.",
+  "seed": 61966,
+  "cards": {
+    "Defiler of Flesh": "Name:Defiler of Flesh\nManaCost:2 B B\nTypes:Creature Phyrexian Horror\nPT:4/4\nK:Menace\nS:Mode$ OptionalCost | ValidCard$ Permanent.Black | ValidSA$ Spell | Activator$ You | Cost$ PayLife<2> | ReduceColor$ B | Description$ As an additional cost to cast black permanent spells, you may pay 2 life. Those spells cost {B} less to cast if you paid life this way. This effect reduces only the amount of black mana you pay.\nT:Mode$ SpellCast | ValidCard$ Permanent.Black | ValidActivatingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a black permanent spell, target creature you control gets +1/+1 and gains menace until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1 | KW$ Menace\nSVar:BuffedBy:Permanent.Black\nOracle:Menace\\nAs an additional cost to cast black permanent spells, you may pay 2 life. Those spells cost {B} less to cast if you paid life this way. This effect reduces only the amount of black mana you pay.\\nWhenever you cast a black permanent spell, target creature you control gets +1/+1 and gains menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiler of Flesh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fabrication-foundry-corpus-m682",
+  "description": "M6 corpus — Fabrication Foundry; in-hand parse.",
+  "seed": 62270,
+  "cards": {
+    "Fabrication Foundry": "Name:Fabrication Foundry\nManaCost:1 W\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ W | RestrictValid$ Spell.Artifact,Activated.Artifact | SpellDescription$ Add {W}. Spend this mana only to cast an artifact spell or activate an ability of an artifact source.\nA:AB$ ChangeZone | Cost$ 2 W T Exile<1+/Artifact.Other+withTotalCMCEQX/other artifacts you control with total mana value X> | Announce$ X | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Artifact.YouOwn+cmcLEX | TgtPrompt$ Select target artifact card with mana value X or less | SorcerySpeed$ True | SpellDescription$ Return target artifact card with mana value X or less from your graveyard to the battlefield. Activate only as a sorcery.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckNeeds:Type$Artifact\nOracle:{T}: Add {W}. Spend this mana only to cast an artifact spell or activate an ability of an artifact source.\\n{2}{W}, {T}, Exile one or more other artifacts you control with total mana value X: Return target artifact card with mana value X or less from your graveyard to the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fabrication Foundry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

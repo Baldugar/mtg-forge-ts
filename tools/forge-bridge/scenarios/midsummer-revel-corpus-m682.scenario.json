@@ -1,0 +1,23 @@
+{
+  "id": "midsummer-revel-corpus-m682",
+  "description": "M6 corpus — Midsummer Revel; in-hand parse.",
+  "seed": 63356,
+  "cards": {
+    "Midsummer Revel": "Name:Midsummer Revel\nManaCost:3 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a verse counter on CARDNAME.\nA:AB$ Token | Cost$ G Sac<1/CARDNAME> | TokenAmount$ X | TokenScript$ g_3_3_beast | TokenOwner$ You | SpellDescription$ Create X 3/3 green Beast creature tokens.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ VERSE | CounterNum$ 1\nAI:RemoveDeck:All\nSVar:X:Count$CardCounters.VERSE\nOracle:At the beginning of your upkeep, you may put a verse counter on Midsummer Revel.\\n{G}, Sacrifice Midsummer Revel: Create X 3/3 green Beast creature tokens, where X is the number of verse counters on Midsummer Revel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Midsummer Revel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

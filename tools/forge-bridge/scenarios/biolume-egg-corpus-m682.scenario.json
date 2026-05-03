@@ -1,0 +1,23 @@
+{
+  "id": "biolume-egg-corpus-m682",
+  "description": "M6 corpus — Biolume Egg; in-hand parse.",
+  "seed": 61535,
+  "cards": {
+    "Biolume Egg": "Name:Biolume Egg\nManaCost:2 U\nTypes:Creature Serpent Egg\nPT:0/4\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Card.Self | Execute$ TrigDelay | TriggerZones$ Battlefield | TriggerDescription$ When you sacrifice CARDNAME, return it to the battlefield transformed under its owner's control at the beginning of the next end step.\nSVar:TrigDelay:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ TriggeredCard | TriggerDescription$ Return CARDNAME to the battlefield transformed under its owner's control at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRemembered | Origin$ Graveyard | Destination$ Battlefield | Transformed$ True\nSVar:SacMe:5\nDeckNeeds:Ability$Sacrifice\nAlternateMode:DoubleFaced\nOracle:Defender\\nWhen Biolume Egg enters, scry 2.\\nWhen you sacrifice Biolume Egg, return it to the battlefield transformed under its owner's control at the beginning of the next end step.\n\nALTERNATE\n\nName:Biolume Serpent\nManaCost:no cost\nColors:blue\nTypes:Creature Serpent\nPT:4/4\nA:AB$ Effect | Cost$ Sac<2/Island> | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SpellDescription$ CARDNAME can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nDeckHas:Ability$Sacrifice\nOracle:Sacrifice two Islands: Biolume Serpent can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Biolume Egg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

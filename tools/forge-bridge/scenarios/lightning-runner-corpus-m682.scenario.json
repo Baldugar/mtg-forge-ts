@@ -1,0 +1,23 @@
+{
+  "id": "lightning-runner-corpus-m682",
+  "description": "M6 corpus — Lightning Runner; in-hand parse.",
+  "seed": 63149,
+  "cards": {
+    "Lightning Runner": "Name:Lightning Runner\nManaCost:3 R R\nTypes:Creature Human Warrior\nPT:2/2\nK:Double Strike\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ Whenever CARDNAME attacks, you get {E}{E} (two energy counters), then you may pay eight {E}. If you pay, untap all creatures you control, and after this phase, there is an additional combat phase.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2 | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | UnlessCost$ PayEnergy<8> | UnlessPayer$ You | UnlessSwitched$ True | UnlessResolveSubs$ WhenPaid | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nSVar:PlayMain1:TRUE\nOracle:Double strike, haste\\nWhenever Lightning Runner attacks, you get {E}{E} (two energy counters), then you may pay eight {E}. If you pay, untap all creatures you control, and after this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Runner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

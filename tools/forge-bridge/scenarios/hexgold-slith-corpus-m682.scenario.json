@@ -1,0 +1,23 @@
+{
+  "id": "hexgold-slith-corpus-m682",
+  "description": "M6 corpus — Hexgold Slith; in-hand parse.",
+  "seed": 62752,
+  "cards": {
+    "Hexgold Slith": "Name:Hexgold Slith\nManaCost:1 W\nTypes:Creature Slith\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, it gains first strike until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ PayEnergy<2> | Defined$ Self | KW$ First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters\nOracle:When Hexgold Slith enters, you get {E}{E} (two energy counters).\\nWhenever Hexgold Slith attacks, you may pay {E}{E}. If you do, it gains first strike until end of turn.\\nWhenever Hexgold Slith deals combat damage to a player, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hexgold Slith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

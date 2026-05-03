@@ -1,0 +1,23 @@
+{
+  "id": "fishing-pole-corpus-m682",
+  "description": "M6 corpus — Fishing Pole; in-hand parse.",
+  "seed": 62337,
+  "cards": {
+    "Fishing Pole": "Name:Fishing Pole\nManaCost:1\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddAbility$ FishingPoleBaiting | Description$ Equipped creature has \"{1}, {T}, Tap CARDNAME: Put a bait counter on CARDNAME.\"\nSVar:FishingPoleBaiting:AB$ PutCounter | Cost$ 1 T tapXType<1/OriginalHost/Fishing Pole> | CounterType$ BAIT | CounterNum$ 1 | Defined$ OriginalHost | SpellDescription$ Put a bait counter on ORIGINALHOST.\nT:Mode$ Untaps | ValidCard$ Creature.EquippedBy | TriggerZones$ Battlefield | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever equipped creature becomes untapped, remove a bait counter from this Equipment. If you do, create a 1/1 blue Fish creature token.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ BAIT | CounterNum$ 1 | RememberRemoved$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | ConditionCheckSVar$ X | TokenScript$ u_1_1_fish | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nK:Equip:2\nOracle:Equipped creature has \"{1}, {T}, Tap Fishing Pole: Put a bait counter on Fishing Pole.\"\\nWhenever equipped creature becomes untapped, remove a bait counter from this Equipment. If you do, create a 1/1 blue Fish creature token.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fishing Pole"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

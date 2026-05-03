@@ -1,0 +1,23 @@
+{
+  "id": "clan-crafter-corpus-m682",
+  "description": "M6 corpus — Clan Crafter; in-hand parse.",
+  "seed": 61756,
+  "cards": {
+    "Clan Crafter": "Name:Clan Crafter\nManaCost:1 U\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddAbility$ SacArt | Description$ Commander creatures you own have \"{2}, Sacrifice an artifact: Put a +1/+1 counter on this creature and draw a card.\"\nSVar:SacArt:AB$ PutCounter | Cost$ 2 Sac<1/Artifact> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw | SpellDescription$ Put a +1/+1 counter on this creature and draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:BuffedBy:Artifact\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Sacrifice|Counters\nDeckHints:Type$Artifact\nOracle:Commander creatures you own have \"{2}, Sacrifice an artifact: Put a +1/+1 counter on this creature and draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clan Crafter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

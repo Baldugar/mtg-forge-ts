@@ -1,0 +1,23 @@
+{
+  "id": "the-surgical-bay-corpus-m682",
+  "description": "M6 corpus — The Surgical Bay; in-hand parse.",
+  "seed": 64826,
+  "cards": {
+    "The Surgical Bay": "Name:The Surgical Bay\nManaCost:no cost\nTypes:Land Sphere\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Draw | Cost$ 1 U T Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:The Surgical Bay enters tapped.\\n{T}: Add {U}.\\n{1}{U}, {T}, Sacrifice The Surgical Bay: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Surgical Bay"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

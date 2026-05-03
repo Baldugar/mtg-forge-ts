@@ -1,0 +1,23 @@
+{
+  "id": "galvanic-discharge-corpus-m682",
+  "description": "M6 corpus — Galvanic Discharge; in-hand parse.",
+  "seed": 62451,
+  "cards": {
+    "Galvanic Discharge": "Name:Galvanic Discharge\nManaCost:R\nTypes:Instant\nA:SP$ PutCounter | Defined$ You | AILogic$ PayEnergy | CounterType$ ENERGY | CounterNum$ 3 | SubAbility$ DBChooseNumber | SpellDescription$ Choose target creature or planeswalker. You get {E}{E}{E} (three energy counters), then you may pay any amount of {E}. CARDNAME deals that much damage to that permanent.\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Max | ListTitle$ amount of energy to pay | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X | UnlessCost$ PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True | StackDescription$ CARDNAME deals that much damage to that permanent.\nSVar:Max:Count$YourCountersEnergy\nSVar:X:Count$ChosenNumber\nOracle:Choose target creature or planeswalker. You get {E}{E}{E} (three energy counters), then you may pay any amount of {E}. Galvanic Discharge deals that much damage to that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galvanic Discharge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

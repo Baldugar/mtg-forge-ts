@@ -1,0 +1,23 @@
+{
+  "id": "mu-yanling-sky-dancer-corpus-m682",
+  "description": "M6 corpus — Mu Yanling, Sky Dancer; in-hand parse.",
+  "seed": 63452,
+  "cards": {
+    "Mu Yanling, Sky Dancer": "Name:Mu Yanling, Sky Dancer\nManaCost:1 U U\nTypes:Legendary Planeswalker Yanling\nLoyalty:2\nA:AB$ Pump | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | NumAtt$ -2 | IsCurse$ True | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | Duration$ UntilYourNextTurn | SubAbility$ DBDebuff | SpellDescription$ Until your next turn, up to one target creature gets -2/-0 and loses flying.\nSVar:DBDebuff:DB$ Debuff | Defined$ Targeted | Keywords$ Flying | Duration$ UntilYourNextTurn\nA:AB$ Token | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | TokenScript$ u_4_4_elemental_bird_flying | TokenOwner$ You | SpellDescription$ Create a 4/4 blue Elemental Bird creature token with flying.\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | AILogic$ Always | Stackable$ False | Name$ Emblem — Mu Yanling, Sky Dancer | Image$ emblem_mu_yanling_sky_dancer | Duration$ Permanent | StaticAbilities$ STDraw | SpellDescription$ You get an emblem with \"Islands you control have '{T}: Draw a card.'\"\nSVar:STDraw:Mode$ Continuous | Affected$ Island.YouCtrl | AddAbility$ AnimateIsland | Description$ Islands you control have \"{T}: Draw a card\".\nSVar:AnimateIsland:AB$ Draw | Cost$ T | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:[+2]: Until your next turn, up to one target creature gets -2/-0 and loses flying.\\n[-3]: Create a 4/4 blue Elemental Bird creature token with flying.\\n[-8]: You get an emblem with \"Islands you control have '{T}: Draw a card.'\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mu Yanling, Sky Dancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

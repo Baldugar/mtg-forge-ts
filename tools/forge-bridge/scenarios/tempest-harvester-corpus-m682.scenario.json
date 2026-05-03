@@ -1,0 +1,23 @@
+{
+  "id": "tempest-harvester-corpus-m682",
+  "description": "M6 corpus — Tempest Harvester; in-hand parse.",
+  "seed": 64745,
+  "cards": {
+    "Tempest Harvester": "Name:Tempest Harvester\nManaCost:1 U\nTypes:Creature Merfolk Wizard\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ Draw | Cost$ T PayEnergy<1> | NumCards$ 1 | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nOracle:When Tempest Harvester enters, you get {E}{E} (two energy counters).\\n{T}, Pay {E}: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tempest Harvester"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

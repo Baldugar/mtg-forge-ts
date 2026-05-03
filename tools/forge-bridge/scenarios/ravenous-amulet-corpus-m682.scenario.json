@@ -1,0 +1,23 @@
+{
+  "id": "ravenous-amulet-corpus-m682",
+  "description": "M6 corpus — Ravenous Amulet; in-hand parse.",
+  "seed": 63933,
+  "cards": {
+    "Ravenous Amulet": "Name:Ravenous Amulet\nManaCost:2\nTypes:Artifact\nA:AB$ Draw | Cost$ 1 T Sac<1/Creature> | SubAbility$ DBPutCounter | SorcerySpeed$ True | SpellDescription$ Draw a card and put a soul counter on this artifact. Activate only as a sorcery.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ SOUL | CounterNum$ 1\nA:AB$ LoseLife | Cost$ 4 T Sac<1/CARDNAME> | Defined$ Player.Opponent | LifeAmount$ X | SpellDescription$ Each opponent loses life equal to the number of soul counters on this artifact.\nSVar:X:Count$CardCounters.SOUL\nOracle:{1}, {T}, Sacrifice a creature: Draw a card and put a soul counter on this artifact. Activate only as a sorcery.\\n{4}, {T}, Sacrifice this artifact: Each opponent loses life equal to the number of soul counters on this artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ravenous Amulet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

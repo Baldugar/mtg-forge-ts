@@ -1,0 +1,23 @@
+{
+  "id": "hell-s-caretaker-corpus-m682",
+  "description": "M6 corpus — Hell's Caretaker; in-hand parse.",
+  "seed": 62743,
+  "cards": {
+    "Hell's Caretaker": "Name:Hell's Caretaker\nManaCost:3 B\nTypes:Creature Horror\nPT:1/1\nA:AB$ ChangeZone | Cost$ T Sac<1/Creature> | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | PlayerTurn$ True | ActivationPhases$ Upkeep | SpellDescription$ Return target creature card from your graveyard to the battlefield. Activate only during your upkeep.\nSVar:AIPreference:SacCost$Creature.cmcLE3\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice|Graveyard\nDeckHints:Ability$Mill|Dredge & Type$Zombie|Phoenix\nDeckNeeds:Ability$Graveyard\nOracle:{T}, Sacrifice a creature: Return target creature card from your graveyard to the battlefield. Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hell's Caretaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

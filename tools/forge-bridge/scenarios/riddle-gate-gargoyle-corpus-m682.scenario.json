@@ -1,0 +1,23 @@
+{
+  "id": "riddle-gate-gargoyle-corpus-m682",
+  "description": "M6 corpus — Riddle Gate Gargoyle; in-hand parse.",
+  "seed": 64006,
+  "cards": {
+    "Riddle Gate Gargoyle": "Name:Riddle Gate Gargoyle\nManaCost:W U\nTypes:Artifact Creature Gargoyle\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, you may pay {E}{E}. When you do, target creature you control gains lifelink until end of turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ PayEnergy<2> | Execute$ TrigPump | TriggerDescription$ When you do, target creature you control gains lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Lifelink\nOracle:Flying\\nWhen Riddle Gate Gargoyle enters, you get {E}{E}{E} (three energy counters).\\nWhenever you attack, you may pay {E}{E}. When you do, target creature you control gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riddle Gate Gargoyle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

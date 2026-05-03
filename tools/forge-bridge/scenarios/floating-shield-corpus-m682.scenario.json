@@ -1,0 +1,23 @@
+{
+  "id": "floating-shield-corpus-m682",
+  "description": "M6 corpus — Floating Shield; in-hand parse.",
+  "seed": 62368,
+  "cards": {
+    "Floating Shield": "Name:Floating Shield\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInHumanDeck\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Protection:Card.ChosenColor:chosenColor:Card.CardUID_HostCardUID | Description$ Enchanted creature has protection from the chosen color. This effect doesn't remove CARDNAME.\nA:AB$ Protection | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature | Gains$ ChosenColor | SpellDescription$ Target creature gains protection from the chosen color until end of turn.\nAI:RemoveDeck:All\nSVar:ChosenProtection:True\nOracle:Enchant creature\\nAs Floating Shield enters, choose a color.\\nEnchanted creature has protection from the chosen color. This effect doesn't remove Floating Shield.\\nSacrifice Floating Shield: Target creature gains protection from the chosen color until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Floating Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

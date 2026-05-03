@@ -1,0 +1,23 @@
+{
+  "id": "fire-nation-turret-corpus-m682",
+  "description": "M6 corpus — Fire Nation Turret; in-hand parse.",
+  "seed": 62327,
+  "cards": {
+    "Fire Nation Turret": "Name:Fire Nation Turret\nManaCost:2 R\nTypes:Artifact\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, up to one target creature gets +2/+0 and gains firebending 2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | TargetMin$ 0 | TargetMax$ 1 | NumAtt$ +2 | KW$ Firebending:2\nA:AB$ PutCounter | Cost$ R | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on this artifact.\nA:AB$ DealDamage | Cost$ SubCounter<50/CHARGE> | ValidTgts$ Any | NumDmg$ 50 | SpellDescription$ It deals 50 damage to any target.\nSVar:PlayMain1:TRUE\nOracle:At the beginning of combat on your turn, up to one target creature gets +2/+0 and gains firebending 2 until end of turn.\\n{R}: Put a charge counter on this artifact.\\nRemove fifty charge counters from this artifact: It deals 50 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Nation Turret"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

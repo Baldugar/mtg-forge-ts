@@ -1,0 +1,23 @@
+{
+  "id": "molten-tail-masticore-corpus-m682",
+  "description": "M6 corpus — Molten-Tail Masticore; in-hand parse.",
+  "seed": 63410,
+  "cards": {
+    "Molten-Tail Masticore": "Name:Molten-Tail Masticore\nManaCost:4\nTypes:Artifact Creature Masticore\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you discard a card.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Discard<1/Card>\nA:AB$ DealDamage | Cost$ 4 ExileFromGrave<1/Creature> | NumDmg$ 4 | ValidTgts$ Any | SpellDescription$ CARDNAME deals 4 damage to any target.\nA:AB$ Regenerate | Cost$ 2 | SpellDescription$ Regenerate CARDNAME.\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, sacrifice Molten-Tail Masticore unless you discard a card.\\n{4}, Exile a creature card from your graveyard: Molten-Tail Masticore deals 4 damage to any target.\\n{2}: Regenerate Molten-Tail Masticore.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Molten-Tail Masticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

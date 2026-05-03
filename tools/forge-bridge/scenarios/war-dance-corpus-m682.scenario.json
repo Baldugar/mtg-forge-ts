@@ -1,0 +1,23 @@
+{
+  "id": "war-dance-corpus-m682",
+  "description": "M6 corpus — War Dance; in-hand parse.",
+  "seed": 65190,
+  "cards": {
+    "War Dance": "Name:War Dance\nManaCost:G\nTypes:Enchantment\nA:AB$ Pump | Cost$ Sac<1/CARDNAME> | NumAtt$ +X | NumDef$ +X | ValidTgts$ Creature | SpellDescription$ Target creature gets +X/+X until end of turn, where X is the number of verse counters on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a verse counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ VERSE | CounterNum$ 1\nSVar:X:Count$CardCounters.VERSE\nOracle:At the beginning of your upkeep, you may put a verse counter on War Dance.\\nSacrifice War Dance: Target creature gets +X/+X until end of turn, where X is the number of verse counters on War Dance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "War Dance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

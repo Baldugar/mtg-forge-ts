@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-mercadia-corpus-m682",
+  "description": "M6 corpus — Invasion of Mercadia; in-hand parse.",
+  "seed": 62894,
+  "cards": {
+    "Invasion of Mercadia": "Name:Invasion of Mercadia\nManaCost:1 R\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, draw two cards.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 2\nDeckHas:Ability$Discard\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Mercadia enters, you may discard a card. If you do, draw two cards.\n\nALTERNATE\n\nName:Kyren Flamewright\nManaCost:no cost\nColors:red\nTypes:Creature Goblin Spellshaper\nPT:3/3\nA:AB$ Token | Cost$ 2 R T Discard<1/Card> | TokenAmount$ 2 | TokenScript$ ur_1_1_elemental | SubAbility$ DBPump | SpellDescription$ Create two 1/1 blue and red Elemental creature tokens.\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | KW$ Haste | SpellDescription$ Creatures you control get +1/+0 and gain haste until end of turn.\nDeckHas:Ability$Token & Color$Blue & Type$Elemental\nOracle:{2}{R}, {T}, Discard a card: Create two 1/1 blue and red Elemental creature tokens. Creatures you control get +1/+0 and gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Mercadia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

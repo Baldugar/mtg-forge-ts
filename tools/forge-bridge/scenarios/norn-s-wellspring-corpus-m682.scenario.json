@@ -1,0 +1,23 @@
+{
+  "id": "norn-s-wellspring-corpus-m682",
+  "description": "M6 corpus — Norn's Wellspring; in-hand parse.",
+  "seed": 63576,
+  "cards": {
+    "Norn's Wellspring": "Name:Norn's Wellspring\nManaCost:1 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever a creature you control dies, scry 1 and put an oil counter on CARDNAME.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1 | SubAbility$ DBCounter\nSVar:DBCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nA:AB$ Draw | Cost$ 1 T SubCounter<2/OIL> | SpellDescription$ Draw a card.\nDeckHas:Ability$Counters\nDeckHints:Ability$Sacrifice\nOracle:Whenever a creature you control dies, scry 1 and put an oil counter on Norn's Wellspring.\\n{1}, {T}, Remove two oil counters from Norn's Wellspring: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Norn's Wellspring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

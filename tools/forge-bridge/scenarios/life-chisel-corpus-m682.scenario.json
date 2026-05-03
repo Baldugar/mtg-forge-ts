@@ -1,0 +1,23 @@
+{
+  "id": "life-chisel-corpus-m682",
+  "description": "M6 corpus — Life Chisel; in-hand parse.",
+  "seed": 63141,
+  "cards": {
+    "Life Chisel": "Name:Life Chisel\nManaCost:4\nTypes:Artifact\nA:AB$ GainLife | Cost$ Sac<1/Creature> | LifeAmount$ X | PlayerTurn$ True | ActivationPhases$ Upkeep | SpellDescription$ You gain life equal to the sacrificed creature's toughness. Activate only during your upkeep.\nSVar:X:Sacrificed$CardToughness\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice|LifeGain\nDeckHints:Type$Zombie|Phyrexian|Thrull\nOracle:Sacrifice a creature: You gain life equal to the sacrificed creature's toughness. Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Life Chisel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "promise-of-bunrei-corpus-m682",
+  "description": "M6 corpus — Promise of Bunrei; in-hand parse.",
+  "seed": 63835,
+  "cards": {
+    "Promise of Bunrei": "Name:Promise of Bunrei\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Creature.YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ When a creature you control dies, sacrifice CARDNAME. If you do, create four 1/1 colorless Spirit creature tokens.\nSVar:TrigSac:AB$ Token | TokenAmount$ 4 | TokenScript$ c_1_1_spirit | TokenOwner$ You | Cost$ Mandatory Sac<1/CARDNAME>\nOracle:When a creature you control dies, sacrifice Promise of Bunrei. If you do, create four 1/1 colorless Spirit creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Promise of Bunrei"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

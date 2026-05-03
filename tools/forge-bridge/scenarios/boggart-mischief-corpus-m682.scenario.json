@@ -1,0 +1,23 @@
+{
+  "id": "boggart-mischief-corpus-m682",
+  "description": "M6 corpus — Boggart Mischief; in-hand parse.",
+  "seed": 61557,
+  "cards": {
+    "Boggart Mischief": "Name:Boggart Mischief\nManaCost:2 B\nTypes:Kindred Enchantment Goblin\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this enchantment enters, you may blight 1. If you do, create two 1/1 black and red Goblin creature tokens. (To blight 1, put a -1/-1 counter on a creature you control.)\nSVar:TrigToken:AB$ Token | Cost$ Blight<1> | TokenAmount$ 2 | TokenScript$ br_1_1_goblin | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Goblin+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a Goblin creature you control dies, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nOracle:When this enchantment enters, you may blight 1. If you do, create two 1/1 black and red Goblin creature tokens. (To blight 1, put a -1/-1 counter on a creature you control.)\\nWhenever a Goblin creature you control dies, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boggart Mischief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "draconic-fealty-corpus-m682",
+  "description": "M6 corpus — Draconic Fealty; in-hand parse.",
+  "seed": 62067,
+  "cards": {
+    "Draconic Fealty": "Name:Draconic Fealty\nManaCost:B\nTypes:Sorcery\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Behold<1/Dragon> | Description$ As an additional cost to cast this spell, you may behold a Dragon. (You may choose a Dragon you control or reveal a Dragon card from your hand.)\nA:SP$ Discard | ValidTgts$ Opponent | NumCards$ 1 | DiscardValid$ Card.cmcEQX | Mode$ TgtChoose | SubAbility$ DBExileGraveyard | SpellDescription$ Target player discards a card with the greatest mana value among cards in their hand.\nSVar:DBExileGraveyard:DB$ ChangeZoneAll | Condition$ OptionalCost | ConditionOptionalPaid$ True | Defined$ ParentTarget | ChangeType$ Card | Origin$ Graveyard | Destination$ Exile | SpellDescription$ If a Dragon was beheld, exile that player's graveyard.\nSVar:X:Count$ValidHand Card.TargetedPlayerOwn$GreatestCardManaCost\nOracle:As an additional cost to cast this spell, you may behold a Dragon.\\nTarget player discards a card with the greatest mana value among cards in their hand. If a Dragon was beheld, exile that player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draconic Fealty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

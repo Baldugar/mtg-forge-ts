@@ -1,0 +1,23 @@
+{
+  "id": "take-out-the-trash-corpus-m682",
+  "description": "M6 corpus — Take Out the Trash; in-hand parse.",
+  "seed": 64708,
+  "cards": {
+    "Take Out the Trash": "Name:Take Out the Trash\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker. | NumDmg$ 3 | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals 3 damage to target creature or planeswalker. If you control a Raccoon, you may discard a card. If you do, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Raccoon.YouCtrl | UnlessCost$ Discard<1/Card> | UnlessSwitched$ True | UnlessPayer$ You\nDeckHints:Type$Raccoon\nOracle:Take Out the Trash deals 3 damage to target creature or planeswalker. If you control a Raccoon, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Take Out the Trash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

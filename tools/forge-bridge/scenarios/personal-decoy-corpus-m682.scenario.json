@@ -1,0 +1,23 @@
+{
+  "id": "personal-decoy-corpus-m682",
+  "description": "M6 corpus — Personal Decoy; in-hand parse.",
+  "seed": 63728,
+  "cards": {
+    "Personal Decoy": "Name:Personal Decoy\nManaCost:5 W U\nTypes:Planeswalker Duck\nLoyalty:X\nText:CARDNAME enters with a number of loyalty counters on it equal to your life total.\nSVar:X:Count$YourLifeTotal\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | ExcludeDestination$ Exile | ValidCard$ Card.Self | ReplaceWith$ ToExile | Description$ If CARDNAME would leave the battlefield, exile it instead of putting it anywhere else.\nSVar:ToExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ReplacedCard\nS:Mode$ CantAttack | ValidCard$ Creature | Target$ You | Description$ Creatures can't attack you.\nA:AB$ GainLife | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nA:AB$ Draw | Cost$ SubCounter<4/LOYALTY> | Planeswalker$ True | Defined$ You | NumCards$ 1 | Ultimate$ True | SpellDescription$ Draw a card.\nOracle:Personal Decoy enters with a number of loyalty counters on it equal to your life total. If it would leave the battlefield, exile it instead of putting it anywhere else. You can't be attacked.\\n[+1]: You gain 1 life.\\n[-4]: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Personal Decoy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "magnanimous-magistrate-corpus-m682",
+  "description": "M6 corpus — Magnanimous Magistrate; in-hand parse.",
+  "seed": 63245,
+  "cards": {
+    "Magnanimous Magistrate": "Name:Magnanimous Magistrate\nManaCost:5 W\nTypes:Creature Human Advisor\nPT:3/4\nK:etbCounter:REPR:5\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl+!token+cmcGE1 | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever another nontoken creature you control dies, if its mana value was 1 or greater, you may remove that many reprieve counters from CARDNAME. If you do, return that card to the battlefield under its owner's control.\nSVar:TrigChangeZone:AB$ ChangeZone | Cost$ SubCounter<X/REPR> | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:TriggeredCard$CardManaCost\nDeckHas:Ability$Counters\nOracle:Magnanimous Magistrate enters with five reprieve counters on it.\\nWhenever another nontoken creature you control dies, if its mana value was 1 or greater, you may remove that many reprieve counters from Magnanimous Magistrate. If you do, return that card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magnanimous Magistrate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

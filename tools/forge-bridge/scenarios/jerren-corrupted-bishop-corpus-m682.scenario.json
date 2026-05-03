@@ -1,0 +1,23 @@
+{
+  "id": "jerren-corrupted-bishop-corpus-m682",
+  "description": "M6 corpus — Jerren, Corrupted Bishop; in-hand parse.",
+  "seed": 62950,
+  "cards": {
+    "Jerren, Corrupted Bishop": "Name:Jerren, Corrupted Bishop\nManaCost:2 B\nTypes:Legendary Creature Human Cleric\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME enters the or another nontoken Human you control dies, you lose 1 life and create a 1/1 white Human creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Human.Other+!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters the or another nontoken Human you control dies, you lose 1 life and create a 1/1 white Human creature token.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_human\nA:AB$ Pump | Cost$ 2 | ValidTgts$ Human.YouCtrl | TgtPrompt$ Select target Human you control | KW$ Lifelink | SpellDescription$ Target Human you control gains lifelink until end of turn.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ EQ13 | Execute$ TrigTransform | TriggerDescription$ At the beginning of your end step, if you have exactly 13 life, you may pay {4}{B}{B}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ 4 B B | Defined$ Self | Mode$ Transform\nSVar:X:Count$YourLifeTotal\nDeckHas:Ability$Token|LifeGain|Sacrifice\nDeckHints:Type$Human\nAlternateMode:DoubleFaced\nOracle:Whenever Jerren, Corrupted Bishop enters or another nontoken Human you control dies, you lose 1 life and create a 1/1 white Human creature token.\\n{2}: Target Human you control gains lifelink until end of turn.\\nAt the beginning of your end step, if you have exactly 13 life, you may pay {4}{B}{B}. If you do, transform Jerren.\n\nALTERNATE\n\nName:Ormendahl, the Corrupter\nManaCost:no cost\nColors:black\nTypes:Legendary Creature Demon\nPT:6/6\nK:Flying\nK:Trample\nK:Lifelink\nA:AB$ Draw | Cost$ Sac<1/Creature.Other/another creature> | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:Flying, trample, lifelink\\nSacrifice another creature: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jerren, Corrupted Bishop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

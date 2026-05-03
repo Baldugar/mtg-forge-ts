@@ -1,0 +1,23 @@
+{
+  "id": "kazuul-s-fury-corpus-m682",
+  "description": "M6 corpus — Kazuul's Fury; in-hand parse.",
+  "seed": 63007,
+  "cards": {
+    "Kazuul's Fury": "Name:Kazuul's Fury\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | Cost$ 2 R Sac<1/Creature> | NumDmg$ X | ValidTgts$ Any | SpellDescription$ CARDNAME deals damage equal to the sacrificed creature's power to any target.\nSVar:X:Sacrificed$CardPower\nDeckHas:Ability$Sacrifice\nAlternateMode:Modal\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nKazuul's Fury deals damage equal to the sacrificed creature's power to any target.\n\nALTERNATE\n\nName:Kazuul's Cliffs\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nOracle:Kazuul's Cliffs enters tapped.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kazuul's Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

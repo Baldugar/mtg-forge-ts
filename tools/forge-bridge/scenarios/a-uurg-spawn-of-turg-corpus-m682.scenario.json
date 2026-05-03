@@ -1,0 +1,23 @@
+{
+  "id": "a-uurg-spawn-of-turg-corpus-m682",
+  "description": "M6 corpus — A-Uurg, Spawn of Turg; in-hand parse.",
+  "seed": 64125,
+  "cards": {
+    "A-Uurg, Spawn of Turg": "Name:A-Uurg, Spawn of Turg\nManaCost:B B G\nTypes:Legendary Creature Frog Beast\nPT:*/5\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the number of land cards in your graveyard.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your upkeep, surveil 2.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nA:AB$ GainLife | Cost$ 1 Sac<1/Land> | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nSVar:X:Count$ValidGraveyard Land.YouOwn\nDeckHas:Ability$LifeGain|Graveyard|Sacrifice\nDeckHints:Ability$Graveyard\nOracle:Uurg, Spawn of Turg's power is equal to the number of land cards in your graveyard.\\nAt the beginning of your upkeep, surveil 2.\\n{1}, Sacrifice a land: You gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Uurg, Spawn of Turg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

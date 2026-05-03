@@ -1,0 +1,23 @@
+{
+  "id": "zoraline-cosmos-caller-corpus-m682",
+  "description": "M6 corpus — Zoraline, Cosmos Caller; in-hand parse.",
+  "seed": 65318,
+  "cards": {
+    "Zoraline, Cosmos Caller": "Name:Zoraline, Cosmos Caller\nManaCost:1 W B\nTypes:Legendary Creature Bat Cleric\nPT:3/3\nK:Flying\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Bat.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a Bat you control attacks, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | Defined$ You\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever NICKNAME enters or attacks, you may pay {W}{B} and 2 life. When you do, return target nonland permanent card with mana value 3 or less from your graveyard to the battlefield with a finality counter on it.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, you may pay {W}{B} and 2 life. When you do, return target nonland permanent card with mana value 3 or less from your graveyard to the battlefield with a finality counter on it.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ W B PayLife<2> | Execute$ TrigChange | SpellDescription$ When you do, return target nonland permanent card with mana value 3 or less from your graveyard to the battlefield with a finality counter on it.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.nonLand+YouOwn+cmcLE3 | TgtPrompt$ Choose target nonland permanent card with mana value 3 or less | WithCountersType$ FINALITY | SpellDescription$ Return target nonland permanent card with mana value 3 or less from your graveyard to the battlefield with a finality counter on it.\nSVar:HasAttackEffect:TRUE\nOracle:Flying, vigilance\\nWhenever a Bat you control attacks, you gain 1 life.\\nWhenever Zoraline enters or attacks, you may pay {W}{B} and 2 life. When you do, return target nonland permanent card with mana value 3 or less from your graveyard to the battlefield with a finality counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zoraline, Cosmos Caller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

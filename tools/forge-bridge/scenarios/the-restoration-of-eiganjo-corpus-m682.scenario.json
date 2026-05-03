@@ -1,0 +1,23 @@
+{
+  "id": "the-restoration-of-eiganjo-corpus-m682",
+  "description": "M6 corpus — The Restoration of Eiganjo; in-hand parse.",
+  "seed": 64820,
+  "cards": {
+    "The Restoration of Eiganjo": "Name:The Restoration of Eiganjo\nManaCost:2 W\nTypes:Enchantment Saga\nK:Chapter:3:DBChange,DBDiscard,DBTransform\nSVar:DBChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Plains.Basic | ChangeNum$ 1 | ChangeTypeDesc$ basic Plains card | SpellDescription$ Search your library for a basic Plains card, reveal it, put it into your hand, then shuffle.\nSVar:DBDiscard:DB$ ImmediateTrigger | Execute$ DBReanimate | UnlessCost$ Discard<1/Card> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ You may discard a card. When you do, return target permanent card with mana value 2 or less from your graveyard to the battlefield tapped.\nSVar:DBReanimate:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Permanent.YouOwn+cmcLE2 | TgtPrompt$ Choose a permanent card with mana value 2 or less | Tapped$ True\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Search your library for a basic Plains card, reveal it, put it into your hand, then shuffle.\\nII — You may discard a card. When you do, return target permanent card with mana value 2 or less from your graveyard to the battlefield tapped.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Architect of Restoration\nManaCost:no cost\nColors:white\nTypes:Enchantment Creature Fox Monk\nPT:3/4\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks or blocks, create a 1/1 colorless Spirit creature token.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, create a 1/1 colorless Spirit creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_spirit\nOracle:Vigilance\\nWhenever Architect of Restoration attacks or blocks, create a 1/1 colorless Spirit creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Restoration of Eiganjo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

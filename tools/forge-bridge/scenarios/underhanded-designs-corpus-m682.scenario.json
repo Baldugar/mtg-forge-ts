@@ -1,0 +1,23 @@
+{
+  "id": "underhanded-designs-corpus-m682",
+  "description": "M6 corpus — Underhanded Designs; in-hand parse.",
+  "seed": 65022,
+  "cards": {
+    "Underhanded Designs": "Name:Underhanded Designs\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever an artifact you control enters, you may pay {1}. If you do, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:AB$ LoseLife | Cost$ 1 | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Destroy | Cost$ 1 B Sac<1/CARDNAME> | ValidTgts$ Creature | IsPresent$ Card.Artifact+YouCtrl | PresentCompare$ GE2 | SpellDescription$ Destroy target creature. Activate only if you control two or more artifacts.\nDeckHas:Ability$LifeGain\nOracle:Whenever an artifact you control enters, you may pay {1}. If you do, each opponent loses 1 life and you gain 1 life.\\n{1}{B}, Sacrifice Underhanded Designs: Destroy target creature. Activate only if you control two or more artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underhanded Designs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

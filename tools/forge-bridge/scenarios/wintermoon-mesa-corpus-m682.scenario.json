@@ -1,0 +1,23 @@
+{
+  "id": "wintermoon-mesa-corpus-m682",
+  "description": "M6 corpus — Wintermoon Mesa; in-hand parse.",
+  "seed": 65255,
+  "cards": {
+    "Wintermoon Mesa": "Name:Wintermoon Mesa\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Tap | Cost$ 2 T Sac<1/CARDNAME> | TargetMin$ 2 | TargetMax$ 2 | ValidTgts$ Land | SpellDescription$ Tap two target lands.\nAI:RemoveDeck:Random\nOracle:Wintermoon Mesa enters tapped.\\n{T}: Add {C}.\\n{2}, {T}, Sacrifice Wintermoon Mesa: Tap two target lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wintermoon Mesa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

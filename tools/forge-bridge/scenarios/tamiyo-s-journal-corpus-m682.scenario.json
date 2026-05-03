@@ -1,0 +1,23 @@
+{
+  "id": "tamiyo-s-journal-corpus-m682",
+  "description": "M6 corpus — Tamiyo's Journal; in-hand parse.",
+  "seed": 64715,
+  "cards": {
+    "Tamiyo's Journal": "Name:Tamiyo's Journal\nManaCost:5\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ At the beginning of your upkeep, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nA:AB$ ChangeZone | Cost$ T Sac<3/Clue> | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | SpellDescription$ Search your library for a card, put that card into your hand, then shuffle.\nDeckHints:Ability$Investigate\nDeckHas:Ability$Investigate|Token\nOracle:At the beginning of your upkeep, investigate. (Create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\\n{T}, Sacrifice three Clues: Search your library for a card, put that card into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tamiyo's Journal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

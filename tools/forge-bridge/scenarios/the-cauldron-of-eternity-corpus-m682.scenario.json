@@ -1,0 +1,23 @@
+{
+  "id": "the-cauldron-of-eternity-corpus-m682",
+  "description": "M6 corpus — The Cauldron of Eternity; in-hand parse.",
+  "seed": 64791,
+  "cards": {
+    "The Cauldron of Eternity": "Name:The Cauldron of Eternity\nManaCost:10 B B\nTypes:Legendary Artifact\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {2} less for each creature card in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn/Twice\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever a creature you control dies, put it on the bottom of its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1\nSVar:BuffedBy:Creature\nA:AB$ ChangeZone | Cost$ 2 B T PayLife<2> | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SorcerySpeed$ True | SpellDescription$ Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.\nOracle:This spell costs {2} less to cast for each creature card in your graveyard.\\nWhenever a creature you control dies, put it on the bottom of its owner's library.\\n{2}{B}, {T}, Pay 2 life: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Cauldron of Eternity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

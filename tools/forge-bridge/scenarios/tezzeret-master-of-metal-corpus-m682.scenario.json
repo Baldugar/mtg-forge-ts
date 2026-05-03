@@ -1,0 +1,23 @@
+{
+  "id": "tezzeret-master-of-metal-corpus-m682",
+  "description": "M6 corpus — Tezzeret, Master of Metal; in-hand parse.",
+  "seed": 64771,
+  "cards": {
+    "Tezzeret, Master of Metal": "Name:Tezzeret, Master of Metal\nManaCost:4 U B\nTypes:Legendary Planeswalker Tezzeret\nLoyalty:5\nA:AB$ DigUntil | Cost$ AddCounter<1/LOYALTY> | Valid$ Card.Artifact | ValidDescription$ artifact | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | FoundDestination$ Hand | Planeswalker$ True | SpellDescription$ Reveal cards from the top of your library until you reveal an artifact card. Put that card into your hand and the rest on the bottom of your library in a random order.\nA:AB$ LoseLife | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Opponent | LifeAmount$ X | SpellDescription$ Target opponent loses life equal to the number of artifacts you control.\nSVar:X:Count$Valid Artifact.YouCtrl\nA:AB$ GainControl | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Opponent | AllValid$ Artifact.ControlledBy Targeted,Creature.ControlledBy Targeted | NewController$ You | SpellDescription$ Gain control of all artifacts and creatures target opponent controls.\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact\nDeckHints:Name$Tezzeret's Betrayal\nOracle:[+1]: Reveal cards from the top of your library until you reveal an artifact card. Put that card into your hand and the rest on the bottom of your library in a random order.\\n[-3]: Target opponent loses life equal to the number of artifacts you control.\\n[-8]: Gain control of all artifacts and creatures target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret, Master of Metal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

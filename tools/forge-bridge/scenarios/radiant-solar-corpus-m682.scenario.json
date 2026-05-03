@@ -1,0 +1,23 @@
+{
+  "id": "radiant-solar-corpus-m682",
+  "description": "M6 corpus — Radiant Solar; in-hand parse.",
+  "seed": 63895,
+  "cards": {
+    "Radiant Solar": "Name:Radiant Solar\nManaCost:5 W\nTypes:Creature Angel\nPT:3/6\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.Other+!token+YouCtrl | Execute$ DBVenture | TriggerDescription$ Whenever CARDNAME or another nontoken creature you control enters, venture into the dungeon. (Enter the first room or advance to the next room.)\nSVar:DBVenture:DB$ Venture\nA:AB$ Venture | Cost$ W Discard<1/CARDNAME> | SubAbility$ DBGainLife | ActivationZone$ Hand | Defined$ You | SpellDescription$ Venture into the dungeon and you gain 3 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | StackDescription$ None\nDeckHas:Ability$LifeGain|Discard\nOracle:Flying, lifelink\\nWhenever Radiant Solar or another nontoken creature you control enters, venture into the dungeon. (Enter the first room or advance to the next room.)\\n{W}, Discard Radiant Solar: Venture into the dungeon and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radiant Solar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

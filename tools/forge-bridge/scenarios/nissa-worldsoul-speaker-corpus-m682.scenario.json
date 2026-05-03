@@ -1,0 +1,23 @@
+{
+  "id": "nissa-worldsoul-speaker-corpus-m682",
+  "description": "M6 corpus — Nissa, Worldsoul Speaker; in-hand parse.",
+  "seed": 63568,
+  "cards": {
+    "Nissa, Worldsoul Speaker": "Name:Nissa, Worldsoul Speaker\nManaCost:3 G\nTypes:Legendary Creature Elf Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Land.YouCtrl | Execute$ TrigEnergy | TriggerDescription$ Landfall — Whenever a land you control enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nS:Mode$ Continuous | Affected$ Card.YouCtrl+Permanent+nonLand | MayPlay$ True | MayPlayAltManaCost$ PayEnergy<8> | MayPlayDontGrantZonePermissions$ True | AffectedZone$ Hand,Graveyard,Exile,Library,Command | Description$ You may pay eight {E} rather than pay the mana cost for permanent spells you cast.\nOracle:Landfall — Whenever a land you control enters, you get {E}{E} (two energy counters).\\nYou may pay eight {E} rather than pay the mana cost for permanent spells you cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa, Worldsoul Speaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

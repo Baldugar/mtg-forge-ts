@@ -1,0 +1,23 @@
+{
+  "id": "necrite-corpus-m682",
+  "description": "M6 corpus — Necrite; in-hand parse.",
+  "seed": 63514,
+  "cards": {
+    "Necrite": "Name:Necrite\nManaCost:1 B B\nTypes:Creature Thrull\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may sacrifice it. If you do, destroy target creature defending player controls. It can't be regenerated.\nSVar:TrigDestroy:AB$ Destroy | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | NoRegen$ True | AITgts$ BetterThanSource | TgtPrompt$ Select target creature defending player controls\nOracle:Whenever Necrite attacks and isn't blocked, you may sacrifice it. If you do, destroy target creature defending player controls. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necrite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

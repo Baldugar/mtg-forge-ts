@@ -1,0 +1,23 @@
+{
+  "id": "vampire-gourmand-corpus-m682",
+  "description": "M6 corpus — Vampire Gourmand; in-hand parse.",
+  "seed": 65062,
+  "cards": {
+    "Vampire Gourmand": "Name:Vampire Gourmand\nManaCost:1 B\nTypes:Creature Vampire\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature attacks, you may sacrifice another creature. If you do, draw a card and this creature can't be blocked this turn.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Creature.Other/another creature> | Defined$ You | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nOracle:Whenever this creature attacks, you may sacrifice another creature. If you do, draw a card and this creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vampire Gourmand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

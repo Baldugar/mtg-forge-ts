@@ -1,0 +1,23 @@
+{
+  "id": "world-breaker-corpus-m682",
+  "description": "M6 corpus — World Breaker; in-hand parse.",
+  "seed": 65275,
+  "cards": {
+    "World Breaker": "Name:World Breaker\nManaCost:6 G\nTypes:Creature Eldrazi\nPT:5/7\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When you cast this spell, exile target artifact, enchantment, or land.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment,Land | Origin$ Battlefield | Destination$ Exile\nK:Reach\nA:AB$ ChangeZone | Cost$ 2 C Sac<1/Land> | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nSVar:DiscardMe:1\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Mana.Colorless\nOracle:Devoid (This card has no color.)\\nWhen you cast this spell, exile target artifact, enchantment, or land.\\nReach\\n{2}{C}, Sacrifice a land: Return World Breaker from your graveyard to your hand. ({C} represents colorless mana.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "World Breaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

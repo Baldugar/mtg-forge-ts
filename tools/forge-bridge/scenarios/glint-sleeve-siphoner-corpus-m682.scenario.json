@@ -1,0 +1,23 @@
+{
+  "id": "glint-sleeve-siphoner-corpus-m682",
+  "description": "M6 corpus — Glint-Sleeve Siphoner; in-hand parse.",
+  "seed": 62547,
+  "cards": {
+    "Glint-Sleeve Siphoner": "Name:Glint-Sleeve Siphoner\nManaCost:1 B\nTypes:Creature Human Rogue\nPT:2/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ Whenever CARDNAME enters or attacks, you get {E} (an energy counter).\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEnergy | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME enters or attacks, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, you may pay {E}{E}. If you do, you draw a card and you lose 1 life.\nSVar:TrigDraw:AB$ Draw | Cost$ PayEnergy<2> | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Menace\\nWhenever Glint-Sleeve Siphoner enters or attacks, you get {E} (an energy counter).\\nAt the beginning of your upkeep, you may pay {E}{E}. If you do, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glint-Sleeve Siphoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

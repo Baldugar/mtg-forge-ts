@@ -1,0 +1,23 @@
+{
+  "id": "penance-corpus-m682",
+  "description": "M6 corpus — Penance; in-hand parse.",
+  "seed": 63716,
+  "cards": {
+    "Penance": "Name:Penance\nManaCost:2 W\nTypes:Enchantment\nA:AB$ ChooseSource | Cost$ PutCardToLibFromHand<1/0/Card> | Choices$ Card.RedSource,Card.BlackSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a black or red source of your choice would deal damage this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict+BlackSource,Card.ChosenCardStrict+RedSource | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen black or red source deals damage, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Put a card from your hand on top of your library: The next time a black or red source of your choice would deal damage this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Penance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

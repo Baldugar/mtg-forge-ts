@@ -1,0 +1,23 @@
+{
+  "id": "chittering-witch-corpus-m682",
+  "description": "M6 corpus — Chittering Witch; in-hand parse.",
+  "seed": 61731,
+  "cards": {
+    "Chittering Witch": "Name:Chittering Witch\nManaCost:3 B\nTypes:Creature Human Warlock\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 1/1 black Rat creature tokens equal to the number of opponents you have.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_1_1_rat | TokenOwner$ You\nSVar:X:PlayerCountOpponents$Amount\nA:AB$ Pump | Cost$ 1 B Sac<1/Creature> | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ Target creature gets -2/-2 until end of turn.\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE1\nDeckHas:Ability$Token\nOracle:When Chittering Witch enters, create a number of 1/1 black Rat creature tokens equal to the number of opponents you have.\\n{1}{B}, Sacrifice a creature: Target creature gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chittering Witch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

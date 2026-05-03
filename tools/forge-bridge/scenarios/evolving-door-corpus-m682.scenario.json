@@ -1,0 +1,23 @@
+{
+  "id": "evolving-door-corpus-m682",
+  "description": "M6 corpus — Evolving Door; in-hand parse.",
+  "seed": 62246,
+  "cards": {
+    "Evolving Door": "Name:Evolving Door\nManaCost:2 G\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 1 T Sac<1/Creature> | Origin$ Library | Destination$ Exile | ChangeType$ Creature.numColorsEQX | ChangeTypeDesc$ creature card that's {n:X color} | SorcerySpeed$ True | RememberChanged$ True | SubAbility$ DBPlay | SpellDescription$ Count the colors of the sacrificed creature, then search your library for a creature card that's exactly that many colors plus one. Exile that card, then shuffle.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | Amount$ All | Controller$ You | Optional$ True | SubAbility$ DBCleanup | DefinedDesc$ the exiled card | SpellDescription$ You may cast the exiled card. Activate only as a sorcery.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Sacrificed$CardNumColors/Plus.1\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:{1}, {T}, Sacrifice a creature: Count the colors of the sacrificed creature, then search your library for a creature card that's exactly that many colors plus one. Exile that card, then shuffle. You may cast the exiled card. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evolving Door"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

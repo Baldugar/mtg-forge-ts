@@ -1,0 +1,23 @@
+{
+  "id": "sanctum-of-ugin-corpus-m682",
+  "description": "M6 corpus — Sanctum of Ugin; in-hand parse.",
+  "seed": 64162,
+  "cards": {
+    "Sanctum of Ugin": "Name:Sanctum of Ugin\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nT:Mode$ SpellCast | ValidCard$ Card.Colorless+cmcGE7 | ValidActivatingPlayer$ You | Execute$ TrigSearch | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a colorless spell with mana value 7 or greater, you may sacrifice CARDNAME. If you do, search your library for a colorless creature card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:AB$ ChangeZone | Cost$ Sac<1/CARDNAME> | Origin$ Library | Destination$ Hand | ChangeType$ Creature.Colorless | ChangeNum$ 1\nDeckHas:Ability$Mana.Colorless\nOracle:{T}: Add {C}.\\nWhenever you cast a colorless spell with mana value 7 or greater, you may sacrifice Sanctum of Ugin. If you do, search your library for a colorless creature card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctum of Ugin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "subira-tulzidi-caravanner-corpus-m682",
+  "description": "M6 corpus — Subira, Tulzidi Caravanner; in-hand parse.",
+  "seed": 64638,
+  "cards": {
+    "Subira, Tulzidi Caravanner": "Name:Subira, Tulzidi Caravanner\nManaCost:2 R\nTypes:Legendary Creature Human Shaman\nPT:2/3\nK:Haste\nA:AB$ Effect | Cost$ 1 | ValidTgts$ Creature.Other+powerLE2 | TgtPrompt$ Select another target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Another target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nA:AB$ Effect | Cost$ 1 R T Discard<1/Hand> | Triggers$ Damage | SpellDescription$ Until end of turn, whenever a creature you control with power 2 or less deals combat damage to a player, draw a card.\nSVar:Damage:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+powerLE2 | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Until end of turn, whenever a creature you control with power 2 or less deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:BuffedBy:Creature.powerLE2\nAI:RemoveDeck:Random\nDeckHas:Ability$Discard\nOracle:Haste\\n{1}: Another target creature with power 2 or less can't be blocked this turn.\\n{1}{R}, {T}, Discard your hand: Until end of turn, whenever a creature you control with power 2 or less deals combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Subira, Tulzidi Caravanner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

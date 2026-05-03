@@ -1,0 +1,23 @@
+{
+  "id": "vivid-creek-corpus-m682",
+  "description": "M6 corpus — Vivid Creek; in-hand parse.",
+  "seed": 65125,
+  "cards": {
+    "Vivid Creek": "Name:Vivid Creek\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with two charge counters on it.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Mana | Cost$ T SubCounter<1/CHARGE> | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$Counters\nOracle:Vivid Creek enters tapped with two charge counters on it.\\n{T}: Add {U}.\\n{T}, Remove a charge counter from Vivid Creek: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivid Creek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

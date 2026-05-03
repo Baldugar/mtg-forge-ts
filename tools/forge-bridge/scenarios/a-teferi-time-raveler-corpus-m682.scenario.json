@@ -1,0 +1,23 @@
+{
+  "id": "a-teferi-time-raveler-corpus-m682",
+  "description": "M6 corpus — A-Teferi, Time Raveler; in-hand parse.",
+  "seed": 64121,
+  "cards": {
+    "A-Teferi, Time Raveler": "Name:A-Teferi, Time Raveler\nManaCost:2 W U\nTypes:Legendary Planeswalker Teferi\nLoyalty:5\nS:Mode$ CantBeCast | ValidCard$ Card | Condition$ PlayerTurn | Caster$ Opponent | Description$ Your opponents can't cast spells during your turn.\nA:AB$ Effect | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | StaticAbilities$ STPlay | Duration$ UntilYourNextTurn | AILogic$ Main2 | SpellDescription$ Until your next turn, you may cast sorcery spells as though they had flash.\nSVar:STPlay:Mode$ CastWithFlash | ValidCard$ Sorcery | ValidSA$ Spell | Caster$ You | Description$ Until your next turn, you may cast sorcery spells as though they had flash.\nSVar:PlayMain1:TRUE\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Artifact,Creature,Enchantment | TgtPrompt$ Select target artifact, creature, or enchantment | SpellDescription$ Return up to one target artifact, creature, or enchantment to its owner's hand. Draw a card. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nOracle:Your opponents can't cast spells during your turn.\\n[+1]: Until your next turn, you may cast sorcery spells as though they had flash.\\n[-3]: Return up to one target artifact, creature, or enchantment to its owner's hand. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Teferi, Time Raveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-meep-corpus-m682",
+  "description": "M6 corpus — The Meep; in-hand parse.",
+  "seed": 64817,
+  "cards": {
+    "The Meep": "Name:The Meep\nManaCost:2 B\nTypes:Legendary Creature Alien\nPT:0/4\nK:Ward:PayLife<3>\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigAnimateAll | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. If you do, creatures you control have base power and toughness X/X until end of turn, where X is the sacrificed creature's mana value.\nSVar:TrigAnimateAll:AB$ AnimateAll | Cost$ Sac<1/Creature.Other/another creature> | Power$ X | Toughness$ X | ValidCards$ Creature.YouCtrl\nSVar:X:Sacrificed$CardManaCost\nOracle:Ward—Pay 3 life.\\nWhenever The Meep attacks, you may sacrifice another creature. If you do, creatures you control have base power and toughness X/X until end of turn, where X is the sacrificed creature's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Meep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chained-brute-corpus-m682",
+  "description": "M6 corpus — Chained Brute; in-hand parse.",
+  "seed": 61675,
+  "cards": {
+    "Chained Brute": "Name:Chained Brute\nManaCost:1 R\nTypes:Creature Devil\nPT:4/3\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nA:AB$ Untap | Cost$ 1 Sac<1/Creature.Other/another creature> | PlayerTurn$ True | SpellDescription$ Untap this creature. Activate only during your turn.\nSVar:AIPreference:SacCost$Creature.token+powerLE2+toughnessLE2,Creature.cmcLE2+powerLE1+toughnessLE2+inZoneBattlefield\nDeckHas:Ability$Sacrifice\nOracle:This creature doesn't untap during your untap step.\\n{1}, Sacrifice another creature: Untap this creature. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chained Brute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

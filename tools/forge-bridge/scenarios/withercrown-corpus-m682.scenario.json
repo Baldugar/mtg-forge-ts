@@ -1,0 +1,23 @@
+{
+  "id": "withercrown-corpus-m682",
+  "description": "M6 corpus — Withercrown; in-hand parse.",
+  "seed": 65262,
+  "cards": {
+    "Withercrown": "Name:Withercrown\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | SetPower$ 0 | AddTrigger$ WitherTrig | AddSVar$ TrigLoseLife | Description$ Enchanted creature has base power 0 and has \"At the beginning of your upkeep, you lose 1 life unless you sacrifice this creature.\"\nSVar:WitherTrig:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 1 life unless you sacrifice this creature.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 1 | UnlessCost$ Sac<1/CARDNAME> | UnlessPayer$ You\nOracle:Enchant creature\\nEnchanted creature has base power 0 and has \"At the beginning of your upkeep, you lose 1 life unless you sacrifice this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Withercrown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

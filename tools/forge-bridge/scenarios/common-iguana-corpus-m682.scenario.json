@@ -1,0 +1,23 @@
+{
+  "id": "common-iguana-corpus-m682",
+  "description": "M6 corpus — Common Iguana; in-hand parse.",
+  "seed": 61795,
+  "cards": {
+    "Common Iguana": "Name:Common Iguana\nManaCost:1 R\nTypes:Host Creature Lizard\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Self | Execute$ TrigDiscard | Host$ True | TriggerDescription$ When this creature enters, you may discard a card. If you do, draw a card.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:When this creature enters, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Common Iguana"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

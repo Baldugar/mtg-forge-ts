@@ -1,0 +1,23 @@
+{
+  "id": "golem-foundry-corpus-m682",
+  "description": "M6 corpus — Golem Foundry; in-hand parse.",
+  "seed": 62591,
+  "cards": {
+    "Golem Foundry": "Name:Golem Foundry\nManaCost:3\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you cast an artifact spell, you may put a charge counter on CARDNAME.\nA:AB$ Token | Cost$ SubCounter<3/CHARGE> | TokenScript$ c_3_3_a_golem | TokenOwner$ You | SpellDescription$ Create a 3/3 colorless Golem artifact creature token.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterNum$ 1 | CounterType$ CHARGE\nOracle:Whenever you cast an artifact spell, you may put a charge counter on Golem Foundry.\\nRemove three charge counters from Golem Foundry: Create a 3/3 colorless Golem artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golem Foundry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

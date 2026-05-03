@@ -1,0 +1,23 @@
+{
+  "id": "mountain-valley-corpus-m682",
+  "description": "M6 corpus — Mountain Valley; in-hand parse.",
+  "seed": 63446,
+  "cards": {
+    "Mountain Valley": "Name:Mountain Valley\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ T Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Mountain,Forest | SpellDescription$ Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.\nOracle:Mountain Valley enters tapped.\\n{T}, Sacrifice Mountain Valley: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mountain Valley"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

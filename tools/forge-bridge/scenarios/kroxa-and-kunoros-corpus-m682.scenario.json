@@ -1,0 +1,23 @@
+{
+  "id": "kroxa-and-kunoros-corpus-m682",
+  "description": "M6 corpus — Kroxa and Kunoros; in-hand parse.",
+  "seed": 63077,
+  "cards": {
+    "Kroxa and Kunoros": "Name:Kroxa and Kunoros\nManaCost:3 R W B\nTypes:Legendary Creature Elder Giant Dog\nPT:6/6\nK:Vigilance\nK:Menace\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever CARDNAME enters or attacks, you may exile five cards from your graveyard. When you do, return target creature card from your graveyard to the battlefield.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may exile five cards from your graveyard. When you do, return target creature card from your graveyard to the battlefield.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ ExileFromGrave<5/Card> | Execute$ TrigReturn | SpellDescription$ When you do, return target creature card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature to return from your graveyard\nSVar:NeedsToPlayVar:Z EQ6\nSVar:X:Count$ValidGraveyard Card.YouOwn/LimitMax.6\nSVar:Y:Count$ValidGraveyard Creature.YouOwn/LimitMax.1\nSVar:Z:SVar$X/Times.Y\nDeckHas:Ability$Graveyard|LifeGain\nDeckHints:Ability$Discard\nOracle:Vigilance, menace, lifelink\\nWhenever Kroxa and Kunoros enters or attacks, you may exile five cards from your graveyard. When you do, return target creature card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kroxa and Kunoros"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

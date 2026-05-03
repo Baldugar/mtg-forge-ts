@@ -1,0 +1,23 @@
+{
+  "id": "taigam-sidisi-s-hand-corpus-m682",
+  "description": "M6 corpus — Taigam, Sidisi's Hand; in-hand parse.",
+  "seed": 64704,
+  "cards": {
+    "Taigam, Sidisi's Hand": "Name:Taigam, Sidisi's Hand\nManaCost:3 U B\nTypes:Legendary Creature Human Wizard\nPT:3/4\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ At the beginning of your upkeep, look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | DestinationZone2$ Graveyard | NoReveal$ True | SpellDescription$ Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.\nA:AB$ Pump | Cost$ B T ExileFromGrave<X/Card> | CostDesc$ {B}, {T}, Exile X cards from your graveyard: | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SpellDescription$ Target creature gets -X/-X until end of turn.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Skip your draw step.\\nAt the beginning of your upkeep, look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.\\n{B}, {T}, Exile X cards from your graveyard: Target creature gets -X/-X until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Taigam, Sidisi's Hand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

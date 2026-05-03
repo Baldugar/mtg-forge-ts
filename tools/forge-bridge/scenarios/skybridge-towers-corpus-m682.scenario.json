@@ -1,0 +1,23 @@
+{
+  "id": "skybridge-towers-corpus-m682",
+  "description": "M6 corpus — Skybridge Towers; in-hand parse.",
+  "seed": 64421,
+  "cards": {
+    "Skybridge Towers": "Name:Skybridge Towers\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nA:AB$ Draw | Cost$ 2 W U T Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Skybridge Towers enters tapped.\\n{T}: Add {W} or {U}.\\n{2}{W}{U}, {T}, Sacrifice Skybridge Towers: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skybridge Towers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

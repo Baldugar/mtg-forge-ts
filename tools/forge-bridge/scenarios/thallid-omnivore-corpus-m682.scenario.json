@@ -1,0 +1,23 @@
+{
+  "id": "thallid-omnivore-corpus-m682",
+  "description": "M6 corpus — Thallid Omnivore; in-hand parse.",
+  "seed": 64780,
+  "cards": {
+    "Thallid Omnivore": "Name:Thallid Omnivore\nManaCost:3 B\nTypes:Creature Fungus\nPT:3/3\nA:AB$ Pump | Cost$ 1 Sac<1/Creature.Other/another creature> | NumAtt$ +2 | NumDef$ +2 | AILogic$ Aristocrat | SubAbility$ DBGainLife | SpellDescription$ CARDNAME gets +2/+2 until end of turn. If a Saproling was sacrificed this way, you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | ConditionDefined$ Sacrificed | ConditionPresent$ Card.Saproling | ConditionCompare$ GE1\nSVar:AIPreference:SacCost$Creature.Saproling,Creature.Other\nDeckHints:Type$Saproling\nOracle:{1}, Sacrifice another creature: Thallid Omnivore gets +2/+2 until end of turn. If a Saproling was sacrificed this way, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thallid Omnivore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

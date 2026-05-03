@@ -1,0 +1,23 @@
+{
+  "id": "garruk-primal-hunter-corpus-m682",
+  "description": "M6 corpus — Garruk, Primal Hunter; in-hand parse.",
+  "seed": 62460,
+  "cards": {
+    "Garruk, Primal Hunter": "Name:Garruk, Primal Hunter\nManaCost:2 G G G\nTypes:Legendary Planeswalker Garruk\nLoyalty:3\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ g_3_3_beast | TokenOwner$ You | SpellDescription$ Create a 3/3 green Beast creature token.\nA:AB$ Draw | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Defined$ You | NumCards$ X | SpellDescription$ Draw cards equal to the greatest power among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nA:AB$ Token | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | Ultimate$ True | TokenAmount$ Y | TokenScript$ g_6_6_wurm | TokenOwner$ You | SpellDescription$ Create a 6/6 green Wurm creature token for each land you control.\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:[+1]: Create a 3/3 green Beast creature token.\\n[-3]: Draw cards equal to the greatest power among creatures you control.\\n[-6]: Create a 6/6 green Wurm creature token for each land you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garruk, Primal Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

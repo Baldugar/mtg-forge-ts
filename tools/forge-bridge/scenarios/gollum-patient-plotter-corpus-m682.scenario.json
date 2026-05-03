@@ -1,0 +1,23 @@
+{
+  "id": "gollum-patient-plotter-corpus-m682",
+  "description": "M6 corpus — Gollum, Patient Plotter; in-hand parse.",
+  "seed": 62596,
+  "cards": {
+    "Gollum, Patient Plotter": "Name:Gollum, Patient Plotter\nManaCost:1 B\nTypes:Legendary Creature Halfling Horror\nPT:3/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Execute$ TrigTempt | TriggerDescription$ When CARDNAME leaves the battlefield, the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nA:AB$ ChangeZone | Cost$ B Sac<1/Creature> | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SorcerySpeed$ True | SpellDescription$ Return NICKNAME from your graveyard to your hand. Activate only as a sorcery.\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE1\nOracle:When Gollum, Patient Plotter leaves the battlefield, the Ring tempts you.\\n{B}, Sacrifice a creature: Return Gollum from your graveyard to your hand. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gollum, Patient Plotter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

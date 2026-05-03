@@ -1,0 +1,23 @@
+{
+  "id": "teferi-timeless-voyager-corpus-m682",
+  "description": "M6 corpus — Teferi, Timeless Voyager; in-hand parse.",
+  "seed": 64737,
+  "cards": {
+    "Teferi, Timeless Voyager": "Name:Teferi, Timeless Voyager\nManaCost:4 U U\nTypes:Legendary Planeswalker Teferi\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | SpellDescription$ Draw a card.\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Put target creature on top of its owner's library.\nA:AB$ Phases | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Opponent | AllValid$ Creature.TargetedPlayerCtrl | RememberValids$ True | SubAbility$ DBEffect | SpellDescription$ Each creature target opponent controls phases out.\nSVar:DBEffect:DB$ Effect | Duration$ UntilTheEndOfYourNextTurn | RememberObjects$ Remembered | StaticAbilities$ CantPhaseIn | SubAbility$ DBCleanup | SpellDescription$ Until the end of your next turn, they can't phase in. (Treat them and anything attached to them as though they don't exist.)\nSVar:CantPhaseIn:Mode$ CantPhaseIn | ValidCard$ Card.phasedOutIsRemembered | Description$ Until the end of your next turn, they can't phase in. (Treat them and anything attached to them as though they don't exist.)\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:[+1]: Draw a card.\\n[-3]: Put target creature on top of its owner's library.\\n[-8]: Each creature target opponent controls phases out. Until the end of your next turn, they can't phase in. (Treat them and anything attached to them as though they don't exist.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teferi, Timeless Voyager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

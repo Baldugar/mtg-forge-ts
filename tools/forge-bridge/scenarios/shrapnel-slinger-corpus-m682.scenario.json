@@ -1,0 +1,23 @@
+{
+  "id": "shrapnel-slinger-corpus-m682",
+  "description": "M6 corpus — Shrapnel Slinger; in-hand parse.",
+  "seed": 64352,
+  "cards": {
+    "Shrapnel Slinger": "Name:Shrapnel Slinger\nManaCost:1 R\nTypes:Artifact Creature Phyrexian Beast\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, you may sacrifice a creature. When you do, destroy target artifact an opponent controls.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target artifact an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.OppCtrl | TgtPrompt$ Select target artifact an opponent controls\nDeckHas:Ability$Sacrifice\nOracle:When Shrapnel Slinger enters, you may sacrifice a creature. When you do, destroy target artifact an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrapnel Slinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "combustion-man-corpus-m682",
+  "description": "M6 corpus — Combustion Man; in-hand parse.",
+  "seed": 61786,
+  "cards": {
+    "Combustion Man": "Name:Combustion Man\nManaCost:3 R R\nTypes:Legendary Creature Human Assassin\nPT:4/6\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME attacks, destroy target permanent unless its controller has CARDNAME deal damage to them equal to his power.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent | UnlessCost$ DamageYou<X> | TgtPrompt$ Select target permanent\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Combustion Man attacks, destroy target permanent unless its controller has Combustion Man deal damage to them equal to his power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Combustion Man"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "druids-repository-corpus-m682",
+  "description": "M6 corpus — Druids' Repository; in-hand parse.",
+  "seed": 62108,
+  "cards": {
+    "Druids' Repository": "Name:Druids' Repository\nManaCost:1 G G\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPut | TriggerDescription$ Whenever a creature you control attacks, put a charge counter on CARDNAME.\nSVar:TrigPut:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ Mana | Cost$ SubCounter<1/CHARGE> | Produced$ Any | SpellDescription$ Add one mana of any color.\nSVar:PlayMain1:TRUE\nOracle:Whenever a creature you control attacks, put a charge counter on Druids' Repository.\\nRemove a charge counter from Druids' Repository: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Druids' Repository"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

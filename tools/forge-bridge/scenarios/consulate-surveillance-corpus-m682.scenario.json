@@ -1,0 +1,23 @@
+{
+  "id": "consulate-surveillance-corpus-m682",
+  "description": "M6 corpus — Consulate Surveillance; in-hand parse.",
+  "seed": 61811,
+  "cards": {
+    "Consulate Surveillance": "Name:Consulate Surveillance\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E}{E} (four energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 4\nA:AB$ ChooseSource | Cost$ PayEnergy<2> | Choices$ Card,Emblem | ChoiceTitle$ Choose a source | RememberChosen$ True | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ Prevent all damage that would be dealt to you this turn by a source of your choice.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ You | ValidSource$ Card.IsRemembered,Emblem.IsRemembered | Description$ Prevent all damage that would be dealt to you this turn by a source of your choice.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:When Consulate Surveillance enters, you get {E}{E}{E}{E} (four energy counters).\\nPay {E}{E}: Prevent all damage that would be dealt to you this turn by a source of your choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consulate Surveillance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

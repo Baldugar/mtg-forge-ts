@@ -1,0 +1,23 @@
+{
+  "id": "miara-thorn-of-the-glade-corpus-m682",
+  "description": "M6 corpus — Miara, Thorn of the Glade; in-hand parse.",
+  "seed": 63354,
+  "cards": {
+    "Miara, Thorn of the Glade": "Name:Miara, Thorn of the Glade\nManaCost:1 B\nTypes:Legendary Creature Elf Scout\nPT:1/2\nK:Partner\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Elf.Other+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME or another Elf you control dies, you may pay {1} and 1 life. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ 1 PayLife<1> | Defined$ You | NumCards$ 1\nDeckNeeds:Type$Elf\nOracle:Whenever Miara, Thorn of the Glade or another Elf you control dies, you may pay {1} and 1 life. If you do, draw a card.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Miara, Thorn of the Glade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

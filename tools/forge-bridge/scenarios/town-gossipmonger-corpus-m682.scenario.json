@@ -1,0 +1,23 @@
+{
+  "id": "town-gossipmonger-corpus-m682",
+  "description": "M6 corpus — Town Gossipmonger; in-hand parse.",
+  "seed": 64933,
+  "cards": {
+    "Town Gossipmonger": "Name:Town Gossipmonger\nManaCost:W\nTypes:Creature Human\nPT:1/1\nA:AB$ SetState | Cost$ T tapXType<1/Creature> | Defined$ Self | Mode$ Transform | SpellDescription$ Transform CARDNAME.\nAlternateMode:DoubleFaced\nOracle:{T}, Tap an untapped creature you control: Transform Town Gossipmonger.\n\nALTERNATE\n\nName:Incited Rabble\nManaCost:no cost\nColors:red\nTypes:Creature Human\nPT:2/3\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nA:AB$ Pump | Cost$ 2 | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nOracle:Incited Rabble attacks each combat if able.\\n{2}: Incited Rabble gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Town Gossipmonger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

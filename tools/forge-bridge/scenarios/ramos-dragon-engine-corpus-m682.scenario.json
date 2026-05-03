@@ -1,0 +1,23 @@
+{
+  "id": "ramos-dragon-engine-corpus-m682",
+  "description": "M6 corpus — Ramos, Dragon Engine; in-hand parse.",
+  "seed": 63917,
+  "cards": {
+    "Ramos, Dragon Engine": "Name:Ramos, Dragon Engine\nManaCost:6\nTypes:Legendary Artifact Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, put a +1/+1 counter on CARDNAME for each of that spell's colors.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$CardNumColors\nA:AB$ Mana | Cost$ SubCounter<5/P1P1/NICKNAME> | Produced$ W W U U B B R R G G | ActivationLimit$ 1 | SpellDescription$ Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever you cast a spell, put a +1/+1 counter on Ramos, Dragon Engine for each of that spell's colors.\\nRemove five +1/+1 counters from Ramos: Add {W}{W}{U}{U}{B}{B}{R}{R}{G}{G}. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ramos, Dragon Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

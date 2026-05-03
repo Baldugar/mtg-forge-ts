@@ -1,0 +1,23 @@
+{
+  "id": "firestorm-corpus-m682",
+  "description": "M6 corpus — Firestorm; in-hand parse.",
+  "seed": 62334,
+  "cards": {
+    "Firestorm": "Name:Firestorm\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | Cost$ R Discard<X/Card> | ValidTgts$ Any | TargetMin$ 0 | TargetMax$ MaxTargets | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to each of X targets.\nSVar:X:TargetedObjects$Amount\nSVar:MaxTargets:SVar$MaxPlayers/Plus.MaxPermanents\nSVar:MaxPlayers:PlayerCountPlayers$Amount\nSVar:MaxPermanents:Count$Valid Any\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, discard X cards.\\nFirestorm deals X damage to each of X targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firestorm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

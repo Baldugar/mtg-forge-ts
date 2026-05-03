@@ -1,0 +1,23 @@
+{
+  "id": "maze-skullbomb-corpus-m682",
+  "description": "M6 corpus — Maze Skullbomb; in-hand parse.",
+  "seed": 63309,
+  "cards": {
+    "Maze Skullbomb": "Name:Maze Skullbomb\nManaCost:1\nTypes:Artifact\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nA:AB$ Pump | Cost$ 2 G Sac<1/CARDNAME> | ValidTgts$ Creature.YouCtrl | NumAtt$ +3 | NumDef$ +3 | KW$ Trample | TgtPrompt$ Select target creature you control | SorcerySpeed$ True | SubAbility$ DBDraw | SpellDescription$ Target creature you control gets +3/+3 and gains trample until end of turn. Draw a card. Activate only as a sorcery.\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:Random\nDeckHas:Color$Green & Ability$Sacrifice\nOracle:{1}, Sacrifice Maze Skullbomb: Draw a card.\\n{2}{G}, Sacrifice Maze Skullbomb: Target creature you control gets +3/+3 and gains trample until end of turn. Draw a card. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maze Skullbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

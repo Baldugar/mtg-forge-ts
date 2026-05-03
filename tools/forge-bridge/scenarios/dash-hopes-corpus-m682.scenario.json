@@ -1,0 +1,23 @@
+{
+  "id": "dash-hopes-corpus-m682",
+  "description": "M6 corpus — Dash Hopes; in-hand parse.",
+  "seed": 61927,
+  "cards": {
+    "Dash Hopes": "Name:Dash Hopes\nManaCost:B B\nTypes:Instant\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCounter | TriggerDescription$ When you cast this spell, any player may pay 5 life. If a player does, counter CARDNAME.\nSVar:TrigCounter:DB$ Counter | UnlessCost$ PayLife<5> | Defined$ TriggeredSpellAbility | UnlessPayer$ Player | UnlessSwitched$ True\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nOracle:When you cast this spell, any player may pay 5 life. If a player does, counter Dash Hopes.\\nCounter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dash Hopes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

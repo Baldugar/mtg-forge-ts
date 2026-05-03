@@ -1,0 +1,23 @@
+{
+  "id": "primordial-mist-corpus-m682",
+  "description": "M6 corpus — Primordial Mist; in-hand parse.",
+  "seed": 63825,
+  "cards": {
+    "Primordial Mist": "Name:Primordial Mist\nManaCost:4 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigManifest | OptionalDecider$ You | TriggerDescription$ At the beginning of your end step, you may manifest the top card of your library.\nSVar:TrigManifest:DB$ Manifest\nA:AB$ Effect | Cost$ Exile<1/Permanent.faceDown> | CostDesc$ Exile a face-down permanent you control face up: | RememberObjects$ ExiledCards | StaticAbilities$ Play | ExileOnMoved$ Exile | SpellDescription$ You may play that card this turn. (You still pay its costs. Timing rules still apply.)\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nAI:RemoveDeck:All\nOracle:At the beginning of your end step, you may manifest the top card of your library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\\nExile a face-down permanent you control face up: You may play that card this turn. (You still pay its costs. Timing rules still apply.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primordial Mist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "erebos-s-emissary-corpus-m682",
+  "description": "M6 corpus — Erebos's Emissary; in-hand parse.",
+  "seed": 62218,
+  "cards": {
+    "Erebos's Emissary": "Name:Erebos's Emissary\nManaCost:3 B\nTypes:Enchantment Creature Snake\nPT:3/3\nK:Bestow:5 B\nA:AB$ Pump | Cost$ Discard<1/Creature> | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | ConditionPresent$ Card.Self+nonAura | SubAbility$ DBPump | SpellDescription$ CARDNAME gets +2/+2 until end of turn. If CARDNAME is an Aura, enchanted creature gets +2/+2 until end of turn instead.\nSVar:DBPump:DB$ Pump | NumAtt$ +2 | NumDef$ +2 | Defined$ Enchanted | ConditionPresent$ Card.Self+Aura\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3.\nDeckHas:Ability$Discard\nOracle:Bestow {5}{B} (If you cast this card for its bestow cost, it's an Aura spell with enchant creature. It becomes a creature again if it's not attached to a creature.)\\nDiscard a creature card: Erebos's Emissary gets +2/+2 until end of turn. If Erebos's Emissary is an Aura, enchanted creature gets +2/+2 until end of turn instead.\\nEnchanted creature gets +3/+3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erebos's Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

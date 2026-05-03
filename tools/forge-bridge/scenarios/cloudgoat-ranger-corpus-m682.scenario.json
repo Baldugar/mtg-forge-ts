@@ -1,0 +1,23 @@
+{
+  "id": "cloudgoat-ranger-corpus-m682",
+  "description": "M6 corpus — Cloudgoat Ranger; in-hand parse.",
+  "seed": 61767,
+  "cards": {
+    "Cloudgoat Ranger": "Name:Cloudgoat Ranger\nManaCost:3 W W\nTypes:Creature Giant Warrior Ranger\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create three 1/1 white Kithkin Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ w_1_1_kithkin_soldier | TokenOwner$ You\nA:AB$ Pump | Cost$ tapXType<3/Kithkin> | Defined$ Self | NumAtt$ +2 | KW$ Flying | SpellDescription$ CARDNAME gets +2/+0 and gains flying until end of turn.\nOracle:When Cloudgoat Ranger enters, create three 1/1 white Kithkin Soldier creature tokens.\\nTap three untapped Kithkin you control: Cloudgoat Ranger gets +2/+0 and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudgoat Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mishra-s-research-desk-corpus-m682",
+  "description": "M6 corpus — Mishra's Research Desk; in-hand parse.",
+  "seed": 63392,
+  "cards": {
+    "Mishra's Research Desk": "Name:Mishra's Research Desk\nManaCost:1\nTypes:Artifact\nA:AB$ Dig | Cost$ 1 T Sac<1/CARDNAME> | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBChoose | StackDescription$ SpellDescription | SpellDescription$ Exile the top two cards of your library. Choose one of them. Until the end of your next turn, you may play that card.\nSVar:DBChoose:DB$ ChooseCard | Defined$ You | Amount$ 1 | Mandatory$ True | Choices$ Card.IsRemembered | ChoiceZone$ Exile | ChoiceTitle$ Choose one of the exiled cards | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | RememberObjects$ ChosenCard | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the chosen card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nK:Unearth:1 R\nDeckHints:Color$Red\nDeckHas:Ability$Sacrifice|Graveyard\nOracle:{1}, {T}, Sacrifice Mishra's Research Desk: Exile the top two cards of your library. Choose one of them. Until the end of your next turn, you may play that card.\\nUnearth {1}{R} ({1}{R}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mishra's Research Desk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

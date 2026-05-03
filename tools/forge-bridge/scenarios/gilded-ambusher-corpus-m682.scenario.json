@@ -1,0 +1,23 @@
+{
+  "id": "gilded-ambusher-corpus-m682",
+  "description": "M6 corpus — Gilded Ambusher; in-hand parse.",
+  "seed": 62523,
+  "cards": {
+    "Gilded Ambusher": "Name:Gilded Ambusher\nManaCost:1 B R\nTypes:Enchantment Creature Lizard Glimmer\nPT:4/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another nonland permanent. When you do, each opponent exiles a nonland, nontoken permanent they control and a random nonland card from their library, then CARDNAME deals damage to them equal to the total mana value of the cards exiled this way.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<1/Permanent.Other+nonLand/another nonland permanent> | Execute$ TrigEachOpp | TriggerDescription$ When you do, each opponent exiles a nonland, nontoken permanent they control and a random nonland card from their library, then CARDNAME deals damage to them equal to the total mana value of the cards exiled this way.\nSVar:TrigEachOpp:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBChoose | SubAbility$ DBExile\nSVar:DBChoose:DB$ ChooseCard | Defined$ Remembered | Choices$ Permanent.nonLand+!token | ControlledByPlayer$ Chooser | ChoiceZone$ Battlefield | ImprintChosen$ True | Mandatory$ True | SubAbility$ DBRandom\nSVar:DBRandom:DB$ ChooseCard | Defined$ Remembered | Choices$ Card.nonLand | ControlledByPlayer$ Chooser | ChoiceZone$ Library | AtRandom$ True | ImprintChosen$ True\nSVar:DBExile:DB$ ChangeZone | Defined$ Imprinted | Origin$ Battlefield,Library | Destination$ Exile | SubAbility$ DBDamage | RememberChanged$ True\nSVar:DBDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ Remembered$CardManaCost | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True | ClearChosenCard$ True\nDeckHas:Ability$Sacrifice\nOracle:Whenever Gilded Ambusher attacks, you may sacrifice another nonland permanent. When you do, each opponent exiles a nonland, nontoken permanent they control and a random nonland card from their library, then Gilded Ambusher deals damage to them equal to the total mana value of the cards exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gilded Ambusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nihil-spellbomb-corpus-m682",
+  "description": "M6 corpus — Nihil Spellbomb; in-hand parse.",
+  "seed": 63553,
+  "cards": {
+    "Nihil Spellbomb": "Name:Nihil Spellbomb\nManaCost:1\nTypes:Artifact\nA:AB$ ChangeZoneAll | Cost$ T Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | Shuffle$ True | SpellDescription$ Exile all cards from target player's graveyard.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, you may pay {B}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ B | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:{T}, Sacrifice Nihil Spellbomb: Exile all cards from target player's graveyard.\\nWhen Nihil Spellbomb is put into a graveyard from the battlefield, you may pay {B}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nihil Spellbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

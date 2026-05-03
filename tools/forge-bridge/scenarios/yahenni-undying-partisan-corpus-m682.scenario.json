@@ -1,0 +1,23 @@
+{
+  "id": "yahenni-undying-partisan-corpus-m682",
+  "description": "M6 corpus — Yahenni, Undying Partisan; in-hand parse.",
+  "seed": 65295,
+  "cards": {
+    "Yahenni, Undying Partisan": "Name:Yahenni, Undying Partisan\nManaCost:2 B\nTypes:Legendary Creature Aetherborn Vampire\nPT:2/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature an opponent controls dies, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ Pump | Cost$ Sac<1/Creature.Other/another creature> | Defined$ Self | KW$ Indestructible | SpellDescription$ CARDNAME gains indestructible until end of turn.\nOracle:Haste\\nWhenever a creature an opponent controls dies, put a +1/+1 counter on Yahenni, Undying Partisan.\\nSacrifice another creature: Yahenni gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yahenni, Undying Partisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

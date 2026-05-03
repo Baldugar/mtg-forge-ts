@@ -1,0 +1,23 @@
+{
+  "id": "spinning-darkness-corpus-m682",
+  "description": "M6 corpus — Spinning Darkness; in-hand parse.",
+  "seed": 64557,
+  "cards": {
+    "Spinning Darkness": "Name:Spinning Darkness\nManaCost:4 B B\nTypes:Instant\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ ExileFromGrave<3/Card.Black+FromTopGrave> | Description$ You may exile the top three black cards of your graveyard rather than pay this spell's mana cost.\nA:SP$ DealDamage | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | NumDmg$ 3 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 3 damage to target nonblack creature. You gain 3 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nAI:RemoveDeck:All\nSVar:NeedsOrderedGraveyard:TRUE\nOracle:You may exile the top three black cards of your graveyard rather than pay this spell's mana cost.\\nSpinning Darkness deals 3 damage to target nonblack creature. You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spinning Darkness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

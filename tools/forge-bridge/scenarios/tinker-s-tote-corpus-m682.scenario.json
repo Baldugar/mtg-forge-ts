@@ -1,0 +1,23 @@
+{
+  "id": "tinker-s-tote-corpus-m682",
+  "description": "M6 corpus — Tinker's Tote; in-hand parse.",
+  "seed": 64892,
+  "cards": {
+    "Tinker's Tote": "Name:Tinker's Tote\nManaCost:2 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 colorless Gnome artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_a_gnome | TokenOwner$ You\nA:AB$ GainLife | Cost$ W Sac<1/CARDNAME> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nOracle:When Tinker's Tote enters, create two 1/1 colorless Gnome artifact creature tokens.\\n{W}, Sacrifice Tinker's Tote: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tinker's Tote"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

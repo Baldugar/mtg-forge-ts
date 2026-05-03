@@ -1,0 +1,23 @@
+{
+  "id": "resonance-technician-corpus-m682",
+  "description": "M6 corpus — Resonance Technician; in-hand parse.",
+  "seed": 63991,
+  "cards": {
+    "Resonance Technician": "Name:Resonance Technician\nManaCost:3 UR UR\nTypes:Creature Weird Detective\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, investigate twice.\nSVar:TrigInvestigate:AB$ Investigate | Cost$ Discard<1/Card> | Num$ 2\nA:AB$ CopySpellAbility | Cost$ T tapXType<X/Artifact/artifacts you control> | ValidTgts$ Instant.YouCtrl+cmcEQX,Sorcery.YouCtrl+cmcEQX | TargetType$ Spell | AILogic$ Once | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell you control with mana value X. You may choose new targets for the copy.\nSVar:X:Count$xPaid\nDeckHas:Ability$Discard|Sacrifice|Investigate|Token & Type$Clue|Artifact\nDeckHints:Type$Instant|Sorcery\nDeckNeeds:Type$Artifact\nOracle:Flying\\nWhen Resonance Technician enters, you may discard a card. If you do, investigate twice.\\n{T}, Tap X untapped artifacts you control: Copy target instant or sorcery spell you control with mana value X. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resonance Technician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

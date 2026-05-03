@@ -1,0 +1,23 @@
+{
+  "id": "thallid-corpus-m682",
+  "description": "M6 corpus — Thallid; in-hand parse.",
+  "seed": 64777,
+  "cards": {
+    "Thallid": "Name:Thallid\nManaCost:G\nTypes:Creature Fungus\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a spore counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ SPORE\nA:AB$ Token | Cost$ SubCounter<3/SPORE> | TokenScript$ g_1_1_saproling | SpellDescription$ Create a 1/1 green Saproling creature token.\nDeckHints:Type$Fungus\nDeckHas:Ability$Counters|Token & Type$Saproling\nOracle:At the beginning of your upkeep, put a spore counter on Thallid.\\nRemove three spore counters from Thallid: Create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thallid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soul-immolation-corpus-m682",
+  "description": "M6 corpus — Soul Immolation; in-hand parse.",
+  "seed": 64491,
+  "cards": {
+    "Soul Immolation": "Name:Soul Immolation\nManaCost:3 R R\nTypes:Sorcery\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Activator$ You | Type$ Spell | Cost$ Blight<X> | EffectZone$ All | Description$ As an additional cost to cast this spell, blight X. X can't be greater than the greatest toughness among creatures you control. (Put X -1/-1 counters on a creature you control.)\nA:SP$ DamageAll | NumDmg$ X | Announce$ X | XMaxLimit$ GrTo | ValidPlayers$ Player.Opponent | ValidCards$ Creature.OppCtrl | ValidDescription$ each opponent and each creature they control. | SpellDescription$ CARDNAME deals X damage to each opponent and each creature they control.\nSVar:X:Count$xPaid\nSVar:GrTo:Count$Valid Creature.YouCtrl$GreatestCardToughness\nOracle:As an additional cost to cast this spell, blight X. X can't be greater than the greatest toughness among creatures you control. (Put X -1/-1 counters on a creature you control.)\\nSoul Immolation deals X damage to each opponent and each creature they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Immolation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

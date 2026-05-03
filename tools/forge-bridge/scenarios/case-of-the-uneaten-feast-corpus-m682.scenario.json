@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-uneaten-feast-corpus-m682",
+  "description": "M6 corpus — Case of the Uneaten Feast; in-hand parse.",
+  "seed": 61647,
+  "cards": {
+    "Case of the Uneaten Feast": "Name:Case of the Uneaten Feast\nManaCost:W\nTypes:Enchantment Case\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Card.Self+!IsSolved | CheckSVar$ X | SVarCompare$ GE5 | TriggerZones$ Battlefield | Execute$ TrigSolve | TriggerDescription$ To solve — You've gained 5 or more life this turn. (If unsolved, solve at the beginning of your end step.)\nSVar:TrigSolve:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nSVar:X:Count$LifeYouGainedThisTurn\nA:AB$ Animate | Cost$ Sac<1/CARDNAME> | PrecostDesc$ Solved — | Activation$ Solved | staticAbilities$ Play | Defined$ ValidGraveyard Creature.YouOwn | SpellDescription$ Creature cards in your graveyard gain \"You may cast this card from your graveyard\" until end of turn.\nSVar:Play:Mode$ Continuous | Affected$ Card.Self+nonLand | AffectedZone$ Graveyard | EffectZone$ Graveyard | MayPlay$ True | Description$ You may play this card from your graveyard.\nDeckHas:Ability$LifeGain|Graveyard\nDeckHints:Ability$LifeGain|Graveyard\nOracle:Whenever a creature you control enters, you gain 1 life.\\nTo solve — You've gained 5 or more life this turn. (If unsolved, solve at the beginning of your end step.)\\nSolved — Sacrifice this Case: Creature cards in your graveyard gain \"You may cast this card from your graveyard\" until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Uneaten Feast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

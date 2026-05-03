@@ -1,0 +1,23 @@
+{
+  "id": "old-man-willow-corpus-m682",
+  "description": "M6 corpus — Old Man Willow; in-hand parse.",
+  "seed": 63617,
+  "cards": {
+    "Old Man Willow": "Name:Old Man Willow\nManaCost:2 B G\nTypes:Legendary Creature Treefolk\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of lands you control.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediate | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature or a token. When you do, target creature an opponent controls gets -2/-2 until end of turn.\nSVar:TrigImmediate:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other;Card.token/another creature or token> | Execute$ TrigDebuff | TriggerDescription$ When you do, target creature an opponent controls gets -2/-2 until end of turn.\nSVar:TrigDebuff:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True\nSVar:X:Count$Valid Land.YouCtrl\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Token\nOracle:Old Man Willow's power and toughness are each equal to the number of lands you control.\\nWhenever Old Man Willow attacks, you may sacrifice another creature or a token. When you do, target creature an opponent controls gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Old Man Willow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

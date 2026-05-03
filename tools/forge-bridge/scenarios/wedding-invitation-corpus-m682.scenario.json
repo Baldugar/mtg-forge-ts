@@ -1,0 +1,23 @@
+{
+  "id": "wedding-invitation-corpus-m682",
+  "description": "M6 corpus — Wedding Invitation; in-hand parse.",
+  "seed": 65216,
+  "cards": {
+    "Wedding Invitation": "Name:Wedding Invitation\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Effect | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | AITgts$ Vampire | SubAbility$ DBPump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBPump:DB$ Pump | Defined$ Targeted.Vampire | KW$ Lifelink | StackDescription$ SpellDescription | SpellDescription$ If it's a Vampire, it also gains lifelink until end of turn.\nDeckHints:Type$Vampire\nDeckHas:Ability$LifeGain|Sacrifice\nOracle:When Wedding Invitation enters, draw a card.\\n{T}, Sacrifice Wedding Invitation: Target creature can't be blocked this turn. If it's a Vampire, it also gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wedding Invitation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

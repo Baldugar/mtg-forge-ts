@@ -1,0 +1,23 @@
+{
+  "id": "aetherstorm-roc-corpus-m682",
+  "description": "M6 corpus — Aetherstorm Roc; in-hand parse.",
+  "seed": 61458,
+  "cards": {
+    "Aetherstorm Roc": "Name:Aetherstorm Roc\nManaCost:2 W W\nTypes:Creature Bird\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another creature you control enters, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it and tap up to one target creature defending player controls.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayEnergy<2> | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredDefendingPlayer | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target creature defending player controls\nOracle:Flying\\nWhenever Aetherstorm Roc or another creature you control enters, you get {E} (an energy counter).\\nWhenever Aetherstorm Roc attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it and tap up to one target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aetherstorm Roc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "magus-of-the-jar-corpus-m682",
+  "description": "M6 corpus — Magus of the Jar; in-hand parse.",
+  "seed": 63248,
+  "cards": {
+    "Magus of the Jar": "Name:Magus of the Jar\nManaCost:3 U U\nTypes:Creature Human Wizard\nPT:3/3\nA:AB$ ChangeZoneAll | Cost$ T Sac<1/CARDNAME> | ChangeType$ Card | Origin$ Hand | Destination$ Exile | ExileFaceDown$ True | RememberChanged$ True | SubAbility$ YouDraw | SpellDescription$ Each player exiles all cards from their hand face down and draws seven cards. At the beginning of the next end step, each player discards their hand and returns to their hand each card they exiled this way.\nSVar:YouDraw:DB$ Draw | Defined$ Player | NumCards$ 7 | SubAbility$ DelayedReturn\nSVar:DelayedReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ DBDiscard | RememberObjects$ RememberedLKI | TriggerDescription$ At the beginning of the next end step, each player discards their hand and returns to their hand each card they exiled this way. | SubAbility$ DBCleanup\nSVar:DBDiscard:DB$ Discard | Defined$ Player | Mode$ Hand | SubAbility$ ReturnAll\nSVar:ReturnAll:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Hand\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{T}, Sacrifice Magus of the Jar: Each player exiles all cards from their hand face down and draws seven cards. At the beginning of the next end step, each player discards their hand and returns to their hand each card they exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magus of the Jar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

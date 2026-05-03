@@ -1,0 +1,23 @@
+{
+  "id": "life-of-toshiro-umezawa-corpus-m682",
+  "description": "M6 corpus — Life of Toshiro Umezawa; in-hand parse.",
+  "seed": 63143,
+  "cards": {
+    "Life of Toshiro Umezawa": "Name:Life of Toshiro Umezawa\nManaCost:1 B\nTypes:Enchantment Saga\nK:Chapter:3:DBCharm,DBCharm,DBTransform\nSVar:DBCharm:DB$ Charm | Choices$ P2P2,M1M1,GainLife | SpellDescription$ ABILITY\nSVar:P2P2:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | AILogic$ Pump | SpellDescription$ Target creature gets +2/+2 until end of turn.\nSVar:M1M1:DB$ Pump | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | AILogic$ Curse | SpellDescription$ Target creature gets -1/-1 until end of turn.\nSVar:GainLife:DB$ GainLife | LifeAmount$ 2 | Defined$ You | SpellDescription$ You gain 2 life.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Choose one —\\n• Target creature gets +2/+2 until end of turn.\\n• Target creature gets -1/-1 until end of turn.\\n• You gain 2 life.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Memory of Toshiro\nManaCost:no cost\nColors:black\nTypes:Enchantment Creature Human Samurai\nPT:2/3\nA:AB$ Mana | Cost$ T PayLife<1> | Produced$ B | RestrictValid$ Spell.Instant,Spell.Sorcery | SpellDescription$ Add {B}. Spend this mana only to cast an instant or sorcery spell.\nDeckHints:Type$Instant|Sorcery\nOracle:{T}, Pay 1 life: Add {B}. Spend this mana only to cast an instant or sorcery spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Life of Toshiro Umezawa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

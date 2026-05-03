@@ -1,0 +1,23 @@
+{
+  "id": "starseer-mentor-corpus-m682",
+  "description": "M6 corpus — Starseer Mentor; in-hand parse.",
+  "seed": 64595,
+  "cards": {
+    "Starseer Mentor": "Name:Starseer Mentor\nManaCost:3 W B\nTypes:Creature Bat Warlock\nPT:3/5\nK:Flying\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigGenericChoice | TriggerDescription$ At the beginning of your end step, if you gained or lost life this turn, target opponent loses 3 life unless they sacrifice a nonland permanent or discard a card.\nSVar:TrigGenericChoice:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ PaySac,PayDiscard | FallbackAbility$ LoseLifeFallback | AILogic$ PayUnlessCost\nSVar:PaySac:DB$ LoseLife | LifeAmount$ 3 | Defined$ Targeted | UnlessCost$ Sac<1/Permanent.nonland/nonland permanent> | UnlessPayer$ Targeted | SpellDescription$ You lose 3 life unless you sacrifice a nonland permanent.\nSVar:PayDiscard:DB$ LoseLife | LifeAmount$ 3 | Defined$ Targeted | UnlessCost$ Discard<1/Card> | UnlessPayer$ Targeted | SpellDescription$ You lose 3 life unless you discard a card.\n# TODO: Most likely the ChooseGenericEffect code can be simplified somehow to avoid the necessity of having a dedicated fallback ability\nSVar:LoseLifeFallback:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 3\nSVar:X:Count$LifeYouGainedThisTurn/Plus.Y\nSVar:Y:PlayerCountPropertyYou$LifeLostThisTurn\nOracle:Flying, vigilance\\nAt the beginning of your end step, if you gained or lost life this turn, target opponent loses 3 life unless they sacrifice a nonland permanent or discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starseer Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "robobrain-war-mind-corpus-m682",
+  "description": "M6 corpus — Robobrain War Mind; in-hand parse.",
+  "seed": 64030,
+  "cards": {
+    "Robobrain War Mind": "Name:Robobrain War Mind\nManaCost:3 U\nTypes:Artifact Creature Robot\nPT:*/5\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ Y | Description$ CARDNAME's power is equal to the number of cards in your hand.\nSVar:Y:Count$ValidHand Card.YouOwn\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get an amount of {E} (energy counters) equal to the number of artifact creatures you control.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}{E}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ PayEnergy<3>\nSVar:HasAttackEffect:TRUE\nSVar:X:Count$Valid Artifact.Creature+YouCtrl\nDeckHas:Ability$Counters\nOracle:Robobrain War Mind's power is equal to the number of cards in your hand.\\nWhen Robobrain War Mind enters, you get an amount of {E} (energy counters) equal to the number of artifact creatures you control.\\nWhenever Robobrain War Mind attacks, you may pay {E}{E}{E}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Robobrain War Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

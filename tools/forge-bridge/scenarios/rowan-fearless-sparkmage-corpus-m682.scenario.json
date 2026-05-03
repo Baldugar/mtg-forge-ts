@@ -1,0 +1,23 @@
+{
+  "id": "rowan-fearless-sparkmage-corpus-m682",
+  "description": "M6 corpus — Rowan, Fearless Sparkmage; in-hand parse.",
+  "seed": 64056,
+  "cards": {
+    "Rowan, Fearless Sparkmage": "Name:Rowan, Fearless Sparkmage\nManaCost:3 R R\nTypes:Legendary Planeswalker Rowan\nLoyalty:5\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumAtt$ +3 | KW$ First Strike | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Up to one target creature gets +3/+0 and gains first strike until end of turn.\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 2 | NumDmg$ 1 | SubAbility$ DBPump | SpellDescription$ CARDNAME deals 1 damage to each of up to two target creatures. Those creatures can't block this turn.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN CARDNAME can't block.\nA:AB$ GainControl | Cost$ SubCounter<9/LOYALTY> | Planeswalker$ True | Ultimate$ True | AllValid$ Creature | LoseControl$ EOT | AddKWs$ Haste | Untap$ True | SpellDescription$ Gain control of all creatures until end of turn. Untap them. They gain haste until end of turn.\nOracle:[+1]: Up to one target creature gets +3/+0 and gains first strike until end of turn.\\n[-2]: Rowan, Fearless Sparkmage deals 1 damage to each of up to two target creatures. Those creatures can't block this turn.\\n[-9]: Gain control of all creatures until end of turn. Untap them. They gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rowan, Fearless Sparkmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crimestopper-sprite-corpus-m682",
+  "description": "M6 corpus — Crimestopper Sprite; in-hand parse.",
+  "seed": 61861,
+  "cards": {
+    "Crimestopper Sprite": "Name:Crimestopper Sprite\nManaCost:2 U\nTypes:Creature Faerie Detective\nPT:2/2\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ CollectEvidence<6> | Description$ As an additional cost to cast this spell, you may collect evidence 6. (Exile cards with total mana value 6 or greater from your graveyard.)\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature. If evidence was collected, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBStun\nSVar:DBStun:DB$ PutCounter | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1 | ConditionDefined$ CastSA>Collected | ConditionPresent$ Card\nOracle:As an additional cost to cast this spell, you may collect evidence 6. (Exile cards with total mana value 6 or greater from your graveyard.)\\nFlying\\nWhen Crimestopper Sprite enters, tap target creature. If evidence was collected, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crimestopper Sprite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reinforced-ronin-corpus-m682",
+  "description": "M6 corpus — Reinforced Ronin; in-hand parse.",
+  "seed": 63966,
+  "cards": {
+    "Reinforced Ronin": "Name:Reinforced Ronin\nManaCost:R\nTypes:Artifact Creature Human Samurai\nPT:2/2\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nA:AB$ Draw | PrecostDesc$ Channel — | Cost$ 1 R Discard<1/CARDNAME> | NumCards$ 1 | ActivationZone$ Hand | SpellDescription$ Draw a card.\nDeckHas:Ability$Discard\nOracle:Haste\\nAt the beginning of your end step, return Reinforced Ronin to its owner's hand.\\nChannel — {1}{R}, Discard Reinforced Ronin: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reinforced Ronin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jace-the-perfected-mind-corpus-m682",
+  "description": "M6 corpus — Jace, the Perfected Mind; in-hand parse.",
+  "seed": 62931,
+  "cards": {
+    "Jace, the Perfected Mind": "Name:Jace, the Perfected Mind\nManaCost:2 UP U\nTypes:Legendary Planeswalker Jace\nLoyalty:5\nK:Compleated\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumAtt$ -3 | IsCurse$ True | Duration$ UntilYourNextTurn | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature | SpellDescription$ Until your next turn, up to one target creature gets -3/-0.\nA:AB$ Mill | Cost$ SubCounter<2/LOYALTY> | NumCards$ 3 | Planeswalker$ True | ValidTgts$ Player | SubAbility$ DBDraw | SpellDescription$ Target player mills three cards.\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SpellDescription$ Then if a graveyard has twenty or more cards in it, you draw three cards. Otherwise, you draw a card.\nA:AB$ Mill | Cost$ SubCounter<X/LOYALTY> | NumCards$ Z | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player | SpellDescription$ Target player mills three times X cards.\nSVar:Y:Count$Compare CheckGrave GE20.3.1\nSVar:CheckGrave:PlayerCountPlayers$HighestValidGraveyard Card.YouOwn\nSVar:X:Count$xPaid\nSVar:Z:SVar$X/Times.3\nDeckHas:Ability$Mill\nDeckHints:Ability$Mill\nOracle:Compleated ({U/P} can be paid with {U} or 2 life. If life was paid, this planeswalker enters with two fewer loyalty counters.)\\n[+1]: Until your next turn, up to one target creature gets -3/-0.\\n[-2]: Target player mills three cards. Then if a graveyard has twenty or more cards in it, you draw three cards. Otherwise, you draw a card.\\n[-X]: Target player mills three times X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, the Perfected Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

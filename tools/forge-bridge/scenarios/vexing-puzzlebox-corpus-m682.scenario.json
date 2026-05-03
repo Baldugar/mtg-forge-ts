@@ -1,0 +1,23 @@
+{
+  "id": "vexing-puzzlebox-corpus-m682",
+  "description": "M6 corpus — Vexing Puzzlebox; in-hand parse.",
+  "seed": 65095,
+  "cards": {
+    "Vexing Puzzlebox": "Name:Vexing Puzzlebox\nManaCost:3\nTypes:Artifact\nT:Mode$ RolledDieOnce | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you roll one or more dice, put a number of charge counters on CARDNAME equal to the result.\nSVar:DiceResult:TriggerCount$Result\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ DiceResult\nA:AB$ Mana | Cost$ T | Produced$ Any | SubAbility$ DBRollDice | SpellDescription$ Add one mana of any color. Roll a d20.\nSVar:DBRollDice:DB$ RollDice | Sides$ 20\nA:AB$ ChangeZone | Cost$ T SubCounter<100/CHARGE> | Origin$ Library | Destination$ Battlefield | ChangeType$ Artifact | ChangeNum$ 1 | SpellDescription$ Search your library for an artifact card, put that card onto the battlefield, then shuffle.\nAI:RemoveDeck:Random\nDeckHints:Type$Artifact\nOracle:Whenever you roll one or more dice, put a number of charge counters on Vexing Puzzlebox equal to the result.\\n{T}: Add one mana of any color. Roll a d20.\\n{T}, Remove 100 charge counters from Vexing Puzzlebox: Search your library for an artifact card, put that card onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vexing Puzzlebox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "clackbridge-troll-corpus-m682",
+  "description": "M6 corpus — Clackbridge Troll; in-hand parse.",
+  "seed": 61755,
+  "cards": {
+    "Clackbridge Troll": "Name:Clackbridge Troll\nManaCost:3 B B\nTypes:Creature Troll\nPT:8/8\n# TODO: Improve AI logic. Currently AI will sacrifice even if Troll can't attack at all.\nK:Haste\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TripleGoat | TriggerDescription$ When CARDNAME enters, target opponent creates three 0/1 white Goat creature tokens.\nSVar:TripleGoat:DB$ Token | TokenAmount$ 3 | TokenScript$ w_0_1_goat | ValidTgts$ Opponent | TokenOwner$ Targeted\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, any opponent may sacrifice a creature. If a player does, tap CARDNAME, you gain 3 life, and you draw a card.\nSVar:TrigTap:DB$ Tap | Defined$ Self | UnlessCost$ Sac<1/Creature> | UnlessPayer$ Player.Opponent | UnlessSwitched$ True | UnlessResolveSubs$ WhenPaid | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You\nOracle:Trample, haste\\nWhen Clackbridge Troll enters, target opponent creates three 0/1 white Goat creature tokens.\\nAt the beginning of combat on your turn, any opponent may sacrifice a creature. If a player does, tap Clackbridge Troll, you gain 3 life, and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clackbridge Troll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

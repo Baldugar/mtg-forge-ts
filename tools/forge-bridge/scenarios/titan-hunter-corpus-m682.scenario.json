@@ -1,0 +1,23 @@
+{
+  "id": "titan-hunter-corpus-m682",
+  "description": "M6 corpus — Titan Hunter; in-hand parse.",
+  "seed": 64895,
+  "cards": {
+    "Titan Hunter": "Name:Titan Hunter\nManaCost:4 B\nTypes:Creature Human Warrior\nPT:4/5\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | SVarCompare$ EQ0 | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each player's end step, if no creatures died this turn, CARDNAME deals 4 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 4\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nA:AB$ GainLife | Cost$ 1 B Sac<1/Creature> | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE3\nDeckHas:Ability$LifeGain\nOracle:At the beginning of each player's end step, if no creatures died this turn, Titan Hunter deals 4 damage to that player.\\n{1}{B}, Sacrifice a creature: You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titan Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

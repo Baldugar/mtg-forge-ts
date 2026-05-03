@@ -1,0 +1,23 @@
+{
+  "id": "amber-gristle-o-maul-corpus-m682",
+  "description": "M6 corpus — Amber Gristle O'Maul; in-hand parse.",
+  "seed": 61467,
+  "cards": {
+    "Amber Gristle O'Maul": "Name:Amber Gristle O'Maul\nManaCost:3 R\nTypes:Legendary Creature Dwarf Cleric\nPT:3/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, you may discard your hand. If you do, draw a card for each player being attacked.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Hand> | NumCards$ X\nSVar:X:PlayerCountPropertyYou$OpponentsAttackedThisCombat\nK:Choose a Background\nDeckHas:Ability$Discard\nSVar:HasAttackEffect:TRUE\nAI:RemoveDeck:Random\nOracle:Haste\\nWhenever Amber Gristle O'Maul attacks, you may discard your hand. If you do, draw a card for each player being attacked.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Amber Gristle O'Maul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

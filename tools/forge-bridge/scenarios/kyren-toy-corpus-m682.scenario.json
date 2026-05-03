@@ -1,0 +1,23 @@
+{
+  "id": "kyren-toy-corpus-m682",
+  "description": "M6 corpus — Kyren Toy; in-hand parse.",
+  "seed": 63091,
+  "cards": {
+    "Kyren Toy": "Name:Kyren Toy\nManaCost:3\nTypes:Artifact\nA:AB$ PutCounter | Cost$ 1 T | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<X/CHARGE> | Produced$ C | Amount$ Y | AILogic$ ManaRitualBattery.1 | SpellDescription$ Add an amount of {C} equal to X plus one.\nSVar:Y:SVar$X/Plus.1\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nOracle:{1}, {T}: Put a charge counter on Kyren Toy.\\n{T}, Remove X charge counters from Kyren Toy: Add an amount of {C} equal to X plus one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kyren Toy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

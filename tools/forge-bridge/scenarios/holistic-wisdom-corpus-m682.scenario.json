@@ -1,0 +1,23 @@
+{
+  "id": "holistic-wisdom-corpus-m682",
+  "description": "M6 corpus — Holistic Wisdom; in-hand parse.",
+  "seed": 62777,
+  "cards": {
+    "Holistic Wisdom": "Name:Holistic Wisdom\nManaCost:1 G G\nTypes:Enchantment\nA:AB$ Pump | Cost$ 2 ExileFromHand<1/Card> | SubAbility$ DBChangeZone | ValidTgts$ Card.YouOwn | TgtZone$ Graveyard | StackDescription$ None | SpellDescription$ Return target card from your graveyard to your hand if it shares a card type with the card exiled this way. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ ParentTarget | Origin$ Graveyard | Destination$ Hand | ConditionDefined$ ParentTarget | ConditionPresent$ Card.sharesCardTypeWith Exiled | ConditionCompare$ GE1\nAI:RemoveDeck:All\nOracle:{2}, Exile a card from your hand: Return target card from your graveyard to your hand if it shares a card type with the card exiled this way. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Holistic Wisdom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

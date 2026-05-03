@@ -1,0 +1,23 @@
+{
+  "id": "unnatural-hunger-corpus-m682",
+  "description": "M6 corpus — Unnatural Hunger; in-hand parse.",
+  "seed": 65032,
+  "cards": {
+    "Unnatural Hunger": "Name:Unnatural Hunger\nManaCost:3 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.powerGE3\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted creature's controller, CARDNAME deals damage equal to that creature's power to that player unless they sacrifice another creature.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X | UnlessCost$ Sac<1/Creature.!EnchantedBy> | UnlessPayer$ EnchantedController\nSVar:X:Enchanted$CardPower\nOracle:Enchant creature\\nAt the beginning of the upkeep of enchanted creature's controller, Unnatural Hunger deals damage equal to that creature's power to that player unless they sacrifice another creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unnatural Hunger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

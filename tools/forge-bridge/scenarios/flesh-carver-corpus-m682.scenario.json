@@ -1,0 +1,23 @@
+{
+  "id": "flesh-carver-corpus-m682",
+  "description": "M6 corpus — Flesh Carver; in-hand parse.",
+  "seed": 62360,
+  "cards": {
+    "Flesh Carver": "Name:Flesh Carver\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:2/2\nK:Intimidate\nA:AB$ PutCounter | Cost$ 1 B Sac<1/Creature.Other/another creature> | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create an X/X black Horror creature token, where X is CARDNAME's power.\nSVar:TrigToken:DB$ Token | TokenScript$ b_x_x_horror | TokenOwner$ You | TokenPower$ X | TokenToughness$ X\nSVar:X:TriggeredCard$CardPower\nOracle:Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\n{1}{B}, Sacrifice another creature: Put two +1/+1 counters on Flesh Carver.\\nWhen Flesh Carver dies, create an X/X black Horror creature token, where X is Flesh Carver's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flesh Carver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

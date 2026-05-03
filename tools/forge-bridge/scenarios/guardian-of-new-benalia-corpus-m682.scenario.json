@@ -1,0 +1,23 @@
+{
+  "id": "guardian-of-new-benalia-corpus-m682",
+  "description": "M6 corpus — Guardian of New Benalia; in-hand parse.",
+  "seed": 62663,
+  "cards": {
+    "Guardian of New Benalia": "Name:Guardian of New Benalia\nManaCost:1 W\nTypes:Creature Human Soldier\nPT:2/2\nK:Enlist\nT:Mode$ Enlisted | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever CARDNAME enlists a creature, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nA:AB$ Pump | Cost$ Discard<1/Card> | KW$ Indestructible | SubAbility$ DBTap | SpellDescription$ CARDNAME gains indestructible until end of turn. Tap it.\nSVar:DBTap:DB$ Tap\nOracle:Enlist (As this creature attacks, you may tap a nonattacking creature you control without summoning sickness. When you do, add its power to this creature's until end of turn.)\\nWhenever Guardian of New Benalia enlists a creature, scry 2.\\nDiscard a card: Guardian of New Benalia gains indestructible until end of turn. Tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian of New Benalia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ashling-rekindled-corpus-m682",
+  "description": "M6 corpus — Ashling, Rekindled; in-hand parse.",
+  "seed": 61500,
+  "cards": {
+    "Ashling, Rekindled": "Name:Ashling, Rekindled\nManaCost:1 R\nTypes:Legendary Creature Elemental Sorcerer\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, you may discard a card. If you do, draw a card.\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {U}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ U | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Discard\nAlternateMode:DoubleFaced\nOracle:Whenever this creature enters or transforms into Ashling, Rekindled, you may discard a card. If you do, draw a card.\\nAt the beginning of your first main phase, you may pay {U}. If you do, transform Ashling.\n\nALTERNATE\n\nName:Ashling, Rimebound\nManaCost:no cost\nColors:blue\nTypes:Legendary Creature Elemental Wizard\nPT:1/3\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigMana | TriggerDescription$ Whenever this creature transforms into CARDNAME and at the beginning of your first main phase, add two mana of any one color. Spend this mana only to cast spells with mana value 4 or greater.\nT:Mode$ Phase | Phase$ Main1 | Secondary$ True | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigMana | TriggerDescription$ Whenever this creature transforms into CARDNAME and at the beginning of your first main phase, add two mana of any one color. Spend this mana only to cast spells with mana value 4 or greater.\nSVar:TrigMana:DB$ Mana | Produced$ Any | Amount$ 2 | RestrictValid$ Spell.cmcGE4\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {R}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ R | Defined$ Self | Mode$ Transform\nOracle:Whenever this creature transforms into Ashling, Rimebound and at the beginning of your first main phase, add two mana of any one color. Spend this mana only to cast spells with mana value 4 or greater.\\nAt the beginning of your first main phase, you may pay {R}. If you do, transform Ashling.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashling, Rekindled"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

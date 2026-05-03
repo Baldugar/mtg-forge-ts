@@ -1,0 +1,23 @@
+{
+  "id": "argentum-masticore-corpus-m682",
+  "description": "M6 corpus — Argentum Masticore; in-hand parse.",
+  "seed": 61490,
+  "cards": {
+    "Argentum Masticore": "Name:Argentum Masticore\nManaCost:5\nTypes:Artifact Creature Phyrexian Masticore\nPT:5/5\nK:First Strike\nK:Protection:Card.MultiColor:multicolored\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSacrifice | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you discard a card. When you discard a card this way, destroy target nonland permanent an opponent controls with mana value less than or equal to the mana value of the discarded card.\nSVar:TrigSacrifice:DB$ Sacrifice | UnlessCost$ Discard<1/Card> | UnlessPayer$ You | OrString$ Sacrifice it. | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | ConditionDefined$ Discarded | ConditionPresent$ Card | ConditionCompare$ GE1 | RememberObjects$ Discarded | Execute$ TrigDestroy | TriggerDescription$ When you discard a card this way, destroy target nonland permanent an opponent controls with mana value less than or equal to the mana value of the discarded card.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonLand+cmcLEX+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls with mana value less or equal to the discarded card\nSVar:X:TriggerRemembered$CardManaCost\nDeckHas:Ability$Discard|Sacrifice\nOracle:First strike, protection from multicolored\\nAt the beginning of your upkeep, sacrifice Argentum Masticore unless you discard a card. When you discard a card this way, destroy target nonland permanent an opponent controls with mana value less than or equal to the mana value of the discarded card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Argentum Masticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

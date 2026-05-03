@@ -1,0 +1,23 @@
+{
+  "id": "odunos-river-trawler-corpus-m682",
+  "description": "M6 corpus — Odunos River Trawler; in-hand parse.",
+  "seed": 63608,
+  "cards": {
+    "Odunos River Trawler": "Name:Odunos River Trawler\nManaCost:2 B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target enchantment creature card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Enchantment.Creature+YouCtrl\nA:AB$ ChangeZone | Cost$ W Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Enchantment.Creature+YouCtrl | TgtPrompt$ Select target enchantment creature card from your graveyard | SpellDescription$ Return target enchantment creature card from your graveyard to your hand.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckNeeds:Color$White\nOracle:When Odunos River Trawler enters, return target enchantment creature card from your graveyard to your hand.\\n{W}, Sacrifice Odunos River Trawler: Return target enchantment creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Odunos River Trawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

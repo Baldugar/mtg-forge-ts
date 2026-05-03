@@ -1,0 +1,23 @@
+{
+  "id": "the-duke-rebel-sentry-corpus-m682",
+  "description": "M6 corpus — The Duke, Rebel Sentry; in-hand parse.",
+  "seed": 64796,
+  "cards": {
+    "The Duke, Rebel Sentry": "Name:The Duke, Rebel Sentry\nManaCost:W\nTypes:Legendary Creature Human Rebel Ally\nPT:0/1\nK:etbCounter:P1P1:1:no Condition:NICKNAME enters with a +1/+1 counter on him.\nA:AB$ PutCounter | Cost$ T RemoveAnyCounter<1/Any/NICKNAME> | ValidTgts$ Creature.YouCtrl+Other | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on another target creature you control. It gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Hexproof\nDeckHas:Ability$Counters\nOracle:The Duke enters with a +1/+1 counter on him.\\n{T}, Remove a counter from The Duke: Put a +1/+1 counter on another target creature you control. It gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Duke, Rebel Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

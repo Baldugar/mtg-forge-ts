@@ -1,0 +1,23 @@
+{
+  "id": "coretapper-corpus-m682",
+  "description": "M6 corpus — Coretapper; in-hand parse.",
+  "seed": 61827,
+  "cards": {
+    "Coretapper": "Name:Coretapper\nManaCost:2\nTypes:Artifact Creature Myr\nPT:1/1\nA:AB$ PutCounter | Cost$ T | ValidTgts$ Artifact | TgtPrompt$ Select target artifact (1 counter) | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on target artifact.\nA:AB$ PutCounter | Cost$ Sac<1/CARDNAME> | ValidTgts$ Artifact | TgtPrompt$ Select target artifact (2 counters) | CounterType$ CHARGE | CounterNum$ 2 | SpellDescription$ Put two charge counters on target artifact.\nAI:RemoveDeck:Random\nOracle:{T}: Put a charge counter on target artifact.\\nSacrifice Coretapper: Put two charge counters on target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coretapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

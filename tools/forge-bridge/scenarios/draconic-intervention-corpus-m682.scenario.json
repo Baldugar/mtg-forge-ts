@@ -1,0 +1,23 @@
+{
+  "id": "draconic-intervention-corpus-m682",
+  "description": "M6 corpus — Draconic Intervention; in-hand parse.",
+  "seed": 62068,
+  "cards": {
+    "Draconic Intervention": "Name:Draconic Intervention\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ DamageAll | Cost$ 2 R R ExileFromGrave<1/Instant;Sorcery> | NumDmg$ X | ValidCards$ Creature.nonDragon | RememberDamaged$ True | ReplaceDyingDefined$ Remembered | SubAbility$ DBCleanup | SpellDescription$ CARDNAME deals X damage to each non-Dragon creature, where X is the exiled card's mana value. If a creature dealt damage this way would die this turn, exile it instead.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:X:Exiled$CardManaCost\nOracle:As an additional cost to cast this spell, exile an instant or sorcery card from your graveyard.\\nDraconic Intervention deals X damage to each non-Dragon creature, where X is the exiled card's mana value. If a creature dealt damage this way would die this turn, exile it instead.\\nExile Draconic Intervention.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draconic Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

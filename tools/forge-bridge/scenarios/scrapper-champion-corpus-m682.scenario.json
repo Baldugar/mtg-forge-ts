@@ -1,0 +1,23 @@
+{
+  "id": "scrapper-champion-corpus-m682",
+  "description": "M6 corpus — Scrapper Champion; in-hand parse.",
+  "seed": 64231,
+  "cards": {
+    "Scrapper Champion": "Name:Scrapper Champion\nManaCost:3 R\nTypes:Creature Human Artificer\nPT:2/2\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayEnergy<2> | CounterType$ P1P1 | CounterNum$ 1\nOracle:Double strike (This creature deals both first-strike and regular combat damage.)\\nWhen Scrapper Champion enters, you get {E}{E} (two energy counters).\\nWhenever Scrapper Champion attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrapper Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

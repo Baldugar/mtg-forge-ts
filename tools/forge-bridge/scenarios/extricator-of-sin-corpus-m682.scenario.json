@@ -1,0 +1,23 @@
+{
+  "id": "extricator-of-sin-corpus-m682",
+  "description": "M6 corpus — Extricator of Sin; in-hand parse.",
+  "seed": 62262,
+  "cards": {
+    "Extricator of Sin": "Name:Extricator of Sin\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:0/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, you may sacrifice another permanent. If you do, create a 3/2 colorless Eldrazi Horror creature token.\nSVar:TrigToken:AB$ Token | Cost$ Sac<1/Permanent.Other/another permanent> | TokenScript$ c_3_2_eldrazi_horror | TokenOwner$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Delirium$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ Delirium — At the beginning of your upkeep, if there are four or more card types among cards in your graveyard, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:AIPreference:SacCost$Creature.token\nDeckHints:Ability$Graveyard & Type$Eldrazi|Horror\nDeckHas:Ability$Token|Delirium\nAlternateMode:DoubleFaced\nOracle:When Extricator of Sin enters, you may sacrifice another permanent. If you do, create a 3/2 colorless Eldrazi Horror creature token.\\nDelirium — At the beginning of your upkeep, if there are four or more card types among cards in your graveyard, transform Extricator of Sin.\n\nALTERNATE\n\nName:Extricator of Flesh\nManaCost:no cost\nTypes:Creature Eldrazi Horror\nPT:3/5\nS:Mode$ Continuous | Affected$ Card.Eldrazi+YouCtrl | AddKeyword$ Vigilance | Description$ Eldrazi you control have vigilance.\nA:AB$ Token | Cost$ 2 T Sac<1/Creature.nonEldrazi/non-Eldrazi creature> | TokenOwner$ You | TokenScript$ c_3_2_eldrazi_horror | SpellDescription$ Create a 3/2 colorless Eldrazi Horror creature token.\nSVar:AIPreference:SacCost$Creature.token\nOracle:Eldrazi you control have vigilance.\\n{2}, {T}, Sacrifice a non-Eldrazi creature: Create a 3/2 colorless Eldrazi Horror creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extricator of Sin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

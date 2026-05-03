@@ -1,0 +1,23 @@
+{
+  "id": "dictation-quillograph-corpus-m682",
+  "description": "M6 corpus — Dictation Quillograph; in-hand parse.",
+  "seed": 62010,
+  "cards": {
+    "Dictation Quillograph": "Name:Dictation Quillograph\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature gains \"Whenever this creature deals combat damage to a player, you may draw a card. If you do, discard a card.\"\nSVar:TrigCrank:DB$ Animate | ValidTgts$ Creature | Triggers$ TrigDamage\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigLoot | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | Cost$ Draw<1/You>\nOracle:Whenever you crank Dictation Quillograph, until end of turn, target creature gains \"Whenever this creature deals combat damage to a player, you may draw a card. If you do, discard a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dictation Quillograph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "implement-of-combustion-corpus-m682",
+  "description": "M6 corpus — Implement of Combustion; in-hand parse.",
+  "seed": 62849,
+  "cards": {
+    "Implement of Combustion": "Name:Implement of Combustion\nManaCost:1\nTypes:Artifact\nA:AB$ DealDamage | Cost$ R Sac<1/CARDNAME> | NumDmg$ 1 | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | SpellDescription$ It deals 1 damage to target player or planeswalker.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nDeckNeeds:Color$Red\nOracle:{R}, Sacrifice Implement of Combustion: It deals 1 damage to target player or planeswalker.\\nWhen Implement of Combustion is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Implement of Combustion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

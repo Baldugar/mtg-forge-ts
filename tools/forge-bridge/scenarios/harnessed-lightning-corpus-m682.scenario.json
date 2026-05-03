@@ -1,0 +1,23 @@
+{
+  "id": "harnessed-lightning-corpus-m682",
+  "description": "M6 corpus — Harnessed Lightning; in-hand parse.",
+  "seed": 62693,
+  "cards": {
+    "Harnessed Lightning": "Name:Harnessed Lightning\nManaCost:1 R\nTypes:Instant\nA:SP$ PutCounter | Defined$ You | AILogic$ PayEnergy | CounterType$ ENERGY | CounterNum$ 3 | SubAbility$ DBChooseNumber | SpellDescription$ Choose target creature. You get {E}{E}{E} (three energy counters), then you may pay any amount of {E}. CARDNAME deals that much damage to that creature.\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Max | ListTitle$ amount of energy to pay | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ X | UnlessCost$ PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True | StackDescription$ CARDNAME deals that much damage to that creature.\nSVar:Max:Count$YourCountersEnergy\nSVar:X:Count$ChosenNumber\nOracle:Choose target creature. You get {E}{E}{E} (three energy counters), then you may pay any amount of {E}. Harnessed Lightning deals that much damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harnessed Lightning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

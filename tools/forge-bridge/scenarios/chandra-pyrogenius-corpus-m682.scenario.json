@@ -1,0 +1,23 @@
+{
+  "id": "chandra-pyrogenius-corpus-m682",
+  "description": "M6 corpus — Chandra, Pyrogenius; in-hand parse.",
+  "seed": 61706,
+  "cards": {
+    "Chandra, Pyrogenius": "Name:Chandra, Pyrogenius\nManaCost:4 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:5\nA:AB$ DealDamage | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | Defined$ Player.Opponent | NumDmg$ 2 | AILogic$ Good | SpellDescription$ CARDNAME deals 2 damage to each opponent.\nA:AB$ DealDamage | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature.\nA:AB$ DealDamage | Cost$ SubCounter<10/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select a player or planeswalker | NumDmg$ 6 | SubAbility$ DmgAll | DamageMap$ True | SpellDescription$ CARDNAME deals 6 damage to target player or planeswalker and each creature that player or that planeswalker's controller controls.\nSVar:DmgAll:DB$ DamageAll | NumDmg$ 6 | ValidCards$ Creature.ControlledBy TargetedOrController | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nDeckHints:Name$Liberating Combustion\nOracle:[+2]: Chandra, Pyrogenius deals 2 damage to each opponent.\\n[-3]: Chandra, Pyrogenius deals 4 damage to target creature.\\n[-10]: Chandra, Pyrogenius deals 6 damage to target player or planeswalker and each creature that player or that planeswalker's controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Pyrogenius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

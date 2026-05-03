@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-dragon-engine-corpus-m682",
+  "description": "M6 corpus — Phyrexian Dragon Engine; in-hand parse.",
+  "seed": 63744,
+  "cards": {
+    "Phyrexian Dragon Engine": "Name:Phyrexian Dragon Engine\nManaCost:3\nTypes:Artifact Creature Phyrexian Dragon\nPT:2/2\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self+YouOwn | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters from your graveyard, you may discard your hand. If you do, draw three cards.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Hand> | Defined$ You | NumCards$ 3\nK:Unearth:3 R R\nSVar:DiscardMe:2\nSVar:SacMe:1\nDeckHints:Name$Mishra, Claimed by Gix\nDeckHas:Ability$Graveyard|Discard\nMeldPair:Mishra, Claimed by Gix\nAlternateMode:Meld\nOracle:Double strike\\nWhen Phyrexian Dragon Engine enters from your graveyard, you may discard your hand. If you do, draw three cards. \\nUnearth:{3}{R}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Dragon Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "serrated-arrows-corpus-m682",
+  "description": "M6 corpus — Serrated Arrows; in-hand parse.",
+  "seed": 64292,
+  "cards": {
+    "Serrated Arrows": "Name:Serrated Arrows\nManaCost:4\nTypes:Artifact\nK:etbCounter:ARROWHEAD:3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE1_ARROWHEAD | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, if there are no arrowhead counters on CARDNAME, sacrifice it.\nSVar:TrigSac:DB$ Sacrifice\nA:AB$ PutCounter | Cost$ T SubCounter<1/ARROWHEAD> | IsCurse$ True | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | SpellDescription$ Put a -1/-1 counter on target creature.\nOracle:Serrated Arrows enters with three arrowhead counters on it.\\nAt the beginning of your upkeep, if there are no arrowhead counters on Serrated Arrows, sacrifice it.\\n{T}, Remove an arrowhead counter from Serrated Arrows: Put a -1/-1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serrated Arrows"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

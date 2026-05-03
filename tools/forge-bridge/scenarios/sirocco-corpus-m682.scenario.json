@@ -1,0 +1,23 @@
+{
+  "id": "sirocco-corpus-m682",
+  "description": "M6 corpus — Sirocco; in-hand parse.",
+  "seed": 64390,
+  "cards": {
+    "Sirocco": "Name:Sirocco\nManaCost:1 R\nTypes:Instant\nA:SP$ RevealHand | RememberRevealed$ True | ValidTgts$ Player | SubAbility$ DBRepeatDiscard | SpellDescription$ Target player reveals their hand. For each blue instant card revealed this way, that player discards that card unless they pay 4 life.\nSVar:DBRepeatDiscard:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Card.IsRemembered+Instant+Blue | Zone$ Hand | RepeatSubAbility$ DBDiscard | SubAbility$ DBCleanup\nSVar:DBDiscard:DB$ Discard | DefinedCards$ Imprinted | Mode$ Defined | UnlessCost$ PayLife<4> | UnlessPayer$ Targeted | StackDescription$ Discard {c:Imprinted}\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Target player reveals their hand. For each blue instant card revealed this way, that player discards that card unless they pay 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sirocco"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

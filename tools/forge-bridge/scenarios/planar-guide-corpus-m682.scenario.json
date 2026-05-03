@@ -1,0 +1,23 @@
+{
+  "id": "planar-guide-corpus-m682",
+  "description": "M6 corpus — Planar Guide; in-hand parse.",
+  "seed": 63786,
+  "cards": {
+    "Planar Guide": "Name:Planar Guide\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nA:AB$ ChangeZoneAll | Cost$ 3 W Exile<1/CARDNAME> | ChangeType$ Creature | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | SpellDescription$ Exile all creatures. At the beginning of the next end step, return those cards to the battlefield under their owners' control.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | RememberObjects$ RememberedLKI | TriggerDescription$ Return cards exiled by CARDNAME to the battlefield. | SubAbility$ DBCleanup\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{3}{W}, Exile Planar Guide: Exile all creatures. At the beginning of the next end step, return those cards to the battlefield under their owners' control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Planar Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

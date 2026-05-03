@@ -1,0 +1,23 @@
+{
+  "id": "gonti-s-aether-heart-corpus-m682",
+  "description": "M6 corpus — Gonti's Aether Heart; in-hand parse.",
+  "seed": 62598,
+  "cards": {
+    "Gonti's Aether Heart": "Name:Gonti's Aether Heart\nManaCost:6\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another artifact you control enters, you get {E}{E} (two energy counters).\nT:Mode$ ChangesZone | ValidCard$ Artifact.Other+YouCtrl | Origin$ Any | Destination$ Battlefield | Execute$ TrigEnergy | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME or another artifact you control enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ AddTurn | Cost$ PayEnergy<8> Exile<1/CARDNAME> | NumTurns$ 1 | SpellDescription$ Take an extra turn after this one.\nOracle:Whenever Gonti's Aether Heart or another artifact you control enters, you get {E}{E} (two energy counters).\\nPay eight {E}, Exile Gonti's Aether Heart: Take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gonti's Aether Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

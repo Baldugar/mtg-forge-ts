@@ -1,0 +1,23 @@
+{
+  "id": "pious-evangel-corpus-m682",
+  "description": "M6 corpus — Pious Evangel; in-hand parse.",
+  "seed": 63772,
+  "cards": {
+    "Pious Evangel": "Name:Pious Evangel\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | Execute$ TrigGainLife | ValidCard$ Card.Self,Creature.Other+YouCtrl | TriggerDescription$ Whenever CARDNAME or another creature you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ SetState | Cost$ 2 T Sac<1/Permanent.Other/another permanent> | Defined$ Self | Mode$ Transform | SpellDescription$ Transform CARDNAME.\nAlternateMode:DoubleFaced\nOracle:Whenever Pious Evangel or another creature you control enters, you gain 1 life.\\n{2}, {T}, Sacrifice another permanent: Transform Pious Evangel.\n\nALTERNATE\n\nName:Wayward Disciple\nManaCost:no cost\nColors:black\nTypes:Creature Human Cleric\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigDrain | TriggerDescription$ Whenever CARDNAME or another creature you control dies, target opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | ValidTgts$ Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Whenever Wayward Disciple or another creature you control dies, target opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pious Evangel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

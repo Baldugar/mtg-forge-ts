@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-burning-masks-corpus-m682",
+  "description": "M6 corpus — Case of the Burning Masks; in-hand parse.",
+  "seed": 61644,
+  "cards": {
+    "Case of the Burning Masks": "Name:Case of the Burning Masks\nManaCost:1 R R\nTypes:Enchantment Case\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When this Case enters, it deals 3 damage to target creature an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumDmg$ 3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | SVarCompare$ GE3 | IsPresent$ Card.Self+!IsSolved | TriggerZones$ Battlefield | Execute$ TrigSolve | TriggerDescription$ To solve — Three or more sources you controlled dealt damage this turn. (If unsolved, solve at the beginning of your end step.)\nSVar:TrigSolve:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nSVar:X:Count$NumDamageThisTurn Card.YouCtrl,Emblem.YouCtrl Player,Permanent\nA:AB$ Dig | Cost$ Sac<1/CARDNAME/this card> | IsPresent$ Card.Self+IsSolved | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBChoose | SpellDescription$ Exile the top three cards of your library. Choose one of them. You may play that card this turn.\nSVar:DBChoose:DB$ ChooseCard | Amount$ 1 | Mandatory$ True | Choices$ Card.IsRemembered | ChoiceZone$ Exile | ChoiceTitle$ Choose one of the exiled cards | SubAbility$ DBCleanup | StackDescription$ {p:You} chooses one of them.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBPlayEffect\nSVar:DBPlayEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | SubAbility$ DBClearChosen | StackDescription$ {p:You} may play that card this turn.\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.ChosenCard | AffectedZone$ Exile | Description$ You may play the chosen card this turn.\nSVar:DBClearChosen:DB$ Cleanup | ClearChosenCard$ True\nOracle:When this Case enters, it deals 3 damage to target creature an opponent controls.\\nTo solve — Three or more sources you controlled dealt damage this turn. (If unsolved, solve at the beginning of your end step.)\\nSolved — Sacrifice this Case: Exile the top three cards of your library. Choose one of them. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Burning Masks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

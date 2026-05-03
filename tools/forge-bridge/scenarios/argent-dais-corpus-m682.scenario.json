@@ -1,0 +1,23 @@
+{
+  "id": "argent-dais-corpus-m682",
+  "description": "M6 corpus — Argent Dais; in-hand parse.",
+  "seed": 61489,
+  "cards": {
+    "Argent Dais": "Name:Argent Dais\nManaCost:1 W\nTypes:Artifact\nK:etbCounter:OIL:2\nT:Mode$ AttackersDeclared | AttackingPlayer$ Player | ValidAttackers$ Creature | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever two or more creatures attack, put an oil counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ 2 T SubCounter<2/OIL> | ValidTgts$ Permanent.Other+nonLand | TgtPrompt$ Select another target nonland permanent | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBDraw | SpellDescription$ Exile another target nonland permanent. Its controller draws two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | Defined$ TargetedController\nDeckHas:Ability$Counters\nOracle:Argent Dais enters with two oil counters on it.\\nWhenever two or more creatures attack, put an oil counter on Argent Dais.\\n{2}, {T}, Remove two oil counters from Argent Dais: Exile another target nonland permanent. Its controller draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Argent Dais"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

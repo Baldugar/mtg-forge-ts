@@ -1,0 +1,23 @@
+{
+  "id": "magus-of-the-mind-corpus-m682",
+  "description": "M6 corpus — Magus of the Mind; in-hand parse.",
+  "seed": 63249,
+  "cards": {
+    "Magus of the Mind": "Name:Magus of the Mind\nManaCost:4 U U\nTypes:Creature Human Wizard\nPT:4/5\nA:AB$ Shuffle | Cost$ U T Sac<1/CARDNAME> | SubAbility$ DBExile | SpellDescription$ Shuffle your library, then exile the top X cards, where X is one plus the number of spells cast this turn. Until end of turn, you may play lands and cast spells from among cards exiled this way without paying their mana costs.\nSVar:DBExile:DB$ Dig | Defined$ You | DestinationZone$ Exile | DigNum$ X | ChangeNum$ All | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ThisTurnCast_Card/Plus.1\nOracle:{U}, {T}, Sacrifice Magus of the Mind: Shuffle your library, then exile the top X cards, where X is one plus the number of spells cast this turn. Until end of turn, you may play lands and cast spells from among cards exiled this way without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magus of the Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

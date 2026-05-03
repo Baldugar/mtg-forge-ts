@@ -1,0 +1,23 @@
+{
+  "id": "nemata-primeval-warden-corpus-m682",
+  "description": "M6 corpus — Nemata, Primeval Warden; in-hand parse.",
+  "seed": 63530,
+  "cards": {
+    "Nemata, Primeval Warden": "Name:Nemata, Primeval Warden\nManaCost:2 B G\nTypes:Legendary Creature Treefolk\nPT:3/4\nK:Reach\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Card.Creature+OppCtrl | ReplaceWith$ Exile | Description$ If a creature an opponent controls would die, exile it instead. When you do, create a 1/1 green Saproling creature token.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard | SubAbility$ DBImmediateTrigger\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigToken | TriggerDescription$ If a nontoken creature an opponent controls would die, exile it instead. When you do, create a 1/1 green Saproling creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You\nA:AB$ Pump | Cost$ G Sac<1/Saproling> | NumAtt$ +2 | NumDef$ +2 | AILogic$ Aristocrat | SpellDescription$ CARDNAME gets +2/+2 until end of turn.\nA:AB$ Draw | Cost$ 1 B Sac<2/Saproling> | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHints:Type$Saproling\nDeckHas:Ability$Token & Type$Saproling\nOracle:Reach\\nIf a creature an opponent controls would die, exile it instead. When you do, create a 1/1 green Saproling creature token.\\n{G}, Sacrifice a Saproling: Nemata, Primeval Warden gets +2/+2 until end of turn.\\n{1}{B}, Sacrifice two Saprolings: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nemata, Primeval Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vish-kal-blood-arbiter-corpus-m682",
+  "description": "M6 corpus — Vish Kal, Blood Arbiter; in-hand parse.",
+  "seed": 65120,
+  "cards": {
+    "Vish Kal, Blood Arbiter": "Name:Vish Kal, Blood Arbiter\nManaCost:4 W B B\nTypes:Legendary Creature Vampire\nPT:5/5\nK:Flying\nK:Lifelink\nA:AB$ PutCounter | Cost$ Sac<1/Creature> | Defined$ Self | CounterType$ P1P1 | CounterNum$ Y | SpellDescription$ Put X +1/+1 counters on CARDNAME, where X is the sacrificed creature's power.\nA:AB$ Pump | Cost$ SubCounter<All/P1P1> | CostDesc$ Remove all +1/+1 counters from NICKNAME: | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | SpellDescription$ Target creature gets -1/-1 until end of turn for each +1/+1 counter removed this way.\nSVar:Y:Sacrificed$CardPower\nSVar:X:SVar$CostCountersRemoved\nAI:RemoveDeck:All\nOracle:Flying, lifelink\\nSacrifice a creature: Put X +1/+1 counters on Vish Kal, Blood Arbiter, where X is the sacrificed creature's power.\\nRemove all +1/+1 counters from Vish Kal: Target creature gets -1/-1 until end of turn for each +1/+1 counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vish Kal, Blood Arbiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

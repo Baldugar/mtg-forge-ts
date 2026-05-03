@@ -1,0 +1,23 @@
+{
+  "id": "noctis-prince-of-lucis-corpus-m682",
+  "description": "M6 corpus — Noctis, Prince of Lucis; in-hand parse.",
+  "seed": 63572,
+  "cards": {
+    "Noctis, Prince of Lucis": "Name:Noctis, Prince of Lucis\nManaCost:1 W U B\nTypes:Legendary Creature Human Noble\nPT:4/3\nK:Lifelink\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | MayPlay$ True | EffectZone$ Battlefield | AffectedZone$ Graveyard | RaiseCost$ PayLife<3> | Description$ You may cast artifact spells from your graveyard by paying 3 life in addition to paying their other costs. If you cast a spell this way, that artifact enters with a finality counter on it.\nT:Mode$ SpellCast | ValidCard$ Card.CastSa Spell.MayPlaySource | Execute$ TrigEffect | Static$ True | TriggerZones$ Battlefield\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ReMoved | RememberObjects$ TriggeredCard\nSVar:ReMoved:Event$ Moved | Origin$ Stack | ValidCard$ Card.IsRemembered | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBCounter\nSVar:ETBCounter:DB$ PutCounter | ETB$ True | Defined$ ReplacedCard | CounterType$ FINALITY | CounterNum$ 1 | SubAbility$ RemoveSelf\nSVar:RemoveSelf:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nOracle:Lifelink\\nYou may cast artifact spells from your graveyard by paying 3 life in addition to paying their other costs. If you cast a spell this way, that artifact enters with a finality counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Noctis, Prince of Lucis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rotting-giant-corpus-m682",
+  "description": "M6 corpus — Rotting Giant; in-hand parse.",
+  "seed": 64053,
+  "cards": {
+    "Rotting Giant": "Name:Rotting Giant\nManaCost:1 B\nTypes:Creature Zombie Giant\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice it unless you exile a card from your graveyard.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigSac | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice it unless you exile a card from your graveyard.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ ExileFromGrave<1/Card> | UnlessPayer$ You\nAI:RemoveDeck:All\nOracle:Whenever Rotting Giant attacks or blocks, sacrifice it unless you exile a card from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rotting Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pendulum-of-patterns-corpus-m682",
+  "description": "M6 corpus — Pendulum of Patterns; in-hand parse.",
+  "seed": 63717,
+  "cards": {
+    "Pendulum of Patterns": "Name:Pendulum of Patterns\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nA:AB$ Draw | Cost$ 5 T Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:When Pendulum of Patterns enters, you gain 3 life.\\n{5}, {T}, Sacrifice Pendulum of Patterns: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pendulum of Patterns"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

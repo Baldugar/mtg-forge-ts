@@ -1,0 +1,23 @@
+{
+  "id": "urza-s-sylex-corpus-m682",
+  "description": "M6 corpus — Urza's Sylex; in-hand parse.",
+  "seed": 65053,
+  "cards": {
+    "Urza's Sylex": "Name:Urza's Sylex\nManaCost:3\nTypes:Legendary Artifact\nA:AB$ ChooseCard | Cost$ 2 W W T Exile<1/CARDNAME> | Defined$ Player | Choices$ Land | ControlledByPlayer$ Chooser | ChoiceTitle$ Choose six lands you control | Amount$ 6 | Mandatory$ True | SorcerySpeed$ True | SubAbility$ DestroyAll | SpellDescription$ Each player chooses six lands they control.\nSVar:DestroyAll:DB$ DestroyAll | ValidCards$ Permanent.!ChosenCard | SubAbility$ DBCleanup | SpellDescription$ Destroy all other permanents.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | SpellDescription$ Activate only as a sorcery.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Exile | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSearch | TriggerDescription$ When CARDNAME is put into exile from the battlefield, you may pay {2}. If you do, search your library for a planeswalker card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:AB$ ChangeZone | Cost$ 2 | ChangeType$ Planeswalker.YouOwn | Origin$ Library | Destination$ Hand\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Planeswalker\nOracle:{2}{W}{W}, {T}, Exile Urza's Sylex: Each player chooses six lands they control. Destroy all other permanents. Activate only as a sorcery.\\nWhen Urza's Sylex is put into exile from the battlefield, you may pay {2}. If you do, search your library for a planeswalker card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Urza's Sylex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

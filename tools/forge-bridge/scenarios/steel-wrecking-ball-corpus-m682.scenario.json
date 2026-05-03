@@ -1,0 +1,23 @@
+{
+  "id": "steel-wrecking-ball-corpus-m682",
+  "description": "M6 corpus — Steel Wrecking Ball; in-hand parse.",
+  "seed": 64602,
+  "cards": {
+    "Steel Wrecking Ball": "Name:Steel Wrecking Ball\nVariant:UniversesWithin:FlavorName:Temple Trap\nManaCost:5\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When this artifact enters, it deals 5 damage to target creature.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 5\nA:AB$ Destroy | Cost$ 1 R Discard<1/CARDNAME> | ActivationZone$ Hand | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:PlayMain1:TRUE\nOracle:When this artifact enters, it deals 5 damage to target creature.\\n{1}{R}, Discard this card: Destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Steel Wrecking Ball"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

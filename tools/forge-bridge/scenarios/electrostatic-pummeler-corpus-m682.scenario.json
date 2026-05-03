@@ -1,0 +1,23 @@
+{
+  "id": "electrostatic-pummeler-corpus-m682",
+  "description": "M6 corpus — Electrostatic Pummeler; in-hand parse.",
+  "seed": 62156,
+  "cards": {
+    "Electrostatic Pummeler": "Name:Electrostatic Pummeler\nManaCost:3\nTypes:Artifact Creature Construct\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nA:AB$ Pump | Cost$ PayEnergy<3> | Defined$ Self | NumAtt$ +X | NumDef$ +X | AILogic$ Pummeler | SpellDescription$ CARDNAME gets +X/+X until end of turn, where X is its power.\nSVar:X:Count$CardPower\nOracle:When Electrostatic Pummeler enters, you get {E}{E}{E} (three energy counters).\\nPay {E}{E}{E}: Electrostatic Pummeler gets +X/+X until end of turn, where X is its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electrostatic Pummeler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

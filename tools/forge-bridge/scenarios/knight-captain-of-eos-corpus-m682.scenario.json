@@ -1,0 +1,23 @@
+{
+  "id": "knight-captain-of-eos-corpus-m682",
+  "description": "M6 corpus — Knight-Captain of Eos; in-hand parse.",
+  "seed": 63043,
+  "cards": {
+    "Knight-Captain of Eos": "Name:Knight-Captain of Eos\nManaCost:4 W\nTypes:Creature Human Knight\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 white Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_soldier | TokenOwner$ You\nA:AB$ Fog | Cost$ W Sac<1/Soldier> | SpellDescription$ Prevent all combat damage that would be dealt this turn.\nOracle:When Knight-Captain of Eos enters, create two 1/1 white Soldier creature tokens.\\n{W}, Sacrifice a Soldier: Prevent all combat damage that would be dealt this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knight-Captain of Eos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

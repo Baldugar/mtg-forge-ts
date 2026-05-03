@@ -1,0 +1,23 @@
+{
+  "id": "prowling-pangolin-corpus-m682",
+  "description": "M6 corpus — Prowling Pangolin; in-hand parse.",
+  "seed": 63843,
+  "cards": {
+    "Prowling Pangolin": "Name:Prowling Pangolin\nManaCost:3 B B\nTypes:Creature Pangolin Beast\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, any player may sacrifice two creatures. If a player does, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ Sac<2/Creature> | UnlessPayer$ Player | UnlessSwitched$ True\nSVar:AIPreference:SacCost$Creature.token,Creature\nSVar:AIPreferenceParams:CreatureEvalThreshold$ 150 | MinCreaturesBelowThreshold$ 2\nOracle:When Prowling Pangolin enters, any player may sacrifice two creatures. If a player does, sacrifice Prowling Pangolin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prowling Pangolin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

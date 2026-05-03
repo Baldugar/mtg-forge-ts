@@ -1,0 +1,23 @@
+{
+  "id": "plasma-caster-corpus-m682",
+  "description": "M6 corpus — Plasma Caster; in-hand parse.",
+  "seed": 63789,
+  "cards": {
+    "Plasma Caster": "Name:Plasma Caster\nManaCost:1 R\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigEnergy | TriggerDescription$ Whenever equipped creature attacks, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ FlipACoin | Cost$ PayEnergy<2> | ValidTgts$ Creature.blockingEquipped | WinSubAbility$ ExileIt | LoseSubAbility$ DamageIt | TgtPrompt$ Select target creature blocking equipped creature | SpellDescription$ Choose target creature that's blocking equipped creature. Flip a coin. If you win the flip, exile the chosen creature. Otherwise, CARDNAME deals 1 damage to it.\nSVar:ExileIt:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Targeted\nSVar:DamageIt:DB$ DealDamage | NumDmg$ 1 | Defined$ Targeted\nK:Equip:2\nOracle:Equipped creature gets +1/+1.\\nWhenever equipped creature attacks, you get {E}{E} (two energy counters).\\nPay {E}{E}: Choose target creature that's blocking equipped creature. Flip a coin. If you win the flip, exile the chosen creature. Otherwise, Plasma Caster deals 1 damage to it.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plasma Caster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

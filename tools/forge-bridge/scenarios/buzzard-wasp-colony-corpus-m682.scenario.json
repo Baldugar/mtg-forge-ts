@@ -1,0 +1,23 @@
+{
+  "id": "buzzard-wasp-colony-corpus-m682",
+  "description": "M6 corpus — Buzzard-Wasp Colony; in-hand parse.",
+  "seed": 61591,
+  "cards": {
+    "Buzzard-Wasp Colony": "Name:Buzzard-Wasp Colony\nManaCost:3 B\nTypes:Creature Bird Insect\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature enters, you may sacrifice an artifact or creature. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Artifact;Creature/artifact or creature>\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl+HasCounters | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature you control dies, if it had counters on it, put its counters on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ EachFromSource | EachFromSource$ TriggeredCardLKICopy\nDeckHints:Ability$Counters\nOracle:Flying\\nWhen this creature enters, you may sacrifice an artifact or creature. If you do, draw a card.\\nWhenever another creature you control dies, if it had counters on it, put its counters on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Buzzard-Wasp Colony"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

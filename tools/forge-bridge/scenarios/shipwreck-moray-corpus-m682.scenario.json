@@ -1,0 +1,23 @@
+{
+  "id": "shipwreck-moray-corpus-m682",
+  "description": "M6 corpus — Shipwreck Moray; in-hand parse.",
+  "seed": 64343,
+  "cards": {
+    "Shipwreck Moray": "Name:Shipwreck Moray\nManaCost:3 U\nTypes:Creature Fish\nPT:0/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E}{E} (four energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 4\nA:AB$ Pump | Cost$ PayEnergy<1> | NumAtt$ +2 | NumDef$ -2 | SpellDescription$ CARDNAME gets +2/-2 until end of turn.\nOracle:When Shipwreck Moray enters, you get {E}{E}{E}{E} (four energy counters).\\nPay {E}: Shipwreck Moray gets +2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shipwreck Moray"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ichorid-corpus-m682",
+  "description": "M6 corpus — Ichorid; in-hand parse.",
+  "seed": 62829,
+  "cards": {
+    "Ichorid": "Name:Ichorid\nManaCost:3 B\nTypes:Creature Horror\nPT:3/1\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nSVar:EndOfTurnLeavePlay:True\nSVar:PlayMain1:TRUE\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | OptionalDecider$ You | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard, you may exile a black creature card other than CARDNAME from your graveyard. If you do, return CARDNAME to the battlefield.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ ExileFromGrave<1/Creature.Black+Other> | Origin$ Graveyard | Destination$ Battlefield\nOracle:Haste\\nAt the beginning of the end step, sacrifice Ichorid.\\nAt the beginning of your upkeep, if Ichorid is in your graveyard, you may exile a black creature card other than Ichorid from your graveyard. If you do, return Ichorid to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ichorid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

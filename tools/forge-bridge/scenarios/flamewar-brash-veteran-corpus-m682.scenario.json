@@ -1,0 +1,23 @@
+{
+  "id": "flamewar-brash-veteran-corpus-m682",
+  "description": "M6 corpus — Flamewar, Brash Veteran; in-hand parse.",
+  "seed": 62349,
+  "cards": {
+    "Flamewar, Brash Veteran": "Name:Flamewar, Brash Veteran\nManaCost:1 B R\nTypes:Legendary Artifact Creature Robot\nPT:3/2\nK:More Than Meets the Eye:B R\nA:AB$ PutCounter | Cost$ Sac<1/Artifact.Other/another artifact> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SorcerySpeed$ True | SubAbility$ DBConvert | AILogic$ AristocratCounters | SpellDescription$ Put a +1/+1 counter on NICKNAME and convert it. Activate only as a sorcery.\nSVar:DBConvert:DB$ SetState | Mode$ Transform | StackDescription$ Convert NICKNAME.\nA:AB$ ChangeZoneAll | Cost$ 1 Discard<1/Hand> | ChangeType$ Card.YouOwn+counters_GE1_INTEL | Origin$ Exile | Destination$ Hand | SpellDescription$ Put all exiled cards you own with intel counters on them into your hand.\nDeckHints:Ability$Counters\nDeckHas:Ability$Sacrifice|Discard|Counters\nAlternateMode:DoubleFaced\nOracle:More Than Meets the Eye {B}{R} (You may cast this card converted for {B}{R}.)\\nSacrifice another artifact: Put a +1/+1 counter on Flamewar and convert it. Activate only as a sorcery.\\n{1}, Discard your hand: Put all exiled cards you own with intel counters on them into your hand.\n\nALTERNATE\n\nName:Flamewar, Streetwise Operative\nManaCost:no cost\nColors:black, red\nTypes:Legendary Artifact Vehicle\nPT:2/1\nK:Living metal\nK:Menace\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, exile that many cards from the top of your library face down. Put an intel counter on each of them. Convert NICKNAME.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | ExileWithCounters$ INTEL | SubAbility$ DBConvert\nSVar:DBConvert:DB$ SetState | Mode$ Transform\nSVar:X:TriggerCount$DamageAmount\nSVar:HasAttackEffect:TRUE\nOracle:Living metal (During your turn, this Vehicle is also a creature.)\\nMenace, deathtouch\\nWhenever Flamewar deals combat damage to a player, exile that many cards from the top of your library face down. Put an intel counter on each of them. Convert Flamewar.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flamewar, Brash Veteran"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

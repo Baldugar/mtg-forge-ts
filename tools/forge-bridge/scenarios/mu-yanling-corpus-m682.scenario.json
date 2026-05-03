@@ -1,0 +1,23 @@
+{
+  "id": "mu-yanling-corpus-m682",
+  "description": "M6 corpus — Mu Yanling; in-hand parse.",
+  "seed": 63450,
+  "cards": {
+    "Mu Yanling": "Name:Mu Yanling\nManaCost:4 U U\nTypes:Legendary Planeswalker Yanling\nLoyalty:5\nA:AB$ Effect | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nA:AB$ Draw | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | NumCards$ 2 | SpellDescription$ Draw two cards.\nA:AB$ TapAll | Cost$ SubCounter<10/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidCards$ Creature.OppCtrl | SubAbility$ DBAddTurn | AILogic$ AtLeast3 | StackDescription$ SpellDescription | SpellDescription$ Tap all creatures your opponents control. You take an extra turn after this one.\nSVar:DBAddTurn:DB$ AddTurn | NumTurns$ 1\nOracle:[+2]: Target creature can't be blocked this turn.\\n[-3]: Draw two cards.\\n[-10]: Tap all creatures your opponents control. You take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mu Yanling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "innocent-traveler-corpus-m682",
+  "description": "M6 corpus — Innocent Traveler; in-hand parse.",
+  "seed": 62879,
+  "cards": {
+    "Innocent Traveler": "Name:Innocent Traveler\nManaCost:2 B B\nTypes:Creature Human\nPT:1/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigTransform | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, any opponent may sacrifice a creature. If no one does, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform | UnlessCost$ Sac<1/Creature> | UnlessPayer$ Player.Opponent\nAlternateMode:DoubleFaced\nOracle:At the beginning of your upkeep, any opponent may sacrifice a creature. If no one does, transform Innocent Traveler.\n\nALTERNATE\n\nName:Malicious Invader\nManaCost:no cost\nColors:black\nTypes:Creature Vampire\nPT:3/3\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | IsPresent$ Human.OppCtrl | Description$ CARDNAME gets +2/+0 as long as an opponent controls a Human.\nOracle:Flying\\nMalicious Invader gets +2/+0 as long as an opponent controls a Human.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Innocent Traveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "syr-ginger-the-meal-ender-corpus-m682",
+  "description": "M6 corpus — Syr Ginger, the Meal Ender; in-hand parse.",
+  "seed": 64700,
+  "cards": {
+    "Syr Ginger, the Meal Ender": "Name:Syr Ginger, the Meal Ender\nManaCost:2\nTypes:Legendary Artifact Creature Food Knight\nPT:3/1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Trample & Hexproof & Haste | IsPresent$ Planeswalker.OppCtrl | Description$ CARDNAME has trample, hexproof, and haste as long as an opponent controls a planeswalker.\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Artifact.Other+YouCtrl | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another artifact you control is put into a graveyard from the battlefield, put a +1/+1 counter on NICKNAME and scry 1.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nA:AB$ GainLife | Cost$ 2 T Sac<1/NICKNAME> | LifeAmount$ X | SpellDescription$ You gain life equal to its power.\nSVar:X:Sacrificed$CardPower\nDeckHas:Ability$Sacrifice|Counters\nDeckHints:Type$Artifact\nOracle:Syr Ginger, the Meal Ender has trample, hexproof, and haste as long as an opponent controls a planeswalker.\\nWhenever another artifact you control is put into a graveyard from the battlefield, put a +1/+1 counter on Syr Ginger and scry 1.\\n{2}, {T}, Sacrifice Syr Ginger: You gain life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Syr Ginger, the Meal Ender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

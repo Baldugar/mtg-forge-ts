@@ -1,0 +1,23 @@
+{
+  "id": "stone-of-erech-corpus-m682",
+  "description": "M6 corpus — Stone of Erech; in-hand parse.",
+  "seed": 64620,
+  "cards": {
+    "Stone of Erech": "Name:Stone of Erech\nManaCost:1\nTypes:Legendary Artifact\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.OppCtrl | ReplaceWith$ Exile | Description$ If a creature an opponent controls would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nA:AB$ ChangeZoneAll | Cost$ 2 T Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | SubAbility$ DBDraw | SpellDescription$ Exile target player's graveyard. Draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Graveyard|Sacrifice\nOracle:If a creature an opponent controls would die, exile it instead.\\n{2}, {T}, Sacrifice Stone of Erech: Exile target player's graveyard. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stone of Erech"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

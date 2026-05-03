@@ -1,0 +1,23 @@
+{
+  "id": "pumpkin-bombs-corpus-m682",
+  "description": "M6 corpus — Pumpkin Bombs; in-hand parse.",
+  "seed": 63853,
+  "cards": {
+    "Pumpkin Bombs": "Name:Pumpkin Bombs\nManaCost:1 R\nTypes:Artifact\nA:AB$ Draw | Cost$ T Discard<2/Card> | Defined$ You | NumCards$ 3 | SubAbility$ DBPutCounter | SpellDescription$ Draw three cards, then put a fuse counter on this artifact. It deals damage equal to the number of fuse counters on it to target opponent. They gain control of this artifact.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ FUSE | CounterNum$ 1 | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ X | SubAbility$ BombGainCtrl\nSVar:BombGainCtrl:DB$ GainControl | NewController$ TargetedPlayer | Defined$ Self\nSVar:X:Count$CardCounters.FUSE\nOracle:{T}, Discard two cards: Draw three cards, then put a fuse counter on this artifact. It deals damage equal to the number of fuse counters on it to target opponent. They gain control of this artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pumpkin Bombs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

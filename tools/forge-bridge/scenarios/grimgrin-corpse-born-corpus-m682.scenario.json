@@ -1,0 +1,23 @@
+{
+  "id": "grimgrin-corpse-born-corpus-m682",
+  "description": "M6 corpus — Grimgrin, Corpse-Born; in-hand parse.",
+  "seed": 62642,
+  "cards": {
+    "Grimgrin, Corpse-Born": "Name:Grimgrin, Corpse-Born\nManaCost:3 U B\nTypes:Legendary Creature Zombie Warrior\nPT:5/5\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ NICKNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ NICKNAME doesn't untap during your untap step.\nA:AB$ Untap | Cost$ Sac<1/Creature.Other/another creature> | SubAbility$ DBPutCounter | SpellDescription$ Untap NICKNAME and put a +1/+1 counter on it.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Whenever NICKNAME attacks, destroy target creature defending player controls, then put a +1/+1 counter on NICKNAME.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nAI:RemoveDeck:Random\nSVar:HasAttackEffect:TRUE\nOracle:Grimgrin enters tapped and doesn't untap during your untap step.\\nSacrifice another creature: Untap Grimgrin and put a +1/+1 counter on it.\\nWhenever Grimgrin attacks, destroy target creature defending player controls, then put a +1/+1 counter on Grimgrin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grimgrin, Corpse-Born"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

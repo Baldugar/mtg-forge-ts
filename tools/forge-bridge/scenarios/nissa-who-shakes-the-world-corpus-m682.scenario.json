@@ -1,0 +1,23 @@
+{
+  "id": "nissa-who-shakes-the-world-corpus-m682",
+  "description": "M6 corpus — Nissa, Who Shakes the World; in-hand parse.",
+  "seed": 63567,
+  "cards": {
+    "Nissa, Who Shakes the World": "Name:Nissa, Who Shakes the World\nManaCost:3 G G\nTypes:Legendary Planeswalker Nissa\nLoyalty:5\nT:Mode$ TapsForMana | ValidCard$ Forest | Activator$ You | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever you tap a Forest for mana, add an additional {G}.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ 1\nA:AB$ PutCounter | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | CounterType$ P1P1 | CounterNum$ 3 | ValidTgts$ Land.nonCreature+YouCtrl | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target noncreature land you control | SubAbility$ DBUntap | SpellDescription$ Put three +1/+1 counters on up to one target noncreature land you control. Untap it. It becomes a 0/0 Elemental creature with vigilance and haste that's still a land.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Power$ 0 | Toughness$ 0 | Types$ Creature,Elemental | Keywords$ Vigilance & Haste | Duration$ Permanent\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Name$ Emblem — Nissa, Who Shakes the World | Image$ emblem_nissa_who_shakes_the_world | Duration$ Permanent | Stackable$ False | Planeswalker$ True | Ultimate$ True | StaticAbilities$ STIndestructible | SubAbility$ DBChangeZone | SpellDescription$ You get an emblem with \"Lands you control have indestructible.\" Search your library for any number of Forest cards, put them onto the battlefield tapped, then shuffle.\nSVar:STIndestructible:Mode$ Continuous | Affected$ Land.YouCtrl | AffectedZone$ Battlefield | AddKeyword$ Indestructible | Description$ Lands you control have indestructible.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | ChangeNum$ XFetch | Tapped$ True | StackDescription$ Search your library for any number of Forest cards, put them onto the battlefield tapped, then shuffle.\nSVar:XFetch:Count$ValidLibrary Forest.YouCtrl\nDeckHas:Ability$Counters\nOracle:Whenever you tap a Forest for mana, add an additional {G}.\\n[+1]: Put three +1/+1 counters on up to one target noncreature land you control. Untap it. It becomes a 0/0 Elemental creature with vigilance and haste that's still a land.\\n[-8]: You get an emblem with \"Lands you control have indestructible.\" Search your library for any number of Forest cards, put them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa, Who Shakes the World"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

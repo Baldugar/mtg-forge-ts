@@ -1,0 +1,23 @@
+{
+  "id": "thing-from-the-deep-corpus-m682",
+  "description": "M6 corpus — Thing from the Deep; in-hand parse.",
+  "seed": 64839,
+  "cards": {
+    "Thing from the Deep": "Name:Thing from the Deep\nManaCost:6 U U U\nTypes:Creature Leviathan\nPT:9/9\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSacUnless | TriggerDescription$ Whenever CARDNAME attacks, sacrifice it unless you sacrifice an Island.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<1/Island> | UnlessPayer$ You\nSVar:NeedsToPlay:Island.YouCtrl\nAI:RemoveDeck:All\nOracle:Whenever Thing from the Deep attacks, sacrifice it unless you sacrifice an Island.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thing from the Deep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

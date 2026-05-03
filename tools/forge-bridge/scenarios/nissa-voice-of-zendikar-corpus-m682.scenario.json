@@ -1,0 +1,23 @@
+{
+  "id": "nissa-voice-of-zendikar-corpus-m682",
+  "description": "M6 corpus — Nissa, Voice of Zendikar; in-hand parse.",
+  "seed": 63566,
+  "cards": {
+    "Nissa, Voice of Zendikar": "Name:Nissa, Voice of Zendikar\nManaCost:1 G G\nTypes:Legendary Planeswalker Nissa\nLoyalty:3\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ g_0_1_plant | SpellDescription$ Create a 0/1 green Plant creature token.\nA:AB$ PutCounterAll | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each creature you control.\nA:AB$ GainLife | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | LifeAmount$ X | SubAbility$ DBDraw | SpellDescription$ You gain X life and draw X cards, where X is the number of lands you control.\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Land.YouCtrl\nOracle:[+1]: Create a 0/1 green Plant creature token.\\n[-2]: Put a +1/+1 counter on each creature you control.\\n[-7]: You gain X life and draw X cards, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa, Voice of Zendikar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

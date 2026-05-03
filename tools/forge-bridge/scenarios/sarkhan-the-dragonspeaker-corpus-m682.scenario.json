@@ -1,0 +1,23 @@
+{
+  "id": "sarkhan-the-dragonspeaker-corpus-m682",
+  "description": "M6 corpus — Sarkhan, the Dragonspeaker; in-hand parse.",
+  "seed": 64182,
+  "cards": {
+    "Sarkhan, the Dragonspeaker": "Name:Sarkhan, the Dragonspeaker\nManaCost:3 R R\nTypes:Legendary Planeswalker Sarkhan\nLoyalty:4\nA:AB$ Animate | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Power$ 4 | Toughness$ 4 | Types$ Creature,Legendary,Dragon | Colors$ Red | OverwriteColors$ True | RemoveCardTypes$ True | RemoveCreatureTypes$ True | Keywords$ Flying & Indestructible & Haste | SpellDescription$ Until end of turn, CARDNAME becomes a legendary 4/4 red Dragon creature with flying, indestructible, and haste. (He doesn't lose loyalty while he's not a planeswalker.)\nA:AB$ DealDamage | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature.\nA:AB$ Effect | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Sarkhan, the Dragonspeaker | Triggers$ BODTrig,EOTTrig | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"At the beginning of your draw step, draw two additional cards\" and \"At the beginning of your end step, discard your hand.\"\nSVar:BODTrig:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | TriggerZones$ Command | Execute$ SarkhanDraw | TriggerDescription$ At the beginning of your draw step, draw two additional cards.\nSVar:SarkhanDraw:DB$ Draw | NumCards$ 2 | Defined$ You\nSVar:EOTTrig:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Command | Execute$ SarkhanDiscard | TriggerDescription$ At the beginning of your end step, discard your hand.\nSVar:SarkhanDiscard:DB$ Discard | Mode$ Hand\nSVar:PlayMain1:ALWAYS\nOracle:[+1]: Until end of turn, Sarkhan, the Dragonspeaker becomes a legendary 4/4 red Dragon creature with flying, indestructible, and haste. (He doesn't lose loyalty while he's not a planeswalker.)\\n[-3]: Sarkhan, the Dragonspeaker deals 4 damage to target creature.\\n[-6]: You get an emblem with \"At the beginning of your draw step, draw two additional cards\" and \"At the beginning of your end step, discard your hand.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarkhan, the Dragonspeaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

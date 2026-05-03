@@ -1,0 +1,23 @@
+{
+  "id": "memorial-to-genius-corpus-m682",
+  "description": "M6 corpus — Memorial to Genius; in-hand parse.",
+  "seed": 63324,
+  "cards": {
+    "Memorial to Genius": "Name:Memorial to Genius\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Draw | Cost$ 4 U T Sac<1/CARDNAME> | NumCards$ 2 | SpellDescription$ Draw two cards.\nOracle:Memorial to Genius enters tapped.\\n{T}: Add {U}.\\n{4}{U}, {T}, Sacrifice Memorial to Genius: Draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memorial to Genius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

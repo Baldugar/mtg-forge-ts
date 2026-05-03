@@ -1,0 +1,23 @@
+{
+  "id": "protection-racket-corpus-m682",
+  "description": "M6 corpus — Protection Racket; in-hand parse.",
+  "seed": 63840,
+  "cards": {
+    "Protection Racket": "Name:Protection Racket\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRepeat | TriggerDescription$ At the beginning of your upkeep, repeat the following process for each opponent in turn order. Reveal the top card of your library. That player may pay life equal to that card's mana value. If they do, exile that card. Otherwise, put it into your hand.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Opponent | StartingWith$ Opponent | RepeatSubAbility$ DBReveal\nSVar:DBReveal:DB$ PeekAndReveal | PeekAmount$ 1 | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | UnlessCost$ PayLife<X> | UnlessPayer$ Remembered | UnlessSwitched$ True | Defined$ Remembered | Origin$ Library | Destination$ Exile | ForgetChanged$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | ForgetChanged$ True\nSVar:X:Remembered$CardManaCost\nOracle:At the beginning of your upkeep, repeat the following process for each opponent in turn order. Reveal the top card of your library. That player may pay life equal to that card's mana value. If they do, exile that card. Otherwise, put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Protection Racket"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

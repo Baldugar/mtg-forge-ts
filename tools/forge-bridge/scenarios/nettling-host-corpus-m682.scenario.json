@@ -1,0 +1,23 @@
+{
+  "id": "nettling-host-corpus-m682",
+  "description": "M6 corpus — Nettling Host; in-hand parse.",
+  "seed": 63536,
+  "cards": {
+    "Nettling Host": "Name:Nettling Host\nManaCost:2 W\nTypes:Creature Phyrexian Rat\nPT:3/3\nK:Toxic:2\nA:AB$ MakeCard | Cost$ ExileFromGrave<1/CARDNAME> | Conjure$ True | Name$ Nettlecyst | Zone$ Hand | ActivationZone$ Graveyard | PrecostDesc$ Corrupted — | CheckSVar$ X | SVarCompare$ GE3 | SpellDescription$ Conjure a card named Nettlecyst into your hand. Activate only if an opponent has three or more poison counters.\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nSVar:SacMe:1\nSVar:DiscardMe:1\nDeckHas:Ability$Graveyard|Token & Type$Artifact|Germ\nDeckNeeds:Keyword$Toxic|Infect\nOracle:Toxic 2\\nCorrupted — Exile Nettling Host from your graveyard: Conjure a card named Nettlecyst into your hand. Activate only if an opponent has three or more poison counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nettling Host"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

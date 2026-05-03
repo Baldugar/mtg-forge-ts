@@ -1,0 +1,23 @@
+{
+  "id": "hydroelectric-specimen-corpus-m682",
+  "description": "M6 corpus — Hydroelectric Specimen; in-hand parse.",
+  "seed": 62812,
+  "cards": {
+    "Hydroelectric Specimen": "Name:Hydroelectric Specimen\nManaCost:2 U\nTypes:Creature Weird\nPT:1/4\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may change a target of target instant or sorcery spell with a single target to CARDNAME.\nSVar:TrigChange:DB$ ChangeTargets | TargetType$ Instant.singleTarget,Sorcery.singleTarget | ValidTgts$ Card | DefinedMagnet$ Self | ChangeSingleTarget$ True\nAlternateMode:Modal\nOracle:Flash\\nWhen Hydroelectric Specimen enters, you may change a target of target instant or sorcery spell with a single target to Hydroelectric Specimen.\n\nALTERNATE\n\nName:Hydroelectric Laboratory\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 3 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<3> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nOracle:As Hydroelectric Laboratory enters, you may pay 3 life. If you don't, it enters tapped.\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hydroelectric Specimen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

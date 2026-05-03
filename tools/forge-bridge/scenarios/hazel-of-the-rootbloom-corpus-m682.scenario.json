@@ -1,0 +1,23 @@
+{
+  "id": "hazel-of-the-rootbloom-corpus-m682",
+  "description": "M6 corpus — Hazel of the Rootbloom; in-hand parse.",
+  "seed": 62712,
+  "cards": {
+    "Hazel of the Rootbloom": "Name:Hazel of the Rootbloom\nManaCost:2 B G\nTypes:Legendary Creature Squirrel Druid\nPT:3/5\nA:AB$ Mana | Cost$ T PayLife<2> tapXType<X/Card.token/token> | Produced$ Combo Any | Amount$ X | SpellDescription$ Add X mana in any combination of colors.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBCopyPermanent | TriggerDescription$ At the beginning of your end step, create a token that's a copy of target token you control. If that token is a Squirrel, instead create two tokens that are copies of it.\nSVar:DBCopyPermanent:DB$ CopyPermanent | ValidTgts$ Permanent.token+YouCtrl | NumCopies$ Y | TgtPrompt$ Select target token you control to copy\nSVar:X:Count$xPaid\nSVar:Y:Targeted$Valid Squirrel/Plus.1\nOracle:{T}, Pay 2 life, Tap X untapped tokens you control: Add X mana in any combination of colors.\\nAt the beginning of your end step, create a token that's a copy of target token you control. If that token is a Squirrel, instead create two tokens that are copies of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hazel of the Rootbloom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

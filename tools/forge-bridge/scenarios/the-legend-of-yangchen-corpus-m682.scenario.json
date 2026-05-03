@@ -1,0 +1,23 @@
+{
+  "id": "the-legend-of-yangchen-corpus-m682",
+  "description": "M6 corpus — The Legend of Yangchen; in-hand parse.",
+  "seed": 64814,
+  "cards": {
+    "The Legend of Yangchen": "Name:The Legend of Yangchen\nManaCost:3 W W\nTypes:Enchantment Saga\nK:Chapter:3:DBRepeatEach,DBDraw,DBTransform\nSVar:DBRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | StartingWith$ You | RepeatSubAbility$ DBChoosePermanent | SubAbility$ DBChangeZone | SpellDescription$ Starting with you, each player chooses up to one permanent with mana value 3 or greater from among permanents your opponents control. Exile those permanents.\nSVar:DBChoosePermanent:DB$ ChooseCard | ChoiceTitle$ Choose up to one permanent with mana value 3 or greater | MinAmount$ 0 | Amount$ 1 | Defined$ Remembered | Choices$ Permanent.cmcGE3+OppCtrl | RememberChosen$ True\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nSVar:DBDraw:DB$ Draw | Defined$ You | ValidTgts$ Opponent | NumCards$ 3 | UnlessCost$ Draw<3/Player.targetedBy> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ You may have target opponent draw three cards. If you do, draw three cards.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters, and after your draw step, add a lore counter.)\\nI — Starting with you, each player chooses up to one permanent with mana value 3 or greater from among permanents your opponents control. Exile those permanents.\\nII — You may have target opponent draw three cards. If you do, draw three cards.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Avatar Yangchen\nManaCost:no cost\nTypes:Legendary Creature Avatar\nPT:4/5\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAirbend | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, airbend up to one other target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\nSVar:TrigAirbend:DB$ Airbend | ValidTgts$ Permanent.nonLand+Other | TgtPrompt$ Select up to one other target nonland permanent | TargetMin$ 0 | TargetMax$ 1\nOracle:Flying\\nWhenever you cast your second spell each turn, airbend up to one other target nonland permanent. (Exile it. While it's exiled, its owner may cast it for {2} rather than its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Legend of Yangchen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

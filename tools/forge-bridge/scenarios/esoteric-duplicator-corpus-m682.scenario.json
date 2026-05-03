@@ -1,0 +1,23 @@
+{
+  "id": "esoteric-duplicator-corpus-m682",
+  "description": "M6 corpus — Esoteric Duplicator; in-hand parse.",
+  "seed": 62226,
+  "cards": {
+    "Esoteric Duplicator": "Name:Esoteric Duplicator\nManaCost:2 U\nTypes:Artifact Clue\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Card.Self,Artifact.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDelayedTrig | TriggerDescription$ Whenever you sacrifice CARDNAME or another artifact, you may pay {2}. If you do, at the beginning of the next end step, create a token that's a copy of that artifact.\nSVar:TrigDelayedTrig:AB$ DelayedTrigger | Cost$ 2 | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | RememberObjects$ TriggeredCardLKICopy | Execute$ TrigCopy | TriggerDescription$ At the beginning of the next end step, create a token that's a copy of that artifact.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ DelayTriggerRememberedLKI\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHints:Type$Artifact\nDeckHas:Ability$Sacrifice\nOracle:Whenever you sacrifice Esoteric Duplicator or another artifact, you may pay {2}. If you do, at the beginning of the next end step, create a token that's a copy of that artifact.\\n{2}, Sacrifice Esoteric Duplicator: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esoteric Duplicator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

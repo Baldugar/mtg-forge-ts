@@ -1,0 +1,23 @@
+{
+  "id": "omen-of-the-forge-corpus-m682",
+  "description": "M6 corpus — Omen of the Forge; in-hand parse.",
+  "seed": 63624,
+  "cards": {
+    "Omen of the Forge": "Name:Omen of the Forge\nManaCost:1 R\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nA:AB$ Scry | Cost$ 2 R Sac<1/CARDNAME> | ScryNum$ 2 | AILogic$ BestOpportunity | SpellDescription$ Scry 2.\nOracle:Flash\\nWhen Omen of the Forge enters, it deals 2 damage to any target.\\n{2}{R}, Sacrifice Omen of the Forge: Scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Omen of the Forge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

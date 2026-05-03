@@ -1,0 +1,23 @@
+{
+  "id": "callow-jushi-corpus-m682",
+  "description": "M6 corpus — Callow Jushi; in-hand parse.",
+  "seed": 61614,
+  "cards": {
+    "Callow Jushi": "Name:Callow Jushi\nManaCost:1 U U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Card.Self+counters_GE2_KI | Execute$ TrigFlip | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, if there are two or more ki counters on CARDNAME, you may flip it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nDeckHints:Type$Spirit|Arcane\nAlternateMode:Flip\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Callow Jushi.\\nAt the beginning of the end step, if there are two or more ki counters on Callow Jushi, you may flip it.\n\nALTERNATE\n\nName:Jaraku the Interloper\nManaCost:1 U U\nColors:blue\nTypes:Legendary Creature Spirit\nPT:3/4\nA:AB$ Counter | Cost$ SubCounter<1/KI> | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell. | Destination$ Graveyard | UnlessCost$ 2 | UnlessPayer$ TargetedController | SpellDescription$ Counter target spell unless its controller pays 2.\nOracle:Remove a ki counter from Jaraku the Interloper: Counter target spell unless its controller pays {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Callow Jushi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

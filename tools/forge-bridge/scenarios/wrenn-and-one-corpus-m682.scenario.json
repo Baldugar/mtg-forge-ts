@@ -1,0 +1,23 @@
+{
+  "id": "wrenn-and-one-corpus-m682",
+  "description": "M6 corpus — Wrenn and One; in-hand parse.",
+  "seed": 65283,
+  "cards": {
+    "Wrenn and One": "Name:Wrenn and One\nManaCost:no cost\nColors:green\nTypes:Land Planeswalker Wrenn\nLoyalty:1\nA:AB$ Animate | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ Self | Abilities$ ABMana | Duration$ UntilYourNextTurn | StackDescription$ SpellDescription | SpellDescription$ CARDNAME gains \"{T}: Add {G}\" until your next turn.\nSVar:ABMana:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Token | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ g_1_1_squirrel | StackDescription$ REP Create_{p:You} creates | SpellDescription$ Create a 1/1 green Squirrel creature token.\nA:AB$ Effect | Cost$ SubCounter<4/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Wrenn and One | Image$ emblem_wrenn_and_one | Triggers$ TrigCradle | Duration$ Permanent | StackDescription$ REP You get_{p:You} gets | SpellDescription$ You get an emblem with \"At the beginning of your precombat main phase, add {G} for each creature you control.\"\nSVar:TrigCradle:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigMana | TriggerDescription$ At the beginning of your precombat main phase, add {G} for each creature you control.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ X | Defined$ You\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:[+1]: Wrenn and One gains \"{T}: Add {G}\" until your next turn.\\n[-1]: Create a 1/1 green Squirrel creature token.\\n[-4]: You get an emblem with \"At the beginning of your precombat main phase, add {G} for each creature you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrenn and One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

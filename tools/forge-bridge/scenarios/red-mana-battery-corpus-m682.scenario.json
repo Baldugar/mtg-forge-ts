@@ -1,0 +1,23 @@
+{
+  "id": "red-mana-battery-corpus-m682",
+  "description": "M6 corpus — Red Mana Battery; in-hand parse.",
+  "seed": 63960,
+  "cards": {
+    "Red Mana Battery": "Name:Red Mana Battery\nManaCost:4\nTypes:Artifact\nA:AB$ PutCounter | Cost$ 2 T | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<X/CHARGE> | Produced$ R | AILogic$ ManaRitualBattery.1 | AINoRecursiveCheck$ True | SubAbility$ DBMana | SpellDescription$ Add {R}, then add an additional {R} for each charge counter removed this way.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nDeckHints:Color$Red\nOracle:{2}, {T}: Put a charge counter on Red Mana Battery.\\n{T}, Remove any number of charge counters from Red Mana Battery: Add {R}, then add an additional {R} for each charge counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Red Mana Battery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

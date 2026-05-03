@@ -1,0 +1,23 @@
+{
+  "id": "null-group-biological-assets-corpus-m682",
+  "description": "M6 corpus — Null Group Biological Assets; in-hand parse.",
+  "seed": 63588,
+  "cards": {
+    "Null Group Biological Assets": "Name:Null Group Biological Assets\nManaCost:2 R\nTypes:Creature Mutant Mercenary\nPT:3/1\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ First Strike | Condition$ PlayerTurn | Description$ During your turn, this creature has first strike.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card>\nSVar:HasAttackEffect:TRUE\nOracle:During your turn, this creature has first strike.\\nWhenever this creature attacks, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Null Group Biological Assets"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jaya-ballard-task-mage-corpus-m682",
+  "description": "M6 corpus — Jaya Ballard, Task Mage; in-hand parse.",
+  "seed": 62947,
+  "cards": {
+    "Jaya Ballard, Task Mage": "Name:Jaya Ballard, Task Mage\nManaCost:1 R R\nTypes:Legendary Creature Human Spellshaper\nPT:2/2\nA:AB$ Destroy | Cost$ R T Discard<1/Card> | ValidTgts$ Permanent.Blue | TgtPrompt$ Select target blue permanent | SpellDescription$ Destroy target blue permanent.\nA:AB$ DealDamage | Cost$ 1 R T Discard<1/Card> | ValidTgts$ Any | NumDmg$ 3 | RememberDamaged$ True | SubAbility$ DBNoRegen | SpellDescription$ CARDNAME deals 3 damage to any target. A creature dealt damage this way can't be regenerated this turn.\nA:AB$ DamageAll | Cost$ 5 R R T Discard<1/Card> | NumDmg$ 6 | ValidPlayers$ Player | ValidCards$ Creature | ValidDescription$ each creature and each player. | SpellDescription$ NICKNAME deals 6 damage to each creature and each player.\nSVar:DBNoRegen:DB$ Effect | RememberObjects$ Remembered | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | ConditionDefined$ Remembered | ConditionPresent$ Creature | StackDescription$ None | AILogic$ CantRegenerate | SubAbility$ DBCleanup\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{R}, {T}, Discard a card: Destroy target blue permanent.\\n{1}{R}, {T}, Discard a card: Jaya Ballard, Task Mage deals 3 damage to any target. A creature dealt damage this way can't be regenerated this turn.\\n{5}{R}{R}, {T}, Discard a card: Jaya Ballard deals 6 damage to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaya Ballard, Task Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

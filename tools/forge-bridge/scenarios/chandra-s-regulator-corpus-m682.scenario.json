@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-regulator-corpus-m682",
+  "description": "M6 corpus — Chandra's Regulator; in-hand parse.",
+  "seed": 61711,
+  "cards": {
+    "Chandra's Regulator": "Name:Chandra's Regulator\nManaCost:1 R\nTypes:Legendary Artifact\nT:Mode$ AbilityCast | ValidCard$ Planeswalker.Chandra | ValidActivatingPlayer$ You | ValidSA$ Activated.Loyalty | TriggerZones$ Battlefield | Execute$ TrigCopyAbility | TriggerDescription$ Whenever you activate a loyalty ability of a Chandra planeswalker, you may pay {1}. If you do, copy that ability. You may choose new targets for the copy.\nSVar:TrigCopyAbility:AB$ CopySpellAbility | Cost$ 1 | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nA:AB$ Draw | Cost$ 1 T Discard<1/Mountain;Card.Red/Mountain card or a red card> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:AIPreference:SacCost$Card.Mountain,Card.Red\nDeckNeeds:Type$Chandra\nOracle:Whenever you activate a loyalty ability of a Chandra planeswalker, you may pay {1}. If you do, copy that ability. You may choose new targets for the copy.\\n{1}, {T}, Discard a Mountain card or a red card: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Regulator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

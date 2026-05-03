@@ -1,0 +1,23 @@
+{
+  "id": "gilt-leaf-palace-corpus-m682",
+  "description": "M6 corpus — Gilt-Leaf Palace; in-hand parse.",
+  "seed": 62527,
+  "cards": {
+    "Gilt-Leaf Palace": "Name:Gilt-Leaf Palace\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo G B | SpellDescription$ Add {G} or {B}.\nAI:RemoveDeck:Random\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal an Elf card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Elf> | UnlessPayer$ You | StackDescription$ enters tapped.\nOracle:As Gilt-Leaf Palace enters, you may reveal an Elf card from your hand. If you don't, Gilt-Leaf Palace enters tapped.\\n{T}: Add {B} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gilt-Leaf Palace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

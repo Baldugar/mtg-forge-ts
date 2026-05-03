@@ -1,0 +1,23 @@
+{
+  "id": "torment-of-venom-corpus-m682",
+  "description": "M6 corpus — Torment of Venom; in-hand parse.",
+  "seed": 64920,
+  "cards": {
+    "Torment of Venom": "Name:Torment of Venom\nManaCost:2 B B\nTypes:Instant\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 3 | IsCurse$ True | RememberTargets$ True | SubAbility$ DBGenericChoice | SpellDescription$ Put three -1/-1 counters on target creature. Its controller loses 3 life unless they sacrifice another nonland permanent or discards a card.\nSVar:DBGenericChoice:DB$ GenericChoice | Choices$ PaySac,PayDiscard | Defined$ TargetedController | FallbackAbility$ LoseLifeFallback | AILogic$ PayUnlessCost | SubAbility$ DBCleanup\nSVar:PaySac:DB$ LoseLife | LifeAmount$ 3 | Defined$ TargetedController | UnlessCost$ Sac<1/Permanent.!IsRemembered+nonLand/another nonland permanent> | UnlessPayer$ TargetedController | SpellDescription$ You lose 3 life unless you sacrifice another nonland permanent.\nSVar:PayDiscard:DB$ LoseLife | LifeAmount$ 3 | Defined$ TargetedController | UnlessCost$ Discard<1/Card> | UnlessPayer$ TargetedController | SpellDescription$ You lose 3 life unless you discard a card.\n# TODO: Most likely the ChooseGenericEffect code can be simplified somehow to avoid the necessity of having a dedicated fallback ability\nSVar:LoseLifeFallback:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ 3\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIPreference:SacCost$Permanent.nonLand | DiscardCost$Card\nDeckHas:Ability$Counters\nOracle:Put three -1/-1 counters on target creature. Its controller loses 3 life unless they sacrifice another nonland permanent or discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torment of Venom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

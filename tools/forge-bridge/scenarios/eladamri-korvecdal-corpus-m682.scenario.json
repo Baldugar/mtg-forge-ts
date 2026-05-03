@@ -1,0 +1,23 @@
+{
+  "id": "eladamri-korvecdal-corpus-m682",
+  "description": "M6 corpus — Eladamri, Korvecdal; in-hand parse.",
+  "seed": 62151,
+  "cards": {
+    "Eladamri, Korvecdal": "Name:Eladamri, Korvecdal\nManaCost:1 G G\nTypes:Legendary Creature Elf Warrior\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Creature.TopLibrary+YouCtrl+nonLand | AffectedZone$ Library | MayPlay$ True | Description$ You may cast creature spells from the top of your library.\nA:AB$ ChooseCard | Cost$ G T tapXType<2/Creature> | ChoiceZone$ Hand,Library | PlayerTurn$ True | Reveal$ True | Choices$ Card.TopLibrary+YouOwn,Card.YouOwn+inZoneHand | SubAbility$ DBChangeZone | ChoiceTitle$ Reveal a card from your hand or the top of your library | AILogic$ GoodCreature | SpellDescription$ Reveal a card from your hand or the top of your library. If you reveal a creature card this way, put it onto the battlefield. Activate only during your turn.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Library,Hand | ConditionDefined$ ChosenCard | ConditionPresent$ Creature | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:You may look at the top of your library any time.\\nYou may cast creature spells from the top of your library.\\n{G}, {T}, Tap two untapped creatures you control: Reveal a card from your hand or the top of your library. If you reveal a creature card this way, put it onto the battlefield. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eladamri, Korvecdal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

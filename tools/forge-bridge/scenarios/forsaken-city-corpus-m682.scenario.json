@@ -1,0 +1,23 @@
+{
+  "id": "forsaken-city-corpus-m682",
+  "description": "M6 corpus — Forsaken City; in-hand parse.",
+  "seed": 62408,
+  "cards": {
+    "Forsaken City": "Name:Forsaken City\nManaCost:no cost\nTypes:Land\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This land doesn't untap during your untap step.\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your upkeep, you may exile a card from your hand. If you do, untap this land.\nSVar:TrigUntap:AB$ Untap | Cost$ ExileFromHand<1/Card> | Defined$ Self\nAI:RemoveDeck:All\nOracle:This land doesn't untap during your untap step.\\nAt the beginning of your upkeep, you may exile a card from your hand. If you do, untap this land.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forsaken City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

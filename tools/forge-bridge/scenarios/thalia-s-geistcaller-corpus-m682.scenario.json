@@ -1,0 +1,23 @@
+{
+  "id": "thalia-s-geistcaller-corpus-m682",
+  "description": "M6 corpus — Thalia's Geistcaller; in-hand parse.",
+  "seed": 64776,
+  "cards": {
+    "Thalia's Geistcaller": "Name:Thalia's Geistcaller\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:3/1\nK:Lifelink\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromYourGraveyard | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from your graveyard, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:BuffedBy:Card\nDeckHas:Ability$Token\nA:AB$ Pump | Cost$ Sac<1/Spirit> | Defined$ Self | KW$ Indestructible | SpellDescription$ CARDNAME gains indestructible until end of turn.\nDeckHints:Type$Spirit\nOracle:Lifelink\\nWhenever you cast a spell from your graveyard, create a 1/1 white Spirit creature token with flying.\\nSacrifice a Spirit: Thalia's Geistcaller gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thalia's Geistcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

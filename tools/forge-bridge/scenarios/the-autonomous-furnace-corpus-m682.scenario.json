@@ -1,0 +1,23 @@
+{
+  "id": "the-autonomous-furnace-corpus-m682",
+  "description": "M6 corpus — The Autonomous Furnace; in-hand parse.",
+  "seed": 64787,
+  "cards": {
+    "The Autonomous Furnace": "Name:The Autonomous Furnace\nManaCost:no cost\nTypes:Land Sphere\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Draw | Cost$ 1 R T Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:The Autonomous Furnace enters tapped.\\n{T}: Add {R}.\\n{1}{R}, {T}, Sacrifice The Autonomous Furnace: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Autonomous Furnace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "floral-evoker-corpus-m682",
+  "description": "M6 corpus — Floral Evoker; in-hand parse.",
+  "seed": 62375,
+  "cards": {
+    "Floral Evoker": "Name:Floral Evoker\nManaCost:2 G\nTypes:Creature Snake Druid\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Land\nA:AB$ ChangeZone | Cost$ G Discard<1/Creature> | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target land card in your graveyard | ValidTgts$ Land.YouOwn | Tapped$ True | SpellDescription$ Return target land card from your graveyard to the battlefield tapped.\nDeckHas:Ability$Counters\nOracle:Landfall — Whenever a land you control enters, put a +1/+1 counter on this creature.\\n{G}, Discard a creature card: Return target land card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Floral Evoker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

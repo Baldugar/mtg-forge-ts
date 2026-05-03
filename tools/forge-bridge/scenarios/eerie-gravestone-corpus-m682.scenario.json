@@ -1,0 +1,23 @@
+{
+  "id": "eerie-gravestone-corpus-m682",
+  "description": "M6 corpus — Eerie Gravestone; in-hand parse.",
+  "seed": 62145,
+  "cards": {
+    "Eerie Gravestone": "Name:Eerie Gravestone\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When this artifact enters, draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ Mill | Cost$ 1 B Sac<1/CARDNAME> | NumCards$ 4 | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill four cards. You may put a creature card from among them into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Creature.IsRemembered | SelectPrompt$ You may select a creature card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill\nOracle:When this artifact enters, draw a card.\\n{1}{B}, Sacrifice this artifact: Mill four cards. You may put a creature card from among them into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eerie Gravestone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jester-s-scepter-corpus-m682",
+  "description": "M6 corpus — Jester's Scepter; in-hand parse.",
+  "seed": 62958,
+  "cards": {
+    "Jester's Scepter": "Name:Jester's Scepter\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile the top five cards of target player's library face down. You may look at those cards for as long as they remain exiled.\nSVar:TrigExile:DB$ Dig | ValidTgts$ Player | DigNum$ 5 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True\nA:AB$ Counter | Cost$ 2 T ExiledMoveToGrave<1/Card.ExiledWithSource/card exiled with CARDNAME> | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | ConditionCheckSVar$ X | SpellDescription$ Counter target spell if it has the same name as that card.\nSVar:X:Targeted$Valid Card.sharesNameWith MovedToGrave\nAI:RemoveDeck:All\nOracle:When Jester's Scepter enters, exile the top five cards of target player's library face down. You may look at those cards for as long as they remain exiled.\\n{2}, {T}, Put a card exiled with Jester's Scepter into its owner's graveyard: Counter target spell if it has the same name as that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jester's Scepter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

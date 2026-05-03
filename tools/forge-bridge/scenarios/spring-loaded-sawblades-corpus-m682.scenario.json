@@ -1,0 +1,23 @@
+{
+  "id": "spring-loaded-sawblades-corpus-m682",
+  "description": "M6 corpus — Spring-Loaded Sawblades; in-hand parse.",
+  "seed": 64572,
+  "cards": {
+    "Spring-Loaded Sawblades": "Name:Spring-Loaded Sawblades\nManaCost:1 W\nTypes:Artifact\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 5 damage to target tapped creature an opponent controls.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Creature.tapped+OppCtrl | TgtPrompt$ Select target tapped creature an opponent controls | NumDmg$ 5\nK:Craft:3 W ExileCtrlOrGrave<1/Artifact.Other>\nDeckHints:Ability$Discard|Mill|Sacrifice & Type$Artifact\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:Flash\\nWhen Spring-Loaded Sawblades enters, it deals 5 damage to target tapped creature an opponent controls.\\nCraft with artifact {3}{W} ({3}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Bladewheel Chariot\nManaCost:no cost\nColors:white\nTypes:Artifact Vehicle\nPT:5/5\nA:AB$ Animate | Cost$ tapXType<2/Artifact.Other> | Types$ Artifact,Creature | SpellDescription$ CARDNAME becomes an artifact creature until end of turn.\nK:Crew:1\nOracle:Tap two other untapped artifacts you control: Bladewheel Chariot becomes an artifact creature until end of turn.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spring-Loaded Sawblades"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

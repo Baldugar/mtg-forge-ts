@@ -1,0 +1,23 @@
+{
+  "id": "yuma-proud-protector-corpus-m682",
+  "description": "M6 corpus — Yuma, Proud Protector; in-hand parse.",
+  "seed": 65301,
+  "cards": {
+    "Yuma, Proud Protector": "Name:Yuma, Proud Protector\nManaCost:5 R G W\nTypes:Legendary Creature Human Ranger\nPT:6/6\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Count$ValidGraveyard Land.YouOwn | EffectZone$ All | Description$ This spell costs {1} less to cast for each land card in your graveyard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, you may sacrifice a land. If you do, draw a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may sacrifice a land. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Land>\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Desert.!token+YouOwn | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a Desert card is put into your graveyard from anywhere, create a 4/2 green Plant Warrior creature token with reach.\nSVar:TrigToken:DB$ Token | TokenScript$ g_4_2_plant_warrior_reach\nDeckHas:Ability$Sacrifice|Token & Type$Plant|Warrior\nDeckHints:Ability$Discard|Sacrifice\nDeckNeeds:Type$Desert\nOracle:This spell costs {1} less to cast for each land card in your graveyard.\\nWhenever Yuma, Proud Protector enters or attacks, you may sacrifice a land. If you do, draw a card.\\nWhenever a Desert card is put into your graveyard from anywhere, create a 4/2 green Plant Warrior creature token with reach.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Yuma, Proud Protector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thunderclap-drake-corpus-m682",
+  "description": "M6 corpus — Thunderclap Drake; in-hand parse.",
+  "seed": 64868,
+  "cards": {
+    "Thunderclap Drake": "Name:Thunderclap Drake\nManaCost:1 U\nTypes:Creature Drake\nPT:2/1\nK:Flying\nS:Mode$ ReduceCost | ValidCard$ Instant,Sorcery | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Instant and sorcery spells you cast cost {1} less to cast.\nA:AB$ DelayedTrigger | Cost$ 2 U Sac<1/CARDNAME> | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy it for each time you've cast your commander from the command zone this game. You may choose new targets for the copies.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$TotalCommanderCastFromCommandZone\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Instant|Sorcery\nOracle:Flying\\nInstant and sorcery spells you cast cost {1} less to cast.\\n{2}{U}, Sacrifice Thunderclap Drake: When you cast your next instant or sorcery spell this turn, copy it for each time you've cast your commander from the command zone this game. You may choose new targets for the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thunderclap Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

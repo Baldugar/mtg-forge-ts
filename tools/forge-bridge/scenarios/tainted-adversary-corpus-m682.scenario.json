@@ -1,0 +1,23 @@
+{
+  "id": "tainted-adversary-corpus-m682",
+  "description": "M6 corpus — Tainted Adversary; in-hand parse.",
+  "seed": 64705,
+  "cards": {
+    "Tainted Adversary": "Name:Tainted Adversary\nManaCost:1 B\nTypes:Creature Zombie\nPT:2/3\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPay | TriggerDescription$ When CARDNAME enters, you may pay {2}{B} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then create twice that many black 2/2 Zombie creature tokens with decayed. (A creature with decayed can't block. When it attacks, sacrifice it at end of combat.)\nSVar:TrigPay:AB$ ImmediateTrigger | Cost$ Mana<2 B\\NumTimes> | Announce$ NumTimes | ConditionCheckSVar$ NumTimes | RememberSVarAmount$ NumTimes | Execute$ TrigPutCounter | TriggerDescription$ When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then create twice that many black 2/2 Zombie creature tokens with decayed. (A creature with decayed can't block. When it attacks, sacrifice it at end of combat.)\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie_decayed | TokenAmount$ SVar$X/Twice\nSVar:X:Count$TriggerRememberAmount\nAI:RemoveDeck:All\nDeckHas:Ability$Token|Counters\nOracle:Deathtouch\\nWhen Tainted Adversary enters, you may pay {2}{B} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on Tainted Adversary, then create twice that many black 2/2 Zombie creature tokens with decayed. (A creature with decayed can't block. When it attacks, sacrifice it at end of combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tainted Adversary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

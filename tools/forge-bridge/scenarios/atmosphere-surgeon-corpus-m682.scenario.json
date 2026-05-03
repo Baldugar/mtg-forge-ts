@@ -1,0 +1,23 @@
+{
+  "id": "atmosphere-surgeon-corpus-m682",
+  "description": "M6 corpus — Atmosphere Surgeon; in-hand parse.",
+  "seed": 61504,
+  "cards": {
+    "Atmosphere Surgeon": "Name:Atmosphere Surgeon\nManaCost:1 U\nTypes:Creature Phyrexian Wizard\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever you cast a noncreature spell, put an oil counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nA:AB$ Pump | Cost$ SubCounter<1/OIL> | SorcerySpeed$ True | KW$ Flying | ValidTgts$ Creature | SpellDescription$ Target creature gains flying until end of turn. Activate only as a sorcery.\nDeckHas:Keyword$Flying & Ability$Counters\nOracle:Whenever you cast a noncreature spell, put an oil counter on Atmosphere Surgeon.\\nRemove an oil counter from Atmosphere Surgeon: Target creature gains flying until end of turn. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Atmosphere Surgeon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

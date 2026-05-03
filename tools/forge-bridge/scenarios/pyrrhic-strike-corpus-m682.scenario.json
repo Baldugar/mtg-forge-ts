@@ -1,0 +1,23 @@
+{
+  "id": "pyrrhic-strike-corpus-m682",
+  "description": "M6 corpus — Pyrrhic Strike; in-hand parse.",
+  "seed": 63867,
+  "cards": {
+    "Pyrrhic Strike": "Name:Pyrrhic Strike\nManaCost:2 W\nTypes:Instant\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Blight<2> | Description$ As an additional cost to cast this spell, you may blight 2. (You may put two -1/-1 counters on a creature you control.)\nA:SP$ Charm | CharmNum$ X | Choices$ DBDestroy1,DBDestroy2 | AdditionalDescription$ . If this spell's additional cost was paid, choose both instead.\nSVar:DBDestroy1:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nSVar:DBDestroy2:DB$ Destroy | ValidTgts$ Creature.cmcGE3 | TgtPrompt$ Select target creature with mana value 3 or greater | SpellDescription$ Destroy target creature with mana value 3 or greater.\nSVar:X:Count$OptionalGenericCostPaid.2.1\nOracle:As an additional cost to cast this spell, you may blight 2. (You may put two -1/-1 counters on a creature you control.)\\nChoose one. If this spell's additional cost was paid, choose both instead.\\n• Destroy target artifact or enchantment.\\n• Destroy target creature with mana value 3 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyrrhic Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

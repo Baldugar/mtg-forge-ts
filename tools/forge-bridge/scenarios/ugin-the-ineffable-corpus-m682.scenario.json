@@ -1,0 +1,23 @@
+{
+  "id": "ugin-the-ineffable-corpus-m682",
+  "description": "M6 corpus — Ugin, the Ineffable; in-hand parse.",
+  "seed": 64999,
+  "cards": {
+    "Ugin, the Ineffable": "Name:Ugin, the Ineffable\nManaCost:6\nTypes:Legendary Planeswalker Ugin\nLoyalty:4\nS:Mode$ ReduceCost | ValidCard$ Card.Colorless | Type$ Spell | Activator$ You | Amount$ 2 | Description$ Colorless spells you cast cost {2} less to cast.\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | DigNum$ 1 | ChangeNum$ 1 | DestinationZone$ Exile | RememberChanged$ True | ExileFaceDown$ True | SubAbility$ DBToken | StackDescription$ SpellDescription | SpellDescription$ Exile the top card of your library face down and look at it. Create a 2/2 colorless Spirit creature token. When that token leaves the battlefield, put the exiled card into your hand.\nSVar:DBToken:DB$ Token | TokenScript$ c_2_2_spirit | ImprintTokens$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ TrigLeavesBattlefield | StaticAbilities$ MayLook | RememberObjects$ RememberedLKI | ForgetOnMoved$ Exile | ImprintCards$ Imprinted | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:TrigLeavesBattlefield:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsImprinted | Execute$ DBReturn | TriggerZones$ Command | TriggerDescription$ When that token leaves the battlefield, put the exiled card into your hand.\nSVar:DBReturn:DB$ ChangeZone | Defined$ RememberedLKI | Origin$ Exile | Destination$ Hand | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:MayLook:Mode$ Continuous | MayLookAt$ You | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may look at the exiled face-down card again any time you wish. If another player gains control of the Spirit token, that player can't look at the exiled card.\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | ValidTgts$ Permanent.nonColorless | TgtPrompt$ Select target permanent that's one or more colors | Planeswalker$ True | SpellDescription$ Destroy target permanent that's one or more colors.\nDeckHas:Ability$Token\nDeckHints:Color$Colorless\nOracle:Colorless spells you cast cost {2} less to cast.\\n[+1]: Exile the top card of your library face down and look at it. Create a 2/2 colorless Spirit creature token. When that token leaves the battlefield, put the exiled card into your hand.\\n[-3]: Destroy target permanent that's one or more colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ugin, the Ineffable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

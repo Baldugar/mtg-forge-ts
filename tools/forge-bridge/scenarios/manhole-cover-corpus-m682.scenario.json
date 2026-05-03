@@ -1,0 +1,23 @@
+{
+  "id": "manhole-cover-corpus-m682",
+  "description": "M6 corpus — Manhole Cover; in-hand parse.",
+  "seed": 63265,
+  "cards": {
+    "Manhole Cover": "Name:Manhole Cover\nManaCost:2\nTypes:Artifact\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this artifact enters, target creature gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ Indestructible\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME/this artifact> | ValidTgts$ Player | NumCards$ 1 | SpellDescription$ Target player draws a card.\nDeckHas:Ability$Sacrifice\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen this artifact enters, target creature gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\\n{2}, Sacrifice this artifact: Target player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Manhole Cover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

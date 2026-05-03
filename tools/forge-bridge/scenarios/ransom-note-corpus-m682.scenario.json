@@ -1,0 +1,23 @@
+{
+  "id": "ransom-note-corpus-m682",
+  "description": "M6 corpus — Ransom Note; in-hand parse.",
+  "seed": 63924,
+  "cards": {
+    "Ransom Note": "Name:Ransom Note\nManaCost:1\nTypes:Artifact Clue\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ Charm | Cost$ 2 Sac<1/CARDNAME> | Choices$ DBCloak,DBGoad,DBDraw\nSVar:DBCloak:DB$ Cloak | Defined$ TopOfLibrary | SpellDescription$ Cloak the top card of your library.\nSVar:DBGoad:DB$ Goad | ValidTgts$ Creature | SpellDescription$ Goad target creature.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:When Ransom Note enters, surveil 1.\\n{2}, Sacrifice Ransom Note: Choose one —\\n• Cloak the top card of your library.\\n• Goad target creature.\\n• Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ransom Note"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

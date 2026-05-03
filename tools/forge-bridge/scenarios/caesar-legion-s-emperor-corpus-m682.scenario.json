@@ -1,0 +1,23 @@
+{
+  "id": "caesar-legion-s-emperor-corpus-m682",
+  "description": "M6 corpus — Caesar, Legion's Emperor; in-hand parse.",
+  "seed": 61604,
+  "cards": {
+    "Caesar, Legion's Emperor": "Name:Caesar, Legion's Emperor\nManaCost:1 R W B\nTypes:Legendary Creature Human Soldier\nPT:4/4\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever you attack, you may sacrifice another creature. When you do, ABILITY\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | Execute$ TrigCharm | TriggerDescription$ When you do, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBDraw,DBDamage | CharmNum$ 2\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ rw_1_1_soldier_haste | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True | SpellDescription$ Create two 1/1 red and white Soldier creature tokens with haste that are tapped and attacking.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Opponent | NumDmg$ X | SpellDescription$ CARDNAME deals damage equal to the number of creature tokens you control to target opponent.\nSVar:X:Count$Valid Creature.token+YouCtrl\nDeckHas:Ability$Token|Sacrifice\nDeckHints:Ability$Token\nOracle:Whenever you attack, you may sacrifice another creature. When you do, choose two —\\n• Create two 1/1 red and white Soldier creature tokens with haste that are tapped and attacking.\\n• You draw a card and you lose 1 life.\\n• Caesar, Legion's Emperor deals damage equal to the number of creature tokens you control to target opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caesar, Legion's Emperor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "door-to-nothingness-corpus-m682",
+  "description": "M6 corpus — Door to Nothingness; in-hand parse.",
+  "seed": 62057,
+  "cards": {
+    "Door to Nothingness": "Name:Door to Nothingness\nManaCost:5\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ LosesGame | Cost$ W W U U B B R R G G T Sac<1/CARDNAME> | ValidTgts$ Player | SpellDescription$ Target player loses the game.\nAI:RemoveDeck:Random\nOracle:Door to Nothingness enters tapped.\\n{W}{W}{U}{U}{B}{B}{R}{R}{G}{G}, {T}, Sacrifice Door to Nothingness: Target player loses the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Door to Nothingness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

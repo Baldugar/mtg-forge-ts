@@ -1,0 +1,23 @@
+{
+  "id": "liliana-of-the-dark-realms-corpus-m682",
+  "description": "M6 corpus — Liliana of the Dark Realms; in-hand parse.",
+  "seed": 63157,
+  "cards": {
+    "Liliana of the Dark Realms": "Name:Liliana of the Dark Realms\nManaCost:2 B B\nTypes:Legendary Planeswalker Liliana\nLoyalty:3\nA:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Origin$ Library | Destination$ Hand | Planeswalker$ True | NumCards$ 1 | ChangeType$ Swamp | SpellDescription$ Search your library for a Swamp card, reveal it, put it into your hand, then shuffle.\nA:AB$ Pump | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | SubAbility$ ABChoice | SpellDescription$ Target creature gets +X/+X or -X/-X until end of turn, where X is the number of Swamps you control. | StackDescription$ Target creature gets +X/+X or -X/-X until end of turn, where X is the number of Swamps you control.\nA:AB$ Effect | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Liliana Of The Dark Realms | Image$ emblem_liliana_of_the_dark_realms | StaticAbilities$ SwampBoost | Stackable$ False | Duration$ Permanent | SpellDescription$ You get an emblem with \"Swamps you control have '{T}: Add {B}{B}{B}{B}.'\"\nSVar:X:Count$Valid Swamp.YouCtrl\nSVar:ABChoice:DB$ GenericChoice | Defined$ You | Choices$ ABPump1,ABPump2\nSVar:ABPump1:DB$ Pump | Defined$ Targeted | NumAtt$ +X | NumDef$ +X | SpellDescription$ Target creature gets +X/+X until end of turn, where X is the number of Swamps you control.\nSVar:ABPump2:DB$ Pump | Defined$ Targeted | NumAtt$ -X | NumDef$ -X | SpellDescription$ Target creature gets -X/-X until end of turn, where X is the number of Swamps you control.\nSVar:SwampBoost:Mode$ Continuous | Affected$ Swamp.YouCtrl | AffectedZone$ Battlefield | AddAbility$ BlackTap | Description$ Swamps you control have \"{T}: Add {B}{B}{B}{B}.\"\nSVar:BlackTap:AB$ Mana | Cost$ T | Produced$ B | Amount$ 4 | SpellDescription$ Add {B}{B}{B}{B}.\nOracle:[+1]: Search your library for a Swamp card, reveal it, put it into your hand, then shuffle.\\n[-3]: Target creature gets +X/+X or -X/-X until end of turn, where X is the number of Swamps you control.\\n[-6]: You get an emblem with \"Swamps you control have '{T}: Add {B}{B}{B}{B}.'\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana of the Dark Realms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "broodspinner-corpus-m682",
+  "description": "M6 corpus — Broodspinner; in-hand parse.",
+  "seed": 61572,
+  "cards": {
+    "Broodspinner": "Name:Broodspinner\nManaCost:B G\nTypes:Creature Spider\nPT:2/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on the top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nA:AB$ Token | Cost$ 4 B G T Sac<1/CARDNAME> | TokenAmount$ X | TokenScript$ bg_1_1_insect_flying | TokenOwner$ You | SpellDescription$ Create a number of 1/1 black and green Insect creature tokens with flying equal to the number of card types among cards in your graveyard.\nSVar:X:Count$ValidGraveyard Card.YouOwn$CardTypes\nDeckHas:Ability$Surveil|Graveyard\nOracle:Reach\\nWhen Broodspinner enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\\n{4}{B}{G}, {T}, Sacrifice Broodspinner: Create a number of 1/1 black and green Insect creature tokens with flying equal to the number of card types among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broodspinner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

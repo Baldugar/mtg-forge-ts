@@ -1,0 +1,23 @@
+{
+  "id": "famished-foragers-corpus-m682",
+  "description": "M6 corpus — Famished Foragers; in-hand parse.",
+  "seed": 62287,
+  "cards": {
+    "Famished Foragers": "Name:Famished Foragers\nManaCost:3 R\nTypes:Creature Vampire\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigMana | TriggerDescription$ When CARDNAME enters, if an opponent lost life this turn, add {R}{R}{R}.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ 3\nA:AB$ Draw | Cost$ 2 R Discard<1/Card> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:X:Count$LifeOppsLostThisTurn\nDeckHas:Ability$Discard\nOracle:When Famished Foragers enters, if an opponent lost life this turn, add {R}{R}{R}.\\n{2}{R}, Discard a card: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Famished Foragers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

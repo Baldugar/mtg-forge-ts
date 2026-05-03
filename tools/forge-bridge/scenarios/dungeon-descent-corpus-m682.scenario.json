@@ -1,0 +1,23 @@
+{
+  "id": "dungeon-descent-corpus-m682",
+  "description": "M6 corpus — Dungeon Descent; in-hand parse.",
+  "seed": 62113,
+  "cards": {
+    "Dungeon Descent": "Name:Dungeon Descent\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Venture | Cost$ 4 T tapXType<1/Creature.Legendary/legendary creature> | SorcerySpeed$ True | SpellDescription$ Venture into the dungeon. Activate only as a sorcery. (Enter the first room or advance to the next room.)\nOracle:Dungeon Descent enters tapped.\\n{T}: Add {C}.\\n{4}, {T}, Tap an untapped legendary creature you control: Venture into the dungeon. Activate only as a sorcery. (Enter the first room or advance to the next room.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dungeon Descent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

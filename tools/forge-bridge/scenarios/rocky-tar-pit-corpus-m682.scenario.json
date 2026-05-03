@@ -1,0 +1,23 @@
+{
+  "id": "rocky-tar-pit-corpus-m682",
+  "description": "M6 corpus — Rocky Tar Pit; in-hand parse.",
+  "seed": 64032,
+  "cards": {
+    "Rocky Tar Pit": "Name:Rocky Tar Pit\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ T Sac<1/CARDNAME> | Origin$ Library | Destination$ Battlefield | ChangeType$ Swamp,Mountain | SpellDescription$ Search your library for a Swamp or Mountain card, put it onto the battlefield, then shuffle.\nOracle:Rocky Tar Pit enters tapped.\\n{T}, Sacrifice Rocky Tar Pit: Search your library for a Swamp or Mountain card, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rocky Tar Pit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

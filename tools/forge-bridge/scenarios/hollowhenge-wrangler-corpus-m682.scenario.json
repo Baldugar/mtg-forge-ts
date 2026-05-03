@@ -1,0 +1,23 @@
+{
+  "id": "hollowhenge-wrangler-corpus-m682",
+  "description": "M6 corpus — Hollowhenge Wrangler; in-hand parse.",
+  "seed": 62781,
+  "cards": {
+    "Hollowhenge Wrangler": "Name:Hollowhenge Wrangler\nManaCost:3 G G\nTypes:Creature Elemental\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSeek | TriggerDescription$ When CARDNAME enters, seek a land card.\nSVar:TrigSeek:DB$ Seek | Type$ Card.Land\nA:AB$ MakeCard | Cost$ Discard<1/Land/land> | Conjure$ True | Name$ Hollowhenge Beast | Zone$ Hand | AdditionalActivationZone$ Graveyard | StackDescription$ Conjure a card named Hollowhenge Beast into your hand. | SpellDescription$ Conjure a card named Hollowhenge Beast into your hand. You may also activate this ability while CARDNAME is in your graveyard.\nDeckHas:Ability$Discard\nOracle:When Hollowhenge Wrangler enters, seek a land card.\\nDiscard a land card: Conjure a card named Hollowhenge Beast into your hand. You may also activate this ability while Hollowhenge Wrangler is in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hollowhenge Wrangler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

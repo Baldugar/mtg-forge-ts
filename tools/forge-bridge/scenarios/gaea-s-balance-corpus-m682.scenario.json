@@ -1,0 +1,23 @@
+{
+  "id": "gaea-s-balance-corpus-m682",
+  "description": "M6 corpus — Gaea's Balance; in-hand parse.",
+  "seed": 62446,
+  "cards": {
+    "Gaea's Balance": "Name:Gaea's Balance\nManaCost:3 G\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ 3 G Sac<5/Land> | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains | SubAbility$ DBIsland | Shuffle$ False | SpellDescription$ Search your library for a land card of each basic land type, put those cards onto the battlefield, then shuffle.\nSVar:DBIsland:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Island | SubAbility$ DBMountain | Shuffle$ False\nSVar:DBMountain:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Mountain | SubAbility$ DBSwamp | Shuffle$ False\nSVar:DBSwamp:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Swamp | SubAbility$ DBForest | Shuffle$ False\nSVar:DBForest:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Forest | SubAbility$ DBShuffle | Shuffle$ False\nSVar:DBShuffle:DB$ Shuffle\nAI:RemoveDeck:Random\nOracle:As an additional cost to cast this spell, sacrifice five lands.\\nSearch your library for a land card of each basic land type, put those cards onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gaea's Balance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

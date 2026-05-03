@@ -1,0 +1,23 @@
+{
+  "id": "quilled-greatwurm-corpus-m682",
+  "description": "M6 corpus — Quilled Greatwurm; in-hand parse.",
+  "seed": 63884,
+  "cards": {
+    "Quilled Greatwurm": "Name:Quilled Greatwurm\nManaCost:4 G G\nTypes:Creature Wurm\nPT:7/7\nK:Trample\nT:Mode$ DamageDealtOnce | CombatDamage$ True | PlayerTurn$ True | TriggerZones$ Battlefield | ValidSource$ Creature.YouCtrl | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature you control deals combat damage during your turn, put that many +1/+1 counters on it. (It must survive to get the counters.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ TriggeredSourceLKICopy | CounterType$ P1P1 | CounterNum$ X\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Graveyard | EffectZone$ Graveyard | RaiseCost$ RemoveAnyCounter<6/Any/Creature> | Description$ You may cast this card from your graveyard by removing six counters from among creatures you control in addition to paying its other costs.\nSVar:X:TriggerCount$DamageAmount\nOracle:Trample\\nWhenever a creature you control deals combat damage during your turn, put that many +1/+1 counters on it. (It must survive to get the counters.)\\nYou may cast this card from your graveyard by removing six counters from among creatures you control in addition to paying its other costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quilled Greatwurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

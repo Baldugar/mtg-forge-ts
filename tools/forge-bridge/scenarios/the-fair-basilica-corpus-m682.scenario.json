@@ -1,0 +1,23 @@
+{
+  "id": "the-fair-basilica-corpus-m682",
+  "description": "M6 corpus — The Fair Basilica; in-hand parse.",
+  "seed": 64799,
+  "cards": {
+    "The Fair Basilica": "Name:The Fair Basilica\nManaCost:no cost\nTypes:Land Sphere\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Draw | Cost$ 1 W T Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:The Fair Basilica enters tapped.\\n{T}: Add {W}.\\n{1}{W}, {T}, Sacrifice The Fair Basilica: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fair Basilica"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

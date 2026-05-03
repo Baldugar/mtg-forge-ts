@@ -1,0 +1,23 @@
+{
+  "id": "riptide-entrancer-corpus-m682",
+  "description": "M6 corpus — Riptide Entrancer; in-hand parse.",
+  "seed": 64019,
+  "cards": {
+    "Riptide Entrancer": "Name:Riptide Entrancer\nManaCost:1 U U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGainControl | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may sacrifice it. If you do, gain control of target creature that player controls. (This effect lasts indefinitely.)\nSVar:TrigGainControl:AB$ GainControl | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature.ControlledBy TriggeredTarget | TgtPrompt$ Select target creature that player controls\nK:Morph:U U\nOracle:Whenever Riptide Entrancer deals combat damage to a player, you may sacrifice it. If you do, gain control of target creature that player controls. (This effect lasts indefinitely.)\\nMorph {U}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riptide Entrancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

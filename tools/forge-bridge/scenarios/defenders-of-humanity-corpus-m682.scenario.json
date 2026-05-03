@@ -1,0 +1,23 @@
+{
+  "id": "defenders-of-humanity-corpus-m682",
+  "description": "M6 corpus — Defenders of Humanity; in-hand parse.",
+  "seed": 61962,
+  "cards": {
+    "Defenders of Humanity": "Name:Defenders of Humanity\nManaCost:X 2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create X 2/2 white Astartes Warrior creature tokens with vigilance.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_2_2_astartes_warrior_vigilance | TokenOwner$ You\nA:AB$ Token | Cost$ X 2 W Exile<1/CARDNAME> | IsPresent$ Creature.YouCtrl | PlayerTurn$ True | PresentCompare$ EQ0 | ActivationZone$ Battlefield | TokenAmount$ X | TokenScript$ w_2_2_astartes_warrior_vigilance | TokenOwner$ You | SpellDescription$ Create X 2/2 white Astartes Warrior creature tokens with vigilance. Activate only if you control no creatures and only during your turn.\nSVar:X:Count$xPaid\nDeckHas:Ability$Token|LifeGain & Type$Astartes|Soldier & Keyword$Vigilance\nOracle:When Defenders of Humanity enters, create X 2/2 white Astartes Warrior creature tokens with vigilance.\\n{X}{2}{W}, Exile Defenders of Humanity: Create X 2/2 white Astartes Warrior creature tokens with vigilance. Activate only if you control no creatures and only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defenders of Humanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "psychic-allergy-corpus-m682",
+  "description": "M6 corpus — Psychic Allergy; in-hand parse.",
+  "seed": 63845,
+  "cards": {
+    "Psychic Allergy": "Name:Psychic Allergy\nManaCost:3 U U\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInHumanDeck\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDamageOpp | TriggerDescription$ At the beginning of each opponent's upkeep, CARDNAME deals X damage to that player, where X is the number of nontoken permanents of the chosen color they control.\nSVar:TrigDamageOpp:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$Valid Permanent.ActivePlayerCtrl+ChosenColor+!token\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ At the beginning of your upkeep, destroy CARDNAME unless you sacrifice two Islands.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Self | UnlessPayer$ You | UnlessCost$ Sac<2/Island>\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:As Psychic Allergy enters, choose a color.\\nAt the beginning of each opponent's upkeep, Psychic Allergy deals X damage to that player, where X is the number of nontoken permanents of the chosen color they control.\\nAt the beginning of your upkeep, destroy Psychic Allergy unless you sacrifice two Islands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Allergy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

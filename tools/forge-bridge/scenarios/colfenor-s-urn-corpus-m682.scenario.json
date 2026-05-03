@@ -1,0 +1,23 @@
+{
+  "id": "colfenor-s-urn-corpus-m682",
+  "description": "M6 corpus — Colfenor's Urn; in-hand parse.",
+  "seed": 61779,
+  "cards": {
+    "Colfenor's Urn": "Name:Colfenor's Urn\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | ValidCard$ Creature.toughnessGE4+YouOwn | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Whenever a creature with toughness 4 or greater is put into your graveyard from the battlefield, you may exile it.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredNewCardLKICopy\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigReturnAll | TriggerDescription$ At the beginning of the end step, if three or more cards have been exiled with CARDNAME, sacrifice it. If you do, return those cards to the battlefield under their owner's control.\nSVar:TrigReturnAll:AB$ ChangeZone | Cost$ Mandatory Sac<1/CARDNAME> | Defined$ ExiledWith | Origin$ Exile | Destination$ Battlefield\nSVar:X:ExiledWith$Amount\nOracle:Whenever a creature with toughness 4 or greater is put into your graveyard from the battlefield, you may exile it.\\nAt the beginning of the end step, if three or more cards have been exiled with Colfenor's Urn, sacrifice it. If you do, return those cards to the battlefield under their owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colfenor's Urn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

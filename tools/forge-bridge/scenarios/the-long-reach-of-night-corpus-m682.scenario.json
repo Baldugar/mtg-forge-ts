@@ -1,0 +1,23 @@
+{
+  "id": "the-long-reach-of-night-corpus-m682",
+  "description": "M6 corpus — The Long Reach of Night; in-hand parse.",
+  "seed": 64815,
+  "cards": {
+    "The Long Reach of Night": "Name:The Long Reach of Night\nManaCost:3 B\nTypes:Enchantment Saga\nK:Chapter:3:DBEachOpp,DBEachOpp,DBTransform\nSVar:DBEachOpp:DB$ RepeatEach | RepeatSubAbility$ DBSac | RepeatPlayers$ Opponent | SpellDescription$ Each opponent sacrifices a creature unless they discard a card.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Creature | Defined$ Player.IsRemembered | UnlessCost$ Discard<1/Card> | UnlessPayer$ Remembered\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice|Discard\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Each opponent sacrifices a creature unless they discard a card.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Animus of Night's Reach\nManaCost:no cost\nColors:black\nTypes:Enchantment Creature Spirit\nPT:0/4\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the number of creature cards in defending player's graveyard.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$ValidGraveyard Creature.ControlledBy TriggeredDefendingPlayer\nSVar:HasAttackEffect:TRUE\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhenever Animus of Night's Reach attacks, it gets +X/+0 until end of turn, where X is the number of creature cards in defending player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Long Reach of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

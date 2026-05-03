@@ -1,0 +1,23 @@
+{
+  "id": "memorial-to-war-corpus-m682",
+  "description": "M6 corpus — Memorial to War; in-hand parse.",
+  "seed": 63327,
+  "cards": {
+    "Memorial to War": "Name:Memorial to War\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Destroy | Cost$ 4 R T Sac<1/CARDNAME> | ValidTgts$ Land | SpellDescription$ Destroy target land.\nOracle:Memorial to War enters tapped.\\n{T}: Add {R}.\\n{4}{R}, {T}, Sacrifice Memorial to War: Destroy target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memorial to War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

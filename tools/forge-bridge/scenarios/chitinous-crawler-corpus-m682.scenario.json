@@ -1,0 +1,23 @@
+{
+  "id": "chitinous-crawler-corpus-m682",
+  "description": "M6 corpus — Chitinous Crawler; in-hand parse.",
+  "seed": 61729,
+  "cards": {
+    "Chitinous Crawler": "Name:Chitinous Crawler\nManaCost:2 B B\nTypes:Creature Insect Horror\nPT:4/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigConjure | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, choose target creature card in your graveyard. Conjure a duplicate of it into your graveyard.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouOwn | TgtZone$ Graveyard | DefinedName$ Targeted | Zone$ Graveyard\nA:AB$ Play | PrecostDesc$ Descend 8 | Cost$ ExileFromGrave<1/Permanent> | Defined$ ExiledCards | ValidSA$ Spell | SorcerySpeed$ True | IsPresent$ Permanent.YouOwn | PresentZone$ Graveyard | PresentCompare$ GE8 | SpellDescription$ You may play it. Activate only as a sorcery and only if there are eight or more permanent cards in your graveyard.\nDeckHints:Ability$Sacrifice|Discard|Mill|Dredge|Graveyard\nDeckHas:Ability$Discard|Mill\nOracle:At the beginning of combat on your turn, choose target creature card in your graveyard. Conjure a duplicate of it into your graveyard.\\nDescend 8 — Exile a permanent card from your graveyard: You may play it. Activate only as a sorcery and only if there are eight or more permanent cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chitinous Crawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

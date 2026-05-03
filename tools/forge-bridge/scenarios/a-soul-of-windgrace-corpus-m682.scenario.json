@@ -1,0 +1,23 @@
+{
+  "id": "a-soul-of-windgrace-corpus-m682",
+  "description": "M6 corpus — A-Soul of Windgrace; in-hand parse.",
+  "seed": 64117,
+  "cards": {
+    "A-Soul of Windgrace": "Name:A-Soul of Windgrace\nManaCost:1 B R G\nTypes:Legendary Creature Cat Avatar\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | OptionalDecider$ You | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Whenever CARDNAME enters or attacks, you may put a land card from a graveyard onto the battlefield tapped under your control.\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChangeZone | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may put a land card from a graveyard onto the battlefield tapped under your control.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Tapped$ True | Hidden$ True | ChangeType$ Land\nA:AB$ GainLife | Cost$ G Discard<1/Land> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nA:AB$ Draw | Cost$ R Discard<1/Land> | SpellDescription$ Draw a card.\nA:AB$ Pump | Cost$ B Discard<1/Land> | KW$ Indestructible | SubAbility$ DBTap | StackDescription$ SpellDescription | SpellDescription$ CARDNAME gains indestructible until end of turn.\nSVar:DBTap:DB$ Tap | Defined$ Self | StackDescription$ SpellDescription | SpellDescription$ Tap it.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain|Discard|Graveyard & Keyword$Indestructible\nOracle:Whenever Soul of Windgrace enters or attacks, you may put a land card from a graveyard onto the battlefield tapped under your control.\\n{G}, Discard a land card: You gain 3 life.\\n{R}, Discard a land card: Draw a card.\\n{B}, Discard a land card: Soul of Windgrace gains indestructible until end of turn. Tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Soul of Windgrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

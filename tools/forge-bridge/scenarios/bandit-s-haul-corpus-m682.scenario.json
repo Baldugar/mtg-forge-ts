@@ -1,0 +1,23 @@
+{
+  "id": "bandit-s-haul-corpus-m682",
+  "description": "M6 corpus — Bandit's Haul; in-hand parse.",
+  "seed": 61520,
+  "cards": {
+    "Bandit's Haul": "Name:Bandit's Haul\nManaCost:3\nTypes:Artifact\nT:Mode$ CommitCrime | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoot | ActivationLimit$ 1 | TriggerDescription$ Whenever you commit a crime, put a loot counter on CARDNAME. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\nSVar:TrigLoot:DB$ PutCounter | Defined$ Self | CounterType$ LOOT | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Draw | Cost$ 2 T SubCounter<2/LOOT> | SpellDescription$ Draw a card.\nOracle:Whenever you commit a crime, put a loot counter on Bandit's Haul. This ability triggers only once each turn. (Targeting opponents, anything they control, and/or cards in their graveyards is a crime.)\\n{T}: Add one mana of any color.\\n{2}, {T}, Remove two loot counters from Bandit's Haul: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bandit's Haul"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

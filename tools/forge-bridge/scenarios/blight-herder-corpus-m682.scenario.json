@@ -1,0 +1,23 @@
+{
+  "id": "blight-herder-corpus-m682",
+  "description": "M6 corpus — Blight Herder; in-hand parse.",
+  "seed": 61544,
+  "cards": {
+    "Blight Herder": "Name:Blight Herder\nManaCost:5\nTypes:Creature Eldrazi Processor\nPT:4/5\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigToken | OptionalDecider$ You | TriggerDescription$ When you cast this spell, you may put two cards your opponents own from exile into their owners' graveyards. If you do, create three 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:AB$ Token | Cost$ ExiledMoveToGrave<2/Card.OppOwn/cards your opponents own> | TokenAmount$ 3 | TokenScript$ c_1_1_eldrazi_scion_sac | TokenOwner$ You\nDeckHints:Keyword$Ingest & Type$Eldrazi\nDeckHas:Ability$Mana.Colorless|Token\nOracle:When you cast this spell, you may put two cards your opponents own from exile into their owners' graveyards. If you do, create three 1/1 colorless Eldrazi Scion creature tokens. They have \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blight Herder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

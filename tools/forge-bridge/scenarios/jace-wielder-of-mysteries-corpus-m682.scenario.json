@@ -1,0 +1,23 @@
+{
+  "id": "jace-wielder-of-mysteries-corpus-m682",
+  "description": "M6 corpus — Jace, Wielder of Mysteries; in-hand parse.",
+  "seed": 62934,
+  "cards": {
+    "Jace, Wielder of Mysteries": "Name:Jace, Wielder of Mysteries\nManaCost:1 U U U\nTypes:Legendary Planeswalker Jace\nLoyalty:4\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | IsPresent$ Card.YouOwn | PresentZone$ Library | PresentCompare$ EQ0 | ReplaceWith$ Win | Description$ If you would draw a card while your library has no cards in it, you win the game instead.\nSVar:Win:DB$ WinsGame | Defined$ You\nA:AB$ Mill | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBDraw | SpellDescription$ Target player mills two cards. Draw a card.\nSVar:DBDraw:DB$ Draw\nA:AB$ Draw | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | NumCards$ 7 | SubAbility$ WinGame | SpellDescription$ Draw seven cards. Then if your library has no cards in it, you win the game.\nSVar:WinGame:DB$ WinsGame | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0\nSVar:X:Count$ValidLibrary Card.YouOwn\nAI:RemoveDeck:Random\nOracle:If you would draw a card while your library has no cards in it, you win the game instead.\\n[+1]: Target player mills two cards. Draw a card.\\n[-8]: Draw seven cards. Then if your library has no cards in it, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, Wielder of Mysteries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

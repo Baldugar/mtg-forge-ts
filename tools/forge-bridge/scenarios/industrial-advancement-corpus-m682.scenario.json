@@ -1,0 +1,23 @@
+{
+  "id": "industrial-advancement-corpus-m682",
+  "description": "M6 corpus — Industrial Advancement; in-hand parse.",
+  "seed": 62869,
+  "cards": {
+    "Industrial Advancement": "Name:Industrial Advancement\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, you may sacrifice a creature. If you do, look at the top X cards of your library, where X is that creature's mana value. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:AB$ Dig | Cost$ Sac<1/Creature> | ForceRevealToController$ True | DigNum$ X | Optional$ True | DestinationZone$ Battlefield | ChangeValid$ Creature | AILogic$ SacAndUpgrade | RestRandomOrder$ True\nSVar:X:Sacrificed$CardManaCost\nSVar:AIPreference:SacCost$Creature.!token+cmcGE1\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your end step, you may sacrifice a creature. If you do, look at the top X cards of your library, where X is that creature's mana value. You may put a creature card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Industrial Advancement"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

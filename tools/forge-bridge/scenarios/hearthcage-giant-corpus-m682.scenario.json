@@ -1,0 +1,23 @@
+{
+  "id": "hearthcage-giant-corpus-m682",
+  "description": "M6 corpus — Hearthcage Giant; in-hand parse.",
+  "seed": 62723,
+  "cards": {
+    "Hearthcage Giant": "Name:Hearthcage Giant\nManaCost:6 R R\nTypes:Creature Giant Warrior\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 3/1 red Elemental Shaman creature tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ r_3_1_elemental_shaman | TokenOwner$ You | TokenAmount$ 2\nA:AB$ Pump | Cost$ Sac<1/Elemental> | ValidTgts$ Creature.Giant | TgtPrompt$ Select target Giant creature | NumAtt$ +3 | NumDef$ +1 | SpellDescription$ Target Giant creature gets +3/+1 until end of turn.\nOracle:When Hearthcage Giant enters, create two 3/1 red Elemental Shaman creature tokens.\\nSacrifice an Elemental: Target Giant creature gets +3/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hearthcage Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dross-skullbomb-corpus-m682",
+  "description": "M6 corpus — Dross Skullbomb; in-hand parse.",
+  "seed": 62101,
+  "cards": {
+    "Dross Skullbomb": "Name:Dross Skullbomb\nManaCost:1\nTypes:Artifact\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nA:AB$ ChangeZone | Cost$ 2 B Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SorcerySpeed$ True | SubAbility$ DBDraw | SpellDescription$ Return target creature card from your graveyard to your hand. Draw a card. Activate only as a sorcery.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Sacrifice|Graveyard\nDeckNeeds:Color$Black\nOracle:{1}, Sacrifice Dross Skullbomb: Draw a card.\\n{2}{B}, Sacrifice Dross Skullbomb: Return target creature card from your graveyard to your hand. Draw a card. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dross Skullbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

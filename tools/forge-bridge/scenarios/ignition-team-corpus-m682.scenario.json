@@ -1,0 +1,23 @@
+{
+  "id": "ignition-team-corpus-m682",
+  "description": "M6 corpus — Ignition Team; in-hand parse.",
+  "seed": 62832,
+  "cards": {
+    "Ignition Team": "Name:Ignition Team\nManaCost:5 R R\nTypes:Creature Goblin Warrior\nPT:0/0\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with X +1/+1 counters on it, where X is the number of tapped lands on the battlefield.\nSVar:X:Count$Valid Land.tapped\nA:AB$ Animate | Cost$ 2 R SubCounter<1/P1P1> | ValidTgts$ Land | Power$ 4 | Toughness$ 4 | Types$ Creature,Elemental | Colors$ Red | OverwriteColors$ True | SpellDescription$ Target land becomes a 4/4 red Elemental creature until end of turn. It's still a land.\nAI:RemoveDeck:All\nOracle:Ignition Team enters with X +1/+1 counters on it, where X is the number of tapped lands on the battlefield.\\n{2}{R}, Remove a +1/+1 counter from Ignition Team: Target land becomes a 4/4 red Elemental creature until end of turn. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ignition Team"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "overtaker-corpus-m682",
+  "description": "M6 corpus — Overtaker; in-hand parse.",
+  "seed": 63678,
+  "cards": {
+    "Overtaker": "Name:Overtaker\nManaCost:1 U\nTypes:Creature Merfolk Spellshaper\nPT:1/1\nA:AB$ Untap | Cost$ 3 U T Discard<1/Card> | ValidTgts$ Creature | SubAbility$ DBChange | SpellDescription$ Untap target creature and gain control of it until end of turn. That creature gains haste until end of turn.\nSVar:DBChange:DB$ GainControl | Defined$ Targeted | AddKWs$ Haste | LoseControl$ EOT\nAI:RemoveDeck:All\nOracle:{3}{U}, {T}, Discard a card: Untap target creature and gain control of it until end of turn. That creature gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overtaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

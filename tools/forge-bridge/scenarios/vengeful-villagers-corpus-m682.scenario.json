@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-villagers-corpus-m682",
+  "description": "M6 corpus — Vengeful Villagers; in-hand parse.",
+  "seed": 65080,
+  "cards": {
+    "Vengeful Villagers": "Name:Vengeful Villagers\nManaCost:3 W\nTypes:Creature Human Citizen\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, choose target creature an opponent controls. Tap it, then you may sacrifice an artifact or creature. If you do, put a stun counter on the chosen creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | UnlessCost$ Sac<1/Artifact;Creature/artifact or creature> | UnlessPayer$ You | UnlessSwitched$ True | Defined$ Targeted | CounterType$ Stun | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever this creature attacks, choose target creature an opponent controls. Tap it, then you may sacrifice an artifact or creature. If you do, put a stun counter on the chosen creature. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Villagers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

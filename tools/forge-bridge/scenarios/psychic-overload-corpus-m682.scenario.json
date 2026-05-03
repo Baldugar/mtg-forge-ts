@@ -1,0 +1,23 @@
+{
+  "id": "psychic-overload-corpus-m682",
+  "description": "M6 corpus — Psychic Overload; in-hand parse.",
+  "seed": 63847,
+  "cards": {
+    "Psychic Overload": "Name:Psychic Overload\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Permanent\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted permanent.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted permanent doesn't untap during its controller's untap step.\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ Untap | Description$ Enchanted permanent has \"Discard two artifact cards: Untap this permanent.\"\nSVar:Untap:AB$ Untap | Cost$ Discard<2/Artifact> | Defined$ Self | SpellDescription$ Untap CARDNAME.\nOracle:Enchant permanent\\nWhen this Aura enters, tap enchanted permanent.\\nEnchanted permanent doesn't untap during its controller's untap step.\\nEnchanted permanent has \"Discard two artifact cards: Untap this permanent.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Psychic Overload"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

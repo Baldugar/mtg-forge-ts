@@ -1,0 +1,23 @@
+{
+  "id": "cryptex-corpus-m682",
+  "description": "M6 corpus — Cryptex; in-hand parse.",
+  "seed": 61882,
+  "cards": {
+    "Cryptex": "Name:Cryptex\nManaCost:2\nTypes:Artifact\nA:AB$ Mana | Cost$ T CollectEvidence<3> | Produced$ Any | SubAbility$ DBPutCounter | SpellDescription$ Add one mana of any color. Put an unlock counter on CARDNAME. (To collect evidence 3, exile cards with total mana value 3 or greater from your graveyard.)\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ UNLOCK\nA:AB$ Surveil | Cost$ Sac<1/CARDNAME> | Amount$ 3 | SubAbility$ DBDraw | IsPresent$ Card.Self+counters_GE5_UNLOCK | SpellDescription$ Surveil 3, then draw three cards. Activate only if CARDNAME has five or more unlock counters on it.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 3\nDeckHints:Ability$Graveyard|Mill|Discard|Dredge\nDeckHas:Ability$Counters|Sacrifice|Surveil\nOracle:{T}, Collect evidence 3: Add one mana of any color. Put an unlock counter on Cryptex. (To collect evidence 3, exile cards with total mana value 3 or greater from your graveyard.)\\nSacrifice Cryptex: Surveil 3, then draw three cards. Activate only if Cryptex has five or more unlock counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryptex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

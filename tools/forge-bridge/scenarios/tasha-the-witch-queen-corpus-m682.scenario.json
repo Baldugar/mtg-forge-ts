@@ -1,0 +1,23 @@
+{
+  "id": "tasha-the-witch-queen-corpus-m682",
+  "description": "M6 corpus — Tasha, the Witch Queen; in-hand parse.",
+  "seed": 64721,
+  "cards": {
+    "Tasha, the Witch Queen": "Name:Tasha, the Witch Queen\nManaCost:3 U B\nTypes:Legendary Planeswalker Tasha\nLoyalty:4\nText:CARDNAME can be your commander.\nT:Mode$ SpellCast | ValidCard$ Card.YouDontOwn | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell you don't own, create a 3/3 black Demon creature token.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ b_3_3_demon\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | NumCards$ 1 | SubAbility$ DBExileForEach | SpellDescription$ Draw a card. For each opponent, exile up to one target instant or sorcery card from that player's graveyard and put a page counter on it.\nSVar:DBExileForEach:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Instant.OppCtrl,Sorcery.OppCtrl | TgtPrompt$ Choose up to one target instant or sorcery card in each opponent's graveyard | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | WithCountersType$ PAGE\nSVar:OneEach:PlayerCountOpponents$Amount\nA:AB$ Play | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Valid$ Card.counters_GE1_PAGE | ValidZone$ Exile | WithoutManaCost$ True | ValidSA$ Spell | Amount$ 1 | Controller$ You | Optional$ True | SpellDescription$ You may cast a spell from among cards in exile with page counters on them without paying its mana cost.\nDeckHas:Ability$Token & Type$Demon\nOracle:Whenever you cast a spell you don't own, create a 3/3 black Demon creature token.\\n[+1]: Draw a card. For each opponent, exile up to one target instant or sorcery card from that player's graveyard and put a page counter on it.\\n[-3]: You may cast a spell from among cards in exile with page counters on them without paying its mana cost.\\nTasha, the Witch Queen can be your commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tasha, the Witch Queen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

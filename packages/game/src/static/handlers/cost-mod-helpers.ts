@@ -147,7 +147,22 @@ export const buildAmountResolver = (
 const parseCostParamSymbols = (param: ParamValue | undefined): readonly ManaSymbol[] | undefined => {
   const raw = isLiteralRaw(param);
   if (raw === undefined) return undefined;
-  const parsed = ManaCost.parse(raw);
+  // M6.82 — Forge's RaiseCost / ReduceCost Cost$ field can carry alt-cost
+  // expressions (Discard<X/Creature/creature(s)>, Sac<1/Land>, tapXType<>,
+  // BeholdExile<>, etc.) in addition to mana-symbol pips. Those are
+  // additional non-mana costs that the cost modifier doesn't translate
+  // into pip add/subtract; return [] so the apply side stays inert
+  // for non-mana-only modifiers. Mana-symbol pips still parse normally.
+  if (/<[^>]*\/[^>]*>/.test(raw) || /^[A-Za-z][A-Za-z]*</.test(raw)) {
+    return [];
+  }
+  let parsed: ReturnType<typeof ManaCost.parse>;
+  try {
+    parsed = ManaCost.parse(raw);
+  } catch {
+    // Unrecognized cost-string token — defensive: yield no pip changes.
+    return [];
+  }
   // ManaCost.symbols is the canonical list including a generic-amount
   // symbol if present. We expand the generic symbol into N individual
   // generic-1 entries so the apply-side can subtract / add them

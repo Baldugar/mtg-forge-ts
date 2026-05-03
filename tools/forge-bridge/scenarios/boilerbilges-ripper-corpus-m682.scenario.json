@@ -1,0 +1,23 @@
+{
+  "id": "boilerbilges-ripper-corpus-m682",
+  "description": "M6 corpus — Boilerbilges Ripper; in-hand parse.",
+  "seed": 61558,
+  "cards": {
+    "Boilerbilges Ripper": "Name:Boilerbilges Ripper\nManaCost:4 R\nTypes:Creature Human Assassin\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature or enchantment. When you do, CARDNAME deals 2 damage to any target.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other;Enchantment.Other/another creature or enchantment> | Execute$ TrigDealDamage | TriggerDescription$ When you do, CARDNAME deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nOracle:When Boilerbilges Ripper enters, you may sacrifice another creature or enchantment. When you do, Boilerbilges Ripper deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boilerbilges Ripper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

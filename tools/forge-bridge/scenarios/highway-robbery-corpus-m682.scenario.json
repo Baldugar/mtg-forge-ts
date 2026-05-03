@@ -1,0 +1,23 @@
+{
+  "id": "highway-robbery-corpus-m682",
+  "description": "M6 corpus — Highway Robbery; in-hand parse.",
+  "seed": 62770,
+  "cards": {
+    "Highway Robbery": "Name:Highway Robbery\nManaCost:1 R\nTypes:Sorcery\nA:SP$ GenericChoice | Choices$ DBDiscardToDraw,DBSacToDraw | SpellDescription$ You may discard a card or sacrifice a land. If you do, draw two cards.\nSVar:DBSacToDraw:DB$ Draw | UnlessCost$ Sac<1/Land> | NumCards$ 2 | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ Sacrifice a land. If you do, draw two cards.\nSVar:DBDiscardToDraw:DB$ Draw | UnlessCost$ Discard<1/Card> | NumCards$ 2 | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ Discard a card. If you do, draw two cards.\nK:Plot:1 R\nDeckHas:Ability$Sacrifice|Discard\nOracle:You may discard a card or sacrifice a land. If you do, draw two cards.\\nPlot {1}{R} (You may pay {1}{R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Highway Robbery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

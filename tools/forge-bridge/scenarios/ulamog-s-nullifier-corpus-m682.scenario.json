@@ -1,0 +1,23 @@
+{
+  "id": "ulamog-s-nullifier-corpus-m682",
+  "description": "M6 corpus — Ulamog's Nullifier; in-hand parse.",
+  "seed": 65005,
+  "cards": {
+    "Ulamog's Nullifier": "Name:Ulamog's Nullifier\nManaCost:2 U B\nTypes:Creature Eldrazi Processor\nPT:2/3\nK:Devoid\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigProcess | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put two cards your opponents own from exile into their owners' graveyards. If you do, counter target spell.\nSVar:TrigProcess:AB$ Counter | Cost$ ExiledMoveToGrave<2/Card.OppOwn/card an opponent owns> | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell\nDeckHints:Keyword$Ingest\nOracle:Devoid (This card has no color.)\\nFlash\\nFlying\\nWhen Ulamog's Nullifier enters, you may put two cards your opponents own from exile into their owners' graveyards. If you do, counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulamog's Nullifier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

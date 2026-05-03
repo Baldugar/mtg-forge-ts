@@ -1,0 +1,23 @@
+{
+  "id": "underworld-coinsmith-corpus-m682",
+  "description": "M6 corpus — Underworld Coinsmith; in-hand parse.",
+  "seed": 65025,
+  "cards": {
+    "Underworld Coinsmith": "Name:Underworld Coinsmith\nManaCost:W B\nTypes:Enchantment Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigGainLife | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ LoseLife | Cost$ W B PayLife<1> | Defined$ Player.Opponent | LifeAmount$ 1 | SpellDescription$ Each Opponent Loses 1 life.\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Underworld Coinsmith or another enchantment you control enters, you gain 1 life.\\n{W}{B}, Pay 1 life: Each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underworld Coinsmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

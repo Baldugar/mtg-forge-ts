@@ -1,0 +1,23 @@
+{
+  "id": "whisperwood-elemental-corpus-m682",
+  "description": "M6 corpus — Whisperwood Elemental; in-hand parse.",
+  "seed": 65235,
+  "cards": {
+    "Whisperwood Elemental": "Name:Whisperwood Elemental\nManaCost:3 G G\nTypes:Creature Elemental\nPT:4/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigManifest | TriggerDescription$ At the beginning of your end step, manifest the top card of your library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\nSVar:TrigManifest:DB$ Manifest\nA:AB$ AnimateAll | Cost$ Sac<1/CARDNAME> | ValidCards$ Creature.YouCtrl+!token+faceUp | Triggers$ Trig | SpellDescription$ Until end of turn, face-up, nontoken creatures you control gain \"When this creature dies, manifest the top card of your library.\"\nSVar:Trig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigManifest | TriggerDescription$ When this creature dies, manifest the top card of your library.\nOracle:At the beginning of your end step, manifest the top card of your library. (Put it onto the battlefield face down as a 2/2 creature. Turn it face up any time for its mana cost if it's a creature card.)\\nSacrifice Whisperwood Elemental: Until end of turn, face-up nontoken creatures you control gain \"When this creature dies, manifest the top card of your library.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whisperwood Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

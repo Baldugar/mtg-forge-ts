@@ -1,0 +1,23 @@
+{
+  "id": "glorifier-of-suffering-corpus-m682",
+  "description": "M6 corpus — Glorifier of Suffering; in-hand parse.",
+  "seed": 62552,
+  "cards": {
+    "Glorifier of Suffering": "Name:Glorifier of Suffering\nManaCost:2 W\nTypes:Creature Vampire Soldier\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature or artifact. When you do, put a +1/+1 counter on each of up to two target creatures.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other;Artifact.Other/another creature or artifact> | Execute$ TrigPutCounter | TriggerDescription$ When you do, put a +1/+1 counter on each of up to two target creatures.\nSVar:TrigPutCounter:DB$ PutCounter | CounterNum$ 1 | CounterType$ P1P1 | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | TgtPrompt$ Select up to two target creatures\nDeckHas:Ability$Counters|Sacrifice\nDeckHints:Type$Artifact\nOracle:When Glorifier of Suffering enters, you may sacrifice another creature or artifact. When you do, put a +1/+1 counter on each of up to two target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glorifier of Suffering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goblin-razerunners-corpus-m682",
+  "description": "M6 corpus — Goblin Razerunners; in-hand parse.",
+  "seed": 62577,
+  "cards": {
+    "Goblin Razerunners": "Name:Goblin Razerunners\nManaCost:2 R R\nTypes:Creature Goblin Warrior\nPT:3/4\nA:AB$ PutCounter | Cost$ 1 R Sac<1/Land> | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | OptionalDecider$ You | TriggerDescription$ At the beginning of your end step, you may have CARDNAME deal damage equal to the number of +1/+1 counters on it to target player or planeswalker.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Player, Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X\nSVar:X:Count$CardCounters.P1P1\nOracle:{1}{R}, Sacrifice a land: Put a +1/+1 counter on Goblin Razerunners.\\nAt the beginning of your end step, you may have Goblin Razerunners deal damage equal to the number of +1/+1 counters on it to target player or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Razerunners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

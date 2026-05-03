@@ -1,0 +1,23 @@
+{
+  "id": "arcade-cabinet-corpus-m682",
+  "description": "M6 corpus — Arcade Cabinet; in-hand parse.",
+  "seed": 61480,
+  "cards": {
+    "Arcade Cabinet": "Name:Arcade Cabinet\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When this artifact enters, put a +1/+1 counter on each of up to four target creatures.\nSVar:TrigPutCounter:DB$ PutCounter | TargetMin$ 0 | TargetMax$ 4 | ValidTgts$ Creature | TgtPrompt$ Select up to four target creatures | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ MultiplyCounter | Cost$ 2 T Sac<1/Permanent.token/token> | ValidTgts$ Creature | SpellDescription$ Double the number of each kind of counter on target creature.\nDeckHas:Ability$Counters\nDeckHints:Ability$Token\nOracle:When this artifact enters, put a +1/+1 counter on each of up to four target creatures.\\n{2}, {T}, Sacrifice a token: Double the number of each kind of counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Arcade Cabinet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

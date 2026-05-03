@@ -1,0 +1,23 @@
+{
+  "id": "myojin-of-towering-might-corpus-m682",
+  "description": "M6 corpus — Myojin of Towering Might; in-hand parse.",
+  "seed": 63479,
+  "cards": {
+    "Myojin of Towering Might": "Name:Myojin of Towering Might\nManaCost:5 G G G\nTypes:Legendary Creature Spirit\nPT:8/8\nK:etbCounter:Indestructible:1:CheckSVar$ FromHand:CARDNAME enters with an indestructible counter on it if you cast it from your hand.\nSVar:FromHand:Count$wasCastFromYourHandByYou.1.0\nA:AB$ PutCounter | Cost$ SubCounter<1/Indestructible> | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select any number of target creatures you control | CounterType$ P1P1 | CounterNum$ 8 | TargetMin$ 0 | TargetMax$ 8 | DividedAsYouChoose$ 8 | SubAbility$ DBPump | SpellDescription$ Distribute eight +1/+1 counters among any number of target creatures you control.\nSVar:DBPump:DB$ Pump | KW$ Trample | Defined$ Targeted | SpellDescription$ They gain trample until end of turn.\nDeckHas:Ability$Counters & Keyword$Trample\nOracle:Myojin of Towering Might enters with an indestructible counter on it if you cast it from your hand.\\nRemove an indestructible counter from Myojin of Towering Might: Distribute eight +1/+1 counters among any number of target creatures you control. They gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myojin of Towering Might"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soul-stair-expedition-corpus-m682",
+  "description": "M6 corpus — Soul Stair Expedition; in-hand parse.",
+  "seed": 64508,
+  "cards": {
+    "Soul Stair Expedition": "Name:Soul Stair Expedition\nManaCost:B\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ SubCounter<3/QUEST> Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to two target creatures from your graveyard. | SpellDescription$ Return up to two target creature cards from your graveyard to your hand.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Landfall — Whenever a land you control enters, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:MaxQuestEffect:3\nDeckHas:Ability$Counters\nOracle:Landfall — Whenever a land you control enters, you may put a quest counter on Soul Stair Expedition.\\nRemove three quest counters from Soul Stair Expedition and sacrifice it: Return up to two target creature cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Stair Expedition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

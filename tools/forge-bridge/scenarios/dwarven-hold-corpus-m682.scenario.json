@@ -1,0 +1,23 @@
+{
+  "id": "dwarven-hold-corpus-m682",
+  "description": "M6 corpus — Dwarven Hold; in-hand parse.",
+  "seed": 62122,
+  "cards": {
+    "Dwarven Hold": "Name:Dwarven Hold\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:You may choose not to untap CARDNAME during your untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | Execute$ TrigStore | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is tapped, put a storage counter on it.\nSVar:TrigStore:DB$ PutCounter | Defined$ Self | CounterType$ STORAGE | CounterNum$ 1\nA:AB$ Mana | Cost$ T SubCounter<X/STORAGE> | Produced$ R | Amount$ X | AILogic$ ManaRitualBattery | SpellDescription$ Add {R} for each storage counter removed this way.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Dwarven Hold enters tapped.\\nYou may choose not to untap Dwarven Hold during your untap step.\\nAt the beginning of your upkeep, if Dwarven Hold is tapped, put a storage counter on it.\\n{T}, Remove any number of storage counters from Dwarven Hold: Add {R} for each storage counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwarven Hold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

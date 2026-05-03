@@ -1,0 +1,23 @@
+{
+  "id": "faerie-dreamthief-corpus-m682",
+  "description": "M6 corpus — Faerie Dreamthief; in-hand parse.",
+  "seed": 62273,
+  "cards": {
+    "Faerie Dreamthief": "Name:Faerie Dreamthief\nManaCost:B\nTypes:Creature Faerie Warlock\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ Draw | Cost$ 2 B ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Graveyard\nOracle:Flying\\nWhen Faerie Dreamthief enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\\n{2}{B}, Exile Faerie Dreamthief from your graveyard: You draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Dreamthief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

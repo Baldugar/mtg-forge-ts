@@ -1,0 +1,23 @@
+{
+  "id": "rune-brand-juggler-corpus-m682",
+  "description": "M6 corpus — Rune-Brand Juggler; in-hand parse.",
+  "seed": 64070,
+  "cards": {
+    "Rune-Brand Juggler": "Name:Rune-Brand Juggler\nManaCost:B R\nTypes:Creature Human Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ When CARDNAME enters, suspect up to one target creature you control. (A suspected creature has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature you control | Attributes$ Suspected | TargetMin$ 0 | TargetMax$ 1\nA:AB$ Pump | Cost$ 3 B R Sac<1/Creature.IsSuspected/suspected creature> | ValidTgts$ Creature | NumAtt$ -5 | NumDef$ -5 | IsCurse$ True | SpellDescription$ Target creature gets -5/-5 until end of turn.\nDeckHas:Ability$Sacrifice\nOracle:When Rune-Brand Juggler enters, suspect up to one target creature you control. (A suspected creature has menace and can't block.)\\n{3}{B}{R}, Sacrifice a suspected creature: Target creature gets -5/-5 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rune-Brand Juggler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

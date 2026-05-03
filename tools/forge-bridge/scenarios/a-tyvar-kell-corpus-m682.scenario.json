@@ -1,0 +1,23 @@
+{
+  "id": "a-tyvar-kell-corpus-m682",
+  "description": "M6 corpus — A-Tyvar Kell; in-hand parse.",
+  "seed": 64124,
+  "cards": {
+    "A-Tyvar Kell": "Name:A-Tyvar Kell\nManaCost:2 G G\nTypes:Legendary Planeswalker Tyvar\nLoyalty:4\nS:Mode$ Continuous | Affected$ Elf.YouCtrl | AddAbility$ Mana | Description$ Elves you control have \"{T}: Add {B}.\"\nSVar:Mana:AB$ Mana | Cost$ T | Produced$ B | Amount$ 1 | SpellDescription$ Add {B}.\nA:AB$ PutCounter | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Elf | TgtPrompt$ Select target Elf | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBUntap | SpellDescription$ Put two +1/+1 counters on up to one target Elf. Untap it. It gains deathtouch until end of turn.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | KW$ Deathtouch | Defined$ Targeted\nA:AB$ Token | Cost$ AddCounter<0/LOYALTY> | TokenScript$ g_1_1_elf_warrior | TokenOwner$ You | Planeswalker$ True | SpellDescription$ Create a 1/1 green Elf Warrior creature token.\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Tyvar Kell | Image$ emblem_tyvar_kell | Triggers$ TrigSpellCast | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Whenever you cast an Elf spell, it gains haste until end of turn and you draw two cards.\"\nSVar:TrigSpellCast:Mode$ SpellCast | ValidCard$ Elf | ValidActivatingPlayer$ You | Execute$ EffSpellCast | TriggerDescription$ Whenever you cast an Elf spell, it gains haste until end of turn and you draw two cards.\nSVar:EffSpellCast:DB$ Animate | Defined$ TriggeredCard | Keywords$ Haste | SubAbility$ EffDraw\nSVar:EffDraw:DB$ Draw | Defined$ You | NumCards$ 2\nDeckHints:Type$Elf\nDeckHas:Ability$Counters|Token & Type$Elf|Warrior\nOracle:Elves you control have \"{T}: Add {B}.\"\\n[+1]: Put two +1/+1 counters on up to one target Elf. Untap it. It gains deathtouch until end of turn.\\n[0]: Create a 1/1 green Elf Warrior creature token.\\n[-7]: You get an emblem with \"Whenever you cast an Elf spell, it gains haste until end of turn and you draw two cards.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "A-Tyvar Kell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

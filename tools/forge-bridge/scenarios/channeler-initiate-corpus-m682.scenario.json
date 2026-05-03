@@ -1,0 +1,23 @@
+{
+  "id": "channeler-initiate-corpus-m682",
+  "description": "M6 corpus — Channeler Initiate; in-hand parse.",
+  "seed": 61713,
+  "cards": {
+    "Channeler Initiate": "Name:Channeler Initiate\nManaCost:1 G\nTypes:Creature Human Druid\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put three -1/-1 counters on target creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ M1M1 | IsCurse$ True | CounterNum$ 3\nA:AB$ Mana | Cost$ T SubCounter<1/M1M1> | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When Channeler Initiate enters, put three -1/-1 counters on target creature you control.\\n{T}, Remove a -1/-1 counter from Channeler Initiate: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Channeler Initiate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jeskai-monument-corpus-m682",
+  "description": "M6 corpus — Jeskai Monument; in-hand parse.",
+  "seed": 62955,
+  "cards": {
+    "Jeskai Monument": "Name:Jeskai Monument\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this artifact enters, search your library for a basic Island, Mountain, or Plains card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Island.Basic,Mountain.Basic,Plains.Basic | ChangeTypeDesc$ basic Island, Mountain, or Plains\nA:AB$ Token | Cost$ 1 U R W T Sac<1/CARDNAME> | TokenAmount$ 2 | TokenScript$ w_1_1_bird_flying | TokenOwner$ You | SorcerySpeed$ True | SpellDescription$ Create two 1/1 white Bird creature tokens with flying. Activate only as a sorcery.\nDeckHas:Ability$Token\nOracle:When this artifact enters, search your library for a basic Island, Mountain, or Plains card, reveal it, put it into your hand, then shuffle.\\n{1}{U}{R}{W}, {T}, Sacrifice this artifact: Create two 1/1 white Bird creature tokens with flying. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jeskai Monument"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

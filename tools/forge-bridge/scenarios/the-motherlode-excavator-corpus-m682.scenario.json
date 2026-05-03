@@ -1,0 +1,23 @@
+{
+  "id": "the-motherlode-excavator-corpus-m682",
+  "description": "M6 corpus — The Motherlode, Excavator; in-hand parse.",
+  "seed": 64819,
+  "cards": {
+    "The Motherlode, Excavator": "Name:The Motherlode, Excavator\nManaCost:3 R R\nTypes:Legendary Artifact Creature Robot\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, choose target opponent. You get an amount of {E} (energy counters) equal to the number of nonbasic lands that player controls.\nSVar:TrigPump:DB$ Pump | IsCurse$ True | ValidTgts$ Opponent | SubAbility$ DBEnergy\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nSVar:X:Count$Valid Land.nonBasic+TargetedPlayerCtrl\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME attacks, you may pay {E}{E}{E}{E}. When you do, destroy target nonbasic land defending player controls, and creatures that player controls without flying can't block this turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ PayEnergy<4> | Execute$ TrigDestroy | SpellDescription$ When you do, destroy target nonbasic land defending player controls, and creatures that player controls without flying can't block this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land.nonBasic+ControlledBy Spawner>TriggeredDefendingPlayer | TgtPrompt$ Select target nonbasic land defending player controls | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ Static | RememberObjects$ TargetedController\nSVar:Static:Mode$ CantBlockBy | ValidAttacker$ Creature | ValidBlocker$ Creature.withoutFlying+RememberedPlayerCtrl | Description$ Creatures that player controls without flying can't block this turn.\nOracle:When The Motherlode, Excavator enters, choose target opponent. You get an amount of {E} (energy counters) equal to the number of nonbasic lands that player controls.\\nWhenever The Motherlode attacks, you may pay {E}{E}{E}{E}. When you do, destroy target nonbasic land defending player controls, and creatures that player controls without flying can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Motherlode, Excavator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

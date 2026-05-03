@@ -1,0 +1,23 @@
+{
+  "id": "vengeful-dreams-corpus-m682",
+  "description": "M6 corpus — Vengeful Dreams; in-hand parse.",
+  "seed": 65078,
+  "cards": {
+    "Vengeful Dreams": "Name:Vengeful Dreams\nManaCost:W W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W W Discard<X/Card/card(s)> | CostDesc$ As an additional cost to cast this spell, discard X cards. | Origin$ Battlefield | Destination$ Exile | TargetMin$ X | TargetMax$ X | ValidTgts$ Creature.attacking | TgtPrompt$ Select X target attacking creatures | StackDescription$ Exile {c:Targeted}. | SpellDescription$ Exile X target attacking creatures.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, discard X cards.\\nExile X target attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vengeful Dreams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

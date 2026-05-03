@@ -1,0 +1,23 @@
+{
+  "id": "overclocked-electromancer-corpus-m682",
+  "description": "M6 corpus — Overclocked Electromancer; in-hand parse.",
+  "seed": 63673,
+  "cards": {
+    "Overclocked Electromancer": "Name:Overclocked Electromancer\nManaCost:2 R\nTypes:Creature Lizard Wizard\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, you may pay {E}{E}{E}. If you do, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayEnergy<3> | CounterType$ P1P1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, double its power until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ Double\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature.wasDealtExcessDamageThisTurn | Execute$ TrigEnergy | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, if that creature was dealt excess damage this turn, you get X {E}, where X is that excess damage.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ CardTriggeredTarget$ExcessDamageReceivedThisTurn\nDeckHas:Ability$Counters\nOracle:At the beginning of combat on your turn, you may pay {E}{E}{E}. If you do, put a +1/+1 counter on Overclocked Electromancer.\\nWhenever Overclocked Electromancer attacks, double its power until end of turn.\\nWhenever Overclocked Electromancer deals combat damage to a creature, if that creature was dealt excess damage this turn, you get X {E}, where X is that excess damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Overclocked Electromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "iname-as-one-corpus-m682",
+  "description": "M6 corpus — Iname as One; in-hand parse.",
+  "seed": 62859,
+  "cards": {
+    "Iname as One": "Name:Iname as One\nManaCost:8 B B G G\nTypes:Legendary Creature Spirit\nPT:8/8\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, you may search your library for a Spirit permanent card, put it onto the battlefield, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Spirit.YouCtrl | ChangeNum$ 1 | ShuffleNonMandatory$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExile | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may exile it. If you do, return target Spirit permanent card from your graveyard to the battlefield.\nSVar:TrigExile:AB$ ChangeZone | Cost$ ExileAnyGrave<1/Card.TriggeredNewCard> | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Spirit.YouCtrl\nOracle:When Iname as One enters, if you cast it from your hand, you may search your library for a Spirit permanent card, put it onto the battlefield, then shuffle.\\nWhen Iname as One dies, you may exile it. If you do, return target Spirit permanent card from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Iname as One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

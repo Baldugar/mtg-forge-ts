@@ -1,0 +1,23 @@
+{
+  "id": "instant-ramen-corpus-m682",
+  "description": "M6 corpus — Instant Ramen; in-hand parse.",
+  "seed": 62886,
+  "cards": {
+    "Instant Ramen": "Name:Instant Ramen\nManaCost:2\nTypes:Artifact Food\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this artifact> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nOracle:Flash\\nWhen this artifact enters, draw a card.\\n{2}, {T}, Sacrifice this artifact: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Instant Ramen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

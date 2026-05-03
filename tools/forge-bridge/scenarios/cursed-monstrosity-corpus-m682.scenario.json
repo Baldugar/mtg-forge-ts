@@ -1,0 +1,23 @@
+{
+  "id": "cursed-monstrosity-corpus-m682",
+  "description": "M6 corpus — Cursed Monstrosity; in-hand parse.",
+  "seed": 61899,
+  "cards": {
+    "Cursed Monstrosity": "Name:Cursed Monstrosity\nManaCost:4 B\nTypes:Creature Horror\nPT:4/3\nK:Flying\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When CARDNAME becomes the target of a spell or ability, sacrifice it unless you discard a land card.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ Discard<1/Land> | UnlessPayer$ You\nSVar:Targeting:Dies\nOracle:Flying\\nWhenever Cursed Monstrosity becomes the target of a spell or ability, sacrifice it unless you discard a land card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cursed Monstrosity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

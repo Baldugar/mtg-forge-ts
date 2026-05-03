@@ -1,0 +1,23 @@
+{
+  "id": "guardian-archon-corpus-m682",
+  "description": "M6 corpus — Guardian Archon; in-hand parse.",
+  "seed": 62661,
+  "cards": {
+    "Guardian Archon": "Name:Guardian Archon\nManaCost:4 W W\nTypes:Creature Archon\nPT:5/5\nK:Flying\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Opponent | ChoiceTitle$ Choose an opponent | Secretly$ True | SpellDescription$ As CARDNAME enters, secretly choose an opponent.\nA:AB$ Pump | Cost$ RevealChosen<Player> | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | KW$ Protection:Player.PlayerUID_ChosenPlayerUID:ChosenPlayerName | DefinedKW$ ChosenPlayer | GameActivationLimit$ 1 | SubAbility$ DBPump | StackDescription$ {p:You} and {c:Targeted} each gain protection from {p:ChosenPlayer} until end of turn. | SpellDescription$ You and target permanent you control each gain protection from the chosen player until end of turn. Activate only once.\nSVar:DBPump:DB$ Pump | Defined$ You | KW$ Protection:Player.PlayerUID_ChosenPlayerUID:ChosenPlayerName | DefinedKW$ ChosenPlayer | StackDescription$ None\nOracle:Flying\\nAs Guardian Archon enters, secretly choose an opponent.\\nReveal the player you chose: You and target permanent you control each gain protection from the chosen player until end of turn. Activate only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian Archon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

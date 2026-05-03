@@ -1,0 +1,23 @@
+{
+  "id": "staff-of-the-storyteller-corpus-m682",
+  "description": "M6 corpus — Staff of the Storyteller; in-hand parse.",
+  "seed": 64584,
+  "cards": {
+    "Staff of the Storyteller": "Name:Staff of the Storyteller\nManaCost:1 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nT:Mode$ TokenCreatedOnce | ValidToken$ Creature.YouOwn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you create one or more creature tokens, put a story counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ STORY | CounterNum$ 1\nA:AB$ Draw | Cost$ W T SubCounter<1/STORY> | SpellDescription$ Draw a card.\nDeckHas:Ability$Counters|Token & Type$Spirit\nOracle:When Staff of the Storyteller enters, create a 1/1 white Spirit creature token with flying.\\nWhenever you create one or more creature tokens, put a story counter on Staff of the Storyteller.\\n{W}, {T}, Remove a story counter from Staff of the Storyteller: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Staff of the Storyteller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

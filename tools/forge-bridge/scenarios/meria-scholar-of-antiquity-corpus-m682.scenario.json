@@ -1,0 +1,23 @@
+{
+  "id": "meria-scholar-of-antiquity-corpus-m682",
+  "description": "M6 corpus — Meria, Scholar of Antiquity; in-hand parse.",
+  "seed": 63345,
+  "cards": {
+    "Meria, Scholar of Antiquity": "Name:Meria, Scholar of Antiquity\nManaCost:1 R G\nTypes:Legendary Creature Elf Artificer\nPT:3/3\nA:AB$ Mana | Cost$ tapXType<1/Artifact.!token/nontoken artifact> | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Dig | Cost$ tapXType<2/Artifact.!token/nontoken artifact> | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ You | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play it this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play it this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Artifact\nOracle:Tap an untapped nontoken artifact you control: Add {G}.\\nTap two untapped nontoken artifacts you control: Exile the top card of your library. You may play it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meria, Scholar of Antiquity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-golden-throne-corpus-m682",
+  "description": "M6 corpus — The Golden Throne; in-hand parse.",
+  "seed": 64807,
+  "cards": {
+    "The Golden Throne": "Name:The Golden Throne\nManaCost:4\nTypes:Legendary Artifact\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ExileSetLife | Description$ Arcane Life-support — If you would lose the game, instead exile CARDNAME and your life total becomes 1.\nSVar:ExileSetLife:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self | SubAbility$ DBSetLife\nSVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ 1\nA:AB$ Mana | Cost$ T Sac<1/Creature> | PrecostDesc$ A Thousand Souls Die Every Day — | Produced$ Combo Any | Amount$ 3 | SpellDescription$ Add three mana in any combination of colors.\nDeckHas:Ability$Sacrifice\nOracle:Arcane Life-support — If you would lose the game, instead exile The Golden Throne and your life total becomes 1.\\nA Thousand Souls Die Every Day — {T}, Sacrifice a creature: Add three mana in any combination of colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Golden Throne"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-processor-corpus-m682",
+  "description": "M6 corpus — Phyrexian Processor; in-hand parse.",
+  "seed": 63751,
+  "cards": {
+    "Phyrexian Processor": "Name:Phyrexian Processor\nManaCost:4\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ PayLife | ReplacementResult$ Updated | Description$ As CARDNAME enters, pay any amount of life.\nSVar:PayLife:AB$ StoreSVar | Cost$ Mandatory PayLife<X> | SVar$ LifePaidOnETB | Type$ Calculate | Expression$ X\nA:AB$ Token | Cost$ 4 T | TokenScript$ b_x_x_phyrexian_minion | TokenOwner$ You | TokenPower$ LifePaidOnETB | TokenToughness$ LifePaidOnETB | SpellDescription$ Create an X/X black Phyrexian Minion creature token, where X is the life paid as CARDNAME entered.\nSVar:X:Count$xPaid\nSVar:LifePaidOnETB:Number$0\nAI:RemoveDeck:All\nOracle:As Phyrexian Processor enters, pay any amount of life.\\n{4}, {T}: Create an X/X black Phyrexian Minion creature token, where X is the life paid as Phyrexian Processor entered.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Processor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

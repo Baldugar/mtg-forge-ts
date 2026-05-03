@@ -1,0 +1,23 @@
+{
+  "id": "rona-sheoldred-s-faithful-corpus-m682",
+  "description": "M6 corpus — Rona, Sheoldred's Faithful; in-hand parse.",
+  "seed": 64037,
+  "cards": {
+    "Rona, Sheoldred's Faithful": "Name:Rona, Sheoldred's Faithful\nManaCost:1 U B B\nTypes:Legendary Creature Human Wizard\nPT:3/4\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever you cast an instant or sorcery spell, each opponent loses 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Graveyard | EffectZone$ Graveyard | RaiseCost$ Discard<2/Card> | ActivationZone$ Graveyard | Description$ You may cast CARDNAME from your graveyard by discarding two cards in addition to paying its other costs.\nSVar:DiscardMe:1\nDeckHas:Ability$Discard|Graveyard\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell, each opponent loses 1 life.\\nYou may cast Rona, Sheoldred's Faithful from your graveyard by discarding two cards in addition to paying its other costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rona, Sheoldred's Faithful"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

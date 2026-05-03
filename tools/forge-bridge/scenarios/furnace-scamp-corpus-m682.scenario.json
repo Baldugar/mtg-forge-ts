@@ -1,0 +1,23 @@
+{
+  "id": "furnace-scamp-corpus-m682",
+  "description": "M6 corpus — Furnace Scamp; in-hand parse.",
+  "seed": 62439,
+  "cards": {
+    "Furnace Scamp": "Name:Furnace Scamp\nManaCost:R\nTypes:Creature Phyrexian Beast\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may sacrifice it. If you do, CARDNAME deals 3 damage to that player.\nSVar:TrigDamage:AB$ DealDamage | Cost$ Sac<1/CARDNAME> | Defined$ TriggeredTarget | NumDmg$ 3\nOracle:Whenever Furnace Scamp deals combat damage to a player, you may sacrifice it. If you do, Furnace Scamp deals 3 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furnace Scamp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

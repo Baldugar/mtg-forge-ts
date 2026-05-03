@@ -1,0 +1,23 @@
+{
+  "id": "dormant-volcano-corpus-m682",
+  "description": "M6 corpus — Dormant Volcano; in-hand parse.",
+  "seed": 62058,
+  "cards": {
+    "Dormant Volcano": "Name:Dormant Volcano\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C R | SpellDescription$ Add {C}{R}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return an untapped Mountain you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Mountain.untapped/untapped Mountain> | UnlessPayer$ You\nSVar:NeedsToPlay:Mountain.YouCtrl+untapped\nOracle:Dormant Volcano enters tapped.\\nWhen Dormant Volcano enters, sacrifice it unless you return an untapped Mountain you control to its owner's hand.\\n{T}: Add {C}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dormant Volcano"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "euru-acorn-scrounger-corpus-m682",
+  "description": "M6 corpus — Euru, Acorn Scrounger; in-hand parse.",
+  "seed": 62236,
+  "cards": {
+    "Euru, Acorn Scrounger": "Name:Euru, Acorn Scrounger\nManaCost:2 B G\nTypes:Legendary Creature Squirrel Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME enters, you may forage. When you do, conjure a card named Chitterspitter onto the battlefield.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Forage | Execute$ TrigConjure | SpellDescription$ When you do, conjure a card named Chitterspitter onto the battlefield.\nSVar:TrigConjure:DB$ MakeCard | Name$ Chitterspitter | Conjure$ True | Zone$ Battlefield\nT:Mode$ DamageDoneOnce | ValidSource$ Squirrel.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounterAll | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Squirrels you control deal combat damage to a player, you may sacrifice a token. If you do, put an acorn counter on each permanent you control named Chitterspitter.\nSVar:TrigPutCounterAll:AB$ PutCounterAll | Cost$ Sac<1/Permanent.token/token> | ValidCards$ Permanent.YouCtrl+namedChitterspitter | CounterType$ ACORN | CounterNum$ 1\nOracle:When Euru, Acorn Scrounger enters, you may forage. When you do, conjure a card named Chitterspitter onto the battlefield.\\nWhenever one or more Squirrels you control deal combat damage to a player, you may sacrifice a token. If you do, put an acorn counter on each permanent you control named Chitterspitter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Euru, Acorn Scrounger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

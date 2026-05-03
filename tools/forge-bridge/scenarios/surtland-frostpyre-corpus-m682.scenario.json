@@ -1,0 +1,23 @@
+{
+  "id": "surtland-frostpyre-corpus-m682",
+  "description": "M6 corpus — Surtland Frostpyre; in-hand parse.",
+  "seed": 64677,
+  "cards": {
+    "Surtland Frostpyre": "Name:Surtland Frostpyre\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Scry | Cost$ 2 U U R T Sac<1/CARDNAME> | ScryNum$ 2 | SubAbility$ DBDamageAll | SorcerySpeed$ True | SpellDescription$ Scry 2. CARDNAME deals 2 damage to each creature. Activate only as a sorcery.\nSVar:DBDamageAll:DB$ DamageAll | ValidCards$ Creature | NumDmg$ 2\nOracle:Surtland Frostpyre enters tapped.\\n{T}: Add {R}.\\n{2}{U}{U}{R}, {T}, Sacrifice Surtland Frostpyre: Scry 2. Surtland Frostpyre deals 2 damage to each creature. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surtland Frostpyre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

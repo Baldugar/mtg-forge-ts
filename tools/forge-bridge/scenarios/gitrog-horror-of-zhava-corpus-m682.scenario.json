@@ -1,0 +1,23 @@
+{
+  "id": "gitrog-horror-of-zhava-corpus-m682",
+  "description": "M6 corpus — Gitrog, Horror of Zhava; in-hand parse.",
+  "seed": 62533,
+  "cards": {
+    "Gitrog, Horror of Zhava": "Name:Gitrog, Horror of Zhava\nManaCost:2 B G\nTypes:Legendary Creature Frog Horror\nPT:6/6\nK:Menace\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigSac | IsPresent$ Card.Self+untapped | TriggerDescription$ At the beginning of each combat, if CARDNAME is untapped, any opponent may sacrifice a nontoken creature. If they do, tap CARDNAME, then seek a land card and put it onto the battlefield tapped.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | Amount$ 1 | SacValid$ Creature.!token | RememberSacrificed$ True | Optional$ True | AILogic$ DesecrationDemon | SubAbility$ DBBranch\nSVar:DBBranch:DB$ Branch | BranchConditionSVar$ X | TrueSubAbility$ DBTap\nSVar:X:Remembered$Amount\nSVar:DBTap:DB$ Tap | SubAbility$ DBSeek\nSVar:DBSeek:DB$ Seek | Type$ Card.Land | ImprintFound$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Imprinted | Tapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever a land you control enters, it perpetually gains \"{B}{G}, {T}, Sacrifice this land: Draw a card.\"\nSVar:TrigAnimate:DB$ Animate | Defined$ TriggeredCard | Abilities$ ABDraw | Duration$ Perpetual\nSVar:ABDraw:AB$ Draw | Cost$ B G Sac<1/CARDNAME/this land> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Menace\\nAt the beginning of each combat, if Gitrog, Horror of Zhava is untapped, any opponent may sacrifice a nontoken creature. If they do, tap Gitrog, Horror of Zhava, then seek a land card and put it onto the battlefield tapped.\\nWhenever a land you control enters, it perpetually gains \"{B}{G}, {T}, Sacrifice this land: Draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gitrog, Horror of Zhava"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

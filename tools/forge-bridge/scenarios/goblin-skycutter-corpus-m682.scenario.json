@@ -1,0 +1,23 @@
+{
+  "id": "goblin-skycutter-corpus-m682",
+  "description": "M6 corpus — Goblin Skycutter; in-hand parse.",
+  "seed": 62579,
+  "cards": {
+    "Goblin Skycutter": "Name:Goblin Skycutter\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:2/1\nA:AB$ DealDamage | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | NumDmg$ 2 | SubAbility$ DBDebuff | SpellDescription$ It deals 2 damage to target creature with flying. That creature loses flying until end of turn.\nSVar:DBDebuff:DB$ Debuff | Defined$ Targeted | Keywords$ Flying\nDeckHas:Ability$Sacrifice\nOracle:Sacrifice Goblin Skycutter: It deals 2 damage to target creature with flying. That creature loses flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Skycutter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

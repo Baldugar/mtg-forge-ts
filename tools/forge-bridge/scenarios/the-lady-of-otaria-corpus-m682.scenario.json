@@ -1,0 +1,23 @@
+{
+  "id": "the-lady-of-otaria-corpus-m682",
+  "description": "M6 corpus — The Lady of Otaria; in-hand parse.",
+  "seed": 64812,
+  "cards": {
+    "The Lady of Otaria": "Name:The Lady of Otaria\nManaCost:3 R G\nTypes:Legendary Creature Avatar\nPT:5/5\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ tapXType<3/Dwarf> | Description$ You may tap three untapped Dwarves you control rather than pay this spell's mana cost.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigDig | CheckSVar$ X | TriggerDescription$ At the beginning of each end step, if a land you controlled was put into your graveyard from the battlefield this turn, reveal the top four cards of your library. Put any number of Dwarf cards from among them into your hand and the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeValid$ Dwarf | DestinationZone$ Hand | RestRandomOrder$ True | ChangeNum$ Any\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Land.YouCtrl+YouOwn\nDeckNeeds:Type$Dwarf\nOracle:You may tap three untapped Dwarves you control rather than pay this spell's mana cost.\\nAt the beginning of each end step, if a land you controlled was put into your graveyard from the battlefield this turn, reveal the top four cards of your library. Put any number of Dwarf cards from among them into your hand and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Lady of Otaria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

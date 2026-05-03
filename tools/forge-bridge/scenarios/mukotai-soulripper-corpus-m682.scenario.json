@@ -1,0 +1,23 @@
+{
+  "id": "mukotai-soulripper-corpus-m682",
+  "description": "M6 corpus — Mukotai Soulripper; in-hand parse.",
+  "seed": 63454,
+  "cards": {
+    "Mukotai Soulripper": "Name:Mukotai Soulripper\nManaCost:1 B\nTypes:Artifact Vehicle\nPT:4/3\nK:Crew:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature or artifact. If you do, put a +1/+1 counter on CARDNAME and it gains menace until end of turn.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ Sac<1/Creature.Other;Artifact.Other/another artifact or creature> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Menace\nDeckHas:Ability$Sacrifice|Counters\nOracle:Whenever Mukotai Soulripper attacks, you may sacrifice another artifact or creature. If you do, put a +1/+1 counter on Mukotail Soulripper and it gains menace until end of turn.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mukotai Soulripper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

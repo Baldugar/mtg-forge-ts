@@ -1,0 +1,23 @@
+{
+  "id": "the-infamous-cruelclaw-corpus-m682",
+  "description": "M6 corpus — The Infamous Cruelclaw; in-hand parse.",
+  "seed": 64811,
+  "cards": {
+    "The Infamous Cruelclaw": "Name:The Infamous Cruelclaw\nManaCost:1 B R\nTypes:Legendary Creature Weasel Mercenary\nPT:3/3\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDigUntil | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile cards from the top of your library until you exile a nonland card. You may cast that card by discarding a card rather than paying its mana cost.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Card.nonLand | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | PlayCost$ Discard<1/Card> | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:MustBeBlocked:True\nOracle:Menace\\nWhenever The Infamous Cruelclaw deals combat damage to a player, exile cards from the top of your library until you exile a nonland card. You may cast that card by discarding a card rather than paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Infamous Cruelclaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

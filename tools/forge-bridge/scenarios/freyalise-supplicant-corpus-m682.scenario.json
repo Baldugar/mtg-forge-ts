@@ -1,0 +1,23 @@
+{
+  "id": "freyalise-supplicant-corpus-m682",
+  "description": "M6 corpus — Freyalise Supplicant; in-hand parse.",
+  "seed": 62425,
+  "cards": {
+    "Freyalise Supplicant": "Name:Freyalise Supplicant\nManaCost:1 G\nTypes:Creature Human Cleric\nPT:1/1\nA:AB$ DealDamage | Cost$ T Sac<1/Creature.Red;Creature.White/red or white creature> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ CARDNAME deals damage to any target equal to half the sacrificed creature's power, rounded down.\nSVar:X:Sacrificed$CardPower/HalfDown\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{T}, Sacrifice a red or white creature: Freyalise Supplicant deals damage to any target equal to half the sacrificed creature's power, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Freyalise Supplicant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

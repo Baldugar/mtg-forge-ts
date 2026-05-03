@@ -1,0 +1,23 @@
+{
+  "id": "ill-gotten-inheritance-corpus-m682",
+  "description": "M6 corpus — Ill-Gotten Inheritance; in-hand parse.",
+  "seed": 62834,
+  "cards": {
+    "Ill-Gotten Inheritance": "Name:Ill-Gotten Inheritance\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to each opponent and you gain 1 life.\nSVar:TrigDealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBGainOneLife\nSVar:DBGainOneLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ DealDamage | Cost$ 5 B Sac<1/CARDNAME> | ValidTgts$ Opponent | NumDmg$ 4 | SubAbility$ DBGainFourLife | SpellDescription$ It deals 4 damage to target opponent and you gain 4 life.\nSVar:DBGainFourLife:DB$ GainLife | Defined$ You | LifeAmount$ 4\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, Ill-Gotten Inheritance deals 1 damage to each opponent and you gain 1 life.\\n{5}{B}, Sacrifice Ill-Gotten Inheritance: It deals 4 damage to target opponent and you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ill-Gotten Inheritance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

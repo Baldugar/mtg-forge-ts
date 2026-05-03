@@ -1,0 +1,23 @@
+{
+  "id": "lim-d-l-s-vault-corpus-m682",
+  "description": "M6 corpus — Lim-Dûl's Vault; in-hand parse.",
+  "seed": 63165,
+  "cards": {
+    "Lim-Dûl's Vault": "Name:Lim-Dûl's Vault\nManaCost:U B\nTypes:Instant\nA:SP$ PeekAndReveal | PeekAmount$ 5 | NoReveal$ True | SubAbility$ DBRepeat | RememberPeeked$ True | StackDescription$ SpellDescription | SpellDescription$ Look at the top five cards of your library. As many times as you choose, you may pay 1 life, put those cards on the bottom of your library in any order, then look at the top five cards of your library. Then shuffle and put the last cards you looked at this way on top in any order.\nSVar:DBRepeat:DB$ Repeat | RepeatSubAbility$ CheckLifePaid | RepeatCheckSVar$ LifePaid | RepeatSVarCompare$ EQ0 | SubAbility$ DBShuffle | StackDescription$ None\nSVar:CheckLifePaid:DB$ StoreSVar | SVar$ LifePaid | Type$ Number | Expression$ 1 | UnlessPayer$ You | UnlessCost$ PayLife<1> | UnlessResolveSubs$ WhenPaid | UnlessAI$ Never | SubAbility$ DBResetRem | StackDescription$ No move\nSVar:DBResetRem:DB$ Cleanup | ClearRemembered$ True | SubAbility$ GoToBottom\nSVar:GoToBottom:DB$ Dig | DigNum$ 5 | ChangeNum$ All | DestinationZone$ Library | LibraryPosition$ -1 | NoLooking$ True | SubAbility$ DBLookAgain | StackDescription$ None\nSVar:DBLookAgain:DB$ PeekAndReveal | PeekAmount$ 5 | NoReveal$ True | RememberPeeked$ True | StackDescription$ None\nSVar:DBShuffle:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.IsRemembered | ChangeNum$ 5 | SubAbility$ DBReset | Hidden$ True | SelectPrompt$ Pick 1 on the top of library | Mandatory$ True | NoReveal$ True | NoLooking$ True | Reorder$ True | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ LifePaid | Type$ Number | Expression$ 0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:LifePaid:Number$0\nAI:RemoveDeck:All\nOracle:Look at the top five cards of your library. As many times as you choose, you may pay 1 life, put those cards on the bottom of your library in any order, then look at the top five cards of your library. Then shuffle and put the last cards you looked at this way on top in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lim-Dûl's Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "myojin-of-night-s-reach-and-grim-betrayal-corpus-m682",
+  "description": "M6 corpus — Myojin of Night's Reach and Grim Betrayal; in-hand parse.",
+  "seed": 63476,
+  "cards": {
+    "Myojin of Night's Reach and Grim Betrayal": "Name:Myojin of Night's Reach and Grim Betrayal\nManaCost:5 B B B\nTypes:Legendary Creature Spirit\nPT:10/4\nK:etbCounter:Indestructible:1:CheckSVar$ FromHand:CARDNAME enters the battlefield with an indestructible counter on it if you cast it from your hand.\nSVar:FromHand:Count$wasCastFromYourHandByYou.1.0\nA:AB$ Discard | Cost$ SubCounter<1/Indestructible> | Defined$ Player.Opponent | Mode$ Hand | SubAbility$ DBReturn | SpellDescription$ Each opponent discards their hand. Put onto the battlefield under your control all creature cards in all graveyards that were put there from anywhere this turn.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ ValidGraveyard Creature.ThisTurnEntered | GainControl$ True\nDeckHas:Ability$Graveyard\nOracle:Myojin of Night's Reach and Grim Betrayal enters the battlefield with an indestructible counter on it if you cast it from your hand.\\nRemove an indestructible counter from Myojin of Night's Reach and Grim Betrayal: Each opponent discards their hand. Put onto the battlefield under your control all creature cards in all graveyards that were put there from anywhere this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myojin of Night's Reach and Grim Betrayal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "elvish-reclaimer-corpus-m682",
+  "description": "M6 corpus — Elvish Reclaimer; in-hand parse.",
+  "seed": 62183,
+  "cards": {
+    "Elvish Reclaimer": "Name:Elvish Reclaimer\nManaCost:G\nTypes:Creature Elf Warrior\nPT:1/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 2 | AddToughness$ 2 | IsPresent$ Land.YouOwn | PresentZone$ Graveyard | PresentCompare$ GE3 | Description$ CARDNAME gets +2/+2 as long as there are three or more land cards in your graveyard.\nA:AB$ ChangeZone | Cost$ 2 T Sac<1/Land> | Origin$ Library | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Tapped$ True | SpellDescription$ Search your library for a land card, put it onto the battlefield tapped, then shuffle.\nAI:RemoveDeck:Random\nOracle:Elvish Reclaimer gets +2/+2 as long as there are three or more land cards in your graveyard.\\n{2}, {T}, Sacrifice a land: Search your library for a land card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Reclaimer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flaxen-intruder-corpus-m682",
+  "description": "M6 corpus — Flaxen Intruder; in-hand parse.",
+  "seed": 62356,
+  "cards": {
+    "Flaxen Intruder": "Name:Flaxen Intruder\nManaCost:G\nTypes:Creature Human Berserker\nPT:1/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTrig | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may sacrifice it. When you do, destroy target artifact or enchantment.\nSVar:TrigTrig:AB$ ImmediateTrigger | Cost$ Sac<1/CARDNAME> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target artifact or enchantment.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment\nAlternateMode:Adventure\nOracle:Whenever Flaxen Intruder deals combat damage to a player, you may sacrifice it. When you do, destroy target artifact or enchantment.\n\nALTERNATE\n\nName:Welcome Home\nManaCost:5 G G\nTypes:Sorcery Adventure\nA:SP$ Token | TokenAmount$ 3 | TokenScript$ g_2_2_bear | TokenOwner$ You | SpellDescription$ Create three 2/2 green Bear creature tokens. (Then exile this card. You may cast the creature later from exile.)\nDeckHas:Ability$Token\nOracle:Create three 2/2 green Bear creature tokens. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flaxen Intruder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "vivien-on-the-hunt-corpus-m682",
+  "description": "M6 corpus — Vivien on the Hunt; in-hand parse.",
+  "seed": 65134,
+  "cards": {
+    "Vivien on the Hunt": "Name:Vivien on the Hunt\nManaCost:4 G G\nTypes:Legendary Planeswalker Vivien\nLoyalty:4\nA:AB$ Sacrifice | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | Optional$ True | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBChangeZone | SpellDescription$ You may sacrifice a creature. If you do, search your library for a creature card with mana value equal to 1 plus the sacrificed creature's mana value, put it onto the battlefield, then shuffle.\nSVar:DBChangeZone:DB$ ChangeZone | ConditionDefined$ Remembered | ConditionPresent$ Card | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcEQX | ChangeTypeDesc$ creature card with mana value equal to 1 plus the sacrificed creature's mana value | ChangeNum$ 1 | SubAbility$ DBCleanup\nSVar:X:Remembered$CardManaCost/Plus.1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Mill | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | NumCards$ 5 | RememberMilled$ True | SubAbility$ DBChangeZone2 | SpellDescription$ Mill five cards, then put any number of creature cards milled this way into your hand.\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Graveyard,Exile | Destination$ Hand | Hidden$ True | ChangeType$ Creature.IsRemembered | ChangeTypeDesc$ creature cards milled this way | ChangeNum$ Z | ChangeNumDesc$ any number of | SelectPrompt$ Select any number of creature cards milled this way | SubAbility$ DBCleanup\nSVar:Z:Remembered$Valid Creature\nA:AB$ Token | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ g_4_4_rhino_warrior | SpellDescription$ Create a 4/4 green Rhino Warrior creature token.\nDeckHas:Ability$Sacrifice|Token|Mill|Graveyard & Type$Rhino\nOracle:[+2]: You may sacrifice a creature. If you do, search your library for a creature card with mana value equal to 1 plus the sacrificed creature's mana value, put it onto the battlefield, then shuffle.\\n[+1]: Mill five cards, then put any number of creature cards milled this way into your hand.\\n[-1]: Create a 4/4 green Rhino Warrior creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivien on the Hunt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

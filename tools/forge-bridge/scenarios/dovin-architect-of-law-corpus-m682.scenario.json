@@ -1,0 +1,23 @@
+{
+  "id": "dovin-architect-of-law-corpus-m682",
+  "description": "M6 corpus — Dovin, Architect of Law; in-hand parse.",
+  "seed": 62059,
+  "cards": {
+    "Dovin, Architect of Law": "Name:Dovin, Architect of Law\nManaCost:4 W U\nTypes:Legendary Planeswalker Dovin\nLoyalty:5\nA:AB$ GainLife | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | LifeAmount$ 2 | SubAbility$ DBDraw | SpellDescription$ You gain 2 life and draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Tap | Cost$ SubCounter<1/LOYALTY> | ValidTgts$ Creature | TgtPrompt$ Choose target creature to tap. | Planeswalker$ True | SubAbility$ DovinPump | SpellDescription$ Tap target creature. It doesn't untap during its controller's next untap step.\nSVar:DovinPump:DB$ Pump | Defined$ Targeted | Duration$ Permanent | KW$ HIDDEN This card doesn't untap during your next untap step.\nA:AB$ TapAll | Cost$ SubCounter<9/LOYALTY> | ValidTgts$ Opponent | ValidCards$ Permanent | Planeswalker$ True | Ultimate$ True | SubAbility$ NoUntap | SpellDescription$ Tap all permanents target opponent controls. That player skips their next untap step.\nSVar:NoUntap:DB$ SkipPhase | Defined$ TargetedPlayer | Step$ Untap | IsCurse$ True\nOracle:[+1]: You gain 2 life and draw a card.\\n[-1]: Tap target creature. It doesn't untap during its controller's next untap step.\\n[-9]: Tap all permanents target opponent controls. That player skips their next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dovin, Architect of Law"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

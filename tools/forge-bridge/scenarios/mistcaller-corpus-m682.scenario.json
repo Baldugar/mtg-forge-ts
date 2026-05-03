@@ -1,0 +1,23 @@
+{
+  "id": "mistcaller-corpus-m682",
+  "description": "M6 corpus — Mistcaller; in-hand parse.",
+  "seed": 63394,
+  "cards": {
+    "Mistcaller": "Name:Mistcaller\nManaCost:U\nTypes:Creature Merfolk Wizard\nPT:1/1\nA:AB$ Effect | Cost$ Sac<1/CARDNAME> | ReplacementEffects$ EffRMoved | AILogic$ NonCastCreature | SpellDescription$ Until end of turn, if a nontoken creature would enter and it wasn't cast, exile it instead.\nSVar:EffRMoved:Event$ Moved | ActiveZones$ Command | Destination$ Battlefield | ValidCard$ Creature.!token+!wasCast | ReplaceWith$ EffDBChangeZone | Description$ If a nontoken creature would enter and it wasn't cast, exile it instead.\nSVar:EffDBChangeZone:DB$ ChangeZone | Defined$ ReplacedCard | Hidden$ True | Origin$ All | Destination$ Exile\nOracle:Sacrifice Mistcaller: Until end of turn, if a nontoken creature would enter and it wasn't cast, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mistcaller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

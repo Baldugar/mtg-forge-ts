@@ -1,0 +1,23 @@
+{
+  "id": "themberchaud-corpus-m682",
+  "description": "M6 corpus — Themberchaud; in-hand parse.",
+  "seed": 64835,
+  "cards": {
+    "Themberchaud": "Name:Themberchaud\nManaCost:4 R R R\nTypes:Legendary Creature Dragon\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAllNonFlyers | TriggerDescription$ When CARDNAME enters, he deals X damage to each other creature without flying and each player, where X is the number of Mountains you control.\nSVar:TrigDamageAllNonFlyers:DB$ DamageAll | NumDmg$ X | ValidCards$ Creature.Other+withoutFlying | ValidPlayers$ Player\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Trigger$ TrigPump | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. When you do, he gains flying until end of turn. (An exerted creature won't untap during your next untap step.)\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying | SpellDescription$ When you do, he gains flying until end of turn.\nSVar:X:Count$Valid Mountain.YouCtrl\nDeckHints:Type$Dragon & Keyword$Flying\nOracle:Trample\\nWhen Themberchaud enters, he deals X damage to each other creature without flying and each player, where X is the number of Mountains you control.\\nYou may exert Themberchaud as he attacks. When you do, he gains flying until end of turn. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Themberchaud"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

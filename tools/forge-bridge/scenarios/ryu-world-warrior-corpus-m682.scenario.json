@@ -1,0 +1,23 @@
+{
+  "id": "ryu-world-warrior-corpus-m682",
+  "description": "M6 corpus — Ryu, World Warrior; in-hand parse.",
+  "seed": 64085,
+  "cards": {
+    "Ryu, World Warrior": "Name:Ryu, World Warrior\nVariant:UniversesWithin:FlavorName:Vikya, Scorching Stalwart\nManaCost:2 W\nTypes:Legendary Creature Human Warrior\nPT:2/4\nK:Training\nA:AB$ DealDamage | PrecostDesc$ Hadoken — | Cost$ 4 R Q Discard<1/Card> | ValidTgts$ Any | NumDmg$ X | AILogic$ PowerDmg | ExcessSVar$ Excess | ExcessSVarCondition$ Creature | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals damage equal to his power to any target.\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ Excess | IfDesc$ True | SpellDescription$ If excess damage was dealt to a creature this way, draw a card. ({Q} is the untap symbol.)\nSVar:X:Count$CardPower\nDeckHas:Ability$Counters|Discard\nOracle:Training (Whenever this creature attacks with another creature with greater power, put a +1/+1 counter on this creature.)\\nHadoken — {4}{R}, {Q}, Discard a card: Ryu, World Warrior deals damage equal to his power to any target. If excess damage was dealt to a creature this way, draw a card. ({Q} is the untap symbol.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ryu, World Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

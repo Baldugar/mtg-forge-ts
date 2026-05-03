@@ -1,0 +1,23 @@
+{
+  "id": "ambulatory-edifice-corpus-m682",
+  "description": "M6 corpus — Ambulatory Edifice; in-hand parse.",
+  "seed": 61469,
+  "cards": {
+    "Ambulatory Edifice": "Name:Ambulatory Edifice\nManaCost:2 B\nTypes:Artifact Creature Phyrexian Construct\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBTrigger | TriggerDescription$ When CARDNAME enters, you may pay 2 life. When you do, target creature gets -1/-1 until end of turn.\nSVar:DBTrigger:AB$ ImmediateTrigger | Cost$ PayLife<2> | Execute$ TrigDebuff | TriggerDescription$ When you do, target creature gets -1/-1 until end of turn.\nSVar:TrigDebuff:DB$ Pump | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nOracle:When Ambulatory Edifice enters, you may pay 2 life. When you do, target creature gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ambulatory Edifice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

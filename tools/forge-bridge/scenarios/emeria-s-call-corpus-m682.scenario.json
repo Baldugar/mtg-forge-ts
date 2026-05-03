@@ -1,0 +1,23 @@
+{
+  "id": "emeria-s-call-corpus-m682",
+  "description": "M6 corpus — Emeria's Call; in-hand parse.",
+  "seed": 62196,
+  "cards": {
+    "Emeria's Call": "Name:Emeria's Call\nManaCost:4 W W W\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ 2 | TokenScript$ w_4_4_angel_warrior_flying | SubAbility$ DBPumpAll | SpellDescription$ Create two 4/4 white Angel Warrior creature tokens with flying. Non-Angel creatures you control gain indestructible until your next turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.nonAngel+YouCtrl | KW$ Indestructible | Duration$ UntilYourNextTurn\nDeckHas:Ability$Token\nAlternateMode:Modal\nOracle:Create two 4/4 white Angel Warrior creature tokens with flying. Non-Angel creatures you control gain indestructible until your next turn.\n\nALTERNATE\n\nName:Emeria, Shattered Skyclave\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 3 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<3> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nOracle:As Emeria, Shattered Skyclave enters, you may pay 3 life. If you don't, it enters tapped.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emeria's Call"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

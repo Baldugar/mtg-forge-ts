@@ -1,0 +1,23 @@
+{
+  "id": "spiked-ripsaw-corpus-m682",
+  "description": "M6 corpus — Spiked Ripsaw; in-hand parse.",
+  "seed": 64550,
+  "cards": {
+    "Spiked Ripsaw": "Name:Spiked Ripsaw\nManaCost:2 G\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddToughness$ 3 | AddSVar$ AE | Description$ Equipped creature gets +3/+3.\nT:Mode$ Attacks | ValidCard$ Creature.EquippedBy | Execute$ TrigPump | TriggerDescription$ Whenever equipped creature attacks, you may sacrifice a Forest. If you do, that creature gains trample until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ Sac<1/Forest> | Defined$ TriggeredAttackerLKICopy | KW$ Trample\nK:Equip:3\nSVar:AE:SVar:HasAttackEffect:TRUE\nOracle:Equipped creature gets +3/+3.\\nWhenever equipped creature attacks, you may sacrifice a Forest. If you do, that creature gains trample until end of turn.\\nEquip {3} ({3}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spiked Ripsaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

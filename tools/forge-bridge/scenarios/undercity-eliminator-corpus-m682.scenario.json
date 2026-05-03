@@ -1,0 +1,23 @@
+{
+  "id": "undercity-eliminator-corpus-m682",
+  "description": "M6 corpus — Undercity Eliminator; in-hand parse.",
+  "seed": 65015,
+  "cards": {
+    "Undercity Eliminator": "Name:Undercity Eliminator\nManaCost:3 B B\nTypes:Creature Gorgon Assassin\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME enters, you may sacrifice an artifact or creature. When you do, exile target creature an opponent controls.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<1/Artifact;Creature/artifact or creature> | Execute$ TrigExile | TriggerDescription$ When you do, exile target creature an opponent controls.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Origin$ Battlefield | Destination$ Exile\nDeckHas:Ability$Sacrifice\nOracle:When Undercity Eliminator enters, you may sacrifice an artifact or creature. When you do, exile target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undercity Eliminator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

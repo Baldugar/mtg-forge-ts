@@ -1,0 +1,23 @@
+{
+  "id": "engineered-explosives-corpus-m682",
+  "description": "M6 corpus — Engineered Explosives; in-hand parse.",
+  "seed": 62205,
+  "cards": {
+    "Engineered Explosives": "Name:Engineered Explosives\nManaCost:X\nTypes:Artifact\nK:Sunburst\nA:AB$ DestroyAll | Cost$ 2 Sac<1/CARDNAME> | ValidCards$ Permanent.nonLand+cmcEQY | SpellDescription$ Destroy each nonland permanent with mana value equal to the number of charge counters on CARDNAME.\nSVar:X:Count$xPaid\nSVar:Y:Count$CardCounters.CHARGE\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nDeckHints:Ability$Proliferate\nOracle:Sunburst (This enters with a charge counter on it for each color of mana spent to cast it.)\\n{2}, Sacrifice Engineered Explosives: Destroy each nonland permanent with mana value equal to the number of charge counters on Engineered Explosives.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Engineered Explosives"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conch-horn-corpus-m682",
+  "description": "M6 corpus — Conch Horn; in-hand parse.",
+  "seed": 61801,
+  "cards": {
+    "Conch Horn": "Name:Conch Horn\nManaCost:2\nTypes:Artifact\nA:AB$ Draw | Cost$ 1 T Sac<1/CARDNAME> | NumCards$ 2 | SubAbility$ DBTop | SpellDescription$ Draw two cards, then put a card from your hand on top of your library.\nSVar:DBTop:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True\nOracle:{1}, {T}, Sacrifice Conch Horn: Draw two cards, then put a card from your hand on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conch Horn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

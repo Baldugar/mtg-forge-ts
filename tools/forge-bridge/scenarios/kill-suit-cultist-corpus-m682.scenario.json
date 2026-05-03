@@ -1,0 +1,23 @@
+{
+  "id": "kill-suit-cultist-corpus-m682",
+  "description": "M6 corpus — Kill-Suit Cultist; in-hand parse.",
+  "seed": 63026,
+  "cards": {
+    "Kill-Suit Cultist": "Name:Kill-Suit Cultist\nManaCost:R\nTypes:Creature Goblin Berserker\nPT:1/1\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nA:AB$ Effect | Cost$ B Sac<1/CARDNAME> | ValidTgts$ Creature | ReplacementEffects$ SelfDamage | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ The next time damage would be dealt to target creature this turn, destroy that creature instead.\nSVar:SelfDamage:Event$ DamageDone | ValidTarget$ Creature.IsRemembered | ReplaceWith$ CultistDestroy | Description$ The next time damage would be dealt to target creature this turn, destroy that creature instead.\nSVar:CultistDestroy:DB$ Destroy | Defined$ ReplacedTarget | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Kill-Suit Cultist attacks each combat if able.\\n{B}, Sacrifice Kill-Suit Cultist: The next time damage would be dealt to target creature this turn, destroy that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kill-Suit Cultist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

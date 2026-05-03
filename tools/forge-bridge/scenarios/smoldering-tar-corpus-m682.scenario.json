@@ -1,0 +1,23 @@
+{
+  "id": "smoldering-tar-corpus-m682",
+  "description": "M6 corpus — Smoldering Tar; in-hand parse.",
+  "seed": 64456,
+  "cards": {
+    "Smoldering Tar": "Name:Smoldering Tar\nManaCost:2 B R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, target player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 1\nA:AB$ DealDamage | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature | NumDmg$ 4 | SorcerySpeed$ True | SpellDescription$ It deals 4 damage to target creature. Activate only as a sorcery.\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, target player loses 1 life.\\nSacrifice Smoldering Tar: It deals 4 damage to target creature. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Smoldering Tar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

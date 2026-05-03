@@ -1,0 +1,23 @@
+{
+  "id": "myojin-of-cleansing-fire-corpus-m682",
+  "description": "M6 corpus — Myojin of Cleansing Fire; in-hand parse.",
+  "seed": 63470,
+  "cards": {
+    "Myojin of Cleansing Fire": "Name:Myojin of Cleansing Fire\nManaCost:5 W W W\nTypes:Legendary Creature Spirit\nPT:4/6\nK:etbCounter:DIVINITY:1:CheckSVar$ FromHand:CARDNAME enters with a divinity counter on it if you cast it from your hand.\nSVar:FromHand:Count$wasCastFromYourHandByYou.1.0\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE1_DIVINITY | AddKeyword$ Indestructible | Description$ CARDNAME has indestructible as long as it has a divinity counter on it.\nA:AB$ DestroyAll | Cost$ SubCounter<1/DIVINITY> | ValidCards$ Creature.StrictlyOther | SpellDescription$ Destroy all other creatures.\nOracle:Myojin of Cleansing Fire enters with a divinity counter on it if you cast it from your hand.\\nMyojin of Cleansing Fire has indestructible as long as it has a divinity counter on it.\\nRemove a divinity counter from Myojin of Cleansing Fire: Destroy all other creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myojin of Cleansing Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kishla-trawlers-corpus-m682",
+  "description": "M6 corpus — Kishla Trawlers; in-hand parse.",
+  "seed": 63036,
+  "cards": {
+    "Kishla Trawlers": "Name:Kishla Trawlers\nManaCost:2 U\nTypes:Creature Human Citizen\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ When this creature enters, you may exile a creature card from your graveyard. When you do, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ ExileFromGrave<1/Creature/creature card> | Execute$ TrigReturn | SpellDescription$ When you do, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TgtPrompt$ Select target instant or sorcery to return from your graveyard\nDeckHas:Ability$Graveyard\nOracle:When this creature enters, you may exile a creature card from your graveyard. When you do, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kishla Trawlers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

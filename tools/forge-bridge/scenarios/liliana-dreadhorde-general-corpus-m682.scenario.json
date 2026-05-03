@@ -1,0 +1,23 @@
+{
+  "id": "liliana-dreadhorde-general-corpus-m682",
+  "description": "M6 corpus — Liliana, Dreadhorde General; in-hand parse.",
+  "seed": 63155,
+  "cards": {
+    "Liliana, Dreadhorde General": "Name:Liliana, Dreadhorde General\nManaCost:4 B B\nTypes:Legendary Planeswalker Liliana\nLoyalty:6\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ b_2_2_zombie | SpellDescription$ Create a 2/2 black Zombie creature token.\nA:AB$ Sacrifice | Cost$ SubCounter<4/LOYALTY> | Planeswalker$ True | Amount$ 2 | SacValid$ Creature | Defined$ Player | SpellDescription$ Each player sacrifices two creatures.\nA:AB$ ChooseCard | Cost$ SubCounter<9/LOYALTY> | Planeswalker$ True | Ultimate$ True | Defined$ Opponent | Choices$ Permanent | ChooseEach$ Artifact & Battle & Creature & Enchantment & Land & Planeswalker | ControlledByPlayer$ Chooser | Mandatory$ True | Reveal$ True | SubAbility$ SacAllOthers | StackDescription$ SpellDescription | SpellDescription$ Each opponent chooses a permanent they control of each permanent type and sacrifices the rest.\nSVar:SacAllOthers:DB$ SacrificeAll | ValidCards$ Permanent.nonChosenCard+OppCtrl | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token|Sacrifice & Type$Zombie\nOracle:Whenever a creature you control dies, draw a card.\\n[+1]: Create a 2/2 black Zombie creature token.\\n[-4]: Each player sacrifices two creatures.\\n[-9]: Each opponent chooses a permanent they control of each permanent type and sacrifices the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana, Dreadhorde General"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

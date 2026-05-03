@@ -1,0 +1,23 @@
+{
+  "id": "scrabbling-claws-corpus-m682",
+  "description": "M6 corpus — Scrabbling Claws; in-hand parse.",
+  "seed": 64227,
+  "cards": {
+    "Scrabbling Claws": "Name:Scrabbling Claws\nManaCost:1\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ T | ValidTgts$ Player | DefinedPlayer$ Targeted | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | Hidden$ True | Chooser$ Targeted | Mandatory$ True | IsCurse$ True | SpellDescription$ Target player exiles a card from their graveyard.\nA:AB$ ChangeZone | Cost$ 1 Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SubAbility$ DBDraw | SpellDescription$ Exile target card from a graveyard. Draw a card.\nSVar:DBDraw:DB$ Draw\nOracle:{T}: Target player exiles a card from their graveyard.\\n{1}, Sacrifice Scrabbling Claws: Exile target card from a graveyard. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scrabbling Claws"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

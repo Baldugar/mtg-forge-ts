@@ -1,0 +1,23 @@
+{
+  "id": "mage-ring-network-corpus-m682",
+  "description": "M6 corpus — Mage-Ring Network; in-hand parse.",
+  "seed": 63234,
+  "cards": {
+    "Mage-Ring Network": "Name:Mage-Ring Network\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ PutCounter | Cost$ 1 T | CounterType$ STORAGE | CounterNum$ 1 | SpellDescription$ Put a storage counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<X/STORAGE> | Produced$ C | Amount$ X | AILogic$ ManaRitualBattery | AINoRecursiveCheck$ True | SpellDescription$ Add {C} for each storage counter removed this way.\nSVar:X:Count$xPaid\nOracle:{T}: Add {C}.\\n{1}, {T}: Put a storage counter on Mage-Ring Network.\\n{T}, Remove any number of storage counters from Mage-Ring Network: Add {C} for each storage counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mage-Ring Network"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

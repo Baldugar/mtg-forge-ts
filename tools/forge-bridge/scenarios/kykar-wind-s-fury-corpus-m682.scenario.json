@@ -1,0 +1,23 @@
+{
+  "id": "kykar-wind-s-fury-corpus-m682",
+  "description": "M6 corpus — Kykar, Wind's Fury; in-hand parse.",
+  "seed": 63086,
+  "cards": {
+    "Kykar, Wind's Fury": "Name:Kykar, Wind's Fury\nManaCost:1 U R W\nTypes:Legendary Creature Bird Wizard\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:BuffedBy:Card.nonCreature+nonLand\nDeckHas:Ability$Counters\nA:AB$ Mana | Cost$ Sac<1/Spirit> | Produced$ R | SpellDescription$ Add {R}.\nOracle:Flying\\nWhenever you cast a noncreature spell, create a 1/1 white Spirit creature token with flying.\\nSacrifice a Spirit: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kykar, Wind's Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

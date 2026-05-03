@@ -1,0 +1,23 @@
+{
+  "id": "saw-corpus-m682",
+  "description": "M6 corpus — Saw; in-hand parse.",
+  "seed": 64196,
+  "cards": {
+    "Saw": "Name:Saw\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature attacks, you may sacrifice a permanent other than that creature or CARDNAME. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Permanent.Other+NotDefinedTriggeredAttacker/permanent other than the triggered attacker or CARDNAME>\nK:Equip:2\nOracle:Equipped creature gets +2/+0.\\nWhenever equipped creature attacks, you may sacrifice a permanent other than that creature or Saw. If you do, draw a card.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

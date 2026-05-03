@@ -1,0 +1,23 @@
+{
+  "id": "martyr-of-bones-corpus-m682",
+  "description": "M6 corpus — Martyr of Bones; in-hand parse.",
+  "seed": 63285,
+  "cards": {
+    "Martyr of Bones": "Name:Martyr of Bones\nManaCost:B\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ ChangeZone | Cost$ 1 Reveal<X/Card.Black> Sac<1/CARDNAME> | CostDesc$ {1}, Reveal X black cards from your hand, Sacrifice CARDNAME: | Origin$ Graveyard | TargetsWithSameController$ True | Destination$ Exile | TargetMin$ 0 | TargetMax$ Y | ValidTgts$ Card | SpellDescription$ Exile up to X target cards from a single graveyard.\nSVar:X:TargetedObjects$Amount\nSVar:Y:Count$ValidHand Card.Black+YouOwn\nAI:RemoveDeck:All\nOracle:{1}, Reveal X black cards from your hand, Sacrifice Martyr of Bones: Exile up to X target cards from a single graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martyr of Bones"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

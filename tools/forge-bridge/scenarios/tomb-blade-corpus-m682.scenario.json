@@ -1,0 +1,23 @@
+{
+  "id": "tomb-blade-corpus-m682",
+  "description": "M6 corpus — Tomb Blade; in-hand parse.",
+  "seed": 64903,
+  "cards": {
+    "Tomb Blade": "Name:Tomb Blade\nManaCost:4 B B\nTypes:Artifact Creature Necron\nPT:5/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigLoseLife | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player loses life equal to the number of creatures they control unless they sacrifice a creature.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredTarget | UnlessCost$ Sac<1/Creature> | UnlessPayer$ TriggeredTarget | LifeAmount$ X\nSVar:X:TriggeredTarget$Valid Creature.YouCtrl\nK:Unearth:6 B B\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice|Graveyard\nOracle:Flying\\nWhenever Tomb Blade deals combat damage to a player, that player loses life equal to the number of creatures they control unless they sacrifice a creature.\\nUnearth {6}{B}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tomb Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

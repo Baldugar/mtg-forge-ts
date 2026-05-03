@@ -1,0 +1,23 @@
+{
+  "id": "trickster-s-talisman-corpus-m682",
+  "description": "M6 corpus — Trickster's Talisman; in-hand parse.",
+  "seed": 64967,
+  "cards": {
+    "Trickster's Talisman": "Name:Trickster's Talisman\nManaCost:U\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | AddTrigger$ AttackTrigger | Description$ Invoke Duplicity — Equipped creature gets +1/+1 and has \"Whenever this creature deals combat damage to a player, you may sacrifice CARDNAME. If you do, create a token that's a copy of this creature.\"\nSVar:AttackTrigger:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may sacrifice ORIGINALHOST. If you do, create a token that's a copy of CARDNAME.\nSVar:TrigCopy:AB$ CopyPermanent | Cost$ Sac<1/OriginalHost/Trickster's Talisman> | Defined$ Self\nDeckHas:Ability$Token\nOracle:Invoke Duplicity — Equipped creature gets +1/+1 and has \"Whenever this creature deals combat damage to a player, you may sacrifice Trickster's Talisman. If you do, create a token that's a copy of this creature.\"\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trickster's Talisman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

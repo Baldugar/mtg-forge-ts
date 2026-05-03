@@ -1,0 +1,23 @@
+{
+  "id": "imskir-iron-eater-corpus-m682",
+  "description": "M6 corpus — Imskir Iron-Eater; in-hand parse.",
+  "seed": 62856,
+  "cards": {
+    "Imskir Iron-Eater": "Name:Imskir Iron-Eater\nManaCost:6 B R\nTypes:Legendary Creature Demon\nPT:5/5\nK:Affinity:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw X cards and you lose X life, where X is half the number of artifacts you control, rounded down.\nSVar:TrigDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ Y\nSVar:Y:Count$Valid Artifact.YouCtrl/HalfDown\nA:AB$ DealDamage | Cost$ 3 R Sac<1/Artifact> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ NICKNAME deals damage to any target equal to the sacrificed artifact's mana value.\nSVar:X:Sacrificed$CardManaCost\nDeckHints:Type$Artifact\nDeckHas:Ability$Sacrifice\nOracle:Affinity for artifacts\\nWhen Imskir Iron-Eater enters, you draw X cards and you lose X life, where X is half the number of artifacts you control, rounded down.\\n{3}{R}, Sacrifice an artifact: Imskir deals damage to any target equal to the sacrificed artifact's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Imskir Iron-Eater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

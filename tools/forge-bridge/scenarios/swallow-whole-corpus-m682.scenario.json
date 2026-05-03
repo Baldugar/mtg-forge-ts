@@ -1,0 +1,23 @@
+{
+  "id": "swallow-whole-corpus-m682",
+  "description": "M6 corpus — Swallow Whole; in-hand parse.",
+  "seed": 64688,
+  "cards": {
+    "Swallow Whole": "Name:Swallow Whole\nManaCost:W\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ W tapXType<1/Creature> | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBPutCounter | SpellDescription$ Exile target tapped creature.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Tapped | CounterType$ P1P1 | SpellDescription$ Put a +1/+1 counter on the creature tapped to cast this spell.\nDeckHas:Ability$Counters\nOracle:As an additional cost to cast this spell, tap an untapped creature you control.\\nExile target tapped creature. Put a +1/+1 counter on the creature tapped to pay this spell's additional cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Swallow Whole"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

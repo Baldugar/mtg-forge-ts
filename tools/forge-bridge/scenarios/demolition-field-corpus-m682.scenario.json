@@ -1,0 +1,23 @@
+{
+  "id": "demolition-field-corpus-m682",
+  "description": "M6 corpus — Demolition Field; in-hand parse.",
+  "seed": 61977,
+  "cards": {
+    "Demolition Field": "Name:Demolition Field\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Destroy | Cost$ 2 T Sac<1/CARDNAME> | ValidTgts$ Land.nonBasic+OppCtrl | TgtPrompt$ Select target nonbasic land an opponent controls | SubAbility$ DBSearch | AILogic$ GhostQuarter | SpellDescription$ Destroy target nonbasic land an opponent controls. That land's controller may search their library for a basic land card, put it onto the battlefield, then shuffle. You may search your library for a basic land card, put it onto the battlefield, then shuffle.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | DefinedPlayer$ TargetedController | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SubAbility$ DBSearchBis | StackDescription$ That land's controller may search their library for a basic land card, put it onto the battlefield, then shuffle. You may search your library for a basic land card, put it onto the battlefield, then shuffle.\nSVar:DBSearchBis:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | DefinedPlayer$ You | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:{T}: Add {C}.\\n{2}, {T}, Sacrifice Demolition Field: Destroy target nonbasic land an opponent controls. That land's controller may search their library for a basic land card, put it onto the battlefield, then shuffle. You may search your library for a basic land card, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demolition Field"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

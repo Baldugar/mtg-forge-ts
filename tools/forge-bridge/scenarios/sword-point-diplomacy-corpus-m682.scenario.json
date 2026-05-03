@@ -1,0 +1,23 @@
+{
+  "id": "sword-point-diplomacy-corpus-m682",
+  "description": "M6 corpus — Sword-Point Diplomacy; in-hand parse.",
+  "seed": 64691,
+  "cards": {
+    "Sword-Point Diplomacy": "Name:Sword-Point Diplomacy\nManaCost:2 B\nTypes:Sorcery\nA:SP$ PeekAndReveal | PeekAmount$ 3 | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBRepeat | StackDescription$ REP Reveal_{p:You} reveals & of your_of their & put_{p:You} puts & into your_into their & Then exile_Then {p:You} exiles | SpellDescription$ Reveal the top three cards of your library. For each of those cards, put that card into your hand unless any opponent pays 3 life. Then exile the rest.\nSVar:DBRepeat:DB$ RepeatEach | RepeatSubAbility$ DBChangeZone | RepeatCards$ Card.IsRemembered | ChooseOrder$ True | Zone$ Library | UseImprinted$ True | SubAbility$ PutIntoHand\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Imprinted | Origin$ Library | Destination$ Hand | UnlessCost$ PayLife<3> | UnlessPayer$ Opponent | ForgetChanged$ True\nSVar:PutIntoHand:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered | Origin$ Library | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Reveal the top three cards of your library. For each of those cards, put that card into your hand unless any opponent pays 3 life. Then exile the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sword-Point Diplomacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

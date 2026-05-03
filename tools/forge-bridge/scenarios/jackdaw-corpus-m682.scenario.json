@@ -1,0 +1,23 @@
+{
+  "id": "jackdaw-corpus-m682",
+  "description": "M6 corpus — Jackdaw; in-hand parse.",
+  "seed": 62936,
+  "cards": {
+    "Jackdaw": "Name:Jackdaw\nManaCost:1 U R\nTypes:Legendary Artifact Vehicle\nPT:4/4\nT:Mode$ DamageDone | CombatDamage$ True | ValidSource$ Card.Self | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may discard your hand. If you do, draw a card for each artifact you control.\nSVar:TrigDiscard:AB$ Draw | NumCards$ Count$Valid Artifact.YouCtrl | Cost$ Discard<0/Hand>\nK:Crew:3\nOracle:Whenever Jackdaw deals combat damage to a player, you may discard your hand. If you do, draw a card for each artifact you control.\\nCrew 3\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jackdaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

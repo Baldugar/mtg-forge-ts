@@ -1,0 +1,23 @@
+{
+  "id": "murmuring-bosk-corpus-m682",
+  "description": "M6 corpus — Murmuring Bosk; in-hand parse.",
+  "seed": 63464,
+  "cards": {
+    "Murmuring Bosk": "Name:Murmuring Bosk\nManaCost:no cost\nTypes:Land Forest\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal a Treefolk card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Treefolk> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SubAbility$ DBPain | SpellDescription$ Add {W} or {B}. CARDNAME deals 1 damage to you.\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nOracle:({T}: Add {G}.)\\nAs Murmuring Bosk enters, you may reveal a Treefolk card from your hand. If you don't, Murmuring Bosk enters tapped.\\n{T}: Add {W} or {B}. Murmuring Bosk deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Murmuring Bosk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

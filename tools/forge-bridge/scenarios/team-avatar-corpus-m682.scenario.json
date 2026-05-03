@@ -1,0 +1,23 @@
+{
+  "id": "team-avatar-corpus-m682",
+  "description": "M6 corpus — Team Avatar; in-hand parse.",
+  "seed": 64728,
+  "cards": {
+    "Team Avatar": "Name:Team Avatar\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control attacks alone, it gets +X/+X until end of turn, where X is the number of creatures you control.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X | NumDef$ +X\nA:AB$ DealDamage | Cost$ 2 W Discard<1/CARDNAME> | ActivationZone$ Hand | ValidTgts$ Creature | TgtPrompt$ Select target creature with flying | NumDmg$ X | SpellDescription$ It deals damage equal to the number of creatures you control to target creature.\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Whenever a creature you control attacks alone, it gets +X/+X until end of turn, where X is the number of creatures you control.\\n{2}{W}, Discard this card: It deals damage equal to the number of creatures you control to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Team Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "trade-routes-corpus-m682",
+  "description": "M6 corpus — Trade Routes; in-hand parse.",
+  "seed": 64938,
+  "cards": {
+    "Trade Routes": "Name:Trade Routes\nManaCost:1 U\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ 1 | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | SpellDescription$ Return target land you control to its owner's hand.\nA:AB$ Draw | Cost$ 1 Discard<1/Land> | NumCards$ 1 | SpellDescription$ Draw a card.\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:{1}: Return target land you control to its owner's hand.\\n{1}, Discard a land card: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trade Routes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

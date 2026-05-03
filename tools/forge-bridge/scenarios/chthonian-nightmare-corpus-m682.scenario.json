@@ -1,0 +1,23 @@
+{
+  "id": "chthonian-nightmare-corpus-m682",
+  "description": "M6 corpus — Chthonian Nightmare; in-hand parse.",
+  "seed": 61742,
+  "cards": {
+    "Chthonian Nightmare": "Name:Chthonian Nightmare\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nA:AB$ ChangeZone | Cost$ PayEnergy<X> Sac<1/Creature> Return<1/CARDNAME> | TgtPrompt$ Choose target creature card with mana value X in your graveyard | ValidTgts$ Creature.YouCtrl+cmcEQX | Origin$ Graveyard | Destination$ Battlefield | SorcerySpeed$ True | AILogic$ SacAndRetFromGrave | SpellDescription$ Return target creature card with mana value X from your graveyard to the battlefield. Activate only as a sorcery.\nSVar:X:Count$xPaid\nSVar:AIPreference:SacCost$Creature\nOracle:When Chthonian Nightmare enters, you get {E}{E}{E} (three energy counters).\\nPay X {E}, Sacrifice a creature, Return Chthonian Nightmare to its owner's hand: Return target creature card with mana value X from your graveyard to the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chthonian Nightmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

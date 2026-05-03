@@ -1,0 +1,23 @@
+{
+  "id": "talon-of-pain-corpus-m682",
+  "description": "M6 corpus — Talon of Pain; in-hand parse.",
+  "seed": 64709,
+  "cards": {
+    "Talon of Pain": "Name:Talon of Pain\nManaCost:4\nTypes:Artifact\nT:Mode$ DamageDone | ValidSource$ Card.Other+YouCtrl,Emblem.YouCtrl | ValidTarget$ Opponent | TriggerZones$ Battlefield | Execute$ TalonPutCounter | TriggerDescription$ Whenever a source you control other than CARDNAME deals damage to an opponent, put a charge counter on CARDNAME.\nSVar:TalonPutCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ DealDamage | Cost$ X T SubCounter<X/CHARGE> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ It deals X damage to any target.\nSVar:X:Count$xPaid\n# The X cost won't be limited by the number of charge counters, but if enough aren't present, the spell will be cancelled.\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nDeckHints:Ability$Proliferate\nOracle:Whenever a source you control other than Talon of Pain deals damage to an opponent, put a charge counter on Talon of Pain.\\n{X}, {T}, Remove X charge counters from Talon of Pain: It deals X damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Talon of Pain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

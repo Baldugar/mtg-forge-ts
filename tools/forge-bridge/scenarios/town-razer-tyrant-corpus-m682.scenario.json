@@ -1,0 +1,23 @@
+{
+  "id": "town-razer-tyrant-corpus-m682",
+  "description": "M6 corpus — Town-Razer Tyrant; in-hand parse.",
+  "seed": 64934,
+  "cards": {
+    "Town-Razer Tyrant": "Name:Town-Razer Tyrant\nManaCost:2 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME enters, target nonbasic land you don't control loses all abilities except mana abilities and gains \"At the beginning of your upkeep, this permanent deals 2 damage to you unless you sacrifice it.\"\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Land.nonBasic+YouDontCtrl | TgtPrompt$ Select target nonbasic land you don't control | RemoveNonManaAbilities$ True | Triggers$ EndofTurnShock | Duration$ Permanent\nSVar:EndofTurnShock:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 2 damage to you unless you sacrifice it.\nSVar:TrigDamage:DB$ DealDamage | Defined$ You | NumDmg$ 2 | UnlessCost$ Sac<1/CARDNAME> | UnlessPayer$ TriggeredPlayer\nOracle:Flying\\nWhen Town-Razer Tyrant enters, target nonbasic land you don't control loses all abilities except mana abilities and gains \"At the beginning of your upkeep, this permanent deals 2 damage to you unless you sacrifice it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Town-Razer Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

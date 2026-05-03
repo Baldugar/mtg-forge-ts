@@ -1,0 +1,23 @@
+{
+  "id": "ovinomancer-corpus-m682",
+  "description": "M6 corpus — Ovinomancer; in-hand parse.",
+  "seed": 63679,
+  "cards": {
+    "Ovinomancer": "Name:Ovinomancer\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:0/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return three basic lands you control to their owner's hand.\nA:AB$ Destroy | Cost$ Return<1/CARDNAME> T | ValidTgts$ Creature | NoRegen$ True | SubAbility$ DBToken | SpellDescription$ Destroy target creature. It can't be regenerated.\nSVar:DBToken:DB$ Token | TokenScript$ g_0_1_sheep | TokenOwner$ TargetedController\nSVar:TrigBounce:DB$ Sacrifice | UnlessCost$ Return<3/Land.Basic> | UnlessPayer$ You\nAI:RemoveDeck:All\nOracle:When Ovinomancer enters, sacrifice it unless you return three basic lands you control to their owner's hand.\\n{T}, Return Ovinomancer to its owner's hand: Destroy target creature. It can't be regenerated. That creature's controller creates a 0/1 green Sheep creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ovinomancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

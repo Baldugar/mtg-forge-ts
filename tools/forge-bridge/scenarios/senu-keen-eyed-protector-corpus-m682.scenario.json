@@ -1,0 +1,23 @@
+{
+  "id": "senu-keen-eyed-protector-corpus-m682",
+  "description": "M6 corpus — Senu, Keen-Eyed Protector; in-hand parse.",
+  "seed": 64281,
+  "cards": {
+    "Senu, Keen-Eyed Protector": "Name:Senu, Keen-Eyed Protector\nManaCost:1 W\nTypes:Legendary Creature Bird Scout\nPT:2/1\nK:Flying\nK:Vigilance\nA:AB$ GainLife | Cost$ T Exile<1/CARDNAME> | LifeAmount$ 2 | SubAbility$ DBScry | SpellDescription$ You gain 2 life and scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nT:Mode$ AttackerUnblocked | ValidCard$ Creature.Legendary+YouCtrl | Execute$ TrigChange | TriggerZones$ Exile | TriggerDescription$ When a legendary creature you control attacks and isn't blocked, if NICKNAME is exiled, put it onto the battlefield attacking.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Exile | Defined$ Self | Destination$ Battlefield | Attacking$ True\nOracle:Flying, vigilance\\n{T}, Exile Senu, Keen-Eyed Protector: You gain 2 life and scry 2.\\nWhen a legendary creature you control attacks and isn't blocked, if Senu is exiled, put it onto the battlefield attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Senu, Keen-Eyed Protector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

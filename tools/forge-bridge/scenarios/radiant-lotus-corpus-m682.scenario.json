@@ -1,0 +1,23 @@
+{
+  "id": "radiant-lotus-corpus-m682",
+  "description": "M6 corpus — Radiant Lotus; in-hand parse.",
+  "seed": 63893,
+  "cards": {
+    "Radiant Lotus": "Name:Radiant Lotus\nManaCost:6\nTypes:Artifact\nA:AB$ Mana | Cost$ T Sac<X/Artifact> | XMin$ 1 | Chooser$ You | ValidTgts$ Player | Produced$ Any | Amount$ Y | StackDescription$ SpellDescription | SpellDescription$ Choose a color. Target player adds three mana of the chosen color for each artifact sacrificed this way.\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.3\nSVar:BuffedBy:Artifact\nDeckNeeds:Type$Artifact\nDeckHas:Ability$Sacrifice\nAI:RemoveDeck:Random\nOracle:{T}, Sacrifice one or more artifacts: Choose a color. Target player adds three mana of the chosen color for each artifact sacrificed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Radiant Lotus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "piper-of-the-swarm-corpus-m682",
+  "description": "M6 corpus — Piper of the Swarm; in-hand parse.",
+  "seed": 63774,
+  "cards": {
+    "Piper of the Swarm": "Name:Piper of the Swarm\nManaCost:1 B\nTypes:Creature Human Warlock\nPT:1/3\nS:Mode$ Continuous | Affected$ Rat.YouCtrl | AddKeyword$ Menace | Description$ Rats you control have menace.\nSVar:PlayMain1:TRUE\nDeckHints:Type$Rat\nA:AB$ Token | Cost$ 1 B T | TokenScript$ b_1_1_rat | TokenOwner$ You | SpellDescription$ Create a 1/1 black Rat creature token.\nA:AB$ GainControl | Cost$ 2 B B T Sac<3/Rat> | ValidTgts$ Creature | SpellDescription$ Gain control of target creature.\nSVar:AIPreference:SacCost$Creature.Rat+token,Creature.Rat+cmcLE3\nDeckHas:Ability$Token\nOracle:Rats you control have menace.\\n{1}{B}, {T}: Create a 1/1 black Rat creature token.\\n{2}{B}{B}, {T}, Sacrifice three Rats: Gain control of target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Piper of the Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

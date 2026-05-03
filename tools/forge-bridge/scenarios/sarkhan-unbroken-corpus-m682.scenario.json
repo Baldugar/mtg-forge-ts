@@ -1,0 +1,23 @@
+{
+  "id": "sarkhan-unbroken-corpus-m682",
+  "description": "M6 corpus — Sarkhan Unbroken; in-hand parse.",
+  "seed": 64184,
+  "cards": {
+    "Sarkhan Unbroken": "Name:Sarkhan Unbroken\nManaCost:2 G U R\nTypes:Legendary Planeswalker Sarkhan\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | Defined$ You | SubAbility$ DBMana | Planeswalker$ True | SpellDescription$ Draw a card, then add one mana of any color.\nSVar:DBMana:DB$ Mana | Produced$ Any\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | TokenScript$ r_4_4_dragon_flying | TokenOwner$ You | Planeswalker$ True | SpellDescription$ Create a 4/4 red Dragon creature token with flying.\nA:AB$ ChangeZone | Cost$ SubCounter<8/LOYALTY> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.Dragon | ChangeNum$ XFetch | Planeswalker$ True | Ultimate$ True | StackDescription$ SpellDescription | SpellDescription$ Search your library for any number of Dragon creature cards, put them onto the battlefield, then shuffle.\nSVar:XFetch:Count$ValidLibrary Creature.Dragon+YouCtrl\nOracle:[+1]: Draw a card, then add one mana of any color.\\n[-2]: Create a 4/4 red Dragon creature token with flying.\\n[-8]: Search your library for any number of Dragon creature cards, put them onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sarkhan Unbroken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

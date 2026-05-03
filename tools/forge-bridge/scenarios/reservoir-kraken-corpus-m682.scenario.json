@@ -1,0 +1,23 @@
+{
+  "id": "reservoir-kraken-corpus-m682",
+  "description": "M6 corpus — Reservoir Kraken; in-hand parse.",
+  "seed": 63985,
+  "cards": {
+    "Reservoir Kraken": "Name:Reservoir Kraken\nManaCost:2 U U\nTypes:Creature Kraken\nPT:6/6\nK:Trample\nK:Ward:2\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigTap | PresentDefined$ Self | IsPresent$ Card.untapped | TriggerDescription$ At the beginning of each combat, if CARDNAME is untapped, any opponent may tap an untapped creature they control. If they do, tap CARDNAME and create a 1/1 blue Fish creature token with \"This creature can't be blocked.\"\nSVar:TrigTap:DB$ Tap | Defined$ Self | UnlessCost$ tapXType<1/Creature> | UnlessPayer$ Player.Opponent | UnlessSwitched$ True | UnlessResolveSubs$ WhenPaid | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ u_1_1_fish_unblockable\nDeckHas:Ability$Token & Type$Fish\nOracle:Trample, ward {2}\\nAt the beginning of each combat, if Reservoir Kraken is untapped, any opponent may tap an untapped creature they control. If they do, tap Reservoir Kraken and create a 1/1 blue Fish creature token with \"This creature can't be blocked.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Reservoir Kraken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

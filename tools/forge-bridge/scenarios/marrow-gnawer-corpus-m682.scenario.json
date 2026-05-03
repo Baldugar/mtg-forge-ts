@@ -1,0 +1,23 @@
+{
+  "id": "marrow-gnawer-corpus-m682",
+  "description": "M6 corpus — Marrow-Gnawer; in-hand parse.",
+  "seed": 63280,
+  "cards": {
+    "Marrow-Gnawer": "Name:Marrow-Gnawer\nManaCost:3 B B\nTypes:Legendary Creature Rat Rogue\nPT:2/3\nS:Mode$ Continuous | Affected$ Rat | AddKeyword$ Fear | Description$ All Rats have fear.\nA:AB$ Token | Cost$ T Sac<1/Rat> | TokenAmount$ X | TokenScript$ b_1_1_rat | TokenOwner$ You | SpellDescription$ Create X 1/1 black Rat creature tokens, where X is the number of Rats you control.\nSVar:X:Count$Valid Rat.YouCtrl\nSVar:AIPreference:SacCost$Creature.Rat+token,Creature.Rat+cmcLE3\nAI:RemoveDeck:Random\nDeckHints:Type$Rat\nOracle:All Rats have fear.\\n{T}, Sacrifice a Rat: Create X 1/1 black Rat creature tokens, where X is the number of Rats you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marrow-Gnawer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

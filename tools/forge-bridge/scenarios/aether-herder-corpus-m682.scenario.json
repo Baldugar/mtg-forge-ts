@@ -1,0 +1,23 @@
+{
+  "id": "aether-herder-corpus-m682",
+  "description": "M6 corpus — Aether Herder; in-hand parse.",
+  "seed": 61447,
+  "cards": {
+    "Aether Herder": "Name:Aether Herder\nManaCost:3 G\nTypes:Creature Elf Artificer Druid\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, create a 1/1 colorless Servo artifact creature token.\nSVar:TrigToken:AB$ Token | Cost$ PayEnergy<2> | TokenScript$ c_1_1_a_servo | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nOracle:When Aether Herder enters, you get {E}{E} (two energy counters).\\nWhenever Aether Herder attacks, you may pay {E}{E}. If you do, create a 1/1 colorless Servo artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Herder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "culling-the-weak-corpus-m682",
+  "description": "M6 corpus — Culling the Weak; in-hand parse.",
+  "seed": 61892,
+  "cards": {
+    "Culling the Weak": "Name:Culling the Weak\nManaCost:B\nTypes:Instant\nA:SP$ Mana | Cost$ B Sac<1/Creature> | Produced$ B | Amount$ 4 | AILogic$ ManaRitual | AINoRecursiveCheck$ True | SpellDescription$ Add {B}{B}{B}{B}.\nSVar:AIPreference:SacCost$Creature.cmcLE2\n# TODO: Improve the mana ritual AI such that it does not \"misfire\" from time to time, and only then remove RemoveDeck here, because otherwise sometimes the AI will just sac the creature and not cast anything.\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nAdd {B}{B}{B}{B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Culling the Weak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

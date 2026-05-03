@@ -1,0 +1,23 @@
+{
+  "id": "multani-yavimaya-s-avatar-corpus-m682",
+  "description": "M6 corpus — Multani, Yavimaya's Avatar; in-hand parse.",
+  "seed": 63455,
+  "cards": {
+    "Multani, Yavimaya's Avatar": "Name:Multani, Yavimaya's Avatar\nManaCost:4 G G\nTypes:Legendary Creature Elemental Avatar\nPT:0/0\nK:Reach\nK:Trample\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each land you control and each land card in your graveyard.\nSVar:X:Count$Valid Land.YouCtrl/Plus.Y\nSVar:Y:Count$ValidGraveyard Land.YouOwn\nA:AB$ ChangeZone | Cost$ 1 G Return<2/Land> | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nSVar:DiscardMe:1\nOracle:Reach, trample\\nMultani, Yavimaya's Avatar gets +1/+1 for each land you control and each land card in your graveyard.\\n{1}{G}, Return two lands you control to their owner's hand: Return Multani from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Multani, Yavimaya's Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

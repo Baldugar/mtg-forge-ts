@@ -1,0 +1,23 @@
+{
+  "id": "tainted-specter-corpus-m682",
+  "description": "M6 corpus — Tainted Specter; in-hand parse.",
+  "seed": 64707,
+  "cards": {
+    "Tainted Specter": "Name:Tainted Specter\nManaCost:3 B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nA:AB$ Discard | Cost$ 1 B B T | ValidTgts$ Player | SorcerySpeed$ True | NumCards$ 1 | Mode$ TgtChoose | SorcerySpeed$ True | RememberDiscarded$ True | SubAbility$ DBDmg | UnlessPayer$ Targeted | UnlessCost$ PutCardToLibFromHand<1/0/Card> | SpellDescription$ Target player discards a card unless they put a card from their hand on top of their library. If that player discards a card this way, CARDNAME deals 1 damage to each creature and each player. Activate only as a sorcery.\nSVar:DBDmg:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\n{1}{B}{B}, {T}: Target player discards a card unless they put a card from their hand on top of their library. If that player discards a card this way, Tainted Specter deals 1 damage to each creature and each player. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tainted Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

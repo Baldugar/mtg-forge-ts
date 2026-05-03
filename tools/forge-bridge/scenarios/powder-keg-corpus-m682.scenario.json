@@ -1,0 +1,23 @@
+{
+  "id": "powder-keg-corpus-m682",
+  "description": "M6 corpus — Powder Keg; in-hand parse.",
+  "seed": 63805,
+  "cards": {
+    "Powder Keg": "Name:Powder Keg\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a fuse counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FUSE | CounterNum$ 1\nA:AB$ DestroyAll | Cost$ T Sac<1/CARDNAME> | ValidCards$ Artifact.cmcEQX,Creature.cmcEQX | SpellDescription$ Destroy each artifact and creature with mana value equal to the number of fuse counters on CARDNAME.\nSVar:X:Count$CardCounters.FUSE\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may put a fuse counter on Powder Keg.\\n{T}, Sacrifice Powder Keg: Destroy each artifact and creature with mana value equal to the number of fuse counters on Powder Keg.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Powder Keg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

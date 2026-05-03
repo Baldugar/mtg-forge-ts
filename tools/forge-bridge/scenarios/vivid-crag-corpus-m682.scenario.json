@@ -1,0 +1,23 @@
+{
+  "id": "vivid-crag-corpus-m682",
+  "description": "M6 corpus — Vivid Crag; in-hand parse.",
+  "seed": 65124,
+  "cards": {
+    "Vivid Crag": "Name:Vivid Crag\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped with two charge counters on it.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ CHARGE | CounterNum$ 2\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Mana | Cost$ T SubCounter<1/CHARGE> | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$Counters\nOracle:Vivid Crag enters tapped with two charge counters on it.\\n{T}: Add {R}.\\n{T}, Remove a charge counter from Vivid Crag: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivid Crag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

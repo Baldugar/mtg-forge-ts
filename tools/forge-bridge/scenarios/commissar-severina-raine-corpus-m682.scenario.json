@@ -1,0 +1,23 @@
+{
+  "id": "commissar-severina-raine-corpus-m682",
+  "description": "M6 corpus — Commissar Severina Raine; in-hand parse.",
+  "seed": 61793,
+  "cards": {
+    "Commissar Severina Raine": "Name:Commissar Severina Raine\nManaCost:1 W B\nTypes:Legendary Creature Human Soldier\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Leading from the Front — Whenever CARDNAME attacks, each opponent loses X life, where X is the number of other attacking creatures.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Opponent | LifeAmount$ X\nA:AB$ GainLife | Cost$ 2 Sac<1/Creature.Other/another creature> | PrecostDesc$ Summary Execution — | LifeAmount$ 2 | SubAbility$ DBDraw | SpellDescription$ You gain 2 life and draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:X:Count$Valid Creature.attacking+Other\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:Leading from the Front — Whenever Commissar Severina Raine attacks, each opponent loses X life, where X is the number of other attacking creatures.\\nSummary Execution — {2}, Sacrifice another creature: You gain 2 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commissar Severina Raine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sawblade-scamp-corpus-m682",
+  "description": "M6 corpus — Sawblade Scamp; in-hand parse.",
+  "seed": 64197,
+  "cards": {
+    "Sawblade Scamp": "Name:Sawblade Scamp\nManaCost:R\nTypes:Creature Phyrexian Beast\nPT:1/1\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ OIL\nA:AB$ DealDamage | Cost$ T SubCounter<1/OIL> | Defined$ Opponent | NumDmg$ 1 | SpellDescription$ It deals 1 damage to each opponent.\nSVar:BuffedBy:Card.nonCreature\nDeckHas:Ability$Counters\nOracle:Haste\\nWhenever you cast a noncreature spell, put an oil counter on Sawblade Scamp.\\n{T}, Remove an oil counter from Sawblade Scamp: It deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sawblade Scamp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

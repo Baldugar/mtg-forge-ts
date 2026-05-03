@@ -1,0 +1,23 @@
+{
+  "id": "deadly-cover-up-corpus-m682",
+  "description": "M6 corpus — Deadly Cover-Up; in-hand parse.",
+  "seed": 61941,
+  "cards": {
+    "Deadly Cover-Up": "Name:Deadly Cover-Up\nManaCost:3 B B\nTypes:Sorcery\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ CollectEvidence<6> | Description$ As an additional cost to cast this spell, you may collect evidence 6. (Exile cards with total mana value 6 or greater from your graveyard.)\nA:SP$ DestroyAll | ValidCards$ Creature | SubAbility$ DBExile | SpellDescription$ Destroy all creatures.\nSVar:DBExile:DB$ ChangeZone | Mandatory$ True | ChangeType$ Card.OppCtrl | Hidden$ True | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | ConditionDefined$ Collected | ConditionPresent$ Card | SubAbility$ ExileYard | SpellDescription$ If evidence was collected, exile a card from an opponent's graveyard. Then search its owner's graveyard, hand, and library for any number of cards with that name and exile them.\nSVar:ExileYard:DB$ ChangeZone | ChangeType$ Remembered.sameName | Origin$ Graveyard | DefinedPlayer$ RememberedController | Chooser$ You | ConditionDefined$ Collected | ConditionPresent$ Card | Destination$ Exile | ChangeNum$ NumInYard | Hidden$ True | SubAbility$ ExileHand\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ RememberedController | ChangeType$ Remembered.sameName | ConditionDefined$ Collected | ConditionPresent$ Card | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ RememberedController | ChangeType$ Remembered.sameName | ConditionDefined$ Collected | ConditionPresent$ Card | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumInLib:PlayerCountDefinedRememberedOwner$CardsInLibrary\nSVar:NumInHand:PlayerCountDefinedRememberedOwner$CardsInHand\nSVar:NumInYard:PlayerCountDefinedRememberedOwner$CardsInGraveyard\nDeckHints:Ability$Graveyard|Mill|Discard & Keyword$Dredge\nOracle:As an additional cost to cast this spell, you may collect evidence 6.\\nDestroy all creatures. If evidence was collected, exile a card from an opponent's graveyard. Then search its owner's graveyard, hand, and library for any number of cards with that name and exile them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadly Cover-Up"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shichifukujin-dragon-corpus-m682",
+  "description": "M6 corpus — Shichifukujin Dragon; in-hand parse.",
+  "seed": 64327,
+  "cards": {
+    "Shichifukujin Dragon": "Name:Shichifukujin Dragon\nManaCost:6 R R R\nTypes:Creature Dragon\nPT:0/0\n# EDH Silver unofficial errata found at https://edhsilver.com/cards/uc/occ/shichifukujin-dragon/\nK:etbCounter:P1P1:7\nA:AB$ DelayedTrigger | Cost$ R R R SubCounter<2/P1P1> | SorcerySpeed$ True | Mode$ Phase | Phase$ End of Turn | Execute$ TrigPutCounter | TriggerDescription$ Put three +1/+1 counters on CARDNAME. | StackDescription$ REP Put_{p:You} puts & . Activate only as a sorcery._. | SpellDescription$ Put three +1/+1 counters on CARDNAME at the beginning of the next end step. Activate only as a sorcery.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 3\nDeckHas:Ability$Counters\nOracle:When Shichifukujin Dragon comes into play, put seven +1/+1 counters on it.\\n{R}{R}{R}, Sacrifice two +1/+1 counters: Put three +1/+1 counters on Shichifukujin Dragon at end of turn. Play this ability as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shichifukujin Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

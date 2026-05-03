@@ -1,0 +1,23 @@
+{
+  "id": "hoarder-s-overflow-corpus-m682",
+  "description": "M6 corpus — Hoarder's Overflow; in-hand parse.",
+  "seed": 62774,
+  "cards": {
+    "Hoarder's Overflow": "Name:Hoarder's Overflow\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters and whenever you expend 4, put a stash counter on it. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)\nT:Mode$ ManaExpend | Amount$ 4 | Player$ You | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters and whenever you expend 4, put a stash counter on it. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ STASH | CounterNum$ 1\nA:AB$ Discard | Cost$ 1 R Sac<1/CARDNAME> | Defined$ You | Mode$ Hand | SubAbility$ DBDraw | SpellDescription$ Discard your hand, then draw cards equal to the number of stash counters on CARDNAME.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$CardCounters.STASH\nDeckHas:Ability$Counters\nOracle:When Hoarder's Overflow enters and whenever you expend 4, put a stash counter on it. (You expend 4 as you spend your fourth total mana to cast spells during a turn.)\\n{1}{R}, Sacrifice Hoarder's Overflow: Discard your hand, then draw cards equal to the number of stash counters on Hoarder's Overflow.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hoarder's Overflow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-fire-nation-drill-corpus-m682",
+  "description": "M6 corpus — The Fire Nation Drill; in-hand parse.",
+  "seed": 64802,
+  "cards": {
+    "The Fire Nation Drill": "Name:The Fire Nation Drill\nManaCost:2 B B\nTypes:Legendary Artifact Vehicle\nPT:6/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigImmediateTrigger | TriggerDescription$ When CARDNAME enters, you may tap it. When you do, destroy target creature with power 4 or less.\nSVar:TrigImmediateTrigger:AB$ ImmediateTrigger | Cost$ tapXType<1/Card.Self/CARDNAME> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target creature with power 4 or less.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.powerLE4 | TgtPrompt$ Select target creature with power 4 or less\nA:AB$ AnimateAll | Cost$ 1 | ValidCards$ Permanent.OppCtrl | RemoveKeywords$ Hexproof & Indestructible | SpellDescription$ Permanents your opponents control lose hexproof and indestructible until end of turn.\nK:Crew:2\nOracle:Trample\\nWhen The Fire Nation Drill enters, you may tap it. When you do, destroy target creature with power 4 or less.\\n{1}: Permanents your opponents control lose hexproof and indestructible until end of turn.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Fire Nation Drill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

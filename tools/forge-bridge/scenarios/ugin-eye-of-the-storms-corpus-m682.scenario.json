@@ -1,0 +1,23 @@
+{
+  "id": "ugin-eye-of-the-storms-corpus-m682",
+  "description": "M6 corpus — Ugin, Eye of the Storms; in-hand parse.",
+  "seed": 64998,
+  "cards": {
+    "Ugin, Eye of the Storms": "Name:Ugin, Eye of the Storms\nManaCost:7\nTypes:Legendary Planeswalker Ugin\nLoyalty:7\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When you cast this spell, exile up to one target permanent that's one or more colors.\nT:Mode$ SpellCast | ValidCard$ Card.Colorless | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever you cast a colorless spell, exile up to one target permanent that's one or more colors.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Permanent.nonColorless | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target permanent that's one or more colors | Origin$ Battlefield | Destination$ Exile\nA:AB$ GainLife | Cost$ AddCounter<2/LOYALTY> | LifeAmount$ 3 | Planeswalker$ True | SubAbility$ DBDraw | SpellDescription$ You gain 3 life and draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Mana | Cost$ AddCounter<0/LOYALTY> | Planeswalker$ True | Produced$ C | Amount$ 3 | SpellDescription$ Add {C}{C}{C}.\nA:AB$ ChangeZone | Cost$ SubCounter<11/LOYALTY> | Origin$ Library | Destination$ Exile | ChangeType$ Card.nonLand+Colorless | ChangeNum$ X | Planeswalker$ True | Ultimate$ True | RememberChanged$ True | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Search your library for any number of colorless nonland cards, exile them, then shuffle. Until end of turn, you may cast those cards without paying their mana costs.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | MayPlay$ True | MayPlayWithoutManaCost$ True | Description$ Until end of turn, you may cast those cards without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidLibrary Card.YouOwn+nonLand+Colorless\nOracle:When you cast this spell, exile up to one target permanent that's one or more colors.\\nWhenever you cast a colorless spell, exile up to one target permanent that's one or more colors.\\n[+2]: You gain 3 life and draw a card.\\n[0]: Add {C}{C}{C}.\\n[-11]: Search your library for any number of colorless nonland cards, exile them, then shuffle. Until end of turn, you may cast those cards without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ugin, Eye of the Storms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

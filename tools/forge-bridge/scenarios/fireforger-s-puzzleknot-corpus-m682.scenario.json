@@ -1,0 +1,23 @@
+{
+  "id": "fireforger-s-puzzleknot-corpus-m682",
+  "description": "M6 corpus — Fireforger's Puzzleknot; in-hand parse.",
+  "seed": 62330,
+  "cards": {
+    "Fireforger's Puzzleknot": "Name:Fireforger's Puzzleknot\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 1\nA:AB$ DealDamage | Cost$ 2 R Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ It deals 1 damage to any target.\nDeckHas:Ability$Sacrifice\nOracle:When Fireforger's Puzzleknot enters, it deals 1 damage to any target.\\n{2}{R}, Sacrifice Fireforger's Puzzleknot: It deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fireforger's Puzzleknot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

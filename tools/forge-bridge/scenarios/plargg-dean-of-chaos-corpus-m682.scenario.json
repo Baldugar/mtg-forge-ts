@@ -1,0 +1,23 @@
+{
+  "id": "plargg-dean-of-chaos-corpus-m682",
+  "description": "M6 corpus — Plargg, Dean of Chaos; in-hand parse.",
+  "seed": 63788,
+  "cards": {
+    "Plargg, Dean of Chaos": "Name:Plargg, Dean of Chaos\nManaCost:1 R\nTypes:Legendary Creature Orc Shaman\nPT:2/2\nA:AB$ Draw | Cost$ T Discard<1/Card> | NumCards$ 1 | Defined$ You | SpellDescription$ Draw a card.\nA:AB$ DigUntil | Cost$ 4 R T | Defined$ You | Amount$ 1 | Valid$ Card.nonLand+nonLegendary+cmcLE3 | RevealRandomOrder$ True | NoMoveRevealed$ True | ImprintRevealed$ True | RememberFound$ True | SubAbility$ CascadeCast | StackDescription$ SpellDescription | SpellDescription$ Reveal cards from the top of your library until you reveal a nonlegendary, nonland card with mana value 3 or less. You may cast that card without paying its mana cost. Put all revealed cards not cast this way on the bottom of your library in a random order.\nSVar:CascadeCast:DB$ Play | Defined$ Remembered | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ CascadeMoveToLib\nSVar:CascadeMoveToLib:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered,Card.IsImprinted | Origin$ Library | Destination$ Library | RandomOrder$ True | LibraryPosition$ -1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nAlternateMode:Modal\nOracle:{T}, Discard a card: Draw a card.\\n{4}{R}, {T}: Reveal cards from the top of your library until you reveal a nonlegendary, nonland card with mana value 3 or less. You may cast that card without paying its mana cost. Put all revealed cards not cast this way on the bottom of your library in a random order.\n\nALTERNATE\n\nName:Augusta, Dean of Order\nManaCost:2 W\nTypes:Legendary Creature Human Cleric\nPT:1/3\nS:Mode$ Continuous | Affected$ Creature.tapped+YouCtrl+Other | AddPower$ 1 | Description$ Other tapped creatures you control get +1/+0.\nS:Mode$ Continuous | Affected$ Creature.untapped+YouCtrl+Other | AddToughness$ 1 | Description$ Other untapped creatures you control get +0/+1.\nT:Mode$ AttackersDeclared | Execute$ DBUnTapAll | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever you attack, untap each creature you control, then tap any number of creatures you control.\nSVar:DBUnTapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | CardChoices$ Creature.YouCtrl+untapped | AnyNumber$ True | ChoiceAmount$ Count$Valid Creature.YouCtrl+untapped\nOracle:Other tapped creatures you control get +1/+0.\\nOther untapped creatures you control get +0/+1.\\nWhenever you attack, untap each creature you control, then tap any number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plargg, Dean of Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

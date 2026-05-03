@@ -1,0 +1,23 @@
+{
+  "id": "moria-scavenger-corpus-m682",
+  "description": "M6 corpus — Moria Scavenger; in-hand parse.",
+  "seed": 63436,
+  "cards": {
+    "Moria Scavenger": "Name:Moria Scavenger\nManaCost:1 B R\nTypes:Creature Orc Rogue\nPT:1/4\nK:Deathtouch\nK:Haste\nA:AB$ Draw | Cost$ T Discard<1/Card> | NumCards$ 1 | SubAbility$ DBAmass | SpellDescription$ Draw a card. If the discarded card was a creature card, amass Orcs 1. (Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:DBAmass:DB$ Amass | Type$ Orc | Num$ 1 | ConditionDefined$ Discarded | ConditionPresent$ Card.Creature\nDeckHas:Ability$Token|Counters|Discard & Type$Army\nDeckHints:Type$Goblin|Orc\nOracle:Deathtouch, haste\\n{T}, Discard a card: Draw a card. If the discarded card was a creature card, amass Orcs 1. (Put a +1/+1 counter on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moria Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

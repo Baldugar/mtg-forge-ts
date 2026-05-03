@@ -1,0 +1,23 @@
+{
+  "id": "demonlord-of-ashmouth-corpus-m682",
+  "description": "M6 corpus — Demonlord of Ashmouth; in-hand parse.",
+  "seed": 61983,
+  "cards": {
+    "Demonlord of Ashmouth": "Name:Demonlord of Ashmouth\nManaCost:2 B B\nTypes:Creature Demon\nPT:5/4\nK:Flying\nK:Undying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExileUnless | TriggerDescription$ When CARDNAME enters, exile it unless you sacrifice another creature.\nSVar:TrigExileUnless:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile | UnlessCost$ Sac<1/Creature.Other/other creature> | UnlessPayer$ You\nSVar:NeedsToPlay:Creature.cmcLE2+YouCtrl\nOracle:Flying\\nWhen Demonlord of Ashmouth enters, exile it unless you sacrifice another creature.\\nUndying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonlord of Ashmouth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

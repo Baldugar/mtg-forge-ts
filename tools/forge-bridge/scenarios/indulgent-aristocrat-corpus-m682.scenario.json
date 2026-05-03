@@ -1,0 +1,23 @@
+{
+  "id": "indulgent-aristocrat-corpus-m682",
+  "description": "M6 corpus — Indulgent Aristocrat; in-hand parse.",
+  "seed": 62867,
+  "cards": {
+    "Indulgent Aristocrat": "Name:Indulgent Aristocrat\nManaCost:B\nTypes:Creature Vampire Noble\nPT:1/1\nK:Lifelink\nA:AB$ PutCounterAll | Cost$ 2 Sac<1/Creature/creature> | ValidCards$ Vampire.YouCtrl | ValidCardsDesc$ Vampire you control | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ AtOppEOT | SpellDescription$ Put a +1/+1 counter on each Vampire you control.\nSVar:AIPreference:SacCost$Creature.token+nonVampire,Creature.nonVampire+cmcEQ1,Creature.nonVampire+cmcEQ2+powerLE1\nDeckHas:Ability$LifeGain|Counters|Sacrifice\nDeckHints:Type$Vampire\n# TODO: improve the logic when the AI wants to sac creatures\nAI:RemoveDeck:Random\nOracle:Lifelink\\n{2}, Sacrifice a creature: Put a +1/+1 counter on each Vampire you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Indulgent Aristocrat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

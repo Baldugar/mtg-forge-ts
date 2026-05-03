@@ -1,0 +1,23 @@
+{
+  "id": "bull-elephant-corpus-m682",
+  "description": "M6 corpus — Bull Elephant; in-hand parse.",
+  "seed": 61577,
+  "cards": {
+    "Bull Elephant": "Name:Bull Elephant\nManaCost:3 G\nTypes:Creature Elephant\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return two Forests you control to their owner's hand.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ Return<2/Forest> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$Valid Forest.YouCtrl\nOracle:When Bull Elephant enters, sacrifice it unless you return two Forests you control to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bull Elephant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

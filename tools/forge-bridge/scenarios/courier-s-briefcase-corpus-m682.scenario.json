@@ -1,0 +1,23 @@
+{
+  "id": "courier-s-briefcase-corpus-m682",
+  "description": "M6 corpus — Courier's Briefcase; in-hand parse.",
+  "seed": 61845,
+  "cards": {
+    "Courier's Briefcase": "Name:Courier's Briefcase\nManaCost:1 G\nTypes:Artifact Treasure\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 green and white Citizen creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ gw_1_1_citizen\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Draw | Cost$ W U B R G T Sac<1/CARDNAME> | NumCards$ 3 | SpellDescription$ Draw three cards.\nDeckHas:Ability$Token & Type$Citizen\nOracle:When Courier's Briefcase enters, create a 1/1 green and white Citizen creature token.\\n{T}, Sacrifice Courier's Briefcase: Add one mana of any color.\\n{W}{U}{B}{R}{G}, {T}, Sacrifice Courier's Briefcase: Draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Courier's Briefcase"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

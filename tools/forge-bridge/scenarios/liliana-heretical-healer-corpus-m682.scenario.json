@@ -1,0 +1,23 @@
+{
+  "id": "liliana-heretical-healer-corpus-m682",
+  "description": "M6 corpus — Liliana, Heretical Healer; in-hand parse.",
+  "seed": 63156,
+  "cards": {
+    "Liliana, Heretical Healer": "Name:Liliana, Heretical Healer\nManaCost:1 B B\nTypes:Legendary Creature Human Cleric\nPT:2/3\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ Whenever another nontoken creature you control dies, exile CARDNAME, then return her to the battlefield transformed under her owner's control. If you do, create a 2/2 black Zombie creature token.\nSVar:TrigTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | ForgetOtherRemembered$ True | RememberChanged$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | SubAbility$ DBCleanup | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:Lifelink\\nWhenever another nontoken creature you control dies, exile Liliana, Heretical Healer, then return her to the battlefield transformed under her owner's control. If you do, create a 2/2 black Zombie creature token.\n\nALTERNATE\n\nName:Liliana, Defiant Necromancer\nManaCost:no cost\nColors:black\nTypes:Legendary Planeswalker Liliana\nLoyalty:3\nA:AB$ Discard | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Each player discards a card.\nA:AB$ ChangeZone | Cost$ SubCounter<X/LOYALTY> | Planeswalker$ True | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target nonlegendary creature with mana value X in your graveyard | ValidTgts$ Creature.YouOwn+nonLegendary+cmcEQX | SpellDescription$ Return target nonlegendary creature card with mana value X from your graveyard to the battlefield.\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Liliana, Defiant Necromancer | Image$ emblem_liliana_defiant_necromancer | Stackable$ False | Triggers$ TrigChangesZone | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Whenever a creature dies, return it to the battlefield under your control at the beginning of the next end step.\"\nSVar:TrigChangesZone:Mode$ ChangesZone | ValidCard$ Creature | Origin$ Battlefield | Destination$ Graveyard | Execute$ DelTrigReturn | TriggerZones$ Command | TriggerDescription$ Whenever a creature dies, return it to the battlefield under your control at the beginning of the next end step.\nSVar:DelTrigReturn:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ DBReturn | RememberObjects$ TriggeredNewCardLKICopy | TriggerDescription$ Return that card to the battlefield at the beginning of the next end step.\nSVar:DBReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True\nSVar:X:Count$xPaid\nOracle:[+2]: Each player discards a card.\\n[-X]: Return target nonlegendary creature card with mana value X from your graveyard to the battlefield.\\n[-8]: You get an emblem with \"Whenever a creature dies, return it to the battlefield under your control at the beginning of the next end step.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana, Heretical Healer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

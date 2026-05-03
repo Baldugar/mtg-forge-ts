@@ -1,0 +1,23 @@
+{
+  "id": "kickoff-celebrations-corpus-m682",
+  "description": "M6 corpus — Kickoff Celebrations; in-hand parse.",
+  "seed": 63025,
+  "cards": {
+    "Kickoff Celebrations": "Name:Kickoff Celebrations\nManaCost:1 R\nTypes:Enchantment\nK:Start your engines\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this enchantment enters, you may discard a card. If you do, draw two cards.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 2\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddAbility$ ABPumpAll | Description$ Max speed — Sacrifice this enchantment: Creatures and Vehicles you control gain haste until end of turn.\nSVar:ABPumpAll:AB$ PumpAll | PrecostDesc$ Max speed — | Cost$ Sac<1/CARDNAME/this enchantment> | Secondary$ True | ValidCards$ Creature.YouCtrl,Vehicle.YouCtrl | KW$ Haste | SpellDescription$ Creatures and Vehicles you control gain haste until end of turn.\nDeckHas:Ability$Discard|Sacrifice\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nWhen this enchantment enters, you may discard a card. If you do, draw two cards.\\nMax speed — Sacrifice this enchantment: Creatures and Vehicles you control gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kickoff Celebrations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

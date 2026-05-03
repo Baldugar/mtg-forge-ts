@@ -1,0 +1,23 @@
+{
+  "id": "vivien-of-the-arkbow-corpus-m682",
+  "description": "M6 corpus — Vivien of the Arkbow; in-hand parse.",
+  "seed": 65133,
+  "cards": {
+    "Vivien of the Arkbow": "Name:Vivien of the Arkbow\nManaCost:4 G G\nTypes:Legendary Planeswalker Vivien\nLoyalty:5\nA:AB$ PutCounter | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | CounterNum$ 2 | CounterType$ P1P1 | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | AIActivateLast$ True | SpellDescription$ Put two +1/+1 counters on up to one target creature.\nA:AB$ Pump | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ TailDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to target creature you don't control.\nSVar:TailDamage:DB$ DealDamage | ValidTgts$ Creature.YouDontCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you don't control | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nA:AB$ PumpAll | Cost$ SubCounter<9/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidCards$ Creature.YouCtrl | NumAtt$ +4 | NumDef$ +4 | KW$ Trample | SpellDescription$ Creatures you control get +4/+4 and gain trample until end of turn.\nDeckHas:Ability$Token\nOracle:[+2]: Put two +1/+1 counters on up to one target creature.\\n[-3]: Target creature you control deals damage equal to its power to target creature you don't control.\\n[-9]: Creatures you control get +4/+4 and gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivien of the Arkbow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

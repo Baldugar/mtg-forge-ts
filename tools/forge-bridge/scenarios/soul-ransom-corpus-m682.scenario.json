@@ -1,0 +1,23 @@
+{
+  "id": "soul-ransom-corpus-m682",
+  "description": "M6 corpus — Soul Ransom; in-hand parse.",
+  "seed": 64501,
+  "cards": {
+    "Soul Ransom": "Name:Soul Ransom\nManaCost:2 U B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nA:AB$ SacrificeAll | Cost$ Discard<2/Card> | Activator$ Player.Opponent | Defined$ Self | SubAbility$ DBDraw | SpellDescription$ CARDNAME's controller sacrifices it, then draws two cards. Only your opponents may activate this ability.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | Defined$ SourceController\nOracle:Enchant creature\\nYou control enchanted creature.\\nDiscard two cards: Soul Ransom's controller sacrifices it, then draws two cards. Only your opponents may activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soul Ransom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "surestrike-trident-corpus-m682",
+  "description": "M6 corpus — Surestrike Trident; in-hand parse.",
+  "seed": 64671,
+  "cards": {
+    "Surestrike Trident": "Name:Surestrike Trident\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ First Strike | AddAbility$ SurestrikeTridentDmg | AddSVar$ SurestrikeTridentX | Description$ Equipped creature has first strike and \"{T}, Unattach CARDNAME: This creature deals damage equal to its power to target player or planeswalker.\"\nSVar:SurestrikeTridentDmg:AB$ DealDamage | Cost$ T Unattach<OriginalHost/Surestrike Trident> | NumDmg$ SurestrikeTridentX | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | SpellDescription$ CARDNAME deals damage equal to its power to target player or planeswalker.\nSVar:SurestrikeTridentX:Count$CardPower\nK:Equip:4\nOracle:Equipped creature has first strike and \"{T}, Unattach Surestrike Trident: This creature deals damage equal to its power to target player or planeswalker.\"\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery. This card enters unattached and stays on the battlefield if the creature leaves.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surestrike Trident"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

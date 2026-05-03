@@ -1,0 +1,23 @@
+{
+  "id": "tatsumasa-the-dragon-s-fang-corpus-m682",
+  "description": "M6 corpus — Tatsumasa, the Dragon's Fang; in-hand parse.",
+  "seed": 64723,
+  "cards": {
+    "Tatsumasa, the Dragon's Fang": "Name:Tatsumasa, the Dragon's Fang\nManaCost:6\nTypes:Legendary Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 5 | AddToughness$ 5 | Description$ Equipped creature gets +5/+5.\nA:AB$ Token | Cost$ 6 Exile<1/CARDNAME> | TokenScript$ u_5_5_dragon_spirit_flying | TokenOwner$ You | RememberTokens$ True | SubAbility$ DelTrig | SpellDescription$ Create a 5/5 blue Dragon Spirit creature token with flying. Return NICKNAME to the battlefield under its owner's control when that token dies.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ ChangesZone | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigReturn | RememberObjects$ Remembered & ExiledCards | TriggerDescription$ Return NICKNAME to the battlefield under its owner's control when that token dies.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nOracle:Equipped creature gets +5/+5.\\n{6}, Exile Tatsumasa, the Dragon's Fang: Create a 5/5 blue Dragon Spirit creature token with flying. Return Tatsumasa to the battlefield under its owner's control when that token dies.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tatsumasa, the Dragon's Fang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

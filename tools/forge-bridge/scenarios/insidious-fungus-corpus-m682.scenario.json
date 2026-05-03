@@ -1,0 +1,23 @@
+{
+  "id": "insidious-fungus-corpus-m682",
+  "description": "M6 corpus — Insidious Fungus; in-hand parse.",
+  "seed": 62883,
+  "cards": {
+    "Insidious Fungus": "Name:Insidious Fungus\nManaCost:G\nTypes:Creature Fungus\nPT:1/2\nA:AB$ Charm | Cost$ 2 Sac<1/CARDNAME> | Choices$ DBDestroyArtifact,DBDestroyEnchantment,DBDraw\nSVar:DBDestroyArtifact:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBDestroyEnchantment:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBChangeZone | SpellDescription$ Draw a card. Then you may put a land card from your hand onto the battlefield tapped.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.YouOwn\nOracle:{2}, Sacrifice Insidious Fungus: Choose one —\\n• Destroy target artifact.\\n• Destroy target enchantment.\\n• Draw a card. Then you may put a land card from your hand onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Insidious Fungus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

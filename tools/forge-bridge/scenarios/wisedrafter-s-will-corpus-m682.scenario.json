@@ -1,0 +1,23 @@
+{
+  "id": "wisedrafter-s-will-corpus-m682",
+  "description": "M6 corpus — Wisedrafter's Will; in-hand parse.",
+  "seed": 65256,
+  "cards": {
+    "Wisedrafter's Will": "Name:Wisedrafter's Will\nManaCost:U\nTypes:Enchantment\nS:Mode$ Continuous | AffectedZone$ Hand | Affected$ Card.OppOwn | MayLookAt$ Player | Description$ Your opponents play with their hands revealed.\nA:AB$ Draw | Cost$ U Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nA:AB$ Counter | Cost$ U U Sac<1/CARDNAME> | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:Your opponents play with their hands revealed.\\n{U}, Sacrifice Wisedrafter's Will: Draw a card.\\n{U}{U}, Sacrifice Wisedrafter's Will: Counter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wisedrafter's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

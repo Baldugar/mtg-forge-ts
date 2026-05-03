@@ -1,0 +1,23 @@
+{
+  "id": "sage-of-hours-corpus-m682",
+  "description": "M6 corpus — Sage of Hours; in-hand parse.",
+  "seed": 64133,
+  "cards": {
+    "Sage of Hours": "Name:Sage of Hours\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ AddTurn | Cost$ SubCounter<All/P1P1> | Defined$ You | NumTurns$ X | SpellDescription$ For each five counters removed this way, take an extra turn after this one.\nSVar:X:SVar$CostCountersRemoved/DivideEvenlyDown.5\nAI:RemoveDeck:All\nOracle:Heroic — Whenever you cast a spell that targets Sage of Hours, put a +1/+1 counter on it.\\nRemove all +1/+1 counters from Sage of Hours: For each five counters removed this way, take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage of Hours"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

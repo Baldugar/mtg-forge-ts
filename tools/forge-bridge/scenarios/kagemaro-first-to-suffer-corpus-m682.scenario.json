@@ -1,0 +1,23 @@
+{
+  "id": "kagemaro-first-to-suffer-corpus-m682",
+  "description": "M6 corpus — Kagemaro, First to Suffer; in-hand parse.",
+  "seed": 62978,
+  "cards": {
+    "Kagemaro, First to Suffer": "Name:Kagemaro, First to Suffer\nManaCost:3 B B\nTypes:Legendary Creature Demon Spirit\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nA:AB$ PumpAll | Cost$ B Sac<1/NICKNAME> | ValidCards$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SpellDescription$ All creatures get -X/-X until end of turn, where X is the number of cards in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Kagemaro, First to Suffer's power and toughness are each equal to the number of cards in your hand.\\n{B}, Sacrifice Kagemaro: All creatures get -X/-X until end of turn, where X is the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kagemaro, First to Suffer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

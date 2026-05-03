@@ -1,0 +1,23 @@
+{
+  "id": "pyre-of-heroes-corpus-m682",
+  "description": "M6 corpus — Pyre of Heroes; in-hand parse.",
+  "seed": 63860,
+  "cards": {
+    "Pyre of Heroes": "Name:Pyre of Heroes\nManaCost:2\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 2 T Sac<1/Creature> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcEQX+sharesCreatureTypeWith Sacrificed | ChangeNum$ 1 | SorcerySpeed$ True | AILogic$ SacAndUpgrade | StackDescription$ SpellDescription | SpellDescription$ Search your library for a creature card that shares a creature type with the sacrificed creature and has mana value equal to 1 plus that creature's mana value. Put that card onto the battlefield, then shuffle. Activate only as a sorcery.\nSVar:X:Sacrificed$CardManaCost/Plus.1\nSVar:AIPreference:SacCost$Creature\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Creature\nOracle:{2}, {T}, Sacrifice a creature: Search your library for a creature card that shares a creature type with the sacrificed creature and has mana value equal to 1 plus that creature's mana value. Put that card onto the battlefield, then shuffle. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyre of Heroes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goblin-lyre-corpus-m682",
+  "description": "M6 corpus — Goblin Lyre; in-hand parse.",
+  "seed": 62575,
+  "cards": {
+    "Goblin Lyre": "Name:Goblin Lyre\nManaCost:3\nTypes:Artifact\nA:AB$ FlipACoin | Cost$ Sac<1/CARDNAME> | WinSubAbility$ DBDamageOpp | LoseSubAbility$ DBDamageYou | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Choose target opponent or planeswalker | SpellDescription$ Flip a coin. If you win the flip, CARDNAME deals damage to target opponent or planeswalker equal to the number of creatures you control. If you lose the flip, CARDNAME deals damage to you equal to the number of creatures that opponent or that planeswalker's controller controls.\nSVar:DBDamageOpp:DB$ DealDamage | Defined$ Targeted | NumDmg$ X\nSVar:DBDamageYou:DB$ DealDamage | Defined$ You | NumDmg$ Y\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:Y:Count$Valid Creature.ControlledBy TargetedOrController\nAI:RemoveDeck:All\nOracle:Sacrifice Goblin Lyre: Flip a coin. If you win the flip, Goblin Lyre deals damage to target opponent or planeswalker equal to the number of creatures you control. If you lose the flip, Goblin Lyre deals damage to you equal to the number of creatures that opponent or that planeswalker's controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Lyre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crucible-of-the-spirit-dragon-corpus-m682",
+  "description": "M6 corpus — Crucible of the Spirit Dragon; in-hand parse.",
+  "seed": 61876,
+  "cards": {
+    "Crucible of the Spirit Dragon": "Name:Crucible of the Spirit Dragon\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ PutCounter | Cost$ 1 T | CounterType$ STORAGE | CounterNum$ 1 | SpellDescription$ Put a storage counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<X/STORAGE> | Produced$ Combo Any | Amount$ X | RestrictValid$ Spell.Dragon,Activated.Dragon+inZoneBattlefield | CostDesc$ {T}, Remove X storage counters from CARDNAME: | SpellDescription$ Add X mana in any combination of colors. Spend this mana only to cast Dragon spells or activate abilities of Dragons.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{1}, {T}: Put a storage counter on Crucible of the Spirit Dragon.\\n{T}, Remove X storage counters from Crucible of the Spirit Dragon: Add X mana in any combination of colors. Spend this mana only to cast Dragon spells or activate abilities of Dragons.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crucible of the Spirit Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

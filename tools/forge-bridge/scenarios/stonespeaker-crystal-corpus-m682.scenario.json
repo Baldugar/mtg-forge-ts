@@ -1,0 +1,23 @@
+{
+  "id": "stonespeaker-crystal-corpus-m682",
+  "description": "M6 corpus — Stonespeaker Crystal; in-hand parse.",
+  "seed": 64623,
+  "cards": {
+    "Stonespeaker Crystal": "Name:Stonespeaker Crystal\nManaCost:4\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ 2 | SpellDescription$ Add {C}{C}.\nA:AB$ ChangeZoneAll | Cost$ 2 T Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | TgtPrompt$ Select any number of target players | TargetMin$ 0 | TargetMax$ MaxTgt | ChangeType$ Card | SubAbility$ DBDraw | StackDescription$ Exile graveyards ({p:Targeted}). | SpellDescription$ Exile any number of target players' graveyards.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:MaxTgt:PlayerCountPlayers$Amount\nDeckHas:Ability$Sacrifice\nOracle:{T}: Add {C}{C}.\\n{2}, {T}, Sacrifice Stonespeaker Crystal: Exile any number of target players' graveyards. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stonespeaker Crystal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

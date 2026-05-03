@@ -1,0 +1,23 @@
+{
+  "id": "master-skald-corpus-m682",
+  "description": "M6 corpus — Master Skald; in-hand parse.",
+  "seed": 63303,
+  "cards": {
+    "Master Skald": "Name:Master Skald\nManaCost:4 W\nTypes:Creature Dwarf Warrior\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBFetch | TriggerDescription$ When CARDNAME enters, you may exile a creature card from your graveyard. If you do, return target artifact or enchantment card from your graveyard to your hand.\nSVar:DBFetch:AB$ ChangeZone | Cost$ ExileFromGrave<1/Creature> | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.YouOwn,Enchantment.YouOwn | TgtPrompt$ Choose target artifact or enchantment card in your graveyard | SpellDescription$ Return target artifact or enchantment card from your graveyard to your hand.\nDeckHints:Type$Artifact|Enchantment\nOracle:When Master Skald enters, you may exile a creature card from your graveyard. If you do, return target artifact or enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Master Skald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

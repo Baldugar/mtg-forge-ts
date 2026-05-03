@@ -1,0 +1,23 @@
+{
+  "id": "veteran-warleader-corpus-m682",
+  "description": "M6 corpus — Veteran Warleader; in-hand parse.",
+  "seed": 65091,
+  "cards": {
+    "Veteran Warleader": "Name:Veteran Warleader\nManaCost:1 G W\nTypes:Creature Human Soldier Ally\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nA:AB$ Pump | Cost$ tapXType<1/Ally.Other> | KWChoice$ First Strike,Vigilance,Trample | StackDescription$ SpellDescription | SpellDescription$ CARDNAME gains your choice of first strike, vigilance, or trample until end of turn.\nSVar:BuffedBy:Creature\nSVar:NoZeroToughnessAI:True\nDeckHints:Type$Ally\nOracle:Veteran Warleader's power and toughness are each equal to the number of creatures you control.\\nTap another untapped Ally you control: Veteran Warleader gains your choice of first strike, vigilance, or trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Veteran Warleader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

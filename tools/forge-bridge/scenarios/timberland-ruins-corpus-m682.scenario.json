@@ -1,0 +1,23 @@
+{
+  "id": "timberland-ruins-corpus-m682",
+  "description": "M6 corpus — Timberland Ruins; in-hand parse.",
+  "seed": 64881,
+  "cards": {
+    "Timberland Ruins": "Name:Timberland Ruins\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | SpellDescription$ Add one mana of any color.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nOracle:Timberland Ruins enters tapped.\\n{T}: Add {G}.\\n{T}, Sacrifice Timberland Ruins: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timberland Ruins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

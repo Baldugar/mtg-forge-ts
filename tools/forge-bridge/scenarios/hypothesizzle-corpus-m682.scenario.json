@@ -1,0 +1,23 @@
+{
+  "id": "hypothesizzle-corpus-m682",
+  "description": "M6 corpus — Hypothesizzle; in-hand parse.",
+  "seed": 62817,
+  "cards": {
+    "Hypothesizzle": "Name:Hypothesizzle\nManaCost:3 U R\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SubAbility$ DBImmediateTrigger | SpellDescription$ Draw two cards. Then you may discard a nonland card.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | UnlessCost$ Discard<1/Card.nonLand/nonland card> | UnlessPayer$ You | UnlessSwitched$ True | Execute$ TrigDealDmg | StackDescription$ None | SpellDescription$ When you do, CARDNAME deals 4 damage to target creature.\nSVar:TrigDealDmg:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 4\nDeckHas:Ability$Discard\nOracle:Draw two cards. Then you may discard a nonland card. When you do, Hypothesizzle deals 4 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hypothesizzle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

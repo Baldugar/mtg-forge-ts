@@ -1,0 +1,23 @@
+{
+  "id": "fugitive-droid-corpus-m682",
+  "description": "M6 corpus — Fugitive Droid; in-hand parse.",
+  "seed": 62430,
+  "cards": {
+    "Fugitive Droid": "Name:Fugitive Droid\nManaCost:U\nTypes:Artifact Creature Robot Scientist\nPT:1/1\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | CheckSVar$ X | Description$ This creature can't be blocked if an artifact entered the battlefield under your control this turn.\nA:AB$ Counter | Cost$ U Sac<1/CARDNAME> | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | TargetValidTargeting$ Artifact.YouCtrl+inRealZoneBattlefield,Creature.YouCtrl+inRealZoneBattlefield | SpellDescription$ Counter target spell that targets an artifact or creature you control.\nSVar:X:Count$ThisTurnEntered_Battlefield_Artifact.YouCtrl\nDeckHints:Type$Artifact\nOracle:This creature can't be blocked if an artifact entered the battlefield under your control this turn.\\n{U}, Sacrifice this creature: Counter target spell that targets an artifact or creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fugitive Droid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

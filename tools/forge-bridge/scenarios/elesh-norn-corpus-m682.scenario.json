@@ -1,0 +1,23 @@
+{
+  "id": "elesh-norn-corpus-m682",
+  "description": "M6 corpus — Elesh Norn; in-hand parse.",
+  "seed": 62159,
+  "cards": {
+    "Elesh Norn": "Name:Elesh Norn\nManaCost:2 W W\nTypes:Legendary Creature Phyrexian Praetor\nPT:3/5\nK:Vigilance\nT:Mode$ DamageDone | ValidSource$ Card.OppCtrl,Emblem.OppCtrl | ValidTarget$ You,Permanent.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever a source an opponent controls deals damage to you or a permanent you control, that source's controller loses 2 life unless they pay {1}.\nSVar:TrigDealDamage:DB$ LoseLife | Defined$ TriggeredSourceController | LifeAmount$ 2 | UnlessCost$ 1 | UnlessPayer$ TriggeredSourceController\nA:AB$ ChangeZone | Cost$ 2 W Sac<3/Creature.Other/other creature> | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile CARDNAME,\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ then return it to the battlefield transformed under its owner's control.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | StackDescription$ None | SpellDescription$ Activate only as a sorcery.\nDeckHas:Ability$Sacrifice\nAlternateMode:DoubleFaced\nOracle:Vigilance\\nWhenever a source an opponent controls deals damage to you or a permanent you control, that source's controller loses 2 life unless they pay {1}.\\n{2}{W}, Sacrifice three other creatures: Exile Elesh Norn, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\n\nALTERNATE\n\nName:The Argent Etchings\nManaCost:no cost\nColors:white\nTypes:Enchantment Saga\nK:Chapter:3:Incubate,PumpAll,DestroyAll\nSVar:Incubate:DB$ Incubate | Amount$ 2 | Times$ 5 | SubAbility$ DBTransform | SpellDescription$ Incubate 2 five times, then transform all Incubator tokens you control.\nSVar:DBTransform:DB$ SetState | Defined$ Valid Incubator.token+YouCtrl | Mode$ Transform\nSVar:PumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Double Strike | SpellDescription$ Creatures you control get +1/+1 and gain double strike until end of turn.\nSVar:DestroyAll:DB$ DestroyAll | ValidCards$ Permanent.nonArtifact+nonLand+nonPhyrexian+StrictlyOther | SubAbility$ DBExile | Ultimate$ True | SpellDescription$ Destroy all other permanents except for artifacts, lands, and Phyrexians. Exile CARDNAME, then return it to the battlefield (front face up).\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Counters & Type$Artifact|Phyrexian\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Incubate 2 five times, then transform all Incubator tokens you control.\\nII — Creatures you control get +1/+1 and gain double strike until end of turn.\\nIII — Destroy all other permanents except for artifacts, lands, and Phyrexians. Exile The Argent Etchings, then return it to the battlefield (front face up).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elesh Norn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

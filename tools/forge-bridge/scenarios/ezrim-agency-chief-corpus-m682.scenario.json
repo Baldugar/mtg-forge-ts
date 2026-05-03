@@ -1,0 +1,23 @@
+{
+  "id": "ezrim-agency-chief-corpus-m682",
+  "description": "M6 corpus — Ezrim, Agency Chief; in-hand parse.",
+  "seed": 62269,
+  "cards": {
+    "Ezrim, Agency Chief": "Name:Ezrim, Agency Chief\nManaCost:1 W W U U\nTypes:Legendary Creature Archon Detective\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate twice. (To investigate, create a colorless Clue artifact token with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate | Num$ 2\nA:AB$ Pump | Cost$ 1 Sac<1/Artifact> | Defined$ Self | StackDescription$ SpellDescription | KWChoice$ Vigilance,Lifelink,Hexproof | SpellDescription$ NICKNAME gains your choice of vigilance, lifelink, or hexproof until end of turn.\nDeckHas:Ability$Token|Sacrifice|LifeGain|Investigate & Type$Clue|Artifact\nOracle:Flying\\nWhen Ezrim, Agency Chief enters, investigate twice. (To investigate, create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\n{1}, Sacrifice an artifact: Ezrim gains your choice of vigilance, lifelink, or hexproof until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ezrim, Agency Chief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

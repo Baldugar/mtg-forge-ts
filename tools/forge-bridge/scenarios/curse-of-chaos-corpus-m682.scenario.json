@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-chaos-corpus-m682",
+  "description": "M6 corpus — Curse of Chaos; in-hand parse.",
+  "seed": 61896,
+  "cards": {
+    "Curse of Chaos": "Name:Curse of Chaos\nManaCost:2 R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ AttackersDeclared | Execute$ TrigDiscard | TriggerZones$ Battlefield | AttackedTarget$ Player.EnchantedBy | OptionalDecider$ TriggeredAttackingPlayer | TriggerDescription$ Whenever a player attacks enchanted player with one or more creatures, that attacking player may discard a card. If the player does, they draw a card.\nSVar:TrigDiscard:DB$ Draw | Defined$ TriggeredAttackingPlayer | NumCards$ 1 | UnlessCost$ Discard<1/Card> | UnlessSwitched$ True | UnlessPayer$ TriggeredAttackingPlayer\nAI:RemoveDeck:All\nOracle:Enchant player\\nWhenever a player attacks enchanted player with one or more creatures, that attacking player may discard a card. If the player does, they draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

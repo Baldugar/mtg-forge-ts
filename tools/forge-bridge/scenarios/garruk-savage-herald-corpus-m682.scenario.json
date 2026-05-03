@@ -1,0 +1,23 @@
+{
+  "id": "garruk-savage-herald-corpus-m682",
+  "description": "M6 corpus — Garruk, Savage Herald; in-hand parse.",
+  "seed": 62462,
+  "cards": {
+    "Garruk, Savage Herald": "Name:Garruk, Savage Herald\nManaCost:4 G G\nTypes:Legendary Planeswalker Garruk\nLoyalty:5\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition2$ -1 | StackDescription$ SpellDescription | SpellDescription$ Reveal the top card of your library. If it's a creature card, put it into your hand. Otherwise, put it on the bottom of your library.\nA:AB$ Pump | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBDamage | AILogic$ PowerDmg | SpellDescription$ Target creature you control deals damage equal to its power to another target creature.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to damage | TargetUnique$ True | AILogic$ PowerDmg | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nA:AB$ AnimateAll | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidCards$ Creature.YouCtrl | staticAbilities$ Static | SpellDescription$ Until end of turn, creatures you control gain \"You may have this creature assign its combat damage as though it weren't blocked.\"\nSVar:Static:Mode$ AssignCombatDamageAsUnblocked | ValidCard$ Card.Self | Optional$ True | Description$ You may have this creature assign its combat damage as though it weren't blocked.\nOracle:[+1]: Reveal the top card of your library. If it's a creature card, put it into your hand. Otherwise, put it on the bottom of your library.\\n[-2]: Target creature you control deals damage equal to its power to another target creature.\\n[-7]: Until end of turn, creatures you control gain \"You may have this creature assign its combat damage as though it weren't blocked.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garruk, Savage Herald"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

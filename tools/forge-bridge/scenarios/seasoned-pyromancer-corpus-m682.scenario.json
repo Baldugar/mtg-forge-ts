@@ -1,0 +1,23 @@
+{
+  "id": "seasoned-pyromancer-corpus-m682",
+  "description": "M6 corpus — Seasoned Pyromancer; in-hand parse.",
+  "seed": 64253,
+  "cards": {
+    "Seasoned Pyromancer": "Name:Seasoned Pyromancer\nManaCost:1 R R\nTypes:Creature Human Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard two cards, then draw two cards. For each nonland card discarded this way, create a 1/1 red Elemental creature token.\nSVar:TrigDiscard:DB$ Discard | NumCards$ 2 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ r_1_1_elemental | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:X:Remembered$Valid Card.nonLand\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Token | Cost$ 3 R R ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | TokenAmount$ 2 | TokenScript$ r_1_1_elemental | TokenOwner$ You | SpellDescription$ Create two 1/1 red Elemental creature tokens.\nDeckHas:Ability$Token\nOracle:When Seasoned Pyromancer enters, discard two cards, then draw two cards. For each nonland card discarded this way, create a 1/1 red Elemental creature token.\\n{3}{R}{R}, Exile Seasoned Pyromancer from your graveyard: Create two 1/1 red Elemental creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seasoned Pyromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

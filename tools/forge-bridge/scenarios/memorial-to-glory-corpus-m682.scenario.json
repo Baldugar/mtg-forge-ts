@@ -1,0 +1,23 @@
+{
+  "id": "memorial-to-glory-corpus-m682",
+  "description": "M6 corpus — Memorial to Glory; in-hand parse.",
+  "seed": 63325,
+  "cards": {
+    "Memorial to Glory": "Name:Memorial to Glory\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Token | Cost$ 3 W T Sac<1/CARDNAME> | TokenOwner$ You | TokenAmount$ 2 | TokenScript$ w_1_1_soldier | SpellDescription$ Create two 1/1 white Soldier creature tokens.\nOracle:Memorial to Glory enters tapped.\\n{T}: Add {W}.\\n{3}{W}, {T}, Sacrifice Memorial to Glory: Create two 1/1 white Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memorial to Glory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "soramaro-first-to-dream-corpus-m682",
+  "description": "M6 corpus — Soramaro, First to Dream; in-hand parse.",
+  "seed": 64472,
+  "cards": {
+    "Soramaro, First to Dream": "Name:Soramaro, First to Dream\nManaCost:4 U U\nTypes:Legendary Creature Spirit\nPT:*/*\nK:Flying\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nA:AB$ Draw | Cost$ 4 Return<1/Land> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:X:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nSVar:NeedsToPlayVar:X GE3\nOracle:Flying\\nSoramaro, First to Dream's power and toughness are each equal to the number of cards in your hand.\\n{4}, Return a land you control to its owner's hand: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Soramaro, First to Dream"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

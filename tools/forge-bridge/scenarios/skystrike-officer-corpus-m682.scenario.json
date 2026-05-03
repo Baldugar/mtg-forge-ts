@@ -1,0 +1,23 @@
+{
+  "id": "skystrike-officer-corpus-m682",
+  "description": "M6 corpus — Skystrike Officer; in-hand parse.",
+  "seed": 64430,
+  "cards": {
+    "Skystrike Officer": "Name:Skystrike Officer\nManaCost:2 U\nTypes:Creature Human Soldier\nPT:2/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 colorless Soldier artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_soldier\nA:AB$ Draw | Cost$ tapXType<3/Soldier> | SpellDescription$ Draw a card.\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Soldier\nDeckHas:Ability$Token & Type$Artifact\nOracle:Whenever Skystrike Officer attacks, create a 1/1 colorless Soldier artifact creature token.\\nTap three untapped Soldiers you control: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skystrike Officer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

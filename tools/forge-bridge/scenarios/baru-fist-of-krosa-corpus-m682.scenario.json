@@ -1,0 +1,23 @@
+{
+  "id": "baru-fist-of-krosa-corpus-m682",
+  "description": "M6 corpus — Baru, Fist of Krosa; in-hand parse.",
+  "seed": 61526,
+  "cards": {
+    "Baru, Fist of Krosa": "Name:Baru, Fist of Krosa\nManaCost:3 G G\nTypes:Legendary Creature Human Druid\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Forest | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a Forest enters, green creatures you control get +1/+1 and gain trample until end of turn.\nA:AB$ Token | Cost$ Discard<1/Card.namedBaru, Fist of Krosa> | TokenScript$ g_x_x_wurm | TokenOwner$ You | TokenPower$ X | TokenToughness$ X | CostDesc$ Grandeur — Discard another card named Baru, Fist of Krosa: | SpellDescription$ Create an X/X green Wurm creature token, where X is the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.Green+YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nSVar:BuffedBy:Forest\nDeckHints:Name$Baru, Fist of Krosa & Ability$Token & Type$Wurm\nOracle:Whenever a Forest enters, green creatures you control get +1/+1 and gain trample until end of turn.\\nGrandeur — Discard another card named Baru, Fist of Krosa: Create an X/X green Wurm creature token, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Baru, Fist of Krosa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

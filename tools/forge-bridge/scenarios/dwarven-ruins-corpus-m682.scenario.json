@@ -1,0 +1,23 @@
+{
+  "id": "dwarven-ruins-corpus-m682",
+  "description": "M6 corpus — Dwarven Ruins; in-hand parse.",
+  "seed": 62123,
+  "cards": {
+    "Dwarven Ruins": "Name:Dwarven Ruins\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ R | Amount$ 2 | SpellDescription$ Add {R}{R}.\nAI:RemoveDeck:All\nOracle:Dwarven Ruins enters tapped.\\n{T}: Add {R}.\\n{T}, Sacrifice Dwarven Ruins: Add {R}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwarven Ruins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "slaughter-priest-of-mogis-corpus-m682",
+  "description": "M6 corpus — Slaughter-Priest of Mogis; in-hand parse.",
+  "seed": 64438,
+  "cards": {
+    "Slaughter-Priest of Mogis": "Name:Slaughter-Priest of Mogis\nManaCost:B R\nTypes:Creature Minotaur Shaman\nPT:2/2\nT:Mode$ Sacrificed | ValidCard$ Permanent.YouCtrl | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a permanent, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nSVar:BuffedBy:Permanent.YouCtrl\nA:AB$ Pump | Cost$ 2 Sac<1/Creature.Other;Enchantment/creature or enchantment> | Defined$ Self | KW$ First Strike | SpellDescription$ CARDNAME gains first strike until end of turn.\nAI:RemoveDeck:All\nOracle:Whenever you sacrifice a permanent, Slaughter-Priest of Mogis gets +2/+0 until end of turn.\\n{2}, Sacrifice another creature or an enchantment: Slaughter-Priest of Mogis gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Slaughter-Priest of Mogis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wolfwillow-haven-corpus-m682",
+  "description": "M6 corpus — Wolfwillow Haven; in-hand parse.",
+  "seed": 65268,
+  "cards": {
+    "Wolfwillow Haven": "Name:Wolfwillow Haven\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ TapsForMana | ValidCard$ Card.AttachedBy | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever enchanted land is tapped for mana, its controller adds an additional {G}.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ 1 | Defined$ TriggeredCardController\nA:AB$ Token | Cost$ 4 G Sac<1/CARDNAME> | TokenScript$ g_2_2_wolf | TokenOwner$ You | PlayerTurn$ True | SpellDescription$ Create a 2/2 green Wolf creature token. Activate only during your turn.\nDeckHas:Ability$Token\nOracle:Enchant land\\nWhenever enchanted land is tapped for mana, its controller adds an additional {G}.\\n{4}{G}, Sacrifice Wolfwillow Haven: Create a 2/2 green Wolf creature token. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolfwillow Haven"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

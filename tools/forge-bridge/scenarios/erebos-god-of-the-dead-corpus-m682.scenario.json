@@ -1,0 +1,23 @@
+{
+  "id": "erebos-god-of-the-dead-corpus-m682",
+  "description": "M6 corpus — Erebos, God of the Dead; in-hand parse.",
+  "seed": 62217,
+  "cards": {
+    "Erebos, God of the Dead": "Name:Erebos, God of the Dead\nManaCost:3 B\nTypes:Legendary Enchantment Creature God\nPT:5/7\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT5 | Description$ As long as your devotion to black is less than 5, NICKNAME isn't a creature. (Each {B} in the mana costs of permanents you control counts towards your devotion to black.)\nSVar:X:Count$Devotion.Black\nS:Mode$ CantGainLife | ValidPlayer$ Player.Opponent | Description$ Your opponents can't gain life.\nA:AB$ Draw | Cost$ 1 B PayLife<2> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Permanent.Black\nOracle:Indestructible\\nAs long as your devotion to black is less than five, Erebos isn't a creature. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)\\nYour opponents can't gain life.\\n{1}{B}, Pay 2 life: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erebos, God of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

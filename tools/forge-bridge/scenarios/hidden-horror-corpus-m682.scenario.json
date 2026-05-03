@@ -1,0 +1,23 @@
+{
+  "id": "hidden-horror-corpus-m682",
+  "description": "M6 corpus — Hidden Horror; in-hand parse.",
+  "seed": 62757,
+  "cards": {
+    "Hidden Horror": "Name:Hidden Horror\nManaCost:1 B B\nTypes:Creature Horror\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacSelf | TriggerDescription$ When CARDNAME enters, sacrifice it unless you discard a creature card.\nSVar:DBSacSelf:DB$ Sacrifice | UnlessCost$ Discard<1/Creature> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$ValidHand Creature.YouOwn\nOracle:When Hidden Horror enters, sacrifice it unless you discard a creature card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hidden Horror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wrath-of-the-skies-corpus-m682",
+  "description": "M6 corpus — Wrath of the Skies; in-hand parse.",
+  "seed": 65280,
+  "cards": {
+    "Wrath of the Skies": "Name:Wrath of the Skies\nManaCost:X W W\nTypes:Sorcery\nA:SP$ PutCounter | Defined$ You | AILogic$ PayEnergy | CounterType$ ENERGY | CounterNum$ X | SubAbility$ DBChooseNumber | SpellDescription$ You get X {E} (energy counters), then you may pay any amount of {E}. Destroy each artifact, creature, and enchantment with mana value less than or equal to the amount of {E} paid this way.\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Max | ListTitle$ amount of energy to pay | SubAbility$ DBDestroyAll\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Artifact.cmcLEY,Creature.cmcLEY,Enchantment.cmcLEY | UnlessCost$ PayEnergy<Y> | UnlessPayer$ You | UnlessSwitched$ True\nSVar:X:Count$xPaid\nSVar:Max:Count$YourCountersEnergy\nSVar:Y:Count$ChosenNumber\nAI:RemoveDeck:All\nOracle:You get X {E} (energy counters), then you may pay any amount of {E}. Destroy each artifact, creature, and enchantment with mana value less than or equal to the amount of {E} paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wrath of the Skies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

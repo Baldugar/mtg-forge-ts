@@ -1,0 +1,23 @@
+{
+  "id": "electrozoa-corpus-m682",
+  "description": "M6 corpus — Electrozoa; in-hand parse.",
+  "seed": 62157,
+  "cards": {
+    "Electrozoa": "Name:Electrozoa\nManaCost:2 U\nTypes:Creature Jellyfish\nPT:3/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ At the beginning of your first main phase, tap CARDNAME unless you pay {E}.\nSVar:TrigTap:DB$ Tap | UnlessCost$ PayEnergy<1> | UnlessPayer$ You | Defined$ Self\nOracle:Flash\\nFlying\\nWhen Electrozoa enters, you get {E}{E} (two energy counters).\\nAt the beginning of your first main phase, tap Electrozoa unless you pay {E}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electrozoa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "necroblossom-snarl-corpus-m682",
+  "description": "M6 corpus — Necroblossom Snarl; in-hand parse.",
+  "seed": 63515,
+  "cards": {
+    "Necroblossom Snarl": "Name:Necroblossom Snarl\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal a Swamp or Forest card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Swamp;Forest/Swamp or Forest> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ Combo B G | SpellDescription$ Add {B} or {G}.\nOracle:As Necroblossom Snarl enters, you may reveal a Swamp or Forest card from your hand. If you don't, Necroblossom Snarl enters tapped.\\n{T}: Add {B} or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necroblossom Snarl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

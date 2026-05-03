@@ -1,0 +1,23 @@
+{
+  "id": "moonveil-regent-corpus-m682",
+  "description": "M6 corpus — Moonveil Regent; in-hand parse.",
+  "seed": 63426,
+  "cards": {
+    "Moonveil Regent": "Name:Moonveil Regent\nManaCost:3 R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you cast a spell, you may discard your hand. If you do, draw a card for each of that spell's colors.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<0/Hand> | NumCards$ X\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME dies, it deals X damage to any target, where X is the number of colors among permanents you control.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ Y\nSVar:X:TriggeredCard$CardNumColors\nSVar:Y:Count$Valid Permanent.YouCtrl$Colors\nDeckHas:Ability$Discard\nOracle:Flying\\nWhenever you cast a spell, you may discard your hand. If you do, draw a card for each of that spell's colors.\\nWhen Moonveil Regent dies, it deals X damage to any target, where X is the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonveil Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

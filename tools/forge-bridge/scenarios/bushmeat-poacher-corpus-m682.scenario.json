@@ -1,0 +1,23 @@
+{
+  "id": "bushmeat-poacher-corpus-m682",
+  "description": "M6 corpus — Bushmeat Poacher; in-hand parse.",
+  "seed": 61589,
+  "cards": {
+    "Bushmeat Poacher": "Name:Bushmeat Poacher\nManaCost:3 B\nTypes:Creature Human Soldier\nPT:2/4\nA:AB$ GainLife | Cost$ 1 T Sac<1/Creature.Other/another creature> | Defined$ You | LifeAmount$ X | SubAbility$ DBDraw | SpellDescription$ You gain life equal to the sacrificed creature's toughness. Draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:X:Sacrificed$CardToughness\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE3\nDeckHas:Ability$LifeGain\nOracle:{1}, {T}, Sacrifice another creature: You gain life equal to the sacrificed creature's toughness. Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bushmeat Poacher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

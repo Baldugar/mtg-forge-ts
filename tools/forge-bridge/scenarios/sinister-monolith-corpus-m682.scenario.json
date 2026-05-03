@@ -1,0 +1,23 @@
+{
+  "id": "sinister-monolith-corpus-m682",
+  "description": "M6 corpus — Sinister Monolith; in-hand parse.",
+  "seed": 64386,
+  "cards": {
+    "Sinister Monolith": "Name:Sinister Monolith\nManaCost:3 B\nTypes:Artifact\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of combat on your turn, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Draw | Cost$ T PayLife<2> Sac<1/CARDNAME> | NumCards$ 2 | SorcerySpeed$ True | SpellDescription$ Draw two cards. Activate only as a sorcery.\nDeckHas:Ability$LifeGain\nOracle:At the beginning of combat on your turn, each opponent loses 1 life and you gain 1 life.\\n{T}, Pay 2 life, Sacrifice Sinister Monolith: Draw two cards. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sinister Monolith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "elspeth-resplendent-corpus-m682",
+  "description": "M6 corpus — Elspeth Resplendent; in-hand parse.",
+  "seed": 62170,
+  "cards": {
+    "Elspeth Resplendent": "Name:Elspeth Resplendent\nManaCost:3 W W\nTypes:Legendary Planeswalker Elspeth\nLoyalty:5\nA:AB$ PutCounter | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | CounterTypes$ P1P1,ChosenFromList | TypeList$ Flying,First Strike,Lifelink,Vigilance | SpellDescription$ Choose up to one target creature. Put a +1/+1 counter and a counter from among flying, first strike, lifelink, or vigilance on it.\nA:AB$ Dig | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | DigNum$ 7 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Permanent.cmcLE3 | ChangeValidDesc$ permanent card with mana value 3 or less | DestinationZone$ Battlefield | WithCounters$ Shield | PrimaryPrompt$ You may choose a permanent card with mana value 3 or less to put on the battlefield | RestRandomOrder$ True | SpellDescription$ Look at the top seven cards of your library. You may put a permanent card with mana value 3 or less from among them onto the battlefield with a shield counter on it. Put the rest on the bottom of your library in a random order.\nA:AB$ Token | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | TokenAmount$ 5 | TokenScript$ w_3_3_angel_flying | SpellDescription$ Create five 3/3 white Angel creature tokens with flying.\nDeckHas:Ability$Counters|LifeGain|Token & Type$Angel\nOracle:[+1]: Choose up to one target creature. Put a +1/+1 counter and a counter from among flying, first strike, lifelink, or vigilance on it.\\n[-3]: Look at the top seven cards of your library. You may put a permanent card with mana value 3 or less from among them onto the battlefield with a shield counter on it. Put the rest on the bottom of your library in a random order.\\n[-7]: Create five 3/3 white Angel creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elspeth Resplendent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

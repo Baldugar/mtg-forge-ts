@@ -1,0 +1,23 @@
+{
+  "id": "liliana-the-necromancer-corpus-m682",
+  "description": "M6 corpus — Liliana, the Necromancer; in-hand parse.",
+  "seed": 63158,
+  "cards": {
+    "Liliana, the Necromancer": "Name:Liliana, the Necromancer\nManaCost:3 B B\nTypes:Legendary Planeswalker Liliana\nLoyalty:4\nA:AB$ LoseLife | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Player | LifeAmount$ 2 | SpellDescription$ Target player loses 2 life.\nA:AB$ ChangeZone | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return target creature card from your graveyard to your hand.\nA:AB$ Destroy | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | SubAbility$ DBChangeZone | SpellDescription$ Destroy up to two target creatures.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 2 | GainControl$ True | SpellDescription$ Put up to two creature cards from graveyards onto the battlefield under your control.\nOracle:[+1]: Target player loses 2 life.\\n[-1]: Return target creature card from your graveyard to your hand.\\n[-7]: Destroy up to two target creatures. Put up to two creature cards from graveyards onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana, the Necromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

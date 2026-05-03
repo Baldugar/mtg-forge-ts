@@ -1,0 +1,23 @@
+{
+  "id": "sink-into-stupor-corpus-m682",
+  "description": "M6 corpus — Sink into Stupor; in-hand parse.",
+  "seed": 64387,
+  "cards": {
+    "Sink into Stupor": "Name:Sink into Stupor\nManaCost:1 U U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand+OppCtrl,Card.inZoneStack+OppCtrl | TgtZone$ Stack,Battlefield | Origin$ Battlefield,Stack | Destination$ Hand | SpellDescription$ Return target spell or nonland permanent an opponent controls to its owner's hand.\nAlternateMode:Modal\nOracle:Return target spell or nonland permanent an opponent controls to its owner's hand.\n\nALTERNATE\n\nName:Soporific Springs\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 3 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<3> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nOracle:As Soporific Springs enters, you may pay 3 life. If you don't, it enters tapped.\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sink into Stupor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

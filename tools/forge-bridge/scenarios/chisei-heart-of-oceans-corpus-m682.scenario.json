@@ -1,0 +1,23 @@
+{
+  "id": "chisei-heart-of-oceans-corpus-m682",
+  "description": "M6 corpus — Chisei, Heart of Oceans; in-hand parse.",
+  "seed": 61728,
+  "cards": {
+    "Chisei, Heart of Oceans": "Name:Chisei, Heart of Oceans\nManaCost:2 U U\nTypes:Legendary Creature Spirit\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you remove a counter from a permanent you control.\nSVar:TrigSac:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ RemoveAnyCounter<1/Any/Permanent>\nSVar:NeedsToPlay:Creature.YouCtrl+HasCounters\nSVar:AIRemoveCounterCostPriority:ANY\nDeckNeeds:Ability$Counters\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice Chisei, Heart of Oceans unless you remove a counter from a permanent you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chisei, Heart of Oceans"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

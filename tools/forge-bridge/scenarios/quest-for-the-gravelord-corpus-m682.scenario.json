@@ -1,0 +1,23 @@
+{
+  "id": "quest-for-the-gravelord-corpus-m682",
+  "description": "M6 corpus — Quest for the Gravelord; in-hand parse.",
+  "seed": 63878,
+  "cards": {
+    "Quest for the Gravelord": "Name:Quest for the Gravelord\nManaCost:B\nTypes:Enchantment\nA:AB$ Token | Cost$ SubCounter<3/QUEST> Sac<1/CARDNAME> | TokenScript$ b_5_5_zombie_giant | TokenOwner$ You | SpellDescription$ Create a 5/5 black Zombie Giant creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever a creature dies, you may put a quest counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ QUEST | CounterNum$ 1\nSVar:MaxQuestEffect:3\nDeckHas:Ability$Counters|Token\nOracle:Whenever a creature dies, you may put a quest counter on Quest for the Gravelord.\\nRemove three quest counters from Quest for the Gravelord and sacrifice it: Create a 5/5 black Zombie Giant creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quest for the Gravelord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

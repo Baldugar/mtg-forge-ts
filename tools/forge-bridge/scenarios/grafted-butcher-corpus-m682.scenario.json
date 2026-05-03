@@ -1,0 +1,23 @@
+{
+  "id": "grafted-butcher-corpus-m682",
+  "description": "M6 corpus — Grafted Butcher; in-hand parse.",
+  "seed": 62608,
+  "cards": {
+    "Grafted Butcher": "Name:Grafted Butcher\nManaCost:1 B\nTypes:Creature Phyrexian Samurai\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, Phyrexians you control gain menace until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Phyrexian.YouCtrl | KW$ Menace\nS:Mode$ Continuous | Affected$ Phyrexian.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Phyrexians you control get +1/+1.\nA:AB$ ChangeZone | Cost$ 3 B Sac<1/Artifact;Creature/artifact or creature> | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | SorcerySpeed$ True | SpellDescription$ Return CARDNAME from your graveyard to the battlefield. Activate only as a sorcery.\nDeckHints:Type$Phyrexian\nDeckHas:Ability$Sacrifice|Graveyard\nOracle:When Grafted Butcher enters, Phyrexians you control gain menace until end of turn.\\nOther Phyrexians you control get +1/+1\\n{3}{B}, Sacrifice an artifact or creature: Return Grafted Butcher from your graveyard to the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grafted Butcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

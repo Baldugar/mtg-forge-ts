@@ -1,0 +1,23 @@
+{
+  "id": "preferred-selection-corpus-m682",
+  "description": "M6 corpus — Preferred Selection; in-hand parse.",
+  "seed": 63809,
+  "cards": {
+    "Preferred Selection": "Name:Preferred Selection\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLook | TriggerDescription$ At the beginning of your upkeep, look at the top two cards of your library. You may sacrifice CARDNAME and pay {2}{G}{G}. If you do, put one of those cards into your hand. If you don't, put one of those cards on the bottom of your library.\nSVar:TrigLook:DB$ PeekAndReveal | Defined$ You | PeekAmount$ 2 | NoReveal$ True | SubAbility$ DBBottom\nSVar:DBBottom:DB$ Dig | UnlessCost$ Sac<1/CARDNAME> 2 G G | UnlessPayer$ You | UnlessResolveSubs$ WhenPaid | UnlessAI$ Never | SubAbility$ DBPutHand | DigNum$ 2 | ChangeNum$ 1 | AILogic$ WorstCard | DestinationZone$ Library | DestinationZone2$ Library | LibraryPosition$ -1 | LibraryPosition2$ 0 | ChangeValid$ Card\nSVar:DBPutHand:DB$ Dig | DigNum$ 2 | ChangeNum$ 1 | DestinationZone$ Hand | DestinationZone2$ Library | LibraryPosition2$ 0 | ChangeValid$ Card\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, look at the top two cards of your library. You may sacrifice Preferred Selection and pay {2}{G}{G}. If you do, put one of those cards into your hand. If you don't, put one of those cards on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Preferred Selection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jolted-awake-corpus-m682",
+  "description": "M6 corpus — Jolted Awake; in-hand parse.",
+  "seed": 62970,
+  "cards": {
+    "Jolted Awake": "Name:Jolted Awake\nManaCost:W\nTypes:Sorcery\nA:SP$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2 | ValidTgts$ Artifact.YouOwn,Creature.YouOwn | TgtPrompt$ Select up to one target artifact or creature from your graveyard | TargetMin$ 0 | TargetMax$ 1 | TgtZone$ Graveyard | SubAbility$ DBChange | SpellDescription$ Choose up to one target artifact or creature card in your graveyard. You get {E}{E} (two energy counters). Then you may pay an amount of {E} equal to that card's mana value. If you do, return it from your graveyard to the battlefield.\nSVar:DBChange:DB$ ChangeZone | Defined$ Targeted | Origin$ Graveyard | Destination$ Battlefield | UnlessCost$ PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True\nSVar:X:Targeted$CardManaCost\nK:Cycling:2\nDeckHas:Ability$Discard|Graveyard\nOracle:Choose up to one target artifact or creature card in your graveyard. You get {E}{E} (two energy counters). Then you may pay an amount of {E} equal to that card's mana value. If you do, return it from your graveyard to the battlefield.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jolted Awake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

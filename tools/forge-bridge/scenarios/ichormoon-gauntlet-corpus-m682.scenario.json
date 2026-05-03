@@ -1,0 +1,23 @@
+{
+  "id": "ichormoon-gauntlet-corpus-m682",
+  "description": "M6 corpus — Ichormoon Gauntlet; in-hand parse.",
+  "seed": 62830,
+  "cards": {
+    "Ichormoon Gauntlet": "Name:Ichormoon Gauntlet\nManaCost:2 U\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Planeswalker.YouCtrl | AddAbility$ PWProliferate & PWExtraTurn | Description$ Planeswalkers you control have \"[0]: Proliferate\" and \"[-12]: Take an extra turn after this one.\"\nSVar:PWProliferate:AB$ Proliferate | Cost$ AddCounter<0/LOYALTY> | Planeswalker$ True | SpellDescription$ Proliferate.\nSVar:PWExtraTurn:AB$ AddTurn | Cost$ SubCounter<12/LOYALTY> | Planeswalker$ True | NumTurns$ 1 | SpellDescription$ Take an extra turn after this one.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a noncreature spell, choose a counter on target permanent. Put an additional counter of that kind on that permanent.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Permanent | CounterType$ ExistingCounter | CounterNum$ 1\nDeckHints:Type$Planeswalker & Ability$Counters\nOracle:Planeswalkers you control have \"[0]: Proliferate\" and \"[-12]: Take an extra turn after this one.\"\\nWhenever you cast a noncreature spell, choose a counter on target permanent. Put an additional counter of that kind on that permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ichormoon Gauntlet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

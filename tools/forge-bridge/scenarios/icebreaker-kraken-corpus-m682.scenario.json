@@ -1,0 +1,23 @@
+{
+  "id": "icebreaker-kraken-corpus-m682",
+  "description": "M6 corpus — Icebreaker Kraken; in-hand parse.",
+  "seed": 62826,
+  "cards": {
+    "Icebreaker Kraken": "Name:Icebreaker Kraken\nManaCost:10 U U\nTypes:Snow Creature Kraken\nPT:8/8\nK:Affinity:Land.Snow:snow land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBEffect | TriggerDescription$ When CARDNAME enters, artifacts and creatures target opponent controls don't untap during that player's next untap step.\nA:AB$ ChangeZone | Cost$ Return<3/Land.Snow> | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ DontUntap | Triggers$ RemoveEffect | Duration$ Permanent | ValidTgts$ Opponent | RememberObjects$ Targeted | SpellDescription$ During that player's next untap step, artifacts and creatures they control don't untap.\nSVar:DontUntap:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Artifact.RememberedPlayerCtrl,Creature.RememberedPlayerCtrl | AddHiddenKeyword$ This card doesn't untap during your next untap step. | Description$ Artifacts and creatures target opponent controls don't untap during their next untap step.\nSVar:RemoveEffect:Mode$ Phase | Phase$ Untap | ValidPlayer$ Player.IsRemembered | TriggerZones$ Command | Static$ True | Execute$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nDeckHints:Type$Snow\nOracle:Affinity for snow lands (This spell costs {1} less to cast for each snow land you control.)\\nWhen Icebreaker Kraken enters, artifacts and creatures target opponent controls don't untap during that player's next untap step.\\nReturn three snow lands you control to their owner's hand: Return Icebreaker Kraken to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Icebreaker Kraken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

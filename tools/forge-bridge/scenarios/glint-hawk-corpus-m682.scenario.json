@@ -1,0 +1,23 @@
+{
+  "id": "glint-hawk-corpus-m682",
+  "description": "M6 corpus — Glint Hawk; in-hand parse.",
+  "seed": 62545,
+  "cards": {
+    "Glint Hawk": "Name:Glint Hawk\nManaCost:W\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return an artifact you control to its owner's hand.\nSVar:DBSac:DB$ Sacrifice | UnlessCost$ Return<1/Artifact> | UnlessPayer$ You\nSVar:NeedsToPlay:Artifact.YouCtrl\nOracle:Flying\\nWhen Glint Hawk enters, sacrifice it unless you return an artifact you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glint Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

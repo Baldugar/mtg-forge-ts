@@ -1,0 +1,23 @@
+{
+  "id": "mask-of-griselbrand-corpus-m682",
+  "description": "M6 corpus — Mask of Griselbrand; in-hand parse.",
+  "seed": 63292,
+  "cards": {
+    "Mask of Griselbrand": "Name:Mask of Griselbrand\nManaCost:1 B B\nTypes:Legendary Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying & Lifelink | Description$ Equipped creature has flying and lifelink.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature dies, you may pay X life, where X is its power. If you do, draw X cards.\nSVar:TrigDraw:AB$ Draw | Cost$ PayLife<X> | NumCards$ X\nSVar:X:TriggeredCard$CardPower\nK:Equip:3\nDeckHas:Ability$LifeGain\nOracle:Equipped creature has flying and lifelink.\\nWhenever equipped creature dies, you may pay X life, where X is its power. If you do, draw X cards.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mask of Griselbrand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

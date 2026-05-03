@@ -1,0 +1,23 @@
+{
+  "id": "pillaging-horde-corpus-m682",
+  "description": "M6 corpus — Pillaging Horde; in-hand parse.",
+  "seed": 63769,
+  "cards": {
+    "Pillaging Horde": "Name:Pillaging Horde\nManaCost:2 R R\nTypes:Creature Human Barbarian\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you discard a card at random.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self | UnlessCost$ Discard<1/Random> | UnlessPayer$ You\nSVar:X:Remembered$Amount\nSVar:NeedsToPlayVar:Y GE2\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:When Pillaging Horde enters, sacrifice it unless you discard a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pillaging Horde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

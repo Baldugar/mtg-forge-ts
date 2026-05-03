@@ -1,0 +1,23 @@
+{
+  "id": "kheru-bloodsucker-corpus-m682",
+  "description": "M6 corpus — Kheru Bloodsucker; in-hand parse.",
+  "seed": 63023,
+  "cards": {
+    "Kheru Bloodsucker": "Name:Kheru Bloodsucker\nManaCost:2 B\nTypes:Creature Vampire\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+toughnessGE4 | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature you control with toughness 4 or greater dies, each opponent loses 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nA:AB$ PutCounter | Cost$ 2 B Sac<1/Creature.Other/another creature> | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nOracle:Whenever a creature you control with toughness 4 or greater dies, each opponent loses 2 life and you gain 2 life.\\n{2}{B}, Sacrifice another creature: Put a +1/+1 counter on Kheru Bloodsucker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kheru Bloodsucker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

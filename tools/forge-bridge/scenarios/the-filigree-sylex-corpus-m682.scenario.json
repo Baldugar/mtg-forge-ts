@@ -1,0 +1,23 @@
+{
+  "id": "the-filigree-sylex-corpus-m682",
+  "description": "M6 corpus — The Filigree Sylex; in-hand parse.",
+  "seed": 64801,
+  "cards": {
+    "The Filigree Sylex": "Name:The Filigree Sylex\nManaCost:2\nTypes:Legendary Artifact\nA:AB$ PutCounter | Cost$ T | CounterType$ OIL | CounterNum$ 1 | SpellDescription$ Put an oil counter on CARDNAME.\nA:AB$ DestroyAll | Cost$ T Sac<1/CARDNAME> | ValidCards$ Permanent.nonLand+cmcEQX | SpellDescription$ Destroy each nonland permanent with mana value equal to the number of oil counters on CARDNAME.\nA:AB$ DealDamage | Cost$ T RemoveAnyCounter<10/OIL/Permanent/permanents> Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 10 | SpellDescription$ It deals 10 damage to any target.\nSVar:X:Count$CardCounters.OIL\nDeckHas:Ability$Counters|Sacrifice\nOracle:{T}: Put an oil counter on The Filigree Sylex.\\n{T}, Sacrifice The Filigree Sylex: Destroy each nonland permanent with mana value equal to the number of oil counters on The Filigree Sylex.\\n{T}, Remove ten oil counters from among permanents you control and sacrifice The Filigree Sylex: It deals 10 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Filigree Sylex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

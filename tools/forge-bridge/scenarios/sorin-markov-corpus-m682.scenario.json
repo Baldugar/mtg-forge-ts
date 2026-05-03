@@ -1,0 +1,23 @@
+{
+  "id": "sorin-markov-corpus-m682",
+  "description": "M6 corpus — Sorin Markov; in-hand parse.",
+  "seed": 64482,
+  "cards": {
+    "Sorin Markov": "Name:Sorin Markov\nManaCost:3 B B B\nTypes:Legendary Planeswalker Sorin\nLoyalty:4\nA:AB$ DealDamage | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 2 damage to any target and you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nA:AB$ SetLife | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Opponent | LifeAmount$ 10 | SpellDescription$ Target opponent's life total becomes 10.\n# NOTE: The AI will not activate the Ultimate, but otherwise it uses the first two abilities rather well and to the point.\nA:AB$ ControlPlayer | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Player | SpellDescription$ You control target player during that player's next turn.\nOracle:[+2]: Sorin Markov deals 2 damage to any target and you gain 2 life.\\n[-3]: Target opponent's life total becomes 10.\\n[-7]: You control target player during that player's next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sorin Markov"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

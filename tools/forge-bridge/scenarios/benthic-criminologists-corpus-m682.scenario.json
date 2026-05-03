@@ -1,0 +1,23 @@
+{
+  "id": "benthic-criminologists-corpus-m682",
+  "description": "M6 corpus — Benthic Criminologists; in-hand parse.",
+  "seed": 61533,
+  "cards": {
+    "Benthic Criminologists": "Name:Benthic Criminologists\nManaCost:4 U\nTypes:Creature Merfolk Wizard\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, you may sacrifice an artifact. If you do, draw a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may sacrifice an artifact. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Artifact>\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact|Treasure|Food|Map|Clue\nOracle:Whenever Benthic Criminologists enters or attacks, you may sacrifice an artifact. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Benthic Criminologists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

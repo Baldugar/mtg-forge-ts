@@ -1,0 +1,23 @@
+{
+  "id": "spectral-adversary-corpus-m682",
+  "description": "M6 corpus — Spectral Adversary; in-hand parse.",
+  "seed": 64529,
+  "cards": {
+    "Spectral Adversary": "Name:Spectral Adversary\nManaCost:1 U\nTypes:Creature Spirit\nPT:2/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPay | TriggerDescription$ When CARDNAME enters, you may pay {1}{U} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then up to that many other target artifacts, creatures, and/or enchantments phase out.\nSVar:TrigPay:AB$ ImmediateTrigger | Cost$ Mana<1 U\\NumTimes> | Announce$ NumTimes | ConditionCheckSVar$ NumTimes | RememberSVarAmount$ NumTimes | Execute$ TrigPutCounter | TriggerDescription$ When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then up to that many other target artifacts, creatures, and/or enchantments phase out.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBPhases\nSVar:DBPhases:DB$ Phases | ValidTgts$ Creature.Other,Artifact.Other,Enchantment.Other | TgtPrompt$ Select up to that many other target artifacts, creatures, and/or enchantments | TargetMin$ 0 | TargetMax$ X\nSVar:X:Count$TriggerRememberAmount\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Flash\\nFlying\\nWhen Spectral Adversary enters, you may pay {1}{U} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on Spectral Adversary, then up to that many other target artifacts, creatures, and/or enchantments phase out.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spectral Adversary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

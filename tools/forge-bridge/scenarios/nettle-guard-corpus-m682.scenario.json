@@ -1,0 +1,23 @@
+{
+  "id": "nettle-guard-corpus-m682",
+  "description": "M6 corpus — Nettle Guard; in-hand parse.",
+  "seed": 63535,
+  "cards": {
+    "Nettle Guard": "Name:Nettle Guard\nManaCost:1 W\nTypes:Creature Mouse Soldier\nPT:3/1\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.YouCtrl | TriggerZones$ Battlefield | Valiant$ True | Execute$ TrigPump | TriggerDescription$ Valiant — Whenever CARDNAME becomes the target of a spell or ability you control for the first time each turn, it gets +0/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumDef$ +2\nA:AB$ Destroy | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nOracle:Valiant — Whenever Nettle Guard becomes the target of a spell or ability you control for the first time each turn, it gets +0/+2 until end of turn.\\n{1}, Sacrifice Nettle Guard: Destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nettle Guard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

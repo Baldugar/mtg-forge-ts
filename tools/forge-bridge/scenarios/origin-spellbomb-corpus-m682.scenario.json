@@ -1,0 +1,23 @@
+{
+  "id": "origin-spellbomb-corpus-m682",
+  "description": "M6 corpus — Origin Spellbomb; in-hand parse.",
+  "seed": 63655,
+  "cards": {
+    "Origin Spellbomb": "Name:Origin Spellbomb\nManaCost:1\nTypes:Artifact\nA:AB$ Token | Cost$ 1 T Sac<1/CARDNAME> | TokenScript$ c_1_1_a_myr | SpellDescription$ Create a 1/1 colorless Myr artifact creature token.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, you may pay {W}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ W | NumCards$ 1\nDeckNeeds:Color$White\nDeckHints:Type$Myr\nDeckHas:Ability$Token\nOracle:{1}, {T}, Sacrifice Origin Spellbomb: Create a 1/1 colorless Myr artifact creature token.\\nWhen Origin Spellbomb is put into a graveyard from the battlefield, you may pay {W}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Origin Spellbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

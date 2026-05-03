@@ -1,0 +1,23 @@
+{
+  "id": "martyr-s-cause-corpus-m682",
+  "description": "M6 corpus — Martyr's Cause; in-hand parse.",
+  "seed": 63290,
+  "cards": {
+    "Martyr's Cause": "Name:Martyr's Cause\nManaCost:2 W\nTypes:Enchantment\nA:AB$ ChooseSource | Cost$ Sac<1/Creature> | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to any target this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Any | TgtPrompt$ Select any target to prevent damage to | ExileOnMoved$ Battlefield | ReplacementEffects$ RPreventNextFromSource | RememberObjects$ Targeted | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ Card.IsRemembered,Player.IsRemembered | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen source deals damage to the target, prevent that damage.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:Sacrifice a creature: The next time a source of your choice would deal damage to any target this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martyr's Cause"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

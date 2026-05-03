@@ -1,0 +1,23 @@
+{
+  "id": "crypt-lurker-corpus-m682",
+  "description": "M6 corpus — Crypt Lurker; in-hand parse.",
+  "seed": 61880,
+  "cards": {
+    "Crypt Lurker": "Name:Crypt Lurker\nManaCost:3 B\nTypes:Creature Horror\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoice | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may sacrifice a creature or discard a creature card. If you do, draw a card.\nSVar:TrigChoice:DB$ GenericChoice | Choices$ DBSacToDraw,DBDiscardToDraw\nSVar:DBSacToDraw:DB$ Draw | UnlessCost$ Sac<1/Creature> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ Sacrifice a creature: Draw a card.\nSVar:DBDiscardToDraw:DB$ Draw | UnlessCost$ Discard<1/Creature> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ Discard a creature card: Draw a card.\nDeckHas:Ability$Sacrifice|Graveyard|Discard\nOracle:When Crypt Lurker enters, you may sacrifice a creature or discard a creature card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crypt Lurker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

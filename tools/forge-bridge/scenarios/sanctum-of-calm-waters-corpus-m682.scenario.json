@@ -1,0 +1,23 @@
+{
+  "id": "sanctum-of-calm-waters-corpus-m682",
+  "description": "M6 corpus — Sanctum of Calm Waters; in-hand parse.",
+  "seed": 64160,
+  "cards": {
+    "Sanctum of Calm Waters": "Name:Sanctum of Calm Waters\nManaCost:3 U\nTypes:Legendary Enchantment Shrine\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your first main phase, you may draw X cards, where X is the number of Shrines you control. If you do, discard a card.\nSVar:TrigDraw:AB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Cost$ Draw<X/You>\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHints:Type$Shrine\nOracle:At the beginning of your first main phase, you may draw X cards, where X is the number of Shrines you control. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctum of Calm Waters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "read-the-runes-corpus-m682",
+  "description": "M6 corpus — Read the Runes; in-hand parse.",
+  "seed": 63945,
+  "cards": {
+    "Read the Runes": "Name:Read the Runes\nManaCost:X U\nTypes:Instant\nA:SP$ Draw | NumCards$ X | SubAbility$ DBRepeat | RememberDrawn$ AllReplaced | SpellDescription$ Draw X cards. For each card drawn this way, discard a card unless you sacrifice a permanent.\nSVar:DBRepeat:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Card.IsRemembered | Zone$ Hand | RepeatSubAbility$ DBDiscard | SubAbility$ DBCleanup\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | UnlessCost$ Sac<1/Permanent> | UnlessPayer$ You\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Draw X cards. For each card drawn this way, discard a card unless you sacrifice a permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Read the Runes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

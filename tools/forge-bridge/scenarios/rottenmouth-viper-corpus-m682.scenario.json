@@ -1,0 +1,23 @@
+{
+  "id": "rottenmouth-viper-corpus-m682",
+  "description": "M6 corpus — Rottenmouth Viper; in-hand parse.",
+  "seed": 64052,
+  "cards": {
+    "Rottenmouth Viper": "Name:Rottenmouth Viper\nManaCost:5 B\nTypes:Creature Elemental Snake\nPT:6/6\nA:SP$ PermanentCreature | Cost$ 5 B Sac<X/Permanent.nonLand/nonland permanent> | AILogic$ SacToReduceCost | AdditionalDesc$ This spell costs {1} less to cast for each permanent sacrificed this way.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Relative$ True\nSVar:X:Count$xPaid\nSVar:AIPreference:SacCost$Artifact.token+nonLegendary,Creature.token+powerLE2+toughnessLE2,Creature.cmcLE2+powerLE2+toughnessLE2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME enters or attacks, put a blight counter on it. Then for each blight counter on it, each opponent loses 4 life unless that player sacrifices a nonland permanent or discards a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, put a blight counter on it. Then for each blight counter on it, each opponent loses 4 life unless that player sacrifices a nonland permanent or discards a card.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ BLIGHT | CounterNum$ 1 | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ Repeat | MaxRepeat$ Y | RepeatSubAbility$ RepeatTorment | AILogic$ MaxY | StackDescription$ Each opponent loses 4 life unless that player sacrifices a nonland permanent or discards a card.\nSVar:RepeatTorment:DB$ GenericChoice | Defined$ Opponent | TempRemember$ Chooser | Choices$ SacNonland,Discard | FallbackAbility$ LoseLifeFallback | AILogic$ PayUnlessCost\nSVar:Discard:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 4 | UnlessCost$ Discard<1/Card> | UnlessPayer$ Remembered | SpellDescription$ You lose 4 life unless you discard a card.\nSVar:SacNonland:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 4 | UnlessCost$ Sac<1/Permanent.nonLand/nonland permanent> | UnlessPayer$ Remembered | SpellDescription$ You lose 4 life unless you sacrifice a nonland permanent.\nSVar:LoseLifeFallback:DB$ LoseLife | Defined$ Remembered | LifeAmount$ 4\nSVar:Y:Count$CardCounters.BLIGHT\nDeckHas:Ability$Sacrifice|Counters\nOracle:As an additional cost to cast this spell, you may sacrifice any number of nonland permanents. This spell costs {1} less to cast for each permanent sacrificed this way.\\nWhenever Rottenmouth Viper enters or attacks, put a blight counter on it. Then for each blight counter on it, each opponent loses 4 life unless that player sacrifices a nonland permanent or discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rottenmouth Viper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

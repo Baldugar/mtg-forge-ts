@@ -1,0 +1,23 @@
+{
+  "id": "dr-madison-li-corpus-m682",
+  "description": "M6 corpus — Dr. Madison Li; in-hand parse.",
+  "seed": 62064,
+  "cards": {
+    "Dr. Madison Li": "Name:Dr. Madison Li\nManaCost:U R W\nTypes:Legendary Creature Human Scientist\nPT:2/3\nT:Mode$ SpellCast | ValidCard$ Artifact | ValidActivatingPlayer$ You | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an artifact spell, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Pump | Cost$ T PayEnergy<1> | ValidTgts$ Creature | KW$ Trample & Haste | NumAtt$ +1 | SpellDescription$ Target creature gets +1/+0 and gains trample and haste until end of turn.\nA:AB$ Draw | Cost$ T PayEnergy<3> | SpellDescription$ Draw a card.\nA:AB$ ChangeZone | Cost$ T PayEnergy<5> | Tapped$ True | TgtPrompt$ Choose target artifact card in your graveyard | ValidTgts$ Artifact.YouOwn | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return target artifact card from your graveyard to the battlefield tapped.\nDeckNeeds:Type$Artifact\nDeckHints:Ability$Graveyard\nOracle:Whenever you cast an artifact spell, you get {E} (an energy counter).\\n{T}, Pay {E}: Target creature gets +1/+0 and gains trample and haste until end of turn.\\n{T}, Pay {E}{E}{E}: Draw a card.\\n{T}, Pay {E}{E}{E}{E}{E}: Return target artifact card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dr. Madison Li"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mystery-key-corpus-m682",
+  "description": "M6 corpus — Mystery Key; in-hand parse.",
+  "seed": 63485,
+  "cards": {
+    "Mystery Key": "Name:Mystery Key\nManaCost:1 U\nTypes:Artifact Equipment\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ When equipped creature deals combat damage to a player, sacrifice CARDNAME. If you do, draw three cards.\nSVar:TrigSacrifice:AB$ Draw | NumCards$ 3 | Cost$ Mandatory Sac<1/CARDNAME>\nSVar:NonStackingAttachEffect:True\nK:Equip:1\nOracle:When equipped creature deals combat damage to a player, sacrifice Mystery Key. If you do, draw three cards.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystery Key"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

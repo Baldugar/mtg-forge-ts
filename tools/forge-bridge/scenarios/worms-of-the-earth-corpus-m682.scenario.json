@@ -1,0 +1,23 @@
+{
+  "id": "worms-of-the-earth-corpus-m682",
+  "description": "M6 corpus — Worms of the Earth; in-hand parse.",
+  "seed": 65277,
+  "cards": {
+    "Worms of the Earth": "Name:Worms of the Earth\nManaCost:2 B B B\nTypes:Enchantment\nS:Mode$ CantPlayLand | Description$ Players can't play lands.\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Battlefield | ValidCard$ Land | Prevent$ True | Layer$ CantHappen | Description$ Lands can't enter the battlefield.\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigChoose | TriggerDescription$ At the beginning of each upkeep, any player may sacrifice two lands or have CARDNAME deal 5 damage to that player. If a player does either, destroy CARDNAME.\nSVar:TrigChoose:DB$ GenericChoice | Defined$ Player | TempRemember$ Chooser | Choices$ SacTwoLands,DealDmg | AILogic$ PayUnlessCost\nSVar:DealDmg:DB$ Destroy | Defined$ Self | UnlessCost$ DamageYou<5> | UnlessPayer$ Remembered | UnlessSwitched$ True | SpellDescription$ Have CARDNAME deal 5 damage to you and destroy CARDNAME.\nSVar:SacTwoLands:DB$ Destroy | Defined$ Self | UnlessCost$ Sac<2/Permanent.Land/two lands> | UnlessPayer$ Remembered | UnlessSwitched$ True | SpellDescription$ Sacrifice two lands to destroy CARDNAME.\nSVar:AIPreference:SacCost$Land.Basic,Land\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Players can't play lands.\\nLands can't enter the battlefield.\\nAt the beginning of each upkeep, any player may sacrifice two lands or have Worms of the Earth deal 5 damage to that player. If a player does either, destroy Worms of the Earth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Worms of the Earth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

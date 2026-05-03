@@ -1,0 +1,23 @@
+{
+  "id": "mercadian-lift-corpus-m682",
+  "description": "M6 corpus — Mercadian Lift; in-hand parse.",
+  "seed": 63334,
+  "cards": {
+    "Mercadian Lift": "Name:Mercadian Lift\nManaCost:2\nTypes:Artifact\nA:AB$ PutCounter | Cost$ 1 T | CounterType$ WINCH | CounterNum$ 1 | SpellDescription$ Put a winch counter on CARDNAME.\nA:AB$ ChangeZone | Cost$ T SubCounter<X/WINCH> | ChangeNum$ 1 | ChangeType$ Creature.cmcEQX | Origin$ Hand | Destination$ Battlefield | Optional$ True | SpellDescription$ You may put a creature card with mana value X from your hand onto the battlefield.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{1}, {T}: Put a winch counter on Mercadian Lift.\\n{T}, Remove X winch counters from Mercadian Lift: You may put a creature card with mana value X from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mercadian Lift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

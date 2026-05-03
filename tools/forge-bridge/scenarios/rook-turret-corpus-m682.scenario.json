@@ -1,0 +1,23 @@
+{
+  "id": "rook-turret-corpus-m682",
+  "description": "M6 corpus — Rook Turret; in-hand parse.",
+  "seed": 64039,
+  "cards": {
+    "Rook Turret": "Name:Rook Turret\nManaCost:3 U\nTypes:Artifact Creature Construct\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoot | TriggerDescription$ Whenever another artifact you control enters, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | Cost$ Draw<1/You>\nOracle:Flying\\nWhenever another artifact you control enters, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rook Turret"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

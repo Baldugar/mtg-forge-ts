@@ -1,0 +1,23 @@
+{
+  "id": "springbloom-druid-corpus-m682",
+  "description": "M6 corpus — Springbloom Druid; in-hand parse.",
+  "seed": 64573,
+  "cards": {
+    "Springbloom Druid": "Name:Springbloom Druid\nManaCost:2 G\nTypes:Creature Elf Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRamp | TriggerDescription$ When CARDNAME enters, you may sacrifice a land. If you do, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\nSVar:TrigRamp:AB$ ChangeZone | Cost$ Sac<1/Land> | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 2 | ShuffleNonMandatory$ True\nOracle:When Springbloom Druid enters, you may sacrifice a land. If you do, search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Springbloom Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

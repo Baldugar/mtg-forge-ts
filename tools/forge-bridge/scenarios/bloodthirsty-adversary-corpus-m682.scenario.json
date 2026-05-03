@@ -1,0 +1,23 @@
+{
+  "id": "bloodthirsty-adversary-corpus-m682",
+  "description": "M6 corpus — Bloodthirsty Adversary; in-hand parse.",
+  "seed": 61552,
+  "cards": {
+    "Bloodthirsty Adversary": "Name:Bloodthirsty Adversary\nManaCost:1 R\nTypes:Creature Vampire\nPT:2/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPay | TriggerDescription$ When CARDNAME enters, you may pay {2}{R} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then exile up to that many target instant and/or sorcery cards with mana value 3 or less from your graveyard and copy them. You may cast any number of the copies without paying their mana costs.\nSVar:TrigPay:AB$ ImmediateTrigger | Cost$ Mana<2 R\\NumTimes> | Announce$ NumTimes | ConditionCheckSVar$ NumTimes | RememberSVarAmount$ NumTimes | Execute$ TrigPutCounter | TriggerDescription$ When you pay this cost one or more times, put that many +1/+1 counters on CARDNAME, then exile up to that many target instant and/or sorcery cards with mana value 3 or less from your graveyard and copy them. You may cast any number of the copies without paying their mana costs.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Instant.cmcLE3+YouOwn,Sorcery.cmcLE3+YouOwn | TgtPrompt$ Select up to that many target instant and/or sorcery cards with mana value 3 or less from your graveyard | RememberChanged$ True | SubAbility$ DBCopyCast\nSVar:DBCopyCast:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | Controller$ You | CopyCard$ True | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | Amount$ All | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$TriggerRememberAmount\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Haste\\nWhen Bloodthirsty Adversary enters, you may pay {2}{R} any number of times. When you pay this cost one or more times, put that many +1/+1 counters on Bloodthirsty Adversary, then exile up to that many target instant and/or sorcery cards with mana value 3 or less from your graveyard and copy them. You may cast any number of the copies without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bloodthirsty Adversary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

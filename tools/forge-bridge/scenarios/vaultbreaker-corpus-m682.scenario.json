@@ -1,0 +1,23 @@
+{
+  "id": "vaultbreaker-corpus-m682",
+  "description": "M6 corpus — Vaultbreaker; in-hand parse.",
+  "seed": 65072,
+  "cards": {
+    "Vaultbreaker": "Name:Vaultbreaker\nManaCost:3 R\nTypes:Creature Orc Rogue\nPT:4/2\nK:Dash:2 R\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME attacks, you may discard a card. If you do, draw a card.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card> | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Whenever Vaultbreaker attacks, you may discard a card. If you do, draw a card.\\nDash {2}{R} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vaultbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

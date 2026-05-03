@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-warhorse-corpus-m682",
+  "description": "M6 corpus — Phyrexian Warhorse; in-hand parse.",
+  "seed": 63759,
+  "cards": {
+    "Phyrexian Warhorse": "Name:Phyrexian Warhorse\nManaCost:3 B\nTypes:Creature Phyrexian Horse\nPT:3/3\nK:Kicker:W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if it was kicked, create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier\nA:AB$ Pump | Cost$ 1 Sac<1/Creature.Other/another creature> | Defined$ Self | NumAtt$ +2 | NumDef$ +1 | SpellDescription$ CARDNAME gets +2/+1 until end of turn.\nDeckHas:Ability$Sacrifice|Token\nDeckHints:Color$White\nOracle:Kicker {W} (You may pay an additional {W} as you cast this spell.)\\nWhen Phyrexian Warhorse enters, if it was kicked, create a 1/1 white Soldier creature token.\\n{1}, Sacrifice another creature: Phyrexian Warhorse gets +2/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Warhorse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

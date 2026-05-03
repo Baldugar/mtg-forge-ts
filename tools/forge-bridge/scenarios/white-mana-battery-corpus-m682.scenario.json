@@ -1,0 +1,23 @@
+{
+  "id": "white-mana-battery-corpus-m682",
+  "description": "M6 corpus — White Mana Battery; in-hand parse.",
+  "seed": 65236,
+  "cards": {
+    "White Mana Battery": "Name:White Mana Battery\nManaCost:4\nTypes:Artifact\nA:AB$ PutCounter | Cost$ 2 T | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<X/CHARGE> | Produced$ W | AILogic$ ManaRitualBattery.1 | AINoRecursiveCheck$ True | SubAbility$ DBMana | SpellDescription$ Add {W}, then add an additional {W} for each charge counter removed this way.\nSVar:DBMana:DB$ Mana | Produced$ W | Amount$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:{2}, {T}: Put a charge counter on White Mana Battery.\\n{T}, Remove any number of charge counters from White Mana Battery: Add {W}, then add an additional {W} for each charge counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "White Mana Battery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

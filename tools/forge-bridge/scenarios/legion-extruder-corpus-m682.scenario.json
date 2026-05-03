@@ -1,0 +1,23 @@
+{
+  "id": "legion-extruder-corpus-m682",
+  "description": "M6 corpus — Legion Extruder; in-hand parse.",
+  "seed": 63122,
+  "cards": {
+    "Legion Extruder": "Name:Legion Extruder\nManaCost:1 R\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ When CARDNAME enters, it deals 2 damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 2\nA:AB$ Token | Cost$ 2 T Sac<1/Artifact.Other/another artifact> | TokenScript$ c_3_3_a_golem | TokenOwner$ You | SpellDescription$ Create a 3/3 colorless Golem artifact creature token.\nDeckHints:Ability$Sacrifice\nDeckHas:Ability$Token & Type$Golem\nOracle:When Legion Extruder enters, it deals 2 damage to any target.\\n{2}, {T}, Sacrifice another artifact: Create a 3/3 colorless Golem artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion Extruder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

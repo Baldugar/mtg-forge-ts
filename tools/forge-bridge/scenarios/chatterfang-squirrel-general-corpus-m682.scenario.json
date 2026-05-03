@@ -1,0 +1,23 @@
+{
+  "id": "chatterfang-squirrel-general-corpus-m682",
+  "description": "M6 corpus — Chatterfang, Squirrel General; in-hand parse.",
+  "seed": 61721,
+  "cards": {
+    "Chatterfang, Squirrel General": "Name:Chatterfang, Squirrel General\nManaCost:2 G\nTypes:Legendary Creature Squirrel Warrior\nPT:3/3\nK:Landwalk:Forest\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidToken$ Card.YouCtrl | ReplaceWith$ DBReplace | Description$ If one or more tokens would be created under your control, those tokens plus that many 1/1 green Squirrel creature tokens are created instead.\nSVar:DBReplace:DB$ ReplaceToken | Type$ AddToken | TokenScript$ g_1_1_squirrel\nA:AB$ Pump | Cost$ B Sac<X/Squirrel> | ValidTgts$ Creature | NumAtt$ +X | NumDef$ -X | SpellDescription$ Target creature gets +X/-X until end of turn.\nSVar:X:Count$xPaid\nDeckHas:Ability$Token\nDeckHints:Type$Squirrel\nOracle:Forestwalk (This creature can't be blocked as long as defending player controls a Forest.)\\nIf one or more tokens would be created under your control, those tokens plus that many 1/1 green Squirrel creature tokens are created instead.\\n{B}, Sacrifice X Squirrels: Target creature gets +X/-X until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chatterfang, Squirrel General"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

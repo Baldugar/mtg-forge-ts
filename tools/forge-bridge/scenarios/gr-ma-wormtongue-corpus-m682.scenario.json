@@ -1,0 +1,23 @@
+{
+  "id": "gr-ma-wormtongue-corpus-m682",
+  "description": "M6 corpus — Gríma Wormtongue; in-hand parse.",
+  "seed": 62640,
+  "cards": {
+    "Gríma Wormtongue": "Name:Gríma Wormtongue\nManaCost:2 B\nTypes:Legendary Creature Human Advisor\nPT:1/4\nS:Mode$ CantGainLife | ValidPlayer$ Player.Opponent | Description$ Your opponents can't gain life.\nA:AB$ LoseLife | Cost$ T Sac<1/Creature.Other/another creature> | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ DBAmass | SpellDescription$ Target player loses 1 life. If the sacrificed creature was legendary, amass Orcs 2.\nSVar:DBAmass:DB$ Amass | Type$ Orc | Num$ 2 | ConditionDefined$ Sacrificed | ConditionPresent$ Creature.Legendary\nDeckHas:Ability$Token|Counters|Sacrifice & Type$Orc|Army\nDeckHints:Type$Legendary & Type$Creature\nOracle:Your opponents can't gain life\\n{T}, Sacrifice another creature: Target player loses 1 life. If the sacrificed creature was legendary, amass Orcs 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gríma Wormtongue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

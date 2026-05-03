@@ -1,0 +1,23 @@
+{
+  "id": "chipper-chopper-corpus-m682",
+  "description": "M6 corpus — Chipper Chopper; in-hand parse.",
+  "seed": 61727,
+  "cards": {
+    "Chipper Chopper": "Name:Chipper Chopper\nManaCost:3 U\nTypes:Artifact Creature Cyborg Rigger\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, you may sacrifice another artifact. If you do, put two +1/+1 counters on CARDNAME and it assembles a Contraption.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ Sac<1/Artifact.Other/another artifact> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBAssemble\nSVar:DBAssemble:DB$ AssembleContraption\nOracle:Flying\\nWhen Chipper Chopper enters, you may sacrifice another artifact. If you do, put two +1/+1 counters on Chipper Chopper and it assembles a Contraption. (Put the top card of your Contraption deck face up onto one of your sprockets.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chipper Chopper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

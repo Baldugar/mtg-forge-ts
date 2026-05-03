@@ -1,0 +1,23 @@
+{
+  "id": "evidence-examiner-corpus-m682",
+  "description": "M6 corpus — Evidence Examiner; in-hand parse.",
+  "seed": 62243,
+  "cards": {
+    "Evidence Examiner": "Name:Evidence Examiner\nManaCost:G U\nTypes:Creature Merfolk Detective\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEvidence | TriggerDescription$ At the beginning of combat on your turn, you may collect evidence 4. (Exile cards with total mana value 4 or greater from your graveyard.)\n# Empty Effect for Cost\nSVar:TrigEvidence:AB$ Pump | Cost$ CollectEvidence<4> | AILogic$ Always\nT:Mode$ CollectEvidence | ValidPlayer$ You | Execute$ TrigInvestigate | TriggerZones$ Battlefield | TriggerDescription$ Whenever you collect evidence, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nDeckHas:Ability$Token|Counters & Type$Clue\nOracle:At the beginning of combat on your turn, you may collect evidence 4. (Exile cards with total mana value 4 or greater from your graveyard.)\\nWhenever you collect evidence, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evidence Examiner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

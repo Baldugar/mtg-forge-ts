@@ -1,0 +1,23 @@
+{
+  "id": "prognostic-sphinx-corpus-m682",
+  "description": "M6 corpus — Prognostic Sphinx; in-hand parse.",
+  "seed": 63832,
+  "cards": {
+    "Prognostic Sphinx": "Name:Prognostic Sphinx\nManaCost:3 U U\nTypes:Creature Sphinx\nPT:3/5\nK:Flying\nA:AB$ Pump | Cost$ Discard<1/Card> | Defined$ Self | KW$ Hexproof | SubAbility$ DBTap | SpellDescription$ CARDNAME gains hexproof until end of turn. Tap it.\nSVar:DBTap:DB$ Tap | Defined$ Self\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ Whenever CARDNAME attacks, scry 3.\nSVar:TrigScry:DB$ Scry | ScryNum$ 3\nOracle:Flying\\nDiscard a card: Prognostic Sphinx gains hexproof until end of turn. Tap it.\\nWhenever Prognostic Sphinx attacks, scry 3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prognostic Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

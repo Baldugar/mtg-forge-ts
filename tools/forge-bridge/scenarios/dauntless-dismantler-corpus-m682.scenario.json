@@ -1,0 +1,23 @@
+{
+  "id": "dauntless-dismantler-corpus-m682",
+  "description": "M6 corpus — Dauntless Dismantler; in-hand parse.",
+  "seed": 61929,
+  "cards": {
+    "Dauntless Dismantler": "Name:Dauntless Dismantler\nManaCost:1 W\nTypes:Creature Human Artificer\nPT:1/4\nR:Event$ Moved | ValidCard$ Artifact.OppCtrl | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | ActiveZones$ Battlefield | Description$ Artifacts your opponents control enter tapped.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nA:AB$ DestroyAll | Cost$ X X W Sac<1/CARDNAME> | ValidCards$ Artifact.cmcEQX | StackDescription$ SpellDescription | SpellDescription$ Destroy each artifact with mana value X.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:Artifacts your opponents control enter tapped.\\n{X}{X}{W}, Sacrifice Dauntless Dismantler: Destroy each artifact with mana value X.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dauntless Dismantler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

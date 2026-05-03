@@ -1,0 +1,23 @@
+{
+  "id": "aspiring-champion-corpus-m682",
+  "description": "M6 corpus — Aspiring Champion; in-hand parse.",
+  "seed": 61501,
+  "cards": {
+    "Aspiring Champion": "Name:Aspiring Champion\nManaCost:3 R\nTypes:Creature Astartes Warrior\nPT:3/3\nK:Menace\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerDescription$ Ruinous Ascension — When CARDNAME deals combat damage to a player, sacrifice it. If you do, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield, then shuffle the rest into your library. If that creature is a Demon, it deals damage equal to its power to each opponent.\nSVar:TrigDig:AB$ DigUntil | Cost$ Mandatory Sac<1/CARDNAME> | Valid$ Creature.YouOwn | ValidDescription$ creature | FoundDestination$ Battlefield | RevealedDestination$ Library | Shuffle$ True | SubAbility$ DBDamage | RememberFound$ True\nSVar:DBDamage:DB$ DamageAll | NumDmg$ X | ValidPlayers$ Opponent | DamageSource$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Creature.Demon | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardPower\nDeckHints:Type$Demon\nDeckHas:Ability$Sacrifice\nOracle:Menace\\nRuinous Ascension — When Aspiring Champion deals combat damage to a player, sacrifice it. If you do, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield, then shuffle the rest into your library. If that creature is a Demon, it deals damage equal to its power to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aspiring Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shieldmage-elder-corpus-m682",
+  "description": "M6 corpus — Shieldmage Elder; in-hand parse.",
+  "seed": 64330,
+  "cards": {
+    "Shieldmage Elder": "Name:Shieldmage Elder\nManaCost:5 W\nTypes:Creature Human Cleric Wizard\nPT:2/3\nA:AB$ Pump | Cost$ tapXType<2/Cleric> | ValidTgts$ Creature | KW$ Prevent all damage that would be dealt by CARDNAME. | IsCurse$ True | SpellDescription$ Prevent all damage target creature would deal this turn.\nA:AB$ Effect | Cost$ tapXType<2/Wizard> | ValidTgts$ Card | TargetType$ Spell | TgtZone$ Stack | IsCurse$ True | TgtPrompt$ Select target spell | RememberObjects$ TargetedSource | StaticAbilities$ STNoDmg | SubAbility$ DBCleanup | SpellDescription$ Prevent all damage target spell would deal this turn.\nSVar:STNoDmg:Mode$ Continuous | AffectedZone$ Battlefield,Stack | Affected$ Card.IsRemembered | AddKeyword$ Prevent all damage that would be dealt by CARDNAME. | Description$ Prevent all damage target spell would deal this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Tap two untapped Clerics you control: Prevent all damage target creature would deal this turn.\\nTap two untapped Wizards you control: Prevent all damage target spell would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shieldmage Elder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-gitrog-ravenous-ride-corpus-m682",
+  "description": "M6 corpus — The Gitrog, Ravenous Ride; in-hand parse.",
+  "seed": 64806,
+  "cards": {
+    "The Gitrog, Ravenous Ride": "Name:The Gitrog, Ravenous Ride\nManaCost:3 B G\nTypes:Legendary Creature Frog Horror Mount\nPT:6/5\nK:Trample\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may sacrifice a creature that saddled it this turn. If you do, draw X cards, then put up to X land cards from your hand onto the battlefield tapped, where X is the sacrificed creature's power.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Creature.SaddledThisTurn/creature that saddled it this turn> | NumCards$ Sacrificed$CardPower | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ConditionDefined$ Sacrificed | ConditionPresent$ Card | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ Sacrificed$CardPower | Tapped$ True\nK:Saddle:1\nOracle:Trample, haste\\nWhenever The Gitrog, Ravenous Ride deals combat damage to a player, you may sacrifice a creature that saddled it this turn. If you do, draw X cards, then put up to X land cards from your hand onto the battlefield tapped, where X is the sacrificed creature's power.\\nSaddle 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Gitrog, Ravenous Ride"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

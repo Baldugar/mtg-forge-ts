@@ -1,0 +1,23 @@
+{
+  "id": "vitu-ghazi-inspector-corpus-m682",
+  "description": "M6 corpus — Vitu-Ghazi Inspector; in-hand parse.",
+  "seed": 65123,
+  "cards": {
+    "Vitu-Ghazi Inspector": "Name:Vitu-Ghazi Inspector\nManaCost:1 G\nTypes:Creature Elf Detective\nPT:1/3\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ CollectEvidence<6> | Description$ As an additional cost to cast this spell, you may collect evidence 6. (Exile cards with total mana value 6 or greater from your graveyard.)\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ Z | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, if evidence was collected, put a +1/+1 counter on target creature and you gain 2 life.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nSVar:Z:CastSA>Collected$Amount\nDeckHints:Ability$Graveyard|Mill|Discard|Dredge\nDeckHas:Ability$LifeGain|Counters\nOracle:As an additional cost to cast this spell, you may collect evidence 6. (Exile cards with total mana value 6 or greater from your graveyard.)\\nReach\\nWhen Vitu-Ghazi Inspector enters, if evidence was collected, put a +1/+1 counter on target creature and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vitu-Ghazi Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "golden-urn-corpus-m682",
+  "description": "M6 corpus — Golden Urn; in-hand parse.",
+  "seed": 62588,
+  "cards": {
+    "Golden Urn": "Name:Golden Urn\nManaCost:1\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may put a charge counter on CARDNAME.\nA:AB$ GainLife | Cost$ T Sac<1/CARDNAME> | LifeAmount$ X | SpellDescription$ You gain life equal to the number of charge counters on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nSVar:X:Count$CardCounters.CHARGE\nOracle:At the beginning of your upkeep, you may put a charge counter on Golden Urn.\\n{T}, Sacrifice Golden Urn: You gain life equal to the number of charge counters on Golden Urn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Golden Urn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

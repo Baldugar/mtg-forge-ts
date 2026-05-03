@@ -1,0 +1,23 @@
+{
+  "id": "serum-tank-corpus-m682",
+  "description": "M6 corpus — Serum Tank; in-hand parse.",
+  "seed": 64295,
+  "cards": {
+    "Serum Tank": "Name:Serum Tank\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Artifact.Other | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME or another artifact enters, put a charge counter on CARDNAME.\nA:AB$ Draw | Cost$ 3 T SubCounter<1/CHARGE> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nAI:RemoveDeck:Random\nOracle:Whenever Serum Tank or another artifact enters, put a charge counter on Serum Tank.\\n{3}, {T}, Remove a charge counter from Serum Tank: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serum Tank"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

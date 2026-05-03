@@ -1,0 +1,23 @@
+{
+  "id": "purgatory-corpus-m682",
+  "description": "M6 corpus — Purgatory; in-hand parse.",
+  "seed": 63855,
+  "cards": {
+    "Purgatory": "Name:Purgatory\nManaCost:2 W B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouOwn | Execute$ TrigChangeZone | TriggerZones$ Battlefield | TriggerDescription$ Whenever a nontoken creature is put into your graveyard from the battlefield, exile that card.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, you may pay {4} and 2 life. If you do, return a card exiled with CARDNAME to the battlefield.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 4 PayLife<2> | ChangeType$ Card.ExiledWithSource | Mandatory$ True | Origin$ Exile | Destination$ Battlefield | Hidden$ True\nSVar:NonStackingEffect:True\nOracle:Whenever a nontoken creature is put into your graveyard from the battlefield, exile that card.\\nAt the beginning of your upkeep, you may pay {4} and 2 life. If you do, return a card exiled with Purgatory to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Purgatory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

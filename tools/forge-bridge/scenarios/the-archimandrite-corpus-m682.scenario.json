@@ -1,0 +1,23 @@
+{
+  "id": "the-archimandrite-corpus-m682",
+  "description": "M6 corpus — The Archimandrite; in-hand parse.",
+  "seed": 64786,
+  "cards": {
+    "The Archimandrite": "Name:The Archimandrite\nManaCost:2 U R W\nTypes:Legendary Creature Human Advisor\nPT:0/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, you gain X life, where X is the number of cards in your hand minus 4.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nT:Mode$ LifeGained | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPumpAll | TriggerDescription$ Whenever you gain life, each Advisor, Artificer, and Monk you control gains vigilance and gets +X/+0 until end of turn, where X is the amount of life you gained.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Advisor.YouCtrl,Artificer.YouCtrl,Monk.YouCtrl | NumAtt$ +Y | KW$ Vigilance\nA:AB$ Draw | Cost$ tapXType<3/Advisor.YouCtrl;Monk.YouCtrl;Artificer.YouCtrl/Advisors, Artificers, and/or Monks you control> | SpellDescription$ Draw a card.\nSVar:X:Count$ValidHand Card.YouOwn/Minus.4\nSVar:Y:TriggerCount$LifeAmount\nDeckNeeds:Type$Monk|Advisor|Artificer\nDeckHints:Ability$LifeGain\nDeckHas:Ability$LifeGain & Keyword$Vigilance\nOracle:At the beginning of your upkeep, you gain X life, where X is the number of cards in your hand minus 4.\\nWhenever you gain life, each Advisor, Artificer, and Monk you control gains vigilance and gets +X/+0 until end of turn, where X is the amount of life you gained.\\nTap three untapped Advisors, Artificers, and/or Monks you control: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Archimandrite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nissa-revane-corpus-m682",
+  "description": "M6 corpus — Nissa Revane; in-hand parse.",
+  "seed": 63563,
+  "cards": {
+    "Nissa Revane": "Name:Nissa Revane\nManaCost:2 G G\nTypes:Legendary Planeswalker Nissa\nLoyalty:2\nA:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Origin$ Library | Destination$ Battlefield | ChangeType$ Permanent.namedNissa's Chosen | ChangeNum$ 1 | Planeswalker$ True | StackDescription$ SpellDescription | SpellDescription$ Search your library for a card named Nissa's Chosen, put it onto the battlefield, then shuffle.\nA:AB$ GainLife | Cost$ AddCounter<1/LOYALTY> | LifeAmount$ XLife | Planeswalker$ True | SpellDescription$ You gain 2 life for each Elf you control.\nA:AB$ ChangeZone | Cost$ SubCounter<7/LOYALTY> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.Elf | ChangeNum$ XFetch | Planeswalker$ True | Ultimate$ True | StackDescription$ SpellDescription | SpellDescription$ Search your library for any number of Elf creature cards, put them onto the battlefield, then shuffle.\nSVar:XLife:Count$Valid Elf.YouCtrl/Times.2\nSVar:XFetch:Count$ValidLibrary Creature.Elf+YouCtrl\nAI:RemoveDeck:Random\nDeckHints:Type$Elf & Name$Nissa's Chosen\nOracle:[+1]: Search your library for a card named Nissa's Chosen, put it onto the battlefield, then shuffle.\\n[+1]: You gain 2 life for each Elf you control.\\n[-7]: Search your library for any number of Elf creature cards, put them onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nissa Revane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

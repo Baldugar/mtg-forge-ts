@@ -1,0 +1,23 @@
+{
+  "id": "grab-the-prize-corpus-m682",
+  "description": "M6 corpus — Grab the Prize; in-hand parse.",
+  "seed": 62606,
+  "cards": {
+    "Grab the Prize": "Name:Grab the Prize\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Draw | Cost$ 1 R Discard<1/Card> | CostDesc$ As an additional cost to cast this spell, discard a card. | NumCards$ 2 | SubAbility$ DBDealDamage | SpellDescription$ Draw two cards. If the discarded card wasn't a land card, CARDNAME deals 2 damage to each opponent.\nSVar:DBDealDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ X\nSVar:X:Discarded$Valid Card.nonLand/Times.2\nDeckHas:Ability$Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:As an additional cost to cast this spell, discard a card.\\nDraw two cards. If the discarded card wasn't a land card, Grab the Prize deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grab the Prize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

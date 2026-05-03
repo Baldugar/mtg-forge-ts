@@ -1,0 +1,23 @@
+{
+  "id": "sasaya-orochi-ascendant-corpus-m682",
+  "description": "M6 corpus — Sasaya, Orochi Ascendant; in-hand parse.",
+  "seed": 64188,
+  "cards": {
+    "Sasaya, Orochi Ascendant": "Name:Sasaya, Orochi Ascendant\nManaCost:1 G G\nTypes:Legendary Creature Snake Monk\nPT:2/3\nA:AB$ SetState | Cost$ Reveal<1/Hand> | Defined$ Self | Mode$ Flip | ConditionCheckSVar$ CheckHandLand | ConditionSVarCompare$ GE7 | SpellDescription$ If you have seven or more land cards in your hand, flip CARDNAME.\nSVar:CheckHandLand:Count$ValidHand Land.YouCtrl\nAlternateMode:Flip\nOracle:Reveal your hand: If you have seven or more land cards in your hand, flip Sasaya, Orochi Ascendant.\n\nALTERNATE\n\nName:Sasaya's Essence\nManaCost:1 G G\nColors:green\nTypes:Legendary Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ DBRepeat | Static$ True | TriggerDescription$ Whenever a land you control is tapped for mana, add an additional one mana of any type that land produced for each other land you control with the same name as it.\nSVar:DBRepeat:DB$ RepeatEach | RepeatCards$ Land.YouCtrl+!TriggeredCard+sharesNameWith TriggeredCard | RepeatSubAbility$ DBManaReflect\nSVar:DBManaReflect:DB$ ManaReflected | ColorOrType$ Type | ReflectProperty$ Produced | Defined$ You\nOracle:Whenever a land you control is tapped for mana, add an additional one mana of any type that land produced for each other land you control with the same name as it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sasaya, Orochi Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "me-the-immortal-corpus-m682",
+  "description": "M6 corpus — Me, the Immortal; in-hand parse.",
+  "seed": 63312,
+  "cards": {
+    "Me, the Immortal": "Name:Me, the Immortal\nManaCost:2 G U R\nTypes:Legendary Creature Human Rogue\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ At the beginning of combat on your turn, put your choice of a +1/+1, first strike, vigilance, or menace counter on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1,First Strike,Vigilance,Menace | CounterNum$ 1\nS:Mode$ CountersRemain | ValidCard$ Card.Self | EffectZone$ All | Description$ Counters remain on NICKNAME as it moves to any zone other than a player's hand or library.\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Graveyard | EffectZone$ Graveyard | RaiseCost$ Discard<2/Card> | Description$ You may cast NICKNAME from your graveyard by discarding two cards in addition to paying its other costs.\nDeckHas:Ability$Counters|Discard\nDeckHints:Ability$Counters\nOracle:At the beginning of combat on your turn, put your choice of a +1/+1, first strike, vigilance, or menace counter on Me, the Immortal.\\nCounters remain on Me as it moves to any zone other than a player's hand or library.\\nYou may cast Me from your graveyard by discarding two cards in addition to paying its other costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Me, the Immortal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

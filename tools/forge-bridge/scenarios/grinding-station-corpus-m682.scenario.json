@@ -1,0 +1,23 @@
+{
+  "id": "grinding-station-corpus-m682",
+  "description": "M6 corpus — Grinding Station; in-hand parse.",
+  "seed": 62645,
+  "cards": {
+    "Grinding Station": "Name:Grinding Station\nManaCost:2\nTypes:Artifact\nA:AB$ Mill | Cost$ T Sac<1/Artifact> | NumCards$ 3 | ValidTgts$ Player | SpellDescription$ Target player mills three cards.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact | IsPresent$ Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever an artifact enters, you may untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact\nOracle:{T}, Sacrifice an artifact: Target player mills three cards.\\nWhenever an artifact enters, you may untap Grinding Station.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grinding Station"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tome-of-legends-corpus-m682",
+  "description": "M6 corpus — Tome of Legends; in-hand parse.",
+  "seed": 64907,
+  "cards": {
+    "Tome of Legends": "Name:Tome of Legends\nManaCost:2\nTypes:Artifact\nK:etbCounter:PAGE:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.IsCommander+YouOwn | Execute$ TrigPutCounter | TriggerDescription$ Whenever your commander enters or attacks, put a page counter on CARDNAME.\nT:Mode$ Attacks | ValidCard$ Card.IsCommander+YouOwn | TriggerZones$ Battlefield | Execute$ TrigPutCounter | Secondary$ True | TriggerDescription$ Whenever your commander enters or attacks, put a page counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ PAGE | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Counters\nA:AB$ Draw | Cost$ 1 T SubCounter<1/PAGE> | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:Tome of Legends enters with a page counter on it.\\nWhenever your commander enters or attacks, put a page counter on Tome of Legends.\\n{1}, {T}, Remove a page counter from Tome of Legends: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tome of Legends"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

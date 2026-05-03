@@ -1,0 +1,23 @@
+{
+  "id": "jack-o-lantern-corpus-m682",
+  "description": "M6 corpus — Jack-o'-Lantern; in-hand parse.",
+  "seed": 62935,
+  "cards": {
+    "Jack-o'-Lantern": "Name:Jack-o'-Lantern\nManaCost:1\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 1 T Sac<1/CARDNAME> | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SubAbility$ DBDraw | SpellDescription$ Exile up to one target card from a graveyard. Draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Mana | Cost$ 1 ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | Produced$ Any | SpellDescription$ Add one mana of any color.\nAI:RemoveDeck:Random\nOracle:{1}, {T}, Sacrifice Jack-o'-Lantern: Exile up to one target card from a graveyard. Draw a card.\\n{1}, Exile Jack-o'-Lantern from your graveyard: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jack-o'-Lantern"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

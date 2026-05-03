@@ -1,0 +1,23 @@
+{
+  "id": "honored-knight-captain-corpus-m682",
+  "description": "M6 corpus — Honored Knight-Captain; in-hand parse.",
+  "seed": 62787,
+  "cards": {
+    "Honored Knight-Captain": "Name:Honored Knight-Captain\nManaCost:1 W\nTypes:Creature Human Advisor Knight\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature enters, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ 4 W W Sac<1/CARDNAME/this creature> | Origin$ Library | Destination$ Battlefield | ChangeType$ Equipment | ChangeNum$ 1 | SpellDescription$ Search your library for an Equipment card, put it onto the battlefield, then shuffle.\nOracle:When this creature enters, create a 1/1 white Human Soldier creature token.\\n{4}{W}{W}, Sacrifice this creature: Search your library for an Equipment card, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Honored Knight-Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

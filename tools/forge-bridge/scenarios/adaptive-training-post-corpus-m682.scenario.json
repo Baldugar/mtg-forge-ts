@@ -1,0 +1,23 @@
+{
+  "id": "adaptive-training-post-corpus-m682",
+  "description": "M6 corpus — Adaptive Training Post; in-hand parse.",
+  "seed": 61442,
+  "cards": {
+    "Adaptive Training Post": "Name:Adaptive Training Post\nManaCost:2 U\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | IsPresent$ Card.Self+counters_LT3_CHARGE | TriggerDescription$ Whenever you cast an instant or sorcery spell, if this artifact has fewer than three charge counters on it, put a charge counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ DelayedTrigger | Cost$ SubCounter<3/CHARGE> | AILogic$ SpellCopy | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ EffTrigCopy | SpellDescription$ When you next cast an instant or sorcery spell this turn, copy it and you may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:BuffedBy:Instant,Sorcery\nOracle:Whenever you cast an instant or sorcery spell, if this artifact has fewer than three charge counters on it, put a charge counter on it.\\nRemove three charge counters from this artifact: When you next cast an instant or sorcery spell this turn, copy it and you may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Adaptive Training Post"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

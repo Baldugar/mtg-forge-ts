@@ -1,0 +1,23 @@
+{
+  "id": "lightning-storm-corpus-m682",
+  "description": "M6 corpus — Lightning Storm; in-hand parse.",
+  "seed": 63151,
+  "cards": {
+    "Lightning Storm": "Name:Lightning Storm\nManaCost:1 R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to any target, where X is 3 plus the number of charge counters on CARDNAME.\nSVar:X:Count$CardCounters.CHARGE/Plus.3\nA:AB$ PutCounter | Cost$ Discard<1/Land> | CounterType$ CHARGE | CounterNum$ 2 | Defined$ Self | ActivationZone$ Stack | SubAbility$ DBChangeTarget | Activator$ Player | SpellDescription$ Put two charge counters on CARDNAME. You may choose a new target for it. Any player may activate this ability but only if CARDNAME is on the stack.\nSVar:DBChangeTarget:DB$ ChangeTargets | Defined$ SourceFirstSpell | Optional$ True\nAI:RemoveDeck:All\nOracle:Lightning Storm deals X damage to any target, where X is 3 plus the number of charge counters on Lightning Storm.\\nDiscard a land card: Put two charge counters on Lightning Storm. You may choose a new target for it. Any player may activate this ability but only if Lightning Storm is on the stack.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lightning Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

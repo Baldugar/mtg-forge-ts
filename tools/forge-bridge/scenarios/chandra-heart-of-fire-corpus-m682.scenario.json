@@ -1,0 +1,23 @@
+{
+  "id": "chandra-heart-of-fire-corpus-m682",
+  "description": "M6 corpus — Chandra, Heart of Fire; in-hand parse.",
+  "seed": 61701,
+  "cards": {
+    "Chandra, Heart of Fire": "Name:Chandra, Heart of Fire\nManaCost:3 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:5\nA:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Mode$ Hand | Defined$ You | SubAbility$ DBDig | StackDescription$ SpellDescription | SpellDescription$ Discard your hand, then exile the top three cards of your library. Until end of turn, you may play cards exiled this way.\nSVar:DBDig:DB$ Dig | DigNum$ 3 | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Name$ Chandra, Heart of Fire's Effect — +1 May Play | RememberObjects$ Remembered | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until end of turn, you may play cards exiled this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ DealDamage | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to any target.\nA:AB$ ChangeZone | Cost$ SubCounter<9/LOYALTY> | Planeswalker$ True | Ultimate$ True | Origin$ Graveyard,Library | Destination$ Exile | ChangeType$ Instant.Red,Sorcery.Red | RememberChanged$ True | ChangeNum$ Z | SubAbility$ DBEffect2 | StackDescription$ SpellDescription | SpellDescription$ Search your graveyard and library for any number of red instant and/or sorcery cards, exile them, then shuffle. You may cast them this turn. Add six {R}.\nSVar:DBEffect2:DB$ Effect | Name$ Chandra, Heart of Fire's Effect — Ultimate May Cast | RememberObjects$ Remembered | StaticAbilities$ Play2 | SubAbility$ DBMana | ForgetOnMoved$ Exile\nSVar:Play2:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may cast the exiled red instant and/or sorcery spells this turn.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ 6 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:X:Count$ValidGraveyard Instant.Red+YouOwn,Sorcery.Red+YouOwn\nSVar:Y:Count$ValidLibrary Instant.Red+YouOwn,Sorcery.Red+YouOwn\nSVar:Z:SVar$X/Plus.Y\nOracle:[+1]: Discard your hand, then exile the top three cards of your library. Until end of turn, you may play cards exiled this way.\\n[+1]: Chandra, Heart of Fire deals 2 damage to any target.\\n[-9]: Search your graveyard and library for any number of red instant and/or sorcery cards, exile them, then shuffle. You may cast them this turn. Add six {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Heart of Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lamplight-phoenix-corpus-m682",
+  "description": "M6 corpus — Lamplight Phoenix; in-hand parse.",
+  "seed": 63096,
+  "cards": {
+    "Lamplight Phoenix": "Name:Lamplight Phoenix\nManaCost:1 R R\nTypes:Creature Phoenix\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, you may exile it and collect evidence 4. If you do, return CARDNAME to the battlefield tapped. (To collect evidence 4, exile cards with total mana value 4 or greater from your graveyard.)\nSVar:TrigExile:AB$ ChangeZone | Cost$ ExileAnyGrave<1/Card.TriggeredNewCard> CollectEvidence<4> | Origin$ Exile | Destination$ Battlefield | Defined$ ExiledCards | Tapped$ True\nDeckHints:Ability$Graveyard|Mill|Discard\nOracle:Flying\\nWhen Lamplight Phoenix dies, you may exile it and collect evidence 4. If you do, return Lamplight Phoenix to the battlefield tapped. (To collect evidence 4, exile cards with total mana value 4 or greater from your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lamplight Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

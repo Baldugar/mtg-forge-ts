@@ -1,0 +1,23 @@
+{
+  "id": "lunar-convocation-corpus-m682",
+  "description": "M6 corpus — Lunar Convocation; in-hand parse.",
+  "seed": 63219,
+  "cards": {
+    "Lunar Convocation": "Name:Lunar Convocation\nManaCost:W B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | ValidPlayer$ You | CheckSVar$ X | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, if you gained life this turn, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | ValidPlayer$ You | CheckSVar$ Y | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you gained and lost life this turn, create a 1/1 black Bat creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_bat_flying | TokenOwner$ You\nA:AB$ Draw | Cost$ 1 B PayLife<2> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:X:Count$LifeYouGainedThisTurn\nSVar:Y:PlayerCountPropertyYou$LifeLostThisTurn/Times.X\nAI:RemoveDeck:Random\nDeckNeeds:Ability$LifeGain\nOracle:At the beginning of your end step, if you gained life this turn, each opponent loses 1 life.\\nAt the beginning of your end step, if you gained and lost life this turn, create a 1/1 black Bat creature token with flying.\\n{1}{B}, Pay 2 life: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lunar Convocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "osseous-exhale-corpus-m682",
+  "description": "M6 corpus — Osseous Exhale; in-hand parse.",
+  "seed": 63664,
+  "cards": {
+    "Osseous Exhale": "Name:Osseous Exhale\nManaCost:1 W\nTypes:Instant\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Behold<1/Dragon> | Description$ As an additional cost to cast this spell, you may behold a Dragon. (You may choose a Dragon you control or reveal a Dragon card from your hand.)\nA:SP$ DealDamage | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | NumDmg$ 5 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 5 damage to target attacking or blocking creature. If a Dragon was beheld, you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | Condition$ OptionalCost | ConditionOptionalPaid$ True | Defined$ You | LifeAmount$ 2\nOracle:As an additional cost to cast this spell, you may behold a Dragon. (You may choose a Dragon you control or reveal a Dragon card from your hand.)\\nOsseous Exhale deals 5 damage to target attacking or blocking creature. If a Dragon was beheld, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Osseous Exhale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

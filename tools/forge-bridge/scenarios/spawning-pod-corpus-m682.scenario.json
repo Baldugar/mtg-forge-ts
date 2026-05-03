@@ -1,0 +1,23 @@
+{
+  "id": "spawning-pod-corpus-m682",
+  "description": "M6 corpus — Spawning Pod; in-hand parse.",
+  "seed": 64527,
+  "cards": {
+    "Spawning Pod": "Name:Spawning Pod\nManaCost:2 G\nTypes:Artifact\nA:AB$ Seek | Cost$ 1 T Sac<1/Creature> | Type$ Creature.cmcEQX | SorcerySpeed$ True | AILogic$ SacAndUpgrade | ImprintFound$ True | SubAbility$ DBPut | SpellDescription$ Seek a creature card with mana value equal to 1 plus the sacrificed creature's mana value and put that card onto the battlefield. That creature is a Phyrexian in addition to its other types. Activate only as a sorcery.\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Imprinted | StaticEffect$ Animate | SubAbility$ DBCleanup\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Phyrexian\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:X:Sacrificed$CardManaCost/Plus.1\nSVar:AIPreference:SacCost$Creature.!token\nDeckHas:Ability$Sacrifice & Type$Phyrexian\nOracle:{1}, {T}, Sacrifice a creature: Seek a creature card with mana value equal to 1 plus the sacrificed creature's mana value and put that card onto the battlefield. That creature is a Phyrexian in addition to its other types. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spawning Pod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

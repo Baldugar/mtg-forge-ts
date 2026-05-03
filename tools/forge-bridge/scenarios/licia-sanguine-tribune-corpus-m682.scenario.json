@@ -1,0 +1,23 @@
+{
+  "id": "licia-sanguine-tribune-corpus-m682",
+  "description": "M6 corpus — Licia, Sanguine Tribune; in-hand parse.",
+  "seed": 63138,
+  "cards": {
+    "Licia, Sanguine Tribune": "Name:Licia, Sanguine Tribune\nManaCost:5 R W B\nTypes:Legendary Creature Vampire Soldier\nPT:4/4\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {1} less to cast for each life you gained this turn.\nK:First Strike\nK:Lifelink\nA:AB$ PutCounter | Cost$ PayLife<5> | CounterType$ P1P1 | CounterNum$ 3 | PlayerTurn$ True | ActivationLimit$ 1 | SpellDescription$ Put 3 +1/+1 counters on CARDNAME. Activate only during your turn, and only once each turn.\nSVar:X:Count$LifeYouGainedThisTurn\nOracle:This spell costs {1} less to cast for each 1 life you gained this turn.\\nFirst strike, lifelink\\nPay 5 life: Put three +1/+1 counters on Licia, Sanguine Tribune. Activate only during your turn and only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Licia, Sanguine Tribune"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

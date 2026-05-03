@@ -1,0 +1,23 @@
+{
+  "id": "torgaar-famine-incarnate-corpus-m682",
+  "description": "M6 corpus — Torgaar, Famine Incarnate; in-hand parse.",
+  "seed": 64917,
+  "cards": {
+    "Torgaar, Famine Incarnate": "Name:Torgaar, Famine Incarnate\nManaCost:6 B B\nTypes:Legendary Creature Avatar\nPT:7/6\nA:SP$ PermanentCreature | Cost$ 6 B B Sac<X/Creature> | AILogic$ SacToReduceCost | AdditionalDesc$ This spell costs {2} less to cast for each creature sacrificed this way.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Y | EffectZone$ All | Relative$ True\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.2\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSetLife | TriggerDescription$ When CARDNAME enters, up to one target player's life total becomes half their starting life total, rounded down.\nSVar:TrigSetLife:DB$ SetLife | ValidTgts$ Player | LifeAmount$ HalfLife | TargetMin$ 0 | TargetMax$ 1\nSVar:HalfLife:TargetedPlayer$StartingLife/HalfDown\nOracle:As an additional cost to cast this spell, you may sacrifice any number of creatures. This spell costs {2} less to cast for each creature sacrificed this way.\\nWhen Torgaar, Famine Incarnate enters, up to one target player's life total becomes half their starting life total, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torgaar, Famine Incarnate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

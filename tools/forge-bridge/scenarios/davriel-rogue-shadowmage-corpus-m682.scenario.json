@@ -1,0 +1,23 @@
+{
+  "id": "davriel-rogue-shadowmage-corpus-m682",
+  "description": "M6 corpus — Davriel, Rogue Shadowmage; in-hand parse.",
+  "seed": 61933,
+  "cards": {
+    "Davriel, Rogue Shadowmage": "Name:Davriel, Rogue Shadowmage\nManaCost:2 B\nTypes:Legendary Planeswalker Davriel\nLoyalty:3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | CheckSVar$ CardsInHand | SVarCompare$ LE1 | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has one or fewer cards in hand, CARDNAME deals 2 damage to them.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nSVar:CardsInHand:Count$ValidHand Card.ActivePlayerCtrl\nA:AB$ Discard | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Player | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Target player discards a card.\nDeckHas:Ability$Discard\nOracle:At the beginning of each opponent's upkeep, if that player has one or fewer cards in hand, Davriel, Rogue Shadowmage deals 2 damage to them.\\n[-1]: Target player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Davriel, Rogue Shadowmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

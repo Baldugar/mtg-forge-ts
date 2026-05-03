@@ -1,0 +1,23 @@
+{
+  "id": "aether-inspector-corpus-m682",
+  "description": "M6 corpus — Aether Inspector; in-hand parse.",
+  "seed": 61449,
+  "cards": {
+    "Aether Inspector": "Name:Aether Inspector\nManaCost:3 W\nTypes:Creature Dwarf Artificer\nPT:2/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, create a 1/1 colorless Servo artifact creature token.\nSVar:TrigToken:AB$ Token | Cost$ PayEnergy<2> | TokenScript$ c_1_1_a_servo | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nOracle:Vigilance\\nWhen Aether Inspector enters, you get {E}{E} (two energy counters).\\nWhenever Aether Inspector attacks, you may pay {E}{E}. If you do, create a 1/1 colorless Servo artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

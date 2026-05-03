@@ -1,0 +1,23 @@
+{
+  "id": "peema-aether-seer-corpus-m682",
+  "description": "M6 corpus — Peema Aether-Seer; in-hand parse.",
+  "seed": 63713,
+  "cards": {
+    "Peema Aether-Seer": "Name:Peema Aether-Seer\nManaCost:3 G\nTypes:Creature Elf Druid\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get an amount of {E} (energy counters) equal to the greatest power among creatures you control.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardPower\nA:AB$ Effect | Cost$ PayEnergy<3> | ValidTgts$ Creature | ExileOnMoved$ Battlefield | StaticAbilities$ MustBlock | RememberObjects$ Targeted | StackDescription$ {c:Targeted} blocks this turn if able. | SpellDescription$ Target creature blocks this turn if able.\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ This creature blocks this turn if able.\nOracle:When Peema Aether-Seer enters, you get an amount of {E} (energy counters) equal to the greatest power among creatures you control.\\nPay {E}{E}{E}: Target creature blocks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Peema Aether-Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

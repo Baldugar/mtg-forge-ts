@@ -1,0 +1,23 @@
+{
+  "id": "loxodon-hierarch-corpus-m682",
+  "description": "M6 corpus — Loxodon Hierarch; in-hand parse.",
+  "seed": 63210,
+  "cards": {
+    "Loxodon Hierarch": "Name:Loxodon Hierarch\nManaCost:2 G W\nTypes:Creature Elephant Cleric\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 4\nA:AB$ Regenerate | Cost$ G W Sac<1/CARDNAME> | Defined$ Valid Creature.YouCtrl | SpellDescription$ Regenerate each creature you control.\nOracle:When Loxodon Hierarch enters, you gain 4 life.\\n{G}{W}, Sacrifice Loxodon Hierarch: Regenerate each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loxodon Hierarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

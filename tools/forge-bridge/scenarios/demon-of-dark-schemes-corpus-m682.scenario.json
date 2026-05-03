@@ -1,0 +1,23 @@
+{
+  "id": "demon-of-dark-schemes-corpus-m682",
+  "description": "M6 corpus — Demon of Dark Schemes; in-hand parse.",
+  "seed": 61979,
+  "cards": {
+    "Demon of Dark Schemes": "Name:Demon of Dark Schemes\nManaCost:3 B B B\nTypes:Creature Demon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, all other creatures get -2/-2 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ -2 | NumDef$ -2 | ValidCards$ Creature.StrictlyOther | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigEnergy | TriggerDescription$ Whenever another creature dies, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ ChangeZone | Cost$ 2 B PayEnergy<4> | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Select target creature card in a graveyard | ValidTgts$ Creature | ChangeNum$ 1 | Tapped$ True | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control tapped.\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Demon of Dark Schemes enters, all other creatures get -2/-2 until end of turn.\\nWhenever another creature dies, you get {E} (an energy counter).\\n{2}{B}, Pay {E}{E}{E}{E}: Put target creature card from a graveyard onto the battlefield under your control tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demon of Dark Schemes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

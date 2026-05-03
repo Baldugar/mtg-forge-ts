@@ -1,0 +1,23 @@
+{
+  "id": "connecting-the-dots-corpus-m682",
+  "description": "M6 corpus — Connecting the Dots; in-hand parse.",
+  "seed": 61806,
+  "cards": {
+    "Connecting the Dots": "Name:Connecting the Dots\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control attacks, exile the top card of your library face down. (You can't look at it.)\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | NoReveal$ True\nA:AB$ ChangeZoneAll | Cost$ 1 R Discard<0/Hand> Sac<1/CARDNAME> | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Hand | AILogic$ DiscardAllAndRetExiled.minAdv2 | SpellDescription$ Put all cards exiled with CARDNAME into their owners' hands.\nDeckHas:Ability$Discard|Sacrifice\nOracle:Whenever a creature you control attacks, exile the top card of your library face down. (You can't look at it.)\\n{1}{R}, Discard your hand, Sacrifice Connecting the Dots: Put all cards exiled with Connecting the Dots into their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Connecting the Dots"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

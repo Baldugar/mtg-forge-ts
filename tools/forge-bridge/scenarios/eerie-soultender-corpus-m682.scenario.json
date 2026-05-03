@@ -1,0 +1,23 @@
+{
+  "id": "eerie-soultender-corpus-m682",
+  "description": "M6 corpus — Eerie Soultender; in-hand parse.",
+  "seed": 62146,
+  "cards": {
+    "Eerie Soultender": "Name:Eerie Soultender\nManaCost:2 B\nTypes:Creature Spirit Cleric\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You\nA:AB$ ChangeZone | Cost$ 4 B ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select another target creature card in your graveyard | ValidTgts$ Creature.YouOwn+Other | SpellDescription$ Return another target creature card from your graveyard to your hand.\nDeckHas:Ability$Graveyard|Mill\nOracle:When Eerie Soultender enters, mill three cards. (To mill a card, put the top card of your library into your graveyard.)\\n{4}{B}, Exile Eerie Soultender from your graveyard: Return another target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eerie Soultender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

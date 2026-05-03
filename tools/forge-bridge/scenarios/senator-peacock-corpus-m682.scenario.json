@@ -1,0 +1,23 @@
+{
+  "id": "senator-peacock-corpus-m682",
+  "description": "M6 corpus — Senator Peacock; in-hand parse.",
+  "seed": 64276,
+  "cards": {
+    "Senator Peacock": "Name:Senator Peacock\nManaCost:3 U U\nTypes:Legendary Creature Human Advisor\nPT:3/4\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | AddType$ Clue | AddAbility$ ClueSac | Description$ Artifacts you control are Clues in addition to their other types and have \"{2}, Sacrifice this artifact: Draw a card.\"\nSVar:ClueSac:AB$ Draw | Cost$ 2 Sac<1/CARDNAME/this artifact> | NumCards$ 1 | SpellDescription$ Draw a card.\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Clue | Execute$ TrigUnblockable | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a Clue, target creature can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHas:Ability$Sacrifice & Type$Clue\nDeckHints:Type$Artifact\nOracle:Artifacts you control are Clues in addition to their other types and have \"{2}, Sacrifice this artifact: Draw a card.\"\\nWhenever you sacrifice a Clue, target creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Senator Peacock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

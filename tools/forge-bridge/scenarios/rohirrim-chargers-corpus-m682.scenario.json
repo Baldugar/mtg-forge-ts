@@ -1,0 +1,23 @@
+{
+  "id": "rohirrim-chargers-corpus-m682",
+  "description": "M6 corpus — Rohirrim Chargers; in-hand parse.",
+  "seed": 64035,
+  "cards": {
+    "Rohirrim Chargers": "Name:Rohirrim Chargers\nManaCost:2 R W\nTypes:Creature Human Knight\nPT:4/4\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. (It won't untap during your next untap step.)\nT:Mode$ Exerted | ValidCard$ Creature.YouCtrl | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you exert a creature, reveal cards from the top of your library until you reveal an Equipment card. Put that card onto the battlefield attached to that creature, then put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ DigUntil | Defined$ You | Valid$ Equipment | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | AttachedTo$ TriggeredCardLKICopy\nDeckHints:Type$Equipment\nOracle:You may exert Rohirrim Chargers as it attacks. (It won't untap during your next untap step.)\\nWhenever you exert a creature, reveal cards from the top of your library until you reveal an Equipment card. Put that card onto the battlefield attached to that creature, then put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rohirrim Chargers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

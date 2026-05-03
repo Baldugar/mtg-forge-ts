@@ -1,0 +1,23 @@
+{
+  "id": "wildfield-borderpost-corpus-m682",
+  "description": "M6 corpus — Wildfield Borderpost; in-hand parse.",
+  "seed": 65249,
+  "cards": {
+    "Wildfield Borderpost": "Name:Wildfield Borderpost\nManaCost:1 G W\nTypes:Artifact\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ 1 Return<1/Land.Basic> | Description$ You may pay {1} and return a basic land you control to its owner's hand rather than pay this spell's mana cost.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo G W | SpellDescription$ Add {G} or {W}.\nOracle:You may pay {1} and return a basic land you control to its owner's hand rather than pay this spell's mana cost.\\nWildfield Borderpost enters tapped.\\n{T}: Add {G} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wildfield Borderpost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "beetle-headed-merchants-corpus-m682",
+  "description": "M6 corpus — Beetle-Headed Merchants; in-hand parse.",
+  "seed": 61531,
+  "cards": {
+    "Beetle-Headed Merchants": "Name:Beetle-Headed Merchants\nManaCost:4 B\nTypes:Creature Human Citizen\nPT:5/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature attacks, you may sacrifice another creature or artifact. If you do, draw a card and put a +1/+1 counter on this creature.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Artifact.Other;Creature.Other/another creature or artifact> | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Whenever this creature attacks, you may sacrifice another creature or artifact. If you do, draw a card and put a +1/+1 counter on this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Beetle-Headed Merchants"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

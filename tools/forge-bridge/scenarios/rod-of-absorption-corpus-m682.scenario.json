@@ -1,0 +1,23 @@
+{
+  "id": "rod-of-absorption-corpus-m682",
+  "description": "M6 corpus — Rod of Absorption; in-hand parse.",
+  "seed": 64033,
+  "cards": {
+    "Rod of Absorption": "Name:Rod of Absorption\nManaCost:2 U\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | Execute$ TrigEffect | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts an instant or sorcery spell, exile it instead of putting it into a graveyard as it resolves.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ ReMoved | RememberObjects$ TriggeredCard\nSVar:ReMoved:Event$ Moved | ValidCard$ Card.IsRemembered | Origin$ Stack | Destination$ Graveyard | Fizzle$ False | ReplaceWith$ DBExile | Description$ Exile it instead of putting it into a graveyard as it resolves.\nSVar:DBExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Stack | Destination$ Exile | ExiledWithEffectSource$ True | SubAbility$ ExileSelf\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nA:AB$ Play | Cost$ X T Sac<1/CARDNAME> | Defined$ ExiledWith | ValidSA$ Spell | Amount$ All | WithTotalCMC$ X | WithoutManaCost$ True | Optional$ True | AILogic$ WithTotalCMC | SpellDescription$ You may cast any number of spells from among cards exiled with CARDNAME with total mana value X or less without paying their mana costs.\nSVar:X:Count$xPaid\nOracle:Whenever a player casts an instant or sorcery spell, exile it instead of putting it into a graveyard as it resolves.\\n{X}, {T}, Sacrifice Rod of Absorption: You may cast any number of spells from among cards exiled with Rod of Absorption with total mana value X or less without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rod of Absorption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

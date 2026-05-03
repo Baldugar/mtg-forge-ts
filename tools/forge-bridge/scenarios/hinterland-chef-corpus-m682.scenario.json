@@ -1,0 +1,23 @@
+{
+  "id": "hinterland-chef-corpus-m682",
+  "description": "M6 corpus — Hinterland Chef; in-hand parse.",
+  "seed": 62771,
+  "cards": {
+    "Hinterland Chef": "Name:Hinterland Chef\nManaCost:2 G\nTypes:Creature Human Scout\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraft | TriggerDescription$ When CARDNAME enters, draft a card from CARDNAME's spellbook. It perpetually becomes a Food artifact in addition to its other types and perpetually gains \"{2}, {T}, Sacrifice this creature: You gain 3 life.\"\nSVar:TrigDraft:DB$ Draft | Spellbook$ Almighty Brushwagg,Frilled Sandwalla,Moss Viper,Brushstrider,Highland Game,Ironshell Beetle,Lotus Cobra,Kazandu Nectarpot,Gilded Goose,Nessian Hornbeetle,Scurrid Colony,Territorial Boar,Deathbonnet Sprout,Spore Crawler,Moldgraf Millipede | RememberDrafted$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Types$ Food,Artifact | Duration$ Perpetual | Abilities$ FoodSac | SubAbility$ DBCleanup\nSVar:FoodSac:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this creature> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice|LifeGain & Type$Food\nOracle:When Hinterland Chef enters, draft a card from Hinterland Chef's spellbook. It perpetually becomes a Food artifact in addition to its other types and perpetually gains \"{2}, {T}, Sacrifice this creature: You gain 3 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hinterland Chef"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

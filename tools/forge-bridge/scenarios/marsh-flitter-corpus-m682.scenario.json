@@ -1,0 +1,23 @@
+{
+  "id": "marsh-flitter-corpus-m682",
+  "description": "M6 corpus — Marsh Flitter; in-hand parse.",
+  "seed": 63281,
+  "cards": {
+    "Marsh Flitter": "Name:Marsh Flitter\nManaCost:3 B\nTypes:Creature Faerie Rogue\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 black Goblin Rogue creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ b_1_1_goblin_rogue | TokenOwner$ You\nA:AB$ Animate | Cost$ Sac<1/Goblin> | Defined$ Self | Power$ 3 | Toughness$ 3 | SpellDescription$ CARDNAME has base power and toughness 3/3 until end of turn.\nAI:RemoveDeck:All\nOracle:Flying\\nWhen Marsh Flitter enters, create two 1/1 black Goblin Rogue creature tokens.\\nSacrifice a Goblin: Marsh Flitter has base power and toughness 3/3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marsh Flitter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

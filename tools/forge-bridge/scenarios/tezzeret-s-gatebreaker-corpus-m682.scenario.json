@@ -1,0 +1,23 @@
+{
+  "id": "tezzeret-s-gatebreaker-corpus-m682",
+  "description": "M6 corpus — Tezzeret's Gatebreaker; in-hand parse.",
+  "seed": 64773,
+  "cards": {
+    "Tezzeret's Gatebreaker": "Name:Tezzeret's Gatebreaker\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top five cards of your library. You may reveal a blue or artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Card.Blue,Card.Artifact | RestRandomOrder$ True\nA:AB$ Effect | Cost$ 5 U T Sac<1/CARDNAME> | StaticAbilities$ Unblockable | SpellDescription$ Creatures you control can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Creature.YouCtrl | Description$ Creatures you control can't be blocked this turn.\nDeckHints:Color$Blue\nDeckHas:Ability$Sacrifice\nOracle:When Tezzeret's Gatebreaker enters, look at the top five cards of your library. You may reveal a blue or artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\\n{5}{U}, {T}, Sacrifice Tezzeret's Gatebreaker: Creatures you control can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret's Gatebreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

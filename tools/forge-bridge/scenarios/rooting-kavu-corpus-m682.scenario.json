@@ -1,0 +1,23 @@
+{
+  "id": "rooting-kavu-corpus-m682",
+  "description": "M6 corpus — Rooting Kavu; in-hand parse.",
+  "seed": 64044,
+  "cards": {
+    "Rooting Kavu": "Name:Rooting Kavu\nManaCost:2 G G\nTypes:Creature Kavu\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may exile it. If you do, shuffle all creature cards from your graveyard into your library.\nSVar:TrigExile:AB$ ChangeZoneAll | Cost$ ExileAnyGrave<1/Card.TriggeredNewCard> | ChangeType$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Library | Shuffle$ True\nOracle:When Rooting Kavu dies, you may exile it. If you do, shuffle all creature cards from your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rooting Kavu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

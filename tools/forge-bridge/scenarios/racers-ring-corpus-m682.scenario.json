@@ -1,0 +1,23 @@
+{
+  "id": "racers-ring-corpus-m682",
+  "description": "M6 corpus — Racers' Ring; in-hand parse.",
+  "seed": 63892,
+  "cards": {
+    "Racers' Ring": "Name:Racers' Ring\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo R G | SpellDescription$ Add {R} or {G}.\nA:AB$ Draw | Cost$ 2 R G T Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Racers' Ring enters tapped.\\n{T}: Add {R} or {G}.\\n{2}{R}{G}, {T}, Sacrifice Racers' Ring: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Racers' Ring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

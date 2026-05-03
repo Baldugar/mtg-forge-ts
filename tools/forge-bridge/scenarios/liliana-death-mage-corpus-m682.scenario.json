@@ -1,0 +1,23 @@
+{
+  "id": "liliana-death-mage-corpus-m682",
+  "description": "M6 corpus — Liliana, Death Mage; in-hand parse.",
+  "seed": 63152,
+  "cards": {
+    "Liliana, Death Mage": "Name:Liliana, Death Mage\nManaCost:4 B B\nTypes:Legendary Planeswalker Liliana\nLoyalty:4\nA:AB$ ChangeZone | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouOwn | TargetMin$ 0 | TargetMax$ 1 | SpellDescription$ Return up to one target creature card from your graveyard to your hand.\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | SubAbility$ DBLoseLife | SpellDescription$ Destroy target creature. Its controller loses 2 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ 2\nA:AB$ LoseLife | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Opponent | LifeAmount$ X | SpellDescription$ Target opponent loses 2 life for each creature card in their graveyard.\nSVar:X:TargetedPlayer$ValidGraveyard Creature.YouOwn/Times.2\nDeckHints:Ability$Graveyard\nOracle:[+1]: Return up to one target creature card from your graveyard to your hand.\\n[-3]: Destroy target creature. Its controller loses 2 life.\\n[-7]: Target opponent loses 2 life for each creature card in their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Liliana, Death Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

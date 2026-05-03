@@ -1,0 +1,23 @@
+{
+  "id": "marker-beetles-corpus-m682",
+  "description": "M6 corpus — Marker Beetles; in-hand parse.",
+  "seed": 63277,
+  "cards": {
+    "Marker Beetles": "Name:Marker Beetles\nManaCost:1 G G\nTypes:Creature Insect\nPT:2/3\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigPump | TriggerDescription$ When CARDNAME dies, target creature gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1\nAI:RemoveDeck:All\nOracle:When Marker Beetles dies, target creature gets +1/+1 until end of turn.\\n{2}, Sacrifice Marker Beetles: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Marker Beetles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

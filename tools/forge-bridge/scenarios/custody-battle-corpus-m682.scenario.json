@@ -1,0 +1,23 @@
+{
+  "id": "custody-battle-corpus-m682",
+  "description": "M6 corpus — Custody Battle; in-hand parse.",
+  "seed": 61901,
+  "cards": {
+    "Custody Battle": "Name:Custody Battle\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.AttachedBy | AddTrigger$ TrigCustodyBattlePhase | Description$ Enchanted creature has \"At the beginning of your upkeep, target opponent gains control of this creature unless you sacrifice a land.\"\nSVar:TrigCustodyBattlePhase:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigGainControl | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, target opponent gains control of this creature unless you sacrifice a land.\nSVar:TrigGainControl:DB$ GainControl | Defined$ Self | ValidTgts$ Opponent | UnlessCost$ Sac<1/Land> | UnlessPayer$ You\nDeckHas:Ability$Sacrifice\nOracle:Enchant creature\\nEnchanted creature has \"At the beginning of your upkeep, target opponent gains control of this creature unless you sacrifice a land.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Custody Battle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

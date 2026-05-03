@@ -1,0 +1,23 @@
+{
+  "id": "carnophage-corpus-m682",
+  "description": "M6 corpus — Carnophage; in-hand parse.",
+  "seed": 61635,
+  "cards": {
+    "Carnophage": "Name:Carnophage\nManaCost:B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ At the beginning of your upkeep, tap CARDNAME unless you pay 1 life.\nSVar:TrigTap:DB$ Tap | UnlessCost$ PayLife<1> | UnlessPayer$ You | Defined$ Self\nOracle:At the beginning of your upkeep, tap Carnophage unless you pay 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carnophage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

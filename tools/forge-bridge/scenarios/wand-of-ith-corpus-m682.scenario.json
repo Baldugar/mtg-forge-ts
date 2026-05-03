@@ -1,0 +1,23 @@
+{
+  "id": "wand-of-ith-corpus-m682",
+  "description": "M6 corpus — Wand of Ith; in-hand parse.",
+  "seed": 65182,
+  "cards": {
+    "Wand of Ith": "Name:Wand of Ith\nManaCost:4\nTypes:Artifact\nA:AB$ Reveal | Cost$ 3 T | ValidTgts$ Player | Random$ True | IsCurse$ True | PlayerTurn$ True | RememberRevealed$ True | SubAbility$ DBDiscard1 | SpellDescription$ Target player reveals a card at random from their hand. If it's a land card, that player discards it unless they pay 1 life. If it isn't a land card, the player discards it unless they pay life equal to its mana value. Activate only during your turn.\nSVar:DBDiscard1:DB$ Discard | ConditionDefined$ Remembered | ConditionPresent$ Card.Land | ConditionCompare$ EQ1 | Mode$ Defined | Defined$ ParentTarget | DefinedCards$ Remembered | UnlessCost$ PayLife<1> | UnlessPayer$ RememberedController | SubAbility$ DBDiscard2 | StackDescription$ None\nSVar:DBDiscard2:DB$ Discard | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | Mode$ Defined | Defined$ ParentTarget | DefinedCards$ Remembered | UnlessCost$ PayLife<X> | UnlessPayer$ RememberedController | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nDeckHas:Ability$Discard\nOracle:{3}, {T}: Target player reveals a card at random from their hand. If it's a land card, that player discards it unless they pay 1 life. If it isn't a land card, the player discards it unless they pay life equal to its mana value. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wand of Ith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "banewhip-punisher-corpus-m682",
+  "description": "M6 corpus — Banewhip Punisher; in-hand parse.",
+  "seed": 61521,
+  "cards": {
+    "Banewhip Punisher": "Name:Banewhip Punisher\nManaCost:2 B\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put a -1/-1 counter on target creature.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Creature | CounterType$ M1M1 | CounterNum$ 1 | IsCurse$ True\nA:AB$ Destroy | Cost$ B Sac<1/CARDNAME> | ValidTgts$ Creature.counters_GE1_M1M1 | TgtPrompt$ Select target creature that has a -1/-1 counter on it. | SpellDescription$ Destroy target creature that has a -1/-1 counter on it.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:When Banewhip Punisher enters, you may put a -1/-1 counter on target creature.\\n{B}, Sacrifice Banewhip Punisher: Destroy target creature that has a -1/-1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Banewhip Punisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

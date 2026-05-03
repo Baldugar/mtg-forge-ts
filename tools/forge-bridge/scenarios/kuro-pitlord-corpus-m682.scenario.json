@@ -1,0 +1,23 @@
+{
+  "id": "kuro-pitlord-corpus-m682",
+  "description": "M6 corpus — Kuro, Pitlord; in-hand parse.",
+  "seed": 63085,
+  "cards": {
+    "Kuro, Pitlord": "Name:Kuro, Pitlord\nManaCost:6 B B B\nTypes:Legendary Creature Demon Spirit\nPT:9/9\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {B}{B}{B}{B}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ B B B B\n# TODO: the AI can be improved for this, it'll currently only use it to finish off creatures with toughness 1\nA:AB$ Pump | Cost$ PayLife<1> | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ Target creature gets -1/-1 until end of turn.\nSVar:NeedsToPlayVar:Z GE4\nSVar:Z:Count$Valid Card.YouCtrl+canProduceManaColor Black\nOracle:At the beginning of your upkeep, sacrifice Kuro, Pitlord unless you pay {B}{B}{B}{B}.\\nPay 1 life: Target creature gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kuro, Pitlord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

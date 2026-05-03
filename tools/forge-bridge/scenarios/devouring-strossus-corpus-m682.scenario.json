@@ -1,0 +1,23 @@
+{
+  "id": "devouring-strossus-corpus-m682",
+  "description": "M6 corpus — Devouring Strossus; in-hand parse.",
+  "seed": 62002,
+  "cards": {
+    "Devouring Strossus": "Name:Devouring Strossus\nManaCost:5 B B B\nTypes:Creature Phyrexian Horror\nPT:9/9\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nA:AB$ Regenerate | Cost$ Sac<1/Creature> | SpellDescription$ Regenerate CARDNAME.\nAI:RemoveDeck:All\nOracle:Flying, trample\\nAt the beginning of your upkeep, sacrifice a creature.\\nSacrifice a creature: Regenerate Devouring Strossus.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devouring Strossus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

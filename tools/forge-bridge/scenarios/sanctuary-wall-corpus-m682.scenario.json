@@ -1,0 +1,23 @@
+{
+  "id": "sanctuary-wall-corpus-m682",
+  "description": "M6 corpus — Sanctuary Wall; in-hand parse.",
+  "seed": 64157,
+  "cards": {
+    "Sanctuary Wall": "Name:Sanctuary Wall\nManaCost:1 W\nTypes:Artifact Creature Wall\nPT:0/4\nK:Defender\nA:AB$ Tap | Cost$ 2 W T | ValidTgts$ Creature | SubAbility$ DBCounter | SpellDescription$ Tap target creature. You may put a stun counter on it. If you do, put a stun counter on CARDNAME. (If a permanent with a stun counter would become untapped, remove one from it instead.)\nSVar:DBCounter:DB$ PutCounter | UnlessCost$ AddCounter<1/Stun/Card.targetedBy/stun counter on targeted creature> | UnlessPayer$ You | UnlessSwitched$ True | Defined$ Self | CounterNum$ 1 | CounterType$ Stun\nDeckHas:Ability$Counters\nOracle:Defender\\n{2}{W}, {T}: Tap target creature. You may put a stun counter on it. If you do, put a stun counter on Sanctuary Wall. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctuary Wall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

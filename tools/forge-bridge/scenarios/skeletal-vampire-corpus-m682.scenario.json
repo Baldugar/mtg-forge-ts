@@ -1,0 +1,23 @@
+{
+  "id": "skeletal-vampire-corpus-m682",
+  "description": "M6 corpus — Skeletal Vampire; in-hand parse.",
+  "seed": 64401,
+  "cards": {
+    "Skeletal Vampire": "Name:Skeletal Vampire\nManaCost:4 B B\nTypes:Creature Vampire Skeleton\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 black Bat creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_bat_flying | TokenOwner$ You | TokenAmount$ 2\nA:AB$ Token | Cost$ 3 B B Sac<1/Bat> | TokenAmount$ 2 | TokenScript$ b_1_1_bat_flying | TokenOwner$ You | SpellDescription$ Create two 1/1 black Bat creature tokens with flying.\nA:AB$ Regenerate | Cost$ Sac<1/Bat> | SpellDescription$ Regenerate CARDNAME.\nSVar:Sac:SVar:SacMe:1\nOracle:Flying\\nWhen Skeletal Vampire enters, create two 1/1 black Bat creature tokens with flying.\\n{3}{B}{B}, Sacrifice a Bat: Create two 1/1 black Bat creature tokens with flying.\\nSacrifice a Bat: Regenerate Skeletal Vampire.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skeletal Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

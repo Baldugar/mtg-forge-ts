@@ -1,0 +1,23 @@
+{
+  "id": "fortitude-corpus-m682",
+  "description": "M6 corpus — Fortitude; in-hand parse.",
+  "seed": 62410,
+  "cards": {
+    "Fortitude": "Name:Fortitude\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nA:AB$ Regenerate | Cost$ Sac<1/Forest> | Defined$ Enchanted | SpellDescription$ Regenerate enchanted creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nAI:RemoveDeck:All\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nSacrifice a Forest: Regenerate enchanted creature.\\nWhen Fortitude is put into a graveyard from the battlefield, return Fortitude to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fortitude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "shriek-treblemaker-corpus-m682",
+  "description": "M6 corpus — Shriek, Treblemaker; in-hand parse.",
+  "seed": 64353,
+  "cards": {
+    "Shriek, Treblemaker": "Name:Shriek, Treblemaker\nVariant:UniversesWithin:FlavorName:Crash, Reckless Endrider\nManaCost:2 BR\nTypes:Legendary Creature Mutant Villain\nPT:2/3\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | Execute$ DBImmediateTrig | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your first main phase, you may discard a card. When you do, target creature can't block this turn.\nSVar:DBImmediateTrig:AB$ ImmediateTrigger | Cost$ Discard<1/Card> | Execute$ TrigPump | TriggerDescription$ You may discard a card. When you do, target creature can't block this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Sonic Blast — Whenever a creature an opponent controls dies, NICKNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ TriggeredCardController\nOracle:At the beginning of your first main phase, you may discard a card. When you do, target creature can't block this turn.\\nSonic Blast — Whenever a creature an opponent controls dies, Shriek deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shriek, Treblemaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "auntie-blyte-bad-influence-corpus-m682",
+  "description": "M6 corpus — Auntie Blyte, Bad Influence; in-hand parse.",
+  "seed": 61506,
+  "cards": {
+    "Auntie Blyte, Bad Influence": "Name:Auntie Blyte, Bad Influence\nManaCost:2 R\nTypes:Legendary Creature Devil Advisor\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | Execute$ TrigCounter | ValidTarget$ You | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | TriggerZones$ Battlefield | TriggerDescription$ Whenever a source you control deals damage to you, put that many +1/+1 counters on CARDNAME.\nSVar:TrigCounter:DB$ PutCounter | Defined$ Self | CounterNum$ Y | CounterType$ P1P1\nSVar:Y:TriggerCount$DamageAmount\nA:AB$ DealDamage | Cost$ 1 R T SubCounter<X/P1P1/NICKNAME> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ It deals X damage to any target.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHas:Ability$Counters\nOracle:Flying\\nWhenever a source you control deals damage to you, put that many +1/+1 counters on Auntie Blyte, Bad Influence.\\n{1}{R}, {T}, Remove X +1/+1 counters from Auntie Blyte: It deals X damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Auntie Blyte, Bad Influence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

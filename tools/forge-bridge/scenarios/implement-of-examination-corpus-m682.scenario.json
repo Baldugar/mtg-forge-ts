@@ -1,0 +1,23 @@
+{
+  "id": "implement-of-examination-corpus-m682",
+  "description": "M6 corpus — Implement of Examination; in-hand parse.",
+  "seed": 62850,
+  "cards": {
+    "Implement of Examination": "Name:Implement of Examination\nManaCost:3\nTypes:Artifact\nA:AB$ Draw | Cost$ U Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue\nOracle:{U}, Sacrifice Implement of Examination: Draw a card.\\nWhen Implement of Examination is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Implement of Examination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

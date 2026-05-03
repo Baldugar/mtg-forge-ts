@@ -1,0 +1,23 @@
+{
+  "id": "preponderant-pearl-corpus-m682",
+  "description": "M6 corpus — Preponderant Pearl; in-hand parse.",
+  "seed": 63810,
+  "cards": {
+    "Preponderant Pearl": "Name:Preponderant Pearl\nManaCost:U\nTypes:Kindred Artifact Merfolk\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure1 | TriggerDescription$ When this artifact enters, conjure a card named Ponder into your hand.\nSVar:TrigConjure1:DB$ MakeCard | Name$ Ponder | Zone$ Hand | Conjure$ True\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Merfolk.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigConjure2 | TriggerDescription$ Whenever one or more Merfolk you control deal combat damage to a player, sacrifice this artifact. If you do, conjure a card named Flooded Strand into your hand.\nSVar:TrigConjure2:AB$ MakeCard | Cost$ Mandatory Sac<1/CARDNAME/this artifact> | Name$ Flooded Strand | Zone$ Hand | Conjure$ True\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Merfolk\nOracle:When this artifact enters, conjure a card named Ponder into your hand.\\nWhenever one or more Merfolk you control deal combat damage to a player, sacrifice this artifact. If you do, conjure a card named Flooded Strand into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Preponderant Pearl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

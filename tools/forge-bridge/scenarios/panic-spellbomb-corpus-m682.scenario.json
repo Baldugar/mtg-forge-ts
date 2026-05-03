@@ -1,0 +1,23 @@
+{
+  "id": "panic-spellbomb-corpus-m682",
+  "description": "M6 corpus — Panic Spellbomb; in-hand parse.",
+  "seed": 63691,
+  "cards": {
+    "Panic Spellbomb": "Name:Panic Spellbomb\nManaCost:1\nTypes:Artifact\nA:AB$ Pump | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SpellDescription$ Target creature can't block this turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | OptionalDecider$ TriggeredCardController | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, you may pay {R}. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ R | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:{T}, Sacrifice Panic Spellbomb: Target creature can't block this turn.\\nWhen Panic Spellbomb is put into a graveyard from the battlefield, you may pay {R}. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Panic Spellbomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

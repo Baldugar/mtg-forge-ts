@@ -1,0 +1,23 @@
+{
+  "id": "chandra-ablaze-corpus-m682",
+  "description": "M6 corpus — Chandra Ablaze; in-hand parse.",
+  "seed": 61689,
+  "cards": {
+    "Chandra Ablaze": "Name:Chandra Ablaze\nManaCost:4 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:5\nA:AB$ Discard | Cost$ AddCounter<1/LOYALTY> | Mode$ TgtChoose | NumCards$ 1 | Defined$ You | Planeswalker$ True | RememberDiscarded$ True | SubAbility$ DBChandraDealDamage | SpellDescription$ Discard a card. If a red card is discarded this way, CARDNAME deals 4 damage to any target.\nSVar:DBChandraDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | ConditionDefined$ Remembered | ConditionPresent$ Card.Red | ConditionCompare$ EQ1 | SubAbility$ DBChandraCleanup\nSVar:DBChandraCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Discard | Cost$ SubCounter<2/LOYALTY> | Mode$ Hand | Defined$ Player | Planeswalker$ True | SubAbility$ DBChandraDraw | SpellDescription$ Each player discards their hand, then draws three cards.\nSVar:DBChandraDraw:DB$ Draw | Defined$ Player | NumCards$ 3\nA:AB$ Play | Cost$ SubCounter<7/LOYALTY> | Valid$ Instant.Red+YouCtrl,Sorcery.Red+YouCtrl | ValidZone$ Graveyard | WithoutManaCost$ True | Planeswalker$ True | Ultimate$ True | Amount$ ChandraX | Controller$ You | Optional$ True | SpellDescription$ Cast any number of red instant and/or sorcery cards from your graveyard without paying their mana costs.\nSVar:ChandraX:Count$ValidGraveyard Instant.Red+YouOwn,Sorcery.Red+YouOwn\nAI:RemoveDeck:All\nOracle:[+1]: Discard a card. If a red card is discarded this way, Chandra Ablaze deals 4 damage to any target.\\n[-2]: Each player discards their hand, then draws three cards.\\n[-7]: Cast any number of red instant and/or sorcery cards from your graveyard without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra Ablaze"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "undercity-scavenger-corpus-m682",
+  "description": "M6 corpus — Undercity Scavenger; in-hand parse.",
+  "seed": 65019,
+  "cards": {
+    "Undercity Scavenger": "Name:Undercity Scavenger\nManaCost:3 B\nTypes:Creature Ogre Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature. If you do, put two +1/+1 counters on CARDNAME, then scry 2.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ Sac<1/Creature.Other/another creature> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE3\nDeckHas:Ability$Counters\nOracle:When Undercity Scavenger enters, you may sacrifice another creature. If you do, put two +1/+1 counters on Undercity Scavenger, then scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Undercity Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

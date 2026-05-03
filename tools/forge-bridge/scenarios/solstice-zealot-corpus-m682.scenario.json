@@ -1,0 +1,23 @@
+{
+  "id": "solstice-zealot-corpus-m682",
+  "description": "M6 corpus — Solstice Zealot; in-hand parse.",
+  "seed": 64468,
+  "cards": {
+    "Solstice Zealot": "Name:Solstice Zealot\nManaCost:2 W\nTypes:Creature Rhino Cleric\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ Tap | Cost$ T PayEnergy<1> | ValidTgts$ Creature | SpellDescription$ Tap target creature.\nOracle:When Solstice Zealot enters, you get {E}{E} (two energy counters).\\n{T}, Pay {E}: Tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Solstice Zealot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "rakdos-patron-of-chaos-corpus-m682",
+  "description": "M6 corpus — Rakdos, Patron of Chaos; in-hand parse.",
+  "seed": 63907,
+  "cards": {
+    "Rakdos, Patron of Chaos": "Name:Rakdos, Patron of Chaos\nManaCost:4 B R\nTypes:Legendary Creature Demon\nPT:6/6\nK:Flying\nK:Trample\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPump | TriggerDescription$ At the beginning of your end step, target opponent may sacrifice two nonland, nontoken permanents. If they don't, you draw two cards.\nSVar:TrigPump:DB$ Pump | IsCurse$ True | ValidTgts$ Opponent | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | UnlessCost$ Sac<2/Permanent.nonLand+!token/nonland nontoken permanents> | UnlessPayer$ Targeted | NumCards$ 2 | Defined$ You\nDeckHas:Ability$Sacrifice\nOracle:Flying, trample\\nAt the beginning of your end step, target opponent may sacrifice two nonland, nontoken permanents. If they don't, you draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rakdos, Patron of Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "immortal-coil-corpus-m682",
+  "description": "M6 corpus — Immortal Coil; in-hand parse.",
+  "seed": 62845,
+  "cards": {
+    "Immortal Coil": "Name:Immortal Coil\nManaCost:2 B B\nTypes:Artifact\nA:AB$ Draw | Cost$ T ExileFromGrave<2/Card> | CostDesc$ {T}, Exile two cards from your graveyard: | NumCards$ 1 | SpellDescription$ Draw a card.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ You | ReplaceWith$ ChangeZone | PreventionEffect$ True | Description$ If damage would be dealt to you, prevent that damage. Exile a card from your graveyard for each 1 damage prevented this way.\nSVar:ChangeZone:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Card | ChangeNum$ X | DefinedPlayer$ ReplacedTarget | Origin$ Graveyard | Destination$ Exile\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Card.YouCtrl | PresentZone$ Graveyard | PresentCompare$ EQ0 | Execute$ TrigLoseGame | TriggerDescription$ When there are no cards in your graveyard, you lose the game.\nSVar:TrigLoseGame:DB$ LosesGame | Defined$ You\nSVar:X:ReplaceCount$DamageAmount\nSVar:Y:Count$ValidGraveyard Card.YouCtrl\nSVar:NeedsToPlayVar:Y GE1\nAI:RemoveDeck:Random\nOracle:{T}, Exile two cards from your graveyard: Draw a card.\\nIf damage would be dealt to you, prevent that damage. Exile a card from your graveyard for each 1 damage prevented this way.\\nWhen there are no cards in your graveyard, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Immortal Coil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

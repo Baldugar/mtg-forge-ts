@@ -1,0 +1,23 @@
+{
+  "id": "saprazzan-cove-corpus-m682",
+  "description": "M6 corpus — Saprazzan Cove; in-hand parse.",
+  "seed": 64175,
+  "cards": {
+    "Saprazzan Cove": "Name:Saprazzan Cove\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ PutCounter | Cost$ T | Defined$ Self | CounterType$ STORAGE | CounterNum$ 1 | SpellDescription$ Put a storage counter on CARDNAME.\nA:AB$ Mana | Cost$ T SubCounter<X/STORAGE> | Produced$ U | Amount$ X | AILogic$ ManaRitualBattery | AINoRecursiveCheck$ True | SpellDescription$ Add {U} for each storage counter removed this way.\nSVar:X:Count$xPaid\nOracle:Saprazzan Cove enters tapped.\\n{T}: Put a storage counter on Saprazzan Cove.\\n{T}, Remove any number of storage counters from Saprazzan Cove: Add {U} for each storage counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saprazzan Cove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

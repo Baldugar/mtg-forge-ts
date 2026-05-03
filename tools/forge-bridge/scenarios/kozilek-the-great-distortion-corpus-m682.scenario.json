@@ -1,0 +1,23 @@
+{
+  "id": "kozilek-the-great-distortion-corpus-m682",
+  "description": "M6 corpus — Kozilek, the Great Distortion; in-hand parse.",
+  "seed": 63057,
+  "cards": {
+    "Kozilek, the Great Distortion": "Name:Kozilek, the Great Distortion\nManaCost:8 C C\nTypes:Legendary Creature Eldrazi\nPT:12/12\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDraw | CheckSVar$ Y | SVarCompare$ LT7 | TriggerDescription$ When you cast this spell, if you have fewer than seven cards in hand, draw cards equal to the difference.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ Difference\nSVar:Y:Count$ValidHand Card.YouOwn\nSVar:Difference:Number$7/Minus.Y\nK:Menace\nA:AB$ Counter | Cost$ Discard<1/Card.cmcEQX/card with mana value X> | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | AILogic$ Never | SpellDescription$ Counter target spell with mana value X.\nSVar:X:Targeted$CardManaCost\nDeckNeeds:Ability$Mana.Colorless\nOracle:When you cast this spell, if you have fewer than seven cards in hand, draw cards equal to the difference.\\nMenace\\nDiscard a card with mana value X: Counter target spell with mana value X.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kozilek, the Great Distortion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

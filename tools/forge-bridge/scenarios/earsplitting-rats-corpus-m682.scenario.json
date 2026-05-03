@@ -1,0 +1,23 @@
+{
+  "id": "earsplitting-rats-corpus-m682",
+  "description": "M6 corpus — Earsplitting Rats; in-hand parse.",
+  "seed": 62128,
+  "cards": {
+    "Earsplitting Rats": "Name:Earsplitting Rats\nManaCost:3 B\nTypes:Creature Rat\nPT:2/1\nA:AB$ Regenerate | Cost$ Discard<1/Card> | SpellDescription$ Regenerate CARDNAME.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose\nSVar:AIPreference:DiscardCost$Card.cmcLE1\nOracle:When Earsplitting Rats enters, each player discards a card.\\nDiscard a card: Regenerate Earsplitting Rats.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earsplitting Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

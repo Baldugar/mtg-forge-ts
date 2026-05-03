@@ -1,0 +1,23 @@
+{
+  "id": "parallax-tide-corpus-m682",
+  "description": "M6 corpus — Parallax Tide; in-hand parse.",
+  "seed": 63695,
+  "cards": {
+    "Parallax Tide": "Name:Parallax Tide\nManaCost:2 U U\nTypes:Enchantment\nK:Fading:5\nA:AB$ ChangeZone | Cost$ SubCounter<1/FADE> | ValidTgts$ Land | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target land.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, each player returns to the battlefield all cards they own exiled with CARDNAME.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:All\nOracle:Fading 5 (This enchantment enters with five fade counters on it. At the beginning of your upkeep, remove a fade counter from it. If you can't, sacrifice it.)\\nRemove a fade counter from Parallax Tide: Exile target land.\\nWhen Parallax Tide leaves the battlefield, each player returns to the battlefield all cards they own exiled with Parallax Tide.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parallax Tide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

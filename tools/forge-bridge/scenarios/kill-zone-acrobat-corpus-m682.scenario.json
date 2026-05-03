@@ -1,0 +1,23 @@
+{
+  "id": "kill-zone-acrobat-corpus-m682",
+  "description": "M6 corpus — Kill-Zone Acrobat; in-hand parse.",
+  "seed": 63027,
+  "cards": {
+    "Kill-Zone Acrobat": "Name:Kill-Zone Acrobat\nManaCost:2 B\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature or artifact. If you do, CARDNAME gains flying until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ Sac<1/Creature.Other;Artifact.Other/another creature or artifact> | Defined$ Self | KW$ Flying\nSVar:AIPreference:SacCost$Artifact.token,Creature.Other+cmcLE2+withoutFlying,Artifact.cmcEQ1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nOracle:Whenever Kill-Zone Acrobat attacks, you may sacrifice another creature or artifact. If you do, Kill-Zone Acrobat gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kill-Zone Acrobat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

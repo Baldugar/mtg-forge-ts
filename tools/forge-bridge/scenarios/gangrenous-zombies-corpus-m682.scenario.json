@@ -1,0 +1,23 @@
+{
+  "id": "gangrenous-zombies-corpus-m682",
+  "description": "M6 corpus — Gangrenous Zombies; in-hand parse.",
+  "seed": 62455,
+  "cards": {
+    "Gangrenous Zombies": "Name:Gangrenous Zombies\nManaCost:1 B B\nTypes:Creature Zombie\nPT:2/2\nA:AB$ DamageAll | Cost$ T Sac<1/CARDNAME> | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ X | ValidDescription$ each creature and each player. | SpellDescription$ CARDNAME deals 1 damage to each creature and each player. If you control a snow Swamp, CARDNAME deals 2 damage instead.\nSVar:X:Count$Compare Y EQ0.1.2\nSVar:Y:Count$Valid Swamp.Snow+YouCtrl\nOracle:{T}, Sacrifice Gangrenous Zombies: Gangrenous Zombies deals 1 damage to each creature and each player. If you control a snow Swamp, Gangrenous Zombies deals 2 damage to each creature and each player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gangrenous Zombies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

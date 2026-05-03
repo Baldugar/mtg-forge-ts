@@ -1,0 +1,23 @@
+{
+  "id": "sling-gang-lieutenant-corpus-m682",
+  "description": "M6 corpus — Sling-Gang Lieutenant; in-hand parse.",
+  "seed": 64444,
+  "cards": {
+    "Sling-Gang Lieutenant": "Name:Sling-Gang Lieutenant\nManaCost:3 B\nTypes:Creature Goblin\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 red Goblin creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You\nA:AB$ LoseLife | Cost$ Sac<1/Goblin> | ValidTgts$ Player | LifeAmount$ 1 | SubAbility$ Gain | SpellDescription$ Target player loses 1 life and you gain 1 life.\nSVar:Gain:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:AIPreference:SacCost$Creature.Goblin+token,Creature.Goblin+cmcLE1\nDeckHas:Ability$Token\nDeckHints:Type$Goblin\nOracle:When Sling-Gang Lieutenant enters, create two 1/1 red Goblin creature tokens.\\nSacrifice a Goblin: Target player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sling-Gang Lieutenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

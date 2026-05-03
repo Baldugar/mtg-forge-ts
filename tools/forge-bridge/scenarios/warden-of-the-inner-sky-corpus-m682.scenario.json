@@ -1,0 +1,23 @@
+{
+  "id": "warden-of-the-inner-sky-corpus-m682",
+  "description": "M6 corpus — Warden of the Inner Sky; in-hand parse.",
+  "seed": 65193,
+  "cards": {
+    "Warden of the Inner Sky": "Name:Warden of the Inner Sky\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/2\nSVar:X:Count$CardCounters.ALL\nS:Mode$ Continuous | Affected$ Card.Self | CheckSVar$ X | SVarCompare$ GE3 | AddKeyword$ Flying & Vigilance | Description$ As long as CARDNAME has three or more counters on it, it has flying and vigilance.\nA:AB$ PutCounter | Cost$ tapXType<3/Artifact;Creature/artifacts and/or creatures> | CounterType$ P1P1 | CounterNum$ 1 | SorcerySpeed$ True | SubAbility$ DBScry | SpellDescription$ Put a +1/+1 counter on CARDNAME. Scry 1. Activate only as a sorcery.\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nDeckHas:Ability$Counters\nOracle:As long as Warden of the Inner Sky has three or more counters on it, it has flying and vigilance.\\nTap three untapped artifacts and/or creatures you control: Put a +1/+1 counter on Warden of the Inner Sky. Scry 1. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warden of the Inner Sky"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

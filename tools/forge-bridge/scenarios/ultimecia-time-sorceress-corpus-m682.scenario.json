@@ -1,0 +1,23 @@
+{
+  "id": "ultimecia-time-sorceress-corpus-m682",
+  "description": "M6 corpus — Ultimecia, Time Sorceress; in-hand parse.",
+  "seed": 65008,
+  "cards": {
+    "Ultimecia, Time Sorceress": "Name:Ultimecia, Time Sorceress\nManaCost:3 U B\nTypes:Legendary Creature Human Warlock\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ Whenever NICKNAME enters or attacks, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigTransform | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, you may pay {4}{U}{U}{B}{B} and exile eight cards from your graveyard. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ 4 U U B B ExileFromGrave<8/Card> | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:Whenever Ultimecia enters or attacks, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\\nAt the beginning of your end step, you may pay {4}{U}{U}{B}{B} and exile eight cards from your graveyard. If you do, transform Ultimecia.\n\nALTERNATE\n\nName:Ultimecia, Omnipotent\nManaCost:no cost\nColors:blue,black\nTypes:Legendary Creature Nightmare Warlock\nPT:7/7\nK:Menace\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigAddTurn | TriggerDescription$ Time Compression — When this creature transforms into CARDNAME, take an extra turn after this one.\nSVar:TrigAddTurn:DB$ AddTurn | NumTurns$ 1\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nTime Compression — When this creature transforms into Ultimecia, Omnipotent, take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ultimecia, Time Sorceress"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

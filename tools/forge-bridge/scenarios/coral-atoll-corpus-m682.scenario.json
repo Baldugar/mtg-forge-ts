@@ -1,0 +1,23 @@
+{
+  "id": "coral-atoll-corpus-m682",
+  "description": "M6 corpus — Coral Atoll; in-hand parse.",
+  "seed": 61824,
+  "cards": {
+    "Coral Atoll": "Name:Coral Atoll\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return an untapped Island you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Island.untapped/untapped Island> | UnlessPayer$ You\nA:AB$ Mana | Cost$ T | Produced$ C U | SpellDescription$ Add {C}{U}.\nSVar:NeedsToPlay:Land.Island+YouCtrl+untapped\nOracle:Coral Atoll enters tapped.\\nWhen Coral Atoll enters, sacrifice it unless you return an untapped Island you control to its owner's hand.\\n{T}: Add {C}{U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coral Atoll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

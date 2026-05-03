@@ -1,0 +1,23 @@
+{
+  "id": "territorial-dispute-corpus-m682",
+  "description": "M6 corpus — Territorial Dispute; in-hand parse.",
+  "seed": 64757,
+  "cards": {
+    "Territorial Dispute": "Name:Territorial Dispute\nManaCost:4 R R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you sacrifice a land.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Sac<1/Land>\nS:Mode$ CantPlayLand | Description$ Players can't play lands.\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:At the beginning of your upkeep, sacrifice Territorial Dispute unless you sacrifice a land.\\nPlayers can't play lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Territorial Dispute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

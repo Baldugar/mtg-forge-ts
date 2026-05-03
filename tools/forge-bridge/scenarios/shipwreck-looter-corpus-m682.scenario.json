@@ -1,0 +1,23 @@
+{
+  "id": "shipwreck-looter-corpus-m682",
+  "description": "M6 corpus — Shipwreck Looter; in-hand parse.",
+  "seed": 64342,
+  "cards": {
+    "Shipwreck Looter": "Name:Shipwreck Looter\nManaCost:1 U\nTypes:Creature Human Pirate\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ RaidTest | Execute$ TrigDraw | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, you may draw a card. If you do, discard a card.\nSVar:TrigDraw:AB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | Cost$ Draw<1/You>\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When Shipwreck Looter enters, if you attacked this turn, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shipwreck Looter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dragon-typhoon-corpus-m682",
+  "description": "M6 corpus — Dragon Typhoon; in-hand parse.",
+  "seed": 62070,
+  "cards": {
+    "Dragon Typhoon": "Name:Dragon Typhoon\nManaCost:4 R R\nTypes:Kindred Enchantment Dragon\nT:Mode$ SpellCast | ValidCard$ Card.Dragon,Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigDraft | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Dragon or noncreature spell, draft a card from CARDNAME's spellbook and put it onto the battlefield.\nSVar:TrigDraft:DB$ Draft | Spellbook$ Boltwing Marauder,Caldera Pyremaw,Magmatic Hellkite,Neriv; Heart of the Storm,Stormscale Scion,Thunderbreak Regent,Thundermane Dragon | RememberDrafted$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Token | PrecostDesc$ Channel — | Cost$ 2 R R Discard<1/CARDNAME> | ActivationZone$ Hand | TokenScript$ r_4_4_dragon_flying | SpellDescription$ Create a 4/4 red Dragon creature token with flying.\nDeckHas:Type$Dragon\nDeckHints:Type$Dragon\nOracle:Whenever you cast a Dragon or noncreature spell, draft a card from Dragon Typhoon's spellbook and put it onto the battlefield.\\nChannel — {2}{R}{R}, Discard this card: Create a 4/4 red Dragon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Typhoon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

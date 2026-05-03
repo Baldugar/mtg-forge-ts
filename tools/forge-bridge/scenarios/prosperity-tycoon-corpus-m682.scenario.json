@@ -1,0 +1,23 @@
+{
+  "id": "prosperity-tycoon-corpus-m682",
+  "description": "M6 corpus — Prosperity Tycoon; in-hand parse.",
+  "seed": 63839,
+  "cards": {
+    "Prosperity Tycoon": "Name:Prosperity Tycoon\nManaCost:3 W\nTypes:Creature Human Noble\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_mercenary_tappump | TokenOwner$ You\nA:AB$ Pump | Cost$ 2 Sac<1/Card.token/token> | Defined$ Self | KW$ Indestructible | SubAbility$ DBTap | SpellDescription$ CARDNAME gains indestructible until end of turn. Tap it. (Damage and effects that say \"destroy\" don't destroy it.)\nSVar:DBTap:DB$ Tap | Defined$ Self\nDeckHas:Ability$Token|Sacrifice & Type$Mercenary\nDeckHints:Ability$Token\nOracle:When Prosperity Tycoon enters, create a 1/1 red Mercenary creature token with \"{T}: Target creature you control gets +1/+0 until end of turn. Activate only as a sorcery.\"\\n{2}, Sacrifice a token: Prosperity Tycoon gains indestructible until end of turn. Tap it. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Prosperity Tycoon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

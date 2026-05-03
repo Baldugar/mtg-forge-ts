@@ -1,0 +1,23 @@
+{
+  "id": "memory-vampire-corpus-m682",
+  "description": "M6 corpus — Memory Vampire; in-hand parse.",
+  "seed": 63330,
+  "cards": {
+    "Memory Vampire": "Name:Memory Vampire\nManaCost:4 U B\nTypes:Creature Vampire Detective\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, any number of target players each mill that many cards. Then you may collect evidence 9. When you do, you may cast target nonland card from defending player's graveyard without paying its mana cost.\nSVar:TrigMill:DB$ Mill | ValidTgts$ Player | TgtPrompt$ Select any number of target players | TargetMin$ 0 | TargetMax$ MaxTgt | NumCards$ X | SubAbility$ TrigImmediateTrig\nSVar:TrigImmediateTrig:DB$ ImmediateTrigger | UnlessCost$ CollectEvidence<9> | UnlessPayer$ You | UnlessSwitched$ True | Execute$ TrigCast | TriggerDescription$ When you do, you may cast target nonland card from defending player's graveyard without paying its mana cost.\nSVar:TrigCast:DB$ Play | ValidTgts$ Card.nonLand+OwnedBy Spawner>TriggeredDefendingPlayer | TgtZone$ Graveyard | TgtPrompt$ Select target nonland card in defending player's graveyard | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | AILogic$ ReplaySpell\nSVar:MaxTgt:PlayerCountPlayers$Amount\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Mill\nDeckHints:Ability$Graveyard|Mill|Discard|Dredge\nOracle:Flying\\nWhenever Memory Vampire deals combat damage to a player, any number of target players each mill that many cards. Then you may collect evidence 9. When you do, you may cast target nonland card from defending player's graveyard without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Memory Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

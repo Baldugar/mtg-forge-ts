@@ -1,0 +1,23 @@
+{
+  "id": "flame-channeler-corpus-m682",
+  "description": "M6 corpus — Flame Channeler; in-hand parse.",
+  "seed": 62341,
+  "cards": {
+    "Flame Channeler": "Name:Flame Channeler\nManaCost:1 R\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ DamageDealtOnce | ValidSource$ Spell.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ When a spell you control deals damage, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:When a spell you control deals damage, transform Flame Channeler.\n\nALTERNATE\n\nName:Embodiment of Flame\nManaCost:no cost\nColors:red\nTypes:Creature Elemental Wizard\nPT:3/3\nT:Mode$ DamageDealtOnce | ValidSource$ Spell.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a spell you control deals damage, put a flame counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ FLAME | CounterNum$ 1\nA:AB$ Dig | Cost$ 1 SubCounter<1/FLAME> | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ You | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters\nOracle:Whenever a spell you control deals damage, put a flame counter on Embodiment of Flame.\\n{1}, Remove a flame counter from Embodiment of Flame: Exile the top card of your library. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flame Channeler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

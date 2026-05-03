@@ -1,0 +1,23 @@
+{
+  "id": "potion-of-healing-corpus-m682",
+  "description": "M6 corpus — Potion of Healing; in-hand parse.",
+  "seed": 63804,
+  "cards": {
+    "Potion of Healing": "Name:Potion of Healing\nManaCost:1 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ GainLife | Cost$ W T Sac<1/CARDNAME> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nDeckHas:Ability$LifeGain\nOracle:When Potion of Healing enters, draw a card.\\n{W}, {T}, Sacrifice Potion of Healing: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Potion of Healing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

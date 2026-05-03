@@ -1,0 +1,23 @@
+{
+  "id": "ghostly-pilferer-corpus-m682",
+  "description": "M6 corpus — Ghostly Pilferer; in-hand parse.",
+  "seed": 62509,
+  "cards": {
+    "Ghostly Pilferer": "Name:Ghostly Pilferer\nManaCost:1 U\nTypes:Creature Spirit Rogue\nPT:2/1\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw1 | TriggerDescription$ Whenever CARDNAME becomes untapped, you may pay {2}. If you do, draw a card.\nSVar:TrigDraw1:AB$ Draw | Cost$ 2\nT:Mode$ SpellCast | ValidCard$ Card.!wasCastFromTheirHand | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw2 | TriggerDescription$ Whenever an opponent casts a spell from anywhere other than their hand, draw a card.\nSVar:TrigDraw2:DB$ Draw\nSVar:AIPreference:DiscardCost$Card.cmcLE2\nA:AB$ Effect | Cost$ Discard<1/Card> | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | StackDescription$ SpellDescription | SpellDescription$ CARDNAME can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nDeckHas:Ability$Discard\nOracle:Whenever Ghostly Pilferer becomes untapped, you may pay {2}. If you do, draw a card.\\nWhenever an opponent casts a spell from anywhere other than their hand, draw a card.\\nDiscard a card: Ghostly Pilferer can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghostly Pilferer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

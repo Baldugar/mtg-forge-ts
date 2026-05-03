@@ -1,0 +1,23 @@
+{
+  "id": "effluence-devourer-corpus-m682",
+  "description": "M6 corpus — Effluence Devourer; in-hand parse.",
+  "seed": 62147,
+  "cards": {
+    "Effluence Devourer": "Name:Effluence Devourer\nManaCost:B R G\nTypes:Creature Crocodile\nPT:4/3\nK:Blitz:B R G\nT:Mode$ Sacrificed | ValidCard$ Card.Self,Creature | ValidPlayer$ You | Execute$ TrigEffect | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice CARDNAME or another creature, it perpetually gains \"{2}, Exile this card from your graveyard: Create an X/X green Ooze creature token, where X is this card's power. Activate only as a sorcery.\"\nSVar:TrigEffect:DB$ Animate | ConditionDefined$ TriggeredCardLKICopy | ConditionNotPresent$ Creature.token | Defined$ TriggeredCard | Abilities$ ABToken | Duration$ Perpetual\nSVar:ABToken:AB$ Token | Cost$ 2 ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | TokenScript$ g_x_x_ooze | Destination$ Exile | EffectZone$ Command | SorcerySpeed$ True | TokenPower$ X | TokenToughness$ X | SpellDescription$ Create an X/X green Ooze creature token, where X is this card's power. Activate only as a sorcery.\nSVar:X:Exiled$CardPower\nDeckHints:Ability$Sacrifice\nDeckHas:Ability$Sacrifice|Token & Type$Ooze\nOracle:Blitz {B}{R}{G}\\nWhenever you sacrifice Effluence Devourer or another creature, it perpetually gains \"{2}, Exile this card from your graveyard: Create an X/X green Ooze creature token, where X is this card's power. Activate only as a sorcery.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Effluence Devourer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "madame-null-power-broker-corpus-m682",
+  "description": "M6 corpus — Madame Null, Power Broker; in-hand parse.",
+  "seed": 63229,
+  "cards": {
+    "Madame Null, Power Broker": "Name:Madame Null, Power Broker\nManaCost:2 B\nTypes:Legendary Creature Demon Advisor\nPT:1/3\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayLife<X> | Defined$ TriggeredCardLKICopy | CounterType$ P1P1 | CounterNum$ X\nSVar:X:TriggeredCard$CardPower\nDeckHas:Ability$Counters\nOracle:Deathtouch\\nWhenever another creature you control enters, you may pay life equal to its power. If you do, put that many +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Madame Null, Power Broker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

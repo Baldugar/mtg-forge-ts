@@ -1,0 +1,23 @@
+{
+  "id": "ellywick-tumblestrum-corpus-m682",
+  "description": "M6 corpus — Ellywick Tumblestrum; in-hand parse.",
+  "seed": 62167,
+  "cards": {
+    "Ellywick Tumblestrum": "Name:Ellywick Tumblestrum\nManaCost:2 G G\nTypes:Legendary Planeswalker Ellywick\nLoyalty:4\nA:AB$ Venture | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | SpellDescription$ Venture into the dungeon. (Enter the first room or advance to the next room.)\nA:AB$ Dig | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | DigNum$ 6 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature | ForceRevealToController$ True | RememberChanged$ True | RestRandomOrder$ True | SubAbility$ DBGainLife | SpellDescription$ Look at the top six cards of your library. You may reveal a creature card from among them and put it into your hand. If it's legendary, you gain 3 life. Put the rest on the bottom of your library in a random order.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | ConditionCheckSVar$ IsLegendary | SubAbility$ DBCleanup\nSVar:IsLegendary:Count$ValidHand Creature.Legendary+IsRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Ellywick Tumblestrum | Image$ emblem_ellywick_tumblestrum | StaticAbilities$ STOverrun | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Creatures you control have trample and haste and get +2/+2 for each differently named dungeon you've completed.\"\nSVar:STOverrun:Mode$ Continuous | Affected$ Creature.YouCtrl | AffectedZone$ Battlefield | AddPower$ X | AddToughness$ X | AddKeyword$ Trample & Haste | Description$ Creatures you control have trample and haste and get +2/+2 for each differently named dungeon you've completed.\nSVar:X:DungeonsCompleted$DifferentCardNames/Twice\nOracle:[+1]: Venture into the dungeon. (Enter the first room or advance to the next room.)\\n[-2]: Look at the top six cards of your library. You may reveal a creature card from among them and put it into your hand. If it's legendary, you gain 3 life. Put the rest on the bottom of your library in a random order.\\n[-7]: You get an emblem with \"Creatures you control have trample and haste and get +2/+2 for each differently named dungeon you've completed.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ellywick Tumblestrum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

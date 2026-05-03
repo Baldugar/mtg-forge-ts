@@ -1,0 +1,23 @@
+{
+  "id": "whirler-virtuoso-corpus-m682",
+  "description": "M6 corpus — Whirler Virtuoso; in-hand parse.",
+  "seed": 65229,
+  "cards": {
+    "Whirler Virtuoso": "Name:Whirler Virtuoso\nManaCost:1 U R\nTypes:Creature Vedalken Artificer\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nA:AB$ Token | Cost$ PayEnergy<3> | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Thopter artifact creature token with flying.\nDeckHas:Ability$Token\nOracle:When Whirler Virtuoso enters, you get {E}{E}{E} (three energy counters).\\nPay {E}{E}{E}: Create a 1/1 colorless Thopter artifact creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whirler Virtuoso"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "plant-elemental-corpus-m682",
+  "description": "M6 corpus — Plant Elemental; in-hand parse.",
+  "seed": 63787,
+  "cards": {
+    "Plant Elemental": "Name:Plant Elemental\nManaCost:1 G\nTypes:Creature Plant Elemental\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice a Forest.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<1/Forest> | UnlessPayer$ You\nSVar:NeedsToPlay:Forest.YouCtrl\nOracle:When Plant Elemental enters, sacrifice it unless you sacrifice a Forest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plant Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

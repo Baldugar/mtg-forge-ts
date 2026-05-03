@@ -1,0 +1,23 @@
+{
+  "id": "witch-king-of-angmar-corpus-m682",
+  "description": "M6 corpus — Witch-king of Angmar; in-hand parse.",
+  "seed": 65259,
+  "cards": {
+    "Witch-king of Angmar": "Name:Witch-king of Angmar\nManaCost:3 B B\nTypes:Legendary Creature Wraith Noble\nPT:5/3\nK:Flying\nT:Mode$ DamageDoneOnce | ValidSource$ Creature | TriggerZones$ Battlefield | ValidTarget$ You | CombatDamage$ True | Execute$ TrigSac | TriggerDescription$ Whenever one or more creatures deal combat damage to you, each opponent sacrifices a creature that dealt combat damage to you this turn. The Ring tempts you.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature.dealtCombatDamageThisTurn You | Defined$ Player.Opponent | SubAbility$ TrigTempt\nSVar:TrigTempt:DB$ RingTemptsYou\nA:AB$ Pump | Cost$ Discard<1/Card> | Defined$ Self | KW$ Indestructible | SubAbility$ DBTap | SpellDescription$ CARDNAME gains indestructible until end of turn. Tap it.\nSVar:DBTap:DB$ Tap | Defined$ Self\nOracle:Flying\\nWhenever one or more creatures deal combat damage to you, each opponent sacrifices a creature that dealt combat damage to you this turn. The Ring tempts you.\\nDiscard a card: Witch-king of Angmar gains indestructible until end of turn. Tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Witch-king of Angmar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

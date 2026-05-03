@@ -1,0 +1,23 @@
+{
+  "id": "plunge-into-darkness-corpus-m682",
+  "description": "M6 corpus — Plunge into Darkness; in-hand parse.",
+  "seed": 63794,
+  "cards": {
+    "Plunge into Darkness": "Name:Plunge into Darkness\nManaCost:1 B\nTypes:Instant\nK:Entwine:B\nA:SP$ Charm | Choices$ DBSac,DBChooseNumber\nSVar:DBSac:DB$ Sacrifice | Defined$ You | Amount$ SacX | SacValid$ Creature | RememberSacrificed$ True | Optional$ True | SubAbility$ DBGainLife | SpellDescription$ Sacrifice any number of creatures, then you gain 3 life for each sacrificed creature.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ GainLifeX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Creature.YouCtrl\nSVar:GainLifeX:Count$RememberedSize/Thrice\nSVar:DBChooseNumber:DB$ ChooseNumber | Defined$ You | ListTitle$ amount of life to pay | Max$ LifeAmountX | AILogic$ DigACard | SubAbility$ DBDig | SpellDescription$ Pay X life, then look at the top X cards of your library. Put one of those cards into your hand, and exile the rest.\nSVar:DBDig:DB$ Dig | DigNum$ Y | DestinationZone2$ Exile | UnlessCost$ PayLife<Y> | UnlessSwitched$ True | UnlessPayer$ You\nSVar:Y:Count$ChosenNumber\nSVar:LifeAmountX:Count$YourLifeTotal/LimitMin.0\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Sacrifice any number of creatures. You gain 3 life for each sacrificed creature.\\n• Pay X life, then look at the top X cards of your library. Put one of those cards into your hand and exile the rest.\\nEntwine {B} (Choose both if you pay the entwine cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plunge into Darkness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

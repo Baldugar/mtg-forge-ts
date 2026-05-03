@@ -1,0 +1,23 @@
+{
+  "id": "guardian-of-cloverdell-corpus-m682",
+  "description": "M6 corpus — Guardian of Cloverdell; in-hand parse.",
+  "seed": 62662,
+  "cards": {
+    "Guardian of Cloverdell": "Name:Guardian of Cloverdell\nManaCost:5 G G\nTypes:Creature Treefolk Shaman\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create three 1/1 white Kithkin Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ w_1_1_kithkin_soldier | TokenOwner$ You\nA:AB$ GainLife | Cost$ G Sac<1/Kithkin> | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nOracle:When Guardian of Cloverdell enters, create three 1/1 white Kithkin Soldier creature tokens.\\n{G}, Sacrifice a Kithkin: You gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guardian of Cloverdell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

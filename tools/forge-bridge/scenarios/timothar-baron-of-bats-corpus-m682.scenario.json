@@ -1,0 +1,23 @@
+{
+  "id": "timothar-baron-of-bats-corpus-m682",
+  "description": "M6 corpus — Timothar, Baron of Bats; in-hand parse.",
+  "seed": 64886,
+  "cards": {
+    "Timothar, Baron of Bats": "Name:Timothar, Baron of Bats\nManaCost:4 B B\nTypes:Legendary Creature Vampire Noble\nPT:4/4\nK:Ward:Discard<1/Card>\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Vampire.Other+!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever another nontoken Vampire you control dies, you may pay {1} and exile it. If you do, create a 1/1 black Bat creature token with flying. It gains \"When this creature deals combat damage to a player, sacrifice it and return the exiled card to the battlefield tapped.\"\nSVar:TrigToken:AB$ Token | Cost$ 1 ExileAnyGrave<1/Card.TriggeredNewCard> | TokenRemembered$ ExiledCards | TokenScript$ b_1_1_bat_flying | ImprintTokens$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Imprinted | Duration$ Permanent | Triggers$ CDTrigger\nSVar:CDTrigger:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ When this creature deals combat damage to a player, sacrifice it and return the exiled card to the battlefield tapped.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Tapped$ True | GainControl$ True\nDeckHas:Ability$Token|Sacrifice\nDeckNeeds:Type$Vampire\nOracle:Ward—Discard a card.\\nWhenever another nontoken Vampire you control dies, you may pay {1} and exile it. If you do, create a 1/1 black Bat creature token with flying. It gains \"When this creature deals combat damage to a player, sacrifice it and return the exiled card to the battlefield tapped.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Timothar, Baron of Bats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

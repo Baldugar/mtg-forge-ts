@@ -1,0 +1,23 @@
+{
+  "id": "jaxis-the-troublemaker-corpus-m682",
+  "description": "M6 corpus — Jaxis, the Troublemaker; in-hand parse.",
+  "seed": 62945,
+  "cards": {
+    "Jaxis, the Troublemaker": "Name:Jaxis, the Troublemaker\nManaCost:3 R\nTypes:Legendary Creature Human Warrior\nPT:2/3\nA:AB$ CopyPermanent | Cost$ R T Discard<1/Card> | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | PumpKeywords$ Haste | AtEOT$ Sacrifice | SorcerySpeed$ True | RememberTokens$ True | SubAbility$ DBAnimate | SpellDescription$ Create a token that's a copy of another target creature you control. It gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step. Activate only as a sorcery.\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Triggers$ Dies | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Dies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this creature dies, draw a card.\nSVar:TrigDraw:DB$ Draw\nK:Blitz:1 R\nDeckHas:Ability$Discard|Token|Sacrifice\nOracle:{R}, {T}, Discard a card: Create a token that's a copy of another target creature you control. It gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step. Activate only as a sorcery.\\nBlitz {1}{R} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jaxis, the Troublemaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

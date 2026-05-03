@@ -1,0 +1,23 @@
+{
+  "id": "hylda-s-crown-of-winter-corpus-m682",
+  "description": "M6 corpus — Hylda's Crown of Winter; in-hand parse.",
+  "seed": 62815,
+  "cards": {
+    "Hylda's Crown of Winter": "Name:Hylda's Crown of Winter\nManaCost:3\nTypes:Legendary Artifact\nA:AB$ Tap | Cost$ 1 T | ValidTgts$ Creature | ReduceCost$ X | SpellDescription$ Tap target creature. This ability costs {1} less to activate during your turn.\nSVar:X:PlayerCountPropertyYou$HasPropertyActive\nA:AB$ Draw | Cost$ 3 Sac<1/CARDNAME> | Defined$ You | NumCards$ Y | SpellDescription$ Draw a card for each tapped creature your opponents control.\nSVar:Y:Count$Valid Creature.tapped+OppCtrl\nDeckHas:Ability$Sacrifice\nOracle:{1}, {T}: Tap target creature. This ability costs {1} less to activate during your turn.\\n{3}, Sacrifice Hylda's Crown of Winter: Draw a card for each tapped creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hylda's Crown of Winter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

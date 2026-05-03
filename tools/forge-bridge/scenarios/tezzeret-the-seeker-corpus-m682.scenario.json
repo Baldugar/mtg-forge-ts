@@ -1,0 +1,23 @@
+{
+  "id": "tezzeret-the-seeker-corpus-m682",
+  "description": "M6 corpus — Tezzeret the Seeker; in-hand parse.",
+  "seed": 64772,
+  "cards": {
+    "Tezzeret the Seeker": "Name:Tezzeret the Seeker\nManaCost:3 U U\nTypes:Legendary Planeswalker Tezzeret\nLoyalty:4\nA:AB$ Untap | Cost$ AddCounter<1/LOYALTY> | ValidTgts$ Artifact | TgtPrompt$ Choose target artifact | TargetMin$ 0 | TargetMax$ 2 | Planeswalker$ True | SpellDescription$ Untap up to two target artifacts.\nA:AB$ ChangeZone | Cost$ SubCounter<X/LOYALTY> | Origin$ Library | Destination$ Battlefield | ChangeType$ Artifact.cmcLEX | ChangeNum$ 1 | Shuffle$ True | Planeswalker$ True | SpellDescription$ Search your library for an artifact card with mana value X or less, put it onto the battlefield, then shuffle.\nA:AB$ AnimateAll | Cost$ SubCounter<5/LOYALTY> | Power$ 5 | Toughness$ 5 | Types$ Creature,Artifact | ValidCards$ Artifact.YouCtrl | Planeswalker$ True | Ultimate$ True | SpellDescription$ Artifacts you control become artifact creatures with base power and toughness 5/5 until end of turn.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckNeeds:Type$Artifact\nOracle:[+1]: Untap up to two target artifacts.\\n[-X]: Search your library for an artifact card with mana value X or less, put it onto the battlefield, then shuffle.\\n[-5]: Artifacts you control become artifact creatures with base power and toughness 5/5 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tezzeret the Seeker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

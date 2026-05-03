@@ -1,0 +1,23 @@
+{
+  "id": "silver-bolt-corpus-m682",
+  "description": "M6 corpus — Silver Bolt; in-hand parse.",
+  "seed": 64375,
+  "cards": {
+    "Silver Bolt": "Name:Silver Bolt\nManaCost:1\nTypes:Artifact\nA:AB$ DealDamage | Cost$ 3 T Sac<1/CARDNAME> | ValidTgts$ Creature | NumDmg$ 3 | RememberDamaged$ True | SubAbility$ DBDestroy | StackDescription$ CARDNAME deals 3 damage to {c:Targeted}. | SpellDescription$ It deals 3 damage to target creature. If a Werewolf is dealt damage this way, destroy it.\nSVar:DBDestroy:DB$ Destroy | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Creature.Werewolf | SubAbility$ DBCleanup | StackDescription$ If a Werewolf is dealt damage this way, destroy it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nOracle:{3}, {T}, Sacrifice Silver Bolt: It deals 3 damage to target creature. If a Werewolf is dealt damage this way, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Silver Bolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

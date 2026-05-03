@@ -1,0 +1,23 @@
+{
+  "id": "minimus-containment-corpus-m682",
+  "description": "M6 corpus — Minimus Containment; in-hand parse.",
+  "seed": 63375,
+  "cards": {
+    "Minimus Containment": "Name:Minimus Containment\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Permanent.nonLand:nonland permanent\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Permanent.EnchantedBy | AddType$ Artifact & Treasure | RemoveCardTypes$ True | RemoveArtifactTypes$ True | AddAbility$ TreasureSac | RemoveAllAbilities$ True | Description$ Enchanted permanent is a Treasure artifact with \"{T}, Sacrifice this artifact: Add one mana of any color,\" and it loses all other abilities. (If it was a creature, it's no longer a creature.)\nSVar:TreasureSac:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Enchant nonland permanent\\nEnchanted permanent is a Treasure artifact with \"{T}, Sacrifice this artifact: Add one mana of any color,\" and it loses all other abilities. (If it was a creature, it's no longer a creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minimus Containment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

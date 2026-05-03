@@ -1,0 +1,23 @@
+{
+  "id": "osseous-sticktwister-corpus-m682",
+  "description": "M6 corpus — Osseous Sticktwister; in-hand parse.",
+  "seed": 63665,
+  "cards": {
+    "Osseous Sticktwister": "Name:Osseous Sticktwister\nManaCost:1 B\nTypes:Artifact Creature Scarecrow\nPT:2/2\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Delirium$ True | TriggerZones$ Battlefield | Execute$ TrigMaySacorDiscard | TriggerDescription$ Delirium — At the beginning of your end step, if there are four or more card types among cards in your graveyard, each opponent may sacrifice a nonland permanent or discard a card. Then CARDNAME deals damage equal to its power to each opponent who didn't sacrifice a permanent or discard a card this way.\nSVar:TrigMaySacorDiscard:DB$ GenericChoice | Choices$ PaySac,PayDiscard | TempRemember$ Chooser | Defined$ Opponent | AILogic$ PayUnlessCost | DamageMap$ True\nSVar:PaySac:DB$ DealDamage | NumDmg$ X | Defined$ Remembered | UnlessCost$ Sac<1/Permanent.nonLand> | UnlessPayer$ Remembered | SpellDescription$ CARDNAME deals damage equal to its power to you unless you sacrifice a nonland permanent.\nSVar:PayDiscard:DB$ DealDamage | NumDmg$ X | Defined$ Remembered | UnlessCost$ Discard<1/Card> | UnlessPayer$ Remembered | SpellDescription$ CARDNAME deals damage equal to its power to you unless you discard a card.\nSVar:X:Count$CardPower\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Lifelink\\nDelirium — At the beginning of your end step, if there are four or more card types among cards in your graveyard, each opponent may sacrifice a nonland permanent or discard a card. Then Osseous Sticktwister deals damage equal to its power to each opponent who didn't sacrifice a permanent or discard a card this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Osseous Sticktwister"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

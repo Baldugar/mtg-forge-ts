@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-vryn-corpus-m682",
+  "description": "M6 corpus — Invasion of Vryn; in-hand parse.",
+  "seed": 62898,
+  "cards": {
+    "Invasion of Vryn": "Name:Invasion of Vryn\nManaCost:3 U\nTypes:Battle Siege\nDefense:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard|Token|Sacrifice\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Vryn enters, draw three cards, then discard a card.\n\nALTERNATE\n\nName:Overloaded Mage-Ring\nManaCost:no cost\nColors:blue\nTypes:Artifact\nA:AB$ CopySpellAbility | Cost$ 1 T Sac<1/CARDNAME> | ValidTgts$ Card.YouCtrl | TargetType$ Spell | SpellDescription$ Copy target spell you control. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\nOracle:{1}, {T}, Sacrifice Overloaded Mage-Ring: Copy target spell you control. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Vryn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

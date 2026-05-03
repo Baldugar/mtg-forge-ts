@@ -1,0 +1,23 @@
+{
+  "id": "possessed-portal-corpus-m682",
+  "description": "M6 corpus — Possessed Portal; in-hand parse.",
+  "seed": 63803,
+  "cards": {
+    "Possessed Portal": "Name:Possessed Portal\nManaCost:8\nTypes:Artifact\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ Player | Prevent$ True | Description$ If a player would draw a card, that player skips that draw instead.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSacrifice | TriggerDescription$ At the beginning of each end step, each player sacrifices a permanent unless they discard a card.\nSVar:TrigSacrifice:DB$ RepeatEach | RepeatSubAbility$ DBSac | RepeatPlayers$ Player\nSVar:DBSac:DB$ Sacrifice | SacValid$ Permanent | Defined$ Player.IsRemembered | UnlessCost$ Discard<1/Card> | UnlessPayer$ Remembered\nAI:RemoveDeck:Random\nOracle:If a player would draw a card, that player skips that draw instead.\\nAt the beginning of each end step, each player sacrifices a permanent unless they discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Possessed Portal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

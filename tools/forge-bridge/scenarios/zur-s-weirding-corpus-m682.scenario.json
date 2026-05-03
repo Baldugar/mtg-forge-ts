@@ -1,0 +1,23 @@
+{
+  "id": "zur-s-weirding-corpus-m682",
+  "description": "M6 corpus — Zur's Weirding; in-hand parse.",
+  "seed": 65322,
+  "cards": {
+    "Zur's Weirding": "Name:Zur's Weirding\nManaCost:3 U\nTypes:Enchantment\nS:Mode$ Continuous | AffectedZone$ Hand | MayLookAt$ Player | Description$ Players play with their hands revealed.\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ Player | ReplaceWith$ RevealTop | Description$ If a player would draw a card, they reveal it instead. Then any other player may pay 2 life. If a player does, put that card into its owner's graveyard. Otherwise, that player draws a card.\nSVar:RevealTop:DB$ PeekAndReveal | Defined$ ReplacedPlayer | NoPeek$ True | SubAbility$ DBMill\nSVar:DBMill:DB$ Dig | Defined$ ReplacedPlayer | DestinationZone$ Graveyard | DigNum$ 1 | ChangeNum$ All | SubAbility$ DBDraw | UnlessPayer$ NonReplacedPlayer | UnlessCost$ PayLife<2> | UnlessSwitched$ True | UnlessResolveSubs$ WhenNotPaid\nSVar:DBDraw:DB$ Draw | Defined$ ReplacedPlayer | NumCards$ 1\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:Players play with their hands revealed.\\nIf a player would draw a card, they reveal it instead. Then any other player may pay 2 life. If a player does, put that card into its owner's graveyard. Otherwise, that player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zur's Weirding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

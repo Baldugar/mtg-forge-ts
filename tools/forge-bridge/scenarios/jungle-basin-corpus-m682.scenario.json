@@ -1,0 +1,23 @@
+{
+  "id": "jungle-basin-corpus-m682",
+  "description": "M6 corpus — Jungle Basin; in-hand parse.",
+  "seed": 62975,
+  "cards": {
+    "Jungle Basin": "Name:Jungle Basin\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C G | SpellDescription$ Add {C}{G}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return an untapped Forest you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Forest.untapped/untapped Forest> | UnlessPayer$ You\nSVar:NeedsToPlay:Forest.YouCtrl+untapped\nOracle:Jungle Basin enters tapped.\\nWhen Jungle Basin enters, sacrifice it unless you return an untapped Forest you control to its owner's hand.\\n{T}: Add {C}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jungle Basin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

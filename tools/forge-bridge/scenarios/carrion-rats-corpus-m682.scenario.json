@@ -1,0 +1,23 @@
+{
+  "id": "carrion-rats-corpus-m682",
+  "description": "M6 corpus — Carrion Rats; in-hand parse.",
+  "seed": 61639,
+  "cards": {
+    "Carrion Rats": "Name:Carrion Rats\nManaCost:B\nTypes:Creature Rat\nPT:2/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBNoCombatDamage | TriggerDescription$ Whenever CARDNAME attacks or blocks, any player may exile a card from their graveyard. If a player does, CARDNAME assigns no combat damage this turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DBNoCombatDamage | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, any player may exile a card from their graveyard. If a player does, CARDNAME assigns no combat damage this turn.\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT | UnlessCost$ ExileFromGrave<1/Card> | UnlessPayer$ Player | UnlessSwitched$ True\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nAI:RemoveDeck:All\nOracle:Whenever Carrion Rats attacks or blocks, any player may exile a card from their graveyard. If a player does, Carrion Rats assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carrion Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

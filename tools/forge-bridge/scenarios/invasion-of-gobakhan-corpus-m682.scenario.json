@@ -1,0 +1,23 @@
+{
+  "id": "invasion-of-gobakhan-corpus-m682",
+  "description": "M6 corpus — Invasion of Gobakhan; in-hand parse.",
+  "seed": 62892,
+  "cards": {
+    "Invasion of Gobakhan": "Name:Invasion of Gobakhan\nManaCost:1 W\nTypes:Battle Siege\nDefense:3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLook | TriggerDescription$ When CARDNAME enters, look at target opponent's hand. You may exile a nonland card from it. For as long as that card remains exiled, its owner may play it. A spell cast this way costs {2} more to cast.\nSVar:TrigLook:DB$ RevealHand | ValidTgts$ Opponent | Look$ True | RememberRevealed$ True | SubAbility$ DBChooseCard\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.nonLand+IsRemembered | ChoiceTitle$ You may exile a nonland card from it | MinAmount$ 0 | Amount$ 1 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Hand | Destination$ Exile | Imprint$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Duration$ Permanent | StaticAbilities$ MayPlay,CostsMore | RememberObjects$ Imprinted | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | MayPlayPlayer$ CardOwner\nSVar:CostsMore:Mode$ RaiseCost | ValidCard$ Card.IsRemembered | AffectedZone$ Exile | Type$ Spell | Amount$ 2\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True | ClearImprinted$ True\nDeckHas:Ability$Counters|Sacrifice\nAlternateMode:DoubleFaced\nOracle:(As a Siege enters, choose an opponent to protect it. You and others can attack it. When it's defeated, exile it, then cast it transformed.)\\nWhen Invasion of Gobakhan enters, look at target opponent's hand. You may exile a nonland card from it. For as long as that card remains exiled, its owner may play it. A spell cast this way costs {2} more to cast.\n\nALTERNATE\n\nName:Lightshield Array\nManaCost:no cost\nColors:white\nTypes:Enchantment\nA:AB$ PumpAll | Cost$ Sac<1/CARDNAME> | ValidCards$ Creature.YouCtrl | KW$ Indestructible & Hexproof | SpellDescription$ Creatures you control gain hexproof and indestructible until end of turn.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your end step, put a +1/+1 counter on each creature that attacked this turn.\nSVar:TrigPutCounter:DB$ PutCounterAll | ValidCards$ Creature.attackedThisTurn | CounterType$ P1P1 | CounterNum$ 1\nOracle:At the beginning of your end step, put a +1/+1 counter on each creature that attacked this turn.\\nSacrifice Lightshield Array: Creatures you control gain hexproof and indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Invasion of Gobakhan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

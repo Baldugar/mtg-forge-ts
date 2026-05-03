@@ -1,0 +1,23 @@
+{
+  "id": "azra-oddsmaker-corpus-m682",
+  "description": "M6 corpus — Azra Oddsmaker; in-hand parse.",
+  "seed": 61514,
+  "cards": {
+    "Azra Oddsmaker": "Name:Azra Oddsmaker\nManaCost:1 R B\nTypes:Creature Azra Warrior\nPT:3/3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ ChooseCreature | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, you may discard a card. If you do, choose a creature. Whenever that creature deals combat damage to a player this turn, you draw two cards.\nSVar:ChooseCreature:AB$ ChooseCard | Cost$ Discard<1/Card> | Mandatory$ True | Choices$ Creature | ChoiceTitle$ Choose a creature | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDamage | SubAbility$ DBCleanup\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Card.ChosenCardStrict | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever that creature deals combat damage to a player this turn, you draw two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:At the beginning of combat on your turn, you may discard a card. If you do, choose a creature. Whenever that creature deals combat damage to a player this turn, you draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Azra Oddsmaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

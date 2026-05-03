@@ -1,0 +1,23 @@
+{
+  "id": "spike-tiller-corpus-m682",
+  "description": "M6 corpus — Spike Tiller; in-hand parse.",
+  "seed": 64547,
+  "cards": {
+    "Spike Tiller": "Name:Spike Tiller\nManaCost:3 G G\nTypes:Creature Spike\nPT:0/0\nK:etbCounter:P1P1:3\nA:AB$ PutCounter | Cost$ 2 SubCounter<1/P1P1> | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | AILogic$ MoveCounter.IsCounterUser | SpellDescription$ Put a +1/+1 counter on target creature.\nA:AB$ Animate | Cost$ 2 SubCounter<1/P1P1> | ValidTgts$ Land | Power$ 2 | Toughness$ 2 | Types$ Creature | Duration$ Permanent | SubAbility$ DBPutCounter | SpellDescription$ Target land becomes a 2/2 creature that's still a land. Put a +1/+1 counter on it.\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Targeted | CounterType$ P1P1 | CounterNum$ 1\nOracle:Spike Tiller enters with three +1/+1 counters on it.\\n{2}, Remove a +1/+1 counter from Spike Tiller: Put a +1/+1 counter on target creature.\\n{2}, Remove a +1/+1 counter from Spike Tiller: Target land becomes a 2/2 creature that's still a land. Put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spike Tiller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

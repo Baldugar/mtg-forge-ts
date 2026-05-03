@@ -1,0 +1,23 @@
+{
+  "id": "koh-the-face-stealer-corpus-m682",
+  "description": "M6 corpus — Koh, the Face Stealer; in-hand parse.",
+  "seed": 63049,
+  "cards": {
+    "Koh, the Face Stealer": "Name:Koh, the Face Stealer\nManaCost:4 B B\nTypes:Legendary Creature Shapeshifter Spirit\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile1 | TriggerDescription$ When NICKNAME enters, exile up to one other target creature.\nSVar:TrigExile1:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | Origin$ Battlefield | Destination$ Exile\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+Other | Origin$ Battlefield | Destination$ Graveyard | OptionalDecider$ You | Execute$ TrigExile2 | TriggerZones$ Battlefield | TriggerDescription$ Whenever another nontoken creature dies, you may exile it.\nSVar:TrigExile2:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nA:AB$ ChooseCard | Cost$ PayLife<1> | Defined$ You | Amount$ 1 | Mandatory$ True | ChoiceTitle$ Choose an exiled card exiled with NICKNAME | Choices$ Creature.ExiledWithSource | ChoiceZone$ Exile | SpellDescription$ Choose a creature card exiled with Koh.\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | GainsAbilitiesOf$ Card.ChosenCard | GainsTriggerAbsOf$ Card.ChosenCard | GainsAbilitiesOfZones$ Exile | Description$ NICKNAME has all activated and triggered abilities of the last chosen card.\nOracle:When Koh enters, exile up to one other target creature.\\nWhenever another nontoken creature dies, you may exile it.\\nPay 1 life: Choose a creature card exiled with Koh.\\nKoh has all activated and triggered abilities of the last chosen card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Koh, the Face Stealer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lithoform-blight-corpus-m682",
+  "description": "M6 corpus — Lithoform Blight; in-hand parse.",
+  "seed": 63170,
+  "cards": {
+    "Lithoform Blight": "Name:Lithoform Blight\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAITgts:Land.nonBasic\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | RemoveLandTypes$ True | RemoveAllAbilities$ True | AddAbility$ ABManaC & ABManaAny | Description$ Enchanted land loses all land types and abilities and has \"{T}: Add {C}\" and \"{T}, Pay 1 life: Add one mana of any color.\"\nSVar:ABManaC:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nSVar:ABManaAny:AB$ Mana | Cost$ T PayLife<1> | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Enchant land\\nWhen Lithoform Blight enters, draw a card.\\nEnchanted land loses all land types and abilities and has \"{T}: Add {C}\" and \"{T}, Pay 1 life: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lithoform Blight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eldritch-evolution-corpus-m682",
+  "description": "M6 corpus — Eldritch Evolution; in-hand parse.",
+  "seed": 62154,
+  "cards": {
+    "Eldritch Evolution": "Name:Eldritch Evolution\nManaCost:1 G G\nTypes:Sorcery\nA:SP$ ChangeZone | Cost$ 1 G G Sac<1/Creature> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcLEX | ChangeNum$ 1 | SubAbility$ DBChange | AILogic$ SacAndUpgrade+SacWorst | StackDescription$ SpellDescription | SpellDescription$ Search your library for a creature card with mana value X or less, where X is 2 plus the sacrificed creature's mana value. Put that card onto the battlefield, then shuffle. Exile CARDNAME.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nSVar:X:Sacrificed$CardManaCost/Plus.2\nSVar:AIPreference:SacCost$Creature\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nSearch your library for a creature card with mana value X or less, where X is 2 plus the sacrificed creature's mana value. Put that card onto the battlefield, then shuffle. Exile Eldritch Evolution.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eldritch Evolution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

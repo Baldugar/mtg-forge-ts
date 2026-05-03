@@ -1,0 +1,23 @@
+{
+  "id": "scurry-of-gremlins-corpus-m682",
+  "description": "M6 corpus — Scurry of Gremlins; in-hand parse.",
+  "seed": 64239,
+  "cards": {
+    "Scurry of Gremlins": "Name:Scurry of Gremlins\nManaCost:2 R W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 red Gremlin creature tokens. Then you get an amount of {E} (energy counters) equal to the number of creatures you control.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_gremlin | SubAbility$ DBEnergy\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nA:AB$ PumpAll | Cost$ PayEnergy<4> | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | KW$ Haste | SpellDescription$ Creatures you control get +1/+0 and gain haste until end of turn.\nSVar:X:Count$Valid Creature.YouCtrl\nDeckHas:Ability$Token\nOracle:When Scurry of Gremlins enters, create two 1/1 red Gremlin creature tokens. Then you get an amount of {E} (energy counters) equal to the number of creatures you control.\\nPay {E}{E}{E}{E}: Creatures you control get +1/+0 and gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scurry of Gremlins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

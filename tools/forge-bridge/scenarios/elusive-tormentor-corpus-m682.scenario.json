@@ -1,0 +1,23 @@
+{
+  "id": "elusive-tormentor-corpus-m682",
+  "description": "M6 corpus — Elusive Tormentor; in-hand parse.",
+  "seed": 62176,
+  "cards": {
+    "Elusive Tormentor": "Name:Elusive Tormentor\nManaCost:2 B B\nTypes:Creature Vampire Wizard\nPT:4/4\nA:AB$ SetState | Cost$ 1 Discard<1/Card> | Defined$ Self | Mode$ Transform | SpellDescription$ Transform CARDNAME.\nAI:RemoveDeck:All\nDeckHas:Ability$Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nAlternateMode:DoubleFaced\nOracle:{1}, Discard a card: Transform Elusive Tormentor.\n\nALTERNATE\n\nName:Insidious Mist\nManaCost:no cost\nColors:blue\nTypes:Creature Elemental\nPT:0/1\nK:Hexproof\nK:Indestructible\nS:Mode$ CantBlock | ValidCard$ Creature.Self | Description$ CARDNAME can't block and can't be blocked.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may pay {2}{B}. If you do, transform it.\nSVar:TrigTransform:AB$ SetState | Cost$ 2 B | Defined$ Self | Mode$ Transform\nOracle:Hexproof, indestructible\\nInsidious Mist can't block and can't be blocked.\\nWhenever Insidious Mist attacks and isn't blocked, you may pay {2}{B}. If you do, transform it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elusive Tormentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "krasis-incubation-corpus-m682",
+  "description": "M6 corpus — Krasis Incubation; in-hand parse.",
+  "seed": 63065,
+  "cards": {
+    "Krasis Incubation": "Name:Krasis Incubation\nManaCost:2 G U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block and its activated abilities can't be activated.\nA:AB$ PutCounter | Cost$ 1 G U Return<1/CARDNAME> | Defined$ AttachedBy Returned | CounterType$ P1P1 | CounterNum$ 2 | SpellDescription$ Put two +1/+1 counters on enchanted creature.\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Enchant creature\\nEnchanted creature can't attack or block, and its activated abilities can't be activated.\\n{1}{G}{U}, Return Krasis Incubation to its owner's hand: Put two +1/+1 counters on enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krasis Incubation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

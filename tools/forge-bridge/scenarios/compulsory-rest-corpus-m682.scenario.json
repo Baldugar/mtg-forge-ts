@@ -1,0 +1,23 @@
+{
+  "id": "compulsory-rest-corpus-m682",
+  "description": "M6 corpus — Compulsory Rest; in-hand parse.",
+  "seed": 61800,
+  "cards": {
+    "Compulsory Rest": "Name:Compulsory Rest\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack,CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ ABGainLife | Description$ Enchanted creature has \"{2}, Sacrifice this creature: You gain 2 life.\"\nSVar:ABGainLife:AB$ GainLife | Cost$ 2 Sac<1/CARDNAME> | LifeAmount$ 2 | Defined$ You | SpellDescription$ You gain 2 life.\nOracle:Enchant creature\\nEnchanted creature can't attack or block.\\nEnchanted creature has \"{2}, Sacrifice this creature: You gain 2 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Compulsory Rest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

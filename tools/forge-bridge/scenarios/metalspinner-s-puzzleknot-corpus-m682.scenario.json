@@ -1,0 +1,23 @@
+{
+  "id": "metalspinner-s-puzzleknot-corpus-m682",
+  "description": "M6 corpus — Metalspinner's Puzzleknot; in-hand parse.",
+  "seed": 63350,
+  "cards": {
+    "Metalspinner's Puzzleknot": "Name:Metalspinner's Puzzleknot\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nA:AB$ Draw | Cost$ 2 B Sac<1/CARDNAME> | NumCards$ 1 | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:When Metalspinner's Puzzleknot enters, you draw a card and you lose 1 life.\\n{2}{B}, Sacrifice Metalspinner's Puzzleknot: You draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Metalspinner's Puzzleknot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

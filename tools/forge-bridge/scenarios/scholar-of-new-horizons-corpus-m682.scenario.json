@@ -1,0 +1,23 @@
+{
+  "id": "scholar-of-new-horizons-corpus-m682",
+  "description": "M6 corpus — Scholar of New Horizons; in-hand parse.",
+  "seed": 64219,
+  "cards": {
+    "Scholar of New Horizons": "Name:Scholar of New Horizons\nManaCost:1 W\nTypes:Creature Human Scout\nPT:1/1\nK:etbCounter:P1P1:1\nA:AB$ ChangeZone | Cost$ T RemoveAnyCounter<1/Any/Permanent> | Origin$ Library | Destination$ Library | ChangeType$ Plains | ChangeNum$ 1 | RememberChanged$ True | Reveal$ True | Shuffle$ False | SubAbility$ ToBattlefieldTapped | StackDescription$ SpellDescription | SpellDescription$ Search your library for a Plains card and reveal it. If an opponent controls more lands than you, you may put that card onto the battlefield tapped. If you don't put the card onto the battlefield, put it into your hand. Then shuffle.\nSVar:ToBattlefieldTapped:DB$ ChangeZone | ConditionCheckSVar$ Y | ConditionSVarCompare$ GTX | Defined$ Remembered | Optional$ True | Origin$ Library | Destination$ Battlefield | Tapped$ True | SubAbility$ ToHand | StackDescription$ None | ForgetChanged$ True\nSVar:ToHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | Shuffle$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:PlayerCountOpponents$HighestValid Land.YouCtrl\nDeckHints:Ability$Counters\nDeckHas:Ability$Counters\nOracle:Scholar of New Horizons enters with a +1/+1 counter on it.\\n{T}, Remove a counter from a permanent you control: Search your library for a Plains card and reveal it. If an opponent controls more lands than you, you may put that card onto the battlefield tapped. If you don't put the card onto the battlefield, put it into your hand. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Scholar of New Horizons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

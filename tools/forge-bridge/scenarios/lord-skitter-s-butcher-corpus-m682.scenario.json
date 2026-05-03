@@ -1,0 +1,23 @@
+{
+  "id": "lord-skitter-s-butcher-corpus-m682",
+  "description": "M6 corpus — Lord Skitter's Butcher; in-hand parse.",
+  "seed": 63201,
+  "cards": {
+    "Lord Skitter's Butcher": "Name:Lord Skitter's Butcher\nManaCost:2 B\nTypes:Creature Rat Peasant\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBScry,DBPumpAll\nSVar:DBToken:DB$ Token | TokenScript$ b_1_1_rat_noblock | SpellDescription$ Create a 1/1 black Rat creature token with \"This creature can't block.\"\nSVar:DBScry:DB$ Scry | UnlessCost$ Sac<1/Creature.Other/another creature> | UnlessPayer$ You | UnlessSwitched$ True | ScryNum$ 2 | UnlessResolveSubs$ WhenPaid | SubAbility$ DBDraw | SpellDescription$ You may sacrifice another creature. If you do, scry 2, then draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Menace | SpellDescription$ Creatures you control gain menace until end of turn.\nDeckHas:Ability$Token|Sacrifice\nOracle:When Lord Skitter's Butcher enters, choose one —\\n• Create a 1/1 black Rat creature token with \"This creature can't block.\"\\n• You may sacrifice another creature. If you do, scry 2, then draw a card.\\n• Creatures you control gain menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lord Skitter's Butcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

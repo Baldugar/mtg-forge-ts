@@ -1,0 +1,23 @@
+{
+  "id": "wickersmith-s-tools-corpus-m682",
+  "description": "M6 corpus — Wickersmith's Tools; in-hand parse.",
+  "seed": 65242,
+  "cards": {
+    "Wickersmith's Tools": "Name:Wickersmith's Tools\nManaCost:3\nTypes:Artifact\nT:Mode$ CounterAddedOnce | ValidCard$ Creature | CounterType$ M1M1 | TriggerZones$ Battlefield | Execute$ TrigCharge | TriggerDescription$ Whenever one or more -1/-1 counters are put on a creature, put a charge counter on Wickersmith's Tools.\nSVar:TrigCharge:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Token | Cost$ 5 T Sac<1/Card.Self> | TokenAmount$ X | TokenScript$ c_2_2_scarecrow | TokenOwner$ You | TokenTapped$ True | SpellDescription$ Create X tapped 2/2 colorless Scarecrow artifact creature tokens, where X is the number of charge counters on this artifact.\nSVar:X:Count$CardCounters.CHARGE\nOracle:Whenever one or more -1/-1 counters are put on a creature, put a charge counter on this artifact.\\n{T}: Add one mana of any color.\\n{5}, {T}, Sacrifice this artifact: Create X tapped 2/2 colorless Scarecrow artifact creature tokens, where X is the number of charge counters on this artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wickersmith's Tools"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

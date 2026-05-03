@@ -1,0 +1,23 @@
+{
+  "id": "gavel-of-the-righteous-corpus-m682",
+  "description": "M6 corpus — Gavel of the Righteous; in-hand parse.",
+  "seed": 62476,
+  "cards": {
+    "Gavel of the Righteous": "Name:Gavel of the Righteous\nManaCost:2\nTypes:Artifact Equipment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of combat on your turn, put a charge counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | CounterType$ CHARGE\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each counter on CARDNAME.\nSVar:X:Count$CardCounters.ALL\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Double Strike | CheckSVar$ X | SVarCompare$ GE4 | Description$ As long as CARDNAME has four or more counters on it, equipped creature has double strike.\nK:Equip:3:::AlternateCost$ RemoveAnyCounter<1/Any/CARDNAME/this equipment>\nDeckHas:Ability$Counters\nDeckHints:Ability$Counters\nOracle:At the beginning of combat on your turn, put a charge counter on Gavel of the Righteous.\\nEquipped creature gets +1/+1 for each counter on Gavel of the Righteous.\\nAs long as Gavel of the Righteous has four or more counters on it, equipped creature has double strike.\\nEquip—Pay {3} or remove a counter from Gavel of the Righteous.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gavel of the Righteous"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

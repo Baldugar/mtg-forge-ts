@@ -1,0 +1,23 @@
+{
+  "id": "shakedown-heavy-corpus-m682",
+  "description": "M6 corpus — Shakedown Heavy; in-hand parse.",
+  "seed": 64312,
+  "cards": {
+    "Shakedown Heavy": "Name:Shakedown Heavy\nManaCost:2 B\nTypes:Creature Ogre Warrior\nPT:6/4\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, defending player may have you draw a card. If they do, untap CARDNAME and remove it from combat.\nSVar:TrigDraw:DB$ Untap | Defined$ Self | UnlessCost$ Draw<1/Player.Activator> | UnlessPayer$ DefendingPlayer | UnlessSwitched$ True | UnlessResolveSubs$ WhenPaid | SubAbility$ RemCombat\nSVar:RemCombat:DB$ RemoveFromCombat | Defined$ Self\nSVar:HasAttackEffect:TRUE\nOracle:Menace\\nWhenever Shakedown Heavy attacks, defending player may have you draw a card. If they do, untap Shakedown Heavy and remove it from combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shakedown Heavy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

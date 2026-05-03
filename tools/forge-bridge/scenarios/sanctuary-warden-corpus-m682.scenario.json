@@ -1,0 +1,23 @@
+{
+  "id": "sanctuary-warden-corpus-m682",
+  "description": "M6 corpus — Sanctuary Warden; in-hand parse.",
+  "seed": 64158,
+  "cards": {
+    "Sanctuary Warden": "Name:Sanctuary Warden\nManaCost:4 W W\nTypes:Creature Angel Soldier\nPT:5/5\nK:Flying\nK:etbCounter:SHIELD:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token.\nSVar:TrigChange:AB$ Draw | Cost$ RemoveAnyCounter<1/Any/Creature;Planeswalker> | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ gw_1_1_citizen\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Counters & Type$Citizen\nDeckHints:Ability$Counters\nOracle:Flying\\nSanctuary Warden enters with two shield counters on it.\\nWhenever Sanctuary Warden enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sanctuary Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

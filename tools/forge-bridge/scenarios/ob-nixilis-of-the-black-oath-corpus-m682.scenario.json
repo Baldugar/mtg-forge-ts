@@ -1,0 +1,23 @@
+{
+  "id": "ob-nixilis-of-the-black-oath-corpus-m682",
+  "description": "M6 corpus — Ob Nixilis of the Black Oath; in-hand parse.",
+  "seed": 63600,
+  "cards": {
+    "Ob Nixilis of the Black Oath": "Name:Ob Nixilis of the Black Oath\nManaCost:3 B B\nTypes:Legendary Planeswalker Nixilis\nLoyalty:3\nText:CARDNAME can be your commander.\nA:AB$ LoseLife | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 1 life. You gain life equal to the life lost this way. | StackDescription$ SpellDescription\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | StackDescription$ None\nSVar:AFLifeLost:Number$0\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ b_5_5_demon_flying | TokenOwner$ You | SubAbility$ DBLoseLife | SpellDescription$ Create a 5/5 black Demon creature token with flying. You lose 2 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Ob Nixilis of the Black Oath | Image$ emblem_ob_nixilis_of_the_black_oath | Stackable$ False | Abilities$ ObGainLife | Duration$ Permanent | SpellDescription$ You get an emblem with \"{1}{B}, Sacrifice a creature: You gain X life and draw X cards, where X is the sacrificed creature's power.\"\nSVar:ObGainLife:AB$ GainLife | Cost$ 1 B Sac<1/Creature> | ActivationZone$ Command | LifeAmount$ X | SubAbility$ DBDraw | SpellDescription$ You gain X life and draw X cards, where X is the sacrificed creature's power.\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Sacrificed$CardPower\nAI:RemoveDeck:All\nOracle:[+2]: Each opponent loses 1 life. You gain life equal to the life lost this way.\\n[-2]: Create a 5/5 black Demon creature token with flying. You lose 2 life.\\n[-8]: You get an emblem with \"{1}{B}, Sacrifice a creature: You gain X life and draw X cards, where X is the sacrificed creature's power.\"\\nOb Nixilis of the Black Oath can be your commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ob Nixilis of the Black Oath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

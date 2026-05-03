@@ -1,0 +1,23 @@
+{
+  "id": "torch-song-corpus-m682",
+  "description": "M6 corpus — Torch Song; in-hand parse.",
+  "seed": 64916,
+  "cards": {
+    "Torch Song": "Name:Torch Song\nManaCost:2 R\nTypes:Enchantment\nA:AB$ DealDamage | Cost$ 2 R Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ It deals X damage to any target, where X is the number of verse counters on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, you may put a verse counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ VERSE | CounterNum$ 1\nSVar:X:Count$CardCounters.VERSE\nDeckHas:Ability$Counters|Sacrifice\nDeckHints:Ability$Proliferate\nOracle:At the beginning of your upkeep, you may put a verse counter on Torch Song.\\n{2}{R}, Sacrifice Torch Song: It deals X damage to any target, where X is the number of verse counters on Torch Song.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torch Song"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

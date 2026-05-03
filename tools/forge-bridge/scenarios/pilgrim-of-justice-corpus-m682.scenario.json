@@ -1,0 +1,23 @@
+{
+  "id": "pilgrim-of-justice-corpus-m682",
+  "description": "M6 corpus — Pilgrim of Justice; in-hand parse.",
+  "seed": 63767,
+  "cards": {
+    "Pilgrim of Justice": "Name:Pilgrim of Justice\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:1/3\nK:Protection from red\nA:AB$ ChooseSource | Cost$ W Sac<1/CARDNAME> | Choices$ Card.RedSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a red source of your choice would deal damage this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCard+RedSource | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen red source deals damage, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:Random\nOracle:Protection from red\\n{W}, Sacrifice Pilgrim of Justice: The next time a red source of your choice would deal damage this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pilgrim of Justice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

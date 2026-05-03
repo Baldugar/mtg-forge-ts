@@ -1,0 +1,23 @@
+{
+  "id": "resistance-fighter-corpus-m682",
+  "description": "M6 corpus — Resistance Fighter; in-hand parse.",
+  "seed": 63988,
+  "cards": {
+    "Resistance Fighter": "Name:Resistance Fighter\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/1\nA:AB$ Effect | Cost$ Sac<1/CARDNAME> | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | ValidTgts$ Creature | SpellDescription$ Prevent all combat damage target creature would deal this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage target creature would deal this turn.\nAI:RemoveDeck:All\nOracle:Sacrifice Resistance Fighter: Prevent all combat damage target creature would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Resistance Fighter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

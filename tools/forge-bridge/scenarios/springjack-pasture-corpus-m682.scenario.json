@@ -1,0 +1,23 @@
+{
+  "id": "springjack-pasture-corpus-m682",
+  "description": "M6 corpus — Springjack Pasture; in-hand parse.",
+  "seed": 64574,
+  "cards": {
+    "Springjack Pasture": "Name:Springjack Pasture\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Token | Cost$ 4 T | TokenScript$ w_0_1_goat | TokenOwner$ You | SpellDescription$ Create a 0/1 white Goat creature token.\nA:AB$ Mana | Cost$ T Sac<X/Goat> | CostDesc$ {T}, Sacrifice X Goats: | Produced$ Any | Amount$ X | Defined$ You | SubAbility$ DBGainLife | SpellDescription$ Add X mana of any one color. You gain X life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{4}, {T}: Create a 0/1 white Goat creature token.\\n{T}, Sacrifice X Goats: Add X mana of any one color. You gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Springjack Pasture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

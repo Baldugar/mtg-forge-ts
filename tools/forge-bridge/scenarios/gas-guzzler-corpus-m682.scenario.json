@@ -1,0 +1,23 @@
+{
+  "id": "gas-guzzler-corpus-m682",
+  "description": "M6 corpus — Gas Guzzler; in-hand parse.",
+  "seed": 62467,
+  "cards": {
+    "Gas Guzzler": "Name:Gas Guzzler\nManaCost:B\nTypes:Creature Vampire Rogue\nPT:2/1\nK:Start your engines\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This creature enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddAbility$ ABDraw | Description$ Max speed — {B}, Sacrifice another creature or Vehicle: Draw a card.\nSVar:ABDraw:AB$ Draw | PrecostDesc$ Max speed — | Cost$ B Sac<1/Vehicle.Other;Creature.Other/another creature or Vehicle> | Secondary$ True | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\nThis creature enters tapped.\\nMax speed — {B}, Sacrifice another creature or Vehicle: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gas Guzzler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

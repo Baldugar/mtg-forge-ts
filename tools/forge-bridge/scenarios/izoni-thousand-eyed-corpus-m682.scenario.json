@@ -1,0 +1,23 @@
+{
+  "id": "izoni-thousand-eyed-corpus-m682",
+  "description": "M6 corpus — Izoni, Thousand-Eyed; in-hand parse.",
+  "seed": 62917,
+  "cards": {
+    "Izoni, Thousand-Eyed": "Name:Izoni, Thousand-Eyed\nManaCost:2 B B G G\nTypes:Legendary Creature Elf Shaman\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ Undergrowth — When CARDNAME enters, create a 1/1 black and green Insect creature token for each creature card in your graveyard.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenOwner$ You | TokenScript$ bg_1_1_insect\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nA:AB$ GainLife | Cost$ B G Sac<1/Creature.Other/another creature> | Defined$ You | LifeAmount$ 1 | SubAbility$ DBDraw | SpellDescription$ You gain 1 life and draw a card.\nSVar:DBDraw:DB$ Draw\nDeckHas:Ability$Token|LifeGain\nOracle:Undergrowth — When Izoni, Thousand-Eyed enters, create a 1/1 black and green Insect creature token for each creature card in your graveyard.\\n{B}{G}, Sacrifice another creature: You gain 1 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Izoni, Thousand-Eyed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

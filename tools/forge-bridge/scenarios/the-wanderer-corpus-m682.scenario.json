@@ -1,0 +1,23 @@
+{
+  "id": "the-wanderer-corpus-m682",
+  "description": "M6 corpus — The Wanderer; in-hand parse.",
+  "seed": 64827,
+  "cards": {
+    "The Wanderer": "Name:The Wanderer\nManaCost:3 W\nTypes:Legendary Planeswalker\nLoyalty:5\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ You,Permanent.Other+YouCtrl | IsCombat$ False | Description$ Prevent all noncombat damage that would be dealt to you and other permanents you control.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nA:AB$ ChangeZone | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature.powerGE4 | TgtPrompt$ Select target creature with power 4 or greater | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target creature with power 4 or greater.\nOracle:Prevent all noncombat damage that would be dealt to you and other permanents you control.\\n[-2]: Exile target creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Wanderer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

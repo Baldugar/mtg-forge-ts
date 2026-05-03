@@ -1,0 +1,23 @@
+{
+  "id": "krovikan-sorcerer-corpus-m682",
+  "description": "M6 corpus — Krovikan Sorcerer; in-hand parse.",
+  "seed": 63075,
+  "cards": {
+    "Krovikan Sorcerer": "Name:Krovikan Sorcerer\nManaCost:2 U\nTypes:Creature Human Wizard Sorcerer\nPT:1/1\nA:AB$ Draw | Cost$ T Discard<1/Card.nonBlack> | NumCards$ 1 | CostDesc$ {T}, Discard a non-black card: | SpellDescription$ Draw a card.\nA:AB$ Draw | Cost$ T Discard<1/Card.Black> | NumCards$ 2 | CostDesc$ {T}, Discard a black card: | RememberDrawn$ True | SubAbility$ DBDiscard | SpellDescription$ Draw two cards, then discard one of them.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | DiscardValid$ Card.IsRemembered | NumCards$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHints:Color$Black\nOracle:{T}, Discard a nonblack card: Draw a card.\\n{T}, Discard a black card: Draw two cards, then discard one of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krovikan Sorcerer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

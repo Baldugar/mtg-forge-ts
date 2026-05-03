@@ -1,0 +1,23 @@
+{
+  "id": "leyline-dowser-corpus-m682",
+  "description": "M6 corpus — Leyline Dowser; in-hand parse.",
+  "seed": 63135,
+  "cards": {
+    "Leyline Dowser": "Name:Leyline Dowser\nManaCost:2\nTypes:Artifact\nA:AB$ Mill | Cost$ 1 T | NumCards$ 1 | Defined$ You | RememberMilled$ True | SubAbility$ DBChangeZone | SpellDescription$ Mill a card. You may put an instant or sorcery card milled this way into your hand.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Instant.IsRemembered,Sorcery.IsRemembered | SelectPrompt$ You may select an instant or sorcery card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Untap | Cost$ tapXType<1/Creature.Legendary/untapped legendary creature> | SpellDescription$ Untap CARDNAME.\nDeckHas:Ability$Mill\nDeckNeeds:Type$Instant|Sorcery & Type$Legendary\nOracle:{1}, {T}: Mill a card. You may put an instant or sorcery card milled this way into your hand.\\nTap an untapped legendary creature you control: Untap Leyline Dowser.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leyline Dowser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

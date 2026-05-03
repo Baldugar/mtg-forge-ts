@@ -1,0 +1,23 @@
+{
+  "id": "stronghold-biologist-corpus-m682",
+  "description": "M6 corpus — Stronghold Biologist; in-hand parse.",
+  "seed": 64636,
+  "cards": {
+    "Stronghold Biologist": "Name:Stronghold Biologist\nManaCost:2 U\nTypes:Creature Human Spellshaper\nPT:1/1\nA:AB$ Counter | Cost$ U U T Discard<1/Card> | AILogic$ MinCMC.4 | TargetType$ Spell | TgtPrompt$ Select target creature spell | ValidTgts$ Card.Creature | SpellDescription$ Counter target creature spell.\nSVar:AIPreference:DiscardCost$Card.cmcEQ0,Card.cmcEQ1,Card.cmcEQ2,Card.cmcEQ3\nOracle:{U}{U}, {T}, Discard a card: Counter target creature spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stronghold Biologist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "hidetsugu-devouring-chaos-corpus-m682",
+  "description": "M6 corpus — Hidetsugu, Devouring Chaos; in-hand parse.",
+  "seed": 62763,
+  "cards": {
+    "Hidetsugu, Devouring Chaos": "Name:Hidetsugu, Devouring Chaos\nManaCost:3 B\nTypes:Legendary Creature Ogre Demon\nPT:4/4\nA:AB$ Scry | Cost$ B Sac<1/Creature> | ScryNum$ 2 | SpellDescription$ Scry 2.\nA:AB$ Dig | Cost$ 2 R T | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | AILogic$ ExileAndPlayUntilEOT | StackDescription$ SpellDescription | SpellDescription$ Exile the top card of your library.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBImmediateTrigger | ExileOnMoved$ Exile | SpellDescription$ You may play that card this turn.\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | Execute$ TrigDealDamage | RememberObjects$ RememberedCard | SubAbility$ DBCleanup | SpellDescription$ When you exile a nonland card this way, CARDNAME deals damage equal to the exiled card's mana value to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggerRemembered$CardManaCost\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nOracle:{B}, Sacrifice a creature: Scry 2.\\n{2}{R}, {T}: Exile the top card of your library. You may play that card this turn. When you exile a nonland card this way, Hidetsugu, Devouring Chaos deals damage equal to the exiled card's mana value to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hidetsugu, Devouring Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

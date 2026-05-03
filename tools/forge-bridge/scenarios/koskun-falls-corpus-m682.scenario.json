@@ -1,0 +1,23 @@
+{
+  "id": "koskun-falls-corpus-m682",
+  "description": "M6 corpus — Koskun Falls; in-hand parse.",
+  "seed": 63053,
+  "cards": {
+    "Koskun Falls": "Name:Koskun Falls\nManaCost:2 B B\nTypes:World Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you tap an untapped creature you control.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ tapXType<1/Creature>\nS:Mode$ CantAttackUnless | ValidCard$ Creature | Target$ You | Cost$ 2 | Description$ Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:Count$Valid Creature.YouCtrl\nOracle:At the beginning of your upkeep, sacrifice Koskun Falls unless you tap an untapped creature you control.\\nCreatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Koskun Falls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

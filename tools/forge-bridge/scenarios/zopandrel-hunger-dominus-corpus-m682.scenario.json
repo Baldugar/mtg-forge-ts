@@ -1,0 +1,23 @@
+{
+  "id": "zopandrel-hunger-dominus-corpus-m682",
+  "description": "M6 corpus — Zopandrel, Hunger Dominus; in-hand parse.",
+  "seed": 65317,
+  "cards": {
+    "Zopandrel, Hunger Dominus": "Name:Zopandrel, Hunger Dominus\nManaCost:5 G G\nTypes:Legendary Creature Phyrexian Horror\nPT:4/6\nK:Reach\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigDouble | TriggerDescription$ At the beginning of each combat, double the power and toughness of each creature you control until end of turn.\nSVar:TrigDouble:DB$ Pump | Defined$ Valid Creature.YouCtrl | NumAtt$ Double | NumDef$ Double\nA:AB$ PutCounter | Cost$ GP GP Sac<2/Creature.Other/Other creature> | Defined$ Self | CounterType$ Indestructible | CounterNum$ 1 | SpellDescription$ Put an indestructible counter on CARDNAME. ({G/P} can be paid with either {G} or 2 life.)\nDeckHas:Ability$Sacrifice|Counters\nOracle:Reach\\nAt the beginning of each combat, double the power and toughness of each creature you control until end of turn.\\n{G/P}{G/P}, Sacrifice two other creatures: Put an indestructible counter on Zopandrel, Hunger Dominus. ({G/P} can be paid with either {G} or 2 life.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zopandrel, Hunger Dominus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

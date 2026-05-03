@@ -1,0 +1,23 @@
+{
+  "id": "anthropede-corpus-m682",
+  "description": "M6 corpus — Anthropede; in-hand parse.",
+  "seed": 61476,
+  "cards": {
+    "Anthropede": "Name:Anthropede\nManaCost:3 G\nTypes:Creature Insect\nPT:3/4\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoice | TriggerDescription$ When CARDNAME enters, you may discard a card or pay {2}. When you do, destroy target Room.\nSVar:TrigChoice:DB$ GenericChoice | Choices$ PayDiscard,Pay2\nSVar:Pay2:DB$ ImmediateTrigger | UnlessCost$ 2 | UnlessPayer$ You | UnlessSwitched$ True | Execute$ TrigDestroy | SpellDescription$ pay {2}: When you do, destroy target Room.\nSVar:PayDiscard:DB$ ImmediateTrigger | UnlessCost$ Discard<1/Card> | UnlessPayer$ You | UnlessSwitched$ True | Execute$ TrigDestroy | SpellDescription$ discard a card: When you do, destroy target Room.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Room | TgtPrompt$ Select target Room\nOracle:Reach\\nWhen Anthropede enters, you may discard a card or pay {2}. When you do, destroy target Room.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Anthropede"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

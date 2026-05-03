@@ -1,0 +1,23 @@
+{
+  "id": "crown-of-fury-corpus-m682",
+  "description": "M6 corpus — Crown of Fury; in-hand parse.",
+  "seed": 61873,
+  "cards": {
+    "Crown of Fury": "Name:Crown of Fury\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddKeyword$ First Strike | Description$ Enchanted creature gets +1/+0 and has first strike.\nA:AB$ Pump | Cost$ Sac<1/CARDNAME> | Defined$ AttachedBy Sacrificed & Valid Creature.sharesCreatureTypeWith AttachedBy Sacrificed | NumAtt$ +1 | KW$ First Strike | SpellDescription$ Enchanted creature and other creatures that share a creature type with it get +1/+0 and gain first strike until end of turn.\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature gets +1/+0 and has first strike.\\nSacrifice Crown of Fury: Enchanted creature and other creatures that share a creature type with it get +1/+0 and gain first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crown of Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

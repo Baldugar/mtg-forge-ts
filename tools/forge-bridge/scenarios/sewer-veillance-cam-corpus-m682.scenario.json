@@ -1,0 +1,23 @@
+{
+  "id": "sewer-veillance-cam-corpus-m682",
+  "description": "M6 corpus — Sewer-veillance Cam; in-hand parse.",
+  "seed": 64301,
+  "cards": {
+    "Sewer-veillance Cam": "Name:Sewer-veillance Cam\nManaCost:U\nTypes:Artifact\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigTapOrUntap | TriggerDescription$ When this artifact enters or leaves the battlefield, you may tap or untap target creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigTapOrUntap | Secondary$ True | TriggerDescription$ When this artifact enters or leaves the battlefield, you may tap or untap target creature.\nSVar:TrigTapOrUntap:DB$ TapOrUntap | ValidTgts$ Creature\nA:AB$ Draw | Cost$ 3 U Sac<1/CARDNAME/this artifact> | NumCards$ 2 | SpellDescription$ Draw two cards.\nOracle:Flash\\nWhen this artifact enters or leaves the battlefield, you may tap or untap target creature.\\n{3}{U}, Sacrifice this artifact: Draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sewer-veillance Cam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

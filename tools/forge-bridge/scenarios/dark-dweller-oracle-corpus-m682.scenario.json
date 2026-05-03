@@ -1,0 +1,23 @@
+{
+  "id": "dark-dweller-oracle-corpus-m682",
+  "description": "M6 corpus — Dark-Dweller Oracle; in-hand parse.",
+  "seed": 61919,
+  "cards": {
+    "Dark-Dweller Oracle": "Name:Dark-Dweller Oracle\nManaCost:1 R\nTypes:Creature Goblin Shaman\nPT:2/2\nA:AB$ Dig | Cost$ 1 Sac<1/Creature> | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Defined$ You | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play that card this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ EffSModeContinuous | ExileOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:EffSModeContinuous:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play that card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE1\nOracle:{1}, Sacrifice a creature: Exile the top card of your library. You may play that card this turn. (You still pay its costs. You can play a land this way only if you have an available land play remaining.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark-Dweller Oracle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

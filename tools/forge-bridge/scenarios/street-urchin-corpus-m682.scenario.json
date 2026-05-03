@@ -1,0 +1,23 @@
+{
+  "id": "street-urchin-corpus-m682",
+  "description": "M6 corpus — Street Urchin; in-hand parse.",
+  "seed": 64632,
+  "cards": {
+    "Street Urchin": "Name:Street Urchin\nManaCost:1 R\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddAbility$ DealDamage | Description$ Commander creatures you own have \"{1}, Sacrifice another creature or an artifact: This creature deals 1 damage to any target.\"\nSVar:DealDamage:AB$ DealDamage | Cost$ 1 Sac<1/Creature.Other;Artifact/another creature or an artifact> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ This creature deals 1 damage to any target.\nSVar:AIPreference:SacCost$Creature.token,Artifact.token,Creature.cmcLE1,Artifact.cmcEQ1\nAI:RemoveDeck:NonCommander\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nOracle:Commander creatures you own have \"{1}, Sacrifice another creature or an artifact: This creature deals 1 damage to any target.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Street Urchin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

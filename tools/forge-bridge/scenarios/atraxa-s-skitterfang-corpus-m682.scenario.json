@@ -1,0 +1,23 @@
+{
+  "id": "atraxa-s-skitterfang-corpus-m682",
+  "description": "M6 corpus — Atraxa's Skitterfang; in-hand parse.",
+  "seed": 61505,
+  "cards": {
+    "Atraxa's Skitterfang": "Name:Atraxa's Skitterfang\nManaCost:3\nTypes:Artifact Creature Phyrexian Insect\nPT:2/2\nK:etbCounter:OIL:3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ DBTrigger | TriggerDescription$ At the beginning of combat on your turn, you may remove an oil counter from CARDNAME. When you do, target creature you control gains your choice of flying, vigilance, deathtouch, or lifelink until end of turn.\nSVar:DBTrigger:AB$ ImmediateTrigger | Cost$ SubCounter<1/OIL> | Execute$ TrigPump | TriggerDescription$ When you do, target creature you control gains your choice of flying, vigilance, deathtouch, or lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select a target creature you control | KWChoice$ Flying,Vigilance,Deathtouch,Lifelink\nSVar:PlayMain1:TRUE\nOracle:Atraxa's Skitterfang enters with three oil counters on it.\\nAt the beginning of combat on your turn, you may remove an oil counter from Atraxa's Skitterfang. When you do, target creature you control gains your choice of flying, vigilance, deathtouch, or lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Atraxa's Skitterfang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

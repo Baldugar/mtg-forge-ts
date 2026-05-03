@@ -1,0 +1,23 @@
+{
+  "id": "defiler-of-dreams-corpus-m682",
+  "description": "M6 corpus — Defiler of Dreams; in-hand parse.",
+  "seed": 61964,
+  "cards": {
+    "Defiler of Dreams": "Name:Defiler of Dreams\nManaCost:3 U U\nTypes:Creature Phyrexian Sphinx\nPT:4/3\nK:Flying\nS:Mode$ OptionalCost | ValidCard$ Permanent.Blue | ValidSA$ Spell | Activator$ You | Cost$ PayLife<2> | ReduceColor$ U | Description$ As an additional cost to cast blue permanent spells, you may pay 2 life. Those spells cost {U} less to cast if you paid life this way. This effect reduces only the amount of blue mana you pay.\nT:Mode$ SpellCast | ValidCard$ Permanent.Blue | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a blue permanent spell, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:BuffedBy:Permanent.Blue\nOracle:Flying\\nAs an additional cost to cast blue permanent spells, you may pay 2 life. Those spells cost {U} less to cast if you paid life this way. This effect reduces only the amount of blue mana you pay.\\nWhenever you cast a blue permanent spell, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiler of Dreams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

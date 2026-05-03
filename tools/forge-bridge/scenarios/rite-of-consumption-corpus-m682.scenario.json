@@ -1,0 +1,23 @@
+{
+  "id": "rite-of-consumption-corpus-m682",
+  "description": "M6 corpus — Rite of Consumption; in-hand parse.",
+  "seed": 64022,
+  "cards": {
+    "Rite of Consumption": "Name:Rite of Consumption\nManaCost:1 B\nTypes:Sorcery\nA:SP$ DealDamage | Cost$ 1 B Sac<1/Creature> | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ X | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals damage equal to the sacrificed creature's power to target player or planeswalker. You gain life equal to the damage dealt this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | StackDescription$ You gain life equal to the damage dealt this way.\nSVar:X:Sacrificed$CardPower\nSVar:Y:Count$TotalDamageDoneByThisTurn\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nRite of Consumption deals damage equal to the sacrificed creature's power to target player or planeswalker. You gain life equal to the damage dealt this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rite of Consumption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "the-book-of-exalted-deeds-corpus-m682",
+  "description": "M6 corpus — The Book of Exalted Deeds; in-hand parse.",
+  "seed": 64789,
+  "cards": {
+    "The Book of Exalted Deeds": "Name:The Book of Exalted Deeds\nManaCost:W W W\nTypes:Legendary Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ LifeGained | SVarCompare$ GE3 | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you gained 3 or more life this turn, create a 3/3 white Angel creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_3_3_angel_flying | TokenOwner$ You\nA:AB$ PutCounter | Cost$ W W W T Exile<1/CARDNAME> | ValidTgts$ Angel | TgtPrompt$ Select target Angel | CounterType$ ENLIGHTENED | CounterNum$ 1 | SorcerySpeed$ True | SubAbility$ DBAnimate | SpellDescription$ Put an enlightened counter on target Angel. It gains \"You can't lose the game and your opponents can't win the game.\" Activate only as a sorcery.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Duration$ Permanent | Replacements$ DBYouCantLose,DBOppCantWin | StackDescription$ None\nSVar:DBYouCantLose:Event$ GameLoss | ValidPlayer$ You | Layer$ CantHappen | Description$ You can't lose the game and your opponents can't win the game.\nSVar:DBOppCantWin:Event$ GameWin | ValidPlayer$ Opponent | Layer$ CantHappen | Secondary$ True | Description$ You can't lose the game and your opponents can't win the game.\nSVar:LifeGained:Count$LifeYouGainedThisTurn\nDeckHints:Ability$LifeGain\nDeckHas:Ability$Token\nOracle:At the beginning of your end step, if you gained 3 or more life this turn, create a 3/3 white Angel creature token with flying.\\n{W}{W}{W}, {T}, Exile The Book of Exalted Deeds: Put an enlightened counter on target Angel. It gains \"You can't lose the game and your opponents can't win the game.\" Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Book of Exalted Deeds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

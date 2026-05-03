@@ -1,0 +1,23 @@
+{
+  "id": "warehouse-thief-corpus-m682",
+  "description": "M6 corpus — Warehouse Thief; in-hand parse.",
+  "seed": 65194,
+  "cards": {
+    "Warehouse Thief": "Name:Warehouse Thief\nManaCost:3 R\nTypes:Creature Tiefling Rogue\nPT:4/2\nA:AB$ Dig | Cost$ 2 T Sac<1/Artifact;Creature/artifact or creature> | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. Until the end of your next turn, you may play that card.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ StaticMayPlay | Duration$ UntilTheEndOfYourNextTurn | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:StaticMayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ Until the end of your next turn, you may play that card.\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact|Creature\nOracle:{2}, {T}, Sacrifice an artifact or creature: Exile the top card of your library. Until the end of your next turn, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Warehouse Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

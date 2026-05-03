@@ -1,0 +1,23 @@
+{
+  "id": "wishclaw-talisman-corpus-m682",
+  "description": "M6 corpus — Wishclaw Talisman; in-hand parse.",
+  "seed": 65257,
+  "cards": {
+    "Wishclaw Talisman": "Name:Wishclaw Talisman\nManaCost:1 B\nTypes:Artifact\nK:etbCounter:WISH:3\nA:AB$ ChangeZone | Cost$ 1 T SubCounter<1/WISH> | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | SubAbility$ DBChoose | PlayerTurn$ True | SpellDescription$ Search your library for a card and put that card into your hand, then shuffle. An opponent gains control of CARDNAME. Activate only during your turn.\nSVar:DBChoose:DB$ ChoosePlayer | Choices$ Player.Opponent | SubAbility$ DBGainControl\nSVar:DBGainControl:DB$ GainControl | Defined$ Self | NewController$ ChosenPlayer | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenPlayer$ True\nDeckHas:Ability$Counters\nOracle:Wishclaw Talisman enters with three wish counters on it.\\n{1}, {T}, Remove a wish counter from Wishclaw Talisman: Search your library for a card, put it into your hand, then shuffle. An opponent gains control of Wishclaw Talisman. Activate only during your turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wishclaw Talisman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

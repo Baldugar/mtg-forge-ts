@@ -1,0 +1,23 @@
+{
+  "id": "plague-reaver-corpus-m682",
+  "description": "M6 corpus — Plague Reaver; in-hand parse.",
+  "seed": 63782,
+  "cards": {
+    "Plague Reaver": "Name:Plague Reaver\nManaCost:2 B\nTypes:Creature Beast\nPT:6/5\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ SacAllOthers | TriggerDescription$ At the beginning of your end step, sacrifice each other creature you control.\nSVar:SacAllOthers:DB$ SacrificeAll | ValidCards$ Creature.Other+YouCtrl\nA:AB$ DelayedTrigger | Cost$ Discard<2/Card> Sac<1/CARDNAME> | ValidTgts$ Opponent | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.IsTriggerRemembered | RememberObjects$ Targeted & SacrificedCards | Execute$ DBChange | TriggerDescription$ Return CARDNAME to the battlefield under that player's control at the beginning of their next upkeep. | StackDescription$ Return CARDNAME to the battlefield under {p:Targeted}'s control at the beginning of their next upkeep. | SpellDescription$ Choose target opponent. Return CARDNAME to the battlefield under that player's control at the beginning of their next upkeep.\nSVar:DBChange:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Graveyard | Destination$ Battlefield | GainControl$ DelayTriggerRemembered\nSVar:DonateMe:3\nAI:RemoveDeck:All\nDeckHas:Ability$Discard|Sacrifice\nOracle:At the beginning of your end step, sacrifice each other creature you control.\\nDiscard two cards, Sacrifice Plague Reaver: Choose target opponent. Return Plague Reaver to the battlefield under that player's control at the beginning of their next upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Plague Reaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "junk-golem-corpus-m682",
+  "description": "M6 corpus — Junk Golem; in-hand parse.",
+  "seed": 62976,
+  "cards": {
+    "Junk Golem": "Name:Junk Golem\nManaCost:4\nTypes:Artifact Creature Golem\nPT:0/0\nK:etbCounter:P1P1:3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you remove a +1/+1 counter from it.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ SubCounter<1/P1P1>\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ SubCounter<1/P1P1> | UnlessPayer$ You\nA:AB$ PutCounter | Cost$ 1 Discard<1/Card> | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nAI:RemoveDeck:All\nOracle:Junk Golem enters with three +1/+1 counters on it.\\nAt the beginning of your upkeep, sacrifice Junk Golem unless you remove a +1/+1 counter from it.\\n{1}, Discard a card: Put a +1/+1 counter on Junk Golem.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Junk Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

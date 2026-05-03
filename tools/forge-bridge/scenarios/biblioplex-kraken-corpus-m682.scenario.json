@@ -1,0 +1,23 @@
+{
+  "id": "biblioplex-kraken-corpus-m682",
+  "description": "M6 corpus — Biblioplex Kraken; in-hand parse.",
+  "seed": 61534,
+  "cards": {
+    "Biblioplex Kraken": "Name:Biblioplex Kraken\nManaCost:4 U\nTypes:Creature Kraken\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 3.\nSVar:TrigScry:DB$ Scry | ScryNum$ 3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigUnblockable | TriggerDescription$ Whenever CARDNAME attacks, you may return another creature you control to it's owner's hand. If you do, CARDNAME can't be blocked this turn.\nSVar:TrigUnblockable:AB$ Effect | Cost$ Return<1/Creature.Other> | RememberObjects$ TriggeredAttacker | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nSVar:HasAttackEffect:TRUE\nOracle:When Biblioplex Kraken enters, scry 3.\\nWhenever Biblioplex Kraken attacks, you may return another creature you control to it's owner's hand. If you do, Biblioplex Kraken can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Biblioplex Kraken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

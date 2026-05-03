@@ -1,0 +1,23 @@
+{
+  "id": "fumarole-corpus-m682",
+  "description": "M6 corpus — Fumarole; in-hand parse.",
+  "seed": 62433,
+  "cards": {
+    "Fumarole": "Name:Fumarole\nManaCost:3 B R\nTypes:Sorcery\nA:SP$ Pump | Cost$ 3 B R PayLife<3> | ValidTgts$ Creature | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBLand | SpellDescription$ Destroy target creature and target land. | StackDescription$ None\nSVar:DBLand:DB$ Pump | ValidTgts$ Land | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nOracle:As an additional cost to cast this spell, pay 3 life.\\nDestroy target creature and target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fumarole"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

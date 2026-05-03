@@ -1,0 +1,23 @@
+{
+  "id": "tribute-to-horobi-corpus-m682",
+  "description": "M6 corpus — Tribute to Horobi; in-hand parse.",
+  "seed": 64965,
+  "cards": {
+    "Tribute to Horobi": "Name:Tribute to Horobi\nManaCost:1 B\nTypes:Enchantment Saga\nK:Chapter:3:DBToken,DBToken,DBExile\nSVar:DBToken:DB$ Token | TokenScript$ b_1_1_rat_rogue | TokenOwner$ Opponent | SpellDescription$ Each opponent creates a 1/1 black Rat Rogue creature token.\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | StackDescription$ SpellDescription | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Each opponent creates a 1/1 black Rat Rogue creature token.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Echo of Death's Wail\nManaCost:no cost\nColors:black\nTypes:Enchantment Creature Spirit\nPT:3/3\nK:Flying\nK:Haste\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainControl | TriggerDescription$ When CARDNAME enters, gain control of all Rat tokens.\nSVar:TrigGainControl:DB$ GainControl | AllValid$ Rat.token | NewController$ You\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Sac<1/Creature.Other/another creature> | NumCards$ 1\nDeckHas:Ability$Sacrifice\nOracle:Flying, haste\\nWhen Echo of Death's Wail enters, gain control of all Rat tokens.\\nWhenever Echo of Death's Wail attacks, you may sacrifice another creature. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tribute to Horobi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

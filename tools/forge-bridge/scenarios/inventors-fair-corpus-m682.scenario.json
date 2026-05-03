@@ -1,0 +1,23 @@
+{
+  "id": "inventors-fair-corpus-m682",
+  "description": "M6 corpus — Inventors' Fair; in-hand parse.",
+  "seed": 62899,
+  "cards": {
+    "Inventors' Fair": "Name:Inventors' Fair\nManaCost:no cost\nTypes:Legendary Land\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Metalcraft$ True | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if you control three or more artifacts, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ ChangeZone | Cost$ 4 T Sac<1/CARDNAME> | Activation$ Metalcraft | Origin$ Library | Destination$ Hand | ChangeType$ Artifact | ChangeNum$ 1 | SpellDescription$ Search your library for an artifact card, reveal it, put it into your hand, then shuffle. Activate only if you control three or more artifacts.\nOracle:At the beginning of your upkeep, if you control three or more artifacts, you gain 1 life.\\n{T}: Add {C}.\\n{4}, {T}, Sacrifice Inventors' Fair: Search your library for an artifact card, reveal it, put it into your hand, then shuffle. Activate only if you control three or more artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inventors' Fair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

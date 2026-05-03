@@ -1,0 +1,23 @@
+{
+  "id": "phoenix-down-corpus-m682",
+  "description": "M6 corpus — Phoenix Down; in-hand parse.",
+  "seed": 63736,
+  "cards": {
+    "Phoenix Down": "Name:Phoenix Down\nManaCost:W\nTypes:Artifact\nA:AB$ Charm | Cost$ 1 W T Exile<1/CARDNAME> | Choices$ DBReturn,DBExile\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card with mana value 4 or less in your graveyard | ValidTgts$ Creature.cmcLE4+YouOwn | Tapped$ True | SpellDescription$ Return target creature card with mana value 4 or less from your graveyard to the battlefield tapped.\nSVar:DBExile:DB$ ChangeZone | ValidTgts$ Skeleton,Spirit,Zombie | TgtPrompt$ Choose target Skeleton, Spirit, or Zombie | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target Skeleton, Spirit, or Zombie.\nOracle:{1}{W},{T}, Exile this artifact: Choose one —\\n• Return target creature card with mana value 4 or less from your graveyard to the battlefield tapped.\\n• Exile target Skeleton, Spirit, or Zombie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phoenix Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

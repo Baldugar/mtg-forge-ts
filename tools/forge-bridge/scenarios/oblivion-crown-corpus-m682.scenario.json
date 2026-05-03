@@ -1,0 +1,23 @@
+{
+  "id": "oblivion-crown-corpus-m682",
+  "description": "M6 corpus — Oblivion Crown; in-hand parse.",
+  "seed": 63603,
+  "cards": {
+    "Oblivion Crown": "Name:Oblivion Crown\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nK:Flash\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ Pump | Description$ Enchanted creature has \"Discard a card: This creature gets +1/+1 until end of turn.\"\nSVar:Pump:AB$ Pump | Cost$ Discard<1/Card> | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ CARDNAME gets +1/+1 until end of turn.\nAI:RemoveDeck:All\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nEnchant creature\\nEnchanted creature has \"Discard a card: This creature gets +1/+1 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oblivion Crown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

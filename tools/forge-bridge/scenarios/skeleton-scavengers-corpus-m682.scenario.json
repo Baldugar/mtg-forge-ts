@@ -1,0 +1,23 @@
+{
+  "id": "skeleton-scavengers-corpus-m682",
+  "description": "M6 corpus — Skeleton Scavengers; in-hand parse.",
+  "seed": 64403,
+  "cards": {
+    "Skeleton Scavengers": "Name:Skeleton Scavengers\nManaCost:2 B\nTypes:Creature Skeleton\nPT:0/0\nK:etbCounter:P1P1:1\nA:AB$ Regenerate | Cost$ Mana<1\\NumTimes> | CostDesc$ Pay {1} for each +1/+1 counter on CARDNAME: | RegenerationAbility$ DBImmediateTrigger | StackDescription$ SpellDescription | SpellDescription$ Regenerate CARDNAME. When it regenerates this way, put a +1/+1 counter on it.\nSVar:DBImmediateTrigger:DB$ ImmediateTrigger | Execute$ TrigPutCounter | TriggerDescription$ When it regenerates this way, put a +1/+1 counter on it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ EffectSource | CounterType$ P1P1 | CounterNum$ 1\nSVar:NumTimes:Count$CardCounters.P1P1\nDeckHas:Ability$Counters\nOracle:Skeleton Scavengers enters with a +1/+1 counter on it.\\nPay {1} for each +1/+1 counter on Skeleton Scavengers: Regenerate Skeleton Scavengers. When it regenerates this way, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skeleton Scavengers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

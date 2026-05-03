@@ -1,0 +1,23 @@
+{
+  "id": "high-perfect-morcant-corpus-m682",
+  "description": "M6 corpus — High Perfect Morcant; in-hand parse.",
+  "seed": 62767,
+  "cards": {
+    "High Perfect Morcant": "Name:High Perfect Morcant\nManaCost:2 B G\nTypes:Legendary Creature Elf Noble\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Elf.Other+YouCtrl | Execute$ TrigBlight | TriggerDescription$ Whenever CARDNAME or another Elf you control enters, each opponent blights 1. (They each put a -1/-1 counter on a creature they control.)\nSVar:TrigBlight:DB$ Blight | Defined$ Opponent | Num$ 1\nA:AB$ Proliferate | Cost$ tapXType<3/Elf> | SorcerySpeed$ True | SpellDescription$ Proliferate. Activate only as a sorcery. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nOracle:Whenever High Perfect Morcant or another Elf you control enters, each opponent blights 1. (They each put a -1/-1 counter on a creature they control.)\\nTap three untapped Elves you control: Proliferate. Activate only as a sorcery. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "High Perfect Morcant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

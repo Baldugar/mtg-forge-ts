@@ -1,0 +1,23 @@
+{
+  "id": "eumidian-hatchery-corpus-m682",
+  "description": "M6 corpus — Eumidian Hatchery; in-hand parse.",
+  "seed": 62235,
+  "cards": {
+    "Eumidian Hatchery": "Name:Eumidian Hatchery\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T PayLife<1> | Produced$ B | SubAbility$ DBPutCounter | SpellDescription$ Add {B}. Put a hatchling counter on this land.\nSVar:DBPutCounter:DB$ PutCounter | CounterType$ HATCHLING | CounterNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this land is put into a graveyard from the battlefield, for each hatchling counter on it, create a 1/1 black Insect creature token with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_1_1_insect_flying | TokenOwner$ You\nSVar:X:Count$CardCounters.HATCHLING\nDeckHas:Ability$Counters|Token\nOracle:{T}, Pay 1 life: Add {B}. Put a hatchling counter on this land.\\nWhen this land is put into a graveyard from the battlefield, for each hatchling counter on it, create a 1/1 black Insect creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eumidian Hatchery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

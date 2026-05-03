@@ -1,0 +1,23 @@
+{
+  "id": "tamiyo-collector-of-tales-corpus-m682",
+  "description": "M6 corpus — Tamiyo, Collector of Tales; in-hand parse.",
+  "seed": 64711,
+  "cards": {
+    "Tamiyo, Collector of Tales": "Name:Tamiyo, Collector of Tales\nManaCost:2 G U\nTypes:Legendary Planeswalker Tamiyo\nLoyalty:5\nS:Mode$ CantDiscard | ValidPlayer$ You | ValidCause$ SpellAbility.OppCtrl | ForCost$ False | Description$ Spells and abilities your opponents control can't cause you to discard cards or sacrifice permanents.\nS:Mode$ CantSacrifice | ValidCard$ Card.YouCtrl | ValidCause$ SpellAbility.OppCtrl | ForCost$ False | Secondary$ True | Description$ Spells and abilities your opponents control can't cause you to discard cards or sacrifice permanents.\nA:AB$ NameCard | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | ValidCards$ Card.nonLand | SubAbility$ DBDig | StackDescription$ SpellDescription | SpellDescription$ Choose a nonland card name, then reveal the top four cards of your library. Put all cards with the chosen name from among them into your hand and the rest into your graveyard.\nSVar:DBDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card.NamedCard | DestinationZone2$ Graveyard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearNamedCard$ True\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | TgtPrompt$ Choose target card in your graveyard | ValidTgts$ Card.YouCtrl | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return target card from your graveyard to your hand.\nAI:RemoveDeck:All\nDeckHas:Ability$Graveyard\nOracle:Spells and abilities your opponents control can't cause you to discard cards or sacrifice permanents.\\n[+1]: Choose a nonland card name, then reveal the top four cards of your library. Put all cards with the chosen name from among them into your hand and the rest into your graveyard.\\n[-3]: Return target card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tamiyo, Collector of Tales"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

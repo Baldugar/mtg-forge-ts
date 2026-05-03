@@ -1,0 +1,23 @@
+{
+  "id": "parnesse-the-subtle-brush-corpus-m682",
+  "description": "M6 corpus — Parnesse, the Subtle Brush; in-hand parse.",
+  "seed": 63702,
+  "cards": {
+    "Parnesse, the Subtle Brush": "Name:Parnesse, the Subtle Brush\nManaCost:2 U B R\nTypes:Legendary Creature Vampire Wizard\nPT:4/4\nT:Mode$ BecomesTarget | ValidTarget$ You,Permanent.YouCtrl+inZoneBattlefield | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever you or a permanent you control becomes the target of a spell or ability an opponent controls, counter that spell or ability unless that player pays 4 life.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSourceSA | UnlessCost$ PayLife<4> | UnlessPayer$ TriggeredSourceSAController\nT:Mode$ SpellCopy | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTarget | TriggerDescription$ Whenever you copy a spell, up to one target opponent may also copy that spell. They may choose new targets for that copy.\nSVar:TrigTarget:DB$ Pump | ValidTgts$ Opponent | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | Controller$ Targeted | Optional$ True | MayChooseTarget$ True\nAI:RemoveDeck:Random\nOracle:Whenever you or a permanent you control becomes the target of a spell or ability an opponent controls, counter that spell or ability unless that player pays 4 life.\\nWhenever you copy a spell, up to one target opponent may also copy that spell. They may choose new targets for that copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parnesse, the Subtle Brush"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

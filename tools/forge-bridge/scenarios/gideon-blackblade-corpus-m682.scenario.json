@@ -1,0 +1,23 @@
+{
+  "id": "gideon-blackblade-corpus-m682",
+  "description": "M6 corpus — Gideon Blackblade; in-hand parse.",
+  "seed": 62517,
+  "cards": {
+    "Gideon Blackblade": "Name:Gideon Blackblade\nManaCost:1 W W\nTypes:Legendary Planeswalker Gideon\nLoyalty:4\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | Condition$ PlayerTurn | SetPower$ 4 | SetToughness$ 4 | AddType$ Creature & Human & Soldier | AddKeyword$ Indestructible | Description$ During your turn, CARDNAME is a 4/4 Human Soldier creature with indestructible that's still a planeswalker.\nR:Event$ DamageDone | Prevent$ True | ValidTarget$ Card.Self | PlayerTurn$ True | Description$ Prevent all damage that would be dealt to CARDNAME during your turn.\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select up to one target creature you control | KWChoice$ Vigilance,Lifelink,Indestructible | ConditionDefined$ Targeted | ConditionPresent$ Card | ConditionCompare$ GE1 | AILogic$ GideonBlackblade | SpellDescription$ Up to one other target creature you control gains your choice of vigilance, lifelink, or indestructible until end of turn. | StackDescription$ SpellDescription\nA:AB$ ChangeZone | Cost$ SubCounter<6/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target nonland permanent.\nDeckHints:Ability$LifeGain\nOracle:During your turn, Gideon Blackblade is a 4/4 Human Soldier creature with indestructible that's still a planeswalker.\\nPrevent all damage that would be dealt to Gideon Blackblade during your turn.\\n[+1]: Up to one other target creature you control gains your choice of vigilance, lifelink, or indestructible until end of turn.\\n[-6]: Exile target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon Blackblade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

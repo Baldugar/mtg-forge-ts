@@ -1,0 +1,23 @@
+{
+  "id": "ashiok-sculptor-of-fears-corpus-m682",
+  "description": "M6 corpus — Ashiok, Sculptor of Fears; in-hand parse.",
+  "seed": 61499,
+  "cards": {
+    "Ashiok, Sculptor of Fears": "Name:Ashiok, Sculptor of Fears\nManaCost:4 U B\nTypes:Legendary Planeswalker Ashiok\nLoyalty:4\nA:AB$ Draw | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | SubAbility$ DBMill | SpellDescription$ Draw a card. Each player mills two cards.\nSVar:DBMill:DB$ Mill | Defined$ Player | NumCards$ 2\nA:AB$ ChangeZone | Cost$ SubCounter<5/LOYALTY> | Planeswalker$ True | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Select target creature card in a graveyard | ValidTgts$ Creature | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control.\nA:AB$ GainControl | Cost$ SubCounter<11/LOYALTY> | Planeswalker$ True | Ultimate$ True | ValidTgts$ Opponent | AllValid$ Creature.TargetedPlayerCtrl | NewController$ You | StackDescription$ SpellDescription | SpellDescription$ Gain control of all creatures target opponent controls.\nDeckHas:Ability$Graveyard\nOracle:[+2]: Draw a card. Each player mills two cards.\\n[-5]: Put target creature card from a graveyard onto the battlefield under your control.\\n[-11]: Gain control of all creatures target opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ashiok, Sculptor of Fears"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

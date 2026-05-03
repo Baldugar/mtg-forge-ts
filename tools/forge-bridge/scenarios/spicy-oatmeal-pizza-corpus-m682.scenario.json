@@ -1,0 +1,23 @@
+{
+  "id": "spicy-oatmeal-pizza-corpus-m682",
+  "description": "M6 corpus — Spicy Oatmeal Pizza; in-hand parse.",
+  "seed": 64537,
+  "cards": {
+    "Spicy Oatmeal Pizza": "Name:Spicy Oatmeal Pizza\nManaCost:2 R\nTypes:Artifact Food\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ When this artifact enters, it deals 4 damage to any target and 3 damage to you.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ 4 | DamageMap$ True | SubAbility$ DBDealDamage\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 3 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this artifact> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nOracle:When this artifact enters, it deals 4 damage to any target and 3 damage to you.\\n{2}, {T}, Sacrifice this artifact: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spicy Oatmeal Pizza"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

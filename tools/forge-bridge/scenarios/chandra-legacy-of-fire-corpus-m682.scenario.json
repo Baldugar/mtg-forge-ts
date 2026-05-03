@@ -1,0 +1,23 @@
+{
+  "id": "chandra-legacy-of-fire-corpus-m682",
+  "description": "M6 corpus — Chandra, Legacy of Fire; in-hand parse.",
+  "seed": 61703,
+  "cards": {
+    "Chandra, Legacy of Fire": "Name:Chandra, Legacy of Fire\nManaCost:4 R\nTypes:Legendary Planeswalker Chandra\nLoyalty:3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ At the beginning of your end step, CARDNAME deals X damage to each opponent, where X is the number of planeswalkers you control.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nSVar:X:Count$Valid Planeswalker.YouCtrl\nA:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Produced$ R | Amount$ X | Planeswalker$ True | SpellDescription$ Add {R} for each planeswalker you control.\nA:AB$ RemoveCounter | Cost$ AddCounter<0/LOYALTY> | Choices$ Permanent.YouCtrl | CounterType$ LOYALTY | CounterNum$ 1 | ChoiceOptional$ True | Planeswalker$ True | SubAbility$ DBExile | RememberAmount$ True | SpellDescription$ Remove a loyalty counter from each of any number of permanents you control. Exile that many cards from the top of your library. You may play them this turn.\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ Z | ChangeNum$ All | DestinationZone$ Exile | Imprint$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ Imprinted | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ You may play them this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:Z:Count$RememberedNumber\nDeckHints:Type$Planeswalker\nOracle:At the beginning of your end step, Chandra, Legacy of Fire deals X damage to each opponent, where X is the number of planeswalkers you control.\\n[+1]:Add {R} for each planeswalker you control.\\n[0]: Remove a loyalty counter from each of any number of permanents you control. Exile that many cards from the top of your library. You may play them this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Legacy of Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

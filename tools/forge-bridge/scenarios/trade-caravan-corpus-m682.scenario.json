@@ -1,0 +1,23 @@
+{
+  "id": "trade-caravan-corpus-m682",
+  "description": "M6 corpus — Trade Caravan; in-hand parse.",
+  "seed": 64937,
+  "cards": {
+    "Trade Caravan": "Name:Trade Caravan\nManaCost:W\nTypes:Creature Human Nomad\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a currency counter on CARDNAME.\nA:AB$ Untap | Cost$ SubCounter<2/CURRENCY> | ValidTgts$ Land.Basic | TgtPrompt$ Select target basic land | ActivationPhases$ Upkeep | OpponentTurn$ True | SpellDescription$ Untap target basic land. Activate only during an opponent's upkeep.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CURRENCY | CounterNum$ 1\nOracle:At the beginning of your upkeep, put a currency counter on Trade Caravan.\\nRemove two currency counters from Trade Caravan: Untap target basic land. Activate only during an opponent's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Trade Caravan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

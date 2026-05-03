@@ -1,0 +1,23 @@
+{
+  "id": "parallax-nexus-corpus-m682",
+  "description": "M6 corpus — Parallax Nexus; in-hand parse.",
+  "seed": 63694,
+  "cards": {
+    "Parallax Nexus": "Name:Parallax Nexus\nManaCost:2 B\nTypes:Enchantment\nK:Fading:5\nA:AB$ ChangeZone | Cost$ SubCounter<1/FADE> | ValidTgts$ Opponent | SorcerySpeed$ True | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | Imprint$ True | Chooser$ Targeted | IsCurse$ True | Mandatory$ True | Hidden$ True | StackDescription$ SpellDescription | SpellDescription$ Target opponent exiles a card from their hand. Activate only as a sorcery.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, each player returns to their hand all cards they own exiled with CARDNAME.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Imprinted | Origin$ Exile | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nOracle:Fading 5 (This enchantment enters with five fade counters on it. At the beginning of your upkeep, remove a fade counter from it. If you can't, sacrifice it.)\\nRemove a fade counter from Parallax Nexus: Target opponent exiles a card from their hand. Activate only as a sorcery.\\nWhen Parallax Nexus leaves the battlefield, each player returns to their hand all cards they own exiled with Parallax Nexus.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Parallax Nexus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

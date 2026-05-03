@@ -1,0 +1,23 @@
+{
+  "id": "myojin-of-infinite-rage-corpus-m682",
+  "description": "M6 corpus — Myojin of Infinite Rage; in-hand parse.",
+  "seed": 63473,
+  "cards": {
+    "Myojin of Infinite Rage": "Name:Myojin of Infinite Rage\nManaCost:7 R R R\nTypes:Legendary Creature Spirit\nPT:7/4\nK:etbCounter:DIVINITY:1:CheckSVar$ FromHand:CARDNAME enters with a divinity counter on it if you cast it from your hand.\nSVar:FromHand:Count$wasCastFromYourHandByYou.1.0\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE1_DIVINITY | AddKeyword$ Indestructible | Description$ CARDNAME has indestructible as long as it has a divinity counter on it.\nA:AB$ DestroyAll | Cost$ SubCounter<1/DIVINITY> | ValidCards$ Land | SpellDescription$ Destroy all lands.\nOracle:Myojin of Infinite Rage enters with a divinity counter on it if you cast it from your hand.\\nMyojin of Infinite Rage has indestructible as long as it has a divinity counter on it.\\nRemove a divinity counter from Myojin of Infinite Rage: Destroy all lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Myojin of Infinite Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "tragic-lesson-corpus-m682",
+  "description": "M6 corpus — Tragic Lesson; in-hand parse.",
+  "seed": 64941,
+  "cards": {
+    "Tragic Lesson": "Name:Tragic Lesson\nManaCost:2 U\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards. Then discard a card unless you return a land you control to its owner's hand. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | UnlessCost$ Return<1/Land> | UnlessPayer$ You\nOracle:Draw two cards. Then discard a card unless you return a land you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tragic Lesson"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

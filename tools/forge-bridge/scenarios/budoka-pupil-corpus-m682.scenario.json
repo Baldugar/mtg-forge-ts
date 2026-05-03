@@ -1,0 +1,23 @@
+{
+  "id": "budoka-pupil-corpus-m682",
+  "description": "M6 corpus — Budoka Pupil; in-hand parse.",
+  "seed": 61576,
+  "cards": {
+    "Budoka Pupil": "Name:Budoka Pupil\nManaCost:1 G G\nTypes:Creature Human Monk\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Card.Self+counters_GE2_KI | Execute$ TrigFlip | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, if there are two or more ki counters on CARDNAME, you may flip it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nDeckHints:Type$Spirit|Arcane\nAlternateMode:Flip\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Budoka Pupil.\\nAt the beginning of the end step, if there are two or more ki counters on Budoka Pupil, you may flip it.\n\nALTERNATE\n\nName:Ichiga, Who Topples Oaks\nManaCost:1 G G\nColors:green\nTypes:Legendary Creature Spirit\nPT:4/3\nK:Trample\nA:AB$ Pump | Cost$ SubCounter<1/KI> | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Target creature gets +2/+2 until end of turn.\nOracle:Trample\\nRemove a ki counter from Ichiga, Who Topples Oaks: Target creature gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Budoka Pupil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

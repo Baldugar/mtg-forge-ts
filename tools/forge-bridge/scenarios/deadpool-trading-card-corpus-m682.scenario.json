@@ -1,0 +1,23 @@
+{
+  "id": "deadpool-trading-card-corpus-m682",
+  "description": "M6 corpus — Deadpool, Trading Card; in-hand parse.",
+  "seed": 61943,
+  "cards": {
+    "Deadpool, Trading Card": "Name:Deadpool, Trading Card\nManaCost:2 B R\nTypes:Legendary Creature Mutant Mercenary Hero\nPT:5/3\nK:ETBReplacement:Other:DBChooseExchange:Optional\nSVar:DBChooseExchange:DB$ ChooseCard | Defined$ You | Choices$ Creature.Other | ChoiceTitle$ Choose a creature to exchange text boxes with | SubAbility$ DBExchangeText | SpellDescription$ As NICKNAME enters, you may exchange his text box and another creature's.\nSVar:DBExchangeText:DB$ ExchangeTextBox | Defined$ Self & ChosenCard\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ Lose3 | TriggerDescription$ At the beginning of your upkeep, you lose 3 life.\nSVar:Lose3:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 3\nA:AB$ Draw | Cost$ 3 Sac<1/CARDNAME> | Defined$ Player.Other | NumCards$ 1 | SpellDescription$ Each other player draws a card.\nAI:RemoveDeck:All\nOracle:As Deadpool enters, you may exchange his text box and another creature's.\\nAt the beginning of your upkeep, you lose 3 life.\\n{3}, Sacrifice this creature: Each other player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadpool, Trading Card"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

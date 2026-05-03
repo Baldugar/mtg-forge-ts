@@ -1,0 +1,23 @@
+{
+  "id": "rat-king-pale-piper-corpus-m682",
+  "description": "M6 corpus — Rat King, Pale Piper; in-hand parse.",
+  "seed": 63927,
+  "cards": {
+    "Rat King, Pale Piper": "Name:Rat King, Pale Piper\nManaCost:3 B\nTypes:Legendary Creature Rat Avatar\nPT:3/3\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | TriggerZones$ Battlefield | ValidCard$ Card.Self,Creature.!token+YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME or another nontoken creature you control leaves the battlefield, create a 1/1 black Rat creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat | TokenOwner$ You\nA:AB$ Draw | Cost$ 2 Sac<1/Permanent.token/token> | SpellDescription$ Draw a card.\nDeckHas:Ability$Token|Sacrifice\nOracle:Menace\\nWhenever Rat King or another nontoken creature you control leaves the battlefield, create a 1/1 black Rat creature token.\\n{2}, Sacrifice a token: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rat King, Pale Piper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

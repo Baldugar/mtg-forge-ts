@@ -1,0 +1,23 @@
+{
+  "id": "loch-dragon-corpus-m682",
+  "description": "M6 corpus — Loch Dragon; in-hand parse.",
+  "seed": 63187,
+  "cards": {
+    "Loch Dragon": "Name:Loch Dragon\nManaCost:UR UR UR UR\nTypes:Creature Dragon\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, you may discard a card. If you do, draw a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nOracle:Flying\\nWhenever Loch Dragon enters or attacks, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Loch Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "implement-of-ferocity-corpus-m682",
+  "description": "M6 corpus — Implement of Ferocity; in-hand parse.",
+  "seed": 62851,
+  "cards": {
+    "Implement of Ferocity": "Name:Implement of Ferocity\nManaCost:1\nTypes:Artifact\nA:AB$ PutCounter | Cost$ G Sac<1/CARDNAME> | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SorcerySpeed$ True | SpellDescription$ Put a +1/+1 counter on target creature. Activate only as a sorcery.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredCardController\nAI:RemoveDeck:Random\nDeckNeeds:Color$Green\nOracle:{G}, Sacrifice Implement of Ferocity: Put a +1/+1 counter on target creature. Activate only as a sorcery.\\nWhen Implement of Ferocity is put into a graveyard from the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Implement of Ferocity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

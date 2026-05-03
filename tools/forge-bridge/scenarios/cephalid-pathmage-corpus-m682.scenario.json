@@ -1,0 +1,23 @@
+{
+  "id": "cephalid-pathmage-corpus-m682",
+  "description": "M6 corpus — Cephalid Pathmage; in-hand parse.",
+  "seed": 61669,
+  "cards": {
+    "Cephalid Pathmage": "Name:Cephalid Pathmage\nManaCost:2 U\nTypes:Creature Octopus Wizard\nPT:1/2\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nA:AB$ Effect | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Creature | RememberObjects$ Targeted | StaticAbilities$ STUnblockable | SpellDescription$ Target creature can't be blocked this turn.\nSVar:STUnblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHas:Ability$Sacrifice\nOracle:Cephalid Pathmage can't be blocked.\\n{T}, Sacrifice Cephalid Pathmage: Target creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cephalid Pathmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

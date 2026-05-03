@@ -1,0 +1,23 @@
+{
+  "id": "primeval-force-corpus-m682",
+  "description": "M6 corpus — Primeval Force; in-hand parse.",
+  "seed": 63824,
+  "cards": {
+    "Primeval Force": "Name:Primeval Force\nManaCost:2 G G G\nTypes:Creature Elemental\nPT:8/8\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice three Forests.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<3/Forest> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE3\nSVar:Y:Count$Valid Forest.YouCtrl\nOracle:When Primeval Force enters, sacrifice it unless you sacrifice three Forests.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primeval Force"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

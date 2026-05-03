@@ -1,0 +1,23 @@
+{
+  "id": "aetherflux-conduit-corpus-m682",
+  "description": "M6 corpus — Aetherflux Conduit; in-hand parse.",
+  "seed": 61454,
+  "cards": {
+    "Aetherflux Conduit": "Name:Aetherflux Conduit\nManaCost:6\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, you get an amount of {E} (energy counters) equal to the amount of mana spent to cast that spell.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nA:AB$ Draw | Cost$ T PayEnergy<50> | NumCards$ 7 | SubAbility$ DBPlay | SpellDescription$ Draw seven cards. You may cast any number of spells from your hand without paying their mana costs.\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell | ValidZone$ Hand | WithoutManaCost$ True | Amount$ All | Controller$ You | Optional$ True\nSVar:X:TriggeredCard$CastTotalManaSpent\nOracle:Whenever you cast a spell, you get an amount of {E} (energy counters) equal to the amount of mana spent to cast that spell.\\n{T}, Pay fifty {E}: Draw seven cards. You may cast any number of spells from your hand without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aetherflux Conduit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

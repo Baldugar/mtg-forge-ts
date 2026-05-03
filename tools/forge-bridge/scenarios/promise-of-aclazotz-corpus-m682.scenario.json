@@ -1,0 +1,23 @@
+{
+  "id": "promise-of-aclazotz-corpus-m682",
+  "description": "M6 corpus — Promise of Aclazotz; in-hand parse.",
+  "seed": 63834,
+  "cards": {
+    "Promise of Aclazotz": "Name:Promise of Aclazotz\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPopulate | TriggerDescription$ At the beginning of your end step, you may sacrifice a non-Demon creature. If you do, populate. (Create a token that's a copy of a creature token you control.)\nSVar:TrigPopulate:AB$ CopyPermanent | Cost$ Sac<1/Creature.nonDemon/non-Demon creature> | Populate$ True\nDeckHas:Ability$Token|Sacrifice & Type$Demon|Vampire\nAlternateMode:Adventure\nOracle:At the beginning of your end step, you may sacrifice a non-Demon creature. If you do, populate. (Create a token that's a copy of a creature token you control.)\n\nALTERNATE\n\nName:Foul Rebirth\nManaCost:2 B\nTypes:Sorcery Adventure\nA:SP$ Sacrifice | SacValid$ Creature.nonDemon | Defined$ You | RememberSacrificed$ True | SubAbility$ DBToken | SpellDescription$ Sacrifice a non-Demon creature. If you do, create a 4/3 white and black Vampire Demon creature token with flying.\nSVar:DBToken:DB$ Token | TokenScript$ wb_4_3_vampire_demon_flying | TokenOwner$ You | ConditionDefined$ RememberedLKI | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Sacrifice a non-Demon creature. If you do, create a 4/3 white and black Vampire Demon creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Promise of Aclazotz"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

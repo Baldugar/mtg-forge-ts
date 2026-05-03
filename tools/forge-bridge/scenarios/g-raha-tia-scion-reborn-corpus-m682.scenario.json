@@ -1,0 +1,23 @@
+{
+  "id": "g-raha-tia-scion-reborn-corpus-m682",
+  "description": "M6 corpus — G'raha Tia, Scion Reborn; in-hand parse.",
+  "seed": 62610,
+  "cards": {
+    "G'raha Tia, Scion Reborn": "Name:G'raha Tia, Scion Reborn\nManaCost:W U B\nTypes:Legendary Creature Cat Wizard\nPT:2/3\nK:Lifelink\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | ResolvedLimit$ 1 | TriggerDescription$ Throw Wide the Gates — Whenever you cast a noncreature spell, you may pay X life, where X is that spell's mana value. If you do, create a 1/1 colorless Hero creature token and put X +1/+1 counters on it. Do this only once each turn.\nSVar:TrigToken:AB$ Token | Cost$ PayLife<X> | TokenScript$ c_1_1_hero | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounter | Defined$ Remembered | CounterType$ P1P1 | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredCard$CardManaCost\nOracle:Lifelink\\nThrow Wide the Gates — Whenever you cast a noncreature spell, you may pay X life, where X is that spell's mana value. If you do, create a 1/1 colorless Hero creature token and put X +1/+1 counters on it. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "G'raha Tia, Scion Reborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

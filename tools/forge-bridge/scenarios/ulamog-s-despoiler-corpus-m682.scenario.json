@@ -1,0 +1,23 @@
+{
+  "id": "ulamog-s-despoiler-corpus-m682",
+  "description": "M6 corpus — Ulamog's Despoiler; in-hand parse.",
+  "seed": 65004,
+  "cards": {
+    "Ulamog's Despoiler": "Name:Ulamog's Despoiler\nManaCost:6\nTypes:Creature Eldrazi Processor\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Static$ True | Execute$ TrigPutCounters | TriggerDescription$ As CARDNAME enters, you may put two cards your opponents own from exile into their owners' graveyards. If you do, CARDNAME enters with four +1/+1 counters on it.\nSVar:TrigPutCounters:AB$ PutCounter | Cost$ ExiledMoveToGrave<2/Card.OppOwn/card an opponent owns> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 4\nDeckHints:Keyword$Ingest\nOracle:As Ulamog's Despoiler enters, you may put two cards your opponents own from exile into their owners' graveyards. If you do, Ulamog's Despoiler enters with four +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulamog's Despoiler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

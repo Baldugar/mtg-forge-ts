@@ -1,0 +1,23 @@
+{
+  "id": "pyre-zombie-corpus-m682",
+  "description": "M6 corpus — Pyre Zombie; in-hand parse.",
+  "seed": 63861,
+  "cards": {
+    "Pyre Zombie": "Name:Pyre Zombie\nManaCost:1 B R\nTypes:Creature Zombie\nPT:2/1\nA:AB$ DealDamage | Cost$ 1 R R Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 2 | SpellDescription$ It deals 2 damage to any target.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | PresentPlayer$ You | TriggerZones$ Graveyard | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard, you may pay {1}{B}{B}. If you do, return CARDNAME to your hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ 1 B B | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nSVar:SacMe:2\nSVar:DiscardMe:1\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, if Pyre Zombie is in your graveyard, you may pay {1}{B}{B}. If you do, return Pyre Zombie to your hand.\\n{1}{R}{R}, Sacrifice Pyre Zombie: It deals 2 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pyre Zombie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

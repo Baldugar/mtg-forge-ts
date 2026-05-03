@@ -1,0 +1,23 @@
+{
+  "id": "fleshtaker-corpus-m682",
+  "description": "M6 corpus — Fleshtaker; in-hand parse.",
+  "seed": 62363,
+  "cards": {
+    "Fleshtaker": "Name:Fleshtaker\nManaCost:W B\nTypes:Creature Human Assassin\nPT:2/2\nT:Mode$ Sacrificed | ValidCard$ Creature.Other | Execute$ TrigGainLife | TriggerZones$ Battlefield | ValidPlayer$ You | TriggerDescription$ Whenever you sacrifice another creature, you gain 1 life and scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nA:AB$ Pump | Cost$ 1 Sac<1/Creature.Other/another creature> | Defined$ Self | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ CARDNAME gets +2/+2 until end of turn.\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:Whenever you sacrifice another creature, you gain 1 life and scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\\n{1}, Sacrifice another creature: Fleshtaker gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fleshtaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

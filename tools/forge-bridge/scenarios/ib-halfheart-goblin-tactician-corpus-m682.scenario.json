@@ -1,0 +1,23 @@
+{
+  "id": "ib-halfheart-goblin-tactician-corpus-m682",
+  "description": "M6 corpus — Ib Halfheart, Goblin Tactician; in-hand parse.",
+  "seed": 62818,
+  "cards": {
+    "Ib Halfheart, Goblin Tactician": "Name:Ib Halfheart, Goblin Tactician\nManaCost:3 R\nTypes:Legendary Creature Goblin Advisor\nPT:3/2\nA:AB$ Token | Cost$ Sac<2/Mountain> | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You | SpellDescription$ Create two 1/1 red Goblin creature tokens.\nT:Mode$ AttackerBlocked | ValidCard$ Goblin.YouCtrl+Other | Execute$ HalfHeartTrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ Whenever another Goblin you control becomes blocked, sacrifice it. If you do, it deals 4 damage to each creature blocking it.\nSVar:HalfHeartTrigSacrifice:DB$ Sacrifice | SacValid$ TriggeredAttacker | RememberSacrificed$ True | SubAbility$ HalfHeartDBDamage\nSVar:HalfHeartDBDamage:DB$ DealDamage | DamageSource$ TriggeredAttacker | NumDmg$ 4 | Defined$ TriggeredBlockers | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nOracle:Whenever another Goblin you control becomes blocked, sacrifice it. If you do, it deals 4 damage to each creature blocking it.\\nSacrifice two Mountains: Create two 1/1 red Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ib Halfheart, Goblin Tactician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

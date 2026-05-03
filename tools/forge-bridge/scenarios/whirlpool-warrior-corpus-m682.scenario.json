@@ -1,0 +1,23 @@
+{
+  "id": "whirlpool-warrior-corpus-m682",
+  "description": "M6 corpus — Whirlpool Warrior; in-hand parse.",
+  "seed": 65231,
+  "cards": {
+    "Whirlpool Warrior": "Name:Whirlpool Warrior\nManaCost:2 U\nTypes:Creature Merfolk Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ WhirlYou | TriggerDescription$ When CARDNAME enters, shuffle the cards from your hand into your library, then draw that many cards.\nSVar:WhirlYou:DB$ ChangeZoneAll | Defined$ You | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | RememberChanged$ True | ForgetOtherRemembered$ True | Shuffle$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ You | SubAbility$ DBCleanup\nA:AB$ RepeatEach | Cost$ R Sac<1/CARDNAME> | RepeatPlayers$ Player | RepeatSubAbility$ ShuffleHand | SpellDescription$ Each player shuffles the cards from their hand into their library, then draws that many cards.\nSVar:ShuffleHand:DB$ ChangeZoneAll | Defined$ Player.IsRemembered | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | RememberChanged$ True | Shuffle$ True | SubAbility$ WindDraw\nSVar:WindDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:When Whirlpool Warrior enters, shuffle the cards from your hand into your library, then draw that many cards.\\n{R}, Sacrifice Whirlpool Warrior: Each player shuffles the cards from their hand into their library, then draws that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whirlpool Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

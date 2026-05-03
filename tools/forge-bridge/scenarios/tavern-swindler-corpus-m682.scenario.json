@@ -1,0 +1,23 @@
+{
+  "id": "tavern-swindler-corpus-m682",
+  "description": "M6 corpus — Tavern Swindler; in-hand parse.",
+  "seed": 64725,
+  "cards": {
+    "Tavern Swindler": "Name:Tavern Swindler\nManaCost:1 B\nTypes:Creature Human Rogue\nPT:2/2\nA:AB$ FlipACoin | Cost$ T PayLife<3> | WinSubAbility$ TSGainLife | AILogic$ Never | SpellDescription$ Flip a coin. If you win the flip, you gain 6 life.\nSVar:TSGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 6\nDeckHas:Ability$LifeGain\nOracle:{T}, Pay 3 life: Flip a coin. If you win the flip, you gain 6 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tavern Swindler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

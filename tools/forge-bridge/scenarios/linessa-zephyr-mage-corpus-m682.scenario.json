@@ -1,0 +1,23 @@
+{
+  "id": "linessa-zephyr-mage-corpus-m682",
+  "description": "M6 corpus — Linessa, Zephyr Mage; in-hand parse.",
+  "seed": 63167,
+  "cards": {
+    "Linessa, Zephyr Mage": "Name:Linessa, Zephyr Mage\nManaCost:3 U\nTypes:Legendary Creature Human Wizard\nPT:3/3\nA:AB$ ChangeZone | Cost$ X U U T | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature.cmcEQX | ChangeNum$ 1 | SpellDescription$ Return target creature with mana value X to its owner's hand.\nSVar:X:Count$xPaid\nA:AB$ ChangeZone | Cost$ Discard<1/Card.namedLinessa, Zephyr Mage> | CostDesc$ Grandeur — Discard another card named Linessa, Zephyr Mage: | ValidTgts$ Player | Chooser$ Targeted | Mandatory$ True | Hidden$ True | Origin$ Battlefield | Destination$ Hand | ChangeType$ Creature.TargetedPlayerCtrl | SubAbility$ DBArtifact | SpellDescription$ Target player returns a creature they control to its owner's hand, then repeats this process for an artifact, an enchantment, and a land.\nSVar:DBArtifact:DB$ ChangeZone | DefinedPlayer$ Targeted | ChangeType$ Artifact | Origin$ Battlefield | Destination$ Hand | Chooser$ Targeted | Mandatory$ True | Hidden$ True | SubAbility$ DBEnchant\nSVar:DBEnchant:DB$ ChangeZone | DefinedPlayer$ Targeted | ChangeType$ Enchantment | Origin$ Battlefield | Destination$ Hand | Chooser$ Targeted | Mandatory$ True | Hidden$ True | SubAbility$ DBLand\nSVar:DBLand:DB$ ChangeZone | DefinedPlayer$ Targeted | ChangeType$ Land | Origin$ Battlefield | Destination$ Hand | Chooser$ Targeted | Mandatory$ True | Hidden$ True\nDeckHints:Name$Linessa, Zephyr Mage\nOracle:{X}{U}{U}, {T}: Return target creature with mana value X to its owner's hand.\\nGrandeur — Discard another card named Linessa, Zephyr Mage: Target player returns a creature they control to its owner's hand, then repeats this process for an artifact, an enchantment, and a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Linessa, Zephyr Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

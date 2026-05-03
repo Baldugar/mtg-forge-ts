@@ -1,0 +1,23 @@
+{
+  "id": "avatar-of-discord-corpus-m682",
+  "description": "M6 corpus — Avatar of Discord; in-hand parse.",
+  "seed": 61509,
+  "cards": {
+    "Avatar of Discord": "Name:Avatar of Discord\nManaCost:BR BR BR\nTypes:Creature Avatar\nPT:5/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBSacSelf | TriggerDescription$ When CARDNAME enters, sacrifice it unless you discard two cards.\nSVar:DBSacSelf:DB$ Sacrifice | UnlessCost$ Discard<2/Card> | UnlessPayer$ You\nSVar:NeedsToPlayVar:Y GE3\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:({B/R} can be paid with either {B} or {R}.)\\nFlying\\nWhen Avatar of Discord enters, sacrifice it unless you discard two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Avatar of Discord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

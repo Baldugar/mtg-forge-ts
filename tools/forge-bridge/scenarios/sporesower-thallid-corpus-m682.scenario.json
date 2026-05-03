@@ -1,0 +1,23 @@
+{
+  "id": "sporesower-thallid-corpus-m682",
+  "description": "M6 corpus — Sporesower Thallid; in-hand parse.",
+  "seed": 64569,
+  "cards": {
+    "Sporesower Thallid": "Name:Sporesower Thallid\nManaCost:2 G G\nTypes:Creature Fungus\nPT:4/4\nA:AB$ Token | Cost$ SubCounter<3/SPORE> | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ At the beginning of your upkeep, put a spore counter on each Fungus you control.\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Fungus.YouCtrl | CounterType$ SPORE | CounterNum$ 1\nDeckHints:Type$Fungus\nDeckHas:Ability$Counters|Token\nOracle:At the beginning of your upkeep, put a spore counter on each Fungus you control.\\nRemove three spore counters from Sporesower Thallid: Create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sporesower Thallid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

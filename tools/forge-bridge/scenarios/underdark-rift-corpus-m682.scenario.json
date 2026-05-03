@@ -1,0 +1,23 @@
+{
+  "id": "underdark-rift-corpus-m682",
+  "description": "M6 corpus — Underdark Rift; in-hand parse.",
+  "seed": 65020,
+  "cards": {
+    "Underdark Rift": "Name:Underdark Rift\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Pump | Cost$ 5 T Exile<1/CARDNAME> | ValidTgts$ Artifact,Creature,Planeswalker | TgtPrompt$ Select target artifact, creature, or planeswalker | SorcerySpeed$ True | IsCurse$ True | SubAbility$ DBRollDice | StackDescription$ None | SpellDescription$ Roll a d10. Put target artifact, creature, or planeswalker into its owner's library just beneath the top X cards of that library, where X is the result. Activate only as a sorcery.\nSVar:DBRollDice:DB$ RollDice | Sides$ 10 | ResultSVar$ X | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Targeted | Destination$ Library | LibraryPosition$ X | StackDescription$ Put {c:Targeted} into its owner's library just beneath the top X cards of that library, where X is the result.\nOracle:{T}: Add {C}.\\n{5}, {T}, Exile Underdark Rift: Roll a d10. Put target artifact, creature, or planeswalker into its owner's library just beneath the top X cards of that library, where X is the result. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underdark Rift"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

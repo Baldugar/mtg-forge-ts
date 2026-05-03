@@ -1,0 +1,23 @@
+{
+  "id": "nasty-end-corpus-m682",
+  "description": "M6 corpus — Nasty End; in-hand parse.",
+  "seed": 63504,
+  "cards": {
+    "Nasty End": "Name:Nasty End\nManaCost:1 B\nTypes:Instant\nA:SP$ Draw | Cost$ 1 B Sac<1/Creature> | NumCards$ X | SpellDescription$ Draw two cards. If the sacrificed creature was legendary, draw three cards instead.\nSVar:AIPreference:SacCost$Creature.Legendary\nSVar:Y:Sacrificed$Valid Card.Legendary\nSVar:X:Count$Compare Y EQ1.3.2\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Legendary\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nDraw two cards. If the sacrificed creature was legendary, draw three cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nasty End"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "requiting-hex-corpus-m682",
+  "description": "M6 corpus — Requiting Hex; in-hand parse.",
+  "seed": 63980,
+  "cards": {
+    "Requiting Hex": "Name:Requiting Hex\nManaCost:B\nTypes:Instant\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Blight<1> | Description$ As an additional cost to cast this spell, you may blight 1. (You may put a -1/-1 counter on a creature you control.)\nA:SP$ Destroy | ValidTgts$ Creature.cmcLE2 | TgtPrompt$ Select target creature with mana value 2 or less | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature with mana value 2 or less. If this spell's additional cost was paid, you gain 2 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | ConditionCheckSVar$ X\nSVar:X:Count$OptionalGenericCostPaid.1.0\nOracle:As an additional cost to cast this spell, you may blight 1. (You may put a -1/-1 counter on a creature you control.)\\nDestroy target creature with mana value 2 or less. If this spell's additional cost was paid, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Requiting Hex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

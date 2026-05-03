@@ -1,0 +1,23 @@
+{
+  "id": "synod-sanctum-corpus-m682",
+  "description": "M6 corpus — Synod Sanctum; in-hand parse.",
+  "seed": 64697,
+  "cards": {
+    "Synod Sanctum": "Name:Synod Sanctum\nManaCost:1\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 2 T | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Choose target permanent you control. | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target permanent you control.\nA:AB$ ChangeZoneAll | Cost$ 2 Sac<1/CARDNAME> | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield | GainControl$ True | SpellDescription$ Return all cards exiled with CARDNAME to the battlefield under your control.\nAI:RemoveDeck:All\nOracle:{2}, {T}: Exile target permanent you control.\\n{2}, Sacrifice Synod Sanctum: Return all cards exiled with Synod Sanctum to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Synod Sanctum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

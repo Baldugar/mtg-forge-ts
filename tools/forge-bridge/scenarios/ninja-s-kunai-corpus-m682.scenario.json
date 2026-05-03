@@ -1,0 +1,23 @@
+{
+  "id": "ninja-s-kunai-corpus-m682",
+  "description": "M6 corpus — Ninja's Kunai; in-hand parse.",
+  "seed": 63558,
+  "cards": {
+    "Ninja's Kunai": "Name:Ninja's Kunai\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddAbility$ MakeYourPoint | Description$ Equipped creature has \"{1}, {T}, Sacrifice CARDNAME: CARDNAME deals 3 damage to any target.\"\nSVar:MakeYourPoint:AB$ DealDamage | Cost$ 1 T Sac<1/OriginalHost/Ninja's Kunai> | ValidTgts$ Any | NumDmg$ 3 | DamageSource$ OriginalHost | SpellDescription$ ORIGINALHOST deals 3 damage to any target.\nSVar:NonStackingAttachEffect:True\nOracle:Equipped creature has \"{1}, {T}, Sacrifice Ninja's Kunai: Ninja's Kunai deals 3 damage to any target.\"\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ninja's Kunai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

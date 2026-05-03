@@ -1,0 +1,23 @@
+{
+  "id": "kytheon-hero-of-akros-corpus-m682",
+  "description": "M6 corpus — Kytheon, Hero of Akros; in-hand parse.",
+  "seed": 63093,
+  "cards": {
+    "Kytheon, Hero of Akros": "Name:Kytheon, Hero of Akros\nManaCost:W\nTypes:Legendary Creature Human Soldier\nPT:2/1\nT:Mode$ Phase | Phase$ EndCombat | IsPresent$ Card.Self+attackedThisCombat GE3 | Execute$ TrigExile | TriggerDescription$ At end of combat, if CARDNAME and at least two other creatures attacked this combat, exile NICKNAME, then return him to the battlefield transformed under his owner's control.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | ForgetOtherRemembered$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Pump | Cost$ 2 W | Defined$ Self | KW$ Indestructible | SpellDescription$ NICKNAME gains indestructible until end of turn.\nAlternateMode:DoubleFaced\nOracle:At end of combat, if Kytheon, Hero of Akros and at least two other creatures attacked this combat, exile Kytheon, then return him to the battlefield transformed under his owner's control.\\n{2}{W}: Kytheon gains indestructible until end of turn.\n\nALTERNATE\n\nName:Gideon, Battle-Forged\nManaCost:no cost\nColors:white\nTypes:Legendary Planeswalker Gideon\nLoyalty:3\nA:AB$ DelayedTrigger | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Mode$ Phase | Phase$ Upkeep-> | ValidPlayer$ Player.controlsCard.IsTriggerRemembered | UpcomingTurn$ True | RememberObjects$ Targeted | Execute$ TrigEffect | Static$ True | SpellDescription$ Up to one target creature an opponent controls attacks CARDNAME during its controller's next turn if able.\nSVar:TrigEffect:DB$ Effect | RememberObjects$ DelayTriggerRemembered | StaticAbilities$ MustAttack\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.IsRemembered | MustAttack$ EffectSource | Description$ This creature attacks EFFECTSOURCE during its controller's next turn if able.\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | KW$ Indestructible | Duration$ UntilYourNextTurn | SubAbility$ DBUntap | SpellDescription$ Until your next turn, target creature gains indestructible. Untap that creature.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nA:AB$ Animate | Cost$ AddCounter<0/LOYALTY> | Defined$ Self | Power$ 4 | Toughness$ 4 | Types$ Creature,Human,Soldier | Keywords$ Indestructible | SubAbility$ DBPrevent | Planeswalker$ True | Ultimate$ True | SpellDescription$ Until end of turn, CARDNAME becomes a 4/4 Human Soldier creature with indestructible that's still a planeswalker. Prevent all damage that would be dealt to him this turn.\nSVar:DBPrevent:DB$ Effect | ReplacementEffects$ RPrevent | Duration$ UntilHostLeavesPlayOrEOT\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ValidTarget$ Card.EffectSource | Description$ Prevent all damage that would be dealt to EFFECTSOURCE this turn.\nOracle:[+2]: Up to one target creature an opponent controls attacks Gideon, Battle-Forged during its controller's next turn if able.\\n[+1]: Until your next turn, target creature gains indestructible. Untap that creature.\\n[0]: Until end of turn, Gideon, Battle-Forged becomes a 4/4 Human Soldier creature with indestructible that's still a planeswalker. Prevent all damage that would be dealt to him this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kytheon, Hero of Akros"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

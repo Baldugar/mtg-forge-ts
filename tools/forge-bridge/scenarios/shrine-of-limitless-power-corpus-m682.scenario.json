@@ -1,0 +1,23 @@
+{
+  "id": "shrine-of-limitless-power-corpus-m682",
+  "description": "M6 corpus — Shrine of Limitless Power; in-hand parse.",
+  "seed": 64357,
+  "cards": {
+    "Shrine of Limitless Power": "Name:Shrine of Limitless Power\nManaCost:3\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Black | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAddCounter | TriggerDescription$ At the beginning of your upkeep or whenever you cast a black spell, put a charge counter on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAddCounter | Secondary$ True | TriggerDescription$ At the beginning of your upkeep or whenever you cast a black spell, put a charge counter on CARDNAME.\nSVar:TrigAddCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ Discard | Cost$ 4 T Sac<1/CARDNAME> | ValidTgts$ Player | NumCards$ X | Mode$ TgtChoose | SpellDescription$ Target player discards a card for each charge counter on CARDNAME.\nSVar:X:Sacrificed$CardCounters.CHARGE\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep or whenever you cast a black spell, put a charge counter on Shrine of Limitless Power.\\n{4}, {T}, Sacrifice Shrine of Limitless Power: Target player discards a card for each charge counter on Shrine of Limitless Power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrine of Limitless Power"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

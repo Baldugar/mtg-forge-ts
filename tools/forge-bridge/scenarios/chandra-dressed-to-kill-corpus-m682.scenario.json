@@ -1,0 +1,23 @@
+{
+  "id": "chandra-dressed-to-kill-corpus-m682",
+  "description": "M6 corpus — Chandra, Dressed to Kill; in-hand parse.",
+  "seed": 61693,
+  "cards": {
+    "Chandra, Dressed to Kill": "Name:Chandra, Dressed to Kill\nManaCost:1 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:3\nA:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Produced$ R | SubAbility$ DBDealDamage | SpellDescription$ Add {R}. CARDNAME deals 1 damage to up to one target player or planeswalker.\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Player,Planeswalker | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target player or planeswalker | NumDmg$ 1\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Exile the top card of your library. If it's red, you may cast it this turn.\nSVar:DBEffect:DB$ Effect | Name$ Chandra, Dressed to Kill's Effect — +1 May Play | ConditionDefined$ Remembered | ConditionPresent$ Card.Red | ConditionCompare$ GE1 | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ You may cast the exiled card this turn.\nA:AB$ Dig | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | Defined$ You | DigNum$ 5 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect2 | StackDescription$ SpellDescription | SpellDescription$ Exile the top five cards of your library. You may cast red spells from among them this turn. You get an emblem with \"Whenever you cast a red spell, this emblem deals X damage to any target, where X is the amount of mana spent to cast that spell.\"\nSVar:DBEffect2:DB$ Effect | Name$ Chandra, Dressed to Kill's Effect — Ultimate May Play | RememberObjects$ RememberedCard | StaticAbilities$ STPlay2 | SubAbility$ DBEffect3 | ForgetOnMoved$ Exile\nSVar:DBEffect3:DB$ Effect | Name$ Emblem — Chandra, Dressed to Kill | Triggers$ TRSpellCast | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:STPlay2:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+Red+nonLand | AffectedZone$ Exile | Description$ You may cast red spells from among the exiled cards this turn.\nSVar:TRSpellCast:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast a red spell, this emblem deals X damage to any target, where X is the amount of mana spent to cast that spell.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredCard$CastTotalManaSpent\nSVar:BuffedBy:Card.Red\nOracle:[+1]: Add {R}. Chandra, Dressed to Kill deals 1 damage to up to one target player or planeswalker.\\n[+1]: Exile the top card of your library. If it's red, you may cast it this turn.\\n[-7]: Exile the top five cards of your library. You may cast red spells from among them this turn. You get an emblem with \"Whenever you cast a red spell, this emblem deals X damage to any target, where X is the amount of mana spent to cast that spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Dressed to Kill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

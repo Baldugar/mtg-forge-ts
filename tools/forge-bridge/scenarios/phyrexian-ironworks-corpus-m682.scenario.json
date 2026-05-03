@@ -1,0 +1,23 @@
+{
+  "id": "phyrexian-ironworks-corpus-m682",
+  "description": "M6 corpus — Phyrexian Ironworks; in-hand parse.",
+  "seed": 63748,
+  "cards": {
+    "Phyrexian Ironworks": "Name:Phyrexian Ironworks\nManaCost:2 R\nTypes:Artifact\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Token | Cost$ T PayEnergy<3> | SorcerySpeed$ True | TokenScript$ c_3_3_a_phyrexian_golem | SpellDescription$ Create a 3/3 colorless Phyrexian Golem artifact creature token. Activate only as a sorcery.\nDeckHas:Ability$Token & Type$Phyrexian|Golem\nOracle:Whenever you attack, you get {E} (an energy counter).\\n{T}, Pay {E}{E}{E}: Create a 3/3 colorless Phyrexian Golem artifact creature token. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Phyrexian Ironworks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

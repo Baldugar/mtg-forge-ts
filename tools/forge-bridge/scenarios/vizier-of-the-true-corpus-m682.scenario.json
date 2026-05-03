@@ -1,0 +1,23 @@
+{
+  "id": "vizier-of-the-true-corpus-m682",
+  "description": "M6 corpus — Vizier of the True; in-hand parse.",
+  "seed": 65138,
+  "cards": {
+    "Vizier of the True": "Name:Vizier of the True\nManaCost:3 W\nTypes:Creature Human Cleric\nPT:3/2\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. (It won't untap during your next untap step.)\nT:Mode$ Exerted | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever you exert a creature, tap target creature an opponent controls.\n# This code presumes that you are only ever allowed to exert creatures you control. If this is changed in the future, it will need an update.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nOracle:You may exert Vizier of the True as it attacks. (It won't untap during your next untap step.)\\nWhenever you exert a creature, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vizier of the True"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

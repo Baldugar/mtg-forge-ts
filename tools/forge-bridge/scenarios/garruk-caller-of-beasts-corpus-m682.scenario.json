@@ -1,0 +1,23 @@
+{
+  "id": "garruk-caller-of-beasts-corpus-m682",
+  "description": "M6 corpus — Garruk, Caller of Beasts; in-hand parse.",
+  "seed": 62458,
+  "cards": {
+    "Garruk, Caller of Beasts": "Name:Garruk, Caller of Beasts\nManaCost:4 G G\nTypes:Legendary Planeswalker Garruk\nLoyalty:4\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | DigNum$ 5 | Reveal$ True | ChangeNum$ All | ChangeValid$ Creature | SpellDescription$ Reveal the top five cards of your library. Put all creature cards revealed this way into your hand and the rest on the bottom of your library in any order.\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.Green+YouCtrl | Optional$ True | SpellDescription$ You may put a green creature card from your hand onto the battlefield.\nA:AB$ Effect | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Garruk, Caller of Beasts | Image$ emblem_garruk_caller_of_beasts | Triggers$ TrigSearch | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Whenever you cast a creature spell, you may search your library for a creature card, put it onto the battlefield, then shuffle.\"\nSVar:TrigSearch:Mode$ SpellCast | ValidCard$ Card.Creature | ValidActivatingPlayer$ You | TriggerZones$ Command | OptionalDecider$ You | Execute$ DBSearch | TriggerDescription$ Whenever you cast a creature spell, you may search your library for a creature card, put it onto the battlefield, then shuffle.\nSVar:DBSearch:DB$ ChangeZone | ChangeType$ Creature | Origin$ Library | Destination$ Battlefield | ShuffleNonMandatory$ True\nOracle:[+1]: Reveal the top five cards of your library. Put all creature cards revealed this way into your hand and the rest on the bottom of your library in any order.\\n[-3]: You may put a green creature card from your hand onto the battlefield.\\n[-7]: You get an emblem with \"Whenever you cast a creature spell, you may search your library for a creature card, put it onto the battlefield, then shuffle.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garruk, Caller of Beasts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

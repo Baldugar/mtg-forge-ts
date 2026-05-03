@@ -1,0 +1,23 @@
+{
+  "id": "fire-covenant-corpus-m682",
+  "description": "M6 corpus — Fire Covenant; in-hand parse.",
+  "seed": 62325,
+  "cards": {
+    "Fire Covenant": "Name:Fire Covenant\nManaCost:1 B R\nTypes:Instant\nA:SP$ DealDamage | Cost$ 1 B R PayLife<X> | ValidTgts$ Creature | TgtPrompt$ Select target creature to distribute damage to | NumDmg$ X | TargetMin$ 0 | TargetMax$ MaxTgts | DividedAsYouChoose$ X | SpellDescription$ CARDNAME deals X damage divided as you choose among any number of target creatures.\nSVar:MaxTgts:Count$Valid Creature\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, pay X life.\\nFire Covenant deals X damage divided as you choose among any number of target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Covenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

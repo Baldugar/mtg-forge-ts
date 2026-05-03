@@ -1,0 +1,23 @@
+{
+  "id": "birgi-god-of-storytelling-corpus-m682",
+  "description": "M6 corpus — Birgi, God of Storytelling; in-hand parse.",
+  "seed": 61536,
+  "cards": {
+    "Birgi, God of Storytelling": "Name:Birgi, God of Storytelling\nManaCost:2 R\nTypes:Legendary Creature God\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigMana | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, add {R}. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:TrigMana:DB$ Mana | Produced$ R | PersistentMana$ True\nS:Mode$ Continuous | Affected$ You | AddKeyword$ Creatures you control can boast twice during each of your turns rather than once. | Description$ Creatures you control can boast twice during each of your turns rather than once.\nAlternateMode:Modal\nOracle:Whenever you cast a spell, add {R}. Until end of turn, you don't lose this mana as steps and phases end.\\nCreatures you control can boast twice during each of your turns rather than once.\n\nALTERNATE\n\nName:Harnfel, Horn of Bounty\nManaCost:4 R\nTypes:Legendary Artifact\nA:AB$ Dig | Cost$ Discard<1/Card> | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Exile the top two cards of your library. You may play those cards this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ StaticMayPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:StaticMayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ You may play those cards this turn.\nOracle:Discard a card: Exile the top two cards of your library. You may play those cards this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Birgi, God of Storytelling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

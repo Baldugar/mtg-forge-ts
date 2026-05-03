@@ -1,0 +1,23 @@
+{
+  "id": "nomad-stadium-corpus-m682",
+  "description": "M6 corpus — Nomad Stadium; in-hand parse.",
+  "seed": 63573,
+  "cards": {
+    "Nomad Stadium": "Name:Nomad Stadium\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ W | SubAbility$ DBPain | SpellDescription$ Add {W}. CARDNAME deals 1 damage to you.\nA:AB$ GainLife | Cost$ W T Sac<1/CARDNAME> | LifeAmount$ 4 | Activation$ Threshold | PrecostDesc$ Threshold — | SpellDescription$ You gain 4 life. Activate only if there are seven or more cards in your graveyard.\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nAI:RemoveDeck:All\nOracle:{T}: Add {W}. Nomad Stadium deals 1 damage to you.\\nThreshold — {W}, {T}, Sacrifice Nomad Stadium: You gain 4 life. Activate only if there are seven or more cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nomad Stadium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "kiora-behemoth-beckoner-corpus-m682",
+  "description": "M6 corpus — Kiora, Behemoth Beckoner; in-hand parse.",
+  "seed": 63031,
+  "cards": {
+    "Kiora, Behemoth Beckoner": "Name:Kiora, Behemoth Beckoner\nManaCost:2 GU\nTypes:Legendary Planeswalker Kiora\nLoyalty:7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.powerGE4+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control with power 4 or greater enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Untap | Cost$ SubCounter<1/LOYALTY> | Planeswalker$ true | ValidTgts$ Permanent | SpellDescription$ Untap target Permanent.\nAI:RemoveDeck:Random\nOracle:Whenever a creature you control with power 4 or greater enters, draw a card.\\n[-1]: Untap target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Kiora, Behemoth Beckoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

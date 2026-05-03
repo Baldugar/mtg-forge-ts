@@ -1,0 +1,23 @@
+{
+  "id": "sibsig-s-artisan-corpus-m682",
+  "description": "M6 corpus — Sibsig's Artisan; in-hand parse.",
+  "seed": 64361,
+  "cards": {
+    "Sibsig's Artisan": "Name:Sibsig's Artisan\nManaCost:1 B\nTypes:Creature Human Artificer\nPT:3/2\nA:AB$ PutCounter | PrecostDesc$ Renew — | Cost$ 1 B B ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 3 | SorcerySpeed$ True | SubAbility$ DBArtisanAnimate | SpellDescription$ Put three +1/+1 counters on target creature you control. It perpetually gains this ability. Activate only as a sorcery.\nSVar:DBArtisanAnimate:DB$ Animate | Defined$ Targeted | Abilities$ ABArtisanRenew | AddSVar$ DBArtisanAnimate | Duration$ Perpetual\nSVar:ABArtisanRenew:AB$ PutCounter | PrecostDesc$ Renew — | Cost$ 1 B B ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 3 | SorcerySpeed$ True | SubAbility$ DBArtisanAnimate | SpellDescription$ Put three +1/+1 counters on target creature you control. It perpetually gains this ability. Activate only as a sorcery.\nOracle:Renew — {1}{B}{B}, Exile this card from your graveyard: Put three +1/+1 counters on target creature you control. It perpetually gains this ability. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sibsig's Artisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

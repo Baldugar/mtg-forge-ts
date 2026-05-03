@@ -1,0 +1,23 @@
+{
+  "id": "awaken-the-honored-dead-corpus-m682",
+  "description": "M6 corpus — Awaken the Honored Dead; in-hand parse.",
+  "seed": 61510,
+  "cards": {
+    "Awaken the Honored Dead": "Name:Awaken the Honored Dead\nManaCost:B G U\nTypes:Enchantment Saga\nK:Chapter:3:DBDestroy,DBMill,DBRegrow\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SpellDescription$ Destroy target nonland permanent.\nSVar:DBMill:DB$ Mill | Defined$ You | NumCards$ 3 | SpellDescription$ Mill three cards.\nSVar:DBRegrow:DB$ ImmediateTrigger | Execute$ DBReturn | UnlessCost$ Discard<1/Card> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ You may discard a card. When you do, return target creature or land card from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouOwn,Land.YouOwn | TgtPrompt$ Select a creature or land card in your graveyard.\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Destroy target nonland permanent.\\nII — Mill three cards.\\nIII — You may discard a card. When you do, return target creature or land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Awaken the Honored Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

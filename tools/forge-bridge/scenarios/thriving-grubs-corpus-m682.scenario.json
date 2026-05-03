@@ -1,0 +1,23 @@
+{
+  "id": "thriving-grubs-corpus-m682",
+  "description": "M6 corpus — Thriving Grubs; in-hand parse.",
+  "seed": 64855,
+  "cards": {
+    "Thriving Grubs": "Name:Thriving Grubs\nManaCost:1 R\nTypes:Creature Gremlin\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ PayEnergy<2> | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Thriving Grubs enters, you get {E}{E} (two energy counters).\\nWhenever Thriving Grubs attacks, you may pay {E}{E}. If you do, put a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thriving Grubs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

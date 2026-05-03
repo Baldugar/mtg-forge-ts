@@ -1,0 +1,23 @@
+{
+  "id": "unshakable-tail-corpus-m682",
+  "description": "M6 corpus — Unshakable Tail; in-hand parse.",
+  "seed": 65035,
+  "cards": {
+    "Unshakable Tail": "Name:Unshakable Tail\nManaCost:2 B\nTypes:Creature Zombie Detective\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters and at the beginning of your upkeep, surveil 1.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | Secondary$ True | TriggerDescription$ When CARDNAME enters and at the beginning of your upkeep, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.YouOwn | Origin$ Library | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigInvestigate | TriggerDescription$ Whenever one or more creature cards are put into your graveyard from your library, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nA:AB$ ChangeZone | Cost$ 2 Sac<1/Clue> | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nDeckHas:Ability$Sacrifice|Graveyard|Token|Surveil & Type$Clue|Artifact\nDeckHints:Ability$Graveyard & Type$Clue\nOracle:When Unshakable Tail enters and at the beginning of your upkeep, surveil 1.\\nWhenever one or more creature cards are put into your graveyard from your library, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\n{2}, Sacrifice a Clue: Return Unshakable Tail from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Unshakable Tail"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

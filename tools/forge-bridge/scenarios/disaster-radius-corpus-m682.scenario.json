@@ -1,0 +1,23 @@
+{
+  "id": "disaster-radius-corpus-m682",
+  "description": "M6 corpus — Disaster Radius; in-hand parse.",
+  "seed": 62026,
+  "cards": {
+    "Disaster Radius": "Name:Disaster Radius\nManaCost:5 R R\nTypes:Sorcery\nA:SP$ DamageAll | Cost$ 5 R R Reveal<1/Creature> | NumDmg$ X | ValidCards$ Creature.OppCtrl | ValidDescription$ each creature your opponents control. | SpellDescription$ CARDNAME deals X damage to each creature your opponents control, where X is the revealed card's mana value.\nSVar:X:Revealed$CardManaCost\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, reveal a creature card from your hand.\\nDisaster Radius deals X damage to each creature your opponents control, where X is the revealed card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disaster Radius"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

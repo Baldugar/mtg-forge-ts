@@ -1,0 +1,23 @@
+{
+  "id": "stomping-ground-corpus-m682",
+  "description": "M6 corpus — Stomping Ground; in-hand parse.",
+  "seed": 64618,
+  "cards": {
+    "Stomping Ground": "Name:Stomping Ground\nManaCost:no cost\nTypes:Land Mountain Forest\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may pay 2 life. If you don't, it enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<2> | UnlessPayer$ You | StackDescription$ enters tapped.\nOracle:({T}: Add {R} or {G}.)\\nAs Stomping Ground enters, you may pay 2 life. If you don't, it enters tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Stomping Ground"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

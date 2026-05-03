@@ -1,0 +1,23 @@
+{
+  "id": "alquist-proft-master-sleuth-corpus-m682",
+  "description": "M6 corpus — Alquist Proft, Master Sleuth; in-hand parse.",
+  "seed": 61466,
+  "cards": {
+    "Alquist Proft, Master Sleuth": "Name:Alquist Proft, Master Sleuth\nManaCost:1 W U\nTypes:Legendary Creature Human Detective\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigInvestigate | TriggerDescription$ When CARDNAME enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\nSVar:TrigInvestigate:DB$ Investigate\nA:AB$ Draw | Cost$ X W U U T Sac<1/Clue> | NumCards$ X | SubAbility$ DBGainLife | SpellDescription$ You draw X cards and gain X life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Investigate|Token|Sacrifice|LifeGain & Type$Artifact|Clue\nDeckHints:Ability$Investigate\nOracle:Vigilance\\nWhen Alquist Proft, Master Sleuth enters, investigate. (Create a Clue token. It's an artifact with \"{2}, Sacrifice this artifact: Draw a card.\")\\n{X}{W}{U}{U}, {T}, Sacrifice a Clue: You draw X cards and gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Alquist Proft, Master Sleuth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

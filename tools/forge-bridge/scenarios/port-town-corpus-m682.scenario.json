@@ -1,0 +1,23 @@
+{
+  "id": "port-town-corpus-m682",
+  "description": "M6 corpus — Port Town; in-hand parse.",
+  "seed": 63800,
+  "cards": {
+    "Port Town": "Name:Port Town\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SpellDescription$ Add {W} or {U}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal a Plains or Island card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Plains;Island/Plains or Island> | UnlessPayer$ You | StackDescription$ enters tapped.\nOracle:As Port Town enters, you may reveal a Plains or Island card from your hand. If you don't, Port Town enters tapped.\\n{T}: Add {W} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Port Town"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pia-s-revolution-corpus-m682",
+  "description": "M6 corpus — Pia's Revolution; in-hand parse.",
+  "seed": 63763,
+  "cards": {
+    "Pia's Revolution": "Name:Pia's Revolution\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.YouOwn+!token | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a nontoken artifact is put into your graveyard from the battlefield, return that card to your hand unless target opponent has CARDNAME deal 3 damage to them.\nSVar:TrigReturn:DB$ ChangeZone | ThisDefinedAndTgts$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand | UnlessCost$ DamageYou<3> | UnlessPayer$ Targeted | ValidTgts$ Opponent | IsCurse$ True\nSVar:BuffedBy:Permanent.White,Permanent.Black\nOracle:Whenever a nontoken artifact is put into your graveyard from the battlefield, return that card to your hand unless target opponent has Pia's Revolution deal 3 damage to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pia's Revolution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

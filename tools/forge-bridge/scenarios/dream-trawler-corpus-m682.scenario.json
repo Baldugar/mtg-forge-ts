@@ -1,0 +1,23 @@
+{
+  "id": "dream-trawler-corpus-m682",
+  "description": "M6 corpus — Dream Trawler; in-hand parse.",
+  "seed": 62088,
+  "cards": {
+    "Dream Trawler": "Name:Dream Trawler\nManaCost:2 W W U U\nTypes:Creature Sphinx\nPT:3/5\nK:Flying\nK:Lifelink\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you draw a card, CARDNAME gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Pump | Cost$ Discard<1/Card> | Defined$ Self | KW$ Hexproof | SubAbility$ DBTap | SpellDescription$ CARDNAME gains hexproof until end of turn. Tap it.\nSVar:DBTap:DB$ Tap | Defined$ Self\nOracle:Flying, lifelink\\nWhenever you draw a card, Dream Trawler gets +1/+0 until end of turn.\\nWhenever Dream Trawler attacks, draw a card.\\nDiscard a card: Dream Trawler gains hexproof until end of turn. Tap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Trawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "denethor-ruling-steward-corpus-m682",
+  "description": "M6 corpus — Denethor, Ruling Steward; in-hand parse.",
+  "seed": 61985,
+  "cards": {
+    "Denethor, Ruling Steward": "Name:Denethor, Ruling Steward\nManaCost:1 W B\nTypes:Legendary Creature Human Noble\nPT:2/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if a creature died under your control this turn, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouCtrl\nA:AB$ LoseLife | Cost$ 2 Sac<1/Creature.Other/another creature> | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 1 life and you gain 1 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$Token|LifeGain|Sacrifice & Type$Soldier\nOracle:At the beginning of your end step, if a creature died under your control this turn, create a 1/1 white Human Soldier creature token.\\n{2}, Sacrifice another creature: Each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Denethor, Ruling Steward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

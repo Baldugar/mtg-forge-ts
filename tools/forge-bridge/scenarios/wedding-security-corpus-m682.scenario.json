@@ -1,0 +1,23 @@
+{
+  "id": "wedding-security-corpus-m682",
+  "description": "M6 corpus — Wedding Security; in-hand parse.",
+  "seed": 65217,
+  "cards": {
+    "Wedding Security": "Name:Wedding Security\nManaCost:3 B B\nTypes:Creature Vampire Soldier\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounter | IsPresent$ Blood.token+YouCtrl | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice a Blood token. If you do, put a +1/+1 counter on CARDNAME and draw a card.\nSVar:TrigPutCounter:AB$ PutCounter | Cost$ Sac<1/Blood.token/Blood token> | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Counters|Sacrifice\nDeckNeeds:Type$Blood\nOracle:Whenever Wedding Security attacks, you may sacrifice a Blood token. If you do, put a +1/+1 counter on Wedding Security and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wedding Security"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

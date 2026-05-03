@@ -1,0 +1,23 @@
+{
+  "id": "krovikan-horror-corpus-m682",
+  "description": "M6 corpus — Krovikan Horror; in-hand parse.",
+  "seed": 63073,
+  "cards": {
+    "Krovikan Horror": "Name:Krovikan Horror\nManaCost:3 B\nTypes:Creature Horror Spirit\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Graveyard | IsPresent$ Creature.YouOwn+DirectlyAbove | PresentZone$ Graveyard | PresentCompare$ EQ1 | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ At the beginning of the end step, if CARDNAME is in your graveyard with a creature card directly above it, you may return CARDNAME to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nA:AB$ DealDamage | Cost$ 1 Sac<1/Creature> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nSVar:DiscardMe:3\nSVar:SacMe:1\nSVar:NeedsOrderedGraveyard:TRUE\nOracle:At the beginning of the end step, if Krovikan Horror is in your graveyard with a creature card directly above it, you may return Krovikan Horror to your hand.\\n{1}, Sacrifice a creature: Krovikan Horror deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Krovikan Horror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "comet-crawler-corpus-m682",
+  "description": "M6 corpus — Comet Crawler; in-hand parse.",
+  "seed": 61787,
+  "cards": {
+    "Comet Crawler": "Name:Comet Crawler\nManaCost:2 B\nTypes:Creature Insect Horror\nPT:2/3\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever this creature attacks, you may sacrifice another creature or artifact. If you do, this creature gets +2/+0 until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ Sac<1/Artifact.Other;Creature.Other/another creature or artifact> | Defined$ Self | NumAtt$ +2\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nOracle:Lifelink\\nWhenever this creature attacks, you may sacrifice another creature or artifact. If you do, this creature gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Comet Crawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

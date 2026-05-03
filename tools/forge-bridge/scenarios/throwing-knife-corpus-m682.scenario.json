@@ -1,0 +1,23 @@
+{
+  "id": "throwing-knife-corpus-m682",
+  "description": "M6 corpus — Throwing Knife; in-hand parse.",
+  "seed": 64863,
+  "cards": {
+    "Throwing Knife": "Name:Throwing Knife\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | Execute$ TrigDamage | OptionalDecider$ You | TriggerDescription$ Whenever equipped creature attacks, you may sacrifice CARDNAME. If you do, CARDNAME deals 2 damage to any target.\nSVar:TrigDamage:AB$ DealDamage | Cost$ Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 2\nAI:RemoveDeck:All\nOracle:Equipped creature gets +2/+0.\\nWhenever equipped creature attacks, you may sacrifice Throwing Knife. If you do, Throwing Knife deals 2 damage to any target.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Throwing Knife"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

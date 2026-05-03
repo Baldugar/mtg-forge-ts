@@ -1,0 +1,23 @@
+{
+  "id": "centaur-garden-corpus-m682",
+  "description": "M6 corpus — Centaur Garden; in-hand parse.",
+  "seed": 61664,
+  "cards": {
+    "Centaur Garden": "Name:Centaur Garden\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ G | SubAbility$ DBPain | SpellDescription$ Add {G}. CARDNAME deals 1 damage to you.\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nA:AB$ Pump | Cost$ G T Sac<1/CARDNAME> | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | Activation$ Threshold | PrecostDesc$ Threshold — | SpellDescription$ Target creature gets +3/+3 until end of turn. Activate only if there are seven or more cards in your graveyard.\nAI:RemoveDeck:Random\nOracle:{T}: Add {G}. Centaur Garden deals 1 damage to you.\\nThreshold — {G}, {T}, Sacrifice Centaur Garden: Target creature gets +3/+3 until end of turn. Activate only if there are seven or more cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Centaur Garden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

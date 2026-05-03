@@ -1,0 +1,23 @@
+{
+  "id": "guac-marshmallow-pizza-corpus-m682",
+  "description": "M6 corpus — Guac & Marshmallow Pizza; in-hand parse.",
+  "seed": 62660,
+  "cards": {
+    "Guac & Marshmallow Pizza": "Name:Guac & Marshmallow Pizza\nManaCost:G\nTypes:Artifact Food\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this artifact enters, target creature gets +2/+2 until end of turn. Untap it.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +2 | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this artifact> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nOracle:Flash\\nWhen this artifact enters, target creature gets +2/+2 until end of turn. Untap it.\\n{2}, {T}, Sacrifice this artifact: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Guac & Marshmallow Pizza"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

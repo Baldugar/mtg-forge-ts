@@ -1,0 +1,23 @@
+{
+  "id": "mishra-excavation-prodigy-corpus-m682",
+  "description": "M6 corpus — Mishra, Excavation Prodigy; in-hand parse.",
+  "seed": 63390,
+  "cards": {
+    "Mishra, Excavation Prodigy": "Name:Mishra, Excavation Prodigy\nManaCost:2 R\nTypes:Legendary Creature Human Artificer\nPT:2/1\nK:Haste\nA:AB$ Draw | Cost$ 1 T Discard<1/Card> | SpellDescription$ Draw a card.\nT:Mode$ DiscardedAll | ValidPlayer$ You | ValidCard$ Card.Artifact | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigMana | TriggerDescription$ Whenever you discard one or more artifact cards, add {R}{R}. This ability triggers only once each turn.\nSVar:TrigMana:DB$ Mana | Produced$ R R\nSVar:AIPreference:DiscardCost$Card.Artifact\nDeckHas:Ability$Discard\nDeckHints:Type$Artifact\nOracle:Haste\\n{1}, {T}, Discard a card: Draw a card.\\nWhenever you discard one or more artifact cards, add {R}{R}. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mishra, Excavation Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

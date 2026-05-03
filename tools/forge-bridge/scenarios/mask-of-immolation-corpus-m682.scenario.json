@@ -1,0 +1,23 @@
+{
+  "id": "mask-of-immolation-corpus-m682",
+  "description": "M6 corpus — Mask of Immolation; in-hand parse.",
+  "seed": 63293,
+  "cards": {
+    "Mask of Immolation": "Name:Mask of Immolation\nManaCost:1 R\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 red Elemental creature token, then attach CARDNAME to it.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_elemental | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddAbility$ Damage | Description$ Equipped creature has \"Sacrifice this creature: It deals 1 damage to any target.\"\nSVar:Damage:AB$ DealDamage | Cost$ Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ It deals 1 damage to any target.\nSVar:NonStackingAttachEffect:True\nK:Equip:2\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice|Token & Type$Elemental\nOracle:When Mask of Immolation enters, create a 1/1 red Elemental creature token, then attach Mask of Immolation to it.\\nEquipped creature has \"Sacrifice this creature: It deals 1 damage to any target.\"\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mask of Immolation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

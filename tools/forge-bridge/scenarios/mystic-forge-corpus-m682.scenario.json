@@ -1,0 +1,23 @@
+{
+  "id": "mystic-forge-corpus-m682",
+  "description": "M6 corpus — Mystic Forge; in-hand parse.",
+  "seed": 63486,
+  "cards": {
+    "Mystic Forge": "Name:Mystic Forge\nManaCost:4\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ You | Description$ You may look at the top card of your library any time.\nS:Mode$ Continuous | Affected$ Artifact.TopLibrary+YouCtrl+nonLand,Card.TopLibrary+Colorless+YouCtrl+nonLand | AffectedZone$ Library | MayPlay$ True | Description$ You may cast artifact spells and colorless spells from the top of your library.\nAI:RemoveDeck:Random\nA:AB$ Dig | Cost$ T PayLife<1> | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | SpellDescription$ Exile the top card of your library.\nOracle:You may look at the top card of your library any time.\\nYou may cast artifact spells and colorless spells from the top of your library.\\n{T}, Pay 1 life: Exile the top card of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mystic Forge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "west-wind-avatar-corpus-m682",
+  "description": "M6 corpus — West Wind Avatar; in-hand parse.",
+  "seed": 65223,
+  "cards": {
+    "West Wind Avatar": "Name:West Wind Avatar\nManaCost:5 G G\nTypes:Creature Cat Spirit Avatar\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ Whenever this creature enters or attacks, you may sacrifice a token or a land. If you do, you gain 3 life.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigGainLife | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature enters or attacks, you may sacrifice a token or a land. If you do, you gain 3 life.\nSVar:TrigGainLife:AB$ GainLife | Cost$ Sac<1/Permanent.token;Land/token or a land> | Defined$ You | LifeAmount$ 3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | Revolt$ True | TriggerDescription$ Disappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:HasAttackEffect:TRUE\nOracle:Trample\\nWhenever this creature enters or attacks, you may sacrifice a token or a land. If you do, you gain 3 life.\\nDisappear — At the beginning of your end step, if a permanent left the battlefield under your control this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "West Wind Avatar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

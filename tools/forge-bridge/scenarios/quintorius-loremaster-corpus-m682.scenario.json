@@ -1,0 +1,23 @@
+{
+  "id": "quintorius-loremaster-corpus-m682",
+  "description": "M6 corpus — Quintorius, Loremaster; in-hand parse.",
+  "seed": 63890,
+  "cards": {
+    "Quintorius, Loremaster": "Name:Quintorius, Loremaster\nManaCost:3 R W\nTypes:Legendary Creature Elephant Cleric\nPT:3/5\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of your end step, exile target noncreature, nonland card from your graveyard. Create a 3/2 red and white Spirit creature token.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card.nonCreature+nonLand+YouOwn | TgtPrompt$ Select target noncreature, nonland card in your graveyard | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ rw_3_2_spirit\nA:AB$ Pump | Cost$ 1 R W T Sac<1/Spirit> | ValidTgts$ Card.ExiledWithSource | TgtZone$ Exile | TgtPrompt$ Choose target card exiled with this creature | SubAbility$ DBEffect | StackDescription$ {p:You} chooses {c:Targeted} exiled with NICKNAME. {p:You} may cast that card this turn without paying its mana cost. If that spell would be put into a graveyard, put it on the bottom of its owner's library instead. | SpellDescription$ Choose target card exiled with NICKNAME. You may cast that card this turn without paying its mana cost. If that spell would be put into a graveyard, put it on the bottom of its owner's library instead.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ REQuintorius | StaticAbilities$ MayPlay | RememberObjects$ Targeted\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.nonLand+IsRemembered | AffectedZone$ Exile | Description$ Until end of turn, you may cast this card without paying its mana cost.\nSVar:REQuintorius:Event$ Moved | ValidLKI$ Card.CastSa Spell.MayPlaySource | Origin$ Stack | Destination$ Graveyard | ReplaceWith$ MoveLibrary\nSVar:MoveLibrary:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Stack | Destination$ Library | LibraryPosition$ -1\nDeckHas:Ability$Token|Graveyard|Sacrifice & Type$Spirit\nDeckHints:Type$Spirit\nOracle:Vigilance\\nAt the beginning of your end step, exile target noncreature, nonland card from your graveyard. Create a 3/2 red and white Spirit creature token.\\n{1}{R}{W}, {T}, Sacrifice a Spirit: Choose target card exiled with Quintorius. You may cast that card this turn without paying its mana cost. If that spell would be put into a graveyard, put it on the bottom of its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quintorius, Loremaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

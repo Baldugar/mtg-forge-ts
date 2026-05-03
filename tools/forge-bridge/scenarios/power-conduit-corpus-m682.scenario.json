@@ -1,0 +1,23 @@
+{
+  "id": "power-conduit-corpus-m682",
+  "description": "M6 corpus — Power Conduit; in-hand parse.",
+  "seed": 63806,
+  "cards": {
+    "Power Conduit": "Name:Power Conduit\nManaCost:2\nTypes:Artifact\nA:AB$ Charm | Cost$ T RemoveAnyCounter<1/Any/Permanent> | Choices$ ConduitCharge,ConduitP1P1 | Defined$ You\nSVar:ConduitCharge:DB$ PutCounter | ValidTgts$ Artifact | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on target artifact.\nSVar:ConduitP1P1:DB$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on target creature.\nSVar:AIRemoveCounterCostPriority:ANY\nOracle:{T}, Remove a counter from a permanent you control: Choose one —\\n• Put a charge counter on target artifact.\\n• Put a +1/+1 counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Power Conduit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

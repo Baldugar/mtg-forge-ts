@@ -1,0 +1,23 @@
+{
+  "id": "remorseless-punishment-corpus-m682",
+  "description": "M6 corpus — Remorseless Punishment; in-hand parse.",
+  "seed": 63973,
+  "cards": {
+    "Remorseless Punishment": "Name:Remorseless Punishment\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ Repeat | ValidTgts$ Opponent | RepeatSubAbility$ DBChoose | MaxRepeat$ 2 | StackDescription$ SpellDescription | SpellDescription$ Target opponent loses 5 life unless that player discards two cards or sacrifices a creature or planeswalker. Repeat this process once.\nSVar:DBChoose:DB$ GenericChoice | Defined$ ParentTarget | Choices$ Discard,Sacrifice | FallbackAbility$ LoseLifeFallback | AILogic$ PayUnlessCost\nSVar:Discard:DB$ LoseLife | LifeAmount$ 5 | Defined$ ParentTarget | UnlessCost$ Discard<2/Card> | UnlessPayer$ ParentTarget | SpellDescription$ you lose 5 life unless you discard two cards.\nSVar:Sacrifice:DB$ LoseLife | LifeAmount$ 5 | Defined$ ParentTarget | UnlessCost$ Sac<1/Creature;Planeswalker/creature or planeswalker> | UnlessPayer$ ParentTarget | SpellDescription$ you lose 5 life unless you sacrifice a creature or planeswalker.\nSVar:LoseLifeFallback:DB$ LoseLife | Defined$ ParentTarget | LifeAmount$ 5\nSVar:AIPreference:SacCost$Creature.token\nOracle:Target opponent loses 5 life unless that player discards two cards or sacrifices a creature or planeswalker. Repeat this process once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Remorseless Punishment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

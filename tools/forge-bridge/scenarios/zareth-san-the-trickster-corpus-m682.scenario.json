@@ -1,0 +1,23 @@
+{
+  "id": "zareth-san-the-trickster-corpus-m682",
+  "description": "M6 corpus — Zareth San, the Trickster; in-hand parse.",
+  "seed": 65308,
+  "cards": {
+    "Zareth San, the Trickster": "Name:Zareth San, the Trickster\nManaCost:3 U B\nTypes:Legendary Creature Merfolk Rogue\nPT:4/4\nK:Flash\nA:AB$ ChangeZone | Cost$ 2 U B Return<1/Rogue.unblocked+attacking+YouCtrl/unblocked attacking Rogue you control> | ActivationZone$ Hand | Defined$ Self | Origin$ Hand | Destination$ Battlefield | Tapped$ True | Attacking$ True | SpellDescription$ Put CARDNAME from your hand onto the battlefield tapped and attacking.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigGainControl | OptionalDecider$ You | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, you may put target permanent card from that player's graveyard onto the battlefield under your control.\nSVar:TrigGainControl:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ValidTgts$ Permanent | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select target permanent in opponent's graveyard\nDeckHints:Type$Rogue\nOracle:Flash\\n{2}{U}{B}, Return an unblocked attacking Rogue you control to its owner's hand: Put Zareth San, the Trickster from your hand onto the battlefield tapped and attacking.\\nWhenever Zareth San deals combat damage to a player, you may put target permanent card from that player's graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Zareth San, the Trickster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

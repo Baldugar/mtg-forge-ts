@@ -1,0 +1,23 @@
+{
+  "id": "saheeli-radiant-creator-corpus-m682",
+  "description": "M6 corpus — Saheeli, Radiant Creator; in-hand parse.",
+  "seed": 64140,
+  "cards": {
+    "Saheeli, Radiant Creator": "Name:Saheeli, Radiant Creator\nManaCost:1 G U R\nTypes:Legendary Creature Human Artificer\nPT:4/4\nT:Mode$ SpellCast | ValidCard$ Artificer,Artifact | ValidActivatingPlayer$ You | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an Artificer or artifact spell, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of combat on your turn, you may pay {E}{E}{E}. When you do, create a token that's a copy of target permanent you control, except it's a 5/5 artifact creature in addition to its other types and has haste. Sacrifice it at the beginning of the next end step.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ PayEnergy<3> | Execute$ TrigCopy | TriggerDescription$ When you do, create a token that's a copy of target permanent you control, except it's a 5/5 artifact creature in addition to its other types and has haste. Sacrifice it at the beginning of the next end step.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | SetPower$ 5 | SetToughness$ 5 | AddTypes$ Artifact & Creature | AddKeywords$ Haste | AtEOT$ Sacrifice\nDeckNeeds:Type$Artifact\nOracle:Whenever you cast an Artificer or artifact spell, you get {E} (an energy counter).\\nAt the beginning of combat on your turn, you may pay {E}{E}{E}. When you do, create a token that's a copy of target permanent you control, except it's a 5/5 artifact creature in addition to its other types and has haste. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saheeli, Radiant Creator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

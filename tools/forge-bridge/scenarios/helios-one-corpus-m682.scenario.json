@@ -1,0 +1,23 @@
+{
+  "id": "helios-one-corpus-m682",
+  "description": "M6 corpus — HELIOS One; in-hand parse.",
+  "seed": 62737,
+  "cards": {
+    "HELIOS One": "Name:HELIOS One\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1 | Cost$ 1 T | SpellDescription$ You get {E} (an energy counter).\nA:AB$ Destroy | Cost$ 3 T PayEnergy<X> Sac<1/CARDNAME> | ValidTgts$ Permanent.nonLand+cmcEQX | TgtPrompt$ Select target nonland permanent with mana value X | SorcerySpeed$ True | SpellDescription$ Destroy target nonland permanent with mana value X. Activate only as a sorcery.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHas:Ability$Counters|Sacrifice\nOracle:{T}: Add {C}.\\n{1}, {T}: You get {E} (an energy counter).\\n{3}, {T}, Pay X {E}, Sacrifice HELIOS One: Destroy target nonland permanent with mana value X. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "HELIOS One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

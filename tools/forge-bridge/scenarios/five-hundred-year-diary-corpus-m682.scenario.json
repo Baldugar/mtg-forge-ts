@@ -1,0 +1,23 @@
+{
+  "id": "five-hundred-year-diary-corpus-m682",
+  "description": "M6 corpus — Five Hundred Year Diary; in-hand parse.",
+  "seed": 62340,
+  "cards": {
+    "Five Hundred Year Diary": "Name:Five Hundred Year Diary\nManaCost:3 U\nTypes:Legendary Artifact Clue\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ U | Amount$ X | SpellDescription$ Add {U} for each Clue you control.\nSVar:X:Count$Valid Clue.YouCtrl\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHints:Type$Clue\nDeckHas:Ability$Sacrifice\nOracle:Five Hundred Year Diary enters tapped.\\n{T}: Add {U} for each Clue you control.\\n{2}, Sacrifice Five Hundred Year Diary: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Five Hundred Year Diary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "thousand-moons-smithy-corpus-m682",
+  "description": "M6 corpus — Thousand Moons Smithy; in-hand parse.",
+  "seed": 64845,
+  "cards": {
+    "Thousand Moons Smithy": "Name:Thousand Moons Smithy\nManaCost:2 W W\nTypes:Legendary Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a white Gnome Soldier artifact creature token with \"This creature's power and toughness are each equal to the number of artifacts and/or creatures you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ w_x_x_a_gnome_soldier_total_artifacts_creatures\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may tap five untapped artifacts and/or creatures you control. If you do, transform CARDNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ tapXType<5/Artifact;Creature/artifact or creature> | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Token & Type$Gnome|Soldier\nDeckHints:Type$Artifact\nAlternateMode:DoubleFaced\nOracle:When Thousand Moons Smithy enters, create a white Gnome Soldier artifact creature token with \"This creature's power and toughness are each equal to the number of artifacts and/or creatures you control.\"\\nAt the beginning of your first main phase, you may tap five untapped artifacts and/or creatures you control. If you do, transform Thousand Moons Smithy.\n\nALTERNATE\n\nName:Barracks of the Thousand\nManaCost:no cost\nTypes:Legendary Artifact Land\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nT:Mode$ SpellCast | ValidCard$ Artifact,Creature | ValidSA$ Spell.ManaFromCard.StrictlySelf | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerDescription$ Whenever you cast an artifact or creature spell using mana produced by CARDNAME, create a white Gnome Soldier artifact creature token with \"This creature's power and toughness are each equal to the number of artifacts and/or creatures you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ w_x_x_a_gnome_soldier_total_artifacts_creatures\nOracle:(Transforms from Thousand Moons Smithy.)\\n{T}: Add {W}.\\nWhenever you cast an artifact or creature spell using mana produced by Barracks of the Thousand, create a white Gnome Soldier artifact creature token with \"This creature's power and toughness are each equal to the number of artifacts and/or creatures you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Thousand Moons Smithy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

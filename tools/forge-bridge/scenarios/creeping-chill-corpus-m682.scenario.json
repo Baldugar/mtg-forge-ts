@@ -1,0 +1,23 @@
+{
+  "id": "creeping-chill-corpus-m682",
+  "description": "M6 corpus — Creeping Chill; in-hand parse.",
+  "seed": 61860,
+  "cards": {
+    "Creeping Chill": "Name:Creeping Chill\nManaCost:3 B\nTypes:Sorcery\nA:SP$ DamageAll | ValidPlayers$ Player.Opponent | StackDescription$ CARDNAME deals 3 damage to each opponent and | NumDmg$ 3 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 3 damage to each opponent and you gain 3 life.\nT:Mode$ ChangesZone | Origin$ Library | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME is put into your graveyard from your library, you may exile it. If you do, CARDNAME deals 3 damage to each opponent and you gain 3 life.\nSVar:TrigExile:AB$ DealDamage | Cost$ ExileAnyGrave<1/Card.TriggeredCard> | Defined$ Player.Opponent | NumDmg$ 3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nOracle:Creeping Chill deals 3 damage to each opponent and you gain 3 life.\\nWhen Creeping Chill is put into your graveyard from your library, you may exile it. If you do, Creeping Chill deals 3 damage to each opponent and you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creeping Chill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

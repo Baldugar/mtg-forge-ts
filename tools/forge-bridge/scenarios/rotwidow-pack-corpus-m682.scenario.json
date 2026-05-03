@@ -1,0 +1,23 @@
+{
+  "id": "rotwidow-pack-corpus-m682",
+  "description": "M6 corpus — Rotwidow Pack; in-hand parse.",
+  "seed": 64054,
+  "cards": {
+    "Rotwidow Pack": "Name:Rotwidow Pack\nManaCost:2 B G\nTypes:Creature Spider\nPT:2/4\nK:Reach\nA:AB$ Token | Cost$ 3 B G ExileFromGrave<1/Creature> | TokenScript$ g_1_2_spider_reach | TokenOwner$ You | SubAbility$ DBLoseLife | SpellDescription$ Create a 1/2 green Spider creature token with reach, then each opponent loses 1 life for each Spider you control.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X\nSVar:X:Count$Valid Spider.YouCtrl\nDeckHas:Ability$Token\nOracle:Reach\\n{3}{B}{G}, Exile a creature card from your graveyard: Create a 1/2 green Spider creature token with reach, then each opponent loses 1 life for each Spider you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rotwidow Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

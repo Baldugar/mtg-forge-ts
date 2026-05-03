@@ -1,0 +1,23 @@
+{
+  "id": "serpent-s-soul-jar-corpus-m682",
+  "description": "M6 corpus — Serpent's Soul-Jar; in-hand parse.",
+  "seed": 64288,
+  "cards": {
+    "Serpent's Soul-Jar": "Name:Serpent's Soul-Jar\nManaCost:2 B\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Elf.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever an Elf you control dies, exile it.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile\nA:AB$ Effect | Cost$ T PayLife<2> | StaticAbilities$ MayCast | SpellDescription$ Until end of turn, you may cast a creature spell from among cards exiled with CARDNAME.\nSVar:MayCast:Mode$ Continuous | Affected$ Creature.ExiledWithEffectSource+nonLand | MayPlay$ True | AffectedZone$ Exile | MayPlayLimit$ 1 | Description$ Until end of turn, you may cast a creature spell from among cards exiled with CARDNAME.\nDeckNeeds:Type$Elf\nOracle:Whenever an Elf you control dies, exile it.\\n{T}, Pay 2 life: Until end of turn, you may cast a creature spell from among cards exiled with Serpent's Soul-Jar.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Serpent's Soul-Jar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

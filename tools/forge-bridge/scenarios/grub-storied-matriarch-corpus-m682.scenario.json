@@ -1,0 +1,23 @@
+{
+  "id": "grub-storied-matriarch-corpus-m682",
+  "description": "M6 corpus — Grub, Storied Matriarch; in-hand parse.",
+  "seed": 62656,
+  "cards": {
+    "Grub, Storied Matriarch": "Name:Grub, Storied Matriarch\nManaCost:2 B\nTypes:Legendary Creature Goblin Warlock\nPT:2/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, return up to one target Goblin card from your graveyard to your hand.\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigChangeZone | Secondary$ True | TriggerDescription$ Whenever this creature enters or transforms into CARDNAME, return up to one target Goblin card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select up to one target Goblin card in your graveyard | ValidTgts$ Goblin.YouOwn | TargetMin$ 0 | TargetMax$ 1\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {R}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ R | Defined$ Self | Mode$ Transform\nDeckHints:Type$Goblin\nAlternateMode:DoubleFaced\nOracle:Menace\\nWhenever this creature enters or transforms into Grub, Storied Matriarch, return up to one target Goblin card from your graveyard to your hand.\\nAt the beginning of your first main phase, you may pay {R}. If you do, transform Grub.\n\nALTERNATE\n\nName:Grub, Notorious Auntie\nManaCost:no cost\nColors:red\nTypes:Legendary Creature Goblin Warrior\nPT:2/1\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME attacks, you may blight 1. If you do, create a tapped and attacking token that's a copy of the blighted creature, except it has \"At the beginning of the end step, sacrifice this token.\"\nSVar:TrigCopy:AB$ CopyPermanent | Cost$ Blight<1> | TokenTapped$ True | TokenAttacking$ True | Defined$ CounterPutCards | AtEOTTrig$ Sacrifice\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of your first main phase, you may pay {B}. If you do, transform NICKNAME.\nSVar:TrigTransform:AB$ SetState | Cost$ B | Defined$ Self | Mode$ Transform\nOracle:Menace\\nWhenever Grub attacks, you may blight 1. If you do, create a tapped and attacking token that's a copy of the blighted creature, except it has \"At the beginning of the end step, sacrifice this token.\"\\nAt the beginning of your first main phase, you may pay {B}. If you do, transform Grub.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grub, Storied Matriarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

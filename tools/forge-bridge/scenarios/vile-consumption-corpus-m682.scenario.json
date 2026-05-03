@@ -1,0 +1,23 @@
+{
+  "id": "vile-consumption-corpus-m682",
+  "description": "M6 corpus — Vile Consumption; in-hand parse.",
+  "seed": 65106,
+  "cards": {
+    "Vile Consumption": "Name:Vile Consumption\nManaCost:1 U B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature | AddTrigger$ UpkeepCostTrigger | Description$ All creatures have \"At the beginning of your upkeep, sacrifice this creature unless you pay 1 life.\"\nSVar:UpkeepCostTrigger:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay 1 life.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ PayLife<1>\nAI:RemoveDeck:Random\nOracle:All creatures have \"At the beginning of your upkeep, sacrifice this creature unless you pay 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vile Consumption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

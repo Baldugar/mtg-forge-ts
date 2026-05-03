@@ -1,0 +1,23 @@
+{
+  "id": "tin-wing-chimera-corpus-m682",
+  "description": "M6 corpus — Tin-Wing Chimera; in-hand parse.",
+  "seed": 64888,
+  "cards": {
+    "Tin-Wing Chimera": "Name:Tin-Wing Chimera\nManaCost:4\nTypes:Artifact Creature Chimera\nPT:2/2\nK:Flying\nA:AB$ PutCounter | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature.Chimera | TgtPrompt$ Select target Chimera creature | CounterType$ P2P2 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +2/+2 counter on target Chimera creature. It gains flying. (This effect lasts indefinitely.)\nSVar:DBPump:DB$ Pump | KW$ Flying | Defined$ Targeted | Duration$ Permanent\nAI:RemoveDeck:All\nOracle:Flying\\nSacrifice Tin-Wing Chimera: Put a +2/+2 counter on target Chimera creature. It gains flying. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tin-Wing Chimera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

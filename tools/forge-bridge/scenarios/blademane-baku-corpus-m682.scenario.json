@@ -1,0 +1,23 @@
+{
+  "id": "blademane-baku-corpus-m682",
+  "description": "M6 corpus — Blademane Baku; in-hand parse.",
+  "seed": 61540,
+  "cards": {
+    "Blademane Baku": "Name:Blademane Baku\nManaCost:1 R\nTypes:Creature Spirit\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nA:AB$ Pump | Cost$ 1 SubCounter<X/KI> | Defined$ Self | NumAtt$ +Y | SpellDescription$ For each counter removed, CARDNAME gets +2/+0 until end of turn.\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.2\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Blademane Baku.\\n{1}, Remove X ki counters from Blademane Baku: For each counter removed, Blademane Baku gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blademane Baku"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

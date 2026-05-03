@@ -1,0 +1,23 @@
+{
+  "id": "glint-eye-nephilim-corpus-m682",
+  "description": "M6 corpus — Glint-Eye Nephilim; in-hand parse.",
+  "seed": 62544,
+  "cards": {
+    "Glint-Eye Nephilim": "Name:Glint-Eye Nephilim\nManaCost:U B R G\nTypes:Creature Nephilim\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nA:AB$ Pump | Cost$ 1 Discard<1/Card> | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ CARDNAME gets +1/+1 until end of turn.\nDeckHas:Ability$Discard\nOracle:Whenever Glint-Eye Nephilim deals combat damage to a player, draw that many cards.\\n{1}, Discard a card: Glint-Eye Nephilim gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glint-Eye Nephilim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

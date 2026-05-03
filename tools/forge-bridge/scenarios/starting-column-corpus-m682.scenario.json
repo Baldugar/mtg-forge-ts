@@ -1,0 +1,23 @@
+{
+  "id": "starting-column-corpus-m682",
+  "description": "M6 corpus — Starting Column; in-hand parse.",
+  "seed": 64597,
+  "cards": {
+    "Starting Column": "Name:Starting Column\nManaCost:3\nTypes:Artifact\nK:Start your engines\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddAbility$ ABDraw | Description$ Max speed — {T}, Sacrifice this artifact: Draw two cards, then discard a card.\nSVar:ABDraw:AB$ Draw | PrecostDesc$ Max speed — | Cost$ T Sac<1/CARDNAME/this artifact> | NumCards$ 2 | Secondary$ True | SubAbility$ DBDiscard | SpellDescription$ Draw two cards, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose\nDeckHas:Ability$Sacrifice|Discard\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\n{T}: Add one mana of any color.\\nMax speed — {T}, Sacrifice this artifact: Draw two cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Starting Column"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

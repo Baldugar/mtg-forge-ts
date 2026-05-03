@@ -1,0 +1,23 @@
+{
+  "id": "champion-of-the-weird-corpus-m682",
+  "description": "M6 corpus — Champion of the Weird; in-hand parse.",
+  "seed": 61685,
+  "cards": {
+    "Champion of the Weird": "Name:Champion of the Weird\nManaCost:3 B\nTypes:Creature Goblin Berserker\nPT:5/5\nS:Mode$ RaiseCost | ValidCard$ Card.Self | Activator$ You | Type$ Spell | Cost$ BeholdExile<1/Goblin> | EffectZone$ All | Description$ As an additional cost to cast this spell, behold a Goblin and exile it. (Exile a Goblin you control or a Goblin card from your hand.)\nA:AB$ Blight | Cost$ PayLife<1> Blight<2> | SorcerySpeed$ True | ValidTgts$ Opponent | Num$ 2 | SpellDescription$ Target opponent blights 2. Activate only as a sorcery.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature leaves the battlefield, return the exiled card to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Hand\nSVar:PlayMain1:TRUE\nDeckHints:Type$Goblin\nOracle:As an additional cost to cast this spell, behold a Goblin and exile it. (Exile a Goblin you control or a Goblin card from your hand.)\\nPay 1 life, Blight 2: Target opponent blights 2. Activate only as a sorcery.\\nWhen this creature leaves the battlefield, return the exiled card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Champion of the Weird"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

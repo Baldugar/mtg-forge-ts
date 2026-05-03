@@ -1,0 +1,23 @@
+{
+  "id": "tiger-tribe-hunter-corpus-m682",
+  "description": "M6 corpus — Tiger-Tribe Hunter; in-hand parse.",
+  "seed": 64880,
+  "cards": {
+    "Tiger-Tribe Hunter": "Name:Tiger-Tribe Hunter\nManaCost:3 R R\nTypes:Creature Human Barbarian\nPT:4/4\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediate | TriggerZones$ Battlefield | CheckSVar$ PackTactics | SVarCompare$ GE6 | NoResolvingCheck$ True | TriggerDescription$ Pack tactics — Whenever CARDNAME attacks, if you attacked with creatures with total power 6 or greater this combat, you may sacrifice another creature. When you do, CARDNAME deals damage equal to the sacrificed creature's power to target creature.\nSVar:TrigImmediate:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | RememberObjects$ Sacrificed | Execute$ TrigDamage | TriggerDescription$ If you do, CARDNAME deals damage equal to the sacrificed creature's power to target creature.\nSVar:TrigDamage:DB$ DealDamage | ConditionDefined$ DelayTriggerRememberedLKI | ValidTgts$ Creature | NumDmg$ X\nSVar:X:TriggerRemembered$CardPower\nSVar:PackTactics:Count$Valid Creature.attacking$CardPower\nDeckHas:Ability$Sacrifice\nOracle:Trample\\nPack tactics — Whenever Tiger-Tribe Hunter attacks, if you attacked with creatures with total power 6 or greater this combat, you may sacrifice another creature. When you do, Tiger-Tribe Hunter deals damage equal to the sacrificed creature's power to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tiger-Tribe Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

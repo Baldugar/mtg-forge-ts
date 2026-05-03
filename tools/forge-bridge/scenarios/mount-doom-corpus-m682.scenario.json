@@ -1,0 +1,23 @@
+{
+  "id": "mount-doom-corpus-m682",
+  "description": "M6 corpus — Mount Doom; in-hand parse.",
+  "seed": 63445,
+  "cards": {
+    "Mount Doom": "Name:Mount Doom\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T PayLife<1> | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nA:AB$ DealDamage | Cost$ 1 B R T | Defined$ Opponent | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to each opponent.\nA:AB$ ChooseCard | Cost$ 5 B R T Sac<1/CARDNAME> Sac<1/Artifact.Legendary/legendary artifact> | Defined$ You | Amount$ 2 | Choices$ Creature | ChoiceTitle$ Choose up to two creatures | SorcerySpeed$ True | AILogic$ Duneblast | SubAbility$ DBDestroyAll | StackDescription$ {p:You} chooses up to two creatures. Destroy the rest. | SpellDescription$ Choose up to two creatures, then destroy the rest. Activate only as a sorcery.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonChosenCard | StackDescription$ None\nDeckNeeds:Type$Legendary & Type$Artifact\nOracle:{T}, Pay 1 life: Add {B} or {R}.\\n{1}{B}{R}, {T}: Mount Doom deals 1 damage to each opponent.\\n{5}{B}{R}, {T}, Sacrifice Mount Doom and a legendary artifact: Choose up to two creatures, then destroy the rest. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mount Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

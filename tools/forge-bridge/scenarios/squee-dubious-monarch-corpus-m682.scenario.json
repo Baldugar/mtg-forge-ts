@@ -1,0 +1,23 @@
+{
+  "id": "squee-dubious-monarch-corpus-m682",
+  "description": "M6 corpus — Squee, Dubious Monarch; in-hand parse.",
+  "seed": 64580,
+  "cards": {
+    "Squee, Dubious Monarch": "Name:Squee, Dubious Monarch\nManaCost:2 R\nTypes:Legendary Creature Goblin Noble\nPT:2/2\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 red Goblin creature token that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenTapped$ True | TokenAttacking$ True\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ Graveyard | Cost$ 3 R ExileFromGrave<4/Card.Other/other cards> | Description$ You may cast CARDNAME from your graveyard by paying {3}{R} and exiling four other cards from your graveyard rather than paying its mana cost.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Graveyard & Type$Goblin\nOracle:Haste\\nWhenever Squee, Dubious Monarch attacks, create a 1/1 red Goblin creature token that's tapped and attacking.\\nYou may cast Squee, Dubious Monarch from your graveyard by paying {3}{R} and exiling four other cards from your graveyard rather than paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Squee, Dubious Monarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

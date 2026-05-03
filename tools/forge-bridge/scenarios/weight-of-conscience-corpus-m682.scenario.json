@@ -1,0 +1,23 @@
+{
+  "id": "weight-of-conscience-corpus-m682",
+  "description": "M6 corpus — Weight of Conscience; in-hand parse.",
+  "seed": 65219,
+  "cards": {
+    "Weight of Conscience": "Name:Weight of Conscience\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack.\nA:AB$ ChangeZone | Cost$ tapXType<2/Creature.sharesCreatureTypeWith/creatures that share a creature type> | Defined$ Enchanted | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile enchanted creature.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature can't attack.\\nTap two untapped creatures you control that share a creature type: Exile enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Weight of Conscience"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

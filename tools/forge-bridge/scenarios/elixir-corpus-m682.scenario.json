@@ -1,0 +1,23 @@
+{
+  "id": "elixir-corpus-m682",
+  "description": "M6 corpus — Elixir; in-hand parse.",
+  "seed": 62163,
+  "cards": {
+    "Elixir": "Name:Elixir\nManaCost:1\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This artifact enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZoneAll | Cost$ 5 T Exile<1/CARDNAME/this artifact> | ChangeType$ Card.nonLand+YouCtrl | Origin$ Graveyard | Destination$ Library | RememberChanged$ True | SubAbility$ DBGainLife | Shuffle$ True | SpellDescription$ Shuffle all nonland cards from your graveyard into your library. You gain life equal to the number of cards shuffled into your library this way.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Remembered$Amount | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:This artifact enters tapped.\\n{5}, {T}, Exile this artifact: Shuffle all nonland cards from your graveyard into your library. You gain life equal to the number of cards shuffled into your library this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elixir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "martyr-of-sands-corpus-m682",
+  "description": "M6 corpus — Martyr of Sands; in-hand parse.",
+  "seed": 63287,
+  "cards": {
+    "Martyr of Sands": "Name:Martyr of Sands\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nA:AB$ GainLife | Cost$ 1 Reveal<X/Card.White> Sac<1/CARDNAME> | CostDesc$ {1}, Reveal X white cards from your hand, Sacrifice CARDNAME: | LifeAmount$ Y | SpellDescription$ You gain three times X life.\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.3\nAI:RemoveDeck:All\nOracle:{1}, Reveal X white cards from your hand, Sacrifice Martyr of Sands: You gain three times X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Martyr of Sands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

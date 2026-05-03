@@ -1,0 +1,23 @@
+{
+  "id": "garruk-apex-predator-corpus-m682",
+  "description": "M6 corpus — Garruk, Apex Predator; in-hand parse.",
+  "seed": 62457,
+  "cards": {
+    "Garruk, Apex Predator": "Name:Garruk, Apex Predator\nManaCost:5 B G\nTypes:Legendary Planeswalker Garruk\nLoyalty:5\nA:AB$ Destroy | Cost$ AddCounter<1/LOYALTY> | ValidTgts$ Planeswalker.Other | TgtPrompt$ Select another target planeswalker | Planeswalker$ True | SpellDescription$ Destroy another target planeswalker.\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ b_3_3_beast_deathtouch | TokenOwner$ You | SpellDescription$ Create a 3/3 black Beast creature token with deathtouch.\nA:AB$ Destroy | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature. You gain life equal to its toughness.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardToughness\nA:AB$ Effect | Cost$ SubCounter<8/LOYALTY> | ValidTgts$ Opponent | EffectOwner$ Targeted | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Garruk, Apex Predator | Image$ emblem_garruk_apex_predator | Triggers$ TrigAttackYou | Duration$ Permanent | AILogic$ Always | SpellDescription$ Target opponent gets an emblem with \"Whenever a creature attacks you, it gets +5/+5 and gains trample until end of turn.\"\nSVar:TrigAttackYou:Mode$ Attacks | ValidCard$ Creature | Attacked$ You | TriggerZones$ Command | Execute$ DBPump | TriggerDescription$ Whenever a creature attacks you, it gets +5/+5 and gains trample until end of turn.\nSVar:DBPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +5 | NumDef$ +5 | KW$ Trample\nOracle:[+1]: Destroy another target planeswalker.\\n[+1]: Create a 3/3 black Beast creature token with deathtouch.\\n[-3]: Destroy target creature. You gain life equal to its toughness.\\n[-8]: Target opponent gets an emblem with \"Whenever a creature attacks you, it gets +5/+5 and gains trample until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garruk, Apex Predator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

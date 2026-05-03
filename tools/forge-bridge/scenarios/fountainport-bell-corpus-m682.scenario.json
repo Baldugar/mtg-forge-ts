@@ -1,0 +1,23 @@
+{
+  "id": "fountainport-bell-corpus-m682",
+  "description": "M6 corpus — Fountainport Bell; in-hand parse.",
+  "seed": 62420,
+  "cards": {
+    "Fountainport Bell": "Name:Fountainport Bell\nManaCost:1\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:When Fountainport Bell enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.\\n{1}, Sacrifice Fountainport Bell: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fountainport Bell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

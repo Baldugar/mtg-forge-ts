@@ -1,0 +1,23 @@
+{
+  "id": "ruins-of-trokair-corpus-m682",
+  "description": "M6 corpus — Ruins of Trokair; in-hand parse.",
+  "seed": 64066,
+  "cards": {
+    "Ruins of Trokair": "Name:Ruins of Trokair\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ W | Amount$ 2 | SpellDescription$ Add {W}{W}.\nAI:RemoveDeck:All\nOracle:Ruins of Trokair enters tapped.\\n{T}: Add {W}.\\n{T}, Sacrifice Ruins of Trokair: Add {W}{W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ruins of Trokair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

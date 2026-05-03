@@ -1,0 +1,23 @@
+{
+  "id": "artillery-enthusiast-corpus-m682",
+  "description": "M6 corpus — Artillery Enthusiast; in-hand parse.",
+  "seed": 61495,
+  "cards": {
+    "Artillery Enthusiast": "Name:Artillery Enthusiast\nManaCost:R\nTypes:Creature Goblin Artificer\nPT:1/2\nS:Mode$ Continuous | Affected$ Creature.modified+YouCtrl | AddKeyword$ Menace | Description$ Modified creatures you control have menace.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSeek | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, seek a card with mana value equal to that card's mana value.\nSVar:TrigSeek:AB$ Seek | Cost$ Discard<1/Card> | Type$ Card.cmcEQX\nSVar:X:Discarded$CardManaCost\nDeckHas:Ability$Discard & Keyword$Menace\nDeckHints:Type$Equipment|Aura & Ability$Counters\nOracle:Modified creatures you control have menace.\\nWhen Artillery Enthusiast enters, you may discard a card. If you do, seek a card with mana value equal to that card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Artillery Enthusiast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

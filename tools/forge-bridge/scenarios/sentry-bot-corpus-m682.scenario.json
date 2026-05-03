@@ -1,0 +1,23 @@
+{
+  "id": "sentry-bot-corpus-m682",
+  "description": "M6 corpus — Sentry Bot; in-hand parse.",
+  "seed": 64279,
+  "cards": {
+    "Sentry Bot": "Name:Sentry Bot\nManaCost:4 W\nTypes:Artifact Creature Robot\nPT:2/5\nK:Flash\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature attacking you.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E} for each creature attacking you.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ X\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ PutCounterAll | TriggerDescription$ At the beginning of combat on your turn, you may pay {E}{E}{E}. If you do, put a +1/+1 counter on each creature you control.\nSVar:PutCounterAll:AB$ PutCounterAll | Cost$ PayEnergy<3> | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$Valid Creature.attackingYou\nDeckHas:Ability$Counters\nOracle:Flash\\nThis spell costs {1} less to cast for each creature attacking you.\\nWhen Sentry Bot enters, you get {E} for each creature attacking you.\\nAt the beginning of combat on your turn, you may pay {E}{E}{E}. If you do, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sentry Bot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

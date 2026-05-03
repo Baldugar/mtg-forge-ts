@@ -1,0 +1,23 @@
+{
+  "id": "battlefield-scavenger-corpus-m682",
+  "description": "M6 corpus — Battlefield Scavenger; in-hand parse.",
+  "seed": 61528,
+  "cards": {
+    "Battlefield Scavenger": "Name:Battlefield Scavenger\nManaCost:1 R\nTypes:Creature Jackal Rogue\nPT:2/2\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. (It won't untap during your next untap step.)\nT:Mode$ Exerted | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Whenever you exert a creature, you may discard a card. If you do, draw a card.\n# This code presumes that you are only ever allowed to exert creatures you control. If this is changed in the future, it will need an update.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card>\nOracle:You may exert Battlefield Scavenger as it attacks. (It won't untap during your next untap step.)\\nWhenever you exert a creature, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Battlefield Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cavalier-of-night-corpus-m682",
+  "description": "M6 corpus — Cavalier of Night; in-hand parse.",
+  "seed": 61658,
+  "cards": {
+    "Cavalier of Night": "Name:Cavalier of Night\nManaCost:2 B B B\nTypes:Creature Elemental Knight\nPT:4/5\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature. When you do, destroy target creature an opponent controls.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target creature an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLE3\nOracle:Lifelink\\nWhen Cavalier of Night enters, you may sacrifice another creature. When you do, destroy target creature an opponent controls.\\nWhen Cavalier of Night dies, return target creature card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavalier of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

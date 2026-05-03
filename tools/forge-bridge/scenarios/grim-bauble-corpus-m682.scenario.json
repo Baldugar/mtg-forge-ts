@@ -1,0 +1,23 @@
+{
+  "id": "grim-bauble-corpus-m682",
+  "description": "M6 corpus — Grim Bauble; in-hand parse.",
+  "seed": 62637,
+  "cards": {
+    "Grim Bauble": "Name:Grim Bauble\nManaCost:B\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When this artifact enters, target creature an opponent controls gets -2/-2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | NumDef$ -2\nA:AB$ Surveil | Cost$ 2 B T Sac<1/CARDNAME/this artifact> | Amount$ 2 | SpellDescription$ Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nDeckHas:Ability$Sacrifice|Surveil\nOracle:When this artifact enters, target creature an opponent controls gets -2/-2 until end of turn.\\n{2}{B}, {T}, Sacrifice this artifact: Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Grim Bauble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

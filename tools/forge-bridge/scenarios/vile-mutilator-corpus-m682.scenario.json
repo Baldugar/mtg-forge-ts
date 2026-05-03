@@ -1,0 +1,23 @@
+{
+  "id": "vile-mutilator-corpus-m682",
+  "description": "M6 corpus — Vile Mutilator; in-hand parse.",
+  "seed": 65107,
+  "cards": {
+    "Vile Mutilator": "Name:Vile Mutilator\nManaCost:5 B B\nTypes:Creature Demon\nPT:6/5\nA:SP$ PermanentCreature | Cost$ 5 B B Sac<1/Creature;Enchantment/creature or enchantment>\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ When CARDNAME enters, each opponent sacrifices a nontoken enchantment, then sacrifices a nontoken creature.\nSVar:TrigSacrifice:DB$ Sacrifice | Defined$ Opponent | SacValid$ Enchantment.!token | SacMessage$ nontoken enchantment | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature.!token | SacMessage$ nontoken creature\nOracle:As an additional cost to cast this spell, sacrifice a creature or enchantment.\\nFlying, trample\\nWhen Vile Mutilator enters, each opponent sacrifices a nontoken enchantment, then sacrifices a nontoken creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vile Mutilator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

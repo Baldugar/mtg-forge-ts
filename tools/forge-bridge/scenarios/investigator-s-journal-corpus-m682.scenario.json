@@ -1,0 +1,23 @@
+{
+  "id": "investigator-s-journal-corpus-m682",
+  "description": "M6 corpus — Investigator's Journal; in-hand parse.",
+  "seed": 62900,
+  "cards": {
+    "Investigator's Journal": "Name:Investigator's Journal\nManaCost:2\nTypes:Artifact Clue\nK:etbCounter:SUSPECT:X:no Condition:CARDNAME enters with a number of suspect counters on it equal to the greatest number of creatures a player controls.\nSVar:X:PlayerCountPlayers$HighestValid Creature.YouCtrl\nA:AB$ Draw | Cost$ 2 T SubCounter<1/SUSPECT> | NumCards$ 1 | SpellDescription$ Draw a card.\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Counters|Sacrifice\nOracle:Investigator's Journal enters with a number of suspect counters on it equal to the greatest number of creatures a player controls.\\n{2}, {T}, Remove a suspect counter from Investigator's Journal: Draw a card.\\n{2}, Sacrifice Investigator's Journal: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Investigator's Journal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

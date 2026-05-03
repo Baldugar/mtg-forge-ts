@@ -1,0 +1,23 @@
+{
+  "id": "gemstone-mine-corpus-m682",
+  "description": "M6 corpus — Gemstone Mine; in-hand parse.",
+  "seed": 62483,
+  "cards": {
+    "Gemstone Mine": "Name:Gemstone Mine\nManaCost:no cost\nTypes:Land\nK:etbCounter:MINING:3\nA:AB$ Mana | Cost$ T SubCounter<1/MINING> | Produced$ Any | SubAbility$ DBSac | SpellDescription$ Add one mana of any color. If there are no mining counters on CARDNAME, sacrifice it.\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | ConditionPresent$ Card.Self+counters_EQ0_MINING\nAI:RemoveDeck:Random\nOracle:Gemstone Mine enters with three mining counters on it.\\n{T}, Remove a mining counter from Gemstone Mine: Add one mana of any color. If there are no mining counters on Gemstone Mine, sacrifice it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gemstone Mine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

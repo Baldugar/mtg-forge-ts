@@ -1,0 +1,23 @@
+{
+  "id": "hapless-researcher-corpus-m682",
+  "description": "M6 corpus — Hapless Researcher; in-hand parse.",
+  "seed": 62691,
+  "cards": {
+    "Hapless Researcher": "Name:Hapless Researcher\nManaCost:U\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ Draw | Cost$ Sac<1/CARDNAME> | NumCards$ 1 | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:All\nOracle:Sacrifice Hapless Researcher: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hapless Researcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

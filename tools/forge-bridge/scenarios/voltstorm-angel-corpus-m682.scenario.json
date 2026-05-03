@@ -1,0 +1,23 @@
+{
+  "id": "voltstorm-angel-corpus-m682",
+  "description": "M6 corpus — Voltstorm Angel; in-hand parse.",
+  "seed": 65158,
+  "cards": {
+    "Voltstorm Angel": "Name:Voltstorm Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of combat on your turn, you may pay {E}{E}. When you do, ABILITY\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ PayEnergy<2> | Execute$ TrigCharm | TriggerDescription$ When you do, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBSelf,DBOthers\nSVar:DBSelf:DB$ Pump | Defined$ Self | KW$ Vigilance & Lifelink | SpellDescription$ CARDNAME gains vigilance and lifelink until end of turn.\nSVar:DBOthers:DB$ Pump | Defined$ Valid Creature.StrictlyOther+YouCtrl | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Other creatures you control get +1/+1 until end of turn.\nOracle:Flying\\nWhen Voltstorm Angel enters, you get {E}{E}{E} (three energy counters).\\nAt the beginning of combat on your turn, you may pay {E}{E}. When you do, choose one—\\n• Voltstorm Angel gains vigilance and lifelink until end of turn.\\n• Other creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voltstorm Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

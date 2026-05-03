@@ -1,0 +1,23 @@
+{
+  "id": "bag-of-devouring-corpus-m682",
+  "description": "M6 corpus — Bag of Devouring; in-hand parse.",
+  "seed": 61515,
+  "cards": {
+    "Bag of Devouring": "Name:Bag of Devouring\nManaCost:B\nTypes:Artifact\nT:Mode$ Sacrificed | ValidCard$ Artifact.!token+Other,Creature.!token+Other | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever you sacrifice another nontoken artifact or creature, exile it.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Exile\nA:AB$ Draw | Cost$ 2 T Sac<1/Artifact.Other;Creature.Other/another artifact or creature> | NumCards$ 1 | SpellDescription$ Draw a card.\nA:AB$ RollDice | Cost$ 3 T Sac<1/CARDNAME> | Sides$ 10 | ResultSVar$ X | SubAbility$ DBReturn | SpellDescription$ Roll a d10.\nSVar:DBReturn:DB$ ChangeZone | ChangeType$ Card.ExiledWithSource | ChangeNum$ X | Hidden$ True | Origin$ Exile | Destination$ Hand | StackDescription$ SpellDescription | SpellDescription$ Return up to X cards from among cards exiled with CARDNAME to their owners' hands, where X is the result.\nSVar:NonStackingEffect:True\nDeckHas:Ability$Sacrifice\nOracle:Whenever you sacrifice another nontoken artifact or creature, exile it.\\n{2}, {T}, Sacrifice another artifact or creature: Draw a card.\\n{3}, {T}, Sacrifice Bag of Devouring: Roll a d10. Return up to X cards from among cards exiled with Bag of Devouring to their owners' hands, where X is the result.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bag of Devouring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

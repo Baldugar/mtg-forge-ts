@@ -1,0 +1,23 @@
+{
+  "id": "darigaaz-s-caldera-corpus-m682",
+  "description": "M6 corpus — Darigaaz's Caldera; in-hand parse.",
+  "seed": 61915,
+  "cards": {
+    "Darigaaz's Caldera": "Name:Darigaaz's Caldera\nManaCost:no cost\nTypes:Land Lair\nA:AB$ Mana | Cost$ T | Produced$ Combo B R G | SpellDescription$ Add {B}, {R}, or {G}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Return<1/Land.nonLair/non-Lair land> | UnlessPayer$ You\nSVar:NeedsToPlay:Land.nonLair+YouCtrl\nOracle:When Darigaaz's Caldera enters, sacrifice it unless you return a non-Lair land you control to its owner's hand.\\n{T}: Add {B}, {R}, or {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darigaaz's Caldera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

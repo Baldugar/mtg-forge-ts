@@ -1,0 +1,23 @@
+{
+  "id": "celestial-vault-corpus-m682",
+  "description": "M6 corpus — Celestial Vault; in-hand parse.",
+  "seed": 61663,
+  "cards": {
+    "Celestial Vault": "Name:Celestial Vault\nManaCost:1 W\nTypes:Artifact\nA:AB$ Draft | Cost$ W T | Spellbook$ Angel of Destiny,Resplendent Angel,Angel of Vitality,Righteous Valkyrie,Angel of Invention,Angel of Sanctions,Valkyrie Harbinger,Emancipation Angel,Youthful Valkyrie,Resplendent Marshal,Enduring Angel,Sigardian Savior,Serra Angel,Stalwart Valkyrie,Segovian Angel | RememberDrafted$ True | SubAbility$ DBExile | StackDescription$ REP Draft_{p:You} drafts & exile_they exile | SpellDescription$ Draft a card from CARDNAME's spellbook and exile it face down.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ExileFaceDown$ True | Defined$ Remembered | StackDescription$ None\nA:AB$ ChangeZoneAll | Cost$ 1 Sac<1/CARDNAME> | Origin$ Exile | Destination$ Hand | ChangeType$ Card.IsRemembered+ExiledWithSource | SpellDescription$ Put each card exiled with CARDNAME into your hand.\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsRemembered+ExiledWithSource | Execute$ DBForget\nSVar:DBForget:DB$ Pump | ForgetObjects$ TriggeredCard\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Type$Angel & Ability$LifeGain|Token|Counters\nOracle:{W}, {T}: Draft a card from Celestial Vault's spellbook and exile it face down.\\n{1}, Sacrifice Celestial Vault: Put each card exiled with Celestial Vault into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Celestial Vault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

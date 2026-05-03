@@ -1,0 +1,23 @@
+{
+  "id": "sphere-of-the-suns-corpus-m682",
+  "description": "M6 corpus — Sphere of the Suns; in-hand parse.",
+  "seed": 64533,
+  "cards": {
+    "Sphere of the Suns": "Name:Sphere of the Suns\nManaCost:2\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ SphereTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped and with three charge counters on it.\nSVar:SphereTapped:DB$ Tap | Defined$ Self | ETB$ True | SubAbility$ DBAddCounter\nSVar:DBAddCounter:DB$ PutCounter | ETB$ True | Defined$ Self | CounterType$ CHARGE | CounterNum$ 3\nA:AB$ Mana | Cost$ T SubCounter<1/CHARGE> | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckHas:Ability$Counters\nOracle:Sphere of the Suns enters tapped and with three charge counters on it.\\n{T}, Remove a charge counter from Sphere of the Suns: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphere of the Suns"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

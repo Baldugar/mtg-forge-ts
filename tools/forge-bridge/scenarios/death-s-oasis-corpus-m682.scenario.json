@@ -1,0 +1,23 @@
+{
+  "id": "death-s-oasis-corpus-m682",
+  "description": "M6 corpus — Death's Oasis; in-hand parse.",
+  "seed": 61950,
+  "cards": {
+    "Death's Oasis": "Name:Death's Oasis\nManaCost:W B G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever a nontoken creature you control dies, mill two cards. Then return a creature card with lesser mana value than the creature that died from your graveyard to your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature.YouOwn+cmcLTY | Hidden$ True | ChangeNum$ 1\nSVar:Y:TriggeredCard$CardManaCost\nA:AB$ GainLife | Cost$ 1 Sac<1/CARDNAME> | LifeAmount$ X | SpellDescription$ You gain life equal to the highest mana value among creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl$GreatestCardManaCost\nDeckHas:Ability$LifeGain\nOracle:Whenever a nontoken creature you control dies, mill two cards. Then return a creature card with lesser mana value than the creature that died from your graveyard to your hand.\\n{1}, Sacrifice Death's Oasis: You gain life equal to the highest mana value among creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death's Oasis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

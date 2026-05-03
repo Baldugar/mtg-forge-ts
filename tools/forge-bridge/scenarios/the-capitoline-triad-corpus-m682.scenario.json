@@ -1,0 +1,23 @@
+{
+  "id": "the-capitoline-triad-corpus-m682",
+  "description": "M6 corpus — The Capitoline Triad; in-hand parse.",
+  "seed": 64790,
+  "cards": {
+    "The Capitoline Triad": "Name:The Capitoline Triad\nManaCost:10\nTypes:Legendary Creature God Artificer\nPT:7/7\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ Those Who Came Before — This spell costs {1} less to cast for each historic card in your graveyard. (Artifacts, legendaries, and Sagas are historic.)\nA:AB$ Effect | Cost$ ExileFromGrave<1+/Card.Historic+withTotalCMCGE30> | CostDesc$ Exile any number of historic cards from your graveyard with total mana value 30 or greater: | Name$ Emblem — The Capitoline Triad | Image$ emblem_the_capitoline_triad | StaticAbilities$ STSetPT | Stackable$ False | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Creatures you control have base power and toughness 9/9.\"\nSVar:STSetPT:Mode$ Continuous | Affected$ Creature.YouCtrl | AffectedZone$ Battlefield | SetPower$ 9 | SetToughness$ 9 | Description$ Creatures you control have base power and toughness 9/9.\nSVar:X:Count$ValidGraveyard Card.Historic+YouOwn\nDeckHints:Ability$Graveyard\nDeckNeeds:Type$Artifact|Saga|Legendary\nOracle:Those Who Came Before — This spell costs {1} less to cast for each historic card in your graveyard. (Artifacts, legendaries, and Sagas are historic.)\\nExile any number of historic cards from your graveyard with total mana value 30 or greater: You get an emblem with \"Creatures you control have base power and toughness 9/9.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Capitoline Triad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

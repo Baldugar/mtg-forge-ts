@@ -1,0 +1,23 @@
+{
+  "id": "discerning-peddler-corpus-m682",
+  "description": "M6 corpus — Discerning Peddler; in-hand parse.",
+  "seed": 62027,
+  "cards": {
+    "Discerning Peddler": "Name:Discerning Peddler\nManaCost:1 R\nTypes:Creature Human Rogue\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, draw a card.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:When Discerning Peddler enters, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discerning Peddler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

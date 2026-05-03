@@ -1,0 +1,23 @@
+{
+  "id": "leatherhead-swamp-stalker-corpus-m682",
+  "description": "M6 corpus — Leatherhead, Swamp Stalker; in-hand parse.",
+  "seed": 63119,
+  "cards": {
+    "Leatherhead, Swamp Stalker": "Name:Leatherhead, Swamp Stalker\nManaCost:2 G G\nTypes:Legendary Creature Crocodile Mutant Rogue\nPT:5/4\nK:Trample\nK:etbCounter:Hexproof:1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, you may remove a counter from her. When you do, destroy target artifact or enchantment that player controls.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ RemoveAnyCounter<1/Any/NICKNAME> | Execute$ TrigDestroy | TriggerDescription$ When you do, destroy target artifact or enchantment that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy Spawner>TriggeredTarget,Enchantment.ControlledBy Spawner>TriggeredTarget | TgtPrompt$ Select target nartifact or enchantment that player controls\nDeckHas:Ability$Counters\nOracle:Trample\\nLeatherhead enters with a hexproof counter on her.\\nWhenever Leatherhead deals combat damage to a player, you may remove a counter from her. When you do, destroy target artifact or enchantment that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Leatherhead, Swamp Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

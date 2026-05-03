@@ -1,0 +1,23 @@
+{
+  "id": "painful-quandary-corpus-m682",
+  "description": "M6 corpus — Painful Quandary; in-hand parse.",
+  "seed": 63685,
+  "cards": {
+    "Painful Quandary": "Name:Painful Quandary\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever an opponent casts a spell, that player loses 5 life unless they discard a card.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 5 | UnlessCost$ Discard<1/Card> | UnlessPayer$ TriggeredCardController\nOracle:Whenever an opponent casts a spell, that player loses 5 life unless they discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Painful Quandary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

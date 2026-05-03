@@ -1,0 +1,23 @@
+{
+  "id": "festering-evil-corpus-m682",
+  "description": "M6 corpus — Festering Evil; in-hand parse.",
+  "seed": 62309,
+  "cards": {
+    "Festering Evil": "Name:Festering Evil\nManaCost:3 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamageAll | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to each creature and each player.\nA:AB$ DamageAll | Cost$ B B Sac<1/CARDNAME> | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ 3 | ValidDescription$ each creature and each player. | SpellDescription$ It deals 3 damage to each creature and each player.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature | ValidPlayers$ Player | NumDmg$ 1 | ValidDescription$ each creature and each player.\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, Festering Evil deals 1 damage to each creature and each player.\\n{B}{B}, Sacrifice Festering Evil: It deals 3 damage to each creature and each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Festering Evil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

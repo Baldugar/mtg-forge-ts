@@ -1,0 +1,23 @@
+{
+  "id": "blazing-torch-corpus-m682",
+  "description": "M6 corpus — Blazing Torch; in-hand parse.",
+  "seed": 61543,
+  "cards": {
+    "Blazing Torch": "Name:Blazing Torch\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EquippedBy | ValidBlocker$ Creature.Vampire,Creature.Zombie | Description$ Equipped creature can't be blocked by Vampires or Zombies.\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddAbility$ TorchDamage | Description$ Equipped creature has \"{T}, Sacrifice CARDNAME: CARDNAME deals 2 damage to any target.\"\nSVar:TorchDamage:AB$ DealDamage | Cost$ T Sac<1/OriginalHost/Blazing Torch> | ValidTgts$ Any | NumDmg$ 2 | DamageSource$ OriginalHost | SpellDescription$ ORIGINALHOST deals 2 damage to any target.\nSVar:NonStackingAttachEffect:True\nDeckHas:Ability$Sacrifice\nOracle:Equipped creature can't be blocked by Vampires or Zombies.\\nEquipped creature has \"{T}, Sacrifice Blazing Torch: Blazing Torch deals 2 damage to any target.\"\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blazing Torch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

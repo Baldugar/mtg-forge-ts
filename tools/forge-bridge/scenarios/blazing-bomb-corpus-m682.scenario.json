@@ -1,0 +1,23 @@
+{
+  "id": "blazing-bomb-corpus-m682",
+  "description": "M6 corpus — Blazing Bomb; in-hand parse.",
+  "seed": 61542,
+  "cards": {
+    "Blazing Bomb": "Name:Blazing Bomb\nManaCost:R\nTypes:Creature Elemental\nPT:1/1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | ValidSAonCard$ Spell.ManaSpent GE4 | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a noncreature spell, if at least four mana was spent to cast it, put a +1/+1 counter on this creature.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ DealDamage | PrecostDesc$ Blow Up — | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Creature | NumDmg$ X | SorcerySpeed$ True | SpellDescription$ It deals damage equal to its power to target creature. Activate only as a sorcery.\nSVar:X:Sacrificed$CardPower\nOracle:Whenever you cast a noncreature spell, if at least four mana was spent to cast it, put a +1/+1 counter on this creature.\\nBlow Up — {T}, Sacrifice this creature: It deals damage equal to its power to target creature. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blazing Bomb"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ragost-deft-gastronaut-corpus-m682",
+  "description": "M6 corpus — Ragost, Deft Gastronaut; in-hand parse.",
+  "seed": 63900,
+  "cards": {
+    "Ragost, Deft Gastronaut": "Name:Ragost, Deft Gastronaut\nManaCost:R W\nTypes:Legendary Creature Lobster Citizen\nPT:2/2\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | AffectedZone$ Battlefield | AddType$ Food | AddAbility$ FoodSac | Description$ Artifacts you control are Foods in addition to their other types and have \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\"\nSVar:FoodSac:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this artifact> | Defined$ You | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nA:AB$ DealDamage | Cost$ 1 T Sac<1/Food> | NumDmg$ 3 | Defined$ Player.Opponent | SpellDescription$ NICKNAME deals 3 damage to each opponent.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigUntap | TriggerDescription$ At the beginning of each end step, if you gained life this turn, untap NICKNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nSVar:X:Count$LifeYouGainedThisTurn\nOracle:Artifacts you control are Foods in addition to their other types and have \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\"\\n{1}, {T}, Sacrifice a Food: Ragost deals 3 damage to each opponent.\\nAt the beginning of each end step, if you gained life this turn, untap Ragost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ragost, Deft Gastronaut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

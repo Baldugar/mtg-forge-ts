@@ -1,0 +1,23 @@
+{
+  "id": "blighted-blackthorn-corpus-m682",
+  "description": "M6 corpus — Blighted Blackthorn; in-hand parse.",
+  "seed": 61545,
+  "cards": {
+    "Blighted Blackthorn": "Name:Blighted Blackthorn\nManaCost:4 B\nTypes:Creature Treefolk Warlock\nPT:3/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this creature enters or attacks, you may blight 2. If you do, you draw a card and lose 1 life. (To blight 2, put two -1/-1 counters on a creature you control.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever this creature enters or attacks, you may blight 2. If you do, you draw a card and lose 1 life. (To blight 2, put two -1/-1 counters on a creature you control.)\nSVar:TrigDraw:AB$ Draw | Cost$ Blight<2> | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever this creature enters or attacks, you may blight 2. If you do, you draw a card and lose 1 life. (To blight 2, put two -1/-1 counters on a creature you control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blighted Blackthorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

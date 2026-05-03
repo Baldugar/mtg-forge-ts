@@ -1,0 +1,23 @@
+{
+  "id": "the-stone-brain-corpus-m682",
+  "description": "M6 corpus — The Stone Brain; in-hand parse.",
+  "seed": 64825,
+  "cards": {
+    "The Stone Brain": "Name:The Stone Brain\nManaCost:2\nTypes:Legendary Artifact\nA:AB$ NameCard | Cost$ 2 T Exile<1/CARDNAME> | Defined$ You | SubAbility$ ExileYard | SorcerySpeed$ True | SpellDescription$ Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. That player shuffles, then draws a card for each card exiled from their hand this way. Activate only as a sorcery.\nSVar:ExileYard:DB$ ChangeZone | ValidTgts$ Opponent | ChangeType$ Card.NamedCard | Origin$ Graveyard | DefinedPlayer$ Targeted | Chooser$ You | Destination$ Exile | ChangeNum$ Y | Hidden$ True | RememberChanged$ True | SubAbility$ ExileHand | StackDescription$ Search {p:Targeted}'s graveyard, hand, and library for up to four cards with that name and exile them.\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ Y | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None | RememberChanged$ True | Imprint$ True\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ Y | Chooser$ You | Shuffle$ True | StackDescription$ None | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ Z | Defined$ Targeted | SubAbility$ DBCleanup | StackDescription$ {p:Targeted} shuffles, then draws a card for each card exiled from their hand this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True | ClearNamedCard$ True\nSVar:X:Remembered$Amount\nSVar:Y:SVar$X/NMinus.4\nSVar:Z:Imprinted$Amount\nOracle:{2}, {T}, Exile The Stone Brain: Choose a card name. Search target opponent's graveyard, hand, and library for up to four cards with that name and exile them. That player shuffles, then draws a card for each card exiled from their hand this way. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "The Stone Brain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

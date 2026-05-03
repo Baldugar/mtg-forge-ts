@@ -1,0 +1,23 @@
+{
+  "id": "izzet-keyrune-corpus-m682",
+  "description": "M6 corpus — Izzet Keyrune; in-hand parse.",
+  "seed": 62920,
+  "cards": {
+    "Izzet Keyrune": "Name:Izzet Keyrune\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SpellDescription$ Add {U} or {R}.\nA:AB$ Animate | Cost$ U R | Defined$ Self | Power$ 2 | Toughness$ 1 | Types$ Artifact,Creature,Elemental | RemoveCreatureTypes$ True | Colors$ Blue,Red | OverwriteColors$ True | SpellDescription$ Until end of turn, CARDNAME becomes a 2/1 blue and red Elemental artifact creature.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoot | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Cost$ Draw<1/You>\nAI:RemoveDeck:Random\nDeckNeeds:Color$Blue|Red\nOracle:{T}: Add {U} or {R}.\\n{U}{R}: Until end of turn, Izzet Keyrune becomes a 2/1 blue and red Elemental artifact creature.\\nWhenever Izzet Keyrune deals combat damage to a player, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Izzet Keyrune"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

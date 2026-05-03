@@ -1,0 +1,23 @@
+{
+  "id": "voldaren-pariah-corpus-m682",
+  "description": "M6 corpus — Voldaren Pariah; in-hand parse.",
+  "seed": 65150,
+  "cards": {
+    "Voldaren Pariah": "Name:Voldaren Pariah\nManaCost:3 B B\nTypes:Creature Vampire Horror\nPT:3/3\nK:Flying\nA:AB$ SetState | Cost$ Sac<3/Creature.Other/other creatures> | Defined$ Self | Mode$ Transform | SpellDescription$ Transform CARDNAME.\nK:Madness:B B B\nDeckHints:Ability$Discard\nAlternateMode:DoubleFaced\nOracle:Flying\\nSacrifice three other creatures: Transform Voldaren Pariah.\\nMadness {B}{B}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n\nALTERNATE\n\nName:Abolisher of Bloodlines\nManaCost:no cost\nTypes:Creature Eldrazi Vampire\nPT:6/5\nK:Flying\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ When this creature transforms into CARDNAME, target opponent sacrifices three creatures.\nSVar:TrigSacrifice:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature | Amount$ 3\nOracle:Flying\\nWhen this creature transforms into Abolisher of Bloodlines, target opponent sacrifices three creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Voldaren Pariah"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

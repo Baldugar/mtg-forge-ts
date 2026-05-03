@@ -1,0 +1,23 @@
+{
+  "id": "titan-s-presence-corpus-m682",
+  "description": "M6 corpus — Titan's Presence; in-hand parse.",
+  "seed": 64898,
+  "cards": {
+    "Titan's Presence": "Name:Titan's Presence\nManaCost:3\nTypes:Instant\nA:SP$ ChangeZone | Cost$ 3 Reveal<1/Creature.Colorless> | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Exile | ConditionCheckSVar$ X | ConditionSVarCompare$ LEY | SpellDescription$ Exile target creature if its power is less than or equal to the revealed card's power.\nSVar:Y:Revealed$CardPower\nSVar:X:Targeted$CardPower\nAI:RemoveDeck:All\nDeckHints:Color$Colorless & Keyword$Devoid\nOracle:As an additional cost to cast this spell, reveal a colorless creature card from your hand.\\nExile target creature if its power is less than or equal to the revealed card's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Titan's Presence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

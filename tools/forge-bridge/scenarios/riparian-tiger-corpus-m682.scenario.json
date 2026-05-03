@@ -1,0 +1,23 @@
+{
+  "id": "riparian-tiger-corpus-m682",
+  "description": "M6 corpus — Riparian Tiger; in-hand parse.",
+  "seed": 64015,
+  "cards": {
+    "Riparian Tiger": "Name:Riparian Tiger\nManaCost:3 G G\nTypes:Creature Cat\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, you may pay {E}{E}. If you do, it gets +2/+2 until end of turn.\nSVar:TrigPump:AB$ Pump | Cost$ PayEnergy<2> | Defined$ Self | NumAtt$ +2 | NumDef$ +2\nSVar:HasAttackEffect:TRUE\nOracle:Trample\\nWhen Riparian Tiger enters, you get {E}{E} (two energy counters).\\nWhenever Riparian Tiger attacks, you may pay {E}{E}. If you do, it gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Riparian Tiger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

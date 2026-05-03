@@ -1,0 +1,23 @@
+{
+  "id": "culling-dais-corpus-m682",
+  "description": "M6 corpus — Culling Dais; in-hand parse.",
+  "seed": 61891,
+  "cards": {
+    "Culling Dais": "Name:Culling Dais\nManaCost:2\nTypes:Artifact\nA:AB$ PutCounter | Cost$ T Sac<1/Creature> | CounterType$ CHARGE | CounterNum$ 1 | SpellDescription$ Put a charge counter on CARDNAME.\nA:AB$ Draw | Cost$ 1 Sac<1/CARDNAME> | NumCards$ X | SpellDescription$ Draw a card for each charge counter on CARDNAME.\nSVar:X:Count$CardCounters.CHARGE\nAI:RemoveDeck:All\nOracle:{T}, Sacrifice a creature: Put a charge counter on Culling Dais.\\n{1}, Sacrifice Culling Dais: Draw a card for each charge counter on Culling Dais.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Culling Dais"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

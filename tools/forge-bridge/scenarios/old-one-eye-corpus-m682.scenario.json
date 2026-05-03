@@ -1,0 +1,23 @@
+{
+  "id": "old-one-eye-corpus-m682",
+  "description": "M6 corpus — Old One Eye; in-hand parse.",
+  "seed": 63618,
+  "cards": {
+    "Old One Eye": "Name:Old One Eye\nManaCost:5 G\nTypes:Legendary Creature Tyranid\nPT:6/6\nK:Trample\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddKeyword$ Trample | Description$ Other creatures you control have trample.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 5/5 green Tyranid creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_5_5_tyranid | TokenOwner$ You\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | IsPresent$ Card.StrictlySelf | TriggerZones$ Graveyard | PresentZone$ Graveyard | PresentPlayer$ You | Execute$ TrigReturn | TriggerDescription$ Fast Healing — At the beginning of your first main phase, you may discard two cards. If you do, return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ Discard<2/Card> | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Graveyard|Discard|Token & Keyword$Trample\nOracle:Trample\\nOther creatures you control have trample.\\nWhen Old One Eye enters, create a 5/5 green Tyranid creature token.\\nFast Healing — At the beginning of your first main phase, you may discard two cards. If you do, return Old One Eye from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Old One Eye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

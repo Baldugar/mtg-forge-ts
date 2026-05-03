@@ -1,0 +1,23 @@
+{
+  "id": "party-thrasher-corpus-m682",
+  "description": "M6 corpus — Party Thrasher; in-hand parse.",
+  "seed": 63703,
+  "cards": {
+    "Party Thrasher": "Name:Party Thrasher\nManaCost:1 R\nTypes:Creature Lizard Wizard\nPT:1/4\nS:Mode$ Continuous | Affected$ Card.YouCtrl+nonCreature+wasCastFromExile | AffectedZone$ Stack | AddKeyword$ Convoke | Description$ Noncreature spells you cast from exile have convoke. (Each creature you tap while casting a noncreature spell from exile pays for {1} or one mana of that creature's color.)\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of your first main phase, you may discard a card. If you do, exile the top two cards of your library, then choose one of them. You may play that card this turn.\nSVar:TrigExile:AB$ Dig | Cost$ Discard<1/Card> | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | Amount$ 1 | Mandatory$ True | Choices$ Card.IsRemembered | ChoiceZone$ Exile | ChoiceTitle$ Choose one of the exiled cards | SubAbility$ DBPlayEffect\nSVar:DBPlayEffect:DB$ Effect | StaticAbilities$ STPlay | ExileOnMoved$ Exile | SubAbility$ DBClearChosen\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.ChosenCard | AffectedZone$ Exile | Description$ You may play the chosen card this turn.\nSVar:DBClearChosen:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nOracle:Noncreature spells you cast from exile have convoke. (Each creature you tap while casting a noncreature spell from exile pays for {1} or one mana of that creature's color.)\\nAt the beginning of your first main phase, you may discard a card. If you do, exile the top two cards of your library, then choose one of them. You may play that card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Party Thrasher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

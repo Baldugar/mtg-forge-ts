@@ -1,0 +1,23 @@
+{
+  "id": "devastating-dreams-corpus-m682",
+  "description": "M6 corpus — Devastating Dreams; in-hand parse.",
+  "seed": 61995,
+  "cards": {
+    "Devastating Dreams": "Name:Devastating Dreams\nManaCost:R R\nTypes:Sorcery\nA:SP$ Sacrifice | Cost$ R R Discard<X/Random> | Defined$ Player | SacValid$ Land | Amount$ X | SubAbility$ DBDamage | SpellDescription$ Each player sacrifices X lands. CARDNAME deals X damage to each creature.\nSVar:DBDamage:DB$ DamageAll | NumDmg$ X | ValidCards$ Creature\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:As an additional cost to cast this spell, discard X cards at random.\\nEach player sacrifices X lands. Devastating Dreams deals X damage to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devastating Dreams"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

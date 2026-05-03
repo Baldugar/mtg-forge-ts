@@ -1,0 +1,23 @@
+{
+  "id": "firewake-sliver-corpus-m682",
+  "description": "M6 corpus — Firewake Sliver; in-hand parse.",
+  "seed": 62335,
+  "cards": {
+    "Firewake Sliver": "Name:Firewake Sliver\nManaCost:1 R G\nTypes:Creature Sliver\nPT:1/1\nS:Mode$ Continuous | Affected$ Creature.Sliver | AddKeyword$ Haste | Description$ All Sliver creatures have haste.\nS:Mode$ Continuous | Affected$ Sliver | AddAbility$ Pump | Description$ All Slivers have \"{1}, Sacrifice this permanent: Target Sliver creature gets +2/+2 until end of turn.\"\nSVar:Pump:AB$ Pump | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Sliver | TgtPrompt$ Choose target Sliver. | NumAtt$ +2 | NumDef$ +2 | SpellDescription$ Target Sliver creature gets +2/+2 until end of turn.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Sliver\nOracle:All Sliver creatures have haste.\\nAll Slivers have \"{1}, Sacrifice this permanent: Target Sliver creature gets +2/+2 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firewake Sliver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

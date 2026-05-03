@@ -1,0 +1,23 @@
+{
+  "id": "synth-eradicator-corpus-m682",
+  "description": "M6 corpus — Synth Eradicator; in-hand parse.",
+  "seed": 64698,
+  "cards": {
+    "Synth Eradicator": "Name:Synth Eradicator\nManaCost:2 R\nTypes:Artifact Creature Synth Soldier\nPT:3/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks, exile the top card of your library. You may get {E}{E} (two energy counters). If you don't, you may play that card this turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | Imprint$ True | SubAbility$ DBEnergy\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2 | RememberPut$ True | Optional$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Imprinted | ConditionDefined$ Remembered | ConditionPresent$ Player | ConditionCompare$ EQ0 | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nA:AB$ DealDamage | Cost$ T PayEnergy<3> | ValidTgts$ Any | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to any target.\nOracle:Haste\\nWhenever Synth Eradicator attacks, exile the top card of your library. You may get {E}{E} (two energy counters). If you don't, you may play that card this turn.\\n{T}, Pay {E}{E}{E}: Synth Eradicator deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Synth Eradicator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

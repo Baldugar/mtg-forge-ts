@@ -1,0 +1,23 @@
+{
+  "id": "land-grant-corpus-m682",
+  "description": "M6 corpus — Land Grant; in-hand parse.",
+  "seed": 63098,
+  "cards": {
+    "Land Grant": "Name:Land Grant\nManaCost:1 G\nTypes:Sorcery\nS:Mode$ AlternativeCost | ValidSA$ Spell | ValidCard$ Card.Self | ValidPlayer$ You | Cost$ Reveal<1/Hand> | EffectZone$ All | CheckSVar$ X | SVarCompare$ EQ0 | Description$ If you have no land cards in hand, you may reveal your hand rather than pay this spell's mana cost.\nSVar:X:Count$ValidHand Land.YouOwn\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Forest | ChangeNum$ 1 | SpellDescription$ Search your library for a Forest card, reveal that card, put it into your hand, then shuffle.\nOracle:If you have no land cards in hand, you may reveal your hand rather than pay this spell's mana cost.\\nSearch your library for a Forest card, reveal that card, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Land Grant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

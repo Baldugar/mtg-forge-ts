@@ -1,0 +1,23 @@
+{
+  "id": "niambi-esteemed-speaker-corpus-m682",
+  "description": "M6 corpus — Niambi, Esteemed Speaker; in-hand parse.",
+  "seed": 63546,
+  "cards": {
+    "Niambi, Esteemed Speaker": "Name:Niambi, Esteemed Speaker\nManaCost:W U\nTypes:Legendary Creature Human Cleric\nPT:2/1\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return another target creature you control to its owner's hand. If you do, you gain life equal to that creature's mana value.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardManaCost\nDeckHas:Ability$LifeGain\nA:AB$ Draw | Cost$ 1 W U T Discard<1/Card.Legendary/legendary> | NumCards$ 2 | SpellDescription$ Draw two cards.\nDeckHints:Type$Legendary\nOracle:Flash\\nWhen Niambi, Esteemed Speaker enters, you may return another target creature you control to its owner's hand. If you do, you gain life equal to that creature's mana value.\\n{1}{W}{U}, {T}, Discard a legendary card: Draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Niambi, Esteemed Speaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

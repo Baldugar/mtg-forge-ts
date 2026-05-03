@@ -1,0 +1,23 @@
+{
+  "id": "ogre-marauder-corpus-m682",
+  "description": "M6 corpus — Ogre Marauder; in-hand parse.",
+  "seed": 63610,
+  "cards": {
+    "Ogre Marauder": "Name:Ogre Marauder\nManaCost:1 B B\nTypes:Creature Ogre Warrior\nPT:3/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, it gains \"CARDNAME can't be blocked\" until end of turn unless defending player sacrifices a creature.\nSVar:TrigAnimate:DB$ Animate | UnlessCost$ Sac<1/Creature> | UnlessPayer$ DefendingPlayer | staticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.Self | Description$ CARDNAME can't be blocked.\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Ogre Marauder attacks, it gains \"Ogre Marauder can't be blocked\" until end of turn unless defending player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ogre Marauder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "valleymaker-corpus-m682",
+  "description": "M6 corpus — Valleymaker; in-hand parse.",
+  "seed": 65061,
+  "cards": {
+    "Valleymaker": "Name:Valleymaker\nManaCost:5 RG\nTypes:Creature Giant Shaman\nPT:5/5\nA:AB$ DealDamage | Cost$ T Sac<1/Mountain> | ValidTgts$ Creature | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to target creature.\nA:AB$ ChoosePlayer | Cost$ T Sac<1/Forest> | Defined$ You | SubAbility$ DBMana | SpellDescription$ Choose a player. That player adds {G}{G}{G}.\nSVar:DBMana:DB$ Mana | Produced$ G | Amount$ 3 | Defined$ ChosenPlayer\nAI:RemoveDeck:All\nOracle:{T}, Sacrifice a Mountain: Valleymaker deals 3 damage to target creature.\\n{T}, Sacrifice a Forest: Choose a player. That player adds {G}{G}{G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Valleymaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

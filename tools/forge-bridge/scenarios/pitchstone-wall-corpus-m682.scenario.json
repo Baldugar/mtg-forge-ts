@@ -1,0 +1,23 @@
+{
+  "id": "pitchstone-wall-corpus-m682",
+  "description": "M6 corpus — Pitchstone Wall; in-hand parse.",
+  "seed": 63776,
+  "cards": {
+    "Pitchstone Wall": "Name:Pitchstone Wall\nManaCost:2 R\nTypes:Creature Wall\nPT:2/5\nK:Defender\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ Whenever you discard a card, you may sacrifice CARDNAME. If you do, return the discarded card from your graveyard to your hand.\nSVar:TrigChange:AB$ ChangeZone | Cost$ Sac<1/CARDNAME> | Defined$ TriggeredCard | Origin$ Graveyard | Destination$ Hand\nAI:RemoveDeck:All\nOracle:Defender (This creature can't attack.)\\nWhenever you discard a card, you may sacrifice Pitchstone Wall. If you do, return the discarded card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pitchstone Wall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

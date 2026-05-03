@@ -1,0 +1,23 @@
+{
+  "id": "vulshok-war-boar-corpus-m682",
+  "description": "M6 corpus — Vulshok War Boar; in-hand parse.",
+  "seed": 65173,
+  "cards": {
+    "Vulshok War Boar": "Name:Vulshok War Boar\nManaCost:2 R R\nTypes:Creature Boar Beast\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice an artifact.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<1/Artifact> | UnlessPayer$ You\nAI:RemoveDeck:Random\nOracle:When Vulshok War Boar enters, sacrifice it unless you sacrifice an artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vulshok War Boar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

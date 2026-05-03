@@ -1,0 +1,23 @@
+{
+  "id": "teferi-timebender-corpus-m682",
+  "description": "M6 corpus — Teferi, Timebender; in-hand parse.",
+  "seed": 64736,
+  "cards": {
+    "Teferi, Timebender": "Name:Teferi, Timebender\nManaCost:4 W U\nTypes:Legendary Planeswalker Teferi\nLoyalty:5\nA:AB$ Untap | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Artifact,Creature | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose target artifact or creature | SpellDescription$ Untap up to one target artifact or creature.\nA:AB$ GainLife | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Defined$ You | LifeAmount$ 2 | SubAbility$ DBDraw | SpellDescription$ You gain 2 life and draw two cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2\nA:AB$ AddTurn | Cost$ SubCounter<9/LOYALTY> | Planeswalker$ True | Ultimate$ True | NumTurns$ 1 | SpellDescription$ Take an extra turn after this one.\nOracle:[+2]: Untap up to one target artifact or creature.\\n[-3]: You gain 2 life and draw two cards.\\n[-9]: Take an extra turn after this one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Teferi, Timebender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

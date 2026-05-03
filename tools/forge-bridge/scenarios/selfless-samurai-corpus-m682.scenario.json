@@ -1,0 +1,23 @@
+{
+  "id": "selfless-samurai-corpus-m682",
+  "description": "M6 corpus — Selfless Samurai; in-hand parse.",
+  "seed": 64273,
+  "cards": {
+    "Selfless Samurai": "Name:Selfless Samurai\nManaCost:1 W\nTypes:Creature Fox Samurai\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Samurai.YouCtrl,Warrior.YouCtrl | Alone$ True | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a Samurai or Warrior you control attacks alone, it gains lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Lifelink\nA:AB$ Pump | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select target creature you control | KW$ Indestructible | SpellDescription$ Another target creature you control gains indestructible until end of turn.\nDeckHints:Type$Samurai|Warrior\nOracle:Whenever a Samurai or Warrior you control attacks alone, it gains lifelink until end of turn.\\nSacrifice Selfless Samurai: Another target creature you control gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Selfless Samurai"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

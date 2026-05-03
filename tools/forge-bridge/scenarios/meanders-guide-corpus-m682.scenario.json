@@ -1,0 +1,23 @@
+{
+  "id": "meanders-guide-corpus-m682",
+  "description": "M6 corpus — Meanders Guide; in-hand parse.",
+  "seed": 63313,
+  "cards": {
+    "Meanders Guide": "Name:Meanders Guide\nManaCost:2 W\nTypes:Creature Merfolk Scout\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever this creature attacks, you may tap another untapped Merfolk you control. When you do, return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ tapXType<1/Merfolk.Other> | Execute$ TrigReturn | TriggerDescription$ When you do, return target creature card with mana value 3 or less from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | TgtPrompt$ Select target creature card with mana value 3 or less in your graveyard | ValidTgts$ Creature.cmcLE3+YouOwn | Origin$ Graveyard | Destination$ Battlefield\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Merfolk\nOracle:Whenever this creature attacks, you may tap another untapped Merfolk you control. When you do, return target creature card with mana value 3 or less from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Meanders Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

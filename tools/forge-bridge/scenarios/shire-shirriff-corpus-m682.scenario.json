@@ -1,0 +1,23 @@
+{
+  "id": "shire-shirriff-corpus-m682",
+  "description": "M6 corpus — Shire Shirriff; in-hand parse.",
+  "seed": 64344,
+  "cards": {
+    "Shire Shirriff": "Name:Shire Shirriff\nManaCost:1 W\nTypes:Creature Halfling Soldier\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, you may sacrifice a token. When you do, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Card.token/token> | Execute$ TrigExile | TriggerDescription$ When you do, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nDeckHas:Ability$Sacrifice\nDeckHints:Ability$Token\nOracle:Vigilance\\nWhen Shire Shirriff enters, you may sacrifice a token. When you do, exile target creature an opponent controls until Shire Shirriff leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shire Shirriff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

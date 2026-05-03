@@ -1,0 +1,23 @@
+{
+  "id": "xyru-specter-corpus-m682",
+  "description": "M6 corpus — Xyru Specter; in-hand parse.",
+  "seed": 65294,
+  "cards": {
+    "Xyru Specter": "Name:Xyru Specter\nManaCost:2 B B\nTypes:Creature Specter\nPT:2/2\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigChoice | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, that player discards a card unless they challenge you. If challenged, and you show them two black cards in your hand, they must discard two cards.\nSVar:TrigChoice:DB$ GenericChoice | Defined$ TriggeredTarget | Choices$ DBDiscardOne,DBChallenge | AILogic$ Random\nSVar:DBDiscardOne:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Discard one card\nSVar:DBChallenge:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 2 | Mode$ TgtChoose | UnlessCost$ Reveal<2/Card.Black> | UnlessPayer$ You | UnlessSwitched$ True | SpellDescription$ Challenge\nOracle:Flying\\nWhenever Xyru Specter deals damage to an opponent, that player discards a card unless they challenge you. If challenged, and you show them two black cards in your hand, they must discard two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xyru Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

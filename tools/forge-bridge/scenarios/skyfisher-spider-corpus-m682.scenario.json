@@ -1,0 +1,23 @@
+{
+  "id": "skyfisher-spider-corpus-m682",
+  "description": "M6 corpus — Skyfisher Spider; in-hand parse.",
+  "seed": 64424,
+  "cards": {
+    "Skyfisher Spider": "Name:Skyfisher Spider\nManaCost:2 B G\nTypes:Creature Spider\nPT:3/3\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, you may sacrifice another creature. When you do, destroy target nonland permanent.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | Execute$ TrigDestroy\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigGainLife | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME dies, you may gain 1 life for each creature card in your graveyard. If you do, exile CARDNAME from your graveyard.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ TrigExile\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredNewCardLKICopy\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHints:Ability$Graveyard|Mill|Dredge|Sacrifice\nDeckHas:Ability$Sacrifice|LifeGain|Graveyard\nOracle:Reach\\nWhen Skyfisher Spider enters, you may sacrifice another creature. When you do, destroy target nonland permanent.\\nWhen Skyfisher Spider dies, you may gain 1 life for each creature card in your graveyard. If you do, exile Skyfisher Spider from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Skyfisher Spider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

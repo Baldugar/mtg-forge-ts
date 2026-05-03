@@ -1,0 +1,23 @@
+{
+  "id": "spirit-bonds-corpus-m682",
+  "description": "M6 corpus — Spirit Bonds; in-hand parse.",
+  "seed": 64561,
+  "cards": {
+    "Spirit Bonds": "Name:Spirit Bonds\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Creature.!token+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control enters, you may pay {W}. If you do, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:AB$ Token | Cost$ W | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nA:AB$ Pump | Cost$ 1 W Sac<1/Spirit> | ValidTgts$ Creature.nonSpirit+YouCtrl | TgtPrompt$ Select target non-Spirit creature you control | KW$ Indestructible | SpellDescription$ Target non-Spirit creature you control gains indestructible until end of turn.\nSVar:BuffedBy:Creature\nDeckHas:Ability$Token\nOracle:Whenever a nontoken creature you control enters, you may pay {W}. If you do, create a 1/1 white Spirit creature token with flying.\\n{1}{W}, Sacrifice a Spirit: Target non-Spirit creature gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spirit Bonds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

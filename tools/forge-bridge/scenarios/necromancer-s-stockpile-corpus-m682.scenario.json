@@ -1,0 +1,23 @@
+{
+  "id": "necromancer-s-stockpile-corpus-m682",
+  "description": "M6 corpus — Necromancer's Stockpile; in-hand parse.",
+  "seed": 63520,
+  "cards": {
+    "Necromancer's Stockpile": "Name:Necromancer's Stockpile\nManaCost:1 B\nTypes:Enchantment\nA:AB$ Draw | Cost$ 1 B Discard<1/Creature> | NumCards$ 1 | SubAbility$ DBToken | SpellDescription$ Draw a card. If the discarded card was a Zombie card, create a tapped 2/2 black Zombie creature token.\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenTapped$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:X:Discarded$Valid Card.Zombie\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:{1}{B}, Discard a creature card: Draw a card. If the discarded card was a Zombie card, create a tapped 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Necromancer's Stockpile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

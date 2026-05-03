@@ -1,0 +1,23 @@
+{
+  "id": "storm-elemental-corpus-m682",
+  "description": "M6 corpus — Storm Elemental; in-hand parse.",
+  "seed": 64624,
+  "cards": {
+    "Storm Elemental": "Name:Storm Elemental\nManaCost:5 U\nTypes:Creature Elemental\nPT:3/4\nK:Flying\nA:AB$ Tap | Cost$ U ExileFromTop<1/Card> | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | SpellDescription$ Tap target creature with flying.\nA:AB$ Pump | Cost$ U ExileFromTop<1/Card> | Defined$ Self | NumAtt$ +X | NumDef$ +X | SpellDescription$ If the exiled card is a snow land, CARDNAME gets +1/+1 until end of turn.\nSVar:X:Exiled$Valid Land.Snow\nOracle:Flying\\n{U}, Exile the top card of your library: Tap target creature with flying.\\n{U}, Exile the top card of your library: If the exiled card is a snow land, Storm Elemental gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Storm Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

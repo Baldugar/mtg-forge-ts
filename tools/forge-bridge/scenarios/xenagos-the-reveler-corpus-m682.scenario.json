@@ -1,0 +1,23 @@
+{
+  "id": "xenagos-the-reveler-corpus-m682",
+  "description": "M6 corpus — Xenagos, the Reveler; in-hand parse.",
+  "seed": 65292,
+  "cards": {
+    "Xenagos, the Reveler": "Name:Xenagos, the Reveler\nManaCost:2 R G\nTypes:Legendary Planeswalker Xenagos\nLoyalty:3\nA:AB$ Mana | Cost$ AddCounter<1/LOYALTY> | Amount$ X | Produced$ Combo R G | Planeswalker$ True | SpellDescription$ Add X mana in any combination of {R} and/or {G}, where X is the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nA:AB$ Token | Cost$ AddCounter<0/LOYALTY> | TokenScript$ rg_2_2_satyr_haste | TokenOwner$ You | Planeswalker$ True | SpellDescription$ Create a 2/2 red and green Satyr creature token with haste.\nA:AB$ Dig | Cost$ SubCounter<6/LOYALTY> | DigNum$ 7 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | Planeswalker$ True | Ultimate$ True | SubAbility$ DBChangeZone | SpellDescription$ Exile the top seven cards of your library. You may put any number of creature and/or land cards from among them onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | ChangeType$ Creature.IsRemembered,Land.IsRemembered | Hidden$ True | ChangeNum$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$ValidExile Creature.IsRemembered,Land.IsRemembered\nAI:RemoveDeck:All\nDeckHas:Ability$Token\nOracle:[+1]: Add X mana in any combination of {R} and/or {G}, where X is the number of creatures you control.\\n[0]: Create a 2/2 red and green Satyr creature token with haste.\\n[-6]: Exile the top seven cards of your library. You may put any number of creature and/or land cards from among them onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Xenagos, the Reveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

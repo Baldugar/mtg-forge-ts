@@ -1,0 +1,23 @@
+{
+  "id": "underworld-connections-corpus-m682",
+  "description": "M6 corpus — Underworld Connections; in-hand parse.",
+  "seed": 65026,
+  "cards": {
+    "Underworld Connections": "Name:Underworld Connections\nManaCost:1 B B\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ UCDraw | Description$ Enchanted land has \"{T}, Pay 1 life: Draw a card.\"\nSVar:UCDraw:AB$ Draw | Cost$ T PayLife<1> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant land\\nEnchanted land has \"{T}, Pay 1 life: Draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Underworld Connections"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

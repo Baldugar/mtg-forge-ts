@@ -1,0 +1,23 @@
+{
+  "id": "waxmane-baku-corpus-m682",
+  "description": "M6 corpus — Waxmane Baku; in-hand parse.",
+  "seed": 65211,
+  "cards": {
+    "Waxmane Baku": "Name:Waxmane Baku\nManaCost:2 W\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigPutCounter | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nA:AB$ Tap | Cost$ 1 SubCounter<X/KI> | TargetMin$ X | TargetMax$ X | ValidTgts$ Creature | IsCurse$ True | TgtPrompt$ Select X target creatures | SpellDescription$ Tap X target creatures.\nSVar:X:Count$xPaid\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Waxmane Baku.\\n{1}, Remove X ki counters from Waxmane Baku: Tap X target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Waxmane Baku"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

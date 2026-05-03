@@ -1,0 +1,23 @@
+{
+  "id": "legion-s-initiative-corpus-m682",
+  "description": "M6 corpus — Legion's Initiative; in-hand parse.",
+  "seed": 63124,
+  "cards": {
+    "Legion's Initiative": "Name:Legion's Initiative\nManaCost:R W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.Red+YouCtrl | AddPower$ 1 | Description$ Red creatures you control get +1/+0.\nS:Mode$ Continuous | Affected$ Creature.White+YouCtrl | AddToughness$ 1 | Description$ White creatures you control get +0/+1.\nA:AB$ ChangeZoneAll | Cost$ R W Exile<1/CARDNAME> | Origin$ Battlefield | Destination$ Exile | ChangeType$ Creature.YouCtrl | RememberChanged$ True | SubAbility$ DBDelayTrig | SpellDescription$ Exile all creatures you control. At the beginning of the next combat, return those cards to the battlefield under their owner's control and those creatures gains haste until end of turn.\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ Player | Execute$ TrigReturn | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup | TriggerDescription$ At the beginning of the next combat, return those cards to the battlefield under their owner's control and those creatures gains haste until end of turn.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.IsTriggerRemembered | Origin$ Exile | Destination$ Battlefield | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Card.IsRemembered | KW$ Haste | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Red creatures you control get +1/+0.\\nWhite creatures you control get +0/+1.\\n{R}{W}, Exile Legion's Initiative: Exile all creatures you control. At the beginning of the next combat, return those cards to the battlefield under their owner's control and those creatures gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Legion's Initiative"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

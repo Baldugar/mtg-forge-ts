@@ -1,0 +1,23 @@
+{
+  "id": "body-dropper-corpus-m682",
+  "description": "M6 corpus — Body Dropper; in-hand parse.",
+  "seed": 61555,
+  "cards": {
+    "Body Dropper": "Name:Body Dropper\nManaCost:B R\nTypes:Creature Devil Warrior\nPT:2/2\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever you sacrifice another creature, put a +1/+1 counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ P1P1\nA:AB$ Pump | Cost$ B R Sac<1/Creature.Other/another creature> | Defined$ Self | KW$ Menace | AILogic$ Aristocrat | SpellDescription$ CARDNAME gains menace until end of turn. (It can't be blocked except by two or more creatures.)\nSVar:AIPreference:SacCost$Creature.token,Creature.cmcLE2\nDeckHas:Ability$Counters|Sacrifice\nOracle:Whenever you sacrifice another creature, put a +1/+1 counter on Body Dropper.\\n{B}{R}, Sacrifice another creature: Body Dropper gains menace until end of turn. (It can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Body Dropper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

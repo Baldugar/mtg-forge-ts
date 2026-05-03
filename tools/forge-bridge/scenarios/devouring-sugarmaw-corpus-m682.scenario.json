@@ -1,0 +1,23 @@
+{
+  "id": "devouring-sugarmaw-corpus-m682",
+  "description": "M6 corpus — Devouring Sugarmaw; in-hand parse.",
+  "seed": 62003,
+  "cards": {
+    "Devouring Sugarmaw": "Name:Devouring Sugarmaw\nManaCost:2 B B\nTypes:Creature Horror\nPT:6/6\nK:Menace\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may sacrifice an artifact, enchantment, or token. If you don't, tap CARDNAME.\nSVar:TrigTap:DB$ Tap | UnlessCost$ Sac<1/Card.token;Artifact;Enchantment/artifact, enchantment, or token> | UnlessPayer$ You | Defined$ Self\nDeckHas:Ability$Sacrifice|Token & Type$Human|Artifact|Food\nDeckHints:Ability$Token & Type$Artifact|Enchantment\nAlternateMode:Adventure\nOracle:Menace, trample\\nAt the beginning of your upkeep, you may sacrifice an artifact, enchantment, or token. If you don't, tap Devouring Sugarmaw.\n\nALTERNATE\n\nName:Have for Dinner\nManaCost:1 W\nTypes:Instant Adventure\nA:SP$ Token | TokenScript$ w_1_1_human,c_a_food_sac | TokenOwner$ You | SpellDescription$ Create a 1/1 white Human creature token and a Food token. (Then exile this card. You may cast the creature later from exile.)\nOracle:Create a 1/1 white Human creature token and a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devouring Sugarmaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

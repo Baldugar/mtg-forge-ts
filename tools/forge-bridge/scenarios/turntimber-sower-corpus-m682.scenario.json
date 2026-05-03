@@ -1,0 +1,23 @@
+{
+  "id": "turntimber-sower-corpus-m682",
+  "description": "M6 corpus — Turntimber Sower; in-hand parse.",
+  "seed": 64982,
+  "cards": {
+    "Turntimber Sower": "Name:Turntimber Sower\nManaCost:2 G\nTypes:Creature Elf Druid\nPT:3/3\nT:Mode$ ChangesZoneAll | ValidCards$ Land.YouOwn+!token | Origin$ Any | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever one or more land cards are put into your graveyard from anywhere, create a 0/1 green Plant creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_0_1_plant | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ G Sac<3/Creature> | TgtPrompt$ Choose target land card in your graveyard | ValidTgts$ Land.YouCtrl | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return target land card from your graveyard to your hand.\nAI:RemoveDeck:Random\nDeckHas:Ability$Token|Graveyard\nOracle:Whenever one or more land cards are put into your graveyard from anywhere, create a 0/1 green Plant creature token.\\n{G}, Sacrifice three creatures: Return target land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Turntimber Sower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

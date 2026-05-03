@@ -1,0 +1,23 @@
+{
+  "id": "rogue-elephant-corpus-m682",
+  "description": "M6 corpus — Rogue Elephant; in-hand parse.",
+  "seed": 64034,
+  "cards": {
+    "Rogue Elephant": "Name:Rogue Elephant\nManaCost:G\nTypes:Creature Elephant\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When CARDNAME enters, sacrifice it unless you sacrifice a Forest.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<1/Forest> | UnlessPayer$ You\nSVar:NeedsToPlay:Forest.YouCtrl\nOracle:When Rogue Elephant enters, sacrifice it unless you sacrifice a Forest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Rogue Elephant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

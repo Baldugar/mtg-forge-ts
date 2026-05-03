@@ -1,0 +1,23 @@
+{
+  "id": "razor-boomerang-corpus-m682",
+  "description": "M6 corpus — Razor Boomerang; in-hand parse.",
+  "seed": 63942,
+  "cards": {
+    "Razor Boomerang": "Name:Razor Boomerang\nManaCost:3\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddAbility$ RazorDamage | AddSVar$ BoomerangCatch | Description$ Equipped creature has \"{T}, Unattach CARDNAME: It deals 1 damage to any target. Return CARDNAME to its owner's hand.\"\nSVar:RazorDamage:AB$ DealDamage | Cost$ T Unattach<OriginalHost/Razor Boomerang> | NumDmg$ 1 | DamageSource$ OriginalHost | ValidTgts$ Any | SubAbility$ BoomerangCatch | SpellDescription$ It deals 1 damage to any target. Return ORIGINALHOST to its owner's hand.\nSVar:BoomerangCatch:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ OriginalHost\nK:Equip:2\nSVar:NonStackingAttachEffect:True\nOracle:Equipped creature has \"{T}, Unattach Razor Boomerang: It deals 1 damage to any target. Return Razor Boomerang to its owner's hand.\"\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razor Boomerang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

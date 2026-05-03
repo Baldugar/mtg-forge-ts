@@ -1,0 +1,23 @@
+{
+  "id": "enigmatic-incarnation-corpus-m682",
+  "description": "M6 corpus — Enigmatic Incarnation; in-hand parse.",
+  "seed": 62208,
+  "cards": {
+    "Enigmatic Incarnation": "Name:Enigmatic Incarnation\nManaCost:2 G U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSearch | TriggerDescription$ At the beginning of your end step, you may sacrifice another enchantment. If you do, search your library for a creature card with mana value equal to 1 plus the sacrificed enchantment's mana value, put that card onto the battlefield, then shuffle.\nSVar:TrigSearch:AB$ ChangeZone | Cost$ Sac<1/Enchantment.Other/another enchantment> | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature.cmcEQX | ChangeNum$ 1 | AILogic$ SacAndUpgrade\nSVar:X:Sacrificed$CardManaCost/Plus.1\nSVar:AIPreference:SacCost$Creature\nDeckNeeds:Type$Enchantment\nOracle:At the beginning of your end step, you may sacrifice another enchantment. If you do, search your library for a creature card with mana value equal to 1 plus the sacrificed enchantment's mana value, put that card onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enigmatic Incarnation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

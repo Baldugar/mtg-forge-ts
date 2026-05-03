@@ -1,0 +1,23 @@
+{
+  "id": "hawkins-national-laboratory-corpus-m682",
+  "description": "M6 corpus — Hawkins National Laboratory; in-hand parse.",
+  "seed": 62710,
+  "cards": {
+    "Hawkins National Laboratory": "Name:Hawkins National Laboratory\nVariant:UniversesWithin:FlavorName:Havengul Laboratory\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Investigate | Cost$ 4 T | SpellDescription$ Investigate.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ ClueResearch | SVarCompare$ GE3 | Execute$ TrigTransform | TriggerDescription$ At the beginning of your end step, if you sacrificed three or more clues this turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nSVar:ClueResearch:PlayerCountPropertyYou$SacrificedThisTurn Clue\nDeckHas:Ability$Investigate|Token|Sacrifice|Graveyard\nDeckHints:Ability$Investigate\nAlternateMode:DoubleFaced\nOracle:{T}: Add {C}.\\n{4}, {T}: Investigate.\\nAt the beginning of your end step, if you sacrificed three or more clues this turn, transform Hawkins National Laboratory.\n\nALTERNATE\n\nName:The Upside Down\nVariant:UniversesWithin:FlavorName:Havengul Mystery\nManaCost:no cost\nTypes:Legendary Land\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When this land transforms into CARDNAME, return target creature card from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select target creature card from your graveyard | Origin$ Graveyard | Destination$ Battlefield | RememberTargets$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Battlefield | Destination$ Any | Execute$ TrigTransform2 | TriggerZones$ Battlefield | TriggerDescription$ When the creature card put onto the battlefield with CARDNAME leaves the battlefield, transform CARDNAME.\nSVar:TrigTransform2:DB$ SetState | Defined$ Self | Mode$ Transform | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Mana | Cost$ T PayLife<1> | Produced$ B | SpellDescription$ Add {B}.\nOracle:When this land transforms into The Upside Down, return target creature card from your graveyard to the battlefield.\\nWhen the creature card put onto the battlefield with The Upside Down leaves the battlefield, transform The Upside Down.\\n{T}, Pay 1 life: Add {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hawkins National Laboratory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lashknife-corpus-m682",
+  "description": "M6 corpus — Lashknife; in-hand parse.",
+  "seed": 63104,
+  "cards": {
+    "Lashknife": "Name:Lashknife\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ tapXType<1/Creature> | IsPresent$ Plains.YouCtrl | Description$ If you control a Plains, you may tap an untapped creature you control rather than pay this spell's mana cost.\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ First Strike | Description$ Enchanted creature has first strike.\nOracle:If you control a Plains, you may tap an untapped creature you control rather than pay this spell's mana cost.\\nEnchant creature\\nEnchanted creature has first strike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lashknife"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "varina-lich-queen-corpus-m682",
+  "description": "M6 corpus — Varina, Lich Queen; in-hand parse.",
+  "seed": 65068,
+  "cards": {
+    "Varina, Lich Queen": "Name:Varina, Lich Queen\nManaCost:1 W U B\nTypes:Legendary Creature Zombie Wizard\nPT:4/4\nT:Mode$ AttackersDeclared | ValidAttackers$ Zombie.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoot | TriggerDescription$ Whenever you attack with one or more Zombies, draw that many cards, then discard that many cards. You gain that much life.\nSVar:TrigLoot:DB$ Draw | NumCards$ X | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerObjectsAttackers$Amount\nA:AB$ Token | Cost$ 2 ExileFromGrave<2/Card> | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenTapped$ True | SpellDescription$ Create a tapped 2/2 black Zombie creature token.\nDeckHas:Ability$Token\nOracle:Whenever you attack with one or more Zombies, draw that many cards, then discard that many cards. You gain that much life.\\n{2}, Exile two cards from your graveyard: Create a tapped 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Varina, Lich Queen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

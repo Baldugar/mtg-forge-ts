@@ -1,0 +1,23 @@
+{
+  "id": "ouphe-vandals-corpus-m682",
+  "description": "M6 corpus — Ouphe Vandals; in-hand parse.",
+  "seed": 63669,
+  "cards": {
+    "Ouphe Vandals": "Name:Ouphe Vandals\nManaCost:2 G\nTypes:Creature Ouphe Rogue\nPT:2/2\nA:AB$ Counter | Cost$ G Sac<1/CARDNAME> | TargetType$ Activated | TgtPrompt$ Select target ability | ValidTgts$ Artifact | SubAbility$ DBDestroy | RememberCountered$ True | SpellDescription$ Counter target activated ability from an artifact source and destroy that artifact if it's on the battlefield. (Mana abilities can't be targeted.)\nSVar:DBDestroy:DB$ Destroy | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{G}, Sacrifice Ouphe Vandals: Counter target activated ability from an artifact source and destroy that artifact if it's on the battlefield. (Mana abilities can't be targeted.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ouphe Vandals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

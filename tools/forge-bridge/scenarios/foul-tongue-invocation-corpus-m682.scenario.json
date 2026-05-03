@@ -1,0 +1,23 @@
+{
+  "id": "foul-tongue-invocation-corpus-m682",
+  "description": "M6 corpus — Foul-Tongue Invocation; in-hand parse.",
+  "seed": 62413,
+  "cards": {
+    "Foul-Tongue Invocation": "Name:Foul-Tongue Invocation\nManaCost:2 B\nTypes:Instant\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ Reveal<1/Dragon> | Description$ As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\nA:SP$ Sacrifice | ValidTgts$ Player | SacValid$ Creature | SubAbility$ DBGainLife | SpellDescription$ Target player sacrifices a creature. If you revealed a Dragon card or controlled a Dragon as you cast this spell, you gain 4 life. | StackDescription$ SpellDescription\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4 | ConditionCheckSVar$ Count$Presence_Dragon.1.0\nDeckHints:Type$Dragon\nOracle:As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\\nTarget player sacrifices a creature. If you revealed a Dragon card or controlled a Dragon as you cast this spell, you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foul-Tongue Invocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

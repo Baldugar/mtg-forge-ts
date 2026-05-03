@@ -1,0 +1,23 @@
+{
+  "id": "bite-down-on-crime-corpus-m682",
+  "description": "M6 corpus — Bite Down on Crime; in-hand parse.",
+  "seed": 61537,
+  "cards": {
+    "Bite Down on Crime": "Name:Bite Down on Crime\nManaCost:3 G\nTypes:Sorcery\nS:Mode$ OptionalCost | EffectZone$ All | ValidCard$ Card.Self | ValidSA$ Spell | Cost$ CollectEvidence<6> | Description$ As an additional cost to cast this spell, you may collect evidence 6.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Z | EffectZone$ All | Relative$ True | Description$ This spell costs {2} less to cast if evidence was collected. (To collect evidence 6, exile cards with total mana value 6 or greater from your graveyard.)\nSVar:Z:Count$OptionalGenericCostPaid.2.0\nA:SP$ Pump | AILogic$ Fight | NumAtt$ +2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBFight | SpellDescription$ Target creature you control gets +2/+0 until end of turn. It deals damage equal to its power to target creature you don't control.\nSVar:DBFight:DB$ DealDamage | AILogic$ PowerDmg | NumDmg$ ParentTargeted$CardPower | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | DamageSource$ ParentTarget\nDeckHints:Ability$Graveyard|Mill|Discard|Dredge\nOracle:As an additional cost to cast this spell, you may collect evidence 6. This spell costs {2} less to cast if evidence was collected. (To collect evidence 6, exile cards with total mana value 6 or greater from your graveyard.)\\nTarget creature you control gets +2/+0 until end of turn. It deals damage equal to its power to target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bite Down on Crime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sand-silos-corpus-m682",
+  "description": "M6 corpus — Sand Silos; in-hand parse.",
+  "seed": 64164,
+  "cards": {
+    "Sand Silos": "Name:Sand Silos\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:You may choose not to untap CARDNAME during your untap step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | Execute$ TrigStore | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is tapped, put a storage counter on it.\nSVar:TrigStore:DB$ PutCounter | Defined$ Self | CounterType$ STORAGE | CounterNum$ 1\nA:AB$ Mana | Cost$ T SubCounter<X/STORAGE> | Produced$ U | Amount$ X | AILogic$ ManaRitualBattery | SpellDescription$ Add {U} for each storage counter removed this way.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Sand Silos enters tapped.\\nYou may choose not to untap Sand Silos during your untap step.\\nAt the beginning of your upkeep, if Sand Silos is tapped, put a storage counter on it.\\n{T}, Remove any number of storage counters from Sand Silos: Add {U} for each storage counter removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sand Silos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

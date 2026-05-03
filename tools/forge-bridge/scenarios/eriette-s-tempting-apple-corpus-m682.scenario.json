@@ -1,0 +1,23 @@
+{
+  "id": "eriette-s-tempting-apple-corpus-m682",
+  "description": "M6 corpus — Eriette's Tempting Apple; in-hand parse.",
+  "seed": 62220,
+  "cards": {
+    "Eriette's Tempting Apple": "Name:Eriette's Tempting Apple\nManaCost:4\nTypes:Legendary Artifact Food\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\nSVar:TrigChange:DB$ GainControl | ValidTgts$ Creature | LoseControl$ EOT | Untap$ True | AddKWs$ Haste\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME> | Defined$ You | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nA:AB$ LoseLife | Cost$ 2 T Sac<1/CARDNAME> | ValidTgts$ Opponent | LifeAmount$ 3 | SpellDescription$ Target opponent loses 3 life.\nDeckHas:Ability$Sacrifice|LifeGain\nOracle:When Eriette's Tempting Apple enters, gain control of target creature until end of turn. Untap that creature. It gains haste until end of turn.\\n{2}, {T}, Sacrifice Eriette's Tempting Apple: You gain 3 life.\\n{2}, {T}, Sacrifice Eriette's Tempting Apple: Target opponent loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eriette's Tempting Apple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cho-arrim-alchemist-corpus-m682",
+  "description": "M6 corpus — Cho-Arrim Alchemist; in-hand parse.",
+  "seed": 61734,
+  "cards": {
+    "Cho-Arrim Alchemist": "Name:Cho-Arrim Alchemist\nManaCost:W\nTypes:Creature Human Spellshaper\nPT:1/1\nA:AB$ ChooseSource | Cost$ 1 W W T Discard<1/Card> | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ GainLifeInstead | PreventionEffect$ True | Description$ The next time the chosen source deals damage to you, prevent that damage. You gain life equal to the damage prevented this way.\nSVar:GainLifeInstead:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:{1}{W}{W}, {T}, Discard a card: The next time a source of your choice would deal damage to you this turn, prevent that damage. You gain life equal to the damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cho-Arrim Alchemist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

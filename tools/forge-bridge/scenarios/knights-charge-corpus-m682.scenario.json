@@ -1,0 +1,23 @@
+{
+  "id": "knights-charge-corpus-m682",
+  "description": "M6 corpus — Knights' Charge; in-hand parse.",
+  "seed": 63046,
+  "cards": {
+    "Knights' Charge": "Name:Knights' Charge\nManaCost:1 W B\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Card.Knight+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever a Knight you control attacks, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ ChangeZoneAll | Cost$ 6 W B Sac<1/CARDNAME> | ChangeType$ Card.Knight+Creature+YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SpellDescription$ Return all Knight creature cards from your graveyard to the battlefield.\nSVar:BuffedBy:Knight\nDeckHints:Type$Knight\nOracle:Whenever a Knight you control attacks, each opponent loses 1 life and you gain 1 life.\\n{6}{W}{B}, Sacrifice Knights' Charge: Return all Knight creature cards from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Knights' Charge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mercurial-spelldancer-corpus-m682",
+  "description": "M6 corpus — Mercurial Spelldancer; in-hand parse.",
+  "seed": 63342,
+  "cards": {
+    "Mercurial Spelldancer": "Name:Mercurial Spelldancer\nManaCost:1 U\nTypes:Creature Phyrexian Rogue\nPT:2/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDelayTrig | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may remove two oil counters from it. If you do, when you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nSVar:TrigDelayTrig:AB$ DelayedTrigger | Cost$ SubCounter<2/OIL> | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:HasAttackEffect:TRUE\nSVar:BuffedBy:Card.nonCreature\nDeckHas:Ability$Counters\nDeckHints:Type$Instant|Sorcery\nOracle:Mercurial Spelldancer can't be blocked.\\nWhenever you cast a noncreature spell, put an oil counter on Mercurial Spelldancer.\\nWhenever Mercurial Spelldancer deals combat damage to a player, you may remove two oil counters from it. If you do, when you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mercurial Spelldancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

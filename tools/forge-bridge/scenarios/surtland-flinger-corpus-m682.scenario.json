@@ -1,0 +1,23 @@
+{
+  "id": "surtland-flinger-corpus-m682",
+  "description": "M6 corpus — Surtland Flinger; in-hand parse.",
+  "seed": 64676,
+  "cards": {
+    "Surtland Flinger": "Name:Surtland Flinger\nManaCost:3 R R\nTypes:Creature Giant Berserker\nPT:4/6\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediate | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. When you do, CARDNAME deals damage equal to the sacrificed creature's power to any target. If the sacrificed creature was a Giant, CARDNAME deals twice that much damage instead.\nSVar:TrigImmediate:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | RememberObjects$ Sacrificed | Execute$ TrigDamage | AILogic$ SacForDamage.GiantX2 | TriggerDescription$ When you do, CARDNAME deals damage equal to the sacrificed creature's power to any target. If the sacrificed creature was a Giant, CARDNAME deals twice that much damage instead.\nSVar:TrigDamage:DB$ DealDamage | ConditionDefined$ DelayTriggerRememberedLKI | ConditionPresent$ Giant | ConditionCompare$ EQ0 | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBGiantDamage\nSVar:DBGiantDamage:DB$ DealDamage | ConditionDefined$ DelayTriggerRememberedLKI | ConditionPresent$ Giant | ConditionCompare$ GE1 | Defined$ Targeted | NumDmg$ Y\nSVar:X:TriggerRemembered$CardPower\nSVar:Y:TriggerRemembered$CardPower/Times.2\nSVar:AIPreferenceParams:CreatureEvalThreshold$ 200\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Giant\nOracle:Whenever Surtland Flinger attacks, you may sacrifice another creature. When you do, Surtland Flinger deals damage equal to the sacrificed creature's power to any target. If the sacrificed creature was a Giant, Surtland Flinger deals twice that much damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Surtland Flinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

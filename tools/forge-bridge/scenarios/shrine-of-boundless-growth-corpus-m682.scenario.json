@@ -1,0 +1,23 @@
+{
+  "id": "shrine-of-boundless-growth-corpus-m682",
+  "description": "M6 corpus — Shrine of Boundless Growth; in-hand parse.",
+  "seed": 64355,
+  "cards": {
+    "Shrine of Boundless Growth": "Name:Shrine of Boundless Growth\nManaCost:3\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAddCounter | TriggerDescription$ At the beginning of your upkeep or whenever you cast a green spell, put a charge counter on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAddCounter | Secondary$ True | TriggerDescription$ At the beginning of your upkeep or whenever you cast a green spell, put a charge counter on CARDNAME.\nSVar:TrigAddCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ C | Amount$ X | SpellDescription$ Add {C} for each charge counter on CARDNAME.\nSVar:X:Count$CardCounters.CHARGE\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep or whenever you cast a green spell, put a charge counter on Shrine of Boundless Growth.\\n{T}, Sacrifice Shrine of Boundless Growth: Add {C} for each charge counter on Shrine of Boundless Growth.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrine of Boundless Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

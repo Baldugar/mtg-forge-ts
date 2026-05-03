@@ -1,0 +1,23 @@
+{
+  "id": "janjeet-sentry-corpus-m682",
+  "description": "M6 corpus — Janjeet Sentry; in-hand parse.",
+  "seed": 62940,
+  "cards": {
+    "Janjeet Sentry": "Name:Janjeet Sentry\nManaCost:2 U\nTypes:Creature Vedalken Soldier\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ TapOrUntap | Cost$ T PayEnergy<2> | ValidTgts$ Artifact,Creature | TgtPrompt$ Select target artifact or creature | SpellDescription$ You may tap or untap target artifact or creature.\nOracle:When Janjeet Sentry enters, you get {E}{E} (two energy counters).\\n{T}, Pay {E}{E}: You may tap or untap target artifact or creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Janjeet Sentry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

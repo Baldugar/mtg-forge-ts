@@ -1,0 +1,23 @@
+{
+  "id": "shifty-doppelganger-corpus-m682",
+  "description": "M6 corpus — Shifty Doppelganger; in-hand parse.",
+  "seed": 64331,
+  "cards": {
+    "Shifty Doppelganger": "Name:Shifty Doppelganger\nManaCost:2 U\nTypes:Creature Shapeshifter\nPT:1/1\nA:AB$ ChangeZone | Cost$ 3 U Exile<1/CARDNAME> | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouOwn | Optional$ True | RememberChanged$ True | SubAbility$ DBPump | SpellDescription$ You may put a creature card from your hand onto the battlefield. If you do, that creature gains haste until end of turn. At the beginning of the next end step, sacrifice that creature. If you do, return CARDNAME to the battlefield.\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Haste | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBDelTrig\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigSac | TriggerDescription$ At the beginning of the next end step, sacrifice that creature. | RememberObjects$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Creature | SubAbility$ DBCleanup\nSVar:TrigSac:DB$ SacrificeAll | Defined$ DelayTriggerRememberedLKI | Controller$ You | RememberSacrificed$ True | SubAbility$ DBBounce\nSVar:DBBounce:DB$ ChangeZone | Origin$ Exile | Defined$ Self | Destination$ Battlefield | ConditionDefined$ Remembered | ConditionPresent$ Card\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{3}{U}, Exile Shifty Doppelganger: You may put a creature card from your hand onto the battlefield. If you do, that creature gains haste until end of turn. At the beginning of the next end step, sacrifice that creature. If you do, return Shifty Doppelganger to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shifty Doppelganger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

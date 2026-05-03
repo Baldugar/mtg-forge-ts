@@ -1,0 +1,23 @@
+{
+  "id": "jace-vryn-s-prodigy-corpus-m682",
+  "description": "M6 corpus — Jace, Vryn's Prodigy; in-hand parse.",
+  "seed": 62933,
+  "cards": {
+    "Jace, Vryn's Prodigy": "Name:Jace, Vryn's Prodigy\nManaCost:1 U\nTypes:Legendary Creature Human Wizard\nPT:0/2\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SubAbility$ DBDiscard | StackDescription$ SpellDescription | SpellDescription$ Draw a card, then discard a card. If there are five or more cards in your graveyard, exile CARDNAME, then return him to the battlefield transformed under his owner's control.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBExile | StackDescription$ None\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GE5 | SubAbility$ DBReturn | StackDescription$ None\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | ForgetOtherRemembered$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Card.YouOwn\nDeckHas:Ability$Graveyard\nAlternateMode:DoubleFaced\nOracle:{T}: Draw a card, then discard a card. If there are five or more cards in your graveyard, exile Jace, Vryn's Prodigy, then return him to the battlefield transformed under his owner's control.\n\nALTERNATE\n\nName:Jace, Telepath Unbound\nManaCost:no cost\nColors:blue\nTypes:Legendary Planeswalker Jace\nLoyalty:5\nA:AB$ Pump | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | NumAtt$ -2 | IsCurse$ True | Duration$ UntilYourNextTurn | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | SpellDescription$ Up to one target creature gets -2/-0 until your next turn.\nA:AB$ Effect | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TgtZone$ Graveyard | TgtPrompt$ Select target instant or sorcery card | RememberObjects$ Targeted | StaticAbilities$ Play | ExileOnMoved$ Graveyard | SubAbility$ DBEffect | SpellDescription$ You may cast target instant or sorcery card from your graveyard this turn. If that spell would be put into your graveyard this turn, exile it instead.\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Graveyard | Description$ You may play remembered card.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Stack | ReplacementEffects$ ReplaceGraveyard\nSVar:ReplaceGraveyard:Event$ Moved | ValidCard$ Card.IsRemembered | Origin$ Stack | Destination$ Graveyard | ReplaceWith$ MoveExile | Description$ If that card would be put into your graveyard this turn, exile it instead.\nSVar:MoveExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Stack | Destination$ Exile\nA:AB$ Effect | Cost$ SubCounter<9/LOYALTY> | Planeswalker$ True | Ultimate$ True | Name$ Emblem — Jace, Telepath Unbound | Image$ emblem_jace_telepath_unbound | Triggers$ TrigSpellCast | Duration$ Permanent | AILogic$ Always | SpellDescription$ You get an emblem with \"Whenever you cast a spell, target opponent mills five cards.\"\nSVar:TrigSpellCast:Mode$ SpellCast | ValidActivatingPlayer$ You | Execute$ EffSpellCast | TriggerDescription$ Whenever you cast a spell, target opponent mills five cards.\nSVar:EffSpellCast:DB$ Mill | NumCards$ 5 | ValidTgts$ Opponent | TgtPrompt$ Select target opponent\nOracle:[+1]: Up to one target creature gets -2/-0 until your next turn.\\n[-3]: You may cast target instant or sorcery card from your graveyard this turn. If that spell would be put into your graveyard this turn, exile it instead.\\n[-9]: You get an emblem with \"Whenever you cast a spell, target opponent mills five cards.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, Vryn's Prodigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

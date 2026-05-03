@@ -1,0 +1,23 @@
+{
+  "id": "flowstone-sculpture-corpus-m682",
+  "description": "M6 corpus — Flowstone Sculpture; in-hand parse.",
+  "seed": 62377,
+  "cards": {
+    "Flowstone Sculpture": "Name:Flowstone Sculpture\nManaCost:6\nTypes:Artifact Creature Shapeshifter\nPT:4/4\nA:AB$ GenericChoice | Cost$ 2 Discard<1/Card> | Choices$ ChooseCounters,ChooseFlying,ChooseFirstStrike,ChooseTrample | SpellDescription$ Put a +1/+1 counter on CARDNAME or CARDNAME gains flying, first strike, or trample. (This effect lasts indefinitely.)\nSVar:ChooseCounters:DB$ PutCounter | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nSVar:ChooseFlying:DB$ Pump | Defined$ Self | KW$ Flying | Duration$ Permanent | SpellDescription$ CARDNAME gains flying.\nSVar:ChooseFirstStrike:DB$ Pump | Defined$ Self | KW$ First Strike | Duration$ Permanent | SpellDescription$ CARDNAME gains first strike.\nSVar:ChooseTrample:DB$ Pump | Defined$ Self | KW$ Trample | Duration$ Permanent | SpellDescription$ CARDNAME gains trample.\nOracle:{2}, Discard a card: Put a +1/+1 counter on Flowstone Sculpture or Flowstone Sculpture gains flying, first strike, or trample. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flowstone Sculpture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quina-qu-gourmet-corpus-m682",
+  "description": "M6 corpus — Quina, Qu Gourmet; in-hand parse.",
+  "seed": 63887,
+  "cards": {
+    "Quina, Qu Gourmet": "Name:Quina, Qu Gourmet\nManaCost:2 G\nTypes:Legendary Creature Qu\nPT:2/3\nR:Event$ CreateToken | ActiveZones$ Battlefield | ValidToken$ Card.YouCtrl | ReplaceWith$ DBReplace | Description$ If one or more tokens would be created under your control, those tokens plus a 1/1 green Frog creature token are created instead.\nSVar:DBReplace:DB$ ReplaceToken | Type$ AddToken | Amount$ 1 | TokenScript$ g_1_1_frog\nA:AB$ PutCounter | Cost$ 2 Sac<1/Frog> | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on NICKNAME.\nDeckHas:Ability$Token\nDeckHints:Ability$Token & Type$Frog\nOracle:If one or more tokens would be created under your control, those tokens plus a 1/1 green Frog creature token are created instead.\\n{2}, Sacrifice a Frog: Put a +1/+1 counter on Quina.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Quina, Qu Gourmet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

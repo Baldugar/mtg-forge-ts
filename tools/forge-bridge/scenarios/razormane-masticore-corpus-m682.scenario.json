@@ -1,0 +1,23 @@
+{
+  "id": "razormane-masticore-corpus-m682",
+  "description": "M6 corpus — Razormane Masticore; in-hand parse.",
+  "seed": 63944,
+  "cards": {
+    "Razormane Masticore": "Name:Razormane Masticore\nManaCost:5\nTypes:Artifact Creature Masticore\nPT:5/5\nK:First Strike\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you discard a card.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Discard<1/Card>\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ You | OptionalDecider$ You | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your draw step, you may have CARDNAME deal 3 damage to target creature.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 3\nAI:RemoveDeck:All\nOracle:First strike (This creature deals combat damage before creatures without first strike.)\\nAt the beginning of your upkeep, sacrifice Razormane Masticore unless you discard a card.\\nAt the beginning of your draw step, you may have Razormane Masticore deal 3 damage to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Razormane Masticore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

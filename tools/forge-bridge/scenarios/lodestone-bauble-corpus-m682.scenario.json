@@ -1,0 +1,23 @@
+{
+  "id": "lodestone-bauble-corpus-m682",
+  "description": "M6 corpus — Lodestone Bauble; in-hand parse.",
+  "seed": 63190,
+  "cards": {
+    "Lodestone Bauble": "Name:Lodestone Bauble\nManaCost:0\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 1 T Sac<1/CARDNAME> | TargetMin$ 0 | TargetMax$ 4 | TargetsWithSameController$ True | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 0 | TgtPrompt$ Choose target basic land card in a graveyard | ValidTgts$ Land.Basic | Chooser$ You | SubAbility$ ChooseZero | SpellDescription$ Put up to four target basic land cards from a player's graveyard on top of their library in any order. That player draws a card at the beginning of the next turn's upkeep.\nSVar:ChooseZero:DB$ ChoosePlayer | Choices$ Player | ConditionDefined$ Targeted | ConditionNotPresent$ Card | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | RememberObjects$ TargetedOwner & ChosenPlayer | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ DelayTriggerRemembered\nAI:RemoveDeck:Random\nOracle:{1}, {T}, Sacrifice Lodestone Bauble: Put up to four target basic land cards from a player's graveyard on top of their library in any order. That player draws a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Lodestone Bauble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

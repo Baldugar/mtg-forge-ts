@@ -1,0 +1,23 @@
+{
+  "id": "gourmand-s-talent-corpus-m682",
+  "description": "M6 corpus — Gourmand's Talent; in-hand parse.",
+  "seed": 62604,
+  "cards": {
+    "Gourmand's Talent": "Name:Gourmand's Talent\nManaCost:G\nTypes:Enchantment Class\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | Condition$ PlayerTurn | AddType$ Food | AddAbility$ FoodSac | Description$ During your turn, artifacts you control are Foods in addition to their other types and have \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\"\nSVar:FoodSac:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME/this artifact> | Defined$ You | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nK:Class:2:2 G:AddTrigger$ TriggerRaccoon\nSVar:TriggerRaccoon:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | FirstTime$ True | Execute$ TrigToken | TriggerDescription$ Whenever you gain life for the first time each turn, create a 3/3 green Raccoon creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ g_3_3_raccoon | TokenOwner$ You\nK:Class:3:3 G:AddTrigger$ TriggerCounters\nSVar:TriggerCounters:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | FirstTime$ True | Execute$ TrigPutCounters | TriggerDescription$ Whenever you gain life for the first time each turn, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$LifeGain|Counters & Type$Food|Raccoon\nOracle:(Gain the next level as a sorcery to add its ability.)\\nDuring your turn, artifacts you control are Foods in addition to their other types and have \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\"\\n{2}{G}: Level 2\\nWhenever you gain life for the first time each turn, create a 3/3 green Raccoon creature token.\\n{3}{G}: Level 3\\nWhenever you gain life for the first time each turn, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gourmand's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

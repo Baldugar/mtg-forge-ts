@@ -1,0 +1,23 @@
+{
+  "id": "goblin-grenadiers-corpus-m682",
+  "description": "M6 corpus — Goblin Grenadiers; in-hand parse.",
+  "seed": 62572,
+  "cards": {
+    "Goblin Grenadiers": "Name:Goblin Grenadiers\nManaCost:3 R\nTypes:Creature Goblin\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroyCreature | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may sacrifice it. If you do, destroy target creature and target land.\nSVar:TrigDestroyCreature:AB$ Pump | Cost$ Sac<1/CARDNAME> | ValidTgts$ Creature | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBLand\nSVar:DBLand:DB$ Pump | ValidTgts$ Land | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nOracle:Whenever Goblin Grenadiers attacks and isn't blocked, you may sacrifice it. If you do, destroy target creature and target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Grenadiers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

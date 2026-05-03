@@ -1,0 +1,23 @@
+{
+  "id": "blaster-hulk-corpus-m682",
+  "description": "M6 corpus — Blaster Hulk; in-hand parse.",
+  "seed": 61541,
+  "cards": {
+    "Blaster Hulk": "Name:Blaster Hulk\nManaCost:6 R R\nTypes:Artifact Creature Pirate\nPT:8/8\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Count$CountersRemovedThisTurn ENERGY You | EffectZone$ All | Description$ This spell costs {1} less to cast for each {E} (energy counter) you've paid or lost this turn.\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ Whenever CARDNAME attacks, you get {E}{E}, then you may pay eight {E}. When you do, CARDNAME deals 8 damage divided as you choose among up to eight targets.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2 | SubAbility$ DBTrigger\nSVar:DBTrigger:DB$ ImmediateTrigger | UnlessCost$ PayEnergy<8> | UnlessPayer$ You | UnlessSwitched$ True | Execute$ TrigDamage | TriggerDescription$ When you do, CARDNAME deals 8 damage divided as you choose among up to eight targets.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | TgtPrompt$ Select up to eight targets | NumDmg$ 8 | TargetMin$ 0 | TargetMax$ 8 | DividedAsYouChoose$ 8\nSVar:HasAttackEffect:TRUE\nOracle:This spell costs {1} less to cast for each {E} (energy counter) you've paid or lost this turn.\\nHaste\\nWhenever Blaster Hulk attacks, you get {E}{E}, then you may pay eight {E}. When you do, Blaster Hulk deals 8 damage divided as you choose among up to eight targets.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Blaster Hulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

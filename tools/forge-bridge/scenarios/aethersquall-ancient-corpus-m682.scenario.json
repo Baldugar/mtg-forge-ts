@@ -1,0 +1,23 @@
+{
+  "id": "aethersquall-ancient-corpus-m682",
+  "description": "M6 corpus — Aethersquall Ancient; in-hand parse.",
+  "seed": 61457,
+  "cards": {
+    "Aethersquall Ancient": "Name:Aethersquall Ancient\nManaCost:5 U U\nTypes:Creature Leviathan\nPT:6/6\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEnergy | TriggerDescription$ At the beginning of your upkeep, you get {E}{E}{E} (three energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nA:AB$ ChangeZoneAll | Cost$ PayEnergy<8> | ChangeType$ Creature.StrictlyOther | SorcerySpeed$ True | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return all other creatures to their owners' hands. Activate only as a sorcery.\nOracle:Flying\\nAt the beginning of your upkeep, you get {E}{E}{E} (three energy counters).\\nPay eight {E}: Return all other creatures to their owners' hands. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aethersquall Ancient"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

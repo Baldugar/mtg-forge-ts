@@ -1,0 +1,23 @@
+{
+  "id": "hungry-hungry-heifer-corpus-m682",
+  "description": "M6 corpus — Hungry Hungry Heifer; in-hand parse.",
+  "seed": 62809,
+  "cards": {
+    "Hungry Hungry Heifer": "Name:Hungry Hungry Heifer\nManaCost:2 G\nTypes:Creature Cow\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, you may remove a counter from a permanent you control. If you don't, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ RemoveAnyCounter<1/Any/Permanent>\nSVar:NeedsToPlay:Permanent.YouCtrl+HasCounters\nSVar:AIRemoveCounterCostPriority:ANY\nDeckNeeds:Ability$Counters\nOracle:At the beginning of your upkeep, you may remove a counter from a permanent you control. If you don't, sacrifice Hungry Hungry Heifer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hungry Hungry Heifer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

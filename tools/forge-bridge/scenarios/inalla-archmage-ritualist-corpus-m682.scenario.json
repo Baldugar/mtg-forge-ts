@@ -1,0 +1,23 @@
+{
+  "id": "inalla-archmage-ritualist-corpus-m682",
+  "description": "M6 corpus — Inalla, Archmage Ritualist; in-hand parse.",
+  "seed": 62858,
+  "cards": {
+    "Inalla, Archmage Ritualist": "Name:Inalla, Archmage Ritualist\nManaCost:2 U B R\nTypes:Legendary Creature Human Wizard\nPT:4/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Wizard.YouCtrl+!token+Other | TriggerZones$ Command | PresentZone$ Command | IsPresent$ Card.StrictlySelf | Execute$ TrigCopyPermanent | TriggerDescription$ Eminence — Whenever another nontoken Wizard you control enters, if CARDNAME is in the command zone or on the battlefield, you may pay {1}. If you do, create a token that's a copy of that Wizard. The token gains haste. Exile it at the beginning of the next end step.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Wizard.YouCtrl+!token+Other | TriggerZones$ Battlefield | PresentZone$ Battlefield | IsPresent$ Card.StrictlySelf | Execute$ TrigCopyPermanent | Secondary$ True | TriggerDescription$ Eminence — Whenever another nontoken Wizard you control enters, if CARDNAME is in the command zone or on the battlefield, you may pay {1}. If you do, create a token that's a copy of that Wizard. The token gains haste. Exile it at the beginning of the next end step.\nSVar:TrigCopyPermanent:AB$ CopyPermanent | Cost$ 1 | Defined$ TriggeredCardLKICopy | PumpKeywords$ Haste | AtEOT$ Exile\nA:AB$ LoseLife | Cost$ tapXType<5/Wizard> | ValidTgts$ Player | TgtPrompt$ Select a player to lose 7 life | LifeAmount$ 7 | SpellDescription$ Target player loses 7 life.\nSVar:BuffedBy:Wizard\nDeckHints:Type$Wizard\nOracle:Eminence — Whenever another nontoken Wizard you control enters, if Inalla, Archmage Ritualist is in the command zone or on the battlefield, you may pay {1}. If you do, create a token that's a copy of that Wizard. The token gains haste. Exile it at the beginning of the next end step.\\nTap five untapped Wizards you control: Target player loses 7 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Inalla, Archmage Ritualist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

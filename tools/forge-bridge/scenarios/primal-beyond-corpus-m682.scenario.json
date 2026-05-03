@@ -1,0 +1,23 @@
+{
+  "id": "primal-beyond-corpus-m682",
+  "description": "M6 corpus — Primal Beyond; in-hand parse.",
+  "seed": 63821,
+  "cards": {
+    "Primal Beyond": "Name:Primal Beyond\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Elemental,Activated.Elemental+inZoneBattlefield | SpellDescription$ Add one mana of any color. Spend this mana only to cast an Elemental spell or activate an ability of an Elemental.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal an Elemental card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Elemental> | UnlessPayer$ You | StackDescription$ enters tapped.\nAI:RemoveDeck:Random\nOracle:As Primal Beyond enters, you may reveal an Elemental card from your hand. If you don't, Primal Beyond enters tapped.\\n{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast an Elemental spell or activate an ability of an Elemental.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Primal Beyond"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

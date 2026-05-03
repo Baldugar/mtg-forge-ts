@@ -1,0 +1,23 @@
+{
+  "id": "dreadship-reef-corpus-m682",
+  "description": "M6 corpus — Dreadship Reef; in-hand parse.",
+  "seed": 62085,
+  "cards": {
+    "Dreadship Reef": "Name:Dreadship Reef\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ PutCounter | Cost$ 1 T | CounterType$ STORAGE | CounterNum$ 1 | SpellDescription$ Put a storage counter on CARDNAME.\nA:AB$ Mana | Cost$ 1 SubCounter<X/STORAGE> | Produced$ Combo U B | Amount$ X | CostDesc$ {1}, Remove X storage counters from CARDNAME: | SpellDescription$ Add X mana in any combination of {U} and/or {B}.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{1}, {T}: Put a storage counter on Dreadship Reef.\\n{1}, Remove X storage counters from Dreadship Reef: Add X mana in any combination of {U} and/or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadship Reef"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

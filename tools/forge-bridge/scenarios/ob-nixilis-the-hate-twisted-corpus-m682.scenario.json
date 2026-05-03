@@ -1,0 +1,23 @@
+{
+  "id": "ob-nixilis-the-hate-twisted-corpus-m682",
+  "description": "M6 corpus — Ob Nixilis, the Hate-Twisted; in-hand parse.",
+  "seed": 63602,
+  "cards": {
+    "Ob Nixilis, the Hate-Twisted": "Name:Ob Nixilis, the Hate-Twisted\nManaCost:3 B B\nTypes:Legendary Planeswalker Nixilis\nLoyalty:5\nT:Mode$ Drawn | ValidCard$ Card.OppOwn | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever an opponent draws a card, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nA:AB$ Destroy | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | SubAbility$ DBDraw | SpellDescription$ Destroy target creature. Its controller draws two cards.\nSVar:DBDraw:DB$ Draw | Defined$ TargetedController | NumCards$ 2\nOracle:Whenever an opponent draws a card, Ob Nixilis, the Hate-Twisted deals 1 damage to that player.\\n[-2]: Destroy target creature. Its controller draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ob Nixilis, the Hate-Twisted"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

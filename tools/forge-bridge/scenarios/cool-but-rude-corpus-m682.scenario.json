@@ -1,0 +1,23 @@
+{
+  "id": "cool-but-rude-corpus-m682",
+  "description": "M6 corpus — Cool but Rude; in-hand parse.",
+  "seed": 61820,
+  "cards": {
+    "Cool but Rude": "Name:Cool but Rude\nManaCost:1 R\nTypes:Enchantment Class\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you attack, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card>\nK:Class:2:1 R:AddTrigger$ TriggerDiscard\nSVar:TriggerDiscard:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | Secondary$ True | TriggerDescription$ Whenever you discard a card, this Class deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nK:Class:3:1 R:AddTrigger$ TriggerClassLevel\nSVar:TriggerClassLevel:Mode$ ClassLevelGained | ClassLevel$ 3 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigChangeZone | Secondary$ True | TriggerDescription$ When this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeNum$ 1 | ChangeType$ Card | Mandatory$ True | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ Random\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhenever you attack, you may discard a card. If you do, draw a card.\\n{1}{R}: Level 2\\nWhenever you discard a card, this Class deals 2 damage to each opponent.\\n{1}{R}: Level 3\\nWhen this Class becomes level 3, search your library for a card, put it into your hand, shuffle, then discard a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cool but Rude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

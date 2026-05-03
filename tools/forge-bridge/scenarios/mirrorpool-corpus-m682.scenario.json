@@ -1,0 +1,23 @@
+{
+  "id": "mirrorpool-corpus-m682",
+  "description": "M6 corpus — Mirrorpool; in-hand parse.",
+  "seed": 63387,
+  "cards": {
+    "Mirrorpool": "Name:Mirrorpool\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ CopySpellAbility | Cost$ 2 C T Sac<1/CARDNAME> | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TargetType$ Spell | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell you control. You may choose new targets for the copy.\nA:AB$ CopyPermanent | Cost$ 4 C T Sac<1/CARDNAME> | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SpellDescription$ Create a token that's a copy of target creature you control.\nOracle:Mirrorpool enters tapped.\\n{T}: Add {C}.\\n{2}{C}, {T}, Sacrifice Mirrorpool: Copy target instant or sorcery spell you control. You may choose new targets for the copy.\\n{4}{C}, {T}, Sacrifice Mirrorpool: Create a token that's a copy of target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mirrorpool"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

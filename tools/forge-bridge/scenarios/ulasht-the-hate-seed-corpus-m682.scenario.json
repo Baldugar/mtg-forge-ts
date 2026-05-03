@@ -1,0 +1,23 @@
+{
+  "id": "ulasht-the-hate-seed-corpus-m682",
+  "description": "M6 corpus — Ulasht, the Hate Seed; in-hand parse.",
+  "seed": 65007,
+  "cards": {
+    "Ulasht, the Hate Seed": "Name:Ulasht, the Hate Seed\nManaCost:2 R G\nTypes:Legendary Creature Hellion Hydra\nPT:0/0\nK:etbCounter:P1P1:X:no Condition:CARDNAME enters with a +1/+1 counter on it for each other red creature you control and a +1/+1 counter on it for each other green creature you control.\nA:AB$ Charm | Cost$ 1 SubCounter<1/P1P1> | Choices$ DBDealDamage,DBToken\nSVar:DBDealDamage:DB$ DealDamage | ValidTgts$ Creature | NumDmg$ 1 | SpellDescription$ NICKNAME deals 1 damage to target creature.\nSVar:DBToken:DB$ Token | TokenScript$ g_1_1_saproling | TokenOwner$ You | SpellDescription$ Create a 1/1 green Saproling creature token.\nSVar:X:Count$Valid Creature.YouCtrl+Red+Other/Plus.B\nSVar:B:Count$Valid Creature.YouCtrl+Green+Other\nSVar:NeedsToPlay:X GE3\nDeckHas:Ability$Counters|Token\nOracle:Ulasht, the Hate Seed enters with a +1/+1 counter on it for each other red creature you control and a +1/+1 counter on it for each other green creature you control.\\n{1}, Remove a +1/+1 counter from Ulasht: Choose one —\\n• Ulasht deals 1 damage to target creature.\\n• Create a 1/1 green Saproling creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ulasht, the Hate Seed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

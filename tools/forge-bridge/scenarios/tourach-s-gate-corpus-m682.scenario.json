@@ -1,0 +1,23 @@
+{
+  "id": "tourach-s-gate-corpus-m682",
+  "description": "M6 corpus — Tourach's Gate; in-hand parse.",
+  "seed": 64931,
+  "cards": {
+    "Tourach's Gate": "Name:Tourach's Gate\nManaCost:1 B B\nTypes:Enchantment Aura\nK:Enchant:Land.YouCtrl:land you control\nSVar:AttachAILogic:Pump\nA:AB$ PutCounter | Cost$ Sac<1/Thrull> | Defined$ Self | CounterType$ TIME | CounterNum$ 3 | SpellDescription$ Put three time counters on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSubCounter | TriggerDescription$ At the beginning of your upkeep, remove a time counter from CARDNAME. If there are no time counters on CARDNAME, sacrifice it.\nSVar:TrigSubCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1 | SubAbility$ Sac\nSVar:Sac:DB$ Sacrifice | ConditionPresent$ Card.Self+counters_EQ0_TIME\nA:AB$ PumpAll | Cost$ tapXType<1/Land.EnchantedBy/Enchanted Land> | ValidCards$ Creature.attacking+YouCtrl | NumAtt$ +2 | NumDef$ -1 | SpellDescription$ Attacking creatures you control get +2/-1 until end of turn.\nAI:RemoveDeck:Random\nSVar:NonStackingAttachEffect:True\nOracle:Enchant land you control\\nSacrifice a Thrull: Put three time counters on Tourach's Gate.\\nAt the beginning of your upkeep, remove a time counter from Tourach's Gate. If there are no time counters on Tourach's Gate, sacrifice it.\\nTap enchanted land: Attacking creatures you control get +2/-1 until end of turn. Activate only if enchanted land is untapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tourach's Gate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

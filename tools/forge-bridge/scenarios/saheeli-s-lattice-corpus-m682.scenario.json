@@ -1,0 +1,23 @@
+{
+  "id": "saheeli-s-lattice-corpus-m682",
+  "description": "M6 corpus — Saheeli's Lattice; in-hand parse.",
+  "seed": 64142,
+  "cards": {
+    "Saheeli's Lattice": "Name:Saheeli's Lattice\nManaCost:1 R\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, you may discard a card. If you do, draw two cards.\nSVar:TrigDiscard:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 2\nK:Craft:4 R XMin1 ExileCtrlOrGrave<X/Dinosaur.Other>\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHas:Ability$Discard|Graveyard\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckNeeds:Type$Dinosaur\nAlternateMode:DoubleFaced\nOracle:When Saheeli's Lattice enters, you may discard a card. If you do, draw two cards.\\nCraft with one or more Dinosaurs {4}{R} ({4}{R}, Exile this artifact, Exile one or more Dinosaurs you control and/or Dinosaur cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Mastercraft Raptor\nManaCost:no cost\nColors:red\nTypes:Artifact Creature Dinosaur\nPT:*/4\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the total power of the exiled cards used to craft it.\nSVar:X:ExiledWith$CardPower\nOracle:Mastercraft Raptor's power is equal to the total power of the exiled cards used to craft it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Saheeli's Lattice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

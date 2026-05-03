@@ -1,0 +1,23 @@
+{
+  "id": "cold-storage-corpus-m682",
+  "description": "M6 corpus — Cold Storage; in-hand parse.",
+  "seed": 61778,
+  "cards": {
+    "Cold Storage": "Name:Cold Storage\nManaCost:4\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 3 | ValidTgts$ Creature.YouCtrl | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature you control | SpellDescription$ Exile target creature you control.\nA:AB$ ChangeZoneAll | Cost$ Sac<1/CARDNAME> | ChangeType$ Creature.ExiledWithSource | Origin$ Exile | Destination$ Battlefield | GainControl$ True | SpellDescription$ Return each creature card exiled with CARDNAME to the battlefield under your control.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nOracle:{3}: Exile target creature you control.\\nSacrifice Cold Storage: Return each creature card exiled with Cold Storage to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cold Storage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

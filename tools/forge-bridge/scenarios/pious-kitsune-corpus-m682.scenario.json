@@ -1,0 +1,23 @@
+{
+  "id": "pious-kitsune-corpus-m682",
+  "description": "M6 corpus — Pious Kitsune; in-hand parse.",
+  "seed": 63773,
+  "cards": {
+    "Pious Kitsune": "Name:Pious Kitsune\nManaCost:2 W\nTypes:Creature Fox Cleric\nPT:1/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ At the beginning of your upkeep, put a devotion counter on CARDNAME. Then if a creature named Eight-and-a-Half-Tails is on the battlefield, you gain 1 life for each devotion counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ DEVOTION | CounterNum$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | ConditionCheckSVar$ PiousCheckName | ConditionSVarCompare$ GE1\nSVar:PiousCheckName:Count$Valid Creature.namedEight-and-a-Half-Tails\nSVar:X:Count$CardCounters.DEVOTION\nA:AB$ GainLife | Cost$ T SubCounter<1/DEVOTION> | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nDeckHints:Name$Eight-and-a-Half-Tails\nOracle:At the beginning of your upkeep, put a devotion counter on Pious Kitsune. Then if a creature named Eight-and-a-Half-Tails is on the battlefield, you gain 1 life for each devotion counter on Pious Kitsune.\\n{T}, Remove a devotion counter from Pious Kitsune: You gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Pious Kitsune"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

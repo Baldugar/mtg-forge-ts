@@ -1,0 +1,23 @@
+{
+  "id": "deepwood-elder-corpus-m682",
+  "description": "M6 corpus — Deepwood Elder; in-hand parse.",
+  "seed": 61959,
+  "cards": {
+    "Deepwood Elder": "Name:Deepwood Elder\nManaCost:G G\nTypes:Creature Dryad Spellshaper\nPT:2/2\nA:AB$ Animate | Cost$ X G G T Discard<1/Card> | TargetMin$ 0 | TargetMax$ MaxTgt | ValidTgts$ Land | TgtPrompt$ Select target land to become forest | Types$ Forest | RemoveLandTypes$ True | SpellDescription$ X target lands become Forests until end of turn.\nSVar:X:TargetedObjects$Amount\nAI:RemoveDeck:All\nSVar:MaxTgt:Count$Valid Land\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{X}{G}{G}, {T}, Discard a card: X target lands become Forests until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deepwood Elder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

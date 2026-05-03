@@ -1,0 +1,23 @@
+{
+  "id": "minion-of-the-wastes-corpus-m682",
+  "description": "M6 corpus — Minion of the Wastes; in-hand parse.",
+  "seed": 63377,
+  "cards": {
+    "Minion of the Wastes": "Name:Minion of the Wastes\nManaCost:3 B B B\nTypes:Creature Minion\nPT:*/*\nK:Trample\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ PayLife | ReplacementResult$ Updated | Description$ As CARDNAME enters, pay any amount of life.\nSVar:PayLife:AB$ StoreSVar | Cost$ Mandatory PayLife<X> | SVar$ LifePaidOnETB | Type$ Calculate | Expression$ X\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ LifePaidOnETB | SetToughness$ LifePaidOnETB | Description$ CARDNAME's power and toughness are each equal to the life paid as it entered.\nSVar:X:Count$xPaid\nSVar:LifePaidOnETB:Number$0\nSVar:NoZeroToughnessAI:True\nAI:RemoveDeck:All\nOracle:Trample\\nAs Minion of the Wastes enters, pay any amount of life.\\nMinion of the Wastes's power and toughness are each equal to the life paid as it entered.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minion of the Wastes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sivitri-dragon-master-corpus-m682",
+  "description": "M6 corpus — Sivitri, Dragon Master; in-hand parse.",
+  "seed": 64391,
+  "cards": {
+    "Sivitri, Dragon Master": "Name:Sivitri, Dragon Master\nManaCost:2 U B\nTypes:Legendary Planeswalker Sivitri\nLoyalty:4\nText:CARDNAME can be your commander.\nA:AB$ Effect | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | StaticAbilities$ CantAttack | Duration$ UntilYourNextTurn | SpellDescription$ Until your next turn, creatures can't attack you or planeswalkers you control unless their controller pays 2 life for each of those creatures.\nSVar:CantAttack:Mode$ CantAttackUnless | ValidCard$ Creature | Target$ You,Planeswalker.YouCtrl | Cost$ PayLife<2> | TriggerDescription$ Until your next turn, creatures can't attack you or planeswalkers you control unless their controller pays 2 life for each of those creatures.\nA:AB$ ChangeZone | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | Origin$ Library | Destination$ Hand | ChangeType$ Dragon | SpellDescription$ Search your library for a Dragon card, reveal it, put it into your hand, then shuffle.\nA:AB$ DestroyAll | Cost$ SubCounter<7/LOYALTY> | Ultimate$ True | Planeswalker$ True | ValidCards$ Creature.nonDragon | SpellDescription$ Destroy all non-Dragon creatures.\nDeckNeeds:Type$Dragon\nOracle:[+1]: Until your next turn, creatures can't attack you or planeswalkers you control unless their controller pays 2 life for each of those creatures.\\n[-3]: Search your library for a Dragon card, reveal it, put it into your hand, then shuffle.\\n[-7]: Destroy all non-Dragon creatures.\\nSivitri, Dragon Master can be your commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sivitri, Dragon Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

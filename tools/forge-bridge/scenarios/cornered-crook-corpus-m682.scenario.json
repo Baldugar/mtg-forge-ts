@@ -1,0 +1,23 @@
+{
+  "id": "cornered-crook-corpus-m682",
+  "description": "M6 corpus — Cornered Crook; in-hand parse.",
+  "seed": 61828,
+  "cards": {
+    "Cornered Crook": "Name:Cornered Crook\nManaCost:4 R\nTypes:Creature Lizard Warrior\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigImmediateTrig | TriggerDescription$ When CARDNAME enters, you may sacrifice an artifact. When you do, CARDNAME deals 3 damage to any target.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<1/Artifact> | Execute$ TrigDamage | SpellDescription$ When you do, CARDNAME deals 3 damage to any target.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ 3 | ValidTgts$ Any\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Artifact\nOracle:When Cornered Crook enters, you may sacrifice an artifact. When you do, Cornered Crook deals 3 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cornered Crook"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

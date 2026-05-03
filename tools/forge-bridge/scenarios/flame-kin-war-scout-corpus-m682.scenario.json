@@ -1,0 +1,23 @@
+{
+  "id": "flame-kin-war-scout-corpus-m682",
+  "description": "M6 corpus — Flame-Kin War Scout; in-hand parse.",
+  "seed": 62343,
+  "cards": {
+    "Flame-Kin War Scout": "Name:Flame-Kin War Scout\nManaCost:3 R\nTypes:Creature Elemental Scout\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When another creature enters, sacrifice CARDNAME. If you do, CARDNAME deals 4 damage to that creature.\nSVar:TrigSac:AB$ DealDamage | Defined$ TriggeredCardLKICopy | NumDmg$ 4 | Cost$ Mandatory Sac<1/CARDNAME>\nAI:RemoveDeck:All\nOracle:When another creature enters, sacrifice Flame-Kin War Scout. If you do, Flame-Kin War Scout deals 4 damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flame-Kin War Scout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

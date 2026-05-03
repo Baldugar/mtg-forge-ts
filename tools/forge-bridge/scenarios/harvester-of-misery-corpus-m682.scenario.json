@@ -1,0 +1,23 @@
+{
+  "id": "harvester-of-misery-corpus-m682",
+  "description": "M6 corpus — Harvester of Misery; in-hand parse.",
+  "seed": 62698,
+  "cards": {
+    "Harvester of Misery": "Name:Harvester of Misery\nManaCost:3 B B\nTypes:Creature Spirit\nPT:5/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, other creatures get -2/-2 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ -2 | NumDef$ -2 | ValidCards$ Creature.StrictlyOther | IsCurse$ True\nA:AB$ Pump | Cost$ 1 B Discard<1/CARDNAME> | ActivationZone$ Hand | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | AILogic$ AlwaysOnDiscard | SpellDescription$ Target creature gets -2/-2 until end of turn.\nDeckHas:Ability$Discard\nOracle:Menace\\nWhen Harvester of Misery enters, other creatures get -2/-2 until end of turn.\\n{1}{B}, Discard Harvester of Misery: Target creature gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Harvester of Misery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

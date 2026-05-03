@@ -1,0 +1,23 @@
+{
+  "id": "servant-of-the-conduit-corpus-m682",
+  "description": "M6 corpus — Servant of the Conduit; in-hand parse.",
+  "seed": 64296,
+  "cards": {
+    "Servant of the Conduit": "Name:Servant of the Conduit\nManaCost:1 G\nTypes:Creature Elf Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ Mana | Cost$ T PayEnergy<1> | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When Servant of the Conduit enters, you get {E}{E} (two energy counters).\\n{T}, Pay {E}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Servant of the Conduit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

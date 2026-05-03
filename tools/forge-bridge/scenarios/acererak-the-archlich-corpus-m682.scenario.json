@@ -1,0 +1,23 @@
+{
+  "id": "acererak-the-archlich-corpus-m682",
+  "description": "M6 corpus — Acererak the Archlich; in-hand parse.",
+  "seed": 61441,
+  "cards": {
+    "Acererak the Archlich": "Name:Acererak the Archlich\nManaCost:2 B\nTypes:Legendary Creature Zombie Wizard\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ LT1 | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, if you haven't completed Tomb of Annihilation, return CARDNAME to its owner's hand and venture into the dungeon.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBVenture\nSVar:DBVenture:DB$ Venture\nSVar:X:DungeonsCompleted$Valid Card.namedTomb of Annihilation\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ Whenever CARDNAME attacks, for each opponent, you create a 2/2 black Zombie creature token unless that player sacrifices a creature.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | UnlessCost$ Sac<1/Creature> | UnlessPayer$ Player.IsRemembered\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckHints:Type$Zombie\nOracle:When Acererak the Archlich enters, if you haven't completed Tomb of Annihilation, return Acererak the Archlich to its owner's hand and venture into the dungeon.\\nWhenever Acererak the Archlich attacks, for each opponent, you create a 2/2 black Zombie creature token unless that player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acererak the Archlich"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

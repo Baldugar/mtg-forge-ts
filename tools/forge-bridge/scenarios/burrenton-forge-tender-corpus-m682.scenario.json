@@ -1,0 +1,23 @@
+{
+  "id": "burrenton-forge-tender-corpus-m682",
+  "description": "M6 corpus — Burrenton Forge-Tender; in-hand parse.",
+  "seed": 61588,
+  "cards": {
+    "Burrenton Forge-Tender": "Name:Burrenton Forge-Tender\nManaCost:W\nTypes:Creature Kithkin Wizard\nPT:1/1\nK:Protection from red\nA:AB$ ChooseSource | Cost$ Sac<1/CARDNAME> | Choices$ Card.RedSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ Prevent all damage a red source of your choice would deal this turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict+RedSource | Prevent$ True | Description$ Prevent all damage the chosen source would deal this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Protection from red\\nSacrifice Burrenton Forge-Tender: Prevent all damage a red source of your choice would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burrenton Forge-Tender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

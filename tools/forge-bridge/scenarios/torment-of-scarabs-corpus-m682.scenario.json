@@ -1,0 +1,23 @@
+{
+  "id": "torment-of-scarabs-corpus-m682",
+  "description": "M6 corpus — Torment of Scarabs; in-hand parse.",
+  "seed": 64919,
+  "cards": {
+    "Torment of Scarabs": "Name:Torment of Scarabs\nManaCost:3 B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigGenericChoice | TriggerDescription$ At the beginning of enchanted player's upkeep, that player loses 3 life unless they sacrifice a nonland permanent or discard a card.\nSVar:TrigGenericChoice:DB$ GenericChoice | Choices$ PaySac,PayDiscard | Defined$ TriggeredPlayer | FallbackAbility$ LoseLifeFallback | AILogic$ PayUnlessCost\nSVar:PaySac:DB$ LoseLife | LifeAmount$ 3 | Defined$ TriggeredPlayer | UnlessCost$ Sac<1/Permanent.nonland/nonland permanent> | UnlessPayer$ TriggeredPlayer | SpellDescription$ You lose 3 life unless you sacrifice a nonland permanent.\nSVar:PayDiscard:DB$ LoseLife | LifeAmount$ 3 | Defined$ TriggeredPlayer | UnlessCost$ Discard<1/Card> | UnlessPayer$ TriggeredPlayer | SpellDescription$ You lose 3 life unless you discard a card.\n# TODO: Most likely the ChooseGenericEffect code can be simplified somehow to avoid the necessity of having a dedicated fallback ability\nSVar:LoseLifeFallback:DB$ LoseLife | Defined$ Player.IsRemembered | LifeAmount$ 3\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, that player loses 3 life unless they sacrifice a nonland permanent or discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Torment of Scarabs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

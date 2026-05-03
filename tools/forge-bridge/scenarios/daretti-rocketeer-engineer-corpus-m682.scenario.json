@@ -1,0 +1,23 @@
+{
+  "id": "daretti-rocketeer-engineer-corpus-m682",
+  "description": "M6 corpus — Daretti, Rocketeer Engineer; in-hand parse.",
+  "seed": 61912,
+  "cards": {
+    "Daretti, Rocketeer Engineer": "Name:Daretti, Rocketeer Engineer\nManaCost:4 R\nTypes:Legendary Creature Goblin Artificer\nPT:*/5\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ NICKNAME's power is equal to the greatest mana value among artifacts you control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Whenever NICKNAME enters or attacks, choose target artifact card in your graveyard. You may sacrifice an artifact. If you do, return the chosen card to the battlefield.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigReturn | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, choose target artifact card in your graveyard. You may sacrifice an artifact. If you do, return the chosen card to the battlefield.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ Sac<1/Artifact> | Origin$ Graveyard | Destination$ Battlefield | Defined$ Targeted | ValidTgts$ Artifact.YouCtrl | TgtZone$ Graveyard | TgtPrompt$ Select target artifact card in your graveyard\nSVar:X:Count$Valid Artifact.YouCtrl$GreatestCardManaCost\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard & Type$Artifact\nOracle:Daretti's power is equal to the greatest mana value among artifacts you control.\\nWhenever Daretti enters or attacks, choose target artifact card in your graveyard. You may sacrifice an artifact. If you do, return the chosen card to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daretti, Rocketeer Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

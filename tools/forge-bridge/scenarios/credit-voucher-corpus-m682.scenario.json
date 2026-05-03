@@ -1,0 +1,23 @@
+{
+  "id": "credit-voucher-corpus-m682",
+  "description": "M6 corpus — Credit Voucher; in-hand parse.",
+  "seed": 61859,
+  "cards": {
+    "Credit Voucher": "Name:Credit Voucher\nManaCost:2\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 2 T Sac<1/CARDNAME> | Origin$ Hand | Destination$ Library | Shuffle$ True | ChangeType$ Card | ChangeNum$ X | RememberChanged$ True | SubAbility$ DBDraw | SpellDescription$ Shuffle any number of cards from your hand into your library, then draw that many cards.\nSVar:DBDraw:DB$ Draw | NumCards$ Y | SubAbility$ DBCleanup\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:Remembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:{2}, {T}, Sacrifice Credit Voucher: Shuffle any number of cards from your hand into your library, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Credit Voucher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

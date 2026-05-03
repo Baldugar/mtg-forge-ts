@@ -1,0 +1,23 @@
+{
+  "id": "delif-s-cone-corpus-m682",
+  "description": "M6 corpus — Delif's Cone; in-hand parse.",
+  "seed": 61971,
+  "cards": {
+    "Delif's Cone": "Name:Delif's Cone\nManaCost:0\nTypes:Artifact\nA:AB$ Effect | Cost$ T Sac<1/CARDNAME> | ValidTgts$ Creature.YouCtrl | Triggers$ TrigAttackerUnblocked | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | SpellDescription$ This turn, when target creature you control attacks and isn't blocked, you may gain life equal to its power. If you do, it assigns no combat damage this turn.\nSVar:TrigAttackerUnblocked:Mode$ AttackerUnblocked | ValidCard$ Card.IsRemembered | Execute$ GainLife | OptionalDecider$ You | TriggerDescription$ This turn, when that creature attacks and isn't blocked, you may gain life equal to its power. If you do, it assigns no combat damage this turn.\nSVar:GainLife:DB$ GainLife | Defined$ You | LifeAmount$ DelifX | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ SNoCombatDamage | ForgetOnMoved$ Battlefield\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.IsRemembered | Description$ Remembered creature assigns no combat damage this turn.\nSVar:DelifX:Remembered$CardPower\nAI:RemoveDeck:All\nOracle:{T}, Sacrifice Delif's Cone: This turn, when target creature you control attacks and isn't blocked, you may gain life equal to its power. If you do, it assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delif's Cone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "projektor-inspector-corpus-m682",
+  "description": "M6 corpus — Projektor Inspector; in-hand parse.",
+  "seed": 63833,
+  "cards": {
+    "Projektor Inspector": "Name:Projektor Inspector\nManaCost:2 U\nTypes:Creature Human Detective\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Detective.YouCtrl+Other,Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME or another Detective you control enters and whenever a Detective you control is turned face up, you may draw a card. If you do, discard a card.\nT:Mode$ TurnFaceUp | ValidCard$ Detective.YouCtrl | Execute$ TrigDraw | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME or another Detective you control enters and whenever a Detective you control is turned face up, you may draw a card. If you do, discard a card.\nSVar:TrigDraw:AB$ Discard | Mode$ TgtChoose | Cost$ Draw<1/You> | NumCards$ 1\nDeckHas:Ability$Discard\nDeckHints:Type$Detective\nOracle:Whenever Projektor Inspector or another Detective you control enters and whenever a Detective you control is turned face up, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Projektor Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

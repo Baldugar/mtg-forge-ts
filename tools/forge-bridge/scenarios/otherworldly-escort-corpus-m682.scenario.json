@@ -1,0 +1,23 @@
+{
+  "id": "otherworldly-escort-corpus-m682",
+  "description": "M6 corpus — Otherworldly Escort; in-hand parse.",
+  "seed": 63668,
+  "cards": {
+    "Otherworldly Escort": "Name:Otherworldly Escort\nManaCost:3 W\nTypes:Creature Human Detective\nPT:4/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+nonSpirit | Execute$ TrigReturn | TriggerDescription$ Whenever CARDNAME dies, if it's not a Spirit, return it to the battlefield under its owner's control with four charge counters on it. It's a Spirit Detective. (It's no longer a Human.)\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ CHARGE | WithCountersAmount$ 4 | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Spirit & Detective | RemoveCreatureTypes$ True\nA:AB$ Destroy | Cost$ 1 W T SubCounter<1/CHARGE> | ValidTgts$ Creature.dealtDamageToYouThisTurn | TgtPrompt$ Select target creature that dealt damage to you this turn | SpellDescription$ Destroy target creature that dealt damage to you this turn.\nDeckHas:Type$Spirit & Ability$Counters\nOracle:When Otherworldly Escort dies, if it's not a Spirit, return it to the battlefield under its owner's control with four charge counters on it. It's a Spirit Detective. (It's no longer a Human.)\\n{1}{W}, {T}, Remove a charge counter from Otherworldly Escort: Destroy target creature that dealt damage to you this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Otherworldly Escort"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

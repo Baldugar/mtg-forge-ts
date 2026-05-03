@@ -1,0 +1,23 @@
+{
+  "id": "boundary-lands-ranger-corpus-m682",
+  "description": "M6 corpus — Boundary Lands Ranger; in-hand parse.",
+  "seed": 61563,
+  "cards": {
+    "Boundary Lands Ranger": "Name:Boundary Lands Ranger\nManaCost:1 R\nTypes:Creature Human Ranger\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+powerGE4 | Execute$ TrigDraw | TriggerDescription$ At the beginning of combat on your turn, if you control a creature with power 4 or greater, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:At the beginning of combat on your turn, if you control a creature with power 4 or greater, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Boundary Lands Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

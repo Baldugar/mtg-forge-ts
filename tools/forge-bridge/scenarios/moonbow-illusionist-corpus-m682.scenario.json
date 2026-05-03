@@ -1,0 +1,23 @@
+{
+  "id": "moonbow-illusionist-corpus-m682",
+  "description": "M6 corpus — Moonbow Illusionist; in-hand parse.",
+  "seed": 63419,
+  "cards": {
+    "Moonbow Illusionist": "Name:Moonbow Illusionist\nManaCost:2 U\nTypes:Creature Moonfolk Wizard\nPT:2/1\nK:Flying\nA:AB$ ChooseType | Cost$ 2 Return<1/Land> | Defined$ You | Type$ Basic Land | SubAbility$ DBAnimate | SpellDescription$ Target land becomes the basic land type of your choice until end of turn.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Land | Types$ ChosenType | RemoveLandTypes$ True\nAI:RemoveDeck:All\nOracle:Flying\\n{2}, Return a land you control to its owner's hand: Target land becomes the basic land type of your choice until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Moonbow Illusionist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "seafloor-debris-corpus-m682",
+  "description": "M6 corpus — Seafloor Debris; in-hand parse.",
+  "seed": 64243,
+  "cards": {
+    "Seafloor Debris": "Name:Seafloor Debris\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Mana | Cost$ T Sac<1/CARDNAME> | Produced$ Any | SpellDescription$ Add one mana of any color.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nDeckNeeds:Color$Blue\nOracle:Seafloor Debris enters tapped.\\n{T}: Add {U}.\\n{T}, Sacrifice Seafloor Debris: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Seafloor Debris"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

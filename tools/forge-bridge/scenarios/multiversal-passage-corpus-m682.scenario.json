@@ -1,0 +1,23 @@
+{
+  "id": "multiversal-passage-corpus-m682",
+  "description": "M6 corpus — Multiversal Passage; in-hand parse.",
+  "seed": 63457,
+  "cards": {
+    "Multiversal Passage": "Name:Multiversal Passage\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBChooseBasic | ReplacementResult$ Updated | Description$ As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.\nSVar:DBChooseBasic:DB$ ChooseType | ETB$ True | Type$ Basic Land | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ PayLife<2> | UnlessPayer$ You\nS:Mode$ Continuous | Affected$ Card.Self | AddType$ ChosenType | RemoveLandTypes$ True | Description$ This land is the chosen type.\nOracle:As this land enters, choose a basic land type. Then you may pay 2 life. If you don't, it enters tapped.\\nThis land is the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Multiversal Passage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

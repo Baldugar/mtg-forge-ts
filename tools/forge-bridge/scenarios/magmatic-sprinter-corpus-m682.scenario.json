@@ -1,0 +1,23 @@
+{
+  "id": "magmatic-sprinter-corpus-m682",
+  "description": "M6 corpus — Magmatic Sprinter; in-hand parse.",
+  "seed": 63243,
+  "cards": {
+    "Magmatic Sprinter": "Name:Magmatic Sprinter\nManaCost:2 R\nTypes:Creature Phyrexian Warrior\nPT:3/2\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounter | TriggerDescription$ When CARDNAME enters, put two oil counters on target artifact or creature you control.\nSVar:TrigPutCounter:DB$ PutCounter | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl | TgtPrompt$ Select target artifact or creature you control | CounterType$ OIL | CounterNum$ 2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, return CARDNAME to its owner's hand unless you remove two oil counters from it.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self | UnlessCost$ SubCounter<2/OIL> | UnlessPayer$ You\nAI:RemoveDeck:Random\nOracle:Haste\\nWhen Magmatic Sprinter enters, put two oil counters on target artifact or creature you control.\\nAt the beginning of your end step, return Magmatic Sprinter to its owner's hand unless you remove two oil counters from it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Magmatic Sprinter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

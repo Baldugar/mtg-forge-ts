@@ -1,0 +1,23 @@
+{
+  "id": "minion-of-leshrac-corpus-m682",
+  "description": "M6 corpus — Minion of Leshrac; in-hand parse.",
+  "seed": 63376,
+  "cards": {
+    "Minion of Leshrac": "Name:Minion of Leshrac\nManaCost:4 B B B\nTypes:Creature Demon Minion\nPT:5/5\nK:Protection from black\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 5 damage to you unless you sacrifice a creature other than CARDNAME. If CARDNAME deals damage to you this way, tap it.\nSVar:TrigDmg:DB$ DealDamage | Defined$ You | NumDmg$ 5 | UnlessCost$ Sac<1/Creature.Other/a creature other than CARDNAME> | RememberDamaged$ True | UnlessPayer$ TriggeredPlayer | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | Defined$ Self | ConditionPlayerDefined$ Remembered | ConditionPlayerContains$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Destroy | Cost$ T | ValidTgts$ Land,Creature | TgtPrompt$ Select target creature or land | SpellDescription$ Destroy target creature or land.\nAI:RemoveDeck:All\nOracle:Protection from black\\nAt the beginning of your upkeep, Minion of Leshrac deals 5 damage to you unless you sacrifice a creature other than Minion of Leshrac. If Minion of Leshrac deals damage to you this way, tap it.\\n{T}: Destroy target creature or land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Minion of Leshrac"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

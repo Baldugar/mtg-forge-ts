@@ -1,0 +1,23 @@
+{
+  "id": "tocasia-dig-site-mentor-corpus-m682",
+  "description": "M6 corpus — Tocasia, Dig Site Mentor; in-hand parse.",
+  "seed": 64900,
+  "cards": {
+    "Tocasia, Dig Site Mentor": "Name:Tocasia, Dig Site Mentor\nManaCost:1 G W U\nTypes:Legendary Creature Human Artificer\nPT:4/3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddAbility$ Surveil | AddKeyword$ Vigilance | Description$ Creatures you control have vigilance and \"{T}: Surveil 1.\" (To surveil 1, look at the top card of your library You may put that card into your graveyard.)\nSVar:Surveil:AB$ Surveil | Cost$ T | Amount$ 1 | SpellDescription$ Surveil 1. (To surveil 1, look at the top card of your library. You may put that card into your graveyard.)\nA:AB$ ChangeZone | Cost$ 2 G G W W U U ExileFromGrave<1/CARDNAME> | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ X | ValidTgts$ Artifact.YouOwn | TgtPrompt$ Select any number of target artifact cards with total mana value 10 or less | MaxTotalTargetCMC$ 10 | ActivationZone$ Graveyard | SorcerySpeed$ True | SpellDescription$ Return any number of target artifact cards with total mana value 10 or less from your graveyard to the battlefield. Activate only as a sorcery.\nSVar:X:Count$ValidGraveyard Artifact.YouOwn\nDeckHas:Ability$Graveyard|Surveil & Keyword$Vigilance\nOracle:Creatures you control have vigilance and \"{T}: Surveil 1.\" (To surveil 1, look at the top card of your library. You may put that card into your graveyard.)\\n{2}{G}{G}{W}{W}{U}{U}, Exile Tocasia, Digsite Mentor from your graveyard: Return any number of target artifact cards with total mana value 10 or less from your graveyard to the battlefield. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tocasia, Dig Site Mentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wolf-of-devil-s-breach-corpus-m682",
+  "description": "M6 corpus — Wolf of Devil's Breach; in-hand parse.",
+  "seed": 65267,
+  "cards": {
+    "Wolf of Devil's Breach": "Name:Wolf of Devil's Breach\nManaCost:3 R R\nTypes:Creature Elemental Wolf\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, you may pay {1}{R} and discard a card. If you do, CARDNAME deals damage to target creature or planeswalker equal to the discarded card's mana value.\nSVar:TrigDamage:AB$ DealDamage | Cost$ 1 R Discard<1/Card> | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X\nSVar:X:Discarded$CardManaCost\nOracle:Whenever Wolf of Devil's Breach attacks, you may pay {1}{R} and discard a card. If you do, Wolf of Devil's Breach deals damage to target creature or planeswalker equal to the discarded card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Wolf of Devil's Breach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

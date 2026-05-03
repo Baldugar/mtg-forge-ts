@@ -1,0 +1,23 @@
+{
+  "id": "cindervines-corpus-m682",
+  "description": "M6 corpus — Cindervines; in-hand parse.",
+  "seed": 61747,
+  "cards": {
+    "Cindervines": "Name:Cindervines\nManaCost:R G\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDealOneDamage | TriggerDescription$ Whenever an opponent casts a noncreature spell, CARDNAME deals 1 damage to that player.\nSVar:TrigDealOneDamage:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 1\nA:AB$ Destroy | Cost$ 1 Sac<1/CARDNAME> | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ DBDealTwoDamage | SpellDescription$ Destroy target artifact or enchantment. CARDNAME deals 2 damage to that permanent's controller.\nSVar:DBDealTwoDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 2\nOracle:Whenever an opponent casts a noncreature spell, Cindervines deals 1 damage to that player.\\n{1}, Sacrifice Cindervines: Destroy target artifact or enchantment. Cindervines deals 2 damage to that permanent's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cindervines"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

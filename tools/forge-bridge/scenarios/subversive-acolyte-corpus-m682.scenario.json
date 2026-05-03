@@ -1,0 +1,23 @@
+{
+  "id": "subversive-acolyte-corpus-m682",
+  "description": "M6 corpus — Subversive Acolyte; in-hand parse.",
+  "seed": 64640,
+  "cards": {
+    "Subversive Acolyte": "Name:Subversive Acolyte\nManaCost:1 B\nTypes:Creature Human\nPT:2/3\nA:AB$ Charm | Cost$ 2 PayLife<2> | Choices$ Cleric,Phyrexian | GameActivationLimit$ 1\nSVar:Cleric:DB$ Animate | Defined$ Self | Types$ Human Cleric | Duration$ Permanent | RemoveCreatureTypes$ True | SubAbility$ DBPumpCleric | StackDescription$ SpellDescription | SpellDescription$ CARDNAME becomes a Human Cleric. It gets +1/+1 and gains lifelink.\nSVar:DBPumpCleric:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | KW$ Lifelink | Duration$ Permanent | StackDescription$ None\nSVar:Phyrexian:DB$ Animate | Defined$ Self | Types$ Phyrexian | Triggers$ DamageSac | RemoveCreatureTypes$ True | Duration$ Permanent | SubAbility$ DBPumpPhyrexian | SpellDescription$ CARDNAME becomes a Phyrexian. It gets +3/+2 and gains trample and \"Whenever this creature is dealt damage, sacrifice that many permanents.\"\nSVar:DBPumpPhyrexian:DB$ Pump | Defined$ Self | NumAtt$ +3 | NumDef$ +2 | KW$ Trample | Duration$ Permanent | StackDescription$ None\nSVar:DamageSac:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature is dealt damage, sacrifice that many permanents.\nSVar:TrigSac:DB$ Sacrifice | Amount$ X | SacValid$ Permanent\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$LifeGain|Sacrifice & Type$Cleric|Phyrexian\nOracle:{2}, Pay 2 life: Choose one. Activate only once.\\n• Subversive Acolyte becomes a Human Cleric. It gets +1/+1 and gains lifelink.\\n• Subversive Acolyte becomes a Phyrexian. It gets +3/+2 and gains trample and \"Whenever this creature is dealt damage, sacrifice that many permanents.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Subversive Acolyte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "mordenkainen-corpus-m682",
+  "description": "M6 corpus — Mordenkainen; in-hand parse.",
+  "seed": 63432,
+  "cards": {
+    "Mordenkainen": "Name:Mordenkainen\nManaCost:4 U U\nTypes:Legendary Planeswalker Mordenkainen\nLoyalty:5\nA:AB$ Draw | Cost$ AddCounter<2/LOYALTY> | Planeswalker$ True | NumCards$ 2 | SubAbility$ DBBottom | SpellDescription$ Draw two cards, then put a card from your hand on the bottom of your library.\nSVar:DBBottom:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeNum$ 1\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TokenOwner$ You | TokenScript$ u_x_x_dog_illusion_cardsinhand | SpellDescription$ Create a blue Dog Illusion creature token with \"This creature's power and toughness are each equal to twice the number of cards in your hand.\"\nA:AB$ ChangeZoneAll | Cost$ SubCounter<10/LOYALTY> | Planeswalker$ True | Ultimate$ True | ChangeType$ Card.YouCtrl | Origin$ Hand | Destination$ Library | RememberChanged$ True | SubAbility$ DBChangeZoneAll | SpellDescription$ Exchange your hand and library, then shuffle. You get an emblem with \"You have no maximum hand size.\"\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Card.YouCtrl+!IsRemembered | Origin$ Library | Destination$ Hand | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBEmblem\nSVar:DBEmblem:DB$ Effect | Name$ Emblem — Mordenkainen | Image$ emblem_mordenkainen | StaticAbilities$ UnlimitedHand | Stackable$ False | Duration$ Permanent | AILogic$ Always\nSVar:UnlimitedHand:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nDeckHas:Ability$Token\nOracle:[+2]: Draw two cards, then put a card from your hand on the bottom of your library.\\n[-2]: Create a blue Dog Illusion creature token with \"This creature's power and toughness are each equal to twice the number of cards in your hand.\"\\n[-10]: Exchange your hand and library, then shuffle. You get an emblem with \"You have no maximum hand size.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Mordenkainen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

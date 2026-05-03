@@ -1,0 +1,23 @@
+{
+  "id": "nyssa-of-traken-corpus-m682",
+  "description": "M6 corpus — Nyssa of Traken; in-hand parse.",
+  "seed": 63593,
+  "cards": {
+    "Nyssa of Traken": "Name:Nyssa of Traken\nManaCost:3 U\nTypes:Legendary Creature Human Scientist\nPT:3/4\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | OptionalDecider$ You | TriggerDescription$ Sonic Booster — Whenever CARDNAME attacks, sacrifice any number artifacts. When you sacrifice one or more artifacts this way, tap up to that many target creatures and draw that many cards.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ Sac<X/Artifact> | Execute$ TrigTap | TriggerDescription$ When you sacrifice one or more artifacts this way, tap up to that many target creatures and draw that many cards.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Select up to X target creatures to tap | ValidTgts$ Creature | SubAbility$ TrigDraw\nSVar:TrigDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$xPaid\nK:Doctor's companion\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Artifact\nOracle:You have no maximum hand size.\\nSonic Booster — Whenever Nyssa of Traken attacks, sacrifice any number of artifacts. When you sacrifice one or more artifacts this way, tap up to that many target creatures and draw that many cards.\\nDoctor's companion (You can have two commanders if the other is the Doctor.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Nyssa of Traken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

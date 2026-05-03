@@ -1,0 +1,23 @@
+{
+  "id": "dina-essence-brewer-corpus-m682",
+  "description": "M6 corpus — Dina, Essence Brewer; in-hand parse.",
+  "seed": 62018,
+  "cards": {
+    "Dina, Essence Brewer": "Name:Dina, Essence Brewer\nManaCost:1 B G\nTypes:Legendary Creature Dryad Druid\nPT:2/3\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDraw | ActivationLimit$ 1 | TriggerDescription$ Whenever you sacrifice a creature, draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw\nA:AB$ GainLife | Cost$ 2 T Sac<1/Creature.Other/another creature> | Defined$ You | LifeAmount$ X | SubAbility$ DBPutCounter | SpellDescription$ You gain X life and put X +1/+1 counters on target creature you control, where X is the sacrificed creature's power.\nSVar:DBPutCounter:DB$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ X\nSVar:X:Sacrificed$CardPower\nDeckHas:Ability$LifeGain|Counters\nOracle:Whenever you sacrifice a creature, draw a card. This ability triggers only once each turn.\\n{2}, {T}, Sacrifice another creature: You gain X life and put X +1/+1 counters on target creature you control, where X is the sacrificed creature's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dina, Essence Brewer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

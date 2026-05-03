@@ -1,0 +1,23 @@
+{
+  "id": "indulgent-tormentor-corpus-m682",
+  "description": "M6 corpus — Indulgent Tormentor; in-hand parse.",
+  "seed": 62868,
+  "cards": {
+    "Indulgent Tormentor": "Name:Indulgent Tormentor\nManaCost:3 B B\nTypes:Creature Demon\nPT:5/3\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoice | TriggerDescription$ At the beginning of your upkeep, draw a card unless target opponent sacrifices a creature or pays 3 life.\nSVar:TrigChoice:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ DBPayLife,DBSacCreature | AILogic$ PayUnlessCost | FallbackAbility$ DrawFallback\nSVar:DBSacCreature:DB$ Draw | Defined$ You | UnlessCost$ Sac<1/Creature> | UnlessPayer$ Targeted | UnlessAI$ LowPriority | SpellDescription$ CARDNAME's controller draws a card unless you sacrifice a creature.\nSVar:DBPayLife:DB$ Draw | Defined$ You | UnlessCost$ PayLife<3> | UnlessPayer$ Targeted | SpellDescription$ CARDNAME's controller draws a card unless you pay 3 life.\nSVar:DrawFallback:DB$ Draw\nOracle:Flying\\nAt the beginning of your upkeep, draw a card unless target opponent sacrifices a creature or pays 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Indulgent Tormentor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gix-yawgmoth-praetor-corpus-m682",
+  "description": "M6 corpus — Gix, Yawgmoth Praetor; in-hand parse.",
+  "seed": 62534,
+  "cards": {
+    "Gix, Yawgmoth Praetor": "Name:Gix, Yawgmoth Praetor\nManaCost:1 B B\nTypes:Legendary Creature Phyrexian Praetor\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ Opponent | CombatDamage$ True | OptionalDecider$ TriggeredSourceController | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature deals combat damage to one of your opponents, its controller may pay 1 life. If they do, they draw a card.\nSVar:TrigDraw:DB$ Draw | UnlessCost$ PayLife<1> | UnlessPayer$ TriggeredSourceController | Defined$ TriggeredSourceController | UnlessSwitched$ True\nA:AB$ Dig | Cost$ 4 B B B Discard<X/Card/card> | DigNum$ X | ChangeNum$ All | ValidTgts$ Opponent | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay | StackDescription$ Exile the top X cards of {p:Targeted}'s library. | SpellDescription$ Exile the top X cards of target opponent's library.\nSVar:DBPlay:DB$ Play | WithoutManaCost$ True | ValidZone$ Exile | Valid$ Card.IsRemembered | Amount$ All | Optional$ True | SubAbility$ DBCleanup | SpellDescription$ You may play lands and cast spells from among cards exiled this way without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Discard\nOracle:Whenever a creature deals combat damage to one of your opponents, its controller may pay 1 life. If they do, they draw a card.\\n{4}{B}{B}{B}, Discard X cards: Exile the top X cards of target opponent's library. You may play lands and cast spells from among cards exiled this way without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gix, Yawgmoth Praetor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

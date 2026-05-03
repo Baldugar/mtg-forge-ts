@@ -1,0 +1,23 @@
+{
+  "id": "jace-mirror-mage-corpus-m682",
+  "description": "M6 corpus — Jace, Mirror Mage; in-hand parse.",
+  "seed": 62928,
+  "cards": {
+    "Jace, Mirror Mage": "Name:Jace, Mirror Mage\nManaCost:1 U U\nTypes:Legendary Planeswalker Jace\nLoyalty:4\nK:Kicker:2\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigCopy | TriggerDescription$ When CARDNAME enters, if NICKNAME was kicked, create a token that's a copy of CARDNAME, except it's not legendary and its starting loyalty is 1.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Self | NonLegendary$ True | SetLoyalty$ 1\nA:AB$ Scry | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | ScryNum$ 2 | SpellDescription$ Scry 2.\nA:AB$ Draw | Cost$ AddCounter<0/LOYALTY> | Planeswalker$ True | Ultimate$ True | NumCards$ 1 | Reveal$ True | RememberDrawn$ True | SubAbility$ DBRemoveCounters | SpellDescription$ Draw a card and reveal it. Remove a number of loyalty counters equal to that card's mana value from CARDNAME.\nSVar:DBRemoveCounters:DB$ RemoveCounter | Defined$ Self | CounterType$ LOYALTY | CounterNum$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nDeckHas:Ability$Token\nOracle:Kicker {2}\\nWhen Jace, Mirror Mage enters, if Jace was kicked, create a token that's a copy of Jace, Mirror Mage, except it's not legendary and its starting loyalty is 1.\\n[+1]: Scry 2.\\n[0]: Draw a card and reveal it. Remove a number of loyalty counters equal to that card's mana value from Jace, Mirror Mage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jace, Mirror Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

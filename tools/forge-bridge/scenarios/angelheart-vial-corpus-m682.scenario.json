@@ -1,0 +1,23 @@
+{
+  "id": "angelheart-vial-corpus-m682",
+  "description": "M6 corpus — Angelheart Vial; in-hand parse.",
+  "seed": 61473,
+  "cards": {
+    "Angelheart Vial": "Name:Angelheart Vial\nManaCost:5\nTypes:Artifact\nA:AB$ GainLife | Cost$ 2 T SubCounter<4/CHARGE> | Defined$ You | LifeAmount$ 2 | SubAbility$ DBDraw | SpellDescription$ You gain 2 life and draw a card.\nT:Mode$ DamageDoneOnce | ValidTarget$ You | TriggerZones$ Battlefield | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerDescription$ Whenever you're dealt damage, you may put that many charge counters on CARDNAME.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ CHARGE | CounterNum$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever you're dealt damage, you may put that many charge counters on Angelheart Vial.\\n{2}, {T}, Remove four charge counters from Angelheart Vial: You gain 2 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Angelheart Vial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

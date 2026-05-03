@@ -1,0 +1,23 @@
+{
+  "id": "sage-of-the-falls-corpus-m682",
+  "description": "M6 corpus — Sage of the Falls; in-hand parse.",
+  "seed": 64135,
+  "cards": {
+    "Sage of the Falls": "Name:Sage of the Falls\nManaCost:4 U\nTypes:Creature Merfolk Wizard\nPT:2/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.nonHuman+Other+YouCtrl | Execute$ TrigLoot | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME or another non-Human creature you control enters, you may draw a card. If you do, discard a card.\nSVar:TrigLoot:AB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | Cost$ Draw<1/You>\nOracle:Whenever Sage of the Falls or another non-Human creature you control enters, you may draw a card. If you do, discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sage of the Falls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

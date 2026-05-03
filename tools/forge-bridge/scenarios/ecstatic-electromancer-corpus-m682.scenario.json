@@ -1,0 +1,23 @@
+{
+  "id": "ecstatic-electromancer-corpus-m682",
+  "description": "M6 corpus — Ecstatic Electromancer; in-hand parse.",
+  "seed": 62140,
+  "cards": {
+    "Ecstatic Electromancer": "Name:Ecstatic Electromancer\nManaCost:1 UR UR\nTypes:Creature Goblin Wizard\nPT:2/3\nK:Prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, you may discard a card. If you do, draw a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, you may discard a card. If you do, draw a card.\nSVar:TrigDraw:AB$ Draw | Cost$ Discard<1/Card> | NumCards$ 1\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhenever Ecstatic Electromancer enters or attacks, you may discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ecstatic Electromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

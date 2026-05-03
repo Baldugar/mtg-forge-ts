@@ -1,0 +1,23 @@
+{
+  "id": "shelob-dread-weaver-corpus-m682",
+  "description": "M6 corpus — Shelob, Dread Weaver; in-hand parse.",
+  "seed": 64324,
+  "cards": {
+    "Shelob, Dread Weaver": "Name:Shelob, Dread Weaver\nManaCost:3 B\nTypes:Legendary Creature Spider Demon\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl+!token | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever a nontoken creature an opponent controls dies, exile it.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nA:AB$ PutCounter | Cost$ 2 B ExiledMoveToGrave<1/Creature.ExiledWithSource> | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ TrigDraw | SpellDescription$ Put two +1/+1 counters on NICKNAME.\nSVar:TrigDraw:DB$ Draw | SpellDescription$ Draw a card.\nA:AB$ ChangeZone | Cost$ X 1 B | Origin$ Exile | Destination$ Battlefield | Tapped$ True | ValidTgts$ Creature.ExiledWithSource+cmcEQX | GainControl$ True | SpellDescription$ Put target creature card with mana value X exiled with NICKNAME onto the battlefield tapped under your control.\nSVar:X:Count$xPaid\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters\nOracle:Whenever a nontoken creature an opponent controls dies, exile it.\\n{2}{B}, Put a creature card exiled with Shelob, Dread Weaver into its owner's graveyard: Put two +1/+1 counters on Shelob. Draw a card.\\n{X}{1}{B}: Put target creature card with mana value X exiled with Shelob onto the battlefield tapped under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shelob, Dread Weaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

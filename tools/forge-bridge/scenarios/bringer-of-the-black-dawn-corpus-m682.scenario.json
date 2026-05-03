@@ -1,0 +1,23 @@
+{
+  "id": "bringer-of-the-black-dawn-corpus-m682",
+  "description": "M6 corpus — Bringer of the Black Dawn; in-hand parse.",
+  "seed": 61568,
+  "cards": {
+    "Bringer of the Black Dawn": "Name:Bringer of the Black Dawn\nManaCost:7 B B\nTypes:Creature Bringer\nPT:5/5\nK:Trample\nS:Mode$ AlternativeCost | ValidSA$ Spell.Self | EffectZone$ All | Cost$ W U B R G | Description$ You may pay {W}{U}{B}{R}{G} rather than pay this spell's mana cost.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, you may pay 2 life. If you do, search your library for a card, then shuffle and put that card on top.\nSVar:TrigChange:AB$ ChangeZone | Cost$ PayLife<2> | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card | ChangeNum$ 1\nAI:RemoveDeck:All\nOracle:You may pay {W}{U}{B}{R}{G} rather than pay this spell's mana cost.\\nTrample\\nAt the beginning of your upkeep, you may pay 2 life. If you do, search your library for a card, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bringer of the Black Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

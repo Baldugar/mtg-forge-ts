@@ -1,0 +1,23 @@
+{
+  "id": "oni-cult-anvil-corpus-m682",
+  "description": "M6 corpus — Oni-Cult Anvil; in-hand parse.",
+  "seed": 63636,
+  "cards": {
+    "Oni-Cult Anvil": "Name:Oni-Cult Anvil\nManaCost:B R\nTypes:Artifact\nT:Mode$ ChangesZoneAll | ValidCards$ Artifact.YouCtrl | Origin$ Battlefield | TriggerZones$ Battlefield | PlayerTurn$ True | ActivationLimit$ 1 | Execute$ TrigToken | TriggerDescription$ Whenever one or more artifacts you control leave the battlefield during your turn, create a 1/1 colorless Construct artifact creature token. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_construct\nA:AB$ DealDamage | Cost$ T Sac<1/Artifact> | Defined$ Player.Opponent | NumDmg$ 1 | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals 1 damage to each opponent.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1 | SpellDescription$ You gain 1 life.\nDeckHints:Type$Artifact & Ability$Discard\nDeckHas:Ability$Sacrifice|Token|LifeGain & Type$Construct\nOracle:Whenever one or more artifacts you control leave the battlefield during your turn, create a 1/1 colorless Construct artifact creature token. This ability triggers only once each turn.\\n{T}, Sacrifice an artifact: Oni-Cult Anvil deals 1 damage to each opponent. You gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Oni-Cult Anvil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

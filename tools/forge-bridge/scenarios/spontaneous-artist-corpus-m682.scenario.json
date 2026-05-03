@@ -1,0 +1,23 @@
+{
+  "id": "spontaneous-artist-corpus-m682",
+  "description": "M6 corpus — Spontaneous Artist; in-hand parse.",
+  "seed": 64565,
+  "cards": {
+    "Spontaneous Artist": "Name:Spontaneous Artist\nManaCost:3 R\nTypes:Creature Human Rogue\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E} (an energy counter).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 1\nA:AB$ Pump | Cost$ PayEnergy<1> | ValidTgts$ Creature | KW$ Haste | SpellDescription$ Target creature gains haste until end of turn.\nOracle:When Spontaneous Artist enters, you get {E} (an energy counter).\\nPay {E}: Target creature gains haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spontaneous Artist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

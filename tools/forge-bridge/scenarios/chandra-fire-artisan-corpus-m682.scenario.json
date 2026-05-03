@@ -1,0 +1,23 @@
+{
+  "id": "chandra-fire-artisan-corpus-m682",
+  "description": "M6 corpus — Chandra, Fire Artisan; in-hand parse.",
+  "seed": 61694,
+  "cards": {
+    "Chandra, Fire Artisan": "Name:Chandra, Fire Artisan\nManaCost:2 R R\nTypes:Legendary Planeswalker Chandra\nLoyalty:4\nT:Mode$ CounterRemovedOnce | ValidCard$ Card.Self | CounterType$ LOYALTY | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever one or more loyalty counters are removed from CARDNAME, CARDNAME deals that much damage to target opponent or planeswalker.\nSVar:TrigDmg:DB$ DealDamage | ValidTgts$ Opponent,Planeswalker | TgtPrompt$ Select target opponent or planeswalker | NumDmg$ X\nSVar:X:TriggerCount$Amount\nA:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top card of your library. You may play it this turn.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | AffectedZone$ Exile | Affected$ Card.IsRemembered | MayPlay$ True | Description$ You may play the card(s) this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Dig | Cost$ SubCounter<7/LOYALTY> | Planeswalker$ True | Ultimate$ True | Defined$ You | DigNum$ 7 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top seven cards of your library. You may play them this turn.\nOracle:Whenever one or more loyalty counters are removed from Chandra, Fire Artisan, she deals that much damage to target opponent or planeswalker.\\n[+1]: Exile the top card of your library. You may play it this turn.\\n[-7]: Exile the top seven cards of your library. You may play them this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra, Fire Artisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

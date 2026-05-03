@@ -1,0 +1,23 @@
+{
+  "id": "shell-of-the-last-kappa-corpus-m682",
+  "description": "M6 corpus — Shell of the Last Kappa; in-hand parse.",
+  "seed": 64322,
+  "cards": {
+    "Shell of the Last Kappa": "Name:Shell of the Last Kappa\nManaCost:3\nTypes:Legendary Artifact\nA:AB$ ChangeZone | Cost$ 3 T | Origin$ Stack | Destination$ Exile | TargetValidTargeting$ You | TgtPrompt$ Choose target instant or sorcery spell that targets you | ValidTgts$ Card.Instant,Card.Sorcery | SpellDescription$ Exile target instant or sorcery spell that targets you. (The spell has no effect.)\nA:AB$ Play | Cost$ 3 T Sac<1/CARDNAME> | Valid$ Card.ExiledWithSource | ValidZone$ Exile | WithoutManaCost$ True | ValidSA$ Spell | Amount$ 1 | Controller$ You | Optional$ True | SpellDescription$ You may cast a spell from among cards exiled with CARDNAME without paying its mana cost.\nAI:RemoveDeck:All\nOracle:{3}, {T}: Exile target instant or sorcery spell that targets you. (The spell has no effect.)\\n{3}, {T}, Sacrifice Shell of the Last Kappa: You may cast a spell from among cards exiled with Shell of the Last Kappa without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shell of the Last Kappa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

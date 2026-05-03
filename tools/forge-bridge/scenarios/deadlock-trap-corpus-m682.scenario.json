@@ -1,0 +1,23 @@
+{
+  "id": "deadlock-trap-corpus-m682",
+  "description": "M6 corpus — Deadlock Trap; in-hand parse.",
+  "seed": 61940,
+  "cards": {
+    "Deadlock Trap": "Name:Deadlock Trap\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E} (two energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ Tap | Cost$ T PayEnergy<1> | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SubAbility$ DBPump | SpellDescription$ Tap target creature or planeswalker. Its activated abilities can't be activated this turn.\nSVar:DBPump:DB$ Effect | RememberObjects$ ParentTarget | StaticAbilities$ DBCantBeActivated | ForgetOnMoved$ Battlefield\nSVar:DBCantBeActivated:Mode$ CantBeActivated | ValidCard$ Card.IsRemembered | Description$ Remembered activated abilities can't be activated.\nOracle:Deadlock Trap enters tapped.\\nWhen Deadlock Trap enters, you get {E}{E} (two energy counters).\\n{T}, Pay {E}: Tap target creature or planeswalker. Its activated abilities can't be activated this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadlock Trap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

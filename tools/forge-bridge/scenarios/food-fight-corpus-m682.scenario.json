@@ -1,0 +1,23 @@
+{
+  "id": "food-fight-corpus-m682",
+  "description": "M6 corpus — Food Fight; in-hand parse.",
+  "seed": 62391,
+  "cards": {
+    "Food Fight": "Name:Food Fight\nManaCost:1 R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | AddAbility$ SacSelf | Description$ Artifacts you control have \"{2}, Sacrifice this artifact: It deals damage to any target equal to 1 plus the number of permanents named Food Fight you control.\"\nSVar:SacSelf:AB$ DealDamage | Cost$ 2 Sac<1/CARDNAME> | ValidTgts$ Any | NumDmg$ X | SpellDescription$ It deals damage to any target equal to 1 plus the number of permanents named Food Fight you control.\nSVar:X:Count$Valid Permanent.YouCtrl+namedFood Fight/Plus.1\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Artifact & Name$Food Fight\nOracle:Artifacts you control have \"{2}, Sacrifice this artifact: It deals damage to any target equal to 1 plus the number of permanents named Food Fight you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Food Fight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

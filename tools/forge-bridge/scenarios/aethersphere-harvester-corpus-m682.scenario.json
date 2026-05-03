@@ -1,0 +1,23 @@
+{
+  "id": "aethersphere-harvester-corpus-m682",
+  "description": "M6 corpus — Aethersphere Harvester; in-hand parse.",
+  "seed": 61456,
+  "cards": {
+    "Aethersphere Harvester": "Name:Aethersphere Harvester\nManaCost:3\nTypes:Artifact Vehicle\nPT:3/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEnergy | TriggerDescription$ When CARDNAME enters, you get {E}{E}.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 2\nA:AB$ Pump | Cost$ PayEnergy<1> | KW$ Lifelink | Defined$ Self | SpellDescription$ CARDNAME gains lifelink until end of turn.\nK:Crew:1\nOracle:Flying\\nWhen Aethersphere Harvester enters, you get {E}{E} (two energy counters).\\nPay {E}: Aethersphere Harvester gains lifelink until end of turn.\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aethersphere Harvester"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

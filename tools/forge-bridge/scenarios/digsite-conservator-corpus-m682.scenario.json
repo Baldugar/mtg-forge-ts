@@ -1,0 +1,23 @@
+{
+  "id": "digsite-conservator-corpus-m682",
+  "description": "M6 corpus — Digsite Conservator; in-hand parse.",
+  "seed": 62012,
+  "cards": {
+    "Digsite Conservator": "Name:Digsite Conservator\nManaCost:2\nTypes:Artifact Creature Gnome\nPT:2/1\nA:AB$ ChangeZone | Cost$ Sac<1/CARDNAME> | TargetMin$ 0 | TargetMax$ 4 | TargetsWithSameController$ True | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Select up to four target cards from a single graveyard | ValidTgts$ Card | SorcerySpeed$ True | SpellDescription$ Exile up to four target cards from a single graveyard. Activate only as a sorcery.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDiscover | TriggerDescription$ When CARDNAME dies, you may pay {4}. If you do, discover 4. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\nSVar:TrigDiscover:AB$ Discover | Cost$ 4 | Num$ 4\nDeckHas:Ability$Sacrifice\nOracle:Sacrifice Digsite Conservator: Exile up to four target cards from a single graveyard. Activate only as a sorcery.\\nWhen Digsite Conservator dies, you may pay {4}. If you do, discover 4. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Digsite Conservator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

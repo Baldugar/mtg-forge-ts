@@ -1,0 +1,23 @@
+{
+  "id": "embalmer-s-tools-corpus-m682",
+  "description": "M6 corpus — Embalmer's Tools; in-hand parse.",
+  "seed": 62187,
+  "cards": {
+    "Embalmer's Tools": "Name:Embalmer's Tools\nManaCost:2\nTypes:Artifact\nS:Mode$ ReduceCost | ValidCard$ Creature.YouOwn+inZoneGraveyard | Type$ Ability | Amount$ 1 | Description$ Activated abilities of creature cards in your graveyard cost {1} less to activate.\nA:AB$ Mill | Cost$ tapXType<1/Zombie> | NumCards$ 1 | ValidTgts$ Player | AILogic$ AtOppEOT | SpellDescription$ Target player mills a card.\nAI:RemoveDeck:Random\nDeckHints:Type$Zombie\nOracle:Activated abilities of creature cards in your graveyard cost {1} less to activate.\\nTap an untapped Zombie you control: Target player mills a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embalmer's Tools"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

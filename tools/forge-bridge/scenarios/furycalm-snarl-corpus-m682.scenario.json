@@ -1,0 +1,23 @@
+{
+  "id": "furycalm-snarl-corpus-m682",
+  "description": "M6 corpus — Furycalm Snarl; in-hand parse.",
+  "seed": 62444,
+  "cards": {
+    "Furycalm Snarl": "Name:Furycalm Snarl\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBTap | ReplacementResult$ Updated | Description$ As CARDNAME enters, you may reveal a Mountain or Plains card from your hand. If you don't, CARDNAME enters tapped.\nSVar:DBTap:DB$ Tap | ETB$ True | Defined$ Self | UnlessCost$ Reveal<1/Mountain;Plains/Mountain or Plains> | UnlessPayer$ You | StackDescription$ enters tapped.\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nOracle:As Furycalm Snarl enters, you may reveal a Mountain or Plains card from your hand. If you don't, Furycalm Snarl enters tapped.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furycalm Snarl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

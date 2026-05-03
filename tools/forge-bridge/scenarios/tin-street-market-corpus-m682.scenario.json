@@ -1,0 +1,23 @@
+{
+  "id": "tin-street-market-corpus-m682",
+  "description": "M6 corpus — Tin Street Market; in-hand parse.",
+  "seed": 64887,
+  "cards": {
+    "Tin Street Market": "Name:Tin Street Market\nManaCost:4 R\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ UCDraw | Description$ Enchanted land has \"{T}, Discard a card: Draw a card.\"\nSVar:UCDraw:AB$ Draw | Cost$ T Discard<1/Card> | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:NonStackingAttachEffect:True\nAI:RemoveDeck:All\nOracle:Enchant land\\nEnchanted land has \"{T}, Discard a card: Draw a card.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tin Street Market"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

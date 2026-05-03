@@ -1,0 +1,23 @@
+{
+  "id": "sunforger-corpus-m682",
+  "description": "M6 corpus — Sunforger; in-hand parse.",
+  "seed": 64656,
+  "cards": {
+    "Sunforger": "Name:Sunforger\nManaCost:3\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 4 | Description$ Equipped creature gets +4/+0.\nA:AB$ ChangeZone | Cost$ R W Unattach<CARDNAME/CARDNAME> | ChangeType$ Instant.White+cmcLE4,Instant.Red+cmcLE4 | ChangeNum$ 1 | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | RememberChanged$ True | Shuffle$ False | SubAbility$ CastFound | StackDescription$ SpellDescription | SpellDescription$ Search your library for a red or white instant card with mana value 4 or less and cast that card without paying its mana cost. Then shuffle.\nSVar:CastFound:DB$ Play | Defined$ Remembered | Controller$ You | WithoutManaCost$ True | SubAbility$ YouShuffle | StackDescription$ None\nSVar:YouShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Equip:3\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red|White\nOracle:Equipped creature gets +4/+0.\\n{R}{W}, Unattach Sunforger: Search your library for a red or white instant card with mana value 4 or less and cast that card without paying its mana cost. Then shuffle.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sunforger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

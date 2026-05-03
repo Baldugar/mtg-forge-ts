@@ -1,0 +1,23 @@
+{
+  "id": "spatial-binding-corpus-m682",
+  "description": "M6 corpus — Spatial Binding; in-hand parse.",
+  "seed": 64521,
+  "cards": {
+    "Spatial Binding": "Name:Spatial Binding\nManaCost:U B\nTypes:Enchantment\nA:AB$ Effect | Cost$ PayLife<1> | RememberObjects$ Targeted | ValidTgts$ Permanent | AITgts$ Permanent.withPhasing+YouCtrl | ForgetOnMoved$ Battlefield | StaticAbilities$ CantPhaseOut | Duration$ UntilYourNextUpkeep | SpellDescription$ Until your next upkeep, target permanent can't phase out.\nSVar:CantPhaseOut:Mode$ CantPhaseOut | ValidCard$ Card.IsRemembered | Description$ Until your next upkeep, this permanent can't phase out.\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Pay 1 life: Until your next upkeep, target permanent can't phase out.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Spatial Binding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

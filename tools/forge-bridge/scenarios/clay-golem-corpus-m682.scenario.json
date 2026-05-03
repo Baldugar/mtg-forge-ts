@@ -1,0 +1,23 @@
+{
+  "id": "clay-golem-corpus-m682",
+  "description": "M6 corpus — Clay Golem; in-hand parse.",
+  "seed": 61758,
+  "cards": {
+    "Clay Golem": "Name:Clay Golem\nManaCost:4\nTypes:Artifact Creature Golem\nPT:4/4\nA:AB$ PutCounter | Cost$ 6 RollDice<1/8/X> | Monstrosity$ X | AILogic$ FromDiceRoll | StackDescription$ SpellDescription | SpellDescription$ Monstrosity X, where X is the result. (If this creature isn't monstrous, put X +1/+1 counters on it and it becomes monstrous.)\nT:Mode$ BecomeMonstrous | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Berserk — When CARDNAME becomes monstrous, destroy target permanent.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent\nDeckHas:Ability$Counters\nOracle:{6}, Roll a d8: Monstrosity X, where X is the result. (If this creature isn't monstrous, put X +1/+1 counters on it and it becomes monstrous.)\\nBerserk — When Clay Golem becomes monstrous, destroy target permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clay Golem"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

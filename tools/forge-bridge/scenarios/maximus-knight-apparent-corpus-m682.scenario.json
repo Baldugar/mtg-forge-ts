@@ -1,0 +1,23 @@
+{
+  "id": "maximus-knight-apparent-corpus-m682",
+  "description": "M6 corpus — Maximus, Knight Apparent; in-hand parse.",
+  "seed": 63308,
+  "cards": {
+    "Maximus, Knight Apparent": "Name:Maximus, Knight Apparent\nManaCost:3 R\nTypes:Legendary Creature Human Knight\nPT:4/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When NICKNAME enters, you may search your library for an Equipment card with mana value 2, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment.cmcEQ2 | ShuffleNonMandatory$ True\nA:AB$ PutCounter | Cost$ 1 Sac<1/Artifact> | Defined$ You | CounterType$ ENERGY | CounterNum$ 2 | SpellDescription$ You get {E}{E} (two energy counters).\nOracle:Trample\\nWhen Maximus enters, you may search your library for an Equipment card with mana value 2, reveal it, put it into your hand, then shuffle.\\n{1}, Sacrifice an artifact: You get {E}{E} (two energy counters).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Maximus, Knight Apparent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

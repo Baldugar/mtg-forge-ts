@@ -1,0 +1,23 @@
+{
+  "id": "cunning-bandit-corpus-m682",
+  "description": "M6 corpus — Cunning Bandit; in-hand parse.",
+  "seed": 61893,
+  "cards": {
+    "Cunning Bandit": "Name:Cunning Bandit\nManaCost:1 R R\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | Execute$ TrigPutCounter | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, you may put a ki counter on CARDNAME.\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Card.Self+counters_GE2_KI | Execute$ TrigFlip | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of the end step, if there are two or more ki counters on CARDNAME, you may flip it.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ KI | CounterNum$ 1\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nDeckHints:Type$Spirit|Arcane\nAlternateMode:Flip\nOracle:Whenever you cast a Spirit or Arcane spell, you may put a ki counter on Cunning Bandit.\\nAt the beginning of the end step, if there are two or more ki counters on Cunning Bandit, you may flip it.\n\nALTERNATE\n\nName:Azamuki, Treachery Incarnate\nManaCost:1 R R\nColors:red\nTypes:Legendary Creature Spirit\nPT:5/2\nA:AB$ GainControl | Cost$ SubCounter<1/KI> | ValidTgts$ Creature | LoseControl$ EOT | SpellDescription$ Gain control of target creature until end of turn.\nOracle:Remove a ki counter from Azamuki, Treachery Incarnate: Gain control of target creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cunning Bandit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

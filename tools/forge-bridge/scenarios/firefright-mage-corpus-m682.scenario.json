@@ -1,0 +1,23 @@
+{
+  "id": "firefright-mage-corpus-m682",
+  "description": "M6 corpus — Firefright Mage; in-hand parse.",
+  "seed": 62331,
+  "cards": {
+    "Firefright Mage": "Name:Firefright Mage\nManaCost:R\nTypes:Creature Goblin Spellshaper\nPT:1/1\nA:AB$ Effect | Cost$ 1 R T Discard<1/Card> | ValidTgts$ Creature.YouCtrl | RememberObjects$ Targeted | StaticAbilities$ KWPump | SpellDescription$ Target creature can't be blocked this turn except by artifact creatures and/or red creatures.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.IsRemembered | ValidBlocker$ Creature.nonArtifact+nonRed | Description$ Remembered creature can't be blocked this turn except by artifact creatures and/or red creatures.\nAI:RemoveDeck:All\nOracle:{1}{R}, {T}, Discard a card: Target creature can't be blocked this turn except by artifact creatures and/or red creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firefright Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

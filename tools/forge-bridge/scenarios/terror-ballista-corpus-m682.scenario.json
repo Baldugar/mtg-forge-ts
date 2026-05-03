@@ -1,0 +1,23 @@
+{
+  "id": "terror-ballista-corpus-m682",
+  "description": "M6 corpus — Terror Ballista; in-hand parse.",
+  "seed": 64759,
+  "cards": {
+    "Terror Ballista": "Name:Terror Ballista\nManaCost:7\nTypes:Artifact Creature Construct\nPT:5/3\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks, you may sacrifice another creature. When you do, destroy target creature an opponent controls.\nSVar:TrigSac:AB$ ImmediateTrigger | Cost$ Sac<1/Creature.Other/another creature> | Execute$ TrigDestroy\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl\nK:Unearth:3 B B\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard|Sacrifice\nOracle:Menace\\nWhenever Terror Ballista attacks, you may sacrifice another creature. When you do, destroy target creature an opponent controls.\\nUnearth {3}{B}{B} ({3}{B}{B}: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. Unearth only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Terror Ballista"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

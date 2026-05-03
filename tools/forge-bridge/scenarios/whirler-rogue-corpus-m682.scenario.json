@@ -1,0 +1,23 @@
+{
+  "id": "whirler-rogue-corpus-m682",
+  "description": "M6 corpus — Whirler Rogue; in-hand parse.",
+  "seed": 65228,
+  "cards": {
+    "Whirler Rogue": "Name:Whirler Rogue\nManaCost:2 U U\nTypes:Creature Human Rogue Artificer\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_a_thopter_flying\nA:AB$ Effect | Cost$ tapXType<2/Artifact> | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHas:Ability$Token & Type$Artifact|Thopter\nDeckHints:Type$Artifact\nOracle:When Whirler Rogue enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\\nTap two untapped artifacts you control: Target creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Whirler Rogue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

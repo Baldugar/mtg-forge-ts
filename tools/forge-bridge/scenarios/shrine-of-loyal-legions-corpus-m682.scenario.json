@@ -1,0 +1,23 @@
+{
+  "id": "shrine-of-loyal-legions-corpus-m682",
+  "description": "M6 corpus — Shrine of Loyal Legions; in-hand parse.",
+  "seed": 64358,
+  "cards": {
+    "Shrine of Loyal Legions": "Name:Shrine of Loyal Legions\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.White | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAddCounter | TriggerDescription$ At the beginning of your upkeep or whenever you cast a white spell, put a charge counter on CARDNAME.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigAddCounter | Secondary$ True | TriggerDescription$ At the beginning of your upkeep or whenever you cast a white spell, put a charge counter on CARDNAME.\nSVar:TrigAddCounter:DB$ PutCounter | CounterType$ CHARGE | CounterNum$ 1\nA:AB$ Token | Cost$ 3 T Sac<1/CARDNAME> | TokenAmount$ X | TokenScript$ c_1_1_a_phyrexian_myr | TokenOwner$ You | SpellDescription$ Create a 1/1 colorless Phyrexian Myr artifact creature token for each charge counter on CARDNAME.\nSVar:X:Count$CardCounters.CHARGE\nDeckNeeds:Color$White\nDeckHints:Type$Myr\nDeckHas:Ability$Token\nOracle:At the beginning of your upkeep or whenever you cast a white spell, put a charge counter on Shrine of Loyal Legions.\\n{3}, {T}, Sacrifice Shrine of Loyal Legions: Create a 1/1 colorless Phyrexian Myr artifact creature token for each charge counter on Shrine of Loyal Legions.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Shrine of Loyal Legions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

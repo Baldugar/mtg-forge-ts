@@ -1,0 +1,23 @@
+{
+  "id": "forgehammer-centurion-corpus-m682",
+  "description": "M6 corpus — Forgehammer Centurion; in-hand parse.",
+  "seed": 62403,
+  "cards": {
+    "Forgehammer Centurion": "Name:Forgehammer Centurion\nManaCost:2 R\nTypes:Creature Phyrexian Warrior\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other,Artifact.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever another creature or artifact you control is put into a graveyard from the battlefield, put an oil counter on CARDNAME.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Self | CounterType$ OIL | CounterNum$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigImmediateTrig | TriggerDescription$ Whenever CARDNAME attacks, you may remove two oil counters from it. When you do, target creature can't block this turn.\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ SubCounter<2/OIL> | Execute$ TrigPump | TriggerDescription$ When you do, target creature can't block this turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't block.\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Counters\nOracle:Whenever another creature or artifact you control is put into a graveyard from the battlefield, put an oil counter on Forgehammer Centurion.\\nWhenever Forgehammer Centurion attacks, you may remove two oil counters from it. When you do, target creature can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forgehammer Centurion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

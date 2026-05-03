@@ -1,0 +1,23 @@
+{
+  "id": "vivien-s-talent-corpus-m682",
+  "description": "M6 corpus — Vivien's Talent; in-hand parse.",
+  "seed": 65136,
+  "cards": {
+    "Vivien's Talent": "Name:Vivien's Talent\nManaCost:1 G G\nTypes:Enchantment Aura\nK:Enchant:Planeswalker\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Planeswalker.EnchantedBy | AddAbility$ VivienPlus | Description$ Enchanted planeswalker has \"[+1]: Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\"\nSVar:VivienPlus:AB$ Dig | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature,Land | ForceRevealToController$ True | RestRandomOrder$ True | StackDescription$ SpellDescription | SpellDescription$ Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounter | TriggerDescription$ Whenever a nontoken creature you control enters, put a loyalty counter on enchanted planeswalker.\nSVar:TrigPutCounter:DB$ PutCounter | Defined$ Enchanted | CounterType$ LOYALTY | CounterNum$ 1\nSVar:BuffedBy:Creature\nDeckNeeds:Type$Planeswalker\nOracle:Enchant planeswalker\\nEnchanted planeswalker has \"[+1]: Look at the top four cards of your library. You may reveal a creature or land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\"\\nWhenever a nontoken creature you control enters, put a loyalty counter on enchanted planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Vivien's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

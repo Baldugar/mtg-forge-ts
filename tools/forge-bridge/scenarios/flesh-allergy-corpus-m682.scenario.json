@@ -1,0 +1,23 @@
+{
+  "id": "flesh-allergy-corpus-m682",
+  "description": "M6 corpus — Flesh Allergy; in-hand parse.",
+  "seed": 62359,
+  "cards": {
+    "Flesh Allergy": "Name:Flesh Allergy\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ Destroy | Cost$ 2 B B Sac<1/Creature> | ValidTgts$ Creature | SubAbility$ DBLoseLife | SpellDescription$ Destroy target creature. Its controller loses life equal to the number of creatures that died this turn.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nOracle:As an additional cost to cast this spell, sacrifice a creature.\\nDestroy target creature. Its controller loses life equal to the number of creatures that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flesh Allergy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

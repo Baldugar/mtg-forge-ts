@@ -1,0 +1,23 @@
+{
+  "id": "jokulmorder-corpus-m682",
+  "description": "M6 corpus — Jokulmorder; in-hand parse.",
+  "seed": 62968,
+  "cards": {
+    "Jokulmorder": "Name:Jokulmorder\nManaCost:4 U U U\nTypes:Creature Leviathan\nPT:12/12\nK:Trample\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This creature enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacUnless | TriggerDescription$ When this creature enters, sacrifice it unless you sacrifice five lands.\nSVar:TrigSacUnless:DB$ Sacrifice | UnlessCost$ Sac<5/Land> | UnlessPayer$ You\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ LandPlayed | ValidCard$ Island.YouCtrl | Execute$ TrigUntap | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you play an Island, you may untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nSVar:NeedsToPlayVar:Y GE5\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:Trample\\nThis creature enters tapped.\\nWhen this creature enters, sacrifice it unless you sacrifice five lands.\\nThis creature doesn't untap during your untap step.\\nWhenever you play an Island, you may untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jokulmorder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

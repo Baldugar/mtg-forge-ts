@@ -1,0 +1,23 @@
+{
+  "id": "tibalt-the-fiend-blooded-corpus-m682",
+  "description": "M6 corpus — Tibalt, the Fiend-Blooded; in-hand parse.",
+  "seed": 64874,
+  "cards": {
+    "Tibalt, the Fiend-Blooded": "Name:Tibalt, the Fiend-Blooded\nManaCost:R R\nTypes:Legendary Planeswalker Tibalt\nLoyalty:2\nA:AB$ Draw | Cost$ AddCounter<1/LOYALTY> | NumCards$ 1 | Planeswalker$ True | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card at random.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ Random\nA:AB$ DealDamage | Cost$ SubCounter<4/LOYALTY> | ValidTgts$ Player | NumDmg$ X | Planeswalker$ True | SpellDescription$ CARDNAME deals damage equal to the number of cards in target player's hand to that player.\nSVar:X:TargetedPlayer$CardsInHand\nA:AB$ GainControl | Cost$ SubCounter<6/LOYALTY> | AllValid$ Creature | Untap$ True | AddKWs$ Haste | LoseControl$ EOT | Planeswalker$ True | Ultimate$ True | SpellDescription$ Gain control of all creatures until end of turn. Untap them. They gain haste until end of turn.\nOracle:[+1]: Draw a card, then discard a card at random.\\n[-4]: Tibalt, the Fiend-Blooded deals damage equal to the number of cards in target player's hand to that player.\\n[-6]: Gain control of all creatures until end of turn. Untap them. They gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Tibalt, the Fiend-Blooded"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

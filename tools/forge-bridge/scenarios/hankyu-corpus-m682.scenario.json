@@ -1,0 +1,23 @@
+{
+  "id": "hankyu-corpus-m682",
+  "description": "M6 corpus — Hankyu; in-hand parse.",
+  "seed": 62690,
+  "cards": {
+    "Hankyu": "Name:Hankyu\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:4\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddAbility$ HankyuPutCounter & HankyuDmg | AddSVar$ HankyuX | Description$ Equipped creature has \"{T}: Put an aim counter on CARDNAME\" and \"{T}, Remove all aim counters from CARDNAME: This creature deals damage to any target equal to the number of aim counters removed this way.\"\nSVar:HankyuPutCounter:AB$ PutCounter | Cost$ T | CounterType$ AIM | CounterNum$ 1 | Defined$ OriginalHost | SpellDescription$ Put an aim counter on ORIGINALHOST.\nSVar:HankyuDmg:AB$ DealDamage | Cost$ T SubCounter<All/AIM/OriginalHost/Hankyu> | ValidTgts$ Any | NumDmg$ HankyuX | SpellDescription$ CARDNAME deals damage to any target equal to the number of aim counters removed this way.\nSVar:HankyuX:SVar$CostCountersRemoved\nAI:RemoveDeck:All\nSVar:NonStackingAttachEffect:True\nOracle:Equipped creature has \"{T}: Put an aim counter on Hankyu\" and \"{T}, Remove all aim counters from Hankyu: This creature deals damage to any target equal to the number of aim counters removed this way.\"\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Hankyu"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

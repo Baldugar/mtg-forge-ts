@@ -1,0 +1,23 @@
+{
+  "id": "woodweaver-s-puzzleknot-corpus-m682",
+  "description": "M6 corpus — Woodweaver's Puzzleknot; in-hand parse.",
+  "seed": 65272,
+  "cards": {
+    "Woodweaver's Puzzleknot": "Name:Woodweaver's Puzzleknot\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life and get {E}{E}{E} (three energy counters).\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBEnergy\nSVar:DBEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ 3\nA:AB$ GainLife | Cost$ 2 G Sac<1/CARDNAME> | LifeAmount$ 3 | SubAbility$ DBEnergy | SpellDescription$ You gain 3 life and get {E}{E}{E}.\nOracle:When Woodweaver's Puzzleknot enters, you gain 3 life and get {E}{E}{E} (three energy counters).\\n{2}{G}, Sacrifice Woodweaver's Puzzleknot: You gain 3 life and get {E}{E}{E}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Woodweaver's Puzzleknot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

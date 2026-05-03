@@ -1,0 +1,23 @@
+{
+  "id": "festival-of-embers-corpus-m682",
+  "description": "M6 corpus — Festival of Embers; in-hand parse.",
+  "seed": 62310,
+  "cards": {
+    "Festival of Embers": "Name:Festival of Embers\nManaCost:4 R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Instant.YouCtrl,Sorcery.YouCtrl | Condition$ PlayerTurn | MayPlay$ True | EffectZone$ Battlefield | AffectedZone$ Graveyard | RaiseCost$ PayLife<1> | Description$ During your turn, you may cast instant and sorcery spells from your graveyard by paying 1 life in addition to their other costs.\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Graveyard | ValidCard$ Card.YouOwn | ReplaceWith$ Exile | Description$ If a card or token would be put into your graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nA:AB$ Sacrifice | Cost$ 1 R | SpellDescription$ Sacrifice CARDNAME.\nDeckHints:Type$Instant|Sorcery\nDeckHas:Ability$Graveyard\nOracle:During your turn, you may cast instant and sorcery spells from your graveyard by paying 1 life in addition to their other costs.\\nIf a card or token would be put into your graveyard from anywhere, exile it instead.\\n{1}{R}: Sacrifice Festival of Embers.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Festival of Embers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

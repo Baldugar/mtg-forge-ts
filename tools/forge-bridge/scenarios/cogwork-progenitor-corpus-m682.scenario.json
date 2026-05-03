@@ -1,0 +1,23 @@
+{
+  "id": "cogwork-progenitor-corpus-m682",
+  "description": "M6 corpus — Cogwork Progenitor; in-hand parse.",
+  "seed": 61774,
+  "cards": {
+    "Cogwork Progenitor": "Name:Cogwork Progenitor\nManaCost:1 W\nTypes:Artifact Creature Gnome\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSeek | TriggerDescription$ At the beginning of your end step, you may exile another artifact you control or an artifact card in your graveyard. If you do, seek an artifact card. That card perpetually has base power and toughness 1/1 and becomes a Gnome creature in addition to its other types.\nSVar:TrigSeek:AB$ Seek | Cost$ ExileCtrlOrGrave<1/Artifact.Other> | Type$ Artifact | RememberFound$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Power$ 1 | Toughness$ 1 | Types$ Creature,Gnome | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckNeeds:Type$Artifact\nOracle:At the beginning of your end step, you may exile another artifact you control or an artifact card in your graveyard. If you do, seek an artifact card. That card perpetually has base power and toughness 1/1 and becomes a Gnome creature in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cogwork Progenitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

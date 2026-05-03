@@ -1,0 +1,23 @@
+{
+  "id": "contamination-corpus-m682",
+  "description": "M6 corpus — Contamination; in-hand parse.",
+  "seed": 61816,
+  "cards": {
+    "Contamination": "Name:Contamination\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you sacrifice a creature.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Sac<1/Creature>\nR:Event$ ProduceMana | ActiveZones$ Battlefield | ValidCard$ Land | ReplaceWith$ ProduceB | Description$ If a land is tapped for mana, it produces {B} instead of any other type and amount.\nSVar:ProduceB:DB$ ReplaceMana | ReplaceMana$ B\nAI:RemoveDeck:All\nSVar:NonStackingEffect:True\nOracle:At the beginning of your upkeep, sacrifice Contamination unless you sacrifice a creature.\\nIf a land is tapped for mana, it produces {B} instead of any other type and amount.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contamination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

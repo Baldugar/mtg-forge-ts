@@ -1,0 +1,23 @@
+{
+  "id": "orcish-settlers-corpus-m682",
+  "description": "M6 corpus — Orcish Settlers; in-hand parse.",
+  "seed": 63650,
+  "cards": {
+    "Orcish Settlers": "Name:Orcish Settlers\nManaCost:1 R\nTypes:Creature Orc\nPT:1/1\nA:AB$ Destroy | Cost$ X X R T Sac<1/CARDNAME> | TargetMin$ X | TargetMax$ X | ValidTgts$ Land | TgtPrompt$ Select X target lands | SpellDescription$ Destroy X target lands.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{X}{X}{R}, {T}, Sacrifice Orcish Settlers: Destroy X target lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Orcish Settlers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

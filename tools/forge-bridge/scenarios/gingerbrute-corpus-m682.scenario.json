@@ -1,0 +1,23 @@
+{
+  "id": "gingerbrute-corpus-m682",
+  "description": "M6 corpus — Gingerbrute; in-hand parse.",
+  "seed": 62529,
+  "cards": {
+    "Gingerbrute": "Name:Gingerbrute\nManaCost:1\nTypes:Artifact Creature Food Golem\nPT:1/1\nK:Haste\nA:AB$ Effect | Cost$ 1 | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | SpellDescription$ CARDNAME can't be blocked this turn except by creatures with haste.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.withoutHaste | Description$ EFFECTSOURCE can't be blocked this turn except by creatures with haste.\nA:AB$ GainLife | Cost$ 2 T Sac<1/CARDNAME> | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nDeckHas:Ability$LifeGain|Food\nOracle:Haste\\n{1}: Gingerbrute can't be blocked this turn except by creatures with haste.\\n{2}, {T}, Sacrifice Gingerbrute: You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gingerbrute"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

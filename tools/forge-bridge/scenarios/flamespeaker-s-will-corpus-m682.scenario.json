@@ -1,0 +1,23 @@
+{
+  "id": "flamespeaker-s-will-corpus-m682",
+  "description": "M6 corpus — Flamespeaker's Will; in-hand parse.",
+  "seed": 62348,
+  "cards": {
+    "Flamespeaker's Will": "Name:Flamespeaker's Will\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals combat damage to a player, you may sacrifice CARDNAME. If you do, destroy target artifact.\nSVar:TrigDestroy:AB$ Destroy | Cost$ Sac<1/CARDNAME> | ValidTgts$ Artifact\nOracle:Enchant creature you control\\nEnchanted creature gets +1/+1.\\nWhenever enchanted creature deals combat damage to a player, you may sacrifice Flamespeaker's Will. If you do, destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flamespeaker's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "jiwari-the-earth-aflame-corpus-m682",
+  "description": "M6 corpus — Jiwari, the Earth Aflame; in-hand parse.",
+  "seed": 62967,
+  "cards": {
+    "Jiwari, the Earth Aflame": "Name:Jiwari, the Earth Aflame\nManaCost:3 R R\nTypes:Legendary Creature Spirit\nPT:3/3\nA:AB$ DealDamage | Cost$ X R T | ValidTgts$ Creature.withoutFlying | TgtPrompt$ Select target creature without flying. | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target creature without flying.\nA:AB$ DamageAll | PrecostDesc$ Channel — | Cost$ X R R R Discard<1/NICKNAME> | ActivationZone$ Hand | ValidCards$ Creature.withoutFlying | NumDmg$ X | ValidDescription$ each creature without flying. | SpellDescription$ NICKNAME deals X damage to each creature without flying.\nSVar:X:Count$xPaid\nOracle:{X}{R}, {T}: Jiwari, the Earth Aflame deals X damage to target creature without flying.\\nChannel — {X}{R}{R}{R}, Discard Jiwari: Jiwari deals X damage to each creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Jiwari, the Earth Aflame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

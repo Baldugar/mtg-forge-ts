@@ -1,0 +1,23 @@
+{
+  "id": "aurora-shifter-corpus-m682",
+  "description": "M6 corpus — Aurora Shifter; in-hand parse.",
+  "seed": 61507,
+  "cards": {
+    "Aurora Shifter": "Name:Aurora Shifter\nManaCost:1 U\nTypes:Creature Shapeshifter\nPT:1/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigEnergy | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you get that many {E}.\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ TriggerCount$DamageAmount\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigImmediateTrig | TriggerDescription$ At the beginning of combat on your turn, you may pay {E}{E}. When you do, CARDNAME becomes a copy of another target creature you control, except it has this ability and \"Whenever this creature deals combat damage to a player, you get that many {E}.\"\nSVar:TrigImmediateTrig:AB$ ImmediateTrigger | Cost$ PayEnergy<2> | Execute$ TrigCopy | TriggerDescription$ When you do, CARDNAME becomes a copy of another target creature you control, except it has this ability and \"Whenever this creature deals combat damage to a player, you get that many {E}.\"\nSVar:TrigCopy:DB$ Clone | AddTriggers$ TrigDamage | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control to copy | AddSVars$ TrigDamage,TrigEnergy | GainThisAbility$ True\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigEnergy | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature deals combat damage to a player, you get that many {E}.\nOracle:Whenever Aurora Shifter deals combat damage to a player, you get that many {E}.\\nAt the beginning of combat on your turn, you may pay {E}{E}. When you do, Aurora Shifter becomes a copy of another target creature you control, except it has this ability and \"Whenever this creature deals combat damage to a player, you get that many {E}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aurora Shifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

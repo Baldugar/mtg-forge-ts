@@ -1,0 +1,23 @@
+{
+  "id": "bubbling-cauldron-corpus-m682",
+  "description": "M6 corpus — Bubbling Cauldron; in-hand parse.",
+  "seed": 61575,
+  "cards": {
+    "Bubbling Cauldron": "Name:Bubbling Cauldron\nManaCost:2\nTypes:Artifact\nA:AB$ GainLife | Cost$ 1 T Sac<1/Creature> | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nA:AB$ LoseLife | Cost$ 1 T Sac<1/Creature.namedFestering Newt/creature named Festering Newt> | Defined$ Player.Opponent | LifeAmount$ 4 | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses 4 life. You gain life equal to the life lost this way. | StackDescription$ SpellDescription\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | StackDescription$ None\nSVar:AFLifeLost:Number$0\nAI:RemoveDeck:Random\nDeckHints:Name$Bogbrew Witch\nDeckNeeds:Name$Festering Newt\nOracle:{1}, {T}, Sacrifice a creature: You gain 4 life.\\n{1}, {T}, Sacrifice a creature named Festering Newt: Each opponent loses 4 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bubbling Cauldron"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

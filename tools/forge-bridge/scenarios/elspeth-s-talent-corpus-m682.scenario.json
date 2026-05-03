@@ -1,0 +1,23 @@
+{
+  "id": "elspeth-s-talent-corpus-m682",
+  "description": "M6 corpus — Elspeth's Talent; in-hand parse.",
+  "seed": 62175,
+  "cards": {
+    "Elspeth's Talent": "Name:Elspeth's Talent\nManaCost:2 W W\nTypes:Enchantment Aura\nK:Enchant:Planeswalker\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Planeswalker.EnchantedBy | AddAbility$ ElspethPlus | Description$ Enchanted planeswalker has \"[+1]: Create three 1/1 white Soldier creature tokens.\"\nSVar:ElspethPlus:AB$ Token | Cost$ AddCounter<1/LOYALTY> | TokenAmount$ 3 | TokenScript$ w_1_1_soldier | TokenOwner$ You | Planeswalker$ True | SpellDescription$ Create three 1/1 white Soldier creature tokens.\nT:Mode$ AbilityCast | ValidCard$ Planeswalker.EnchantedBy+inRealZoneBattlefield | ValidSA$ Activated.Loyalty | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever you activate a loyalty ability of enchanted planeswalker, creatures you control get +2/+2 and gain vigilance until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | KW$ Vigilance\nSVar:BuffedBy:Creature\nDeckNeeds:Type$Planeswalker\nOracle:Enchant planeswalker\\nEnchanted planeswalker has \"[+1]: Create three 1/1 white Soldier creature tokens.\"\\nWhenever you activate a loyalty ability of enchanted planeswalker, creatures you control get +2/+2 and gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elspeth's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

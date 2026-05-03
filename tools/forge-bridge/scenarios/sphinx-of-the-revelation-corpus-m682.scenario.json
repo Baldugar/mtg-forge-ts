@@ -1,0 +1,23 @@
+{
+  "id": "sphinx-of-the-revelation-corpus-m682",
+  "description": "M6 corpus — Sphinx of the Revelation; in-hand parse.",
+  "seed": 64535,
+  "cards": {
+    "Sphinx of the Revelation": "Name:Sphinx of the Revelation\nManaCost:3 W U\nTypes:Artifact Creature Sphinx\nPT:4/5\nK:Flying\nK:Lifelink\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigEnergy | TriggerDescription$ Whenever you gain life, you get that many {E} (energy counters).\nSVar:TrigEnergy:DB$ PutCounter | Defined$ You | CounterType$ ENERGY | CounterNum$ LifeX\nA:AB$ Draw | Cost$ W U U T PayEnergy<X> | NumCards$ X | SpellDescription$ Draw X cards.\nSVar:LifeX:TriggerCount$LifeAmount\nSVar:X:Count$xPaid\nDeckHas:Ability$LifeGain\nDeckHints:Ability$LifeGain\nOracle:Flying, lifelink\\nWhenever you gain life, you get that many {E} (energy counters).\\n{W}{U}{U}, {T}, Pay X {E}: Draw X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Sphinx of the Revelation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

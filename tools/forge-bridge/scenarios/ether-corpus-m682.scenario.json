@@ -1,0 +1,23 @@
+{
+  "id": "ether-corpus-m682",
+  "description": "M6 corpus — Ether; in-hand parse.",
+  "seed": 62232,
+  "cards": {
+    "Ether": "Name:Ether\nManaCost:3 U\nTypes:Artifact\nA:AB$ Mana | Cost$ T Exile<1/CARDNAME> | Produced$ U | SubAbility$ DBTrigger | SpellDescription$ Add {U}.\nSVar:DBTrigger:DB$ DelayedTrigger | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ EffTrigCopy | SpellDescription$ When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:BuffedBy:Instant,Sorcery\nOracle:{T}, Exile this artifact: Add {U}. When you next cast an instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ether"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
