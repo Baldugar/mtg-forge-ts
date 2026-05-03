@@ -1,0 +1,23 @@
+{
+  "id": "glimpse-the-cosmos-corpus-m676",
+  "description": "M6 corpus — Glimpse the Cosmos; in-hand parse.",
+  "seed": 66298,
+  "cards": {
+    "Glimpse the Cosmos": "Name:Glimpse the Cosmos\nManaCost:1 U\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 3 | ChangeNum$ 1 | NoReveal$ True | StackDescription$ SpellDescription | SpellDescription$ Look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Graveyard | AffectedZone$ Graveyard | MayPlay$ True | MayPlayAltManaCost$ U | IsPresent$ Giant.YouCtrl | Description$ As long as you control a Giant, you may cast CARDNAME from your graveyard by paying {U} rather than paying its mana cost. If you cast CARDNAME this way and it would be put into your graveyard, exile it instead.\nR:Event$ Moved | ValidLKI$ Card.CastSa Spell.MayPlaySource | Origin$ Stack | Destination$ Graveyard | ReplaceWith$ MoveExile\nSVar:MoveExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Stack | Destination$ Exile\nDeckHints:Type$Giant\nDeckHas:Ability$Graveyard\nOracle:Look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your library in any order.\\nAs long as you control a Giant, you may cast Glimpse the Cosmos from your graveyard by paying {U} rather than paying its mana cost. If you cast Glimpse the Cosmos this way and it would be put into your graveyard, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimpse the Cosmos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

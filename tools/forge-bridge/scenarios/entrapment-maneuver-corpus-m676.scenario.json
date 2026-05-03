@@ -1,0 +1,23 @@
+{
+  "id": "entrapment-maneuver-corpus-m676",
+  "description": "M6 corpus — Entrapment Maneuver; in-hand parse.",
+  "seed": 64654,
+  "cards": {
+    "Entrapment Maneuver": "Name:Entrapment Maneuver\nManaCost:3 W\nTypes:Instant\nA:SP$ Sacrifice | ValidTgts$ Player | SacValid$ Creature.attacking | SacMessage$ attacking creature | RememberSacrificed$ True | SubAbility$ DBToken | SpellDescription$ Target player sacrifices an attacking creature.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_soldier | SubAbility$ DBCleanup | SpellDescription$ You create X 1/1 white Soldier creature tokens, where X is that creature's toughness.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nDeckHas:Ability$Token & Type$Soldier\nOracle:Target player sacrifices an attacking creature. You create X 1/1 white Soldier creature tokens, where X is that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Entrapment Maneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

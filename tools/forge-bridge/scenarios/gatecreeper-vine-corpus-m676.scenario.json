@@ -1,0 +1,23 @@
+{
+  "id": "gatecreeper-vine-corpus-m676",
+  "description": "M6 corpus — Gatecreeper Vine; in-hand parse.",
+  "seed": 65973,
+  "cards": {
+    "Gatecreeper Vine": "Name:Gatecreeper Vine\nManaCost:1 G\nTypes:Creature Plant\nPT:0/2\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card or a Gate card, reveal it, put it into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic,Card.Gate | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:Defender\\nWhen Gatecreeper Vine enters, you may search your library for a basic land card or a Gate card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gatecreeper Vine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

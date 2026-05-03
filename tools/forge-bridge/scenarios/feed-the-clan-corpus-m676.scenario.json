@@ -1,0 +1,23 @@
+{
+  "id": "feed-the-clan-corpus-m676",
+  "description": "M6 corpus — Feed the Clan; in-hand parse.",
+  "seed": 65166,
+  "cards": {
+    "Feed the Clan": "Name:Feed the Clan\nManaCost:1 G\nTypes:Instant\nA:SP$ GainLife | LifeAmount$ X | SpellDescription$ You gain 5 life. Ferocious — You gain 10 life instead if you control a creature with power 4 or greater.\nSVar:Y:Count$Valid Creature.powerGE4+YouCtrl\nSVar:X:Count$Compare Y GE1.10.5\nOracle:You gain 5 life.\\nFerocious — You gain 10 life instead if you control a creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feed the Clan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

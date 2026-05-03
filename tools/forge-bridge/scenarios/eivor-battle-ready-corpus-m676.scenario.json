@@ -1,0 +1,23 @@
+{
+  "id": "eivor-battle-ready-corpus-m676",
+  "description": "M6 corpus — Eivor, Battle-Ready; in-hand parse.",
+  "seed": 64341,
+  "cards": {
+    "Eivor, Battle-Ready": "Name:Eivor, Battle-Ready\nManaCost:3 R W\nTypes:Legendary Creature Human Assassin Warrior\nPT:5/5\nK:Vigilance\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage equal to the number of Equipment you control to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nSVar:X:Count$Valid Equipment.YouCtrl\nDeckNeeds:Type$Equipment\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nHaste (This creature can attack as soon as it comes under your control.)\\nWhenever Eivor, Battle-Ready attacks, it deals damage equal to the number of Equipment you control to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eivor, Battle-Ready"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

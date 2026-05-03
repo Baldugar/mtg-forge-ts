@@ -1,0 +1,23 @@
+{
+  "id": "civic-stalwart-corpus-m676",
+  "description": "M6 corpus — Civic Stalwart; in-hand parse.",
+  "seed": 62179,
+  "cards": {
+    "Civic Stalwart": "Name:Civic Stalwart\nManaCost:3 W\nTypes:Creature Elephant Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When Civic Stalwart enters, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Civic Stalwart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

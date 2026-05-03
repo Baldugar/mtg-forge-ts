@@ -1,0 +1,23 @@
+{
+  "id": "eyes-everywhere-corpus-m676",
+  "description": "M6 corpus — Eyes Everywhere; in-hand parse.",
+  "seed": 64945,
+  "cards": {
+    "Eyes Everywhere": "Name:Eyes Everywhere\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ At the beginning of your upkeep, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nA:AB$ ExchangeControl | Cost$ 5 U | Defined$ Self | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SorcerySpeed$ True | SpellDescription$ Exchange control of CARDNAME and target nonland permanent. Activate only as a sorcery.\nOracle:At the beginning of your upkeep, scry 1.\\n{5}{U}: Exchange control of Eyes Everywhere and target nonland permanent. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eyes Everywhere"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chained-to-the-rocks-corpus-m676",
+  "description": "M6 corpus — Chained to the Rocks; in-hand parse.",
+  "seed": 61922,
+  "cards": {
+    "Chained to the Rocks": "Name:Chained to the Rocks\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Mountain.YouCtrl:Mountain you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:Enchant Mountain you control\\nWhen Chained to the Rocks enters, exile target creature an opponent controls until Chained to the Rocks leaves the battlefield. (That creature returns under its owner's control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chained to the Rocks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

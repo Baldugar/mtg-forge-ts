@@ -1,0 +1,23 @@
+{
+  "id": "enduring-angel-corpus-m676",
+  "description": "M6 corpus — Enduring Angel; in-hand parse.",
+  "seed": 64587,
+  "cards": {
+    "Enduring Angel": "Name:Enduring Angel\nManaCost:2 W W W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nK:Double Strike\nS:Mode$ Continuous | Affected$ You | AddKeyword$ Hexproof | Description$ You have hexproof.\nR:Event$ LifeReduced | ActiveZones$ Battlefield | ValidPlayer$ You | Result$ LE0 | ReplaceWith$ Transform | Description$ If your life total would be reduced to 0 or less, instead transform CARDNAME and your life total becomes 3. Then if CARDNAME didn't transform this way, you lose the game.\nSVar:Transform:DB$ SetState | Defined$ Self | Mode$ Transform | RememberChanged$ True | SubAbility$ DBSetLife\nSVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ 3 | SubAbility$ DBLoseGame\nSVar:DBLoseGame:DB$ LosesGame | Defined$ You | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ NE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:Flying, double strike\\nYou have hexproof.\\nIf your life total would be reduced to 0 or less, instead transform Enduring Angel and your life total becomes 3. Then if Enduring Angel didn't transform this way, you lose the game.\n\nALTERNATE\n\nName:Angelic Enforcer\nManaCost:no cost\nColors:white\nTypes:Creature Angel\nPT:*/*\nK:Flying\nS:Mode$ Continuous | Affected$ You | AddKeyword$ Hexproof | Description$ You have hexproof.\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to your life total.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDoubleLife | TriggerDescription$ Whenever CARDNAME attacks, double your life total.\nSVar:TrigDoubleLife:DB$ SetLife | LifeAmount$ Y\nSVar:X:Count$YourLifeTotal\nSVar:Y:Count$YourLifeTotal/Twice\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nYou have hexproof.\\nAngelic Enforcer's power and toughness are each equal to your life total.\\nWhenever Angelic Enforcer attacks, double your life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

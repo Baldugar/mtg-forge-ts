@@ -1,0 +1,23 @@
+{
+  "id": "demolisher-spawn-corpus-m676",
+  "description": "M6 corpus — Demolisher Spawn; in-hand parse.",
+  "seed": 63424,
+  "cards": {
+    "Demolisher Spawn": "Name:Demolisher Spawn\nManaCost:5 G G\nTypes:Enchantment Creature Horror\nPT:7/7\nK:Trample\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Delirium$ True | Execute$ TrigPumpAll | TriggerDescription$ Delirium — Whenever CARDNAME attacks, if there are four or more card types among cards in your graveyard, other attacking creatures get +4/+4 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking+Other | NumAtt$ +4 | NumDef$ +4\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Trample, haste\\nDelirium — Whenever Demolisher Spawn attacks, if there are four or more card types among cards in your graveyard, other attacking creatures get +4/+4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demolisher Spawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

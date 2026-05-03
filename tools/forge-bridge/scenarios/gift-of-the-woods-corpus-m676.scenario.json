@@ -1,0 +1,23 @@
+{
+  "id": "gift-of-the-woods-corpus-m676",
+  "description": "M6 corpus — Gift of the Woods; in-hand parse.",
+  "seed": 66198,
+  "cards": {
+    "Gift of the Woods": "Name:Gift of the Woods\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ Blocks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigPump1 | TriggerDescription$ Whenever enchanted creature blocks or becomes blocked, it gets +0/+3 until end of turn and you gain 1 life.\nT:Mode$ AttackerBlocked | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigPump2 | Secondary$ True | TriggerDescription$ Whenever enchanted creature blocks or becomes blocked, it gets +0/+3 until end of turn and you gain 1 life.\nSVar:TrigPump1:DB$ Pump | Defined$ TriggeredBlockerLKICopy | NumDef$ +3 | SubAbility$ DBGainLife\nSVar:TrigPump2:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumDef$ +3 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nOracle:Enchant creature\\nWhenever enchanted creature blocks or becomes blocked, it gets +0/+3 until end of turn and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gift of the Woods"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

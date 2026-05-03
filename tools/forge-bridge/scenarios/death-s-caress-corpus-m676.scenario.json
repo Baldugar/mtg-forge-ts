@@ -1,0 +1,23 @@
+{
+  "id": "death-s-caress-corpus-m676",
+  "description": "M6 corpus — Death's Caress; in-hand parse.",
+  "seed": 63292,
+  "cards": {
+    "Death's Caress": "Name:Death's Caress\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature. If that creature was a Human, you gain life equal to its toughness.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y | ConditionCheckSVar$ IsHuman | ConditionSVarCompare$ GE1\nSVar:IsHuman:Targeted$Valid Creature.Human\nSVar:Y:Targeted$CardToughness\nOracle:Destroy target creature. If that creature was a Human, you gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death's Caress"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

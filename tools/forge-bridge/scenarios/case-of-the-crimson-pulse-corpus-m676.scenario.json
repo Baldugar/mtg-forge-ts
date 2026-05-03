@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-crimson-pulse-corpus-m676",
+  "description": "M6 corpus — Case of the Crimson Pulse; in-hand parse.",
+  "seed": 61766,
+  "cards": {
+    "Case of the Crimson Pulse": "Name:Case of the Crimson Pulse\nManaCost:2 R\nTypes:Enchantment Case\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoot | TriggerDescription$ When this Case enters, discard a card, then draw two cards.\nSVar:TrigLoot:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Hellbent$ True | IsPresent$ Card.Self+!IsSolved | TriggerZones$ Battlefield | Execute$ TrigSolve | TriggerDescription$ To solve — You have no cards in hand. (If unsolved, solve at the beginning of your end step.)\nSVar:TrigSolve:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nT:Mode$ Phase | Phase$ Upkeep | IsPresent$ Card.Self+IsSolved | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ Solved — At the beginning of your upkeep, discard your hand, then draw two cards.\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | Defined$ You | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2\nDeckHas:Ability$Discard\nDeckHints:Ability$Discard\nOracle:When this Case enters, discard a card, then draw two cards.\\nTo solve — You have no cards in hand. (If unsolved, solve at the beginning of your end step.)\\nSolved — At the beginning of your upkeep, discard your hand, then draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Crimson Pulse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

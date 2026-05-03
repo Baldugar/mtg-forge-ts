@@ -1,0 +1,25 @@
+{
+  "id": "detection-tower-corpus-m676",
+  "description": "M6 corpus — Detection Tower; ETB-on-bf.",
+  "seed": 63555,
+  "cards": {
+    "Detection Tower": "Name:Detection Tower\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Effect | Cost$ 1 T | StaticAbilities$ STLoseAB | SpellDescription$ Until end of turn, your opponents and creatures your opponents control with hexproof can be the targets of spells and abilities you control as though they didn't have hexproof.\nSVar:STLoseAB:Mode$ IgnoreHexproof | Activator$ You | ValidEntity$ Opponent,Creature.OppCtrl | Description$ Your opponents and creatures your opponents control with hexproof can be the targets of spells and abilities you control as though they didn't have hexproof.\nAI:RemoveDeck:All\nOracle:{T}: Add {C}.\\n{1}, {T}: Until end of turn, your opponents and creatures your opponents control with hexproof can be the targets of spells and abilities you control as though they didn't have hexproof.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Detection Tower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "exponential-growth-corpus-m676",
+  "description": "M6 corpus — Exponential Growth; in-hand parse.",
+  "seed": 64901,
+  "cards": {
+    "Exponential Growth": "Name:Exponential Growth\nManaCost:X X G G\nTypes:Sorcery\nA:SP$ Repeat | ValidTgts$ Creature | RepeatSubAbility$ DBPump | MaxRepeat$ X | StackDescription$ REP target creature_{c:Targeted} | SpellDescription$ Until end of turn, double target creature's power X times.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | NumAtt$ Double | StackDescription$ None\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Until end of turn, double target creature's power X times.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exponential Growth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

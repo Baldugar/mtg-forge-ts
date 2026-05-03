@@ -1,0 +1,23 @@
+{
+  "id": "deadeye-harpooner-corpus-m676",
+  "description": "M6 corpus — Deadeye Harpooner; in-hand parse.",
+  "seed": 63218,
+  "cards": {
+    "Deadeye Harpooner": "Name:Deadeye Harpooner\nManaCost:2 W\nTypes:Creature Dwarf Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | Revolt$ True | TriggerDescription$ Revolt — When CARDNAME enters, if a permanent you controlled left the battlefield this turn, destroy target tapped creature an opponent controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.tapped+OppCtrl | TgtPrompt$ Select target tapped creature an opponent controls\nOracle:Revolt — When Deadeye Harpooner enters, if a permanent you controlled left the battlefield this turn, destroy target tapped creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadeye Harpooner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "entangling-trap-corpus-m676",
+  "description": "M6 corpus — Entangling Trap; ETB-on-bf.",
+  "seed": 64639,
+  "cards": {
+    "Entangling Trap": "Name:Entangling Trap\nManaCost:1 W\nTypes:Enchantment\nT:Mode$ Clashed | ValidPlayer$ You | Won$ True | TriggerZones$ Battlefield | Execute$ TrigTapW | TriggerDescription$ Whenever you clash, tap target creature an opponent controls. If you won, that creature doesn't untap during its controller's next untap step. (This ability triggers after the clash ends.)\nSVar:TrigTapW:DB$ Tap | ValidTgts$ Creature.OppCtrl | SubAbility$ TrigTapW2\nSVar:TrigTapW2:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nT:Mode$ Clashed | ValidPlayer$ You | Won$ False | TriggerZones$ Battlefield | Execute$ TrigTapL | Secondary$ True | TriggerDescription$ Whenever you clash, tap target creature an opponent controls. If you won, that creature doesn't untap during its controller's next untap step. (This ability triggers after the clash ends.)\nSVar:TrigTapL:DB$ Tap | ValidTgts$ Creature.OppCtrl\nAI:RemoveDeck:Random\nOracle:Whenever you clash, tap target creature an opponent controls. If you won, that creature doesn't untap during its controller's next untap step. (This ability triggers after the clash ends.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Entangling Trap"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

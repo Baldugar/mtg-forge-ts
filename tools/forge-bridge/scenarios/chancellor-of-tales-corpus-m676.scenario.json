@@ -1,0 +1,25 @@
+{
+  "id": "chancellor-of-tales-corpus-m676",
+  "description": "M6 corpus — Chancellor of Tales; ETB-on-bf.",
+  "seed": 61948,
+  "cards": {
+    "Chancellor of Tales": "Name:Chancellor of Tales\nManaCost:3 U\nTypes:Creature Faerie Advisor\nPT:2/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card.Adventure | ValidActivatingPlayer$ You | Execute$ TrigCopySpell | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever you cast an Adventure spell, you may copy it. You may choose new targets for the copy.\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:BuffedBy:Creature.AdventureCard\nDeckNeeds:Type$Adventure\nOracle:Flying\\nWhenever you cast an Adventure spell, you may copy it. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chancellor of Tales"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

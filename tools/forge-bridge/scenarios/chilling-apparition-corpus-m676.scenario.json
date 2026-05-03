@@ -1,0 +1,23 @@
+{
+  "id": "chilling-apparition-corpus-m676",
+  "description": "M6 corpus — Chilling Apparition; in-hand parse.",
+  "seed": 62059,
+  "cards": {
+    "Chilling Apparition": "Name:Chilling Apparition\nManaCost:2 B\nTypes:Creature Spirit\nPT:1/1\nA:AB$ Regenerate | Cost$ B | SpellDescription$ Regenerate CARDNAME.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:{B}: Regenerate Chilling Apparition.\\nWhenever Chilling Apparition deals combat damage to a player, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chilling Apparition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

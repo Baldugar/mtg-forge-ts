@@ -1,0 +1,23 @@
+{
+  "id": "collision-of-realms-corpus-m676",
+  "description": "M6 corpus — Collision of Realms; in-hand parse.",
+  "seed": 62378,
+  "cards": {
+    "Collision of Realms": "Name:Collision of Realms\nManaCost:6 R\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Creature | RememberChanged$ Card.!token | Origin$ Battlefield | Destination$ Library | Shuffle$ True | SubAbility$ DBDigUntil | SpellDescription$ Each player shuffles all creatures they own into their library. Each player who shuffled a nontoken creature into their library this way reveals cards from the top of their library until they reveal a creature card, then puts that card onto the battlefield and the rest on the bottom of their library in a random order.\nSVar:DBDigUntil:DB$ DigUntil | Defined$ RememberedOwner | Amount$ 1 | Valid$ Creature | FoundDestination$ Battlefield | RevealedDestination$ Library | Reveal$ True | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | SubAbility$ DBClean\nSVar:DBClean:DB$ Cleanup | ClearRemembered$ True\nOracle:Each player shuffles all creatures they own into their library. Each player who shuffled a nontoken creature into their library this way reveals cards from the top of their library until they reveal a creature card, then puts that card onto the battlefield and the rest on the bottom of their library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Collision of Realms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

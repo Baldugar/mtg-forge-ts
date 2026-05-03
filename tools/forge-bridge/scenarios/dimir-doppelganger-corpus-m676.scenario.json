@@ -1,0 +1,25 @@
+{
+  "id": "dimir-doppelganger-corpus-m676",
+  "description": "M6 corpus — Dimir Doppelganger; ETB-on-bf.",
+  "seed": 63627,
+  "cards": {
+    "Dimir Doppelganger": "Name:Dimir Doppelganger\nManaCost:1 U B\nTypes:Creature Shapeshifter\nPT:0/2\n# Make Svars for granting abilities and triggers on clones distinct to avoid SVars getting overwritten when cloning a clone\nA:AB$ ChangeZone | Cost$ 1 U B | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | RememberTargets$ True | ForgetOtherTargets$ True | SubAbility$ DDCopy | SpellDescription$ Exile target creature card from a graveyard. CARDNAME becomes a copy of that card, except it has this ability.\nSVar:DDCopy:DB$ Clone | Defined$ Remembered | GainThisAbility$ True\nAI:RemoveDeck:All\nOracle:{1}{U}{B}: Exile target creature card from a graveyard. Dimir Doppelganger becomes a copy of that card, except it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dimir Doppelganger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glittering-wish-corpus-m676",
+  "description": "M6 corpus — Glittering Wish; in-hand parse.",
+  "seed": 66323,
+  "cards": {
+    "Glittering Wish": "Name:Glittering Wish\nManaCost:G W\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Sideboard | Destination$ Hand | ChangeType$ Card.MultiColor+YouOwn | ChangeTypeDesc$ multicolored card they own | ChangeNum$ 1 | Hidden$ True | Reveal$ True | SubAbility$ DBChange | SpellDescription$ You may reveal a multicolored card you own from outside the game and put it into your hand. Exile CARDNAME.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nAI:RemoveDeck:Random\nOracle:You may reveal a multicolored card you own from outside the game and put it into your hand. Exile Glittering Wish.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glittering Wish"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

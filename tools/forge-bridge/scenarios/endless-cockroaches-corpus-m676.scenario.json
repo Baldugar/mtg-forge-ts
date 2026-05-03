@@ -1,0 +1,23 @@
+{
+  "id": "endless-cockroaches-corpus-m676",
+  "description": "M6 corpus — Endless Cockroaches; in-hand parse.",
+  "seed": 64573,
+  "cards": {
+    "Endless Cockroaches": "Name:Endless Cockroaches\nManaCost:1 B B\nTypes:Creature Insect\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nOracle:When Endless Cockroaches dies, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endless Cockroaches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

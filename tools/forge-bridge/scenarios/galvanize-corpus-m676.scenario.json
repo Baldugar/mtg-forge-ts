@@ -1,0 +1,23 @@
+{
+  "id": "galvanize-corpus-m676",
+  "description": "M6 corpus — Galvanize; in-hand parse.",
+  "seed": 65921,
+  "cards": {
+    "Galvanize": "Name:Galvanize\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals 3 damage to target creature. If you've drawn two or more cards this turn, CARDNAME deals 5 damage to that creature instead.\nSVar:X:Count$Compare Y GE2.5.3\nSVar:Y:Count$YouDrewThisTurn\nOracle:Galvanize deals 3 damage to target creature. If you've drawn two or more cards this turn, Galvanize deals 5 damage to that creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galvanize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "creeping-bloodsucker-corpus-m676",
+  "description": "M6 corpus — Creeping Bloodsucker; in-hand parse.",
+  "seed": 62727,
+  "cards": {
+    "Creeping Bloodsucker": "Name:Creeping Bloodsucker\nManaCost:1 B\nTypes:Creature Vampire\nPT:1/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 1 damage to each opponent. You gain life equal to the damage dealt this way.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 1 | RememberAmount$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your upkeep, Creeping Bloodsucker deals 1 damage to each opponent. You gain life equal to the damage dealt this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creeping Bloodsucker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

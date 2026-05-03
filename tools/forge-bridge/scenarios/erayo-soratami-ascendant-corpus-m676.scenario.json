@@ -1,0 +1,23 @@
+{
+  "id": "erayo-soratami-ascendant-corpus-m676",
+  "description": "M6 corpus — Erayo, Soratami Ascendant; in-hand parse.",
+  "seed": 64689,
+  "cards": {
+    "Erayo, Soratami Ascendant": "Name:Erayo, Soratami Ascendant\nManaCost:1 U\nTypes:Legendary Creature Moonfolk Monk\nPT:1/1\nK:Flying\nT:Mode$ SpellCast | CheckSVar$ NumCast | SVarCompare$ EQ4 | NoResolvingCheck$ True | Execute$ TrigFlip | TriggerZones$ Battlefield | TriggerDescription$ Whenever the fourth spell of a turn is cast, flip CARDNAME.\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nSVar:NumCast:Count$ThisTurnCast_Card\nAlternateMode:Flip\nOracle:Flying\\nWhenever the fourth spell of a turn is cast, flip Erayo, Soratami Ascendant.\n\nALTERNATE\n\nName:Erayo's Essence\nManaCost:1 U\nTypes:Legendary Enchantment\nT:Mode$ SpellCast | ValidActivatingPlayer$ Player.Opponent | ActivatorThisTurnCast$ EQ1 | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts their first spell each turn, counter that spell.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | Destination$ Graveyard\nOracle:Whenever an opponent casts their first spell each turn, counter that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erayo, Soratami Ascendant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

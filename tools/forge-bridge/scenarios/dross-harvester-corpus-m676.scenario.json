@@ -1,0 +1,23 @@
+{
+  "id": "dross-harvester-corpus-m676",
+  "description": "M6 corpus — Dross Harvester; in-hand parse.",
+  "seed": 64075,
+  "cards": {
+    "Dross Harvester": "Name:Dross Harvester\nManaCost:1 B B\nTypes:Creature Horror\nPT:4/4\nK:Protection from white\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | ValidCard$ Creature | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature dies, you gain 2 life.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, you lose 4 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 4\nOracle:Protection from white\\nAt the beginning of your end step, you lose 4 life.\\nWhenever a creature dies, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dross Harvester"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

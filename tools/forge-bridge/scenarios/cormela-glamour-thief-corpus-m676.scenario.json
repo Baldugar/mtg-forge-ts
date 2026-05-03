@@ -1,0 +1,23 @@
+{
+  "id": "cormela-glamour-thief-corpus-m676",
+  "description": "M6 corpus — Cormela, Glamour Thief; in-hand parse.",
+  "seed": 62587,
+  "cards": {
+    "Cormela, Glamour Thief": "Name:Cormela, Glamour Thief\nManaCost:1 U B R\nTypes:Legendary Creature Vampire Rogue\nPT:2/4\nK:Haste\nA:AB$ Mana | Cost$ 1 T | Produced$ U B R | RestrictValid$ Spell.Instant,Spell.Sorcery | SpellDescription$ Add {U}{B}{R}. Spend this mana only to cast instant and/or sorcery spells.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, return up to one target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouOwn,Sorcery.YouOwn | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target instant or sorcery\nDeckNeeds:Type$Instant|Sorcery\nOracle:Haste\\n{1}, {T}: Add {U}{B}{R}. Spend this mana only to cast instant and/or sorcery spells.\\nWhen Cormela, Glamour Thief dies, return up to one target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cormela, Glamour Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

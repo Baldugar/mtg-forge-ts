@@ -1,0 +1,23 @@
+{
+  "id": "dinotomaton-corpus-m676",
+  "description": "M6 corpus — Dinotomaton; in-hand parse.",
+  "seed": 63641,
+  "cards": {
+    "Dinotomaton": "Name:Dinotomaton\nManaCost:3 R\nTypes:Artifact Creature Dinosaur Gnome\nPT:4/3\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature you control gains menace until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Menace\nSVar:PlayMain1:TRUE\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen Dinotomaton enters, target creature you control gains menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dinotomaton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fateful-showdown-corpus-m676",
+  "description": "M6 corpus — Fateful Showdown; in-hand parse.",
+  "seed": 65115,
+  "cards": {
+    "Fateful Showdown": "Name:Fateful Showdown\nManaCost:2 R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBDiscard | SpellDescription$ CARDNAME deals damage to any target equal to the number of cards in your hand. Discard all the cards in your hand, then draw that many cards.\nSVar:DBDiscard:DB$ Discard | Defined$ You | RememberDiscarded$ True | Mode$ Hand | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$CardsInYourHand\nSVar:Y:Remembered$Amount\nOracle:Fateful Showdown deals damage to any target equal to the number of cards in your hand. Discard all the cards in your hand, then draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fateful Showdown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

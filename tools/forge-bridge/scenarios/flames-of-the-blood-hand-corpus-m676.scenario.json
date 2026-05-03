@@ -1,0 +1,23 @@
+{
+  "id": "flames-of-the-blood-hand-corpus-m676",
+  "description": "M6 corpus — Flames of the Blood Hand; in-hand parse.",
+  "seed": 65446,
+  "cards": {
+    "Flames of the Blood Hand": "Name:Flames of the Blood Hand\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 4 | NoPrevention$ True | SubAbility$ PreventHealing | SpellDescription$ CARDNAME deals 4 damage to target player or planeswalker. The damage can't be prevented. If that player or that planeswalker's controller would gain life this turn, that player gains no life instead.\nSVar:PreventHealing:DB$ Effect | ReplacementEffects$ GainLifeEvent | RememberObjects$ TargetedOrController\nSVar:GainLifeEvent:Event$ GainLife | ValidPlayer$ Player.IsRemembered | Prevent$ True | Description$ If the targeted player or planeswalker's controller would gain life this turn, that player gains no life instead.\nOracle:Flames of the Blood Hand deals 4 damage to target player or planeswalker. The damage can't be prevented. If that player or that planeswalker's controller would gain life this turn, that player gains no life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flames of the Blood Hand"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

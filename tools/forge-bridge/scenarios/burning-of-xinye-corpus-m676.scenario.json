@@ -1,0 +1,23 @@
+{
+  "id": "burning-of-xinye-corpus-m676",
+  "description": "M6 corpus — Burning of Xinye; in-hand parse.",
+  "seed": 61525,
+  "cards": {
+    "Burning of Xinye": "Name:Burning of Xinye\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | SacValid$ Land.withoutIndestructible | Amount$ 4 | SubAbility$ DBSac | Destroy$ True | SpellDescription$ You destroy four lands you control, then target opponent destroys four lands they control. Then CARDNAME deals 4 damage to each creature.\nSVar:DBSac:DB$ Sacrifice | ValidTgts$ Opponent | SacValid$ Land.withoutIndestructible | Amount$ 4 | Destroy$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DamageAll | NumDmg$ 4 | ValidCards$ Creature\nAI:RemoveDeck:Random\nOracle:You destroy four lands you control, then target opponent destroys four lands they control. Then Burning of Xinye deals 4 damage to each creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning of Xinye"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

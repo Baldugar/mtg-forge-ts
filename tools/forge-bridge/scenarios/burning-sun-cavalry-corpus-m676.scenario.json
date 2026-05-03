@@ -1,0 +1,23 @@
+{
+  "id": "burning-sun-cavalry-corpus-m676",
+  "description": "M6 corpus — Burning Sun Cavalry; in-hand parse.",
+  "seed": 61531,
+  "cards": {
+    "Burning Sun Cavalry": "Name:Burning Sun Cavalry\nManaCost:1 R\nTypes:Creature Human Knight\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | IsPresent$ Dinosaur.YouCtrl | NoResolvingCheck$ True | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks while you control a Dinosaur, CARDNAME gets +1/+1 until end of turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | IsPresent$ Dinosaur.YouCtrl | NoResolvingCheck$ True | Execute$ TrigPump | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks while you control a Dinosaur, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nDeckHints:Type$Dinosaur\nOracle:Whenever Burning Sun Cavalry attacks or blocks while you control a Dinosaur, Burning Sun Cavalry gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning Sun Cavalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

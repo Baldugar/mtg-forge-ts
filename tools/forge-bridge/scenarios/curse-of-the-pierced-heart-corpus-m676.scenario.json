@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-the-pierced-heart-corpus-m676",
+  "description": "M6 corpus — Curse of the Pierced Heart; in-hand parse.",
+  "seed": 62938,
+  "cards": {
+    "Curse of the Pierced Heart": "Name:Curse of the Pierced Heart\nManaCost:1 R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ DBChooseCard | TriggerDescription$ At the beginning of enchanted player's upkeep, CARDNAME deals 1 damage to that player or a planeswalker that player controls.\nSVar:DBChooseCard:DB$ ChooseCard | Choices$ Planeswalker.ControlledBy TriggeredPlayer | Amount$ 1 | SubAbility$ DBDamagePlayer\nSVar:DBDamagePlayer:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1 | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBDamageChosen\nSVar:DBDamageChosen:DB$ DealDamage | Defined$ ChosenCard | NumDmg$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, Curse of the Pierced Heart deals 1 damage to that player or a planeswalker that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of the Pierced Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

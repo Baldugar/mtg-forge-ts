@@ -1,0 +1,23 @@
+{
+  "id": "crusher-zendikon-corpus-m676",
+  "description": "M6 corpus — Crusher Zendikon; in-hand parse.",
+  "seed": 62824,
+  "cards": {
+    "Crusher Zendikon": "Name:Crusher Zendikon\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddType$ Creature & Beast | SetColor$ Red | SetPower$ 4 | SetToughness$ 2 | AddKeyword$ Trample | Description$ Enchanted land is a 4/2 red Beast creature with trample. It's still a land.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted land dies, return that card to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nOracle:Enchant land\\nEnchanted land is a 4/2 red Beast creature with trample. It's still a land.\\nWhen enchanted land dies, return that card to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crusher Zendikon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

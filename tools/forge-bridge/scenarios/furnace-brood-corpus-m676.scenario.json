@@ -1,0 +1,25 @@
+{
+  "id": "furnace-brood-corpus-m676",
+  "description": "M6 corpus — Furnace Brood; ETB-on-bf.",
+  "seed": 65842,
+  "cards": {
+    "Furnace Brood": "Name:Furnace Brood\nManaCost:3 R\nTypes:Creature Elemental\nPT:3/3\nA:AB$ Effect | Cost$ R | ValidTgts$ Creature | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | AILogic$ CantRegenerate | SpellDescription$ Target creature can't be regenerated this turn.\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nAI:RemoveDeck:All\nOracle:{R}: Target creature can't be regenerated this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Furnace Brood"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

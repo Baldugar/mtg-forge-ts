@@ -1,0 +1,25 @@
+{
+  "id": "excalibur-sword-of-eden-corpus-m676",
+  "description": "M6 corpus — Excalibur, Sword of Eden; ETB-on-bf.",
+  "seed": 64842,
+  "cards": {
+    "Excalibur, Sword of Eden": "Name:Excalibur, Sword of Eden\nManaCost:12\nTypes:Legendary Artifact Equipment\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {X} less to cast, where X is the total mana value of historic permanents you control. (Artifacts, legendaries, and Sagas are historic.)\nSVar:X:Count$Valid Permanent.Historic+YouCtrl$CardManaCost\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 10 | AddKeyword$ Vigilance | Description$ Equipped creature gets +10/+0 and has vigilance.\nK:Equip:2:Creature.YouCtrl+Legendary:legendary creature\nDeckHints:Type$Legendary|Sage|Artifact\nOracle:This spell costs {X} less to cast, where X is the total mana value of historic permanents you control. (Artifacts, legendaries, and Sagas are historic.)\\nEquipped creature gets +10/+0 and has vigilance.\\nEquip legendary creature {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Excalibur, Sword of Eden"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

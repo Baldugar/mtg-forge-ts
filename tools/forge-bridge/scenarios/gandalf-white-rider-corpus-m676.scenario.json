@@ -1,0 +1,23 @@
+{
+  "id": "gandalf-white-rider-corpus-m676",
+  "description": "M6 corpus — Gandalf, White Rider; in-hand parse.",
+  "seed": 65933,
+  "cards": {
+    "Gandalf, White Rider": "Name:Gandalf, White Rider\nManaCost:3 W\nTypes:Legendary Creature Avatar Wizard\nPT:3/3\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever you cast a spell, creatures you control get +1/+0 until end of turn. Scry 1.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TriReturn | OptionalDecider$ You | TriggerDescription$ When CARDNAME dies, you may put it into its owner's library fifth from the top.\nSVar:TriReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Destination$ Library | LibraryPosition$ 4\nOracle:Vigilance\\nWhenever you cast a spell, creatures you control get +1/+0 until end of turn. Scry 1.\\nWhen Gandalf, White Rider dies, you may put it into its owner's library fifth from the top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gandalf, White Rider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

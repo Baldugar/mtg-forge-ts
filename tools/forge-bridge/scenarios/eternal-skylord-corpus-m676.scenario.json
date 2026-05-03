@@ -1,0 +1,23 @@
+{
+  "id": "eternal-skylord-corpus-m676",
+  "description": "M6 corpus — Eternal Skylord; in-hand parse.",
+  "seed": 64766,
+  "cards": {
+    "Eternal Skylord": "Name:Eternal Skylord\nManaCost:4 U\nTypes:Creature Zombie Wizard\nPT:3/3\nS:Mode$ Continuous | Affected$ Zombie.token+YouCtrl | AddKeyword$ Flying | Description$ Zombie tokens you control have flying.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBAmass | TriggerDescription$ When CARDNAME enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\nSVar:DBAmass:DB$ Amass | Type$ Zombie | Num$ 2\nDeckHints:Ability$Amass & Type$Zombie\nDeckHas:Ability$Amass|Counters|Token\nOracle:When Eternal Skylord enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\\nZombie tokens you control have flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Skylord"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

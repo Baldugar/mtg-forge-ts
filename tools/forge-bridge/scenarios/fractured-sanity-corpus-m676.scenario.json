@@ -1,0 +1,23 @@
+{
+  "id": "fractured-sanity-corpus-m676",
+  "description": "M6 corpus — Fractured Sanity; in-hand parse.",
+  "seed": 65709,
+  "cards": {
+    "Fractured Sanity": "Name:Fractured Sanity\nManaCost:U U U\nTypes:Sorcery\nK:Cycling:1 U\nA:SP$ Mill | Defined$ Opponent | NumCards$ 14 | SpellDescription$ Each opponent mills fourteen cards.\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When you cycle CARDNAME, each opponent mills four cards.\nSVar:TrigMill:DB$ Mill | Defined$ Opponent | NumCards$ 4\nDeckHas:Ability$Mill\nOracle:Each opponent mills fourteen cards.\\nCycling {1}{U} ({1}{U}, Discard this card: Draw a card.)\\nWhen you cycle Fractured Sanity, each opponent mills four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fractured Sanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

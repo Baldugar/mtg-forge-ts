@@ -1,0 +1,23 @@
+{
+  "id": "choking-sands-corpus-m676",
+  "description": "M6 corpus — Choking Sands; in-hand parse.",
+  "seed": 62094,
+  "cards": {
+    "Choking Sands": "Name:Choking Sands\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Land.nonSwamp | TgtPrompt$ Select target non-Swamp land | SubAbility$ DBDamage | SpellDescription$ Destroy target non-Swamp land. If that land was nonbasic, CARDNAME deals 2 damage to the land's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 2 | ConditionDefined$ Targeted | ConditionPresent$ Land.Basic | ConditionCompare$ EQ0 | ConditionDescription$ If that land is nonbasic,\nOracle:Destroy target non-Swamp land. If that land was nonbasic, Choking Sands deals 2 damage to the land's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Choking Sands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

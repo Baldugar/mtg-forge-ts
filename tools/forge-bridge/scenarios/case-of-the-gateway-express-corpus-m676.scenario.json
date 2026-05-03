@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-gateway-express-corpus-m676",
+  "description": "M6 corpus — Case of the Gateway Express; in-hand parse.",
+  "seed": 61767,
+  "cards": {
+    "Case of the Gateway Express": "Name:Case of the Gateway Express\nManaCost:1 W\nTypes:Enchantment Case\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageEach | TriggerDescription$ When this Case enters, choose target creature you don't control. Each creature you control deals 1 damage to that creature.\nSVar:TrigDamageEach:DB$ EachDamage | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | DefinedDamagers$ Valid Creature.YouCtrl | Defined$ Targeted | NumDmg$ 1\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | SVarCompare$ GE3 | ValidPlayer$ You | IsPresent$ Card.Self+!IsSolved | TriggerZones$ Battlefield | Execute$ TrigSolve | TriggerDescription$ To solve — Three or more creatures attacked this turn. (If unsolved, solve at the beginning of your end step.)\nSVar:TrigSolve:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | IsPresent$ Card.Self+IsSolved | Description$ Solved — Creatures you control get +1/+0.\nSVar:X:Count$AttackersDeclared\nOracle:When this Case enters, choose target creature you don't control. Each creature you control deals 1 damage to that creature.\\nTo solve — Three or more creatures attacked this turn. (If unsolved, solve at the beginning of your end step.)\\nSolved — Creatures you control get +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Gateway Express"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "commune-with-lava-corpus-m676",
+  "description": "M6 corpus — Commune with Lava; in-hand parse.",
+  "seed": 62431,
+  "cards": {
+    "Commune with Lava": "Name:Commune with Lava\nManaCost:X R R\nTypes:Instant\nA:SP$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBMayPlay | SpellDescription$ Exile the top X cards of your library. Until the end of your next turn, you may play those cards.\nSVar:DBMayPlay:DB$ Effect | StaticAbilities$ STCommuned | Duration$ UntilTheEndOfYourNextTurn | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:STCommuned:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | Description$ Until the end of your next turn, you may play those cards.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Exile the top X cards of your library. Until the end of your next turn, you may play those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commune with Lava"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flight-deck-coordinator-corpus-m676",
+  "description": "M6 corpus — Flight-Deck Coordinator; in-hand parse.",
+  "seed": 65513,
+  "cards": {
+    "Flight-Deck Coordinator": "Name:Flight-Deck Coordinator\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Creature.YouCtrl+tapped | PresentCompare$ GE2 | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your end step, if you control two or more tapped creatures, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your end step, if you control two or more tapped creatures, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flight-Deck Coordinator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goblin-chainwhirler-corpus-m676",
+  "description": "M6 corpus — Goblin Chainwhirler; in-hand parse.",
+  "seed": 66409,
+  "cards": {
+    "Goblin Chainwhirler": "Name:Goblin Chainwhirler\nManaCost:R R R\nTypes:Creature Goblin Warrior\nPT:3/3\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each opponent and each creature and planeswalker they control.\nSVar:TrigDamageAll:DB$ DamageAll | ValidPlayers$ Player.Opponent | ValidCards$ Creature.OppCtrl,Planeswalker.OppCtrl | NumDmg$ 1 | ValidDescription$ each opponent and each creature and planeswalker they control.\nOracle:First strike\\nWhen Goblin Chainwhirler enters, it deals 1 damage to each opponent and each creature and planeswalker they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Chainwhirler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

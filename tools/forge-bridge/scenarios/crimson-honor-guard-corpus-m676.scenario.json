@@ -1,0 +1,23 @@
+{
+  "id": "crimson-honor-guard-corpus-m676",
+  "description": "M6 corpus — Crimson Honor Guard; in-hand parse.",
+  "seed": 62751,
+  "cards": {
+    "Crimson Honor Guard": "Name:Crimson Honor Guard\nManaCost:3 R R\nTypes:Creature Vampire Knight\nPT:4/5\nK:Trample\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's end step, CARDNAME deals 4 damage to that player unless they control a commander.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 4 | ConditionPresent$ Permanent.IsCommander+ControlledBy TriggeredPlayer | ConditionCompare$ EQ0\nAI:RemoveDeck:NonCommander\nOracle:Trample\\nAt the beginning of each player's end step, Crimson Honor Guard deals 4 damage to that player unless they control a commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crimson Honor Guard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

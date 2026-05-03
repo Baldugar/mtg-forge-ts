@@ -1,0 +1,25 @@
+{
+  "id": "general-ferrous-rokiric-corpus-m676",
+  "description": "M6 corpus — General Ferrous Rokiric; ETB-on-bf.",
+  "seed": 66027,
+  "cards": {
+    "General Ferrous Rokiric": "Name:General Ferrous Rokiric\nManaCost:1 R W\nTypes:Legendary Creature Human Soldier\nPT:3/1\nK:Hexproof:Card.MonoColor:monocolored\nT:Mode$ SpellCast | ValidCard$ Card.MultiColor | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a multicolored spell, create a 4/4 red and white Golem artifact creature token.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ rw_4_4_a_golem\nSVar:BuffedBy:Card.MultiColor\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Hexproof from monocolored\\nWhenever you cast a multicolored spell, create a 4/4 red and white Golem artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "General Ferrous Rokiric"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

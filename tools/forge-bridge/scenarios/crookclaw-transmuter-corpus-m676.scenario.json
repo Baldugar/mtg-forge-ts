@@ -1,0 +1,23 @@
+{
+  "id": "crookclaw-transmuter-corpus-m676",
+  "description": "M6 corpus — Crookclaw Transmuter; in-hand parse.",
+  "seed": 62767,
+  "cards": {
+    "Crookclaw Transmuter": "Name:Crookclaw Transmuter\nManaCost:3 U\nTypes:Creature Bird Wizard\nPT:3/1\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, switch target creature's power and toughness until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME's power and toughness are switched\nAI:RemoveDeck:All\nOracle:Flash\\nFlying\\nWhen Crookclaw Transmuter enters, switch target creature's power and toughness until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crookclaw Transmuter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cruel-ultimatum-corpus-m676",
+  "description": "M6 corpus — Cruel Ultimatum; in-hand parse.",
+  "seed": 62808,
+  "cards": {
+    "Cruel Ultimatum": "Name:Cruel Ultimatum\nManaCost:U U B B B R R\nTypes:Sorcery\nA:SP$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature | SubAbility$ DBDiscardOpp | SpellDescription$ Target opponent sacrifices a creature, discards three cards, then loses 5 life. You return a creature card from your graveyard to your hand, draw three cards, then gain 5 life.\nSVar:DBDiscardOpp:DB$ Discard | Defined$ Targeted | NumCards$ 3 | Mode$ TgtChoose | SubAbility$ DBLoseLifeOpp\nSVar:DBLoseLifeOpp:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 5 | SubAbility$ DBResurrectYou\nSVar:DBResurrectYou:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | ChangeType$ Creature.YouCtrl | ChangeNum$ 1 | Hidden$ True | SubAbility$ DBDrawYou\nSVar:DBDrawYou:DB$ Draw | NumCards$ 3 | SubAbility$ DBGainLifeYou\nSVar:DBGainLifeYou:DB$ GainLife | LifeAmount$ 5\nOracle:Target opponent sacrifices a creature, discards three cards, then loses 5 life. You return a creature card from your graveyard to your hand, draw three cards, then gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cruel Ultimatum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

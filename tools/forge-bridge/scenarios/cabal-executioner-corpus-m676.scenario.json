@@ -1,0 +1,23 @@
+{
+  "id": "cabal-executioner-corpus-m676",
+  "description": "M6 corpus — Cabal Executioner; in-hand parse.",
+  "seed": 61564,
+  "cards": {
+    "Cabal Executioner": "Name:Cabal Executioner\nManaCost:2 B B\nTypes:Creature Human Cleric\nPT:2/2\nK:Morph:3 B B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredTarget | SacValid$ Creature\nSVar:MustBeBlocked:True\nOracle:Whenever Cabal Executioner deals combat damage to a player, that player sacrifices a creature.\\nMorph {3}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cabal Executioner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

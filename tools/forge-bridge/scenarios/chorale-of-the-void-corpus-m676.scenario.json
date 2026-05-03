@@ -1,0 +1,23 @@
+{
+  "id": "chorale-of-the-void-corpus-m676",
+  "description": "M6 corpus — Chorale of the Void; in-hand parse.",
+  "seed": 62098,
+  "cards": {
+    "Chorale of the Void": "Name:Chorale of the Void\nManaCost:3 B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature attacks, put target creature card from defending player's graveyard onto the battlefield under your control tapped and attacking.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.OwnedBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature card in defending player's graveyard | Tapped$ True | Attacking$ True | GainControl$ True\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Void — At the beginning of your end step, sacrifice this Aura unless a nonland permanent left the battlefield this turn or a spell was warped this turn.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self | ConditionCheckSVar$ X\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddSVar$ AE\nSVar:X:Count$Void.0.1\nSVar:AE:SVar:HasAttackEffect:TRUE\nSVar:AttachAILogic:Pump\nOracle:Enchant creature you control\\nWhenever enchanted creature attacks, put target creature card from defending player's graveyard onto the battlefield under your control tapped and attacking.\\nVoid — At the beginning of your end step, sacrifice this Aura unless a nonland permanent left the battlefield this turn or a spell was warped this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chorale of the Void"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

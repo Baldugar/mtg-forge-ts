@@ -1,0 +1,23 @@
+{
+  "id": "concealing-curtains-corpus-m676",
+  "description": "M6 corpus — Concealing Curtains; in-hand parse.",
+  "seed": 62455,
+  "cards": {
+    "Concealing Curtains": "Name:Concealing Curtains\nManaCost:B\nTypes:Creature Wall\nPT:0/4\nK:Defender\nA:AB$ SetState | Cost$ 2 B | Defined$ Self | Mode$ Transform | SorcerySpeed$ True | SpellDescription$ Transform CARDNAME. Activate only as a sorcery.\nAlternateMode:DoubleFaced\nOracle:Defender\\n{2}{B}: Transform Concealing Curtains. Activate only as a sorcery.\n\nALTERNATE\n\nName:Revealing Eye\nManaCost:no cost\nColors:black\nTypes:Creature Eye Horror\nPT:3/4\nK:Menace\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When this creature transforms into CARDNAME, target opponent reveals their hand. You may choose a nonland card from it. If you do, that player discards that card, then draws a card.\nSVar:TrigReveal:DB$ RevealHand | ValidTgts$ Opponent | RememberRevealed$ True | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Hand | Amount$ 1 | Choices$ Card.nonLand+IsRemembered | SubAbility$ DBDiscard | ChoiceTitle$ You may choose a nonland card\nSVar:DBDiscard:DB$ Discard | DefinedCards$ ChosenCard | Defined$ Targeted | Mode$ Defined | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Targeted | NumCards$ 1 | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nDeckHas:Ability$Discard\nOracle:Menace\\nWhen this creature transforms into Revealing Eye, target opponent reveals their hand. You may choose a nonland card from it. If you do, that player discards that card, then draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Concealing Curtains"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

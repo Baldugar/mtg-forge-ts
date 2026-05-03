@@ -1,0 +1,25 @@
+{
+  "id": "dralnu-lich-lord-corpus-m676",
+  "description": "M6 corpus — Dralnu, Lich Lord; ETB-on-bf.",
+  "seed": 63956,
+  "cards": {
+    "Dralnu, Lich Lord": "Name:Dralnu, Lich Lord\nManaCost:3 U B\nTypes:Legendary Creature Zombie Wizard\nPT:3/3\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | ReplaceWith$ Sac | Description$ If damage would be dealt to CARDNAME, sacrifice that many permanents instead.\nSVar:Sac:DB$ Sacrifice | Defined$ You | SacValid$ Permanent | Amount$ X\nSVar:X:ReplaceCount$DamageAmount\nA:AB$ Pump | Cost$ T | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | KW$ Flashback | TgtZone$ Graveyard | PumpZone$ Graveyard | AILogic$ ReplaySpell | SpellDescription$ Target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)\nAI:RemoveDeck:All\nOracle:If damage would be dealt to Dralnu, Lich Lord, sacrifice that many permanents instead.\\n{T}: Target instant or sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost. (You may cast that card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dralnu, Lich Lord"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

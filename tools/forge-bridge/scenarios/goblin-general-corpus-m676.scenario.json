@@ -1,0 +1,23 @@
+{
+  "id": "goblin-general-corpus-m676",
+  "description": "M6 corpus — Goblin General; in-hand parse.",
+  "seed": 66427,
+  "cards": {
+    "Goblin General": "Name:Goblin General\nManaCost:1 R R\nTypes:Creature Goblin Warrior\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME attacks, Goblin creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.Goblin+YouCtrl | NumAtt$ +1 | NumDef$ +1\nDeckHints:Type$Goblin\nOracle:Whenever Goblin General attacks, Goblin creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin General"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

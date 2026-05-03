@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-ignition-corpus-m676",
+  "description": "M6 corpus — Chandra's Ignition; in-hand parse.",
+  "seed": 61959,
+  "cards": {
+    "Chandra's Ignition": "Name:Chandra's Ignition\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | AILogic$ PowerDmg | TgtPrompt$ Select target creature you control | SubAbility$ IgnitionDamage | StackDescription$ None | SpellDescription$ Target creature you control deals damage equal to its power to each other creature and each opponent.\nSVar:IgnitionDamage:DB$ DamageAll | ValidCards$ Creature.NotDefinedTargeted | ValidPlayers$ Player.Opponent | NumDmg$ X | DamageSource$ ParentTarget\nSVar:X:ParentTargeted$CardPower\nOracle:Target creature you control deals damage equal to its power to each other creature and each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Ignition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

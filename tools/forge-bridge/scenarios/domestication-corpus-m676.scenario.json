@@ -1,0 +1,23 @@
+{
+  "id": "domestication-corpus-m676",
+  "description": "M6 corpus — Domestication; in-hand parse.",
+  "seed": 63807,
+  "cards": {
+    "Domestication": "Name:Domestication\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Creature.powerLT4\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.AttachedBy+powerGE4 | Execute$ TrigSac | TriggerDescription$ At the beginning of your end step, if enchanted creature's power is 4 or greater, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nOracle:Enchant creature\\nYou control enchanted creature.\\nAt the beginning of your end step, if enchanted creature's power is 4 or greater, sacrifice Domestication.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Domestication"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

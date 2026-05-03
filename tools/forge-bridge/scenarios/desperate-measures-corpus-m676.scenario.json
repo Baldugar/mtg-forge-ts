@@ -1,0 +1,23 @@
+{
+  "id": "desperate-measures-corpus-m676",
+  "description": "M6 corpus — Desperate Measures; in-hand parse.",
+  "seed": 63530,
+  "cards": {
+    "Desperate Measures": "Name:Desperate Measures\nManaCost:B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ -1 | SubAbility$ DBDelayedTrigger | SpellDescription$ Target creature gets +1/-1 until end of turn. When it dies under your control this turn, draw two cards.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ DBDraw | SpellDescription$ When it dies under your control this turn, draw two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2\nOracle:Target creature gets +1/-1 until end of turn. When it dies under your control this turn, draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desperate Measures"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

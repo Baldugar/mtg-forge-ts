@@ -1,0 +1,25 @@
+{
+  "id": "celestus-sanctifier-corpus-m676",
+  "description": "M6 corpus — Celestus Sanctifier; ETB-on-bf.",
+  "seed": 61869,
+  "cards": {
+    "Celestus Sanctifier": "Name:Celestus Sanctifier\nManaCost:2 W\nTypes:Creature Human Cleric\nPT:3/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ DBDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever day becomes night or night becomes day, look at the top two cards of your library. Put one of them into your graveyard.\nSVar:DBDig:DB$ Dig | DigNum$ 2 | DestinationZone$ Graveyard | NoReveal$ True | LibraryPosition2$ 0\nDeckHas:Ability$Graveyard\nOracle:If it's neither day nor night, it becomes day as Celestus Sanctifier enters.\\nWhenever day becomes night or night becomes day, look at the top two cards of your library. Put one of them into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Celestus Sanctifier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

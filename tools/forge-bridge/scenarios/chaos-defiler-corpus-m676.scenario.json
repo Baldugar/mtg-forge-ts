@@ -1,0 +1,23 @@
+{
+  "id": "chaos-defiler-corpus-m676",
+  "description": "M6 corpus — Chaos Defiler; in-hand parse.",
+  "seed": 61981,
+  "cards": {
+    "Chaos Defiler": "Name:Chaos Defiler\nManaCost:3 B R\nTypes:Artifact Creature Demon Construct\nPT:5/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ Battle Cannon — When CARDNAME enters or dies, for each opponent, choose a nonland permanent that player controls. Destroy one of them chosen at random.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigRepeat | Secondary$ True | TriggerDescription$ Battle Cannon — When CARDNAME enters or dies, for each opponent, choose a nonland permanent that player controls. Destroy one of them chosen at random.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Opponent | RepeatSubAbility$ DBChooseCard | SubAbility$ DBChooseRandom\nSVar:DBChooseCard:DB$ ChooseCard | Choices$ Permanent.nonLand+ControlledBy Remembered | Mandatory$ True | RememberChosen$ True\nSVar:DBChooseRandom:DB$ ChooseCard | AtRandom$ True | Choices$ Card.IsRemembered+withoutIndestructible | Reveal$ True | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:Trample\\nBattle Cannon — When Chaos Defiler enters or dies, for each opponent, choose a nonland permanent that player controls. Destroy one of them chosen at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaos Defiler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

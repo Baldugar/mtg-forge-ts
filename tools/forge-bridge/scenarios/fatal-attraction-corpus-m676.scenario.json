@@ -1,0 +1,23 @@
+{
+  "id": "fatal-attraction-corpus-m676",
+  "description": "M6 corpus — Fatal Attraction; in-hand parse.",
+  "seed": 65096,
+  "cards": {
+    "Fatal Attraction": "Name:Fatal Attraction\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDamage2 | TriggerDescription$ When CARDNAME enters, it deals 2 damage to enchanted creature.\nSVar:TrigDamage2:DB$ DealDamage | Defined$ Enchanted | NumDmg$ 2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage4 | TriggerDescription$ At the beginning of your upkeep, CARDNAME deals 4 damage to enchanted creature.\nSVar:TrigDamage4:DB$ DealDamage | Defined$ Enchanted | NumDmg$ 4\nAI:RemoveDeck:All\nOracle:Enchant creature\\nWhen Fatal Attraction enters, it deals 2 damage to enchanted creature.\\nAt the beginning of your upkeep, Fatal Attraction deals 4 damage to enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fatal Attraction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

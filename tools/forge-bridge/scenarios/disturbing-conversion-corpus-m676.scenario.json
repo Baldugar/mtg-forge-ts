@@ -1,0 +1,23 @@
+{
+  "id": "disturbing-conversion-corpus-m676",
+  "description": "M6 corpus — Disturbing Conversion; in-hand parse.",
+  "seed": 63743,
+  "cards": {
+    "Disturbing Conversion": "Name:Disturbing Conversion\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -X | Description$ Enchanted creature gets -X/-0, where X is the number of cards in its controller's graveyard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, each player mills two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ Player\nSVar:X:Count$ValidGraveyard Card.EnchantedControllerCtrl\nDeckHints:Ability$Graveyard|Mill\nOracle:Flash\\nEnchant creature\\nWhen Disturbing Conversion enters, each player mills two cards.\\nEnchanted creature gets -X/-0, where X is the number of cards in its controller's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disturbing Conversion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

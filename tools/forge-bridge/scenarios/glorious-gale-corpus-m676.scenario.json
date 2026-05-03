@@ -1,0 +1,23 @@
+{
+  "id": "glorious-gale-corpus-m676",
+  "description": "M6 corpus — Glorious Gale; in-hand parse.",
+  "seed": 66342,
+  "cards": {
+    "Glorious Gale": "Name:Glorious Gale\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target creature spell | ValidTgts$ Card.Creature | SubAbility$ TrigTempt | SpellDescription$ Counter target creature spell. If it was a legendary spell, the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou | ConditionDefined$ Targeted | ConditionPresent$ Spell.Legendary\nOracle:Counter target creature spell. If it was a legendary spell, the Ring tempts you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glorious Gale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

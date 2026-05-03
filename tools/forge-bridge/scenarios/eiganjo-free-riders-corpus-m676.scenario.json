@@ -1,0 +1,23 @@
+{
+  "id": "eiganjo-free-riders-corpus-m676",
+  "description": "M6 corpus — Eiganjo Free-Riders; in-hand parse.",
+  "seed": 64337,
+  "cards": {
+    "Eiganjo Free-Riders": "Name:Eiganjo Free-Riders\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:3/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Creature.White | PresentZone$ Battlefield | PresentPlayer$ You | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, return a white creature you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True | ChangeType$ Creature.White+YouCtrl\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.White+YouCtrl+cmcLE4\nAI:RemoveDeck:Random\nDeckNeeds:Color$White\nOracle:Flying\\nAt the beginning of your upkeep, return a white creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eiganjo Free-Riders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

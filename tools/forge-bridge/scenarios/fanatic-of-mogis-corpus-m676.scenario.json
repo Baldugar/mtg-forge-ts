@@ -1,0 +1,23 @@
+{
+  "id": "fanatic-of-mogis-corpus-m676",
+  "description": "M6 corpus — Fanatic of Mogis; in-hand parse.",
+  "seed": 65051,
+  "cards": {
+    "Fanatic of Mogis": "Name:Fanatic of Mogis\nManaCost:3 R\nTypes:Creature Minotaur Shaman\nPT:4/2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME enters, it deals damage to each opponent equal to your devotion to red. (Each {R} in the mana costs of permanents you control counts towards your devotion to red.)\nSVar:TrigDamageAll:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ X\nSVar:X:Count$Devotion.Red\nOracle:When Fanatic of Mogis enters, it deals damage to each opponent equal to your devotion to red. (Each {R} in the mana costs of permanents you control counts toward your devotion to red.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fanatic of Mogis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

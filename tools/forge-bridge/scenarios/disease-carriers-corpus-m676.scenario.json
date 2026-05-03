@@ -1,0 +1,23 @@
+{
+  "id": "disease-carriers-corpus-m676",
+  "description": "M6 corpus — Disease Carriers; in-hand parse.",
+  "seed": 63687,
+  "cards": {
+    "Disease Carriers": "Name:Disease Carriers\nManaCost:2 B B\nTypes:Creature Rat\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME dies, target creature gets -2/-2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True\nOracle:When Disease Carriers dies, target creature gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disease Carriers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

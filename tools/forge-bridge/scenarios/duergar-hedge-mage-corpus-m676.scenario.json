@@ -1,0 +1,23 @@
+{
+  "id": "duergar-hedge-mage-corpus-m676",
+  "description": "M6 corpus — Duergar Hedge-Mage; in-hand parse.",
+  "seed": 64139,
+  "cards": {
+    "Duergar Hedge-Mage": "Name:Duergar Hedge-Mage\nManaCost:2 RW\nTypes:Creature Dwarf Shaman\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Mountain.YouCtrl | PresentCompare$ GE2 | Execute$ TrigDestroyA | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, if you control two or more Mountains, you may destroy target artifact.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Plains.YouCtrl | PresentCompare$ GE2 | Execute$ TrigDestroyE | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, if you control two or more Plains, you may destroy target enchantment.\nSVar:TrigDestroyA:DB$ Destroy | ValidTgts$ Artifact | TgtPrompt$ Select target artifact\nSVar:TrigDestroyE:DB$ Destroy | ValidTgts$ Enchantment | TgtPrompt$ Select target enchantment\nOracle:When Duergar Hedge-Mage enters, if you control two or more Mountains, you may destroy target artifact.\\nWhen Duergar Hedge-Mage enters, if you control two or more Plains, you may destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duergar Hedge-Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

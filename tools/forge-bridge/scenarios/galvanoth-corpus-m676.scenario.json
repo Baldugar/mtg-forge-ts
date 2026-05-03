@@ -1,0 +1,23 @@
+{
+  "id": "galvanoth-corpus-m676",
+  "description": "M6 corpus — Galvanoth; in-hand parse.",
+  "seed": 65923,
+  "cards": {
+    "Galvanoth": "Name:Galvanoth\nManaCost:3 R R\nTypes:Creature Beast\nPT:3/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPeek | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may look at the top card of your library. You may cast it without paying its mana cost if it's an instant or sorcery spell.\nSVar:TrigPeek:DB$ PeekAndReveal | NoReveal$ True | SubAbility$ TrigPlay\nSVar:TrigPlay:DB$ Play | Defined$ TopOfLibrary | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | ConditionDefined$ TopOfLibrary | ConditionPresent$ Instant,Sorcery\nDeckNeeds:Type$Instant|Sorcery\nOracle:At the beginning of your upkeep, you may look at the top card of your library. You may cast it without paying its mana cost if it's an instant or sorcery spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galvanoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

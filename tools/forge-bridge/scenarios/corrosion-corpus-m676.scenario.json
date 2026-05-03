@@ -1,0 +1,23 @@
+{
+  "id": "corrosion-corpus-m676",
+  "description": "M6 corpus — Corrosion; in-hand parse.",
+  "seed": 62602,
+  "cards": {
+    "Corrosion": "Name:Corrosion\nManaCost:1 B R\nTypes:Enchantment\nK:Cumulative upkeep:1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCorrode | TriggerDescription$ At the beginning of your upkeep, put a rust counter on each artifact target opponent controls. Then destroy each artifact with mana value less than or equal to the number of rust counters on it. Artifacts destroyed this way can't be regenerated.\nSVar:TrigCorrode:DB$ PutCounterAll | ValidCards$ Artifact | CounterType$ RUST | CounterNum$ 1 | ValidTgts$ Opponent | SubAbility$ DBDestroyAllRusted\nSVar:DBDestroyAllRusted:DB$ RepeatEach | RepeatCards$ Artifact | RepeatSubAbility$ DBDestroyRusted\nSVar:DBDestroyRusted:DB$ Destroy | Defined$ Remembered | ConditionCheckSVar$ RememberedCMC | ConditionSVarCompare$ GEX | NoRegen$ True\nSVar:RememberedCMC:Remembered$CardCounters.RUST\nSVar:X:Remembered$CardManaCost\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigWipeCounters | TriggerDescription$ When CARDNAME leaves the battlefield, remove all rust counters from all permanents.\nSVar:TrigWipeCounters:DB$ RemoveCounterAll | ValidCards$ Permanent | AllCounterTypes$ True\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:Count$Valid Artifact.OppCtrl\nOracle:Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAt the beginning of your upkeep, put a rust counter on each artifact target opponent controls. Then destroy each artifact with mana value less than or equal to the number of rust counters on it. Artifacts destroyed this way can't be regenerated.\\nWhen Corrosion leaves the battlefield, remove all rust counters from all permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corrosion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

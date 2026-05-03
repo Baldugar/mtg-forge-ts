@@ -1,0 +1,23 @@
+{
+  "id": "dong-zhou-the-tyrant-corpus-m676",
+  "description": "M6 corpus — Dong Zhou, the Tyrant; in-hand parse.",
+  "seed": 63820,
+  "cards": {
+    "Dong Zhou, the Tyrant": "Name:Dong Zhou, the Tyrant\nManaCost:4 R\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmgOpp | TriggerDescription$ When CARDNAME enters, target creature an opponent controls deals damage equal to its power to that player.\nSVar:TrigDmgOpp:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBDmgOpp | StackDescription$ None | IsCurse$ True | SpellDescription$ Target creature an opponent controls deals damage equal to its power to that player.\nSVar:DBDmgOpp:DB$ DealDamage | DamageSource$ Targeted | Defined$ TargetedController | NumDmg$ X\nSVar:X:Targeted$CardPower\nOracle:When Dong Zhou, the Tyrant enters, target creature an opponent controls deals damage equal to its power to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dong Zhou, the Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

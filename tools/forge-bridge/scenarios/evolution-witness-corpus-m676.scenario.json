@@ -1,0 +1,25 @@
+{
+  "id": "evolution-witness-corpus-m676",
+  "description": "M6 corpus — Evolution Witness; ETB-on-bf.",
+  "seed": 64835,
+  "cards": {
+    "Evolution Witness": "Name:Evolution Witness\nManaCost:2 G\nTypes:Creature Elf Shaman Mutant\nPT:2/1\nA:AB$ PutCounter | Cost$ 1 G | Adapt$ 2\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ TrigChangeZone | TriggerDescription$ Whenever one or more +1/+1 counters are put on CARDNAME, return target permanent card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent card from your graveyard\nDeckHas:Ability$Counters|Graveyard\nOracle:{1}{G}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\\nWhenever one or more +1/+1 counters are put on Evolution Witness, return target permanent card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Evolution Witness"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

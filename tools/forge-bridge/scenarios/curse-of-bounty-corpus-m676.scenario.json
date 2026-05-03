@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-bounty-corpus-m676",
+  "description": "M6 corpus — Curse of Bounty; in-hand parse.",
+  "seed": 62918,
+  "cards": {
+    "Curse of Bounty": "Name:Curse of Bounty\nManaCost:1 G\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ AttackersDeclared | AttackedTarget$ Player.EnchantedBy | Execute$ TrigUntap | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player is attacked, untap all nonland permanents you control. Each opponent attacking that player untaps all nonland permanents they control.\nSVar:TrigUntap:DB$ UntapAll | Defined$ You | ValidCards$ Permanent.nonLand | SubAbility$ DBUntap\nSVar:DBUntap:DB$ UntapAll | Defined$ TriggeredAttackingPlayer.Opponent+controlsCreature.attacking Player.EnchantedBy | ValidCards$ Permanent.nonLand\nOracle:Enchant player\\nWhenever enchanted player is attacked, untap all nonland permanents you control. Each opponent attacking that player untaps all nonland permanents they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Bounty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

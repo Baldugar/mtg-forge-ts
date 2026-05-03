@@ -1,0 +1,23 @@
+{
+  "id": "future-flight-corpus-m676",
+  "description": "M6 corpus — Future Flight; in-hand parse.",
+  "seed": 65857,
+  "cards": {
+    "Future Flight": "Name:Future Flight\nManaCost:2 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When this Aura enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddKeyword$ Flying | Description$ Enchanted creature gets +2/+0 and has flying. (It can't be blocked except by creatures with flying or reach.)\nOracle:Enchant creature\\nWhen this Aura enters, draw two cards.\\nEnchanted creature gets +2/+0 and has flying. (It can't be blocked except by creatures with flying or reach.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Future Flight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

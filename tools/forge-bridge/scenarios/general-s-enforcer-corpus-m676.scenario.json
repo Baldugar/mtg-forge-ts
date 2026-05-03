@@ -1,0 +1,25 @@
+{
+  "id": "general-s-enforcer-corpus-m676",
+  "description": "M6 corpus — General's Enforcer; ETB-on-bf.",
+  "seed": 66032,
+  "cards": {
+    "General's Enforcer": "Name:General's Enforcer\nManaCost:W B\nTypes:Creature Human Soldier\nPT:2/3\nS:Mode$ Continuous | Affected$ Human.YouCtrl+Legendary | AddKeyword$ Indestructible | Description$ Legendary Humans you control have indestructible.\nA:AB$ ChangeZone | Cost$ 2 W B | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SubAbility$ DBToken | SpellDescription$ Exile target card from a graveyard. If it was a creature card, create a 1/1 white Human Soldier creature token.\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You | ConditionDefined$ Targeted | ConditionPresent$ Creature | ConditionCompare$ EQ1 | StackDescription$ If it was a creature card, create a 1/1 white Human Soldier creature token.\nDeckHints:Type$Human\nDeckHas:Ability$Token\nOracle:Legendary Humans you control have indestructible.\\n{2}{W}{B}: Exile target card from a graveyard. If it was a creature card, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "General's Enforcer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

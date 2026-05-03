@@ -1,0 +1,25 @@
+{
+  "id": "conduit-of-ruin-corpus-m676",
+  "description": "M6 corpus — Conduit of Ruin; ETB-on-bf.",
+  "seed": 62472,
+  "cards": {
+    "Conduit of Ruin": "Name:Conduit of Ruin\nManaCost:6\nTypes:Creature Eldrazi\nPT:5/5\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When you cast CARDNAME, you may search your library for a colorless creature card with mana value 7 or greater, reveal it, then shuffle and put that card on top of it.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Creature.Colorless+cmcGE7 | ChangeNum$ 1 | ShuffleNonMandatory$ True\nS:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Card.Creature | Activator$ You | Type$ Spell | OnlyFirstSpell$ True | Amount$ 2 | Description$ The first creature spell you cast each turn costs {2} less to cast.\nAI:RemoveDeck:Random\nOracle:When you cast this spell, you may search your library for a colorless creature card with mana value 7 or greater, reveal it, then shuffle and put that card on top.\\nThe first creature spell you cast each turn costs {2} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Conduit of Ruin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

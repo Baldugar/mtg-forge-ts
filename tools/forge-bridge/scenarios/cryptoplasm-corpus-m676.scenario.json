@@ -1,0 +1,23 @@
+{
+  "id": "cryptoplasm-corpus-m676",
+  "description": "M6 corpus — Cryptoplasm; in-hand parse.",
+  "seed": 62850,
+  "cards": {
+    "Cryptoplasm": "Name:Cryptoplasm\nManaCost:1 U U\nTypes:Creature Shapeshifter\nPT:2/2\n# Make Svars for granting abilities and triggers on clones distinct to avoid SVars getting overwritten when cloning a clone\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ CryptoplasmCopy | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may have CARDNAME become a copy of another target creature, except it has this ability.\nSVar:CryptoplasmCopy:DB$ Clone | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature to copy. | Optional$ True | GainThisAbility$ True | AddSVars$ CryptoplasmCopy | AILogic$ CloneBestCreature\nOracle:At the beginning of your upkeep, you may have Cryptoplasm become a copy of another target creature, except it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryptoplasm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

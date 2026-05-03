@@ -1,0 +1,23 @@
+{
+  "id": "conundrum-sphinx-corpus-m676",
+  "description": "M6 corpus — Conundrum Sphinx; in-hand parse.",
+  "seed": 62543,
+  "cards": {
+    "Conundrum Sphinx": "Name:Conundrum Sphinx\nManaCost:2 U U\nTypes:Creature Sphinx\nPT:4/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ EachName | TriggerDescription$ Whenever CARDNAME attacks, each player chooses a card name. Then each player reveals the top card of their library. If the card a player revealed has the name they chose, that player puts it into their hand. If it doesn't, that player puts it on the bottom of their library.\nSVar:EachName:DB$ NameCard | Defined$ Player | AILogic$ RandomInComputerDeck | SubAbility$ DBDigEach\nSVar:DBDigEach:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDig | SubAbility$ DBCleanup\nSVar:DBDig:DB$ Dig | DigNum$ 1 | Defined$ Player.IsRemembered | ChangeNum$ All | ChangeValid$ Card.NamedByRememberedPlayer | Reveal$ True\nSVar:DBCleanup:DB$ Cleanup | ClearNamedCard$ True\nAI:RemoveDeck:Random\nOracle:Flying\\nWhenever Conundrum Sphinx attacks, each player chooses a card name. Then each player reveals the top card of their library. If the card a player revealed has the name they chose, that player puts it into their hand. If it doesn't, that player puts it on the bottom of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conundrum Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

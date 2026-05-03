@@ -1,0 +1,23 @@
+{
+  "id": "fear-of-missing-out-corpus-m676",
+  "description": "M6 corpus — Fear of Missing Out; in-hand parse.",
+  "seed": 65143,
+  "cards": {
+    "Fear of Missing Out": "Name:Fear of Missing Out\nManaCost:1 R\nTypes:Enchantment Creature Nightmare\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, discard a card, then draw a card.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ Attacks | ValidCard$ Creature.Self | TriggerZones$ Battlefield | Execute$ TrigUntap | FirstAttack$ True | Delirium$ True | TriggerDescription$ Delirium — Whenever CARDNAME attacks for the first time each turn, if there are four or more card types among cards in your graveyard, untap target creature. After this phase, there is an additional combat phase.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nOracle:When Fear of Missing Out enters, discard a card, then draw a card.\\nDelirium — Whenever Fear of Missing Out attacks for the first time each turn, if there are four or more card types among cards in your graveyard, untap target creature. After this phase, there is an additional combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear of Missing Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

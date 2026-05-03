@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-lost-witness-corpus-m676",
+  "description": "M6 corpus — Case of the Lost Witness; in-hand parse.",
+  "seed": 61770,
+  "cards": {
+    "Case of the Lost Witness": "Name:Case of the Lost Witness\nManaCost:1 U\nTypes:Enchantment Case\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When this Case enters, conjure four cards named Fblthp, the Lost into your library, then shuffle. Draw a card.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Fblthp, the Lost | Zone$ Library | Amount$ 4 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Homunculus.YouCtrl+Legendary | IsPresent2$ Card.Self+!IsSolved | Execute$ TrigSolve | TriggerDescription$ To solve — You control a legendary Homunculus.\nSVar:TrigSolve:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | IsPresent$ Card.Self+IsSolved | AffectedZone$ Library | MayLookAt$ You | MayPlay$ True | Description$ Solved — You may look at the top card of your library any time and you may play lands and cast spells from the top of your library.\nDeckHints:Type$Homunculus\nOracle:When this Case enters, conjure four cards named Fblthp, the Lost into your library, then shuffle. Draw a card.\\nTo solve — You control a legendary Homunculus.\\nSolved — You may look at the top card of your library any time and you may play lands and cast spells from the top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Lost Witness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "come-back-wrong-corpus-m676",
+  "description": "M6 corpus — Come Back Wrong; in-hand parse.",
+  "seed": 62406,
+  "cards": {
+    "Come Back Wrong": "Name:Come Back Wrong\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature | RememberDestroyed$ True | SubAbility$ DBReturn | SpellDescription$ Destroy target creature. If a creature card is put into a graveyard this way, return it to the battlefield under your control. Sacrifice it at the beginning of your next end step.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | GainControl$ True | AtEOT$ YourSacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target creature. If a creature card is put into a graveyard this way, return it to the battlefield under your control. Sacrifice it at the beginning of your next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Come Back Wrong"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

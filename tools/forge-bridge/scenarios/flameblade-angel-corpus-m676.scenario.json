@@ -1,0 +1,23 @@
+{
+  "id": "flameblade-angel-corpus-m676",
+  "description": "M6 corpus — Flameblade Angel; in-hand parse.",
+  "seed": 65433,
+  "cards": {
+    "Flameblade Angel": "Name:Flameblade Angel\nManaCost:4 R R\nTypes:Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.OppCtrl,Emblem.OppCtrl | ValidTarget$ You,Permanent.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDealDamage | OptionalDecider$ You | TriggerDescription$ Whenever a source an opponent controls deals damage to you or a permanent you control, you may have CARDNAME deal 1 damage to that source's controller.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredSourceController | NumDmg$ 1\nOracle:Flying\\nWhenever a source an opponent controls deals damage to you or a permanent you control, you may have Flameblade Angel deal 1 damage to that source's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flameblade Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

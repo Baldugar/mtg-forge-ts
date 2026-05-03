@@ -1,0 +1,23 @@
+{
+  "id": "divergent-transformations-corpus-m676",
+  "description": "M6 corpus — Divergent Transformations; in-hand parse.",
+  "seed": 63746,
+  "cards": {
+    "Divergent Transformations": "Name:Divergent Transformations\nManaCost:6 R\nTypes:Instant\nK:Undaunted\nA:SP$ ChangeZone | ValidTgts$ Creature | TargetMin$ 2 | TargetMax$ 2 | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | SubAbility$ DBTransform | SpellDescription$ Exile two target creatures. For each of those creatures, its controller reveals cards from the top of their library until they reveal a creature card, puts that card onto the battlefield, then shuffles the rest into their library.\nSVar:DBTransform:DB$ RepeatEach | UseImprinted$ True | DefinedCards$ DirectRemembered | ChooseOrder$ True | Zone$ Exile | RepeatSubAbility$ DBReveal | SubAbility$ DBCleanRemembered\nSVar:DBReveal:DB$ DigUntil | Defined$ ImprintedController | Amount$ 1 | Valid$ Creature | ValidDescription$ creature | RevealedDestination$ Library | RevealedLibraryPosition$ 0 | FoundDestination$ Battlefield | Shuffle$ True\nSVar:DBCleanRemembered:DB$ Cleanup | ClearRemembered$ True\nOracle:Undaunted (This spell costs {1} less to cast for each opponent.)\\nExile two target creatures. For each of those creatures, its controller reveals cards from the top of their library until they reveal a creature card, puts that card onto the battlefield, then shuffles the rest into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Divergent Transformations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

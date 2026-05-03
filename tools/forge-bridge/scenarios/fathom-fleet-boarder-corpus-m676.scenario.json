@@ -1,0 +1,23 @@
+{
+  "id": "fathom-fleet-boarder-corpus-m676",
+  "description": "M6 corpus — Fathom Fleet Boarder; in-hand parse.",
+  "seed": 65118,
+  "cards": {
+    "Fathom Fleet Boarder": "Name:Fathom Fleet Boarder\nManaCost:2 B\nTypes:Creature Orc Pirate\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, you lose 2 life unless you control another Pirate.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2 | ConditionPresent$ Pirate.StrictlyOther+YouCtrl | ConditionCompare$ EQ0\nSVar:NeedsToPlay:Pirate.YouCtrl\nDeckHints:Type$Pirate\nOracle:When Fathom Fleet Boarder enters, you lose 2 life unless you control another Pirate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fathom Fleet Boarder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

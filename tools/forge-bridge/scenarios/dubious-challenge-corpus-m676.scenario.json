@@ -1,0 +1,23 @@
+{
+  "id": "dubious-challenge-corpus-m676",
+  "description": "M6 corpus — Dubious Challenge; in-hand parse.",
+  "seed": 64128,
+  "cards": {
+    "Dubious Challenge": "Name:Dubious Challenge\nManaCost:3 G\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 10 | ChangeNum$ 2 | Optional$ True | ChangeValid$ Creature | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ OpponentChooses | SpellDescription$ Look at the top ten cards of your library, exile up to two creature cards from among them, then shuffle. Target opponent may choose one of the exiled cards and put it onto the battlefield under their control. Put the rest onto the battlefield under your control. | StackDescription$ SpellDescription\nSVar:OpponentChooses:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | GainControl$ Targeted | DefinedPlayer$ You | Chooser$ Targeted | ValidTgts$ Opponent | ChangeType$ Card.IsRemembered | Hidden$ True | SubAbility$ YouGetTheRest\nSVar:YouGetTheRest:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Battlefield | ChangeType$ Card.IsRemembered\nOracle:Look at the top ten cards of your library, exile up to two creature cards from among them, then shuffle. Target opponent may choose one of the exiled cards and put it onto the battlefield under their control. Put the rest onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dubious Challenge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cyberdrive-awakener-corpus-m676",
+  "description": "M6 corpus — Cyberdrive Awakener; in-hand parse.",
+  "seed": 62975,
+  "cards": {
+    "Cyberdrive Awakener": "Name:Cyberdrive Awakener\nManaCost:5 U\nTypes:Artifact Creature Construct\nPT:4/4\nK:Flying\nS:Mode$ Continuous | Affected$ Artifact.Creature+YouCtrl+Other | AddKeyword$ Flying | Description$ Other artifact creatures you control have flying.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ When this creature enters, each noncreature artifact you control becomes a 4/4 artifact creature until end of turn.\nSVar:TrigAnimate:DB$ AnimateAll | ValidCards$ Artifact.nonCreature+YouCtrl | Types$ Artifact,Creature | Power$ 4 | Toughness$ 4\nDeckHints:Type$Artifact\nOracle:Flying\\nOther artifact creatures you control have flying.\\nWhen this creature enters, each noncreature artifact you control becomes a 4/4 artifact creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyberdrive Awakener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

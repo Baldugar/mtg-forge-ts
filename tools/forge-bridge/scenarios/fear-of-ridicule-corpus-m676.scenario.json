@@ -1,0 +1,23 @@
+{
+  "id": "fear-of-ridicule-corpus-m676",
+  "description": "M6 corpus — Fear of Ridicule; in-hand parse.",
+  "seed": 65144,
+  "cards": {
+    "Fear of Ridicule": "Name:Fear of Ridicule\nManaCost:1 B B\nTypes:Enchantment Creature Nightmare\nPT:2/3\nS:Mode$ Continuous | Affected$ Creature.Enchantment+YouCtrl | AddKeyword$ Menace | Description$ Enchantment creatures you control have menace.\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.Enchantment+YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever one or more enchantment creatures you control deal combat damage to a player, exile a random creature card from that player's library. Create a token that's a copy of that card, except it's a 1/1 enchantment creature.\nSVar:TrigExile:DB$ ChangeZone | DefinedPlayer$ TriggeredTarget | RememberChanged$ True | Destination$ Exile | Origin$ Library | AtRandom$ True | ChangeNum$ 1 | ChangeType$ Card.Creature | Mandatory$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | SetPower$ 1 | SetToughness$ 1 | AddTypes$ Enchantment & Creature | RemoveCardTypes$ True | RemoveSubTypes$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Enchantment creatures you control have menace.\\nWhenever one or more enchantment creatures you control deal combat damage to a player, exile a random creature card from that player's library. Create a token that's a copy of that card, except it's a 1/1 enchantment creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear of Ridicule"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fandaniel-telophoroi-ascian-corpus-m676",
+  "description": "M6 corpus — Fandaniel, Telophoroi Ascian; in-hand parse.",
+  "seed": 65056,
+  "cards": {
+    "Fandaniel, Telophoroi Ascian": "Name:Fandaniel, Telophoroi Ascian\nManaCost:4 B\nTypes:Legendary Creature Elder Wizard\nPT:4/5\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigSurveil | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell, surveil 1.\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, each opponent may sacrifice a nontoken creature of their choice. Each opponent who doesn't loses 2 life for each instant and sorcery card in your graveyard.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature.!token | RememberSacrificed$ True | Optional$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ OppNonRememberedController | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:SVar$Y/Times.2\nSVar:Y:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:BuffedBy:Instant,Sorcery\nDeckHas:Ability$Surveil|Graveyard\nOracle:Whenever you cast an instant or sorcery spell, surveil 1.\\nAt the beginning of your end step, each opponent may sacrifice a nontoken creature of their choice. Each opponent who doesn't loses 2 life for each instant and sorcery card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fandaniel, Telophoroi Ascian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dispersal-technician-corpus-m676",
+  "description": "M6 corpus — Dispersal Technician; in-hand parse.",
+  "seed": 63706,
+  "cards": {
+    "Dispersal Technician": "Name:Dispersal Technician\nManaCost:4 U\nTypes:Creature Vedalken Artificer\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target artifact to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact | Origin$ Battlefield | Destination$ Hand\nOracle:When Dispersal Technician enters, you may return target artifact to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dispersal Technician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

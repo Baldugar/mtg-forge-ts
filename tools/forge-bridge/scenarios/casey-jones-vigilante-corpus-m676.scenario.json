@@ -1,0 +1,23 @@
+{
+  "id": "casey-jones-vigilante-corpus-m676",
+  "description": "M6 corpus — Casey Jones, Vigilante; in-hand parse.",
+  "seed": 61777,
+  "cards": {
+    "Casey Jones, Vigilante": "Name:Casey Jones, Vigilante\nManaCost:1 R R\nTypes:Legendary Creature Human Berserker\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When NICKNAME enters, draw three cards. At the beginning of your next upkeep, discard three cards at random.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3 | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | RememberObjects$ Targeted | Execute$ TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 3 | Mode$ Random\nOracle:When Casey Jones enters, draw three cards. At the beginning of your next upkeep, discard three cards at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Casey Jones, Vigilante"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

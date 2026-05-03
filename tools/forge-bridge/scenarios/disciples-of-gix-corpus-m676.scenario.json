@@ -1,0 +1,23 @@
+{
+  "id": "disciples-of-gix-corpus-m676",
+  "description": "M6 corpus — Disciples of Gix; in-hand parse.",
+  "seed": 63677,
+  "cards": {
+    "Disciples of Gix": "Name:Disciples of Gix\nManaCost:4 B B\nTypes:Creature Phyrexian Human\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for up to three artifact cards, put them into your graveyard, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Artifact.YouOwn | ChangeNum$ 3\nDeckNeeds:Type$Artifact & Ability$Graveyard\nOracle:When Disciples of Gix enters, search your library for up to three artifact cards, put them into your graveyard, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disciples of Gix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

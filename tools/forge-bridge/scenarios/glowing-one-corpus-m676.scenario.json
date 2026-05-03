@@ -1,0 +1,23 @@
+{
+  "id": "glowing-one-corpus-m676",
+  "description": "M6 corpus — Glowing One; in-hand parse.",
+  "seed": 66352,
+  "cards": {
+    "Glowing One": "Name:Glowing One\nManaCost:2 G\nTypes:Creature Zombie Mutant\nPT:2/2\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigRadiation | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, they get four rad counters.\nSVar:TrigRadiation:DB$ Radiation | Defined$ TriggeredTarget | Num$ 4\nT:Mode$ Milled | ValidPlayer$ Player | ValidCard$ Card.nonLand | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever a player mills a nonland card, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Deathtouch\\nWhenever Glowing One deals combat damage to a player, they get four rad counters.\\nWhenever a player mills a nonland card, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glowing One"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

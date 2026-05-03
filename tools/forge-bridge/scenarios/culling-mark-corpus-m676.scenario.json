@@ -1,0 +1,23 @@
+{
+  "id": "culling-mark-corpus-m676",
+  "description": "M6 corpus — Culling Mark; in-hand parse.",
+  "seed": 62872,
+  "cards": {
+    "Culling Mark": "Name:Culling Mark\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Effect | ValidTgts$ Creature | StaticAbilities$ MustBlock | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | IsCurse$ True | StackDescription$ {c:Targeted} blocks this turn if able. | SpellDescription$ Target creature blocks this turn if able.\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ This creature blocks this turn if able.\nAI:RemoveDeck:All\nOracle:Target creature blocks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Culling Mark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

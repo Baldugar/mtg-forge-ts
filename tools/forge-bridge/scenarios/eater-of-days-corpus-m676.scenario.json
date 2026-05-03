@@ -1,0 +1,23 @@
+{
+  "id": "eater-of-days-corpus-m676",
+  "description": "M6 corpus — Eater of Days; in-hand parse.",
+  "seed": 64275,
+  "cards": {
+    "Eater of Days": "Name:Eater of Days\nManaCost:4\nTypes:Artifact Creature Leviathan\nPT:9/8\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ EatSomeDays | TriggerDescription$ When CARDNAME enters, you skip your next two turns.\nSVar:EatSomeDays:DB$ SkipTurn | Defined$ You | NumTurns$ 2\nOracle:Flying, trample\\nWhen Eater of Days enters, you skip your next two turns.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eater of Days"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

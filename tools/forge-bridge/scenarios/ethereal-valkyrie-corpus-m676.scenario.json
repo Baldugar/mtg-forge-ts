@@ -1,0 +1,23 @@
+{
+  "id": "ethereal-valkyrie-corpus-m676",
+  "description": "M6 corpus — Ethereal Valkyrie; in-hand parse.",
+  "seed": 64781,
+  "cards": {
+    "Ethereal Valkyrie": "Name:Ethereal Valkyrie\nManaCost:4 U W\nTypes:Creature Spirit Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, draw a card, then exile a card from your hand face down. It becomes foretold. Its foretell cost is its mana cost reduced by {2}. (On a later turn, you may cast it for its foretell cost, even if this creature has left the battlefield.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBDraw | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, draw a card, then exile a card from your hand face down. It becomes foretold. Its foretell cost is its mana cost reduced by {2}. (On a later turn, you may cast it for its foretell cost, even if this creature has left the battlefield.)\nSVar:DBDraw:DB$ Draw | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | ExileFaceDown$ True | Mandatory$ True | Foretold$ True | ForetoldCost$ True\nOracle:Flying\\nWhenever Ethereal Valkyrie enters or attacks, draw a card, then exile a card from your hand face down. It becomes foretold. Its foretell cost is its mana cost reduced by {2}. (On a later turn, you may cast it for its foretell cost, even if this creature has left the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ethereal Valkyrie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

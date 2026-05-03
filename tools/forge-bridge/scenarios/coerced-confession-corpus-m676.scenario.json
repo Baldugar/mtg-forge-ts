@@ -1,0 +1,23 @@
+{
+  "id": "coerced-confession-corpus-m676",
+  "description": "M6 corpus — Coerced Confession; in-hand parse.",
+  "seed": 62341,
+  "cards": {
+    "Coerced Confession": "Name:Coerced Confession\nManaCost:4 UB\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 4 | ValidTgts$ Player | RememberMilled$ True | SubAbility$ DBDraw | SpellDescription$ Target player mills four cards. You draw a card for each creature card put into a graveyard this way.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Valid Creature.inZoneGraveyard\nOracle:Target player mills four cards. You draw a card for each creature card put into their graveyard this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coerced Confession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

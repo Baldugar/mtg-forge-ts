@@ -1,0 +1,25 @@
+{
+  "id": "frostwielder-corpus-m676",
+  "description": "M6 corpus — Frostwielder; ETB-on-bf.",
+  "seed": 65803,
+  "cards": {
+    "Frostwielder": "Name:Frostwielder\nManaCost:2 R R\nTypes:Creature Human Shaman\nPT:1/2\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nR:Event$ Moved | ValidLKI$ Creature.DamagedBy | Destination$ Graveyard | ActiveZones$ Battlefield | ReplaceWith$ DBExile | Description$ If a creature dealt damage by CARDNAME this turn would die, exile it instead.\nSVar:DBExile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nSVar:NonCombatPriority:1\nOracle:If a creature dealt damage by Frostwielder this turn would die, exile it instead.\\n{T}: Frostwielder deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Frostwielder"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

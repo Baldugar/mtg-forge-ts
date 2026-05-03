@@ -1,0 +1,23 @@
+{
+  "id": "gatewatch-beacon-corpus-m676",
+  "description": "M6 corpus — Gatewatch Beacon; in-hand parse.",
+  "seed": 65977,
+  "cards": {
+    "Gatewatch Beacon": "Name:Gatewatch Beacon\nManaCost:2 W\nTypes:Artifact\nK:etbCounter:LOYALTY:3\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Planeswalker.YouCtrl | IsPresent$ Card.Self+counters_GE1_LOYALTY | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMoveCounter | TriggerDescription$ Whenever a planeswalker you control enters, if CARDNAME has loyalty counters on it, you may move a loyalty counter from CARDNAME onto that planeswalker.\nSVar:TrigMoveCounter:DB$ MoveCounter | Source$ Self | Defined$ TriggeredCardLKICopy | CounterType$ LOYALTY\nDeckHints:Type$Planeswalker\nDeckHas:Ability$Counters\nOracle:Gatewatch Beacon enters with three loyalty counters on it.\\n{T}: Add {W}.\\nWhenever a planeswalker you control enters, if Gatewatch Beacon has loyalty counters on it, you may move a loyalty counter from Gatewatch Beacon onto that planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gatewatch Beacon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

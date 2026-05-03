@@ -1,0 +1,23 @@
+{
+  "id": "eunuchs-intrigues-corpus-m676",
+  "description": "M6 corpus — Eunuchs' Intrigues; in-hand parse.",
+  "seed": 64799,
+  "cards": {
+    "Eunuchs' Intrigues": "Name:Eunuchs' Intrigues\nManaCost:2 R\nTypes:Sorcery\nA:SP$ ChooseCard | ValidTgts$ Opponent | Mandatory$ True | Choices$ Creature.TargetedPlayerCtrl | SubAbility$ DBPumpAll | AILogic$ BestBlocker | SpellDescription$ Target opponent chooses a creature they control. Other creatures they control can't block this turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.nonChosenCard+TargetedPlayerCtrl | KW$ HIDDEN CARDNAME can't block.\nAI:RemoveDeck:All\nOracle:Target opponent chooses a creature they control. Other creatures they control can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eunuchs' Intrigues"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

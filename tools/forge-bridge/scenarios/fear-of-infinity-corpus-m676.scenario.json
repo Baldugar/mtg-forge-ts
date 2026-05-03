@@ -1,0 +1,23 @@
+{
+  "id": "fear-of-infinity-corpus-m676",
+  "description": "M6 corpus — Fear of Infinity; in-hand parse.",
+  "seed": 65142,
+  "cards": {
+    "Fear of Infinity": "Name:Fear of Infinity\nManaCost:1 U B\nTypes:Enchantment Creature Nightmare\nPT:2/2\nK:Flying\nK:Lifelink\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | OptionalDecider$ You | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, you may return CARDNAME from your graveyard to your hand.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | OptionalDecider$ You | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand\nOracle:Flying, lifelink\\nFear of Infinity can't block.\\nEerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, you may return Fear of Infinity from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear of Infinity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

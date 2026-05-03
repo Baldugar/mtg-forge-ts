@@ -1,0 +1,23 @@
+{
+  "id": "experimental-aviator-corpus-m676",
+  "description": "M6 corpus — Experimental Aviator; in-hand parse.",
+  "seed": 64890,
+  "cards": {
+    "Experimental Aviator": "Name:Experimental Aviator\nManaCost:3 U U\nTypes:Creature Human Artificer\nPT:0/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Flying\\nWhen Experimental Aviator enters, create two 1/1 colorless Thopter artifact creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Experimental Aviator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

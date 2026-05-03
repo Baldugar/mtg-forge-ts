@@ -1,0 +1,25 @@
+{
+  "id": "conspicuous-snoop-corpus-m676",
+  "description": "M6 corpus — Conspicuous Snoop; ETB-on-bf.",
+  "seed": 62503,
+  "cards": {
+    "Conspicuous Snoop": "Name:Conspicuous Snoop\nManaCost:R R\nTypes:Creature Goblin Rogue\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.TopLibrary+YouCtrl | AffectedZone$ Library | MayLookAt$ Player | Description$ Play with the top card of your library revealed.\nS:Mode$ Continuous | Affected$ Goblin.TopLibrary+YouCtrl+nonLand | AffectedZone$ Library | MayPlay$ True | Description$ You may cast Goblin spells from the top of your library.\nAI:RemoveDeck:Random\nS:Mode$ Continuous | TopCardOfLibraryIs$ Goblin | Affected$ Card.Self | EffectZone$ Battlefield | GainsAbilitiesOf$ Goblin.TopLibrary+YouCtrl | GainsAbilitiesOfZones$ Library | Description$ As long as the top card of your library is a Goblin card, CARDNAME has all activated abilities of that card.\nDeckHints:Type$Goblin\nOracle:Play with the top card of your library revealed.\\nYou may cast Goblin spells from the top of your library.\\nAs long as the top card of your library is a Goblin card, Conspicuous Snoop has all activated abilities of that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Conspicuous Snoop"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

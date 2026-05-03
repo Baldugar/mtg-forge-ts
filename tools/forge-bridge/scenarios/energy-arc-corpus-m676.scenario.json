@@ -1,0 +1,23 @@
+{
+  "id": "energy-arc-corpus-m676",
+  "description": "M6 corpus — Energy Arc; in-hand parse.",
+  "seed": 64596,
+  "cards": {
+    "Energy Arc": "Name:Energy Arc\nManaCost:W U\nTypes:Instant\nA:SP$ Untap | TargetMin$ 0 | TargetMax$ MaxTgts | TgtPrompt$ Choose any number of target creatures | ValidTgts$ Creature | SpellDescription$ Untap any number of target creatures. Prevent all combat damage that would be dealt to and dealt by those creatures this turn. | SubAbility$ DBPump\nSVar:DBPump:DB$ Effect | ReplacementEffects$ RPrevent1,RPrevent2 | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield\nSVar:RPrevent1:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by those creatures this turn.\nSVar:RPrevent2:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by those creatures this turn. | Secondary$ True\nSVar:MaxTgts:Count$Valid Creature\nAI:RemoveDeck:All\nOracle:Untap any number of target creatures. Prevent all combat damage that would be dealt to and dealt by those creatures this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Energy Arc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

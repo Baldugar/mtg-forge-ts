@@ -1,0 +1,23 @@
+{
+  "id": "elvish-elegy-corpus-m676",
+  "description": "M6 corpus — Elvish Elegy; in-hand parse.",
+  "seed": 64464,
+  "cards": {
+    "Elvish Elegy": "Name:Elvish Elegy\nManaCost:BG\nTypes:Kindred Sorcery Elf\nA:SP$ Mill | NumCards$ 3 | RememberMilled$ True | SubAbility$ DBPumpAll | SpellDescription$ Mill three cards, then each creature card in your graveyard perpetually gets +1/+1. You may put an Elf or land card from among the milled cards into your hand.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouOwn | PumpZone$ Graveyard | Duration$ Perpetual | NumAtt$ +1 | NumDef$ +1 | SubABility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Elf.IsRemembered,Land.IsRemembered | SelectPrompt$ You may put an Elf or land card from among the milled cards into your hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill\nOracle:Mill three cards, then each creature card in your graveyard perpetually gets +1/+1. You may put an Elf or land card from among the milled cards into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Elegy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ether-well-corpus-m676",
+  "description": "M6 corpus — Ether Well; in-hand parse.",
+  "seed": 64770,
+  "cards": {
+    "Ether Well": "Name:Ether Well\nManaCost:3 U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | IsCurse$ True | SubAbility$ DBDefaultAction | StackDescription$ SpellDescription | SpellDescription$ Put target creature on top of its owner's library. If that creature is red, you may put it on the bottom of its owner's library instead.\nSVar:DBDefaultAction:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBChoose\nSVar:DBChoose:DB$ GenericChoice | Choices$ DBBottomLibChoice,DBTopLibChoice | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:DBTopLibChoice:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Put target creature on top of its owner's library.\nSVar:DBBottomLibChoice:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ If that creature is red, you may put it on the bottom of its owner's library instead.\nSVar:X:Targeted$Valid Creature.Red\nOracle:Put target creature on top of its owner's library. If that creature is red, you may put it on the bottom of its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ether Well"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "change-of-fortune-corpus-m676",
+  "description": "M6 corpus — Change of Fortune; in-hand parse.",
+  "seed": 61969,
+  "cards": {
+    "Change of Fortune": "Name:Change of Fortune\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Discard | Mode$ Hand | Defined$ You | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ Discard your hand, then draw a card for each card you've discarded this turn.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | StackDescription$ None\nSVar:X:PlayerCountPropertyYou$CardsDiscardedThisTurn\nDeckHas:Ability$Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:Discard your hand, then draw a card for each card you've discarded this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Change of Fortune"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

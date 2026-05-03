@@ -1,0 +1,25 @@
+{
+  "id": "containment-priest-corpus-m676",
+  "description": "M6 corpus — Containment Priest; ETB-on-bf.",
+  "seed": 62524,
+  "cards": {
+    "Containment Priest": "Name:Containment Priest\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:2/2\nK:Flash\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Battlefield | ValidCard$ Creature.!token+!wasCast | ReplaceWith$ Exile | Description$ If a nontoken creature would enter and it wasn't cast, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nOracle:Flash\\nIf a nontoken creature would enter and it wasn't cast, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Containment Priest"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "citadel-of-pain-corpus-m676",
+  "description": "M6 corpus — Citadel of Pain; in-hand parse.",
+  "seed": 62166,
+  "cards": {
+    "Citadel of Pain": "Name:Citadel of Pain\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of each player's end step, CARDNAME deals X damage to that player, where X is the number of untapped lands they control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ X\nSVar:X:Count$Valid Land.untapped+ActivePlayerCtrl\nS:Mode$ Continuous | Affected$ Land | AddSVar$ AITap\nSVar:AITap:SVar:AITapDown:True\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's end step, Citadel of Pain deals X damage to that player, where X is the number of untapped lands they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Citadel of Pain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

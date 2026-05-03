@@ -1,0 +1,23 @@
+{
+  "id": "geist-of-regret-corpus-m676",
+  "description": "M6 corpus — Geist of Regret; in-hand parse.",
+  "seed": 66005,
+  "cards": {
+    "Geist of Regret": "Name:Geist of Regret\nManaCost:4 U\nTypes:Creature Spirit\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeInstant | TriggerDescription$ When CARDNAME enters, put a random instant card from your library into your graveyard. Then put a random sorcery card from your library into your graveyard.\nSVar:TrigChangeInstant:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Instant.YouOwn | ChangeNum$ 1 | Hidden$ True | AtRandom$ True | NoShuffle$ True | Mandatory$ True | NoLooking$ True | SubAbility$ DBChangeSorcery\nSVar:DBChangeSorcery:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Sorcery.YouOwn | ChangeNum$ 1 | Hidden$ True | AtRandom$ True | NoShuffle$ True | Mandatory$ True | NoLooking$ True\nT:Mode$ SpellCast | ValidCard$ Instant.wasCastFromYourGraveyard,Sorcery.wasCastFromYourGraveyard | ValidActivatingPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell from your graveyard, copy that spell. You may choose new targets for the copy.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | MayChooseTarget$ True\nAI:RemoveDeck:Random\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Graveyard & Type$Instant|Sorcery\nOracle:Flying\\nWhen Geist of Regret enters, put a random instant card from your library into your graveyard. Then put a random sorcery card from your library into your graveyard.\\nWhenever you cast an instant or sorcery spell from your graveyard, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geist of Regret"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

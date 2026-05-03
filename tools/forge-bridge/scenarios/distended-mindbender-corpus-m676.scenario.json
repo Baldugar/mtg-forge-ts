@@ -1,0 +1,25 @@
+{
+  "id": "distended-mindbender-corpus-m676",
+  "description": "M6 corpus — Distended Mindbender; ETB-on-bf.",
+  "seed": 63733,
+  "cards": {
+    "Distended Mindbender": "Name:Distended Mindbender\nManaCost:8\nTypes:Creature Eldrazi Insect\nPT:5/5\nK:Emerge:5 B B\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When you cast this spell, target opponent reveals their hand. You choose from it a nonland card with mana value 3 or less and a card with mana value 4 or greater. That player discards those cards.\nSVar:TrigReveal:DB$ RevealHand | ValidTgts$ Opponent | RememberRevealed$ True | SubAbility$ DBChoose\nSVar:DBChoose:DB$ ChooseCard | Defined$ You | Choices$ Card.IsRemembered+cmcLE3+nonLand | ChoiceZone$ Hand | Amount$ 1 | Mandatory$ True | ChoiceTitle$ Choose a nonland card with mana value 3 or less | ForgetChosen$ True | SubAbility$ DBChoose2\nSVar:DBChoose2:DB$ ChooseCard | Defined$ You | Choices$ Card.IsRemembered+cmcGE4 | ChoiceZone$ Hand | Amount$ 1 | Mandatory$ True | ChoiceTitle$ Choose a card with mana value 4 or greater | ForgetChosen$ True | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ Defined | DefinedCards$ ValidHand Card.!IsRemembered+OwnedBy Targeted | Defined$ Targeted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Emerge {5}{B}{B} (You may cast this spell by sacrificing a creature and paying the emerge cost reduced by that creature's mana value.)\\nWhen you cast this spell, target opponent reveals their hand. You choose from it a nonland card with mana value 3 or less and a card with mana value 4 or greater. That player discards those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Distended Mindbender"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

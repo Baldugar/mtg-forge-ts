@@ -1,0 +1,23 @@
+{
+  "id": "cynical-loner-corpus-m676",
+  "description": "M6 corpus — Cynical Loner; in-hand parse.",
+  "seed": 62996,
+  "cards": {
+    "Cynical Loner": "Name:Cynical Loner\nTypes:Creature Human Survivor\nManaCost:1 B\nPT:3/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.Glimmer | Description$ CARDNAME can't be blocked by Glimmers.\nT:Mode$ Phase | Phase$ Main | PhaseCount$ 2 | ValidPlayer$ You | PresentDefined$ Self | IsPresent$ Card.tapped | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChangeZone | TriggerDescription$ Survival — At the beginning of your second main phase, if CARDNAME is tapped, you may search your library for a card, put it into your graveyard, then shuffle.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True\nOracle:Cynical Loner can't be blocked by Glimmers.\\nSurvival — At the beginning of your second main phase, if Cynical Loner is tapped, you may search your library for a card, put it into your graveyard, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cynical Loner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gerrard-weatherlight-hero-corpus-m676",
+  "description": "M6 corpus — Gerrard, Weatherlight Hero; in-hand parse.",
+  "seed": 66062,
+  "cards": {
+    "Gerrard, Weatherlight Hero": "Name:Gerrard, Weatherlight Hero\nManaCost:2 R W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, exile it and return to the battlefield all artifact and creature cards in your graveyard that were put there from the battlefield this turn.\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ ValidGraveyard Artifact.YouOwn+ThisTurnEnteredFrom_Battlefield,Creature.YouOwn+ThisTurnEnteredFrom_Battlefield\nOracle:First strike\\nWhen Gerrard, Weatherlight Hero dies, exile it and return to the battlefield all artifact and creature cards in your graveyard that were put there from the battlefield this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gerrard, Weatherlight Hero"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

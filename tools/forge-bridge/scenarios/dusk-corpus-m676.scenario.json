@@ -1,0 +1,23 @@
+{
+  "id": "dusk-corpus-m676",
+  "description": "M6 corpus — Dusk; in-hand parse.",
+  "seed": 64168,
+  "cards": {
+    "Dusk": "Name:Dusk\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature.powerGE3 | SpellDescription$ Destroy all creatures with power 3 or greater.\nSVar:NeedsToPlayVar:Y GTZ\nSVar:Y:Count$Valid Creature.OppCtrl+powerGE3\nSVar:Z:Count$Valid Creature.YouCtrl+powerGE3\nAlternateMode:Split\nOracle:Destroy all creatures with power 3 or greater.\n\nALTERNATE\n\nName:Dawn\nManaCost:3 W W\nTypes:Sorcery\nK:Aftermath\nA:SP$ ChangeZoneAll | ChangeType$ Creature.powerLE2+YouCtrl | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return all creature cards with power 2 or less from your graveyard to your hand.\nSVar:SplitNeedsToPlayVar:ZZ GE1\nSVar:ZZ:Count$ValidGraveyard Creature.YouCtrl+powerLE2\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nReturn all creature cards with power 2 or less from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dusk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

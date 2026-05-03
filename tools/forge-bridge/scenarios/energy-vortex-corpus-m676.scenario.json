@@ -1,0 +1,23 @@
+{
+  "id": "energy-vortex-corpus-m676",
+  "description": "M6 corpus — Energy Vortex; in-hand parse.",
+  "seed": 64601,
+  "cards": {
+    "Energy Vortex": "Name:Energy Vortex\nManaCost:3 U U\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | SpellDescription$ As CARDNAME enters, choose an opponent.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemove | TriggerDescription$ At the beginning of your upkeep, remove all vortex counters from CARDNAME.\nSVar:TrigRemove:DB$ RemoveCounter | CounterType$ VORTEX | CounterNum$ All\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.Chosen | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the chosen player's upkeep, CARDNAME deals 3 damage to that player unless they pay {1} for each vortex counter on CARDNAME.\nSVar:TrigDamage:DB$ DealDamage | Defined$ ChosenPlayer | NumDmg$ 3 | UnlessCost$ Y | UnlessPayer$ ChosenPlayer\nA:AB$ PutCounter | Cost$ X | CounterType$ VORTEX | CounterNum$ X | PlayerTurn$ True | ActivationPhases$ Upkeep | SpellDescription$ Put X vortex counters on CARDNAME. Activate only during your upkeep.\nSVar:X:Count$xPaid\nSVar:Y:Count$CardCounters.VORTEX\nAI:RemoveDeck:All\nOracle:As Energy Vortex enters, choose an opponent.\\nAt the beginning of your upkeep, remove all vortex counters from Energy Vortex.\\nAt the beginning of the chosen player's upkeep, Energy Vortex deals 3 damage to that player unless they pay {1} for each vortex counter on Energy Vortex.\\n{X}: Put X vortex counters on Energy Vortex. Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Energy Vortex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

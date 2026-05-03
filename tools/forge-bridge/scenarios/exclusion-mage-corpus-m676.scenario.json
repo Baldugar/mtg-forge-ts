@@ -1,0 +1,23 @@
+{
+  "id": "exclusion-mage-corpus-m676",
+  "description": "M6 corpus — Exclusion Mage; in-hand parse.",
+  "seed": 64850,
+  "cards": {
+    "Exclusion Mage": "Name:Exclusion Mage\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, return target creature an opponent controls to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Creature.OppCtrl | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select target creature an opponent controls\nOracle:When Exclusion Mage enters, return target creature an opponent controls to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exclusion Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "burn-the-impure-corpus-m676",
+  "description": "M6 corpus — Burn the Impure; in-hand parse.",
+  "seed": 61518,
+  "cards": {
+    "Burn the Impure": "Name:Burn the Impure\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | NumDmg$ 3 | ValidTgts$ Creature | SubAbility$ DBDamage | SpellDescription$ CARDNAME deals 3 damage to target creature. If that creature has infect, CARDNAME deals 3 damage to that creature's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 3 | ConditionDefined$ Targeted | ConditionPresent$ Creature.withInfect\nOracle:Burn the Impure deals 3 damage to target creature. If that creature has infect, Burn the Impure deals 3 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burn the Impure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

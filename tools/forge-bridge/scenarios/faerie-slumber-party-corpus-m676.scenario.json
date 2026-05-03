@@ -1,0 +1,23 @@
+{
+  "id": "faerie-slumber-party-corpus-m676",
+  "description": "M6 corpus — Faerie Slumber Party; in-hand parse.",
+  "seed": 64990,
+  "cards": {
+    "Faerie Slumber Party": "Name:Faerie Slumber Party\nManaCost:4 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Creature | Origin$ Battlefield | Destination$ Hand | RememberLKI$ True | SubAbility$ DBToken | SpellDescription$ Return all creatures to their owners' hands.\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ u_1_1_faerie_flying_blockflying | TokenOwner$ You | SubAbility$ DBCleanup | SpellDescription$ For each opponent who controlled a creature returned this way, you create two 1/1 blue Faerie creature tokens with flying and \"This creature can block only creatures with flying.\"\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:SVar$X/Times.2\nSVar:X:PlayerCountRememberedController$HasPropertyOpponent\nDeckHas:Ability$Token & Type$Faerie\nDeckHints:Type$Faerie\nOracle:Return all creatures to their owners' hands.\\nFor each opponent who controlled a creature returned this way, you create two 1/1 blue Faerie creature tokens with flying and \"This creature can block only creatures with flying.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Slumber Party"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

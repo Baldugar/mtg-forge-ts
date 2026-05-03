@@ -1,0 +1,23 @@
+{
+  "id": "glorious-protector-corpus-m676",
+  "description": "M6 corpus — Glorious Protector; in-hand parse.",
+  "seed": 66343,
+  "cards": {
+    "Glorious Protector": "Name:Glorious Protector\nManaCost:2 W W\nTypes:Creature Angel Cleric\nPT:3/4\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, you may exile any number of other non-Angel creatures you control until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Hidden$ True | ChangeType$ Creature.nonAngel+YouCtrl | ChangeNum$ MaxTgts | SelectPrompt$ Choose any number of non-Angel creatures you control | Duration$ UntilHostLeavesPlay\nSVar:MaxTgts:Count$Valid Creature.nonAngel+YouCtrl\nAI:RemoveDeck:Random\nK:Foretell:2 W\nOracle:Flash\\nFlying\\nWhen Glorious Protector enters, you may exile any number of non-Angel creatures you control until Glorious Protector leaves the battlefield.\\nForetell {2}{W}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glorious Protector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

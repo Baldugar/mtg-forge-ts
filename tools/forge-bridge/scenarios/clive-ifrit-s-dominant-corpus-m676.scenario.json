@@ -1,0 +1,23 @@
+{
+  "id": "clive-ifrit-s-dominant-corpus-m676",
+  "description": "M6 corpus — Clive, Ifrit's Dominant; in-hand parse.",
+  "seed": 62247,
+  "cards": {
+    "Clive, Ifrit's Dominant": "Name:Clive, Ifrit's Dominant\nManaCost:4 R R\nTypes:Legendary Creature Human Noble Warrior\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | OptionalDecider$ You | TriggerDescription$ When NICKNAME enters, you may discard your hand, then draw cards equal to your devotion to red. (Each {R} in the mana costs of permanents you control counts toward your devotion to red.)\nSVar:TrigDiscard:DB$ Discard | Mode$ Hand | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ You\nSVar:X:Count$Devotion.Red\nA:AB$ ChangeZone | Cost$ 4 R R T | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile NICKNAME, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | ForgetOtherRemembered$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Discard\nAlternateMode:DoubleFaced\nOracle:When Clive enters, you may discard your hand, then draw cards equal to your devotion to red. (Each {R} in the mana costs of permanents you control counts toward your devotion to red.)\\n{4}{R}{R}, {T}: Exile Clive, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\n\nALTERNATE\n\nName:Ifrit, Warden of Inferno\nManaCost:no cost\nColors:red\nTypes:Legendary Enchantment Creature Saga Demon\nPT:9/9\nK:Chapter:3:DBFight,DBMana,DBMana\nSVar:DBFight:DB$ Fight | Defined$ Self | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one other target creature | SpellDescription$ Lunge — NICKNAME fights up to one other target creature.\nSVar:DBMana:DB$ Mana | Produced$ R | Amount$ 4 | SubAbility$ DBExileSelf | SpellDescription$ Brimstone — Add {R}{R}{R}{R}. If NICKNAME has three or more lore counters on it, exile it, then return it to the battlefield (front face up.)\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE3 | SubAbility$ DBReturnSelf | RememberChanged$ True\nSVar:DBReturnSelf:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Count$CardCounters.LORE\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Lunge — Ifrit fights up to one other target creature.\\nII, III — Brimstone — Add {R}{R}{R}{R}. If Ifrit has three or more lore counters on it, exile it, then return it to the battlefield (front face up.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clive, Ifrit's Dominant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

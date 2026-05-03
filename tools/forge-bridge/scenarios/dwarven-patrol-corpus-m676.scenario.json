@@ -1,0 +1,25 @@
+{
+  "id": "dwarven-patrol-corpus-m676",
+  "description": "M6 corpus — Dwarven Patrol; ETB-on-bf.",
+  "seed": 64212,
+  "cards": {
+    "Dwarven Patrol": "Name:Dwarven Patrol\nManaCost:2 R\nTypes:Creature Dwarf\nPT:4/2\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ SpellCast | ValidCard$ Card.nonRed | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a nonred spell, untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:Random\nOracle:This creature doesn't untap during your untap step.\\nWhenever you cast a nonred spell, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dwarven Patrol"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

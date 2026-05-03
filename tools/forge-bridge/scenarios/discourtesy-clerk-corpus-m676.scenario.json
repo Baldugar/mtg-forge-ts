@@ -1,0 +1,23 @@
+{
+  "id": "discourtesy-clerk-corpus-m676",
+  "description": "M6 corpus — Discourtesy Clerk; in-hand parse.",
+  "seed": 63682,
+  "cards": {
+    "Discourtesy Clerk": "Name:Discourtesy Clerk\nManaCost:3 B\nTypes:Creature Vampire Employee\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigOpenAttraction | TriggerDescription$ When CARDNAME enters the battlefield, open an Attraction.\nSVar:TrigOpenAttraction:DB$ OpenAttraction\nSVar:X:Count$Valid Attraction.YouCtrl\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if you control three or more Attractions, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:When Discourtesy Clerk enters the battlefield, open an Attraction. (Put the top card of your Attraction deck onto the battlefield.)\\nAt the beginning of your end step, if you control three or more Attractions, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discourtesy Clerk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

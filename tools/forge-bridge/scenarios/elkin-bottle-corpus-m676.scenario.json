@@ -1,0 +1,25 @@
+{
+  "id": "elkin-bottle-corpus-m676",
+  "description": "M6 corpus — Elkin Bottle; ETB-on-bf.",
+  "seed": 64435,
+  "cards": {
+    "Elkin Bottle": "Name:Elkin Bottle\nManaCost:3\nTypes:Artifact\nA:AB$ Dig | Cost$ 3 T | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | AILogic$ ExileAndPlayUntilEOT | SpellDescription$ Exile the top card of your library. Until the beginning of your next upkeep, you may play that card.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile | Duration$ UntilYourNextUpkeep\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{3}, {T}: Exile the top card of your library. Until the beginning of your next upkeep, you may play that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Elkin Bottle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

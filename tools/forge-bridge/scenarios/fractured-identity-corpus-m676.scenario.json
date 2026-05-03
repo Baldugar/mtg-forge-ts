@@ -1,0 +1,23 @@
+{
+  "id": "fractured-identity-corpus-m676",
+  "description": "M6 corpus — Fractured Identity; in-hand parse.",
+  "seed": 65708,
+  "cards": {
+    "Fractured Identity": "Name:Fractured Identity\nManaCost:3 W U\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Exile | RememberLKI$ True | SubAbility$ DBClone | SpellDescription$ Exile target nonland permanent. Each player other than its controller creates a token that's a copy of it.\nSVar:DBClone:DB$ CopyPermanent | Defined$ Remembered | Controller$ NonRememberedController | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target nonland permanent. Each player other than its controller creates a token that's a copy of it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fractured Identity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

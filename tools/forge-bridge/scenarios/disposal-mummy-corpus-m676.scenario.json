@@ -1,0 +1,23 @@
+{
+  "id": "disposal-mummy-corpus-m676",
+  "description": "M6 corpus — Disposal Mummy; in-hand parse.",
+  "seed": 63714,
+  "cards": {
+    "Disposal Mummy": "Name:Disposal Mummy\nManaCost:2 W\nTypes:Creature Zombie Jackal\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target card from an opponent's graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in an opponent's graveyard | ValidTgts$ Card.OppOwn\nOracle:When Disposal Mummy enters, exile target card from an opponent's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disposal Mummy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

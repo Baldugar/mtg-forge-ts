@@ -1,0 +1,23 @@
+{
+  "id": "dire-fleet-ravager-corpus-m676",
+  "description": "M6 corpus — Dire Fleet Ravager; in-hand parse.",
+  "seed": 63652,
+  "cards": {
+    "Dire Fleet Ravager": "Name:Dire Fleet Ravager\nManaCost:3 B B\nTypes:Creature Orc Pirate Wizard\nPT:4/4\nK:Menace\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, each player loses a third of their life, rounded up.\nSVar:TrigLoseLife:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ CntLife | Defined$ Player.IsRemembered\nSVar:CntLife:PlayerCountRemembered$LifeTotal/ThirdUp\nSVar:NeedsToPlayVar:MyLife GT1\nSVar:MyLife:Count$YourLifeTotal\nOracle:Menace, deathtouch\\nWhen Dire Fleet Ravager enters, each player loses a third of their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dire Fleet Ravager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

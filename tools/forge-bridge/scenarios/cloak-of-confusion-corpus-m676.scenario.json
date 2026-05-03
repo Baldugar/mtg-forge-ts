@@ -1,0 +1,23 @@
+{
+  "id": "cloak-of-confusion-corpus-m676",
+  "description": "M6 corpus — Cloak of Confusion; in-hand parse.",
+  "seed": 62250,
+  "cards": {
+    "Cloak of Confusion": "Name:Cloak of Confusion\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ AttackerUnblocked | ValidCard$ Creature.EnchantedBy | Execute$ DBNoCombatDamage | OptionalDecider$ You | TriggerDescription$ Whenever enchanted creature attacks and isn't blocked, you may have it assign no combat damage this turn. If you do, defending player discards a card at random.\nSVar:DBNoCombatDamage:DB$ Effect | RememberObjects$ TriggeredAttackerLKICopy | StaticAbilities$ SNoCombatDamage | ForgetOnMoved$ Battlefield | SubAbility$ CloakofConfusionDiscard\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.IsRemembered | Description$ Remembered creature assigns no combat damage this turn.\nSVar:CloakofConfusionDiscard:DB$ Discard | Defined$ TriggeredDefendingPlayer | Mode$ Random | NumCards$ 1\nAI:RemoveDeck:All\nOracle:Enchant creature you control\\nWhenever enchanted creature attacks and isn't blocked, you may have it assign no combat damage this turn. If you do, defending player discards a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloak of Confusion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

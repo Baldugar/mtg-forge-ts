@@ -1,0 +1,23 @@
+{
+  "id": "depthshaker-titan-corpus-m676",
+  "description": "M6 corpus — Depthshaker Titan; in-hand parse.",
+  "seed": 63477,
+  "cards": {
+    "Depthshaker Titan": "Name:Depthshaker Titan\nManaCost:5 R R\nTypes:Artifact Creature Robot\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBAnimate | TriggerDescription$ When this creature enters, any number of target noncreature artifacts you control become 3/3 artifact creatures. Sacrifice them at the beginning of the next end step.\nSVar:DBAnimate:DB$ Animate | ValidTgts$ Artifact.nonCreature+YouCtrl | TgtPrompt$ Select any number of target noncreature artifacts you control | TargetMin$ 0 | TargetMax$ MaxTargets | Power$ 3 | Toughness$ 3 | Types$ Creature | AtEOT$ Sacrifice\nS:Mode$ Continuous | Affected$ Creature.Artifact+YouCtrl | AddKeyword$ Melee & Trample & Haste | Description$ Each artifact creature you control has melee, trample, and haste. (Whenever a creature with melee attacks, it gets +1/+1 until end of turn for each opponent you attacked this combat.)\nSVar:MaxTargets:Count$Valid Artifact.nonCreature+YouCtrl\nDeckHints:Type$Artifact\nOracle:When this creature enters, any number of target noncreature artifacts you control become 3/3 artifact creatures. Sacrifice them at the beginning of the next end step.\\nEach artifact creature you control has melee, trample, and haste. (Whenever a creature with melee attacks, it gets +1/+1 until end of turn for each opponent you attacked this combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Depthshaker Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

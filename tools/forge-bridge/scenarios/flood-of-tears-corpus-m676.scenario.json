@@ -1,0 +1,23 @@
+{
+  "id": "flood-of-tears-corpus-m676",
+  "description": "M6 corpus — Flood of Tears; in-hand parse.",
+  "seed": 65524,
+  "cards": {
+    "Flood of Tears": "Name:Flood of Tears\nManaCost:4 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Permanent.nonLand | Origin$ Battlefield | Destination$ Hand | RememberChanged$ True | SubAbility$ DBChangeZone | SpellDescription$ Return all nonland permanents to their owners' hands. If you return four or more nontoken permanents you control this way, you may put a permanent card from your hand onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Permanent.YouCtrl | Optional$ True | ChangeNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Permanent.!token+YouCtrl | ConditionCompare$ GE4 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Return all nonland permanents to their owners' hands. If you return four or more nontoken permanents you control this way, you may put a permanent card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flood of Tears"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

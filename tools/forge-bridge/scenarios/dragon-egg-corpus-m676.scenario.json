@@ -1,0 +1,23 @@
+{
+  "id": "dragon-egg-corpus-m676",
+  "description": "M6 corpus — Dragon Egg; in-hand parse.",
+  "seed": 63892,
+  "cards": {
+    "Dragon Egg": "Name:Dragon Egg\nManaCost:2 R\nTypes:Creature Dragon Egg\nPT:0/2\nK:Defender\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 2/2 red Dragon creature token with flying. It has \"{R}: This creature gets +1/+0 until end of turn\".\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ r_2_2_dragon_flying_firebreathing\nSVar:SacMe:4\nDeckHas:Ability$Token\nOracle:Defender\\nWhen Dragon Egg dies, create a 2/2 red Dragon creature token with flying and \"{R}: This creature gets +1/+0 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Egg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

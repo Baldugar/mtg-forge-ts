@@ -1,0 +1,25 @@
+{
+  "id": "expedition-lookout-corpus-m676",
+  "description": "M6 corpus — Expedition Lookout; ETB-on-bf.",
+  "seed": 64881,
+  "cards": {
+    "Expedition Lookout": "Name:Expedition Lookout\nManaCost:1 U\nTypes:Creature Merfolk Rogue\nPT:2/3\nK:Defender\nS:Mode$ CanAttackDefender | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ GE8 | Description$ As long as an opponent has eight or more cards in their graveyard, CARDNAME can attack as though it didn't have defender and it can't be blocked.\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | CheckSVar$ X | SVarCompare$ GE8\nSVar:X:PlayerCountOpponents$HighestCardsInGraveyard\nDeckHints:Ability$Graveyard|Mill\nOracle:Defender\\nAs long as an opponent has eight or more cards in their graveyard, Expedition Lookout can attack as though it didn't have defender and it can't be blocked.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Expedition Lookout"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

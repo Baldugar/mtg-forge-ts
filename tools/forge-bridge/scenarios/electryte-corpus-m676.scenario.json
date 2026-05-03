@@ -1,0 +1,23 @@
+{
+  "id": "electryte-corpus-m676",
+  "description": "M6 corpus — Electryte; in-hand parse.",
+  "seed": 64391,
+  "cards": {
+    "Electryte": "Name:Electryte\nManaCost:3 R R\nTypes:Creature Trilobite Beast\nPT:3/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player.TriggeredDefendingPlayer | CombatDamage$ True | Execute$ TrigDmgBlockers | TriggerDescription$ Whenever CARDNAME deals combat damage to defending player, it deals damage equal to its power to each blocking creature.\nSVar:TrigDmgBlockers:DB$ DamageAll | ValidCards$ Creature.blocking | NumDmg$ X | ValidDescription$ each blocking creature\nSVar:X:Count$CardPower\nSVar:MustBeBlocked:True\nOracle:Whenever Electryte deals combat damage to defending player, it deals damage equal to its power to each blocking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electryte"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

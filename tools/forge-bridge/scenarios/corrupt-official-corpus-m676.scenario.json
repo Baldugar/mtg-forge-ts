@@ -1,0 +1,25 @@
+{
+  "id": "corrupt-official-corpus-m676",
+  "description": "M6 corpus — Corrupt Official; ETB-on-bf.",
+  "seed": 62607,
+  "cards": {
+    "Corrupt Official": "Name:Corrupt Official\nManaCost:4 B\nTypes:Creature Human Minion\nPT:3/1\nA:AB$ Regenerate | Cost$ 2 B | SpellDescription$ Regenerate CARDNAME.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME becomes blocked, defending player discards a card at random.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredDefendingPlayer | NumCards$ 1 | Mode$ Random\nOracle:{2}{B}: Regenerate Corrupt Official.\\nWhenever Corrupt Official becomes blocked, defending player discards a card at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Corrupt Official"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

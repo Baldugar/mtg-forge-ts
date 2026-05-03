@@ -1,0 +1,23 @@
+{
+  "id": "gatekeeper-of-malakir-corpus-m676",
+  "description": "M6 corpus — Gatekeeper of Malakir; in-hand parse.",
+  "seed": 65975,
+  "cards": {
+    "Gatekeeper of Malakir": "Name:Gatekeeper of Malakir\nManaCost:B B\nTypes:Creature Vampire Warrior\nPT:2/2\nK:Kicker:B\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, target player sacrifices a creature.\nSVar:TrigKicker:DB$ Sacrifice | ValidTgts$ Player | SacValid$ Creature\nSVar:NeedsToPlayKicked:Creature.YouDontCtrl\nSVar:PlayMain1:TRUE\nOracle:Kicker {B} (You may pay an additional {B} as you cast this spell.)\\nWhen Gatekeeper of Malakir enters, if it was kicked, target player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gatekeeper of Malakir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

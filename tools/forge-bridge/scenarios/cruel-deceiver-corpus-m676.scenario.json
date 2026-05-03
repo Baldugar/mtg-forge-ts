@@ -1,0 +1,25 @@
+{
+  "id": "cruel-deceiver-corpus-m676",
+  "description": "M6 corpus — Cruel Deceiver; ETB-on-bf.",
+  "seed": 62796,
+  "cards": {
+    "Cruel Deceiver": "Name:Cruel Deceiver\nManaCost:1 B\nTypes:Creature Spirit\nPT:2/1\nA:AB$ PeekAndReveal | Cost$ 1 | NoReveal$ True | SpellDescription$ Look at the top card of your library.\nA:AB$ PeekAndReveal | Cost$ 2 | ActivationLimit$ 1 | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBAnimate | SpellDescription$ Reveal the top card of your library.\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Triggers$ TrigDamage | ConditionDefined$ Remembered | ConditionPresent$ Card.Land | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ If it's a land card, CARDNAME gains \"Whenever CARDNAME deals damage to a creature, destroy that creature\" until end of turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | StackDescription$ None | SpellDescription$ Activate only once each turn.\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever CARDNAME deals damage to a creature, destroy that creature.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nAI:RemoveDeck:All\nOracle:{1}: Look at the top card of your library.\\n{2}: Reveal the top card of your library. If it's a land card, Cruel Deceiver gains \"Whenever Cruel Deceiver deals damage to a creature, destroy that creature\" until end of turn. Activate only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cruel Deceiver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

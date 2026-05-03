@@ -1,0 +1,23 @@
+{
+  "id": "drowner-of-truth-corpus-m676",
+  "description": "M6 corpus — Drowner of Truth; in-hand parse.",
+  "seed": 64090,
+  "cards": {
+    "Drowner of Truth": "Name:Drowner of Truth\nManaCost:5 GU GU\nTypes:Creature Eldrazi\nPT:7/6\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Card.Self | CheckSVar$ CastSA>Count$Adamant_1.Colorless.1.0 | Execute$ TrigToken | TriggerDescription$ When you cast this spell, if {C} was spent to cast it, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You\nDeckHas:Ability$Token|Sacrifice & Type$Spawn\nDeckHints:Ability$Mana.Colorless\nAlternateMode:Modal\nOracle:Devoid (This card has no color.)\\nWhen you cast this spell, if {C} was spent to cast it, create two 0/1 colorless Eldrazi Spawn creature tokens with \"Sacrifice this creature: Add {C}.\"\n\nALTERNATE\n\nName:Drowned Jungle\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SpellDescription$ Add {G} or {U}.\nOracle:Drowned Jungle enters tapped.\\n{T}: Add {G} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drowner of Truth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

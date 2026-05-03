@@ -1,0 +1,23 @@
+{
+  "id": "crafty-cutpurse-corpus-m676",
+  "description": "M6 corpus — Crafty Cutpurse; in-hand parse.",
+  "seed": 62687,
+  "cards": {
+    "Crafty Cutpurse": "Name:Crafty Cutpurse\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, each token that would be created under an opponent's control this turn is created under your control instead.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ OppCreatEnters\nSVar:OppCreatEnters:Event$ CreateToken | ActiveZones$ Command | ValidToken$ Card.OppCtrl | ReplaceWith$ ETBYourCtrl | Layer$ Control | Description$ Each token that would be created under an opponent's control this turn is created under your control instead.\nSVar:ETBYourCtrl:DB$ ReplaceToken | Type$ ReplaceController | NewController$ You\nOracle:Flash\\nWhen Crafty Cutpurse enters, each token that would be created under an opponent's control this turn is created under your control instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crafty Cutpurse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

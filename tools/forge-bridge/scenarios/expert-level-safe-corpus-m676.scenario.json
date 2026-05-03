@@ -1,0 +1,23 @@
+{
+  "id": "expert-level-safe-corpus-m676",
+  "description": "M6 corpus — Expert-Level Safe; in-hand parse.",
+  "seed": 64893,
+  "cards": {
+    "Expert-Level Safe": "Name:Expert-Level Safe\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile the top two cards of your library face down.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | NoReveal$ True\nA:AB$ Pump | Cost$ 1 T | ValidTgts$ Opponent | SubAbility$ ChooseNumber | StackDescription$ SpellDescription | SpellDescription$ You and target opponent each secretly choose 1, 2, or 3. Then those choices are revealed. If they match, sacrifice CARDNAME and put all cards exiled with it into their owners' hands. Otherwise, exile the top card of your library face down.\nSVar:ChooseNumber:DB$ ChooseNumber | Defined$ TargetedAndYou | Min$ 1 | Max$ 3 | AILogic$ Random | MatchedAbility$ DBSacrifice | UnmatchedAbility$ DBFillSafe | Secretly$ True\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ You | ValidCard$ Card.Self | SubAbility$ DBOpenSafe\nSVar:DBOpenSafe:DB$ ChangeZoneAll | ChangeNum$ All | Origin$ Exile | Destination$ Hand | ChangeType$ Card.ExiledWithSource\nSVar:DBFillSafe:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | NoReveal$ True\nOracle:When Expert-Level Safe enters, exile the top two cards of your library face down.\\n{1}, {T}: You and target opponent each secretly choose 1, 2, or 3. Then those choices are revealed. If they match, sacrifice Expert-Level Safe and put all cards exiled with it into their owners' hands. Otherwise, exile the top card of your library face down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expert-Level Safe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

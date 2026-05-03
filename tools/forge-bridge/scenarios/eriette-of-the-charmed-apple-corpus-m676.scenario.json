@@ -1,0 +1,23 @@
+{
+  "id": "eriette-of-the-charmed-apple-corpus-m676",
+  "description": "M6 corpus — Eriette of the Charmed Apple; in-hand parse.",
+  "seed": 64694,
+  "cards": {
+    "Eriette of the Charmed Apple": "Name:Eriette of the Charmed Apple\nManaCost:1 W B\nTypes:Legendary Creature Human Warlock\nPT:2/4\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy Aura.YouCtrl | Target$ You,Planeswalker.YouCtrl | Description$ Each creature that's enchanted by an Aura you control can't attack you or planeswalkers you control.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of your end step, each opponent loses X life and you gain X life, where X is the number of Auras you control.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Aura.YouCtrl\nDeckHas:Ability$LifeGain\nDeckNeeds:Type$Aura\nOracle:Each creature that's enchanted by an Aura you control can't attack you or planeswalkers you control.\\nAt the beginning of your end step, each opponent loses X life and you gain X life, where X is the number of Auras you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eriette of the Charmed Apple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

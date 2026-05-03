@@ -1,0 +1,23 @@
+{
+  "id": "fell-beast-s-shriek-corpus-m676",
+  "description": "M6 corpus — Fell Beast's Shriek; in-hand parse.",
+  "seed": 65190,
+  "cards": {
+    "Fell Beast's Shriek": "Name:Fell Beast's Shriek\nManaCost:U R\nTypes:Sorcery\nK:Splice:Instant,Sorcery:2 U R\nA:SP$ ChooseCard | Defined$ Opponent | Amount$ 1 | Choices$ Creature | ControlledByPlayer$ Chooser | Mandatory$ True | SubAbility$ DBTapAll | SpellDescription$ Each opponent chooses a creature they control. Tap and goad the chosen creatures. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.ChosenCard | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ ChosenCard\nDeckHints:Type$Instant|Sorcery\nOracle:Each opponent chooses a creature they control. Tap and goad the chosen creatures. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\\nSplice onto instant or sorcery {2}{U}{R} (As you cast an instant or sorcery spell, you may reveal this card from your hand and pay its splice cost. If you do, add this card's effects to that spell.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell Beast's Shriek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

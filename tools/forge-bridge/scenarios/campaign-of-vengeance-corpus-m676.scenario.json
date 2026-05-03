@@ -1,0 +1,23 @@
+{
+  "id": "campaign-of-vengeance-corpus-m676",
+  "description": "M6 corpus — Campaign of Vengeance; in-hand parse.",
+  "seed": 61651,
+  "cards": {
+    "Campaign of Vengeance": "Name:Campaign of Vengeance\nManaCost:3 W B\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature you control attacks, defending player loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 1\nSVar:PlayMain1:TRUE\nOracle:Whenever a creature you control attacks, defending player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Campaign of Vengeance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

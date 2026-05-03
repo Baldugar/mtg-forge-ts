@@ -1,0 +1,23 @@
+{
+  "id": "depose-corpus-m676",
+  "description": "M6 corpus — Depose; in-hand parse.",
+  "seed": 63473,
+  "cards": {
+    "Depose": "Name:Depose\nManaCost:1 WU\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Creature | SubAbility$ DBDraw | SpellDescription$ Tap target creature. Draw a card.\nSVar:DBDraw:DB$ Draw\nAlternateMode:Split\nOracle:Tap target creature.\\nDraw a card.\n\nALTERNATE\n\nName:Deploy\nManaCost:2 W U\nTypes:Instant\nA:SP$ Token | TokenAmount$ 2 | TokenOwner$ You | TokenScript$ c_1_1_a_thopter_flying | SubAbility$ DBGainLife | SpellDescription$ Create two 1/1 colorless Thopter artifact creature tokens with flying, then you gain 1 life for each creature you control.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl\nDeckHas:Ability$Token\nOracle:Create two 1/1 colorless Thopter artifact creature tokens with flying, then you gain 1 life for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Depose"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

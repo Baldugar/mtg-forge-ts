@@ -1,0 +1,23 @@
+{
+  "id": "filigree-angel-corpus-m676",
+  "description": "M6 corpus — Filigree Angel; in-hand parse.",
+  "seed": 65297,
+  "cards": {
+    "Filigree Angel": "Name:Filigree Angel\nManaCost:5 W W U\nTypes:Artifact Creature Angel\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life for each artifact you control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Artifact.YouCtrl/Times.3\nOracle:Flying\\nWhen Filigree Angel enters, you gain 3 life for each artifact you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Filigree Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "celes-rune-knight-corpus-m676",
+  "description": "M6 corpus — Celes, Rune Knight; in-hand parse.",
+  "seed": 61852,
+  "cards": {
+    "Celes, Rune Knight": "Name:Celes, Rune Knight\nManaCost:1 R W B\nTypes:Legendary Creature Human Wizard Knight\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ When NICKNAME enters, discard any number of cards, then draw that many cards plus one.\nSVar:TrigDiscard:DB$ Discard | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ Remembered$Amount/Plus.1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.Other+YouCtrl+wasCastFromGraveyard,Creature.Other+YouCtrl+ThisTurnEnteredFrom_Graveyard | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigPutCounters | TriggerDescription$ Whenever one or more other creatures you control enter, if one or more of them entered from a graveyard or was cast from a graveyard, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nOracle:When Celes enters, discard any number of cards, then draw that many cards plus one.\\nWhenever one or more other creatures you control enter, if one or more of them entered from a graveyard or was cast from a graveyard, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Celes, Rune Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

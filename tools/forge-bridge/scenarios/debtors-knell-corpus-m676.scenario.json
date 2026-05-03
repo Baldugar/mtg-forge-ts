@@ -1,0 +1,23 @@
+{
+  "id": "debtors-knell-corpus-m676",
+  "description": "M6 corpus — Debtors' Knell; in-hand parse.",
+  "seed": 63301,
+  "cards": {
+    "Debtors' Knell": "Name:Debtors' Knell\nManaCost:4 WB WB WB\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, put target creature card from a graveyard onto the battlefield under your control.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ChangeNum$ 1 | Mandatory$ True | TgtPrompt$ Choose target creature card in a graveyard | ValidTgts$ Creature\nOracle:({W/B} can be paid with either {W} or {B}.)\\nAt the beginning of your upkeep, put target creature card from a graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Debtors' Knell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

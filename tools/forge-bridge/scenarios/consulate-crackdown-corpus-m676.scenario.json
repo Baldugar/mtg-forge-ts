@@ -1,0 +1,23 @@
+{
+  "id": "consulate-crackdown-corpus-m676",
+  "description": "M6 corpus — Consulate Crackdown; in-hand parse.",
+  "seed": 62507,
+  "cards": {
+    "Consulate Crackdown": "Name:Consulate Crackdown\nManaCost:3 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile all artifacts your opponents control until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Artifact.OppCtrl | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Artifact.OppCtrl\nAI:RemoveDeck:Random\nOracle:When Consulate Crackdown enters, exile all artifacts your opponents control until Consulate Crackdown leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consulate Crackdown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

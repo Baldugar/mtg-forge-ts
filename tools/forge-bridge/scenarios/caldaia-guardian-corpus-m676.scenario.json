@@ -1,0 +1,23 @@
+{
+  "id": "caldaia-guardian-corpus-m676",
+  "description": "M6 corpus — Caldaia Guardian; in-hand parse.",
+  "seed": 61606,
+  "cards": {
+    "Caldaia Guardian": "Name:Caldaia Guardian\nManaCost:3 G\nTypes:Creature Human Soldier\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+cmcGE4+YouCtrl | Execute$ TrigToken | TriggerDescription$ When CARDNAME or another creature you control with mana value 4 or greater dies, create two 1/1 green and white Citizen creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ gw_1_1_citizen\nK:Blitz:2 G\nDeckHas:Ability$Token|Sacrifice & Type$Citizen\nOracle:Whenever Caldaia Guardian or another creature you control with mana value 4 or greater dies, create two 1/1 green and white Citizen creature tokens.\\nBlitz {2}{G} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caldaia Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

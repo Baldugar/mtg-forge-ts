@@ -1,0 +1,23 @@
+{
+  "id": "deep-slumber-titan-corpus-m676",
+  "description": "M6 corpus — Deep-Slumber Titan; in-hand parse.",
+  "seed": 63334,
+  "cards": {
+    "Deep-Slumber Titan": "Name:Deep-Slumber Titan\nManaCost:2 R R\nTypes:Creature Giant Warrior\nPT:7/7\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This creature enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Whenever this creature is dealt damage, untap it.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:Random\nOracle:This creature enters tapped.\\nThis creature doesn't untap during your untap step.\\nWhenever this creature is dealt damage, untap it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deep-Slumber Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

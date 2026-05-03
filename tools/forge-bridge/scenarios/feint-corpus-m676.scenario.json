@@ -1,0 +1,23 @@
+{
+  "id": "feint-corpus-m676",
+  "description": "M6 corpus — Feint; in-hand parse.",
+  "seed": 65177,
+  "cards": {
+    "Feint": "Name:Feint\nManaCost:R\nTypes:Instant\nA:SP$ TapAll | ValidCards$ Creature.blockingRemembered | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | RememberTargets$ True | SubAbility$ FeintPump | SpellDescription$ Tap all creatures blocking target attacking creature. Prevent all combat damage that would be dealt this turn by that creature and each creature blocking it.\nSVar:FeintPump:DB$ Pump | Defined$ Remembered | KW$ Prevent all combat damage that would be dealt by CARDNAME. | SubAbility$ FeintPumpAll\nSVar:FeintPumpAll:DB$ Pump | Defined$ Valid Creature.blockingRemembered | KW$ Prevent all combat damage that would be dealt by CARDNAME. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Tap all creatures blocking target attacking creature. Prevent all combat damage that would be dealt this turn by that creature and each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feint"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

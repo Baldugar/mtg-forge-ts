@@ -1,0 +1,23 @@
+{
+  "id": "demonic-ruckus-corpus-m676",
+  "description": "M6 corpus — Demonic Ruckus; in-hand parse.",
+  "seed": 63442,
+  "cards": {
+    "Demonic Ruckus": "Name:Demonic Ruckus\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Menace & Trample | Description$ Enchanted creature gets +1/+1 and has menace and trample.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw\nK:Plot:R\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 and has menace and trample.\\nWhen Demonic Ruckus is put into a graveyard from the battlefield, draw a card.\\nPlot {R} (You may pay {R} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Ruckus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

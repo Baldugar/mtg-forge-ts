@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-oblivion-corpus-m676",
+  "description": "M6 corpus — Curse of Oblivion; in-hand parse.",
+  "seed": 62931,
+  "cards": {
+    "Curse of Oblivion": "Name:Curse of Oblivion\nManaCost:3 B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ At the beginning of enchanted player's upkeep, that player exiles two cards from their graveyard.\nSVar:TrigExile:DB$ ChangeZone | DefinedPlayer$ Player.EnchantedBy | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | ChangeNum$ 2 | Hidden$ True | Mandatory$ True\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, that player exiles two cards from their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Oblivion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

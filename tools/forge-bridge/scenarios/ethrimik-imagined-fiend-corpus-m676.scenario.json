@@ -1,0 +1,23 @@
+{
+  "id": "ethrimik-imagined-fiend-corpus-m676",
+  "description": "M6 corpus — Ethrimik, Imagined Fiend; in-hand parse.",
+  "seed": 64792,
+  "cards": {
+    "Ethrimik, Imagined Fiend": "Name:Ethrimik, Imagined Fiend\nManaCost:1 W W\nTypes:Legendary Creature Illusion Beast\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Origin$ Any | Execute$ TrigManifest | TriggerDescription$ When NICKNAME enters, manifest dread.\nSVar:TrigManifest:DB$ ManifestDread\nS:Mode$ Continuous | Affected$ Creature.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other creatures you control get +1/+1.\nS:Mode$ CantAttack,CantBlock | ValidCard$ Card.Self | IsPresent$ Creature.Other+YouCtrl | Description$ As long as you control another creature, NICKNAME can't attack or block.\nOracle:When Ethrimik enters, manifest dread.\\nOther creatures you control get +1/+1.\\nAs long as you control another creature, Ethrimik can't attack or block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ethrimik, Imagined Fiend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

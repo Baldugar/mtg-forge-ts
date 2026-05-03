@@ -1,0 +1,25 @@
+{
+  "id": "exit-specialist-corpus-m676",
+  "description": "M6 corpus — Exit Specialist; ETB-on-bf.",
+  "seed": 64864,
+  "cards": {
+    "Exit Specialist": "Name:Exit Specialist\nManaCost:1 U\nTypes:Creature Human Detective\nPT:2/1\nK:Disguise:1 U\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerGE3 | Description$ CARDNAME can't be blocked by creatures with power 3 or greater.\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, return another target creature to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | Origin$ Battlefield | Destination$ Hand\nOracle:Exit Specialist can't be blocked by creatures with power 3 or greater.\\nDisguise {1}{U} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Exit Specialist is turned face up, return another target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Exit Specialist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

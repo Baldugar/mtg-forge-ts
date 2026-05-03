@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-unbinding-corpus-m676",
+  "description": "M6 corpus — Curse of Unbinding; in-hand parse.",
+  "seed": 62942,
+  "cards": {
+    "Curse of Unbinding": "Name:Curse of Unbinding\nManaCost:6 U\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ At the beginning of enchanted player's upkeep, that player reveals cards from the top of their library until they reveal a creature card. Put that card on the battlefield under your control. That player puts the rest of the revealed cards into their graveyard.\nSVar:TrigDig:DB$ DigUntil | Defined$ Player.EnchantedBy | Valid$ Creature | FoundDestination$ Battlefield | RevealedDestination$ Graveyard | GainControl$ True\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, that player reveals cards from the top of their library until they reveal a creature card. Put that card on the battlefield under your control. That player puts the rest of the revealed cards into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Unbinding"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

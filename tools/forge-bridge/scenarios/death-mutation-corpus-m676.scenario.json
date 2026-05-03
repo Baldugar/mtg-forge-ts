@@ -1,0 +1,23 @@
+{
+  "id": "death-mutation-corpus-m676",
+  "description": "M6 corpus — Death Mutation; in-hand parse.",
+  "seed": 63249,
+  "cards": {
+    "Death Mutation": "Name:Death Mutation\nManaCost:6 B G\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | NoRegen$ True | SubAbility$ TrigToken | SpellDescription$ Destroy target nonblack creature. It can't be regenerated. Create X 1/1 green Saproling creature tokens, where X is that creature's mana value.\n# X will be the converted mana cost of the target of Death Mutation\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:X:Targeted$CardManaCost\nDeckHas:Ability$Token\nOracle:Destroy target nonblack creature. It can't be regenerated. Create X 1/1 green Saproling creature tokens, where X is that creature's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

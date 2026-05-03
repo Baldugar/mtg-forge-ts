@@ -1,0 +1,23 @@
+{
+  "id": "carnage-crimson-chaos-corpus-m676",
+  "description": "M6 corpus — Carnage, Crimson Chaos; in-hand parse.",
+  "seed": 61731,
+  "cards": {
+    "Carnage, Crimson Chaos": "Name:Carnage, Crimson Chaos\nVariant:UniversesWithin:FlavorName:Desecrex, Gift of Servitude\nManaCost:2 B R\nTypes:Legendary Creature Symbiote Villain\nPT:4/3\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When NICKNAME enters, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains \"This creature attacks each combat if able\" and \"When this creature deals combat damage to a player, sacrifice it.\"\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLE3 | TgtPrompt$ Select target creature card in your graveyard with mana value 3 or less | RememberChanged$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Duration$ Permanent | staticAbilities$ CarnageMustAttack | Triggers$ CarnageDamage | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:CarnageMustAttack:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ This creature attacks each combat if able.\nSVar:CarnageDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSac | TriggerDescription$ When this creature deals combat damage to a player, sacrifice it.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nK:Mayhem:B R\nOracle:Trample\\nWhen Carnage enters, return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains \"This creature attacks each combat if able\" and \"When this creature deals combat damage to a player, sacrifice it.\"\\nMayhem {B}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carnage, Crimson Chaos"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flicker-of-fate-corpus-m676",
+  "description": "M6 corpus — Flicker of Fate; in-hand parse.",
+  "seed": 65508,
+  "cards": {
+    "Flicker of Fate": "Name:Flicker of Fate\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature,Enchantment | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature or enchantment | RememberTargets$ True | SubAbility$ DBReturn | SpellDescription$ Exile target creature or enchantment, then return it to the battlefield under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile target creature or enchantment, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flicker of Fate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

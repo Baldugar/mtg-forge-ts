@@ -1,0 +1,23 @@
+{
+  "id": "circadian-struggle-corpus-m676",
+  "description": "M6 corpus — Circadian Struggle; in-hand parse.",
+  "seed": 62145,
+  "cards": {
+    "Circadian Struggle": "Name:Circadian Struggle\nManaCost:4 GU GU\nTypes:Instant\nA:SP$ Seek | Num$ X | Type$ Card.SharesColorWith Valid Permanent.YouCtrl | RememberFound$ True | SubAbility$ DBAnimateW | SpellDescription$ Vivid — Seek X cards that each share a color with one or more permanents you control, where X is the number of colors among permanents you control. For each color among permanents you control, those cards perpetually gain \"This spell costs {1} less to cast.\"\nSVar:DBAnimateW:DB$ AnimateAll | Zone$ Hand | Duration$ Perpetual | ValidCards$ Card.IsRemembered | staticAbilities$ ReduceCost | ConditionPresent$ Permanent.YouCtrl+White | LockInText$ True | SubAbility$ DBAnimateU\nSVar:DBAnimateU:DB$ AnimateAll | Zone$ Hand | Duration$ Perpetual | ValidCards$ Card.IsRemembered | staticAbilities$ ReduceCost | ConditionPresent$ Permanent.YouCtrl+Blue | LockInText$ True | SubAbility$ DBAnimateB\nSVar:DBAnimateB:DB$ AnimateAll | Zone$ Hand | Duration$ Perpetual | ValidCards$ Card.IsRemembered | staticAbilities$ ReduceCost | ConditionPresent$ Permanent.YouCtrl+Black | LockInText$ True | SubAbility$ DBAnimateR\nSVar:DBAnimateR:DB$ AnimateAll | Zone$ Hand | Duration$ Perpetual | ValidCards$ Card.IsRemembered | staticAbilities$ ReduceCost | ConditionPresent$ Permanent.YouCtrl+Red | LockInText$ True | SubAbility$ DBAnimateG\nSVar:DBAnimateG:DB$ AnimateAll | Zone$ Hand | Duration$ Perpetual | ValidCards$ Card.IsRemembered | staticAbilities$ ReduceCost | ConditionPresent$ Permanent.YouCtrl+Green | LockInText$ True | SubAbility$ DBCleanup\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} less to cast.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBEffect\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Vivid — Seek X cards that each share a color with one or more permanents you control, where X is the number of colors among permanents you control. For each color among permanents you control, those cards perpetually gain \"This spell costs {1} less to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Circadian Struggle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "devout-invocation-corpus-m676",
+  "description": "M6 corpus — Devout Invocation; in-hand parse.",
+  "seed": 63587,
+  "cards": {
+    "Devout Invocation": "Name:Devout Invocation\nManaCost:6 W\nTypes:Sorcery\nA:SP$ Tap | CardChoices$ Creature.YouCtrl+untapped | AnyNumber$ True | ChoiceAmount$ Count$Valid Creature.YouCtrl+untapped | RememberTapped$ True | SubAbility$ DBToken | SpellDescription$ Tap any number of untapped creatures you control. Create a 4/4 white Angel creature token with flying for each creature tapped this way. | StackDescription$ SpellDescription\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ w_4_4_angel_flying | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:Remembered$Amount\nSVar:NeedsToPlay:Creature.YouCtrl+untapped\nSVar:PlayMain1:ALWAYS\nOracle:Tap any number of untapped creatures you control. Create a 4/4 white Angel creature token with flying for each creature tapped this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devout Invocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

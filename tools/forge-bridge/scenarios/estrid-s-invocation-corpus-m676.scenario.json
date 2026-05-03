@@ -1,0 +1,23 @@
+{
+  "id": "estrid-s-invocation-corpus-m676",
+  "description": "M6 corpus — Estrid's Invocation; in-hand parse.",
+  "seed": 64755,
+  "cards": {
+    "Estrid's Invocation": "Name:Estrid's Invocation\nManaCost:2 U\nTypes:Enchantment\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Enchantment.Other+YouCtrl | AILogic$ AtLeast1 | AddTriggers$ InvocationExileUpkeep | AddSVars$ InvocationDBReturn,InvocationTrigExile,InvocationExileUpkeep | SpellDescription$ You may have CARDNAME enter as a copy of an enchantment you control, except it has \"At the beginning of your upkeep, you may exile this enchantment. If you do, return it to the battlefield under its owner's control.\"\nSVar:InvocationExileUpkeep:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ InvocationTrigExile | OptionalDecider$ You | IsPresent$ Card.Self | TriggerDescription$ At the beginning of your upkeep you may exile this enchantment. If you do, return it to the battlefield under it's owner's control.\nSVar:InvocationTrigExile:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile | SubAbility$ InvocationDBReturn\nSVar:InvocationDBReturn:DB$ ChangeZone | Defined$ CorrectedSelf | Origin$ All | Destination$ Battlefield | GainControl$ True\nOracle:You may have Estrid's Invocation enter as a copy of an enchantment you control, except it has \"At the beginning of your upkeep, you may exile this enchantment. If you do, return it to the battlefield under its owner's control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Estrid's Invocation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

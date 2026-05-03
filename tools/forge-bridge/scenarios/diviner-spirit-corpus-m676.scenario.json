@@ -1,0 +1,23 @@
+{
+  "id": "diviner-spirit-corpus-m676",
+  "description": "M6 corpus — Diviner Spirit; in-hand parse.",
+  "seed": 63769,
+  "cards": {
+    "Diviner Spirit": "Name:Diviner Spirit\nManaCost:4 U\nTypes:Creature Spirit\nPT:2/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you and that player each draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You & TriggeredTarget | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever Diviner Spirit deals combat damage to a player, you and that player each draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diviner Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

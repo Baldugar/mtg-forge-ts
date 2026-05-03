@@ -1,0 +1,25 @@
+{
+  "id": "ensnaring-bridge-corpus-m676",
+  "description": "M6 corpus — Ensnaring Bridge; ETB-on-bf.",
+  "seed": 64633,
+  "cards": {
+    "Ensnaring Bridge": "Name:Ensnaring Bridge\nManaCost:3\nTypes:Artifact\nS:Mode$ CantAttack | ValidCard$ Creature.powerGTX | Description$ Creatures with power greater than the number of cards in your hand can't attack.\nSVar:X:Count$ValidHand Card.YouOwn\n# NOTE: The AI will not play around this effect, so it's only good in properly designed decks that circumvent the necessity to worry about the detrimental effect.\nAI:RemoveDeck:Random\nSVar:PreferredHandSize:0\nOracle:Creatures with power greater than the number of cards in your hand can't attack.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ensnaring Bridge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "friendly-fire-corpus-m676",
+  "description": "M6 corpus — Friendly Fire; in-hand parse.",
+  "seed": 65747,
+  "cards": {
+    "Friendly Fire": "Name:Friendly Fire\nManaCost:3 R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | IsCurse$ True | StackDescription$ None | SubAbility$ DBReveal | SpellDescription$ Target creature's controller reveals a card at random from their hand. Friendly fire deals damage to that creature and that player equal to the revealed card's mana value.\nSVar:DBReveal:DB$ Reveal | Defined$ TargetedController | Random$ True | RememberRevealed$ True | SubAbility$ DBDmg\nSVar:DBDmg:DB$ DamageAll | NumDmg$ X | ValidPlayers$ TargetedController | ValidCards$ Targeted.Self | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:All\nOracle:Target creature's controller reveals a card at random from their hand. Friendly Fire deals damage to that creature and that player equal to the revealed card's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Friendly Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

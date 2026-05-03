@@ -1,0 +1,23 @@
+{
+  "id": "charging-hooligan-corpus-m676",
+  "description": "M6 corpus — Charging Hooligan; in-hand parse.",
+  "seed": 62008,
+  "cards": {
+    "Charging Hooligan": "Name:Charging Hooligan\nManaCost:3 R\nTypes:Creature Human Peasant\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+0 until end of turn for each attacking creature. If a Rat is attacking, CARDNAME gains trample until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | SubAbility$ DBPumpBis\nSVar:DBPumpBis:DB$ Pump | Defined$ Self | KW$ Trample | ConditionPresent$ Rat.attacking\nSVar:X:Count$Valid Creature.attacking\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Rat\nOracle:Whenever Charging Hooligan attacks, it gets +1/+0 until end of turn for each attacking creature. If a Rat is attacking, Charging Hooligan gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charging Hooligan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dimensional-breach-corpus-m676",
+  "description": "M6 corpus — Dimensional Breach; in-hand parse.",
+  "seed": 63619,
+  "cards": {
+    "Dimensional Breach": "Name:Dimensional Breach\nManaCost:5 W W\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Permanent | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile all permanents. For as long as any of those cards remain exiled, at the beginning of each player's upkeep, that player returns one of the exiled cards they own to the battlefield.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigUpkeep | RememberObjects$ Remembered | Duration$ Permanent | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:TrigUpkeep:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ BreachReturn | TriggerZones$ Command | TriggerDescription$ At the beginning of each player's upkeep, that player returns one of the exiled cards they own to the battlefield.\nSVar:BreachReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | ChangeType$ Card.IsRemembered+ActivePlayerCtrl | ForgetChanged$ True | Hidden$ True\nOracle:Exile all permanents. For as long as any of those cards remain exiled, at the beginning of each player's upkeep, that player returns one of the exiled cards they own to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dimensional Breach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

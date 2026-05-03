@@ -1,0 +1,23 @@
+{
+  "id": "doomsday-confluence-corpus-m676",
+  "description": "M6 corpus — Doomsday Confluence; in-hand parse.",
+  "seed": 63831,
+  "cards": {
+    "Doomsday Confluence": "Name:Doomsday Confluence\nManaCost:X X B\nTypes:Sorcery\nA:SP$ Charm | CharmNum$ X | Announce$ X | Choices$ DBSac,DBToken,DBDiscard | CanRepeatModes$ True\nSVar:DBSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature.nonArtifact | SpellDescription$ Each player sacrifices a nonartifact creature.\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_a_dalek_menace | SpellDescription$ Create a 3/3 black Dalek artifact creature token with menace.\nSVar:DBDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose | SpellDescription$ Each opponent discards a card.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice|Token|Discard & Type$Artifact|Dalek\nOracle:Choose X. You may choose the same mode more than once.\\n• Each player sacrifices a nonartifact creature.\\n• Create a 3/3 black Dalek artifact creature token with menace.\\n• Each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomsday Confluence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "elvish-pioneer-corpus-m676",
+  "description": "M6 corpus — Elvish Pioneer; in-hand parse.",
+  "seed": 64474,
+  "cards": {
+    "Elvish Pioneer": "Name:Elvish Pioneer\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may put a basic land card from your hand onto the battlefield tapped.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nOracle:When Elvish Pioneer enters, you may put a basic land card from your hand onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Pioneer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

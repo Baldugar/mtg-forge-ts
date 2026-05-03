@@ -1,0 +1,23 @@
+{
+  "id": "cowed-by-wisdom-corpus-m676",
+  "description": "M6 corpus — Cowed by Wisdom; in-hand parse.",
+  "seed": 62668,
+  "cards": {
+    "Cowed by Wisdom": "Name:Cowed by Wisdom\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantAttackUnless | ValidCard$ Creature.AttachedBy | Cost$ Y | Description$ Enchanted creature can't attack or block unless its controller pays {1} for each card in your hand.\nS:Mode$ CantBlockUnless | ValidCard$ Creature.AttachedBy | Cost$ Y\nSVar:Y:Count$ValidHand Card.YouOwn\nOracle:Enchant creature\\nEnchanted creature can't attack or block unless its controller pays {1} for each card in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cowed by Wisdom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

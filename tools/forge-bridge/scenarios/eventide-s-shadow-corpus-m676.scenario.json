@@ -1,0 +1,23 @@
+{
+  "id": "eventide-s-shadow-corpus-m676",
+  "description": "M6 corpus — Eventide's Shadow; in-hand parse.",
+  "seed": 64812,
+  "cards": {
+    "Eventide's Shadow": "Name:Eventide's Shadow\nManaCost:4 B\nTypes:Sorcery\nA:SP$ RemoveCounter | Choices$ Permanent | ChoiceOptional$ True | CounterType$ Any | CounterNum$ Any | RememberAmount$ True | SubAbility$ DBDraw | StackDescription$ Remove any number of counters from among permanents. | SpellDescription$ Remove any number of counters from among permanents on the battlefield. You draw cards and lose life equal to the number of counters removed this way.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nOracle:Remove any number of counters from among permanents on the battlefield. You draw cards and lose life equal to the number of counters removed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eventide's Shadow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "festering-newt-corpus-m676",
+  "description": "M6 corpus — Festering Newt; in-hand parse.",
+  "seed": 65243,
+  "cards": {
+    "Festering Newt": "Name:Festering Newt\nManaCost:B\nTypes:Creature Salamander\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME dies, target creature an opponent controls gets -1/-1 until end of turn. That creature gets -4/-4 instead if you control a creature named Bogbrew Witch.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | ConditionCheckSVar$ BogbrewWitchPresent | ConditionSVarCompare$ EQ0 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ParentTarget | NumAtt$ -4 | NumDef$ -4 | ConditionCheckSVar$ BogbrewWitchPresent | ConditionSVarCompare$ GE1\nSVar:BogbrewWitchPresent:Count$Valid Creature.YouCtrl+namedBogbrew Witch\nDeckNeeds:Name$Bogbrew Witch\nDeckHints:Name$Bubbling Cauldron\nOracle:When Festering Newt dies, target creature an opponent controls gets -1/-1 until end of turn. That creature gets -4/-4 instead if you control a creature named Bogbrew Witch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Festering Newt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

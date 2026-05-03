@@ -1,0 +1,23 @@
+{
+  "id": "cathartic-parting-corpus-m676",
+  "description": "M6 corpus — Cathartic Parting; in-hand parse.",
+  "seed": 61812,
+  "cards": {
+    "Cathartic Parting": "Name:Cathartic Parting\nManaCost:1 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Library | ValidTgts$ Artifact.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target artifact or enchantment an opponent controls | SubAbility$ DBChangeZone | Shuffle$ True | SpellDescription$ The owner of target artifact or enchantment an opponent controls shuffles it into their library. You may shuffle up to four target cards from your graveyard into your library.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Card.YouOwn | TgtPrompt$ Select target card from your graveyard | TargetMin$ 0 | TargetMax$ 4 | Shuffle$ True | ShuffleNonMandatory$ True\nOracle:The owner of target artifact or enchantment an opponent controls shuffles it into their library. You may shuffle up to four target cards from your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cathartic Parting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

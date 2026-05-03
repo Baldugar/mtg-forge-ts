@@ -1,0 +1,23 @@
+{
+  "id": "general-kreat-the-boltbringer-corpus-m676",
+  "description": "M6 corpus — General Kreat, the Boltbringer; in-hand parse.",
+  "seed": 66029,
+  "cards": {
+    "General Kreat, the Boltbringer": "Name:General Kreat, the Boltbringer\nManaCost:2 R\nTypes:Legendary Creature Goblin Soldier\nPT:2/2\nT:Mode$ AttackersDeclared | ValidAttackers$ Goblin.YouCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Goblins you control attack, create a 1/1 red Goblin creature token that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever another creature you control enters, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nDeckHints:Type$Goblin\nOracle:Whenever one or more Goblins you control attack, create a 1/1 red Goblin creature token that's tapped and attacking.\\nWhenever another creature you control enters, General Kreat, the Boltbringer deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "General Kreat, the Boltbringer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

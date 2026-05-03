@@ -1,0 +1,23 @@
+{
+  "id": "dawnglow-infusion-corpus-m676",
+  "description": "M6 corpus — Dawnglow Infusion; in-hand parse.",
+  "seed": 63169,
+  "cards": {
+    "Dawnglow Infusion": "Name:Dawnglow Infusion\nManaCost:X GW\nTypes:Sorcery\nA:SP$ GainLife | LifeAmount$ Y | SpellDescription$ You gain X life if {G} was spent to cast this spell and X life if {W} was spent to cast this spell. (Do both if {G}{W} was spent.)\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.Z\nSVar:Z:SVar$G/Plus.W\nSVar:G:Count$EachSpentToCast.G/LimitMax.1\nSVar:W:Count$EachSpentToCast.W/LimitMax.1\nSVar:AINoCopy:True\nOracle:You gain X life if {G} was spent to cast this spell and X life if {W} was spent to cast this spell. (Do both if {G}{W} was spent.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dawnglow Infusion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

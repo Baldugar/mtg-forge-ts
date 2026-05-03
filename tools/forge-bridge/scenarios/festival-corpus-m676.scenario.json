@@ -1,0 +1,23 @@
+{
+  "id": "festival-corpus-m676",
+  "description": "M6 corpus — Festival; in-hand parse.",
+  "seed": 65246,
+  "cards": {
+    "Festival": "Name:Festival\nManaCost:W\nTypes:Instant\nText:Cast this spell only during an opponent's upkeep.\nA:SP$ Effect | StaticAbilities$ CantAttack | OpponentTurn$ True | ActivationPhases$ Upkeep | SpellDescription$ Creatures can't attack this turn.\nSVar:CantAttack:Mode$ CantAttack | ValidCard$ Creature | Description$ Creatures can't attack this turn.\nAI:RemoveDeck:All\nOracle:Cast this spell only during an opponent's upkeep.\\nCreatures can't attack this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Festival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

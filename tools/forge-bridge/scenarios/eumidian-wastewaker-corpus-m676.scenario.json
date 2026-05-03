@@ -1,0 +1,23 @@
+{
+  "id": "eumidian-wastewaker-corpus-m676",
+  "description": "M6 corpus — Eumidian Wastewaker; in-hand parse.",
+  "seed": 64798,
+  "cards": {
+    "Eumidian Wastewaker": "Name:Eumidian Wastewaker\nManaCost:2 B B\nTypes:Creature Insect Cleric\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, you and defending player each discard a card or sacrifice a permanent. You draw a card for each land card put into a graveyard this way.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ TriggeredDefendingPlayer & You | Mandatory$ True | Choices$ Card.inZoneHand,Permanent.CanBeSacrificedBy | ChoiceZone$ Hand,Battlefield | ControlledByPlayer$ Chooser | ChoiceTitle$ Choose a card or permanent | AILogic$ WorstCard | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose | Defined$ TriggeredDefendingPlayer & You | DiscardValid$ Card.ChosenCard | SubAbility$ DBSac\nSVar:DBSac:DB$ SacrificeAll | ValidCards$ Card.ChosenCardStrict | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nK:Encore:6 B B\nSVar:X:Count$ValidGraveyard Land.ChosenCard\nDeckHas:Ability$Token\nOracle:Whenever this creature attacks, you and defending player each discard a card or sacrifice a permanent. You draw a card for each land card put into a graveyard this way.\\nEncore {6}{B}{B} ({6}{B}{B}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eumidian Wastewaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eternity-vessel-corpus-m676",
+  "description": "M6 corpus — Eternity Vessel; in-hand parse.",
+  "seed": 64769,
+  "cards": {
+    "Eternity Vessel": "Name:Eternity Vessel\nManaCost:6\nTypes:Artifact\nK:etbCounter:CHARGE:X:no Condition:CARDNAME enters with X charge counters on it, where X is your life total.\nSVar:X:Count$YourLifeTotal\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLife | OptionalDecider$ You | TriggerDescription$ Landfall — Whenever a land you control enters, you may have your life total become the number of charge counters on CARDNAME.\nSVar:TrigLife:DB$ SetLife | Defined$ You | LifeAmount$ Y\nSVar:Y:Count$CardCounters.CHARGE\nOracle:Eternity Vessel enters with X charge counters on it, where X is your life total.\\nLandfall — Whenever a land you control enters, you may have your life total become the number of charge counters on Eternity Vessel.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternity Vessel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "enduring-renewal-corpus-m676",
+  "description": "M6 corpus — Enduring Renewal; in-hand parse.",
+  "seed": 64592,
+  "cards": {
+    "Enduring Renewal": "Name:Enduring Renewal\nManaCost:2 W W\nTypes:Enchantment\nS:Mode$ Continuous | AffectedZone$ Hand | Affected$ Card.YouOwn | MayLookAt$ Player | Description$ Play with your hand revealed.\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ EnduringRevealTop | Description$ If you would draw a card, reveal the top card of your library instead. If it's a creature card, put it into your graveyard. Otherwise, draw a card.\nSVar:EnduringRevealTop:DB$ PeekAndReveal | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBEnduringGraveyard\nSVar:DBEnduringGraveyard:DB$ ChangeZone | Defined$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Creature | Origin$ Library | Destination$ Graveyard | SubAbility$ DBEnduringDraw\nSVar:DBEnduringDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ0 | SubAbility$ DBEnduringCleanup\nSVar:DBEnduringCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | ValidCard$ Creature.YouOwn | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigEnduringBounce | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature is put into your graveyard from the battlefield, return it to your hand.\nSVar:TrigEnduringBounce:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Hand\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Play with your hand revealed.\\nIf you would draw a card, reveal the top card of your library instead. If it's a creature card, put it into your graveyard. Otherwise, draw a card.\\nWhenever a creature is put into your graveyard from the battlefield, return it to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Renewal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

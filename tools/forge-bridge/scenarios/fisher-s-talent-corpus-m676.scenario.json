@@ -1,0 +1,23 @@
+{
+  "id": "fisher-s-talent-corpus-m676",
+  "description": "M6 corpus — Fisher's Talent; in-hand parse.",
+  "seed": 65400,
+  "cards": {
+    "Fisher's Talent": "Name:Fisher's Talent\nManaCost:2 G U\nTypes:Enchantment Class\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPeek | TriggerDescription$ At the beginning of your upkeep, look at the top card of your library. You may reveal it if it's a land card. Create a 1/1 blue Fish creature token if you revealed it this way. Then draw a card.\nSVar:TrigPeek:DB$ PeekAndReveal | PeekAmount$ 1 | RevealValid$ Land | RevealOptional$ True | RememberRevealed$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | TokenScript$ u_1_1_fish | TokenOwner$ You | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Class:2:G U:AddReplacementEffect$ SharkCatch\nSVar:SharkCatch:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Fish | ReplaceWith$ TokenReplace1 | Description$ If you would create a Fish token, create a 3/3 blue Shark creature token instead.\nSVar:TokenReplace1:DB$ ReplaceToken | Type$ ReplaceToken | TokenScript$ u_3_3_shark\nK:Class:3:2 G U:AddReplacementEffect$ OctopusCatch\nSVar:OctopusCatch:Event$ CreateToken | ActiveZones$ Battlefield | ValidPlayer$ You | ValidToken$ Shark | ReplaceWith$ TokenReplace2 | Description$ If you would create a Shark token, create an 8/8 blue Octopus creature token instead.\nSVar:TokenReplace2:DB$ ReplaceToken | Type$ ReplaceToken | TokenScript$ u_8_8_octopus\nOracle:(Gain the next level as a sorcery to add its ability.)\\nAt the beginning of your upkeep, look at the top card of your library. You may reveal it if it's a land card. Create a 1/1 blue Fish creature token if you revealed it this way. Then draw a card.\\n{G}{U}: Level 2\\nIf you would create a Fish token, create a 3/3 blue Shark creature token instead.\\n{2}{G}{U}: Level 3\\nIf you would create a Shark token, create an 8/8 blue Octopus creature token instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fisher's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

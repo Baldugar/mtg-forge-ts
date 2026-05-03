@@ -1,0 +1,23 @@
+{
+  "id": "false-orders-corpus-m676",
+  "description": "M6 corpus — False Orders; in-hand parse.",
+  "seed": 65039,
+  "cards": {
+    "False Orders": "Name:False Orders\nManaCost:R\nTypes:Instant\nText:Cast CARDNAME only during the declare blockers step.\nA:SP$ RemoveFromCombat | ActivationPhases$ Declare Blockers | ValidTgts$ Creature.DefendingPlayerCtrl | TgtPrompt$ Select target creature defending player controls | Defined$ Targeted | UnblockCreaturesBlockedOnlyBy$ Targeted | SubAbility$ ChooseAttacker | SpellDescription$ Remove target creature defending player controls from combat. Creatures it was blocking that had become blocked by only that creature this combat become unblocked. | StackDescription$ SpellDescription\nSVar:ChooseAttacker:DB$ ChooseCard | Defined$ You | Choices$ Creature.attacking | MinAmount$ 0 | ChoiceTitle$ Choose an attacker to block | SubAbility$ Block\nSVar:Block:DB$ Block | DefinedAttacker$ ChosenCard | DefinedBlocker$ ParentTarget | SpellDescription$ You may have it block an attacking creature of your choice.\nAI:RemoveDeck:All\nOracle:Cast this spell only during the declare blockers step.\\nRemove target creature defending player controls from combat. Creatures it was blocking that had become blocked by only that creature this combat become unblocked. You may have it block an attacking creature of your choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "False Orders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

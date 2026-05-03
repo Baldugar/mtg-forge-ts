@@ -1,0 +1,23 @@
+{
+  "id": "dangerous-wager-corpus-m676",
+  "description": "M6 corpus — Dangerous Wager; in-hand parse.",
+  "seed": 63049,
+  "cards": {
+    "Dangerous Wager": "Name:Dangerous Wager\nManaCost:1 R\nTypes:Instant\nA:SP$ Discard | Mode$ Hand | Defined$ You | SubAbility$ BetThat | SpellDescription$ Discard your hand, then draw two cards.\nSVar:BetThat:DB$ Draw | Defined$ You | NumCards$ 2\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Discard your hand, then draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dangerous Wager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dreamroot-cascade-corpus-m676",
+  "description": "M6 corpus — Dreamroot Cascade; ETB-on-bf.",
+  "seed": 64028,
+  "cards": {
+    "Dreamroot Cascade": "Name:Dreamroot Cascade\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Combo G U | SpellDescription$ Add {G} or {U}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ LT2\nOracle:Dreamroot Cascade enters tapped unless you control two or more other lands.\\n{T}: Add {G} or {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dreamroot Cascade"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

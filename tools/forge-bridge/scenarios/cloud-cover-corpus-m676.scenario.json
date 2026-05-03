@@ -1,0 +1,23 @@
+{
+  "id": "cloud-cover-corpus-m676",
+  "description": "M6 corpus — Cloud Cover; in-hand parse.",
+  "seed": 62278,
+  "cards": {
+    "Cloud Cover": "Name:Cloud Cover\nManaCost:2 W U\nTypes:Enchantment\nT:Mode$ BecomesTarget | ValidTarget$ Permanent.YouCtrl+Other+inZoneBattlefield | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigBounce | OptionalDecider$ You | TriggerDescription$ Whenever another permanent you control becomes the target of a spell or ability an opponent controls, you may return that permanent to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ TriggeredTargetLKICopy\nOracle:Whenever another permanent you control becomes the target of a spell or ability an opponent controls, you may return that permanent to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloud Cover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "cinder-marsh-corpus-m676",
+  "description": "M6 corpus — Cinder Marsh; ETB-on-bf.",
+  "seed": 62138,
+  "cards": {
+    "Cinder Marsh": "Name:Cinder Marsh\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SubAbility$ DBStayTapped | SpellDescription$ Add {B} or {R}. CARDNAME doesn't untap during your next untap step.\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{T}: Add {C}.\\n{T}: Add {B} or {R}. Cinder Marsh doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cinder Marsh"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

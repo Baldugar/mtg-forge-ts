@@ -1,0 +1,23 @@
+{
+  "id": "fanatic-of-the-harrowing-corpus-m676",
+  "description": "M6 corpus — Fanatic of the Harrowing; in-hand parse.",
+  "seed": 65052,
+  "cards": {
+    "Fanatic of the Harrowing": "Name:Fanatic of the Harrowing\nManaCost:3 B\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each player discards a card. If you discarded a card this way, draw a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | ConditionDefined$ Remembered | ConditionPresent$ Card.YouOwn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIPreference:DiscardCost$Card.cmcLE1\nOracle:When Fanatic of the Harrowing enters, each player discards a card. If you discarded a card this way, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fanatic of the Harrowing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

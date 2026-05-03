@@ -1,0 +1,23 @@
+{
+  "id": "clattering-augur-corpus-m676",
+  "description": "M6 corpus — Clattering Augur; in-hand parse.",
+  "seed": 62198,
+  "cards": {
+    "Clattering Augur": "Name:Clattering Augur\nManaCost:1 B\nTypes:Creature Skeleton Shaman\nPT:1/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nA:AB$ ChangeZone | Cost$ 2 B B | ActivationZone$ Graveyard | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nSVar:SacMe:2\nSVar:DiscardMe:2\nOracle:Clattering Augur can't block.\\nWhen Clattering Augur enters, you draw a card and you lose 1 life.\\n{2}{B}{B}: Return Clattering Augur from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clattering Augur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

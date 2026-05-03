@@ -1,0 +1,23 @@
+{
+  "id": "defossilize-corpus-m676",
+  "description": "M6 corpus — Defossilize; in-hand parse.",
+  "seed": 63390,
+  "cards": {
+    "Defossilize": "Name:Defossilize\nManaCost:4 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | RememberChanged$ True | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SubAbility$ DBExplore | SpellDescription$ Return target creature card from your graveyard to the battlefield. That creature explores, then it explores again. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard. Then repeat this process.)\nSVar:DBExplore:DB$ Explore | Num$ 2 | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard|Counters\nOracle:Return target creature card from your graveyard to the battlefield. That creature explores, then it explores again. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard. Then repeat this process.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defossilize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

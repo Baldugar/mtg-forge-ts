@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-the-forsaken-corpus-m676",
+  "description": "M6 corpus — Curse of the Forsaken; in-hand parse.",
+  "seed": 62936,
+  "cards": {
+    "Curse of the Forsaken": "Name:Curse of the Forsaken\nManaCost:2 W\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Attacks | ValidCard$ Creature | Attacked$ Player.EnchantedBy | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature attacks enchanted player, its controller gains 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredAttackerController | LifeAmount$ 1\nOracle:Enchant player\\nWhenever a creature attacks enchanted player, its controller gains 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of the Forsaken"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

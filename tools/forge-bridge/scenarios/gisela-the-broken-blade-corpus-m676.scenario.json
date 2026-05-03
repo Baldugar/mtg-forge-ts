@@ -1,0 +1,23 @@
+{
+  "id": "gisela-the-broken-blade-corpus-m676",
+  "description": "M6 corpus — Gisela, the Broken Blade; in-hand parse.",
+  "seed": 66232,
+  "cards": {
+    "Gisela, the Broken Blade": "Name:Gisela, the Broken Blade\nManaCost:2 W W\nTypes:Legendary Creature Angel Horror\nPT:4/3\nK:Flying\nK:First Strike\nK:Lifelink\nT:Mode$ Phase | Phase$ End of Turn | IsPresent$ Card.Self+YouCtrl+YouOwn | IsPresent2$ Creature.YouCtrl+YouOwn+namedBruna; the Fading Light | ValidPlayer$ You | Execute$ Meld | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, if you both own and control CARDNAME and a creature named Bruna, the Fading Light, exile them, then meld them into Brisela, Voice of Nightmares.\nSVar:Meld:DB$ Meld | Name$ Brisela, Voice of Nightmares | Primary$ Gisela, the Broken Blade | Secondary$ Bruna, the Fading Light\nDeckHints:Name$Bruna, the Fading Light\nMeldPair:Bruna, the Fading Light\nAlternateMode:Meld\nOracle:Flying, first strike, lifelink\\nAt the beginning of your end step, if you both own and control Gisela, the Broken Blade and a creature named Bruna, the Fading Light, exile them, then meld them into Brisela, Voice of Nightmares.\n\nALTERNATE\n\nName:Brisela, Voice of Nightmares\nManaCost:no cost\nTypes:Legendary Creature Eldrazi Angel\nPT:9/10\nK:Flying\nK:First Strike\nK:Vigilance\nK:Lifelink\nS:Mode$ CantBeCast | ValidCard$ Card.cmcLE3 | Caster$ Opponent | Description$ Your opponents can't cast spells with mana value 3 or less.\nOracle:Flying, first strike, vigilance, lifelink\\nYour opponents can't cast spells with mana value 3 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gisela, the Broken Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "damage-control-crew-corpus-m676",
+  "description": "M6 corpus — Damage Control Crew; in-hand parse.",
+  "seed": 63030,
+  "cards": {
+    "Damage Control Crew": "Name:Damage Control Crew\nVariant:UniversesWithin:FlavorName:Selesnya Archivist\nManaCost:3 G\nTypes:Creature Human Citizen\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigCharm | TriggerDescription$ When this creature enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBRepair,DBImpound\nSVar:DBRepair:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.YouCtrl+cmcGE4 | SpellDescription$ Repair — Return target card with mana value 4 or greater from your graveyard to your hand.\nSVar:DBImpound:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Impound — Exile target artifact or enchantment.\nDeckHas:Ability$Graveyard\nOracle:When this creature enters, choose one —\\n• Repair — Return target card with mana value 4 or greater from your graveyard to your hand.\\n• Impound — Exile target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Damage Control Crew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deny-the-witch-corpus-m676",
+  "description": "M6 corpus — Deny the Witch; in-hand parse.",
+  "seed": 63466,
+  "cards": {
+    "Deny the Witch": "Name:Deny the Witch\nManaCost:1 W U B\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell,Activated,Triggered | TgtPrompt$ Select target spell, activated ability, or triggered ability | ValidTgts$ Card,Emblem | SubAbility$ DBDrain | SpellDescription$ Counter target spell, activated ability, or triggered ability. Its controller loses life equal to the number of creatures you control.\nSVar:DBDrain:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:Counter target spell, activated ability, or triggered ability. Its controller loses life equal to the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deny the Witch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

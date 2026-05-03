@@ -1,0 +1,23 @@
+{
+  "id": "captain-of-the-watch-corpus-m676",
+  "description": "M6 corpus — Captain of the Watch; in-hand parse.",
+  "seed": 61706,
+  "cards": {
+    "Captain of the Watch": "Name:Captain of the Watch\nManaCost:4 W W\nTypes:Creature Human Soldier\nPT:3/3\nK:Vigilance\nS:Mode$ Continuous | Affected$ Creature.Soldier+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Vigilance | Description$ Other Soldier creatures you control get +1/+1 and have vigilance.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create three 1/1 white Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:PlayMain1:TRUE\nDeckHints:Type$Soldier\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nOther Soldier creatures you control get +1/+1 and have vigilance.\\nWhen Captain of the Watch enters, create three 1/1 white Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captain of the Watch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

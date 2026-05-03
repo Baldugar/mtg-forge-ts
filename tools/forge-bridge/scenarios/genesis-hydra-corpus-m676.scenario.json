@@ -1,0 +1,23 @@
+{
+  "id": "genesis-hydra-corpus-m676",
+  "description": "M6 corpus — Genesis Hydra; in-hand parse.",
+  "seed": 66038,
+  "cards": {
+    "Genesis Hydra": "Name:Genesis Hydra\nManaCost:X G G\nTypes:Creature Plant Hydra\nPT:0/0\nK:etbCounter:P1P1:X\nSVar:X:Count$xPaid\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When you cast this spell, reveal the top X cards of your library. You may put a nonland permanent card with mana value X or less from among them onto the battlefield. Then shuffle the rest into your library.\nSVar:TrigDig:DB$ Dig | DigNum$ X | Reveal$ True | ChangeNum$ 1 | ChangeValid$ Permanent.nonLand+cmcLEX | DestinationZone$ Battlefield | LibraryPosition2$ 0 | SubAbility$ DBShuffle | Optional$ True | RestRandomOrder$ True\nSVar:DBShuffle:DB$ Shuffle | Defined$ You\nDeckHas:Ability$Counters\nOracle:When you cast this spell, reveal the top X cards of your library. You may put a nonland permanent card with mana value X or less from among them onto the battlefield. Then shuffle the rest into your library.\\nGenesis Hydra enters with X +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genesis Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

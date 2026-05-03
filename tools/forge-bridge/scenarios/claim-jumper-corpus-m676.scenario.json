@@ -1,0 +1,23 @@
+{
+  "id": "claim-jumper-corpus-m676",
+  "description": "M6 corpus — Claim Jumper; in-hand parse.",
+  "seed": 62184,
+  "cards": {
+    "Claim Jumper": "Name:Claim Jumper\nManaCost:2 W\nTypes:Creature Rabbit Mercenary\nPT:3/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | CheckSVar$ X | SVarCompare$ GTY | OptionalDecider$ You | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, if an opponent controls more lands than you, you may search your library for a Plains card, put it onto the battlefield tapped. Then if an opponent controls more lands than you, repeat this process once. If you search your library this way, shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Plains | ChangeNum$ 1 | RememberChanged$ True | Tapped$ True | NoShuffle$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Optional$ True | Origin$ Library | Destination$ Battlefield | ConditionCheckSVar$ X | ConditionSVarCompare$ GTY | ChangeType$ Land.Plains | ChangeNum$ 1 | RememberChanged$ True | Tapped$ True | NoShuffle$ True | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ You | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountOpponents$HighestValid Land.YouCtrl\nSVar:Y:Count$Valid Land.YouCtrl\nOracle:Vigilance\\nWhen Claim Jumper enters, if an opponent controls more lands than you, you may search your library for a Plains card and put it onto the battlefield tapped. Then if an opponent controls more lands than you, repeat this process once. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Claim Jumper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

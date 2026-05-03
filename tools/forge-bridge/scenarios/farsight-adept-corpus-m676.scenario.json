@@ -1,0 +1,23 @@
+{
+  "id": "farsight-adept-corpus-m676",
+  "description": "M6 corpus — Farsight Adept; in-hand parse.",
+  "seed": 65089,
+  "cards": {
+    "Farsight Adept": "Name:Farsight Adept\nManaCost:2 W\nTypes:Creature Kor Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you and target opponent each draw a card.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Opponent | Defined$ TargetedAndYou | NumCards$ 1\nOracle:When Farsight Adept enters, you and target opponent each draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farsight Adept"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

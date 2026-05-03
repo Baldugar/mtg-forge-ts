@@ -1,0 +1,23 @@
+{
+  "id": "brudiclad-telchor-engineer-corpus-m676",
+  "description": "M6 corpus — Brudiclad, Telchor Engineer; in-hand parse.",
+  "seed": 61461,
+  "cards": {
+    "Brudiclad, Telchor Engineer": "Name:Brudiclad, Telchor Engineer\nManaCost:4 U R\nTypes:Legendary Artifact Creature Phyrexian Artificer\nPT:4/4\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddKeyword$ Haste | Description$ Creature tokens you control have haste.\nSVar:PlayMain1:TRUE\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of combat on your turn, create a 2/1 blue Phyrexian Myr artifact creature token. Then you may choose a token you control. If you do, each other token you control becomes a copy of that token.\nSVar:TrigToken:DB$ Token | TokenScript$ u_2_1_a_phyrexian_myr | SubAbility$ DBClone\nSVar:DBClone:DB$ Clone | Choices$ Card.token+YouCtrl | ChoiceTitle$ You may choose a token you control | ChoiceOptional$ True | ExcludeChosen$ True | CloneTarget$ Valid Card.token+YouCtrl\nDeckHints:Ability$Token\nDeckHas:Ability$Token & Type$Artifact|Myr\nOracle:Creature tokens you control have haste.\\nAt the beginning of combat on your turn, create a 2/1 blue Phyrexian Myr artifact creature token. Then you may choose a token you control. If you do, each other token you control becomes a copy of that token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brudiclad, Telchor Engineer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

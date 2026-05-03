@@ -1,0 +1,23 @@
+{
+  "id": "disintegrate-corpus-m676",
+  "description": "M6 corpus — Disintegrate; in-hand parse.",
+  "seed": 63693,
+  "cards": {
+    "Disintegrate": "Name:Disintegrate\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBEffect | ReplaceDyingDefined$ ThisTargetedCard.Creature | SpellDescription$ CARDNAME deals X damage to any target. That creature can't be regenerated this turn. If the creature would die this turn, exile it instead.\nSVar:DBEffect:DB$ Effect | RememberObjects$ ParentTarget | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | ConditionDefined$ ParentTarget | ConditionPresent$ Creature | AILogic$ CantRegenerate\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nSVar:X:Count$xPaid\nOracle:Disintegrate deals X damage to any target. If it's a creature, it can't be regenerated this turn, and if it would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disintegrate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

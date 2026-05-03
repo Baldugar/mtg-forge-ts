@@ -1,0 +1,23 @@
+{
+  "id": "glass-casket-corpus-m676",
+  "description": "M6 corpus — Glass Casket; in-hand parse.",
+  "seed": 66265,
+  "cards": {
+    "Glass Casket": "Name:Glass Casket\nManaCost:1 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls with mana value 3 or less until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl+cmcLE3 | TgtPrompt$ Select target creature an opponent controls with mana value 3 or less | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.OppCtrl+cmcLE3\nOracle:When Glass Casket enters, exile target creature an opponent controls with mana value 3 or less until Glass Casket leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glass Casket"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

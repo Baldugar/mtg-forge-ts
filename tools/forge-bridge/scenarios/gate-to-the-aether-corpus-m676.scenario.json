@@ -1,0 +1,23 @@
+{
+  "id": "gate-to-the-aether-corpus-m676",
+  "description": "M6 corpus — Gate to the Aether; in-hand parse.",
+  "seed": 65969,
+  "cards": {
+    "Gate to the Aether": "Name:Gate to the Aether\nManaCost:6\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigAetherDig | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player reveals the top card of their library. If it's an artifact, creature, enchantment, or land card, the player may put it onto the battlefield.\nSVar:TrigAetherDig:DB$ Dig | Defined$ TriggeredPlayer | Choser$ TriggeredPlayer | DigNum$ 1 | Reveal$ True | DestinationZone$ Battlefield | DestinationZone2$ Library | LibraryPosition2$ 0 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Artifact,Creature,Enchantment,Land\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player reveals the top card of their library. If it's an artifact, creature, enchantment, or land card, the player may put it onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gate to the Aether"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

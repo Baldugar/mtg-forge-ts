@@ -1,0 +1,23 @@
+{
+  "id": "dr-eggman-corpus-m676",
+  "description": "M6 corpus — Dr. Eggman; in-hand parse.",
+  "seed": 63870,
+  "cards": {
+    "Dr. Eggman": "Name:Dr. Eggman\nManaCost:2 U B R\nTypes:Legendary Creature Human Scientist\nPT:3/6\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, draw a card. Then each opponent faces a villainous choice — That player discards a card, or you may put a Construct, Robot, or Vehicle card from your hand onto the battlefield.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBVillainousChoice\nSVar:DBVillainousChoice:DB$ VillainousChoice | Defined$ Opponent | Choices$ DBDiscard,DBChangeZone\nSVar:DBDiscard:DB$ Discard | Defined$ Remembered | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Opponent discards a card.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Optional$ You | ChangeType$ Construct,Robot,Vehicle | ChangeNum$ 1 | SpellDescription$ You may put a Construct, Robot, or Vehicle card from your hand onto the battlefield.\nDeckHints:Type$Construct|Robot|Vehicle\nOracle:Flying\\nAt the beginning of your end step, draw a card. Then each opponent faces a villainous choice — That player discards a card, or you may put a Construct, Robot, or Vehicle card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dr. Eggman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "faerie-mechanist-corpus-m676",
+  "description": "M6 corpus — Faerie Mechanist; in-hand parse.",
+  "seed": 64986,
+  "cards": {
+    "Faerie Mechanist": "Name:Faerie Mechanist\nManaCost:3 U\nTypes:Artifact Creature Faerie Artificer\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top three cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Artifact\nOracle:Flying\\nWhen Faerie Mechanist enters, look at the top three cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Mechanist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

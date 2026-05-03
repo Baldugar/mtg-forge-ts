@@ -1,0 +1,25 @@
+{
+  "id": "forsaken-monument-corpus-m676",
+  "description": "M6 corpus — Forsaken Monument; ETB-on-bf.",
+  "seed": 65667,
+  "cards": {
+    "Forsaken Monument": "Name:Forsaken Monument\nManaCost:5\nTypes:Legendary Artifact\nS:Mode$ Continuous | Affected$ Creature.Colorless+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Colorless creatures you control get +2/+2.\nT:Mode$ TapsForMana | ValidCard$ Permanent | Activator$ You | Produced$ C | Execute$ TrigMana | TriggerZones$ Battlefield | Static$ True | TriggerDescription$ Whenever you tap a permanent for {C}, add an additional {C}.\nSVar:TrigMana:DB$ Mana | Produced$ C\nT:Mode$ SpellCast | ValidCard$ Card.Colorless | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever you cast a colorless spell, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nSVar:PlayMain1:TRUE\nDeckHints:Color$Colorless\nDeckHas:Ability$LifeGain\nOracle:Colorless creatures you control get +2/+2.\\nWhenever you tap a permanent for {C}, add an additional {C}.\\nWhenever you cast a colorless spell, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Forsaken Monument"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

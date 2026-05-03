@@ -1,0 +1,25 @@
+{
+  "id": "evendo-waking-haven-corpus-m676",
+  "description": "M6 corpus — Evendo, Waking Haven; ETB-on-bf.",
+  "seed": 64811,
+  "cards": {
+    "Evendo, Waking Haven": "Name:Evendo, Waking Haven\nManaCost:no cost\nTypes:Land Planet\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nK:Station:12\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE12_CHARGE | AddAbility$ EvendoMana | Description$ STATION 12+ {G}, {T}: Add {G} for each creature you control.\nSVar:EvendoMana:AB$ Mana | Cost$ G T | Produced$ G | Amount$ X | SpellDescription$ Add {G} for each creature you control.\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:This land enters tapped.\\n{T}: Add {G}.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)\\nSTATION 12+\\n{G}, {T}: Add {G} for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Evendo, Waking Haven"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

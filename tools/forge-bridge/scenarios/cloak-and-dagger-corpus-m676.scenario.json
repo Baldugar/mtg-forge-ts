@@ -1,0 +1,23 @@
+{
+  "id": "cloak-and-dagger-corpus-m676",
+  "description": "M6 corpus — Cloak and Dagger; in-hand parse.",
+  "seed": 62249,
+  "cards": {
+    "Cloak and Dagger": "Name:Cloak and Dagger\nManaCost:2\nTypes:Kindred Artifact Rogue Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddKeyword$ Shroud | Description$ Equipped creature gets +2/+0 and has shroud. (It can't be the target of spells or abilities.)\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Rogue | TriggerZones$ Battlefield | Execute$ TrigAttach | OptionalDecider$ You | TriggerDescription$ Whenever a Rogue creature enters, you may attach CARDNAME to it.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nOracle:Equipped creature gets +2/+0 and has shroud. (It can't be the target of spells or abilities.)\\nWhenever a Rogue creature enters, you may attach Cloak and Dagger to it.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloak and Dagger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

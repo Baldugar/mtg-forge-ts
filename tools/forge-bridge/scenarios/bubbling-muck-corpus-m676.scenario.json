@@ -1,0 +1,23 @@
+{
+  "id": "bubbling-muck-corpus-m676",
+  "description": "M6 corpus — Bubbling Muck; in-hand parse.",
+  "seed": 61483,
+  "cards": {
+    "Bubbling Muck": "Name:Bubbling Muck\nManaCost:B\nTypes:Sorcery\nA:SP$ Effect | Triggers$ SwampTrigger | SpellDescription$ Until end of turn, whenever a player taps a Swamp for mana, that player adds an additional {B}.\nSVar:SwampTrigger:Mode$ TapsForMana | ValidCard$ Swamp | Execute$ TrigMana | Static$ True | TriggerDescription$ Whenever a player taps a Swamp for mana, that player adds an additional {B}.\nSVar:TrigMana:DB$ Mana | Produced$ B | Amount$ 1 | Defined$ TriggeredActivator\nAI:RemoveDeck:All\nOracle:Until end of turn, whenever a player taps a Swamp for mana, that player adds an additional {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bubbling Muck"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

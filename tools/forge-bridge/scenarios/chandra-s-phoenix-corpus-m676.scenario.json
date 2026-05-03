@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-phoenix-corpus-m676",
+  "description": "M6 corpus — Chandra's Phoenix; in-hand parse.",
+  "seed": 61963,
+  "cards": {
+    "Chandra's Phoenix": "Name:Chandra's Phoenix\nManaCost:1 R R\nTypes:Creature Phoenix\nPT:2/2\nK:Flying\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Spell.Instant+YouCtrl+Red,Spell.Sorcery+YouCtrl+Red,Planeswalker.YouCtrl+Red | ValidTarget$ Opponent | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ Whenever an opponent is dealt damage by a red instant or sorcery spell you control or by a red planeswalker you control, return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nOracle:Flying\\nHaste (This creature can attack and {T} as soon as it comes under your control.)\\nWhenever an opponent is dealt damage by a red instant or sorcery spell you control or by a red planeswalker you control, return Chandra's Phoenix from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Phoenix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

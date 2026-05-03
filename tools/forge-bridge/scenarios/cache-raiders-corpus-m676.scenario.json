@@ -1,0 +1,23 @@
+{
+  "id": "cache-raiders-corpus-m676",
+  "description": "M6 corpus — Cache Raiders; in-hand parse.",
+  "seed": 61574,
+  "cards": {
+    "Cache Raiders": "Name:Cache Raiders\nManaCost:3 U U\nTypes:Creature Merfolk Rogue\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ At the beginning of your upkeep, return a permanent you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ChangeType$ Permanent.YouCtrl | ChangeNum$ 1 | Mandatory$ True | Hidden$ True\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, return a permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cache Raiders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

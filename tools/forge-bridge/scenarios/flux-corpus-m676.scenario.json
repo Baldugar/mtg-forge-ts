@@ -1,0 +1,23 @@
+{
+  "id": "flux-corpus-m676",
+  "description": "M6 corpus — Flux; in-hand parse.",
+  "seed": 65572,
+  "cards": {
+    "Flux": "Name:Flux\nManaCost:2 U\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBFluxDiscard | SubAbility$ DBDraw | SpellDescription$ Each player discards any number of cards, then draws that many cards. Draw a card.\nSVar:DBFluxDiscard:DB$ Discard | Defined$ Player.IsRemembered | AnyNumber$ True | Optional$ True | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBFluxDraw\nSVar:DBFluxDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ CleanTheFlux\nSVar:CleanTheFlux:DB$ Cleanup | ClearRemembered$ True\nSVar:DBDraw:DB$ Draw\nSVar:X:Remembered$Amount\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Each player discards any number of cards, then draws that many cards.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flux"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

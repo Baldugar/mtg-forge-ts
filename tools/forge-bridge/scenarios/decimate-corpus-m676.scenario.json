@@ -1,0 +1,23 @@
+{
+  "id": "decimate-corpus-m676",
+  "description": "M6 corpus — Decimate; in-hand parse.",
+  "seed": 63309,
+  "cards": {
+    "Decimate": "Name:Decimate\nManaCost:2 R G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Artifact | SubAbility$ DestroyCreature | AILogic$ Destroy | IsCurse$ True | SpellDescription$ Destroy target artifact, target creature, target enchantment, and target land. | StackDescription$ None\nSVar:DestroyCreature:DB$ Pump | ValidTgts$ Creature | AILogic$ Destroy | IsCurse$ True | SubAbility$ DestroyEnch | StackDescription$ None\nSVar:DestroyEnch:DB$ Pump | ValidTgts$ Enchantment | AILogic$ Destroy | IsCurse$ True | SubAbility$ DestroyLand | StackDescription$ None\nSVar:DestroyLand:DB$ Pump | ValidTgts$ Land | AILogic$ Destroy | IsCurse$ True | SubAbility$ DBDestroy | StackDescription$ None\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted\nOracle:Destroy target artifact, target creature, target enchantment, and target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decimate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "finale-of-promise-corpus-m676",
+  "description": "M6 corpus — Finale of Promise; in-hand parse.",
+  "seed": 65323,
+  "cards": {
+    "Finale of Promise": "Name:Finale of Promise\nManaCost:X R R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Instant.YouOwn+cmcLEX | TgtZone$ Graveyard | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target instant card in your graveyard with mana value X or less | RememberObjects$ Targeted | SubAbility$ DBPump | SpellDescription$ You may cast up to one target instant card and/or up to one target sorcery card from your graveyard each with mana value X or less without paying their mana costs. If a spell cast this way would be put into your graveyard this turn, exile it instead. If X is 10 or more, copy each of those spells twice. You may choose new targets for the copies.\nSVar:DBPump:DB$ Pump | ValidTgts$ Sorcery.YouOwn+cmcLEX | TgtZone$ Graveyard | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target sorcery card in your graveyard with mana value X or less | RememberObjects$ Targeted | SubAbility$ DBPlay | StackDescription$ None\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Graveyard | ValidSA$ Spell | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ All | SubAbility$ DBRepeat | ReplaceGraveyard$ Exile\nSVar:DBRepeat:DB$ RepeatEach | DefinedCards$ Remembered | ClearRemembered$ True | ChooseOrder$ True | RepeatSubAbility$ DBCopy | ConditionCheckSVar$ X | ConditionSVarCompare$ GE10\nSVar:DBCopy:DB$ CopySpellAbility | Amount$ 2 | Defined$ Remembered | MayChooseTarget$ True\nSVar:X:Count$xPaid\nOracle:You may cast up to one target instant card and/or up to one target sorcery card from your graveyard each with mana value X or less without paying their mana costs. If a spell cast this way would be put into your graveyard this turn, exile it instead. If X is 10 or more, copy each of those spells twice. You may choose new targets for the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Finale of Promise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

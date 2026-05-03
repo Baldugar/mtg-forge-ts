@@ -1,0 +1,23 @@
+{
+  "id": "glorious-sunrise-corpus-m676",
+  "description": "M6 corpus — Glorious Sunrise; in-hand parse.",
+  "seed": 66344,
+  "cards": {
+    "Glorious Sunrise": "Name:Glorious Sunrise\nManaCost:3 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ PumpAll,Animate,Draw,Gain\nSVar:PumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Creatures you control get +1/+1 and gain trample until end of turn.\nSVar:Animate:DB$ Animate | ValidTgts$ Land | Abilities$ ThreeG | SpellDescription$ Target land gains \"{T}: Add {G}{G}{G}\" until end of turn.\nSVar:ThreeG:AB$ Mana | Cost$ T | Produced$ G | Amount$ 3 | SpellDescription$ Add {G}{G}{G}.\nSVar:Draw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionPresent$ Creature.YouCtrl+powerGE3 | SpellDescription$ Draw a card if you control a creature with power 3 or greater.\nSVar:Gain:DB$ GainLife | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nDeckHas:Ability$LifeGain\nOracle:At the beginning of combat on your turn, choose one —\\n• Creatures you control get +1/+1 and gain trample until end of turn.\\n• Target land gains \"{T}: Add {G}{G}{G}\" until end of turn.\\n• Draw a card if you control a creature with power 3 or greater.\\n• You gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glorious Sunrise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

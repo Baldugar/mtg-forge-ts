@@ -1,0 +1,23 @@
+{
+  "id": "fell-horseman-corpus-m676",
+  "description": "M6 corpus — Fell Horseman; in-hand parse.",
+  "seed": 65193,
+  "cards": {
+    "Fell Horseman": "Name:Fell Horseman\nManaCost:3 B\nTypes:Creature Zombie Knight\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Whenever CARDNAME dies, put it on the bottom of its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1\nDeckHints:Type$Adventure\nDeckHas:Ability$Graveyard\nAlternateMode:Adventure\nOracle:When Fell Horseman dies, put it on the bottom of its owner's library.\n\nALTERNATE\n\nName:Deathly Ride\nManaCost:1 B\nTypes:Sorcery Adventure\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target card in your graveyard | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return target creature card from your graveyard to your hand. (Then exile this card. You may cast the creature later from exile.)\nOracle:Return target creature card from your graveyard to your hand. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell Horseman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cass-hand-of-vengeance-corpus-m676",
+  "description": "M6 corpus — Cass, Hand of Vengeance; in-hand parse.",
+  "seed": 61778,
+  "cards": {
+    "Cass, Hand of Vengeance": "Name:Cass, Hand of Vengeance\nManaCost:2 R W\nTypes:Legendary Creature Human Ranger\nPT:4/3\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+enchanted+YouCtrl,Creature.Other+equipped+YouCtrl,Card.Self+equipped,Card.Self+enchanted | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME or another creature you control dies, if it was enchanted or equipped, return any number of Aura cards that were attached to it from your graveyard to the battlefield attached to target creature, then attach any number of Equipment that were attached to it to that creature.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | ChangeType$ Card | ChooseFromDefined$ AttachedTo TriggeredCardLKICopy.Aura | OptionalPrompt$ Select any number of Aura cards that were attached to it | Origin$ Graveyard | Destination$ Battlefield | AttachedTo$ Targeted | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ AttachedTo TriggeredCardLKICopy.Equipment | Optional$ True | Defined$ Targeted\nDeckNeeds:Type$Equipment|Aura\nOracle:Vigilance\\nWhenever Cass or another creature you control dies, if it was enchanted or equipped, return any number of Aura cards that were attached to it from your graveyard to the battlefield attached to target creature, then attach any number of Equipment that were attached to it to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cass, Hand of Vengeance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "goblin-machinist-corpus-m676",
+  "description": "M6 corpus — Goblin Machinist; ETB-on-bf.",
+  "seed": 66439,
+  "cards": {
+    "Goblin Machinist": "Name:Goblin Machinist\nManaCost:4 R\nTypes:Creature Goblin\nPT:0/5\nA:AB$ DigUntil | Cost$ 2 R | Valid$ Card.nonLand | ValidDescription$ nonland | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RememberFound$ True | SubAbility$ DBPump | SpellDescription$ Reveal cards from the top of your library until you reveal a nonland card. CARDNAME gets +X/+0 until end of turn, where X is that card's mana value. Put the revealed cards on the bottom of your library in any order.\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +RCX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:RCX:Remembered$CardManaCost\nAI:RemoveDeck:All\nOracle:{2}{R}: Reveal cards from the top of your library until you reveal a nonland card. Goblin Machinist gets +X/+0 until end of turn, where X is that card's mana value. Put the revealed cards on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Machinist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "commander-greven-il-vec-corpus-m676",
+  "description": "M6 corpus — Commander Greven il-Vec; in-hand parse.",
+  "seed": 62417,
+  "cards": {
+    "Commander Greven il-Vec": "Name:Commander Greven il-Vec\nManaCost:3 B B B\nTypes:Legendary Creature Phyrexian Human Warrior\nPT:7/5\nK:Fear\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature | AILogic$ ExceptSelf\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE5\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nWhen Commander Greven il-Vec enters, sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commander Greven il-Vec"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

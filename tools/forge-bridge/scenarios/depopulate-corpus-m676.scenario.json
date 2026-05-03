@@ -1,0 +1,23 @@
+{
+  "id": "depopulate-corpus-m676",
+  "description": "M6 corpus — Depopulate; in-hand parse.",
+  "seed": 63472,
+  "cards": {
+    "Depopulate": "Name:Depopulate\nManaCost:2 W W\nTypes:Sorcery\nA:SP$ Draw | Defined$ Player.controlsCreature.MultiColor | SubAbility$ DBDestroy | SpellDescription$ Each player who controls a multicolored creature draws a card. Then destroy all creatures.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature\nAI:RemoveDeck:Random\nOracle:Each player who controls a multicolored creature draws a card. Then destroy all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Depopulate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

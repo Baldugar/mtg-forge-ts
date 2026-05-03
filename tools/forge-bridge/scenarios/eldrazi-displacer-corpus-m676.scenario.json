@@ -1,0 +1,25 @@
+{
+  "id": "eldrazi-displacer-corpus-m676",
+  "description": "M6 corpus — Eldrazi Displacer; ETB-on-bf.",
+  "seed": 64372,
+  "cards": {
+    "Eldrazi Displacer": "Name:Eldrazi Displacer\nManaCost:2 W\nTypes:Creature Eldrazi\nPT:3/3\nK:Devoid\nA:AB$ ChangeZone | Cost$ 2 C | TargetMin$ 1 | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | RememberTargets$ True | ForgetOtherTargets$ True | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | SpellDescription$ Exile another target creature, then return it to the battlefield tapped under its owner's control. ({C} represents colorless mana.)\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Tapped$ True | Destination$ Battlefield\nDeckHints:Ability$Mana.Colorless\nOracle:Devoid (This card has no color.)\\n{2}{C}: Exile another target creature, then return it to the battlefield tapped under its owner's control. ({C} represents colorless mana.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Eldrazi Displacer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fiend-binder-corpus-m676",
+  "description": "M6 corpus — Fiend Binder; in-hand parse.",
+  "seed": 65272,
+  "cards": {
+    "Fiend Binder": "Name:Fiend Binder\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigTap | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, tap target creature defending player controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.ControlledBy TriggeredDefendingPlayer | TgtPrompt$ Select target creature defending player controls\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Fiend Binder attacks, tap target creature defending player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiend Binder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

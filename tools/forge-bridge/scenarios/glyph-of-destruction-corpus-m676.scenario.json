@@ -1,0 +1,23 @@
+{
+  "id": "glyph-of-destruction-corpus-m676",
+  "description": "M6 corpus — Glyph of Destruction; in-hand parse.",
+  "seed": 66358,
+  "cards": {
+    "Glyph of Destruction": "Name:Glyph of Destruction\nManaCost:R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.Wall+blocking | TgtPrompt$ Select target blocking Wall you control | NumAtt$ +10 | SubAbility$ DBPump | Duration$ UntilEndOfCombat | AtEOT$ Destroy | SpellDescription$ Target blocking Wall you control gets +10/+0 until end of combat. Prevent all damage that would be dealt to it this turn. Destroy it at the beginning of the next end step.\nSVar:DBPump:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all damage that would be dealt to it this turn.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHas:Type$Wall & Keyword$Defender\nOracle:Target blocking Wall you control gets +10/+0 until end of combat. Prevent all damage that would be dealt to it this turn. Destroy it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glyph of Destruction"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

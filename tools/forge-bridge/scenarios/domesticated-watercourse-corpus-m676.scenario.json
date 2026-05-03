@@ -1,0 +1,23 @@
+{
+  "id": "domesticated-watercourse-corpus-m676",
+  "description": "M6 corpus — Domesticated Watercourse; in-hand parse.",
+  "seed": 63806,
+  "cards": {
+    "Domesticated Watercourse": "Name:Domesticated Watercourse\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | SpellDescription$ Add {U} or {B}.\nA:AB$ Animate | Cost$ U B | Defined$ Self | Types$ Artifact,Equipment | RemoveCardTypes$ True | Keywords$ Equip:2 | SpellDescription$ Until end of turn, CARDNAME becomes an Equipment artifact with equip {2}.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever equipped creature deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Domesticated Watercourse enters tapped.\\n{T}: Add {U} or {B}.\\n{U}{B}: Until end of turn, Domesticated Watercourse becomes an Equipment artifact with equip {2}.\\nWhenever equipped creature deals combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Domesticated Watercourse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

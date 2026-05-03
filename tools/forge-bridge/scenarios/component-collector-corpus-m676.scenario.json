@@ -1,0 +1,25 @@
+{
+  "id": "component-collector-corpus-m676",
+  "description": "M6 corpus — Component Collector; ETB-on-bf.",
+  "seed": 62448,
+  "cards": {
+    "Component Collector": "Name:Component Collector\nManaCost:2 U\nTypes:Creature Homunculus\nPT:1/4\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ TrigTapOrUntap | TriggerZones$ Battlefield | TriggerDescription$ Whenever day becomes night or night becomes day, you may tap or untap target nonland permanent.\nSVar:TrigTapOrUntap:DB$ TapOrUntap | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent\nOracle:If it's neither day nor night, it becomes day as Component Collector enters.\\nWhenever day becomes night or night becomes day, you may tap or untap target nonland permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Component Collector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

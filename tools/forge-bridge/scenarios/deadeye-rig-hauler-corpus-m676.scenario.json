@@ -1,0 +1,23 @@
+{
+  "id": "deadeye-rig-hauler-corpus-m676",
+  "description": "M6 corpus — Deadeye Rig-Hauler; in-hand parse.",
+  "seed": 63221,
+  "cards": {
+    "Deadeye Rig-Hauler": "Name:Deadeye Rig-Hauler\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:3/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | CheckSVar$ RaidTest | OptionalDecider$ You | Execute$ TrigChangeZone | TriggerDescription$ Raid — When CARDNAME enters, if you attacked this turn, you may return target creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — When Deadeye Rig-Hauler enters, if you attacked this turn, you may return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadeye Rig-Hauler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

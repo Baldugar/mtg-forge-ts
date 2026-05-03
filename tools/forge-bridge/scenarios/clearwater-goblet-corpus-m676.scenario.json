@@ -1,0 +1,23 @@
+{
+  "id": "clearwater-goblet-corpus-m676",
+  "description": "M6 corpus — Clearwater Goblet; in-hand parse.",
+  "seed": 62220,
+  "cards": {
+    "Clearwater Goblet": "Name:Clearwater Goblet\nManaCost:5\nTypes:Artifact\nK:Sunburst\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, you may gain life equal to the number of charge counters on CARDNAME.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$CardCounters.CHARGE\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$UniqueManaColorsProduced.ByUntappedSources\nDeckHints:Ability$Proliferate\nOracle:Sunburst (This enters with a charge counter on it for each color of mana spent to cast it.)\\nAt the beginning of your upkeep, you may gain life equal to the number of charge counters on Clearwater Goblet.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clearwater Goblet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

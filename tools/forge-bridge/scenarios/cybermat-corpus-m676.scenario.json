@@ -1,0 +1,25 @@
+{
+  "id": "cybermat-corpus-m676",
+  "description": "M6 corpus — Cybermat; ETB-on-bf.",
+  "seed": 62977,
+  "cards": {
+    "Cybermat": "Name:Cybermat\nManaCost:2\nTypes:Artifact Creature Robot\nPT:2/1\nK:Skulk\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, it gets +X/+0 until end of turn, where X is the number of attacking artifact creatures.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.Artifact+attacking\nDeckHints:Type$Artifact & Type$Creature\nOracle:Skulk (This creature can't be blocked by creatures with greater power.)\\nWhenever Cybermat attacks and isn't blocked, it gets +X/+0 until end of turn, where X is the number of attacking artifact creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cybermat"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

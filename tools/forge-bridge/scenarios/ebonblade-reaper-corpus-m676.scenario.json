@@ -1,0 +1,23 @@
+{
+  "id": "ebonblade-reaper-corpus-m676",
+  "description": "M6 corpus — Ebonblade Reaper; in-hand parse.",
+  "seed": 64278,
+  "cards": {
+    "Ebonblade Reaper": "Name:Ebonblade Reaper\nManaCost:2 B\nTypes:Creature Human Cleric\nPT:1/1\nK:Morph:3 B B\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME attacks, you lose half your life, rounded up.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ EbonXYou\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLifeOpp | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player loses half their life, rounded up.\nSVar:TrigLoseLifeOpp:DB$ LoseLife | Defined$ TriggeredTarget | LifeAmount$ EbonXOpp\nSVar:EbonXYou:Count$YourLifeTotal/HalfUp\nSVar:EbonXOpp:TriggeredTarget$LifeTotal/HalfUp\nAI:RemoveDeck:All\nOracle:Whenever Ebonblade Reaper attacks, you lose half your life, rounded up.\\nWhenever Ebonblade Reaper deals combat damage to a player, that player loses half their life, rounded up.\\nMorph {3}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ebonblade Reaper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

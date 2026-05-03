@@ -1,0 +1,23 @@
+{
+  "id": "flame-kin-zealot-corpus-m676",
+  "description": "M6 corpus — Flame-Kin Zealot; in-hand parse.",
+  "seed": 65424,
+  "cards": {
+    "Flame-Kin Zealot": "Name:Flame-Kin Zealot\nManaCost:1 R R W\nTypes:Creature Elemental Berserker\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 and haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Haste\nSVar:PlayMain1:TRUE\nOracle:When Flame-Kin Zealot enters, creatures you control get +1/+1 and gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flame-Kin Zealot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

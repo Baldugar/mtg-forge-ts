@@ -1,0 +1,23 @@
+{
+  "id": "conspiracy-corpus-m676",
+  "description": "M6 corpus — Conspiracy; in-hand parse.",
+  "seed": 62504,
+  "cards": {
+    "Conspiracy": "Name:Conspiracy\nManaCost:3 B B\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | SpellDescription$ As CARDNAME enters, choose a creature type. | AILogic$ MostProminentInComputerDeck\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AffectedZone$ All | AddType$ ChosenType | RemoveCreatureTypes$ True | Description$ Creatures you control are the chosen type. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:As Conspiracy enters, choose a creature type.\\nCreatures you control are the chosen type. The same is true for creature spells you control and creature cards you own that aren't on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conspiracy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

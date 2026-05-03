@@ -1,0 +1,23 @@
+{
+  "id": "fraying-sanity-corpus-m676",
+  "description": "M6 corpus — Fraying Sanity; in-hand parse.",
+  "seed": 65721,
+  "cards": {
+    "Fraying Sanity": "Name:Fraying Sanity\nManaCost:2 U\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of each end step, enchanted player mills X cards, where X is the number of cards put into their graveyard from anywhere this turn.\nSVar:TrigMill:DB$ Mill | Defined$ Player.EnchantedBy | NumCards$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_Card.EnchantedPlayerOwn+!token\nOracle:Enchant player\\nAt the beginning of each end step, enchanted player mills X cards, where X is the number of cards put into their graveyard from anywhere this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fraying Sanity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

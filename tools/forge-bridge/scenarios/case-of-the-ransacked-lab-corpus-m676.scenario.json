@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-ransacked-lab-corpus-m676",
+  "description": "M6 corpus — Case of the Ransacked Lab; in-hand parse.",
+  "seed": 61771,
+  "cards": {
+    "Case of the Ransacked Lab": "Name:Case of the Ransacked Lab\nManaCost:2 U\nTypes:Enchantment Case\nS:Mode$ ReduceCost | ValidCard$ Instant,Sorcery | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Instant and sorcery spells you cast cost {1} less to cast.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ Count$ThisTurnCast_Instant.YouCtrl,Sorcery.YouCtrl | SVarCompare$ GE4 | IsPresent$ Card.Self+!IsSolved | Execute$ Solved | TriggerDescription$ To solve — You've cast four or more instant and sorcery spells this turn. (If unsolved, solve at the beginning of your end step.)\nSVar:Solved:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nT:Mode$ SpellCast | IsPresent$ Card.Self+IsSolved | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Solved — Whenever you cast an instant or sorcery spell, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckNeeds:Type$Instant|Sorcery\nOracle:Instant and sorcery spells you cast cost {1} less to cast.\\nTo solve — You've cast four or more instant and sorcery spells this turn. (If unsolved, solve at the beginning of your end step.)\\nSolved — Whenever you cast an instant or sorcery spell, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Ransacked Lab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

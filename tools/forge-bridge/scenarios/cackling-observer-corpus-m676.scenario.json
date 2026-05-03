@@ -1,0 +1,23 @@
+{
+  "id": "cackling-observer-corpus-m676",
+  "description": "M6 corpus — Cackling Observer; in-hand parse.",
+  "seed": 61580,
+  "cards": {
+    "Cackling Observer": "Name:Cackling Observer\nManaCost:1 B B\nTypes:Creature Imp\nPT:3/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals each nonland card in their hand. You choose one of those cards and exile it.\nSVar:TrigReveal:DB$ Reveal | ValidTgts$ Opponent | RevealAllValid$ Card.nonLand+TargetedPlayerCtrl | RememberRevealed$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.IsRemembered | Imprint$ True | Mandatory$ True | SubAbility$ DBClearRemembered\nSVar:DBClearRemembered:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigSeek | TriggerDescription$ When CARDNAME leaves the battlefield, the exiled card's owner seeks a nonland card with lesser mana value than the exiled card.\nSVar:TrigSeek:DB$ Seek | Defined$ ImprintedController | Type$ Card.cmcLTX | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:X:Imprinted$CardManaCost\nOracle:Flying\\nWhen Cackling Observer enters, target opponent reveals each nonland card in their hand. You choose one of those cards and exile it.\\nWhen Cackling Observer leaves the battlefield, the exiled card's owner seeks a nonland card with lesser mana value than the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cackling Observer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "elderfang-disciple-corpus-m676",
+  "description": "M6 corpus — Elderfang Disciple; in-hand parse.",
+  "seed": 64362,
+  "cards": {
+    "Elderfang Disciple": "Name:Elderfang Disciple\nManaCost:1 B\nTypes:Creature Elf Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose\nOracle:When Elderfang Disciple enters, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elderfang Disciple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

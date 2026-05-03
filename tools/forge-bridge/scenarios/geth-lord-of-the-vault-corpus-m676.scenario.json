@@ -1,0 +1,25 @@
+{
+  "id": "geth-lord-of-the-vault-corpus-m676",
+  "description": "M6 corpus — Geth, Lord of the Vault; ETB-on-bf.",
+  "seed": 66073,
+  "cards": {
+    "Geth, Lord of the Vault": "Name:Geth, Lord of the Vault\nManaCost:4 B B\nTypes:Legendary Creature Phyrexian Zombie\nPT:5/5\nK:Intimidate\nA:AB$ ChangeZone | Cost$ X B | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target artifact or creature card in an opponent's graveyard | ValidTgts$ Creature.OppOwn+cmcEQX,Artifact.OppOwn+cmcEQX | Tapped$ True | SubAbility$ DBMill | SpellDescription$ Put target artifact or creature card with mana value X from an opponent's graveyard onto the battlefield under your control tapped. Then that player mills X cards.\nSVar:DBMill:DB$ Mill | NumCards$ X | Defined$ TargetedOwner\nSVar:X:Count$xPaid\nOracle:Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\n{X}{B}: Put target artifact or creature card with mana value X from an opponent's graveyard onto the battlefield under your control tapped. Then that player mills X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Geth, Lord of the Vault"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

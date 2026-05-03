@@ -1,0 +1,25 @@
+{
+  "id": "crumbling-sanctuary-corpus-m676",
+  "description": "M6 corpus — Crumbling Sanctuary; ETB-on-bf.",
+  "seed": 62816,
+  "cards": {
+    "Crumbling Sanctuary": "Name:Crumbling Sanctuary\nManaCost:5\nTypes:Artifact\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Player | ReplaceWith$ ExileTop | ExecuteMode$ PerTarget | Description$ If damage would be dealt to a player, that player exiles that many cards from the top of their library instead.\nSVar:ExileTop:DB$ Dig | Defined$ ReplacedTarget | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile\nSVar:X:ReplaceCount$DamageAmount\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:If damage would be dealt to a player, that player exiles that many cards from the top of their library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Crumbling Sanctuary"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

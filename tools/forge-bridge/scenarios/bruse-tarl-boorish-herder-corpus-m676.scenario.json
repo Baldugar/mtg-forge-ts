@@ -1,0 +1,23 @@
+{
+  "id": "bruse-tarl-boorish-herder-corpus-m676",
+  "description": "M6 corpus — Bruse Tarl, Boorish Herder; in-hand parse.",
+  "seed": 61465,
+  "cards": {
+    "Bruse Tarl, Boorish Herder": "Name:Bruse Tarl, Boorish Herder\nManaCost:2 R W\nTypes:Legendary Creature Human Ally\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME enters or attacks, target creature you control gains double strike and lifelink until end of turn.\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, target creature you control gains double strike and lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Double Strike & Lifelink\nK:Partner\nSVar:HasAttackEffect:TRUE\nSVar:PlayMain1:TRUE\nOracle:Whenever Bruse Tarl, Boorish Herder enters or attacks, target creature you control gains double strike and lifelink until end of turn.\\nPartner (You can have two commanders if both have partner.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bruse Tarl, Boorish Herder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

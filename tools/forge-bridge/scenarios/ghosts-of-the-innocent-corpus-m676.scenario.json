@@ -1,0 +1,25 @@
+{
+  "id": "ghosts-of-the-innocent-corpus-m676",
+  "description": "M6 corpus — Ghosts of the Innocent; ETB-on-bf.",
+  "seed": 66131,
+  "cards": {
+    "Ghosts of the Innocent": "Name:Ghosts of the Innocent\nManaCost:5 W W\nTypes:Creature Spirit\nPT:4/5\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Player,Permanent | ReplaceWith$ DmgHalfDown | Description$ If a source would deal damage to a permanent or player, it deals half that damage, rounded down, to that permanent or player instead.\nSVar:DmgHalfDown:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/HalfDown\nAI:RemoveDeck:Random\nOracle:If a source would deal damage to a permanent or player, it deals half that damage, rounded down, to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ghosts of the Innocent"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

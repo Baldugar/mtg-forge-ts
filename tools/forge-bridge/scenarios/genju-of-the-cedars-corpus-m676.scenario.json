@@ -1,0 +1,23 @@
+{
+  "id": "genju-of-the-cedars-corpus-m676",
+  "description": "M6 corpus — Genju of the Cedars; in-hand parse.",
+  "seed": 66046,
+  "cards": {
+    "Genju of the Cedars": "Name:Genju of the Cedars\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Forest\nSVar:AttachAILogic:Pump\nA:AB$ Animate | Cost$ 2 | Defined$ Enchanted | Power$ 4 | Toughness$ 4 | Types$ Creature,Spirit | Colors$ Green | SpellDescription$ Enchanted Forest becomes a 4/4 green Spirit creature until end of turn. It's still a land.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigReturnOwner | OptionalDecider$ You | TriggerDescription$ When enchanted Forest is put into a graveyard, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturnOwner:DB$ ChangeZone | Hidden$ True | ChangeType$ Card.StrictlySelf | DefinedPlayer$ You | Origin$ Graveyard | Destination$ Hand | Mandatory$ True\nSVar:NonStackingAttachEffect:True\nSVar:AIPaymentPreference:AvoidPayingWithAttachTarget\nOracle:Enchant Forest\\n{2}: Enchanted Forest becomes a 4/4 green Spirit creature until end of turn. It's still a land.\\nWhen enchanted Forest is put into a graveyard, you may return Genju of the Cedars from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genju of the Cedars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

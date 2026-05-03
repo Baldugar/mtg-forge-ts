@@ -1,0 +1,25 @@
+{
+  "id": "chromeshell-crab-corpus-m676",
+  "description": "M6 corpus — Chromeshell Crab; ETB-on-bf.",
+  "seed": 62115,
+  "cards": {
+    "Chromeshell Crab": "Name:Chromeshell Crab\nManaCost:4 U\nTypes:Creature Crab Beast\nPT:3/3\nK:Morph:4 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigFaceUp | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ When CARDNAME is turned face up, you may exchange control of target creature you control and target creature an opponent controls.\nSVar:TrigFaceUp:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Choose target creature you control | SubAbility$ CrabExchange\nSVar:CrabExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls | SpellDescription$ Exchange control of target creature you control and target creature an opponent controls.\nAI:RemoveDeck:All\nOracle:Morph {4}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Chromeshell Crab is turned face up, you may exchange control of target creature you control and target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chromeshell Crab"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

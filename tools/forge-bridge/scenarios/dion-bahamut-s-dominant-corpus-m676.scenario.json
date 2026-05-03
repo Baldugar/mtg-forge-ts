@@ -1,0 +1,23 @@
+{
+  "id": "dion-bahamut-s-dominant-corpus-m676",
+  "description": "M6 corpus — Dion, Bahamut's Dominant; in-hand parse.",
+  "seed": 63643,
+  "cards": {
+    "Dion, Bahamut's Dominant": "Name:Dion, Bahamut's Dominant\nManaCost:3 W\nTypes:Legendary Creature Human Noble Knight\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Self,Knight.Other+YouCtrl | AddKeyword$ Flying | Condition$ PlayerTurn | Description$ Dragonfire Dive — During your turn, NICKNAME and other Knights you control have flying.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a 2/2 white Knight creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_knight | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ 4 W W T | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile NICKNAME, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nDeckHints:Type$Knight\nOracle:Dragonfire Dive — During your turn, Dion and other Knights you control have flying.\\nWhen Dion enters, create a 2/2 white Knight creature token.\\n{4}{W}{W}, {T}: Exile Dion, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\n\nALTERNATE\n\nName:Bahamut, Warden of Light\nManaCost:no cost\nColors:white\nTypes:Legendary Enchantment Creature Saga Dragon\nPT:5/5\nK:Chapter:3:DBWingsOfLight,DBWingsOfLight,DBGigaflare\nSVar:DBWingsOfLight:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPumpAll | SpellDescription$ Wings of Light — Put a +1/+1 counter on each other creature you control. Those creatures gain flying until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+StrictlyOther | KW$ Flying\nSVar:DBGigaflare:DB$ Destroy | ValidTgts$ Permanent | SubAbility$ DBExile | SpellDescription$ Gigaflare — Destroy target permanent. Exile NICKNAME, then return it to the battlefield (front face up).\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | RememberChanged$ True\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Flying\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI, II — Wings of Light — Put a +1/+1 counter on each other creature you control. Those creatures gain flying until end of turn.\\nIII — Gigaflare — Destroy target permanent. Exile Bahamut, then return it to the battlefield (front face up).\\nFlying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dion, Bahamut's Dominant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

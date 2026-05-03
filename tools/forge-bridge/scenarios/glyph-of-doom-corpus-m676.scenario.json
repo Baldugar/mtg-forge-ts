@@ -1,0 +1,23 @@
+{
+  "id": "glyph-of-doom-corpus-m676",
+  "description": "M6 corpus — Glyph of Doom; in-hand parse.",
+  "seed": 66359,
+  "cards": {
+    "Glyph of Doom": "Name:Glyph of Doom\nManaCost:B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.Wall | TgtPrompt$ Select target Wall creature | SubAbility$ DelTrig | StackDescription$ SpellDescription | SpellDescription$ Choose target Wall creature. At this turn's next end of combat, destroy all creatures that were blocked by that creature this turn.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | RememberObjects$ Targeted | Execute$ TrigRem | ThisTurn$ True | TriggerDescription$ At end of combat, destroy all creatures that were blocked by that creature this turn.\nSVar:TrigRem:DB$ Pump | RememberObjects$ DelayTriggerRemembered | SubAbility$ TrigDestroy\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.blockedByRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHints:Type$Wall & Keyword$Defender\nOracle:Choose target Wall creature. At this turn's next end of combat, destroy all creatures that were blocked by that creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glyph of Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dark-favor-corpus-m676",
+  "description": "M6 corpus — Dark Favor; in-hand parse.",
+  "seed": 63076,
+  "cards": {
+    "Dark Favor": "Name:Dark Favor\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 1 | Description$ Enchanted creature gets +3/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, you lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:Enchant creature\\nWhen Dark Favor enters, you lose 1 life.\\nEnchanted creature gets +3/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Favor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

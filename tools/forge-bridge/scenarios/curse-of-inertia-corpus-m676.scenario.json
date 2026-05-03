@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-inertia-corpus-m676",
+  "description": "M6 corpus — Curse of Inertia; in-hand parse.",
+  "seed": 62927,
+  "cards": {
+    "Curse of Inertia": "Name:Curse of Inertia\nManaCost:2 U\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ AttackersDeclared | Execute$ TrigTapOrUntap | TriggerZones$ Battlefield | AttackedTarget$ Player.EnchantedBy | TriggerDescription$ Whenever a player attacks enchanted player with one or more creatures, that attacking player may tap or untap target permanent of their choice.\nSVar:TrigTapOrUntap:DB$ TapOrUntap | ValidTgts$ Permanent | TargetingPlayer$ TriggeredAttackingPlayer | Tapper$ TriggeredAttackingPlayer\nOracle:Enchant player\\nWhenever a player attacks enchanted player with one or more creatures, that attacking player may tap or untap target permanent of their choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Inertia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

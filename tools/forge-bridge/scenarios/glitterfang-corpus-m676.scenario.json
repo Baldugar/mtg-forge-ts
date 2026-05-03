@@ -1,0 +1,23 @@
+{
+  "id": "glitterfang-corpus-m676",
+  "description": "M6 corpus — Glitterfang; in-hand parse.",
+  "seed": 66319,
+  "cards": {
+    "Glitterfang": "Name:Glitterfang\nManaCost:R\nTypes:Creature Spirit\nPT:1/1\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of the end step, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:EndOfTurnLeavePlay:True\nOracle:Haste\\nAt the beginning of the end step, return Glitterfang to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glitterfang"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

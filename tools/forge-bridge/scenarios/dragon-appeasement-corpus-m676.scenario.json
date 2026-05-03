@@ -1,0 +1,25 @@
+{
+  "id": "dragon-appeasement-corpus-m676",
+  "description": "M6 corpus — Dragon Appeasement; ETB-on-bf.",
+  "seed": 63886,
+  "cards": {
+    "Dragon Appeasement": "Name:Dragon Appeasement\nManaCost:3 B R G\nTypes:Enchantment\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nT:Mode$ Sacrificed | ValidCard$ Creature.YouCtrl | Execute$ TrigDrawCard | OptionalDecider$ You | TriggerZones$ Battlefield | TriggerDescription$ Whenever you sacrifice a creature, you may draw a card.\nSVar:TrigDrawCard:DB$ Draw | Defined$ You | NumCards$ 1\nAI:RemoveDeck:Random\nOracle:Skip your draw step.\\nWhenever you sacrifice a creature, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dragon Appeasement"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

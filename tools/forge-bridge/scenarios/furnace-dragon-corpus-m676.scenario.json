@@ -1,0 +1,23 @@
+{
+  "id": "furnace-dragon-corpus-m676",
+  "description": "M6 corpus — Furnace Dragon; in-hand parse.",
+  "seed": 65843,
+  "cards": {
+    "Furnace Dragon": "Name:Furnace Dragon\nManaCost:6 R R R\nTypes:Creature Dragon\nPT:5/5\nK:Affinity:Artifact\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, exile all artifacts.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Artifact | Origin$ Battlefield | Destination$ Exile\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nFlying\\nWhen Furnace Dragon enters, if you cast it from your hand, exile all artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furnace Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

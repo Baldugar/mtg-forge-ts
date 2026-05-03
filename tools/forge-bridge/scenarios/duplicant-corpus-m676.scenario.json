@@ -1,0 +1,23 @@
+{
+  "id": "duplicant-corpus-m676",
+  "description": "M6 corpus — Duplicant; in-hand parse.",
+  "seed": 64159,
+  "cards": {
+    "Duplicant": "Name:Duplicant\nManaCost:6\nTypes:Artifact Creature Shapeshifter\nPT:2/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Imprint — When CARDNAME enters, you may exile target nontoken creature.\nSVar:TrigExile:DB$ ChangeZone | Unimprint$ True | Imprint$ True | ImprintLast$ True | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.!token | TgtPrompt$ Select target nontoken creature\nS:Mode$ Continuous | Affected$ Card.Self | AddType$ ImprintedCreatureType | CheckSVar$ Z | SVarCompare$ EQ1 | SetPower$ X | SetToughness$ Y | Description$ As long as a card exiled with CARDNAME is a creature card, CARDNAME has the power, toughness, and creature types of the last creature card exiled with CARDNAME. It's still a Shapeshifter.\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Any | Static$ True | ValidCard$ Card.IsImprinted | Execute$ DBCleanup\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | Static$ True | ValidCard$ Card.Self | Execute$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:X:Imprinted$CardPower\nSVar:Y:Imprinted$CardToughness\nSVar:Z:Count$ValidExile Creature.IsImprinted\nOracle:Imprint — When Duplicant enters, you may exile target nontoken creature.\\nAs long as a card exiled with Duplicant is a creature card, Duplicant has the power, toughness, and creature types of the last creature card exiled with Duplicant. It's still a Shapeshifter.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duplicant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "c-rdan-the-shipwright-corpus-m676",
+  "description": "M6 corpus — Círdan the Shipwright; in-hand parse.",
+  "seed": 62164,
+  "cards": {
+    "Círdan the Shipwright": "Name:Círdan the Shipwright\nManaCost:3 G U\nTypes:Legendary Creature Elf Noble\nPT:3/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigVote | TriggerDescription$ Secret council — Whenever CARDNAME enters or attacks, each player secretly votes for a player, then those votes are revealed. Each player draws a card for each vote they received. Each player who received no votes may put a permanent card from their hand onto the battlefield.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigVote | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Secret council — Whenever CARDNAME enters or attacks, each player secretly votes for a player, then those votes are revealed. Each player draws a card for each vote they received. Each player who received no votes may put a permanent card from their hand onto the battlefield.\nSVar:TrigVote:DB$ Vote | Defined$ Player | Secretly$ True | VotePlayer$ Player | StoreVoteNum$ True | SubAbility$ DBRepeatDraw\nSVar:DBRepeatDraw:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDraw | AmountFromVotes$ True | SubAbility$ DBRepeatPut\nSVar:DBDraw:DB$ Draw | Defined$ Remembered | NumCards$ Votes\nSVar:DBRepeatPut:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBChangeZone | AmountFromVotes$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | DefinedPlayer$ Remembered | ConditionCheckSVar$ Votes | ConditionSVarCompare$ EQ0 | ChangeType$ Permanent | Origin$ Hand | Destination$ Battlefield\nOracle:Vigilance\\nSecret council — Whenever Círdan the Shipwright enters or attacks, each player secretly votes for a player, then those votes are revealed. Each player draws a card for each vote they received. Each player who received no votes may put a permanent card from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Círdan the Shipwright"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

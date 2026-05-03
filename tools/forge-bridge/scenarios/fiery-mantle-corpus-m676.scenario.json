@@ -1,0 +1,23 @@
+{
+  "id": "fiery-mantle-corpus-m676",
+  "description": "M6 corpus — Fiery Mantle; in-hand parse.",
+  "seed": 65286,
+  "cards": {
+    "Fiery Mantle": "Name:Fiery Mantle\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nA:AB$ Pump | Cost$ R | Defined$ Enchanted | NumAtt$ +1 | SpellDescription$ Enchanted creature gets +1/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nSVar:SacMe:2\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\n{R}: Enchanted creature gets +1/+0 until end of turn.\\nWhen Fiery Mantle is put into a graveyard from the battlefield, return Fiery Mantle to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiery Mantle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

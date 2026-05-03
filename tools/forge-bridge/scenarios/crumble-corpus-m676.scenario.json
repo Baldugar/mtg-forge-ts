@@ -1,0 +1,23 @@
+{
+  "id": "crumble-corpus-m676",
+  "description": "M6 corpus — Crumble; in-hand parse.",
+  "seed": 62811,
+  "cards": {
+    "Crumble": "Name:Crumble\nManaCost:G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact | NoRegen$ True | SubAbility$ DBGainLife | SpellDescription$ Destroy target artifact. It can't be regenerated.\nSVar:DBGainLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X | SpellDescription$ That artifact's controller gains life equal to its mana value.\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:Random\nOracle:Destroy target artifact. It can't be regenerated. That artifact's controller gains life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crumble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

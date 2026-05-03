@@ -1,0 +1,23 @@
+{
+  "id": "combust-corpus-m676",
+  "description": "M6 corpus — Combust; in-hand parse.",
+  "seed": 62403,
+  "cards": {
+    "Combust": "Name:Combust\nManaCost:1 R\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ DealDamage | ValidTgts$ Creature.White,Creature.Blue | NumDmg$ 5 | NoPrevention$ True | TgtPrompt$ Select target white or blue creature. | SpellDescription$ CARDNAME deals 5 damage to target white or blue creature. The damage can't be prevented.\nAI:RemoveDeck:Random\nOracle:This spell can't be countered.\\nCombust deals 5 damage to target white or blue creature. The damage can't be prevented.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Combust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

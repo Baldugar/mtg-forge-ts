@@ -1,0 +1,25 @@
+{
+  "id": "captain-howler-sea-scourge-corpus-m676",
+  "description": "M6 corpus — Captain Howler, Sea Scourge; ETB-on-bf.",
+  "seed": 61703,
+  "cards": {
+    "Captain Howler, Sea Scourge": "Name:Captain Howler, Sea Scourge\nManaCost:2 U R\nTypes:Legendary Creature Shark Pirate\nPT:5/4\nK:Ward:2 PayLife<2>\nT:Mode$ DiscardedAll | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you discard one or more cards, target creature gets +2/+0 until end of turn for each card discarded this way. Whenever that creature deals combat damage to a player this turn, you draw a card.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | Triggers$ TrigDamage\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Creature.IsRemembered | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever that creature deals combat damage to a player this turn, you draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:X:TriggerCount$Amount/Twice\nDeckHints:Ability$Discard\nOracle:Ward—{2}, Pay 2 life.\\nWhenever you discard one or more cards, target creature gets +2/+0 until end of turn for each card discarded this way. Whenever that creature deals combat damage to a player this turn, you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Captain Howler, Sea Scourge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dundoolin-weaver-corpus-m676",
+  "description": "M6 corpus — Dundoolin Weaver; in-hand parse.",
+  "seed": 64144,
+  "cards": {
+    "Dundoolin Weaver": "Name:Dundoolin Weaver\nManaCost:1 G\nTypes:Creature Kithkin Druid\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Creature.YouCtrl | PresentCompare$ GE3 | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, if you control three or more creatures, return target permanent card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Choose target permanent card in your graveyard\nOracle:When this creature enters, if you control three or more creatures, return target permanent card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dundoolin Weaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

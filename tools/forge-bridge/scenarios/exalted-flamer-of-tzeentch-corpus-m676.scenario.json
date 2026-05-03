@@ -1,0 +1,23 @@
+{
+  "id": "exalted-flamer-of-tzeentch-corpus-m676",
+  "description": "M6 corpus — Exalted Flamer of Tzeentch; in-hand parse.",
+  "seed": 64840,
+  "cards": {
+    "Exalted Flamer of Tzeentch": "Name:Exalted Flamer of Tzeentch\nManaCost:2 U R\nTypes:Creature Demon\nPT:2/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Sorcerous Inspiration — At the beginning of your upkeep, return an instant or sorcery card at random from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ChangeType$ Instant.YouOwn,Sorcery.YouOwn | ChangeNum$ 1 | Hidden$ True | Origin$ Graveyard | AtRandom$ True | Destination$ Hand\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Fire of Tzeentch — Whenever you cast an instant or sorcery spell, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 1\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Instant|Sorcery\nOracle:Sorcerous Inspiration — At the beginning of your upkeep, return an instant or sorcery card at random from your graveyard to your hand.\\nFire of Tzeentch — Whenever you cast an instant or sorcery spell, Exalted Flamer of Tzeentch deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exalted Flamer of Tzeentch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

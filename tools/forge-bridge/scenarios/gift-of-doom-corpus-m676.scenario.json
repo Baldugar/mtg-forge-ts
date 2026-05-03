@@ -1,0 +1,23 @@
+{
+  "id": "gift-of-doom-corpus-m676",
+  "description": "M6 corpus — Gift of Doom; in-hand parse.",
+  "seed": 66186,
+  "cards": {
+    "Gift of Doom": "Name:Gift of Doom\nManaCost:4 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Deathtouch & Indestructible | Description$ Enchanted creature has deathtouch and indestructible.\nK:Morph:Sac<1/Creature.Other/another creature>\nR:Event$ TurnFaceUp | ValidCard$ Card.Self | ReplaceWith$ DBAttach | ActiveZones$ Battlefield | Description$ As CARDNAME is turned face up, you may attach it to a creature.\nSVar:DBAttach:DB$ Attach | Choices$ Creature | ChoiceTitle$ Choose a creature | Object$ Self | Optional$ True | AILogic$ Pump\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature has deathtouch and indestructible.\\nMorph—Sacrifice another creature. (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nAs Gift of Doom is turned face up, you may attach it to a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gift of Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

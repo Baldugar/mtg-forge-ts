@@ -1,0 +1,23 @@
+{
+  "id": "change-of-plans-corpus-m676",
+  "description": "M6 corpus — Change of Plans; in-hand parse.",
+  "seed": 61971,
+  "cards": {
+    "Change of Plans": "Name:Change of Plans\nManaCost:X 1 U\nTypes:Instant\nA:SP$ Connive | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select X target creatures you control | TargetMin$ X | TargetMax$ X | SubAbility$ DBPhase | SpellDescription$ Each of X target creatures you control connive.\nSVar:DBPhase:DB$ Phases | Defined$ Targeted | AnyNumber$ True | StackDescription$ REP You_{p:You} | AILogic$ DontPhaseOut | SpellDescription$ You may have any number of them phase out. (To have a creature connive, draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature. Treat phased out permanents and anything attached to them as though they don't exist until their controller's next turn.)\nSVar:X:Count$xPaid\nDeckHas:Ability$Discard|Counters\nOracle:Each of X target creatures you control connive. You may have any number of them phase out. (To have a creature connive, draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature. Treat phased out permanents and anything attached to them as though they don't exist until their controller's next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Change of Plans"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

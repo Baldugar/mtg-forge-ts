@@ -1,0 +1,23 @@
+{
+  "id": "fiery-inscription-corpus-m676",
+  "description": "M6 corpus — Fiery Inscription; in-hand parse.",
+  "seed": 65285,
+  "cards": {
+    "Fiery Inscription": "Name:Fiery Inscription\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTempt | TriggerDescription$ When CARDNAME enters, the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME deals 2 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nDeckHints:Type$Instant|Sorcery\nOracle:When Fiery Inscription enters, the Ring tempts you.\\nWhenever you cast an instant or sorcery spell, Fiery Inscription deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiery Inscription"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

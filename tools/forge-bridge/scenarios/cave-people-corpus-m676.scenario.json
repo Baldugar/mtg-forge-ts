@@ -1,0 +1,23 @@
+{
+  "id": "cave-people-corpus-m676",
+  "description": "M6 corpus — Cave People; in-hand parse.",
+  "seed": 61838,
+  "cards": {
+    "Cave People": "Name:Cave People\nManaCost:1 R R\nTypes:Creature Human\nPT:1/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/-2 until end of turn.\nA:AB$ Pump | Cost$ 1 R R T | ValidTgts$ Creature | KW$ Landwalk:Mountain | SpellDescription$ Target creature gains mountainwalk until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ -2\nDeckHas:Keyword$Landwalk:Mountain\nOracle:Whenever Cave People attacks, it gets +1/-2 until end of turn.\\n{1}{R}{R}, {T}: Target creature gains mountainwalk until end of turn. (It can't be blocked as long as defending player controls a Mountain.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cave People"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

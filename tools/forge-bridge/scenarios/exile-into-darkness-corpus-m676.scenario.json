@@ -1,0 +1,23 @@
+{
+  "id": "exile-into-darkness-corpus-m676",
+  "description": "M6 corpus — Exile into Darkness; in-hand parse.",
+  "seed": 64862,
+  "cards": {
+    "Exile into Darkness": "Name:Exile into Darkness\nManaCost:4 B\nTypes:Sorcery\nA:SP$ Sacrifice | ValidTgts$ Player | SacValid$ Creature.cmcLE3 | SacMessage$ creature with mana value 3 or less | SpellDescription$ Target player sacrifices a creature with mana value 3 or less.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Graveyard | CheckSVar$ X | SVarCompare$ GTY | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if you have more cards in hand than each opponent, you may return CARDNAME from your graveyard to your hand.\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:PlayerCountOpponents$HighestCardsInHand\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nOracle:Target player sacrifices a creature with mana value 3 or less.\\nAt the beginning of your upkeep, if you have more cards in hand than each opponent, you may return Exile into Darkness from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exile into Darkness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

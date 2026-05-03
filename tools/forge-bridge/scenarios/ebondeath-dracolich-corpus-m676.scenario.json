@@ -1,0 +1,25 @@
+{
+  "id": "ebondeath-dracolich-corpus-m676",
+  "description": "M6 corpus — Ebondeath, Dracolich; ETB-on-bf.",
+  "seed": 64279,
+  "cards": {
+    "Ebondeath, Dracolich": "Name:Ebondeath, Dracolich\nManaCost:2 B B\nTypes:Legendary Creature Zombie Dragon\nPT:5/2\nK:Flash\nK:Flying\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nS:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Graveyard | AffectedZone$ Graveyard | MayPlay$ True | CheckSVar$ X | Description$ You may cast CARDNAME from your graveyard if a creature not named Ebondeath, Dracolich died this turn.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.!namedEbondeath; Dracolich\nSVar:SacMe:3\nSVar:DiscardMe:3\nOracle:Flash\\nFlying\\nEbondeath, Dracolich enters tapped.\\nYou may cast Ebondeath, Dracolich from your graveyard if a creature not named Ebondeath, Dracolich died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ebondeath, Dracolich"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

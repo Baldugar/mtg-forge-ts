@@ -1,0 +1,23 @@
+{
+  "id": "danitha-benalia-s-hope-corpus-m676",
+  "description": "M6 corpus — Danitha, Benalia's Hope; in-hand parse.",
+  "seed": 63050,
+  "cards": {
+    "Danitha, Benalia's Hope": "Name:Danitha, Benalia's Hope\nManaCost:4 W\nTypes:Legendary Creature Human Knight\nPT:4/4\nK:First Strike\nK:Vigilance\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, you may put an Aura or Equipment card from your hand or graveyard onto the battlefield attached to NICKNAME.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Battlefield | ChangeType$ Aura.CanEnchantSource,Equipment.CanEnchantSource | AttachedTo$ Self | ChangeNum$ 1\nDeckNeeds:Type$Aura|Equipment\nOracle:First strike, vigilance, lifelink\\nWhen Danitha, Benalia's Hope enters, you may put an Aura or Equipment card from your hand or graveyard onto the battlefield attached to Danitha.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Danitha, Benalia's Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

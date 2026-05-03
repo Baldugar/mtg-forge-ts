@@ -1,0 +1,23 @@
+{
+  "id": "explore-corpus-m676",
+  "description": "M6 corpus — Explore; in-hand parse.",
+  "seed": 64894,
+  "cards": {
+    "Explore": "Name:Explore\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Effect | StaticAbilities$ Exploration | AILogic$ Always | SubAbility$ DBDraw | SpellDescription$ You may play an additional land this turn. Draw a card.\nSVar:Exploration:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land this turn.\nSVar:NeedsToPlayVar:ZZ GE1\nSVar:ZZ:Count$ValidHand Land.YouOwn\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:You may play an additional land this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Explore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

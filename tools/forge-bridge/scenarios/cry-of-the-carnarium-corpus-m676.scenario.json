@@ -1,0 +1,23 @@
+{
+  "id": "cry-of-the-carnarium-corpus-m676",
+  "description": "M6 corpus — Cry of the Carnarium; in-hand parse.",
+  "seed": 62830,
+  "cards": {
+    "Cry of the Carnarium": "Name:Cry of the Carnarium\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SubAbility$ ExileSomeCreatures | SpellDescription$ All creatures get -2/-2 until end of turn.\nSVar:ExileSomeCreatures:DB$ ChangeZone | Defined$ ValidGraveyard Creature.!token+ThisTurnEnteredFrom_Battlefield | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBEffect | SpellDescription$ Exile all creature cards in all graveyards that were put there from the battlefield this turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ DeathRep | SpellDescription$ If a creature would die this turn, exile it instead.\nSVar:DeathRep:Event$ Moved | ValidLKI$ Creature | Origin$ Battlefield | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If a creature would die this turn, exile it instead.\nSVar:Exile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nOracle:All creatures get -2/-2 until end of turn. Exile all creature cards in all graveyards that were put there from the battlefield this turn. If a creature would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cry of the Carnarium"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

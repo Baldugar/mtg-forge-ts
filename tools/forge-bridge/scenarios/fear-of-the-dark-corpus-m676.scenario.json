@@ -1,0 +1,23 @@
+{
+  "id": "fear-of-the-dark-corpus-m676",
+  "description": "M6 corpus — Fear of the Dark; in-hand parse.",
+  "seed": 65146,
+  "cards": {
+    "Fear of the Dark": "Name:Fear of the Dark\nManaCost:4 B\nTypes:Enchantment Creature Nightmare\nPT:5/5\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | IsPresent$ Creature.Glimmer+DefenderCtrl | PresentCompare$ EQ0 | TriggerDescription$ Whenever CARDNAME attacks, if defending player controls no Glimmer creatures, it gains menace and deathtouch until end of turn. (A creature with menace can't be blocked except by two or more creatures.)\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Menace & Deathtouch\nOracle:Whenever Fear of the Dark attacks, if defending player controls no Glimmer creatures, it gains menace and deathtouch until end of turn. (A creature with menace can't be blocked except by two or more creatures.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear of the Dark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "drey-keeper-corpus-m676",
+  "description": "M6 corpus — Drey Keeper; in-hand parse.",
+  "seed": 64044,
+  "cards": {
+    "Drey Keeper": "Name:Drey Keeper\nManaCost:3 B G\nTypes:Creature Elf Druid\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 green Squirrel creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_1_1_squirrel | TokenOwner$ You\nA:AB$ PumpAll | Cost$ 3 B | ValidCards$ Squirrel.YouCtrl | NumAtt$ +1 | KW$ Menace | SpellDescription$ Squirrels you control get +1/+0 and gain menace until end of turn.\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nDeckNeeds:Type$Squirrel\nOracle:When Drey Keeper enters, create two 1/1 green Squirrel creature tokens.\\n{3}{B}: Squirrels you control get +1/+0 and gain menace until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drey Keeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

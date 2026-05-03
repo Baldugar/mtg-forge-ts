@@ -1,0 +1,23 @@
+{
+  "id": "fear-of-impostors-corpus-m676",
+  "description": "M6 corpus — Fear of Impostors; in-hand parse.",
+  "seed": 65141,
+  "cards": {
+    "Fear of Impostors": "Name:Fear of Impostors\nManaCost:1 U U\nTypes:Enchantment Creature Nightmare\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigCounter | TriggerDescription$ When CARDNAME enters, counter target spell. Its controller manifests dread. (That player looks at the top two cards of their library, then puts one onto the battlefield face down as a 2/2 creature and the other into their graveyard. If it's a creature card, it can be turned face up any time for its mana cost.)\nSVar:TrigCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | SubAbility$ DBDread | TgtPrompt$ Select target spell\nSVar:DBDread:DB$ ManifestDread | DefinedPlayer$ TargetedController\nOracle:Flash\\nWhen Fear of Impostors enters, counter target spell. Its controller manifests dread. (That player looks at the top two cards of their library, then puts one onto the battlefield face down as a 2/2 creature and the other into their graveyard. If it's a creature card, it can be turned face up any time for its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear of Impostors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chronicler-of-worship-corpus-m676",
+  "description": "M6 corpus — Chronicler of Worship; in-hand parse.",
+  "seed": 62121,
+  "cards": {
+    "Chronicler of Worship": "Name:Chronicler of Worship\nManaCost:1 G\nTypes:Creature Human Monk\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDigShrine | TriggerDescription$ When CARDNAME enters, put a random Shrine card from among the top seven cards of your library into your hand. It perpetually gains \"This spell costs {1} less to cast.\" Then shuffle.\nSVar:TrigDigShrine:DB$ Dig | Defined$ You | DigNum$ 7 | ChangeNum$ 1 | ChangeValid$ Card.Shrine | RememberChanged$ True | RandomChange$ True | DestinationZone$ Hand | Mandatory$ True | NoLooking$ True | DestinationZone2$ Library | LibraryPosition2$ 0 | SkipReorder$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ PerpetualReduce | Duration$ Perpetual | SubAbility$ DBShuffle\nSVar:PerpetualReduce:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} less to cast.\nSVar:DBShuffle:DB$ Shuffle | Defined$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nDeckNeeds:Type$Shrine\nOracle:When Chronicler of Worship enters, put a random Shrine card from among the top seven cards of your library into your hand. It perpetually gains \"This spell costs {1} less to cast.\" Then shuffle.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chronicler of Worship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

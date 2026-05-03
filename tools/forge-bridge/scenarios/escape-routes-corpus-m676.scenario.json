@@ -1,0 +1,25 @@
+{
+  "id": "escape-routes-corpus-m676",
+  "description": "M6 corpus — Escape Routes; ETB-on-bf.",
+  "seed": 64723,
+  "cards": {
+    "Escape Routes": "Name:Escape Routes\nManaCost:2 U\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ 2 U | ValidTgts$ Creature.White+YouCtrl,Creature.Black+YouCtrl | TgtPrompt$ Select target white or black creature you control | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target white or black creature you control to its owner's hand.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nDeckHints:Color$White|Black\nOracle:{2}{U}: Return target white or black creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Escape Routes"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

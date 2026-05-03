@@ -1,0 +1,23 @@
+{
+  "id": "death-frenzy-corpus-m676",
+  "description": "M6 corpus — Death Frenzy; in-hand parse.",
+  "seed": 63244,
+  "cards": {
+    "Death Frenzy": "Name:Death Frenzy\nManaCost:3 B G\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SubAbility$ DBEffect | SpellDescription$ All creatures get -2/-2 until end of turn. Whenever a creature dies this turn, you gain 1 life.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDies\nSVar:TrigDies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature | Execute$ TrigGainLife | TriggerDescription$ Whenever a creature dies this turn, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nOracle:All creatures get -2/-2 until end of turn. Whenever a creature dies this turn, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Frenzy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

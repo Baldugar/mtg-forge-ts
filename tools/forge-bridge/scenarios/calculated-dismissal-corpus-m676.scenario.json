@@ -1,0 +1,23 @@
+{
+  "id": "calculated-dismissal-corpus-m676",
+  "description": "M6 corpus — Calculated Dismissal; in-hand parse.",
+  "seed": 61604,
+  "cards": {
+    "Calculated Dismissal": "Name:Calculated Dismissal\nManaCost:2 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ 3 | SubAbility$ DBScry | SpellDescription$ Counter target spell unless its controller pays {3}. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, scry 2.\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2\nOracle:Counter target spell unless its controller pays {3}.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, scry 2. (To scry 2, look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Calculated Dismissal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

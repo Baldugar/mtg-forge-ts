@@ -1,0 +1,23 @@
+{
+  "id": "earth-origin-yak-corpus-m676",
+  "description": "M6 corpus — Earth-Origin Yak; in-hand parse.",
+  "seed": 64248,
+  "cards": {
+    "Earth-Origin Yak": "Name:Earth-Origin Yak\nManaCost:3 W\nTypes:Creature Ox\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:TRUE\nOracle:When Earth-Origin Yak enters, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earth-Origin Yak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

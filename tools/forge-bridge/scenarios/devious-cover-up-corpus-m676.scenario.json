@@ -1,0 +1,23 @@
+{
+  "id": "devious-cover-up-corpus-m676",
+  "description": "M6 corpus — Devious Cover-Up; in-hand parse.",
+  "seed": 63571,
+  "cards": {
+    "Devious Cover-Up": "Name:Devious Cover-Up\nManaCost:2 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | Destination$ Exile | SubAbility$ DBChangeZone | SpellDescription$ Counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard. You may shuffle up to four target cards from your graveyard into your library.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ValidTgts$ Card.YouCtrl | TgtPrompt$ Select target card from your graveyard | TargetMin$ 0 | TargetMax$ 4 | Shuffle$ True | ShuffleNonMandatory$ True\nOracle:Counter target spell. If that spell is countered this way, exile it instead of putting it into its owner's graveyard. You may shuffle up to four target cards from your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devious Cover-Up"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

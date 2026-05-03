@@ -1,0 +1,23 @@
+{
+  "id": "followed-footsteps-corpus-m676",
+  "description": "M6 corpus — Followed Footsteps; in-hand parse.",
+  "seed": 65597,
+  "cards": {
+    "Followed Footsteps": "Name:Followed Footsteps\nManaCost:3 U U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:HighestEvaluation\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, create a token that's a copy of enchanted creature.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ Enchanted\nOracle:Enchant creature\\nAt the beginning of your upkeep, create a token that's a copy of enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Followed Footsteps"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

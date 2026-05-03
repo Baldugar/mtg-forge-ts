@@ -1,0 +1,23 @@
+{
+  "id": "burden-of-proof-corpus-m676",
+  "description": "M6 corpus — Burden of Proof; in-hand parse.",
+  "seed": 61509,
+  "cards": {
+    "Burden of Proof": "Name:Burden of Proof\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAITgts:Card.Detective+YouCtrl,Creature.OppCtrl\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Detective+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2 as long as it's a Detective you control. Otherwise, it has base power and toughness 1/1 and can't block Detectives.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+nonDetective,Creature.EnchantedBy+YouDontCtrl | Secondary$ True | SetPower$ 1 | SetToughness$ 1 | Description$ Enchanted creature gets +2/+2 as long as it's a Detective you control. Otherwise, it has base power and toughness 1/1 and can't block Detectives.\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Detective | Secondary$ True | ValidBlocker$ Creature.EnchantedBy+nonDetective,Creature.EnchantedBy+YouDontCtrl | Description$ Enchanted creature gets +2/+2 as long as it's a Detective you control. Otherwise, it has base power and toughness 1/1 and can't block Detectives.\nDeckHints:Type$Detective\nOracle:Flash\\nEnchant creature\\nEnchanted creature gets +2/+2 as long as it's a Detective you control. Otherwise, it has base power and toughness 1/1 and can't block Detectives.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burden of Proof"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "embermage-goblin-corpus-m676",
+  "description": "M6 corpus — Embermage Goblin; in-hand parse.",
+  "seed": 64497,
+  "cards": {
+    "Embermage Goblin": "Name:Embermage Goblin\nManaCost:3 R\nTypes:Creature Goblin Wizard\nPT:1/1\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to any target.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, you may search your library for a card named Embermage Goblin, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedEmbermage Goblin | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Name$Embermage Goblin\nOracle:When Embermage Goblin enters, you may search your library for a card named Embermage Goblin, reveal it, put it into your hand, then shuffle.\\n{T}: Embermage Goblin deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embermage Goblin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

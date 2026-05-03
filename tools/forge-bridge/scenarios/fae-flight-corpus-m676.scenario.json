@@ -1,0 +1,23 @@
+{
+  "id": "fae-flight-corpus-m676",
+  "description": "M6 corpus — Fae Flight; in-hand parse.",
+  "seed": 64975,
+  "cards": {
+    "Fae Flight": "Name:Fae Flight\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, enchanted creature gains hexproof until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Enchanted | KW$ Hexproof\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddKeyword$ Flying | Description$ Enchanted creature gets +1/+0 and has flying.\nOracle:Flash\\nEnchant creature\\nWhen Fae Flight enters, enchanted creature gains hexproof until end of turn.\\nEnchanted creature gets +1/+0 and has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fae Flight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crackling-drake-corpus-m676",
+  "description": "M6 corpus — Crackling Drake; in-hand parse.",
+  "seed": 62681,
+  "cards": {
+    "Crackling Drake": "Name:Crackling Drake\nManaCost:U U R R\nTypes:Creature Drake\nPT:*/4\nK:Flying\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ CARDNAME's power is equal to the total number of instant and sorcery cards you own in exile and in your graveyard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:GraveCount:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:ExileCount:Count$ValidExile Instant.YouOwn,Sorcery.YouOwn\nSVar:X:SVar$GraveCount/Plus.ExileCount\nDeckNeeds:Type$Instant|Sorcery\nOracle:Flying\\nCrackling Drake's power is equal to the total number of instant and sorcery cards you own in exile and in your graveyard.\\nWhen Crackling Drake enters, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crackling Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

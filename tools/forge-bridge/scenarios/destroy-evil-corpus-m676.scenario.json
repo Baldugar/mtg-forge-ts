@@ -1,0 +1,23 @@
+{
+  "id": "destroy-evil-corpus-m676",
+  "description": "M6 corpus — Destroy Evil; in-hand parse.",
+  "seed": 63543,
+  "cards": {
+    "Destroy Evil": "Name:Destroy Evil\nManaCost:1 W\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroyCreature,DBDestroyEnchantment\nSVar:DBDestroyCreature:DB$ Destroy | ValidTgts$ Creature.toughnessGE4 | TgtPrompt$ Select target creature with toughness 4 or greater | SpellDescription$ Destroy target creature with toughness 4 or greater.\nSVar:DBDestroyEnchantment:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nOracle:Choose one —\\n• Destroy target creature with toughness 4 or greater.\\n• Destroy target enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Destroy Evil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dissection-tools-corpus-m676",
+  "description": "M6 corpus — Dissection Tools; in-hand parse.",
+  "seed": 63725,
+  "cards": {
+    "Dissection Tools": "Name:Dissection Tools\nManaCost:5\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDread | TriggerDescription$ When CARDNAME enters, manifest dread, then attach CARDNAME to that creature.\nSVar:TrigDread:DB$ ManifestDread | RememberManifested$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Deathtouch & Lifelink | Description$ Equipped creature has +2/+2 and has deathtouch and lifelink.\nK:Equip:Sac<1/Creature>\nOracle:When Dissection Tools enters, manifest dread, then attach Dissection Tools to that creature.\\nEquipped creature has +2/+2 and has deathtouch and lifelink.\\nEquip—Sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dissection Tools"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

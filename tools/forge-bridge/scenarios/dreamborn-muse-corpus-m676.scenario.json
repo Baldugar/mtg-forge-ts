@@ -1,0 +1,23 @@
+{
+  "id": "dreamborn-muse-corpus-m676",
+  "description": "M6 corpus — Dreamborn Muse; in-hand parse.",
+  "seed": 64024,
+  "cards": {
+    "Dreamborn Muse": "Name:Dreamborn Muse\nManaCost:2 U U\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigMillYou | TriggerDescription$ At the beginning of each player's upkeep, that player mills X cards, where X is the number of cards in their hand.\nSVar:TrigMillYou:DB$ Mill | Defined$ TriggeredPlayer | NumCards$ X\nSVar:X:TriggeredPlayer$CardsInHand\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player mills X cards, where X is the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreamborn Muse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

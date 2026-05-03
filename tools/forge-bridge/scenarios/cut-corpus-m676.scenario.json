@@ -1,0 +1,23 @@
+{
+  "id": "cut-corpus-m676",
+  "description": "M6 corpus — Cut; in-hand parse.",
+  "seed": 62967,
+  "cards": {
+    "Cut": "Name:Cut\nManaCost:1 R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 4 | SpellDescription$ CARDNAME deals 4 damage to target creature.\nAlternateMode:Split\nOracle:Cut deals 4 damage to target creature.\n\nALTERNATE\n\nName:Ribbons\nManaCost:X B B\nTypes:Sorcery\nK:Aftermath\nA:SP$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SpellDescription$ Each opponent loses X life.\nSVar:X:Count$xPaid\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nEach opponent loses X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

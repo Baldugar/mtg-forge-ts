@@ -1,0 +1,23 @@
+{
+  "id": "feral-instinct-corpus-m676",
+  "description": "M6 corpus — Feral Instinct; in-hand parse.",
+  "seed": 65214,
+  "cards": {
+    "Feral Instinct": "Name:Feral Instinct\nManaCost:1 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Target creature gets +1/+1 until end of turn. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nOracle:Target creature gets +1/+1 until end of turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feral Instinct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

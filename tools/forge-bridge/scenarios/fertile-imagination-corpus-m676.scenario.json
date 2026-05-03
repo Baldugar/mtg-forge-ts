@@ -1,0 +1,23 @@
+{
+  "id": "fertile-imagination-corpus-m676",
+  "description": "M6 corpus — Fertile Imagination; in-hand parse.",
+  "seed": 65231,
+  "cards": {
+    "Fertile Imagination": "Name:Fertile Imagination\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Card | SubAbility$ DBReveal | SpellDescription$ Choose a card type. Target opponent reveals their hand. Create two 1/1 green Saproling creature tokens for each card of the chosen type revealed this way. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\nSVar:DBReveal:DB$ RevealHand | RememberRevealed$ True | ValidTgts$ Opponent | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:SVar$Y/Twice\nSVar:Y:Remembered$Valid Card.ChosenType\nAI:RemoveDeck:All\nDeckHas:Ability$Token\nOracle:Choose a card type. Target opponent reveals their hand. Create two 1/1 green Saproling creature tokens for each card of the chosen type revealed this way. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fertile Imagination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

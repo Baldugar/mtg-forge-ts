@@ -1,0 +1,23 @@
+{
+  "id": "feast-of-worms-corpus-m676",
+  "description": "M6 corpus — Feast of Worms; in-hand parse.",
+  "seed": 65159,
+  "cards": {
+    "Feast of Worms": "Name:Feast of Worms\nManaCost:3 G G\nTypes:Sorcery Arcane\nA:SP$ Destroy | ValidTgts$ Land | SubAbility$ DBSacrifice | AlwaysRemember$ True | RememberLKI$ True | SpellDescription$ Destroy target land. If that land was legendary, its controller sacrifices another land.\nSVar:DBSacrifice:DB$ Sacrifice | Defined$ RememberedController | SacValid$ Land | ConditionDefined$ RememberedLKI | ConditionPresent$ Land.Legendary | ConditionCompare$ EQ1 | ConditionDescription$ If that land was legendary, | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nOracle:Destroy target land. If that land was legendary, its controller sacrifices another land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feast of Worms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

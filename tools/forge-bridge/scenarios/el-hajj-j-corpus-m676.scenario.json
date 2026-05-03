@@ -1,0 +1,25 @@
+{
+  "id": "el-hajj-j-corpus-m676",
+  "description": "M6 corpus — El-Hajjâj; ETB-on-bf.",
+  "seed": 64346,
+  "cards": {
+    "El-Hajjâj": "Name:El-Hajjâj\nManaCost:1 B B\nTypes:Creature Human Wizard\nPT:1/1\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nDeckHas:Ability$LifeGain\nOracle:Whenever El-Hajjâj deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "El-Hajjâj"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

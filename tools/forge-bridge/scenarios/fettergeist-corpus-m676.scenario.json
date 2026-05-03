@@ -1,0 +1,23 @@
+{
+  "id": "fettergeist-corpus-m676",
+  "description": "M6 corpus — Fettergeist; in-hand parse.",
+  "seed": 65255,
+  "cards": {
+    "Fettergeist": "Name:Fettergeist\nManaCost:2 U\nTypes:Creature Spirit\nPT:3/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1} for each other creature you control.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Y\nSVar:Y:Count$Valid Creature.Other+YouCtrl\nAI:RemoveDeck:All\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice Fettergeist unless you pay {1} for each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fettergeist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

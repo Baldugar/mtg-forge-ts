@@ -1,0 +1,23 @@
+{
+  "id": "crosstown-courier-corpus-m676",
+  "description": "M6 corpus — Crosstown Courier; in-hand parse.",
+  "seed": 62778,
+  "cards": {
+    "Crosstown Courier": "Name:Crosstown Courier\nManaCost:1 U\nTypes:Creature Vedalken\nPT:2/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player mills that many cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever Crosstown Courier deals combat damage to a player, that player mills that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crosstown Courier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

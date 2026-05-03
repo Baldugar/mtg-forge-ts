@@ -1,0 +1,23 @@
+{
+  "id": "desmond-miles-corpus-m676",
+  "description": "M6 corpus — Desmond Miles; in-hand parse.",
+  "seed": 63518,
+  "cards": {
+    "Desmond Miles": "Name:Desmond Miles\nManaCost:1 B\nTypes:Legendary Creature Human Assassin\nPT:1/3\nK:Menace\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +1/+0 for each other Assassin you control and each Assassin card in your graveyard.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigSurveil | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, surveil X, where X is the amount of damage it dealt to that player.\nSVar:TrigSurveil:DB$ Surveil | Amount$ Z\nSVar:X:Count$Valid Assassin.YouCtrl+Other/Plus.Y\nSVar:Y:Count$ValidGraveyard Assassin.YouCtrl\nSVar:Z:TriggerCount$DamageAmount\nSVar:BuffedBy:Assassin\nDeckNeeds:Type$Assassin\nOracle:Menace\\nDesmond Miles gets +1/+0 for each other Assassin you control and each Assassin card in your graveyard.\\nWhenever Desmond Miles deals combat damage to a player, surveil X, where X is the amount of damage it dealt to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desmond Miles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

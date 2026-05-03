@@ -1,0 +1,25 @@
+{
+  "id": "drop-tower-corpus-m676",
+  "description": "M6 corpus — Drop Tower; ETB-on-bf.",
+  "seed": 64071,
+  "cards": {
+    "Drop Tower": "Name:Drop Tower\nManaCost:no cost\nTypes:Artifact Attraction\nK:Visit:TrigPump\nSVar:TrigPump:DB$ Effect | StaticAbilities$ Pump | ValidTgts$ Creature | Triggers$ ExileSelf | RememberObjects$ Targeted | SpellDescription$ Target creature gains flying until end of turn, or until any player rolls a 1, whichever comes first.\nSVar:Pump:Mode$ Continuous | Affected$ Card.IsRemembered | AddKeyword$ Flying | Description$ This creature gains flying until end of turn, or until any player rolls a 1.\nSVar:ExileSelf:Mode$ RolledDie | Execute$ TrigRemove | ValidResult$ EQ1 | Static$ True\nSVar:TrigRemove:DB$ ChangeZone | Origin$ Command | Defined$ Self | Destination$ Exile\nOracle:Visit — Target creature gains flying until end of turn, or until any player rolls a 1, whichever comes first.\n\n# --- VARIANTS ---\n\nVariant:A:Lights:2 3 6\nVariant:B:Lights:2 4 6\nVariant:C:Lights:2 5 6\nVariant:D:Lights:3 4 6\nVariant:E:Lights:3 5 6\nVariant:F:Lights:4 5 6\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Drop Tower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

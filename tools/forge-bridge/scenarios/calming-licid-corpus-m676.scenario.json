@@ -1,0 +1,25 @@
+{
+  "id": "calming-licid-corpus-m676",
+  "description": "M6 corpus — Calming Licid; ETB-on-bf.",
+  "seed": 61642,
+  "cards": {
+    "Calming Licid": "Name:Calming Licid\nManaCost:2 W\nTypes:Creature Licid\nPT:2/2\nA:AB$ Animate | Cost$ W T | Defined$ Self | RemoveThisAbility$ True | Duration$ Permanent | RevertCost$ W | Keywords$ Enchant:Creature | Types$ Enchantment,Aura | RemoveCardTypes$ True | RemoveEnchantmentTypes$ True | SubAbility$ DBAttach | SpellDescription$ CARDNAME loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {W} to end this effect.\nSVar:DBAttach:DB$ Attach | ValidTgts$ Creature | AILogic$ Curse\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack.\nAI:RemoveDeck:All\nOracle:{W}, {T}: Calming Licid loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {W} to end this effect.\\nEnchanted creature can't attack.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Calming Licid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

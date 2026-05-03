@@ -1,0 +1,25 @@
+{
+  "id": "den-of-the-bugbear-corpus-m676",
+  "description": "M6 corpus — Den of the Bugbear; ETB-on-bf.",
+  "seed": 63457,
+  "cards": {
+    "Den of the Bugbear": "Name:Den of the Bugbear\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ If you control two or more other lands, CARDNAME enters tapped.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT1\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Animate | Cost$ 3 R | Defined$ Self | Power$ 3 | Toughness$ 2 | Types$ Creature,Goblin | Colors$ Red | OverwriteColors$ True | Triggers$ TrigAttack | SpellDescription$ Until end of turn, CARDNAME becomes a 3/2 red Goblin creature with \"Whenever this creature attacks, create a 1/1 red Goblin creature token that's tapped and attacking.\" It's still a land.\nSVar:TrigAttack:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 red Goblin creature token that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenOwner$ You | TokenTapped$ True | TokenAttacking$ True\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nOracle:If you control two or more other lands, Den of the Bugbear enters tapped.\\n{T}: Add {R}.\\n{3}{R}: Until end of turn, Den of the Bugbear becomes a 3/2 red Goblin creature with \"Whenever this creature attacks, create a 1/1 red Goblin creature token that's tapped and attacking.\" It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Den of the Bugbear"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

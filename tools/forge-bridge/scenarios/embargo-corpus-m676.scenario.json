@@ -1,0 +1,23 @@
+{
+  "id": "embargo-corpus-m676",
+  "description": "M6 corpus — Embargo; in-hand parse.",
+  "seed": 64487,
+  "cards": {
+    "Embargo": "Name:Embargo\nManaCost:3 U\nTypes:Enchantment\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Permanent.nonLand | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Nonland permanents don't untap during their controllers' untap steps.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your upkeep, you lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 2\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Nonland permanents don't untap during their controllers' untap steps.\\nAt the beginning of your upkeep, you lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embargo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

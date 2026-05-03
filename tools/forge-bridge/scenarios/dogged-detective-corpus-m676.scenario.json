@@ -1,0 +1,23 @@
+{
+  "id": "dogged-detective-corpus-m676",
+  "description": "M6 corpus — Dogged Detective; in-hand parse.",
+  "seed": 63797,
+  "cards": {
+    "Dogged Detective": "Name:Dogged Detective\nManaCost:1 B\nTypes:Creature Human Rogue\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nT:Mode$ Drawn | ValidPlayer$ Player.Opponent | Number$ 2 | TriggerZones$ Graveyard | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Whenever an opponent draws their second card each turn, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand\nDeckHas:Ability$Graveyard\nOracle:When Dogged Detective enters, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\\nWhenever an opponent draws their second card each turn, you may return Dogged Detective from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dogged Detective"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fumulus-the-infestation-corpus-m676",
+  "description": "M6 corpus — Fumulus, the Infestation; in-hand parse.",
+  "seed": 65826,
+  "cards": {
+    "Fumulus, the Infestation": "Name:Fumulus, the Infestation\nManaCost:3 B\nTypes:Legendary Creature Vampire Insect\nPT:2/2\nK:Flying\nK:Deathtouch\nT:Mode$ Sacrificed | ValidCard$ Creature.!token | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player sacrifices a nontoken creature, create a 1/1 black Insect creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_insect_flying | TokenOwner$ You\nT:Mode$ Attacks | ValidCard$ Insect.YouCtrl,Leech.YouCtrl,Slug.YouCtrl,Worm.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever an Insect, Leech, Slug, or Worm you control attacks, defending player loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:PlayMain1:TRUE\nDeckHints:Type$Insect|Leech|Slug|Worm\nOracle:Flying, deathtouch\\nWhenever a player sacrifices a nontoken creature, create a 1/1 black Insect creature token with flying.\\nWhenever an Insect, Leech, Slug, or Worm you control attacks, defending player loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fumulus, the Infestation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

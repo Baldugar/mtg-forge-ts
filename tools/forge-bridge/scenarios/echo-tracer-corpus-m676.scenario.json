@@ -1,0 +1,25 @@
+{
+  "id": "echo-tracer-corpus-m676",
+  "description": "M6 corpus — Echo Tracer; ETB-on-bf.",
+  "seed": 64291,
+  "cards": {
+    "Echo Tracer": "Name:Echo Tracer\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nK:Morph:2 U\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, return target creature to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nOracle:Morph {2}{U} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Echo Tracer is turned face up, return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Echo Tracer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

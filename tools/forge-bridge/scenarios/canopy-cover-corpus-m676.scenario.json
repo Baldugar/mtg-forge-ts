@@ -1,0 +1,23 @@
+{
+  "id": "canopy-cover-corpus-m676",
+  "description": "M6 corpus — Canopy Cover; in-hand parse.",
+  "seed": 61671,
+  "cards": {
+    "Canopy Cover": "Name:Canopy Cover\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy | ValidBlocker$ Creature.withoutFlying+withoutReach | Description$ Enchanted creature can't be blocked except by creatures with flying or reach.\nS:Mode$ CantTarget | ValidTarget$ Card.EnchantedBy | Activator$ Opponent | Description$ Enchanted creature can't be the target of spells or abilities your opponents control.\nOracle:Enchant creature\\nEnchanted creature can't be blocked except by creatures with flying or reach.\\nEnchanted creature can't be the target of spells or abilities your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canopy Cover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

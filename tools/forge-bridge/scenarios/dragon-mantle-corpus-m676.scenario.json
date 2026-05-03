@@ -1,0 +1,23 @@
+{
+  "id": "dragon-mantle-corpus-m676",
+  "description": "M6 corpus — Dragon Mantle; in-hand parse.",
+  "seed": 63898,
+  "cards": {
+    "Dragon Mantle": "Name:Dragon Mantle\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ Pump | Description$ Enchanted creature has \"{R}: This creature gets +1/+0 until end of turn.\"\nSVar:Pump:AB$ Pump | Defined$ Self | Cost$ R | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nOracle:Enchant creature\\nWhen Dragon Mantle enters, draw a card.\\nEnchanted creature has \"{R}: This creature gets +1/+0 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Mantle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

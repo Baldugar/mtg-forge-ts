@@ -1,0 +1,23 @@
+{
+  "id": "derevi-empyrial-tactician-corpus-m676",
+  "description": "M6 corpus — Derevi, Empyrial Tactician; in-hand parse.",
+  "seed": 63484,
+  "cards": {
+    "Derevi, Empyrial Tactician": "Name:Derevi, Empyrial Tactician\nManaCost:G W U\nTypes:Legendary Creature Bird Wizard\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTapOrUntap | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME enters or a creature you control deals combat damage to a player, you may tap or untap target permanent.\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigTapOrUntap | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or a creature you control deals combat damage to a player, you may tap or untap target permanent.\nSVar:TrigTapOrUntap:DB$ TapOrUntap | ValidTgts$ Permanent\nA:AB$ ChangeZone | Cost$ 1 G W U | ActivationZone$ Command | Origin$ Command | Destination$ Battlefield | SpellDescription$ Put NICKNAME onto the battlefield from the command zone.\nOracle:Flying\\nWhenever Derevi, Empyrial Tactician enters or a creature you control deals combat damage to a player, you may tap or untap target permanent.\\n{1}{G}{W}{U}: Put Derevi onto the battlefield from the command zone.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Derevi, Empyrial Tactician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

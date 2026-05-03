@@ -1,0 +1,25 @@
+{
+  "id": "chancellor-of-the-tangle-corpus-m676",
+  "description": "M6 corpus — Chancellor of the Tangle; ETB-on-bf.",
+  "seed": 61953,
+  "cards": {
+    "Chancellor of the Tangle": "Name:Chancellor of the Tangle\nManaCost:4 G G G\nTypes:Creature Phyrexian Beast\nPT:6/7\nK:MayEffectFromOpeningHand:ManaOnMain\nK:Vigilance\nK:Reach\nSVar:RevealCard:DB$ Reveal | RevealDefined$ Self | SubAbility$ ManaOnMain | SpellDescription$ You may reveal this card from your opening hand. If you do, at the beginning of your first main phase of the game, add {G}.\nSVar:ManaOnMain:DB$ Effect | Triggers$ TrigMana | Duration$ Permanent\nSVar:TrigMana:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | OneOff$ True | Execute$ EffMana | TriggerDescription$ At the beginning of your first main phase, add G.\nSVar:EffMana:DB$ Mana | Produced$ G\nOracle:You may reveal this card from your opening hand. If you do, at the beginning of your first main phase of the game, add {G}.\\nVigilance, reach\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chancellor of the Tangle"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

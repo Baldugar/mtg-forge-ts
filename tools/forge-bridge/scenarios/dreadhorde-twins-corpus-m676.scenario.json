@@ -1,0 +1,23 @@
+{
+  "id": "dreadhorde-twins-corpus-m676",
+  "description": "M6 corpus — Dreadhorde Twins; in-hand parse.",
+  "seed": 63997,
+  "cards": {
+    "Dreadhorde Twins": "Name:Dreadhorde Twins\nManaCost:3 R\nTypes:Creature Zombie Jackal Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBAmass | TriggerDescription$ When CARDNAME enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\nSVar:DBAmass:DB$ Amass | Type$ Zombie | Num$ 2\nS:Mode$ Continuous | Affected$ Zombie.token+YouCtrl | AddKeyword$ Trample | Description$ Zombie tokens you control have trample.\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Amass & Type$Zombie\nDeckHas:Ability$Amass|Counters|Token\nOracle:When Dreadhorde Twins enters, amass Zombies 2. (Put two +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\\nZombie tokens you control have trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadhorde Twins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

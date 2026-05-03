@@ -1,0 +1,25 @@
+{
+  "id": "firemind-vessel-corpus-m676",
+  "description": "M6 corpus — Firemind Vessel; ETB-on-bf.",
+  "seed": 65379,
+  "cards": {
+    "Firemind Vessel": "Name:Firemind Vessel\nManaCost:4\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Amount$ 2 | Produced$ Combo AnyDifferent | SpellDescription$ Add two mana of different colors.\nAI:RemoveDeck:All\nOracle:Firemind Vessel enters tapped.\\n{T}: Add two mana of different colors.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Firemind Vessel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

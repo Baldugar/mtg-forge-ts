@@ -1,0 +1,23 @@
+{
+  "id": "dread-summons-corpus-m676",
+  "description": "M6 corpus — Dread Summons; in-hand parse.",
+  "seed": 63987,
+  "cards": {
+    "Dread Summons": "Name:Dread Summons\nManaCost:X B B\nTypes:Sorcery\nA:SP$ Mill | NumCards$ X | Defined$ Player | RememberMilled$ True | SubAbility$ DBToken | SpellDescription$ Each player mills X cards. For each creature card put into a graveyard this way, you create a tapped 2/2 black Zombie creature token.\nSVar:DBToken:DB$ Token | TokenAmount$ Y | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenTapped$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Valid Creature.inZoneGraveyard\nDeckHas:Ability$Token\nOracle:Each player mills X cards. For each creature card put into a graveyard this way, you create a tapped 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dread Summons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

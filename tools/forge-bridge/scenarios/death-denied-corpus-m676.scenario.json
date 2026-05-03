@@ -1,0 +1,23 @@
+{
+  "id": "death-denied-corpus-m676",
+  "description": "M6 corpus — Death Denied; in-hand parse.",
+  "seed": 63243,
+  "cards": {
+    "Death Denied": "Name:Death Denied\nManaCost:X B B\nTypes:Instant Arcane\nA:SP$ ChangeZone | TargetMin$ X | TargetMax$ X | ValidTgts$ Creature.YouOwn | TgtPrompt$ Select X target creatures in your graveyard | Origin$ Graveyard | Destination$ Hand | SpellDescription$ Return X target creature cards from your graveyard to your hand.\nSVar:X:Count$xPaid\nSVar:MaxTgts:Count$ValidGraveyard Creature.YouOwn\nOracle:Return X target creature cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Denied"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

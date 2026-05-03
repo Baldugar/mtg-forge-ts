@@ -1,0 +1,23 @@
+{
+  "id": "cerebral-vortex-corpus-m676",
+  "description": "M6 corpus — Cerebral Vortex; in-hand parse.",
+  "seed": 61901,
+  "cards": {
+    "Cerebral Vortex": "Name:Cerebral Vortex\nManaCost:1 U R\nTypes:Instant\nA:SP$ Draw | NumCards$ 2 | ValidTgts$ Player | SubAbility$ DBDamage | SpellDescription$ Target player draws two cards, then CARDNAME deals damage to that player equal to the number of cards they've drawn this turn.\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X\nSVar:X:TargetedPlayer$CardsDrawn\nAI:RemoveDeck:All\nOracle:Target player draws two cards, then Cerebral Vortex deals damage to that player equal to the number of cards they've drawn this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cerebral Vortex"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

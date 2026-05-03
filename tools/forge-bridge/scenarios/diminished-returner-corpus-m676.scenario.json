@@ -1,0 +1,25 @@
+{
+  "id": "diminished-returner-corpus-m676",
+  "description": "M6 corpus — Diminished Returner; ETB-on-bf.",
+  "seed": 63623,
+  "cards": {
+    "Diminished Returner": "Name:Diminished Returner\nManaCost:1 B B\nTypes:Creature Phyrexian Skeleton\nPT:4/3\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Pump | Cost$ B B | IsPresent$ Card.Self+toughnessGE2 | PresentZone$ Graveyard | ActivationZone$ Graveyard | PumpZone$ Graveyard | NumAtt$ -1 | NumDef$ -1 | SubAbility$ DBChangeZone | Duration$ Perpetual | StackDescription$ SpellDescription | SpellDescription$ CARDNAME perpetually gets -1/-1,\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | StackDescription$ then return it to the battlefield. | SpellDescription$ then return it to the battlefield. Activate only if CARDNAME is in your graveyard and its toughness is 2 or greater.\nSVar:DiscardMe:2\nSVar:SacMe:1\nDeckHas:Ability$Graveyard\nOracle:Diminished Returner enters tapped.\\n{B}{B}: Diminished Returner perpetually gets -1/-1, then return it to the battlefield. Activate only if Diminished Returner is in your graveyard and its toughness is 2 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Diminished Returner"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

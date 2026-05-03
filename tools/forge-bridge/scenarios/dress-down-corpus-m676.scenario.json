@@ -1,0 +1,23 @@
+{
+  "id": "dress-down-corpus-m676",
+  "description": "M6 corpus — Dress Down; in-hand parse.",
+  "seed": 64043,
+  "cards": {
+    "Dress Down": "Name:Dress Down\nManaCost:1 U\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nS:Mode$ Continuous | Affected$ Creature | RemoveAllAbilities$ True | Description$ Creatures lose all abilities.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Self\nSVar:EndOfTurnLeavePlay:True\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:Flash\\nWhen Dress Down enters, draw a card.\\nCreatures lose all abilities.\\nAt the beginning of the end step, sacrifice Dress Down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dress Down"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

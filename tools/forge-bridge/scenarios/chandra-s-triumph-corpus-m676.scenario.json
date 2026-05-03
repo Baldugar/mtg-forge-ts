@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-triumph-corpus-m676",
+  "description": "M6 corpus — Chandra's Triumph; in-hand parse.",
+  "seed": 61968,
+  "cards": {
+    "Chandra's Triumph": "Name:Chandra's Triumph\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | TgtPrompt$ Select target creature or planeswalker an opponent controls | NumDmg$ X | SpellDescription$ CARDNAME deals 3 damage to target creature or planeswalker an opponent controls. CARDNAME deals 5 damage instead if you control a Chandra planeswalker.\nSVar:Y:Count$Valid Planeswalker.Chandra+YouCtrl\nSVar:X:Count$Compare Y GE1.5.3\nOracle:Chandra's Triumph deals 3 damage to target creature or planeswalker an opponent controls. Chandra's Triumph deals 5 damage instead if you control a Chandra planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Triumph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

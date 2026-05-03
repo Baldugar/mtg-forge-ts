@@ -1,0 +1,23 @@
+{
+  "id": "enslave-corpus-m676",
+  "description": "M6 corpus — Enslave; in-hand parse.",
+  "seed": 64629,
+  "cards": {
+    "Enslave": "Name:Enslave\nManaCost:4 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, enchanted creature deals 1 damage to its owner.\nSVar:TrigDamage:DB$ DealDamage | Defined$ EnchantedOwner | DamageSource$ Enchanted | NumDmg$ 1\nSVar:PlayMain1:TRUE\nOracle:Enchant creature\\nYou control enchanted creature.\\nAt the beginning of your upkeep, enchanted creature deals 1 damage to its owner.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enslave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

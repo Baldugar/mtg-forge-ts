@@ -1,0 +1,23 @@
+{
+  "id": "duskana-the-rage-mother-corpus-m676",
+  "description": "M6 corpus — Duskana, the Rage Mother; in-hand parse.",
+  "seed": 64176,
+  "cards": {
+    "Duskana, the Rage Mother": "Name:Duskana, the Rage Mother\nManaCost:2 R G W\nTypes:Legendary Creature Bear\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each creature you control with base power and toughness 2/2.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nT:Mode$ Attacks | ValidCard$ Creature.YouCtrl+basePowerEQ2+baseToughnessEQ2 | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control with base power and toughness 2/2 attacks, it gets +3/+3 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +3 | NumDef$ +3\nSVar:X:Count$Valid Creature.YouCtrl+basePowerEQ2+baseToughnessEQ2\nSVar:BuffedBy:Creature.powerEQ2,Creature.toughnessEQ2\nOracle:When Duskana, the Rage Mother enters, draw a card for each creature you control with base power and toughness 2/2.\\nWhenever a creature you control with base power and toughness 2/2 attacks, it gets +3/+3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duskana, the Rage Mother"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

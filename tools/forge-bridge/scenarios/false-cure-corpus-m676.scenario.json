@@ -1,0 +1,23 @@
+{
+  "id": "false-cure-corpus-m676",
+  "description": "M6 corpus — False Cure; in-hand parse.",
+  "seed": 65033,
+  "cards": {
+    "False Cure": "Name:False Cure\nManaCost:B B\nTypes:Instant\nA:SP$ Effect | Triggers$ GainLife | SpellDescription$ Until end of turn, whenever a player gains life, that player loses 2 life for each 1 life they gained.\nSVar:GainLife:Mode$ LifeGained | ValidPlayer$ Player | TriggerZones$ Command | Execute$ TrigLoseLife | TriggerDescription$ Whenever a player gains life, that player loses 2 life for each 1 life they gained.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ X\nSVar:X:TriggerCount$LifeAmount/Times.2\nAI:RemoveDeck:Random\nSVar:PlayMain1:TRUE\nOracle:Until end of turn, whenever a player gains life, that player loses 2 life for each 1 life they gained.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "False Cure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

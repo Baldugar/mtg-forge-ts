@@ -1,0 +1,23 @@
+{
+  "id": "charnel-serenade-corpus-m676",
+  "description": "M6 corpus — Charnel Serenade; in-hand parse.",
+  "seed": 62026,
+  "cards": {
+    "Charnel Serenade": "Name:Charnel Serenade\nManaCost:4 B B\nTypes:Sorcery\nK:Suspend:3:2 B\nA:SP$ Surveil | Amount$ 3 | SubAbility$ DBReturn | SpellDescription$ Surveil 3, then return a creature card from your graveyard to the battlefield with a finality counter on it.\nSVar:DBReturn:DB$ ChangeZone | SubAbility$ DBChange | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ FINALITY | ChangeType$ Creature.YouOwn | ChangeTypeDesc$ creature | ChangeNum$ 1 | Hidden$ True | Mandatory$ True\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | WithCountersType$ TIME | WithCountersAmount$ 3 | SpellDescription$ Exile CARDNAME with three time counters on it.\nDeckHas:Ability$Graveyard|Surveil\nDeckHints:Ability$Graveyard|Mill\nOracle:Surveil 3, then return a creature card from your graveyard to the battlefield with a finality counter on it. Exile Charnel Serenade with three time counters on it.\\nSuspend 3—{2}{B} (Rather than cast this card from your hand, you may pay {2}{B} and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charnel Serenade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "faerie-aerie-corpus-m676",
+  "description": "M6 corpus — Faerie Aerie; ETB-on-bf.",
+  "seed": 64977,
+  "cards": {
+    "Faerie Aerie": "Name:Faerie Aerie\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, create two 1/1 blue Faerie Spy creature tokens with flying, haste, and \"Whenever this creature deals combat damage to a player, draw a card.\" Exile them at the beginning of the next end step.\nSVar:TrigCrank:DB$ Token | TokenAmount$ 2 | TokenScript$ u_1_1_faerie_spy_flying_haste_draw | AtEOT$ Exile\nOracle:Whenever you crank Faerie Aerie, create two 1/1 blue Faerie Spy creature tokens with flying, haste, and \"Whenever this creature deals combat damage to a player, draw a card.\" Exile them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Faerie Aerie"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

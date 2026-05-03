@@ -1,0 +1,23 @@
+{
+  "id": "forsaken-drifters-corpus-m676",
+  "description": "M6 corpus — Forsaken Drifters; in-hand parse.",
+  "seed": 65666,
+  "cards": {
+    "Forsaken Drifters": "Name:Forsaken Drifters\nManaCost:3 B\nTypes:Creature Zombie\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME dies, mill four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You\nOracle:When Forsaken Drifters dies, mill four cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forsaken Drifters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

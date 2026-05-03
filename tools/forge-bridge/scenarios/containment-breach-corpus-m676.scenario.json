@@ -1,0 +1,23 @@
+{
+  "id": "containment-breach-corpus-m676",
+  "description": "M6 corpus — Containment Breach; in-hand parse.",
+  "seed": 62523,
+  "cards": {
+    "Containment Breach": "Name:Containment Breach\nManaCost:2 G\nTypes:Sorcery Lesson\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SubAbility$ TrigToken | SpellDescription$ Destroy target artifact or enchantment. If its mana value is 2 or less, create a 1/1 black and green Pest creature token with \"When this creature dies, you gain 1 life.\"\nSVar:TrigToken:DB$ Token | TokenScript$ bg_1_1_pest_lifegain | ConditionCheckSVar$ X | ConditionSVarCompare$ LE2\nSVar:X:Targeted$CardManaCost\nDeckHas:Ability$Token|LifeGain\nOracle:Destroy target artifact or enchantment. If its mana value is 2 or less, create a 1/1 black and green Pest creature token with \"When this creature dies, you gain 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Containment Breach"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

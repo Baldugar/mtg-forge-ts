@@ -1,0 +1,23 @@
+{
+  "id": "cunning-corpus-m676",
+  "description": "M6 corpus — Cunning; in-hand parse.",
+  "seed": 62887,
+  "cards": {
+    "Cunning": "Name:Cunning\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3.\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ DelayedTrig | TriggerDescription$ When enchanted creature attacks or blocks, sacrifice CARDNAME at the beginning of the next cleanup step.\nT:Mode$ Blocks | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ DelayedTrig | Secondary$ True | TriggerDescription$ When enchanted creature attacks or blocks, sacrifice CARDNAME at the beginning of the next cleanup step.\nSVar:DelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Cleanup | ValidPlayer$ Player | Execute$ TrigSacrifice | TriggerDescription$ Sacrifice CARDNAME.\nSVar:TrigSacrifice:DB$ SacrificeAll | Defined$ Self | Controller$ You\nOracle:Enchant creature\\nEnchanted creature gets +3/+3.\\nWhen enchanted creature attacks or blocks, sacrifice Cunning at the beginning of the next cleanup step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cunning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

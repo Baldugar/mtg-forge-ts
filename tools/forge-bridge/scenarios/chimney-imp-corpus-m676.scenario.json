@@ -1,0 +1,23 @@
+{
+  "id": "chimney-imp-corpus-m676",
+  "description": "M6 corpus — Chimney Imp; in-hand parse.",
+  "seed": 62071,
+  "cards": {
+    "Chimney Imp": "Name:Chimney Imp\nManaCost:4 B\nTypes:Creature Imp\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, target opponent puts a card from their hand on top of their library.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | IsCurse$ True\nSVar:SacMe:1\nOracle:Flying\\nWhen Chimney Imp dies, target opponent puts a card from their hand on top of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chimney Imp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

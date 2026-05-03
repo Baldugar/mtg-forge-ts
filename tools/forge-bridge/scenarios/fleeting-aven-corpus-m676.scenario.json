@@ -1,0 +1,25 @@
+{
+  "id": "fleeting-aven-corpus-m676",
+  "description": "M6 corpus — Fleeting Aven; ETB-on-bf.",
+  "seed": 65489,
+  "cards": {
+    "Fleeting Aven": "Name:Fleeting Aven\nManaCost:1 U U\nTypes:Creature Bird Wizard\nPT:2/2\nK:Flying\nT:Mode$ Cycled | ValidCard$ Card | Execute$ TrigBounce | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player cycles a card, return CARDNAME to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nOracle:Flying\\nWhenever a player cycles a card, return Fleeting Aven to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fleeting Aven"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

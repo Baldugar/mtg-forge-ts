@@ -1,0 +1,25 @@
+{
+  "id": "fire-diamond-corpus-m676",
+  "description": "M6 corpus — Fire Diamond; ETB-on-bf.",
+  "seed": 65335,
+  "cards": {
+    "Fire Diamond": "Name:Fire Diamond\nManaCost:2\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nOracle:Fire Diamond enters tapped.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fire Diamond"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

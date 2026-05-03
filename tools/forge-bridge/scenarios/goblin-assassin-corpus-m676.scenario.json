@@ -1,0 +1,23 @@
+{
+  "id": "goblin-assassin-corpus-m676",
+  "description": "M6 corpus — Goblin Assassin; in-hand parse.",
+  "seed": 66390,
+  "cards": {
+    "Goblin Assassin": "Name:Goblin Assassin\nManaCost:3 R R\nTypes:Creature Goblin Assassin\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Goblin.Other | Execute$ AssassinsFlip | TriggerDescription$ Whenever CARDNAME or another Goblin enters, each player flips a coin. Each player whose coin comes up tails sacrifices a creature.\nSVar:AssassinsFlip:DB$ FlipACoin | Flipper$ Player | NoCall$ True | RememberResult$ True | SubAbility$ Assassination\nSVar:Assassination:DB$ Sacrifice | Defined$ FlippedTails | SacValid$ Creature | Amount$ 1 | SubAbility$ ResetFlips\nSVar:ResetFlips:DB$ Cleanup | ClearCoinFlips$ True\nOracle:Whenever Goblin Assassin or another Goblin enters, each player flips a coin. Each player whose coin comes up tails sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Assassin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

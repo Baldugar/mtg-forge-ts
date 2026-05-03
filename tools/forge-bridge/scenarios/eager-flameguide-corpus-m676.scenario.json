@@ -1,0 +1,23 @@
+{
+  "id": "eager-flameguide-corpus-m676",
+  "description": "M6 corpus — Eager Flameguide; in-hand parse.",
+  "seed": 64237,
+  "cards": {
+    "Eager Flameguide": "Name:Eager Flameguide\nManaCost:2 R\nTypes:Enchantment Creature Raccoon Glimmer\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigAddMana | TriggerDescription$ When CARDNAME enters, add {C}{C}{C}. Spend this mana only to cast creature spells.\nSVar:TrigAddMana:DB$ Mana | Produced$ C | Amount$ 3 | RestrictValid$ Spell.Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDig | TriggerDescription$ When CARDNAME dies, exile the top two cards of your library. Until the end of your next turn, you may cast creature spells from among the exiled cards.\nSVar:TrigDig:DB$ Dig | Defined$ You | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.Creature+IsRemembered+nonLand | AffectedZone$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Eager Flameguide enters, add {C}{C}{C}. Spend this mana only to cast creature spells.\\nWhen Eager Flameguide dies, exile the top two cards of your library. Until the end of your next turn, you may cast creature spells from among the exiled cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eager Flameguide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

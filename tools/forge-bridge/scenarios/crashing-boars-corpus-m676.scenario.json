@@ -1,0 +1,23 @@
+{
+  "id": "crashing-boars-corpus-m676",
+  "description": "M6 corpus — Crashing Boars; in-hand parse.",
+  "seed": 62700,
+  "cards": {
+    "Crashing Boars": "Name:Crashing Boars\nManaCost:3 G G\nTypes:Creature Boar\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBMustBlock | TriggerDescription$ Whenever CARDNAME attacks, defending player chooses an untapped creature they control. That creature blocks CARDNAME this turn if able.\nSVar:DBMustBlock:DB$ MustBlock | Choices$ Creature.untapped+DefenderCtrl | Chooser$ TriggeredDefendingPlayer\nOracle:Whenever Crashing Boars attacks, defending player chooses an untapped creature they control. That creature blocks Crashing Boars this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crashing Boars"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

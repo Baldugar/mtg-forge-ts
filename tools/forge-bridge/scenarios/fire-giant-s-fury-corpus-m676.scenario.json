@@ -1,0 +1,23 @@
+{
+  "id": "fire-giant-s-fury-corpus-m676",
+  "description": "M6 corpus — Fire Giant's Fury; in-hand parse.",
+  "seed": 65337,
+  "cards": {
+    "Fire Giant's Fury": "Name:Fire Giant's Fury\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Giant.YouCtrl | TgtPrompt$ Select target Giant you control | NumAtt$ +2 | NumDef$ +2 | KW$ Trample | SubAbility$ DBCombatDamageEffect | StackDescription$ {c:Targeted} gets +2/+2 and gains trample until end of turn. Whenever it deals combat damage to a player this turn, exile that many cards from the top of your library. Until the end of your next turn, you may play those cards. | SpellDescription$ Target Giant you control gets +2/+2 and gains trample until end of turn. Whenever it deals combat damage to a player this turn, exile that many cards from the top of your library. Until the end of your next turn, you may play those cards.\nSVar:DBCombatDamageEffect:DB$ Effect | ImprintCards$ Targeted | Triggers$ DealCombatDamagePlayer | SubAbility$ DBCleanup\nSVar:DealCombatDamagePlayer:Mode$ DamageDone | ValidSource$ Card.IsImprinted | ValidTarget$ Player | Execute$ TrigExile | CombatDamage$ True | TriggerDescription$ Whenever this Giant deals combat damage to a player this turn, exile that many cards from the top of your library. Until the end of your next turn, you may play those cards.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ RememberedCard | Duration$ UntilTheEndOfYourNextTurn | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play those cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:Random\nDeckNeeds:Type$Giant\nOracle:Target Giant you control gets +2/+2 and gains trample until end of turn. Whenever it deals combat damage to a player this turn, exile that many cards from the top of your library. Until the end of your next turn, you may play those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Giant's Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

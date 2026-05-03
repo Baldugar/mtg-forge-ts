@@ -1,0 +1,23 @@
+{
+  "id": "ghoulraiser-corpus-m676",
+  "description": "M6 corpus — Ghoulraiser; in-hand parse.",
+  "seed": 66139,
+  "cards": {
+    "Ghoulraiser": "Name:Ghoulraiser\nManaCost:1 B B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return a Zombie card at random from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ChangeType$ Zombie.YouCtrl | Origin$ Graveyard | Destination$ Hand | Hidden$ True | AtRandom$ True\nOracle:When Ghoulraiser enters, return a Zombie card at random from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghoulraiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

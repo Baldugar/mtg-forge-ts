@@ -1,0 +1,23 @@
+{
+  "id": "dreadhound-corpus-m676",
+  "description": "M6 corpus — Dreadhound; in-hand parse.",
+  "seed": 63998,
+  "cards": {
+    "Dreadhound": "Name:Dreadhound\nManaCost:4 B B\nTypes:Creature Demon Dog\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards. (Put the top three cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You\nT:Mode$ ChangesZone | Origin$ Battlefield | ValidCard$ Creature | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature dies or a creature card is put into a graveyard from a library, each opponent loses 1 life.\nT:Mode$ ChangesZone | Origin$ Library | ValidCard$ Creature | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigLoseLife | Secondary$ True | TriggerDescription$ Whenever a creature dies or a creature card is put into a graveyard from a library, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:When Dreadhound enters, mill three cards. (Put the top three cards of your library into your graveyard.)\\nWhenever a creature dies or a creature card is put into a graveyard from a library, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadhound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

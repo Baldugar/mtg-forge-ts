@@ -1,0 +1,23 @@
+{
+  "id": "dune-drifter-corpus-m676",
+  "description": "M6 corpus — Dune Drifter; in-hand parse.",
+  "seed": 64147,
+  "cards": {
+    "Dune Drifter": "Name:Dune Drifter\nManaCost:X W B\nTypes:Artifact Vehicle\nPT:3/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When this Vehicle enters, return target artifact or creature card with mana value X or less from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Artifact.YouOwn+cmcLEX,Creature.YouOwn+cmcLEX | TgtPrompt$ Select target artifact or creature card with mana value X or less in your graveyard | Origin$ Graveyard | Destination$ Battlefield\nK:Crew:2\nSVar:X:Count$xPaid\nDeckHas:Ability$Graveyard\nOracle:When this Vehicle enters, return target artifact or creature card with mana value X or less from your graveyard to the battlefield.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dune Drifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "game-plan-corpus-m676",
+  "description": "M6 corpus — Game Plan; in-hand parse.",
+  "seed": 65926,
+  "cards": {
+    "Game Plan": "Name:Game Plan\nManaCost:5 U\nTypes:Sorcery\nK:Assist\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | UseAllOriginZones$ True | SubAbility$ DBDraw | AILogic$ Timetwister | SpellDescription$ Each player shuffles their hand and graveyard into their library, then draws seven cards. Exile CARDNAME.\nSVar:DBDraw:DB$ Draw | NumCards$ 7 | Defined$ Player | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nOracle:Assist (Another player can pay up to {5} of this spell's cost.)\\nEach player shuffles their hand and graveyard into their library, then draws seven cards. Exile Game Plan.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Game Plan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

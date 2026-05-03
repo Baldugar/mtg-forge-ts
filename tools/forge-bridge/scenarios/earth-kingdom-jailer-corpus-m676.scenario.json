@@ -1,0 +1,23 @@
+{
+  "id": "earth-kingdom-jailer-corpus-m676",
+  "description": "M6 corpus — Earth Kingdom Jailer; in-hand parse.",
+  "seed": 64247,
+  "cards": {
+    "Earth Kingdom Jailer": "Name:Earth Kingdom Jailer\nManaCost:2 W\nTypes:Creature Human Soldier Ally\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature enters, exile up to one target artifact, creature, or enchantment an opponent controls with mana value 3 or greater until this creature leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Artifact.OppCtrl+cmcGE3,Creature.OppCtrl+cmcGE3,Enchantment.OppCtrl+cmcGE3 | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target artifact, creature, or enchantment an opponent controls with mana value 3 or greater | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nOracle:When this creature enters, exile up to one target artifact, creature, or enchantment an opponent controls with mana value 3 or greater until this creature leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earth Kingdom Jailer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

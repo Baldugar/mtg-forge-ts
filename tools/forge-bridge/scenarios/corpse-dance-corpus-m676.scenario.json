@@ -1,0 +1,23 @@
+{
+  "id": "corpse-dance-corpus-m676",
+  "description": "M6 corpus — Corpse Dance; in-hand parse.",
+  "seed": 62595,
+  "cards": {
+    "Corpse Dance": "Name:Corpse Dance\nManaCost:2 B\nTypes:Instant\nK:Buyback:2\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.TopGraveyardCreature+YouOwn | Hidden$ True | Mandatory$ True | RememberChanged$ True | SubAbility$ DBPump | StackDescription$ {p:You} returns the top creature card of their graveyard to the battlefield. | SpellDescription$ Return the top creature card of your graveyard to the battlefield.\nSVar:DBPump:DB$ Animate | Keywords$ Haste | Defined$ Remembered | AtEOT$ Exile | SubAbility$ DBCleanup | DefinedDesc$ That creature | SpellDescription$ That creature gains haste until end of turn. Exile it at the beginning of the next end step.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsOrderedGraveyard:TRUE\nDeckHas:Ability$Graveyard\nOracle:Buyback {2} (You may pay an additional {2} as you cast this spell. If you do, put this card into your hand as it resolves.)\\nReturn the top creature card of your graveyard to the battlefield. That creature gains haste until end of turn. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corpse Dance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

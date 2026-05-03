@@ -1,0 +1,23 @@
+{
+  "id": "erhnam-djinn-corpus-m676",
+  "description": "M6 corpus — Erhnam Djinn; in-hand parse.",
+  "seed": 64693,
+  "cards": {
+    "Erhnam Djinn": "Name:Erhnam Djinn\nManaCost:3 G\nTypes:Creature Djinn\nPT:4/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of your upkeep, target non-Wall creature an opponent controls gains forestwalk until your next upkeep. (It can't be blocked as long as defending player controls a Forest.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.nonWall+OppCtrl | TgtPrompt$ Select target non-Wall creature an opponent controls | KW$ Landwalk:Forest | Duration$ UntilYourNextUpkeep\nDeckHas:Keyword$Landwalk:Forest\nOracle:At the beginning of your upkeep, target non-Wall creature an opponent controls gains forestwalk until your next upkeep. (It can't be blocked as long as defending player controls a Forest.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erhnam Djinn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "clockwork-condor-corpus-m676",
+  "description": "M6 corpus — Clockwork Condor; in-hand parse.",
+  "seed": 62262,
+  "cards": {
+    "Clockwork Condor": "Name:Clockwork Condor\nManaCost:4\nTypes:Artifact Creature Bird\nPT:0/0\nK:Flying\nK:etbCounter:P1P1:3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelTrig | TriggerDescription$ Whenever CARDNAME attacks or blocks, remove a +1/+1 counter from it at end of combat.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelTrig | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, remove a +1/+1 counter from it at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | Execute$ TrigRemoveCounter | TriggerDescription$ Remove a +1/+1 counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Flying\\nClockwork Condor enters with three +1/+1 counters on it.\\nWhenever Clockwork Condor attacks or blocks, remove a +1/+1 counter from it at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clockwork Condor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

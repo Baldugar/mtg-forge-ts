@@ -1,0 +1,25 @@
+{
+  "id": "deadly-poison-sampler-corpus-m676",
+  "description": "M6 corpus — Deadly Poison Sampler; ETB-on-bf.",
+  "seed": 63229,
+  "cards": {
+    "Deadly Poison Sampler": "Name:Deadly Poison Sampler\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature gains \"Whenever this creature deals combat damage to a player, destroy target creature that player controls.\"\nSVar:TrigCrank:DB$ Animate | ValidTgts$ Creature | Triggers$ TrigDamage\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, destroy target creature that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.ControlledBy TriggeredTarget | TgtPrompt$ Select target creature damaged player controls\nOracle:Whenever you crank Deadly Poison Sampler, until end of turn, target creature gains \"Whenever this creature deals combat damage to a player, destroy target creature that player controls.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Deadly Poison Sampler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cloud-midgar-mercenary-corpus-m676",
+  "description": "M6 corpus — Cloud, Midgar Mercenary; in-hand parse.",
+  "seed": 62285,
+  "cards": {
+    "Cloud, Midgar Mercenary": "Name:Cloud, Midgar Mercenary\nManaCost:W W\nTypes:Legendary Creature Human Soldier Mercenary\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When NICKNAME enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Equipment | ChangeNum$ 1\nS:Mode$ Panharmonicon | ValidCard$ Card.Self+equipped,Equipment.Attached | Description$ As long as NICKNAME is equipped, if an ability of NICKNAME or an Equipment attached to it triggers, that ability triggers an additional time.\nDeckHints:Type$Equipment\nOracle:When Cloud enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.\\nAs long as Cloud is equipped, if an ability of Cloud or an Equipment attached to it triggers, that ability triggers an additional time.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloud, Midgar Mercenary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "garland-knight-of-cornelia-corpus-m676",
+  "description": "M6 corpus — Garland, Knight of Cornelia; in-hand parse.",
+  "seed": 65948,
+  "cards": {
+    "Garland, Knight of Cornelia": "Name:Garland, Knight of Cornelia\nManaCost:B R\nTypes:Legendary Creature Human Knight\nPT:3/2\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigSurveil | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nSVar:BuffedBy:Card.nonLand+nonCreature\nA:AB$ ChangeZone | Cost$ 3 B B R R | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | SorcerySpeed$ True | Transformed$ True | StackDescription$ SpellDescription | SpellDescription$ Return NICKNAME from your graveyard to the battlefield transformed. Activate only as a sorcery.\nDeckHas:Ability$Surveil|Graveyard\nAlternateMode:DoubleFaced\nOracle:Whenever you cast a noncreature spell, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\\n{3}{B}{B}{R}{R}: Return this card from your graveyard to the battlefield transformed. Activate only as a sorcery.\n\nALTERNATE\n\nName:Chaos, the Endless\nManaCost:no cost\nColors:black,red\nTypes:Legendary Creature Demon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ Whenever NICKNAME dies, put it on the bottom of its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1\nOracle:Flying\\nWhen Chaos dies, put it on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garland, Knight of Cornelia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

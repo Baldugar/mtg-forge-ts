@@ -1,0 +1,23 @@
+{
+  "id": "forgefire-automaton-corpus-m676",
+  "description": "M6 corpus — Forgefire Automaton; in-hand parse.",
+  "seed": 65647,
+  "cards": {
+    "Forgefire Automaton": "Name:Forgefire Automaton\nManaCost:7\nTypes:Artifact Creature Construct\nPT:8/5\nK:Prototype:2 B:3:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, return target creature card with power less than CARDNAME's power from your graveyard to the battlefield. Its base power perpetually becomes equal to CARDNAME's power.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.powerLTX+YouOwn | RememberChanged$ True | TgtPrompt$ Select target creature card with power less than CARDNAME's power | Origin$ Graveyard | Destination$ Battlefield | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | Power$ X | Duration$ Perpetual\nSVar:X:Count$CardPower\nDeckHints:Ability$Graveyard|Discard|Mill & Color$Black\nDeckHas:Ability$Graveyard\nOracle:Prototype {2}{B} — 3/2\\nAt the beginning of your upkeep, return target creature card with power less than Forgefire Automaton's power from your graveyard to the battlefield. Its base power perpetually becomes equal to Forgefire Automaton's power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forgefire Automaton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

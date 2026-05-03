@@ -1,0 +1,23 @@
+{
+  "id": "fading-hope-corpus-m676",
+  "description": "M6 corpus — Fading Hope; in-hand parse.",
+  "seed": 64974,
+  "cards": {
+    "Fading Hope": "Name:Fading Hope\nManaCost:U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBScry | SpellDescription$ Return target creature to its owner's hand. If its mana value was 3 or less, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\nSVar:DBScry:DB$ Scry | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcLE3 | ConditionCompare$ EQ1 | ScryNum$ 1\nOracle:Return target creature to its owner's hand. If its mana value was 3 or less, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fading Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

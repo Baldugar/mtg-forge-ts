@@ -1,0 +1,23 @@
+{
+  "id": "dusk-legion-zealot-corpus-m676",
+  "description": "M6 corpus — Dusk Legion Zealot; in-hand parse.",
+  "seed": 64173,
+  "cards": {
+    "Dusk Legion Zealot": "Name:Dusk Legion Zealot\nManaCost:1 B\nTypes:Creature Vampire Soldier\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw a card and you lose 1 life.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:When Dusk Legion Zealot enters, you draw a card and you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dusk Legion Zealot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

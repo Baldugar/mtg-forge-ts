@@ -1,0 +1,23 @@
+{
+  "id": "deep-cavern-bat-corpus-m676",
+  "description": "M6 corpus — Deep-Cavern Bat; in-hand parse.",
+  "seed": 63327,
+  "cards": {
+    "Deep-Cavern Bat": "Name:Deep-Cavern Bat\nManaCost:1 B\nTypes:Creature Bat\nPT:1/1\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, look at target opponent's hand. You may exile a nonland card from it until CARDNAME leaves the battlefield.\nSVar:TrigReveal:DB$ RevealHand | Defined$ Targeted | Look$ True | ValidTgts$ Opponent | SubAbility$ ExileCard\nSVar:ExileCard:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | IsCurse$ True | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain\nOracle:Flying, lifelink\\nWhen Deep-Cavern Bat enters, look at target opponent's hand. You may exile a nonland card from it until Deep-Cavern Bat leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deep-Cavern Bat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conductive-current-corpus-m676",
+  "description": "M6 corpus — Conductive Current; in-hand parse.",
+  "seed": 62470,
+  "cards": {
+    "Conductive Current": "Name:Conductive Current\nManaCost:R R R\nTypes:Sorcery\nA:SP$ DamageAll | NumDmg$ 3 | ValidCards$ Creature | ValidDescription$ each creature. | SubAbility$ DBChoose | SpellDescription$ CARDNAME deals 3 damage to each creature.\nSVar:DBChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Instant.YouOwn,Sorcery.YouOwn | ChoiceDesc$ instant or sorcery | ChoiceTitle$ Choose an instant or sorcery card in your hand | Mandatory$ True | SubAbility$ DBAnimate | SpellDescription$ Choose an instant or sorcery card in your hand.\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Replacements$ PerpDamageRep | Duration$ Perpetual | StackDescription$ SpellDescription | SpellDescription$ It perpetually gains \"If this spell would deal noncombat damage to a permanent or player, it deals that much damage plus 2 instead.\"\nSVar:PerpDamageRep:Event$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Permanent,Player | ReplaceWith$ DmgPlus2 | Description$ If this spell would deal noncombat damage to a permanent or player, it deals that much damage plus 2 instead.\nSVar:DmgPlus2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ ReplaceCount$DamageAmount/Plus.2\nOracle:Conductive Current deals 3 damage to each creature. Choose an instant or sorcery card in your hand. It perpetually gains \"If this spell would deal noncombat damage to a permanent or player, it deals that much damage plus 2 instead.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conductive Current"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

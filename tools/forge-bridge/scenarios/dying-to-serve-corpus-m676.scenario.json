@@ -1,0 +1,25 @@
+{
+  "id": "dying-to-serve-corpus-m676",
+  "description": "M6 corpus — Dying to Serve; ETB-on-bf.",
+  "seed": 64228,
+  "cards": {
+    "Dying to Serve": "Name:Dying to Serve\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ DiscardedAll | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | ActivationLimit$ 1 | TriggerDescription$ Whenever you discard one or more cards, create a tapped 2/2 black Zombie creature token. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenTapped$ True | TokenScript$ b_2_2_zombie\nDeckHas:Ability$Token & Type$Zombie\nDeckHints:Ability$Discard|Graveyard\nOracle:Whenever you discard one or more cards, create a tapped 2/2 black Zombie creature token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dying to Serve"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

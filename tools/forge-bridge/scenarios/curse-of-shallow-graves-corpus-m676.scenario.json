@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-shallow-graves-corpus-m676",
+  "description": "M6 corpus — Curse of Shallow Graves; in-hand parse.",
+  "seed": 62934,
+  "cards": {
+    "Curse of Shallow Graves": "Name:Curse of Shallow Graves\nManaCost:2 B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ AttackersDeclared | Execute$ TrigToken | TriggerZones$ Battlefield | AttackedTarget$ Player.EnchantedBy | OptionalDecider$ TriggeredAttackingPlayer | TriggerDescription$ Whenever a player attacks enchanted player with one or more creatures, that attacking player may create a tapped 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenOwner$ TriggeredAttackingPlayer | TokenTapped$ True | TokenScript$ b_2_2_zombie\nOracle:Enchant player\\nWhenever a player attacks enchanted player with one or more creatures, that attacking player may create a tapped 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Shallow Graves"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

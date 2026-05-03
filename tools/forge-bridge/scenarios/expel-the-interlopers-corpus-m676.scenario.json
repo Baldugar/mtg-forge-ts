@@ -1,0 +1,23 @@
+{
+  "id": "expel-the-interlopers-corpus-m676",
+  "description": "M6 corpus — Expel the Interlopers; in-hand parse.",
+  "seed": 64886,
+  "cards": {
+    "Expel the Interlopers": "Name:Expel the Interlopers\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChooseNumber | Defined$ You | Min$ 0 | Max$ 10 | SubAbility$ DBDestroyAll | AILogic$ SweepCreatures | SpellDescription$ Choose a number between 0 and 10.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.powerGEX | SpellDescription$ Destroy all creatures with power greater than or equal to the chosen number.\nSVar:X:Count$ChosenNumber\nOracle:Choose a number between 0 and 10. Destroy all creatures with power greater than or equal to the chosen number.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expel the Interlopers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

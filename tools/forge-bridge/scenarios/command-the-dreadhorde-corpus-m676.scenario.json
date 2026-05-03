@@ -1,0 +1,23 @@
+{
+  "id": "command-the-dreadhorde-corpus-m676",
+  "description": "M6 corpus — Command the Dreadhorde; in-hand parse.",
+  "seed": 62413,
+  "cards": {
+    "Command the Dreadhorde": "Name:Command the Dreadhorde\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ ChooseCard | TargetMin$ 0 | TargetMax$ NumCreatPW | ValidTgts$ Creature,Planeswalker | TgtZone$ Graveyard | SubAbility$ DBDamage | SpellDescription$ Choose any number of target creature and/or planeswalker cards in graveyards. CARDNAME deals damage to you equal to the total mana value of those cards. Put them onto the battlefield under your control.\nSVar:DBDamage:DB$ DealDamage | Defined$ You | NumDmg$ X | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Targeted | GainControl$ True | Origin$ Graveyard | Destination$ Battlefield\nSVar:NumCreatPW:Count$ValidGraveyard Creature,Planeswalker\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:All\nOracle:Choose any number of target creature and/or planeswalker cards in graveyards. Command the Dreadhorde deals damage to you equal to the total mana value of those cards. Put them onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Command the Dreadhorde"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

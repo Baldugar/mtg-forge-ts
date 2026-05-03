@@ -1,0 +1,23 @@
+{
+  "id": "deepway-navigator-corpus-m676",
+  "description": "M6 corpus — Deepway Navigator; in-hand parse.",
+  "seed": 63351,
+  "cards": {
+    "Deepway Navigator": "Name:Deepway Navigator\nManaCost:W U\nTypes:Creature Merfolk Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigUntapAll | TriggerDescription$ When CARDNAME enters, untap each other Merfolk you control.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Merfolk.Other+YouCtrl\nS:Mode$ Continuous | Affected$ Creature.Merfolk+YouCtrl | AddPower$ 1 | CheckSVar$ RaidTest | SVarCompare$ GE3 | Description$ As long as you attacked with three or more Merfolk this turn, Merfolk you control get +1/+0.\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Flash\\nWhen this creature enters, untap each other Merfolk you control.\\nAs long as you attacked with three or more Merfolk this turn, Merfolk you control get +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deepway Navigator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

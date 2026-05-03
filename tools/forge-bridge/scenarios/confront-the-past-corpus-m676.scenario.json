@@ -1,0 +1,23 @@
+{
+  "id": "confront-the-past-corpus-m676",
+  "description": "M6 corpus — Confront the Past; in-hand parse.",
+  "seed": 62483,
+  "cards": {
+    "Confront the Past": "Name:Confront the Past\nManaCost:X B\nTypes:Sorcery Lesson\nA:SP$ Charm | Choices$ Return,Remove | Announce$ X\nSVar:Return:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target planeswalker with mana value X | ValidTgts$ Planeswalker.YouOwn+cmcLEX | SpellDescription$ Return target planeswalker card with mana value X or less from your graveyard to the battlefield.\nSVar:Remove:DB$ RemoveCounter | ValidTgts$ Planeswalker.OppCtrl | TgtPrompt$ Select target planeswalker an opponent controls | CounterType$ LOYALTY | CounterNum$ Y | SpellDescription$ Remove twice X loyalty counters from target planeswalker an opponent controls.\nSVar:X:Count$xPaid\nSVar:Y:SVar$X/Times.2\nOracle:Choose one —\\n• Return target planeswalker card with mana value X or less from your graveyard to the battlefield.\\n• Remove twice X loyalty counters from target planeswalker an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Confront the Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

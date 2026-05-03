@@ -1,0 +1,23 @@
+{
+  "id": "extraordinary-journey-corpus-m676",
+  "description": "M6 corpus — Extraordinary Journey; in-hand parse.",
+  "seed": 64925,
+  "cards": {
+    "Extraordinary Journey": "Name:Extraordinary Journey\nManaCost:X X U U\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile up to X target creatures. For each of those cards, its owner may play it for as long as it remains exiled.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select up to X target creatures | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ X | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | Duration$ Permanent | StaticAbilities$ MayPlay | RememberObjects$ Targeted | ForgetOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | AffectedZone$ Exile | MayPlay$ True | MayPlayPlayer$ CardOwner\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.!token+wasCastFromExile,Creature.!token+ThisTurnEnteredFrom_Exile | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigDraw | TriggerDescription$ Whenever one or more nontoken creatures enter, if one or more of them entered from exile or was cast from exile, you draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw\nSVar:X:Count$xPaid\nOracle:When Extraordinary Journey enters, exile up to X target creatures. For each of those cards, its owner may play it for as long as it remains exiled.\\nWhenever one or more nontoken creatures enter, if one or more of them entered from exile or was cast from exile, you draw a card. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extraordinary Journey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

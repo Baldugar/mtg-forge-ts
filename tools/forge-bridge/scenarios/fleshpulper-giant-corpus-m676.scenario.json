@@ -1,0 +1,23 @@
+{
+  "id": "fleshpulper-giant-corpus-m676",
+  "description": "M6 corpus — Fleshpulper Giant; in-hand parse.",
+  "seed": 65505,
+  "cards": {
+    "Fleshpulper Giant": "Name:Fleshpulper Giant\nManaCost:5 R R\nTypes:Creature Giant\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target creature with toughness 2 or less.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.toughnessLE2 | TgtPrompt$ Select target creature with toughness 2 or less.\nOracle:When Fleshpulper Giant enters, you may destroy target creature with toughness 2 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fleshpulper Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

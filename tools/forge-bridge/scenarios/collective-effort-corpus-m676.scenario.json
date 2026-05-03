@@ -1,0 +1,23 @@
+{
+  "id": "collective-effort-corpus-m676",
+  "description": "M6 corpus — Collective Effort; in-hand parse.",
+  "seed": 62368,
+  "cards": {
+    "Collective Effort": "Name:Collective Effort\nManaCost:1 W W\nTypes:Sorcery\nK:Escalate:tapXType<1/Creature>\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ 3 | Choices$ DBDestroyCreature,DBDestroyEnchantment,DBPutCounterAll\nSVar:DBDestroyCreature:DB$ Destroy | ValidTgts$ Creature.powerGE4 | TgtPrompt$ Select target creature with power 4 or greater | SpellDescription$ Destroy target creature with power 4 or greater.\nSVar:DBDestroyEnchantment:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidTgts$ Player | ValidCards$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on each creature target player controls.\nOracle:Escalate—Tap an untapped creature you control. (Pay this cost for each mode chosen beyond the first.)\\nChoose one or more —\\n• Destroy target creature with power 4 or greater.\\n• Destroy target enchantment.\\n• Put a +1/+1 counter on each creature target player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Collective Effort"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

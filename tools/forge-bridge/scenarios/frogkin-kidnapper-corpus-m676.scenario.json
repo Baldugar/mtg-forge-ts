@@ -1,0 +1,23 @@
+{
+  "id": "frogkin-kidnapper-corpus-m676",
+  "description": "M6 corpus — Frogkin Kidnapper; in-hand parse.",
+  "seed": 65767,
+  "cards": {
+    "Frogkin Kidnapper": "Name:Frogkin Kidnapper\nManaCost:1 B\nTypes:Creature Frog Rogue\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReveal | TriggerDescription$ When CARDNAME enters, target opponent reveals their hand. Choose a nonland card from it. Ransom that card. (Exile it. Its owner may pay {3} at any time to return it to their hand.)\nSVar:TrigReveal:DB$ RevealHand | ValidTgts$ Opponent | Defined$ Targeted | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | IsCurse$ True | RememberChanged$ True | SubAbility$ DBRansom\nSVar:DBRansom:DB$ Effect | Duration$ Permanent | Abilities$ PayUp | RememberObjects$ RememberedLKI | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:PayUp:ST$ ChangeZone | Cost$ 3 | Defined$ Remembered | Origin$ Exile | Destination$ Hand | Activator$ RememberedOwner | ActivationZone$ Command | AILogic$ Always | SpellDescription$ Pay {3} to return this card to your hand.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:When Frogkin Kidnapper enters, target opponent reveals their hand. Choose a nonland card from it. Ransom that card. (Exile it. Its owner may pay {3} at any time to return it to their hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frogkin Kidnapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

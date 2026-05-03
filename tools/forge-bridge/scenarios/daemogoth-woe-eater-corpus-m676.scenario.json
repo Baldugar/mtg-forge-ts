@@ -1,0 +1,23 @@
+{
+  "id": "daemogoth-woe-eater-corpus-m676",
+  "description": "M6 corpus — Daemogoth Woe-Eater; in-hand parse.",
+  "seed": 63003,
+  "cards": {
+    "Daemogoth Woe-Eater": "Name:Daemogoth Woe-Eater\nManaCost:1 B BG G\nTypes:Creature Demon\nPT:7/6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature.\nSVar:TrigSacrifice:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nT:Mode$ Sacrificed | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ When you sacrifice CARDNAME, each opponent discards a card, you draw a card, and you gain 2 life.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, sacrifice a creature.\\nWhen you sacrifice Daemogoth Woe-Eater, each opponent discards a card, you draw a card, and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daemogoth Woe-Eater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

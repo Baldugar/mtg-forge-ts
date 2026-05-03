@@ -1,0 +1,23 @@
+{
+  "id": "creative-technique-corpus-m676",
+  "description": "M6 corpus — Creative Technique; in-hand parse.",
+  "seed": 62725,
+  "cards": {
+    "Creative Technique": "Name:Creative Technique\nManaCost:4 R\nTypes:Sorcery\nK:Demonstrate\nA:SP$ Shuffle | SubAbility$ DBDigUntil | StackDescription$ {p:You} shuffles their library, | SpellDescription$ Shuffle your library,\nSVar:DBDigUntil:DB$ DigUntil | Defined$ You | Valid$ Card.nonLand | FoundDestination$ Exile | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | RememberFound$ True | SubAbility$ DBPlay | StackDescription$ then reveals cards from the top of it until they reveal a nonland card. {p:You} exiles that card and puts the rest on the bottom of their library in a random order. | SpellDescription$ then reveal cards from the top of it until you reveal a nonland card. Exile that card and put the rest on the bottom of your library in a random order.\nSVar:DBPlay:DB$ Play | Defined$ Remembered | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup | StackDescription$ {p:You} may cast the exiled card without paying its mana cost. | SpellDescription$ You may cast the exiled card without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Demonstrate (When you cast this spell, you may copy it. If you do, choose an opponent to also copy it.)\\nShuffle your library, then reveal cards from the top of it until you reveal a nonland card. Exile that card and put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creative Technique"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

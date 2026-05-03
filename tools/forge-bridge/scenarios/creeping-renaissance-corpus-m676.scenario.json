@@ -1,0 +1,23 @@
+{
+  "id": "creeping-renaissance-corpus-m676",
+  "description": "M6 corpus — Creeping Renaissance; in-hand parse.",
+  "seed": 62732,
+  "cards": {
+    "Creeping Renaissance": "Name:Creeping Renaissance\nManaCost:3 G G\nTypes:Sorcery\nK:Flashback:5 G G\nA:SP$ ChooseType | Defined$ You | Type$ Card | InvalidTypes$ Instant,Sorcery,Kindred | SubAbility$ DBReturn | SpellDescription$ Choose a permanent type. Return all cards of the chosen type from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Hand | ChangeType$ Card.ChosenType+YouCtrl\nAI:RemoveDeck:All\nOracle:Choose a permanent type. Return all cards of the chosen type from your graveyard to your hand.\\nFlashback {5}{G}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creeping Renaissance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

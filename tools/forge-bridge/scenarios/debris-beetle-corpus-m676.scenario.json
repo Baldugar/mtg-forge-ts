@@ -1,0 +1,23 @@
+{
+  "id": "debris-beetle-corpus-m676",
+  "description": "M6 corpus — Debris Beetle; in-hand parse.",
+  "seed": 63298,
+  "cards": {
+    "Debris Beetle": "Name:Debris Beetle\nManaCost:2 B G\nTypes:Artifact Vehicle\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When this Vehicle enters, each opponent loses 3 life and you gain 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 3 | Defined$ Opponent | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3\nK:Crew:2\nDeckHas:Ability$LifeGain\nOracle:Trample\\nWhen this Vehicle enters, each opponent loses 3 life and you gain 3 life.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Debris Beetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

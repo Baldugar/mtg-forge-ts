@@ -1,0 +1,25 @@
+{
+  "id": "demigod-of-revenge-corpus-m676",
+  "description": "M6 corpus — Demigod of Revenge; ETB-on-bf.",
+  "seed": 63421,
+  "cards": {
+    "Demigod of Revenge": "Name:Demigod of Revenge\nManaCost:BR BR BR BR BR\nTypes:Creature Spirit Avatar\nPT:5/4\nK:Flying\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerZones$ Stack | TriggerDescription$ When you cast CARDNAME, return all cards named Demigod of Revenge from your graveyard to the battlefield.\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Creature.YouOwn+namedDemigod of Revenge | Origin$ Graveyard | Destination$ Battlefield\nDeckHints:Name$Demigod of Revenge\nOracle:When you cast this spell, return all cards named Demigod of Revenge from your graveyard to the battlefield.\\nFlying, haste\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Demigod of Revenge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deathreap-ritual-corpus-m676",
+  "description": "M6 corpus — Deathreap Ritual; in-hand parse.",
+  "seed": 63289,
+  "cards": {
+    "Deathreap Ritual": "Name:Deathreap Ritual\nManaCost:2 B G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | CheckSVar$ X | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigDraw | TriggerDescription$ Morbid — At the beginning of each end step, if a creature died this turn, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nOracle:Morbid — At the beginning of each end step, if a creature died this turn, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathreap Ritual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "devout-lightcaster-corpus-m676",
+  "description": "M6 corpus — Devout Lightcaster; in-hand parse.",
+  "seed": 63588,
+  "cards": {
+    "Devout Lightcaster": "Name:Devout Lightcaster\nManaCost:W W W\nTypes:Creature Kor Cleric\nPT:2/2\nK:Protection from black\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, exile target black permanent.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Permanent.Black | TgtPrompt$ Select target black permanent | Origin$ Battlefield | Destination$ Exile\nOracle:Protection from black\\nWhen Devout Lightcaster enters, exile target black permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devout Lightcaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

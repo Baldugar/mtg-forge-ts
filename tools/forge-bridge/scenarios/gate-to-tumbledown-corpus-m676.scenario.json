@@ -1,0 +1,25 @@
+{
+  "id": "gate-to-tumbledown-corpus-m676",
+  "description": "M6 corpus — Gate to Tumbledown; ETB-on-bf.",
+  "seed": 65971,
+  "cards": {
+    "Gate to Tumbledown": "Name:Gate to Tumbledown\nManaCost:no cost\nTypes:Land Mountain Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Seek | Cost$ 3 R T | Type$ Card.nonLand | GameActivationLimit$ 1 | StackDescription$ {p:You} seeks a nonland card. | SpellDescription$ Seek a nonland card. Activate only once.\nText:{T}: Add {R}.\nDeckHints:Type$Gate\nOracle:Gate to Tumbledown enters tapped.\\n{3}{R}, {T}: Seek a nonland card. Activate only once.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gate to Tumbledown"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

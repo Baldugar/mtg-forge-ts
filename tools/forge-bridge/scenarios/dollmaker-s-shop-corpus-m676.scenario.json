@@ -1,0 +1,23 @@
+{
+  "id": "dollmaker-s-shop-corpus-m676",
+  "description": "M6 corpus — Dollmaker's Shop; in-hand parse.",
+  "seed": 63802,
+  "cards": {
+    "Dollmaker's Shop": "Name:Dollmaker's Shop\nManaCost:1 W\nTypes:Enchantment Room\nT:Mode$ AttackersDeclaredOneTarget | Execute$ TrigToken | AttackedTarget$ Player | ValidAttackers$ Creature.YouCtrl+!Toy | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever one or more non-Toy creatures you control attack a player, create a 1/1 white Toy artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_a_toy\nAlternateMode:Split\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhenever one or more non-Toy creatures you control attack a player, create a 1/1 white Toy artifact creature token.\n\nALTERNATE\n\nName:Porcelain Gallery\nManaCost:4 W W\nTypes:Enchantment Room\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AffectedZone$ Battlefield | SetPower$ X | SetToughness$ X | Description$ Creatures you control have base power and toughness each equal to the number of creatures you control.\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nCreatures you control have base power and toughness each equal to the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dollmaker's Shop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

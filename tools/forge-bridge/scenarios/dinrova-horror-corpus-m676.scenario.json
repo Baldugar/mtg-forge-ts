@@ -1,0 +1,23 @@
+{
+  "id": "dinrova-horror-corpus-m676",
+  "description": "M6 corpus — Dinrova Horror; in-hand parse.",
+  "seed": 63642,
+  "cards": {
+    "Dinrova Horror": "Name:Dinrova Horror\nManaCost:4 U B\nTypes:Creature Horror\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, return target permanent to its owner's hand, then that player discards a card.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ TargetedOwner | NumCards$ 1 | Mode$ TgtChoose\nOracle:When Dinrova Horror enters, return target permanent to its owner's hand, then that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dinrova Horror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "firemane-angel-corpus-m676",
+  "description": "M6 corpus — Firemane Angel; in-hand parse.",
+  "seed": 65376,
+  "cards": {
+    "Firemane Angel": "Name:Firemane Angel\nManaCost:3 R W W\nTypes:Creature Angel\nPT:4/3\nK:Flying\nK:First Strike\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self | PresentZone$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard or on the battlefield, you may gain 1 life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Graveyard | IsPresent$ Card.StrictlySelf | PresentZone$ Graveyard | OptionalDecider$ You | Secondary$ True | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if CARDNAME is in your graveyard or on the battlefield, you may gain 1 life.\nA:AB$ ChangeZone | Cost$ 6 R R W W | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | PlayerTurn$ True | ActivationPhases$ Upkeep | SpellDescription$ Return CARDNAME from your graveyard to the battlefield. Activate only during your upkeep.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:Flying, first strike\\nAt the beginning of your upkeep, if Firemane Angel is in your graveyard or on the battlefield, you may gain 1 life.\\n{6}{R}{R}{W}{W}: Return Firemane Angel from your graveyard to the battlefield. Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firemane Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

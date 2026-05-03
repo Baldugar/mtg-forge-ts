@@ -1,0 +1,25 @@
+{
+  "id": "evil-eye-of-urborg-corpus-m676",
+  "description": "M6 corpus — Evil Eye of Urborg; ETB-on-bf.",
+  "seed": 64826,
+  "cards": {
+    "Evil Eye of Urborg": "Name:Evil Eye of Urborg\nManaCost:4 B\nTypes:Creature Eye\nPT:6/3\nS:Mode$ CantAttack | ValidCard$ Creature.nonEye+YouCtrl | Description$ Non-Eye creatures you control can't attack.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigDestroyBlocker | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, destroy that creature.\nSVar:TrigDestroyBlocker:DB$ Destroy | Defined$ TriggeredBlockerLKICopy\nOracle:Non-Eye creatures you control can't attack.\\nWhenever Evil Eye of Urborg becomes blocked by a creature, destroy that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Evil Eye of Urborg"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

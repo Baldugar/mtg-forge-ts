@@ -1,0 +1,23 @@
+{
+  "id": "glowspore-shaman-corpus-m676",
+  "description": "M6 corpus — Glowspore Shaman; in-hand parse.",
+  "seed": 66354,
+  "cards": {
+    "Glowspore Shaman": "Name:Glowspore Shaman\nManaCost:B G\nTypes:Creature Elf Shaman\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards. You may put a land card from your graveyard on top of your library.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | ChangeType$ Land.YouOwn | ChangeNum$ 1 | Hidden$ True | Optional$ True\nDeckHas:Ability$Graveyard\nOracle:When Glowspore Shaman enters, mill three cards. You may put a land card from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glowspore Shaman"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gargantuan-gorilla-corpus-m676",
+  "description": "M6 corpus — Gargantuan Gorilla; in-hand parse.",
+  "seed": 65943,
+  "cards": {
+    "Gargantuan Gorilla": "Name:Gargantuan Gorilla\nManaCost:4 G G G\nTypes:Creature Ape\nPT:7/7\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may sacrifice a Forest. If you sacrifice a snow Forest this way, CARDNAME gains trample until end of turn. If you don't sacrifice a Forest, sacrifice CARDNAME and it deals 7 damage to you.\nSVar:TrigSacrifice:DB$ Sacrifice | Optional$ True | SacValid$ Forest | Amount$ 1 | RememberSacrificed$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Self | KW$ Trample | ConditionDefined$ Remembered | ConditionPresent$ Forest.Snow | ConditionCompare$ EQ1 | SubAbility$ DBSacMe\nSVar:DBSacMe:DB$ Sacrifice | ConditionDefined$ Remembered | ConditionPresent$ Forest | ConditionCompare$ EQ0 | SubAbility$ DBRageDamage\nSVar:DBRageDamage:DB$ DealDamage | Defined$ You | NumDmg$ 7 | ConditionDefined$ Remembered | ConditionPresent$ Forest | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | NumDmg$ X | SubAbility$ DamageThis | SpellDescription$ CARDNAME deals damage equal to its power to another target creature. That creature deals damage equal to its power to CARDNAME.\nSVar:DamageThis:DB$ DealDamage | Defined$ Self | DamageSource$ Targeted | NumDmg$ Y\nSVar:X:Count$CardPower\nSVar:Y:Targeted$CardPower\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may sacrifice a Forest. If you sacrifice a snow Forest this way, Gargantuan Gorilla gains trample until end of turn. If you don't sacrifice a Forest, sacrifice Gargantuan Gorilla and it deals 7 damage to you.\\n{T}: Gargantuan Gorilla deals damage equal to its power to another target creature. That creature deals damage equal to its power to Gargantuan Gorilla.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gargantuan Gorilla"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

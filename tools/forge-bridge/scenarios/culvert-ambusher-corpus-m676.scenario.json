@@ -1,0 +1,23 @@
+{
+  "id": "culvert-ambusher-corpus-m676",
+  "description": "M6 corpus — Culvert Ambusher; in-hand parse.",
+  "seed": 62885,
+  "cards": {
+    "Culvert Ambusher": "Name:Culvert Ambusher\nManaCost:3 G G\nTypes:Creature Wurm Horror\nPT:4/5\nK:Disguise:4 G\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigProvoke | TriggerDescription$ When CARDNAME enters or is turned face up, target creature blocks this turn if able.\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigProvoke | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When CARDNAME enters or is turned face up, target creature blocks this turn if able.\nSVar:TrigProvoke:DB$ Effect | ValidTgts$ Creature | StaticAbilities$ MustBlock | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ This creature blocks this turn if able.\nOracle:When Culvert Ambusher enters or is turned face up, target creature blocks this turn if able.\\nDisguise {4}{G} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Culvert Ambusher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

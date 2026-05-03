@@ -1,0 +1,23 @@
+{
+  "id": "civic-wayfinder-corpus-m676",
+  "description": "M6 corpus — Civic Wayfinder; in-hand parse.",
+  "seed": 62180,
+  "cards": {
+    "Civic Wayfinder": "Name:Civic Wayfinder\nManaCost:2 G\nTypes:Creature Elf Druid Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:When Civic Wayfinder enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Civic Wayfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

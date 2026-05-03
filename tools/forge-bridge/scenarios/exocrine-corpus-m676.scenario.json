@@ -1,0 +1,23 @@
+{
+  "id": "exocrine-corpus-m676",
+  "description": "M6 corpus — Exocrine; in-hand parse.",
+  "seed": 64865,
+  "cards": {
+    "Exocrine": "Name:Exocrine\nManaCost:2 X R\nTypes:Creature Tyranid\nPT:2/2\nK:Ravenous\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ Bio-plasmic Barrage — When CARDNAME enters, it deals X damage to each player and each other creature.\nSVar:TrigDamageAll:DB$ DamageAll | ValidPlayers$ Player | ValidCards$ Creature.StrictlyOther | NumDmg$ X\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Ravenous (This creature enters with X +1/+1 counters on it. If X is 5 or more, draw a card when it enters.)\\nBio-plasmic Barrage — When Exocrine enters, it deals X damage to each player and each other creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exocrine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

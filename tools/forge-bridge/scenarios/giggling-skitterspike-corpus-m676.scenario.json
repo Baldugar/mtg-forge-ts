@@ -1,0 +1,23 @@
+{
+  "id": "giggling-skitterspike-corpus-m676",
+  "description": "M6 corpus — Giggling Skitterspike; in-hand parse.",
+  "seed": 66209,
+  "cards": {
+    "Giggling Skitterspike": "Name:Giggling Skitterspike\nManaCost:4\nTypes:Artifact Creature Toy\nPT:1/1\nK:Indestructible\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDealDamage | TriggerDescription$ Whenever CARDNAME attacks, blocks, or becomes the target of a spell, it deals damage equal to its power to each opponent.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigDealDamage | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks, blocks, or becomes the target of a spell, it deals damage equal to its power to each opponent.\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Spell | TriggerZones$ Battlefield | Execute$ TrigDealDamage | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks, blocks, or becomes the target of a spell, it deals damage equal to its power to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nA:AB$ PutCounter | Cost$ 5 | Monstrosity$ 5\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nOracle:Indestructible\\nWhenever Giggling Skitterspike attacks, blocks, or becomes the target of a spell, it deals damage equal to its power to each opponent.\\n{5}: Monstrosity 5. (If this creature isn't monstrous, put five +1/+1 counters on it and it becomes monstrous.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giggling Skitterspike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

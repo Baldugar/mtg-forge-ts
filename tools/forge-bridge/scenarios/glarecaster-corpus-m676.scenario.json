@@ -1,0 +1,25 @@
+{
+  "id": "glarecaster-corpus-m676",
+  "description": "M6 corpus — Glarecaster; ETB-on-bf.",
+  "seed": 66261,
+  "cards": {
+    "Glarecaster": "Name:Glarecaster\nManaCost:4 W W\nTypes:Creature Bird Cleric\nPT:3/3\nK:Flying\nA:AB$ Effect | Cost$ 5 W | ValidTgts$ Any | TgtPrompt$ Select any target to redirect the damage to | ReplacementEffects$ SelflessDamage | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ The next time damage would be dealt to CARDNAME and/or you this turn, that damage is dealt to any target instead.\nSVar:SelflessDamage:Event$ DamageDone | ValidTarget$ Creature.EffectSource,You | ReplaceWith$ SelflessDmg | DamageTarget$ Remembered | Description$ The next time damage would be dealt to EFFECTSOURCE and/or you this turn, that damage is dealt to any target instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ GameEntity | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Flying\\n{5}{W}: The next time damage would be dealt to Glarecaster and/or you this turn, that damage is dealt to any target instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Glarecaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gargos-vicious-watcher-corpus-m676",
+  "description": "M6 corpus — Gargos, Vicious Watcher; in-hand parse.",
+  "seed": 65945,
+  "cards": {
+    "Gargos, Vicious Watcher": "Name:Gargos, Vicious Watcher\nManaCost:3 G G G\nTypes:Legendary Creature Hydra\nPT:8/7\nK:Vigilance\nS:Mode$ ReduceCost | ValidCard$ Card.Hydra | Type$ Spell | Activator$ You | Amount$ 4 | Description$ Hydra spells you cast cost {4} less to cast.\nT:Mode$ BecomesTarget | ValidTarget$ Creature.inZoneBattlefield+YouCtrl | ValidSource$ Spell | TriggerZones$ Battlefield | Execute$ DBFight | TriggerDescription$ Whenever a creature you control becomes the target of a spell, CARDNAME fights up to one target creature you don't control.\nSVar:DBFight:DB$ Fight | Defined$ Self | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control\nSVar:PlayMain1:TRUE\nDeckHints:Type$Hydra\nOracle:Vigilance\\nHydra spells you cast cost {4} less to cast.\\nWhenever a creature you control becomes the target of a spell, Gargos, Vicious Watcher fights up to one target creature you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gargos, Vicious Watcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "call-to-glory-corpus-m676",
+  "description": "M6 corpus — Call to Glory; in-hand parse.",
+  "seed": 61625,
+  "cards": {
+    "Call to Glory": "Name:Call to Glory\nManaCost:1 W\nTypes:Instant\nA:SP$ UntapAll | ValidCards$ Creature.YouCtrl | SpellDescription$ Untap all creatures you control. Samurai creatures you control get +1/+1 until end of turn. | SubAbility$ DBPumpYourSamurai\nSVar:DBPumpYourSamurai:DB$ PumpAll | ValidCards$ Creature.Samurai+YouCtrl | NumAtt$ +1 | NumDef$ +1\nAI:RemoveDeck:Random\nDeckNeeds:Type$Samurai\nOracle:Untap all creatures you control. Samurai creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call to Glory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

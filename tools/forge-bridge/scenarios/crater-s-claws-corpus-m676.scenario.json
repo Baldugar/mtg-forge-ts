@@ -1,0 +1,23 @@
+{
+  "id": "crater-s-claws-corpus-m676",
+  "description": "M6 corpus — Crater's Claws; in-hand parse.",
+  "seed": 62707,
+  "cards": {
+    "Crater's Claws": "Name:Crater's Claws\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ Y | SpellDescription$ CARDNAME deals X damage to any target. Ferocious — CARDNAME deals X plus 2 damage instead if you control a creature with power 4 or greater.\nSVar:X:Count$xPaid\nSVar:W:Count$xPaid/Plus.2\nSVar:Y:Count$Compare Z GE1.W.X\nSVar:Z:Count$Valid Creature.YouCtrl+powerGE4\nOracle:Crater's Claws deals X damage to any target.\\nFerocious — Crater's Claws deals X plus 2 damage instead if you control a creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crater's Claws"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

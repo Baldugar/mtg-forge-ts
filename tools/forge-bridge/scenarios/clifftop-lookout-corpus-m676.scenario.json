@@ -1,0 +1,23 @@
+{
+  "id": "clifftop-lookout-corpus-m676",
+  "description": "M6 corpus — Clifftop Lookout; in-hand parse.",
+  "seed": 62240,
+  "cards": {
+    "Clifftop Lookout": "Name:Clifftop Lookout\nManaCost:2 G\nTypes:Creature Frog Scout\nPT:1/2\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDigUntil | TriggerDescription$ When CARDNAME enters, reveal cards from the top of your library until you reveal a land card. Put that card onto the battlefield tapped and the rest on the bottom of your library in a random order.\nSVar:TrigDigUntil:DB$ DigUntil | Valid$ Land | ValidDescription$ land | FoundDestination$ Battlefield | Tapped$ True | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True\nOracle:Reach\\nWhen Clifftop Lookout enters, reveal cards from the top of your library until you reveal a land card. Put that card onto the battlefield tapped and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clifftop Lookout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

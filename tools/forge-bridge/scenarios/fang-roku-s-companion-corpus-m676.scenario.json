@@ -1,0 +1,23 @@
+{
+  "id": "fang-roku-s-companion-corpus-m676",
+  "description": "M6 corpus — Fang, Roku's Companion; in-hand parse.",
+  "seed": 65063,
+  "cards": {
+    "Fang, Roku's Companion": "Name:Fang, Roku's Companion\nManaCost:3 R R\nTypes:Legendary Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever NICKNAME attacks, another target legendary creature you control gets +X/+0 until end of turn, where X is NICKNAME's power.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+Legendary+YouCtrl | TgtPrompt$ Select another target legendary creature you control | NumAtt$ +X\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+nonSpirit | Execute$ DBReturn | TriggerDescription$ When NICKNAME dies, if he wasn't a Spirit, return this card to the battlefield under your control. He's a Spirit in addition to his other types.\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | StaticEffect$ Animate | GainControl$ True\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Spirit\nSVar:X:Count$CardPower\nSVar:HasAttackEffect:TRUE\nOracle:Flying\\nWhenever Fang attacks, another target legendary creature you control gets +X/+0 until end of turn, where X is Fang's power.\\nWhen Fang dies, if he wasn't a Spirit, return this card to the battlefield under your control. He's a Spirit in addition to his other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fang, Roku's Companion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

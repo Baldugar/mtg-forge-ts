@@ -1,0 +1,23 @@
+{
+  "id": "corrupt-corpus-m676",
+  "description": "M6 corpus — Corrupt; in-hand parse.",
+  "seed": 62606,
+  "cards": {
+    "Corrupt": "Name:Corrupt\nManaCost:5 B\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals damage to any target equal to the number of Swamps you control. You gain life equal to the damage dealt this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y | StackDescription$ You gain life equal to the damage dealt this way.\nSVar:X:Count$Valid Swamp.YouCtrl\nSVar:Y:Count$TotalDamageDoneByThisTurn\nOracle:Corrupt deals damage to any target equal to the number of Swamps you control. You gain life equal to the damage dealt this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corrupt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

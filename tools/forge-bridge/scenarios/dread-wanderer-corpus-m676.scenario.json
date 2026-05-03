@@ -1,0 +1,25 @@
+{
+  "id": "dread-wanderer-corpus-m676",
+  "description": "M6 corpus — Dread Wanderer; ETB-on-bf.",
+  "seed": 63988,
+  "cards": {
+    "Dread Wanderer": "Name:Dread Wanderer\nManaCost:B\nTypes:Creature Zombie Jackal\nPT:2/1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ 2 B | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | SorcerySpeed$ True | CheckSVar$ X | SVarCompare$ LE1 | SpellDescription$ Return CARDNAME from your graveyard to the battlefield. Activate only as a sorcery and only if you have one or fewer cards in hand.\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:Dread Wanderer enters tapped.\\n{2}{B}: Return Dread Wanderer from your graveyard to the battlefield. Activate only as a sorcery and only if you have one or fewer cards in hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dread Wanderer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

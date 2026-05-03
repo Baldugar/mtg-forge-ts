@@ -1,0 +1,23 @@
+{
+  "id": "druid-s-call-corpus-m676",
+  "description": "M6 corpus — Druid's Call; in-hand parse.",
+  "seed": 64106,
+  "cards": {
+    "Druid's Call": "Name:Druid's Call\nManaCost:1 G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDoneOnce | ValidTarget$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever enchanted creature is dealt damage, its controller creates that many 1/1 green Squirrel creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_squirrel | TokenOwner$ TriggeredTargetController\nSVar:X:TriggerCount$DamageAmount\nOracle:Enchant creature\\nWhenever enchanted creature is dealt damage, its controller creates that many 1/1 green Squirrel creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Druid's Call"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

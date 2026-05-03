@@ -1,0 +1,25 @@
+{
+  "id": "dreams-of-the-dead-corpus-m676",
+  "description": "M6 corpus — Dreams of the Dead; ETB-on-bf.",
+  "seed": 64032,
+  "cards": {
+    "Dreams of the Dead": "Name:Dreams of the Dead\nManaCost:3 U\nTypes:Enchantment\nA:AB$ ChangeZone | Cost$ 1 U | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.White+YouCtrl,Creature.Black+YouCtrl | TgtPrompt$ Select target white or black creature in your graveyard | SubAbility$ DBPump | SpellDescription$ Return target white or black creature card from your graveyard to the battlefield. That creature gains \"Cumulative upkeep {2}.\" If the creature would leave the battlefield, exile it instead of putting it anywhere else.\nSVar:DBPump:DB$ Pump | KW$ Cumulative upkeep:2 | LeaveBattlefield$ Exile | Defined$ Targeted | Duration$ Permanent\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:{1}{U}: Return target white or black creature card from your graveyard to the battlefield. That creature gains \"Cumulative upkeep {2}.\" If the creature would leave the battlefield, exile it instead of putting it anywhere else. (At the beginning of its controller's upkeep, that player puts an age counter on it, then sacrifices it unless they pay its upkeep cost for each age counter on it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dreams of the Dead"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

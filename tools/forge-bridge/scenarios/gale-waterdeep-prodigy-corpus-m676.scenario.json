@@ -1,0 +1,25 @@
+{
+  "id": "gale-waterdeep-prodigy-corpus-m676",
+  "description": "M6 corpus — Gale, Waterdeep Prodigy; ETB-on-bf.",
+  "seed": 65898,
+  "cards": {
+    "Gale, Waterdeep Prodigy": "Name:Gale, Waterdeep Prodigy\nManaCost:2 U\nTypes:Legendary Creature Human Wizard\nPT:1/3\nT:Mode$ SpellCast | ValidCard$ Instant.wasCastFromYourHandByYou | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCastSorcery | TriggerDescription$ Whenever you cast an instant or sorcery spell from your hand, you may cast up to one target card of the other type from your graveyard. If a spell cast from your graveyard this way would be put into your graveyard, exile it instead.\nSVar:TrigCastSorcery:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Sorcery.YouOwn | ValidSA$ Spell | TgtPrompt$ Select up to one target sorcery card | TargetMin$ 0 | TargetMax$ 1 | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nT:Mode$ SpellCast | ValidCard$ Sorcery.wasCastFromYourHandByYou | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCastInstant | Secondary$ True | TriggerDescription$ Whenever you cast an instant or sorcery spell from your hand, you may cast up to one target card of the other type from your graveyard. If a spell cast from your graveyard this way would be put into your graveyard, exile it instead.\nSVar:TrigCastInstant:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Instant.YouOwn | ValidSA$ Spell | TgtPrompt$ Select up to one target instant card | TargetMin$ 0 | TargetMax$ 1 | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nK:Choose a Background\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell from your hand, you may cast up to one target card of the other type from your graveyard. If a spell cast from your graveyard this way would be put into your graveyard, exile it instead.\\nChoose a Background (You can have a Background as a second commander.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gale, Waterdeep Prodigy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

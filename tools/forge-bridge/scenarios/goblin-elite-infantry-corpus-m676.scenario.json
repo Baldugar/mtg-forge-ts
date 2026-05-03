@@ -1,0 +1,25 @@
+{
+  "id": "goblin-elite-infantry-corpus-m676",
+  "description": "M6 corpus — Goblin Elite Infantry; ETB-on-bf.",
+  "seed": 66416,
+  "cards": {
+    "Goblin Elite Infantry": "Name:Goblin Elite Infantry\nManaCost:1 R\nTypes:Creature Goblin Warrior\nPT:2/2\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets -1/-1 until end of turn.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ -1 | NumDef$ -1\nOracle:Whenever Goblin Elite Infantry blocks or becomes blocked, it gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Elite Infantry"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

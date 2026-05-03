@@ -1,0 +1,23 @@
+{
+  "id": "elfhame-sanctuary-corpus-m676",
+  "description": "M6 corpus — Elfhame Sanctuary; in-hand parse.",
+  "seed": 64418,
+  "cards": {
+    "Elfhame Sanctuary": "Name:Elfhame Sanctuary\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigChange | TriggerDescription$ At the beginning of your upkeep, you may search your library for a basic land card, reveal that card, put it into your hand, then shuffle. If you do, you skip your draw step this turn.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | SubAbility$ DBSkipDraw | ShuffleNonMandatory$ True\nSVar:DBSkipDraw:DB$ SkipPhase | Defined$ You | Step$ Draw | Duration$ EndOfTurn\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may search your library for a basic land card, reveal that card, put it into your hand, then shuffle. If you do, you skip your draw step this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elfhame Sanctuary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

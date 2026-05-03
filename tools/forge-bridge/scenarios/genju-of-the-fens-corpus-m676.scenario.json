@@ -1,0 +1,23 @@
+{
+  "id": "genju-of-the-fens-corpus-m676",
+  "description": "M6 corpus — Genju of the Fens; in-hand parse.",
+  "seed": 66048,
+  "cards": {
+    "Genju of the Fens": "Name:Genju of the Fens\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Swamp\nSVar:AttachAILogic:Pump\nA:AB$ Animate | Cost$ 2 | Defined$ Enchanted | Power$ 2 | Toughness$ 2 | Types$ Creature,Spirit | Colors$ Black | Abilities$ ABPump | SpellDescription$ Until end of turn, enchanted Swamp becomes a 2/2 black Spirit creature with \"{B}: This creature gets +1/+1 until end of turn.\" It's still a land.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigReturnOwner | OptionalDecider$ You | TriggerDescription$ When enchanted Swamp is put into a graveyard, you may return CARDNAME from your graveyard to your hand.\nSVar:ABPump:AB$ Pump | Cost$ B | Defined$ Self | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ This creature gets +1/+1 until end of turn.\nSVar:TrigReturnOwner:DB$ ChangeZone | Hidden$ True | ChangeType$ Card.StrictlySelf | DefinedPlayer$ You | Origin$ Graveyard | Destination$ Hand | Mandatory$ True\nSVar:NonStackingAttachEffect:True\nSVar:AIPaymentPreference:AvoidPayingWithAttachTarget\nOracle:Enchant Swamp\\n{2}: Until end of turn, enchanted Swamp becomes a 2/2 black Spirit creature with \"{B}: This creature gets +1/+1 until end of turn.\" It's still a land.\\nWhen enchanted Swamp is put into a graveyard, you may return Genju of the Fens from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genju of the Fens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flickerform-corpus-m676",
+  "description": "M6 corpus — Flickerform; in-hand parse.",
+  "seed": 65509,
+  "cards": {
+    "Flickerform": "Name:Flickerform\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Creature.!token\nSVar:AttachAILogic:Pump\nA:AB$ Pump | Cost$ 2 W W | Defined$ Enchanted | ImprintCards$ Enchanted | StackDescription$ SpellDescription | SubAbility$ DBRemAura | SpellDescription$ Exile enchanted creature and all Auras attached to it. At the beginning of the next end step, return that card to the battlefield under its owner's control. If you do, return the other cards exiled this way to the battlefield under their owners' control attached to that creature.\nSVar:DBRemAura:DB$ PumpAll | ValidCards$ Card.IsImprinted,Aura.AttachedTo Creature.IsImprinted | RememberPumped$ True | StackDescription$ None | SubAbility$ DBChangeZoneAll\nSVar:DBChangeZoneAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Card.IsRemembered | SubAbility$ DelayedEffect\nSVar:DelayedEffect:DB$ Effect | Triggers$ TrigEOT | RememberObjects$ Remembered | ImprintCards$ Imprinted | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:TrigEOT:Mode$ Phase | Phase$ End of Turn | Execute$ FlickerformReturn | OneOff$ True | TriggerZones$ Command | TriggerDescription$ At the beginning of the next end step, return that card to the battlefield under its owner's control.\nSVar:FlickerformReturn:DB$ ChangeZoneAll | ChangeType$ Card.IsRemembered+IsImprinted | Origin$ Exile | Destination$ Battlefield | SubAbility$ ClearImprint\nSVar:ClearImprint:DB$ Cleanup | ClearImprinted$ True | SubAbility$ FlickerformAttach\nSVar:FlickerformAttach:DB$ RepeatEach | UseImprinted$ True | RepeatCards$ Aura.IsRemembered | Zone$ Exile | RepeatSubAbility$ DBAllAuraAttach\nSVar:DBAllAuraAttach:DB$ ChangeZone | Defined$ Imprinted | Origin$ Exile | Destination$ Battlefield | AttachedTo$ Valid Creature.IsRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nAI:RemoveDeck:All\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\n{2}{W}{W}: Exile enchanted creature and all Auras attached to it. At the beginning of the next end step, return that card to the battlefield under its owner's control. If you do, return the other cards exiled this way to the battlefield under their owners' control attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flickerform"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

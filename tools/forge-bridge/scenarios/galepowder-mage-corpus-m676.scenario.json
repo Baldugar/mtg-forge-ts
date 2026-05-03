@@ -1,0 +1,23 @@
+{
+  "id": "galepowder-mage-corpus-m676",
+  "description": "M6 corpus — Galepowder Mage; in-hand parse.",
+  "seed": 65899,
+  "cards": {
+    "Galepowder Mage": "Name:Galepowder Mage\nManaCost:3 W\nTypes:Creature Kithkin Wizard\nPT:3/3\nK:Flying\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, exile another target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.Other | Mandatory$ True | TgtPrompt$ Select another target creature | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigBounce | TriggerDescription$ Return exiled creature to the battlefield. | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Exile | Destination$ Battlefield | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nAI:RemoveDeck:All\nOracle:Flying\\nWhenever Galepowder Mage attacks, exile another target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galepowder Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

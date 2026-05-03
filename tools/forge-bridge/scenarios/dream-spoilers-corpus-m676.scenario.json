@@ -1,0 +1,25 @@
+{
+  "id": "dream-spoilers-corpus-m676",
+  "description": "M6 corpus — Dream Spoilers; ETB-on-bf.",
+  "seed": 64016,
+  "cards": {
+    "Dream Spoilers": "Name:Dream Spoilers\nManaCost:3 B\nTypes:Creature Faerie Warlock\nPT:2/2\nK:Flying\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigPump | TriggerDescription$ Whenever you cast a spell during an opponent's turn, up to one target creature an opponent controls gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select up to one target creature an opponent controls | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | TargetMin$ 0 | TargetMax$ 1\nSVar:BuffedBy:Creature.withFlash\nDeckHints:Type$Instant\nOracle:Flying\\nWhenever you cast a spell during an opponent's turn, up to one target creature an opponent controls gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dream Spoilers"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

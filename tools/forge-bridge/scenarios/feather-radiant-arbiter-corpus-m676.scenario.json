@@ -1,0 +1,25 @@
+{
+  "id": "feather-radiant-arbiter-corpus-m676",
+  "description": "M6 corpus — Feather, Radiant Arbiter; ETB-on-bf.",
+  "seed": 65163,
+  "cards": {
+    "Feather, Radiant Arbiter": "Name:Feather, Radiant Arbiter\nManaCost:R W W\nTypes:Legendary Creature Angel\nPT:4/3\nK:Flying\nK:Lifelink\nT:Mode$ SpellAbilityCast | ValidSA$ Spell.nonCreature | ValidActivatingPlayer$ You | IsSingleTarget$ True | TargetsValid$ Card.Self | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell that targets only CARDNAME, you may choose any number of other creatures that spell could target and pay {2} for each of those creatures. If you do, for each of those creatures, copy that spell. The copy targets that creature. (Copies of permanent spells become tokens.)\nSVar:TrigChoose:DB$ ChooseCard | ChoiceTitle$ Choose any number of other creatures that spell could target | Choices$ Creature.Other+CanBeTargetedByTriggeredSpellAbility | MinAmount$ 0 | Amount$ Count$Valid Creature.Other+CanBeTargetedByTriggeredSpellAbility | SubAbility$ CopySpell\nSVar:CopySpell:DB$ CopySpellAbility | DefinedTarget$ ChosenCard | UnlessCost$ CopyCost | UnlessPayer$ You | UnlessSwitched$ True | Defined$ TriggeredSpellAbility | Controller$ You | SubAbility$ DBCleanup\nSVar:CopyCost:Count$ChosenSize/Times.2\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nDeckHas:Ability$LifeGain\nOracle:Flying, lifelink\\nWhenever you cast a noncreature spell that targets only Feather, Radiant Arbiter, you may choose any number of other creatures that spell could target and pay {2} for each of those creatures. If you do, for each of those creatures, copy that spell. The copy targets that creature. (Copies of permanent spells become tokens.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Feather, Radiant Arbiter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

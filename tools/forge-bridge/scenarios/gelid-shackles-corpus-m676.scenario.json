@@ -1,0 +1,23 @@
+{
+  "id": "gelid-shackles-corpus-m676",
+  "description": "M6 corpus — Gelid Shackles; in-hand parse.",
+  "seed": 66019,
+  "cards": {
+    "Gelid Shackles": "Name:Gelid Shackles\nManaCost:W\nTypes:Snow Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't block, and its activated abilities can't be activated.\nS:Mode$ CantBeActivated | ValidCard$ Creature.EnchantedBy | Secondary$ True | Description$ Enchanted creature can't block, and its activated abilities can't be activated.\nA:AB$ Pump | Cost$ S | Defined$ Enchanted | KW$ Defender | IsCurse$ True | SpellDescription$ Enchanted creature gains defender until end of turn.\n# AI can now use snow mana to pay for activated abilities.\nAI:RemoveDeck:Random\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature can't block, and its activated abilities can't be activated.\\n{S}: Enchanted creature gains defender until end of turn. ({S} can be paid with one mana from a snow source.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gelid Shackles"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

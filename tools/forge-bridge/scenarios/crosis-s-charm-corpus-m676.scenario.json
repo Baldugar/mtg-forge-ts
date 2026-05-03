@@ -1,0 +1,23 @@
+{
+  "id": "crosis-s-charm-corpus-m676",
+  "description": "M6 corpus — Crosis's Charm; in-hand parse.",
+  "seed": 62771,
+  "cards": {
+    "Crosis's Charm": "Name:Crosis's Charm\nManaCost:U B R\nTypes:Instant\nA:SP$ Charm | Choices$ DBChangeZone,DBDestroy,DBDestroy2\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target permanent to its owner's hand.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | NoRegen$ True | SpellDescription$ Destroy target nonblack creature. It can't be regenerated.\nSVar:DBDestroy2:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nOracle:Choose one —\\n• Return target permanent to its owner's hand.\\n• Destroy target nonblack creature. It can't be regenerated.\\n• Destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crosis's Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

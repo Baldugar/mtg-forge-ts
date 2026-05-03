@@ -1,0 +1,23 @@
+{
+  "id": "fear-of-change-corpus-m676",
+  "description": "M6 corpus — Fear of Change; in-hand parse.",
+  "seed": 65137,
+  "cards": {
+    "Fear of Change": "Name:Fear of Change\nManaCost:G U\nTypes:Enchantment Creature Nightmare\nPT:2/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When this creatures enters or dies, exile another creature you control. If you do, conjure a duplicate of a random creature card with mana value X onto the battlefield, where X is 2 plus the exiled creature's mana value.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Graveyard | Execute$ TrigExile | Secondary$ True | TriggerDescription$ When this creatures enters or dies, exile another creature you control. If you do, conjure a duplicate of a random creature card with mana value X onto the battlefield, where X is 2 plus the exiled creature's mana value.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ChangeType$ Creature.YouCtrl+Other | Hidden$ True | ChangeNum$ 1 | RememberChanged$ True | SelectPrompt$ Select another creature you control | SubAbility$ DBNameCard\nSVar:DBNameCard:DB$ NameCard | AtRandom$ True | ValidCards$ Creature.cmcEQX | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Name$ ChosenName | Conjure$ True | Zone$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost/Plus.2\nOracle:When this creatures enters or dies, exile another creature you control. If you do, conjure a duplicate of a random creature card with mana value X onto the battlefield, where X is 2 plus the exiled creature's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fear of Change"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

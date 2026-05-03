@@ -1,0 +1,23 @@
+{
+  "id": "fleeting-effigy-corpus-m676",
+  "description": "M6 corpus — Fleeting Effigy; in-hand parse.",
+  "seed": 65491,
+  "cards": {
+    "Fleeting Effigy": "Name:Fleeting Effigy\nManaCost:R\nTypes:Creature Elemental\nPT:2/2\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, return this creature to its owner's hand. (Return it only if it's on the battlefield.)\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nA:AB$ Pump | Cost$ 2 R | NumAtt$ +2 | SpellDescription$ This creature gets +2/+0 until end of turn.\nOracle:Haste\\nAt the beginning of your end step, return this creature to its owner's hand. (Return it only if it's on the battlefield.)\\n{2}{R}: This creature gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fleeting Effigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dromosaur-corpus-m676",
+  "description": "M6 corpus — Dromosaur; ETB-on-bf.",
+  "seed": 64068,
+  "cards": {
+    "Dromosaur": "Name:Dromosaur\nManaCost:2 R\nTypes:Creature Dinosaur\nPT:2/3\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigBlockedPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets +2/-2 until end of turn.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigBlockedPump | Secondary$ True | TriggerDescription$ CARDNAME gets +2/-2 until end of turn.\nSVar:TrigBlockedPump:DB$ Pump | NumAtt$ +2 | NumDef$ -2 | Defined$ Self\nOracle:Whenever Dromosaur blocks or becomes blocked, it gets +2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dromosaur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

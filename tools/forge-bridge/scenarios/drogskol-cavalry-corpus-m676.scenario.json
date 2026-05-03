@@ -1,0 +1,23 @@
+{
+  "id": "drogskol-cavalry-corpus-m676",
+  "description": "M6 corpus — Drogskol Cavalry; in-hand parse.",
+  "seed": 64058,
+  "cards": {
+    "Drogskol Cavalry": "Name:Drogskol Cavalry\nManaCost:5 W W\nTypes:Creature Spirit Knight\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Spirit.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another Spirit you control enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nA:AB$ Token | Cost$ 3 W | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You | SpellDescription$ Create a 1/1 white Spirit creature token with flying.\nDeckHints:Type$Spirit\nDeckHas:Ability$Token|LifeGain\nOracle:Flying\\nWhenever another Spirit you control enters, you gain 2 life.\\n{3}{W}: Create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drogskol Cavalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

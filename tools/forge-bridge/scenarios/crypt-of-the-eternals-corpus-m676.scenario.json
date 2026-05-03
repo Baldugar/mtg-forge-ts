@@ -1,0 +1,23 @@
+{
+  "id": "crypt-of-the-eternals-corpus-m676",
+  "description": "M6 corpus — Crypt of the Eternals; in-hand parse.",
+  "seed": 62840,
+  "cards": {
+    "Crypt of the Eternals": "Name:Crypt of the Eternals\nManaCost:no cost\nTypes:Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ 1 T | Produced$ Combo U B R | SpellDescription$ Add {U}, {B}, or {R}.\nOracle:When Crypt of the Eternals enters, you gain 1 life.\\n{T}: Add {C}.\\n{1}, {T}: Add {U}, {B}, or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crypt of the Eternals"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

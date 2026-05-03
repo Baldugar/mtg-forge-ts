@@ -1,0 +1,25 @@
+{
+  "id": "cloudcrest-lake-corpus-m676",
+  "description": "M6 corpus — Cloudcrest Lake; ETB-on-bf.",
+  "seed": 62295,
+  "cards": {
+    "Cloudcrest Lake": "Name:Cloudcrest Lake\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo W U | SubAbility$ DBStayTapped | SpellDescription$ Add {W} or {U}. CARDNAME doesn't untap during your next untap step.\nSVar:DBStayTapped:DB$ Effect | ReplacementEffects$ DontUntap | RememberObjects$ Self | ExileOnMoved$ Battlefield | Duration$ UntilTheEndOfYourNextUntap\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ Player.Activator | Layer$ CantHappen | Description$ EFFECTSOURCE doesn't untap during your next untap step.\nOracle:{T}: Add {C}.\\n{T}: Add {W} or {U}. Cloudcrest Lake doesn't untap during your next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cloudcrest Lake"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

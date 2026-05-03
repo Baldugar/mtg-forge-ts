@@ -1,0 +1,23 @@
+{
+  "id": "expressive-iteration-corpus-m676",
+  "description": "M6 corpus — Expressive Iteration; in-hand parse.",
+  "seed": 64904,
+  "cards": {
+    "Expressive Iteration": "Name:Expressive Iteration\nManaCost:U R\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 3 | ChangeNum$ 1 | NoReveal$ True | LibraryPosition2$ 0 | SkipReorder$ True | SubAbility$ DBDig2 | NoLooking$ True | SpellDescription$ Look at the top three cards of your library. Put one of them into your hand, put one of them on the bottom of your library, and exile one of them. You may play the exiled card this turn. | StackDescription$ Look at the top three cards of your library. Put one of them into your hand, put one of them on the bottom of your library, and exile one of them. You may play the exiled card this turn.\nSVar:DBDig2:DB$ Dig | DigNum$ 2 | ChangeNum$ 1 | NoReveal$ True | DestinationZone$ Library | LibraryPosition2$ 0 | SubAbility$ DBDig1 | StackDescription$ None\nSVar:DBDig1:DB$ Dig | DigNum$ 1 | ChangeNum$ All | NoReveal$ True | DestinationZone$ Exile | SkipReorder$ True | RememberChanged$ True | SubAbility$ DBEffect | NoLooking$ True | StackDescription$ None\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card until end of turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Look at the top three cards of your library. Put one of them into your hand, put one of them on the bottom of your library, and exile one of them. You may play the exiled card this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expressive Iteration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

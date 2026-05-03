@@ -1,0 +1,25 @@
+{
+  "id": "daughter-of-autumn-corpus-m676",
+  "description": "M6 corpus — Daughter of Autumn; ETB-on-bf.",
+  "seed": 63135,
+  "cards": {
+    "Daughter of Autumn": "Name:Daughter of Autumn\nManaCost:2 G G\nTypes:Legendary Creature Avatar\nPT:2/4\nA:AB$ Effect | Cost$ W | ValidTgts$ Creature.White | TgtPrompt$ Select target white creature to redirect damage from | ReplacementEffects$ DamageEvent | Duration$ UntilHostLeavesPlayOrEOT | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ The next 1 damage that would be dealt to target white creature this turn is dealt to CARDNAME instead.\nSVar:DamageEvent:Event$ DamageDone | ValidTarget$ Creature.IsRemembered | ReplaceWith$ DamageEventDmg | DamageTarget$ EffectSource | Description$ The next 1 damage that would be dealt to target white creature this turn is dealt to EFFECTSOURCE instead.\nSVar:DamageEventDmg:DB$ ReplaceSplitDamage | DamageTarget$ EffectSource\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{W}: The next 1 damage that would be dealt to target white creature this turn is dealt to Daughter of Autumn instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Daughter of Autumn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

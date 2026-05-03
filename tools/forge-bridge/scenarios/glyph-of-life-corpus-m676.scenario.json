@@ -1,0 +1,23 @@
+{
+  "id": "glyph-of-life-corpus-m676",
+  "description": "M6 corpus — Glyph of Life; in-hand parse.",
+  "seed": 66360,
+  "cards": {
+    "Glyph of Life": "Name:Glyph of Life\nManaCost:W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature.Wall | TgtPrompt$ Select target Wall creature | Triggers$ TrigDamage | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Choose target Wall creature. Whenever that creature is dealt damage by an attacking creature this turn, you gain that much life.\nSVar:TrigDamage:Mode$ DamageDone | ValidSource$ Creature.attacking | ValidTarget$ Creature.IsRemembered | Execute$ TrigGainLife | TriggerDescription$ Whenever an attacking creature deals damage to this creature, you gain that much life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X | Defined$ You\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nDeckHints:Type$Wall & Keyword$Defender\nOracle:Choose target Wall creature. Whenever that creature is dealt damage by an attacking creature this turn, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glyph of Life"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

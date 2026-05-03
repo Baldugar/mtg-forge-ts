@@ -1,0 +1,25 @@
+{
+  "id": "fires-of-invention-corpus-m676",
+  "description": "M6 corpus — Fires of Invention; ETB-on-bf.",
+  "seed": 65381,
+  "cards": {
+    "Fires of Invention": "Name:Fires of Invention\nManaCost:3 R\nTypes:Enchantment\nS:Mode$ CantBeCast | Caster$ You.NonActive | Description$ You can cast spells only during your turn and you can cast no more than two spells each turn.\nS:Mode$ CantBeCast | NumLimitEachTurn$ 2 | Caster$ You | Secondary$ True | Description$ You can cast spells only during your turn and you can cast no more than two spells each turn.\nS:Mode$ Continuous | Affected$ Card.nonLand+cmcLEX | MayPlay$ True | MayPlayWithoutManaCost$ True | AffectedZone$ Hand,Graveyard,Exile,Command,Library | MayPlayDontGrantZonePermissions$ True | Description$ You may cast spells with mana value less than or equal to the number of lands you control without paying their mana costs.\nSVar:X:Count$Valid Land.YouCtrl\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:You can cast spells only during your turn and you can cast no more than two spells each turn.\\nYou may cast spells with mana value less than or equal to the number of lands you control without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fires of Invention"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cerise-slayer-of-fear-corpus-m676",
+  "description": "M6 corpus — Cerise, Slayer of Fear; in-hand parse.",
+  "seed": 61905,
+  "cards": {
+    "Cerise, Slayer of Fear": "Name:Cerise, Slayer of Fear\nManaCost:3 W W\nTypes:Legendary Creature Human Cleric Knight\nPT:5/5\nK:First Strike\nK:Lifelink\nT:Mode$ Phase | Phase$ Main2 | ValidPlayer$ You | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigSeek | TriggerDescription$ At the beginning of your postcombat main phase, if you gained life this turn, seek a card with the highest mana value among cards in your library with mana value less than or equal to the amount of life you gained this turn.\nSVar:TrigSeek:DB$ Seek | Type$ Card.cmcEQY\nSVar:X:Count$LifeYouGainedThisTurn\nSVar:Y:Count$ValidLibrary Card.YouOwn+cmcLEX$GreatestCardManaCost\nDeckHas:Ability$LifeGain\nDeckHints:Ability$LifeGain\nOracle:First strike, lifelink\\nAt the beginning of your postcombat main phase, if you gained life this turn, seek a card with the highest mana value among cards in your library with mana value less than or equal to the amount of life you gained this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cerise, Slayer of Fear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

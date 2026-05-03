@@ -1,0 +1,23 @@
+{
+  "id": "enter-the-enigma-corpus-m676",
+  "description": "M6 corpus — Enter the Enigma; in-hand parse.",
+  "seed": 64643,
+  "cards": {
+    "Enter the Enigma": "Name:Enter the Enigma\nManaCost:U\nTypes:Sorcery\nA:SP$ Effect | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SubAbility$ DBDraw | SpellDescription$ Target creature can't be blocked this turn. Draw a card.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nSVar:DBDraw:DB$ Draw\nOracle:Target creature can't be blocked this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enter the Enigma"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

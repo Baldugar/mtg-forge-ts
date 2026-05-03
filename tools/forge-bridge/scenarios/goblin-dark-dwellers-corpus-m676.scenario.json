@@ -1,0 +1,23 @@
+{
+  "id": "goblin-dark-dwellers-corpus-m676",
+  "description": "M6 corpus — Goblin Dark-Dwellers; in-hand parse.",
+  "seed": 66412,
+  "cards": {
+    "Goblin Dark-Dwellers": "Name:Goblin Dark-Dwellers\nManaCost:3 R R\nTypes:Creature Goblin\nPT:4/4\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerDescription$ When CARDNAME enters, you may cast target instant or sorcery card with mana value 3 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard this turn, exile it instead.\nSVar:TrigPlay:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Instant.YouCtrl+cmcLE3,Sorcery.YouCtrl+cmcLE3 | ValidSA$ Spell | TgtPrompt$ Choose target instant or sorcery card with mana value 3 or less from your graveyard | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nOracle:Menace\\nWhen Goblin Dark-Dwellers enters, you may cast target instant or sorcery card with mana value 3 or less from your graveyard without paying its mana cost. If that spell would be put into your graveyard this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Dark-Dwellers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

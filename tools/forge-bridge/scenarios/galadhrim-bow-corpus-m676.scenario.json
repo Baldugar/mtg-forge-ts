@@ -1,0 +1,23 @@
+{
+  "id": "galadhrim-bow-corpus-m676",
+  "description": "M6 corpus — Galadhrim Bow; in-hand parse.",
+  "seed": 65891,
+  "cards": {
+    "Galadhrim Bow": "Name:Galadhrim Bow\nManaCost:2 G\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control. Untap that creature.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Targeted\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 2 | AddKeyword$ Reach | Description$ Equipped creature gets +1/+2 and has reach.\nK:Equip:2\nOracle:Flash\\nWhen Galadhrim Bow enters, attach it to target creature you control. Untap that creature.\\nEquipped creature gets +1/+2 and has reach.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galadhrim Bow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "court-of-embereth-corpus-m676",
+  "description": "M6 corpus — Court of Embereth; in-hand parse.",
+  "seed": 62652,
+  "cards": {
+    "Court of Embereth": "Name:Court of Embereth\nManaCost:2 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 3/1 red Knight creature token. Then if you're the monarch, CARDNAME deals X damage to each opponent, where X is the number of creatures you control.\nSVar:TrigToken:DB$ Token | TokenScript$ r_3_1_knight | SubAbility$ TrigDealDamage\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ X | ConditionCheckSVar$ Y | ConditionSVarCompare$ GE1\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:Y:Count$Monarch.1.0\nDeckHas:Ability$Token & Type$Knight\nOracle:When Court of Embereth enters, you become the monarch.\\nAt the beginning of your upkeep, create a 3/1 red Knight creature token. Then if you're the monarch, Court of Embereth deals X damage to each opponent, where X is the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Court of Embereth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

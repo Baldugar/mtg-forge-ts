@@ -1,0 +1,23 @@
+{
+  "id": "crackling-spellslinger-corpus-m676",
+  "description": "M6 corpus — Crackling Spellslinger; in-hand parse.",
+  "seed": 62683,
+  "cards": {
+    "Crackling Spellslinger": "Name:Crackling Spellslinger\nManaCost:3 R R\nTypes:Creature Human Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.wasCast+Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, if you cast it, the next instant or sorcery spell you cast this turn has storm. (When you cast that spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ GrantStorm | ForgetOnCast$ Instant.YouCtrl,Sorcery.YouCtrl\nSVar:GrantStorm:Mode$ Continuous | Affected$ Instant.YouCtrl,Sorcery.YouCtrl | AffectedZone$ Stack | AddKeyword$ Storm | Description$ The next instant or sorcery spell you cast this turn has storm. (When you cast that spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)\nDeckHints:Type$Instant|Sorcery\nOracle:Flash\\nWhen Crackling Spellslinger enters, if you cast it, the next instant or sorcery spell you cast this turn has storm. (When you cast that spell, copy it for each spell cast before it this turn. You may choose new targets for the copies.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crackling Spellslinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

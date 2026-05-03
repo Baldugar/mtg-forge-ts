@@ -1,0 +1,23 @@
+{
+  "id": "death-rattle-oni-corpus-m676",
+  "description": "M6 corpus — Death-Rattle Oni; in-hand parse.",
+  "seed": 63256,
+  "cards": {
+    "Death-Rattle Oni": "Name:Death-Rattle Oni\nManaCost:6 B\nTypes:Creature Demon Spirit\nPT:5/4\nK:Flash\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {2} less to cast for each creature that died this turn.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature/Times.2\nT:Mode$ ChangesZone | TriggerZones$ Battlefield | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ DBDestroyAll | TriggerDescription$ When CARDNAME enters, destroy all other creatures that were dealt damage this turn.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.wasDealtDamageThisTurn+StrictlyOther\nOracle:This spell costs {2} less to cast for each creature that died this turn.\\nWhen Death-Rattle Oni enters, destroy all other creatures that were dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death-Rattle Oni"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

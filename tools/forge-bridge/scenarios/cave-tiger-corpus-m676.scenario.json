@@ -1,0 +1,25 @@
+{
+  "id": "cave-tiger-corpus-m676",
+  "description": "M6 corpus — Cave Tiger; ETB-on-bf.",
+  "seed": 61840,
+  "cards": {
+    "Cave Tiger": "Name:Cave Tiger\nManaCost:2 G\nTypes:Creature Cat\nPT:2/2\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocked$ Creature | TriggerZones$ Battlefield | Execute$ TrigBlockedPump | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigBlockedPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nOracle:Whenever Cave Tiger becomes blocked by a creature, Cave Tiger gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cave Tiger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

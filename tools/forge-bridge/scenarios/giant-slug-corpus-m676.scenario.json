@@ -1,0 +1,25 @@
+{
+  "id": "giant-slug-corpus-m676",
+  "description": "M6 corpus — Giant Slug; ETB-on-bf.",
+  "seed": 66163,
+  "cards": {
+    "Giant Slug": "Name:Giant Slug\nManaCost:1 B\nTypes:Creature Slug\nPT:1/1\nA:AB$ DelayedTrigger | Cost$ 5 | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ ChooseB | RememberObjects$ Self | StackDescription$ SpellDescription | SpellDescription$ At the beginning of your next upkeep, choose a basic land type. CARDNAME gains landwalk of the chosen type until the end of that turn. (It can't be blocked as long as defending player controls a land of that type.)\nSVar:ChooseB:DB$ ChooseType | Defined$ You | Type$ Basic Land | AILogic$ ChosenLandwalk | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ DelayTriggerRememberedLKI | KW$ Landwalk:ChosenType | DefinedKW$ ChosenType\nAI:RemoveDeck:All\nOracle:{5}: At the beginning of your next upkeep, choose a basic land type. Giant Slug gains landwalk of the chosen type until the end of that turn. (It can't be blocked as long as defending player controls a land of that type.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Giant Slug"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

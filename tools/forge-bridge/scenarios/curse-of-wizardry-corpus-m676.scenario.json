@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-wizardry-corpus-m676",
+  "description": "M6 corpus — Curse of Wizardry; in-hand parse.",
+  "seed": 62945,
+  "cards": {
+    "Curse of Wizardry": "Name:Curse of Wizardry\nManaCost:2 B B\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color. | AILogic$ MostProminentInHumanDeck\nT:Mode$ SpellCast | ValidCard$ Card.ChosenColor | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a player casts a spell of the chosen color, that player loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredActivator | LifeAmount$ 1\nAI:RemoveDeck:Random\nOracle:As Curse of Wizardry enters, choose a color.\\nWhenever a player casts a spell of the chosen color, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Wizardry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

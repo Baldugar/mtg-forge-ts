@@ -1,0 +1,23 @@
+{
+  "id": "expedited-inheritance-corpus-m676",
+  "description": "M6 corpus — Expedited Inheritance; in-hand parse.",
+  "seed": 64877,
+  "cards": {
+    "Expedited Inheritance": "Name:Expedited Inheritance\nManaCost:R R\nTypes:Enchantment\nT:Mode$ DamageDoneOnce | Execute$ TrigExile | ValidTarget$ Creature | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature is dealt damage, its controller may exile that many cards from the top of their library. They may play those cards until the end of their next turn.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredTargetController | Optional$ True | PromptToSkipOptionalAbility$ True | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | EffectOwner$ RememberedController | Duration$ UntilTheEndOfYourNextTurn | ForgetOnMoved$ Exile | RememberObjects$ RememberedCard | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ They may play those cards until the end of their next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Whenever a creature is dealt damage, its controller may exile that many cards from the top of their library. They may play those cards until the end of their next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expedited Inheritance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

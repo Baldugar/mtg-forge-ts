@@ -1,0 +1,25 @@
+{
+  "id": "gaea-s-liege-corpus-m676",
+  "description": "M6 corpus — Gaea's Liege; ETB-on-bf.",
+  "seed": 65880,
+  "cards": {
+    "Gaea's Liege": "Name:Gaea's Liege\nManaCost:3 G G G\nTypes:Creature Avatar\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | IsPresent$ Card.Self+!attacking | SetPower$ X | SetToughness$ X | Description$ As long as CARDNAME isn't attacking, its power and toughness are each equal to the number of Forests you control. As long as CARDNAME is attacking, its power and toughness are each equal to the number of Forests defending player controls.\nSVar:X:Count$Valid Forest.YouCtrl\nS:Mode$ Continuous | CharacteristicDefining$ True | IsPresent$ Card.Self+attacking | SetPower$ Y | SetToughness$ Y\nSVar:Y:Count$Valid Forest.DefenderCtrl\nA:AB$ Animate | Cost$ T | ValidTgts$ Land | Types$ Forest | RemoveLandTypes$ True | Duration$ UntilHostLeavesPlay | SpellDescription$ Target land becomes a Forest until CARDNAME leaves the battlefield.\nSVar:BuffedBy:Forest\nAI:RemoveDeck:All\nDeckHints:Type$Forest & Keyword$Landwalk:Forest & Name$Yavimaya, Cradle of Growth\nOracle:As long as Gaea's Liege isn't attacking, its power and toughness are each equal to the number of Forests you control. As long as Gaea's Liege is attacking, its power and toughness are each equal to the number of Forests defending player controls.\\n{T}: Target land becomes a Forest until Gaea's Liege leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gaea's Liege"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

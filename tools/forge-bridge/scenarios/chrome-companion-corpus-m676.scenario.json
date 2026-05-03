@@ -1,0 +1,25 @@
+{
+  "id": "chrome-companion-corpus-m676",
+  "description": "M6 corpus — Chrome Companion; ETB-on-bf.",
+  "seed": 62107,
+  "cards": {
+    "Chrome Companion": "Name:Chrome Companion\nManaCost:2\nTypes:Artifact Creature Dog\nPT:2/1\nT:Mode$ Taps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever this creature becomes tapped, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ ChangeZone | Cost$ 2 T | ValidTgts$ Card | TgtPrompt$ Select target card in a graveyard | Origin$ Graveyard | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put target card from a graveyard on the bottom of its owner's library.\nDeckHas:Ability$LifeGain\nOracle:Whenever this creature becomes tapped, you gain 1 life.\\n{2}, {T}: Put target card from a graveyard on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chrome Companion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

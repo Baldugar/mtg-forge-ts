@@ -1,0 +1,23 @@
+{
+  "id": "dregs-of-sorrow-corpus-m676",
+  "description": "M6 corpus — Dregs of Sorrow; in-hand parse.",
+  "seed": 64041,
+  "cards": {
+    "Dregs of Sorrow": "Name:Dregs of Sorrow\nManaCost:X 4 B\nTypes:Sorcery\nA:SP$ Destroy | TargetMin$ X | TargetMax$ X | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select X target nonblack creatures | SubAbility$ DBDraw | SpellDescription$ Destroy X target nonblack creatures. Draw X cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Destroy X target nonblack creatures. Draw X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dregs of Sorrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

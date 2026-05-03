@@ -1,0 +1,25 @@
+{
+  "id": "compassionate-healer-corpus-m676",
+  "description": "M6 corpus — Compassionate Healer; ETB-on-bf.",
+  "seed": 62438,
+  "cards": {
+    "Compassionate Healer": "Name:Compassionate Healer\nManaCost:1 W\nTypes:Creature Human Cleric Ally\nPT:2/2\nT:Mode$ Taps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever this creature becomes tapped, you gain 1 life and scry 1. (Look at the top card of your library. You may put it on the bottom.)\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1 | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nDeckHas:Ability$LifeGain\nOracle:Whenever this creature becomes tapped, you gain 1 life and scry 1. (Look at the top card of your library. You may put it on the bottom.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Compassionate Healer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

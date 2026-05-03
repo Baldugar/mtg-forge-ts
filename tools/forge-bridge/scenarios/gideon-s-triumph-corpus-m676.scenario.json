@@ -1,0 +1,23 @@
+{
+  "id": "gideon-s-triumph-corpus-m676",
+  "description": "M6 corpus — Gideon's Triumph; in-hand parse.",
+  "seed": 66184,
+  "cards": {
+    "Gideon's Triumph": "Name:Gideon's Triumph\nManaCost:1 W\nTypes:Instant\nA:SP$ Sacrifice | ValidTgts$ Opponent | SacValid$ Creature.attackedThisTurn,Creature.blockedThisTurn | SacMessage$ Creature that attacked or blocked this turn | Amount$ X | SpellDescription$ Target opponent sacrifices a creature that attacked or blocked this turn. If you control a Gideon planeswalker, that player sacrifices two of those creatures instead.\nSVar:Y:Count$Valid Planeswalker.Gideon+YouCtrl\nSVar:X:Count$Compare Y GE1.2.1\nDeckHints:Type$Gideon\nOracle:Target opponent sacrifices a creature that attacked or blocked this turn. If you control a Gideon planeswalker, that player sacrifices two of those creatures instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon's Triumph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

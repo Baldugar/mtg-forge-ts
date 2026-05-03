@@ -1,0 +1,23 @@
+{
+  "id": "errand-rider-of-gondor-corpus-m676",
+  "description": "M6 corpus — Errand-Rider of Gondor; in-hand parse.",
+  "seed": 64701,
+  "cards": {
+    "Errand-Rider of Gondor": "Name:Errand-Rider of Gondor\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card. Then if you don't control a legendary creature, put a card from your hand on the bottom of your library.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeNum$ 1 | Mandatory$ True | LibraryPosition$ -1 | ConditionPresent$ Creature.Legendary+YouCtrl | ConditionCompare$ EQ0\nDeckHints:Type$Legendary & Type$Creature\nOracle:When Errand-Rider of Gondor enters, draw a card. Then if you don't control a legendary creature, put a card from your hand on the bottom of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Errand-Rider of Gondor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

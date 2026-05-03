@@ -1,0 +1,23 @@
+{
+  "id": "game-preserve-corpus-m676",
+  "description": "M6 corpus — Game Preserve; in-hand parse.",
+  "seed": 65927,
+  "cards": {
+    "Game Preserve": "Name:Game Preserve\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReveal | TriggerDescription$ At the beginning of your upkeep, each player reveals the top card of their library. If all cards revealed this way are creature cards, put those cards onto the battlefield under their owners'control.\nSVar:TrigReveal:DB$ PeekAndReveal | Defined$ Player | RememberRevealed$ True | SubAbility$ GoToBattlefield\nSVar:GoToBattlefield:DB$ ChangeZoneAll | ChangeType$ Card.TopLibrary | Origin$ Library | Destination$ Battlefield | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidLibrary Card.nonCreature+IsRemembered\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, each player reveals the top card of their library. If all cards revealed this way are creature cards, put those cards onto the battlefield under their owners' control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Game Preserve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "calamity-galloping-inferno-corpus-m676",
+  "description": "M6 corpus — Calamity, Galloping Inferno; in-hand parse.",
+  "seed": 61600,
+  "cards": {
+    "Calamity, Galloping Inferno": "Name:Calamity, Galloping Inferno\nManaCost:4 R R\nTypes:Legendary Creature Horse Mount\nPT:4/6\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever CARDNAME attacks while saddled, choose a nonlegendary creature that saddled it this turn and create a tapped and attacking token that's a copy of it. Sacrifice that token at the beginning of the next end step. Repeat this process once.\nSVar:TrigCopy:DB$ CopyPermanent | Choices$ Creature.nonLegendary+SaddledThisTurn | TokenTapped$ True | TokenAttacking$ True | AtEOT$ Sacrifice | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ CopyPermanent | Choices$ Creature.nonLegendary+SaddledThisTurn | TokenTapped$ True | TokenAttacking$ True | AtEOT$ Sacrifice\nK:Saddle:1\nDeckHas:Ability$Sacrifice\nOracle:Haste\\nWhenever Calamity, Galloping Inferno attacks while saddled, choose a nonlegendary creature that saddled it this turn and create a tapped and attacking token that's a copy of it. Sacrifice that token at the beginning of the next end step. Repeat this process once.\\nSaddle 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Calamity, Galloping Inferno"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

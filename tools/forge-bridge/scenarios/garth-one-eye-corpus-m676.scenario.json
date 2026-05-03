@@ -1,0 +1,25 @@
+{
+  "id": "garth-one-eye-corpus-m676",
+  "description": "M6 corpus — Garth One-Eye; ETB-on-bf.",
+  "seed": 65961,
+  "cards": {
+    "Garth One-Eye": "Name:Garth One-Eye\nManaCost:W U B R G\nTypes:Legendary Creature Human Wizard\nPT:5/5\nA:AB$ NameCard | Cost$ T | Defined$ You | ChooseFromList$ Disenchant,Braingeyser,Terror,Shivan Dragon,Regrowth,Black Lotus | ExcludeChosen$ True | SubAbility$ DBCast | StackDescription$ SpellDescription | SpellDescription$ Choose a card name that hasn't been chosen from among Disenchant, Braingeyser, Terror, Shivan Dragon, Regrowth, and Black Lotus. Create a copy of the card with the chosen name. You may cast the copy. (You still pay its costs.)\nSVar:DBCast:DB$ Play | CopyFromChosenName$ True | Optional$ True | StackDescription$ None\nAI:RemoveDeck:All\nOracle:{T}: Choose a card name that hasn't been chosen from among Disenchant, Braingeyser, Terror, Shivan Dragon, Regrowth, and Black Lotus. Create a copy of the card with the chosen name. You may cast the copy. (You still pay its costs.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Garth One-Eye"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

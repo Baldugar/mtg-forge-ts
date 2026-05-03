@@ -1,0 +1,25 @@
+{
+  "id": "fire-nation-palace-corpus-m676",
+  "description": "M6 corpus — Fire Nation Palace; ETB-on-bf.",
+  "seed": 65348,
+  "cards": {
+    "Fire Nation Palace": "Name:Fire Nation Palace\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control a basic land.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nA:AB$ Pump | Cost$ 1 R T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Firebending:4 | SpellDescription$ Target creature you control gains firebending 4 until end of turn. (Whenever it attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)\nOracle:This land enters tapped unless you control a basic land.\\n{T}: Add {R}.\\n{1}{R}, {T}: Target creature you control gains firebending 4 until end of turn. (Whenever it attacks, add {R}{R}{R}{R}. This mana lasts until end of combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fire Nation Palace"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fatal-mutation-corpus-m676",
+  "description": "M6 corpus — Fatal Mutation; in-hand parse.",
+  "seed": 65102,
+  "cards": {
+    "Fatal Mutation": "Name:Fatal Mutation\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ TurnFaceUp | ValidCard$ Card.AttachedBy | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ When enchanted creature is turned face up, destroy it. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy | NoRegen$ True\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Enchant creature\\nWhen enchanted creature is turned face up, destroy it. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fatal Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

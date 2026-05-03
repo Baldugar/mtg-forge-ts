@@ -1,0 +1,23 @@
+{
+  "id": "cytoplast-root-kin-corpus-m676",
+  "description": "M6 corpus — Cytoplast Root-Kin; in-hand parse.",
+  "seed": 62998,
+  "cards": {
+    "Cytoplast Root-Kin": "Name:Cytoplast Root-Kin\nManaCost:2 G G\nTypes:Creature Elemental Mutant\nPT:0/0\nK:Graft:4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other creature you control with a +1/+1 counter on it.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.StrictlyOther+YouCtrl+counters_GE1_P1P1 | CounterType$ P1P1 | CounterNum$ 1\nA:AB$ MoveCounter | Cost$ 2 | Defined$ Self | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Move a +1/+1 counter from target creature you control onto CARDNAME.\nDeckHas:Ability$Counters\nDeckNeeds:Ability$Counters\nOracle:Graft 4 (This creature enters with four +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)\\nWhen Cytoplast Root-Kin enters, put a +1/+1 counter on each other creature you control with a +1/+1 counter on it.\\n{2}: Move a +1/+1 counter from target creature you control onto Cytoplast Root-Kin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cytoplast Root-Kin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

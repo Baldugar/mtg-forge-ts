@@ -1,0 +1,23 @@
+{
+  "id": "cavalier-of-dawn-corpus-m676",
+  "description": "M6 corpus — Cavalier of Dawn; in-hand parse.",
+  "seed": 61831,
+  "cards": {
+    "Cavalier of Dawn": "Name:Cavalier of Dawn\nManaCost:2 W W W\nTypes:Creature Elemental Knight\nPT:4/6\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy up to one target nonland permanent. Its controller creates a 3/3 colorless Golem artifact creature token.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_3_3_a_golem | TokenOwner$ TargetedController\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, return target artifact or enchantment card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Artifact.YouCtrl,Enchantment.YouCtrl\nOracle:Vigilance\\nWhen Cavalier of Dawn enters, destroy up to one target nonland permanent. Its controller creates a 3/3 colorless Golem artifact creature token.\\nWhen Cavalier of Dawn dies, return target artifact or enchantment card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavalier of Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

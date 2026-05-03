@@ -1,0 +1,23 @@
+{
+  "id": "court-street-denizen-corpus-m676",
+  "description": "M6 corpus — Court Street Denizen; in-hand parse.",
+  "seed": 62654,
+  "cards": {
+    "Court Street Denizen": "Name:Court Street Denizen\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.White+YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever another white creature you control enters, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nSVar:BuffedBy:Creature.White\nOracle:Whenever another white creature you control enters, tap target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Court Street Denizen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

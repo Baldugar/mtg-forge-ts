@@ -1,0 +1,23 @@
+{
+  "id": "fervent-champion-corpus-m676",
+  "description": "M6 corpus — Fervent Champion; in-hand parse.",
+  "seed": 65234,
+  "cards": {
+    "Fervent Champion": "Name:Fervent Champion\nManaCost:R\nTypes:Creature Human Knight\nPT:1/1\nK:First Strike\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target attacking Knight you control gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Knight.YouCtrl+attacking+Other | TgtPrompt$ Select another target attacking Knight you control | NumAtt$ +1\nSVar:HasAttackEffect:TRUE\nS:Mode$ ReduceCost | ValidTarget$ Card.Self | ValidSpell$ Activated.Equip | Activator$ You | Amount$ 3 | Description$ Equip abilities you activate that target CARDNAME cost {3} less to activate.\nOracle:First strike, haste\\nWhenever Fervent Champion attacks, another target attacking Knight you control gets +1/+0 until end of turn.\\nEquip abilities you activate that target Fervent Champion cost {3} less to activate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fervent Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

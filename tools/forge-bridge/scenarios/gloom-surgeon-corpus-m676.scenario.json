@@ -1,0 +1,25 @@
+{
+  "id": "gloom-surgeon-corpus-m676",
+  "description": "M6 corpus — Gloom Surgeon; ETB-on-bf.",
+  "seed": 66330,
+  "cards": {
+    "Gloom Surgeon": "Name:Gloom Surgeon\nManaCost:1 B\nTypes:Creature Spirit\nPT:2/1\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Card.Self | IsCombat$ True | ReplaceWith$ Exile | PreventionEffect$ True | AlwaysReplace$ True | Description$ If combat damage would be dealt to CARDNAME, prevent that damage and exile that many cards from the top of your library.\nSVar:Exile:DB$ Dig | DigNum$ X | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Exile\nSVar:X:ReplaceCount$DamageAmount\nOracle:If combat damage would be dealt to Gloom Surgeon, prevent that damage and exile that many cards from the top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gloom Surgeon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

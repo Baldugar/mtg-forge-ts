@@ -1,0 +1,23 @@
+{
+  "id": "genestealer-locus-corpus-m676",
+  "description": "M6 corpus — Genestealer Locus; in-hand parse.",
+  "seed": 66043,
+  "cards": {
+    "Genestealer Locus": "Name:Genestealer Locus\nManaCost:3 U\nTypes:Creature Tyranid Human\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Creature | Attacked$ You | TriggerZones$ Battlefield | Execute$ TrigDebuff | TriggerDescription$ Neurotraumal Rod — Whenever a creature attacks you, it gets -1/-0 until end of turn.\nSVar:TrigDebuff:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ -1\nT:Mode$ Attacks | ValidCard$ Creature | Attacked$ Player.Opponent | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature attacks one of your opponents, it gets +0/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumDef$ +1\nOracle:Neurotraumal Rod — Whenever a creature attacks you, it gets -1/-0 until end of turn.\\nWhenever a creature attacks one of your opponents, it gets +0/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genestealer Locus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

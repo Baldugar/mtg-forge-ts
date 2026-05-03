@@ -1,0 +1,25 @@
+{
+  "id": "evershrike-corpus-m676",
+  "description": "M6 corpus — Evershrike; ETB-on-bf.",
+  "seed": 64821,
+  "cards": {
+    "Evershrike": "Name:Evershrike\nManaCost:3 WB WB\nTypes:Creature Elemental Spirit\nPT:2/2\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ Y | AddToughness$ Y | Description$ CARDNAME gets +2/+2 for each Aura attached to it.\nSVar:Y:Count$Valid Aura.Attached/Times.2\nA:AB$ ChangeZone | Cost$ X WB WB | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | SubAbility$ AttachAura | SpellDescription$ Return CARDNAME from your graveyard to the battlefield. You may put an Aura card with mana value X or less from your hand onto the battlefield attached to it. If you don't, exile CARDNAME.\nSVar:AttachAura:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Aura.CanEnchantSource+YouCtrl+cmcLEX | AttachedTo$ Self | RememberChanged$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Aura | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Flying\\nEvershrike gets +2/+2 for each Aura attached to it.\\n{X}{W/B}{W/B}: Return Evershrike from your graveyard to the battlefield. You may put an Aura card with mana value X or less from your hand onto the battlefield attached to it. If you don't, exile Evershrike.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Evershrike"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

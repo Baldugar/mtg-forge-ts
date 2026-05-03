@@ -1,0 +1,23 @@
+{
+  "id": "discerning-taste-corpus-m676",
+  "description": "M6 corpus — Discerning Taste; in-hand parse.",
+  "seed": 63667,
+  "cards": {
+    "Discerning Taste": "Name:Discerning Taste\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 4 | DestinationZone2$ Graveyard | NoReveal$ True | RememberMovedToZone$ 2 | SubAbility$ DBLifeGain | StackDescription$ SpellDescription | SpellDescription$ Look at the top four cards of your library. Put one of them into your hand and the rest into your graveyard. You gain life equal to the greatest power among creature cards put into your graveyard this way.\nSVar:DBLifeGain:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Creature.IsRemembered$GreatestCardPower\nDeckHints:Ability$Graveyard\nDeckHas:Ability$LifeGain\nOracle:Look at the top four cards of your library. Put one of them into your hand and the rest into your graveyard. You gain life equal to the greatest power among creature cards put into your graveyard this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discerning Taste"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

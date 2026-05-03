@@ -1,0 +1,23 @@
+{
+  "id": "fire-lord-zuko-corpus-m676",
+  "description": "M6 corpus — Fire Lord Zuko; in-hand parse.",
+  "seed": 65341,
+  "cards": {
+    "Fire Lord Zuko": "Name:Fire Lord Zuko\nManaCost:R W B\nTypes:Legendary Creature Human Noble Ally\nPT:2/4\nK:Firebending:X:, where X is CARDNAME's power.\nT:Mode$ SpellCast | ValidCard$ Card.wasCastFromExile | ValidActivatingPlayer$ You | Execute$ TrigPutCounterAll | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell from exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature you control.\nT:Mode$ ChangesZone | Origin$ Exile | Destination$ Battlefield | ValidCard$ Permanent.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPutCounterAll | Secondary$ True | TriggerDescription$ Whenever you cast a spell from exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:X:Count$CardPower\nOracle:Firebending X, where X is Fire Lord Zuko's power. (Whenever this creature attacks, add X {R}. This mana lasts until end of combat.)\\nWhenever you cast a spell from exile and whenever a permanent you control enters from exile, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Lord Zuko"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

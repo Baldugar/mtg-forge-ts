@@ -1,0 +1,23 @@
+{
+  "id": "demonic-gifts-corpus-m676",
+  "description": "M6 corpus — Demonic Gifts; in-hand parse.",
+  "seed": 63438,
+  "cards": {
+    "Demonic Gifts": "Name:Demonic Gifts\nManaCost:1 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +2 | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, target creature gets +2/+0 and gains \"When this creature dies, return it to the battlefield under its owner's control.\" | StackDescription$ SpellDescription\nSVar:DBAnimate:DB$ Animate | Triggers$ TrigDies | Defined$ ParentTarget | StackDescription$ None\nSVar:TrigDies:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigReturn | TriggerDescription$ When CARDNAME dies, return it to the battlefield under its owner's control.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield\nOracle:Until end of turn, target creature gets +2/+0 and gains \"When this creature dies, return it to the battlefield under its owner's control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Gifts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

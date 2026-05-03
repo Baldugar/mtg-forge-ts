@@ -1,0 +1,23 @@
+{
+  "id": "erratic-mutation-corpus-m676",
+  "description": "M6 corpus — Erratic Mutation; in-hand parse.",
+  "seed": 64710,
+  "cards": {
+    "Erratic Mutation": "Name:Erratic Mutation\nManaCost:2 U\nTypes:Instant\nA:SP$ DigUntil | Valid$ Card.nonLand | ValidDescription$ nonland | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RememberFound$ True | SubAbility$ MutantPump | SpellDescription$ Choose target creature. Reveal cards from the top of your library until you reveal a nonland card. That creature gets +X/-X until end of turn, where X is that card's mana value. Put all cards revealed this way on the bottom of your library in any order.\nSVar:MutantPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ -X | SubAbility$ JitterClean\nSVar:JitterClean:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:All\nOracle:Choose target creature. Reveal cards from the top of your library until you reveal a nonland card. That creature gets +X/-X until end of turn, where X is that card's mana value. Put all cards revealed this way on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erratic Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

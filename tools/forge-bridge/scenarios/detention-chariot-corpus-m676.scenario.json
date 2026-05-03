@@ -1,0 +1,23 @@
+{
+  "id": "detention-chariot-corpus-m676",
+  "description": "M6 corpus — Detention Chariot; in-hand parse.",
+  "seed": 63557,
+  "cards": {
+    "Detention Chariot": "Name:Detention Chariot\nManaCost:4 W W\nTypes:Artifact Vehicle\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this Vehicle enters, exile target artifact or creature an opponent controls until this Vehicle leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Select target artifact or creature an opponent controls | Duration$ UntilHostLeavesPlay\nK:Crew:3\nK:Cycling:W\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Discard\nOracle:When this Vehicle enters, exile target artifact or creature an opponent controls until this Vehicle leaves the battlefield.\\nCrew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)\\nCycling {W} ({W}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Detention Chariot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

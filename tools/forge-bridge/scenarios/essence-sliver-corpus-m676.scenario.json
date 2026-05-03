@@ -1,0 +1,25 @@
+{
+  "id": "essence-sliver-corpus-m676",
+  "description": "M6 corpus — Essence Sliver; ETB-on-bf.",
+  "seed": 64753,
+  "cards": {
+    "Essence Sliver": "Name:Essence Sliver\nManaCost:3 W\nTypes:Creature Sliver\nPT:3/3\nT:Mode$ DamageDealtOnce | ValidSource$ Sliver.inZoneBattlefield | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Sliver deals damage, its controller gains that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ TriggeredSourceController | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:PlayMain1:TRUE\nSVar:HasCombatEffect:TRUE\nOracle:Whenever a Sliver deals damage, its controller gains that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Essence Sliver"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

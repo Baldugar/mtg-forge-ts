@@ -1,0 +1,25 @@
+{
+  "id": "cinder-glade-corpus-m676",
+  "description": "M6 corpus — Cinder Glade; ETB-on-bf.",
+  "seed": 62137,
+  "cards": {
+    "Cinder Glade": "Name:Cinder Glade\nManaCost:no cost\nTypes:Land Mountain Forest\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {R} or {G}.)\\nCinder Glade enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cinder Glade"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

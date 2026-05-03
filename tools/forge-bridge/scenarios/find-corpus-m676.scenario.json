@@ -1,0 +1,23 @@
+{
+  "id": "find-corpus-m676",
+  "description": "M6 corpus — Find; in-hand parse.",
+  "seed": 65325,
+  "cards": {
+    "Find": "Name:Find\nManaCost:BG BG\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return up to two target creature cards from your graveyard to your hand.\nAlternateMode:Split\nOracle:Return up to two target creature cards from your graveyard to your hand.\n\nALTERNATE\n\nName:Finality\nManaCost:4 B G\nTypes:Sorcery\nA:SP$ PutCounter | Choices$ Creature.YouCtrl | ChoiceOptional$ True | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBPumpAll | StackDescription$ SpellDescription | SpellDescription$ You may put two +1/+1 counters on a creature you control. Then all creatures get -4/-4 until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -4 | NumDef$ -4 | IsCurse$ True\nDeckHas:Ability$Counters\nOracle:You may put two +1/+1 counters on a creature you control. Then all creatures get -4/-4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Find"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

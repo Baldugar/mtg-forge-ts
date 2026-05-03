@@ -1,0 +1,23 @@
+{
+  "id": "elderfang-venom-corpus-m676",
+  "description": "M6 corpus — Elderfang Venom; in-hand parse.",
+  "seed": 64364,
+  "cards": {
+    "Elderfang Venom": "Name:Elderfang Venom\nManaCost:2 B G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Elf.attacking+YouCtrl | AddKeyword$ Deathtouch | Description$ Attacking Elves you control have deathtouch.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Elf.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever an Elf you control dies, each opponent loses 1 life and you gain 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHints:Type$Elf\nDeckHas:Ability$LifeGain\nOracle:Attacking Elves you control have deathtouch.\\nWhenever an Elf you control dies, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elderfang Venom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

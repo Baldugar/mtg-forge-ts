@@ -1,0 +1,23 @@
+{
+  "id": "dream-thief-s-bandana-corpus-m676",
+  "description": "M6 corpus — Dream-Thief's Bandana; in-hand parse.",
+  "seed": 64020,
+  "cards": {
+    "Dream-Thief's Bandana": "Name:Dream-Thief's Bandana\nManaCost:2\nTypes:Artifact Equipment\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, look at the top card of their library, then exile it face down. For as long as it remains exiled, you may play it, and mana of any type can be spent to cast that spell.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Defined$ TriggeredTarget | ChangeNum$ All | DestinationZone$ Exile | ExileFaceDown$ True | WithMayLook$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | RememberObjects$ RememberedCard | ForgetOnMoved$ Exile | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreType$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ For as long as that card remains exiled, you may play it, and mana of any type can be spent to cast that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Equip:1\nOracle:Whenever equipped creature deals combat damage to a player, look at the top card of their library, then exile it face down. For as long as it remains exiled, you may play it, and mana of any type can be spent to cast that spell.\\nEquip {1}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream-Thief's Bandana"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

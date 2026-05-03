@@ -1,0 +1,23 @@
+{
+  "id": "elusive-otter-corpus-m676",
+  "description": "M6 corpus — Elusive Otter; in-hand parse.",
+  "seed": 64447,
+  "cards": {
+    "Elusive Otter": "Name:Elusive Otter\nManaCost:U\nTypes:Creature Otter\nPT:1/1\nK:Prowess\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLTY | Description$ Creatures with power less than CARDNAME's power can't block it.\nSVar:Y:Count$CardPower\nDeckHas:Ability$Counters\nAlternateMode:Adventure\nOracle:Prowess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nCreatures with power less than Elusive Otter's power can't block it.\n\nALTERNATE\n\nName:Grove's Bounty\nManaCost:X G\nTypes:Sorcery Adventure\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select any number of target creatures you control | CounterType$ P1P1 | CounterNum$ X | TargetMin$ 0 | TargetMax$ X | DividedAsYouChoose$ X | SpellDescription$ Distribute X +1/+1 counters among any number of target creatures you control. (Then exile this card. You may cast the creature later from exile.)\nSVar:X:Count$xPaid\nOracle:Distribute X +1/+1 counters among any number of target creatures you control. (Then exile this card. You may cast the creature later from exile.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elusive Otter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

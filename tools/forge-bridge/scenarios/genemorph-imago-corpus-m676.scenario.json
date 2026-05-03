@@ -1,0 +1,23 @@
+{
+  "id": "genemorph-imago-corpus-m676",
+  "description": "M6 corpus — Genemorph Imago; in-hand parse.",
+  "seed": 66026,
+  "cards": {
+    "Genemorph Imago": "Name:Genemorph Imago\nManaCost:G U\nTypes:Creature Insect Druid\nPT:1/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Landfall — Whenever a land you control enters, target creature has base power and toughness 3/3 until end of turn. If you control six or more lands, that creature has base power and toughness 6/6 until end of turn instead.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature | Power$ Y | Toughness$ Y\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:Count$Compare X GE6.6.3\nSVar:BuffedBy:Land\nOracle:Flying\\nLandfall — Whenever a land you control enters, target creature has base power and toughness 3/3 until end of turn. If you control six or more lands, that creature has base power and toughness 6/6 until end of turn instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genemorph Imago"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

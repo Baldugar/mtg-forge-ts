@@ -1,0 +1,25 @@
+{
+  "id": "erratic-cyclops-corpus-m676",
+  "description": "M6 corpus — Erratic Cyclops; ETB-on-bf.",
+  "seed": 64709,
+  "cards": {
+    "Erratic Cyclops": "Name:Erratic Cyclops\nManaCost:3 R\nTypes:Creature Cyclops Shaman\nPT:0/8\nK:Trample\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cast an instant or sorcery spell, CARDNAME gets +X/+0 until end of turn, where X is that spell's mana value.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:BuffedBy:Instant,Sorcery\nDeckHints:Type$Instant|Sorcery\nOracle:Trample\\nWhenever you cast an instant or sorcery spell, Erratic Cyclops gets +X/+0 until end of turn, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Erratic Cyclops"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

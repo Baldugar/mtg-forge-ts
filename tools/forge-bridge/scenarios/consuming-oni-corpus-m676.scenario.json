@@ -1,0 +1,23 @@
+{
+  "id": "consuming-oni-corpus-m676",
+  "description": "M6 corpus — Consuming Oni; in-hand parse.",
+  "seed": 62517,
+  "cards": {
+    "Consuming Oni": "Name:Consuming Oni\nManaCost:2 B B\nTypes:Creature Ogre Demon\nPT:6/6\nK:Flying\nK:Menace\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRandom | TriggerDescription$ At the beginning of your end step, a random nonland card in your hand perpetually gains \"When you cast this spell, you lose 3 life.\"\nSVar:TrigRandom:DB$ ChooseCard | Choices$ Card.nonLand+YouOwn | ChoiceZone$ Hand | AtRandom$ True | Amount$ 1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | Triggers$ CastSpellLoseLife | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:CastSpellLoseLife:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When you cast this spell, you lose 3 life.\nSVar:TrigDrain:DB$ LoseLife | LifeAmount$ 3\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Flying, menace\\nAt the beginning of your end step, a random nonland card in your hand perpetually gains \"When you cast this spell, you lose 3 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consuming Oni"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

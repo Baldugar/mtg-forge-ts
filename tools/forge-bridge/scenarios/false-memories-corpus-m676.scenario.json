@@ -1,0 +1,23 @@
+{
+  "id": "false-memories-corpus-m676",
+  "description": "M6 corpus — False Memories; in-hand parse.",
+  "seed": 65037,
+  "cards": {
+    "False Memories": "Name:False Memories\nManaCost:1 U\nTypes:Instant\nA:SP$ Mill | NumCards$ 7 | SubAbility$ DelTrig | SpellDescription$ Mill seven cards. At the beginning of the next end step, exile seven cards from your graveyard.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigExile | TriggerDescription$ At the beginning of the next end step, exile seven cards from your graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card.YouCtrl | ChangeNum$ 7 | Hidden$ True\nAI:RemoveDeck:Random\nOracle:Mill seven cards. At the beginning of the next end step, exile seven cards from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "False Memories"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

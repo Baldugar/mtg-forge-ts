@@ -1,0 +1,23 @@
+{
+  "id": "endrek-sahr-master-breeder-corpus-m676",
+  "description": "M6 corpus — Endrek Sahr, Master Breeder; in-hand parse.",
+  "seed": 64583,
+  "cards": {
+    "Endrek Sahr, Master Breeder": "Name:Endrek Sahr, Master Breeder\nManaCost:4 B\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, create X 1/1 black Thrull creature tokens, where X is that spell's mana value.\nT:Mode$ Always | IsPresent$ Card.Thrull+YouCtrl | PresentCompare$ GE7 | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ When you control seven or more Thrulls, sacrifice CARDNAME.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenAmount$ X | TokenScript$ b_1_1_thrull\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nSVar:TrigSac:DB$ Sacrifice\nOracle:Whenever you cast a creature spell, create X 1/1 black Thrull creature tokens, where X is that spell's mana value.\\nWhen you control seven or more Thrulls, sacrifice Endrek Sahr, Master Breeder.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endrek Sahr, Master Breeder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glistening-extractor-corpus-m676",
+  "description": "M6 corpus — Glistening Extractor; in-hand parse.",
+  "seed": 66315,
+  "cards": {
+    "Glistening Extractor": "Name:Glistening Extractor\nManaCost:2 U B\nTypes:Artifact\nK:etbCounter:OIL:4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Card.Self+counters_GE1_OIL | Execute$ TrigSeek | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if there are one or more oil counters on CARDNAME, seek a card with mana value equal to the number of oil counters on CARDNAME, then remove an oil counter from CARDNAME.\nSVar:TrigSeek:DB$ Seek | Type$ Card.cmcEQX | SubAbility$ DBRemoveCounter\nSVar:DBRemoveCounter:DB$ RemoveCounter | CounterType$ OIL\nSVar:X:Count$CardCounters.OIL\nOracle:Glistening Extractor enters with four oil counters on it.\\nAt the beginning of your upkeep, if there are one or more oil counters on Glistening Extractor, seek a card with mana value equal to the number of oil counters on Glistening Extractor, then remove an oil counter from Glistening Extractor.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glistening Extractor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

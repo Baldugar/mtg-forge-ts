@@ -1,0 +1,25 @@
+{
+  "id": "canopy-vista-corpus-m676",
+  "description": "M6 corpus — Canopy Vista; ETB-on-bf.",
+  "seed": 61678,
+  "cards": {
+    "Canopy Vista": "Name:Canopy Vista\nManaCost:no cost\nTypes:Land Forest Plains\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or more basic lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ LE1\nOracle:({T}: Add {G} or {W}.)\\nCanopy Vista enters tapped unless you control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Canopy Vista"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

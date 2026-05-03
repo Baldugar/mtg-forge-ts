@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-fury-corpus-m676",
+  "description": "M6 corpus — Chandra's Fury; in-hand parse.",
+  "seed": 61958,
+  "cards": {
+    "Chandra's Fury": "Name:Chandra's Fury\nManaCost:4 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select a player or planeswalker | NumDmg$ 4 | SubAbility$ DmgAll | DamageMap$ True | SpellDescription$ CARDNAME deals 4 damage to target player or planeswalker and 1 damage to each creature that player or that planeswalker's controller controls.\nSVar:DmgAll:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.ControlledBy TargetedOrController | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Chandra's Fury deals 4 damage to target player or planeswalker and 1 damage to each creature that player or that planeswalker's controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Fury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "burnout-corpus-m676",
+  "description": "M6 corpus — Burnout; in-hand parse.",
+  "seed": 61537,
+  "cards": {
+    "Burnout": "Name:Burnout\nManaCost:1 R\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Instant | AITgts$ Card.Blue | ConditionDefined$ Targeted | ConditionPresent$ Spell.Blue | SpellDescription$ Counter target instant spell if it's blue. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:Random\nOracle:Counter target instant spell if it's blue.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burnout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

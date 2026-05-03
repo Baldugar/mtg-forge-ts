@@ -1,0 +1,23 @@
+{
+  "id": "dueling-rapier-corpus-m676",
+  "description": "M6 corpus — Dueling Rapier; in-hand parse.",
+  "seed": 64135,
+  "cards": {
+    "Dueling Rapier": "Name:Dueling Rapier\nManaCost:R\nTypes:Artifact Equipment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | Description$ Equipped creature gets +2/+0.\nK:Equip:4\nOracle:Flash\\nWhen Dueling Rapier enters, attach it to target creature you control.\\nEquipped creature gets +2/+0.\\nEquip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dueling Rapier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dragonfly-swarm-corpus-m676",
+  "description": "M6 corpus — Dragonfly Swarm; in-hand parse.",
+  "seed": 63923,
+  "cards": {
+    "Dragonfly Swarm": "Name:Dragonfly Swarm\nManaCost:1 U R\nTypes:Creature Dragon Insect\nPT:*/3\nK:Flying\nK:Ward:1\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ This creature's power is equal to the number of noncreature, nonland cards in your graveyard.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | CheckSVar$ Y | Execute$ TrigDraw | TriggerDescription$ When this creature dies, if there's a Lesson card in your graveyard, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:X:Count$ValidGraveyard Card.YouOwn+nonCreature+nonLand\nSVar:Y:Count$ValidGraveyard Lesson.YouOwn\nDeckHints:Type$Lesson\nOracle:Flying, ward {1} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\\nThis creature's power is equal to the number of noncreature, nonland cards in your graveyard.\\nWhen this creature dies, if there's a Lesson card in your graveyard, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonfly Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

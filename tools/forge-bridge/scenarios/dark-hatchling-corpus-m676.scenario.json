@@ -1,0 +1,23 @@
+{
+  "id": "dark-hatchling-corpus-m676",
+  "description": "M6 corpus — Dark Hatchling; in-hand parse.",
+  "seed": 63077,
+  "cards": {
+    "Dark Hatchling": "Name:Dark Hatchling\nManaCost:4 B B\nTypes:Creature Horror\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonblack creature. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack | NoRegen$ True | TgtPrompt$ Select target nonblack creature.\nOracle:Flying\\nWhen Dark Hatchling enters, destroy target nonblack creature. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Hatchling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

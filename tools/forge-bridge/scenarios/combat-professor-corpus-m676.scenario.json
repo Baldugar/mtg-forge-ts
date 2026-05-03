@@ -1,0 +1,23 @@
+{
+  "id": "combat-professor-corpus-m676",
+  "description": "M6 corpus — Combat Professor; in-hand parse.",
+  "seed": 62400,
+  "cards": {
+    "Combat Professor": "Name:Combat Professor\nManaCost:3 W\nTypes:Creature Bird Cleric\nPT:2/3\nK:Flying\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gets +1/+0 and gains vigilance until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | KW$ Vigilance\nOracle:Flying\\nAt the beginning of combat on your turn, target creature you control gets +1/+0 and gains vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Combat Professor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

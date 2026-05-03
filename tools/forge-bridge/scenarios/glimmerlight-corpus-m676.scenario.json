@@ -1,0 +1,23 @@
+{
+  "id": "glimmerlight-corpus-m676",
+  "description": "M6 corpus — Glimmerlight; in-hand parse.",
+  "seed": 66291,
+  "cards": {
+    "Glimmerlight": "Name:Glimmerlight\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 1/1 white Glimmer enchantment creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_e_glimmer | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nOracle:When Glimmerlight enters, create a 1/1 white Glimmer enchantment creature token.\\nEquipped creature gets +1/+1.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimmerlight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

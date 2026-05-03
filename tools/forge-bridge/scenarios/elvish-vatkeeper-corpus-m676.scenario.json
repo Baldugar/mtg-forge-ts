@@ -1,0 +1,23 @@
+{
+  "id": "elvish-vatkeeper-corpus-m676",
+  "description": "M6 corpus — Elvish Vatkeeper; in-hand parse.",
+  "seed": 64483,
+  "cards": {
+    "Elvish Vatkeeper": "Name:Elvish Vatkeeper\nManaCost:1 B G\nTypes:Creature Phyrexian Elf\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigIncubate | TriggerDescription$ When CARDNAME enters, incubate 2. (Create an Incubator token with two +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigIncubate:DB$ Incubate | Amount$ 2\nA:AB$ SetState | Cost$ 5 | TgtPrompt$ Select target Incubator token you control | ValidTgts$ Incubator.token+YouCtrl | Mode$ Transform | SubAbility$ DBDouble | SpellDescription$ Transform target Incubator token you control.\nSVar:DBDouble:DB$ MultiplyCounter | Defined$ Targeted | CounterType$ P1P1 | SpellDescription$ Double the number of +1/+1 counters on it.\nDeckHas:Ability$Counters|Token & Type$Incubator|Artifact\nDeckHints:Type$Incubator\nOracle:When Elvish Vatkeeper enters, incubate 2. (Create an Incubator token with two +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\\n{5}: Transform target Incubator token you control. Double the number of +1/+1 counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Vatkeeper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

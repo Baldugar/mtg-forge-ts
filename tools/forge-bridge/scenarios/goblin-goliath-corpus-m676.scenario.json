@@ -1,0 +1,23 @@
+{
+  "id": "goblin-goliath-corpus-m676",
+  "description": "M6 corpus — Goblin Goliath; in-hand parse.",
+  "seed": 66429,
+  "cards": {
+    "Goblin Goliath": "Name:Goblin Goliath\nManaCost:4 R R\nTypes:Creature Goblin Mutant\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 1/1 red Goblin creature tokens equal to the number of opponents you have.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenAmount$ X | TokenScript$ r_1_1_goblin\nA:AB$ Effect | Cost$ 3 R T | ReplacementEffects$ RDoubleDamage | SpellDescription$ If a source you control would deal damage to an opponent this turn, it deals double that damage to that player instead.\nSVar:RDoubleDamage:Event$ DamageDone | ActiveZones$ Command | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Opponent | ReplaceWith$ DmgTwice | Description$ If a source you control would deal damage to an opponent this turn, it deals double that damage to that player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ Y\nSVar:X:PlayerCountOpponents$Amount\nSVar:Y:ReplaceCount$DamageAmount/Twice\nOracle:When Goblin Goliath enters, create a number of 1/1 red Goblin creature tokens equal to the number of opponents you have.\\n{3}{R}, {T}: If a source you control would deal damage to an opponent this turn, it deals double that damage to that player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Goliath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

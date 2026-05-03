@@ -1,0 +1,23 @@
+{
+  "id": "frodo-baggins-corpus-m676",
+  "description": "M6 corpus — Frodo Baggins; in-hand parse.",
+  "seed": 65761,
+  "cards": {
+    "Frodo Baggins": "Name:Frodo Baggins\nManaCost:G W\nTypes:Legendary Creature Halfling Scout\nPT:1/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.Other+Legendary+YouCtrl | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigTempt | TriggerDescription$ Whenever CARDNAME or another legendary creature you control enters, the Ring tempts you.\nSVar:TrigTempt:DB$ RingTemptsYou\nS:Mode$ Continuous | Affected$ Card.Self+IsRingbearer | AddHiddenKeyword$ CARDNAME must be blocked if able. | Description$ As long as NICKNAME is your Ring-bearer, it must be blocked if able.\nOracle:Whenever Frodo Baggins or another legendary creature you control enters, the Ring tempts you.\\nAs long as Frodo is your Ring-bearer, it must be blocked if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frodo Baggins"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

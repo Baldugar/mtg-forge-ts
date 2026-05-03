@@ -1,0 +1,23 @@
+{
+  "id": "butch-deloria-tunnel-snake-corpus-m676",
+  "description": "M6 corpus — Butch DeLoria, Tunnel Snake; in-hand parse.",
+  "seed": 61552,
+  "cards": {
+    "Butch DeLoria, Tunnel Snake": "Name:Butch DeLoria, Tunnel Snake\nManaCost:1 B\nTypes:Legendary Creature Human Rogue\nPT:2/2\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Tunnel Snakes Rule! — Whenever CARDNAME attacks, it gets +1/+1 until end of turn for each other Rogue and/or Snake you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Snake.Other+YouCtrl,Rogue.Other+YouCtrl\nA:AB$ PutCounter | Cost$ 1 B | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | CounterType$ Menace | CounterNum$ 1 | SubAbility$ DBAnimate | SpellDescription$ Put a menace counter on another target creature.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Types$ Rogue | Duration$ Permanent | SpellDescription$ It becomes a Rogue in addition to its other types.\nDeckHas:Ability$Counters\nDeckHints:Type$Snake|Rogue\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nTunnel Snakes Rule! — Whenever Butch DeLoria, Tunnel Snake attacks, it gets +1/+1 until end of turn for each other Rogue and/or Snake you control.\\n{1}{B}: Put a menace counter on another target creature. It becomes a Rogue in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Butch DeLoria, Tunnel Snake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

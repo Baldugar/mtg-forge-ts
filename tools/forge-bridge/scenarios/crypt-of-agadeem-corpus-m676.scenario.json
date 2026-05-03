@@ -1,0 +1,25 @@
+{
+  "id": "crypt-of-agadeem-corpus-m676",
+  "description": "M6 corpus — Crypt of Agadeem; ETB-on-bf.",
+  "seed": 62839,
+  "cards": {
+    "Crypt of Agadeem": "Name:Crypt of Agadeem\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ B | SpellDescription$ Add {B}.\nA:AB$ Mana | Cost$ 2 T | Produced$ B | Amount$ X | SpellDescription$ Add {B} for each black creature card in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.Black+YouCtrl\nAI:RemoveDeck:All\nOracle:Crypt of Agadeem enters tapped.\\n{T}: Add {B}.\\n{2}, {T}: Add {B} for each black creature card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Crypt of Agadeem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

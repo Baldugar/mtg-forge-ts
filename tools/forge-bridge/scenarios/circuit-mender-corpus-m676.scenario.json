@@ -1,0 +1,23 @@
+{
+  "id": "circuit-mender-corpus-m676",
+  "description": "M6 corpus — Circuit Mender; in-hand parse.",
+  "seed": 62161,
+  "cards": {
+    "Circuit Mender": "Name:Circuit Mender\nManaCost:3\nTypes:Artifact Creature Insect\nPT:2/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When CARDNAME leaves the battlefield, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$LifeGain\nOracle:When Circuit Mender enters, you gain 2 life.\\nWhen Circuit Mender leaves the battlefield, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Circuit Mender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

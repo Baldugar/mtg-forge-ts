@@ -1,0 +1,25 @@
+{
+  "id": "diviner-s-lockbox-corpus-m676",
+  "description": "M6 corpus — Diviner's Lockbox; ETB-on-bf.",
+  "seed": 63770,
+  "cards": {
+    "Diviner's Lockbox": "Name:Diviner's Lockbox\nManaCost:4\nTypes:Artifact\nA:AB$ NameCard | Cost$ 1 T | Defined$ You | SubAbility$ DBReveal | SorcerySpeed$ True | SpellDescription$ Choose a card name, then reveal the top card of your library. If that card has the chosen name, sacrifice CARDNAME and draw three cards. Activate only as a sorcery.\nSVar:DBReveal:DB$ PeekAndReveal | RememberRevealed$ True | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | SacValid$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ GE1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nAI:RemoveDeck:All\nOracle:{1}, {T}: Choose a card name, then reveal the top card of your library. If that card has the chosen name, sacrifice Diviner's Lockbox and draw three cards. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Diviner's Lockbox"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

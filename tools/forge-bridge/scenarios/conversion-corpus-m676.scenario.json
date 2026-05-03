@@ -1,0 +1,23 @@
+{
+  "id": "conversion-corpus-m676",
+  "description": "M6 corpus — Conversion; in-hand parse.",
+  "seed": 62548,
+  "cards": {
+    "Conversion": "Name:Conversion\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {W}{W}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ W W\nS:Mode$ Continuous | Affected$ Mountain | AddType$ Plains | RemoveLandTypes$ True | Description$ All Mountains are Plains.\nAI:RemoveDeck:Random\nDeckHints:Keyword$Landwalk:Plains\nOracle:At the beginning of your upkeep, sacrifice Conversion unless you pay {W}{W}.\\nAll Mountains are Plains.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conversion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "echo-inspector-corpus-m676",
+  "description": "M6 corpus — Echo Inspector; in-hand parse.",
+  "seed": 64287,
+  "cards": {
+    "Echo Inspector": "Name:Echo Inspector\nManaCost:3 U\nTypes:Creature Bird Rogue\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConnive | TriggerDescription$ When CARDNAME enters, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\nSVar:TrigConnive:DB$ Connive\nDeckHas:Ability$Discard|Counters\nOracle:Flying\\nWhen Echo Inspector enters, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Echo Inspector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dance-with-calamity-corpus-m676",
+  "description": "M6 corpus — Dance with Calamity; in-hand parse.",
+  "seed": 63044,
+  "cards": {
+    "Dance with Calamity": "Name:Dance with Calamity\nManaCost:7 R\nTypes:Sorcery\nA:SP$ Shuffle | SubAbility$ DBChoose | StackDescription$ {p:You} shuffles their library, | SpellDescription$ Shuffle your library. As many times as you choose, you may exile the top card of your library. If the total mana value of the cards exiled this way is 13 or less, you may cast any number of spells from among those cards without paying their mana costs.\nSVar:DBChoose:DB$ GenericChoice | Choices$ DBRepeat,Play | Defined$ You\nSVar:DBRepeat:DB$ Repeat | RepeatSubAbility$ DBDig | RepeatOptional$ True | SubAbility$ Play | SpellDescription$ As many times as you choose, you may exile the top card of your library.\nSVar:DBDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Exile | RememberChanged$ True\nSVar:Play:DB$ Play | Defined$ Remembered | ValidSA$ Spell | Amount$ All | WithoutManaCost$ True | Optional$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ LE13 | SubAbility$ DBCleanup | SpellDescription$ If the total mana value of the cards exiled this way is 13 or less, you may cast any number of spells from among those cards without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:Random\nOracle:Shuffle your library. As many times as you choose, you may exile the top card of your library. If the total mana value of the cards exiled this way is 13 or less, you may cast any number of spells from among those cards without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dance with Calamity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

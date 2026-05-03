@@ -1,0 +1,23 @@
+{
+  "id": "demonic-lore-corpus-m676",
+  "description": "M6 corpus — Demonic Lore; in-hand parse.",
+  "seed": 63440,
+  "cards": {
+    "Demonic Lore": "Name:Demonic Lore\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, you lose 2 life for each card in your hand.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ X\nSVar:X:Count$ValidHand Card.YouOwn/Times.2\nSVar:DonateMe:5\nOracle:When Demonic Lore enters, draw three cards.\\nAt the beginning of your end step, you lose 2 life for each card in your hand.\nAI:Remove:Random\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Lore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

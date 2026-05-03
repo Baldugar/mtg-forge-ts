@@ -1,0 +1,23 @@
+{
+  "id": "feline-sovereign-corpus-m676",
+  "description": "M6 corpus — Feline Sovereign; in-hand parse.",
+  "seed": 65187,
+  "cards": {
+    "Feline Sovereign": "Name:Feline Sovereign\nManaCost:2 G\nTypes:Creature Cat\nPT:2/3\nS:Mode$ Continuous | Affected$ Cat.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Protection:Dog | Description$ Other Cats you control get +1/+1 and have protection from Dogs.\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.Cat+YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever one or more Cats you control deal combat damage to a player, destroy up to one target artifact or enchantment that player controls.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Artifact,Enchantment | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select up to one target artifact or enchantment that player controls\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Cat\nDeckHints:Type$Cat\nOracle:Other Cats you control get +1/+1 and have protection from Dogs.\\nWhenever one or more Cats you control deal combat damage to a player, destroy up to one target artifact or enchantment that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feline Sovereign"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "firja-s-retribution-corpus-m676",
+  "description": "M6 corpus — Firja's Retribution; in-hand parse.",
+  "seed": 65392,
+  "cards": {
+    "Firja's Retribution": "Name:Firja's Retribution\nManaCost:1 W W B\nTypes:Enchantment Saga\nK:Chapter:3:TrigAngel,DBAnimateAll,TrigPump\nSVar:TrigAngel:DB$ Token | TokenScript$ w_4_4_angel_warrior_flying_vigilance | TokenOwner$ You | SpellDescription$ Create a 4/4 white Angel creature token with flying and vigilance.\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Angel.YouCtrl | Abilities$ TapDestroy | SpellDescription$ Until the end of turn, Angels you control gain \"{T}: Destroy target creature with power less than this creature.\"\nSVar:TapDestroy:AB$ Destroy | Cost$ T | ValidTgts$ Creature.powerLTX | TgtPrompt$ Select target creature with power less than this creature | SpellDescription$ Destroy target creature with power less than this creature.\nSVar:X:Count$CardPower\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Angel.YouCtrl | KW$ Double Strike | SpellDescription$ Angels you control gain double strike until end of turn.\nDeckHints:Type$Angel\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI — Create a 4/4 white Angel Warrior creature token with flying and vigilance.\\nII — Until end of turn, Angels you control gain \"{T}: Destroy target creature with power less than this creature's power.\"\\nIII — Angels you control gain double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firja's Retribution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

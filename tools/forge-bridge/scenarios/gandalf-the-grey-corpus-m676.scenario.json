@@ -1,0 +1,25 @@
+{
+  "id": "gandalf-the-grey-corpus-m676",
+  "description": "M6 corpus — Gandalf the Grey; ETB-on-bf.",
+  "seed": 65930,
+  "cards": {
+    "Gandalf the Grey": "Name:Gandalf the Grey\nManaCost:3 U R\nTypes:Legendary Creature Avatar Wizard\nPT:3/4\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Whenever you cast an instant or sorcery spell, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBTapUntap,DBDamage,DBCopy,DBChangeZone | ChoiceRestriction$ ThisGame\nSVar:DBTapUntap:DB$ TapOrUntap | ValidTgts$ Permanent | TgtPrompt$ Select target permanent to tap or untap | SpellDescription$ You may tap or untap target permanent.\nSVar:DBDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ 3 | SpellDescription$ CARDNAME deals 3 damage to each opponent.\nSVar:DBCopy:DB$ CopySpellAbility | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | TargetType$ Spell | TgtPrompt$ Select target instant or sorcery spell you control | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell you control. You may choose new targets for the copy.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Put NICKNAME on top of its owner's library.\nDeckNeeds:Type$Instant|Sorcery\nOracle:Whenever you cast an instant or sorcery spell, choose one that hasn't been chosen —\\n• You may tap or untap target permanent.\\n• Gandalf the Grey deals 3 damage to each opponent.\\n• Copy target instant or sorcery spell you control. You may choose new targets for the copy.\\n• Put Gandalf on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gandalf the Grey"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crossroads-village-corpus-m676",
+  "description": "M6 corpus — Crossroads Village; in-hand parse.",
+  "seed": 62776,
+  "cards": {
+    "Crossroads Village": "Name:Crossroads Village\nManaCost:no cost\nTypes:Land Town\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInComputerDeck | SpellDescription$ As this land enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nOracle:This land enters tapped. As it enters, choose a color.\\n{T}: Add one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crossroads Village"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

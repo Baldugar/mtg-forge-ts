@@ -1,0 +1,23 @@
+{
+  "id": "cactusfolk-sureshot-corpus-m676",
+  "description": "M6 corpus — Cactusfolk Sureshot; in-hand parse.",
+  "seed": 61587,
+  "cards": {
+    "Cactusfolk Sureshot": "Name:Cactusfolk Sureshot\nManaCost:2 R G\nTypes:Creature Plant Mercenary\nPT:4/4\nK:Reach\nK:Ward:2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPumpAll | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, other creatures you control with power 4 or greater gain trample and haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl+powerGE4 | KW$ Trample & Haste\nOracle:Reach\\nWard {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\\nAt the beginning of combat on your turn, other creatures you control with power 4 or greater gain trample and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cactusfolk Sureshot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

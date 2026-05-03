@@ -1,0 +1,23 @@
+{
+  "id": "fool-s-demise-corpus-m676",
+  "description": "M6 corpus — Fool's Demise; in-hand parse.",
+  "seed": 65602,
+  "cards": {
+    "Fool's Demise": "Name:Fool's Demise\nManaCost:4 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.!token\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigChange | TriggerDescription$ When enchanted creature dies, return that card to the battlefield under your control.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nOracle:Enchant creature\\nWhen enchanted creature dies, return that card to the battlefield under your control.\\nWhen Fool's Demise is put into a graveyard from the battlefield, return Fool's Demise to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fool's Demise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

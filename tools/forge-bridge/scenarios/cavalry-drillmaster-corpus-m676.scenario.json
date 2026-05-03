@@ -1,0 +1,23 @@
+{
+  "id": "cavalry-drillmaster-corpus-m676",
+  "description": "M6 corpus — Cavalry Drillmaster; in-hand parse.",
+  "seed": 61834,
+  "cards": {
+    "Cavalry Drillmaster": "Name:Cavalry Drillmaster\nManaCost:1 W\nTypes:Creature Human Knight\nPT:2/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +2/+0 and gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | KW$ First Strike\nOracle:When Cavalry Drillmaster enters, target creature gets +2/+0 and gains first strike until end of turn. (It deals combat damage before creatures without first strike.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavalry Drillmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

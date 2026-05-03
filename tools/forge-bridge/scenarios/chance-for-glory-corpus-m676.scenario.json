@@ -1,0 +1,23 @@
+{
+  "id": "chance-for-glory-corpus-m676",
+  "description": "M6 corpus — Chance for Glory; in-hand parse.",
+  "seed": 61947,
+  "cards": {
+    "Chance for Glory": "Name:Chance for Glory\nManaCost:1 R W\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Indestructible | Duration$ Permanent | SubAbility$ DBAddTurn | SpellDescription$ Creatures you control gain indestructible.\nSVar:DBAddTurn:DB$ AddTurn | NumTurns$ 1 | ExtraTurnDelayedTrigger$ DBDelTrig | ExtraTurnDelayedTriggerExcute$ TrigLose | SpellDescription$ Take an extra turn after this one. At the beginning of that turn's end step, you lose the game.\nSVar:DBDelTrig:ThisTurn$ True | Mode$ Phase | Phase$ End of Turn | TriggerDescription$ At the beginning of that turn's end step, you lose the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nOracle:Creatures you control gain indestructible. Take an extra turn after this one. At the beginning of that turn's end step, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chance for Glory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

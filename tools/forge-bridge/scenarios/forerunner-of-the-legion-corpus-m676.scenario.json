@@ -1,0 +1,23 @@
+{
+  "id": "forerunner-of-the-legion-corpus-m676",
+  "description": "M6 corpus — Forerunner of the Legion; in-hand parse.",
+  "seed": 65638,
+  "cards": {
+    "Forerunner of the Legion": "Name:Forerunner of the Legion\nManaCost:2 W\nTypes:Creature Vampire Knight\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Vampire card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Vampire | ChangeNum$ 1 | ShuffleNonMandatory$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Vampire.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another Vampire you control enters, target creature gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1\nSVar:BuffedBy:Vampire\nDeckHints:Type$Vampire\nOracle:When Forerunner of the Legion enters, you may search your library for a Vampire card, reveal it, then shuffle and put that card on top.\\nWhenever another Vampire you control enters, target creature gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forerunner of the Legion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

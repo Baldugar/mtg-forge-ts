@@ -1,0 +1,23 @@
+{
+  "id": "flanking-troops-corpus-m676",
+  "description": "M6 corpus — Flanking Troops; in-hand parse.",
+  "seed": 65456,
+  "cards": {
+    "Flanking Troops": "Name:Flanking Troops\nManaCost:2 W W\nTypes:Creature Human Soldier\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME attacks, you may tap target creature.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nOracle:Whenever Flanking Troops attacks, you may tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flanking Troops"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

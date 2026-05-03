@@ -1,0 +1,23 @@
+{
+  "id": "dread-corpus-m676",
+  "description": "M6 corpus — Dread; in-hand parse.",
+  "seed": 63974,
+  "cards": {
+    "Dread": "Name:Dread\nManaCost:3 B B B\nTypes:Creature Elemental Incarnation\nPT:6/6\nK:Fear\nT:Mode$ DamageDone | ValidSource$ Creature.inZoneBattlefield | ValidTarget$ You | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature deals damage to you, destroy it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigShuffle | TriggerDescription$ When CARDNAME is put into a graveyard from anywhere, shuffle it into its owner's library.\nSVar:TrigShuffle:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredCardLKICopy\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredSourceLKICopy\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nWhenever a creature deals damage to you, destroy it.\\nWhen Dread is put into a graveyard from anywhere, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dread"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

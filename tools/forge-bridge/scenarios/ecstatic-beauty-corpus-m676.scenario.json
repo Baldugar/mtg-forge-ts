@@ -1,0 +1,23 @@
+{
+  "id": "ecstatic-beauty-corpus-m676",
+  "description": "M6 corpus — Ecstatic Beauty; in-hand parse.",
+  "seed": 64309,
+  "cards": {
+    "Ecstatic Beauty": "Name:Ecstatic Beauty\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. You may play those cards until end of turn. Put four time counters on each of those cards that has suspend.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBPumpAll | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play those cards until end of turn.\nSVar:DBPumpAll:DB$ PutCounterAll | ValidCards$ Card.IsRemembered+withSuspend | CounterType$ TIME | CounterNum$ 4 | ValidZone$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Suspend:4:R\nOracle:Exile the top three cards of your library. You may play those cards until end of turn. Put four time counters on each of those cards that has suspend.\\nSuspend 4—{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ecstatic Beauty"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

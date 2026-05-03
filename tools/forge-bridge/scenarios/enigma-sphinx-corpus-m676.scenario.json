@@ -1,0 +1,23 @@
+{
+  "id": "enigma-sphinx-corpus-m676",
+  "description": "M6 corpus — Enigma Sphinx; in-hand parse.",
+  "seed": 64613,
+  "cards": {
+    "Enigma Sphinx": "Name:Enigma Sphinx\nManaCost:4 W U B\nTypes:Artifact Creature Sphinx\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+YouOwn | Execute$ TrigChange | TriggerDescription$ When CARDNAME is put into your graveyard from the battlefield, put it into your library third from the top.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 2\nK:Cascade\nOracle:Flying\\nWhen Enigma Sphinx is put into your graveyard from the battlefield, put it into your library third from the top.\\nCascade (When you cast this spell, exile cards from the top of your library until you exile a nonland card that costs less. You may cast it without paying its mana cost. Put the exiled cards on the bottom of your library in a random order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enigma Sphinx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

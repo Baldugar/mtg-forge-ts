@@ -1,0 +1,23 @@
+{
+  "id": "call-to-the-grave-corpus-m676",
+  "description": "M6 corpus — Call to the Grave; in-hand parse.",
+  "seed": 61630,
+  "cards": {
+    "Call to the Grave": "Name:Call to the Grave\nManaCost:4 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player sacrifices a non-Zombie creature.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature.nonZombie | Defined$ TriggeredPlayer\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Creature | PresentCompare$ EQ0 | Execute$ TrigSacSelf | TriggerDescription$ At the beginning of the end step, if no creatures are on the battlefield, sacrifice CARDNAME.\nSVar:TrigSacSelf:DB$ Sacrifice\nAI:RemoveDeck:Random\nDeckHints:Type$Zombie\nOracle:At the beginning of each player's upkeep, that player sacrifices a non-Zombie creature.\\nAt the beginning of the end step, if no creatures are on the battlefield, sacrifice Call to the Grave.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call to the Grave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

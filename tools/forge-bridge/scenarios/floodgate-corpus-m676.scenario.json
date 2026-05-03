@@ -1,0 +1,23 @@
+{
+  "id": "floodgate-corpus-m676",
+  "description": "M6 corpus — Floodgate; in-hand parse.",
+  "seed": 65528,
+  "cards": {
+    "Floodgate": "Name:Floodgate\nManaCost:3 U\nTypes:Creature Wall\nPT:0/5\nK:Defender\nT:Mode$ Always | IsPresent$ Card.Self+withFlying | Execute$ Sacrifice | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME has flying, sacrifice it.\nSVar:Sacrifice:DB$ Sacrifice\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigDamage | TriggerDescription$ When CARDNAME leaves the battlefield, it deals damage equal to half the number of Islands you control, rounded down, to each nonblue creature without flying.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature.nonBlue+withoutFlying | NumDmg$ X\nSVar:X:Count$Valid Island.YouCtrl/HalfDown\nOracle:Defender (This creature can't attack.)\\nWhen Floodgate has flying, sacrifice it.\\nWhen Floodgate leaves the battlefield, it deals damage equal to half the number of Islands you control, rounded down, to each nonblue creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Floodgate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

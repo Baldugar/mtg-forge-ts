@@ -1,0 +1,23 @@
+{
+  "id": "earthshape-corpus-m676",
+  "description": "M6 corpus — Earthshape; in-hand parse.",
+  "seed": 64264,
+  "cards": {
+    "Earthshape": "Name:Earthshape\nManaCost:2 W\nTypes:Instant\nA:SP$ Earthbend | Num$ 3 | SubAbility$ DBPumpAll | SpellDescription$ Earthbend 3. Then each creature you control with power less than or equal to that land's power gains hexproof and indestructible until end of turn. You gain hexproof until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl+powerLEX | KW$ Hexproof & Indestructible | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ You | KW$ Hexproof\nSVar:X:Targeted$CardPower\nOracle:Earthbend 3. Then each creature you control with power less than or equal to that land's power gains hexproof and indestructible until end of turn.\\nYou gain hexproof until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earthshape"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "drana-liberator-of-malakir-corpus-m676",
+  "description": "M6 corpus — Drana, Liberator of Malakir; in-hand parse.",
+  "seed": 63965,
+  "cards": {
+    "Drana, Liberator of Malakir": "Name:Drana, Liberator of Malakir\nManaCost:1 B B\nTypes:Legendary Creature Vampire Ally\nPT:2/3\nK:Flying\nK:First Strike\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPutCounters | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+attacking | CounterType$ P1P1 | CounterNum$ 1\nOracle:Flying, first strike\\nWhenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drana, Liberator of Malakir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

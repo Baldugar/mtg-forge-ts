@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-the-bloody-tome-corpus-m676",
+  "description": "M6 corpus — Curse of the Bloody Tome; in-hand parse.",
+  "seed": 62935,
+  "cards": {
+    "Curse of the Bloody Tome": "Name:Curse of the Bloody Tome\nManaCost:2 U\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ At the beginning of enchanted player's upkeep, that player mills two cards.\nSVar:TrigMill:DB$ Mill | Defined$ Player.EnchantedBy | NumCards$ 2\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, that player mills two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of the Bloody Tome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chain-of-smog-corpus-m676",
+  "description": "M6 corpus — Chain of Smog; in-hand parse.",
+  "seed": 61916,
+  "cards": {
+    "Chain of Smog": "Name:Chain of Smog\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Player | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBCopy | SpellDescription$ Target player discards two cards. That player may copy this spell and may choose a new target for that copy.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Parent | Controller$ TargetedPlayer | Optional$ True | AILogic$ ChainOfSmog | StackDescription$ None | MayChooseTarget$ True\nAI:RemoveDeck:Random\nOracle:Target player discards two cards. That player may copy this spell and may choose a new target for that copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chain of Smog"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

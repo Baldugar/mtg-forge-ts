@@ -1,0 +1,23 @@
+{
+  "id": "chancellor-of-the-forge-corpus-m676",
+  "description": "M6 corpus — Chancellor of the Forge; in-hand parse.",
+  "seed": 61951,
+  "cards": {
+    "Chancellor of the Forge": "Name:Chancellor of the Forge\nManaCost:4 R R R\nTypes:Creature Phyrexian Giant\nPT:5/5\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ EffMassToken | TriggerDescription$ When CARDNAME enters, create X 1/1 red Phyrexian Goblin creature tokens with haste, where X is the number of creatures you control.\nSVar:EffMassToken:DB$ Token | TokenAmount$ X | TokenOwner$ You | TokenScript$ r_1_1_phyrexian_goblin_haste\nSVar:X:Count$Valid Creature.YouCtrl\nK:MayEffectFromOpeningHand:RevealCard\nSVar:RevealCard:DB$ Reveal | RevealDefined$ Self | SubAbility$ TokenOnUpkeep | SpellDescription$ You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, create a 1/1 red Phyrexian Goblin creature token with haste.\nSVar:TokenOnUpkeep:DB$ Effect | Triggers$ TrigToken\nSVar:TrigToken:Mode$ Phase | Phase$ Upkeep | Execute$ EffToken | OneOff$ True | TriggerDescription$ At the beginning of the first upkeep, create a 1/1 red Phyrexian Goblin creature token with haste.\nSVar:EffToken:DB$ Token | TokenOwner$ You | TokenScript$ r_1_1_phyrexian_goblin_haste\nSVar:PlayMain1:TRUE\nDeckHas:Type$Goblin\nOracle:You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, create a 1/1 red Phyrexian Goblin creature token with haste.\\nWhen Chancellor of the Forge enters, create X 1/1 red Phyrexian Goblin creature tokens with haste, where X is the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chancellor of the Forge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

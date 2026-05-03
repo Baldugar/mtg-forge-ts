@@ -1,0 +1,25 @@
+{
+  "id": "gilraen-d-nedain-protector-corpus-m676",
+  "description": "M6 corpus — Gilraen, Dúnedain Protector; ETB-on-bf.",
+  "seed": 66217,
+  "cards": {
+    "Gilraen, Dúnedain Protector": "Name:Gilraen, Dúnedain Protector\nManaCost:2 W\nTypes:Legendary Creature Human Noble\nPT:2/3\nA:AB$ ChangeZone | Cost$ 2 T | ValidTgts$ Creature.Other+YouCtrl | RememberChanged$ True | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select another target creature you control | SubAbility$ DBReturn | SpellDescription$ Exile another target creature you control. You may return that card to the battlefield under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Optional$ True | ForgetChanged$ True | Destination$ Battlefield | SubAbility$ DBDelayedTrigger\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | RememberObjects$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigReturn | SubAbility$ DBCleanup | SpellDescription$ If you don't, at the beginning of the next end step, return that card to the battlefield under its owner's control with a vigilance counter and a lifelink counter on it.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ DelayTriggerRemembered | Origin$ Exile | Destination$ Battlefield | WithCountersType$ Vigilance,Lifelink\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Counters|LifeGain\nOracle:{2}, {T}: Exile another target creature you control. You may return that card to the battlefield under its owner's control. If you don't, at the beginning of the next end step, return that card to the battlefield under its owner's control with a vigilance counter and a lifelink counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gilraen, Dúnedain Protector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

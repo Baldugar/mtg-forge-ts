@@ -1,0 +1,23 @@
+{
+  "id": "corroding-dragonstorm-corpus-m676",
+  "description": "M6 corpus — Corroding Dragonstorm; in-hand parse.",
+  "seed": 62601,
+  "cards": {
+    "Corroding Dragonstorm": "Name:Corroding Dragonstorm\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When this enchantment enters, each opponent loses 2 life and you gain 2 life. Surveil 2 (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBSurveil\nSVar:DBSurveil:DB$ Surveil | Amount$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Dragon.YouCtrl | Execute$ TrigReturn | TriggerDescription$ When a Dragon you control enters, return this enchantment to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nDeckHints:Type$Dragon\nOracle:When this enchantment enters, each opponent loses 2 life and you gain 2 life. Surveil 2 (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\\nWhen a Dragon you control enters, return this enchantment to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corroding Dragonstorm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

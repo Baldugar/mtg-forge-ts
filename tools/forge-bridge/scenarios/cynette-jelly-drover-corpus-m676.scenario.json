@@ -1,0 +1,23 @@
+{
+  "id": "cynette-jelly-drover-corpus-m676",
+  "description": "M6 corpus — Cynette, Jelly Drover; in-hand parse.",
+  "seed": 62995,
+  "cards": {
+    "Cynette, Jelly Drover": "Name:Cynette, Jelly Drover\nManaCost:3 U\nTypes:Legendary Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters or dies, create a 1/1 blue Jellyfish creature token with flying.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, create a 1/1 blue Jellyfish creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_jellyfish_flying | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.withFlying+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control with flying get +1/+1.\nSVar:PlayMain1:TRUE\nOracle:When Cynette, Jelly Drover enters or dies, create a 1/1 blue Jellyfish creature token with flying.\\nCreatures you control with flying get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cynette, Jelly Drover"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

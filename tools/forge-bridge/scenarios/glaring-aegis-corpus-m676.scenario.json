@@ -1,0 +1,23 @@
+{
+  "id": "glaring-aegis-corpus-m676",
+  "description": "M6 corpus — Glaring Aegis; in-hand parse.",
+  "seed": 66262,
+  "cards": {
+    "Glaring Aegis": "Name:Glaring Aegis\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 3 | Description$ Enchanted creature gets +1/+3.\nSVar:PlayMain1:TRUE\nOracle:Enchant creature\\nWhen Glaring Aegis enters, tap target creature an opponent controls.\\nEnchanted creature gets +1/+3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glaring Aegis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

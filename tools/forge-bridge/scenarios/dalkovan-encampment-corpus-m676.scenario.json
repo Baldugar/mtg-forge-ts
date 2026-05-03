@@ -1,0 +1,25 @@
+{
+  "id": "dalkovan-encampment-corpus-m676",
+  "description": "M6 corpus — Dalkovan Encampment; ETB-on-bf.",
+  "seed": 63027,
+  "cards": {
+    "Dalkovan Encampment": "Name:Dalkovan Encampment\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control a Swamp or a Mountain.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Swamp.YouCtrl,Mountain.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nA:AB$ Effect | Cost$ 2 W T | Triggers$ DalkovanAttack | SpellDescription$ Whenever you attack this turn, create two 1/1 red Warrior creature tokens that are tapped and attacking. Sacrifice them at the beginning of the next end step.\nSVar:DalkovanAttack:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack this turn, create two 1/1 red Warrior creature tokens that are tapped and attacking. Sacrifice them at the beginning of the next end step.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_warrior | TokenTapped$ True | TokenAttacking$ True | TokenOwner$ You | AtEOT$ Sacrifice\nOracle:This land enters tapped unless you control a Swamp or a Mountain.\\n{T}: Add {W}.\\n{2}{W}, {T}: Whenever you attack this turn, create two 1/1 red Warrior creature tokens that are tapped and attacking. Sacrifice them at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dalkovan Encampment"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

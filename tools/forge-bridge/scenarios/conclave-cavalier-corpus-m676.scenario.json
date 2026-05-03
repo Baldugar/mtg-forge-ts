@@ -1,0 +1,23 @@
+{
+  "id": "conclave-cavalier-corpus-m676",
+  "description": "M6 corpus — Conclave Cavalier; in-hand parse.",
+  "seed": 62457,
+  "cards": {
+    "Conclave Cavalier": "Name:Conclave Cavalier\nManaCost:G G W W\nTypes:Creature Centaur Knight\nPT:4/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create two green and green 2/2 Elf Knight creature tokens with vigilance.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ gw_2_2_elf_knight_vigilance\nSVar:SacMe:4\nDeckHas:Ability$Token\nOracle:Vigilance\\nWhen Conclave Cavalier dies, create two 2/2 green and white Elf Knight creature tokens with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conclave Cavalier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

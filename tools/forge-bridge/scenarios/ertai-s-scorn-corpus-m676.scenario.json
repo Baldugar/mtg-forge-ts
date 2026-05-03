@@ -1,0 +1,23 @@
+{
+  "id": "ertai-s-scorn-corpus-m676",
+  "description": "M6 corpus — Ertai's Scorn; in-hand parse.",
+  "seed": 64717,
+  "cards": {
+    "Ertai's Scorn": "Name:Ertai's Scorn\nManaCost:1 U U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | CheckSVar$ OppCastThisTurn | Type$ Spell | Amount$ 1 | Color$ U | EffectZone$ All | Description$ This spell costs {U} less to cast if an opponent cast two or more spells this turn.\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | SpellDescription$ Counter target spell.\nSVar:OppCastThisTurn:PlayerCountOpponents$ConditionGE2 SpellsCastThisTurn\nOracle:This spell costs {U} less to cast if an opponent cast two or more spells this turn.\\nCounter target spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ertai's Scorn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

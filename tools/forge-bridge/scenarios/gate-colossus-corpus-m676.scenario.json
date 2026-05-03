@@ -1,0 +1,23 @@
+{
+  "id": "gate-colossus-corpus-m676",
+  "description": "M6 corpus — Gate Colossus; in-hand parse.",
+  "seed": 65963,
+  "cards": {
+    "Gate Colossus": "Name:Gate Colossus\nManaCost:8\nTypes:Artifact Creature Construct\nPT:8/8\nK:Affinity:Gate\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Gate.YouCtrl | OptionalDecider$ You | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Whenever a Gate you control enters, you may put CARDNAME from your graveyard on top of your library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Defined$ Self\nDeckNeeds:Type$Gate\nOracle:Affinity for Gates (This spell costs {1} less to cast for each Gate you control.)\\nGate Colossus can't be blocked by creatures with power 2 or less.\\nWhenever a Gate you control enters, you may put Gate Colossus from your graveyard on top of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gate Colossus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

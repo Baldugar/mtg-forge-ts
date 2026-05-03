@@ -1,0 +1,23 @@
+{
+  "id": "glint-hawk-idol-corpus-m676",
+  "description": "M6 corpus — Glint Hawk Idol; in-hand parse.",
+  "seed": 66303,
+  "cards": {
+    "Glint Hawk Idol": "Name:Glint Hawk Idol\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigAnimate | TriggerDescription$ Whenever another artifact you control enters, you may have CARDNAME become a 2/2 Bird artifact creature with flying until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 2 | Toughness$ 2 | Types$ Artifact,Creature,Bird | RemoveCreatureTypes$ True | Keywords$ Flying\nA:AB$ Animate | Cost$ W | Defined$ Self | Power$ 2 | Toughness$ 2 | Types$ Artifact,Creature,Bird | RemoveCreatureTypes$ True | Keywords$ Flying | SpellDescription$ CARDNAME becomes a 2/2 Bird artifact creature with flying until end of turn.\nSVar:BuffedBy:Artifact\nAI:RemoveDeck:Random\nDeckNeeds:Color$White\nOracle:Whenever another artifact you control enters, you may have Glint Hawk Idol become a 2/2 Bird artifact creature with flying until end of turn.\\n{W}: Glint Hawk Idol becomes a 2/2 Bird artifact creature with flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glint Hawk Idol"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "clay-revenant-corpus-m676",
+  "description": "M6 corpus — Clay Revenant; ETB-on-bf.",
+  "seed": 62205,
+  "cards": {
+    "Clay Revenant": "Name:Clay Revenant\nManaCost:1\nTypes:Artifact Creature Golem\nPT:1/2\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ChangeZone | Cost$ 2 B | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nSVar:SacMe:1\nDeckHas:Ability$Graveyard\nDeckHints:Color$Black\nOracle:Clay Revenant enters tapped.\\n{2}{B}: Return Clay Revenant from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Clay Revenant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

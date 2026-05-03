@@ -1,0 +1,25 @@
+{
+  "id": "dwarven-warriors-corpus-m676",
+  "description": "M6 corpus — Dwarven Warriors; ETB-on-bf.",
+  "seed": 64222,
+  "cards": {
+    "Dwarven Warriors": "Name:Dwarven Warriors\nManaCost:2 R\nTypes:Creature Dwarf Warrior\nPT:1/1\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{T}: Target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dwarven Warriors"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

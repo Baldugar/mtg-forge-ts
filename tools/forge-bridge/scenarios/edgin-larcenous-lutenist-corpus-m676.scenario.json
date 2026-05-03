@@ -1,0 +1,25 @@
+{
+  "id": "edgin-larcenous-lutenist-corpus-m676",
+  "description": "M6 corpus — Edgin, Larcenous Lutenist; ETB-on-bf.",
+  "seed": 64316,
+  "cards": {
+    "Edgin, Larcenous Lutenist": "Name:Edgin, Larcenous Lutenist\nVariant:UniversesWithin:FlavorName:Bohn, Beguiling Balladeer\nManaCost:1 U R\nTypes:Legendary Creature Human Bard\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.nonLand+YouOwn+withoutForetell | AffectedZone$ Hand | AddKeyword$ Foretell | Description$ Each nonland card in your hand without foretell has foretell. Its foretell cost is equal to its mana cost reduced by {2}. (During your turn, you may pay {2} and exile it from your hand face down. Cast it on a later turn for its foretell cost.)\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGoad | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, goad target creature an opponent controls.\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls\nOracle:Each nonland card in your hand without foretell has foretell. Its foretell cost is equal to its mana cost reduced by {2}. (During your turn, you may pay {2} and exile it from your hand face down. Cast it on a later turn for its foretell cost.)\\nWhenever you cast your second spell each turn, goad target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Edgin, Larcenous Lutenist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

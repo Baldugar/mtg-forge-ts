@@ -1,0 +1,23 @@
+{
+  "id": "celestial-judgment-corpus-m676",
+  "description": "M6 corpus — Celestial Judgment; in-hand parse.",
+  "seed": 61860,
+  "cards": {
+    "Celestial Judgment": "Name:Celestial Judgment\nManaCost:4 W W\nTypes:Sorcery\nA:SP$ ChooseCard | Choices$ Creature | EachDifferentPower$ True | SubAbility$ DBDestroy | StackDescription$ SpellDescription | SpellDescription$ For each different power among creatures on the battlefield, choose a creature with that power. Destroy each creature not chosen this way.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Creature.nonChosenCard | StackDescription$ None\nOracle:For each different power among creatures on the battlefield, choose a creature with that power. Destroy each creature not chosen this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Celestial Judgment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

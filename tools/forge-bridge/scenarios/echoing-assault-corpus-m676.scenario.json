@@ -1,0 +1,25 @@
+{
+  "id": "echoing-assault-corpus-m676",
+  "description": "M6 corpus — Echoing Assault; ETB-on-bf.",
+  "seed": 64294,
+  "cards": {
+    "Echoing Assault": "Name:Echoing Assault\nManaCost:4 R\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddKeyword$ Menace | Description$ Creature tokens you control have menace.\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Creature.YouCtrl | AttackedTarget$ Player | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack a player, choose target nontoken creature that's attacking that player. Create a token that's a copy of that creature, except it's 1/1. The token enters tapped and attacking that player. Sacrifice it at the beginning of the next end step.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Creature.!token+attacking TriggeredAttackedTarget | TgtPrompt$ Select target nontoken creature attacking that player | SetPower$ 1 | SetToughness$ 1 | TokenTapped$ True | TokenAttacking$ TriggeredAttackedTarget | AtEOT$ Sacrifice\nOracle:Creature tokens you control have menace.\\nWhenever you attack a player, choose target nontoken creature that's attacking that player. Create a token that's a copy of that creature, except it's 1/1. The token enters tapped and attacking that player. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Echoing Assault"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

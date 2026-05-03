@@ -1,0 +1,23 @@
+{
+  "id": "clockwork-vorrac-corpus-m676",
+  "description": "M6 corpus — Clockwork Vorrac; in-hand parse.",
+  "seed": 62271,
+  "cards": {
+    "Clockwork Vorrac": "Name:Clockwork Vorrac\nManaCost:5\nTypes:Artifact Creature Boar Beast\nPT:0/0\nK:Trample\nK:etbCounter:P1P1:4\nA:AB$ PutCounter | Cost$ T | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Put a +1/+1 counter on CARDNAME.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DelTrig | TriggerDescription$ Whenever CARDNAME attacks or blocks, remove a +1/+1 counter from it at end of combat.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelTrig | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, remove a +1/+1 counter from it at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | Execute$ TrigRemoveCounter | TriggerDescription$ Remove a +1/+1 counter from CARDNAME.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nOracle:Trample\\nClockwork Vorrac enters with four +1/+1 counters on it.\\nWhenever Clockwork Vorrac attacks or blocks, remove a +1/+1 counter from it at end of combat.\\n{T}: Put a +1/+1 counter on Clockwork Vorrac.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clockwork Vorrac"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

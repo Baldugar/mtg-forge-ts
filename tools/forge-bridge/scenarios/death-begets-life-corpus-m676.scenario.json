@@ -1,0 +1,23 @@
+{
+  "id": "death-begets-life-corpus-m676",
+  "description": "M6 corpus — Death Begets Life; in-hand parse.",
+  "seed": 63239,
+  "cards": {
+    "Death Begets Life": "Name:Death Begets Life\nManaCost:5 B G U\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature,Enchantment | RememberDestroyed$ True | SubAbility$ DBDraw | SpellDescription$ Destroy all creatures and enchantments. Draw a card for each permanent destroyed this way.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Destroy all creatures and enchantments. Draw a card for each permanent destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Begets Life"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

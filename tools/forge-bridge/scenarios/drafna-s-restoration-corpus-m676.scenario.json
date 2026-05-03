@@ -1,0 +1,23 @@
+{
+  "id": "drafna-s-restoration-corpus-m676",
+  "description": "M6 corpus — Drafna's Restoration; in-hand parse.",
+  "seed": 63880,
+  "cards": {
+    "Drafna's Restoration": "Name:Drafna's Restoration\nManaCost:U\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True | SpellDescription$ Put any number of target artifact cards from target player's graveyard on top of their library in any order.\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ X | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | TgtPrompt$ Choose target artifact card | ValidTgts$ Artifact | Chooser$ You\nSVar:X:Count$ValidGraveyard Artifact.OwnedBy TargetedPlayer\nAI:RemoveDeck:All\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill\nDeckNeeds:Type$Artifact\nOracle:Put any number of target artifact cards from target player's graveyard on top of their library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drafna's Restoration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

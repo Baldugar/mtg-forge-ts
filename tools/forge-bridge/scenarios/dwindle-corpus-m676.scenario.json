@@ -1,0 +1,23 @@
+{
+  "id": "dwindle-corpus-m676",
+  "description": "M6 corpus — Dwindle; in-hand parse.",
+  "seed": 64224,
+  "cards": {
+    "Dwindle": "Name:Dwindle\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -6 | Description$ Enchanted creature gets -6/-0.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Creature.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When enchanted creature blocks, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredBlockerLKICopy\nOracle:Enchant creature\\nEnchanted creature gets -6/-0.\\nWhen enchanted creature blocks, destroy it. (The attacking creature remains blocked.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwindle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

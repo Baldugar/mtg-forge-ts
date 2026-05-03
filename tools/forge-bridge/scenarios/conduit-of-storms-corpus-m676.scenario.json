@@ -1,0 +1,23 @@
+{
+  "id": "conduit-of-storms-corpus-m676",
+  "description": "M6 corpus — Conduit of Storms; in-hand parse.",
+  "seed": 62473,
+  "cards": {
+    "Conduit of Storms": "Name:Conduit of Storms\nManaCost:2 R\nTypes:Creature Werewolf Horror\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDelTrig | TriggerDescription$ Whenever CARDNAME attacks, add {R} at the beginning of your next main phase this turn.\nSVar:TrigDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Main1,Main2 | ThisTurn$ True | ValidPlayer$ You | Execute$ AddMana | TriggerDescription$ At the beginning of your next main phase this turn, add {R}.\nSVar:AddMana:DB$ Mana | Produced$ R\nA:AB$ SetState | Cost$ 3 R R | Defined$ Self | Mode$ Transform | SpellDescription$ Transform CARDNAME.\nSVar:HasAttackEffect:TRUE\nAlternateMode:DoubleFaced\nOracle:Whenever Conduit of Storms attacks, add {R} at the beginning of your next main phase this turn.\\n{3}{R}{R}: Transform Conduit of Storms.\n\nALTERNATE\n\nName:Conduit of Emrakul\nManaCost:no cost\nTypes:Creature Eldrazi Werewolf\nPT:5/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDelTrig | TriggerDescription$ Whenever CARDNAME attacks, add {C}{C} at the beginning of your next main phase this turn.\nSVar:TrigDelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ Main1,Main2 | ThisTurn$ True | ValidPlayer$ You | Execute$ AddMana | TriggerDescription$ At the beginning of your next main phase this turn, add {C}{C}.\nSVar:AddMana:DB$ Mana | Produced$ C C\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Conduit of Emrakul attacks, add {C}{C} at the beginning of your next main phase this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conduit of Storms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

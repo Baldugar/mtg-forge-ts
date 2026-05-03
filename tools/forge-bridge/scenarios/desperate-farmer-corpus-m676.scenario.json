@@ -1,0 +1,23 @@
+{
+  "id": "desperate-farmer-corpus-m676",
+  "description": "M6 corpus — Desperate Farmer; in-hand parse.",
+  "seed": 63527,
+  "cards": {
+    "Desperate Farmer": "Name:Desperate Farmer\nManaCost:2 B\nTypes:Creature Human Peasant\nPT:2/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ When another creature you control dies, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:Lifelink\\nWhen another creature you control dies, transform Desperate Farmer.\n\nALTERNATE\n\nName:Depraved Harvester\nManaCost:no cost\nColors:black\nTypes:Creature Human Knight\nPT:4/3\nK:Lifelink\nOracle:Lifelink\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desperate Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

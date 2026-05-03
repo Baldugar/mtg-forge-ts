@@ -1,0 +1,23 @@
+{
+  "id": "emergency-weld-corpus-m676",
+  "description": "M6 corpus — Emergency Weld; in-hand parse.",
+  "seed": 64520,
+  "cards": {
+    "Emergency Weld": "Name:Emergency Weld\nManaCost:1 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact or creature card in your graveyard | ValidTgts$ Artifact.YouOwn,Creature.YouOwn | SubAbility$ DBToken | SpellDescription$ Return target artifact or creature card from your graveyard to your hand.\nSVar:DBToken:DB$ Token | TokenScript$ c_1_1_a_soldier | SpellDescription$ Create a 1/1 colorless Soldier artifact creature token.\nDeckHas:Ability$Token|Graveyard & Type$Artifact|Soldier\nOracle:Return target artifact or creature card from your graveyard to your hand. Create a 1/1 colorless Soldier artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emergency Weld"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "condemn-corpus-m676",
+  "description": "M6 corpus — Condemn; in-hand parse.",
+  "seed": 62468,
+  "cards": {
+    "Condemn": "Name:Condemn\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ -1 | SubAbility$ DBGainLife | SpellDescription$ Put target attacking creature on the bottom of its owner's library.\nSVar:DBGainLife:DB$ GainLife | Defined$ TargetedController | LifeAmount$ X | SpellDescription$ Its controller gains life equal to its toughness.\nSVar:X:Targeted$CardToughness\nOracle:Put target attacking creature on the bottom of its owner's library. Its controller gains life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Condemn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "disciple-of-perdition-corpus-m676",
+  "description": "M6 corpus — Disciple of Perdition; in-hand parse.",
+  "seed": 63674,
+  "cards": {
+    "Disciple of Perdition": "Name:Disciple of Perdition\nManaCost:1 B\nTypes:Creature Human Warlock\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME dies, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y EQ13.2.1 | Choices$ DBDraw,DBExile | AdditionalDescription$ . If you have exactly 13 life, you may choose both.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1 | StackDescription$ None\nSVar:Y:Count$YourLifeTotal\nSVar:DBExile:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | SpellDescription$ Exile target player's graveyard. That player loses 1 life.\nSVar:DBLoseLife2:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 1 | StackDescription$ None\nOracle:When Disciple of Perdition dies, choose one. If you have exactly 13 life, you may choose both.\\n• You draw a card and lose 1 life.\\n• Exile target player's graveyard. That player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disciple of Perdition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "geist-honored-monk-corpus-m676",
+  "description": "M6 corpus — Geist-Honored Monk; in-hand parse.",
+  "seed": 66004,
+  "cards": {
+    "Geist-Honored Monk": "Name:Geist-Honored Monk\nManaCost:3 W W\nTypes:Creature Human Monk\nPT:*/*\nK:Vigilance\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures you control.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 white Spirit creature tokens with flying.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:BuffedBy:Creature\nSVar:NoZeroToughnessAI:True\nDeckHas:Ability$Token\nOracle:Vigilance\\nGeist-Honored Monk's power and toughness are each equal to the number of creatures you control.\\nWhen Geist-Honored Monk enters, create two 1/1 white Spirit creature tokens with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geist-Honored Monk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

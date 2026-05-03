@@ -1,0 +1,23 @@
+{
+  "id": "dire-fleet-captain-corpus-m676",
+  "description": "M6 corpus — Dire Fleet Captain; in-hand parse.",
+  "seed": 63647,
+  "cards": {
+    "Dire Fleet Captain": "Name:Dire Fleet Captain\nManaCost:B R\nTypes:Creature Orc Pirate\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+1 until end of turn for each other attacking Pirate.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Pirate.attacking+Other\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Pirate\nOracle:Whenever Dire Fleet Captain attacks, it gets +1/+1 until end of turn for each other attacking Pirate.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dire Fleet Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

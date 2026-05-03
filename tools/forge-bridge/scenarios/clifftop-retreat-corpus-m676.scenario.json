@@ -1,0 +1,25 @@
+{
+  "id": "clifftop-retreat-corpus-m676",
+  "description": "M6 corpus — Clifftop Retreat; ETB-on-bf.",
+  "seed": 62241,
+  "cards": {
+    "Clifftop Retreat": "Name:Clifftop Retreat\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Mountain or a Plains.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Mountain.YouCtrl,Plains.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo R W | SpellDescription$ Add {R} or {W}.\nOracle:Clifftop Retreat enters tapped unless you control a Mountain or a Plains.\\n{T}: Add {R} or {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Clifftop Retreat"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

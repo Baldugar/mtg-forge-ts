@@ -1,0 +1,23 @@
+{
+  "id": "clay-fired-bricks-corpus-m676",
+  "description": "M6 corpus — Clay-Fired Bricks; in-hand parse.",
+  "seed": 62204,
+  "cards": {
+    "Clay-Fired Bricks": "Name:Clay-Fired Bricks\nManaCost:1 W\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a basic Plains card, reveal it, put it into your hand, then shuffle. You gain 2 life.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Plains.Basic | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nK:Craft:5 W W ExileCtrlOrGrave<1/Artifact.Other>\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Graveyard|Token|LifeGain & Type$Gnome|Artifact\nAlternateMode:DoubleFaced\nOracle:When Clay-Fired Bricks enters, search your library for a basic Plains card, reveal it, put it into your hand, then shuffle. You gain 2 life.\\nCraft with artifact {5}{W}{W} ({5}{W}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Cosmium Kiln\nManaCost:no cost\nColors:white\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 colorless Gnome artifact creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ c_1_1_a_gnome\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nOracle:When Cosmium Kiln enters, create two 1/1 colorless Gnome artifact creature tokens.\\nCreatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clay-Fired Bricks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

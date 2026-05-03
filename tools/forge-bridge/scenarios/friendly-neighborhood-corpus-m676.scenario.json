@@ -1,0 +1,23 @@
+{
+  "id": "friendly-neighborhood-corpus-m676",
+  "description": "M6 corpus — Friendly Neighborhood; in-hand parse.",
+  "seed": 65749,
+  "cards": {
+    "Friendly Neighborhood": "Name:Friendly Neighborhood\nVariant:UniversesWithin:FlavorName:Remarkable Readings\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this Aura enters, create three 1/1 green and white Human Citizen creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 3 | TokenScript$ gw_1_1_human_citizen | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddAbility$ FriendlyPump | Description$ Enchanted land has \"{1}, {T}: Target creature gets +1/+1 until end of turn for each creature you control. Activate only as a sorcery.\"\nSVar:FriendlyPump:AB$ Pump | Cost$ 1 T | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X | SorcerySpeed$ True | SpellDescription$ Target creature gets +1/+1 until end of turn for each creature you control. Activate only as a sorcery.\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:NonStackingAttachEffect:True\nDeckHas:Ability$Token\nOracle:Enchant land\\nWhen this Aura enters, create three 1/1 green and white Human Citizen creature tokens.\\nEnchanted land has \"{1}, {T}: Target creature gets +1/+1 until end of turn for each creature you control. Activate only as a sorcery.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Friendly Neighborhood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

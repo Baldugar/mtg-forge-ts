@@ -1,0 +1,23 @@
+{
+  "id": "citizen-s-arrest-corpus-m676",
+  "description": "M6 corpus — Citizen's Arrest; in-hand parse.",
+  "seed": 62170,
+  "cards": {
+    "Citizen's Arrest": "Name:Citizen's Arrest\nManaCost:1 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature or planeswalker an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl,Planeswalker.OppCtrl | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:When Citizen's Arrest enters, exile target creature or planeswalker an opponent controls until Citizen's Arrest leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Citizen's Arrest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

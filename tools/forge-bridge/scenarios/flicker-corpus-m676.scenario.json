@@ -1,0 +1,23 @@
+{
+  "id": "flicker-corpus-m676",
+  "description": "M6 corpus — Flicker; in-hand parse.",
+  "seed": 65507,
+  "cards": {
+    "Flicker": "Name:Flicker\nManaCost:1 W\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Permanent.!token | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target nontoken permanent | RememberTargets$ True | SubAbility$ DBReturn | SpellDescription$ Exile target nontoken permanent, then return it to the battlefield under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile target nontoken permanent, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flicker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

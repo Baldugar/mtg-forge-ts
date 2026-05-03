@@ -1,0 +1,23 @@
+{
+  "id": "geistpack-alpha-corpus-m676",
+  "description": "M6 corpus — Geistpack Alpha; in-hand parse.",
+  "seed": 66014,
+  "cards": {
+    "Geistpack Alpha": "Name:Geistpack Alpha\nManaCost:3 G\nTypes:Creature Wolf\nPT:5/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSeek | TriggerDescription$ When CARDNAME dies, seek a permanent card with mana value equal to the number of lands you control.\nSVar:TrigSeek:DB$ Seek | Type$ Card.Permanent+cmcEQX\nSVar:X:Count$Valid Land.YouCtrl\nSVar:NeedsToPlayVar:X GE4\nSVar:BuffedBy:Land\nOracle:Trample\\nWhen Geistpack Alpha dies, seek a permanent card with mana value equal to the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geistpack Alpha"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

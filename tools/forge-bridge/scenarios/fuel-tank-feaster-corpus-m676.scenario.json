@@ -1,0 +1,23 @@
+{
+  "id": "fuel-tank-feaster-corpus-m676",
+  "description": "M6 corpus — Fuel Tank Feaster; in-hand parse.",
+  "seed": 65812,
+  "cards": {
+    "Fuel Tank Feaster": "Name:Fuel Tank Feaster\nManaCost:1 G\nTypes:Creature Ooze Druid\nPT:1/3\nT:Mode$ Phase | Phase$ Main1 | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRandom | TriggerDescription$ At the beginning of your first main phase, a random creature card with the greatest mana value among creature cards in your hand perpetually gains \"This spell costs {1} less to cast.\"\nSVar:TrigRandom:DB$ ChooseCard | Defined$ You | Choices$ Creature.YouOwn+cmcEQX | ChoiceZone$ Hand | AtRandom$ True | Amount$ 1 | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ ChosenCard | staticAbilities$ ReduceCost | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | Description$ This spell costs {1} less to cast.\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:X:Count$ValidHand Creature.YouOwn$GreatestCardManaCost\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nOracle:At the beginning of your first main phase, a random creature card with the greatest mana value among creature cards in your hand perpetually gains \"This spell costs {1} less to cast.\"\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fuel Tank Feaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

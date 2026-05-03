@@ -1,0 +1,23 @@
+{
+  "id": "collective-voyage-corpus-m676",
+  "description": "M6 corpus — Collective Voyage; in-hand parse.",
+  "seed": 62374,
+  "cards": {
+    "Collective Voyage": "Name:Collective Voyage\nManaCost:G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | StartingWith$ You | RepeatSubAbility$ DBPay | SubAbility$ DBSearch | StackDescription$ SpellDescription | SpellDescription$ Join forces — Starting with you, each player may pay any amount of mana. Each player searches their library for up to X basic land cards, where X is the total amount of mana paid this way, puts them onto the battlefield tapped, then shuffles.\nSVar:DBPay:DB$ ChooseNumber | Defined$ Player.IsRemembered | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | SubAbility$ DBStore\nSVar:DBStore:DB$ StoreSVar | SVar$ JoinForcesAmount | Type$ CountSVar | Expression$ JoinForcesAmount/Plus.Y | UnlessCost$ Y | UnlessPayer$ Player.IsRemembered | UnlessSwitched$ True\nSVar:DBSearch:DB$ ChangeZone | DefinedPlayer$ Player | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ JoinForcesAmount | Origin$ Library | Destination$ Battlefield | Tapped$ True | SubAbility$ DBReset | StackDescription$ None\nSVar:DBReset:DB$ StoreSVar | SVar$ JoinForcesAmount | Type$ Number | Expression$ 0\nSVar:Y:Count$ChosenNumber\nSVar:JoinForcesAmount:Number$0\nAI:RemoveDeck:All\nOracle:Join forces — Starting with you, each player may pay any amount of mana. Each player searches their library for up to X basic land cards, where X is the total amount of mana paid this way, puts them onto the battlefield tapped, then shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Collective Voyage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "calamitous-tide-corpus-m676",
+  "description": "M6 corpus — Calamitous Tide; in-hand parse.",
+  "seed": 61598,
+  "cards": {
+    "Calamitous Tide": "Name:Calamitous Tide\nManaCost:4 U U\nTypes:Sorcery\nA:SP$ ChangeZone | TargetMin$ 0 | TargetMax$ 2 | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return up to two target creatures to their owners' hands.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Return up to two target creatures to their owners' hands. Draw two cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Calamitous Tide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "doubling-chant-corpus-m676",
+  "description": "M6 corpus — Doubling Chant; in-hand parse.",
+  "seed": 63851,
+  "cards": {
+    "Doubling Chant": "Name:Doubling Chant\nManaCost:5 G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatSubAbility$ DBSearch | RepeatCards$ Creature.YouCtrl | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ For each creature you control, you may search your library for a creature card with the same name as that creature. Put those cards onto the battlefield, then shuffle.\nSVar:DBSearch:DB$ ChooseCard | ChoiceZone$ Library | QuasiLibrarySearch$ You | Choices$ Card.YouOwn+!IsImprinted+sharesNameWith Remembered | ImprintChosen$ True | ChoiceTitle$ You may choose a card with the same name from your library\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Imprinted | Origin$ Library | Destination$ Battlefield | Searched$ True | Shuffle$ True | StackDescription$ None\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.YouCtrl\nOracle:For each creature you control, you may search your library for a creature card with the same name as that creature. Put those cards onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doubling Chant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "circle-of-the-land-druid-corpus-m676",
+  "description": "M6 corpus — Circle of the Land Druid; in-hand parse.",
+  "seed": 62158,
+  "cards": {
+    "Circle of the Land Druid": "Name:Circle of the Land Druid\nManaCost:1 G\nTypes:Creature Gnome Druid\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, you may mill four cards. (You may put the top four cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You | Optional$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ Natural Recovery — When CARDNAME dies, return target land card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Land.YouOwn | TgtPrompt$ Select target land card from your graveyard\nDeckHas:Ability$Mill|Graveyard\nOracle:When Circle of the Land Druid enters, you may mill four cards. (You may put the top four cards of your library into your graveyard.)\\nNatural Recovery — When Circle of the Land Druid dies, return target land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Circle of the Land Druid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-thirst-corpus-m676",
+  "description": "M6 corpus — Curse of Thirst; in-hand parse.",
+  "seed": 62941,
+  "cards": {
+    "Curse of Thirst": "Name:Curse of Thirst\nManaCost:4 B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of enchanted player's upkeep, CARDNAME deals damage to that player equal to the number of Curses attached to them.\nSVar:TrigDamage:DB$ DealDamage | Defined$ EnchantedPlayer | NumDmg$ X\nSVar:X:Count$Valid Curse.AttachedTo Player.EnchantedBy\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, Curse of Thirst deals damage to that player equal to the number of Curses attached to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Thirst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

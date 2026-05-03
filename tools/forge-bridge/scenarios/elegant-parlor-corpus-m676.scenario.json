@@ -1,0 +1,23 @@
+{
+  "id": "elegant-parlor-corpus-m676",
+  "description": "M6 corpus — Elegant Parlor; in-hand parse.",
+  "seed": 64393,
+  "cards": {
+    "Elegant Parlor": "Name:Elegant Parlor\nManaCost:no cost\nTypes:Land Mountain Plains\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nDeckHas:Ability$Surveil|Graveyard\nDeckHints:Ability$Graveyard\nOracle:({T}: Add {R} or {W}.)\\nElegant Parlor enters tapped.\\nWhen Elegant Parlor enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elegant Parlor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

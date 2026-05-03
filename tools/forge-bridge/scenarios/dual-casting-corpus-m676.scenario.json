@@ -1,0 +1,23 @@
+{
+  "id": "dual-casting-corpus-m676",
+  "description": "M6 corpus — Dual Casting; in-hand parse.",
+  "seed": 64120,
+  "cards": {
+    "Dual Casting": "Name:Dual Casting\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ ForkStick | Description$ Enchanted creature has \"{R}, {T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy.\"\nSVar:ForkStick:AB$ CopySpellAbility | Cost$ R T | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell you control. You may choose new targets for the copy.\nOracle:Enchant creature\\nEnchanted creature has \"{R}, {T}: Copy target instant or sorcery spell you control. You may choose new targets for the copy.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dual Casting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

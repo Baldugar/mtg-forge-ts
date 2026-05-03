@@ -1,0 +1,23 @@
+{
+  "id": "crackling-doom-corpus-m676",
+  "description": "M6 corpus — Crackling Doom; in-hand parse.",
+  "seed": 62680,
+  "cards": {
+    "Crackling Doom": "Name:Crackling Doom\nManaCost:R W B\nTypes:Instant\nA:SP$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2 | SubAbility$ DBRepeat | SpellDescription$ CARDNAME deals 2 damage to each opponent. Each opponent sacrifices a creature with the greatest power among creatures that player controls.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ DBChooseCard | SubAbility$ DBSac\nSVar:DBChooseCard:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Creature.greatestPowerControlledByRemembered | ChoiceTitle$ Choose a creature you control with the greatest power | Mandatory$ True | Reveal$ True | RememberChosen$ True\nSVar:DBSac:DB$ SacrificeAll | ValidCards$ Card.IsRemembered | SubAbility$ DBCleanup | StackDescription$ Each opponent sacrifices a creature with the greatest power among creatures they control.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsToPlay:Creature.OppCtrl\nOracle:Crackling Doom deals 2 damage to each opponent. Each opponent sacrifices a creature with the greatest power among creatures that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crackling Doom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

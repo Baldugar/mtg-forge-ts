@@ -1,0 +1,23 @@
+{
+  "id": "epic-experiment-corpus-m676",
+  "description": "M6 corpus — Epic Experiment; in-hand parse.",
+  "seed": 64674,
+  "cards": {
+    "Epic Experiment": "Name:Epic Experiment\nManaCost:X U R\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBPlay | SpellDescription$ Exile the top X cards of your library. You may cast instant and sorcery spells with mana value X or less from among them without paying their mana costs. Then put all cards exiled this way that weren't cast into your graveyard.\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered+YouOwn | ValidZone$ Exile | ValidSA$ Instant.cmcLEX,Sorcery.cmcLEX | Controller$ You | WithoutManaCost$ True | Optional$ True | Amount$ All | SubAbility$ DBGrave\nSVar:DBGrave:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Graveyard | ChangeType$ Card.IsRemembered+YouOwn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Exile the top X cards of your library. You may cast instant and sorcery spells with mana value X or less from among them without paying their mana costs. Then put all cards exiled this way that weren't cast into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Epic Experiment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

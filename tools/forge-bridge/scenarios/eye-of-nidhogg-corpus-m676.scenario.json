@@ -1,0 +1,23 @@
+{
+  "id": "eye-of-nidhogg-corpus-m676",
+  "description": "M6 corpus — Eye of Nidhogg; in-hand parse.",
+  "seed": 64934,
+  "cards": {
+    "Eye of Nidhogg": "Name:Eye of Nidhogg\nManaCost:2 B\nTypes:Legendary Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | SetColor$ Black | AddType$ Dragon | RemoveCreatureTypes$ True | SetPower$ 4 | SetToughness$ 2 | AddKeyword$ Flying & Deathtouch | Goad$ True | Description$ Enchanted creature is a black Dragon with base power and toughness 4/2, has flying and deathtouch, and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, return it to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ TriggeredNewCardLKICopy\nOracle:Enchant creature\\nEnchanted creature is a black Dragon with base power and toughness 4/2, has flying and deathtouch, and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\\nWhen Eye of Nidhogg is put into a graveyard from the battlefield, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eye of Nidhogg"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

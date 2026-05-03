@@ -1,0 +1,23 @@
+{
+  "id": "draconic-debut-corpus-m676",
+  "description": "M6 corpus — Draconic Debut; in-hand parse.",
+  "seed": 63874,
+  "cards": {
+    "Draconic Debut": "Name:Draconic Debut\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBEffect | SpellDescription$ CARDNAME deals X damage to any target.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ ReduceCost | ForgetOnCast$ Creature.Dragon+YouCtrl | Duration$ Permanent | SetChosenNumber$ X | SpellDescription$ The next Dragon creature spell you cast costs {X} less to cast.\nSVar:ReduceCost:Mode$ ReduceCost | Type$ Spell | Activator$ You | ValidCard$ Creature.Dragon | Amount$ Count$ChosenNumber | Description$ The next Dragon creature spell you cast costs {X} less to cast.\nSVar:X:Count$xPaid\nDeckNeeds:Type$Dragon\nOracle:Draconic Debut deals X damage to any target.\\nThe next Dragon creature spell you cast costs {X} less to cast.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draconic Debut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

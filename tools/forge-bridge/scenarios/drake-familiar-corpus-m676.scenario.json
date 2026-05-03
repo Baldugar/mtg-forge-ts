@@ -1,0 +1,23 @@
+{
+  "id": "drake-familiar-corpus-m676",
+  "description": "M6 corpus — Drake Familiar; in-hand parse.",
+  "seed": 63951,
+  "cards": {
+    "Drake Familiar": "Name:Drake Familiar\nManaCost:1 U\nTypes:Creature Drake\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, sacrifice it unless you return an enchantment to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | ChangeType$ Enchantment | RememberChanged$ True | SubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | Defined$ Self | SubAbility$ DBCleanup | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nSVar:NeedsToPlay:Enchantment\nOracle:Flying\\nWhen Drake Familiar enters, sacrifice it unless you return an enchantment to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drake Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

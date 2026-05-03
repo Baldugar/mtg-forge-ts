@@ -1,0 +1,23 @@
+{
+  "id": "coalhauler-swine-corpus-m676",
+  "description": "M6 corpus — Coalhauler Swine; in-hand parse.",
+  "seed": 62315,
+  "cards": {
+    "Coalhauler Swine": "Name:Coalhauler Swine\nManaCost:4 R R\nTypes:Creature Boar Beast\nPT:4/4\nT:Mode$ DamageDoneOnce | Execute$ TrigDamage | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, it deals that much damage to each player.\nSVar:TrigDamage:DB$ DealDamage | NumDmg$ X | Defined$ Player\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Whenever Coalhauler Swine is dealt damage, it deals that much damage to each player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coalhauler Swine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

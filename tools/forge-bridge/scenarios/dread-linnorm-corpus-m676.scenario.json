@@ -1,0 +1,23 @@
+{
+  "id": "dread-linnorm-corpus-m676",
+  "description": "M6 corpus — Dread Linnorm; in-hand parse.",
+  "seed": 63979,
+  "cards": {
+    "Dread Linnorm": "Name:Dread Linnorm\nManaCost:6 G\nTypes:Creature Snake Dragon\nPT:7/6\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE3 | Description$ CARDNAME can't be blocked by creatures with power 3 or less.\nAlternateMode:Adventure\nOracle:Dread Linnorm can't be blocked by creatures with power 3 or less.\n\nALTERNATE\n\nName:Scale Deflection\nManaCost:3 G\nTypes:Instant Adventure\nA:SP$ PutCounter | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 2 | SubAbility$ DBUntap | SpellDescription$ Put two +1/+1 counters on target creature and untap it.\nSVar:DBUntap:DB$ Untap | Defined$ Targeted | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ Hexproof\nDeckHas:Ability$Counters\nOracle:Put two +1/+1 counters on target creature and untap it. It gains hexproof until the end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dread Linnorm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

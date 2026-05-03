@@ -1,0 +1,23 @@
+{
+  "id": "callous-bloodmage-corpus-m676",
+  "description": "M6 corpus — Callous Bloodmage; in-hand parse.",
+  "seed": 61638,
+  "cards": {
+    "Callous Bloodmage": "Name:Callous Bloodmage\nManaCost:2 B\nTypes:Creature Vampire Warlock\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBDraw,DBExileYard\nSVar:DBToken:DB$ Token | TokenScript$ bg_1_1_pest_lifegain | TokenOwner$ You | SpellDescription$ Create a 1/1 black and green Pest creature token with \"When this creature dies, you gain 1 life.\"\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife | SpellDescription$ You draw a card and you lose 1 life.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:DBExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card | SpellDescription$ Exile target player's graveyard.\nDeckHas:Ability$Token|LifeGain\nOracle:When Callous Bloodmage enters, choose one —\\n• Create a 1/1 black and green Pest creature token with \"When this creature dies, you gain 1 life.\"\\n• You draw a card and you lose 1 life.\\n• Exile target player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Callous Bloodmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

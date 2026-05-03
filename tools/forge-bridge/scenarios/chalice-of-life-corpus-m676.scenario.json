@@ -1,0 +1,23 @@
+{
+  "id": "chalice-of-life-corpus-m676",
+  "description": "M6 corpus — Chalice of Life; in-hand parse.",
+  "seed": 61930,
+  "cards": {
+    "Chalice of Life": "Name:Chalice of Life\nManaCost:3\nTypes:Artifact\nA:AB$ GainLife | Cost$ T | LifeAmount$ 1 | Defined$ You | SubAbility$ DBTransform | SpellDescription$ You gain 1 life. Then if you have at least 10 more life than your starting life total, transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | ConditionCheckSVar$ X | ConditionSVarCompare$ GEY\nSVar:X:Count$YourLifeTotal\nSVar:Y:Count$YourStartingLife/Plus.10\nAlternateMode:DoubleFaced\nOracle:{T}: You gain 1 life. Then if you have at least 10 life more than your starting life total, transform Chalice of Life.\n\nALTERNATE\n\nName:Chalice of Death\nManaCost:no cost\nTypes:Artifact\nA:AB$ LoseLife | Cost$ T | ValidTgts$ Player | TgtPrompt$ Target a player to lose 5 life | LifeAmount$ 5 | SpellDescription$ Target player loses 5 life.\nOracle:{T}: Target player loses 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chalice of Life"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

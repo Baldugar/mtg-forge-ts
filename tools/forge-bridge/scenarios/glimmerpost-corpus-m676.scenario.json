@@ -1,0 +1,23 @@
+{
+  "id": "glimmerpost-corpus-m676",
+  "description": "M6 corpus — Glimmerpost; in-hand parse.",
+  "seed": 66293,
+  "cards": {
+    "Glimmerpost": "Name:Glimmerpost\nManaCost:no cost\nTypes:Land Locus\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life for each Locus on the battlefield.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Locus\nOracle:When Glimmerpost enters, you gain 1 life for each Locus on the battlefield.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimmerpost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

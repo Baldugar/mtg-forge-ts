@@ -1,0 +1,23 @@
+{
+  "id": "council-of-echoes-corpus-m676",
+  "description": "M6 corpus — Council of Echoes; in-hand parse.",
+  "seed": 62628,
+  "cards": {
+    "Council of Echoes": "Name:Council of Echoes\nManaCost:4 U U\nTypes:Creature Spirit Advisor\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | CheckSVar$ X | SVarCompare$ GE4 | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Descend 4 — When CARDNAME enters, if there are four or more permanent cards in your graveyard return up to one target nonland permanent other than CARDNAME to its owner's hand.\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.nonLand+Other | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Choose up to one other target nonland permanent\nDeckHints:Ability$Graveyard|Mill\nOracle:Flying\\nDescend 4 — When Council of Echoes enters, if there are four or more permanent cards in your graveyard, return up to one target nonland permanent other than Council of Echoes to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Council of Echoes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

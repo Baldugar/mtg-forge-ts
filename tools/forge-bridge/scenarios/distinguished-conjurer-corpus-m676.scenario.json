@@ -1,0 +1,23 @@
+{
+  "id": "distinguished-conjurer-corpus-m676",
+  "description": "M6 corpus — Distinguished Conjurer; in-hand parse.",
+  "seed": 63734,
+  "cards": {
+    "Distinguished Conjurer": "Name:Distinguished Conjurer\nManaCost:1 W\nTypes:Creature Human Wizard\nPT:1/2\nT:Mode$ ChangesZone | ValidCard$ Creature.Other+YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 1\nA:AB$ ChangeZone | Cost$ 4 W T | ValidTgts$ Creature.Other+YouCtrl | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select another target creature you control | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile another target creature you control, then return it to the battlefield under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Creature\nDeckHas:Ability$LifeGain\nOracle:Whenever another creature you control enters, you gain 1 life.\\n{4}{W}, {T}: Exile another target creature you control, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Distinguished Conjurer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

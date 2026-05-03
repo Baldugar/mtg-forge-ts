@@ -1,0 +1,23 @@
+{
+  "id": "esperzoa-corpus-m676",
+  "description": "M6 corpus — Esperzoa; in-hand parse.",
+  "seed": 64736,
+  "cards": {
+    "Esperzoa": "Name:Esperzoa\nManaCost:2 U\nTypes:Artifact Creature Jellyfish\nPT:4/3\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ At the beginning of your upkeep, return an artifact you control to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ChangeType$ Artifact.YouCtrl | ChangeNum$ 1 | Origin$ Battlefield | Destination$ Hand | Mandatory$ True | Hidden$ True\nAI:RemoveDeck:Random\nOracle:Flying\\nAt the beginning of your upkeep, return an artifact you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esperzoa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

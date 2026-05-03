@@ -1,0 +1,23 @@
+{
+  "id": "ghostly-flicker-corpus-m676",
+  "description": "M6 corpus — Ghostly Flicker; in-hand parse.",
+  "seed": 66124,
+  "cards": {
+    "Ghostly Flicker": "Name:Ghostly Flicker\nManaCost:2 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl,Land.YouCtrl | TargetMin$ 2 | TargetMax$ 2 | TgtPrompt$ Select 2 target artifacts, creatures, or lands that you control | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile two target artifacts, creatures and/or lands you control, then return those cards to the battlefield under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile two target artifacts, creatures, and/or lands you control, then return those cards to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghostly Flicker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

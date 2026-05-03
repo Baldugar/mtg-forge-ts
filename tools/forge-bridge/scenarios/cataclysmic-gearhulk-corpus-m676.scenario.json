@@ -1,0 +1,23 @@
+{
+  "id": "cataclysmic-gearhulk-corpus-m676",
+  "description": "M6 corpus — Cataclysmic Gearhulk; in-hand parse.",
+  "seed": 61794,
+  "cards": {
+    "Cataclysmic Gearhulk": "Name:Cataclysmic Gearhulk\nManaCost:3 W W\nTypes:Artifact Creature Construct\nPT:4/5\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, each player chooses an artifact, a creature, an enchantment, and a planeswalker from among the nonland permanents they control, then sacrifices the rest.\nSVar:TrigChoose:DB$ ChooseCard | Defined$ Player | Choices$ Permanent.nonLand | ChooseEach$ Artifact & Creature & Enchantment & Planeswalker | ControlledByPlayer$ Chooser | Reveal$ True | Mandatory$ True | SubAbility$ SacAllOthers\nSVar:SacAllOthers:DB$ SacrificeAll | ValidCards$ Permanent.nonLand+nonChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:All\nDeckHas:Ability$Sacrifice\nOracle:Vigilance\\nWhen Cataclysmic Gearhulk enters, each player chooses an artifact, a creature, an enchantment, and a planeswalker from among the nonland permanents they control, then sacrifices the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cataclysmic Gearhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

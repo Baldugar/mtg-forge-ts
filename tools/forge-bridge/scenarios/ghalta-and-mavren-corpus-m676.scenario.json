@@ -1,0 +1,25 @@
+{
+  "id": "ghalta-and-mavren-corpus-m676",
+  "description": "M6 corpus — Ghalta and Mavren; ETB-on-bf.",
+  "seed": 66083,
+  "cards": {
+    "Ghalta and Mavren": "Name:Ghalta and Mavren\nManaCost:3 G G W W\nTypes:Legendary Creature Dinosaur Vampire\nPT:12/12\nK:Trample\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDino,DBVampire\nSVar:DBDino:DB$ Token | TokenScript$ g_x_x_dinosaur_trample | TokenPower$ X | TokenToughness$ X | TokenTapped$ True | TokenAttacking$ True | TokenOwner$ You | SpellDescription$ Create a tapped and attacking X/X green Dinosaur creature token with trample, where X is the greatest power among other attacking creatures.\nSVar:DBVampire:DB$ Token | TokenAmount$ Y | TokenScript$ w_1_1_vampire_lifelink | TokenOwner$ You | SpellDescription$ Create X 1/1 white Vampire creature tokens with lifelink, where X is the number of other attacking creatures.\nSVar:X:Count$Valid Creature.YouCtrl+Other+attacking$GreatestCardPower\nSVar:Y:Count$Valid Creature.attacking+Other\nDeckHas:Ability$LifeGain|Token\nOracle:Trample\\nWhenever you attack, choose one —\\n• Create a tapped and attacking X/X green Dinosaur creature token with trample, where X is the greatest power among other attacking creatures.\\n• Create X 1/1 white Vampire creature tokens with lifelink, where X is the number of other attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ghalta and Mavren"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

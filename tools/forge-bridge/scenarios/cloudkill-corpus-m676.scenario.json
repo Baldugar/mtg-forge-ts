@@ -1,0 +1,23 @@
+{
+  "id": "cloudkill-corpus-m676",
+  "description": "M6 corpus — Cloudkill; in-hand parse.",
+  "seed": 62300,
+  "cards": {
+    "Cloudkill": "Name:Cloudkill\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature | NumAtt$ -X | NumDef$ -X | SpellDescription$ All creatures get -X/-X until end of turn, where X is the greatest mana value of a commander you own on the battlefield or in the command zone.\nSVar:X:Count$ValidBattlefield,Command Card.IsCommander+YouOwn$GreatestCardManaCost\nAI:RemoveDeck:NonCommander\nOracle:All creatures get -X/-X until end of turn, where X is the greatest mana value of a commander you own on the battlefield or in the command zone.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudkill"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

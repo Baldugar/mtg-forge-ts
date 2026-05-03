@@ -1,0 +1,23 @@
+{
+  "id": "cactuar-corpus-m676",
+  "description": "M6 corpus — Cactuar; in-hand parse.",
+  "seed": 61585,
+  "cards": {
+    "Cactuar": "Name:Cactuar\nManaCost:G\nTypes:Creature Plant\nPT:3/3\nK:Trample\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.Self+!ThisTurnEntered | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, if this creature didn't enter the battlefield this turn, return it to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nK:Trample\nOracle:At the beginning of your end step, if this creature didn't enter the battlefield this turn, return it to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cactuar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

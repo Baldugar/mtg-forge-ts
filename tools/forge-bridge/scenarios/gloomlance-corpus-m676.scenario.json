@@ -1,0 +1,23 @@
+{
+  "id": "gloomlance-corpus-m676",
+  "description": "M6 corpus — Gloomlance; in-hand parse.",
+  "seed": 66333,
+  "cards": {
+    "Gloomlance": "Name:Gloomlance\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature | AlwaysRemember$ True | RememberLKI$ True | SubAbility$ DBDiscard | SpellDescription$ Destroy target creature. If that creature was green or white, its controller discards a card.\nSVar:DBDiscard:DB$ Discard | Defined$ RememberedController | NumCards$ 1 | Mode$ TgtChoose | ConditionDefined$ RememberedLKI | ConditionPresent$ Card.Green,Card.White | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target creature. If that creature was green or white, its controller discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gloomlance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

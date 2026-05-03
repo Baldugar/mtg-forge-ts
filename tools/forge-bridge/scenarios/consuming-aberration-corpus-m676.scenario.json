@@ -1,0 +1,25 @@
+{
+  "id": "consuming-aberration-corpus-m676",
+  "description": "M6 corpus — Consuming Aberration; ETB-on-bf.",
+  "seed": 62514,
+  "cards": {
+    "Consuming Aberration": "Name:Consuming Aberration\nManaCost:3 U B\nTypes:Creature Horror\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ ConsumingPT | SetToughness$ ConsumingPT | Description$ CARDNAME's power and toughness are each equal to the number of cards in your opponents' graveyards.\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | Execute$ Grind | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, each opponent reveals cards from the top of their library until they reveal a land card, then puts those cards into their graveyard.\nSVar:Grind:DB$ DigUntil | Defined$ Player.Opponent | Amount$ 1 | Valid$ Land | ValidDescription$ land | RevealedDestination$ Graveyard\nSVar:ConsumingPT:Count$ValidGraveyard Card.OppOwn\nSVar:NeedsToPlayVar:ConsumingPT GT 0\nSVar:BuffedBy:Card\nOracle:Consuming Aberration's power and toughness are each equal to the number of cards in your opponents' graveyards.\\nWhenever you cast a spell, each opponent reveals cards from the top of their library until they reveal a land card, then puts those cards into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Consuming Aberration"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

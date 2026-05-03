@@ -1,0 +1,23 @@
+{
+  "id": "fire-rim-form-corpus-m676",
+  "description": "M6 corpus — Fire-Rim Form; in-hand parse.",
+  "seed": 65354,
+  "cards": {
+    "Fire-Rim Form": "Name:Fire-Rim Form\nManaCost:1 R\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, enchanted creature gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Enchanted | KW$ First Strike\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | Description$ Enchanted creature gets +2/+0.\nSVar:PlayMain1:TRUE\nOracle:Flash\\nEnchant creature\\nWhen this Aura enters, enchanted creature gains first strike until end of turn.\\nEnchanted creature gets +2/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire-Rim Form"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

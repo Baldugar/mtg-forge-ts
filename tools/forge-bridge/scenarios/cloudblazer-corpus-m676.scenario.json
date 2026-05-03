@@ -1,0 +1,23 @@
+{
+  "id": "cloudblazer-corpus-m676",
+  "description": "M6 corpus — Cloudblazer; in-hand parse.",
+  "seed": 62292,
+  "cards": {
+    "Cloudblazer": "Name:Cloudblazer\nManaCost:3 W U\nTypes:Creature Human Scout\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life and draw two cards.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Cloudblazer enters, you gain 2 life and draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudblazer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

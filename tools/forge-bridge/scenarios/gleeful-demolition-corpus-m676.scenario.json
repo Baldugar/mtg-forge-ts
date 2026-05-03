@@ -1,0 +1,23 @@
+{
+  "id": "gleeful-demolition-corpus-m676",
+  "description": "M6 corpus — Gleeful Demolition; in-hand parse.",
+  "seed": 66275,
+  "cards": {
+    "Gleeful Demolition": "Name:Gleeful Demolition\nManaCost:R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact | SubAbility$ DBToken | RememberLKI$ True | AlwaysRemember$ True | SpellDescription$ Destroy target artifact. If you controlled that artifact, creature three 1/1 red Phyrexian Goblin creature tokens.\nSVar:DBToken:DB$ Token | TokenAmount$ 3 | TokenScript$ r_1_1_phyrexian_goblin | TokenOwner$ You | ConditionDefined$ RememberedLKI | ConditionPresent$ Card.YouCtrl | SubAbility$ DBCleanup | SpellDescription$ If you controlled that artifact, creature three 1/1 red Phyrexian Goblin creature tokens.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Type$Goblin|Phyrexian & Ability$Token\nOracle:Destroy target artifact. If you controlled that artifact, creature three 1/1 red Phyrexian Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gleeful Demolition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

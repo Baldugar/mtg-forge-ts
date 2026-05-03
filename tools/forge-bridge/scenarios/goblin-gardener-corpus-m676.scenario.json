@@ -1,0 +1,23 @@
+{
+  "id": "goblin-gardener-corpus-m676",
+  "description": "M6 corpus — Goblin Gardener; in-hand parse.",
+  "seed": 66424,
+  "cards": {
+    "Goblin Gardener": "Name:Goblin Gardener\nManaCost:3 R\nTypes:Creature Goblin\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME dies, destroy target land.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land | TgtPrompt$ Select target land\nOracle:When Goblin Gardener dies, destroy target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Gardener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

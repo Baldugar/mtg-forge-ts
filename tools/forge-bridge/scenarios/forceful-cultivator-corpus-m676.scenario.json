@@ -1,0 +1,23 @@
+{
+  "id": "forceful-cultivator-corpus-m676",
+  "description": "M6 corpus — Forceful Cultivator; in-hand parse.",
+  "seed": 65632,
+  "cards": {
+    "Forceful Cultivator": "Name:Forceful Cultivator\nManaCost:2 G G\nTypes:Creature Snake Shaman\nPT:2/3\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 2 | EffectZone$ All | IsPresent$ Land.YouOwn | PresentZone$ Hand | PresentCompare$ EQ0 | Description$ This spell costs {2} less to cast if there are no land cards in your hand.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land\nOracle:This spell costs {2} less to cast if there are no land cards in your hand.\\nWhen Forceful Cultivator enters, search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forceful Cultivator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

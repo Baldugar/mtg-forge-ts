@@ -1,0 +1,23 @@
+{
+  "id": "chronicle-of-victory-corpus-m676",
+  "description": "M6 corpus — Chronicle of Victory; in-hand parse.",
+  "seed": 62119,
+  "cards": {
+    "Chronicle of Victory": "Name:Chronicle of Victory\nManaCost:6\nTypes:Legendary Artifact\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Creature.ChosenType+YouCtrl | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ First Strike & Trample | Description$ Creatures you control of the chosen type get +2/+2 and have first strike and trample.\nT:Mode$ SpellCast | ValidCard$ Card.ChosenType | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever you cast a spell of the chosen type, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:PlayMain1:TRUE\nOracle:As Chronicle of Victory enters, choose a creature type.\\nCreatures you control of the chosen type get +2/+2 and have first strike and trample.\\nWhenever you cast a spell of the chosen type, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chronicle of Victory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

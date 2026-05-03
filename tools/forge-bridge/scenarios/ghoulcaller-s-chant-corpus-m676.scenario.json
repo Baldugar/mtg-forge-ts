@@ -1,0 +1,23 @@
+{
+  "id": "ghoulcaller-s-chant-corpus-m676",
+  "description": "M6 corpus — Ghoulcaller's Chant; in-hand parse.",
+  "seed": 66134,
+  "cards": {
+    "Ghoulcaller's Chant": "Name:Ghoulcaller's Chant\nManaCost:B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBChangeZone1,DBChangeZone2\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | TgtPrompt$ Select target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return target creature card from your graveyard to your hand.\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Mandatory$ True | TgtPrompt$ Select two target Zombie cards in your graveyard | ValidTgts$ Zombie.YouOwn | TargetMin$ 2 | TargetMax$ 2 | SpellDescription$ Return two target Zombie cards from your graveyard to your hand.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Return target creature card from your graveyard to your hand.\\n• Return two target Zombie cards from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghoulcaller's Chant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glamer-gifter-corpus-m676",
+  "description": "M6 corpus — Glamer Gifter; in-hand parse.",
+  "seed": 66255,
+  "cards": {
+    "Glamer Gifter": "Name:Glamer Gifter\nManaCost:1 U\nTypes:Creature Faerie Wizard\nPT:1/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimate | TriggerDescription$ When this creature enters, choose up to one other target creature. Until end of turn, that creature has base power and toughness 4/4 and gains all creature types.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target creature | Power$ 4 | Toughness$ 4 | AddAllCreatureTypes$ True\nOracle:Flash\\nFlying\\nWhen this creature enters, choose up to one other target creature. Until end of turn, that creature has base power and toughness 4/4 and gains all creature types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glamer Gifter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

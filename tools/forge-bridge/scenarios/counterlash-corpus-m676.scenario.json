@@ -1,0 +1,23 @@
+{
+  "id": "counterlash-corpus-m676",
+  "description": "M6 corpus — Counterlash; in-hand parse.",
+  "seed": 62635,
+  "cards": {
+    "Counterlash": "Name:Counterlash\nManaCost:4 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBPlay | SpellDescription$ Counter target spell. You may cast a spell that shares a card type with it from your hand without paying its mana cost.\nSVar:DBPlay:DB$ Play | Valid$ Targeted.sharesCardTypeWith+YouCtrl | ValidSA$ Spell | ValidZone$ Hand | WithoutManaCost$ True | Optional$ True\nOracle:Counter target spell. You may cast a spell that shares a card type with it from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Counterlash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

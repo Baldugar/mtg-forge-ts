@@ -1,0 +1,23 @@
+{
+  "id": "exsanguinate-corpus-m676",
+  "description": "M6 corpus — Exsanguinate; in-hand parse.",
+  "seed": 64909,
+  "cards": {
+    "Exsanguinate": "Name:Exsanguinate\nManaCost:X B B\nTypes:Sorcery\nA:SP$ LoseLife | Defined$ Player.Opponent | LifeAmount$ X | SubAbility$ DBGainLife | SpellDescription$ Each opponent loses X life. You gain life equal to the life lost this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost | StackDescription$ You gain life equal to the life lost this way.\nSVar:X:Count$xPaid\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nOracle:Each opponent loses X life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exsanguinate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

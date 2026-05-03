@@ -1,0 +1,23 @@
+{
+  "id": "day-s-undoing-corpus-m676",
+  "description": "M6 corpus — Day's Undoing; in-hand parse.",
+  "seed": 63196,
+  "cards": {
+    "Day's Undoing": "Name:Day's Undoing\nManaCost:2 U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBDraw | UseAllOriginZones$ True | SpellDescription$ Each player shuffles their hand and graveyard into their library, then draws seven cards. If it's your turn, end the turn. (Exile all spells and abilities from the stack, including this card. Discard down to your maximum hand size. Damage wears off, and \"this turn\" and \"until end of turn\" effects end.)\nSVar:DBDraw:DB$ Draw | NumCards$ 7 | Defined$ Player | SubAbility$ DBEnd\nSVar:DBEnd:DB$ EndTurn | ConditionPlayerTurn$ True\nAI:RemoveDeck:All\nOracle:Each player shuffles their hand and graveyard into their library, then draws seven cards. If it's your turn, end the turn. (Exile all spells and abilities from the stack, including this card. Discard down to your maximum hand size. Damage wears off, and \"this turn\" and \"until end of turn\" effects end.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Day's Undoing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

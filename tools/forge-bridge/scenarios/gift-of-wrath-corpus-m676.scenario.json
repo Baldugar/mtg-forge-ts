@@ -1,0 +1,23 @@
+{
+  "id": "gift-of-wrath-corpus-m676",
+  "description": "M6 corpus — Gift of Wrath; in-hand parse.",
+  "seed": 66200,
+  "cards": {
+    "Gift of Wrath": "Name:Gift of Wrath\nManaCost:3 R\nTypes:Enchantment Aura\nK:Enchant:Artifact,Creature:artifact or creature\nSVar:AttachAITgts:Creature,Vehicle\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Menace | Description$ As long as enchanted permanent is a creature, it gets +2/+2 and has menace. (It can't be blocked except by two or more creatures.)\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME leaves the battlefield, create a 2/2 red Spirit creature token with menace.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_spirit_menace\nDeckHas:Ability$Token & Type$Spirit & Keyword$Menace\nOracle:Enchant artifact or creature\\nAs long as enchanted permanent is a creature, it gets +2/+2 and has menace. (It can't be blocked except by two or more creatures.)\\nWhen Gift of Wrath leaves the battlefield, create a 2/2 red Spirit creature token with menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gift of Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

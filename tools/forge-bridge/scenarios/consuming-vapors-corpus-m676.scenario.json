@@ -1,0 +1,23 @@
+{
+  "id": "consuming-vapors-corpus-m676",
+  "description": "M6 corpus — Consuming Vapors; in-hand parse.",
+  "seed": 62519,
+  "cards": {
+    "Consuming Vapors": "Name:Consuming Vapors\nManaCost:3 B\nTypes:Sorcery\nK:Rebound\nA:SP$ Sacrifice | SacValid$ Creature | ValidTgts$ Player | Amount$ 1 | RememberSacrificed$ True | SubAbility$ DBGainLife | SpellDescription$ Target player sacrifices a creature. You gain life equal to that creature's toughness.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nOracle:Target player sacrifices a creature. You gain life equal to that creature's toughness.\\nRebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consuming Vapors"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

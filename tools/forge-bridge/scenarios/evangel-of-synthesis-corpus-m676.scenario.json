@@ -1,0 +1,23 @@
+{
+  "id": "evangel-of-synthesis-corpus-m676",
+  "description": "M6 corpus — Evangel of Synthesis; in-hand parse.",
+  "seed": 64805,
+  "cards": {
+    "Evangel of Synthesis": "Name:Evangel of Synthesis\nManaCost:U B\nTypes:Creature Phyrexian Human Cleric\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nS:Mode$ Continuous | Affected$ Card.Self | CheckSVar$ X | SVarCompare$ GE2 | AddPower$ 1 | AddKeyword$ Menace | Description$ As long as you've drawn two or more cards this turn, CARDNAME gets +1/+0 and has menace.\nSVar:X:Count$YouDrewThisTurn\nDeckHas:Ability$Discard & Keyword$Menace\nOracle:When Evangel of Synthesis enters, draw a card, then discard a card.\\nAs long as you've drawn two or more cards this turn, Evangel of Synthesis gets +1/+0 and has menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evangel of Synthesis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

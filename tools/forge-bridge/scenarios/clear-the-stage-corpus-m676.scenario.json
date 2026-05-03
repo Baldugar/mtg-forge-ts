@@ -1,0 +1,23 @@
+{
+  "id": "clear-the-stage-corpus-m676",
+  "description": "M6 corpus — Clear the Stage; in-hand parse.",
+  "seed": 62219,
+  "cards": {
+    "Clear the Stage": "Name:Clear the Stage\nManaCost:4 B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True | SubAbility$ DBChangeZone | SpellDescription$ Target creature gets -3/-3 until end of turn. If you control a creature with power 4 or greater, you may return up to one target creature card from your graveyard to your hand.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | TargetMin$ 0 | TargetMax$ 1 | ConditionPresent$ Creature.YouCtrl+powerGE4\nOracle:Target creature gets -3/-3 until end of turn. If you control a creature with power 4 or greater, you may return up to one target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clear the Stage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dominator-drone-corpus-m676",
+  "description": "M6 corpus — Dominator Drone; in-hand parse.",
+  "seed": 63810,
+  "cards": {
+    "Dominator Drone": "Name:Dominator Drone\nManaCost:2 B\nTypes:Creature Eldrazi Drone\nPT:3/2\nK:Devoid\nK:Ingest\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | IsPresent$ Creature.Colorless+Other+YouCtrl | TriggerDescription$ When CARDNAME enters, if you control another colorless creature, each opponent loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2\nDeckHints:Type$Processor & Color$Colorless & Keyword$Devoid\nOracle:Devoid (This card has no color.)\\nIngest (Whenever this creature deals combat damage to a player, that player exiles the top card of their library.)\\nWhen Dominator Drone enters, if you control another colorless creature, each opponent loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dominator Drone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

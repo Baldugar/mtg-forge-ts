@@ -1,0 +1,23 @@
+{
+  "id": "caretaker-s-talent-corpus-m676",
+  "description": "M6 corpus — Caretaker's Talent; in-hand parse.",
+  "seed": 61729,
+  "cards": {
+    "Caretaker's Talent": "Name:Caretaker's Talent\nManaCost:2 W\nTypes:Enchantment Class\nT:Mode$ ChangesZoneAll | ValidCards$ Permanent.token+YouCtrl | Destination$ Battlefield | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigDraw | TriggerDescription$ Whenever one or more tokens you control enter, draw a card. This ability triggers only once each turn.\nSVar:TrigDraw:DB$ Draw\nK:Class:2:W:AddTrigger$ TriggerClassLevel\nSVar:TriggerClassLevel:Mode$ ClassLevelGained | ClassLevel$ 2 | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ When this Class becomes level 2, create a token that's a copy of target token you control.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Permanent.token+YouCtrl | TgtPrompt$ Select target token you control\nK:Class:3:3 W:AddStaticAbility$ SBuff\nSVar:SBuff:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Creature tokens you control get +2/+2.\nDeckNeeds:Ability$Token\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhenever one or more tokens you control enter, draw a card. This ability triggers only once each turn.\\n{W}: Level 2\\nWhen this Class becomes level 2, create a token that's a copy of target token you control.\\n{3}{W}: Level 3\\nCreature tokens you control get +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caretaker's Talent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

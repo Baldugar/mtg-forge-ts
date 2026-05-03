@@ -1,0 +1,23 @@
+{
+  "id": "death-s-head-buzzard-corpus-m676",
+  "description": "M6 corpus — Death's-Head Buzzard; in-hand parse.",
+  "seed": 63294,
+  "cards": {
+    "Death's-Head Buzzard": "Name:Death's-Head Buzzard\nManaCost:1 B B\nTypes:Creature Bird\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME dies, all creatures get -1/-1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature | NumAtt$ -1 | NumDef$ -1\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Death's-Head Buzzard dies, all creatures get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death's-Head Buzzard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "echoing-calm-corpus-m676",
+  "description": "M6 corpus — Echoing Calm; in-hand parse.",
+  "seed": 64295,
+  "cards": {
+    "Echoing Calm": "Name:Echoing Calm\nManaCost:1 W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Enchantment | SubAbility$ DBDestroyAll | SpellDescription$ Destroy target enchantment and all other enchantments with the same name as that enchantment.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ TargetedCard.Self,Enchantment.NotDefinedTargeted+sharesNameWith Targeted\nAI:RemoveDeck:All\nOracle:Destroy target enchantment and all other enchantments with the same name as that enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Echoing Calm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

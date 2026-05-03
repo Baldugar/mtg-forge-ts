@@ -1,0 +1,23 @@
+{
+  "id": "deep-wood-corpus-m676",
+  "description": "M6 corpus — Deep Wood; in-hand parse.",
+  "seed": 63336,
+  "cards": {
+    "Deep Wood": "Name:Deep Wood\nManaCost:1 G\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent | AILogic$ Fog | CheckSVar$ X | ActivationPhases$ Declare Attackers | SpellDescription$ Cast this spell only during the declare attackers step and only if you've been attacked this step. Prevent all damage that would be dealt to you this turn by attacking creatures.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ You | ValidSource$ Creature.attacking | Description$ Prevent all damage that would be dealt to you this turn by attacking creatures.\nSVar:X:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nPrevent all damage that would be dealt to you this turn by attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deep Wood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

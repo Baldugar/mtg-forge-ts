@@ -1,0 +1,23 @@
+{
+  "id": "eon-frolicker-corpus-m676",
+  "description": "M6 corpus — Eon Frolicker; in-hand parse.",
+  "seed": 64664,
+  "cards": {
+    "Eon Frolicker": "Name:Eon Frolicker\nManaCost:2 U U\nTypes:Creature Elemental Otter\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastByYou+Self | Destination$ Battlefield | Execute$ DBAddTurn | TriggerDescription$ When CARDNAME enters, if you cast it, target opponent takes an extra turn after this one. Until your next turn, you and planeswalkers you control gain protection from that player. (You and planeswalkers you control can't be targeted, dealt damage, or enchanted by anything controlled by that player.)\nSVar:DBAddTurn:DB$ AddTurn | ValidTgts$ Opponent | NumTurns$ 1 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ You | KW$ Protection:Player.PlayerUID_ChosenPlayerUID:ChosenPlayerName | DefinedKW$ TargetedPlayer | Duration$ UntilYourNextTurn | SubAbility$ DBPumpWalkers\nSVar:DBPumpWalkers:DB$ Pump | Defined$ Valid Planeswalker.YouCtrl | KW$ Protection:Player.PlayerUID_ChosenPlayerUID:ChosenPlayerName | DefinedKW$ TargetedPlayer | Duration$ UntilYourNextTurn\nOracle:Flying\\nWhen Eon Frolicker enters, if you cast it, target opponent takes an extra turn after this one. Until your next turn, you and planeswalkers you control gain protection from that player. (You and planeswalkers you control can't be targeted, dealt damage, or enchanted by anything controlled by that player.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eon Frolicker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

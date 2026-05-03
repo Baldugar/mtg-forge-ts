@@ -1,0 +1,23 @@
+{
+  "id": "fend-off-corpus-m676",
+  "description": "M6 corpus — Fend Off; in-hand parse.",
+  "seed": 65205,
+  "cards": {
+    "Fend Off": "Name:Fend Off\nManaCost:1 W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Creature | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | SpellDescription$ Prevent all combat damage that would be dealt by target creature this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by target creature this turn.\nK:Cycling:2\nAI:RemoveDeck:All\nOracle:Prevent all combat damage that would be dealt by target creature this turn.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fend Off"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "consuming-corruption-corpus-m676",
+  "description": "M6 corpus — Consuming Corruption; in-hand parse.",
+  "seed": 62516,
+  "cards": {
+    "Consuming Corruption": "Name:Consuming Corruption\nManaCost:B B\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X | SubAbility$ DBGainLife | SpellDescription$ CARDNAME deals X damage to target creature or planeswalker and you gain X life, where X is the number of Swamps you control.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Swamp.YouCtrl\nDeckHas:Ability$LifeGain\nOracle:Consuming Corruption deals X damage to target creature or planeswalker and you gain X life, where X is the number of Swamps you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consuming Corruption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

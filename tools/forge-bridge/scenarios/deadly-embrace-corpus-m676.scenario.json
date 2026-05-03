@@ -1,0 +1,23 @@
+{
+  "id": "deadly-embrace-corpus-m676",
+  "description": "M6 corpus — Deadly Embrace; in-hand parse.",
+  "seed": 63226,
+  "cards": {
+    "Deadly Embrace": "Name:Deadly Embrace\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBDraw | SpellDescription$ Destroy target creature an opponent controls. Then draw a card for each creature that died this turn.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nOracle:Destroy target creature an opponent controls. Then draw a card for each creature that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadly Embrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

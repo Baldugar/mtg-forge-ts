@@ -1,0 +1,25 @@
+{
+  "id": "cactus-preserve-corpus-m676",
+  "description": "M6 corpus — Cactus Preserve; ETB-on-bf.",
+  "seed": 61586,
+  "cards": {
+    "Cactus Preserve": "Name:Cactus Preserve\nManaCost:no cost\nTypes:Land Desert\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ManaReflected | Cost$ T | ColorOrType$ Type | Valid$ Land.YouCtrl | ReflectProperty$ Produce | SpellDescription$ Add one mana of any type that a land you control could produce.\nA:AB$ Animate | Cost$ 3 | Defined$ Self | Power$ X | Toughness$ X | Colors$ Green | OverwriteColors$ True | Types$ Creature,Plant | Keywords$ Reach | SpellDescription$ Until end of turn, CARDNAME becomes an X/X green Plant creature with reach, where X is the greatest mana value among your commanders. It's still a land.\nSVar:X:Count$ValidAll Card.IsCommander+YouOwn$GreatestCardManaCost\nAI:RemoveDeck:NonCommander\nOracle:Cactus Preserve enters tapped.\\n{T}: Add one mana of any type that a land you control could produce.\\n{3}: Until end of turn, Cactus Preserve becomes an X/X green Plant creature with reach, where X is the greatest mana value among your commanders. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cactus Preserve"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

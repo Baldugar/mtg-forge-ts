@@ -1,0 +1,23 @@
+{
+  "id": "cult-healer-corpus-m676",
+  "description": "M6 corpus — Cult Healer; in-hand parse.",
+  "seed": 62878,
+  "cards": {
+    "Cult Healer": "Name:Cult Healer\nManaCost:2 W\nTypes:Creature Human Doctor\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME gains lifelink until end of turn.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME gains lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Lifelink\nDeckNeeds:Type$Enchantment\nOracle:Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, Cult Healer gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cult Healer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "earthshaker-corpus-m676",
+  "description": "M6 corpus — Earthshaker; ETB-on-bf.",
+  "seed": 64260,
+  "cards": {
+    "Earthshaker": "Name:Earthshaker\nManaCost:4 R R\nTypes:Creature Spirit\nPT:4/5\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTremor | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, CARDNAME deals 2 damage to each creature without flying.\nSVar:TrigTremor:DB$ DamageAll | ValidCards$ Creature.withoutFlying | NumDmg$ 2 | ValidDescription$ each creature without flying. | SpellDescription$ CARDNAME deals 2 damage to each creature without flying.\nSVar:BuffedBy:Arcane,Spirit\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Whenever you cast a Spirit or Arcane spell, Earthshaker deals 2 damage to each creature without flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Earthshaker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

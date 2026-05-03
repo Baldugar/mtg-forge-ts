@@ -1,0 +1,23 @@
+{
+  "id": "ghoulish-impetus-corpus-m676",
+  "description": "M6 corpus — Ghoulish Impetus; in-hand parse.",
+  "seed": 66137,
+  "cards": {
+    "Ghoulish Impetus": "Name:Ghoulish Impetus\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddKeyword$ Deathtouch | AddToughness$ 1 | Goad$ True | Description$ Enchanted creature gets +1/+1, has deathtouch, and is goaded.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDelayedTrigger | TriggerDescription$ When enchanted creature dies, return CARDNAME to the battlefield at the beginning of the next end step.\nSVar:TrigDelayedTrigger:DB$ DelayedTrigger | Mode$ Phase | Phase$ End Of Turn | Execute$ TrigReturn | TriggerDescription$ Return CARDNAME to the battlefield at the beginning of the next end step.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True\nDeckHas:Ability$Graveyard\nOracle:Enchant creature\\nEnchanted creature gets +1/+1, has deathtouch, and is goaded.\\nWhen enchanted creature dies, return Ghoulish Impetus to the battlefield at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghoulish Impetus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

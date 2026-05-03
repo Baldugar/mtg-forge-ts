@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-hospitality-corpus-m676",
+  "description": "M6 corpus — Curse of Hospitality; in-hand parse.",
+  "seed": 62926,
+  "cards": {
+    "Curse of Hospitality": "Name:Curse of Hospitality\nManaCost:2 R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.attacking EnchantedPlayer | AddKeyword$ Trample | Description$ Creatures attacking enchanted player have trample.\nT:Mode$ DamageDone | ValidSource$ Creature | ValidTarget$ Player.EnchantedBy | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigExile | TriggerDescription$ Whenever a creature deals combat damage to enchanted player, that player exiles the top card of their library. Until end of turn, that creature's controller may play that card and they may spend mana as though it were mana of any color to cast that spell.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | EffectOwner$ TriggeredSourceController | Duration$ EndOfTurn | RememberObjects$ Remembered | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until end of turn, you may play the exiled card and may spend mana as though it were mana of any color to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Enchant player\\nCreatures attacking enchanted player have trample.\\nWhenever a creature deals combat damage to enchanted player, that player exiles the top card of their library. Until end of turn, that creature's controller may play that card and they may spend mana as though it were mana of any color to cast that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Hospitality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

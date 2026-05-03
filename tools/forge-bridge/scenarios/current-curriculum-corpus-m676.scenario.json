@@ -1,0 +1,23 @@
+{
+  "id": "current-curriculum-corpus-m676",
+  "description": "M6 corpus — Current Curriculum; in-hand parse.",
+  "seed": 62915,
+  "cards": {
+    "Current Curriculum": "Name:Current Curriculum\nManaCost:1 W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Merfolk.YouCtrl | AffectedZone$ Stack | CheckSVar$ X | SVarCompare$ EQ0 | AddKeyword$ Convoke | Description$ The first Merfolk spell you cast each turn has convoke.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigConjure | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+tapped | PresentCompare$ GE2 | TriggerDescription$ At the beginning of your end step, if you control two or more tapped creatures, conjure a card named Stonybrook Schoolmaster onto the battlefield tapped.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Stonybrook Schoolmaster | Zone$ Battlefield | Tapped$ True\nSVar:X:Count$ThisTurnCast_Merfolk.YouCtrl\nDeckHints:Type$Merfolk\nOracle:The first Merfolk spell you cast each turn has convoke.\\nAt the beginning of your end step, if you control two or more tapped creatures, conjure a card named Stonybrook Schoolmaster onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Current Curriculum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

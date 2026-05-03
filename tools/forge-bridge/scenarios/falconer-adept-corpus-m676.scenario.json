@@ -1,0 +1,23 @@
+{
+  "id": "falconer-adept-corpus-m676",
+  "description": "M6 corpus — Falconer Adept; in-hand parse.",
+  "seed": 65011,
+  "cards": {
+    "Falconer Adept": "Name:Falconer Adept\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 white Bird creature token with flying that's tapped and attacking.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ w_1_1_bird_flying | TokenTapped$ True | TokenAttacking$ True\nDeckHas:Ability$Token\nOracle:Whenever Falconer Adept attacks, create a 1/1 white Bird creature token with flying that's tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Falconer Adept"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

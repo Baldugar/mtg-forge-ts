@@ -1,0 +1,23 @@
+{
+  "id": "call-of-the-full-moon-corpus-m676",
+  "description": "M6 corpus — Call of the Full Moon; in-hand parse.",
+  "seed": 61613,
+  "cards": {
+    "Call of the Full Moon": "Name:Call of the Full Moon\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 2 | AddKeyword$ Trample | Description$ Enchanted creature gets +3/+2 and has trample.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nOracle:Enchant creature\\nEnchanted creature gets +3/+2 and has trample. (It can deal excess combat damage to the player or planeswalker it's attacking.)\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, sacrifice Call of the Full Moon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call of the Full Moon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cavalier-of-gales-corpus-m676",
+  "description": "M6 corpus — Cavalier of Gales; in-hand parse.",
+  "seed": 61833,
+  "cards": {
+    "Cavalier of Gales": "Name:Cavalier of Gales\nManaCost:2 U U U\nTypes:Creature Elemental Knight\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw three cards, then put two cards from your hand on top of your library in any order.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 3 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | ChangeNum$ 2 | Mandatory$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, shuffle it into its owner's library, then scry 2.\nSVar:TrigChange:DB$ ChangeZone | Destination$ Library | Shuffle$ True | Defined$ TriggeredNewCardLKICopy | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2\nOracle:Flying\\nWhen Cavalier of Gales enters, draw three cards, then put two cards from your hand on top of your library in any order.\\nWhen Cavalier of Gales dies, shuffle it into its owner's library, then scry 2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavalier of Gales"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

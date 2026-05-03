@@ -1,0 +1,23 @@
+{
+  "id": "dreamcaller-siren-corpus-m676",
+  "description": "M6 corpus — Dreamcaller Siren; in-hand parse.",
+  "seed": 64025,
+  "cards": {
+    "Dreamcaller Siren": "Name:Dreamcaller Siren\nManaCost:2 U U\nTypes:Creature Siren Pirate\nPT:3/3\nK:Flash\nK:Flying\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.withoutFlying | ValidBlocker$ Creature.Self | Description$ CARDNAME can block only creatures with flying.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | IsPresent$ Creature.Pirate+Other+YouCtrl | TriggerDescription$ When CARDNAME enters, if you control another Pirate, tap up to two target nonland permanents.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Permanent.nonLand | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select target nonland permanent | SpellDescription$ Tap up to two target nonland permanents.\nOracle:Flash\\nFlying\\nDreamcaller Siren can block only creatures with flying.\\nWhen Dreamcaller Siren enters, if you control another Pirate, tap up to two target nonland permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreamcaller Siren"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

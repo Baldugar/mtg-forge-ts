@@ -1,0 +1,23 @@
+{
+  "id": "giant-regrowth-corpus-m676",
+  "description": "M6 corpus — Giant Regrowth; in-hand parse.",
+  "seed": 66160,
+  "cards": {
+    "Giant Regrowth": "Name:Giant Regrowth\nManaCost:1 G G\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target card in your graveyard | ValidTgts$ Card.YouOwn | SubAbility$ DBEffect | RememberChanged$ True | SpellDescription$ Return target card from your graveyard to your hand.\nSVar:DBEffect:DB$ Pump | ConditionDefined$ Targeted | ConditionPresent$ Creature | PumpZone$ Hand | Defined$ Remembered | NumAtt$ +3 | NumDef$ +3 | Duration$ Perpetual | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ If it's a creature card, it perpetually gets +3/+3.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:Return target card from your graveyard to your hand. If it's a creature card, it perpetually gets +3/+3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant Regrowth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

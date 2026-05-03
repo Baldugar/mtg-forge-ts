@@ -1,0 +1,23 @@
+{
+  "id": "fade-away-corpus-m676",
+  "description": "M6 corpus — Fade Away; in-hand parse.",
+  "seed": 64970,
+  "cards": {
+    "Fade Away": "Name:Fade Away\nManaCost:2 U\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBRepeatCreature | SpellDescription$ For each creature, its controller sacrifices a permanent unless they pay {1}.\nSVar:DBRepeatCreature:DB$ RepeatEach | RepeatCards$ Creature.RememberedPlayerCtrl | Zone$ Battlefield | RepeatSubAbility$ DBSac\nSVar:DBSac:DB$ Sacrifice | Defined$ Player.IsRemembered | SacValid$ Permanent | UnlessCost$ 1 | UnlessPayer$ Player.IsRemembered\nAI:RemoveDeck:All\nOracle:For each creature, its controller sacrifices a permanent unless they pay {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fade Away"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "clinging-mists-corpus-m676",
+  "description": "M6 corpus — Clinging Mists; in-hand parse.",
+  "seed": 62245,
+  "cards": {
+    "Clinging Mists": "Name:Clinging Mists\nManaCost:2 G\nTypes:Instant\nA:SP$ Fog | SubAbility$ DBTapAll | SpellDescription$ Prevent all combat damage that would be dealt this turn. Fateful hour — If you have 5 or less life, tap all attacking creatures. Those creatures don't untap during their controllers next untap step.\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.attacking | SubAbility$ DBPumpAll | ConditionCheckSVar$ FatefulHour | ConditionSVarCompare$ LE5\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.attacking | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | ConditionCheckSVar$ FatefulHour | ConditionSVarCompare$ LE5\nSVar:FatefulHour:Count$YourLifeTotal\nOracle:Prevent all combat damage that would be dealt this turn.\\nFateful hour — If you have 5 or less life, tap all attacking creatures. Those creatures don't untap during their controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clinging Mists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

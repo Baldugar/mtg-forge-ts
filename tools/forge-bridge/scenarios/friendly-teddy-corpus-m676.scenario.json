@@ -1,0 +1,23 @@
+{
+  "id": "friendly-teddy-corpus-m676",
+  "description": "M6 corpus — Friendly Teddy; in-hand parse.",
+  "seed": 65751,
+  "cards": {
+    "Friendly Teddy": "Name:Friendly Teddy\nManaCost:2\nTypes:Artifact Creature Bear Toy\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, each player draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ Player\nOracle:When Friendly Teddy dies, each player draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Friendly Teddy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

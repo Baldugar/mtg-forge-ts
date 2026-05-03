@@ -1,0 +1,23 @@
+{
+  "id": "failed-conversion-corpus-m676",
+  "description": "M6 corpus — Failed Conversion; in-hand parse.",
+  "seed": 64995,
+  "cards": {
+    "Failed Conversion": "Name:Failed Conversion\nManaCost:4 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -4 | AddToughness$ -4 | Description$ Enchanted creature gets -4/-4.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigSurveil | TriggerDescription$ When enchanted creature dies, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 2\nOracle:Enchant creature\\nEnchanted creature gets -4/-4.\\nWhen enchanted creature dies, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Failed Conversion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

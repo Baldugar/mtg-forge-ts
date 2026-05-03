@@ -1,0 +1,23 @@
+{
+  "id": "duskwatch-recruiter-corpus-m676",
+  "description": "M6 corpus — Duskwatch Recruiter; in-hand parse.",
+  "seed": 64185,
+  "cards": {
+    "Duskwatch Recruiter": "Name:Duskwatch Recruiter\nManaCost:1 G\nTypes:Creature Human Warrior Werewolf\nPT:2/2\nA:AB$ Dig | Cost$ 2 G | DigNum$ 3 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature | SpellDescription$ Look at the top three cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:{2}{G}: Look at the top three cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Duskwatch Recruiter.\n\nALTERNATE\n\nName:Krallenhorde Howler\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:3/3\nS:Mode$ ReduceCost | ValidCard$ Creature | Type$ Spell | Activator$ You | Amount$ 1 | Description$ Creature spells you cast cost {1} less to cast.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Creature spells you cast cost {1} less to cast.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Krallenhorde Howler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duskwatch Recruiter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

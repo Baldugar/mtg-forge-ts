@@ -1,0 +1,25 @@
+{
+  "id": "fleshless-gladiator-corpus-m676",
+  "description": "M6 corpus — Fleshless Gladiator; ETB-on-bf.",
+  "seed": 65503,
+  "cards": {
+    "Fleshless Gladiator": "Name:Fleshless Gladiator\nManaCost:1 B\nTypes:Creature Phyrexian Skeleton\nPT:2/2\nA:AB$ ChangeZone | Cost$ 2 B | Defined$ Self | ActivationZone$ Graveyard | Origin$ Graveyard | Destination$ Battlefield | CheckSVar$ X | SVarCompare$ GE3 | PrecostDesc$ Corrupted — | Tapped$ True | SubAbility$ DBLoseLife | SpellDescription$ Return CARDNAME from your graveyard to the battlefield tapped. You lose 1 life. Activate only if an opponent has three or more poison counters.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckHas:Ability$Graveyard\nDeckHints:Keyword$Toxic|Infect\nOracle:Corrupted — {2}{B}: Return Fleshless Gladiator from your graveyard to the battlefield tapped. You lose 1 life. Activate only if an opponent has three or more poison counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fleshless Gladiator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

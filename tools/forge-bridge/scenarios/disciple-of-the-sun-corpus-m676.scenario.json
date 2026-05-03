@@ -1,0 +1,23 @@
+{
+  "id": "disciple-of-the-sun-corpus-m676",
+  "description": "M6 corpus — Disciple of the Sun; in-hand parse.",
+  "seed": 63676,
+  "cards": {
+    "Disciple of the Sun": "Name:Disciple of the Sun\nManaCost:4 W\nTypes:Creature Human Cleric\nPT:3/3\nK:Lifelink\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return target permanent card with mana value 3 or less from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.YouCtrl+cmcLE3 | TgtPrompt$ Select target permanent card with mana value 3 in your graveyard | Origin$ Graveyard | Destination$ Hand\nOracle:Lifelink\\nWhen Disciple of the Sun enters, return target permanent card with mana value 3 or less from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disciple of the Sun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

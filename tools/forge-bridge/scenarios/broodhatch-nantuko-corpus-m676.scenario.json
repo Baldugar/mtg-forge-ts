@@ -1,0 +1,23 @@
+{
+  "id": "broodhatch-nantuko-corpus-m676",
+  "description": "M6 corpus — Broodhatch Nantuko; in-hand parse.",
+  "seed": 61442,
+  "cards": {
+    "Broodhatch Nantuko": "Name:Broodhatch Nantuko\nManaCost:1 G\nTypes:Creature Insect Druid\nPT:1/1\nK:Morph:2 G\nT:Mode$ DamageDoneOnce | Execute$ TrigToken | ValidTarget$ Card.Self | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME is dealt damage, you may create that many 1/1 green Insect creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_insect | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Broodhatch Nantuko is dealt damage, you may create that many 1/1 green Insect creature tokens.\\nMorph {2}{G} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broodhatch Nantuko"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

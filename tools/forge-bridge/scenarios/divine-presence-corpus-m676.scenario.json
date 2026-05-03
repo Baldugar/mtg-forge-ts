@@ -1,0 +1,25 @@
+{
+  "id": "divine-presence-corpus-m676",
+  "description": "M6 corpus — Divine Presence; ETB-on-bf.",
+  "seed": 63757,
+  "cards": {
+    "Divine Presence": "Name:Divine Presence\nManaCost:2 W\nTypes:Enchantment\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Permanent,Player | DamageAmount$ GE4 | ReplaceWith$ Dmg3 | Description$ If a source would deal 4 or more damage to a permanent or player, that source deals 3 damage to that permanent or player instead.\nSVar:Dmg3:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ 3\nSVar:NonStackingEffect:True\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:If a source would deal 4 or more damage to a permanent or player, that source deals 3 damage to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Divine Presence"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

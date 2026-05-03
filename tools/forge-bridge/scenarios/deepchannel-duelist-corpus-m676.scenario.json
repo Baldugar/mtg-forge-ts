@@ -1,0 +1,23 @@
+{
+  "id": "deepchannel-duelist-corpus-m676",
+  "description": "M6 corpus — Deepchannel Duelist; in-hand parse.",
+  "seed": 63337,
+  "cards": {
+    "Deepchannel Duelist": "Name:Deepchannel Duelist\nManaCost:W U\nTypes:Creature Merfolk Soldier\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ At the beginning of your end step, untap target Merfolk you control.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Merfolk.YouCtrl | TgtPrompt$ Select target Merfolk you control\nS:Mode$ Continuous | Affected$ Merfolk.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Merfolk you control get +1/+1.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Merfolk\nOracle:At the beginning of your end step, untap target Merfolk you control.\\nOther Merfolk you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deepchannel Duelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

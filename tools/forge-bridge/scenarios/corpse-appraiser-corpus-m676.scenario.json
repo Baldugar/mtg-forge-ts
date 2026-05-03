@@ -1,0 +1,23 @@
+{
+  "id": "corpse-appraiser-corpus-m676",
+  "description": "M6 corpus — Corpse Appraiser; in-hand parse.",
+  "seed": 62592,
+  "cards": {
+    "Corpse Appraiser": "Name:Corpse Appraiser\nManaCost:U B R\nTypes:Creature Vampire Rogue\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, you may exile up to one target creature from a graveyard. If a card is put into exile this way, look at the top three cards of your library, then put one of those cards into your hand and the rest into your graveyard.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBDig | TgtPrompt$ Select up to one target creature card from a graveyard | RememberChanged$ True\nSVar:DBDig:DB$ Dig | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionZone$ Exile | DigNum$ 3 | DestinationZone2$ Graveyard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:When Corpse Appraiser enters, exile up to one target creature card from a graveyard. If a card is put into exile this way, look at the top three cards of your library, then put one of those cards into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corpse Appraiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

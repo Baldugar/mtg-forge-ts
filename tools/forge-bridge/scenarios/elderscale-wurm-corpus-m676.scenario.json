@@ -1,0 +1,23 @@
+{
+  "id": "elderscale-wurm-corpus-m676",
+  "description": "M6 corpus — Elderscale Wurm; in-hand parse.",
+  "seed": 64366,
+  "cards": {
+    "Elderscale Wurm": "Name:Elderscale Wurm\nManaCost:4 G G G\nTypes:Creature Wurm\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigLife | CheckSVar$ YourLife | SVarCompare$ LT7 | TriggerDescription$ When CARDNAME enters, if your life total is less than 7, your life total becomes 7.\nSVar:TrigLife:DB$ SetLife | Defined$ You | LifeAmount$ 7\nR:Event$ LifeReduced | ActiveZones$ Battlefield | ValidPlayer$ You.lifeGE7 | Result$ LT7 | IsDamage$ True | ReplaceWith$ ReduceLoss | Description$ As long as you have 7 or more life, damage that would reduce your life total to less than 7 reduces it to 7 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.7\nSVar:YourLife:Count$YourLifeTotal\nOracle:Trample\\nWhen Elderscale Wurm enters, if your life total is less than 7, your life total becomes 7.\\nAs long as you have 7 or more life, damage that would reduce your life total to less than 7 reduces it to 7 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elderscale Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

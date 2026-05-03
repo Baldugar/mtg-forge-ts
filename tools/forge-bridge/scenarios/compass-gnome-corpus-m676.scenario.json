@@ -1,0 +1,23 @@
+{
+  "id": "compass-gnome-corpus-m676",
+  "description": "M6 corpus — Compass Gnome; in-hand parse.",
+  "seed": 62437,
+  "cards": {
+    "Compass Gnome": "Name:Compass Gnome\nManaCost:2\nTypes:Artifact Creature Gnome\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card or Cave card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Land.Basic,Card.Cave | ChangeTypeDesc$ basic land of Cave card | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Type$Cave\nOracle:When Compass Gnome enters, you may search your library for a basic land card or Cave card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Compass Gnome"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

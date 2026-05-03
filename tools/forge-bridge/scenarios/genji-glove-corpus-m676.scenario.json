@@ -1,0 +1,23 @@
+{
+  "id": "genji-glove-corpus-m676",
+  "description": "M6 corpus — Genji Glove; in-hand parse.",
+  "seed": 66045,
+  "cards": {
+    "Genji Glove": "Name:Genji Glove\nManaCost:5\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Double Strike | Description$ Equipped creature has double strike.\nT:Mode$ Attacks | ValidCard$ Card.EquippedBy | TriggerZones$ Battlefield | FirstCombat$ True | Execute$ DBUntap | TriggerDescription$ Whenever equipped creature attacks, if it's the first combat phase of the turn, untap it. After this phase, there is an additional combat phase.\nSVar:DBUntap:DB$ Untap | Defined$ Equipped | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nOracle:Equipped creature has double strike.\\nWhenever equipped creature attacks, if it's the first combat phase of the turn, untap it. After this phase, there is an additional combat phase.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genji Glove"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

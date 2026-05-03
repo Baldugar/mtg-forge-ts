@@ -1,0 +1,23 @@
+{
+  "id": "death-of-a-thousand-stings-corpus-m676",
+  "description": "M6 corpus — Death of a Thousand Stings; in-hand parse.",
+  "seed": 63250,
+  "cards": {
+    "Death of a Thousand Stings": "Name:Death of a Thousand Stings\nManaCost:4 B\nTypes:Instant Arcane\nA:SP$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ 1 | SubAbility$ DBGainLife | SpellDescription$ Target player loses 1 life and you gain 1 life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Graveyard | CheckSVar$ X | SVarCompare$ GTY | OptionalDecider$ You | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if you have more cards in hand than each opponent, you may return CARDNAME from your graveyard to your hand.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:PlayerCountOpponents$HighestCardsInHand\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nOracle:Target player loses 1 life and you gain 1 life.\\nAt the beginning of your upkeep, if you have more cards in hand than each opponent, you may return Death of a Thousand Stings from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death of a Thousand Stings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

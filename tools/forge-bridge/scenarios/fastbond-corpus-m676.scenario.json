@@ -1,0 +1,25 @@
+{
+  "id": "fastbond-corpus-m676",
+  "description": "M6 corpus — Fastbond; ETB-on-bf.",
+  "seed": 65095,
+  "cards": {
+    "Fastbond": "Name:Fastbond\nManaCost:G\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ You | AdjustLandPlays$ Unlimited | Description$ You may play any number of lands on each of your turns.\nT:Mode$ LandPlayed | ValidCard$ Land.YouCtrl | NotFirstLand$ True | Execute$ DBPain | TriggerZones$ Battlefield | TriggerDescription$ Whenever you play a land, if it wasn't the first land you played this turn, CARDNAME deals 1 damage to you.\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nSVar:NonStackingEffect:True\nOracle:You may play any number of lands on each of your turns.\\nWhenever you play a land, if it wasn't the first land you played this turn, Fastbond deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fastbond"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

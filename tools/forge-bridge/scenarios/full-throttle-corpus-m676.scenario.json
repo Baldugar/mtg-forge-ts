@@ -1,0 +1,23 @@
+{
+  "id": "full-throttle-corpus-m676",
+  "description": "M6 corpus — Full Throttle; in-hand parse.",
+  "seed": 65822,
+  "cards": {
+    "Full Throttle": "Name:Full Throttle\nManaCost:4 R R\nTypes:Sorcery\nA:SP$ AddPhase | ExtraPhase$ Combat | NumPhases$ 2 | ConditionPhases$ Main1,Main2 | SubAbility$ DBEffect | SpellDescription$ After this main phase, there are two additional combat phases. At the beginning of each combat this turn, untap all creatures that attacked this turn.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigPhase\nSVar:TrigPhase:Mode$ Phase | Phase$ BeginCombat | Execute$ TrigUntapAll | TriggerDescription$ At the beginning of each combat this turn, untap all creatures that attacked this turn.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.attackedThisTurn\nOracle:After this main phase, there are two additional combat phases.\\nAt the beginning of each combat this turn, untap all creatures that attacked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Full Throttle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

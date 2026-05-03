@@ -1,0 +1,23 @@
+{
+  "id": "foul-tongue-shriek-corpus-m676",
+  "description": "M6 corpus — Foul-Tongue Shriek; in-hand parse.",
+  "seed": 65693,
+  "cards": {
+    "Foul-Tongue Shriek": "Name:Foul-Tongue Shriek\nManaCost:B\nTypes:Instant\nA:SP$ LoseLife | ValidTgts$ Opponent | LifeAmount$ X | SubAbility$ DBGainLife | SpellDescription$ Target opponent loses 1 life for each attacking creature you control. You gain that much life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.attacking+YouCtrl\nAI:RemoveDeck:All\nOracle:Target opponent loses 1 life for each attacking creature you control. You gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foul-Tongue Shriek"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

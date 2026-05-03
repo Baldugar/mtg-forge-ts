@@ -1,0 +1,23 @@
+{
+  "id": "casting-of-bones-corpus-m676",
+  "description": "M6 corpus — Casting of Bones; in-hand parse.",
+  "seed": 61785,
+  "cards": {
+    "Casting of Bones": "Name:Casting of Bones\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigDraw | TriggerDescription$ When enchanted creature dies, draw three cards, then discard one of them.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3 | RememberDrawn$ True | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | DiscardValid$ Card.IsRemembered | NumCards$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Enchant creature\\nWhen enchanted creature dies, draw three cards, then discard one of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Casting of Bones"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

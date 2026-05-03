@@ -1,0 +1,23 @@
+{
+  "id": "glistening-sphere-corpus-m676",
+  "description": "M6 corpus — Glistening Sphere; in-hand parse.",
+  "seed": 66316,
+  "cards": {
+    "Glistening Sphere": "Name:Glistening Sphere\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigProliferate | TriggerDescription$ When CARDNAME enters, proliferate.\nSVar:TrigProliferate:DB$ Proliferate\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nA:AB$ Mana | Cost$ T | Produced$ Any | CheckSVar$ X | SVarCompare$ GE3 | Amount$ 3 | PrecostDesc$ Corrupted — | SpellDescription$ Add three mana of any one color. Activate only if an opponent has three or more poison counters.\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckHas:Ability$Proliferate\nDeckHints:Ability$Counters & Keyword$Infect|Toxic|Poisonous\nOracle:Glistening Sphere enters tapped.\\nWhen Glistening Sphere enters, proliferate.\\n{T}: Add one mana of any color.\\nCorrupted — {T}: Add three mana of any one color. Activate only if an opponent has three or more poison counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glistening Sphere"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

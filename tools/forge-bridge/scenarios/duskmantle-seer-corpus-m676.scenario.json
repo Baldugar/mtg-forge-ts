@@ -1,0 +1,23 @@
+{
+  "id": "duskmantle-seer-corpus-m676",
+  "description": "M6 corpus — Duskmantle Seer; in-hand parse.",
+  "seed": 64181,
+  "cards": {
+    "Duskmantle Seer": "Name:Duskmantle Seer\nManaCost:2 U B\nTypes:Creature Vampire Wizard\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRepeat | TriggerDescription$ At the beginning of your upkeep, each player reveals the top card of their library, loses life equal to that card's mana value, then puts it into their hand.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ EachDig\nSVar:EachDig:DB$ Dig | Defined$ Remembered | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Hand | Imprint$ True | SubAbility$ EachLose\nSVar:EachLose:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:X:Imprinted$CardManaCost\nOracle:Flying\\nAt the beginning of your upkeep, each player reveals the top card of their library, loses life equal to that card's mana value, then puts it into their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duskmantle Seer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

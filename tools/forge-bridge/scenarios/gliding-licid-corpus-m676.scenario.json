@@ -1,0 +1,25 @@
+{
+  "id": "gliding-licid-corpus-m676",
+  "description": "M6 corpus — Gliding Licid; ETB-on-bf.",
+  "seed": 66285,
+  "cards": {
+    "Gliding Licid": "Name:Gliding Licid\nManaCost:2 U\nTypes:Creature Licid\nPT:2/2\nA:AB$ Animate | Cost$ U T | Defined$ Self | RemoveThisAbility$ True | Duration$ Permanent | RevertCost$ U | Keywords$ Enchant:Creature | Types$ Enchantment,Aura | RemoveCardTypes$ True | RemoveEnchantmentTypes$ True | SubAbility$ DBAttach | SpellDescription$ CARDNAME loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {U} to end this effect.\nSVar:DBAttach:DB$ Attach | ValidTgts$ Creature | AILogic$ Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | Description$ Enchanted creature has flying.\nAI:RemoveDeck:All\nOracle:{U}, {T}: Gliding Licid loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {U} to end this effect.\\nEnchanted creature has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gliding Licid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dark-petition-corpus-m676",
+  "description": "M6 corpus — Dark Petition; in-hand parse.",
+  "seed": 63083,
+  "cards": {
+    "Dark Petition": "Name:Dark Petition\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | SubAbility$ DBMana | SpellDescription$ Search your library for a card, put that card into your hand, then shuffle. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, add {B}{B}{B}.\nSVar:DBMana:DB$ Mana | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2 | Produced$ B | Amount$ 3\n# TODO: Improve the tutoring logic for the AI. Currently will generally look for the most expensive castable thing in the library (which can, of course, be used to advantage in properly constructed AI decks).\nAI:RemoveDeck:Random\nOracle:Search your library for a card, put that card into your hand, then shuffle.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, add {B}{B}{B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Petition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

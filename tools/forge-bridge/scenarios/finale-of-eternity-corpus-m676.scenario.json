@@ -1,0 +1,23 @@
+{
+  "id": "finale-of-eternity-corpus-m676",
+  "description": "M6 corpus — Finale of Eternity; in-hand parse.",
+  "seed": 65321,
+  "cards": {
+    "Finale of Eternity": "Name:Finale of Eternity\nManaCost:X B B\nTypes:Sorcery\nA:SP$ Destroy | TargetMin$ 0 | TargetMax$ 3 | ValidTgts$ Creature.toughnessLEX | SubAbility$ DBChangeZone | SpellDescription$ Destroy up to three target creatures with toughness X or less. If X is 10 or more, return all creature cards from your graveyard to the battlefield.\nSVar:DBChangeZone:DB$ ChangeZoneAll | ChangeType$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | ConditionCheckSVar$ X | ConditionSVarCompare$ GE10\nSVar:X:Count$xPaid\nOracle:Destroy up to three target creatures with toughness X or less. If X is 10 or more, return all creature cards from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Finale of Eternity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

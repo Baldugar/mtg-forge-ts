@@ -1,0 +1,23 @@
+{
+  "id": "cenn-s-heir-corpus-m676",
+  "description": "M6 corpus — Cenn's Heir; in-hand parse.",
+  "seed": 61877,
+  "cards": {
+    "Cenn's Heir": "Name:Cenn's Heir\nManaCost:1 W\nTypes:Creature Kithkin Soldier\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+1 until end of turn for each other attacking Kithkin.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Kithkin.attacking+Other\nOracle:Whenever Cenn's Heir attacks, it gets +1/+1 until end of turn for each other attacking Kithkin.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cenn's Heir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

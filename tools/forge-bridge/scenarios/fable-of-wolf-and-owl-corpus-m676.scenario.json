@@ -1,0 +1,25 @@
+{
+  "id": "fable-of-wolf-and-owl-corpus-m676",
+  "description": "M6 corpus — Fable of Wolf and Owl; ETB-on-bf.",
+  "seed": 64959,
+  "cards": {
+    "Fable of Wolf and Owl": "Name:Fable of Wolf and Owl\nManaCost:3 GU GU GU\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.Green | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigWolf | TriggerDescription$ Whenever you cast a green spell, you may create a 2/2 green Wolf creature token.\nT:Mode$ SpellCast | ValidCard$ Card.Blue | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigBird | TriggerDescription$ Whenever you cast a blue spell, you may create a 1/1 blue Bird creature token with flying.\nSVar:TrigWolf:DB$ Token | TokenScript$ g_2_2_wolf | TokenOwner$ You\nSVar:TrigBird:DB$ Token | TokenScript$ u_1_1_bird_flying | TokenOwner$ You\nSVar:BuffedBy:Card.Green,Card.Blue\nOracle:Whenever you cast a green spell, you may create a 2/2 green Wolf creature token.\\nWhenever you cast a blue spell, you may create a 1/1 blue Bird creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fable of Wolf and Owl"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

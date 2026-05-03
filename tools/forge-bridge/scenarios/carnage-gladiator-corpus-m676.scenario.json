@@ -1,0 +1,25 @@
+{
+  "id": "carnage-gladiator-corpus-m676",
+  "description": "M6 corpus — Carnage Gladiator; ETB-on-bf.",
+  "seed": 61732,
+  "cards": {
+    "Carnage Gladiator": "Name:Carnage Gladiator\nManaCost:2 B R\nTypes:Creature Skeleton Warrior\nPT:4/2\nT:Mode$ Blocks | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature blocks, that creature's controller loses 1 life.\nSVar:TrigDamage:DB$ LoseLife | Defined$ TriggeredBlockerController | LifeAmount$ 1\nA:AB$ Regenerate | Cost$ 1 B R | SpellDescription$ Regenerate CARDNAME.\nOracle:Whenever a creature blocks, that creature's controller loses 1 life.\\n{1}{B}{R}: Regenerate Carnage Gladiator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Carnage Gladiator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

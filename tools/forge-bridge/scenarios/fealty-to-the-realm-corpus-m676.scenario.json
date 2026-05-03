@@ -1,0 +1,23 @@
+{
+  "id": "fealty-to-the-realm-corpus-m676",
+  "description": "M6 corpus — Fealty to the Realm; in-hand parse.",
+  "seed": 65134,
+  "cards": {
+    "Fealty to the Realm": "Name:Fealty to the Realm\nManaCost:4 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:GainControl\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ Player.isMonarch | Description$ The monarch controls enchanted creature.\nS:Mode$ CantAttack | ValidCard$ Creature.EnchantedBy | Target$ You | Description$ Enchanted creature attacks each combat if able and can't attack you.\nS:Mode$ MustAttack | ValidCreature$ Creature.EnchantedBy\nOracle:Enchant creature\\nWhen Fealty to the Realm enters, you become the monarch.\\nThe monarch controls enchanted creature.\\nEnchanted creature attacks each combat if able and can't attack you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fealty to the Realm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

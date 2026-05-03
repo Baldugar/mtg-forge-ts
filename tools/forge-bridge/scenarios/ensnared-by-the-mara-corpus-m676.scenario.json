@@ -1,0 +1,23 @@
+{
+  "id": "ensnared-by-the-mara-corpus-m676",
+  "description": "M6 corpus — Ensnared by the Mara; in-hand parse.",
+  "seed": 64632,
+  "cards": {
+    "Ensnared by the Mara": "Name:Ensnared by the Mara\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ VillainousChoice | Defined$ Opponent | Choices$ DBDig,DBDamage | SpellDescription$ Each opponent faces a villainous choice — They exile cards from the top of their library until they exile a nonland card, then you may cast that card without paying its mana cost, or that player exiles the top four cards of their library and CARDNAME deals damage equal to the total mana value of those exiled cards to that player.\nSVar:DBDig:DB$ DigUntil | Defined$ Remembered | Valid$ Card.nonLand | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | SubAbility$ DBPlay | SpellDescription$ They exile cards from the top of their library until they exile a nonland card, then you may cast that card without paying its mana cost.\nSVar:DBPlay:DB$ Play | Controller$ You | Defined$ Remembered | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | Amount$ All | SubAbility$ DBCleanup\nSVar:DBDamage:DB$ Dig | RememberChanged$ True | DestinationZone$ Exile | Defined$ Remembered | DigNum$ 4 | ChangeNum$ All | SubAbility$ DamageOpponent | SpellDescription$ That player exiles the top four cards of their library and CARDNAME deals damage equal to the total mana value of those exiled cards to that player.\nSVar:DamageOpponent:DB$ DealDamage | Defined$ Remembered | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Each opponent faces a villainous choice — They exile cards from the top of their library until they exile a nonland card, then you may cast that card without paying its mana cost, or that player exiles the top four cards of their library and Ensnared by the Mara deals damage equal to the total mana value of those exiled cards to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ensnared by the Mara"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

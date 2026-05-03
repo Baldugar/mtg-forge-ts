@@ -1,0 +1,23 @@
+{
+  "id": "faceless-agent-corpus-m676",
+  "description": "M6 corpus — Faceless Agent; in-hand parse.",
+  "seed": 64964,
+  "cards": {
+    "Faceless Agent": "Name:Faceless Agent\nManaCost:3\nTypes:Creature Shapeshifter\nPT:2/2\nK:Changeling\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSeek | TriggerDescription$ When CARDNAME enters, seek a creature card of the most prevalent creature type in your library.\nSVar:TrigSeek:DB$ Seek | Type$ Card.Creature+MostProminentCreatureTypeInLibrary\nOracle:Changeling\\nWhen Faceless Agent enters, seek a creature card of the most prevalent creature type in your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faceless Agent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

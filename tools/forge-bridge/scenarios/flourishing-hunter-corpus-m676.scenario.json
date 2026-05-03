@@ -1,0 +1,23 @@
+{
+  "id": "flourishing-hunter-corpus-m676",
+  "description": "M6 corpus — Flourishing Hunter; in-hand parse.",
+  "seed": 65537,
+  "cards": {
+    "Flourishing Hunter": "Name:Flourishing Hunter\nManaCost:4 G G\nTypes:Creature Wolf Spirit\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain life equal to the greatest toughness among other creatures you control.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+Other$GreatestCardToughness\nDeckHas:Ability$LifeGain\nOracle:When Flourishing Hunter enters, you gain life equal to the greatest toughness among other creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flourishing Hunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

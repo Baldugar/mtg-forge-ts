@@ -1,0 +1,23 @@
+{
+  "id": "enter-the-unknown-corpus-m676",
+  "description": "M6 corpus — Enter the Unknown; in-hand parse.",
+  "seed": 64645,
+  "cards": {
+    "Enter the Unknown": "Name:Enter the Unknown\nManaCost:G\nTypes:Sorcery\nA:SP$ Explore | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ TrigEffect | SpellDescription$ Target creature you control explores.\nSVar:TrigEffect:DB$ Effect | Name$ Enter the Unknown's Effect — Exploration | StaticAbilities$ Exploration | AILogic$ Always | SpellDescription$ You may play an additional land this turn.\nSVar:Exploration:Mode$ Continuous | Affected$ You | AdjustLandPlays$ 1 | Description$ You may play an additional land this turn.\nSVar:NeedsToPlayVar:ZZ GE1\nSVar:ZZ:Count$ValidHand Land.YouOwn\nDeckHas:Ability$Counters\nOracle:Target creature you control explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on the creature, then put the card back or put it into your graveyard.)\\nYou may play an additional land this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enter the Unknown"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

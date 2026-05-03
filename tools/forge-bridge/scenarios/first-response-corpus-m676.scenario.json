@@ -1,0 +1,23 @@
+{
+  "id": "first-response-corpus-m676",
+  "description": "M6 corpus — First Response; in-hand parse.",
+  "seed": 65396,
+  "cards": {
+    "First Response": "Name:First Response\nManaCost:3 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of each upkeep, if you lost life last turn, create a 1/1 white Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:X:PlayerCountPropertyYou$LifeLostLastTurn\nOracle:At the beginning of each upkeep, if you lost life last turn, create a 1/1 white Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "First Response"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

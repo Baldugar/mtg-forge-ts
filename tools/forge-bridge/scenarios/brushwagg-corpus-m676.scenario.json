@@ -1,0 +1,25 @@
+{
+  "id": "brushwagg-corpus-m676",
+  "description": "M6 corpus — Brushwagg; ETB-on-bf.",
+  "seed": 61471,
+  "cards": {
+    "Brushwagg": "Name:Brushwagg\nManaCost:1 G G\nTypes:Creature Brushwagg\nPT:3/2\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets -2/+2 until end of turn.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets -2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ -2 | NumDef$ +2\nOracle:Whenever Brushwagg blocks or becomes blocked, it gets -2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brushwagg"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

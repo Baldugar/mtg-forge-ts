@@ -1,0 +1,23 @@
+{
+  "id": "don-t-move-corpus-m676",
+  "description": "M6 corpus — Don't Move; in-hand parse.",
+  "seed": 63824,
+  "cards": {
+    "Don't Move": "Name:Don't Move\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature.tapped | SubAbility$ DBEffect | SpellDescription$ Destroy all tapped creatures.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigTaps | Duration$ UntilYourNextTurn | SpellDescription$ Until your next turn, whenever a creature becomes tapped, destroy it.\nSVar:TrigTaps:Mode$ Taps | ValidCard$ Creature | Execute$ TrigDestroy | TriggerDescription$ Whenever a creature becomes tapped, destroy it.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredCardLKICopy\nOracle:Destroy all tapped creatures. Until your next turn, whenever a creature becomes tapped, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Don't Move"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

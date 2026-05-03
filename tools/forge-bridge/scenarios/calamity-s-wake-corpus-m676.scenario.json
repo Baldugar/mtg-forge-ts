@@ -1,0 +1,23 @@
+{
+  "id": "calamity-s-wake-corpus-m676",
+  "description": "M6 corpus — Calamity's Wake; in-hand parse.",
+  "seed": 61602,
+  "cards": {
+    "Calamity's Wake": "Name:Calamity's Wake\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBEffect | SpellDescription$ Exile all graveyards. Players can't cast noncreature spells this turn. Exile CARDNAME.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STCantBeCast | SubAbility$ ExileSelf\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Card.nonCreature | Caster$ Player | Description$ Players can't cast noncreature spells this turn.\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nOracle:Exile all graveyards. Players can't cast noncreature spells this turn. Exile Calamity's Wake.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Calamity's Wake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

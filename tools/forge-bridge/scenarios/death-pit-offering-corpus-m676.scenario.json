@@ -1,0 +1,23 @@
+{
+  "id": "death-pit-offering-corpus-m676",
+  "description": "M6 corpus — Death Pit Offering; in-hand parse.",
+  "seed": 63252,
+  "cards": {
+    "Death Pit Offering": "Name:Death Pit Offering\nManaCost:2 B B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 2 | AddToughness$ 2 | Description$ Creatures you control get +2/+2.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice all creatures you control.\nSVar:TrigSac:DB$ SacrificeAll | ValidCards$ Creature.YouCtrl\nAI:RemoveDeck:All\nOracle:When Death Pit Offering enters, sacrifice all creatures you control.\\nCreatures you control get +2/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Pit Offering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

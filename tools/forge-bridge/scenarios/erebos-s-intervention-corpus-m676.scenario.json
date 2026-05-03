@@ -1,0 +1,23 @@
+{
+  "id": "erebos-s-intervention-corpus-m676",
+  "description": "M6 corpus — Erebos's Intervention; in-hand parse.",
+  "seed": 64691,
+  "cards": {
+    "Erebos's Intervention": "Name:Erebos's Intervention\nManaCost:X B\nTypes:Instant\nA:SP$ Charm | Choices$ DBPump,DBChangeZone\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True | SubAbility$ DBGainLife | SpellDescription$ Target creature gets -X/-X until end of turn.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SpellDescription$ You gain X life.\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ XX | TgtPrompt$ Select up to twice X target cards in graveyards | ValidTgts$ Card | SpellDescription$ Exile up to twice X target cards from graveyards.\nSVar:X:Count$xPaid\nSVar:XX:SVar$X/Twice\nDeckHas:Ability$LifeGain\nOracle:Choose one —\\n• Target creature gets -X/-X until end of turn. You gain X life.\\n• Exile up to twice X target cards from graveyards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erebos's Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

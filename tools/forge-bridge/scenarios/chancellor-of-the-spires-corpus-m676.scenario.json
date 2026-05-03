@@ -1,0 +1,23 @@
+{
+  "id": "chancellor-of-the-spires-corpus-m676",
+  "description": "M6 corpus — Chancellor of the Spires; in-hand parse.",
+  "seed": 61952,
+  "cards": {
+    "Chancellor of the Spires": "Name:Chancellor of the Spires\nManaCost:4 U U U\nTypes:Creature Phyrexian Sphinx\nPT:5/7\nK:MayEffectFromOpeningHand:RevealCard\nK:Flying\nSVar:RevealCard:DB$ Reveal | RevealDefined$ Self | SubAbility$ DrainOnUpkeep | SpellDescription$ You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, each opponent mills seven cards.\nSVar:DrainOnUpkeep:DB$ Effect | Triggers$ TrigMill\nSVar:TrigMill:Mode$ Phase | Phase$ Upkeep | Execute$ Mill | OneOff$ True | TriggerDescription$ At the beginning of the first upkeep, each opponent mills seven cards.\nSVar:Mill:DB$ Mill | NumCards$ 7 | Defined$ Player.Opponent\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, you may cast target instant or sorcery card from an opponent's graveyard without paying its mana cost.\nSVar:TrigChangeZone:DB$ Play | TgtZone$ Graveyard | WithoutManaCost$ True | ValidTgts$ Instant.OppOwn,Sorcery.OppOwn | TgtPrompt$ Choose target instant or sorcery card from an opponent's graveyard | Optional$ True\nDeckHas:Ability$Mill\nOracle:You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, each opponent mills seven cards.\\nFlying\\nWhen Chancellor of the Spires enters, you may cast target instant or sorcery card from an opponent's graveyard without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chancellor of the Spires"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

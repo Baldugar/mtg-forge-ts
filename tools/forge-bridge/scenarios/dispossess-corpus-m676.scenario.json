@@ -1,0 +1,23 @@
+{
+  "id": "dispossess-corpus-m676",
+  "description": "M6 corpus — Dispossess; in-hand parse.",
+  "seed": 63715,
+  "cards": {
+    "Dispossess": "Name:Dispossess\nManaCost:2 B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.Artifact | ValidDescription$ artifact | SubAbility$ ExileYard | SpellDescription$ Choose an artifact card name. Search target opponent's graveyard, hand, and library for any number of cards with the chosen name and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card.NamedCard | Chooser$ You | ChangeNum$ NumInYard | Hidden$ True | SubAbility$ ExileHand\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ Targeted | ChangeType$ Card.NamedCard | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True\nSVar:NumInLib:TargetedPlayer$CardsInLibrary\nSVar:NumInHand:TargetedPlayer$CardsInHand\nSVar:NumInYard:TargetedPlayer$CardsInGraveyard\nAI:RemoveDeck:All\nOracle:Choose an artifact card name. Search target opponent's graveyard, hand, and library for any number of cards with the chosen name and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dispossess"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

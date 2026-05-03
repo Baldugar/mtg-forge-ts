@@ -1,0 +1,23 @@
+{
+  "id": "forge-anew-corpus-m676",
+  "description": "M6 corpus — Forge Anew; in-hand parse.",
+  "seed": 65645,
+  "cards": {
+    "Forge Anew": "Name:Forge Anew\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target Equipment card from your graveyard to the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Card.Equipment+YouCtrl\nS:Mode$ CastWithFlash | ValidSA$ Activated.Equip | Caster$ You | Condition$ PlayerTurn | Description$ During your turn, you may activate equip abilities any time you could cast an instant.\nS:Mode$ AlternativeCost | ValidSA$ Activated.Equip | ValidPlayer$ You | Cost$ 0 | CheckSVar$ X | SVarCompare$ LT1 | Condition$ PlayerTurn | Description$ You may pay {0} rather than pay the equip cost of the first equip ability you activate during each of your turns.\nSVar:X:Count$ThisTurnActivated_Activated.Equip+YouCtrl\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Equipment\nOracle:When Forge Anew enters, return target Equipment card from your graveyard to the battlefield.\\nDuring your turn, you may activate equip abilities any time you could cast an instant.\\nYou may pay {0} rather than pay the equip cost of the first equip ability you activate during each of your turns.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forge Anew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

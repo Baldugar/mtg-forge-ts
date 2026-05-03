@@ -1,0 +1,23 @@
+{
+  "id": "faerie-harbinger-corpus-m676",
+  "description": "M6 corpus — Faerie Harbinger; in-hand parse.",
+  "seed": 64983,
+  "cards": {
+    "Faerie Harbinger": "Name:Faerie Harbinger\nManaCost:3 U\nTypes:Creature Faerie Wizard\nPT:2/2\nK:Flying\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Faerie card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Faerie | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:Flash\\nFlying\\nWhen Faerie Harbinger enters, you may search your library for a Faerie card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

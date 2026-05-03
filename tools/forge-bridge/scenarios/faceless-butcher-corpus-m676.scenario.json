@@ -1,0 +1,23 @@
+{
+  "id": "faceless-butcher-corpus-m676",
+  "description": "M6 corpus — Faceless Butcher; in-hand parse.",
+  "seed": 64965,
+  "cards": {
+    "Faceless Butcher": "Name:Faceless Butcher\nManaCost:2 B B\nTypes:Creature Nightmare Horror\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | IsCurse$ True | ValidTgts$ Creature.Other | TgtPrompt$ Choose another target creature | Origin$ Battlefield | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZoneAll | ChangeType$ Card.ExiledWithSource | Origin$ Exile | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nOracle:When Faceless Butcher enters, exile target creature other than Faceless Butcher.\\nWhen Faceless Butcher leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faceless Butcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

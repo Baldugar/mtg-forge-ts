@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-shaken-faith-corpus-m676",
+  "description": "M6 corpus — Curse of Shaken Faith; in-hand parse.",
+  "seed": 62933,
+  "cards": {
+    "Curse of Shaken Faith": "Name:Curse of Shaken Faith\nManaCost:1 R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ SpellCast | ValidActivatingPlayer$ Player.EnchantedBy | ActivatorThisTurnCast$ GT1 | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever enchanted player casts a spell other than the first spell they cast each turn or copies a spell, CARDNAME deals 2 damage to them.\nT:Mode$ SpellCopy | ValidActivatingPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDamage | Secondary$ True | TriggerDescription$ Whenever enchanted player casts a spell other than the first spell they cast each turn or copies a spell, CARDNAME deals 2 damage to them.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2\nOracle:Enchant player\\nWhenever enchanted player casts a spell other than the first spell they cast each turn or copies a spell, Curse of Shaken Faith deals 2 damage to them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Shaken Faith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

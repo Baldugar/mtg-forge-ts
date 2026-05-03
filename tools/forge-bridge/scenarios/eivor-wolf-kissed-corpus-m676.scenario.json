@@ -1,0 +1,23 @@
+{
+  "id": "eivor-wolf-kissed-corpus-m676",
+  "description": "M6 corpus — Eivor, Wolf-Kissed; in-hand parse.",
+  "seed": 64342,
+  "cards": {
+    "Eivor, Wolf-Kissed": "Name:Eivor, Wolf-Kissed\nManaCost:3 R G W\nTypes:Legendary Creature Human Assassin Warrior\nPT:7/6\nK:Trample\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you mill that many cards. You may put a Saga card and/or a land card from among them onto the battlefield.\nSVar:TrigMill:DB$ Mill | NumCards$ X | Defined$ You | RememberMilled$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Battlefield | ChangeType$ EACH Saga.YouOwn+IsRemembered & Land.YouOwn+IsRemembered | Optional$ True | SelectPrompt$ You may select a Saga card and/or a land card. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Mill\nDeckHints:Type$Saga\nOracle:Trample, haste\\nWhenever Eivor, Wolf-Kissed deals combat damage to a player, you mill that many cards. You may put a Saga card and/or a land card from among them onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eivor, Wolf-Kissed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

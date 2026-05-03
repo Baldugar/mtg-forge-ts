@@ -1,0 +1,23 @@
+{
+  "id": "desert-s-hold-corpus-m676",
+  "description": "M6 corpus — Desert's Hold; in-hand parse.",
+  "seed": 63516,
+  "cards": {
+    "Desert's Hold": "Name:Desert's Hold\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Desert$ True | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, if you control a Desert or there is a Desert card in your graveyard, you gain 3 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't attack or block and its activated abilities can't be activated.\nDeckHints:Type$Desert\nOracle:Enchant creature\\nWhen Desert's Hold enters, if you control a Desert or there is a Desert card in your graveyard, you gain 3 life.\\nEnchanted creature can't attack or block, and its activated abilities can't be activated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desert's Hold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

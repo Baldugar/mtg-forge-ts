@@ -1,0 +1,23 @@
+{
+  "id": "enlistment-officer-corpus-m676",
+  "description": "M6 corpus — Enlistment Officer; in-hand parse.",
+  "seed": 64617,
+  "cards": {
+    "Enlistment Officer": "Name:Enlistment Officer\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/3\nK:First Strike\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top four cards of your library. Put all Soldier cards revealed this way into your hand and the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | Reveal$ True | ChangeNum$ All | ChangeValid$ Soldier\nOracle:First strike\\nWhen Enlistment Officer enters, reveal the top four cards of your library. Put all Soldier cards revealed this way into your hand and the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enlistment Officer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

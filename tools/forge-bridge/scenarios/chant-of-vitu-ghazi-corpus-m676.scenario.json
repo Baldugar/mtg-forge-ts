@@ -1,0 +1,23 @@
+{
+  "id": "chant-of-vitu-ghazi-corpus-m676",
+  "description": "M6 corpus — Chant of Vitu-Ghazi; in-hand parse.",
+  "seed": 61980,
+  "cards": {
+    "Chant of Vitu-Ghazi": "Name:Chant of Vitu-Ghazi\nManaCost:6 W W\nTypes:Instant\nK:Convoke\nA:SP$ Effect | ReplacementEffects$ RepDmg | SpellDescription$ Prevent all damage that would be dealt by creatures this turn. You gain life equal to the damage prevented this way.\nSVar:RepDmg:Event$ DamageDone | ValidSource$ Creature.inZoneBattlefield | ReplaceWith$ GainLifeYou | PreventionEffect$ True | Description$ Prevent all damage that would be dealt by creatures this turn. You gain life equal to the damage prevented this way.\nSVar:GainLifeYou:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:ReplaceCount$DamageAmount\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nPrevent all damage that would be dealt by creatures this turn. You gain life equal to the damage prevented this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chant of Vitu-Ghazi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

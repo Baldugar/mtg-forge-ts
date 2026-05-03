@@ -1,0 +1,25 @@
+{
+  "id": "glissa-sunseeker-corpus-m676",
+  "description": "M6 corpus — Glissa Sunseeker; ETB-on-bf.",
+  "seed": 66309,
+  "cards": {
+    "Glissa Sunseeker": "Name:Glissa Sunseeker\nManaCost:2 G G\nTypes:Legendary Creature Elf Warrior\nPT:3/2\nK:First Strike\nA:AB$ Destroy | Cost$ T | ValidTgts$ Artifact | ConditionCheckSVar$ Y | ConditionSVarCompare$ EQX | SpellDescription$ Destroy target artifact if its mana value is equal to the amount of unspent mana you have.\nSVar:X:Count$ManaPool:All\nSVar:Y:Targeted$CardManaCost\n# AI won't specifically put mana in pool to activate the ability\nAI:RemoveDeck:All\nOracle:First strike\\n{T}: Destroy target artifact if its mana value is equal to the amount of unspent mana you have.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Glissa Sunseeker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

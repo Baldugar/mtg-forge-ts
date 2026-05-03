@@ -1,0 +1,25 @@
+{
+  "id": "goblin-archaeologist-corpus-m676",
+  "description": "M6 corpus — Goblin Archaeologist; ETB-on-bf.",
+  "seed": 66387,
+  "cards": {
+    "Goblin Archaeologist": "Name:Goblin Archaeologist\nManaCost:1 R\nTypes:Creature Goblin Artificer\nPT:1/2\nA:AB$ FlipACoin | Cost$ R T | ValidTgts$ Artifact | WinSubAbility$ DBDestroy | LoseSubAbility$ DBSacSelf | SpellDescription$ Flip a coin. If you win the flip, destroy target artifact and untap CARDNAME. If you lose the flip, sacrifice CARDNAME.\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted | SubAbility$ DBUntapSelf\nSVar:DBUntapSelf:DB$ Untap | Defined$ Self\nSVar:DBSacSelf:DB$ Sacrifice\nAI:RemoveDeck:All\nOracle:{R}, {T}: Flip a coin. If you win the flip, destroy target artifact and untap Goblin Archaeologist. If you lose the flip, sacrifice Goblin Archaeologist.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Archaeologist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

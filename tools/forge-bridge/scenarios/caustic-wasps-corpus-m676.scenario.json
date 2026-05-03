@@ -1,0 +1,23 @@
+{
+  "id": "caustic-wasps-corpus-m676",
+  "description": "M6 corpus — Caustic Wasps; in-hand parse.",
+  "seed": 61828,
+  "cards": {
+    "Caustic Wasps": "Name:Caustic Wasps\nManaCost:2 G\nTypes:Creature Insect\nPT:1/1\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may destroy target artifact that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact damaged player controls\nOracle:Flying\\nWhenever Caustic Wasps deals combat damage to a player, you may destroy target artifact that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caustic Wasps"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

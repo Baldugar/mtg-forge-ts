@@ -1,0 +1,23 @@
+{
+  "id": "dramatic-accusation-corpus-m676",
+  "description": "M6 corpus — Dramatic Accusation; in-hand parse.",
+  "seed": 63958,
+  "cards": {
+    "Dramatic Accusation": "Name:Dramatic Accusation\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nA:AB$ ChangeZone | Cost$ U U | Origin$ Battlefield | Destination$ Library | Shuffle$ True | Defined$ Enchanted | SpellDescription$ Shuffle enchanted creature into its owner's library.\nOracle:Enchant creature\\nWhen Dramatic Accusation enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\\n{U}{U}: Shuffle enchanted creature into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dramatic Accusation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

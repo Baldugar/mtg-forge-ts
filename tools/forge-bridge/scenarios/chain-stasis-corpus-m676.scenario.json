@@ -1,0 +1,23 @@
+{
+  "id": "chain-stasis-corpus-m676",
+  "description": "M6 corpus — Chain Stasis; in-hand parse.",
+  "seed": 61918,
+  "cards": {
+    "Chain Stasis": "Name:Chain Stasis\nManaCost:U\nTypes:Instant\nA:SP$ TapOrUntap | ValidTgts$ Creature | SubAbility$ DBCopy | SpellDescription$ You may tap or untap target creature. Then that creature's controller may pay {2}{U}. If the player does, they may copy this spell and may choose a new target for that copy.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Parent | Controller$ TargetedController | UnlessPayer$ TargetedController | UnlessCost$ 2 U | UnlessSwitched$ True | MayChooseTarget$ True | StackDescription$ Then that creature's controller may pay {2}{U}. If the player does, they may copy this spell and may choose a new target for that copy.\nAI:RemoveDeck:All\nOracle:You may tap or untap target creature. Then that creature's controller may pay {2}{U}. If the player does, they may copy this spell and may choose a new target for that copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chain Stasis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

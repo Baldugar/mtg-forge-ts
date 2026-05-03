@@ -1,0 +1,23 @@
+{
+  "id": "captivating-crossroads-corpus-m676",
+  "description": "M6 corpus — Captivating Crossroads; in-hand parse.",
+  "seed": 61713,
+  "cards": {
+    "Captivating Crossroads": "Name:Captivating Crossroads\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ During your first three turns of the game, CARDNAME enters tapped if you were the starting player.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionCheckSVar$ Y | ConditionSVarCompare$ LT3\nSVar:Y:Count$YourTurns/Plus.X\nSVar:X:Count$StartingPlayer.0.3\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | SpellDescription$ As CARDNAME enters, choose a color.\nA:AB$ Mana | Cost$ T | Produced$ Chosen | SpellDescription$ Add one mana of the chosen color.\nOracle:During your first three turns of the game, Captivating Crossroads enters tapped if you were the starting player.\\nAs Captivating Crossroads enters, choose a color.\\n{T}: Add one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captivating Crossroads"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

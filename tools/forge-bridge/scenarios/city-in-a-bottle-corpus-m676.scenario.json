@@ -1,0 +1,23 @@
+{
+  "id": "city-in-a-bottle-corpus-m676",
+  "description": "M6 corpus — City in a Bottle; in-hand parse.",
+  "seed": 62171,
+  "cards": {
+    "City in a Bottle": "Name:City in a Bottle\nManaCost:2\nTypes:Artifact\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Permanent.!token+setARN+Other | Execute$ TrigSac | TriggerDescription$ Whenever one or more other nontoken permanents with a name originally printed in the Arabian Nights expansion are on the battlefield, their controllers sacrifice them.\nSVar:TrigSac:DB$ SacrificeAll | ValidCards$ Permanent.!token+setARN+Other\nS:Mode$ CantPlayLand | ValidCard$ Card.setARN | Description$ Players can't cast spells or play lands with a name originally printed in the Arabian Nights expansion.\nS:Mode$ CantBeCast | ValidCard$ Card.setARN\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nSVar:NonStackingEffect:True\nOracle:Whenever one or more other nontoken permanents with a name originally printed in the Arabian Nights expansion are on the battlefield, their controllers sacrifice them.\\nPlayers can't cast spells or play lands with a name originally printed in the Arabian Nights expansion.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "City in a Bottle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

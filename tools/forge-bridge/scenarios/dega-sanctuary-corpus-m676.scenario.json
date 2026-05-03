@@ -1,0 +1,23 @@
+{
+  "id": "dega-sanctuary-corpus-m676",
+  "description": "M6 corpus — Dega Sanctuary; in-hand parse.",
+  "seed": 63396,
+  "cards": {
+    "Dega Sanctuary": "Name:Dega Sanctuary\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.YouCtrl+Black,Permanent.YouCtrl+Red | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if you control a black or red permanent, you gain 2 life. If you control a black permanent and a red permanent, you gain 4 life instead.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ L\nSVar:Y:Count$Valid Permanent.Black+YouCtrl/LimitMax.1\nSVar:Z:Count$Valid Permanent.Red+YouCtrl/LimitMax.1\nSVar:X:SVar$Y/Plus.Z\nSVar:L:Count$Compare X EQ2.4.2\nDeckHas:Ability$LifeGain\nDeckNeeds:Color$Black|Red\nOracle:At the beginning of your upkeep, if you control a black or red permanent, you gain 2 life. If you control a black permanent and a red permanent, you gain 4 life instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dega Sanctuary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

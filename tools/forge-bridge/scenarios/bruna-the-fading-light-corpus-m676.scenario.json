@@ -1,0 +1,23 @@
+{
+  "id": "bruna-the-fading-light-corpus-m676",
+  "description": "M6 corpus — Bruna, the Fading Light; in-hand parse.",
+  "seed": 61464,
+  "cards": {
+    "Bruna, the Fading Light": "Name:Bruna, the Fading Light\nManaCost:5 W W\nTypes:Legendary Creature Angel Horror\nPT:5/7\nK:Flying\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When you cast CARDNAME, you may return target Angel or Human creature card from your graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.Angel+YouCtrl,Creature.Human+YouCtrl\nDeckHints:Name$Gisela the Broken Blade & Type$Human|Angel\nMeldPair:Gisela, the Broken Blade\nAlternateMode:Meld\nOracle:When you cast this spell, you may return target Angel or Human creature card from your graveyard to the battlefield.\\nFlying, vigilance\\n(Melds with Gisela, the Broken Blade.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bruna, the Fading Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

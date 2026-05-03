@@ -1,0 +1,23 @@
+{
+  "id": "fiery-confluence-corpus-m676",
+  "description": "M6 corpus — Fiery Confluence; in-hand parse.",
+  "seed": 65278,
+  "cards": {
+    "Fiery Confluence": "Name:Fiery Confluence\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBDamageCreatures,DBDamageOpponents,DBDestroy | CharmNum$ 3 | CanRepeatModes$ True\nSVar:DBDamageCreatures:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature | SpellDescription$ CARDNAME deals 1 damage to each creature.\nSVar:DBDamageOpponents:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2 | AILogic$ Good | SpellDescription$ CARDNAME deals 2 damage to each opponent.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nOracle:Choose three. You may choose the same mode more than once.\\n• Fiery Confluence deals 1 damage to each creature.\\n• Fiery Confluence deals 2 damage to each opponent.\\n• Destroy target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiery Confluence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

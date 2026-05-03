@@ -1,0 +1,23 @@
+{
+  "id": "elephant-resurgence-corpus-m676",
+  "description": "M6 corpus — Elephant Resurgence; in-hand parse.",
+  "seed": 64413,
+  "cards": {
+    "Elephant Resurgence": "Name:Elephant Resurgence\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Token | TokenScript$ g_x_x_elephant_resurgence | TokenOwner$ Player | SpellDescription$ Each player creates a green Elephant creature token. Those creatures have \"This creature's power and toughness are each equal to the number of creature cards in its controller's graveyard.\"\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:SVar$Z1/Minus.Z2\nSVar:Z1:Count$ValidGraveyard Creature.YouOwn\nSVar:Z2:Count$ValidGraveyard Creature.OppOwn\nAI:RemoveDeck:Random\nOracle:Each player creates a green Elephant creature token. Those creatures have \"This creature's power and toughness are each equal to the number of creature cards in its controller's graveyard.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elephant Resurgence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

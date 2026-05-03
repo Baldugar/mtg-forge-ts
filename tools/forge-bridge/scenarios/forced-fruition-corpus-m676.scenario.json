@@ -1,0 +1,25 @@
+{
+  "id": "forced-fruition-corpus-m676",
+  "description": "M6 corpus — Forced Fruition; ETB-on-bf.",
+  "seed": 65626,
+  "cards": {
+    "Forced Fruition": "Name:Forced Fruition\nManaCost:4 U U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever an opponent casts a spell, that player draws seven cards.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredActivator | NumCards$ 7\nAI:RemoveDeck:Random\nOracle:Whenever an opponent casts a spell, that player draws seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Forced Fruition"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "fireslinger-corpus-m676",
+  "description": "M6 corpus — Fireslinger; ETB-on-bf.",
+  "seed": 65385,
+  "cards": {
+    "Fireslinger": "Name:Fireslinger\nManaCost:1 R\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SubAbility$ DBDealDamage | AILogic$ SelfDamage | DamageMap$ True | SpellDescription$ CARDNAME deals 1 damage to any target and 1 damage to you.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ You | NumDmg$ 1 | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nSVar:SelfDamageAmount:1\nOracle:{T}: Fireslinger deals 1 damage to any target and 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fireslinger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

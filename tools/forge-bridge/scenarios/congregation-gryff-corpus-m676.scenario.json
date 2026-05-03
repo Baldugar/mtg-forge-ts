@@ -1,0 +1,23 @@
+{
+  "id": "congregation-gryff-corpus-m676",
+  "description": "M6 corpus — Congregation Gryff; in-hand parse.",
+  "seed": 62486,
+  "cards": {
+    "Congregation Gryff": "Name:Congregation Gryff\nManaCost:1 G W\nTypes:Creature Hippogriff Mount\nPT:1/4\nK:Flying\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks while saddled, it gets +X/+X until end of turn, where X is the number of Mounts you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Mount.YouCtrl\nK:Saddle:3\nDeckHints:Type$Mount\nDeckHas:Ability$LifeGain\nOracle:Flying, lifelink\\nWhenever Congregation Gryff attacks while saddled, it gets +X/+X until end of turn, where X is the number of Mounts you control.\\nSaddle 3 (Tap any number of other creatures you control with total power 3 or more: This Mount becomes saddled until end of turn. Saddle only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Congregation Gryff"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

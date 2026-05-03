@@ -1,0 +1,23 @@
+{
+  "id": "doublecast-corpus-m676",
+  "description": "M6 corpus — Doublecast; in-hand parse.",
+  "seed": 63850,
+  "cards": {
+    "Doublecast": "Name:Doublecast\nManaCost:R R\nTypes:Sorcery\nA:SP$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:AIPriorityModifier:9\nOracle:When you cast your next instant or sorcery spell this turn, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doublecast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

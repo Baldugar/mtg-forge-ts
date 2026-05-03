@@ -1,0 +1,23 @@
+{
+  "id": "bushi-tenderfoot-corpus-m676",
+  "description": "M6 corpus — Bushi Tenderfoot; in-hand parse.",
+  "seed": 61549,
+  "cards": {
+    "Bushi Tenderfoot": "Name:Bushi Tenderfoot\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | TriggerZones$ Battlefield | Execute$ TrigFlip | TriggerDescription$ When a creature dealt damage by CARDNAME this turn dies, flip CARDNAME.\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nAlternateMode:Flip\nOracle:When a creature dealt damage by Bushi Tenderfoot this turn dies, flip Bushi Tenderfoot.\n\nALTERNATE\n\nName:Kenzo the Hardhearted\nManaCost:W\nColors:white\nTypes:Legendary Creature Human Samurai\nPT:3/4\nK:Double Strike\nK:Bushido:2\nOracle:Double strike; bushido 2 (Whenever this creature blocks or becomes blocked, it gets +2/+2 until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bushi Tenderfoot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

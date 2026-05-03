@@ -1,0 +1,23 @@
+{
+  "id": "elas-il-kor-sadistic-pilgrim-corpus-m676",
+  "description": "M6 corpus — Elas il-Kor, Sadistic Pilgrim; in-hand parse.",
+  "seed": 64351,
+  "cards": {
+    "Elas il-Kor, Sadistic Pilgrim": "Name:Elas il-Kor, Sadistic Pilgrim\nManaCost:W B\nTypes:Legendary Creature Phyrexian Kor Cleric\nPT:2/2\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control enters, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever another creature you control dies, each opponent loses 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Deathtouch\\nWhenever another creature you control enters, you gain 1 life.\\nWhenever another creature you control dies, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elas il-Kor, Sadistic Pilgrim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

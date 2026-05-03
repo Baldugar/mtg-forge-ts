@@ -1,0 +1,25 @@
+{
+  "id": "firmament-sage-corpus-m676",
+  "description": "M6 corpus — Firmament Sage; ETB-on-bf.",
+  "seed": 65393,
+  "cards": {
+    "Firmament Sage": "Name:Firmament Sage\nManaCost:3 U\nTypes:Creature Human Wizard\nPT:2/3\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ DBDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever day becomes night or night becomes day, draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:If it's neither day nor night, it becomes day as Firmament Sage enters.\\nWhenever day becomes night or night becomes day, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Firmament Sage"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "disciple-of-caelus-nin-corpus-m676",
+  "description": "M6 corpus — Disciple of Caelus Nin; in-hand parse.",
+  "seed": 63669,
+  "cards": {
+    "Disciple of Caelus Nin": "Name:Disciple of Caelus Nin\nManaCost:4 W\nTypes:Creature Human Wizard\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeatEach | TriggerDescription$ When CARDNAME enters, starting with you, each player chooses up to five permanents they control. All permanents other than CARDNAME that weren't chosen this way phase out.\nSVar:TrigRepeatEach:DB$ RepeatEach | RepeatPlayers$ Player | StartingWith$ You | RepeatSubAbility$ DBChoosePermanent | SubAbility$ DBPhaseOut\nSVar:DBChoosePermanent:DB$ ChooseCard | ChoiceTitle$ Choose up to five permanents you control | MinAmount$ 0 | Amount$ 5 | Defined$ Remembered | Choices$ Permanent.RememberedPlayerCtrl | RememberChosen$ True | AILogic$ NotSelf\nSVar:DBPhaseOut:DB$ Phases | AllValid$ Permanent.Other+!IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True | ClearRemembered$ True\nS:Mode$ CantPhaseIn | ValidCard$ Card.phasedOutPermanent | Description$ Permanents can't phase in.\nOracle:When Disciple of Caelus Nin enters, starting with you, each player chooses up to five permanents they control. All permanents other than Disciple of Caelus Nin that weren't chosen this way phase out.\\nPermanents can't phase in.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disciple of Caelus Nin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

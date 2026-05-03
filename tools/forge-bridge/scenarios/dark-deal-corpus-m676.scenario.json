@@ -1,0 +1,23 @@
+{
+  "id": "dark-deal-corpus-m676",
+  "description": "M6 corpus — Dark Deal; in-hand parse.",
+  "seed": 63074,
+  "cards": {
+    "Dark Deal": "Name:Dark Deal\nManaCost:2 B\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDiscard | SpellDescription$ Each player discards all the cards in their hand, then draws that many cards minus one.\nSVar:DBDiscard:DB$ Discard | Defined$ Player.IsRemembered | Mode$ Hand | RememberDiscarded$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | Defined$ Player.IsRemembered | SubAbility$ CleanDrawn\nSVar:CleanDrawn:DB$ Cleanup | ClearRemembered$ True\n# This calculation isn't considering the remembered player, only the remembered cards\nSVar:X:Remembered$Amount/Minus.1\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHas:Ability$Graveyard\nOracle:Each player discards all the cards in their hand, then draws that many cards minus one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Deal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dawnhart-wardens-corpus-m676",
+  "description": "M6 corpus — Dawnhart Wardens; in-hand parse.",
+  "seed": 63175,
+  "cards": {
+    "Dawnhart Wardens": "Name:Dawnhart Wardens\nManaCost:1 G W\nTypes:Creature Human Warlock\nPT:3/3\nK:Vigilance\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigPumpAll | TriggerDescription$ Coven — At the beginning of combat on your turn, if you control three or more creatures with different powers, creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nOracle:Vigilance\\nCoven — At the beginning of combat on your turn, if you control three or more creatures with different powers, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dawnhart Wardens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

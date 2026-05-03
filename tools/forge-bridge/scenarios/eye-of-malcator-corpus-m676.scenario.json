@@ -1,0 +1,23 @@
+{
+  "id": "eye-of-malcator-corpus-m676",
+  "description": "M6 corpus — Eye of Malcator; in-hand parse.",
+  "seed": 64933,
+  "cards": {
+    "Eye of Malcator": "Name:Eye of Malcator\nManaCost:2 U\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAnimate | TriggerDescription$ Whenever another artifact you control enters, CARDNAME becomes a 4/4 Phyrexian Eye artifact creature until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 4 | Toughness$ 4 | Types$ Artifact,Creature,Phyrexian,Eye | RemoveCreatureTypes$ True\nDeckHas:Type$Eye|Phyrexian\nOracle:When Eye of Malcator enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\\nWhenever another artifact you control enters, Eye of Malcator becomes a 4/4 Phyrexian Eye artifact creature until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eye of Malcator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deathbringer-regent-corpus-m676",
+  "description": "M6 corpus — Deathbringer Regent; in-hand parse.",
+  "seed": 63268,
+  "cards": {
+    "Deathbringer Regent": "Name:Deathbringer Regent\nManaCost:5 B B\nTypes:Creature Dragon\nPT:5/6\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | IsPresent$ Creature.Other | PresentCompare$ GE5 | Destination$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, if you cast it from your hand and there are five or more other creatures on the battlefield, destroy all other creatures.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.StrictlyOther\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen Deathbringer Regent enters, if you cast it from your hand and there are five or more other creatures on the battlefield, destroy all other creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathbringer Regent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

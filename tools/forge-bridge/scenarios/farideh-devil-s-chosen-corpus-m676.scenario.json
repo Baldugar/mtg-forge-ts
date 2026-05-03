@@ -1,0 +1,25 @@
+{
+  "id": "farideh-devil-s-chosen-corpus-m676",
+  "description": "M6 corpus — Farideh, Devil's Chosen; ETB-on-bf.",
+  "seed": 65084,
+  "cards": {
+    "Farideh, Devil's Chosen": "Name:Farideh, Devil's Chosen\nManaCost:2 U R\nTypes:Legendary Creature Tiefling Warlock\nPT:3/3\nT:Mode$ RolledDieOnce | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPump | TriggerDescription$ Dark One's Own Luck — Whenever you roll one or more dice, CARDNAME gains flying and menace until end of turn. If any of those results was 10 or higher, draw a card.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying & Menace | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ DiceResult | ConditionSVarCompare$ GE10\nSVar:DiceResult:TriggerCountMax$Result\nOracle:Dark One's Own Luck — Whenever you roll one or more dice, Farideh, Devil's Chosen gains flying and menace until end of turn. If any of those results was 10 or higher, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Farideh, Devil's Chosen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

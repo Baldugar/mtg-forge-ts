@@ -1,0 +1,23 @@
+{
+  "id": "doomsday-corpus-m676",
+  "description": "M6 corpus — Doomsday; in-hand parse.",
+  "seed": 63830,
+  "cards": {
+    "Doomsday": "Name:Doomsday\nManaCost:B B B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard,Library | Destination$ Library | ChangeType$ Card | ChangeNum$ 5 | Shuffle$ False | SubAbility$ DBChangeZone | RememberChanged$ True | Mandatory$ True | SpellDescription$ Search your library and graveyard for five cards and exile the rest. Put the chosen cards on top of your library in any order. You lose half your life, rounded up.\nSVar:DBChangeZone:DB$ ChangeZoneAll | Defined$ You | Origin$ Graveyard,Library | Destination$ Exile | ChangeType$ Card.!IsRemembered | SubAbility$ DBDig\nSVar:DBDig:DB$ RearrangeTopOfLibrary | Defined$ You | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ Y | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidLibrary Card.YouOwn\nSVar:Y:Count$YourLifeTotal/HalfUp\nAI:RemoveDeck:All\nOracle:Search your library and graveyard for five cards and exile the rest. Put the chosen cards on top of your library in any order. You lose half your life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomsday"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

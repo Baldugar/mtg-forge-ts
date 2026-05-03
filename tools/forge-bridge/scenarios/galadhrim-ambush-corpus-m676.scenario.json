@@ -1,0 +1,23 @@
+{
+  "id": "galadhrim-ambush-corpus-m676",
+  "description": "M6 corpus — Galadhrim Ambush; in-hand parse.",
+  "seed": 65890,
+  "cards": {
+    "Galadhrim Ambush": "Name:Galadhrim Ambush\nManaCost:3 G\nTypes:Instant\nA:SP$ Token | TokenAmount$ X | TokenScript$ g_1_1_elf_warrior | TokenOwner$ You | SubAbility$ DBEffect | SpellDescription$ Create X 1/1 green Elf Warrior creature tokens, where X is the number of attacking creatures.Prevent all combat damage that would be dealt this turn by non-Elf creatures.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ Curse\nSVar:Curse:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | ValidSource$ Creature.nonElf | Description$ Prevent all combat damage that would be dealt this turn by non-Elf creatures.\nSVar:X:Count$Valid Creature.attacking\nDeckHas:Ability$Token & Type$Elf|Warrior\nOracle:Create X 1/1 green Elf Warrior creature tokens, where X is the number of attacking creatures.\\nPrevent all combat damage that would be dealt this turn by non-Elf creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galadhrim Ambush"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

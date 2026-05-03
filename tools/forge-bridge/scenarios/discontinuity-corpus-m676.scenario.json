@@ -1,0 +1,23 @@
+{
+  "id": "discontinuity-corpus-m676",
+  "description": "M6 corpus — Discontinuity; in-hand parse.",
+  "seed": 63680,
+  "cards": {
+    "Discontinuity": "Name:Discontinuity\nManaCost:3 U U U\nTypes:Instant\nS:Mode$ ReduceCost | Condition$ PlayerTurn | ValidCard$ Card.Self | Amount$ 2 | Color$ U | Type$ Spell | EffectZone$ All | Description$ During your turn, CARDNAME costs {2}{U}{U} less to cast.\nS:Mode$ ReduceCost | Condition$ PlayerTurn | ValidCard$ Card.Self | Amount$ 2 | Type$ Spell | EffectZone$ All | Secondary$ True | Description$ During your turn, CARDNAME costs {2}{U}{U} less to cast.\nA:SP$ EndTurn | SpellDescription$ End the turn. (Exile all spells and abilities from the stack, including this card. The player whose turn it is discards down to their maximum hand size. Damage wears off, and \"this turn\" and \"until end of turn\" effects end.)\nAI:RemoveDeck:All\nOracle:During your turn, this spell costs {2}{U}{U} less to cast.\\nEnd the turn. (Exile all spells and abilities from the stack, including this card. The player whose turn it is discards down to their maximum hand size. Damage wears off, and \"this turn\" and \"until end of turn\" effects end.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discontinuity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

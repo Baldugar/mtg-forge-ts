@@ -1,0 +1,25 @@
+{
+  "id": "dominating-licid-corpus-m676",
+  "description": "M6 corpus — Dominating Licid; ETB-on-bf.",
+  "seed": 63809,
+  "cards": {
+    "Dominating Licid": "Name:Dominating Licid\nManaCost:1 U U\nTypes:Creature Licid\nPT:1/1\nA:AB$ Animate | Cost$ 1 U U T | Defined$ Self | RemoveThisAbility$ True | Duration$ Permanent | RevertCost$ U | Keywords$ Enchant:Creature | Types$ Enchantment,Aura | RemoveCardTypes$ True | RemoveEnchantmentTypes$ True | SubAbility$ DBAttach | SpellDescription$ CARDNAME loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {U} to end this effect.\nSVar:DBAttach:DB$ Attach | ValidTgts$ Creature | AILogic$ GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted creature.\nAI:RemoveDeck:All\nOracle:{1}{U}{U}, {T}: Dominating Licid loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {U} to end this effect.\\nYou control enchanted creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dominating Licid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

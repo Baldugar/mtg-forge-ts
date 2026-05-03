@@ -1,0 +1,23 @@
+{
+  "id": "gerrard-s-verdict-corpus-m676",
+  "description": "M6 corpus — Gerrard's Verdict; in-hand parse.",
+  "seed": 66066,
+  "cards": {
+    "Gerrard's Verdict": "Name:Gerrard's Verdict\nManaCost:W B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Player | Mode$ TgtChoose | NumCards$ 2 | RememberDiscarded$ True | SubAbility$ DBGainLife1 | SpellDescription$ Target player discards two cards. You gain 3 life for each land card discarded this way.\nSVar:DBGainLife1:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:X:Remembered$Valid Land/Times.3\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target player discards two cards. You gain 3 life for each land card discarded this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gerrard's Verdict"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

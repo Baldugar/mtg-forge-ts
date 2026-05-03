@@ -1,0 +1,23 @@
+{
+  "id": "deepglow-skate-corpus-m676",
+  "description": "M6 corpus — Deepglow Skate; in-hand parse.",
+  "seed": 63342,
+  "cards": {
+    "Deepglow Skate": "Name:Deepglow Skate\nManaCost:4 U\nTypes:Creature Fish\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDoubleCounters | TriggerDescription$ When CARDNAME enters, double the number of each kind of counter on any number of target permanents.\nSVar:TrigDoubleCounters:DB$ MultiplyCounter | ValidTgts$ Permanent | TargetMin$ 0 | TargetMax$ X | Multiplier$ 2\nSVar:X:Count$Valid Permanent\nOracle:When Deepglow Skate enters, double the number of each kind of counter on any number of target permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deepglow Skate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

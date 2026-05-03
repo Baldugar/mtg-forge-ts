@@ -1,0 +1,23 @@
+{
+  "id": "fortress-cyclops-corpus-m676",
+  "description": "M6 corpus — Fortress Cyclops; in-hand parse.",
+  "seed": 65677,
+  "cards": {
+    "Fortress Cyclops": "Name:Fortress Cyclops\nManaCost:3 R W\nTypes:Creature Cyclops Soldier\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPumpAttack | TriggerDescription$ Whenever CARDNAME attacks, it gets +3/+0 until end of turn.\nSVar:TrigPumpAttack:DB$ Pump | Defined$ Self | NumAtt$ +3\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPumpBlock | TriggerDescription$ Whenever CARDNAME blocks, it gets +0/+3 until end of turn.\nSVar:TrigPumpBlock:DB$ Pump | Defined$ Self | NumDef$ +3\nOracle:Whenever Fortress Cyclops attacks, it gets +3/+0 until end of turn.\\nWhenever Fortress Cyclops blocks, it gets +0/+3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fortress Cyclops"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ghost-ark-corpus-m676",
+  "description": "M6 corpus — Ghost Ark; in-hand parse.",
+  "seed": 66108,
+  "cards": {
+    "Ghost Ark": "Name:Ghost Ark\nManaCost:4\nTypes:Artifact Vehicle\nPT:3/3\nK:Flying\nT:Mode$ BecomesCrewed | ValidCard$ Card.Self | Execute$ DBPumpAll | TriggerDescription$ Repair Barge — Whenever CARDNAME becomes crewed, each artifact creature card in your graveyard gains unearth {3} until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Artifact.Creature+YouCtrl | KW$ Unearth:3 | PumpZone$ Graveyard\nK:Crew:2\nDeckHas:Ability$Graveyard & Keyword$Unearth\nOracle:Flying\\nRepair Barge — Whenever Ghost Ark becomes crewed, each artifact creature card in your graveyard gains unearth {3} until end of turn.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghost Ark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

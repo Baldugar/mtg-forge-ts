@@ -1,0 +1,23 @@
+{
+  "id": "deep-gnome-terramancer-corpus-m676",
+  "description": "M6 corpus — Deep Gnome Terramancer; in-hand parse.",
+  "seed": 63329,
+  "cards": {
+    "Deep Gnome Terramancer": "Name:Deep Gnome Terramancer\nManaCost:1 W\nTypes:Creature Gnome Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZoneAll | ValidCards$ Land.OppCtrl | ValidCause$ LandAbility | InvertValidCause$ True | Destination$ Battlefield | TriggerZones$ Battlefield | ResolvedLimit$ 1 | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ Mold Earth — Whenever one or more lands enter under an opponent's control without being played, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle. Do this only once each turn.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Card.Plains | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:Flash\\nMold Earth — Whenever one or more lands enter under an opponent's control without being played, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deep Gnome Terramancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

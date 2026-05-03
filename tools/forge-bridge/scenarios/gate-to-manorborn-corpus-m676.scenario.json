@@ -1,0 +1,25 @@
+{
+  "id": "gate-to-manorborn-corpus-m676",
+  "description": "M6 corpus — Gate to Manorborn; ETB-on-bf.",
+  "seed": 65967,
+  "cards": {
+    "Gate to Manorborn": "Name:Gate to Manorborn\nManaCost:no cost\nTypes:Land Forest Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Seek | Cost$ 3 G T | Type$ Card.nonLand | GameActivationLimit$ 1 | StackDescription$ {p:You} seeks a nonland card. | SpellDescription$ Seek a nonland card. Activate only once.\nText:{T}: Add {G}.\nDeckHints:Type$Gate\nOracle:Gate to Manorborn enters tapped.\\n{3}{G}, {T}: Seek a nonland card. Activate only once.\\n{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gate to Manorborn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

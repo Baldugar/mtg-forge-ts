@@ -1,0 +1,23 @@
+{
+  "id": "encase-in-ice-corpus-m676",
+  "description": "M6 corpus — Encase in Ice; in-hand parse.",
+  "seed": 64553,
+  "cards": {
+    "Encase in Ice": "Name:Encase in Ice\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature.Red,Creature.Green:red or green creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nAI:RemoveDeck:Random\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nEnchant red or green creature\\nWhen Encase in Ice enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Encase in Ice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

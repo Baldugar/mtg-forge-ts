@@ -1,0 +1,23 @@
+{
+  "id": "frodo-determined-hero-corpus-m676",
+  "description": "M6 corpus — Frodo, Determined Hero; in-hand parse.",
+  "seed": 65762,
+  "cards": {
+    "Frodo, Determined Hero": "Name:Frodo, Determined Hero\nManaCost:1 W\nTypes:Legendary Creature Halfling Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBAttach | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME enters or attacks, you may attach target Equipment you control with mana value 2 or 3 to NICKNAME.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ DBAttach | TriggerZones$ Battlefield | OptionalDecider$ You | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks, you may attach target Equipment you control with mana value 2 or 3 to NICKNAME.\nSVar:DBAttach:DB$ Attach | ValidTgts$ Equipment.cmcEQ2+YouCtrl,Equipment.cmcEQ3+YouCtrl | Object$ Targeted | Defined$ Self\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ Card.Self | PlayerTurn$ True | Description$ During your turn, prevent all damage that would be dealt to NICKNAME.\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Equipment\nOracle:Whenever Frodo, Determined Hero enters or attacks, you may attach target Equipment you control with mana value 2 or 3 to Frodo.\\nDuring your turn, prevent all damage that would be dealt to Frodo.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frodo, Determined Hero"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

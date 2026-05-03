@@ -1,0 +1,23 @@
+{
+  "id": "fangkeeper-s-familiar-corpus-m676",
+  "description": "M6 corpus — Fangkeeper's Familiar; in-hand parse.",
+  "seed": 65067,
+  "cards": {
+    "Fangkeeper's Familiar": "Name:Fangkeeper's Familiar\nManaCost:1 B G U\nTypes:Creature Snake\nPT:3/3\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When this creature enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBGainLife,DBDestroy,DBCounter\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBSurveil | SpellDescription$ You gain 3 life and surveil 3. (Look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:DBSurveil:DB$ Surveil | Amount$ 3\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Creature | SpellDescription$ Counter target creature spell.\nOracle:Flash\\nWhen this creature enters, choose one —\\n• You gain 3 life and surveil 3. (Look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\\n• Destroy target enchantment.\\n• Counter target creature spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fangkeeper's Familiar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

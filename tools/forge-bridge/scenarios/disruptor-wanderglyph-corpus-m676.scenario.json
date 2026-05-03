@@ -1,0 +1,23 @@
+{
+  "id": "disruptor-wanderglyph-corpus-m676",
+  "description": "M6 corpus — Disruptor Wanderglyph; in-hand parse.",
+  "seed": 63724,
+  "cards": {
+    "Disruptor Wanderglyph": "Name:Disruptor Wanderglyph\nManaCost:4\nTypes:Artifact Creature Golem\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks, exile target card from an opponent's graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card.OppOwn | TgtPrompt$ Select target card from an opponent's graveyard | Mandatory$ True\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Disruptor Wanderglyph attacks, exile target card from an opponent's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disruptor Wanderglyph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ferris-wheel-corpus-m676",
+  "description": "M6 corpus — Ferris Wheel; in-hand parse.",
+  "seed": 65229,
+  "cards": {
+    "Ferris Wheel": "Name:Ferris Wheel\nManaCost:no cost\nTypes:Artifact Attraction\nLights:4 5 6\nK:Visit:TrigPhaseOut\nSVar:TrigPhaseOut:DB$ Phases | ValidTgts$ Creature.!IsRemembered | RememberAffected$ True | WontPhaseInNormal$ True | SubAbility$ DBEffect | TgtPrompt$ Select target creature that hasn't been phased out by CARDNAME | SpellDescription$ Visit — Choose target creature that hasn't been phased out with CARDNAME. That creature phases out until you roll a 3 or less while rolling to visit your Attractions.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigComeBack | RememberObjects$ Remembered | Duration$ Permanent\nSVar:TrigComeBack:Mode$ RolledDie | TriggerZones$ Command | Execute$ TrigPhaseIn | Static$ True | ValidResult$ LE3 | RolledToVisitAttractions$ True | ValidPlayer$ You\nSVar:TrigPhaseIn:DB$ Phases | Defined$ Remembered | PhaseInOrOut$ True | SubAbility$ DBExileSelf\nSVar:DBExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReset | Static$ True\nSVar:TrigReset:DB$ Cleanup | ClearRemembered$ True\nOracle:Visit — Choose target creature that hasn't been phased out with Ferris Wheel. That creature phases out until you roll a 3 or less while rolling to visit your Attractions.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ferris Wheel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

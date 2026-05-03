@@ -1,0 +1,23 @@
+{
+  "id": "cecil-dark-knight-corpus-m676",
+  "description": "M6 corpus — Cecil, Dark Knight; in-hand parse.",
+  "seed": 61849,
+  "cards": {
+    "Cecil, Dark Knight": "Name:Cecil, Dark Knight\nManaCost:B\nTypes:Legendary Creature Human Knight\nPT:2/3\nK:Deathtouch\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Darkness — Whenever NICKNAME deals damage, you lose that much life. Then if your life total is less than or equal to half your starting life total, untap NICKNAME and transform it.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X | SubAbility$ DBUntap\nSVar:DBUntap:DB$ Untap | Defined$ Self | ConditionCheckSVar$ Z | ConditionSVarCompare$ LEY | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionCheckSVar$ Z | ConditionSVarCompare$ LEY | Mode$ Transform\nSVar:X:TriggerCount$DamageAmount\nSVar:Z:Count$YourLifeTotal\nSVar:Y:Count$YourStartingLife/HalfDown\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:Deathtouch\\nDarkness — Whenever Cecil deals damage, you lose that much life. Then if your life total is less than or equal to half your starting life total, untap Cecil and transform it.\n\nALTERNATE\n\nName:Cecil, Redeemed Paladin\nManaCost:no cost\nColors:white\nTypes:Legendary Creature Human Knight\nPT:4/4\nK:Lifelink\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAttack | TriggerDescription$ Protect — Whenever NICKNAME attacks, other attacking creatures gain indestructible until end of turn.\nSVar:HasAttackEffect:TRUE\nSVar:TrigPumpAttack:DB$ PumpAll | ValidCards$ Creature.attacking+Other | KW$ Indestructible\nOracle:Lifelink\\nProtect — Whenever Cecil attacks, other attacking creatures gain indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cecil, Dark Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

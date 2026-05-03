@@ -1,0 +1,23 @@
+{
+  "id": "floriferous-vinewall-corpus-m676",
+  "description": "M6 corpus — Floriferous Vinewall; in-hand parse.",
+  "seed": 65534,
+  "cards": {
+    "Floriferous Vinewall": "Name:Floriferous Vinewall\nManaCost:1 G\nTypes:Creature Plant Wall\nPT:0/2\nK:Defender\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top six cards of your library. You may reveal a land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Land | RestRandomOrder$ True | ForceRevealToController$ True\nOracle:Defender\\nWhen Floriferous Vinewall enters, look at the top six cards of your library. You may reveal a land card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Floriferous Vinewall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dimensional-infiltrator-corpus-m676",
+  "description": "M6 corpus — Dimensional Infiltrator; ETB-on-bf.",
+  "seed": 63621,
+  "cards": {
+    "Dimensional Infiltrator": "Name:Dimensional Infiltrator\nManaCost:1 U\nTypes:Creature Eldrazi\nPT:2/1\nK:Devoid\nK:Flash\nK:Flying\nA:AB$ Dig | Cost$ 1 C | ValidTgts$ Opponent | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBBounce | SpellDescription$ Target opponent exiles the top card of their library. If it's a land card, you may return CARDNAME to its owner's hand.\nSVar:DBBounce:DB$ ChangeZone | Origin$ Battlefield | Optional$ True | ConditionDefined$ Remembered | ConditionPresent$ Card.Land | ConditionCompare$ GE1 | Destination$ Hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Ability$Mana.Colorless\nOracle:Devoid (This card has no color.)\\nFlash\\nFlying\\n{1}{C}: Target opponent exiles the top card of their library. If it's a land card, you may return Dimensional Infiltrator to its owner's hand. ({C} represents colorless mana.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dimensional Infiltrator"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

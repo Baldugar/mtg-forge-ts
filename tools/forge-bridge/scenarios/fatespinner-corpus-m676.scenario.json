@@ -1,0 +1,23 @@
+{
+  "id": "fatespinner-corpus-m676",
+  "description": "M6 corpus — Fatespinner; in-hand parse.",
+  "seed": 65116,
+  "cards": {
+    "Fatespinner": "Name:Fatespinner\nManaCost:1 U U\nTypes:Creature Human Wizard\nPT:1/2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Execute$ TrigSkipPhase | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, that player chooses draw step, main phase, or combat phase. The player skips each instance of the chosen step or phase this turn.\nSVar:TrigSkipPhase:DB$ GenericChoice | Defined$ TriggeredPlayer | Choices$ FatespinnerSkipDraw,FatespinnerSkipMain,FatespinnerSkipCombat | ShowChoice$ ExceptSelf | AILogic$ Fatespinner\nSVar:FatespinnerSkipDraw:DB$ SkipPhase | Defined$ TriggeredPlayer | Step$ Draw | Duration$ EndOfTurn | SpellDescription$ Draw step\nSVar:FatespinnerSkipMain:DB$ SkipPhase | Defined$ TriggeredPlayer | Phase$ Main | Duration$ EndOfTurn | SpellDescription$ Main phase\nSVar:FatespinnerSkipCombat:DB$ SkipPhase | Defined$ TriggeredPlayer | Phase$ BeginCombat | Duration$ EndOfTurn | SpellDescription$ Combat phase\nOracle:At the beginning of each opponent's upkeep, that player chooses draw step, main phase, or combat phase. The player skips each instance of the chosen step or phase this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fatespinner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

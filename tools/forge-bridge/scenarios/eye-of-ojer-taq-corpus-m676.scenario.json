@@ -1,0 +1,23 @@
+{
+  "id": "eye-of-ojer-taq-corpus-m676",
+  "description": "M6 corpus — Eye of Ojer Taq; in-hand parse.",
+  "seed": 64936,
+  "cards": {
+    "Eye of Ojer Taq": "Name:Eye of Ojer Taq\nManaCost:3\nTypes:Artifact\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nK:Craft:6 ExileCtrlOrGrave<2/Permanent.Other+withSharedCardType/permanent>:two that share a card type:the two\nAI:RemoveDeck:All\nDeckHints:Ability$Discard|Mill|Sacrifice\nDeckHas:Ability$Mill|Graveyard|Token\nAlternateMode:DoubleFaced\nOracle:{T}: Add one mana of any color.\\nCraft with two that share a card type {6} ({6}, Exile this artifact, Exile the two from among other permanents you control and/or cards from your graveyard: Return this card transformed under its owner's control. Craft only as a sorcery.)\n\nALTERNATE\n\nName:Apex Observatory\nManaCost:no cost\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:DBChooseType\nSVar:DBChooseType:DB$ ChooseType | Type$ Shared | TypesFromDefined$ ExiledWith | AILogic$ MostProminentComputerControlsOrOwns | SpellDescription$ As CARDNAME enters, choose a card type shared among two exiled cards used to craft it.\nA:AB$ Effect | Cost$ T | StaticAbilities$ Play | ForgetOnCast$ Card.ChosenType+YouCtrl | SpellDescription$ The next spell you cast this turn of the chosen type can be cast without paying its mana cost.\nSVar:Play:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayDontGrantZonePermissions$ True | Affected$ Card.ChosenType | AffectedZone$ Hand,Graveyard,Library,Exile,Command | Description$ The next spell you cast this turn of the chosen type can be cast without paying its mana cost.\nOracle:Apex Observatory enters tapped. As it enters, choose a card type shared among two exiled cards used to craft it.\\n{T}: The next spell you cast this turn of the chosen type can be cast without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eye of Ojer Taq"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

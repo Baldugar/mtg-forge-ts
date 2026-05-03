@@ -1,0 +1,23 @@
+{
+  "id": "darksteel-hydra-corpus-m676",
+  "description": "M6 corpus — Darksteel Hydra; in-hand parse.",
+  "seed": 63110,
+  "cards": {
+    "Darksteel Hydra": "Name:Darksteel Hydra\nManaCost:X W B G\nTypes:Artifact Creature Phyrexian Hydra\nPT:*/*\nK:Indestructible\nK:etbCounter:OIL:X\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ Y | SetToughness$ Y | Description$ CARDNAME's power and toughness are each equal to twice the number of oil counters on it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card named Darksteel Ingot and a card named Darksteel Plate into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Names$ Darksteel Ingot,Darksteel Plate | Zone$ Hand\nSVar:X:Count$xPaid\nSVar:Y:Count$CardCounters.OIL/Twice\nDeckHas:Ability$Counters\nOracle:Indestructible\\nDarksteel Hydra enters with X oil counters on it.\\nDarksteel Hydra's power and toughness are each equal to twice the number of oil counters on it.\\nWhen Darksteel Hydra enters, conjure a card named Darksteel Ingot and a card named Darksteel Plate into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darksteel Hydra"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

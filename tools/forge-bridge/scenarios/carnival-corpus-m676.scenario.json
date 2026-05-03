@@ -1,0 +1,23 @@
+{
+  "id": "carnival-corpus-m676",
+  "description": "M6 corpus — Carnival; in-hand parse.",
+  "seed": 61736,
+  "cards": {
+    "Carnival": "Name:Carnival\nManaCost:BR\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ 1 | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 1 damage to target creature or planeswalker and 1 damage to that permanent's controller.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 1\nAlternateMode:Split\nOracle:Carnival deals 1 damage to target creature or planeswalker and 1 damage to that permanent's controller.\n\nALTERNATE\n\nName:Carnage\nManaCost:2 B R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player.Opponent | NumDmg$ 3 | SubAbility$ DBDiscard | SpellDescription$ CARDNAME deals 3 damage to target opponent. That player discards two cards.\nSVar:DBDiscard:DB$ Discard | Defined$ TargetedPlayer | NumCards$ 2 | Mode$ TgtChoose\nOracle:Carnage deals 3 damage to target opponent. That player discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carnival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

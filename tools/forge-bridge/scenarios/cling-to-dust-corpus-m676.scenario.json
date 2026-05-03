@@ -1,0 +1,23 @@
+{
+  "id": "cling-to-dust-corpus-m676",
+  "description": "M6 corpus — Cling to Dust; in-hand parse.",
+  "seed": 62242,
+  "cards": {
+    "Cling to Dust": "Name:Cling to Dust\nManaCost:B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | RememberChanged$ True | SubAbility$ DBGainLife | StackDescription$ SpellDescription | SpellDescription$ Exile target card from a graveyard. If it was a creature card, you gain 3 life. Otherwise, you draw a card.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Escape:3 B ExileFromGrave<5/Card.Other/other>\nDeckHas:Ability$LifeGain\nOracle:Exile target card from a graveyard. If it was a creature card, you gain 3 life. Otherwise, you draw a card.\\nEscape—{3}{B}, Exile five other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cling to Dust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

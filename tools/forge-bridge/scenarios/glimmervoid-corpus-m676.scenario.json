@@ -1,0 +1,23 @@
+{
+  "id": "glimmervoid-corpus-m676",
+  "description": "M6 corpus — Glimmervoid; in-hand parse.",
+  "seed": 66294,
+  "cards": {
+    "Glimmervoid": "Name:Glimmervoid\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Artifact.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ At the beginning of the end step, if you control no artifacts, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Artifact.YouCtrl\nAI:RemoveDeck:Random\nOracle:At the beginning of the end step, if you control no artifacts, sacrifice Glimmervoid.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimmervoid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

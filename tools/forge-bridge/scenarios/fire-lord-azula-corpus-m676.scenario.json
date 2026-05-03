@@ -1,0 +1,25 @@
+{
+  "id": "fire-lord-azula-corpus-m676",
+  "description": "M6 corpus — Fire Lord Azula; ETB-on-bf.",
+  "seed": 65340,
+  "cards": {
+    "Fire Lord Azula": "Name:Fire Lord Azula\nManaCost:1 U B R\nTypes:Legendary Creature Human Noble\nPT:4/4\nK:Firebending:2\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | IsPresent$ Card.Self+attacking | NoResolvingCheck$ True | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell while CARDNAME is attacking, copy that spell. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nOracle:Firebending 2 (Whenever this creature attacks, add {R}{R}. This mana lasts until end of combat.)\\nWhenever you cast a spell while Fire Lord Azula is attacking, copy that spell. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fire Lord Azula"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

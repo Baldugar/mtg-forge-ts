@@ -1,0 +1,23 @@
+{
+  "id": "dreadmaw-s-ire-corpus-m676",
+  "description": "M6 corpus — Dreadmaw's Ire; in-hand parse.",
+  "seed": 64000,
+  "cards": {
+    "Dreadmaw's Ire": "Name:Dreadmaw's Ire\nManaCost:R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | NumAtt$ +2 | NumDef$ +2 | KW$ Trample | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, target attacking creature gets +2/+2 and gains trample and \"Whenever this creature deals combat damage to a player, destroy target artifact that player controls.\"\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Triggers$ DamageTrig\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDestroy | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, destroy target artifact that player controls.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredTarget | TgtPrompt$ Select target artifact damaged player controls\nOracle:Until end of turn, target attacking creature gets +2/+2 and gains trample and \"Whenever this creature deals combat damage to a player, destroy target artifact that player controls.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadmaw's Ire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

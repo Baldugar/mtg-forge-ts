@@ -1,0 +1,23 @@
+{
+  "id": "frost-bite-corpus-m676",
+  "description": "M6 corpus — Frost Bite; in-hand parse.",
+  "seed": 65788,
+  "cards": {
+    "Frost Bite": "Name:Frost Bite\nManaCost:R\nTypes:Snow Instant\nA:SP$ DealDamage | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | NumDmg$ X | SpellDescription$ CARDNAME deals 2 damage to target creature or planeswalker. If you control three or more snow permanents, it deals 3 damage instead.\nSVar:X:Count$Compare Y GE3.3.2\nSVar:Y:Count$Valid Permanent.Snow+YouCtrl\nDeckHints:Type$Snow\nOracle:Frost Bite deals 2 damage to target creature or planeswalker. If you control three or more snow permanents, it deals 3 damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frost Bite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

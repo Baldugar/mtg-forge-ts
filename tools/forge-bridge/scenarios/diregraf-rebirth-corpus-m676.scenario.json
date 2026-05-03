@@ -1,0 +1,23 @@
+{
+  "id": "diregraf-rebirth-corpus-m676",
+  "description": "M6 corpus — Diregraf Rebirth; in-hand parse.",
+  "seed": 63659,
+  "cards": {
+    "Diregraf Rebirth": "Name:Diregraf Rebirth\nManaCost:3 B G\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each creature that died this turn.\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Return target creature card from your graveyard to the battlefield.\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nK:Flashback:5 B G\nDeckHas:Ability$Graveyard\nOracle:This spell costs {1} less to cast for each creature that died this turn.\\nReturn target creature card from your graveyard to the battlefield.\\nFlashback {5}{B}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diregraf Rebirth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

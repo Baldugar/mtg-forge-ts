@@ -1,0 +1,23 @@
+{
+  "id": "furious-rise-corpus-m676",
+  "description": "M6 corpus — Furious Rise; in-hand parse.",
+  "seed": 65841,
+  "cards": {
+    "Furious Rise": "Name:Furious Rise\nManaCost:2 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | IsPresent$ Creature.YouCtrl+powerGE4 | TriggerZones$ Battlefield | Execute$ ExileSelf | TriggerDescription$ At the beginning of your end step, if you control a creature with power 4 or greater, exile the top card of your library. You may play that card until you exile another card with CARDNAME.\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Imprinted | Origin$ Command | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | AILogic$ ExileAndPlayUntilEOT\n# AILogic tag not quite right?\nSVar:DBEffect:DB$ Effect | RememberObjects$ Remembered | StaticAbilities$ Play | Duration$ Permanent | ForgetOnMoved$ Exile | ImprintOnHost$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ DBCleanup2\nSVar:DBCleanup2:DB$ Cleanup | ClearImprinted$ True\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play this card until you exile another card with CARDNAME.\nOracle:At the beginning of your end step, if you control a creature with power 4 or greater, exile the top card of your library. You may play that card until you exile another card with Furious Rise.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furious Rise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

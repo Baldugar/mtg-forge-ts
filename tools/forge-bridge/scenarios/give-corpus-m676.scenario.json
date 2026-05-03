@@ -1,0 +1,23 @@
+{
+  "id": "give-corpus-m676",
+  "description": "M6 corpus — Give; in-hand parse.",
+  "seed": 66237,
+  "cards": {
+    "Give": "Name:Give\nManaCost:2 G\nTypes:Sorcery\nK:Fuse\nA:SP$ PutCounter | ValidTgts$ Creature | TgtPrompt$ Select target creature to put counters | CounterType$ P1P1 | CounterNum$ 3 | SpellDescription$ Put three +1/+1 counters on target creature.\nDeckHas:Ability$Counters\nAlternateMode:Split\nOracle:Put three +1/+1 counters on target creature.\\nFuse (You may cast one or both halves of this card from your hand.)\n\nALTERNATE\n\nName:Take\nManaCost:2 U\nTypes:Sorcery\nA:SP$ RemoveCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to remove counters | CounterType$ P1P1 | CounterNum$ All | RememberRemoved$ True | SubAbility$ DBDraw | SpellDescription$ Remove all +1/+1 counters from target creature you control. Draw that many cards.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nAI:RemoveDeck:All\nOracle:Remove all +1/+1 counters from target creature you control. Draw that many cards.\\nFuse (You may cast one or both halves of this card from your hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Give"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

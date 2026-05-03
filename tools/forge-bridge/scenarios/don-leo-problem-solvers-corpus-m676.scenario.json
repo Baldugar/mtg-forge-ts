@@ -1,0 +1,23 @@
+{
+  "id": "don-leo-problem-solvers-corpus-m676",
+  "description": "M6 corpus — Don & Leo, Problem Solvers; in-hand parse.",
+  "seed": 63813,
+  "cards": {
+    "Don & Leo, Problem Solvers": "Name:Don & Leo, Problem Solvers\nManaCost:3 WU WU\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:4/6\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of your end step, exile up to one target artifact you control and up to one target creature you control. Then return them to the battlefield under their owners' control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Artifact.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | Select target artifact you control | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | TargetMin$ 0 | TargetMax$ 1 | ThisDefinedAndTgts$ ParentTarget | TgtPrompt$ Select target creature you control | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Vigilance\\nAt the beginning of your end step, exile up to one target artifact you control and up to one target creature you control. Then return them to the battlefield under their owners' control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Don & Leo, Problem Solvers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

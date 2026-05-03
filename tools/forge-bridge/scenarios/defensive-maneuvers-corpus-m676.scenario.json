@@ -1,0 +1,23 @@
+{
+  "id": "defensive-maneuvers-corpus-m676",
+  "description": "M6 corpus — Defensive Maneuvers; in-hand parse.",
+  "seed": 63373,
+  "cards": {
+    "Defensive Maneuvers": "Name:Defensive Maneuvers\nManaCost:3 W\nTypes:Instant\nA:SP$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentComputerControls | SubAbility$ DBPumpAll | SpellDescription$ Creatures of the creature type of your choice get +0/+4 until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.ChosenType | NumDef$ +4\nAI:RemoveDeck:All\nOracle:Creatures of the creature type of your choice get +0/+4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defensive Maneuvers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

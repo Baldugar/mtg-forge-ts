@@ -1,0 +1,23 @@
+{
+  "id": "dreams-of-steel-and-oil-corpus-m676",
+  "description": "M6 corpus — Dreams of Steel and Oil; in-hand parse.",
+  "seed": 64031,
+  "cards": {
+    "Dreams of Steel and Oil": "Name:Dreams of Steel and Oil\nManaCost:B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | ImprintRevealed$ True | RememberTargets$ True | SubAbility$ DBChooseCard | SpellDescription$ Target opponent reveals their hand. You choose an artifact or creature card from it, then choose an artifact or creature card from their graveyard. Exile the chosen cards.\nSVar:DBChooseCard:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Artifact.IsImprinted,Creature.IsImprinted | RememberChosen$ True | ChoiceTitle$ Choose an artifact or creature card | Mandatory$ True | SubAbility$ DBChooseFromGraveyard\nSVar:DBChooseFromGraveyard:DB$ ChooseCard | ChoiceZone$ Graveyard | Choices$ Artifact.RememberedPlayerOwn,Creature.RememberedPlayerOwn | RememberChosen$ True | ChoiceTitle$ Choose an artifact or creature card | Mandatory$ True | Amount$ 1 | SubAbility$ DBExileBoth\nSVar:DBExileBoth:DB$ ChangeZone | Defined$ RememberedCard | Origin$ Graveyard,Hand | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nOracle:Target opponent reveals their hand. You choose an artifact or creature card from it, then choose an artifact or creature card from their graveyard. Exile the chosen cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreams of Steel and Oil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

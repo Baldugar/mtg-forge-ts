@@ -1,0 +1,25 @@
+{
+  "id": "chancellor-of-the-annex-corpus-m676",
+  "description": "M6 corpus — Chancellor of the Annex; ETB-on-bf.",
+  "seed": 61949,
+  "cards": {
+    "Chancellor of the Annex": "Name:Chancellor of the Annex\nManaCost:4 W W W\nTypes:Creature Phyrexian Angel\nPT:5/6\nK:Flying\nK:MayEffectFromOpeningHand:RevealCard\nSVar:RevealCard:DB$ Reveal | RevealDefined$ Self | SubAbility$ DBEffect | SpellDescription$ You may reveal this card from your opening hand. If you do, when each opponent casts their first spell of the game, counter that spell unless that player pays {1}.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigCounter | EffectOwner$ Opponent | Duration$ Permanent\nSVar:TrigCounter:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | Execute$ TrigCounterSpell | OneOff$ True | TriggerZones$ Command | TriggerDescription$ When each opponent casts their first spell of the game, counter that spell unless that player pays {1}.\nSVar:TrigCounterSpell:DB$ Counter | Defined$ TriggeredSpellAbility | UnlessCost$ 1 | UnlessPayer$ You\nSVar:SpellsNeedExtraManaEffect:1\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | Execute$ CounterSpellOpp | TriggerZones$ Battlefield | TriggerDescription$ Whenever an opponent casts a spell, counter it unless that player pays {1}.\nSVar:CounterSpellOpp:DB$ Counter | Defined$ TriggeredSpellAbility | UnlessCost$ 1 | UnlessPayer$ TriggeredActivator\nSVar:AI_SpellsNeedExtraMana:1 Opponent\nOracle:You may reveal this card from your opening hand. If you do, when each opponent casts their first spell of the game, counter that spell unless that player pays {1}.\\nFlying\\nWhenever an opponent casts a spell, counter it unless that player pays {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chancellor of the Annex"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

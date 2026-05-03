@@ -1,0 +1,25 @@
+{
+  "id": "daring-thief-corpus-m676",
+  "description": "M6 corpus — Daring Thief; ETB-on-bf.",
+  "seed": 63066,
+  "cards": {
+    "Daring Thief": "Name:Daring Thief\nManaCost:2 U\nTypes:Creature Human Rogue\nPT:2/3\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExchangeControl | OptionalDecider$ You | TriggerDescription$ Inspired — Whenever CARDNAME becomes untapped, you may exchange control of target nonland permanent you control and target permanent an opponent controls that shares a card type with it.\nSVar:TrigExchangeControl:DB$ Pump | ValidTgts$ Permanent.YouCtrl+nonLand | TgtPrompt$ Select target nonland permanent you control | SubAbility$ DBExchange\nSVar:DBExchange:DB$ ExchangeControl | Defined$ ParentTarget | ValidTgts$ Permanent.OppCtrl | TgtPrompt$ Select target permanent an opponent controls that shares a card type with it | TargetsWithSharedCardType$ ParentTarget\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Inspired — Whenever Daring Thief becomes untapped, you may exchange control of target nonland permanent you control and target permanent an opponent controls that shares a card type with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Daring Thief"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

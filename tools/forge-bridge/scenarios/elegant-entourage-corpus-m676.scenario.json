@@ -1,0 +1,23 @@
+{
+  "id": "elegant-entourage-corpus-m676",
+  "description": "M6 corpus — Elegant Entourage; in-hand parse.",
+  "seed": 64392,
+  "cards": {
+    "Elegant Entourage": "Name:Elegant Entourage\nManaCost:3 G\nTypes:Creature Elf Druid\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Alliance — Whenever another creature you control enters, target creature other than CARDNAME gets +1/+1 and gains trample until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other | TgtPrompt$ Select target creature other than CARDNAME | NumAtt$ +1 | NumDef$ +1 | KW$ Trample\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Creature\nOracle:Alliance — Whenever another creature you control enters, target creature other than Elegant Entourage gets +1/+1 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elegant Entourage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

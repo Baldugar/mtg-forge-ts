@@ -1,0 +1,23 @@
+{
+  "id": "dracoplasm-corpus-m676",
+  "description": "M6 corpus — Dracoplasm; in-hand parse.",
+  "seed": 63878,
+  "cards": {
+    "Dracoplasm": "Name:Dracoplasm\nManaCost:U R\nTypes:Creature Shapeshifter\nPT:0/0\nK:Flying\nK:ETBReplacement:Other:TrigSac\nSVar:TrigSac:DB$ Sacrifice | Amount$ SacX | SacValid$ Creature | Defined$ You | RememberSacrificed$ True | Optional$ True | SubAbility$ DBAnimate | SpellDescription$ As CARDNAME enters, sacrifice any number of creatures. CARDNAME's power becomes the total power of those creatures and its toughness becomes their total toughness.\nSVar:DBAnimate:DB$ Animate | Defined$ Self | Power$ DracoPwr | Toughness$ DracoTgn | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacX:Count$Valid Creature.YouCtrl\nSVar:DracoPwr:RememberedLKI$CardPower\nSVar:DracoTgn:RememberedLKI$CardToughness\nA:AB$ Pump | Cost$ R | Defined$ Self | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nDeckHas:Ability$Sacrifice\nOracle:Flying\\nAs Dracoplasm enters, sacrifice any number of creatures. Dracoplasm's power becomes the total power of those creatures and its toughness becomes their total toughness.\\n{R}: Dracoplasm gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dracoplasm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

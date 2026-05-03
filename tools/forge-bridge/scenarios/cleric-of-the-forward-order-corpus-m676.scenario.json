@@ -1,0 +1,23 @@
+{
+  "id": "cleric-of-the-forward-order-corpus-m676",
+  "description": "M6 corpus — Cleric of the Forward Order; in-hand parse.",
+  "seed": 62228,
+  "cards": {
+    "Cleric of the Forward Order": "Name:Cleric of the Forward Order\nManaCost:1 W\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life for each creature you control named Cleric of the Forward Order.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+namedCleric of the Forward Order/Times.2\nDeckHints:Name$Cleric of the Forward Order\nOracle:When Cleric of the Forward Order enters, you gain 2 life for each creature you control named Cleric of the Forward Order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cleric of the Forward Order"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

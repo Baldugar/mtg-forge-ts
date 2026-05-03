@@ -1,0 +1,25 @@
+{
+  "id": "dovescape-corpus-m676",
+  "description": "M6 corpus — Dovescape; ETB-on-bf.",
+  "seed": 63857,
+  "cards": {
+    "Dovescape": "Name:Dovescape\nManaCost:3 WU WU WU\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | TriggerZones$ Battlefield | Execute$ TrigCounter | TriggerDescription$ Whenever a player casts a noncreature spell, counter that spell. That player creates X 1/1 white and blue Bird creature tokens with flying, where X is the spell's mana value.\nSVar:TrigCounter:DB$ Counter | Defined$ TriggeredSpellAbility | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ wu_1_1_bird_flying | TokenOwner$ TriggeredActivator\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:({W/U} can be paid with either {W} or {U}.)\\nWhenever a player casts a noncreature spell, counter that spell. That player creates X 1/1 white and blue Bird creature tokens with flying, where X is the spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dovescape"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

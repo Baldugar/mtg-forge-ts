@@ -1,0 +1,23 @@
+{
+  "id": "fervent-cathar-corpus-m676",
+  "description": "M6 corpus — Fervent Cathar; in-hand parse.",
+  "seed": 65233,
+  "cards": {
+    "Fervent Cathar": "Name:Fervent Cathar\nManaCost:2 R\nTypes:Creature Human Knight\nPT:2/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCanNotBlock | TriggerDescription$ When CARDNAME enters, target creature can't block this turn.\nSVar:TrigCanNotBlock:DB$ Pump | ValidTgts$ Creature | KW$ HIDDEN CARDNAME can't block. | IsCurse$ True | SpellDescription$ Target creature can't block this turn.\nSVar:PlayMain1:TRUE\nOracle:Haste\\nWhen Fervent Cathar enters, target creature can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fervent Cathar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

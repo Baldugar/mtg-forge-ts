@@ -1,0 +1,23 @@
+{
+  "id": "dust-stalker-corpus-m676",
+  "description": "M6 corpus — Dust Stalker; in-hand parse.",
+  "seed": 64191,
+  "cards": {
+    "Dust Stalker": "Name:Dust Stalker\nManaCost:2 B R\nTypes:Creature Eldrazi\nPT:5/3\nK:Devoid\nK:Haste\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+Colorless+Other | PresentCompare$ EQ0 | Execute$ TrigReturn | TriggerDescription$ At the beginning of each end step, if you control no other colorless creatures, return CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlay:Creature.YouCtrl+Colorless\nDeckHints:Color$Colorless & Keyword$Devoid\nOracle:Devoid (This card has no color.)\\nHaste\\nAt the beginning of each end step, if you control no other colorless creatures, return Dust Stalker to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dust Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goblin-gang-leader-corpus-m676",
+  "description": "M6 corpus — Goblin Gang Leader; in-hand parse.",
+  "seed": 66423,
+  "cards": {
+    "Goblin Gang Leader": "Name:Goblin Gang Leader\nManaCost:2 R R\nTypes:Creature Goblin Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two 1/1 red Goblin creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_goblin | TokenOwner$ You\nOracle:When Goblin Gang Leader enters, create two 1/1 red Goblin creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Gang Leader"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

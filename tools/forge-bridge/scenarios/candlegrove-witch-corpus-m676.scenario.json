@@ -1,0 +1,23 @@
+{
+  "id": "candlegrove-witch-corpus-m676",
+  "description": "M6 corpus — Candlegrove Witch; in-hand parse.",
+  "seed": 61659,
+  "cards": {
+    "Candlegrove Witch": "Name:Candlegrove Witch\nManaCost:1 W\nTypes:Creature Human Warlock\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ GE3 | Execute$ TrigPump | TriggerDescription$ Coven — At the beginning of combat on your turn, if you control three or more creatures with different powers, CARDNAME gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Flying\nSVar:X:Count$Valid Creature.YouCtrl$DifferentCardPower\nOracle:Coven — At the beginning of combat on your turn, if you control three or more creatures with different powers, Candlegrove Witch gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Candlegrove Witch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "furtive-courier-corpus-m676",
+  "description": "M6 corpus — Furtive Courier; in-hand parse.",
+  "seed": 65850,
+  "cards": {
+    "Furtive Courier": "Name:Furtive Courier\nManaCost:2 U\nTypes:Creature Merfolk Advisor\nPT:3/2\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self+attacking | CheckSVar$ SaccedThisTurn | Description$ CARDNAME can't be blocked as long as you've sacrificed an artifact this turn.\nSVar:SaccedThisTurn:PlayerCountPropertyYou$SacrificedThisTurn Artifact\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME attacks, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Sacrifice|Discard\nDeckHints:Type$Artifact|Clue|Map|Treasure|Food\nOracle:Furtive Courier can't be blocked as long as you've sacrificed an artifact this turn.\\nWhenever Furtive Courier attacks, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furtive Courier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

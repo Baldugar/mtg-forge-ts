@@ -1,0 +1,23 @@
+{
+  "id": "for-the-common-good-corpus-m676",
+  "description": "M6 corpus — For the Common Good; in-hand parse.",
+  "seed": 65613,
+  "cards": {
+    "For the Common Good": "Name:For the Common Good\nManaCost:X X G\nTypes:Sorcery\nA:SP$ CopyPermanent | ValidTgts$ Permanent.token+YouCtrl | TgtPrompt$ Select target token you control | NumCopies$ X | SubAbility$ DBPumpAll | SpellDescription$ Create X tokens that are copies of target token you control. Then tokens you control gain indestructible until your next turn. You gain 1 life for each token you control.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Permanent.token+YouCtrl | KW$ Indestructible | Duration$ UntilYourNextTurn | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ Y\nSVar:X:Count$xPaid\nSVar:Y:Count$Valid Permanent.token+YouCtrl\nOracle:Create X tokens that are copies of target token you control. Then tokens you control gain indestructible until your next turn. You gain 1 life for each token you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "For the Common Good"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

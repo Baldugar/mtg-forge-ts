@@ -1,0 +1,23 @@
+{
+  "id": "echoing-return-corpus-m676",
+  "description": "M6 corpus — Echoing Return; in-hand parse.",
+  "seed": 64300,
+  "cards": {
+    "Echoing Return": "Name:Echoing Return\nManaCost:B\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YouOwn | TgtZone$ Graveyard | SubAbility$ DBReturn | SpellDescription$ Return target creature card and all other cards with the same name as that card from your graveyard to your hand. | StackDescription$ Return {c:Targeted} and all other cards with the same name as that card from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Hand | Defined$ You | ChangeType$ TargetedCard.Self,Card.NotDefinedTargeted+sharesNameWith Targeted\nDeckHas:Ability$Graveyard\nOracle:Return target creature card and all other cards with the same name as that card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Echoing Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

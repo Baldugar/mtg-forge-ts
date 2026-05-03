@@ -1,0 +1,23 @@
+{
+  "id": "choice-of-damnations-corpus-m676",
+  "description": "M6 corpus — Choice of Damnations; in-hand parse.",
+  "seed": 62090,
+  "cards": {
+    "Choice of Damnations": "Name:Choice of Damnations\nManaCost:5 B\nTypes:Sorcery Arcane\nA:SP$ ChooseNumber | ValidTgts$ Opponent | AILogic$ Damnation | Notify$ True | SubAbility$ DBChoice | SpellDescription$ Target opponent chooses a number. You may have that player lose that much life. If you don't, that player sacrifices all but that many permanents.\nSVar:DBChoice:DB$ GenericChoice | Choices$ DBLoseLife,DBSac\nSVar:DBLoseLife:DB$ LoseLife | Defined$ ParentTarget | LifeAmount$ X | SpellDescription$ That player lose that much life.\nSVar:DBSac:DB$ Sacrifice | Defined$ ParentTarget | SacValid$ Permanent | Amount$ Y | SpellDescription$ That player sacrifices all but that many permanents.\nSVar:X:Count$ChosenNumber\nSVar:Y:SVar$W/LimitMin.0\nSVar:W:SVar$Z/Minus.X\nSVar:Z:Count$Valid Permanent.TargetedPlayerCtrl\nAI:RemoveDeck:All\nOracle:Target opponent chooses a number. You may have that player lose that much life. If you don't, that player sacrifices all but that many permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Choice of Damnations"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

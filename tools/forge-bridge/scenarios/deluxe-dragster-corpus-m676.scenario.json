@@ -1,0 +1,23 @@
+{
+  "id": "deluxe-dragster-corpus-m676",
+  "description": "M6 corpus — Deluxe Dragster; in-hand parse.",
+  "seed": 63416,
+  "cards": {
+    "Deluxe Dragster": "Name:Deluxe Dragster\nManaCost:4 U\nTypes:Artifact Vehicle\nPT:4/3\nK:Crew:2\nS:Mode$ CantBlockBy | ValidAttacker$ Card.Self | ValidBlocker$ Card.nonVehicle | Description$ CARDNAME can't be blocked except by Vehicles.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigCast | OptionalDecider$ You | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may cast target instant or sorcery card from that player's graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\nSVar:TrigCast:DB$ Play | ValidTgts$ Instant.OwnedBy TriggeredTarget,Sorcery.OwnedBy TriggeredTarget | TgtZone$ Graveyard | TgtPrompt$ Select target instant or sorcery card in attacked player's graveyard | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nOracle:Deluxe Dragster can't be blocked except by Vehicles.\\nWhenever Deluxe Dragster deals combat damage to a player, you may cast target instant or sorcery card from that player's graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deluxe Dragster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

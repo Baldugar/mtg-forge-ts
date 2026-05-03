@@ -1,0 +1,23 @@
+{
+  "id": "culling-ritual-corpus-m676",
+  "description": "M6 corpus — Culling Ritual; in-hand parse.",
+  "seed": 62873,
+  "cards": {
+    "Culling Ritual": "Name:Culling Ritual\nManaCost:2 B G\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Permanent.nonLand+cmcLE2 | RememberDestroyed$ True | SubAbility$ DBAddMana | SpellDescription$ Destroy each nonland permanent with mana value 2 or less. Add {B} or {G} for each permanent destroyed this way.\nSVar:DBAddMana:DB$ Mana | Produced$ Combo B G | Amount$ X | SubAbility$ DBCleanup\nSVar:X:Remembered$Amount\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy each nonland permanent with mana value 2 or less. Add {B} or {G} for each permanent destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Culling Ritual"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

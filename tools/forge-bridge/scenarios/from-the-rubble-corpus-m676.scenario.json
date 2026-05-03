@@ -1,0 +1,23 @@
+{
+  "id": "from-the-rubble-corpus-m676",
+  "description": "M6 corpus — From the Rubble; in-hand parse.",
+  "seed": 65774,
+  "cards": {
+    "From the Rubble": "Name:From the Rubble\nManaCost:4 W W\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a creature type.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of your end step, return target creature card of the chosen type from your graveyard to the battlefield with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ FINALITY | ValidTgts$ Card.ChosenType+YouOwn | TgtPrompt$ Select target card with the chosen type in your graveyard\nDeckHas:Ability$Graveyard\nDeckHints:Ability$Mill\nOracle:As From the Rubble enters, choose a creature type.\\nAt the beginning of your end step, return target creature card of the chosen type from your graveyard to the battlefield with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "From the Rubble"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

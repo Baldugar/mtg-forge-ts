@@ -1,0 +1,23 @@
+{
+  "id": "camaraderie-corpus-m676",
+  "description": "M6 corpus — Camaraderie; in-hand parse.",
+  "seed": 61645,
+  "cards": {
+    "Camaraderie": "Name:Camaraderie\nManaCost:4 G W\nTypes:Sorcery\nA:SP$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBDraw | SpellDescription$ You gain X life and draw X cards, where X is the number of creatures you control.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | SpellDescription$ Creatures you control get +1/+1 until end of turn.\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:You gain X life and draw X cards, where X is the number of creatures you control. Creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Camaraderie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

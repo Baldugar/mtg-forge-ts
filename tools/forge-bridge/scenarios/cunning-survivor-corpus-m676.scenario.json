@@ -1,0 +1,25 @@
+{
+  "id": "cunning-survivor-corpus-m676",
+  "description": "M6 corpus — Cunning Survivor; ETB-on-bf.",
+  "seed": 62899,
+  "cards": {
+    "Cunning Survivor": "Name:Cunning Survivor\nManaCost:1 U\nTypes:Creature Human Warrior\nPT:1/3\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you cycle or discard a card, CARDNAME gets +1/+0 until end of turn and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nDeckHints:Ability$Discard\nOracle:Whenever you cycle or discard a card, Cunning Survivor gets +1/+0 until end of turn and can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cunning Survivor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

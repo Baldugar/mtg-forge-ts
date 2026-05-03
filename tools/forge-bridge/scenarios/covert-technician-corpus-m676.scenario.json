@@ -1,0 +1,23 @@
+{
+  "id": "covert-technician-corpus-m676",
+  "description": "M6 corpus — Covert Technician; in-hand parse.",
+  "seed": 62661,
+  "cards": {
+    "Covert Technician": "Name:Covert Technician\nManaCost:2 U\nTypes:Artifact Creature Human Ninja\nPT:2/4\nK:Ninjutsu:1 U\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigChange | OptionalDecider$ You | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may put an artifact card with mana value less than or equal to that damage from your hand onto the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact.cmcLEX | ChangeNum$ 1 | SelectPrompt$ Choose an artifact card with mana value less than or equal to that damage\nSVar:X:TriggerCount$DamageAmount\nOracle:Ninjutsu {1}{U} ({1}{U}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)\\nWhenever Covert Technician deals combat damage to a player, you may put an artifact card with mana value less than or equal to that damage from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Covert Technician"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

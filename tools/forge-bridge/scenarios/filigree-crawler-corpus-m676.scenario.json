@@ -1,0 +1,23 @@
+{
+  "id": "filigree-crawler-corpus-m676",
+  "description": "M6 corpus — Filigree Crawler; in-hand parse.",
+  "seed": 65299,
+  "cards": {
+    "Filigree Crawler": "Name:Filigree Crawler\nManaCost:4\nTypes:Artifact Creature Insect\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 colorless Thopter artifact creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenOwner$ You\nSVar:SacMe:1\nDeckHas:Ability$Token\nOracle:When Filigree Crawler dies, create a 1/1 colorless Thopter artifact creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Filigree Crawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

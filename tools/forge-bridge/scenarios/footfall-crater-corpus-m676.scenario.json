@@ -1,0 +1,23 @@
+{
+  "id": "footfall-crater-corpus-m676",
+  "description": "M6 corpus — Footfall Crater; in-hand parse.",
+  "seed": 65610,
+  "cards": {
+    "Footfall Crater": "Name:Footfall Crater\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Land\nK:Cycling:1\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Land.AttachedBy | AddAbility$ DBPump | Description$ Enchanted land has \"{T}: Target creature gains trample and haste until end of turn.\"\nSVar:DBPump:AB$ Pump | Cost$ T | ValidTgts$ Creature | KW$ Trample & Haste | SpellDescription$ Target creature gains trample and haste until end of turn.\nSVar:NonStackingAttachEffect:True\nSVar:PlayMain1:TRUE\nOracle:Enchant land\\nEnchanted land has \"{T}: Target creature gains trample and haste until end of turn.\"\\nCycling {1} ({1}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Footfall Crater"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "darkpact-corpus-m676",
+  "description": "M6 corpus — Darkpact; in-hand parse.",
+  "seed": 63100,
+  "cards": {
+    "Darkpact": "Name:Darkpact\nManaCost:B B B\nTypes:Sorcery\nK:Remove CARDNAME from your deck before playing if you're not playing for ante.\nA:SP$ GainOwnership | ValidTgts$ Card | TgtZone$ Ante | SubAbility$ ExchangeAnte | SpellDescription$ You own target card in the ante. Exchange that card with the top card of your library. | StackDescription$ You own target card ({c:Targeted}) in the ante. Exchange that card with the top card of your library.\nSVar:ExchangeAnte:DB$ ExchangeZone | Zone1$ Ante | Zone2$ Library | Object$ ParentTarget | ValidExchange$ Card.TopLibrary | Mandatory$ True | StackDescription$ None\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Remove Darkpact from your deck before playing if you're not playing for ante.\\nYou own target card in the ante. Exchange that card with the top card of your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darkpact"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "goblin-game-corpus-m676",
+  "description": "M6 corpus — Goblin Game; in-hand parse.",
+  "seed": 66422,
+  "cards": {
+    "Goblin Game": "Name:Goblin Game\nManaCost:5 R R\nTypes:Sorcery\nA:SP$ ChooseNumber | Defined$ Player | Min$ 1 | Secretly$ True | ChooseNumberSubAbility$ DBLoseLife | Lowest$ DBLoseHalfLife | AILogic$ LowestLoseLife | SpellDescription$ Each player hides at least one item, then all players reveal them simultaneously. Each player loses life equal to the number of items they revealed. The player who revealed the fewest items then loses half their life, rounded up. If two or more players are tied for fewest, each loses half their life, rounded up.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ X\nSVar:X:Count$ChosenNumber\nSVar:DBLoseHalfLife:DB$ LoseLife | Defined$ Remembered | LifeAmount$ Y\nSVar:Y:PlayerCountRemembered$LifeTotal/HalfUp\nAI:RemoveDeck:All\nOracle:Each player hides at least one item, then all players reveal them simultaneously. Each player loses life equal to the number of items they revealed. The player who revealed the fewest items then loses half their life, rounded up. If two or more players are tied for fewest, each loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Game"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

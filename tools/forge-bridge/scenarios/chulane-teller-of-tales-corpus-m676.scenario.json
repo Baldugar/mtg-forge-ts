@@ -1,0 +1,25 @@
+{
+  "id": "chulane-teller-of-tales-corpus-m676",
+  "description": "M6 corpus — Chulane, Teller of Tales; ETB-on-bf.",
+  "seed": 62127,
+  "cards": {
+    "Chulane, Teller of Tales": "Name:Chulane, Teller of Tales\nManaCost:2 G W U\nTypes:Legendary Creature Human Druid\nPT:2/4\nK:Vigilance\nT:Mode$ SpellCast | ValidCard$ Creature | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell, draw a card, then you may put a land card from your hand onto the battlefield.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLand\nSVar:DBLand:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Optional$ You\nA:AB$ ChangeZone | Cost$ 3 T | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature you control to its owner's hand.\nOracle:Vigilance\\nWhenever you cast a creature spell, draw a card, then you may put a land card from your hand onto the battlefield.\\n{3}, {T}: Return target creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chulane, Teller of Tales"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

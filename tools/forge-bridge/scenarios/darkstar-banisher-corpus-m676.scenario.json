@@ -1,0 +1,23 @@
+{
+  "id": "darkstar-banisher-corpus-m676",
+  "description": "M6 corpus — Darkstar Banisher; in-hand parse.",
+  "seed": 63102,
+  "cards": {
+    "Darkstar Banisher": "Name:Darkstar Banisher\nManaCost:1 W B\nTypes:Creature Bat Cleric\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent with mana value 3 or less an opponent controls.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl+cmcLE3 | RememberChanged$ True | TgtPrompt$ Select target nonland permanent with mana value 3 or less an opponent controls\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigSeek | TriggerDescription$ When CARDNAME leaves the battlefield, the exiled card's owner seeks a card that shares a card type with the exiled card.\nSVar:TrigSeek:DB$ Seek | Defined$ RememberedOwner | Type$ Card.sharesCardTypeWith Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\nWhen Darkstar Banisher enters, exile target nonland permanent with mana value 3 or less an opponent controls.\\nWhen Darkstar Banisher leaves the battlefield, the exiled card's owner seeks a card that shares a card type with the exiled card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darkstar Banisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

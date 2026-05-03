@@ -1,0 +1,25 @@
+{
+  "id": "dragon-s-claw-corpus-m676",
+  "description": "M6 corpus — Dragon's Claw; ETB-on-bf.",
+  "seed": 63932,
+  "cards": {
+    "Dragon's Claw": "Name:Dragon's Claw\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Red | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts a red spell, you may gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Color$Red\nOracle:Whenever a player casts a red spell, you may gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dragon's Claw"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

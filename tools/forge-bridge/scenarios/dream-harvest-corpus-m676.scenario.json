@@ -1,0 +1,23 @@
+{
+  "id": "dream-harvest-corpus-m676",
+  "description": "M6 corpus — Dream Harvest; in-hand parse.",
+  "seed": 64011,
+  "cards": {
+    "Dream Harvest": "Name:Dream Harvest\nManaCost:5 UB UB\nTypes:Sorcery\nA:SP$ DigUntil | Defined$ Opponent | Valid$ Card | FoundDestination$ Exile | RevealedDestination$ Exile | MinTotalCMC$ 5 | RememberRevealed$ True | SubAbility$ DBEffect | StackDescription$ SpellDescription | SpellDescription$ Each opponent exiles cards from the top of their library until they have exiled cards with total mana value 5 or greater this way. Until end of turn, you may cast cards exiled this way without paying their mana costs.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ Remembered | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ Until end of turn, you may cast cards exiled this way without paying their mana costs.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Each opponent exiles cards from the top of their library until they have exiled cards with total mana value 5 or greater this way. Until end of turn, you may cast cards exiled this way without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Harvest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

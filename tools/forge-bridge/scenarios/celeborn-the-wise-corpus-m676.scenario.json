@@ -1,0 +1,25 @@
+{
+  "id": "celeborn-the-wise-corpus-m676",
+  "description": "M6 corpus — Celeborn the Wise; ETB-on-bf.",
+  "seed": 61850,
+  "cards": {
+    "Celeborn the Wise": "Name:Celeborn the Wise\nManaCost:3 G\nTypes:Legendary Creature Elf Noble\nPT:3/3\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.Elf+YouCtrl | Execute$ TrigScry | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack with one or more Elves, scry 1.\nSVar:TrigScry:DB$ Scry | ScryNum$ 1\nT:Mode$ Scry | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you scry, CARDNAME gets +1/+1 until end of turn for each card you looked at while scrying this way.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:TriggerCount$ScryNum\nDeckHints:Type$Elf\nOracle:Whenever you attack with one or more Elves, scry 1.\\nWhenever you scry, Celeborn the Wise gets +1/+1 until end of turn for each card you looked at while scrying this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Celeborn the Wise"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "esper-sojourners-corpus-m676",
+  "description": "M6 corpus — Esper Sojourners; in-hand parse.",
+  "seed": 64734,
+  "cards": {
+    "Esper Sojourners": "Name:Esper Sojourners\nManaCost:W U B\nTypes:Artifact Creature Vedalken Wizard\nPT:2/3\nK:Cycling:2 U\nT:Mode$ Cycled | ValidCard$ Card.Self | Execute$ TrigTapOrUntap | OptionalDecider$ You | TriggerDescription$ When you cycle CARDNAME or it dies, you may tap or untap target permanent.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigTapOrUntap | OptionalDecider$ You | Secondary$ True | TriggerDescription$ When you cycle CARDNAME or it dies, you may tap or untap target permanent.\nSVar:TrigTapOrUntap:DB$ TapOrUntap | ValidTgts$ Permanent\nAI:RemoveDeck:All\nOracle:When you cycle Esper Sojourners or it dies, you may tap or untap target permanent.\\nCycling {2}{U} ({2}{U}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Esper Sojourners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

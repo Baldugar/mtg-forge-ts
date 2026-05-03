@@ -1,0 +1,25 @@
+{
+  "id": "dragon-throne-of-tarkir-corpus-m676",
+  "description": "M6 corpus — Dragon Throne of Tarkir; ETB-on-bf.",
+  "seed": 63907,
+  "cards": {
+    "Dragon Throne of Tarkir": "Name:Dragon Throne of Tarkir\nManaCost:4\nTypes:Legendary Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Card.EquippedBy | AddKeyword$ Defender | AddAbility$ ThroneTarkir | AddSVar$ ThroneTarkirX | Description$ Equipped creature has defender and \"{2}, {T}: Other creatures you control gain trample and get +X/+X until end of turn, where X is this creature's power.\"\nSVar:ThroneTarkir:AB$ PumpAll | Cost$ 2 T | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +ThroneTarkirX | NumDef$ +ThroneTarkirX | KW$ Trample | SpellDescription$ Other creatures you control gain trample and get +X/+X until end of turn, where X is CARDNAME's power.\nSVar:ThroneTarkirX:Count$CardPower\nAI:RemoveDeck:All\nOracle:Equipped creature has defender and \"{2}, {T}: Other creatures you control gain trample and get +X/+X until end of turn, where X is this creature's power.\"\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dragon Throne of Tarkir"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

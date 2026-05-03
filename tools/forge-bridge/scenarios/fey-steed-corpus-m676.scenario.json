@@ -1,0 +1,23 @@
+{
+  "id": "fey-steed-corpus-m676",
+  "description": "M6 corpus — Fey Steed; in-hand parse.",
+  "seed": 65261,
+  "cards": {
+    "Fey Steed": "Name:Fey Steed\nManaCost:2 W W\nTypes:Creature Elk\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target attacking creature you control gains indestructible until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+Other+attacking | TgtPrompt$ Select another target attacking creature you control | KW$ Indestructible\nT:Mode$ BecomesTarget | ValidSource$ SpellAbility.OppCtrl | ValidTarget$ Creature.YouCtrl+inZoneBattlefield,Planeswalker.YouCtrl+inZoneBattlefield | TriggerZones$ Battlefield | Execute$ TrigDraw | OptionalDecider$ You | TriggerDescription$ Whenever a creature or planeswalker you control becomes the target of a spell or ability an opponent controls, you may draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Fey Steed attacks, another target attacking creature you control gains indestructible until end of turn.\\nWhenever a creature or planeswalker you control becomes the target of a spell or ability an opponent controls, you may draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fey Steed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

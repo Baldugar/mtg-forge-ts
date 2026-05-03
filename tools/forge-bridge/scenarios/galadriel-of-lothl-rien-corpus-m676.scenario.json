@@ -1,0 +1,25 @@
+{
+  "id": "galadriel-of-lothl-rien-corpus-m676",
+  "description": "M6 corpus — Galadriel of Lothlórien; ETB-on-bf.",
+  "seed": 65894,
+  "cards": {
+    "Galadriel of Lothlórien": "Name:Galadriel of Lothlórien\nManaCost:1 G U\nTypes:Legendary Creature Elf Noble\nPT:3/3\nT:Mode$ RingTemptsYou | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigScry | TriggerDescription$ Whenever the Ring tempts you, if you chose a creature other than CARDNAME as your Ring-bearer, scry 3.\nSVar:TrigScry:DB$ Scry | ScryNum$ 3\nT:Mode$ Scry | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBReveal | TriggerDescription$ Whenever you scry, you may reveal the top card of your library. If a land card is revealed this way, put it onto the battlefield tapped.\nSVar:DBReveal:DB$ Dig | DigNum$ 1 | Reveal$ True | Optional$ True | ChangeNum$ 1 | ChangeValid$ Land | DestinationZone$ Battlefield | Tapped$ True | DestinationZone2$ Library | LibraryPosition2$ 0\nOracle:Whenever the Ring tempts you, if you chose a creature other than Galadriel of Lothlórien as your Ring-bearer, scry 3.\\nWhenever you scry, you may reveal the top card of your library. If a land card is revealed this way, put it onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Galadriel of Lothlórien"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

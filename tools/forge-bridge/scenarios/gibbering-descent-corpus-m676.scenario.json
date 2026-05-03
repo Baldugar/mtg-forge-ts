@@ -1,0 +1,23 @@
+{
+  "id": "gibbering-descent-corpus-m676",
+  "description": "M6 corpus — Gibbering Descent; in-hand parse.",
+  "seed": 66173,
+  "cards": {
+    "Gibbering Descent": "Name:Gibbering Descent\nManaCost:4 B B\nTypes:Enchantment\nK:Madness:2 B B\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Upkeep | Skip$ True | Hellbent$ True | Description$ Hellbent — Skip your upkeep step if you have no cards in hand.\nT:Mode$ Phase | Phase$ Upkeep | Execute$ TrigLoseLifeDiscard | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player loses 1 life and discards a card.\nSVar:TrigLoseLifeDiscard:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ TriggeredPlayer | NumCards$ 1 | Mode$ TgtChoose\nAI:RemoveDeck:All\nOracle:At the beginning of each player's upkeep, that player loses 1 life and discards a card.\\nHellbent — Skip your upkeep step if you have no cards in hand.\\nMadness {2}{B}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gibbering Descent"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

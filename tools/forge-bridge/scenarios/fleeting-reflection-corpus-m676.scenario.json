@@ -1,0 +1,23 @@
+{
+  "id": "fleeting-reflection-corpus-m676",
+  "description": "M6 corpus — Fleeting Reflection; in-hand parse.",
+  "seed": 65494,
+  "cards": {
+    "Fleeting Reflection": "Name:Fleeting Reflection\nManaCost:1 U\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | KW$ Hexproof | SubAbility$ DBUntap | SpellDescription$ Target creature you control gains hexproof until end of turn.\nSVar:DBUntap:DB$ Untap | Defined$ ParentTarget | SubAbility$ DBClone | SpellDescription$ Untap that creature.\nSVar:DBClone:DB$ Clone | CloneTarget$ ParentTarget | ValidTgts$ Creature | TgtPrompt$ Select up to one target creature to copy | TargetMin$ 0 | TargetMax$ 1 | TargetUnique$ True | Duration$ UntilEndOfTurn | SpellDescription$ Until end of turn, it becomes a copy of up to one other target creature.\nOracle:Target creature you control gains hexproof until end of turn. Untap that creature. Until end of turn, it becomes a copy of up to one other target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fleeting Reflection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

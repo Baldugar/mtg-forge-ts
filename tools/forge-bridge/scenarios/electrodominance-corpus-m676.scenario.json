@@ -1,0 +1,23 @@
+{
+  "id": "electrodominance-corpus-m676",
+  "description": "M6 corpus — Electrodominance; in-hand parse.",
+  "seed": 64384,
+  "cards": {
+    "Electrodominance": "Name:Electrodominance\nManaCost:X R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBPlay | SpellDescription$ CARDNAME deals X damage to any target. You may cast a spell with mana value X or less from your hand without paying its mana cost.\nSVar:DBPlay:DB$ Play | Valid$ Card.nonLand+YouOwn | ValidSA$ Spell.cmcLEX | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True\nSVar:X:Count$xPaid\nOracle:Electrodominance deals X damage to any target. You may cast a spell with mana value X or less from your hand without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electrodominance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

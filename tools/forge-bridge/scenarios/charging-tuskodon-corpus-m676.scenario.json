@@ -1,0 +1,25 @@
+{
+  "id": "charging-tuskodon-corpus-m676",
+  "description": "M6 corpus — Charging Tuskodon; ETB-on-bf.",
+  "seed": 62014,
+  "cards": {
+    "Charging Tuskodon": "Name:Charging Tuskodon\nManaCost:3 R R\nTypes:Creature Dinosaur\nPT:4/4\nK:Trample\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.Self | ValidTarget$ Player | IsCombat$ True | ReplaceWith$ DmgTwice | Description$ If CARDNAME would deal combat damage to a player, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nOracle:Trample\\nIf Charging Tuskodon would deal combat damage to a player, it deals double that damage to that player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Charging Tuskodon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

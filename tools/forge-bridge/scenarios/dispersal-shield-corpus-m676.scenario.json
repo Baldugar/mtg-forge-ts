@@ -1,0 +1,23 @@
+{
+  "id": "dispersal-shield-corpus-m676",
+  "description": "M6 corpus — Dispersal Shield; in-hand parse.",
+  "seed": 63705,
+  "cards": {
+    "Dispersal Shield": "Name:Dispersal Shield\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | ConditionCheckSVar$ X | ConditionSVarCompare$ LEY | SpellDescription$ Counter target spell if its mana value is less than or equal to the highest mana value among permanents you control.\nSVar:X:Targeted$CardManaCost\nSVar:Y:Count$Valid Permanent.YouCtrl$GreatestCardManaCost\nAI:RemoveDeck:All\nOracle:Counter target spell if its mana value is less than or equal to the highest mana value among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dispersal Shield"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

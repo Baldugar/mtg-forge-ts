@@ -1,0 +1,23 @@
+{
+  "id": "discover-the-impossible-corpus-m676",
+  "description": "M6 corpus — Discover the Impossible; in-hand parse.",
+  "seed": 63684,
+  "cards": {
+    "Discover the Impossible": "Name:Discover the Impossible\nManaCost:2 U\nTypes:Instant\nA:SP$ Dig | Defined$ You | DigNum$ 5 | DestinationZone$ Exile | ExileFaceDown$ True | RememberChanged$ True | RestRandomOrder$ True | SubAbility$ DBCast | SpellDescription$ Look at the top five cards of your library. Exile one of them face down and put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost if it's an instant spell with mana value 2 or less. If you don't, put that card into your hand.\nSVar:DBCast:DB$ Play | Optional$ True | Defined$ Remembered | DefinedDesc$ the exiled card | ValidSA$ Instant.cmcLE2 | WithoutManaCost$ True | IfDesc$ if it's an instant spell with mana value 2 or less | ForgetPlayed$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Remembered | DefinedDesc$ that card | ForgetChanged$ True | ConditionDescription$ If not,\nDeckHints:Type$Instant\nOracle:Look at the top five cards of your library. Exile one of them face down and put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost if it's an instant spell with mana value 2 or less. If you don't, put that card into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discover the Impossible"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

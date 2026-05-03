@@ -1,0 +1,23 @@
+{
+  "id": "flumph-corpus-m676",
+  "description": "M6 corpus — Flumph; in-hand parse.",
+  "seed": 65566,
+  "cards": {
+    "Flumph": "Name:Flumph\nManaCost:1 W\nTypes:Creature Jellyfish\nPT:0/4\nK:Defender\nK:Flying\nT:Mode$ DamageDoneOnce | Execute$ TrigDraw | ValidTarget$ Card.Self | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME is dealt damage, you and target opponent each draw a card.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Opponent | Defined$ TargetedAndYou | NumCards$ 1\nOracle:Defender, flying\\nWhenever Flumph is dealt damage, you and target opponent each draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flumph"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

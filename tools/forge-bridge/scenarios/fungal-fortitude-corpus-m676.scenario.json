@@ -1,0 +1,23 @@
+{
+  "id": "fungal-fortitude-corpus-m676",
+  "description": "M6 corpus — Fungal Fortitude; in-hand parse.",
+  "seed": 65833,
+  "cards": {
+    "Fungal Fortitude": "Name:Fungal Fortitude\nManaCost:1 B\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | Description$ Enchanted creature gets +2/+0.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EnchantedBy | Execute$ TrigReturn | TriggerController$ TriggeredCardController | TriggerDescription$ When enchanted creature dies, return it to the battlefield tapped under its owner's control.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Flash\\nEnchant creature\\nWhen enchanted creature dies, return it to the battlefield tapped under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fungal Fortitude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

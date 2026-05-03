@@ -1,0 +1,23 @@
+{
+  "id": "gnawing-crescendo-corpus-m676",
+  "description": "M6 corpus — Gnawing Crescendo; in-hand parse.",
+  "seed": 66374,
+  "cards": {
+    "Gnawing Crescendo": "Name:Gnawing Crescendo\nManaCost:2 R\nTypes:Instant\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | SubAbility$ DBEffect | SpellDescription$ Creatures you control get +2/+0 until end of turn. Whenever a nontoken creature you control dies this turn, create a 1/1 black Rat creature token with \"This creature can't block.\"\nSVar:DBEffect:DB$ Effect | Triggers$ DiesTrig\nSVar:DiesTrig:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!token+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever a nontoken creature you control dies this turn, create a 1/1 black Rat creature token with \"This creature can't block.\"\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_rat_noblock | TokenOwner$ You\nDeckHas:Ability$Token & Type$Rat\nOracle:Creatures you control get +2/+0 until end of turn. Whenever a nontoken creature you control dies this turn, create a 1/1 black Rat creature token with \"This creature can't block.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gnawing Crescendo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

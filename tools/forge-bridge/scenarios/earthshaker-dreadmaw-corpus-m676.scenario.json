@@ -1,0 +1,23 @@
+{
+  "id": "earthshaker-dreadmaw-corpus-m676",
+  "description": "M6 corpus — Earthshaker Dreadmaw; in-hand parse.",
+  "seed": 64261,
+  "cards": {
+    "Earthshaker Dreadmaw": "Name:Earthshaker Dreadmaw\nManaCost:4 G G\nTypes:Creature Dinosaur\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card for each other Dinosaur you control.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$Valid Dinosaur.StrictlyOther+YouCtrl\nDeckNeeds:Type$Dinosaur\nOracle:Trample\\nWhen Earthshaker Dreadmaw enters, draw a card for each other Dinosaur you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earthshaker Dreadmaw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

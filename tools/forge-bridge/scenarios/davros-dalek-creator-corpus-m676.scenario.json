@@ -1,0 +1,23 @@
+{
+  "id": "davros-dalek-creator-corpus-m676",
+  "description": "M6 corpus — Davros, Dalek Creator; in-hand parse.",
+  "seed": 63156,
+  "cards": {
+    "Davros, Dalek Creator": "Name:Davros, Dalek Creator\nManaCost:1 U B R\nTypes:Legendary Artifact Creature Alien Scientist\nPT:3/4\nK:Menace\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DalekCreation | TriggerDescription$ At the beginning of your end step, create a 3/3 black Dalek artifact creature token with menace if an opponent lost 3 or more life this turn. Then each opponent who lost 3 or more life this turn faces a villainous choice — You draw a card, or that player discards a card.\nSVar:DalekCreation:DB$ Token | TokenScript$ b_3_3_a_dalek_menace | TokenOwner$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GE3 | SubAbility$ VillainousChoice\nSVar:VillainousChoice:DB$ VillainousChoice | Defined$ Opponent.LostLifeThisTurn GE3 | Choices$ Draw,Discard\nSVar:Draw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ You draw a card.\nSVar:Discard:DB$ Discard | Defined$ Remembered | NumCards$ 1 | Mode$ TgtChoose | SpellDescription$ Opponent that lost 3 or more life discards 1 card.\nSVar:X:PlayerCountRegisteredOpponents$HighestLifeLostThisTurn\nOracle:Menace\\nAt the beginning of your end step, create a 3/3 black Dalek artifact creature token with menace if an opponent lost 3 or more life this turn. Then each opponent who lost 3 or more life this turn faces a villainous choice — You draw a card, or that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Davros, Dalek Creator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

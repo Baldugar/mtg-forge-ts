@@ -1,0 +1,23 @@
+{
+  "id": "cradle-of-safety-corpus-m676",
+  "description": "M6 corpus — Cradle of Safety; in-hand parse.",
+  "seed": 62685,
+  "cards": {
+    "Cradle of Safety": "Name:Cradle of Safety\nManaCost:1 U\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, enchanted creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\nSVar:TrigPump:DB$ Pump | Defined$ Enchanted | KW$ Hexproof\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nOracle:Flash\\nEnchant creature you control\\nWhen Cradle of Safety enters, enchanted creature gains hexproof until end of turn. (It can't be the target of spells or abilities your opponents control.)\\nEnchanted creature gets +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cradle of Safety"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

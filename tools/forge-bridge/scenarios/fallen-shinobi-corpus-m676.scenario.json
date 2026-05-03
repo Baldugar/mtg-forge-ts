@@ -1,0 +1,23 @@
+{
+  "id": "fallen-shinobi-corpus-m676",
+  "description": "M6 corpus — Fallen Shinobi; in-hand parse.",
+  "seed": 65027,
+  "cards": {
+    "Fallen Shinobi": "Name:Fallen Shinobi\nManaCost:3 U B\nTypes:Creature Zombie Ninja\nPT:5/4\nK:Ninjutsu:2 U B\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player exiles the top two cards of their library. Until end of turn, you may play those cards without paying their mana costs.\nSVar:TrigExile:DB$ Dig | Defined$ TriggeredTarget | DigNum$ 2 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ Until end of turn, you may play those cards without paying their mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Ninjutsu {2}{U}{B} ({2}{U}{B}, Return an unblocked attacker you control to hand: Put this card onto the battlefield from your hand tapped and attacking.)\\nWhenever Fallen Shinobi deals combat damage to a player, that player exiles the top two cards of their library. Until end of turn, you may play those cards without paying their mana costs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fallen Shinobi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

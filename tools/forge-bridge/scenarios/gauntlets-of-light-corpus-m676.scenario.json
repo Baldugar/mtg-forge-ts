@@ -1,0 +1,23 @@
+{
+  "id": "gauntlets-of-light-corpus-m676",
+  "description": "M6 corpus — Gauntlets of Light; in-hand parse.",
+  "seed": 65990,
+  "cards": {
+    "Gauntlets of Light": "Name:Gauntlets of Light\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddToughness$ 2 | Description$ Enchanted creature gets +0/+2 and assigns combat damage equal to its toughness rather than its power.\nS:Mode$ CombatDamageToughness | ValidCard$ Creature.EnchantedBy | Secondary$ True | Description$ Enchanted creature gets +0/+2 and assigns combat damage equal to its toughness rather than its power.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ GauntletsUntap | Description$ Enchanted creature has \"{2}{W}: Untap this creature.\"\nSVar:GauntletsUntap:AB$ Untap | Cost$ 2 W | Defined$ Self | SpellDescription$ Untap this creature.\nOracle:Enchant creature\\nEnchanted creature gets +0/+2 and assigns combat damage equal to its toughness rather than its power.\\nEnchanted creature has \"{2}{W}: Untap this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gauntlets of Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

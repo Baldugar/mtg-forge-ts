@@ -1,0 +1,23 @@
+{
+  "id": "cast-out-corpus-m676",
+  "description": "M6 corpus — Cast Out; in-hand parse.",
+  "seed": 61781,
+  "cards": {
+    "Cast Out": "Name:Cast Out\nManaCost:3 W\nTypes:Enchantment\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nK:Cycling:W\nSVar:OblivionRing:TRUE\nOracle:Flash\\nWhen Cast Out enters, exile target nonland permanent an opponent controls until Cast Out leaves the battlefield.\\nCycling {W} ({W}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cast Out"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

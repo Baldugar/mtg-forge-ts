@@ -1,0 +1,23 @@
+{
+  "id": "chronicler-of-heroes-corpus-m676",
+  "description": "M6 corpus — Chronicler of Heroes; in-hand parse.",
+  "seed": 62120,
+  "cards": {
+    "Chronicler of Heroes": "Name:Chronicler of Heroes\nManaCost:1 G W\nTypes:Creature Centaur Wizard\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card if you control a creature with a +1/+1 counter on it.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | ConditionPresent$ Creature.YouCtrl+counters_GE1_P1P1\nOracle:When Chronicler of Heroes enters, draw a card if you control a creature with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chronicler of Heroes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

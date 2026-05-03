@@ -1,0 +1,23 @@
+{
+  "id": "fuming-effigy-corpus-m676",
+  "description": "M6 corpus — Fuming Effigy; in-hand parse.",
+  "seed": 65825,
+  "cards": {
+    "Fuming Effigy": "Name:Fuming Effigy\nManaCost:3 R\nTypes:Creature Spirit\nPT:4/3\nT:Mode$ ChangesZoneAll | ValidCards$ Card.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever one or more cards leave your graveyard, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nDeckHas:Ability$Graveyard\nOracle:Whenever one or more cards leave your graveyard, Fuming Effigy deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fuming Effigy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

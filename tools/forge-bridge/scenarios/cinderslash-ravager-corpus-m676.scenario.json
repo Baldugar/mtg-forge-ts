@@ -1,0 +1,23 @@
+{
+  "id": "cinderslash-ravager-corpus-m676",
+  "description": "M6 corpus — Cinderslash Ravager; in-hand parse.",
+  "seed": 62144,
+  "cards": {
+    "Cinderslash Ravager": "Name:Cinderslash Ravager\nManaCost:4 R G\nTypes:Creature Phyrexian Warrior\nPT:5/5\nK:Vigilance\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {1} less to cast for each permanent you control with oil counters on it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each creature your opponents control.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature.OppCtrl | NumDmg$ 1\nSVar:X:Count$Valid Permanent.YouCtrl+counters_GE1_OIL\nDeckHints:Ability$Counters\nOracle:This spell costs {1} less to cast for each permanent you control with oil counters on it.\\nVigilance\\nWhen Cinderslash Ravager enters, it deals 1 damage to each creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cinderslash Ravager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

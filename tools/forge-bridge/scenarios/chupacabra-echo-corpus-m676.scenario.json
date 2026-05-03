@@ -1,0 +1,23 @@
+{
+  "id": "chupacabra-echo-corpus-m676",
+  "description": "M6 corpus — Chupacabra Echo; in-hand parse.",
+  "seed": 62129,
+  "cards": {
+    "Chupacabra Echo": "Name:Chupacabra Echo\nManaCost:2 B B\nTypes:Creature Beast Horror Spirit\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDebuff | TriggerDescription$ Fathomless descent — When CARDNAME enters, target creature an opponent controls gets -X/-X until end of turn, where X is the number of permanent cards in your graveyard.\nSVar:TrigDebuff:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nDeckHints:Ability$Graveyard|Mill|Discard\nOracle:Fathomless descent — When Chupacabra Echo enters, target creature an opponent controls gets -X/-X until end of turn, where X is the number of permanent cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chupacabra Echo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

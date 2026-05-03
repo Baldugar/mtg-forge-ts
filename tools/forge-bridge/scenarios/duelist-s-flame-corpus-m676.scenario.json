@@ -1,0 +1,23 @@
+{
+  "id": "duelist-s-flame-corpus-m676",
+  "description": "M6 corpus — Duelist's Flame; in-hand parse.",
+  "seed": 64137,
+  "cards": {
+    "Duelist's Flame": "Name:Duelist's Flame\nManaCost:X R R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.blocked+YouCtrl | TgtPrompt$ Select target blocked creature you control | NumAtt$ +X | KW$ Trample | SubAbility$ DBAnimate | SpellDescription$ Until end of turn, target blocked creature you control gets +X/+0 and gains trample and \"Whenever this creature deals combat damage to a player, look at that many cards from the top of your library. Exile up to one nonland card from among them and put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\"\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Triggers$ DamageTrig\nSVar:DamageTrig:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDig | CombatDamage$ True | TriggerDescription$ Whenever this creature deals combat damage to a player, look at that many cards from the top of your library. Exile up to one nonland card from among them and put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\nSVar:TrigDig:DB$ Dig | DigNum$ Y | ChangeNum$ 1 | ChangeValid$ Card.nonLand | Optional$ True | RememberChanged$ True | DestinationZone$ Exile | RestRandomOrder$ True | SubAbility$ DBCast\nSVar:DBCast:DB$ Play | Valid$ Card.IsRemembered | ValidZone$ Exile | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:Y:TriggerCount$DamageAmount\nSVar:X:Count$xPaid\nOracle:Until end of turn, target blocked creature you control gets +X/+0 and gains trample and \"Whenever this creature deals combat damage to a player, look at that many cards from the top of your library. Exile up to one nonland card from among them and put the rest on the bottom of your library in a random order. You may cast the exiled card without paying its mana cost.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duelist's Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

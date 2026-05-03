@@ -1,0 +1,25 @@
+{
+  "id": "entrancing-lyre-corpus-m676",
+  "description": "M6 corpus — Entrancing Lyre; ETB-on-bf.",
+  "seed": 64653,
+  "cards": {
+    "Entrancing Lyre": "Name:Entrancing Lyre\nManaCost:3\nTypes:Artifact\nK:You may choose not to untap CARDNAME during your untap step.\nA:AB$ Tap | Cost$ X T | ValidTgts$ Creature.powerLEX | TgtPrompt$ Select target creature with power X or less | RememberTapped$ True | AlwaysRemember$ True | SpellDescription$ Tap target creature with power X or less. It doesn't untap during its controller's untap step for as long as CARDNAME remains tapped. | StackDescription$ SpellDescription\nSVar:X:Count$xPaid\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ ClearRemembered | Static$ True\nSVar:ClearRemembered:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:You may choose not to untap Entrancing Lyre during your untap step.\\n{X}, {T}: Tap target creature with power X or less. It doesn't untap during its controller's untap step for as long as Entrancing Lyre remains tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Entrancing Lyre"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

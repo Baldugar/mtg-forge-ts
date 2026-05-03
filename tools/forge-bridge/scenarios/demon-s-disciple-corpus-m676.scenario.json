@@ -1,0 +1,23 @@
+{
+  "id": "demon-s-disciple-corpus-m676",
+  "description": "M6 corpus — Demon's Disciple; in-hand parse.",
+  "seed": 63448,
+  "cards": {
+    "Demon's Disciple": "Name:Demon's Disciple\nManaCost:2 B\nTypes:Creature Human Cleric\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each player sacrifices a creature or planeswalker.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature,Planeswalker\nSVar:X:Count$Valid Creature.OppCtrl,Planeswalker.OppCtrl\nSVar:NeedsToPlayVar:X GE1\nDeckHas:Ability$Sacrifice\nOracle:When Demon's Disciple enters, each player sacrifices a creature or planeswalker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demon's Disciple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

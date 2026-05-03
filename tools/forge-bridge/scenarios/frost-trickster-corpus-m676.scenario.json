@@ -1,0 +1,23 @@
+{
+  "id": "frost-trickster-corpus-m676",
+  "description": "M6 corpus — Frost Trickster; in-hand parse.",
+  "seed": 65794,
+  "cards": {
+    "Frost Trickster": "Name:Frost Trickster\nManaCost:2 U\nTypes:Creature Bird Wizard\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Choose target creature an opponent controls. | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Frost Trickster enters, tap target creature an opponent controls. That creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frost Trickster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

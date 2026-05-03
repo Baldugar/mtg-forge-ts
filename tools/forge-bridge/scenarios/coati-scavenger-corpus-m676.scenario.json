@@ -1,0 +1,23 @@
+{
+  "id": "coati-scavenger-corpus-m676",
+  "description": "M6 corpus — Coati Scavenger; in-hand parse.",
+  "seed": 62332,
+  "cards": {
+    "Coati Scavenger": "Name:Coati Scavenger\nManaCost:2 G\nTypes:Creature Raccoon\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | CheckSVar$ X | SVarCompare$ GE4 | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Descend 4 — When CARDNAME enters, if there are four or more permanent cards in your graveyard, return target permanent card from your graveyard to your hand.\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Permanent.YouOwn | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose target nonland permanent\nDeckHints:Ability$Graveyard|Mill\nOracle:Descend 4 — When Coati Scavenger enters, if there are four or more permanent cards in your graveyard, return target permanent card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coati Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

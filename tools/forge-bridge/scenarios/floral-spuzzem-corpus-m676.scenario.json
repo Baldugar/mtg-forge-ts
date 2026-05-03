@@ -1,0 +1,25 @@
+{
+  "id": "floral-spuzzem-corpus-m676",
+  "description": "M6 corpus — Floral Spuzzem; ETB-on-bf.",
+  "seed": 65532,
+  "cards": {
+    "Floral Spuzzem": "Name:Floral Spuzzem\nManaCost:3 G\nTypes:Creature Elemental\nPT:2/2\nT:Mode$ AttackerUnblocked | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks and isn't blocked, you may destroy target artifact defending player controls. If you do, CARDNAME assigns no combat damage this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact.ControlledBy TriggeredDefendingPlayer | SubAbility$ DBNoCombatDamage\nSVar:DBNoCombatDamage:DB$ Effect | StaticAbilities$ SNoCombatDamage | Duration$ UntilHostLeavesPlayOrEOT\nSVar:SNoCombatDamage:Mode$ AssignNoCombatDamage | ValidCard$ Card.EffectSource | Description$ EFFECTSOURCE assigns no combat damage this turn.\nOracle:Whenever Floral Spuzzem attacks and isn't blocked, you may destroy target artifact defending player controls. If you do, Floral Spuzzem assigns no combat damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Floral Spuzzem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

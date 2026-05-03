@@ -1,0 +1,23 @@
+{
+  "id": "determined-iteration-corpus-m676",
+  "description": "M6 corpus — Determined Iteration; in-hand parse.",
+  "seed": 63559,
+  "cards": {
+    "Determined Iteration": "Name:Determined Iteration\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigPopulate | TriggerDescription$ At the beginning of combat on your turn, populate. The token created this way gains haste. Sacrifice it at the beginning of the next end step. (To populate, create a token that's a copy of a creature token you control.)\nSVar:TrigPopulate:DB$ CopyPermanent | Populate$ True | PumpKeywords$ Haste | AtEOT$ Sacrifice\nDeckHas:Ability$Token|Sacrifice\nDeckNeeds:Ability$Token\nOracle:At the beginning of combat on your turn, populate. The token created this way gains haste. Sacrifice it at the beginning of the next end step. (To populate, create a token that's a copy of a creature token you control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Determined Iteration"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

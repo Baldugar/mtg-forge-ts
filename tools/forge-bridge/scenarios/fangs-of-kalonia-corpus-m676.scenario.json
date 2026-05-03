@@ -1,0 +1,23 @@
+{
+  "id": "fangs-of-kalonia-corpus-m676",
+  "description": "M6 corpus — Fangs of Kalonia; in-hand parse.",
+  "seed": 65073,
+  "cards": {
+    "Fangs of Kalonia": "Name:Fangs of Kalonia\nManaCost:1 G\nTypes:Sorcery\nA:SP$ PutCounter | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | RememberPut$ True | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBPump | SpellDescription$ Put a +1/+1 counter on target creature you control, then double the number of +1/+1 counters on each creature that had a +1/+1 counter put on it this way.\nSVar:DBPump:DB$ MultiplyCounter | Defined$ Remembered | CounterType$ P1P1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Overload:4 G G\nDeckHas:Ability$Counters\nOracle:Put a +1/+1 counter on target creature you control, then double the number of +1/+1 counters on each creature that had a +1/+1 counter put on it this way.\\nOverload {4}{G}{G} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fangs of Kalonia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

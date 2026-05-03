@@ -1,0 +1,25 @@
+{
+  "id": "dwarven-nomad-corpus-m676",
+  "description": "M6 corpus — Dwarven Nomad; ETB-on-bf.",
+  "seed": 64211,
+  "cards": {
+    "Dwarven Nomad": "Name:Dwarven Nomad\nManaCost:2 R\nTypes:Creature Dwarf Nomad\nPT:1/1\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature.powerLE2 | TgtPrompt$ Select target creature with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{T}: Target creature with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dwarven Nomad"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

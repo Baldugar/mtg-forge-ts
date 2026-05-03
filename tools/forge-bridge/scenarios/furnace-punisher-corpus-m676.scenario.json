@@ -1,0 +1,23 @@
+{
+  "id": "furnace-punisher-corpus-m676",
+  "description": "M6 corpus — Furnace Punisher; in-hand parse.",
+  "seed": 65846,
+  "cards": {
+    "Furnace Punisher": "Name:Furnace Punisher\nManaCost:2 R\nTypes:Creature Phyrexian Warrior\nPT:3/3\nK:Menace\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, CARDNAME deals 2 damage to that player unless they control two or more basic lands.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2 | ConditionPresent$ Land.Basic+ControlledBy TriggeredPlayer | ConditionCompare$ LT2\nAI:RemoveDeck:Random\nSVar:X:Count$Valid Land.Basic+YouCtrl\nSVar:NeedsToPlayVar:X GE2\nOracle:Menace\\nAt the beginning of each player's upkeep, Furnace Punisher deals 2 damage to that player unless they control two or more basic lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Furnace Punisher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

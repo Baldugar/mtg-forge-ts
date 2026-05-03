@@ -1,0 +1,23 @@
+{
+  "id": "erkenbrand-lord-of-westfold-corpus-m676",
+  "description": "M6 corpus — Erkenbrand, Lord of Westfold; in-hand parse.",
+  "seed": 64698,
+  "cards": {
+    "Erkenbrand, Lord of Westfold": "Name:Erkenbrand, Lord of Westfold\nManaCost:3 R\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Creature.Human+Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME or another Human creature you control enters, creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1\nSVar:BuffedBy:Human\nDeckHints:Type$Human\nOracle:Whenever Erkenbrand, Lord of Westfold or another Human creature you control enters, creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erkenbrand, Lord of Westfold"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

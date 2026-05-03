@@ -1,0 +1,23 @@
+{
+  "id": "flay-essence-corpus-m676",
+  "description": "M6 corpus — Flay Essence; in-hand parse.",
+  "seed": 65476,
+  "cards": {
+    "Flay Essence": "Name:Flay Essence\nManaCost:1 B B\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBGainLife | SpellDescription$ Exile target creature or planeswalker. You gain life equal to the number of counters on it.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardCounters.ALL\nOracle:Exile target creature or planeswalker. You gain life equal to the number of counters on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flay Essence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

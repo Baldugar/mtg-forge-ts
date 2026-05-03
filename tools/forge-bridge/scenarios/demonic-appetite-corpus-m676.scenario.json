@@ -1,0 +1,23 @@
+{
+  "id": "demonic-appetite-corpus-m676",
+  "description": "M6 corpus — Demonic Appetite; in-hand parse.",
+  "seed": 63430,
+  "cards": {
+    "Demonic Appetite": "Name:Demonic Appetite\nManaCost:B\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature\nAI:RemoveDeck:All\nOracle:Enchant creature you control\\nEnchanted creature gets +3/+3.\\nAt the beginning of your upkeep, sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Appetite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

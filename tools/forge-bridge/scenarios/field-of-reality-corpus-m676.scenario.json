@@ -1,0 +1,23 @@
+{
+  "id": "field-of-reality-corpus-m676",
+  "description": "M6 corpus — Field of Reality; in-hand parse.",
+  "seed": 65268,
+  "cards": {
+    "Field of Reality": "Name:Field of Reality\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.EnchantedBy | ValidBlocker$ Creature.Spirit | Description$ Enchanted creature can't be blocked by Spirits.\nA:AB$ ChangeZone | Cost$ 1 U | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return CARDNAME to its owner's hand.\nAI:RemoveDeck:Random\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\nEnchanted creature can't be blocked by Spirits.\\n{1}{U}: Return Field of Reality to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Field of Reality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

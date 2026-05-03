@@ -1,0 +1,23 @@
+{
+  "id": "exchange-of-words-corpus-m676",
+  "description": "M6 corpus — Exchange of Words; in-hand parse.",
+  "seed": 64846,
+  "cards": {
+    "Exchange of Words": "Name:Exchange of Words\nManaCost:1 U U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBExchangeText | TriggerDescription$ When this enchantment enters, choose two target creatures. For as long as this enchantment remains on the battlefield, exchange the text boxes of those creatures.\nSVar:DBExchangeText:DB$ ExchangeTextBox | ValidTgts$ Creature | TargetMin$ 2 | TargetMax$ 2 | Duration$ AsLongAsInPlay\nOracle:When this enchantment enters, choose two target creatures. For as long as this enchantment remains on the battlefield, exchange the text boxes of those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exchange of Words"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

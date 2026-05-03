@@ -1,0 +1,23 @@
+{
+  "id": "council-guardian-corpus-m676",
+  "description": "M6 corpus — Council Guardian; in-hand parse.",
+  "seed": 62626,
+  "cards": {
+    "Council Guardian": "Name:Council Guardian\nManaCost:5 W\nTypes:Creature Giant Soldier\nPT:5/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigVote | TriggerDescription$ Will of the Council — When CARDNAME enters, starting with you, each player votes for blue, black, red, or green. CARDNAME gains protection from each color with the most votes or tied for most votes.\nSVar:TrigVote:DB$ Vote | Defined$ Player | Choices$ PumpU,PumpB,PumpR,PumpG | AILogic$ Protection\nSVar:PumpU:DB$ Pump | KW$ Protection from blue | Duration$ Permanent | Defined$ Self | SpellDescription$ Blue\nSVar:PumpB:DB$ Pump | KW$ Protection from black | Duration$ Permanent | Defined$ Self | SpellDescription$ Black\nSVar:PumpR:DB$ Pump | KW$ Protection from red | Duration$ Permanent | Defined$ Self | SpellDescription$ Red\nSVar:PumpG:DB$ Pump | KW$ Protection from green | Duration$ Permanent | Defined$ Self | SpellDescription$ Green\nOracle:Will of the council — When Council Guardian enters, starting with you, each player votes for blue, black, red, or green. Council Guardian gains protection from each color with the most votes or tied for most votes.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Council Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "extinguish-the-light-corpus-m676",
+  "description": "M6 corpus — Extinguish the Light; in-hand parse.",
+  "seed": 64917,
+  "cards": {
+    "Extinguish the Light": "Name:Extinguish the Light\nManaCost:2 B B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature,Planeswalker | TgtPrompt$ Select target creature or planeswalker | SubAbility$ DBGainLife | SpellDescription$ Destroy target creature or planeswalker.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | ConditionDefined$ Targeted | ConditionPresent$ Card.cmcLE3 | ConditionCompare$ EQ1 | SpellDescription$ If its mana value was 3 or less, you gain 3 life.\nDeckHas:Ability$LifeGain\nOracle:Destroy target creature or planeswalker. If its mana value was 3 or less, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extinguish the Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

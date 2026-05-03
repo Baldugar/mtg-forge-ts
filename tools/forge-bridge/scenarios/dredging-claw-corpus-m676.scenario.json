@@ -1,0 +1,23 @@
+{
+  "id": "dredging-claw-corpus-m676",
+  "description": "M6 corpus — Dredging Claw; in-hand parse.",
+  "seed": 64038,
+  "cards": {
+    "Dredging Claw": "Name:Dredging Claw\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddKeyword$ Menace | Description$ Equipped creature gets +1/+0 and has menace.\nT:Mode$ ChangesZone | Destination$ Battlefield | Origin$ Graveyard | TriggerZones$ Battlefield | OptionalDecider$ You | ValidCard$ Creature.YouOwn | Execute$ TrigAttach | TriggerDescription$ Whenever a creature enters from your graveyard, you may attach CARDNAME to it.\nSVar:TrigAttach:DB$ Attach | Defined$ TriggeredCardLKICopy\nK:Equip:1 B\nAI:RemoveDeck:Random\nDeckHas:Keyword$Menace\nDeckHints:Ability$Graveyard\nDeckNeeds:Color$Black\nOracle:Equipped creature gets +1/+0 and has menace. (It's can't be blocked except by two or more creatures.)\\nWhenever a creature enters from your graveyard, you may attach Dredging Claw to it.\\nEquip {1}{B} ({1}{B}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dredging Claw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

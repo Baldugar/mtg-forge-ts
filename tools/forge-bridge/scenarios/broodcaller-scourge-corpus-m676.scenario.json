@@ -1,0 +1,23 @@
+{
+  "id": "broodcaller-scourge-corpus-m676",
+  "description": "M6 corpus — Broodcaller Scourge; in-hand parse.",
+  "seed": 61441,
+  "cards": {
+    "Broodcaller Scourge": "Name:Broodcaller Scourge\nManaCost:5 G G\nTypes:Creature Dragon\nPT:5/7\nK:Flying\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.Dragon+YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever one or more Dragons you control deal combat damage to a player, you may put a permanent card with mana value less than or equal to that damage from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChoiceZone$ Hand | Amount$ 1 | ChangeType$ Permanent.cmcLEX+YouCtrl | ChangeNum$ 1 | AILogic$ BestCard\nSVar:X:TriggerCount$DamageAmount\nOracle:Flying\\nWhenever one or more Dragons you control deal combat damage to a player, you may put a permanent card with mana value less than or equal to that damage from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Broodcaller Scourge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

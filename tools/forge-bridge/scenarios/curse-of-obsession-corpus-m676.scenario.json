@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-obsession-corpus-m676",
+  "description": "M6 corpus — Curse of Obsession; in-hand parse.",
+  "seed": 62932,
+  "cards": {
+    "Curse of Obsession": "Name:Curse of Obsession\nManaCost:4 R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Draw | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of enchanted player's draw step, that player draws two additional cards.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer | NumCards$ 2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of enchanted player's end step, that player discards their hand.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredPlayer | Mode$ Hand\nOracle:Enchant player\\nAt the beginning of enchanted player's draw step, that player draws two additional cards.\\nAt the beginning of enchanted player's end step, that player discards their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Obsession"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

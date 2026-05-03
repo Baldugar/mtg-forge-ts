@@ -1,0 +1,23 @@
+{
+  "id": "confession-dial-corpus-m676",
+  "description": "M6 corpus — Confession Dial; in-hand parse.",
+  "seed": 62476,
+  "cards": {
+    "Confession Dial": "Name:Confession Dial\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 3. (Look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 3\nA:AB$ Pump | Cost$ T | ValidTgts$ Creature.Legendary+YouCtrl | TgtPrompt$ Select target legendary creature in your graveyard | KW$ Escape:CardManaCost ExileFromGrave<3/Card.Other/other> | TgtZone$ Graveyard | PumpZone$ Graveyard | SpellDescription$ Target legendary creature card in your graveyard gains escape until end of turn. The escape cost is equal to its mana cost plus exile three other cards from your graveyard. (You may cast it from your graveyard for its escape cost this turn.)\nDeckHas:Ability$Graveyard\nDeckHints:Type$Legendary & Ability$Graveyard|Mill\nOracle:When Confession Dial enters, surveil 3.\\n{T}: Target legendary creature card in your graveyard gains escape until end of turn. The escape cost is equal to its mana cost plus exile three other cards from your graveyard. (You may cast it from your graveyard for its escape cost this turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Confession Dial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

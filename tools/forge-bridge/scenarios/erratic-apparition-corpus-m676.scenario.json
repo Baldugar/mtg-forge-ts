@@ -1,0 +1,23 @@
+{
+  "id": "erratic-apparition-corpus-m676",
+  "description": "M6 corpus — Erratic Apparition; in-hand parse.",
+  "seed": 64708,
+  "cards": {
+    "Erratic Apparition": "Name:Erratic Apparition\nManaCost:2 U\nTypes:Creature Spirit\nPT:1/3\nK:Flying\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME gets +1/+1 until end of turn.\nT:Mode$ FullyUnlock | ValidCard$ Card.Room | ValidPlayer$ You | Secondary$ True | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Eerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, CARDNAME gets +1/+1 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nDeckNeeds:Type$Enchantment\nOracle:Flying, vigilance\\nEerie — Whenever an enchantment you control enters and whenever you fully unlock a Room, Erratic Apparition gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Erratic Apparition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

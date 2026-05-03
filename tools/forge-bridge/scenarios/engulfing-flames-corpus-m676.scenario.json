@@ -1,0 +1,23 @@
+{
+  "id": "engulfing-flames-corpus-m676",
+  "description": "M6 corpus — Engulfing Flames; in-hand parse.",
+  "seed": 64610,
+  "cards": {
+    "Engulfing Flames": "Name:Engulfing Flames\nManaCost:R\nTypes:Instant\nK:Flashback:3 R\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 1 | SubAbility$ DBEffect | SpellDescription$ CARDNAME deals 1 damage to target creature. It can't be regenerated this turn.\nSVar:DBEffect:DB$ Effect | RememberObjects$ Targeted | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | AILogic$ CantRegenerate\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nOracle:Engulfing Flames deals 1 damage to target creature. It can't be regenerated this turn.\\nFlashback {3}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Engulfing Flames"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

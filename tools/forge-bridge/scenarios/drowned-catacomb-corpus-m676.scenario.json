@@ -1,0 +1,25 @@
+{
+  "id": "drowned-catacomb-corpus-m676",
+  "description": "M6 corpus — Drowned Catacomb; ETB-on-bf.",
+  "seed": 64089,
+  "cards": {
+    "Drowned Catacomb": "Name:Drowned Catacomb\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control an Island or a Swamp.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Island.YouCtrl,Swamp.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | SpellDescription$ Add {U} or {B}.\nOracle:Drowned Catacomb enters tapped unless you control an Island or a Swamp.\\n{T}: Add {U} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Drowned Catacomb"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

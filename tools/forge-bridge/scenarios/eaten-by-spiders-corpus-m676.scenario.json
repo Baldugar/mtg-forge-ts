@@ -1,0 +1,23 @@
+{
+  "id": "eaten-by-spiders-corpus-m676",
+  "description": "M6 corpus — Eaten by Spiders; in-hand parse.",
+  "seed": 64274,
+  "cards": {
+    "Eaten by Spiders": "Name:Eaten by Spiders\nManaCost:2 G\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | IsCurse$ True | SubAbility$ ChompEquip | StackDescription$ REP target creature with flying_{c:Targeted} | SpellDescription$ Destroy target creature with flying and all Equipment attached to that creature.\nSVar:ChompEquip:DB$ DestroyAll | ValidCards$ Targeted.Self,Card.Equipment+Attached | StackDescription$ None\nOracle:Destroy target creature with flying and all Equipment attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eaten by Spiders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "empyrial-storm-corpus-m676",
+  "description": "M6 corpus — Empyrial Storm; in-hand parse.",
+  "seed": 64546,
+  "cards": {
+    "Empyrial Storm": "Name:Empyrial Storm\nManaCost:4 W W\nTypes:Sorcery\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it for each time you've cast your commander from the command zone this game.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$TotalCommanderCastFromCommandZone\nA:SP$ Token | TokenScript$ w_4_4_angel_flying | TokenOwner$ You | SpellDescription$ Create a 4/4 white Angel creature token with flying.\nDeckHas:Ability$Token\nOracle:When you cast this spell, copy it for each time you've cast your commander from the command zone this game.\\nCreate a 4/4 white Angel creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Empyrial Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

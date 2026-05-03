@@ -1,0 +1,23 @@
+{
+  "id": "buxton-decorated-host-corpus-m676",
+  "description": "M6 corpus — Buxton, Decorated Host; in-hand parse.",
+  "seed": 61557,
+  "cards": {
+    "Buxton, Decorated Host": "Name:Buxton, Decorated Host\nManaCost:3 G G W\nTypes:Legendary Creature Rabbit Noble\nPT:4/4\nK:Convoke\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Creature.tapped+YouCtrl | Execute$ TrigSeek | TriggerDescription$ At the beginning of your end step, if you control a tapped creature, seek a nonland permanent card with mana value X or less, where X is the number of tapped creatures you control. Put that card onto the battlefield.\nSVar:TrigSeek:DB$ Seek | Type$ Permanent.nonLand+cmcLEX | RememberFound$ True | SubAbility$ DBPut\nSVar:DBPut:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Creature.tapped+YouCtrl\nOracle:Convoke\\nAt the beginning of your end step, if you control a tapped creature, seek a nonland permanent card with mana value X or less, where X is the number of tapped creatures you control. Put that card onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Buxton, Decorated Host"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "contract-from-below-corpus-m676",
+  "description": "M6 corpus — Contract from Below; in-hand parse.",
+  "seed": 62537,
+  "cards": {
+    "Contract from Below": "Name:Contract from Below\nManaCost:B\nTypes:Sorcery\nK:Remove CARDNAME from your deck before playing if you're not playing for ante.\nA:SP$ Discard | Mode$ Hand | Defined$ You | SubAbility$ DBAnte | SpellDescription$ Discard your hand, ante the top card of your library, then draw seven cards.\nSVar:DBAnte:DB$ ChangeZone | Defined$ TopOfLibrary | Origin$ Library | Destination$ Ante | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 7\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Remove Contract from Below from your deck before playing if you're not playing for ante.\\nDiscard your hand, ante the top card of your library, then draw seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contract from Below"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

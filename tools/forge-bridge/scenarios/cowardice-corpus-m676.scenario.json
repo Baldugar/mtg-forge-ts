@@ -1,0 +1,23 @@
+{
+  "id": "cowardice-corpus-m676",
+  "description": "M6 corpus — Cowardice; in-hand parse.",
+  "seed": 62667,
+  "cards": {
+    "Cowardice": "Name:Cowardice\nManaCost:3 U U\nTypes:Enchantment\nT:Mode$ BecomesTarget | ValidTarget$ Card.Creature+inZoneBattlefield | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever a creature becomes the target of a spell or ability, return that creature to its owner's hand. (It won't be affected by the spell or ability.)\nSVar:TrigReturn:DB$ ChangeZone | Defined$ TriggeredTargetLKICopy | Origin$ Battlefield | Destination$ Hand\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:Whenever a creature becomes the target of a spell or ability, return that creature to its owner's hand. (It won't be affected by the spell or ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cowardice"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

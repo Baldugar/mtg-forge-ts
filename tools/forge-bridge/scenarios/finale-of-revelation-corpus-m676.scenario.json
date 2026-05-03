@@ -1,0 +1,23 @@
+{
+  "id": "finale-of-revelation-corpus-m676",
+  "description": "M6 corpus — Finale of Revelation; in-hand parse.",
+  "seed": 65324,
+  "cards": {
+    "Finale of Revelation": "Name:Finale of Revelation\nManaCost:X U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBDraw | UseAllOriginZones$ True | ConditionCheckSVar$ X | ConditionSVarCompare$ GE10 | SpellDescription$ Draw X cards. If X is 10 or more, instead shuffle your graveyard into your library, draw X cards, untap up to five lands, and you have no maximum hand size for the rest of the game.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBUntap | AILogic$ ConsiderPrimary\nSVar:DBUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ 5 | SubAbility$ DBEffect | ConditionCheckSVar$ X | ConditionSVarCompare$ GE10\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STHandSize | Duration$ Permanent | SubAbility$ DBChange | ConditionCheckSVar$ X | ConditionSVarCompare$ GE10\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ Exile CARDNAME.\nSVar:X:Count$xPaid\nOracle:Draw X cards. If X is 10 or more, instead shuffle your graveyard into your library, draw X cards, untap up to five lands, and you have no maximum hand size for the rest of the game.\\nExile Finale of Revelation.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Finale of Revelation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deem-inferior-corpus-m676",
+  "description": "M6 corpus — Deem Inferior; in-hand parse.",
+  "seed": 63326,
+  "cards": {
+    "Deem Inferior": "Name:Deem Inferior\nManaCost:3 U\nTypes:Sorcery\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ Count$YouDrewThisTurn | EffectZone$ All | Description$ This spell costs {1} less to cast for each card you've drawn this turn.\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | AlternativeDecider$ TargetedOwner | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 1 | DestinationAlternative$ Library | LibraryPositionAlternative$ -1 | StackDescription$ {p:TargetedOwner} puts {c:Targeted} into their library second from the top or on the bottom. | SpellDescription$ The owner of target nonland permanent puts it into their library second from the top or on the bottom.\nOracle:This spell costs {1} less to cast for each card you've drawn this turn.\\nThe owner of target nonland permanent puts it into their library second from the top or on the bottom.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deem Inferior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

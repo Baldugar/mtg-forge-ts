@@ -1,0 +1,23 @@
+{
+  "id": "fiery-impulse-corpus-m676",
+  "description": "M6 corpus — Fiery Impulse; in-hand parse.",
+  "seed": 65284,
+  "cards": {
+    "Fiery Impulse": "Name:Fiery Impulse\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 2 | SubAbility$ DBDamage | ConditionCheckSVar$ X | ConditionSVarCompare$ LT2 | SpellDescription$ CARDNAME deals 2 damage to target creature.\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ 3 | ConditionCheckSVar$ X | ConditionSVarCompare$ GE2 | SpellDescription$ Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, CARDNAME deals 3 damage instead.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nOracle:Fiery Impulse deals 2 damage to target creature.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, Fiery Impulse deals 3 damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiery Impulse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

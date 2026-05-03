@@ -1,0 +1,23 @@
+{
+  "id": "death-pits-of-rath-corpus-m676",
+  "description": "M6 corpus — Death Pits of Rath; in-hand parse.",
+  "seed": 63253,
+  "cards": {
+    "Death Pits of Rath": "Name:Death Pits of Rath\nManaCost:3 B B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature | AddSVar$ DeathDestroy\nSVar:DeathDestroy:SVar:DestroyWhenDamaged:True\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature | Execute$ TrigDestroy | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature is dealt damage, destroy it. It can't be regenerated.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy | NoRegen$ True\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:Whenever a creature is dealt damage, destroy it. It can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Pits of Rath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

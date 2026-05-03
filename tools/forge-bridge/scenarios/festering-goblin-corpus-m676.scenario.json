@@ -1,0 +1,23 @@
+{
+  "id": "festering-goblin-corpus-m676",
+  "description": "M6 corpus — Festering Goblin; in-hand parse.",
+  "seed": 65241,
+  "cards": {
+    "Festering Goblin": "Name:Festering Goblin\nManaCost:B\nTypes:Creature Zombie Goblin\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME dies, target creature gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nOracle:When Festering Goblin dies, target creature gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Festering Goblin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

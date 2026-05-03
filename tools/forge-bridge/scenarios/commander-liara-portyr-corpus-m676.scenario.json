@@ -1,0 +1,25 @@
+{
+  "id": "commander-liara-portyr-corpus-m676",
+  "description": "M6 corpus — Commander Liara Portyr; ETB-on-bf.",
+  "seed": 62418,
+  "cards": {
+    "Commander Liara Portyr": "Name:Commander Liara Portyr\nManaCost:3 R W\nTypes:Legendary Creature Human Soldier\nPT:5/3\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, spells you cast from exile this turn cost {X} less to cast, where X is the number of players being attacked. Exile the top X cards of your library. Until end of turn, you may cast spells from among those exiled cards.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ ReduceCost,STPlay | RememberObjects$ Remembered | SetChosenNumber$ X | SubAbility$ DBCleanup\nSVar:ReduceCost:Mode$ ReduceCost | ValidCard$ Card.wasCastFromExile | Type$ Spell | Activator$ You | Amount$ Count$ChosenNumber | Description$ Spells you cast from exile this turn cost {X} less to cast, where X is the number of players you attacked.\nSVar:STPlay:Mode$ Continuous | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | MayPlay$ True | Description$ Until end of turn, you may cast spells from among those exiled cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggeredPlayersAttackedTarget$Amount\nDeckHints:Keyword$Encore|Myriad\nOracle:Whenever you attack, spells you cast from exile this turn cost {X} less to cast, where X is the number of players being attacked. Exile the top X cards of your library. Until end of turn, you may cast spells from among those exiled cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Commander Liara Portyr"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

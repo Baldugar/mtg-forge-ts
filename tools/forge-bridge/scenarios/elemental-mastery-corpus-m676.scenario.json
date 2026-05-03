@@ -1,0 +1,23 @@
+{
+  "id": "elemental-mastery-corpus-m676",
+  "description": "M6 corpus — Elemental Mastery; in-hand parse.",
+  "seed": 64400,
+  "cards": {
+    "Elemental Mastery": "Name:Elemental Mastery\nManaCost:3 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddAbility$ Token | AddSVar$ ElementalMasteryCount | Description$ Enchanted creature has \"{T}: Create X 1/1 red Elemental creature tokens with haste, where X is this creature's power. Exile them at the beginning of the next end step.\"\nSVar:Token:AB$ Token | Cost$ T | TokenAmount$ ElementalMasteryCount | TokenScript$ r_1_1_elemental_haste | AtEOT$ Exile | SpellDescription$ Create X 1/1 red Elemental creature tokens with haste, where X is this creature's power. Exile them at the beginning of the next end step.\nSVar:ElementalMasteryCount:Count$CardPower\nSVar:NonStackingAttachEffect:True\nDeckHas:Ability$Token\nOracle:Enchant creature\\nEnchanted creature has \"{T}: Create X 1/1 red Elemental creature tokens with haste, where X is this creature's power. Exile them at the beginning of the next end step.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elemental Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

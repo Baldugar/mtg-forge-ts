@@ -1,0 +1,23 @@
+{
+  "id": "omer-of-the-riddermark-corpus-m676",
+  "description": "M6 corpus — Éomer of the Riddermark; in-hand parse.",
+  "seed": 64663,
+  "cards": {
+    "Éomer of the Riddermark": "Name:Éomer of the Riddermark\nManaCost:4 R\nTypes:Legendary Creature Human Knight\nPT:5/4\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | IsPresent$ Creature.greatestPower+YouCtrl | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, if you control a creature with the greatest power among creatures on the battlefield, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token & Type$Soldier\nOracle:Haste\\nWhenever Éomer of the Riddermark attacks, if you control a creature with the greatest power among creatures on the battlefield, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Éomer of the Riddermark"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

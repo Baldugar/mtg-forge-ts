@@ -1,0 +1,23 @@
+{
+  "id": "dark-tutelage-corpus-m676",
+  "description": "M6 corpus — Dark Tutelage; in-hand parse.",
+  "seed": 63090,
+  "cards": {
+    "Dark Tutelage": "Name:Dark Tutelage\nManaCost:2 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ At the beginning of your upkeep, reveal the top card of your library and put that card into your hand. You lose life equal to its mana value.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | Reveal$ True | ChangeNum$ All | ChangeValid$ Card | DestinationZone$ Hand | RememberChanged$ True | SubAbility$ DBLose\nSVar:DBLose:DB$ LoseLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, reveal the top card of your library and put that card into your hand. You lose life equal to its mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Tutelage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

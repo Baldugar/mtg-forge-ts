@@ -1,0 +1,23 @@
+{
+  "id": "cathedral-membrane-corpus-m676",
+  "description": "M6 corpus — Cathedral Membrane; in-hand parse.",
+  "seed": 61814,
+  "cards": {
+    "Cathedral Membrane": "Name:Cathedral Membrane\nManaCost:1 WP\nTypes:Artifact Creature Phyrexian Wall\nPT:0/3\nK:Defender\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDmg | Phase$ BeginCombat->EndCombat | TriggerDescription$ When CARDNAME dies during combat, it deals 6 damage to each creature it blocked this combat.\nSVar:TrigDmg:DB$ DamageAll | ValidCards$ Creature.IsRemembered | NumDmg$ 6 | ValidDescription$ each creature it blocked this combat.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigRem | Secondary$ True | TriggerZones$ Battlefield | Static$ True\nSVar:TrigRem:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBRem\nSVar:DBRem:DB$ Pump | RememberObjects$ Valid Creature.blockedBySource\nOracle:({W/P} can be paid with either {W} or 2 life.)\\nDefender\\nWhen Cathedral Membrane dies during combat, it deals 6 damage to each creature it blocked this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cathedral Membrane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

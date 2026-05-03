@@ -1,0 +1,23 @@
+{
+  "id": "bull-aurochs-corpus-m676",
+  "description": "M6 corpus — Bull Aurochs; in-hand parse.",
+  "seed": 61493,
+  "cards": {
+    "Bull Aurochs": "Name:Bull Aurochs\nManaCost:1 G\nTypes:Creature Aurochs\nPT:2/1\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Aurochs.attacking+Other\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Aurochs\nOracle:Trample\\nWhenever Bull Aurochs attacks, it gets +1/+0 until end of turn for each other attacking Aurochs.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bull Aurochs"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

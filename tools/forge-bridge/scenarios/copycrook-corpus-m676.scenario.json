@@ -1,0 +1,23 @@
+{
+  "id": "copycrook-corpus-m676",
+  "description": "M6 corpus — Copycrook; in-hand parse.",
+  "seed": 62571,
+  "cards": {
+    "Copycrook": "Name:Copycrook\nManaCost:2 U U\nTypes:Creature Shapeshifter Rogue\nPT:0/0\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other | AddTriggers$ AttackTrig | AddSVars$ TrigConnive | SpellDescription$ You may have CARDNAME enter as a copy of any creature on the battlefield, except it has \"Whenever this creature attacks, it connives.\" (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigConnive | TriggerDescription$ Whenever this creature attacks, it connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\nSVar:TrigConnive:DB$ Connive\nDeckHas:Ability$Counters|Discard\nOracle:You may have Copycrook enter as a copy of any creature on the battlefield, except it has \"Whenever this creature attacks, it connives.\" (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Copycrook"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

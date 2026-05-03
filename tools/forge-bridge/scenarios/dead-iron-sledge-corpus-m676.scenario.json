@@ -1,0 +1,25 @@
+{
+  "id": "dead-iron-sledge-corpus-m676",
+  "description": "M6 corpus — Dead-Iron Sledge; ETB-on-bf.",
+  "seed": 63208,
+  "cards": {
+    "Dead-Iron Sledge": "Name:Dead-Iron Sledge\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:2\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Creature.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever equipped creature blocks or becomes blocked by a creature, destroy both creatures.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.AttachedBy | ValidBlocker$ Creature | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ Whenever equipped creature blocks or becomes blocked by a creature, destroy both creatures.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredAttackerLKICopy | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ TriggeredBlockerLKICopy\nAI:RemoveDeck:All\nSVar:NonStackingAttachEffect:True\nOracle:Whenever equipped creature blocks or becomes blocked by a creature, destroy both creatures.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery. This card enters unattached and stays on the battlefield if the creature leaves.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dead-Iron Sledge"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

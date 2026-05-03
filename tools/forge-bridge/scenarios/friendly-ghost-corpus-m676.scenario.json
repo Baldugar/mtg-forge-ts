@@ -1,0 +1,23 @@
+{
+  "id": "friendly-ghost-corpus-m676",
+  "description": "M6 corpus — Friendly Ghost; in-hand parse.",
+  "seed": 65748,
+  "cards": {
+    "Friendly Ghost": "Name:Friendly Ghost\nManaCost:3 W\nTypes:Creature Spirit\nPT:2/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +2/+4 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +2 | NumDef$ +4\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Friendly Spirit enters, target creature gets +2/+4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Friendly Ghost"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

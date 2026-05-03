@@ -1,0 +1,23 @@
+{
+  "id": "denizen-of-the-deep-corpus-m676",
+  "description": "M6 corpus — Denizen of the Deep; in-hand parse.",
+  "seed": 63459,
+  "cards": {
+    "Denizen of the Deep": "Name:Denizen of the Deep\nManaCost:6 U U\nTypes:Creature Serpent\nPT:11/11\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, return each other creature you control to its owner's hand.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Hand | ChangeType$ Creature.Other+YouCtrl\nOracle:When Denizen of the Deep enters, return each other creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Denizen of the Deep"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

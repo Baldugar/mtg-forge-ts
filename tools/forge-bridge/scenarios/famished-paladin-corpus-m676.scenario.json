@@ -1,0 +1,25 @@
+{
+  "id": "famished-paladin-corpus-m676",
+  "description": "M6 corpus — Famished Paladin; ETB-on-bf.",
+  "seed": 65048,
+  "cards": {
+    "Famished Paladin": "Name:Famished Paladin\nManaCost:1 W\nTypes:Creature Vampire Knight\nPT:3/3\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever you gain life, untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nAI:RemoveDeck:Random\nOracle:This creature doesn't untap during your untap step.\\nWhenever you gain life, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Famished Paladin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

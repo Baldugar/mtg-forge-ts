@@ -1,0 +1,23 @@
+{
+  "id": "echo-storm-corpus-m676",
+  "description": "M6 corpus — Echo Storm; in-hand parse.",
+  "seed": 64290,
+  "cards": {
+    "Echo Storm": "Name:Echo Storm\nManaCost:3 U U\nTypes:Sorcery\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it for each time you've cast your commander from the command zone this game.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$TotalCommanderCastFromCommandZone\nA:SP$ CopyPermanent | ValidTgts$ Artifact | SpellDescription$ Create a token that's a copy of target artifact.\nDeckHas:Ability$Token\nOracle:When you cast this spell, copy it for each time you've cast your commander from the command zone this game. You may choose new targets for the copies.\\nCreate a token that's a copy of target artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Echo Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

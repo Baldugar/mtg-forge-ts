@@ -1,0 +1,25 @@
+{
+  "id": "detective-of-the-month-corpus-m676",
+  "description": "M6 corpus — Detective of the Month; ETB-on-bf.",
+  "seed": 63556,
+  "cards": {
+    "Detective of the Month": "Name:Detective of the Month\nManaCost:2 U\nTypes:Creature Human Detective\nPT:2/3\nK:Ascend\nS:Mode$ CantBlockBy | ValidAttacker$ Detective.YouCtrl | Condition$ Blessing | Description$ As long as you have the city's blessing, Detectives you control can't be blocked.\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you draw your second card each turn, create a 2/2 white and blue Detective creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ wu_2_2_detective\nSVar:PlayMain1:TRUE\nDeckHints:Type$Detective\nDeckHas:Ability$Token & Type$Detective\nOracle:Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nAs long as you have the city's blessing, Detectives you control can't be blocked.\\nWhenever you draw your second card each turn, create a 2/2 white and blue Detective creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Detective of the Month"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

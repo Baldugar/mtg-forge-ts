@@ -1,0 +1,23 @@
+{
+  "id": "eclipsed-flamekin-corpus-m676",
+  "description": "M6 corpus — Eclipsed Flamekin; in-hand parse.",
+  "seed": 64304,
+  "cards": {
+    "Eclipsed Flamekin": "Name:Eclipsed Flamekin\nManaCost:1 UR UR\nTypes:Creature Elemental Scout\nPT:1/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When this creature enters, look at the top four cards of your library. You may reveal an Elemental, Island, or Mountain card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Elemental,Island,Mountain | RestRandomOrder$ True\nOracle:When this creature enters, look at the top four cards of your library. You may reveal an Elemental, Island, or Mountain card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eclipsed Flamekin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

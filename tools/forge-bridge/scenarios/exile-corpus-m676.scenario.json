@@ -1,0 +1,23 @@
+{
+  "id": "exile-corpus-m676",
+  "description": "M6 corpus — Exile; in-hand parse.",
+  "seed": 64861,
+  "cards": {
+    "Exile": "Name:Exile\nManaCost:2 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking+nonWhite | TgtPrompt$ Select target nonwhite attacking creature | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBGainLife | SpellDescription$ Exile target nonwhite attacking creature. You gain life equal to its toughness.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardToughness\nOracle:Exile target nonwhite attacking creature. You gain life equal to its toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exile"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

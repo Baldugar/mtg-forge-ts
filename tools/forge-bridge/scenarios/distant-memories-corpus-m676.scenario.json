@@ -1,0 +1,23 @@
+{
+  "id": "distant-memories-corpus-m676",
+  "description": "M6 corpus — Distant Memories; in-hand parse.",
+  "seed": 63731,
+  "cards": {
+    "Distant Memories": "Name:Distant Memories\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | Imprint$ True | AILogic$ BestCard | SubAbility$ DBChoose | StackDescription$ SpellDescription | SpellDescription$ Search your library for a card, exile it, then shuffle. Any opponent may have you put that card into your hand. If no player does, you draw three cards.\nSVar:DBChoose:DB$ GenericChoice | Defined$ Opponent | Choices$ DBToHand,DoNothing | ChoicePrompt$ Have them put the card in their hand? | ConditionDefined$ Imprinted | ConditionZone$ Exile | ConditionPresent$ Card | ConditionCompare$ EQ1 | SubAbility$ DBDraw\nSVar:DBToHand:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Defined$ Imprinted | Unimprint$ True | SpellDescription$ Yes\nSVar:DoNothing:DB$ Cleanup | SpellDescription$ No\nSVar:DBDraw:DB$ Draw | NumCards$ 3 | ConditionDefined$ Imprinted | ConditionZone$ Exile | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:NeedsToPlayVar:X LE4\nSVar:X:Count$ValidHand Card.YouOwn\nOracle:Search your library for a card, exile it, then shuffle. Any opponent may have you put that card into your hand. If no player does, you draw three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Distant Memories"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

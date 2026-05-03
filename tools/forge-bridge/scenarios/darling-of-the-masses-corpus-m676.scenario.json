@@ -1,0 +1,23 @@
+{
+  "id": "darling-of-the-masses-corpus-m676",
+  "description": "M6 corpus — Darling of the Masses; in-hand parse.",
+  "seed": 63124,
+  "cards": {
+    "Darling of the Masses": "Name:Darling of the Masses\nManaCost:2 G W\nTypes:Creature Elf Citizen\nPT:2/4\nS:Mode$ Continuous | Affected$ Creature.Citizen+Other+YouCtrl | AddPower$ 1 | Description$ Other Citizens you control get +1/+0.\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever CARDNAME attacks, create a 1/1 green and white Citizen creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ gw_1_1_citizen\nSVar:PlayMain1:TRUE\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckHints:Type$Citizen\nOracle:Other Citizens you control get +1/+0.\\nWhenever Darling of the Masses attacks, create a 1/1 green and white Citizen creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Darling of the Masses"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

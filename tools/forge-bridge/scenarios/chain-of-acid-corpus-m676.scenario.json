@@ -1,0 +1,23 @@
+{
+  "id": "chain-of-acid-corpus-m676",
+  "description": "M6 corpus — Chain of Acid; in-hand parse.",
+  "seed": 61915,
+  "cards": {
+    "Chain of Acid": "Name:Chain of Acid\nManaCost:3 G\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Permanent.nonCreature | SubAbility$ DBCopy | SpellDescription$ Destroy target noncreature permanent. Then that permanent's controller may copy this spell and may choose a new target for that copy.\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ Parent | Controller$ TargetedController | Optional$ True | AILogic$ ChainOfAcid | StackDescription$ None | MayChooseTarget$ True\nAI:RemoveDeck:Random\nOracle:Destroy target noncreature permanent. Then that permanent's controller may copy this spell and may choose a new target for that copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chain of Acid"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

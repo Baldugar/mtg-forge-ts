@@ -1,0 +1,23 @@
+{
+  "id": "faramir-steward-of-gondor-corpus-m676",
+  "description": "M6 corpus — Faramir, Steward of Gondor; in-hand parse.",
+  "seed": 65079,
+  "cards": {
+    "Faramir, Steward of Gondor": "Name:Faramir, Steward of Gondor\nManaCost:1 W U\nTypes:Legendary Creature Human Noble\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Creature.Legendary+YouCtrl+cmcGE4 | Execute$ TrigMonarch | TriggerDescription$ Whenever a legendary creature you control with mana value 4 or greater enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ You.isMonarch | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if you're the monarch, create two 1/1 white Human Soldier creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nDeckHas:Ability$Token & Type$Soldier\nDeckHints:Type$Creature & Type$Legendary\nOracle:Whenever a legendary creature you control with mana value 4 or greater enters, you become the monarch.\\nAt the beginning of your end step, if you're the monarch, create two 1/1 white Human Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faramir, Steward of Gondor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

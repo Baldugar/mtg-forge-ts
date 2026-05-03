@@ -1,0 +1,23 @@
+{
+  "id": "demonic-hordes-corpus-m676",
+  "description": "M6 corpus — Demonic Hordes; in-hand parse.",
+  "seed": 63439,
+  "cards": {
+    "Demonic Hordes": "Name:Demonic Hordes\nManaCost:3 B B B\nTypes:Creature Demon\nPT:5/5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBTap | TriggerDescription$ At the beginning of your upkeep, unless you pay {B}{B}{B}, tap CARDNAME and sacrifice a land of an opponent's choice.\nA:AB$ Destroy | ValidTgts$ Land | Cost$ T | SpellDescription$ Destroy target land.\nSVar:DBTap:DB$ Tap | Defined$ Self | UnlessCost$ B B B | UnlessPayer$ You | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBChooseOpponent\nSVar:DBChooseOpponent:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ DBChooseLand\nSVar:DBChooseLand:DB$ ChooseCard | Defined$ ChosenPlayer | Choices$ Land.YouCtrl | Mandatory$ True | Reveal$ True | ChoiceTitle$ Choose a land for CARDNAME's controller to sacrifice | SubAbility$ DBSacLand\nSVar:DBSacLand:DB$ SacrificeAll | Defined$ ChosenCard\nSVar:PlayMain1:FALSE\nDeckHas:Ability$Sacrifice\nOracle:{T}: Destroy target land.\\nAt the beginning of your upkeep, unless you pay {B}{B}{B}, tap Demonic Hordes and sacrifice a land of an opponent's choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Hordes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

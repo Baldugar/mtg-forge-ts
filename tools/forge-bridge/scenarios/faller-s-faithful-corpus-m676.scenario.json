@@ -1,0 +1,23 @@
+{
+  "id": "faller-s-faithful-corpus-m676",
+  "description": "M6 corpus — Faller's Faithful; in-hand parse.",
+  "seed": 65028,
+  "cards": {
+    "Faller's Faithful": "Name:Faller's Faithful\nManaCost:2 B\nTypes:Creature Human Wizard\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this creature enters, destroy up to one other target creature. If that creature wasn't dealt damage this turn, its controller draws two cards.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | SubAbility$ DBDraw | TgtPrompt$ Select up to one other target creature\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | Defined$ TargetedController | ConditionDefined$ Targeted | ConditionPresent$ Card.!wasDealtDamageThisTurn\nSVar:PlayMain1:TRUE\nOracle:When this creature enters, destroy up to one other target creature. If that creature wasn't dealt damage this turn, its controller draws two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faller's Faithful"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

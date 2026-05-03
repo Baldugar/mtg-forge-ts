@@ -1,0 +1,23 @@
+{
+  "id": "final-sting-faerie-corpus-m676",
+  "description": "M6 corpus — Final-Sting Faerie; in-hand parse.",
+  "seed": 65318,
+  "cards": {
+    "Final-Sting Faerie": "Name:Final-Sting Faerie\nManaCost:3 B\nTypes:Creature Faerie Assassin\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature that was dealt damage this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.wasDealtDamageThisTurn | TgtPrompt$ Select target creature that was dealt damage this turn.\nOracle:Flying\\nWhen Final-Sting Faerie enters, destroy target creature that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Final-Sting Faerie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flood-the-engine-corpus-m676",
+  "description": "M6 corpus — Flood the Engine; in-hand parse.",
+  "seed": 65525,
+  "cards": {
+    "Flood the Engine": "Name:Flood the Engine\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Creature,Vehicle:creature or Vehicle\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When this Aura enters, tap enchanted permanent.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nS:Mode$ Continuous | Affected$ Permanent.AttachedBy | RemoveAllAbilities$ True | Description$ Enchanted permanent loses all abilities and doesn't untap during its controller's untap step.\nR:Event$ Untap | ValidCard$ Permanent.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Secondary$ True | Description$ Enchanted permanent doesn't untap during its controller's untap step.\nOracle:Enchant creature or Vehicle\\nWhen this Aura enters, tap enchanted permanent.\\nEnchanted permanent loses all abilities and doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flood the Engine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "doomgape-corpus-m676",
+  "description": "M6 corpus — Doomgape; in-hand parse.",
+  "seed": 63829,
+  "cards": {
+    "Doomgape": "Name:Doomgape\nManaCost:4 BG BG BG\nTypes:Creature Elemental\nPT:10/10\nK:Trample\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature. You gain life equal to that creature's toughness.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.YouCtrl\nAI:RemoveDeck:Random\nOracle:Trample\\nAt the beginning of your upkeep, sacrifice a creature. You gain life equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomgape"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

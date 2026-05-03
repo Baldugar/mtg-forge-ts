@@ -1,0 +1,23 @@
+{
+  "id": "creepy-doll-corpus-m676",
+  "description": "M6 corpus — Creepy Doll; in-hand parse.",
+  "seed": 62734,
+  "cards": {
+    "Creepy Doll": "Name:Creepy Doll\nManaCost:5\nTypes:Artifact Creature Construct\nPT:1/1\nK:Indestructible\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | Execute$ TrigFlip | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, flip a coin. If you win the flip, destroy that creature.\nSVar:TrigFlip:DB$ FlipACoin | Defined$ You | WinSubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy | NoRegen$ False\nSVar:HasCombatEffect:TRUE\nOracle:Indestructible\\nWhenever Creepy Doll deals combat damage to a creature, flip a coin. If you win the flip, destroy that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creepy Doll"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

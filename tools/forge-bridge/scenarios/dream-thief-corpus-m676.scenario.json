@@ -1,0 +1,23 @@
+{
+  "id": "dream-thief-corpus-m676",
+  "description": "M6 corpus — Dream Thief; in-hand parse.",
+  "seed": 64019,
+  "cards": {
+    "Dream Thief": "Name:Dream Thief\nManaCost:2 U\nTypes:Creature Faerie Rogue\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card if you've cast another blue spell this turn.\nSVar:TrigDraw:DB$ Draw | Defined$ You | ConditionCheckSVar$ X\nSVar:X:Count$ThisTurnCast_Card.!CastSaSource+Blue+YouCtrl\nOracle:Flying\\nWhen Dream Thief enters, draw a card if you've cast another blue spell this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Thief"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

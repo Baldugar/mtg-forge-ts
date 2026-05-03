@@ -1,0 +1,23 @@
+{
+  "id": "fighter-class-corpus-m676",
+  "description": "M6 corpus — Fighter Class; in-hand parse.",
+  "seed": 65292,
+  "cards": {
+    "Fighter Class": "Name:Fighter Class\nManaCost:R W\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Equipment | ChangeNum$ 1\nK:Class:2:1 R W:AddStaticAbility$ SReduceCost\nSVar:SReduceCost:Mode$ ReduceCost | ValidCard$ Card | ValidSpell$ Activated.Equip | Activator$ You | Amount$ 2 | Secondary$ True | Description$ Equip abilities you activate cost {2} less to activate.\nK:Class:3:3 R W:AddTrigger$ TriggerAttacks\nSVar:TriggerAttacks:Mode$ Attacks | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMustBlock | Secondary$ True | TriggerDescription$ Whenever a creature you control attacks, up to one target creature blocks it this combat if able.\nSVar:TrigMustBlock:DB$ MustBlock | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 1 | DefinedAttacker$ TriggeredAttackerLKICopy | BlockAllDefined$ True | Duration$ UntilEndOfCombat\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhen Fighter Class enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.\\n{1}{R}{W}: Level 2\\nEquip abilities you activate cost {2} less to activate.\\n{3}{R}{W}: Level 3\\nWhenever a creature you control attacks, up to one target creature blocks it this combat if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fighter Class"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

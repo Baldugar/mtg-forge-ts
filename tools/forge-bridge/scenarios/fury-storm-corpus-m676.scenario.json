@@ -1,0 +1,23 @@
+{
+  "id": "fury-storm-corpus-m676",
+  "description": "M6 corpus — Fury Storm; in-hand parse.",
+  "seed": 65854,
+  "cards": {
+    "Fury Storm": "Name:Fury Storm\nManaCost:2 R R\nTypes:Instant\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCopy | TriggerDescription$ When you cast this spell, copy it for each time you've cast your commander from the command zone this game.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Amount$ X | MayChooseTarget$ True\nSVar:X:Count$TotalCommanderCastFromCommandZone\nA:SP$ CopySpellAbility | ValidTgts$ Instant,Sorcery | TargetType$ Spell | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell. You may choose new targets for the copy.\nOracle:When you cast this spell, copy it for each time you've cast your commander from the command zone this game. You may choose new targets for the copies.\\nCopy target instant or sorcery spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fury Storm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

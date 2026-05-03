@@ -1,0 +1,25 @@
+{
+  "id": "chub-toad-corpus-m676",
+  "description": "M6 corpus — Chub Toad; ETB-on-bf.",
+  "seed": 62126,
+  "cards": {
+    "Chub Toad": "Name:Chub Toad\nManaCost:2 G\nTypes:Creature Frog\nPT:1/1\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets +2/+2 until end of turn.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +2\nOracle:Whenever Chub Toad blocks or becomes blocked, it gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chub Toad"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

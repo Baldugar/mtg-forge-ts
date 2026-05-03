@@ -1,0 +1,23 @@
+{
+  "id": "favorable-destiny-corpus-m676",
+  "description": "M6 corpus — Favorable Destiny; in-hand parse.",
+  "seed": 65130,
+  "cards": {
+    "Favorable Destiny": "Name:Favorable Destiny\nManaCost:1 W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.White\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+White | AddPower$ 1 | AddToughness$ 2 | Description$ Enchanted creature gets +1/+2 as long as it's white.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Shroud | CheckSVar$ X | SVarCompare$ GE2 | Description$ Enchanted creature has shroud as long as its controller controls another creature. (It can't be the target of spells or abilities.)\nSVar:X:Count$EnchantedControllerCreatures\nOracle:Enchant creature\\nEnchanted creature gets +1/+2 as long as it's white.\\nEnchanted creature has shroud as long as its controller controls another creature. (It can't be the target of spells or abilities.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Favorable Destiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

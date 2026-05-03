@@ -1,0 +1,23 @@
+{
+  "id": "deathcap-marionette-corpus-m676",
+  "description": "M6 corpus — Deathcap Marionette; in-hand parse.",
+  "seed": 63271,
+  "cards": {
+    "Deathcap Marionette": "Name:Deathcap Marionette\nManaCost:1 B\nTypes:Creature Fungus\nPT:1/1\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 2 | Optional$ True\nDeckHas:Ability$Mill\nOracle:Deathtouch\\nWhen Deathcap Marionette enters, you may mill two cards. (You may put the top two cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathcap Marionette"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

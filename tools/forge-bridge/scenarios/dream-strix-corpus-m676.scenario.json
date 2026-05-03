@@ -1,0 +1,23 @@
+{
+  "id": "dream-strix-corpus-m676",
+  "description": "M6 corpus — Dream Strix; in-hand parse.",
+  "seed": 64018,
+  "cards": {
+    "Dream Strix": "Name:Dream Strix\nManaCost:2 U\nTypes:Creature Bird Illusion\nPT:3/2\nK:Flying\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Spell | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ When CARDNAME becomes the target of a spell, sacrifice it.\nSVar:TrigSac:DB$ Sacrifice | ValidCard$ Card.Self\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLearn | TriggerDescription$ When CARDNAME dies, learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\nSVar:TrigLearn:DB$ Learn\nDeckHas:Ability$Sacrifice\nOracle:Flying\\nWhen Dream Strix becomes the target of a spell, sacrifice it.\\nWhen Dream Strix dies, learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Strix"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "custodi-squire-corpus-m676",
+  "description": "M6 corpus — Custodi Squire; in-hand parse.",
+  "seed": 62961,
+  "cards": {
+    "Custodi Squire": "Name:Custodi Squire\nManaCost:4 W\nTypes:Creature Spirit Cleric\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigVote | TriggerDescription$ Will of the Council — When CARDNAME enters, starting with you, each player votes for an artifact, creature, or enchantment card in your graveyard. Return each card with the most votes or tied for the most votes to your hand.\nSVar:TrigVote:DB$ Vote | Defined$ Player | VoteSubAbility$ DBReturn | Zone$ Graveyard | VoteCard$ Creature.YouOwn,Enchantment.YouOwn,Artifact.YouOwn | VoteMessage$ for an artifact, creature, or enchantment card in your graveyard | AILogic$ Judgment\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Graveyard | Destination$ Hand\nOracle:Flying\\nWill of the council — When Custodi Squire enters, starting with you, each player votes for an artifact, creature, or enchantment card in your graveyard. Return each card with the most votes or tied for most votes to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Custodi Squire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

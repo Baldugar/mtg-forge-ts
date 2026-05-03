@@ -1,0 +1,23 @@
+{
+  "id": "cursed-rack-corpus-m676",
+  "description": "M6 corpus — Cursed Rack; in-hand parse.",
+  "seed": 62953,
+  "cards": {
+    "Cursed Rack": "Name:Cursed Rack\nManaCost:4\nTypes:Artifact\nK:ETBReplacement:Other:ChooseP\nSVar:ChooseP:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | AILogic$ Curse | AILogic$ MostCardsInHand | SpellDescription$ As CARDNAME enters, choose an opponent.\nS:Mode$ Continuous | Affected$ Player.Chosen | SetMaxHandSize$ 4 | Description$ The chosen player's maximum hand size is four.\nSVar:NonStackingEffect:True\nOracle:As Cursed Rack enters, choose an opponent.\\nThe chosen player's maximum hand size is four.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cursed Rack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

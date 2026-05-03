@@ -1,0 +1,25 @@
+{
+  "id": "deep-water-corpus-m676",
+  "description": "M6 corpus — Deep Water; ETB-on-bf.",
+  "seed": 63335,
+  "cards": {
+    "Deep Water": "Name:Deep Water\nManaCost:U U\nTypes:Enchantment\nA:AB$ Effect | Cost$ U | ReplacementEffects$ ReplaceU | SpellDescription$ Until end of turn, if you tap a land you control for mana, it produces {U} instead of any other type.\nSVar:ReplaceU:Event$ ProduceMana | ActiveZones$ Command | ValidActivator$ You | ValidCard$ Land.YouCtrl | ReplaceWith$ ProduceU | Description$ If you tap a land you control for mana, it produces U instead of any other type.\nSVar:ProduceU:DB$ ReplaceMana | ReplaceType$ U\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:{U}: Until end of turn, if you tap a land you control for mana, it produces {U} instead of any other type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Deep Water"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

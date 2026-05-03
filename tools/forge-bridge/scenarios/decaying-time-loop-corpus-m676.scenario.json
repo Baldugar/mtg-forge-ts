@@ -1,0 +1,23 @@
+{
+  "id": "decaying-time-loop-corpus-m676",
+  "description": "M6 corpus — Decaying Time Loop; in-hand parse.",
+  "seed": 63305,
+  "cards": {
+    "Decaying Time Loop": "Name:Decaying Time Loop\nManaCost:3 R\nTypes:Instant\nK:Retrace\nA:SP$ Discard | Defined$ You | RememberDiscarded$ True | Mode$ Hand | SubAbility$ DBDraw | SpellDescription$ Discard all the cards in your hand, then draw that many cards.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHas:Ability$Discard|Graveyard\nOracle:Discard all the cards in your hand, then draw that many cards.\\nRetrace (You may cast this card from your graveyard by discarding a land card in addition to paying its other costs.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Decaying Time Loop"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

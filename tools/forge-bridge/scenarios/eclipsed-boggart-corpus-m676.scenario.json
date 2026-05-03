@@ -1,0 +1,23 @@
+{
+  "id": "eclipsed-boggart-corpus-m676",
+  "description": "M6 corpus — Eclipsed Boggart; in-hand parse.",
+  "seed": 64302,
+  "cards": {
+    "Eclipsed Boggart": "Name:Eclipsed Boggart\nManaCost:BR BR BR\nTypes:Creature Goblin Scout\nPT:2/3\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a Goblin, Swamp or Mountain card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Goblin,Swamp,Mountain | RestRandomOrder$ True\nDeckHints:Type$Goblin|Swamp|Mountain\nOracle:When Eclipsed Boggart enters, look at the top four cards of your library. You may reveal a Goblin, Swamp or Mountain card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eclipsed Boggart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fold-into-aether-corpus-m676",
+  "description": "M6 corpus — Fold into Aether; in-hand parse.",
+  "seed": 65591,
+  "cards": {
+    "Fold into Aether": "Name:Fold into Aether\nManaCost:2 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | RememberCountered$ True | SubAbility$ DBChangeZone | SpellDescription$ Counter target spell. If that spell is countered this way, its controller may put a creature card from their hand onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | ChangeType$ Creature | Origin$ Hand | Destination$ Battlefield | ChangeNum$ 1 | ConditionDefined$ Remembered | DefinedPlayer$ TargetedController | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Counter target spell. If that spell is countered this way, its controller may put a creature card from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fold into Aether"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

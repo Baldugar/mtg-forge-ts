@@ -1,0 +1,23 @@
+{
+  "id": "emberwilde-captain-corpus-m676",
+  "description": "M6 corpus — Emberwilde Captain; in-hand parse.",
+  "seed": 64501,
+  "cards": {
+    "Emberwilde Captain": "Name:Emberwilde Captain\nManaCost:3 R\nTypes:Creature Djinn Pirate\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ AttackersDeclared | AttackingPlayer$ Player.Opponent | AttackedTarget$ You | NoResolvingCheck$ True | CheckDefinedPlayer$ You.isMonarch | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever an opponent attacks you while you're the monarch, CARDNAME deals damage to that player equal to the number of cards in their hand.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredAttackingPlayer | NumDmg$ X\nSVar:X:Count$ValidHand Card.OwnedBy TriggeredAttackingPlayer\nOracle:When Emberwilde Captain enters, you become the monarch.\\nWhenever an opponent attacks you while you're the monarch, Emberwilde Captain deals damage to that player equal to the number of cards in their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emberwilde Captain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

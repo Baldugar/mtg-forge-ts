@@ -1,0 +1,23 @@
+{
+  "id": "doctor-doom-king-of-latveria-corpus-m676",
+  "description": "M6 corpus — Doctor Doom, King of Latveria; in-hand parse.",
+  "seed": 63791,
+  "cards": {
+    "Doctor Doom, King of Latveria": "Name:Doctor Doom, King of Latveria\nManaCost:1 U B R\nTypes:Legendary Creature Human Noble Villain\nPT:3/3\nT:Mode$ DiscardedAll | ValidCard$ Land | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever you discard one or more land cards, each opponent loses 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Villain.YouCtrl | TgtPrompt$ Select target Villain you control | KW$ Menace | SubAbility$ DBConnive\nSVar:DBConnive:DB$ Connive | Defined$ Targeted\nDeckHas:Ability$Discard|Counters\nDeckHints:Ability$Discard\nOracle:Whenever you discard one or more land cards, each opponent loses 2 life.\\nAt the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doctor Doom, King of Latveria"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cunning-geysermage-corpus-m676",
+  "description": "M6 corpus — Cunning Geysermage; in-hand parse.",
+  "seed": 62893,
+  "cards": {
+    "Cunning Geysermage": "Name:Cunning Geysermage\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:3/2\nK:Kicker:2 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigKicker | TriggerDescription$ When CARDNAME enters, if it was kicked, return up to one other target creature to its owner's hand.\nSVar:TrigKicker:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.Other | TgtPrompt$ Select up to one other target creature | SpellDescription$ Return up to one other target creature to its owner's hand.\nOracle:Kicker {2}{U} (You may pay an additional {2}{U} as you cast this spell.)\\nWhen Cunning Geysermage enters, if it was kicked, return up to one other target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cunning Geysermage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

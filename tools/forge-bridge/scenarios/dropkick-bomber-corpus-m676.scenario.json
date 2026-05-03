@@ -1,0 +1,25 @@
+{
+  "id": "dropkick-bomber-corpus-m676",
+  "description": "M6 corpus — Dropkick Bomber; ETB-on-bf.",
+  "seed": 64072,
+  "cards": {
+    "Dropkick Bomber": "Name:Dropkick Bomber\nManaCost:2 R\nTypes:Creature Goblin Warrior\nPT:2/3\nS:Mode$ Continuous | Affected$ Goblin.Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other Goblins you control get +1/+1.\nA:AB$ Animate | Cost$ R | ValidTgts$ Goblin.Other+YouCtrl | TgtPrompt$ Select another target Goblin you control | Keywords$ Flying | Triggers$ TrigDamageDealtOnce | SpellDescription$ Until end of turn, another target Goblin you control gains flying and \"When this creature deals combat damage, sacrifice it.\"\nSVar:TrigDamageDealtOnce:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Card.Self | Execute$ TrigSac | TriggerDescription$ When this creature deals combat damage, sacrifice it.\nSVar:TrigSac:DB$ Sacrifice\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Goblin\nOracle:Other Goblins you control get +1/+1.\\n{R}: Until end of turn, another target Goblin you control gains flying and \"When this creature deals combat damage, sacrifice it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dropkick Bomber"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

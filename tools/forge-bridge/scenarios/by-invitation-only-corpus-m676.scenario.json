@@ -1,0 +1,23 @@
+{
+  "id": "by-invitation-only-corpus-m676",
+  "description": "M6 corpus — By Invitation Only; in-hand parse.",
+  "seed": 61560,
+  "cards": {
+    "By Invitation Only": "Name:By Invitation Only\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ ChooseNumber | Defined$ You | Min$ 0 | Max$ 13 | SubAbility$ DBSac | AILogic$ SweepCreatures | StackDescription$ SpellDescription | SpellDescription$ Choose a number between 0 and 13. Each player sacrifices that many creatures.\nSVar:DBSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature | Amount$ X | StackDescription$ None\nSVar:X:Count$ChosenNumber\nOracle:Choose a number between 0 and 13. Each player sacrifices that many creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "By Invitation Only"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

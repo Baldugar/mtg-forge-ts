@@ -1,0 +1,23 @@
+{
+  "id": "draconian-gate-bot-corpus-m676",
+  "description": "M6 corpus — Draconian Gate-Bot; in-hand parse.",
+  "seed": 63873,
+  "cards": {
+    "Draconian Gate-Bot": "Name:Draconian Gate-Bot\nManaCost:5\nTypes:Artifact Creature Robot\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters the battlefield, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBOpenAttraction,DBDestroy\nSVar:DBOpenAttraction:DB$ OpenAttraction | SpellDescription$ Open an Attraction. (Put the top card of your Attraction deck onto the battlefield.)\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Card.Attraction | TgtPrompt$ Select target Attraction | SpellDescription$ Destroy target Attraction. (It's put into its owner's junkyard.)\nOracle:When Draconian Gate-Bot enters the battlefield, choose one —\\n• Open an Attraction. (Put the top card of your Attraction deck onto the battlefield.)\\n• Destroy target Attraction. (It's put into its owner's junkyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draconian Gate-Bot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

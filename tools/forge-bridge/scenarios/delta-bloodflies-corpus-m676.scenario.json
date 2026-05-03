@@ -1,0 +1,23 @@
+{
+  "id": "delta-bloodflies-corpus-m676",
+  "description": "M6 corpus — Delta Bloodflies; in-hand parse.",
+  "seed": 63412,
+  "cards": {
+    "Delta Bloodflies": "Name:Delta Bloodflies\nManaCost:1 B\nTypes:Creature Insect\nPT:1/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | IsPresent$ Creature.YouCtrl+HasCounters | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature attacks, if you control a creature with a counter on it, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Flying\\nWhenever this creature attacks, if you control a creature with a counter on it, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delta Bloodflies"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

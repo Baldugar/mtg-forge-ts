@@ -1,0 +1,23 @@
+{
+  "id": "elder-gargaroth-corpus-m676",
+  "description": "M6 corpus — Elder Gargaroth; in-hand parse.",
+  "seed": 64356,
+  "cards": {
+    "Elder Gargaroth": "Name:Elder Gargaroth\nManaCost:3 G G\nTypes:Creature Beast\nPT:6/6\nK:Vigilance\nK:Reach\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ Whenever CARDNAME attacks or blocks, ABILITY\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigCharm | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or blocks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBCreateToken,DBGainLife,DBDraw\nSVar:DBCreateToken:DB$ Token | TokenScript$ g_3_3_beast | TokenOwner$ You | SpellDescription$ Create a 3/3 green Beast creature token.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nDeckHas:Ability$Token|LifeGain\nOracle:Vigilance, reach, trample\\nWhenever Elder Gargaroth attacks or blocks, choose one —\\n• Create a 3/3 green Beast creature token.\\n• You gain 3 life.\\n• Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elder Gargaroth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deeproot-wayfinder-corpus-m676",
+  "description": "M6 corpus — Deeproot Wayfinder; in-hand parse.",
+  "seed": 63348,
+  "cards": {
+    "Deeproot Wayfinder": "Name:Deeproot Wayfinder\nManaCost:1 G\nTypes:Creature Merfolk Scout\nPT:2/3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Battle | CombatDamage$ True | Execute$ TrigSurveil | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or battle, surveil 1, then you may return a land card from your graveyard to the battlefield tapped. (To surveil 1, look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Optional$ True | ChangeType$ Land.YouOwn | Origin$ Graveyard | Destination$ Battlefield | Hidden$ True | ChangeNum$ 1 | Tapped$ True\nDeckHas:Ability$Graveyard\nOracle:Whenever Deeproot Wayfinder deals combat damage to a player or battle, surveil 1, then you may return a land card from your graveyard to the battlefield tapped. (To surveil 1, look at the top card of your library. You may put that card into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deeproot Wayfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

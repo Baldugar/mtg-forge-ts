@@ -1,0 +1,23 @@
+{
+  "id": "dagger-caster-corpus-m676",
+  "description": "M6 corpus — Dagger Caster; in-hand parse.",
+  "seed": 63004,
+  "cards": {
+    "Dagger Caster": "Name:Dagger Caster\nManaCost:3 R\nTypes:Creature Lizard Rogue\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each opponent and 1 damage to each creature your opponents control.\nSVar:TrigDamageAll:DB$ DamageAll | NumDmg$ 1 | ValidPlayers$ Player.Opponent | SubAbility$ DBDamageCreature\nSVar:DBDamageCreature:DB$ DamageAll | NumDmg$ 1 | ValidCards$ Creature.OppCtrl\nOracle:When Dagger Caster enters, it deals 1 damage to each opponent and 1 damage to each creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dagger Caster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

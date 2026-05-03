@@ -1,0 +1,23 @@
+{
+  "id": "dogged-pursuit-corpus-m676",
+  "description": "M6 corpus — Dogged Pursuit; in-hand parse.",
+  "seed": 63799,
+  "cards": {
+    "Dogged Pursuit": "Name:Dogged Pursuit\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of your end step, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainOneLife\nSVar:DBGainOneLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your end step, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dogged Pursuit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "coalstoke-gearhulk-corpus-m676",
+  "description": "M6 corpus — Coalstoke Gearhulk; in-hand parse.",
+  "seed": 62322,
+  "cards": {
+    "Coalstoke Gearhulk": "Name:Coalstoke Gearhulk\nManaCost:1 B B R R\nTypes:Artifact Creature Construct\nPT:5/4\nK:Menace\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, put target creature card with mana value 4 or less from a graveyard onto the battlefield under your control with a finality counter on it. That creature gains menace, deathtouch, and haste. At the beginning of your next end step, exile that creature.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature.cmcLE4 | TgtPrompt$ Select target creature with mana value 4 or less from a graveyard | RememberChanged$ True | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | WithCountersType$ FINALITY | SubAbility$ DBPump\nSVar:DBPump:DB$ Animate | Keywords$ Menace & Deathtouch & Haste | Defined$ Remembered | Duration$ Permanent | AtEOT$ YourExile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nOracle:Menace, deathtouch\\nWhen this creature enters, put target creature card with mana value 4 or less from a graveyard onto the battlefield under your control with a finality counter on it. That creature gains menace, deathtouch, and haste. At the beginning of your next end step, exile that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coalstoke Gearhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

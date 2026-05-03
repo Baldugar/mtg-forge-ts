@@ -1,0 +1,25 @@
+{
+  "id": "commander-mustard-corpus-m676",
+  "description": "M6 corpus — Commander Mustard; ETB-on-bf.",
+  "seed": 62419,
+  "cards": {
+    "Commander Mustard": "Name:Commander Mustard\nManaCost:3 R W\nTypes:Legendary Creature Human Soldier\nPT:5/5\nK:Vigilance\nS:Mode$ Continuous | Affected$ Soldier.Other+YouCtrl | AddKeyword$ Vigilance & Trample & Haste | Description$ Other Soldiers you control have vigilance, trample, and haste.\nA:AB$ AnimateAll | Cost$ 2 R W | ValidCards$ Soldier.YouCtrl | Triggers$ AttackTrig | SpellDescription$ Until end of turn, Soldiers you control gain \"Whenever this creature attacks, it deals 1 damage to defending player.\"\nSVar:AttackTrig:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever this creature attacks, it deals 1 damage to defending player.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ 1\nDeckHints:Type$Soldier\nOracle:Vigilance\\nOther Soldiers you control have vigilance, trample, and haste.\\n{2}{R}{W}: Until end of turn, Soldiers you control gain \"Whenever this creature attacks, it deals 1 damage to defending player.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Commander Mustard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

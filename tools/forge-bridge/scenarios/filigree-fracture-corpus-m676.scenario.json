@@ -1,0 +1,23 @@
+{
+  "id": "filigree-fracture-corpus-m676",
+  "description": "M6 corpus — Filigree Fracture; in-hand parse.",
+  "seed": 65300,
+  "cards": {
+    "Filigree Fracture": "Name:Filigree Fracture\nManaCost:2 G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | RememberLKI$ True | SubAbility$ DBDraw | SpellDescription$ Destroy target artifact or enchantment. If that permanent was blue or black, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ RememberedLKI | ConditionPresent$ Permanent.Blue,Permanent.Black | ConditionCompare$ EQ1 | ConditionDescription$ If that permanent was blue or black, | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy target artifact or enchantment. If that permanent was blue or black, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Filigree Fracture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

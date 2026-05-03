@@ -1,0 +1,23 @@
+{
+  "id": "disruptive-stormbrood-corpus-m676",
+  "description": "M6 corpus — Disruptive Stormbrood; in-hand parse.",
+  "seed": 63721,
+  "cards": {
+    "Disruptive Stormbrood": "Name:Disruptive Stormbrood\nManaCost:4 G\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this creature enters, destroy up to one target artifact or enchantment.\nSVar:TrigDestroy:DB$ Destroy | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select up to one target artifact or enchantment\nAlternateMode:Omen\nOracle:Flying\\nWhen this creature enters, destroy up to one target artifact or enchantment.\n\nALTERNATE\n\nName:Petty Revenge\nManaCost:1 B\nTypes:Sorcery Omen\nA:SP$ Destroy | ValidTgts$ Creature.powerLE3 | TgtPrompt$ Select target creature with power 3 or less. | SpellDescription$ Destroy target creature with power 3 or less. (Then shuffle this card into its owner's library.)\nOracle:Destroy target creature with power 3 or less. (Then shuffle this card into its owner's library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Disruptive Stormbrood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

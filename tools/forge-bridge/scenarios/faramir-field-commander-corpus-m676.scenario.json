@@ -1,0 +1,23 @@
+{
+  "id": "faramir-field-commander-corpus-m676",
+  "description": "M6 corpus — Faramir, Field Commander; in-hand parse.",
+  "seed": 65078,
+  "cards": {
+    "Faramir, Field Commander": "Name:Faramir, Field Commander\nManaCost:3 W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if a creature died under your control this turn, draw a card.\nT:Mode$ RingTemptsYou | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever the Ring tempts you, if you chose a creature other than CARDNAME as your Ring-bearer, create a 1/1 white Human Soldier creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_human_soldier | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.YouCtrl\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$Token\nOracle:At the beginning of your end step, if a creature died under your control this turn, draw a card.\\nWhenever the Ring tempts you, if you chose a creature other than Faramir, Field Commander as your Ring-bearer, create a 1/1 white Human Soldier creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faramir, Field Commander"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

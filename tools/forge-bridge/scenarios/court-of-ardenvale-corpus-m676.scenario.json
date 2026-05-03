@@ -1,0 +1,23 @@
+{
+  "id": "court-of-ardenvale-corpus-m676",
+  "description": "M6 corpus — Court of Ardenvale; in-hand parse.",
+  "seed": 62651,
+  "cards": {
+    "Court of Ardenvale": "Name:Court of Ardenvale\nManaCost:2 W W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of your upkeep, return target permanent card with mana value 3 or less from your graveyard to your hand. If you're the monarch, return that permanent card to the battlefield instead.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target permanent card with mana value 3 in your graveyard | ValidTgts$ Permanent.YouCtrl+cmcLE3 | ConditionCheckSVar$ X | ConditionSVarCompare$ LT1 | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Targeted | Origin$ Graveyard | Destination$ Battlefield | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:X:Count$Monarch.1.0\nOracle:When Court of Ardenvale enters, you become the monarch.\\nAt the beginning of your upkeep, return target permanent card with mana value 3 or less from your graveyard to your hand. If you're the monarch, return that permanent card to the battlefield instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Court of Ardenvale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

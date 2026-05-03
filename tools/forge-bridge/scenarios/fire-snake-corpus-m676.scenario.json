@@ -1,0 +1,23 @@
+{
+  "id": "fire-snake-corpus-m676",
+  "description": "M6 corpus — Fire Snake; in-hand parse.",
+  "seed": 65357,
+  "cards": {
+    "Fire Snake": "Name:Fire Snake\nManaCost:4 R\nTypes:Creature Snake\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME dies, destroy target land.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Land | TgtPrompt$ Select target land\nOracle:When Fire Snake dies, destroy target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Snake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

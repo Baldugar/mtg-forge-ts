@@ -1,0 +1,23 @@
+{
+  "id": "brutal-cathar-corpus-m676",
+  "description": "M6 corpus — Brutal Cathar; in-hand parse.",
+  "seed": 61472,
+  "cards": {
+    "Brutal Cathar": "Name:Brutal Cathar\nManaCost:2 W\nTypes:Creature Human Soldier Werewolf\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When this creature enters or transforms into CARDNAME, exile target creature an opponent controls until this creature leaves the battlefield.\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ When this creature enters or transforms into CARDNAME, exile target creature an opponent controls until this creature leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nK:Daybound\nSVar:PlayMain1:TRUE\nSVar:OblivionRing:TRUE\nAlternateMode:DoubleFaced\nOracle:When this creature enters or transforms into Brutal Cathar, exile target creature an opponent controls until this creature leaves the battlefield.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Moonrage Brute\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:3/3\nK:First Strike\nK:Ward:PayLife<3>\nK:Nightbound\nOracle:First strike\\nWard—Pay 3 life.\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brutal Cathar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

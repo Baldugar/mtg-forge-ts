@@ -1,0 +1,23 @@
+{
+  "id": "dreadhorde-invasion-corpus-m676",
+  "description": "M6 corpus — Dreadhorde Invasion; in-hand parse.",
+  "seed": 63996,
+  "cards": {
+    "Dreadhorde Invasion": "Name:Dreadhorde Invasion\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBLife | TriggerDescription$ At the beginning of your upkeep, you lose 1 life and amass Zombies 1. (Put a +1/+1 counter on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\nSVar:DBLife:DB$ LoseLife | LifeAmount$ 1 | SubAbility$ DBAmass\nSVar:DBAmass:DB$ Amass | Type$ Zombie | Num$ 1\nT:Mode$ Attacks | ValidCard$ Creature.Zombie+token+YouCtrl+powerGE6 | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a Zombie token you control with power 6 or greater attacks, it gains lifelink until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ Lifelink\nSVar:AICastPreference:NeverCastIfLifeBelow$ 4\nDeckHints:Ability$Amass & Type$Zombie\nDeckHas:Ability$Amass|Counters|Token\nOracle:At the beginning of your upkeep, you lose 1 life and amass Zombies 1. (Put a +1/+1 counter on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\\nWhenever a Zombie token you control with power 6 or greater attacks, it gains lifelink until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadhorde Invasion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

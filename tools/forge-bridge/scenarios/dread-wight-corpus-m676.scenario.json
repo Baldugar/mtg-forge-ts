@@ -1,0 +1,23 @@
+{
+  "id": "dread-wight-corpus-m676",
+  "description": "M6 corpus — Dread Wight; in-hand parse.",
+  "seed": 63990,
+  "cards": {
+    "Dread Wight": "Name:Dread Wight\nManaCost:3 B B\nTypes:Creature Zombie\nPT:3/4\nT:Mode$ Phase | Phase$ EndCombat | Execute$ TrigCounter | TriggerZones$ Battlefield | TriggerDescription$ At end of combat, put a paralyzation counter on each creature blocking or blocked by CARDNAME and tap those creatures. Each of those creatures doesn't untap during its controller's untap step for as long as it has a paralyzation counter on it. Each of those creatures gains \"{4}: Remove a paralyzation counter from this creature.\"\nSVar:TrigCounter:DB$ PutCounterAll | CounterType$ PARALYZATION | CounterNum$ 1 | ValidCards$ Creature.blockedBySource,Creature.blockingSource | SubAbility$ DBTap\nSVar:DBTap:DB$ TapAll | ValidCards$ Creature.blockedBySource,Creature.blockingSource | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ Valid Creature.blockedBySource,Creature.blockingSource | ReplacementEffects$ DontUntap | Duration$ Permanent | SubAbility$ DBAnimate | ForgetOnMoved$ Battlefield | ForgetCounter$ PARALYZATION\nSVar:DBAnimate:DB$ AnimateAll | ValidCards$ Creature.blockedBySource,Creature.blockingSource | Abilities$ ABRemoveCounter | Duration$ Permanent\nSVar:ABRemoveCounter:AB$ RemoveCounter | Defined$ Self | Cost$ 4 | CounterType$ PARALYZATION | CounterNum$ 1 | SpellDescription$ Remove a paralyzation counter from this creature.\nSVar:DontUntap:Event$ Untap | ValidCard$ Card.IsRemembered | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Each of those creatures doesn't untap during its controller's untap step for as long as it has a paralyzation counter on it.\nOracle:At end of combat, put a paralyzation counter on each creature blocking or blocked by Dread Wight and tap those creatures. Each of those creatures doesn't untap during its controller's untap step for as long as it has a paralyzation counter on it. Each of those creatures gains \"{4}: Remove a paralyzation counter from this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dread Wight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "budoka-gardener-corpus-m676",
+  "description": "M6 corpus — Budoka Gardener; in-hand parse.",
+  "seed": 61486,
+  "cards": {
+    "Budoka Gardener": "Name:Budoka Gardener\nManaCost:1 G\nTypes:Creature Human Monk\nPT:2/1\nA:AB$ ChangeZone | Cost$ T | Origin$ Hand | Destination$ Battlefield | ChangeType$ Land | ChangeNum$ 1 | Optional$ You | SubAbility$ DBFlip | SpellDescription$ You may put a land card from your hand onto the battlefield. If you control ten or more lands, flip CARDNAME.\nSVar:DBFlip:DB$ SetState | Defined$ Self | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GE10 | Mode$ Flip\nAlternateMode:Flip\nOracle:{T}: You may put a land card from your hand onto the battlefield. If you control ten or more lands, flip Budoka Gardener.\n\nALTERNATE\n\nName:Dokai, Weaver of Life\nManaCost:1 G\nColors:green\nTypes:Legendary Creature Human Monk\nPT:3/3\nA:AB$ Token | Cost$ 4 G G T | TokenScript$ g_x_x_elemental | TokenPower$ X | TokenToughness$ X | TokenOwner$ You | SpellDescription$ Create an X/X green Elemental creature token, where X is the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nOracle:{4}{G}{G}, {T}: Create an X/X green Elemental creature token, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Budoka Gardener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

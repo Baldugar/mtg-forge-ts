@@ -1,0 +1,23 @@
+{
+  "id": "curator-s-ward-corpus-m676",
+  "description": "M6 corpus — Curator's Ward; in-hand parse.",
+  "seed": 62905,
+  "cards": {
+    "Curator's Ward": "Name:Curator's Ward\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Permanent\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Permanent.EnchantedBy | AddKeyword$ Hexproof | Description$ Enchanted permanent has hexproof.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.AttachedBy+Historic | Execute$ TrigDraw | TriggerDescription$ When enchanted permanent leaves the battlefield, if it was historic, draw two cards. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2\nOracle:Enchant permanent\\nEnchanted permanent has hexproof.\\nWhen enchanted permanent leaves the battlefield, if it was historic, draw two cards. (Artifacts, legendaries, and Sagas are historic.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curator's Ward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

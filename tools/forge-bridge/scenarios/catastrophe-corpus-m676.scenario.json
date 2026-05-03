@@ -1,0 +1,23 @@
+{
+  "id": "catastrophe-corpus-m676",
+  "description": "M6 corpus — Catastrophe; in-hand parse.",
+  "seed": 61800,
+  "cards": {
+    "Catastrophe": "Name:Catastrophe\nManaCost:4 W W\nTypes:Sorcery\nA:SP$ GenericChoice | Choices$ DBKillLand,DBKillCreatures | Defined$ You | AILogic$ BestOption | StackDescription$ SpellDescription | SpellDescription$ Destroy all lands or all creatures. Creatures destroyed this way can't be regenerated.\nSVar:DBKillLand:DB$ DestroyAll | ValidCards$ Land | NoRegenValid$ Creature | SpellDescription$ Destroy all lands.\nSVar:DBKillCreatures:DB$ DestroyAll | ValidCards$ Creature | NoRegen$ True | SpellDescription$ Destroy all creatures. They can't be regenerated.\nOracle:Destroy all lands or all creatures. Creatures destroyed this way can't be regenerated.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Catastrophe"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ghost-hounds-corpus-m676",
+  "description": "M6 corpus — Ghost Hounds; ETB-on-bf.",
+  "seed": 66109,
+  "cards": {
+    "Ghost Hounds": "Name:Ghost Hounds\nManaCost:1 B\nTypes:Creature Dog Spirit\nPT:1/1\nK:Vigilance\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature.White | ValidBlocker$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a white creature, CARDNAME gains first strike until end of turn.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature.White | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a white creature, CARDNAME gains first strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ First Strike\nOracle:Vigilance\\nWhenever Ghost Hounds blocks or becomes blocked by a white creature, Ghost Hounds gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ghost Hounds"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

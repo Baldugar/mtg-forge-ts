@@ -1,0 +1,23 @@
+{
+  "id": "courageous-outrider-corpus-m676",
+  "description": "M6 corpus — Courageous Outrider; in-hand parse.",
+  "seed": 62643,
+  "cards": {
+    "Courageous Outrider": "Name:Courageous Outrider\nManaCost:3 W\nTypes:Creature Human Scout\nPT:3/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a Human card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Card.Human\nDeckHints:Type$Human\nOracle:When Courageous Outrider enters, look at the top four cards of your library. You may reveal a Human card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Courageous Outrider"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flaming-gambit-corpus-m676",
+  "description": "M6 corpus — Flaming Gambit; in-hand parse.",
+  "seed": 65454,
+  "cards": {
+    "Flaming Gambit": "Name:Flaming Gambit\nManaCost:X R\nTypes:Instant\nK:Flashback:X R R\nA:SP$ Pump | IsCurse$ True | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select a player or planeswalker | SubAbility$ DBChooseCard | StackDescription$ SpellDescription | SpellDescription$ CARDNAME deals X damage to target player or planeswalker. That player may choose a creature they control and have CARDNAME deal that damage to it instead.\nSVar:DBChooseCard:DB$ ChooseCard | Choices$ Card.Creature | Defined$ TargetedOrController | MinAmount$ 0 | TargetControls$ True | AILogic$ WorstCard | SubAbility$ DBDamagePlayer\nSVar:DBDamagePlayer:DB$ DealDamage | Defined$ ParentTarget | NumDmg$ X | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ EQ0 | SubAbility$ DBDamageCreature\nSVar:DBDamageCreature:DB$ DealDamage | Defined$ ChosenCard | NumDmg$ X | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:X:Count$xPaid\nOracle:Flaming Gambit deals X damage to target player or planeswalker. That player or that planeswalker's controller may choose a creature they control and have Flaming Gambit deal that damage to it instead.\\nFlashback {X}{R}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flaming Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

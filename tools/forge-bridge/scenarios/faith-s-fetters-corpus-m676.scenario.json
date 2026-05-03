@@ -1,0 +1,23 @@
+{
+  "id": "faith-s-fetters-corpus-m676",
+  "description": "M6 corpus — Faith's Fetters; in-hand parse.",
+  "seed": 65007,
+  "cards": {
+    "Faith's Fetters": "Name:Faith's Fetters\nManaCost:3 W\nTypes:Enchantment Aura\nK:Enchant:Permanent\nSVar:AttachAITgts:Creature\nSVar:AttachAILogic:Curse\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 4 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 4\nS:Mode$ CantAttack,CantBlock,CantBeActivated | ValidCard$ Card.EnchantedBy | ValidSA$ Activated.!ManaAbility | Description$ Enchanted permanent can't attack or block, and its activated abilities can't be activated unless they're mana abilities.\nDeckHas:Ability$LifeGain\nOracle:Enchant permanent\\nWhen Faith's Fetters enters, you gain 4 life.\\nEnchanted permanent can't attack or block, and its activated abilities can't be activated unless they're mana abilities.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faith's Fetters"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

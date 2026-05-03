@@ -1,0 +1,23 @@
+{
+  "id": "duke-ulder-ravengard-corpus-m676",
+  "description": "M6 corpus — Duke Ulder Ravengard; in-hand parse.",
+  "seed": 64141,
+  "cards": {
+    "Duke Ulder Ravengard": "Name:Duke Ulder Ravengard\nManaCost:4 R W\nTypes:Legendary Creature Human Noble Soldier\nPT:5/5\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, another target creature you control gains haste and myriad until end of turn. (Whenever it attacks, for each opponent other than defending player, you may create a token that's a copy of that creature that's tapped and attacking that player or a planeswalker they control. Exile the tokens at end of combat.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | KW$ Haste & Myriad\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token\nOracle:At the beginning of combat on your turn, another target creature you control gains haste and myriad until end of turn. (Whenever it attacks, for each opponent other than defending player, you may create a token that's a copy of that creature that's tapped and attacking that player or a planeswalker they control. Exile the tokens at end of combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Duke Ulder Ravengard"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

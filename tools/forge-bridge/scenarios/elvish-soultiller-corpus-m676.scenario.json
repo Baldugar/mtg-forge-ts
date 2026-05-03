@@ -1,0 +1,23 @@
+{
+  "id": "elvish-soultiller-corpus-m676",
+  "description": "M6 corpus — Elvish Soultiller; in-hand parse.",
+  "seed": 64482,
+  "cards": {
+    "Elvish Soultiller": "Name:Elvish Soultiller\nManaCost:3 G G\nTypes:Creature Elf Mutant\nPT:5/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME dies, choose a creature type. Shuffle all creature cards of that type from your graveyard into your library.\nSVar:TrigChoose:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentInComputerGraveyard | SubAbility$ ShuffleInto\nSVar:ShuffleInto:DB$ ChangeZoneAll | ChangeType$ Creature.ChosenType+YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True\nOracle:When Elvish Soultiller dies, choose a creature type. Shuffle all creature cards of that type from your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Soultiller"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

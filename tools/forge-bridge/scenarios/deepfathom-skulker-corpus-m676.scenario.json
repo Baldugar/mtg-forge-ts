@@ -1,0 +1,23 @@
+{
+  "id": "deepfathom-skulker-corpus-m676",
+  "description": "M6 corpus — Deepfathom Skulker; in-hand parse.",
+  "seed": 63340,
+  "cards": {
+    "Deepfathom Skulker": "Name:Deepfathom Skulker\nManaCost:5 U\nTypes:Creature Eldrazi\nPT:4/4\nK:Devoid\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control deals combat damage to an opponent, you may draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ Effect | Cost$ 3 C | ValidTgts$ Creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nDeckHints:Ability$Mana.Colorless\nOracle:Devoid (This card has no color.)\\nWhenever a creature you control deals combat damage to a player, you may draw a card.\\n{3}{C}: Target creature can't be blocked this turn. ({C} represents colorless mana.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deepfathom Skulker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

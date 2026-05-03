@@ -1,0 +1,23 @@
+{
+  "id": "epic-struggle-corpus-m676",
+  "description": "M6 corpus — Epic Struggle; in-hand parse.",
+  "seed": 64676,
+  "cards": {
+    "Epic Struggle": "Name:Epic Struggle\nManaCost:2 G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | PresentCompare$ GE20 | IsPresent$ Creature.YouCtrl | Execute$ TrigWinsLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, if you control twenty or more creatures, you win the game.\nSVar:TrigWinsLife:DB$ WinsGame | Defined$ You\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, if you control twenty or more creatures, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Epic Struggle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "drain-life-corpus-m676",
+  "description": "M6 corpus — Drain Life; in-hand parse.",
+  "seed": 63948,
+  "cards": {
+    "Drain Life": "Name:Drain Life\nManaCost:X 1 B\nTypes:Sorcery\nA:SP$ StoreSVar | XColor$ Black | ValidTgts$ Any | SVar$ Limit | Type$ Targeted | Expression$ CardToughness | SubAbility$ StoreTgtPW | ConditionDefined$ Targeted | ConditionPresent$ Card.Creature | ConditionCompare$ GE1 | SpellDescription$ Spend only black mana on X. CARDNAME deals X damage to any target. You gain life equal to the damage dealt, but not more life than the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, or the creature's toughness.\nSVar:StoreTgtPW:DB$ StoreSVar | SVar$ Limit | Type$ Targeted | Expression$ CardCounters.LOYALTY | SubAbility$ StoreTgtP | ConditionDefined$ Targeted | ConditionPresent$ Card.Planeswalker | ConditionCheckSVar$ Loyalty | ConditionSVarCompare$ LTLimit\nSVar:StoreTgtP:DB$ StoreSVar | SVar$ Limit | Type$ Calculate | Expression$ TargetedPlayer$LifeTotal | SubAbility$ DBDamage | ConditionDefined$ Targeted | ConditionPresent$ Card.Creature,Card.Planeswalker | ConditionCompare$ EQ0\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X | SubAbility$ DBGainLife | AILogic$ XLifeDrain\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ DrainedLifeCard\nSVar:X:Count$xPaid\nSVar:Y:Count$TotalDamageDoneByThisTurn\nSVar:DrainedLifeCard:SVar$Y/LimitMax.Limit\nSVar:Limit:Count$xPaid\nSVar:Loyalty:Targeted$CardCounters.LOYALTY\nDeckHas:Ability$LifeGain\nOracle:Spend only black mana on X.\\nDrain Life deals X damage to any target. You gain life equal to the damage dealt, but not more life than the player's life total before the damage was dealt, the planeswalker's loyalty before the damage was dealt, or the creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drain Life"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "champion-s-victory-corpus-m676",
+  "description": "M6 corpus — Champion's Victory; in-hand parse.",
+  "seed": 61946,
+  "cards": {
+    "Champion's Victory": "Name:Champion's Victory\nManaCost:U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Hand | CheckSVar$ X | ActivationPhases$ Declare Attackers | SpellDescription$ Cast CARDNAME only during the declare attackers step and only if you've been attacked this step. Return target attacking creature to its owner's hand.\nSVar:X:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nReturn target attacking creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Champion's Victory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

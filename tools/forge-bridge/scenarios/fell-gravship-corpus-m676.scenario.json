@@ -1,0 +1,23 @@
+{
+  "id": "fell-gravship-corpus-m676",
+  "description": "M6 corpus — Fell Gravship; in-hand parse.",
+  "seed": 65192,
+  "cards": {
+    "Fell Gravship": "Name:Fell Gravship\nManaCost:2 B\nTypes:Artifact Spacecraft\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this Spacecraft enters, mill three cards, then return a creature or Spacecraft card from your graveyard to your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature.YouOwn,Spacecraft.YouOwn | Hidden$ True | Mandatory$ True\nK:Station:8\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE8_CHARGE | AddType$ Creature | AddKeyword$ Flying & Lifelink | Description$ STATION 8+ Flying, lifelink\nSVar:X:Count$Valid Artifact.YouCtrl\nOracle:When this Spacecraft enters, mill three cards, then return a creature or Spacecraft card from your graveyard to your hand.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 8+.)\\nSTATION 8+\\nFlying, lifelink\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell Gravship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

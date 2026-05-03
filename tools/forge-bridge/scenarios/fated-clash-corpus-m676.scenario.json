@@ -1,0 +1,23 @@
+{
+  "id": "fated-clash-corpus-m676",
+  "description": "M6 corpus — Fated Clash; in-hand parse.",
+  "seed": 65107,
+  "cards": {
+    "Fated Clash": "Name:Fated Clash\nManaCost:3 W W\nTypes:Sorcery\nS:Mode$ CastWithFlash | ValidCard$ Card.Self | ValidSA$ Spell | IsPresent$ Creature.attacking | IsPresent2$ Creature.blocking | EffectZone$ All | Caster$ You | Description$ You may cast this spell as though it had flash if a creature is attacking and a creature is blocking.\nA:SP$ Pump | KW$ Indestructible | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DBPumpOpp | SpellDescription$ Target creature you control and target creature an opponent controls each gain indestructible until end of turn.\nSVar:DBPumpOpp:DB$ Pump | KW$ Indestructible | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBDestroyAll\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature | SpellDescription$ Then destroy all creatures.\nOracle:You may cast this spell as though it had flash if a creature is attacking and a creature is blocking.\\nTarget creature you control and target creature an opponent controls each gain indestructible until end of turn. Then destoy all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fated Clash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

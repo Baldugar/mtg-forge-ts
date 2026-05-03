@@ -1,0 +1,23 @@
+{
+  "id": "caustic-hound-corpus-m676",
+  "description": "M6 corpus — Caustic Hound; in-hand parse.",
+  "seed": 61826,
+  "cards": {
+    "Caustic Hound": "Name:Caustic Hound\nManaCost:5 B\nTypes:Creature Phyrexian Dog\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each player loses 4 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 4 | Defined$ Player\nOracle:When Caustic Hound dies, each player loses 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Caustic Hound"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

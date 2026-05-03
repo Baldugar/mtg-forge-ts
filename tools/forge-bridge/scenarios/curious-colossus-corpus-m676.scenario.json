@@ -1,0 +1,23 @@
+{
+  "id": "curious-colossus-corpus-m676",
+  "description": "M6 corpus — Curious Colossus; in-hand parse.",
+  "seed": 62911,
+  "cards": {
+    "Curious Colossus": "Name:Curious Colossus\nManaCost:5 W W\nTypes:Creature Giant Warrior\nPT:7/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAnimateAll | TriggerDescription$ When this creature enters, each creature target opponent controls loses all abilities, becomes a Coward in addition to its other types, and has base power and toughness 1/1.\nSVar:TrigAnimateAll:DB$ AnimateAll | ValidTgts$ Opponent | ValidCards$ Creature | Power$ 1 | Toughness$ 1 | RemoveAllAbilities$ True | Types$ Coward | Duration$ Permanent\nOracle:When this creature enters, each creature target opponent controls loses all abilities, becomes a Coward in addition to its other types, and has base power and toughness 1/1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curious Colossus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

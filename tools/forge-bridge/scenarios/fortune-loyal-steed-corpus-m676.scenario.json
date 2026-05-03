@@ -1,0 +1,23 @@
+{
+  "id": "fortune-loyal-steed-corpus-m676",
+  "description": "M6 corpus — Fortune, Loyal Steed; in-hand parse.",
+  "seed": 65681,
+  "cards": {
+    "Fortune, Loyal Steed": "Name:Fortune, Loyal Steed\nManaCost:2 W\nTypes:Legendary Creature Beast Mount\nPT:2/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2.\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nT:Mode$ Attacks | ValidCard$ Card.Self+IsSaddled | TriggerZones$ Battlefield | Execute$ TrigDelayedTrig | TriggerDescription$ Whenever NICKNAME attacks while saddled, at end of combat, exile it and up to one creature that saddled it this turn, then return those cards to the battlefield under their owner's control.\nSVar:TrigDelayedTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigChoose | TriggerDescription$ At end of combat, exile it and up to one creature that saddled it this turn, then return those cards to the battlefield under their owner's control.\nSVar:TrigChoose:DB$ ChooseCard | MinAmount$ 0 | Choices$ Creature.SaddledThisTurn | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ Self & ChosenCard | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Saddle:1\nOracle:When Fortune, Loyal Steed enters, scry 2.\\nWhenever Fortune attacks while saddled, at end of combat, exile it and up to one creature that saddled it this turn, then return those cards to the battlefield under their owner's control.\\nSaddle 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fortune, Loyal Steed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

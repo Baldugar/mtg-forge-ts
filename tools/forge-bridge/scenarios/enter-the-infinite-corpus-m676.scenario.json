@@ -1,0 +1,23 @@
+{
+  "id": "enter-the-infinite-corpus-m676",
+  "description": "M6 corpus — Enter the Infinite; in-hand parse.",
+  "seed": 64644,
+  "cards": {
+    "Enter the Infinite": "Name:Enter the Infinite\nManaCost:8 U U U U\nTypes:Sorcery\nA:SP$ Draw | NumCards$ X | SubAbility$ DBTop | SpellDescription$ Draw cards equal to the number of cards in your library, then put a card from your hand on top of your library. You have no maximum hand size until your next turn.\nSVar:DBTop:DB$ ChangeZone | Origin$ Hand | Destination$ Library | Hidden$ True | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STHandSize | Duration$ UntilYourNextTurn\nSVar:STHandSize:Mode$ Continuous | Affected$ You | SetMaxHandSize$ Unlimited | Description$ You have no maximum hand size.\nSVar:X:Count$ValidLibrary Card.YouOwn\nAI:RemoveDeck:Random\nOracle:Draw cards equal to the number of cards in your library, then put a card from your hand on top of your library. You have no maximum hand size until your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enter the Infinite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

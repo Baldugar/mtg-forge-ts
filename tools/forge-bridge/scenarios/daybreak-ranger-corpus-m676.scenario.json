@@ -1,0 +1,23 @@
+{
+  "id": "daybreak-ranger-corpus-m676",
+  "description": "M6 corpus — Daybreak Ranger; in-hand parse.",
+  "seed": 63195,
+  "cards": {
+    "Daybreak Ranger": "Name:Daybreak Ranger\nManaCost:2 G\nTypes:Creature Human Archer Ranger Werewolf\nPT:2/2\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying. | NumDmg$ 2 | SpellDescription$ CARDNAME deals 2 damage to target creature with flying.\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:{T}: Daybreak Ranger deals 2 damage to target creature with flying.\\nAt the beginning of each upkeep, if no spells were cast last turn, transform Daybreak Ranger.\n\nALTERNATE\n\nName:Nightfall Predator\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:4/4\nA:AB$ Fight | Cost$ R T | Defined$ Self | ValidTgts$ Creature | SpellDescription$ CARDNAME fights target creature. (Each deals damage equal to its power to the other.)\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:{R}, {T}: Nightfall Predator fights target creature. (Each deals damage equal to its power to the other.)\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Nightfall Predator.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daybreak Ranger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

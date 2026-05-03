@@ -1,0 +1,25 @@
+{
+  "id": "goblin-battle-jester-corpus-m676",
+  "description": "M6 corpus — Goblin Battle Jester; ETB-on-bf.",
+  "seed": 66395,
+  "cards": {
+    "Goblin Battle Jester": "Name:Goblin Battle Jester\nManaCost:3 R\nTypes:Creature Goblin\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPumpCurse | TriggerDescription$ Whenever you cast a red spell, target creature can't block this turn.\nSVar:TrigPumpCurse:DB$ Pump | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't block.\nSVar:BuffedBy:Card.Red\nOracle:Whenever you cast a red spell, target creature can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Battle Jester"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

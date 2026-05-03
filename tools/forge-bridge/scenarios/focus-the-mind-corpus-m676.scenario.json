@@ -1,0 +1,23 @@
+{
+  "id": "focus-the-mind-corpus-m676",
+  "description": "M6 corpus — Focus the Mind; in-hand parse.",
+  "seed": 65581,
+  "cards": {
+    "Focus the Mind": "Name:Focus the Mind\nManaCost:4 U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | EffectZone$ All | Type$ Spell | Amount$ 2 | CheckSVar$ X | Description$ This spell costs {2} less to cast if you've cast another spell this turn.\nA:SP$ Draw | NumCards$ 3 | SubAbility$ DBDiscard | SpellDescription$ Draw three cards, then discard a card.\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nSVar:X:Count$ThisTurnCast_Card.YouCtrl\nDeckHas:Ability$Discard\nOracle:This spell costs {2} less to cast if you've cast another spell this turn.\\nDraw three cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Focus the Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

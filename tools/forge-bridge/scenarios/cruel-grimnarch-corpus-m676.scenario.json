@@ -1,0 +1,23 @@
+{
+  "id": "cruel-grimnarch-corpus-m676",
+  "description": "M6 corpus — Cruel Grimnarch; in-hand parse.",
+  "seed": 62802,
+  "cards": {
+    "Cruel Grimnarch": "Name:Cruel Grimnarch\nManaCost:5 B\nTypes:Creature Phyrexian Cleric\nPT:5/5\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card. For each opponent who can't, you gain 4 life.\nSVar:TrigDiscard:DB$ Discard | Mode$ TgtChoose | Defined$ Opponent | RememberDiscarded$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:SVar$Y/Times.4\nSVar:Y:PlayerCountOpponents$Amount/Minus.Remembered$Amount\nDeckHas:Ability$LifeGain\nOracle:Deathtouch\\nWhen Cruel Grimnarch enters, each opponent discards a card. For each opponent who can't, you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cruel Grimnarch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

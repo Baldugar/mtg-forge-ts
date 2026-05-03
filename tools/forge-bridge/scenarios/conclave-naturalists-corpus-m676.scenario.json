@@ -1,0 +1,23 @@
+{
+  "id": "conclave-naturalists-corpus-m676",
+  "description": "M6 corpus — Conclave Naturalists; in-hand parse.",
+  "seed": 62461,
+  "cards": {
+    "Conclave Naturalists": "Name:Conclave Naturalists\nManaCost:4 G\nTypes:Creature Dryad\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target artifact or enchantment.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Choose target artifact or enchantment.\nSVar:PlayMain1:TRUE\nOracle:When Conclave Naturalists enters, you may destroy target artifact or enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conclave Naturalists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

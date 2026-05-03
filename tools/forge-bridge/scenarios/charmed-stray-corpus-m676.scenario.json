@@ -1,0 +1,23 @@
+{
+  "id": "charmed-stray-corpus-m676",
+  "description": "M6 corpus — Charmed Stray; in-hand parse.",
+  "seed": 62025,
+  "cards": {
+    "Charmed Stray": "Name:Charmed Stray\nManaCost:W\nTypes:Creature Cat\nPT:1/1\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPutCounters | TriggerDescription$ When CARDNAME enters, put a +1/+1 counter on each other creature you control named Charmed Stray.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.namedCharmed Stray+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Name$Charmed Stray\nDeckHas:Ability$Counters\nOracle:Lifelink\\nWhen Charmed Stray enters, put a +1/+1 counter on each other creature you control named Charmed Stray.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charmed Stray"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

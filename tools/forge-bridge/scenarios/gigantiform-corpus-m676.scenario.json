@@ -1,0 +1,23 @@
+{
+  "id": "gigantiform-corpus-m676",
+  "description": "M6 corpus — Gigantiform; in-hand parse.",
+  "seed": 66203,
+  "cards": {
+    "Gigantiform": "Name:Gigantiform\nManaCost:3 G G\nTypes:Enchantment Aura\nK:Kicker:4\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | SetPower$ 8 | SetToughness$ 8 | AddKeyword$ Trample | Description$ Enchanted creature has base power and toughness 8/8 and has trample.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | OptionalDecider$ You | Execute$ KickedGiant | TriggerDescription$ When CARDNAME enters, if it was kicked, you may search your library for a card named Gigantiform, put it onto the battlefield, then shuffle.\nSVar:KickedGiant:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.namedGigantiform | ChangeNum$ 1 | ShuffleNonMandatory$ True\nSVar:NonStackingAttachEffect:True\nDeckHints:Name$Gigantiform\nOracle:Kicker {4}\\nEnchant creature\\nEnchanted creature has base power and toughness 8/8 and has trample.\\nWhen Gigantiform enters, if it was kicked, you may search your library for a card named Gigantiform, put it onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gigantiform"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

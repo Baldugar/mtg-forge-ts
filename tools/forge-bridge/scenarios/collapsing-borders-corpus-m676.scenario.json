@@ -1,0 +1,23 @@
+{
+  "id": "collapsing-borders-corpus-m676",
+  "description": "M6 corpus — Collapsing Borders; in-hand parse.",
+  "seed": 62364,
+  "cards": {
+    "Collapsing Borders": "Name:Collapsing Borders\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Domain — At the beginning of each player's upkeep, that player gains 1 life for each basic land type among lands they control. Then CARDNAME deals 3 damage to that player.\nSVar:TrigGainLife:DB$ GainLife | Defined$ TriggeredPlayer | LifeAmount$ DomainX | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 3\nSVar:DomainX:Count$DomainActivePlayer\nAI:RemoveDeck:Random\nOracle:Domain — At the beginning of each player's upkeep, that player gains 1 life for each basic land type among lands they control. Then Collapsing Borders deals 3 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Collapsing Borders"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

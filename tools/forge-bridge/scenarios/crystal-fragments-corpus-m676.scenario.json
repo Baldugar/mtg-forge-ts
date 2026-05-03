@@ -1,0 +1,23 @@
+{
+  "id": "crystal-fragments-corpus-m676",
+  "description": "M6 corpus — Crystal Fragments; in-hand parse.",
+  "seed": 62857,
+  "cards": {
+    "Crystal Fragments": "Name:Crystal Fragments\nManaCost:W\nTypes:Artifact Equipment\nK:Equip:1\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Equipped creature gets +1/+1.\nA:AB$ ChangeZone | Cost$ 5 W W | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SorcerySpeed$ True | StackDescription$ SpellDescription | SpellDescription$ Exile this Equipment, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | ForgetOtherRemembered$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:DoubleFaced\nOracle:Equipped creature gets +1/+1.\\n{5}{W}{W}: Exile this Equipment, then return it to the battlefield transformed under its owner's control. Activate only as a sorcery.\\nEquip {1}\n\nALTERNATE\n\nName:Summon: Alexander\nManaCost:no cost\nColors:white\nTypes:Enchantment Creature Saga Construct\nPT:4/3\nK:Chapter:3:DBDefend,DBDefend,DBSubdue\nSVar:DBDefend:DB$ Effect | ReplacementEffects$ RPrevent | SpellDescription$ Prevent all damage that would be dealt to creatures you control this turn.\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Creature.YouCtrl | Description$ Prevent all damage that would be dealt to creatures you control this turn.\nSVar:DBSubdue:DB$ TapAll | ValidCards$ Creature.OppCtrl | SpellDescription$ Tap all creatures your opponents control.\nK:Flying\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\\nI, II — Prevent all damage that would be dealt to creatures you control this turn.\\nIII — Tap all creatures your opponents control.\\nFlying\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crystal Fragments"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

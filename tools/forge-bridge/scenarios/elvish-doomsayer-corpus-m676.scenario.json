@@ -1,0 +1,23 @@
+{
+  "id": "elvish-doomsayer-corpus-m676",
+  "description": "M6 corpus — Elvish Doomsayer; in-hand parse.",
+  "seed": 64462,
+  "cards": {
+    "Elvish Doomsayer": "Name:Elvish Doomsayer\nManaCost:1 B\nTypes:Creature Elf Shaman\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME dies, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose\nSVar:SacMe:1\nOracle:When Elvish Doomsayer dies, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Doomsayer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

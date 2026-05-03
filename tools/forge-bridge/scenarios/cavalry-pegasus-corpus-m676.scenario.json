@@ -1,0 +1,23 @@
+{
+  "id": "cavalry-pegasus-corpus-m676",
+  "description": "M6 corpus — Cavalry Pegasus; in-hand parse.",
+  "seed": 61836,
+  "cards": {
+    "Cavalry Pegasus": "Name:Cavalry Pegasus\nManaCost:1 W\nTypes:Creature Pegasus\nPT:1/1\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME attacks, each attacking Human gains flying until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Human.attacking | KW$ Flying\nDeckHints:Type$Human\nOracle:Flying\\nWhenever Cavalry Pegasus attacks, each attacking Human gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavalry Pegasus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

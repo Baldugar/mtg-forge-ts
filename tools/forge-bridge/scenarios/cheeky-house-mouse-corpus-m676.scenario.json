@@ -1,0 +1,23 @@
+{
+  "id": "cheeky-house-mouse-corpus-m676",
+  "description": "M6 corpus — Cheeky House-Mouse; in-hand parse.",
+  "seed": 62038,
+  "cards": {
+    "Cheeky House-Mouse": "Name:Cheeky House-Mouse\nManaCost:W\nTypes:Creature Mouse\nPT:2/1\nAlternateMode:Adventure\nOracle:\n\nALTERNATE\n\nName:Squeak By\nManaCost:W\nTypes:Sorcery Adventure\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBUnblockable | SpellDescription$ Target creature you control gets +1/+1 until end of turn. It can't be blocked by creatures with power 3 or greater this turn.\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | ValidBlocker$ Creature.powerGE3 | Description$ This creature can't be blocked by creatures with power 3 or greater this turn.\nOracle:Target creature you control gets +1/+1 until end of turn. It can't be blocked by creatures with power 3 or greater this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cheeky House-Mouse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

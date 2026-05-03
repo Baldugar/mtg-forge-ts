@@ -1,0 +1,23 @@
+{
+  "id": "ghostway-corpus-m676",
+  "description": "M6 corpus — Ghostway; in-hand parse.",
+  "seed": 66132,
+  "cards": {
+    "Ghostway": "Name:Ghostway\nManaCost:2 W\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Creature.YouCtrl | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DelTrig | SpellDescription$ Exile each creature you control. Return those cards to the battlefield under their owners' control at the beginning of the next end step.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigGhostReturn | TriggerDescription$ Return exiled creatures to the battlefield. | RememberObjects$ RememberedLKI | SubAbility$ DBCleanup\nSVar:TrigGhostReturn:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Battlefield\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile each creature you control. Return those cards to the battlefield under their owner's control at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghostway"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dual-doomsuits-corpus-m676",
+  "description": "M6 corpus — Dual Doomsuits; ETB-on-bf.",
+  "seed": 64121,
+  "cards": {
+    "Dual Doomsuits": "Name:Dual Doomsuits\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, each time a source you control would deal damage this turn, it deals double that damage instead.\nSVar:TrigCrank:DB$ Effect | ReplacementEffects$ DoubleDamageEvent\nSVar:DoubleDamageEvent:Event$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ReplaceWith$ DmgTwice | Description$ Each time a source you control would deal damage this turn, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nOracle:Whenever you crank Dual Doomsuits, each time a source you control would deal damage this turn, it deals double that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dual Doomsuits"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

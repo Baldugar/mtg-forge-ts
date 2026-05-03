@@ -1,0 +1,23 @@
+{
+  "id": "flowstone-blade-corpus-m676",
+  "description": "M6 corpus — Flowstone Blade; in-hand parse.",
+  "seed": 65545,
+  "cards": {
+    "Flowstone Blade": "Name:Flowstone Blade\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\n# TODO: The AI can only use this as a form of buff. Maybe teach the AI to also use it to kill opposing creatures?\nSVar:AttachAITgts:Creature.toughnessGE2\nSVar:AttachAILogic:Pump\nA:AB$ Pump | Cost$ R | Defined$ Enchanted | NumAtt$ +1 | NumDef$ -1 | SpellDescription$ Enchanted creature gets +1/-1 until end of turn.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\n{R}: Enchanted creature gets +1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flowstone Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

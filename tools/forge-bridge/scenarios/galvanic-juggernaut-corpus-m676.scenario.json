@@ -1,0 +1,23 @@
+{
+  "id": "galvanic-juggernaut-corpus-m676",
+  "description": "M6 corpus — Galvanic Juggernaut; in-hand parse.",
+  "seed": 65918,
+  "cards": {
+    "Galvanic Juggernaut": "Name:Galvanic Juggernaut\nManaCost:4\nTypes:Artifact Creature Juggernaut\nPT:5/5\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ This creature attacks each combat if able.\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other | TriggerZones$ Battlefield | Execute$ TrigUntap | TriggerDescription$ Whenever another creature dies, untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:This creature attacks each combat if able.\\nThis creature doesn't untap during your untap step.\\nWhenever another creature dies, untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Galvanic Juggernaut"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

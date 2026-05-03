@@ -1,0 +1,23 @@
+{
+  "id": "flamebreak-corpus-m676",
+  "description": "M6 corpus — Flamebreak; in-hand parse.",
+  "seed": 65437,
+  "cards": {
+    "Flamebreak": "Name:Flamebreak\nManaCost:R R R\nTypes:Sorcery\nA:SP$ DamageAll | ValidCards$ Creature.withoutFlying | ValidPlayers$ Player | NumDmg$ 3 | RememberDamaged$ True | SubAbility$ DBNoRegen | SpellDescription$ CARDNAME deals 3 damage to each creature without flying and each player. Creatures dealt damage this way can't be regenerated this turn. | StackDescription$ SpellDescription\nSVar:DBNoRegen:DB$ Effect | RememberObjects$ Remembered.Creature | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | StackDescription$ None | AILogic$ CantRegenerate | SubAbility$ DBCleanup\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flamebreak deals 3 damage to each creature without flying and each player. Creatures dealt damage this way can't be regenerated this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flamebreak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

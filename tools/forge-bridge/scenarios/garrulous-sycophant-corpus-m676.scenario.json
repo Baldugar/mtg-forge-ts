@@ -1,0 +1,23 @@
+{
+  "id": "garrulous-sycophant-corpus-m676",
+  "description": "M6 corpus — Garrulous Sycophant; in-hand parse.",
+  "seed": 65960,
+  "cards": {
+    "Garrulous Sycophant": "Name:Garrulous Sycophant\nManaCost:2 B\nTypes:Creature Human Advisor\nPT:1/4\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckDefinedPlayer$ You.isMonarch | Execute$ TrigDrain | TriggerDescription$ At the beginning of your end step, if you're the monarch, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nOracle:At the beginning of your end step, if you're the monarch, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garrulous Sycophant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

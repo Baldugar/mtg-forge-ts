@@ -1,0 +1,25 @@
+{
+  "id": "concealed-weapon-corpus-m676",
+  "description": "M6 corpus — Concealed Weapon; ETB-on-bf.",
+  "seed": 62454,
+  "cards": {
+    "Concealed Weapon": "Name:Concealed Weapon\nManaCost:1 R\nTypes:Artifact Equipment\nK:Disguise:2 R\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | Description$ Equipped creature gets +3/+0.\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nK:Equip:1 R\nOracle:Equipped creature gets +3/+0.\\nDisguise {2}{R} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Concealed Weapon is turned face up, attach it to target creature you control.\\nEquip {1}{R}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Concealed Weapon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

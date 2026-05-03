@@ -1,0 +1,23 @@
+{
+  "id": "flaying-tendrils-corpus-m676",
+  "description": "M6 corpus — Flaying Tendrils; in-hand parse.",
+  "seed": 65479,
+  "cards": {
+    "Flaying Tendrils": "Name:Flaying Tendrils\nManaCost:1 B B\nTypes:Sorcery\nK:Devoid\nA:SP$ PumpAll | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | ValidCards$ Creature | SubAbility$ DBEffect | SpellDescription$ All creatures get -2/-2 until end of turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ DeathRep | SpellDescription$ If a creature would die this turn, exile it instead.\nSVar:DeathRep:Event$ Moved | ValidLKI$ Creature | Origin$ Battlefield | Destination$ Graveyard | ReplaceWith$ Exile | Description$ If a creature would die this turn, exile it instead.\nSVar:Exile:DB$ ChangeZone | Defined$ ReplacedCard | Origin$ Battlefield | Destination$ Exile\nOracle:Devoid (This card has no color.)\\nAll creatures get -2/-2 until end of turn. If a creature would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flaying Tendrils"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

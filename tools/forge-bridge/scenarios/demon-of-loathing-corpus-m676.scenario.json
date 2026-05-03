@@ -1,0 +1,23 @@
+{
+  "id": "demon-of-loathing-corpus-m676",
+  "description": "M6 corpus — Demon of Loathing; in-hand parse.",
+  "seed": 63427,
+  "cards": {
+    "Demon of Loathing": "Name:Demon of Loathing\nManaCost:5 B B\nTypes:Creature Demon\nPT:7/7\nK:Flying\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ TriggeredTarget | SacValid$ Creature\nSVar:MustBeBlocked:True\nOracle:Flying, trample\\nWhenever Demon of Loathing deals combat damage to a player, that player sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demon of Loathing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

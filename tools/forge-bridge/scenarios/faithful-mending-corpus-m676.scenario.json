@@ -1,0 +1,23 @@
+{
+  "id": "faithful-mending-corpus-m676",
+  "description": "M6 corpus — Faithful Mending; in-hand parse.",
+  "seed": 65003,
+  "cards": {
+    "Faithful Mending": "Name:Faithful Mending\nManaCost:W U\nTypes:Instant\nA:SP$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBDraw | StackDescription$ {p:You} gains 2 life, | SpellDescription$ You gain 2 life, draw two cards, then discard two cards.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard | StackDescription$ draws two cards,\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose | StackDescription$ then discards two cards.\nK:Flashback:1 W U\nDeckHas:Ability$LifeGain|Discard|Graveyard\nOracle:You gain 2 life, draw two cards, then discard two cards.\\nFlashback {1}{W}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faithful Mending"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

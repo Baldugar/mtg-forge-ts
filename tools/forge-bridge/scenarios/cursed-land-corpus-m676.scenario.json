@@ -1,0 +1,23 @@
+{
+  "id": "cursed-land-corpus-m676",
+  "description": "M6 corpus — Cursed Land; in-hand parse.",
+  "seed": 62950,
+  "cards": {
+    "Cursed Land": "Name:Cursed Land\nManaCost:2 B B\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted land's controller, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nOracle:Enchant land\\nAt the beginning of the upkeep of enchanted land's controller, Cursed Land deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cursed Land"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

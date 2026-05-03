@@ -1,0 +1,23 @@
+{
+  "id": "full-steam-ahead-corpus-m676",
+  "description": "M6 corpus — Full Steam Ahead; in-hand parse.",
+  "seed": 65821,
+  "cards": {
+    "Full Steam Ahead": "Name:Full Steam Ahead\nManaCost:3 G G\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +2 | NumDef$ +2 | KW$ Trample | SubAbility$ DBAnimateAll | SpellDescription$ Until end of turn, each creature you control gets +2/+2 and gains trample and \"This creature can't be blocked by more than one creature.\"\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.YouCtrl | staticAbilities$ MinMaxBlocked\nSVar:MinMaxBlocked:Mode$ MinMaxBlocker | ValidCard$ Card.Self | Max$ 1 | Description$ This creature can't be blocked by more than one creature.\nOracle:Until end of turn, each creature you control gets +2/+2 and gains trample and \"This creature can't be blocked by more than one creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Full Steam Ahead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

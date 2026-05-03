@@ -1,0 +1,23 @@
+{
+  "id": "fell-flagship-corpus-m676",
+  "description": "M6 corpus — Fell Flagship; in-hand parse.",
+  "seed": 65191,
+  "cards": {
+    "Fell Flagship": "Name:Fell Flagship\nManaCost:3\nTypes:Artifact Vehicle\nPT:3/3\nK:Crew:3\nS:Mode$ Continuous | Affected$ Creature.Pirate+YouCtrl | AddPower$ 1 | Description$ Pirates you control get +1/+0.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDiscard | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nSVar:PlayMain1:TRUE\nDeckHints:Type$Pirate\nOracle:Pirates you control get +1/+0.\\nWhenever Fell Flagship deals combat damage to a player, that player discards a card.\\nCrew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fell Flagship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

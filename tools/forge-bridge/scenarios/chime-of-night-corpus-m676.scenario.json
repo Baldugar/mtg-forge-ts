@@ -1,0 +1,23 @@
+{
+  "id": "chime-of-night-corpus-m676",
+  "description": "M6 corpus — Chime of Night; in-hand parse.",
+  "seed": 62063,
+  "cards": {
+    "Chime of Night": "Name:Chime of Night\nManaCost:1 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, destroy target nonblack creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature\nOracle:Enchant creature\\nWhen Chime of Night is put into a graveyard from the battlefield, destroy target nonblack creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chime of Night"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

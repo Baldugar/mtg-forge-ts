@@ -1,0 +1,23 @@
+{
+  "id": "gallifrey-council-chamber-corpus-m676",
+  "description": "M6 corpus — Gallifrey Council Chamber; in-hand parse.",
+  "seed": 65910,
+  "cards": {
+    "Gallifrey Council Chamber": "Name:Gallifrey Council Chamber\nManaCost:no cost\nTypes:Legendary Land\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Time Lord,Spell.Alien,Activated.Time Lord+inZoneBattlefield,Activated.Alien+inZoneBattlefield | SpellDescription$ Add one mana of any color. Spend this mana only to cast a Time Lord or Alien spell or activate an ability of a Time Lord or Alien.\nDeckHas:Ability$Surveil|Graveyard\nDeckNeeds:Type$Time Lord|Alien\nOracle:When Gallifrey Council Chamber enters, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\\n{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast a Time Lord or Alien spell or activate an ability of a Time Lord or Alien.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gallifrey Council Chamber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

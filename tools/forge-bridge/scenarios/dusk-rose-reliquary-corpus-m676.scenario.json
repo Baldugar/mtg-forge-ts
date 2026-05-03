@@ -1,0 +1,23 @@
+{
+  "id": "dusk-rose-reliquary-corpus-m676",
+  "description": "M6 corpus — Dusk Rose Reliquary; in-hand parse.",
+  "seed": 64175,
+  "cards": {
+    "Dusk Rose Reliquary": "Name:Dusk Rose Reliquary\nManaCost:W\nTypes:Artifact\nK:Ward:2\nK:AlternateAdditionalCost:Sac<1/Creature;Artifact/creature or artifact>\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target artifact or creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl | TgtPrompt$ Select target artifact or creature an opponent controls | Origin$ Battlefield | Destination$ Exile | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Sacrifice\nDeckHints:Type$Artifact\nOracle:As an additional cost to cast this spell, sacrifice an artifact or creature.\\nWard {2}\\nWhen Dusk Rose Reliquary enters, exile target artifact or creature an opponent controls until Dusk Rose Reliquary leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dusk Rose Reliquary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

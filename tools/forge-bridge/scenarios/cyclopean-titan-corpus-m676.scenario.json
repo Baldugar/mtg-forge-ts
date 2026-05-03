@@ -1,0 +1,23 @@
+{
+  "id": "cyclopean-titan-corpus-m676",
+  "description": "M6 corpus — Cyclopean Titan; in-hand parse.",
+  "seed": 62988,
+  "cards": {
+    "Cyclopean Titan": "Name:Cyclopean Titan\nManaCost:4 B B B B\nTypes:Creature Zombie Giant\nPT:8/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME dies, two target lands become Swamps. Exile CARDNAME.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Land | TargetMin$ 2 | TargetMax$ 2 | TgtPrompt$ Select two target lands | Types$ Swamp | RemoveLandTypes$ True | Duration$ Permanent | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nA:AB$ Tap | Cost$ 3 T | ValidTgts$ Creature | SpellDescription$ Tap target creature, then return CARDNAME to its owner's hand. | SubAbility$ DBBounce\nSVar:DBBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand\nOracle:When Cyclopean Titan dies, two target lands become Swamps. Exile Cyclopean Titan.\\n{3}, {T}: Tap target creature, then return Cyclopean Titan to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclopean Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

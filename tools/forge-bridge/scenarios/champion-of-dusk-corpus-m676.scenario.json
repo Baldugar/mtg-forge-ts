@@ -1,0 +1,23 @@
+{
+  "id": "champion-of-dusk-corpus-m676",
+  "description": "M6 corpus — Champion of Dusk; in-hand parse.",
+  "seed": 61939,
+  "cards": {
+    "Champion of Dusk": "Name:Champion of Dusk\nManaCost:3 B B\nTypes:Creature Vampire Knight\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, you draw X cards and you lose X life, where X is the number of Vampires you control.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X\nSVar:X:Count$Valid Vampire.YouCtrl\nDeckHints:Type$Vampire\nOracle:When Champion of Dusk enters, you draw X cards and you lose X life, where X is the number of Vampires you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Champion of Dusk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

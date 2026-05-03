@@ -1,0 +1,23 @@
+{
+  "id": "fiery-gambit-corpus-m676",
+  "description": "M6 corpus — Fiery Gambit; in-hand parse.",
+  "seed": 65282,
+  "cards": {
+    "Fiery Gambit": "Name:Fiery Gambit\nManaCost:2 R\nTypes:Sorcery\n# Target a creature for three damage\nA:SP$ Pump | ValidTgts$ Creature | TgtPrompt$ Choose target creature for 3 damage | SubAbility$ RepeatFlip | StackDescription$ None | SpellDescription$ Flip a coin until you lose a flip or choose to stop flipping. If you lose a flip, CARDNAME has no effect. If you win one or more flips, CARDNAME deals 3 damage to target creature. If you win two or more flips, CARDNAME deals 6 damage to each opponent. If you win three or more flips, draw nine cards and untap all lands you control.\nSVar:RepeatFlip:DB$ Repeat | RepeatSubAbility$ FlipAgain | RepeatCheckSVar$ Loss | RepeatSVarCompare$ EQ0 | RepeatOptional$ True | SubAbility$ DamageCreature\nSVar:FlipAgain:DB$ FlipACoin | WinSubAbility$ IncrementWins | LoseSubAbility$ IncrementLoss\nSVar:IncrementWins:DB$ StoreSVar | SVar$ Win | Type$ CountSVar | Expression$ Win/Plus.1\nSVar:IncrementLoss:DB$ StoreSVar | SVar$ Loss | Type$ CountSVar | Expression$ Loss/Plus.1 | SubAbility$ ResetWins\nSVar:ResetWins:DB$ StoreSVar | SVar$ Win | Type$ Number | Expression$ 0\nSVar:DamageCreature:DB$ DealDamage | Defined$ Targeted | NumDmg$ 3 | ConditionCheckSVar$ Win | SubAbility$ DamageOpponents\nSVar:DamageOpponents:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 6 | ConditionCheckSVar$ Win | ConditionSVarCompare$ GE2 | SubAbility$ DrawNine\nSVar:DrawNine:DB$ Draw | Defined$ You | NumCards$ 9 | ConditionCheckSVar$ Win | ConditionSVarCompare$ GE3 | SubAbility$ UntapLands\nSVar:UntapLands:DB$ UntapAll | ValidCards$ Land.YouCtrl | ConditionCheckSVar$ Win | ConditionSVarCompare$ GE3\nSVar:Win:Number$0\nSVar:Loss:Number$0\nAI:RemoveDeck:All\nOracle:Flip a coin until you lose a flip or choose to stop flipping. If you lose a flip, Fiery Gambit has no effect. If you win one or more flips, Fiery Gambit deals 3 damage to target creature. If you win two or more flips, Fiery Gambit deals 6 damage to each opponent. If you win three or more flips, draw nine cards and untap all lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fiery Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dragonweave-tapestry-corpus-m676",
+  "description": "M6 corpus — Dragonweave Tapestry; in-hand parse.",
+  "seed": 63946,
+  "cards": {
+    "Dragonweave Tapestry": "Name:Dragonweave Tapestry\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure | TriggerDescription$ When this artifact enters, conjure CARDNAME's spellbook into your library twice, then shuffle.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Names$ Disruptive Stormbrood,Purging Stormbrood,Runescale Stormbrood,Twinmaw Stormbrood,Whirlwing Stormbrood | Zone$ Library | LibraryPosition$ 0 | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Names$ Disruptive Stormbrood,Purging Stormbrood,Runescale Stormbrood,Twinmaw Stormbrood,Whirlwing Stormbrood | Zone$ Library\nT:Mode$ SpellCast | ValidCard$ Dragon,Omen | ValidActivatingPlayer$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a Dragon or Omen spell, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When this artifact enters, conjure Dragonweave Tapestry's spellbook into your library twice, then shuffle.\\nWhenever you cast a Dragon or Omen spell, draw a card.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonweave Tapestry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

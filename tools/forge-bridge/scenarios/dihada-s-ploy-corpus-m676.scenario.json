@@ -1,0 +1,23 @@
+{
+  "id": "dihada-s-ploy-corpus-m676",
+  "description": "M6 corpus — Dihada's Ploy; in-hand parse.",
+  "seed": 63615,
+  "cards": {
+    "Dihada's Ploy": "Name:Dihada's Ploy\nManaCost:1 U B\nTypes:Instant\nK:Jump-start\nA:SP$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards, then discard a card. You gain life equal to the number of cards you've discarded this turn. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:PlayerCountPropertyYou$CardsDiscardedThisTurn\nDeckHas:Ability$Discard\nDeckHints:Keyword$Madness & Ability$Delirium\nOracle:Draw two cards, then discard a card. You gain life equal to the number of cards you've discarded this turn.\\nJump-start (You may cast this card from your graveyard by discarding a card in addition to paying its other costs. Then exile this card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dihada's Ploy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

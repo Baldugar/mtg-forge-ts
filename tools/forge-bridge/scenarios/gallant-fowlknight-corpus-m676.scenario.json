@@ -1,0 +1,23 @@
+{
+  "id": "gallant-fowlknight-corpus-m676",
+  "description": "M6 corpus — Gallant Fowlknight; in-hand parse.",
+  "seed": 65906,
+  "cards": {
+    "Gallant Fowlknight": "Name:Gallant Fowlknight\nManaCost:3 W\nTypes:Creature Kithkin Knight\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When this creature enters, creatures you control get +1/+0 until end of turn. Kithkin creatures you control also gain first strike until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | SubAbility$ DBPumpAll\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.Kithkin+YouCtrl | KW$ First Strike\nSVar:PlayMain1:TRUE\nDeckHints:Type$Kithkin\nOracle:When this creature enters, creatures you control get +1/+0 until end of turn. Kithkin creatures you control also gain first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gallant Fowlknight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

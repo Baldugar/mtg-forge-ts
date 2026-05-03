@@ -1,0 +1,25 @@
+{
+  "id": "gavony-dawnguard-corpus-m676",
+  "description": "M6 corpus — Gavony Dawnguard; ETB-on-bf.",
+  "seed": 65991,
+  "cards": {
+    "Gavony Dawnguard": "Name:Gavony Dawnguard\nManaCost:1 W W\nTypes:Creature Human Soldier\nPT:3/3\nK:Ward:1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | DayTime$ Neither | ReplaceWith$ DoDay | ReplacementResult$ Updated | Description$ If it's neither day nor night, it becomes day as CARDNAME enters.\nSVar:DoDay:DB$ DayTime | Value$ Day\nT:Mode$ DayTimeChanges | Execute$ TrigDig | TriggerZones$ Battlefield | TriggerDescription$ Whenever day becomes night or night becomes day, look at the top four cards of your library. You may reveal a creature card with mana value 3 or less from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | ForceRevealToController$ True | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature.cmcLE3\nOracle:Ward {1}\\nIf it's neither day nor night, it becomes day as Gavony Dawnguard enters.\\nWhenever day becomes night or night becomes day, look at the top four cards of your library. You may reveal a creature card with mana value 3 or less from among them and put it into your hand. Put the rest on the bottom of your library in any order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gavony Dawnguard"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

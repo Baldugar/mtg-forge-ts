@@ -1,0 +1,25 @@
+{
+  "id": "exalted-angel-corpus-m676",
+  "description": "M6 corpus — Exalted Angel; ETB-on-bf.",
+  "seed": 64839,
+  "cards": {
+    "Exalted Angel": "Name:Exalted Angel\nManaCost:4 W W\nTypes:Creature Angel\nPT:4/5\nK:Flying\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nK:Morph:2 W W\nSVar:HasCombatEffect:TRUE\nOracle:Flying\\nWhenever Exalted Angel deals damage, you gain that much life.\\nMorph {2}{W}{W} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Exalted Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

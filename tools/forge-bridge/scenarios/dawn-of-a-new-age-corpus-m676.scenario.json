@@ -1,0 +1,23 @@
+{
+  "id": "dawn-of-a-new-age-corpus-m676",
+  "description": "M6 corpus — Dawn of a New Age; in-hand parse.",
+  "seed": 63161,
+  "cards": {
+    "Dawn of a New Age": "Name:Dawn of a New Age\nManaCost:1 W\nTypes:Enchantment\nK:etbCounter:HOPE:X:no Condition:CARDNAME enters with a hope counter on it for each creature you control.\nSVar:X:Count$Valid Creature.YouCtrl\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCtr | TriggerDescription$ At the beginning of your end step, remove a hope counter from CARDNAME. If you do, draw a card. Then if CARDNAME has no hope counters on it, sacrifice it and you gain 4 life.\nSVar:TrigRemoveCtr:DB$ RemoveCounter | Defined$ Self | CounterType$ HOPE | CounterNum$ 1 | RememberRemoved$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ CheckRemoved | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | ConditionDefined$ Self | ConditionPresent$ Card.counters_EQ0_HOPE | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4 | ConditionDefined$ Self | ConditionPresent$ Card.counters_EQ0_HOPE | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:CheckRemoved:Count$RememberedSize\nDeckHas:Ability$Counters|LifeGain|Sacrifice\nOracle:Dawn of a New Age enters with a hope counter on it for each creature you control.\\nAt the beginning of your end step, remove a hope counter from Dawn of a New Age. If you do, draw a card. Then if Dawn of a New Age has no hope counters on it, sacrifice it and you gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dawn of a New Age"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

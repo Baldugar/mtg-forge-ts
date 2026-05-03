@@ -1,0 +1,23 @@
+{
+  "id": "crippling-fear-corpus-m676",
+  "description": "M6 corpus — Crippling Fear; in-hand parse.",
+  "seed": 62761,
+  "cards": {
+    "Crippling Fear": "Name:Crippling Fear\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBPumpOther | AILogic$ MostProminentComputerControls | SpellDescription$ Choose a creature type. Creatures that aren't of the chosen type get -3/-3 until end of turn.\nSVar:DBPumpOther:DB$ PumpAll | ValidCards$ Creature.IsNotChosenType | NumAtt$ -3 | NumDef$ -3 | IsCurse$ True\nOracle:Choose a creature type. Creatures that aren't of the chosen type get -3/-3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crippling Fear"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

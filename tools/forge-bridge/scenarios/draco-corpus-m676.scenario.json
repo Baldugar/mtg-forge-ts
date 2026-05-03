@@ -1,0 +1,23 @@
+{
+  "id": "draco-corpus-m676",
+  "description": "M6 corpus — Draco; in-hand parse.",
+  "seed": 63871,
+  "cards": {
+    "Draco": "Name:Draco\nManaCost:16\nTypes:Artifact Creature Dragon\nPT:9/9\nK:Flying\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ Domain — This spell costs {2} less to cast for each basic land type among lands you control.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Domain — At the beginning of your upkeep, sacrifice CARDNAME unless you pay {10}. This cost is reduced by {2} for each basic land type among lands you control.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ UpkeepX | UnlessPayer$ You\nSVar:X:Count$Domain/Twice\nSVar:UpkeepX:Number$10/Minus.X\nOracle:Domain — This spell costs {2} less to cast for each basic land type among lands you control.\\nFlying\\nDomain — At the beginning of your upkeep, sacrifice Draco unless you pay {10}. This cost is reduced by {2} for each basic land type among lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draco"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

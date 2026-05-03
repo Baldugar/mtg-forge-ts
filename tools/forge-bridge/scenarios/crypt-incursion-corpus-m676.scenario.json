@@ -1,0 +1,23 @@
+{
+  "id": "crypt-incursion-corpus-m676",
+  "description": "M6 corpus — Crypt Incursion; in-hand parse.",
+  "seed": 62838,
+  "cards": {
+    "Crypt Incursion": "Name:Crypt Incursion\nManaCost:2 B\nTypes:Instant\nA:SP$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Creature | RememberChanged$ True | SubAbility$ DBGainLife | SpellDescription$ Exile all creature cards from target player's graveyard. You gain 3 life for each card exiled this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount/Thrice\nOracle:Exile all creature cards from target player's graveyard. You gain 3 life for each card exiled this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crypt Incursion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

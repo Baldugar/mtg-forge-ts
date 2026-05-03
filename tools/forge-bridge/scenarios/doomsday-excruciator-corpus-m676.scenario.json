@@ -1,0 +1,23 @@
+{
+  "id": "doomsday-excruciator-corpus-m676",
+  "description": "M6 corpus — Doomsday Excruciator; in-hand parse.",
+  "seed": 63832,
+  "cards": {
+    "Doomsday Excruciator": "Name:Doomsday Excruciator\nManaCost:B B B B B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCast | Origin$ Any | Destination$ Battlefield | Execute$ TrigExcruciator | TriggerDescription$ When CARDNAME enters, if it was cast, each player exiles all but the bottom six cards of their library face down.\nSVar:TrigExcruciator:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDigExile\nSVar:DBDigExile:DB$ Dig | DigNum$ X | ChangeNum$ All | Defined$ Player.IsRemembered | DestinationZone$ Exile | ExileFaceDown$ True | NoReveal$ True\nSVar:X:Count$ValidLibrary Card.RememberedPlayerCtrl/Minus.6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nOracle:Flying\\nWhen Doomsday Excruciator enters, if it was cast, each player exiles all but the bottom six cards of their library face down.\\nAt the beginning of your upkeep, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomsday Excruciator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

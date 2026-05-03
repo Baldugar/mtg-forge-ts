@@ -1,0 +1,23 @@
+{
+  "id": "cruel-reality-corpus-m676",
+  "description": "M6 corpus — Cruel Reality; in-hand parse.",
+  "seed": 62803,
+  "cards": {
+    "Cruel Reality": "Name:Cruel Reality\nManaCost:5 B B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of enchanted player's upkeep, that player sacrifices a creature or planeswalker. If the player can't, they lose 5 life.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature,Planeswalker | Defined$ TriggeredPlayer | SubAbility$ DBLoseLife | RememberSacrificed$ True | SpellDescription$ Sacrifice a creature or planeswalker.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 5 | Defined$ TriggeredPlayer | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Enchant player\\nAt the beginning of enchanted player's upkeep, that player sacrifices a creature or planeswalker. If the player can't, they lose 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cruel Reality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

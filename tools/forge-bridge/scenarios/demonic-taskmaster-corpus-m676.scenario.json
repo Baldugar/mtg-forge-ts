@@ -1,0 +1,23 @@
+{
+  "id": "demonic-taskmaster-corpus-m676",
+  "description": "M6 corpus — Demonic Taskmaster; in-hand parse.",
+  "seed": 63443,
+  "cards": {
+    "Demonic Taskmaster": "Name:Demonic Taskmaster\nManaCost:2 B\nTypes:Creature Demon\nPT:4/3\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of your upkeep, sacrifice a creature other than CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature.Other\nAI:RemoveDeck:Random\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice a creature other than Demonic Taskmaster.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Taskmaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "corsairs-of-umbar-corpus-m676",
+  "description": "M6 corpus — Corsairs of Umbar; in-hand parse.",
+  "seed": 62616,
+  "cards": {
+    "Corsairs of Umbar": "Name:Corsairs of Umbar\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:3/3\nA:AB$ Effect | Cost$ 2 U | ValidTgts$ Goblin,Orc,Pirate | TgtPrompt$ Select target Goblin, Orc or Pirate | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target Goblin, Orc, or Pirate can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigAmass | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, amass Orcs 3. (Put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\nSVar:TrigAmass:DB$ Amass | Type$ Orc | Num$ 3\nDeckHints:Type$Goblin|Orc|Pirate\nDeckHas:Ability$Token|Counters & Type$Orc|Army\nOracle:{2}{U}: Target Goblin, Orc, or Pirate can't be blocked this turn.\\nWhenever Corsairs of Umbar deals combat damage to a player, amass Orcs 3. (Put three +1/+1 counters on an Army you control. It's also an Orc. If you don't control an Army, create a 0/0 black Orc Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corsairs of Umbar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

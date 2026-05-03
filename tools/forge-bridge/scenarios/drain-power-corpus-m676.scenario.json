@@ -1,0 +1,23 @@
+{
+  "id": "drain-power-corpus-m676",
+  "description": "M6 corpus — Drain Power; in-hand parse.",
+  "seed": 63949,
+  "cards": {
+    "Drain Power": "Name:Drain Power\nManaCost:U U\nTypes:Sorcery\nA:SP$ ActivateAbility | ValidTgts$ Player | Type$ Land | ManaAbility$ True | SubAbility$ DBDrainMana | SpellDescription$ Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.\nSVar:DBDrainMana:DB$ DrainMana | Defined$ Targeted | DrainMana$ True\nOracle:Target player activates a mana ability of each land they control. Then that player loses all unspent mana and you add the mana lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drain Power"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

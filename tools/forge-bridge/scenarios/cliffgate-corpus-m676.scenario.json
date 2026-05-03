@@ -1,0 +1,23 @@
+{
+  "id": "cliffgate-corpus-m676",
+  "description": "M6 corpus — Cliffgate; in-hand parse.",
+  "seed": 62234,
+  "cards": {
+    "Cliffgate": "Name:Cliffgate\nManaCost:no cost\nTypes:Land Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | Exclude$ red | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a color other than red.\nA:AB$ Mana | Cost$ T | Produced$ Combo R Chosen | SpellDescription$ Add {R} or one mana of the chosen color.\nOracle:Cliffgate enters tapped.\\nAs Cliffgate enters, choose a color other than red.\\n{T}: Add {R} or one mana of the chosen color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cliffgate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

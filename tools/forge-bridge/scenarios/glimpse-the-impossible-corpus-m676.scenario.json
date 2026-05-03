@@ -1,0 +1,23 @@
+{
+  "id": "glimpse-the-impossible-corpus-m676",
+  "description": "M6 corpus — Glimpse the Impossible; in-hand parse.",
+  "seed": 66300,
+  "cards": {
+    "Glimpse the Impossible": "Name:Glimpse the Impossible\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. You may play those cards this turn. At the beginning of the next end step, if any of those cards remain exiled, put them into your graveyard, then create a 0/1 colorless Eldrazi Spawn creature token for each card put into your graveyard this way. Those tokens have \"Sacrifice this creature: Add {C}.\"\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBDelayTrig | ForgetOnMoved$ Exile\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play those cards this turn.\nSVar:DBDelayTrig:DB$ DelayedTrigger | Mode$ Phase | RememberObjects$ Remembered | PresentZone$ Exile | IsPresent$ Card.IsTriggerRemembered | Phase$ End Of Turn | Execute$ TrigChangeAll | SubAbility$ DBCleanup | TriggerDescription$ At the beginning of the next end step, if any of those cards remain exiled, put them into your graveyard, then create a 0/1 colorless Eldrazi Spawn creature token for each card put into your graveyard this way. Those tokens have \"Sacrifice this creature: Add {C}.\"\nSVar:TrigChangeAll:DB$ ChangeZone | Defined$ DelayTriggerRememberedLKI | Origin$ Exile | Destination$ Graveyard | RememberChanged$ True | ForgetOtherRemembered$ True | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHas:Ability$Token & Type$Eldrazi|Spawn\nOracle:Exile the top three cards of your library. You may play those cards this turn. \\nAt the beginning of the next end step, if any of those cards remain exiled, put them into your graveyard, then create a 0/1 colorless Eldrazi Spawn creature token for each card put into your graveyard this way. Those tokens have \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimpse the Impossible"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

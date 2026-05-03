@@ -1,0 +1,23 @@
+{
+  "id": "cliffhaven-kitesail-corpus-m676",
+  "description": "M6 corpus — Cliffhaven Kitesail; in-hand parse.",
+  "seed": 62235,
+  "cards": {
+    "Cliffhaven Kitesail": "Name:Cliffhaven Kitesail\nManaCost:1\nTypes:Artifact Equipment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAttach | TriggerDescription$ When CARDNAME enters, attach it to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nSVar:NeedsToPlay:Creature.YouCtrl\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddKeyword$ Flying | Description$ Equipped creature has flying.\nK:Equip:2\nOracle:When Cliffhaven Kitesail enters, attach it to target creature you control.\\nEquipped creature has flying.\\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cliffhaven Kitesail"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

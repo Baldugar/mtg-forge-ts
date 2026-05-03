@@ -1,0 +1,25 @@
+{
+  "id": "celestial-kirin-corpus-m676",
+  "description": "M6 corpus — Celestial Kirin; ETB-on-bf.",
+  "seed": 61861,
+  "cards": {
+    "Celestial Kirin": "Name:Celestial Kirin\nManaCost:2 W W\nTypes:Legendary Creature Kirin Spirit\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Spirit,Arcane | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDestroyAll | TriggerDescription$ Whenever you cast a Spirit or Arcane spell, destroy all permanents with that spell's mana value.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Permanent.cmcEQX\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nDeckHints:Type$Spirit|Arcane\nOracle:Flying\\nWhenever you cast a Spirit or Arcane spell, destroy all permanents with that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Celestial Kirin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

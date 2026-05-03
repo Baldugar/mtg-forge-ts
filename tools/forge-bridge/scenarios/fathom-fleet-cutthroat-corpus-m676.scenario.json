@@ -1,0 +1,23 @@
+{
+  "id": "fathom-fleet-cutthroat-corpus-m676",
+  "description": "M6 corpus — Fathom Fleet Cutthroat; in-hand parse.",
+  "seed": 65119,
+  "cards": {
+    "Fathom Fleet Cutthroat": "Name:Fathom Fleet Cutthroat\nManaCost:3 B\nTypes:Creature Human Pirate\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target creature an opponent controls that was dealt damage this turn.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl+wasDealtDamageThisTurn | TgtPrompt$ Select target creature an opponent controls that was dealt damage this turn.\nOracle:When Fathom Fleet Cutthroat enters, destroy target creature an opponent controls that was dealt damage this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fathom Fleet Cutthroat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

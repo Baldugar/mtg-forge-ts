@@ -1,0 +1,23 @@
+{
+  "id": "chandra-s-outburst-corpus-m676",
+  "description": "M6 corpus — Chandra's Outburst; in-hand parse.",
+  "seed": 61961,
+  "cards": {
+    "Chandra's Outburst": "Name:Chandra's Outburst\nManaCost:3 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 4 | SubAbility$ DBSearch | SpellDescription$ CARDNAME deals 4 damage to target player or planeswalker.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedChandra; Bold Pyromancer | ChangeNum$ 1 | SpellDescription$ Search your library and/or graveyard for a card named Chandra, Bold Pyromancer, reveal it, and put it into your hand. If you search your library this way, shuffle.\nDeckHints:Name$Chandra, Bold Pyromancer\nOracle:Chandra's Outburst deals 4 damage to target player or planeswalker.\\nSearch your library and/or graveyard for a card named Chandra, Bold Pyromancer, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chandra's Outburst"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

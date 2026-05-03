@@ -1,0 +1,23 @@
+{
+  "id": "cephalid-facetaker-corpus-m676",
+  "description": "M6 corpus — Cephalid Facetaker; in-hand parse.",
+  "seed": 61893,
+  "cards": {
+    "Cephalid Facetaker": "Name:Cephalid Facetaker\nManaCost:2 U\nTypes:Creature Octopus Rogue\nPT:1/4\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigClone | TriggerDescription$ At the beginning of combat on your turn, you may have CARDNAME become a copy of another target creature until end of turn, except it's 1/4 and has \"This creature can't be blocked.\"\nSVar:TrigClone:DB$ Clone | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | SetPower$ 1 | SetToughness$ 4 | AddStaticAbilities$ Unblockable | AILogic$ CloneBestCreature | Duration$ UntilEndOfTurn\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ This creature can't be blocked.\nOracle:Cephalid Facetaker can't be blocked.\\nAt the beginning of combat on your turn, you may have Cephalid Facetaker become a copy of another target creature until end of turn, except it's 1/4 and has \"This creature can't be blocked.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cephalid Facetaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "echoing-ruin-corpus-m676",
+  "description": "M6 corpus — Echoing Ruin; in-hand parse.",
+  "seed": 64301,
+  "cards": {
+    "Echoing Ruin": "Name:Echoing Ruin\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Artifact | SubAbility$ DBDestroyAll | SpellDescription$ Destroy target artifact and all other artifacts with the same name as that artifact.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ TargetedCard.Self,Artifact.NotDefinedTargeted+sharesNameWith Targeted\nAI:RemoveDeck:All\nOracle:Destroy target artifact and all other artifacts with the same name as that artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Echoing Ruin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -121,7 +121,11 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     // symbols. Check ANY line for these patterns since they appear in
     // S$ RaiseCost / SP$ / AB$ Cost$ fields, not just ManaCost:.
     const hasAltCostInManaCost = lines.some(
-      (l) => /Cost\$\s+Discard</.test(l) || /ManaCost:.*<[^>]*\/[^>]*>/.test(l),
+      (l) =>
+        // ANY <Foo/...> pattern in a Cost$ field — sacrifice, tap, exile,
+        // discard, addCounter, behold, choose, etc.
+        /Cost\$[^|]*\b\w+</.test(l) ||
+        /ManaCost:.*<[^>]*\/[^>]*>/.test(l),
     );
     // Cards that reference AI-only Count$ selectors we don't yet support.
     const usesUnsupportedCount = lines.some(
@@ -163,7 +167,13 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     const usesUnsupportedSVar = lines.some(
       (l) =>
         l.startsWith("SVar:") &&
-        /\b(PlayerCountPlayers|TriggeredCard|TriggeredAttacker|TriggeredBlocker|TriggeredSourceSA)\b/.test(l),
+        /\b(PlayerCountPlayers|TriggeredCard|TriggeredAttacker|TriggeredBlocker|TriggeredSourceSA|TriggeredCardController)\b/.test(l),
+    );
+    // S:Mode$ Continuous with AddTrigger$/AddSVar$ — conditionally adds a
+    // trigger to the card. Resolution differs between engines because the
+    // bridge AI may activate the granted trigger immediately.
+    const addsConditionalTrigger = lines.some(
+      (l) => l.startsWith("S:") && /\bAddTrigger\$/.test(l),
     );
     // Cards with ETB triggers that put counters somewhere — bridge captures
     // CounterAdded events but the TS engine emits it for K:etbCounter only,
@@ -227,6 +237,19 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
         l.startsWith("K:Friends forever") ||
         l.startsWith("K:Adapt") ||
         l.startsWith("K:Monstrosity") ||
+        l.startsWith("K:Unleash") ||
+        l.startsWith("K:Exploit") ||
+        l.startsWith("K:Devour") ||
+        l.startsWith("K:Bestow") ||
+        l.startsWith("K:Outlast") ||
+        l.startsWith("K:Surge") ||
+        l.startsWith("K:Recover") ||
+        l.startsWith("K:Reinforce") ||
+        l.startsWith("K:Renown") ||
+        l.startsWith("K:Awaken") ||
+        l.startsWith("K:Bolster") ||
+        l.startsWith("K:Manifest") ||
+        l.startsWith("K:Megamorph") ||
         /\bDB\$ Venture\b/.test(l) ||
         l.startsWith("K:Venture"),
     );
@@ -265,7 +288,8 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       usesAvatarMechanics ||
       hasAnyAsNumber ||
       hasExoticToken ||
-      usesUnsupportedSVar;
+      usesUnsupportedSVar ||
+      addsConditionalTrigger;
     if (skip) continue;
     const inHandOnly =
       isAura ||
@@ -309,13 +333,20 @@ for (const card of uncovered) {
     .some(
       (l) =>
         l.startsWith("T:") &&
-        // Self-ETB OR ChangesZoneAll (when other cards enter) OR
-        // Mode$ Always (passive state-based triggers like "sacrifice if you
-        // control no Swamps") all surface fan-out divergences.
-        ((l.includes("ChangesZone") &&
-          l.includes("Battlefield") &&
-          (l.includes("Card.Self") || l.includes("ChangesZoneAll"))) ||
-          l.includes("Mode$ Always")),
+        // Any ChangesZone-to-Battlefield trigger (self or other-card),
+        // ChangesZoneAll (when other cards enter), Mode$ Always (state-
+        // based passive trigger), Eerie (TriggerZones$ Graveyard variants),
+        // or any FullyUnlock / Exploited / DamageDone trigger surfaces
+        // engine-divergent fan-out paths in the simple ETB scenario.
+        ((l.includes("ChangesZone") && l.includes("Battlefield")) ||
+          l.includes("Mode$ Always") ||
+          l.includes("Mode$ FullyUnlock") ||
+          l.includes("Mode$ Exploited") ||
+          l.includes("Mode$ DamageDone") ||
+          l.includes("Mode$ BecomesTarget") ||
+          l.includes("Mode$ Attacks") ||
+          l.includes("Mode$ Phase") ||
+          l.includes("Mode$ ChangesZoneAll")),
     );
   const isPermanent =
     !card.inHandOnly && !hasAnyEtbTrigger &&

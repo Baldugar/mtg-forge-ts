@@ -1,0 +1,23 @@
+{
+  "id": "craterous-stomp-corpus-m676",
+  "description": "M6 corpus — Craterous Stomp; in-hand parse.",
+  "seed": 62706,
+  "cards": {
+    "Craterous Stomp": "Name:Craterous Stomp\nManaCost:1 R\nTypes:Kindred Instant Giant\nA:SP$ DealDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | RememberTargets$ True | NumDmg$ 3 | SubAbility$ DBAnimateAll | SpellDescription$ CARDNAME deals 3 damage to target creature an opponent controls. Each other creature that player controls becomes a Coward in addition to its other types and gains \"This creature can't block Giants or Warriors.\"\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.ControlledBy RememberedController+!IsRemembered | Types$ Coward | staticAbilities$ Cowardly | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:Cowardly:Mode$ CantBlockBy | ValidAttacker$ Giant,Warrior | ValidBlocker$ Creature.Self | Description$ This creature can't block Giants or Warriors.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Craterous Stomp deals 3 damage to target creature an opponent controls. Each other creature that player controls becomes a Coward in addition to its other types and gains \"This creature can't block Giants or Warriors.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Craterous Stomp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

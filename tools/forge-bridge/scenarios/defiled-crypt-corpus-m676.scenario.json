@@ -1,0 +1,23 @@
+{
+  "id": "defiled-crypt-corpus-m676",
+  "description": "M6 corpus — Defiled Crypt; in-hand parse.",
+  "seed": 63384,
+  "cards": {
+    "Defiled Crypt": "Name:Defiled Crypt\nManaCost:3 B\nTypes:Enchantment Room\nT:Mode$ ChangesZoneAll | ValidCards$ Card.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ TrigToken | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more cards leave your graveyard, create a 2/2 black Horror enchantment creature token. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_e_horror\nAlternateMode:Split\nDeckHas:Ability$Token\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhenever one or more cards leave your graveyard, create a 2/2 black Horror enchantment creature token. This ability triggers only once each turn.\n\nALTERNATE\n\nName:Cadaver Lab\nManaCost:B\nTypes:Enchantment Room\nT:Mode$ UnlockDoor | ValidPlayer$ You | ValidCard$ Card.Self | ThisDoor$ True | Execute$ TrigChangeZone | TriggerDescription$ When you unlock this door, return target creature card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select up to one target creature\nOracle:(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)\\nWhen you unlock this door, return target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defiled Crypt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

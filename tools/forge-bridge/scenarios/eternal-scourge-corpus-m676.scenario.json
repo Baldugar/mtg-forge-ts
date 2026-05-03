@@ -1,0 +1,23 @@
+{
+  "id": "eternal-scourge-corpus-m676",
+  "description": "M6 corpus — Eternal Scourge; in-hand parse.",
+  "seed": 64765,
+  "cards": {
+    "Eternal Scourge": "Name:Eternal Scourge\nManaCost:3\nTypes:Creature Eldrazi Horror\nPT:3/3\nS:Mode$ Continuous | Affected$ Card.Self | MayPlay$ True | AffectedZone$ Exile | EffectZone$ Exile | Description$ You may cast CARDNAME from exile.\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME becomes the target of a spell or ability an opponent controls, exile CARDNAME.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile\nOracle:You may cast Eternal Scourge from exile.\\nWhen Eternal Scourge becomes the target of a spell or ability an opponent controls, exile Eternal Scourge.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Scourge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ethereal-forager-corpus-m676",
+  "description": "M6 corpus — Ethereal Forager; in-hand parse.",
+  "seed": 64776,
+  "cards": {
+    "Ethereal Forager": "Name:Ethereal Forager\nManaCost:4 U U\nTypes:Creature Elemental Whale\nPT:3/3\nK:Delve\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigReturn | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may return an instant or sorcery card exiled with CARDNAME to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Exile | Destination$ Hand | Hidden$ True | ChangeType$ Instant.ExiledWithSource,Sorcery.ExiledWithSource | ChangeNum$ 1\nOracle:Delve (Each card you exile from your graveyard while casting this spell pays for {1}.)\\nFlying\\nWhenever Ethereal Forager attacks, you may return an instant or sorcery card exiled with Ethereal Forager to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ethereal Forager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

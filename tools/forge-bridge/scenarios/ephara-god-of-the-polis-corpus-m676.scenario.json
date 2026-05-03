@@ -1,0 +1,23 @@
+{
+  "id": "ephara-god-of-the-polis-corpus-m676",
+  "description": "M6 corpus — Ephara, God of the Polis; in-hand parse.",
+  "seed": 64668,
+  "cards": {
+    "Ephara, God of the Polis": "Name:Ephara, God of the Polis\nManaCost:2 W U\nTypes:Legendary Enchantment Creature God\nPT:6/5\nK:Indestructible\nS:Mode$ Continuous | Affected$ Card.Self | RemoveType$ Creature | CheckSVar$ X | SVarCompare$ LT7 | Description$ As long as your devotion to white and blue is less than seven, NICKNAME isn't a creature.\nSVar:X:Count$DevotionDual.White.Blue\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | CheckSVar$ Y | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each upkeep, if another creature entered the battlefield under your control last turn, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nSVar:Y:Count$LastTurnEntered_Battlefield_Creature.YouCtrl+Other\nSVar:BuffedBy:Permanent.White,Permanent.Blue\nOracle:Indestructible\\nAs long as your devotion to white and blue is less than seven, Ephara isn't a creature.\\nAt the beginning of each upkeep, if you had another creature enter the battlefield under your control last turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ephara, God of the Polis"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

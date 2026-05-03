@@ -1,0 +1,23 @@
+{
+  "id": "destructive-flow-corpus-m676",
+  "description": "M6 corpus — Destructive Flow; in-hand parse.",
+  "seed": 63545,
+  "cards": {
+    "Destructive Flow": "Name:Destructive Flow\nManaCost:B R G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player sacrifices a nonbasic land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land.nonBasic | Defined$ TriggeredPlayer | SacMessage$ nonbasic land\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player sacrifices a nonbasic land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Destructive Flow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

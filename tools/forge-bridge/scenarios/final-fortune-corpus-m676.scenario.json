@@ -1,0 +1,23 @@
+{
+  "id": "final-fortune-corpus-m676",
+  "description": "M6 corpus — Final Fortune; in-hand parse.",
+  "seed": 65310,
+  "cards": {
+    "Final Fortune": "Name:Final Fortune\nManaCost:R R\nTypes:Instant\nA:SP$ AddTurn | NumTurns$ 1 | ExtraTurnDelayedTrigger$ DBDelTrig | ExtraTurnDelayedTriggerExcute$ TrigLose | SpellDescription$ Take an extra turn after this one. At the beginning of that turn's end step, you lose the game.\nSVar:DBDelTrig:ThisTurn$ True | Mode$ Phase | Phase$ End of Turn | TriggerDescription$ At the beginning of that turn's end step, you lose the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nAI:RemoveDeck:All\nOracle:Take an extra turn after this one. At the beginning of that turn's end step, you lose the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Final Fortune"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

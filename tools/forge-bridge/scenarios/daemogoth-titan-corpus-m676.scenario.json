@@ -1,0 +1,23 @@
+{
+  "id": "daemogoth-titan-corpus-m676",
+  "description": "M6 corpus — Daemogoth Titan; in-hand parse.",
+  "seed": 63002,
+  "cards": {
+    "Daemogoth Titan": "Name:Daemogoth Titan\nManaCost:BG BG BG BG\nTypes:Creature Demon\nPT:11/10\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice a creature.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigSac | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature\nDeckHas:Ability$Sacrifice\nOracle:Whenever Daemogoth Titan attacks or blocks, sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daemogoth Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

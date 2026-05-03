@@ -1,0 +1,23 @@
+{
+  "id": "burn-from-within-corpus-m676",
+  "description": "M6 corpus — Burn from Within; in-hand parse.",
+  "seed": 61516,
+  "cards": {
+    "Burn from Within": "Name:Burn from Within\nManaCost:X R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | RememberDamaged$ True | ReplaceDyingDefined$ Remembered.Creature | SubAbility$ DBDebuff | StackDescription$ CARDNAME deals X damage to {p:Targeted}{c:Targeted}. If a creature is dealt damage this way, it loses indestructible until end of turn. If that creature would die this turn, exile it instead. | SpellDescription$ CARDNAME deals X damage to any target. If a creature is dealt damage this way, it loses indestructible until end of turn. If that creature would die this turn, exile it instead.\nSVar:DBDebuff:DB$ Debuff | Defined$ Remembered.Creature | Keywords$ Indestructible | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Burn from Within deals X damage to any target. If a creature is dealt damage this way, it loses indestructible until end of turn. If that creature would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burn from Within"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

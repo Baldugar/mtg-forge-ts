@@ -1,0 +1,23 @@
+{
+  "id": "getaway-car-corpus-m676",
+  "description": "M6 corpus — Getaway Car; in-hand parse.",
+  "seed": 66071,
+  "cards": {
+    "Getaway Car": "Name:Getaway Car\nManaCost:3\nTypes:Artifact Vehicle\nPT:4/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ Whenever CARDNAME attacks or blocks, return up to one target creature that crewed it this turn to its owner's hand.\nT:Mode$ Blocks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigReturn | TriggerDescription$ Whenever CARDNAME attacks or blocks, return up to one target creature that crewed it this turn to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.CrewedThisTurn | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to one target creature that crewed it this turn\nK:Crew:1\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nOracle:Haste\\nWhenever Getaway Car attacks or blocks, return up to one target creature that crewed it this turn to its owner's hand.\\nCrew 1\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Getaway Car"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "courier-bat-corpus-m676",
+  "description": "M6 corpus — Courier Bat; in-hand parse.",
+  "seed": 62645,
+  "cards": {
+    "Courier Bat": "Name:Courier Bat\nManaCost:2 B\nTypes:Creature Bat\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if you gained life this turn, return up to one target creature card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose up to one target creature card in your graveyard | ValidTgts$ Creature.YouOwn\nSVar:X:Count$LifeYouGainedThisTurn\nSVar:NeedsToPlayVar:X GE1\nDeckHas:Ability$Graveyard\nDeckHints:Ability$LifeGain\nOracle:Flying\\nWhen Courier Bat enters, if you gained life this turn, return up to one target creature card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Courier Bat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

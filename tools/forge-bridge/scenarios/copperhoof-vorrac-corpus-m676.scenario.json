@@ -1,0 +1,25 @@
+{
+  "id": "copperhoof-vorrac-corpus-m676",
+  "description": "M6 corpus — Copperhoof Vorrac; ETB-on-bf.",
+  "seed": 62565,
+  "cards": {
+    "Copperhoof Vorrac": "Name:Copperhoof Vorrac\nManaCost:3 G G\nTypes:Creature Boar Beast\nPT:2/2\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each untapped permanent your opponents control.\nSVar:X:Count$Valid Permanent.untapped+OppCtrl\nS:Mode$ Continuous | Affected$ Permanent.OppCtrl | AddSVar$ AITap\nSVar:AITap:SVar:AITapDown:True\nAI:RemoveDeck:All\nOracle:Copperhoof Vorrac gets +1/+1 for each untapped permanent your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Copperhoof Vorrac"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cordial-vampire-corpus-m676",
+  "description": "M6 corpus — Cordial Vampire; in-hand parse.",
+  "seed": 62583,
+  "cards": {
+    "Cordial Vampire": "Name:Cordial Vampire\nManaCost:B B\nTypes:Creature Vampire\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other,Card.Self | TriggerZones$ Battlefield | Execute$ TrigPutCounters | TriggerDescription$ Whenever CARDNAME or another creature dies, put a +1/+1 counter on each Vampire you control.\nSVar:TrigPutCounters:DB$ PutCounterAll | ValidCards$ Creature.Vampire+YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nDeckHas:Ability$Counters\nDeckNeeds:Type$Vampire\nOracle:Whenever Cordial Vampire or another creature dies, put a +1/+1 counter on each Vampire you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cordial Vampire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

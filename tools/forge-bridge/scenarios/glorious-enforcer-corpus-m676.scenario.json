@@ -1,0 +1,23 @@
+{
+  "id": "glorious-enforcer-corpus-m676",
+  "description": "M6 corpus — Glorious Enforcer; in-hand parse.",
+  "seed": 66341,
+  "cards": {
+    "Glorious Enforcer": "Name:Glorious Enforcer\nManaCost:5 W W\nTypes:Creature Angel\nPT:5/5\nK:Flying\nK:Lifelink\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigPump | CheckSVar$ Y | SVarCompare$ GTX | TriggerDescription$ At the beginning of each combat, if you have more life than an opponent, CARDNAME gains double strike until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | KW$ Double Strike\nSVar:X:PlayerCountOpponents$LowestLifeTotal\nSVar:Y:Count$YourLifeTotal\nOracle:Flying, lifelink\\nAt the beginning of each combat, if you have more life than an opponent, Glorious Enforcer gains double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glorious Enforcer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

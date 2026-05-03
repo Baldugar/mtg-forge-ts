@@ -1,0 +1,23 @@
+{
+  "id": "chaos-maw-corpus-m676",
+  "description": "M6 corpus — Chaos Maw; in-hand parse.",
+  "seed": 61983,
+  "cards": {
+    "Chaos Maw": "Name:Chaos Maw\nManaCost:5 R R\nTypes:Creature Hellion\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDamageAll | TriggerDescription$ When CARDNAME enters, it deals 3 damage to each other creature.\nSVar:TrigDamageAll:DB$ DamageAll | ValidCards$ Creature.StrictlyOther | NumDmg$ 3 | ValidDescription$ each other creature.\nOracle:When Chaos Maw enters, it deals 3 damage to each other creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaos Maw"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

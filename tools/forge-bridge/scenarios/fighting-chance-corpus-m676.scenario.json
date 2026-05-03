@@ -1,0 +1,23 @@
+{
+  "id": "fighting-chance-corpus-m676",
+  "description": "M6 corpus — Fighting Chance; in-hand parse.",
+  "seed": 65293,
+  "cards": {
+    "Fighting Chance": "Name:Fighting Chance\nManaCost:R\nTypes:Instant\nA:SP$ RepeatEach | RepeatCards$ Creature.blocking | Zone$ Battlefield | RepeatSubAbility$ DBFlip | SpellDescription$ For each blocking creature, flip a coin. If you win the flip, prevent all combat damage that would be dealt by that creature this turn.\nSVar:DBFlip:DB$ FlipACoin | WinSubAbility$ DBPreventDmg\nSVar:DBPreventDmg:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Remembered | ExileOnMoved$ Battlefield\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt by that creature this turn.\nAI:RemoveDeck:All\nOracle:For each blocking creature, flip a coin. If you win the flip, prevent all combat damage that would be dealt by that creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fighting Chance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

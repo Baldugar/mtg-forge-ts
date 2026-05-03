@@ -1,0 +1,23 @@
+{
+  "id": "bruna-light-of-alabaster-corpus-m676",
+  "description": "M6 corpus — Bruna, Light of Alabaster; in-hand parse.",
+  "seed": 61463,
+  "cards": {
+    "Bruna, Light of Alabaster": "Name:Bruna, Light of Alabaster\nManaCost:3 W W U\nTypes:Legendary Creature Angel\nPT:5/5\nK:Flying\nK:Vigilance\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ Aurify | TriggerDescription$ Whenever CARDNAME attacks or blocks, you may attach to it any number of Auras on the battlefield and you may put onto the battlefield attached to it any number of Aura cards that could enchant it from your graveyard and/or hand.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ Aurify | Secondary$ True | TriggerDescription$ Whenever CARDNAME attacks or blocks, you may attach to it any number of Auras on the battlefield and you may put onto the battlefield attached to it any number of Aura cards that could enchant it from your graveyard and/or hand.\nSVar:Aurify:DB$ RepeatEach | RepeatSubAbility$ BrunaAttach | RepeatCards$ Aura.CanEnchantSource+!Attached | SubAbility$ ZoneAuras\nSVar:BrunaAttach:DB$ Attach | Object$ Remembered | Defined$ Self | Optional$ True\nSVar:ZoneAuras:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Battlefield | ChangeType$ Aura.CanEnchantSource+YouOwn | AttachedTo$ Self | ChangeNum$ CountAuras | Optional$ True | Hidden$ True\nSVar:CountAuras:Count$ValidHand,Graveyard Aura.CanEnchantSource+YouOwn\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Aura\nOracle:Flying, vigilance\\nWhenever Bruna, Light of Alabaster attacks or blocks, you may attach to it any number of Auras on the battlefield and you may put onto the battlefield attached to it any number of Aura cards that could enchant it from your graveyard and/or hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bruna, Light of Alabaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

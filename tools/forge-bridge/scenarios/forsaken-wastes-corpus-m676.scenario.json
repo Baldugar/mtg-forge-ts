@@ -1,0 +1,23 @@
+{
+  "id": "forsaken-wastes-corpus-m676",
+  "description": "M6 corpus — Forsaken Wastes; in-hand parse.",
+  "seed": 65669,
+  "cards": {
+    "Forsaken Wastes": "Name:Forsaken Wastes\nManaCost:2 B\nTypes:World Enchantment\nS:Mode$ CantGainLife | ValidPlayer$ Player | Description$ Players can't gain life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigLoseLife | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player loses 1 life.\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ Spell | Execute$ TrigLoseLife5 | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME becomes the target of a spell, that spell's controller loses 5 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 1\nSVar:TrigLoseLife5:DB$ LoseLife | Defined$ TriggeredSourceController | LifeAmount$ 5\nAI:RemoveDeck:Random\nOracle:Players can't gain life.\\nAt the beginning of each player's upkeep, that player loses 1 life.\\nWhenever Forsaken Wastes becomes the target of a spell, that spell's controller loses 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forsaken Wastes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

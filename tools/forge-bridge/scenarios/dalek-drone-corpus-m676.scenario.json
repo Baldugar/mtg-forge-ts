@@ -1,0 +1,23 @@
+{
+  "id": "dalek-drone-corpus-m676",
+  "description": "M6 corpus — Dalek Drone; in-hand parse.",
+  "seed": 63025,
+  "cards": {
+    "Dalek Drone": "Name:Dalek Drone\nManaCost:3 B B\nTypes:Artifact Creature Dalek\nPT:3/3\nK:Flying\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Exterminate! — When CARDNAME enters, destroy target creature an opponent controls. That player loses 3 life.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TargetedController | LifeAmount$ 3\nSVar:PlayMain1:TRUE\nOracle:Flying, menace\\nExterminate! — When Dalek Drone enters, destroy target creature an opponent controls. That player loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dalek Drone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

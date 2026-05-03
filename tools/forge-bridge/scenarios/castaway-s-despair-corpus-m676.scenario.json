@@ -1,0 +1,23 @@
+{
+  "id": "castaway-s-despair-corpus-m676",
+  "description": "M6 corpus — Castaway's Despair; in-hand parse.",
+  "seed": 61783,
+  "cards": {
+    "Castaway's Despair": "Name:Castaway's Despair\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.EnchantedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nOracle:Enchant creature\\nWhen Castaway's Despair enters, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Castaway's Despair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "giant-ambush-beetle-corpus-m676",
+  "description": "M6 corpus — Giant Ambush Beetle; in-hand parse.",
+  "seed": 66145,
+  "cards": {
+    "Giant Ambush Beetle": "Name:Giant Ambush Beetle\nManaCost:3 BG R\nTypes:Creature Insect\nPT:4/3\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigProvoke | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may have target creature block it this turn if able.\nSVar:TrigProvoke:DB$ MustBlock | ValidTgts$ Creature | TgtPrompt$ Select target creature\nOracle:Haste\\nWhen Giant Ambush Beetle enters, you may have target creature block it this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant Ambush Beetle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

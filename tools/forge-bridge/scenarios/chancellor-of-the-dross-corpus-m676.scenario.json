@@ -1,0 +1,25 @@
+{
+  "id": "chancellor-of-the-dross-corpus-m676",
+  "description": "M6 corpus — Chancellor of the Dross; ETB-on-bf.",
+  "seed": 61950,
+  "cards": {
+    "Chancellor of the Dross": "Name:Chancellor of the Dross\nManaCost:4 B B B\nTypes:Creature Phyrexian Vampire\nPT:6/6\nK:MayEffectFromOpeningHand:RevealCard\nK:Flying\nK:Lifelink\nSVar:RevealCard:DB$ Reveal | RevealDefined$ Self | SubAbility$ DrainOnUpkeep | SpellDescription$ You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, each opponent loses 3 life, then you gain life equal to the life lost this way.\nSVar:DrainOnUpkeep:DB$ Effect | Triggers$ TrigDrain\nSVar:TrigDrain:Mode$ Phase | Phase$ Upkeep | Execute$ DrainLife | OneOff$ True | TriggerDescription$ At the beginning of the first upkeep, each opponent loses 3 life, then you gain life equal to the life lost this way.\nSVar:DrainLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 3 | SubAbility$ GainLife\nSVar:GainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nOracle:You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, each opponent loses 3 life, then you gain life equal to the life lost this way.\\nFlying, lifelink\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chancellor of the Dross"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

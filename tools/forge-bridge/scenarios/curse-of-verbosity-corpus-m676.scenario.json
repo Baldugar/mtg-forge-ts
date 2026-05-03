@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-verbosity-corpus-m676",
+  "description": "M6 corpus — Curse of Verbosity; in-hand parse.",
+  "seed": 62943,
+  "cards": {
+    "Curse of Verbosity": "Name:Curse of Verbosity\nManaCost:2 U\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ AttackersDeclared | AttackedTarget$ Player.EnchantedBy | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player is attacked, draw a card. Each opponent attacking that player does the same.\nSVar:TrigDraw:DB$ Draw | Defined$ You | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ TriggeredAttackingPlayer.Opponent+controlsCreature.attacking Player.EnchantedBy\nOracle:Enchant player\\nWhenever enchanted player is attacked, you draw a card. Each opponent attacking that player does the same.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Verbosity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

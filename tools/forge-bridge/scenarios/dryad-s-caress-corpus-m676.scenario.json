@@ -1,0 +1,23 @@
+{
+  "id": "dryad-s-caress-corpus-m676",
+  "description": "M6 corpus — Dryad's Caress; in-hand parse.",
+  "seed": 64117,
+  "cards": {
+    "Dryad's Caress": "Name:Dryad's Caress\nManaCost:4 G G\nTypes:Instant\nA:SP$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBUntapAll | SpellDescription$ You gain 1 life for each creature on the battlefield. If {W} was spent to cast this spell, untap all creatures you control.\nSVar:DBUntapAll:DB$ UntapAll | ConditionManaSpent$ W | ValidCards$ Creature.YouCtrl\nSVar:X:Count$Valid Creature\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:You gain 1 life for each creature on the battlefield. If {W} was spent to cast this spell, untap all creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dryad's Caress"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

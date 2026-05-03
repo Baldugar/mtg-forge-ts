@@ -1,0 +1,23 @@
+{
+  "id": "extract-brain-corpus-m676",
+  "description": "M6 corpus — Extract Brain; in-hand parse.",
+  "seed": 64922,
+  "cards": {
+    "Extract Brain": "Name:Extract Brain\nManaCost:X U B\nTypes:Sorcery\nA:SP$ Reveal | ValidTgts$ Opponent | IsCurse$ True | NumCards$ X | RememberRevealed$ True | SubAbility$ PlayChosen | StackDescription$ {p:Targeted} chooses X cards from their hand. Look at those cards. You may cast a spell from among them without paying its mana cost. | SpellDescription$ Target opponent chooses X cards from their hand. Look at those cards. You may cast a spell from among them without paying its mana cost.\nSVar:PlayChosen:DB$ Play | ValidZone$ Hand | Valid$ Card.IsRemembered | Controller$ You | WithoutManaCost$ True | ValidSA$ Spell | Optional$ True | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Target opponent chooses X cards from their hand. Look at those cards. You may cast a spell from among them without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extract Brain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

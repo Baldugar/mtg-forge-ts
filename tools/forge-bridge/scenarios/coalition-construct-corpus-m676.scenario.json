@@ -1,0 +1,23 @@
+{
+  "id": "coalition-construct-corpus-m676",
+  "description": "M6 corpus — Coalition Construct; in-hand parse.",
+  "seed": 62316,
+  "cards": {
+    "Coalition Construct": "Name:Coalition Construct\nManaCost:3\nTypes:Artifact Creature Construct\nPT:2/2\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As CARDNAME enters, choose a creature type.\nS:Mode$ Continuous | Affected$ Card.Self | CharacteristicDefining$ True | AddType$ ChosenType | Description$ CARDNAME is the chosen type in addition to its other types.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, other creatures you control of the chosen type and creature cards of that type in your hand perpetually get +1/+1.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl+Other+ChosenType | PumpZone$ Battlefield,Hand | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nOracle:As Coalition Construct enters, choose a creature type.\\nCoalition Construct is the chosen type in addition to its other types.\\nWhen Coalition Construct enters, other creatures you control of the chosen type and creature cards of that type in your hand perpetually get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coalition Construct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

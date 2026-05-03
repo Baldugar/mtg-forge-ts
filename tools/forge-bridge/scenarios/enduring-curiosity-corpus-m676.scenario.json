@@ -1,0 +1,23 @@
+{
+  "id": "enduring-curiosity-corpus-m676",
+  "description": "M6 corpus — Enduring Curiosity; in-hand parse.",
+  "seed": 64589,
+  "cards": {
+    "Enduring Curiosity": "Name:Enduring Curiosity\nManaCost:2 U U\nTypes:Enchantment Creature Cat Glimmer\nPT:4/3\nK:Flash\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever a creature you control deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+Creature | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Enchantment | RemoveCardTypes$ True\nOracle:Flash\\nWhenever a creature you control deals combat damage to a player, draw a card.\\nWhen Enduring Curiosity dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Curiosity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

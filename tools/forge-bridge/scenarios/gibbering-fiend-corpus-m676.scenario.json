@@ -1,0 +1,23 @@
+{
+  "id": "gibbering-fiend-corpus-m676",
+  "description": "M6 corpus — Gibbering Fiend; in-hand parse.",
+  "seed": 66174,
+  "cards": {
+    "Gibbering Fiend": "Name:Gibbering Fiend\nManaCost:1 R\nTypes:Creature Devil\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDmg1 | TriggerDescription$ When CARDNAME enters, it deals 1 damage to each opponent.\nSVar:TrigDmg1:DB$ DealDamage | NumDmg$ 1 | Defined$ Player.Opponent\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | Delirium$ True | Execute$ TrigDmg2 | TriggerZones$ Battlefield | TriggerDescription$ Delirium — At the beginning of each opponent's upkeep, if there are four or more card types among cards in your graveyard, CARDNAME deals 1 damage to that player.\nSVar:TrigDmg2:DB$ DealDamage | NumDmg$ 1 | Defined$ TriggeredPlayer\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:When Gibbering Fiend enters, it deals 1 damage to each opponent.\\nDelirium — At the beginning of each opponent's upkeep, if there are four or more card types among cards in your graveyard, Gibbering Fiend deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gibbering Fiend"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

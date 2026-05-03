@@ -1,0 +1,23 @@
+{
+  "id": "diplomacy-of-the-wastes-corpus-m676",
+  "description": "M6 corpus — Diplomacy of the Wastes; in-hand parse.",
+  "seed": 63644,
+  "cards": {
+    "Diplomacy of the Wastes": "Name:Diplomacy of the Wastes\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Opponent | DiscardValid$ Card.nonLand | NumCards$ 1 | Mode$ RevealYouChoose | SubAbility$ DBLoseLife | SpellDescription$ Target opponent reveals their hand. You choose a nonland card from it. That player discards that card. If you control a Warrior, that player loses 2 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ ParentTarget | LifeAmount$ 2 | ConditionPresent$ Warrior.YouCtrl\nDeckHints:Type$Warrior\nOracle:Target opponent reveals their hand. You choose a nonland card from it. That player discards that card. If you control a Warrior, that player loses 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diplomacy of the Wastes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

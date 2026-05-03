@@ -1,0 +1,23 @@
+{
+  "id": "dark-revenant-corpus-m676",
+  "description": "M6 corpus — Dark Revenant; in-hand parse.",
+  "seed": 63086,
+  "cards": {
+    "Dark Revenant": "Name:Dark Revenant\nManaCost:3 B\nTypes:Creature Spirit\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, put it on top of its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Library | LibraryPosition$ 0\nOracle:Flying\\nWhen Dark Revenant dies, put it on top of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Revenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

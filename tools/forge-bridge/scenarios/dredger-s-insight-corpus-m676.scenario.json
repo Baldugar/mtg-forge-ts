@@ -1,0 +1,23 @@
+{
+  "id": "dredger-s-insight-corpus-m676",
+  "description": "M6 corpus — Dredger's Insight; in-hand parse.",
+  "seed": 64037,
+  "cards": {
+    "Dredger's Insight": "Name:Dredger's Insight\nManaCost:1 G\nTypes:Enchantment\nT:Mode$ ChangesZoneAll | ValidCards$ Artifact.YouOwn,Creature.YouOwn | Origin$ Graveyard | Destination$ Any | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever one or more artifact and/or creature cards leave your graveyard, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this enchantment enters, mill four cards. You may put an artifact, creature, or land card from among the milled cards into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | RememberMilled$ True | SubAbility$ DBChangeZone | Defined$ You\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | Origin$ Graveyard,Exile | Destination$ Hand | ChangeType$ Artifact.IsRemembered,Creature.IsRemembered,Land.IsRemembered | SelectPrompt$ You may put an artifact, creature, or land card from among the milled cards into your hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill|LifeGain\nOracle:Whenever one or more artifact and/or creature cards leave your graveyard, you gain 1 life.\\nWhen this enchantment enters, mill four cards. You may put an artifact, creature, or land card from among the milled cards into your hand. (To mill four cards, put the top four cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dredger's Insight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

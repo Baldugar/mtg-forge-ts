@@ -1,0 +1,23 @@
+{
+  "id": "endless-ranks-of-the-dead-corpus-m676",
+  "description": "M6 corpus — Endless Ranks of the Dead; in-hand parse.",
+  "seed": 64578,
+  "cards": {
+    "Endless Ranks of the Dead": "Name:Endless Ranks of the Dead\nManaCost:2 B B\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create X 2/2 black Zombie creature tokens, where X is half the number of Zombies you control, rounded down.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ b_2_2_zombie | TokenOwner$ You\nSVar:X:Count$Valid Creature.Zombie+YouCtrl/HalfDown\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, create X 2/2 black Zombie creature tokens, where X is half the number of Zombies you control, rounded down.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endless Ranks of the Dead"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

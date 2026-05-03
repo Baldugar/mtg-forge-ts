@@ -1,0 +1,23 @@
+{
+  "id": "convalescent-care-corpus-m676",
+  "description": "M6 corpus — Convalescent Care; in-hand parse.",
+  "seed": 62545,
+  "cards": {
+    "Convalescent Care": "Name:Convalescent Care\nManaCost:1 W W\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | LifeTotal$ You | LifeAmount$ LE5 | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your upkeep, if you have 5 life or less, you gain 3 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:At the beginning of your upkeep, if you have 5 or less life, you gain 3 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Convalescent Care"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

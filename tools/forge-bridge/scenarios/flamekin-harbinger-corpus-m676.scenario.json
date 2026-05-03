@@ -1,0 +1,23 @@
+{
+  "id": "flamekin-harbinger-corpus-m676",
+  "description": "M6 corpus — Flamekin Harbinger; in-hand parse.",
+  "seed": 65441,
+  "cards": {
+    "Flamekin Harbinger": "Name:Flamekin Harbinger\nManaCost:R\nTypes:Creature Elemental Shaman\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Elemental card, reveal it, then shuffle and put that card on top of it.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Elemental | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:When Flamekin Harbinger enters, you may search your library for an Elemental card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flamekin Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

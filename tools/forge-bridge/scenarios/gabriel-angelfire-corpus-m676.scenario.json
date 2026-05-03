@@ -1,0 +1,23 @@
+{
+  "id": "gabriel-angelfire-corpus-m676",
+  "description": "M6 corpus — Gabriel Angelfire; in-hand parse.",
+  "seed": 65868,
+  "cards": {
+    "Gabriel Angelfire": "Name:Gabriel Angelfire\nManaCost:3 G G W W\nTypes:Legendary Creature Angel\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChoice | TriggerDescription$ At the beginning of your upkeep, choose flying, first strike, trample, or rampage 3. CARDNAME gains that ability until your next upkeep.\nSVar:TrigChoice:DB$ Pump | Defined$ Self | KWChoice$ Flying,First Strike,Trample,Rampage:3 | Duration$ UntilYourNextUpkeep\nAI:RemoveDeck:All\nDeckHas:Keyword$Rampage|Trample|First Strike|Flying\nOracle:At the beginning of your upkeep, choose flying, first strike, trample, or rampage 3. Gabriel Angelfire gains that ability until your next upkeep. (Whenever a creature with rampage 3 becomes blocked, it gets +3/+3 until end of turn for each creature blocking it beyond the first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gabriel Angelfire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

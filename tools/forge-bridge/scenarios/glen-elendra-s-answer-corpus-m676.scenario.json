@@ -1,0 +1,23 @@
+{
+  "id": "glen-elendra-s-answer-corpus-m676",
+  "description": "M6 corpus — Glen Elendra's Answer; in-hand parse.",
+  "seed": 66280,
+  "cards": {
+    "Glen Elendra's Answer": "Name:Glen Elendra's Answer\nManaCost:2 U U\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ Counter | Defined$ ValidStack Spell.OppCtrl,Activated.OppCtrl,Triggered.OppCtrl | RememberCounteredSA$ True | SubAbility$ DBToken | SpellDescription$ Counter all spells your opponents control and all abilities your opponents control. Create a 1/1 blue and black Faerie creature token with flying for each spell and ability countered this way.\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ ub_1_1_faerie_flying | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nOracle:This spell can't be countered.\\nCounter all spells your opponents control and all abilities your opponents control. Create a 1/1 blue and black Faerie creature token with flying for each spell and ability countered this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glen Elendra's Answer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

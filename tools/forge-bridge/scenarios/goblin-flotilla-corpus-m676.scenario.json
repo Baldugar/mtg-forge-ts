@@ -1,0 +1,23 @@
+{
+  "id": "goblin-flotilla-corpus-m676",
+  "description": "M6 corpus — Goblin Flotilla; in-hand parse.",
+  "seed": 66420,
+  "cards": {
+    "Goblin Flotilla": "Name:Goblin Flotilla\nManaCost:2 R\nTypes:Creature Goblin\nPT:2/2\nK:Landwalk:Island\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ AnimateDB | TriggerDescription$ At the beginning of each combat, unless you pay {R}, whenever CARDNAME blocks or becomes blocked by a creature this combat, that creature gains first strike until end of turn.\nSVar:AnimateDB:DB$ Effect | Triggers$ AttackerBlocked,Blocks | UnlessCost$ R | UnlessPayer$ You | Duration$ UntilEndOfCombat\nSVar:AttackerBlocked:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.EffectSource | Execute$ PumpAttacker | TriggerDescription$ Whenever EFFECTSOURCE blocks or becomes blocked by a creature this combat, that creature gains first strike until end of turn.\nSVar:Blocks:Mode$ AttackerBlockedByCreature | ValidCard$ Card.EffectSource | ValidBlocker$ Creature | Execute$ PumpBlocker | TriggerDescription$ Whenever EFFECTSOURCE blocks or becomes blocked by a creature this combat, that creature gains first strike until end of turn.\nSVar:PumpAttacker:DB$ Pump | Defined$ TriggeredAttackerLKICopy | KW$ First Strike\nSVar:PumpBlocker:DB$ Pump | Defined$ TriggeredBlockerLKICopy | KW$ First Strike\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nAt the beginning of each combat, unless you pay {R}, whenever Goblin Flotilla blocks or becomes blocked by a creature this combat, that creature gains first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Flotilla"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

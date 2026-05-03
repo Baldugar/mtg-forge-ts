@@ -1,0 +1,23 @@
+{
+  "id": "gift-of-compleation-corpus-m676",
+  "description": "M6 corpus — Gift of Compleation; in-hand parse.",
+  "seed": 66185,
+  "cards": {
+    "Gift of Compleation": "Name:Gift of Compleation\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigIncubate | TriggerDescription$ When CARDNAME enters, incubate 3. (Create an Incubator token with three +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigIncubate:DB$ Incubate | Amount$ 3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Phyrexian.YouCtrl | Execute$ TrigSurveil | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Phyrexian you control dies, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nOracle:When Gift of Compleation enters, incubate 3. (Create an Incubator token with three +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\\nWhenever a Phyrexian you control dies, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gift of Compleation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

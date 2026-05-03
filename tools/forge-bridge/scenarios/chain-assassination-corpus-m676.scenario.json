@@ -1,0 +1,23 @@
+{
+  "id": "chain-assassination-corpus-m676",
+  "description": "M6 corpus — Chain Assassination; in-hand parse.",
+  "seed": 61913,
+  "cards": {
+    "Chain Assassination": "Name:Chain Assassination\nManaCost:2 B B\nTypes:Instant\nK:Freerunning:1 B\nA:SP$ Destroy | ValidTgts$ Creature | SubAbility$ DBDraw | RememberDestroyed$ True | SpellDescription$ Destroy target creature.\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ DiedThisTurn | SubAbility$ DBCleanup | SpellDescription$ If another creature died this turn, draw a card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:DiedThisTurn:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature.!IsRemembered\nDeckHints:Type$Assassin\nOracle:Freerunning {1}{B} (You may cast this spell for its freerunning cost if you dealt combat damage to a player this turn with an Assassin or commander.)\\nDestroy target creature. If another creature died this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chain Assassination"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

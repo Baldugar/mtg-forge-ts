@@ -1,0 +1,23 @@
+{
+  "id": "dreadfeast-demon-corpus-m676",
+  "description": "M6 corpus — Dreadfeast Demon; in-hand parse.",
+  "seed": 63992,
+  "cards": {
+    "Dreadfeast Demon": "Name:Dreadfeast Demon\nManaCost:5 B B\nTypes:Creature Demon\nPT:6/6\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, sacrifice a non-Demon creature. If you do, create a token that's a copy of CARDNAME.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature.nonDemon | SacMessage$ non-Demon creature | RememberSacrificed$ True | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Sacrifice|Token\nOracle:Flying\\nAt the beginning of your end step, sacrifice a non-Demon creature. If you do, create a token that's a copy of Dreadfeast Demon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadfeast Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

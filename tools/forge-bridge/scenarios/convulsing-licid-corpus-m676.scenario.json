@@ -1,0 +1,25 @@
+{
+  "id": "convulsing-licid-corpus-m676",
+  "description": "M6 corpus — Convulsing Licid; ETB-on-bf.",
+  "seed": 62555,
+  "cards": {
+    "Convulsing Licid": "Name:Convulsing Licid\nManaCost:2 R\nTypes:Creature Licid\nPT:2/2\nA:AB$ Animate | Cost$ R T | Defined$ Self | RemoveThisAbility$ True | Duration$ Permanent | RevertCost$ R | Keywords$ Enchant:Creature | Types$ Enchantment,Aura | RemoveCardTypes$ True | RemoveEnchantmentTypes$ True | SubAbility$ DBAttach | SpellDescription$ CARDNAME loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {R} to end this effect.\nSVar:DBAttach:DB$ Attach | ValidTgts$ Creature | AILogic$ Curse\nS:Mode$ CantBlock | ValidCard$ Creature.EnchantedBy | Description$ Enchanted creature can't block.\nAI:RemoveDeck:All\nOracle:{R}, {T}: Convulsing Licid loses this ability and becomes an Aura enchantment with enchant creature. Attach it to target creature. You may pay {R} to end this effect.\\nEnchanted creature can't block.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Convulsing Licid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

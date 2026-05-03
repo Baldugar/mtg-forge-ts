@@ -1,0 +1,23 @@
+{
+  "id": "deny-entry-corpus-m676",
+  "description": "M6 corpus — Deny Entry; in-hand parse.",
+  "seed": 63462,
+  "cards": {
+    "Deny Entry": "Name:Deny Entry\nManaCost:2 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target creature spell | ValidTgts$ Creature | SubAbility$ DBDraw | SpellDescription$ Counter target creature spell. Draw a card, then discard a card.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nOracle:Counter target creature spell. Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deny Entry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

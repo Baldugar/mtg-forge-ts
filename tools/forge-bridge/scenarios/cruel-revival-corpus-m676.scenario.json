@@ -1,0 +1,23 @@
+{
+  "id": "cruel-revival-corpus-m676",
+  "description": "M6 corpus — Cruel Revival; in-hand parse.",
+  "seed": 62804,
+  "cards": {
+    "Cruel Revival": "Name:Cruel Revival\nManaCost:4 B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.nonZombie | TgtPrompt$ Select target non-Zombie creature | NoRegen$ True | SubAbility$ DBReturn | SpellDescription$ Destroy target non-Zombie creature. It can't be regenerated. Return up to one target Zombie card from your graveyard to your hand.\nSVar:DBReturn:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose target Zombie card in your graveyard | ValidTgts$ Zombie.YouCtrl | Origin$ Graveyard | Destination$ Hand\nOracle:Destroy target non-Zombie creature. It can't be regenerated. Return up to one target Zombie card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cruel Revival"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

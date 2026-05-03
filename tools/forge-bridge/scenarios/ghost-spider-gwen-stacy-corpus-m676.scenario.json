@@ -1,0 +1,23 @@
+{
+  "id": "ghost-spider-gwen-stacy-corpus-m676",
+  "description": "M6 corpus — Ghost-Spider, Gwen Stacy; in-hand parse.",
+  "seed": 66112,
+  "cards": {
+    "Ghost-Spider, Gwen Stacy": "Name:Ghost-Spider, Gwen Stacy\nManaCost:3 R R\nTypes:Legendary Creature Spider Human Hero\nPT:4/4\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever NICKNAME attacks, she deals X damage to defending player, where X is the number of attacking creatures.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefendingPlayer | NumDmg$ X\nSVar:X:Count$Valid Creature.attacking\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhenever Ghost-Spider attacks, she deals X damage to defending player, where X is the number of attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghost-Spider, Gwen Stacy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

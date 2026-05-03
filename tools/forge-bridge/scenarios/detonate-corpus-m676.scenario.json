@@ -1,0 +1,23 @@
+{
+  "id": "detonate-corpus-m676",
+  "description": "M6 corpus — Detonate; in-hand parse.",
+  "seed": 63560,
+  "cards": {
+    "Detonate": "Name:Detonate\nManaCost:X R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact.cmcEQX | NoRegen$ True | SubAbility$ DBDamage | SpellDescription$ Destroy target artifact with mana value X. It can't be regenerated. CARDNAME deals X damage to that artifact's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X\nSVar:X:Count$xPaid\nOracle:Destroy target artifact with mana value X. It can't be regenerated. Detonate deals X damage to that artifact's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Detonate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

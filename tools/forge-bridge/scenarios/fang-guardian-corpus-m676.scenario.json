@@ -1,0 +1,23 @@
+{
+  "id": "fang-guardian-corpus-m676",
+  "description": "M6 corpus — Fang Guardian; in-hand parse.",
+  "seed": 65060,
+  "cards": {
+    "Fang Guardian": "Name:Fang Guardian\nManaCost:3 G\nTypes:Creature Ape Druid\nPT:4/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When this creature enters, another target creature or Vehicle you control gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+Other,Vehicle.YouCtrl+Other | TgtPrompt$ Select another target creature or Vehicle you control | NumAtt$ +2 | NumDef$ +2\nOracle:Flash\\nWhen this creature enters, another target creature or Vehicle you control gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fang Guardian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

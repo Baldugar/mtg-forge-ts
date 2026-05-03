@@ -1,0 +1,23 @@
+{
+  "id": "celestial-mantle-corpus-m676",
+  "description": "M6 corpus — Celestial Mantle; in-hand parse.",
+  "seed": 61862,
+  "cards": {
+    "Celestial Mantle": "Name:Celestial Mantle\nManaCost:3 W W W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3.\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Player | Execute$ TrigSetLife | CombatDamage$ True | TriggerDescription$ Whenever enchanted creature deals combat damage to a player, double its controller's life total.\nSVar:TrigSetLife:DB$ SetLife | Defined$ TriggeredSourceController | LifeAmount$ X\nSVar:X:PlayerCountDefinedTriggeredSourceController$LifeTotal/Twice\nOracle:Enchant creature\\nEnchanted creature gets +3/+3.\\nWhenever enchanted creature deals combat damage to a player, double its controller's life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Celestial Mantle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

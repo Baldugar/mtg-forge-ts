@@ -1,0 +1,23 @@
+{
+  "id": "colossal-plow-corpus-m676",
+  "description": "M6 corpus — Colossal Plow; in-hand parse.",
+  "seed": 62390,
+  "cards": {
+    "Colossal Plow": "Name:Colossal Plow\nManaCost:2\nTypes:Artifact Vehicle\nPT:6/3\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMana | TriggerDescription$ Whenever CARDNAME attacks, add {W}{W}{W} and you gain 3 life. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:TrigMana:DB$ Mana | Produced$ W W W | PersistentMana$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3\nK:Crew:6\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$LifeGain\nDeckHints:Color$White\nOracle:Whenever Colossal Plow attacks, add {W}{W}{W} and you gain 3 life. Until end of turn, you don't lose this mana as steps and phases end.\\nCrew 6 (Tap any number of creatures you control with total power 6 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colossal Plow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "gate-to-the-citadel-corpus-m676",
+  "description": "M6 corpus — Gate to the Citadel; ETB-on-bf.",
+  "seed": 65970,
+  "cards": {
+    "Gate to the Citadel": "Name:Gate to the Citadel\nManaCost:no cost\nTypes:Land Plains Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Seek | Cost$ 3 W T | Type$ Card.nonLand | GameActivationLimit$ 1 | StackDescription$ {p:You} seeks a nonland card. | SpellDescription$ Seek a nonland card. Activate only once.\nText:{T}: Add {W}.\nDeckHints:Type$Gate\nOracle:Gate to the Citadel enters tapped.\\n{3}{W}, {T}: Seek a nonland card. Activate only once.\\n{T}: Add {W}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gate to the Citadel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

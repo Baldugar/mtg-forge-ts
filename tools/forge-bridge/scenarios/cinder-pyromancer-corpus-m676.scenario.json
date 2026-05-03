@@ -1,0 +1,25 @@
+{
+  "id": "cinder-pyromancer-corpus-m676",
+  "description": "M6 corpus — Cinder Pyromancer; ETB-on-bf.",
+  "seed": 62139,
+  "cards": {
+    "Cinder Pyromancer": "Name:Cinder Pyromancer\nManaCost:2 R\nTypes:Creature Elemental Shaman\nPT:0/1\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 1 | SpellDescription$ CARDNAME deals 1 damage to target player or planeswalker.\nT:Mode$ SpellCast | ValidCard$ Card.Red | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever you cast a red spell, you may untap CARDNAME.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:{T}: Cinder Pyromancer deals 1 damage to target player or planeswalker.\\nWhenever you cast a red spell, you may untap Cinder Pyromancer.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cinder Pyromancer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

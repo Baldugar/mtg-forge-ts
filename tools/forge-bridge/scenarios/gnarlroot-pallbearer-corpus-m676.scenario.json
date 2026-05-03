@@ -1,0 +1,23 @@
+{
+  "id": "gnarlroot-pallbearer-corpus-m676",
+  "description": "M6 corpus — Gnarlroot Pallbearer; in-hand parse.",
+  "seed": 66369,
+  "cards": {
+    "Gnarlroot Pallbearer": "Name:Gnarlroot Pallbearer\nManaCost:4 G G\nTypes:Creature Treefolk Druid\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature gets +X/+X until end of turn, where X is the number of creature cards in your graveyard.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nDeckHints:Ability$Graveyard|Mill|Dredge|Discard\nOracle:Trample\\nWhen Gnarlroot Pallbearer enters, target creature gets +X/+X until end of turn, where X is the number of creature cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gnarlroot Pallbearer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chemister-s-trick-corpus-m676",
+  "description": "M6 corpus — Chemister's Trick; in-hand parse.",
+  "seed": 62042,
+  "cards": {
+    "Chemister's Trick": "Name:Chemister's Trick\nManaCost:U R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Select target creature you don't control | NumAtt$ -2 | RememberPumped$ True | SubAbility$ DBAnimate | StackDescription$ {c:Targeted} gets -2/-0 until end of turn and attacks this turn if able. | SpellDescription$ Target creature you don't control gets -2/-0 until end of turn and attacks this turn if able.\nSVar:DBAnimate:DB$ Effect | StaticAbilities$ MustAttack | StackDescription$ None | RememberObjects$ Remembered | ForgetOnMoved$ Battlefield | SubAbility$ DBCleanup\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ This creature attacks this turn if able.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nK:Overload:3 U R\nOracle:Target creature you don't control gets -2/-0 until end of turn and attacks this turn if able.\\nOverload {3}{U}{R} (You may cast this spell for its overload cost. If you do, change its text by replacing all instances of \"target\" with \"each.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chemister's Trick"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

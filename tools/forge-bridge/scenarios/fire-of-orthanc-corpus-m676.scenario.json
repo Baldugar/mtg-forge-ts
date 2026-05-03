@@ -1,0 +1,23 @@
+{
+  "id": "fire-of-orthanc-corpus-m676",
+  "description": "M6 corpus — Fire of Orthanc; in-hand parse.",
+  "seed": 65352,
+  "cards": {
+    "Fire of Orthanc": "Name:Fire of Orthanc\nManaCost:3 R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact,Land | TgtPrompt$ Select target artifact or land | SubAbility$ CantBlockEffect | SpellDescription$ Destroy target artifact or land.\nSVar:CantBlockEffect:DB$ Effect | StaticAbilities$ KWPump | AILogic$ Evasion | SpellDescription$ Creatures without flying can't block this turn.\nSVar:KWPump:Mode$ Continuous | AffectedZone$ Battlefield | Affected$ Creature.withoutFlying | AddHiddenKeyword$ CARDNAME can't block. | Description$ Creatures without flying can't block this turn.\nOracle:Destroy target artifact or land. Creatures without flying can't block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire of Orthanc"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

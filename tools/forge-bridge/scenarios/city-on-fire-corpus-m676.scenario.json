@@ -1,0 +1,25 @@
+{
+  "id": "city-on-fire-corpus-m676",
+  "description": "M6 corpus — City on Fire; ETB-on-bf.",
+  "seed": 62173,
+  "cards": {
+    "City on Fire": "Name:City on Fire\nManaCost:5 R R R\nTypes:Enchantment\nK:Convoke\nR:Event$ DamageDone | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ActiveZones$ Battlefield | ValidTarget$ Player,Permanent | ReplaceWith$ DmgTriple | Description$ If a source you control would deal damage to a permanent or player, it deals triple that damage instead.\nSVar:DmgTriple:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ Z\nSVar:Z:ReplaceCount$DamageAmount/Thrice\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nIf a source you control would deal damage to a permanent or player, it deals triple that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "City on Fire"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

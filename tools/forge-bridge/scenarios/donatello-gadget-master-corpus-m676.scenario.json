@@ -1,0 +1,23 @@
+{
+  "id": "donatello-gadget-master-corpus-m676",
+  "description": "M6 corpus — Donatello, Gadget Master; in-hand parse.",
+  "seed": 63816,
+  "cards": {
+    "Donatello, Gadget Master": "Name:Donatello, Gadget Master\nManaCost:2 U\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:3/2\nK:Sneak:1 U\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigToken | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, create a token that's a copy of target artifact you control.\nSVar:TrigToken:DB$ CopyPermanent | ValidTgts$ Artifact.YouCtrl | TgtPrompt$ Select target artifact you control\nDeckHas:Ability$Token\nOracle:Sneak {1}{U} (You may cast this spell for {1}{U} if you also return an unblocked attacker you control to hand during the declare blockers step. He enters tapped and attacking.)\\nWhenever Donatello deals combat damage to a player, create a token that's a copy of target artifact you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Donatello, Gadget Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

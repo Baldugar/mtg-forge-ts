@@ -1,0 +1,23 @@
+{
+  "id": "butcher-of-malakir-corpus-m676",
+  "description": "M6 corpus — Butcher of Malakir; in-hand parse.",
+  "seed": 61553,
+  "cards": {
+    "Butcher of Malakir": "Name:Butcher of Malakir\nManaCost:5 B B\nTypes:Creature Vampire Warrior\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self,Creature.Other+YouCtrl | Execute$ TrigSac | TriggerDescription$ Whenever CARDNAME or another creature you control dies, each opponent sacrifices a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player.Opponent | SacValid$ Creature\nOracle:Flying\\nWhenever Butcher of Malakir or another creature you control dies, each opponent sacrifices a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Butcher of Malakir"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

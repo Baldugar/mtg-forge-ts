@@ -1,0 +1,23 @@
+{
+  "id": "ezuri-s-predation-corpus-m676",
+  "description": "M6 corpus — Ezuri's Predation; in-hand parse.",
+  "seed": 64956,
+  "cards": {
+    "Ezuri's Predation": "Name:Ezuri's Predation\nManaCost:5 G G G\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatCards$ Creature.OppCtrl | ChooseOrder$ True | UseImprinted$ True | RepeatSubAbility$ DBToken | ChangeZoneTable$ True | SpellDescription$ For each creature your opponents control, create a 4/4 green Phyrexian Beast creature token. Each of those Beasts fights a different one of those creatures.\nSVar:DBToken:DB$ Token | TokenScript$ g_4_4_phyrexian_beast | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBFight\nSVar:DBFight:DB$ Fight | Defined$ Imprinted & Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NeedsToPlay:Creature.OppCtrl+powerLE3\nOracle:For each creature your opponents control, create a 4/4 green Phyrexian Beast creature token. Each of those Beasts fights a different one of those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ezuri's Predation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

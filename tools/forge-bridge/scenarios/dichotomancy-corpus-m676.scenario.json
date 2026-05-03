@@ -1,0 +1,23 @@
+{
+  "id": "dichotomancy-corpus-m676",
+  "description": "M6 corpus — Dichotomancy; in-hand parse.",
+  "seed": 63604,
+  "cards": {
+    "Dichotomancy": "Name:Dichotomancy\nManaCost:7 U U\nTypes:Sorcery\nK:Suspend:3:1 U U\nA:SP$ RepeatEach | ValidTgts$ Opponent | RepeatCards$ Permanent.nonLand+TargetedPlayerCtrl+tapped | Zone$ Battlefield | RepeatSubAbility$ DBSearch | SubAbility$ DBChangeZone | StackDescription$ SpellDescription | SpellDescription$ For each tapped nonland permanent target opponent controls, search that player's library for a card with the same name as that permanent. Put those cards onto the battlefield under your control, then that player shuffles.\nSVar:DBSearch:DB$ ChooseCard | ChoiceZone$ Library | QuasiLibrarySearch$ TargetedPlayer | Choices$ Card.TargetedPlayerOwn+!IsImprinted+sharesNameWith Remembered | ImprintChosen$ True | ChoiceTitle$ You may choose a card with the same name from target opponent's library\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Imprinted | Origin$ Library | Destination$ Battlefield | GainControl$ True | Searched$ True | StackDescription$ None | SubAbility$ DBShuffle\nSVar:DBShuffle:DB$ Shuffle | Defined$ ParentTarget | StackDescription$ None\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:PlayerCountOpponents$HighestValid Permanent.nonLand+YouCtrl+tapped\nOracle:For each tapped nonland permanent target opponent controls, search that player's library for a card with the same name as that permanent. Put those cards onto the battlefield under your control, then that player shuffles.\\nSuspend 3—{1}{U}{U} (Rather than cast this card from your hand, you may pay {1}{U}{U} and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dichotomancy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

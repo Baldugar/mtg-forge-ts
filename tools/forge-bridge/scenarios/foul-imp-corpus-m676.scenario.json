@@ -1,0 +1,23 @@
+{
+  "id": "foul-imp-corpus-m676",
+  "description": "M6 corpus — Foul Imp; in-hand parse.",
+  "seed": 65688,
+  "cards": {
+    "Foul Imp": "Name:Foul Imp\nManaCost:B B\nTypes:Creature Imp\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME enters, you lose 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 2\nOracle:Flying\\nWhen Foul Imp enters, you lose 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foul Imp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "cinder-wall-corpus-m676",
+  "description": "M6 corpus — Cinder Wall; ETB-on-bf.",
+  "seed": 62141,
+  "cards": {
+    "Cinder Wall": "Name:Cinder Wall\nManaCost:R\nTypes:Creature Wall\nPT:3/3\nK:Defender\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ DelTrig | TriggerDescription$ Whenever CARDNAME blocks, destroy it at end of combat.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | Execute$ TrigDestroy | TriggerDescription$ Destroy CARDNAME at end of combat.\nSVar:TrigDestroy:DB$ Destroy | Defined$ Self\nOracle:Defender\\nWhen Cinder Wall blocks, destroy it at end of combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cinder Wall"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

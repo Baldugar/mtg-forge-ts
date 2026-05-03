@@ -1,0 +1,23 @@
+{
+  "id": "eiganjo-uprising-corpus-m676",
+  "description": "M6 corpus — Eiganjo Uprising; in-hand parse.",
+  "seed": 64338,
+  "cards": {
+    "Eiganjo Uprising": "Name:Eiganjo Uprising\nManaCost:X W R\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ X | TokenScript$ w_2_2_samurai_vigilance | PumpKeywords$ Menace & Haste | PumpDuration$ EOT | SubAbility$ DBTokenOpp | SpellDescription$ Create X 2/2 white Samurai creature tokens with vigilance. They gain menace and haste until end of turn. Each opponent creates X minus one 2/2 white Samurai creature tokens with vigilance.\nSVar:X:Count$xPaid\nSVar:DBTokenOpp:DB$ Token | TokenAmount$ Y | TokenOwner$ Opponent | TokenScript$ w_2_2_samurai_vigilance\nSVar:Y:SVar$X/Minus.1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Token & Type$Samurai\nOracle:Create X 2/2 white Samurai creature tokens with vigilance. They gain menace and haste until end of turn.\\nEach opponent creates X minus one 2/2 white Samurai creature tokens with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eiganjo Uprising"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

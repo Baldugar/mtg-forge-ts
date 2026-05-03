@@ -1,0 +1,23 @@
+{
+  "id": "enervate-corpus-m676",
+  "description": "M6 corpus — Enervate; in-hand parse.",
+  "seed": 64603,
+  "cards": {
+    "Enervate": "Name:Enervate\nManaCost:1 U\nTypes:Instant\nA:SP$ Tap | TgtPrompt$ Choose target artifact, creature or land | ValidTgts$ Artifact,Creature,Land | SpellDescription$ Tap target artifact, creature or land. Draw a card at the beginning of next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:All\nOracle:Tap target artifact, creature, or land.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enervate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

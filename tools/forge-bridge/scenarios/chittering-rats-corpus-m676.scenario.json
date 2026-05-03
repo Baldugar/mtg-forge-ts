@@ -1,0 +1,23 @@
+{
+  "id": "chittering-rats-corpus-m676",
+  "description": "M6 corpus — Chittering Rats; in-hand parse.",
+  "seed": 62081,
+  "cards": {
+    "Chittering Rats": "Name:Chittering Rats\nManaCost:1 B B\nTypes:Creature Rat\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, target opponent puts a card from their hand on top of their library.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | ValidTgts$ Opponent | Chooser$ Targeted | Mandatory$ True | ChangeType$ Card | ChangeNum$ 1 | IsCurse$ True\nOracle:When Chittering Rats enters, target opponent puts a card from their hand on top of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chittering Rats"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

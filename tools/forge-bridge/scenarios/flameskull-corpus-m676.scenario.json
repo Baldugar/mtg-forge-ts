@@ -1,0 +1,23 @@
+{
+  "id": "flameskull-corpus-m676",
+  "description": "M6 corpus — Flameskull; in-hand parse.",
+  "seed": 65450,
+  "cards": {
+    "Flameskull": "Name:Flameskull\nManaCost:1 R R\nTypes:Creature Skeleton\nPT:3/1\nK:Flying\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExile | TriggerDescription$ Rejuvenation — When CARDNAME dies, exile it. If you do, exile the top card of your library. Until the end of your next turn, you may play one of those cards. (If you cast CARDNAME this way, you can't play the other card, and vice versa.)\nSVar:TrigExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile | RememberChanged$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ Dig | DigNum$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ MayPlay | Duration$ UntilTheEndOfYourNextTurn | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:MayPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | MayPlayLimit$ 1 | AffectedZone$ Exile | Description$ Until the end of your next turn, you may play one of these cards. (If you cast EFFECTSOURCE this way, you can't play the other card, and vice versa.)\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:SacMe:3\nOracle:Flying\\nFlameskull can't block.\\nRejuvenation — When Flameskull dies, exile it. If you do, exile the top card of your library. Until the end of your next turn, you may play one of those cards. (If you cast Flameskull this way, you can't play the other card, and vice versa.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flameskull"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

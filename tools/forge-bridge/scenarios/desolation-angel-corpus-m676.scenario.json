@@ -1,0 +1,23 @@
+{
+  "id": "desolation-angel-corpus-m676",
+  "description": "M6 corpus — Desolation Angel; in-hand parse.",
+  "seed": 63522,
+  "cards": {
+    "Desolation Angel": "Name:Desolation Angel\nManaCost:3 B B\nTypes:Creature Angel\nPT:5/4\nK:Flying\nK:Kicker:W W\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroyYourLand | TriggerDescription$ When CARDNAME enters, destroy all lands you control. If it was kicked, destroy all lands instead.\nSVar:TrigDestroyYourLand:DB$ DestroyAll | ValidCards$ Land.YouCtrl | ConditionDefined$ Self | ConditionPresent$ Card.!kicked | SubAbility$ TrigKicker\nSVar:TrigKicker:DB$ DestroyAll | ValidCards$ Land | ConditionDefined$ Self | ConditionPresent$ Card.kicked\nAI:RemoveDeck:Random\nDeckNeeds:Color$White\nOracle:Kicker {W}{W} (You may pay an additional {W}{W} as you cast this spell.)\\nFlying\\nWhen Desolation Angel enters, destroy all lands you control. If it was kicked, destroy all lands instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desolation Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

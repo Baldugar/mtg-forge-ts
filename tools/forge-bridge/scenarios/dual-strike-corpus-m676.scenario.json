@@ -1,0 +1,23 @@
+{
+  "id": "dual-strike-corpus-m676",
+  "description": "M6 corpus — Dual Strike; in-hand parse.",
+  "seed": 64123,
+  "cards": {
+    "Dual Strike": "Name:Dual Strike\nManaCost:R R\nTypes:Instant\nA:SP$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant.cmcLE4,Sorcery.cmcLE4 | ValidActivatingPlayer$ You | SpellDescription$ When you cast your next instant or sorcery spell with mana value 4 or less this turn, copy that spell. You may choose new targets for the copy.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:AIPriorityModifier:9\nK:Foretell:R\nOracle:When you cast your next instant or sorcery spell with mana value 4 or less this turn, copy that spell. You may choose new targets for the copy.\\nForetell {R} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dual Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

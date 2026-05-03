@@ -1,0 +1,25 @@
+{
+  "id": "gate-to-seatower-corpus-m676",
+  "description": "M6 corpus — Gate to Seatower; ETB-on-bf.",
+  "seed": 65968,
+  "cards": {
+    "Gate to Seatower": "Name:Gate to Seatower\nManaCost:no cost\nTypes:Land Island Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Seek | Cost$ 3 U T | Type$ Card.nonLand | GameActivationLimit$ 1 | StackDescription$ {p:You} seeks a nonland card. | SpellDescription$ Seek a nonland card. Activate only once.\nText:{T}: Add {U}.\nDeckHints:Type$Gate\nOracle:Gate to Seatower enters tapped.\\n{3}{U}, {T}: Seek a nonland card. Activate only once.\\n{T}: Add {U}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gate to Seatower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

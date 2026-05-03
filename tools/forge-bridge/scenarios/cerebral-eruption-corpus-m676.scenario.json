@@ -1,0 +1,23 @@
+{
+  "id": "cerebral-eruption-corpus-m676",
+  "description": "M6 corpus — Cerebral Eruption; in-hand parse.",
+  "seed": 61900,
+  "cards": {
+    "Cerebral Eruption": "Name:Cerebral Eruption\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ PeekAndReveal | ValidTgts$ Opponent | NoPeek$ True | RememberRevealed$ True | SubAbility$ DBDamage | SpellDescription$ Target opponent reveals the top card of their library.\nSVar:DBDamage:DB$ DamageAll | ValidCards$ Creature.TargetedPlayerCtrl | ValidPlayers$ Targeted | NumDmg$ X | SubAbility$ DBReturn | StackDescription$ SpellDescription | SpellDescription$ CARDNAME deals damage equal to the revealed card's mana value to that player and each creature that player controls.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Hand | ConditionDefined$ Remembered | ConditionPresent$ Land | StackDescription$ SpellDescription | SubAbility$ DBCleanup | SpellDescription$ If a land card is revealed this way, return CARDNAME to its owner's hand.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Target opponent reveals the top card of their library. Cerebral Eruption deals damage equal to the revealed card's mana value to that player and each creature that player controls. If a land card is revealed this way, return Cerebral Eruption to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cerebral Eruption"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

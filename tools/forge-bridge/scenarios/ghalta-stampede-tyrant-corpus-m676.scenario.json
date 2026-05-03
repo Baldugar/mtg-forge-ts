@@ -1,0 +1,23 @@
+{
+  "id": "ghalta-stampede-tyrant-corpus-m676",
+  "description": "M6 corpus — Ghalta, Stampede Tyrant; in-hand parse.",
+  "seed": 66085,
+  "cards": {
+    "Ghalta, Stampede Tyrant": "Name:Ghalta, Stampede Tyrant\nManaCost:5 G G G\nTypes:Legendary Creature Elder Dinosaur\nPT:12/12\nK:Trample\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, put any number of creature cards from your hand onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature.YouCtrl | ChangeNum$ HandX | Hidden$ True\nSVar:HandX:Count$ValidHand Creature.YouCtrl\nOracle:Trample\\nWhen Ghalta, Stampede Tyrant enters, put any number of creature cards from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghalta, Stampede Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

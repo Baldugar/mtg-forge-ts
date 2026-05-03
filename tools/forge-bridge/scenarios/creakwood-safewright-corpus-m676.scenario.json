@@ -1,0 +1,23 @@
+{
+  "id": "creakwood-safewright-corpus-m676",
+  "description": "M6 corpus — Creakwood Safewright; in-hand parse.",
+  "seed": 62724,
+  "cards": {
+    "Creakwood Safewright": "Name:Creakwood Safewright\nManaCost:1 B\nTypes:Creature Elf Warrior\nPT:5/5\nK:etbCounter:M1M1:3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | Execute$ TrigRemoveCounter | TriggerZones$ Battlefield | IsPresent$ Card.Self+counters_GE1_M1M1 | CheckSVar$ X | SVarCompare$ GE1 | TriggerDescription$ At the beginning of your end step, if there is an Elf card in your graveyard and this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nSVar:X:Count$ValidGraveyard Elf.YouOwn\nOracle:This creature enters with three -1/-1 counters on it.\\nAt the beginning of your end step, if there is an Elf card in your graveyard and this creature has a -1/-1 counter on it, remove a -1/-1 counter from this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creakwood Safewright"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

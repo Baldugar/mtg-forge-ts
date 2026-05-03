@@ -1,0 +1,23 @@
+{
+  "id": "dovin-s-acuity-corpus-m676",
+  "description": "M6 corpus — Dovin's Acuity; in-hand parse.",
+  "seed": 63858,
+  "cards": {
+    "Dovin's Acuity": "Name:Dovin's Acuity\nManaCost:1 W U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 2 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ SpellCast | ValidCard$ Instant | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | PlayerTurn$ True | Phase$ Main1,Main2 | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ Whenever you cast an instant spell during your main phase, you may return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nDeckHas:Ability$LifeGain\nOracle:When Dovin's Acuity enters, you gain 2 life and draw a card.\\nWhenever you cast an instant spell during your main phase, you may return Dovin's Acuity to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dovin's Acuity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

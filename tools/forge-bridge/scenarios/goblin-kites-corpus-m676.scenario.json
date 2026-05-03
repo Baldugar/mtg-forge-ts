@@ -1,0 +1,25 @@
+{
+  "id": "goblin-kites-corpus-m676",
+  "description": "M6 corpus — Goblin Kites; ETB-on-bf.",
+  "seed": 66436,
+  "cards": {
+    "Goblin Kites": "Name:Goblin Kites\nManaCost:1 R\nTypes:Enchantment\nA:AB$ Pump | Cost$ R | ValidTgts$ Creature.YouCtrl+toughnessLE2 | TgtPrompt$ Choose creature you control with toughness 2 or less | KW$ Flying | SubAbility$ DelTrig | SpellDescription$ Target creature you control with toughness 2 or less gains flying until end of turn. Flip a coin at the beginning of the next end step. If you lose the flip, sacrifice that creature.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigFlip | RememberObjects$ Targeted | TriggerDescription$ Flip a coin at the beginning of the next end step. If you lose the flip, sacrifice that creature.\nSVar:TrigFlip:DB$ FlipACoin | LoseSubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ SacrificeAll | Controller$ You | Defined$ DelayTriggerRememberedLKI\nOracle:{R}: Target creature you control with toughness 2 or less gains flying until end of turn. Flip a coin at the beginning of the next end step. If you lose the flip, sacrifice that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Kites"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

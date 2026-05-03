@@ -1,0 +1,23 @@
+{
+  "id": "flagstones-of-trokair-corpus-m676",
+  "description": "M6 corpus — Flagstones of Trokair; in-hand parse.",
+  "seed": 65411,
+  "cards": {
+    "Flagstones of Trokair": "Name:Flagstones of Trokair\nManaCost:no cost\nTypes:Legendary Land\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ TriggeredCardController | TriggerDescription$ When CARDNAME is put into a graveyard from the battlefield, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Card.Plains | ChangeNum$ 1 | ShuffleNonMandatory$ True\nSVar:SacMe:3\nOracle:{T}: Add {W}.\\nWhen Flagstones of Trokair is put into a graveyard from the battlefield, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flagstones of Trokair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

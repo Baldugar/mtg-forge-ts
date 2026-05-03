@@ -1,0 +1,23 @@
+{
+  "id": "crossroads-candleguide-corpus-m676",
+  "description": "M6 corpus — Crossroads Candleguide; in-hand parse.",
+  "seed": 62774,
+  "cards": {
+    "Crossroads Candleguide": "Name:Crossroads Candleguide\nManaCost:4\nTypes:Artifact Creature Scarecrow\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, exile up to one target card from a graveyard.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target card in a graveyard to exile\nA:AB$ Mana | Cost$ 2 | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:When Crossroads Candleguide enters, exile up to one target card from a graveyard.\\n{2}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crossroads Candleguide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

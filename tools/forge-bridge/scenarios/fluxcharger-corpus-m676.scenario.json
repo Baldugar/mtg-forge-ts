@@ -1,0 +1,25 @@
+{
+  "id": "fluxcharger-corpus-m676",
+  "description": "M6 corpus — Fluxcharger; ETB-on-bf.",
+  "seed": 65574,
+  "cards": {
+    "Fluxcharger": "Name:Fluxcharger\nManaCost:2 U R\nTypes:Creature Weird\nPT:1/5\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangePT | OptionalDecider$ You | TriggerDescription$ Whenever you cast a instant or sorcery spell, you may switch CARDNAME's power and toughness until end of turn.\nSVar:TrigChangePT:DB$ Pump | KW$ HIDDEN CARDNAME's power and toughness are switched | Defined$ Self\nAI:RemoveDeck:All\nDeckHints:Type$Instant|Sorcery\nOracle:Flying\\nWhenever you cast an instant or sorcery spell, you may switch Fluxcharger's power and toughness until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fluxcharger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

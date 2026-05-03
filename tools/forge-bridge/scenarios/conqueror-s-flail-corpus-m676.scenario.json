@@ -1,0 +1,25 @@
+{
+  "id": "conqueror-s-flail-corpus-m676",
+  "description": "M6 corpus — Conqueror's Flail; ETB-on-bf.",
+  "seed": 62493,
+  "cards": {
+    "Conqueror's Flail": "Name:Conqueror's Flail\nManaCost:2\nTypes:Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | AddToughness$ X | Description$ Equipped creature gets +1/+1 for each color among permanents you control.\nS:Mode$ CantBeCast | ValidCard$ Card | Condition$ PlayerTurn | Caster$ Opponent | IsPresent$ Card.Self+AttachedTo Creature | Description$ As long as CARDNAME is attached to a creature, your opponents can't cast spells during your turn.\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nK:Equip:2\nOracle:Equipped creature gets +1/+1 for each color among permanents you control.\\nAs long as Conqueror's Flail is attached to a creature, your opponents can't cast spells during your turn.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Conqueror's Flail"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

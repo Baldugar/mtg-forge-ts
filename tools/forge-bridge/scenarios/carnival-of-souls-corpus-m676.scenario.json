@@ -1,0 +1,23 @@
+{
+  "id": "carnival-of-souls-corpus-m676",
+  "description": "M6 corpus — Carnival of Souls; in-hand parse.",
+  "seed": 61737,
+  "cards": {
+    "Carnival of Souls": "Name:Carnival of Souls\nManaCost:1 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever a creature enters, you lose 1 life and add {B}.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1 | SubAbility$ DBMana\nSVar:DBMana:DB$ Mana | Produced$ B\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, you lose 1 life and add {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carnival of Souls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "geothermal-kami-corpus-m676",
+  "description": "M6 corpus — Geothermal Kami; in-hand parse.",
+  "seed": 66060,
+  "cards": {
+    "Geothermal Kami": "Name:Geothermal Kami\nManaCost:3 G\nTypes:Creature Spirit\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | IsPresent$ Enchantment.YouCtrl | TriggerDescription$ When CARDNAME enters, you may return an enchantment you control to its owner's hand. If you do, you gain 3 life.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Enchantment.YouCtrl | ChangeNum$ 1 | SelectPrompt$ Choose an enchantment you control to return to its owner's hand | RememberChanged$ True | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 3 | ConditionDefined$ Remembered | ConditionPresent$ Card | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Enchantment\nDeckHas:Ability$LifeGain\nOracle:When Geothermal Kami enters, you may return an enchantment you control to its owner's hand. If you do, you gain 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geothermal Kami"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

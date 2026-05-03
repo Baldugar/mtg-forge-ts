@@ -1,0 +1,23 @@
+{
+  "id": "githzerai-monk-corpus-m676",
+  "description": "M6 corpus — Githzerai Monk; in-hand parse.",
+  "seed": 66234,
+  "cards": {
+    "Githzerai Monk": "Name:Githzerai Monk\nManaCost:4 W\nTypes:Creature Gith Monk\nPT:3/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTapAll | TriggerDescription$ Psychic Defense — When CARDNAME enters, tap all creatures you don't control.\nSVar:TrigTapAll:DB$ TapAll | ValidCards$ Creature.YouDontCtrl\nSVar:PlayMain1:TRUE\nOracle:Flash\\nFlying\\nPsychic Defense — When Githzerai Monk enters, tap all creatures you don't control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Githzerai Monk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "devout-decree-corpus-m676",
+  "description": "M6 corpus — Devout Decree; in-hand parse.",
+  "seed": 63585,
+  "cards": {
+    "Devout Decree": "Name:Devout Decree\nManaCost:1 W\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature.Black,Planeswalker.Red,Creature.Red,Planeswalker.Black | TgtPrompt$ Select target creature or planeswalker that's black or red | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBScry | SpellDescription$ Exile target creature or planeswalker that's black or red. Scry 1.\nSVar:DBScry:DB$ Scry | ScryNum$ 1\nAI:RemoveDeck:All\nOracle:Exile target creature or planeswalker that's black or red. Scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devout Decree"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

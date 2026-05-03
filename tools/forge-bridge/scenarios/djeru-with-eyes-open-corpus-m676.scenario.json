@@ -1,0 +1,23 @@
+{
+  "id": "djeru-with-eyes-open-corpus-m676",
+  "description": "M6 corpus — Djeru, With Eyes Open; in-hand parse.",
+  "seed": 63776,
+  "cards": {
+    "Djeru, With Eyes Open": "Name:Djeru, With Eyes Open\nManaCost:3 W W\nTypes:Legendary Creature Human Warrior\nPT:4/3\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a planeswalker card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Planeswalker | ChangeNum$ 1 | ShuffleNonMandatory$ True\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Planeswalker.YouCtrl | ReplaceWith$ DBReplace | PreventionEffect$ True | Description$ If a source would deal damage to a planeswalker you control, prevent 1 of that damage.\nSVar:DBReplace:DB$ ReplaceDamage | Amount$ 1\nOracle:Vigilance\\nWhen Djeru, With Eyes Open enters, you may search your library for a planeswalker card, reveal it, put it into your hand, then shuffle.\\nIf a source would deal damage to a planeswalker you control, prevent 1 of that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Djeru, With Eyes Open"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

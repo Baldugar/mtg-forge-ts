@@ -1,0 +1,23 @@
+{
+  "id": "divine-reckoning-corpus-m676",
+  "description": "M6 corpus — Divine Reckoning; in-hand parse.",
+  "seed": 63759,
+  "cards": {
+    "Divine Reckoning": "Name:Divine Reckoning\nManaCost:2 W W\nTypes:Sorcery\nK:Flashback:5 W W\nA:SP$ ChooseCard | Defined$ Player | Amount$ 1 | Choices$ Creature | ControlledByPlayer$ Chooser | Mandatory$ True | SubAbility$ DBDestroyAll | SpellDescription$ Each player chooses a creature they control. Destroy the rest.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Creature.!ChosenCard\nAI:RemoveDeck:All\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.OppCtrl\nOracle:Each player chooses a creature they control. Destroy the rest.\\nFlashback {5}{W}{W} (You may cast this card from your graveyard for its flashback cost. Then exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Divine Reckoning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

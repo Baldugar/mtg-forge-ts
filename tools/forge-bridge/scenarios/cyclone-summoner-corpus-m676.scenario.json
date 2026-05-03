@@ -1,0 +1,23 @@
+{
+  "id": "cyclone-summoner-corpus-m676",
+  "description": "M6 corpus — Cyclone Summoner; in-hand parse.",
+  "seed": 62983,
+  "cards": {
+    "Cyclone Summoner": "Name:Cyclone Summoner\nManaCost:5 U U\nTypes:Creature Giant Wizard\nPT:7/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.wasCastFromYourHandByYou+Self | Execute$ TrigChangeZoneAll | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, return all permanents to their owners' hands except for Giants, Wizards, and lands.\nSVar:TrigChangeZoneAll:DB$ ChangeZoneAll | ChangeType$ Permanent.nonLand+nonGiant+nonWizard | Origin$ Battlefield | Destination$ Hand\nDeckHints:Type$Giant|Wizard\nOracle:When Cyclone Summoner enters, if you cast it from your hand, return all permanents to their owners' hands except for Giants, Wizards, and lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclone Summoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

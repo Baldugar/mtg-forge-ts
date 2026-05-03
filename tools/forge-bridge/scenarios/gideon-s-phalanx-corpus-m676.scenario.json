@@ -1,0 +1,23 @@
+{
+  "id": "gideon-s-phalanx-corpus-m676",
+  "description": "M6 corpus — Gideon's Phalanx; in-hand parse.",
+  "seed": 66180,
+  "cards": {
+    "Gideon's Phalanx": "Name:Gideon's Phalanx\nManaCost:5 W W\nTypes:Instant\nA:SP$ Token | TokenAmount$ 4 | TokenScript$ w_2_2_knight_vigilance | TokenOwner$ You | SubAbility$ DBPumpAll | SpellDescription$ Create four 2/2 white Knight creature tokens with vigilance. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, creatures you control gain indestructible until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Indestructible | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2\nOracle:Create four 2/2 white Knight creature tokens with vigilance.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, creatures you control gain indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon's Phalanx"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

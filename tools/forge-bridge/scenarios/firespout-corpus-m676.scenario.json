@@ -1,0 +1,23 @@
+{
+  "id": "firespout-corpus-m676",
+  "description": "M6 corpus — Firespout; in-hand parse.",
+  "seed": 65387,
+  "cards": {
+    "Firespout": "Name:Firespout\nManaCost:2 RG\nTypes:Sorcery\nA:SP$ DamageAll | ValidCards$ Creature.withoutFlying | ValidDescription$ each creature without flying if {R} was spent to cast it. | NumDmg$ 3 | ConditionManaSpent$ R | SubAbility$ GPaid | SpellDescription$ CARDNAME deals 3 damage to each creature without flying if {R} was spent to cast this spell and 3 damage to each creature with flying if {G} was spent to cast this spell. (Do both if {R}{G} was spent.)\nSVar:GPaid:DB$ DamageAll | ValidCards$ Creature.withFlying | ValidDescription$ each creature with flying if {R} was spent to cast it. (Do both if {R}{G} was spent.) | NumDmg$ 3 | ConditionManaSpent$ G\nAI:RemoveDeck:All\nOracle:Firespout deals 3 damage to each creature without flying if {R} was spent to cast this spell and 3 damage to each creature with flying if {G} was spent to cast this spell. (Do both if {R}{G} was spent.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firespout"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

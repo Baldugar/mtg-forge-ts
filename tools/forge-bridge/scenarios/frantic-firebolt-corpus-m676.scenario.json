@@ -1,0 +1,23 @@
+{
+  "id": "frantic-firebolt-corpus-m676",
+  "description": "M6 corpus — Frantic Firebolt; in-hand parse.",
+  "seed": 65715,
+  "cards": {
+    "Frantic Firebolt": "Name:Frantic Firebolt\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ X | SpellDescription$ CARDNAME deals X damage to target creature, where X is 2 plus the number of cards in your graveyard that are instant cards, sorcery cards, and/or have an Adventure.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn,Card.AdventureCard+YouOwn/Plus.2\nDeckHints:Type$Instant|Sorcery|Adventure & Ability$Graveyard\nOracle:Frantic Firebolt deals X damage to target creature, where X is 2 plus the number of cards in your graveyard that are instant cards, sorcery cards, and/or have an Adventure.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frantic Firebolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

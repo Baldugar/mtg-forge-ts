@@ -1,0 +1,23 @@
+{
+  "id": "civilized-scholar-corpus-m676",
+  "description": "M6 corpus — Civilized Scholar; in-hand parse.",
+  "seed": 62181,
+  "cards": {
+    "Civilized Scholar": "Name:Civilized Scholar\nManaCost:2 U\nTypes:Creature Human Advisor\nPT:0/1\nA:AB$ Draw | Cost$ T | NumCards$ 1 | SubAbility$ DBDiscard | SpellDescription$ Draw a card, then discard a card. If a creature card is discarded this way, untap CARDNAME, then transform it.\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1 | RememberDiscarded$ True | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | ConditionCompare$ EQ1 | SubAbility$ DBUntap | Mode$ Transform\nSVar:DBUntap:DB$ Untap | Defined$ Self | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | ConditionCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nAlternateMode:DoubleFaced\nOracle:{T}: Draw a card, then discard a card. If a creature card is discarded this way, untap Civilized Scholar, then transform it.\n\nALTERNATE\n\nName:Homicidal Brute\nManaCost:no cost\nColors:red\nTypes:Creature Human Mutant\nPT:5/1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTap | IsPresent$ Card.!attackedThisTurn+Self | TriggerDescription$ At the beginning of your end step, if CARDNAME didn't attack this turn, tap CARDNAME, then transform it.\nSVar:TrigTap:DB$ Tap | Defined$ Self | SubAbility$ DBTransform2\nSVar:DBTransform2:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:At the beginning of your end step, if Homicidal Brute didn't attack this turn, tap Homicidal Brute, then transform it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Civilized Scholar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

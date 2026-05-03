@@ -1,0 +1,23 @@
+{
+  "id": "crawling-infestation-corpus-m676",
+  "description": "M6 corpus — Crawling Infestation; in-hand parse.",
+  "seed": 62716,
+  "cards": {
+    "Crawling Infestation": "Name:Crawling Infestation\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may mill two cards. (You may put the top two cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | Optional$ True\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.YouOwn+!token | Origin$ Any | Destination$ Graveyard | TriggerZones$ Battlefield | ActivationLimit$ 1 | PlayerTurn$ True | Execute$ TrigToken | TriggerDescription$ Whenever one or more creature cards are put into your graveyard from anywhere during your turn, create a 1/1 green Insect creature token. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_insect\nDeckHas:Ability$Mill|Token\nOracle:At the beginning of your upkeep, you may mill two cards. (You may put the top two cards of your library into your graveyard.)\\nWhenever one or more creature cards are put into your graveyard from anywhere during your turn, create a 1/1 green Insect creature token. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crawling Infestation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

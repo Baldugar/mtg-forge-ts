@@ -1,0 +1,25 @@
+{
+  "id": "forbidden-crypt-corpus-m676",
+  "description": "M6 corpus — Forbidden Crypt; ETB-on-bf.",
+  "seed": 65619,
+  "cards": {
+    "Forbidden Crypt": "Name:Forbidden Crypt\nManaCost:3 B B\nTypes:Enchantment\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ CheckLoseCondition | Description$ If you would draw a card, return a card from your graveyard to your hand instead. If you can't, you lose the game.\nSVar:CheckLoseCondition:DB$ LosesGame | Defined$ You | ConditionCheckSVar$ CardsInGrave | ConditionSVarCompare$ EQ0 | SubAbility$ ForbiddenPractice\nSVar:ForbiddenPractice:DB$ ChangeZone | Hidden$ True | Mandatory$ True | ChangeType$ Card.YouOwn | ChangeNum$ 1 | Origin$ Graveyard | Destination$ Hand\nSVar:CardsInGrave:Count$ValidGraveyard Card.YouOwn\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Graveyard | ValidCard$ Card.!token+YouOwn | ReplaceWith$ CryptExile | Description$ If a card would be put into your graveyard from anywhere, exile that card instead.\nSVar:CryptExile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nSVar:NonStackingEffect:True\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:If you would draw a card, return a card from your graveyard to your hand instead. If you can't, you lose the game.\\nIf a card would be put into your graveyard from anywhere, exile that card instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Forbidden Crypt"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

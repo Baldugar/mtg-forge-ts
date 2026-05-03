@@ -1,0 +1,23 @@
+{
+  "id": "culling-scales-corpus-m676",
+  "description": "M6 corpus — Culling Scales; in-hand parse.",
+  "seed": 62874,
+  "cards": {
+    "Culling Scales": "Name:Culling Scales\nManaCost:3\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ At the beginning of your upkeep, destroy target nonland permanent with the lowest mana value. (If two or more permanents are tied for lowest, target any one of them.)\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonLand+lowestCMC | TgtPrompt$ Select target nonland permanent with the lowest mana value.\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, destroy target nonland permanent with the lowest mana value. (If two or more permanents are tied for lowest, target any one of them.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Culling Scales"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

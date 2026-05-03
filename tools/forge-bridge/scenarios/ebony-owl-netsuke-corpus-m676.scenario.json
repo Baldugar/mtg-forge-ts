@@ -1,0 +1,23 @@
+{
+  "id": "ebony-owl-netsuke-corpus-m676",
+  "description": "M6 corpus — Ebony Owl Netsuke; in-hand parse.",
+  "seed": 64281,
+  "cards": {
+    "Ebony Owl Netsuke": "Name:Ebony Owl Netsuke\nManaCost:2\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Opponent | IsPresent$ Card.ActivePlayerCtrl | PresentZone$ Hand | PresentCompare$ GE7 | Execute$ TrigDamageOpp | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each opponent's upkeep, if that player has seven or more cards in hand, CARDNAME deals 4 damage to that player.\nSVar:TrigDamageOpp:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 4\nOracle:At the beginning of each opponent's upkeep, if that player has seven or more cards in hand, Ebony Owl Netsuke deals 4 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ebony Owl Netsuke"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

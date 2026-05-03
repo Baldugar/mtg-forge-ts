@@ -1,0 +1,23 @@
+{
+  "id": "colossal-whale-corpus-m676",
+  "description": "M6 corpus — Colossal Whale; in-hand parse.",
+  "seed": 62391,
+  "cards": {
+    "Colossal Whale": "Name:Colossal Whale\nManaCost:5 U U\nTypes:Creature Whale\nPT:5/5\nK:Landwalk:Island\nT:Mode$ Attacks | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may exile target creature defending player controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.DefenderCtrl | TgtPrompt$ Select target creature defending player control | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nWhenever Colossal Whale attacks, you may exile target creature defending player controls until Colossal Whale leaves the battlefield. (That creature returns under its owner's control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colossal Whale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "dragonfly-pilot-corpus-m676",
+  "description": "M6 corpus — Dragonfly Pilot; in-hand parse.",
+  "seed": 63921,
+  "cards": {
+    "Dragonfly Pilot": "Name:Dragonfly Pilot\nManaCost:W\nTypes:Creature Fox Pilot\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigConjure | TriggerDescription$ When CARDNAME enters, conjure a card named Dragonfly Suit into your hand.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Dragonfly Suit | Zone$ Hand\nS:Mode$ TapPowerValue | ValidSA$ Activated.Crew+Vehicle | ValidCard$ Card.Self | Value$ 2 | Description$ CARDNAME crews Vehicles as though its power were 2 greater.\nDeckHas:Type$Artifact|Vehicle\nDeckHints:Type$Vehicle\nOracle:Whenever Dragonfly Pilot enters, conjure a card named Dragonfly Suit into your hand.\\nDragonfly Pilot crews Vehicles as though its power were 2 greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonfly Pilot"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

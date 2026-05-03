@@ -1,0 +1,23 @@
+{
+  "id": "contaminant-grafter-corpus-m676",
+  "description": "M6 corpus — Contaminant Grafter; in-hand parse.",
+  "seed": 62526,
+  "cards": {
+    "Contaminant Grafter": "Name:Contaminant Grafter\nManaCost:4 G\nTypes:Creature Phyrexian Druid\nPT:5/5\nK:Trample\nK:Toxic:1\nT:Mode$ DamageAll | CombatDamage$ True | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigProliferate | TriggerDescription$ Whenever one or more creatures you control deal combat damage to one or more players, proliferate.\nSVar:TrigProliferate:DB$ Proliferate\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ TrigDraw | CheckSVar$ X | SVarCompare$ GE3 | TriggerDescription$ Corrupted — At the beginning of your end step, if an opponent has three or more poison counters, draw a card, then you may put a land card from your hand onto the battlefield.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | Optional$ You | ChangeType$ Land | ChangeNum$ 1\nSVar:X:PlayerCountOpponents$HighestCounters.Poison\nDeckHas:Ability$Proliferate\nDeckHints:Ability$Proliferate & Keyword$Infect|Toxic\nOracle:Trample, toxic 1\\nWhenever one or more creatures you control deal combat damage to one or more players, proliferate.\\nCorrupted — At the beginning of your end step, if an opponent has three or more poison counters, draw a card, then you may put a land card from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Contaminant Grafter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

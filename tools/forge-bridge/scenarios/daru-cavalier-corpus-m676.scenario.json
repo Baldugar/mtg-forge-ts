@@ -1,0 +1,23 @@
+{
+  "id": "daru-cavalier-corpus-m676",
+  "description": "M6 corpus — Daru Cavalier; in-hand parse.",
+  "seed": 63126,
+  "cards": {
+    "Daru Cavalier": "Name:Daru Cavalier\nManaCost:3 W\nTypes:Creature Human Soldier\nPT:2/2\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a card named Daru Cavalier, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedDaru Cavalier | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Name$Daru Cavalier\nOracle:First strike\\nWhen Daru Cavalier enters, you may search your library for a card named Daru Cavalier, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daru Cavalier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

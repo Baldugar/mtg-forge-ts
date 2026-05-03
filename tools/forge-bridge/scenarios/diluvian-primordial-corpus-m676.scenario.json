@@ -1,0 +1,23 @@
+{
+  "id": "diluvian-primordial-corpus-m676",
+  "description": "M6 corpus — Diluvian Primordial; in-hand parse.",
+  "seed": 63617,
+  "cards": {
+    "Diluvian Primordial": "Name:Diluvian Primordial\nManaCost:5 U U\nTypes:Creature Avatar\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ CastEach | TriggerDescription$ When CARDNAME enters, for each opponent, you may cast up to one target instant or sorcery card from that player's graveyard without paying its mana cost. If a spell cast this way would be put into a graveyard this turn, exile it instead.\nSVar:CastEach:DB$ Play | ValidTgts$ Instant.OppCtrl,Sorcery.OppCtrl | TgtZone$ Graveyard | TgtPrompt$ Select target instant or sorcery card in each opponent's graveyard | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | Amount$ All | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nSVar:OneEach:PlayerCountOpponents$Amount\nOracle:Flying\\nWhen Diluvian Primordial enters, for each opponent, you may cast up to one target instant or sorcery card from that player's graveyard without paying its mana cost. If a spell cast this way would be put into a graveyard this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diluvian Primordial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flawless-forgery-corpus-m676",
+  "description": "M6 corpus — Flawless Forgery; in-hand parse.",
+  "seed": 65473,
+  "cards": {
+    "Flawless Forgery": "Name:Flawless Forgery\nManaCost:3 U U\nTypes:Sorcery\nK:Casualty:3\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Instant.OppOwn,Sorcery.OppOwn | RememberChanged$ True | TgtPrompt$ Choose target instant or sorcery card from an opponent's graveyard | SubAbility$ DBPlay | SpellDescription$ Exile target instant or sorcery card from an opponent's graveyard.\nSVar:DBPlay:DB$ Play | Valid$ Card.IsRemembered+ExiledWithSource | ValidSA$ Spell | ValidZone$ Exile | Amount$ All | WithoutManaCost$ True | Optional$ True | CopyCard$ True | SubAbility$ DBCleanup | SpellDescription$ Copy that card. You may cast the copy without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidGraveyard Instant.OppOwn+cmcGE4,Sorcery.OppOwn+cmcGE4\nSVar:NeedsToPlayVar:X GE1\nAI:RemoveDeck:Random\nOracle:Casualty 3 (As you cast this spell, you may sacrifice a creature with power 3 or greater. When you do, copy this spell and you may choose a new target for the copy.)\\nExile target instant or sorcery card from an opponent's graveyard. Copy that card. You may cast the copy without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flawless Forgery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

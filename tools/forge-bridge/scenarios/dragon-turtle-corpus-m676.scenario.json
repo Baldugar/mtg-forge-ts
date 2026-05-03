@@ -1,0 +1,23 @@
+{
+  "id": "dragon-turtle-corpus-m676",
+  "description": "M6 corpus — Dragon Turtle; in-hand parse.",
+  "seed": 63909,
+  "cards": {
+    "Dragon Turtle": "Name:Dragon Turtle\nManaCost:1 U U\nTypes:Creature Dragon Turtle\nPT:3/5\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ Drag Below — When CARDNAME enters, tap it and up to one target creature an opponent controls. They don't untap during their controllers' next untap steps.\nSVar:TrigTap:DB$ Tap | Defined$ Self | RememberTapped$ True | SubAbility$ DBTap\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select up to one target creature an opponent controls | TargetMin$ 0 | TargetMax$ 1 | AlwaysRemember$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flash\\nDrag Below — When Dragon Turtle enters, tap it and up to one target creature an opponent controls. They don't untap during their controllers' next untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Turtle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cease-fire-corpus-m676",
+  "description": "M6 corpus — Cease-Fire; in-hand parse.",
+  "seed": 61847,
+  "cards": {
+    "Cease-Fire": "Name:Cease-Fire\nManaCost:2 W\nTypes:Instant\nA:SP$ Effect | ValidTgts$ Player | StaticAbilities$ STCantBeCast | RememberObjects$ Targeted | AILogic$ BeginningOfOppTurn | SubAbility$ DBDraw | SpellDescription$ Target player can't cast creature spells this turn.\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Creature | Caster$ Player.IsRemembered | Description$ Target player can't cast creature spells this turn.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:Target player can't cast creature spells this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cease-Fire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dictate-of-the-twin-gods-corpus-m676",
+  "description": "M6 corpus — Dictate of the Twin Gods; ETB-on-bf.",
+  "seed": 63609,
+  "cards": {
+    "Dictate of the Twin Gods": "Name:Dictate of the Twin Gods\nManaCost:3 R R\nTypes:Enchantment\nK:Flash\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card,Emblem | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:Flash\\nIf a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dictate of the Twin Gods"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

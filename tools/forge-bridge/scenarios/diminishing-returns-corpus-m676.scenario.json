@@ -1,0 +1,23 @@
+{
+  "id": "diminishing-returns-corpus-m676",
+  "description": "M6 corpus — Diminishing Returns; in-hand parse.",
+  "seed": 63624,
+  "cards": {
+    "Diminishing Returns": "Name:Diminishing Returns\nManaCost:2 U U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Graveyard,Hand | Destination$ Library | Shuffle$ True | SubAbility$ DBExile | UseAllOriginZones$ True | SpellDescription$ Each player shuffles their hand and graveyard into their library.\nSVar:DBExile:DB$ Dig | Defined$ You | DigNum$ 10 | ChangeNum$ All | DestinationZone$ Exile | SubAbility$ DBDraw | StackDescription$ {p:You} exiles the top ten cards of their library. | SpellDescription$ You exile the top ten cards of your library.\nSVar:DBDraw:DB$ Draw | Defined$ Player | NumCards$ 7 | Upto$ True | AILogic$ OptionalDraw | StackDescription$ SpellDescription | SpellDescription$ Then each player draws up to seven cards.\nAI:RemoveDeck:All\nOracle:Each player shuffles their hand and graveyard into their library. You exile the top ten cards of your library. Then each player draws up to seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diminishing Returns"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

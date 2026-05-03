@@ -1,0 +1,23 @@
+{
+  "id": "draconic-muralists-corpus-m676",
+  "description": "M6 corpus — Draconic Muralists; in-hand parse.",
+  "seed": 63877,
+  "cards": {
+    "Draconic Muralists": "Name:Draconic Muralists\nManaCost:3 G\nTypes:Creature Dragon Bard\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME dies, you may search your library for a Dragon card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Dragon | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckNeeds:Type$Dragon\nOracle:When Draconic Muralists dies, you may search your library for a Dragon card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draconic Muralists"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

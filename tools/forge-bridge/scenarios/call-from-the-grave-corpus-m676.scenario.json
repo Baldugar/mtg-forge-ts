@@ -1,0 +1,23 @@
+{
+  "id": "call-from-the-grave-corpus-m676",
+  "description": "M6 corpus — Call from the Grave; in-hand parse.",
+  "seed": 61611,
+  "cards": {
+    "Call from the Grave": "Name:Call from the Grave\nManaCost:2 B\nTypes:Sorcery\nA:SP$ ChangeZone | ChangeType$ Creature | ChangeNum$ 1 | Hidden$ True | Origin$ Graveyard | Destination$ Battlefield | AtRandom$ True | GainControl$ True | RememberChanged$ True | SubAbility$ DBDealDamage | StackDescription$ SpellDescription | SpellDescription$ Put a random creature from a random graveyard into play under your control. CARDNAME deals to you an amount of damage equal to that creature's casting cost.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ X | Defined$ You | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:Put a random creature from a random graveyard into play under your control. Call from the Grave deals to you an amount of damage equal to that creature's casting cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Call from the Grave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "captive-audience-corpus-m676",
+  "description": "M6 corpus — Captive Audience; in-hand parse.",
+  "seed": 61716,
+  "cards": {
+    "Captive Audience": "Name:Captive Audience\nManaCost:5 B R\nTypes:Enchantment\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ DBChooseOpp | Layer$ Control | Description$ CARDNAME enters under the control of an opponent of your choice.\nSVar:DBChooseOpp:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent to give control to | AILogic$ Curse | SubAbility$ MoveToPlay\nSVar:MoveToPlay:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | GainControl$ ChosenPlayer\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ LifePact,DiscardPact,MakeZombies | ChoiceRestriction$ ThisGame\nSVar:LifePact:DB$ SetLife | Defined$ You | LifeAmount$ 4 | SpellDescription$ Your life total becomes 4.\nSVar:DiscardPact:DB$ Discard | Defined$ You | Mode$ Hand | SpellDescription$ Discard your hand.\nSVar:MakeZombies:DB$ Token | TokenAmount$ 5 | TokenScript$ b_2_2_zombie | TokenOwner$ Opponent | SpellDescription$ Each opponent creates five 2/2 black Zombie creature tokens.\nSVar:SacMe:6\nAI:RemoveDeck:Random\nDeckHas:Ability$Token\nOracle:Captive Audience enters under the control of an opponent of your choice.\\nAt the beginning of your upkeep, choose one that hasn't been chosen —\\n• Your life total becomes 4.\\n• Discard your hand.\\n• Each opponent creates five 2/2 black Zombie creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captive Audience"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

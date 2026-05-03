@@ -1,0 +1,23 @@
+{
+  "id": "elite-instructor-corpus-m676",
+  "description": "M6 corpus — Elite Instructor; in-hand parse.",
+  "seed": 64430,
+  "cards": {
+    "Elite Instructor": "Name:Elite Instructor\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nDeckHas:Ability$Discard\nOracle:When Elite Instructor enters, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elite Instructor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

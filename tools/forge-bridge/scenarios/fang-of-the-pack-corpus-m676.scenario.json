@@ -1,0 +1,23 @@
+{
+  "id": "fang-of-the-pack-corpus-m676",
+  "description": "M6 corpus — Fang of the Pack; in-hand parse.",
+  "seed": 65062,
+  "cards": {
+    "Fang of the Pack": "Name:Fang of the Pack\nManaCost:5 G\nTypes:Creature Wolf\nPT:5/3\nK:Melee\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, another target creature you control gains melee until end of turn. (If a creature has multiple instances of melee, each triggers separately.)\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | KW$ Melee\nSVar:PlayMain1:TRUE\nOracle:Melee (Whenever this creature attacks, it gets +1/+1 until end of turn for each opponent you attacked this combat.)\\nAt the beginning of combat on your turn, another target creature you control gains melee until end of turn. (If a creature has multiple instances of melee, each triggers separately.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fang of the Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

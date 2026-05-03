@@ -1,0 +1,23 @@
+{
+  "id": "geistlight-snare-corpus-m676",
+  "description": "M6 corpus — Geistlight Snare; in-hand parse.",
+  "seed": 66013,
+  "cards": {
+    "Geistlight Snare": "Name:Geistlight Snare\nManaCost:2 U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Spirit.YouCtrl | Description$ This spell costs {1} less to cast if you control a Spirit. It also costs {1} less to cast if you control an enchantment.\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Enchantment.YouCtrl | Secondary$ True\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Select target spell | UnlessCost$ 3 | SpellDescription$ Counter target spell unless its controller pays {3}.\nDeckHints:Type$Spirit|Enchantment\nOracle:This spell costs {1} less to cast if you control a Spirit. It also costs {1} less to cast if you control an enchantment.\\nCounter target spell unless its controller pays {3}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geistlight Snare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

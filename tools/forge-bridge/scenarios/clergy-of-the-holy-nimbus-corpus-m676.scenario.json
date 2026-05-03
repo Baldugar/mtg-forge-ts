@@ -1,0 +1,25 @@
+{
+  "id": "clergy-of-the-holy-nimbus-corpus-m676",
+  "description": "M6 corpus — Clergy of the Holy Nimbus; ETB-on-bf.",
+  "seed": 62226,
+  "cards": {
+    "Clergy of the Holy Nimbus": "Name:Clergy of the Holy Nimbus\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nR:Event$ Destroy | ActiveZones$ Battlefield | ValidCard$ Card.Self | Regeneration$ True | ReplaceWith$ DBRegeneration | Description$ If CARDNAME would be destroyed, regenerate it.\nSVar:DBRegeneration:DB$ Regeneration | Defined$ ReplacedCard\nA:AB$ Effect | Cost$ 1 | Activator$ Player.Opponent | RememberObjects$ Self | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | AILogic$ CantRegenerate | SpellDescription$ CARDNAME can't be regenerated this turn. Only your opponents may activate this ability.\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nOracle:If Clergy of the Holy Nimbus would be destroyed, regenerate it.\\n{1}: Clergy of the Holy Nimbus can't be regenerated this turn. Only your opponents may activate this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Clergy of the Holy Nimbus"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

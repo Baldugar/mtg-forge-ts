@@ -1,0 +1,23 @@
+{
+  "id": "canyon-crab-corpus-m676",
+  "description": "M6 corpus — Canyon Crab; in-hand parse.",
+  "seed": 61682,
+  "cards": {
+    "Canyon Crab": "Name:Canyon Crab\nManaCost:1 U\nTypes:Creature Crab\nPT:0/5\nA:AB$ Pump | Cost$ 1 U | Defined$ Self | NumAtt$ +2 | NumDef$ -2 | SpellDescription$ CARDNAME gets +2/-2 until end of turn.\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ LT1 | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if you haven't cast a spell from your hand this turn, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nSVar:X:Count$ThisTurnCast_Card.wasCastFromYourHandByYou\nOracle:{1}{U}: Canyon Crab gets +2/-2 until end of turn.\\nAt the beginning of your end step, if you haven't cast a spell from your hand this turn, draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canyon Crab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

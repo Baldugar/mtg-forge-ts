@@ -1,0 +1,23 @@
+{
+  "id": "doomsday-specter-corpus-m676",
+  "description": "M6 corpus — Doomsday Specter; in-hand parse.",
+  "seed": 63833,
+  "cards": {
+    "Doomsday Specter": "Name:Doomsday Specter\nManaCost:2 U B\nTypes:Creature Specter\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a blue or black creature you control to its owner's hand.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, look at that player's hand and choose a card from it. The player discards that card.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Black+YouCtrl,Creature.Blue+YouCtrl | AILogic$ NeverBounceItself\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ RevealYouChoose\nSVar:NeedsToPlay:Creature.Black+YouCtrl+cmcLE3,Creature.Blue+YouCtrl+cmcLE3\nOracle:Flying\\nWhen Doomsday Specter enters, return a blue or black creature you control to its owner's hand.\\nWhenever Doomsday Specter deals combat damage to a player, look at that player's hand and choose a card from it. The player discards that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomsday Specter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

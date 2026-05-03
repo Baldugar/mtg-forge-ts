@@ -1,0 +1,23 @@
+{
+  "id": "dragon-mage-corpus-m676",
+  "description": "M6 corpus — Dragon Mage; in-hand parse.",
+  "seed": 63897,
+  "cards": {
+    "Dragon Mage": "Name:Dragon Mage\nManaCost:5 R R\nTypes:Creature Dragon Wizard\nPT:5/5\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDiscardDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, each player discards their hand, then draws seven cards.\nSVar:TrigDiscardDraw:DB$ Discard | Mode$ Hand | Defined$ Player | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player | NumCards$ 7\nOracle:Flying\\nWhenever Dragon Mage deals combat damage to a player, each player discards their hand, then draws seven cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

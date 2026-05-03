@@ -1,0 +1,23 @@
+{
+  "id": "elkin-lair-corpus-m676",
+  "description": "M6 corpus — Elkin Lair; in-hand parse.",
+  "seed": 64436,
+  "cards": {
+    "Elkin Lair": "Name:Elkin Lair\nManaCost:3 R\nTypes:World Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of each player's upkeep, that player exiles a card at random from their hand. The player may play that card this turn. At the beginning of the next end step, if the player hasn't played the card, they put it into their graveyard.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | ChangeType$ Card | DefinedPlayer$ TriggeredPlayer | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | AtRandom$ True | RememberChanged$ True | SubAbility$ ElkinEffect\nSVar:ElkinEffect:DB$ Effect | StaticAbilities$ ElkinPlay | Duration$ Permanent | ExileOnMoved$ Exile | RememberObjects$ RememberedCard | Triggers$ TrigReturn,TrigDuration | SubAbility$ DBResetSVar\nSVar:ElkinPlay:Mode$ Continuous | Affected$ Card.IsRemembered | MayPlay$ True | MayPlayPlayer$ CardOwner | AffectedZone$ Exile | CheckSVar$ ElkinSVar | Description$ The player may play that card this turn.\n# Even though the Effect is \"Permanent\", it's not really permanent\nSVar:DBResetSVar:DB$ StoreSVar | SVar$ ElkinSVar | Type$ Number | Expression$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:ElkinSVar:Number$1\n# Turn off the duration at the beginning of the next turn statically, just in case its somehow still there\nSVar:TrigDuration:Mode$ TurnBegin | ValidPlayer$ Player | Static$ True | TriggerZones$ Command | Execute$ DBDuration\nSVar:DBDuration:DB$ StoreSVar | SVar$ ElkinSVar | Type$ Number | Expression$ 0\n# Return the card as a normal trigger\nSVar:TrigReturn:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Command | Execute$ DBReturn | OneOff$ True | TriggerDescription$ At the beginning of the next end step, if the player hasn't played the card, they put it into their graveyard.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Graveyard\nAI:RemoveDeck:Random\nOracle:At the beginning of each player's upkeep, that player exiles a card at random from their hand. The player may play that card this turn. At the beginning of the next end step, if the player hasn't played the card, they put it into their graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elkin Lair"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

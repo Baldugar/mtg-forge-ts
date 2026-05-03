@@ -1,0 +1,23 @@
+{
+  "id": "omer-marshal-of-rohan-corpus-m676",
+  "description": "M6 corpus — Éomer, Marshal of Rohan; in-hand parse.",
+  "seed": 64662,
+  "cards": {
+    "Éomer, Marshal of Rohan": "Name:Éomer, Marshal of Rohan\nManaCost:2 R R\nTypes:Legendary Creature Human Knight\nPT:4/4\nK:Haste\nT:Mode$ ChangesZoneAll | Origin$ Battlefield | Destination$ Graveyard | ValidCards$ Creature.attacking+Legendary+Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigUntapAll | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more other attacking legendary creatures you control die, untap all creatures you control. After this phase, there is an additional combat phase. This ability triggers only once each turn.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nDeckHints:Type$Legendary\nOracle:Haste\\nWhenever one or more other attacking legendary creatures you control die, untap all creatures you control. After this phase, there is an additional combat phase. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Éomer, Marshal of Rohan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

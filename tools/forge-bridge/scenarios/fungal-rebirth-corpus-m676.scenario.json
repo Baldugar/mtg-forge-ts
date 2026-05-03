@@ -1,0 +1,23 @@
+{
+  "id": "fungal-rebirth-corpus-m676",
+  "description": "M6 corpus — Fungal Rebirth; in-hand parse.",
+  "seed": 65835,
+  "cards": {
+    "Fungal Rebirth": "Name:Fungal Rebirth\nManaCost:2 G\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target permanent card in your graveyard | ValidTgts$ Permanent.YouOwn | SubAbility$ DBToken | StackDescription$ SpellDescription | SpellDescription$ Return target permanent card from your graveyard to your hand. If a creature died this turn, create two 1/1 green Saproling creature tokens.\nSVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ g_1_1_saproling | TokenOwner$ You | ConditionCheckSVar$ Morbid | ConditionSVarCompare$ GE1\nSVar:Morbid:Count$Morbid.1.0\nDeckHints:Type$Fungus\nDeckHas:Ability$Token\nOracle:Return target permanent card from your graveyard to your hand. If a creature died this turn, create two 1/1 green Saproling creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fungal Rebirth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

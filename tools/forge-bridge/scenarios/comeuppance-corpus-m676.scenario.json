@@ -1,0 +1,23 @@
+{
+  "id": "comeuppance-corpus-m676",
+  "description": "M6 corpus — Comeuppance; in-hand parse.",
+  "seed": 62408,
+  "cards": {
+    "Comeuppance": "Name:Comeuppance\nManaCost:3 W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RPrevent | SpellDescription$ Prevent all damage that would be dealt to you and planeswalkers you control this turn by sources you don't control. If damage from a creature source is prevented this way, CARDNAME deals that much damage to that creature. If damage from a noncreature source is prevented this way, CARDNAME deals that much damage to the source's controller.\nSVar:RPrevent:Event$ DamageDone | ValidSource$ Card.YouDontCtrl,Emblem.YouDontCtrl | ValidTarget$ You,Planeswalker.YouCtrl | ReplaceWith$ DamageCreature | PreventionEffect$ True | ExecuteMode$ PerSource | Description$ Prevent all damage that would be dealt to you and planeswalkers you control this turn by sources you don't control. If damage from a creature source is prevented this way, CARDNAME deals that much damage to that creature. If damage from a noncreature source is prevented this way, CARDNAME deals that much damage to the source's controller.\nSVar:DamageCreature:DB$ DealDamage | Defined$ ReplacedSource | DamageSource$ EffectSource | NumDmg$ X | ConditionDefined$ ReplacedSource | ConditionPresent$ Card.Creature | ConditionCompare$ GE1 | SubAbility$ DamageNonCreature\nSVar:DamageNonCreature:DB$ DealDamage | Defined$ ReplacedSourceController | DamageSource$ EffectSource | NumDmg$ X | ConditionDefined$ ReplacedSource | ConditionPresent$ Card.nonCreature | ConditionCompare$ GE1\nSVar:X:ReplaceCount$DamageAmount\nOracle:Prevent all damage that would be dealt to you and planeswalkers you control this turn by sources you don't control. If damage from a creature source is prevented this way, Comeuppance deals that much damage to that creature. If damage from a noncreature source is prevented this way, Comeuppance deals that much damage to the source's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Comeuppance"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

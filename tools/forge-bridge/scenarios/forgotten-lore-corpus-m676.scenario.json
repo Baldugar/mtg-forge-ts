@@ -1,0 +1,23 @@
+{
+  "id": "forgotten-lore-corpus-m676",
+  "description": "M6 corpus — Forgotten Lore; in-hand parse.",
+  "seed": 65651,
+  "cards": {
+    "Forgotten Lore": "Name:Forgotten Lore\nManaCost:G\nTypes:Sorcery\nA:SP$ ChooseCard | ValidTgts$ Opponent | ChoiceZone$ Graveyard | Choices$ Card.YouOwn | AILogic$ WorstCard | Mandatory$ True | RememberChosen$ True | SubAbility$ DBRepeat | SpellDescription$ Target opponent chooses a card in your graveyard. You may pay {G}. If you do, repeat this process except that opponent can't choose a card already chosen for CARDNAME. Then put the last chosen card into your hand.\nSVar:DBRepeat:DB$ Repeat | RepeatSubAbility$ DBChooseAgain | ConditionCheckSVar$ ChoiceNum | SubAbility$ DBMoveChosen | RepeatCheckSVar$ CheckRepeat | RepeatSVarCompare$ GT0 | StackDescription$ You may pay G. If you do, repeat this process except that opponent can't choose a card already chosen for CARDNAME.\nSVar:DBChooseAgain:DB$ ChooseCard | Defined$ ParentTarget | ChoiceZone$ Graveyard | Choices$ Card.YouOwn+!IsRemembered | Mandatory$ True | AILogic$ WorstCard | RememberChosen$ True | UnlessCost$ G | UnlessPayer$ You | UnlessSwitched$ True | UnlessResolveSubs$ WhenNotPaid | SubAbility$ DBStoreSVar | ShowCurrentCard$ ChosenCard\nSVar:DBStoreSVar:DB$ StoreSVar | SVar$ CheckNotPaid | Type$ Number | Expression$ 0\nSVar:DBMoveChosen:DB$ ChangeZone | Defined$ ChosenCard | Origin$ Graveyard | Destination$ Hand | SubAbility$ DBReset\nSVar:DBReset:DB$ StoreSVar | SVar$ CheckNotPaid | Type$ Number | Expression$ 1\nSVar:ChoiceNum:Count$ValidGraveyard Card.YouOwn+!IsRemembered\nSVar:CheckNotPaid:Number$1\nSVar:CheckRepeat:SVar$ChoiceNum/Times.CheckNotPaid\nAI:RemoveDeck:All\nOracle:Target opponent chooses a card in your graveyard. You may pay {G}. If you do, repeat this process except that opponent can't choose a card already chosen for Forgotten Lore. Then put the last chosen card into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forgotten Lore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

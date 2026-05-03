@@ -1,0 +1,23 @@
+{
+  "id": "cold-eyed-selkie-corpus-m676",
+  "description": "M6 corpus — Cold-Eyed Selkie; in-hand parse.",
+  "seed": 62359,
+  "cards": {
+    "Cold-Eyed Selkie": "Name:Cold-Eyed Selkie\nManaCost:1 GU GU\nTypes:Creature Merfolk Rogue\nPT:1/1\nK:Landwalk:Island\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigDraw | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may draw that many cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X | OptionalDecider$ You\nSVar:X:TriggerCount$DamageAmount\nOracle:Islandwalk (This creature can't be blocked as long as defending player controls an Island.)\\nWhenever Cold-Eyed Selkie deals combat damage to a player, you may draw that many cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cold-Eyed Selkie"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

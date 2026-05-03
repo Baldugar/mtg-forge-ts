@@ -1,0 +1,23 @@
+{
+  "id": "charnelhoard-wurm-corpus-m676",
+  "description": "M6 corpus — Charnelhoard Wurm; in-hand parse.",
+  "seed": 62027,
+  "cards": {
+    "Charnelhoard Wurm": "Name:Charnelhoard Wurm\nManaCost:4 B R G\nTypes:Creature Wurm\nPT:6/6\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | OptionalDecider$ You | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, you may return target card from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Card.YouCtrl\nOracle:Trample\\nWhenever Charnelhoard Wurm deals damage to an opponent, you may return target card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charnelhoard Wurm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

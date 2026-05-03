@@ -1,0 +1,23 @@
+{
+  "id": "coalition-victory-corpus-m676",
+  "description": "M6 corpus — Coalition Victory; in-hand parse.",
+  "seed": 62320,
+  "cards": {
+    "Coalition Victory": "Name:Coalition Victory\nManaCost:3 W U B R G\nTypes:Sorcery\nA:SP$ WinsGame | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ10 | SpellDescription$ You win the game if you control a land of each basic land type and a creature of each color.\nSVar:Z:Count$Valid Creature.YouCtrl$Colors\nSVar:Y:Count$Domain\nSVar:X:SVar$Y/Plus.Z\nAI:RemoveDeck:Random\nOracle:You win the game if you control a land of each basic land type and a creature of each color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coalition Victory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

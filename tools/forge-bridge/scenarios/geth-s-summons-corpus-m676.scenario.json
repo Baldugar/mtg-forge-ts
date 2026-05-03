@@ -1,0 +1,23 @@
+{
+  "id": "geth-s-summons-corpus-m676",
+  "description": "M6 corpus — Geth's Summons; in-hand parse.",
+  "seed": 66076,
+  "cards": {
+    "Geth's Summons": "Name:Geth's Summons\nManaCost:2 B B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Choose up to one creature card in your graveyard | SubAbility$ DBReturnCorrupted | ValidTgts$ Creature.YouCtrl | SpellDescription$ Return up to one target creature card from your graveyard to the battlefield. Corrupted — For each opponent who has three or more poison counters as you cast this spell, put up to one target creature card from that player's graveyard onto the battlefield under your control.\nSVar:DBReturnCorrupted:DB$ ChangeZone | Origin$ Graveyard | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | TgtZone$ Graveyard | GainControl$ True | Destination$ Battlefield | TgtPrompt$ Choose target card in an opponent's graveyard | ValidTgts$ Creature.RememberedPlayerCtrl,Creature.ControlledBy Opponent.IsCorrupted | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ SpellCast | ValidCard$ Card.Self | Static$ True | Execute$ CountCorruptedPlayers\nSVar:CountCorruptedPlayers:DB$ Pump | RememberObjects$ Opponent.IsCorrupted\nT:Mode$ ChangesZone | Origin$ Stack | Destination$ Any | ValidCard$ Card.Self | Static$ True | Execute$ DBCleanup\nSVar:OneEach:PlayerCountOpponents$HasPropertyIsCorrupted\nDeckHints:Ability$Graveyard & Keyword$Toxic|Poisonous|Infect\nOracle:Return up to one target creature card from your graveyard to the battlefield.\\nCorrupted — For each opponent who has three or more poison counters as you cast this spell, put up to one target creature card from that player's graveyard onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geth's Summons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

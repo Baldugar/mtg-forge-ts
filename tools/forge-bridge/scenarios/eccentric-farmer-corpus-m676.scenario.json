@@ -1,0 +1,23 @@
+{
+  "id": "eccentric-farmer-corpus-m676",
+  "description": "M6 corpus — Eccentric Farmer; in-hand parse.",
+  "seed": 64284,
+  "cards": {
+    "Eccentric Farmer": "Name:Eccentric Farmer\nManaCost:2 G\nTypes:Creature Human Peasant\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill three cards, then you may return a land card from your graveyard to your hand. (To mill a card, put the top card of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Land.YouOwn | Hidden$ True | Optional$ True\nDeckHas:Ability$Graveyard\nOracle:When Eccentric Farmer enters, mill three cards, then you may return a land card from your graveyard to your hand. (To mill a card, put the top card of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eccentric Farmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

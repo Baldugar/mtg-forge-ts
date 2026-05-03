@@ -1,0 +1,23 @@
+{
+  "id": "embodiment-of-insight-corpus-m676",
+  "description": "M6 corpus — Embodiment of Insight; in-hand parse.",
+  "seed": 64507,
+  "cards": {
+    "Embodiment of Insight": "Name:Embodiment of Insight\nManaCost:4 G\nTypes:Creature Elemental\nPT:4/4\nK:Vigilance\nS:Mode$ Continuous | Affected$ Creature.Land+YouCtrl | AddKeyword$ Vigilance | Description$ Land creatures you control have vigilance.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigAnimate | OptionalDecider$ You | TriggerDescription$ Landfall — Whenever a land you control enters, you may have target land you control becomes a 3/3 Elemental creature with haste until end of turn. It's still a land.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Land.YouCtrl | TgtPrompt$ Select target land you control | Power$ 3 | Toughness$ 3 | Types$ Creature,Elemental | Keywords$ Haste\nOracle:Vigilance\\nLand creatures you control have vigilance.\\nLandfall — Whenever a land you control enters, you may have target land you control become a 3/3 Elemental creature with haste until end of turn. It's still a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Embodiment of Insight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

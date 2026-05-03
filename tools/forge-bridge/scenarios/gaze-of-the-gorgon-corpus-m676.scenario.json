@@ -1,0 +1,23 @@
+{
+  "id": "gaze-of-the-gorgon-corpus-m676",
+  "description": "M6 corpus — Gaze of the Gorgon; in-hand parse.",
+  "seed": 65997,
+  "cards": {
+    "Gaze of the Gorgon": "Name:Gaze of the Gorgon\nManaCost:3 BG\nTypes:Instant\nA:SP$ Regenerate | ValidTgts$ Creature | SubAbility$ TrigGorgonEffect | SpellDescription$ Regenerate target creature. At this turn's next end of combat, destroy all creatures that blocked or were blocked by that creature this turn.\nSVar:TrigGorgonEffect:DB$ DelayedTrigger | Mode$ Phase | Phase$ EndCombat | ThisTurn$ True | RememberObjects$ Targeted | Execute$ TrigRem | TriggerDescription$ At end of combat, destroy all creatures that blocked or were blocked by that creature this turn.\nSVar:TrigRem:DB$ Pump | RememberObjects$ DelayTriggerRemembered | SubAbility$ TrigGorgonDestroy\nSVar:TrigGorgonDestroy:DB$ DestroyAll | ValidCards$ Creature.blockedRemembered,Creature.blockedByRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:({B/G} can be paid with either {B} or {G}.)\\nRegenerate target creature. At this turn's next end of combat, destroy all creatures that blocked or were blocked by it this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gaze of the Gorgon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "energy-field-corpus-m676",
+  "description": "M6 corpus — Energy Field; in-hand parse.",
+  "seed": 64597,
+  "cards": {
+    "Energy Field": "Name:Energy Field\nManaCost:1 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Graveyard | ValidCard$ Card.!token+YouOwn+Other | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ When a card is put into your graveyard from anywhere, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ You | ValidSource$ Card.YouDontCtrl,Emblem.YouDontCtrl | Description$ Prevent all damage that would be dealt to you by sources you don't control.\nSVar:NonStackingEffect:True\n# NOTE: The AI will not play around this effect, so it's only good in properly designed decks that circumvent the necessity to worry about the detrimental effect.\nAI:RemoveDeck:Random\nOracle:Prevent all damage that would be dealt to you by sources you don't control.\\nWhen a card is put into your graveyard from anywhere, sacrifice Energy Field.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Energy Field"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

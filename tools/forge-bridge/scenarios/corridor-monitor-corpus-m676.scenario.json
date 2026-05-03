@@ -1,0 +1,23 @@
+{
+  "id": "corridor-monitor-corpus-m676",
+  "description": "M6 corpus — Corridor Monitor; in-hand parse.",
+  "seed": 62600,
+  "cards": {
+    "Corridor Monitor": "Name:Corridor Monitor\nManaCost:1 U\nTypes:Artifact Creature Construct\nPT:1/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap target artifact or creature you control.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Artifact.YouCtrl,Creature.YouCtrl | TgtPrompt$ Choose target artifact or creature you control.\nOracle:When Corridor Monitor enters, untap target artifact or creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corridor Monitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

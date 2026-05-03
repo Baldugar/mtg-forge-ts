@@ -1,0 +1,23 @@
+{
+  "id": "gargoyle-flock-corpus-m676",
+  "description": "M6 corpus — Gargoyle Flock; in-hand parse.",
+  "seed": 65946,
+  "cards": {
+    "Gargoyle Flock": "Name:Gargoyle Flock\nManaCost:2 G U\nTypes:Creature Tyranid Gargoyle\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigToken | TriggerDescription$ Skyswarm — At the beginning of your end step, if a creature entered the battlefield under your control this turn, create a 1/1 blue Tyranid Gargoyle creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_tyranid_gargoyle_flying | TokenOwner$ You\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.YouCtrl\nDeckHas:Ability$Token\nOracle:Flying\\nSkyswarm — At the beginning of your end step, if a creature entered the battlefield under your control this turn, create a 1/1 blue Tyranid Gargoyle creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gargoyle Flock"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

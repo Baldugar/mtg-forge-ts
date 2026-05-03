@@ -1,0 +1,23 @@
+{
+  "id": "colossal-chorus-corpus-m676",
+  "description": "M6 corpus — Colossal Chorus; in-hand parse.",
+  "seed": 62382,
+  "cards": {
+    "Colossal Chorus": "Name:Colossal Chorus\nManaCost:6 G G\nTypes:Sorcery Chorus\nK:Starting intensity:2\nA:SP$ MakeCard | Conjure$ True | Name$ Colossal Dreadmaw | Amount$ X | Zone$ Battlefield | SubAbility$ DBIntensify | SpellDescription$ Conjure X cards named Colossal Dreadmaw onto the battlefield, where X is this spell's intensity.\nSVar:DBIntensify:DB$ Intensify | AllDefined$ Card.YouOwn+Chorus | DefinedDesc$ all Chorus cards you own | SpellDescription$ All Chorus cards you own intensify by 1.\nSVar:X:Count$Intensity\nDeckHints:Type$Chorus\nDeckHas:Type$Dinosaur\nOracle:Starting intensity 2\\nConjure X cards named Colossal Dreadmaw onto the battlefield, where X is this spell's intensity.\\nAll Chorus cards you own intensify by 1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colossal Chorus"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

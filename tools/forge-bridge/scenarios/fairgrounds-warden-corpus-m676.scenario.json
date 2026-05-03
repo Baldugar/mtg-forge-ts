@@ -1,0 +1,23 @@
+{
+  "id": "fairgrounds-warden-corpus-m676",
+  "description": "M6 corpus — Fairgrounds Warden; in-hand parse.",
+  "seed": 64999,
+  "cards": {
+    "Fairgrounds Warden": "Name:Fairgrounds Warden\nManaCost:2 W\nTypes:Creature Dwarf Soldier\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nOracle:When Fairgrounds Warden enters, exile target creature an opponent controls until Fairgrounds Warden leaves the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fairgrounds Warden"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

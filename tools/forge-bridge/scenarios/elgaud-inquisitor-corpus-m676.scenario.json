@@ -1,0 +1,23 @@
+{
+  "id": "elgaud-inquisitor-corpus-m676",
+  "description": "M6 corpus — Elgaud Inquisitor; in-hand parse.",
+  "seed": 64421,
+  "cards": {
+    "Elgaud Inquisitor": "Name:Elgaud Inquisitor\nManaCost:3 W\nTypes:Creature Human Cleric\nPT:2/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:SacMe:1\nDeckHas:Ability$Token|LifeGain\nOracle:Lifelink (Damage dealt by this creature also causes you to gain that much life.)\\nWhen Elgaud Inquisitor dies, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elgaud Inquisitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

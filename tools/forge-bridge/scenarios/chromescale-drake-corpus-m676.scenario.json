@@ -1,0 +1,23 @@
+{
+  "id": "chromescale-drake-corpus-m676",
+  "description": "M6 corpus — Chromescale Drake; in-hand parse.",
+  "seed": 62114,
+  "cards": {
+    "Chromescale Drake": "Name:Chromescale Drake\nManaCost:6 U U U\nTypes:Creature Drake\nPT:3/4\nK:Affinity:Artifact\nK:Flying\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, reveal the top three cards of your library. Put all artifact cards revealed this way into your hand and the rest into your graveyard.\nSVar:TrigDig:DB$ Dig | DigNum$ 3 | Reveal$ True | ChangeNum$ All | ChangeValid$ Artifact | DestinationZone2$ Graveyard\nAI:RemoveDeck:Random\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nFlying\\nWhen Chromescale Drake enters, reveal the top three cards of your library. Put all artifact cards revealed this way into your hand and the rest into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chromescale Drake"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

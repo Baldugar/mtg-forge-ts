@@ -1,0 +1,23 @@
+{
+  "id": "eddymurk-crab-corpus-m676",
+  "description": "M6 corpus — Eddymurk Crab; in-hand parse.",
+  "seed": 64310,
+  "cards": {
+    "Eddymurk Crab": "Name:Eddymurk Crab\nManaCost:5 U U\nTypes:Creature Elemental Crab\nPT:5/5\nK:Flash\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ CARDNAME costs {1} less to cast for each instant and sorcery card in your graveyard.\nK:ETBReplacement:Other:LandTapped\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPlayerTurn$ False | SpellDescription$ CARDNAME enters tapped if it's not your turn.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, tap up to two target creatures.\nSVar:TrigTap:DB$ Tap | TargetMin$ 0 | TargetMax$ 2 | TgtPrompt$ Select up to two target creatures | ValidTgts$ Creature\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nDeckHints:Ability$Graveyard\nOracle:Flash\\nThis spell costs {1} less to cast for each instant and sorcery card in your graveyard.\\nEddymurk Crab enters tapped if it's not your turn.\\nWhen Eddymurk Crab enters, tap up to two target creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eddymurk Crab"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

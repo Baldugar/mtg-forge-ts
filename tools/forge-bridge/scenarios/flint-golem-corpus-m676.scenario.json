@@ -1,0 +1,25 @@
+{
+  "id": "flint-golem-corpus-m676",
+  "description": "M6 corpus — Flint Golem; ETB-on-bf.",
+  "seed": 65516,
+  "cards": {
+    "Flint Golem": "Name:Flint Golem\nManaCost:4\nTypes:Artifact Creature Golem\nPT:2/3\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME becomes blocked, defending player mills three cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredDefendingPlayer | NumCards$ 3\nOracle:Whenever Flint Golem becomes blocked, defending player mills three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Flint Golem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fork-in-the-road-corpus-m676",
+  "description": "M6 corpus — Fork in the Road; in-hand parse.",
+  "seed": 65657,
+  "cards": {
+    "Fork in the Road": "Name:Fork in the Road\nManaCost:1 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ChangeNum$ 2 | RememberChanged$ True | Reveal$ True | Shuffle$ False | StackDescription$ SpellDescription | SubAbility$ DBChangeZone1 | SpellDescription$ Search your library for up to two basic land cards and reveal them. Put one into your hand and the other into your graveyard. Then shuffle.\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic+IsRemembered | ChangeNum$ 1 | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to put into your hand | Shuffle$ False | SubAbility$ DBChangeZone2 | StackDescription$ None\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Land.Basic+IsRemembered | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to put into your graveyard | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Ability$Delirium\nDeckHas:Ability$Graveyard\nOracle:Search your library for up to two basic land cards and reveal them. Put one into your hand and the other into your graveyard. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fork in the Road"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

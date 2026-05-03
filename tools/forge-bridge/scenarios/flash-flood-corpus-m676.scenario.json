@@ -1,0 +1,23 @@
+{
+  "id": "flash-flood-corpus-m676",
+  "description": "M6 corpus — Flash Flood; in-hand parse.",
+  "seed": 65463,
+  "cards": {
+    "Flash Flood": "Name:Flash Flood\nManaCost:U\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroy,DBChangeZone\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Permanent.Red | TgtPrompt$ Select target red permanent | SpellDescription$ Destroy target red permanent.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Mountain | TgtPrompt$ Select target Mountain | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target Mountain to its owner's hand.\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Destroy target red permanent.\\n• Return target Mountain to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flash Flood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

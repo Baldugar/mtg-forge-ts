@@ -1,0 +1,23 @@
+{
+  "id": "bubble-snare-corpus-m676",
+  "description": "M6 corpus — Bubble Snare; in-hand parse.",
+  "seed": 61481,
+  "cards": {
+    "Bubble Snare": "Name:Bubble Snare\nManaCost:U\nTypes:Enchantment Aura\nK:Kicker:2 U\nK:Enchant:Creature\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, if it was kicked, tap enchanted creature.\nSVar:TrigTap:DB$ Tap | Defined$ Enchanted\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.AttachedBy | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Enchanted creature doesn't untap during its controller's untap step.\nOracle:Kicker {2}{U} (You may pay an additional {2}{U} as you cast this spell.)\\nEnchant creature\\nWhen Bubble Snare enters, if it was kicked, tap enchanted creature.\\nEnchanted creature doesn't untap during its controller's untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bubble Snare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

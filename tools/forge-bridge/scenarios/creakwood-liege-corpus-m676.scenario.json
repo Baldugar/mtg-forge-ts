@@ -1,0 +1,23 @@
+{
+  "id": "creakwood-liege-corpus-m676",
+  "description": "M6 corpus — Creakwood Liege; in-hand parse.",
+  "seed": 62723,
+  "cards": {
+    "Creakwood Liege": "Name:Creakwood Liege\nManaCost:1 BG BG BG\nTypes:Creature Horror\nPT:2/2\nS:Mode$ Continuous | Affected$ Creature.Green+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other green creatures you control get +1/+1.\nS:Mode$ Continuous | Affected$ Creature.Black+Other+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Other black creatures you control get +1/+1.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, you may create a 1/1 black and green Worm creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ bg_1_1_worm | TokenOwner$ You\nSVar:PlayMain1:TRUE\nOracle:Other black creatures you control get +1/+1.\\nOther green creatures you control get +1/+1.\\nAt the beginning of your upkeep, you may create a 1/1 black and green Worm creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creakwood Liege"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

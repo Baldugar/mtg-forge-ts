@@ -1,0 +1,23 @@
+{
+  "id": "conjurer-s-closet-corpus-m676",
+  "description": "M6 corpus — Conjurer's Closet; in-hand parse.",
+  "seed": 62491,
+  "cards": {
+    "Conjurer's Closet": "Name:Conjurer's Closet\nManaCost:5\nTypes:Artifact\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ ConjurerExile | OptionalDecider$ You | TriggerDescription$ At the beginning of your end step, you may exile target creature you control, then return it to the battlefield under your control.\nSVar:ConjurerExile:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to flicker | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ ConjurerReturn\nSVar:ConjurerReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\n# TODO: Improve the AI to make it bounce its own locked creatures (e.g. Arrest'ed) to remove debuffs.\nAI:RemoveDeck:All\nOracle:At the beginning of your end step, you may exile target creature you control, then return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conjurer's Closet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

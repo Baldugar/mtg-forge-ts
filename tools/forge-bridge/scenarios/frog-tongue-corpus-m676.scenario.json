@@ -1,0 +1,23 @@
+{
+  "id": "frog-tongue-corpus-m676",
+  "description": "M6 corpus — Frog Tongue; in-hand parse.",
+  "seed": 65765,
+  "cards": {
+    "Frog Tongue": "Name:Frog Tongue\nManaCost:G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Reach | Description$ Enchanted creature has reach. (It can block creatures with flying.)\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Enchant creature\\nWhen Frog Tongue enters, draw a card.\\nEnchanted creature has reach. (It can block creatures with flying.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frog Tongue"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

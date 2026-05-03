@@ -1,0 +1,23 @@
+{
+  "id": "flight-of-fancy-corpus-m676",
+  "description": "M6 corpus — Flight of Fancy; in-hand parse.",
+  "seed": 65515,
+  "cards": {
+    "Flight of Fancy": "Name:Flight of Fancy\nManaCost:3 U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Flying | Description$ Enchanted creature has flying.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2\nOracle:Enchant creature\\nWhen Flight of Fancy enters, draw two cards.\\nEnchanted creature has flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flight of Fancy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

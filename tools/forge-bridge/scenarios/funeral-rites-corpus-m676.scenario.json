@@ -1,0 +1,23 @@
+{
+  "id": "funeral-rites-corpus-m676",
+  "description": "M6 corpus — Funeral Rites; in-hand parse.",
+  "seed": 65829,
+  "cards": {
+    "Funeral Rites": "Name:Funeral Rites\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Draw | NumCards$ 2 | SpellDescription$ You draw two cards, lose 2 life, then mill two cards. | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 2 | SubAbility$ TrigMill\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nDeckHints:Ability$Delirium\nDeckHas:Ability$Graveyard\nOracle:You draw two cards, lose 2 life, then mill two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Funeral Rites"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

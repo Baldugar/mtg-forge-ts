@@ -1,0 +1,23 @@
+{
+  "id": "feign-death-corpus-m676",
+  "description": "M6 corpus — Feign Death; in-hand parse.",
+  "seed": 65176,
+  "cards": {
+    "Feign Death": "Name:Feign Death\nManaCost:B\nTypes:Instant\nA:SP$ Animate | Triggers$ DiesTrigger | ValidTgts$ Creature | StackDescription$ Until end of turn, {c:Targeted} gains \"When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\" | SpellDescription$ Until end of turn, target creature gains \"When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\"\nSVar:DiesTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Tapped$ True | Defined$ TriggeredNewCardLKICopy | WithCountersType$ P1P1\nOracle:Until end of turn, target creature gains \"When this creature dies, return it to the battlefield tapped under its owner's control with a +1/+1 counter on it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feign Death"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

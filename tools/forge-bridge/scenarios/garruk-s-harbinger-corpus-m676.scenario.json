@@ -1,0 +1,23 @@
+{
+  "id": "garruk-s-harbinger-corpus-m676",
+  "description": "M6 corpus — Garruk's Harbinger; in-hand parse.",
+  "seed": 65955,
+  "cards": {
+    "Garruk's Harbinger": "Name:Garruk's Harbinger\nManaCost:1 G G\nTypes:Creature Beast\nPT:4/3\nK:Hexproof:Card.Black:black\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player,Planeswalker | Execute$ TrigDig | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player or planeswalker, look at that many cards from the top of your library. You may reveal a creature card or Garruk planeswalker card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ X | ChangeNum$ 1 | ChangeValid$ Creature,Planeswalker.Garruk | Optional$ True | DestinationZone$ Hand | RestRandomOrder$ True\nSVar:X:TriggerCount$DamageAmount\nDeckHints:Type$Garruk\nOracle:Hexproof from black\\nWhenever Garruk's Harbinger deals combat damage to a player or planeswalker, look at that many cards from the top of your library. You may reveal a creature card or Garruk planeswalker card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garruk's Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

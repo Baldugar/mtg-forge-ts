@@ -1,0 +1,23 @@
+{
+  "id": "expel-from-orazca-corpus-m676",
+  "description": "M6 corpus — Expel from Orazca; in-hand parse.",
+  "seed": 64885,
+  "cards": {
+    "Expel from Orazca": "Name:Expel from Orazca\nManaCost:1 U\nTypes:Instant\nK:Ascend\nA:SP$ Pump | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | IsCurse$ True | SubAbility$ DBDefaultAction | StackDescription$ SpellDescription | SpellDescription$ Return target nonland permanent to its owner's hand. If you have the city's blessing, you may put that permanent on top of its owner's library instead.\nSVar:DBDefaultAction:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Hand | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ0 | SubAbility$ DBChoose\nSVar:DBChoose:DB$ GenericChoice | Choices$ DBHandChoice,DBTopLibChoice | Defined$ You | ConditionCheckSVar$ X | ConditionSVarCompare$ GE1\nSVar:DBHandChoice:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Hand\nSVar:DBTopLibChoice:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Top of library\nSVar:X:Count$Blessing.1.0\nOracle:Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\\nReturn target nonland permanent to its owner's hand. If you have the city's blessing, you may put that permanent on top of its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expel from Orazca"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "frostpyre-arcanist-corpus-m676",
+  "description": "M6 corpus — Frostpyre Arcanist; in-hand parse.",
+  "seed": 65799,
+  "cards": {
+    "Frostpyre Arcanist": "Name:Frostpyre Arcanist\nManaCost:4 U\nTypes:Creature Giant Wizard\nPT:2/5\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Giant.YouCtrl,Wizard.YouCtrl | Description$ This spell costs {1} less to cast if you control a Giant or a Wizard.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for an instant or sorcery card with the same name as a card in your graveyard, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Instant.sharesNameWith YourGraveyard,Sorcery.sharesNameWith YourGraveyard | ChangeNum$ 1\nDeckHints:Type$Giant|Wizard\nDeckNeeds:Type$Instant|Sorcery\nOracle:This spell costs {1} less to cast if you control a Giant or a Wizard.\\nWhen Frostpyre Arcanist enters, search your library for an instant or sorcery card with the same name as a card in your graveyard, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frostpyre Arcanist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

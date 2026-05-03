@@ -1,0 +1,23 @@
+{
+  "id": "electrostatic-blast-corpus-m676",
+  "description": "M6 corpus — Electrostatic Blast; in-hand parse.",
+  "seed": 64388,
+  "cards": {
+    "Electrostatic Blast": "Name:Electrostatic Blast\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 2 | SubAbility$ DBDelayTrigger | SpellDescription$ CARDNAME deals 2 damage to any target. When you cast your next instant or sorcery spell, exile the top three cards of your library. You may play one of those cards until end of turn.\nSVar:DBDelayTrigger:DB$ DelayedTrigger | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigExile | TriggerDescription$ When you cast your next instant or sorcery spell, exile the top three cards of your library. You may play one of those cards until end of turn.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | Triggers$ Play1,Play2 | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | AffectedZone$ Exile | Affected$ Card.IsRemembered | MayPlay$ True | Description$ You may play one of those cards until end of turn.\nSVar:Play1:Mode$ SpellCast | ValidCard$ Card.IsRemembered | ValidActivatingPlayer$ You | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:Play2:Mode$ LandPlayed | ValidCard$ Land.IsRemembered | TriggerZones$ Command | Execute$ ExileSelf | Static$ True\nSVar:ExileSelf:DB$ ChangeZone | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Type$Instant|Sorcery\nOracle:Electrostatic Blast deals 2 damage to any target. When you cast your next instant or sorcery spell, exile the top three cards of your library. You may play one of those cards until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electrostatic Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

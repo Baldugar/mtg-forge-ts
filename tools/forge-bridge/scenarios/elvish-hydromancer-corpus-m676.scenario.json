@@ -1,0 +1,23 @@
+{
+  "id": "elvish-hydromancer-corpus-m676",
+  "description": "M6 corpus — Elvish Hydromancer; in-hand parse.",
+  "seed": 64470,
+  "cards": {
+    "Elvish Hydromancer": "Name:Elvish Hydromancer\nManaCost:2 G\nTypes:Creature Elf Wizard\nPT:3/2\nK:Kicker:3 U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigCopy | TriggerDescription$ When CARDNAME enters, if it was kicked, create a token that's a copy of target creature you control.\nSVar:TrigCopy:DB$ CopyPermanent | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control\nDeckHas:Ability$Token\nDeckHints:Color$Blue\nOracle:Kicker {3}{U} (You may pay an additional {3}{U} as you cast this spell.)\\nWhen Elvish Hydromancer enters, if it was kicked, create a token that's a copy of target creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Hydromancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "counterpoint-corpus-m676",
+  "description": "M6 corpus — Counterpoint; in-hand parse.",
+  "seed": 62637,
+  "cards": {
+    "Counterpoint": "Name:Counterpoint\nManaCost:3 U B\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | RememberCounteredCMC$ True | SubAbility$ DBPlay | SpellDescription$ Counter target spell.\nSVar:DBPlay:DB$ Play | ValidZone$ Graveyard | Valid$ Creature.YouCtrl+cmcLEX,Instant.YouCtrl+cmcLEX,Sorcery.YouCtrl+cmcLEX,Planeswalker.YouCtrl+cmcLEX | ValidSA$ Spell | Controller$ You | Optional$ True | Amount$ 1 | WithoutManaCost$ True | AILogic$ ReplaySpell | SubAbility$ DBCleanup | SpellDescription$ You may cast a creature, instant, sorcery, or planeswalker spell from your graveyard with mana value less than or equal to that spell's mana value without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nDeckHints:Ability$Graveyard|Mill\nDeckHas:Ability$Graveyard\nOracle:Counter target spell. You may cast a creature, instant, sorcery, or planeswalker spell from your graveyard with mana value less than or equal to that spell's mana value without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Counterpoint"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

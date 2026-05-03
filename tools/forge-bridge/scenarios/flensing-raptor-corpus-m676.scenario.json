@@ -1,0 +1,23 @@
+{
+  "id": "flensing-raptor-corpus-m676",
+  "description": "M6 corpus — Flensing Raptor; in-hand parse.",
+  "seed": 65496,
+  "cards": {
+    "Flensing Raptor": "Name:Flensing Raptor\nManaCost:2 W\nTypes:Creature Phyrexian Bird\nPT:2/2\nK:Flying\nK:Toxic:1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, another target creature you control with toxic gets +1/+1 and gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl+withToxic+Other | NumAtt$ +1 | NumDef$ +1 | KW$ Flying\nDeckHints:Keyword$Toxic\nOracle:Flying\\nToxic 1 (Players dealt combat damage by this creature also get a poison counter.)\\nWhen Flensing Raptor enters, another target creature you control with toxic gets +1/+1 and gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flensing Raptor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

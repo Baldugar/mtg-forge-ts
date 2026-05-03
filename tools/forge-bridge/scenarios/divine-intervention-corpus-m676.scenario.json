@@ -1,0 +1,23 @@
+{
+  "id": "divine-intervention-corpus-m676",
+  "description": "M6 corpus — Divine Intervention; in-hand parse.",
+  "seed": 63754,
+  "cards": {
+    "Divine Intervention": "Name:Divine Intervention\nManaCost:6 W W\nTypes:Enchantment\nK:etbCounter:INTERVENTION:2\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigRemoveCtr | TriggerDescription$ At the beginning of your upkeep, remove an intervention counter from CARDNAME. When you remove the last intervention counter from CARDNAME, the game is a draw.\nSVar:TrigRemoveCtr:DB$ RemoveCounter | Defined$ Self | CounterType$ INTERVENTION | CounterNum$ 1 | SubAbility$ GameIsADraw\nSVar:GameIsADraw:DB$ GameDrawn | ConditionPresent$ Card.Self+counters_EQ0_INTERVENTION\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nDeckHas:Ability$Counters\nOracle:Divine Intervention enters with two intervention counters on it.\\nAt the beginning of your upkeep, remove an intervention counter from Divine Intervention.\\nWhen you remove the last intervention counter from Divine Intervention, the game is a draw.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Divine Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

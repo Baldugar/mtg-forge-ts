@@ -1,0 +1,25 @@
+{
+  "id": "dwarven-soldier-corpus-m676",
+  "description": "M6 corpus — Dwarven Soldier; ETB-on-bf.",
+  "seed": 64218,
+  "cards": {
+    "Dwarven Soldier": "Name:Dwarven Soldier\nManaCost:1 R\nTypes:Creature Dwarf Soldier\nPT:2/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | ValidBlocker$ Orc | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by one or more Orcs, CARDNAME gets +0/+2 until end of turn.\nT:Mode$ Blocks | ValidCard$ Card.Self | ValidBlocked$ Orc | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by one or more Orcs, CARDNAME gets +0/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumDef$ +2\nOracle:Whenever Dwarven Soldier blocks or becomes blocked by one or more Orcs, Dwarven Soldier gets +0/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dwarven Soldier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

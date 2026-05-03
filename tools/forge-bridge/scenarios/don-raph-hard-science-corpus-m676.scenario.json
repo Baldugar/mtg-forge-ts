@@ -1,0 +1,23 @@
+{
+  "id": "don-raph-hard-science-corpus-m676",
+  "description": "M6 corpus — Don & Raph, Hard Science; in-hand parse.",
+  "seed": 63814,
+  "cards": {
+    "Don & Raph, Hard Science": "Name:Don & Raph, Hard Science\nManaCost:1 UR UR\nTypes:Legendary Creature Mutant Ninja Turtle\nPT:2/4\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ Whenever NICKNAME attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ GrantAffinity | ForgetOnCast$ Card.nonCreature+YouCtrl\nSVar:GrantAffinity:Mode$ Continuous | Affected$ Card.nonCreature+YouCtrl | AffectedZone$ Stack | AddKeyword$ Affinity:Artifact | Description$ The next spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control as you cast it.)\nSVar:HasAttackEffect:TRUE\nOracle:Menace\\nWhenever Don & Raph attack, the next noncreature spell you cast this turn has affinity for artifacts. (It costs {1} less to cast for each artifact you control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Don & Raph, Hard Science"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

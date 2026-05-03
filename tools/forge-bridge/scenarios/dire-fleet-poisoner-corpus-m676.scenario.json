@@ -1,0 +1,23 @@
+{
+  "id": "dire-fleet-poisoner-corpus-m676",
+  "description": "M6 corpus — Dire Fleet Poisoner; in-hand parse.",
+  "seed": 63651,
+  "cards": {
+    "Dire Fleet Poisoner": "Name:Dire Fleet Poisoner\nManaCost:1 B\nTypes:Creature Human Pirate\nPT:2/2\nK:Flash\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target attacking Pirate you control gets +1/+1 and gains deathtouch until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Pirate.attacking+YouCtrl | TgtPrompt$ Select target attacking Pirate you control | NumAtt$ +1 | NumDef$ +1 | KW$ Deathtouch\nOracle:Flash\\nDeathtouch\\nWhen Dire Fleet Poisoner enters, target attacking Pirate you control gets +1/+1 and gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dire Fleet Poisoner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

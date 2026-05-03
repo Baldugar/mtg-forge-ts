@@ -1,0 +1,23 @@
+{
+  "id": "gideon-s-resolve-corpus-m676",
+  "description": "M6 corpus — Gideon's Resolve; in-hand parse.",
+  "seed": 66182,
+  "cards": {
+    "Gideon's Resolve": "Name:Gideon's Resolve\nManaCost:4 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library and/or graveyard for a card named Gideon, Martial Paragon, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedGideon; Martial Paragon | ChangeNum$ 1 | Optional$ True\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nSVar:PlayMain1:TRUE\nDeckHints:Name$Gideon, Martial Paragon\nOracle:When Gideon's Resolve enters, you may search your library and/or graveyard for a card named Gideon, Martial Paragon, reveal it, and put it into your hand. If you search your library this way, shuffle.\\nCreatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon's Resolve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

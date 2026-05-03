@@ -1,0 +1,23 @@
+{
+  "id": "fury-charm-corpus-m676",
+  "description": "M6 corpus — Fury Charm; in-hand parse.",
+  "seed": 65852,
+  "cards": {
+    "Fury Charm": "Name:Fury Charm\nManaCost:1 R\nTypes:Instant\nA:SP$ Charm | Choices$ Bash,Buff,LoseTime\nSVar:Bash:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:Buff:DB$ Pump | ValidTgts$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ Trample | SpellDescription$ Target creature gets +1/+1 and gains trample until end of turn.\nSVar:LoseTime:DB$ RemoveCounter | ValidTgts$ Permanent.inZoneBattlefield,Card.suspended | AITgts$ Permanent.counters_GE1_TIME+YouDontCtrl,Card.suspended+YouCtrl | TgtPrompt$ Select target permanent or suspended card. | CounterType$ TIME | CounterNum$ 2 | TgtZone$ Battlefield,Exile | SpellDescription$ Remove two time counters from target permanent or suspended card.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Destroy target artifact.\\n• Target creature gets +1/+1 and gains trample until end of turn.\\n• Remove two time counters from target permanent or suspended card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fury Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

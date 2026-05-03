@@ -1,0 +1,23 @@
+{
+  "id": "doomed-artisan-corpus-m676",
+  "description": "M6 corpus — Doomed Artisan; in-hand parse.",
+  "seed": 63825,
+  "cards": {
+    "Doomed Artisan": "Name:Doomed Artisan\nManaCost:2 W\nTypes:Creature Human Artificer\nPT:1/1\nS:Mode$ CantAttack,CantBlock | ValidCard$ Sculpture.YouCtrl | Description$ Sculptures you control can't attack or block.\nAI:RemoveDeck:Random\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, create a colorless Sculpture artifact creature token with \"This creature's power and toughness are each equal to the number of Sculptures you control.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_x_x_a_sculpture_total_sculptures | TokenOwner$ You\nSVar:BuffedBy:Artifact\nOracle:Sculptures you control can't attack or block.\\nAt the beginning of your end step, create a colorless Sculpture artifact creature token with \"This creature's power and toughness are each equal to the number of Sculptures you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomed Artisan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

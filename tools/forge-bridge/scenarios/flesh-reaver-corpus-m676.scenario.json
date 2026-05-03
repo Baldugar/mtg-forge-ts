@@ -1,0 +1,23 @@
+{
+  "id": "flesh-reaver-corpus-m676",
+  "description": "M6 corpus — Flesh Reaver; in-hand parse.",
+  "seed": 65499,
+  "cards": {
+    "Flesh Reaver": "Name:Flesh Reaver\nManaCost:1 B\nTypes:Creature Phyrexian Horror\nPT:4/4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature,Opponent | Execute$ TrigFleshReaverDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage to a creature or opponent, CARDNAME deals that much damage to you.\nSVar:TrigFleshReaverDamage:DB$ DealDamage | NumDmg$ FleshReaverX | Defined$ You\nSVar:FleshReaverX:TriggerCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Whenever Flesh Reaver deals damage to a creature or opponent, Flesh Reaver deals that much damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flesh Reaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

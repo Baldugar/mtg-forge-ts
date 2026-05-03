@@ -1,0 +1,23 @@
+{
+  "id": "dwarven-priest-corpus-m676",
+  "description": "M6 corpus — Dwarven Priest; in-hand parse.",
+  "seed": 64214,
+  "cards": {
+    "Dwarven Priest": "Name:Dwarven Priest\nManaCost:3 W\nTypes:Creature Dwarf Cleric\nPT:2/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 1 life for each creature you control.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl\nOracle:When Dwarven Priest enters, you gain 1 life for each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwarven Priest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

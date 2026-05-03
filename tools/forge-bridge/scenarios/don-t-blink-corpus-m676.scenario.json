@@ -1,0 +1,23 @@
+{
+  "id": "don-t-blink-corpus-m676",
+  "description": "M6 corpus — Don't Blink; in-hand parse.",
+  "seed": 63822,
+  "cards": {
+    "Don't Blink": "Name:Don't Blink\nManaCost:1 U\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ ReplaceETB | SpellDescription$ Until end of turn, if one or more creatures would enter from exile or after being cast from exile, their owners shuffle them into their libraries instead.\nSVar:ReplaceETB:Event$ Moved | Destination$ Battlefield | Origin$ Stack,Exile | ValidCard$ Creature.wasCastFromExile,Creature.!wasCast | ReplaceWith$ DBShuffle | Description$ If one or more creatures would enter from exile or after being cast from exile, their owners shuffle them into their libraries instead.\nSVar:DBShuffle:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Library | Defined$ ReplacedCard | Shuffle$ True\nK:Cycling:2\nOracle:Until end of turn, if one or more creatures would enter from exile or after being cast from exile, their owners shuffle them into their libraries instead.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Don't Blink"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

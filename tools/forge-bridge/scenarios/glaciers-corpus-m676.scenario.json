@@ -1,0 +1,23 @@
+{
+  "id": "glaciers-corpus-m676",
+  "description": "M6 corpus — Glaciers; in-hand parse.",
+  "seed": 66248,
+  "cards": {
+    "Glaciers": "Name:Glaciers\nManaCost:2 W U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {W}{U}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ W U\nS:Mode$ Continuous | Affected$ Mountain | AddType$ Plains | RemoveLandTypes$ True | Description$ All Mountains are Plains.\nAI:RemoveDeck:Random\nOracle:At the beginning of your upkeep, sacrifice Glaciers unless you pay {W}{U}.\\nAll Mountains are Plains.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glaciers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

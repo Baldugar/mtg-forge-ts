@@ -1,0 +1,23 @@
+{
+  "id": "clammy-prowler-corpus-m676",
+  "description": "M6 corpus — Clammy Prowler; in-hand parse.",
+  "seed": 62188,
+  "cards": {
+    "Clammy Prowler": "Name:Clammy Prowler\nManaCost:3 U\nTypes:Enchantment Creature Horror\nPT:2/5\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target attacking creature can't be blocked this turn.\nSVar:TrigPump:DB$ Effect | ValidTgts$ Creature.Other+attacking | TgtPrompt$ Select another target attacking creature | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:Whenever Clammy Prowler attacks, another target attacking creature can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clammy Prowler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

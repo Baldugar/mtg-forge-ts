@@ -1,0 +1,23 @@
+{
+  "id": "djeru-s-resolve-corpus-m676",
+  "description": "M6 corpus — Djeru's Resolve; in-hand parse.",
+  "seed": 63778,
+  "cards": {
+    "Djeru's Resolve": "Name:Djeru's Resolve\nManaCost:W\nTypes:Instant\nA:SP$ Untap | ValidTgts$ Creature | SubAbility$ DBPump | SpellDescription$ Untap target creature. Prevent all damage that would be dealt to it this turn.\nSVar:DBPump:DB$ Effect | ReplacementEffects$ RPrevent | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all damage that would be dealt to that creature this turn.\nK:Cycling:2\nOracle:Untap target creature. Prevent all damage that would be dealt to it this turn.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Djeru's Resolve"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

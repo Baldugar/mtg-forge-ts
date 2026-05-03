@@ -1,0 +1,23 @@
+{
+  "id": "crackling-emergence-corpus-m676",
+  "description": "M6 corpus — Crackling Emergence; in-hand parse.",
+  "seed": 62682,
+  "cards": {
+    "Crackling Emergence": "Name:Crackling Emergence\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Land.YouCtrl:Land you control\nSVar:AttachAILogic:Animate\nS:Mode$ Continuous | Affected$ Land.EnchantedBy | AddType$ Creature & Spirit | SetColor$ Red | SetPower$ 3 | SetToughness$ 3 | AddKeyword$ Haste | Description$ Enchanted land is a 3/3 red Spirit creature with haste. It's still a land.\nR:Event$ Destroy | ValidCard$ Card.EnchantedBy | ReplaceWith$ CracklingEgress | Description$ If enchanted land would be destroyed, instead sacrifice CARDNAME and that land gains indestructible until end of turn.\nSVar:CracklingEgress:DB$ Sacrifice | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Enchanted | KW$ Indestructible\nDeckHas:Ability$Sacrifice & Type$Spirit\nOracle:Enchant land you control\\nEnchanted land is a 3/3 red Spirit creature with haste. It's still a land.\\nIf enchanted land would be destroyed, instead sacrifice Crackling Emergence and that land gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crackling Emergence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

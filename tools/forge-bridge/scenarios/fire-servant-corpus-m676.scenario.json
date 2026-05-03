@@ -1,0 +1,25 @@
+{
+  "id": "fire-servant-corpus-m676",
+  "description": "M6 corpus — Fire Servant; ETB-on-bf.",
+  "seed": 65356,
+  "cards": {
+    "Fire Servant": "Name:Fire Servant\nManaCost:3 R R\nTypes:Creature Elemental\nPT:4/3\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Instant.YouCtrl,Sorcery.YouCtrl | ReplaceWith$ DmgTwice | Description$ If a red instant or sorcery spell you control would deal damage, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nOracle:If a red instant or sorcery spell you control would deal damage, it deals double that damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fire Servant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

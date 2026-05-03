@@ -1,0 +1,23 @@
+{
+  "id": "eyetwitch-corpus-m676",
+  "description": "M6 corpus — Eyetwitch; in-hand parse.",
+  "seed": 64950,
+  "cards": {
+    "Eyetwitch": "Name:Eyetwitch\nManaCost:B\nTypes:Creature Eye Bat\nPT:1/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLearn | TriggerDescription$ When CARDNAME dies, learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\nSVar:TrigLearn:DB$ Learn\nSVar:SacMe:1\nOracle:Flying\\nWhen Eyetwitch dies, learn. (You may reveal a Lesson card you own from outside the game and put it into your hand, or discard a card to draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eyetwitch"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

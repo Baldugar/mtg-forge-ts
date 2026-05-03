@@ -1,0 +1,23 @@
+{
+  "id": "cemetery-prowler-corpus-m676",
+  "description": "M6 corpus — Cemetery Prowler; in-hand parse.",
+  "seed": 61873,
+  "cards": {
+    "Cemetery Prowler": "Name:Cemetery Prowler\nManaCost:1 G G\nTypes:Creature Wolf\nPT:3/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters or attacks, exile a card from a graveyard.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, exile a card from a graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ChangeType$ Card | ChangeNum$ 1 | SelectPrompt$ Select a card in a graveyard | Mandatory$ True | Hidden$ True | AILogic$ ExilePreference:MostProminentNonLandNonExiledOwnType\nS:Mode$ ReduceCost | ValidCard$ Card | Type$ Spell | Amount$ AffectedX | Activator$ You | Description$ Spells you cast cost {1} less to cast for each card type they share with cards exiled with CARDNAME.\nSVar:AffectedX:Count$TypesSharedWith ValidExile Card.ExiledWithSource\nDeckHints:Ability$Graveyard|Discard\nOracle:Vigilance\\nWhenever Cemetery Prowler enters or attacks, exile a card from a graveyard.\\nSpells you cast cost {1} less to cast for each card type they share with cards exiled with Cemetery Prowler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cemetery Prowler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

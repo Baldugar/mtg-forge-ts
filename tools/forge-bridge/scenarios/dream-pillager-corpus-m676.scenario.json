@@ -1,0 +1,23 @@
+{
+  "id": "dream-pillager-corpus-m676",
+  "description": "M6 corpus — Dream Pillager; in-hand parse.",
+  "seed": 64013,
+  "cards": {
+    "Dream Pillager": "Name:Dream Pillager\nManaCost:5 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, exile that many cards from the top of your library. Until end of turn, you may cast spells from among those exiled cards.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay | ForgetOnMoved$ Exile | RememberObjects$ RememberedCard | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | Affected$ Card.nonLand+IsRemembered | MayPlay$ True | AffectedZone$ Exile | Description$ Until end of turn, you may cast nonland cards from among those exiled cards.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:TriggerCount$DamageAmount\nOracle:Flying\\nWhenever Dream Pillager deals combat damage to a player, exile that many cards from the top of your library. Until end of turn, you may cast spells from among those exiled cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Pillager"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chiss-goria-forge-tyrant-corpus-m676",
+  "description": "M6 corpus — Chiss-Goria, Forge Tyrant; in-hand parse.",
+  "seed": 62074,
+  "cards": {
+    "Chiss-Goria, Forge Tyrant": "Name:Chiss-Goria, Forge Tyrant\nManaCost:6 R R R\nTypes:Legendary Creature Dragon\nPT:5/4\nK:Affinity:Artifact\nK:Flying\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks, exile the top five cards of your library. You may cast an artifact spell from among them this turn. If you do, it has affinity for artifacts.\nSVar:TrigExile:DB$ Dig | Defined$ You | DigNum$ 5 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STPlay,STAffinity | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:STPlay:Mode$ Continuous | AffectedZone$ Exile,Stack | Affected$ Card.IsRemembered+Artifact+nonLand | MayPlay$ True | MayPlayLimit$ 1 | Description$ You may cast an artifact spell from among them this turn. If you do, it has affinity for artifacts.\nSVar:STAffinity:Mode$ Continuous | AffectedZone$ Stack | AddKeyword$ Affinity:Artifact | Affected$ Card.CastSa Spell.MayPlaySource\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nDeckNeeds:Type$Artifact\nOracle:Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\\nFlying, haste\\nWhenever Chiss-Goria, Forge Tyrant attacks, exile the top five cards of your library. You may cast an artifact spell from among them this turn. If you do, it has affinity for artifacts.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chiss-Goria, Forge Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

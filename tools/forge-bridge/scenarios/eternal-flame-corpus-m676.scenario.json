@@ -1,0 +1,23 @@
+{
+  "id": "eternal-flame-corpus-m676",
+  "description": "M6 corpus — Eternal Flame; in-hand parse.",
+  "seed": 64762,
+  "cards": {
+    "Eternal Flame": "Name:Eternal Flame\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Opponent,Planeswalker | NumDmg$ X | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals X damage to target opponent or planeswalker, where X is the number of mountains you control. It deals half X damage, rounded up, to you.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ Y | Defined$ You\nSVar:X:Count$Valid Mountain.YouCtrl\nSVar:Y:Count$Valid Mountain.YouCtrl/HalfUp\nSVar:NeedsToPlayVar:X GE2\nDeckHints:Type$Mountain & Name$Blood Moon\nOracle:Eternal Flame deals X damage to target opponent or planeswalker and half X damage, rounded up, to you, where X is the number of Mountains you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eternal Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

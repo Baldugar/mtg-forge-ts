@@ -1,0 +1,23 @@
+{
+  "id": "even-the-odds-corpus-m676",
+  "description": "M6 corpus — Even the Odds; in-hand parse.",
+  "seed": 64809,
+  "cards": {
+    "Even the Odds": "Name:Even the Odds\nManaCost:2 W\nTypes:Instant\nA:SP$ Token | IsPresent$ Creature.YouCtrl | PresentCompare$ LTX | TokenAmount$ 3 | TokenScript$ w_1_1_soldier | TokenOwner$ You | SpellDescription$ Cast this spell only if you control fewer creatures than each opponent. Create three 1/1 white Soldier creature tokens.\nSVar:X:PlayerCountOpponents$LowestValid Creature.YouCtrl\n# The YouCtrl in the above count is relative to each player checked\nOracle:Cast this spell only if you control fewer creatures than each opponent.\\nCreate three 1/1 white Soldier creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Even the Odds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

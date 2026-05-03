@@ -1,0 +1,23 @@
+{
+  "id": "crested-sunmare-corpus-m676",
+  "description": "M6 corpus — Crested Sunmare; in-hand parse.",
+  "seed": 62741,
+  "cards": {
+    "Crested Sunmare": "Name:Crested Sunmare\nManaCost:3 W W\nTypes:Creature Horse\nPT:5/5\nS:Mode$ Continuous | Affected$ Horse.Other+YouCtrl | AddKeyword$ Indestructible | Description$ Other Horses you control have indestructible.\nSVar:PlayMain1:TRUE\nSVar:BuffedBy:Horse\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ YouLifeGained | Execute$ TrigToken | TriggerDescription$ At the beginning of each end step, if you gained life this turn, create a 5/5 white Horse creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_5_5_horse | TokenOwner$ You\nSVar:YouLifeGained:Count$LifeYouGainedThisTurn\nSVar:AIEvaluationModifier:70\nDeckHints:Ability$LifeGain\nOracle:Other Horses you control have indestructible.\\nAt the beginning of each end step, if you gained life this turn, create a 5/5 white Horse creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crested Sunmare"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

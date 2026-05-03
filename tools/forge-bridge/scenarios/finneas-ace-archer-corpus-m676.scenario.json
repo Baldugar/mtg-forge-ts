@@ -1,0 +1,23 @@
+{
+  "id": "finneas-ace-archer-corpus-m676",
+  "description": "M6 corpus — Finneas, Ace Archer; in-hand parse.",
+  "seed": 65328,
+  "cards": {
+    "Finneas, Ace Archer": "Name:Finneas, Ace Archer\nManaCost:G W\nTypes:Legendary Creature Rabbit Archer\nPT:2/2\nK:Vigilance\nK:Reach\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on each other creature you control that's a token or a Rabbit. Then if creatures you control have total power 10 or greater, draw a card.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+StrictlyOther+token,Creature.YouCtrl+StrictlyOther+Rabbit | CounterType$ P1P1 | CounterNum$ 1 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionCheckSVar$ X | ConditionSVarCompare$ GE10\nSVar:X:Count$Valid Creature.YouCtrl$CardPower\nOracle:Vigilance, reach\\nWhenever Finneas, Ace Archer attacks, put a +1/+1 counter on each other creature you control that's a token or a Rabbit. Then if creatures you control have total power 10 or greater, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Finneas, Ace Archer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

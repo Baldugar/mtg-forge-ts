@@ -1,0 +1,25 @@
+{
+  "id": "duct-crawler-corpus-m676",
+  "description": "M6 corpus — Duct Crawler; ETB-on-bf.",
+  "seed": 64129,
+  "cards": {
+    "Duct Crawler": "Name:Duct Crawler\nManaCost:R\nTypes:Creature Insect\nPT:1/1\nA:AB$ Effect | Cost$ 1 R | ValidTgts$ Creature | TgtPrompt$ Select target creature that can't block this creature this turn | IsCurse$ True | RememberObjects$ ThisTargetedCard | ForgetOnMoved$ Battlefield | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | StackDescription$ {c:Targeted} can't block CARDNAME this turn. | SpellDescription$ Target creature can't block CARDNAME this turn.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.IsRemembered | Description$ {c:Remembered} can't block EFFECTSOURCE this turn.\nAI:RemoveDeck:All\nOracle:{1}{R}: Target creature can't block Duct Crawler this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Duct Crawler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

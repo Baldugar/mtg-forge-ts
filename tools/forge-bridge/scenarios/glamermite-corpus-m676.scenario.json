@@ -1,0 +1,23 @@
+{
+  "id": "glamermite-corpus-m676",
+  "description": "M6 corpus — Glamermite; in-hand parse.",
+  "seed": 66258,
+  "cards": {
+    "Glamermite": "Name:Glamermite\nManaCost:2 U\nTypes:Creature Faerie Rogue\nPT:2/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When this creature enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBTap,DBUntap\nSVar:DBTap:DB$ Tap | ValidTgts$ Creature | SpellDescription$ Tap target creature.\nSVar:DBUntap:DB$ Untap | ValidTgts$ Creature | SpellDescription$ Untap target creature.\nOracle:Flash\\nFlying\\nWhen this creature enters, choose one —\\n• Tap target creature.\\n• Untap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glamermite"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "curtain-of-light-corpus-m676",
+  "description": "M6 corpus — Curtain of Light; in-hand parse.",
+  "seed": 62956,
+  "cards": {
+    "Curtain of Light": "Name:Curtain of Light\nManaCost:1 W\nTypes:Instant\nText:Cast CARDNAME only during combat after blockers are declared.\nA:SP$ BecomesBlocked | ValidTgts$ Creature.attacking+unblocked | TgtPrompt$ Select target unblocked attacking creature | SubAbility$ Draw | ActivationPhases$ Declare Blockers->EndCombat | ActivationAfterBlockers$ True | SpellDescription$ Target unblocked attacking creature becomes blocked. (This spell works on creatures that can't be blocked.) Draw a card.\nSVar:Draw:DB$ Draw\nOracle:Cast this spell only during combat after blockers are declared.\\nTarget unblocked attacking creature becomes blocked. (This spell works on creatures that can't be blocked.)\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curtain of Light"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

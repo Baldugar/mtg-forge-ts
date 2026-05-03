@@ -1,0 +1,23 @@
+{
+  "id": "cavern-stomper-corpus-m676",
+  "description": "M6 corpus — Cavern Stomper; in-hand parse.",
+  "seed": 61842,
+  "cards": {
+    "Cavern Stomper": "Name:Cavern Stomper\nManaCost:4 G G\nTypes:Creature Dinosaur\nPT:7/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigScry | TriggerDescription$ When CARDNAME enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\nSVar:TrigScry:DB$ Scry | ScryNum$ 2\nA:AB$ Effect | Cost$ 3 G | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | SpellDescription$ CARDNAME can't be blocked by creatures with power 2 or less this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | ValidBlocker$ Creature.powerLE2 | Description$ EFFECTSOURCE can't be blocked by creatures with power 2 or less this turn.\nOracle:When Cavern Stomper enters, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)\\n{3}{G}: Cavern Stomper can't be blocked by creatures with power 2 or less this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavern Stomper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

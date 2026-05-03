@@ -1,0 +1,23 @@
+{
+  "id": "cephalid-aristocrat-corpus-m676",
+  "description": "M6 corpus — Cephalid Aristocrat; in-hand parse.",
+  "seed": 61890,
+  "cards": {
+    "Cephalid Aristocrat": "Name:Cephalid Aristocrat\nManaCost:4 U\nTypes:Creature Octopus Noble\nPT:3/3\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigMill | TriggerDescription$ Whenever CARDNAME becomes the target of a spell or ability, mill two cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nAI:RemoveDeck:Random\nOracle:Whenever Cephalid Aristocrat becomes the target of a spell or ability, mill two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cephalid Aristocrat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

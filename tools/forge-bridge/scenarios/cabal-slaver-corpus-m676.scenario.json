@@ -1,0 +1,23 @@
+{
+  "id": "cabal-slaver-corpus-m676",
+  "description": "M6 corpus — Cabal Slaver; in-hand parse.",
+  "seed": 61568,
+  "cards": {
+    "Cabal Slaver": "Name:Cabal Slaver\nManaCost:2 B\nTypes:Creature Human Cleric\nPT:2/1\nT:Mode$ DamageDone | ValidSource$ Goblin | ValidTarget$ Player | TriggerZones$ Battlefield | CombatDamage$ True | Execute$ TrigDiscard | TriggerDescription$ Whenever a Goblin deals combat damage to a player, that player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:Whenever a Goblin deals combat damage to a player, that player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cabal Slaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

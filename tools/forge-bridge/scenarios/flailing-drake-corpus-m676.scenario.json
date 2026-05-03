@@ -1,0 +1,25 @@
+{
+  "id": "flailing-drake-corpus-m676",
+  "description": "M6 corpus — Flailing Drake; ETB-on-bf.",
+  "seed": 65412,
+  "cards": {
+    "Flailing Drake": "Name:Flailing Drake\nManaCost:3 G\nTypes:Creature Drake\nPT:2/3\nK:Flying\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigBlocks | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature gets +1/+1 until end of turn.\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigBlocked | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature gets +1/+1 until end of turn.\nSVar:TrigBlocks:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +1 | NumDef$ +1\nSVar:TrigBlocked:DB$ Pump | Defined$ TriggeredBlockerLKICopy | NumAtt$ +1 | NumDef$ +1\nOracle:Flying\\nWhenever Flailing Drake blocks or becomes blocked by a creature, that creature gets +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Flailing Drake"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

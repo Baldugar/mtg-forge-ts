@@ -1,0 +1,23 @@
+{
+  "id": "failed-inspection-corpus-m676",
+  "description": "M6 corpus — Failed Inspection; in-hand parse.",
+  "seed": 64997,
+  "cards": {
+    "Failed Inspection": "Name:Failed Inspection\nManaCost:2 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBDraw | SpellDescription$ Counter target spell. Draw a card.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nOracle:Counter target spell. Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Failed Inspection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

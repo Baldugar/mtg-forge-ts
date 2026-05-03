@@ -1,0 +1,23 @@
+{
+  "id": "eyeblight-assassin-corpus-m676",
+  "description": "M6 corpus — Eyeblight Assassin; in-hand parse.",
+  "seed": 64939,
+  "cards": {
+    "Eyeblight Assassin": "Name:Eyeblight Assassin\nManaCost:2 B\nTypes:Creature Elf Assassin\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls. | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nSVar:PlayMain1:TRUE\nOracle:When Eyeblight Assassin enters, target creature an opponent controls gets -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eyeblight Assassin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

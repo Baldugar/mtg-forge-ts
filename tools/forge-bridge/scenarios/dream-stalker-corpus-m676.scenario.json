@@ -1,0 +1,23 @@
+{
+  "id": "dream-stalker-corpus-m676",
+  "description": "M6 corpus — Dream Stalker; in-hand parse.",
+  "seed": 64017,
+  "cards": {
+    "Dream Stalker": "Name:Dream Stalker\nManaCost:1 U\nTypes:Creature Illusion\nPT:1/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a permanent you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Permanent.YouCtrl\nAI:RemoveDeck:All\nOracle:When Dream Stalker enters, return a permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

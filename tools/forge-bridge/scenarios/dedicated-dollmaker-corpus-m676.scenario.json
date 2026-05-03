@@ -1,0 +1,23 @@
+{
+  "id": "dedicated-dollmaker-corpus-m676",
+  "description": "M6 corpus — Dedicated Dollmaker; in-hand parse.",
+  "seed": 63324,
+  "cards": {
+    "Dedicated Dollmaker": "Name:Dedicated Dollmaker\nManaCost:1 W\nTypes:Creature Dwarf Artificer\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile up to one other target nonland, nontoken permanent. Its controller creates a token that's a copy of it, except it's not legendary and it's an artifact in addition to its other types.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | RememberChanged$ True | ValidTgts$ Permanent.Other+nonLand+!token | TgtPrompt$ Select up to one other target nonland, nontoken permanent | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopyPermanent | Defined$ Remembered | NonLegendary$ True | AddTypes$ Artifact | Controller$ RememberedController | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nA:AB$ PumpAll | Cost$ 1 W | ValidCards$ Card.token+YouCtrl | KW$ Indestructible | GameActivationLimit$ 1 | SpellDescription$ Tokens you control gain indestructible until end of turn. Activate only once.\nDeckHas:Ability$Token & Type$Artifact\nDeckHints:Ability$Token\nOracle:When Dedicated Dollmaker enters, exile up to one other target nonland, nontoken permanent. Its controller creates a token that's a copy of it, except it's not legendary and it's an artifact in addition to its other types.\\n{1}{W}: Tokens you control gain indestructible until end of turn. Activate only once.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dedicated Dollmaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

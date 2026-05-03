@@ -1,0 +1,23 @@
+{
+  "id": "eye-gouge-corpus-m676",
+  "description": "M6 corpus — Eye Gouge; in-hand parse.",
+  "seed": 64932,
+  "cards": {
+    "Eye Gouge": "Name:Eye Gouge\nManaCost:B\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True | SpellDescription$ Target creature gets -1/-1 until end of turn. If it's a Cyclops, destroy it. | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ ParentTarget | ConditionDefined$ ParentTarget | ConditionPresent$ Cyclops\nOracle:Target creature gets -1/-1 until end of turn. If it's a Cyclops, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eye Gouge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

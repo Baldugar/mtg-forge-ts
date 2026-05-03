@@ -1,0 +1,23 @@
+{
+  "id": "burning-yard-trainer-corpus-m676",
+  "description": "M6 corpus — Burning-Yard Trainer; in-hand parse.",
+  "seed": 61536,
+  "cards": {
+    "Burning-Yard Trainer": "Name:Burning-Yard Trainer\nManaCost:4 R\nTypes:Creature Human Knight\nPT:3/3\nK:Haste\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, another target Knight you control gets +2/+2 and gains trample and haste until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Knight.Other+YouCtrl | TgtPrompt$ Select another target Knight you control | NumAtt$ +2 | NumDef$ +2 | KW$ Trample & Haste\nSVar:PlayMain1:TRUE\nDeckHints:Type$Knight\nOracle:Trample, haste\\nWhen Burning-Yard Trainer enters, another target Knight you control gets +2/+2 and gains trample and haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning-Yard Trainer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

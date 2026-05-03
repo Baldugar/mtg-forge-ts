@@ -1,0 +1,23 @@
+{
+  "id": "empty-the-laboratory-corpus-m676",
+  "description": "M6 corpus — Empty the Laboratory; in-hand parse.",
+  "seed": 64543,
+  "cards": {
+    "Empty the Laboratory": "Name:Empty the Laboratory\nManaCost:X U U\nTypes:Sorcery\nA:SP$ Sacrifice | Defined$ You | Amount$ X | SacValid$ Zombie | RememberSacrificed$ True | SubAbility$ DBDigUntil | StackDescription$ SpellDescription | SpellDescription$ Sacrifice X Zombies, then reveal cards from the top of your library until you reveal a number of Zombie creature cards equal to the number of Zombies sacrificed this way. Put those cards onto the battlefield and the rest on the bottom of your library in a random order.\nSVar:DBDigUntil:DB$ DigUntil | Amount$ Y | Valid$ Creature.Zombie | FoundDestination$ Battlefield | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nSVar:Y:Remembered$Amount\nDeckHas:Ability$Sacrifice\nDeckNeeds:Type$Zombie\nOracle:Sacrifice X Zombies, then reveal cards from the top of your library until you reveal a number of Zombie creature cards equal to the number of Zombies sacrificed this way. Put those cards onto the battlefield and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Empty the Laboratory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

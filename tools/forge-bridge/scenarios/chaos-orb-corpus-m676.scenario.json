@@ -1,0 +1,25 @@
+{
+  "id": "chaos-orb-corpus-m676",
+  "description": "M6 corpus — Chaos Orb; ETB-on-bf.",
+  "seed": 61985,
+  "cards": {
+    "Chaos Orb": "Name:Chaos Orb\nManaCost:2\nTypes:Artifact\nA:AB$ FlipOntoBattlefield | Cost$ 1 T | SubAbility$ DBDestroyTouched | ActivationZone$ Battlefield | SpellDescription$ If CARDNAME is on the battlefield, flip CARDNAME onto the battlefield from a height of at least one foot. If CARDNAME turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy CARDNAME. | StackDescription$ SpellDescription\nSVar:DBDestroyTouched:DB$ DestroyAll | ValidCards$ Card.IsRemembered+!token | SubAbility$ DBDestroyChaosOrb | AILogic$ Always | StackDescription$ None\nSVar:DBDestroyChaosOrb:DB$ Destroy | Defined$ Self | SubAbility$ DBCleanup | AILogic$ Always | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{1}, {T}: If Chaos Orb is on the battlefield, flip Chaos Orb onto the battlefield from a height of at least one foot. If Chaos Orb turns over completely at least once during the flip, destroy all nontoken permanents it touches. Then destroy Chaos Orb.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Chaos Orb"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

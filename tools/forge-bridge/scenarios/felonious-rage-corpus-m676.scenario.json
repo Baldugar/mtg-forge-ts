@@ -1,0 +1,23 @@
+{
+  "id": "felonious-rage-corpus-m676",
+  "description": "M6 corpus — Felonious Rage; in-hand parse.",
+  "seed": 65195,
+  "cards": {
+    "Felonious Rage": "Name:Felonious Rage\nManaCost:R\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +2 | KW$ Haste | SubAbility$ DBDelayedTrigger | SpellDescription$ Target creature you control gets +2/+0 and gains haste until end of turn.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigToken | SpellDescription$ When that creature dies this turn, create a 2/2 white and blue Detective creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ wu_2_2_detective\nDeckHas:Ability$Token & Type$Detective & Color$Blue|White\nOracle:Target creature you control gets +2/+0 and gains haste until end of turn. When that creature dies this turn, create a 2/2 white and blue Detective creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Felonious Rage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

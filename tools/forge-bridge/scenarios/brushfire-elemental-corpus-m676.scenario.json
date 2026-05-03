@@ -1,0 +1,23 @@
+{
+  "id": "brushfire-elemental-corpus-m676",
+  "description": "M6 corpus — Brushfire Elemental; in-hand parse.",
+  "seed": 61468,
+  "cards": {
+    "Brushfire Elemental": "Name:Brushfire Elemental\nManaCost:R G\nTypes:Creature Elemental\nPT:1/1\nK:Haste\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLE2 | Description$ CARDNAME can't be blocked by creatures with power 2 or less.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — Whenever a land you control enters, CARDNAME gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2 | NumDef$ +2\nSVar:BuffedBy:Land\nOracle:Haste\\nBrushfire Elemental can't be blocked by creatures with power 2 or less.\\nLandfall — Whenever a land you control enters, Brushfire Elemental gets +2/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Brushfire Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deathrender-corpus-m676",
+  "description": "M6 corpus — Deathrender; in-hand parse.",
+  "seed": 63290,
+  "cards": {
+    "Deathrender": "Name:Deathrender\nManaCost:4\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Equipped creature gets +2/+2.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ CleanTheBlade | OptionalDecider$ You | TriggerDescription$ Whenever equipped creature dies, you may put a creature card from your hand onto the battlefield and attach CARDNAME to it.\nSVar:CleanTheBlade:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DeathrendersCall\nSVar:DeathrendersCall:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DeathrenderAttach\nSVar:DeathrenderAttach:DB$ Attach | Defined$ Remembered\nOracle:Equipped creature gets +2/+2.\\nWhenever equipped creature dies, you may put a creature card from your hand onto the battlefield and attach Deathrender to it.\\nEquip {2}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathrender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

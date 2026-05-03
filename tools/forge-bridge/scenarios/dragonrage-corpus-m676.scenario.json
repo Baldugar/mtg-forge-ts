@@ -1,0 +1,23 @@
+{
+  "id": "dragonrage-corpus-m676",
+  "description": "M6 corpus — Dragonrage; in-hand parse.",
+  "seed": 63931,
+  "cards": {
+    "Dragonrage": "Name:Dragonrage\nManaCost:2 R\nTypes:Instant\nA:SP$ Mana | Produced$ R | Amount$ X | SubAbility$ DBAnimateAll | SpellDescription$ Add {R} for each attacking creature you control. Until end of turn, attacking creatures you control gain \"{R}: This creature gets +1/+0 until end of turn.\"\nSVar:X:Count$Valid Creature.YouCtrl+attacking\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Creature.YouCtrl+attacking | Abilities$ DrAbs\nSVar:DrAbs:AB$ Pump | Cost$ R | Defined$ Self | NumAtt$ +1 | SpellDescription$ This creature gets +1/+0 until end of turn.\nAI:RemoveDeck:All\nOracle:Add {R} for each attacking creature you control. Until end of turn, attacking creatures you control gain \"{R}: This creature gets +1/+0 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonrage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

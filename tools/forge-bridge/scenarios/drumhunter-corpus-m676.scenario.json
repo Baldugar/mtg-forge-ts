@@ -1,0 +1,23 @@
+{
+  "id": "drumhunter-corpus-m676",
+  "description": "M6 corpus — Drumhunter; in-hand parse.",
+  "seed": 64110,
+  "cards": {
+    "Drumhunter": "Name:Drumhunter\nManaCost:3 G\nTypes:Creature Human Druid Warrior\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | IsPresent$ Creature.powerGE5+YouCtrl | Execute$ TrigDraw | TriggerDescription$ At the beginning of your end step, if you control a creature with power 5 or greater, you may draw a card.\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:At the beginning of your end step, if you control a creature with power 5 or greater, you may draw a card.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drumhunter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

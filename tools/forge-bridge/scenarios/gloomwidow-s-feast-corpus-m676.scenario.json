@@ -1,0 +1,23 @@
+{
+  "id": "gloomwidow-s-feast-corpus-m676",
+  "description": "M6 corpus — Gloomwidow's Feast; in-hand parse.",
+  "seed": 66336,
+  "cards": {
+    "Gloomwidow's Feast": "Name:Gloomwidow's Feast\nManaCost:3 G\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | RememberLKI$ True | SubAbility$ DBToken | SpellDescription$ Destroy target creature with flying.\nSVar:DBToken:DB$ Token | ConditionDefined$ RememberedLKI | ConditionPresent$ Card.Blue,Card.Black | TokenScript$ g_1_2_spider_reach | SubAbility$ DBCleanup | SpellDescription$ If that creature was blue or black, create a 1/2 green Spider creature token with reach. (It can block creatures with flying.)\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Spider\nOracle:Destroy target creature with flying. If that creature was blue or black, create a 1/2 green Spider creature token with reach. (It can block creatures with flying.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gloomwidow's Feast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

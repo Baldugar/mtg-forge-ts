@@ -1,0 +1,23 @@
+{
+  "id": "emerald-collector-corpus-m676",
+  "description": "M6 corpus — Emerald Collector; in-hand parse.",
+  "seed": 64512,
+  "cards": {
+    "Emerald Collector": "Name:Emerald Collector\nManaCost:1 U\nTypes:Creature Human Pirate\nPT:1/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 3 | TriggerZones$ Battlefield | Execute$ TrigConjure | GameActivationLimit$ 1 | TriggerDescription$ When you draw your third card in a turn, conjure a card named Mox Emerald into your hand. This ability triggers only once.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | Name$ Mox Emerald | Zone$ Hand\nA:AB$ Animate | Cost$ 2 G | Defined$ Self | Power$ 4 | Toughness$ 4 | SpellDescription$ CARDNAME has base power and toughness 4/4 until end of turn.\nDeckHas:Type$Artifact\nOracle:Whenever Emerald Collector deals combat damage to a player, draw a card.\\nWhen you draw your third card in a turn, conjure a card named Mox Emerald into your hand. This ability triggers only once.\\n{2}{G}: Emerald Collector has base power and toughness 4/4 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emerald Collector"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "emancipation-angel-corpus-m676",
+  "description": "M6 corpus — Emancipation Angel; in-hand parse.",
+  "seed": 64486,
+  "cards": {
+    "Emancipation Angel": "Name:Emancipation Angel\nManaCost:1 W W\nTypes:Creature Angel\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return a permanent you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Permanent.YouCtrl | AILogic$ NeverBounceItself\nOracle:Flying\\nWhen Emancipation Angel enters, return a permanent you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emancipation Angel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

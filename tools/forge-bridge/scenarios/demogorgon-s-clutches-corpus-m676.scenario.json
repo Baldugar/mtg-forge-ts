@@ -1,0 +1,23 @@
+{
+  "id": "demogorgon-s-clutches-corpus-m676",
+  "description": "M6 corpus — Demogorgon's Clutches; in-hand parse.",
+  "seed": 63422,
+  "cards": {
+    "Demogorgon's Clutches": "Name:Demogorgon's Clutches\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Discard | ValidTgts$ Opponent | Mode$ TgtChoose | NumCards$ 2 | SubAbility$ DBMill | SpellDescription$ Target opponent discards two cards, mills two cards, and loses 2 life. (To mill a card, a player puts the top card of their library into their graveyard.)\nSVar:DBMill:DB$ Mill | NumCards$ 2 | Defined$ ParentTarget | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ ParentTarget | LifeAmount$ 2\nOracle:Target opponent discards two cards, mills two cards, and loses 2 life. (To mill a card, a player puts the top card of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demogorgon's Clutches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

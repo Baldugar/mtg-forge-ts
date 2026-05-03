@@ -1,0 +1,25 @@
+{
+  "id": "fiendish-duo-corpus-m676",
+  "description": "M6 corpus — Fiendish Duo; ETB-on-bf.",
+  "seed": 65274,
+  "cards": {
+    "Fiendish Duo": "Name:Fiendish Duo\nManaCost:4 R R\nTypes:Creature Devil\nPT:5/5\nK:First Strike\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card,Emblem | ValidTarget$ Opponent | ReplaceWith$ DmgTwice | Description$ If a source would deal damage to an opponent, it deals double that damage to that player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nAI:RemoveDeck:Random\nOracle:First strike\\nIf a source would deal damage to an opponent, it deals double that damage to that player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fiendish Duo"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

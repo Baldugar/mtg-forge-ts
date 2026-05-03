@@ -1,0 +1,25 @@
+{
+  "id": "deathless-knight-corpus-m676",
+  "description": "M6 corpus — Deathless Knight; ETB-on-bf.",
+  "seed": 63284,
+  "cards": {
+    "Deathless Knight": "Name:Deathless Knight\nManaCost:BG BG BG BG\nTypes:Creature Skeleton Knight\nPT:4/2\nK:Haste\nT:Mode$ LifeGained | ValidPlayer$ You | TriggerZones$ Graveyard | FirstTime$ True | Execute$ TrigReturn | TriggerDescription$ When you gain life for the first time each turn, return CARDNAME from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Hand\nDeckHints:Ability$LifeGain\nOracle:Haste\\nWhen you gain life for the first time each turn, return Deathless Knight from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Deathless Knight"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

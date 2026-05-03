@@ -1,0 +1,25 @@
+{
+  "id": "elite-skirmisher-corpus-m676",
+  "description": "M6 corpus — Elite Skirmisher; ETB-on-bf.",
+  "seed": 64431,
+  "cards": {
+    "Elite Skirmisher": "Name:Elite Skirmisher\nManaCost:2 W\nTypes:Creature Human Soldier\nPT:3/1\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigTap | OptionalDecider$ You | TriggerDescription$ Heroic — Whenever you cast a spell that targets CARDNAME, you may tap target creature.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature | TgtPrompt$ Select target creature\nSVar:PlayMain1:TRUE\nOracle:Heroic — Whenever you cast a spell that targets Elite Skirmisher, you may tap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Elite Skirmisher"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

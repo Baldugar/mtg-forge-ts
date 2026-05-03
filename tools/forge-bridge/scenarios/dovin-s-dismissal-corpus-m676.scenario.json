@@ -1,0 +1,23 @@
+{
+  "id": "dovin-s-dismissal-corpus-m676",
+  "description": "M6 corpus — Dovin's Dismissal; in-hand parse.",
+  "seed": 63860,
+  "cards": {
+    "Dovin's Dismissal": "Name:Dovin's Dismissal\nManaCost:2 W U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.tapped | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select up to one target tapped creature | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SubAbility$ DBSearch | SpellDescription$ Put up to one target tapped creature on top of its owner's library.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedDovin; Architect of Law | ChangeNum$ 1 | Optional$ True | ShuffleNonMandatory$ True | SpellDescription$ You may search your library and/or graveyard for a card named Dovin, Architect of Law, reveal it, and put it into your hand. If you search your library this way, shuffle.\nDeckNeeds:Name$Dovin, Architect of Law\nOracle:Put up to one target tapped creature on top of its owner's library. You may search your library and/or graveyard for a card named Dovin, Architect of Law, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dovin's Dismissal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

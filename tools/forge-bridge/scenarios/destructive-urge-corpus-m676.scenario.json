@@ -1,0 +1,23 @@
+{
+  "id": "destructive-urge-corpus-m676",
+  "description": "M6 corpus — Destructive Urge; in-hand parse.",
+  "seed": 63549,
+  "cards": {
+    "Destructive Urge": "Name:Destructive Urge\nManaCost:1 R R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAITgts:Card.powerGE1\nSVar:AttachAILogic:Pump\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Player | Execute$ TrigSacrifice | CombatDamage$ True | TriggerDescription$ Whenever enchanted creature deals combat damage to a player, that player sacrifices a land.\nSVar:TrigSacrifice:DB$ Sacrifice | Defined$ TriggeredTarget | SacValid$ Land | ChangeNum$ 1 | SpellDescription$ Sacrifice a land.\nOracle:Enchant creature\\nWhenever enchanted creature deals combat damage to a player, that player sacrifices a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Destructive Urge"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

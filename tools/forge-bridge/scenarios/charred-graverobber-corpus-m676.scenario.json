@@ -1,0 +1,23 @@
+{
+  "id": "charred-graverobber-corpus-m676",
+  "description": "M6 corpus — Charred Graverobber; in-hand parse.",
+  "seed": 62029,
+  "cards": {
+    "Charred Graverobber": "Name:Charred Graverobber\nManaCost:2 B\nTypes:Creature Skeleton Mercenary\nPT:3/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target outlaw card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Card.Outlaw+YouOwn | TgtZone$ Graveyard | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target outlaw card from your graveyard\nK:Escape:3 B ExileFromGrave<4/Card.Other/other>\nK:etbCounter:P1P1:1:ValidCard$ Card.Self+escaped:CARDNAME escapes with a +1/+1 counter on it.\nDeckHas:Ability$Counters|Graveyard\nDeckHints:Type$Mercenary|Pirate|Assassin|Rogue|Warlock\nOracle:When Charred Graverobber enters, return target outlaw card from your graveyard to your hand.\\nEscape—{3}{B}, Exile four other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)\\nCharred Graverobber escapes with a +1/+1 counter on it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charred Graverobber"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

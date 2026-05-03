@@ -1,0 +1,23 @@
+{
+  "id": "dewdrop-spy-corpus-m676",
+  "description": "M6 corpus — Dewdrop Spy; in-hand parse.",
+  "seed": 63591,
+  "cards": {
+    "Dewdrop Spy": "Name:Dewdrop Spy\nManaCost:1 U U\nTypes:Creature Faerie Rogue\nPT:2/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPeek | TriggerDescription$ When CARDNAME enters, look at the top card of target player's library.\nSVar:TrigPeek:DB$ RearrangeTopOfLibrary | ValidTgts$ Player | NumCards$ 1 | SpellDescription$ Look at the top card of target player's library.\nOracle:Flash\\nFlying\\nWhen Dewdrop Spy enters, look at the top card of target player's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dewdrop Spy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "crystalline-resonance-corpus-m676",
+  "description": "M6 corpus — Crystalline Resonance; ETB-on-bf.",
+  "seed": 62867,
+  "cards": {
+    "Crystalline Resonance": "Name:Crystalline Resonance\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Cycled | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigClone | OptionalDecider$ You | TriggerDescription$ Whenever you cycle a card, you may have CARDNAME become a copy of another target permanent until your next turn, except it has this ability.\nSVar:TrigClone:DB$ Clone | ValidTgts$ Permanent.Other | TgtPrompt$ Choose another target permanent to copy until your next turn | Duration$ UntilYourNextTurn | GainThisAbility$ True | AILogic$ CloneBestCreature\nOracle:Whenever you cycle a card, you may have Crystalline Resonance become a copy of another target permanent until your next turn, except it has this ability.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Crystalline Resonance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

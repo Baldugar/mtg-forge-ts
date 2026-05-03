@@ -1,0 +1,23 @@
+{
+  "id": "dazzling-flameweaver-corpus-m676",
+  "description": "M6 corpus — Dazzling Flameweaver; in-hand parse.",
+  "seed": 63201,
+  "cards": {
+    "Dazzling Flameweaver": "Name:Dazzling Flameweaver\nManaCost:1 B R\nTypes:Creature Lizard Warlock\nPT:3/3\nK:Menace\nK:Ward:PayLife<3>\nT:Mode$ DamageDoneOnce | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigConjure | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more creatures you control deal combat damage to a player, conjure a random card from CARDNAME's spellbook into exile. You may play that card until the end of your next turn.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | AtRandom$ True | Spellbook$ Blade Juggler,Body Count,Dead Revels,Drill Bit,Hackrobat,Light Up the Stage,Rafter Demon,Rix Maadi Reveler,Skewer the Critics,Spawn of Mayhem,Spikewheel Acrobat | RememberMade$ True | SubAbility$ DBEffect | Zone$ Exile\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play the exiled card until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Menace\\nWard — Pay 3 life.\\nWhenever one or more creatures you control deal combat damage to a player, conjure a random card from Dazzling Flameweaver's spellbook into exile. You may play that card until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dazzling Flameweaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

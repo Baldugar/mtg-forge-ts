@@ -1,0 +1,23 @@
+{
+  "id": "command-of-unsummoning-corpus-m676",
+  "description": "M6 corpus — Command of Unsummoning; in-hand parse.",
+  "seed": 62411,
+  "cards": {
+    "Command of Unsummoning": "Name:Command of Unsummoning\nManaCost:2 U\nTypes:Instant\nA:SP$ ChangeZone | TargetMin$ 1 | TargetMax$ 2 | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | Origin$ Battlefield | Destination$ Hand | CheckSVar$ X | ActivationPhases$ Declare Attackers | SpellDescription$ Cast CARDNAME only during the declare attackers step and only if you've been attacked this step. Return one or two target attacking creatures to their owner's hand.\nSVar:X:PlayerCountPropertyYou$HasPropertyBeenAttackedThisCombat\nOracle:Cast this spell only during the declare attackers step and only if you've been attacked this step.\\nReturn one or two target attacking creatures to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Command of Unsummoning"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

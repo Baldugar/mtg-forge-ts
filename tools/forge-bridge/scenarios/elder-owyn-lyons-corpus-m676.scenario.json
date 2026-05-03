@@ -1,0 +1,23 @@
+{
+  "id": "elder-owyn-lyons-corpus-m676",
+  "description": "M6 corpus — Elder Owyn Lyons; in-hand parse.",
+  "seed": 64360,
+  "cards": {
+    "Elder Owyn Lyons": "Name:Elder Owyn Lyons\nManaCost:2 W U\nTypes:Legendary Creature Human Knight\nPT:3/3\nS:Mode$ Continuous | Affected$ Artifact.YouCtrl | AddKeyword$ Ward:1 | Description$ Artifacts you control have ward {1}. (Whenever an artifact you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters or dies, return target artifact card from your graveyard to your hand.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | TriggerZones$ Battlefield | Secondary$ True | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters or dies, return target artifact card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.YouCtrl | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact from your graveyard\nDeckHints:Type$Artifact\nDeckHas:Ability$Graveyard\nOracle:Artifacts you control have ward {1}. (Whenever an artifact you control becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\\nWhen Elder Owyn Lyons enters or dies, return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elder Owyn Lyons"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fungal-shambler-corpus-m676",
+  "description": "M6 corpus — Fungal Shambler; in-hand parse.",
+  "seed": 65836,
+  "cards": {
+    "Fungal Shambler": "Name:Fungal Shambler\nManaCost:4 B G U\nTypes:Creature Fungus Beast\nPT:6/4\nK:Trample\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigDrawDiscard | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, you draw a card and that opponent discards a card.\nSVar:TrigDrawDiscard:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:Trample\\nWhenever Fungal Shambler deals damage to an opponent, you draw a card and that opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fungal Shambler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flash-thompson-spider-fan-corpus-m676",
+  "description": "M6 corpus — Flash Thompson, Spider-Fan; in-hand parse.",
+  "seed": 65468,
+  "cards": {
+    "Flash Thompson, Spider-Fan": "Name:Flash Thompson, Spider-Fan\nVariant:UniversesWithin:FlavorName:Basil, Cabaretti Loudmouth\nManaCost:1 W\nTypes:Legendary Creature Human Citizen\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When NICKNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 1 | CharmNum$ 2 | Choices$ DBHeckle,DBHeroWorship\nSVar:DBHeckle:DB$ Tap | ValidTgts$ Creature | SpellDescription$ Heckle — Tap target creature.\nSVar:DBHeroWorship:DB$ Untap | ValidTgts$ Creature | SpellDescription$ Hero Worship — Untap target creature.\nOracle:Flash\\nWhen Flash Thompson enters, choose one or both —\\n• Heckle — Tap target creature.\\n• Hero Worship — Untap target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flash Thompson, Spider-Fan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

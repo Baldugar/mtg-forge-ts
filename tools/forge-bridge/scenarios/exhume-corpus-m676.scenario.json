@@ -1,0 +1,23 @@
+{
+  "id": "exhume-corpus-m676",
+  "description": "M6 corpus — Exhume; in-hand parse.",
+  "seed": 64860,
+  "cards": {
+    "Exhume": "Name:Exhume\nManaCost:1 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature | DefinedPlayer$ Player | ChangeNum$ 1 | Hidden$ True | Mandatory$ True | SpellDescription$ Each player puts a creature card from their graveyard onto the battlefield.\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nSVar:NeedsToPlayVar:X GE1\nOracle:Each player puts a creature card from their graveyard onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exhume"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

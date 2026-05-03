@@ -1,0 +1,25 @@
+{
+  "id": "drelnoch-corpus-m676",
+  "description": "M6 corpus — Drelnoch; ETB-on-bf.",
+  "seed": 64042,
+  "cards": {
+    "Drelnoch": "Name:Drelnoch\nManaCost:4 U\nTypes:Creature Yeti Mutant\nPT:3/3\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME becomes blocked, you may draw two cards.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | OptionalDecider$ You\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Drelnoch becomes blocked, you may draw two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Drelnoch"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

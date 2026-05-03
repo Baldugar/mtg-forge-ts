@@ -1,0 +1,23 @@
+{
+  "id": "coal-stoker-corpus-m676",
+  "description": "M6 corpus — Coal Stoker; in-hand parse.",
+  "seed": 62313,
+  "cards": {
+    "Coal Stoker": "Name:Coal Stoker\nManaCost:3 R\nTypes:Creature Elemental\nPT:3/3\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.wasCastFromYourHandByYou+Self | Execute$ TrigMana | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, add {R}{R}{R}.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ 3\nOracle:When Coal Stoker enters, if you cast it from your hand, add {R}{R}{R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coal Stoker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

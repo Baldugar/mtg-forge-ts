@@ -1,0 +1,23 @@
+{
+  "id": "farmer-cotton-corpus-m676",
+  "description": "M6 corpus — Farmer Cotton; in-hand parse.",
+  "seed": 65086,
+  "cards": {
+    "Farmer Cotton": "Name:Farmer Cotton\nManaCost:X G W\nTypes:Legendary Creature Halfling Peasant\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create X 1/1 white Halfling creature tokens and X Food tokens. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_halfling,c_a_food_sac | TokenOwner$ You\nSVar:X:Count$xPaid\nDeckHas:Ability$Token|Sacrifice|LifeGain & Type$Artifact|Food\nOracle:When Farmer Cotton enters, create X 1/1 white Halfling creature tokens and X Food tokens. (They're artifacts with \"{2}, {T}, Sacrifice this artifact: You gain 3 life.\")\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farmer Cotton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

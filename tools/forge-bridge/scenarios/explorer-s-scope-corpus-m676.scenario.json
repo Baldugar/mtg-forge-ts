@@ -1,0 +1,23 @@
+{
+  "id": "explorer-s-scope-corpus-m676",
+  "description": "M6 corpus — Explorer's Scope; in-hand parse.",
+  "seed": 64896,
+  "cards": {
+    "Explorer's Scope": "Name:Explorer's Scope\nManaCost:1\nTypes:Artifact Equipment\nK:Equip:1\nT:Mode$ Attacks | ValidCard$ Card.AttachedBy | Execute$ TrigDig | TriggerDescription$ Whenever equipped creature attacks, look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | ChangeNum$ All | ForceRevealToController$ True | Optional$ True | PromptToSkipOptionalAbility$ True | OptionalAbilityPrompt$ Would you like to put the land onto the battlefield tapped? | ChangeValid$ Land | DestinationZone$ Battlefield | Tapped$ True | LibraryPosition2$ 0\nOracle:Whenever equipped creature attacks, look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped.\\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Explorer's Scope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "elsha-threefold-master-corpus-m676",
+  "description": "M6 corpus — Elsha, Threefold Master; in-hand parse.",
+  "seed": 64441,
+  "cards": {
+    "Elsha, Threefold Master": "Name:Elsha, Threefold Master\nManaCost:U R W\nTypes:Legendary Creature Djinn Monk\nPT:1/1\nK:Trample\nK:Prowess\nT:Mode$ DamageDone | ValidSource$ Card.Self | Execute$ TrigToken | CombatDamage$ True | ValidTarget$ Player | TriggerZones$ Battlefield | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, create that many 1/1 white Monk creature tokens with prowess.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_monk_prowess | TokenOwner$ You\nSVar:X:TriggerCount$DamageAmount\nDeckHas:Ability$Token\nOracle:Trample\\nProwess (Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)\\nWhenever Elsha deals combat damage to a player, create that many 1/1 white Monk creature tokens with prowess.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elsha, Threefold Master"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

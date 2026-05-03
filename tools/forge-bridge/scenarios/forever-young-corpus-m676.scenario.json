@@ -1,0 +1,23 @@
+{
+  "id": "forever-young-corpus-m676",
+  "description": "M6 corpus — Forever Young; in-hand parse.",
+  "seed": 65643,
+  "cards": {
+    "Forever Young": "Name:Forever Young\nManaCost:1 B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Library | TargetMin$ 0 | TargetMax$ X | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | SpellDescription$ Put any number of target creature cards from your graveyard on top of your library. Draw a card. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You\nSVar:X:Count$ValidGraveyard Creature.YouOwn\nOracle:Put any number of target creature cards from your graveyard on top of your library.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forever Young"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "denied-corpus-m676",
+  "description": "M6 corpus — Denied!; in-hand parse.",
+  "seed": 63458,
+  "cards": {
+    "Denied!": "Name:Denied!\nManaCost:U\nTypes:Instant\nA:SP$ NameCard | Defined$ You | AILogic$ MostProminentInHumanDeck | SubAbility$ DBTarget | SpellDescription$ Choose a card name,\nSVar:DBTarget:DB$ Pump | TargetType$ Spell | ValidTgts$ Card | TgtZone$ Stack | SubAbility$ DBRevealHand | StackDescription$ None\nSVar:DBRevealHand:DB$ RevealHand | Defined$ TargetedController | RememberRevealed$ True | SubAbility$ DBCounter | SpellDescription$ then target spell's controller reveals their hand.\nSVar:DBCounter:DB$ Counter | Defined$ Targeted | ConditionDefined$ Remembered | ConditionPresent$ Card.NamedCard | ConditionCompare$ GE1 | SubAbility$ DBCleanup | SpellDescription$ If a card with the chosen name is revealed this way, counter that spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Choose a card name, then target spell's controller reveals their hand. If a card with the chosen name is revealed this way, counter that spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Denied!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

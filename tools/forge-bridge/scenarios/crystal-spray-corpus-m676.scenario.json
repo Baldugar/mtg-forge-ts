@@ -1,0 +1,23 @@
+{
+  "id": "crystal-spray-corpus-m676",
+  "description": "M6 corpus — Crystal Spray; in-hand parse.",
+  "seed": 62865,
+  "cards": {
+    "Crystal Spray": "Name:Crystal Spray\nManaCost:2 U\nTypes:Instant\nA:SP$ GenericChoice | ValidTgts$ Card | TgtZone$ Stack,Battlefield | TgtPrompt$ Choose target spell or permanent | Choices$ ChangeColor,ChangeType | Defined$ You | StackDescription$ Change the text of target spell or permanent by replacing all instances of one color word with another or one basic land type with another until end of turn. Draw a card. | SpellDescription$ Change the text of target spell or permanent by replacing all instances of one color word with another or one basic land type with another until end of turn. Draw a card.\nSVar:ChangeColor:DB$ ChangeText | Defined$ ParentTarget | ChangeColorWord$ Choose Choose | SubAbility$ DBDraw | SpellDescription$ Change color\nSVar:ChangeType:DB$ ChangeText | Defined$ ParentTarget | ChangeTypeWord$ ChooseBasicLandType ChooseBasicLandType | SubAbility$ DBDraw | SpellDescription$ Change type\nSVar:DBDraw:DB$ Draw\nAI:RemoveDeck:Random\nAI:RemoveDeck:All\nOracle:Change the text of target spell or permanent by replacing all instances of one color word with another or one basic land type with another until end of turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crystal Spray"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

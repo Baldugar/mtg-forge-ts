@@ -1,0 +1,25 @@
+{
+  "id": "ebony-horse-corpus-m676",
+  "description": "M6 corpus — Ebony Horse; ETB-on-bf.",
+  "seed": 64280,
+  "cards": {
+    "Ebony Horse": "Name:Ebony Horse\nManaCost:3\nTypes:Artifact\nA:AB$ Untap | Cost$ 2 T | ValidTgts$ Creature.attacking+YouCtrl | TgtPrompt$ Select target attacking creature you control | SubAbility$ DBEffect | SpellDescription$ Untap target attacking creature you control. Prevent all combat damage that would be dealt to and dealt by that creature this turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPrevent1,RPrevent2 | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:RPrevent1:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidSource$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by that creature this turn.\nSVar:RPrevent2:Event$ DamageDone | Prevent$ True | IsCombat$ True | ValidTarget$ Card.IsRemembered | Description$ Prevent all combat damage that would be dealt to and dealt by that creature this turn. | Secondary$ True\nAI:RemoveDeck:All\nOracle:{2}, {T}: Untap target attacking creature you control. Prevent all combat damage that would be dealt to and dealt by that creature this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ebony Horse"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

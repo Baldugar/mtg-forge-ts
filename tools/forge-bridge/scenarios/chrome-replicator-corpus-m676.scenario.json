@@ -1,0 +1,23 @@
+{
+  "id": "chrome-replicator-corpus-m676",
+  "description": "M6 corpus — Chrome Replicator; in-hand parse.",
+  "seed": 62112,
+  "cards": {
+    "Chrome Replicator": "Name:Chrome Replicator\nManaCost:5\nTypes:Artifact Creature Construct\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ X | SVarCompare$ GE2 | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if you control two or more nonland, nontoken permanents with the same name as one another, create a 4/4 colorless Construct artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_4_4_a_construct | TokenOwner$ You\nSVar:X:Count$MostCardName Permanent.nonLand+!token+YouCtrl\nDeckHas:Ability$Token\nOracle:When Chrome Replicator enters, if you control two or more nonland, nontoken permanents with the same name as one another, create a 4/4 colorless Construct artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chrome Replicator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

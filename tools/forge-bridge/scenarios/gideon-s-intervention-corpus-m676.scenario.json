@@ -1,0 +1,23 @@
+{
+  "id": "gideon-s-intervention-corpus-m676",
+  "description": "M6 corpus — Gideon's Intervention; in-hand parse.",
+  "seed": 66178,
+  "cards": {
+    "Gideon's Intervention": "Name:Gideon's Intervention\nManaCost:2 W W\nTypes:Enchantment\nK:ETBReplacement:Other:DBNameCard\nSVar:DBNameCard:DB$ NameCard | Defined$ You | SpellDescription$ As CARDNAME enters, name a card.\nS:Mode$ CantBeCast | ValidCard$ Card.NamedCard+nonLand | Caster$ Opponent | Description$ Your opponents can't cast spells with the chosen name.\nR:Event$ DamageDone | ActiveZones$ Battlefield | Prevent$ True | ValidTarget$ You,Permanent.YouCtrl | ValidSource$ Card.NamedCard | Description$ Prevent all damage that would be dealt to you and permanents you control by sources with the chosen name.\nAI:RemoveDeck:Random\nOracle:As Gideon's Intervention enters, choose a card name.\\nYour opponents can't cast spells with the chosen name.\\nPrevent all damage that would be dealt to you and permanents you control by sources with the chosen name.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon's Intervention"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

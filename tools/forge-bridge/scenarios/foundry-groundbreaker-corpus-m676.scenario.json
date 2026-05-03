@@ -1,0 +1,23 @@
+{
+  "id": "foundry-groundbreaker-corpus-m676",
+  "description": "M6 corpus — Foundry Groundbreaker; in-hand parse.",
+  "seed": 65696,
+  "cards": {
+    "Foundry Groundbreaker": "Name:Foundry Groundbreaker\nManaCost:3 G\nTypes:Creature Artificer\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSacrifice | TriggerDescription$ When CARDNAME enters, sacrifice a land. Then conjure two cards named Mishra's Foundry onto the battlefield tapped.\nSVar:TrigSacrifice:DB$ Sacrifice | SacValid$ Land | Defined$ You | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | Name$ Mishra's Foundry | Amount$ 2 | Zone$ Battlefield | Tapped$ True\nDeckHas:Ability$Sacrifice & Type$Assembly-Worker|Artifact\nOracle:When Foundry Groundbreaker enters, sacrifice a land. Then conjure two cards named Mishra's Foundry onto the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foundry Groundbreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

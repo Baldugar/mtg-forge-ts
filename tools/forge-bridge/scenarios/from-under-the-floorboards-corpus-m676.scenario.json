@@ -1,0 +1,23 @@
+{
+  "id": "from-under-the-floorboards-corpus-m676",
+  "description": "M6 corpus — From Under the Floorboards; in-hand parse.",
+  "seed": 65775,
+  "cards": {
+    "From Under the Floorboards": "Name:From Under the Floorboards\nManaCost:3 B B\nTypes:Sorcery\nK:Madness:X B B\nA:SP$ Token | TokenAmount$ Y | TokenScript$ b_2_2_zombie | TokenOwner$ You | TokenTapped$ True | SubAbility$ DBGainLife | SpellDescription$ Create three tapped 2/2 black Zombie creature tokens and you gain 3 life. If CARDNAME's madness cost was paid, instead create X of those tokens and you gain X life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ Y\nSVar:X:Count$xPaid\nSVar:Y:Count$Madness.X.3\nDeckHints:Ability$Discard\nOracle:Madness {X}{B}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\\nCreate three tapped 2/2 black Zombie creature tokens and you gain 3 life. If this spell's madness cost was paid, instead create X of those tokens and you gain X life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "From Under the Floorboards"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

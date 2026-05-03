@@ -1,0 +1,23 @@
+{
+  "id": "complex-automaton-corpus-m676",
+  "description": "M6 corpus — Complex Automaton; in-hand parse.",
+  "seed": 62446,
+  "cards": {
+    "Complex Automaton": "Name:Complex Automaton\nManaCost:4\nTypes:Artifact Creature Golem\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | IsPresent$ Permanent.YouCtrl | PresentCompare$ GE7 | TriggerZones$ Battlefield | Execute$ TrigBounce | TriggerDescription$ At the beginning of your upkeep, if you control seven or more permanents, return CARDNAME to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Self\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, if you control seven or more permanents, return Complex Automaton to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Complex Automaton"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

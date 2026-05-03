@@ -1,0 +1,23 @@
+{
+  "id": "owyn-fearless-knight-corpus-m676",
+  "description": "M6 corpus — Éowyn, Fearless Knight; in-hand parse.",
+  "seed": 64666,
+  "cards": {
+    "Éowyn, Fearless Knight": "Name:Éowyn, Fearless Knight\nManaCost:2 R W\nTypes:Legendary Creature Human Knight\nPT:3/4\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls with greater power. Legendary creatures you control gain protection from each of that creature's colors until end of turn.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl+powerGTX | TgtPrompt$ Select target creature an opponent controls with greater power | SubAbility$ DBProtection\nSVar:DBProtection:DB$ ProtectionAll | ValidCards$ Creature.YouCtrl+Legendary | Gains$ TargetedCardColor\nSVar:X:Count$CardPower\nDeckHints:Type$Legendary\nOracle:Haste\\nWhen Éowyn, Fearless Knight enters, exile target creature an opponent controls with greater power. Legendary creatures you control gain protection from each of that creature's colors until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Éowyn, Fearless Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

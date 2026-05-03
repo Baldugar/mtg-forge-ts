@@ -1,0 +1,25 @@
+{
+  "id": "darkslick-shores-corpus-m676",
+  "description": "M6 corpus — Darkslick Shores; ETB-on-bf.",
+  "seed": 63101,
+  "cards": {
+    "Darkslick Shores": "Name:Darkslick Shores\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control two or fewer other lands.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.YouCtrl | ConditionCompare$ GT2\nA:AB$ Mana | Cost$ T | Produced$ Combo U B | SpellDescription$ Add {U} or {B}.\nOracle:Darkslick Shores enters tapped unless you control two or fewer other lands.\\n{T}: Add {U} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Darkslick Shores"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gallant-cavalry-corpus-m676",
+  "description": "M6 corpus — Gallant Cavalry; in-hand parse.",
+  "seed": 65904,
+  "cards": {
+    "Gallant Cavalry": "Name:Gallant Cavalry\nManaCost:3 W\nTypes:Creature Human Knight\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 white Knight creature token with vigilance.\nSVar:TrigToken:DB$ Token | TokenOwner$ You | TokenScript$ w_2_2_knight_vigilance\nDeckHas:Ability$Token\nOracle:Vigilance (Attacking doesn't cause this creature to tap.)\\nWhen Gallant Cavalry enters, create a 2/2 white Knight creature token with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gallant Cavalry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

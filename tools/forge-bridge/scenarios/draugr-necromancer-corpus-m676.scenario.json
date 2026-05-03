@@ -1,0 +1,25 @@
+{
+  "id": "draugr-necromancer-corpus-m676",
+  "description": "M6 corpus — Draugr Necromancer; ETB-on-bf.",
+  "seed": 63971,
+  "cards": {
+    "Draugr Necromancer": "Name:Draugr Necromancer\nManaCost:3 B\nTypes:Snow Creature Zombie Cleric\nPT:4/4\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidLKI$ Creature.!token+OppCtrl | ReplaceWith$ Exile | Description$ If a nontoken creature an opponent controls would die, exile that card with an ice counter on it instead.\nSVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ReplacedCard | WithCountersType$ ICE\nS:Mode$ Continuous | Affected$ Card.OppOwn+counters_GE1_ICE+nonLand | AffectedZone$ Exile | MayPlay$ True | MayPlaySnowIgnoreColor$ True | Description$ You may cast spells from among cards in exile your opponents own with ice counters on them, and you may spend mana from snow sources as though it were mana of any color to cast those spells.\nDeckHas:Ability$Counters\nDeckNeeds:Type$Snow\nOracle:If a nontoken creature an opponent controls would die, exile that card with an ice counter on it instead.\\nYou may cast spells from among cards in exile your opponents own with ice counters on them, and you may spend mana from snow sources as though it were mana of any color to cast those spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Draugr Necromancer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

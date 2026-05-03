@@ -1,0 +1,23 @@
+{
+  "id": "eleven-the-mage-corpus-m676",
+  "description": "M6 corpus — Eleven, the Mage; in-hand parse.",
+  "seed": 64415,
+  "cards": {
+    "Eleven, the Mage": "Name:Eleven, the Mage\nVariant:UniversesWithin:FlavorName:Cecily, Haunted Mage\nManaCost:1 U B R\nTypes:Legendary Creature Human Wizard\nPT:3/5\nS:Mode$ Continuous | Affected$ You | SetMaxHandSize$ 11 | Description$ Your maximum hand size is eleven.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you draw a card and you lose 1 life. Then if you have eleven or more cards in your hand, you may cast an instant or sorcery spell from your hand without paying its mana cost.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1 | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | ConditionCheckSVar$ HandSize | ConditionSVarCompare$ GE11 | Valid$ Card.YouOwn | ValidSA$ Instant,Sorcery | ValidZone$ Hand | WithoutManaCost$ True | Amount$ 1 | Controller$ You | Optional$ True\nSVar:HandSize:Count$ValidHand Card.YouOwn\nK:Partner:Friends forever\nSVar:HasAttackEffect:TRUE\nDeckHints:Type$Instant|Sorcery\nOracle:Your maximum hand size is eleven.\\nWhenever Eleven, the Mage attacks, you draw a card and you lose 1 life. Then if you have eleven or more cards in your hand, you may cast an instant or sorcery spell from your hand without paying its mana cost.\\nPartner—Friends forever (You can have two commanders if both have this ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eleven, the Mage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

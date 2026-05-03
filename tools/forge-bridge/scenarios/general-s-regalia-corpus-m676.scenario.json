@@ -1,0 +1,25 @@
+{
+  "id": "general-s-regalia-corpus-m676",
+  "description": "M6 corpus — General's Regalia; ETB-on-bf.",
+  "seed": 66034,
+  "cards": {
+    "General's Regalia": "Name:General's Regalia\nManaCost:3\nTypes:Artifact\nA:AB$ ChooseSource | Cost$ 3 | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, that damage is dealt to target creature you control instead.\nSVar:DBEffect:DB$ Effect | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control to redirect damage to | ReplacementEffects$ GeneralDamage | ExileOnMoved$ Battlefield | RememberObjects$ Targeted | SubAbility$ DBCleanup\nSVar:GeneralDamage:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | DamageTarget$ Remembered | ReplaceWith$ GeneralDmg | Description$ The next time a source of your choice would deal damage to you this turn, that damage is dealt to target creature you control instead.\nSVar:GeneralDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ Remembered | VarType$ Card | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nAI:RemoveDeck:All\nOracle:{3}: The next time a source of your choice would deal damage to you this turn, that damage is dealt to target creature you control instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "General's Regalia"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

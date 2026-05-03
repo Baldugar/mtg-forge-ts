@@ -1,0 +1,23 @@
+{
+  "id": "enduring-friendship-corpus-m676",
+  "description": "M6 corpus — Enduring Friendship; in-hand parse.",
+  "seed": 64590,
+  "cards": {
+    "Enduring Friendship": "Name:Enduring Friendship\nManaCost:1 U R\nTypes:Enchantment Creature Otter Glimmer\nPT:2/2\nK:Double team\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast an instant or sorcery spell, creatures you control that are Otters and/or enchantments get +1/+1 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.Otter+YouCtrl,Creature.Enchantment+YouCtrl | NumAtt$ +1 | NumDef$ +1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self+Creature | Execute$ DBReturn | TriggerDescription$ When CARDNAME dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\nSVar:DBReturn:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Battlefield | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Enchantment | RemoveCardTypes$ True\nOracle:Double team\\nWhenever you cast an instant or sorcery spell, creatures you control that are Otters and/or enchantments get +1/+1 until end of turn. When Enduring Friendship dies, if it was a creature, return it to the battlefield under its owner's control. It's an enchantment. (It's not a creature.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enduring Friendship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

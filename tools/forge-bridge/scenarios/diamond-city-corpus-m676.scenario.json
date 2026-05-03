@@ -1,0 +1,23 @@
+{
+  "id": "diamond-city-corpus-m676",
+  "description": "M6 corpus — Diamond City; in-hand parse.",
+  "seed": 63599,
+  "cards": {
+    "Diamond City": "Name:Diamond City\nManaCost:no cost\nTypes:Land\nK:etbCounter:SHIELD:1\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ MoveCounter | Cost$ T | Source$ Self | ValidTgts$ Creature | CheckSVar$ X | SVarCompare$ GE2 | CounterType$ SHIELD | CounterNum$ 1 | SpellDescription$ Move a shield counter from CARDNAME onto target creature. Activate only if two or more creatures entered the battlefield under your control this turn.\nSVar:X:Count$ThisTurnEntered_Battlefield_Creature.YouCtrl\nDeckHas:Ability$Counters\nOracle:Diamond City enters with a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\\n{T}: Add {C}.\\n{T}: Move a shield counter from Diamond City onto target creature. Activate only if two or more creatures entered the battlefield under your control this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diamond City"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

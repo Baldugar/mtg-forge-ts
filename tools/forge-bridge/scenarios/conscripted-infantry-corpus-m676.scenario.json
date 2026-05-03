@@ -1,0 +1,23 @@
+{
+  "id": "conscripted-infantry-corpus-m676",
+  "description": "M6 corpus — Conscripted Infantry; in-hand parse.",
+  "seed": 62495,
+  "cards": {
+    "Conscripted Infantry": "Name:Conscripted Infantry\nManaCost:2 R\nTypes:Creature Human Soldier\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 colorless Soldier artifact creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_1_1_a_soldier\nSVar:SacMe:3\nDeckHas:Ability$Token & Type$Artifact\nOracle:When Conscripted Infantry dies, create a 1/1 colorless Soldier artifact creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conscripted Infantry"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

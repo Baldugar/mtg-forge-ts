@@ -1,0 +1,23 @@
+{
+  "id": "dromar-s-charm-corpus-m676",
+  "description": "M6 corpus — Dromar's Charm; in-hand parse.",
+  "seed": 64063,
+  "cards": {
+    "Dromar's Charm": "Name:Dromar's Charm\nManaCost:W U B\nTypes:Instant\nA:SP$ Charm | Choices$ DBGainLife,DBCounter,DBPump | Defined$ You\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 5 | Defined$ You | SpellDescription$ You gain 5 life.\nSVar:DBCounter:DB$ Counter | TargetType$ Spell | ValidTgts$ Card | TgtPrompt$ Counter target spell | SpellDescription$ Counter target spell.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True | SpellDescription$ Target creature gets -2/-2 until end of turn.\nOracle:Choose one —\\n• You gain 5 life.\\n• Counter target spell.\\n• Target creature gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dromar's Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

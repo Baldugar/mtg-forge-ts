@@ -1,0 +1,23 @@
+{
+  "id": "discovery-corpus-m676",
+  "description": "M6 corpus — Discovery; in-hand parse.",
+  "seed": 63685,
+  "cards": {
+    "Discovery": "Name:Discovery\nManaCost:1 UB\nTypes:Sorcery\nA:SP$ Surveil | Amount$ 2 | SubAbility$ DBDraw | SpellDescription$ Surveil 2, then draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$Surveil|Graveyard\nAlternateMode:Split\nOracle:Surveil 2, then draw a card. (To surveil 2, look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\n\nALTERNATE\n\nName:Dispersal\nManaCost:3 U B\nTypes:Instant\nA:SP$ RepeatEach | RepeatPlayers$ Player.Opponent | RepeatSubAbility$ TrigChooseReturn | SubAbility$ DBReturn | SpellDescription$ Each opponent returns a nonland permanent they control with the highest mana value among permanents they control to its owner's hand, then discards a card.\nSVar:TrigChooseReturn:DB$ ChooseCard | Defined$ Remembered | Choices$ Permanent.greatestCMC_NonLandPermanentControlledByRemembered | ChoiceTitle$ Choose a nonland permanent with the highest mana value | Mandatory$ True | RememberChosen$ True\nSVar:DBReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Remembered | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ Player.Opponent | NumCards$ 1 | Mode$ TgtChoose | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Each opponent returns a nonland permanent they control with the highest mana value among permanents they control to its owner's hand, then discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Discovery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

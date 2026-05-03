@@ -1,0 +1,25 @@
+{
+  "id": "displacer-kitten-corpus-m676",
+  "description": "M6 corpus — Displacer Kitten; ETB-on-bf.",
+  "seed": 63711,
+  "cards": {
+    "Displacer Kitten": "Name:Displacer Kitten\nManaCost:3 U\nTypes:Creature Cat Beast\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ DBBlink | TriggerZones$ Battlefield | TriggerDescription$ Avoidance — Whenever you cast a noncreature spell, exile up to one target nonland permanent you control, then return it to the battlefield under its owner's control.\nSVar:DBBlink:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Permanent.nonLand+YouCtrl | TgtPrompt$ Select up to one target nonland permanent you control | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBReturn | RememberChanged$ True | SpellDescription$ Exile up to one target nonland permanent you control, then return it to the battlefield under its owner's control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Card.nonCreature\nOracle:Avoidance — Whenever you cast a noncreature spell, exile up to one target nonland permanent you control, then return it to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Displacer Kitten"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

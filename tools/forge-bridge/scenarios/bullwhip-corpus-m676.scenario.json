@@ -1,0 +1,25 @@
+{
+  "id": "bullwhip-corpus-m676",
+  "description": "M6 corpus — Bullwhip; ETB-on-bf.",
+  "seed": 61499,
+  "cards": {
+    "Bullwhip": "Name:Bullwhip\nManaCost:4\nTypes:Artifact\nA:AB$ DealDamage | Cost$ 2 T | ValidTgts$ Creature | NumDmg$ 1 | SubAbility$ DBPump | SpellDescription$ CARDNAME deals 1 damage to target creature. That creature attacks this turn if able.\nSVar:DBPump:DB$ Effect | Defined$ Targeted | StaticAbilities$ MustAttack | RememberObjects$ Targeted | ExileOnMoved$ Battlefield\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ This creature attacks this turn if able.\nOracle:{2}, {T}: Bullwhip deals 1 damage to target creature. That creature attacks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Bullwhip"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eager-construct-corpus-m676",
+  "description": "M6 corpus — Eager Construct; in-hand parse.",
+  "seed": 64235,
+  "cards": {
+    "Eager Construct": "Name:Eager Construct\nManaCost:2\nTypes:Artifact Creature Construct\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBScry | TriggerDescription$ When CARDNAME enters, each player may scry 1. (To scry 1, look at the top card of your library, then you may put that card on the bottom of your library.)\nSVar:DBScry:DB$ Scry | ScryNum$ 1 | Defined$ Player | Optional$ True\nOracle:When Eager Construct enters, each player may scry 1. (To scry 1, look at the top card of your library, then you may put that card on the bottom of your library.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eager Construct"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

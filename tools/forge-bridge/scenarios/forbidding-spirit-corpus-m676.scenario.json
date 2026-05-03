@@ -1,0 +1,23 @@
+{
+  "id": "forbidding-spirit-corpus-m676",
+  "description": "M6 corpus — Forbidding Spirit; in-hand parse.",
+  "seed": 65622,
+  "cards": {
+    "Forbidding Spirit": "Name:Forbidding Spirit\nManaCost:1 W W\nTypes:Creature Spirit Cleric\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TempAttackTax | TriggerDescription$ When CARDNAME enters, until your next turn, creatures can't attack you or planeswalkers you control unless their controller pays {2} for each of those creatures.\nSVar:TempAttackTax:DB$ Effect | StaticAbilities$ TempoCantAttack | Duration$ UntilYourNextTurn | SpellDescription$ Until your next turn, creatures can't attack you or a planeswalker you control unless their controller pays {2} for each of those creatures.\nSVar:TempoCantAttack:Mode$ CantAttackUnless | ValidCard$ Creature | Target$ You,Planeswalker.YouCtrl | Cost$ 2 | Description$ Until your next turn, creatures can't attack you or a planeswalker you control unless their controller pays {2} for each of those creatures.\nOracle:When Forbidding Spirit enters, until your next turn, creatures can't attack you or planeswalkers you control unless their controller pays {2} for each of those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forbidding Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

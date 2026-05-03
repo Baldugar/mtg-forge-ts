@@ -1,0 +1,23 @@
+{
+  "id": "commence-the-endgame-corpus-m676",
+  "description": "M6 corpus — Commence the Endgame; in-hand parse.",
+  "seed": 62423,
+  "cards": {
+    "Commence the Endgame": "Name:Commence the Endgame\nManaCost:4 U U\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards, then amass Zombies X, where X is the number of cards in your hand. (Put X +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.) | SubAbility$ DBAmass\nSVar:DBAmass:DB$ Amass | Type$ Zombie | Num$ X\nSVar:X:Count$ValidHand Card.YouOwn\nDeckHas:Ability$Amass|Counters|Token\nDeckHints:Ability$Amass & Type$Zombie\nOracle:This spell can't be countered.\\nDraw two cards, then amass Zombies X, where X is the number of cards in your hand. (Put X +1/+1 counters on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commence the Endgame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

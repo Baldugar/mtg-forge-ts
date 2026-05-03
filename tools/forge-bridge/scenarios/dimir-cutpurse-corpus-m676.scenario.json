@@ -1,0 +1,23 @@
+{
+  "id": "dimir-cutpurse-corpus-m676",
+  "description": "M6 corpus — Dimir Cutpurse; in-hand parse.",
+  "seed": 63626,
+  "cards": {
+    "Dimir Cutpurse": "Name:Dimir Cutpurse\nManaCost:1 U B\nTypes:Creature Spirit\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDrawDiscard | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, that player discards a card and you draw a card.\nSVar:TrigDrawDiscard:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 1 | Mode$ TgtChoose\nOracle:Whenever Dimir Cutpurse deals combat damage to a player, that player discards a card and you draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dimir Cutpurse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fumigate-corpus-m676",
+  "description": "M6 corpus — Fumigate; in-hand parse.",
+  "seed": 65823,
+  "cards": {
+    "Fumigate": "Name:Fumigate\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBGainLife | SpellDescription$ Destroy all creatures. You gain 1 life for each creature destroyed this way.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | SubAbility$ DBCleanup | LifeAmount$ X\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Destroy all creatures. You gain 1 life for each creature destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fumigate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

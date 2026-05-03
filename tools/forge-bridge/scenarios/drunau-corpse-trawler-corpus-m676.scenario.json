@@ -1,0 +1,23 @@
+{
+  "id": "drunau-corpse-trawler-corpus-m676",
+  "description": "M6 corpus — Drunau Corpse Trawler; in-hand parse.",
+  "seed": 64111,
+  "cards": {
+    "Drunau Corpse Trawler": "Name:Drunau Corpse Trawler\nManaCost:3 U\nTypes:Creature Zombie\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nA:AB$ Pump | Cost$ 2 B | ValidTgts$ Zombie | TgtPrompt$ Select target Zombie | KW$ Deathtouch | SpellDescription$ Target Zombie gains deathtouch until end of turn.\nDeckHints:Type$Zombie\nOracle:When Drunau Corpse Trawler enters, create a 2/2 black Zombie creature token.\\n{2}{B}: Target Zombie gains deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drunau Corpse Trawler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

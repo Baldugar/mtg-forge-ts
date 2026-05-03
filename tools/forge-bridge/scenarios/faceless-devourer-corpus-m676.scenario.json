@@ -1,0 +1,23 @@
+{
+  "id": "faceless-devourer-corpus-m676",
+  "description": "M6 corpus — Faceless Devourer; in-hand parse.",
+  "seed": 64966,
+  "cards": {
+    "Faceless Devourer": "Name:Faceless Devourer\nManaCost:2 B\nTypes:Creature Nightmare Horror\nPT:2/1\nK:Shadow\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile another target creature with shadow.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return the exiled card to the battlefield under its owner's control.\nSVar:TrigExile:DB$ ChangeZone | TargetMin$ 1 | IsCurse$ True | ValidTgts$ Creature.withShadow+Other | TgtPrompt$ Select another target creature with shadow | RememberTargets$ True | ForgetOtherTargets$ True | Origin$ Battlefield | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield\nSVar:PlayMain1:TRUE\nOracle:Shadow (This creature can block or be blocked by only creatures with shadow.)\\nWhen Faceless Devourer enters, exile another target creature with shadow.\\nWhen Faceless Devourer leaves the battlefield, return the exiled card to the battlefield under its owner's control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faceless Devourer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

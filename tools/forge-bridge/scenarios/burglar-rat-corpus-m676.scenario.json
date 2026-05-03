@@ -1,0 +1,23 @@
+{
+  "id": "burglar-rat-corpus-m676",
+  "description": "M6 corpus — Burglar Rat; in-hand parse.",
+  "seed": 61511,
+  "cards": {
+    "Burglar Rat": "Name:Burglar Rat\nManaCost:1 B\nTypes:Creature Rat\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ When CARDNAME enters, each opponent discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Opponent | Mode$ TgtChoose\nOracle:When Burglar Rat enters, each opponent discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burglar Rat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

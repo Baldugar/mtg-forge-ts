@@ -1,0 +1,23 @@
+{
+  "id": "eclipsed-elf-corpus-m676",
+  "description": "M6 corpus — Eclipsed Elf; in-hand parse.",
+  "seed": 64303,
+  "cards": {
+    "Eclipsed Elf": "Name:Eclipsed Elf\nManaCost:BG BG BG\nTypes:Creature Elf Scout\nPT:3/2\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a Elf, Swamp, or Forest card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Elf,Swamp,Forest | RestRandomOrder$ True\nDeckHints:Type$Elf|Swamp|Forest\nOracle:When Eclipsed Elf enters, look at the top four cards of your library. You may reveal a Elf, Swamp, or Forest card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eclipsed Elf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

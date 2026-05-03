@@ -1,0 +1,23 @@
+{
+  "id": "ertai-resurrected-corpus-m676",
+  "description": "M6 corpus — Ertai Resurrected; in-hand parse.",
+  "seed": 64714,
+  "cards": {
+    "Ertai Resurrected": "Name:Ertai Resurrected\nManaCost:2 U B\nTypes:Legendary Creature Phyrexian Human Wizard\nPT:3/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | MinCharmNum$ 0 | Choices$ DBCounter,DBDestroy\nSVar:DBCounter:DB$ Counter | TargetType$ Spell,Activated,Triggered | TgtPrompt$ Select target spell or ability | ValidTgts$ Card,Emblem | RememberForCounter$ True | SubAbility$ DBDraw | SpellDescription$ Counter target spell, activated ability, or triggered ability. Its controller draws a card.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Creature.Other,Planeswalker.Other | TgtPrompt$ Select another target creature or planeswalker | AlwaysRemember$ True | RememberLKI$ True | SubAbility$ DBDraw | SpellDescription$ Destroy another target creature or planeswalker. Its controller draws a card.\nSVar:DBDraw:DB$ Draw | Defined$ RememberedController | NumCards$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flash\\nWhen Ertai Resurrected enters, choose up to one —\\n• Counter target spell, activated ability, or triggered ability. Its controller draws a card.\\n• Destroy another target creature or planeswalker. Its controller draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ertai Resurrected"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

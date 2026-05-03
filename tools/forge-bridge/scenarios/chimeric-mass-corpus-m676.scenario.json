@@ -1,0 +1,23 @@
+{
+  "id": "chimeric-mass-corpus-m676",
+  "description": "M6 corpus — Chimeric Mass; in-hand parse.",
+  "seed": 62066,
+  "cards": {
+    "Chimeric Mass": "Name:Chimeric Mass\nManaCost:X\nTypes:Artifact\nK:etbCounter:CHARGE:X\nSVar:X:Count$xPaid\nA:AB$ Animate | Cost$ 1 | Defined$ Self | Types$ Artifact,Creature,Construct | RemoveCreatureTypes$ True | staticAbilities$ Static | SpellDescription$ Until end of turn, CARDNAME becomes a Construct artifact creature with \"This creature's power and toughness are each equal to the number of charge counters on it.\"\nSVar:Static:Mode$ Continuous | Affected$ Card.Self | EffectZone$ Battlefield | SetPower$ Y | SetToughness$ Y | Description$ This creature's power and toughness are each equal to the number of charge counters on it.\nSVar:Y:Count$CardCounters.CHARGE\nSVar:NeedsToPlayVar:Z GE4\nSVar:Z:Count$Valid Land.YouCtrl+untapped\nAI:RemoveDeck:Random\nOracle:Chimeric Mass enters with X charge counters on it.\\n{1}: Until end of turn, Chimeric Mass becomes a Construct artifact creature with \"This creature's power and toughness are each equal to the number of charge counters on it.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chimeric Mass"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "cleon-merry-champion-corpus-m676",
+  "description": "M6 corpus — Cleon, Merry Champion; ETB-on-bf.",
+  "seed": 62224,
+  "cards": {
+    "Cleon, Merry Champion": "Name:Cleon, Merry Champion\nManaCost:2 R\nTypes:Legendary Creature Human Soldier\nPT:2/2\nK:Double Strike\nT:Mode$ SpellCast | ValidActivatingPlayer$ You | TargetsValid$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Heroic — Whenever you cast a spell that targets NICKNAME, exile the top card of your library. You may play that card until the end of your next turn.\nSVar:TrigDig:DB$ Dig | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ STPlay | SubAbility$ DBCleanup | ForgetOnMoved$ Exile | Duration$ UntilTheEndOfYourNextTurn\nSVar:STPlay:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play that card until the end of your next turn.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Double strike\\nHeroic — Whenever you cast a spell that targets Cleon, exile the top card of your library. You may play that card until the end of your next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cleon, Merry Champion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

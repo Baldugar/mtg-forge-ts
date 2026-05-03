@@ -1,0 +1,23 @@
+{
+  "id": "forethought-amulet-corpus-m676",
+  "description": "M6 corpus — Forethought Amulet; in-hand parse.",
+  "seed": 65642,
+  "cards": {
+    "Forethought Amulet": "Name:Forethought Amulet\nManaCost:5\nTypes:Artifact\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {3}.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ 3\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Instant,Sorcery | ValidTarget$ You | DamageAmount$ GE3 | ReplaceWith$ Dmg2 | Description$ If an instant or sorcery source would deal 3 or more damage to you, it deals 2 damage to you instead.\nSVar:Dmg2:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ 2\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, sacrifice Forethought Amulet unless you pay {3}.\\nIf an instant or sorcery source would deal 3 or more damage to you, it deals 2 damage to you instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forethought Amulet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crown-hunter-hireling-corpus-m676",
+  "description": "M6 corpus — Crown-Hunter Hireling; in-hand parse.",
+  "seed": 62785,
+  "cards": {
+    "Crown-Hunter Hireling": "Name:Crown-Hunter Hireling\nManaCost:4 R\nTypes:Creature Ogre Mercenary\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ isMonarch | Description$ CARDNAME can't attack unless defending player is the monarch.\nOracle:When Crown-Hunter Hireling enters, you become the monarch.\\nCrown-Hunter Hireling can't attack unless defending player is the monarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crown-Hunter Hireling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

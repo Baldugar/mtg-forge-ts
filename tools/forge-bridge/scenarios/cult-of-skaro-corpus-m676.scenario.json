@@ -1,0 +1,23 @@
+{
+  "id": "cult-of-skaro-corpus-m676",
+  "description": "M6 corpus — Cult of Skaro; in-hand parse.",
+  "seed": 62879,
+  "cards": {
+    "Cult of Skaro": "Name:Cult of Skaro\nManaCost:1 U B R\nTypes:Legendary Artifact Creature Dalek\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPutCounterAll,DBDraw,DBToken,DBLoseLife | Random$ True\nSVar:DBPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.Artifact+YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | SpellDescription$ Thay — Put a +1/+1 counter on each artifact creature you control.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | SpellDescription$ Caan — Draw two cards.\nSVar:DBToken:DB$ Token | TokenScript$ b_3_3_a_dalek_menace | SpellDescription$ Sec — Create a 3/3 black Dalek artifact creature token with menace.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 4 | Defined$ Opponent | SpellDescription$ Jast — Each opponent loses 4 life.\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token|Counters & Type$Dalek|Artifact\nDeckHints:Type$Artifact & Type$Creature\nOracle:Whenever Cult of Skaro attacks, choose one at random —\\n• Thay — Put a +1/+1 counter on each artifact creature you control.\\n• Caan — Draw two cards.\\n• Sec — Create a 3/3 black Dalek artifact creature token with menace.\\n• Jast — Each opponent loses 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cult of Skaro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

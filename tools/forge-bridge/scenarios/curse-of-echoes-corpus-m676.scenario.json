@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-echoes-corpus-m676",
+  "description": "M6 corpus — Curse of Echoes; in-hand parse.",
+  "seed": 62923,
+  "cards": {
+    "Curse of Echoes": "Name:Curse of Echoes\nManaCost:4 U\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ Player.EnchantedBy | Execute$ TrigCopy | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player casts an instant or sorcery spell, each other player may copy that spell and may choose new targets for the copy they control.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ NonTriggeredCardController | Optional$ True | MayChooseTarget$ True\nAI:RemoveDeck:All\nOracle:Enchant player\\nWhenever enchanted player casts an instant or sorcery spell, each other player may copy that spell and may choose new targets for the copy they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Echoes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

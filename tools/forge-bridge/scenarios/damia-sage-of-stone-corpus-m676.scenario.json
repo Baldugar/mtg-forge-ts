@@ -1,0 +1,23 @@
+{
+  "id": "damia-sage-of-stone-corpus-m676",
+  "description": "M6 corpus — Damia, Sage of Stone; in-hand parse.",
+  "seed": 63031,
+  "cards": {
+    "Damia, Sage of Stone": "Name:Damia, Sage of Stone\nManaCost:4 B G U\nTypes:Legendary Creature Gorgon Wizard\nPT:4/4\nK:Deathtouch\nR:Event$ BeginPhase | ActiveZones$ Battlefield | ValidPlayer$ You | Phase$ Draw | Skip$ True | Description$ Skip your draw step.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | SVarCompare$ LT7 | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, if you have fewer than seven cards in hand, draw cards equal to the difference.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ Difference\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Difference:Number$7/Minus.X\nOracle:Deathtouch\\nSkip your draw step.\\nAt the beginning of your upkeep, if you have fewer than seven cards in hand, draw cards equal to the difference.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Damia, Sage of Stone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "djeru-and-hazoret-corpus-m676",
+  "description": "M6 corpus — Djeru and Hazoret; in-hand parse.",
+  "seed": 63775,
+  "cards": {
+    "Djeru and Hazoret": "Name:Djeru and Hazoret\nManaCost:2 R R W\nTypes:Legendary Creature Human God\nPT:5/4\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Vigilance & Haste | CheckSVar$ X | SVarCompare$ LE1 | Description$ As long as you have one or fewer cards in hand, CARDNAME has vigilance and haste.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Whenever CARDNAME attacks, look at the top six cards of your library. You may exile a legendary creature card from among them. Put the rest on the bottom of your library in a random order. Until end of turn, you may cast the exiled card without paying its mana cost.\nSVar:TrigDig:DB$ Dig | DigNum$ 6 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature.Legendary | DestinationZone$ Exile | DestinationZone2$ Library | LibraryPosition$ -1 | RestRandomOrder$ True | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MayPlay | RememberObjects$ Remembered | ForgetOnMoved$ Exile | SubAbility$ DBCleanup\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | MayPlayWithoutManaCost$ True | Affected$ Card.IsRemembered+nonLand | AffectedZone$ Exile | Description$ Until end of turn, you may cast this card without paying its mana cost.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:PlayMain1:TRUE\nSVar:HasAttackEffect:TRUE\nDeckNeeds:Type$Legendary\nOracle:As long as you have one or fewer cards in hand, Djeru and Hazoret has vigilance and haste.\\nWhenever Djeru and Hazoret attacks, look at the top six cards of your library. You may exile a legendary creature card from among them. Put the rest on the bottom of your library in a random order. Until end of turn, you may cast the exiled card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Djeru and Hazoret"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

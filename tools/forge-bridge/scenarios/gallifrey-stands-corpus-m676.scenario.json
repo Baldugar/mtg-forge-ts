@@ -1,0 +1,23 @@
+{
+  "id": "gallifrey-stands-corpus-m676",
+  "description": "M6 corpus — Gallifrey Stands; in-hand parse.",
+  "seed": 65912,
+  "cards": {
+    "Gallifrey Stands": "Name:Gallifrey Stands\nManaCost:4 W U\nTypes:Legendary Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return all Doctor cards from your graveyard to your hand.\nSVar:TrigReturn:DB$ ChangeZoneAll | Defined$ You | ChangeType$ Card.Doctor | Origin$ Graveyard | Destination$ Hand\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of your upkeep, you may put a Doctor creature card from your hand onto the battlefield. Then if you control thirteen or more Doctors, you win the game.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Card.Doctor | SubAbility$ DBWin\nSVar:DBWin:DB$ WinsGame | Defined$ You | ConditionPresent$ Doctor.YouCtrl | ConditionCompare$ GE13\nDeckHas:Ability$Graveyard\nDeckNeeds:Type$Doctor\nOracle:When Gallifrey Stands enters, return all Doctor cards from your graveyard to your hand.\\nAt the beginning of your upkeep, you may put a Doctor creature card from your hand onto the battlefield. Then if you control thirteen or more Doctors, you win the game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gallifrey Stands"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

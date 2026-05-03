@@ -1,0 +1,23 @@
+{
+  "id": "ferrafor-young-yew-corpus-m676",
+  "description": "M6 corpus — Ferrafor, Young Yew; in-hand parse.",
+  "seed": 65228,
+  "cards": {
+    "Ferrafor, Young Yew": "Name:Ferrafor, Young Yew\nManaCost:6 G\nTypes:Legendary Creature Treefolk Druid\nPT:4/7\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a number of 1/1 green Saproling creature tokens equal to the number of counters among creatures target player controls.\nSVar:TrigToken:DB$ Token | TokenAmount$ Count$Valid Creature.ControlledBy TargetedPlayer$CardCounters.ALL | TokenScript$ g_1_1_saproling | ValidTgts$ Player | TokenOwner$ You\nA:AB$ MultiplyCounter | Cost$ T | ValidTgts$ Creature | StackDescription$ SpellDescription | SpellDescription$ Double the number of each kind of counter on target creature.\nDeckHas:Ability$Token\nOracle:When Ferrafor enters, create a number of 1/1 green Saproling creature tokens equal to the number of counters among creatures target player controls.\\n{T}: Double the number of each kind of counter on target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ferrafor, Young Yew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

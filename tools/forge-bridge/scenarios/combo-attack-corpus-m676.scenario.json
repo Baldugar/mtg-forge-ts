@@ -1,0 +1,23 @@
+{
+  "id": "combo-attack-corpus-m676",
+  "description": "M6 corpus — Combo Attack; in-hand parse.",
+  "seed": 62402,
+  "cards": {
+    "Combo Attack": "Name:Combo Attack\nManaCost:2 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.YourTeamCtrl | TgtPrompt$ Select two target creatures your team controls | TargetMin$ 2 | TargetMax$ 2 | SubAbility$ DBEachDamage | StackDescription$ {c:ThisTargetedCard} | SpellDescription$ Two target creatures your team controls\nSVar:DBEachDamage:DB$ EachDamage | ValidTgts$ Creature | DefinedDamagers$ ParentTarget | NumDmg$ Count$CardPower | StackDescription$ REP target creature_{c:ThisTargetedCard} | SpellDescription$ each deal damage equal to their power to target creature.\nOracle:Two target creatures your team controls each deal damage equal to their power to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Combo Attack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "crash-landing-corpus-m676",
+  "description": "M6 corpus — Crash Landing; in-hand parse.",
+  "seed": 62694,
+  "cards": {
+    "Crash Landing": "Name:Crash Landing\nManaCost:2 G\nTypes:Instant\nA:SP$ Debuff | ValidTgts$ Creature.withFlying | TgtPrompt$ Select target creature with flying | Keywords$ Flying | SubAbility$ DBDamage | SpellDescription$ Target creature with flying loses flying until end of turn. CARDNAME deals damage to that creature equal to the number of Forests you control.\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ X\nSVar:X:Count$Valid Forest.YouCtrl\nOracle:Target creature with flying loses flying until end of turn. Crash Landing deals damage to that creature equal to the number of Forests you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crash Landing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

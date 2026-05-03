@@ -1,0 +1,23 @@
+{
+  "id": "gallifrey-falls-corpus-m676",
+  "description": "M6 corpus — Gallifrey Falls; in-hand parse.",
+  "seed": 65911,
+  "cards": {
+    "Gallifrey Falls": "Name:Gallifrey Falls\nManaCost:4 R R\nTypes:Instant\nK:Fuse\nA:SP$ DamageAll | ValidCards$ Creature | NumDmg$ 4 | RememberDamaged$ True | ReplaceDyingDefined$ Remembered | SubAbility$ DBCleanup | SpellDescription$ CARDNAME deals 4 damage to each creature. If a creature dealt damage this way would die this turn, exile it instead.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAlternateMode:Split\nOracle:Gallifrey Falls deals 4 damage to each creature. If a creature dealt damage this way would die this turn, exile it instead.\\nFuse (You may cast one or both halves of this card from your hand.)\n\nALTERNATE\n\nName:No More\nManaCost:2 W\nTypes:Instant\nA:SP$ Phases | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select any number of target creatures you control | TargetMin$ 0 | TargetMax$ MaxTgts | SpellDescription$ Any number of target creatures you control phase out.\nSVar:MaxTgts:Count$Valid Creature.YouCtrl\nOracle:Any number of target creatures you control phase out.\\nFuse (You may cast one or both halves of this card from your hand.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gallifrey Falls"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

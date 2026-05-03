@@ -1,0 +1,23 @@
+{
+  "id": "fearsome-temper-corpus-m676",
+  "description": "M6 corpus — Fearsome Temper; in-hand parse.",
+  "seed": 65152,
+  "cards": {
+    "Fearsome Temper": "Name:Fearsome Temper\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddAbility$ CantBlockFT | Description$ Enchanted creature gets +2/+2 and has \"{2}{R}: Target creature can't block this creature this turn.\"\nSVar:CantBlockFT:AB$ Effect | Cost$ 2 R | ValidTgts$ Creature | TgtPrompt$ Select target creature that can't block this creature this turn | IsCurse$ True | RememberObjects$ ThisTargetedCard | ForgetOnMoved$ Battlefield | StaticAbilities$ KWPump | Duration$ UntilHostLeavesPlayOrEOT | StackDescription$ {c:Targeted} can't block CARDNAME this turn. | SpellDescription$ Target creature can't block CARDNAME this turn.\nSVar:KWPump:Mode$ CantBlockBy | ValidAttacker$ Creature.EffectSource | ValidBlocker$ Creature.IsRemembered | Description$ {c:Remembered} can't block EFFECTSOURCE this turn.\nOracle:Enchant creature\\nEnchanted creature gets +2/+2 and has \"{2}{R}: Target creature can't block this creature this turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fearsome Temper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

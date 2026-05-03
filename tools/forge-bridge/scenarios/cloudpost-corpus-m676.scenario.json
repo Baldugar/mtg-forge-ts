@@ -1,0 +1,25 @@
+{
+  "id": "cloudpost-corpus-m676",
+  "description": "M6 corpus — Cloudpost; ETB-on-bf.",
+  "seed": 62302,
+  "cards": {
+    "Cloudpost": "Name:Cloudpost\nManaCost:no cost\nTypes:Land Locus\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | Amount$ X | SpellDescription$ Add {C} for each Locus on the battlefield.\nSVar:X:Count$Valid Locus\nAI:RemoveDeck:Random\nOracle:Cloudpost enters tapped.\\n{T}: Add {C} for each Locus on the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cloudpost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glasswing-grace-corpus-m676",
+  "description": "M6 corpus — Glasswing Grace; in-hand parse.",
+  "seed": 66270,
+  "cards": {
+    "Glasswing Grace": "Name:Glasswing Grace\nManaCost:3 WB WB\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | AddKeyword$ Lifelink & Flying | Description$ Enchanted creature gets +2/+2 and has flying and lifelink.\nDeckHas:Ability$LifeGain\nAlternateMode:Modal\nOracle:Enchant creature\\nEnchanted creature gets +2/+2 and has flying and lifelink.\n\nALTERNATE\n\nName:Age-Graced Chapel\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo W B | SpellDescription$ Add {W} or {B}.\nOracle:Age-Graced Chapel enters tapped.\\n{T}: Add {W} or {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glasswing Grace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

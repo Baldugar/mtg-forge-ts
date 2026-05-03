@@ -1,0 +1,23 @@
+{
+  "id": "glowing-anemone-corpus-m676",
+  "description": "M6 corpus — Glowing Anemone; in-hand parse.",
+  "seed": 66351,
+  "cards": {
+    "Glowing Anemone": "Name:Glowing Anemone\nManaCost:3 U\nTypes:Creature Jellyfish Beast\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target land to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Land | Origin$ Battlefield | Destination$ Hand\nOracle:When Glowing Anemone enters, you may return target land to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glowing Anemone"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

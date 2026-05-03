@@ -1,0 +1,23 @@
+{
+  "id": "dazzling-denial-corpus-m676",
+  "description": "M6 corpus — Dazzling Denial; in-hand parse.",
+  "seed": 63200,
+  "cards": {
+    "Dazzling Denial": "Name:Dazzling Denial\nManaCost:1 U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | UnlessCost$ Y | SpellDescription$ Counter target spell unless its controller pays {2}. If you control a Bird, counter that spell unless its controller pays {4} instead.\nSVar:Y:Count$Compare Z GE1.4.2\nSVar:Z:Count$Valid Bird.YouCtrl\nDeckHints:Type$Bird\nOracle:Counter target spell unless its controller pays {2}. If you control a Bird, counter that spell unless its controller pays {4} instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dazzling Denial"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

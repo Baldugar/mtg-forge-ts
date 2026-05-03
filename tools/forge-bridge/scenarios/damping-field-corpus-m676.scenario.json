@@ -1,0 +1,25 @@
+{
+  "id": "damping-field-corpus-m676",
+  "description": "M6 corpus — Damping Field; ETB-on-bf.",
+  "seed": 63037,
+  "cards": {
+    "Damping Field": "Name:Damping Field\nManaCost:2 W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Player | AddKeyword$ UntapAdjust:Artifact:1 | Description$ Players can't untap more than one artifact during their untap steps.\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:CountOpps GTCountMe\nSVar:CountOpps:Count$Valid Artifact.OppCtrl/LimitMax.5\nSVar:CountMe:Count$Valid Artifact.YouCtrl\nOracle:Players can't untap more than one artifact during their untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Damping Field"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

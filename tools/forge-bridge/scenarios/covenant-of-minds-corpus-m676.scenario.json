@@ -1,0 +1,23 @@
+{
+  "id": "covenant-of-minds-corpus-m676",
+  "description": "M6 corpus — Covenant of Minds; in-hand parse.",
+  "seed": 62657,
+  "cards": {
+    "Covenant of Minds": "Name:Covenant of Minds\nManaCost:4 U\nTypes:Sorcery\nA:SP$ PeekAndReveal | PeekAmount$ 3 | NoPeek$ True | SubAbility$ DBChoice | RememberRevealed$ True | StackDescription$ SpellDescription | SpellDescription$ Reveal the top three cards of your library. Target opponent may choose to put those cards into your hand. If they don't, put those cards into your graveyard and draw five cards.\nSVar:DBChoice:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ CovenantPutIntoHand,CovenantMillDraw | SubAbility$ DBCleanup\nSVar:CovenantPutIntoHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand | SpellDescription$ You may choose to put those cards into that player's hand.\nSVar:CovenantMillDraw:DB$ Mill | Defined$ SourceController | NumCards$ X | SubAbility$ DBDraw | SpellDescription$ If you don't, put those cards into that player's graveyard and that player draws five cards.\nSVar:DBDraw:DB$ Draw | Defined$ SourceController | NumCards$ 5\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedSize\nOracle:Reveal the top three cards of your library. Target opponent may choose to put those cards into your hand. If they don't, put those cards into your graveyard and draw five cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Covenant of Minds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

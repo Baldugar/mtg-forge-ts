@@ -1,0 +1,23 @@
+{
+  "id": "fangren-firstborn-corpus-m676",
+  "description": "M6 corpus — Fangren Firstborn; in-hand parse.",
+  "seed": 65069,
+  "cards": {
+    "Fangren Firstborn": "Name:Fangren Firstborn\nManaCost:1 G G G\nTypes:Creature Beast\nPT:4/2\nT:Mode$ Attacks | ValidCard$ Creature.Self | Execute$ TrigCounters | TriggerDescription$ Whenever CARDNAME attacks, put a +1/+1 counter on each attacking creature.\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Creature.attacking | CounterType$ P1P1 | CounterNum$ 1\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Fangren Firstborn attacks, put a +1/+1 counter on each attacking creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fangren Firstborn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

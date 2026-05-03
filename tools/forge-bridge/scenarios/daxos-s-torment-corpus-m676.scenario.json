@@ -1,0 +1,23 @@
+{
+  "id": "daxos-s-torment-corpus-m676",
+  "description": "M6 corpus — Daxos's Torment; in-hand parse.",
+  "seed": 63185,
+  "cards": {
+    "Daxos's Torment": "Name:Daxos's Torment\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigAnimate | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, CARDNAME becomes a 5/5 Demon creature with flying and haste in addition to its other types until end of turn.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 5 | Toughness$ 5 | Types$ Creature,Demon | Keywords$ Flying & Haste\nSVar:PlayMain1:ALWAYS\nSVar:BuffedBy:Enchantment\nOracle:Constellation — Whenever Daxos's Torment or another enchantment you control enters, Daxos's Torment becomes a 5/5 Demon creature with flying and haste in addition to its other types until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daxos's Torment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

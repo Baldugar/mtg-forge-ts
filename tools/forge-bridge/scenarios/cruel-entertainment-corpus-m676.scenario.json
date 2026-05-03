@@ -1,0 +1,23 @@
+{
+  "id": "cruel-entertainment-corpus-m676",
+  "description": "M6 corpus — Cruel Entertainment; in-hand parse.",
+  "seed": 62798,
+  "cards": {
+    "Cruel Entertainment": "Name:Cruel Entertainment\nManaCost:6 B\nTypes:Sorcery\n# Turn targeted player into chosen\nA:SP$ ChoosePlayer | ValidTgts$ Player | TargetUnique$ True | Choices$ ThisTargetedPlayer | Defined$ You | SubAbility$ DBControlPlayer1 | StackDescription$ SpellDescription | SpellDescription$ Choose target player and another target player. The first player controls the second player during the second player's next turn, and the second player controls the first player during the first player's next turn.\nSVar:DBControlPlayer1:DB$ ControlPlayer | ValidTgts$ Player | TargetUnique$ True | TgtPrompt$ Choose another target player | Controller$ Player.Chosen | SubAbility$ DBControlPlayer2 | StackDescription$ None\nSVar:DBControlPlayer2:DB$ ControlPlayer | Defined$ Player.Chosen | Controller$ ParentTarget | StackDescription$ None\nAI:RemoveDeck:All\nOracle:Choose target player and another target player. The first player controls the second player during the second player's next turn, and the second player controls the first player during the first player's next turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cruel Entertainment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

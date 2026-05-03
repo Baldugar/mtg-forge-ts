@@ -1,0 +1,23 @@
+{
+  "id": "dwarven-lightsmith-corpus-m676",
+  "description": "M6 corpus — Dwarven Lightsmith; in-hand parse.",
+  "seed": 64208,
+  "cards": {
+    "Dwarven Lightsmith": "Name:Dwarven Lightsmith\nManaCost:5 W\nTypes:Creature Dwarf Cleric\nPT:3/4\nK:Assist\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures your team controls get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YourTeamCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:ALWAYS\nOracle:Assist (Another player can pay up to {5} of this spell's cost.)\\nWhen Dwarven Lightsmith enters, creatures your team controls get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwarven Lightsmith"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

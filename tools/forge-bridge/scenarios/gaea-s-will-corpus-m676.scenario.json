@@ -1,0 +1,23 @@
+{
+  "id": "gaea-s-will-corpus-m676",
+  "description": "M6 corpus — Gaea's Will; in-hand parse.",
+  "seed": 65885,
+  "cards": {
+    "Gaea's Will": "Name:Gaea's Will\nManaCost:no cost\nColors:green\nTypes:Sorcery\nK:Suspend:4:G\nA:SP$ Effect | ReplacementEffects$ GraveToExile | StaticAbilities$ STPlay | AILogic$ YawgmothsWill | AINoRecursiveCheck$ True | SpellDescription$ Until end of turn, you may play lands and cast spells from your graveyard. If a card would be put into your graveyard from anywhere this turn, exile that card instead.\nSVar:STPlay:Mode$ Continuous | Affected$ Card.YouCtrl | AffectedZone$ Graveyard | MayPlay$ True | Description$ Until end of turn, you may play lands and cast spells from your graveyard.\nSVar:GraveToExile:Event$ Moved | ActiveZones$ Command | Destination$ Graveyard | ValidCard$ Card.!token+YouOwn | ReplaceWith$ Exile | Description$ If a card would be put into your graveyard from anywhere this turn, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nSVar:PlayMain1:ALWAYS\nOracle:Suspend 4—{G}\\nUntil end of turn, you may play lands and cast spells from your graveyard.\\nIf a card would be put into your graveyard from anywhere this turn, exile that card instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gaea's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

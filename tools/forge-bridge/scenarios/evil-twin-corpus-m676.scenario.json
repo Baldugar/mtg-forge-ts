@@ -1,0 +1,23 @@
+{
+  "id": "evil-twin-corpus-m676",
+  "description": "M6 corpus — Evil Twin; in-hand parse.",
+  "seed": 64829,
+  "cards": {
+    "Evil Twin": "Name:Evil Twin\nManaCost:2 U B\nTypes:Creature Shapeshifter\nPT:0/0\n# Make Svars for granting abilities and triggers on clones distinct to avoid SVars getting overwritten when cloning a clone\nK:ETBReplacement:Copy:DBCopy:Optional\nSVar:DBCopy:DB$ Clone | Choices$ Creature.Other | AddAbilities$ EvilTwin | SpellDescription$ You may have CARDNAME enter as a copy of any creature on the battlefield, except it has \"{U}{B}, {T}: Destroy target creature with the same name as this creature.\"\nSVar:EvilTwin:AB$ Destroy | Cost$ U B T | ValidTgts$ Creature.sameName | TgtPrompt$ Select target creature with the same name. | SpellDescription$ Destroy target creature with the same name as this creature.\nOracle:You may have Evil Twin enter as a copy of any creature on the battlefield, except it has \"{U}{B}, {T}: Destroy target creature with the same name as this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evil Twin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

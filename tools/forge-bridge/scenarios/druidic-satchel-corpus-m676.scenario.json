@@ -1,0 +1,25 @@
+{
+  "id": "druidic-satchel-corpus-m676",
+  "description": "M6 corpus — Druidic Satchel; ETB-on-bf.",
+  "seed": 64105,
+  "cards": {
+    "Druidic Satchel": "Name:Druidic Satchel\nManaCost:3\nTypes:Artifact\nA:AB$ PeekAndReveal | Cost$ 2 T | RememberRevealed$ True | SubAbility$ DBToken | SpellDescription$ Reveal the top card of your library. If it's a creature card, create a 1/1 green Saproling creature token. If it's a land card, put that card onto the battlefield under your control. If it's a noncreature, nonland card, you gain 2 life.\nSVar:DBToken:DB$ Token | ConditionDefined$ Remembered | ConditionPresent$ Card.Creature | TokenScript$ g_1_1_saproling | TokenOwner$ You | SubAbility$ DBMove | StackDescription$ If it's a creature card, create a 1/1 green Saproling creature token.\nSVar:DBMove:DB$ ChangeZone | ConditionDefined$ Remembered | ConditionPresent$ Card.Land | Defined$ Remembered | Origin$ Library | Destination$ Battlefield | SubAbility$ DBGainLife | StackDescription$ If it's a land card, put that card onto the battlefield under your control.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand+nonCreature | SubAbility$ DBCleanup | StackDescription$ If it's a noncreature, nonland card, you gain 2 life.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|LifeGain & Type$Saproling\nOracle:{2}, {T}: Reveal the top card of your library. If it's a creature card, create a 1/1 green Saproling creature token. If it's a land card, put that card onto the battlefield under your control. If it's a noncreature, nonland card, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Druidic Satchel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glissa-the-traitor-corpus-m676",
+  "description": "M6 corpus — Glissa, the Traitor; in-hand parse.",
+  "seed": 66310,
+  "cards": {
+    "Glissa, the Traitor": "Name:Glissa, the Traitor\nManaCost:B G G\nTypes:Legendary Creature Phyrexian Zombie Elf\nPT:3/3\nK:First Strike\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ Whenever a creature an opponent controls dies, you may return target artifact card from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | ValidTgts$ Artifact.YouCtrl | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target artifact card in your graveyard\nOracle:First strike, deathtouch\\nWhenever a creature an opponent controls dies, you may return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glissa, the Traitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

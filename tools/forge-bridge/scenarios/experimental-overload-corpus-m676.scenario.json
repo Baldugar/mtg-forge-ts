@@ -1,0 +1,23 @@
+{
+  "id": "experimental-overload-corpus-m676",
+  "description": "M6 corpus — Experimental Overload; in-hand parse.",
+  "seed": 64892,
+  "cards": {
+    "Experimental Overload": "Name:Experimental Overload\nManaCost:2 U R\nTypes:Sorcery\nA:SP$ Token | TokenScript$ ur_x_x_weird | TokenOwner$ You | TokenPower$ X | TokenToughness$ X | SubAbility$ DBReturn | StackDescription$ SpellDescription | SpellDescription$ Create an X/X blue and red Weird creature token, where X is the number of instant and sorcery cards in your graveyard. Then you may return an instant or sorcery card from your graveyard to your hand. Exile CARDNAME.\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Hidden$ True | ChangeType$ Instant.YouOwn,Sorcery.YouOwn | ChangeNum$ 1 | SubAbility$ DBExile | StackDescription$ None\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:NeedsToPlayVar:X GE2\nDeckHas:Ability$Token\nDeckHints:Type$Instant|Sorcery\nOracle:Create an X/X blue and red Weird creature token, where X is the number of instant and sorcery cards in your graveyard. Then you may return an instant or sorcery card from your graveyard to your hand. Exile Experimental Overload.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Experimental Overload"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

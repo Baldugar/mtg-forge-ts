@@ -1,0 +1,23 @@
+{
+  "id": "convicted-killer-corpus-m676",
+  "description": "M6 corpus — Convicted Killer; in-hand parse.",
+  "seed": 62551,
+  "cards": {
+    "Convicted Killer": "Name:Convicted Killer\nManaCost:2 R\nTypes:Creature Human Werewolf\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Convicted Killer.\n\nALTERNATE\n\nName:Branded Howler\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:4/4\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:At the beginning of each upkeep, if a player cast two or more spells last turn, transform Branded Howler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Convicted Killer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "fangorn-tree-shepherd-corpus-m676",
+  "description": "M6 corpus — Fangorn, Tree Shepherd; ETB-on-bf.",
+  "seed": 65068,
+  "cards": {
+    "Fangorn, Tree Shepherd": "Name:Fangorn, Tree Shepherd\nManaCost:4 G G G\nTypes:Legendary Creature Treefolk\nPT:4/10\nS:Mode$ Continuous | Affected$ Treefolk.YouCtrl | AddKeyword$ Vigilance | Description$ Treefolk you control have vigilance.\nT:Mode$ AttackersDeclared | ValidAttackers$ Treefolk.YouCtrl | Execute$ TrigMana | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more Treefolk you control attack, add twice that much {G}.\nSVar:TrigMana:DB$ Mana | Produced$ G | Amount$ X\nS:Mode$ UnspentMana | ValidPlayer$ You | ManaType$ Green | Description$ You don't lose unspent green mana as steps and phases end.\nSVar:X:TriggerObjectsAttackers$Amount/Twice\nDeckHints:Type$Treefolk\nOracle:Treefolk you control have vigilance.\\nWhenever one or more Treefolk you control attack, add twice that much {G}.\\nYou don't lose unspent green mana as steps and phases end.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fangorn, Tree Shepherd"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

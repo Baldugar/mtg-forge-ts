@@ -1,0 +1,23 @@
+{
+  "id": "collective-inferno-corpus-m676",
+  "description": "M6 corpus — Collective Inferno; in-hand parse.",
+  "seed": 62369,
+  "cards": {
+    "Collective Inferno": "Name:Collective Inferno\nManaCost:3 R R\nTypes:Enchantment\nK:Convoke\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Type$ Creature | AILogic$ MostProminentInComputerDeck | SpellDescription$ As this enchantment enters, choose a creature type.\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.ChosenType+YouCtrl | ValidTarget$ Permanent,Player | ReplaceWith$ DmgTwice | Description$ Double all damage that sources you control of the chosen type would deal.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nSVar:PlayMain1:TRUE\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nAs this enchantment enters, choose a creature type.\\nDouble all damage that sources you control of the chosen type would deal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Collective Inferno"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

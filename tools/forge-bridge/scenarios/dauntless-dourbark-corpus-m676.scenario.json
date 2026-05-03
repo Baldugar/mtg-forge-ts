@@ -1,0 +1,25 @@
+{
+  "id": "dauntless-dourbark-corpus-m676",
+  "description": "M6 corpus — Dauntless Dourbark; ETB-on-bf.",
+  "seed": 63138,
+  "cards": {
+    "Dauntless Dourbark": "Name:Dauntless Dourbark\nManaCost:3 G\nTypes:Creature Treefolk Warrior\nPT:*/*\nS:Mode$ Continuous | Affected$ Card.Self | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of Forests you control plus the number of Treefolk you control.\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Trample | IsPresent$ Treefolk.YouCtrl+Other | Description$ CARDNAME has trample as long as you control another Treefolk.\nSVar:X:Count$Valid Treefolk.YouCtrl/Plus.FOREST\nSVar:FOREST:Count$Valid Forest.YouCtrl\nSVar:BuffedBy:Forest,Treefolk\nSVar:NoZeroToughnessAI:True\nDeckHints:Type$Treefolk\nOracle:Dauntless Dourbark's power and toughness are each equal to the number of Forests you control plus the number of Treefolk you control.\\nDauntless Dourbark has trample as long as you control another Treefolk.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dauntless Dourbark"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

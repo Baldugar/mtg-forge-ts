@@ -1,0 +1,23 @@
+{
+  "id": "dance-of-the-manse-corpus-m676",
+  "description": "M6 corpus — Dance of the Manse; in-hand parse.",
+  "seed": 63041,
+  "cards": {
+    "Dance of the Manse": "Name:Dance of the Manse\nManaCost:X W U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Artifact.cmcLEX+YouOwn,Enchantment.cmcLEX+YouOwn+nonAura | TgtPrompt$ Select target artifact or non-Aura enchantment in your graveyard | TargetMin$ 0 | TargetMax$ X | StaticEffect$ Animate | StaticEffectCheckSVar$ X | StaticEffectSVarCompare$ GE6 | SpellDescription$ Return up to X target artifact and/or non-Aura enchantment cards with mana value X or less from your graveyard to the battlefield. If X is 6 or more, those permanents are 4/4 creatures in addition to their other types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Creature | SetPower$ 4 | SetToughness$ 4\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Return up to X target artifact and/or non-Aura enchantment cards each with mana value X or less from your graveyard to the battlefield. If X is 6 or more, those permanents are 4/4 creatures in addition to their other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dance of the Manse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

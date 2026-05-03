@@ -1,0 +1,23 @@
+{
+  "id": "glamer-spinners-corpus-m676",
+  "description": "M6 corpus — Glamer Spinners; in-hand parse.",
+  "seed": 66256,
+  "cards": {
+    "Glamer Spinners": "Name:Glamer Spinners\nManaCost:4 WU\nTypes:Creature Faerie Wizard\nPT:2/4\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigAuraAttach | TriggerDescription$ When CARDNAME enters, attach all Auras enchanting target permanent to another permanent with the same controller.\nSVar:TrigAuraAttach:DB$ Attach | ValidTgts$ Permanent | TgtPrompt$ Select target permanent to remove auras | Object$ Valid Aura.AttachedTo Targeted | Choices$ Permanent.sharesControllerWith Targeted | Move$ True | AILogic$ Unenchanted\nOracle:Flash\\nFlying\\nWhen Glamer Spinners enters, attach all Auras enchanting target permanent to another permanent with the same controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glamer Spinners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

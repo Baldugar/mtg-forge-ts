@@ -1,0 +1,23 @@
+{
+  "id": "ghirapur-orrery-corpus-m676",
+  "description": "M6 corpus — Ghirapur Orrery; in-hand parse.",
+  "seed": 66095,
+  "cards": {
+    "Ghirapur Orrery": "Name:Ghirapur Orrery\nManaCost:4\nTypes:Artifact\nS:Mode$ Continuous | Affected$ Player | AdjustLandPlays$ 1 | Description$ Each player may play an additional land on each of their turns.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | IsPresent$ Card.ActivePlayerCtrl | PresentZone$ Hand | PresentCompare$ EQ0 | Execute$ TrigDraw | TriggerDescription$ At the beginning of each player's upkeep, if that player has no cards in hand, that player draws three cards.\nSVar:TrigDraw:DB$ Draw | NumCards$ 3 | Defined$ TriggeredPlayer\nOracle:Each player may play an additional land on each of their turns.\\nAt the beginning of each player's upkeep, if that player has no cards in hand, that player draws three cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghirapur Orrery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "emberwilde-caliph-corpus-m676",
+  "description": "M6 corpus — Emberwilde Caliph; ETB-on-bf.",
+  "seed": 64500,
+  "cards": {
+    "Emberwilde Caliph": "Name:Emberwilde Caliph\nManaCost:2 U R\nTypes:Creature Djinn\nPT:4/4\nK:Flying\nK:Trample\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME deals damage, you lose that much life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nAI:RemoveDeck:All\nOracle:Flying, trample\\nEmberwilde Caliph attacks each combat if able.\\nWhenever Emberwilde Caliph deals damage, you lose that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Emberwilde Caliph"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

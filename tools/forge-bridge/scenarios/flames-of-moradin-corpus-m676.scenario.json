@@ -1,0 +1,23 @@
+{
+  "id": "flames-of-moradin-corpus-m676",
+  "description": "M6 corpus — Flames of Moradin; in-hand parse.",
+  "seed": 65445,
+  "cards": {
+    "Flames of Moradin": "Name:Flames of Moradin\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact | TargetMin$ 0 | TargetMax$ 3 | TgtPrompt$ Select up to three target artifacts | SubAbility$ DBConjure | SpellDescription$ Destroy up to three target artifacts.\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | DefinedName$ Targeted.!token | Zone$ Hand | RememberMade$ True | SubAbility$ DBAnimate | SpellDescription$ Conjure a duplicate of each nontoken artifact destroyed this way into your hand.\nSVar:DBAnimate:DB$ Animate | Duration$ Perpetual | Defined$ Remembered | staticAbilities$ PerpAltCost | Triggers$ PhaseTrig | SubAbility$ DBCleanup | StackDescription$ SpellDescription | SpellDescription$ The duplicates perpetually gain \"You may pay {R} rather than pay this spell's mana cost\" and \"at the beginning of your end step, sacrifice this artifact.\"\nSVar:PerpAltCost:Mode$ Continuous | EffectZone$ All | MayPlay$ True | MayPlayAltManaCost$ R | MayPlayDontGrantZonePermissions$ True | Affected$ Card.Self | AffectedZone$ Hand,Graveyard,Library,Exile,Command | Description$ You may pay {R} rather than pay this spell's mana cost.\nSVar:PhaseTrig:Mode$ Phase | ValidPlayer$ You | Phase$ End of Turn | Execute$ TrigSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your end step, sacrifice this artifact.\nSVar:TrigSacrifice:DB$ Sacrifice\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Type$Artifact & Ability$Sacrifice\nOracle:Destroy up to three target artifacts. Conjure a duplicate of each nontoken artifact destroyed this way into your hand. The duplicates perpetually gain \"You may pay {R} rather than pay this spell's mana cost\" and \"at the beginning of your end step, sacrifice this artifact.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flames of Moradin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

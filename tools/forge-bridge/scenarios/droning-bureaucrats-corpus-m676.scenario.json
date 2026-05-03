@@ -1,0 +1,25 @@
+{
+  "id": "droning-bureaucrats-corpus-m676",
+  "description": "M6 corpus — Droning Bureaucrats; ETB-on-bf.",
+  "seed": 64069,
+  "cards": {
+    "Droning Bureaucrats": "Name:Droning Bureaucrats\nManaCost:3 W\nTypes:Creature Human Advisor\nPT:1/4\nA:AB$ Effect | Cost$ X T | StaticAbilities$ NoCombat | SetChosenNumber$ X | SpellDescription$ Each creature with mana value X can't attack or block this turn.\nSVar:NoCombat:Mode$ Continuous | Affected$ Creature.cmcEQChosen | AddHiddenKeyword$ CARDNAME can't attack or block. | Description$ Each creature with mana value X can't attack or block this turn.\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:{X}, {T}: Each creature with mana value X can't attack or block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Droning Bureaucrats"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "counterbore-corpus-m676",
+  "description": "M6 corpus — Counterbore; in-hand parse.",
+  "seed": 62633,
+  "cards": {
+    "Counterbore": "Name:Counterbore\nManaCost:3 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | ValidTgts$ Card | SubAbility$ ExileYard | SpellDescription$ Counter target spell. Search its controller's graveyard, hand, and library for all cards with the same name as that spell and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | Defined$ TargetedController | ChangeType$ TargetedCard.sameName | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ TargetedCard.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInLib:TargetedController$CardsInLibrary\nOracle:Counter target spell. Search its controller's graveyard, hand, and library for all cards with the same name as that spell and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Counterbore"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

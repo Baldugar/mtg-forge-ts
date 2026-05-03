@@ -1,0 +1,23 @@
+{
+  "id": "enemy-of-enlightenment-corpus-m676",
+  "description": "M6 corpus — Enemy of Enlightenment; in-hand parse.",
+  "seed": 64593,
+  "cards": {
+    "Enemy of Enlightenment": "Name:Enemy of Enlightenment\nManaCost:5 B\nTypes:Enchantment Creature Demon\nPT:5/5\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ -X | AddToughness$ -X | Description$ CARDNAME gets -1/-1 for each card in your opponents' hands.\nSVar:X:PlayerCountOpponents$CardsInHand\nSVar:NeedsToPlayVar:X LE3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDiscard | TriggerDescription$ At the beginning of your upkeep, each player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ Player | NumCards$ 1 | Mode$ TgtChoose\nOracle:Flying\\nEnemy of Enlightenment gets -1/-1 for each card in your opponents' hands.\\nAt the beginning of your upkeep, each player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enemy of Enlightenment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

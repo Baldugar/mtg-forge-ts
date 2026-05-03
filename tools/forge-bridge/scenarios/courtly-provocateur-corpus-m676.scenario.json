@@ -1,0 +1,25 @@
+{
+  "id": "courtly-provocateur-corpus-m676",
+  "description": "M6 corpus — Courtly Provocateur; ETB-on-bf.",
+  "seed": 62655,
+  "cards": {
+    "Courtly Provocateur": "Name:Courtly Provocateur\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:1/1\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature | StaticAbilities$ MustAttack | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StackDescription$ {c:Targeted} attacks this turn if able. | SpellDescription$ Target creature attacks this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ This creature attacks this turn if able.\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature | StaticAbilities$ MustBlock | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StackDescription$ {c:Targeted} blocks this turn if able. | SpellDescription$ Target creature blocks this turn if able.\nSVar:MustBlock:Mode$ MustBlock | ValidCreature$ Card.IsRemembered | Description$ This creature blocks this turn if able.\nAI:RemoveDeck:All\nOracle:{T}: Target creature attacks this turn if able.\\n{T}: Target creature blocks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Courtly Provocateur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

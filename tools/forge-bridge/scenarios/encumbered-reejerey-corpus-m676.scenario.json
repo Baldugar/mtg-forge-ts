@@ -1,0 +1,23 @@
+{
+  "id": "encumbered-reejerey-corpus-m676",
+  "description": "M6 corpus — Encumbered Reejerey; in-hand parse.",
+  "seed": 64566,
+  "cards": {
+    "Encumbered Reejerey": "Name:Encumbered Reejerey\nManaCost:1 W\nTypes:Creature Merfolk Soldier\nPT:5/4\nK:etbCounter:M1M1:3\nT:Mode$ Taps | ValidCard$ Card.Self | IsPresent$ Card.Self+counters_GE1_M1M1 | NoResolvingCheck$ True | Execute$ TrigRemoveCounter | TriggerDescription$ Whenever this creature becomes tapped while it has a -1/-1 counter on it, remove a -1/-1 counter from it.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ M1M1 | CounterNum$ 1\nOracle:This creature enters with three -1/-1 counters on it.\\nWhenever this creature becomes tapped while it has a -1/-1 counter on it, remove a -1/-1 counter from it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Encumbered Reejerey"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

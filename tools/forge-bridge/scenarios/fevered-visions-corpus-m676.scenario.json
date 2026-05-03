@@ -1,0 +1,23 @@
+{
+  "id": "fevered-visions-corpus-m676",
+  "description": "M6 corpus — Fevered Visions; in-hand parse.",
+  "seed": 65260,
+  "cards": {
+    "Fevered Visions": "Name:Fevered Visions\nManaCost:1 U R\nTypes:Enchantment\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ At the beginning of each player's end step, that player draws a card. If the player is your opponent and has four or more cards in hand, CARDNAME deals 2 damage to that player.\nSVar:TrigDraw:DB$ Draw | Defined$ TriggeredPlayer | SubAbility$ TrigDamageOpp\nSVar:TrigDamageOpp:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 2 | ConditionOpponentTurn$ True | ConditionCheckSVar$ TrigCount | ConditionSVarCompare$ GE4\nSVar:TrigCount:Count$ValidHand Card.ActivePlayerCtrl\nOracle:At the beginning of each player's end step, that player draws a card. If the player is your opponent and has four or more cards in hand, Fevered Visions deals 2 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fevered Visions"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

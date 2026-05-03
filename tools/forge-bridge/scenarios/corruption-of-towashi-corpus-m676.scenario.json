@@ -1,0 +1,23 @@
+{
+  "id": "corruption-of-towashi-corpus-m676",
+  "description": "M6 corpus — Corruption of Towashi; in-hand parse.",
+  "seed": 62615,
+  "cards": {
+    "Corruption of Towashi": "Name:Corruption of Towashi\nManaCost:4 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigIncubate | TriggerDescription$ When CARDNAME enters, incubate 4. (Create an Incubator token with four +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\nSVar:TrigIncubate:DB$ Incubate | Amount$ 4\nT:Mode$ Transformed | ValidCard$ Permanent.YouCtrl+inZoneBattlefield | Execute$ TrigDraw | TriggerZones$ Battlefield | OptionalDecider$ You | ResolvedLimit$ 1 | TriggerDescription$ Whenever a permanent you control transforms or a permanent you control enters transformed, you may draw a card. Do this only once each turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.Transformed+YouCtrl | OptionalDecider$ You | TriggerZones$ Battlefield | Execute$ TrigDraw | Secondary$ True | ResolvedLimit$ 1 | TriggerDescription$ Whenever a permanent you control transforms or a permanent you control enters transformed, you may draw a card. Do this only once each turn.\nSVar:TrigDraw:DB$ Draw\nDeckHas:Ability$Counters|Token & Type$Incubator|Artifact|Phyrexian\nOracle:When Corruption of Towashi enters, incubate 4. (Create an Incubator token with four +1/+1 counters on it and \"{2}: Transform this artifact.\" It transforms into a 0/0 Phyrexian artifact creature.)\\nWhenever a permanent you control transforms or a permanent you control enters transformed, you may draw a card. Do this only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corruption of Towashi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

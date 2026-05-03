@@ -1,0 +1,25 @@
+{
+  "id": "brotherhood-scribe-corpus-m676",
+  "description": "M6 corpus — Brotherhood Scribe; ETB-on-bf.",
+  "seed": 61453,
+  "cards": {
+    "Brotherhood Scribe": "Name:Brotherhood Scribe\nManaCost:1 W\nTypes:Creature Human Artificer\nPT:1/3\nA:AB$ PutCounter | Cost$ T | Activation$ Metalcraft | PrecostDesc$ Metalcraft — | CounterType$ ENERGY | CounterNum$ 1 | Defined$ You | SpellDescription$ You get {E} (an energy counter).\nT:Mode$ CounterAddedOnce | ValidPlayer$ You | PlayerTurn$ True | TriggerZones$ Battlefield | CounterType$ ENERGY | Execute$ TrigPumpAll | TriggerDescription$ Whenever you get one or more {E} during your turn, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nDeckNeeds:Type$Artifact\nOracle:Metalcraft — {T}: You get {E} (an energy counter). Activate only if you control three or more artifacts.\\nWhenever you get one or more {E} during your turn, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Brotherhood Scribe"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

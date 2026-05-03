@@ -1,0 +1,25 @@
+{
+  "id": "cantor-of-the-refrain-corpus-m676",
+  "description": "M6 corpus — Cantor of the Refrain; ETB-on-bf.",
+  "seed": 61681,
+  "cards": {
+    "Cantor of the Refrain": "Name:Cantor of the Refrain\nManaCost:B\nTypes:Creature Human Pilot\nPT:2/1\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ This creature can't block.\nT:Mode$ SpellCast | ValidCard$ Card | ValidSA$ Spell.Warp | ValidActivatingPlayer$ You | TriggerZones$ Graveyard | Execute$ TrigChangeZone | TriggerDescription$ When you cast a spell for its warp cost, return this card from your graveyard to the battlefield under its owner's control. It perpetually gets +1/+0.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ Self | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Pump | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | NumAtt$ +1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:This creature can't block.\\nWhen you cast a spell for its warp cost, return this card from your graveyard to the battlefield under its owner's control. It perpetually gets +1/+0.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cantor of the Refrain"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

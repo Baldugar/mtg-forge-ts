@@ -1,0 +1,23 @@
+{
+  "id": "coffin-queen-corpus-m676",
+  "description": "M6 corpus — Coffin Queen; in-hand parse.",
+  "seed": 62346,
+  "cards": {
+    "Coffin Queen": "Name:Coffin Queen\nManaCost:2 B\nTypes:Creature Zombie Wizard\nPT:1/1\nK:You may choose not to untap CARDNAME during your untap step.\nA:AB$ ChangeZone | Cost$ 2 B T | Origin$ Graveyard | Destination$ Battlefield | RememberChanged$ True | GainControl$ True | TgtPrompt$ Select target creature card in a graveyard | ValidTgts$ Creature | ChangeNum$ 1 | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control. When CARDNAME becomes untapped or you lose control of CARDNAME, exile that creature.\nT:Mode$ Untaps | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | CheckSVar$ X | Secondary$ True | TriggerDescription$ When CARDNAME becomes untapped, exile creature controlled by CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigExile | CheckSVar$ X | Secondary$ True | TriggerDescription$ When you lose control of CARDNAME, exile creature controlled by CARDNAME.\nT:Mode$ ChangesController | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigExile | CheckSVar$ X | Secondary$ True | TriggerDescription$ When you lose control of CARDNAME, exile creature controlled by CARDNAME.\nSVar:TrigExile:DB$ ChangeZoneAll | ChangeType$ Creature.IsRemembered | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:AIUntapPreference:NothingRemembered\n# Clear tracking effect if the creature put onto the battlefield leaves the battlefield, as per Oracle ruling\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Creature.IsRemembered | Execute$ DBCleanup | Secondary$ True | Static$ True | TriggerDescription$ Clear tracking effect if the creature put onto the battlefield leaves the battlefield, as per Oracle ruling.\nSVar:X:Remembered$Amount\nOracle:You may choose not to untap Coffin Queen during your untap step.\\n{2}{B}, {T}: Put target creature card from a graveyard onto the battlefield under your control. When Coffin Queen becomes untapped or you lose control of Coffin Queen, exile that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coffin Queen"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

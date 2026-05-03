@@ -1,0 +1,23 @@
+{
+  "id": "cyclical-evolution-corpus-m676",
+  "description": "M6 corpus — Cyclical Evolution; in-hand parse.",
+  "seed": 62982,
+  "cards": {
+    "Cyclical Evolution": "Name:Cyclical Evolution\nManaCost:3 G G\nTypes:Sorcery\nK:Suspend:3:2 G\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ +3 | NumDef$ +3 | SubAbility$ DBChange | SpellDescription$ Target creature gets +3/+3 until end of turn. Exile CARDNAME with three time counters on it.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | WithCountersType$ TIME | WithCountersAmount$ 3\nAI:RemoveDeck:Random\nOracle:Target creature gets +3/+3 until end of turn. Exile Cyclical Evolution with three time counters on it.\\nSuspend 3—{2}{G} (Rather than cast this card from your hand, you may pay {2}{G} and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclical Evolution"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

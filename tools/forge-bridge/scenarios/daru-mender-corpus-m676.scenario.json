@@ -1,0 +1,25 @@
+{
+  "id": "daru-mender-corpus-m676",
+  "description": "M6 corpus — Daru Mender; ETB-on-bf.",
+  "seed": 63130,
+  "cards": {
+    "Daru Mender": "Name:Daru Mender\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nK:Morph:W\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigRegenerate | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, regenerate target creature.\nSVar:TrigRegenerate:DB$ Regenerate | ValidTgts$ Creature | TgtPrompt$ Select target creature\nOracle:Morph {W} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its morph cost.)\\nWhen Daru Mender is turned face up, regenerate target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Daru Mender"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

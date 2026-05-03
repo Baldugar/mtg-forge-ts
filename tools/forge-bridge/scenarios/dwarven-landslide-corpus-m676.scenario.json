@@ -1,0 +1,23 @@
+{
+  "id": "dwarven-landslide-corpus-m676",
+  "description": "M6 corpus — Dwarven Landslide; in-hand parse.",
+  "seed": 64206,
+  "cards": {
+    "Dwarven Landslide": "Name:Dwarven Landslide\nManaCost:3 R\nTypes:Sorcery\nK:Kicker:2 R Sac<1/Land>\nA:SP$ Destroy | ValidTgts$ Land | SubAbility$ DBDestroy | SpellDescription$ Destroy target land. If this spell was kicked, destroy another target land.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Land | TargetMin$ X | TargetMax$ X\nSVar:X:Count$Kicked.1.0\nSVar:NeedsToPlayKickedVar:Z GE2\nSVar:Z:Count$Valid Land.OppCtrl\nOracle:Kicker—{2}{R}, Sacrifice a land. (You may pay {2}{R} and sacrifice a land in addition to any other costs as you cast this spell.)\\nDestroy target land. If this spell was kicked, destroy another target land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwarven Landslide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

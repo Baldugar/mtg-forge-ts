@@ -1,0 +1,25 @@
+{
+  "id": "embraal-bruiser-corpus-m676",
+  "description": "M6 corpus — Embraal Bruiser; ETB-on-bf.",
+  "seed": 64509,
+  "cards": {
+    "Embraal Bruiser": "Name:Embraal Bruiser\nManaCost:1 B\nTypes:Creature Human Warrior\nPT:3/1\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Menace | IsPresent$ Artifact.YouCtrl | Description$ CARDNAME has menace as long as you control an artifact.\nSVar:BuffedBy:Artifact\nOracle:Embraal Bruiser enters tapped.\\nEmbraal Bruiser has menace as long as you control an artifact.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Embraal Bruiser"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

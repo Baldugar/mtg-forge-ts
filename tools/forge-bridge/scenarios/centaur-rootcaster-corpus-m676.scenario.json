@@ -1,0 +1,23 @@
+{
+  "id": "centaur-rootcaster-corpus-m676",
+  "description": "M6 corpus — Centaur Rootcaster; in-hand parse.",
+  "seed": 61887,
+  "cards": {
+    "Centaur Rootcaster": "Name:Centaur Rootcaster\nManaCost:3 G\nTypes:Creature Centaur Druid\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigChange | CombatDamage$ True | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:Whenever Centaur Rootcaster deals combat damage to a player, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Centaur Rootcaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

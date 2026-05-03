@@ -1,0 +1,23 @@
+{
+  "id": "cephalid-constable-corpus-m676",
+  "description": "M6 corpus — Cephalid Constable; in-hand parse.",
+  "seed": 61892,
+  "cards": {
+    "Cephalid Constable": "Name:Cephalid Constable\nManaCost:1 U U\nTypes:Creature Octopus Wizard\nPT:1/1\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, return up to that many target permanents that player controls to their owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Permanent.ControlledBy TriggeredTarget | TargetMin$ 0 | TargetMax$ X | Origin$ Battlefield | Destination$ Hand\nSVar:X:TriggeredSource$CardPower\nOracle:Whenever Cephalid Constable deals combat damage to a player, return up to that many target permanents that player controls to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cephalid Constable"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

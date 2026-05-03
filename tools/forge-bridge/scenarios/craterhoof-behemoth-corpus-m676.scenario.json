@@ -1,0 +1,23 @@
+{
+  "id": "craterhoof-behemoth-corpus-m676",
+  "description": "M6 corpus — Craterhoof Behemoth; in-hand parse.",
+  "seed": 62704,
+  "cards": {
+    "Craterhoof Behemoth": "Name:Craterhoof Behemoth\nManaCost:5 G G G\nTypes:Creature Beast\nPT:5/5\nK:Haste\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ BehemothPump | TriggerDescription$ When CARDNAME enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.\nSVar:BehemothPump:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Trample | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Haste\\nWhen Craterhoof Behemoth enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Craterhoof Behemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

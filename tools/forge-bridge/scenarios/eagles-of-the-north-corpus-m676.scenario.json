@@ -1,0 +1,23 @@
+{
+  "id": "eagles-of-the-north-corpus-m676",
+  "description": "M6 corpus — Eagles of the North; in-hand parse.",
+  "seed": 64240,
+  "cards": {
+    "Eagles of the North": "Name:Eagles of the North\nManaCost:5 W\nTypes:Creature Bird Soldier\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+0 and gain first strike until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ +1 | ValidCards$ Creature.YouCtrl | KW$ First Strike\nK:TypeCycling:Plains:1\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Discard\nOracle:Flying\\nWhen Eagles of the North enters, creatures you control get +1/+0 and gain first strike until end of turn.\\nPlainscycling {1} ({1}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eagles of the North"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

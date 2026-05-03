@@ -1,0 +1,25 @@
+{
+  "id": "duplication-device-corpus-m676",
+  "description": "M6 corpus — Duplication Device; ETB-on-bf.",
+  "seed": 64160,
+  "cards": {
+    "Duplication Device": "Name:Duplication Device\nManaCost:no cost\nTypes:Artifact Contraption\nT:Mode$ CrankContraption | ValidCard$ Card.Self | Execute$ TrigCrank | TriggerDescription$ Whenever you crank CARDNAME, until end of turn, target creature becomes a copy of any creature on the battlefield, except it's an artifact in addition to its other types.\nSVar:TrigCrank:DB$ Clone | Choices$ Creature | ChoiceTitle$ Choose a creature to copy | ValidTgts$ Creature | TgtPrompt$ Choose target creature to become a copy | Duration$ UntilEndOfTurn | AddTypes$ Artifact\nOracle:Whenever you crank Duplication Device, until end of turn, target creature becomes a copy of any creature on the battlefield, except it's an artifact in addition to its other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Duplication Device"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

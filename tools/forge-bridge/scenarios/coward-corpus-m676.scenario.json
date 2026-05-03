@@ -1,0 +1,23 @@
+{
+  "id": "coward-corpus-m676",
+  "description": "M6 corpus — Coward; in-hand parse.",
+  "seed": 62666,
+  "cards": {
+    "Coward": "Name:Coward\nManaCost:1 R\nTypes:Sorcery\nA:SP$ Animate | ValidTgts$ Creature | HiddenKeywords$ CARDNAME can't block. | Types$ Coward | IsCurse$ True | SubAbility$ DBTimeTravel | StackDescription$ REP Target creature_{c:Targeted} | SpellDescription$ Target creature can't block this turn and becomes a Coward in addition to its other types until end of turn.\nSVar:DBTimeTravel:DB$ TimeTravel | SpellDescription$ Time Travel.\nAlternateMode:Split\nOracle:Target creature can't block this turn and becomes a Coward in addition to its other types until end of turn.\\nTime travel.\n\nALTERNATE\n\nName:Killer\nManaCost:2 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | DamageMap$ True | SubAbility$ DamageSame | StackDescription$ REP target creature_{c:Targeted} | SpellDescription$ CARDNAME deals 3 damage to target creature and each other creature that shares a creature type with it.\nSVar:DamageSame:DB$ DamageAll | ValidCards$ Creature.NotDefinedTargeted+sharesCreatureTypeWith Targeted | NumDmg$ 3 | SubAbility$ DBDamageResolve | StackDescription$ None\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Killer deals 3 damage to target creature and each other creature that shares a creature type with it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

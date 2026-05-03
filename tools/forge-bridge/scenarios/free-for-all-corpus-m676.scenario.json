@@ -1,0 +1,23 @@
+{
+  "id": "free-for-all-corpus-m676",
+  "description": "M6 corpus — Free-for-All; in-hand parse.",
+  "seed": 65723,
+  "cards": {
+    "Free-for-All": "Name:Free-for-All\nManaCost:3 U\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile all creatures.\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigReturn | Secondary$ True | TriggerDescription$ When CARDNAME leaves the battlefield, put all cards exiled with it into their owners' graveyards.\nSVar:TrigExile:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | ForgetOtherRemembered$ True | ChangeType$ Creature | ExileFaceDown$ True\nSVar:TrigReturn:DB$ ChangeZoneAll | Origin$ Exile | Destination$ Graveyard | ChangeType$ Card.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ TrigGetCreature | TriggerController$ TriggeredPlayer | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of each player's upkeep, that player chooses a card exiled with CARDNAME at random and puts it onto the battlefield.\nSVar:TrigGetCreature:DB$ ChooseCard | Amount$ 1 | AtRandom$ True | Choices$ Card.IsRemembered | ChoiceZone$ Exile | SubAbility$ DBFaceUp | SpellDescription$ Choose a card at random that was exiled with CARDNAME. Put that card onto the battlefield.\nSVar:DBFaceUp:DB$ SetState | Defined$ ChosenCard | SubAbility$ DBChangeZone | Mode$ TurnFaceUp\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ ChosenCard | GainControl$ True | Origin$ Exile | Destination$ Battlefield | ForgetChanged$ True | Hidden$ True\nOracle:When Free-for-All enters, exile all creatures face down.\\nAt the beginning of each player's upkeep, that player chooses a card exiled with Free-for-All at random and puts it onto the battlefield.\\nWhen Free-for-All leaves the battlefield, put all cards exiled with it into their owners' graveyards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Free-for-All"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cloistered-youth-corpus-m676",
+  "description": "M6 corpus — Cloistered Youth; in-hand parse.",
+  "seed": 62272,
+  "cards": {
+    "Cloistered Youth": "Name:Cloistered Youth\nManaCost:1 W\nTypes:Creature Human\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigTransform | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of your upkeep, you may transform Cloistered Youth.\n\nALTERNATE\n\nName:Unholy Fiend\nManaCost:no cost\nColors:black\nTypes:Creature Horror\nPT:3/3\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ At the beginning of your end step, you lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 1\nOracle:At the beginning of your end step, you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloistered Youth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

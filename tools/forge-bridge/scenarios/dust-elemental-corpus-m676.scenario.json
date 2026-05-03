@@ -1,0 +1,23 @@
+{
+  "id": "dust-elemental-corpus-m676",
+  "description": "M6 corpus — Dust Elemental; in-hand parse.",
+  "seed": 64189,
+  "cards": {
+    "Dust Elemental": "Name:Dust Elemental\nManaCost:2 W W\nTypes:Creature Elemental\nPT:6/6\nK:Flash\nK:Flying\nK:Fear\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return three creatures you control to their owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.YouCtrl | ChangeNum$ 3\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$Valid Creature.cmcLE4+YouCtrl\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nFlying; fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nWhen Dust Elemental enters, return three creatures you control to their owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dust Elemental"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "divine-gambit-corpus-m676",
+  "description": "M6 corpus — Divine Gambit; in-hand parse.",
+  "seed": 63753,
+  "cards": {
+    "Divine Gambit": "Name:Divine Gambit\nManaCost:W W\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Artifact.OppCtrl,Creature.OppCtrl,Enchantment.OppCtrl | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target artifact, creature, or enchantment an opponent controls | SubAbility$ DBChangeZone | SpellDescription$ Exile target artifact, creature, or enchantment an opponent controls. That player may put a permanent card from their hand onto the battlefield.\nSVar:DBChangeZone:DB$ ChangeZone | DefinedPlayer$ TargetedController | ChangeType$ Permanent | Origin$ Hand | Destination$ Battlefield\nOracle:Exile target artifact, creature, or enchantment an opponent controls. That player may put a permanent card from their hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Divine Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

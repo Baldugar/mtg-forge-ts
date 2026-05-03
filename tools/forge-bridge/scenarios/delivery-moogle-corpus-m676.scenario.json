@@ -1,0 +1,23 @@
+{
+  "id": "delivery-moogle-corpus-m676",
+  "description": "M6 corpus — Delivery Moogle; in-hand parse.",
+  "seed": 63410,
+  "cards": {
+    "Delivery Moogle": "Name:Delivery Moogle\nManaCost:3 W\nTypes:Creature Moogle\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerDescription$ When this creature enters, search your library and/or graveyard for an artifact card with mana value 2 or less, reveal it, and put it into your hand. If you search your library this way, shuffle it.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Artifact.YouOwn+cmcLE2\nOracle:Flying\\nWhen this creature enters, search your library and/or graveyard for an artifact card with mana value 2 or less, reveal it, and put it into your hand. If you search your library this way, shuffle it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delivery Moogle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

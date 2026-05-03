@@ -1,0 +1,23 @@
+{
+  "id": "era-of-enlightenment-corpus-m676",
+  "description": "M6 corpus — Era of Enlightenment; in-hand parse.",
+  "seed": 64686,
+  "cards": {
+    "Era of Enlightenment": "Name:Era of Enlightenment\nManaCost:1 W\nTypes:Enchantment Saga\nK:Chapter:3:DBScry,DBGainLife,DBTransform\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | SpellDescription$ Scry 2.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2 | SpellDescription$ You gain 2 life.\nSVar:DBTransform:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBReturn | SpellDescription$ Exile this Saga, then return it to the battlefield transformed under your control.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Battlefield | Transformed$ True | GainControl$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:(As this Saga enters and after your draw step, add a lore counter.)\\nI — Scry 2.\\nII — You gain 2 life.\\nIII — Exile this Saga, then return it to the battlefield transformed under your control.\n\nALTERNATE\n\nName:Hand of Enlightenment\nManaCost:no cost\nColors:white\nTypes:Enchantment Creature Human Monk\nPT:2/2\nK:First Strike\nOracle:First strike\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Era of Enlightenment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

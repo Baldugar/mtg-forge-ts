@@ -1,0 +1,25 @@
+{
+  "id": "formation-breaker-corpus-m676",
+  "description": "M6 corpus — Formation Breaker; ETB-on-bf.",
+  "seed": 65663,
+  "cards": {
+    "Formation Breaker": "Name:Formation Breaker\nManaCost:1 G\nTypes:Creature Beast\nPT:2/1\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.powerLTX | Description$ Creatures with power less than this creature's power can't block it.\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | AddToughness$ 2 | IsPresent$ Creature.YouCtrl+HasCounters | Description$ As long as you control a creature with a counter on it, this creature gets +1/+2.\nSVar:X:Count$CardPower\nOracle:Creatures with power less than this creature's power can't block it.\\nAs long as you control a creature with a counter on it, this creature gets +1/+2.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Formation Breaker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "forebear-s-blade-corpus-m676",
+  "description": "M6 corpus — Forebear's Blade; in-hand parse.",
+  "seed": 65634,
+  "cards": {
+    "Forebear's Blade": "Name:Forebear's Blade\nManaCost:3\nTypes:Artifact Equipment\nK:Equip:3\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 3 | AddKeyword$ Vigilance & Trample | Description$ Equipped creature gets +3/+0 and has vigilance and trample.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.AttachedBy | Execute$ TrigAttach | TriggerDescription$ Whenever equipped creature dies, attach CARDNAME to target creature you control.\nSVar:TrigAttach:DB$ Attach | ValidTgts$ Creature.YouCtrl\nOracle:Equipped creature gets +3/+0 and has vigilance and trample.\\nWhenever equipped creature dies, attach Forebear's Blade to target creature you control.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forebear's Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

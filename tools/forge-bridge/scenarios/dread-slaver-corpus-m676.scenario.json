@@ -1,0 +1,23 @@
+{
+  "id": "dread-slaver-corpus-m676",
+  "description": "M6 corpus — Dread Slaver; in-hand parse.",
+  "seed": 63984,
+  "cards": {
+    "Dread Slaver": "Name:Dread Slaver\nManaCost:3 B B\nTypes:Creature Zombie Horror\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.DamagedBy | Execute$ TrigChange | TriggerDescription$ Whenever a creature dealt damage by CARDNAME this turn dies, return it to the battlefield under your control. That creature is a black Zombie in addition to its other colors and types.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | Defined$ TriggeredNewCardLKICopy | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Zombie | AddColor$ Black\nOracle:Whenever a creature dealt damage by Dread Slaver this turn dies, return it to the battlefield under your control. That creature is a black Zombie in addition to its other colors and types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dread Slaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

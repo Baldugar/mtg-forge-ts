@@ -1,0 +1,23 @@
+{
+  "id": "fynn-the-fangbearer-corpus-m676",
+  "description": "M6 corpus — Fynn, the Fangbearer; in-hand parse.",
+  "seed": 65867,
+  "cards": {
+    "Fynn, the Fangbearer": "Name:Fynn, the Fangbearer\nManaCost:1 G\nTypes:Legendary Creature Human Warrior\nPT:1/3\nK:Deathtouch\nT:Mode$ DamageDone | ValidSource$ Creature.YouCtrl+withDeathtouch | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigPoison | TriggerZones$ Battlefield | TriggerDescription$ Whenever a creature you control with deathtouch deals combat damage to a player, that player gets two poison counters. (A player with ten or more poison counters loses the game.)\nSVar:TrigPoison:DB$ Poison | Defined$ TriggeredTarget | Num$ 2\nDeckHas:Ability$Counters\nOracle:Deathtouch\\nWhenever a creature you control with deathtouch deals combat damage to a player, that player gets two poison counters. (A player with ten or more poison counters loses the game.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fynn, the Fangbearer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

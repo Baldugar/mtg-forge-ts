@@ -1,0 +1,23 @@
+{
+  "id": "e-honda-sumo-champion-corpus-m676",
+  "description": "M6 corpus — E. Honda, Sumo Champion; in-hand parse.",
+  "seed": 64232,
+  "cards": {
+    "E. Honda, Sumo Champion": "Name:E. Honda, Sumo Champion\nVariant:UniversesWithin:FlavorName:Baldin, Century Herdmaster\nManaCost:4 W W\nTypes:Legendary Creature Human Warrior\nPT:0/7\nS:Mode$ CombatDamageToughness | Condition$ PlayerTurn | ValidCard$ Creature | Description$ Sumo Spirit — As long as it's your turn, each creature assigns combat damage equal to its toughness rather than its power.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Hundred Hand Slap — Whenever CARDNAME attacks, up to one hundred target creatures each get +0/+X until end of turn, where X is the number of cards in your hand.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ 100 | NumDef$ +X | AILogic$ Pump\nSVar:HasAttackEffect:TRUE\nSVar:X:Count$CardsInYourHand\nOracle:Sumo Spirit — As long as it's your turn, each creature assigns combat damage equal to its toughness rather than its power.\\nHundred Hand Slap — Whenever E. Honda, Sumo Champion attacks, up to one hundred target creatures each get +0/+X until end of turn, where X is the number of cards in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "E. Honda, Sumo Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

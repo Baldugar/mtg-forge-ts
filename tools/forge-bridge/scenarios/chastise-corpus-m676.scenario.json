@@ -1,0 +1,23 @@
+{
+  "id": "chastise-corpus-m676",
+  "description": "M6 corpus — Chastise; in-hand parse.",
+  "seed": 62033,
+  "cards": {
+    "Chastise": "Name:Chastise\nManaCost:3 W\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | SubAbility$ DBGainLife | SpellDescription$ Destroy target attacking creature. You gain life equal to its power.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardPower\nOracle:Destroy target attacking creature. You gain life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chastise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

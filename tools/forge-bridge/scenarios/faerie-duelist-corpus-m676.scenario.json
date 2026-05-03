@@ -1,0 +1,23 @@
+{
+  "id": "faerie-duelist-corpus-m676",
+  "description": "M6 corpus — Faerie Duelist; in-hand parse.",
+  "seed": 64979,
+  "cards": {
+    "Faerie Duelist": "Name:Faerie Duelist\nManaCost:1 U\nTypes:Creature Faerie Rogue\nPT:1/2\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -2/-0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | IsCurse$ True\nOracle:Flash\\nFlying\\nWhen Faerie Duelist enters, target creature an opponent controls gets -2/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Faerie Duelist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

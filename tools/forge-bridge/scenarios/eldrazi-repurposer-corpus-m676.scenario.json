@@ -1,0 +1,23 @@
+{
+  "id": "eldrazi-repurposer-corpus-m676",
+  "description": "M6 corpus — Eldrazi Repurposer; in-hand parse.",
+  "seed": 64375,
+  "cards": {
+    "Eldrazi Repurposer": "Name:Eldrazi Repurposer\nManaCost:2 G\nTypes:Creature Eldrazi Drone\nPT:3/3\nK:Devoid\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When you cast this spell and when CARDNAME dies, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | Secondary$ True | TriggerDescription$ When you cast this spell and when CARDNAME dies, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You\nDeckHas:Ability$Token|Sacrifice & Type$Spawn\nOracle:Devoid (This card has no color.)\\nWhen you cast this spell and when Eldrazi Repurposer dies, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eldrazi Repurposer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "carrion-grub-corpus-m676",
+  "description": "M6 corpus — Carrion Grub; in-hand parse.",
+  "seed": 61748,
+  "cards": {
+    "Carrion Grub": "Name:Carrion Grub\nManaCost:3 B\nTypes:Creature Insect\nPT:0/5\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | Description$ CARDNAME gets +X/+0, where X is the greatest power among creature cards in your graveyard.\nSVar:X:Count$ValidGraveyard Creature.YouOwn$GreatestCardPower\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill four cards.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 4\nDeckHas:Ability$Graveyard\nOracle:Carrion Grub gets +X/+0, where X is the greatest power among creature cards in your graveyard.\\nWhen Carrion Grub enters, mill four cards. (Put the top four cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carrion Grub"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

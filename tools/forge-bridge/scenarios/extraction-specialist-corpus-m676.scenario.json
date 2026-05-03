@@ -1,0 +1,23 @@
+{
+  "id": "extraction-specialist-corpus-m676",
+  "description": "M6 corpus — Extraction Specialist; in-hand parse.",
+  "seed": 64924,
+  "cards": {
+    "Extraction Specialist": "Name:Extraction Specialist\nManaCost:2 W\nTypes:Creature Human Rogue\nPT:3/2\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature card with mana value 2 or less from your graveyard to the battlefield. That creature can't attack or block for as long as you control CARDNAME.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+cmcLE2 | TgtPrompt$ Select target creature with mana value 2 or less from your graveyard | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | HiddenKeywords$ CARDNAME can't attack or block. | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain|Graveyard\nOracle:Lifelink\\nWhen Extraction Specialist enters, return target creature card with mana value 2 or less from your graveyard to the battlefield. That creature can't attack or block for as long as you control Extraction Specialist.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extraction Specialist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

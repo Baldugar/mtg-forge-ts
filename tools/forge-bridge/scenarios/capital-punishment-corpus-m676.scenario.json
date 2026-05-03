@@ -1,0 +1,23 @@
+{
+  "id": "capital-punishment-corpus-m676",
+  "description": "M6 corpus — Capital Punishment; in-hand parse.",
+  "seed": 61695,
+  "cards": {
+    "Capital Punishment": "Name:Capital Punishment\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ Vote | Defined$ Player | Choices$ DBVoteDeath,DBVoteTaxes | StoreVoteNum$ True | AILogic$ DeathOrTaxes | StackDescription$ SpellDescription | SpellDescription$ Council's dilemma — Starting with you, each player votes for death or taxes. Each opponent sacrifices a creature for each death vote and discards a card for each taxes vote.\nSVar:DBVoteDeath:DB$ Sacrifice | Defined$ Opponent | SacValid$ Creature | Amount$ VoteNum | SpellDescription$ Death\nSVar:DBVoteTaxes:DB$ Discard | Defined$ Opponent | NumCards$ VoteNum | Mode$ TgtChoose | SpellDescription$ Taxes\nOracle:Council's dilemma — Starting with you, each player votes for death or taxes. Each opponent sacrifices a creature for each death vote and discards a card for each taxes vote.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Capital Punishment"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

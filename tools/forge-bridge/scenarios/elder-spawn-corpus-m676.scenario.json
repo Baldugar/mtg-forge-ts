@@ -1,0 +1,23 @@
+{
+  "id": "elder-spawn-corpus-m676",
+  "description": "M6 corpus — Elder Spawn; in-hand parse.",
+  "seed": 64361,
+  "cards": {
+    "Elder Spawn": "Name:Elder Spawn\nManaCost:4 U U U\nTypes:Creature Spawn\nPT:6/6\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigElderSpawnSacrifice | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, unless you sacrifice an Island, sacrifice CARDNAME and it deals 6 damage to you.\nSVar:TrigElderSpawnSacrifice:DB$ Sacrifice | SacValid$ Island | Optional$ True | RememberSacrificed$ True | SubAbility$ DBElderSpawnSacrificeMe\nSVar:DBElderSpawnSacrificeMe:DB$ Sacrifice | ConditionDefined$ Remembered | ConditionPresent$ Island | ConditionCompare$ EQ0 | SubAbility$ DBElderSpawnDamage\nSVar:DBElderSpawnDamage:DB$ DealDamage | Defined$ You | NumDmg$ 6 | ConditionDefined$ Remembered | ConditionPresent$ Island | ConditionCompare$ EQ0 | SubAbility$ DBElderSpawnCleanup\nSVar:DBElderSpawnCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | ValidBlocker$ Creature.Red | Description$ CARDNAME can't be blocked by red creatures.\nSVar:NeedsToPlayVar:Z GE3\nSVar:Z:Count$Valid Island.YouCtrl\nAI:RemoveDeck:Random\nDeckHas:Ability$Sacrifice\nOracle:At the beginning of your upkeep, unless you sacrifice an Island, sacrifice Elder Spawn and it deals 6 damage to you.\\nElder Spawn can't be blocked by red creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elder Spawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

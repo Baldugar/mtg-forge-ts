@@ -1,0 +1,23 @@
+{
+  "id": "gatstaf-shepherd-corpus-m676",
+  "description": "M6 corpus — Gatstaf Shepherd; in-hand parse.",
+  "seed": 65989,
+  "cards": {
+    "Gatstaf Shepherd": "Name:Gatstaf Shepherd\nManaCost:1 G\nTypes:Creature Human Werewolf\nPT:2/2\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Gatstaf Shepherd.\n\nALTERNATE\n\nName:Gatstaf Howler\nManaCost:no cost\nColors:green\nTypes:Creature Werewolf\nPT:3/3\nK:Intimidate\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Gatstaf Howler.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gatstaf Shepherd"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

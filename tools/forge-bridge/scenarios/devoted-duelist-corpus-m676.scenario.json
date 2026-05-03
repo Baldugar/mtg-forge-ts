@@ -1,0 +1,25 @@
+{
+  "id": "devoted-duelist-corpus-m676",
+  "description": "M6 corpus — Devoted Duelist; ETB-on-bf.",
+  "seed": 63574,
+  "cards": {
+    "Devoted Duelist": "Name:Devoted Duelist\nManaCost:1 R\nTypes:Creature Goblin Monk\nPT:2/1\nK:Haste\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDamage | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Flurry — Whenever you cast your second spell each turn, this creature deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nSVar:BuffedBy:Card\nOracle:Haste\\nFlurry — Whenever you cast your second spell each turn, this creature deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Devoted Duelist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

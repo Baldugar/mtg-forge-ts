@@ -1,0 +1,23 @@
+{
+  "id": "etali-s-favor-corpus-m676",
+  "description": "M6 corpus — Etali's Favor; in-hand parse.",
+  "seed": 64758,
+  "cards": {
+    "Etali's Favor": "Name:Etali's Favor\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDiscover | TriggerDescription$ When CARDNAME enters, discover 3. (Exile cards from the top of your library until you exile a nonland card with mana value 3 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\nSVar:TrigDiscover:DB$ Discover | Num$ 3\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Trample | Description$ Enchanted creature gets +1/+1 and has trample.\nOracle:Enchant creature you control\\nWhen Etali's Favor enters, discover 3. (Exile cards from the top of your library until you exile a nonland card with mana value 3 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)\\nEnchanted creature gets +1/+1 and has trample.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Etali's Favor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

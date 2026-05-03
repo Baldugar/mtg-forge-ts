@@ -1,0 +1,23 @@
+{
+  "id": "chaotic-strike-corpus-m676",
+  "description": "M6 corpus — Chaotic Strike; in-hand parse.",
+  "seed": 61993,
+  "cards": {
+    "Chaotic Strike": "Name:Chaotic Strike\nManaCost:1 R\nTypes:Instant\nText:Cast CARDNAME only during combat after blockers are declared.\nA:SP$ FlipACoin | ValidTgts$ Creature | WinSubAbility$ ChaoticStrikePump | LoseSubAbility$ ChaoticStrikeDraw | ActivationPhases$ Declare Blockers->EndCombat | ActivationAfterBlockers$ True | SpellDescription$ Flip a coin. If you win the flip, target creature gets +1/+1 until end of turn. Draw a card.\nSVar:ChaoticStrikePump:DB$ Pump | Defined$ Targeted | NumAtt$ +1 | NumDef$ +1 | SubAbility$ ChaoticStrikeDraw\nSVar:ChaoticStrikeDraw:DB$ Draw\nOracle:Cast this spell only during combat after blockers are declared.\\nFlip a coin. If you win the flip, target creature gets +1/+1 until end of turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chaotic Strike"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

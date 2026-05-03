@@ -1,0 +1,23 @@
+{
+  "id": "doomed-traveler-corpus-m676",
+  "description": "M6 corpus — Doomed Traveler; in-hand parse.",
+  "seed": 63827,
+  "cards": {
+    "Doomed Traveler": "Name:Doomed Traveler\nManaCost:W\nTypes:Creature Human Soldier\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME dies, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:SacMe:2\nDeckHas:Ability$Token\nOracle:When Doomed Traveler dies, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomed Traveler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

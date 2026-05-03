@@ -1,0 +1,23 @@
+{
+  "id": "chill-of-the-grave-corpus-m676",
+  "description": "M6 corpus — Chill of the Grave; in-hand parse.",
+  "seed": 62055,
+  "cards": {
+    "Chill of the Grave": "Name:Chill of the Grave\nManaCost:2 U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | EffectZone$ All | IsPresent$ Zombie.YouCtrl | Description$ This spell costs {1} less to cast if you control a Zombie.\nA:SP$ Tap | ValidTgts$ Creature | SubAbility$ DBPump | SpellDescription$ Tap target creature. It doesn't untap during its controller's next untap step.\nSVar:DBPump:DB$ Pump | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | SubAbility$ DBDraw | StackDescription$ SpellDescription | SpellDescription$ It doesn't untap during its controller's next untap step.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:BuffedBy:Zombie\nDeckHints:Type$Zombie\nOracle:This spell costs {1} less to cast if you control a Zombie.\\nTap target creature. It doesn't untap during its controller's next untap step.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chill of the Grave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "emissary-of-the-sleepless-corpus-m676",
+  "description": "M6 corpus — Emissary of the Sleepless; in-hand parse.",
+  "seed": 64531,
+  "cards": {
+    "Emissary of the Sleepless": "Name:Emissary of the Sleepless\nManaCost:4 W\nTypes:Creature Spirit\nPT:2/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | CheckSVar$ Morbid | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, if a creature died this turn, create a 1/1 white Spirit creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_spirit_flying | TokenOwner$ You\nSVar:Morbid:Count$Morbid.1.0\nDeckHas:Ability$Token\nOracle:Flying\\nWhen Emissary of the Sleepless enters, if a creature died this turn, create a 1/1 white Spirit creature token with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emissary of the Sleepless"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

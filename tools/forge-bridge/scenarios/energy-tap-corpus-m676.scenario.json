@@ -1,0 +1,23 @@
+{
+  "id": "energy-tap-corpus-m676",
+  "description": "M6 corpus — Energy Tap; in-hand parse.",
+  "seed": 64600,
+  "cards": {
+    "Energy Tap": "Name:Energy Tap\nManaCost:U\nTypes:Sorcery\nA:SP$ Tap | TgtPrompt$ Select target untapped creature you control | ValidTgts$ Creature.untapped+YouCtrl | SubAbility$ DBMana | SpellDescription$ Tap target untapped creature you control. If you do, add an amount of {C} equal to that creature's mana value.\nSVar:DBMana:DB$ Mana | Produced$ C | Amount$ X\nSVar:X:Targeted$CardManaCost\nAI:RemoveDeck:All\nOracle:Tap target untapped creature you control. If you do, add an amount of {C} equal to that creature's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Energy Tap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

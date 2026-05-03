@@ -1,0 +1,23 @@
+{
+  "id": "flayed-nim-corpus-m676",
+  "description": "M6 corpus — Flayed Nim; in-hand parse.",
+  "seed": 65477,
+  "cards": {
+    "Flayed Nim": "Name:Flayed Nim\nManaCost:3 B\nTypes:Creature Skeleton\nPT:2/2\nA:AB$ Regenerate | Cost$ 2 B | SpellDescription$ Regenerate CARDNAME.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, that creature's controller loses that much life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredTargetController | LifeAmount$ X\nSVar:X:TriggerCount$DamageAmount\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Flayed Nim deals combat damage to a creature, that creature's controller loses that much life.\\n{2}{B}: Regenerate Flayed Nim.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flayed Nim"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

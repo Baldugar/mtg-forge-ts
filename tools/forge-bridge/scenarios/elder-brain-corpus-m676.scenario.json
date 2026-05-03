@@ -1,0 +1,23 @@
+{
+  "id": "elder-brain-corpus-m676",
+  "description": "M6 corpus — Elder Brain; in-hand parse.",
+  "seed": 64353,
+  "cards": {
+    "Elder Brain": "Name:Elder Brain\nManaCost:5 B B\nTypes:Creature Horror\nPT:6/6\nK:Menace\nT:Mode$ Attacks | ValidCard$ Card.Self | Attacked$ Player | Execute$ TrigExile | TriggerDescription$ Whenever CARDNAME attacks a player, exile all cards from that player's hand, then they draw that many cards. You may play lands and cast spells from among the exiled cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.\nSVar:TrigExile:DB$ ChangeZoneAll | Defined$ TriggeredDefendingPlayer | ChangeType$ Card | Origin$ Hand | Destination$ Exile | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ TriggeredDefendingPlayer | NumCards$ RemTossed | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ MayPlay | SubAbility$ DBCleanup | Duration$ Permanent | ForgetOnMoved$ Exile\nSVar:MayPlay:Mode$ Continuous | MayPlay$ True | MayPlayIgnoreColor$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play lands and cast spells from among the exiled cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:RemTossed:Remembered$Amount\nSVar:HasAttackEffect:TRUE\nOracle:Menace\\nWhenever Elder Brain attacks a player, exile all cards from that player's hand, then they draw that many cards. You may play lands and cast spells from among the exiled cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elder Brain"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

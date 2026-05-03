@@ -1,0 +1,25 @@
+{
+  "id": "drinker-of-sorrow-corpus-m676",
+  "description": "M6 corpus — Drinker of Sorrow; ETB-on-bf.",
+  "seed": 64055,
+  "cards": {
+    "Drinker of Sorrow": "Name:Drinker of Sorrow\nManaCost:2 B\nTypes:Creature Horror\nPT:5/3\nS:Mode$ CantBlock | ValidCard$ Card.Self | Description$ CARDNAME can't block.\nT:Mode$ DamageDealtOnce | CombatDamage$ True | ValidSource$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME deals combat damage, sacrifice a permanent.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Permanent\nOracle:Drinker of Sorrow can't block.\\nWhenever Drinker of Sorrow deals combat damage, sacrifice a permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Drinker of Sorrow"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

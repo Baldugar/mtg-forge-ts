@@ -1,0 +1,23 @@
+{
+  "id": "changeling-wayfinder-corpus-m676",
+  "description": "M6 corpus — Changeling Wayfinder; in-hand parse.",
+  "seed": 61975,
+  "cards": {
+    "Changeling Wayfinder": "Name:Changeling Wayfinder\nManaCost:3\nTypes:Creature Shapeshifter\nPT:1/2\nK:Changeling\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When this creature enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:Changeling (This card is every creature type.)\\nWhen this creature enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Changeling Wayfinder"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

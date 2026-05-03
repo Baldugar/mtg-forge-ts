@@ -1,0 +1,23 @@
+{
+  "id": "champions-of-archery-corpus-m676",
+  "description": "M6 corpus — Champions of Archery; in-hand parse.",
+  "seed": 61944,
+  "cards": {
+    "Champions of Archery": "Name:Champions of Archery\nManaCost:3 R\nTypes:Legendary Creature Human Archer\nPT:1/4\nK:Reach\nS:Mode$ Continuous | Affected$ Card.IsCommander+YouCtrl | AddPower$ +X | Description$ Commanders you control get +X/+0, where X is the number of commanders you control.\nSVar:X:Count$Valid Card.IsCommander+YouCtrl\nAlternateMode:Adventure\nOracle:Reach\\nCommanders you control get +X/+0, where X is the number of commanders you control.\n\nALTERNATE\n\nName:Join the Group\nManaCost:2 R\nTypes:Sorcery Adventure\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Command | Optional$ You | ChangeType$ Card.Creature+Legendary+YouOwn | ChangeNum$ 1 | ChangeTypeDesc$ a legendary creature card | SelectPrompt$ Select a legendary creature card in your hand | RememberChanged$ True | SubAbility$ YouAreCommander | StackDescription$ REP You_{p:You} & your hand_their hand & also your_also {p:You}'s | SpellDescription$ You may put a legendary creature card from your hand into the command zone. It's also your commander.\nSVar:YouAreCommander:DB$ AlterAttribute | Defined$ Remembered | Attributes$ Commander | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:You may put a legendary creature card from your hand into the command zone. It's also your commander.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Champions of Archery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

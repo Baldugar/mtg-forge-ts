@@ -1,0 +1,23 @@
+{
+  "id": "carrion-cruiser-corpus-m676",
+  "description": "M6 corpus — Carrion Cruiser; in-hand parse.",
+  "seed": 61747,
+  "cards": {
+    "Carrion Cruiser": "Name:Carrion Cruiser\nManaCost:2 B\nTypes:Artifact Vehicle\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When this Vehicle enters, mill two cards. Then return a creature or Vehicle card from your graveyard to your hand. (To mill two cards, put the top two cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Creature.YouOwn,Vehicle.YouOwn | ChangeTypeDesc$ creature or Vehicle card | Hidden$ True | Optional$ True\nK:Crew:1\nDeckHas:Ability$Graveyard\nOracle:When this Vehicle enters, mill two cards. Then return a creature or Vehicle card from your graveyard to your hand. (To mill two cards, put the top two cards of your library into your graveyard.)\\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carrion Cruiser"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

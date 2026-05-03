@@ -1,0 +1,23 @@
+{
+  "id": "eject-corpus-m676",
+  "description": "M6 corpus — Eject; in-hand parse.",
+  "seed": 64343,
+  "cards": {
+    "Eject": "Name:Eject\nManaCost:3 U\nTypes:Instant\nR:Event$ Counter | ValidCard$ Card.Self | ValidSA$ Spell | Layer$ CantHappen | Description$ This spell can't be countered.\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDraw | SpellDescription$ Return target nonland permanent to its owner's hand.,,,,,,Draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:This spell can't be countered.\\nReturn target nonland permanent to its owner's hand.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eject"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

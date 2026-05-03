@@ -1,0 +1,23 @@
+{
+  "id": "emergency-powers-corpus-m676",
+  "description": "M6 corpus — Emergency Powers; in-hand parse.",
+  "seed": 64519,
+  "cards": {
+    "Emergency Powers": "Name:Emergency Powers\nManaCost:5 W U\nTypes:Instant\nA:SP$ ChangeZoneAll | ChangeType$ Card | Origin$ Hand,Graveyard | Destination$ Library | Shuffle$ True | SubAbility$ DBDraw | UseAllOriginZones$ True | AILogic$ Timetwister | StackDescription$ SpellDescription | SpellDescription$ Each player shuffles their hand and graveyard into their library, then draws seven cards. Exile CARDNAME.\nSVar:DBDraw:DB$ Draw | NumCards$ 7 | Defined$ Player | SubAbility$ DBAddendum | StackDescription$ None\nSVar:DBAddendum:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChoiceZone$ Hand | Amount$ 1 | ChangeType$ Permanent.cmcLE7+YouCtrl | ChangeNum$ 1 | AILogic$ BestCard | ConditionPlayerTurn$ True | ConditionPhases$ Main1,Main2 | ConditionDefined$ Self | ConditionPresent$ Card.wasCast | SubAbility$ DBExile | StackDescription$ SpellDescription | SpellDescription$ Addendum — If you cast this spell during your main phase, you may put a permanent card with mana value 7 or less from your hand onto the battlefield.\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nOracle:Each player shuffles their hand and graveyard into their library, then draws seven cards. Exile Emergency Powers.\\nAddendum — If you cast this spell during your main phase, you may put a permanent card with mana value 7 or less from your hand onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emergency Powers"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

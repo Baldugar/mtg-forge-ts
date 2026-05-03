@@ -1,0 +1,25 @@
+{
+  "id": "corrupted-shapeshifter-corpus-m676",
+  "description": "M6 corpus — Corrupted Shapeshifter; ETB-on-bf.",
+  "seed": 62612,
+  "cards": {
+    "Corrupted Shapeshifter": "Name:Corrupted Shapeshifter\nManaCost:3 U\nTypes:Creature Eldrazi Shapeshifter\nPT:*/*\nK:Devoid\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | Layer$ Copy | ReplacementResult$ Updated | ReplaceWith$ MorphChoice | Description$ As CARDNAME enters, it becomes your choice of a 3/3 creature with flying, a 2/5 creature with vigilance, or a 0/12 creature with defender.\nSVar:MorphChoice:DB$ GenericChoice | Defined$ You | Choices$ Flyer,VigilancePump,Wall\nSVar:Flyer:DB$ Clone | Defined$ Self | SetPower$ 3 | SetToughness$ 3 | AddKeywords$ Flying | SpellDescription$ CARDNAME is a 3/3 creature with flying.\nSVar:VigilancePump:DB$ Clone | Defined$ Self | SetPower$ 2 | SetToughness$ 5 | AddKeywords$ Vigilance | SpellDescription$ CARDNAME is a 2/5 creature with vigilance.\nSVar:Wall:DB$ Clone | Defined$ Self | SetPower$ 0 | SetToughness$ 12 | AddKeywords$ Defender | SpellDescription$ CARDNAME is a 0/12 creature with defender.\nOracle:Devoid (This card has no color.)\\nAs Corrupted Shapeshifter enters, it becomes your choice of a 3/3 creature with flying, a 2/5 creature with vigilance, or a 0/12 creature with defender.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Corrupted Shapeshifter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

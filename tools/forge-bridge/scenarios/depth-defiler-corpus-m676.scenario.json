@@ -1,0 +1,25 @@
+{
+  "id": "depth-defiler-corpus-m676",
+  "description": "M6 corpus — Depth Defiler; ETB-on-bf.",
+  "seed": 63476,
+  "cards": {
+    "Depth Defiler": "Name:Depth Defiler\nManaCost:3 U U\nTypes:Creature Eldrazi\nPT:3/5\nK:Devoid\nK:Kicker:C\nT:Mode$ SpellCast | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When you cast this spell, ABILITY\nSVar:TrigCharm:DB$ Charm | CharmNum$ Count$Kicked.2.1 | Choices$ DBChangeZone,DBDraw | AdditionalDescription$ If CARDNAME was kicked, choose both instead.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target creature to its owner's hand.\nSVar:DBDraw:DB$ Draw | NumCards$ 2 | ValidTgts$ Player | TgtPrompt$ Select target player to draw two cards, then discard a card | Defined$ ThisTargetedPlayer | SubAbility$ DBDiscard | SpellDescription$ Target player draws two cards, then discards a card.\nSVar:DBDiscard:DB$ Discard | Defined$ ParentTarget | NumCards$ 1 | Mode$ TgtChoose\nSVar:PlayMain1:TRUE\nOracle:Devoid (This card has no color.)\\nKicker {C} (You may pay an additional {C} as you cast this spell.)\\nWhen you cast this spell, choose one. If it was kicked, choose both instead.\\n• Return target creature to its owner's hand.\\n• Target player draws two cards, then discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Depth Defiler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

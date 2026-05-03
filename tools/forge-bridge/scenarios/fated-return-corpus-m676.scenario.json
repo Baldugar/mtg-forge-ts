@@ -1,0 +1,23 @@
+{
+  "id": "fated-return-corpus-m676",
+  "description": "M6 corpus — Fated Return; in-hand parse.",
+  "seed": 65113,
+  "cards": {
+    "Fated Return": "Name:Fated Return\nManaCost:4 B B B\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target creature card in a graveyard | ValidTgts$ Creature | SubAbility$ DBPump | SpellDescription$ Put target creature card from a graveyard onto the battlefield under your control. It gains indestructible. If it's your turn, scry 2.\nSVar:DBPump:DB$ Pump | Defined$ ParentTarget | KW$ Indestructible | Duration$ Permanent | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | ScryNum$ 2 | ConditionPlayerTurn$ True\nOracle:Put target creature card from a graveyard onto the battlefield under your control. It gains indestructible. If it's your turn, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fated Return"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

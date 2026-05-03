@@ -1,0 +1,23 @@
+{
+  "id": "cyclopean-giant-corpus-m676",
+  "description": "M6 corpus — Cyclopean Giant; in-hand parse.",
+  "seed": 62985,
+  "cards": {
+    "Cyclopean Giant": "Name:Cyclopean Giant\nManaCost:2 B B\nTypes:Creature Zombie Giant\nPT:4/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigAnimate | TriggerDescription$ When CARDNAME dies, target land becomes a Swamp. Exile CARDNAME.\nSVar:TrigAnimate:DB$ Animate | ValidTgts$ Land | Types$ Swamp | RemoveLandTypes$ True | Duration$ Permanent | SubAbility$ DBExile | SpellDescription$ Target land becomes a Swamp.\nSVar:DBExile:DB$ ChangeZone | Defined$ TriggeredNewCardLKICopy | Origin$ Graveyard | Destination$ Exile\nOracle:When Cyclopean Giant dies, target land becomes a Swamp. Exile Cyclopean Giant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclopean Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

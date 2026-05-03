@@ -1,0 +1,23 @@
+{
+  "id": "gladiolus-amicitia-corpus-m676",
+  "description": "M6 corpus — Gladiolus Amicitia; in-hand parse.",
+  "seed": 66252,
+  "cards": {
+    "Gladiolus Amicitia": "Name:Gladiolus Amicitia\nManaCost:4 R G\nTypes:Legendary Creature Human Warrior\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, search your library for a land card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land | ChangeNum$ 1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — Whenever a land you control enters, another target creature you control gets +2/+2 and gains trample until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | TgtPrompt$ Select another target creature you control | NumAtt$ +2 | NumDef$ +2 | KW$ Trample\nOracle:When Gladiolus Amicitia enters, search your library for a land card, put it onto the battlefield tapped, then shuffle.\\nLandfall — Whenever a land you control enters, another target creature you control gets +2/+2 and gains trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gladiolus Amicitia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

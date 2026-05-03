@@ -1,0 +1,23 @@
+{
+  "id": "bumi-eclectic-earthbender-corpus-m676",
+  "description": "M6 corpus — Bumi, Eclectic Earthbender; in-hand parse.",
+  "seed": 61502,
+  "cards": {
+    "Bumi, Eclectic Earthbender": "Name:Bumi, Eclectic Earthbender\nManaCost:3 G G\nTypes:Legendary Creature Human Noble Ally\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEarthbend | TriggerDescription$ When NICKNAME enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)\nSVar:TrigEarthbend:DB$ Earthbend | Num$ 1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPutCounterAll | TriggerDescription$ Whenever NICKNAME attacks, put two +1/+1 counters on each land creature you control.\nSVar:TrigPutCounterAll:DB$ PutCounterAll | ValidCards$ Creature.Land+YouCtrl | CounterType$ P1P1 | CounterNum$ 2\nDeckHas:Ability$Counters\nOracle:When Bumi enters, earthbend 1. (Target land you control becomes a 0/0 creature with haste that's still a land. Put a +1/+1 counter on it. When it dies or is exiled, return it to the battlefield tapped.)\\nWhenever Bumi attacks, put two +1/+1 counters on each land creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bumi, Eclectic Earthbender"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

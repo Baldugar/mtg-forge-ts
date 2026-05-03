@@ -1,0 +1,25 @@
+{
+  "id": "burning-earth-corpus-m676",
+  "description": "M6 corpus — Burning Earth; ETB-on-bf.",
+  "seed": 61521,
+  "cards": {
+    "Burning Earth": "Name:Burning Earth\nManaCost:3 R\nTypes:Enchantment\nT:Mode$ TapsForMana | ValidCard$ Land.nonBasic | Execute$ TrigDmg | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player taps a nonbasic land for mana, CARDNAME deals 1 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | Defined$ TriggeredActivator | NumDmg$ 1\nAI:RemoveDeck:Random\nOracle:Whenever a player taps a nonbasic land for mana, Burning Earth deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Burning Earth"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

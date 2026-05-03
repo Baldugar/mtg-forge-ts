@@ -1,0 +1,23 @@
+{
+  "id": "clarion-ultimatum-corpus-m676",
+  "description": "M6 corpus — Clarion Ultimatum; in-hand parse.",
+  "seed": 62195,
+  "cards": {
+    "Clarion Ultimatum": "Name:Clarion Ultimatum\nManaCost:G G W W W U U\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ You | Amount$ 5 | Mandatory$ True | Choices$ Permanent.YouCtrl | ChoiceTitle$ Choose five permanents you control | ChoiceZone$ Battlefield | SubAbility$ DBRepeat | StackDescription$ SpellDescription | SpellDescription$ Choose five permanents you control. For each of those permanents, you may search your library for a card with the same name as that permanent. Put those cards onto the battlefield tapped, then shuffle.\nSVar:DBRepeat:DB$ RepeatEach | RepeatCards$ Card.ChosenCard | Zone$ Battlefield | RepeatSubAbility$ DBSearch | SubAbility$ DBChangeZone\nSVar:DBSearch:DB$ ChooseCard | ChoiceZone$ Library | QuasiLibrarySearch$ You | Choices$ Card.YouOwn+!IsImprinted+sharesNameWith Remembered | ImprintChosen$ True | ChoiceTitle$ You may choose a card with this name from your library\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Imprinted | Origin$ Library | Destination$ Battlefield | Tapped$ True | Searched$ True | Shuffle$ True | StackDescription$ None\nSVar:NeedsToPlayVar:Z GE4\nSVar:Z:Count$Valid Permanent.YouCtrl\nOracle:Choose five permanents you control. For each of those permanents, you may search your library for a card with the same name as that permanent. Put those cards onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clarion Ultimatum"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

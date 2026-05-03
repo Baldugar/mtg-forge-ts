@@ -1,0 +1,23 @@
+{
+  "id": "fourth-bridge-prowler-corpus-m676",
+  "description": "M6 corpus — Fourth Bridge Prowler; in-hand parse.",
+  "seed": 65703,
+  "cards": {
+    "Fourth Bridge Prowler": "Name:Fourth Bridge Prowler\nManaCost:B\nTypes:Creature Human Rogue\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, you may have target creature get -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nSVar:PlayMain1:TRUE\nOracle:When Fourth Bridge Prowler enters, you may have target creature get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fourth Bridge Prowler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

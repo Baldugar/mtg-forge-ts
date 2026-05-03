@@ -1,0 +1,23 @@
+{
+  "id": "enslaved-horror-corpus-m676",
+  "description": "M6 corpus — Enslaved Horror; in-hand parse.",
+  "seed": 64630,
+  "cards": {
+    "Enslaved Horror": "Name:Enslaved Horror\nManaCost:3 B\nTypes:Creature Horror\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, each other player may return a creature card from their graveyard to the battlefield.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature | DefinedPlayer$ Player.Other | ChangeNum$ 1 | Hidden$ True | Optional$ True\nAI:RemoveDeck:Random\nSVar:NeedsToPlayVar:Z EQ0\nSVar:Z:Count$ValidGraveyard Creature.OppOwn+powerGT4+toughnessGT4\nOracle:When Enslaved Horror enters, each other player may return a creature card from their graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Enslaved Horror"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

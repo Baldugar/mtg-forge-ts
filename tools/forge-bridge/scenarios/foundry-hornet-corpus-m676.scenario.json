@@ -1,0 +1,23 @@
+{
+  "id": "foundry-hornet-corpus-m676",
+  "description": "M6 corpus — Foundry Hornet; in-hand parse.",
+  "seed": 65697,
+  "cards": {
+    "Foundry Hornet": "Name:Foundry Hornet\nManaCost:3 B\nTypes:Creature Insect\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Creature.YouCtrl+counters_GE1_P1P1 | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, if you control a creature with a +1/+1 counter on it, creatures your opponents control get -1/-1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | NumAtt$ -1 | NumDef$ -1 | ValidCards$ Creature.OppCtrl | IsCurse$ True\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Counters\nOracle:Flying\\nWhen Foundry Hornet enters, if you control a creature with a +1/+1 counter on it, creatures your opponents control get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foundry Hornet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

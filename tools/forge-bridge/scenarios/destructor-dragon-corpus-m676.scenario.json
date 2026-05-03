@@ -1,0 +1,23 @@
+{
+  "id": "destructor-dragon-corpus-m676",
+  "description": "M6 corpus — Destructor Dragon; in-hand parse.",
+  "seed": 63550,
+  "cards": {
+    "Destructor Dragon": "Name:Destructor Dragon\nManaCost:4 G G\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME dies, destroy target noncreature permanent.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonCreature | TgtPrompt$ Select target noncreature permanent\nOracle:Flying\\nWhen Destructor Dragon dies, destroy target noncreature permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Destructor Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

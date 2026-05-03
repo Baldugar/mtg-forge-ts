@@ -1,0 +1,23 @@
+{
+  "id": "emissary-of-hope-corpus-m676",
+  "description": "M6 corpus — Emissary of Hope; in-hand parse.",
+  "seed": 64529,
+  "cards": {
+    "Emissary of Hope": "Name:Emissary of Hope\nManaCost:1 W W\nTypes:Creature Spirit\nPT:2/1\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you gain 1 life for each artifact that player controls.\nSVar:TrigLoseLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Artifact.ControlledBy TriggeredTarget\nOracle:Flying\\nWhenever Emissary of Hope deals combat damage to a player, you gain 1 life for each artifact that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emissary of Hope"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

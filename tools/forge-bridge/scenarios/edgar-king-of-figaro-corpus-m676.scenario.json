@@ -1,0 +1,23 @@
+{
+  "id": "edgar-king-of-figaro-corpus-m676",
+  "description": "M6 corpus — Edgar, King of Figaro; in-hand parse.",
+  "seed": 64311,
+  "cards": {
+    "Edgar, King of Figaro": "Name:Edgar, King of Figaro\nManaCost:4 U U\nPT:4/5\nTypes:Legendary Creature Human Artificer Noble\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ When NICKNAME enters, draw a card for each artifact you control.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ Count$Valid Artifact.YouCtrl\nS:Mode$ FlipCoinMod | ValidPlayer$ You | CheckSVar$ Count$YouFlipThisTurn | SVarCompare$ EQ0 | Result$ True | Description$ Two-Headed Coin — The first time you flip one or more coins each turn, those coins come up heads and you win those flips.\nOracle:When Edgar enters, draw a card for each artifact you control.\\nTwo-Headed Coin — The first time you flip one or more coins each turn, those coins come up heads and you win those flips.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Edgar, King of Figaro"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

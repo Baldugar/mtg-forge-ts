@@ -1,0 +1,23 @@
+{
+  "id": "forerunner-of-the-coalition-corpus-m676",
+  "description": "M6 corpus — Forerunner of the Coalition; in-hand parse.",
+  "seed": 65636,
+  "cards": {
+    "Forerunner of the Coalition": "Name:Forerunner of the Coalition\nManaCost:2 B\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Pirate card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Pirate | ChangeNum$ 1 | ShuffleNonMandatory$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Pirate.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever another Pirate you control enters, each opponent loses 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nDeckHints:Type$Pirate\nOracle:When Forerunner of the Coalition enters, you may search your library for a Pirate card, reveal it, then shuffle and put that card on top.\\nWhenever another Pirate you control enters, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forerunner of the Coalition"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cacophony-unleashed-corpus-m676",
+  "description": "M6 corpus — Cacophony Unleashed; in-hand parse.",
+  "seed": 61583,
+  "cards": {
+    "Cacophony Unleashed": "Name:Cacophony Unleashed\nManaCost:5 B B\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self+wasCastByYou | Destination$ Battlefield | Execute$ TrigDestroyAll | TriggerDescription$ When CARDNAME enters, if you cast it, destroy all nonenchantment creatures.\nSVar:TrigDestroyAll:DB$ DestroyAll | ValidCards$ Creature.nonEnchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.Other+YouCtrl | Execute$ TrigAnimate | TriggerDescription$ Whenever CARDNAME or another enchantment you control enters, until end of turn, CARDNAME becomes a legendary 6/6 Nightmare God creature with menace and deathtouch. It's still an enchantment.\nSVar:TrigAnimate:DB$ Animate | Defined$ Self | Power$ 6 | Toughness$ 6 | Types$ Legendary,Creature,Nightmare,God | Keywords$ Menace & Deathtouch\nSVar:PlayMain1:ALWAYS\nDeckHints:Type$Enchantment\nDeckHas:Type$Nightmare|God\nOracle:When Cacophony Unleashed enters, if you cast it, destroy all nonenchantment creatures.\\nWhenever Cacophony Unleashed or another enchantment you control enters, until end of turn, Cacophony Unleashed becomes a legendary 6/6 Nightmare God creature with menace and deathtouch. It's still an enchantment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cacophony Unleashed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

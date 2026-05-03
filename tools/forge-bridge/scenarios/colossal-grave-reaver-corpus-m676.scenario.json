@@ -1,0 +1,23 @@
+{
+  "id": "colossal-grave-reaver-corpus-m676",
+  "description": "M6 corpus — Colossal Grave-Reaver; in-hand parse.",
+  "seed": 62385,
+  "cards": {
+    "Colossal Grave-Reaver": "Name:Colossal Grave-Reaver\nManaCost:6 B G\nTypes:Creature Dragon\nPT:7/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ Whenever this creature enters or attacks, mill three cards.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigMill | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature enters or attacks, mill three cards.\nSVar:TrigMill:DB$ Mill | Defined$ You | NumCards$ 3\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.YouOwn | Origin$ Library | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ Whenever one or more creature cards are put into your graveyard from your library, put one of them onto the battlefield.\nSVar:TrigChangeZone:DB$ ChangeZone | ChooseFromDefined$ TriggeredCards | ChangeNum$ 1 | Mandatory$ True | Hidden$ True | Origin$ Graveyard | Destination$ Battlefield\nOracle:Flying\\nWhenever this creature enters or attacks, mill three cards.\\nWhenever one or more creature cards are put into your graveyard from your library, put one of them onto the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Colossal Grave-Reaver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

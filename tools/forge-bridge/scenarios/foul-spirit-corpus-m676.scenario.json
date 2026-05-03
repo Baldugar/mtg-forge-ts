@@ -1,0 +1,23 @@
+{
+  "id": "foul-spirit-corpus-m676",
+  "description": "M6 corpus — Foul Spirit; in-hand parse.",
+  "seed": 65692,
+  "cards": {
+    "Foul Spirit": "Name:Foul Spirit\nManaCost:2 B\nTypes:Creature Spirit\nPT:3/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice a land.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Land | ChangeNum$ 1\nOracle:Flying\\nWhen Foul Spirit enters, sacrifice a land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foul Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

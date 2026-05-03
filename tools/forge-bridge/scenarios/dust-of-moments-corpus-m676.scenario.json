@@ -1,0 +1,23 @@
+{
+  "id": "dust-of-moments-corpus-m676",
+  "description": "M6 corpus — Dust of Moments; in-hand parse.",
+  "seed": 64190,
+  "cards": {
+    "Dust of Moments": "Name:Dust of Moments\nManaCost:2 W\nTypes:Instant\nA:SP$ Charm | Choices$ LoseTime,GainTime\nSVar:LoseTime:DB$ RemoveCounterAll | ValidCards$ Permanent | CounterType$ TIME | CounterNum$ 2 | SubAbility$ QuickenTime | SpellDescription$ Remove two time counters from each permanent and each suspended card.\nSVar:QuickenTime:DB$ RemoveCounterAll | ValidCards$ Card.suspended | CounterType$ TIME | CounterNum$ 2 | ValidZone$ Exile\nSVar:GainTime:DB$ PutCounterAll | ValidCards$ Permanent.counters_GE1_TIME | CounterType$ TIME | CounterNum$ 2 | SubAbility$ SlowTime | SpellDescription$ Put two time counters on each permanent with a time counter on it and each suspended card.\nSVar:SlowTime:DB$ PutCounterAll | ValidCards$ Card.suspended | CounterType$ TIME | CounterNum$ 2 | ValidZone$ Exile\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Remove two time counters from each permanent and each suspended card.\\n• Put two time counters on each permanent with a time counter on it and each suspended card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dust of Moments"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

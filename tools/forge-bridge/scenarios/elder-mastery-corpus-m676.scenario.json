@@ -1,0 +1,23 @@
+{
+  "id": "elder-mastery-corpus-m676",
+  "description": "M6 corpus — Elder Mastery; in-hand parse.",
+  "seed": 64358,
+  "cards": {
+    "Elder Mastery": "Name:Elder Mastery\nManaCost:3 U B R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 3 | AddToughness$ 3 | AddKeyword$ Flying | Description$ Enchanted creature gets +3/+3 and has flying.\nT:Mode$ DamageDone | ValidSource$ Card.AttachedBy | ValidTarget$ Player | Execute$ TrigDiscard | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted creature deals damage to a player, that player discards two cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredTarget | NumCards$ 2 | Mode$ TgtChoose\nOracle:Enchant creature\\nEnchanted creature gets +3/+3 and has flying.\\nWhenever enchanted creature deals damage to a player, that player discards two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elder Mastery"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

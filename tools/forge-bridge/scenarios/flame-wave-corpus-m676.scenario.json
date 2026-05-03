@@ -1,0 +1,23 @@
+{
+  "id": "flame-wave-corpus-m676",
+  "description": "M6 corpus — Flame Wave; in-hand parse.",
+  "seed": 65431,
+  "cards": {
+    "Flame Wave": "Name:Flame Wave\nManaCost:3 R R R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select a player or planeswalker | NumDmg$ 4 | SubAbility$ DmgAll | DamageMap$ True | SpellDescription$ CARDNAME deals 4 damage to target player or planeswalker and each creature that player or that planeswalker's controller controls.\nSVar:DmgAll:DB$ DamageAll | NumDmg$ 4 | ValidCards$ Creature.ControlledBy TargetedOrController | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:Flame Wave deals 4 damage to target player or planeswalker and each creature that player or that planeswalker's controller controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flame Wave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

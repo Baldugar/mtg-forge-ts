@@ -1,0 +1,25 @@
+{
+  "id": "elixir-of-immortality-corpus-m676",
+  "description": "M6 corpus — Elixir of Immortality; ETB-on-bf.",
+  "seed": 64434,
+  "cards": {
+    "Elixir of Immortality": "Name:Elixir of Immortality\nManaCost:1\nTypes:Artifact\nA:AB$ GainLife | Cost$ 2 T | LifeAmount$ 5 | SubAbility$ DBShuffleElixir | SpellDescription$ You gain 5 life. Shuffle CARDNAME and your graveyard into their owner's library. | StackDescription$ SpellDescription\nSVar:DBShuffleElixir:DB$ ChangeZone | Origin$ Battlefield | Destination$ Library | Shuffle$ False | RememberChanged$ True | Defined$ Self | SubAbility$ DBShuffleGrave | StackDescription$ None\nSVar:DBShuffleGrave:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Library | Shuffle$ False | RememberChanged$ True | ChangeType$ Card.YouCtrl | SubAbility$ DBShuffleChanged | StackDescription$ None\nSVar:DBShuffleChanged:DB$ Shuffle | Defined$ RememberedOwner | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{2}, {T}: You gain 5 life. Shuffle Elixir of Immortality and your graveyard into their owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Elixir of Immortality"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

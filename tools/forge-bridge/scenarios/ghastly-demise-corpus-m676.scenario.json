@@ -1,0 +1,23 @@
+{
+  "id": "ghastly-demise-corpus-m676",
+  "description": "M6 corpus — Ghastly Demise; in-hand parse.",
+  "seed": 66090,
+  "cards": {
+    "Ghastly Demise": "Name:Ghastly Demise\nManaCost:B\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | ConditionCheckSVar$ Y | ConditionSVarCompare$ LEX | StackDescription$ SpellDescription | SpellDescription$ Destroy target nonblack creature if its toughness is less than or equal to the number of cards in your graveyard.\nSVar:Y:Targeted$CardToughness\nSVar:X:Count$ValidGraveyard Card.YouOwn\nOracle:Destroy target nonblack creature if its toughness is less than or equal to the number of cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghastly Demise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

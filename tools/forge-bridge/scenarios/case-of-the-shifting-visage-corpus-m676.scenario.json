@@ -1,0 +1,23 @@
+{
+  "id": "case-of-the-shifting-visage-corpus-m676",
+  "description": "M6 corpus — Case of the Shifting Visage; in-hand parse.",
+  "seed": 61773,
+  "cards": {
+    "Case of the Shifting Visage": "Name:Case of the Shifting Visage\nManaCost:1 U U\nTypes:Enchantment Case\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSurveil | TriggerDescription$ At the beginning of your upkeep, surveil 1.\nSVar:TrigSurveil:DB$ Surveil\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.YouOwn | PresentCompare$ GE15 | PresentZone$ Graveyard | IsPresent2$ Card.Self+!IsSolved | Execute$ Solved | TriggerDescription$ To solve — There are fifteen or more cards in your graveyard. (If unsolved, solve at the beginning of your end step.)\nSVar:Solved:DB$ AlterAttribute | Defined$ Self | Attributes$ Solved\nT:Mode$ SpellCast | ValidCard$ Creature.nonLegendary | IsPresent$ Card.Self+IsSolved | ValidActivatingPlayer$ You | Execute$ TrigCopySpell | TriggerZones$ Battlefield | TriggerDescription$ Solved — Whenever you cast a nonlegendary creature spell, copy that spell. (The copy becomes a token.)\nSVar:TrigCopySpell:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility\nDeckHas:Ability$Token|Surveil|Graveyard\nOracle:At the beginning of your upkeep, surveil 1.\\nTo solve — There are fifteen or more cards in your graveyard. (If unsolved, solve at the beginning of your end step.)\\nSolved — Whenever you cast a nonlegendary creature spell, copy that spell. (The copy becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Case of the Shifting Visage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

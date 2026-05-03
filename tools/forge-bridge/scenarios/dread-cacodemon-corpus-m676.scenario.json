@@ -1,0 +1,23 @@
+{
+  "id": "dread-cacodemon-corpus-m676",
+  "description": "M6 corpus — Dread Cacodemon; in-hand parse.",
+  "seed": 63975,
+  "cards": {
+    "Dread Cacodemon": "Name:Dread Cacodemon\nManaCost:7 B B B\nTypes:Creature Demon\nPT:8/8\nT:Mode$ ChangesZone | ValidCard$ Card.wasCastFromYourHandByYou+Self | Destination$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, if you cast it from your hand, destroy all creatures your opponents control, then tap all other creatures you control.\nSVar:TrigDestroy:DB$ DestroyAll | ValidCards$ Creature.OppCtrl | SubAbility$ DBTapAll\nSVar:DBTapAll:DB$ TapAll | ValidCards$ Creature.YouCtrl+StrictlyOther\nOracle:When Dread Cacodemon enters, if you cast it from your hand, destroy all creatures your opponents control, then tap all other creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dread Cacodemon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

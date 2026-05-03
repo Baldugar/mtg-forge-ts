@@ -1,0 +1,23 @@
+{
+  "id": "clone-crafter-corpus-m676",
+  "description": "M6 corpus — Clone Crafter; in-hand parse.",
+  "seed": 62274,
+  "cards": {
+    "Clone Crafter": "Name:Clone Crafter\nManaCost:1 U\nTypes:Creature Human Wizard\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, conjure a duplicate of a random creature card from your opponent's library into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\nSVar:TrigChoose:DB$ ChooseCard | Choices$ Creature.OppCtrl | ChoiceZone$ Library | AtRandom$ True | SubAbility$ DBConjure\nSVar:DBConjure:DB$ MakeCard | Conjure$ True | DefinedName$ ChosenCard | Zone$ Hand | RememberMade$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Defined$ Remembered | staticAbilities$ SpendAnyMana | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:SpendAnyMana:Mode$ ManaConvert | EffectZone$ Stack | ValidPlayer$ You | ValidCard$ Card.Self | ValidSA$ Spell | ManaConversion$ AnyType->AnyColor | Description$ You may spend mana as though it were mana of any color to cast this spell.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nOracle:When Clone Crafter enters, conjure a duplicate of a random creature card from your opponent's library into your hand. It perpetually gains \"You may spend mana as though it were mana of any color to cast this spell.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clone Crafter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

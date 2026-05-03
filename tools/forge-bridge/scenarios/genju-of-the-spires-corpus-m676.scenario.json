@@ -1,0 +1,23 @@
+{
+  "id": "genju-of-the-spires-corpus-m676",
+  "description": "M6 corpus — Genju of the Spires; in-hand parse.",
+  "seed": 66051,
+  "cards": {
+    "Genju of the Spires": "Name:Genju of the Spires\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Mountain\nSVar:AttachAILogic:Pump\nA:AB$ Animate | Cost$ 2 | Defined$ Enchanted | Power$ 6 | Toughness$ 1 | Types$ Creature,Spirit | Colors$ Red | SpellDescription$ Enchanted Mountain becomes a 6/1 red Spirit creature until end of turn. It's still a land.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigReturnOwner | OptionalDecider$ You | TriggerDescription$ When enchanted Mountain is put into a graveyard, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturnOwner:DB$ ChangeZone | Hidden$ True | ChangeType$ Card.StrictlySelf | DefinedPlayer$ You | Origin$ Graveyard | Destination$ Hand | Mandatory$ True\nSVar:NonStackingAttachEffect:True\nSVar:AIPaymentPreference:AvoidPayingWithAttachTarget\nOracle:Enchant Mountain\\n{2}: Enchanted Mountain becomes a 6/1 red Spirit creature until end of turn. It's still a land.\\nWhen enchanted Mountain is put into a graveyard, you may return Genju of the Spires from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genju of the Spires"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

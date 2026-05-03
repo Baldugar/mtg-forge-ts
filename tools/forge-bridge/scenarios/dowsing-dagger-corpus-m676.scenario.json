@@ -1,0 +1,23 @@
+{
+  "id": "dowsing-dagger-corpus-m676",
+  "description": "M6 corpus — Dowsing Dagger; in-hand parse.",
+  "seed": 63867,
+  "cards": {
+    "Dowsing Dagger": "Name:Dowsing Dagger\nManaCost:2\nTypes:Artifact Equipment\nK:Equip:2\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ 2 | AddToughness$ 1 | Description$ Equipped creature gets +2/+1.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigOppToken | TriggerDescription$ When CARDNAME enters, target opponent creates two 0/2 green Plant creature tokens with defender.\nSVar:TrigOppToken:DB$ Token | ValidTgts$ Opponent | TokenAmount$ 2 | TokenScript$ g_0_2_plant_defender | TokenOwner$ Targeted\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ DBTransform | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, you may transform CARDNAME.\nSVar:DBTransform:DB$ SetState | Defined$ Self | Mode$ Transform | Optional$ True\nAlternateMode:DoubleFaced\nOracle:When Dowsing Dagger enters, target opponent creates two 0/2 green Plant creature tokens with defender.\\nEquipped creature gets +2/+1.\\nWhenever equipped creature deals combat damage to a player, you may transform Dowsing Dagger.\\nEquip {2}\n\nALTERNATE\n\nName:Lost Vale\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 3 | SpellDescription$ Add three mana of any one color.\nOracle:(Transforms from Dowsing Dagger.)\\n{T}: Add three mana of any one color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dowsing Dagger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

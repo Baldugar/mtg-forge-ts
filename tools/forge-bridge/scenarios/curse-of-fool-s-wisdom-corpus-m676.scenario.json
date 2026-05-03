@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-fool-s-wisdom-corpus-m676",
+  "description": "M6 corpus — Curse of Fool's Wisdom; in-hand parse.",
+  "seed": 62925,
+  "cards": {
+    "Curse of Fool's Wisdom": "Name:Curse of Fool's Wisdom\nManaCost:4 B B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Drawn | ValidCard$ Card.OwnedBy Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever enchanted player draws a card, they lose 2 life and you gain 2 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nK:Madness:3 B\nOracle:Enchant player\\nWhenever enchanted player draws a card, they lose 2 life and you gain 2 life.\\nMadness {3}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Fool's Wisdom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

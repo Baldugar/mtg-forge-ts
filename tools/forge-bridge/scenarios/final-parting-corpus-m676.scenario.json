@@ -1,0 +1,23 @@
+{
+  "id": "final-parting-corpus-m676",
+  "description": "M6 corpus — Final Parting; in-hand parse.",
+  "seed": 65312,
+  "cards": {
+    "Final Parting": "Name:Final Parting\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Card | ChangeNum$ 2 | Mandatory$ True | RememberChanged$ True | Shuffle$ False | StackDescription$ SpellDescription | SubAbility$ DBChangeZone1 | SpellDescription$ Search your library for two cards. Put one into your hand and the other into your graveyard. Then shuffle.\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.IsRemembered | ChangeNum$ 1 | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to put into your hand | Shuffle$ False | NoReveal$ True | SubAbility$ DBChangeZone2 | StackDescription$ None\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Library | Destination$ Graveyard | ChangeType$ Card.IsRemembered | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to put into your graveyard | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Search your library for two cards. Put one into your hand and the other into your graveyard. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Final Parting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

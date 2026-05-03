@@ -1,0 +1,23 @@
+{
+  "id": "diregraf-scavenger-corpus-m676",
+  "description": "M6 corpus — Diregraf Scavenger; in-hand parse.",
+  "seed": 63660,
+  "cards": {
+    "Diregraf Scavenger": "Name:Diregraf Scavenger\nManaCost:3 B\nTypes:Creature Zombie Bear\nPT:2/3\nK:Deathtouch\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile up to one target card from a graveyard. If a creature card was exiled this way, each opponent loses 2 life and you gain 2 life.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Card | AITgts$ Creature.OppOwn | TgtPrompt$ Select up to one target card from a graveyard | RememberChanged$ True | SubAbility$ DBDrain\nSVar:DBDrain:DB$ LoseLife | ConditionDefined$ Remembered | ConditionPresent$ Creature | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | ConditionDefined$ Remembered | ConditionPresent$ Creature | Defined$ You | LifeAmount$ 2 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard|LifeGain\nOracle:Deathtouch\\nWhen Diregraf Scavenger enters, exile up to one target card from a graveyard. If a creature card was exiled this way, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diregraf Scavenger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

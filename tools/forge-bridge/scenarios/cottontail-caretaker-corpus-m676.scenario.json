@@ -1,0 +1,23 @@
+{
+  "id": "cottontail-caretaker-corpus-m676",
+  "description": "M6 corpus — Cottontail Caretaker; in-hand parse.",
+  "seed": 62625,
+  "cards": {
+    "Cottontail Caretaker": "Name:Cottontail Caretaker\nManaCost:1 W\nTypes:Creature Rabbit Citizen\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When CARDNAME enters, choose a white creature card in your hand. That card perpetually gains offspring {1}.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Hand | Choices$ Card.Creature+YouOwn+White | ChoiceTitle$ Choose a white creature card in your hand | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ChosenCard | PumpZone$ Hand | KW$ Offspring:1 | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:When Cottontail Caretaker enters, choose a white creature card in your hand. That card perpetually gains offspring {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cottontail Caretaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

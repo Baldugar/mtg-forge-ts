@@ -1,0 +1,23 @@
+{
+  "id": "crescent-island-temple-corpus-m676",
+  "description": "M6 corpus — Crescent Island Temple; in-hand parse.",
+  "seed": 62738,
+  "cards": {
+    "Crescent Island Temple": "Name:Crescent Island Temple\nManaCost:3 R\nTypes:Legendary Enchantment Shrine\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken1 | TriggerDescription$ When CARDNAME enters, for each Shrine you control, create a 1/1 red Monk creature token with prowess. (Whenever you cast a noncreature spell, it gets +1/+1 until end of turn.)\nSVar:TrigToken1:DB$ Token | TokenAmount$ X | TokenOwner$ You | TokenScript$ r_1_1_monk_prowess\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Shrine.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken2 | TriggerDescription$ Whenever another Shrine you control enters, create a 1/1 red Monk creature token with prowess.\nSVar:TrigToken2:DB$ Token | TokenOwner$ You | TokenScript$ r_1_1_monk_prowess\nSVar:X:Count$Valid Shrine.YouCtrl\nDeckHas:Ability$Counters\nDeckHints:Type$Shrine\nOracle:When Crescent Island Temple enters, for each Shrine you control, create a 1/1 red Monk creature token with prowess. (Whenever you cast a noncreature spell, it gets +1/+1 until end of turn.)\\nWhenever another Shrine you control enters, create a 1/1 red Monk creature token with prowess.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crescent Island Temple"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

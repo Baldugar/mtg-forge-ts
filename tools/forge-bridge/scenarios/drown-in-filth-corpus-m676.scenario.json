@@ -1,0 +1,23 @@
+{
+  "id": "drown-in-filth-corpus-m676",
+  "description": "M6 corpus — Drown in Filth; in-hand parse.",
+  "seed": 64084,
+  "cards": {
+    "Drown in Filth": "Name:Drown in Filth\nManaCost:B G\nTypes:Sorcery\nA:SP$ Mill | NumCards$ 4 | Defined$ You | SubAbility$ DBPump | SpellDescription$ Choose target creature. Mill four cards, then that creature gets -1/-1 until end of turn for each land card in your graveyard.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nSVar:X:Count$ValidGraveyard Land.YouOwn\nAI:RemoveDeck:All\nDeckHas:Ability$Graveyard\nOracle:Choose target creature. Mill four cards, then that creature gets -1/-1 until end of turn for each land card in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drown in Filth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

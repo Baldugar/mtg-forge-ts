@@ -1,0 +1,23 @@
+{
+  "id": "carrion-imp-corpus-m676",
+  "description": "M6 corpus — Carrion Imp; in-hand parse.",
+  "seed": 61749,
+  "cards": {
+    "Carrion Imp": "Name:Carrion Imp\nManaCost:3 B\nTypes:Creature Imp\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may exile target creature card from a graveyard. If you do, you gain 2 life.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Creature | SubAbility$ DBGainLife | RememberChanged$ True\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | ConditionCheckSVar$ X | ConditionSVarCompare$ EQ1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Carrion Imp enters, you may exile target creature card from a graveyard. If you do, you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carrion Imp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

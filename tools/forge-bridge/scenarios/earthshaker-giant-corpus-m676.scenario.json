@@ -1,0 +1,23 @@
+{
+  "id": "earthshaker-giant-corpus-m676",
+  "description": "M6 corpus — Earthshaker Giant; in-hand parse.",
+  "seed": 64262,
+  "cards": {
+    "Earthshaker Giant": "Name:Earthshaker Giant\nManaCost:4 G G\nTypes:Creature Giant Druid\nPT:6/6\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, other creatures you control get +3/+3 and gain trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +3 | NumDef$ +3 | KW$ Trample\nSVar:PlayMain1:TRUE\nOracle:Trample\\nWhen Earthshaker Giant enters, other creatures you control get +3/+3 and gain trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earthshaker Giant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

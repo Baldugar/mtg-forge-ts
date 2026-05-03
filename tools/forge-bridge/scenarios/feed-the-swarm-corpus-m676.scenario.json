@@ -1,0 +1,23 @@
+{
+  "id": "feed-the-swarm-corpus-m676",
+  "description": "M6 corpus — Feed the Swarm; in-hand parse.",
+  "seed": 65171,
+  "cards": {
+    "Feed the Swarm": "Name:Feed the Swarm\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature.OppCtrl,Enchantment.OppCtrl | TgtPrompt$ Select target creature or enchantment an opponent controls | SubAbility$ DBLoseLife | SpellDescription$ Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardManaCost\nOracle:Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feed the Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

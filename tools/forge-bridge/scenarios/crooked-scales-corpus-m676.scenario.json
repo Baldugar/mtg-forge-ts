@@ -1,0 +1,25 @@
+{
+  "id": "crooked-scales-corpus-m676",
+  "description": "M6 corpus — Crooked Scales; ETB-on-bf.",
+  "seed": 62769,
+  "cards": {
+    "Crooked Scales": "Name:Crooked Scales\nManaCost:4\nTypes:Artifact\nA:AB$ Pump | Cost$ 4 T | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | RememberObjects$ ThisTargetedCard | IsCurse$ True | StackDescription$ SpellDescription | SubAbility$ DBPump | SpellDescription$ Flip a coin. If you win the flip, destroy target creature an opponent controls. If you lose the flip, destroy target creature you control unless you pay {3} and repeat this process.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | ImprintCards$ ThisTargetedCard | StackDescription$ None | SubAbility$ DBRepeat\nSVar:DBRepeat:DB$ Repeat | RepeatSubAbility$ DBFlip | RepeatDefined$ Imprinted | RepeatPresent$ Card | RepeatSVarCompare$ EQ0\nSVar:DBFlip:DB$ FlipACoin | WinSubAbility$ DestroyOpp | LoseSubAbility$ DestroyYours | StackDescription$ None\nSVar:DestroyOpp:DB$ Destroy | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DestroyYours:DB$ Destroy | Defined$ Imprinted | UnlessCost$ 3 | UnlessPayer$ You | SubAbility$ DBCleanup | UnlessResolveSubs$ WhenNotPaid\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nAI:RemoveDeck:Random\nOracle:{4}, {T}: Flip a coin. If you win the flip, destroy target creature an opponent controls. If you lose the flip, destroy target creature you control unless you pay {3} and repeat this process.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Crooked Scales"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

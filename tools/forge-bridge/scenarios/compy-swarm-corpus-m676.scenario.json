@@ -1,0 +1,23 @@
+{
+  "id": "compy-swarm-corpus-m676",
+  "description": "M6 corpus — Compy Swarm; in-hand parse.",
+  "seed": 62452,
+  "cards": {
+    "Compy Swarm": "Name:Compy Swarm\nManaCost:1 B G\nTypes:Creature Dinosaur\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | CheckSVar$ X | Execute$ TrigToken | TriggerDescription$ At the beginning of your end step, if a creature died this turn, create a tapped token that's a copy of CARDNAME.\nSVar:TrigToken:DB$ CopyPermanent | Defined$ Self | TokenTapped$ True\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHas:Ability$Token\nOracle:At the beginning of your end step, if a creature died this turn, create a tapped token that's a copy of Compy Swarm.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Compy Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

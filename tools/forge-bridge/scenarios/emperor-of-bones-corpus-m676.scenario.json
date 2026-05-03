@@ -1,0 +1,23 @@
+{
+  "id": "emperor-of-bones-corpus-m676",
+  "description": "M6 corpus — Emperor of Bones; in-hand parse.",
+  "seed": 64537,
+  "cards": {
+    "Emperor of Bones": "Name:Emperor of Bones\nManaCost:1 B\nTypes:Creature Skeleton Noble\nPT:2/2\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigExile | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of combat on your turn, exile up to one target card from a graveyard.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Card | TgtPrompt$ Select up to one target card from a graveyard\nA:AB$ PutCounter | Cost$ 1 B | Adapt$ 2\nT:Mode$ CounterAddedOnce | ValidCard$ Card.Self | TriggerZones$ Battlefield | CounterType$ P1P1 | Execute$ TrigChangeZone | TriggerDescription$ Whenever one or more +1/+1 counters are put on CARDNAME, put a creature card exiled with CARDNAME onto the battlefield under your control with a finality counter on it. It gains haste. Sacrifice it at the beginning of the next end step.\nSVar:TrigChangeZone:DB$ ChangeZone | ChangeType$ Creature.ExiledWithSource | GainControl$ True | Origin$ Exile | Hidden$ True | Mandatory$ True | RememberChanged$ True | Destination$ Battlefield | WithCountersType$ FINALITY | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Haste | AtEOT$ Sacrifice | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Counters|Graveyard\nOracle:At the beginning of combat on your turn, exile up to one target card from a graveyard.\\n{1}{B}: Adapt 2.\\nWhenever one or more +1/+1 counters are put on Emperor of Bones, put a creature card exiled with Emperor of Bones onto the battlefield under your control with a finality counter on it. It gains haste. Sacrifice it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emperor of Bones"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

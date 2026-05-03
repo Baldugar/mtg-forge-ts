@@ -1,0 +1,23 @@
+{
+  "id": "coordinated-clobbering-corpus-m676",
+  "description": "M6 corpus — Coordinated Clobbering; in-hand parse.",
+  "seed": 62559,
+  "cards": {
+    "Coordinated Clobbering": "Name:Coordinated Clobbering\nManaCost:G\nTypes:Sorcery\nA:SP$ Tap | TgtPrompt$ Select target untapped creature you control | ValidTgts$ Creature.untapped+YouCtrl | TargetMin$ 1 | TargetMax$ 2 | SubAbility$ DBEachDamage | SpellDescription$ Tap one or two target untapped creatures you control. They each deal damage equal to their power to target creature an opponent controls.\nSVar:DBEachDamage:DB$ EachDamage | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | DefinedDamagers$ ParentTarget | NumDmg$ Count$CardPower\nOracle:Tap one or two target untapped creatures you control. They each deal damage equal to their power to target creature an opponent controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coordinated Clobbering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

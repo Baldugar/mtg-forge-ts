@@ -1,0 +1,23 @@
+{
+  "id": "deflecting-palm-corpus-m676",
+  "description": "M6 corpus — Deflecting Palm; in-hand parse.",
+  "seed": 63388,
+  "cards": {
+    "Deflecting Palm": "Name:Deflecting Palm\nManaCost:R W\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card,Emblem | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a source of your choice would deal damage to you this turn, prevent that damage. If damage is prevented this way, CARDNAME deals that much damage to that source's controller.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | ConditionDefined$ ChosenCard | ConditionPresent$ Card,Emblem\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict,Emblem.ChosenCard | ValidTarget$ You | ReplaceWith$ DamageControllerInstead | PreventionEffect$ True | Description$ The next time the chosen source deals damage to you, prevent that damage.\nSVar:DamageControllerInstead:DB$ DealDamage | Defined$ ChosenCardController | DamageSource$ EffectSource | NumDmg$ X | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:ReplaceCount$DamageAmount\nOracle:The next time a source of your choice would deal damage to you this turn, prevent that damage. If damage is prevented this way, Deflecting Palm deals that much damage to that source's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deflecting Palm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

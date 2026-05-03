@@ -1,0 +1,25 @@
+{
+  "id": "deep-sea-kraken-corpus-m676",
+  "description": "M6 corpus — Deep-Sea Kraken; ETB-on-bf.",
+  "seed": 63331,
+  "cards": {
+    "Deep-Sea Kraken": "Name:Deep-Sea Kraken\nManaCost:7 U U U\nTypes:Creature Kraken\nPT:6/6\nS:Mode$ CantBlockBy | ValidAttacker$ Creature.Self | Description$ CARDNAME can't be blocked.\nK:Suspend:9:2 U\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ Opponent | Execute$ TrigRemoveCounter | TriggerZones$ Exile | IsPresent$ Card.Self+suspended | PresentZone$ Exile | TriggerDescription$ Whenever an opponent casts a spell, if CARDNAME is suspended, remove a time counter from it.\nSVar:TrigRemoveCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ TIME | CounterNum$ 1\nOracle:Deep-Sea Kraken can't be blocked.\\nSuspend 9—{2}{U} (Rather than cast this card from your hand, you may pay {2}{U} and exile it with nine time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost. It has haste.)\\nWhenever an opponent casts a spell, if Deep-Sea Kraken is suspended, remove a time counter from it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Deep-Sea Kraken"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

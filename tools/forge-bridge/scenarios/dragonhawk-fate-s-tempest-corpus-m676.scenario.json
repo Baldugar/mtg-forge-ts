@@ -1,0 +1,23 @@
+{
+  "id": "dragonhawk-fate-s-tempest-corpus-m676",
+  "description": "M6 corpus — Dragonhawk, Fate's Tempest; in-hand parse.",
+  "seed": 63924,
+  "cards": {
+    "Dragonhawk, Fate's Tempest": "Name:Dragonhawk, Fate's Tempest\nManaCost:3 R R\nTypes:Legendary Creature Bird Dragon\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ Whenever NICKNAME enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, NICKNAME deals 2 damage to each opponent for each of those cards that are still exiled.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDig | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever NICKNAME enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.\nSVar:TrigDig:DB$ Dig | Defined$ You | DigNum$ X | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBDelayedTrigger | ForgetOnMoved$ Exile | Duration$ UntilYourNextEndStep\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play those cards until your next end step.\nSVar:DBDelayedTrigger:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | RememberObjects$ Remembered | Execute$ TrigDamage | SubAbility$ DBCleanup | TriggerDescription$ At the beginning of your next end step, NICKNAME deals 2 damage to each opponent for each of those cards that are still exiled.\nSVar:TrigDamage:DB$ DamageAll | ValidPlayers$ Player.Opponent | NumDmg$ Y\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$Valid Permanent.Creature+YouCtrl+powerGE4\nSVar:Y:Count$ValidExile Card.IsTriggerRemembered/Twice\nOracle:Flying\\nWhenever Dragonhawk enters or attacks, exile the top X cards of your library, where X is the number of creatures you control with power 4 or greater. You may play those cards until your next end step. At the beginning of your next end step, Dragonhawk deals 2 damage to each opponent for each of those cards that are still exiled.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragonhawk, Fate's Tempest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

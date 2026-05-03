@@ -1,0 +1,23 @@
+{
+  "id": "gilt-leaf-winnower-corpus-m676",
+  "description": "M6 corpus — Gilt-Leaf Winnower; in-hand parse.",
+  "seed": 66220,
+  "cards": {
+    "Gilt-Leaf Winnower": "Name:Gilt-Leaf Winnower\nManaCost:3 B B\nTypes:Creature Elf Warrior\nPT:4/3\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may destroy target non-Elf creature whose power and toughness aren't equal.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonElf+!equalPT | TgtPrompt$ Select target non-Elf creature whose power and toughness aren't equal.\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen Gilt-Leaf Winnower enters, you may destroy target non-Elf creature whose power and toughness aren't equal.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gilt-Leaf Winnower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

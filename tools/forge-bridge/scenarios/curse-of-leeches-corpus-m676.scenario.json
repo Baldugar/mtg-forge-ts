@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-leeches-corpus-m676",
+  "description": "M6 corpus — Curse of Leeches; in-hand parse.",
+  "seed": 62928,
+  "cards": {
+    "Curse of Leeches": "Name:Curse of Leeches\nManaCost:2 B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nR:Event$ Transform | ValidCard$ Card.Self | ReplaceWith$ Attach | Description$ As this permanent transforms into CARDNAME, attach it to a player.\nSVar:Attach:DB$ Attach | Object$ Self | Chooser$ You | PlayerChoices$ Player | ChoiceTitle$ Choose a player to attach this Curse to | AILogic$ Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedBy | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of enchanted player's upkeep, they lose 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ TriggeredPlayer | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nK:Daybound\nDeckHas:Ability$LifeGain\nAlternateMode:DoubleFaced\nOracle:Enchant player\\nAs this permanent transforms into Curse of Leeches, attach it to a player.\\nAt the beginning of enchanted player's upkeep, they lose 1 life and you gain 1 life.\\nDaybound (If a player casts no spells during their own turn, it becomes night next turn.)\n\nALTERNATE\n\nName:Leeching Lurker\nManaCost:no cost\nColors:black\nTypes:Creature Leech Horror\nPT:4/4\nK:Lifelink\nK:Nightbound\nOracle:Lifelink\\nNightbound (If a player casts at least two spells during their own turn, it becomes day next turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Leeches"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

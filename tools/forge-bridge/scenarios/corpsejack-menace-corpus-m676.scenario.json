@@ -1,0 +1,25 @@
+{
+  "id": "corpsejack-menace-corpus-m676",
+  "description": "M6 corpus — Corpsejack Menace; ETB-on-bf.",
+  "seed": 62598,
+  "cards": {
+    "Corpsejack Menace": "Name:Corpsejack Menace\nManaCost:2 B G\nTypes:Creature Fungus\nPT:4/4\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidCard$ Creature.YouCtrl+inZoneBattlefield | ValidCounterType$ P1P1 | ReplaceWith$ DoubleCounters | Description$ If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on it instead.\nSVar:DoubleCounters:DB$ ReplaceCounter | ValidCounterType$ P1P1 | Amount$ X\nSVar:X:ReplaceCount$CounterNum/Twice\nOracle:If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Corpsejack Menace"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

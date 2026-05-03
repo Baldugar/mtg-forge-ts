@@ -1,0 +1,23 @@
+{
+  "id": "due-respect-corpus-m676",
+  "description": "M6 corpus — Due Respect; in-hand parse.",
+  "seed": 64131,
+  "cards": {
+    "Due Respect": "Name:Due Respect\nManaCost:1 W\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RepETB | SubAbility$ DBDraw | AILogic$ BeginningOfOppTurn | SpellDescription$ Permanents enter tapped this turn.\nSVar:RepETB:Event$ Moved | ValidCard$ Permanent | Destination$ Battlefield | ReplaceWith$ ETBTapped | ReplacementResult$ Updated | Description$ Permanents enter tapped this turn.\nSVar:ETBTapped:DB$ Tap | ETB$ True | Defined$ ReplacedCard\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:Permanents enter tapped this turn.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Due Respect"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

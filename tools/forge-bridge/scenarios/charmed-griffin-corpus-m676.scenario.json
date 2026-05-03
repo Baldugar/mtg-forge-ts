@@ -1,0 +1,23 @@
+{
+  "id": "charmed-griffin-corpus-m676",
+  "description": "M6 corpus — Charmed Griffin; in-hand parse.",
+  "seed": 62023,
+  "cards": {
+    "Charmed Griffin": "Name:Charmed Griffin\nManaCost:3 W\nTypes:Creature Griffin\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, each other player may put an artifact or enchantment card onto the battlefield from their hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Artifact,Enchantment | DefinedPlayer$ Player.Other | ChangeNum$ 1\nOracle:Flying\\nWhen Charmed Griffin enters, each other player may put an artifact or enchantment card onto the battlefield from their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Charmed Griffin"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

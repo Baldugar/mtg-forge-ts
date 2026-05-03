@@ -1,0 +1,25 @@
+{
+  "id": "cryptic-spires-corpus-m676",
+  "description": "M6 corpus — Cryptic Spires; ETB-on-bf.",
+  "seed": 62849,
+  "cards": {
+    "Cryptic Spires": "Name:Cryptic Spires\nManaCost:no cost\nTypes:Land\nText:As you create your deck, circle two of the colors below.\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo ColorID | SpellDescription$ Add one mana of either of the circled colors.\nOracle:As you create your deck, circle two of the colors below.\\nCryptic Spires enters tapped.\\n{T}: Add one mana of either of the circled colors.\nSETCOLORID:2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cryptic Spires"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

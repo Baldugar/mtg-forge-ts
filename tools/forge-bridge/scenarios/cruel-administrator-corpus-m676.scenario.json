@@ -1,0 +1,23 @@
+{
+  "id": "cruel-administrator-corpus-m676",
+  "description": "M6 corpus — Cruel Administrator; in-hand parse.",
+  "seed": 62793,
+  "cards": {
+    "Cruel Administrator": "Name:Cruel Administrator\nManaCost:3 B R\nTypes:Creature Human Soldier\nPT:5/4\nK:etbCounter:P1P1:1:CheckSVar$ RaidTest:Raid — CARDNAME enters with a +1/+1 counter on it if you attacked this turn.\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever this creature attacks, create a 2/2 red Soldier creature token with firebending 1. (Whenever it attacks, add {R}. This mana lasts until end of combat.)\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_soldier_firebending_1 | TokenOwner$ You\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Raid — This creature enters with a +1/+1 counter on it if you attacked this turn.\\nWhenever this creature attacks, create a 2/2 red Soldier creature token with firebending 1. (Whenever it attacks, add {R}. This mana lasts until end of combat.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cruel Administrator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

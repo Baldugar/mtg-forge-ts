@@ -1,0 +1,23 @@
+{
+  "id": "dream-fracture-corpus-m676",
+  "description": "M6 corpus — Dream Fracture; in-hand parse.",
+  "seed": 64010,
+  "cards": {
+    "Dream Fracture": "Name:Dream Fracture\nManaCost:1 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBDraw | SpellDescription$ Counter target spell. Its controller draws a card. Draw a card.\nSVar:DBDraw:DB$ Draw | Defined$ TargetedController | NumCards$ 1 | SubAbility$ DBDrawYou\nSVar:DBDrawYou:DB$ Draw | Defined$ You | NumCards$ 1\nOracle:Counter target spell. Its controller draws a card.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dream Fracture"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

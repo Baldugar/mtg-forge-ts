@@ -1,0 +1,23 @@
+{
+  "id": "garruk-s-warsteed-corpus-m676",
+  "description": "M6 corpus — Garruk's Warsteed; in-hand parse.",
+  "seed": 65959,
+  "cards": {
+    "Garruk's Warsteed": "Name:Garruk's Warsteed\nManaCost:3 G G\nTypes:Creature Rhino\nPT:3/5\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library and/or graveyard for a card named Garruk, Savage Herald, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Optional$ True | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedGarruk; Savage Herald | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckNeeds:Name$Garruk, Savage Herald\nOracle:Vigilance\\nWhen Garruk's Warsteed enters, you may search your library and/or graveyard for a card named Garruk, Savage Herald, reveal it, and put it into your hand. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garruk's Warsteed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

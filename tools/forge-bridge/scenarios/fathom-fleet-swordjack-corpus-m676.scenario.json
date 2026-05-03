@@ -1,0 +1,23 @@
+{
+  "id": "fathom-fleet-swordjack-corpus-m676",
+  "description": "M6 corpus — Fathom Fleet Swordjack; in-hand parse.",
+  "seed": 65121,
+  "cards": {
+    "Fathom Fleet Swordjack": "Name:Fathom Fleet Swordjack\nManaCost:3 R\nTypes:Creature Orc Pirate\nPT:4/3\nK:Encore:5 R\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDamage | TriggerDescription$ Whenever CARDNAME attacks, it deals damage to the player or planeswalker it's attacking equal to the number of artifacts you control.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | NumDmg$ X\nSVar:X:Count$Valid Artifact.YouCtrl\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckNeeds:Type$Artifact\nOracle:Whenever Fathom Fleet Swordjack attacks, it deals damage to the player or planeswalker it's attacking equal to the number of artifacts you control.\\nEncore {5}{R} ({5}{R}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fathom Fleet Swordjack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

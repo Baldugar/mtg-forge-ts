@@ -1,0 +1,23 @@
+{
+  "id": "flamescroll-celebrant-corpus-m676",
+  "description": "M6 corpus — Flamescroll Celebrant; in-hand parse.",
+  "seed": 65449,
+  "cards": {
+    "Flamescroll Celebrant": "Name:Flamescroll Celebrant\nManaCost:1 R\nTypes:Creature Human Shaman\nPT:2/1\nT:Mode$ AbilityCast | ValidActivatingPlayer$ Opponent | ValidSA$ SpellAbility.!ManaAbility | TriggerZones$ Battlefield | Execute$ TrigDmg | TriggerDescription$ Whenever an opponent activates an ability that isn't a mana ability, CARDNAME deals 1 damage to that player.\nSVar:TrigDmg:DB$ DealDamage | NumDmg$ 1 | Defined$ TriggeredActivator\nA:AB$ Pump | Cost$ 1 R | Defined$ Self | NumAtt$ +2 | SpellDescription$ CARDNAME gets +2/+0 until end of turn.\nAlternateMode:Modal\nOracle:Whenever an opponent activates an ability that isn't a mana ability, Flamescroll Celebrant deals 1 damage to that player.\\n{1}{R}: Flamescroll Celebrant gets +2/+0 until end of turn.\n\nALTERNATE\n\nName:Revel in Silence\nManaCost:W W\nTypes:Instant\nA:SP$ Effect | StaticAbilities$ STCantBeCast,STCantBeActivated | AILogic$ BeginningOfOppTurn | SubAbility$ DBChange | StackDescription$ SpellDescription | SpellDescription$ Your opponents can't cast spells or activate planeswalkers' loyalty abilities this turn. Exile CARDNAME.\nSVar:DBChange:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | StackDescription$ None\nSVar:STCantBeCast:Mode$ CantBeCast | ValidCard$ Card | Caster$ Opponent | Description$ Your opponents can't cast spells.\nSVar:STCantBeActivated:Mode$ CantBeActivated | Activator$ Opponent | ValidCard$ Planeswalker | ValidSA$ Activated.Loyalty | Description$ Your opponents can't activate planeswalkers' loyalty abilities.\nOracle:Your opponents can't cast spells or activate planeswalkers' loyalty abilities this turn.\\nExile Revel in Silence.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flamescroll Celebrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

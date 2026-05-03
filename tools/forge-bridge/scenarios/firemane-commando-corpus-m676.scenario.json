@@ -1,0 +1,25 @@
+{
+  "id": "firemane-commando-corpus-m676",
+  "description": "M6 corpus — Firemane Commando; ETB-on-bf.",
+  "seed": 65377,
+  "cards": {
+    "Firemane Commando": "Name:Firemane Commando\nManaCost:3 W\nTypes:Creature Angel Soldier\nPT:4/3\nK:Flying\nT:Mode$ AttackersDeclared | Execute$ TrigDraw | ValidAttackers$ Creature | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ Whenever you attack with two or more creatures, draw a card.\nSVar:TrigDraw:DB$ Draw\nT:Mode$ AttackersDeclared | Execute$ TrigTheyDraw | ValidAttackers$ Creature | ValidAttackersAmount$ GE2 | TriggerZones$ Battlefield | AttackingPlayer$ Player.Other | TriggerDescription$ Whenever another player attacks with two or more creatures, they draw a card if none of those creatures attacked you.\nSVar:TrigTheyDraw:DB$ Draw | Defined$ TriggeredAttackingPlayer | ConditionPresent$ Creature.attackingYou | ConditionCompare$ EQ0\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhenever you attack with two or more creatures, draw a card.\\nWhenever another player attacks with two or more creatures, they draw a card if none of those creatures attacked you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Firemane Commando"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "casey-jones-jury-rig-justiciar-corpus-m676",
+  "description": "M6 corpus — Casey Jones, Jury-Rig Justiciar; in-hand parse.",
+  "seed": 61776,
+  "cards": {
+    "Casey Jones, Jury-Rig Justiciar": "Name:Casey Jones, Jury-Rig Justiciar\nManaCost:1 R\nTypes:Legendary Creature Human Berserker\nPT:2/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDig | TriggerDescription$ When NICKNAME enters, look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Artifact | RestRandomOrder$ True\nOracle:Haste\\nWhen Casey Jones enters, look at the top four cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Casey Jones, Jury-Rig Justiciar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glacial-grasp-corpus-m676",
+  "description": "M6 corpus — Glacial Grasp; in-hand parse.",
+  "seed": 66243,
+  "cards": {
+    "Glacial Grasp": "Name:Glacial Grasp\nManaCost:2 U\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Creature | AILogic$ Curse | SubAbility$ DBMill | SpellDescription$ Tap target creature. Its controller mills two cards. That creature doesn't untap during its controller's next untap step. (They put the top two cards of their library into their graveyard.)\nSVar:DBMill:DB$ Mill | Defined$ TargetedController | NumCards$ 2 | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ ParentTarget | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | SubAbility$ DBDraw | StackDescription$ {c:Targeted} doesn't untap during its controller's next untap step.\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nSVar:NeedsToPlay:Creature.OppCtrl\nDeckHas:Ability$Mill\nOracle:Tap target creature. Its controller mills two cards. That creature doesn't untap during its controller's next untap step. (They put the top two cards of their library into their graveyard.)\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glacial Grasp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

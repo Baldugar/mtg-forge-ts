@@ -1,0 +1,25 @@
+{
+  "id": "forcefield-corpus-m676",
+  "description": "M6 corpus — Forcefield; ETB-on-bf.",
+  "seed": 65631,
+  "cards": {
+    "Forcefield": "Name:Forcefield\nManaCost:3\nTypes:Artifact\nA:AB$ ChooseCard | Cost$ 1 | Choices$ Creature.unblocked | AILogic$ NeedsPrevention | Mandatory$ True | SubAbility$ DBEffect | SpellDescription$ The next time an unblocked creature of your choice would deal combat damage to you this turn, prevent all but 1 of that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventDamage | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventDamage:Event$ DamageDone | ValidSource$ Card.ChosenCard | ValidTarget$ You | ReplaceWith$ PreventDmg | PreventionEffect$ True | IsCombat$ True | Description$ The next time an unblocked creature of your choice would deal combat damage to you this turn, prevent all but 1 of that damage.\nSVar:PreventDmg:DB$ ReplaceDamage | Amount$ ShieldAmount | SubAbility$ ExileEffect\nSVar:ShieldAmount:ReplaceCount$DamageAmount/Minus.1\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:NonStackingEffect:True\nOracle:{1}: The next time an unblocked creature of your choice would deal combat damage to you this turn, prevent all but 1 of that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Forcefield"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

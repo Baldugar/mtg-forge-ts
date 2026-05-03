@@ -1,0 +1,23 @@
+{
+  "id": "fog-of-war-corpus-m676",
+  "description": "M6 corpus — Fog of War; in-hand parse.",
+  "seed": 65585,
+  "cards": {
+    "Fog of War": "Name:Fog of War\nManaCost:2 G\nTypes:Instant\nA:SP$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBFog | SpellDescription$ You gain 1 life for each creature on the battlefield. Prevent all combat damage that would be dealt this turn by creatures with power 3 or less.\nSVar:DBFog:DB$ Effect | ReplacementEffects$ RPrevent | AILogic$ Fog\nSVar:RPrevent:Event$ DamageDone | Prevent$ True | IsCombat$ True | ActiveZones$ Command | ValidSource$ Creature.powerLE3\nSVar:X:Count$Valid Creature\nAI:RemoveDeck:Random\nDeckHas:Ability$LifeGain\nOracle:You gain 1 life for each creature on the battlefield. Prevent all combat damage that would be dealt this turn by creatures with power 3 or less.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fog of War"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

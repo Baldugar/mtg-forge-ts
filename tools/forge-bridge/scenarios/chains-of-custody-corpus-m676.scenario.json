@@ -1,0 +1,23 @@
+{
+  "id": "chains-of-custody-corpus-m676",
+  "description": "M6 corpus — Chains of Custody; in-hand parse.",
+  "seed": 61926,
+  "cards": {
+    "Chains of Custody": "Name:Chains of Custody\nManaCost:2 W\nTypes:Enchantment Aura\nK:Enchant:Creature.YouCtrl:creature you control\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target nonland permanent an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.nonLand+OppCtrl | TgtPrompt$ Select target nonland permanent an opponent controls | Duration$ UntilHostLeavesPlay\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Ward:2 | Description$ Enchanted creature has ward {2}. (Whenever enchanted creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\nSVar:PlayMain1:TRUE\nOracle:Enchant creature you control\\nWhen Chains of Custody enters, exile target nonland permanent an opponent controls until Chains of Custody leaves the battlefield.\\nEnchanted creature has ward {2}. (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chains of Custody"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

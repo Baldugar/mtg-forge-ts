@@ -1,0 +1,23 @@
+{
+  "id": "detainment-spell-corpus-m676",
+  "description": "M6 corpus — Detainment Spell; in-hand parse.",
+  "seed": 63554,
+  "cards": {
+    "Detainment Spell": "Name:Detainment Spell\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ CantBeActivated | ValidCard$ Creature.EnchantedBy | ValidSA$ Activated | Description$ Enchanted creature's activated abilities can't be activated.\nA:AB$ Attach | Cost$ 1 W | ValidTgts$ Creature | AILogic$ Curse | SpellDescription$ Attach CARDNAME to target creature.\nAI:RemoveDeck:All\nOracle:Enchant creature\\nEnchanted creature's activated abilities can't be activated.\\n{1}{W}: Attach Detainment Spell to target creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Detainment Spell"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

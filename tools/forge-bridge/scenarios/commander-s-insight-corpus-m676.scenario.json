@@ -1,0 +1,23 @@
+{
+  "id": "commander-s-insight-corpus-m676",
+  "description": "M6 corpus — Commander's Insight; in-hand parse.",
+  "seed": 62420,
+  "cards": {
+    "Commander's Insight": "Name:Commander's Insight\nManaCost:X U U U\nTypes:Instant\nA:SP$ Draw | NumCards$ Z | ValidTgts$ Player | SpellDescription$ Target player draws X cards plus an additional card for each time they've cast a commander from the command zone this game.\nSVar:X:Count$xPaid\nSVar:Y:TargetedPlayer$TotalCommanderCastFromCommandZone\nSVar:Z:SVar$Y/Plus.X\nAI:RemoveDeck:NonCommander\nOracle:Target player draws X cards plus an additional card for each time they've cast a commander from the command zone this game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Commander's Insight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

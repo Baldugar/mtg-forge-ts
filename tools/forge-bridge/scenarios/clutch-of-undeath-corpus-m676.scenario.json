@@ -1,0 +1,23 @@
+{
+  "id": "clutch-of-undeath-corpus-m676",
+  "description": "M6 corpus — Clutch of Undeath; in-hand parse.",
+  "seed": 62312,
+  "cards": {
+    "Clutch of Undeath": "Name:Clutch of Undeath\nManaCost:3 B B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:SpecificCard\nSVar:AttachAIValid:Zombie\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+Zombie | AddPower$ 3 | AddToughness$ 3 | Description$ Enchanted creature gets +3/+3 as long as it's a Zombie. Otherwise, it gets -3/-3.\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy+nonZombie | AddPower$ -3 | AddToughness$ -3\nDeckNeeds:Type$Zombie\nOracle:Enchant creature\\nEnchanted creature gets +3/+3 as long as it's a Zombie. Otherwise, it gets -3/-3.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clutch of Undeath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cloud-of-faeries-corpus-m676",
+  "description": "M6 corpus — Cloud of Faeries; in-hand parse.",
+  "seed": 62287,
+  "cards": {
+    "Cloud of Faeries": "Name:Cloud of Faeries\nManaCost:1 U\nTypes:Creature Faerie\nPT:1/1\nK:Flying\nK:Cycling:2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap up to two lands.\nSVar:TrigUntap:DB$ Untap | UntapUpTo$ True | UntapType$ Land | Amount$ 2\nSVar:FreeSpellAI:True\nOracle:Flying\\nWhen Cloud of Faeries enters, untap up to two lands.\\nCycling {2} ({2}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloud of Faeries"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

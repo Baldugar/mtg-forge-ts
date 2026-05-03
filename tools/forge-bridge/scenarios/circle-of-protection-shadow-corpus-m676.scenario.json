@@ -1,0 +1,25 @@
+{
+  "id": "circle-of-protection-shadow-corpus-m676",
+  "description": "M6 corpus — Circle of Protection: Shadow; ETB-on-bf.",
+  "seed": 62155,
+  "cards": {
+    "Circle of Protection: Shadow": "Name:Circle of Protection: Shadow\nManaCost:1 W\nTypes:Enchantment\nA:AB$ ChooseCard | Cost$ 1 | Choices$ Creature.withShadow | AILogic$ NeedsPrevention | Mandatory$ True | SubAbility$ DBEffect | SpellDescription$ The next time a creature of your choice with shadow would deal damage to you this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromCreature | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromCreature:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict+withShadow | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time a creature of your choice with shadow would deal damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:{1}: The next time a creature of your choice with shadow would deal damage to you this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Circle of Protection: Shadow"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

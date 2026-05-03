@@ -1,0 +1,23 @@
+{
+  "id": "gisa-and-geralf-corpus-m676",
+  "description": "M6 corpus — Gisa and Geralf; in-hand parse.",
+  "seed": 66228,
+  "cards": {
+    "Gisa and Geralf": "Name:Gisa and Geralf\nManaCost:2 U B\nTypes:Legendary Creature Human Wizard\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You\nS:Mode$ Continuous | Affected$ Zombie.YouCtrl | Condition$ PlayerTurn | MayPlay$ True | MayPlayLimit$ 1 | EffectZone$ Battlefield | AffectedZone$ Graveyard | Description$ During each of your turns, you may cast a Zombie creature spell from your graveyard.\nDeckHints:Type$Zombie\nDeckHas:Ability$Graveyard|Mill\nOracle:When Gisa and Geralf enters, mill four cards.\\nDuring each of your turns, you may cast a Zombie creature spell from your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gisa and Geralf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

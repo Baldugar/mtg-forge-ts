@@ -1,0 +1,23 @@
+{
+  "id": "ceta-sanctuary-corpus-m676",
+  "description": "M6 corpus — Ceta Sanctuary; in-hand parse.",
+  "seed": 61912,
+  "cards": {
+    "Ceta Sanctuary": "Name:Ceta Sanctuary\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.YouCtrl+Red,Permanent.YouCtrl+Green | Execute$ TrigDraw | TriggerDescription$ At the beginning of your upkeep, if you control a red or green permanent, draw a card, then discard a card. If you control a red permanent and a green permanent, instead draw two cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | NumCards$ X | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Mode$ TgtChoose\nSVar:Y:Count$Valid Permanent.Red+YouCtrl/LimitMax.1\nSVar:Z:Count$Valid Permanent.Green+YouCtrl/LimitMax.1\nSVar:X:SVar$Y/Plus.Z\nDeckHas:Ability$Discard\nDeckNeeds:Color$Red|Green\nOracle:At the beginning of your upkeep, if you control a red or green permanent, draw a card, then discard a card. If you control a red permanent and a green permanent, instead draw two cards, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ceta Sanctuary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

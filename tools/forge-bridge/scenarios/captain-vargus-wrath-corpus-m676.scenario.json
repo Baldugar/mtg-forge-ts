@@ -1,0 +1,23 @@
+{
+  "id": "captain-vargus-wrath-corpus-m676",
+  "description": "M6 corpus — Captain Vargus Wrath; in-hand parse.",
+  "seed": 61709,
+  "cards": {
+    "Captain Vargus Wrath": "Name:Captain Vargus Wrath\nManaCost:U R\nTypes:Legendary Creature Orc Pirate\nPT:1/1\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, Pirates you control get +1/+1 until end of turn for each time you've cast a commander from the command zone this game.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Pirate.YouCtrl | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$TotalCommanderCastFromCommandZone\nSVar:HasAttackEffect:TRUE\nAI:RemoveDeck:NonCommander\nDeckNeeds:Type$Pirate\nOracle:Whenever Captain Vargus Wrath attacks, Pirates you control get +1/+1 until end of turn for each time you've cast a commander from the command zone this game.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captain Vargus Wrath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

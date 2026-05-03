@@ -1,0 +1,23 @@
+{
+  "id": "draconic-destiny-corpus-m676",
+  "description": "M6 corpus — Draconic Destiny; in-hand parse.",
+  "seed": 63875,
+  "cards": {
+    "Draconic Destiny": "Name:Draconic Destiny\nManaCost:1 R R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Flying & Haste | AddType$ Dragon | Affected$ Creature.EnchantedBy | AddAbility$ Pump | Description$ Enchanted creature gets +1/+1 and has flying, haste, and \"{1}: This creature gets +1/+0 until end of turn.\" It's a Dragon in addition to its other types.\nSVar:Pump:AB$ Pump | Defined$ Self | Cost$ 1 | NumAtt$ +1 | SpellDescription$ CARDNAME gets +1/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.EnchantedBy | Execute$ TrigChangeZone | TriggerDescription$ When enchanted creature dies, return CARDNAME to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ Self\nDeckHas:Type$Dragon & Keyword$Flying|Haste\nDeckHints:Type$Dragon\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 and has flying, haste, and \"{1}: This creature gets +1/+0 until end of turn.\" It's a Dragon in addition to its other types.\\nWhen enchanted creature dies, return Draconic Destiny to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Draconic Destiny"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

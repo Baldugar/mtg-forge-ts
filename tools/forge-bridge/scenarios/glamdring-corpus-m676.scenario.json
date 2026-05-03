@@ -1,0 +1,23 @@
+{
+  "id": "glamdring-corpus-m676",
+  "description": "M6 corpus — Glamdring; in-hand parse.",
+  "seed": 66254,
+  "cards": {
+    "Glamdring": "Name:Glamdring\nManaCost:2\nTypes:Legendary Artifact Equipment\nS:Mode$ Continuous | Affected$ Creature.EquippedBy | AddPower$ X | AddKeyword$ First Strike | Description$ Equipped creature has first strike and gets +1/+0 for each instant and sorcery card in your graveyard.\nT:Mode$ DamageDone | ValidSource$ Creature.EquippedBy | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigCastFromYard | TriggerZones$ Battlefield | TriggerDescription$ Whenever equipped creature deals combat damage to a player, you may cast an instant or sorcery spell from your hand with mana value less than or equal to that damage without paying its mana cost.\nSVar:TrigCastFromYard:DB$ Play | Valid$ Card.YouOwn | ValidSA$ Instant.cmcLEY,Sorcery.cmcLEY | ValidZone$ Hand | Optional$ True | WithoutManaCost$ True | Amount$ 1 | Controller$ You\nK:Equip:3\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nSVar:Y:TriggerCount$DamageAmount\nDeckHints:Ability$Graveyard|Mill & Type$Instant|Sorcery\nOracle:Equipped creature has first strike and gets +1/+0 for each instant and sorcery card in your graveyard.\\nWhenever equipped creature deals combat damage to a player, you may cast an instant or sorcery spell from your hand with mana value less than or equal to that damage without paying its mana cost.\\nEquip {3}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glamdring"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

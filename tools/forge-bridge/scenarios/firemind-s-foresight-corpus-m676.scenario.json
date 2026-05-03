@@ -1,0 +1,23 @@
+{
+  "id": "firemind-s-foresight-corpus-m676",
+  "description": "M6 corpus — Firemind's Foresight; in-hand parse.",
+  "seed": 65380,
+  "cards": {
+    "Firemind's Foresight": "Name:Firemind's Foresight\nManaCost:5 U R\nTypes:Instant\nA:SP$ ChangeZone | ChangeType$ Instant.cmcEQ3 | ChangeNum$ 1 | Origin$ Library | Destination$ Hand | SubAbility$ FindCMC2 | StackDescription$ Search your library for an instant card with mana value 3, reveal it, and put it into your hand. | SpellDescription$ Search your library for an instant card with mana value 3, reveal it, and put it into your hand. Then repeat this process for instant cards with mana values 2 and 1. Then shuffle.\nSVar:FindCMC2:DB$ ChangeZone | ChangeType$ Instant.cmcEQ2 | ChangeNum$ 1 | Origin$ Library | Destination$ Hand | SubAbility$ FindCMC1 | StackDescription$ Then repeat this process for instant cards with mana value 2 and 1.\nSVar:FindCMC1:DB$ ChangeZone | ChangeType$ Instant.cmcEQ1 | ChangeNum$ 1 | Origin$ Library | Destination$ Hand | Shuffle$ True | StackDescription$ Then shuffle.\nDeckHints:Type$Instant\nOracle:Search your library for an instant card with mana value 3, reveal it, and put it into your hand. Then repeat this process for instant cards with mana values 2 and 1. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firemind's Foresight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

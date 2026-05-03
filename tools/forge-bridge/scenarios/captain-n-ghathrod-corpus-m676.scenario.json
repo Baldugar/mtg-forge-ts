@@ -1,0 +1,23 @@
+{
+  "id": "captain-n-ghathrod-corpus-m676",
+  "description": "M6 corpus — Captain N'ghathrod; in-hand parse.",
+  "seed": 61704,
+  "cards": {
+    "Captain N'ghathrod": "Name:Captain N'ghathrod\nManaCost:3 U B\nTypes:Legendary Creature Horror Pirate\nPT:3/6\nS:Mode$ Continuous | Affected$ Card.Horror+YouCtrl | AddKeyword$ Menace | Description$ Horrors you control have menace. (They can't be blocked except by two or more creatures.)\nT:Mode$ DamageDone | ValidSource$ Card.Horror+YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ Whenever a Horror you control deals combat damage to a player, that player mills that many cards.\nSVar:TrigMill:DB$ Mill | Defined$ TriggeredTarget | NumCards$ X\nSVar:X:TriggerCount$DamageAmount\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ At the beginning of your end step, choose target artifact or creature card in an opponent's graveyard that was put there from their library this turn. Put it onto the battlefield under your control.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Artifact.OppOwn+ThisTurnEnteredFrom_Library,Creature.OppOwn+ThisTurnEnteredFrom_Library | TgtPrompt$ Choose target artifact or creature card in an opponent's graveyard that was put there from their library this turn | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True\nSVar:PlayMain1:TRUE\nDeckHints:Type$Horror\nDeckHas:Ability$Mill\nOracle:Horrors you control have menace.\\nWhenever a Horror you control deals combat damage to a player, that player mills that many cards.\\nAt the beginning of your end step, choose target artifact or creature card in an opponent's graveyard that was put there from their library this turn. Put it onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Captain N'ghathrod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

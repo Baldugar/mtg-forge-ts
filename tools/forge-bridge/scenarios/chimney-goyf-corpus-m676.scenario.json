@@ -1,0 +1,23 @@
+{
+  "id": "chimney-goyf-corpus-m676",
+  "description": "M6 corpus — Chimney Goyf; in-hand parse.",
+  "seed": 62070,
+  "cards": {
+    "Chimney Goyf": "Name:Chimney Goyf\nManaCost:4 B\nTypes:Creature Lhurgoyf Imp\nPT:*/1+*\nK:Flying\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ Y | Description$ CARDNAME's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.\nSVar:X:Count$ValidGraveyard Card$CardTypes\nSVar:Y:SVar$X/Plus.1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME dies, target opponent puts a card from their hand on top of their library.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ 0 | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Card | ChangeNum$ 1 | Mandatory$ True | IsCurse$ True\nOracle:Flying\\nChimney Goyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.\\nWhen Chimney Goyf dies, target opponent puts a card from their hand on top of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chimney Goyf"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

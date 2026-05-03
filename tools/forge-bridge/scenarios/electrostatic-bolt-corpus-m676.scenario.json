@@ -1,0 +1,23 @@
+{
+  "id": "electrostatic-bolt-corpus-m676",
+  "description": "M6 corpus — Electrostatic Bolt; in-hand parse.",
+  "seed": 64389,
+  "cards": {
+    "Electrostatic Bolt": "Name:Electrostatic Bolt\nManaCost:R\nTypes:Instant\nA:SP$ DealDamage | NumDmg$ 2 | ValidTgts$ Creature | TgtPrompt$ Select target creature to deal damage to | ConditionCheckSVar$ ElectrostaticCheck | ConditionSVarCompare$ EQ0 | SubAbility$ DBDamage | SpellDescription$ CARDNAME deals 2 damage to target creature. If it's an artifact creature, CARDNAME deals 4 damage to it instead.\nSVar:DBDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ 4 | ConditionCheckSVar$ ElectrostaticCheck | ConditionSVarCompare$ EQ1 | StackDescription$ If it's an artifact creature, CARDNAME deals 4 damage instead.\nSVar:ElectrostaticCheck:Targeted$Valid Creature.Artifact\nOracle:Electrostatic Bolt deals 2 damage to target creature. If it's an artifact creature, Electrostatic Bolt deals 4 damage to it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electrostatic Bolt"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

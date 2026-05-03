@@ -1,0 +1,23 @@
+{
+  "id": "delusions-of-mediocrity-corpus-m676",
+  "description": "M6 corpus — Delusions of Mediocrity; in-hand parse.",
+  "seed": 63415,
+  "cards": {
+    "Delusions of Mediocrity": "Name:Delusions of Mediocrity\nManaCost:3 U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 10 life.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME leaves the battlefield, you lose 10 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 10\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ 10\nOracle:When Delusions of Mediocrity enters, you gain 10 life.\\nWhen Delusions of Mediocrity leaves the battlefield, you lose 10 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Delusions of Mediocrity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

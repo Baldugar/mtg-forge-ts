@@ -1,0 +1,23 @@
+{
+  "id": "corpse-knight-corpus-m676",
+  "description": "M6 corpus — Corpse Knight; in-hand parse.",
+  "seed": 62596,
+  "cards": {
+    "Corpse Knight": "Name:Corpse Knight\nManaCost:W B\nTypes:Creature Zombie Knight\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever another creature you control enters, each opponent loses 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Whenever another creature you control enters, each opponent loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Corpse Knight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

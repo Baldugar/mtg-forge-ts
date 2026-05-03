@@ -1,0 +1,25 @@
+{
+  "id": "dragonskull-summit-corpus-m676",
+  "description": "M6 corpus — Dragonskull Summit; ETB-on-bf.",
+  "seed": 63940,
+  "cards": {
+    "Dragonskull Summit": "Name:Dragonskull Summit\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ CARDNAME enters tapped unless you control a Swamp or a Mountain.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Swamp.YouCtrl,Mountain.YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ Combo B R | SpellDescription$ Add {B} or {R}.\nOracle:Dragonskull Summit enters tapped unless you control a Swamp or a Mountain.\\n{T}: Add {B} or {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dragonskull Summit"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

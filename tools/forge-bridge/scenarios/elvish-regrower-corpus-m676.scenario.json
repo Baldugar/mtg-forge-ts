@@ -1,0 +1,23 @@
+{
+  "id": "elvish-regrower-corpus-m676",
+  "description": "M6 corpus — Elvish Regrower; in-hand parse.",
+  "seed": 64479,
+  "cards": {
+    "Elvish Regrower": "Name:Elvish Regrower\nManaCost:2 G G\nTypes:Creature Elf Druid\nPT:4/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, return target permanent card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Select target permanent card in your graveyard\nOracle:When this creature enters, return target permanent card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Regrower"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

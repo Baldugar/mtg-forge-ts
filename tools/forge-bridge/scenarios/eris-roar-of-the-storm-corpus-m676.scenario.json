@@ -1,0 +1,25 @@
+{
+  "id": "eris-roar-of-the-storm-corpus-m676",
+  "description": "M6 corpus — Eris, Roar of the Storm; ETB-on-bf.",
+  "seed": 64697,
+  "cards": {
+    "Eris, Roar of the Storm": "Name:Eris, Roar of the Storm\nManaCost:8 U R\nTypes:Legendary Creature Elemental Warlock\nPT:4/4\nK:Flying\nK:Prowess\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ X | EffectZone$ All | Description$ This spell costs {2} less to cast for each different mana value among instant and sorcery cards in your graveyard.\nSVar:X:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn$DifferentCardManaCost/Times.2\nT:Mode$ SpellCast | ValidCard$ Card.YouCtrl | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | ActivatorThisTurnCast$ EQ2 | TriggerDescription$ Whenever you cast your second spell each turn, create a 4/4 red Dragon Elemental creature token with flying and prowess.\nSVar:TrigToken:DB$ Token | TokenScript$ r_4_4_dragon_elemental_flying_prowess | TokenOwner$ You\nDeckHas:Ability$Token & Type$Dragon|Elemental\nDeckHints:Type$Instant|Sorcery\nOracle:This spell costs {2} less to cast for each different mana value among instant and sorcery cards in your graveyard.\\nFlying, prowess\\nWhenever you cast your second spell each turn, create a 4/4 red Dragon Elemental creature token with flying and prowess.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Eris, Roar of the Storm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cloud-of-darkness-corpus-m676",
+  "description": "M6 corpus — Cloud of Darkness; in-hand parse.",
+  "seed": 62286,
+  "cards": {
+    "Cloud of Darkness": "Name:Cloud of Darkness\nManaCost:2 B G G\nTypes:Legendary Creature Avatar\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Particle Beam — When CARDNAME enters, target creature an opponent controls gets -X/-X until end of turn, where X is the number of permanent cards in your graveyard.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -X | NumDef$ -X | IsCurse$ True\nSVar:X:Count$ValidGraveyard Permanent.YouOwn\nOracle:Flying\\nParticle Beam — When Cloud of Darkness enters, target creature an opponent controls gets -X/-X until end of turn, where X is the number of permanent cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloud of Darkness"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

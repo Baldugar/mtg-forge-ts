@@ -1,0 +1,23 @@
+{
+  "id": "desecrator-hag-corpus-m676",
+  "description": "M6 corpus — Desecrator Hag; in-hand parse.",
+  "seed": 63497,
+  "cards": {
+    "Desecrator Hag": "Name:Desecrator Hag\nManaCost:2 BG BG\nTypes:Creature Hag\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME enters, return to your hand the creature card in your graveyard with the greatest power. If two or more cards are tied for greatest power, you choose one of them.\nSVar:TrigReturn:DB$ ChooseCard | Choices$ Creature.yardGreatestPower+YouOwn | Mandatory$ True | ChoiceZone$ Graveyard | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ ChosenCard\nOracle:When Desecrator Hag enters, return to your hand the creature card in your graveyard with the greatest power. If two or more cards are tied for greatest power, you choose one of them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desecrator Hag"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

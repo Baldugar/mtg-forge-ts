@@ -1,0 +1,23 @@
+{
+  "id": "earwig-squad-corpus-m676",
+  "description": "M6 corpus — Earwig Squad; in-hand parse.",
+  "seed": 64265,
+  "cards": {
+    "Earwig Squad": "Name:Earwig Squad\nManaCost:3 B B\nTypes:Creature Goblin Rogue\nPT:5/3\nK:Prowl:2 B\nT:Mode$ ChangesZone | Origin$ Stack | Destination$ Battlefield | ValidCard$ Card.Self+prowled | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, if its prowl cost was paid, search target opponent's library for three cards and exile them. Then that player shuffles.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card | ChangeNum$ 3 | Mandatory$ True | Origin$ Library | Destination$ Exile\nOracle:Prowl {2}{B} (You may cast this for its prowl cost if you dealt combat damage to a player this turn with a Goblin or Rogue.)\\nWhen Earwig Squad enters, if its prowl cost was paid, search target opponent's library for three cards and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Earwig Squad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "emet-selch-unsundered-corpus-m676",
+  "description": "M6 corpus — Emet-Selch, Unsundered; in-hand parse.",
+  "seed": 64526,
+  "cards": {
+    "Emet-Selch, Unsundered": "Name:Emet-Selch, Unsundered\nManaCost:1 U B\nTypes:Legendary Creature Elder Wizard\nPT:2/4\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME enters or attacks, draw a card, then discard a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Secondary$ True | Execute$ TrigDraw | TriggerDescription$ Whenever NICKNAME enters or attacks, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Card.YouOwn | PresentZone$ Graveyard | PresentCompare$ GE14 | OptionalDecider$ You | Execute$ TrigTransform | TriggerDescription$ At the beginning of your upkeep, if there are fourteen or more cards in your graveyard, you may transform NICKNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nDeckHas:Ability$Discard|Graveyard\nDeckHints:Ability$Discard|Mill|Sacrifice\nAlternateMode:DoubleFaced\nOracle:Vigilance\\nWhenever Emet-Selch enters or attacks, draw a card, then discard a card.\\nAt the beginning of your upkeep, if there are fourteen or more cards in your graveyard, you may transform Emet-Selch.\n\nALTERNATE\n\nName:Hades, Sorcerer of Eld\nManaCost:no cost\nColors:blue,black\nTypes:Legendary Creature Avatar\nPT:6/6\nK:Vigilance\nS:Mode$ Continuous | Affected$ Card.YouCtrl | AffectedZone$ Graveyard | Condition$ PlayerTurn | MayPlay$ True | Description$ Echo of the Lost — During your turn, you may play cards from your graveyard.\nR:Event$ Moved | ActiveZones$ Battlefield | Destination$ Graveyard | ValidCard$ Card.YouOwn | ReplaceWith$ Exile | Description$ If a card or token would be put into your graveyard from anywhere, exile it instead.\nSVar:Exile:DB$ ChangeZone | Hidden$ True | Origin$ All | Destination$ Exile | Defined$ ReplacedCard\nSVar:NonStackingEffect:True\nOracle:Vigilance\\nEcho of the Lost — During your turn, you may play cards from your graveyard.\\nIf a card or token would be put into your graveyard from anywhere, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emet-Selch, Unsundered"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ghitu-journeymage-corpus-m676",
+  "description": "M6 corpus — Ghitu Journeymage; in-hand parse.",
+  "seed": 66104,
+  "cards": {
+    "Ghitu Journeymage": "Name:Ghitu Journeymage\nManaCost:2 R\nTypes:Creature Human Wizard\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Wizard.Other+YouCtrl | Execute$ TrigDamage | TriggerDescription$ When CARDNAME enters, if you control another Wizard, CARDNAME deals 2 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2\nDeckHints:Type$Wizard\nOracle:When Ghitu Journeymage enters, if you control another Wizard, Ghitu Journeymage deals 2 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghitu Journeymage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

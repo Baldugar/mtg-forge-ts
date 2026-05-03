@@ -1,0 +1,23 @@
+{
+  "id": "cryoshatter-corpus-m676",
+  "description": "M6 corpus — Cryoshatter; in-hand parse.",
+  "seed": 62832,
+  "cards": {
+    "Cryoshatter": "Name:Cryoshatter\nManaCost:U\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Curse\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -5 | Description$ Enchanted creature gets -5/-0.\nT:Mode$ Taps | ValidCard$ Card.AttachedBy | TriggerZones$ Battlefield | Execute$ TrigDestroy1 | TriggerDescription$ When enchanted creature becomes tapped or is dealt damage, destroy it.\nT:Mode$ DamageDoneOnce | ValidTarget$ Creature.EnchantedBy | Execute$ TrigDestroy2 | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ When enchanted creature becomes tapped or is dealt damage, destroy it.\nSVar:TrigDestroy1:DB$ Destroy | Defined$ TriggeredCardLKICopy\nSVar:TrigDestroy2:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nOracle:Enchant creature\\nEnchanted creature gets -5/-0.\\nWhen enchanted creature becomes tapped or is dealt damage, destroy it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cryoshatter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

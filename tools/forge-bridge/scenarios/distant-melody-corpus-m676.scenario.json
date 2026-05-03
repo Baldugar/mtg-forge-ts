@@ -1,0 +1,23 @@
+{
+  "id": "distant-melody-corpus-m676",
+  "description": "M6 corpus — Distant Melody; in-hand parse.",
+  "seed": 63730,
+  "cards": {
+    "Distant Melody": "Name:Distant Melody\nManaCost:3 U\nTypes:Sorcery\nA:SP$ ChooseType | Defined$ You | Type$ Creature | SubAbility$ DBDraw | AILogic$ MostProminentComputerControls | SpellDescription$ Choose a creature type. Draw a card for each permanent you control of that type.\nSVar:DBDraw:DB$ Draw | NumCards$ X\nSVar:X:Count$Valid Permanent.ChosenType+YouCtrl\nAI:RemoveDeck:Random\nSVar:NeedsToPlay:Creature\nOracle:Choose a creature type. Draw a card for each permanent you control of that type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Distant Melody"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

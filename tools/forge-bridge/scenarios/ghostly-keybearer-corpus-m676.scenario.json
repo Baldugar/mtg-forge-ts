@@ -1,0 +1,23 @@
+{
+  "id": "ghostly-keybearer-corpus-m676",
+  "description": "M6 corpus — Ghostly Keybearer; in-hand parse.",
+  "seed": 66125,
+  "cards": {
+    "Ghostly Keybearer": "Name:Ghostly Keybearer\nManaCost:3 U\nTypes:Creature Spirit\nPT:3/3\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigUnlock | CombatDamage$ True | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, unlock a locked door of up to one target Room you control.\nSVar:TrigUnlock:DB$ UnlockDoor | Mode$ Unlock | ValidTgts$ Room.YouCtrl | TgtPrompt$ Choose target Room you control | TargetMin$ 0 | TargetMax$ 1\nOracle:Flying\\nWhenever Ghostly Keybearer deals combat damage to a player, unlock a locked door of up to one target Room you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghostly Keybearer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

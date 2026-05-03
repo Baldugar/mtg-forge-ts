@@ -1,0 +1,23 @@
+{
+  "id": "genesis-of-the-daleks-corpus-m676",
+  "description": "M6 corpus — Genesis of the Daleks; in-hand parse.",
+  "seed": 66039,
+  "cards": {
+    "Genesis of the Daleks": "Name:Genesis of the Daleks\nManaCost:4 B B\nTypes:Enchantment Saga\nK:Chapter:4:DBToken,DBToken,DBToken,DBVillainous\nSVar:DBToken:DB$ Token | TokenAmount$ X | TokenScript$ b_3_3_a_dalek_menace | SpellDescription$ Create a 3/3 black Dalek artifact creature token with menace for each lore counter on CARDNAME.\nSVar:DBVillainous:DB$ VillainousChoice | Choices$ DBDestroyDalek,DBDestroyNonDalek | ValidTgts$ Opponent | SpellDescription$ Target opponent faces a villainous choice — Destroy all Dalek creatures and each of your opponents loses life equal to the total power of Daleks that died this turn, or destroy all non-Dalek creatures.\nSVar:DBDestroyDalek:DB$ DestroyAll | ValidCards$ Creature.Dalek | SubAbility$ DBLoseLife | SpellDescription$ Destroy all Dalek creatures and each of your opponents loses life equal to the total power of Daleks that died this turn.\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ Y | Defined$ Opponent\nSVar:DBDestroyNonDalek:DB$ DestroyAll | ValidCards$ Creature.nonDalek | SpellDescription$ Destroy all non-Dalek creatures.\nSVar:X:Count$CardCounters.LORE\nSVar:Y:Count$ThisTurnEntered_Graveyard_from_Battlefield_Dalek$CardPower\nDeckHas:Ability$Token & Type$Artifact|Dalek\nDeckHints:Type$Dalek\nOracle:(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\\nI, II, III — Create a 3/3 black Dalek artifact creature token with menace for each lore counter on Genesis of the Daleks.\\nIV — Target opponent faces a villainous choice — Destroy all Dalek creatures and each of your opponents loses life equal to the total power of Daleks that died this turn, or destroy all non-Dalek creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genesis of the Daleks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

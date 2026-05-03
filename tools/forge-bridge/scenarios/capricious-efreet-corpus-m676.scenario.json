@@ -1,0 +1,23 @@
+{
+  "id": "capricious-efreet-corpus-m676",
+  "description": "M6 corpus — Capricious Efreet; in-hand parse.",
+  "seed": 61696,
+  "cards": {
+    "Capricious Efreet": "Name:Capricious Efreet\nManaCost:4 R R\nTypes:Creature Efreet\nPT:6/4\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of your upkeep, choose target nonland permanent you control and up to two target nonland permanents you don't control. Destroy one of them at random.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Permanent.nonLand+YouCtrl | TgtPrompt$ Select target nonland permanent you control | Mandatory$ True | IsCurse$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ValidTgts$ Permanent.nonLand+YouDontCtrl | TgtPrompt$ Select up to two target nonland permanents you don't control | TargetMin$ 0 | TargetMax$ 2 | IsCurse$ True | SubAbility$ DBChooseRandom\nSVar:DBChooseRandom:DB$ ChooseCard | AtRandom$ True | Reveal$ True | RevealTitle$ Randomly chosen permanent to be destroyed | DefinedCards$ TargetedCard | SubAbility$ DBDestroy\nSVar:DBDestroy:DB$ Destroy | Defined$ ChosenCard | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:At the beginning of your upkeep, choose target nonland permanent you control and up to two target nonland permanents you don't control. Destroy one of them at random.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Capricious Efreet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

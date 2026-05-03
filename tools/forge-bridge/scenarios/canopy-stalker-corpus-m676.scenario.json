@@ -1,0 +1,23 @@
+{
+  "id": "canopy-stalker-corpus-m676",
+  "description": "M6 corpus — Canopy Stalker; in-hand parse.",
+  "seed": 61675,
+  "cards": {
+    "Canopy Stalker": "Name:Canopy Stalker\nManaCost:3 G\nTypes:Creature Cat\nPT:4/2\nK:CARDNAME must be blocked if able.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME dies, you gain 1 life for each creature that died this turn.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Creature\nDeckHas:Ability$LifeGain\nOracle:Canopy Stalker must be blocked if able.\\nWhen Canopy Stalker dies, you gain 1 life for each creature that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canopy Stalker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

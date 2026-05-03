@@ -1,0 +1,23 @@
+{
+  "id": "daxos-blessed-by-the-sun-corpus-m676",
+  "description": "M6 corpus — Daxos, Blessed by the Sun; in-hand parse.",
+  "seed": 63183,
+  "cards": {
+    "Daxos, Blessed by the Sun": "Name:Daxos, Blessed by the Sun\nManaCost:W W\nTypes:Legendary Enchantment Creature Demigod\nPT:2/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetToughness$ X | Description$ NICKNAME's toughness is equal to your devotion to white.\nSVar:X:Count$Devotion.White\nSVar:BuffedBy:Permanent.White\nT:Mode$ ChangesZone | TriggerZones$ Battlefield | ValidCard$ Creature.YouCtrl+Other | Origin$ Any | Destination$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ Whenever another creature you control enters or dies, you gain 1 life.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigGainLife | Secondary$ True | TriggerDescription$ Whenever another creature you control enters or dies, you gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Daxos's toughness is equal to your devotion to white. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)\\nWhenever another creature you control enters or dies, you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Daxos, Blessed by the Sun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "convenient-target-corpus-m676",
+  "description": "M6 corpus — Convenient Target; in-hand parse.",
+  "seed": 62546,
+  "cards": {
+    "Convenient Target": "Name:Convenient Target\nManaCost:R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSuspect | TriggerDescription$ When CARDNAME enters, suspect enchanted creature. (It has menace and can't block.)\nSVar:TrigSuspect:DB$ AlterAttribute | Defined$ Enchanted | Attributes$ Suspected\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 1 | AddToughness$ 1 | Description$ Enchanted creature gets +1/+1.\nA:AB$ ChangeZone | Cost$ 2 R | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nDeckHas:Ability$Graveyard\nOracle:Enchant creature\\nWhen Convenient Target enters, suspect enchanted creature. (It has menace and can't block.)\\nEnchanted creature gets +1/+1.\\n{2}{R}: Return Convenient Target from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Convenient Target"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

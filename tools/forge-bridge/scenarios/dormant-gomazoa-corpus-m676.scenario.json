@@ -1,0 +1,23 @@
+{
+  "id": "dormant-gomazoa-corpus-m676",
+  "description": "M6 corpus — Dormant Gomazoa; in-hand parse.",
+  "seed": 63840,
+  "cards": {
+    "Dormant Gomazoa": "Name:Dormant Gomazoa\nManaCost:1 U U\nTypes:Creature Jellyfish\nPT:5/5\nK:Flying\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This creature enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nT:Mode$ BecomesTarget | ValidTarget$ You | ValidSource$ Spell | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigUntap | TriggerDescription$ Whenever you become the target of a spell, you may untap this creature.\nSVar:TrigUntap:DB$ Untap | Defined$ Self\nOracle:Flying\\nThis creature enters tapped.\\nThis creature doesn't untap during your untap step.\\nWhenever you become the target of a spell, you may untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dormant Gomazoa"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

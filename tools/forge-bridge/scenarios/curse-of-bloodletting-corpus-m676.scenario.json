@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-bloodletting-corpus-m676",
+  "description": "M6 corpus — Curse of Bloodletting; in-hand parse.",
+  "seed": 62917,
+  "cards": {
+    "Curse of Bloodletting": "Name:Curse of Bloodletting\nManaCost:3 R R\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidTarget$ Player.EnchantedBy | ReplaceWith$ DmgTwice | Description$ If a source would deal damage to enchanted player, it deals double that damage to that player instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Twice\nOracle:Enchant player\\nIf a source would deal damage to enchanted player, it deals double that damage to that player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Bloodletting"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

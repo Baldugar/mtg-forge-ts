@@ -1,0 +1,23 @@
+{
+  "id": "drana-s-emissary-corpus-m676",
+  "description": "M6 corpus — Drana's Emissary; in-hand parse.",
+  "seed": 63967,
+  "cards": {
+    "Drana's Emissary": "Name:Drana's Emissary\nManaCost:1 W B\nTypes:Creature Vampire Cleric Ally\nPT:2/2\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of your upkeep, each opponent loses 1 life and you gain 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nDeckHas:Ability$LifeGain\nOracle:Flying\\nAt the beginning of your upkeep, each opponent loses 1 life and you gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Drana's Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

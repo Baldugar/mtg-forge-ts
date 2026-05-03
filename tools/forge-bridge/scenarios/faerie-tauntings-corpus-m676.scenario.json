@@ -1,0 +1,25 @@
+{
+  "id": "faerie-tauntings-corpus-m676",
+  "description": "M6 corpus — Faerie Tauntings; ETB-on-bf.",
+  "seed": 64993,
+  "cards": {
+    "Faerie Tauntings": "Name:Faerie Tauntings\nManaCost:2 B\nTypes:Kindred Enchantment Faerie\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | OpponentTurn$ True | Execute$ TrigLoseLife | OptionalDecider$ You | TriggerDescription$ Whenever you cast a spell during an opponent's turn, you may have each opponent lose 1 life.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1\nOracle:Whenever you cast a spell during an opponent's turn, you may have each opponent lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Faerie Tauntings"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

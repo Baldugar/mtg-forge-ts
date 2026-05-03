@@ -1,0 +1,23 @@
+{
+  "id": "emerald-charm-corpus-m676",
+  "description": "M6 corpus — Emerald Charm; in-hand parse.",
+  "seed": 64511,
+  "cards": {
+    "Emerald Charm": "Name:Emerald Charm\nManaCost:G\nTypes:Instant\nA:SP$ Charm | Choices$ DBUntap,DBDestroy,DBDebuff | Defined$ You\nSVar:DBUntap:DB$ Untap | ValidTgts$ Permanent | SpellDescription$ Untap target permanent.\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment.nonAura | TgtPrompt$ Select target non-Aura enchantment | SpellDescription$ Destroy target non-Aura enchantment.\nSVar:DBDebuff:DB$ Debuff | ValidTgts$ Creature | Keywords$ Flying | SpellDescription$ Target creature loses flying until end of turn.\nAI:RemoveDeck:All\nOracle:Choose one —\\n• Untap target permanent.\\n• Destroy target non-Aura enchantment.\\n• Target creature loses flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Emerald Charm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ever-after-corpus-m676",
+  "description": "M6 corpus — Ever After; in-hand parse.",
+  "seed": 64813,
+  "cards": {
+    "Ever After": "Name:Ever After\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouOwn | TargetMin$ 0 | TargetMax$ 2 | StaticEffect$ Animate | SubAbility$ DBPut | SpellDescription$ Return up to two target creature cards from your graveyard onto the battlefield. Each of those creatures is a black Zombie in addition to its other colors and types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Zombie | AddColor$ Black\nSVar:DBPut:DB$ ChangeZone | Defined$ Parent | Origin$ Stack | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Put CARDNAME on the bottom of its owner's library.\nDeckHints:Ability$Graveyard|Discard & Type$Zombie\nOracle:Return up to two target creature cards from your graveyard to the battlefield. Each of those creatures is a black Zombie in addition to its other colors and types. Put Ever After on the bottom of its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ever After"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

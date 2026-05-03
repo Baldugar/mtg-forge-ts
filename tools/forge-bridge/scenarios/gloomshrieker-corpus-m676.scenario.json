@@ -1,0 +1,23 @@
+{
+  "id": "gloomshrieker-corpus-m676",
+  "description": "M6 corpus — Gloomshrieker; in-hand parse.",
+  "seed": 66334,
+  "cards": {
+    "Gloomshrieker": "Name:Gloomshrieker\nManaCost:1 B G\nTypes:Enchantment Creature Cat Beast\nPT:2/1\nK:Menace\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return target permanent card from your graveyard to your hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Permanent.YouOwn | TgtPrompt$ Select target permanent card\nR:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ Exile | Description$ If CARDNAME would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ReplacedCard\nDeckHas:Ability$Graveyard\nOracle:Menace (This creature can't be blocked except by two or more creatures.)\\nWhen Gloomshrieker enters, return target permanent card from your graveyard to your hand.\\nIf Gloomshrieker would die, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gloomshrieker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

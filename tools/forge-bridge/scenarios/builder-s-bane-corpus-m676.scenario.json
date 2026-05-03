@@ -1,0 +1,23 @@
+{
+  "id": "builder-s-bane-corpus-m676",
+  "description": "M6 corpus — Builder's Bane; in-hand parse.",
+  "seed": 61488,
+  "cards": {
+    "Builder's Bane": "Name:Builder's Bane\nManaCost:X X R\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Artifact | TargetMin$ 0 | TargetMax$ MaxTgt | RememberTargets$ True | SubAbility$ DBRepeat | StackDescription$ SpellDescription | SpellDescription$ Destroy X target artifacts. CARDNAME deals damage to each player equal to the number of artifacts they controlled that were put into a graveyard this way.\nSVar:MaxTgt:Count$Valid Artifact\nSVar:X:TargetedObjects$Amount\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDmg | SubAbility$ DBCleanup | DamageMap$ True\nSVar:DBDmg:DB$ DealDamage | Defined$ Player.IsRemembered | NumDmg$ Y\nSVar:Y:Count$ValidGraveyard Artifact.IsRemembered+RememberedPlayerCtrl\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Destroy X target artifacts. Builder's Bane deals damage to each player equal to the number of artifacts they controlled that were put into a graveyard this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Builder's Bane"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

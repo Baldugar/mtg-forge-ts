@@ -1,0 +1,23 @@
+{
+  "id": "false-prophet-corpus-m676",
+  "description": "M6 corpus — False Prophet; in-hand parse.",
+  "seed": 65041,
+  "cards": {
+    "False Prophet": "Name:False Prophet\nManaCost:2 W W\nTypes:Creature Human Cleric\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME dies, exile all creatures.\nSVar:TrigSac:DB$ ChangeZoneAll | ChangeType$ Creature | Origin$ Battlefield | Destination$ Exile\nAI:RemoveDeck:Random\nOracle:When False Prophet dies, exile all creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "False Prophet"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

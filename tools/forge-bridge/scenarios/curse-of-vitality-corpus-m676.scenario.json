@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-vitality-corpus-m676",
+  "description": "M6 corpus — Curse of Vitality; in-hand parse.",
+  "seed": 62944,
+  "cards": {
+    "Curse of Vitality": "Name:Curse of Vitality\nManaCost:2 W\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ AttackersDeclared | AttackedTarget$ Player.EnchantedBy | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever enchanted player is attacked, you gain 2 life. Each opponent attacking that player does the same.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ TriggeredAttackingPlayer.Opponent+controlsCreature.attacking Player.EnchantedBy | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Enchant player\\nWhenever enchanted player is attacked, you gain 2 life. Each opponent attacking that player does the same.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Vitality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

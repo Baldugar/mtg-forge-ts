@@ -1,0 +1,25 @@
+{
+  "id": "desecration-elemental-corpus-m676",
+  "description": "M6 corpus — Desecration Elemental; ETB-on-bf.",
+  "seed": 63495,
+  "cards": {
+    "Desecration Elemental": "Name:Desecration Elemental\nManaCost:3 B\nTypes:Creature Elemental\nPT:8/8\nK:Fear\nT:Mode$ SpellCast | ValidCard$ Card | Execute$ TrigSac | TriggerZones$ Battlefield | TriggerDescription$ Whenever a player casts a spell, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Creature\nAI:RemoveDeck:All\nSVar:AntiBuffedBy:Card\nOracle:Fear (This creature can't be blocked except by artifact creatures and/or black creatures.)\\nWhenever a player casts a spell, sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Desecration Elemental"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

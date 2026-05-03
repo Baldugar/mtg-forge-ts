@@ -1,0 +1,23 @@
+{
+  "id": "chun-li-countless-kicks-corpus-m676",
+  "description": "M6 corpus — Chun-Li, Countless Kicks; in-hand parse.",
+  "seed": 62128,
+  "cards": {
+    "Chun-Li, Countless Kicks": "Name:Chun-Li, Countless Kicks\nVariant:UniversesWithin:FlavorName:Zethi, Arcane Blademaster\nManaCost:1 W U\nTypes:Legendary Creature Human Soldier\nPT:3/3\nK:Multikicker:WU\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When NICKNAME enters, exile up to X target instant cards from your graveyard, where X is the number of times NICKNAME was kicked. Put a kick counter on each of them.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | WithCountersType$ KICK | ValidTgts$ Instant.YouOwn | TargetMin$ 0 | TargetMax$ XKicked | TgtPrompt$ Select up to X target instant cards\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerZones$ Battlefield | TriggerDescription$ Lightning Kick — Whenever NICKNAME attacks, copy each exiled card you own with a kick counter on it. You may cast the copies.\nSVar:TrigPlay:DB$ Play | Valid$ Card.YouOwn+counters_GE1_KICK | ValidSA$ Spell | ValidZone$ Exile | Amount$ All | CopyCard$ True | Optional$ True\nSVar:XKicked:Count$TimesKicked\nDeckHints:Type$Instant & Ability$Discard\nDeckHas:Ability$Graveyard\nOracle:Multikicker {W/U}\\nWhen Chun-Li enters, exile up to X target instant cards from your graveyard, where X is the number of times Chun-Li was kicked. Put a kick counter on each of them.\\nLightning Kick — Whenever Chun-Li attacks, copy each exiled card you own with a kick counter on it. You may cast the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chun-Li, Countless Kicks"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

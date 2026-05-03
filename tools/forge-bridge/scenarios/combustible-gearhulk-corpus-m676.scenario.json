@@ -1,0 +1,23 @@
+{
+  "id": "combustible-gearhulk-corpus-m676",
+  "description": "M6 corpus — Combustible Gearhulk; in-hand parse.",
+  "seed": 62404,
+  "cards": {
+    "Combustible Gearhulk": "Name:Combustible Gearhulk\nManaCost:4 R R\nTypes:Artifact Creature Construct\nPT:6/6\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ DBChoice | TriggerDescription$ When CARDNAME enters, target opponent may have you draw three cards. If the player doesn't, you mill three cards, then CARDNAME deals damage to that player equal to the total mana value of those cards.\nSVar:DBChoice:DB$ GenericChoice | ValidTgts$ Opponent | Choices$ CombustDraw,CombustDamage | AILogic$ CombustibleGearhulk\nSVar:CombustDraw:DB$ Draw | Defined$ You | NumCards$ 3 | SpellDescription$ CARDNAME's controller draws three cards.\nSVar:CombustDamage:DB$ Mill | Defined$ You | NumCards$ 3 | RememberMilled$ True | SubAbility$ DamageOpponent | SpellDescription$ CARDNAME's controller mills three cards, then it deals damage to you equal to the total mana value of those cards.\nSVar:DamageOpponent:DB$ DealDamage | Defined$ ParentTarget | NumDmg$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardManaCost\nOracle:First strike\\nWhen Combustible Gearhulk enters, target opponent may have you draw three cards. If the player doesn't, you mill three cards, then Combustible Gearhulk deals damage to that player equal to the total mana value of those cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Combustible Gearhulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

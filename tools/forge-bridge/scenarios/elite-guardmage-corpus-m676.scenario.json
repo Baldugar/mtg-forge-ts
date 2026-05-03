@@ -1,0 +1,23 @@
+{
+  "id": "elite-guardmage-corpus-m676",
+  "description": "M6 corpus — Elite Guardmage; in-hand parse.",
+  "seed": 64428,
+  "cards": {
+    "Elite Guardmage": "Name:Elite Guardmage\nManaCost:2 W U\nTypes:Creature Human Wizard\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When CARDNAME enters, you gain 3 life and draw a card.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 3 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Elite Guardmage enters, you gain 3 life and draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elite Guardmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

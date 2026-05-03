@@ -1,0 +1,23 @@
+{
+  "id": "dragon-breath-corpus-m676",
+  "description": "M6 corpus — Dragon Breath; in-hand parse.",
+  "seed": 63890,
+  "cards": {
+    "Dragon Breath": "Name:Dragon Breath\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Haste | Description$ Enchanted creature has haste.\nA:AB$ Pump | Cost$ R | Defined$ Enchanted | NumAtt$ +1 | SpellDescription$ Enchanted creature gets +1/+0 until end of turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.cmcGE6 | Execute$ TrigReturn | TriggerZones$ Graveyard | OptionalDecider$ You | TriggerDescription$ When a creature with mana value 6 or greater enters, you may return CARDNAME from your graveyard to the battlefield attached to that creature.\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield | AttachedTo$ TriggeredCardLKICopy\nOracle:Enchant creature\\nEnchanted creature has haste.\\n{R}: Enchanted creature gets +1/+0 until end of turn.\\nWhen a creature with mana value 6 or greater enters, you may return Dragon Breath from your graveyard to the battlefield attached to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dragon Breath"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

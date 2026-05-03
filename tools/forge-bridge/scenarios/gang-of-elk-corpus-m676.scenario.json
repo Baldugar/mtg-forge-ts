@@ -1,0 +1,25 @@
+{
+  "id": "gang-of-elk-corpus-m676",
+  "description": "M6 corpus — Gang of Elk; ETB-on-bf.",
+  "seed": 65935,
+  "cards": {
+    "Gang of Elk": "Name:Gang of Elk\nManaCost:5 G\nTypes:Creature Elk Beast\nPT:5/4\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME becomes blocked, it gets +2/+2 until end of turn for each creature blocking it.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.blockingTriggeredAttacker/Times.2\nOracle:Whenever Gang of Elk becomes blocked, it gets +2/+2 until end of turn for each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gang of Elk"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cyclonus-the-saboteur-corpus-m676",
+  "description": "M6 corpus — Cyclonus, the Saboteur; in-hand parse.",
+  "seed": 62984,
+  "cards": {
+    "Cyclonus, the Saboteur": "Name:Cyclonus, the Saboteur\nManaCost:2 U B\nTypes:Legendary Artifact Creature Robot\nPT:2/5\nK:More Than Meets the Eye:5 U B\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigConnive | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, it connives. Then if NICKNAME's power is 5 or greater, convert it. (To have a creature connive, draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\nSVar:TrigConnive:DB$ Connive | SubAbility$ DBConvert\nSVar:DBConvert:DB$ SetState | Mode$ Transform | ConditionPresent$ Card.Self+powerGE5\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Graveyard|Discard\nAlternateMode:DoubleFaced\nOracle:More Than Meets the Eye {5}{U}{B} (You may cast this card converted for {5}{U}{B}.)\\nFlying\\nWhenever Cyclonus deals combat damage to a player, it connives. Then if Cyclonus's power is 5 or greater, convert it. (To have a creature connive, draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)\n\nALTERNATE\n\nName:Cyclonus, Cybertronian Fighter\nManaCost:no cost\nColors:black\nTypes:Legendary Artifact Vehicle\nPT:5/5\nK:Living metal\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigConvert | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, convert it. If you do, there is an additional beginning phase after this phase. (The beginning phase includes the untap, upkeep, and draw steps.)\nSVar:TrigConvert:DB$ SetState | Mode$ Transform | SubAbility$ ExtraBeginningPhase | RememberChanged$ True\nSVar:ExtraBeginningPhase:DB$ AddPhase | ExtraPhase$ Beginning | ConditionDefined$ Remembered | ConditionPresent$ Card.Self | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nOracle:Living metal (During your turn, this Vehicle is also a creature.)\\nFlying\\nWhenever Cyclonus deals combat damage to a player, convert it. If you do, there is an additional beginning phase after this phase. (The beginning phase includes the untap, upkeep, and draw steps.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclonus, the Saboteur"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

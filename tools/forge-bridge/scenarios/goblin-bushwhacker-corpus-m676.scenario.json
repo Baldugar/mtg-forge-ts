@@ -1,0 +1,23 @@
+{
+  "id": "goblin-bushwhacker-corpus-m676",
+  "description": "M6 corpus — Goblin Bushwhacker; in-hand parse.",
+  "seed": 66405,
+  "cards": {
+    "Goblin Bushwhacker": "Name:Goblin Bushwhacker\nManaCost:R\nTypes:Creature Goblin Warrior\nPT:1/1\nK:Kicker:R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, if it was kicked, creatures you control get +1/+0 and gain haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | KW$ Haste\nSVar:PlayMain1:TRUE\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nWhen Goblin Bushwhacker enters, if it was kicked, creatures you control get +1/+0 and gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Bushwhacker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

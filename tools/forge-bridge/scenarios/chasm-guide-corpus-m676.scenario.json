@@ -1,0 +1,23 @@
+{
+  "id": "chasm-guide-corpus-m676",
+  "description": "M6 corpus — Chasm Guide; in-hand parse.",
+  "seed": 62032,
+  "cards": {
+    "Chasm Guide": "Name:Chasm Guide\nManaCost:3 R\nTypes:Creature Goblin Scout Ally\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | Execute$ TrigPumpAll | TriggerDescription$ Rally — Whenever CARDNAME or another Ally you control enters, creatures you control gain haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Haste\nSVar:PlayMain1:ALWAYS\nSVar:BuffedBy:Ally\nDeckHints:Type$Ally\nOracle:Rally — Whenever Chasm Guide or another Ally you control enters, creatures you control gain haste until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chasm Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

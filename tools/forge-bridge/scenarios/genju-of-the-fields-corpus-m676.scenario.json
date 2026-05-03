@@ -1,0 +1,23 @@
+{
+  "id": "genju-of-the-fields-corpus-m676",
+  "description": "M6 corpus — Genju of the Fields; in-hand parse.",
+  "seed": 66049,
+  "cards": {
+    "Genju of the Fields": "Name:Genju of the Fields\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Plains\nSVar:AttachAILogic:Pump\nA:AB$ Animate | Cost$ 2 | Defined$ Enchanted | Power$ 2 | Toughness$ 5 | Types$ Creature,Spirit | Colors$ White | Triggers$ PseudoLifelink | SpellDescription$ Until end of turn, enchanted Plains becomes a 2/5 white Spirit creature with \"Whenever this creature deals damage, its controller gains that much life.\" It's still a land.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigReturnOwner | OptionalDecider$ You | TriggerDescription$ When enchanted Plains is put into a graveyard, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturnOwner:DB$ ChangeZone | Hidden$ True | ChangeType$ Card.StrictlySelf | DefinedPlayer$ You | Origin$ Graveyard | Destination$ Hand | Mandatory$ True\nSVar:PseudoLifelink:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ GenjuTrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:GenjuTrigGain:DB$ GainLife | Defined$ You | LifeAmount$ GenjuX\nSVar:NonStackingAttachEffect:True\nSVar:AIPaymentPreference:AvoidPayingWithAttachTarget\nSVar:GenjuX:TriggerCount$DamageAmount\nOracle:Enchant Plains\\n{2}: Until end of turn, enchanted Plains becomes a 2/5 white Spirit creature with \"Whenever this creature deals damage, its controller gains that much life.\" It's still a land.\\nWhen enchanted Plains is put into a graveyard, you may return Genju of the Fields from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genju of the Fields"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

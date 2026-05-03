@@ -1,0 +1,23 @@
+{
+  "id": "camouflage-corpus-m676",
+  "description": "M6 corpus — Camouflage; in-hand parse.",
+  "seed": 61650,
+  "cards": {
+    "Camouflage": "Name:Camouflage\nManaCost:G\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ RDeclareBlocker | ActivationPhases$ Declare Attackers | PlayerTurn$ True | AILogic$ Evasion | SpellDescription$ Cast this spell only during your declare attackers step. This turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures those players control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so. (Piles can be empty.)\nSVar:RDeclareBlocker:Event$ DeclareBlocker | ValidPlayer$ Opponent | ReplaceWith$ DBCamouflage | Description$ This turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures those players control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so. (Piles can be empty.)\nSVar:DBCamouflage:DB$ Camouflage | Defined$ ReplacedPlayer | Defender$ ReplacedDefendingPlayer | AILogic$ BestBlocker\nAI:RemoveDeck:All\nOracle:Cast this spell only during your declare attackers step.\\nThis turn, instead of declaring blockers, each defending player chooses any number of creatures they control and divides them into a number of piles equal to the number of attacking creatures for whom that player is the defending player. Creatures those players control that can block additional creatures may likewise be put into additional piles. Assign each pile to a different one of those attacking creatures at random. Each creature in a pile that can block the creature that pile is assigned to does so. (Piles can be empty.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Camouflage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

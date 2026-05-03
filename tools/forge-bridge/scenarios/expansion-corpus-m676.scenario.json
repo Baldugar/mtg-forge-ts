@@ -1,0 +1,23 @@
+{
+  "id": "expansion-corpus-m676",
+  "description": "M6 corpus — Expansion; in-hand parse.",
+  "seed": 64875,
+  "cards": {
+    "Expansion": "Name:Expansion\nManaCost:UR UR\nTypes:Instant\nA:SP$ CopySpellAbility | ValidTgts$ Card.Instant+cmcLE4,Card.Sorcery+cmcLE4 | TargetType$ Spell | MayChooseTarget$ True | SpellDescription$ Copy target instant or sorcery spell with mana value 4 or less. You may choose new targets for the copy.\nAlternateMode:Split\nOracle:Copy target instant or sorcery spell with mana value 4 or less. You may choose new targets for the copy.\n\nALTERNATE\n\nName:Explosion\nManaCost:X U U R R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals X damage to any target. Target player draws X cards.\nSVar:DBDraw:DB$ Draw | NumCards$ X | ValidTgts$ Player | TgtPrompt$ Select target player\nSVar:X:Count$xPaid\nOracle:Explosion deals X damage to any target. Target player draws X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Expansion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

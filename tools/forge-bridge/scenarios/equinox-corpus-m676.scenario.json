@@ -1,0 +1,23 @@
+{
+  "id": "equinox-corpus-m676",
+  "description": "M6 corpus — Equinox; in-hand parse.",
+  "seed": 64684,
+  "cards": {
+    "Equinox": "Name:Equinox\nManaCost:W\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddAbility$ CounterDestroyLand | Description$ Enchanted land has \"{T}: Counter target spell if it would destroy a land you control.\"\nSVar:CounterDestroyLand:AB$ Counter | Cost$ T | TargetType$ Spell | ConditionWouldDestroy$ Land.YouCtrl | TgtPrompt$ Select target spell | ValidTgts$ Card | SpellDescription$ Counter target spell if it would destroy a land you control.\nOracle:Enchant land\\nEnchanted land has \"{T}: Counter target spell if it would destroy a land you control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Equinox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "flash-corpus-m676",
+  "description": "M6 corpus — Flash; in-hand parse.",
+  "seed": 65461,
+  "cards": {
+    "Flash": "Name:Flash\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 1 | SubAbility$ DBSac | RememberChanged$ True | SpellDescription$ You may put a creature card from your hand onto the battlefield. If you do, sacrifice it unless you pay its mana cost reduced by up to {2}.\nSVar:DBSac:DB$ SacrificeAll | Defined$ Remembered | UnlessCost$ DefinedCost_Remembered_Minus2 | UnlessPayer$ You | UnlessUpTo$ True | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:You may put a creature card from your hand onto the battlefield. If you do, sacrifice it unless you pay its mana cost reduced by up to {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flash"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

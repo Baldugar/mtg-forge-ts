@@ -1,0 +1,23 @@
+{
+  "id": "farm-corpus-m676",
+  "description": "M6 corpus — Farm; in-hand parse.",
+  "seed": 65085,
+  "cards": {
+    "Farm": "Name:Farm\nManaCost:2 W\nTypes:Instant\nA:SP$ Destroy | ValidTgts$ Creature.attacking,Creature.blocking | TgtPrompt$ Select target attacking or blocking creature | SpellDescription$ Destroy target attacking or blocking creature.\nAlternateMode:Split\nOracle:Destroy target attacking or blocking creature.\n\nALTERNATE\n\nName:Market\nManaCost:2 U\nTypes:Sorcery\nK:Aftermath\nA:SP$ Draw | NumCards$ 2 | SpellDescription$ Draw two cards, then discard two cards. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nDraw two cards, then discard two cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

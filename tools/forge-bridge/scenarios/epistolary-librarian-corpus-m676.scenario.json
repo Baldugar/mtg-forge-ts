@@ -1,0 +1,23 @@
+{
+  "id": "epistolary-librarian-corpus-m676",
+  "description": "M6 corpus — Epistolary Librarian; in-hand parse.",
+  "seed": 64679,
+  "cards": {
+    "Epistolary Librarian": "Name:Epistolary Librarian\nManaCost:2 W U\nTypes:Creature Astartes Wizard\nPT:3/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigCast | TriggerDescription$ Veil of Time — Whenever CARDNAME attacks, you may cast a spell with mana value X or less from your hand without paying its mana cost, where X is the number of attacking creatures.\nSVar:TrigCast:DB$ Play | ValidZone$ Hand | Valid$ Card.YouOwn | ValidSA$ Spell.cmcLEX | Optional$ True | WithoutManaCost$ True\nSVar:X:Count$Valid Creature.attacking+YouCtrl\nSVar:HasAttackEffect:TRUE\nOracle:Veil of Time — Whenever Epistolary Librarian attacks, you may cast a spell with mana value X or less from your hand without paying its mana cost, where X is the number of attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Epistolary Librarian"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

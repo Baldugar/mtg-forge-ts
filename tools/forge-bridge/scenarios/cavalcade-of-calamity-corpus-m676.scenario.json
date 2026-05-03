@@ -1,0 +1,23 @@
+{
+  "id": "cavalcade-of-calamity-corpus-m676",
+  "description": "M6 corpus — Cavalcade of Calamity; in-hand parse.",
+  "seed": 61830,
+  "cards": {
+    "Cavalcade of Calamity": "Name:Cavalcade of Calamity\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.powerLE1+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature you control with power 1 or less attacks, CARDNAME deals 1 damage to the player or planeswalker that creature is attacking.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredDefender.Opponent & Valid Planeswalker.TriggeredDefender | NumDmg$ 1\nSVar:PlayMain1:TRUE\nOracle:Whenever a creature you control with power 1 or less attacks, Cavalcade of Calamity deals 1 damage to the player or planeswalker that creature is attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cavalcade of Calamity"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gateway-plaza-corpus-m676",
+  "description": "M6 corpus — Gateway Plaza; in-hand parse.",
+  "seed": 65978,
+  "cards": {
+    "Gateway Plaza": "Name:Gateway Plaza\nManaCost:no cost\nTypes:Land Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice it unless you pay {1}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ 1 | UnlessPayer$ You\nSVar:NeedsToPlay:Land.untapped+YouCtrl\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nOracle:Gateway Plaza enters tapped.\\nWhen Gateway Plaza enters, sacrifice it unless you pay {1}.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gateway Plaza"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

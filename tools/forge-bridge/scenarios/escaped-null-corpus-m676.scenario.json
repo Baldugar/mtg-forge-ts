@@ -1,0 +1,25 @@
+{
+  "id": "escaped-null-corpus-m676",
+  "description": "M6 corpus — Escaped Null; ETB-on-bf.",
+  "seed": 64727,
+  "cards": {
+    "Escaped Null": "Name:Escaped Null\nManaCost:3 B\nTypes:Creature Zombie Berserker\nPT:1/2\nK:Lifelink\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets +5/+0 until end of turn.\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked, it gets +5/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +5\nOracle:Lifelink\\nWhenever Escaped Null blocks or becomes blocked, it gets +5/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Escaped Null"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "ethereal-grasp-corpus-m676",
+  "description": "M6 corpus — Ethereal Grasp; in-hand parse.",
+  "seed": 64777,
+  "cards": {
+    "Ethereal Grasp": "Name:Ethereal Grasp\nManaCost:2 U\nTypes:Instant\nA:SP$ Tap | ValidTgts$ Creature | IsCurse$ True | SubAbility$ DBAnimate | SpellDescription$ Tap target creature.\nSVar:DBAnimate:DB$ Animate | Defined$ Targeted | Duration$ Perpetual | Replacements$ EtherealGrasp | Abilities$ Untap | StackDescription$ SpellDescription | SpellDescription$ That creature perpetually gains \"This creature doesn't untap during your untap step\" and \"{8}: Untap this creature.\"\nSVar:EtherealGrasp:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nSVar:Untap:AB$ Untap | Cost$ 8 | SpellDescription$ Untap this creature.\nOracle:Tap target creature. That creature perpetually gains \"This creature doesn't untap during your untap step\" and \"{8}: Untap this creature.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ethereal Grasp"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

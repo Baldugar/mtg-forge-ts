@@ -1,0 +1,23 @@
+{
+  "id": "false-dawn-corpus-m676",
+  "description": "M6 corpus — False Dawn; in-hand parse.",
+  "seed": 65034,
+  "cards": {
+    "False Dawn": "Name:False Dawn\nManaCost:1 W\nTypes:Sorcery\nA:SP$ Effect | ReplacementEffects$ FDRep | StaticAbilities$ FDManaConvertion | SubAbility$ DBDraw | SpellDescription$ Until end of turn, spells and abilities you control that would add colored mana instead add that much white mana. Until end of turn, you may spend white mana as though it were mana of any color. Draw a card.\nSVar:DBDraw:DB$ Draw\nSVar:FDRep:Event$ ProduceMana | ValidSA$ SpellAbility.YouCtrl | ReplaceWith$ ProduceW | Description$ Spells and abilities you control that would add colored mana add that much white mana instead.\nSVar:ProduceW:DB$ ReplaceMana | ReplaceColor$ White\nSVar:FDManaConvertion:Mode$ ManaConvert | ValidPlayer$ You | ManaConversion$ White->AnyColor | Description$ You may spend white mana as though it were mana of any color.\nAI:RemoveDeck:All\nOracle:Until end of turn, spells and abilities you control that would add colored mana instead add that much white mana. Until end of turn, you may spend white mana as though it were mana of any color.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "False Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

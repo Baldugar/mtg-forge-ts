@@ -1,0 +1,23 @@
+{
+  "id": "district-guide-corpus-m676",
+  "description": "M6 corpus — District Guide; in-hand parse.",
+  "seed": 63741,
+  "cards": {
+    "District Guide": "Name:District Guide\nManaCost:2 G\nTypes:Creature Elf Scout\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card or Gate card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Land.Basic,Card.Gate | ChangeNum$ 1 | ShuffleNonMandatory$ True\nOracle:When District Guide enters, you may search your library for a basic land card or Gate card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "District Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

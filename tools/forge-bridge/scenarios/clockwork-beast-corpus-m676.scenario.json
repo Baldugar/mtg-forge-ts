@@ -1,0 +1,23 @@
+{
+  "id": "clockwork-beast-corpus-m676",
+  "description": "M6 corpus — Clockwork Beast; in-hand parse.",
+  "seed": 62260,
+  "cards": {
+    "Clockwork Beast": "Name:Clockwork Beast\nManaCost:6\nTypes:Artifact Creature Beast\nPT:0/4\nK:etbCounter:P1P0:7\nT:Mode$ Phase | Phase$ EndCombat | ValidPlayer$ Player | IsPresent$ Card.Self+attackedThisCombat,Card.Self+blockedThisCombat | TriggerZones$ Battlefield | Execute$ TrigSubCounter | TriggerDescription$ At end of combat, if CARDNAME attacked or blocked this combat, remove a +1/+0 counter from it.\nSVar:TrigSubCounter:DB$ RemoveCounter | Defined$ Self | CounterType$ P1P0 | CounterNum$ 1\nA:AB$ PutCounter | Cost$ X T | Defined$ Self | UpTo$ True | MaxFromEffect$ 7 | CounterType$ P1P0 | CounterNum$ X | ActivationPhases$ Upkeep | PlayerTurn$ True | SpellDescription$ Put up to X +1/+0 counters on CARDNAME. This ability can't cause the total number of +1/+0 counters on CARDNAME to be greater than seven. Activate only during your upkeep.\nSVar:X:Count$xPaid\nDeckHas:Ability$Counters\nOracle:Clockwork Beast enters with seven +1/+0 counters on it.\\nAt end of combat, if Clockwork Beast attacked or blocked this combat, remove a +1/+0 counter from it.\\n{X}, {T}: Put up to X +1/+0 counters on Clockwork Beast. This ability can't cause the total number of +1/+0 counters on Clockwork Beast to be greater than seven. Activate only during your upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clockwork Beast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

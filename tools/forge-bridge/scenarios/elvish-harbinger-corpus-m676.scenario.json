@@ -1,0 +1,23 @@
+{
+  "id": "elvish-harbinger-corpus-m676",
+  "description": "M6 corpus — Elvish Harbinger; in-hand parse.",
+  "seed": 64466,
+  "cards": {
+    "Elvish Harbinger": "Name:Elvish Harbinger\nManaCost:2 G\nTypes:Creature Elf Druid\nPT:1/2\nA:AB$ Mana | Cost$ T | Produced$ Any | SpellDescription$ Add one mana of any color.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an Elf card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Elf | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:When Elvish Harbinger enters, you may search your library for an Elf card, reveal it, then shuffle and put that card on top.\\n{T}: Add one mana of any color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Elvish Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

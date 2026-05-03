@@ -1,0 +1,23 @@
+{
+  "id": "death-tyrant-corpus-m676",
+  "description": "M6 corpus — Death Tyrant; in-hand parse.",
+  "seed": 63259,
+  "cards": {
+    "Death Tyrant": "Name:Death Tyrant\nManaCost:4 B\nTypes:Creature Beholder Skeleton\nPT:4/6\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.attacking+YouCtrl,Creature.blocking+OppCtrl | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Negative Energy Cone — Whenever an attacking creature you control or a blocking creature an opponent controls dies, create a 2/2 black Zombie creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You\nA:AB$ ChangeZone | Cost$ 5 B | Origin$ Graveyard | Destination$ Battlefield | ActivationZone$ Graveyard | Tapped$ True | SpellDescription$ Return CARDNAME from your graveyard to the battlefield tapped.\nDeckHas:Ability$Token\nOracle:Menace\\nNegative Energy Cone — Whenever an attacking creature you control or a blocking creature an opponent controls dies, create a 2/2 black Zombie creature token.\\n{5}{B}: Return Death Tyrant from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

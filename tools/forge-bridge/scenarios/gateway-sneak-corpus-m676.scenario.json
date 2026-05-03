@@ -1,0 +1,23 @@
+{
+  "id": "gateway-sneak-corpus-m676",
+  "description": "M6 corpus — Gateway Sneak; in-hand parse.",
+  "seed": 65979,
+  "cards": {
+    "Gateway Sneak": "Name:Gateway Sneak\nManaCost:2 U\nTypes:Creature Vedalken Rogue\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Gate.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigUnblockable | TriggerDescription$ Whenever a Gate you control enters, CARDNAME can't be blocked this turn.\nSVar:TrigUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nDeckHints:Type$Gate\nOracle:Whenever a Gate you control enters, Gateway Sneak can't be blocked this turn.\\nWhenever Gateway Sneak deals combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gateway Sneak"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

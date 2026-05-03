@@ -1,0 +1,23 @@
+{
+  "id": "death-cloud-corpus-m676",
+  "description": "M6 corpus — Death Cloud; in-hand parse.",
+  "seed": 63242,
+  "cards": {
+    "Death Cloud": "Name:Death Cloud\nManaCost:X B B B\nTypes:Sorcery\nA:SP$ LoseLife | Defined$ Player | LifeAmount$ X | SpellDescription$ Each player loses X life, discards X cards, sacrifices X creatures, then sacrifices X lands. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | NumCards$ X | Mode$ TgtChoose | Defined$ Player | SubAbility$ DBSacCreature\nSVar:DBSacCreature:DB$ Sacrifice | Amount$ X | SacValid$ Creature | Defined$ Player | SubAbility$ DBSacLand\nSVar:DBSacLand:DB$ Sacrifice | Amount$ X | SacValid$ Land | Defined$ Player\nSVar:X:Count$xPaid\nAI:RemoveDeck:All\nOracle:Each player loses X life, discards X cards, sacrifices X creatures, then sacrifices X lands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Cloud"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

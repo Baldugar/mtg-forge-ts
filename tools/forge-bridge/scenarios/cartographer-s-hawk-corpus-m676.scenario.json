@@ -1,0 +1,23 @@
+{
+  "id": "cartographer-s-hawk-corpus-m676",
+  "description": "M6 corpus — Cartographer's Hawk; in-hand parse.",
+  "seed": 61756,
+  "cards": {
+    "Cartographer's Hawk": "Name:Cartographer's Hawk\nManaCost:1 W\nTypes:Creature Bird\nPT:2/1\nK:Flying\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player.withMoreLandsThanYou | Execute$ ToHand | CombatDamage$ True | TriggerDescription$ When CARDNAME deals combat damage to a player who controls more lands than you, return it to its owner's hand. If you do, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle.\nSVar:ToHand:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand | RememberChanged$ True | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.Plains | Tapped$ True | ChangeNum$ 1 | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Flying\\nWhen Cartographer's Hawk deals combat damage to a player who controls more lands than you, return it to its owner's hand. If you do, you may search your library for a Plains card, put it onto the battlefield tapped, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cartographer's Hawk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

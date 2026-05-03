@@ -1,0 +1,25 @@
+{
+  "id": "celestial-ancient-corpus-m676",
+  "description": "M6 corpus — Celestial Ancient; ETB-on-bf.",
+  "seed": 61853,
+  "cards": {
+    "Celestial Ancient": "Name:Celestial Ancient\nManaCost:3 W W\nTypes:Creature Elemental\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Enchantment | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ Whenever you cast an enchantment spell, put a +1/+1 counter on each creature you control.\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1\nSVar:BuffedBy:Enchantment\nOracle:Flying\\nWhenever you cast an enchantment spell, put a +1/+1 counter on each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Celestial Ancient"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

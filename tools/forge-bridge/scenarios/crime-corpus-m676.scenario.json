@@ -1,0 +1,23 @@
+{
+  "id": "crime-corpus-m676",
+  "description": "M6 corpus — Crime; in-hand parse.",
+  "seed": 62746,
+  "cards": {
+    "Crime": "Name:Crime\nManaCost:3 W B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target creature or enchantment in an opponent's graveyard | ValidTgts$ Creature.OppCtrl,Enchantment.OppCtrl | SpellDescription$ Put target creature or enchantment card from an opponent's graveyard onto the battlefield under your control.\nAlternateMode:Split\nOracle:Put target creature or enchantment card from an opponent's graveyard onto the battlefield under your control.\n\nALTERNATE\n\nName:Punishment\nManaCost:X B G\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Artifact.cmcEQX,Creature.cmcEQX,Enchantment.cmcEQX | SpellDescription$ Destroy each artifact, creature, and enchantment with mana value X.\nSVar:X:Count$xPaid\nOracle:Destroy each artifact, creature, and enchantment with mana value X.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crime"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

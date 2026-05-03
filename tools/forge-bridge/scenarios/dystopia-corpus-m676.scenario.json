@@ -1,0 +1,23 @@
+{
+  "id": "dystopia-corpus-m676",
+  "description": "M6 corpus — Dystopia; in-hand parse.",
+  "seed": 64231,
+  "cards": {
+    "Dystopia": "Name:Dystopia\nManaCost:1 B B\nTypes:Enchantment\nK:Cumulative upkeep:PayLife<1>:Pay 1 life.\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ At the beginning of each player's upkeep, that player sacrifices a green or white permanent.\nSVar:TrigSac:DB$ Sacrifice | SacValid$ Permanent.Green,Permanent.White | Defined$ TriggeredPlayer | SpellDescription$ Sacrifice a green or white permanent.\nAI:RemoveDeck:Random\nOracle:Cumulative upkeep—Pay 1 life. (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\\nAt the beginning of each player's upkeep, that player sacrifices a green or white permanent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dystopia"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

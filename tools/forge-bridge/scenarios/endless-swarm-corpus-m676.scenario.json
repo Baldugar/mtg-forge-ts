@@ -1,0 +1,23 @@
+{
+  "id": "endless-swarm-corpus-m676",
+  "description": "M6 corpus — Endless Swarm; in-hand parse.",
+  "seed": 64580,
+  "cards": {
+    "Endless Swarm": "Name:Endless Swarm\nManaCost:5 G G G\nTypes:Sorcery\nK:Epic\nA:SP$ Token | TokenAmount$ X | TokenScript$ g_1_1_snake | TokenOwner$ You | SpellDescription$ Create a 1/1 green Snake creature token for each card in your hand.\nSVar:X:Count$ValidHand Card.YouOwn\n# NOTE: The AI will not stop making land drops after casting this spell (so, random decks may also utilize manlands and other cards with activation cost already on the battlefield to the maximum effect)\nAI:RemoveDeck:Random\nOracle:Create a 1/1 green Snake creature token for each card in your hand.\\nEpic (For the rest of the game, you can't cast spells. At the beginning of each of your upkeeps, copy this spell except for its epic ability.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Endless Swarm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

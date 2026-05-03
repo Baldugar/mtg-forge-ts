@@ -1,0 +1,23 @@
+{
+  "id": "farbog-boneflinger-corpus-m676",
+  "description": "M6 corpus — Farbog Boneflinger; in-hand parse.",
+  "seed": 65080,
+  "cards": {
+    "Farbog Boneflinger": "Name:Farbog Boneflinger\nManaCost:4 B\nTypes:Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpCurse | TriggerDescription$ When CARDNAME enters, target creature gets -2/-2 until end of turn.\nSVar:TrigPumpCurse:DB$ Pump | ValidTgts$ Creature | IsCurse$ True | NumAtt$ -2 | NumDef$ -2\nSVar:PlayMain1:TRUE\nOracle:When Farbog Boneflinger enters, target creature gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Farbog Boneflinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

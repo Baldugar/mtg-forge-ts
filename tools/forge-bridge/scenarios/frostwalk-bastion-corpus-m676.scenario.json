@@ -1,0 +1,23 @@
+{
+  "id": "frostwalk-bastion-corpus-m676",
+  "description": "M6 corpus — Frostwalk Bastion; in-hand parse.",
+  "seed": 65801,
+  "cards": {
+    "Frostwalk Bastion": "Name:Frostwalk Bastion\nManaCost:no cost\nTypes:Snow Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Animate | Cost$ 1 S | Defined$ Self | Power$ 2 | Toughness$ 3 | Types$ Creature,Artifact,Construct | RemoveCreatureTypes$ True | SpellDescription$ Until end of turn, CARDNAME becomes a 2/3 Construct artifact creature. It's still a land. ({S} can be paid with one mana from a snow source.)\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigTap | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | Defined$ TriggeredTargetLKICopy | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ TriggeredTargetLKICopy | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent | IsCurse$ True\nSVar:HasCombatEffect:TRUE\nOracle:{T}: Add {C}.\\n{1}{S}: Until end of turn, Frostwalk Bastion becomes a 2/3 Construct artifact creature. It's still a land. ({S} can be paid with one mana from a snow source.)\\nWhenever Frostwalk Bastion deals combat damage to a creature, tap that creature and it doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Frostwalk Bastion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

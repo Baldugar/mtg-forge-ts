@@ -1,0 +1,23 @@
+{
+  "id": "dramatic-finale-corpus-m676",
+  "description": "M6 corpus — Dramatic Finale; in-hand parse.",
+  "seed": 63960,
+  "cards": {
+    "Dramatic Finale": "Name:Dramatic Finale\nManaCost:WB WB WB WB\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.token+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creature tokens you control get +1/+1.\nT:Mode$ ChangesZoneAll | ValidCards$ Creature.!token+YouCtrl | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | ActivationLimit$ 1 | Execute$ TrigToken | TriggerDescription$ Whenever one or more nontoken creatures you control die, create a 2/1 white and black Inkling creature token with flying. This ability triggers only once each turn.\nSVar:TrigToken:DB$ Token | TokenScript$ wb_2_1_inkling_flying\nDeckHas:Ability$Token\nOracle:Creature tokens you control get +1/+1.\\nWhenever one or more nontoken creatures you control die, create a 2/1 white and black Inkling creature token with flying. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dramatic Finale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

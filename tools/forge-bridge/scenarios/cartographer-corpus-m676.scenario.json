@@ -1,0 +1,23 @@
+{
+  "id": "cartographer-corpus-m676",
+  "description": "M6 corpus — Cartographer; in-hand parse.",
+  "seed": 61755,
+  "cards": {
+    "Cartographer": "Name:Cartographer\nManaCost:2 G\nTypes:Creature Human\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return target land card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Land.YouCtrl\nOracle:When Cartographer enters, you may return target land card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cartographer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

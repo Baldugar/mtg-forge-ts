@@ -1,0 +1,23 @@
+{
+  "id": "death-or-glory-corpus-m676",
+  "description": "M6 corpus — Death or Glory; in-hand parse.",
+  "seed": 63251,
+  "cards": {
+    "Death or Glory": "Name:Death or Glory\nManaCost:4 W\nTypes:Sorcery\nA:SP$ TwoPiles | Defined$ You | Separator$ You | Chooser$ Opponent | ChosenPile$ DBExile | UnchosenPile$ DBReturn | ValidCards$ Creature | Zone$ Graveyard | AILogic$ Worst | SpellDescription$ Separate all creature cards in your graveyard into two piles. Exile the pile of an opponent's choice and return the other to the battlefield.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Battlefield\nSVar:DBExile:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Exile\nOracle:Separate all creature cards in your graveyard into two piles. Exile the pile of an opponent's choice and return the other to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death or Glory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

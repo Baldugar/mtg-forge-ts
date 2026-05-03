@@ -1,0 +1,25 @@
+{
+  "id": "fa-adiyah-seer-corpus-m676",
+  "description": "M6 corpus — Fa'adiyah Seer; ETB-on-bf.",
+  "seed": 64958,
+  "cards": {
+    "Fa'adiyah Seer": "Name:Fa'adiyah Seer\nManaCost:1 G\nTypes:Creature Human Shaman\nPT:1/1\nA:AB$ Draw | Cost$ T | NumCards$ 1 | Reveal$ All | RememberDrawn$ True | SubAbility$ DBDiscard | StackDescription$ SpellDescription | SpellDescription$ Draw a card and reveal it. If it isn't a land card, discard it.\nSVar:DBDiscard:DB$ Discard | Mode$ Defined | Defined$ You | DefinedCards$ Remembered | ConditionDefined$ Remembered | ConditionPresent$ Card.nonLand | ConditionCompare$ EQ1 | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{T}: Draw a card and reveal it. If it isn't a land card, discard it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Fa'adiyah Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

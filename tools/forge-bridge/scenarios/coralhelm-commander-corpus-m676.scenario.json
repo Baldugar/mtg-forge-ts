@@ -1,0 +1,25 @@
+{
+  "id": "coralhelm-commander-corpus-m676",
+  "description": "M6 corpus — Coralhelm Commander; ETB-on-bf.",
+  "seed": 62580,
+  "cards": {
+    "Coralhelm Commander": "Name:Coralhelm Commander\nManaCost:U U\nTypes:Creature Merfolk Soldier\nPT:2/2\nK:Level up:1\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 3 | SetToughness$ 3 | AddKeyword$ Flying | IsPresent$ Card.Self+counters_GE2_LEVEL+counters_LE3_LEVEL | PresentCompare$ EQ1 | Description$ LEVEL 2-3 3/3 Flying\nS:Mode$ Continuous | Affected$ Card.Self | SetPower$ 4 | SetToughness$ 4 | AddKeyword$ Flying | AddStaticAbility$ SBoost | IsPresent$ Card.Self+counters_GE4_LEVEL | PresentCompare$ EQ1 | Description$ LEVEL 4+ 4/4 Flying,,,Other Merfolk creatures you control get +1/+1.\nSVar:SBoost:Mode$ Continuous | Affected$ Creature.Merfolk+YouCtrl+Other | AddPower$ 1 | AddToughness$ 1 | IsPresent$ Card.Self+counters_GE4_LEVEL | PresentCompare$ EQ1\nDeckHints:Type$Merfolk\nDeckHas:Ability$Counters\nOracle:Level up {1} ({1}: Put a level counter on this. Level up only as a sorcery.)\\nLEVEL 2-3\\n3/3\\nFlying\\nLEVEL 4+\\n4/4\\nFlying\\nOther Merfolk creatures you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Coralhelm Commander"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "desecrate-reality-corpus-m676",
+  "description": "M6 corpus — Desecrate Reality; in-hand parse.",
+  "seed": 63492,
+  "cards": {
+    "Desecrate Reality": "Name:Desecrate Reality\nManaCost:7\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Permanent.OppCtrl+cmcEven | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | TgtPrompt$ Select up to one target permanent with an even mana value each opponent controls | SubAbility$ DBReturn | SpellDescription$ For each opponent, exile up to one target permanent that player controls with an even mana value. (Zero is even.)\nSVar:DBReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Permanent.cmcOdd+YouOwn | Hidden$ True | Mandatory$ True | ChangeTypeDesc$ permanent card with an odd mana value | ChangeNum$ 1 | ConditionCheckSVar$ X | SpellDescription$ Adamant — If at least three colorless mana was spent to cast this spell, return a permanent card with an odd mana value from your graveyard to the battlefield.\nSVar:X:Count$Adamant.Colorless.1.0\nSVar:OneEach:PlayerCountOpponents$Amount\nDeckHas:Ability$Graveyard\nOracle:For each opponent, exile up to one target permanent that player controls with an even mana value. (Zero is even.)\\nAdamant — If at least three colorless mana was spent to cast this spell, return a permanent card with an odd mana value from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desecrate Reality"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

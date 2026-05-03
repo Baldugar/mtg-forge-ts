@@ -1,0 +1,23 @@
+{
+  "id": "deadbridge-chant-corpus-m676",
+  "description": "M6 corpus — Deadbridge Chant; in-hand parse.",
+  "seed": 63214,
+  "cards": {
+    "Deadbridge Chant": "Name:Deadbridge Chant\nManaCost:4 B G\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill ten cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 10 | Defined$ You\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigChoose | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, choose a card at random in your graveyard. If it's a creature card, put it onto the battlefield. Otherwise, put it into your hand.\nSVar:TrigChoose:DB$ ChooseCard | ChoiceZone$ Graveyard | AtRandom$ True | Choices$ Card.YouOwn | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | Defined$ ChosenCard | ConditionDefined$ ChosenCard | ConditionPresent$ Creature | ConditionCompare$ GE1 | SubAbility$ DBChange2\nSVar:DBChange2:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | Defined$ ChosenCard | ConditionDefined$ ChosenCard | ConditionPresent$ Creature | ConditionCompare$ EQ0\nSVar:Y:Count$ValidLibrary Card.YouOwn\nSVar:NeedsToPlayVar:Y GE15\nDeckHas:Ability$Graveyard\nOracle:When Deadbridge Chant enters, mill ten cards.\\nAt the beginning of your upkeep, choose a card at random in your graveyard. If it's a creature card, put it onto the battlefield. Otherwise, put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadbridge Chant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

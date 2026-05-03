@@ -1,0 +1,23 @@
+{
+  "id": "flock-impostor-corpus-m676",
+  "description": "M6 corpus — Flock Impostor; in-hand parse.",
+  "seed": 65520,
+  "cards": {
+    "Flock Impostor": "Name:Flock Impostor\nManaCost:2 W\nTypes:Creature Shapeshifter\nPT:2/2\nK:Changeling\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When this creature enters, return up to one other target creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature.YouCtrl+Other | TgtPrompt$ Select up to one other target creature you control\nOracle:Changeling (This card is every creature type.)\\nFlash\\nFlying\\nWhen this creature enters, return up to one other target creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flock Impostor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

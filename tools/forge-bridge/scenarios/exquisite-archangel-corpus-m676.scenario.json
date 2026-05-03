@@ -1,0 +1,25 @@
+{
+  "id": "exquisite-archangel-corpus-m676",
+  "description": "M6 corpus — Exquisite Archangel; ETB-on-bf.",
+  "seed": 64906,
+  "cards": {
+    "Exquisite Archangel": "Name:Exquisite Archangel\nManaCost:5 W W\nTypes:Creature Angel\nPT:5/5\nK:Flying\nR:Event$ GameLoss | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ ExileSetLife | Description$ If you would lose the game, instead exile CARDNAME and your life total becomes equal to your starting life total.\nSVar:ExileSetLife:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ Self | SubAbility$ DBSetLife\nSVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$YourStartingLife\nOracle:Flying\\nIf you would lose the game, instead exile Exquisite Archangel and your life total becomes equal to your starting life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Exquisite Archangel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

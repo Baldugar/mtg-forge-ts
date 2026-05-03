@@ -1,0 +1,23 @@
+{
+  "id": "glassdust-hulk-corpus-m676",
+  "description": "M6 corpus — Glassdust Hulk; in-hand parse.",
+  "seed": 66268,
+  "cards": {
+    "Glassdust Hulk": "Name:Glassdust Hulk\nManaCost:3 W U\nTypes:Artifact Creature Golem\nPT:3/4\nK:Cycling:WU\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Artifact.Other+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever another artifact you control enters, CARDNAME gets +1/+1 until end of turn and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nSVar:BuffedBy:Artifact\nDeckHas:Ability$Discard\nDeckHints:Type$Artifact\nOracle:Whenever another artifact you control enters, Glassdust Hulk gets +1/+1 until end of turn and can't be blocked this turn.\\nCycling {W/U} ({W/U}, Discard this card: Draw a card.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glassdust Hulk"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

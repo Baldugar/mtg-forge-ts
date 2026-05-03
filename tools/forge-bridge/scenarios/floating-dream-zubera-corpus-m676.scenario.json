@@ -1,0 +1,23 @@
+{
+  "id": "floating-dream-zubera-corpus-m676",
+  "description": "M6 corpus — Floating-Dream Zubera; in-hand parse.",
+  "seed": 65519,
+  "cards": {
+    "Floating-Dream Zubera": "Name:Floating-Dream Zubera\nManaCost:1 U\nTypes:Creature Zubera Spirit\nPT:1/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME dies, draw a card for each Zubera that died this turn.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ X\nSVar:X:Count$ThisTurnEntered_Graveyard_from_Battlefield_Card.Zubera\nDeckHints:Type$Zubera\nOracle:When Floating-Dream Zubera dies, draw a card for each Zubera that died this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Floating-Dream Zubera"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

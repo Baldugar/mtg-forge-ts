@@ -1,0 +1,23 @@
+{
+  "id": "cloudchaser-kestrel-corpus-m676",
+  "description": "M6 corpus — Cloudchaser Kestrel; in-hand parse.",
+  "seed": 62294,
+  "cards": {
+    "Cloudchaser Kestrel": "Name:Cloudchaser Kestrel\nManaCost:1 W W\nTypes:Creature Bird\nPT:2/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target enchantment.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Enchantment\nA:AB$ Animate | Cost$ W | ValidTgts$ Permanent | Colors$ White | OverwriteColors$ True | SpellDescription$ Target permanent becomes white until end of turn.\nOracle:Flying\\nWhen Cloudchaser Kestrel enters, destroy target enchantment.\\n{W}: Target permanent becomes white until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cloudchaser Kestrel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

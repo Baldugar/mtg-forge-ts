@@ -1,0 +1,25 @@
+{
+  "id": "gate-of-the-black-dragon-corpus-m676",
+  "description": "M6 corpus — Gate of the Black Dragon; ETB-on-bf.",
+  "seed": 65965,
+  "cards": {
+    "Gate of the Black Dragon": "Name:Gate of the Black Dragon\nManaCost:no cost\nTypes:Land Swamp Gate\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Seek | Cost$ 3 B T | Type$ Card.nonLand | GameActivationLimit$ 1 | StackDescription$ {p:You} seeks a nonland card. | SpellDescription$ Seek a nonland card. Activate only once.\nText:{T}: Add {B}.\nDeckHints:Type$Gate\nOracle:Gate of the Black Dragon enters tapped.\\n{3}{B}, {T}: Seek a nonland card. Activate only once.\\n{T}: Add {B}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gate of the Black Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

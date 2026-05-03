@@ -1,0 +1,23 @@
+{
+  "id": "dark-dabbling-corpus-m676",
+  "description": "M6 corpus — Dark Dabbling; in-hand parse.",
+  "seed": 63073,
+  "cards": {
+    "Dark Dabbling": "Name:Dark Dabbling\nManaCost:2 B\nTypes:Instant\nA:SP$ Regenerate | ValidTgts$ Creature | SubAbility$ DBDraw | SpellDescription$ Regenerate target creature. Draw a card. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, also regenerate each other creature you control.\nSVar:DBDraw:DB$ Draw | SubAbility$ DBRegenerate\nSVar:DBRegenerate:DB$ Regenerate | Defined$ Targeted.Other+YouCtrl+Creature | ConditionPresent$ Instant.YouOwn,Sorcery.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE2\nOracle:Regenerate target creature. Draw a card. (The next time the creature would be destroyed this turn, it isn't. Instead tap it, remove all damage from it, and remove it from combat.)\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, also regenerate each other creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Dabbling"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

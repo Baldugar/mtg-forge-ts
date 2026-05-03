@@ -1,0 +1,25 @@
+{
+  "id": "caldera-lake-corpus-m676",
+  "description": "M6 corpus — Caldera Lake; ETB-on-bf.",
+  "seed": 61608,
+  "cards": {
+    "Caldera Lake": "Name:Caldera Lake\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Combo U R | SubAbility$ DBPain | SpellDescription$ Add {U} or {R}. CARDNAME deals 1 damage to you.\nSVar:DBPain:DB$ DealDamage | NumDmg$ 1 | Defined$ You\nOracle:Caldera Lake enters tapped.\\n{T}: Add {C}.\\n{T}: Add {U} or {R}. Caldera Lake deals 1 damage to you.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Caldera Lake"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cho-manno-s-blessing-corpus-m676",
+  "description": "M6 corpus — Cho-Manno's Blessing; in-hand parse.",
+  "seed": 62086,
+  "cards": {
+    "Cho-Manno's Blessing": "Name:Cho-Manno's Blessing\nManaCost:W W\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nK:ETBReplacement:Other:ChooseColor\nSVar:ChooseColor:DB$ ChooseColor | Defined$ You | AILogic$ MostProminentInHumanDeck | SpellDescription$ As CARDNAME enters, choose a color.\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddKeyword$ Protection:Card.ChosenColor:chosenColor:Card.CardUID_HostCardUID | Description$ Enchanted creature has protection from the chosen color. This effect doesn't remove CARDNAME.\nSVar:ChosenProtection:True\nOracle:Flash\\nEnchant creature\\nAs Cho-Manno's Blessing enters, choose a color.\\nEnchanted creature has protection from the chosen color. This effect doesn't remove Cho-Manno's Blessing.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cho-Manno's Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

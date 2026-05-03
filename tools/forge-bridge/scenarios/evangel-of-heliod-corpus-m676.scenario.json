@@ -1,0 +1,23 @@
+{
+  "id": "evangel-of-heliod-corpus-m676",
+  "description": "M6 corpus — Evangel of Heliod; in-hand parse.",
+  "seed": 64804,
+  "cards": {
+    "Evangel of Heliod": "Name:Evangel of Heliod\nManaCost:4 W W\nTypes:Creature Human Cleric\nPT:1/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create a number of 1/1 white Soldier creature tokens equal to your devotion to white.\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ w_1_1_soldier | TokenOwner$ You\nSVar:X:Count$Devotion.White\nOracle:When Evangel of Heliod enters, create a number of 1/1 white Soldier creature tokens equal to your devotion to white. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evangel of Heliod"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

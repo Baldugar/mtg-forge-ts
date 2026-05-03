@@ -1,0 +1,23 @@
+{
+  "id": "crow-of-dark-tidings-corpus-m676",
+  "description": "M6 corpus — Crow of Dark Tidings; in-hand parse.",
+  "seed": 62781,
+  "cards": {
+    "Crow of Dark Tidings": "Name:Crow of Dark Tidings\nManaCost:2 B\nTypes:Creature Zombie Bird\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigMill | Secondary$ True | TriggerDescription$ When CARDNAME enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You\nDeckHints:Ability$Delirium\nDeckHas:Ability$Graveyard\nOracle:Flying\\nWhen Crow of Dark Tidings enters or dies, mill two cards. (Put the top two cards of your library into your graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crow of Dark Tidings"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

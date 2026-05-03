@@ -1,0 +1,23 @@
+{
+  "id": "civic-gardener-corpus-m676",
+  "description": "M6 corpus — Civic Gardener; in-hand parse.",
+  "seed": 62176,
+  "cards": {
+    "Civic Gardener": "Name:Civic Gardener\nManaCost:1 G\nTypes:Creature Human Citizen\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigUntap | TriggerDescription$ Whenever CARDNAME attacks, untap target creature or land.\nSVar:TrigUntap:DB$ Untap | ValidTgts$ Creature,Land | TgtPrompt$ Select target creature or land\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Civic Gardener attacks, untap target creature or land.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Civic Gardener"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

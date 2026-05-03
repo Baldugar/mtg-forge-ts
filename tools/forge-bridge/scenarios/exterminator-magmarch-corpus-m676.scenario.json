@@ -1,0 +1,25 @@
+{
+  "id": "exterminator-magmarch-corpus-m676",
+  "description": "M6 corpus — Exterminator Magmarch; ETB-on-bf.",
+  "seed": 64911,
+  "cards": {
+    "Exterminator Magmarch": "Name:Exterminator Magmarch\nManaCost:2 B R\nTypes:Artifact Creature Phyrexian Construct\nPT:5/3\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | Execute$ TrigCopy | ValidActivatingPlayer$ You | IsSingleTarget$ True | TriggerZones$ Battlefield | TargetsValid$ Permanent.nonLand+OppCtrl+inZoneBattlefield | CanTargetOtherCondition$ Permanent.nonLand+OppCtrl+!ControlledBy TargetedController | TriggerDescription$ Whenever you cast an instant or sorcery spell that targets only a single nonland permanent an opponent controls, if another opponent controls one or more nonland permanents that spell could target, choose one of those permanents. Copy that spell. The copy targets the chosen permanent.\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | Controller$ You | CopyForEachCanTarget$ Permanent.nonLand+OppCtrl+!ControlledBy TriggeredSpellAbilityTargetsOrController | ChooseOnlyOne$ True\nA:AB$ Regenerate | Cost$ 1 B | SpellDescription$ Regenerate CARDNAME.\nOracle:Whenever you cast an instant or sorcery spell that targets only a single nonland permanent an opponent controls, if another opponent controls one or more nonland permanents that spell could target, choose one of those permanents. Copy that spell. The copy targets the chosen permanent.\\n{1}{B}: Regenerate Exterminator Magmarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Exterminator Magmarch"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

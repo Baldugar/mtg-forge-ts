@@ -1,0 +1,23 @@
+{
+  "id": "genju-of-the-realm-corpus-m676",
+  "description": "M6 corpus — Genju of the Realm; in-hand parse.",
+  "seed": 66050,
+  "cards": {
+    "Genju of the Realm": "Name:Genju of the Realm\nManaCost:W U B R G\nTypes:Legendary Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:Pump\nA:AB$ Animate | Cost$ 2 | Defined$ Enchanted | Power$ 8 | Toughness$ 12 | Types$ Creature,Legendary,Spirit | Keywords$ Trample | SpellDescription$ Enchanted land becomes a legendary 8/12 Spirit creature with trample until end of turn. It's still a land.\nT:Mode$ ChangesZone | ValidCard$ Card.EnchantedBy | Origin$ Battlefield | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigReturnOwner | OptionalDecider$ You | TriggerDescription$ When enchanted land is put into a graveyard, you may return CARDNAME from your graveyard to your hand.\nSVar:TrigReturnOwner:DB$ ChangeZone | Hidden$ True | ChangeType$ Card.StrictlySelf | DefinedPlayer$ You | Origin$ Graveyard | Destination$ Hand | Mandatory$ True\nSVar:NonStackingAttachEffect:True\nOracle:Enchant land\\n{2}: Enchanted land becomes a legendary 8/12 Spirit creature with trample until end of turn. It's still a land.\\nWhen enchanted land is put into a graveyard, you may return Genju of the Realm from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Genju of the Realm"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

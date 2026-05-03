@@ -1,0 +1,25 @@
+{
+  "id": "gloom-sower-corpus-m676",
+  "description": "M6 corpus — Gloom Sower; ETB-on-bf.",
+  "seed": 66328,
+  "cards": {
+    "Gloom Sower": "Name:Gloom Sower\nManaCost:5 B B\nTypes:Creature Horror\nPT:8/6\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | TriggerZones$ Battlefield | Execute$ DBLoseLife | TriggerDescription$ Whenever CARDNAME becomes blocked by a creature, that creature's controller loses 2 life and you gain 2 life.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ TriggeredBlockerController | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Whenever Gloom Sower becomes blocked by a creature, that creature's controller loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Gloom Sower"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

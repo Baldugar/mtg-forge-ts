@@ -1,0 +1,23 @@
+{
+  "id": "freelance-muscle-corpus-m676",
+  "description": "M6 corpus — Freelance Muscle; in-hand parse.",
+  "seed": 65727,
+  "cards": {
+    "Freelance Muscle": "Name:Freelance Muscle\nManaCost:4 G\nTypes:Creature Rhino Warrior\nPT:4/4\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks, it gets +X/+X until end of turn, where X is the greatest power and/or toughness among other creatures you control.\nT:Mode$ Blocks | ValidCard$ Card.Self | Execute$ TrigPump | Secondary$ True | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks or blocks, it gets +X/+X until end of turn, where X is the greatest power and/or toughness among other creatures you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:SVar$Y/LimitMin.Z\nSVar:Y:Count$Valid Creature.Other+YouCtrl$GreatestCardPower\nSVar:Z:Count$Valid Creature.Other+YouCtrl$GreatestCardToughness\nSVar:HasAttackEffect:TRUE\nSVar:HasBlockEffect:TRUE\nOracle:Whenever Freelance Muscle attacks or blocks, it gets +X/+X until end of turn, where X is the greatest power and/or toughness among other creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Freelance Muscle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

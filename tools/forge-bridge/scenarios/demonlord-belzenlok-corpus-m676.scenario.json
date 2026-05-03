@@ -1,0 +1,23 @@
+{
+  "id": "demonlord-belzenlok-corpus-m676",
+  "description": "M6 corpus — Demonlord Belzenlok; in-hand parse.",
+  "seed": 63446,
+  "cards": {
+    "Demonlord Belzenlok": "Name:Demonlord Belzenlok\nManaCost:4 B B\nTypes:Legendary Creature Elder Demon\nPT:6/6\nK:Flying\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigRepeat | TriggerDescription$ When CARDNAME enters, exile cards from the top of your library until you exile a nonland card, then put that card into your hand. If the card's mana value is 4 or greater, repeat this process. CARDNAME deals 1 damage to you for each card put into your hand this way.\nSVar:TrigRepeat:DB$ Repeat | RepeatSubAbility$ DBCleanup | RepeatDefined$ Remembered | RepeatPresent$ Card.cmcGE4 | RepeatCompare$ EQ1 | SubAbility$ DBDealDamage\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBDigUntil\nSVar:DBDigUntil:DB$ DigUntil | Valid$ Card.nonLand | ValidDescription$ nonland | FoundDestination$ Exile | RevealedDestination$ Exile | RememberFound$ True | ImprintFound$ True | SubAbility$ DBToHand\nSVar:DBToHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | Destination$ Hand\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ Imprinted$Amount | Defined$ You | SubAbility$ DBCleanup2\nSVar:DBCleanup2:DB$ Cleanup | ClearImprinted$ True | ClearRemembered$ True\nOracle:Flying, trample\\nWhen Demonlord Belzenlok enters, exile cards from the top of your library until you exile a nonland card, then put that card into your hand. If the card's mana value is 4 or greater, repeat this process. Demonlord Belzenlok deals 1 damage to you for each card put into your hand this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonlord Belzenlok"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

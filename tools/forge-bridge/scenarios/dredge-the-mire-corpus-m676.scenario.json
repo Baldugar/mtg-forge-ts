@@ -1,0 +1,23 @@
+{
+  "id": "dredge-the-mire-corpus-m676",
+  "description": "M6 corpus — Dredge the Mire; in-hand parse.",
+  "seed": 64036,
+  "cards": {
+    "Dredge the Mire": "Name:Dredge the Mire\nManaCost:3 B\nTypes:Sorcery\nA:SP$ ChooseCard | Defined$ Opponent | Mandatory$ True | Choices$ Creature | ControlledByPlayer$ Chooser | ChoiceTitle$ Choose a creature card in your graveyard | ChoiceZone$ Graveyard | AILogic$ WorstCard | SubAbility$ DBChangeZone | SpellDescription$ Each opponent chooses a creature card in their graveyard. Put those cards onto the battlefield under your control.\nSVar:DBChangeZone:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | ChangeType$ Card.ChosenCard\nSVar:NeedsToPlayVar:Z GE1\nSVar:Z:Count$ValidGraveyard Creature.OppOwn\nOracle:Each opponent chooses a creature card in their graveyard. Put those cards onto the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dredge the Mire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

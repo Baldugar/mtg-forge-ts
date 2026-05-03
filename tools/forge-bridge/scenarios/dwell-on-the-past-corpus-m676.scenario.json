@@ -1,0 +1,23 @@
+{
+  "id": "dwell-on-the-past-corpus-m676",
+  "description": "M6 corpus — Dwell on the Past; in-hand parse.",
+  "seed": 64223,
+  "cards": {
+    "Dwell on the Past": "Name:Dwell on the Past\nManaCost:G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True | SpellDescription$ Target player shuffles up to four target cards from their graveyard into their library.\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 4 | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | Shuffle$ True | ValidTgts$ Card\nAI:RemoveDeck:All\nOracle:Target player shuffles up to four target cards from their graveyard into their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dwell on the Past"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

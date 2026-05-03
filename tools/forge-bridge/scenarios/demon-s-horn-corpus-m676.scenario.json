@@ -1,0 +1,25 @@
+{
+  "id": "demon-s-horn-corpus-m676",
+  "description": "M6 corpus — Demon's Horn; ETB-on-bf.",
+  "seed": 63451,
+  "cards": {
+    "Demon's Horn": "Name:Demon's Horn\nManaCost:2\nTypes:Artifact\nT:Mode$ SpellCast | ValidCard$ Card.Black | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigGainLife | TriggerDescription$ Whenever a player casts a black spell, you may gain 1 life.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 1\nAI:RemoveDeck:Random\nDeckNeeds:Color$Black\nOracle:Whenever a player casts a black spell, you may gain 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Demon's Horn"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "eclipsed-merrow-corpus-m676",
+  "description": "M6 corpus — Eclipsed Merrow; in-hand parse.",
+  "seed": 64306,
+  "cards": {
+    "Eclipsed Merrow": "Name:Eclipsed Merrow\nManaCost:WU WU WU\nTypes:Creature Merfolk Scout\nPT:2/3\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ DBDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a Merfolk, Plains or Island card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:DBDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Merfolk,Plains,Island | RestRandomOrder$ True\nDeckHints:Type$Merfolk|Plains|Island\nOracle:When Eclipsed Merrow enters, look at the top four cards of your library. You may reveal a Merfolk, Plains or Island card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eclipsed Merrow"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

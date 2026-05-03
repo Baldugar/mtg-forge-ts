@@ -1,0 +1,25 @@
+{
+  "id": "dog-walker-corpus-m676",
+  "description": "M6 corpus — Dog Walker; ETB-on-bf.",
+  "seed": 63796,
+  "cards": {
+    "Dog Walker": "Name:Dog Walker\nManaCost:R W\nTypes:Creature Human Citizen\nPT:3/1\nK:Vigilance\nK:Disguise:RW RW\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, create two tapped 1/1 white Dog creature tokens.\nSVar:TrigToken:DB$ Token | TokenAmount$ 2 | TokenScript$ w_1_1_dog | TokenOwner$ You | TokenTapped$ True\nDeckHas:Ability$Token & Type$Dog\nOracle:Vigilance\\nDisguise {R/W}{R/W} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Dog Walker is turned face up, create two tapped 1/1 white Dog creature tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dog Walker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

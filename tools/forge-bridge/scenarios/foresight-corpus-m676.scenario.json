@@ -1,0 +1,23 @@
+{
+  "id": "foresight-corpus-m676",
+  "description": "M6 corpus — Foresight; in-hand parse.",
+  "seed": 65640,
+  "cards": {
+    "Foresight": "Name:Foresight\nManaCost:1 U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Library | Destination$ Exile | ChangeType$ Card | ChangeNum$ 3 | Mandatory$ True | SpellDescription$ Search your library for three cards, exile them, then shuffle. Draw a card at the beginning of the next turn's upkeep. | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Search your library for three cards, exile them, then shuffle.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foresight"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

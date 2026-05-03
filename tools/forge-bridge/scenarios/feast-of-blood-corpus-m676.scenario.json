@@ -1,0 +1,23 @@
+{
+  "id": "feast-of-blood-corpus-m676",
+  "description": "M6 corpus — Feast of Blood; in-hand parse.",
+  "seed": 65154,
+  "cards": {
+    "Feast of Blood": "Name:Feast of Blood\nManaCost:1 B\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature | SubAbility$ DBGainLife | IsPresent$ Vampire.YouCtrl | PresentCompare$ GE2 | SpellDescription$ Cast this spell only if you control two or more Vampires. Destroy target creature. You gain 4 life.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 4\nAI:RemoveDeck:Random\nOracle:Cast this spell only if you control two or more Vampires.\\nDestroy target creature. You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feast of Blood"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

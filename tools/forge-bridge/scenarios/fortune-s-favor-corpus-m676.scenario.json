@@ -1,0 +1,23 @@
+{
+  "id": "fortune-s-favor-corpus-m676",
+  "description": "M6 corpus — Fortune's Favor; in-hand parse.",
+  "seed": 65685,
+  "cards": {
+    "Fortune's Favor": "Name:Fortune's Favor\nManaCost:3 U\nTypes:Instant\nA:SP$ PeekAndReveal | PeekAmount$ 4 | NoPeek$ True | NoReveal$ True | RememberPeeked$ True | SubAbility$ Separate | SpellDescription$ Target opponent looks at the top four cards of your library and separates them into a face-down pile and a face-up pile. Put one pile into your hand and the other into your graveyard.\nSVar:Separate:DB$ TwoPiles | Defined$ You | Separator$ TargetedPlayer | Chooser$ You | ValidTgts$ Opponent | DefinedCards$ Remembered | ChosenPile$ DBHand | UnchosenPile$ DBGrave | Zone$ Library | FaceDown$ One | StackDescription$ None\nSVar:DBHand:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Hand\nSVar:DBGrave:DB$ ChangeZone | Defined$ Remembered | Origin$ Library | Destination$ Graveyard\nDeckHints:Ability$Delirium\nDeckHas:Ability$Graveyard\nOracle:Target opponent looks at the top four cards of your library and separates them into a face-down pile and a face-up pile. Put one pile into your hand and the other into your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fortune's Favor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

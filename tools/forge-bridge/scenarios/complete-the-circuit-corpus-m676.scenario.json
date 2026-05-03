@@ -1,0 +1,23 @@
+{
+  "id": "complete-the-circuit-corpus-m676",
+  "description": "M6 corpus — Complete the Circuit; in-hand parse.",
+  "seed": 62445,
+  "cards": {
+    "Complete the Circuit": "Name:Complete the Circuit\nManaCost:5 U\nTypes:Instant\nK:Convoke\nA:SP$ Effect | StaticAbilities$ STPlay | SubAbility$ DBDelayTrig | SpellDescription$ You may cast sorcery spells this turn as though they had flash.\nSVar:STPlay:Mode$ CastWithFlash | ValidCard$ Sorcery | ValidSA$ Spell | Caster$ You | Description$ You may cast sorcery spells this turn as though they had flash.\nSVar:DBDelayTrig:DB$ DelayedTrigger | AILogic$ SpellCopy | Execute$ EffTrigCopy | ThisTurn$ True | Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | SpellDescription$ When you next cast an instant or sorcery spell this turn, copy that spell twice. You may choose new targets for the copies.\nSVar:EffTrigCopy:DB$ CopySpellAbility | Amount$ 2 | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nDeckHints:Type$Instant|Sorcery\nOracle:Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\\nYou may cast sorcery spells this turn as though they had flash.\\nWhen you next cast an instant or sorcery spell this turn, copy that spell twice. You may choose new targets for the copies.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Complete the Circuit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

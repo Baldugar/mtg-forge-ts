@@ -1,0 +1,23 @@
+{
+  "id": "can-t-stay-away-corpus-m676",
+  "description": "M6 corpus — Can't Stay Away; in-hand parse.",
+  "seed": 61679,
+  "cards": {
+    "Can't Stay Away": "Name:Can't Stay Away\nManaCost:W B\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouOwn+cmcLE3 | TgtPrompt$ Select target creature card in your graveyard with mana value 3 or less | SubAbility$ DBAnimate | StackDescription$ Return {c:Targeted} from your graveyard to the battlefield. | SpellDescription$ Return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains \"If this creature would die, exile it instead.\"\nSVar:DBAnimate:DB$ Animate | Replacements$ ReplaceDies | Defined$ ParentTarget | Duration$ Permanent | StackDescription$ It gains \"If this creature would die, exile it instead.\"\nSVar:ReplaceDies:Event$ Moved | ActiveZones$ Battlefield | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | ReplaceWith$ Exile | Description$ If this creature would die, exile it instead.\nSVar:Exile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | Defined$ ReplacedCard\nK:Flashback:3 W B\nDeckHas:Ability$Graveyard\nOracle:Return target creature card with mana value 3 or less from your graveyard to the battlefield. It gains \"If this creature would die, exile it instead.\"\\nFlashback {3}{W}{B}\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Can't Stay Away"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

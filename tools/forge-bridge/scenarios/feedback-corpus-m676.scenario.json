@@ -1,0 +1,23 @@
+{
+  "id": "feedback-corpus-m676",
+  "description": "M6 corpus — Feedback; in-hand parse.",
+  "seed": 65172,
+  "cards": {
+    "Feedback": "Name:Feedback\nManaCost:2 U\nTypes:Enchantment Aura\nK:Enchant:Enchantment\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player.EnchantedController | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ At the beginning of the upkeep of enchanted enchantment's controller, CARDNAME deals 1 damage to that player.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredPlayer | NumDmg$ 1\nOracle:Enchant enchantment\\nAt the beginning of the upkeep of enchanted enchantment's controller, Feedback deals 1 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Feedback"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

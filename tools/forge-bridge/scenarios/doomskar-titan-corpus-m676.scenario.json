@@ -1,0 +1,23 @@
+{
+  "id": "doomskar-titan-corpus-m676",
+  "description": "M6 corpus — Doomskar Titan; in-hand parse.",
+  "seed": 63835,
+  "cards": {
+    "Doomskar Titan": "Name:Doomskar Titan\nManaCost:4 R R\nTypes:Creature Giant Berserker\nPT:4/4\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+0 and gain haste until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | KW$ Haste\nSVar:PlayMain1:TRUE\nK:Foretell:4 R\nOracle:When Doomskar Titan enters, creatures you control get +1/+0 and gain haste until end of turn.\\nForetell {4}{R} (During your turn, you may pay {2} and exile this card from your hand face down. Cast it on a later turn for its foretell cost.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomskar Titan"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "cunning-azurescale-corpus-m676",
+  "description": "M6 corpus — Cunning Azurescale; in-hand parse.",
+  "seed": 62889,
+  "cards": {
+    "Cunning Azurescale": "Name:Cunning Azurescale\nManaCost:5 U\nTypes:Creature Dragon\nPT:5/5\nK:Flash\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChoose | TriggerDescription$ When this creature enters, secretly choose land or nonland. Seek two cards of the chosen kind.\nSVar:TrigChoose:DB$ GenericChoice | Defined$ You | Secretly$ True | Choices$ Land,Nonland\nSVar:Land:DB$ Seek | Num$ 2 | Type$ Card.Land | SpellDescription$ Land\nSVar:Nonland:DB$ Seek | Num$ 2 | Type$ Card.nonLand | SpellDescription$ Nonland\nAlternateMode:Omen\nOracle:Flash\\nFlying\\nWhen this creature enters, secretly choose land or nonland. Seek two cards of the chosen kind.\n\nALTERNATE\n\nName:Divining Dive\nManaCost:1 U\nTypes:Instant Omen\nA:SP$ GenericChoice | Defined$ You | Secretly$ True | Choices$ LandOne,NonlandOne | SpellDescription$ Secretly choose land or nonland. Seek a card of the chosen kind.\nSVar:LandOne:DB$ Seek | Num$ 1 | Type$ Card.Land | SpellDescription$ Land\nSVar:NonlandOne:DB$ Seek | Num$ 1 | Type$ Card.nonLand | SpellDescription$ Nonland\nOracle:Secretly choose land or nonland. Seek a card of the chosen kind.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cunning Azurescale"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

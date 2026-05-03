@@ -1,0 +1,23 @@
+{
+  "id": "dand-n-corpus-m676",
+  "description": "M6 corpus — Dandân; in-hand parse.",
+  "seed": 63048,
+  "cards": {
+    "Dandân": "Name:Dandân\nManaCost:U U\nTypes:Creature Fish\nPT:4/1\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ controlsIsland | Description$ CARDNAME can't attack unless defending player controls an Island.\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Island.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no Islands, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Island.YouCtrl\nDeckHas:Ability$Sacrifice\nOracle:Dandân can't attack unless defending player controls an Island.\\nWhen you control no Islands, sacrifice Dandân.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dandân"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "doubtless-one-corpus-m676",
+  "description": "M6 corpus — Doubtless One; ETB-on-bf.",
+  "seed": 63852,
+  "cards": {
+    "Doubtless One": "Name:Doubtless One\nManaCost:3 W\nTypes:Creature Cleric Avatar\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of Clerics on the battlefield.\nSVar:X:Count$Valid Cleric\nT:Mode$ DamageDealtOnce | ValidSource$ Card.Self | Execute$ TrigGain | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME deals damage, you gain that much life.\nSVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ Y\nSVar:Y:TriggerCount$DamageAmount\nSVar:BuffedBy:Cleric\nSVar:HasCombatEffect:TRUE\nSVar:NoZeroToughnessAI:True\nOracle:Doubtless One's power and toughness are each equal to the number of Clerics on the battlefield.\\nWhenever Doubtless One deals damage, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Doubtless One"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

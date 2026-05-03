@@ -1,0 +1,25 @@
+{
+  "id": "essence-of-antiquity-corpus-m676",
+  "description": "M6 corpus — Essence of Antiquity; ETB-on-bf.",
+  "seed": 64748,
+  "cards": {
+    "Essence of Antiquity": "Name:Essence of Antiquity\nManaCost:3 W W\nTypes:Artifact Creature Golem\nPT:1/10\nK:Disguise:2 W\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, creatures you control gain hexproof until end of turn. Untap them.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Hexproof | SubAbility$ DBUntapAll\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nOracle:Disguise {2}{W} (You may cast this card face down for {3} as a 2/2 creature with ward {2}. Turn it face up any time for its disguise cost.)\\nWhen Essence of Antiquity is turned face up, creatures you control gain hexproof until end of turn. Untap them.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Essence of Antiquity"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

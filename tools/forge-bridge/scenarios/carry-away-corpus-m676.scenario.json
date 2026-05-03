@@ -1,0 +1,23 @@
+{
+  "id": "carry-away-corpus-m676",
+  "description": "M6 corpus — Carry Away; in-hand parse.",
+  "seed": 61754,
+  "cards": {
+    "Carry Away": "Name:Carry Away\nManaCost:U U\nTypes:Enchantment Aura\nK:Enchant:Equipment\nSVar:AttachAILogic:GainControl\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | GainControl$ You | Description$ You control enchanted Equipment.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigUnattach | TriggerDescription$ When CARDNAME enters, unattach enchanted Equipment.\nSVar:TrigUnattach:DB$ Unattach | Defined$ Enchanted\nOracle:Enchant Equipment\\nWhen Carry Away enters, unattach enchanted Equipment.\\nYou control enchanted Equipment.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carry Away"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

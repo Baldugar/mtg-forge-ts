@@ -1,0 +1,25 @@
+{
+  "id": "elvish-berserker-corpus-m676",
+  "description": "M6 corpus — Elvish Berserker; ETB-on-bf.",
+  "seed": 64459,
+  "cards": {
+    "Elvish Berserker": "Name:Elvish Berserker\nManaCost:G\nTypes:Creature Elf Berserker\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME becomes blocked, it gets +1/+1 until end of turn for each creature blocking it.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.blockingTriggeredAttacker\nOracle:Whenever Elvish Berserker becomes blocked, it gets +1/+1 until end of turn for each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Elvish Berserker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

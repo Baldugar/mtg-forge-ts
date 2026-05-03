@@ -1,0 +1,25 @@
+{
+  "id": "firebrand-archer-corpus-m676",
+  "description": "M6 corpus — Firebrand Archer; ETB-on-bf.",
+  "seed": 65365,
+  "cards": {
+    "Firebrand Archer": "Name:Firebrand Archer\nManaCost:1 R\nTypes:Creature Human Archer\nPT:2/1\nT:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ You | Execute$ TrigDealDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a noncreature spell, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDealDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ Player.Opponent\nSVar:BuffedBy:Card.nonLand+nonCreature\nOracle:Whenever you cast a noncreature spell, Firebrand Archer deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Firebrand Archer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

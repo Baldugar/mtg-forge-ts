@@ -1,0 +1,23 @@
+{
+  "id": "cyclopean-mummy-corpus-m676",
+  "description": "M6 corpus — Cyclopean Mummy; in-hand parse.",
+  "seed": 62986,
+  "cards": {
+    "Cyclopean Mummy": "Name:Cyclopean Mummy\nManaCost:1 B\nTypes:Creature Zombie\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, exile CARDNAME.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | Defined$ TriggeredNewCardLKICopy\nOracle:When Cyclopean Mummy dies, exile it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cyclopean Mummy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

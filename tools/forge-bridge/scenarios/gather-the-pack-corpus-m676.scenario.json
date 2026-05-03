@@ -1,0 +1,23 @@
+{
+  "id": "gather-the-pack-corpus-m676",
+  "description": "M6 corpus — Gather the Pack; in-hand parse.",
+  "seed": 65983,
+  "cards": {
+    "Gather the Pack": "Name:Gather the Pack\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Dig | DigNum$ 5 | Reveal$ True | ChangeNum$ X | ChangeValid$ Creature | Optional$ True | DestinationZone$ Hand | DestinationZone2$ Graveyard | SpellDescription$ Reveal the top five cards of your library. You may put a creature card from among them into your hand. Put the rest into your graveyard. Spell mastery — If there are two or more instant and/or sorcery cards in your graveyard, put up to two creature cards from among the revealed cards into your hand instead of one.\nSVar:X:Count$Compare Y GE2.2.1\nSVar:Y:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nOracle:Reveal the top five cards of your library. You may put a creature card from among them into your hand. Put the rest into your graveyard.\\nSpell mastery — If there are two or more instant and/or sorcery cards in your graveyard, put up to two creature cards from among the revealed cards into your hand instead of one.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gather the Pack"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "covetous-dragon-corpus-m676",
+  "description": "M6 corpus — Covetous Dragon; in-hand parse.",
+  "seed": 62663,
+  "cards": {
+    "Covetous Dragon": "Name:Covetous Dragon\nManaCost:4 R\nTypes:Creature Dragon\nPT:6/5\nK:Flying\nT:Mode$ Always | TriggerZones$ Battlefield | IsPresent$ Artifact.YouCtrl | PresentCompare$ EQ0 | Execute$ TrigSac | TriggerDescription$ When you control no artifacts, sacrifice CARDNAME.\nSVar:TrigSac:DB$ Sacrifice\nSVar:NeedsToPlay:Artifact.YouCtrl\nAI:RemoveDeck:Random\nOracle:Flying\\nWhen you control no artifacts, sacrifice Covetous Dragon.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Covetous Dragon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

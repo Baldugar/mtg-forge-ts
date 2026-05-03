@@ -1,0 +1,23 @@
+{
+  "id": "gaius-van-baelsar-corpus-m676",
+  "description": "M6 corpus — Gaius van Baelsar; in-hand parse.",
+  "seed": 65889,
+  "cards": {
+    "Gaius van Baelsar": "Name:Gaius van Baelsar\nManaCost:2 B B\nTypes:Legendary Creature Human Soldier\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBNonToken,DBEnchantment\nSVar:DBToken:DB$ Sacrifice | Defined$ Player | SacValid$ Creature.token | SpellDescription$ Each player sacrifices a creature token of their choice.\nSVar:DBNonToken:DB$ Sacrifice | Defined$ Player | SacValid$ Creature.!token | SpellDescription$ Each player sacrifices a nontoken creature of their choice.\nSVar:DBEnchantment:DB$ Sacrifice | Defined$ Player | SacValid$ Enchantment | SpellDescription$ Each player sacrifices an enchantment of their choice.\nDeckHas:Ability$Sacrifice\nOracle:When Gaius van Baelsar enters, choose one —\\n• Each player sacrifices a creature token of their choice.\\n• Each player sacrifices a nontoken creature of their choice.\\n• Each player sacrifices an enchantment of their choice.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gaius van Baelsar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

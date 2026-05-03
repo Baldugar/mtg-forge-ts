@@ -1,0 +1,23 @@
+{
+  "id": "curse-of-misfortunes-corpus-m676",
+  "description": "M6 corpus — Curse of Misfortunes; in-hand parse.",
+  "seed": 62930,
+  "cards": {
+    "Curse of Misfortunes": "Name:Curse of Misfortunes\nManaCost:4 B\nTypes:Enchantment Aura Curse\nK:Enchant:Player\nSVar:AttachAILogic:Curse\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMisfortune | TriggerDescription$ At the beginning of your upkeep, you may search your library for a Curse card that doesn't have the same name as a Curse attached to enchanted player, put it onto the battlefield attached to that player, then shuffle you library.\nSVar:TrigMisfortune:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Aura.Curse+NameNotEnchantingEnchantedPlayer | ChangeNum$ 1 | AttachedToPlayer$ EnchantedPlayer | ShuffleNonMandatory$ True | AILogic$ Curse\nOracle:Enchant player\\nAt the beginning of your upkeep, you may search your library for a Curse card that doesn't have the same name as a Curse attached to enchanted player, put it onto the battlefield attached to that player, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Curse of Misfortunes"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

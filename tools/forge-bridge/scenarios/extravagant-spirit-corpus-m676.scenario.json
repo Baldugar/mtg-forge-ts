@@ -1,0 +1,23 @@
+{
+  "id": "extravagant-spirit-corpus-m676",
+  "description": "M6 corpus — Extravagant Spirit; in-hand parse.",
+  "seed": 64927,
+  "cards": {
+    "Extravagant Spirit": "Name:Extravagant Spirit\nManaCost:3 U\nTypes:Creature Spirit\nPT:4/4\nK:Flying\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigUpkeep | TriggerDescription$ At the beginning of your upkeep, sacrifice CARDNAME unless you pay {1} for each card in your hand.\nSVar:TrigUpkeep:DB$ Sacrifice | UnlessPayer$ You | UnlessCost$ Y\nSVar:Y:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Flying\\nAt the beginning of your upkeep, sacrifice Extravagant Spirit unless you pay {1} for each card in your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extravagant Spirit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

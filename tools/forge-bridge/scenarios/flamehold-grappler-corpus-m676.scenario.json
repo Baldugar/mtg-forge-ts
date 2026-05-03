@@ -1,0 +1,23 @@
+{
+  "id": "flamehold-grappler-corpus-m676",
+  "description": "M6 corpus — Flamehold Grappler; in-hand parse.",
+  "seed": 65438,
+  "cards": {
+    "Flamehold Grappler": "Name:Flamehold Grappler\nManaCost:U R W\nTypes:Creature Human Monk\nPT:3/3\nK:First Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When this creature enters, copy the next spell you cast this turn when you cast it. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\nSVar:TrigEffect:DB$ DelayedTrigger | AILogic$ SpellCopy | Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | ThisTurn$ True | Execute$ TrigCopy | TriggerDescription$ Copy the next spell you cast this turn when you cast it. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\nSVar:TrigCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | AILogic$ Always | Amount$ 1 | MayChooseTarget$ True\nSVar:PlayMain1:TRUE\nOracle:First strike\\nWhen this creature enters, copy the next spell you cast this turn when you cast it. You may choose new targets for the copy. (A copy of a permanent spell becomes a token.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flamehold Grappler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

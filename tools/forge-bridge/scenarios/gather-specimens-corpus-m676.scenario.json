@@ -1,0 +1,23 @@
+{
+  "id": "gather-specimens-corpus-m676",
+  "description": "M6 corpus — Gather Specimens; in-hand parse.",
+  "seed": 65982,
+  "cards": {
+    "Gather Specimens": "Name:Gather Specimens\nManaCost:3 U U U\nTypes:Instant\nA:SP$ Effect | ReplacementEffects$ OppCreatEnters | SpellDescription$ If a creature would enter the battlefield under an opponent's control this turn, it enters under your control instead.\nSVar:OppCreatEnters:Event$ Moved | Destination$ Battlefield | ValidCard$ Creature.OppCtrl | ReplaceWith$ ETBYourCtrl | Layer$ Control | Description$ If a creature would enter the battlefield under an opponent's control this turn, it enters under your control instead.\nSVar:ETBYourCtrl:DB$ ChangeZone | Origin$ All | Destination$ Battlefield | Defined$ ReplacedCard | GainControl$ True\nAI:RemoveDeck:All\nOracle:If a creature would enter the battlefield under an opponent's control this turn, it enters under your control instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gather Specimens"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

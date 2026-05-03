@@ -1,0 +1,23 @@
+{
+  "id": "cemetery-tampering-corpus-m676",
+  "description": "M6 corpus — Cemetery Tampering; in-hand parse.",
+  "seed": 61875,
+  "cards": {
+    "Cemetery Tampering": "Name:Cemetery Tampering\nManaCost:2 B\nTypes:Enchantment\nK:Hideaway:5\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | Execute$ TrigMill | TriggerZones$ Battlefield | TriggerDescription$ At the beginning of your upkeep, you may mill three cards. Then if there are twenty or more cards in your graveyard, you may play the exiled card without paying its mana cost.\nSVar:TrigMill:DB$ Mill | NumCards$ 3 | Optional$ True | SubAbility$ DBPlay\nSVar:DBPlay:DB$ Play | ConditionPresent$ Card.YouOwn | ConditionZone$ Graveyard | ConditionCompare$ GE20 | Defined$ ExiledWith | Amount$ All | Controller$ You | WithoutManaCost$ True | Optional$ True\nDeckHas:Ability$Mill\nOracle:Hideaway 5 (When this enchantment enters, look at the top five cards of your library, exile one face down, then put the rest on the bottom in a random order.)\\nAt the beginning of your upkeep, you may mill three cards. Then if there are twenty or more cards in your graveyard, you may play the exiled card without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cemetery Tampering"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

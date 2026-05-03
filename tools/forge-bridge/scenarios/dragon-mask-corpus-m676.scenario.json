@@ -1,0 +1,25 @@
+{
+  "id": "dragon-mask-corpus-m676",
+  "description": "M6 corpus — Dragon Mask; ETB-on-bf.",
+  "seed": 63899,
+  "cards": {
+    "Dragon Mask": "Name:Dragon Mask\nManaCost:3\nTypes:Artifact\nA:AB$ Pump | Cost$ 3 T | NumAtt$ +2 | NumDef$ +2 | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | SubAbility$ DelTrig | SpellDescription$ Target creature you control gets +2/+2 until end of turn.\nSVar:DelTrig:DB$ DelayedTrigger | Mode$ Phase | Phase$ End of Turn | Execute$ TrigReturn | Secondary$ True | RememberObjects$ ParentTarget | StackDescription$ SpellDescription | SpellDescription$ Return it to its owner's hand at the beginning of the next end step. (Return it only if it's on the battlefield.) | TriggerDescription$ Return that creature to its owner's hand. | SubAbility$ DBCleanup\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ DelayTriggerRememberedLKI\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:{3}, {T}: Target creature you control gets +2/+2 until end of turn. Return it to its owner's hand at the beginning of the next end step. (Return it only if it's on the battlefield.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dragon Mask"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "celestial-regulator-corpus-m676",
+  "description": "M6 corpus — Celestial Regulator; in-hand parse.",
+  "seed": 61866,
+  "cards": {
+    "Celestial Regulator": "Name:Celestial Regulator\nManaCost:1 W U\nTypes:Creature Angel Advisor\nPT:2/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigTap | TriggerDescription$ When CARDNAME enters, choose target creature you don't control and tap it. If you control a creature with a counter on it, the chosen creature doesn't untap during its controller's next untap step.\nSVar:TrigTap:DB$ Tap | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose target creature you don't control | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | ConditionPresent$ Creature.YouCtrl+HasCounters | Defined$ Targeted | KW$ HIDDEN This card doesn't untap during your next untap step. | Duration$ Permanent\nSVar:PlayMain1:TRUE\nDeckHints:Ability$Counters\nOracle:Flying\\nWhen Celestial Regulator enters, choose target creature you don't control and tap it. If you control a creature with a counter on it, the chosen creature doesn't untap during its controller's next untap step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Celestial Regulator"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

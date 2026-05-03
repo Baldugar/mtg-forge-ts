@@ -1,0 +1,25 @@
+{
+  "id": "general-marhault-elsdragon-corpus-m676",
+  "description": "M6 corpus — General Marhault Elsdragon; ETB-on-bf.",
+  "seed": 66030,
+  "cards": {
+    "General Marhault Elsdragon": "Name:General Marhault Elsdragon\nManaCost:2 R G\nTypes:Legendary Creature Elf Warrior\nPT:4/4\nT:Mode$ AttackerBlocked | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever a creature you control becomes blocked, it gets +3/+3 until end of turn for each creature blocking it.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredAttackerLKICopy | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Creature.blockingTriggeredAttacker/Times.3\nOracle:Whenever a creature you control becomes blocked, it gets +3/+3 until end of turn for each creature blocking it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "General Marhault Elsdragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

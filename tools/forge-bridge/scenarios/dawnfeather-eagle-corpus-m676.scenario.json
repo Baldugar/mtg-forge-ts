@@ -1,0 +1,23 @@
+{
+  "id": "dawnfeather-eagle-corpus-m676",
+  "description": "M6 corpus — Dawnfeather Eagle; in-hand parse.",
+  "seed": 63166,
+  "cards": {
+    "Dawnfeather Eagle": "Name:Dawnfeather Eagle\nManaCost:4 W\nTypes:Creature Bird\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 and gain vigilance until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1 | KW$ Vigilance\nSVar:PlayMain1:TRUE\nOracle:Flying\\nWhen Dawnfeather Eagle enters, creatures you control get +1/+1 and gain vigilance until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dawnfeather Eagle"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

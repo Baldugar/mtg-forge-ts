@@ -1,0 +1,23 @@
+{
+  "id": "foul-watcher-corpus-m676",
+  "description": "M6 corpus — Foul Watcher; in-hand parse.",
+  "seed": 65694,
+  "cards": {
+    "Foul Watcher": "Name:Foul Watcher\nManaCost:1 U\nTypes:Creature Nightmare Bird\nPT:1/2\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSurveil | TriggerDescription$ When CARDNAME enters, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\nSVar:TrigSurveil:DB$ Surveil | Amount$ 1\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ 1 | Condition$ Delirium | Description$ Delirium — CARDNAME gets +1/+0 as long as there are four or more card types among cards in your graveyard.\nDeckHints:Ability$Graveyard|Discard\nDeckHas:Ability$Delirium\nOracle:Flying\\nWhen Foul Watcher enters, surveil 1. (Look at the top card of your library. You may put that card into your graveyard.)\\nDelirium — Foul Watcher gets +1/+0 as long as there are four or more card types among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foul Watcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

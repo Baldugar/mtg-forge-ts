@@ -1,0 +1,23 @@
+{
+  "id": "death-charmer-corpus-m676",
+  "description": "M6 corpus — Death Charmer; in-hand parse.",
+  "seed": 63241,
+  "cards": {
+    "Death Charmer": "Name:Death Charmer\nManaCost:2 B\nTypes:Creature Worm Mercenary\nPT:2/2\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Creature | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Whenever CARDNAME deals combat damage to a creature, that creature's controller loses 2 life unless they pay {2}.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredTargetController | LifeAmount$ 2 | UnlessCost$ 2 | UnlessPayer$ TriggeredTargetController\nSVar:HasCombatEffect:TRUE\nOracle:Whenever Death Charmer deals combat damage to a creature, that creature's controller loses 2 life unless they pay {2}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Charmer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

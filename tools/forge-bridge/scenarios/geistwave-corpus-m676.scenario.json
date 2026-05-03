@@ -1,0 +1,23 @@
+{
+  "id": "geistwave-corpus-m676",
+  "description": "M6 corpus — Geistwave; in-hand parse.",
+  "seed": 66015,
+  "cards": {
+    "Geistwave": "Name:Geistwave\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Defined$ Targeted | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | RememberLKI$ True | SubAbility$ DBDraw | SpellDescription$ Return target nonland permanent to its owner's hand. If you controlled that permanent, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ RememberedLKI | ConditionPresent$ Card.YouCtrl | NumCards$ 1 | StackDescription$ If you controlled that permanent, draw a card. | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Return target nonland permanent to its owner's hand. If you controlled that permanent, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Geistwave"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

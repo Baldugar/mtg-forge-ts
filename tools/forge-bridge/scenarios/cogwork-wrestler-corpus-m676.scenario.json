@@ -1,0 +1,23 @@
+{
+  "id": "cogwork-wrestler-corpus-m676",
+  "description": "M6 corpus — Cogwork Wrestler; in-hand parse.",
+  "seed": 62355,
+  "cards": {
+    "Cogwork Wrestler": "Name:Cogwork Wrestler\nManaCost:U\nTypes:Artifact Creature Gnome\nPT:1/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -2/-0 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | IsCurse$ True\nOracle:Flash\\nWhen Cogwork Wrestler enters, target creature an opponent controls gets -2/-0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cogwork Wrestler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

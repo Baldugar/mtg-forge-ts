@@ -1,0 +1,23 @@
+{
+  "id": "carbonize-corpus-m676",
+  "description": "M6 corpus — Carbonize; in-hand parse.",
+  "seed": 61725,
+  "cards": {
+    "Carbonize": "Name:Carbonize\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Any | NumDmg$ 3 | SubAbility$ DBEffect | ReplaceDyingDefined$ ThisTargetedCard.Creature | SpellDescription$ CARDNAME deals 3 damage to any target. If it's a creature, it can't be regenerated this turn, and if it would die this turn, exile it instead.\nSVar:DBEffect:DB$ Effect | RememberObjects$ ParentTarget | ForgetOnMoved$ Battlefield | StaticAbilities$ NoRegen | IsCurse$ True | ConditionDefined$ ParentTarget | ConditionPresent$ Creature | AILogic$ CantRegenerate | StackDescription$ None\nSVar:NoRegen:Mode$ CantRegenerate | ValidCard$ Card.IsRemembered | Description$ Creature can't be regenerated this turn.\nOracle:Carbonize deals 3 damage to any target. If it's a creature, it can't be regenerated this turn, and if it would die this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carbonize"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

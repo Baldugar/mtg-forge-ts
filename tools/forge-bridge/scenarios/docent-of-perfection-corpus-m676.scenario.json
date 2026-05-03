@@ -1,0 +1,23 @@
+{
+  "id": "docent-of-perfection-corpus-m676",
+  "description": "M6 corpus — Docent of Perfection; in-hand parse.",
+  "seed": 63790,
+  "cards": {
+    "Docent of Perfection": "Name:Docent of Perfection\nManaCost:3 U U\nTypes:Creature Insect Horror\nPT:5/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an instant or sorcery spell, create a 1/1 blue Human Wizard creature token. Then if you control three or more Wizards, transform CARDNAME.\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_human_wizard | TokenOwner$ You | SubAbility$ DBTransform\nSVar:DBTransform:DB$ SetState | Defined$ Self | ConditionPresent$ Card.Wizard+YouCtrl | ConditionCompare$ GE3 | Mode$ Transform\nSVar:BuffedBy:Instant,Sorcery\nDeckHints:Type$Wizard\nAlternateMode:DoubleFaced\nOracle:Flying\\nWhenever you cast an instant or sorcery spell, create a 1/1 blue Human Wizard creature token. Then if you control three or more Wizards, transform Docent of Perfection.\n\nALTERNATE\n\nName:Final Iteration\nManaCost:no cost\nTypes:Creature Eldrazi Insect\nPT:6/5\nK:Flying\nS:Mode$ Continuous | Affected$ Card.Wizard+YouCtrl | AddPower$ 2 | AddToughness$ 1 | AddKeyword$ Flying | Description$ Wizards you control get +2/+1 and have flying.\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast an instant or sorcery spell, create a 1/1 blue Human Wizard creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ u_1_1_human_wizard | TokenOwner$ You\nOracle:Flying\\nWizards you control get +2/+1 and have flying.\\nWhenever you cast an instant or sorcery spell, create a 1/1 blue Human Wizard creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Docent of Perfection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

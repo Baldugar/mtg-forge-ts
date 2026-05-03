@@ -1,0 +1,23 @@
+{
+  "id": "cabaretti-confluence-corpus-m676",
+  "description": "M6 corpus — Cabaretti Confluence; in-hand parse.",
+  "seed": 61572,
+  "cards": {
+    "Cabaretti Confluence": "Name:Cabaretti Confluence\nManaCost:3 R G W\nTypes:Sorcery\nA:SP$ Charm | Choices$ Copy,Exile,Pump | CharmNum$ 3 | CanRepeatModes$ True\nSVar:Copy:DB$ CopyPermanent | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | PumpKeywords$ Haste | AtEOT$ Sacrifice | SpellDescription$ Create a token that's a copy of target creature you control. It gains haste. Sacrifice it at the beginning of the next end step.\nSVar:Exile:DB$ ChangeZone | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target artifact or enchantment.\nSVar:Pump:DB$ PumpAll | ValidTgts$ Player | ValidCards$ Creature | NumAtt$ +1 | NumDef$ +1 | KW$ First Strike | SpellDescription$ Creatures target player controls get +1/+1 and gain first strike until end of turn.\nDeckHas:Ability$Token|Sacrifice\nOracle:Choose three. You may choose the same mode more than once.\\n• Create a token that's a copy of target creature you control. It gains haste. Sacrifice it at the beginning of the next end step.\\n• Exile target artifact or enchantment.\\n• Creatures target player controls get +1/+1 and gain first strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cabaretti Confluence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

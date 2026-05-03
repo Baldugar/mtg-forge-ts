@@ -1,0 +1,23 @@
+{
+  "id": "creepy-puppeteer-corpus-m676",
+  "description": "M6 corpus — Creepy Puppeteer; in-hand parse.",
+  "seed": 62735,
+  "cards": {
+    "Creepy Puppeteer": "Name:Creepy Puppeteer\nManaCost:3 R\nTypes:Creature Human Rogue\nPT:4/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigAnimate | OptionalDecider$ You | IsPresent$ Creature.attacking+Other | PresentCompare$ EQ1 | TriggerDescription$ Whenever CARDNAME attacks, if you attacked with exactly one other creature this combat, you may have that creature's base power and toughness become 4/3 until end of turn.\nSVar:TrigAnimate:DB$ AnimateAll | ValidCards$ Creature.attacking+Other | Power$ 4 | Toughness$ 3\nSVar:HasAttackEffect:TRUE\nOracle:Whenever Creepy Puppeteer attacks, if you attacked with exactly one other creature this combat, you may have that creature's base power and toughness become 4/3 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Creepy Puppeteer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

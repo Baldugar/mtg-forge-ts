@@ -1,0 +1,23 @@
+{
+  "id": "cleanup-crew-corpus-m676",
+  "description": "M6 corpus — Cleanup Crew; in-hand parse.",
+  "seed": 62214,
+  "cards": {
+    "Cleanup Crew": "Name:Cleanup Crew\nManaCost:4 G G\nTypes:Creature Human Citizen\nPT:6/6\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDestroy,DBDestroy2,DBExile,DBGainLife\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact | SpellDescription$ Destroy target artifact.\nSVar:DBDestroy2:DB$ Destroy | ValidTgts$ Enchantment | SpellDescription$ Destroy target enchantment.\nSVar:DBExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SpellDescription$ Exile target card from a graveyard.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 4 | SpellDescription$ You gain 4 life.\nDeckHas:Ability$LifeGain\nOracle:When Cleanup Crew enters, choose one —\\n• Destroy target artifact.\\n• Destroy target enchantment.\\n• Exile target card from a graveyard.\\n• You gain 4 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cleanup Crew"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

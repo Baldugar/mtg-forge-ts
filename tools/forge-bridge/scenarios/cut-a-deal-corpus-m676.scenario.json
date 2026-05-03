@@ -1,0 +1,23 @@
+{
+  "id": "cut-a-deal-corpus-m676",
+  "description": "M6 corpus — Cut a Deal; in-hand parse.",
+  "seed": 62963,
+  "cards": {
+    "Cut a Deal": "Name:Cut a Deal\nManaCost:2 W\nTypes:Sorcery\nA:SP$ Draw | Defined$ Opponent | RememberDrawn$ AllReplaced | SubAbility$ DBDraw | SpellDescription$ Each opponent draws a card, then you draw a card for each opponent who drew a card this way.\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBCleanup | StackDescription$ {p:You} draws a card for each opponent who drew a card this way.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:PlayerCountOpponents$HasPropertyIsRememberedOrController\nAI:RemoveDeck:Random\nOracle:Each opponent draws a card, then you draw a card for each opponent who drew a card this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Cut a Deal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

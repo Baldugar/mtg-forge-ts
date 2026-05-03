@@ -1,0 +1,23 @@
+{
+  "id": "glitch-interpreter-corpus-m676",
+  "description": "M6 corpus — Glitch Interpreter; in-hand parse.",
+  "seed": 66318,
+  "cards": {
+    "Glitch Interpreter": "Name:Glitch Interpreter\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/3\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | IsPresent$ Permanent.faceDown+YouCtrl | PresentCompare$ EQ0 | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if you control no face-down permanents, return CARDNAME to its owner's hand and manifest dread.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDread\nSVar:DBDread:DB$ ManifestDread\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.Colorless+YouCtrl | TriggerZones$ Battlefield | ValidTarget$ Player | Execute$ TrigDraw | TriggerDescription$ Whenever one or more colorless creatures you control deal combat damage to a player, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:PlayMain1:TRUE\nOracle:When Glitch Interpreter enters, if you control no face-down permanents, return Glitch Interpreter to its owner's hand and manifest dread.\\nWhenever one or more colorless creatures you control deal combat damage to a player, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glitch Interpreter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

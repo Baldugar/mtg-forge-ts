@@ -1,0 +1,23 @@
+{
+  "id": "form-of-the-squirrel-corpus-m676",
+  "description": "M6 corpus — Form of the Squirrel; in-hand parse.",
+  "seed": 65661,
+  "cards": {
+    "Form of the Squirrel": "Name:Form of the Squirrel\nManaCost:G\nTypes:Enchantment\nT:Mode$ ChangesZone | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ As CARDNAME enters, create a 1/1 green Squirrel creature token. You lose the game when that creature leaves the battlefield.\nSVar:TrigToken:DB$ Token | TokenScript$ g_1_1_squirrel | RememberTokens$ True\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.IsRemembered | Execute$ TrigLose | Secondary$ True | TriggerController$ TriggeredCardController | TriggerDescription$ You lose the game when that creature leaves the battlefield.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nS:Mode$ CantAttack | ValidCard$ Creature | Target$ You | Description$ Creatures can't attack you.\nS:Mode$ Continuous | Affected$ You | AddKeyword$ Shroud | Description$ You have shroud.\nS:Mode$ CantBeCast | ValidCard$ Card | Caster$ You | EffectZone$ Battlefield | Description$ You can't cast spells.\nDeckHas:Ability$Token\nOracle:As Form of the Squirrel enters, create a 1/1 green Squirrel creature token. You lose the game when that creature leaves the battlefield.\\nCreatures can't attack you.\\nYou have shroud.\\nYou can't cast spells.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Form of the Squirrel"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "deserter-s-disciple-corpus-m676",
+  "description": "M6 corpus — Deserter's Disciple; ETB-on-bf.",
+  "seed": 63512,
+  "cards": {
+    "Deserter's Disciple": "Name:Deserter's Disciple\nManaCost:1 R\nTypes:Creature Human Rebel Ally\nPT:2/2\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature.Other+YouCtrl+powerLE2 | TgtPrompt$ Select another target creature you control with power 2 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Another target creature you control with power 2 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{T}: Another target creature you control with power 2 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Deserter's Disciple"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

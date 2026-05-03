@@ -1,0 +1,23 @@
+{
+  "id": "exotic-disease-corpus-m676",
+  "description": "M6 corpus — Exotic Disease; in-hand parse.",
+  "seed": 64871,
+  "cards": {
+    "Exotic Disease": "Name:Exotic Disease\nManaCost:4 B\nTypes:Sorcery\nA:SP$ LoseLife | ValidTgts$ Player | TgtPrompt$ Select a player | LifeAmount$ X | SubAbility$ DBGainLife | SpellDescription$ Domain — Target player loses X life and you gain X life, where X is the number of basic land types among lands you control.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Domain\nAI:RemoveDeck:Random\nOracle:Domain — Target player loses X life and you gain X life, where X is the number of basic land types among lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Exotic Disease"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

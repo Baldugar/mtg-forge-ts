@@ -1,0 +1,23 @@
+{
+  "id": "carrion-locust-corpus-m676",
+  "description": "M6 corpus — Carrion Locust; in-hand parse.",
+  "seed": 61750,
+  "cards": {
+    "Carrion Locust": "Name:Carrion Locust\nManaCost:2 B\nTypes:Creature Insect Horror\nPT:2/1\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target card from an opponent's graveyard. If it was a creature card, that player loses 1 life.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card.OppOwn | TgtPrompt$ Select target card from an opponent's graveyard | RememberChanged$ True | SubAbility$ DBDrain\nSVar:DBDrain:DB$ LoseLife | ConditionDefined$ Remembered | ConditionPresent$ Creature | Defined$ TargetedOwner | LifeAmount$ 1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Graveyard\nOracle:Flying\\nWhen Carrion Locust enters, exile target card from an opponent's graveyard. If it was a creature card, that player loses 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Carrion Locust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "chishiro-the-shattered-blade-corpus-m676",
+  "description": "M6 corpus — Chishiro, the Shattered Blade; in-hand parse.",
+  "seed": 62073,
+  "cards": {
+    "Chishiro, the Shattered Blade": "Name:Chishiro, the Shattered Blade\nManaCost:2 R G\nTypes:Legendary Creature Snake Samurai\nPT:4/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | TriggerZones$ Battlefield | ValidCard$ Aura.YouCtrl,Equipment.YouCtrl | Execute$ TrigToken | TriggerDescription$ Whenever an Aura or Equipment you control enters, create a 2/2 red Spirit creature token with menace.\nSVar:TrigToken:DB$ Token | TokenScript$ r_2_2_spirit_menace\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCounters | TriggerDescription$ At the beginning of your end step, put a +1/+1 counter on each modified creature you control. (Equipment, Auras you control, and counters are modifications.)\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Creature.YouCtrl+modified | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Type$Aura|Equipment & Ability$Counters\nDeckHas:Ability$Token|Counters & Type$Spirit\nOracle:Whenever an Aura or Equipment you control enters, create a 2/2 red Spirit creature token with menace.\\nAt the beginning of your end step, put a +1/+1 counter on each modified creature you control. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chishiro, the Shattered Blade"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glidedive-duo-corpus-m676",
+  "description": "M6 corpus — Glidedive Duo; in-hand parse.",
+  "seed": 66282,
+  "cards": {
+    "Glidedive Duo": "Name:Glidedive Duo\nManaCost:4 B\nTypes:Creature Bat Lizard\nPT:3/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDrain | TriggerDescription$ When CARDNAME enters, each opponent loses 2 life and you gain 2 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 2 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ 2\nDeckHas:Ability$LifeGain\nOracle:Flying\\nWhen Glidedive Duo enters, each opponent loses 2 life and you gain 2 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glidedive Duo"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

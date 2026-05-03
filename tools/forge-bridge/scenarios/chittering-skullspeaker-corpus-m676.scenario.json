@@ -1,0 +1,23 @@
+{
+  "id": "chittering-skullspeaker-corpus-m676",
+  "description": "M6 corpus — Chittering Skullspeaker; in-hand parse.",
+  "seed": 62082,
+  "cards": {
+    "Chittering Skullspeaker": "Name:Chittering Skullspeaker\nManaCost:1 B\nTypes:Creature Squirrel Warlock\nPT:1/1\nK:Starting intensity:0\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigIntensify | TriggerDescription$ When CARDNAME enters, cards you own named Chittering Skullspeaker intensify by 1. Then you draw X cards and lose X life, where X is CARDNAME's intensity.\nSVar:TrigIntensify:DB$ Intensify | AllDefined$ Card.YouOwn+namedChittering Skullspeaker | DefinedDesc$ all cards they own named Chittering Skullspeaker | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | NumCards$ X | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Intensity\nOracle:Starting intensity 0\\nWhen Chittering Skullspeaker enters, cards you own named Chittering Skullspeaker intensify by 1. Then you draw X cards and lose X life, where X is Chittering Skullspeaker's intensity.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chittering Skullspeaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

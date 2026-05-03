@@ -1,0 +1,23 @@
+{
+  "id": "desperate-research-corpus-m676",
+  "description": "M6 corpus — Desperate Research; in-hand parse.",
+  "seed": 63532,
+  "cards": {
+    "Desperate Research": "Name:Desperate Research\nManaCost:1 B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | ValidCards$ Card.nonBasic | ValidDescription$ card other than a basic land | SubAbility$ DBDig | SpellDescription$ Choose a card name other than a basic land card name. Reveal the top seven cards of your library and put all of them with that name into your hand. Exile the rest.\nSVar:DBDig:DB$ Dig | DigNum$ 7 | Reveal$ True | DestinationZone2$ Exile | ChangeValid$ Card.NamedCard | ChangeNum$ All\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Choose a card name other than a basic land card name. Reveal the top seven cards of your library and put all of them with that name into your hand. Exile the rest.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desperate Research"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

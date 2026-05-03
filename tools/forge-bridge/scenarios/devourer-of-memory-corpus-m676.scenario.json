@@ -1,0 +1,23 @@
+{
+  "id": "devourer-of-memory-corpus-m676",
+  "description": "M6 corpus — Devourer of Memory; in-hand parse.",
+  "seed": 63582,
+  "cards": {
+    "Devourer of Memory": "Name:Devourer of Memory\nManaCost:U B\nTypes:Creature Nightmare\nPT:2/1\nT:Mode$ ChangesZoneAll | ValidCards$ Card.YouOwn | Origin$ Library | Destination$ Graveyard | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever one or more cards are put into your graveyard from your library, CARDNAME gets +1/+1 until end of turn and can't be blocked this turn.\nSVar:TrigPump:DB$ Pump | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBUnblockable\nSVar:DBUnblockable:DB$ Effect | RememberObjects$ Self | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this turn.\nA:AB$ Mill | Cost$ 1 U B | SpellDescription$ Mill a card.\nDeckHas:Ability$Mill\nDeckHints:Ability$Mill\nOracle:Whenever one or more cards are put into your graveyard from your library, Devourer of Memory gets +1/+1 until end of turn and can't be blocked this turn.\\n{1}{U}{B}: Mill a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devourer of Memory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conjured-currency-corpus-m676",
+  "description": "M6 corpus — Conjured Currency; in-hand parse.",
+  "seed": 62489,
+  "cards": {
+    "Conjured Currency": "Name:Conjured Currency\nManaCost:5 U\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | TriggerZones$ Battlefield | ValidPlayer$ You | Execute$ ExchangeCards | OptionalDecider$ You | TriggerDescription$ At the beginning of your upkeep, you may exchange control of CARDNAME and target permanent you neither own nor control.\nSVar:ExchangeCards:DB$ ExchangeControl | Defined$ Self | ValidTgts$ Permanent.YouDontCtrl+YouDontOwn | TgtPrompt$ Select target permanent you neither own nor control\nAI:RemoveDeck:All\nOracle:At the beginning of your upkeep, you may exchange control of Conjured Currency and target permanent you neither own nor control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conjured Currency"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

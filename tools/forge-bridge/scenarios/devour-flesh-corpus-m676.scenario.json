@@ -1,0 +1,23 @@
+{
+  "id": "devour-flesh-corpus-m676",
+  "description": "M6 corpus — Devour Flesh; in-hand parse.",
+  "seed": 63579,
+  "cards": {
+    "Devour Flesh": "Name:Devour Flesh\nManaCost:1 B\nTypes:Instant\nA:SP$ Sacrifice | ValidTgts$ Player | SacValid$ Creature | RememberSacrificed$ True | SubAbility$ DBGainLife | SpellDescription$ Target player sacrifices a creature,\nSVar:DBGainLife:DB$ GainLife | Defined$ Targeted | LifeAmount$ X | SubAbility$ DBCleanup | SpellDescription$ then gains life equal to that creature's toughness.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardToughness\nOracle:Target player sacrifices a creature, then gains life equal to that creature's toughness.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Devour Flesh"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

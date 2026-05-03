@@ -1,0 +1,23 @@
+{
+  "id": "compelling-deterrence-corpus-m676",
+  "description": "M6 corpus — Compelling Deterrence; in-hand parse.",
+  "seed": 62441,
+  "cards": {
+    "Compelling Deterrence": "Name:Compelling Deterrence\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBDiscard | SpellDescription$ Return target nonland permanent to its owner's hand. Then that player discards a card if you control a Zombie.\nSVar:DBDiscard:DB$ Discard | Defined$ TargetedOwner | NumCards$ 1 | Mode$ TgtChoose | ConditionPresent$ Zombie.YouCtrl | ConditionCompare$ GE1\nDeckHints:Type$Zombie\nOracle:Return target nonland permanent to its owner's hand. Then that player discards a card if you control a Zombie.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Compelling Deterrence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

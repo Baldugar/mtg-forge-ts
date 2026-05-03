@@ -1,0 +1,23 @@
+{
+  "id": "burning-rune-demon-corpus-m676",
+  "description": "M6 corpus — Burning-Rune Demon; in-hand parse.",
+  "seed": 61529,
+  "cards": {
+    "Burning-Rune Demon": "Name:Burning-Rune Demon\nManaCost:4 B B\nTypes:Creature Demon Berserker\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for exactly two cards not named Burning-Rune Demon that have different names. If you do, reveal those cards. An opponent chooses one of them. Put the chosen card into your hand and the other into your graveyard, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Card.!namedBurning-Rune Demon | ChangeNum$ 2 | DifferentNames$ True | Exactly$ True | RememberChanged$ True | Reveal$ True | Shuffle$ False | AILogic$ Intuition | SubAbility$ DBChoosePlayer\nSVar:DBChoosePlayer:DB$ ChoosePlayer | Defined$ You | Choices$ Player.Opponent | ChoiceTitle$ Choose an opponent | SubAbility$ DBChangeZone1\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.IsRemembered | Chooser$ ChosenPlayer | ChangeNum$ 1 | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to be put into the hand of CARDNAME's controller | Shuffle$ False | SubAbility$ DBChangeZone2 | StackDescription$ None\nSVar:DBChangeZone2:DB$ ChangeZoneAll | Origin$ Library | Destination$ Graveyard | ChangeType$ Card.IsRemembered | Shuffle$ True | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenPlayer$ True\nDeckHas:Ability$Graveyard\nOracle:Flying\\nWhen Burning-Rune Demon enters, you may search your library for exactly two cards not named Burning-Rune Demon that have different names. If you do, reveal those cards. An opponent chooses one of them. Put the chosen card into your hand and the other into your graveyard, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Burning-Rune Demon"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

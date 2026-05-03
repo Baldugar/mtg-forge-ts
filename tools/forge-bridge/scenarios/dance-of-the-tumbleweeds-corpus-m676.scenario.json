@@ -1,0 +1,23 @@
+{
+  "id": "dance-of-the-tumbleweeds-corpus-m676",
+  "description": "M6 corpus — Dance of the Tumbleweeds; in-hand parse.",
+  "seed": 63043,
+  "cards": {
+    "Dance of the Tumbleweeds": "Name:Dance of the Tumbleweeds\nManaCost:1 G\nTypes:Sorcery\nK:Spree\nA:SP$ Charm | Choices$ DBRamp,DBToken | MinCharmNum$ 1 | CharmNum$ 2\nSVar:DBRamp:DB$ ChangeZone | ModeCost$ 1 | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic,Desert | ChangeNum$ 1 | SpellDescription$ Search your library for a basic land card or a Desert card, put it onto the battlefield, then shuffle.\nSVar:DBToken:DB$ Token | ModeCost$ 3 | TokenScript$ g_x_x_elemental | TokenPower$ X | TokenToughness$ X | TokenOwner$ You | SpellDescription$ Create an X/X green Elemental creature token, where X is the number of lands you control.\nSVar:X:Count$Valid Land.YouCtrl\nOracle:Spree (Choose one or more additional costs.)\\n+ {1} — Search your library for a basic land card or a Desert card, put it onto the battlefield, then shuffle.\\n+ {3} — Create an X/X green Elemental creature token, where X is the number of lands you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dance of the Tumbleweeds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "giant-s-ire-corpus-m676",
+  "description": "M6 corpus — Giant's Ire; in-hand parse.",
+  "seed": 66172,
+  "cards": {
+    "Giant's Ire": "Name:Giant's Ire\nManaCost:3 R\nTypes:Kindred Sorcery Giant\nA:SP$ DealDamage | ValidTgts$ Player,Planeswalker | TgtPrompt$ Select target player or planeswalker | NumDmg$ 4 | SubAbility$ DBDraw | SpellDescription$ CARDNAME deals 4 damage to target player or planeswalker. If you control a Giant, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionPresent$ Giant.YouCtrl | ConditionCompare$ GE1 | ConditionDescription$ If you control a Giant,\nAI:RemoveDeck:Random\nOracle:Giant's Ire deals 4 damage to target player or planeswalker. If you control a Giant, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant's Ire"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "fade-from-history-corpus-m676",
+  "description": "M6 corpus — Fade from History; in-hand parse.",
+  "seed": 64971,
+  "cards": {
+    "Fade from History": "Name:Fade from History\nManaCost:2 G G\nTypes:Sorcery\nA:SP$ Token | TokenOwner$ Player.controlsEnchantment,controlsArtifact | TokenScript$ g_2_2_bear | SubAbility$ DBDestroy | SpellDescription$ Each player who controls an artifact or enchantment creates a 2/2 green Bear creature token. Then destroy all artifacts and enchantments.\nSVar:DBDestroy:DB$ DestroyAll | ValidCards$ Artifact,Enchantment\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Bear\nOracle:Each player who controls an artifact or enchantment creates a 2/2 green Bear creature token. Then destroy all artifacts and enchantments.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fade from History"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

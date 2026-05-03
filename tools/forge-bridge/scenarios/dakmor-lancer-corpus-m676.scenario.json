@@ -1,0 +1,23 @@
+{
+  "id": "dakmor-lancer-corpus-m676",
+  "description": "M6 corpus — Dakmor Lancer; in-hand parse.",
+  "seed": 63018,
+  "cards": {
+    "Dakmor Lancer": "Name:Dakmor Lancer\nManaCost:4 B B\nTypes:Creature Human Knight\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters, destroy target nonblack creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature.\nOracle:When Dakmor Lancer enters, destroy target nonblack creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dakmor Lancer"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

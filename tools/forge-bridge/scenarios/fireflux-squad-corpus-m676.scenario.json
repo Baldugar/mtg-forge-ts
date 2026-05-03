@@ -1,0 +1,23 @@
+{
+  "id": "fireflux-squad-corpus-m676",
+  "description": "M6 corpus — Fireflux Squad; in-hand parse.",
+  "seed": 65372,
+  "cards": {
+    "Fireflux Squad": "Name:Fireflux Squad\nManaCost:3 R\nTypes:Creature Human Soldier\nPT:4/3\nK:Haste\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigExile | TriggerZones$ Battlefield | OptionalDecider$ You | TriggerDescription$ Whenever CARDNAME attacks, you may exile another target attacking creature you control. If you do, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Creature.attacking+Other+YouCtrl | TgtPrompt$ Select another target attacking creature you control | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ DBDigUntil\nSVar:DBDigUntil:DB$ DigUntil | Valid$ Creature | ValidDescription$ Creature | FoundDestination$ Battlefield | Tapped$ True | Attacking$ True | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | ConditionCheckSVar$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$Amount\nOracle:Haste\\nWhenever Fireflux Squad attacks, you may exile another target attacking creature you control. If you do, reveal cards from the top of your library until you reveal a creature card. Put that card onto the battlefield tapped and attacking and the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fireflux Squad"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

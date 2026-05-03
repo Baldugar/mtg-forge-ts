@@ -1,0 +1,23 @@
+{
+  "id": "excavation-elephant-corpus-m676",
+  "description": "M6 corpus — Excavation Elephant; in-hand parse.",
+  "seed": 64844,
+  "cards": {
+    "Excavation Elephant": "Name:Excavation Elephant\nManaCost:4 W\nTypes:Creature Elephant\nPT:3/5\nK:Kicker:1 W\nT:Mode$ ChangesZone | ValidCard$ Card.Self+kicked | Origin$ Any | Destination$ Battlefield | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if it was kicked, return target artifact card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose target artifact card in your graveyard | ValidTgts$ Artifact.YouOwn\nSVar:NeedsToPlayKickedVar:Z GE1\nSVar:Z:Count$ValidGraveyard Artifact.YouOwn\nOracle:Kicker {1}{W} (You may pay an additional {1}{W} as you cast this spell.)\\nWhen Excavation Elephant enters, if it was kicked, return target artifact card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Excavation Elephant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

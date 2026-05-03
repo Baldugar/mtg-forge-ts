@@ -1,0 +1,23 @@
+{
+  "id": "fire-prophecy-corpus-m676",
+  "description": "M6 corpus — Fire Prophecy; in-hand parse.",
+  "seed": 65353,
+  "cards": {
+    "Fire Prophecy": "Name:Fire Prophecy\nManaCost:1 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | SubAbility$ DBBottom | SpellDescription$ CARDNAME deals 3 damage to target creature. You may put a card from your hand on the bottom of your library. If you do, draw a card.\nSVar:DBBottom:DB$ ChangeZone | Origin$ Hand | Destination$ Library | LibraryPosition$ -1 | ChangeNum$ 1 | RememberChanged$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Fire Prophecy deals 3 damage to target creature. You may put a card from your hand on the bottom of your library. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fire Prophecy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

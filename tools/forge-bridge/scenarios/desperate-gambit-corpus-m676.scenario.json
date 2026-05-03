@@ -1,0 +1,23 @@
+{
+  "id": "desperate-gambit-corpus-m676",
+  "description": "M6 corpus — Desperate Gambit; in-hand parse.",
+  "seed": 63528,
+  "cards": {
+    "Desperate Gambit": "Name:Desperate Gambit\nManaCost:R\nTypes:Instant\nA:SP$ ChooseSource | Choices$ Card.YouCtrl,Emblem.YouCtrl | RememberChosen$ True | SubAbility$ CoinFlip | SpellDescription$ Choose a source you control and flip a coin. If you win the flip, the next time that source would deal damage this turn, it deals double that damage instead. If you lose the flip, the next time it would deal damage this turn, prevent that damage.\nSVar:CoinFlip:DB$ FlipACoin | WinSubAbility$ CreateWinEffect | LoseSubAbility$ CreateLossEffect | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1\n# Winning Effect\nSVar:CreateWinEffect:DB$ Effect | Name$ Desperate Gambit's Effect — Won The Flip | ReplacementEffects$ EventWinDamageDone | RememberObjects$ Remembered\nSVar:EventWinDamageDone:Event$ DamageDone | ValidSource$ Card.IsRemembered,Emblem.IsRemembered | ReplaceWith$ DmgTwice | Description$ The next time source would deal damage this turn, it deals double that damage instead.\nSVar:DmgTwice:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ WinX | SubAbility$ ExileEffect\nSVar:WinX:ReplaceCount$DamageAmount/Twice\n# Losing Effect\nSVar:CreateLossEffect:DB$ Effect | Name$ Desperate Gambit's Effect — Lost The Flip | ReplacementEffects$ EventLossDamageDone | RememberObjects$ Remembered\nSVar:EventLossDamageDone:Event$ DamageDone | ValidSource$ Card.IsRemembered,Emblem.IsRemembered | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time it would deal damage this turn, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nAI:RemoveDeck:All\nOracle:Choose a source you control and flip a coin. If you win the flip, the next time that source would deal damage this turn, it deals double that damage instead. If you lose the flip, the next time it would deal damage this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Desperate Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

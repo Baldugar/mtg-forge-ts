@@ -1,0 +1,25 @@
+{
+  "id": "circle-of-protection-white-corpus-m676",
+  "description": "M6 corpus — Circle of Protection: White; ETB-on-bf.",
+  "seed": 62156,
+  "cards": {
+    "Circle of Protection: White": "Name:Circle of Protection: White\nManaCost:1 W\nTypes:Enchantment\nA:AB$ ChooseSource | Cost$ 1 | Choices$ Card.WhiteSource | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ The next time a white source of your choice would deal damage to you this turn, prevent that damage.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | SubAbility$ DBCleanup | ConditionDefined$ ChosenCard | ConditionPresent$ Card | ConditionCompare$ GE1\nSVar:RPreventNextFromSource:Event$ DamageDone | ValidSource$ Card.ChosenCardStrict+WhiteSource | ValidTarget$ You | ReplaceWith$ ExileEffect | PreventionEffect$ True | Description$ The next time the chosen white source deals damage to you, prevent that damage.\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nSVar:NonStackingEffect:True\nAI:RemoveDeck:Random\nOracle:{1}: The next time a white source of your choice would deal damage to you this turn, prevent that damage.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Circle of Protection: White"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

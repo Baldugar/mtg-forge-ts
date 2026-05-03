@@ -1,0 +1,23 @@
+{
+  "id": "gathering-throng-corpus-m676",
+  "description": "M6 corpus — Gathering Throng; in-hand parse.",
+  "seed": 65987,
+  "cards": {
+    "Gathering Throng": "Name:Gathering Throng\nManaCost:2 W\nTypes:Creature Human Citizen\nPT:3/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for any number of cards named Gathering Throng, reveal them, put them into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.namedGathering Throng | ChangeNum$ X | ShuffleNonMandatory$ True\nSVar:X:Count$ValidLibrary Card.YouOwn+namedGathering Throng\nDeckHints:Name$Gathering Throng\nOracle:When Gathering Throng enters, you may search your library for any number of cards named Gathering Throng, reveal them, put them into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gathering Throng"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

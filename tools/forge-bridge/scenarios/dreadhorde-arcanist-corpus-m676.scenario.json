@@ -1,0 +1,23 @@
+{
+  "id": "dreadhorde-arcanist-corpus-m676",
+  "description": "M6 corpus — Dreadhorde Arcanist; in-hand parse.",
+  "seed": 63995,
+  "cards": {
+    "Dreadhorde Arcanist": "Name:Dreadhorde Arcanist\nManaCost:1 R\nTypes:Creature Zombie Wizard\nPT:1/3\nK:Trample\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPlay | TriggerDescription$ Whenever CARDNAME attacks, you may cast target instant or sorcery card with mana value less than or equal to CARDNAME's power from your graveyard without paying its mana cost. If that spell would be put into your graveyard this turn, exile it instead.\nSVar:TrigPlay:DB$ Play | TgtZone$ Graveyard | ValidTgts$ Instant.YouCtrl+cmcLEX,Sorcery.YouCtrl+cmcLEX | TgtPrompt$ Choose target instant or sorcery card with mana value X or less from your graveyard | ValidSA$ Spell | WithoutManaCost$ True | Optional$ True | ReplaceGraveyard$ Exile | AILogic$ ReplaySpell\nSVar:X:Count$CardPower\nOracle:Trample\\nWhenever Dreadhorde Arcanist attacks, you may cast target instant or sorcery card with mana value less than or equal to Dreadhorde Arcanist's power from your graveyard without paying its mana cost. If that spell would be put into your graveyard this turn, exile it instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dreadhorde Arcanist"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

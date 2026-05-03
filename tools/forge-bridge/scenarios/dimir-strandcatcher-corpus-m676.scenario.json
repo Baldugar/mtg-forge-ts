@@ -1,0 +1,23 @@
+{
+  "id": "dimir-strandcatcher-corpus-m676",
+  "description": "M6 corpus — Dimir Strandcatcher; in-hand parse.",
+  "seed": 63635,
+  "cards": {
+    "Dimir Strandcatcher": "Name:Dimir Strandcatcher\nManaCost:2 UB UB\nTypes:Creature Faerie Rogue\nPT:3/3\nK:Flying\nT:Mode$ AttackersDeclared | AttackingPlayer$ You | Execute$ TrigSurveil | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack, surveil X, where X is the number of opponents being attacked.\nSVar:TrigSurveil:DB$ Surveil | Amount$ X\nT:Mode$ Phase | Phase$ End of Turn | TriggerZones$ Battlefield | CheckSVar$ Y | SVarCompare$ GE3 | Execute$ TrigDraw | TriggerDescription$ At the beginning of each end step, if three or more cards were put into your graveyard from anywhere other than the battlefield this turn, draw a card.\nSVar:TrigDraw:DB$ Draw\nSVar:X:PlayerCountPropertyYou$OpponentsAttackedThisCombat\nSVar:Y:Count$ThisTurnEntered_Graveyard_Card.YouOwn/Minus.Z\nSVar:Z:Count$ThisTurnEntered_Graveyard_from_Battlefield_Card.YouOwn\nDeckHints:Ability$Mill\nDeckHas:Ability$Surveil|Graveyard\nOracle:Flying\\nWhenever you attack, surveil X, where X is the number of opponents being attacked.\\nAt the beginning of each end step, if three or more cards were put into your graveyard from anywhere other than the battlefield this turn, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dimir Strandcatcher"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

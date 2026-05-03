@@ -1,0 +1,23 @@
+{
+  "id": "crown-of-skemfar-corpus-m676",
+  "description": "M6 corpus — Crown of Skemfar; in-hand parse.",
+  "seed": 62788,
+  "cards": {
+    "Crown of Skemfar": "Name:Crown of Skemfar\nManaCost:2 G G\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ X | AddToughness$ X | AddKeyword$ Reach | Description$ Enchanted creature gets +1/+1 for each Elf you control and has reach.\nSVar:X:Count$Valid Elf.YouCtrl\nSVar:BuffedBy:Elf\nA:AB$ ChangeZone | Cost$ 2 G | Origin$ Graveyard | Destination$ Hand | ActivationZone$ Graveyard | SpellDescription$ Return CARDNAME from your graveyard to your hand.\nDeckHints:Type$Elf\nOracle:Enchant creature\\nEnchanted creature gets +1/+1 for each Elf you control and has reach.\\n{2}{G}: Return Crown of Skemfar from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crown of Skemfar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

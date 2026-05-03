@@ -1,0 +1,23 @@
+{
+  "id": "deadeye-quartermaster-corpus-m676",
+  "description": "M6 corpus — Deadeye Quartermaster; in-hand parse.",
+  "seed": 63220,
+  "cards": {
+    "Deadeye Quartermaster": "Name:Deadeye Quartermaster\nManaCost:3 U\nTypes:Creature Human Pirate\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for an Equipment or a Vehicle card, reveal it, put it into your hand, then shuffle.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.Equipment,Card.Vehicle | ChangeNum$ 1 | ShuffleNonMandatory$ True\nDeckHints:Type$Equipment|Vehicle\nOracle:When Deadeye Quartermaster enters, you may search your library for an Equipment or Vehicle card, reveal it, put it into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadeye Quartermaster"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

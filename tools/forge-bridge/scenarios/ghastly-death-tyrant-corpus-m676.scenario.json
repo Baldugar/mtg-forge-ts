@@ -1,0 +1,23 @@
+{
+  "id": "ghastly-death-tyrant-corpus-m676",
+  "description": "M6 corpus — Ghastly Death Tyrant; in-hand parse.",
+  "seed": 66089,
+  "cards": {
+    "Ghastly Death Tyrant": "Name:Ghastly Death Tyrant\nManaCost:4 B B\nTypes:Creature Beholder Skeleton\nPT:6/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDestroy,DBPumpAll\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Enchantment.OppCtrl | SubAbility$ DBLoseLife | SpellDescription$ Disintegration Ray — Destroy target enchantment an opponent controls. You lose life equal to its mana value.\nSVar:DBLoseLife:DB$ LoseLife | Defined$ You | LifeAmount$ X\nSVar:X:Targeted$CardManaCost\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Deathtouch | SpellDescription$ Death Ray — Creatures you control gain deathtouch until end of turn.\nOracle:When Ghastly Death Tyrant enters, choose one —\\n• Disintegration Ray — Destroy target enchantment an opponent controls. You lose life equal to its mana value.\\n• Death Ray — Creatures you control gain Deathtouch until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghastly Death Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

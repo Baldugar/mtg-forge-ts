@@ -1,0 +1,25 @@
+{
+  "id": "durkwood-tracker-corpus-m676",
+  "description": "M6 corpus — Durkwood Tracker; ETB-on-bf.",
+  "seed": 64165,
+  "cards": {
+    "Durkwood Tracker": "Name:Durkwood Tracker\nManaCost:4 G\nTypes:Creature Giant\nPT:4/3\nA:AB$ DealDamage | Cost$ 1 G T | IsPresent$ Card.Self | PresentZone$ Battlefield | ValidTgts$ Creature.attacking | TgtPrompt$ Select target attacking creature | NumDmg$ X | SubAbility$ DBDamage | SpellDescription$ If CARDNAME is on the battlefield, it deals damage equal to its power to target attacking creature. That creature deals damage equal to its power to CARDNAME.\nSVar:DBDamage:DB$ DealDamage | Defined$ Self | NumDmg$ Y\nSVar:X:Count$CardPower\nSVar:Y:Targeted$CardPower\nOracle:{1}{G}, {T}: If Durkwood Tracker is on the battlefield, it deals damage equal to its power to target attacking creature. That creature deals damage equal to its power to Durkwood Tracker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Durkwood Tracker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

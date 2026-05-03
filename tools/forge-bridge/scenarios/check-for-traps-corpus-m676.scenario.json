@@ -1,0 +1,23 @@
+{
+  "id": "check-for-traps-corpus-m676",
+  "description": "M6 corpus — Check for Traps; in-hand parse.",
+  "seed": 62036,
+  "cards": {
+    "Check for Traps": "Name:Check for Traps\nManaCost:1 B\nTypes:Sorcery\nA:SP$ RevealHand | ValidTgts$ Opponent | Defined$ Targeted | SubAbility$ DBExile | StackDescription$ {p:Targeted} reveals their hand. | SpellDescription$ Target opponent reveals their hand. You choose a nonland card from it. Exile that card. If an instant card or a card with flash is exiled this way, they lose 1 life. Otherwise, you lose 1 life.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | Mandatory$ True | RememberChanged$ True | SubAbility$ TheyLose | StackDescription$ {p:You} chooses a nonland card from it. Exile that card.\nSVar:TheyLose:DB$ LoseLife | Defined$ Targeted | LifeAmount$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Instant,Card.withFlash | SubAbility$ YouLose | StackDescription$ If an instant card or a card with flash is exiled this way, {p:Targeted} loses 1 life.\nSVar:YouLose:DB$ LoseLife | LifeAmount$ 1 | ConditionDefined$ Remembered | ConditionPresent$ Instant,Card.withFlash | ConditionCompare$ EQ0 | SubAbility$ DBCleanup | StackDescription$ Otherwise, {p:You} loses 1 life.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Target opponent reveals their hand. You choose a nonland card from it. Exile that card. If an instant card or a card with flash is exiled this way, they lose 1 life. Otherwise, you lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Check for Traps"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

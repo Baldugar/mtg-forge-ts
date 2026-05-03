@@ -1,0 +1,23 @@
+{
+  "id": "ethersworn-shieldmage-corpus-m676",
+  "description": "M6 corpus — Ethersworn Shieldmage; in-hand parse.",
+  "seed": 64789,
+  "cards": {
+    "Ethersworn Shieldmage": "Name:Ethersworn Shieldmage\nManaCost:1 W U\nTypes:Artifact Creature Vedalken Wizard\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When CARDNAME enters, prevent all damage that would be dealt to artifact creatures this turn.\nSVar:TrigEffect:DB$ Effect | ReplacementEffects$ PreventArtifact | SpellDescription$ Prevent all damage that would be dealt to artifact creatures this turn.\nSVar:PreventArtifact:Event$ DamageDone | Prevent$ True | ActiveZones$ Command | ValidTarget$ Creature.Artifact | Description$ Prevent all damage that would be dealt to artifact creatures this turn.\nSVar:AmbushAI:True\nOracle:Flash\\nWhen Ethersworn Shieldmage enters, prevent all damage that would be dealt to artifact creatures this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ethersworn Shieldmage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "firecannon-blast-corpus-m676",
+  "description": "M6 corpus — Firecannon Blast; in-hand parse.",
+  "seed": 65368,
+  "cards": {
+    "Firecannon Blast": "Name:Firecannon Blast\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 3 | AILogic$ ProcRaid.6 | ConditionCheckSVar$ RaidTest | ConditionSVarCompare$ EQ0 | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 3 damage to target creature. Raid — CARDNAME deals 6 damage instead if you attacked this turn.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ Targeted | NumDmg$ 6 | ConditionCheckSVar$ RaidTest | ConditionSVarCompare$ GE1\nSVar:RaidTest:Count$AttackersDeclared\nOracle:Firecannon Blast deals 3 damage to target creature.\\nRaid — Firecannon Blast deals 6 damage instead if you attacked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firecannon Blast"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

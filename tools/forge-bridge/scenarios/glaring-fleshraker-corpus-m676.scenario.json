@@ -1,0 +1,23 @@
+{
+  "id": "glaring-fleshraker-corpus-m676",
+  "description": "M6 corpus — Glaring Fleshraker; in-hand parse.",
+  "seed": 66263,
+  "cards": {
+    "Glaring Fleshraker": "Name:Glaring Fleshraker\nManaCost:2 C\nTypes:Creature Eldrazi Drone\nPT:2/2\nT:Mode$ SpellCast | ValidCard$ Card.Colorless | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you cast a colorless spell, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_1_eldrazi_spawn_sac | TokenOwner$ You\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other+Colorless+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever another colorless creature you control enters, CARDNAME deals 1 damage to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 1\nSVar:BuffedBy:Card.Colorless\nDeckHints:Color$Colorless\nOracle:Whenever you cast a colorless spell, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\\nWhenever another colorless creature you control enters, Glaring Fleshraker deals 1 damage to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glaring Fleshraker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "coliseum-behemoth-corpus-m676",
+  "description": "M6 corpus — Coliseum Behemoth; in-hand parse.",
+  "seed": 62363,
+  "cards": {
+    "Coliseum Behemoth": "Name:Coliseum Behemoth\nManaCost:5 G G\nTypes:Creature Beast\nPT:7/7\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When this creature enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBDestroy,DBDraw\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Artifact,Enchantment | TgtPrompt$ Select target artifact or enchantment | SpellDescription$ Destroy target artifact or enchantment.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nOracle:Trample\\nWhen this creature enters, choose one —\\n• Destroy target artifact or enchantment.\\n• Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Coliseum Behemoth"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

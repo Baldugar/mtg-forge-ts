@@ -1,0 +1,23 @@
+{
+  "id": "giant-harbinger-corpus-m676",
+  "description": "M6 corpus — Giant Harbinger; in-hand parse.",
+  "seed": 66154,
+  "cards": {
+    "Giant Harbinger": "Name:Giant Harbinger\nManaCost:4 R\nTypes:Creature Giant Shaman\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a Giant card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Card.Giant | ChangeNum$ 1 | ShuffleNonMandatory$ True\nAI:RemoveDeck:Random\nOracle:When Giant Harbinger enters, you may search your library for a Giant card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant Harbinger"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

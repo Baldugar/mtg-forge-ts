@@ -1,0 +1,25 @@
+{
+  "id": "flourishing-bloom-kin-corpus-m676",
+  "description": "M6 corpus — Flourishing Bloom-Kin; ETB-on-bf.",
+  "seed": 65535,
+  "cards": {
+    "Flourishing Bloom-Kin": "Name:Flourishing Bloom-Kin\nManaCost:1 G\nTypes:Creature Plant Elemental\nPT:0/0\nK:Disguise:4 G\nS:Mode$ Continuous | Affected$ Card.Self | AddPower$ X | AddToughness$ X | Description$ CARDNAME gets +1/+1 for each Forest you control.\nSVar:X:Count$Valid Forest.YouCtrl\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigSearch | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, search your library for up to two Forest cards and reveal them. Put one of them onto the battlefield tapped and the other into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Library | ChangeType$ Forest | ChangeNum$ 2 | RememberChanged$ True | Reveal$ True | Shuffle$ False | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.IsRemembered | ChangeNum$ 1 | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to put onto the battlefield | Tapped$ True | Shuffle$ False | SubAbility$ DBChangeZone2\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Library | Destination$ Hand | ChangeType$ Card.IsRemembered | Mandatory$ True | NoLooking$ True | SelectPrompt$ Select a card to put into your hand | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Forest\nOracle:Flourishing Bloom-Kin gets +1/+1 for each Forest you control.\\nDisguise {4}{G}\\nWhen Flourishing Bloom-Kin is turned face up, search your library for up to two Forest cards and reveal them. Put one of them onto the battlefield tapped and the other into your hand, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Flourishing Bloom-Kin"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

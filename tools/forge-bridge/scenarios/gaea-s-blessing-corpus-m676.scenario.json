@@ -1,0 +1,23 @@
+{
+  "id": "gaea-s-blessing-corpus-m676",
+  "description": "M6 corpus — Gaea's Blessing; in-hand parse.",
+  "seed": 65874,
+  "cards": {
+    "Gaea's Blessing": "Name:Gaea's Blessing\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Player | SubAbility$ DBChangeZone | IsCurse$ True | SpellDescription$ Target player shuffles up to three target cards from their graveyard into their library.\nSVar:DBChangeZone:DB$ ChangeZone | TargetMin$ 0 | TargetMax$ 3 | TargetsWithDefinedController$ ParentTarget | Origin$ Graveyard | Destination$ Library | Shuffle$ True | ValidTgts$ Card | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nT:Mode$ ChangesZone | Origin$ Library | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME is put into your graveyard from your library, shuffle your graveyard into your library.\nSVar:TrigChange:DB$ ChangeZoneAll | ChangeType$ Card.YouOwn | Origin$ Graveyard | Destination$ Library | Shuffle$ True | SpellDescription$ Shuffle your graveyard into your library.\nAI:RemoveDeck:All\nOracle:Target player shuffles up to three target cards from their graveyard into their library.\\nDraw a card.\\nWhen Gaea's Blessing is put into your graveyard from your library, shuffle your graveyard into your library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gaea's Blessing"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

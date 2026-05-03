@@ -1,0 +1,23 @@
+{
+  "id": "circle-of-flame-corpus-m676",
+  "description": "M6 corpus — Circle of Flame; in-hand parse.",
+  "seed": 62148,
+  "cards": {
+    "Circle of Flame": "Name:Circle of Flame\nManaCost:1 R\nTypes:Enchantment\nT:Mode$ Attacks | ValidCard$ Creature.withoutFlying | Attacked$ You,Planeswalker.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Whenever a creature without flying attacks you or a planeswalker you control, CARDNAME deals 1 damage to that creature.\nSVar:TrigDamage:DB$ DealDamage | Defined$ TriggeredAttackerLKICopy | NumDmg$ 1\nOracle:Whenever a creature without flying attacks you or a planeswalker you control, Circle of Flame deals 1 damage to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Circle of Flame"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

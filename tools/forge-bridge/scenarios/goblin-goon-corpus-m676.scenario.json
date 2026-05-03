@@ -1,0 +1,25 @@
+{
+  "id": "goblin-goon-corpus-m676",
+  "description": "M6 corpus — Goblin Goon; ETB-on-bf.",
+  "seed": 66430,
+  "cards": {
+    "Goblin Goon": "Name:Goblin Goon\nManaCost:3 R\nTypes:Creature Goblin Mutant\nPT:6/6\nS:Mode$ CantAttack | ValidCard$ Card.Self | UnlessDefender$ hasFewerCreaturesInPlayThanYou | Description$ CARDNAME can't attack unless you control more creatures than defending player.\nS:Mode$ CantBlock | ValidCard$ Card.Self | Condition$ NotPlayerTurn | CheckSVar$ Y | SVarCompare$ GEX | Description$ CARDNAME can't block unless you control more creatures than attacking player.\nSVar:X:Count$Valid Creature.YouCtrl\nSVar:Y:Count$Valid Creature.ActivePlayerCtrl\nSVar:BuffedBy:Creature\nOracle:Goblin Goon can't attack unless you control more creatures than defending player.\\nGoblin Goon can't block unless you control more creatures than attacking player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Goblin Goon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

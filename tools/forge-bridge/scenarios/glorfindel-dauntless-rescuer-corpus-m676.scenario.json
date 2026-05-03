@@ -1,0 +1,25 @@
+{
+  "id": "glorfindel-dauntless-rescuer-corpus-m676",
+  "description": "M6 corpus — Glorfindel, Dauntless Rescuer; ETB-on-bf.",
+  "seed": 66337,
+  "cards": {
+    "Glorfindel, Dauntless Rescuer": "Name:Glorfindel, Dauntless Rescuer\nManaCost:2 G\nTypes:Legendary Creature Elf Noble\nPT:3/2\nT:Mode$ Scry | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCharm | TriggerDescription$ Whenever you scry, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBMustBeBlocked,DBEffect | AdditionalDescription$ and CARDNAME gets +1/+1 until end of turn.\nSVar:DBMustBeBlocked:DB$ Pump | Defined$ Self | KW$ HIDDEN CARDNAME must be blocked if able. | SubAbility$ DBPump | SpellDescription$ NICKNAME must be blocked this turn if able.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ MinMaxBlocked | ExileOnMoved$ Battlefield | SubAbility$ DBPump | SpellDescription$ NICKNAME can't be blocked by more than one creature each combat this turn.\nSVar:MinMaxBlocked:Mode$ MinMaxBlocker | ValidCard$ Card.EffectSource | Max$ 1 | Description$ NICKNAME can't be blocked by more than one creature each combat this turn.\nSVar:DBPump:DB$ Pump | Defined$ Self | NumAtt$ +1 | NumDef$ +1\nOracle:Whenever you scry, choose one and Glorfindel, Dauntless Rescuer gets +1/+1 until end of turn.\\n• Glorfindel must be blocked this turn if able.\\n• Glorfindel can't be blocked by more than one creature each combat this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Glorfindel, Dauntless Rescuer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

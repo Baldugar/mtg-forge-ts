@@ -1,0 +1,23 @@
+{
+  "id": "extinguisher-battleship-corpus-m676",
+  "description": "M6 corpus — Extinguisher Battleship; in-hand parse.",
+  "seed": 64918,
+  "cards": {
+    "Extinguisher Battleship": "Name:Extinguisher Battleship\nManaCost:8\nTypes:Artifact Spacecraft\nPT:10/10\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When this Spacecraft enters, destroy target noncreature permanent. Then this Spacecraft deals 4 damage to each creature.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent.nonCreature | SubAbility$ DBDamageAll | TgtPrompt$ Select target noncreature permanent\nSVar:DBDamageAll:DB$ DamageAll | ValidCards$ Creature | NumDmg$ 4 | ValidDescription$ each creature.\nK:Station:5\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE5_CHARGE | AddType$ Creature | AddKeyword$ Flying & Trample | Description$ STATION 5+ Flying, trample\nSVar:PlayMain1:TRUE\nOracle:When this Spacecraft enters, destroy target noncreature permanent. Then this Spacecraft deals 4 damage to each creature.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 5+.)\\nSTATION 5+\\nFlying, trample\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Extinguisher Battleship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

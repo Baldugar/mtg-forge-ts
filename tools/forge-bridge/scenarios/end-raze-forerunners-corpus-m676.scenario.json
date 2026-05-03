@@ -1,0 +1,23 @@
+{
+  "id": "end-raze-forerunners-corpus-m676",
+  "description": "M6 corpus — End-Raze Forerunners; in-hand parse.",
+  "seed": 64568,
+  "cards": {
+    "End-Raze Forerunners": "Name:End-Raze Forerunners\nManaCost:5 G G G\nTypes:Creature Boar\nPT:7/7\nK:Vigilance\nK:Trample\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, other creatures you control get +2/+2 and gain vigilance and trample until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.StrictlyOther+YouCtrl | NumAtt$ +2 | NumDef$ +2 | KW$ Vigilance & Trample\nSVar:PlayMain1:TRUE\nOracle:Vigilance, trample, haste\\nWhen End-Raze Forerunners enters, other creatures you control get +2/+2 and gain vigilance and trample until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "End-Raze Forerunners"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

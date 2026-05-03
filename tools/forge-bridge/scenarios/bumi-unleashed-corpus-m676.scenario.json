@@ -1,0 +1,23 @@
+{
+  "id": "bumi-unleashed-corpus-m676",
+  "description": "M6 corpus — Bumi, Unleashed; in-hand parse.",
+  "seed": 61503,
+  "cards": {
+    "Bumi, Unleashed": "Name:Bumi, Unleashed\nManaCost:3 R G\nTypes:Legendary Creature Human Noble Ally\nPT:5/4\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEarthbend | TriggerDescription$ When NICKNAME enters, earthbend 4.\nSVar:TrigEarthbend:DB$ Earthbend | Num$ 4\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | Execute$ TrigUntapAll | CombatDamage$ True | TriggerDescription$ Whenever NICKNAME deals combat damage to a player, untap all lands you control. After this phase, there is an additional combat phase. Only land creatures can attack during that combat phase.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Land.YouCtrl | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat | ExtraPhaseDelayedTrigger$ DelTrigStatic | ExtraPhaseDelayedTriggerExcute$ TrigEffect\nSVar:DelTrigStatic:Mode$ Phase | Static$ True | Phase$ BeginCombat | TriggerDescription$ After this phase, there is an additional combat phase. Only land creatures can attack during that combat phase.\nSVar:TrigEffect:DB$ Effect | StaticAbilities$ ForbidAttack | Duration$ UntilEndOfCombat\nSVar:ForbidAttack:Mode$ CantAttack | ValidCard$ Creature.nonLand | Description$ CARDNAME can't attack.\nOracle:Trample\\nWhen Bumi enters, earthbend 4.\\nWhenever Bumi deals combat damage to a player, untap all lands you control. After this phase, there is an additional combat phase. Only land creatures can attack during that combat phase.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Bumi, Unleashed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

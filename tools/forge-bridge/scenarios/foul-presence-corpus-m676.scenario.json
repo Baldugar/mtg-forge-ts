@@ -1,0 +1,23 @@
+{
+  "id": "foul-presence-corpus-m676",
+  "description": "M6 corpus — Foul Presence; in-hand parse.",
+  "seed": 65690,
+  "cards": {
+    "Foul Presence": "Name:Foul Presence\nManaCost:2 B\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ -1 | AddToughness$ -1 | AddAbility$ Pump | Description$ Enchanted creature gets -1/-1 and has \"{T}: Target creature gets -1/-1 until end of turn.\"\nSVar:Pump:AB$ Pump | Cost$ T | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | SpellDescription$ Target creature gets -1/-1 until end of turn.\nAI:RemoveDeck:Random\nOracle:Enchant creature\\nEnchanted creature gets -1/-1 and has \"{T}: Target creature gets -1/-1 until end of turn.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foul Presence"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

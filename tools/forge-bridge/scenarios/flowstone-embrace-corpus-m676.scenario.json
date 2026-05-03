@@ -1,0 +1,23 @@
+{
+  "id": "flowstone-embrace-corpus-m676",
+  "description": "M6 corpus — Flowstone Embrace; in-hand parse.",
+  "seed": 65548,
+  "cards": {
+    "Flowstone Embrace": "Name:Flowstone Embrace\nManaCost:1 R\nTypes:Enchantment Aura\nK:Enchant:Creature\n# TODO: The AI can only use this as a form of buff. Maybe teach the AI to also use it to kill opposing creatures?\nSVar:AttachAITgts:Creature.toughnessGE3\nSVar:AttachAILogic:Pump\nA:AB$ Pump | Cost$ T | Defined$ Enchanted | NumAtt$ +2 | NumDef$ -2 | SpellDescription$ Enchanted creature gets +2/-2 until end of turn.\nSVar:NonStackingAttachEffect:True\nOracle:Enchant creature\\n{T}: Enchanted creature gets +2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flowstone Embrace"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

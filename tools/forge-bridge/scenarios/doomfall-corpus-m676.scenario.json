@@ -1,0 +1,23 @@
+{
+  "id": "doomfall-corpus-m676",
+  "description": "M6 corpus — Doomfall; in-hand parse.",
+  "seed": 63828,
+  "cards": {
+    "Doomfall": "Name:Doomfall\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBChangeZone1,DBChangeZone2 | Defined$ You\nSVar:DBChangeZone1:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Opponent | DefinedPlayer$ Targeted | Mandatory$ True | ChangeType$ Creature | ChangeNum$ 1 | Hidden$ True | IsCurse$ True | Chooser$ Targeted | SpellDescription$ Target opponent exiles a creature they control.\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ValidTgts$ Opponent | Chooser$ You | ChangeType$ Card.nonLand | ChangeNum$ 1 | IsCurse$ True | Mandatory$ True | StackDescription$ SpellDescription | SpellDescription$ Target opponent reveals their hand. You choose a nonland card from it. Exile that card.\nOracle:Choose one —\\n• Target opponent exiles a creature they control.\\n• Target opponent reveals their hand. You choose a nonland card from it. Exile that card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Doomfall"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

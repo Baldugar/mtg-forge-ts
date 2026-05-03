@@ -1,0 +1,23 @@
+{
+  "id": "forth-eorlingas-corpus-m676",
+  "description": "M6 corpus — Forth Eorlingas!; in-hand parse.",
+  "seed": 65670,
+  "cards": {
+    "Forth Eorlingas!": "Name:Forth Eorlingas!\nManaCost:X R W\nTypes:Sorcery\nA:SP$ Token | TokenAmount$ X | TokenScript$ r_2_2_human_knight_trample_haste | TokenOwner$ You | SubAbility$ DBEffect | SpellDescription$ Create X 2/2 red Human Knight creature tokens with trample and haste.\nSVar:DBEffect:DB$ Effect | Triggers$ TrigDamage | SpellDescription$ Whenever one or more creatures you control deal combat damage to one or more players this turn, you become the monarch.\nSVar:TrigDamage:Mode$ DamageAll | ValidSource$ Creature.YouCtrl | ValidTarget$ Player | CombatDamage$ True | Execute$ TrigMonarch | TriggerDescription$ Whenever one or more creatures you control deal combat damage to one or more players this turn, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nSVar:X:Count$xPaid\nDeckHas:Ability$Token & Type$Human|Knight\nOracle:Create X 2/2 red Human Knight creature tokens with trample and haste.\\nWhenever one or more creatures you control deal combat damage to one or more players this turn, you become the monarch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Forth Eorlingas!"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "demonic-covenant-corpus-m676",
+  "description": "M6 corpus — Demonic Covenant; in-hand parse.",
+  "seed": 63436,
+  "cards": {
+    "Demonic Covenant": "Name:Demonic Covenant\nManaCost:4 B B\nTypes:Kindred Enchantment Demon\nT:Mode$ AttackersDeclaredOneTarget | AttackedTarget$ Player | ValidAttackers$ Creature.Demon+YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrawAndDamage | TriggerDescription$ Whenever one or more Demons you control attack a player, you draw a card and lose 1 life.\nSVar:TrigDrawAndDamage:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigCreateAndMill | TriggerDescription$ At the beginning of your end step, create a 5/5 black Demon creature token with flying, then mill two cards. If two cards that share all their card types were milled this way, sacrifice CARDNAME.\nSVar:TrigCreateAndMill:DB$ Token | TokenScript$ b_5_5_demon_flying | TokenOwner$ You | SubAbility$ DBMill\nSVar:DBMill:DB$ Mill | NumCards$ 2 | RememberMilled$ True | ShowMilledCards$ True | SubAbility$ DBSacrifice\nSVar:DBSacrifice:DB$ Sacrifice | SacValid$ Self | ShowSacrificedCards$ True | ConditionCheckSVar$ MilledSharesAllTypes | ConditionSVarCompare$ GE2 | SubAbility$ DBCleanup\nSVar:MilledSharesAllTypes:Remembered$Valid Card.sharesAllCardTypesWithOther Remembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Token|Mill|Sacrifice\nOracle:Whenever one or more Demons you control attack a player, you draw a card and lose 1 life.\\nAt the beginning of your end step, create a 5/5 black Demon creature token with flying, then mill two cards. If two cards that share all their card types were milled this way, sacrifice Demonic Covenant.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Demonic Covenant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

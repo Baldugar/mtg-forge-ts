@@ -1,0 +1,23 @@
+{
+  "id": "eldrazi-linebreaker-corpus-m676",
+  "description": "M6 corpus — Eldrazi Linebreaker; in-hand parse.",
+  "seed": 64373,
+  "cards": {
+    "Eldrazi Linebreaker": "Name:Eldrazi Linebreaker\nManaCost:1 C R\nTypes:Creature Eldrazi\nPT:3/3\nK:Devoid\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ At the beginning of combat on your turn, target creature you control gains haste and gets +X/+0 until end of turn, where X is the number of Eldrazi you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | NumAtt$ +X | KW$ Haste\nSVar:X:Count$Valid Eldrazi.YouCtrl\nDeckHints:Type$Eldrazi\nOracle:Devoid (This card has no color.)\\nTrample\\nAt the beginning of combat on your turn, target creature you control gains haste and gets +X/+0 until end of turn, where X is the number of Eldrazi you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Eldrazi Linebreaker"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "emrakul-s-messenger-corpus-m676",
+  "description": "M6 corpus — Emrakul's Messenger; ETB-on-bf.",
+  "seed": 64550,
+  "cards": {
+    "Emrakul's Messenger": "Name:Emrakul's Messenger\nManaCost:1 U\nTypes:Creature Eldrazi Faerie Rogue\nPT:2/1\nK:Devoid\nK:Flying\nT:Mode$ Drawn | ValidCard$ Card.YouCtrl | Number$ 2 | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you draw your second card each turn, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\nSVar:TrigToken:DB$ Token | TokenScript$ c_0_1_eldrazi_spawn_sac\nAI:RemoveDeck:Random\nDeckHas:Ability$Token & Type$Eldrazi|Spawn\nOracle:Devoid (This card has no color.)\\nFlying\\nWhenever you draw your second card each turn, create a 0/1 colorless Eldrazi Spawn creature token with \"Sacrifice this creature: Add {C}.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Emrakul's Messenger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

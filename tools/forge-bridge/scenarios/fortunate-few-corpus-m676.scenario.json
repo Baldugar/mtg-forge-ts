@@ -1,0 +1,23 @@
+{
+  "id": "fortunate-few-corpus-m676",
+  "description": "M6 corpus — Fortunate Few; in-hand parse.",
+  "seed": 65680,
+  "cards": {
+    "Fortunate Few": "Name:Fortunate Few\nManaCost:3 W W\nTypes:Sorcery\nA:SP$ RepeatEach | StartingWith$ You | RepeatPlayers$ Player | RepeatSubAbility$ DBChoose | SubAbility$ DBDestroyAll | SpellDescription$ Choose a nonland permanent you don't control, then each other player chooses a nonland permanent they don't control that hasn't been chosen this way. Destroy all other nonland permanents.\nSVar:DBChoose:DB$ ChooseCard | Defined$ Player.IsRemembered | Choices$ Permanent.nonLand+!RememberedPlayerCtrl+!IsRemembered | RememberChosen$ True | ChoiceZone$ Battlefield | AILogic$ WorstCard\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Permanent.nonLand+!IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Choose a nonland permanent you don't control, then each other player chooses a nonland permanent they don't control that hasn't been chosen this way. Destroy all other nonland permanents.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Fortunate Few"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

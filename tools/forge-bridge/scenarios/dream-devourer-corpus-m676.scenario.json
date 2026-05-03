@@ -1,0 +1,25 @@
+{
+  "id": "dream-devourer-corpus-m676",
+  "description": "M6 corpus — Dream Devourer; ETB-on-bf.",
+  "seed": 64008,
+  "cards": {
+    "Dream Devourer": "Name:Dream Devourer\nManaCost:1 B\nTypes:Creature Demon Cleric\nPT:0/3\nS:Mode$ Continuous | Affected$ Card.nonLand+YouOwn+withoutForetell | AffectedZone$ Hand | AddKeyword$ Foretell | Description$ Each nonland card in your hand without foretell has foretell. Its foretell cost is equal to its mana cost reduced by {2}. (During your turn, you may pay {2} and exile it from your hand face down. Cast it on a later turn for its foretell cost.)\nT:Mode$ Foretell | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever you foretell a card, CARDNAME gets +2/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +2\nOracle:Each nonland card in your hand without foretell has foretell. Its foretell cost is equal to its mana cost reduced by {2}. (During your turn, you may pay {2} and exile it from your hand face down. Cast it on a later turn for its foretell cost.)\\nWhenever you foretell a card, Dream Devourer gets +2/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Dream Devourer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

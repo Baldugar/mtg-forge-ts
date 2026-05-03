@@ -1,0 +1,23 @@
+{
+  "id": "electric-seaweed-corpus-m676",
+  "description": "M6 corpus — Electric Seaweed; in-hand parse.",
+  "seed": 64381,
+  "cards": {
+    "Electric Seaweed": "Name:Electric Seaweed\nManaCost:2 R R\nTypes:Creature Plant Wall\nPT:0/4\nK:Defender\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigEffect | TriggerDescription$ When this creature enters, until end of turn, whenever another creature dies, this creature deals 1 damage to each non-Wall creature.\nSVar:TrigEffect:DB$ Effect | Triggers$ DieTrigger | RememberObjects$ Self\nSVar:DieTrigger:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.!IsRemembered | Execute$ TrigDamage | TriggerDescription$ Until end of turn, whenever another creature dies, this creature deals 1 damage to each non-Wall creature.\nSVar:TrigDamage:DB$ DamageAll | ValidCards$ Creature.nonWall | NumDmg$ 1 | DamageSource$ EffectSource | ValidDescription$ each non-Wall creature.\nA:AB$ DealDamage | Cost$ T | ValidTgts$ Any | NumDmg$ 1 | SpellDescription$ This creature deals 1 damage to any target.\nOracle:Defender, haste\\nWhen this creature enters, until end of turn, whenever another creature dies, this creature deals 1 damage to each non-Wall creature.\\n{T}: This creature deals 1 damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Electric Seaweed"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

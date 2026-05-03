@@ -1,0 +1,23 @@
+{
+  "id": "even-the-score-corpus-m676",
+  "description": "M6 corpus — Even the Score; in-hand parse.",
+  "seed": 64810,
+  "cards": {
+    "Even the Score": "Name:Even the Score\nManaCost:X U U U\nTypes:Instant\nS:Mode$ ReduceCost | ValidCard$ Card.Self | Type$ Spell | Amount$ 1 | Color$ U U U | EffectZone$ All | CheckSVar$ Y | SVarCompare$ GE4 | Description$ This spell costs {U}{U}{U} less to cast if an opponent has drawn four or more cards this turn.\nSVar:Y:PlayerCountOpponents$HighestCardsDrawn\nA:SP$ Draw | NumCards$ X | SpellDescription$ Draw X cards.\nSVar:X:Count$xPaid\nOracle:This spell costs {U}{U}{U} less to cast if an opponent has drawn four or more cards this turn.\\nDraw X cards.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Even the Score"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

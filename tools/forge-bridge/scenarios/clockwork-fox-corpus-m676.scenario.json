@@ -1,0 +1,23 @@
+{
+  "id": "clockwork-fox-corpus-m676",
+  "description": "M6 corpus — Clockwork Fox; in-hand parse.",
+  "seed": 62265,
+  "cards": {
+    "Clockwork Fox": "Name:Clockwork Fox\nManaCost:3\nTypes:Artifact Creature Fox\nPT:3/2\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME leaves the battlefield, you draw two cards and each opponent draws a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ Player.Opponent | NumCards$ 1\nOracle:When Clockwork Fox leaves the battlefield, you draw two cards and each opponent draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clockwork Fox"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

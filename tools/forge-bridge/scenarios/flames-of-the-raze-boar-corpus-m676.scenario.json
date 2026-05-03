@@ -1,0 +1,23 @@
+{
+  "id": "flames-of-the-raze-boar-corpus-m676",
+  "description": "M6 corpus — Flames of the Raze-Boar; in-hand parse.",
+  "seed": 65448,
+  "cards": {
+    "Flames of the Raze-Boar": "Name:Flames of the Raze-Boar\nManaCost:5 R\nTypes:Instant\nA:SP$ DealDamage | NumDmg$ 4 | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 4 damage to target creature an opponent controls. Then CARDNAME deals 2 damage to each other creature that player controls if you control a creature with power 4 or greater.\nSVar:DBDealDamage:DB$ DamageAll | NumDmg$ 2 | ValidCards$ Creature.NotDefinedTargeted+ControlledBy TargetedController | ConditionPresent$ Creature.powerGE4+YouCtrl\nOracle:Flames of the Raze-Boar deals 4 damage to target creature an opponent controls. Then Flames of the Raze-Boar deals 2 damage to each other creature that player controls if you control a creature with power 4 or greater.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flames of the Raze-Boar"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

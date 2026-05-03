@@ -1,0 +1,23 @@
+{
+  "id": "dark-temper-corpus-m676",
+  "description": "M6 corpus — Dark Temper; in-hand parse.",
+  "seed": 63089,
+  "cards": {
+    "Dark Temper": "Name:Dark Temper\nManaCost:2 R\nTypes:Instant\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 2 | SubAbility$ DBDestroy | ConditionPresent$ Permanent.Black+YouCtrl | ConditionCompare$ EQ0 | SpellDescription$ CARDNAME deals 2 damage to target creature. If you control a black permanent, destroy the creature instead.\nSVar:DBDestroy:DB$ Destroy | Defined$ Targeted | ConditionPresent$ Permanent.Black+YouCtrl | ConditionCompare$ GE1 | ConditionDescription$ If you control a black permanent,\nAI:RemoveDeck:Random\nDeckHints:Color$Black\nOracle:Dark Temper deals 2 damage to target creature. If you control a black permanent, destroy the creature instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Dark Temper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

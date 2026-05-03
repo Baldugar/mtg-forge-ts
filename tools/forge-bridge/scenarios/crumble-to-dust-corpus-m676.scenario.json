@@ -1,0 +1,23 @@
+{
+  "id": "crumble-to-dust-corpus-m676",
+  "description": "M6 corpus — Crumble to Dust; in-hand parse.",
+  "seed": 62812,
+  "cards": {
+    "Crumble to Dust": "Name:Crumble to Dust\nManaCost:3 R\nTypes:Sorcery\nK:Devoid\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Land.nonBasic | TgtPrompt$ Select target nonbasic land | RememberChanged$ True | SubAbility$ ExileYard | SpellDescription$ Exile target nonbasic land. Search its controller's graveyard, hand, and library for any number of cards with the same name as that land and exile them. Then that player shuffles his or library.\nSVar:ExileYard:DB$ ChangeZone | ChangeType$ Remembered.sameName | Origin$ Graveyard | DefinedPlayer$ TargetedController | Chooser$ You | Destination$ Exile | ChangeNum$ NumInYard | Hidden$ True | SubAbility$ ExileHand | StackDescription$ None\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumInLib:TargetedController$CardsInLibrary\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInYard:TargetedController$CardsInGraveyard\nOracle:Devoid (This card has no color.)\\nExile target nonbasic land. Search its controller's graveyard, hand, and library for any number of cards with the same name as that land and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crumble to Dust"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

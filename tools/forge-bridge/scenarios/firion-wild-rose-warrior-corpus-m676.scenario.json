@@ -1,0 +1,23 @@
+{
+  "id": "firion-wild-rose-warrior-corpus-m676",
+  "description": "M6 corpus — Firion, Wild Rose Warrior; in-hand parse.",
+  "seed": 65390,
+  "cards": {
+    "Firion, Wild Rose Warrior": "Name:Firion, Wild Rose Warrior\nManaCost:2 R\nTypes:Legendary Creature Human Rebel Warrior\nPT:3/3\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+equipped | AddKeyword$ Haste | Description$ Equipped creatures you control have haste.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Equipment.YouCtrl+!token+Other | TriggerZones$ Battlefield | Execute$ TrigCopy | TriggerDescription$ Whenever a nontoken Equipment you control enters, create a token that's a copy of it, except it has \"This Equipment's equip abilities cost {2} less to activate.\" Sacrifice that token at the beginning of the next upkeep.\nSVar:TrigCopy:DB$ CopyPermanent | Defined$ TriggeredCardLKICopy | AddStaticAbilities$ EquipReduce | AtEOT$ SacrificeUpkeep\nSVar:EquipReduce:Mode$ ReduceCost | ValidCard$ Card.Self | ValidSpell$ Activated.Equip | Amount$ 2 | Description$ This Equipment's equip abilities cost {2} less to activate.\nDeckHas:Ability$Token\nDeckNeeds:Type$Equipment\nOracle:Equipped creatures you control have haste.\\nWhenever a nontoken Equipment you control enters, create a token that's a copy of it, except it has \"This Equipment's equip abilities cost {2} less to activate.\" Sacrifice that token at the beginning of the next upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Firion, Wild Rose Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

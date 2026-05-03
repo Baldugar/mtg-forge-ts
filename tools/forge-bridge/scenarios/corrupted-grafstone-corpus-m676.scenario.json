@@ -1,0 +1,25 @@
+{
+  "id": "corrupted-grafstone-corpus-m676",
+  "description": "M6 corpus — Corrupted Grafstone; ETB-on-bf.",
+  "seed": 62609,
+  "cards": {
+    "Corrupted Grafstone": "Name:Corrupted Grafstone\nManaCost:2\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ ManaReflected | Cost$ T | ColorOrType$ Color | Valid$ Defined.ValidGraveyard Card.YouOwn | ReflectProperty$ Is | SpellDescription$ Choose a color of a card in your graveyard. Add one mana of that color.\nAI:RemoveDeck:All\nOracle:Corrupted Grafstone enters tapped.\\n{T}: Choose a color of a card in your graveyard. Add one mana of that color.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Corrupted Grafstone"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

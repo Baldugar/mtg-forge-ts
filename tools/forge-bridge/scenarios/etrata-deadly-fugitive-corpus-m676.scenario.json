@@ -1,0 +1,23 @@
+{
+  "id": "etrata-deadly-fugitive-corpus-m676",
+  "description": "M6 corpus — Etrata, Deadly Fugitive; in-hand parse.",
+  "seed": 64793,
+  "cards": {
+    "Etrata, Deadly Fugitive": "Name:Etrata, Deadly Fugitive\nManaCost:1 U B\nTypes:Legendary Creature Vampire Assassin\nPT:1/4\nK:Deathtouch\nS:Mode$ Continuous | Affected$ Creature.faceDown+YouCtrl | EffectZone$ Battlefield | AddAbility$ TurnFaceUp | Description$ Face-down creatures you control have \"{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.\"\nSVar:TurnFaceUp:AB$ SetState | Cost$ 2 U B | Defined$ Self | Mode$ TurnFaceUp | SubAbility$ ExileSelf | RememberChanged$ True | SpellDescription$ Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.\nSVar:ExileSelf:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Exile | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ EQ0 | Imprint$ True | SubAbility$ DBPlayExiled\nSVar:DBPlayExiled:DB$ Play | Valid$ Card.IsImprinted | WithoutManaCost$ True | ValidSA$ Spell | ValidZone$ Exile | Controller$ You | Optional$ True | Amount$ All | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearImprinted$ True\nT:Mode$ DamageDone | ValidSource$ Assassin.YouCtrl | ValidTarget$ Opponent | CombatDamage$ True | TriggerZones$ Battlefield | Execute$ TrigCloak | TriggerDescription$ Whenever an Assassin you control deals combat damage to an opponent, cloak the top card of that player's library.\nSVar:TrigCloak:DB$ Cloak | Defined$ ValidLibrary Card.TopLibrary+OwnedBy TriggeredTarget\nDeckHints:Type$Assassin\nOracle:Deathtouch\\nFace-down creatures you control have \"{2}{U}{B}: Turn this creature face up. If you can't, exile it, then you may cast the exiled card without paying its mana cost.\"\\nWhenever an Assassin you control deals combat damage to an opponent, cloak the top card of that player's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Etrata, Deadly Fugitive"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

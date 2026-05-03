@@ -1,0 +1,23 @@
+{
+  "id": "death-pulse-corpus-m676",
+  "description": "M6 corpus — Death Pulse; in-hand parse.",
+  "seed": 63254,
+  "cards": {
+    "Death Pulse": "Name:Death Pulse\nManaCost:2 B B\nTypes:Instant\nK:Cycling:1 B B\nA:SP$ Pump | ValidTgts$ Creature | NumAtt$ -4 | NumDef$ -4 | IsCurse$ True | SpellDescription$ Target creature gets -4/-4 until end of turn.\nT:Mode$ Cycled | ValidCard$ Card.Self | OptionalDecider$ You | Execute$ TrigPump | TriggerDescription$ When you cycle CARDNAME, you may have target creature get -1/-1 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ -1 | NumDef$ -1 | IsCurse$ True\nOracle:Target creature gets -4/-4 until end of turn.\\nCycling {1}{B}{B} ({1}{B}{B}, Discard this card: Draw a card.)\\nWhen you cycle Death Pulse, you may have target creature get -1/-1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Death Pulse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

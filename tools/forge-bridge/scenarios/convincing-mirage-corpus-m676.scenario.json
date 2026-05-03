@@ -1,0 +1,23 @@
+{
+  "id": "convincing-mirage-corpus-m676",
+  "description": "M6 corpus — Convincing Mirage; in-hand parse.",
+  "seed": 62553,
+  "cards": {
+    "Convincing Mirage": "Name:Convincing Mirage\nManaCost:1 U\nTypes:Enchantment Aura\nK:Enchant:Land\nSVar:AttachAILogic:ChangeType\nK:ETBReplacement:Other:DBChooseBasic\nSVar:DBChooseBasic:DB$ ChooseType | Type$ Basic Land | SpellDescription$ As CARDNAME enters, choose a basic land type.\nS:Mode$ Continuous | Affected$ Card.EnchantedBy | AddType$ ChosenType | RemoveLandTypes$ True | Description$ Enchanted land is the chosen type.\nAI:RemoveDeck:All\nOracle:Enchant land\\nAs Convincing Mirage enters, choose a basic land type.\\nEnchanted land is the chosen type.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Convincing Mirage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

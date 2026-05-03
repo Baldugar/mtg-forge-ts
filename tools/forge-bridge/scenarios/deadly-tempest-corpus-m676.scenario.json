@@ -1,0 +1,23 @@
+{
+  "id": "deadly-tempest-corpus-m676",
+  "description": "M6 corpus — Deadly Tempest; in-hand parse.",
+  "seed": 63234,
+  "cards": {
+    "Deadly Tempest": "Name:Deadly Tempest\nManaCost:4 B B\nTypes:Sorcery\nA:SP$ DestroyAll | ValidCards$ Creature | RememberDestroyed$ True | SubAbility$ DBRepeat | SpellDescription$ Destroy all creatures. Each player loses life equal to the number of creatures they controlled that were destroyed this way.\nSVar:DBRepeat:DB$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBLoseLife | SubAbility$ DBCleanup\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ X | Defined$ Player.IsRemembered\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$Valid Card.RememberedPlayerCtrl\nAI:RemoveDeck:All\nOracle:Destroy all creatures. Each player loses life equal to the number of creatures they controlled that were destroyed this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deadly Tempest"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

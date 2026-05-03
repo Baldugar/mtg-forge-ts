@@ -1,0 +1,23 @@
+{
+  "id": "diabolic-servitude-corpus-m676",
+  "description": "M6 corpus — Diabolic Servitude; in-hand parse.",
+  "seed": 63596,
+  "cards": {
+    "Diabolic Servitude": "Name:Diabolic Servitude\nManaCost:3 B\nTypes:Enchantment\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigReturnFromGraveyard | TriggerDescription$ When CARDNAME enters, return target creature card from your graveyard to the battlefield.\nSVar:TrigReturnFromGraveyard:DB$ ChangeZone | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature from your graveyard | Origin$ Graveyard | Destination$ Battlefield | RememberTargets$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExileAndBounce | TriggerZones$ Battlefield | TriggerDescription$ When the creature put onto the battlefield with CARDNAME dies, exile it and return CARDNAME to its owner's hand.\nSVar:TrigExileAndBounce:DB$ ChangeZone | Defined$ Remembered | Origin$ Graveyard | Destination$ Exile | SubAbility$ DBCleanupAndBounce\nSVar:DBCleanupAndBounce:DB$ Cleanup | ClearRemembered$ True | SubAbility$ DBBounceMe\nSVar:DBBounceMe:DB$ ChangeZone | Defined$ Self | Origin$ Battlefield | Destination$ Hand | Hidden$ True\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Any | Execute$ TrigExileCreature | TriggerDescription$ When CARDNAME leaves the battlefield, exile the creature put onto the battlefield with CARDNAME.\nSVar:TrigExileCreature:DB$ ChangeZone | Defined$ Remembered | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Battlefield | Destination$ Exile | Execute$ DBCleanup | Static$ True | Secondary$ True | TriggerDescription$ Forget remembered card if it goes into Exile.\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Battlefield | Destination$ Hand | Execute$ DBCleanup | Static$ True | Secondary$ True | TriggerDescription$ Forget remembered card if it goes into Hand.\nT:Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ Battlefield | Destination$ Library | Execute$ DBCleanup | Static$ True | Secondary$ True | TriggerDescription$ Forget remembered card if it goes into Library.\nSVar:NeedsToPlayVar:Y GE1\nSVar:Y:Count$ValidGraveyard Creature.YouOwn\nOracle:When Diabolic Servitude enters, return target creature card from your graveyard to the battlefield.\\nWhen the creature put onto the battlefield with Diabolic Servitude dies, exile it and return Diabolic Servitude to its owner's hand.\\nWhen Diabolic Servitude leaves the battlefield, exile the creature put onto the battlefield with Diabolic Servitude.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Diabolic Servitude"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

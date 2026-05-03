@@ -1,0 +1,23 @@
+{
+  "id": "giant-ladybug-corpus-m676",
+  "description": "M6 corpus — Giant Ladybug; in-hand parse.",
+  "seed": 66156,
+  "cards": {
+    "Giant Ladybug": "Name:Giant Ladybug\nManaCost:2 G\nTypes:Creature Insect\nPT:4/1\nK:Reach\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Library | Destination$ Library | LibraryPosition$ 0 | ChangeType$ Land.Basic | ChangeTypeDesc$ basic land | ShuffleNonMandatory$ True\nOracle:Reach\\nWhen Giant Ladybug enters, you may search your library for a basic land card, reveal it, then shuffle and put that card on top.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Giant Ladybug"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

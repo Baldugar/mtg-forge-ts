@@ -1,0 +1,23 @@
+{
+  "id": "canal-courier-corpus-m676",
+  "description": "M6 corpus — Canal Courier; in-hand parse.",
+  "seed": 61654,
+  "cards": {
+    "Canal Courier": "Name:Canal Courier\nManaCost:5 U\nTypes:Creature Human Rogue\nPT:3/5\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When CARDNAME enters, you become the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigEffect | AttackDifferentPlayers$ True | TriggerDescription$ Whenever CARDNAME and another creature attack different players, CARDNAME can't be blocked this combat.\nSVar:TrigEffect:DB$ Effect | RememberObjects$ Self | StaticAbilities$ STUnblockable | Duration$ UntilEndOfCombat | ExileOnMoved$ Battlefield\nSVar:STUnblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ EFFECTSOURCE can't be blocked this combat.\nOracle:When Canal Courier enters, you become the monarch.\\nWhenever Canal Courier and another creature attack different players, Canal Courier can't be blocked this combat.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Canal Courier"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

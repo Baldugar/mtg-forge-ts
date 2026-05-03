@@ -1,0 +1,23 @@
+{
+  "id": "consign-to-dream-corpus-m676",
+  "description": "M6 corpus — Consign to Dream; in-hand parse.",
+  "seed": 62500,
+  "cards": {
+    "Consign to Dream": "Name:Consign to Dream\nManaCost:2 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Permanent | Origin$ Battlefield | Destination$ Hand | SubAbility$ DBChangeZone | ConditionDefined$ Targeted | ConditionPresent$ Card.Green,Card.Red | ConditionCompare$ EQ0 | SpellDescription$ Return target permanent to its owner's hand. If that permanent is red or green, put it on top of its owner's library instead.\nSVar:DBChangeZone:DB$ ChangeZone | Defined$ Targeted | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | ConditionDefined$ Targeted | ConditionPresent$ Card.Green,Card.Red | ConditionCompare$ GE1\nAI:RemoveDeck:All\nOracle:Return target permanent to its owner's hand. If that permanent is red or green, put it on top of its owner's library instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consign to Dream"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

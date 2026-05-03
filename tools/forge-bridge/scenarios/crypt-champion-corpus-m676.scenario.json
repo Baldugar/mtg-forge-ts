@@ -1,0 +1,23 @@
+{
+  "id": "crypt-champion-corpus-m676",
+  "description": "M6 corpus — Crypt Champion; in-hand parse.",
+  "seed": 62835,
+  "cards": {
+    "Crypt Champion": "Name:Crypt Champion\nManaCost:3 B\nTypes:Creature Zombie\nPT:2/2\nK:Double Strike\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, each player puts a creature card with mana value 3 or less from their graveyard onto the battlefield.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | ManaNotSpent$ R | TriggerDescription$ When CARDNAME enters, sacrifice it unless {R} was spent to cast it.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ChangeType$ Creature.cmcLE3 | ChangeNum$ 1 | Hidden$ True | DefinedPlayer$ Player | Mandatory$ True\nSVar:TrigSac:DB$ Sacrifice\nSVar:ManaNeededToAvoidNegativeEffect:red\nOracle:Double strike\\nWhen Crypt Champion enters, each player puts a creature card with mana value 3 or less from their graveyard onto the battlefield.\\nWhen Crypt Champion enters, sacrifice it unless {R} was spent to cast it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Crypt Champion"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

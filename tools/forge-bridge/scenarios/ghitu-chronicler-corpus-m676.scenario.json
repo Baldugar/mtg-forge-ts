@@ -1,0 +1,23 @@
+{
+  "id": "ghitu-chronicler-corpus-m676",
+  "description": "M6 corpus — Ghitu Chronicler; in-hand parse.",
+  "seed": 66101,
+  "cards": {
+    "Ghitu Chronicler": "Name:Ghitu Chronicler\nManaCost:1 R\nTypes:Creature Human Wizard\nPT:1/3\nK:Kicker:3 R\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self+kicked | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, if it was kicked, return target instant or sorcery card from your graveyard to your hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl\nSVar:NeedsToPlayKickedVar:Z GE1\nSVar:Z:Count$ValidGraveyard Instant.YouOwn,Sorcery.YouOwn\nOracle:Kicker {3}{R} (You may pay an additional {3}{R} as you cast this spell.)\\nWhen Ghitu Chronicler enters, if it was kicked, return target instant or sorcery card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Ghitu Chronicler"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

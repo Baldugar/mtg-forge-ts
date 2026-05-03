@@ -1,0 +1,23 @@
+{
+  "id": "foul-emissary-corpus-m676",
+  "description": "M6 corpus — Foul Emissary; in-hand parse.",
+  "seed": 65687,
+  "cards": {
+    "Foul Emissary": "Name:Foul Emissary\nManaCost:2 G\nTypes:Creature Human Horror\nPT:1/1\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nSVar:TrigDig:DB$ Dig | DigNum$ 4 | ChangeNum$ 1 | Optional$ True | ChangeValid$ Creature\nT:Mode$ Sacrificed | ValidCard$ Card.Self | WhileKeyword$ Spell.withEmerge | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ When you sacrifice CARDNAME while casting a spell with emerge, create a 3/2 colorless Eldrazi Horror creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ c_3_2_eldrazi_horror | TokenOwner$ You\nDeckHints:Keyword$Emerge\nDeckHas:Ability$Token & Type$Eldrazi|Horror\nOracle:When Foul Emissary enters, look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\\nWhen you sacrifice Foul Emissary while casting a spell with emerge, create a 3/2 colorless Eldrazi Horror creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Foul Emissary"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

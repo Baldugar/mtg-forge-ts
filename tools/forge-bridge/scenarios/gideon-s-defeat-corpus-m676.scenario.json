@@ -1,0 +1,23 @@
+{
+  "id": "gideon-s-defeat-corpus-m676",
+  "description": "M6 corpus — Gideon's Defeat; in-hand parse.",
+  "seed": 66177,
+  "cards": {
+    "Gideon's Defeat": "Name:Gideon's Defeat\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.White+attacking,Creature.White+blocking | TgtPrompt$ Select target white creature that's attacking or blocking | Origin$ Battlefield | Destination$ Exile | SubAbility$ DBGainLife | SpellDescription$ Exile target white creature that's attacking or blocking. If it was a Gideon planeswalker, you gain 5 life.\nSVar:DBGainLife:DB$ GainLife | LifeAmount$ 5 | ConditionDefined$ Targeted | ConditionPresent$ Planeswalker.Gideon\nAI:RemoveDeck:Random\nOracle:Exile target white creature that's attacking or blocking. If it was a Gideon planeswalker, you gain 5 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Gideon's Defeat"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

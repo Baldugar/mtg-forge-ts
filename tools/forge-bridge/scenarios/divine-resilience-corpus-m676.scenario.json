@@ -1,0 +1,23 @@
+{
+  "id": "divine-resilience-corpus-m676",
+  "description": "M6 corpus — Divine Resilience; in-hand parse.",
+  "seed": 63760,
+  "cards": {
+    "Divine Resilience": "Name:Divine Resilience\nManaCost:W\nTypes:Instant\nK:Kicker:2 W\nA:SP$ Pump | ValidTgts$ Creature.YouCtrl | TgtPrompt$ Select target creature you control | TargetMin$ X | TargetMax$ Y | KW$ Indestructible | StackDescription$ SpellDescription | SpellDescription$ Target creature you control gains indestructible until end of turn. If this spell was kicked, any number of target creatures you control gain indestructible until end of turn instead. (Damage and effects that say \"destroy\" don't destroy them.)\nSVar:X:Count$Kicked.0.1\nSVar:Y:Count$Kicked.Z.1\nSVar:Z:Count$Valid Creature.YouCtrl\nOracle:Kicker {2}{W} (You may pay an additional {2}{W} as you cast this spell.)\\nTarget creature you control gains indestructible until end of turn. If this spell was kicked, any number of target creatures you control gain indestructible until end of turn instead. (Damage and effects that say \"destroy\" don't destroy them.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Divine Resilience"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

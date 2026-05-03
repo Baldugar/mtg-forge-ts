@@ -1,0 +1,25 @@
+{
+  "id": "cellar-door-corpus-m676",
+  "description": "M6 corpus — Cellar Door; ETB-on-bf.",
+  "seed": 61870,
+  "cards": {
+    "Cellar Door": "Name:Cellar Door\nManaCost:2\nTypes:Artifact\nA:AB$ Dig | Cost$ 3 T | DigNum$ 1 | ChangeNum$ All | ValidTgts$ Player | FromBottom$ True | DestinationZone$ Graveyard | RememberChanged$ True | SubAbility$ DBToken | StackDescription$ {p:Targeted} puts the bottom card of their library into their graveyard. | SpellDescription$ Target player puts the bottom card of their library into their graveyard. If it's a creature card, you create a 2/2 black Zombie creature token.\nSVar:DBToken:DB$ Token | TokenScript$ b_2_2_zombie | TokenOwner$ You | ConditionDefined$ Remembered | ConditionPresent$ Creature | ConditionCompare$ EQ1 | SubAbility$ DBCleanup | StackDescription$ If it's a creature card, {p:You} creates a 2/2 black Zombie creature token. | SpellDescription$ If it's a creature card, you create a 2/2 black Zombie creature token.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:{3}, {T}: Target player puts the bottom card of their library into their graveyard. If it's a creature card, you create a 2/2 black Zombie creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Cellar Door"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

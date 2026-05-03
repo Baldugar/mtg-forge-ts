@@ -1,0 +1,23 @@
+{
+  "id": "day-of-black-sun-corpus-m676",
+  "description": "M6 corpus — Day of Black Sun; in-hand parse.",
+  "seed": 63186,
+  "cards": {
+    "Day of Black Sun": "Name:Day of Black Sun\nManaCost:X B B\nTypes:Sorcery\nA:SP$ PumpAll | ValidCards$ Creature.cmcLEX | RememberPumped$ True | StackDescription$ None | SubAbility$ DBAnimateAll\nSVar:DBAnimateAll:DB$ AnimateAll | ValidCards$ Card.IsRemembered | RemoveAllAbilities$ True | SubAbility$ DBDestroyAll | SpellDescription$ Each creature with mana value X or less loses all abilities until end of turn. Destroy those creatures.\nSVar:DBDestroyAll:DB$ DestroyAll | ValidCards$ Card.IsRemembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$xPaid\nOracle:Each creature with mana value X or less loses all abilities until end of turn. Destroy those creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Day of Black Sun"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

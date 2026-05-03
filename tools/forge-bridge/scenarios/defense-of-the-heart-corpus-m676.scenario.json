@@ -1,0 +1,23 @@
+{
+  "id": "defense-of-the-heart-corpus-m676",
+  "description": "M6 corpus — Defense of the Heart; in-hand parse.",
+  "seed": 63371,
+  "cards": {
+    "Defense of the Heart": "Name:Defense of the Heart\nManaCost:3 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigSac | CheckSVar$ X | SVarCompare$ GE3 | TriggerDescription$ At the beginning of your upkeep, if an opponent controls three or more creatures, sacrifice CARDNAME, search your library for up to two creature cards, put those cards onto the battlefield, then shuffle.\nSVar:TrigSac:DB$ Sacrifice | SubAbility$ DBChange\nSVar:DBChange:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Creature | ChangeNum$ 2\nSVar:X:PlayerCountOpponents$HighestValid Creature.YouCtrl\nOracle:At the beginning of your upkeep, if an opponent controls three or more creatures, sacrifice Defense of the Heart, search your library for up to two creature cards, put those cards onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Defense of the Heart"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

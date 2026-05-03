@@ -1,0 +1,23 @@
+{
+  "id": "clear-the-mind-corpus-m676",
+  "description": "M6 corpus — Clear the Mind; in-hand parse.",
+  "seed": 62218,
+  "cards": {
+    "Clear the Mind": "Name:Clear the Mind\nManaCost:2 U\nTypes:Sorcery\nA:SP$ ChangeZoneAll | ValidTgts$ Player | Origin$ Graveyard | Destination$ Library | ChangeType$ Card | Shuffle$ True | SubAbility$ DBDraw | SpellDescription$ Target player shuffles their graveyard into their library.\nAI:RemoveDeck:Random\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nOracle:Target player shuffles their graveyard into their library.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Clear the Mind"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

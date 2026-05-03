@@ -1,0 +1,23 @@
+{
+  "id": "consecrate-corpus-m676",
+  "description": "M6 corpus — Consecrate; in-hand parse.",
+  "seed": 62496,
+  "cards": {
+    "Consecrate": "Name:Consecrate\nManaCost:1 WB\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Exile | TgtPrompt$ Choose target card in a graveyard | ValidTgts$ Card | SpellDescription$ Exile target card from a graveyard. | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SpellDescription$ Draw a card.\nAlternateMode:Split\nOracle:Exile target card from a graveyard.\\nDraw a card.\n\nALTERNATE\n\nName:Consume\nManaCost:2 W B\nTypes:Sorcery\nA:SP$ Sacrifice | ValidTgts$ Player | SacValid$ Creature.greatestPowerControlledByTargeted | SubAbility$ DBGainLife | SacMessage$ the creature with the greatest power | RememberSacrificed$ True | SpellDescription$ Target player sacrifices a creature with the greatest power among creatures they control. You gain life equal to its power.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:RememberedLKI$CardPower\nOracle:Target player sacrifices a creature with the greatest power among creatures they control. You gain life equal to its power.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Consecrate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

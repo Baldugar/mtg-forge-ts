@@ -1,0 +1,23 @@
+{
+  "id": "conjurer-s-ban-corpus-m676",
+  "description": "M6 corpus — Conjurer's Ban; in-hand parse.",
+  "seed": 62490,
+  "cards": {
+    "Conjurer's Ban": "Name:Conjurer's Ban\nManaCost:W B\nTypes:Sorcery\nA:SP$ NameCard | Defined$ You | SubAbility$ DBEffect | AILogic$ MostProminentInHumanDeck | SpellDescription$ Choose a card name. Until your next turn, spells with the chosen name can't be cast and lands with the chosen name can't be played.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ STCantCast,STCantPlayLand | SubAbility$ DBDraw | Duration$ UntilYourNextTurn\nSVar:STCantCast:Mode$ CantBeCast | ValidCard$ Card.NamedCard | Description$ Spells with the chosen name can't be cast and lands with the chosen name can't be played.\nSVar:STCantPlayLand:Mode$ CantPlayLand | ValidCard$ Card.NamedCard\nSVar:DBDraw:DB$ Draw\nOracle:Choose a card name. Until your next turn, spells with the chosen name can't be cast and lands with the chosen name can't be played.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Conjurer's Ban"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

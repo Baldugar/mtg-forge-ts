@@ -1,0 +1,25 @@
+{
+  "id": "callaphe-beloved-of-the-sea-corpus-m676",
+  "description": "M6 corpus — Callaphe, Beloved of the Sea; ETB-on-bf.",
+  "seed": 61634,
+  "cards": {
+    "Callaphe, Beloved of the Sea": "Name:Callaphe, Beloved of the Sea\nManaCost:1 U U\nTypes:Legendary Enchantment Creature Demigod\nPT:*/3\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | Description$ NICKNAME's power is equal to your devotion to blue.\nSVar:X:Count$Devotion.Blue\nSVar:BuffedBy:Permanent.Blue\nS:Mode$ Continuous | Affected$ Creature.YouCtrl,Enchantment.YouCtrl | AddStaticAbility$ RaiseCost | Description$ Creatures and enchantments you control have \"Spells your opponents cast that target this permanent cost {1} more to cast.\"\nSVar:RaiseCost:Mode$ RaiseCost | ValidTarget$ Card.Self | Activator$ Opponent | Type$ Spell | Amount$ 1 | Description$ Spells your opponents cast that target CARDNAME cost {1} more to cast.\nOracle:Callaphe's power is equal to your devotion to blue. (Each {U} in the mana costs of permanents you control counts toward your devotion to blue.)\\nCreatures and enchantments you control have \"Spells your opponents cast that target this permanent cost {1} more to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Callaphe, Beloved of the Sea"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

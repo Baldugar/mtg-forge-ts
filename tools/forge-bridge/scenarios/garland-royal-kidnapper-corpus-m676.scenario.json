@@ -1,0 +1,23 @@
+{
+  "id": "garland-royal-kidnapper-corpus-m676",
+  "description": "M6 corpus — Garland, Royal Kidnapper; in-hand parse.",
+  "seed": 65949,
+  "cards": {
+    "Garland, Royal Kidnapper": "Name:Garland, Royal Kidnapper\nManaCost:2 U B\nTypes:Legendary Creature Human Knight\nPT:3/4\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMonarch | TriggerDescription$ When NICKNAME enters, target opponent becomes the monarch.\nSVar:TrigMonarch:DB$ BecomeMonarch | ValidTgts$ Opponent\nT:Mode$ BecomeMonarch | ValidPlayer$ Opponent | TriggerZones$ Battlefield | Execute$ TrigEffect | TriggerDescription$ Whenever an opponent becomes the monarch, gain control of target creature that player controls for as long as they're the monarch.\nSVar:TrigEffect:DB$ Effect | ImprintCards$ Targeted | ValidTgts$ Creature.ControlledBy TriggeredPlayer | TgtPrompt$ Choose target creature that player controls | RememberObjects$ TriggeredPlayer | Triggers$ ExileMe | StaticAbilities$ GainControl | Duration$ Permanent\nSVar:GainControl:Mode$ Continuous | Affected$ Card.IsImprinted | CheckSVar$ X | SVarCompare$ EQ1 | GainControl$ You | Description$ You gain control of that creature for as long as that player is the monarch.\nSVar:ExileMe:Mode$ Always | Static$ True | Execute$ ExileEffect | CheckSVar$ X | SVarCompare$ EQ0\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:X:PlayerCountRememberedPlayer$HasPropertyisMonarch\nS:Mode$ Continuous | Affected$ Creature.YouCtrl+YouDontOwn | AddPower$ 2 | AddToughness$ 2 | Description$ Creatures you control but don't own get +2/+2 and can't be sacrificed.\nS:Mode$ CantSacrifice | ValidCard$ Creature.YouCtrl+YouDontOwn | Secondary$ True | SpellDescription$ Creatures you control but don't own get +2/+2 and can't be sacrificed.\nOracle:When Garland enters, target opponent becomes the monarch.\\nWhenever an opponent becomes the monarch, gain control of target creature that player controls for as long as they're the monarch.\\nCreatures you control but don't own get +2/+2 and can't be sacrificed.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Garland, Royal Kidnapper"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

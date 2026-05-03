@@ -1,0 +1,23 @@
+{
+  "id": "flood-of-recollection-corpus-m676",
+  "description": "M6 corpus — Flood of Recollection; in-hand parse.",
+  "seed": 65523,
+  "cards": {
+    "Flood of Recollection": "Name:Flood of Recollection\nManaCost:U U\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Select target instant or sorcery card in your graveyard | ValidTgts$ Instant.YouCtrl,Sorcery.YouCtrl | SubAbility$ DBExile | SpellDescription$ Return target instant or sorcery card from your graveyard to your hand. Exile CARDNAME.\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nOracle:Return target instant or sorcery card from your graveyard to your hand. Exile Flood of Recollection.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Flood of Recollection"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

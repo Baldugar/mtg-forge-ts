@@ -1,0 +1,23 @@
+{
+  "id": "deicide-corpus-m676",
+  "description": "M6 corpus — Deicide; in-hand parse.",
+  "seed": 63399,
+  "cards": {
+    "Deicide": "Name:Deicide\nManaCost:1 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Enchantment | Origin$ Battlefield | Destination$ Exile | RememberChanged$ True | SubAbility$ ExileYard | SpellDescription$ Exile target enchantment. If the exiled card is a God card, search its controller's graveyard, hand, and library for any number of cards with the same name as that card and exile them. Then that player shuffles.\nSVar:ExileYard:DB$ ChangeZone | ChangeType$ Remembered.sameName | Origin$ Graveyard | DefinedPlayer$ TargetedController | Chooser$ You | Destination$ Exile | ChangeNum$ NumInYard | Hidden$ True | SubAbility$ ExileHand | StackDescription$ Search target opponent's graveyard, hand, and library for any number of cards with that name and exile them. Then that player shuffles their library. | ConditionDefined$ Remembered | ConditionPresent$ God | ConditionCompare$ GE1\nSVar:ExileHand:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInHand | Chooser$ You | SubAbility$ ExileLib | StackDescription$ None | ConditionDefined$ Remembered | ConditionPresent$ God | ConditionCompare$ GE1\nSVar:ExileLib:DB$ ChangeZone | Origin$ Library | Destination$ Exile | DefinedPlayer$ TargetedController | ChangeType$ Remembered.sameName | ChangeNum$ NumInLib | Chooser$ You | Shuffle$ True | StackDescription$ None | SubAbility$ DBCleanup | ConditionDefined$ Remembered | ConditionPresent$ God | ConditionCompare$ GE1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:NumInLib:TargetedController$CardsInLibrary\nSVar:NumInHand:TargetedController$CardsInHand\nSVar:NumInYard:TargetedController$CardsInGraveyard\nAI:RemoveDeck:Random\nOracle:Exile target enchantment. If the exiled card is a God card, search its controller's graveyard, hand, and library for any number of cards with the same name as that card and exile them. Then that player shuffles.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deicide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

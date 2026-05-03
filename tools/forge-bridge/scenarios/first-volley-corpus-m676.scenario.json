@@ -1,0 +1,23 @@
+{
+  "id": "first-volley-corpus-m676",
+  "description": "M6 corpus — First Volley; in-hand parse.",
+  "seed": 65399,
+  "cards": {
+    "First Volley": "Name:First Volley\nManaCost:1 R\nTypes:Instant Arcane\nA:SP$ DealDamage | ValidTgts$ Creature | NumDmg$ 1 | DamageMap$ True | SubAbility$ DBDealDamage | SpellDescription$ CARDNAME deals 1 damage to target creature and 1 damage to that creature's controller.\nSVar:DBDealDamage:DB$ DealDamage | NumDmg$ 1 | Defined$ TargetedController | SubAbility$ DBDamageResolve\nSVar:DBDamageResolve:DB$ DamageResolve\nOracle:First Volley deals 1 damage to target creature and 1 damage to that creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "First Volley"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

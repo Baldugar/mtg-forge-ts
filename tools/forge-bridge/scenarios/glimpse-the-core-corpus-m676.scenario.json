@@ -1,0 +1,23 @@
+{
+  "id": "glimpse-the-core-corpus-m676",
+  "description": "M6 corpus — Glimpse the Core; in-hand parse.",
+  "seed": 66297,
+  "cards": {
+    "Glimpse the Core": "Name:Glimpse the Core\nManaCost:1 G\nTypes:Sorcery\nA:SP$ Charm | Choices$ SearchForest,ReturnCave\nSVar:SearchForest:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | Tapped$ True | ChangeType$ Land.Forest+Basic | ChangeNum$ 1 | SpellDescription$ Search your library for a basic Forest card, put that card onto the battlefield tapped, then shuffle.\nSVar:ReturnCave:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target Cave card in your graveyard | ValidTgts$ Cave.YouOwn | Tapped$ True | SpellDescription$ Return target Cave card from your graveyard to the battlefield tapped.\nDeckHints:Type$Cave & Ability$Graveyard|Mill\nOracle:Choose one —\\n• Search your library for a basic Forest card, put that card onto the battlefield tapped, then shuffle.\\n• Return target Cave card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glimpse the Core"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "evercoat-ursine-corpus-m676",
+  "description": "M6 corpus — Evercoat Ursine; in-hand parse.",
+  "seed": 64815,
+  "cards": {
+    "Evercoat Ursine": "Name:Evercoat Ursine\nManaCost:4 G\nTypes:Creature Elemental Bear\nPT:6/5\nK:Trample\nK:Hideaway:3\nK:Hideaway:3\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Player | CheckSVar$ X | SVarCompare$ GT0 | CombatDamage$ True | Execute$ TrigPlay | TriggerDescription$ Whenever CARDNAME deals combat damage to a player, if there are cards exiled with it, you may play one of them without paying its mana cost.\nSVar:TrigPlay:DB$ Play | Defined$ ExiledWith | Amount$ 1 | Controller$ You | WithoutManaCost$ True | Optional$ True\nSVar:X:Count$ValidExile Card.ExiledWithSource\nSVar:DBReturn:DB$ ChangeZone | Defined$ ExiledWith | Origin$ Exile | Destination$ Hand\nOracle:Trample\\nHideaway 3, hideaway 3\\nWhenever Evercoat Ursine deals combat damage to a player, if there are cards exiled with it, you may play one of them without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Evercoat Ursine"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "deathcurse-ogre-corpus-m676",
+  "description": "M6 corpus — Deathcurse Ogre; in-hand parse.",
+  "seed": 63274,
+  "cards": {
+    "Deathcurse Ogre": "Name:Deathcurse Ogre\nManaCost:5 B\nTypes:Creature Ogre Warrior\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigLoseLife | TriggerDescription$ When CARDNAME dies, each player loses 3 life.\nSVar:TrigLoseLife:DB$ LoseLife | LifeAmount$ 3 | Defined$ Player\nOracle:When Deathcurse Ogre dies, each player loses 3 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Deathcurse Ogre"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

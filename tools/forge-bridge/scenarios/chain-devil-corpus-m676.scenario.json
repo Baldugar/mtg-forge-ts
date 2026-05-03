@@ -1,0 +1,23 @@
+{
+  "id": "chain-devil-corpus-m676",
+  "description": "M6 corpus — Chain Devil; in-hand parse.",
+  "seed": 61914,
+  "cards": {
+    "Chain Devil": "Name:Chain Devil\nManaCost:3 B\nTypes:Creature Devil\nPT:4/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ Animate Chains — When CARDNAME enters, each player sacrifices a nontoken creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature.!token\nSVar:NeedsToPlay:Creature.YouDontCtrl\nDeckHas:Ability$Sacrifice\nOracle:Animate Chains — When Chain Devil enters, each player sacrifices a nontoken creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Chain Devil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glister-bairn-corpus-m676",
+  "description": "M6 corpus — Glister Bairn; in-hand parse.",
+  "seed": 66317,
+  "cards": {
+    "Glister Bairn": "Name:Glister Bairn\nManaCost:2 GU GU GU\nTypes:Creature Ouphe\nPT:1/4\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Vivid — At the beginning of combat on your turn, another target creature you control gets +X/+X until end of turn, where X is the number of colors among permanents you control.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+YouCtrl | NumDef$ +X | NumAtt$ +X | TgtPrompt$ Select another target creature you control\nSVar:X:Count$Valid Permanent.YouCtrl$Colors\nOracle:Vivid — At the beginning of combat on your turn, another target creature you control gets +X/+X until end of turn, where X is the number of colors among permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Glister Bairn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

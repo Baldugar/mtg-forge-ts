@@ -1,0 +1,23 @@
+{
+  "id": "failure-corpus-m676",
+  "description": "M6 corpus — Failure; in-hand parse.",
+  "seed": 64998,
+  "cards": {
+    "Failure": "Name:Failure\nManaCost:1 U\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Card | TargetType$ Spell | TgtZone$ Stack | Origin$ Stack | Destination$ Hand | SpellDescription$ Return target spell to its owner's hand.\nAlternateMode:Split\nOracle:Return target spell to its owner's hand.\n\nALTERNATE\n\nName:Comply\nManaCost:W\nTypes:Sorcery\nK:Aftermath\nA:SP$ NameCard | Defined$ You | SubAbility$ DBEffect | SpellDescription$ Choose a card name. Until your next turn, your opponents can't cast spells with the chosen name.\nSVar:DBEffect:DB$ Effect | StaticAbilities$ CantCast | Duration$ UntilYourNextTurn\nSVar:CantCast:Mode$ CantBeCast | ValidCard$ Card.nonLand+NamedCard | Caster$ Opponent | Description$ Your opponents can't cast spells with the chosen name.\nOracle:Aftermath (Cast this spell only from your graveyard. Then exile it.)\\nChoose a card name. Until your next turn, your opponents can't cast spells with the chosen name.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Failure"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
