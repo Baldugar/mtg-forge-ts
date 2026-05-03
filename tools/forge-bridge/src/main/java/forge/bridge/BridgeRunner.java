@@ -456,6 +456,9 @@ public final class BridgeRunner {
                     case "advanceToStep":
                         execAdvanceToStep(game, act);
                         break;
+                    case "passTurn":
+                        execPassTurn(game);
+                        break;
                     default:
                         rec.recordSynthetic("BridgeUnsupported",
                             "actionKind=" + kind);
@@ -1366,6 +1369,22 @@ public final class BridgeRunner {
         }
         game.getPhaseHandler().devAdvanceToPhase(target);
         drainStack(game);
+    }
+
+    /**
+     * M7.0 — pass turn to the next active player. Mirrors the TS-runner's
+     * `passTurn` action which loops `advancePhase` until `game.turn`
+     * increments by one. We pin the entry turn number, then drive
+     * advancePhase up to 26 times (defensive cap, two full canonical
+     * sequences) and bail when the turn counter advances or the cap is hit.
+     */
+    private static void execPassTurn(Game game) {
+        int entryTurn = game.getPhaseHandler().getTurn();
+        for (int i = 0; i < 26; i++) {
+            execAdvancePhase(game);
+            if (game.getPhaseHandler().getTurn() > entryTurn) return;
+            if (game.isGameOver()) return;
+        }
     }
 
     private static PhaseType nextPhase(PhaseType current) {

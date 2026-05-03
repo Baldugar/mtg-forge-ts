@@ -373,6 +373,17 @@ const JAVA_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // path). Same family as Java-only CounterAdded — a TS-runner gap, not
   // an engine bug.
   ["CounterRemoved", "ts-runner-shallow"],
+  // M7.0 — Java-only `PlayerLost`. The Java bridge's per-action
+  // post-pass scans for CR 704.5 loss-condition matches (life ≤ 0 /
+  // poison ≥ 10) and emits a synthetic `PlayerLost` event. The TS
+  // golden runner doesn't drive auto-combat during phase advancement
+  // (active-player priority just passes; there's no automatic
+  // attacker declaration), so a multi-turn passive-pass scenario
+  // where Java's auto-combat AI lethals the opponent has Java-only
+  // `PlayerLost` events with no TS-side analog. Same family as the
+  // other phase-driver shallow divergences — a TS-runner gap by
+  // design, not an engine bug.
+  ["PlayerLost", "ts-runner-shallow"],
 ]);
 
 /**
@@ -480,6 +491,14 @@ const KIND_ALIASES: ReadonlyArray<readonly [string, string]> = [
   // so cost-unpayable scenarios register as shared parity rather than as
   // a TS-only abort + Java-only bridge-skip pair.
   ["CastAborted", "BridgeCastFailed"],
+  // M7.0 — phase transition events: TS emits `StepStarted` /
+  // `StepEnded` per CR 500.x step boundary, while Forge's bridge
+  // emits a single `PhaseChanged` event for each step boundary
+  // (GameEventTurnPhase). Alias both TS kinds to the same Java kind
+  // so the parity harness recognises step traversal as shared signal
+  // rather than a TS-only fan-out.
+  ["StepStarted", "PhaseChanged"],
+  ["StepEnded", "PhaseChanged"],
 ];
 
 export interface ParityReport {
