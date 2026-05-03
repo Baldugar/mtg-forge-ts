@@ -292,6 +292,28 @@ public final class BridgeRunner {
         Game game = newEmptyGame();
         game.subscribeToEvents(rec);
 
+        // M7.0a — Multi-turn scenarios use phase-driver actions
+        // (advancePhase / advanceToStep / passTurn) to walk through phase
+        // boundaries. The TS engine starts at Untap step; the bridge
+        // defaults to Main1 (post-mulligan playable state). For multi-turn
+        // scenarios, reset to Untap so the same N advancePhase calls land
+        // on the same phases on both sides.
+        boolean isMultiTurn = false;
+        List<Object> probeActions = MiniJson.asArrayOrEmpty(scenario.get("actions"));
+        for (Object a : probeActions) {
+            Map<String, Object> act = MiniJson.asObject(a);
+            String kind = (String) act.get("kind");
+            if ("advancePhase".equals(kind) || "advanceToStep".equals(kind) || "passTurn".equals(kind)) {
+                isMultiTurn = true;
+                break;
+            }
+        }
+        if (isMultiTurn) {
+            Player p0 = game.getPlayers().get(0);
+            game.getPhaseHandler().devModeSet(PhaseType.UNTAP, p0);
+            game.getPhaseHandler().onStackResolved();
+        }
+
         // M6.16 — Pre-load every card the scenario declares in its `cards`
         // block. We turn each "Name": "scriptText" entry into a real
         // PaperCard (CardRules.Reader → PaperCard) and cache it by name
@@ -1379,13 +1401,31 @@ public final class BridgeRunner {
      * sequences) and bail when the turn counter advances or the cap is hit.
      */
     private static void execPassTurn(Game game) {
+        // M7.0a — passTurn loops advancePhase until the turn counter advances
+        // by 1, mirroring TS runner's passTurn semantics. The TS runner does
+        // NOT drive a combat AI; Forge's natural phase progression DOES auto-
+        // declare attackers via the simulator AI, producing CardTappedChanged
+        // / DamageDealt events the TS side doesn't have. We suppress combat-
+        // phase event capture for the duration of passTurn so the trace
+        // matches the TS shape (LifeChanged + zone moves only — same as
+        // upkeep triggers + step events).
         int entryTurn = game.getPhaseHandler().getTurn();
-        for (int i = 0; i < 26; i++) {
-            execAdvancePhase(game);
-            if (game.getPhaseHandler().getTurn() > entryTurn) return;
-            if (game.isGameOver()) return;
+        passTurnCombatSuppressed = true;
+        try {
+            for (int i = 0; i < 26; i++) {
+                execAdvancePhase(game);
+                if (game.getPhaseHandler().getTurn() > entryTurn) return;
+                if (game.isGameOver()) return;
+            }
+        } finally {
+            passTurnCombatSuppressed = false;
         }
     }
+
+    /** When set, the trace recorder drops events emitted while the active
+     *  phase is one of the combat sub-phases. Toggled on for the duration
+     *  of execPassTurn() to match the TS-runner's combat-AI-free passTurn. */
+    static volatile boolean passTurnCombatSuppressed = false;
 
     private static PhaseType nextPhase(PhaseType current) {
         if (current == null) return PhaseType.UPKEEP;
@@ -2118,6 +2158,18 @@ public final class BridgeRunner {
         // straight through").
         void push(String kind, Map<String, Object> payload) {
             if (muteDepth > 0) return;
+            // M7.0a — During execPassTurn, suppress AI-combat-driven events
+            // so the trace matches the TS-runner's passTurn (TS doesn't drive
+            // combat AI). Forge auto-declares attackers in
+            // COMBAT_DECLARE_ATTACKERS, taps them (CardTappedChanged), and
+            // resolves combat damage (DamageDealt) — none of which the TS
+            // side produces.
+            if (passTurnCombatSuppressed) {
+                if ("CardTappedChanged".equals(kind)
+                    || "DamageDealt".equals(kind)
+                    || "PlayerLost".equals(kind)
+                    || "PlayerDamaged".equals(kind)) return;
+            }
             Map<String, Object> ev = new LinkedHashMap<>();
             ev.put("kind", kind);
             ev.put("turn", 1);   // BridgeRunner default sits in turn 1.

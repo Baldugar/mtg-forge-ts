@@ -1,0 +1,92 @@
+{
+  "scenarioId": "upkeep-trigger-v2-17-m700",
+  "seed": 28945,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "UPKEEP"
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "stackIndex": 0,
+        "description": null,
+        "isTrigger": true
+      }
+    },
+    {
+      "kind": "CounterAdded",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Wing Counter M7",
+        "counterType": "p1p1",
+        "amount": 1,
+        "removed": false
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "hasFizzled": false,
+        "isTrigger": true
+      }
+    },
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "DRAW"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "UNTAP"
+      }
+    },
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 10
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Wing Counter M7",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 13
+      }
+    }
+  ]
+}

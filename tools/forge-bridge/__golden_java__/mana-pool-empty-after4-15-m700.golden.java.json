@@ -1,0 +1,87 @@
+{
+  "scenarioId": "mana-pool-empty-after4-15-m700",
+  "seed": 29455,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardTappedChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Sol Ring",
+        "tapped": true
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "description": "{T}: Add {C}{C}.",
+        "isManaAbility": true
+      }
+    },
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "UPKEEP"
+      }
+    },
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "DRAW"
+      }
+    },
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "MAIN1"
+      }
+    },
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "COMBAT_BEGIN"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "UNTAP"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Sol Ring",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 18
+      }
+    }
+  ]
+}

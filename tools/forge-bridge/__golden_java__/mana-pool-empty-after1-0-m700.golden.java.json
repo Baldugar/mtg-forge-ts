@@ -1,0 +1,72 @@
+{
+  "scenarioId": "mana-pool-empty-after1-0-m700",
+  "seed": 29440,
+  "engineVersion": "forge-bridge-v2-0.2.0",
+  "events": [
+    {
+      "kind": "CardTappedChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Sol Ring",
+        "tapped": true
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "description": "{T}: Add {C}{C}.",
+        "isManaAbility": true
+      }
+    },
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "UPKEEP"
+      }
+    }
+  ],
+  "setupEvents": [
+    {
+      "kind": "PhaseChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "phase": "UNTAP"
+      }
+    },
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 5
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "cardName": "Sol Ring",
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield"
+      }
+    },
+    {
+      "kind": "LifeTotalChanged",
+      "turn": 1,
+      "phase": "Main1",
+      "payload": {
+        "oldLife": 20,
+        "newLife": 5
+      }
+    }
+  ]
+}
