@@ -50,21 +50,30 @@ export class PlayEffect extends SpellAbilityEffect {
   static override readonly handlerKey = "Play";
 
   override *resolve(sa: SpellAbility, game: Game): Generator<EngineYield, void, unknown> {
-    // Resolve Defined$ — only Targeted is supported for MVP.
+    // Resolve Defined$ — Targeted (default) / Remembered / Self.
     const definedRaw = hasParam(sa, "Defined") ? evaluateParamRaw(sa, "Defined") : "Targeted";
     const isOptional = hasParam(sa, "Optional") && evaluateParamRaw(sa, "Optional") === "True";
     const withoutManaCost =
       !hasParam(sa, "WithoutManaCost") || evaluateParamRaw(sa, "WithoutManaCost") === "True";
 
-    if (definedRaw !== "Targeted") {
-      // Defined$ Remembered / other forms deferred to AltCostRegistry wave.
-      // Not a crash — log a note and no-op so the game continues.
-      // TODO(AltCostRegistry wave): resolve Remembered → remembered[0] card.
+    // Resolve target card by Defined$:
+    //   Targeted (default) → sa.targets[0]
+    //   Remembered          → source card's first remembered EntityId
+    //   Self                → source card itself
+    let targetId: EntityId | undefined;
+    if (definedRaw === "Targeted") {
+      targetId = sa.targets[0] as EntityId | undefined;
+    } else if (definedRaw === "Remembered") {
+      const src = game.cards.get(sa.sourceCardId);
+      if (src && src.remembered.length > 0) {
+        targetId = src.remembered[0] as EntityId | undefined;
+      }
+    } else if (definedRaw === "Self") {
+      targetId = sa.sourceCardId as EntityId;
+    } else {
+      // Unrecognised Defined$ — no-op (game continues).
       return;
     }
-
-    // sa.targets[0] is the card EntityId to cast.
-    const targetId: EntityId | undefined = sa.targets[0] as EntityId | undefined;
     if (!targetId) {
       // No target provided — Optional$ True means this is legal (just skip).
       if (!isOptional) {
