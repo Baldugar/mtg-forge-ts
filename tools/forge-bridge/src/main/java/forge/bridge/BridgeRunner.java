@@ -78,9 +78,12 @@ import forge.localinstance.properties.ForgePreferences.FPref;
 import forge.model.FModel;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -123,7 +126,18 @@ public final class BridgeRunner {
     private static final Map<String, String> scenarioCardScripts = new LinkedHashMap<>();
 
     public static void main(String[] args) throws Exception {
-        // Read stdin into a string; small payloads, no streaming needed.
+        // Server mode: keep a single JVM alive and accept many scenarios via
+        // stdin (one per line: "<scenarioPath>\t<outputPath>"). Amortizes
+        // Forge's ~10s static init across the whole batch — per-scenario
+        // capture drops from ~21s to ~1-2s on warm runs.
+        boolean serverMode = (args.length >= 1 && "--server".equals(args[0]))
+            || "1".equals(System.getenv("BRIDGE_SERVER"));
+        if (serverMode) {
+            runServerLoop();
+            return;
+        }
+
+        // Single-shot mode (legacy): stdin = scenario JSON, stdout = trace JSON.
         StringBuilder sb = new StringBuilder();
         try (BufferedReader r = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8))) {
             int c;
@@ -160,6 +174,57 @@ public final class BridgeRunner {
             System.exit(2);
         }
         System.exit(0);
+    }
+
+    private static void runServerLoop() throws Exception {
+        // Forge log lines go to stderr so stdout stays a clean control channel.
+        PrintStream controlOut = System.out;
+        System.setOut(System.err);
+
+        initializeForgeOnce();
+        controlOut.println("READY");
+        controlOut.flush();
+
+        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        String line;
+        while ((line = stdin.readLine()) != null) {
+            line = line.trim();
+            if (line.isEmpty()) continue;
+            if ("QUIT".equals(line) || "EXIT".equals(line)) break;
+
+            // Format: "<scenarioPath>\t<outputPath>"
+            int tab = line.indexOf('\t');
+            if (tab < 0) {
+                controlOut.println("ERR _ malformed-line");
+                controlOut.flush();
+                continue;
+            }
+            String scenarioPath = line.substring(0, tab);
+            String outputPath = line.substring(tab + 1);
+
+            try {
+                String scenarioJson = new String(Files.readAllBytes(Paths.get(scenarioPath)), StandardCharsets.UTF_8);
+                Object scenarioRoot = MiniJson.parse(scenarioJson);
+                Map<String, Object> scenario = MiniJson.asObject(scenarioRoot);
+                TraceRecorder rec = new TraceRecorder();
+                runScenario(scenario, rec);
+                String trace = MiniJson.write(rec.toTrace(scenario));
+                try (FileWriter w = new FileWriter(outputPath, StandardCharsets.UTF_8)) {
+                    w.write(trace);
+                    w.write(System.lineSeparator());
+                }
+                controlOut.println("OK " + outputPath);
+                controlOut.flush();
+            } catch (Throwable t) {
+                String reason = t.getClass().getSimpleName() + ": " +
+                    (t.getMessage() == null ? "" : t.getMessage().replace('\n', ' '));
+                controlOut.println("ERR " + outputPath + " " + reason);
+                controlOut.flush();
+                t.printStackTrace(System.err);
+            }
+        }
+        controlOut.println("BYE");
+        controlOut.flush();
     }
 
     // ---------- Forge bootstrap ----------
