@@ -28,5 +28,17 @@
       "tools/forge-bridge/scenarios",
       "packages/game/test/golden/__golden__"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "include": ["packages/game/test/golden/scenarios.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noNonNullAssertion": "off"
+          }
+        }
+      }
+    }
+  ]
 }

@@ -98,6 +98,7 @@ selectorRegistry.register("Count", (ast, ctx) => {
   // card's mana value"). The fallback hits when a SVar references the
   // mana cost of a remembered/lki card and there's no specialized handler.
   if (arg === "ManaCost" || arg === "CardManaCost") {
+    if (ctx.sourceCardId === undefined) return 0;
     const card = ctx.game.cards.get(ctx.sourceCardId);
     const def = card?.paperCard.definition;
     const mc = def?.manaCost;

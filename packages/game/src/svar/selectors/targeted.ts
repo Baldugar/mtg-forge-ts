@@ -21,6 +21,9 @@ selectorRegistry.register("Targeted", (ast, ctx) => {
     throw new Error(`Targeted$${arg}: no targets in context`);
   }
   const targetId = ctx.targets[0];
+  if (targetId === undefined) {
+    throw new Error(`Targeted$${arg}: undefined target id`);
+  }
   const card = ctx.game.cards.get(targetId);
   if (!card) {
     throw new Error(`Targeted$${arg}: target ${targetId} not a card`);
