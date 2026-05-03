@@ -24,7 +24,8 @@
 //   - Revolt         : a permanent the controller controlled left BF this turn
 //   - Threshold      : controller has ≥7 cards in graveyard
 //   - Spellmastery   : ≥2 instants/sorceries in controller's graveyard
-//   - Heroic         : trigger-only flag — treat as true (TODO: refine)
+//   - Heroic         : trigger-only flag (Wave 105 — honors triggerContext
+//                      target list when present; defaults true otherwise)
 //   - Kicked         : source card.wasKicked === true
 //   - Foretold       : source card.foretold === true
 //   - Madness        : source card.madnessCast === true

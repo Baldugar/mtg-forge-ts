@@ -13,8 +13,8 @@
 //   Count$CardCounters.<Type>     : counters of type <Type> on source
 //   Count$CrewSize                : number of creatures crewing the
 //                                   source vehicle (length of `crewedBy`
-//                                   if present; 0 otherwise — TODO when
-//                                   the slot is wired by CrewEffect).
+//                                   if present; 0 otherwise. Wave 98 —
+//                                   CrewEffect maintains the slot.
 //
 // Each selector reads `ctx.sourceCardId` (or `ctx.targets[0]` for the
 // PT/colors variants when targets are present, mirroring NumColors). Cards
