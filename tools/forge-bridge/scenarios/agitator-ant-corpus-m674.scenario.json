@@ -1,0 +1,25 @@
+{
+  "id": "agitator-ant-corpus-m674",
+  "description": "M6 corpus — Agitator Ant; ETB-on-bf.",
+  "seed": 61648,
+  "cards": {
+    "Agitator Ant": "Name:Agitator Ant\nManaCost:2 R\nTypes:Creature Insect\nPT:2/2\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ DBChoice | TriggerDescription$ At the beginning of your end step, each player may put two +1/+1 counters on a creature they control. Goad each creature that had counters put on it this way. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\nSVar:DBChoice:DB$ ChooseCard | Defined$ Player | Amount$ 1 | MinAmount$ 0 | Choices$ Creature | ControlledByPlayer$ Chooser | SubAbility$ DBPutCounter\nSVar:DBPutCounter:DB$ PutCounterAll | Placer$ Controller | ValidCards$ Creature.ChosenCard | CounterType$ P1P1 | CounterNum$ 2 | RememberPut$ True | SubAbility$ DBGoad\nSVar:DBGoad:DB$ Goad | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nDeckHas:Ability$Counters\nOracle:At the beginning of your end step, each player may put two +1/+1 counters on a creature they control. Goad each creature that had counters put on it this way. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agitator Ant"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

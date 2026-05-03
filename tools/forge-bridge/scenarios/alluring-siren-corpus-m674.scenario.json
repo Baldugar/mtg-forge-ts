@@ -1,0 +1,25 @@
+{
+  "id": "alluring-siren-corpus-m674",
+  "description": "M6 corpus — Alluring Siren; ETB-on-bf.",
+  "seed": 61831,
+  "cards": {
+    "Alluring Siren": "Name:Alluring Siren\nManaCost:1 U\nTypes:Creature Siren\nPT:1/1\nA:AB$ Effect | Cost$ T | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ MustAttack | IsCurse$ True | StackDescription$ {c:Targeted} attacks you this turn if able. | SpellDescription$ Target creature an opponent controls attacks you this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Creature.IsRemembered | MustAttack$ You | Description$ This creature attacks you this turn if able.\nAI:RemoveDeck:All\nOracle:{T}: Target creature an opponent controls attacks you this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alluring Siren"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

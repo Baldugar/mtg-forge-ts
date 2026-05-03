@@ -1,0 +1,23 @@
+{
+  "id": "aether-snap-corpus-m674",
+  "description": "M6 corpus — Aether Snap; in-hand parse.",
+  "seed": 61581,
+  "cards": {
+    "Aether Snap": "Name:Aether Snap\nManaCost:3 B B\nTypes:Sorcery\nA:SP$ RemoveCounterAll | ValidCards$ Permanent | AllCounterTypes$ True | StackDescription$ SpellDescription | SubAbility$ DBRemove | SpellDescription$ Remove all counters from all permanents and exile all tokens.\nSVar:DBRemove:DB$ ChangeZoneAll | ChangeType$ Card.token | Origin$ Battlefield | Destination$ Exile\nAI:RemoveDeck:All\nAI:RemoveDeck:Random\nOracle:Remove all counters from all permanents and exile all tokens.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Snap"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

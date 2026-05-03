@@ -1,0 +1,25 @@
+{
+  "id": "ambush-wolf-corpus-m674",
+  "description": "M6 corpus — Ambush Wolf; ETB-on-bf.",
+  "seed": 61905,
+  "cards": {
+    "Ambush Wolf": "Name:Ambush Wolf\nManaCost:2 G\nTypes:Creature Wolf\nPT:4/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When this creature enters, exile up to one target card from a graveyard.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Card | TargetMin$ 0 | TargetMax$ 1 | TgtPrompt$ Select target card in a graveyard to exile\nOracle:Flash (You may cast this spell any time you could cast an instant.)\\nWhen this creature enters, exile up to one target card from a graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ambush Wolf"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

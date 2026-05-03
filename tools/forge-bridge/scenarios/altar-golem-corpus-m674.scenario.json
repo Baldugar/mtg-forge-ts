@@ -1,0 +1,25 @@
+{
+  "id": "altar-golem-corpus-m674",
+  "description": "M6 corpus — Altar Golem; ETB-on-bf.",
+  "seed": 61865,
+  "cards": {
+    "Altar Golem": "Name:Altar Golem\nManaCost:7\nTypes:Artifact Creature Golem\nPT:*/*\nK:Trample\nR:Event$ Untap | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ This creature doesn't untap during your untap step.\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ X | SetToughness$ X | Description$ CARDNAME's power and toughness are each equal to the number of creatures on the battlefield.\nSVar:X:Count$Valid Creature\nA:AB$ Untap | Cost$ tapXType<5/Creature> | SpellDescription$ Untap this creature.\nSVar:BuffedBy:Creature\nAI:RemoveDeck:Random\nSVar:NoZeroToughnessAI:True\nOracle:Trample\\nAltar Golem's power and toughness are each equal to the number of creatures on the battlefield.\\nThis creature doesn't untap during your untap step.\\nTap five untapped creatures you control: Untap this creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Altar Golem"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

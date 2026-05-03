@@ -1,0 +1,25 @@
+{
+  "id": "accursed-marauder-corpus-m674",
+  "description": "M6 corpus — Accursed Marauder; ETB-on-bf.",
+  "seed": 61459,
+  "cards": {
+    "Accursed Marauder": "Name:Accursed Marauder\nManaCost:1 B\nTypes:Creature Zombie Warrior\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, each player sacrifices a nontoken creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ Player | SacValid$ Creature.!token | SacMessage$ nontoken creature\nSVar:NeedsToPlay:Creature.!token+OppCtrl\nDeckHas:Ability$Sacrifice\nOracle:When Accursed Marauder enters, each player sacrifices a nontoken creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Accursed Marauder"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

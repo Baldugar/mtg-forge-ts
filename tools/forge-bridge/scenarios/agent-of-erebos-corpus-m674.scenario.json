@@ -1,0 +1,25 @@
+{
+  "id": "agent-of-erebos-corpus-m674",
+  "description": "M6 corpus — Agent of Erebos; ETB-on-bf.",
+  "seed": 61626,
+  "cards": {
+    "Agent of Erebos": "Name:Agent of Erebos\nManaCost:3 B\nTypes:Enchantment Creature Zombie\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Enchantment.YouCtrl | Execute$ TrigExile | TriggerDescription$ Constellation — Whenever CARDNAME or another enchantment you control enters, exile target player's graveyard.\nSVar:TrigExile:DB$ ChangeZoneAll | Origin$ Graveyard | Destination$ Exile | ValidTgts$ Player | ChangeType$ Card\nAI:RemoveDeck:Random\nOracle:Constellation — Whenever Agent of Erebos or another enchantment you control enters, exile target player's graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agent of Erebos"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

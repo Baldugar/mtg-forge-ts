@@ -1,0 +1,25 @@
+{
+  "id": "ach-hans-run-corpus-m674",
+  "description": "M6 corpus — \"Ach! Hans, Run!\"; ETB-on-bf.",
+  "seed": 61464,
+  "cards": {
+    "\"Ach! Hans, Run!\"": "Name:\"Ach! Hans, Run!\"\nManaCost:2 R R G G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigAch | TriggerDescription$ At the beginning of your upkeep, you may say \"Ach! Hans, run! It's the . . .\" and the name of a creature card. If you do, search your library for a card with that name, put it onto the battlefield, then shuffle your library. That creature gains haste. Exile it at the beginning of the next end step.\nSVar:TrigAch:DB$ NameCard | Defined$ You | ValidCards$ Card.Creature | ValidDescription$ creature | SubAbility$ DBSearch | SpellDescription$ You may say \"Ach! Hans, run! It's the . . .\" and the name of a creature card. If you do, search your library for a card with that name, put it onto the battlefield, then shuffle your library. That creature gains haste. Exile it at the beginning of the next end step.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Card.NamedCard | RememberChanged$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Animate | Keywords$ Haste | Duration$ Permanent | AtEOT$ Exile | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearNamedCard$ True\nOracle:At the beginning of your upkeep, you may say \"Ach! Hans, run! It's the . . .\" and the name of a creature card. If you do, search your library for a card with that name, put it onto the battlefield, then shuffle. That creature gains haste. Exile it at the beginning of the next end step.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "\"Ach! Hans, Run!\""
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

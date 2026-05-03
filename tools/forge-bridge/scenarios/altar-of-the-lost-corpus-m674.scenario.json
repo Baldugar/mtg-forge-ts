@@ -1,0 +1,25 @@
+{
+  "id": "altar-of-the-lost-corpus-m674",
+  "description": "M6 corpus — Altar of the Lost; ETB-on-bf.",
+  "seed": 61870,
+  "cards": {
+    "Altar of the Lost": "Name:Altar of the Lost\nManaCost:3\nTypes:Artifact\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ Combo Any | Amount$ 2 | RestrictValid$ Spell.wasCastFromGraveyard+withFlashback | SpellDescription$ Add two mana in any combination of colors. Spend this mana only to cast spells with flashback from a graveyard.\nAI:RemoveDeck:Random\nOracle:Altar of the Lost enters tapped.\\n{T}: Add two mana in any combination of colors. Spend this mana only to cast spells with flashback from a graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Altar of the Lost"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

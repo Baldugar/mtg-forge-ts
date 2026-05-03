@@ -1,0 +1,23 @@
+{
+  "id": "akroma-s-will-corpus-m674",
+  "description": "M6 corpus — Akroma's Will; in-hand parse.",
+  "seed": 61746,
+  "cards": {
+    "Akroma's Will": "Name:Akroma's Will\nManaCost:3 W\nTypes:Instant\nA:SP$ Charm | MinCharmNum$ 1 | CharmNum$ Count$Compare Y GE1.2.1 | Choices$ DBFly,DBLife | AdditionalDescription$ . If you control a commander as you cast this spell, you may choose both.\nSVar:DBFly:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Flying & Vigilance & Double Strike | SpellDescription$ Creatures you control gain flying, vigilance, and double strike until end of turn.\nSVar:DBLife:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Lifelink & Indestructible & Protection from each color | SpellDescription$ Creatures you control gain lifelink, indestructible, and protection from each color until end of turn.\nSVar:Y:Count$Valid Card.IsCommander+YouCtrl\nOracle:Choose one. If you control a commander as you cast this spell, you may choose both.\\n• Creatures you control gain flying, vigilance, and double strike until end of turn.\\n• Creatures you control gain lifelink, indestructible, and protection from each color until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Akroma's Will"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

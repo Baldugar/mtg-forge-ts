@@ -1,0 +1,25 @@
+{
+  "id": "agadeem-occultist-corpus-m674",
+  "description": "M6 corpus — Agadeem Occultist; ETB-on-bf.",
+  "seed": 61614,
+  "cards": {
+    "Agadeem Occultist": "Name:Agadeem Occultist\nManaCost:2 B\nTypes:Creature Human Shaman Ally\nPT:0/2\nA:AB$ ChangeZone | Cost$ T | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True | TgtPrompt$ Choose target creature card in your opponent's graveyard | ValidTgts$ Creature.OppCtrl | ConditionCheckSVar$ Y | ConditionSVarCompare$ LEX | SpellDescription$ Put target creature card from an opponent's graveyard onto the battlefield under your control if its mana value is less than or equal to the number of Allies you control.\nSVar:X:Count$Valid Ally.YouCtrl\nSVar:Y:Targeted$CardManaCost\nSVar:BuffedBy:Ally\nDeckNeeds:Type$Ally\nOracle:{T}: Put target creature card from an opponent's graveyard onto the battlefield under your control if its mana value is less than or equal to the number of Allies you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agadeem Occultist"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

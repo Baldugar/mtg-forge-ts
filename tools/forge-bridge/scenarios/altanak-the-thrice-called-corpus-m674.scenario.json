@@ -1,0 +1,25 @@
+{
+  "id": "altanak-the-thrice-called-corpus-m674",
+  "description": "M6 corpus — Altanak, the Thrice-Called; ETB-on-bf.",
+  "seed": 61864,
+  "cards": {
+    "Altanak, the Thrice-Called": "Name:Altanak, the Thrice-Called\nManaCost:5 G G\nTypes:Legendary Creature Insect Beast\nPT:9/9\nK:Trample\nT:Mode$ BecomesTarget | ValidTarget$ Card.Self | ValidSource$ SpellAbility.OppCtrl | TriggerZones$ Battlefield | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME becomes the target of a spell or ability an opponent controls, draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ ChangeZone | Cost$ 1 G Discard<1/CARDNAME> | ActivationZone$ Hand | Origin$ Graveyard | Destination$ Battlefield | TgtPrompt$ Select target land card in your graveyard | ValidTgts$ Land.YouOwn | Tapped$ True | SpellDescription$ Return target land card from your graveyard to the battlefield tapped.\nOracle:Trample\\nWhenever Altanak, the Thrice-Called becomes the target of a spell or ability an opponent controls, draw a card.\\n{1}{G}, Discard Altanak, the Thrice-Called: Return target land card from your graveyard to the battlefield tapped.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Altanak, the Thrice-Called"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

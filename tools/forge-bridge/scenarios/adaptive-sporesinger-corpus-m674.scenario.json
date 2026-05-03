@@ -1,0 +1,25 @@
+{
+  "id": "adaptive-sporesinger-corpus-m674",
+  "description": "M6 corpus — Adaptive Sporesinger; ETB-on-bf.",
+  "seed": 61500,
+  "cards": {
+    "Adaptive Sporesinger": "Name:Adaptive Sporesinger\nManaCost:2 G\nTypes:Creature Phyrexian Druid\nPT:2/2\nK:Vigilance\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBPump,DBProliferate\nSVar:DBPump:DB$ Pump | NumAtt$ +2 | NumDef$ +2 | ValidTgts$ Creature | KW$ Vigilance | SpellDescription$ Target creature gets +2/+2 and gains vigilance until end of turn.\nSVar:DBProliferate:DB$ Proliferate | SpellDescription$ Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nDeckHas:Ability$Proliferate\nOracle:Vigilance\\nWhen Adaptive Sporesinger enters, choose one —\\n• Target creature gets +2/+2 and gains vigilance until end of turn.\\n• Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Adaptive Sporesinger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

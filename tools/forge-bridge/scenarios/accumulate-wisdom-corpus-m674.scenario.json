@@ -1,0 +1,23 @@
+{
+  "id": "accumulate-wisdom-corpus-m674",
+  "description": "M6 corpus — Accumulate Wisdom; in-hand parse.",
+  "seed": 61454,
+  "cards": {
+    "Accumulate Wisdom": "Name:Accumulate Wisdom\nManaCost:1 U\nTypes:Instant Lesson\nA:SP$ Dig | DigNum$ 3 | ChangeNum$ X | NoReveal$ True | SpellDescription$ Look at the top three cards of your library. Put one of those cards into your hand and the rest on the bottom of your library in any order. Put each of those cards into your hand instead if there are three or more Lesson cards in your graveyard.\nSVar:X:Count$Compare Y GE3.3.1\nSVar:Y:Count$ValidGraveyard Lesson.YouOwn\nDeckHints:Type$Lesson\nOracle:Look at the top three cards of your library. Put one of those cards into your hand and the rest on the bottom of your library in any order. Put each of those cards into your hand instead if there are three or more Lesson cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Accumulate Wisdom"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

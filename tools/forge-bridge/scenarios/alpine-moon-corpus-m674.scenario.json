@@ -1,0 +1,25 @@
+{
+  "id": "alpine-moon-corpus-m674",
+  "description": "M6 corpus — Alpine Moon; ETB-on-bf.",
+  "seed": 61857,
+  "cards": {
+    "Alpine Moon": "Name:Alpine Moon\nManaCost:R\nTypes:Enchantment\nK:ETBReplacement:Other:DBNameCard\nSVar:DBNameCard:DB$ NameCard | Defined$ You | ValidCards$ Card.Land+nonBasic | ValidDescription$ nonbasic land | SpellDescription$ As CARDNAME enters, choose a nonbasic land card name.\nS:Mode$ Continuous | Affected$ Land.NamedCard+OppCtrl | RemoveAllAbilities$ True | RemoveLandTypes$ True | AddAbility$ ABMana | Description$ Lands your opponents control with the chosen name lose all land types and abilities, and they gain \"{T}: Add one mana of any color.\"\nSVar:ABMana:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | SpellDescription$ Add one mana of any color.\nOracle:As Alpine Moon enters, choose a nonbasic land card name.\\nLands your opponents control with the chosen name lose all land types and abilities, and they gain \"{T}: Add one mana of any color.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alpine Moon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

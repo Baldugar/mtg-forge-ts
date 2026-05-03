@@ -1,0 +1,25 @@
+{
+  "id": "agent-of-the-iron-throne-corpus-m674",
+  "description": "M6 corpus — Agent of the Iron Throne; ETB-on-bf.",
+  "seed": 61634,
+  "cards": {
+    "Agent of the Iron Throne": "Name:Agent of the Iron Throne\nManaCost:2 B\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddTrigger$ Dies | Description$ Commander creatures you own have \"Whenever an artifact or creature you control is put into a graveyard from the battlefield, each opponent loses 1 life.\"\nSVar:Dies:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Artifact.YouCtrl,Creature.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ Whenever an artifact or creature you control is put into a graveyard from the battlefield, each opponent loses 1 life.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Opponent | LifeAmount$ 1\nAI:RemoveDeck:NonCommander\nDeckHints:Type$Artifact & Ability$Sacrifice\nOracle:Commander creatures you own have \"Whenever an artifact or creature you control is put into a graveyard from the battlefield, each opponent loses 1 life.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agent of the Iron Throne"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

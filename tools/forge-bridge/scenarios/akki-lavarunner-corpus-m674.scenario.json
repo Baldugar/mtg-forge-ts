@@ -1,0 +1,23 @@
+{
+  "id": "akki-lavarunner-corpus-m674",
+  "description": "M6 corpus — Akki Lavarunner; in-hand parse.",
+  "seed": 61716,
+  "cards": {
+    "Akki Lavarunner": "Name:Akki Lavarunner\nManaCost:3 R\nTypes:Creature Goblin Warrior\nPT:1/1\nK:Haste\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | Execute$ TrigFlip | TriggerDescription$ Whenever CARDNAME deals damage to an opponent, flip it.\nSVar:TrigFlip:DB$ SetState | Defined$ Self | Mode$ Flip\nAlternateMode:Flip\nOracle:Haste\\nWhenever Akki Lavarunner deals damage to an opponent, flip it.\n\nALTERNATE\n\nName:Tok-Tok, Volcano Born\nManaCost:3 R\nColors:red\nTypes:Legendary Creature Goblin Shaman\nPT:2/2\nK:Protection from red\nR:Event$ DamageDone | ActiveZones$ Battlefield | ValidSource$ Card.RedSource | ValidTarget$ Player | ReplaceWith$ DmgPlus1 | Description$ If a red source would deal damage to a player, it deals that much damage plus 1 to that player instead.\nSVar:DmgPlus1:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ X\nSVar:X:ReplaceCount$DamageAmount/Plus.1\nOracle:Protection from red\\nIf a red source would deal damage to a player, it deals that much damage plus 1 to that player instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Akki Lavarunner"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

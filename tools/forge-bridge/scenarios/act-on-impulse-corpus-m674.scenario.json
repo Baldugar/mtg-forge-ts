@@ -1,0 +1,23 @@
+{
+  "id": "act-on-impulse-corpus-m674",
+  "description": "M6 corpus — Act on Impulse; in-hand parse.",
+  "seed": 61489,
+  "cards": {
+    "Act on Impulse": "Name:Act on Impulse\nManaCost:2 R\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ 3 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | SpellDescription$ Exile the top three cards of your library. Until end of turn, you may play cards exiled this way.\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Exile the top three cards of your library. Until end of turn, you may play cards exiled this way. (If you cast a spell this way, you still pay its costs. You can play a land this way only if you have an available land play remaining.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Act on Impulse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

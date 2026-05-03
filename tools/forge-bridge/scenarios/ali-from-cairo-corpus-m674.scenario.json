@@ -1,0 +1,25 @@
+{
+  "id": "ali-from-cairo-corpus-m674",
+  "description": "M6 corpus — Ali from Cairo; ETB-on-bf.",
+  "seed": 61800,
+  "cards": {
+    "Ali from Cairo": "Name:Ali from Cairo\nManaCost:2 R R\nTypes:Creature Human\nPT:0/1\nR:Event$ LifeReduced | ActiveZones$ Battlefield | ValidPlayer$ You.lifeGE1 | Result$ LT1 | IsDamage$ True | ReplaceWith$ ReduceLoss | Description$ Damage that would reduce your life total to less than 1 reduces it to 1 instead.\nSVar:ReduceLoss:DB$ ReplaceEffect | VarName$ Amount | VarValue$ X\nSVar:X:ReplaceCount$Amount/LimitMax.Difference\nSVar:Difference:Count$YourLifeTotal/Minus.1\nOracle:Damage that would reduce your life total to less than 1 reduces it to 1 instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ali from Cairo"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

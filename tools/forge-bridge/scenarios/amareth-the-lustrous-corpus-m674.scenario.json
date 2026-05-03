@@ -1,0 +1,25 @@
+{
+  "id": "amareth-the-lustrous-corpus-m674",
+  "description": "M6 corpus — Amareth, the Lustrous; ETB-on-bf.",
+  "seed": 61881,
+  "cards": {
+    "Amareth, the Lustrous": "Name:Amareth, the Lustrous\nManaCost:3 G U W\nTypes:Legendary Creature Dragon\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Permanent.YouCtrl+Other | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ Whenever another permanent you control enters, look at the top card of your library. If it shares a card type with that permanent, you may reveal that card and put it into your hand.\nSVar:TrigDig:DB$ Dig | DigNum$ 1 | ForceRevealToController$ True | ChangeNum$ 1 | Optional$ True | LibraryPosition$ 0 | LibraryPosition2$ 0 | ChangeValid$ Card.sharesCardTypeWith TriggeredCard\nOracle:Flying\\nWhenever another permanent you control enters, look at the top card of your library. If it shares a card type with that permanent, you may reveal that card and put it into your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Amareth, the Lustrous"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

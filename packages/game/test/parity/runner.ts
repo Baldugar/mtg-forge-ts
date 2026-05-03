@@ -442,6 +442,15 @@ const TS_ONLY_KIND_CLASS: ReadonlyMap<string, DivergenceClass> = new Map([
   // M6.6: Monarchy state change; bridge doesn't subscribe to
   // `GameEventMonarchChanged` analog.
   ["BecameMonarch", "bridge-engine-state-event-not-captured"],
+  // M6.74 — corpus expansion surfaces additional TS-only kinds. The
+  // TS engine emits these via mechanic-specific event hooks; Forge
+  // either has no canonical event for them or the bridge doesn't yet
+  // subscribe. Classify as bridge-engine-state-event-not-captured.
+  ["CardClashed", "bridge-engine-state-event-not-captured"],
+  ["RollDie", "bridge-engine-state-event-not-captured"],
+  ["ControlChanged", "bridge-engine-state-event-not-captured"],
+  ["CardSuspected", "bridge-engine-state-event-not-captured"],
+  ["CardInvestigated", "bridge-engine-state-event-not-captured"],
 ]);
 
 /**

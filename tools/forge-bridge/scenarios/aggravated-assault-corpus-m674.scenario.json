@@ -1,0 +1,25 @@
+{
+  "id": "aggravated-assault-corpus-m674",
+  "description": "M6 corpus — Aggravated Assault; ETB-on-bf.",
+  "seed": 61638,
+  "cards": {
+    "Aggravated Assault": "Name:Aggravated Assault\nManaCost:2 R\nTypes:Enchantment\nA:AB$ UntapAll | Cost$ 3 R R | ValidCards$ Creature.YouCtrl | SubAbility$ DBAddCombat | SorcerySpeed$ True | SpellDescription$ Untap all creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase. Activate only as a sorcery.\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | FollowedBy$ Main2 | ConditionPhases$ Main1,Main2\nOracle:{3}{R}{R}: Untap all creatures you control. After this main phase, there is an additional combat phase followed by an additional main phase. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aggravated Assault"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

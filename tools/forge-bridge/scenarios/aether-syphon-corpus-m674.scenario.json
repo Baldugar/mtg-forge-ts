@@ -1,0 +1,25 @@
+{
+  "id": "aether-syphon-corpus-m674",
+  "description": "M6 corpus — Aether Syphon; ETB-on-bf.",
+  "seed": 61585,
+  "cards": {
+    "Aether Syphon": "Name:Aether Syphon\nManaCost:1 U U\nTypes:Artifact\nK:Start your engines\nA:AB$ Draw | Cost$ 2 T | SpellDescription$ Draw a card.\nS:Mode$ Continuous | Affected$ Card.Self | Condition$ MaxSpeed | AddTrigger$ DrawTrig | Description$ Max speed — Whenever you draw a card, each opponent mills two cards. (Each opponent puts the top two cards of their library into their graveyard.)\nSVar:DrawTrig:Mode$ Drawn | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigMill | Secondary$ True | TriggerDescription$ Max speed — Whenever you draw a card, each opponent mills two cards.\nSVar:TrigMill:DB$ Mill | Defined$ Opponent | NumCards$ 2\nOracle:Start your engines! (If you have no speed, it starts at 1. It increases once on each of your turns when an opponent loses life. Max speed is 4.)\\n{2}, {T}: Draw a card.\\nMax speed — Whenever you draw a card, each opponent mills two cards. (Each opponent puts the top two cards of their library into their graveyard.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aether Syphon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

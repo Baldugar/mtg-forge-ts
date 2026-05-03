@@ -1,0 +1,23 @@
+{
+  "id": "aim-for-the-head-corpus-m674",
+  "description": "M6 corpus — Aim for the Head; in-hand parse.",
+  "seed": 61664,
+  "cards": {
+    "Aim for the Head": "Name:Aim for the Head\nManaCost:2 B\nTypes:Sorcery\nA:SP$ Charm | Choices$ DBChangeZone1,DBChangeZone2 | Defined$ You\nSVar:DBChangeZone1:DB$ ChangeZone | ValidTgts$ Creature.Zombie | TgtPrompt$ Choose target Zombie | Origin$ Battlefield | Destination$ Exile | SpellDescription$ Exile target Zombie.\nSVar:DBChangeZone2:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | DefinedPlayer$ Targeted | ValidTgts$ Opponent | Chooser$ Targeted | ChangeType$ Card | ChangeNum$ 2 | IsCurse$ True | Mandatory$ True | SpellDescription$ Target opponent exiles two cards from their hand.\nOracle:Choose one —\\n• Exile target Zombie.\\n• Target opponent exiles two cards from their hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aim for the Head"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

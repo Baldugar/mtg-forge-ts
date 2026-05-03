@@ -1,0 +1,25 @@
+{
+  "id": "air-cult-elemental-corpus-m674",
+  "description": "M6 corpus — Air-Cult Elemental; ETB-on-bf.",
+  "seed": 61671,
+  "cards": {
+    "Air-Cult Elemental": "Name:Air-Cult Elemental\nManaCost:4 U U\nTypes:Creature Elemental\nPT:2/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ Whirlwind — When CARDNAME enters, return up to one other target creature to its owner's hand.\nSVar:TrigReturn:DB$ ChangeZone | ValidTgts$ Creature.Other | TargetMin$ 0 | TargetMax$ 1 | Origin$ Battlefield | Destination$ Hand | TgtPrompt$ Select up to one other target creature\nOracle:Flying\\nWhirlwind — When Air-Cult Elemental enters, return up to one other target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Air-Cult Elemental"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "agna-qel-a-corpus-m674",
+  "description": "M6 corpus — Agna Qel'a; ETB-on-bf.",
+  "seed": 61649,
+  "cards": {
+    "Agna Qel'a": "Name:Agna Qel'a\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplaceWith$ LandTapped | ReplacementResult$ Updated | Description$ This land enters tapped unless you control a basic land.\nSVar:LandTapped:DB$ Tap | Defined$ Self | ETB$ True | ConditionPresent$ Land.Basic+YouCtrl | ConditionCompare$ EQ0\nA:AB$ Mana | Cost$ T | Produced$ U | SpellDescription$ Add {U}.\nA:AB$ Draw | Cost$ 2 U T | SpellDescription$ Draw a card, then discard a card. | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | Mode$ TgtChoose | NumCards$ 1\nDeckHas:Ability$Discard\nOracle:This land enters tapped unless you control a basic land.\\n{T}: Add {U}.\\n{2}{U}, {T}: Draw a card, then discard a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agna Qel'a"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

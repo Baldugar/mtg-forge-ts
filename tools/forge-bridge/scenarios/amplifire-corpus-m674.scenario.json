@@ -1,0 +1,25 @@
+{
+  "id": "amplifire-corpus-m674",
+  "description": "M6 corpus — Amplifire; ETB-on-bf.",
+  "seed": 61920,
+  "cards": {
+    "Amplifire": "Name:Amplifire\nManaCost:2 R R\nTypes:Creature Elemental\nPT:1/1\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDig | TriggerDescription$ At the beginning of your upkeep, reveal cards from the top of your library until you reveal a creature card. Until your next turn, CARDNAME's base power becomes twice that card's power and its toughness. Put the revealed cards on the bottom of your library in a random order.\nSVar:TrigDig:DB$ DigUntil | Reveal$ True | Valid$ Creature | ValidDescription$ creature card | RevealedDestination$ Library | RevealedLibraryPosition$ -1 | RevealRandomOrder$ True | RememberFound$ True | SubAbility$ DBAnimate\nSVar:DBAnimate:DB$ Animate | Power$ X | Toughness$ Y | Duration$ UntilYourNextTurn | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Remembered$CardPower/Times.2\nSVar:Y:Remembered$CardToughness/Times.2\nDeckNeeds:Type$Creature\nOracle:At the beginning of your upkeep, reveal cards from the top of your library until you reveal a creature card. Until your next turn, Amplifire's base power becomes twice that card's power and its base toughness becomes twice that card's toughness. Put the revealed cards on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Amplifire"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

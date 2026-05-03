@@ -1,0 +1,25 @@
+{
+  "id": "ana-sanctuary-corpus-m674",
+  "description": "M6 corpus — Ana Sanctuary; ETB-on-bf.",
+  "seed": 61939,
+  "cards": {
+    "Ana Sanctuary": "Name:Ana Sanctuary\nManaCost:2 G\nTypes:Enchantment\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | IsPresent$ Permanent.YouCtrl+Blue,Permanent.YouCtrl+Black | Execute$ TrigPump | TriggerDescription$ At the beginning of your upkeep, if you control a blue or black permanent, target creature gets +1/+1 until end of turn. If you control a blue permanent and a black permanent, that creature gets +5/+5 until end of turn instead.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature | NumAtt$ +P | NumDef$ +P\nSVar:Y:Count$Valid Permanent.Blue+YouCtrl/LimitMax.1\nSVar:Z:Count$Valid Permanent.Black+YouCtrl/LimitMax.1\nSVar:X:SVar$Y/Plus.Z\nSVar:P:Count$Compare X EQ2.5.1\nDeckNeeds:Color$Blue|Black\nOracle:At the beginning of your upkeep, if you control a blue or black permanent, target creature gets +1/+1 until end of turn. If you control a blue permanent and a black permanent, that creature gets +5/+5 until end of turn instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ana Sanctuary"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

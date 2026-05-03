@@ -1,0 +1,25 @@
+{
+  "id": "aeon-chronicler-corpus-m674",
+  "description": "M6 corpus — Aeon Chronicler; ETB-on-bf.",
+  "seed": 61541,
+  "cards": {
+    "Aeon Chronicler": "Name:Aeon Chronicler\nManaCost:3 U U\nTypes:Creature Avatar\nPT:*/*\nS:Mode$ Continuous | CharacteristicDefining$ True | SetPower$ Y | SetToughness$ Y | Description$ CARDNAME's power and toughness are each equal to the number of cards in your hand.\nK:Suspend:X:XMin1 X 3 U\nT:Mode$ CounterRemoved | ValidCard$ Card.Self | TriggerZones$ Exile | CounterType$ TIME | Execute$ TrigDraw | TriggerDescription$ Whenever a time counter is removed from CARDNAME while it's exiled, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You\nSVar:X:Count$xPaid\nSVar:Y:Count$ValidHand Card.YouOwn\nAI:RemoveDeck:All\nOracle:Aeon Chronicler's power and toughness are each equal to the number of cards in your hand.\\nSuspend X—{X}{3}{U}. X can't be 0.\\nWhenever a time counter is removed from Aeon Chronicler while it's exiled, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aeon Chronicler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

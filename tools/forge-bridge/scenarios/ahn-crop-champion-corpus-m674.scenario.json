@@ -1,0 +1,25 @@
+{
+  "id": "ahn-crop-champion-corpus-m674",
+  "description": "M6 corpus — Ahn-Crop Champion; ETB-on-bf.",
+  "seed": 61658,
+  "cards": {
+    "Ahn-Crop Champion": "Name:Ahn-Crop Champion\nManaCost:2 G W\nTypes:Creature Human Warrior\nPT:4/4\nS:Mode$ OptionalAttackCost | ValidCard$ Card.Self | Trigger$ TrigUntapAll | Cost$ Exert<1/CARDNAME> | Description$ You may exert CARDNAME as it attacks. When you do, untap all other creatures you control.\nSVar:TrigUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl+StrictlyOther | SpellDescription$ When you do, untap all other creatures you control.\nSVar:AIExertCondition:NumCreats GE3\nSVar:NumCreats:Count$Valid Creature.YouCtrl+tapped\nOracle:You may exert Ahn-Crop Champion as it attacks. When you do, untap all other creatures you control. (An exerted creature won't untap during your next untap step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ahn-Crop Champion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

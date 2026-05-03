@@ -1,0 +1,23 @@
+{
+  "id": "afflicted-deserter-corpus-m674",
+  "description": "M6 corpus — Afflicted Deserter; in-hand parse.",
+  "seed": 61607,
+  "cards": {
+    "Afflicted Deserter": "Name:Afflicted Deserter\nManaCost:3 R\nTypes:Creature Human Werewolf\nPT:3/2\nT:Mode$ Phase | Phase$ Upkeep | WerewolfTransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if no spells were cast last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:At the beginning of each upkeep, if no spells were cast last turn, transform Afflicted Deserter.\n\nALTERNATE\n\nName:Werewolf Ransacker\nManaCost:no cost\nColors:red\nTypes:Creature Werewolf\nPT:5/4\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigDestroy | OptionalDecider$ You | TriggerDescription$ Whenever this creature transforms into CARDNAME, you may destroy target artifact. If that artifact is put into a graveyard this way, CARDNAME deals 3 damage to that artifact's controller.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact | RememberTargets$ True | ForgetOtherTargets$ True | SubAbility$ DBDamage\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ 3 | SubAbility$ DBCleanup | ConditionCheckSVar$ IsDestroyed | ConditionSVarCompare$ GE1\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:IsDestroyed:Count$ThisTurnEntered_Graveyard_from_Battlefield_Artifact.IsRemembered\nT:Mode$ Phase | Phase$ Upkeep | WerewolfUntransformCondition$ True | TriggerZones$ Battlefield | Execute$ TrigTransform | TriggerDescription$ At the beginning of each upkeep, if a player cast two or more spells last turn, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nOracle:Whenever this creature transforms into Werewolf Ransacker, you may destroy target artifact. If that artifact is put into a graveyard this way, Werewolf Ransacker deals 3 damage to that artifact's controller.\\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Werewolf Ransacker.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Afflicted Deserter"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

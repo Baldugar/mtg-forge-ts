@@ -1,0 +1,25 @@
+{
+  "id": "ajani-goldmane-corpus-m674",
+  "description": "M6 corpus — Ajani Goldmane; ETB-on-bf.",
+  "seed": 61687,
+  "cards": {
+    "Ajani Goldmane": "Name:Ajani Goldmane\nManaCost:2 W W\nTypes:Legendary Planeswalker Ajani\nLoyalty:4\nA:AB$ GainLife | Cost$ AddCounter<1/LOYALTY> | LifeAmount$ 2 | Planeswalker$ True | SpellDescription$ You gain 2 life.\nA:AB$ PutCounterAll | Cost$ SubCounter<1/LOYALTY> | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | Planeswalker$ True | SubAbility$ DBPumpAll | SpellDescription$ Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.\nSVar:DBPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | KW$ Vigilance\nA:AB$ Token | Cost$ SubCounter<6/LOYALTY> | TokenScript$ w_x_x_avatar_life_total | TokenOwner$ You | Planeswalker$ True | Ultimate$ True | SpellDescription$ Create a white Avatar creature token. It has \"This creature's power and toughness are each equal to your life total.\"\nOracle:[+1]: You gain 2 life.\\n[-1]: Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.\\n[-6]: Create a white Avatar creature token. It has \"This creature's power and toughness are each equal to your life total.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ajani Goldmane"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

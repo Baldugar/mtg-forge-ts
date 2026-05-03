@@ -1,0 +1,25 @@
+{
+  "id": "aether-revolt-corpus-m674",
+  "description": "M6 corpus — Aether Revolt; ETB-on-bf.",
+  "seed": 61579,
+  "cards": {
+    "Aether Revolt": "Name:Aether Revolt\nManaCost:2 R R\nTypes:Enchantment\nR:Event$ DamageDone | Revolt$ True | ActiveZones$ Battlefield | ValidSource$ Card.YouCtrl,Emblem.YouCtrl | ValidTarget$ Permanent.OppCtrl,Opponent | IsCombat$ False | ReplaceWith$ DamageReplace | Description$ Revolt — As long as a permanent you controlled left the battlefield this turn, if a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.\nSVar:DamageReplace:DB$ ReplaceEffect | VarName$ DamageAmount | VarValue$ ReplaceCount$DamageAmount/Plus.2\nT:Mode$ CounterAddedOnce | ValidPlayer$ You | TriggerZones$ Battlefield | CounterType$ ENERGY | Execute$ TrigDealDamage | TriggerDescription$ Whenever you get one or more {E}, CARDNAME deals that much damage to any target.\nSVar:TrigDealDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ TriggerCount$Amount\nOracle:Revolt — As long as a permanent you controlled left the battlefield this turn, if a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.\\nWhenever you get one or more {E}, Aether Revolt deals that much damage to any target.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aether Revolt"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

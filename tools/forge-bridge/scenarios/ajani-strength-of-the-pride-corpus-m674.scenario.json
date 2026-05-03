@@ -1,0 +1,25 @@
+{
+  "id": "ajani-strength-of-the-pride-corpus-m674",
+  "description": "M6 corpus — Ajani, Strength of the Pride; ETB-on-bf.",
+  "seed": 61691,
+  "cards": {
+    "Ajani, Strength of the Pride": "Name:Ajani, Strength of the Pride\nManaCost:2 W W\nTypes:Legendary Planeswalker Ajani\nLoyalty:5\nA:AB$ GainLife | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | LifeAmount$ NumCreatures | SpellDescription$ You gain life equal to the number of creatures you control plus the number of planeswalkers you control.\nSVar:NumCreatures:Count$Valid Creature.YouCtrl/Plus.NumPlaneswalkers\nSVar:NumPlaneswalkers:Count$Valid Planeswalker.YouCtrl\nA:AB$ Token | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | TokenScript$ ajanis_pridemate | SpellDescription$ Create a 2/2 white Cat Soldier creature token named Ajani's Pridemate with \"Whenever you gain life, put a +1/+1 counter on Ajani's Pridemate.\"\nA:AB$ ChangeZoneAll | Cost$ SubCounter<0/LOYALTY> | ConditionCheckSVar$ CurLife | ConditionSVarCompare$ GEInitLife | Planeswalker$ True | Ultimate$ True | ChangeType$ Card.Self,Creature.OppCtrl,Artifact.OppCtrl | Origin$ Battlefield | Destination$ Exile | SpellDescription$ If you have at least 15 life more than your starting life total, exile CARDNAME and each artifact and creature your opponents control.\nSVar:CurLife:Count$YourLifeTotal\nSVar:InitLife:Count$YourStartingLife/Plus.15\nDeckHas:Ability$Token|Counters|LifeGain\nDeckHints:Ability$LifeGain\nOracle:[+1]: You gain life equal to the number of creatures you control plus the number of planeswalkers you control.\\n[-2]: Create a 2/2 white Cat Soldier creature token named Ajani's Pridemate with \"Whenever you gain life, put a +1/+1 counter on Ajani's Pridemate.\"\\n[0]: If you have at least 15 life more than your starting life total, exile Ajani, Strength of the Pride and each artifact and creature your opponents control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ajani, Strength of the Pride"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

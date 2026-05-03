@@ -1,0 +1,23 @@
+{
+  "id": "acrobatic-maneuver-corpus-m674",
+  "description": "M6 corpus — Acrobatic Maneuver; in-hand parse.",
+  "seed": 61487,
+  "cards": {
+    "Acrobatic Maneuver": "Name:Acrobatic Maneuver\nManaCost:2 W\nTypes:Instant\nA:SP$ ChangeZone | ValidTgts$ Creature.YouCtrl | Origin$ Battlefield | Destination$ Exile | TgtPrompt$ Select target creature you control | RememberTargets$ True | SubAbility$ DBReturn | SpellDescription$ Exile target creature you control, then return that card to the battlefield under its owner's control. Draw a card.\nSVar:DBReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ All | Destination$ Battlefield | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile target creature you control, then return that card to the battlefield under its owner's control.\\nDraw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acrobatic Maneuver"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

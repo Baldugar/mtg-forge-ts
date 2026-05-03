@@ -1,0 +1,25 @@
+{
+  "id": "aegis-angel-corpus-m674",
+  "description": "M6 corpus — Aegis Angel; ETB-on-bf.",
+  "seed": 61533,
+  "cards": {
+    "Aegis Angel": "Name:Aegis Angel\nManaCost:4 W W\nTypes:Creature Angel\nPT:5/5\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, another target permanent gains indestructible for as long as you control CARDNAME.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Permanent.Other | TgtPrompt$ Select another target permanent | KW$ Indestructible | Duration$ AsLongAsControl\nSVar:PlayMain1:TRUE\nOracle:Flying (This creature can't be blocked except by creatures with flying or reach.)\\nWhen Aegis Angel enters, another target permanent gains indestructible for as long as you control Aegis Angel. (Effects that say \"destroy\" don't destroy it. A creature with indestructible can't be destroyed by damage.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aegis Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

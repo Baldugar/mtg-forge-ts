@@ -1,0 +1,25 @@
+{
+  "id": "alesha-who-smiles-at-death-corpus-m674",
+  "description": "M6 corpus — Alesha, Who Smiles at Death; ETB-on-bf.",
+  "seed": 61792,
+  "cards": {
+    "Alesha, Who Smiles at Death": "Name:Alesha, Who Smiles at Death\nManaCost:2 R\nTypes:Legendary Creature Human Warrior\nPT:3/2\nK:First Strike\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigChange | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME attacks, you may pay {W/B}{W/B}. If you do, return target creature card with power 2 or less from your graveyard to the battlefield tapped and attacking.\nSVar:TrigChange:AB$ ChangeZone | Cost$ WB WB | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature.YouCtrl+powerLE2 | Tapped$ True | Attacking$ True\nSVar:HasAttackEffect:TRUE\nDeckHints:Ability$Graveyard\nOracle:First strike\\nWhenever Alesha, Who Smiles at Death attacks, you may pay {W/B}{W/B}. If you do, return target creature card with power 2 or less from your graveyard to the battlefield tapped and attacking.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alesha, Who Smiles at Death"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

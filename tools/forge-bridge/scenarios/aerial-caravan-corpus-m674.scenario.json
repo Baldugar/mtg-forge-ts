@@ -1,0 +1,25 @@
+{
+  "id": "aerial-caravan-corpus-m674",
+  "description": "M6 corpus — Aerial Caravan; ETB-on-bf.",
+  "seed": 61546,
+  "cards": {
+    "Aerial Caravan": "Name:Aerial Caravan\nManaCost:4 U U\nTypes:Creature Human Soldier\nPT:4/3\nK:Flying\nA:AB$ Dig | Cost$ 1 U U | Defined$ You | DigNum$ 1 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBEffect | AILogic$ ExileAndPlayUntilEOT | SpellDescription$ Exile the top card of your library. Until end of turn, you may play that card. (Reveal the card as you exile it.)\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ Play | SubAbility$ DBCleanup | ExileOnMoved$ Exile\nSVar:Play:Mode$ Continuous | MayPlay$ True | Affected$ Card.IsRemembered | AffectedZone$ Exile | Description$ You may play remembered card.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Flying\\n{1}{U}{U}: Exile the top card of your library. Until end of turn, you may play that card. (Reveal the card as you exile it.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aerial Caravan"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "akroma-vision-of-ixidor-corpus-m674",
+  "description": "M6 corpus — Akroma, Vision of Ixidor; ETB-on-bf.",
+  "seed": 61741,
+  "cards": {
+    "Akroma, Vision of Ixidor": "Name:Akroma, Vision of Ixidor\nManaCost:5 W W\nTypes:Legendary Creature Angel\nPT:6/6\nK:Flying\nK:First Strike\nK:Vigilance\nK:Trample\nT:Mode$ Phase | Phase$ BeginCombat | TriggerZones$ Battlefield | Execute$ TrigFlying | TriggerDescription$ At the beginning of each combat, until end of turn, each other creature you control gets +1/+1 if it has flying, +1/+1 if it has first strike, and so on for double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, protection, reach, trample, vigilance, and partner.\nSVar:TrigFlying:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withFlying | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBFirstStrike\nSVar:DBFirstStrike:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withFirst Strike | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBDoubleStrike\nSVar:DBDoubleStrike:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withDouble Strike | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBDeathtouch\nSVar:DBDeathtouch:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withDeathtouch | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBHaste\nSVar:DBHaste:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withHaste | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBHexproof\nSVar:DBHexproof:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withHexproof | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBIndestructible\nSVar:DBIndestructible:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withIndestructible | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBLifelink\nSVar:DBLifelink:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withLifelink | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBMenace\nSVar:DBMenace:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withMenace | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBProtection\nSVar:DBProtection:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withProtection | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBReach\nSVar:DBReach:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withReach | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBTrample\nSVar:DBTrample:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withTrample | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBVigilance\nSVar:DBVigilance:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withVigilance | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DBPartner\nSVar:DBPartner:DB$ PumpAll | ValidCards$ Creature.Other+YouCtrl+withPartner | NumAtt$ +1 | NumDef$ +1\nK:Partner\nOracle:Flying, first strike, vigilance, trample\\nAt the beginning of each combat, until end of turn, each other creature you control gets +1/+1 if it has flying, +1/+1 if it has first strike, and so on for double strike, deathtouch, haste, hexproof, indestructible, lifelink, menace, protection, reach, trample, vigilance, and partner.\\nPartner\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akroma, Vision of Ixidor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

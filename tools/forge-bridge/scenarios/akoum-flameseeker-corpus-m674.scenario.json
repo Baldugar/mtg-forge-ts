@@ -1,0 +1,25 @@
+{
+  "id": "akoum-flameseeker-corpus-m674",
+  "description": "M6 corpus — Akoum Flameseeker; ETB-on-bf.",
+  "seed": 61726,
+  "cards": {
+    "Akoum Flameseeker": "Name:Akoum Flameseeker\nManaCost:2 R\nTypes:Creature Human Shaman Ally\nPT:3/2\nA:AB$ Discard | Cost$ T tapXType<1/Ally> | Defined$ You | NumCards$ 1 | Mode$ TgtChoose | RememberDiscarded$ True | SubAbility$ DBDraw | PrecostDesc$ Cohort — | SpellDescription$ Discard a card. If you do, draw a card.\nSVar:DBDraw:DB$ Draw | ConditionDefined$ Remembered | ConditionPresent$ Card | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nDeckHints:Type$Ally\nOracle:Cohort — {T}, Tap an untapped Ally you control: Discard a card. If you do, draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akoum Flameseeker"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "alchemist-s-talent-corpus-m674",
+  "description": "M6 corpus — Alchemist's Talent; ETB-on-bf.",
+  "seed": 61783,
+  "cards": {
+    "Alchemist's Talent": "Name:Alchemist's Talent\nManaCost:3 R\nTypes:Enchantment Class\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When CARDNAME enters, create two tapped Treasure tokens.\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_treasure_sac | TokenAmount$ 2 | TokenTapped$ True\nK:Class:2:1 R:AddStaticAbility$ SDoubleTreasure\nSVar:SDoubleTreasure:Mode$ Continuous | Affected$ Treasure.YouCtrl | AddAbility$ Mana | Description$ Treasures you control have \"{T}, Sacrifice this artifact: Add two mana of any one color.\"\nSVar:Mana:AB$ Mana | Cost$ T Sac<1/CARDNAME/this artifact> | Produced$ Any | Amount$ 2 | SpellDescription$ Add two mana of any one color.\nK:Class:3:4 R:AddTrigger$ TriggerExplosion\nSVar:TriggerExplosion:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | ValidSA$ Spell.ManaFromTreasure | Execute$ TrigDamage | TriggerDescription$ Whenever you cast a spell, if mana from a Treasure was spent to cast it, this Class deals damage equal to that spell's mana value to each opponent.\nSVar:TrigDamage:DB$ DealDamage | Defined$ Opponent | NumDmg$ X\nSVar:X:TriggeredSpellAbility$CardManaCostLKI\nOracle:(Gain the next level as a sorcery to add its ability.)\\nWhen Alchemist's Talent enters, create two tapped Treasure tokens.\\n{1}{R}: Level 2\\nTreasures you control have \"{T}, Sacrifice this artifact: Add two mana of any one color.\"\\n{4}{R}: Level 3\\nWhenever you cast a spell, if mana from a Treasure was spent to cast it, this Class deals damage equal to that spell's mana value to each opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alchemist's Talent"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

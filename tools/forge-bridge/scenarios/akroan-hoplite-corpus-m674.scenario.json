@@ -1,0 +1,25 @@
+{
+  "id": "akroan-hoplite-corpus-m674",
+  "description": "M6 corpus — Akroan Hoplite; ETB-on-bf.",
+  "seed": 61733,
+  "cards": {
+    "Akroan Hoplite": "Name:Akroan Hoplite\nManaCost:R W\nTypes:Creature Human Soldier\nPT:1/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the number of attacking creatures you control.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.YouCtrl+attacking\nOracle:Whenever Akroan Hoplite attacks, it gets +X/+0 until end of turn, where X is the number of attacking creatures you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akroan Hoplite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

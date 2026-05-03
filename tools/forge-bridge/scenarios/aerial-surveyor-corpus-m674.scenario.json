@@ -1,0 +1,23 @@
+{
+  "id": "aerial-surveyor-corpus-m674",
+  "description": "M6 corpus — Aerial Surveyor; in-hand parse.",
+  "seed": 61554,
+  "cards": {
+    "Aerial Surveyor": "Name:Aerial Surveyor\nManaCost:2 W\nTypes:Artifact Vehicle\nPT:3/4\nK:Flying\nK:Crew:2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigSearch | CheckSVar$ Y | SVarCompare$ GTX | TriggerDescription$ Whenever CARDNAME attacks, if defending player controls more lands than you, search your library for a basic Plains card, put it onto the battlefield tapped, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Plains.Basic | ChangeNum$ 1 | Tapped$ True\nSVar:X:Count$Valid Land.YouCtrl\nSVar:Y:Count$Valid Land.DefenderCtrl\nOracle:Flying\\nWhenever Aerial Surveyor attacks, if defending player controls more lands than you, search your library for a basic Plains card, put it onto the battlefield tapped, then shuffle.\\nCrew 2\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aerial Surveyor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

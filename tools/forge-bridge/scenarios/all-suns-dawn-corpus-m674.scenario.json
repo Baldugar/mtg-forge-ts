@@ -1,0 +1,23 @@
+{
+  "id": "all-suns-dawn-corpus-m674",
+  "description": "M6 corpus — All Suns' Dawn; in-hand parse.",
+  "seed": 61812,
+  "cards": {
+    "All Suns' Dawn": "Name:All Suns' Dawn\nManaCost:4 G\nTypes:Sorcery\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose up to one target white card in your graveyard | ValidTgts$ Card.White+YouOwn | TargetMin$ 0 | TargetMax$ 1 | LockInText$ True | SubAbility$ ReturnU | SpellDescription$ For each color, return up to one target card of that color from your graveyard to your hand. Exile CARDNAME.\nSVar:ReturnU:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose up to one target blue card in your graveyard | ValidTgts$ Card.Blue+YouOwn | TargetMin$ 0 | TargetMax$ 1 | LockInText$ True | SubAbility$ ReturnB\nSVar:ReturnB:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose up to one target black card in your graveyard | ValidTgts$ Card.Black+YouOwn | TargetMin$ 0 | TargetMax$ 1 | LockInText$ True | SubAbility$ ReturnR\nSVar:ReturnR:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose up to one target red card in your graveyard | ValidTgts$ Card.Red+YouOwn | TargetMin$ 0 | TargetMax$ 1 | LockInText$ True | SubAbility$ ReturnG\nSVar:ReturnG:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | TgtPrompt$ Choose up to one target green card in your graveyard | ValidTgts$ Card.Green+YouOwn | TargetMin$ 0 | TargetMax$ 1 | LockInText$ True | SubAbility$ DBExile\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile\nAI:RemoveDeck:Random\nOracle:For each color, return up to one target card of that color from your graveyard to your hand. Exile All Suns' Dawn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "All Suns' Dawn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "alert-heedbonder-corpus-m674",
+  "description": "M6 corpus — Alert Heedbonder; ETB-on-bf.",
+  "seed": 61790,
+  "cards": {
+    "Alert Heedbonder": "Name:Alert Heedbonder\nManaCost:1 GW GW\nTypes:Creature Human Scout\nPT:2/4\nK:Vigilance\nT:Mode$ Phase | Phase$ End of Turn | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigGainLife | TriggerDescription$ At the beginning of your end step, you gain 1 life for each creature you control with vigilance.\nSVar:TrigGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+withVigilance\nDeckHas:Ability$LifeGain\nOracle:Vigilance\\nAt the beginning of your end step, you gain 1 life for each creature you control with vigilance.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alert Heedbonder"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

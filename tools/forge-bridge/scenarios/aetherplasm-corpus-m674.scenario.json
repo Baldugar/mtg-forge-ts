@@ -1,0 +1,25 @@
+{
+  "id": "aetherplasm-corpus-m674",
+  "description": "M6 corpus — Aetherplasm; ETB-on-bf.",
+  "seed": 61595,
+  "cards": {
+    "Aetherplasm": "Name:Aetherplasm\nManaCost:2 U U\nTypes:Creature Illusion\nPT:1/1\nT:Mode$ AttackerBlocked | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigBounce | TriggerDescription$ Whenever CARDNAME blocks a creature, you may return CARDNAME to its owner's hand. If you do, you may put a creature card from your hand onto the battlefield blocking that creature.\nSVar:TrigBounce:AB$ ChangeZone | Cost$ Return<1/CARDNAME> | Origin$ Hand | Destination$ Battlefield | ChangeType$ Creature | Blocking$ TriggeredAttacker\nAI:RemoveDeck:All\nSVar:HasBlockEffect:TRUE\nOracle:Whenever Aetherplasm blocks a creature, you may return Aetherplasm to its owner's hand. If you do, you may put a creature card from your hand onto the battlefield blocking that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aetherplasm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

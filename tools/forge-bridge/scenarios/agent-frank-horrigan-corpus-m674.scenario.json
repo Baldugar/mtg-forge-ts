@@ -1,0 +1,25 @@
+{
+  "id": "agent-frank-horrigan-corpus-m674",
+  "description": "M6 corpus — Agent Frank Horrigan; ETB-on-bf.",
+  "seed": 61624,
+  "cards": {
+    "Agent Frank Horrigan": "Name:Agent Frank Horrigan\nManaCost:5 B G\nTypes:Legendary Creature Mutant Warrior\nPT:8/6\nK:Trample\nS:Mode$ Continuous | Affected$ Card.Self+attackedThisTurn | AddKeyword$ Indestructible | Description$ CARDNAME has indestructible as long as it attacked this turn.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigProliferate | TriggerDescription$ Whenever CARDNAME enters or attacks, proliferate twice. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there.)\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigProliferate | TriggerZones$ Battlefield | Secondary$ True | TriggerDescription$ Whenever CARDNAME enters or attacks, proliferate twice. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there.)\nSVar:TrigProliferate:DB$ Proliferate | Amount$ 2\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Proliferate|Counters\nDeckNeeds:Ability$Counters\nOracle:Trample\\nAgent Frank Horrigan has indestructible as long as it attacked this turn.\\nWhenever Agent Frank Horrigan enters or attacks, proliferate twice. (To proliferate, choose any number of permanents and/or players, then give each another counter of each kind already there.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agent Frank Horrigan"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "adventurer-s-airship-corpus-m674",
+  "description": "M6 corpus — Adventurer's Airship; in-hand parse.",
+  "seed": 61526,
+  "cards": {
+    "Adventurer's Airship": "Name:Adventurer's Airship\nManaCost:3\nTypes:Artifact Vehicle\nPT:3/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever this Vehicle attacks, draw a card, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nK:Crew:2\nDeckHas:Ability$Discard\nOracle:Flying\\nWhenever this Vehicle attacks, draw a card, then discard a card.\\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Adventurer's Airship"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

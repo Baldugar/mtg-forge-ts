@@ -1,0 +1,25 @@
+{
+  "id": "all-seeing-arbiter-corpus-m674",
+  "description": "M6 corpus — All-Seeing Arbiter; ETB-on-bf.",
+  "seed": 61811,
+  "cards": {
+    "All-Seeing Arbiter": "Name:All-Seeing Arbiter\nManaCost:4 U U\nTypes:Creature Avatar\nPT:5/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, draw two cards, then discard a card.\nT:Mode$ Attacks | ValidCard$ Card.Self | Secondary$ True | Execute$ TrigDraw | TriggerDescription$ Whenever CARDNAME enters or attacks, draw two cards, then discard a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ TrigDiscard\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 1 | Mode$ TgtChoose\nT:Mode$ Discarded | ValidCard$ Card.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever you discard a card, target creature an opponent controls gets -X/-0 until your next turn, where X is the number of different mana values among cards in your graveyard.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | IsCurse$ True | NumAtt$ -X | Duration$ UntilYourNextTurn\nSVar:X:Count$ValidGraveyard Card.YouOwn$DifferentCardManaCost\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Discard\nOracle:Flying\\nWhenever All-Seeing Arbiter enters or attacks, draw two cards, then discard a card.\\nWhenever you discard a card, target creature an opponent controls gets -X/-0 until your next turn, where X is the number of different mana values among cards in your graveyard.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "All-Seeing Arbiter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

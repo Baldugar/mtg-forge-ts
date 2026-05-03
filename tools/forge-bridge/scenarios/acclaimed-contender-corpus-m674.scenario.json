@@ -1,0 +1,25 @@
+{
+  "id": "acclaimed-contender-corpus-m674",
+  "description": "M6 corpus — Acclaimed Contender; ETB-on-bf.",
+  "seed": 61450,
+  "cards": {
+    "Acclaimed Contender": "Name:Acclaimed Contender\nManaCost:2 W\nTypes:Creature Human Knight\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | IsPresent$ Knight.YouCtrl+Other | Execute$ TrigDig | TriggerDescription$ When CARDNAME enters, if you control another Knight, look at the top five cards of your library. You may reveal a Knight, Aura, Equipment, or legendary artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nSVar:TrigDig:DB$ Dig | DigNum$ 5 | ChangeNum$ 1 | Optional$ True | ForceRevealToController$ True | ChangeValid$ Card.Knight,Aura,Equipment,Artifact.Legendary | RestRandomOrder$ True\nDeckHints:Type$Knight\nOracle:When Acclaimed Contender enters, if you control another Knight, look at the top five cards of your library. You may reveal a Knight, Aura, Equipment, or legendary artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Acclaimed Contender"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

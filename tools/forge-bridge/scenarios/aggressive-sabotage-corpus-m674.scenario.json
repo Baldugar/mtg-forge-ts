@@ -1,0 +1,23 @@
+{
+  "id": "aggressive-sabotage-corpus-m674",
+  "description": "M6 corpus — Aggressive Sabotage; in-hand parse.",
+  "seed": 61644,
+  "cards": {
+    "Aggressive Sabotage": "Name:Aggressive Sabotage\nManaCost:2 B\nTypes:Sorcery\nK:Kicker:R\nA:SP$ Discard | ValidTgts$ Opponent | Mode$ TgtChoose | NumCards$ 2 | SubAbility$ DBDealDamage | SpellDescription$ Target opponent discards two cards, if this spell was kicked, it deals 3 damage to that player.\nSVar:DBDealDamage:DB$ DealDamage | Defined$ ParentTarget | Condition$ Kicked | NumDmg$ 3\nOracle:Kicker {R} (You may pay an additional {R} as you cast this spell.)\\nTarget player discards two cards. If this spell was kicked, it deals 3 damage to that player.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aggressive Sabotage"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

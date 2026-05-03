@@ -1,0 +1,25 @@
+{
+  "id": "alpharael-dreaming-acolyte-corpus-m674",
+  "description": "M6 corpus — Alpharael, Dreaming Acolyte; ETB-on-bf.",
+  "seed": 61851,
+  "cards": {
+    "Alpharael, Dreaming Acolyte": "Name:Alpharael, Dreaming Acolyte\nManaCost:1 U B\nTypes:Legendary Creature Human Cleric\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When NICKNAME enters, draw two cards. Then discard two cards unless you discard an artifact card.\nSVar:TrigDraw:DB$ Draw | NumCards$ 2 | SubAbility$ DBDiscard\nSVar:DBDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose | UnlessType$ Artifact\nS:Mode$ Continuous | Affected$ Card.Self | AddKeyword$ Deathtouch | Condition$ PlayerTurn | Description$ During your turn, NICKNAME has deathtouch.\nOracle:When Alpharael enters, draw two cards. Then discard two cards unless you discard an artifact card.\\nDuring your turn, Alpharael has deathtouch.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alpharael, Dreaming Acolyte"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

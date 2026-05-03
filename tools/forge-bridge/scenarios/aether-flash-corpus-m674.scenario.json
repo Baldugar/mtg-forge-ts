@@ -1,0 +1,25 @@
+{
+  "id": "aether-flash-corpus-m674",
+  "description": "M6 corpus — Aether Flash; ETB-on-bf.",
+  "seed": 61573,
+  "cards": {
+    "Aether Flash": "Name:Aether Flash\nManaCost:2 R R\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigDealDamage | TriggerDescription$ Whenever a creature enters, CARDNAME deals 2 damage to it.\nSVar:TrigDealDamage:DB$ DealDamage | Defined$ TriggeredCardLKICopy | NumDmg$ 2\nAI:RemoveDeck:Random\nOracle:Whenever a creature enters, Aether Flash deals 2 damage to it.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aether Flash"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

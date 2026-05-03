@@ -1,0 +1,23 @@
+{
+  "id": "akoum-warrior-corpus-m674",
+  "description": "M6 corpus — Akoum Warrior; in-hand parse.",
+  "seed": 61731,
+  "cards": {
+    "Akoum Warrior": "Name:Akoum Warrior\nManaCost:5 R\nTypes:Creature Minotaur Warrior\nPT:4/5\nK:Trample\nAlternateMode:Modal\nOracle:Trample\n\nALTERNATE\n\nName:Akoum Teeth\nManaCost:no cost\nTypes:Land\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ CARDNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ R | SpellDescription$ Add {R}.\nOracle:Akoum Teeth enters tapped.\\n{T}: Add {R}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Akoum Warrior"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

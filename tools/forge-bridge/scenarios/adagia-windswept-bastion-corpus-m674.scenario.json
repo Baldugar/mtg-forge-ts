@@ -1,0 +1,25 @@
+{
+  "id": "adagia-windswept-bastion-corpus-m674",
+  "description": "M6 corpus — Adagia, Windswept Bastion; ETB-on-bf.",
+  "seed": 61493,
+  "cards": {
+    "Adagia, Windswept Bastion": "Name:Adagia, Windswept Bastion\nManaCost:no cost\nTypes:Land Planet\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ This land enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nA:AB$ Mana | Cost$ T | Produced$ W | SpellDescription$ Add {W}.\nK:Station:12\nS:Mode$ Continuous | Affected$ Card.Self+counters_GE12_CHARGE | AddAbility$ AdagioCopy | Description$ STATION 12+ {3}{W}, {T}: Create a token that's a copy of target artifact or enchantment you control, except it's legendary. Activate only as a sorcery.\nSVar:AdagioCopy:AB$ CopyPermanent | Cost$ 3 W T | ValidTgts$ Artifact.YouCtrl,Enchantment.YouCtrl | TgtPrompt$ Select target artifact or enchantment you control | Defined$ Targeted | AddTypes$ Legendary | SorcerySpeed$ True | SpellDescription$ Create a token that's a copy of target artifact or enchantment you control, except it's legendary. Activate only as a sorcery.\nOracle:This land enters tapped.\\n{T}: Add {W}.\\nStation (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)\\nSTATION 12+\\n{3}{W}, {T}: Create a token that's a copy of target artifact or enchantment you control, except it's legendary. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Adagia, Windswept Bastion"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

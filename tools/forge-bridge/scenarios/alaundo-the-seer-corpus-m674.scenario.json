@@ -1,0 +1,25 @@
+{
+  "id": "alaundo-the-seer-corpus-m674",
+  "description": "M6 corpus — Alaundo the Seer; ETB-on-bf.",
+  "seed": 61773,
+  "cards": {
+    "Alaundo the Seer": "Name:Alaundo the Seer\nManaCost:2 G U\nTypes:Legendary Creature Human Shaman\nPT:3/5\nA:AB$ Draw | Cost$ T | SubAbility$ DBExile | StackDescription$ REP Draw_{p:You} draws & then exile_then exiles & from your_from their & and put_and puts & Then remove_Then {p:You} removes & you own_they own | SpellDescription$ Draw a card, then exile a card from your hand and put a number of time counters on it equal to its mana value. It gains \"When the last time counter is removed from this card, if it's exiled, you may cast it without paying its mana cost. If you cast a creature spell this way, it gains haste until end of turn.\" Then remove a time counter from each other card you own in exile.\nSVar:DBExile:DB$ ChangeZone | Origin$ Hand | Destination$ Exile | SelectPrompt$ Select a card in your hand to exile with a number of time counters equal to its mana value | WithCountersType$ TIME | WithCountersAmount$ X | SubAbility$ DBAddTrigger | RememberChanged$ True | Mandatory$ True | StackDescription$ None\nSVar:X:Remembered$CardManaCost\nSVar:DBAddTrigger:DB$ Animate | Defined$ Remembered | Triggers$ TWhenLastTimeCounterRemoved | Duration$ Permanent | StackDescription$ None | SubAbility$ DBRemoveTimeCounterOtherCardsInExile\nSVar:TWhenLastTimeCounterRemoved:Mode$ CounterRemoved | ValidCard$ Card.Self+counters_EQ0_TIME | TriggerZones$ Exile | CounterType$ TIME | Execute$ DBCastWithoutPayingManaCost | TriggerDescription$ When the last time counter is removed from this card, if it's exiled, you may cast it without paying its mana cost. If you cast a creature spell this way, it gains haste until end of turn.\nSVar:DBCastWithoutPayingManaCost:DB$ Play | Valid$ Card.Self | ValidSA$ Spell | ValidZone$ Exile | Destination$ Battlefield | WithoutManaCost$ True | Optional$ True | SubAbility$ DBGiveHaste\nSVar:DBGiveHaste:DB$ Pump | Defined$ Self | KW$ Haste | ConditionDefined$ Self | ConditionPresent$ Card.Creature | PumpZone$ Stack\nSVar:DBRemoveTimeCounterOtherCardsInExile:DB$ RemoveCounterAll | ValidCards$ Card.YouOwn+!IsRemembered | ValidZone$ Exile | CounterType$ TIME | CounterNum$ 1 | StackDescription$ None | SubAbility$ DBCleanUp\nSVar:DBCleanUp:DB$ Cleanup | ClearRemembered$ True\nDeckHints:Keyword$Suspend\nOracle:{T}:Draw a card, then exile a card from your hand and put a number of time counters on it equal to its mana value. It gains \"When the last time counter is removed from this card, if it's exiled, you may cast it without paying its mana cost. If you cast a creature spell this way, it gains haste until end of turn.\" Then remove a time counter from each other card you own in exile.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alaundo the Seer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

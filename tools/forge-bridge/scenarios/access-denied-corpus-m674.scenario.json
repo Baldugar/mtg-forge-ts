@@ -1,0 +1,23 @@
+{
+  "id": "access-denied-corpus-m674",
+  "description": "M6 corpus — Access Denied; in-hand parse.",
+  "seed": 61446,
+  "cards": {
+    "Access Denied": "Name:Access Denied\nManaCost:3 U U\nTypes:Instant\nA:SP$ Counter | TargetType$ Spell | TgtPrompt$ Select target spell | ValidTgts$ Card | SubAbility$ DBToken | RememberCounteredCMC$ True | SpellDescription$ Counter target spell.\nSVar:DBToken:DB$ Token | TokenScript$ c_1_1_a_thopter_flying | TokenAmount$ X | SubAbility$ DBCleanup | SpellDescription$ Create X 1/1 colorless Thopter artifact creature tokens with flying, where X is that spell's mana value.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:X:Count$RememberedNumber\nDeckHas:Ability$Token\nOracle:Counter target spell. Create X 1/1 colorless Thopter artifact creature tokens with flying, where X is that spell's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Access Denied"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

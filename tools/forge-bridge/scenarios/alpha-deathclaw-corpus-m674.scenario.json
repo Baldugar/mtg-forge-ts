@@ -1,0 +1,25 @@
+{
+  "id": "alpha-deathclaw-corpus-m674",
+  "description": "M6 corpus — Alpha Deathclaw; ETB-on-bf.",
+  "seed": 61846,
+  "cards": {
+    "Alpha Deathclaw": "Name:Alpha Deathclaw\nManaCost:4 B G\nTypes:Creature Lizard Mutant\nPT:6/6\nK:Menace\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters or becomes monstrous, destroy target permanent.\nT:Mode$ BecomeMonstrous | Secondary$ True | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigDestroy | TriggerDescription$ When CARDNAME enters or becomes monstrous, destroy target permanent.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Permanent\nA:AB$ PutCounter | Cost$ 5 B G | Monstrosity$ 4\nDeckHas:Ability$Counters\nOracle:Menace, trample\\nWhen Alpha Deathclaw enters or becomes monstrous, destroy target permanent.\\n{5}{B}{G}: Monstrosity 4. (If this creature isn't monstrous, put four +1/+1 counters on it and it becomes monstrous.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alpha Deathclaw"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

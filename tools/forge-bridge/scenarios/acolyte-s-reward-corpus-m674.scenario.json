@@ -1,0 +1,23 @@
+{
+  "id": "acolyte-s-reward-corpus-m674",
+  "description": "M6 corpus — Acolyte's Reward; in-hand parse.",
+  "seed": 61479,
+  "cards": {
+    "Acolyte's Reward": "Name:Acolyte's Reward\nManaCost:1 W\nTypes:Instant\nA:SP$ Pump | ValidTgts$ Any | TgtPrompt$ Select any target to redirect prevented damage to | IsCurse$ True | SubAbility$ AcolytesPrevention | StackDescription$ SpellDescription | AILogic$ Never | SpellDescription$ Prevent the next X damage that would be dealt to target creature this turn, where X is your devotion to white. If damage is prevented this way, CARDNAME deals that much damage to any target.\nSVar:AcolytesPrevention:DB$ PreventDamage | ValidTgts$ Creature | TgtPrompt$ Select target creature to prevent damage dealt to | Amount$ X | PreventionSubAbility$ AcolytesRetribution | ShieldEffectTarget$ ParentTarget | StackDescription$ None\nSVar:AcolytesRetribution:DB$ DealDamage | Defined$ ShieldEffectTarget | NumDmg$ PreventedDamage | SpellDescription$ CARDNAME deals damage to target creature or player for each damage prevented this way.\nSVar:X:Count$Devotion.White\nAI:RemoveDeck:All\nOracle:Prevent the next X damage that would be dealt to target creature this turn, where X is your devotion to white. If damage is prevented this way, Acolyte's Reward deals that much damage to any target. (Each {W} in the mana costs of permanents you control counts toward your devotion to white.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acolyte's Reward"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

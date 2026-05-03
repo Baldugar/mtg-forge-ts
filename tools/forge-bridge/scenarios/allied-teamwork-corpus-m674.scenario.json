@@ -1,0 +1,25 @@
+{
+  "id": "allied-teamwork-corpus-m674",
+  "description": "M6 corpus — Allied Teamwork; ETB-on-bf.",
+  "seed": 61822,
+  "cards": {
+    "Allied Teamwork": "Name:Allied Teamwork\nManaCost:2 W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this enchantment enters, create a 1/1 white Ally creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_ally | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Ally.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Allies you control get +1/+1.\nOracle:When this enchantment enters, create a 1/1 white Ally creature token.\\nAllies you control get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Allied Teamwork"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

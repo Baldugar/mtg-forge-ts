@@ -1,0 +1,25 @@
+{
+  "id": "alley-grifters-corpus-m674",
+  "description": "M6 corpus — Alley Grifters; ETB-on-bf.",
+  "seed": 61816,
+  "cards": {
+    "Alley Grifters": "Name:Alley Grifters\nManaCost:1 B B\nTypes:Creature Human Mercenary\nPT:2/2\nT:Mode$ AttackerBlocked | ValidCard$ Card.Self | Execute$ TrigDiscard | TriggerDescription$ Whenever CARDNAME becomes blocked, defending player discards a card.\nSVar:TrigDiscard:DB$ Discard | Defined$ TriggeredDefendingPlayer | Mode$ TgtChoose\nSVar:HasAttackEffect:Blocked\nOracle:Whenever Alley Grifters becomes blocked, defending player discards a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alley Grifters"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

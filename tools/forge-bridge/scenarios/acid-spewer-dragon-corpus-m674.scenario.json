@@ -1,0 +1,25 @@
+{
+  "id": "acid-spewer-dragon-corpus-m674",
+  "description": "M6 corpus — Acid-Spewer Dragon; ETB-on-bf.",
+  "seed": 61467,
+  "cards": {
+    "Acid-Spewer Dragon": "Name:Acid-Spewer Dragon\nManaCost:5 B\nTypes:Creature Dragon\nPT:3/3\nK:Flying\nK:Deathtouch\nK:Megamorph:5 B B\nT:Mode$ TurnFaceUp | ValidCard$ Card.Self | Execute$ TrigCounters | TriggerZones$ Battlefield | TriggerDescription$ When CARDNAME is turned face up, put a +1/+1 counter on each other Dragon creature you control.\nSVar:TrigCounters:DB$ PutCounterAll | ValidCards$ Creature.Dragon+YouCtrl+StrictlyOther | CounterType$ P1P1 | CounterNum$ 1\nDeckHints:Type$Dragon\nOracle:Flying, deathtouch\\nMegamorph {5}{B}{B} (You may cast this card face down as a 2/2 creature for {3}. Turn it face up any time for its megamorph cost and put a +1/+1 counter on it.)\\nWhen Acid-Spewer Dragon is turned face up, put a +1/+1 counter on each other Dragon creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Acid-Spewer Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

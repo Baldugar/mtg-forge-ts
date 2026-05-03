@@ -1,0 +1,25 @@
+{
+  "id": "alpharael-stonechosen-corpus-m674",
+  "description": "M6 corpus — Alpharael, Stonechosen; ETB-on-bf.",
+  "seed": 61852,
+  "cards": {
+    "Alpharael, Stonechosen": "Name:Alpharael, Stonechosen\nManaCost:3 B B\nTypes:Legendary Creature Human Cleric\nPT:3/3\nK:Ward:Discard<1/Random>\nT:Mode$ Attacks | ValidCard$ Card.Self | CheckSVar$ X | TriggerZones$ Battlefield | Execute$ TrigLoseLife | TriggerDescription$ Void — Whenever NICKNAME attacks, if a nonland permanent left the battlefield this turn or a spell was warped this turn, defending player loses half their life, rounded up.\nSVar:TrigLoseLife:DB$ LoseLife | Defined$ TriggeredDefendingPlayer | LifeAmount$ Y\nSVar:X:Count$Void.1.0\nSVar:Y:TriggeredDefendingPlayer$LifeTotal/HalfUp\nOracle:Ward—Discard a card at random.\\nVoid — Whenever Alpharael attacks, if a nonland permanent left the battlefield this turn or a spell was warped this turn, defending player loses half their life, rounded up.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alpharael, Stonechosen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

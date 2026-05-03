@@ -1,0 +1,23 @@
+{
+  "id": "afterlife-from-the-loam-corpus-m674",
+  "description": "M6 corpus — Afterlife from the Loam; in-hand parse.",
+  "seed": 61611,
+  "cards": {
+    "Afterlife from the Loam": "Name:Afterlife from the Loam\nManaCost:5 B B B\nTypes:Sorcery\nK:Delve\nA:SP$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | ValidTgts$ Creature | TargetMin$ 0 | TargetMax$ OneEach | TargetsForEachPlayer$ True | GainControl$ True | TgtPrompt$ For each player, choose up to one target creature card in that player's graveyard | StaticEffect$ Animate | StackDescription$ SpellDescription | SpellDescription$ For each player, choose up to one target creature card in that player's graveyard. Put those cards onto the battlefield under your control. They're Zombies in addition to their other types.\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | AddType$ Zombie\nSVar:OneEach:PlayerCountPlayers$Amount\nOracle:Delve (Each card you exile from your graveyard while casting this spell pays for {1}.)\\nFor each player, choose up to one target creature card in that player's graveyard. Put those cards onto the battlefield under your control. They're Zombies in addition to their other types.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Afterlife from the Loam"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

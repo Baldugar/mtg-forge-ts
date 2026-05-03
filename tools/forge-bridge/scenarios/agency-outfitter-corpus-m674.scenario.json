@@ -1,0 +1,25 @@
+{
+  "id": "agency-outfitter-corpus-m674",
+  "description": "M6 corpus — Agency Outfitter; ETB-on-bf.",
+  "seed": 61623,
+  "cards": {
+    "Agency Outfitter": "Name:Agency Outfitter\nManaCost:4 U U\nTypes:Creature Sphinx Detective\nPT:4/3\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your graveyard, hand, and/or library for a card named Magnifying Glass and/or a card named Thinking Cap and put them onto the battlefield. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | OriginAlternative$ Graveyard,Hand | Hidden$ True | Origin$ Library | Destination$ Battlefield | DifferentNames$ True | ChangeType$ Card.namedMagnifying Glass,Card.namedThinking Cap | ChangeNum$ 2 | ShuffleNonMandatory$ True\nDeckHas:Ability$Graveyard\nDeckHints:Name$Thinking Cap|Magnifying Glass\nOracle:Flying\\nWhen Agency Outfitter enters, you may search your graveyard, hand, and/or library for a card named Magnifying Glass and/or a card named Thinking Cap and put them onto the battlefield. If you search your library this way, shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agency Outfitter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

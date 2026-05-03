@@ -1,0 +1,25 @@
+{
+  "id": "aether-adept-corpus-m674",
+  "description": "M6 corpus — Aether Adept; ETB-on-bf.",
+  "seed": 61568,
+  "cards": {
+    "Aether Adept": "Name:Aether Adept\nManaCost:1 U U\nTypes:Creature Human Wizard\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | TriggerDescription$ When CARDNAME enters, return target creature to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand\nOracle:When Aether Adept enters, return target creature to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aether Adept"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

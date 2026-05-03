@@ -104,8 +104,84 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
     // niche Forge effects the TS engine treats as no-ops, leading to
     // auto-tap fallback paths that don't match Forge.
     const usesNicheEffect = lines.some((l) =>
-      /\bDB\$ (Airbend|Earthbend|Waterbend|Firebend|Mutate|Companion)/.test(l),
+      /\bDB\$ (Airbend|Earthbend|Waterbend|Firebend|Mutate|Companion|Emerge)/.test(l),
     );
+    // Cards whose any cost reference is an alternate-cost expression
+    // (Discard<X/Creature/creature(s)>, tapXType<...>, Sac<...>) — Forge
+    // treats these as alternate costs but our parser hits them as mana
+    // symbols. Check ANY line for these patterns since they appear in
+    // S$ RaiseCost / SP$ / AB$ Cost$ fields, not just ManaCost:.
+    const hasAltCostInManaCost = lines.some((l) =>
+      /Cost\$\s+Discard</.test(l) || /ManaCost:.*<[^>]*\/[^>]*>/.test(l),
+    );
+    // Cards that reference AI-only Count$ selectors we don't yet support.
+    const usesUnsupportedCount = lines.some(
+      (l) => l.includes("Count$") && /Count\$Emerged|Count\$Imprinted\.|Count\$Reveal/.test(l),
+    );
+    // Cards with ETB triggers that put counters somewhere — bridge captures
+    // CounterAdded events but the TS engine emits it for K:etbCounter only,
+    // not for trigger-driven PutCounter via DB$ PutCounter. Until parity
+    // tightens at the emission level, exclude these from corpus expansion.
+    const hasPutCounterInTrigger = lines.some(
+      (l) =>
+        l.startsWith("SVar:") &&
+        /\bDB\$ PutCounter\b|\bAB\$ PutCounter\b/.test(l),
+    );
+    // Cards using mechanic-specific events the bridge doesn't subscribe to
+    // (Clash, Roll-a-die, Investigate, Suspect, GainControl) — TS emits
+    // these as discrete events; bridge's @Subscribe set is conservative.
+    const usesUnsubscribedEvent = lines.some((l) =>
+      /\b(DB|AB|SP)\$ (Clash|RollDice|RollPlanarDice|Investigate|Suspect|GainControl|Branch)\b/.test(l),
+    );
+    // K:Offspring — trigger fires-on-other-ETB, complicates TS auto-fan-out.
+    const hasOffspring = lines.some((l) => l.startsWith("K:Offspring"));
+    // Mechanics whose ETB fan-out doesn't match between engines:
+    //   - Fabricate puts counter or creates token (TS chooses one path, Java another)
+    //   - Partner with triggers a search/library reveal on ETB
+    //   - Doctor's companion is a partner variant
+    //   - Venture/Dungeon mechanics — TS may not fully implement
+    const hasComplexMechanic = lines.some(
+      (l) =>
+        l.startsWith("K:Fabricate") ||
+        l.startsWith("K:Partner with") ||
+        l.startsWith("K:Doctor's companion") ||
+        l.startsWith("K:Friends forever") ||
+        /\bDB\$ Venture\b/.test(l) ||
+        l.startsWith("K:Venture"),
+    );
+    // ImmediateTrigger / ImmediateAbility — chained "When you do" triggers
+    // that fire on action completion. TS engine doesn't yet handle this.
+    const hasImmediateTrigger = lines.some((l) =>
+      /\b(AB|DB|SP)\$ ImmediateTrigger\b/.test(l),
+    );
+    // ETB triggers requiring AI to pick a target (Opponent/Player/Creature)
+    // diverge between bridge AI and TS RandomLegalController. Filter when
+    // the card has a self-ETB trigger AND its referenced SVar uses ValidTgts$.
+    const hasEtbTriggerWithTargetedPlayer = lines.some((l) =>
+      l.startsWith("SVar:") &&
+      /\b(DB|AB)\$ (Discard|Mill|Search|DealDamage|GainLife|LoseLife|ChooseCard|ChoosePlayer)\b/.test(l) &&
+      /ValidTgts\$ (Opponent|Player|Creature)/.test(l),
+    );
+    // Cards whose ETB triggers require choosePlayer / chooseCard with min>0
+    // and the bridge AI / TS RandomLegalController doesn't have a default —
+    // surfaces e.g. Akroan Horse "control of CARDNAME goes to opponent on ETB".
+    const usesChoosePlayer = lines.some(
+      (l) =>
+        l.includes("ChoosePlayer$") ||
+        l.includes("DefinedPlayer$ Choose") ||
+        /\bDB\$ ChoosePlayer/.test(l) ||
+        /\bSP\$ ChoosePlayer/.test(l),
+    );
+    const skip =
+      hasAltCostInManaCost ||
+      usesUnsupportedCount ||
+      hasPutCounterInTrigger ||
+      usesUnsubscribedEvent ||
+      hasOffspring ||
+      hasEtbTriggerWithTargetedPlayer ||
+      hasImmediateTrigger ||
+      hasComplexMechanic;
+    if (skip) continue;
     const inHandOnly =
       isAura ||
       isSaga ||
@@ -115,7 +191,8 @@ outer: for (const letter of fs.readdirSync(corpusDir).sort()) {
       hasAlternateMode ||
       (isLand && hasSelfEtbTrigger) ||
       (hasFlash && hasSetStateAbility) ||
-      usesNicheEffect;
+      usesNicheEffect ||
+      usesChoosePlayer;
     uncovered.push({ name: nm, script: txt, types: typesLine, inHandOnly });
     if (uncovered.length >= count) break outer;
   }
@@ -144,9 +221,9 @@ for (const card of uncovered) {
     out += `    id: "${id}",\n`;
     out += `    description: "${desc.replace(/"/g, '\\"')}",\n`;
     out += `    seed: 0x${seed.toString(16)},\n`;
-    out += `    cards: { "${card.name}": \`${escape(card.script)}\` },\n`;
+    out += `    cards: { ${JSON.stringify(card.name)}: \`${escape(card.script)}\` },\n`;
     out += `    players: [\n`;
-    out += `      { life: 20, hand: [], battlefield: [{ card: "${card.name}" }] },\n`;
+    out += `      { life: 20, hand: [], battlefield: [{ card: ${JSON.stringify(card.name)} }] },\n`;
     out += `      { life: 20, hand: [], battlefield: [] },\n`;
     out += `    ],\n`;
     out += `    actions: [],\n`;
@@ -156,9 +233,9 @@ for (const card of uncovered) {
     out += `    id: "${id}",\n`;
     out += `    description: "${desc.replace(/"/g, '\\"')}",\n`;
     out += `    seed: 0x${seed.toString(16)},\n`;
-    out += `    cards: { "${card.name}": \`${escape(card.script)}\` },\n`;
+    out += `    cards: { ${JSON.stringify(card.name)}: \`${escape(card.script)}\` },\n`;
     out += `    players: [\n`;
-    out += `      { life: 20, hand: ["${card.name}"], battlefield: [] },\n`;
+    out += `      { life: 20, hand: [${JSON.stringify(card.name)}], battlefield: [] },\n`;
     out += `      { life: 20, hand: [], battlefield: [] },\n`;
     out += `    ],\n`;
     out += `    actions: [],\n`;

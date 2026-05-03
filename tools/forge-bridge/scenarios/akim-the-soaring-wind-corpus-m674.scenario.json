@@ -1,0 +1,25 @@
+{
+  "id": "akim-the-soaring-wind-corpus-m674",
+  "description": "M6 corpus — Akim, the Soaring Wind; ETB-on-bf.",
+  "seed": 61707,
+  "cards": {
+    "Akim, the Soaring Wind": "Name:Akim, the Soaring Wind\nManaCost:2 U R W\nTypes:Legendary Creature Bird Dinosaur\nPT:3/4\nK:Flying\nT:Mode$ TokenCreatedOnce | OnlyFirst$ You | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever you create one or more tokens for the first time each turn, create a 1/1 white Bird creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_bird_flying\nA:AB$ PumpAll | Cost$ 3 U R W | ValidCards$ Creature.token+YouCtrl | KW$ Double Strike | SpellDescription$ Creature tokens you control gain double strike until end of turn.\nDeckHas:Ability$Token\nDeckNeeds:Ability$Token\nOracle:Flying\\nWhenever you create one or more tokens for the first time each turn, create a 1/1 white Bird creature token with flying.\\n{3}{U}{R}{W}: Creature tokens you control gain double strike until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akim, the Soaring Wind"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

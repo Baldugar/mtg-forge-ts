@@ -1,0 +1,25 @@
+{
+  "id": "acidic-dagger-corpus-m674",
+  "description": "M6 corpus — Acidic Dagger; ETB-on-bf.",
+  "seed": 61469,
+  "cards": {
+    "Acidic Dagger": "Name:Acidic Dagger\nManaCost:4\nTypes:Artifact\nA:AB$ Effect | Cost$ 4 T | ValidTgts$ Creature | Triggers$ TrigDam,TrigLeave | RememberObjects$ Targeted | ActivationPhases$ Upkeep->Declare Attackers | ActivationFirstCombat$ True | SpellDescription$ Whenever target creature deals combat damage to a non-Wall creature this turn, destroy that non-Wall creature. When the targeted creature leaves the battlefield this turn, sacrifice CARDNAME. Activate only before blockers are declared.\nSVar:TrigDam:Mode$ DamageDone | ValidSource$ Creature.IsRemembered | ValidTarget$ Creature.nonWall | CombatDamage$ True | TriggerZones$ Command | Execute$ TrigDestroy | TriggerDescription$ Whenever targeted creature deals combat damage to a non-Wall creature this turn, destroy that non-Wall creature.\nSVar:TrigLeave:Mode$ ChangesZone | ValidCard$ Creature.IsRemembered | Origin$ Battlefield | Destination$ Any | OneOff$ True | Execute$ TrigSac | TriggerZones$ Command | TriggerDescription$ When the targeted creature leaves the battlefield this turn, sacrifice EFFECTSOURCE.\nSVar:TrigDestroy:DB$ Destroy | Defined$ TriggeredTargetLKICopy\nSVar:TrigSac:DB$ SacrificeAll | Defined$ EffectSource\nAI:RemoveDeck:All\nOracle:{4}, {T}: Whenever target creature deals combat damage to a non-Wall creature this turn, destroy that non-Wall creature. When the targeted creature leaves the battlefield this turn, sacrifice Acidic Dagger. Activate only before blockers are declared.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Acidic Dagger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

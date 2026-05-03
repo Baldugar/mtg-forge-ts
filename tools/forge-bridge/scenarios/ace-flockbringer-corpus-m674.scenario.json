@@ -1,0 +1,25 @@
+{
+  "id": "ace-flockbringer-corpus-m674",
+  "description": "M6 corpus — Ace Flockbringer; ETB-on-bf.",
+  "seed": 61462,
+  "cards": {
+    "Ace Flockbringer": "Name:Ace Flockbringer\nManaCost:1 W U\nTypes:Creature Bird Scout\nPT:3/3\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Creature.withoutFlying | ActivationLimit$ 1 | ValidActivatingPlayer$ You | Execute$ TrigConjure | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a creature spell without flying, conjure a duplicate of it into your hand. The duplicate perpetually gains flying. This ability triggers only once each turn.\nSVar:TrigConjure:DB$ MakeCard | Conjure$ True | DefinedName$ TriggeredCard | Zone$ Hand | RememberMade$ True | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Remembered | PumpZone$ Hand | KW$ Flying | Duration$ Perpetual | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearChosenCard$ True\nOracle:Flying\\nWhenever you cast a creature spell without flying, conjure a duplicate of it into your hand. The duplicate perpetually gains flying. This ability triggers only once each turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ace Flockbringer"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

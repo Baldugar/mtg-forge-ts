@@ -1,0 +1,25 @@
+{
+  "id": "adarkar-valkyrie-corpus-m674",
+  "description": "M6 corpus — Adarkar Valkyrie; ETB-on-bf.",
+  "seed": 61503,
+  "cards": {
+    "Adarkar Valkyrie": "Name:Adarkar Valkyrie\nManaCost:4 W W\nTypes:Snow Creature Angel\nPT:4/5\nK:Flying\nK:Vigilance\nA:AB$ DelayedTrigger | Cost$ T | ValidTgts$ Creature.Other | TgtPrompt$ Select target creature other than CARDNAME | Mode$ ChangesZone | RememberObjects$ Targeted | ValidCard$ Card.IsTriggerRemembered | Origin$ Battlefield | Destination$ Graveyard | ThisTurn$ True | Execute$ TrigChangeZone | StackDescription$ When {c:Targeted} dies this turn, return that card to the battlefield under your control. | SpellDescription$ When target creature other than CARDNAME dies this turn, return that card to the battlefield under your control.\nSVar:TrigChangeZone:DB$ ChangeZone | Defined$ DelayTriggerRemembered | Origin$ Graveyard | Destination$ Battlefield | GainControl$ True\nOracle:Flying, vigilance\\n{T}: When target creature other than Adarkar Valkyrie dies this turn, return that card to the battlefield under your control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Adarkar Valkyrie"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

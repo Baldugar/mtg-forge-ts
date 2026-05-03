@@ -1,0 +1,25 @@
+{
+  "id": "an-zerrin-ruins-corpus-m674",
+  "description": "M6 corpus — An-Zerrin Ruins; ETB-on-bf.",
+  "seed": 61937,
+  "cards": {
+    "An-Zerrin Ruins": "Name:An-Zerrin Ruins\nManaCost:2 R R\nTypes:Enchantment\nK:ETBReplacement:Other:ChooseCT\nSVar:ChooseCT:DB$ ChooseType | Defined$ You | Type$ Creature | AILogic$ MostProminentOppControls | SpellDescription$ As CARDNAME enters, choose a creature type.\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Creature.ChosenType | ValidStepTurnToController$ You | Layer$ CantHappen | Description$ Creatures of the chosen type don't untap during their controllers' untap steps.\nAI:RemoveDeck:Random\nOracle:As An-Zerrin Ruins enters, choose a creature type.\\nCreatures of the chosen type don't untap during their controllers' untap steps.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "An-Zerrin Ruins"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

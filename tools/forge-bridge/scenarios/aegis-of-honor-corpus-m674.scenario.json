@@ -1,0 +1,25 @@
+{
+  "id": "aegis-of-honor-corpus-m674",
+  "description": "M6 corpus — Aegis of Honor; ETB-on-bf.",
+  "seed": 61535,
+  "cards": {
+    "Aegis of Honor": "Name:Aegis of Honor\nManaCost:W\nTypes:Enchantment\nA:AB$ Effect | Cost$ 1 | ReplacementEffects$ SelflessDamage | AILogic$ RedirectSpellDamageFromPlayer | Stackable$ False | SpellDescription$ The next time an instant or sorcery spell would deal damage to you this turn, that spell deals that damage to its controller instead.\nSVar:SelflessDamage:Event$ DamageDone | ValidTarget$ You | ValidSource$ Instant,Sorcery | ReplaceWith$ SelflessDmg | DamageTarget$ ReplacedSourceController | Description$ The next time a source of your choice would deal damage this turn, that damage is dealt to that source's controller instead.\nSVar:SelflessDmg:DB$ ReplaceEffect | VarName$ Affected | VarValue$ ReplacedSourceController | VarType$ Player | SubAbility$ ExileEffect\nSVar:ExileEffect:DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile\nSVar:NonStackingEffect:True\nOracle:{1}: The next time an instant or sorcery spell would deal damage to you this turn, that spell deals that damage to its controller instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aegis of Honor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

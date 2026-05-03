@@ -1,0 +1,25 @@
+{
+  "id": "acolyte-hybrid-corpus-m674",
+  "description": "M6 corpus — Acolyte Hybrid; ETB-on-bf.",
+  "seed": 61473,
+  "cards": {
+    "Acolyte Hybrid": "Name:Acolyte Hybrid\nManaCost:2 R\nTypes:Creature Tyranid Human\nPT:2/2\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigDestroy | TriggerDescription$ Heavy Rock Cutter — Whenever CARDNAME attacks, destroy up to one target artifact. If an artifact is destroyed this way, its controller draws a card.\nSVar:TrigDestroy:DB$ Destroy | ValidTgts$ Artifact | TgtPrompt$ Select up to one target artifact | TargetMin$ 0 | TargetMax$ 1 | RememberDestroyed$ True | SubAbility$ DBDraw\nSVar:DBDraw:DB$ Draw | Defined$ RememberedController | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:HasAttackEffect:TRUE\nOracle:Heavy Rock Cutter — Whenever Acolyte Hybrid attacks, destroy up to one target artifact. If an artifact is destroyed this way, its controller draws a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Acolyte Hybrid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

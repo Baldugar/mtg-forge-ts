@@ -1,0 +1,25 @@
+{
+  "id": "acolyte-of-bahamut-corpus-m674",
+  "description": "M6 corpus — Acolyte of Bahamut; ETB-on-bf.",
+  "seed": 61476,
+  "cards": {
+    "Acolyte of Bahamut": "Name:Acolyte of Bahamut\nManaCost:1 G\nTypes:Legendary Enchantment Background\nS:Mode$ Continuous | Affected$ Creature.IsCommander+YouOwn | AddStaticAbility$ DragonReduce | Description$ Commander creatures you own have \"The first Dragon spell you cast each turn costs {2} less to cast.\"\nSVar:DragonReduce:Mode$ ReduceCost | EffectZone$ Battlefield | ValidCard$ Card.Dragon | Activator$ You | Type$ Spell | OnlyFirstSpell$ True | Amount$ 2 | Description$ The first Dragon spell you cast each turn costs {2} less to cast.\nAI:RemoveDeck:NonCommander\nDeckNeeds:Type$Dragon\nOracle:Commander creatures you own have \"The first Dragon spell you cast each turn costs {2} less to cast.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Acolyte of Bahamut"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

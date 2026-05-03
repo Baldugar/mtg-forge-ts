@@ -1,0 +1,25 @@
+{
+  "id": "alms-collector-corpus-m674",
+  "description": "M6 corpus — Alms Collector; ETB-on-bf.",
+  "seed": 61838,
+  "cards": {
+    "Alms Collector": "Name:Alms Collector\nManaCost:3 W\nTypes:Creature Cat Cleric\nPT:3/4\nK:Flash\nR:Event$ DrawCards | ActiveZones$ Battlefield | ValidPlayer$ Player.Opponent | Number$ GE2 | ReplaceWith$ DrawEach | Description$ If an opponent would draw two or more cards, instead you and that player each draw a card.\nSVar:DrawEach:DB$ Draw | Defined$ You & ReplacedPlayer\nOracle:Flash\\nIf an opponent would draw two or more cards, instead you and that player each draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alms Collector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

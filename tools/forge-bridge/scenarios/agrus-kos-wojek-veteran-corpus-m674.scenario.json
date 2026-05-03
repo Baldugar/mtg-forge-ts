@@ -1,0 +1,25 @@
+{
+  "id": "agrus-kos-wojek-veteran-corpus-m674",
+  "description": "M6 corpus — Agrus Kos, Wojek Veteran; ETB-on-bf.",
+  "seed": 61657,
+  "cards": {
+    "Agrus Kos, Wojek Veteran": "Name:Agrus Kos, Wojek Veteran\nManaCost:3 R W\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, attacking red creatures get +2/+0 and attacking white creatures get +0/+2 until end of turn.\nSVar:TrigPump:DB$ PumpAll | ValidCards$ Creature.attacking+Red | NumAtt$ +2 | SubAbility$ DBPump\nSVar:DBPump:DB$ PumpAll | ValidCards$ Creature.attacking+White | NumDef$ +2\nOracle:Whenever Agrus Kos, Wojek Veteran attacks, attacking red creatures get +2/+0 and attacking white creatures get +0/+2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agrus Kos, Wojek Veteran"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

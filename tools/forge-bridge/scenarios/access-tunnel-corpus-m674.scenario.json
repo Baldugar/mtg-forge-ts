@@ -1,0 +1,25 @@
+{
+  "id": "access-tunnel-corpus-m674",
+  "description": "M6 corpus — Access Tunnel; ETB-on-bf.",
+  "seed": 61447,
+  "cards": {
+    "Access Tunnel": "Name:Access Tunnel\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Effect | Cost$ 3 T | ValidTgts$ Creature.powerLE3 | TgtPrompt$ Select target creature with power 3 or less | RememberObjects$ Targeted | ExileOnMoved$ Battlefield | StaticAbilities$ Unblockable | AILogic$ Pump | StackDescription$ {c:Targeted} can't be blocked this turn. | SpellDescription$ Target creature with power 3 or less can't be blocked this turn.\nSVar:Unblockable:Mode$ CantBlockBy | ValidAttacker$ Card.IsRemembered | Description$ This creature can't be blocked this turn.\nOracle:{T}: Add {C}.\\n{3}, {T}: Target creature with power 3 or less can't be blocked this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Access Tunnel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

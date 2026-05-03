@@ -1,0 +1,23 @@
+{
+  "id": "aggravate-corpus-m674",
+  "description": "M6 corpus — Aggravate; in-hand parse.",
+  "seed": 61637,
+  "cards": {
+    "Aggravate": "Name:Aggravate\nManaCost:3 R R\nTypes:Instant\nA:SP$ DamageAll | ValidTgts$ Player | NumDmg$ 1 | RememberDamaged$ True | ValidCards$ Creature | ValidDescription$ each creature target player controls. | SubAbility$ DBAnimate | SpellDescription$ CARDNAME deals 1 damage to each creature target player controls.\nSVar:DBAnimate:DB$ Effect | RememberObjects$ Remembered | ForgetOnMoved$ Battlefield | StaticAbilities$ MustAttack | SubAbility$ DBCleanup | SpellDescription$ Each creature dealt damage this way attacks this turn if able.\nSVar:MustAttack:Mode$ MustAttack | ValidCreature$ Card.IsRemembered | Description$ Each creature dealt damage this way attacks this turn if able.\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Aggravate deals 1 damage to each creature target player controls. Each creature dealt damage this way attacks this turn if able.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aggravate"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

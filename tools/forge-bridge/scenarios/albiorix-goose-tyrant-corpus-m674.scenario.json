@@ -1,0 +1,23 @@
+{
+  "id": "albiorix-goose-tyrant-corpus-m674",
+  "description": "M6 corpus — Albiorix, Goose Tyrant; in-hand parse.",
+  "seed": 61775,
+  "cards": {
+    "Albiorix, Goose Tyrant": "Name:Albiorix, Goose Tyrant\nManaCost:1 G U\nTypes:Legendary Creature Bird\nPT:3/3\nK:Flying\nK:Trample\nK:Ward:1\nT:Mode$ Sacrificed | ValidPlayer$ You | ValidCard$ Card.token | TriggerZones$ Battlefield,Exile | Execute$ TrigPump | TriggerDescription$ Whenever you sacrifice a token, NICKNAME perpetually gets +1/+1. This ability also triggers if NICKNAME is in exile.\nSVar:TrigPump:DB$ Pump | PumpZone$ Battlefield,Exile | NumAtt$ +1 | NumDef$ +1 | Duration$ Perpetual\nDeckHas:Ability$Discard|Token & Type$Food\nDeckHints:Ability$Token & Type$Treasure|Food|Clue\nAlternateMode:Adventure\nOracle:Flying, Trample, Ward {1}\\nWhenever you sacrifice a token, Albiorix perpetually gets +1/+1. This ability also triggers if Albiorix is in exile.\n\nALTERNATE\n\nName:Wild Goose Chase\nManaCost:U G\nTypes:Instant Adventure\nA:SP$ Draw | Defined$ You | NumCards$ 2 | SubAbility$ TrigDiscard | SpellDescription$ Draw two cards, then discard two cards.\nSVar:TrigDiscard:DB$ Discard | Defined$ You | NumCards$ 2 | Mode$ TgtChoose | SubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ c_a_food_sac | TokenOwner$ You | SpellDescription$ Create a Food token.\nOracle:Draw two cards, then discard two cards. Create a Food token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Albiorix, Goose Tyrant"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

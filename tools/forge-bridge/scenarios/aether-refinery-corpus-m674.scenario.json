@@ -1,0 +1,25 @@
+{
+  "id": "aether-refinery-corpus-m674",
+  "description": "M6 corpus — Aether Refinery; ETB-on-bf.",
+  "seed": 61578,
+  "cards": {
+    "Aether Refinery": "Name:Aether Refinery\nManaCost:4 R R\nTypes:Artifact\nR:Event$ AddCounter | ActiveZones$ Battlefield | ValidPlayer$ You | ValidCounterType$ ENERGY | ReplaceWith$ Twice | Description$ If you would get one or more {E}, you get twice that many {E} instead.\nSVar:Twice:DB$ ReplaceCounter | ValidCounterType$ ENERGY | ChooseCounter$ True | Amount$ ReplaceCount$CounterNum/Twice\nA:AB$ PutCounter | Cost$ T | Defined$ You | CounterType$ ENERGY | SubAbility$ DBChooseNumber | StackDescription$ SpellDescription | SpellDescription$ You get {E}, then you may pay one or more {E}.\nSVar:DBChooseNumber:DB$ ChooseNumber | Max$ Count$YourCountersEnergy | ListTitle$ amount of energy to pay | SubAbility$ DBToken | StackDescription$ None\nSVar:DBToken:DB$ Token | ConditionCheckSVar$ X | UnlessCost$ Mandatory PayEnergy<X> | UnlessPayer$ You | UnlessSwitched$ True | TokenScript$ b_x_x_aetherborn | TokenPower$ X | TokenToughness$ X | StackDescription$ SpellDescription | SpellDescription$ If you do, create an X/X black Aetherborn creature token, where X is the amount of {E} paid this way.\nSVar:X:Count$ChosenNumber\nDeckHas:Ability$Token\nOracle:If you would get one or more {E}, you get twice that many {E} instead.\\n{T}: You get {E}, then you may pay one or more {E}. If you do, create an X/X black Aetherborn creature token, where X is the amount of {E} paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aether Refinery"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

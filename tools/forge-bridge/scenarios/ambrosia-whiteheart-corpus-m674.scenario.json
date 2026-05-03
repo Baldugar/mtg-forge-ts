@@ -1,0 +1,25 @@
+{
+  "id": "ambrosia-whiteheart-corpus-m674",
+  "description": "M6 corpus — Ambrosia Whiteheart; ETB-on-bf.",
+  "seed": 61896,
+  "cards": {
+    "Ambrosia Whiteheart": "Name:Ambrosia Whiteheart\nManaCost:1 W\nTypes:Legendary Creature Bird\nPT:2/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChangeZone | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may return another permanent you control to its owner's hand.\nSVar:TrigChangeZone:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | AILogic$ BounceOwnTrigger | Mandatory$ True | ChangeType$ Permanent.Other+YouCtrl\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Landfall — Whenever a land you control enters, CARDNAME gets +1/+0 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +1\nSVar:BuffedBy:Land\nOracle:Flash\\nWhen Ambrosia Whiteheart enters, you may return another permanent you control to its owner's hand.\\nLandfall — Whenever a land you control enters, Ambrosia Whiteheart gets +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ambrosia Whiteheart"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

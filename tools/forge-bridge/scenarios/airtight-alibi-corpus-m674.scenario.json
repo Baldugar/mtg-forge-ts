@@ -1,0 +1,23 @@
+{
+  "id": "airtight-alibi-corpus-m674",
+  "description": "M6 corpus — Airtight Alibi; in-hand parse.",
+  "seed": 61683,
+  "cards": {
+    "Airtight Alibi": "Name:Airtight Alibi\nManaCost:2 G\nTypes:Enchantment Aura\nK:Flash\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Any | Destination$ Battlefield | Execute$ TrigUntap | TriggerDescription$ When CARDNAME enters, untap enchanted creature. It gains hexproof until end of turn. If it's suspected, it's no longer suspected.\nSVar:TrigUntap:DB$ Untap | Defined$ Enchanted | SubAbility$ DBPump\nSVar:DBPump:DB$ Pump | Defined$ Enchanted | KW$ Hexproof | SubAbility$ DBUnsuspect\nSVar:DBUnsuspect:DB$ AlterAttribute | Attributes$ Suspected | ConditionDefined$ Enchanted | ConditionPresent$ Card.IsSuspected | Activate$ False | Defined$ Enchanted\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Description$ Enchanted creature gets +2/+2 and can't become suspected.\nS:Mode$ CantBeSuspected | ValidCard$ Creature.EnchantedBy | Secondary$ True | Description$ Enchanted creature gets +2/+2 and can't become suspected.\nOracle:Flash\\nEnchant creature\\nWhen Airtight Alibi enters, untap enchanted creature. It gains hexproof until end of turn. If it's suspected, it's no longer suspected.\\nEnchanted creature gets +2/+2 and can't become suspected.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Airtight Alibi"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

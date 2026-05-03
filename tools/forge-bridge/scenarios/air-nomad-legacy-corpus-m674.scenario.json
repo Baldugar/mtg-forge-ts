@@ -1,0 +1,25 @@
+{
+  "id": "air-nomad-legacy-corpus-m674",
+  "description": "M6 corpus — Air Nomad Legacy; ETB-on-bf.",
+  "seed": 61673,
+  "cards": {
+    "Air Nomad Legacy": "Name:Air Nomad Legacy\nManaCost:W U\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this enchantment enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\nSVar:TrigToken:DB$ Token | TokenScript$ c_a_clue_draw | TokenOwner$ You\nS:Mode$ Continuous | Affected$ Creature.withFlying+YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control with flying get +1/+1.\nSVar:PlayMain1:TRUE\nOracle:When this enchantment enters, create a Clue token. (It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")\\nCreatures you control with flying get +1/+1.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Air Nomad Legacy"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

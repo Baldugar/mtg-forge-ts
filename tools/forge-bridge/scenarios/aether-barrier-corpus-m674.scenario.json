@@ -1,0 +1,25 @@
+{
+  "id": "aether-barrier-corpus-m674",
+  "description": "M6 corpus — Aether Barrier; ETB-on-bf.",
+  "seed": 61569,
+  "cards": {
+    "Aether Barrier": "Name:Aether Barrier\nManaCost:2 U\nTypes:Enchantment\nT:Mode$ SpellCast | ValidCard$ Creature | TriggerZones$ Battlefield | Execute$ TrigSac | TriggerDescription$ Whenever a player casts a creature spell, that player sacrifices a permanent unless they pay {1}.\nSVar:TrigSac:DB$ Sacrifice | UnlessCost$ 1 | UnlessPayer$ TriggeredActivator | Defined$ TriggeredActivator | SacValid$ Permanent\nAI:RemoveDeck:Random\nOracle:Whenever a player casts a creature spell, that player sacrifices a permanent unless they pay {1}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aether Barrier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

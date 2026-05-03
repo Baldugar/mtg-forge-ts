@@ -1,0 +1,25 @@
+{
+  "id": "admiral-brass-unsinkable-corpus-m674",
+  "description": "M6 corpus — Admiral Brass, Unsinkable; ETB-on-bf.",
+  "seed": 61512,
+  "cards": {
+    "Admiral Brass, Unsinkable": "Name:Admiral Brass, Unsinkable\nManaCost:2 U B R\nTypes:Legendary Creature Human Pirate\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill four cards.\nSVar:TrigMill:DB$ Mill | NumCards$ 4 | Defined$ You\nT:Mode$ Phase | Phase$ BeginCombat | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigReturn | TriggerDescription$ At the beginning of combat on your turn, you may return target Pirate creature card from your graveyard to the battlefield with a finality counter on it. It has base power and toughness 4/4. It gains haste until end of turn. (If a creature with a finality counter on it would die, exile it instead.)\nSVar:TrigReturn:DB$ ChangeZone | Origin$ Graveyard | Destination$ Battlefield | WithCountersType$ FINALITY | ValidTgts$ Pirate.YouOwn | Optional$ True | TgtPrompt$ Select target Pirate in your graveyard | SubAbility$ DBPump | RememberChanged$ True | StaticEffect$ Animate\nSVar:Animate:Mode$ Continuous | Affected$ Card.IsRemembered | SetPower$ 4 | SetToughness$ 4\nSVar:DBPump:DB$ Pump | KW$ Haste | Defined$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nDeckHas:Ability$Mill|Graveyard|Counters\nDeckHints:Ability$Mill|Graveyard & Type$Pirate\nOracle:When Admiral Brass, Unsinkable enters, mill four cards.\\nAt the beginning of combat on your turn, you may return target Pirate creature card from your graveyard to the battlefield with a finality counter on it. It has base power and toughness 4/4. It gains haste until end of turn. (If a creature with a finality counter on it would die, exile it instead.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Admiral Brass, Unsinkable"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

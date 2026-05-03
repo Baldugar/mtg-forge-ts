@@ -1,0 +1,23 @@
+{
+  "id": "adventurer-s-inn-corpus-m674",
+  "description": "M6 corpus — Adventurer's Inn; in-hand parse.",
+  "seed": 61527,
+  "cards": {
+    "Adventurer's Inn": "Name:Adventurer's Inn\nManaCost:no cost\nTypes:Land Town\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigGainLife | TriggerDescription$ When this land enters, you gain 2 life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ 2\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nOracle:When this land enters, you gain 2 life.\\n{T}: Add {C}.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Adventurer's Inn"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "alpha-brawl-corpus-m674",
+  "description": "M6 corpus — Alpha Brawl; in-hand parse.",
+  "seed": 61845,
+  "cards": {
+    "Alpha Brawl": "Name:Alpha Brawl\nManaCost:6 R R\nTypes:Sorcery\nA:SP$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | RememberTargets$ True | SubAbility$ AlphaAttack | StackDescription$ REP Target creature an opponent controls_{c:Targeted} & that player_{p:TargetedController} & that creature_{c:Targeted} | SpellDescription$ Target creature an opponent controls deals damage equal to its power to each other creature that player controls, then each of those creatures deals damage equal to its power to that creature.\nSVar:AlphaAttack:DB$ DamageAll | ValidCards$ Creature.!IsRemembered+ControlledBy TargetedController | DamageSource$ Targeted | NumDmg$ Remembered$CardPower | SubAbility$ SucksToBeAlpha | StackDescription$ None\nSVar:SucksToBeAlpha:DB$ EachDamage | ValidCards$ Creature.!IsRemembered+ControlledBy TargetedController | NumDmg$ Count$CardPower | Defined$ Remembered | SubAbility$ DBCleanup | StackDescription$ None\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nAI:RemoveDeck:All\nOracle:Target creature an opponent controls deals damage equal to its power to each other creature that player controls, then each of those creatures deals damage equal to its power to that creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Alpha Brawl"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

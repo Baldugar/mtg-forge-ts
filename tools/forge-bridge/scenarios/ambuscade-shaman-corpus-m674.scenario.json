@@ -1,0 +1,25 @@
+{
+  "id": "ambuscade-shaman-corpus-m674",
+  "description": "M6 corpus — Ambuscade Shaman; ETB-on-bf.",
+  "seed": 61897,
+  "cards": {
+    "Ambuscade Shaman": "Name:Ambuscade Shaman\nManaCost:2 B\nTypes:Creature Orc Shaman\nPT:2/2\nK:Dash:3 B\nT:Mode$ ChangesZone | ValidCard$ Card.Self,Creature.YouCtrl+Other | Origin$ Any | Destination$ Battlefield | Execute$ TrigPump | TriggerZones$ Battlefield | TriggerDescription$ Whenever CARDNAME or another creature you control enters, that creature gets +2/+2 until end of turn.\nSVar:TrigPump:DB$ Pump | Defined$ TriggeredCardLKICopy | NumAtt$ +2 | NumDef$ +2\nSVar:BuffedBy:Creature\nOracle:Whenever Ambuscade Shaman or another creature you control enters, that creature gets +2/+2 until end of turn.\\nDash {3}{B} (You may cast this spell for its dash cost. If you do, it gains haste, and it's returned from the battlefield to its owner's hand at the beginning of the next end step.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ambuscade Shaman"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

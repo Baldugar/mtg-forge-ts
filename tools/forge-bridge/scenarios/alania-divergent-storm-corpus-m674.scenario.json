@@ -1,0 +1,25 @@
+{
+  "id": "alania-divergent-storm-corpus-m674",
+  "description": "M6 corpus — Alania, Divergent Storm; ETB-on-bf.",
+  "seed": 61770,
+  "cards": {
+    "Alania, Divergent Storm": "Name:Alania, Divergent Storm\nManaCost:3 U R\nTypes:Legendary Creature Otter Wizard\nPT:3/5\nT:Mode$ SpellCast | ValidCard$ Instant,Sorcery,Otter.!CastSaSource | ActivatorThisTurnCastEach$ EQ1 | ValidActivatingPlayer$ You | OptionalDecider$ You | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than NICKNAME you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.\nSVar:TrigDraw:DB$ Draw | ValidTgts$ Opponent | SubAbility$ DBCopy\nSVar:DBCopy:DB$ CopySpellAbility | Defined$ TriggeredSpellAbility | MayChooseTarget$ True\nSVar:BuffedBy:Instant,Sorcery,Otter\nOracle:Whenever you cast a spell, if it's the first instant spell, the first sorcery spell, or the first Otter spell other than Alania you've cast this turn, you may have target opponent draw a card. If you do, copy that spell. You may choose new targets for the copy.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alania, Divergent Storm"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

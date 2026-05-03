@@ -1,0 +1,25 @@
+{
+  "id": "alhammarret-high-arbiter-corpus-m674",
+  "description": "M6 corpus — Alhammarret, High Arbiter; ETB-on-bf.",
+  "seed": 61797,
+  "cards": {
+    "Alhammarret, High Arbiter": "Name:Alhammarret, High Arbiter\nManaCost:5 U U\nTypes:Legendary Creature Sphinx\nPT:5/5\nK:Flying\nK:ETBReplacement:Other:RevealHand\nSVar:RevealHand:DB$ RevealHand | Defined$ Player.Opponent | RememberRevealed$ True | SubAbility$ DBNameCard | SpellDescription$ As CARDNAME enters, each opponent reveals their hand. You choose the name of a nonland card revealed this way.\nSVar:DBNameCard:DB$ NameCard | Defined$ You | ValidCards$ Card.nonLand | ChooseFromDefinedCards$ Remembered | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nS:Mode$ CantBeCast | ValidCard$ Card.NamedCard | Caster$ Player.Opponent | Description$ Your opponents can't cast spells with the chosen name (as long as this creature is on the battlefield).\nOracle:Flying\\nAs Alhammarret, High Arbiter enters, each opponent reveals their hand. You choose the name of a nonland card revealed this way.\\nYour opponents can't cast spells with the chosen name (as long as this creature is on the battlefield).\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alhammarret, High Arbiter"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

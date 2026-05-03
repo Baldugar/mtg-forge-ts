@@ -1,0 +1,25 @@
+{
+  "id": "accursed-centaur-corpus-m674",
+  "description": "M6 corpus — Accursed Centaur; ETB-on-bf.",
+  "seed": 61456,
+  "cards": {
+    "Accursed Centaur": "Name:Accursed Centaur\nManaCost:B\nTypes:Creature Zombie Centaur\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSac | TriggerDescription$ When CARDNAME enters, sacrifice a creature.\nSVar:TrigSac:DB$ Sacrifice | Defined$ You | SacValid$ Creature | AILogic$ ExceptSelf\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE2+powerLE1+toughnessLE2\nOracle:When Accursed Centaur enters, sacrifice a creature.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Accursed Centaur"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

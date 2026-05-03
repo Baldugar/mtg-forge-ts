@@ -1,0 +1,23 @@
+{
+  "id": "alchemist-s-gambit-corpus-m674",
+  "description": "M6 corpus — Alchemist's Gambit; in-hand parse.",
+  "seed": 61778,
+  "cards": {
+    "Alchemist's Gambit": "Name:Alchemist's Gambit\nManaCost:1 R R\nTypes:Sorcery\nA:SP$ AddTurn | NumTurns$ 1 | ExtraTurnDelayedTrigger$ DBDelTrig | ExtraTurnDelayedTriggerExcute$ TrigEffect | SubAbility$ DBExile | StackDescription$ {p:You} takes an extra turn after this one. During that turn, damage can't be prevented. At the beginning of that turn's end step, {p:You} loses the game. | SpellDescription$ Take an extra turn after this one. [At the beginning of that turn's end step, you lose the game.]\nSVar:DBDelTrig:ThisTurn$ True | Static$ True | Mode$ Phase | Phase$ Upkeep | TriggerDescription$ During that turn, damage can't be prevented.\nSVar:TrigEffect:DB$ Effect | Defined$ You | StaticAbilities$ STCantPrevent | Triggers$ EndLose\nSVar:STCantPrevent:Mode$ CantPreventDamage | Description$ Damage can't be prevented.\nSVar:EndLose:Mode$ Phase | Phase$ End of Turn | Execute$ TrigLose | TriggerDescription$ At the beginning of that turn's end step, you lose the game.\nSVar:TrigLose:DB$ LosesGame | Defined$ You\nA:SP$ AddTurn | Cost$ 4 U U R | NumTurns$ 1 | ExtraTurnDelayedTrigger$ DBDelTrig | ExtraTurnDelayedTriggerExcute$ TrigEffect2 | PrecostDesc$ Cleave | CostDesc$ {4}{U}{U}{R} | NonBasicSpell$ True | SubAbility$ DBExile | StackDescription$ {p:You} takes an extra turn after this one. During that turn, damage can't be prevented. | SpellDescription$ (You may cast this spell for its cleave cost. If you do, remove the words in square brackets.)\nSVar:TrigEffect2:DB$ Effect | Defined$ You | StaticAbilities$ STCantPrevent\nSVar:DBExile:DB$ ChangeZone | Origin$ Stack | Destination$ Exile | SpellDescription$ Exile CARDNAME.\nAI:RemoveDeck:All\nOracle:Cleave {4}{U}{U}{R} (You may cast this spell for its cleave cost. If you do, remove the words in square brackets.)\\nTake an extra turn after this one. During that turn, damage can't be prevented. [At the beginning of that turn's end step, you lose the game.]\\nExile Alchemist's Gambit.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Alchemist's Gambit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

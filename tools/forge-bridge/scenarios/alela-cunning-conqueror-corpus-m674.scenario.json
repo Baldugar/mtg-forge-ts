@@ -1,0 +1,25 @@
+{
+  "id": "alela-cunning-conqueror-corpus-m674",
+  "description": "M6 corpus — Alela, Cunning Conqueror; ETB-on-bf.",
+  "seed": 61788,
+  "cards": {
+    "Alela, Cunning Conqueror": "Name:Alela, Cunning Conqueror\nManaCost:2 U B\nTypes:Legendary Creature Faerie Warlock\nPT:2/4\nK:Flying\nT:Mode$ SpellCast | ValidCard$ Card | ValidActivatingPlayer$ You | TriggerZones$ Battlefield | ActivatorThisTurnCast$ EQ1 | OpponentTurn$ True | Execute$ TrigToken | TriggerDescription$ Whenever you cast your first spell during each opponent's turn, create a 1/1 black Faerie Rogue creature token with flying.\nSVar:TrigToken:DB$ Token | TokenScript$ b_1_1_faerie_rogue_flying | TokenOwner$ You\nT:Mode$ DamageDoneOnce | CombatDamage$ True | ValidSource$ Creature.Faerie+YouCtrl | ValidTarget$ Player | TriggerZones$ Battlefield | Execute$ TrigGoad | TriggerDescription$ Whenever one or more Faeries you control deal combat damage to a player, goad target creature that player controls.\nSVar:TrigGoad:DB$ Goad | ValidTgts$ Creature | TargetsWithDefinedController$ TriggeredTarget | TgtPrompt$ Select target creature that player controls\nOracle:Flying\\nWhenever you cast your first spell during each opponent's turn, create a 1/1 black Faerie Rogue creature token with flying.\\nWhenever one or more Faeries you control deal combat damage to a player, goad target creature that player controls.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alela, Cunning Conqueror"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

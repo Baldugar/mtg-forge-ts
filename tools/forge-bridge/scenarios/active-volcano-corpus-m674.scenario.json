@@ -1,0 +1,23 @@
+{
+  "id": "active-volcano-corpus-m674",
+  "description": "M6 corpus — Active Volcano; in-hand parse.",
+  "seed": 61492,
+  "cards": {
+    "Active Volcano": "Name:Active Volcano\nManaCost:R\nTypes:Instant\nA:SP$ Charm | Choices$ DBDestroy,DBChangeZone\nSVar:DBDestroy:DB$ Destroy | ValidTgts$ Permanent.Blue | TgtPrompt$ Select target blue permanent | SpellDescription$ Destroy target blue permanent.\nSVar:DBChangeZone:DB$ ChangeZone | ValidTgts$ Island | TgtPrompt$ Select target Island | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target Island to its owner's hand.\nAI:RemoveDeck:Random\nOracle:Choose one —\\n• Destroy target blue permanent.\\n• Return target Island to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Active Volcano"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

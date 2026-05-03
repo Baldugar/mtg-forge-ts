@@ -1,0 +1,25 @@
+{
+  "id": "akoum-firebird-corpus-m674",
+  "description": "M6 corpus — Akoum Firebird; ETB-on-bf.",
+  "seed": 61725,
+  "cards": {
+    "Akoum Firebird": "Name:Akoum Firebird\nManaCost:2 R R\nTypes:Creature Phoenix\nPT:3/3\nK:Flying\nK:Haste\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Graveyard | Execute$ TrigChange | TriggerDescription$ Landfall — Whenever a land you control enters, you may pay {4}{R}{R}. If you do, return CARDNAME from your graveyard to the battlefield.\nSVar:TrigChange:AB$ ChangeZone | Cost$ 4 R R | Origin$ Graveyard | Destination$ Battlefield\nSVar:SacMe:3\nSVar:DiscardMe:3\nOracle:Flying, haste\\nAkoum Firebird attacks each combat if able.\\nLandfall — Whenever a land you control enters, you may pay {4}{R}{R}. If you do, return Akoum Firebird from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akoum Firebird"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

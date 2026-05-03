@@ -1,0 +1,25 @@
+{
+  "id": "ainok-strike-leader-corpus-m674",
+  "description": "M6 corpus — Ainok Strike Leader; ETB-on-bf.",
+  "seed": 61667,
+  "cards": {
+    "Ainok Strike Leader": "Name:Ainok Strike Leader\nManaCost:1 W\nTypes:Creature Dog Warrior\nPT:2/2\nT:Mode$ AttackersDeclared | Execute$ TrigRepeat | ValidAttackers$ Card.Self,Card.IsCommander+YouOwn | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ When you attack with this creature and/or your commander, for each opponent, create a 1/1 red Goblin creature token that's tapped and attacking that player.\nSVar:TrigRepeat:DB$ RepeatEach | RepeatPlayers$ Opponent | ChangeZoneTable$ True | RepeatSubAbility$ DBToken\nSVar:DBToken:DB$ Token | TokenScript$ r_1_1_goblin | TokenTapped$ True | TokenAttacking$ Remembered\nA:AB$ PumpAll | Cost$ Sac<1/CARDNAME/this creature> | ValidCards$ Creature.token+YouCtrl | KW$ Indestructible | SpellDescription$ Creature tokens you control gain indestructible until end of turn.\nOracle:When you attack with this creature and/or your commander, for each opponent, create a 1/1 red Goblin creature token that's tapped and attacking that player.\\nSacrifice this creature: Creature tokens you control gain indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ainok Strike Leader"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

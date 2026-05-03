@@ -1,0 +1,25 @@
+{
+  "id": "acolyte-of-affliction-corpus-m674",
+  "description": "M6 corpus — Acolyte of Affliction; ETB-on-bf.",
+  "seed": 61475,
+  "cards": {
+    "Acolyte of Affliction": "Name:Acolyte of Affliction\nManaCost:2 B G\nTypes:Creature Human Cleric\nPT:2/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMill | TriggerDescription$ When CARDNAME enters, mill two cards, then you may return a permanent card from your graveyard to your hand.\nSVar:TrigMill:DB$ Mill | NumCards$ 2 | Defined$ You | SubAbility$ DBChangeZone\nSVar:DBChangeZone:DB$ ChangeZone | Origin$ Graveyard | Destination$ Hand | ChangeType$ Permanent.YouOwn | Hidden$ True | Optional$ True\nDeckHas:Ability$Graveyard\nOracle:When Acolyte of Affliction enters, mill two cards, then you may return a permanent card from your graveyard to your hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Acolyte of Affliction"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

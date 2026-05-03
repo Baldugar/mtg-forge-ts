@@ -1,0 +1,23 @@
+{
+  "id": "alluring-suitor-corpus-m674",
+  "description": "M6 corpus — Alluring Suitor; in-hand parse.",
+  "seed": 61832,
+  "cards": {
+    "Alluring Suitor": "Name:Alluring Suitor\nManaCost:2 R\nTypes:Creature Vampire\nPT:2/3\nT:Mode$ AttackersDeclared | Execute$ TrigTransform | ValidAttackers$ Creature | ValidAttackersAmount$ EQ2 | TriggerZones$ Battlefield | AttackingPlayer$ You | TriggerDescription$ When you attack with exactly two creatures, transform CARDNAME.\nSVar:TrigTransform:DB$ SetState | Defined$ Self | Mode$ Transform\nAlternateMode:DoubleFaced\nOracle:When you attack with exactly two creatures, transform Alluring Suitor.\n\nALTERNATE\n\nName:Deadly Dancer\nManaCost:no cost\nColors:red\nTypes:Creature Vampire\nPT:3/3\nK:Trample\nT:Mode$ Transformed | ValidCard$ Card.Self | Execute$ TrigMana | TriggerDescription$ When this creature transforms into CARDNAME, add {R}{R}. Until end of turn, you don't lose this mana as steps and phases end.\nSVar:TrigMana:DB$ Mana | Produced$ R | Amount$ 2 | PersistentMana$ True\nA:AB$ Pump | Cost$ R R | Defined$ Self | NumAtt$ +1 | SubAbility$ DBPump | StackDescription$ CARDNAME and | SpellDescription$ CARDNAME and another target creature each get +1/+0 until end of turn.\nSVar:DBPump:DB$ Pump | ValidTgts$ Creature.Other | TgtPrompt$ Select another target creature | NumAtt$ +1 | StackDescription$ {c:Targeted} each get +1/+0 until end of turn.\nOracle:Trample\\nWhen this creature transforms into Deadly Dancer, add {R}{R}. Until end of turn, you don't lose this mana as steps and phases end.\\n{R}{R}: Deadly Dancer and another target creature each get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Alluring Suitor"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

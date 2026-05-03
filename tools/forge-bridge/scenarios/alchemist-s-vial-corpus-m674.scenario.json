@@ -1,0 +1,25 @@
+{
+  "id": "alchemist-s-vial-corpus-m674",
+  "description": "M6 corpus — Alchemist's Vial; ETB-on-bf.",
+  "seed": 61784,
+  "cards": {
+    "Alchemist's Vial": "Name:Alchemist's Vial\nManaCost:2\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigDraw | TriggerDescription$ When CARDNAME enters, draw a card.\nSVar:TrigDraw:DB$ Draw | Defined$ You | NumCards$ 1\nA:AB$ Pump | Cost$ 1 T Sac<1/CARDNAME> | ValidTgts$ Creature | IsCurse$ True | KW$ HIDDEN CARDNAME can't attack or block. | SpellDescription$ Target creature can't attack or block this turn.\nOracle:When Alchemist's Vial enters, draw a card.\\n{1}, {T}, Sacrifice Alchemist's Vial: Target creature can't attack or block this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alchemist's Vial"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

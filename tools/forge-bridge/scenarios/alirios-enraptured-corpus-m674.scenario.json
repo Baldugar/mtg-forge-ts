@@ -1,0 +1,25 @@
+{
+  "id": "alirios-enraptured-corpus-m674",
+  "description": "M6 corpus — Alirios, Enraptured; ETB-on-bf.",
+  "seed": 61804,
+  "cards": {
+    "Alirios, Enraptured": "Name:Alirios, Enraptured\nManaCost:2 U\nTypes:Legendary Creature Human\nPT:2/3\nR:Event$ Moved | ValidCard$ Card.Self | Destination$ Battlefield | ReplacementResult$ Updated | ReplaceWith$ ETBTapped | Description$ NICKNAME enters tapped.\nSVar:ETBTapped:DB$ Tap | Defined$ Self | ETB$ True\nR:Event$ Untap | ActiveZones$ Battlefield | ValidCard$ Card.Self | ValidStepTurnToController$ You | Layer$ CantHappen | IsPresent$ Reflection.YouCtrl | Description$ NICKNAME doesn't untap during your untap step if you control a Reflection.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When NICKNAME enters, create a 3/2 blue Reflection creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ u_3_2_reflection | TokenOwner$ You\nDeckHas:Ability$Token\nOracle:Alirios enters tapped.\\nAlirios doesn't untap during your untap step if you control a Reflection.\\nWhen Alirios enters, create a 3/2 blue Reflection creature token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alirios, Enraptured"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

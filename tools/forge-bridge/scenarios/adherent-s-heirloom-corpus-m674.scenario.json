@@ -1,0 +1,25 @@
+{
+  "id": "adherent-s-heirloom-corpus-m674",
+  "description": "M6 corpus — Adherent's Heirloom; ETB-on-bf.",
+  "seed": 61511,
+  "cards": {
+    "Adherent's Heirloom": "Name:Adherent's Heirloom\nManaCost:3\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSeek | TriggerDescription$ When this artifact enters, seek a creature card of the most prevalent creature type in your library.\nSVar:TrigSeek:DB$ Seek | Type$ Card.Creature+MostProminentCreatureTypeInLibrary\nA:AB$ Mana | Cost$ T | Produced$ Any | RestrictValid$ Spell.Creature | SpellDescription$ Add one mana of any color. Spend this mana only to cast a creature spell.\nOracle:When this artifact enters, seek a creature card of the most prevalent creature type in your library.\\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Adherent's Heirloom"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

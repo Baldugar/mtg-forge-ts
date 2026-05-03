@@ -1,0 +1,25 @@
+{
+  "id": "ajani-s-chosen-corpus-m674",
+  "description": "M6 corpus — Ajani's Chosen; ETB-on-bf.",
+  "seed": 61698,
+  "cards": {
+    "Ajani's Chosen": "Name:Ajani's Chosen\nManaCost:2 W W\nTypes:Creature Cat Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Enchantment.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigToken | TriggerDescription$ Whenever an enchantment you control enters, create a 2/2 white Cat creature token. If that enchantment is an Aura, you may attach it to the token.\nSVar:TrigToken:DB$ Token | TokenScript$ w_2_2_cat | TokenOwner$ You | RememberTokens$ True | SubAbility$ DBAttach\nSVar:DBAttach:DB$ Attach | Object$ TriggeredCardLKICopy | Defined$ Remembered | Optional$ True | ConditionDefined$ TriggeredCardLKICopy | ConditionPresent$ Aura | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Whenever an enchantment you control enters, create a 2/2 white Cat creature token. If that enchantment is an Aura, you may attach it to the token.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ajani's Chosen"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

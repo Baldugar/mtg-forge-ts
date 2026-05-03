@@ -1,0 +1,25 @@
+{
+  "id": "ajani-caller-of-the-pride-corpus-m674",
+  "description": "M6 corpus — Ajani, Caller of the Pride; ETB-on-bf.",
+  "seed": 61686,
+  "cards": {
+    "Ajani, Caller of the Pride": "Name:Ajani, Caller of the Pride\nManaCost:1 W W\nTypes:Legendary Planeswalker Ajani\nLoyalty:4\nA:AB$ PutCounter | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | CounterNum$ 1 | CounterType$ P1P1 | TargetMin$ 0 | TargetMax$ 1 | ValidTgts$ Creature | SpellDescription$ Put a +1/+1 counter on up to one target creature.\nA:AB$ Pump | Cost$ SubCounter<3/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature | KW$ Flying & Double Strike | SpellDescription$ Target creature gains flying and double strike until end of turn.\nA:AB$ Token | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | TokenAmount$ X | TokenScript$ w_2_2_cat | TokenOwner$ You | Ultimate$ True | SpellDescription$ Create X 2/2 white Cat creature tokens, where X is your life total.\nSVar:X:Count$YourLifeTotal\nOracle:[+1]: Put a +1/+1 counter on up to one target creature.\\n[-3]: Target creature gains flying and double strike until end of turn.\\n[-8]: Create X 2/2 white Cat creature tokens, where X is your life total.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ajani, Caller of the Pride"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

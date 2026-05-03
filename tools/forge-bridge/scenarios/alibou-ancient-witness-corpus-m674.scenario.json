@@ -1,0 +1,25 @@
+{
+  "id": "alibou-ancient-witness-corpus-m674",
+  "description": "M6 corpus — Alibou, Ancient Witness; ETB-on-bf.",
+  "seed": 61802,
+  "cards": {
+    "Alibou, Ancient Witness": "Name:Alibou, Ancient Witness\nManaCost:3 R W\nTypes:Legendary Artifact Creature Golem\nPT:4/5\nS:Mode$ Continuous | Affected$ Creature.Artifact+Other+YouCtrl | AddKeyword$ Haste | Description$ Other artifact creatures you control have haste.\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.Artifact+YouCtrl | Execute$ DBDamage | TriggerZones$ Battlefield | TriggerDescription$ Whenever one or more artifact creatures you control attack, CARDNAME deals X damage to any target and you scry X, where X is the number of tapped artifacts you control.\nSVar:DBDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X | SubAbility$ DBScry\nSVar:DBScry:DB$ Scry | Defined$ You | ScryNum$ X\nSVar:X:Count$Valid Artifact.YouCtrl+tapped\nSVar:PlayMain1:TRUE\nDeckHints:Type$Artifact\nOracle:Other artifact creatures you control have haste.\\nWhenever one or more artifact creatures you control attack, Alibou, Ancient Witness deals X damage to any target and you scry X, where X is the number of tapped artifacts you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alibou, Ancient Witness"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "aethersnipe-corpus-m674",
+  "description": "M6 corpus — Aethersnipe; ETB-on-bf.",
+  "seed": 61598,
+  "cards": {
+    "Aethersnipe": "Name:Aethersnipe\nManaCost:5 U\nTypes:Creature Elemental\nPT:4/4\nK:Evoke:1 U U\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigBounce | TriggerDescription$ When CARDNAME enters, return target nonland permanent to its owner's hand.\nSVar:TrigBounce:DB$ ChangeZone | ValidTgts$ Permanent.nonLand | TgtPrompt$ Select target nonland permanent | Origin$ Battlefield | Destination$ Hand\nSVar:NeedsToPlayEvoked:Card.nonLand+OppCtrl\nOracle:When Aethersnipe enters, return target nonland permanent to its owner's hand.\\nEvoke {1}{U}{U} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aethersnipe"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

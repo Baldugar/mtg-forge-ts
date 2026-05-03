@@ -1,0 +1,25 @@
+{
+  "id": "ajani-s-aid-corpus-m674",
+  "description": "M6 corpus — Ajani's Aid; ETB-on-bf.",
+  "seed": 61697,
+  "cards": {
+    "Ajani's Aid": "Name:Ajani's Aid\nManaCost:2 G W\nTypes:Enchantment\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library and/or graveyard for a card named Ajani, Valiant Protector, reveal it, and put it into your hand. If you search your library this way, shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | OriginAlternative$ Graveyard | Destination$ Hand | ChangeType$ Card.YouOwn+namedAjani; Valiant Protector | Optional$ True\nA:AB$ ChooseCard | Cost$ Sac<1/CARDNAME> | Choices$ Creature | Mandatory$ True | AILogic$ NeedsPrevention | SubAbility$ DBEffect | SpellDescription$ Prevent all combat damage a creature of your choice would deal this turn.\nSVar:DBEffect:DB$ Effect | ReplacementEffects$ RPreventNextFromSource | RememberObjects$ ChosenCard | ExileOnMoved$ Battlefield\nSVar:RPreventNextFromSource:Event$ DamageDone | IsCombat$ True | ValidSource$ Card.IsRemembered | Prevent$ True | Description$ Prevent all combat damage a creature of your choice would deal this turn.\nDeckHas:Ability$Sacrifice\nDeckHints:Name$Ajani, Valiant Protector\nOracle:When Ajani's Aid enters, you may search your library and/or graveyard for a card named Ajani, Valiant Protector, reveal it, and put it into your hand. If you search your library this way, shuffle.\\nSacrifice Ajani's Aid: Prevent all combat damage a creature of your choice would deal this turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ajani's Aid"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ajani-outland-chaperone-corpus-m674",
+  "description": "M6 corpus — Ajani, Outland Chaperone; ETB-on-bf.",
+  "seed": 61689,
+  "cards": {
+    "Ajani, Outland Chaperone": "Name:Ajani, Outland Chaperone\nManaCost:1 W W\nTypes:Legendary Planeswalker Ajani\nLoyalty:3\nA:AB$ Token | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | TokenScript$ gw_1_1_kithkin | SpellDescription$ Create a 1/1 green and white Kithkin creature token.\nA:AB$ DealDamage | Cost$ SubCounter<2/LOYALTY> | Planeswalker$ True | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | NumDmg$ 4 | SpellDescription$ NICKNAME deals 4 damage to target tapped creature.\nA:AB$ Dig | Cost$ SubCounter<8/LOYALTY> | Planeswalker$ True | Ultimate$ True | DigNum$ X | Optional$ True | ChangeNum$ Any | ChangeValid$ Card.Permanent+nonLand+cmcLE3 | DestinationZone$ Battlefield | DestinationZone2$ Library | SubAbility$ DBShuffle | SpellDescription$ Look at the top X cards of your library where X is your life total. You may put any number of nonland permanent cards with mana value 3 or less from among them onto the battlefield. Then shuffle.\nSVar:DBShuffle:DB$ Shuffle\nSVar:X:Count$YourLifeTotal\nDeckHas:Ability$Token\nOracle:[+1]: Create a 1/1 green and white Kithkin creature token.\\n[-2]: Ajani deals 4 damage to target tapped creature.\\n[-8]: Look at the top X cards of your library, where X is your life total. You may put any number of nonland permanent cards with mana value 3 or less from among them onto the battlefield. Then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ajani, Outland Chaperone"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

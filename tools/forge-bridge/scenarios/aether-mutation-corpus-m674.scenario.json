@@ -1,0 +1,23 @@
+{
+  "id": "aether-mutation-corpus-m674",
+  "description": "M6 corpus — Aether Mutation; in-hand parse.",
+  "seed": 61577,
+  "cards": {
+    "Aether Mutation": "Name:Aether Mutation\nManaCost:3 G U\nTypes:Sorcery\nA:SP$ ChangeZone | ValidTgts$ Creature | Origin$ Battlefield | Destination$ Hand | SubAbility$ TrigToken | SpellDescription$ Return target creature to its owner's hand. Create X 1/1 green Saproling creature tokens, where X is that creature's mana value.\n# X will be the Converted Mana Cost of the target of Aether Mutation\nSVar:TrigToken:DB$ Token | TokenAmount$ X | TokenScript$ g_1_1_saproling | TokenOwner$ You\nSVar:X:Targeted$CardManaCost\nDeckHas:Ability$Token\nOracle:Return target creature to its owner's hand. Create X 1/1 green Saproling creature tokens, where X is that creature's mana value.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "akuta-born-of-ash-corpus-m674",
+  "description": "M6 corpus — Akuta, Born of Ash; ETB-on-bf.",
+  "seed": 61750,
+  "cards": {
+    "Akuta, Born of Ash": "Name:Akuta, Born of Ash\nManaCost:2 B B\nTypes:Legendary Creature Spirit\nPT:3/2\nK:Haste\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | CheckSVar$ X | SVarCompare$ GTY | TriggerZones$ Graveyard | Execute$ TrigReturn | TriggerDescription$ At the beginning of your upkeep, if you have more cards in hand than each opponent, you may sacrifice a Swamp. If you do, return CARDNAME from your graveyard to the battlefield.\nSVar:TrigReturn:AB$ ChangeZone | Cost$ Sac<1/Swamp> | Defined$ Self | Origin$ Graveyard | Destination$ Battlefield\nSVar:X:Count$ValidHand Card.YouOwn\nSVar:Y:PlayerCountOpponents$HighestCardsInHand\nOracle:Haste\\nAt the beginning of your upkeep, if you have more cards in hand than each opponent, you may sacrifice a Swamp. If you do, return Akuta, Born of Ash from your graveyard to the battlefield.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akuta, Born of Ash"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ambush-gigapede-corpus-m674",
+  "description": "M6 corpus — Ambush Gigapede; ETB-on-bf.",
+  "seed": 61900,
+  "cards": {
+    "Ambush Gigapede": "Name:Ambush Gigapede\nManaCost:4 B B\nTypes:Creature Insect\nPT:6/2\nK:Flash\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ When CARDNAME enters, target creature an opponent controls gets -2/-2 until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | NumAtt$ -2 | NumDef$ -2 | IsCurse$ True\nOracle:Flash\\nWhen Ambush Gigapede enters, target creature an opponent controls gets -2/-2 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ambush Gigapede"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "aetherborn-marauder-corpus-m674",
+  "description": "M6 corpus — Aetherborn Marauder; ETB-on-bf.",
+  "seed": 61590,
+  "cards": {
+    "Aetherborn Marauder": "Name:Aetherborn Marauder\nManaCost:3 B\nTypes:Creature Aetherborn Rogue\nPT:2/2\nK:Flying\nK:Lifelink\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigMoveCounters | TriggerDescription$ When CARDNAME enters, move any number of +1/+1 counters from other permanents you control onto CARDNAME.\nSVar:TrigMoveCounters:DB$ MoveCounter | ValidSource$ Permanent.YouCtrl+Other+counters_GE1_P1P1 | Defined$ Self | CounterType$ P1P1 | CounterNum$ Any | AILogic$ FromValid\nOracle:Flying, lifelink\\nWhen Aetherborn Marauder enters, move any number of +1/+1 counters from other permanents you control onto Aetherborn Marauder.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aetherborn Marauder"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

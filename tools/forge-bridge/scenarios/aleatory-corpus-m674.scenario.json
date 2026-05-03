@@ -1,0 +1,23 @@
+{
+  "id": "aleatory-corpus-m674",
+  "description": "M6 corpus — Aleatory; in-hand parse.",
+  "seed": 61786,
+  "cards": {
+    "Aleatory": "Name:Aleatory\nManaCost:1 R\nTypes:Instant\nText:Cast CARDNAME only during combat after blockers are declared.\nA:SP$ FlipACoin | ValidTgts$ Creature | WinSubAbility$ AleatoryPump | LoseSubAbility$ DelTrigSlowtrip | ActivationPhases$ Declare Blockers->EndCombat | ActivationAfterBlockers$ True | SpellDescription$ Flip a coin. If you win the flip, target creature gets +1/+1 until end of turn. Draw a card at the beginning of the next turn's upkeep.\nSVar:AleatoryPump:DB$ Pump | Defined$ Targeted | NumAtt$ +1 | NumDef$ +1 | SubAbility$ DelTrigSlowtrip\nSVar:DelTrigSlowtrip:DB$ DelayedTrigger | NextTurn$ True | Mode$ Phase | Phase$ Upkeep | ValidPlayer$ Player | Execute$ DrawSlowtrip | TriggerDescription$ Draw a card.\nSVar:DrawSlowtrip:DB$ Draw | Defined$ You\nAI:RemoveDeck:All\nOracle:Cast this spell only during combat after blockers are declared.\\nFlip a coin. If you win the flip, target creature gets +1/+1 until end of turn.\\nDraw a card at the beginning of the next turn's upkeep.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aleatory"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

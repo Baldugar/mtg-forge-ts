@@ -1,0 +1,25 @@
+{
+  "id": "aerial-guide-corpus-m674",
+  "description": "M6 corpus — Aerial Guide; ETB-on-bf.",
+  "seed": 61549,
+  "cards": {
+    "Aerial Guide": "Name:Aerial Guide\nManaCost:2 U\nTypes:Creature Drake\nPT:2/2\nK:Flying\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, another target creature gains flying until end of turn.\nSVar:TrigPump:DB$ Pump | ValidTgts$ Creature.Other+attacking | TgtPrompt$ Select another target attacking creature | KW$ Flying\nOracle:Flying\\nWhenever Aerial Guide attacks, another target attacking creature gains flying until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aerial Guide"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

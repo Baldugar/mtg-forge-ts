@@ -1,0 +1,25 @@
+{
+  "id": "agent-of-masks-corpus-m674",
+  "description": "M6 corpus — Agent of Masks; ETB-on-bf.",
+  "seed": 61629,
+  "cards": {
+    "Agent of Masks": "Name:Agent of Masks\nManaCost:3 W B\nTypes:Creature Human Advisor\nPT:2/3\nT:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Battlefield | Execute$ TrigDrain | TriggerDescription$ At the beginning of your upkeep, each opponent loses 1 life. You gain life equal to the life lost this way.\nSVar:TrigDrain:DB$ LoseLife | Defined$ Player.Opponent | LifeAmount$ 1 | SubAbility$ DBGainLife\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ AFLifeLost\nSVar:AFLifeLost:Number$0\n# AFLifeLost will be set by LoseLife\nDeckHas:Ability$LifeGain\nOracle:At the beginning of your upkeep, each opponent loses 1 life. You gain life equal to the life lost this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agent of Masks"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

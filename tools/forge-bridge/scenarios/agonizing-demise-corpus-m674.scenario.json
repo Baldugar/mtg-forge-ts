@@ -1,0 +1,23 @@
+{
+  "id": "agonizing-demise-corpus-m674",
+  "description": "M6 corpus — Agonizing Demise; in-hand parse.",
+  "seed": 61650,
+  "cards": {
+    "Agonizing Demise": "Name:Agonizing Demise\nManaCost:3 B\nTypes:Instant\nK:Kicker:1 R\nA:SP$ Destroy | ValidTgts$ Creature.nonBlack | TgtPrompt$ Select target nonblack creature | NoRegen$ True | SubAbility$ DBDamage | SpellDescription$ Destroy target nonblack creature. It can't be regenerated. If this spell was kicked, CARDNAME deals damage equal to that creature's power to the creature's controller.\nSVar:DBDamage:DB$ DealDamage | Defined$ TargetedController | NumDmg$ X | Condition$ Kicked | ConditionDescription$ If this spell was kicked,\nSVar:X:Targeted$CardPower\nDeckHints:Color$Red\nOracle:Kicker {1}{R} (You may pay an additional {1}{R} as you cast this spell.)\\nDestroy target nonblack creature. It can't be regenerated. If this spell was kicked, Agonizing Demise deals damage equal to that creature's power to the creature's controller.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agonizing Demise"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

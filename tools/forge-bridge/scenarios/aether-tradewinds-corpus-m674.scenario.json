@@ -1,0 +1,23 @@
+{
+  "id": "aether-tradewinds-corpus-m674",
+  "description": "M6 corpus — Aether Tradewinds; in-hand parse.",
+  "seed": 61586,
+  "cards": {
+    "Aether Tradewinds": "Name:Aether Tradewinds\nManaCost:2 U\nTypes:Instant\nA:SP$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.YouCtrl | TgtPrompt$ Select target permanent you control | SubAbility$ DBChange | SpellDescription$ Return target permanent you control and target permanent you don't control to their owners' hands.\nSVar:DBChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | ValidTgts$ Permanent.YouDontCtrl | TgtPrompt$ Select target permanent you don't control\nAI:RemoveDeck:All\nOracle:Return target permanent you control and target permanent you don't control to their owners' hands.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aether Tradewinds"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "alpine-houndmaster-corpus-m674",
+  "description": "M6 corpus — Alpine Houndmaster; ETB-on-bf.",
+  "seed": 61855,
+  "cards": {
+    "Alpine Houndmaster": "Name:Alpine Houndmaster\nManaCost:R W\nTypes:Creature Human Warrior\nPT:2/2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigSearch | OptionalDecider$ You | TriggerDescription$ When CARDNAME enters, you may search your library for a card named Alpine Watchdog and/or a card named Igneous Cur, reveal them, put them into your hand, then shuffle.\nSVar:TrigSearch:DB$ ChangeZone | Origin$ Library | Destination$ Hand | DifferentNames$ True | ChangeType$ Card.namedAlpine Watchdog,Card.namedIgneous Cur | ChangeNum$ 2 | ShuffleNonMandatory$ True\nDeckHints:Name$Alpine Watchdog|Igneous Cur\nT:Mode$ Attacks | ValidCard$ Card.Self | Execute$ TrigPump | TriggerDescription$ Whenever CARDNAME attacks, it gets +X/+0 until end of turn, where X is the number of other attacking creatures.\nSVar:TrigPump:DB$ Pump | Defined$ Self | NumAtt$ +X\nSVar:X:Count$Valid Creature.attacking+Other\nOracle:When Alpine Houndmaster enters, you may search your library for a card named Alpine Watchdog and/or a card named Igneous Cur, reveal them, put them into your hand, then shuffle.\\nWhenever Alpine Houndmaster attacks, it gets +X/+0 until end of turn, where X is the number of other attacking creatures.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alpine Houndmaster"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "amazing-alliance-corpus-m674",
+  "description": "M6 corpus — Amazing Alliance; ETB-on-bf.",
+  "seed": 61886,
+  "cards": {
+    "Amazing Alliance": "Name:Amazing Alliance\nManaCost:1 W W\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | Description$ Creatures you control get +1/+1.\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.Legendary+YouCtrl | Execute$ TrigGainLife | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack with one or more legendary creatures, you gain that much life.\nSVar:TrigGainLife:DB$ GainLife | LifeAmount$ X\nSVar:X:TriggerObjectsAttackers$Amount\nSVar:PlayMain1:TRUE\nDeckHas:Ability$LifeGain\nDeckHints:Type$Legendary\nOracle:Creatures you control get +1/+1.\\nWhenever you attack with one or more legendary creatures, you gain that much life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Amazing Alliance"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "agonizing-remorse-corpus-m674",
+  "description": "M6 corpus — Agonizing Remorse; in-hand parse.",
+  "seed": 61652,
+  "cards": {
+    "Agonizing Remorse": "Name:Agonizing Remorse\nManaCost:1 B\nTypes:Sorcery\nA:SP$ RevealHand | Defined$ Targeted | ValidTgts$ Opponent | SubAbility$ ExileCard | StackDescription$ SpellDescription | SpellDescription$ Target opponent reveals their hand. You choose a nonland card from it or a card from their graveyard. Exile that card. You lose 1 life.\nSVar:ExileCard:DB$ ChangeZone | Origin$ Hand,Graveyard | Destination$ Exile | DefinedPlayer$ Targeted | Chooser$ You | ChangeType$ Card.nonLand | IsCurse$ True | Mandatory$ True | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1 | Defined$ You\nOracle:Target opponent reveals their hand. You choose a nonland card from it or a card from their graveyard. Exile that card. You lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agonizing Remorse"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "alabaster-dragon-corpus-m674",
+  "description": "M6 corpus — Alabaster Dragon; ETB-on-bf.",
+  "seed": 61752,
+  "cards": {
+    "Alabaster Dragon": "Name:Alabaster Dragon\nManaCost:4 W W\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME dies, shuffle it into its owner's library.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Graveyard | Destination$ Library | Shuffle$ True | Defined$ TriggeredNewCardLKICopy\nOracle:Flying\\nWhen Alabaster Dragon dies, shuffle it into its owner's library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alabaster Dragon"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

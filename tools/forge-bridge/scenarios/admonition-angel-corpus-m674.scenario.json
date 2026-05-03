@@ -1,0 +1,25 @@
+{
+  "id": "admonition-angel-corpus-m674",
+  "description": "M6 corpus — Admonition Angel; ETB-on-bf.",
+  "seed": 61514,
+  "cards": {
+    "Admonition Angel": "Name:Admonition Angel\nManaCost:3 W W W\nTypes:Creature Angel\nPT:6/6\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigExile | TriggerDescription$ Landfall — Whenever a land you control enters, you may exile target nonland permanent other than CARDNAME.\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Any | ValidCard$ Card.Self | Execute$ TrigReturn | TriggerDescription$ When CARDNAME leaves the battlefield, return all cards exiled with it to the battlefield under their owners' control.\nSVar:TrigExile:DB$ ChangeZone | ValidTgts$ Permanent.Other+nonLand | TgtPrompt$ Choose target nonland permanent other than CARDNAME. | RememberTargets$ True | Origin$ Battlefield | Destination$ Exile\nSVar:TrigReturn:DB$ ChangeZone | Defined$ Remembered | Origin$ Exile | SubAbility$ DBCleanup | Destination$ Battlefield\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nSVar:BuffedBy:Land\nOracle:Flying\\nLandfall — Whenever a land you control enters, you may exile target nonland permanent other than Admonition Angel.\\nWhen Admonition Angel leaves the battlefield, return all cards exiled with it to the battlefield under their owners' control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Admonition Angel"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

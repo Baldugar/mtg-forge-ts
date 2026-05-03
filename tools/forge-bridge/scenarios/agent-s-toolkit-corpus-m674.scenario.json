@@ -1,0 +1,23 @@
+{
+  "id": "agent-s-toolkit-corpus-m674",
+  "description": "M6 corpus — Agent's Toolkit; in-hand parse.",
+  "seed": 61636,
+  "cards": {
+    "Agent's Toolkit": "Name:Agent's Toolkit\nManaCost:1 G U\nTypes:Artifact Clue\nK:etbCounter:EACH P1P1,Flying,Deathtouch,SHIELD:1:no Condition:CARDNAME enters with a +1/+1 counter, a flying counter, a deathtouch counter, and a shield counter on it.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.YouCtrl | TriggerZones$ Battlefield | OptionalDecider$ You | Execute$ TrigMoveCounter | TriggerDescription$ Whenever a creature you control enters, you may move a counter from CARDNAME onto that creature.\nSVar:TrigMoveCounter:DB$ MoveCounter | Source$ Self | Defined$ TriggeredCardLKICopy | CounterType$ Any\nA:AB$ Draw | Cost$ 2 Sac<1/CARDNAME> | SpellDescription$ Draw a card.\nDeckHas:Ability$Sacrifice|Counters\nOracle:Agent's Toolkit enters with a +1/+1 counter, a flying counter, a deathtouch counter, and a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)\\nWhenever a creature you control enters, you may move a counter from Agent's Toolkit onto that creature.\\n{2}, Sacrifice Agent's Toolkit: Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Agent's Toolkit"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

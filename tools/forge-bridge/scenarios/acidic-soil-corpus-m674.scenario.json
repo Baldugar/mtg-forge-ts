@@ -1,0 +1,23 @@
+{
+  "id": "acidic-soil-corpus-m674",
+  "description": "M6 corpus — Acidic Soil; in-hand parse.",
+  "seed": 61471,
+  "cards": {
+    "Acidic Soil": "Name:Acidic Soil\nManaCost:2 R\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | RepeatSubAbility$ DBDamage | DamageMap$ True | SpellDescription$ CARDNAME deals damage to each player equal to the number of lands they control.\nSVar:DBDamage:DB$ DealDamage | Defined$ Remembered | NumDmg$ X\nSVar:X:Count$Valid Land.RememberedPlayerCtrl\nAI:RemoveDeck:All\nOracle:Acidic Soil deals damage to each player equal to the number of lands they control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acidic Soil"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

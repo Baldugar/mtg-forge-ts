@@ -1,0 +1,23 @@
+{
+  "id": "alliance-of-arms-corpus-m674",
+  "description": "M6 corpus — Alliance of Arms; in-hand parse.",
+  "seed": 61818,
+  "cards": {
+    "Alliance of Arms": "Name:Alliance of Arms\nManaCost:W\nTypes:Sorcery\nA:SP$ RepeatEach | RepeatPlayers$ Player | StartingWith$ You | RepeatSubAbility$ DBPay | SubAbility$ DBToken | StackDescription$ SpellDescription | SpellDescription$ Join forces — Starting with you, each player may pay any amount of mana. Each player creates X 1/1 white Soldier creature tokens, where X is the total amount of mana paid this way.\nSVar:DBPay:DB$ ChooseNumber | Defined$ Player.IsRemembered | ChooseAnyNumber$ True | ListTitle$ amount of mana to pay | SubAbility$ DBStore\nSVar:DBStore:DB$ StoreSVar | SVar$ JoinForcesAmount | Type$ CountSVar | Expression$ JoinForcesAmount/Plus.Y | UnlessCost$ Y | UnlessPayer$ Player.IsRemembered | UnlessSwitched$ True\nSVar:DBToken:DB$ Token | TokenAmount$ JoinForcesAmount | TokenScript$ w_1_1_soldier | TokenOwner$ Player | StackDescription$ None\nSVar:Y:Count$ChosenNumber\nSVar:JoinForcesAmount:Number$0\nAI:RemoveDeck:All\nOracle:Join forces — Starting with you, each player may pay any amount of mana. Each player creates X 1/1 white Soldier creature tokens, where X is the total amount of mana paid this way.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Alliance of Arms"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

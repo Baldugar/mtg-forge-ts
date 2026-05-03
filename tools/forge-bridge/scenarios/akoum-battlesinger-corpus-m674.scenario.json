@@ -1,0 +1,25 @@
+{
+  "id": "akoum-battlesinger-corpus-m674",
+  "description": "M6 corpus — Akoum Battlesinger; ETB-on-bf.",
+  "seed": 61723,
+  "cards": {
+    "Akoum Battlesinger": "Name:Akoum Battlesinger\nManaCost:1 R\nTypes:Creature Human Berserker Ally\nPT:1/1\nK:Haste\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self,Ally.Other+YouCtrl | OptionalDecider$ You | Execute$ TrigPumpAll | TriggerDescription$ Whenever CARDNAME or another Ally you control enters, you may have Ally creatures you control get +1/+0 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.Ally+YouCtrl | NumAtt$ +1\nSVar:BuffedBy:Ally\nOracle:Haste\\nWhenever Akoum Battlesinger or another Ally you control enters, you may have Ally creatures you control get +1/+0 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akoum Battlesinger"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

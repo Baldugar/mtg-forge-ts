@@ -1,0 +1,25 @@
+{
+  "id": "academy-rector-corpus-m674",
+  "description": "M6 corpus — Academy Rector; ETB-on-bf.",
+  "seed": 61440,
+  "cards": {
+    "Academy Rector": "Name:Academy Rector\nManaCost:3 W\nTypes:Creature Human Cleric\nPT:1/2\nT:Mode$ ChangesZone | ValidCard$ Card.Self | Origin$ Battlefield | Destination$ Graveyard | Execute$ TrigExile | TriggerDescription$ When CARDNAME dies, you may exile it. If you do, search your library for an enchantment card and put that card onto the battlefield, then shuffle.\nSVar:TrigExile:AB$ ChangeZone | Cost$ ExileAnyGrave<1/Card.TriggeredNewCard> | Origin$ Library | Destination$ Battlefield | ChangeType$ Enchantment.YouOwn | ChangeNum$ 1\nSVar:SacMe:4\nAI:RemoveDeck:Random\nDeckNeeds:Type$Enchantment\nOracle:When Academy Rector dies, you may exile it. If you do, search your library for an enchantment card, put that card onto the battlefield, then shuffle.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Academy Rector"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

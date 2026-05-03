@@ -1,0 +1,23 @@
+{
+  "id": "aminatou-s-augury-corpus-m674",
+  "description": "M6 corpus — Aminatou's Augury; in-hand parse.",
+  "seed": 61909,
+  "cards": {
+    "Aminatou's Augury": "Name:Aminatou's Augury\nManaCost:6 U U\nTypes:Sorcery\nA:SP$ Dig | Defined$ You | DigNum$ 8 | ChangeNum$ All | DestinationZone$ Exile | RememberChanged$ True | SubAbility$ DBChangeZone | SpellDescription$ Exile the top eight cards of your library. You may put a land card from among them onto the battlefield. Until end of turn, for each nonland card type, you may cast a spell of that type from among the exiled cards without paying its mana cost.\nSVar:DBChangeZone:DB$ ChangeZone | Hidden$ True | ChangeType$ Land.IsRemembered | Origin$ Exile | Destination$ Battlefield | ForgetChanged$ True | SubAbility$ DBEffect\nSVar:DBEffect:DB$ Effect | RememberObjects$ RememberedCard | StaticAbilities$ PlayCr,PlayPl,PlayAr,PlayEn,PlayIn,PlaySo,PlayKi,PlayBa | SubAbility$ DBCleanup | ForgetOnMoved$ Exile\nSVar:PlayCr:Mode$ Continuous | Affected$ Creature.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Creature | AffectedZone$ Exile\nSVar:PlayPl:Mode$ Continuous | Affected$ Planeswalker.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Planeswalker | AffectedZone$ Exile\nSVar:PlayAr:Mode$ Continuous | Affected$ Artifact.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Artifact | AffectedZone$ Exile\nSVar:PlayEn:Mode$ Continuous | Affected$ Enchantment.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Enchantment | AffectedZone$ Exile\nSVar:PlayIn:Mode$ Continuous | Affected$ Instant.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Instant | AffectedZone$ Exile\nSVar:PlaySo:Mode$ Continuous | Affected$ Sorcery.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Sorcery | AffectedZone$ Exile\nSVar:PlayKi:Mode$ Continuous | Affected$ Kindred.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Kindred | AffectedZone$ Exile\nSVar:PlayBa:Mode$ Continuous | Affected$ Battle.YouCtrl+IsRemembered | MayPlay$ True | MayPlayWithoutManaCost$ True | MayPlayLimit$ 1 | MayPlayText$ Battle | AffectedZone$ Exile\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True\nOracle:Exile the top eight cards of your library. You may put a land card from among them onto the battlefield. Until end of turn, for each nonland card type, you may cast a spell of that type from among the exiled cards without paying its mana cost.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aminatou's Augury"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "agency-coroner-corpus-m674",
+  "description": "M6 corpus — Agency Coroner; ETB-on-bf.",
+  "seed": 61622,
+  "cards": {
+    "Agency Coroner": "Name:Agency Coroner\nManaCost:4 B\nTypes:Creature Ogre Cleric\nPT:3/6\nA:AB$ Draw | Cost$ 2 B Sac<1/Creature.Other/another creature> | NumCards$ X | SpellDescription$ Draw a card. If the sacrificed creature was suspected, draw two cards instead.\nSVar:Y:Sacrificed$Valid Card.IsSuspected\nSVar:X:Count$Compare Y EQ1.2.1\nDeckHas:Ability$Sacrifice\nOracle:{2}{B}, Sacrifice another creature: Draw a card. If the sacrificed creature was suspected, draw two cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agency Coroner"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

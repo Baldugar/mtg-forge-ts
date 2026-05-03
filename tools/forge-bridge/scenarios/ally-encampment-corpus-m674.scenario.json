@@ -1,0 +1,25 @@
+{
+  "id": "ally-encampment-corpus-m674",
+  "description": "M6 corpus — Ally Encampment; ETB-on-bf.",
+  "seed": 61833,
+  "cards": {
+    "Ally Encampment": "Name:Ally Encampment\nManaCost:no cost\nTypes:Land\nA:AB$ Mana | Cost$ T | Produced$ C | SpellDescription$ Add {C}.\nA:AB$ Mana | Cost$ T | Produced$ Any | Amount$ 1 | RestrictValid$ Spell.Ally | SpellDescription$ Add one mana of any color. Spend this mana only to cast an Ally spell.\nA:AB$ ChangeZone | Cost$ 1 T Sac<1/CARDNAME> | ValidTgts$ Ally.YouCtrl | TgtPrompt$ Select target Ally you control | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return target Ally you control to its owner's hand.\nAI:RemoveDeck:Random\nDeckHas:Ability$Mana.Colorless\nDeckHints:Type$Ally\nOracle:{T}: Add {C}.\\n{T}: Add one mana of any color. Spend this mana only to cast an Ally spell.\\n{1}, {T}, Sacrifice Ally Encampment: Return target Ally you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ally Encampment"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

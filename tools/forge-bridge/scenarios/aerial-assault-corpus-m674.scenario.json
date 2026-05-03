@@ -1,0 +1,23 @@
+{
+  "id": "aerial-assault-corpus-m674",
+  "description": "M6 corpus — Aerial Assault; in-hand parse.",
+  "seed": 61544,
+  "cards": {
+    "Aerial Assault": "Name:Aerial Assault\nManaCost:2 W\nTypes:Sorcery\nA:SP$ Destroy | ValidTgts$ Creature.tapped | TgtPrompt$ Select target tapped creature | SubAbility$ DBGainLife | SpellDescription$ Destroy target tapped creature. You gain 1 life for each creature you control with flying.\nSVar:DBGainLife:DB$ GainLife | Defined$ You | LifeAmount$ X\nSVar:X:Count$Valid Creature.YouCtrl+withFlying\nOracle:Destroy target tapped creature. You gain 1 life for each creature you control with flying.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aerial Assault"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

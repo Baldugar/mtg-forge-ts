@@ -1,0 +1,25 @@
+{
+  "id": "amarant-coral-corpus-m674",
+  "description": "M6 corpus — Amarant Coral; ETB-on-bf.",
+  "seed": 61879,
+  "cards": {
+    "Amarant Coral": "Name:Amarant Coral\nManaCost:2 R G\nTypes:Legendary Creature Human Monk\nPT:5/4\nK:Trample\nS:Mode$ MustAttack | ValidCreature$ Card.Self | Description$ CARDNAME attacks each combat if able.\nT:Mode$ DamageDone | ValidSource$ Card.Self | ValidTarget$ Opponent | CombatDamage$ True | Execute$ TrigDmg | TriggerDescription$ No Mercy — Whenever CARDNAME deals combat damage to an opponent, it deals that much damage to each other opponent.\nSVar:TrigDmg:DB$ DamageAll | ValidPlayers$ OppNonTriggeredTarget | NumDmg$ X\nSVar:X:TriggerCount$DamageAmount\nOracle:Trample\\nAmarant Coral attacks each combat if able.\\nNo Mercy — Whenever Amarant Coral deals combat damage to an opponent, it deals that much damage to each other opponent.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Amarant Coral"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

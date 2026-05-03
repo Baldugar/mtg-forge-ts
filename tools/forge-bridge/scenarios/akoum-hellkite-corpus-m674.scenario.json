@@ -1,0 +1,25 @@
+{
+  "id": "akoum-hellkite-corpus-m674",
+  "description": "M6 corpus — Akoum Hellkite; ETB-on-bf.",
+  "seed": 61728,
+  "cards": {
+    "Akoum Hellkite": "Name:Akoum Hellkite\nManaCost:4 R R\nTypes:Creature Dragon\nPT:4/4\nK:Flying\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Land.YouCtrl | TriggerZones$ Battlefield | Execute$ TrigDamage | TriggerDescription$ Landfall — Whenever a land you control enters, CARDNAME deals 1 damage to any target. If that land was a mountain, CARDNAME deals 2 damage instead.\nSVar:TrigDamage:DB$ DealDamage | ValidTgts$ Any | NumDmg$ X\nSVar:X:TriggeredCard$Valid Mountain/Plus.1\nSVar:BuffedBy:Land\nOracle:Flying\\nLandfall — Whenever a land you control enters, Akoum Hellkite deals 1 damage to any target. If that land is a Mountain, Akoum Hellkite deals 2 damage instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akoum Hellkite"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

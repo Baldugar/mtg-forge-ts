@@ -1,0 +1,23 @@
+{
+  "id": "acquired-mutation-corpus-m674",
+  "description": "M6 corpus — Acquired Mutation; in-hand parse.",
+  "seed": 61483,
+  "cards": {
+    "Acquired Mutation": "Name:Acquired Mutation\nManaCost:2 R\nTypes:Enchantment Aura\nK:Enchant:Creature\nSVar:AttachAILogic:Pump\nS:Mode$ Continuous | Affected$ Creature.EnchantedBy | AddPower$ 2 | AddToughness$ 2 | Goad$ True | Description$ Enchanted creature gets +2/+2 and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\nT:Mode$ Attacks | ValidCard$ Creature.EnchantedBy | Execute$ TrigRadiation | TriggerDescription$ Whenever enchanted creature attacks, defending player gets two rad counters.\nSVar:TrigRadiation:DB$ Radiation | Defined$ TriggeredDefendingPlayer | Num$ 2\nOracle:Enchant creature\\nEnchanted creature gets +2/+2 and is goaded. (It attacks each combat if able and attacks a player other than you if able.)\\nWhenever enchanted creature attacks, defending player gets two rad counters.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Acquired Mutation"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

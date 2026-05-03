@@ -1,0 +1,23 @@
+{
+  "id": "aggressive-biomancy-corpus-m674",
+  "description": "M6 corpus — Aggressive Biomancy; in-hand parse.",
+  "seed": 61640,
+  "cards": {
+    "Aggressive Biomancy": "Name:Aggressive Biomancy\nManaCost:X X G U\nTypes:Sorcery\nA:SP$ CopyPermanent | ValidTgts$ Creature.YouCtrl | NumCopies$ X | AddTriggers$ TrigFight | AddSVars$ TrigFight,TrigFightBis | TgtPrompt$ Select target creature you control | SpellDescription$ Create X tokens that are copies of target creature you control, except they have \"When this creature enters, it fights up to one target creature you don't control.\"\nSVar:TrigFight:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigFightBis | TriggerDescription$ When CARDNAME enters, it fights up to one target creature you don't control.\nSVar:TrigFightBis:DB$ Fight | Defined$ TriggeredCardLKICopy | ValidTgts$ Creature.YouDontCtrl | TgtPrompt$ Choose up to one target creature you don't control | TargetMin$ 0 | TargetMax$ 1\nSVar:X:Count$xPaid\nOracle:Create X tokens that are copies of target creature you control, except they have \"When this creature enters, it fights up to one target creature you don't control.\"\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aggressive Biomancy"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

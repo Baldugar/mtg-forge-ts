@@ -1,0 +1,25 @@
+{
+  "id": "aligned-hedron-network-corpus-m674",
+  "description": "M6 corpus — Aligned Hedron Network; ETB-on-bf.",
+  "seed": 61803,
+  "cards": {
+    "Aligned Hedron Network": "Name:Aligned Hedron Network\nManaCost:4\nTypes:Artifact\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile all creatures with power 5 or greater until CARDNAME leaves the battlefield. (Those creatures return under their owners' control.)\nSVar:TrigExile:DB$ ChangeZoneAll | Origin$ Battlefield | Destination$ Exile | ChangeType$ Creature.powerGE5 | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nSVar:NeedsToPlayVar:Z GE1\nSVar:Z:SVar$Z1/Minus.Z2\nSVar:Z1:Count$Valid Creature.OppCtrl+powerGE5\nSVar:Z2:Count$Valid Creature.YouCtrl+powerGE5\nAI:RemoveDeck:Random\nOracle:When Aligned Hedron Network enters, exile all creatures with power 5 or greater until Aligned Hedron Network leaves the battlefield. (Those creatures return under their owners' control.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aligned Hedron Network"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

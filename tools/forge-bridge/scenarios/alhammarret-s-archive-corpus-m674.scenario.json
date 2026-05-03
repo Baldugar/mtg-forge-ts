@@ -1,0 +1,25 @@
+{
+  "id": "alhammarret-s-archive-corpus-m674",
+  "description": "M6 corpus — Alhammarret's Archive; ETB-on-bf.",
+  "seed": 61798,
+  "cards": {
+    "Alhammarret's Archive": "Name:Alhammarret's Archive\nManaCost:5\nTypes:Legendary Artifact\nR:Event$ GainLife | ActiveZones$ Battlefield | ValidPlayer$ You | ReplaceWith$ GainDouble | AILogic$ DoubleLife | Description$ If you would gain life, you gain twice that much life instead.\nSVar:GainDouble:DB$ ReplaceEffect | VarName$ LifeGained | VarValue$ X\nSVar:X:ReplaceCount$LifeGained/Twice\nR:Event$ Draw | ActiveZones$ Battlefield | ValidPlayer$ You | NotFirstCardInDrawStep$ True | ReplaceWith$ DrawTwo | Description$ If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.\nSVar:DrawTwo:DB$ Draw | Defined$ You | NumCards$ 2\nDeckHints:Ability$LifeGain\nOracle:If you would gain life, you gain twice that much life instead.\\nIf you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alhammarret's Archive"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

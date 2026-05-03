@@ -1,0 +1,25 @@
+{
+  "id": "ampryn-tactician-corpus-m674",
+  "description": "M6 corpus — Ampryn Tactician; ETB-on-bf.",
+  "seed": 61921,
+  "cards": {
+    "Ampryn Tactician": "Name:Ampryn Tactician\nManaCost:2 W W\nTypes:Creature Human Soldier\nPT:3/3\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigPumpAll | TriggerDescription$ When CARDNAME enters, creatures you control get +1/+1 until end of turn.\nSVar:TrigPumpAll:DB$ PumpAll | ValidCards$ Creature.YouCtrl | NumAtt$ +1 | NumDef$ +1\nSVar:PlayMain1:ALWAYS\nOracle:When Ampryn Tactician enters, creatures you control get +1/+1 until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ampryn Tactician"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

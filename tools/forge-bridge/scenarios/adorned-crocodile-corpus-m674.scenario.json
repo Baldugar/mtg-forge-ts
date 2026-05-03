@@ -1,0 +1,25 @@
+{
+  "id": "adorned-crocodile-corpus-m674",
+  "description": "M6 corpus — Adorned Crocodile; ETB-on-bf.",
+  "seed": 61515,
+  "cards": {
+    "Adorned Crocodile": "Name:Adorned Crocodile\nManaCost:4 B\nTypes:Creature Crocodile\nPT:5/3\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Card.Self | Execute$ TrigToken | TriggerDescription$ When this creature dies, create a 2/2 black Zombie Druid creature token.\nSVar:TrigToken:DB$ Token | TokenScript$ b_2_2_zombie_druid | TokenOwner$ You\nA:AB$ PutCounter | PrecostDesc$ Renew — | Cost$ B ExileFromGrave<1/CARDNAME> | ActivationZone$ Graveyard | ValidTgts$ Creature | CounterType$ P1P1 | CounterNum$ 1 | SorcerySpeed$ True | SpellDescription$ Put a +1/+1 counter on target creature. Activate only as a sorcery.\nOracle:When this creature dies, create a 2/2 black Zombie Druid creature token.\\nRenew — {B}, Exile this card from your graveyard: Put a +1/+1 counter on target creature. Activate only as a sorcery.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Adorned Crocodile"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

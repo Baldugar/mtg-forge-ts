@@ -1,0 +1,23 @@
+{
+  "id": "aetherspouts-corpus-m674",
+  "description": "M6 corpus — Aetherspouts; in-hand parse.",
+  "seed": 61599,
+  "cards": {
+    "Aetherspouts": "Name:Aetherspouts\nManaCost:3 U U\nTypes:Instant\nA:SP$ Pump | ImprintCards$ Valid Creature.attacking | StackDescription$ None | SubAbility$ DBRepeatPlayer\nSVar:DBRepeatPlayer:DB$ RepeatEach | RepeatPlayers$ ImprintedOwner | RepeatSubAbility$ DBRepeatCard | SubAbility$ DBCleanup | SpellDescription$ For each attacking creature, its owner puts it on the top or bottom of their library.\nSVar:DBRepeatCard:DB$ RepeatEach | RepeatCards$ Card.IsImprinted+RememberedPlayerOwn | ChooseOrder$ RememberedPlayer | RepeatSubAbility$ DBChoose\nSVar:DBChoose:DB$ GenericChoice | Defined$ RememberedOwner | ShowCurrentCard$ Remembered | Choices$ DBTop,DBBottom\nSVar:DBTop:DB$ ChangeZone | Defined$ RememberedCard | Origin$ Battlefield | Destination$ Library | LibraryPosition$ 0 | SpellDescription$ Top of library\nSVar:DBBottom:DB$ ChangeZone | Defined$ RememberedCard | Origin$ Battlefield | Destination$ Library | LibraryPosition$ -1 | SpellDescription$ Bottom of library\nSVar:DBCleanup:DB$ Cleanup | ClearImprinted$ True\nSVar:NeedsToPlayVar:Z GE2\nSVar:Z:Count$Valid Creature.attacking+OppCtrl\nOracle:For each attacking creature, its owner puts it on the top or bottom of their library.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Aetherspouts"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

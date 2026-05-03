@@ -1,0 +1,23 @@
+{
+  "id": "altar-of-bhaal-corpus-m674",
+  "description": "M6 corpus — Altar of Bhaal; in-hand parse.",
+  "seed": 61866,
+  "cards": {
+    "Altar of Bhaal": "Name:Altar of Bhaal\nManaCost:1 B\nTypes:Artifact\nA:AB$ ChangeZone | Cost$ 2 B T Exile<1/Creature> | TgtPrompt$ Choose target creature card in your graveyard | ValidTgts$ Creature.YouCtrl | Origin$ Graveyard | Destination$ Battlefield | SorcerySpeed$ True | SpellDescription$ Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.\nAI:RemoveDeck:Random\nAlternateMode:Adventure\nOracle:{2}{B}, {T}, Exile a creature you control: Return target creature card from your graveyard to the battlefield. Activate only as a sorcery.\n\nALTERNATE\n\nName:Bone Offering\nManaCost:2 B\nTypes:Sorcery Adventure\nA:SP$ Token | TokenScript$ b_4_1_skeleton_menace | TokenTapped$ True | TokenOwner$ You | SpellDescription$ Create a tapped 4/1 black Skeleton creature token with menace.\nDeckHas:Ability$Token & Type$Skeleton\nOracle:Create a tapped 4/1 black Skeleton creature token with menace.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Altar of Bhaal"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

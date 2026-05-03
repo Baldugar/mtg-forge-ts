@@ -1,0 +1,25 @@
+{
+  "id": "akki-battle-squad-corpus-m674",
+  "description": "M6 corpus — Akki Battle Squad; ETB-on-bf.",
+  "seed": 61711,
+  "cards": {
+    "Akki Battle Squad": "Name:Akki Battle Squad\nManaCost:5 R\nTypes:Creature Goblin Samurai\nPT:6/6\nT:Mode$ AttackersDeclared | ValidAttackers$ Creature.modified+YouCtrl | Execute$ TrigUntap | TriggerZones$ Battlefield | ActivationLimit$ 1 | TriggerDescription$ Whenever one or more modified creatures you control attack, untap all modified creatures you control. After this combat phase, there is an additional combat phase. This ability triggers only once each turn. (Equipment, Auras you control, and counters are modifications.)\nSVar:TrigUntap:DB$ UntapAll | ValidCards$ Creature.modified+YouCtrl | SubAbility$ DBAddCombat\nSVar:DBAddCombat:DB$ AddPhase | ExtraPhase$ Combat | AfterPhase$ EndCombat\nDeckHints:Type$Aura|Equipment & Ability$Counters\nOracle:Whenever one or more modified creatures you control attack, untap all modified creatures you control. After this combat phase, there is an additional combat phase. This ability triggers only once each turn. (Equipment, Auras you control, and counters are modifications.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akki Battle Squad"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

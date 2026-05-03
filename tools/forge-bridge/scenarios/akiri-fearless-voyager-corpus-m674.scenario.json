@@ -1,0 +1,25 @@
+{
+  "id": "akiri-fearless-voyager-corpus-m674",
+  "description": "M6 corpus — Akiri, Fearless Voyager; ETB-on-bf.",
+  "seed": 61708,
+  "cards": {
+    "Akiri, Fearless Voyager": "Name:Akiri, Fearless Voyager\nManaCost:1 R W\nTypes:Legendary Creature Kor Warrior\nPT:3/3\nT:Mode$ AttackersDeclaredOneTarget | ValidAttackers$ Creature.YouCtrl+equipped | AttackedTarget$ Player | Execute$ TrigDraw | TriggerZones$ Battlefield | TriggerDescription$ Whenever you attack a player with one or more equipped creatures, draw a card.\nSVar:TrigDraw:DB$ Draw\nA:AB$ ChooseCard | Cost$ W | Defined$ You | Choices$ Creature.YouCtrl+equipped | ChoiceTitle$ Choose an equipped creature you control | RememberChosen$ True | SubAbility$ DBChooseEquip | StackDescription$ SpellDescription | SpellDescription$ You may unattach an Equipment from a creature you control. If you do, tap that creature and it gains indestructible until end of turn.\nSVar:DBChooseEquip:DB$ ChooseCard | Defined$ You | Choices$ Equipment.AttachedTo Creature.IsRemembered | ChoiceTitle$ You may choose an Equipment to unattach from that creature | SubAbility$ DBUnattach\nSVar:DBUnattach:DB$ Unattach | Defined$ ChosenCard | SubAbility$ DBTap | StackDescription$ None\nSVar:DBTap:DB$ Tap | Defined$ Remembered | ConditionDefined$ ChosenCard | ConditionPresent$ Equipment | ConditionCompare$ GE1 | SubAbility$ DBPump | StackDescription$ None\nSVar:DBPump:DB$ Pump | Defined$ Remembered | KW$ Indestructible | ConditionDefined$ ChosenCard | ConditionPresent$ Equipment | ConditionCompare$ GE1 | SubAbility$ DBCleanup\nSVar:DBCleanup:DB$ Cleanup | ClearRemembered$ True | ClearChosenCard$ True\nAI:RemoveDeck:Random\nDeckNeeds:Type$Equipment\nOracle:Whenever you attack a player with one or more equipped creatures, draw a card.\\n{W}: You may unattach an Equipment from a creature you control. If you do, tap that creature and it gains indestructible until end of turn.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Akiri, Fearless Voyager"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "aether-channeler-corpus-m674",
+  "description": "M6 corpus — Aether Channeler; ETB-on-bf.",
+  "seed": 61571,
+  "cards": {
+    "Aether Channeler": "Name:Aether Channeler\nManaCost:2 U\nTypes:Creature Human Wizard\nPT:2/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigCharm | TriggerDescription$ When CARDNAME enters, ABILITY\nSVar:TrigCharm:DB$ Charm | Choices$ DBToken,DBBounce,DBDraw\nSVar:DBToken:DB$ Token | TokenScript$ w_1_1_bird_flying | TokenOwner$ You | SpellDescription$ Create a 1/1 white Bird creature token with flying.\nSVar:DBBounce:DB$ ChangeZone | ValidTgts$ Permanent.Other+nonLand | TgtPrompt$ Select another target nonland permanent | TgtZone$ Battlefield | Origin$ Battlefield | Destination$ Hand | SpellDescription$ Return another target nonland permanent to its owner's hand.\nSVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 1 | SpellDescription$ Draw a card.\nDeckHas:Ability$Token\nOracle:When Aether Channeler enters, choose one —\\n• Create a 1/1 white Bird creature token with flying.\\n• Return another target nonland permanent to its owner's hand.\\n• Draw a card.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aether Channeler"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

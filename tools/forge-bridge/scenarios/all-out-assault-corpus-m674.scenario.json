@@ -1,0 +1,25 @@
+{
+  "id": "all-out-assault-corpus-m674",
+  "description": "M6 corpus — All-Out Assault; ETB-on-bf.",
+  "seed": 61810,
+  "cards": {
+    "All-Out Assault": "Name:All-Out Assault\nManaCost:2 R W B\nTypes:Enchantment\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddPower$ 1 | AddToughness$ 1 | AddKeyword$ Deathtouch | Description$ Creatures you control get +1/+1 and have deathtouch.\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | PlayerTurn$ True | Phase$ Main1,Main2 | Execute$ TrigAddPhase | TriggerDescription$ When this enchantment enters, if it's your main phase, there is an additional combat phase after this phase followed by an additional main phase. When you next attack this turn, untap each creature you control.\nSVar:TrigAddPhase:DB$ AddPhase | ExtraPhase$ Combat | FollowedBy$ Main2 | SubAbility$ DBDelTrig\nSVar:DBDelTrig:DB$ DelayedTrigger | Mode$ AttackersDeclared | Execute$ DBUntapAll | TriggerZones$ Battlefield | AttackingPlayer$ You | ThisTurn$ True | TriggerDescription$ When you next attack this turn, untap each creature you control.\nSVar:DBUntapAll:DB$ UntapAll | ValidCards$ Creature.YouCtrl\nSVar:PlayMain1:TRUE\nOracle:Creatures you control get +1/+1 and have deathtouch.\\nWhen this enchantment enters, if it's your main phase, there is an additional combat phase after this phase followed by an additional main phase. When you next attack this turn, untap each creature you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "All-Out Assault"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "alabaster-host-intercessor-corpus-m674",
+  "description": "M6 corpus — Alabaster Host Intercessor; ETB-on-bf.",
+  "seed": 61753,
+  "cards": {
+    "Alabaster Host Intercessor": "Name:Alabaster Host Intercessor\nManaCost:5 W\nTypes:Creature Phyrexian Samurai\nPT:3/4\nK:TypeCycling:Plains:2\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigExile | TriggerDescription$ When CARDNAME enters, exile target creature an opponent controls until CARDNAME leaves the battlefield.\nSVar:TrigExile:DB$ ChangeZone | Origin$ Battlefield | Destination$ Exile | ValidTgts$ Creature.OppCtrl | TgtPrompt$ Select target creature an opponent controls | Duration$ UntilHostLeavesPlay\nSVar:PlayMain1:TRUE\nDeckHas:Ability$Discard\nOracle:When Alabaster Host Intercessor enters, exile target creature an opponent controls until Alabaster Host Intercessor leaves the battlefield.\\nPlainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffe.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alabaster Host Intercessor"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

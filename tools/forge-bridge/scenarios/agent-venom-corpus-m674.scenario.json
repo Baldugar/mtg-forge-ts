@@ -1,0 +1,25 @@
+{
+  "id": "agent-venom-corpus-m674",
+  "description": "M6 corpus — Agent Venom; ETB-on-bf.",
+  "seed": 61635,
+  "cards": {
+    "Agent Venom": "Name:Agent Venom\nVariant:UniversesWithin:FlavorName:Rhilex the Accursed\nManaCost:2 B\nTypes:Legendary Creature Symbiote Soldier Hero\nPT:2/3\nK:Flash\nK:Menace\nT:Mode$ ChangesZone | Origin$ Battlefield | Destination$ Graveyard | ValidCard$ Creature.Other+!token+YouCtrl | Execute$ TrigDraw | TriggerDescription$ Whenever another nontoken creature you control dies, you draw a card and lose 1 life.\nSVar:TrigDraw:DB$ Draw | SubAbility$ DBLoseLife\nSVar:DBLoseLife:DB$ LoseLife | LifeAmount$ 1\nOracle:Flash\\nMenace\\nWhenever another nontoken creature you control dies, you draw a card and lose 1 life.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Agent Venom"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

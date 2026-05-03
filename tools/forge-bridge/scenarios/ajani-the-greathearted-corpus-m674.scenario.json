@@ -1,0 +1,25 @@
+{
+  "id": "ajani-the-greathearted-corpus-m674",
+  "description": "M6 corpus — Ajani, the Greathearted; ETB-on-bf.",
+  "seed": 61692,
+  "cards": {
+    "Ajani, the Greathearted": "Name:Ajani, the Greathearted\nManaCost:2 G W\nTypes:Legendary Planeswalker Ajani\nLoyalty:5\nS:Mode$ Continuous | Affected$ Creature.YouCtrl | AddKeyword$ Vigilance | Description$ Creatures you control have vigilance.\nSVar:NonStackingEffect:True\nSVar:PlayMain1:TRUE\nA:AB$ GainLife | Cost$ AddCounter<1/LOYALTY> | Planeswalker$ True | LifeAmount$ 3 | SpellDescription$ You gain 3 life.\nA:AB$ PutCounterAll | Cost$ SubCounter<2/LOYALTY> | ValidCards$ Creature.YouCtrl | CounterType$ P1P1 | CounterNum$ 1 | Planeswalker$ True | ValidCards2$ Planeswalker.YouCtrl+StrictlyOther | CounterType2$ LOYALTY | AILogic$ OwnCreatsAndOtherPWs | SpellDescription$ Put a +1/+1 counter on each creature you control and a loyalty counter on each other planeswalker you control.\nDeckHas:Ability$Counters|LifeGain\nDeckHints:Type$Planeswalker\nOracle:Creatures you control have vigilance.\\n[+1]: You gain 3 life.\\n[-2]: Put a +1/+1 counter on each creature you control and a loyalty counter on each other planeswalker you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ajani, the Greathearted"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "aisling-leprechaun-corpus-m674",
+  "description": "M6 corpus — Aisling Leprechaun; ETB-on-bf.",
+  "seed": 61684,
+  "cards": {
+    "Aisling Leprechaun": "Name:Aisling Leprechaun\nManaCost:G\nTypes:Creature Faerie\nPT:1/1\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Creature | ValidBlocker$ Card.Self | Execute$ TrigAnimateAttacker | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature becomes green. (This effect lasts indefinitely.)\nT:Mode$ AttackerBlockedByCreature | ValidCard$ Card.Self | ValidBlocker$ Creature | Execute$ TrigAnimateBlocker | Secondary$ True | TriggerDescription$ Whenever CARDNAME blocks or becomes blocked by a creature, that creature becomes green. (This effect lasts indefinitely.)\nSVar:TrigAnimateAttacker:DB$ Animate | Defined$ TriggeredAttackerLKICopy | Colors$ Green | OverwriteColors$ True | Duration$ Permanent\nSVar:TrigAnimateBlocker:DB$ Animate | Defined$ TriggeredBlockerLKICopy | Colors$ Green | OverwriteColors$ True | Duration$ Permanent\nOracle:Whenever Aisling Leprechaun blocks or becomes blocked by a creature, that creature becomes green. (This effect lasts indefinitely.)\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Aisling Leprechaun"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

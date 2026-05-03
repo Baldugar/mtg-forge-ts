@@ -1,0 +1,25 @@
+{
+  "id": "ambush-krotiq-corpus-m674",
+  "description": "M6 corpus — Ambush Krotiq; ETB-on-bf.",
+  "seed": 61901,
+  "cards": {
+    "Ambush Krotiq": "Name:Ambush Krotiq\nManaCost:5 G\nTypes:Creature Insect\nPT:5/5\nK:Trample\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Card.Self | Execute$ TrigChange | TriggerDescription$ When CARDNAME enters, return another creature you control to its owner's hand.\nSVar:TrigChange:DB$ ChangeZone | Origin$ Battlefield | Destination$ Hand | Hidden$ True | Mandatory$ True | ChangeType$ Creature.Other+YouCtrl\nSVar:NeedsToPlay:Creature.YouCtrl+cmcLE5\nOracle:Trample\\nWhen Ambush Krotiq enters, return another creature you control to its owner's hand.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Ambush Krotiq"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}

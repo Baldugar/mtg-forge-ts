@@ -1,0 +1,25 @@
+{
+  "id": "alistair-the-brigadier-corpus-m674",
+  "description": "M6 corpus — Alistair, the Brigadier; ETB-on-bf.",
+  "seed": 61805,
+  "cards": {
+    "Alistair, the Brigadier": "Name:Alistair, the Brigadier\nManaCost:1 G W U\nTypes:Legendary Creature Human Soldier\nPT:3/3\nT:Mode$ SpellCast | ValidCard$ Card.Historic | ValidActivatingPlayer$ You | Execute$ TrigToken | TriggerZones$ Battlefield | TriggerDescription$ Whenever you cast a historic spell, create a 1/1 white Soldier creature token. (Artifacts, legendaries, and Sagas are historic.)\nSVar:TrigToken:DB$ Token | TokenScript$ w_1_1_soldier\nT:Mode$ Attacks | ValidCard$ Card.Self | TriggerZones$ Battlefield | Execute$ TrigPumpAll | TriggerDescription$ Whenever NICKNAME attacks, you may pay {8}. If you do, creatures you control get +X/+X until end of turn, where X is the number of historic permanents you control.\nSVar:TrigPumpAll:AB$ PumpAll | Cost$ 8 | ValidCards$ Creature.YouCtrl | NumAtt$ +X | NumDef$ +X\nSVar:X:Count$Valid Permanent.YouCtrl+Historic\nSVar:HasAttackEffect:TRUE\nDeckHas:Ability$Token\nDeckHints:Type$Artifact|Legendary|Saga\nOracle:Whenever you cast a historic spell, create a 1/1 white Soldier creature token. (Artifacts, legendaries, and Sagas are historic.)\\nWhenever Alistair attacks, you may pay {8}. If you do, creatures you control get +X/+X until end of turn, where X is the number of historic permanents you control.\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Alistair, the Brigadier"
+        }
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": []
+    }
+  ],
+  "actions": []
+}
