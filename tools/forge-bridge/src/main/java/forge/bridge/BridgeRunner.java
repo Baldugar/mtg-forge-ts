@@ -1397,8 +1397,17 @@ public final class BridgeRunner {
             target = PhaseType.smartValueOf(step);
             if (target == null) return;
         }
-        game.getPhaseHandler().devAdvanceToPhase(target);
-        drainStack(game);
+        // M7.0c — Suppress AI-combat events during advanceToStep. The TS
+        // golden runner doesn't drive a combat AI; Forge's natural phase
+        // progression auto-attacks during the walk through combat sub-
+        // phases when target is past combat. Suppress to match TS output.
+        passTurnCombatSuppressed = true;
+        try {
+            game.getPhaseHandler().devAdvanceToPhase(target);
+            drainStack(game);
+        } finally {
+            passTurnCombatSuppressed = false;
+        }
     }
 
     /**
