@@ -42,6 +42,12 @@ export interface DeckEntry {
    * commander entry, the commander's color identity defaults to colorless.
    */
   readonly colorIdentity?: ReadonlyArray<"W" | "U" | "B" | "R" | "G">;
+  /**
+   * Optional set/edition code, e.g. "TSR", "C20", "MIR". Populated when a
+   * deck is loaded from Forge `.dck` format with a `|SET|` suffix on the
+   * card line. Purely informational — `validateDeck` does not consult it.
+   */
+  readonly set?: string;
 }
 
 /**
