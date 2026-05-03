@@ -1,0 +1,165 @@
+{
+  "scenarioId": "counterspell-vs-bolt-mylife9-mybf2-2-m665",
+  "seed": 59074,
+  "engineVersion": "ts-m2-0.1.0",
+  "events": [
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 20,
+        "newLife": 9,
+        "delta": -11,
+        "cause": "scenarioSetup"
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 1,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 2,
+        "fromZone": "Hand",
+        "toZone": "Battlefield",
+        "fromSeat": 0,
+        "toSeat": 0
+      }
+    },
+    {
+      "kind": "CrimeCommitted",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "sourceCardId": 3,
+        "victimSeat": 0
+      }
+    },
+    {
+      "kind": "ManaSpent",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 1,
+        "color": 8,
+        "amount": 1
+      }
+    },
+    {
+      "kind": "CostPaid",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 3,
+        "payerSeat": 1
+      }
+    },
+    {
+      "kind": "SpellCast",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "cardId": 3,
+        "controllerSeat": 1
+      }
+    },
+    {
+      "kind": "DamageDealt",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "sourceId": 3,
+        "targetKind": "player",
+        "targetId": 0,
+        "amount": 3,
+        "isCombat": false
+      }
+    },
+    {
+      "kind": "LifeChanged",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "oldLife": 9,
+        "newLife": 6,
+        "delta": -3,
+        "cause": "damage"
+      }
+    },
+    {
+      "kind": "LifeLost",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "playerSeat": 0,
+        "amount": 3
+      }
+    },
+    {
+      "kind": "StackItemResolved",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "stackItemId": 4,
+        "fizzled": false
+      }
+    },
+    {
+      "kind": "CardChangedZone",
+      "turn": 1,
+      "phase": "Untap",
+      "payload": {
+        "cardId": 3,
+        "fromZone": "Hand",
+        "toZone": "Graveyard",
+        "fromSeat": 1,
+        "toSeat": 1
+      }
+    }
+  ],
+  "finalState": {
+    "lifeTotals": [
+      6,
+      20
+    ],
+    "handSizes": [
+      1,
+      0
+    ],
+    "battlefield": [
+      {
+        "name": "Goblin Guide",
+        "controller": 0,
+        "tapped": false
+      },
+      {
+        "name": "Grizzly Bears",
+        "controller": 0,
+        "tapped": false
+      }
+    ],
+    "graveyards": [
+      [],
+      [
+        "Lightning Bolt"
+      ]
+    ],
+    "stackSize": 0
+  }
+}

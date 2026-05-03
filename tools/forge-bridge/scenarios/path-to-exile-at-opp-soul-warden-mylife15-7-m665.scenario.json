@@ -1,0 +1,48 @@
+{
+  "id": "path-to-exile-at-opp-soul-warden-mylife15-7-m665",
+  "description": "M6.65 — Path to Exile at opp Soul Warden; my life 15.",
+  "seed": 59015,
+  "cards": {
+    "Path to Exile": "Name:Path to Exile\nManaCost:W\nTypes:Instant\nA:SP$ ChangeZone | Cost$ W | Origin$ Battlefield | Destination$ Exile | TargetType$ Card | ValidTgts$ Creature | SubAbility$ DBSearch | SpellDescription$ Exile.\nSVar:DBSearch:DB$ ChangeZone | Origin$ Library | Destination$ Battlefield | ChangeType$ Land.Basic | ChangeNum$ 1 | Tapped$ True | Defined$ TargetedController\nOracle:Path parse.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n"
+  },
+  "players": [
+    {
+      "life": 15,
+      "hand": [
+        "Path to Exile"
+      ],
+      "battlefield": [],
+      "manaPool": [
+        "W"
+      ]
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Soul Warden"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "cast",
+      "cardName": "Path to Exile",
+      "castingPlayer": 0,
+      "target": {
+        "kind": "card",
+        "name": "Soul Warden"
+      }
+    },
+    {
+      "kind": "resolveTopOfStack"
+    }
+  ]
+}
