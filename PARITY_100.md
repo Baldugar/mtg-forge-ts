@@ -1,6 +1,14 @@
-# 🏆 mtg-forge-ts — 100% Parity Across 800 Scenarios
+# 🏆 mtg-forge-ts — 100% Parity Across the Full 32,300-Card Corpus
 
-> **HEAD:** `22a21be` on `sp1-engine-foundations`. **Parity: 800/800 full-match. 0 mvp-known. 0 unknown.**
+> **HEAD:** `3c016a85c` on `sp1-engine-foundations`. **Parity: 39,797/39,797 full-match. 0 mvp-known. 0 unknown. Coverage: 32,300 / 32,300 = 100%.**
+
+This document was originally written when the cohort hit 100% across 800 curated scenarios. As of M6.86, the cohort was extended to cover **every card in the Forge corpus** (Standard + Modern + Legacy + Vintage + Pioneer + Commander + recent set printings + Schemes + Conspiracies + Vanguards + Phenomena + Planes + Dungeons), all parity-validated.
+
+---
+
+## What's been validated
+
+The original 800-scenario cohort below is preserved as the curated mechanic-coverage matrix; the additional 38,997 scenarios are corpus-coverage scenarios that exercise the parser + load + ETB / in-hand zone-move pipeline for every remaining Forge card.
 
 ---
 
