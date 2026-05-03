@@ -385,6 +385,28 @@ export class GameAction {
       intent,
       (final) => {
         player.life = player.life + final.delta;
+        // M7.13e — Two-Headed Giant shared life (CR 810.5a). When the
+        // 2HG team-life pool is active, the canonical life total lives
+        // there; we mirror the new value onto every teammate's
+        // Player.life so all per-player life readers (SBA loss
+        // collectors, svar Count$YourLifeTotal, life-loss triggers)
+        // observe the same value. This means a single life-change
+        // intent affects the team once — `final.delta` is applied to
+        // `player.life` above, the team pool follows it, and any
+        // additional teammates resync to that pool. Without this, the
+        // teammate's Player.life would drift from the team total.
+        if (game.teamLife !== null) {
+          const teamId = player.teamId;
+          const prior = game.teamLife.get(teamId);
+          if (prior !== undefined) {
+            game.teamLife.set(teamId, player.life);
+            for (const other of game.players) {
+              if (other === player) continue;
+              if (other.teamId !== teamId) continue;
+              other.life = player.life;
+            }
+          }
+        }
         // Wave 51 — Count$LifeYouGainedThisTurn / LifeYouLostThisTurn /
         // LifeOppsLostThisTurn trackers. Increment per-controller maps based
         // on the (possibly replaced) delta. Damage-cause life loss IS counted

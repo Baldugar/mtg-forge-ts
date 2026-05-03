@@ -10,6 +10,19 @@
 //      carried on GameRules.mulliganRule;
 //   6. emit a GameStarted meta event.
 //
+// TODO(SP6 — Two-Headed Giant turn-merging, CR 810.7):
+//   2HG MVP scope (M7.13e) ships the 4-seat lobby + shared team-life model
+//   only. The full "teammates take their turn together" semantics — both
+//   teammates untap, draw, get priority during the team's turn, share
+//   mulligan decisions — live in SP6's per-format orchestration. The engine
+//   already supports up to N players (see Game.players), so the structural
+//   blocker is not the player count; it is the priority loop's assumption
+//   that activePlayer is a single PlayerSeat (game.ts: activePlayer:
+//   PlayerSeat). A team-aware priority window in SP6 will own the
+//   "active TEAM" → "both teammates can act in any order" expansion.
+//   Until then, 2HG plays as 4 individual seats whose two pairs share a
+//   life total + a 15-poison loss threshold.
+//
 // Mulligan semantics — SP1 coverage:
 //   SP1 implements London mulligan (CR 103.5 — after N mulligans taken, the
 //   keeping player bottoms N cards from their hand) via the 'mulliganBottom'
@@ -246,6 +259,41 @@ export interface SetupOptions {
    * supported (CR 904.4 caps the archenemy count at one per game).
    */
   readonly archenemy?: readonly ArchenemyAssignment[];
+  /**
+   * Optional Two-Headed Giant team configuration (CR 810). When the
+   * variant is applied (`rules.appliedVariants` includes
+   * "TwoHeadedGiant"), the host may pass an explicit team grouping here
+   * so that setupGame can:
+   *   1. validate that every seat is assigned to exactly one team;
+   *   2. assert each team's startingLife is correctly seeded into
+   *      `game.teamLife` (the shared pool populated by the Game ctor);
+   *   3. mirror the shared starting life onto every member's
+   *      `Player.life` so all per-player life readers (loss conditions,
+   *      SBA, life triggers) see the team total before any mutation.
+   *
+   * The same team mapping is normally also expressed via
+   * `rules.teamAssignments` (seat → teamId) — when both are present,
+   * setupGame validates they agree. When only `teams` is given, the
+   * Game ctor's `teamId` derivation falls back to `seat = teamId`
+   * (per-seat team) because the rules object is consumed before
+   * setupGame runs; in that case `teams` re-stamps the right teamId
+   * onto each player here so the team-life pool is keyed correctly.
+   */
+  readonly teams?: readonly TeamAssignment[];
+}
+
+/**
+ * M7.13e — Two-Headed Giant team grouping (CR 810). Each team identifies
+ * the participating seats and the shared life total. The default team
+ * size in 2HG is 2 players; the engine accepts any non-empty seat list
+ * so future Emperor / Tempest-of-Light multi-headed variants share the
+ * same primitive. `startingLife` defaults to 30 (CR 810.5a) but is
+ * honored verbatim when supplied so format hosts can override.
+ */
+export interface TeamAssignment {
+  readonly teamId: number;
+  readonly seats: readonly PlayerSeat[];
+  readonly startingLife?: number;
 }
 
 // Per-player zone set covered by SP1. Sideboard/Ante/etc. populate in SP2 as
@@ -357,6 +405,67 @@ export function* setupGame(
   // time (Player.teamId, pulled from rules.teamAssignments?.[seat] ?? seat).
   // Nothing to do here except acknowledge the spec slot — a future override
   // hook (mid-setup team rewrite, e.g. Archenemy) would live in this step.
+  //
+  // M7.13e — Two-Headed Giant team override + life mirroring (CR 810).
+  // When the host supplies an explicit `teams` mapping, we:
+  //   1. validate that every seat appears in exactly one team;
+  //   2. re-stamp Player.teamId from the team mapping (so 2HG hosts that
+  //      forgot to populate rules.teamAssignments still get the right
+  //      teamId per-player);
+  //   3. (re)build game.teamLife from the supplied team list so the
+  //      shared pool reflects the per-team `startingLife` override (or
+  //      the rules default when omitted);
+  //   4. mirror the shared team life onto every member's Player.life so
+  //      all per-player life readers observe the team total before any
+  //      mutation. CR 810.5a — both teammates start at 30 (or whatever
+  //      the host-supplied team total is).
+  // When `teams` is absent, the Game-ctor derived teamLife pool already
+  // has the correct shape; we still mirror life on a 2HG variant so
+  // overrides to rules.startingLife flow into Player.life uniformly.
+  if (opts.teams !== undefined) {
+    const seen = new Set<number>();
+    for (const team of opts.teams) {
+      for (const seat of team.seats) {
+        const seatNum = seat as unknown as number;
+        if (seen.has(seatNum)) {
+          throw new GameStateIntegrityError(`setupGame: seat ${seatNum} listed in more than one team`);
+        }
+        seen.add(seatNum);
+        const player = game.players.find((p) => p.seat === seat);
+        if (!player) {
+          throw new GameStateIntegrityError(`setupGame: team includes unknown seat ${seatNum}`);
+        }
+        player.teamId = team.teamId;
+      }
+    }
+    // Validate every seat is on a team (no "free" seats).
+    for (const player of game.players) {
+      if (!seen.has(player.seat as unknown as number)) {
+        throw new GameStateIntegrityError(
+          `setupGame: seat ${player.seat as unknown as number} not assigned to any team`,
+        );
+      }
+    }
+    // Rebuild teamLife to honor per-team startingLife overrides.
+    if (game.rules.appliedVariants.includes("TwoHeadedGiant")) {
+      const pool = new Map<number, number>();
+      for (const team of opts.teams) {
+        const life = team.startingLife ?? game.rules.startingLife;
+        pool.set(team.teamId, life);
+      }
+      game.teamLife = pool;
+    }
+  }
+  // Mirror the shared team life onto every team member's Player.life so
+  // life readers (loss conditions, SBA, "your life total"-style svars,
+  // life-loss triggers) observe the team total uniformly. Skipped when
+  // teamLife is null (non-2HG game).
+  if (game.teamLife !== null) {
+    for (const player of game.players) {
+      const teamLife = game.teamLife.get(player.teamId);
+      if (teamLife !== undefined) player.life = teamLife;
+    }
+  }
 
   // Step 1c (SP1 §6.4 + §6.6): commander assignment + move-to-command-zone.
   // For each seat with a non-"none" CommanderAssignment, remove the named
