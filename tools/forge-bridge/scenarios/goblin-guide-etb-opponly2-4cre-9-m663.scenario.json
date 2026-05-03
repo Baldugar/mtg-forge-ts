@@ -1,0 +1,46 @@
+{
+  "id": "goblin-guide-etb-opponly2-4cre-9-m663",
+  "description": "M6.63 — Goblin Guide ETB with 4 opp, no mine.",
+  "seed": 58377,
+  "cards": {
+    "Goblin Guide": "Name:Goblin Guide\nManaCost:R\nTypes:Creature Goblin Scout\nPT:2/2\nK:Haste\nOracle:Haste.\n",
+    "Grizzly Bears": "Name:Grizzly Bears\nManaCost:1 G\nTypes:Creature Bear\nPT:2/2\nOracle:2/2\n",
+    "Llanowar Elves": "Name:Llanowar Elves\nManaCost:G\nTypes:Creature Elf Druid\nPT:1/1\nA:AB$ Mana | Cost$ T | Produced$ G | SpellDescription$ Add {G}.\nOracle:{T}: Add {G}.\n",
+    "Soul Warden": "Name:Soul Warden\nManaCost:W\nTypes:Creature Human Cleric\nPT:1/1\nT:Mode$ ChangesZone | Origin$ Any | Destination$ Battlefield | ValidCard$ Creature.Other | Execute$ TrigGain | TriggerDescription$ Whenever another creature enters, you gain 1 life.\nSVar:TrigGain:DB$ GainLife | LifeAmount$ 1\nOracle:Whenever another creature enters, you gain 1 life.\n",
+    "Serra Angel": "Name:Serra Angel\nManaCost:3 W W\nTypes:Creature Angel\nPT:4/4\nK:Flying\nK:Vigilance\nOracle:Flying, vigilance\n"
+  },
+  "players": [
+    {
+      "life": 20,
+      "hand": [
+        "Goblin Guide"
+      ],
+      "battlefield": []
+    },
+    {
+      "life": 20,
+      "hand": [],
+      "battlefield": [
+        {
+          "card": "Grizzly Bears"
+        },
+        {
+          "card": "Llanowar Elves"
+        },
+        {
+          "card": "Soul Warden"
+        },
+        {
+          "card": "Serra Angel"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "etb",
+      "cardName": "Goblin Guide",
+      "controller": 0
+    }
+  ]
+}
