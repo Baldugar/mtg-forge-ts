@@ -12,7 +12,7 @@ importers:
         specifier: ^1.9.0
         version: 1.9.4
       '@changesets/cli':
-        specifier: ^2.27.0
+        specifier: ^2.31.0
         version: 2.31.0(@types/node@20.19.39)
       globby:
         specifier: ^16.2.0
@@ -63,13 +63,13 @@ importers:
 
   packages/game:
     dependencies:
+      '@mtg-forge-ts/cards':
+        specifier: workspace:*
+        version: link:../cards
       '@mtg-forge-ts/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
-      '@mtg-forge-ts/cards':
-        specifier: workspace:*
-        version: link:../cards
       fast-check:
         specifier: ^3.22.0
         version: 3.23.2

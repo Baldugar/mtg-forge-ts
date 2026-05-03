@@ -25,11 +25,14 @@
     "lint:fix": "biome check --write .",
     "lint:determinism": "tsx tools/lint-rules/check-determinism.mts",
     "format": "biome format --write .",
-    "smoke": "pnpm --filter @mtg-forge-ts/dsl-validator scan -- --smoke --cap 0"
+    "smoke": "pnpm --filter @mtg-forge-ts/dsl-validator scan -- --smoke --cap 0",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm -r build && changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.0",
-    "@changesets/cli": "^2.27.0",
+    "@changesets/cli": "^2.31.0",
     "globby": "^16.2.0",
     "lefthook": "^1.7.0",
     "tsx": "^4.21.0",
