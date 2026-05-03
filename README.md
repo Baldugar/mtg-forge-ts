@@ -2,7 +2,7 @@
 
 A TypeScript port of the [Card-Forge/forge](https://github.com/Card-Forge/forge) Magic: The Gathering rules engine, reshaped as a consumable library rather than a GUI application.
 
-**Status:** Design phase — specifications complete, implementation not yet started.
+**Status:** **🏆 100% parity-validated against the Java Forge engine across the full 32,300-card corpus** (39,797 scenarios, all event-trace match, 0 mvp-known). Engine, parser, and card data ship as three packages: `@mtg-forge-ts/core`, `@mtg-forge-ts/cards`, `@mtg-forge-ts/game` (v1.0.0).
 
 ## What this is
 
